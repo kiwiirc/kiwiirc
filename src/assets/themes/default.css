@@ -1,0 +1,307 @@
+.kiwi-wrap {
+    color: #2c3e50;
+    font-family: Source Sans Pro, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.kiwi-wrap a, .u-link {
+    color: #42b983;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.irc-fg-colour-white { color: #FFFFFF; }
+.irc-fg-colour-black { color: #000000; }
+.irc-fg-colour-blue { color: #000080; }
+.irc-fg-colour-green { color: #008000; }
+.irc-fg-colour-light-red { color: #FF0000; }
+.irc-fg-colour-brown { color: #800040; }
+.irc-fg-colour-purple { color: #800080; }
+.irc-fg-colour-orange { color: #FF8040; }
+.irc-fg-colour-yellow { color: #FFFF00; }
+.irc-fg-colour-light-green { color: #80FF00; }
+.irc-fg-colour-cyan { color: #008080; }
+.irc-fg-colour-light-cyan { color: #00FFFF; }
+.irc-fg-colour-light-blue { color: #0000FF; }
+.irc-fg-colour-pink { color: #FF55FF; }
+.irc-fg-colour-grey { color: #808080; }
+.irc-fg-colour-light-grey { color: #C0C0C0; }
+
+.irc-bg-colour-white { color: #FFFFFF; }
+.irc-bg-colour-black { color: #000000; }
+.irc-bg-colour-blue { color: #000080; }
+.irc-bg-colour-green { color: #008000; }
+.irc-bg-colour-light-red { color: #FF0000; }
+.irc-bg-colour-brown { color: #800040; }
+.irc-bg-colour-purple { color: #800080; }
+.irc-bg-colour-orange { color: #FF8040; }
+.irc-bg-colour-yellow { color: #FFFF00; }
+.irc-bg-colour-light-green { color: #80FF00; }
+.irc-bg-colour-cyan { color: #008080; }
+.irc-bg-colour-light-cyan { color: #00FFFF; }
+.irc-bg-colour-light-blue { color: #0000FF; }
+.irc-bg-colour-pink { color: #FF55FF; }
+.irc-bg-colour-grey { color: #808080; }
+.irc-bg-colour-light-grey { color: #C0C0C0; }
+
+
+
+
+/**
+ * State browser
+ */
+
+.kiwi-statebrowser {
+    border-right: 5px solid rgb(106, 125, 137);
+    background: rgb(60, 76, 85);
+    color: rgb(137, 155, 166);
+}
+
+.kiwi-statebrowser-toggle {
+    cursor: pointer;
+    /*background: url(https://kiwiirc.com/client/assets/img/ico.png);*/
+    /*background-size: cover;*/
+    background: rgb(60, 76, 85);
+    border-right: 5px solid rgb(106, 125, 137);
+}
+
+.kiwi-statebrowser-network {
+    padding: 10px;
+}
+
+.kiwi-statebrowser-network-name {
+    /*font-weight: bold;*/
+    font-size: 1.1em;
+}
+
+.kiwi-statebrowser-channel {
+    margin-top: 5px;
+}
+
+.kiwi-statebrowser-channel-name {
+    cursor: pointer;
+    color: #a7a7a7;
+    flex: 1;
+}
+
+.kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
+    color: #d03232;
+}
+.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
+    color: #e0e0e0;
+}
+
+.kiwi-statebrowser-channel-label {
+    padding: 3px 5px;
+    font-size: 0.7em;
+    border-radius: 5px;
+    background: green;
+}
+
+.kiwi-statebarowser-channel-label-transition-enter-active, .kiwi-statebarowser-channel-label-transition-leave-active {
+    transition: opacity 0.1s;
+}
+.kiwi-statebarowser-channel-label-transition-enter, .kiwi-statebarowser-channel-label-transition-leave-active {
+    opacity: 0;
+}
+
+.kiwi-statebrowser-channel-settings {
+    background: red;
+    height: 100%;
+    width: 20px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.kiwi-statebrowser-channel-popup {
+    background: rgb(60, 76, 85);
+    border: 3px solid #6a7d89;
+    border-left: none;
+}
+
+
+
+
+
+
+/**
+ * Container (Nicklist / header / control input wrapper)
+ */
+
+.kiwi-container {
+    border-bottom: 1px solid #dddddd;
+}
+
+
+
+
+
+/**
+ * Nicklist
+ */
+
+.kiwi-nicklist {
+    background-color: #f6f6f6;
+    border-left: 1px solid #dddddd;
+}
+.kiwi-nicklist-info {
+    border: 1px solid #ddd;
+    font-size: 0.9em;
+    margin: 10px 0;
+    padding: 10px 0;
+    text-align: center;
+    border-width: 1px 0;
+}
+.kiwi-nicklist-users {
+    padding: 0 20px;
+}
+.kiwi-nicklist-user {
+    padding: 3px 0;
+}
+.kiwi-nicklist-user-nick {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+/**
+ * Buffer header (channel name + topic)
+ */
+
+.kiwi-header {
+    padding: 5px;
+    background-color: #f6f6f6;
+    border-bottom: 1px solid #dddddd;
+    overflow: hidden;
+}
+.kiwi-header:hover {
+    height: auto;
+}
+.kiwi-header-name {
+    font-weight: bold;
+}
+.kiwi-header-topic {
+    font-size: 0.9em;
+    color: #5f5f5f;
+    text-overflow: ellipsis;
+}
+
+
+
+
+/**
+ * Control input
+ */
+
+.kiwi-controlinput {
+    background: #eeeeee;
+    padding: 4px;
+}
+.kiwi-controlinput-inner {
+    border: 1px solid #cccccc;
+    background: #ffffff;
+    padding: 3px;
+}
+.kiwi-controlinput-user {
+    padding: 0 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    text-align: center;
+    background: #f6f6f6;
+}
+.kiwi-controlinput-input-wrap {
+    padding: 3px;
+    background: #fff;
+}
+.kiwi-controlinput-input {
+    border: none;
+    outline: none;
+}
+
+
+
+/**
+ * Message list
+ */
+
+.kiwi-messagelist-message {
+    border-bottom: 1px solid #f7f5f5;
+    /*padding: 4px;*/
+}
+
+.kiwi-messagelist-message > div {
+    padding: 4px;
+}
+
+.kiwi-messagelist-time {
+    font-size: 0.9em;
+    color: #999999;
+}
+
+.kiwi-messagelist-nick {
+    width: 120px;
+    text-align: right;
+}
+.kiwi-messagelist-nick:before:not(:empty) {
+    content: "<";
+}
+.kiwi-messagelist-nick:after:not(:empty) {
+    content: ">";
+}
+
+.kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
+    /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
+    opacity: 0;
+}
+
+/* Topic changes */
+.kiwi-messagelist-message-topic {
+    margin: 10px;
+    background: #FFF5AB;
+    border: 1px solid #F3C572;
+    border-radius: 5px;
+    text-align: center;
+}
+.kiwi-messagelist-message-topic .kiwi-messagelist-time {
+    display: none;
+}
+.kiwi-messagelist-message-topic .kiwi-messagelist-nick {
+    display: none;
+}
+
+/* Actions */
+.kiwi-messagelist-message-action .kiwi-messagelist-message-body {
+    font-style: italic;
+}
+
+/* Traffic (joins, parts, quits, kicks) */
+.kiwi-messagelist-message-traffic .kiwi-messagelist-message-body {
+    font-style: italic;
+}
+.kiwi-messagelist-message-traffic-join {
+    color: #009900;
+}
+.kiwi-messagelist-message-traffic-quit,
+.kiwi-messagelist-message-traffic-part,
+.kiwi-messagelist-message-traffic-kick {
+    color: #900;
+}
+
+.kiwi-messagelist-message-action .kiwi-messagelist-body {
+    color: #009900;
+}
+
+/* MOTD */
+.kiwi-messagelist-message-motd {
+    color: #666;
+    font-family: monospace;
+}
+
+
+
+
+
+
