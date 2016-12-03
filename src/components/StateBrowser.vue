@@ -1,5 +1,16 @@
 <template>
     <div class="kiwi-statebrowser">
+        <div
+            v-if="bufferForPopup"
+            class="kiwi-statebrowser-channel-popup"
+            v-bind:style="{
+                top: popup_top + 'px'
+            }"
+            @click.stop=""
+        >
+            <buffer-settings v-bind:buffer="bufferForPopup"></buffer-settings>
+        </div>
+
         <div class="kiwi-statebrowser-scrollarea">
             <div class="kiwi-statebrowser-networks">
                 <div class="kiwi-statebrowser-network" v-for="network in networks">
@@ -25,15 +36,9 @@
 
                             <div
                                 class="kiwi-statebrowser-channel-settings"
-                                @click.stop="showBufferPopup(buffer)"
-                            >:</div>
-
-                            <div
-                                v-if="shouldShowPopup(buffer)"
-                                class="kiwi-statebrowser-channel-popup"
-                                @click.stop=""
+                                @click.stop="showBufferPopup(buffer, $event.clientY)"
                             >
-                                <buffer-settings v-bind:buffer="buffer"></buffer-settings>
+                                <i class="fa fa-cog" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -62,6 +67,7 @@ export default {
             // Name of the buffer that should show its popup
             popup_buffername: null,
             popup_networkid: null,
+            popup_top: 0,
         };
     },
     props: ['networks'],
@@ -93,29 +99,16 @@ export default {
                 network,
             });
         },
-        showBufferPopup: function showBufferPopup(buffer) {
+        showBufferPopup: function showBufferPopup(buffer, domY) {
             if (!buffer) {
                 this.popup_buffername = null;
                 this.popup_networkid = null;
+                this.popup_top = 0;
             } else {
                 this.popup_buffername = buffer.name;
                 this.popup_networkid = buffer.networkid;
+                this.popup_top = domY;
             }
-        },
-        shouldShowPopup: function shouldShowPopup(buffer) {
-            if (
-                this.popup_networkid !== buffer.networkid ||
-                this.popup_buffername !== buffer.name
-            ) {
-                return false;
-            }
-
-            // Make sure this buffer exists (it may have been deleted since)
-            if (!state.getBufferByName(buffer.networkid, buffer.name)) {
-                return false;
-            }
-
-            return true;
         },
         clickAddNetwork: function clickAddNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
@@ -131,6 +124,13 @@ export default {
                 networkid: state.ui.active_network,
                 buffer: state.ui.active_buffer,
             };
+        },
+        bufferForPopup: function bufferForPopup() {
+            if (!this.popup_buffername || !this.popup_networkid) {
+                return false;
+            }
+
+            return state.getBufferByName(this.popup_networkid, this.popup_buffername);
         },
     },
     created: function created() {

@@ -103,7 +103,6 @@ export default {
     right: 200px;
     height: 50px;
     min-height: 50px;
-    z-index: 1; /* Keep it above the message list */
 }
 .kiwi-nicklist {
     position: absolute;
@@ -134,7 +133,6 @@ export default {
     top: 0;
     height: 50px;
     background: #f6f6f6;
-    z-index: 1;
     cursor: pointer;
     text-align: center;
     font-size: 1.6em;
