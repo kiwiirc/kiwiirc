@@ -6,9 +6,14 @@
         </template>
         <template v-else-if="isServer()">
             <div class="kiwi-header-name">{{buffer.getNetwork().name}}</div>
-            <a @click="showNetworkSettings(buffer.getNetwork())">Settings</a>
+            <a
+                class="kiwi-header-server-settings"
+                @click="showNetworkSettings(buffer.getNetwork())"
+            >
+                <i class="fa fa-cog" aria-hidden="true"></i>
+            </a>
 
-            <div v-if="buffer.getNetwork().state !== 'connected'">
+            <div v-if="buffer.getNetwork().state !== 'connected'" class="kiwi-header-server-connection">
                 Not connected. <a @click="buffer.getNetwork().ircClient.connect()">Connect</a>
             </div>
         </template>
@@ -58,5 +63,14 @@ export default {
 <style>
 .kiwi-header {
     box-sizing: border-box;
+}
+.kiwi-header-name {
+    display: inline-block;
+}
+.kiwi-header-server-settings {
+    display: inline;
+}
+.kiwi-header-server-connection {
+    display: block;
 }
 </style>
