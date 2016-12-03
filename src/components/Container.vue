@@ -2,6 +2,7 @@
     <div class="kiwi-container" v-bind:class="{
             /* 'kiwi-container-' + bufferType: true, */
             'kiwi-container--nicklist-open': nicklistOpen,
+            'kiwi-container--no-nicklist': !buffer.isChannel(),
     }">
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
@@ -118,6 +119,11 @@ export default {
     top: 50px;
     right: 200px;
     bottom: 0;
+}
+
+.kiwi-container--no-nicklist .kiwi-header,
+.kiwi-container--no-nicklist .kiwi-messagelist {
+    right: 0;
 }
 
 .kiwi-container-toggledraw-statebrowser,
