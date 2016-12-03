@@ -118,6 +118,8 @@ export default {
     top: 50px;
     right: 200px;
     bottom: 0;
+    /* make sure the messagelist is below the header/nicklist/control input */
+    z-index: -1;
 }
 
 .kiwi-container--no-nicklist .kiwi-header,
