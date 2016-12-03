@@ -24,6 +24,7 @@
 
 <script>
 
+import 'font-awesome-webpack';
 import 'src/assets/themes/default.css';
 
 import startupWelcome from 'src/components/startups/Welcome';

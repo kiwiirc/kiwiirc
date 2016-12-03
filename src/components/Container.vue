@@ -5,11 +5,14 @@
     }">
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
-                ::
+                <i class="fa fa-bars" aria-hidden="true"></i>
             </div>
             <container-header :buffer="buffer"></container-header>
-            <div @click.stop="toggleNicklist" class="kiwi-container-toggledraw-nicklist">
-                ::
+            <div @click.stop="toggleNicklist" v-bind:class="{
+                'kiwi-container-toggledraw-nicklist': true,
+                'kiwi-container-toggledraw-nicklist--disabled': !buffer.isChannel()
+            }">
+                <i class="fa fa-users" aria-hidden="true"></i>
             </div>
 
             <nicklist
@@ -22,6 +25,7 @@
         </template>
         <template v-else>
             Welcome to Kiwi IRC! Select a channel on the left. Bla bla.
+            <a @click.stop="toggleStateBrowser">Show statebrowser</a>
         </template>
     </div>
 </template>
@@ -41,7 +45,7 @@ export default {
     },
     data: function data() {
         return {
-            nicklistOpen: true,
+            nicklistOpen: false,
         };
     },
     props: ['network', 'buffer', 'users', 'messages'],
@@ -67,7 +71,9 @@ export default {
             state.$emit('statebrowser.toggle');
         },
         toggleNicklist: function toggleNicklist() {
-            state.$emit('nicklist.toggle');
+            if (this.buffer.isChannel()) {
+                state.$emit('nicklist.toggle');
+            }
         },
     },
     created: function created() {
@@ -96,7 +102,7 @@ export default {
     right: 200px;
     height: 50px;
     min-height: 50px;
-    z-index: 1; /* Kepe it above the message list */
+    z-index: 1; /* Keep it above the message list */
 }
 .kiwi-nicklist {
     position: absolute;
@@ -121,14 +127,27 @@ export default {
     position: absolute;
     top: 0;
     height: 50px;
-    background: blue;
+    background: #f6f6f6;
     z-index: 1;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.6em;
+    border-bottom: 1px solid #dddddd;
+    box-sizing: border-box;
+    line-height: 50px;
 }
+
 .kiwi-container-toggledraw-statebrowser {
     left: 0;
+    border-right: 1px solid #dddddd;
 }
 .kiwi-container-toggledraw-nicklist {
     right: 0;
+    border-left: 1px solid #dddddd;
+}
+.kiwi-container-toggledraw-nicklist--disabled {
+    color: #b8babd;
+    cursor: default;
 }
 
 @media screen and (max-width: 500px) {
@@ -153,4 +172,5 @@ export default {
     }
 
 }
+
 </style>

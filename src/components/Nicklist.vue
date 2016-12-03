@@ -1,6 +1,8 @@
 <template>
     <div class="kiwi-nicklist">
-        <span class="kiwi-nicklist-usercount" @click="settings_open = !settings_open">Options</span>
+        <span class="kiwi-nicklist-options" @click="settings_open = !settings_open">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+        </span>
         <div v-if="settings_open" class="kiwi-nicklist-settings">
             <label>Show when people join <input type="checkbox" v-model="settingShowJoinParts"></label> <br />
             <label>Nick colours in the list <input type="checkbox" v-model="settingColouredNicklist"></label>
@@ -81,8 +83,10 @@ export default {
     box-sizing: border-box;
     overflow-y: auto;
 }
-.kiwi-nicklist-usercount {
-    font-weight: bold;
+.kiwi-nicklist-options {
+    display: block;
+    margin: 3px 10px;
+    text-align: right;
     cursor: pointer;
 }
 .kiwi-nicklist-users {
