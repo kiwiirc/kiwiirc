@@ -1,11 +1,11 @@
 <template>
     <div class="kiwi-nicklist">
-        <span class="kiwi-nicklist-usercount" @click="settings_open = !settings_open">Users in {{buffer.name}}</span>
+        <span class="kiwi-nicklist-usercount" @click="settings_open = !settings_open">Options</span>
         <div v-if="settings_open" class="kiwi-nicklist-settings">
             <label>Show when people join <input type="checkbox" v-model="settingShowJoinParts"></label> <br />
             <label>Nick colours in the list <input type="checkbox" v-model="settingColouredNicklist"></label>
         </div>
-        <div class="kiwi-nicklist-info">{{buffer.users.length}} {{buffer.users.length>1?'people':'person'}} here</div>
+        <div class="kiwi-nicklist-info">{{buffer.users.length}} {{buffer.users.length!=1?'people':'person'}} here</div>
         <ul class="kiwi-nicklist-users">
             <li v-for="user in sortedUsers" class="kiwi-nicklist-user">
                 <span
