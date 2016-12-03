@@ -142,6 +142,7 @@
 .kiwi-nicklist {
     background-color: #f6f6f6;
     border-left: 1px solid #dddddd;
+    transition: right 0.5s;
 }
 .kiwi-nicklist-info {
     border: 1px solid #ddd;

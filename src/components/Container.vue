@@ -1,11 +1,14 @@
 <template>
-    <div class="kiwi-container" v-bind:class="'kiwi-container-' + bufferType">
+    <div class="kiwi-container" v-bind:class="{
+            /* 'kiwi-container-' + bufferType: true, */
+            'kiwi-container--nicklist-open': nicklistOpen,
+    }">
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
                 ::
             </div>
             <container-header :buffer="buffer"></container-header>
-            <div class="kiwi-container-toggledraw-nicklist">
+            <div @click.stop="toggleNicklist" class="kiwi-container-toggledraw-nicklist">
                 ::
             </div>
 
@@ -25,7 +28,7 @@
 
 <script>
 
-import state from '../libs/state';
+import state from 'src/libs/state';
 import ContainerHeader from './ContainerHeader';
 import Nicklist from './Nicklist';
 import MessageList from './MessageList';
@@ -35,6 +38,11 @@ export default {
         ContainerHeader,
         Nicklist,
         MessageList,
+    },
+    data: function data() {
+        return {
+            nicklistOpen: true,
+        };
     },
     props: ['network', 'buffer', 'users', 'messages'],
     computed: {
@@ -58,6 +66,20 @@ export default {
         toggleStateBrowser: function toggleStateBrowser() {
             state.$emit('statebrowser.toggle');
         },
+        toggleNicklist: function toggleNicklist() {
+            state.$emit('nicklist.toggle');
+        },
+    },
+    created: function created() {
+        state.$on('nicklist.toggle', () => {
+            this.nicklistOpen = !this.nicklistOpen;
+        });
+        state.$on('nicklist.show', () => {
+            this.nicklistOpen = true;
+        });
+        state.$on('nicklist.hide', () => {
+            this.nicklistOpen = false;
+        });
     },
 };
 </script>
@@ -73,6 +95,7 @@ export default {
     left: 0;
     right: 200px;
     height: 50px;
+    min-height: 50px;
     z-index: 1; /* Kepe it above the message list */
 }
 .kiwi-nicklist {
@@ -81,12 +104,13 @@ export default {
     top: 0;
     bottom: 0;
     width: 200px;
+    z-index: 1;
 }
 .kiwi-messagelist {
     position: absolute;
     left: 0;
     top: 50px;
-    right: 250px;
+    right: 200px;
     bottom: 0;
 }
 
@@ -94,11 +118,11 @@ export default {
 .kiwi-container-toggledraw-nicklist {
     display: none;
     width: 50px;
-    display: inline-block;
     position: absolute;
     top: 0;
     height: 50px;
     background: blue;
+    z-index: 1;
 }
 .kiwi-container-toggledraw-statebrowser {
     left: 0;
@@ -114,13 +138,19 @@ export default {
     }
     .kiwi-nicklist {
         right: -200px;
+        top: 50px;
     }
     .kiwi-messagelist {
         right: 0;
     }
     .kiwi-container-toggledraw-statebrowser,
     .kiwi-container-toggledraw-nicklist {
-        display: inline-block;
+        display: block;
     }
+
+    .kiwi-container--nicklist-open .kiwi-nicklist {
+        right: 0;
+    }
+
 }
 </style>
