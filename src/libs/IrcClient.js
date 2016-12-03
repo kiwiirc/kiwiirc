@@ -3,6 +3,7 @@ import * as ServerConnection from './ServerConnection';
 
 export function create(state, networkid) {
     // Provide our own transport for IrcFramework to use a kiwi server
+    // When direct websockts are used, this transport does not need to be provided
     let channelTransport = ServerConnection.createChannelConstructor(
         // 'http://127.0.0.1:8081/webirc',
         'http://192.168.88.229:8081/webirc',
@@ -30,6 +31,19 @@ export function create(state, networkid) {
 
     ircClient.use(clientMiddleware(state, networkid));
 
+    // Overload the connect() function to make sure we are connecting with the
+    // most recent connection details from the state
+    let originalIrcClientConnect = ircClient.connect;
+    ircClient.connect = function connect(...args) {
+        ircClient.options.host = network.connection.server;
+        ircClient.options.port = network.connection.port;
+        ircClient.options.tls = network.connection.tls;
+        ircClient.options.password = network.connection.password;
+        ircClient.options.nick = network.nick;
+
+        originalIrcClientConnect.apply(ircClient, args);
+    };
+
     // ircClient.connect();
     /*
     ircClient.connect({
@@ -41,6 +55,19 @@ export function create(state, networkid) {
         version: 'Kiwi IRC -Next',
     });
     */
+
+    ircClient.on('raw', (rawIrcLine, fromServer) => {
+        if (!network.setting('show_raw')) {
+            return;
+        }
+
+        let buffer = state.getOrAddBufferByName(networkid, '*raw');
+        state.addMessage(buffer, {
+            time: Date.now(),
+            nick: '',
+            message: (fromServer ? '[S] ' : '[C] ') + rawIrcLine,
+        });
+    });
 
     return ircClient;
 }
@@ -63,13 +90,11 @@ function clientMiddleware(state, networkid) {
 
 
     function rawEventsHandler(command, event, client, next) {
-        // console.log('[raw]', command, event);
         next();
     }
 
 
     function parsedEventsHandler(command, event, client, next) {
-        // console.log(command, JSON.stringify(event));
         if (command === 'registered') {
             if (client.options.nickserv) {
                 let options = client.options.nickserv;
@@ -107,7 +132,7 @@ function clientMiddleware(state, networkid) {
             let bufferName = event.from_server ? '*' : event.target;
 
             // PMs should go to a buffer with the name of the other user
-            if (event.target === client.user.nick) {
+            if (!event.from_server && event.target === client.user.nick) {
                 isPrivateMessage = true;
                 bufferName = event.nick;
             }
@@ -281,6 +306,16 @@ function clientMiddleware(state, networkid) {
                     event.nick + ' changed the topic to: ' + event.topic :
                     event.topic,
                 type: 'topic',
+            });
+        }
+
+        if (command === 'irc error') {
+            let buffer = network.serverBuffer();
+            state.addMessage(buffer, {
+                time: event.time || Date.now(),
+                nick: '',
+                message: event.reason || event.error,
+                type: 'error',
             });
         }
 

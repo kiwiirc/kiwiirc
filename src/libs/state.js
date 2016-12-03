@@ -39,6 +39,7 @@ const stateObj = {
                 password: ''
             },
             nick: 'prawnsalad',
+            settings: { show_raw: false },
             buffers: [
                 {
                     networkid: 1,
@@ -195,6 +196,7 @@ const state = new Vue({
                     tls: serverInfo.tls || false,
                     password: serverInfo.password || '',
                 },
+                settings: {},
                 nick: nick,
                 password: serverInfo.password,
                 buffers: [],
@@ -480,6 +482,16 @@ function initialiseNetworkState(network) {
     Object.defineProperty(network, 'serverBuffer', {
         value: _.partial(state.getBufferByName, network.id, '*'),
     });
+    Object.defineProperty(network, 'setting', {
+        value: function setting(name, val) {
+            if (typeof val !== 'undefined') {
+                state.$set(network.settings, name, val);
+                return val;
+            }
+
+            return network.settings[name];
+        },
+    });
 
     // If this network is being imported from a stored state, make sure it is
     // now set as 'disconnected' as it will not connected at this point.
@@ -532,9 +544,6 @@ function initialiseBufferState(buffer) {
                 buffer.settings[name] :
                 state.settings.buffers[name];
 
-            if (name === 'coloured_nicklist') {
-                console.log('reading buffer setting', name, result);
-            }
             return result;
         },
     });

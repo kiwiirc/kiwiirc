@@ -100,7 +100,9 @@ export default {
 .kiwi-messagelist {
     overflow-y: auto;
 }
-.kiwi-messagelist-message > div {
+.kiwi-messagelist-nick,
+.kiwi-messagelist-body,
+.kiwi-messagelist-time {
     display: inline-block;
 }
 .kiwi-messagelist-body {
@@ -109,5 +111,24 @@ export default {
 }
 .kiwi-messagelist-body a {
     word-break: break-all;
+}
+@media screen and (max-width: 500px) {
+    .kiwi-messagelist-nick {
+        display: inline;
+        font-weight: bold;
+        width: auto;
+    }
+    .kiwi-messagelist-body {
+        display: block;
+    }
+    .kiwi-messagelist-time {
+        float: right;
+    }
+    .kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
+        display: none;
+    }
+}
+.kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
+    display: none;
 }
 </style>

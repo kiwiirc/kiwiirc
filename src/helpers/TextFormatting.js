@@ -151,15 +151,15 @@ export function ircCodesToHtml(msg) {
 
 const urlRegex = new RegExp('' +
     // Detect either a protocol or 'www.' to start a URL
-    /(([A-Za-z][A-Za-z0-9\-]*:\/\/)|(www\.))/.source +
+    /(([A-Za-z][A-Za-z0-9-]*:\/\/)|(www\.))/.source +
     // The hostname..
-    /([\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF.\-]+)/.source +
+    /([\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF.-]+)/.source +
     // The hostname must end in 2-6 alpha characters (the TLD)
     /([a-zA-Z]{2,6})/.source +
     // Optional port..
     /(:[0-9]+)?/.source +
     // Optional path..
-    /(\/[\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF!:.?$'()[\]*,;~+=&%@!\-\/]*)?/.source +
+    /(\/[\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF!:.?$'()[\]*,;~+=&%@!\-/]*)?/.source +
     // Optional fragment
     /(#.*)?/.source,
     'ig'

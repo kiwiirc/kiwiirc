@@ -52,7 +52,6 @@ export default {
             },
         },
         sortedUsers: function sortedUsers() {
-            console.log('Building user list');
             // Since vuejs will sort in-place and update views when .sort is called
             // on an array, clone it first so that we have a plain array to sort
             let users = this.buffer.users.map(b => b);
@@ -69,7 +68,7 @@ export default {
         },
         openQuery: function openQuery(user) {
             let buffer = state.addBuffer(this.buffer.networkid, user.nick);
-            state.setActiveBuffer(buffer);
+            state.setActiveBuffer(buffer.networkid, buffer.name);
         },
     },
 };

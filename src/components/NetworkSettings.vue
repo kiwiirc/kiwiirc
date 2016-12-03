@@ -5,7 +5,7 @@
             Connected
         </div>
         <div v-else>
-            Not connected. <a @click="reconnect">Reconnect</a>
+            Not connected. <a @click="reconnect">Connect</a>
         </div>
 
         <div class="kiwi-networksettings-connection">
@@ -13,6 +13,16 @@
             <label>Port: <input v-model="network.connection.port" /></label><br />
             <label>SSL/TLS: <input v-model="network.connection.tls" type="checkbox" /></label><br />
             <label>Password: <input v-model="network.connection.password" /></label>
+        </div>
+
+        <div class="kiwi-networksettings-user">
+            <h3>Your details</h3>
+            <label>Nickname: <input v-model="network.nick" /></label>
+        </div>
+
+        <div class="kiwi-networksettings-advanced">
+            <h3>Advanced</h3>
+            <label>Show Raw <input v-model="settingShowRaw" type="checkbox" /></label><br />
         </div>
     </div>
 </template>
@@ -26,6 +36,14 @@ export default {
         };
     },
     computed: {
+        settingShowRaw: {
+            get: function getSettingAlertOn() {
+                return this.network.setting('show_raw');
+            },
+            set: function setSettingAlertOn(val) {
+                return this.network.setting('show_raw', val);
+            },
+        },
     },
     props: ['network'],
     components: {

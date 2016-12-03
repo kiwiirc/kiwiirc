@@ -69,7 +69,7 @@ function processLine(rawLine) {
 }
 
 
-state.$on('input.command.msg', (command, line) => {
+function handleMessage(type, command, line) {
     let spaceIdx = line.indexOf(' ');
     if (spaceIdx === -1) spaceIdx = line.length;
 
@@ -83,13 +83,24 @@ state.$on('input.command.msg', (command, line) => {
             time: Date.now(),
             nick: state.getActiveNetwork().nick,
             message: message,
+            type: type,
         };
 
         state.addMessage(buffer, newMessage);
     }
 
-    network.ircClient.say(bufferName, message);
-});
+    let fnNames = {
+        msg: 'say',
+        action: 'action',
+        notice: 'notice',
+    };
+    let fnName = fnNames[type] || 'say';
+    network.ircClient[fnName](bufferName, message);
+}
+
+state.$on('input.command.msg', _.partial(handleMessage, 'msg'));
+state.$on('input.command.me', _.partial(handleMessage, 'action'));
+state.$on('input.command.notice', _.partial(handleMessage, 'notice'));
 
 
 state.$on('input.command.join', (command, line) => {

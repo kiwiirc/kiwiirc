@@ -121,7 +121,12 @@
     border-left: none;
 }
 
-
+.kiwi-statebrowser-options {
+    background: rgb(60, 76, 85);
+    border-top: 1px solid #626c71;
+    /* some space on the right so it doesnt overlap the parent elements scrollbar */
+    margin-right: 15px;
+}
 
 
 
@@ -238,7 +243,7 @@
 
 .kiwi-messagelist-time {
     font-size: 0.9em;
-    color: #999999;
+    color: #c1c1c1;
 }
 
 .kiwi-messagelist-nick {
@@ -300,6 +305,14 @@
     font-family: monospace;
 }
 
+@media screen and (max-width: 500px) {
+    .kiwi-messagelist-nick {
+        font-weight: bold;
+    }
+    .kiwi-messagelist-body {
+        margin-left: 2px;
+    }
+}
 
 
 

@@ -2,47 +2,58 @@
     <div class="kiwi-statebrowser">
         <a class="kiwi-statebrowser-toggle" @click.prevent="showStateBrowserDraw"></a>
 
-        <div class="kiwi-statebrowser-network" v-for="network in networks">
-            <a class="kiwi-statebrowser-network-name" @click="showNetworkSettings(network)">{{network.name}}</a>
+        <div class="kiwi-statebrowser-scrollarea">
+            <div class="kiwi-statebrowser-networks">
+                <div class="kiwi-statebrowser-network" v-for="network in networks">
+                    <a class="kiwi-statebrowser-network-name" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
 
-            <div class="kiwi-statebrowser-channels">
-                <div
-                    v-for="buffer in orderedBuffers(network.buffers)"
-                    class="kiwi-statebrowser-channel"
-                    v-bind:class="{
-                        'kiwi-statebrowser-channel-active': isActiveBuffer(buffer),
-                        'kiwi-statebrowser-channel-notjoined': buffer.isChannel() && !buffer.joined
-                    }"
-                >
-                    <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">{{buffer.name}}</div>
-                    <div class="kiwi-statebrowser-channel-labels">
-                        <transition name="kiwi-statebarowser-channel-label-transition">
-                        <div v-if="buffer.flags.unread" class="kiwi-statebrowser-channel-label">
-                            {{buffer.flags.unread}}
+                    <div class="kiwi-statebrowser-channels">
+                        <div
+                            v-for="buffer in orderedBuffers(network.buffers)"
+                            class="kiwi-statebrowser-channel"
+                            v-bind:class="{
+                                'kiwi-statebrowser-channel-active': isActiveBuffer(buffer),
+                                'kiwi-statebrowser-channel-notjoined': buffer.isChannel() && !buffer.joined
+                            }"
+                        >
+                            <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">{{buffer.name}}</div>
+                            <div class="kiwi-statebrowser-channel-labels">
+                                <transition name="kiwi-statebarowser-channel-label-transition">
+                                <div v-if="buffer.flags.unread" class="kiwi-statebrowser-channel-label">
+                                    {{buffer.flags.unread}}
+                                </div>
+                                </transition>
+                            </div>
+
+                            <div
+                                class="kiwi-statebrowser-channel-settings"
+                                @click.stop="showBufferPopup(buffer)"
+                            >:</div>
+
+                            <div
+                                v-if="shouldShowPopup(buffer)"
+                                class="kiwi-statebrowser-channel-popup"
+                                @click.stop=""
+                            >
+                                <buffer-settings v-bind:buffer="buffer"></buffer-settings>
+                            </div>
                         </div>
-                        </transition>
-                    </div>
-
-                    <div
-                        v-if="!buffer.isServer()"
-                        class="kiwi-statebrowser-channel-settings"
-                        @click.stop="showBufferPopup(buffer)"
-                    >:</div>
-
-                    <div
-                        v-if="shouldShowPopup(buffer)"
-                        class="kiwi-statebrowser-channel-popup"
-                        @click.stop=""
-                    >
-                        <buffer-settings v-bind:buffer="buffer"></buffer-settings>
                     </div>
                 </div>
+            </div>
+
+            <div class="kiwi-statebrowser-options">
+                <a @click="clickAddNetwork">Add network</a>
+                <a>Settings</a>
+                <a>Forget Me</a>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+
+import _ from 'lodash';
 import state from 'src/libs/state';
 import NetworkSettings from './NetworkSettings';
 import BufferSettings from './BufferSettings';
@@ -75,6 +86,8 @@ export default {
             // Since vuejs will sort in-place and update views when .sort is called
             // on an array, clone it first so that we have a plain array to sort
             let list = buffers.map(b => b);
+
+            list = _.filter(list, buffer => !buffer.isServer());
             return list.sort((a, b) => a.name.localeCompare(b.name));
         },
         showNetworkSettings: function showNetworkSettings(network) {
@@ -109,6 +122,13 @@ export default {
 
             return true;
         },
+        clickAddNetwork: function clickAddNetwork() {
+            let nick = 'Guest' + Math.floor(Math.random() * 100);
+            let network = state.addNetwork('New Network', nick, {});
+            state.$emit('active.component', NetworkSettings, {
+                network,
+            });
+        },
     },
     computed: {
         activeBuffer: function activeBuffer() {
@@ -133,10 +153,9 @@ export default {
 .kiwi-statebrowser-toggle {
     box-sizing: border-box;
     display: none;
-    float: right;
-    position: relative;
-    left: 50px;
-    width: 55px;
+    position: absolute;
+    right: -40px;
+    width: 40px;
     height: 50px;
 }
 @media screen and (max-width: 500px) {
@@ -145,6 +164,14 @@ export default {
     }
 }
 
+.kiwi-statebrowser-scrollarea {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+}
+.kiwi-statebrowser-networks {
+    padding-bottom: 60px; /* .kiwi-statebrowser-options height+padding */
+}
 .kiwi-statebrowser-channel {
     position: relative;
     display: flex;
@@ -164,5 +191,12 @@ export default {
     position: absolute;
     left: 100%;
     width: 100%;
+}
+
+.kiwi-statebrowser-options {
+    position: absolute;
+    bottom: 0;
+    padding: 15px;
+    height: 30px;
 }
 </style>

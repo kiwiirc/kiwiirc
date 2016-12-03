@@ -68,7 +68,7 @@ export default {
 
 @media screen and (max-width: 500px) {
     .kiwi-header {
-        left: 45px; /* Small screens have the statebrowser tab in the top left */
+        left: 35px; /* Small screens have the statebrowser tab in the top left */
     }
 }
 .kiwi-messagelist {
