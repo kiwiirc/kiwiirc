@@ -2,7 +2,7 @@
     <div class="kiwi-container" v-bind:class="{
             /* 'kiwi-container-' + bufferType: true, */
             'kiwi-container--nicklist-open': nicklistOpen,
-            'kiwi-container--no-nicklist': !buffer.isChannel(),
+            'kiwi-container--no-nicklist': buffer && !buffer.isChannel(),
     }">
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
@@ -103,6 +103,7 @@ export default {
     right: 200px;
     height: 50px;
     min-height: 50px;
+    z-index: 1;
 }
 .kiwi-nicklist {
     position: absolute;
@@ -118,8 +119,6 @@ export default {
     top: 50px;
     right: 200px;
     bottom: 0;
-    /* make sure the messagelist is below the header/nicklist/control input */
-    z-index: -1;
 }
 
 .kiwi-container--no-nicklist .kiwi-header,

@@ -140,7 +140,7 @@ const state = new Vue({
 
             // We don't need the list of users or topics, so remove them
             networks.forEach(network => {
-                network.users = [];
+                network.users = {};
                 network.buffers.forEach(buffer => {
                     buffer.users = [];
                     buffer.topic = '';
@@ -400,9 +400,11 @@ const state = new Vue({
             let network = this.getNetwork(buffer.networkid);
 
             if (!network.users[user.nick]) {
-                // TODO: Why is this not setting the reactivity object when connecting
-                // to a heavy BNC?
-                /* state.$set(network.users, user.nick, {
+                // Using $set for vues reactivity is very slow when connecting to
+                // a large BNC. We might not ever need full reactivity for the user
+                // objects so just add a plain object for now.
+                /*
+                state.$set(network.users, user.nick, {
                     nick: user.nick,
                     host: user.host || '',
                     username: user.username || '',
@@ -425,7 +427,10 @@ const state = new Vue({
         },
 
         removeUserFromBuffer: function removeUserFromBuffer(buffer, user) {
-            this.$delete(buffer.users, user.nick);
+            let idx = buffer.users.indexOf(user.nick);
+            if (idx > -1) {
+                buffer.users.splice(idx, 1);
+            }
         },
 
         getBuffersWithUser: function getBuffersWithUser(networkid, nick) {

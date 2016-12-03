@@ -144,6 +144,7 @@ export default {
 <style>
 .kiwi-statebrowser {
     box-sizing: border-box;
+    z-index: 2;
 }
 
 .kiwi-statebrowser-scrollarea {
