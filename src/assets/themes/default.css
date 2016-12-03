@@ -58,14 +58,6 @@
     color: rgb(137, 155, 166);
 }
 
-.kiwi-statebrowser-toggle {
-    cursor: pointer;
-    /*background: url(https://kiwiirc.com/client/assets/img/ico.png);*/
-    /*background-size: cover;*/
-    background: rgb(60, 76, 85);
-    border-right: 5px solid rgb(106, 125, 137);
-}
-
 .kiwi-statebrowser-network {
     padding: 10px;
 }

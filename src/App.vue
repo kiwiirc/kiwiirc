@@ -48,6 +48,9 @@ export default {
         state.$on('statebrowser.show', () => {
             this.stateBrowserDrawOpen = true;
         });
+        state.$on('statebrowser.hide', () => {
+            this.stateBrowserDrawOpen = false;
+        });
         document.addEventListener('keydown', event => this.emitDocumentKeyDown(event), false);
     },
     mounted: function mounted() {

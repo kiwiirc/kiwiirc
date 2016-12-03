@@ -1,7 +1,5 @@
 <template>
     <div class="kiwi-statebrowser">
-        <a class="kiwi-statebrowser-toggle" @click.prevent="showStateBrowserDraw"></a>
-
         <div class="kiwi-statebrowser-scrollarea">
             <div class="kiwi-statebrowser-networks">
                 <div class="kiwi-statebrowser-network" v-for="network in networks">
@@ -104,9 +102,6 @@ export default {
                 this.popup_networkid = buffer.networkid;
             }
         },
-        showStateBrowserDraw: function showStateBrowserDraw() {
-            state.$emit('statebrowser.toggle');
-        },
         shouldShowPopup: function shouldShowPopup(buffer) {
             if (
                 this.popup_networkid !== buffer.networkid ||
@@ -149,19 +144,6 @@ export default {
 <style>
 .kiwi-statebrowser {
     box-sizing: border-box;
-}
-.kiwi-statebrowser-toggle {
-    box-sizing: border-box;
-    display: none;
-    position: absolute;
-    right: -40px;
-    width: 40px;
-    height: 50px;
-}
-@media screen and (max-width: 500px) {
-    .kiwi-statebrowser-toggle {
-        display: block;
-    }
 }
 
 .kiwi-statebrowser-scrollarea {
