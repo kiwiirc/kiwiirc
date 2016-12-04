@@ -144,6 +144,11 @@ const state = new Vue({
                 network.buffers.forEach(buffer => {
                     buffer.users = [];
                     buffer.topic = '';
+
+                    // Unread message counters won't make sense when re-imported, so empty them
+                    if (buffer.flags.unread) {
+                        buffer.flags.unread = 0;
+                    }
                 });
             });
             return JSON.stringify(networks);
