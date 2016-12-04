@@ -241,6 +241,7 @@
 .kiwi-messagelist-nick {
     width: 120px;
     text-align: right;
+    font-weight: bold;
 }
 .kiwi-messagelist-nick:before:not(:empty) {
     content: "<";
@@ -298,9 +299,6 @@
 }
 
 @media screen and (max-width: 500px) {
-    .kiwi-messagelist-nick {
-        font-weight: bold;
-    }
     .kiwi-messagelist-body {
         margin-left: 2px;
     }

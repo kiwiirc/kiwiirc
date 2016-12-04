@@ -101,11 +101,11 @@ export default {
     overflow-y: auto;
 }
 .kiwi-messagelist-nick,
-.kiwi-messagelist-body,
 .kiwi-messagelist-time {
     display: inline-block;
 }
 .kiwi-messagelist-body {
+    display: inline;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
