@@ -59,6 +59,7 @@
 import _ from 'lodash';
 import * as Storage from 'src/libs/storage/Local';
 import state from 'src/libs/state';
+import logger from 'src/libs/Logger';
 
 export default {
     data: function data() {
@@ -102,7 +103,7 @@ export default {
         // If we have networks from a previous state, launch directly into it
         let storedState = await Storage.get('kiwi-state');
         if (storedState) {
-            console.log('Importing state', storedState);
+            logger('Importing state', storedState);
             state.importState(storedState);
             if (state.networks.length > 0) {
                 let network = state.networks[0];
@@ -113,7 +114,7 @@ export default {
 
         // Throttle saving the state into storage so we don't thrash the disk
         let debouncedSaveState = _.debounce(() => {
-            console.log('Networks updated, setting localStorage');
+            logger('Networks updated, setting localStorage');
             Storage.set('kiwi-state', state.exportState());
         }, 1000);
 

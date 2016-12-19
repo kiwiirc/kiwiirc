@@ -32,6 +32,7 @@ import StateBrowser from 'src/components/StateBrowser';
 import Container from 'src/components/Container';
 import ControlInput from 'src/components/ControlInput';
 import * as Notifications from 'src/libs/Notifications';
+import logger from 'src/libs/Logger';
 import state from 'src/libs/state';
 import 'src/libs/InputCommands';
 
@@ -64,7 +65,7 @@ export default {
             customServer: startupCustomServer,
         };
         if (!state.settings.startupScreen) {
-            console.log('no startup screen');
+            logger('no startup screen');
             this.hasStarted = true;
         } else {
             this.startupComponent = startupScreens[state.settings.startupScreen];
@@ -113,7 +114,7 @@ export default {
     methods: {
         // Triggered by a startup screen event
         startUp: function startUp() {
-            console.log('startUp()');
+            logger('startUp()');
             this.hasStarted = true;
             Notifications.requestPermission();
             Notifications.listenForNewMessages(state);

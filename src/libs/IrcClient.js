@@ -26,10 +26,6 @@ export function create(state, networkid) {
         auto_reconnect: false,
     });
 
-    ircClient.on('__debug', ev => {
-        console.log('[irc-fr]', ev);
-    });
-
     ircClient.use(clientMiddleware(state, networkid));
 
     // Overload the connect() function to make sure we are connecting with the
@@ -64,22 +60,19 @@ export function create(state, networkid) {
 function clientMiddleware(state, networkid) {
     let network = state.getNetwork(networkid);
 
-    return function (client, rawEvents, parsedEvents) {
+    return function middlewareFn(client, rawEvents, parsedEvents) {
         parsedEvents.use(parsedEventsHandler);
         parsedEvents.use(rawEventsHandler);
 
         client.on('connecting', () => {
-            console.log('connecting');
             network.state = 'connecting';
         });
 
         client.on('connected', () => {
-            console.log('connected');
             network.state = 'connected';
         });
 
         client.on('socket close', () => {
-            console.log('disconnected');
             network.state = 'disconnected';
         });
     };
@@ -117,7 +110,6 @@ function clientMiddleware(state, networkid) {
 
         if (command === 'server options') {
             // If the network name has changed from the irc-framework default, update ours
-            console.log('Registerd network name:', client.network.name);
             if (client.network.name !== 'Network') {
                 network.name = client.network.name;
             }

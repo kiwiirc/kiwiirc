@@ -19,6 +19,7 @@ module.exports = {
     "prefer-template": 0,
     "prefer-const": 0,
     "no-use-before-define": 0,
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "no-alert": 0
   }
 }

@@ -8,6 +8,7 @@
 <script>
 
 import state from 'src/libs/state';
+import logger from 'src/libs/Logger';
 
 export default {
     methods: {
@@ -16,11 +17,11 @@ export default {
             try {
                 storedState = localStorage.getItem('kiwi-state');
             } catch (err) {
-                console.error('Error reading state from localStorage', err.stack);
+                logger.error('Error reading state from localStorage', err.stack);
             }
 
             if (0 && storedState) {
-                console.log('Importing state', storedState);
+                logger('Importing state', storedState);
                 state.importState(storedState);
             } else {
                 let net = state.addNetwork('freenode', 'prawnsalad', {
@@ -33,7 +34,7 @@ export default {
             }
 
             state.$watch('networks', () => {
-                console.log('Setting localStorage');
+                logger('Setting localStorage');
                 localStorage.setItem('kiwi-state', state.exportState());
             });
 

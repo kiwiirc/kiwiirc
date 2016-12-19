@@ -8,7 +8,6 @@ export function requestPermission() {
 
     // Permissions already been granted?
     if (Notification.permission === 'granted') {
-        console.log('notifications already granted');
         isEnabled = true;
     }
 

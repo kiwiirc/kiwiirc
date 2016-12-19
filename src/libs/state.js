@@ -291,7 +291,6 @@ const state = new Vue({
         },
 
         addBuffer: function addBuffer(networkid, bufferName) {
-            console.log('state.addBuffer()', networkid, bufferName);
             // If we already have this buffer, don't re-add it
             let buffer = this.getBufferByName(networkid, bufferName);
             if (buffer) {
@@ -572,7 +571,6 @@ function initialiseBufferState(buffer) {
     Object.defineProperty(buffer, 'setting', {
         value: function setting(name, val) {
             if (typeof val !== 'undefined') {
-                console.log('Setting buffer setting', name, val);
                 state.$set(buffer.settings, name, val);
                 return val;
             }

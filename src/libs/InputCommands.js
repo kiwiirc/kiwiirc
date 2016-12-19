@@ -114,7 +114,6 @@ state.$on('input.command.join', (command, line) => {
 
     bufferNames.forEach((bufferName, idx) => {
         state.addBuffer(network.id, bufferName);
-        console.log('Joining ' + bufferName);
         network.ircClient.join(bufferName, keys[idx]);
     });
 });
