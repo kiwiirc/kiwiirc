@@ -8,7 +8,7 @@ import { md5 } from './Md5';
  *   @returns    {String}        The HTML formatted message
  */
 const colourMatchRegexp = /^\x03(([0-9][0-9]?)(,([0-9][0-9]?))?)/;
-export function ircCodesToHtml(msg) {
+export function ircCodesToHtml(input) {
     function spanFromOpen() {
         let style = '';
         let colours;
@@ -73,6 +73,7 @@ export function ircCodesToHtml(msg) {
         }
     }
 
+    let msg = input || '';
     let out = '';
     let currentTag = '';
     let openTags = {
@@ -199,6 +200,21 @@ export function linkifyChannels(input) {
             _.escape(_channel) +
         '</a>';
     });
+}
+
+export function linkifyUsers(input, userlist) {
+    let words = input.split(' ');
+    words = words.map(word => {
+        if (!userlist[word]) {
+            return word;
+        }
+
+        let escaped = _.escape(word);
+        let colour = createNickColour(word);
+        return `<a class="kiwi-nick" data-nick="${escaped}" style="color:${colour}">${escaped}</a>`;
+    });
+
+    return words.join(' ');
 }
 
 /**

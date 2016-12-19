@@ -21,6 +21,8 @@
             <div class="kiwi-messagelist-nick" v-bind:style="nickStyle(message.nick)">{{message.nick}}</div>
             <div class="kiwi-messagelist-body" v-html="formatMessage(message.message)"></div>
         </div>
+
+        <not-connected v-if="buffer.getNetwork().state !== 'connected'" :buffer="buffer"></not-connected>
     </div>
 </template>
 
@@ -29,14 +31,18 @@
 import strftime from 'strftime';
 import state from 'src/libs/state';
 import * as TextFormatting from 'src/helpers/TextFormatting';
+import NotConnected from './NotConnected';
 
 export default {
+    components: {
+        NotConnected,
+    },
     data: function data() {
         return {
             auto_scroll: true,
         };
     },
-    props: ['buffer', 'messages'],
+    props: ['buffer', 'messages', 'users'],
     computed: {
         filteredMessages: function filteredMessages() {
             let list = [];
@@ -60,6 +66,7 @@ export default {
             let formatted = TextFormatting.ircCodesToHtml(messageBody);
             formatted = TextFormatting.linkifyChannels(formatted);
             formatted = TextFormatting.linkifyUrls(formatted);
+            formatted = TextFormatting.linkifyUsers(formatted, this.users);
             return formatted;
         },
         nickStyle: function nickColour(nick) {
@@ -71,6 +78,12 @@ export default {
                 let network = this.buffer.getNetwork();
                 state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
+            }
+
+            let userNick = event.target.getAttribute('data-nick');
+            if (userNick) {
+                let buffer = state.addBuffer(this.buffer.networkid, userNick);
+                state.setActiveBuffer(buffer.networkid, buffer.name);
             }
         },
         onThreadScroll: function onThreadScroll() {

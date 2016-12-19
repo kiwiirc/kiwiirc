@@ -23,6 +23,7 @@ export function create(state, networkid) {
         username: network.nick,
         gecos: 'https://kiwiirc.com/',
         version: 'Kiwi IRC -Next',
+        auto_reconnect: false,
     });
 
     ircClient.on('__debug', ev => {
@@ -44,19 +45,7 @@ export function create(state, networkid) {
         originalIrcClientConnect.apply(ircClient, args);
     };
 
-    // ircClient.connect();
-    /*
-    ircClient.connect({
-        host: 'ws.rizon.net',
-        port: 8080,
-        nick: network.nick,
-        username: network.nick,
-        gecos: 'https://kiwiirc.com/',
-        version: 'Kiwi IRC -Next',
-    });
-    */
-
-    ircClient.on('raw', (rawIrcLine, fromServer) => {
+    ircClient.on('raw', event => {
         if (!network.setting('show_raw')) {
             return;
         }
@@ -65,7 +54,7 @@ export function create(state, networkid) {
         state.addMessage(buffer, {
             time: Date.now(),
             nick: '',
-            message: (fromServer ? '[S] ' : '[C] ') + rawIrcLine,
+            message: (event.from_server ? '[S] ' : '[C] ') + event.line,
         });
     });
 
@@ -79,11 +68,18 @@ function clientMiddleware(state, networkid) {
         parsedEvents.use(parsedEventsHandler);
         parsedEvents.use(rawEventsHandler);
 
-        client.on('socket connected', () => {
+        client.on('connecting', () => {
+            console.log('connecting');
+            network.state = 'connecting';
+        });
+
+        client.on('connected', () => {
+            console.log('connected');
             network.state = 'connected';
         });
 
         client.on('socket close', () => {
+            console.log('disconnected');
             network.state = 'disconnected';
         });
     };
@@ -181,7 +177,7 @@ function clientMiddleware(state, networkid) {
                 state.addMessage(buffer, {
                     time: Date.now(),
                     nick: '',
-                    message: `${event.nick} has joined`,
+                    message: `${event.nick}`,
                     type: 'traffic',
                     type_extra: 'join',
                 });
@@ -219,6 +215,13 @@ function clientMiddleware(state, networkid) {
                 if (buffer) {
                     buffer.joined = false;
                 }
+                state.addMessage(buffer, {
+                    time: Date.now(),
+                    nick: '',
+                    message: 'You have left',
+                    type: 'traffic',
+                    type_extra: 'part',
+                });
             } else {
                 state.addMessage(buffer, {
                     time: Date.now(),

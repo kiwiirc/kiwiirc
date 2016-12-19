@@ -7,7 +7,7 @@
             <input type="radio" name="alert_on" value="highlight" v-model="settingAlertOn">Somebody mentions me<br />
             <input type="radio" name="alert_on" value="never" v-model="settingAlertOn">Never
         </div>
-        <a @click="closeBuffer">Close {{buffer.name}}</a>
+        <a @click="closeBuffer" class="u-link">Close {{buffer.name}}</a>
     </div>
 </template>
 

@@ -6,7 +6,7 @@
         }"
         @click="emitDocumentClick"
     >
-        <template v-if="hasStarted">
+        <template v-if="hasStarted && networks.length > 0">
             <state-browser :networks="networks"></state-browser>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <template v-if="!activeComponent">
@@ -25,7 +25,6 @@
 <script>
 
 import 'font-awesome-webpack';
-import 'src/assets/themes/default.css';
 
 import startupWelcome from 'src/components/startups/Welcome';
 import startupCustomServer from 'src/components/startups/CustomServer';
@@ -36,12 +35,16 @@ import * as Notifications from 'src/libs/Notifications';
 import state from 'src/libs/state';
 import 'src/libs/InputCommands';
 
+import 'src/assets/themes/default.css';
+
 export default {
     created: function created() {
         state.$on('active.component', (component, props) => {
             this.activeComponent = null;
-            this.activeComponentProps = props;
-            this.activeComponent = component;
+            if (component) {
+                this.activeComponentProps = props;
+                this.activeComponent = component;
+            }
         });
         state.$on('statebrowser.toggle', () => {
             this.stateBrowserDrawOpen = !this.stateBrowserDrawOpen;
@@ -110,6 +113,7 @@ export default {
     methods: {
         // Triggered by a startup screen event
         startUp: function startUp() {
+            console.log('startUp()');
             this.hasStarted = true;
             Notifications.requestPermission();
             Notifications.listenForNewMessages(state);

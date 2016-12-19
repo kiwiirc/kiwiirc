@@ -3,18 +3,22 @@
         <template v-if="isChannel()">
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div class="kiwi-header-topic" v-html="formatMessage(buffer.topic)"></div>
+            <div v-if="!buffer.joined">
+                <a @click="joinCurrentBuffer">Join Channel</a>
+            </div>
         </template>
         <template v-else-if="isServer()">
             <div class="kiwi-header-name">{{buffer.getNetwork().name}}</div>
             <a
-                class="kiwi-header-server-settings"
+                class="kiwi-header-server-settings u-link"
                 @click="showNetworkSettings(buffer.getNetwork())"
             >
                 <i class="fa fa-cog" aria-hidden="true"></i>
             </a>
 
             <div v-if="buffer.getNetwork().state !== 'connected'" class="kiwi-header-server-connection">
-                Not connected. <a @click="buffer.getNetwork().ircClient.connect()">Connect</a>
+                Not connected.
+                <a @click="buffer.getNetwork().ircClient.connect()" class="u-link">Connect</a>
             </div>
         </template>
         <template v-else-if="isQuery()">
@@ -54,6 +58,10 @@ export default {
             state.$emit('active.component', NetworkSettings, {
                 network,
             });
+        },
+        joinCurrentBuffer: function joinCurrentBuffer() {
+            let network = this.buffer.getNetwork();
+            network.ircClient.join(this.buffer.name);
         },
     },
 };

@@ -14,7 +14,7 @@
         <div class="kiwi-statebrowser-scrollarea">
             <div class="kiwi-statebrowser-networks">
                 <div class="kiwi-statebrowser-network" v-for="network in networks">
-                    <a class="kiwi-statebrowser-network-name" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
+                    <a class="kiwi-statebrowser-network-name u-link" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
 
                     <div class="kiwi-statebrowser-channels">
                         <div
@@ -25,7 +25,7 @@
                                 'kiwi-statebrowser-channel-notjoined': buffer.isChannel() && !buffer.joined
                             }"
                         >
-                            <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">{{buffer.name}}</div>
+                            <div class="kiwi-statebrowser-channel-name u-link" @click="setActiveBuffer(buffer)">{{buffer.name}}</div>
                             <div class="kiwi-statebrowser-channel-labels">
                                 <transition name="kiwi-statebarowser-channel-label-transition">
                                 <div v-if="buffer.flags.unread" class="kiwi-statebrowser-channel-label">
@@ -48,7 +48,7 @@
             <div class="kiwi-statebrowser-options">
                 <a @click="clickAddNetwork">Add network</a>
                 <a>Settings</a>
-                <a>Forget Me</a>
+                <a @click="clickForget">Forget Me</a>
             </div>
         </div>
     </div>
@@ -92,7 +92,20 @@ export default {
             let list = buffers.map(b => b);
 
             list = _.filter(list, buffer => !buffer.isServer());
-            return list.sort((a, b) => a.name.localeCompare(b.name));
+            list = list.sort((a, b) => {
+                let order = 0;
+                if (a.isChannel() && b.isQuery()) {
+                    order = -1;
+                } else if (a.isQuery() && b.isChannel()) {
+                    order = 1;
+                } else {
+                    order = a.name.localeCompare(b.name);
+                }
+
+                return order;
+            });
+
+            return list;
         },
         showNetworkSettings: function showNetworkSettings(network) {
             state.$emit('active.component', NetworkSettings, {
@@ -116,6 +129,18 @@ export default {
             state.$emit('active.component', NetworkSettings, {
                 network,
             });
+        },
+        clickForget: function clickForget() {
+            let msg = 'This will delete all stored networks and refresh the page. Are you sure?';
+            let confirmed = confirm(msg);
+            if (!confirmed) {
+                return;
+            }
+
+            state.resetState();
+            setTimeout(() => {
+                window.location.reload();
+            }, 5000);
         },
     },
     computed: {

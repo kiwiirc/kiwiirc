@@ -169,6 +169,11 @@ const state = new Vue({
             }
         },
 
+        resetState: function resetState() {
+            this.$set(this.$data, 'networks', []);
+            this.$set(this.$data, 'message', []);
+        },
+
         getActiveNetwork: function getActiveNetwork() {
             return this.getNetwork(this.ui.active_network);
         },
@@ -217,19 +222,41 @@ const state = new Vue({
             return network;
         },
 
+        removeNetwork: function removeNetwork(networkid) {
+            let network = this.getNetwork(networkid);
+            if (!network) {
+                return;
+            }
+
+            if (network.state === 'connected') {
+                network.ircClient.quit();
+            }
+
+            if (network === this.getActiveNetwork()) {
+                this.setActiveBuffer(null);
+            }
+
+            let idx = this.networks.indexOf(network);
+            this.networks.splice(idx, 1);
+        },
+
         getActiveBuffer: function getActiveBuffer() {
             return this.getBufferByName(this.ui.active_network, this.ui.active_buffer);
         },
 
         setActiveBuffer: function setActiveBuffer(networkid, bufferName) {
-            console.log('Setting active buffer', networkid, bufferName);
-            this.ui.active_network = networkid;
-            this.ui.active_buffer = bufferName;
+            if (!networkid) {
+                this.ui.active_network = 0;
+                this.ui.active_buffer = '';
+            } else {
+                this.ui.active_network = networkid;
+                this.ui.active_buffer = bufferName;
 
-            // Clear any unread messages counters for this buffer
-            let buffer = this.getBufferByName(networkid, bufferName);
-            if (buffer && buffer.flags.unread) {
-                buffer.flags.unread = 0;
+                // Clear any unread messages counters for this buffer
+                let buffer = this.getBufferByName(networkid, bufferName);
+                if (buffer && buffer.flags.unread) {
+                    buffer.flags.unread = 0;
+                }
             }
         },
 
@@ -484,7 +511,7 @@ export default state;
 
 function initialiseNetworkState(network) {
     Object.defineProperty(network, 'ircClient', {
-        value: IrcClient.create(state, network.id, network.socketChannelId),
+        value: IrcClient.create(state, network.id),
     });
     Object.defineProperty(network, 'bufferByName', {
         value: _.partial(state.getBufferByName, network.id),
@@ -541,6 +568,7 @@ function initialiseBufferState(buffer) {
             return chanPrefixes.indexOf(buffer.name[0]) === -1;
         },
     });
+    // Get/set a setting set on this buffer. If undefined, get the global setting
     Object.defineProperty(buffer, 'setting', {
         value: function setting(name, val) {
             if (typeof val !== 'undefined') {

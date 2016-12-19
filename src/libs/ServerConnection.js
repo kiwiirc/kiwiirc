@@ -48,7 +48,7 @@ export function createChannelConstructor(_addr, sessionId, _socketChannel) {
  * Channels will be created on this connection to send data back and forth.
  */
 function createNewConnection(wsAddr, sessionId) {
-    console.log('createNewConnection()', wsAddr);
+    console.log('createNewConnection()', wsAddr, sessionId);
     let connection = new EventEmitter();
     connection.sessionId = '';
 
@@ -74,8 +74,8 @@ function createNewConnection(wsAddr, sessionId) {
         connection.ws.onopen = () => {
             console.log('[ws] onopen');
             let connectStr = sessionId ?
-                'SESSION ' + sessionId :
-                'START';
+                'CONTROL SESSION ' + sessionId :
+                'CONTROL START';
             connection.ws.send(`:${controlChannel} ${connectStr}`);
             connection.connected = true;
             connection.emit('open');
@@ -87,7 +87,7 @@ function createNewConnection(wsAddr, sessionId) {
             connection.emit('close');
         };
         connection.ws.onmessage = (event) => {
-            // console.log('[ws] onmessage');
+            console.log('[ws] onmessage', event.data);
             connection.emit('message', event);
 
             // If the message starts with ":channel " then extract that channel and emit
@@ -144,6 +144,7 @@ function createChannelOnConnection(connection, channelId) {
         // When we get confirmation of this channel being opened, send any control
         // messages that were buffered
         connection.on('open.' + channelId, () => {
+            console.log('channel', channelId, 'open');
             channel.isOpen = true;
             // channel.emit('open');
             if (sendControlBuffer.length) {
@@ -152,6 +153,10 @@ function createChannelOnConnection(connection, channelId) {
                 });
                 sendControlBuffer = [];
             }
+
+            // This channel is now open and can start sending data to the server
+            channel.remoteState = 1;
+            channel.emit('open');
         });
         connection.on('close', () => {
             channel.state = 3;
@@ -160,17 +165,24 @@ function createChannelOnConnection(connection, channelId) {
             channel.emit('close');
         });
         connection.on('message.' + channelId, (event) => {
-            if (channel.remoteState === 1) {
-                // console.log('[CHANNEL ' + channelId + ' data] ' + event.data);
-                channel.emit('line', event.data);
-            } else {
+            if (event.data.indexOf('CONTROL ') === 0) {
                 console.log('[CHANNEL ' + channelId + ' control] ' + event.data);
                 // When we get the signal that the connection to the IRC server
                 // has connected, start proxying all data
-                if (event.data.indexOf('CONNECTED') === 0) {
+                if (event.data.indexOf('CONTROL CONNECTED') === 0) {
                     channel.remoteState = 1;
                     channel.emit('open');
                 }
+
+                if (event.data.indexOf('CONTROL CLOSED') === 0) {
+                    channel.remoteState = 0;
+                    channel.emit('close');
+                }
+            }
+
+            if (channel.remoteState === 1) {
+                // console.log('[CHANNEL ' + channelId + ' data] ' + event.data);
+                channel.emit('line', event.data);
             }
         });
 
@@ -203,7 +215,7 @@ function createChannelOnConnection(connection, channelId) {
             let host = options.host;
             let port = options.port;
             let tls = options.tls || options.ssl;
-            channel.sendControl('CONNECT ' + host + ' ' + (tls ? '+' : '') + port);
+            channel.sendControl('HOST ' + host + ':' + (tls ? '+' : '') + port);
         };
 
         // This is not supported but irc-framework transports need it, so just noop it

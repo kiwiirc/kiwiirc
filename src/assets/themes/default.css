@@ -4,10 +4,32 @@
     font-size: 14px;
 }
 
-.kiwi-wrap a, .u-link {
+.u-link {
     color: #42b983;
     text-decoration: none;
     cursor: pointer;
+}
+.u-button {
+    display: inline-block;
+    color: #ffffff;
+    border-radius: 2px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    padding: .5em 1em;
+    border: none;
+    font-size: 1em;
+}
+.u-button-primary {
+    background-color: #0078e7;
+}
+.u-button-secondary {
+    background-color: #42b8dd;
+}
+.u-button-warning {
+    background-color: #ca3c3c;
 }
 
 
@@ -53,8 +75,8 @@
  */
 
 .kiwi-statebrowser {
-    border-right: 5px solid rgb(106, 125, 137);
-    background: rgb(60, 76, 85);
+    border-right: 5px solid #6b6b6b;
+    background: #383838;
     color: rgb(137, 155, 166);
 }
 
@@ -65,6 +87,10 @@
 .kiwi-statebrowser-network-name {
     /*font-weight: bold;*/
     font-size: 1.1em;
+    text-align: center;
+    display: block;
+    background: #525252;
+    padding: 4px 0;
 }
 
 .kiwi-statebrowser-channel {
@@ -72,9 +98,9 @@
 }
 
 .kiwi-statebrowser-channel-name {
-    cursor: pointer;
     color: #a7a7a7;
     flex: 1;
+    transition: padding 0.1s, border 0.1s;
 }
 
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
@@ -82,6 +108,8 @@
 }
 .kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
     color: #e0e0e0;
+    border-left: 3px solid #df6b26;
+    padding-left: 5px;
 }
 
 .kiwi-statebrowser-channel-label {
@@ -107,14 +135,13 @@
 }
 
 .kiwi-statebrowser-channel-popup {
-    background: rgb(60, 76, 85);
-    border: 3px solid #6a7d89;
+    background: #383838;
+    border: 3px solid #6b6b6b;
     border-left: none;
 }
 
 .kiwi-statebrowser-options {
-    background: rgb(60, 76, 85);
-    border-top: 1px solid #626c71;
+    background: #383838;
     /* some space on the right so it doesnt overlap the parent elements scrollbar */
     margin-right: 15px;
 }
@@ -236,18 +263,31 @@
 .kiwi-messagelist-time {
     font-size: 0.9em;
     color: #c1c1c1;
+    float: left;
 }
 
 .kiwi-messagelist-nick {
     width: 120px;
     text-align: right;
     font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: top;
+    float: left;
 }
+.kiwi-messagelist-nick:hover {
+    overflow: visible;
+}
+
 .kiwi-messagelist-nick:before:not(:empty) {
     content: "<";
 }
 .kiwi-messagelist-nick:after:not(:empty) {
     content: ">";
+}
+.kiwi-messagelist-body {
+    display: block;
+    margin-left: 190px;
 }
 
 .kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
@@ -269,6 +309,9 @@
 .kiwi-messagelist-message-topic .kiwi-messagelist-nick {
     display: none;
 }
+.kiwi-messagelist-message-topic .kiwi-messagelist-body {
+    margin-left: 0;
+}
 
 /* Actions */
 .kiwi-messagelist-message-action .kiwi-messagelist-message-body {
@@ -276,20 +319,30 @@
 }
 
 /* Traffic (joins, parts, quits, kicks) */
-.kiwi-messagelist-message-traffic .kiwi-messagelist-message-body {
+.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
     font-style: italic;
 }
 .kiwi-messagelist-message-traffic-join {
     color: #009900;
+}
+.kiwi-messagelist-message-traffic-join .kiwi-nick:before {
+    content: "→ ";
 }
 .kiwi-messagelist-message-traffic-quit,
 .kiwi-messagelist-message-traffic-part,
 .kiwi-messagelist-message-traffic-kick {
     color: #900;
 }
-
+.kiwi-messagelist-message-traffic-quit .kiwi-nick:before,
+.kiwi-messagelist-message-traffic-part .kiwi-nick:before, {
+    content: "← ";
+}
 .kiwi-messagelist-message-action .kiwi-messagelist-body {
     color: #009900;
+    font-style: italic;
+}
+.kiwi-messagelist-message-action .kiwi-messagelist-nick {
+    display: none;
 }
 
 /* MOTD */
@@ -299,6 +352,12 @@
 }
 
 @media screen and (max-width: 500px) {
+    .kiwi-messagelist-time {
+        float: none;
+    }
+    .kiwi-messagelist-nick {
+        float: none;
+    }
     .kiwi-messagelist-body {
         margin-left: 2px;
     }
@@ -306,5 +365,26 @@
 
 
 
+/**
+ * Network settings
+ */
+
+.kiwi-networksettings-section {
+    margin: 20px 10px 40px 10px;
+}
+.kiwi-networksettings-danger h3 {
+    background: #d86f6f;
+    padding: 5px 10px;
+}
 
 
+
+
+/**
+ * Misc styles
+ */
+.kiwi-nick {
+    background: #e4e4e4;
+    padding: 2px 7px;
+    border-radius: 5px;
+}

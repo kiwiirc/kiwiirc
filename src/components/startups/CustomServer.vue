@@ -44,12 +44,12 @@
                 </label>
             </template>
 
-            <button type="submit" class="kiwi-welcome-submit">Connect</button>
+            <button type="submit" class="kiwi-welcome-submit u-button u-button-primary">Connect</button>
         </form>
 
         <div class="kiwi-welcome-server-types">
-            <a @click="server_type = 'default'">Network</a>
-            <a @click="server_type = 'znc'">ZNC</a>
+            <a @click="server_type = 'default'" class="u-link">Network</a>
+            <a @click="server_type = 'znc'" class="u-link">ZNC</a>
         </div>
     </div>
 </template>
@@ -92,7 +92,8 @@ export default {
             }
 
             if (net) {
-                state.setActiveBuffer(net.id, net.serverBuffer());
+                state.setActiveBuffer(net.id, net.serverBuffer().name);
+                net.ircClient.connect();
                 this.$emit('start');
             }
         },
@@ -104,6 +105,8 @@ export default {
             console.log('Importing state', storedState);
             state.importState(storedState);
             if (state.networks.length > 0) {
+                let network = state.networks[0];
+                state.setActiveBuffer(network.id, network.serverBuffer().name);
                 this.$emit('start');
             }
         }

@@ -75,8 +75,22 @@ export default {
         },
     },
     created: function created() {
-        state.$on('document.keydown', () => {
-            // TODO: Make sure event.target is not a form input
+        state.$on('document.keydown', (ev) => {
+            // If we're copying text, don't shift focus
+            if (ev.ctrlKey || ev.altKey || ev.metaKey) {
+                return;
+            }
+
+            // If we're typing into an input box somewhere, ignore
+            let elements = ['input', 'select', 'textarea', 'button', 'datalist', 'keygen'];
+            let doNotRefocus =
+                elements.indexOf(ev.target.tagName.toLowerCase()) > -1 ||
+                ev.target.getAttribute('contenteditable');
+
+            if (doNotRefocus) {
+                return;
+            }
+
             this.$el.querySelector('.kiwi-controlinput-input').focus();
         });
     },

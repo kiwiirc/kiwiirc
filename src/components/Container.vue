@@ -22,7 +22,7 @@
                 :buffer="buffer"
                 :users="users"
             ></nicklist>
-            <message-list :buffer="buffer" :messages="messages"></message-list>
+            <message-list :buffer="buffer" :messages="messages" :users="users"></message-list>
         </template>
         <template v-else>
             Welcome to Kiwi IRC! Select a channel on the left. Bla bla.
