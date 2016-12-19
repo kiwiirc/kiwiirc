@@ -369,6 +369,9 @@
  * Network settings
  */
 
+.kiwi-networksettings {
+    padding: 1em;
+}
 .kiwi-networksettings-section {
     margin: 20px 10px 40px 10px;
 }

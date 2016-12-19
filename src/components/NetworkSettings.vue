@@ -7,7 +7,7 @@
             Connected
         </div>
         <div v-else>
-            Not connected. <a @click="reconnect">Connect</a>
+            Not connected. <a @click="reconnect" class="u-link">Connect</a>
         </div>
 
         <div class="kiwi-networksettings-section kiwi-networksettings-connection">
@@ -79,6 +79,8 @@ export default {
 
 .kiwi-networksettings {
     box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
 }
 .kiwi-networksettings-close {
     float: right;
