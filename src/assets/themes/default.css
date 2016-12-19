@@ -32,6 +32,28 @@
     background-color: #ca3c3c;
 }
 
+.u-form {
+    text-align: left;
+}
+.u-form label {
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.u-form label span {
+    display: inline-block;
+    width: 100px;
+    margin-right: 1em;
+    text-align: right;
+}
+.u-form label input {
+    font-size: 0.9em;
+    padding: 3px 5px;
+}
+.u-form .u-submit {
+    margin: 2em auto;
+    display: block;
+}
+
 
 .irc-fg-colour-white { color: #FFFFFF; }
 .irc-fg-colour-black { color: #000000; }

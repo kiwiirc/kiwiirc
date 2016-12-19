@@ -1,50 +1,50 @@
 <template>
     <div class="kiwi-welcome">
         <h2>Where are you connecting today?</h2>
-        <form v-on:submit.prevent="startUp" class="kiwi-welcome-form">
+        <form v-on:submit.prevent="startUp" class="u-form kiwi-welcome-form">
             <template v-if="server_type === 'default'">
                 <label>
-                    Server
+                    <span>Server</span>
                     <input type="text" v-model="server" />
                 </label>
                 <label>
-                    SSL / TLS
+                    <span>SSL / TLS</span>
                     <input type="checkbox" v-model="tls" />
                 </label>
                 <label>
-                    Nick
+                    <span>Nick</span>
                     <input type="text" v-model="nick" />
                 </label>
                 <label>
-                    Password
+                    <span>Password</span>
                     <input type="password" v-model="password" />
                 </label>
             </template>
 
             <template v-if="server_type === 'znc'">
                 <label>
-                    Server
+                    <span>Server</span>
                     <input type="text" v-model="server" />
                 </label>
                 <label>
-                    SSL / TLS
+                    <span>SSL / TLS</span>
                     <input type="checkbox" v-model="tls" />
                 </label>
                 <label>
-                    Username
+                    <span>Username</span>
                     <input type="text" v-model="nick" />
                 </label>
                 <label>
-                    Network
+                    <span>Network</span>
                     <input type="text" v-model="znc_network" />
                 </label>
                 <label>
-                    Password
+                    <span>Password</span>
                     <input type="password" v-model="password" />
                 </label>
             </template>
 
-            <button type="submit" class="kiwi-welcome-submit u-button u-button-primary">Connect</button>
+            <button type="submit" class="u-button u-button-primary u-submit">Connect</button>
         </form>
 
         <div class="kiwi-welcome-server-types">
@@ -136,14 +136,6 @@ export default {
 .kiwi-welcome-form {
     width: 300px;
     margin: 0 auto;
-}
-.kiwi-welcome-form label {
-    display: block;
-    margin-bottom: 5px;
-    text-align: left;
-}
-.kiwi-welcome-submit {
-    margin: 2em 0;
 }
 .kiwi-welcome-server-types {
     font-size: 0.9em;
