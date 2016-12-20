@@ -4,7 +4,7 @@
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div class="kiwi-header-topic" v-html="formatMessage(buffer.topic)"></div>
             <div v-if="!buffer.joined">
-                <a @click="joinCurrentBuffer">Join Channel</a>
+                <a @click="joinCurrentBuffer" class="u-link">Join Channel</a>
             </div>
         </template>
         <template v-else-if="isServer()">
