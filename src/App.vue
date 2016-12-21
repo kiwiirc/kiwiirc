@@ -10,9 +10,20 @@
             <state-browser :networks="networks"></state-browser>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <template v-if="!activeComponent">
-                    <container :network="network" :buffer="buffer" :users="users" :messages="messages"></container>
+                    <container
+                        :network="network"
+                        :buffer="buffer"
+                        :users="users"
+                        :messages="messages"
+                        :isHalfSize="mediaviewerOpen"
+                    ></container>
+                    <media-viewer
+                        v-if="mediaviewerOpen"
+                        :url="mediaviewerUrl"
+                    ></media-viewer>
                     <control-input :container="networks"></control-input>
                 </template>
+
                 <component v-bind:is="activeComponent" v-bind="activeComponentProps"></component>
             </div>
         </template>
@@ -31,6 +42,7 @@ import startupCustomServer from 'src/components/startups/CustomServer';
 import StateBrowser from 'src/components/StateBrowser';
 import Container from 'src/components/Container';
 import ControlInput from 'src/components/ControlInput';
+import MediaViewer from 'src/components/MediaViewer';
 import * as Notifications from 'src/libs/Notifications';
 import logger from 'src/libs/Logger';
 import state from 'src/libs/state';
@@ -56,6 +68,13 @@ export default {
         state.$on('statebrowser.hide', () => {
             this.stateBrowserDrawOpen = false;
         });
+        state.$on('mediaviewer.open', (url) => {
+            this.mediaviewerUrl = url;
+            this.mediaviewerOpen = true;
+        });
+        state.$on('mediaviewer.hide', () => {
+            this.mediaviewerOpen = false;
+        });
         document.addEventListener('keydown', event => this.emitDocumentKeyDown(event), false);
     },
     mounted: function mounted() {
@@ -75,6 +94,7 @@ export default {
         StateBrowser,
         Container,
         ControlInput,
+        MediaViewer,
     },
     data: function data() {
         return {
@@ -85,6 +105,8 @@ export default {
             // If set, will become the main view instead of a buffer/nicklist container
             activeComponent: null,
             activeComponentProps: {},
+            mediaviewerOpen: false,
+            mediaviewerUrl: '',
         };
     },
     computed: {
@@ -208,6 +230,15 @@ body {
 .kiwi-container {
     position: absolute;
     top: 0;
+    bottom: 40px;
+    width: 100%;
+}
+.kiwi-container--mini {
+    bottom: 50%;
+}
+.kiwi-mediaviewer {
+    position: absolute;
+    top: 50%;
     bottom: 40px;
     width: 100%;
 }

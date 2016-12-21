@@ -166,7 +166,8 @@ const urlRegex = new RegExp('' +
     'ig'
 );
 
-export function linkifyUrls(input) {
+export function linkifyUrls(input, _opts) {
+    let opts = _opts || {};
     let result = input.replace(urlRegex, _url => {
         let url = _url;
         let nice = url;
@@ -187,7 +188,15 @@ export function linkifyUrls(input) {
         }
 
         // Make the link clickable
-        return `<a target="_blank" href="${url.replace(/"/g, '%22')}">${_.escape(nice)}</a>`;
+        let out = `<a target="_blank" href="${url.replace(/"/g, '%22')}">${_.escape(nice)}</a>`;
+
+        if (opts.addHandle) {
+            let cssClass = opts.handleClass || '';
+            let content = opts.handleContent || '';
+            out += `<a data-url="${url}" class="${cssClass}">${content}</a>`;
+        }
+
+        return out;
     });
 
     return result;

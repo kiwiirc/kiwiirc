@@ -3,6 +3,7 @@
             /* 'kiwi-container-' + bufferType: true, */
             'kiwi-container--nicklist-open': nicklistOpen,
             'kiwi-container--no-nicklist': buffer && !buffer.isChannel(),
+            'kiwi-container--mini': isHalfSize,
     }">
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
@@ -49,7 +50,7 @@ export default {
             nicklistOpen: false,
         };
     },
-    props: ['network', 'buffer', 'users', 'messages'],
+    props: ['network', 'buffer', 'users', 'messages', 'isHalfSize'],
     computed: {
         bufferType: function bufferType() {
             let type = '';

@@ -65,7 +65,10 @@ export default {
         formatMessage: function formatMessage(messageBody) {
             let formatted = TextFormatting.ircCodesToHtml(messageBody);
             formatted = TextFormatting.linkifyChannels(formatted);
-            formatted = TextFormatting.linkifyUrls(formatted);
+            formatted = TextFormatting.linkifyUrls(formatted, {
+                addHandle: true,
+                handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
+            });
             formatted = TextFormatting.linkifyUsers(formatted, this.users);
             return formatted;
         },
@@ -84,6 +87,11 @@ export default {
             if (userNick) {
                 let buffer = state.addBuffer(this.buffer.networkid, userNick);
                 state.setActiveBuffer(buffer.networkid, buffer.name);
+            }
+
+            let url = event.target.getAttribute('data-url');
+            if (url) {
+                state.$emit('mediaviewer.open', url);
             }
         },
         onThreadScroll: function onThreadScroll() {

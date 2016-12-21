@@ -373,6 +373,14 @@
     font-family: monospace;
 }
 
+/* Links */
+.kiwi-messagelist-message-linkhandle {
+    display: inline-block;
+    margin: 0 0.5em;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 500px) {
     .kiwi-messagelist-time {
         float: none;
@@ -404,6 +412,17 @@
 
 
 
+/**
+ * Media viewer
+ */
+.kiwi-mediaviewer-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.kiwi-mediaviewer-controls-close {
+    padding: 3px 15px;
+}
 
 /**
  * Misc styles
