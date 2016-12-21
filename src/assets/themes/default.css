@@ -283,9 +283,9 @@
 }
 
 .kiwi-messagelist-time {
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: #c1c1c1;
-    float: left;
+    float: right;
 }
 
 .kiwi-messagelist-nick {
@@ -309,7 +309,7 @@
 }
 .kiwi-messagelist-body {
     display: block;
-    margin-left: 190px;
+    margin-left: 130px;
 }
 
 .kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
@@ -382,9 +382,6 @@
 }
 
 @media screen and (max-width: 500px) {
-    .kiwi-messagelist-time {
-        float: none;
-    }
     .kiwi-messagelist-nick {
         float: none;
     }
@@ -419,6 +416,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 1;
 }
 .kiwi-mediaviewer-controls-close {
     padding: 3px 15px;
