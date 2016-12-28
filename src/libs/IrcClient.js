@@ -22,7 +22,7 @@ export function create(state, networkid) {
         nick: network.nick,
         username: network.nick,
         gecos: 'https://kiwiirc.com/',
-        version: 'Kiwi IRC -Next',
+        version: 'Kiwi IRC',
         auto_reconnect: false,
     });
 

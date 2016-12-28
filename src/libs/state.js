@@ -7,7 +7,7 @@ const stateObj = {
         // Restricted to a single IRC server
         restricted: true,
         // The startup screen
-        startupScreen: 'customServer',
+        startupScreen: 'kiwiBnc',
         // Default buffer settings
         buffers: {
             alert_on: 'highlight',
@@ -193,9 +193,10 @@ const state = new Vue({
                     network.id :
                     currentMax;
             }
-            let networkid = _.reduce(this.networks, networkidReduce, 0);
+            let networkid = serverInfo.channelId ?
+                parseInt(serverInfo.channelId, 10) :
+                _.reduce(this.networks, networkidReduce, 0) + 1;
 
-            networkid++;
             let network = {
                 id: networkid,
                 name: name,
