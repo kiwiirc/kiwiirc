@@ -1,10 +1,11 @@
 import EventEmitter from 'eventemitter3';
+import state from './state';
 import * as ServerConnection from './ServerConnection';
 
 export default class ServerSession {
     constructor(sessionId) {
         let channelConstruct = ServerConnection.createChannelConstructor(
-            'http://' + window.location.hostname + ':8081/webirc',
+            state.settings.kiwiServer,
             sessionId || '',
             '0'
         );

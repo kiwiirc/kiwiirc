@@ -5,8 +5,7 @@ export function create(state, networkid) {
     // Provide our own transport for IrcFramework to use a kiwi server
     // When direct websockts are used, this transport does not need to be provided
     let channelTransport = ServerConnection.createChannelConstructor(
-        // 'http://127.0.0.1:8081/webirc',
-        'http://' + window.location.hostname + ':8081/webirc',
+        state.settings.kiwiServer,
         (window.location.hash || '').substr(1),
         networkid
     );
