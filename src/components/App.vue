@@ -39,7 +39,7 @@ import 'font-awesome-webpack';
 
 import startupWelcome from 'src/components/startups/Welcome';
 import startupCustomServer from 'src/components/startups/CustomServer';
-import startupKiwiBnc from 'src/components/startups/kiwiBnc';
+import startupKiwiBnc from 'src/components/startups/KiwiBnc';
 import StateBrowser from 'src/components/StateBrowser';
 import Container from 'src/components/Container';
 import ControlInput from 'src/components/ControlInput';
