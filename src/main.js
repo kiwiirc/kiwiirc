@@ -21,6 +21,14 @@ function applyConfig(config) {
     _.each(config, (val, key) => {
         state.settings[key] = val;
     });
+
+    // Update the window title if we have one
+    if (state.settings.windowTitle) {
+        window.document.title = state.settings.windowTitle;
+    }
+    state.$watch('settings.windowTitle', newVal => {
+        window.document.title = newVal;
+    });
 }
 
 
