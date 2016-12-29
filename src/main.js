@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import Vue from 'vue';
 
-import App from './App';
+import App from 'src/components/App';
 import StartupError from 'src/components/StartupError';
 import Logger from 'src/libs/Logger';
 import ConfigLoader from 'src/libs/ConfigLoader';
