@@ -88,6 +88,8 @@ export default {
         if (!state.settings.startupScreen) {
             logger('no startup screen');
             this.hasStarted = true;
+        } else if (!startupScreens[state.settings.startupScreen]) {
+            logger.error(`Startup screen "${state.settings.startupScreen}" does not exist`);
         } else {
             this.startupComponent = startupScreens[state.settings.startupScreen];
         }
