@@ -3,11 +3,15 @@ import _ from 'lodash';
 import * as IrcClient from './IrcClient';
 
 const stateObj = {
+    // Settings may be overridden via config.json
     settings: {
+        windowTitle: 'Kiwi IRC - The web IRC client',
         // Restricted to a single IRC server
         restricted: true,
         // The startup screen
-        startupScreen: 'kiwiBnc',
+        startupScreen: 'customServer',
+        // Where to find the kiwi server
+        kiwiServer: '/webirc',
         // Default buffer settings
         buffers: {
             alert_on: 'highlight',

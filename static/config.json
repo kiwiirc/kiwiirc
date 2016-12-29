@@ -1,0 +1,5 @@
+{
+	"windowTitle": "Kiwi IRC - The web IRC client",
+	"startupScreen": "customServer",
+	"kiwiServer": "http://localhost:8081/webirc"
+}
