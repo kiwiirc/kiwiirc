@@ -54,6 +54,9 @@ export default {
             state.$emit('mediaviewer.hide');
         },
     },
+    created: function created() {
+        this.updateEmbed();
+    },
     watch: {
         url: function watchUrl() {
             this.updateEmbed();
