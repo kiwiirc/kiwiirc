@@ -1,24 +1,37 @@
 # kiwiirc
 
-> Web based IRC client
+> The next generation of the KiwiIRC web based IRC client
 
-## Build Setup
+## Development dependencies
+Before you can build or start to develop on KiwiIRC, make sure the have the
+following installed on your system:
+* [Nodejs](https://nodejs.org/)
+* [yarn](https://yarnpkg.com/)
+
+## Building
 
 ``` bash
 # install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
+yarn install
 
 # build for production with minification
 npm run build
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Development environment
+
+``` bash
+# install dependencies
+yarn install
+
+# development web server with hot reload at http://localhost:8080/
+npm run dev
+```
+
+Source files are linted automatically and will fail on any linting errors.
+
+## Configuration
+
+By default, the client will load the /static/config.json file on startup which
+contains any runtime configuration. When in the development environment this can
+be found in [static/config.json](static/config.json)
