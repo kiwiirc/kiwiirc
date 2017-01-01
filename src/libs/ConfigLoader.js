@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import xhr from 'xhr';
 import _ from 'lodash';
 
 export default class ConfigLoader {
@@ -8,17 +8,18 @@ export default class ConfigLoader {
 
     loadFromUrl(configUrl) {
         return new Promise((resolve, reject) => {
-            $.getJSON(configUrl)
-            .done(data => {
+            xhr({ url: configUrl, json: true }, (err, response) => {
+                if (err) {
+                    reject();
+                    return;
+                }
+
                 this.config = Object.create(null);
-                _.each(data, (val, key) => {
+                _.each(response.body, (val, key) => {
                     this.config[key] = this.insertReplacements(val);
                 });
 
                 resolve(this.config);
-            })
-            .fail(() => {
-                reject();
             });
         });
     }
