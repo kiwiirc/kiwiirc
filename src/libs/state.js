@@ -402,6 +402,17 @@ const state = new Vue({
                 [];
         },
 
+        getUser: function getUser(networkid, nick) {
+            let user = null;
+            let network = this.getNetwork(networkid);
+
+            if (network) {
+                user = network.users[nick];
+            }
+
+            return user;
+        },
+
         addUser: function addUser(networkid, user) {
             let network = this.getNetwork(networkid);
             if (!network) {

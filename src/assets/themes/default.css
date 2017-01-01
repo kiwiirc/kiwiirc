@@ -296,6 +296,7 @@
     overflow: hidden;
     vertical-align: top;
     float: left;
+    cursor: pointer;
 }
 .kiwi-messagelist-nick:hover {
     overflow: visible;
@@ -315,6 +316,11 @@
 .kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
     /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
     opacity: 0;
+    cursor: default;
+}
+
+.kiwi-messagelist-body .kiwi-nick {
+    cursor: pointer;
 }
 
 /* Topic changes */

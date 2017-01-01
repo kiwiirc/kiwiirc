@@ -18,7 +18,13 @@
             ]"
         >
             <div class="kiwi-messagelist-time">{{formatTime(message.time)}}</div>
-            <div class="kiwi-messagelist-nick" v-bind:style="nickStyle(message.nick)">{{message.nick}}</div>
+            <div
+                class="kiwi-messagelist-nick"
+                v-bind:style="nickStyle(message.nick)"
+                v-bind:data-nick="message.nick"
+            >
+                {{message.nick}}
+            </div>
             <div class="kiwi-messagelist-body" v-html="formatMessage(message.message)"></div>
         </div>
 
@@ -85,8 +91,15 @@ export default {
 
             let userNick = event.target.getAttribute('data-nick');
             if (userNick) {
-                let buffer = state.addBuffer(this.buffer.networkid, userNick);
-                state.setActiveBuffer(buffer.networkid, buffer.name);
+                // let buffer = state.addBuffer(this.buffer.networkid, userNick);
+                // state.setActiveBuffer(buffer.networkid, buffer.name);
+                let user = state.getUser(this.buffer.networkid, userNick);
+                if (user) {
+                    state.$emit('userbox.show', user, {
+                        top: event.clientY,
+                        left: event.clientX,
+                    });
+                }
             }
 
             let url = event.target.getAttribute('data-url');
