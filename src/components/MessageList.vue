@@ -91,7 +91,7 @@ export default {
 
             let url = event.target.getAttribute('data-url');
             if (url) {
-                state.$emit('mediaviewer.open', url);
+                state.$emit('mediaviewer.show', url);
             }
         },
         onThreadScroll: function onThreadScroll() {

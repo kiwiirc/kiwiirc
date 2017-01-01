@@ -78,7 +78,7 @@ export default {
         state.$on('statebrowser.hide', () => {
             this.stateBrowserDrawOpen = false;
         });
-        state.$on('mediaviewer.open', (url) => {
+        state.$on('mediaviewer.show', (url) => {
             this.mediaviewerUrl = url;
             this.mediaviewerOpen = true;
         });
