@@ -13,7 +13,7 @@
                 <span
                     v-if="users[user]"
                     class="kiwi-nicklist-user-nick"
-                    @click="openQuery(users[user])"
+                    @click="openUserbox(users[user], $event)"
                     v-bind:style="nickStyle(users[user].nick)"
                 >
                     {{users[user].nick}}
@@ -33,6 +33,7 @@ export default {
     data: function data() {
         return {
             settings_open: false,
+            userbox_user: null,
         };
     },
     props: ['network', 'buffer', 'users'],
@@ -71,6 +72,12 @@ export default {
         openQuery: function openQuery(user) {
             let buffer = state.addBuffer(this.buffer.networkid, user.nick);
             state.setActiveBuffer(buffer.networkid, buffer.name);
+        },
+        openUserbox: function openUserbox(user, mouseEvent) {
+            state.$emit('userbox.show', user, {
+                top: mouseEvent.clientY,
+                left: mouseEvent.clientX,
+            });
         },
     },
 };

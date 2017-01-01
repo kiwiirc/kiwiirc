@@ -410,8 +410,53 @@
 
 
 /**
+ * User box
+ */
+
+.kiwi-userbox {
+    border: 1px solid #dddddd;
+    background: red;
+    padding: 10px;
+    background: #6b6b6b;
+    color: #e0e0db;
+    transition: 0.2s top;
+    max-width: 50%;
+}
+.kiwi-userbox-icon {
+    font-size: 1.5em;
+    margin-right: 0.3em;
+}
+.kiwi-userbox > h3 {
+    margin: 0 0 0.5em 0;
+}
+.kiwi-userbox-usermask {
+    color: #9e9e9e;
+    display: block;
+    margin: 0 0 1em 0;
+    font-size: 0.9em;
+}
+.kiwi-userbox-whois {
+    background: #ffffff;
+    padding: 5px;
+    color: #2c3e50;
+    line-height: 1.4em;
+}
+.kiwi-userbox-whois-line {
+    display: block;
+}
+.kiwi-userbox-options {
+    margin: 0.7em 0;
+}
+.kiwi-userbox-options form label {
+    display: block;
+}
+
+
+
+/**
  * Media viewer
  */
+
 .kiwi-mediaviewer-controls {
     position: absolute;
     top: 0;
@@ -422,9 +467,12 @@
     padding: 3px 15px;
 }
 
+
+
 /**
  * Misc styles
  */
+
 .kiwi-nick {
     background: #e4e4e4;
     padding: 2px 7px;

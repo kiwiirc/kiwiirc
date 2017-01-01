@@ -10,6 +10,14 @@
             <state-browser :networks="networks"></state-browser>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <template v-if="!activeComponent">
+                    <user-box
+                        v-if="userboxOpen"
+                        :user="userboxUser"
+                        :network="network"
+                        v-bind:style="{
+                            top: userboxPos.top + 'px'
+                        }"
+                    ></user-box>
                     <container
                         :network="network"
                         :buffer="buffer"
@@ -44,6 +52,7 @@ import StateBrowser from 'src/components/StateBrowser';
 import Container from 'src/components/Container';
 import ControlInput from 'src/components/ControlInput';
 import MediaViewer from 'src/components/MediaViewer';
+import UserBox from 'src/components/UserBox';
 import * as Notifications from 'src/libs/Notifications';
 import logger from 'src/libs/Logger';
 import state from 'src/libs/state';
@@ -76,6 +85,17 @@ export default {
         state.$on('mediaviewer.hide', () => {
             this.mediaviewerOpen = false;
         });
+        state.$on('userbox.show', (user, opts) => {
+            this.userboxUser = user;
+            this.userboxOpen = true;
+            this.userboxPos = {
+                top: opts.top,
+                left: opts.left,
+            };
+        });
+        state.$on('userbox.hide', () => {
+            this.userboxOpen = false;
+        });
         document.addEventListener('keydown', event => this.emitDocumentKeyDown(event), false);
     },
     mounted: function mounted() {
@@ -99,6 +119,7 @@ export default {
         Container,
         ControlInput,
         MediaViewer,
+        UserBox,
     },
     data: function data() {
         return {
@@ -111,6 +132,9 @@ export default {
             activeComponentProps: {},
             mediaviewerOpen: false,
             mediaviewerUrl: '',
+            userboxOpen: false,
+            userboxPos: {},
+            userboxUser: null,
         };
     },
     computed: {
@@ -245,6 +269,12 @@ body {
     top: 50%;
     bottom: 40px;
     width: 100%;
+}
+.kiwi-userbox {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    right: 200px;
 }
 .kiwi-controlinput {
     position: absolute;

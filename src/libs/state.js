@@ -409,11 +409,20 @@ const state = new Vue({
             }
 
             if (!network.users[user.nick]) {
-                this.$set(network.users, user.nick, {
+                network.users[user.nick] = {
                     nick: user.nick,
                     host: user.host || '',
                     username: user.username || '',
                     modes: user.modes || '',
+                    away: user.away || '',
+                };
+            } else {
+                // Update the existing user object with any new info we have
+                let obj = network.users[user.nick];
+                _.each(user, (val, prop) => {
+                    if (typeof val !== 'undefined') {
+                        obj[prop] = val;
+                    }
                 });
             }
         },
@@ -452,6 +461,7 @@ const state = new Vue({
                     host: user.host || '',
                     username: user.username || '',
                     modes: user.modes || '',
+                    away: user.away || '',
                 };
                 //  console.log('Setting ' + user.nick + ' on ' +
                 //    buffer.name, network.users[user.nick]);

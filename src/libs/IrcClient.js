@@ -254,6 +254,47 @@ function clientMiddleware(state, networkid) {
             });
         }
 
+        if (command === 'whois') {
+            let obj = {
+                nick: event.nick,
+                host: event.host,
+                username: event.user,
+                away: event.away || '',
+                realname: event.real_name,
+            };
+
+            // Some other optional bits of info
+            [
+                'actuallhost',
+                'helpop',
+                'bot',
+                'server',
+                'server_info',
+                'operator',
+                'channels',
+                'modes',
+                'idle',
+                'logon',
+                'registered_nick',
+                'account',
+                'secure',
+                'special',
+            ].forEach(prop => {
+                if (typeof event[prop] !== 'undefined') {
+                    obj[prop] = event[prop];
+                }
+            });
+
+            state.addUser(networkid, obj);
+        }
+
+        if (command === 'away') {
+            state.addUser(networkid, {
+                nick: event.nick,
+                away: event.message || '',
+            });
+        }
+
         if (command === 'motd') {
             let buffer = network.serverBuffer();
             state.addMessage(buffer, {
