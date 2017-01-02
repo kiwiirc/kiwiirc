@@ -46,19 +46,28 @@ export default {
             },
             set: function getCurrentInputValue(newValue) {
                 this.value = newValue;
+                // Set history position to 1 index over the current size so that
+                // it's not pointing at an existing item
+                this.history_pos = this.history.length;
             },
         },
     },
     methods: {
         submitForm: function submitForm() {
-            if (!this.currentInputValue) {
+            // Editing a history entry sets .value to the new input value, so check
+            // for that before the history value.
+            let rawInput = this.value || this.currentInputValue;
+            if (!rawInput) {
                 return;
             }
 
-            state.$emit('input.raw', this.currentInputValue);
+            state.$emit('input.raw', rawInput);
 
-            this.history.push(this.currentInputValue);
+            // Add to history, keeping the history trimmed to the last 50 entries
+            this.history.push(rawInput);
+            this.history.splice(0, this.history.length - 50);
             this.history_pos = this.history.length;
+
             this.value = '';
         },
         historyBack: function historyBack() {
