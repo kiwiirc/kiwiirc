@@ -139,34 +139,66 @@ const state = new Vue({
     methods: {
         // Export enough state so that it can be imported in future to resume
         exportState: function exportState() {
-            let stateStr = JSON.stringify(this.networks);
-            let networks = JSON.parse(stateStr);
+            let toExport = {};
 
-            // We don't need the list of users or topics, so remove them
-            networks.forEach(network => {
-                network.users = {};
-                network.buffers.forEach(buffer => {
-                    buffer.users = [];
-                    buffer.topic = '';
+            toExport.networks = state.networks.map(network => {
+                let networkObj = {
+                    id: network.id,
+                    name: network.name,
+                    connection: {
+                        server: network.connection.server,
+                        port: network.connection.port,
+                        tls: network.connection.tls,
+                        password: network.connection.password,
+                    },
+                    settings: _.cloneDeep(network.settings),
+                    nick: network.nick,
+                    password: network.password,
+                    buffers: [],
+                };
 
-                    // Unread message counters won't make sense when re-imported, so empty them
-                    if (buffer.flags.unread) {
-                        buffer.flags.unread = 0;
-                    }
+                networkObj.buffers = network.buffers.map(buffer => {
+                    let bufferObj = {
+                        name: buffer.name,
+                        joined: buffer.joined,
+                        settings: _.cloneDeep(buffer.flags),
+                    };
+
+                    return bufferObj;
                 });
+
+                return networkObj;
             });
-            return JSON.stringify(networks);
+
+            return JSON.stringify(toExport);
         },
 
         // Import a previously exported state to continue that state
         importState: function importState(stateStr) {
             let importObj = JSON.parse(stateStr);
-            if (importObj) {
-                this.$set(this.$data, 'networks', importObj);
-                this.$set(this.$data, 'message', []);
-                this.networks.forEach(network => {
+            if (importObj && importObj.networks) {
+                this.resetState();
+                importObj.networks.forEach(importNetwork => {
+                    let network = createEmptyNetworkObject();
+                    network.id = importNetwork.id;
+                    network.name = importNetwork.name;
+                    network.connection = importNetwork.connection;
+                    network.settings = importNetwork.settings;
+                    network.nick = importNetwork.nick;
+                    network.password = importNetwork.password;
+
+                    this.networks.push(network);
                     initialiseNetworkState(network);
-                    network.buffers.forEach(buffer => {
+                    console.log(network);
+
+                    importNetwork.buffers.forEach(importBuffer => {
+                        let buffer = createEmptyBufferObject();
+                        buffer.name = importBuffer.name;
+                        buffer.networkid = network.id;
+                        buffer.joined = importBuffer.joined;
+                        buffer.settings = importBuffer.settings;
+
+                        network.buffers.push(buffer);
                         initialiseBufferState(buffer);
                     });
                 });
@@ -175,7 +207,7 @@ const state = new Vue({
 
         resetState: function resetState() {
             this.$set(this.$data, 'networks', []);
-            this.$set(this.$data, 'message', []);
+            this.$set(this.$data, 'messages', []);
         },
 
         getActiveNetwork: function getActiveNetwork() {
@@ -536,6 +568,41 @@ const state = new Vue({
 
 export default state;
 
+
+function createEmptyNetworkObject() {
+    return {
+        id: 0,
+        name: '',
+        state: 'disconnected',
+        connection: {
+            server: '',
+            port: 6667,
+            tls: false,
+            password: '',
+        },
+        settings: {},
+        nick: '',
+        password: '',
+        buffers: [],
+        users: {},
+    };
+}
+
+function createEmptyBufferObject() {
+    return {
+        networkid: 0,
+        name: '',
+        topic: '',
+        joined: false,
+        users: [],
+        flags: {
+            unread: 0,
+            alert_on: 'default',
+        },
+        settings: {
+        },
+    };
+}
 
 function initialiseNetworkState(network) {
     Object.defineProperty(network, 'ircClient', {
