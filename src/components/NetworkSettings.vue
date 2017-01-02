@@ -6,6 +6,9 @@
         <div v-if="network.state === 'connected'">
             Connected
         </div>
+        <div v-else-if="network.state === 'connecting'">
+            Connecting...
+        </div>
         <div v-else>
             Not connected. <a @click="reconnect" class="u-link">Connect</a>
         </div>

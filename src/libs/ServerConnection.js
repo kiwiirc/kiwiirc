@@ -163,7 +163,6 @@ function createChannelOnConnection(connection, channelId) {
                 // has connected, start proxying all data
                 if (event.data.indexOf('CONTROL CONNECTED') === 0) {
                     channel.remoteState = 1;
-                    channel.emit('open');
                 }
 
                 if (event.data.indexOf('CONTROL CLOSED') === 0) {

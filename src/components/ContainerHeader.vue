@@ -16,9 +16,12 @@
                 <i class="fa fa-cog" aria-hidden="true"></i>
             </a>
 
-            <div v-if="buffer.getNetwork().state !== 'connected'" class="kiwi-header-server-connection">
+            <div v-if="buffer.getNetwork().state === 'disconnected'" class="kiwi-header-server-connection">
                 Not connected.
                 <a @click="buffer.getNetwork().ircClient.connect()" class="u-link">Connect</a>
+            </div>
+            <div v-else-if="buffer.getNetwork().state === 'connecting'" class="kiwi-header-server-connection">
+                Connecting...
             </div>
         </template>
         <template v-else-if="isQuery()">
