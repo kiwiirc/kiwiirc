@@ -429,7 +429,7 @@ const state = new Vue({
                 };
             } else {
                 // Update the existing user object with any new info we have
-                let obj = network.users[user.nick];
+                let obj = state.getUser(network.id, user.nick);
                 _.each(user, (val, prop) => {
                     if (typeof val !== 'undefined') {
                         obj[prop] = val;
@@ -455,7 +455,7 @@ const state = new Vue({
         addUserToBuffer: function addUserToBuffer(buffer, user) {
             let network = this.getNetwork(buffer.networkid);
 
-            if (!network.users[user.nick]) {
+            if (!state.getUser(network.id, user.nick)) {
                 // Using $set for vues reactivity is very slow when connecting to
                 // a large BNC. We might not ever need full reactivity for the user
                 // objects so just add a plain object for now.
@@ -508,13 +508,16 @@ const state = new Vue({
 
         changeUserNick: function changeUserNick(networkid, oldNick, newNick) {
             let network = this.getNetwork(networkid);
-            if (!network || !network.users[oldNick]) {
+            if (!network) {
                 return;
             }
 
-            // TODO: Can we do all these state changes in one go? Each change
-            // causes a redraw inbetween.
-            network.users[oldNick].nick = newNick;
+            let user = state.getUser(network.id, oldNick);
+            if (!user) {
+                return;
+            }
+
+            user.nick = newNick;
             state.$set(network.users, newNick, network.users[oldNick]);
             state.$delete(network.users, oldNick);
 
