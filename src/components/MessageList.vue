@@ -1,8 +1,15 @@
 <template>
     <div class="kiwi-messagelist" @click="onThreadClick" @scroll.self="onThreadScroll">
         <div
+            v-if="!buffer.isServer() && chathistoryAvailable"
+            class="kiwi-messagelist-scrollback"
+        >
+            <a @click="requestScrollback" class="u-link">Load previous messages</a>
+        </div>
+
+        <div
             v-for="(message, idx) in filteredMessages"
-            :key="message.time"
+            key="message.time"
             class="kiwi-messagelist-message"
             v-bind:class="[
                 filteredMessages[idx-1] &&
@@ -46,6 +53,7 @@ export default {
     data: function data() {
         return {
             auto_scroll: true,
+            chathistoryAvailable: true,
         };
     },
     props: ['buffer', 'messages', 'users'],
@@ -61,7 +69,23 @@ export default {
                 list.push(this.messages[i]);
             }
 
-            return list.reverse();
+            list.sort((a, b) => {
+                if (a.time > b.time) {
+                    return 1;
+                } else if (b.time > a.time) {
+                    return -1;
+                }
+
+                return 0;
+            });
+
+            return list;
+        },
+        usersAsObject: function usersAsObject() {
+            return this.buffer.users.reduce((prev, cur) => {
+                prev[cur] = true;
+                return prev;
+            }, {});
         },
     },
     methods: {
@@ -75,11 +99,27 @@ export default {
                 addHandle: true,
                 handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
             });
-            formatted = TextFormatting.linkifyUsers(formatted, this.users);
+            formatted = TextFormatting.linkifyUsers(formatted, this.usersAsObject);
             return formatted;
         },
         nickStyle: function nickColour(nick) {
             return 'color:' + TextFormatting.createNickColour(nick) + ';';
+        },
+        requestScrollback: function requestScrollback() {
+            let lastMessage = this.filteredMessages[0];
+            if (!lastMessage) {
+                return;
+            }
+
+            let lastMessageTime = lastMessage.time;
+            let time = strftime('%FT%T.000Z', new Date(lastMessageTime));
+            let ircClient = this.buffer.getNetwork().ircClient;
+            ircClient.raw(`CHATHISTORY ${this.buffer.name} ${time} 50`);
+            ircClient.once('batch end chathistory', (event) => {
+                if (event.commands.length === 0) {
+                    this.chathistoryAvailable = false;
+                }
+            });
         },
         onThreadClick: function onThreadClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
@@ -133,6 +173,10 @@ export default {
 <style>
 .kiwi-messagelist {
     overflow-y: auto;
+}
+.kiwi-messagelist-scrollback {
+    text-align: center;
+    padding: 5px;
 }
 .kiwi-messagelist-nick,
 .kiwi-messagelist-time {
