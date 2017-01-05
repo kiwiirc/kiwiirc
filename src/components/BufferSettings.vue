@@ -5,7 +5,9 @@
             <b>Notify me when:</b><br />
             <input type="radio" name="alert_on" value="message" v-model="settingAlertOn">All messages<br />
             <input type="radio" name="alert_on" value="highlight" v-model="settingAlertOn">Somebody mentions me<br />
-            <input type="radio" name="alert_on" value="never" v-model="settingAlertOn">Never
+            <input type="radio" name="alert_on" value="never" v-model="settingAlertOn">Never<br />
+
+            <input type="checkbox" v-model="settingMuteSound">Mute alert sounds
         </div>
         <a @click="closeBuffer" class="u-link">Close {{buffer.name}}</a>
     </div>
@@ -30,6 +32,14 @@ export default {
             },
             set: function setSettingAlertOn(val) {
                 return this.buffer.setting('alert_on', val);
+            },
+        },
+        settingMuteSound: {
+            get: function getSettingAlertOn() {
+                return this.buffer.setting('mute_sound');
+            },
+            set: function setSettingAlertOn(val) {
+                return this.buffer.setting('mute_sound', val);
             },
         },
     },

@@ -54,6 +54,7 @@ import ControlInput from 'src/components/ControlInput';
 import MediaViewer from 'src/components/MediaViewer';
 import UserBox from 'src/components/UserBox';
 import * as Notifications from 'src/libs/Notifications';
+import * as AudioBleep from 'src/libs/AudioBleep';
 import logger from 'src/libs/Logger';
 import state from 'src/libs/state';
 import 'src/libs/InputCommands';
@@ -168,6 +169,7 @@ export default {
             this.hasStarted = true;
             Notifications.requestPermission();
             Notifications.listenForNewMessages(state);
+            AudioBleep.listenForHighlights(state);
         },
         emitDocumentClick: function emitDocumentClick(event) {
             state.$emit('document.clicked', event);

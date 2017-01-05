@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-messagelist" @click="onThreadClick" @scroll.self="onThreadScroll">
         <div
-            v-if="!buffer.isServer() && chathistoryAvailable"
+            v-if="shouldShowChathistoryTools"
             class="kiwi-messagelist-scrollback"
         >
             <a @click="requestScrollback" class="u-link">Load previous messages</a>
@@ -24,7 +24,12 @@
                     '',
             ]"
         >
-            <div class="kiwi-messagelist-time">{{formatTime(message.time)}}</div>
+            <div
+                v-if="bufferSetting('show_timestamps')"
+                class="kiwi-messagelist-time"
+            >
+                {{formatTime(message.time)}}
+            </div>
             <div
                 class="kiwi-messagelist-nick"
                 v-bind:style="nickStyle(message.nick)"
@@ -87,8 +92,15 @@ export default {
                 return prev;
             }, {});
         },
+        shouldShowChathistoryTools: function shouldShowChathistoryTools() {
+            let isCorrectBufferType = (this.buffer.isChannel() || this.buffer.isQuery());
+            return isCorrectBufferType && this.chathistoryAvailable;
+        },
     },
     methods: {
+        bufferSetting: function bufferSetting(key) {
+            return this.buffer.setting(key);
+        },
         formatTime: function formatTime(time) {
             return strftime(this.buffer.setting('timestamp_format') || '%T', new Date(time));
         },

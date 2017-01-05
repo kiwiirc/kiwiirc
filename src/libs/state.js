@@ -15,10 +15,15 @@ const stateObj = {
         // Default buffer settings
         buffers: {
             alert_on: 'highlight',
-            timestamp_format: '%T',
+            timestamp_format: '%H:%M:%S',
+            show_timestamps: true,
             scrollback_size: 250,
             show_joinparts: true,
+            traffic_as_activity: false,
             coloured_nicklist: true,
+            block_pms: false,
+            show_emoticons: true,
+            mute_sound: false,
         },
     },
     user_settings: {},
@@ -409,9 +414,16 @@ const state = new Vue({
             messages.messages.push(bufferMessage);
 
             // Increment the unread counter if this buffer is not active
-            if (
-                buffer.networkid !== this.ui.active_network ||
-                buffer.name !== this.ui.active_buffer
+            let includeAsActivity = true;
+            if (!buffer.setting('traffic_as_activity') && message.type === 'traffic') {
+                includeAsActivity = false;
+            }
+
+            if (includeAsActivity &&
+                (
+                    buffer.networkid !== this.ui.active_network ||
+                    buffer.name !== this.ui.active_buffer
+                )
             ) {
                 if (!buffer.flags.unread) {
                     this.$set(buffer.flags, 'unread', 1);
@@ -654,13 +666,15 @@ function initialiseBufferState(buffer) {
     });
     Object.defineProperty(buffer, 'isQuery', {
         value: function isQuery() {
+            // Internal buffer names
+            let ignorePrefix = '*';
             let chanPrefixes = ['#', '&'];
             let ircNetwork = buffer.getNetwork().ircClient.network;
             if (ircNetwork && ircNetwork.options.CHANTYPES) {
                 chanPrefixes = ircNetwork.options.CHANTYPES;
             }
 
-            return chanPrefixes.indexOf(buffer.name[0]) === -1;
+            return chanPrefixes.indexOf(buffer.name[0]) === -1 && buffer.name[0] !== ignorePrefix;
         },
     });
     // Get/set a setting set on this buffer. If undefined, get the global setting

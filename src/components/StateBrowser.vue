@@ -47,7 +47,7 @@
 
             <div class="kiwi-statebrowser-options">
                 <a @click="clickAddNetwork">Add network</a>
-                <a>Settings</a>
+                <a @click="clickAppSettings">Settings</a>
                 <a @click="clickForget">Forget Me</a>
             </div>
         </div>
@@ -58,6 +58,7 @@
 
 import _ from 'lodash';
 import state from 'src/libs/state';
+import AppSettings from './AppSettings';
 import NetworkSettings from './NetworkSettings';
 import BufferSettings from './BufferSettings';
 
@@ -129,6 +130,9 @@ export default {
             state.$emit('active.component', NetworkSettings, {
                 network,
             });
+        },
+        clickAppSettings: function clickAppSettings() {
+            state.$emit('active.component', AppSettings);
         },
         clickForget: function clickForget() {
             let msg = 'This will delete all stored networks and refresh the page. Are you sure?';
