@@ -4,7 +4,7 @@
             v-if="shouldShowChathistoryTools"
             class="kiwi-messagelist-scrollback"
         >
-            <a @click="requestScrollback" class="u-link">Load previous messages</a>
+            <a @click="buffer.requestScrollback()" class="u-link">Load previous messages</a>
         </div>
 
         <div
@@ -93,8 +93,14 @@ export default {
             }, {});
         },
         shouldShowChathistoryTools: function shouldShowChathistoryTools() {
+            // Only show it if we're connected
+            if (this.buffer.getNetwork().state !== 'connected') {
+                return false;
+            }
+
             let isCorrectBufferType = (this.buffer.isChannel() || this.buffer.isQuery());
-            return isCorrectBufferType && this.chathistoryAvailable;
+            let isSupported = !!this.buffer.getNetwork().ircClient.network.supports('chathistory');
+            return isCorrectBufferType && isSupported && this.buffer.flags.chathistory_available;
         },
     },
     methods: {
@@ -116,22 +122,6 @@ export default {
         },
         nickStyle: function nickColour(nick) {
             return 'color:' + TextFormatting.createNickColour(nick) + ';';
-        },
-        requestScrollback: function requestScrollback() {
-            let lastMessage = this.filteredMessages[0];
-            if (!lastMessage) {
-                return;
-            }
-
-            let lastMessageTime = lastMessage.time;
-            let time = strftime('%FT%T.000Z', new Date(lastMessageTime));
-            let ircClient = this.buffer.getNetwork().ircClient;
-            ircClient.raw(`CHATHISTORY ${this.buffer.name} ${time} 50`);
-            ircClient.once('batch end chathistory', (event) => {
-                if (event.commands.length === 0) {
-                    this.chathistoryAvailable = false;
-                }
-            });
         },
         onThreadClick: function onThreadClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
@@ -171,6 +161,20 @@ export default {
         },
     },
     watch: {
+        buffer: function watchBuffer(newBuffer) {
+            if (!newBuffer) {
+                return;
+            }
+
+            // First time opening this buffer, see if we can load any initial scrollback
+            if (!newBuffer.flags.has_opened && this.shouldShowChathistoryTools) {
+                newBuffer.requestScrollback();
+            }
+
+            if (this.buffer.getNetwork().state === 'connected') {
+                newBuffer.flags.has_opened = true;
+            }
+        },
         messages: function watchMessages() {
             if (this.auto_scroll) {
                 this.$nextTick(() => {

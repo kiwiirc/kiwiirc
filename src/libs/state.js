@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import _ from 'lodash';
+import strftime from 'strftime';
 import * as IrcClient from './IrcClient';
 
 const stateObj = {
@@ -345,19 +346,9 @@ const state = new Vue({
                 return false;
             }
 
-            buffer = {
-                networkid: network.id,
-                name: bufferName,
-                topic: '',
-                joined: false,
-                users: [],
-                flags: {
-                    unread: 0,
-                    alert_on: 'default',
-                },
-                settings: {
-                },
-            };
+            buffer = createEmptyBufferObject();
+            buffer.networkid = network.id;
+            buffer.name = bufferName;
             network.buffers.push(buffer);
 
             initialiseBufferState(buffer);
@@ -610,6 +601,8 @@ function createEmptyBufferObject() {
         flags: {
             unread: 0,
             alert_on: 'default',
+            has_opened: false,
+            chathistory_available: true,
         },
         settings: {
         },
@@ -691,6 +684,28 @@ function initialiseBufferState(buffer) {
                 state.settings.buffers[name];
 
             return result;
+        },
+    });
+    Object.defineProperty(buffer, 'requestScrollback', {
+        value: function requestScrollback() {
+            let time = '';
+            let lastMessage = this.getMessages()[0];
+
+            if (lastMessage) {
+                time = strftime('%FT%T.000Z', new Date(lastMessage.time));
+            } else {
+                time = strftime('%FT%T.000Z', new Date());
+            }
+
+            let ircClient = this.getNetwork().ircClient;
+            ircClient.raw(`CHATHISTORY ${this.name} ${time} 50`);
+            ircClient.once('batch end chathistory', (event) => {
+                if (event.commands.length === 0) {
+                    this.flags.chathistory_available = false;
+                } else {
+                    this.flags.chathistory_available = true;
+                }
+            });
         },
     });
 
