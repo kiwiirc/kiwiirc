@@ -29,7 +29,7 @@
                         v-if="mediaviewerOpen"
                         :url="mediaviewerUrl"
                     ></media-viewer>
-                    <control-input :container="networks"></control-input>
+                    <control-input :container="networks" :buffer="buffer"></control-input>
                 </template>
 
                 <component v-bind:is="activeComponent" v-bind="activeComponentProps"></component>
