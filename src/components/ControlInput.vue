@@ -93,9 +93,11 @@ export default {
                 endingVal = endingVal.substr(idx);
             }
 
-            // If no endingVal because we're at the end of the input, auto insert punctuation
-            if (!endingVal) {
+            // If no beginningVal because we're at the start of the input, auto insert punctuation
+            if (!beginningVal) {
                 insert += ', ';
+            } else {
+                insert += ' ';
             }
 
             this.value = `${beginningVal}${insert}${endingVal}`;
