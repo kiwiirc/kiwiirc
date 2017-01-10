@@ -4,6 +4,9 @@ import strftime from 'strftime';
 import * as IrcClient from './IrcClient';
 
 const stateObj = {
+    // May be set by a StatePersistence instance
+    persistence: null,
+
     // Settings may be overridden via config.json
     settings: {
         windowTitle: 'Kiwi IRC - The web IRC client',

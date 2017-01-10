@@ -48,7 +48,7 @@
             <div class="kiwi-statebrowser-options">
                 <a @click="clickAddNetwork">Add network</a>
                 <a @click="clickAppSettings">Settings</a>
-                <a @click="clickForget">Forget Me</a>
+                <a @click="clickForget" v-if="isPersistingState">Forget Me</a>
             </div>
         </div>
     </div>
@@ -135,16 +135,13 @@ export default {
             state.$emit('active.component', AppSettings);
         },
         clickForget: function clickForget() {
-            let msg = 'This will delete all stored networks and refresh the page. Are you sure?';
+            let msg = 'This will delete all stored networks and start fresh. Are you sure?';
             let confirmed = confirm(msg);
             if (!confirmed) {
                 return;
             }
 
-            state.resetState();
-            setTimeout(() => {
-                window.location.reload();
-            }, 5000);
+            state.persistence.forgetState();
         },
     },
     computed: {
@@ -160,6 +157,9 @@ export default {
             }
 
             return state.getBufferByName(this.popup_networkid, this.popup_buffername);
+        },
+        isPersistingState: function isPersistingState() {
+            return !!state.persistence;
         },
     },
     created: function created() {

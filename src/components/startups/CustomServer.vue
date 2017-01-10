@@ -56,9 +56,9 @@
 
 <script>
 
-import _ from 'lodash';
 import * as Storage from 'src/libs/storage/Local';
 import state from 'src/libs/state';
+import StatePersistence from 'src/libs/StatePersistence';
 import logger from 'src/libs/Logger';
 
 export default {
@@ -100,25 +100,16 @@ export default {
         },
     },
     created: async function created() {
+        let persist = new StatePersistence('kiwi-state', state, Storage, logger);
+        await persist.loadStateIfExists();
+        persist.watchStateForChanges();
+
         // If we have networks from a previous state, launch directly into it
-        let storedState = await Storage.get('kiwi-state');
-        if (storedState) {
-            logger('Importing state', storedState);
-            state.importState(storedState);
-            if (state.networks.length > 0) {
-                let network = state.networks[0];
-                state.setActiveBuffer(network.id, network.serverBuffer().name);
-                this.$emit('start');
-            }
+        if (state.networks.length > 0) {
+            let network = state.networks[0];
+            state.setActiveBuffer(network.id, network.serverBuffer().name);
+            this.$emit('start');
         }
-
-        // Throttle saving the state into storage so we don't thrash the disk
-        let debouncedSaveState = _.debounce(() => {
-            logger('Networks updated, setting localStorage');
-            Storage.set('kiwi-state', state.exportState());
-        }, 1000);
-
-        state.$watch('networks', debouncedSaveState, { deep: true });
     },
 };
 </script>
