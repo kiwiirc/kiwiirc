@@ -2,18 +2,9 @@ import Irc from 'irc-framework/browser';
 import * as ServerConnection from './ServerConnection';
 
 export function create(state, networkid) {
-    // Provide our own transport for IrcFramework to use a kiwi server
-    // When direct websockts are used, this transport does not need to be provided
-    let channelTransport = ServerConnection.createChannelConstructor(
-        state.settings.kiwiServer,
-        (window.location.hash || '').substr(1),
-        networkid
-    );
-
     let network = state.getNetwork(networkid);
 
-    let ircClient = new Irc.Client({
-        transport: channelTransport,
+    let clientOpts = {
         host: network.connection.server,
         port: network.connection.port,
         tls: network.connection.tls,
@@ -23,8 +14,21 @@ export function create(state, networkid) {
         gecos: 'https://kiwiirc.com/',
         version: 'Kiwi IRC',
         auto_reconnect: false,
-    });
+    };
 
+    // A direct connection uses a websocket to connect (note: some browsers limit
+    // the number of connections to the same host!).
+    // A non-direct connection will connect via the configured kiwi server using
+    // with our own irc-framework compatible transport.
+    if (!network.connection.direct) {
+        clientOpts.transport = ServerConnection.createChannelConstructor(
+            state.settings.kiwiServer,
+            (window.location.hash || '').substr(1),
+            networkid
+        );
+    }
+
+    let ircClient = new Irc.Client(clientOpts);
     ircClient.use(clientMiddleware(state, networkid));
 
     // Overload the connect() function to make sure we are connecting with the

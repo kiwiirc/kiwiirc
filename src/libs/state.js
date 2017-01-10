@@ -159,6 +159,7 @@ const state = new Vue({
                         port: network.connection.port,
                         tls: network.connection.tls,
                         password: network.connection.password,
+                        direct: network.connection.direct,
                     },
                     settings: _.cloneDeep(network.settings),
                     nick: network.nick,
@@ -198,7 +199,6 @@ const state = new Vue({
 
                     this.networks.push(network);
                     initialiseNetworkState(network);
-                    console.log(network);
 
                     importNetwork.buffers.forEach(importBuffer => {
                         let buffer = createEmptyBufferObject();
@@ -251,6 +251,7 @@ const state = new Vue({
                     port: serverInfo.port || 6667,
                     tls: serverInfo.tls || false,
                     password: serverInfo.password || '',
+                    direct: serverInfo.direct,
                 },
                 settings: {},
                 nick: nick,
@@ -585,6 +586,7 @@ function createEmptyNetworkObject() {
             port: 6667,
             tls: false,
             password: '',
+            direct: false,
         },
         settings: {},
         nick: '',
