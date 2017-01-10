@@ -1,44 +1,42 @@
 <template>
     <div class="kiwi-welcome-simple">
         <h2>Welcome to Kiwi IRC!</h2>
-        <a class="kiwi-welcome-simple-start" @click="startUp">Join the conversation!</a>
+
+        <template v-if="!network">
+            <a class="u-button u-button-primary kiwi-welcome-simple-start" @click="startUp">Join the conversation!</a>
+        </template>
+        <template v-else-if="network.state !== 'connected'">
+            Loading...
+        </template>
+        
     </div>
 </template>
 
 <script>
 
 import state from 'src/libs/state';
-import logger from 'src/libs/Logger';
 
 export default {
+    data: function data() {
+        return {
+            network: null,
+        };
+    },
     methods: {
         startUp: function startUp() {
-            let storedState = null;
-            try {
-                storedState = localStorage.getItem('kiwi-state');
-            } catch (err) {
-                logger.error('Error reading state from localStorage', err.stack);
-            }
-
-            if (0 && storedState) {
-                logger('Importing state', storedState);
-                state.importState(storedState);
-            } else {
-                let net = state.addNetwork('freenode', 'prawnsalad', {
-                    server: 'irc.rizon.net',
-                    port: 6667,
-                    tls: false,
-                });
-                state.addBuffer(net.id, '#kiwiirc-dev');
-                state.setActiveBuffer(net.id, '#kiwiirc-dev');
-            }
-
-            state.$watch('networks', () => {
-                logger('Setting localStorage');
-                localStorage.setItem('kiwi-state', state.exportState());
+            let net = this.network = state.addNetwork('freenode', 'kiwidev', {
+                server: 'irc.freenode.net',
+                port: 6667,
+                tls: false,
+                //direct: true,
             });
+            state.addBuffer(net.id, '#kiwiirc-dev').joined = true;
+            state.setActiveBuffer(net.id, '#kiwiirc-dev');
 
-            this.$emit('start');
+            net.ircClient.connect();
+            net.ircClient.once('registered', () => {
+                this.$emit('start');
+            });
         },
     },
 };
