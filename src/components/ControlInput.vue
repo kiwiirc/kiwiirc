@@ -170,8 +170,9 @@ export default {
                 this.autocomplete_open = true;
             } else if (inputVal === '/') {
                 // Just typed / so start the command auto completion
-                this.autocomplete_items = this.buildAutoCompleteItems({ commands: true });
-                this.autocomplete_open = true;
+                // TODO: Get the commands typed up so this can be enabled
+                // this.autocomplete_items = this.buildAutoCompleteItems({ commands: true });
+                // this.autocomplete_open = true;
             } else if (currentToken === '#') {
                 // Just typed # so start the command auto completion
                 this.autocomplete_items = this.buildAutoCompleteItems({ buffers: true });
