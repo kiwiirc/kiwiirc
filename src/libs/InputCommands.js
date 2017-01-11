@@ -65,11 +65,25 @@ function processLine(rawLine) {
     let command = line.substr(0, spaceIdx);
     let params = line.substr(spaceIdx + 1);
 
-    state.$emit('input.command.' + command, command, params);
+    let eventObj = {
+        handled: false,
+        raw: rawLine,
+        command: command,
+        params: params,
+    };
+
+    // Include command and params as their own arguments just for ease of use
+    state.$emit('input.command.' + command, event, command, params);
+
+    if (!eventObj.handled) {
+        activeNetwork.ircClient.raw(line);
+    }
 }
 
 
-function handleMessage(type, command, line) {
+function handleMessage(type, event, command, line) {
+    event.handled = true;
+
     let spaceIdx = line.indexOf(' ');
     if (spaceIdx === -1) spaceIdx = line.length;
 
@@ -103,7 +117,9 @@ state.$on('input.command.me', _.partial(handleMessage, 'action'));
 state.$on('input.command.notice', _.partial(handleMessage, 'notice'));
 
 
-state.$on('input.command.join', (command, line) => {
+state.$on('input.command.join', (event, command, line) => {
+    event.handled = true;
+
     let spaceIdx = line.indexOf(' ');
     if (spaceIdx === -1) spaceIdx = line.length;
 
@@ -119,7 +135,9 @@ state.$on('input.command.join', (command, line) => {
 });
 
 
-state.$on('input.command.part', (command, line) => {
+state.$on('input.command.part', (event, command, line) => {
+    event.handled = true;
+
     let network = state.getActiveNetwork();
     let bufferNames = _.compact(line.split(','));
     if (bufferNames.length === 0) {
@@ -132,7 +150,9 @@ state.$on('input.command.part', (command, line) => {
 });
 
 
-state.$on('input.command.nick', (command, line) => {
+state.$on('input.command.nick', (event, command, line) => {
+    event.handled = true;
+
     let spaceIdx = line.indexOf(' ');
     if (spaceIdx === -1) spaceIdx = line.length;
 
@@ -142,13 +162,17 @@ state.$on('input.command.nick', (command, line) => {
 });
 
 
-state.$on('input.command.quote', (command, line) => {
+state.$on('input.command.quote', (event, command, line) => {
+    event.handled = true;
+
     let network = state.getActiveNetwork();
     network.ircClient.raw(line);
 });
 
 
-state.$on('input.command.server', (command, line) => {
+state.$on('input.command.server', (event, command, line) => {
+    event.handled = true;
+
     let parts = line.split(' ');
     let serverAddr = parts[0];
     let serverPort = parts[1] || 6667;
