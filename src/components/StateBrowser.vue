@@ -222,9 +222,10 @@ export default {
 }
 
 .kiwi-statebrowser-newchannel {
-    margin-top: 1em;
+    margin: 1em 0.5em;
 }
 .kiwi-statebrowser-newchannel-inputwrap {
+    border-radius: 3px;
     background: #fff;
     padding: 3px;
     position: relative;
