@@ -42,6 +42,12 @@
                             </div>
                         </div>
                     </div>
+
+                    <form @submit.prevent="submitNewChannelForm" class="kiwi-statebrowser-newchannel">
+                        <div class="kiwi-statebrowser-newchannel-inputwrap">
+                            <input type="text" placeholder="Join new #channel" v-model="new_channel_input" /> <i @click="submitNewChannelForm" class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -69,6 +75,7 @@ export default {
             popup_buffername: null,
             popup_networkid: null,
             popup_top: 0,
+            new_channel_input: '',
         };
     },
     props: ['networks'],
@@ -122,6 +129,15 @@ export default {
                 this.popup_buffername = buffer.name;
                 this.popup_networkid = buffer.networkid;
                 this.popup_top = domY;
+            }
+        },
+        submitNewChannelForm: function submitNewChannelForm() {
+            let newChannelVal = this.new_channel_input;
+            this.new_channel_input = '';
+
+            // Simply pass it onto the /join handler so it acts in the same way
+            if (newChannelVal) {
+                state.$emit('input.raw', '/join ' + newChannelVal);
             }
         },
         clickAddNetwork: function clickAddNetwork() {
@@ -203,6 +219,30 @@ export default {
     position: absolute;
     left: 100%;
     width: 100%;
+}
+
+.kiwi-statebrowser-newchannel {
+    margin-top: 1em;
+}
+.kiwi-statebrowser-newchannel-inputwrap {
+    background: #fff;
+    padding: 3px;
+    position: relative;
+}
+.kiwi-statebrowser-newchannel-inputwrap input {
+    outline: none;
+    border: none;
+    display: block;
+    /* left: 0; */
+    /* right: 10px; */
+    width: calc(100% - 20px);
+    margin-right: 30px;
+}
+.kiwi-statebrowser-newchannel-inputwrap i {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
 }
 
 .kiwi-statebrowser-options {
