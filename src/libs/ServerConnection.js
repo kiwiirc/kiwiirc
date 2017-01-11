@@ -21,6 +21,7 @@ import EventEmitter from 'eventemitter3';
  */
 
 const serverConnections = Object.create(null);
+const createdChannels = Object.create(null);
 const controlChannel = '0';
 
 export function createChannelConstructor(_addr, sessionId, _socketChannel) {
@@ -122,7 +123,18 @@ function createNewConnection(wsAddr, sessionId) {
  * The ConnectionChannel implements an IrcFramework transport
  */
 function createChannelOnConnection(connection, channelId) {
-    return function ConnectionChannel(options) {
+    // Only allow 1 ConnectionChannel instance per channel
+    return function ConnectionChannelWrapper(options) {
+        if (!createdChannels[channelId]) {
+            createdChannels[channelId] = new ConnectionChannel(options);
+        } else {
+            createdChannels[channelId].initChannel();
+        }
+
+        return createdChannels[channelId];
+    };
+
+    function ConnectionChannel(options) {
         let sendControlBuffer = [];
         let channel = new EventEmitter();
         channel.id = channelId;
@@ -211,11 +223,14 @@ function createChannelOnConnection(connection, channelId) {
         // This is not supported but irc-framework transports need it, so just noop it
         channel.setEncoding = function setEncoding() {};
 
+        channel.initChannel = function initChannel() {
+            connection.ws.send(':' + channelId);
+        };
         // Let the server know of this new channel if we're already connected
         if (connection.connected) {
-            connection.ws.send(':' + channelId);
+            channel.initChannel();
         }
 
         return channel;
-    };
+    }
 }
