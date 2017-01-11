@@ -46,6 +46,7 @@
 import 'font-awesome-webpack';
 
 import startupWelcome from 'src/components/startups/Welcome';
+import startupWelcomeRizon from 'src/components/startups/WelcomeRizon';
 import startupCustomServer from 'src/components/startups/CustomServer';
 import startupKiwiBnc from 'src/components/startups/KiwiBnc';
 import StateBrowser from 'src/components/StateBrowser';
@@ -105,6 +106,7 @@ export default {
             welcome: startupWelcome,
             customServer: startupCustomServer,
             kiwiBnc: startupKiwiBnc,
+            welcomeRizon: startupWelcomeRizon,
         };
         if (!state.settings.startupScreen) {
             logger('no startup screen');

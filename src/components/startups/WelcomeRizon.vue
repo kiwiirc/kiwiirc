@@ -41,13 +41,23 @@ export default {
                     tls: false,
                     direct: true,
                 });
-                net.ircClient.connect();
+
                 state.addBuffer(net.id, '#kiwiirc').joined = true;
                 state.setActiveBuffer(net.id, '#kiwiirc');
+            } else {
+                let net = state.networks[0];
+                state.setActiveBuffer(net.id, net.serverBuffer().name);
             }
 
             // Lets run kiwi
             this.$emit('start');
+
+            // Give the DOM some time to update itself first, and then start connecting
+            this.$nextTick(() => {
+                setTimeout(() => {
+                    state.networks[0].ircClient.connect();
+                }, 200);
+            });
         },
     },
 };
