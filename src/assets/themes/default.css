@@ -114,6 +114,26 @@
     background: #525252;
     padding: 4px 0;
 }
+.kiwi-statebrowser-network-status {
+    background: #4a4a4a;
+    text-align: center;
+    padding: 4px;
+    overflow: hidden;
+    position: relative;
+    height: 1.3em;
+    font-size: 0.9em;
+}
+/* During DOM entering and leaving */
+.kiwi-statebrowser-network-status-transition-enter-active,
+.kiwi-statebrowser-network-status-transition-leave-active {
+    transition: height .7s, padding .7s;
+}
+/*  */
+.kiwi-statebrowser-network-status-transition-enter,
+.kiwi-statebrowser-network-status-transition-leave-active {
+    height: 0;
+    padding: 0;
+}
 
 .kiwi-statebrowser-channel {
     margin-top: 5px;
@@ -141,10 +161,10 @@
     background: green;
 }
 
-.kiwi-statebarowser-channel-label-transition-enter-active, .kiwi-statebarowser-channel-label-transition-leave-active {
+.kiwi-statebrowser-channel-label-transition-enter-active, .kiwi-statebrowser-channel-label-transition-leave-active {
     transition: opacity 0.1s;
 }
-.kiwi-statebarowser-channel-label-transition-enter, .kiwi-statebarowser-channel-label-transition-leave-active {
+.kiwi-statebrowser-channel-label-transition-enter, .kiwi-statebrowser-channel-label-transition-leave-active {
     opacity: 0;
 }
 

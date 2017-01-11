@@ -16,6 +16,18 @@
                 <div class="kiwi-statebrowser-network" v-for="network in networks">
                     <a class="kiwi-statebrowser-network-name u-link" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
 
+                        <transition name="kiwi-statebrowser-network-status-transition">
+                        <div v-if="network.state !== 'connected'" class="kiwi-statebrowser-network-status">
+                            <template v-if="network.state === 'disconnected'">
+                                Not connected.
+                                <a @click="network.ircClient.connect()" class="u-link">Connect</a>
+                            </template>
+                            <template v-else-if="network.state === 'connecting'">
+                                Connecting...
+                            </template>
+                        </div>
+                        </transition>
+
                     <div class="kiwi-statebrowser-channels">
                         <div
                             v-for="buffer in orderedBuffers(network.buffers)"
@@ -27,7 +39,7 @@
                         >
                             <div class="kiwi-statebrowser-channel-name u-link" @click="setActiveBuffer(buffer)">{{buffer.name}}</div>
                             <div class="kiwi-statebrowser-channel-labels">
-                                <transition name="kiwi-statebarowser-channel-label-transition">
+                                <transition name="kiwi-statebrowser-channel-label-transition">
                                 <div v-if="buffer.flags.unread" class="kiwi-statebrowser-channel-label">
                                     {{buffer.flags.unread}}
                                 </div>
@@ -43,7 +55,11 @@
                         </div>
                     </div>
 
-                    <form @submit.prevent="submitNewChannelForm" class="kiwi-statebrowser-newchannel">
+                    <form
+                        v-if="network.state === 'connected'"
+                        @submit.prevent="submitNewChannelForm"
+                        class="kiwi-statebrowser-newchannel"
+                    >
                         <div class="kiwi-statebrowser-newchannel-inputwrap">
                             <input type="text" placeholder="Join new #channel" v-model="new_channel_input" /> <i @click="submitNewChannelForm" class="fa fa-plus" aria-hidden="true"></i>
                         </div>
