@@ -35,7 +35,7 @@ export default {
             forceLoader: false,
         };
     },
-    props: ['buffer'],
+    props: ['buffer', 'network'],
     computed: {
         netStatus: function netStatus() {
             return this.buffer.getNetwork().state;
@@ -46,7 +46,7 @@ export default {
             // loder stay visible for at elast X seconds to indicate it's actually
             // tried something.
             let minimumLoaderViewtime = 2000;
-            let networkState = this.buffer.getNetwork().state;
+            let networkState = this.network.state;
 
             if (networkState !== 'disconnected' || this.forceLoader) {
                 this.forceLoader = true;

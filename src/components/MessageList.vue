@@ -40,7 +40,11 @@
             <div class="kiwi-messagelist-body" v-html="formatMessage(message.message)"></div>
         </div>
 
-        <not-connected v-if="buffer.getNetwork().state !== 'connected'" :buffer="buffer"></not-connected>
+        <not-connected
+            v-if="buffer.getNetwork().state !== 'connected'"
+            :buffer="buffer"
+            :network="buffer.getNetwork()"
+        ></not-connected>
     </div>
 </template>
 
