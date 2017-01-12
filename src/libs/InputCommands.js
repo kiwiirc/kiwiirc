@@ -150,6 +150,27 @@ state.$on('input.command.part', (event, command, line) => {
 });
 
 
+state.$on('input.command.close', (event, command, line) => {
+    event.handled = true;
+
+    let network = state.getActiveNetwork();
+    let bufferNames = _.compact(line.split(/[, ]/));
+    if (bufferNames.length === 0) {
+        bufferNames = [state.getActiveBuffer().name];
+    }
+
+    bufferNames.forEach((bufferName) => {
+        let buffer = network.bufferByName(bufferName);
+        if (!buffer) {
+            return;
+        }
+
+        network.ircClient.part(bufferName);
+        state.removeBuffer(buffer);
+    });
+});
+
+
 state.$on('input.command.nick', (event, command, line) => {
     event.handled = true;
 
