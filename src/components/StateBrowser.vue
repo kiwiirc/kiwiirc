@@ -18,7 +18,10 @@
 
                         <transition name="kiwi-statebrowser-network-status-transition">
                         <div v-if="network.state !== 'connected'" class="kiwi-statebrowser-network-status">
-                            <template v-if="network.state === 'disconnected'">
+                            <template v-if="!network.connection.server">
+                                <a @click="showNetworkSettings(network)" class="u-link">Configure network</a>
+                            </template>
+                            <template v-else-if="network.state === 'disconnected'">
                                 Not connected.
                                 <a @click="network.ircClient.connect()" class="u-link">Connect</a>
                             </template>
