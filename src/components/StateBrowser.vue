@@ -56,7 +56,7 @@
                     </div>
 
                     <form
-                        v-if="network.state === 'connected' && network.connection.server !== ''"
+                        v-if="network.state === 'connected'"
                         @submit.prevent="submitNewChannelForm"
                         class="kiwi-statebrowser-newchannel"
                     >
