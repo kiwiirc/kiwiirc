@@ -124,8 +124,8 @@ export default {
             }
 
             if (event.keyCode === 13) {
-                this.submitForm();
                 event.preventDefault();
+                this.submitForm();
             } else if (event.keyCode === 38) {
                 // Up
                 this.historyBack();
