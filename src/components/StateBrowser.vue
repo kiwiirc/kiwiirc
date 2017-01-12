@@ -154,6 +154,15 @@ export default {
             // Simply pass it onto the /join handler so it acts in the same way
             if (newChannelVal) {
                 state.$emit('input.raw', '/join ' + newChannelVal);
+
+                // newChannelVal could be in the format of '#chan key' so take
+                // the first word as the channel name
+                let chanName = newChannelVal.split(' ')[0];
+                let network = state.getActiveNetwork();
+                let buffer = network.bufferByName(chanName);
+                if (buffer) {
+                    state.setActiveBuffer(network.id, chanName);
+                }
             }
         },
         clickAddNetwork: function clickAddNetwork() {
