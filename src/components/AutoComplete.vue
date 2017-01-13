@@ -107,9 +107,15 @@ export default {
             let handled = false;
 
             if (event.keyCode === 13) {
-                this.selectCurrentItem();
-                event.preventDefault();
-                handled = true;
+                // If no item is selected (ie. on an empty list), leave the return key
+                // to do its default action as if the autocomplete box isn't active.
+                if (!this.selectedValue) {
+                    this.cancel();
+                } else {
+                    this.selectCurrentItem();
+                    event.preventDefault();
+                    handled = true;
+                }
             } else if (event.keyCode === 38 || (event.keyCode === 9 && event.shiftKey)) {
                 // Up or tab + shift
                 if (this.selected_idx > 0) {
