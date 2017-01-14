@@ -64,7 +64,13 @@
                         class="kiwi-statebrowser-newchannel"
                     >
                         <div class="kiwi-statebrowser-newchannel-inputwrap">
-                            <input type="text" placeholder="Join new #channel" v-model="new_channel_input" /> <i @click="submitNewChannelForm" class="fa fa-plus" aria-hidden="true"></i>
+                            <input
+                                type="text"
+                                placeholder="Join new #channel"
+                                v-model="new_channel_input"
+                                @focus="onNewChannelInputFocus"
+                                @blur="onNewChannelInputBlur"
+                            /> <i @click="submitNewChannelForm" class="fa fa-plus" aria-hidden="true"></i>
                         </div>
                     </form>
                 </div>
@@ -150,9 +156,21 @@ export default {
                 this.popup_top = domY;
             }
         },
+        onNewChannelInputFocus: function onNewChannelInputFocus() {
+            // Auto insert the # if no value is already in. Easier for mobile users
+            if (!this.new_channel_input) {
+                this.new_channel_input = '#';
+            }
+        },
+        onNewChannelInputBlur: function onNewChannelInputBlur() {
+            // Remove the # since we may have auto inserted it as they tabbed past
+            if (this.new_channel_input === '#') {
+                this.new_channel_input = '';
+            }
+        },
         submitNewChannelForm: function submitNewChannelForm() {
             let newChannelVal = this.new_channel_input;
-            this.new_channel_input = '';
+            this.new_channel_input = '#';
 
             // Simply pass it onto the /join handler so it acts in the same way
             if (newChannelVal) {
