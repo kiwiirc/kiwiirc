@@ -202,8 +202,8 @@ export function linkifyUrls(input, _opts) {
     return result;
 }
 
-export function linkifyChannels(input) {
-    return input.replace(/(^|\s)([#&][^ .,\007<>]+)/ig, _channel => {
+export function linkifyChannels(word) {
+    return word.replace(/(^|\s)([#&][^ .,\007<>]+)$/i, _channel => {
         let channelName = _channel.trim();
         return `<a class="u-link kiwi-channel" data-channel-name="${_.escape(channelName)}">` +
             _.escape(_channel) +
@@ -211,19 +211,30 @@ export function linkifyChannels(input) {
     });
 }
 
-export function linkifyUsers(input, userlist) {
-    let words = input.split(' ');
-    words = words.map(word => {
-        if (!userlist[word]) {
-            return word;
-        }
+export function linkifyUsers(word, userlist) {
+    let ret = '';
+    let nick = '';
+    let append = '';
 
-        let escaped = _.escape(word);
-        let colour = createNickColour(word);
-        return `<a class="kiwi-nick" data-nick="${escaped}" style="color:${colour}">${escaped}</a>`;
-    });
+    if (userlist[word]) {
+        nick = word;
+    } else if (userlist[word.substr(0, word.length - 1)]) {
+        // The last character is usually punctuation of some kind
+        nick = word.substr(0, word.length - 1);
+        append = word[word.length - 1];
+    } else {
+        return word;
+    }
 
-    return words.join(' ');
+    let escaped = _.escape(nick);
+    let colour = createNickColour(nick);
+    ret = `<a class="kiwi-nick" data-nick="${escaped}" style="color:${colour}">${escaped}</a>`;
+
+    if (append) {
+        ret += _.escape(append);
+    }
+
+    return ret;
 }
 
 /**

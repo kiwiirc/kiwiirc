@@ -51,6 +51,7 @@
 <script>
 
 import strftime from 'strftime';
+import _ from 'lodash';
 import state from 'src/libs/state';
 import * as TextFormatting from 'src/helpers/TextFormatting';
 import NotConnected from './NotConnected';
@@ -115,14 +116,29 @@ export default {
             return strftime(this.buffer.setting('timestamp_format') || '%T', new Date(time));
         },
         formatMessage: function formatMessage(messageBody) {
-            let formatted = TextFormatting.ircCodesToHtml(messageBody);
-            formatted = TextFormatting.linkifyChannels(formatted);
-            formatted = TextFormatting.linkifyUrls(formatted, {
-                addHandle: true,
-                handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
+            let words = messageBody.split(' ');
+            words = words.map(word => {
+                let parsed;
+
+                parsed = TextFormatting.linkifyUrls(word, {
+                    addHandle: true,
+                    handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
+                });
+                if (parsed !== word) return parsed;
+
+                parsed = TextFormatting.linkifyChannels(word);
+                if (parsed !== word) return parsed;
+
+                parsed = TextFormatting.linkifyUsers(word, this.usersAsObject);
+                if (parsed !== word) return parsed;
+
+                return _.escape(word);
             });
-            formatted = TextFormatting.linkifyUsers(formatted, this.usersAsObject);
-            return formatted;
+
+            let parsed = words.join(' ');
+            parsed = TextFormatting.ircCodesToHtml(parsed);
+
+            return parsed;
         },
         nickStyle: function nickColour(nick) {
             return 'color:' + TextFormatting.createNickColour(nick) + ';';
