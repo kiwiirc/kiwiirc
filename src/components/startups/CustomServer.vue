@@ -19,6 +19,25 @@
                     <span>Password</span>
                     <input type="password" v-model="password" />
                 </label>
+                <label>
+                    <span>Channel</span>
+                    <input type="text" v-model="channel" />
+                </label>
+            </template>
+
+            <template v-if="server_type === 'default_simple'">
+                <label>
+                    <span>Nick</span>
+                    <input type="text" v-model="nick" />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" v-model="password" />
+                </label>
+                <label>
+                    <span>Channel</span>
+                    <input type="text" v-model="channel" />
+                </label>
             </template>
 
             <template v-if="server_type === 'znc'">
@@ -47,7 +66,7 @@
             <button type="submit" class="u-button u-button-primary u-submit">Connect</button>
         </form>
 
-        <div class="kiwi-welcome-server-types">
+        <div v-if="show_type_switcher" class="kiwi-welcome-server-types">
             <a @click="server_type = 'default'" class="u-link">Network</a>
             <a @click="server_type = 'znc'" class="u-link">ZNC</a>
         </div>
@@ -69,31 +88,48 @@ export default {
             tls: false,
             nick: '',
             password: '',
+            channel: '',
             znc_network: '',
+            show_type_switcher: true,
         };
     },
     methods: {
         startUp: function startUp() {
             let net;
 
-            if (this.server_type === 'default') {
-                net = state.addNetwork('Network', this.nick, {
-                    server: this.server.split(':')[0],
-                    port: parseInt(this.server.split(':')[1] || 6667, 10),
-                    tls: this.tls,
-                    password: this.password,
-                });
-            } else if (this.server_type === 'znc') {
+            if (this.server_type === 'znc') {
                 net = state.addNetwork('ZNC', this.nick, {
                     server: this.server.split(':')[0],
                     port: parseInt(this.server.split(':')[1] || 6667, 10),
                     tls: this.tls,
                     password: this.nick + '/' + this.znc_network + ':' + this.password,
                 });
+            } else {
+                net = state.addNetwork('Network', this.nick, {
+                    server: this.server.split(':')[0],
+                    port: parseInt(this.server.split(':')[1] || 6667, 10),
+                    tls: this.tls,
+                    password: this.password,
+                });
             }
 
             if (net) {
-                state.setActiveBuffer(net.id, net.serverBuffer().name);
+                let hasSetActiveBuffer = false;
+
+                this.channel.split(',').forEach((channelName, idx) => {
+                    let buffer = state.addBuffer(net.id, channelName);
+                    buffer.joined = true;
+
+                    if (idx === 0) {
+                        state.setActiveBuffer(net.id, buffer.name);
+                        hasSetActiveBuffer = true;
+                    }
+                });
+
+                if (!hasSetActiveBuffer) {
+                    state.setActiveBuffer(net.id, net.serverBuffer().name);
+                }
+
                 net.ircClient.connect();
                 this.$emit('start');
             }
@@ -138,11 +174,23 @@ export default {
                     }
                 });
 
+                let channels = (m[5] || params.channel || '');
+                channels = channels.split(',').map(_channelName => {
+                    let hasPrefix = _channelName[0] === '#' ||
+                        _channelName[0] === '&';
+
+                    let channelName = hasPrefix ?
+                        _channelName :
+                        '#' + _channelName;
+
+                    return channelName;
+                });
+
                 connections.push({
                     tls: tls,
                     server: m[2],
                     port: parseInt(m[4] || (tls ? 6697 : 6667), 10),
-                    channel: m[5] || params.channel || '',
+                    channels: channels,
                     nick: params.nick || '',
                 });
             });
@@ -153,11 +201,14 @@ export default {
                 saveThisSessionsState = true;
             } else if (connections.length === 1) {
                 saveThisSessionsState = false;
+                this.server_type = 'default_simple';
+                this.show_type_switcher = false;
 
                 let con = connections[0];
                 this.server = con.server + ':' + con.port;
                 this.tls = con.tls;
                 this.nick = con.nick;
+                this.channel = con.channels.join(',');
             } else if (connections.length > 1) {
                 saveThisSessionsState = false;
 
@@ -169,18 +220,10 @@ export default {
                         password: con.password || '',
                     });
 
-                    if (con.channel) {
-                        con.channel.split(',').forEach(_channelName => {
-                            let hasPrefix = _channelName[0] === '#' ||
-                                _channelName[0] === '&';
-
-                            let channelName = hasPrefix ?
-                                _channelName :
-                                '#' + _channelName;
-
-                            state.addBuffer(net.id, channelName).joined = true;
-                        });
-                    }
+                    con.channels.forEach(channelName => {
+                        let buffer = state.addBuffer(net.id, channelName);
+                        buffer.joined = true;
+                    });
 
                     // Set the first server buffer active
                     if (idx === 0) {
