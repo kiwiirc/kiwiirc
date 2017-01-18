@@ -149,6 +149,14 @@ export default {
             this.$emit('start');
         } else if (window.location.hash.substr(1)) {
             let fragment = window.location.hash.substr(1);
+
+            // Check to see if we're dealing with an encoded irc: uri (browsers do this
+            // when clicking an IRC link)
+            let uriCheck = fragment.substr(0, 7).toLowerCase();
+            if (uriCheck === 'ircs%3a' || uriCheck.substr(0, 6) === 'irc%3a') {
+                fragment = decodeURIComponent(fragment);
+            }
+
             // [ircs?://]irc.network.net:[+]6667/channel?nick=mynick;
             // Parse connection string such as this ^ into an object. Multiple connections
             // may be given, separated by ;
