@@ -186,6 +186,7 @@ export default {
                     return channelName;
                 });
 
+                // Replace ? with a random number
                 let randomNickReplacement = Math.floor(Math.random() * 100).toString();
                 let nick = (params.nick || '').replace(/\?/g, randomNickReplacement);
 
