@@ -149,7 +149,7 @@ export default {
             this.$emit('start');
         } else if (window.location.hash.substr(1)) {
             let fragment = window.location.hash.substr(1);
-            // [ircs?://]irc.network.net:[+]6667/channel;
+            // [ircs?://]irc.network.net:[+]6667/channel?nick=mynick;
             // Parse connection string such as this ^ into an object. Multiple connections
             // may be given, separated by ;
             let reg = /(?:(ircs?):\/\/)?([a-z.]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
@@ -186,12 +186,15 @@ export default {
                     return channelName;
                 });
 
+                let randomNickReplacement = Math.floor(Math.random() * 100).toString();
+                let nick = (params.nick || '').replace(/\?/g, randomNickReplacement);
+
                 connections.push({
                     tls: tls,
                     server: m[2],
                     port: parseInt(m[4] || (tls ? 6697 : 6667), 10),
                     channels: channels,
-                    nick: params.nick || '',
+                    nick: nick,
                 });
             });
 
