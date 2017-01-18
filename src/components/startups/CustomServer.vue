@@ -15,11 +15,14 @@
                     <span>Nick</span>
                     <input type="text" v-model="nick" />
                 </label>
-                <label>
+                <label class="kiwi-welcome-have-password">
+                    <span></span><input type="checkbox" v-model="show_password_box" /> I have a password
+                </label>
+                <label v-if="show_password_box">
                     <span>Password</span>
                     <input type="password" v-model="password" />
                 </label>
-                <label>
+                <label class="kiwi-welcome-channel">
                     <span>Channel</span>
                     <input type="text" v-model="channel" />
                 </label>
@@ -30,11 +33,14 @@
                     <span>Nick</span>
                     <input type="text" v-model="nick" />
                 </label>
-                <label>
+                <label class="kiwi-welcome-have-password">
+                    <span></span><input type="checkbox" v-model="show_password_box" /> I have a password
+                </label>
+                <label v-if="show_password_box">
                     <span>Password</span>
                     <input type="password" v-model="password" />
                 </label>
-                <label>
+                <label class="kiwi-welcome-channel">
                     <span>Channel</span>
                     <input type="text" v-model="channel" />
                 </label>
@@ -91,6 +97,7 @@ export default {
             channel: '',
             znc_network: '',
             show_type_switcher: true,
+            show_password_box: false,
         };
     },
     methods: {
@@ -267,6 +274,9 @@ export default {
 .kiwi-welcome-form {
     width: 300px;
     margin: 0 auto;
+}
+.kiwi-welcome-channel {
+    margin-top: 1em;
 }
 .kiwi-welcome-server-types {
     font-size: 0.9em;
