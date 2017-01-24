@@ -294,12 +294,12 @@
  */
 
 .kiwi-messagelist-message {
-    border-bottom: 1px solid #f7f5f5;
+    border-top: 1px solid #f7f5f5;
     /*padding: 4px;*/
 }
 
 .kiwi-messagelist-message > div {
-    padding: 4px;
+    padding: 2px 4px;
 }
 
 .kiwi-messagelist-time {
@@ -322,17 +322,15 @@
     overflow: visible;
 }
 
-.kiwi-messagelist-nick:before:not(:empty) {
-    content: "<";
-}
-.kiwi-messagelist-nick:after:not(:empty) {
-    content: ">";
-}
 .kiwi-messagelist-body {
     display: block;
     margin-left: 130px;
+    line-height: 1.5em;
 }
 
+.kiwi-messagelist-message-repeat {
+    border-top: none;
+}
 .kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
     /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
     opacity: 0;
@@ -374,6 +372,7 @@
     color: #009900;
 }
 .kiwi-messagelist-message-traffic-join .kiwi-nick:before {
+    color: #009900;
     content: "→ ";
 }
 .kiwi-messagelist-message-traffic-quit,
@@ -383,6 +382,7 @@
 }
 .kiwi-messagelist-message-traffic-quit .kiwi-nick:before,
 .kiwi-messagelist-message-traffic-part .kiwi-nick:before, {
+    color: #900;
     content: "← ";
 }
 .kiwi-messagelist-message-action .kiwi-messagelist-body {
@@ -510,7 +510,4 @@
  */
 
 .kiwi-nick {
-    background: #e4e4e4;
-    padding: 2px 7px;
-    border-radius: 5px;
 }

@@ -34,9 +34,7 @@
                 class="kiwi-messagelist-nick"
                 v-bind:style="nickStyle(message.nick)"
                 v-bind:data-nick="message.nick"
-            >
-                {{message.nick}}
-            </div>
+            >{{message.nick}}</div>
             <div class="kiwi-messagelist-body" v-html="formatMessage(message.message)"></div>
         </div>
 
