@@ -1,6 +1,5 @@
 <template>
     <div class="kiwi-buffersettings">
-        {{buffer.name}}
         <div class="kiwi-buffersettings-alerts">
             <b>Notify me when:</b><br />
             <input type="radio" name="alert_on" value="message" v-model="settingAlertOn">All messages<br />
@@ -9,7 +8,7 @@
 
             <input type="checkbox" v-model="settingMuteSound">Mute alert sounds
         </div>
-        <a @click="closeBuffer" class="u-link">Close {{buffer.name}}</a>
+        <a @click="closeBuffer" class="u-link">Leave {{buffer.name}}</a>
     </div>
 </template>
 
@@ -55,7 +54,9 @@ export default {
 
 .kiwi-buffersettings {
     box-sizing: border-box;
-    color: #bdbdbd;
+}
+.kiwi-buffersettings-alerts {
+    margin-bottom: 1em;
 }
 
 </style>
