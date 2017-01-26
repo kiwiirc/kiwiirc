@@ -156,7 +156,7 @@ export default {
     cursor: default;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
     .kiwi-header {
         left: 50px;
         right: 50px;

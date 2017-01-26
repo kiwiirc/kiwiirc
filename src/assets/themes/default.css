@@ -333,17 +333,14 @@ p {
 .kiwi-messagelist-time {
     font-size: 0.8em;
     color: #c1c1c1;
-    float: right;
 }
 
 .kiwi-messagelist-nick {
-    width: 120px;
     text-align: right;
     font-weight: bold;
     text-overflow: ellipsis;
     overflow: hidden;
     vertical-align: top;
-    float: left;
     cursor: pointer;
 }
 .kiwi-messagelist-nick:hover {
@@ -351,15 +348,14 @@ p {
 }
 
 .kiwi-messagelist-body {
-    display: block;
-    margin-left: 130px;
     line-height: 1.5em;
 }
 
 .kiwi-messagelist-message-repeat {
     border-top: none;
 }
-.kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
+.kiwi-messagelist-message-repeat .kiwi-messagelist-nick,
+.kiwi-messagelist-message-repeat .kiwi-messagelist-time {
     /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
     opacity: 0;
     cursor: default;
@@ -433,15 +429,6 @@ p {
     margin: 0 0.5em;
     font-size: 0.8em;
     cursor: pointer;
-}
-
-@media screen and (max-width: 500px) {
-    .kiwi-messagelist-nick {
-        float: none;
-    }
-    .kiwi-messagelist-body {
-        margin-left: 2px;
-    }
 }
 
 

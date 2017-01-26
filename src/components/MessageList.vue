@@ -212,29 +212,37 @@ export default {
     text-align: center;
     padding: 5px;
 }
-.kiwi-messagelist-nick,
+.kiwi-messagelist-message {
+    overflow: hidden;
+}
+.kiwi-messagelist-nick {
+    width: 120px;
+    display: inline-block;
+    float: left;
+}
 .kiwi-messagelist-time {
     display: inline-block;
+    float: right;
 }
 .kiwi-messagelist-body {
-    display: inline;
+    display: block;
     white-space: pre-wrap;
     word-wrap: break-word;
+    margin-left: 130px;
 }
 .kiwi-messagelist-body a {
     word-break: break-all;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
     .kiwi-messagelist-nick {
         display: inline;
-        font-weight: bold;
         width: auto;
+        float: none;
     }
     .kiwi-messagelist-body {
-        display: block;
+        margin-left: 2px;
     }
     .kiwi-messagelist-time {
-        float: right;
     }
     .kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
         display: none;
