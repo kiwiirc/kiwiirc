@@ -2,8 +2,17 @@
     color: #2c3e50;
     font-family: Source Sans Pro, Helvetica, sans-serif;
     font-size: 14px;
+    line-height: 1.6em;
+    -webkit-font-smoothing: antialiased;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    padding: 0.7em 0 0.2em 0;
+    margin: 0;
+}
+p {
+    margin: 0.5em 0 1em 0;
+}
 .u-link {
     color: #42b983;
     text-decoration: none;
@@ -11,25 +20,41 @@
 }
 .u-button {
     display: inline-block;
-    color: #ffffff;
-    border-radius: 2px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    color: #2c3e50;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     white-space: nowrap;
     vertical-align: middle;
     text-align: center;
     cursor: pointer;
-    padding: .5em 1em;
-    border: none;
+    padding: .4em 0.9em;
     font-size: 1em;
 }
 .u-button-primary {
     background-color: #0078e7;
+    border: 1px solid #0078e7;
+    color: #f4faff;
+}
+.u-button-primary:hover {
+    background: #4596e0;
+    border-color: #4596e0;
 }
 .u-button-secondary {
-    background-color: #42b8dd;
+    border: 1px solid #9a9a9a;
+    background: rgba(117, 117, 117, 0.07);
+}
+.u-button-secondary:hover {
+    color: #0078e7;
+    border-color: #0078e7;
 }
 .u-button-warning {
     background-color: #ca3c3c;
+    border: 1px solid #ca3c3c;
+    color: #fff4f4;
+}
+.u-button-warning:hover {
+    background: #c37171;
+    border-color: #c37171;
 }
 
 .u-form {
@@ -72,22 +97,22 @@
 .irc-fg-colour-grey { color: #808080; }
 .irc-fg-colour-light-grey { color: #C0C0C0; }
 
-.irc-bg-colour-white { color: #FFFFFF; }
-.irc-bg-colour-black { color: #000000; }
-.irc-bg-colour-blue { color: #000080; }
-.irc-bg-colour-green { color: #008000; }
-.irc-bg-colour-light-red { color: #FF0000; }
-.irc-bg-colour-brown { color: #800040; }
-.irc-bg-colour-purple { color: #800080; }
-.irc-bg-colour-orange { color: #FF8040; }
-.irc-bg-colour-yellow { color: #FFFF00; }
-.irc-bg-colour-light-green { color: #80FF00; }
-.irc-bg-colour-cyan { color: #008080; }
-.irc-bg-colour-light-cyan { color: #00FFFF; }
-.irc-bg-colour-light-blue { color: #0000FF; }
-.irc-bg-colour-pink { color: #FF55FF; }
-.irc-bg-colour-grey { color: #808080; }
-.irc-bg-colour-light-grey { color: #C0C0C0; }
+.irc-bg-colour-white { background-color: #FFFFFF; }
+.irc-bg-colour-black { background-color: #000000; }
+.irc-bg-colour-blue { background-color: #000080; }
+.irc-bg-colour-green { background-color: #008000; }
+.irc-bg-colour-light-red { background-color: #FF0000; }
+.irc-bg-colour-brown { background-color: #800040; }
+.irc-bg-colour-purple { background-color: #800080; }
+.irc-bg-colour-orange { background-color: #FF8040; }
+.irc-bg-colour-yellow { background-color: #FFFF00; }
+.irc-bg-colour-light-green { background-color: #80FF00; }
+.irc-bg-colour-cyan { background-color: #008080; }
+.irc-bg-colour-light-cyan { background-color: #00FFFF; }
+.irc-bg-colour-light-blue { background-color: #0000FF; }
+.irc-bg-colour-pink { background-color: #FF55FF; }
+.irc-bg-colour-grey { background-color: #808080; }
+.irc-bg-colour-light-grey { background-color: #C0C0C0; }
 
 
 
@@ -120,7 +145,7 @@
     padding: 4px;
     overflow: hidden;
     position: relative;
-    height: 1.3em;
+    height: 1.5em;
     font-size: 0.9em;
 }
 /* During DOM entering and leaving */
@@ -159,6 +184,8 @@
     font-size: 0.7em;
     border-radius: 5px;
     background: green;
+    line-height: 1.3em;
+    font-weight: bold;
 }
 
 .kiwi-statebrowser-channel-label-transition-enter-active, .kiwi-statebrowser-channel-label-transition-leave-active {
@@ -222,6 +249,7 @@
 }
 .kiwi-nicklist-users {
     padding: 0 20px;
+    line-height: 1.2em;
 }
 .kiwi-nicklist-user {
     padding: 3px 0;
@@ -295,7 +323,7 @@
 
 .kiwi-messagelist-message {
     border-top: 1px solid #f7f5f5;
-    /*padding: 4px;*/
+    line-height: 1.5em;
 }
 
 .kiwi-messagelist-message > div {
