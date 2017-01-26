@@ -212,7 +212,7 @@ p {
 .kiwi-statebrowser-options {
     background: #383838;
     /* some space on the right so it doesnt overlap the parent elements scrollbar */
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 
