@@ -215,10 +215,12 @@ export function linkifyUsers(word, userlist) {
     let ret = '';
     let nick = '';
     let append = '';
+    let nickChars = '_-\\[]{}^`|';
+    let validLastChar = nickChars.indexOf(word[word.length - 1]) > -1;
 
     if (userlist[word]) {
         nick = word;
-    } else if (userlist[word.substr(0, word.length - 1)]) {
+    } else if (userlist[word.substr(0, word.length - 1)] && !validLastChar) {
         // The last character is usually punctuation of some kind
         nick = word.substr(0, word.length - 1);
         append = word[word.length - 1];
