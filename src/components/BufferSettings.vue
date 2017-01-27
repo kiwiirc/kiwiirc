@@ -1,12 +1,26 @@
 <template>
     <div class="kiwi-buffersettings">
         <div class="kiwi-buffersettings-alerts">
-            <b>Notify me when:</b><br />
-            <input type="radio" name="alert_on" value="message" v-model="settingAlertOn">All messages<br />
-            <input type="radio" name="alert_on" value="highlight" v-model="settingAlertOn">Somebody mentions me<br />
-            <input type="radio" name="alert_on" value="never" v-model="settingAlertOn">Never<br />
+            <form class="u-form">
+                <b>Notify me when:</b><br />
+                <label>
+                    <span>All messages</span>
+                    <input type="radio" name="alert_on" value="message" v-model="settingAlertOn">
+                </label><br />
+                <label>
+                    <span>I am mentioned</span>
+                    <input type="radio" name="alert_on" value="highlight" v-model="settingAlertOn">
+                </label><br />
+                <label>
+                    <span>Never</span>
+                    <input type="radio" name="alert_on" value="never" v-model="settingAlertOn">
+                </label><br />
 
-            <input type="checkbox" v-model="settingMuteSound">Mute alert sounds
+                <label>
+                    <span>Mute sounds</span>
+                    <input type="checkbox" v-model="settingMuteSound">
+                </label><br />
+            </form>
         </div>
         <a @click="closeBuffer" class="u-link">Leave {{buffer.name}}</a>
     </div>
