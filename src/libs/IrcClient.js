@@ -172,7 +172,7 @@ function clientMiddleware(state, networkid) {
                 state.addMessage(buffer, {
                     time: Date.now(),
                     nick: '',
-                    message: `${event.nick}`,
+                    message: `${event.nick} has joined`,
                     type: 'traffic',
                     type_extra: 'join',
                 });
@@ -326,6 +326,16 @@ function clientMiddleware(state, networkid) {
             }
 
             state.changeUserNick(networkid, event.nick, event.new_nick);
+
+            let buffers = state.getBuffersWithUser(networkid, event.new_nick);
+            buffers.forEach(buffer => {
+                state.addMessage(buffer, {
+                    time: event.time || Date.now(),
+                    nick: '',
+                    message: `${event.nick} is now known as ${event.new_nick}`,
+                    type: 'nick',
+                });
+            });
         }
 
         if (command === 'userlist') {
