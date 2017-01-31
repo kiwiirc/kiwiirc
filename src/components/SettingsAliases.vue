@@ -36,7 +36,7 @@
                 <h4>Helper commands</h4>
                 <p>
                     <ul>
-                        <li><em>/echo</em><br />Echos a message to the active buffer. Eg, /echo Something happened</li>
+                        <li><em>/echo</em><br />Sends a message to the active buffer without sending it to the IRC network. Eg, /echo Something happened</li>
                         <li>
                             <em>/lines</em><br />
                             Similar to Mirc script, this lets you execute multiples lines of commands separated by a pipe, "|".<br />
