@@ -20,6 +20,7 @@ module.exports = {
     "prefer-const": 0,
     "no-use-before-define": 0,
     "no-param-reassign": ["error", { "props": false }],
-    "no-alert": 0
+    "no-alert": 0,
+    "no-unused-vars": ["error", { "args": "none" }]
   }
 }
