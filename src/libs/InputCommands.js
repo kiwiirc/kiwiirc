@@ -216,6 +216,18 @@ state.$on('input.command.clear', (event, command, line) => {
 });
 
 
+state.$on('input.command.echo', (event, command, line) => {
+    event.handled = true;
+
+    let buffer = state.getActiveBuffer();
+
+    state.addMessage(buffer, {
+        nick: '*',
+        message: line,
+    });
+});
+
+
 state.$on('input.command.server', (event, command, line) => {
     event.handled = true;
 
