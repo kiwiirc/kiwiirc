@@ -114,8 +114,16 @@ state.$on('input.command.join', (event, command, line) => {
 
     let network = state.getActiveNetwork();
 
+    // Only switch to the first channel we join if multiple are being joined
+    let hasSwitchedActiveBuffer = false;
     bufferNames.forEach((bufferName, idx) => {
-        state.addBuffer(network.id, bufferName);
+        let newBuffer = state.addBuffer(network.id, bufferName);
+
+        if (newBuffer && !hasSwitchedActiveBuffer) {
+            state.setActiveBuffer(network.id, newBuffer.name);
+            hasSwitchedActiveBuffer = true;
+        }
+
         network.ircClient.join(bufferName, keys[idx]);
     });
 });
