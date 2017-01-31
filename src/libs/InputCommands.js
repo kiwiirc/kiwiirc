@@ -191,6 +191,20 @@ state.$on('input.command.quote', (event, command, line) => {
 });
 
 
+state.$on('input.command.clear', (event, command, line) => {
+    event.handled = true;
+
+    let buffer = state.getActiveBuffer();
+    let messages = buffer.getMessages();
+    messages.splice(0, messages.length);
+
+    state.addMessage(buffer, {
+        nick: '',
+        message: 'Scrollback cleared',
+    });
+});
+
+
 state.$on('input.command.server', (event, command, line) => {
     event.handled = true;
 
