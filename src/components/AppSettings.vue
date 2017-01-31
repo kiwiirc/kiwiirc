@@ -18,6 +18,11 @@
                 <label><span>Mute sound notifications:</span> <input type="checkbox" v-model="bufferSettings.mute_sound" /></label>
                 <label><span>Highlight on words (space separated):</span> <input type="text" /></label>
             </div>
+
+            <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
+                <h3>Aliases</h3>
+                <settings-aliases></settings-aliases>
+            </div>
         </form>
     </div>
 </template>
@@ -25,6 +30,7 @@
 <script>
 
 import state from 'src/libs/state';
+import SettingsAliases from './SettingsAliases';
 
 export default {
     data: function data() {
@@ -53,6 +59,7 @@ export default {
     },
     props: [],
     components: {
+        SettingsAliases,
     },
     methods: {
         closeSettings: function closeSettings() {
@@ -78,5 +85,8 @@ export default {
 }
 .kiwi-appsettings .u-form label span {
     width: 200px;
+}
+.kiwi-appsettings-aliases > div {
+    margin-left: 30px;
 }
 </style>

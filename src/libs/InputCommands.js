@@ -3,32 +3,7 @@ import state from './state';
 import AliasRewriter from './AliasRewriter';
 
 let aliasRewriter = new AliasRewriter();
-_.extend(aliasRewriter.aliases, {
-    // General aliases
-    '/p': '/part $1+',
-    '/me': '/action $1+',
-    '/j': '/join $1+',
-    '/q': '/query $1+',
-    '/w': '/whois $1+',
-    '/raw': '/quote $1+',
-    '/connect': '/server $1+',
-    '/cycle': '/lines /part $channel | /join $channel',
-
-    // Op related aliases
-    '/op': '/quote mode $channel +o $1+',
-    '/deop': '/quote mode $channel -o $1+',
-    '/hop': '/quote mode $channel +h $1+',
-    '/dehop': '/quote mode $channel -h $1+',
-    '/voice': '/quote mode $channel +v $1+',
-    '/devoice': '/quote mode $channel -v $1+',
-    '/k': '/kick $channel $1+',
-    '/ban': '/quote mode $channel +b $1+',
-    '/unban': '/quote mode $channel -b $1+',
-
-    // Misc aliases
-    '/slap': '/me slaps $1 around a bit with a large trout',
-    '/tick': '/msg $channel ✔',
-});
+aliasRewriter.aliases = state.user_settings.aliases;
 
 state.$on('input.raw', (input) => {
     let lines = input.split('\n');
