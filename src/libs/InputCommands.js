@@ -210,7 +210,7 @@ state.$on('input.command.clear', (event, command, line) => {
     messages.splice(0, messages.length);
 
     state.addMessage(buffer, {
-        nick: '',
+        nick: '*',
         message: 'Scrollback cleared',
     });
 });
