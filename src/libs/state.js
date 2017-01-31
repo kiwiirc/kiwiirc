@@ -414,12 +414,12 @@ const state = new Vue({
                 includeAsActivity = false;
             }
 
-            if (includeAsActivity &&
-                (
-                    buffer.networkid !== this.ui.active_network ||
-                    buffer.name !== this.ui.active_buffer
-                )
-            ) {
+            let isActiveBuffer = (
+                buffer.networkid === this.ui.active_network &&
+                buffer.name === this.ui.active_buffer
+            );
+
+            if (includeAsActivity && !isActiveBuffer) {
                 if (!buffer.flags.unread) {
                     this.$set(buffer.flags, 'unread', 1);
                 } else {
