@@ -12,6 +12,7 @@ _.extend(aliasRewriter.aliases, {
     '/w': '/whois $1+',
     '/raw': '/quote $1+',
     '/connect': '/server $1+',
+    '/cycle': '/lines /part $channel | /join $channel',
 
     // Op related aliases
     '/op': '/quote mode $channel +o $1+',
@@ -79,6 +80,16 @@ function processLine(rawLine) {
         activeNetwork.ircClient.raw(line);
     }
 }
+
+
+// /lines allows aliases to send multiple commands, separated by |
+state.$on('input.command.lines', (event, command, line) => {
+    event.handled = true;
+
+    line.split('|').forEach(subLine => {
+        processLine(subLine.trim());
+    });
+});
 
 
 function handleMessage(type, event, command, line) {
