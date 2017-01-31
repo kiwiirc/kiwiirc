@@ -118,6 +118,29 @@ function clientMiddleware(state, networkid) {
             }
         }
 
+        // Show unhandled data from the server in the servers tab
+        if (command === 'unknown command') {
+            let buffer = network.serverBuffer();
+            let message = '';
+
+            // Only show non-numeric commands
+            if (!event.command.match(/^\d+$/)) {
+                message += event.command + ' ';
+            }
+
+            // Strip out the nick if it's the first params (many commands include this)
+            if (event.params[0] === network.ircClient.user.nick) {
+                message += event.params.slice(1).join(', ');
+            } else {
+                message += event.params.join(', ');
+            }
+
+            state.addMessage(buffer, {
+                nick: '',
+                message: message,
+            });
+        }
+
         if (command === 'message') {
             let isPrivateMessage = false;
             let bufferName = event.from_server ? '*' : event.target;
