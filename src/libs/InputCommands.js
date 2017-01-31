@@ -73,7 +73,7 @@ function processLine(rawLine) {
     };
 
     // Include command and params as their own arguments just for ease of use
-    state.$emit('input.command.' + command, event, command, params);
+    state.$emit('input.command.' + command, eventObj, command, params);
 
     if (!eventObj.handled) {
         activeNetwork.ircClient.raw(line);
