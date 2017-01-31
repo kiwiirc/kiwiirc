@@ -165,6 +165,25 @@ state.$on('input.command.close', (event, command, line) => {
 });
 
 
+state.$on('input.command.query', (event, command, line) => {
+    event.handled = true;
+
+    let nicks = line.split(' ');
+    let network = state.getActiveNetwork();
+
+    // Only switch to the first buffer we open if multiple are being opened
+    let hasSwitchedActiveBuffer = false;
+    nicks.forEach((bufferName, idx) => {
+        let newBuffer = state.addBuffer(network.id, bufferName);
+
+        if (newBuffer && !hasSwitchedActiveBuffer) {
+            state.setActiveBuffer(network.id, newBuffer.name);
+            hasSwitchedActiveBuffer = true;
+        }
+    });
+});
+
+
 state.$on('input.command.nick', (event, command, line) => {
     event.handled = true;
 
