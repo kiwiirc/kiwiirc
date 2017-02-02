@@ -15,8 +15,13 @@ export default class ConfigLoader {
                 }
 
                 this.config = Object.create(null);
-                _.each(response.body, (val, key) => {
-                    this.config[key] = this.insertReplacements(val);
+                _.each(response.body, (_val, key) => {
+                    let val = _val;
+                    if (typeof val === 'string') {
+                        val = this.insertReplacements(val);
+                    }
+
+                    this.config[key] = val;
                 });
 
                 resolve(this.config);
