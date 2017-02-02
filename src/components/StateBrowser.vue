@@ -77,7 +77,7 @@
             </div>
 
             <div class="kiwi-statebrowser-options">
-                <a @click="clickAddNetwork">Add network</a>
+                <a @click="clickAddNetwork" v-if="!isRestrictedServer">Add network</a>
                 <a @click="clickAppSettings">Settings</a>
                 <a @click="clickForget" v-if="isPersistingState">Forget Me</a>
             </div>
@@ -213,6 +213,9 @@ export default {
         },
         isPersistingState: function isPersistingState() {
             return !!state.persistence;
+        },
+        isRestrictedServer: function isRestrictedServer() {
+            return !!state.settings.restricted;
         },
     },
     created: function created() {
