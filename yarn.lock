@@ -2679,9 +2679,9 @@ ipaddr.js@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.2.0.tgz#8aba49c9192799585bdd643e0ccb50e8ae777ba4"
 
-irc-framework@2.5.3:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/irc-framework/-/irc-framework-2.5.3.tgz#50cb7bdf6342398435d1c58ea49917538571bb2b"
+irc-framework@^2.5.5:
+  version "2.5.5"
+  resolved "https://registry.yarnpkg.com/irc-framework/-/irc-framework-2.5.5.tgz#04c8d36efd647bbd7514e4f0f67d365ffda60d31"
   dependencies:
     es6-set "^0.1.3"
     eventemitter3 "^2.0.2"
@@ -4843,13 +4843,13 @@ sax@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.1.tgz#7b8e656190b228e81a66aea748480d828cd2d37a"
 
-"semver@2 || 3 || 4 || 5", semver@~4.3.3:
-  version "4.3.6"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.6.tgz#300bc6e0e86374f7ba61068b5b1ecd57fc6532da"
-
-semver@~5.3.0:
+"semver@2 || 3 || 4 || 5", semver@~5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
+
+semver@~4.3.3:
+  version "4.3.6"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.6.tgz#300bc6e0e86374f7ba61068b5b1ecd57fc6532da"
 
 send@0.14.1:
   version "0.14.1"
