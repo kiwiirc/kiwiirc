@@ -8,6 +8,7 @@ export function create(state, networkid) {
         host: network.connection.server,
         port: network.connection.port,
         tls: network.connection.tls,
+        path: network.connection.path,
         password: network.connection.password,
         nick: network.nick,
         username: network.nick,

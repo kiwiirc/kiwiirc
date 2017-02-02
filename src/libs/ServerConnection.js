@@ -170,14 +170,14 @@ function createChannelOnConnection(connection, channelId) {
             channel.emit('close');
         });
         connection.on('message.' + channelId, (event) => {
-            if (event.data.indexOf('CONTROL ') === 0) {
+            if (event.data.indexOf('control ') === 0) {
                 // When we get the signal that the connection to the IRC server
                 // has connected, start proxying all data
-                if (event.data.indexOf('CONTROL CONNECTED') === 0) {
+                if (event.data.indexOf('control connected') === 0) {
                     channel.remoteState = 1;
                 }
 
-                if (event.data.indexOf('CONTROL CLOSED') === 0) {
+                if (event.data.indexOf('control closed') === 0) {
                     channel.remoteState = 0;
                     channel.emit('close');
                 }

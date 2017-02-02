@@ -1,5 +1,5 @@
 {
 	"windowTitle": "Kiwi IRC - The web IRC client",
 	"startupScreen": "customServer",
-	"kiwiServer": "http://{{hostname}}:8081/webirc"
+	"kiwiServer": "http://{{hostname}}:8081/webirc/kiwiirc/"
 }
