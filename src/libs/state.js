@@ -15,7 +15,7 @@ const stateObj = {
         // The startup screen
         startupScreen: 'customServer',
         // Where to find the kiwi server
-        kiwiServer: '/webirc',
+        kiwiServer: '/webirc/kiwiirc/',
         // Default buffer settings
         buffers: {
             alert_on: 'highlight',
