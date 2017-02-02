@@ -43,3 +43,21 @@ This repository only contains the client side. To connect to an IRC server you e
 Once you have a Kiwi IRC server configured and running, enter the URL to your Kiwi IRC server in the clients config.json file. The client side files built from this repository may be hosted anywhere - Apacahe, Nginx, the Kiwi IRC server, your CDN.
 
 ***TODO: Provide a full example of the client and server running together with complete downloadable packages***
+
+
+### License
+~~~
+   Copyright 2017 Kiwi IRC
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+~~~
