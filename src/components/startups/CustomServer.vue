@@ -81,6 +81,7 @@
 
 <script>
 
+import _ from 'lodash';
 import * as Storage from 'src/libs/storage/Local';
 import state from 'src/libs/state';
 import StatePersistence from 'src/libs/StatePersistence';
@@ -124,6 +125,10 @@ export default {
                 let hasSetActiveBuffer = false;
 
                 this.channel.split(',').forEach((channelName, idx) => {
+                    if (!channelName) {
+                        return;
+                    }
+
                     let buffer = state.addBuffer(net.id, channelName);
                     buffer.joined = true;
 
@@ -168,16 +173,18 @@ export default {
                 });
 
                 let channels = (m[5] || params.channel || '');
-                channels = channels.split(',').map(_channelName => {
-                    let hasPrefix = _channelName[0] === '#' ||
-                        _channelName[0] === '&';
+                channels = _(channels.split(','))
+                    .compact()
+                    .map(_channelName => {
+                        let hasPrefix = _channelName[0] === '#' ||
+                            _channelName[0] === '&';
 
-                    let channelName = hasPrefix ?
-                        _channelName :
-                        '#' + _channelName;
+                        let channelName = hasPrefix ?
+                            _channelName :
+                            '#' + _channelName;
 
-                    return channelName;
-                });
+                        return channelName;
+                    });
 
                 // Replace ? with a random number
                 let randomNickReplacement = Math.floor(Math.random() * 100).toString();
