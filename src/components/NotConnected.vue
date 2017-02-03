@@ -91,24 +91,5 @@ export default {
 <style>
 .kiwi-notconnected {
     box-sizing: border-box;
-    margin: 3em 0;
-}
-.kiwi-notconnected-bigicon {
-    text-align: center;
-}
-.kiwi-notconnected-bigicon > i {
-    font-size: 4em;
-    cursor: pointer;
-}
-.kiwi-notconnected-caption {
-    text-align: center;
-    font-size: 1.2em;
-    margin-top: 1em;
-    cursor: pointer;
-}
-.kiwi-notconnected-networksettings {
-    display: block;
-    font-size: 0.9em;
-    margin-top: 1em;
 }
 </style>

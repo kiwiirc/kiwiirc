@@ -209,6 +209,31 @@ p {
     border-left: none;
 }
 
+.kiwi-statebrowser-newchannel {
+    margin: 1em 0.5em;
+}
+.kiwi-statebrowser-newchannel-inputwrap {
+    border-radius: 3px;
+    background: #fff;
+    padding: 3px;
+    position: relative;
+}
+.kiwi-statebrowser-newchannel-inputwrap input {
+    outline: none;
+    border: none;
+    display: block;
+    /* left: 0; */
+    /* right: 10px; */
+    width: calc(100% - 20px);
+    margin-right: 30px;
+}
+.kiwi-statebrowser-newchannel-inputwrap i {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
 .kiwi-statebrowser-options {
     background: #383838;
     /* some space on the right so it doesnt overlap the parent elements scrollbar */
@@ -226,7 +251,25 @@ p {
     border-bottom: 1px solid #dddddd;
 }
 
-
+.kiwi-container-toggledraw-statebrowser,
+.kiwi-container-toggledraw-nicklist {
+    background: #f6f6f6;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.6em;
+    border-bottom: 1px solid #dddddd;
+    line-height: 50px;
+}
+.kiwi-container-toggledraw-statebrowser {
+    border-right: 1px solid #dddddd;
+}
+.kiwi-container-toggledraw-nicklist {
+    border-left: 1px solid #dddddd;
+}
+.kiwi-container-toggledraw-nicklist--disabled {
+    color: #b8babd;
+    cursor: default;
+}
 
 
 
@@ -283,6 +326,12 @@ p {
     text-overflow: ellipsis;
 }
 
+.kiwi-header-buffersettings {
+    border-top: 1px solid #dddddd;
+    padding: 5px;
+    margin-top: 1em;
+}
+
 
 
 
@@ -313,6 +362,32 @@ p {
 .kiwi-controlinput-input {
     border: none;
     outline: none;
+}
+
+
+
+/**
+ * Control input (the bottom bar)
+ */
+
+.kiwi-autocomplete {
+    box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
+    border: 1px solid #CCC;
+    background: #eee;
+}
+.kiwi-autocomplete-item {
+    border-bottom: 1px solid #CCC;
+    padding: 5px 2em;
+}
+.kiwi-autocomplete-item--selected {
+    background: #D1EACD;
+}
+.kiwi-autocomplete-item-value {
+    font-weight: bold;
+}
+.kiwi-autocomplete-item-action {
+    float: right;
+    font-size: 0.9em;
 }
 
 
@@ -434,6 +509,33 @@ p {
 
 
 /**
+ * Not connected sign
+ */
+.kiwi-notconnected {
+    margin: 3em 0;
+}
+.kiwi-notconnected-bigicon {
+    text-align: center;
+}
+.kiwi-notconnected-bigicon > i {
+    font-size: 4em;
+    cursor: pointer;
+}
+.kiwi-notconnected-caption {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 1em;
+    cursor: pointer;
+}
+.kiwi-notconnected-networksettings {
+    display: block;
+    font-size: 0.9em;
+    margin-top: 1em;
+}
+
+
+
+/**
  * Network settings
  */
 
@@ -446,6 +548,35 @@ p {
 .kiwi-networksettings-danger h3 {
     background: #d86f6f;
     padding: 5px 10px;
+}
+
+
+
+/**
+ * Alias settings
+ */
+.kiwi-settings-aliases-input {
+    width: 80%;
+    height: 200px;
+    font-size: 0.8em;
+    line-height: 1.4em;
+    font-family: monospace;
+    white-space: nowrap;
+    border-color: #cccccc;
+}
+.kiwi-settings-aliases-showhelp {
+    display: block;
+}
+.kiwi-settings-aliases-help {
+    background: #f3f2f2;
+    border: 1px dashed gray;
+    padding: 1em;
+    margin: 1em 0;
+}
+.kiwi-settings-aliases-help em {
+    color: #ab1010;
+    background: #fff6a5;
+    padding: 1px 2px;
 }
 
 

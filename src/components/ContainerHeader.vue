@@ -134,11 +134,6 @@ export default {
     margin-top: 4px;
     margin-right: 4px;
 }
-.kiwi-header-buffersettings {
-    border-top: 1px solid #dddddd;
-    padding: 5px;
-    margin-top: 1em;
-}
 .kiwi-header-close-buffersettings {
     float: right;
 }

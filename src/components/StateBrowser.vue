@@ -261,31 +261,6 @@ export default {
     width: 100%;
 }
 
-.kiwi-statebrowser-newchannel {
-    margin: 1em 0.5em;
-}
-.kiwi-statebrowser-newchannel-inputwrap {
-    border-radius: 3px;
-    background: #fff;
-    padding: 3px;
-    position: relative;
-}
-.kiwi-statebrowser-newchannel-inputwrap input {
-    outline: none;
-    border: none;
-    display: block;
-    /* left: 0; */
-    /* right: 10px; */
-    width: calc(100% - 20px);
-    margin-right: 30px;
-}
-.kiwi-statebrowser-newchannel-inputwrap i {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    cursor: pointer;
-}
-
 .kiwi-statebrowser-options {
     position: absolute;
     bottom: 0;

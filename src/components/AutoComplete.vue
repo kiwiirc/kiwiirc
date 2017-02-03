@@ -185,24 +185,7 @@ export default {
     bottom: 100%;
     right: 0;
     left: 0;
-    box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
-    border: 1px solid #CCC;
-    background: #eee;
     z-index: 1;
     max-height: 300px;
-}
-.kiwi-autocomplete-item {
-    border-bottom: 1px solid #CCC;
-    padding: 5px 2em;
-}
-.kiwi-autocomplete-item--selected {
-    background: #D1EACD;
-}
-.kiwi-autocomplete-item-value {
-    font-weight: bold;
-}
-.kiwi-autocomplete-item-action {
-    float: right;
-    font-size: 0.9em;
 }
 </style>

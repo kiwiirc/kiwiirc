@@ -134,27 +134,16 @@ export default {
     position: absolute;
     top: 0;
     height: 50px;
-    background: #f6f6f6;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1.6em;
-    border-bottom: 1px solid #dddddd;
     box-sizing: border-box;
-    line-height: 50px;
 }
 
 .kiwi-container-toggledraw-statebrowser {
     left: 0;
-    border-right: 1px solid #dddddd;
 }
 .kiwi-container-toggledraw-nicklist {
     right: 0;
-    border-left: 1px solid #dddddd;
 }
-.kiwi-container-toggledraw-nicklist--disabled {
-    color: #b8babd;
-    cursor: default;
-}
+
 
 @media screen and (max-width: 850px) {
     .kiwi-header {

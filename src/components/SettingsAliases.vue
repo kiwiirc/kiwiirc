@@ -104,29 +104,4 @@ export default {
 </script>
 
 <style>
-
-.kiwi-settings-aliases-input {
-    width: 80%;
-    height: 200px;
-    font-size: 0.8em;
-    line-height: 1.4em;
-    font-family: monospace;
-    white-space: nowrap;
-    border-color: #cccccc;
-}
-.kiwi-settings-aliases-showhelp {
-    display: block;
-}
-.kiwi-settings-aliases-help {
-    background: #f3f2f2;
-    border: 1px dashed gray;
-    padding: 1em;
-    margin: 1em 0;
-}
-.kiwi-settings-aliases-help em {
-    color: #ab1010;
-    background: #fff6a5;
-    padding: 1px 2px;
-}
-
 </style>
