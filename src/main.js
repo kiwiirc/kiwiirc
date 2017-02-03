@@ -18,9 +18,7 @@ configLoader.loadFromUrl('static/config.json')
 
 
 function applyConfig(config) {
-    _.each(config, (val, key) => {
-        state.settings[key] = val;
-    });
+    applyConfigObj(config, state.settings);
 
     // Update the window title if we have one
     if (state.settings.windowTitle) {
@@ -28,6 +26,26 @@ function applyConfig(config) {
     }
     state.$watch('settings.windowTitle', newVal => {
         window.document.title = newVal;
+    });
+}
+
+
+// Recursively merge an object onto another via Vue.$set
+function applyConfigObj(obj, target) {
+    _.each(obj, (val, key) => {
+        if (typeof val === 'object') {
+            if (typeof target[key] !== 'object') {
+                // Create the correct type of object
+                let newVal = _.isArray(val) ?
+                    [] :
+                    {};
+
+                Vue.set(target, key, newVal);
+            }
+            applyConfigObj(val, target[key]);
+        } else {
+            Vue.set(target, key, val);
+        }
     });
 }
 
