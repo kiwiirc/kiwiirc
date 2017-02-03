@@ -1,5 +1,6 @@
 import xhr from 'xhr';
 import _ from 'lodash';
+import Logger from './Logger';
 
 export default class ConfigLoader {
     constructor() {
@@ -8,14 +9,23 @@ export default class ConfigLoader {
 
     loadFromUrl(configUrl) {
         return new Promise((resolve, reject) => {
-            xhr({ url: configUrl, json: true }, (err, response) => {
+            xhr({ url: configUrl }, (err, response) => {
                 if (err) {
                     reject();
                     return;
                 }
 
+                let conf = null;
+                try {
+                    conf = JSON.parse(response.body);
+                } catch (parseErr) {
+                    Logger.error('Config file: ' + parseErr.stack);
+                    reject();
+                    return;
+                }
+
                 this.config = Object.create(null);
-                _.each(response.body, (_val, key) => {
+                _.each(conf, (_val, key) => {
                     let val = _val;
                     if (typeof val === 'string') {
                         val = this.insertReplacements(val);
