@@ -141,35 +141,13 @@ export default {
                 this.$emit('start');
             }
         },
-    },
-    created: async function created() {
-        let persist = new StatePersistence('kiwi-state', state, Storage, logger);
-        await persist.loadStateIfExists();
-
-        let saveThisSessionsState = false;
-
-        // If we have networks from a previous state, launch directly into it
-        if (state.networks.length > 0) {
-            let network = state.networks[0];
-            state.setActiveBuffer(network.id, network.serverBuffer().name);
-            saveThisSessionsState = true;
-            this.$emit('start');
-        } else if (window.location.hash.substr(1)) {
-            let fragment = window.location.hash.substr(1);
-
-            // Check to see if we're dealing with an encoded irc: uri (browsers do this
-            // when clicking an IRC link)
-            let uriCheck = fragment.substr(0, 7).toLowerCase();
-            if (uriCheck === 'ircs%3a' || uriCheck.substr(0, 6) === 'irc%3a') {
-                fragment = decodeURIComponent(fragment);
-            }
-
+        parseConnectionString: function parseConnectionString(str) {
             // [ircs?://]irc.network.net:[+]6667/channel?nick=mynick;
             // Parse connection string such as this ^ into an object. Multiple connections
             // may be given, separated by ;
             let reg = /(?:(ircs?):\/\/)?([a-z.]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
             let connections = [];
-            fragment.split(';').forEach(connectionString => {
+            str.split(';').forEach(connectionString => {
                 if (!connectionString) {
                     return;
                 }
@@ -213,6 +191,33 @@ export default {
                     nick: nick,
                 });
             });
+
+            return connections;
+        },
+    },
+    created: async function created() {
+        let persist = new StatePersistence('kiwi-state', state, Storage, logger);
+        await persist.loadStateIfExists();
+
+        let saveThisSessionsState = false;
+
+        // If we have networks from a previous state, launch directly into it
+        if (state.networks.length > 0) {
+            let network = state.networks[0];
+            state.setActiveBuffer(network.id, network.serverBuffer().name);
+            saveThisSessionsState = true;
+            this.$emit('start');
+        } else if (window.location.hash.substr(1)) {
+            let fragment = window.location.hash.substr(1);
+
+            // Check to see if we're dealing with an encoded irc: uri (browsers do this
+            // when clicking an IRC link)
+            let uriCheck = fragment.substr(0, 7).toLowerCase();
+            if (uriCheck === 'ircs%3a' || uriCheck.substr(0, 6) === 'irc%3a') {
+                fragment = decodeURIComponent(fragment);
+            }
+
+            let connections = this.parseConnectionString(fragment);
 
             // If more than 1 connection string is given, skip the connection screen
             // and add them all right away.
