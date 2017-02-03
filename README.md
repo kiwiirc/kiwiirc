@@ -1,3 +1,5 @@
+# Status - In development!
+
 # kiwiirc
 
 > The next generation of the KiwiIRC web based IRC client
@@ -38,9 +40,9 @@ be found in [static/config.json](static/config.json)
 
 ## Getting started
 
-This repository only contains the client side. To connect to an IRC server you either need to be using a websocket capable IRC server (none yet support this) or need to be running to Kiwi IRC server which can be found here: https://github.com/kiwiirc/webircgateway
+This repository only contains the client side (the website). To connect to an IRC server you either need to be using a websocket capable IRC server (none yet support this) or need to be connecting to a Kiwi IRC server which can be found here: https://github.com/kiwiirc/webircgateway
 
-Once you have a Kiwi IRC server configured and running, enter the URL to your Kiwi IRC server in the clients config.json file. The client side files built from this repository may be hosted anywhere - Apacahe, Nginx, the Kiwi IRC server, your CDN.
+Once you have a Kiwi IRC server configured and running, enter the URL to your Kiwi IRC server in the clients config.json file. The client side files built from this repository may be hosted anywhere - Apache, Nginx, the Kiwi IRC server, your CDN.
 
 ***TODO: Provide a full example of the client and server running together with complete downloadable packages***
 
