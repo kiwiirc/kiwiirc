@@ -21,6 +21,7 @@ module.exports = {
     "no-use-before-define": 0,
     "no-param-reassign": ["error", { "props": false }],
     "no-alert": 0,
-    "no-unused-vars": ["error", { "args": "none" }]
+    "no-unused-vars": ["error", { "args": "none" }],
+    "no-restricted-syntax": ["error", "WithStatement"]
   }
 }
