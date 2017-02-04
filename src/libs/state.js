@@ -36,6 +36,7 @@ const stateObj = {
             tls: false,
             channel: '',
             nick: 'kiwi_?',
+            direct: false,
         },
     },
     user_settings: {

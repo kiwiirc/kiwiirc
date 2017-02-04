@@ -97,6 +97,7 @@ export default {
             password: '',
             channel: '',
             znc_network: '',
+            direct: false,
             show_type_switcher: true,
             show_password_box: false,
         };
@@ -126,6 +127,7 @@ export default {
                     port: parseInt(this.server.split(':')[1] || 6667, 10),
                     tls: this.tls,
                     password: this.password,
+                    direct: this.direct,
                 });
             }
 
@@ -210,6 +212,7 @@ export default {
             this.tls = state.settings.startupOptions.tls;
             this.nick = state.settings.startupOptions.nick;
             this.channel = state.settings.startupOptions.channel;
+            this.direct = state.settings.startupOptions.direct;
         },
     },
     created: async function created() {
