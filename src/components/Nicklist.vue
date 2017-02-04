@@ -11,12 +11,11 @@
         <ul class="kiwi-nicklist-users">
             <li v-for="user in sortedUsers" class="kiwi-nicklist-user">
                 <span
-                    v-if="users[user]"
                     class="kiwi-nicklist-user-nick"
-                    @click="openUserbox(users[user], $event)"
-                    v-bind:style="nickStyle(users[user].nick)"
+                    @click="openUserbox(user, $event)"
+                    v-bind:style="nickStyle(user.nick)"
                 >
-                    {{users[user].nick}}
+                    {{user.nick}}
                 </span>
             </li>
         </ul>
@@ -58,7 +57,7 @@ export default {
             // Since vuejs will sort in-place and update views when .sort is called
             // on an array, clone it first so that we have a plain array to sort
             let users = this.buffer.users.map(b => b);
-            return users.sort((a, b) => a.localeCompare(b));
+            return users.sort((a, b) => a.nick.localeCompare(b.nick));
         },
     },
     methods: {
