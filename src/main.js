@@ -10,8 +10,25 @@ import state from 'src/libs/state';
 // A handy debugging var..
 window.state = state;
 
+function getQueryVariable(variable) {
+    let query = window.location.search.substring(1);
+    let vars = query.split('&');
+    for (let i = 0; i < vars.length; i++) {
+        let pair = vars[i].split('=');
+        if (pair[0] === variable) {
+            return pair[1];
+        }
+    }
+
+    return false;
+}
+
+let configFile = getQueryVariable('config') ?
+    'static/config_' + getQueryVariable('config') + '.json' :
+    'static/config.json';
+
 let configLoader = new ConfigLoader();
-configLoader.loadFromUrl('static/config.json')
+configLoader.loadFromUrl(configFile)
     .then(applyConfig)
 	.then(startApp)
 	.catch(showError);
