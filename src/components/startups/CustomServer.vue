@@ -105,15 +105,23 @@ export default {
         startUp: function startUp() {
             let net;
 
+            if (!this.nick) {
+                return;
+            }
+
+            // Replace ? with a random number
+            let randomNickReplacement = Math.floor(Math.random() * 100).toString();
+            let nick = (this.nick || '').replace(/\?/g, randomNickReplacement);
+
             if (this.server_type === 'znc') {
-                net = state.addNetwork('ZNC', this.nick, {
+                net = state.addNetwork('ZNC', nick, {
                     server: this.server.split(':')[0],
                     port: parseInt(this.server.split(':')[1] || 6667, 10),
                     tls: this.tls,
-                    password: this.nick + '/' + this.znc_network + ':' + this.password,
+                    password: nick + '/' + this.znc_network + ':' + this.password,
                 });
             } else {
-                net = state.addNetwork('Network', this.nick, {
+                net = state.addNetwork('Network', nick, {
                     server: this.server.split(':')[0],
                     port: parseInt(this.server.split(':')[1] || 6667, 10),
                     tls: this.tls,
@@ -186,20 +194,22 @@ export default {
                         return channelName;
                     });
 
-                // Replace ? with a random number
-                let randomNickReplacement = Math.floor(Math.random() * 100).toString();
-                let nick = (params.nick || '').replace(/\?/g, randomNickReplacement);
-
                 connections.push({
                     tls: tls,
                     server: m[2],
                     port: parseInt(m[4] || (tls ? 6697 : 6667), 10),
                     channels: channels,
-                    nick: nick,
+                    nick: (params.nick || 'kiwi_?'),
                 });
             });
 
             return connections;
+        },
+        applyDefaults: function applyDefaults() {
+            this.server = state.settings.startupOptions.server;
+            this.tls = state.settings.startupOptions.tls;
+            this.nick = state.settings.startupOptions.nick;
+            this.channel = state.settings.startupOptions.channel;
         },
     },
     created: async function created() {
@@ -230,6 +240,7 @@ export default {
             // and add them all right away.
             if (connections.length === 0) {
                 saveThisSessionsState = true;
+                this.applyDefaults();
             } else if (connections.length === 1) {
                 saveThisSessionsState = false;
                 this.server_type = 'default_simple';
@@ -264,6 +275,8 @@ export default {
 
                 this.$emit('start');
             }
+        } else {
+            this.applyDefaults();
         }
 
         if (saveThisSessionsState) {

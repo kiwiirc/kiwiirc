@@ -29,6 +29,14 @@ const stateObj = {
             show_emoticons: true,
             mute_sound: false,
         },
+        // Startup screen default
+        startupOptions: {
+            server: '',
+            port: 6667,
+            tls: false,
+            channel: '',
+            nick: 'kiwi_?',
+        },
     },
     user_settings: {
         aliases: {
