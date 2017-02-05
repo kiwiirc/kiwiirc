@@ -228,7 +228,7 @@ export default {
             if (opts.users) {
                 let userList = this.buffer.users.map(user => {
                     let item = {
-                        text: user,
+                        text: user.nick,
                         type: 'user',
                     };
                     return item;
