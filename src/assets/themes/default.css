@@ -399,6 +399,13 @@ p {
 .kiwi-messagelist-message {
     border-top: 1px solid #f7f5f5;
     line-height: 1.5em;
+    margin: 0 3px;
+    /* some message highlights add a left border so add a default invisble one to keep them inline */
+    border-left: 3px solid transparent;
+}
+.kiwi-messagelist-message--highlight {
+    background: #e3f1d4;
+    border-left-color: #80ab52;
 }
 
 .kiwi-messagelist-message > div {

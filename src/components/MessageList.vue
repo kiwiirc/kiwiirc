@@ -22,6 +22,9 @@
                 message.type_extra ?
                     'kiwi-messagelist-message-' + message.type + '-' + message.type_extra :
                     '',
+                isMessageHighlight(message) ?
+                    'kiwi-messagelist-message--highlight' :
+                    '',
             ]"
         >
             <div
@@ -137,6 +140,10 @@ export default {
             parsed = TextFormatting.ircCodesToHtml(parsed);
 
             return parsed;
+        },
+        isMessageHighlight: function isMessageHighlight(message) {
+            let network = this.buffer.getNetwork();
+            return message.message.indexOf(network.nick) > -1;
         },
         nickStyle: function nickColour(nick) {
             return 'color:' + TextFormatting.createNickColour(nick) + ';';
