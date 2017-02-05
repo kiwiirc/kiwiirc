@@ -107,7 +107,7 @@ const stateObj = {
                     host: 'isp.net',
                     username: 'prawn',
                     modes: '+ix',
-                    buffers: {1: {modes: '+o'}}
+                    buffers: {1: {modes: []}}
                 },
             },
         },
@@ -140,14 +140,14 @@ const stateObj = {
                     host: 'isp.net',
                     username: 'prawn',
                     modes: '+ix',
-                    buffers: {1: {modes: '+o'}},
+                    buffers: {1: {modes: []}},
                 },
                 someone: {
                     nick: 'someone',
                     host: 'masked.com',
                     username: 'someirc',
                     modes: '+ix',
-                    buffers: {1: {modes: '+o'}},
+                    buffers: {1: {modes: []}},
                 },
             },
         }, */
@@ -554,7 +554,7 @@ const state = new Vue({
             this.$delete(network.users, user.nick);
         },
 
-        addUserToBuffer: function addUserToBuffer(buffer, user) {
+        addUserToBuffer: function addUserToBuffer(buffer, user, modes) {
             let network = this.getNetwork(buffer.networkid);
             let userObj = state.getUser(network.id, user.nick);
 
@@ -579,10 +579,15 @@ const state = new Vue({
                 buffer.users.push(userObj);
             }
 
-            userObj.buffers[buffer.id] = userObj.buffers[buffer.id] || {
-                modes: [],
-                buffer: buffer,
-            };
+            // Add the buffer to the users buffer list
+            if (!userObj.buffers[buffer.id]) {
+                state.$set(userObj.buffers, buffer.id, {
+                    modes: modes || [],
+                    buffer: buffer,
+                });
+            } else {
+                state.$set(userObj.buffers[buffer.id], 'modes', modes || []);
+            }
         },
 
         removeUserFromBuffer: function removeUserFromBuffer(buffer, nick) {

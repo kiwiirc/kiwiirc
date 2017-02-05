@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import Irc from 'irc-framework/browser';
 import * as ServerConnection from './ServerConnection';
 
@@ -355,7 +356,7 @@ function clientMiddleware(state, networkid) {
             buffers.forEach(buffer => {
                 state.addMessage(buffer, {
                     time: event.time || Date.now(),
-                    nick: '',
+                    nick: '*',
                     message: `${event.nick} is now known as ${event.new_nick}`,
                     type: 'nick',
                 });
@@ -365,8 +366,47 @@ function clientMiddleware(state, networkid) {
         if (command === 'userlist') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             event.users.forEach(user => {
-                state.addUserToBuffer(buffer, { nick: user.nick });
+                state.addUserToBuffer(buffer, {
+                    nick: user.nick,
+                    username: user.ident,
+                    hostname: user.hostname,
+                }, user.modes);
             });
+        }
+
+        if (command === 'mode') {
+            let buffer = network.bufferByName(event.target);
+            if (buffer) {
+                event.modes.forEach(mode => {
+                    state.addMessage(buffer, {
+                        time: event.time || Date.now(),
+                        nick: '*',
+                        message: `${event.nick} set ${mode.mode} ${mode.param}`,
+                        type: 'mode',
+                    });
+
+                    // If this mode has a prefix then we need to update the user object
+                    let prefix = _.find(network.ircClient.network.options.PREFIX, {
+                        mode: mode.mode[1],
+                    });
+
+                    if (prefix) {
+                        let user = state.getUser(network.id, mode.param);
+                        if (user) {
+                            let adding = mode.mode[0] === '+';
+                            let modes = user.buffers[buffer.id].modes;
+                            let modeIdx = modes.indexOf(prefix.mode);
+
+                            // Add or remove the mode from the users mode list
+                            if (adding && modeIdx === -1) {
+                                modes.push(prefix.mode);
+                            } else if (!adding && modeIdx > -1) {
+                                modes.splice(modeIdx, 1);
+                            }
+                        }
+                    }
+                });
+            }
         }
 
         if (command === 'topic') {
