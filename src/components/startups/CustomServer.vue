@@ -333,7 +333,7 @@ export default {
 .kiwi-welcome-form {
     width: 300px;
     margin: 0 auto;
-    max-height: 280px;
+    max-height: 500px;
     overflow: hidden;
 }
 .kiwi-welcome-channel {
@@ -341,6 +341,7 @@ export default {
 }
 .kiwi-welcome-server-types {
     font-size: 0.9em;
+    text-align: center;
 }
 .kiwi-welcome-server-types a {
     margin: 0 1em;
@@ -364,7 +365,7 @@ export default {
 }
 
 .connectingloader-enter-active, .connectingloader-leave-active {
-  transition: max-height .7s
+  transition: max-height .5s
 }
 .connectingloader-enter, .connectingloader-leave-to {
   max-height: 0
