@@ -143,7 +143,18 @@ export default {
         },
         isMessageHighlight: function isMessageHighlight(message) {
             let network = this.buffer.getNetwork();
-            return message.message.indexOf(network.nick) > -1;
+            if (message.message.toLowerCase().indexOf(network.nick.toLowerCase()) > -1) {
+                return true;
+            }
+
+            let highlightFound = false;
+            state.user_settings.highlights.toLowerCase().split(' ').forEach(word => {
+                if (message.message.indexOf(word) > -1) {
+                    highlightFound = true;
+                }
+            });
+
+            return highlightFound;
         },
         nickStyle: function nickColour(nick) {
             return 'color:' + TextFormatting.createNickColour(nick) + ';';

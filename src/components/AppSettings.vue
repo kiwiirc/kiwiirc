@@ -16,7 +16,7 @@
                 <h3>Notifications</h3>
                 <label><span>Include join/part messages as activity:</span> <input type="checkbox" v-model="bufferSettings.traffic_as_activity" /></label>
                 <label><span>Mute sound notifications:</span> <input type="checkbox" v-model="bufferSettings.mute_sound" /></label>
-                <label><span>Highlight on words (space separated):</span> <input type="text" /></label>
+                <label><span>Highlight on words (space separated):</span> <input type="text" v-model="userSettings.highlights" /></label>
             </div>
 
             <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
@@ -52,6 +52,9 @@ export default {
         },
         settings: function getSettings() {
             return state.settings;
+        },
+        userSettings: function getUserSettings() {
+            return state.user_settings;
         },
         bufferSettings: function bufferSettings() {
             return state.settings.buffers;

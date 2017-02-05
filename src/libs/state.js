@@ -40,6 +40,7 @@ const stateObj = {
         },
     },
     user_settings: {
+        highlights: '',
         aliases: {
             // General aliases
             '/p': '/part $1+',
