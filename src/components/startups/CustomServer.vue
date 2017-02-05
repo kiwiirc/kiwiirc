@@ -1,7 +1,10 @@
 <template>
-    <div class="kiwi-welcome">
-        <h2>Where are you connecting today?</h2>
-        <form v-on:submit.prevent="startUp" class="u-form kiwi-welcome-form">
+    <div class="kiwi-welcome" v-bind:class="[is_connecting ? 'kiwi-welcome--connecting' : '']">
+        <h2 v-if="!is_connecting">{{title}}</h2>
+        <h2 v-else>Connecting... <a @click="infoClick" class="u-link"><i class="fa fa-info-circle" aria-hidden="true"></i></a></h2>
+
+        <transition name="connectingloader">
+        <form v-if="!is_connecting" v-on:submit.prevent="startUp" class="u-form kiwi-welcome-form">
             <template v-if="server_type === 'default'">
                 <label>
                     <span>Server</span>
@@ -70,11 +73,21 @@
             </template>
 
             <button type="submit" class="u-button u-button-primary u-submit">Connect</button>
+
+            <div v-if="show_type_switcher" class="kiwi-welcome-server-types">
+                <a @click="server_type = 'default'" class="u-link">Network</a>
+                <a @click="server_type = 'znc'" class="u-link">ZNC</a>
+            </div>
         </form>
 
-        <div v-if="show_type_switcher" class="kiwi-welcome-server-types">
-            <a @click="server_type = 'default'" class="u-link">Network</a>
-            <a @click="server_type = 'znc'" class="u-link">ZNC</a>
+        <div v-else class="kiwi-welcome-loader">
+            <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+        </div>
+        </transition>
+
+        <div style="position:fixed;bottom:20px;left:0;right:0;text-align:center;">
+            <i><b>This is a test server. All connections will appear from a single temporary IP address!</b></i>
+            <div><a href="/?config=websockettest">Try out the direct websocket test. This will connect your browser directly to the IRC network without a kiwiirc.com proxy</a></div>
         </div>
     </div>
 </template>
@@ -90,6 +103,7 @@ import logger from 'src/libs/Logger';
 export default {
     data: function data() {
         return {
+            title: 'Where are you connecting today?',
             server_type: 'default',
             server: '',
             tls: false,
@@ -100,6 +114,8 @@ export default {
             direct: false,
             show_type_switcher: true,
             show_password_box: false,
+            is_connecting: false,
+            connecting_net: null,
         };
     },
     methods: {
@@ -152,9 +168,20 @@ export default {
                     state.setActiveBuffer(net.id, net.serverBuffer().name);
                 }
 
+                this.is_connecting = true;
+                this.connecting_net = net;
                 net.ircClient.connect();
-                this.$emit('start');
+                net.ircClient.once('registered', () => {
+                    this.$emit('start');
+                });
             }
+        },
+        infoClick: function infoClick() {
+            if (this.connecting_net) {
+                let net = this.connecting_net;
+                state.setActiveBuffer(net.id, net.serverBuffer().name);
+            }
+            this.$emit('start');
         },
         parseConnectionString: function parseConnectionString(str) {
             // [ircs?://]irc.network.net:[+]6667/channel?nick=mynick;
@@ -213,6 +240,8 @@ export default {
             this.nick = state.settings.startupOptions.nick;
             this.channel = state.settings.startupOptions.channel;
             this.direct = state.settings.startupOptions.direct;
+
+            this.title = 'Where are you connecting today?';
         },
     },
     created: async function created() {
@@ -254,6 +283,8 @@ export default {
                 this.tls = con.tls;
                 this.nick = con.nick;
                 this.channel = con.channels.join(',');
+
+                this.title = 'Enter a nickname to join';
             } else if (connections.length > 1) {
                 saveThisSessionsState = false;
 
@@ -302,6 +333,8 @@ export default {
 .kiwi-welcome-form {
     width: 300px;
     margin: 0 auto;
+    max-height: 280px;
+    overflow: hidden;
 }
 .kiwi-welcome-channel {
     margin-top: 1em;
@@ -311,5 +344,29 @@ export default {
 }
 .kiwi-welcome-server-types a {
     margin: 0 1em;
+}
+
+.kiwi-welcome-loader {
+    margin-top: 1em;
+    font-size: 2em;
+}
+
+.kiwi-welcome h2 {
+    margin-bottom: 1em;
+}
+.kiwi-welcome h2 i {
+    font-size: 0.8em;
+    margin-left: 1em;
+}
+.kiwi-welcome--connecting h2 {
+    transition: margin-top .7s;
+    margin-top: 100px;
+}
+
+.connectingloader-enter-active, .connectingloader-leave-active {
+  transition: max-height .7s
+}
+.connectingloader-enter, .connectingloader-leave-to {
+  max-height: 0
 }
 </style>
