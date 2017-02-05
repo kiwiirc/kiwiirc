@@ -149,6 +149,10 @@ export default {
 
             let highlightFound = false;
             state.user_settings.highlights.toLowerCase().split(' ').forEach(word => {
+                if (!word) {
+                    return;
+                }
+
                 if (message.message.indexOf(word) > -1) {
                     highlightFound = true;
                 }
