@@ -171,9 +171,20 @@ export default {
                 this.is_connecting = true;
                 this.connecting_net = net;
                 net.ircClient.connect();
-                net.ircClient.once('registered', () => {
+
+                let onRegistered = () => {
+                    setTimeout(() => { this.is_connecting = false; }, 1000);
                     this.$emit('start');
-                });
+                    net.ircClient.off('registered', onRegistered);
+                    net.ircClient.off('close', onClosed);
+                };
+                let onClosed = () => {
+                    setTimeout(() => { this.is_connecting = false; }, 1000);
+                    net.ircClient.off('registered', onRegistered);
+                    net.ircClient.off('close', onClosed);
+                };
+                net.ircClient.once('registered', onRegistered);
+                net.ircClient.once('close', onClosed);
             }
         },
         infoClick: function infoClick() {
