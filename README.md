@@ -5,7 +5,7 @@
 ### Status
 This is an entirely new version of the original Kiwi IRC client. It now uses Vue.js instead of backbone.js for the javascript framework.
 
-It almost has feature parity with the original Kiwi IRC client, the remaining features being in the issue tracker. The original Kiwi IRC will still be supported for some time with bug and security patches but no extra features will be worked on. Only this new version will be actively developed.
+It almost has feature parity with the original Kiwi IRC client, the outstanding features being in the issue tracker. The original Kiwi IRC will still be supported for some time with bug and security patches but no extra features will be worked on. Only this new version will be actively developed.
 
 If you're just looking to run Kiwi IRC and not develop or modify it then there are pre-built and ready to use packages here: https://kiwiirc.com/downloads/index.html
 
@@ -45,6 +45,8 @@ contains any runtime configuration. When in the development environment this can
 be found in [static/config.json](static/config.json)
 
 ## Getting started
+
+If you're just looking to run Kiwi IRC and not develop or modify it then there are pre-built and ready to use packages here: https://kiwiirc.com/downloads/index.html
 
 This repository only contains the client side (the website). To connect to an IRC server you either need to be using a websocket capable IRC server (none yet support this) or need to be connecting to a Kiwi IRC server which can be found here: https://github.com/kiwiirc/webircgateway
 
