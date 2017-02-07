@@ -46,6 +46,8 @@ be found in [static/config.json](static/config.json)
 
 ## Getting started
 
+If you're just looking to run Kiwi IRC and not develop or modify it then there are pre-built and ready to use packages here: https://kiwiirc.com/downloads/index.html
+
 This repository only contains the client side (the website). To connect to an IRC server you either need to be using a websocket capable IRC server (none yet support this) or need to be connecting to a Kiwi IRC server which can be found here: https://github.com/kiwiirc/webircgateway
 
 Once you have a Kiwi IRC server configured and running, enter the URL to your Kiwi IRC server in the clients config.json file. The client side files built from this repository may be hosted anywhere - Apache, Nginx, the Kiwi IRC server, your CDN.
