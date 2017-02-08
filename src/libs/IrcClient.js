@@ -12,7 +12,7 @@ export function create(state, networkid) {
         path: network.connection.path,
         password: network.connection.password,
         nick: network.nick,
-        username: network.nick,
+        username: network.username || network.nick,
         gecos: 'https://kiwiirc.com/',
         version: 'Kiwi IRC',
         auto_reconnect: false,

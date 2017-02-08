@@ -89,6 +89,7 @@ const stateObj = {
                 password: ''
             },
             nick: 'prawnsalad',
+            username: 'prawn',
             settings: { show_raw: false },
             buffers: [
                 {
@@ -123,6 +124,7 @@ const stateObj = {
                 password: ''
             },
             nick: 'prawnsalad',
+            username: 'prawn',
             buffers: [
                 {
                     id: 1
@@ -299,6 +301,7 @@ const state = new Vue({
                 },
                 settings: {},
                 nick: nick,
+                username: serverInfo.username,
                 password: serverInfo.password,
                 buffers: [],
                 users: {},
