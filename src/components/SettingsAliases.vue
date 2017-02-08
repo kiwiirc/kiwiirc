@@ -19,10 +19,10 @@
                 <p>
                     You can also use variables to read input from the typed command. <br />
                     <ul>
-                        <li><em>$0</em> All of the typed input</li>
-                        <li><em>$1</em> The first word from the typed input</li>
-                        <li><em>$2</em> The second word from the typed input</li>
-                        <li><em>$1+</em> From the first word to the end of the typed input</li>
+                        <li><em>$0</em> The command name</li>
+                        <li><em>$1</em> The first argument from the typed input</li>
+                        <li><em>$2</em> The second argument from the typed input</li>
+                        <li><em>$1+</em> From the first argument to the last argument</li>
                     </ul>
                     <b>Example 1:</b> <em>/greet /msg $1 Hello, $1!</em><br />
                     This creates an IRC command /greet that accepts one argument. Typing "/greet username"
