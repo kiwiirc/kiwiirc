@@ -321,6 +321,7 @@ export default {
                 this.$emit('start');
             }
         } else {
+            saveThisSessionsState = true;
             this.applyDefaults();
         }
 
