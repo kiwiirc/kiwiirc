@@ -23,12 +23,34 @@ function getQueryVariable(variable) {
     return false;
 }
 
-let configFile = getQueryVariable('config') ?
-    'static/config_' + getQueryVariable('config') + '.json' :
-    'static/config.json';
+let configFile = 'static/config.json';
+let configObj = null;
+
+/**
+ * Finding the config file
+ * In order, looks in the following places:
+ *   1. If a 'config' argument is in the query string, static/config_THEVALUE_.json
+ *   2. If a <meta name="kiwiconfig" content=""> is found, then the content becomes the config URL.
+ *   3. If a <script name="kiwiconfig" type="application/json"></script> is found, then the content
+ *      becomes the config JSON without making another web request.
+ */
+if (getQueryVariable('config')) {
+    configFile = 'static/config_' + getQueryVariable('config') + '.json';
+} else if (document.querySelector('meta[name="kiwiconfig"]')) {
+    configFile = document.querySelector('meta[name="kiwiconfig"]').content;
+} else if (document.querySelector('script[name="kiwiconfig"]')) {
+    let configContents = document.querySelector('script[name="kiwiconfig"]').innerHTML;
+    console.log('Got contents', configContents);
+    try {
+        configObj = JSON.parse(configContents);
+    } catch (parseErr) {
+        Logger.error('Config file: ' + parseErr.stack);
+        showError();
+    }
+}
 
 let configLoader = new ConfigLoader();
-configLoader.loadFromUrl(configFile)
+(configObj ? configLoader.loadFromObj(configObj) : configLoader.loadFromUrl(configFile))
     .then(applyConfig)
 	.then(startApp)
 	.catch(showError);

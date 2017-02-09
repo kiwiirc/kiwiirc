@@ -15,27 +15,37 @@ export default class ConfigLoader {
                     return;
                 }
 
-                let conf = null;
+                let configObj = null;
                 try {
-                    conf = JSON.parse(response.body);
+                    configObj = JSON.parse(response.body);
                 } catch (parseErr) {
                     Logger.error('Config file: ' + parseErr.stack);
                     reject();
                     return;
                 }
 
-                this.config = Object.create(null);
-                _.each(conf, (_val, key) => {
-                    let val = _val;
-                    if (typeof val === 'string') {
-                        val = this.insertReplacements(val);
-                    }
-
-                    this.config[key] = val;
-                });
-
+                this.setConfig(configObj);
                 resolve(this.config);
             });
+        });
+    }
+
+    loadFromObj(configObj) {
+        return new Promise((resolve, reject) => {
+            this.setConfig(configObj);
+            resolve(this.config);
+        });
+    }
+
+    setConfig(confObj) {
+        this.config = Object.create(null);
+        _.each(confObj, (_val, key) => {
+            let val = _val;
+            if (typeof val === 'string') {
+                val = this.insertReplacements(val);
+            }
+
+            this.config[key] = val;
         });
     }
 
