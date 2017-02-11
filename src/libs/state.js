@@ -527,6 +527,7 @@ const state = new Vue({
                     nick: user.nick,
                     host: user.host || '',
                     username: user.username || '',
+                    realname: user.realname || '',
                     modes: user.modes || '',
                     away: user.away || '',
                     buffers: Object.create(null),

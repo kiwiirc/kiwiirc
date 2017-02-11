@@ -193,6 +193,8 @@ function clientMiddleware(state, networkid) {
                     type: 'traffic',
                     type_extra: 'join',
                 });
+
+                network.ircClient.who(event.channel);
             } else {
                 state.addMessage(buffer, {
                     time: Date.now(),
@@ -321,6 +323,19 @@ function clientMiddleware(state, networkid) {
             state.addUser(networkid, {
                 nick: event.nick,
                 away: event.message || '',
+            });
+        }
+
+        if (command === 'wholist') {
+            event.users.forEach(user => {
+                let userObj = {
+                    nick: user.nick,
+                    host: user.hostname || undefined,
+                    username: user.ident || undefined,
+                    away: user.away ? 'Away' : '',
+                    realname: user.real_name,
+                };
+                state.addUser(networkid, userObj);
             });
         }
 
