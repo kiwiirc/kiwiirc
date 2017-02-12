@@ -143,6 +143,7 @@ export default {
             state.$emit('userbox.show', user, {
                 top: mouseEvent.clientY,
                 left: mouseEvent.clientX,
+                buffer: this.buffer,
             });
         },
     },

@@ -1,31 +1,60 @@
 <template>
     <div class="kiwi-userbox">
-        <h3><i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"></i> {{user.nick}}</h3>
-        <h4 class="kiwi-userbox-usermask">{{user.nick}}!{{user.username}}@{{user.host}}</h4>
-
-        <div v-if="!whoisLoading" class="kiwi-userbox-whois">
-            <span class="kiwi-userbox-whois-line">{{user.away ? 'Status: ' + user.away : 'Is available'}}</span>
-            <span class="kiwi-userbox-whois-line" v-if="user.account">Account name: {{user.account}}</span>
-            <span class="kiwi-userbox-whois-line">Real name: {{user.realname}}</span>
-            <span class="kiwi-userbox-whois-line" v-if="user.bot">Is a bot</span>
-            <span class="kiwi-userbox-whois-line" v-if="user.helpop">Is available for help</span>
-            <span class="kiwi-userbox-whois-line" v-if="user.operator">Is an operator</span>
-            <span class="kiwi-userbox-whois-line" v-if="user.server">Connected to {{user.server}} {{user.server_info ? `(${user.server_info})` : ''}}</span>
-            <span class="kiwi-userbox-whois-line" v-if="user.secure">Securely connected via SSL/TLS</span>
-            <span class="kiwi-userbox-whois-line" v-if="user.channels">Also in channels {{user.channels}}</span>
-            <span class="kiwi-userbox-whois-line"></span>
-        </div>
-        <div v-else class="kiwi-userbox-whois kiwi-userbox-whois-loading">
-            <i class="fa fa-spinner" aria-hidden="true"></i>
+        <div class="kiwi-userbox-header">
+            <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"></i>
+            <h3>{{user.nick}}</h3>
+            <div class="kiwi-userbox-usermask">{{user.username}}@{{user.host}}</div>
         </div>
 
-        <div v-if="!whoisLoading" class="kiwi-userbox-options">
-            <form class="u-form">
+        <p class="kiwi-userbox-basicinfo">
+            <b>Real name:</b> {{user.realname}} <br />
+            <b>Status:</b> {{user.away ? 'Status: ' + user.away : 'Is available'}} <br />
+        </p>
+
+        <p class="kiwi-userbox-actions">
+            <a @click="openQuery" class="u-link">Send a message</a>
+            <a v-if="!whoisRequested" class="u-link" @click="updateWhoisData">More information</a> <br />
+            <label>
+                <input type="checkbox" v-model="user.ignore" /> Ignore user
+            </label>
+        </p>
+
+        <div
+            v-if="whoisRequested"
+            class="kiwi-userbox-whois"
+            v-bind:class="[whoisLoading?'kiwi-userbox-whois--loading':'']"
+        >
+            <template v-if="whoisLoading">
+                <i class="fa fa-spinner" aria-hidden="true"></i>
+            </template>
+            <template v-else>
+                <span class="kiwi-userbox-whois-line">{{user.away ? 'Status: ' + user.away : 'Is available'}}</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.account">Account name: {{user.account}}</span>
+                <span class="kiwi-userbox-whois-line">Real name: {{user.realname}}</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.bot">Is a bot</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.helpop">Is available for help</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.operator">Is an operator</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.server">Connected to {{user.server}} {{user.server_info ? `(${user.server_info})` : ''}}</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.secure">Securely connected via SSL/TLS</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.channels">Also in channels {{user.channels}}</span>
+            </template>
+        </div>
+
+        <div v-if="areWeAnOp" class="kiwi-userbox-actions-op">
+            <form class="u-form" @submit.prevent="">
                 <label>
-                    <input type="checkbox" v-model="user.ignore" /> Ignore user
+                    Access level <select v-model="userMode">
+                        <option v-for="mode in availableChannelModes" v-bind:value="mode.mode">
+                            {{mode.description}}
+                        </option>
+                        <option value="">Normal</option>
+                    </select>
                 </label>
                 <label>
-                    <a @click="openQuery" class="u-link">Send a message</a>
+                    <button @click="kickUser" class="u-button u-button-secondary">Kick from the channel</button>
+                </label>
+                <label>
+                    <button @click="banUser" class="u-button u-button-secondary">Ban from the channel</button>
                 </label>
             </form>
         </div>
@@ -36,16 +65,102 @@
 
 <script>
 
+import _ from 'lodash';
 import state from 'src/libs/state';
 
 export default {
     data: function data() {
         return {
+            whoisRequested: false,
             whoisLoading: false,
         };
     },
-    props: ['network', 'user'],
+    props: ['buffer', 'network', 'user'],
+    computed: {
+        // Channel modes differ on some IRCds so get them from the network options
+        availableChannelModes: function availableChannelModes() {
+            let availableModes = [];
+            let prefixes = this.network.ircClient.network.options.PREFIX;
+            // TODO: Double check these modes mean the correct things
+            let knownPrefix = {
+                q: 'Owner',
+                a: 'Admin',
+                o: 'Operator',
+                h: 'Half-Operator',
+                v: 'Voice',
+            };
+            prefixes.forEach(prefix => {
+                let mode = prefix.mode;
+                if (knownPrefix[mode]) {
+                    availableModes.push({
+                        mode: mode,
+                        description: knownPrefix[mode],
+                    });
+                }
+            });
+
+            return availableModes;
+        },
+        areWeAnOp: function areWeAnOp() {
+            if (!this.buffer) {
+                return false;
+            }
+
+            let ourUser = state.getUser(this.buffer.networkid, this.network.nick);
+            let userBufferInfo = ourUser.buffers[this.buffer.id];
+            let modes = userBufferInfo.modes;
+
+            let opModes = ['Y', 'y', 'q', 'a', 'o', 'h'];
+            let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
+
+            return !!hasOp;
+        },
+        userMode: {
+            get: function getUserMode() {
+                if (!this.buffer) {
+                    return '';
+                }
+
+                let userBufferInfo = this.user.buffers[this.buffer.id];
+                let modes = userBufferInfo.modes;
+                return modes.length > 0 ?
+                    modes[0] :
+                    '';
+            },
+            // Switch the current user mode for the new one
+            set: function setUserMode(newVal) {
+                let client = this.network.ircClient;
+                let oldVal = this.userMode;
+
+                let changes = [];
+                let targets = [];
+
+                if (oldVal) {
+                    changes.push('-' + oldVal);
+                    targets.push(this.user.nick);
+                }
+                if (newVal) {
+                    changes.push('+' + newVal);
+                    targets.push(this.user.nick);
+                }
+
+                let params = ['MODE', this.buffer.name, changes.join('')].concat(targets);
+                client.raw(params);
+            },
+        },
+    },
     methods: {
+        userModeOnThisBuffer: function userModeOnBuffer(user) {
+            if (!this.buffer) {
+                return '';
+            }
+
+            let userBufferInfo = user.buffers[this.buffer.id];
+            let modes = userBufferInfo.modes;
+            return modes.length > 0 ?
+                modes[0] :
+                '';
+        },
         closeBox: function closeViewer() {
             state.$emit('userbox.hide');
         },
@@ -55,14 +170,27 @@ export default {
             this.closeBox();
         },
         updateWhoisData: function updateWhoisData() {
+            this.whoisRequested = true;
             this.whoisLoading = true;
             this.network.ircClient.whois(this.user.nick, () => {
                 this.whoisLoading = false;
             });
         },
+        kickUser: function kickUser() {
+            let reason = 'Your behavior is not conducive to the desired environment.';
+            this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
+        },
+        banUser: function banUser() {
+            if (!this.user.username || !this.user.host) {
+                return;
+            }
+
+            let banMask = `*!${this.user.username}@${this.user.host}`;
+            let reason = 'Your behavior is not conducive to the desired environment.';
+            this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask, reason);
+        },
     },
     created: function created() {
-        this.updateWhoisData();
     },
     updated: function updated() {
         let rect = this.$el.getBoundingClientRect();
@@ -77,7 +205,9 @@ export default {
     },
     watch: {
         user: function watchUser() {
-            this.updateWhoisData();
+            // Reset the whois view since the user is now different
+            this.whoisRequested = false;
+            this.whoisLoading = false;
         },
     },
 };

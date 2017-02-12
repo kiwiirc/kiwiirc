@@ -594,10 +594,9 @@ p {
 
 .kiwi-userbox {
     border: 1px solid #dddddd;
-    background: red;
+    border-right-width: 0;
     padding: 10px;
-    background: #6b6b6b;
-    color: #e0e0db;
+    background: #f6f6f6;
     transition: 0.2s top;
     max-width: 50%;
 }
@@ -612,32 +611,41 @@ p {
     }
 }
 .kiwi-userbox-icon {
-    font-size: 1.5em;
+    font-size: 2.8em;
     margin-right: 0.3em;
+    position: absolute;
 }
-.kiwi-userbox > h3 {
-    margin: 0 0 0.5em 0;
+.kiwi-userbox-header h3 {
+    margin: 0 0 0 40px;
+    padding: 0;
 }
 .kiwi-userbox-usermask {
     color: #9e9e9e;
     display: block;
-    margin: 0 0 1em 0;
+    margin: 0 0 0 40px;
     font-size: 0.9em;
+}
+.kiwi-userbox-actions a {
+    margin-right: 1em;
 }
 .kiwi-userbox-whois {
     background: #ffffff;
     padding: 5px;
     color: #2c3e50;
     line-height: 1.4em;
+    border: 1px dashed #9e9e9e;
 }
 .kiwi-userbox-whois-line {
     display: block;
 }
-.kiwi-userbox-options {
-    margin: 0.7em 0;
+.kiwi-userbox-actions-op {
+    border-top: 1px solid #9e9e9e;
+    margin: 0.7em 0 0 0;
+    padding: 0.7em 0;
 }
-.kiwi-userbox-options form label {
+.kiwi-userbox-actions-op form label {
     display: block;
+    margin-bottom: 0.7em;
 }
 
 

@@ -180,6 +180,7 @@ export default {
                     state.$emit('userbox.show', user, {
                         top: event.clientY,
                         left: event.clientX,
+                        buffer: this.buffer,
                     });
                 }
             }

@@ -13,6 +13,7 @@
                     <user-box
                         v-if="userboxOpen"
                         :user="userboxUser"
+                        :buffer="userboxBuffer"
                         :network="network"
                         v-bind:style="{
                             top: userboxPos.top + 'px'
@@ -89,6 +90,7 @@ export default {
         });
         state.$on('userbox.show', (user, opts) => {
             this.userboxUser = user;
+            this.userboxBuffer = opts.buffer;
             this.userboxOpen = true;
             this.userboxPos = {
                 top: opts.top,
@@ -138,6 +140,7 @@ export default {
             userboxOpen: false,
             userboxPos: {},
             userboxUser: null,
+            userboxBuffer: null,
         };
     },
     computed: {
