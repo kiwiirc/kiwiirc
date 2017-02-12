@@ -207,7 +207,7 @@ function clientMiddleware(state, networkid) {
         }
         if (command === 'kick') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
-            state.removeUserFromBuffer(buffer, event.nick);
+            state.removeUserFromBuffer(buffer, event.kicked);
 
             if (event.kicked === client.user.nick) {
                 buffer.joined = false;
