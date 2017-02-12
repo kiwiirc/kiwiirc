@@ -229,7 +229,7 @@ export default {
 <style>
 .kiwi-statebrowser {
     box-sizing: border-box;
-    z-index: 2;
+    z-index: 3; /* Must be at leats 1 higher than the workspace :after z-index; */
 }
 
 .kiwi-statebrowser-scrollarea {
