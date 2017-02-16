@@ -474,11 +474,7 @@ const state = new Vue({
             );
 
             if (includeAsActivity && !isActiveBuffer) {
-                if (!buffer.flags.unread) {
-                    this.$set(buffer.flags, 'unread', 1);
-                } else {
-                    buffer.flags.unread++;
-                }
+                buffer.incrementFlag('unread');
             }
 
             this.$emit('message.new', bufferMessage, buffer);
@@ -786,6 +782,24 @@ function initialiseBufferState(buffer) {
                 }
             });
         },
+    });
+    // incrementFlag batches up the changes to the flags object as some of them can be
+    // very taxing on DOM updates
+    Object.defineProperty(buffer, 'incrementFlag', {
+        value: (function incrementFlagFn() {
+            let batches = Object.create(null);
+            let processBatches = _.debounce(() => {
+                _.each(batches, (incrBy, flagName) => {
+                    buffer.flags[flagName] = (buffer.flags[flagName] || 0) + incrBy;
+                    batches[flagName] = 0;
+                });
+            }, 500);
+            return function incrementFlag(flagName) {
+                batches[flagName] = batches[flagName] || 0;
+                batches[flagName]++;
+                processBatches();
+            };
+        }()),
     });
 
     state.messages.push({
