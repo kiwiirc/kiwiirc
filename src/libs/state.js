@@ -365,7 +365,7 @@ const state = new Vue({
             }
 
             let buffer = _.find(network.buffers, {
-                name: bufferName,
+                name: bufferName.toLowerCase(),
             });
 
             if (!buffer) {
@@ -382,7 +382,7 @@ const state = new Vue({
             }
 
             let buffer = _.find(network.buffers, {
-                name: bufferName,
+                name: bufferName.toLowerCase(),
             });
 
             return buffer;
