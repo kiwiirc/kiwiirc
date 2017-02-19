@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import Irc from 'irc-framework/browser';
 import * as ServerConnection from './ServerConnection';
+import * as TextFormatting from 'src/helpers/TextFormatting';
 
 export function create(state, networkid) {
     let network = state.getNetwork(networkid);
@@ -165,12 +166,20 @@ function clientMiddleware(state, networkid) {
             }
 
             let buffer = state.getOrAddBufferByName(networkid, bufferName);
-            let messageBody = event.message;
 
-            // Turns actions into "* prawnsalad does a action"
+            let textFormatType = 'privmsg';
             if (event.type === 'action') {
-                messageBody = '* ' + event.nick + ' ' + messageBody;
+                textFormatType = 'action';
+            } else if (event.type === 'notice') {
+                textFormatType = 'notice';
             }
+
+            let messageBody = TextFormatting.formatText(textFormatType, {
+                nick: event.nick,
+                username: event.ident,
+                host: event.hostname,
+                text: event.message,
+            });
 
             state.addMessage(buffer, {
                 time: event.time || Date.now(),
@@ -186,98 +195,107 @@ function clientMiddleware(state, networkid) {
 
             if (event.nick === client.user.nick) {
                 buffer.joined = true;
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: 'You have joined',
-                    type: 'traffic',
-                    type_extra: 'join',
-                });
-
                 network.ircClient.who(event.channel);
-            } else {
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: `${event.nick} has joined`,
-                    type: 'traffic',
-                    type_extra: 'join',
-                });
             }
+
+            let messageBody = TextFormatting.formatText('channel_join', {
+                nick: event.nick,
+                username: event.ident,
+                host: event.hostname,
+                text: 'has joined',
+            });
+
+            state.addMessage(buffer, {
+                time: Date.now(),
+                nick: '',
+                message: messageBody,
+                type: 'traffic',
+                type_extra: 'join',
+            });
         }
         if (command === 'kick') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             state.removeUserFromBuffer(buffer, event.kicked);
 
+            let messageBody = '';
+
             if (event.kicked === client.user.nick) {
                 buffer.joined = false;
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: `${event.nick} kicked you from ${event.channel} (${event.message})`,
-                    type: 'traffic',
-                    type_extra: 'kick',
+                messageBody = TextFormatting.formatText('channel_selfkick', {
+                    nick: event.nick,
+                    username: event.ident,
+                    host: event.hostname,
+                    text: `${event.nick} kicked you from ${event.channel} (${event.message})`,
                 });
             } else {
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: `${event.kicked} was kicked from ${event.channel} by ${event.nick}` +
-                             ` (${event.message})`,
-                    type: 'traffic',
-                    type_extra: 'kick',
+                messageBody = TextFormatting.formatText('channel_kicked', {
+                    nick: event.nick,
+                    username: event.ident,
+                    host: event.hostname,
+                    text: `${event.kicked} was kicked from ${event.channel} by ${event.nick}` +
+                          ` (${event.message})`,
                 });
             }
+
+            state.addMessage(buffer, {
+                time: Date.now(),
+                nick: '',
+                message: messageBody,
+                type: 'traffic',
+                type_extra: 'kick',
+            });
         }
         if (command === 'part') {
             let buffer = state.getBufferByName(networkid, event.channel);
-            state.removeUserFromBuffer(buffer, event.nick);
-
-            if (event.nick === client.user.nick) {
-                if (buffer) {
-                    buffer.joined = false;
-                }
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: 'You have left',
-                    type: 'traffic',
-                    type_extra: 'part',
-                });
-            } else {
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: `${event.nick} has left (${event.message})`,
-                    type: 'traffic',
-                    type_extra: 'part',
-                });
+            if (!buffer) {
+                return;
             }
+
+            state.removeUserFromBuffer(buffer, event.nick);
+            if (event.nick === client.user.nick) {
+                buffer.joined = false;
+            }
+
+            let messageBody = TextFormatting.formatText('channel_part', {
+                nick: event.nick,
+                username: event.ident,
+                host: event.hostname,
+                text: `has left (${event.message})`,
+            });
+            state.addMessage(buffer, {
+                time: Date.now(),
+                nick: '',
+                message: messageBody,
+                type: 'traffic',
+                type_extra: 'part',
+            });
         }
         if (command === 'quit') {
             let buffers = state.getBuffersWithUser(networkid, event.nick);
 
             buffers.forEach(buffer => {
-                if (event.nick === client.user.nick) {
-                    if (buffer) {
-                        buffer.joined = false;
-                    }
-                    state.addMessage(buffer, {
-                        time: Date.now(),
-                        nick: '',
-                        message: `You have left (${event.message})`,
-                        type: 'traffic',
-                        type_extra: 'quit',
-                    });
-                } else {
-                    state.addMessage(buffer, {
-                        time: Date.now(),
-                        nick: '',
-                        message: `${event.nick} has left (${event.message})`,
-                        type: 'traffic',
-                        type_extra: 'quit',
-                    });
+                if (!buffer) {
+                    return;
                 }
+
+                if (event.nick === client.user.nick) {
+                    buffer.joined = false;
+                }
+
+                let messageBody = TextFormatting.formatText('channel_quit', {
+                    nick: event.nick,
+                    username: event.ident,
+                    host: event.hostname,
+                    text: `has left (${event.message})`,
+                });
+
+                state.addMessage(buffer, {
+                    time: Date.now(),
+                    nick: '',
+                    message: messageBody,
+                    type: 'traffic',
+                    type_extra: 'quit',
+                });
             });
 
             state.removeUser(networkid, {
@@ -341,10 +359,13 @@ function clientMiddleware(state, networkid) {
 
         if (command === 'motd') {
             let buffer = network.serverBuffer();
+            let messageBody = TextFormatting.formatText('motd', {
+                text: event.motd,
+            });
             state.addMessage(buffer, {
                 time: event.time || Date.now(),
                 nick: '',
-                message: event.motd,
+                message: messageBody,
                 type: 'motd',
             });
         }
@@ -352,10 +373,13 @@ function clientMiddleware(state, networkid) {
         if (command === 'nick in use' && !client.connection.registered) {
             let newNick = client.user.nick + rand(1, 100);
             let serverBuffer = network.serverBuffer();
+            let messageBody = TextFormatting.formatText('nickname_alreadyinuse', {
+                text: `Nickname '${client.user.nick}' is already in use. Trying '${newNick}'..`,
+            });
             state.addMessage(serverBuffer, {
                 time: Date.now(),
                 nick: '',
-                message: `Nickname '${client.user.nick}' is already in use. Trying '${newNick}'..`,
+                message: messageBody,
             });
             client.changeNick(newNick);
         }
@@ -367,12 +391,16 @@ function clientMiddleware(state, networkid) {
 
             state.changeUserNick(networkid, event.nick, event.new_nick);
 
+            let messageBody = TextFormatting.formatText('nick_changed', {
+                text: `${event.nick} is now known as ${event.new_nick}`,
+            });
+
             let buffers = state.getBuffersWithUser(networkid, event.new_nick);
             buffers.forEach(buffer => {
                 state.addMessage(buffer, {
                     time: event.time || Date.now(),
-                    nick: '*',
-                    message: `${event.nick} is now known as ${event.new_nick}`,
+                    nick: '',
+                    message: messageBody,
                     type: 'nick',
                 });
             });
@@ -393,10 +421,16 @@ function clientMiddleware(state, networkid) {
             let buffer = network.bufferByName(event.target);
             if (buffer) {
                 event.modes.forEach(mode => {
+                    let messageBody = TextFormatting.formatText('mode', {
+                        nick: event.nick,
+                        username: event.ident,
+                        host: event.hostname,
+                        text: `set ${mode.mode} ${mode.param}`,
+                    });
                     state.addMessage(buffer, {
                         time: event.time || Date.now(),
-                        nick: '*',
-                        message: `${event.nick} set ${mode.mode} ${mode.param}`,
+                        nick: '',
+                        message: messageBody,
                         type: 'mode',
                     });
 
@@ -427,22 +461,31 @@ function clientMiddleware(state, networkid) {
         if (command === 'topic') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             buffer.topic = event.topic || '';
+            let messageBody = TextFormatting.formatText('channel_topic', {
+                nick: event.nick,
+                username: event.ident,
+                host: event.hostname,
+                text: event.nick ?
+                    event.nick + ' changed the topic to: ' + event.topic :
+                    event.topic,
+            });
             state.addMessage(buffer, {
                 time: event.time || Date.now(),
                 nick: '',
-                message: event.nick ?
-                    event.nick + ' changed the topic to: ' + event.topic :
-                    event.topic,
+                message: messageBody,
                 type: 'topic',
             });
         }
 
         if (command === 'irc error') {
             let buffer = network.serverBuffer();
+            let messageBody = TextFormatting.formatText('general_error', {
+                text: event.reason || event.error,
+            });
             state.addMessage(buffer, {
                 time: event.time || Date.now(),
                 nick: '',
-                message: event.reason || event.error,
+                message: messageBody,
                 type: 'error',
             });
         }

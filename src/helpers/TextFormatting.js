@@ -292,3 +292,89 @@ export function mapRange(value, vMin, vMax, dMin, dMax) {
 
     return (vValue - vMin) * dRange / vRange + dMin;
 }
+
+/**
+ * Formats a line of text that will be displayed somewhere
+ */
+const textFormats = {
+    channel_join: '→ %nick %text',
+    channel_part: '← %nick %text',
+    channel_quit: '← %nick %text',
+    channel_kicked: '← %text',
+    channel_selfkick: '× %text',
+    channel_badpassword: '× %text',
+    channel_topic: 'ⓘ %text',
+    channel_banned: '× %text',
+    channel_badkey: '⚠ %text',
+    channel_inviteonly: '⚠ %channel %text',
+    channel_alreadyin: '⚠ %nick %text',
+    channel_limitreached: '⚠ %channel %text',
+    channel_invalid_name: '⚠ %channel %text',
+    channel_topic_setby: 'ⓘ %text',
+    channel_has_been_invited: 'ⓘ %nick %text',
+    server_connecting: '%text',
+    server_connecting_error: '%text',
+    mode: 'ⓘ %nick %text',
+    selfmode: 'ⓘ %nick %text',
+    nickname_alreadyinuse: '⚠ %text',
+    network_disconnected: '⚠ %text',
+    whois_channels: '%text',
+    whois_idle_and_signon: '%text',
+    whois_away: '%text',
+    whois_server: '%text',
+    whois_idle: '%text',
+    whois_notfound: 'ⓘ %text',
+    nick_changed: 'ⓘ %text',
+    applet_notfound: '⚠ %text',
+    encoding_changed: 'ⓘ %text',
+    encoding_invalid: '⚠ %text',
+    settings_saved: 'ⓘ %text',
+    ignore_title: '%text:',
+    ignore_none: '%text',
+    ignore_nick: '%text',
+    ignore_stop_notice: '%text',
+    ignore_stopped: '%text',
+    chanop_privs_needed: '⚠ %text',
+    no_such_nick: 'ⓘ %nick: %text',
+    unknown_command: 'ⓘ %text',
+    motd: '%text',
+    ctcp: '[CTCP] %text',
+    privmsg: '%text',
+    notice: '%text',
+    action: '* %nick %text',
+    whois_ident: '%nick [%nick!%ident@%host] * %text',
+    whois: '%text',
+    who: '%nick [%nick!%ident@%host] * %realname',
+    quit: '%text',
+    rejoin: '%text',
+    set_setting: 'ⓘ %text',
+    list_aliases: 'ⓘ %text',
+    ignored_pattern: 'ⓘ %text',
+    wallops: '[WALLOPS] %text',
+    message_nick: '%prefix%nick',
+    general_error: '%text',
+};
+
+export function formatText(formatId, params) {
+    let format = textFormats[formatId];
+
+    // Expand a user mask into its individual parts (nick, ident, hostname)
+    if (params.user) {
+        params.nick = params.user.nick || '';
+        params.username = params.user.username || '';
+        params.host = params.user.hostname || '';
+        params.prefix = params.user.prefix || '';
+    }
+
+    // Do the magic. Use the %shorthand syntax to produce output.
+    let result = format.replace(/%([A-Z]{2,})/ig, (match, key) => {
+        let ret = '';
+        if (typeof params[key] !== 'undefined') {
+            ret = params[key];
+        }
+
+        return ret;
+    });
+
+    return result;
+}
