@@ -133,13 +133,27 @@ state.$on('input.command.part', (event, command, line) => {
     event.handled = true;
 
     let network = state.getActiveNetwork();
-    let bufferNames = _.compact(line.split(','));
-    if (bufferNames.length === 0) {
+    let bufferNames = [];
+    let message = '';
+
+    if (line === '') {
+        // /part
         bufferNames = [state.getActiveBuffer().name];
+    } else {
+        let lineParts = line.split(' ');
+        if (network.isChannelName(lineParts[0])) {
+            // /part #channel,#possible_channel possible part message
+            bufferNames = _.compact(lineParts[0].split(','));
+            message = lineParts.slice(1).join(' ');
+        } else {
+            // /part possible part message
+            bufferNames = [state.getActiveBuffer().name];
+            message = line;
+        }
     }
 
     bufferNames.forEach((bufferName) => {
-        network.ircClient.part(bufferName);
+        network.ircClient.part(bufferName, message);
     });
 });
 
