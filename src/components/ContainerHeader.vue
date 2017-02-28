@@ -4,6 +4,7 @@
         v-bind:class="{
             'kiwi-header--showall': buffer_settings_open,
         }"
+        @click="onHeaderClick"
     >
 
         <template v-if="isChannel()">
@@ -58,6 +59,7 @@
 
 <script>
 
+import _ from 'lodash';
 import state from 'src/libs/state';
 import NetworkSettings from './NetworkSettings';
 import BufferSettings from './BufferSettings';
@@ -75,9 +77,26 @@ export default {
     },
     methods: {
         formatMessage: function formatMessage(messageBody) {
-            let formatted = TextFormatting.ircCodesToHtml(messageBody);
-            formatted = TextFormatting.linkifyUrls(formatted);
-            return formatted;
+            let words = messageBody.split(' ');
+            words = words.map(word => {
+                let parsed;
+
+                parsed = TextFormatting.linkifyUrls(word, {
+                    addHandle: true,
+                    handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
+                });
+                if (parsed !== word) return parsed;
+
+                parsed = TextFormatting.linkifyChannels(word);
+                if (parsed !== word) return parsed;
+
+                return _.escape(word);
+            });
+
+            let parsed = words.join(' ');
+            parsed = TextFormatting.ircCodesToHtml(parsed);
+
+            return parsed;
         },
         isChannel: function isChannel() {
             return this.buffer.isChannel();
@@ -99,6 +118,14 @@ export default {
         },
         closeCurrentBuffer: function closeCurrentBuffer() {
             state.removeBuffer(this.buffer);
+        },
+        onHeaderClick: function onHeaderClick(event) {
+            let channelName = event.target.getAttribute('data-channel-name');
+            if (channelName) {
+                let network = this.buffer.getNetwork();
+                state.addBuffer(this.buffer.networkid, channelName);
+                network.ircClient.join(channelName);
+            }
         },
     },
     watch: {
