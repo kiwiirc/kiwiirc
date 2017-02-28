@@ -25,6 +25,9 @@
                 isMessageHighlight(message) ?
                     'kiwi-messagelist-message--highlight' :
                     '',
+                message.nick && message.nick.toLowerCase() === hover_nick.toLowerCase() ?
+                    'kiwi-messagelist-message--hover' :
+                    '',
             ]"
         >
             <div
@@ -37,6 +40,8 @@
                 class="kiwi-messagelist-nick"
                 v-bind:style="nickStyle(message.nick)"
                 v-bind:data-nick="message.nick"
+                @mouseover="hover_nick=message.nick.toLowerCase();"
+                @mouseout="hover_nick='';"
             >{{message.nick}}</div>
             <div class="kiwi-messagelist-body" v-html="formatMessage(message.message)"></div>
         </div>
@@ -65,6 +70,7 @@ export default {
         return {
             auto_scroll: true,
             chathistoryAvailable: true,
+            hover_nick: '',
         };
     },
     props: ['buffer', 'messages', 'users'],
