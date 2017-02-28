@@ -704,6 +704,12 @@ function initialiseNetworkState(network) {
             return network.settings[name];
         },
     });
+    Object.defineProperty(network, 'isChannelName', {
+        value: function isChannelName(input) {
+            let chanPrefixes = this.ircClient.network.supports('CHANTYPES') || '#&';
+            return chanPrefixes.indexOf(input[0]) > -1;
+        },
+    });
 
     // If this network is being imported from a stored state, make sure it is
     // now set as 'disconnected' as it will not connected at this point.
