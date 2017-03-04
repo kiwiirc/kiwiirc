@@ -128,7 +128,9 @@ function createChannelOnConnection(connection, channelId) {
         if (!createdChannels[channelId]) {
             createdChannels[channelId] = new ConnectionChannel(options);
         } else {
-            createdChannels[channelId].initChannel();
+            if (connection.connected) {
+                createdChannels[channelId].initChannel();
+            }
         }
 
         return createdChannels[channelId];
