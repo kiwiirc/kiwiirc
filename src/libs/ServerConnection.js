@@ -138,6 +138,7 @@ function createChannelOnConnection(connection, channelId) {
 
     function ConnectionChannel(options) {
         let sendControlBuffer = [];
+        let encoding = 'utf8';
         let channel = new EventEmitter();
         channel.id = channelId;
         channel.isOpen = false;
@@ -160,6 +161,8 @@ function createChannelOnConnection(connection, channelId) {
                 });
                 sendControlBuffer = [];
             }
+
+            channel.setEncoding(encoding);
 
             // This channel is now open and can start sending data to the server
             channel.remoteState = 1;
@@ -223,7 +226,13 @@ function createChannelOnConnection(connection, channelId) {
         };
 
         // This is not supported but irc-framework transports need it, so just noop it
-        channel.setEncoding = function setEncoding() {};
+        channel.setEncoding = function setEncoding(newEncoding) {
+            encoding = newEncoding;
+            if (connection.connected) {
+                connection.ws.send(':' + channelId + ' ENCODING ' + newEncoding);
+            }
+            return true;
+        };
 
         channel.initChannel = function initChannel() {
             connection.ws.send(':' + channelId);

@@ -109,6 +109,7 @@ export default {
             tls: false,
             nick: '',
             password: '',
+            encoding: 'utf8',
             channel: '',
             znc_network: '',
             direct: false,
@@ -144,6 +145,7 @@ export default {
                     tls: this.tls,
                     password: this.password,
                     direct: this.direct,
+                    encoding: this.encoding,
                 });
             }
 
@@ -198,7 +200,8 @@ export default {
             // [ircs?://]irc.network.net:[+]6667/channel?nick=mynick;
             // Parse connection string such as this ^ into an object. Multiple connections
             // may be given, separated by ;
-            let reg = /(?:(ircs?):\/\/)?([a-z.]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
+            /* eslint max-len: off */
+            let reg = /(?:(ircs?):\/\/)?([a-z.0-9]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
             let connections = [];
             str.split(';').forEach(connectionString => {
                 if (!connectionString) {
@@ -240,6 +243,7 @@ export default {
                     port: parseInt(m[4] || (tls ? 6697 : 6667), 10),
                     channels: channels,
                     nick: (params.nick || 'kiwi_?'),
+                    encoding: (params.encoding || 'utf8'),
                 });
             });
 
@@ -251,6 +255,7 @@ export default {
             this.nick = state.settings.startupOptions.nick;
             this.channel = state.settings.startupOptions.channel;
             this.direct = state.settings.startupOptions.direct;
+            this.encoding = state.settings.startupOptions.encoding;
 
             this.title = 'Where are you connecting today?';
         },
@@ -294,6 +299,8 @@ export default {
                 this.tls = con.tls;
                 this.nick = con.nick;
                 this.channel = con.channels.join(',');
+                this.direct = con.direct;
+                this.encoding = con.encoding;
 
                 this.title = 'Enter a nickname to join';
             } else if (connections.length > 1) {

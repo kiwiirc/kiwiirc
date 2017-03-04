@@ -17,6 +17,7 @@ export function create(state, networkid) {
         gecos: 'https://kiwiirc.com/',
         version: 'Kiwi IRC',
         auto_reconnect: false,
+        encoding: network.connection.encoding,
     };
 
     // A direct connection uses a websocket to connect (note: some browsers limit
@@ -43,6 +44,7 @@ export function create(state, networkid) {
         ircClient.options.tls = network.connection.tls;
         ircClient.options.password = network.connection.password;
         ircClient.options.nick = network.nick;
+        ircClient.options.encoding = network.connection.encoding;
 
         originalIrcClientConnect.apply(ircClient, args);
     };

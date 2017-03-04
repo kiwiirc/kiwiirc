@@ -28,6 +28,7 @@
 
             <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
                 <h3>Advanced</h3>
+                <label><span>Encoding</span> <input v-model="network.connection.encoding" /></label><br />
                 <label><span>Show Raw</span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
             </div>
 
