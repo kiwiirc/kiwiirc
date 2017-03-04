@@ -364,9 +364,8 @@ const state = new Vue({
                 return null;
             }
 
-            let buffer = _.find(network.buffers, {
-                name: bufferName.toLowerCase(),
-            });
+            let toMatch = bufferName.toLowerCase();
+            let buffer = _.find(network.buffers, b => b.name.toLowerCase() === toMatch);
 
             if (!buffer) {
                 buffer = this.addBuffer(networkid, bufferName);
@@ -381,9 +380,8 @@ const state = new Vue({
                 return null;
             }
 
-            let buffer = _.find(network.buffers, {
-                name: bufferName.toLowerCase(),
-            });
+            let toMatch = bufferName.toLowerCase();
+            let buffer = _.find(network.buffers, b => b.name.toLowerCase() === toMatch);
 
             return buffer;
         },
