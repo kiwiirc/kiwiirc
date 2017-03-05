@@ -7,8 +7,6 @@
 
 <script>
 
-import 'src/assets/themes/default.css';
-
 export default {
 };
 

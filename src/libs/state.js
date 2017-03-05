@@ -10,6 +10,10 @@ const stateObj = {
     // Settings may be overridden via config.json
     settings: {
         windowTitle: 'Kiwi IRC - The web IRC client',
+        theme: 'Default',
+        themes: [
+            { name: 'Default', url: 'static/themes/default.css' },
+        ],
         // Restricted to a single IRC server
         restricted: true,
         // The startup screen
@@ -40,6 +44,7 @@ const stateObj = {
         },
     },
     user_settings: {
+        theme: '',
         highlights: '',
         aliases: {
             // General aliases

@@ -6,6 +6,8 @@
         }"
         @click="emitDocumentClick"
     >
+        <link v-bind:href="themeUrl" rel="stylesheet" type="text/css">
+
         <template v-if="hasStarted && networks.length > 0">
             <state-browser :networks="networks"></state-browser>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
@@ -57,11 +59,12 @@ import MediaViewer from 'src/components/MediaViewer';
 import UserBox from 'src/components/UserBox';
 import * as Notifications from 'src/libs/Notifications';
 import * as AudioBleep from 'src/libs/AudioBleep';
+import ThemeManager from 'src/libs/ThemeManager';
 import logger from 'src/libs/Logger';
 import state from 'src/libs/state';
 import 'src/libs/InputCommands';
 
-import 'src/assets/themes/default.css';
+let themes = ThemeManager.instance(state);
 
 export default {
     created: function created() {
@@ -165,6 +168,12 @@ export default {
             return this.buffer ?
                 this.buffer.getMessages() :
                 [];
+        },
+        themeUrl() {
+            let theme = themes.currentTheme();
+            return theme ?
+                theme.url :
+                '';
         },
     },
     methods: {
