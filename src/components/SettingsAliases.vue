@@ -76,7 +76,7 @@ export default {
             set: function setAliasText(newVal) {
                 // Clear out the current aliases before adding new ones in
                 _.each(this.aliases, (actions, command) => {
-                    this.$delete(this.aliases, 'command');
+                    this.$delete(this.aliases, command);
                 });
 
                 newVal.split('\n').forEach(line => {
