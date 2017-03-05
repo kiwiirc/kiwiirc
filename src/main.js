@@ -40,7 +40,7 @@ if (getQueryVariable('config')) {
     configFile = document.querySelector('meta[name="kiwiconfig"]').content;
 } else if (document.querySelector('script[name="kiwiconfig"]')) {
     let configContents = document.querySelector('script[name="kiwiconfig"]').innerHTML;
-    console.log('Got contents', configContents);
+
     try {
         configObj = JSON.parse(configContents);
     } catch (parseErr) {
