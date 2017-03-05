@@ -5,6 +5,7 @@ let createdInstance = null;
 export default class ThemeManager {
     constructor(state) {
         this.state = state;
+        this.listenForIrcEvents();
     }
 
     availableThemes() {
@@ -56,6 +57,18 @@ export default class ThemeManager {
         } else {
             url += '?cb=' + Date.now();
         }
+
+        theme.url = url;
+    }
+
+    // When we get a CTCP 'kiwi theme reload' then reload our theme. Handy for theme devs
+    listenForIrcEvents() {
+        this.state.$on('irc:ctcp request', (event, network) => {
+            let ctcpType = (event.type || '').toLowerCase();
+            if (ctcpType === 'kiwi' && event.message.indexOf('theme reload') > -1) {
+                this.reload();
+            }
+        });
     }
 }
 
