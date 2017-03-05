@@ -92,6 +92,15 @@ function clientMiddleware(state, networkid) {
 
 
     function parsedEventsHandler(command, event, client, next) {
+        // Trigger this event through the state object first. If it's been handled
+        // somewhere else then we ignore it.
+        let ircEventObj = { handled: false };
+        state.$emit('irc:' + command, event, network, ircEventObj);
+        if (ircEventObj.handled) {
+            next();
+            return;
+        }
+
         if (command === 'registered') {
             if (client.options.nickserv) {
                 let options = client.options.nickserv;
