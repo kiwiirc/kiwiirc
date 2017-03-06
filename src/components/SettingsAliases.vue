@@ -12,8 +12,8 @@
                     as the active channel or active nick.
                     <ul>
                         <li><em>$server</em> The current network name</li>
-                        <li><em>$channel</em> The current channel / buffer name</li>
-                        <li><em>$server</em> The current channel / buffer name</li>
+                        <li><em>$channel / $destination</em> The current channel / buffer name</li>
+                        <li><em>$nick</em> The current nick</li>
                     </ul>
                 </p>
                 <p>

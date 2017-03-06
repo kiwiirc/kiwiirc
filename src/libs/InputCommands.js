@@ -29,6 +29,7 @@ function processLine(rawLine) {
         server: activeNetwork.name,
         channel: activeBuffer.name,
         destination: activeBuffer.name,
+        nick: activeNetwork.nick,
     };
     line = aliasRewriter.process(line, aliasVars);
 
