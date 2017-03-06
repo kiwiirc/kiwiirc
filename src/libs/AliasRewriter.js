@@ -21,6 +21,31 @@ export default class AliasRewriter {
     }
 
 
+    importFromString(str) {
+        // Clear out the current aliases before adding new ones in
+        this.aliases = {};
+
+        str.split('\n').forEach(line => {
+            if (line[0] !== '/') {
+                return;
+            }
+
+            let spaceSep = line.indexOf(' ');
+            if (spaceSep === -1) {
+                return;
+            }
+
+            let command = line.substring(0, spaceSep);
+            let actions = line.substring(spaceSep + 1).trim();
+            if (!actions) {
+                return;
+            }
+
+            this.aliases[command.toLowerCase()] = actions;
+        });
+    }
+
+
     // Takes an array of words to process!
     processInput(input, vars) {
         let words = input || [];

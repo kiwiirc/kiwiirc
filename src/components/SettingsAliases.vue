@@ -53,7 +53,6 @@
 
 <script>
 
-import _ from 'lodash';
 import state from 'src/libs/state';
 
 export default {
@@ -63,40 +62,13 @@ export default {
             show_help: false,
         };
     },
-    props: [],
     computed: {
         aliasText: {
             get: function getAliasText() {
-                let text = '';
-                _.each(this.aliases, (actions, command) => {
-                    text += `${command} ${actions}\n`;
-                });
-                return text;
+                return state.user_settings.aliases.trim();
             },
             set: function setAliasText(newVal) {
-                // Clear out the current aliases before adding new ones in
-                _.each(this.aliases, (actions, command) => {
-                    this.$delete(this.aliases, command);
-                });
-
-                newVal.split('\n').forEach(line => {
-                    if (line[0] !== '/') {
-                        return;
-                    }
-
-                    let spaceSep = line.indexOf(' ');
-                    if (spaceSep === -1) {
-                        return;
-                    }
-
-                    let command = line.substring(0, spaceSep);
-                    let actions = line.substring(spaceSep + 1).trim();
-                    if (!actions) {
-                        return;
-                    }
-
-                    this.$set(this.aliases, command.toLowerCase(), actions);
-                });
+                state.user_settings.aliases = newVal.trim();
             },
         },
     },

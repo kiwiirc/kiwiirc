@@ -3,7 +3,11 @@ import state from './state';
 import AliasRewriter from './AliasRewriter';
 
 let aliasRewriter = new AliasRewriter();
-aliasRewriter.aliases = state.user_settings.aliases;
+aliasRewriter.importFromString(state.user_settings.aliases);
+
+state.$watch('user_settings.aliases', newVal => {
+    aliasRewriter.importFromString(newVal);
+});
 
 state.$on('input.raw', (input) => {
     let lines = input.split('\n');

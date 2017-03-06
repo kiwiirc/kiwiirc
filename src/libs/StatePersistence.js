@@ -27,13 +27,14 @@ export default class StatePersistence {
         // Throttle saving the state into storage so we don't thrash the disk
         let debouncedSaveState = _.debounce(() => {
             if (this.logger) {
-                this.logger('Networks updated, setting localStorage');
+                this.logger('State updated, setting localStorage');
             }
 
             this.storage.set(this.storageKey, this.state.exportState());
         }, 1000);
 
         this.state.$watch('networks', debouncedSaveState, { deep: true });
+        this.state.$watch('user_settings', debouncedSaveState, { deep: true });
     }
 
 
