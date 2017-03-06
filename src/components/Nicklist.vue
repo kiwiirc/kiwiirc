@@ -13,7 +13,8 @@
                 v-for="user in sortedUsers"
                 class="kiwi-nicklist-user"
                 v-bind:class="[
-                    userMode(user) ? 'kiwi-nicklist-user--mode-' + userMode(user) : ''
+                    userMode(user) ? 'kiwi-nicklist-user--mode-' + userMode(user) : '',
+                    user.away ? 'kiwi-nicklist-user--away' : ''
                 ]"
             >
                 <span class="kiwi-nicklist-user-prefix">{{userModePrefix(user)}}</span><span
