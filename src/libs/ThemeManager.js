@@ -9,7 +9,7 @@ export default class ThemeManager {
     }
 
     availableThemes() {
-        return this.state.themes;
+        return this.state.settings.themes;
     }
 
     currentTheme() {
@@ -18,7 +18,7 @@ export default class ThemeManager {
 
         // If no theme was set, use the first one in our theme list
         if (!currentThemeName) {
-            currentThemeName = state.themes[0].name;
+            currentThemeName = state.settings.themes[0].name;
         }
 
         currentThemeName = currentThemeName.toLowerCase();
@@ -31,7 +31,7 @@ export default class ThemeManager {
 
     setTheme(themeName) {
         // Make sure this theme exists
-        let themeExists = !!_.find(this.state.themes, t => {
+        let themeExists = !!_.find(this.state.settings.themes, t => {
             let isMatch = t.name.toLowerCase() === themeName.toLowerCase();
             return isMatch;
         });

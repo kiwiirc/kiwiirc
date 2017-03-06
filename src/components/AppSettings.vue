@@ -3,6 +3,16 @@
         <a @click="closeSettings" class="u-button u-button-secondary kiwi-appsettings-close">Close</a>
 
         <form class="u-form">
+            <div class="kiwi-appsettings-section kiwi-appsettings-general">
+                <h3>General</h3>
+                <label>
+                    <span>Theme: </span>
+                    <select v-model="theme">
+                        <option v-for="t in settings.themes" :value="t.name">{{t.name}}</option>
+                    </select>
+                </label>
+            </div>
+
             <div class="kiwi-appsettings-section kiwi-appsettings-messages">
                 <h3>Chat Messages</h3>
                 <label><span>Show timestamps:</span> <input type="checkbox" v-model="bufferSettings.show_timestamps" /></label>
@@ -31,6 +41,7 @@
 
 import state from 'src/libs/state';
 import SettingsAliases from './SettingsAliases';
+import ThemeManager from 'src/libs/ThemeManager';
 
 export default {
     data: function data() {
@@ -58,6 +69,14 @@ export default {
         },
         bufferSettings: function bufferSettings() {
             return state.settings.buffers;
+        },
+        theme: {
+            get: function getTheme() {
+                return ThemeManager.instance().currentTheme().name;
+            },
+            set: function setTheme(newVal) {
+                ThemeManager.instance().setTheme(newVal);
+            },
         },
     },
     props: [],
