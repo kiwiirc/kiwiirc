@@ -200,6 +200,20 @@ function clientMiddleware(state, networkid) {
             });
         }
 
+        if (command === 'wallops') {
+            let buffer = state.getOrAddBufferByName(networkid, '*');
+            let messageBody = TextFormatting.formatText('wallops', {
+                text: event.message,
+            });
+
+            state.addMessage(buffer, {
+                time: event.time || Date.now(),
+                nick: event.nick,
+                message: messageBody,
+                type: 'wallops',
+            });
+        }
+
         if (command === 'join') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             state.addUserToBuffer(buffer, { nick: event.nick });
