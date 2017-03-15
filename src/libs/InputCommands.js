@@ -75,13 +75,21 @@ state.$on('input.command.lines', (event, command, line) => {
 function handleMessage(type, event, command, line) {
     event.handled = true;
 
+    let network = state.getActiveNetwork();
+
     let spaceIdx = line.indexOf(' ');
     if (spaceIdx === -1) spaceIdx = line.length;
 
     let bufferName = line.substr(0, spaceIdx);
-    let message = line.substr(spaceIdx + 1);
+    let message = '';
 
-    let network = state.getActiveNetwork();
+    if (!network.isChannelName(bufferName)) {
+        bufferName = state.getActiveBuffer().name;
+        message = line;
+    } else {
+        message = line.substr(spaceIdx + 1);
+    }
+
     let buffer = state.getBufferByName(network.id, bufferName);
     if (buffer) {
         let newMessage = {
@@ -104,7 +112,7 @@ function handleMessage(type, event, command, line) {
 }
 
 state.$on('input.command.msg', _.partial(handleMessage, 'msg'));
-state.$on('input.command.me', _.partial(handleMessage, 'action'));
+state.$on('input.command.action', _.partial(handleMessage, 'action'));
 state.$on('input.command.notice', _.partial(handleMessage, 'notice'));
 
 
