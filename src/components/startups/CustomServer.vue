@@ -257,6 +257,11 @@ export default {
             this.direct = state.settings.startupOptions.direct;
             this.encoding = state.settings.startupOptions.encoding;
 
+            // Only include the port in the server box if it's not the default
+            if (state.settings.startupOptions.port.toString() !== '6667') {
+                this.server += ':' + state.settings.startupOptions.port.toString();
+            }
+
             this.title = 'Where are you connecting today?';
         },
     },
