@@ -297,9 +297,9 @@ export function mapRange(value, vMin, vMax, dMin, dMax) {
  * Formats a line of text that will be displayed somewhere
  */
 const textFormats = {
-    channel_join: '→ %nick %text',
-    channel_part: '← %nick %text',
-    channel_quit: '← %nick %text',
+    channel_join: '→ %nick (%username@%host) %text',
+    channel_part: '← %nick (%username@%host) %text',
+    channel_quit: '← %nick (%username@%host) %text',
     channel_kicked: '← %text',
     channel_selfkick: '× %text',
     channel_badpassword: '× %text',
