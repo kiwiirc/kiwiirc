@@ -21,7 +21,7 @@
                         v-model="currentInputValue"
                         class="kiwi-controlinput-input"
                         wrap="off"
-                        placeholder="Send a message.."></textarea>
+                        placeholder="Send a message..."></textarea>
                 </div>
                 <!--<button type="submit">Send</button>-->
             </form>
