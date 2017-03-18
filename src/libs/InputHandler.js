@@ -70,7 +70,7 @@ export default class InputHandler {
         this.state.$emit('input.command.' + command, eventObj, command, params);
 
         if (!eventObj.handled) {
-            this.activeNetwork.ircClient.raw(line);
+            activeNetwork.ircClient.raw(line);
         }
     }
 
@@ -205,6 +205,33 @@ inputCommands.part = function inputCommandPart(event, command, line) {
     bufferNames.forEach((bufferName) => {
         network.ircClient.part(bufferName, message);
     });
+};
+
+
+inputCommands.topic = function inputCommandTopic(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    let bufferName = '';
+    let newTopic = '';
+
+    if (line === '') {
+        // /topic
+        return;
+    }
+
+    let lineParts = line.split(' ');
+    if (network.isChannelName(lineParts[0])) {
+        // /topic #channel a topic
+        bufferName = lineParts[0];
+        newTopic = lineParts.slice(1).join(' ');
+    } else {
+        // /topic a topic
+        bufferName = this.state.getActiveBuffer().name;
+        newTopic = line;
+    }
+
+    network.ircClient.setTopic(bufferName, newTopic);
 };
 
 
