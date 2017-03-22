@@ -62,7 +62,10 @@ import * as AudioBleep from 'src/libs/AudioBleep';
 import ThemeManager from 'src/libs/ThemeManager';
 import logger from 'src/libs/Logger';
 import state from 'src/libs/state';
-import 'src/libs/InputCommands';
+import InputHandler from 'src/libs/InputHandler';
+
+/* eslint-disable no-new */
+new InputHandler(state);
 
 let themes = ThemeManager.instance(state);
 
