@@ -40,7 +40,7 @@
             </template>
         </div>
 
-        <div v-if="areWeAnOp" class="kiwi-userbox-actions-op">
+        <div v-if="buffer.isChannel() && areWeAnOp" class="kiwi-userbox-actions-op">
             <form class="u-form" @submit.prevent="">
                 <label>
                     Access level <select v-model="userMode">
