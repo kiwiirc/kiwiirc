@@ -189,19 +189,23 @@ export default {
             let reason = 'Your behavior is not conducive to the desired environment.';
             this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask, reason);
         },
+        maybeRepositionTop: function maybeRepositionTop() {
+            let rect = this.$el.getBoundingClientRect();
+            // $el may be in the middle of a transition still, making rect.top/rect.bottom
+            // the current position of the transition and not where it will be after the
+            // transition has ended. So read the top property directly from its style.
+            let targetTop = parseInt((this.$el.style.top || '').replace('px', ''), 10);
+
+            if (targetTop + rect.height > window.innerHeight) {
+                this.$el.style.top = (window.innerHeight - rect.height) + 'px';
+            }
+        },
     },
-    created: function created() {
+    mounted: function mounted() {
+        this.maybeRepositionTop();
     },
     updated: function updated() {
-        let rect = this.$el.getBoundingClientRect();
-        // $el may be in the middle of a transition still, making rect.top/rect.bottom
-        // the current position of the transition and not where it will be after the
-        // transition has ended. So read the top property directly from its style.
-        let targetTop = parseInt((this.$el.style.top || '').replace('px', ''), 10);
-
-        if (targetTop + rect.height > window.innerHeight) {
-            this.$el.style.top = (window.innerHeight - rect.height) + 'px';
-        }
+        this.maybeRepositionTop();
     },
     watch: {
         user: function watchUser() {
