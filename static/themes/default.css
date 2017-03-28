@@ -218,6 +218,11 @@ p {
     background: #fff;
     padding: 3px;
     position: relative;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+.kiwi-statebrowser-newchannel-inputwrap--focus {
+    opacity: 1;
 }
 .kiwi-statebrowser-newchannel-inputwrap input {
     outline: none;
