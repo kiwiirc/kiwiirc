@@ -404,6 +404,9 @@ p {
     /* some message highlights add a left border so add a default invisble one to keep them inline */
     border-left: 3px solid transparent;
 }
+.kiwi-messagelist-message-whois {
+    border-left-color: #939393;
+}
 .kiwi-messagelist-message--highlight {
     background: #e3f1d4;
     border-left-color: #80ab52;
