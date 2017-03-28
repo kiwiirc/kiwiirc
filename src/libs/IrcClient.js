@@ -502,6 +502,25 @@ function clientMiddleware(state, networkid) {
             });
         }
 
+        if (command === 'ctcp response' || command === 'ctcp request') {
+            let buffer = network.bufferByName(event.target) || network.serverBuffer();
+            let textFormatId = command === 'ctcp response' ?
+                'ctcp_response' :
+                'ctcp_request';
+            let messageBody = TextFormatting.formatText(textFormatId, {
+                nick: event.nick,
+                message: event.message,
+                type: event.type,
+            });
+
+            state.addMessage(buffer, {
+                time: event.time || Date.now(),
+                nick: '',
+                message: messageBody,
+                type: 'error',
+            });
+        }
+
         if (command === 'irc error') {
             let buffer = network.serverBuffer();
             let messageBody = TextFormatting.formatText('general_error', {

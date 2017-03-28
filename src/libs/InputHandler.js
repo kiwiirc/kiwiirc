@@ -148,6 +148,22 @@ inputCommands.notice = function inputCommandMsg(event, command, line) {
 };
 
 
+inputCommands.ctcp = function inputCommandCtcp(event, command, line) {
+    event.handled = true;
+
+    let params = line.split(' ');
+    let target = params.shift();
+    let ctcpType = params.shift();
+
+    if (!ctcpType || !target) {
+        return;
+    }
+
+    let network = this.state.getActiveNetwork();
+    network.ircClient.ctcpRequest.apply(network.ircClient, [target, ctcpType].concat(params));
+};
+
+
 inputCommands.join = function inputCommandJoin(event, command, line) {
     event.handled = true;
 
