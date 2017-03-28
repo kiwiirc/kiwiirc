@@ -295,6 +295,95 @@ inputCommands.quote = function inputCommandQuote(event, command, line) {
 };
 
 
+inputCommands.whois = function inputCommandWhois(event, command, line) {
+    event.handled = true;
+
+    let parts = line.split(' ');
+    let network = this.state.getActiveNetwork();
+    let buffer = this.state.getActiveBuffer();
+
+    network.ircClient.whois(parts[0], parts[0], whoisData => {
+        let out = [];
+        let display = message => {
+            if (!message) {
+                return;
+            }
+
+            out.push(message);
+        };
+        let formats = {
+            account: 'User account: {{account}}',
+            server: 'Connected to server {{server}} ({{server_info}})',
+            secure: 'Using a secure connection',
+            channels: 'Also on channels {{channels}}',
+            mask: '{{nick}}!{{user}}@{{host}} ({{real_name}})',
+            idle: 'Idle for {{idle}} seconds',
+            logon: 'Connected at {{logon}}',
+
+            // The following entries will be ignored from whoisData as display() ignores
+            // empty lines.
+            nick: '',
+            user: '',
+            host: '',
+            real_name: '',
+            server_info: '',
+        };
+
+        // Display a select few entries first to keep a consistent order, and then
+        // show any extra information at the end
+        if (whoisData.account) {
+            display(formats.account.replace('{{account}}', whoisData.account));
+        }
+        if (whoisData.nick) {
+            display(
+                formats.mask
+                    .replace('{{nick}}', whoisData.nick)
+                    .replace('{{user}}', whoisData.user)
+                    .replace('{{host}}', whoisData.host)
+                    .replace('{{real_name}}', whoisData.real_name)
+            );
+        }
+        if (whoisData.server) {
+            display(
+                formats.server
+                    .replace('{{server}}', whoisData.server)
+                    .replace('{{server_info}}', whoisData.server_info)
+            );
+        }
+        if (whoisData.secure) {
+            display(formats.secure);
+        }
+        if (whoisData.idle) {
+            let idleSeconds = Math.floor(parseInt(whoisData.idle, 10) / 1000);
+            display(formats.idle.replace('{{idle}}', idleSeconds));
+        }
+        if (whoisData.logon) {
+            let logonTime = parseInt(whoisData.logon, 10);
+            if (!isNaN(logonTime)) {
+                let logonDate = new Date(logonTime * 1000);
+                display(formats.logon.replace('{{logon}}', logonDate));
+            }
+        }
+        if (whoisData.channels) {
+            display(formats.channels.replace('{{channels}}', whoisData.channels));
+        }
+
+        _.each(whoisData, (val, key) => {
+            // Only include lines we haven't already used
+            if (typeof formats[key] === 'undefined') {
+                display(`${key}: ${val}`);
+            }
+        });
+
+        this.state.addMessage(buffer, {
+            nick: parts[0],
+            message: out.join('\n'),
+            type: 'whois',
+        });
+    });
+};
+
+
 inputCommands.clear = function inputCommandClear(event, command, line) {
     event.handled = true;
 
