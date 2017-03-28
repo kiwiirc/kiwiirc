@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-statebrowser-network">
+    <div class="kiwi-statebrowser-network" :class="[isActiveNetwork ? 'kiwi-statebrowser-network--active' : '']">
         <a class="kiwi-statebrowser-network-name u-link" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
 
             <transition name="kiwi-statebrowser-network-status-transition">
@@ -163,6 +163,9 @@ export default {
         },
     },
     computed: {
+        isActiveNetwork: function isActiveNetwork() {
+            return state.getActiveNetwork() === this.network;
+        },
     },
 };
 </script>
