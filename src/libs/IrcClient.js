@@ -459,7 +459,7 @@ function clientMiddleware(state, networkid) {
                         type: 'mode',
                     });
 
-                    // If this mode has a prefix then we need to update the user object
+                    // If this mode has a user prefix then we need to update the user object
                     let prefix = _.find(network.ircClient.network.options.PREFIX, {
                         mode: mode.mode[1],
                     });
