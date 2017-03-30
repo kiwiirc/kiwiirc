@@ -2,11 +2,12 @@
  * Command input Alias + re-writing
  *
  * Variables used in aliases:
- *     $1 = first word of input
- *     $N = Nth word of input
- *     $1+2 = first word of input and the next 2 words
- *     $2+4 = second word of input and the next 4 words
- *     $2+ = second word of input and all words after
+ *     $0 = the command being run
+ *     $1 = first param of input
+ *     $N = Nth param of input
+ *     $1+2 = first param of input and the next 2 words
+ *     $2+4 = second param of input and the next 4 words
+ *     $2+ = second param of input and all words after
  *     $variable = variable as set in the vars object
  */
 
@@ -52,6 +53,8 @@ export default class AliasRewriter {
         let alias = this.aliases[words[0].toLowerCase()];
         let aliasLen;
         let currentAliasWord = '';
+        let currentAliasWordLen = 0;
+        let processedConditionals = false;
         let compiled = [];
 
         // If an alias wasn't found, return the original input
@@ -65,6 +68,23 @@ export default class AliasRewriter {
         // Any $ words are processed with the result ending into the compiled array.
         for (let i = 0; i < aliasLen; i++) {
             currentAliasWord = alias[i];
+            currentAliasWordLen = currentAliasWord.length;
+
+            // $var? word makes this command only run if the var exists
+            if (
+                !processedConditionals &&
+                currentAliasWord[0] === '$' && currentAliasWord[currentAliasWordLen - 1] === '?'
+            ) {
+                let checkVar = currentAliasWord.substr(1, currentAliasWordLen - 2);
+                if (!vars[checkVar]) {
+                    compiled = [];
+                    break;
+                } else {
+                    continue;
+                }
+            } else {
+                processedConditionals = true;
+            }
 
             // Non $ word
             if (currentAliasWord[0] !== '$') {

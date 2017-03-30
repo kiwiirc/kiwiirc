@@ -44,11 +44,17 @@ export default class InputHandler {
 
         let aliasVars = {
             server: activeNetwork.name,
-            channel: activeBuffer.name,
+            channel: activeNetwork.isChannelName(activeBuffer.name) ? activeBuffer.name : '',
+            query: activeNetwork.isChannelName(activeBuffer.name) ? '' : activeBuffer.name,
             destination: activeBuffer.name,
             nick: activeNetwork.nick,
         };
         line = this.aliasRewriter.process(line, aliasVars);
+
+        // An alias rewrite may have cancelled out the input
+        if (!line) {
+            return;
+        }
 
         // Remove the / from the start of the line
         line = line.substr(1);
