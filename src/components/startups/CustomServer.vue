@@ -84,11 +84,6 @@
             <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
         </div>
         </transition>
-
-        <div style="position:fixed;bottom:20px;left:0;right:0;text-align:center;">
-            <i><b>This is a test server. All connections will appear from a single temporary IP address!</b></i>
-            <div><a href="/?config=websockettest">Try out the direct websocket test. This will connect your browser directly to the IRC network without a kiwiirc.com proxy</a></div>
-        </div>
     </div>
 </template>
 
