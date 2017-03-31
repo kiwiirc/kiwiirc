@@ -42,10 +42,7 @@ const stateObj = {
             nick: 'kiwi_?',
             direct: false,
         },
-    },
-    user_settings: {
-        theme: '',
-        highlights: '',
+        showAutocomplete: true,
         aliases: `
 # General aliases
 /p /part $1+
@@ -70,8 +67,12 @@ const stateObj = {
 
 # Misc aliases
 /slap /me slaps $1 around a bit with a large trout
-/tick /msg $channel ✔
-`,
+/tick /msg $channel ✔`,
+    },
+    user_settings: {
+        theme: '',
+        highlights: '',
+        aliases: '',
     },
     connection: {
         // disconnected / connecting / connected
@@ -274,6 +275,20 @@ const state = new Vue({
         resetState: function resetState() {
             this.$set(this.$data, 'networks', []);
             this.$set(this.$data, 'messages', []);
+        },
+
+        setting: function setting(name, val) {
+            if (typeof val !== 'undefined') {
+                state.$set(this.user_settings, name, val);
+                return val;
+            }
+
+            // Check the user specific settings before reverting to global settings
+            let result = typeof this.user_settings[name] !== 'undefined' ?
+                this.user_settings[name] :
+                this.settings[name];
+
+            return result;
         },
 
         getActiveNetwork: function getActiveNetwork() {

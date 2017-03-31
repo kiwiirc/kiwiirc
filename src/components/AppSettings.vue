@@ -11,6 +11,10 @@
                         <option v-for="t in settings.themes" :value="t.name">{{t.name}}</option>
                     </select>
                 </label>
+                <label>
+                    <span>Show autocomplete list: </span>
+                    <input type="checkbox" v-model="settingShowAutoComplete" />
+                </label>
             </div>
 
             <div class="kiwi-appsettings-section kiwi-appsettings-messages">
@@ -26,7 +30,7 @@
                 <h3>Notifications</h3>
                 <label><span>Include join/part messages as activity:</span> <input type="checkbox" v-model="bufferSettings.traffic_as_activity" /></label>
                 <label><span>Mute sound notifications:</span> <input type="checkbox" v-model="bufferSettings.mute_sound" /></label>
-                <label><span>Highlight on words (space separated):</span> <input type="text" v-model="userSettings.highlights" /></label>
+                <label><span>Highlight on words (space separated):</span> <input type="text" v-model="settingHighlights" /></label>
             </div>
 
             <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
@@ -42,6 +46,21 @@
 import state from 'src/libs/state';
 import SettingsAliases from './SettingsAliases';
 import ThemeManager from 'src/libs/ThemeManager';
+
+/**
+ * Returns an object for a vuejs computated property on a state settings value
+ * This allows default settings from the server config, but overrides with user config
+ */
+function bindSetting(settingName) {
+    return {
+        get: function settingGetter() {
+            return this.state.setting(settingName);
+        },
+        set: function settingSetter(newVal) {
+            this.state.setting(settingName, newVal);
+        },
+    };
+}
 
 export default {
     data: function data() {
@@ -78,6 +97,8 @@ export default {
                 ThemeManager.instance().setTheme(newVal);
             },
         },
+        settingShowAutoComplete: bindSetting('showAutocomplete'),
+        settingHighlights: bindSetting('highlights'),
     },
     props: [],
     components: {

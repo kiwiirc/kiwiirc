@@ -58,17 +58,16 @@ import state from 'src/libs/state';
 export default {
     data: function data() {
         return {
-            aliases: state.user_settings.aliases,
             show_help: false,
         };
     },
     computed: {
         aliasText: {
             get: function getAliasText() {
-                return state.user_settings.aliases.trim();
+                return state.setting('aliases').trim();
             },
             set: function setAliasText(newVal) {
-                state.user_settings.aliases = newVal.trim();
+                state.setting('aliases', newVal.trim());
             },
         },
     },

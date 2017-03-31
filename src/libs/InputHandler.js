@@ -9,8 +9,10 @@ export default class InputHandler {
         this.state = state;
         this.aliasRewriter = new AliasRewriter();
 
-        this.aliasRewriter.importFromString(state.user_settings.aliases);
+        // Load the aliases from general settings
+        this.aliasRewriter.importFromString(state.setting('aliases'));
 
+        // Only watch the user setting changes in order to reload them
         state.$watch('user_settings.aliases', newVal => {
             this.aliasRewriter.importFromString(newVal);
         });
