@@ -328,6 +328,14 @@ function clientMiddleware(state, networkid) {
             });
         }
 
+        if (command === 'invite') {
+            let buffer = network.serverBuffer();
+            state.addMessage(buffer, {
+                nick: '*',
+                message: `${event.nick} invited you to join ${event.channel}`,
+            });
+        }
+
         if (command === 'whois') {
             let obj = {
                 nick: event.nick,
