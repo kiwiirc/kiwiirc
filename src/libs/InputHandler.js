@@ -259,6 +259,39 @@ inputCommands.topic = function inputCommandTopic(event, command, line) {
 };
 
 
+inputCommands.kick = function inputCommandTopic(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    let toKick = '';
+    let bufferName = '';
+    let kickReason = '';
+
+    if (line === '') {
+        // No params given
+        return;
+    }
+
+    let lineParts = line.split(' ');
+
+    if (network.isChannelName(lineParts[0])) {
+        bufferName = lineParts.shift();
+    }
+
+    toKick = lineParts.shift();
+    kickReason = lineParts.join(' ');
+
+    if (!bufferName) {
+        bufferName = this.state.getActiveBuffer().name;
+    }
+    if (!toKick) {
+        return;
+    }
+
+    network.ircClient.raw('KICK', bufferName, toKick, kickReason);
+};
+
+
 inputCommands.close = function inputCommandClose(event, command, line) {
     event.handled = true;
 
