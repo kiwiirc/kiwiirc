@@ -83,6 +83,10 @@ export default {
                 if (!showJoinParts && this.messages[i].type === 'traffic') {
                     continue;
                 }
+                // Ignored users have the ignore flag set
+                if (this.messages[i].ignore) {
+                    continue;
+                }
                 list.push(this.messages[i]);
             }
 

@@ -486,6 +486,11 @@ const state = new Vue({
                 type_extra: message.type_extra,
             };
 
+            let user = this.getUser(buffer.networkid, message.nick);
+            if (user && user.ignore) {
+                bufferMessage.ignore = true;
+            }
+
             messages.messages.push(bufferMessage);
 
             // Increment the unread counter if this buffer is not active
