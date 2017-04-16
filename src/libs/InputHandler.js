@@ -378,6 +378,33 @@ inputCommands.query = function inputCommandQuery(event, command, line) {
 };
 
 
+inputCommands.invite = function inputCommandInvite(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    let buffer = this.state.getActiveBuffer();
+
+    let lineParts = line.split(' ');
+    let nick = lineParts.shift();
+    let channel = lineParts.shift();
+
+    if (!channel) {
+        channel = buffer.name;
+    }
+
+    if (!network.isChannelName(channel)) {
+        return;
+    }
+
+    network.ircClient.raw('INVITE', nick, channel);
+    this.state.addMessage(buffer, {
+        nick: '*',
+        message: `Invited ${nick} to ${channel}`,
+        type: 'message',
+    });
+};
+
+
 inputCommands.nick = function inputCommandNick(event, command, line) {
     event.handled = true;
 
