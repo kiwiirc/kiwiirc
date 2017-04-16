@@ -259,7 +259,7 @@ inputCommands.topic = function inputCommandTopic(event, command, line) {
 };
 
 
-inputCommands.kick = function inputCommandTopic(event, command, line) {
+inputCommands.kick = function inputCommandKick(event, command, line) {
     event.handled = true;
 
     let network = this.state.getActiveNetwork();
@@ -289,6 +289,52 @@ inputCommands.kick = function inputCommandTopic(event, command, line) {
     }
 
     network.ircClient.raw('KICK', bufferName, toKick, kickReason);
+};
+
+
+inputCommands.ignore = function inputCommandIgnore(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    let toIgnore = line.split(' ').shift();
+
+    if (!toIgnore) {
+        return;
+    }
+
+    let user = this.state.getUser(network.id, toIgnore);
+    if (user) {
+        user.ignore = true;
+        let buffer = this.state.getActiveBuffer();
+        this.state.addMessage(buffer, {
+            nick: '*',
+            message: 'Ignoring ' + user.nick,
+            type: 'message',
+        });
+    }
+};
+
+
+inputCommands.unignore = function inputCommandUnignore(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    let toUnignore = line.split(' ').shift();
+
+    if (!toUnignore) {
+        return;
+    }
+
+    let user = this.state.getUser(network.id, toUnignore);
+    if (user) {
+        user.ignore = false;
+        let buffer = this.state.getActiveBuffer();
+        this.state.addMessage(buffer, {
+            nick: '*',
+            message: 'No longer ignoring ' + user.nick,
+            type: 'message',
+        });
+    }
 };
 
 
