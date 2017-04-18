@@ -50,6 +50,8 @@
             @click.stop=""
         >
             <buffer-settings v-bind:buffer="buffer"></buffer-settings>
+            <channel-info v-if="isChannel()" v-bind:buffer="buffer"></channel-info>
+
             <a @click="buffer_settings_open=false" class="u-button u-button-secondary kiwi-header-close-buffersettings">
                 <i class="fa fa-caret-up" aria-hidden="true"></i>
             </a>
@@ -63,6 +65,7 @@ import _ from 'lodash';
 import state from 'src/libs/state';
 import NetworkSettings from './NetworkSettings';
 import BufferSettings from './BufferSettings';
+import ChannelInfo from './ChannelInfo';
 import * as TextFormatting from 'src/helpers/TextFormatting';
 
 export default {
@@ -74,6 +77,7 @@ export default {
     props: ['buffer'],
     components: {
         BufferSettings,
+        ChannelInfo,
     },
     methods: {
         formatMessage: function formatMessage(messageBody) {
@@ -160,6 +164,13 @@ export default {
     float: right;
     margin-top: 4px;
     margin-right: 4px;
+}
+.kiwi-buffersettings {
+    float: left;
+    width: 250px;
+}
+.kiwi-channel-info {
+    margin-left: 2500px;
 }
 .kiwi-header-close-buffersettings {
     float: right;
