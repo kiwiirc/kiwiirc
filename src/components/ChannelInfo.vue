@@ -32,6 +32,8 @@
 
 <script>
 
+// Helper to generate Vues computed methods for simple channel modes.
+// Eg. +i, +n, etc
 function generateComputedMode(mode) {
     return {
         get: function computedModeGet() {
@@ -42,6 +44,9 @@ function generateComputedMode(mode) {
         },
     };
 }
+
+// Helper to generate Vues computed methods for channel modes with a parameter
+// Eg. "+k key"
 function generateComputedModeWithParam(mode) {
     return {
         get: function computedModeWithParamGet() {
@@ -59,6 +64,7 @@ function generateComputedModeWithParam(mode) {
         },
     };
 }
+
 export default {
     data: function data() {
         return {
