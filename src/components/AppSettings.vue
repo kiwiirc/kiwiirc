@@ -3,40 +3,46 @@
         <a @click="closeSettings" class="u-button u-button-secondary kiwi-appsettings-close">Close</a>
 
         <form class="u-form">
-            <div class="kiwi-appsettings-section kiwi-appsettings-general">
-                <h3>General</h3>
-                <label>
-                    <span>Theme: </span>
-                    <select v-model="theme">
-                        <option v-for="t in settings.themes" :value="t.name">{{t.name}}</option>
-                    </select>
-                </label>
-                <label>
-                    <span>Show autocomplete list: </span>
-                    <input type="checkbox" v-model="settingShowAutoComplete" />
-                </label>
-            </div>
+            <tabbed-view>
+                <tabbed-tab :header="'General'" :focus="true">
+                    <div class="kiwi-appsettings-section kiwi-appsettings-general">
+                        <h3>General</h3>
+                        <label>
+                            <span>Theme: </span>
+                            <select v-model="theme">
+                                <option v-for="t in settings.themes" :value="t.name">{{t.name}}</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Show autocomplete list: </span>
+                            <input type="checkbox" v-model="settingShowAutoComplete" />
+                        </label>
+                    </div>
 
-            <div class="kiwi-appsettings-section kiwi-appsettings-messages">
-                <h3>Chat Messages</h3>
-                <label><span>Show timestamps:</span> <input type="checkbox" v-model="bufferSettings.show_timestamps" /></label>
-                <label><span>Use 24-hour timestamps:</span> <input type="checkbox" v-model="timestamps_24h" /></label>
-                <label><span>Show emoticons:</span> <input type="checkbox" v-model="bufferSettings.show_emoticons" /></label>
-                <label><span>Block new private messages:</span> <input type="checkbox" v-model="bufferSettings.block_pms" /></label>
-                <label><span>Messages in scrollback:</span> <input type="number" v-model="bufferSettings.scrollback_size" /></label>
-            </div>
+                    <div class="kiwi-appsettings-section kiwi-appsettings-messages">
+                        <h3>Chat Messages</h3>
+                        <label><span>Show timestamps:</span> <input type="checkbox" v-model="bufferSettings.show_timestamps" /></label>
+                        <label><span>Use 24-hour timestamps:</span> <input type="checkbox" v-model="timestamps_24h" /></label>
+                        <label><span>Show emoticons:</span> <input type="checkbox" v-model="bufferSettings.show_emoticons" /></label>
+                        <label><span>Block new private messages:</span> <input type="checkbox" v-model="bufferSettings.block_pms" /></label>
+                        <label><span>Messages in scrollback:</span> <input type="number" v-model="bufferSettings.scrollback_size" /></label>
+                    </div>
 
-            <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
-                <h3>Notifications</h3>
-                <label><span>Include join/part messages as activity:</span> <input type="checkbox" v-model="bufferSettings.traffic_as_activity" /></label>
-                <label><span>Mute sound notifications:</span> <input type="checkbox" v-model="bufferSettings.mute_sound" /></label>
-                <label><span>Highlight on words (space separated):</span> <input type="text" v-model="settingHighlights" /></label>
-            </div>
+                    <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
+                        <h3>Notifications</h3>
+                        <label><span>Include join/part messages as activity:</span> <input type="checkbox" v-model="bufferSettings.traffic_as_activity" /></label>
+                        <label><span>Mute sound notifications:</span> <input type="checkbox" v-model="bufferSettings.mute_sound" /></label>
+                        <label><span>Highlight on words (space separated):</span> <input type="text" v-model="settingHighlights" /></label>
+                    </div>
+                </tabbed-tab>
 
-            <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
-                <h3>Aliases</h3>
-                <settings-aliases></settings-aliases>
-            </div>
+                <tabbed-tab :header="'Aliases'">
+                    <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
+                        <h3>Aliases</h3>
+                        <settings-aliases></settings-aliases>
+                    </div>
+                </tabbed-tab>
+            </tabbed-view>
         </form>
     </div>
 </template>
