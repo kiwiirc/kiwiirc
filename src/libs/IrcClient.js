@@ -142,8 +142,17 @@ function clientMiddleware(state, networkid) {
                 message += event.command + ' ';
             }
 
+            let containsNick = event.params[0] === network.ircClient.user.nick;
+            let isChannelMessage = network.isChannelName(event.params[1]);
+
             // Strip out the nick if it's the first params (many commands include this)
-            if (event.params[0] === network.ircClient.user.nick) {
+            if (containsNick && isChannelMessage) {
+                let channelBuffer = network.bufferByName(event.params[1]);
+                if (channelBuffer) {
+                    buffer = channelBuffer;
+                }
+                message += event.params.slice(2).join(', ');
+            } else if (containsNick) {
                 message += event.params.slice(1).join(', ');
             } else {
                 message += event.params.join(', ');
