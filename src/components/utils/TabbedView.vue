@@ -1,7 +1,14 @@
 <template>
     <div class="u-tabbed-view">
-        <div class="u-tabbed-view-tabs">
-            <a v-for="c in tabs" @click="setActive(c)" :class="{'u-tabbed-view-tab': true, 'u-tabbed-view-tab--active': c.active}">{{c.header}}</a>
+        <div class="u-tabbed-view-tabs" :key="a">
+            <a
+                v-for="c in tabs"
+                @click="setActive(c)"
+                :class="{
+                    'u-tabbed-view-tab': true,
+                    'u-tabbed-view-tab--active': c.active
+                }"
+            >{{c.header}}</a>
         </div>
         <slot></slot>
     </div>
@@ -22,7 +29,12 @@ Vue.component('tabbed-tab', {
 
 export default Vue.component('tabbed-view', {
     data: function data() {
-        return { a: 1 };
+        return {
+            // We increment this when we need to re-render the tabs.
+            // Vue doesn't pick up on the $children changes all the time so we handle
+            // it ourselves.
+            a: 1,
+        };
     },
     computed: {
         tabs: function computedtabs() {
@@ -37,13 +49,13 @@ export default Vue.component('tabbed-view', {
                 }
             });
             c.active = true;
+
+            // Without this, vue doesnt update itself with the new $children :(
+            this.a++;
         },
     },
     mounted: function created() {
-        // Without this, vue doesnt update itself with the new $children :(
-        this.a++;
-
-        this.tabs.forEach(t => {
+        this.$children.forEach(t => {
             if (t.focus) {
                 this.setActive(t);
             }
