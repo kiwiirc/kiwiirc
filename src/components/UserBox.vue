@@ -65,7 +65,6 @@
 
 <script>
 
-import _ from 'lodash';
 import state from 'src/libs/state';
 
 export default {
@@ -106,14 +105,7 @@ export default {
                 return false;
             }
 
-            let ourUser = state.getUser(this.buffer.networkid, this.network.nick);
-            let userBufferInfo = ourUser.buffers[this.buffer.id];
-            let modes = userBufferInfo.modes;
-
-            let opModes = ['Y', 'y', 'q', 'a', 'o', 'h'];
-            let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
-
-            return !!hasOp;
+            return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
         },
         userMode: {
             get: function getUserMode() {

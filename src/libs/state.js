@@ -783,6 +783,18 @@ function initialiseBufferState(buffer) {
             return chanPrefixes.indexOf(buffer.name[0]) === -1 && buffer.name[0] !== ignorePrefix;
         },
     });
+    Object.defineProperty(buffer, 'isUserAnOp', {
+        value: function isUserAnOp(nick) {
+            let user = state.getUser(buffer.networkid, buffer.getNetwork().nick);
+            let userBufferInfo = user.buffers[buffer.id];
+            let modes = userBufferInfo.modes;
+
+            let opModes = ['Y', 'y', 'q', 'a', 'o', 'h'];
+            let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
+
+            return !!hasOp;
+        },
+    });
     // Get/set a setting set on this buffer. If undefined, get the global setting
     Object.defineProperty(buffer, 'setting', {
         value: function setting(name, val) {
