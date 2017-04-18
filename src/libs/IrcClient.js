@@ -530,7 +530,11 @@ function clientMiddleware(state, networkid) {
         }
 
         if (command === 'irc error') {
-            let buffer = network.serverBuffer();
+            let buffer = state.getOrAddBufferByName(network.id, event.channel);
+            if (!buffer) {
+                buffer = network.serverBuffer();
+            }
+
             let messageBody = TextFormatting.formatText('general_error', {
                 text: event.reason || event.error,
             });
