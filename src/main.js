@@ -7,6 +7,9 @@ import Logger from 'src/libs/Logger';
 import ConfigLoader from 'src/libs/ConfigLoader';
 import state from 'src/libs/state';
 
+// Global utilities
+import 'src/components/utils/TabbedView';
+
 // A handy debugging var..
 window.state = state;
 

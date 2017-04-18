@@ -80,6 +80,26 @@ p {
     display: block;
 }
 
+.u-tabbed-view-tabs {
+    border-bottom: 1px solid #ddd;
+}
+.u-tabbed-view-tab {
+    padding: 1em 2em;
+    display: inline-block;
+    cursor: pointer;
+    border-bottom: 0 solid #42b983;
+    transition: border-width 0.1s;
+    font-weight: bold;
+}
+.u-tabbed-view-tab:hover {
+    border-bottom-width: 3px;
+}
+.u-tabbed-view-tab--active {
+    border-bottom-width: 3px;
+}
+.u-tabbed-content {
+    margin-top: 10px;
+}
 
 .irc-fg-colour-white { color: #FFFFFF; }
 .irc-fg-colour-black { color: #000000; }

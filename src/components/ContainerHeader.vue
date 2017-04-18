@@ -49,8 +49,15 @@
             class="kiwi-header-buffersettings"
             @click.stop=""
         >
-            <buffer-settings v-bind:buffer="buffer"></buffer-settings>
-            <channel-info v-if="isChannel()" v-bind:buffer="buffer"></channel-info>
+
+            <tabbed-view>
+                <tabbed-tab :header="'Settings'" :focus="true">
+                    <channel-info v-bind:buffer="buffer"></channel-info>
+                </tabbed-tab>
+                <tabbed-tab :header="'Notifications'">
+                    <buffer-settings v-bind:buffer="buffer"></buffer-settings>
+                </tabbed-tab>
+            </tabbed-view>
 
             <a @click="buffer_settings_open=false" class="u-button u-button-secondary kiwi-header-close-buffersettings">
                 <i class="fa fa-caret-up" aria-hidden="true"></i>
@@ -164,13 +171,6 @@ export default {
     float: right;
     margin-top: 4px;
     margin-right: 4px;
-}
-.kiwi-buffersettings {
-    float: left;
-    width: 250px;
-}
-.kiwi-channel-info {
-    margin-left: 2500px;
 }
 .kiwi-header-close-buffersettings {
     float: right;
