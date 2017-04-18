@@ -220,6 +220,7 @@ function clientMiddleware(state, networkid) {
 
             if (event.nick === client.user.nick) {
                 buffer.joined = true;
+                network.ircClient.raw('MODE', event.channel);
                 network.ircClient.who(event.channel);
             }
 
@@ -450,6 +451,26 @@ function clientMiddleware(state, networkid) {
             });
         }
 
+        if (command === 'channel info') {
+            let buffer = network.bufferByName(event.channel);
+            if (!buffer) {
+                return;
+            }
+
+            if (event.modes) {
+                event.modes.forEach(mode => {
+                    let adding = mode.mode[0] === '+';
+                    let modeChar = mode.mode.substr(1);
+
+                    if (adding) {
+                        state.$set(buffer.modes, modeChar, mode.param);
+                    } else if (!adding) {
+                        state.$delete(buffer.modes, modeChar);
+                    }
+                });
+            }
+        }
+
         if (command === 'mode') {
             let buffer = network.bufferByName(event.target);
             if (buffer) {
@@ -485,6 +506,17 @@ function clientMiddleware(state, networkid) {
                             } else if (!adding && modeIdx > -1) {
                                 modes.splice(modeIdx, 1);
                             }
+                        }
+                    } else {
+                        // Not a user prefix, add it as a channel mode
+                        // TODO: Why are these not appearing as the 'channel info' command?
+                        let adding = mode.mode[0] === '+';
+                        let modeChar = mode.mode.substr(1);
+
+                        if (adding) {
+                            state.$set(buffer.modes, modeChar, mode.param);
+                        } else if (!adding) {
+                            state.$delete(buffer.modes, modeChar);
                         }
                     }
                 });

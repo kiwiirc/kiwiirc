@@ -704,6 +704,7 @@ function createEmptyBufferObject() {
         topic: '',
         joined: false,
         users: [],
+        modes: Object.create(null),
         flags: {
             unread: 0,
             alert_on: 'default',
