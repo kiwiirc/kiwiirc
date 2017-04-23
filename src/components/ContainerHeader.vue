@@ -54,6 +54,9 @@
                 <tabbed-tab :header="'Settings'" :focus="true">
                     <channel-info v-bind:buffer="buffer"></channel-info>
                 </tabbed-tab>
+                <tabbed-tab :header="'Banned Users'">
+                    <channel-banlist v-bind:buffer="buffer"></channel-banlist>
+                </tabbed-tab>
                 <tabbed-tab :header="'Notifications'">
                     <buffer-settings v-bind:buffer="buffer"></buffer-settings>
                 </tabbed-tab>
@@ -73,6 +76,7 @@ import state from 'src/libs/state';
 import NetworkSettings from './NetworkSettings';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
+import ChannelBanlist from './ChannelBanlist';
 import * as TextFormatting from 'src/helpers/TextFormatting';
 
 export default {
@@ -85,6 +89,7 @@ export default {
     components: {
         BufferSettings,
         ChannelInfo,
+        ChannelBanlist,
     },
     methods: {
         formatMessage: function formatMessage(messageBody) {
@@ -153,9 +158,12 @@ export default {
 .kiwi-header {
     box-sizing: border-box;
     z-index: 2;
+    overflow: hidden;
 }
 .kiwi-header--showall {
     height: auto;
+    max-height: 100%;
+    overflow-y: auto;
 }
 .kiwi-header-name {
     display: inline-block;
