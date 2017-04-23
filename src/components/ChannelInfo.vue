@@ -1,30 +1,30 @@
 <template>
     <div class="kiwi-channelinfo">
         <form class="u-form kiwi-channelinfo-basicmodes" @submit.prevent="">
-            <label>
+            <label class="kiwi-channelinfo-topic">
                 Topic <br />
-                <input v-model.lazy="topic" />
-            </label><br />
+                <textarea v-model.lazy="topic" rows="2"></textarea>
+            </label>
 
             <label>
                 <input type="checkbox" v-model="modeM" />
                 Moderated chat
-            </label><br />
+            </label>
             <label>
                 <input type="checkbox" v-model="modeI" />
                 Invite only
-            </label><br />
+            </label>
             <label>
                 <input type="checkbox" v-model="modeT" />
                 Only moderators can change the topic
-            </label><br />
+            </label>
             <label>
                 <input type="checkbox" v-model="modeN" />
                 Block messages from outside this channel
-            </label><br />
+            </label>
             <label>
+                Password <br />
                 <input type="text" v-model.lazy="modeK" />
-                Password
             </label>
         </form>
     </div>
@@ -109,7 +109,8 @@ export default {
                 return this.buffer.topic;
             },
             set: function computedTopicSet(newVal) {
-                this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newVal);
+                let newTopic = newVal.replace('\n', ' ');
+                this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newTopic);
             },
         },
     },
@@ -131,7 +132,12 @@ export default {
 </script>
 
 <style>
-.kiwi-channelinfo-basicmodes label {
+.kiwi-channelinfo-basicmodes.kiwi-channelinfo-basicmodes label {
     display: block;
+}
+.kiwi-channelinfo-topic textarea {
+    width: 500px;
+    max-width: 80%;
+    resize: none;
 }
 </style>
