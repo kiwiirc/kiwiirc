@@ -71,9 +71,14 @@ p {
     margin-right: 1em;
     text-align: right;
 }
-.u-form label input {
+.u-form input,
+.u-form textarea {
     font-size: 0.9em;
     padding: 3px 5px;
+    border: 1px solid #cccccc;
+    border-bottom: 2px solid #42b983;
+    background: #ffffff;
+    outline-color: #42b983;
 }
 .u-form .u-submit {
     margin: 2em auto;
@@ -338,7 +343,6 @@ p {
     padding: 5px;
     background-color: #f6f6f6;
     border-bottom: 1px solid #dddddd;
-    overflow: hidden;
 }
 .kiwi-header:hover {
     height: auto;
