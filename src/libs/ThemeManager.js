@@ -14,7 +14,7 @@ export default class ThemeManager {
 
     currentTheme() {
         let state = this.state;
-        let currentThemeName = state.user_settings.theme || state.settings.theme;
+        let currentThemeName = state.setting('theme');
 
         // If no theme was set, use the first one in our theme list
         if (!currentThemeName) {

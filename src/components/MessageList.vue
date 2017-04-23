@@ -158,7 +158,7 @@ export default {
             }
 
             let highlightFound = false;
-            state.user_settings.highlights.toLowerCase().split(' ').forEach(word => {
+            (state.setting('highlights') || '').toLowerCase().split(' ').forEach(word => {
                 if (!word) {
                     return;
                 }

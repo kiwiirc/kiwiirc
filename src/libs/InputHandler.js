@@ -14,7 +14,7 @@ export default class InputHandler {
 
         // Only watch the user setting changes in order to reload them
         state.$watch('user_settings.aliases', newVal => {
-            this.aliasRewriter.importFromString(newVal);
+            this.aliasRewriter.importFromString(state.setting('aliases'));
         });
 
         this.addInputCommands();

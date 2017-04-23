@@ -70,9 +70,6 @@ const stateObj = {
 /tick /msg $channel ✔`,
     },
     user_settings: {
-        theme: '',
-        highlights: '',
-        aliases: '',
     },
     connection: {
         // disconnected / connecting / connected
