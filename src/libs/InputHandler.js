@@ -115,14 +115,7 @@ function handleMessage(type, event, command, line) {
     if (spaceIdx === -1) spaceIdx = line.length;
 
     let bufferName = line.substr(0, spaceIdx);
-    let message = '';
-
-    if (!network.isChannelName(bufferName)) {
-        bufferName = this.state.getActiveBuffer().name;
-        message = line;
-    } else {
-        message = line.substr(spaceIdx + 1);
-    }
+    let message = line.substr(spaceIdx + 1);
 
     let buffer = this.state.getBufferByName(network.id, bufferName);
     if (buffer) {
