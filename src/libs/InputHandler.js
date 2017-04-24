@@ -507,6 +507,31 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
 };
 
 
+inputCommands.mode = function inputCommandMode(event, command, line) {
+    event.handled = true;
+
+    // /mode [target] [+-modes]
+
+    let network = this.state.getActiveNetwork();
+    let target = network.nick;
+
+    let parts = _.compact(line.split(' '));
+
+    if (line && line[0] !== '+' && line[0] !== '-') {
+        target = parts.shift();
+    }
+
+    if (parts[0]) {
+        // parts[0] = the mode(s)
+        // parts[1] = optional mode arguments
+        network.ircClient.mode(target, parts[0], parts[1]);
+    } else {
+        // No modes specified will request the modes for the target
+        network.ircClient.mode(target);
+    }
+};
+
+
 inputCommands.clear = function inputCommandClear(event, command, line) {
     event.handled = true;
 
