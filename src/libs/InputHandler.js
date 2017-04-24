@@ -532,6 +532,22 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
 };
 
 
+inputCommands.names = function inputCommandNames(event, command, line) {
+    event.handled = true;
+
+    // /names [#channel]
+
+    let network = this.state.getActiveNetwork();
+    let args = line;
+
+    if (!args) {
+        args = this.state.getActiveBuffer().name;
+    }
+
+    network.ircClient.raw('NAMES ' + args);
+};
+
+
 inputCommands.clear = function inputCommandClear(event, command, line) {
     event.handled = true;
 
