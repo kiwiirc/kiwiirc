@@ -575,9 +575,9 @@ const state = new Vue({
                 return;
             }
 
-            let buffers = state.getBuffersWithUser(networkid, event.nick);
+            let buffers = state.getBuffersWithUser(networkid, user.nick);
             buffers.forEach(buffer => {
-                state.removeUserFromBuffer(buffer, event.nick);
+                state.removeUserFromBuffer(buffer, user.nick);
             });
 
             this.$delete(network.users, user.nick);
