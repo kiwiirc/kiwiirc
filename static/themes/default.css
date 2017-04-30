@@ -604,7 +604,6 @@ p {
     font-size: 0.8em;
     line-height: 1.4em;
     font-family: monospace;
-    white-space: nowrap;
     border-color: #cccccc;
 }
 .kiwi-settings-aliases-showhelp {
