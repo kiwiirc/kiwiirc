@@ -238,8 +238,12 @@ export default {
         },
     },
     created: async function created() {
-        let persist = new StatePersistence('kiwi-state', state, Storage, logger);
-        await persist.loadStateIfExists();
+        let stateKey = state.settings.startupOptions.state_key;
+        let persist = null;
+        if (stateKey) {
+            persist = new StatePersistence(stateKey, state, Storage, logger);
+            await persist.loadStateIfExists();
+        }
 
         let saveThisSessionsState = false;
 
@@ -309,7 +313,7 @@ export default {
             this.applyDefaults();
         }
 
-        if (saveThisSessionsState) {
+        if (persist && saveThisSessionsState) {
             persist.watchStateForChanges();
         }
     },

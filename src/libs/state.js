@@ -41,6 +41,7 @@ const stateObj = {
             channel: '',
             nick: 'kiwi_?',
             direct: false,
+            state_key: 'kiwi-state',
         },
         showAutocomplete: true,
         aliases: `
