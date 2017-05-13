@@ -1,21 +1,21 @@
 <template>
-    <div class="kiwi-welcome" v-bind:class="[is_connecting ? 'kiwi-welcome--connecting' : '']">
+    <div class="kiwi-customserver" v-bind:class="[is_connecting ? 'kiwi-customserver--connecting' : '']">
         <h2 v-if="!is_connecting">{{title}}</h2>
         <h2 v-else>Connecting... <a @click="infoClick" class="u-link"><i class="fa fa-info-circle" aria-hidden="true"></i></a></h2>
 
         <transition name="connectingloader">
-        <form v-if="!is_connecting" v-on:submit.prevent="startUp" class="u-form kiwi-welcome-form">
+        <form v-if="!is_connecting" v-on:submit.prevent="startUp" class="u-form kiwi-customserver-form">
             <template v-if="server_type === 'default'">
                 <input-text label="Server" v-model="server">
-                    <span class="fa-stack fa-lg kiwi-welcome-tls" :class="[tls ? 'kiwi-welcome-tls--enabled' : '']" @click="tls=!tls">
-                        <i class="fa fa-lock fa-stack-1x kiwi-welcome-tls-lock"></i>
-                        <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-welcome-tls-minus"></i>
+                    <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
+                        <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
+                        <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
                     </span>
                 </input-text>
 
                 <input-text label="Nick" v-model="nick" />
 
-                <label class="kiwi-welcome-have-password">
+                <label class="kiwi-customserver-have-password">
                     <input type="checkbox" v-model="show_password_box" /> I have a password
                 </label>
                 <input-text v-if="show_password_box" label="Password" v-model="password" type="password" />
@@ -26,19 +26,19 @@
             <template v-if="server_type === 'default_simple'">
                 <input-text label="Nick" v-model="nick" />
 
-                <label class="kiwi-welcome-have-password">
+                <label class="kiwi-customserver-have-password">
                     <input type="checkbox" v-model="show_password_box" /> I have a password
                 </label>
                 <input-text v-if="show_password_box" label="Password" v-model="password" type="password" />
 
-                <input-text label="Channel" v-model="channel" class="kiwi-welcome-channel" />
+                <input-text label="Channel" v-model="channel" class="kiwi-customserver-channel" />
             </template>
 
             <template v-if="server_type === 'znc'">
                 <input-text label="Server" v-model="server">
-                    <span class="fa-stack fa-lg kiwi-welcome-tls" :class="[tls ? 'kiwi-welcome-tls--enabled' : '']" @click="tls=!tls">
-                        <i class="fa fa-lock fa-stack-1x kiwi-welcome-tls-lock"></i>
-                        <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-welcome-tls-minus"></i>
+                    <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
+                        <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
+                        <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
                     </span>
                 </input-text>
 
@@ -50,13 +50,13 @@
 
             <button type="submit" class="u-button u-button-primary u-submit">Connect</button>
 
-            <div v-if="show_type_switcher" class="kiwi-welcome-server-types">
+            <div v-if="show_type_switcher" class="kiwi-customserver-server-types">
                 <a @click="server_type = 'default'" class="u-link">Network</a>
                 <a @click="server_type = 'znc'" class="u-link">ZNC</a>
             </div>
         </form>
 
-        <div v-else class="kiwi-welcome-loader">
+        <div v-else class="kiwi-customserver-loader">
             <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
         </div>
         </transition>
@@ -321,62 +321,65 @@ export default {
 
 <style>
 
-.kiwi-welcome {
+.kiwi-customserver {
     text-align: center;
-    margin-top: 1em;
+    padding-top: 1em;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
-.kiwi-welcome-start {
+.kiwi-customserver-start {
     font-size: 1.1em;
     cursor: pointer;
 }
-.kiwi-welcome-form {
+.kiwi-customserver-form {
     width: 300px;
     margin: 0 auto;
     max-height: 500px;
     overflow: hidden;
 }
-.kiwi-welcome .input-text {
+.kiwi-customserver .input-text {
     margin-bottom: 1em;
 }
-.kiwi-welcome-tls {
+.kiwi-customserver-tls {
     cursor: pointer;
     color: #bfbfbf;
 }
-.kiwi-welcome-tls--enabled {
+.kiwi-customserver-tls--enabled {
     color: green;
 }
-.kiwi-welcome-tls-lock {
+.kiwi-customserver-tls-lock {
     font-size: 1.2em;
 }
-.kiwi-welcome-tls-minus {
+.kiwi-customserver-tls-minus {
     color: red;
     font-size: 0.7em;
     top: 3px;
 }
-.kiwi-welcome-channel {
+.kiwi-customserver-channel {
     margin-top: 1em;
 }
-.kiwi-welcome-server-types {
+.kiwi-customserver-server-types {
     font-size: 0.9em;
     text-align: center;
 }
-.kiwi-welcome-server-types a {
+.kiwi-customserver-server-types a {
     margin: 0 1em;
 }
 
-.kiwi-welcome-loader {
+.kiwi-customserver-loader {
     margin-top: 1em;
     font-size: 2em;
 }
 
-.kiwi-welcome h2 {
+.kiwi-customserver h2 {
     margin-bottom: 1em;
 }
-.kiwi-welcome h2 i {
+.kiwi-customserver h2 i {
     font-size: 0.8em;
     margin-left: 1em;
 }
-.kiwi-welcome--connecting h2 {
+.kiwi-customserver--connecting h2 {
     transition: margin-top .7s;
     margin-top: 100px;
 }
