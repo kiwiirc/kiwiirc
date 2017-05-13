@@ -735,6 +735,10 @@ function initialiseNetworkState(network) {
     });
     Object.defineProperty(network, 'isChannelName', {
         value: function isChannelName(input) {
+            if (typeof input !== 'string' || !input) {
+                return false;
+            }
+
             let chanPrefixes = this.ircClient.network.supports('CHANTYPES') || '#&';
             return chanPrefixes.indexOf(input[0]) > -1;
         },
