@@ -24,7 +24,7 @@
             </label>
             <label>
                 Password <br />
-                <input type="text" v-model.lazy="modeK" />
+                <input type="text" class="u-input" v-model.lazy="modeK" />
             </label>
         </form>
     </div>

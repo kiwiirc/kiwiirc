@@ -6,70 +6,46 @@
         <transition name="connectingloader">
         <form v-if="!is_connecting" v-on:submit.prevent="startUp" class="u-form kiwi-welcome-form">
             <template v-if="server_type === 'default'">
-                <label>
-                    <span>Server</span>
-                    <input type="text" v-model="server" />
-                </label>
-                <label>
-                    <span>SSL / TLS</span>
-                    <input type="checkbox" v-model="tls" />
-                </label>
-                <label>
-                    <span>Nick</span>
-                    <input type="text" v-model="nick" />
-                </label>
+                <input-text label="Server" v-model="server">
+                    <span class="fa-stack fa-lg kiwi-welcome-tls" :class="[tls ? 'kiwi-welcome-tls--enabled' : '']" @click="tls=!tls">
+                        <i class="fa fa-lock fa-stack-1x kiwi-welcome-tls-lock"></i>
+                        <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-welcome-tls-minus"></i>
+                    </span>
+                </input-text>
+
+                <input-text label="Nick" v-model="nick" />
+
                 <label class="kiwi-welcome-have-password">
-                    <span></span><input type="checkbox" v-model="show_password_box" /> I have a password
+                    <input type="checkbox" v-model="show_password_box" /> I have a password
                 </label>
-                <label v-if="show_password_box">
-                    <span>Password</span>
-                    <input type="password" v-model="password" />
-                </label>
-                <label class="kiwi-welcome-channel">
-                    <span>Channel</span>
-                    <input type="text" v-model="channel" />
-                </label>
+                <input-text v-if="show_password_box" label="Password" v-model="password" type="password" />
+
+                <input-text label="Channel" v-model="channel" />
             </template>
 
             <template v-if="server_type === 'default_simple'">
-                <label>
-                    <span>Nick</span>
-                    <input type="text" v-model="nick" />
-                </label>
+                <input-text label="Nick" v-model="nick" />
+
                 <label class="kiwi-welcome-have-password">
-                    <span></span><input type="checkbox" v-model="show_password_box" /> I have a password
+                    <input type="checkbox" v-model="show_password_box" /> I have a password
                 </label>
-                <label v-if="show_password_box">
-                    <span>Password</span>
-                    <input type="password" v-model="password" />
-                </label>
-                <label class="kiwi-welcome-channel">
-                    <span>Channel</span>
-                    <input type="text" v-model="channel" />
-                </label>
+                <input-text v-if="show_password_box" label="Password" v-model="password" type="password" />
+
+                <input-text label="Channel" v-model="channel" class="kiwi-welcome-channel" />
             </template>
 
             <template v-if="server_type === 'znc'">
-                <label>
-                    <span>Server</span>
-                    <input type="text" v-model="server" />
-                </label>
-                <label>
-                    <span>SSL / TLS</span>
-                    <input type="checkbox" v-model="tls" />
-                </label>
-                <label>
-                    <span>Username</span>
-                    <input type="text" v-model="nick" />
-                </label>
-                <label>
-                    <span>Network</span>
-                    <input type="text" v-model="znc_network" />
-                </label>
-                <label>
-                    <span>Password</span>
-                    <input type="password" v-model="password" />
-                </label>
+                <input-text label="Server" v-model="server">
+                    <span class="fa-stack fa-lg kiwi-welcome-tls" :class="[tls ? 'kiwi-welcome-tls--enabled' : '']" @click="tls=!tls">
+                        <i class="fa fa-lock fa-stack-1x kiwi-welcome-tls-lock"></i>
+                        <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-welcome-tls-minus"></i>
+                    </span>
+                </input-text>
+
+                <input-text label="Username" v-model="nick" />
+
+                <input-text label="Network" v-model="znc_network" />
+                <input-text label="Password" v-model="password" type="password" />
             </template>
 
             <button type="submit" class="u-button u-button-primary u-submit">Connect</button>
@@ -245,6 +221,7 @@ export default {
             return connections;
         },
         applyDefaults: function applyDefaults() {
+            console.log('applying defaults', state.settings.startupOptions);
             this.server = state.settings.startupOptions.server;
             this.tls = state.settings.startupOptions.tls;
             this.nick = state.settings.startupOptions.nick;
@@ -354,6 +331,24 @@ export default {
     margin: 0 auto;
     max-height: 500px;
     overflow: hidden;
+}
+.kiwi-welcome .input-text {
+    margin-bottom: 1em;
+}
+.kiwi-welcome-tls {
+    cursor: pointer;
+    color: #bfbfbf;
+}
+.kiwi-welcome-tls--enabled {
+    color: green;
+}
+.kiwi-welcome-tls-lock {
+    font-size: 1.2em;
+}
+.kiwi-welcome-tls-minus {
+    color: red;
+    font-size: 0.7em;
+    top: 3px;
 }
 .kiwi-welcome-channel {
     margin-top: 1em;

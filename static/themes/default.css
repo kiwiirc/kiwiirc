@@ -71,7 +71,7 @@ p {
     margin-right: 1em;
     text-align: right;
 }
-.u-form input,
+.u-form .u-input,
 .u-form textarea {
     font-size: 0.9em;
     padding: 3px 5px;

@@ -9,6 +9,7 @@ import state from 'src/libs/state';
 
 // Global utilities
 import 'src/components/utils/TabbedView';
+import 'src/components/utils/InputText';
 
 // A handy debugging var..
 window.state = state;

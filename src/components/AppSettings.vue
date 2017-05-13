@@ -25,14 +25,14 @@
                         <label><span>Use 24-hour timestamps:</span> <input type="checkbox" v-model="timestamps_24h" /></label>
                         <label><span>Show emoticons:</span> <input type="checkbox" v-model="bufferSettings.show_emoticons" /></label>
                         <label><span>Block new private messages:</span> <input type="checkbox" v-model="bufferSettings.block_pms" /></label>
-                        <label><span>Messages in scrollback:</span> <input type="number" v-model="bufferSettings.scrollback_size" /></label>
+                        <label><span>Messages in scrollback:</span> <input type="number" class="u-input" v-model="bufferSettings.scrollback_size" /></label>
                     </div>
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
                         <h3>Notifications</h3>
                         <label><span>Include join/part messages as activity:</span> <input type="checkbox" v-model="bufferSettings.traffic_as_activity" /></label>
                         <label><span>Mute sound notifications:</span> <input type="checkbox" v-model="bufferSettings.mute_sound" /></label>
-                        <label><span>Highlight on words (space separated):</span> <input type="text" v-model="settingHighlights" /></label>
+                        <label><span>Highlight on words (space separated):</span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
                     </div>
                 </tabbed-tab>
 
