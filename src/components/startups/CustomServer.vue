@@ -221,7 +221,6 @@ export default {
             return connections;
         },
         applyDefaults: function applyDefaults() {
-            console.log('applying defaults', state.settings.startupOptions);
             this.server = state.settings.startupOptions.server;
             this.tls = state.settings.startupOptions.tls;
             this.nick = state.settings.startupOptions.nick;
