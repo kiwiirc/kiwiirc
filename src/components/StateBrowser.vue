@@ -9,6 +9,7 @@
             @click.stop=""
         >
             <buffer-settings v-bind:buffer="bufferForPopup"></buffer-settings>
+            <a @click="closeBuffer" class="u-link">Leave {{bufferForPopup.name}}</a>
         </div>
 
         <div class="kiwi-statebrowser-scrollarea">
@@ -63,6 +64,9 @@ export default {
                 this.popup_networkid = buffer.networkid;
                 this.popup_top = domY;
             }
+        },
+        closeBuffer: function closeBuffer() {
+            state.removeBuffer(this.bufferForPopup);
         },
         onNewChannelInputFocus: function onNewChannelInputFocus() {
             // Auto insert the # if no value is already in. Easier for mobile users

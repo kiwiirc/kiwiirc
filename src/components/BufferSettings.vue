@@ -22,13 +22,10 @@
                 </label><br />
             </form>
         </div>
-        <a @click="closeBuffer" class="u-link">Leave {{buffer.name}}</a>
     </div>
 </template>
 
 <script>
-
-import state from 'src/libs/state';
 
 export default {
     data: function data() {
@@ -54,11 +51,6 @@ export default {
             set: function setSettingAlertOn(val) {
                 return this.buffer.setting('mute_sound', val);
             },
-        },
-    },
-    methods: {
-        closeBuffer: function closeBuffer() {
-            state.removeBuffer(this.buffer);
         },
     },
 };
