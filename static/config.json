@@ -14,5 +14,8 @@
 		"direct": false,
 		"channel": "#kiwiirc",
 		"nick": "kiwi-n?"
+	},
+	"embedly": {
+		"key": ""
 	}
 }

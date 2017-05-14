@@ -69,6 +69,9 @@ const stateObj = {
 # Misc aliases
 /slap /me slaps $1 around a bit with a large trout
 /tick /msg $channel ✔`,
+        embedly: {
+            Key: '',
+        },
     },
     user_settings: {
     },

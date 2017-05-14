@@ -9,7 +9,14 @@
             </a>
         </div>
         <div :key="url">
-            <a v-bind:href="url" class="embedly-card">Loading {{url}}...</a>
+            <a
+                v-bind:href="url"
+                class="embedly-card"
+                :data-card-key="embedlyKey"
+                data-card-chrome="0"
+                data-card-controls="0"
+                data-card-recommend="0"
+            >Loading {{url}}...</a>
         </div>
     </div>
 </template>
@@ -26,6 +33,11 @@ export default {
         };
     },
     props: ['url'],
+    computed: {
+        embedlyKey: function embedlyKey() {
+            return state.settings.embedly.key;
+        },
+    },
     methods: {
         updateEmbed: function updateEmbed() {
             let checkEmbedlyAndShowCard = () => {
