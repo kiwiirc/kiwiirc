@@ -322,15 +322,9 @@ export default {
 <style>
 
 .kiwi-customserver {
-    text-align: center;
-    padding-top: 1em;
     height: 100%;
     overflow-y: auto;
     box-sizing: border-box;
-}
-.kiwi-customserver-start {
-    font-size: 1.1em;
-    cursor: pointer;
 }
 .kiwi-customserver-form {
     width: 300px;
@@ -343,10 +337,6 @@ export default {
 }
 .kiwi-customserver-tls {
     cursor: pointer;
-    color: #bfbfbf;
-}
-.kiwi-customserver-tls--enabled {
-    color: green;
 }
 .kiwi-customserver-tls-lock {
     font-size: 1.2em;
@@ -355,16 +345,6 @@ export default {
     color: red;
     font-size: 0.7em;
     top: 3px;
-}
-.kiwi-customserver-channel {
-    margin-top: 1em;
-}
-.kiwi-customserver-server-types {
-    font-size: 0.9em;
-    text-align: center;
-}
-.kiwi-customserver-server-types a {
-    margin: 0 1em;
 }
 
 .kiwi-customserver-loader {
@@ -390,4 +370,5 @@ export default {
 .connectingloader-enter, .connectingloader-leave-to {
   max-height: 0
 }
+
 </style>

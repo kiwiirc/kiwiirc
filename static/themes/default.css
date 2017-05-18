@@ -727,6 +727,40 @@ p {
 
 
 /**
+ * Custom server startup screen
+ */
+.kiwi-customserver {
+    text-align: center;
+    padding-top: 1em;
+}
+.kiwi-customserver-start {
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.kiwi-customserver .input-text {
+    margin-bottom: 1em;
+}
+.kiwi-customserver-tls {
+    color: #bfbfbf;
+}
+.kiwi-customserver-tls--enabled {
+    color: green;
+}
+
+.kiwi-customserver-channel {
+    margin-top: 1em;
+}
+.kiwi-customserver-server-types {
+    font-size: 0.9em;
+    text-align: center;
+}
+.kiwi-customserver-server-types a {
+    margin: 0 1em;
+}
+
+
+
+/**
  * Misc styles
  */
 
