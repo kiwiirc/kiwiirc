@@ -1,12 +1,18 @@
 <template>
     <div class="kiwi-welcome-simple">
-        <h2>Welcome to Kiwi IRC!</h2>
+        <h2>{{greetingText}}</h2>
 
         <template v-if="!network">
-            <a class="u-button u-button-primary kiwi-welcome-simple-start" @click="startUp">Join the conversation!</a>
+            <input-text v-if="showNick" class="kiwi-welcome-simple-nick" label="Nick" v-model="nick" />
+            <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" label="Channel" v-model="channel" />
+            <button
+                class="u-button u-button-primary kiwi-welcome-simple-start"
+                @click="startUp"
+                :disabled="!readyToStart"
+            >{{buttonText}}</button>
         </template>
         <template v-else-if="network.state !== 'connected'">
-            Loading...
+            <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" aria-hidden="true"></i>
         </template>
         
     </div>
@@ -14,30 +20,93 @@
 
 <script>
 
+import _ from 'lodash';
 import state from 'src/libs/state';
 
 export default {
     data: function data() {
         return {
             network: null,
+            channel: '',
+            nick: '',
+            showChannel: true,
+            showNick: true,
         };
+    },
+    computed: {
+        greetingText: function greetingText() {
+            let greeting = state.settings.startupOptions.greetingText;
+            return typeof greeting === 'string' ?
+                greeting :
+                'Welcome to Kiwi IRC!';
+        },
+        buttonText: function buttonText() {
+            let greeting = state.settings.startupOptions.buttonText;
+            return typeof greeting === 'string' ?
+                greeting :
+                'Start';
+        },
+        readyToStart: function readyToStart() {
+            let ready = this.channel && this.nick;
+            // Nicks cannot start with [0-9- ]
+            // ? is not a valid nick character but we allow it as it gets replaced
+            // with a number.
+            if (!this.nick.match(/^[a-z_\\[\]{}^`|][?a-z0-9_\-\\[\]{}^`|]*$/i)) {
+                ready = false;
+            }
+
+            return ready;
+        },
     },
     methods: {
         startUp: function startUp() {
-            let net = this.network = state.addNetwork('freenode', 'kiwidev', {
-                server: 'irc.freenode.net',
-                port: 6667,
-                tls: false,
+            let options = state.settings.startupOptions;
+
+            // Replace ? with a random number
+            let randomNickReplacement = Math.floor(Math.random() * 100).toString();
+            let nick = (this.nick || '').replace(/\?/g, randomNickReplacement);
+            nick = _.trim(nick);
+
+            let net = this.network = state.addNetwork('Network', nick, {
+                server: _.trim(options.server),
+                port: options.port,
+                tls: options.tls,
+                encoding: _.trim(options.encoding),
                 //direct: true,
             });
-            state.addBuffer(net.id, '#kiwiirc-dev').joined = true;
-            state.setActiveBuffer(net.id, '#kiwiirc-dev');
+            state.addBuffer(net.id, _.trim(this.channel)).joined = true;
+            state.setActiveBuffer(net.id, options.channel);
 
             net.ircClient.connect();
-            net.ircClient.once('registered', () => {
+            let onRegistered = () => {
                 this.$emit('start');
-            });
+                net.ircClient.off('registered', onRegistered);
+                net.ircClient.off('close', onClosed);
+            };
+            let onClosed = () => {
+                setTimeout(() => { this.network = null; }, 1000);
+                net.ircClient.off('registered', onRegistered);
+                net.ircClient.off('close', onClosed);
+            };
+            net.ircClient.once('registered', onRegistered);
+            net.ircClient.once('close', onClosed);
         },
+    },
+    created: function created() {
+        let options = state.settings.startupOptions;
+
+        this.nick = options.nick || '';
+        this.channel = options.channel || '';
+        this.showChannel = typeof options.showChannel === 'boolean' ?
+            options.showChannel :
+            true;
+        this.showNick = typeof options.showNick === 'boolean' ?
+            options.showNick :
+            true;
+
+        if (options.autoConnect && this.nick && this.channel) {
+            this.startUp();
+        }
     },
 };
 </script>
@@ -47,6 +116,16 @@ export default {
 .kiwi-welcome-simple {
     text-align: center;
     margin-top: 1em;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    width: 300px;
+    margin: 0 auto;
+}
+.kiwi-welcome-simple-nick,
+.kiwi-welcome-simple-channel,
+.kiwi-welcome-simple-start {
+    margin-top: 2em;
 }
 .kiwi-welcome-simple-start {
     font-size: 1.1em;
