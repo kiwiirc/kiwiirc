@@ -702,6 +702,31 @@ p {
 
 
 /**
+ * Welcome startup screen
+ */
+.kiwi-welcome-simple {
+    text-align: center;
+    margin-top: 1em;
+    width: 300px;
+    margin: 0 auto;
+}
+.kiwi-welcome-simple-nick,
+.kiwi-welcome-simple-channel,
+.kiwi-welcome-simple-start {
+    margin-top: 2em;
+}
+.kiwi-welcome-simple-start {
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.kiwi-welcome-simple-start[disabled] {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+
+
+/**
  * Misc styles
  */
 

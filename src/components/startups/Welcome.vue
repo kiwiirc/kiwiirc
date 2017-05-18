@@ -114,21 +114,9 @@ export default {
 <style>
 
 .kiwi-welcome-simple {
-    text-align: center;
-    margin-top: 1em;
     height: 100%;
     overflow-y: auto;
     box-sizing: border-box;
-    width: 300px;
-    margin: 0 auto;
 }
-.kiwi-welcome-simple-nick,
-.kiwi-welcome-simple-channel,
-.kiwi-welcome-simple-start {
-    margin-top: 2em;
-}
-.kiwi-welcome-simple-start {
-    font-size: 1.1em;
-    cursor: pointer;
-}
+
 </style>
