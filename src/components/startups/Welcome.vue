@@ -21,6 +21,7 @@
 <script>
 
 import _ from 'lodash';
+import * as Misc from 'src/helpers/Misc';
 import state from 'src/libs/state';
 
 export default {
@@ -74,8 +75,23 @@ export default {
                 encoding: _.trim(options.encoding),
                 //direct: true,
             });
-            state.addBuffer(net.id, _.trim(this.channel)).joined = true;
-            state.setActiveBuffer(net.id, options.channel);
+
+            // Only switch to the first channel we join if multiple are being joined
+            let hasSwitchedActiveBuffer = false;
+            let bufferObjs = Misc.extractBuffers(this.channel);
+            bufferObjs.forEach(bufferObj => {
+                let newBuffer = state.addBuffer(net.id, bufferObj.name);
+                newBuffer.joined = true;
+
+                if (newBuffer && !hasSwitchedActiveBuffer) {
+                    state.setActiveBuffer(net.id, newBuffer.name);
+                    hasSwitchedActiveBuffer = true;
+                }
+
+                if (bufferObj.key) {
+                    newBuffer.key = bufferObj.key;
+                }
+            });
 
             net.ircClient.connect();
             let onRegistered = () => {

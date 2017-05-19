@@ -191,6 +191,10 @@ inputCommands.join = function inputCommandJoin(event, command, line) {
             hasSwitchedActiveBuffer = true;
         }
 
+        if (keys[idx]) {
+            newBuffer.key = keys[idx];
+        }
+
         network.ircClient.join(chanName, keys[idx]);
     });
 };

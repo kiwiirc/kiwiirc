@@ -223,8 +223,9 @@ const state = new Vue({
                 networkObj.buffers = network.buffers.map(buffer => {
                     let bufferObj = {
                         name: buffer.name,
+                        key: buffer.key,
                         joined: buffer.joined,
-                        settings: _.cloneDeep(buffer.flags),
+                        settings: _.cloneDeep(buffer.settings),
                     };
 
                     return bufferObj;
@@ -258,6 +259,7 @@ const state = new Vue({
                     importNetwork.buffers.forEach(importBuffer => {
                         let buffer = createEmptyBufferObject();
                         buffer.name = importBuffer.name;
+                        buffer.key = importBuffer.key;
                         buffer.networkid = network.id;
                         buffer.joined = importBuffer.joined;
                         buffer.settings = importBuffer.settings;
@@ -703,6 +705,7 @@ function createEmptyBufferObject() {
         networkid: 0,
         name: '',
         topic: '',
+        key: '',
         joined: false,
         users: [],
         modes: Object.create(null),
@@ -814,6 +817,16 @@ function initialiseBufferState(buffer) {
                 state.settings.buffers[name];
 
             return result;
+        },
+    });
+    Object.defineProperty(buffer, 'flag', {
+        value: function flag(name, val) {
+            if (typeof val !== 'undefined') {
+                state.$set(buffer.flags, name, val);
+                return val;
+            }
+
+            return buffer.flags[name];
         },
     });
     Object.defineProperty(buffer, 'requestScrollback', {

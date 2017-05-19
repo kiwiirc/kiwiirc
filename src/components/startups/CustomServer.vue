@@ -70,6 +70,7 @@ import * as Storage from 'src/libs/storage/Local';
 import state from 'src/libs/state';
 import StatePersistence from 'src/libs/StatePersistence';
 import logger from 'src/libs/Logger';
+import * as Misc from 'src/helpers/Misc';
 
 export default {
     data: function data() {
@@ -123,13 +124,14 @@ export default {
             if (net) {
                 let hasSetActiveBuffer = false;
 
-                this.channel.split(',').forEach((channelName, idx) => {
-                    if (!channelName) {
-                        return;
-                    }
-
-                    let buffer = state.addBuffer(net.id, channelName);
+                let bufferObjs = Misc.extractBuffers(this.channel);
+                bufferObjs.forEach((bufferObj, idx) => {
+                    let buffer = state.addBuffer(net.id, bufferObj.name);
                     buffer.joined = true;
+
+                    if (bufferObj.key) {
+                        buffer.key = bufferObj.key;
+                    }
 
                     if (idx === 0) {
                         state.setActiveBuffer(net.id, buffer.name);

@@ -120,7 +120,7 @@ function clientMiddleware(state, networkid) {
             // Join our channels
             network.buffers.forEach(buffer => {
                 if (buffer.isChannel() && buffer.joined) {
-                    client.join(buffer.name);
+                    client.join(buffer.name, buffer.key);
                 }
             });
         }
