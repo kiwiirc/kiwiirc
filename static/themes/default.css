@@ -549,6 +549,12 @@ p {
     cursor: pointer;
 }
 
+/* Errors */
+.kiwi-messagelist-message-error {
+    background: #f1d4d4;
+    border-left-color: #ab5252;
+}
+
 
 
 /**
