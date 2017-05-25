@@ -4,6 +4,7 @@
 
         <template v-if="!network">
             <input-text v-if="showNick" class="kiwi-welcome-simple-nick" label="Nick" v-model="nick" />
+            <input-text v-if="showPass" class="kiwi-welcome-simple-password" label="Password" v-model="password" type="password" />
             <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" label="Channel" v-model="channel" />
             <button
                 class="u-button u-button-primary kiwi-welcome-simple-start"
@@ -31,6 +32,7 @@ export default {
             channel: '',
             nick: '',
             showChannel: true,
+            showPass: true,
             showNick: true,
         };
     },
@@ -72,6 +74,7 @@ export default {
                 server: _.trim(options.server),
                 port: options.port,
                 tls: options.tls,
+                password: this.password,
                 encoding: _.trim(options.encoding),
                 //direct: true,
             });
