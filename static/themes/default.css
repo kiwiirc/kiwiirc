@@ -154,7 +154,8 @@ p {
 }
 
 .kiwi-statebrowser-network {
-    padding: 10px;
+    margin-bottom: 2em;
+    overflow: hidden;
 }
 
 .kiwi-statebrowser-network-name {
@@ -186,6 +187,9 @@ p {
     padding: 0;
 }
 
+.kiwi-statebrowser-channels {
+    margin: 0px 10px;
+}
 .kiwi-statebrowser-channel {
     margin-top: 5px;
 }
