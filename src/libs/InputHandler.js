@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import AliasRewriter from './AliasRewriter';
+import * as Misc from 'src/helpers/Misc';
 
 // Map of commandName=commandHandlerFn
 const inputCommands = {};
@@ -168,21 +169,16 @@ inputCommands.ctcp = function inputCommandCtcp(event, command, line) {
 inputCommands.join = function inputCommandJoin(event, command, line) {
     event.handled = true;
 
-    let spaceIdx = line.indexOf(' ');
-    if (spaceIdx === -1) spaceIdx = line.length;
-
-    let bufferNames = line.substr(0, spaceIdx).split(',');
-    let keys = line.substr(spaceIdx + 1).split(',');
-
     let network = this.state.getActiveNetwork();
+    let bufferObjs = Misc.extractBuffers(line);
 
     // Only switch to the first channel we join if multiple are being joined
     let hasSwitchedActiveBuffer = false;
-    bufferNames.forEach((bufferName, idx) => {
+    bufferObjs.forEach(bufferObj => {
         // Prepend a # channel prefix if not specified already
-        let chanName = network.isChannelName(bufferName) ?
-            bufferName :
-            '#' + bufferName;
+        let chanName = network.isChannelName(bufferObj.name) ?
+            bufferObj.name :
+            '#' + bufferObj.name;
 
         let newBuffer = this.state.addBuffer(network.id, chanName);
 
@@ -191,11 +187,11 @@ inputCommands.join = function inputCommandJoin(event, command, line) {
             hasSwitchedActiveBuffer = true;
         }
 
-        if (keys[idx]) {
-            newBuffer.key = keys[idx];
+        if (bufferObj.key) {
+            newBuffer.key = bufferObj.key;
         }
 
-        network.ircClient.join(chanName, keys[idx]);
+        network.ircClient.join(chanName, bufferObj.key);
     });
 };
 

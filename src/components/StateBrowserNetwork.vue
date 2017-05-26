@@ -73,6 +73,7 @@
 
 import _ from 'lodash';
 import state from 'src/libs/state';
+import * as Misc from 'src/helpers/Misc';
 import NetworkSettings from './NetworkSettings';
 import BufferSettings from './BufferSettings';
 
@@ -156,10 +157,28 @@ export default {
             let newChannelVal = this.new_channel_input;
             this.new_channel_input = '#';
 
-            // Simply pass it onto the /join handler so it acts in the same way
-            if (newChannelVal) {
-                state.$emit('input.raw', '/join ' + newChannelVal);
-            }
+            let network = this.network;
+            let bufferObjs = Misc.extractBuffers(newChannelVal);
+
+            // Only switch to the first channel we join if multiple are being joined
+            let hasSwitchedActiveBuffer = false;
+            bufferObjs.forEach(bufferObj => {
+                let chanName = bufferObj.name;
+                let newBuffer = state.addBuffer(network.id, chanName);
+
+                if (newBuffer && !hasSwitchedActiveBuffer) {
+                    state.setActiveBuffer(network.id, newBuffer.name);
+                    hasSwitchedActiveBuffer = true;
+                }
+
+                if (bufferObj.key) {
+                    newBuffer.key = bufferObj.key;
+                }
+
+                if (network.isChannelName(chanName)) {
+                    network.ircClient.join(chanName, bufferObj.key);
+                }
+            });
         },
     },
     computed: {
