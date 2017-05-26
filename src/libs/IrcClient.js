@@ -242,7 +242,7 @@ function clientMiddleware(state, networkid) {
 
             state.addMessage(buffer, {
                 time: Date.now(),
-                nick: '',
+                nick: event.nick,
                 message: messageBody,
                 type: 'traffic',
                 type_extra: 'join',
@@ -274,7 +274,7 @@ function clientMiddleware(state, networkid) {
 
             state.addMessage(buffer, {
                 time: Date.now(),
-                nick: '',
+                nick: event.nick,
                 message: messageBody,
                 type: 'traffic',
                 type_extra: 'kick',
@@ -299,7 +299,7 @@ function clientMiddleware(state, networkid) {
             });
             state.addMessage(buffer, {
                 time: Date.now(),
-                nick: '',
+                nick: event.nick,
                 message: messageBody,
                 type: 'traffic',
                 type_extra: 'part',
@@ -326,7 +326,7 @@ function clientMiddleware(state, networkid) {
 
                 state.addMessage(buffer, {
                     time: Date.now(),
-                    nick: '',
+                    nick: event.nick,
                     message: messageBody,
                     type: 'traffic',
                     type_extra: 'quit',

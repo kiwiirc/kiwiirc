@@ -511,6 +511,9 @@ p {
 }
 
 /* Traffic (joins, parts, quits, kicks) */
+.kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
+    display: none;
+}
 .kiwi-messagelist-message-traffic .kiwi-messagelist-body {
     font-style: italic;
 }
