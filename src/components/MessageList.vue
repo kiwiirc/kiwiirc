@@ -76,21 +76,11 @@ export default {
     props: ['buffer', 'messages', 'users'],
     computed: {
         filteredMessages: function filteredMessages() {
-            let list = [];
-            let maxSize = this.buffer.setting('scrollback_size');
-            let showJoinParts = this.buffer.setting('show_joinparts');
-            for (let i = this.messages.length - 1; i >= 0 && list.length < maxSize; i--) {
-                if (!showJoinParts && this.messages[i].type === 'traffic') {
-                    continue;
-                }
-                // Ignored users have the ignore flag set
-                if (this.messages[i].ignore) {
-                    continue;
-                }
-                list.push(this.messages[i]);
-            }
+            let network = this.buffer.getNetwork();
+            let currentNick = network.nick;
 
-            list.sort((a, b) => {
+            let messages = this.messages.slice(0, this.messages.length);
+            messages.sort((a, b) => {
                 if (a.time > b.time) {
                     return 1;
                 } else if (b.time > a.time) {
@@ -99,6 +89,35 @@ export default {
 
                 return 0;
             });
+
+            let list = [];
+            let maxSize = this.buffer.setting('scrollback_size');
+            let showJoinParts = this.buffer.setting('show_joinparts');
+            for (let i = 0; i < messages.length && list.length < maxSize; i++) {
+                if (!showJoinParts && messages[i].type === 'traffic') {
+                    continue;
+                }
+                // Ignored users have the ignore flag set
+                if (messages[i].ignore) {
+                    continue;
+                }
+
+                // When we join a channel the topic is usually sent next. But this looks
+                // ugly when rendered. So we switch the topic + join messages around so
+                // that the topic is first in the message list.
+                if (
+                    messages[i].type === 'traffic' &&
+                    messages[i].nick === currentNick &&
+                    messages[i + 1] &&
+                    messages[i + 1].type === 'topic'
+                ) {
+                    list.push(messages[i + 1]);
+                    list.push(messages[i]);
+                    i++;
+                } else {
+                    list.push(messages[i]);
+                }
+            }
 
             return list;
         },
