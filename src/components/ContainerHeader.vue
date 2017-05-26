@@ -12,10 +12,10 @@
                 <a
                     class="u-button u-button-secondary"
                     @click="buffer_settings_open=!buffer_settings_open"
-                ><i class="fa fa-wrench" aria-hidden="true"></i></a>
+                ><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
             </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div class="kiwi-header-topic" v-html="formatMessage(buffer.topic)"></div>
+            <div class="kiwi-header-topic" v-html="formatMessage(buffer.topic)+'&nbsp;'"></div>
             <div v-if="buffer.getNetwork().state === 'connected' && !buffer.joined">
                 <a @click="joinCurrentBuffer" class="u-link">Join Channel</a>
             </div>
@@ -25,7 +25,7 @@
                 <a
                     class="u-button u-button-secondary"
                     @click="showNetworkSettings(buffer.getNetwork())"
-                ><i class="fa fa-wrench" aria-hidden="true"></i></a>
+                ><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
             </div>
             <div class="kiwi-header-name">{{buffer.getNetwork().name}}</div>
 
