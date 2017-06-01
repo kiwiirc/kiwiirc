@@ -148,9 +148,33 @@ p {
  */
 
 .kiwi-statebrowser {
-    border-right: 5px solid #6b6b6b;
+    border-right: 5px solid rgba(255,255,255,0.3);
     background: #383838;
+    /* this also looks cool, background: #05394a; */
     color: rgb(137, 155, 166);
+}
+
+.kiwi-statebrowser-usermenu {
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding: 7px 0;
+    font-size: 1.1em;
+}
+.kiwi-statebrowser-usermenu-body {
+    font-size: 0.9em;
+    margin: 5px;
+}
+
+.kiwi-statebrowser-switcher a {
+    padding: 5px 0;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.kiwi-statebrowser-switcher a:first-of-type {
+    background: rgba(255,255,255,0.15);
+}
+.kiwi-statebrowser-switcher a:hover {
+    background: rgba(255,255,255,0.1);
 }
 
 .kiwi-statebrowser-network {
@@ -163,11 +187,11 @@ p {
     font-size: 1.1em;
     text-align: center;
     display: block;
-    background: #525252;
+    background: rgba(255,255,255,0.15);
     padding: 4px 0;
 }
 .kiwi-statebrowser-network-status {
-    background: #4a4a4a;
+    background: rgba(255,255,255,0.1);
     text-align: center;
     padding: 4px;
     overflow: hidden;

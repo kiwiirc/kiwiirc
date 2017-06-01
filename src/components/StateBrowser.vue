@@ -12,6 +12,24 @@
             <a @click="closeBuffer" class="u-link">Leave {{bufferForPopup.name}}</a>
         </div>
 
+        <div
+            v-if="isPersistingState"
+            class="kiwi-statebrowser-usermenu"
+            :class="[is_usermenu_open?'kiwi-statebrowser-usermenu--open':'']"
+        >
+            <a class="kiwi-statebrowser-usermenu-header" @click="is_usermenu_open=!is_usermenu_open">Your account <i class="fa fa-caret-down"></i></a>
+            <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
+                Your settings and networks will be remembered on this computer. <br />
+                <a class="u-link" @click="clickForget">Forget me</i></a> <br />
+                <br />
+                <button class="u-button u-button-primary" @click="is_usermenu_open=false">Close</button>
+            </div>
+        </div>
+
+        <div class="kiwi-statebrowser-switcher">
+            <a@click="clickAddNetwork" v-if="!isRestrictedServer" ><i class="fa fa-plus" aria-hidden="true"></i></a><a @click="clickAppSettings" ><i class="fa fa-cog" aria-hidden="true"></i></a>
+        </div>
+
         <div class="kiwi-statebrowser-scrollarea">
             <div class="kiwi-statebrowser-networks">
                 <state-browser-network
@@ -19,12 +37,6 @@
                     :network="network"
                     @showBufferSettings="showBufferPopup"
                 ></state-browser-network>
-            </div>
-
-            <div class="kiwi-statebrowser-options">
-                <a @click="clickAddNetwork" v-if="!isRestrictedServer">Add network</a>
-                <a @click="clickAppSettings">Settings</a>
-                <a @click="clickForget" v-if="isPersistingState">Forget Me</a>
             </div>
         </div>
     </div>
@@ -46,6 +58,7 @@ export default {
             popup_networkid: null,
             popup_top: 0,
             new_channel_input: '',
+            is_usermenu_open: false,
         };
     },
     props: ['networks'],
@@ -127,6 +140,19 @@ export default {
 .kiwi-statebrowser {
     box-sizing: border-box;
     z-index: 3; /* Must be at leats 1 higher than the workspace :after z-index; */
+}
+
+.kiwi-statebrowser-usermenu-header {
+    cursor: pointer;
+}
+
+.kiwi-statebrowser-switcher {
+    text-align: center;
+}
+.kiwi-statebrowser-switcher a {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
 }
 
 .kiwi-statebrowser-scrollarea {
