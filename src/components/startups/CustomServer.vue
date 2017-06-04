@@ -1,12 +1,12 @@
 <template>
     <div class="kiwi-customserver" v-bind:class="[is_connecting ? 'kiwi-customserver--connecting' : '']">
         <h2 v-if="!is_connecting">{{title}}</h2>
-        <h2 v-else>Connecting... <a @click="infoClick" class="u-link"><i class="fa fa-info-circle" aria-hidden="true"></i></a></h2>
+        <h2 v-else>{{$t('status_connecting')}} <a @click="infoClick" class="u-link"><i class="fa fa-info-circle" aria-hidden="true"></i></a></h2>
 
         <transition name="connectingloader">
         <form v-if="!is_connecting" v-on:submit.prevent="startUp" class="u-form kiwi-customserver-form">
             <template v-if="server_type === 'default'">
-                <input-text label="Server" v-model="server">
+                <input-text :label="$t('connection_server')" v-model="server">
                     <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
                         <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
                         <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>

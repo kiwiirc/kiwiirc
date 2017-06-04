@@ -1,5 +1,8 @@
 import _ from 'lodash';
 import Vue from 'vue';
+import i18next from 'i18next';
+import i18nextXHR from 'i18next-xhr-backend';
+import VueI18Next from '@panter/vue-i18next';
 
 import App from 'src/components/App';
 import StartupError from 'src/components/StartupError';
@@ -56,6 +59,7 @@ if (getQueryVariable('config')) {
 let configLoader = new ConfigLoader();
 (configObj ? configLoader.loadFromObj(configObj) : configLoader.loadFromUrl(configFile))
     .then(applyConfig)
+    .then(initLocales)
 	.then(startApp)
 	.catch(showError);
 
@@ -93,11 +97,35 @@ function applyConfigObj(obj, target) {
 }
 
 
+function initLocales() {
+    Vue.use(VueI18Next);
+
+    i18next.use(i18nextXHR);
+    i18next.init({
+        lng: 'en_us',
+        backend: {
+            // path where resources get loaded from, or a function
+            // returning a path:
+            // function(lngs, namespaces) { return customPath; }
+            // the returned path will interpolate lng, ns if provided like giving a static path
+            loadPath: 'static/locales/{{lng}}.json',
+
+            // allow cross domain requests
+            crossDomain: false,
+
+            // allow credentials on cross domain requests
+            withCredentials: false,
+        },
+    });
+}
+
+
 function startApp() {
     /* eslint-disable no-new */
     new Vue({
         el: '#app',
         render: h => h(App),
+        i18n: new VueI18Next(i18next),
     });
 }
 

@@ -1,0 +1,44 @@
+#: Realname field in a users whois
+msgid "whois_realname"
+msgstr "Real name"
+
+#: Away status in a users whois
+msgid "whois_status"
+msgstr "Status"
+
+#: Away status in a users whois
+msgid "whois_status_available"
+msgstr "Is available"
+
+#: Send user a message button
+msgid "send_a_message"
+msgstr "Send a message"
+
+#: Show more information
+msgid "more_information"
+msgstr "More information"
+
+#: Ignore user toggle box
+msgid "ignore_user"
+msgstr "Ignore user"
+
+#: Connecting status message
+msgid "status_connecting"
+msgstr "Connecting..."
+
+#: Server input box
+msgid "connection_server"
+msgstr "Server"
+
+#: Nick input box
+msgid "connection_nick"
+msgstr "Nick"
+
+#: Password toggle box
+msgid "connection_password"
+msgstr "I have a password"
+
+#: Channel input box
+msgid "connection_channel"
+msgstr "Channel"
+

@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@panter/vue-i18next@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@panter/vue-i18next/-/vue-i18next-0.5.1.tgz#714bbeb62c25850231f2681ad11142d3c6e3c645"
+
 abbrev@1, abbrev@1.0.x:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.0.9.tgz#91b4792588a7738c25f35dd6f63752a2f8776135"
@@ -840,7 +844,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.0.5, bluebird@^3.1.1, bluebird@^3.3.0, bluebird@^3.4.7:
+bluebird@^3.0.5, bluebird@^3.1.1, bluebird@^3.3.0, bluebird@^3.4.1, bluebird@^3.4.7:
   version "3.4.7"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.4.7.tgz#f72d760be09b7f76d08ed8fae98b289a8d05fab3"
 
@@ -1670,6 +1674,12 @@ encodeurl@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.1.tgz#79e3d58655346909fe6f0f45a5de68103b294d20"
 
+encoding@0.1.12:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/encoding/-/encoding-0.1.12.tgz#538b66f3ee62cd1ab51ec323829d1f9480c74beb"
+  dependencies:
+    iconv-lite "~0.4.13"
+
 engine.io-client@1.8.2:
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/engine.io-client/-/engine.io-client-1.8.2.tgz#c38767547f2a7d184f5752f6f0ad501006703766"
@@ -2317,6 +2327,12 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+gettext-parser@^1.1.2, gettext-parser@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/gettext-parser/-/gettext-parser-1.2.2.tgz#1ef0da75c1e759ae3089c73efa4d19e40298748e"
+  dependencies:
+    encoding "0.1.12"
+
 glob-base@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/glob-base/-/glob-base-0.3.0.tgz#dbb164f6221b1c0b1ccf82aea328b497df0ea3c4"
@@ -2576,7 +2592,28 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
-iconv-lite@0.4.15, iconv-lite@^0.4.11:
+i18next-conv@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/i18next-conv/-/i18next-conv-3.0.3.tgz#c8e660692dc7dd682f59d90ee9ccdc57ad66796e"
+  dependencies:
+    bluebird "^3.4.1"
+    chalk "^1.1.3"
+    commander "^2.9.0"
+    gettext-parser "^1.2.0"
+    mkdirp "^0.5.1"
+    node-gettext "^1.1.0"
+    object-assign "^4.1.0"
+    pkginfo "^0.4.0"
+
+i18next-xhr-backend@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/i18next-xhr-backend/-/i18next-xhr-backend-1.4.1.tgz#ade99356065f51742da9e4bc79c7bb4905a4b91d"
+
+i18next@^8.4.0:
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-8.4.0.tgz#ffdf2b5dee22c646f0a715f8f5a38a347c83a546"
+
+iconv-lite@0.4.15, iconv-lite@^0.4.11, iconv-lite@~0.4.13:
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
 
@@ -3644,6 +3681,12 @@ node-balanced@0.0.14:
   version "0.0.14"
   resolved "https://registry.yarnpkg.com/node-balanced/-/node-balanced-0.0.14.tgz#a33c727857d3044f1e88be72dd7d9a9d0b4fc21f"
 
+node-gettext@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/node-gettext/-/node-gettext-1.1.0.tgz#e96cd97b289287137381d64b6d33ca4e191f29fa"
+  dependencies:
+    gettext-parser "^1.1.2"
+
 node-libs-browser@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/node-libs-browser/-/node-libs-browser-0.7.0.tgz#3e272c0819e308935e26674408d7af0e1491b83b"
@@ -3985,6 +4028,10 @@ pkg-up@^1.0.0:
   resolved "https://registry.yarnpkg.com/pkg-up/-/pkg-up-1.0.0.tgz#3e08fb461525c4421624a33b9f7e6d0af5b05a26"
   dependencies:
     find-up "^1.0.0"
+
+pkginfo@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.0.tgz#349dbb7ffd38081fcadc0853df687f0c7744cd65"
 
 pluralize@^1.2.1:
   version "1.2.1"

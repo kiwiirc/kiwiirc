@@ -7,13 +7,18 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
+    "translate": "node build/locales.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
+    "@panter/vue-i18next": "^0.5.1",
     "font-awesome": "^4.7.0",
     "font-awesome-webpack": "^0.0.4",
+    "i18next": "^8.4.0",
+    "i18next-conv": "^3.0.3",
+    "i18next-xhr-backend": "^1.4.1",
     "irc-framework": "^2.8.0",
     "less": "^2.7.1",
     "sockjs-client": "^1.1.1",

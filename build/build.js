@@ -4,6 +4,7 @@ env.NODE_ENV = 'production'
 
 var path = require('path')
 var config = require('../config')
+var locales = require('./locales')
 var ora = require('ora')
 var webpack = require('webpack')
 var webpackConfig = require('./webpack.prod.conf')
@@ -14,22 +15,40 @@ console.log(
   '  Opening index.html over file:// won\'t work.\n'
 )
 
-var spinner = ora('building for production...')
+var spinner = ora('translating languages...')
 spinner.start()
 
-var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
-rm('-rf', assetsPath)
-mkdir('-p', config.build.assetsRoot)
-cp('-R', 'static/', assetsPath)
+translate().then(function() {
+  spinner.succeed();
 
-webpack(webpackConfig, function (err, stats) {
-  spinner.stop()
-  if (err) throw err
-  process.stdout.write(stats.toString({
-    colors: true,
-    modules: false,
-    children: false,
-    chunks: false,
-    chunkModules: false
-  }) + '\n')
+  spinner = ora('building for production...')
+  spinner.start()
+  return buildSource();
 })
+
+
+function translate() {
+  return locales.createJsonFiles();
+}
+
+
+function buildSource() {
+  return new Promise(function(resolve, reject) {
+    var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
+    rm('-rf', assetsPath)
+    mkdir('-p', config.build.assetsRoot)
+    cp('-R', 'static/', assetsPath)
+
+    webpack(webpackConfig, function (err, stats) {
+      spinner.stop()
+      if (err) throw err
+      process.stdout.write(stats.toString({
+        colors: true,
+        modules: false,
+        children: false,
+        chunks: false,
+        chunkModules: false
+      }) + '\n')
+    })
+  });
+}

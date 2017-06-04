@@ -7,15 +7,15 @@
         </div>
 
         <p class="kiwi-userbox-basicinfo">
-            <b>Real name:</b> {{user.realname}} <br />
-            <b>Status:</b> {{user.away ? 'Status: ' + user.away : 'Is available'}} <br />
+            <b>{{$t('whois_realname')}}:</b> {{user.realname}} <br />
+            <b>{{$t('whois_status')}}:</b> {{user.away ? user.away : $t('whois_status_available')}} <br />
         </p>
 
         <p class="kiwi-userbox-actions">
-            <a @click="openQuery" class="u-link">Send a message</a>
-            <a v-if="!whoisRequested" class="u-link" @click="updateWhoisData">More information</a> <br />
+            <a @click="openQuery" class="u-link">{{$t('send_a_message')}}</a>
+            <a v-if="!whoisRequested" class="u-link" @click="updateWhoisData">{{$t('more_information')}}</a> <br />
             <label>
-                <input type="checkbox" v-model="user.ignore" /> Ignore user
+                <input type="checkbox" v-model="user.ignore" /> {{$t('ignore_user')}}
             </label>
         </p>
 
@@ -28,7 +28,7 @@
                 <i class="fa fa-spinner" aria-hidden="true"></i>
             </template>
             <template v-else>
-                <span class="kiwi-userbox-whois-line">{{user.away ? 'Status: ' + user.away : 'Is available'}}</span>
+                <span class="kiwi-userbox-whois-line">{{user.away ? $t('whois_status') + ': ' + user.away : $t('whois_status_available')}}</span>
                 <span class="kiwi-userbox-whois-line" v-if="user.account">Account name: {{user.account}}</span>
                 <span class="kiwi-userbox-whois-line">Real name: {{user.realname}}</span>
                 <span class="kiwi-userbox-whois-line" v-if="user.bot">Is a bot</span>
