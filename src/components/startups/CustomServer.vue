@@ -215,7 +215,7 @@ export default {
                     server: m[2],
                     port: parseInt(m[4] || (tls ? 6697 : 6667), 10),
                     channels: channels,
-                    nick: (params.nick || 'kiwi_?'),
+                    nick: params.nick || '',
                     encoding: (params.encoding || 'utf8'),
                 });
             });
