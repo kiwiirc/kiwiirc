@@ -12,6 +12,7 @@
                             <select v-model="theme">
                                 <option v-for="t in settings.themes" :value="t.name">{{t.name}}</option>
                             </select>
+                            <a @click="refreshTheme" title="Refresh Theme" class="kiwi-appsettings-theme-reload"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         </label>
                         <label>
                             <span>Show autocomplete list: </span>
@@ -114,6 +115,9 @@ export default {
         closeSettings: function closeSettings() {
             state.$emit('active.component');
         },
+        refreshTheme: function refreshTheme() {
+            ThemeManager.instance().reload();
+        },
     },
 };
 </script>
@@ -137,5 +141,9 @@ export default {
 }
 .kiwi-appsettings-aliases > div {
     margin-left: 30px;
+}
+.kiwi-appsettings-theme-reload {
+    margin-left: 1em;
+    cursor: pointer;
 }
 </style>
