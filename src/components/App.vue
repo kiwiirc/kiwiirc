@@ -106,6 +106,11 @@ export default {
         state.$on('userbox.hide', () => {
             this.userboxOpen = false;
         });
+
+        this.themeUrl = themes.currentTheme().url;
+        state.$on('theme.change', () => {
+            this.themeUrl = themes.currentTheme().url;
+        });
         document.addEventListener('keydown', event => this.emitDocumentKeyDown(event), false);
     },
     mounted: function mounted() {
@@ -147,6 +152,7 @@ export default {
             userboxPos: {},
             userboxUser: null,
             userboxBuffer: null,
+            themeUrl: '',
         };
     },
     computed: {
@@ -171,12 +177,6 @@ export default {
             return this.buffer ?
                 this.buffer.getMessages() :
                 [];
-        },
-        themeUrl() {
-            let theme = themes.currentTheme();
-            return theme ?
-                theme.url :
-                '';
         },
     },
     methods: {

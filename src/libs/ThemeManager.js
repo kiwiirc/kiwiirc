@@ -41,6 +41,7 @@ export default class ThemeManager {
         }
 
         this.state.user_settings.theme = themeName;
+        this.state.$emit('theme.change');
     }
 
     reload() {
