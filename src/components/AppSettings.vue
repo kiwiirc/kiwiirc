@@ -14,6 +14,10 @@
                             </select>
                             <a @click="refreshTheme" title="Refresh Theme" class="kiwi-appsettings-theme-reload"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         </label>
+                        <label v-if="theme==='custom'">
+                            <span>Theme URL: </span>
+                            <input v-model="customThemeUrl" class="u-input">
+                       </label>
                         <label>
                             <span>Show autocomplete list: </span>
                             <input type="checkbox" v-model="settingShowAutoComplete" />
@@ -72,7 +76,9 @@ function bindSetting(settingName) {
 export default {
     data: function data() {
         return {
-            state,
+            state: state,
+            theme: '',
+            customThemeUrl: '',
         };
     },
     computed: {
@@ -96,18 +102,9 @@ export default {
         bufferSettings: function bufferSettings() {
             return state.settings.buffers;
         },
-        theme: {
-            get: function getTheme() {
-                return ThemeManager.instance().currentTheme().name;
-            },
-            set: function setTheme(newVal) {
-                ThemeManager.instance().setTheme(newVal);
-            },
-        },
         settingShowAutoComplete: bindSetting('showAutocomplete'),
         settingHighlights: bindSetting('highlights'),
     },
-    props: [],
     components: {
         SettingsAliases,
     },
@@ -118,6 +115,53 @@ export default {
         refreshTheme: function refreshTheme() {
             ThemeManager.instance().reload();
         },
+        listenForThemeSettings: function listenForThemeSettings() {
+            let themeMgr = ThemeManager.instance();
+            let watches = [];
+
+            // Called when the current theme changes (including url refreshes)
+            let updateFn = () => {
+                let theme = themeMgr.currentTheme();
+                this.theme = theme.name;
+                this.customThemeUrl = theme.name === 'custom' ?
+                    theme.url :
+                    '';
+            };
+
+            let watchTheme = (newVal) => {
+                themeMgr.setTheme(newVal);
+            };
+
+            let watchCustomThemeUrl = (newVal) => {
+                if (themeMgr.currentTheme().name === 'custom') {
+                    themeMgr.setCustomThemeUrl(newVal);
+                }
+            };
+
+            // Remove all our attached events to cleanup
+            let teardownFn = () => {
+                this.state.$off('theme.change', updateFn);
+                watches.forEach(unwatchFn => unwatchFn());
+                this.$off('hook:destroy', teardownFn);
+            };
+
+            this.state.$on('theme.change', updateFn);
+            this.$once('hook:destroyed', teardownFn);
+
+            // $watch returns a function to stop watching the data field. Add them into
+            // an array to make it easier to iterate over them all and unwatch them all
+            // when needed.
+            watches = [
+                this.$watch('theme', watchTheme),
+                this.$watch('customThemeUrl', watchCustomThemeUrl),
+            ];
+
+            // Update our info with the latest theme settings right away
+            updateFn();
+        },
+    },
+    created: function created() {
+        this.listenForThemeSettings();
     },
 };
 </script>

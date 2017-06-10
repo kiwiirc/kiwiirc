@@ -107,9 +107,9 @@ export default {
             this.userboxOpen = false;
         });
 
-        this.themeUrl = themes.currentTheme().url;
+        this.themeUrl = themes.themeUrl(themes.currentTheme());
         state.$on('theme.change', () => {
-            this.themeUrl = themes.currentTheme().url;
+            this.themeUrl = themes.themeUrl(themes.currentTheme());
         });
         document.addEventListener('keydown', event => this.emitDocumentKeyDown(event), false);
     },
