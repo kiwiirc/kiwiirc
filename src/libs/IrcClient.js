@@ -488,7 +488,7 @@ function clientMiddleware(state, networkid) {
                         nick: event.nick,
                         username: event.ident,
                         host: event.hostname,
-                        text: `set ${mode.mode} ${mode.param}`,
+                        text: `set ${mode.mode} ${mode.param || ''}`,
                     });
                     state.addMessage(buffer, {
                         time: event.time || Date.now(),
