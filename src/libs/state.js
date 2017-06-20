@@ -216,6 +216,7 @@ const state = new Vue({
                     },
                     settings: _.cloneDeep(network.settings),
                     nick: network.nick,
+                    username: network.username,
                     password: network.password,
                     buffers: [],
                 };
@@ -251,6 +252,7 @@ const state = new Vue({
                     network.connection = importNetwork.connection;
                     network.settings = importNetwork.settings;
                     network.nick = importNetwork.nick;
+                    network.username = importNetwork.username;
                     network.password = importNetwork.password;
 
                     this.networks.push(network);
@@ -692,6 +694,7 @@ function createEmptyNetworkObject() {
         },
         settings: {},
         nick: '',
+        username: '',
         password: '',
         buffers: [],
         users: {},

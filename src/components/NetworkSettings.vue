@@ -15,10 +15,38 @@
 
         <form class="u-form">
             <div class="kiwi-networksettings-section kiwi-networksettings-connection">
-                <label><span>Server:</span> <input v-model="network.connection.server" /></label><br />
-                <label><span>Port:</span> <input v-model="network.connection.port" /></label><br />
-                <label><span>SSL/TLS:</span> <input v-model="network.connection.tls" type="checkbox" /></label><br />
-                <label><span>Password:</span> <input v-model="network.connection.password" /></label>
+                <input-text :label="$t('connection_server')" v-model="network.connection.server" />
+
+                <input-text label="Port" v-model="network.connection.port" type="number" class="kiwi-networksettings-connection-port">
+                    <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[network.connection.tls ? 'kiwi-customserver-tls--enabled' : '']" @click="toggleTls">
+                        <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
+                        <i v-if="!network.connection.tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
+                    </span>
+                </input-text>
+
+                <div class="kiwi-networksettings-connection-password">
+                    <template v-if="server_type==='network'">
+                        <input-text label="Password" v-model="network.connection.password" type="password" />
+                    </template>
+                    <template v-else>
+                        <input-text label="Username" v-model="znc_username" />
+                        <input-text label="Network" v-model="znc_network" />
+                        <input-text label="Password" v-model="znc_password" type="password" />
+                    </template>
+
+                    <div class="kiwi-networksettings-server-types">
+                        <a
+                            @click="server_type='network'"
+                            class="u-link"
+                            :class="{'kiwi-networksettings-server-type-active': server_type==='network'}"
+                        >Network</a>
+                        <a
+                            @click="server_type='znc'"
+                            class="u-link"
+                            :class="{'kiwi-networksettings-server-type-active': server_type==='znc'}"
+                        >ZNC</a>
+                    </div>
+                </div>
             </div>
 
             <div class="kiwi-networksettings-section  kiwi-networksettings-user">
@@ -47,6 +75,10 @@ import state from 'src/libs/state';
 export default {
     data: function data() {
         return {
+            server_type: 'network',
+            znc_username: '',
+            znc_network: '',
+            znc_password: '',
         };
     },
     computed: {
@@ -73,10 +105,49 @@ export default {
             }
 
             state.removeNetwork(this.network.id);
+            state.$emit('active.component');
         },
         closeSettings: function closeSettings() {
             state.$emit('active.component');
         },
+        setZncPass: function setZncPass() {
+            let newPass = `${this.znc_username}/${this.znc_network}:${this.znc_password}`;
+            this.network.connection.password = newPass;
+        },
+        toggleTls: function toggleTls() {
+            let connection = this.network.connection;
+            connection.tls = !connection.tls;
+
+            // Switching the port only if were currently using the most common TLS/plain text ports
+            if (connection.tls && connection.port === 6667) {
+                connection.port = 6697;
+            } else if (!connection.tls && connection.port === 6697) {
+                connection.port = 6667;
+            }
+        },
+    },
+    watch: {
+        znc_username: function watchZncUsername() {
+            this.setZncPass();
+        },
+        znc_network: function watchZncNetwork() {
+            this.setZncPass();
+        },
+        znc_password: function watchZncPassword() {
+            this.setZncPass();
+        },
+    },
+    created: function created() {
+        let isZnc = !!(this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
+        this.server_type = isZnc ?
+            'znc' :
+            'network';
+        if (isZnc) {
+            let match = (this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
+            this.znc_username = match[1] || '';
+            this.znc_network = match[2] || '';
+            this.znc_password = match[3] || '';
+        }
     },
 };
 </script>
@@ -90,5 +161,27 @@ export default {
 }
 .kiwi-networksettings-close {
     float: right;
+}
+.kiwi-networksettings form .input-text {
+    margin-bottom: 10px;
+}
+.kiwi-networksettings-connection {
+    max-width: 400px;
+}
+.kiwi-networksettings-connection-port {
+    max-width: 100px;
+}
+.kiwi-networksettings-connection-password {
+    margin-top: 1em;
+}
+.kiwi-networksettings-server-types {
+    margin-top: 1em;
+    text-align: center;
+}
+.kiwi-networksettings-server-types a {
+    margin-right: 1em;
+}
+.kiwi-networksettings-server-type-active {
+    font-weight: bold;
 }
 </style>

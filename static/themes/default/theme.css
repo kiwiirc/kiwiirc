@@ -7,6 +7,16 @@
     -webkit-font-smoothing: antialiased;
 }
 
+.kiwi-workspace:before {
+    background: -webkit-linear-gradient(left, #BDDE6B 0%,#BDDE6B 20%, #7DBD67 20%, #7DBD67 40%,#ECED77 40%,#ECED77 60%,#F6C358 60%,#F6C358 80%,#F66B58 80%) 0 0 no-repeat;
+    position: absolute;
+    content: '';
+    height: 4px;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
     padding: 0.7em 0 0.2em 0;
     margin: 0;

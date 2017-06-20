@@ -14,6 +14,13 @@
             @blur="hasFocus=false"
         />
         <input
+            v-else-if="type==='number'"
+            type="number"
+            v-model="currentValue"
+            @focus="hasFocus=true"
+            @blur="hasFocus=false"
+        />
+        <input
             v-else
             v-model="currentValue"
             @focus="hasFocus=true"

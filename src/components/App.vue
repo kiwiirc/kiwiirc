@@ -8,10 +8,13 @@
     >
         <link v-bind:href="themeUrl" rel="stylesheet" type="text/css">
 
-        <template v-if="hasStarted && networks.length > 0">
+        <template v-if="!hasStarted || (!fallbackComponent && networks.length === 0)">
+            <component v-bind:is="startupComponent" v-on:start="startUp"></component>
+        </template>
+        <template v-else>
             <state-browser :networks="networks"></state-browser>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
-                <template v-if="!activeComponent">
+                <template v-if="!activeComponent && network">
                     <user-box
                         v-if="userboxOpen"
                         :user="userboxUser"
@@ -34,8 +37,8 @@
                     ></media-viewer>
                     <control-input :container="networks" :buffer="buffer"></control-input>
                 </template>
-
-                <component v-bind:is="activeComponent" v-bind="activeComponentProps"></component>
+                <component v-else-if="!activeComponent" v-bind:is="fallbackComponent" v-bind="fallbackComponentProps"></component>
+                <component v-else v-bind:is="activeComponent" v-bind="activeComponentProps"></component>
             </div>
         </template>
         <template v-else>
@@ -52,6 +55,7 @@ import startupWelcome from 'src/components/startups/Welcome';
 import startupWelcomeRizon from 'src/components/startups/WelcomeRizon';
 import startupCustomServer from 'src/components/startups/CustomServer';
 import startupKiwiBnc from 'src/components/startups/KiwiBnc';
+import startupPersonal from 'src/components/startups/Personal';
 import StateBrowser from 'src/components/StateBrowser';
 import Container from 'src/components/Container';
 import ControlInput from 'src/components/ControlInput';
@@ -120,14 +124,13 @@ export default {
             customServer: startupCustomServer,
             kiwiBnc: startupKiwiBnc,
             welcomeRizon: startupWelcomeRizon,
+            personal: startupPersonal,
         };
-        if (!state.settings.startupScreen) {
-            logger('no startup screen');
-            this.hasStarted = true;
-        } else if (!startupScreens[state.settings.startupScreen]) {
+        let startup = state.settings.startupScreen || 'personal';
+        if (!startupScreens[startup]) {
             logger.error(`Startup screen "${state.settings.startupScreen}" does not exist`);
         } else {
-            this.startupComponent = startupScreens[state.settings.startupScreen];
+            this.startupComponent = startupScreens[startup];
         }
     },
     components: {
@@ -146,6 +149,10 @@ export default {
             // If set, will become the main view instead of a buffer/nicklist container
             activeComponent: null,
             activeComponentProps: {},
+            // If set, will become the main view when no networks are available to be shown
+            // and there is no active component set
+            fallbackComponent: null,
+            fallbackComponentProps: {},
             mediaviewerOpen: false,
             mediaviewerUrl: '',
             userboxOpen: false,
@@ -181,8 +188,15 @@ export default {
     },
     methods: {
         // Triggered by a startup screen event
-        startUp: function startUp() {
+        startUp: function startUp(opts) {
             logger('startUp()');
+            if (opts && opts.fallbackComponent) {
+                this.fallbackComponent = opts.fallbackComponent;
+            }
+            if (opts && opts.fallbackComponentProps) {
+                this.fallbackComponentProps = opts.fallbackComponentProps;
+            }
+
             this.hasStarted = true;
             Notifications.requestPermission();
             Notifications.listenForNewMessages(state);
