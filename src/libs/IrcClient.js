@@ -571,20 +571,28 @@ function clientMiddleware(state, networkid) {
         }
 
         if (command === 'irc error') {
-            let buffer = state.getOrAddBufferByName(network.id, event.channel);
+            let buffer;
+            if (event.channel) {
+                buffer = state.getOrAddBufferByName(network.id, event.channel);
+            }
             if (!buffer) {
                 buffer = network.serverBuffer();
             }
 
-            let messageBody = TextFormatting.formatText('general_error', {
-                text: event.reason || event.error,
-            });
-            state.addMessage(buffer, {
-                time: event.time || Date.now(),
-                nick: '',
-                message: messageBody,
-                type: 'error',
-            });
+            // TODO: Some of these errors contain a .error property whcih we can match against,
+            // ie. password_mismatch.
+
+            if (event.reason) {
+                let messageBody = TextFormatting.formatText('general_error', {
+                    text: event.reason || event.error,
+                });
+                state.addMessage(buffer, {
+                    time: event.time || Date.now(),
+                    nick: '',
+                    message: messageBody,
+                    type: 'error',
+                });
+            }
         }
 
         next();
