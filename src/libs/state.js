@@ -12,7 +12,7 @@ const stateObj = {
         windowTitle: 'Kiwi IRC - The web IRC client',
         theme: 'Default',
         themes: [
-            { name: 'Default', url: 'static/themes/default.css' },
+            { name: 'Default', url: 'static/themes/default' },
         ],
         // Restricted to a single IRC server
         restricted: true,
