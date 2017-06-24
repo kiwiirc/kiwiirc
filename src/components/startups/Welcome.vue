@@ -57,7 +57,7 @@ export default {
             // Nicks cannot start with [0-9- ]
             // ? is not a valid nick character but we allow it as it gets replaced
             // with a number.
-            if (!this.nick.match(/^[a-z_\\[\]{}^`|][?a-z0-9_\-\\[\]{}^`|]*$/i)) {
+            if (!this.nick.match(/^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i)) {
                 ready = false;
             }
 
@@ -73,12 +73,7 @@ export default {
         startUp: function startUp() {
             let options = state.settings.startupOptions;
 
-            // Replace ? with a random number
-            let randomNickReplacement = Math.floor(Math.random() * 100).toString();
-            let nick = (this.nick || '').replace(/\?/g, randomNickReplacement);
-            nick = _.trim(nick);
-
-            let net = this.network = state.addNetwork('Network', nick, {
+            let net = this.network = state.addNetwork('Network', this.nick, {
                 server: _.trim(options.server),
                 port: options.port,
                 tls: options.tls,
@@ -118,11 +113,16 @@ export default {
             net.ircClient.once('registered', onRegistered);
             net.ircClient.once('close', onClosed);
         },
+        processNickRandomNumber: function processNickRandomNumber(nick) {
+            // Replace ? with a random number
+            let tmp = (nick || '').replace(/\?/g, () => Math.floor(Math.random() * 100).toString());
+            return _.trim(tmp);
+        },
     },
     created: function created() {
         let options = state.settings.startupOptions;
 
-        this.nick = options.nick || '';
+        this.nick = this.processNickRandomNumber(options.nick || '');
         this.channel = options.channel || '';
         this.showChannel = typeof options.showChannel === 'boolean' ?
             options.showChannel :

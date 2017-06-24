@@ -99,9 +99,7 @@ export default {
                 return;
             }
 
-            // Replace ? with a random number
-            let randomNickReplacement = Math.floor(Math.random() * 100).toString();
-            let nick = (this.nick || '').replace(/\?/g, randomNickReplacement);
+            let nick = this.nick;
 
             if (this.server_type === 'znc') {
                 net = state.addNetwork('ZNC', nick, {
@@ -161,6 +159,11 @@ export default {
                 net.ircClient.once('registered', onRegistered);
                 net.ircClient.once('close', onClosed);
             }
+        },
+        processNickRandomNumber: function processNickRandomNumber(nick) {
+            // Replace ? with a random number
+            let tmp = (nick || '').replace(/\?/g, () => Math.floor(Math.random() * 100).toString());
+            return _.trim(tmp);
         },
         infoClick: function infoClick() {
             if (this.connecting_net) {
@@ -225,7 +228,7 @@ export default {
         applyDefaults: function applyDefaults() {
             this.server = state.settings.startupOptions.server;
             this.tls = state.settings.startupOptions.tls;
-            this.nick = state.settings.startupOptions.nick;
+            this.nick = this.processNickRandomNumber(state.settings.startupOptions.nick);
             this.channel = state.settings.startupOptions.channel;
             this.direct = state.settings.startupOptions.direct;
             this.encoding = state.settings.startupOptions.encoding;
@@ -279,7 +282,7 @@ export default {
                 let con = connections[0];
                 this.server = con.server + ':' + con.port;
                 this.tls = con.tls;
-                this.nick = con.nick;
+                this.nick = this.processNickRandomNumber(con.nick);
                 this.channel = con.channels.join(',');
                 this.direct = con.direct;
                 this.encoding = con.encoding;
