@@ -3,14 +3,16 @@
         <h2>{{greetingText}}</h2>
 
         <template v-if="!network">
-            <input-text v-if="showNick" class="kiwi-welcome-simple-nick" label="Nick" v-model="nick" />
-            <input-text v-if="showPass" class="kiwi-welcome-simple-password" label="Password" v-model="password" type="password" />
-            <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" label="Channel" v-model="channel" />
-            <button
-                class="u-button u-button-primary kiwi-welcome-simple-start"
-                @click="startUp"
-                :disabled="!readyToStart"
-            >{{buttonText}}</button>
+            <form @submit.prevent="formSubmit">
+                <input-text v-if="showNick" class="kiwi-welcome-simple-nick" label="Nick" v-model="nick" />
+                <input-text v-if="showPass" class="kiwi-welcome-simple-password" label="Password" v-model="password" type="password" />
+                <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" label="Channel" v-model="channel" />
+                <button
+                    class="u-button u-button-primary kiwi-welcome-simple-start"
+                    type="submit"
+                    :disabled="!readyToStart"
+                >{{buttonText}}</button>
+            </form>
         </template>
         <template v-else-if="network.state !== 'connected'">
             <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" aria-hidden="true"></i>
@@ -63,6 +65,11 @@ export default {
         },
     },
     methods: {
+        formSubmit: function formSubmit() {
+            if (this.readyToStart) {
+                this.startUp();
+            }
+        },
         startUp: function startUp() {
             let options = state.settings.startupOptions;
 
