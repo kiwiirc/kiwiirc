@@ -175,6 +175,12 @@ inputCommands.join = function inputCommandJoin(event, command, line) {
     // Only switch to the first channel we join if multiple are being joined
     let hasSwitchedActiveBuffer = false;
     bufferObjs.forEach(bufferObj => {
+        // /join 0 parts all channels and is only ever used to troll IRC newbies.
+        // Just disable it entirely.
+        if (bufferObj.name === '0') {
+            return;
+        }
+
         // Prepend a # channel prefix if not specified already
         let chanName = network.isChannelName(bufferObj.name) ?
             bufferObj.name :
