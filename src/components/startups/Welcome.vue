@@ -31,6 +31,7 @@ export default {
             network: null,
             channel: '',
             nick: '',
+            password: '',
             showChannel: true,
             showPass: true,
             showNick: true,
