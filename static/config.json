@@ -5,7 +5,7 @@
 	"restricted": true,
 	"theme": "default",
 	"themes": [
-		{ "name": "Default", "url": "static/themes/default.css" }
+		{ "name": "Default", "url": "static/themes/default" }
 	],
 	"startupOptions" : {
 		"server": "irc.freenode.net",
