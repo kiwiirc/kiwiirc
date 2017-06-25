@@ -93,7 +93,7 @@ export default {
             let list = [];
             let maxSize = this.buffer.setting('scrollback_size');
             let showJoinParts = this.buffer.setting('show_joinparts');
-            for (let i = 0; i < messages.length && list.length < maxSize; i++) {
+            for (let i = messages.length - 1; i >= 0 && list.length < maxSize; i--) {
                 if (!showJoinParts && messages[i].type === 'traffic') {
                     continue;
                 }
@@ -106,20 +106,20 @@ export default {
                 // ugly when rendered. So we switch the topic + join messages around so
                 // that the topic is first in the message list.
                 if (
-                    messages[i].type === 'traffic' &&
-                    messages[i].nick === currentNick &&
-                    messages[i + 1] &&
-                    messages[i + 1].type === 'topic'
+                    messages[i].type === 'topic' &&
+                    messages[i - 1] &&
+                    messages[i - 1].type === 'traffic' &&
+                    messages[i - 1].nick === currentNick
                 ) {
-                    list.push(messages[i + 1]);
+                    list.push(messages[i - 1]);
                     list.push(messages[i]);
-                    i++;
+                    i--;
                 } else {
                     list.push(messages[i]);
                 }
             }
 
-            return list;
+            return list.reverse();
         },
         usersAsObject: function usersAsObject() {
             return this.buffer.users.reduce((prev, cur) => {
