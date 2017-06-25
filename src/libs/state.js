@@ -83,6 +83,7 @@ const stateObj = {
     ui: {
         active_network: 0,
         active_buffer: '',
+        active_timeout: null,
     },
     networks: [
         /* {
@@ -388,6 +389,24 @@ const state = new Vue({
                 if (buffer && buffer.flags.unread) {
                     buffer.flags.unread = 0;
                 }
+
+                // Update the buffers last read time
+                if (this.ui.active_timeout) {
+                    clearTimeout(this.ui.active_timeout);
+                }
+                this.ui.active_timeout = setTimeout(
+                    this.updateBufferLastRead,
+                    10000,
+                    networkid,
+                    bufferName
+                );
+            }
+        },
+
+        updateBufferLastRead: function updateBufferLastRead(networkid, bufferName) {
+            let buffer = this.getBufferByName(networkid, bufferName);
+            if (buffer) {
+                buffer.last_read = Date.now();
             }
         },
 
@@ -508,6 +527,10 @@ const state = new Vue({
                 buffer.networkid === this.ui.active_network &&
                 buffer.name === this.ui.active_buffer
             );
+
+            if (isActiveBuffer) {
+                buffer.last_read = message.time;
+            }
 
             if (includeAsActivity && !isActiveBuffer) {
                 buffer.incrementFlag('unread');
@@ -720,6 +743,7 @@ function createEmptyBufferObject() {
         },
         settings: {
         },
+        last_read: Date.now(),
     };
 }
 
@@ -879,4 +903,3 @@ function initialiseBufferState(buffer) {
         messages: [],
     });
 }
-

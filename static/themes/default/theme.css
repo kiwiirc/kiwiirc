@@ -482,6 +482,16 @@ p {
     background: #e3f1d4;
     border-left-color: #80ab52;
 }
+.kiwi-messagelist-message:not(.kiwi-messagelist-message--unread) + .kiwi-messagelist-message.kiwi-messagelist-message--unread {
+    background: #eeeeff;
+    border-left-color: #000088;
+}
+.kiwi-messagelist-message:not(.kiwi-messagelist-message--unread) + .kiwi-messagelist-message.kiwi-messagelist-message--unread > .kiwi-messagelist-body::after {
+    content: "You were here";
+    font-style: italic;
+    margin-left: 15px;
+    color: #000088;
+}
 .kiwi-messagelist-message > div {
     padding: 2px 4px;
 }
