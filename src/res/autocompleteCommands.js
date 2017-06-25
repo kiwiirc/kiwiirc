@@ -1,0 +1,26 @@
+/* eslint-disable */
+
+export default [
+    { command: 'msg', alias: [], description: 'Send a message' },
+    { command: 'action', alias: [], description: 'Do something physical' },
+    { command: 'join', alias: [], description: 'Join a channel' },
+    { command: 'part', alias: [], description: 'Leave a channel' },
+    { command: 'cycle', alias: [], description: 'Leave, then re-join a channel' },
+    { command: 'nick', alias: [], description: 'Change your nickname' },
+    { command: 'query', alias: [], description: 'Start a private conversation with someone' },
+    { command: 'invite', alias: [], description: 'Invite somebody into the channel' },
+    { command: 'topic', alias: [], description: 'Set the topic for this channel' },
+    { command: 'notice', alias: [], description: 'Send a notice' },
+    { command: 'quote', alias: [], description: 'Send a raw command to the IRC server' },
+    { command: 'kick', alias: [], description: 'Kick somebody from the channel' },
+    { command: 'clear', alias: [], description: 'Clear all messages from this window' },
+    { command: 'ctcp', alias: [], description: 'Send a CTCP command to somebody' },
+    { command: 'quit', alias: [], description: 'Disconnect from the IRC server' },
+    { command: 'server', alias: [], description: 'Connect to a new IRC network' },
+    { command: 'whois', alias: [], description: 'Request information on somebody' },
+    { command: 'whowas', alias: [], description: 'Request information on somebody that disconnected recently' },
+    { command: 'away', alias: [], description: 'Mark yourself as away' },
+    { command: 'encoding', alias: [], description: 'Change your connection encoding' },
+    { command: 'ignore', alias: [], description: 'Ignore messages from somebody' },
+    { command: 'unignore', alias: [], description: 'Stop ignoring somebody' },
+];

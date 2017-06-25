@@ -30,6 +30,8 @@
 </template>
 
 <script>
+
+import autocompleteCommands from 'src/res/autocompleteCommands';
 import state from 'src/libs/state';
 import AutoComplete from './AutoComplete';
 
@@ -71,7 +73,7 @@ export default {
         onAutocompleteCancel: function onAutocompleteCancel() {
             this.autocomplete_open = false;
         },
-        onAutocompleteSelected: function onAutocompleteSelected(selectedValue) {
+        onAutocompleteSelected: function onAutocompleteSelected(selectedValue, selectedItem) {
             let insert = selectedValue;
             let input = this.$el.querySelector('textarea');
             let inputVal = input.value;
@@ -94,7 +96,7 @@ export default {
             }
 
             // If no beginningVal because we're at the start of the input, auto insert punctuation
-            if (!beginningVal) {
+            if (!beginningVal && selectedItem.type !== 'command') {
                 insert += ', ';
             } else {
                 insert += ' ';
@@ -155,7 +157,9 @@ export default {
             let tokens = inputVal.substring(0, input.selectionStart).split(' ');
             let currentToken = tokens[tokens.length - 1];
 
-            if (currentToken === '') {
+            if (event.keyCode === 27 && this.autocomplete_open) {
+                this.autocomplete_open = false;
+            } else if (currentToken === '') {
                 this.autocomplete_open = false;
             } else if (this.autocomplete_open) {
                 // @ is a shortcut to open the nicklist autocomplete. It's not part
@@ -171,8 +175,8 @@ export default {
             } else if (inputVal === '/') {
                 // Just typed / so start the command auto completion
                 // TODO: Get the commands typed up so this can be enabled
-                // this.autocomplete_items = this.buildAutoCompleteItems({ commands: true });
-                // this.autocomplete_open = true;
+                this.autocomplete_items = this.buildAutoCompleteItems({ commands: true });
+                this.autocomplete_open = true;
             } else if (currentToken === '#') {
                 // Just typed # so start the command auto completion
                 this.autocomplete_items = this.buildAutoCompleteItems({ buffers: true });
@@ -249,6 +253,19 @@ export default {
                 });
 
                 list = list.concat(bufferList);
+            }
+
+            if (opts.commands) {
+                let commandList = [];
+                autocompleteCommands.forEach(command => {
+                    commandList.push({
+                        text: '/' + command.command,
+                        description: command.description,
+                        type: 'command',
+                    });
+                });
+
+                list = list.concat(commandList);
             }
 
             return list;

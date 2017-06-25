@@ -93,13 +93,9 @@ export default {
                 return isInRange;
             });
         },
-        selectedValue: function selectedValue() {
+        selectedItem: function selectedItem() {
             let item = this.filteredItems[this.selected_idx];
-            if (!item) {
-                return '';
-            }
-
-            return item.value || item.text;
+            return item || null;
         },
     },
     methods: {
@@ -109,7 +105,7 @@ export default {
             if (event.keyCode === 13) {
                 // If no item is selected (ie. on an empty list), leave the return key
                 // to do its default action as if the autocomplete box isn't active.
-                if (!this.selectedValue) {
+                if (!this.selectedItem) {
                     this.cancel();
                 } else {
                     this.selectCurrentItem();
@@ -148,7 +144,8 @@ export default {
             this.cancel();
         },
         selectCurrentItem: function selectCurrentItem() {
-            this.$emit('selected', this.selectedValue);
+            let item = this.selectedItem;
+            this.$emit('selected', item.value || item.text, item);
         },
         cancel: function cancel() {
             this.$emit('cancel');
