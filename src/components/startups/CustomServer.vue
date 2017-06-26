@@ -125,7 +125,7 @@ export default {
                 let bufferObjs = Misc.extractBuffers(this.channel);
                 bufferObjs.forEach((bufferObj, idx) => {
                     let buffer = state.addBuffer(net.id, bufferObj.name);
-                    buffer.joined = true;
+                    buffer.enabled = true;
 
                     if (bufferObj.key) {
                         buffer.key = bufferObj.key;
@@ -301,7 +301,7 @@ export default {
 
                     con.channels.forEach(channelName => {
                         let buffer = state.addBuffer(net.id, channelName);
-                        buffer.joined = true;
+                        buffer.enabled = true;
                     });
 
                     // Set the first server buffer active

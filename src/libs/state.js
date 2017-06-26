@@ -225,7 +225,7 @@ const state = new Vue({
                     let bufferObj = {
                         name: buffer.name,
                         key: buffer.key,
-                        joined: buffer.joined,
+                        enabled: !!buffer.enabled,
                         settings: _.cloneDeep(buffer.settings),
                     };
 
@@ -263,7 +263,7 @@ const state = new Vue({
                         buffer.name = importBuffer.name;
                         buffer.key = importBuffer.key;
                         buffer.networkid = network.id;
-                        buffer.joined = importBuffer.joined;
+                        buffer.enabled = !!importBuffer.enabled;
                         buffer.settings = importBuffer.settings;
 
                         network.buffers.push(buffer);
@@ -710,6 +710,7 @@ function createEmptyBufferObject() {
         topic: '',
         key: '',
         joined: false,
+        enabled: true,
         users: [],
         modes: Object.create(null),
         flags: {

@@ -87,7 +87,7 @@ export default {
             let bufferObjs = Misc.extractBuffers(this.channel);
             bufferObjs.forEach(bufferObj => {
                 let newBuffer = state.addBuffer(net.id, bufferObj.name);
-                newBuffer.joined = true;
+                newBuffer.enabled = true;
 
                 if (newBuffer && !hasSwitchedActiveBuffer) {
                     state.setActiveBuffer(net.id, newBuffer.name);
