@@ -438,7 +438,8 @@ p {
 
 /* Topic changes */
 .kiwi-messagelist-message-topic {
-    margin: 10px;
+    margin: 18px;
+    padding: 5px;
     text-align: center;
 }
 .kiwi-messagelist-message-topic .kiwi-messagelist-time {
