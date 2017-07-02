@@ -83,6 +83,7 @@ const stateObj = {
     ui: {
         active_network: 0,
         active_buffer: '',
+        app_has_focus: true,
     },
     networks: [
         /* {
@@ -388,6 +389,17 @@ const state = new Vue({
                 if (buffer && buffer.flags.unread) {
                     buffer.flags.unread = 0;
                 }
+
+                // Update the buffers last read time
+                buffer.markAsRead(true);
+            }
+        },
+
+        updateBufferLastRead: function updateBufferLastRead(networkid, bufferName) {
+            let buffer = this.getBufferByName(networkid, bufferName);
+            if (buffer) {
+                buffer.last_read = Date.now();
+                buffer.active_timeout = null;
             }
         },
 
@@ -508,6 +520,10 @@ const state = new Vue({
                 buffer.networkid === this.ui.active_network &&
                 buffer.name === this.ui.active_buffer
             );
+
+            if (isActiveBuffer && state.ui.app_has_focus) {
+                buffer.last_read = message.time;
+            }
 
             if (includeAsActivity && !isActiveBuffer) {
                 buffer.incrementFlag('unread');
@@ -721,6 +737,8 @@ function createEmptyBufferObject() {
         },
         settings: {
         },
+        last_read: Date.now(),
+        active_timeout: null,
     };
 }
 
@@ -855,6 +873,24 @@ function initialiseBufferState(buffer) {
             });
         },
     });
+    Object.defineProperty(buffer, 'markAsRead', {
+        value: function markAsRead(delayed) {
+            if (buffer.active_timeout) {
+                clearTimeout(buffer.active_timeout);
+                buffer.active_timeout = null;
+            }
+            if (delayed) {
+                buffer.active_timeout = setTimeout(
+                    buffer.markAsRead,
+                    10000,
+                    false
+                );
+            } else {
+                buffer.last_read = Date.now();
+            }
+        },
+    });
+
     // incrementFlag batches up the changes to the flags object as some of them can be
     // very taxing on DOM updates
     Object.defineProperty(buffer, 'incrementFlag', {
@@ -880,4 +916,3 @@ function initialiseBufferState(buffer) {
         messages: [],
     });
 }
-

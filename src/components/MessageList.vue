@@ -28,6 +28,9 @@
                 message.nick && message.nick.toLowerCase() === hover_nick.toLowerCase() ?
                     'kiwi-messagelist-message--hover' :
                     '',
+                buffer.last_read && message.time > buffer.last_read ?
+                    'kiwi-messagelist-message--unread' :
+                    '',
             ]"
         >
             <div
