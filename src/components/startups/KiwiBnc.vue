@@ -76,7 +76,7 @@ export default {
                 sessionNetwork.buffers.forEach(sessionBuffer => {
                     let buffer = state.addBuffer(net.id, sessionBuffer.name);
                     if (!!parseInt(sessionBuffer.joined, 10)) {
-                        buffer.joined = true;
+                        buffer.enabled = true;
                     }
                 });
             });

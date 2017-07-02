@@ -6,6 +6,7 @@ export default class StatePersistence {
         this.state = state;
         this.storage = storage;
         this.logger = logger;
+        this.isPersisting = false;
 
         this.state.persistence = this;
     }
@@ -35,6 +36,8 @@ export default class StatePersistence {
 
         this.state.$watch('networks', debouncedSaveState, { deep: true });
         this.state.$watch('user_settings', debouncedSaveState, { deep: true });
+
+        this.isPersisting = true;
     }
 
 

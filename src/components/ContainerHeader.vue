@@ -15,8 +15,8 @@
                 ><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
             </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div class="kiwi-header-topic" v-html="formatMessage(buffer.topic)+'&nbsp;'"></div>
-            <div v-if="buffer.getNetwork().state === 'connected' && !buffer.joined">
+            <div v-if="isJoined" class="kiwi-header-topic" v-html="formatMessage(buffer.topic)+'&nbsp;'"></div>
+            <div v-if="!isJoined" class="kiwi-header-notjoined">
                 <a @click="joinCurrentBuffer" class="u-link">Join Channel</a>
             </div>
         </template>
@@ -86,6 +86,12 @@ export default {
         };
     },
     props: ['buffer'],
+    computed: {
+        isJoined: function isJoined() {
+            let buffer = this.buffer;
+            return buffer.getNetwork().state === 'connected' && buffer.joined;
+        },
+    },
     components: {
         BufferSettings,
         ChannelInfo,
@@ -130,6 +136,7 @@ export default {
         },
         joinCurrentBuffer: function joinCurrentBuffer() {
             let network = this.buffer.getNetwork();
+            this.buffer.enabled = true;
             network.ircClient.join(this.buffer.name);
         },
         closeCurrentBuffer: function closeCurrentBuffer() {

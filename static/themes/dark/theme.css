@@ -2,8 +2,8 @@
 
 .kiwi-wrap {
     font-family: Source Sans Pro, Helvetica, sans-serif;
-    color: #2c3e50;
-    background: #fff;
+    color: #ccc;
+    background: #201F1F;
 }
 
 .kiwi-workspace:before {
@@ -11,20 +11,24 @@
     background: -webkit-linear-gradient(left, #BDDE6B 0%,#BDDE6B 20%, #7DBD67 20%, #7DBD67 40%,#ECED77 40%,#ECED77 60%,#F6C358 60%,#F6C358 80%,#F66B58 80%) 0 0 no-repeat;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: #ffc66d;
+}
+
 .u-link {
     color: #42b983;
 }
 .u-button {
-    color: #2c3e50;
+    color: #ccc;
     border-radius: 4px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     vertical-align: middle;
     text-align: center;
 }
 .u-button-primary {
-    background-color: #0078e7;
-    border: 1px solid #0078e7;
-    color: #f4faff;
+    background-color: #444;
+    border: 1px solid #00695C;
+    color: #ccc;
 }
 .u-button-primary:hover {
     background: #4596e0;
@@ -35,8 +39,8 @@
     background: rgba(117, 117, 117, 0.07);
 }
 .u-button-secondary:hover {
-    color: #0078e7;
-    border-color: #0078e7;
+    color: #00695C;
+    border-color: #00695C;
 }
 .u-button-warning {
     background-color: #ca3c3c;
@@ -49,7 +53,10 @@
 }
 
 .input-text {
-    background: #fff;
+}
+.input-text input {
+    background: #353535;
+    color: #ffffff;
 }
 .input-text-label {
     color: gray;
@@ -66,14 +73,16 @@
 
 .u-form .u-input,
 .u-form textarea {
-    border: 1px solid #cccccc;
-    border-bottom: 2px solid #42b983;
-    background: #ffffff;
+    border: 1px solid #515151;
+    border-bottom: 2px solid #5a5a5a;
+    background: #333;
+    color: #ccc;
     outline-color: #42b983;
 }
 
 .u-tabbed-view-tabs {
-    border-bottom: 1px solid #ddd;
+    background: #333;
+    border-radius: 8px;
 }
 .u-tabbed-view-tab {
     border-color: #42b983;
@@ -123,7 +132,7 @@
  */
 
 .kiwi-statebrowser {
-    background: #383838;
+    background: #2b2b2b;
     /* this also looks cool, background: #05394a; */
     color: rgb(137, 155, 166);
 }
@@ -185,19 +194,19 @@
  */
 
 .kiwi-container {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #222;
 }
 
 .kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-nicklist {
-    background: #f6f6f6;
-    border-bottom: 1px solid #dddddd;
+    background: #353535;
+    border-bottom: 1px solid #222;
 }
 .kiwi-container-toggledraw-statebrowser {
-    border-right: 1px solid #dddddd;
+    border-right: 1px solid #222;
 }
 .kiwi-container-toggledraw-nicklist {
-    border-left: 1px solid #dddddd;
+    border-left: 1px solid #222;
 }
 .kiwi-container-toggledraw-nicklist--disabled {
     color: #b8babd;
@@ -210,11 +219,12 @@
  */
 
 .kiwi-nicklist {
-    background-color: #f6f6f6;
-    border-left: 1px solid #dddddd;
+    background-color: #353535;
+    border-left: 1px solid #222;
 }
 .kiwi-nicklist-info {
-    border: 1px solid #ddd;
+    border: 1px solid #484747;
+    border-width: 1px 0 1px 0;
 }
 
 
@@ -224,15 +234,15 @@
  */
 
 .kiwi-header {
-    background-color: #f6f6f6;
-    border-bottom: 1px solid #dddddd;
+    background-color: #353535;
+    border-bottom: 1px solid #222;
 }
 .kiwi-header-topic {
-    color: #5f5f5f;
+    color: #ccc;
 }
 
 .kiwi-header-buffersettings {
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #222;
 }
 
 
@@ -243,17 +253,21 @@
  */
 
 .kiwi-controlinput {
-    background: #eeeeee;
+    background: #353535;
 }
 .kiwi-controlinput-inner {
-    border: 1px solid #cccccc;
-    background: #ffffff;
+    border: 1px solid #222;
+    background: #222;
 }
 .kiwi-controlinput-user {
-    background: #f6f6f6;
+    background: #353535;
 }
 .kiwi-controlinput-input-wrap {
-    background: #fff;
+    background: #222;
+}
+.kiwi-controlinput-input {
+    background: #222;
+    color: #ccc;
 }
 
 
@@ -263,15 +277,14 @@
  */
 
 .kiwi-autocomplete {
-    box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
-    border: 1px solid #CCC;
-    background: #eee;
+    border: 1px solid #222;
+    background: #353535;
 }
 .kiwi-autocomplete-item {
-    border-bottom: 1px solid #CCC;
+    border-bottom: 1px solid #222;
 }
 .kiwi-autocomplete-item--selected {
-    background: #D1EACD;
+    background: #000;
 }
 
 
@@ -281,7 +294,7 @@
  */
 
 .kiwi-messagelist-message {
-    border-top: 1px solid #f7f5f5;
+    border-top: 1px solid #383838;
     /* some message highlights add a left border so add a default invisble one to keep them inline */
     border-left: 3px solid transparent;
 }
@@ -289,24 +302,15 @@
     border-left-color: #939393;
 }
 .kiwi-messagelist-message--highlight {
-    background: #e3f1d4;
-    border-left-color: #80ab52;
+    background: #354028;
+    border-left-color: #658841;
 }
 .kiwi-messagelist-message--hover {
-    background: #e3f1d4;
-    border-left-color: #80ab52;
+    background: #354028;
+    border-left-color: #658841;
 }
-.kiwi-messagelist-message:not(.kiwi-messagelist-message--unread) + .kiwi-messagelist-message.kiwi-messagelist-message--unread {
-    background: #eeeeff;
-    border-left-color: #000088;
-}
-.kiwi-messagelist-message:not(.kiwi-messagelist-message--unread) + .kiwi-messagelist-message.kiwi-messagelist-message--unread > .kiwi-messagelist-body::after {
-    content: "You were here";
-    font-style: italic;
-    margin-left: 15px;
-    color: #000088;
-}
-.kiwi-messagelist-message > div {
+.kiwi-messagelist-message a {
+    color: #5379b7;
 }
 
 .kiwi-messagelist-time {
@@ -329,22 +333,21 @@
 
 /* Topic changes */
 .kiwi-messagelist-message-topic {
-    background: #FFF5AB;
-    border: 1px solid #F3C572;
-    border-radius: 5px;
+    background: #000;
+    border-bottom: 3px solid #505050;
+    border-width: 0 0 3px 0;
 }
 
 .kiwi-messagelist-message-traffic-join {
     color: #009900;
 }
 .kiwi-messagelist-message-traffic-join .kiwi-nick:before {
-    color: #009900;
     content: "→ ";
 }
 .kiwi-messagelist-message-traffic-quit,
 .kiwi-messagelist-message-traffic-part,
 .kiwi-messagelist-message-traffic-kick {
-    color: #900;
+    color: #bd4d4d;
 }
 .kiwi-messagelist-message-traffic-quit .kiwi-nick:before,
 .kiwi-messagelist-message-traffic-part .kiwi-nick:before, {
@@ -362,8 +365,8 @@
 
 /* Errors */
 .kiwi-messagelist-message-error {
-    background: #f1d4d4;
-    border-left-color: #ab5252;
+    background: #613c3c;
+    border-left-color: #650505;
 }
 
 
@@ -400,8 +403,8 @@
  */
 
 .kiwi-userbox {
-    border: 1px solid #dddddd;
-    background: #f6f6f6;
+    border: 1px solid #222;
+    background: #353535;
     transition: 0.2s top;
 }
 @media screen and (max-width: 500px) {

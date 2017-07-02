@@ -13,10 +13,7 @@
 <script>
 
 import NetworkSettings from 'src/components/NetworkSettings';
-import * as Storage from 'src/libs/storage/Local';
 import state from 'src/libs/state';
-import StatePersistence from 'src/libs/StatePersistence';
-import logger from 'src/libs/Logger';
 
 let firstRun = true;
 
@@ -42,13 +39,7 @@ export default {
             state.$emit('statebrowser.show');
         },
         async init() {
-            let stateKey = state.settings.startupOptions.state_key;
-            if (stateKey) {
-                let persist = new StatePersistence(stateKey, state, Storage, logger);
-                await persist.loadStateIfExists();
-                persist.watchStateForChanges();
-            }
-
+            state.persistence.watchStateForChanges();
             this.$emit('start', {
                 fallbackComponent: this.constructor,
             });

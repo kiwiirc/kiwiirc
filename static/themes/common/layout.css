@@ -1,0 +1,699 @@
+/* Layout styles. No colouring */
+.kiwi-wrap {
+    font-size: 14px;
+    line-height: 1.6em;
+    -webkit-font-smoothing: antialiased;
+}
+
+.kiwi-workspace:before {
+    position: absolute;
+    content: '';
+    height: 4px;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    padding: 0.7em 0 0.2em 0;
+    margin: 0;
+}
+p {
+    margin: 0.5em 0 1em 0;
+}
+.u-link {
+    text-decoration: none;
+    cursor: pointer;
+}
+.u-button {
+    display: inline-block;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: .4em 0.9em;
+    font-size: 1em;
+}
+.u-button-primary {
+}
+.u-button-primary:hover {
+}
+.u-button-secondary {
+}
+.u-button-secondary:hover {
+}
+.u-button-warning {
+}
+.u-button-warning:hover {
+}
+
+.u-form {
+    text-align: left;
+}
+.u-form label {
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.u-form label span {
+    display: inline-block;
+    width: 100px;
+    margin-right: 1em;
+    text-align: right;
+}
+.u-form .u-input,
+.u-form textarea {
+    font-size: 0.9em;
+    padding: 3px 5px;
+}
+.u-form .u-submit {
+    margin: 2em auto;
+    display: block;
+}
+
+.u-tabbed-view-tabs {
+}
+.u-tabbed-view-tab {
+    padding: 1em 2em;
+    display: inline-block;
+    cursor: pointer;
+    border-width: 0;
+    border-style: solid;
+}
+.u-tabbed-view-tab:hover {
+    border-bottom-width: 3px;
+}
+.u-tabbed-view-tab--active {
+    border-bottom-width: 3px;
+}
+.u-tabbed-content {
+    margin-top: 10px;
+}
+
+.irc-fg-colour-white { }
+.irc-fg-colour-black { }
+.irc-fg-colour-blue { }
+.irc-fg-colour-green { }
+.irc-fg-colour-light-red { }
+.irc-fg-colour-brown { }
+.irc-fg-colour-purple { }
+.irc-fg-colour-orange { }
+.irc-fg-colour-yellow { }
+.irc-fg-colour-light-green { }
+.irc-fg-colour-cyan { }
+.irc-fg-colour-light-cyan { }
+.irc-fg-colour-light-blue { }
+.irc-fg-colour-pink { }
+.irc-fg-colour-grey { }
+.irc-fg-colour-light-grey { }
+
+.irc-bg-colour-white { }
+.irc-bg-colour-black { }
+.irc-bg-colour-blue { }
+.irc-bg-colour-green { }
+.irc-bg-colour-light-red { }
+.irc-bg-colour-brown { }
+.irc-bg-colour-purple { }
+.irc-bg-colour-orange { }
+.irc-bg-colour-yellow { }
+.irc-bg-colour-light-green { }
+.irc-bg-colour-cyan { }
+.irc-bg-colour-light-cyan { }
+.irc-bg-colour-light-blue { }
+.irc-bg-colour-pink { }
+.irc-bg-colour-grey { }
+.irc-bg-colour-light-grey { }
+
+
+
+
+/**
+ * State browser
+ */
+
+.kiwi-statebrowser {
+    border-right: 5px solid rgba(255,255,255,0.3);
+}
+
+.kiwi-statebrowser-usermenu {
+    text-align: center;
+    padding: 7px 0;
+    font-size: 1.1em;
+}
+.kiwi-statebrowser-usermenu-body {
+    font-size: 0.9em;
+    margin: 5px;
+}
+
+.kiwi-statebrowser-switcher a {
+    padding: 5px 0;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.kiwi-statebrowser-switcher a:first-of-type {
+    background: rgba(255,255,255,0.15);
+}
+.kiwi-statebrowser-switcher a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.kiwi-statebrowser-network {
+    margin-bottom: 2em;
+    overflow: hidden;
+}
+
+.kiwi-statebrowser-network-name {
+    /*font-weight: bold;*/
+    font-size: 1.1em;
+    text-align: center;
+    display: block;
+    background: rgba(255,255,255,0.15);
+    padding: 4px 0;
+}
+.kiwi-statebrowser-network-status {
+    background: rgba(255,255,255,0.1);
+    text-align: center;
+    padding: 4px;
+    overflow: hidden;
+    position: relative;
+    height: 1.5em;
+    font-size: 0.9em;
+}
+/* During DOM entering and leaving */
+.kiwi-statebrowser-network-status-transition-enter-active,
+.kiwi-statebrowser-network-status-transition-leave-active {
+    transition: height .7s, padding .7s;
+}
+/*  */
+.kiwi-statebrowser-network-status-transition-enter,
+.kiwi-statebrowser-network-status-transition-leave-active {
+    height: 0;
+    padding: 0;
+}
+
+.kiwi-statebrowser-channels {
+    margin: 0px 10px;
+}
+.kiwi-statebrowser-channel {
+    margin-top: 5px;
+}
+
+.kiwi-statebrowser-channel-name {
+    flex: 1;
+    transition: padding 0.1s, border 0.1s;
+}
+
+.kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
+}
+.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
+}
+
+.kiwi-statebrowser-channel-label {
+    padding: 3px 5px;
+    font-size: 0.7em;
+    border-radius: 5px;
+    line-height: 1.3em;
+    font-weight: bold;
+}
+
+.kiwi-statebrowser-channel-label-transition-enter-active, .kiwi-statebrowser-channel-label-transition-leave-active {
+    transition: opacity 0.1s;
+}
+.kiwi-statebrowser-channel-label-transition-enter, .kiwi-statebrowser-channel-label-transition-leave-active {
+    opacity: 0;
+}
+
+.kiwi-statebrowser-channel-settings {
+    height: 100%;
+    width: 20px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.kiwi-statebrowser-channel-popup {
+}
+
+.kiwi-statebrowser-newchannel {
+    margin: 1em 0.5em;
+}
+.kiwi-statebrowser-newchannel-inputwrap {
+    padding: 3px;
+}
+.kiwi-statebrowser-newchannel-inputwrap--focus {
+}
+.kiwi-statebrowser-newchannel-inputwrap input {
+    outline: none;
+    border: none;
+    display: block;
+    /* left: 0; */
+    /* right: 10px; */
+    width: calc(100% - 20px);
+    margin-right: 30px;
+}
+.kiwi-statebrowser-newchannel-inputwrap i {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.kiwi-statebrowser-options {
+    /* some space on the right so it doesnt overlap the parent elements scrollbar */
+    margin-right: 10px;
+}
+
+
+
+
+/**
+ * Container (Nicklist / header / control input wrapper)
+ */
+
+.kiwi-container {
+}
+
+.kiwi-container-toggledraw-statebrowser,
+.kiwi-container-toggledraw-nicklist {
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.6em;
+    line-height: 50px;
+}
+.kiwi-container-toggledraw-statebrowser {
+}
+.kiwi-container-toggledraw-nicklist {
+}
+.kiwi-container-toggledraw-nicklist--disabled {
+    cursor: default;
+}
+
+
+
+/**
+ * Nicklist
+ */
+
+.kiwi-nicklist {
+    transition: right 0.5s;
+}
+.kiwi-nicklist-info {
+    font-size: 0.9em;
+    margin: 10px 0;
+    padding: 10px 0;
+    text-align: center;
+    border-width: 1px 0;
+}
+.kiwi-nicklist-users {
+    padding: 0 20px;
+    line-height: 1.2em;
+}
+.kiwi-nicklist-user {
+    padding: 3px 0;
+}
+.kiwi-nicklist-user-nick {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+/**
+ * Buffer header (channel name + topic)
+ */
+
+.kiwi-header {
+    padding: 5px;
+}
+.kiwi-header:hover {
+    height: auto;
+}
+.kiwi-header-name {
+    font-weight: bold;
+}
+.kiwi-header-topic {
+    font-size: 0.9em;
+    text-overflow: ellipsis;
+}
+
+.kiwi-header-buffersettings {
+    padding: 5px;
+    margin-top: 1em;
+}
+
+
+
+
+/**
+ * Control input
+ */
+
+.kiwi-controlinput {
+    padding: 4px;
+}
+.kiwi-controlinput-inner {
+    padding: 3px;
+}
+.kiwi-controlinput-user {
+    padding: 0 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+.kiwi-controlinput-input-wrap {
+    padding: 3px;
+}
+.kiwi-controlinput-input {
+    border: none;
+    outline: none;
+}
+
+
+
+/**
+ * Control input (the bottom bar)
+ */
+
+.kiwi-autocomplete {
+}
+.kiwi-autocomplete-item {
+    padding: 5px 2em;
+}
+.kiwi-autocomplete-item--selected {
+}
+.kiwi-autocomplete-item-value {
+    font-weight: bold;
+}
+.kiwi-autocomplete-item-action {
+    float: right;
+    font-size: 0.9em;
+}
+
+
+
+/**
+ * Message list
+ */
+
+.kiwi-messagelist-message {
+    line-height: 1.5em;
+    margin: 0 3px;
+}
+.kiwi-messagelist-message-whois {
+}
+.kiwi-messagelist-message--highlight {
+}
+.kiwi-messagelist-message--hover {
+}
+.kiwi-messagelist-message > div {
+    padding: 2px 4px;
+}
+
+.kiwi-messagelist-time {
+    font-size: 0.8em;
+}
+
+.kiwi-messagelist-nick {
+    text-align: right;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: top;
+    cursor: pointer;
+}
+.kiwi-messagelist-nick:hover {
+    overflow: visible;
+}
+
+.kiwi-messagelist-body {
+    line-height: 1.5em;
+}
+
+.kiwi-messagelist-message-repeat {
+}
+.kiwi-messagelist-message-repeat .kiwi-messagelist-nick,
+.kiwi-messagelist-message-repeat .kiwi-messagelist-time {
+}
+
+.kiwi-messagelist-body .kiwi-nick {
+    cursor: pointer;
+}
+
+/* Topic changes */
+.kiwi-messagelist-message-topic {
+    margin: 18px;
+    padding: 5px;
+    text-align: center;
+}
+.kiwi-messagelist-message-topic .kiwi-messagelist-time {
+    display: none;
+}
+.kiwi-messagelist-message-topic .kiwi-messagelist-nick {
+    display: none;
+}
+.kiwi-messagelist-message-topic .kiwi-messagelist-body {
+    margin-left: 0;
+}
+
+/* Actions */
+.kiwi-messagelist-message-action .kiwi-messagelist-message-body {
+    font-style: italic;
+}
+
+/* Traffic (joins, parts, quits, kicks) */
+.kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
+    display: none;
+}
+.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
+    font-style: italic;
+}
+.kiwi-messagelist-message-traffic-join {
+}
+.kiwi-messagelist-message-traffic-join .kiwi-nick:before {
+}
+.kiwi-messagelist-message-traffic-quit,
+.kiwi-messagelist-message-traffic-part,
+.kiwi-messagelist-message-traffic-kick {
+}
+.kiwi-messagelist-message-traffic-quit .kiwi-nick:before,
+.kiwi-messagelist-message-traffic-part .kiwi-nick:before, {
+}
+.kiwi-messagelist-message-action .kiwi-messagelist-body {
+    font-style: italic;
+}
+.kiwi-messagelist-message-action .kiwi-messagelist-nick {
+    display: none;
+}
+
+/* MOTD */
+.kiwi-messagelist-message-motd {
+    font-family: monospace;
+}
+
+/* Links */
+.kiwi-messagelist-message-linkhandle {
+}
+
+/* Errors */
+.kiwi-messagelist-message-error {
+}
+
+
+
+/**
+ * Not connected sign
+ */
+.kiwi-notconnected {
+    margin: 3em 0;
+}
+.kiwi-notconnected-bigicon {
+    text-align: center;
+}
+.kiwi-notconnected-bigicon > i {
+    font-size: 4em;
+    cursor: pointer;
+}
+.kiwi-notconnected-caption {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 1em;
+    cursor: pointer;
+}
+.kiwi-notconnected-networksettings {
+    display: block;
+    font-size: 0.9em;
+    margin-top: 1em;
+}
+
+
+
+/**
+ * Network settings
+ */
+
+.kiwi-networksettings {
+    padding: 1em;
+}
+.kiwi-networksettings-section {
+    margin: 20px 10px 40px 10px;
+}
+.kiwi-networksettings-danger h3 {
+    padding: 5px 10px;
+}
+
+
+
+/**
+ * Alias settings
+ */
+.kiwi-settings-aliases-input {
+    width: 80%;
+    height: 200px;
+    font-size: 0.8em;
+    line-height: 1.4em;
+    font-family: monospace;
+}
+.kiwi-settings-aliases-showhelp {
+    display: block;
+}
+.kiwi-settings-aliases-help {
+    padding: 1em;
+    margin: 1em 0;
+}
+.kiwi-settings-aliases-help em {
+    padding: 1px 2px;
+}
+
+
+
+/**
+ * User box
+ */
+
+.kiwi-userbox {
+    border-right-width: 0;
+    padding: 10px;
+    max-width: 50%;
+}
+@media screen and (max-width: 500px) {
+    .kiwi-userbox {
+        left: 0;
+        right: 0;
+        bottom: 40px;
+        top: auto !important;
+        max-width: 100%;
+        border-width: 1px 0;
+    }
+}
+.kiwi-userbox-icon {
+    font-size: 2.8em;
+    margin-right: 0.3em;
+    position: absolute;
+}
+.kiwi-userbox-header h3 {
+    margin: 0 0 0 40px;
+    padding: 0;
+}
+.kiwi-userbox-usermask {
+    display: block;
+    margin: 0 0 0 40px;
+    font-size: 0.9em;
+}
+.kiwi-userbox-actions a {
+    margin-right: 1em;
+}
+.kiwi-userbox-whois {
+    padding: 5px;
+    line-height: 1.4em;
+}
+.kiwi-userbox-whois-line {
+    display: block;
+}
+.kiwi-userbox-actions-op {
+    margin: 0.7em 0 0 0;
+    padding: 0.7em 0;
+}
+.kiwi-userbox-actions-op form label {
+    display: block;
+    margin-bottom: 0.7em;
+}
+
+
+
+/**
+ * Media viewer
+ */
+
+.kiwi-mediaviewer-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+.kiwi-mediaviewer-controls-close {
+    padding: 3px 15px;
+}
+
+
+
+/**
+ * Welcome startup screen
+ */
+.kiwi-welcome-simple {
+    text-align: center;
+    margin-top: 1em;
+    width: 300px;
+    margin: 0 auto;
+}
+.kiwi-welcome-simple-nick,
+.kiwi-welcome-simple-channel,
+.kiwi-welcome-simple-start {
+    margin-top: 2em;
+}
+.kiwi-welcome-simple-start {
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.kiwi-welcome-simple-start[disabled] {
+    cursor: not-allowed;
+}
+
+
+
+/**
+ * Custom server startup screen
+ */
+.kiwi-customserver {
+    text-align: center;
+    padding-top: 1em;
+}
+.kiwi-customserver-start {
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.kiwi-customserver .input-text {
+    margin-bottom: 1em;
+}
+.kiwi-customserver-tls {
+    color: #bfbfbf;
+}
+.kiwi-customserver-tls--enabled {
+    color: green;
+}
+
+.kiwi-customserver-channel {
+    margin-top: 1em;
+}
+.kiwi-customserver-server-types {
+    font-size: 0.9em;
+    text-align: center;
+}
+.kiwi-customserver-server-types a {
+    margin: 0 1em;
+}
+
+
+
+/**
+ * Misc styles
+ */
+
+.kiwi-nick {
+}

@@ -145,6 +145,10 @@ export default {
                 this.$off('hook:destroy', teardownFn);
             };
 
+            // Update our info with the latest theme settings before we start
+            // listening for changes
+            updateFn();
+
             this.state.$on('theme.change', updateFn);
             this.$once('hook:destroyed', teardownFn);
 
@@ -155,9 +159,6 @@ export default {
                 this.$watch('theme', watchTheme),
                 this.$watch('customThemeUrl', watchCustomThemeUrl),
             ];
-
-            // Update our info with the latest theme settings right away
-            updateFn();
         },
     },
     created: function created() {

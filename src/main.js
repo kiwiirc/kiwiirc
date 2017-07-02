@@ -9,6 +9,8 @@ import StartupError from 'src/components/StartupError';
 import Logger from 'src/libs/Logger';
 import ConfigLoader from 'src/libs/ConfigLoader';
 import state from 'src/libs/state';
+import StatePersistence from 'src/libs/StatePersistence';
+import * as Storage from 'src/libs/storage/Local';
 
 // Global utilities
 import 'src/components/utils/TabbedView';
@@ -67,6 +69,7 @@ if (getQueryVariable('config')) {
 let configLoader = new ConfigLoader();
 (configObj ? configLoader.loadFromObj(configObj) : configLoader.loadFromUrl(configFile))
     .then(applyConfig)
+    .then(initState)
     .then(initLocales)
 	.then(startApp)
 	.catch(showError);
@@ -125,6 +128,15 @@ function initLocales() {
             withCredentials: false,
         },
     });
+}
+
+
+async function initState() {
+    let stateKey = state.settings.startupOptions.state_key;
+    if (stateKey) {
+        let persist = new StatePersistence(stateKey, state, Storage, Logger);
+        await persist.loadStateIfExists();
+    }
 }
 
 
