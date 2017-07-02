@@ -52,6 +52,24 @@ h1, h2, h3, h4, h5, h6 {
     border-color: #c37171;
 }
 
+.input-text {
+}
+.input-text input {
+    background: #353535;
+    color: #ffffff;
+}
+.input-text-label {
+    color: gray;
+}
+.input-text--focus {
+    border-color: #42b983;
+}
+.input-text-underline {
+    border-color: #a9a9a9;
+}
+.input-text-underline-active {
+    background: #42b983;
+}
 
 .u-form .u-input,
 .u-form textarea {

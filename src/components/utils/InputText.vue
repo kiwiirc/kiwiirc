@@ -73,7 +73,6 @@ export default Vue.component('input-text', {
 .input-text {
     position: relative;
     padding-top: 1.2em;
-    background: #fff;
     font-size: 1em;
 }
 .input-text input {
@@ -91,11 +90,9 @@ export default Vue.component('input-text', {
     left: 3px;
     top: 1.2em;
     transition: top 0.2s, font-size 0.2s;
-    color: gray;
     pointer-events: none;
 }
 .input-text--focus {
-    border-color: #42b983;
 }
 .input-text--reveal-value .input-text-label {
     top: 0;
@@ -107,7 +104,7 @@ export default Vue.component('input-text', {
     bottom: 0;
 }
 .input-text-underline {
-    /*background: gray;*/
+    border-width: 0;
     border-bottom: 1px solid #a9a9a9;
     position: relative;
 }
