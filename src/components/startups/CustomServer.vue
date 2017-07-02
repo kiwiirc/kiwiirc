@@ -66,10 +66,7 @@
 <script>
 
 import _ from 'lodash';
-import * as Storage from 'src/libs/storage/Local';
 import state from 'src/libs/state';
-import StatePersistence from 'src/libs/StatePersistence';
-import logger from 'src/libs/Logger';
 import * as Misc from 'src/helpers/Misc';
 
 export default {
@@ -242,13 +239,6 @@ export default {
         },
     },
     created: async function created() {
-        let stateKey = state.settings.startupOptions.state_key;
-        let persist = null;
-        if (stateKey) {
-            persist = new StatePersistence(stateKey, state, Storage, logger);
-            await persist.loadStateIfExists();
-        }
-
         let saveThisSessionsState = false;
 
         // If we have networks from a previous state, launch directly into it
@@ -317,8 +307,8 @@ export default {
             this.applyDefaults();
         }
 
-        if (persist && saveThisSessionsState) {
-            persist.watchStateForChanges();
+        if (saveThisSessionsState) {
+            state.persistence.watchStateForChanges();
         }
     },
 };

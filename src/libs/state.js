@@ -270,10 +270,10 @@ const state = new Vue({
                         initialiseBufferState(buffer);
                     });
                 });
+            }
 
-                if (importObj.user_settings) {
-                    this.user_settings = importObj.user_settings;
-                }
+            if (importObj && importObj.user_settings) {
+                this.user_settings = importObj.user_settings;
             }
         },
 
