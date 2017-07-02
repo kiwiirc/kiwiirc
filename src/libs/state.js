@@ -83,6 +83,7 @@ const stateObj = {
     ui: {
         active_network: 0,
         active_buffer: '',
+        app_has_focus: true,
     },
     networks: [
         /* {
@@ -390,15 +391,7 @@ const state = new Vue({
                 }
 
                 // Update the buffers last read time
-                if (buffer.active_timeout) {
-                    clearTimeout(buffer.active_timeout);
-                }
-                buffer.active_timeout = setTimeout(
-                    this.updateBufferLastRead,
-                    10000,
-                    networkid,
-                    bufferName
-                );
+                buffer.markAsRead(true);
             }
         },
 
@@ -528,7 +521,7 @@ const state = new Vue({
                 buffer.name === this.ui.active_buffer
             );
 
-            if (isActiveBuffer) {
+            if (isActiveBuffer && state.ui.app_has_focus) {
                 buffer.last_read = message.time;
             }
 
@@ -880,6 +873,24 @@ function initialiseBufferState(buffer) {
             });
         },
     });
+    Object.defineProperty(buffer, 'markAsRead', {
+        value: function markAsRead(delayed) {
+            if (buffer.active_timeout) {
+                clearTimeout(buffer.active_timeout);
+                buffer.active_timeout = null;
+            }
+            if (delayed) {
+                buffer.active_timeout = setTimeout(
+                    buffer.markAsRead,
+                    10000,
+                    false
+                );
+            } else {
+                buffer.last_read = Date.now();
+            }
+        },
+    });
+
     // incrementFlag batches up the changes to the flags object as some of them can be
     // very taxing on DOM updates
     Object.defineProperty(buffer, 'incrementFlag', {

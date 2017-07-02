@@ -296,16 +296,7 @@
     background: #e3f1d4;
     border-left-color: #80ab52;
 }
-.kiwi-messagelist-message:not(.kiwi-messagelist-message--unread) + .kiwi-messagelist-message.kiwi-messagelist-message--unread {
-    background: #eeeeff;
-    border-left-color: #000088;
-}
-.kiwi-messagelist-message:not(.kiwi-messagelist-message--unread) + .kiwi-messagelist-message.kiwi-messagelist-message--unread > .kiwi-messagelist-body::after {
-    content: "You were here";
-    font-style: italic;
-    margin-left: 15px;
-    color: #000088;
-}
+
 .kiwi-messagelist-message > div {
 }
 
@@ -322,6 +313,19 @@
     /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
     opacity: 0;
     cursor: default;
+}
+
+.kiwi-messagelist-message:not(.kiwi-messagelist-message--unread) + .kiwi-messagelist-message--unread {
+    border-top: 3px solid #d4e5f1;
+}
+.kiwi-messagelist-message--unread {
+    border-left-color: #d4e5f1;
+}
+.kiwi-messagelist-message--unread:last-of-type::after {
+    content: "Unread messages";
+    font-style: italic;
+    background: #d4e5f1;
+    display: block;
 }
 
 .kiwi-messagelist-body .kiwi-nick {

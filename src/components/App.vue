@@ -115,7 +115,18 @@ export default {
         state.$on('theme.change', () => {
             this.themeUrl = themes.themeUrl(themes.currentTheme());
         });
+
         document.addEventListener('keydown', event => this.emitDocumentKeyDown(event), false);
+        window.addEventListener('focus', event => {
+            state.ui.app_has_focus = true;
+            let buffer = state.getActiveBuffer();
+            if (buffer) {
+                buffer.markAsRead(true);
+            }
+        }, false);
+        window.addEventListener('blur', event => {
+            state.ui.app_has_focus = false;
+        }, false);
     },
     mounted: function mounted() {
         // Decide which startup screen to use depending on the config
