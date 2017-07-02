@@ -83,7 +83,6 @@ const stateObj = {
     ui: {
         active_network: 0,
         active_buffer: '',
-        active_timeout: null,
     },
     networks: [
         /* {
@@ -391,10 +390,10 @@ const state = new Vue({
                 }
 
                 // Update the buffers last read time
-                if (this.ui.active_timeout) {
-                    clearTimeout(this.ui.active_timeout);
+                if (buffer.active_timeout) {
+                    clearTimeout(buffer.active_timeout);
                 }
-                this.ui.active_timeout = setTimeout(
+                buffer.active_timeout = setTimeout(
                     this.updateBufferLastRead,
                     10000,
                     networkid,
@@ -407,6 +406,7 @@ const state = new Vue({
             let buffer = this.getBufferByName(networkid, bufferName);
             if (buffer) {
                 buffer.last_read = Date.now();
+                buffer.active_timeout = null;
             }
         },
 
@@ -744,6 +744,7 @@ function createEmptyBufferObject() {
         settings: {
         },
         last_read: Date.now(),
+        active_timeout: null,
     };
 }
 
