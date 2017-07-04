@@ -332,6 +332,7 @@ export default {
 }
 .kiwi-customserver-tls {
     cursor: pointer;
+    top: 6px;
 }
 .kiwi-customserver-tls-lock {
     font-size: 1.2em;

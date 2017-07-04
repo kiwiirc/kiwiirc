@@ -15,7 +15,9 @@
 
         <form class="u-form">
             <div class="kiwi-networksettings-section kiwi-networksettings-connection">
-                <input-text :label="$t('connection_server')" v-model="network.connection.server" />
+                <h3>Server details</h3>
+
+                <input-text :label="$t('connection_server')" v-model="network.connection.server" class="kiwi-networksettings-connection-address"/>
 
                 <input-text label="Port" v-model="network.connection.port" type="number" class="kiwi-networksettings-connection-port">
                     <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[network.connection.tls ? 'kiwi-customserver-tls--enabled' : '']" @click="toggleTls">
@@ -167,12 +169,6 @@ export default {
 }
 .kiwi-networksettings-connection {
     max-width: 400px;
-}
-.kiwi-networksettings-connection-port {
-    max-width: 100px;
-}
-.kiwi-networksettings-connection-password {
-    margin-top: 1em;
 }
 .kiwi-networksettings-server-types {
     margin-top: 1em;

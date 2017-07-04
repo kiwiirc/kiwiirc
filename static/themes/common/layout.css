@@ -534,8 +534,17 @@ p {
 .kiwi-networksettings-section {
     margin: 20px 10px 40px 10px;
 }
+.kiwi-networksettings-connection-address {
+    width: 70%;
+    display: inline-block;
+}
+.kiwi-networksettings-connection-port {
+    width: 25%;
+    float: right;
+}
 .kiwi-networksettings-danger h3 {
     padding: 5px 10px;
+    margin-bottom: 1em;
 }
 
 
