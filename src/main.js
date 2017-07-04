@@ -133,8 +133,8 @@ function initLocales() {
 
 async function initState() {
     let stateKey = state.settings.startupOptions.state_key;
+    let persist = new StatePersistence(stateKey || '', state, Storage, Logger);
     if (stateKey) {
-        let persist = new StatePersistence(stateKey, state, Storage, Logger);
         await persist.loadStateIfExists();
     }
 }
