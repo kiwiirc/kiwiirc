@@ -12,6 +12,10 @@ export default class StatePersistence {
     }
 
     async loadStateIfExists() {
+        if (!this.storageKey) {
+            return;
+        }
+
         // If we have networks from a previous state, launch directly into it
         let storedState = await this.storage.get(this.storageKey);
         if (storedState) {
@@ -25,6 +29,10 @@ export default class StatePersistence {
 
 
     watchStateForChanges() {
+        if (!this.storageKey) {
+            return;
+        }
+
         // Throttle saving the state into storage so we don't thrash the disk
         let debouncedSaveState = _.debounce(() => {
             if (this.logger) {
