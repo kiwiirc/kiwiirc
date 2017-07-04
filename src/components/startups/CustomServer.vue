@@ -44,7 +44,7 @@
 
                 <input-text label="Username" v-model="nick" />
 
-                <input-text label="Network" v-model="znc_network" />
+                <input-text v-if="znc_network_support" label="Network" v-model="znc_network" />
                 <input-text label="Password" v-model="password" type="password" />
             </template>
 
@@ -81,6 +81,7 @@ export default {
             encoding: 'utf8',
             channel: '',
             znc_network: '',
+            znc_network_support: true,
             direct: false,
             show_type_switcher: true,
             show_password_box: false,
@@ -99,11 +100,18 @@ export default {
             let nick = this.nick;
 
             if (this.server_type === 'znc') {
+                // Older ZNC versions only support user:pass while newer supports user/network:pass
+                let password = nick;
+                if (this.znc_network) {
+                    password += '/' + this.znc_network;
+                }
+                password += ':' + this.password;
+
                 net = state.addNetwork('ZNC', nick, {
                     server: this.server.split(':')[0],
                     port: parseInt(this.server.split(':')[1] || 6667, 10),
                     tls: this.tls,
-                    password: nick + '/' + this.znc_network + ':' + this.password,
+                    password: password,
                 });
             } else {
                 net = state.addNetwork('Network', nick, {
@@ -217,6 +225,7 @@ export default {
                     channels: channels,
                     nick: params.nick || '',
                     encoding: (params.encoding || 'utf8'),
+                    params: params,
                 });
             });
 
@@ -277,7 +286,20 @@ export default {
                 this.direct = con.direct;
                 this.encoding = con.encoding;
 
-                this.title = 'Enter a nickname to join';
+                if (con.params.type === 'znc') {
+                    // Older ZNC versions only support user:pass while newer supports
+                    // user/network:pass. Setting the network to _ denotes that we are
+                    // connecting to an older ZNC without network support.
+                    if (con.params.network === '_') {
+                        this.znc_network_support = false;
+                    } else {
+                        this.znc_network = con.params.network || '';
+                    }
+                    this.server_type = 'znc';
+                    this.title = 'Enter your password to connect to ZNC';
+                } else {
+                    this.title = 'Enter a nickname to join';
+                }
             } else if (connections.length > 1) {
                 saveThisSessionsState = false;
 
