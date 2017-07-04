@@ -16,16 +16,6 @@ following installed on your system:
 * [Nodejs](https://nodejs.org/)
 * [yarn](https://yarnpkg.com/)
 
-### Building
-
-``` bash
-# install dependencies
-yarn install
-
-# build for production with minification
-npm run build
-```
-
 ### Development environment
 
 ``` bash
@@ -33,10 +23,22 @@ npm run build
 yarn install
 
 # development web server with hot reload at http://localhost:8080/
-npm run dev
+yarn run dev
 ```
 
 Source files are linted automatically and will fail on any linting errors.
+
+### Building for production
+
+``` bash
+# install dependencies
+$ yarn install
+
+# build for production with minification
+$ yarn run build
+```
+
+Built files that can be uploaded to your webserver will be placed in the dist/ folder.
 
 ### Configuration
 
@@ -48,12 +50,11 @@ be found in [static/config.json](static/config.json)
 
 If you're just looking to run Kiwi IRC and not develop or modify it then there are pre-built and ready to use packages here: https://kiwiirc.com/downloads/index.html
 
-This repository only contains the client side (the website). To connect to an IRC server you either need to be using a websocket capable IRC server (none yet support this) or need to be connecting to a Kiwi IRC server which can be found here: https://github.com/kiwiirc/webircgateway
+**Just looking to build a theme? Try the online [theme builder](https://kiwiirc.com/nextclient-themebuilder)**
 
-Once you have a Kiwi IRC server configured and running, enter the URL to your Kiwi IRC server in the clients config.json file. The client side files built from this repository may be hosted anywhere - Apache, Nginx, the Kiwi IRC server, your CDN.
+This repository only contains the client side (the website). By default it will connect to IRC networks via kiwiirc.com servers while you are developing locally. To use your own server you either need to be using a websocket capable IRC server (none yet support this) or need to be connecting to a Kiwi IRC server which can be found [here](https://github.com/kiwiirc/webircgateway). 
 
-***TODO: Provide a full example of the client and server running together with complete downloadable packages***
-
+The client side files built from this repository may be hosted anywhere - Apache, Nginx, the Kiwi IRC server, your CDN.
 
 ### License
 ~~~
