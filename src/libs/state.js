@@ -47,7 +47,7 @@ const stateObj = {
         aliases: `
 # General aliases
 /p /part $1+
-/me /action $1+
+/me /action $destination $1+
 /j /join $1+
 /q /query $1+
 /w /whois $1+
