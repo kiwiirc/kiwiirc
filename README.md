@@ -65,6 +65,10 @@ Kiwi IRC is tested on the below browsers. Other browsers are not checked and may
 * IE10+
 * IOS 9+
 
+## Thanks
+
+Providing sponsorship to the Kiwi IRC project helps keep kiwiirc.com free to use and makes the ongoing development possible.
+Without these [Sponsors](sponsors.md) development would be much slower so many thanks to these!
 
 ## License
 ~~~
