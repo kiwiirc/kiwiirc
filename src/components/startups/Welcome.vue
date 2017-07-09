@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-welcome-simple">
-        <h2>{{greetingText}}</h2>
+        <h2 v-html="greetingText"></h2>
 
         <template v-if="!network">
             <form @submit.prevent="formSubmit">
@@ -10,8 +10,9 @@
                 <button
                     class="u-button u-button-primary kiwi-welcome-simple-start"
                     type="submit"
+                    v-html="buttonText"
                     :disabled="!readyToStart"
-                >{{buttonText}}</button>
+                ></button>
             </form>
         </template>
         <template v-else-if="network.state !== 'connected'">
