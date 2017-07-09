@@ -56,7 +56,17 @@ This repository only contains the client side (the website). By default it will 
 
 The client side files built from this repository may be hosted anywhere - Apache, Nginx, the Kiwi IRC server, your CDN.
 
-### License
+## Browser support
+
+Kiwi IRC is tested on the below browsers. Other browsers are not checked and may have trouble running Kiwi IRC.
+* Chrome
+* Chrome Mobile (Android)
+* Firefox
+* IE10+
+* IOS 9+
+
+
+## License
 ~~~
    Copyright 2017 Kiwi IRC
 
