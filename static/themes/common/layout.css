@@ -352,17 +352,18 @@ p {
     padding: 3px;
 }
 .kiwi-controlinput-user {
-    padding: 0 5px;
+    padding: 0 15px;
     margin-right: 5px;
     font-weight: bold;
     text-align: center;
 }
+.kiwi-controlinput-tools {
+    margin-left: 10px;
+}
 .kiwi-controlinput-input-wrap {
-    padding: 3px;
 }
 .kiwi-controlinput-input {
     border: none;
-    outline: none;
 }
 
 

@@ -15,16 +15,34 @@
                     @cancel="onAutocompleteCancel"
                 ></auto-complete>
                 <div class="kiwi-controlinput-input-wrap">
-                    <textarea
+                    <!--<textarea
                         @keydown="inputKeyDown($event)"
                         @keyup="inputKeyUp($event)"
                         v-model="currentInputValue"
                         class="kiwi-controlinput-input"
                         wrap="off"
                         placeholder="Send a message..."></textarea>
+                    -->
+                    <irc-input
+                        ref="input"
+                        @keydown="inputKeyDown($event)"
+                        @keyup="inputKeyUp($event)"
+                        @click="closeInputTool"
+                        class="kiwi-controlinput-input"
+                        wrap="off"
+                        placeholder="Send a message..."></irc-input>
                 </div>
                 <!--<button type="submit">Send</button>-->
             </form>
+            <div class="kiwi-controlinput-tools">
+                <a @click.prevent="onToolClickTextStyle">
+                    <i class="fa fa-adjust" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="kiwi-controlinput-tool">
+            <component v-bind:is="active_tool" v-bind="active_tool_props"></component>
         </div>
     </div>
 </template>
@@ -34,10 +52,13 @@
 import autocompleteCommands from 'src/res/autocompleteCommands';
 import state from 'src/libs/state';
 import AutoComplete from './AutoComplete';
+import IrcInput from './IrcInput';
+import ToolTextStyle from './inputtools/TextStyle';
 
 export default {
     components: {
         AutoComplete,
+        IrcInput,
     },
     data: function data() {
         return {
@@ -47,6 +68,8 @@ export default {
             autocomplete_open: false,
             autocomplete_items: [],
             autocomplete_filter: '',
+            active_tool: null,
+            active_tool_props: {},
         };
     },
     props: ['container', 'buffer'],
@@ -59,7 +82,7 @@ export default {
         },
         currentInputValue: {
             get: function getCurrentInputValue() {
-                return this.history[this.history_pos] || this.value;
+                return this.history[this.history_pos] || this.$refs.input.buildIrcText();
             },
             set: function getCurrentInputValue(newValue) {
                 this.value = newValue;
@@ -70,45 +93,28 @@ export default {
         },
     },
     methods: {
+        onToolClickTextStyle: function onToolClickTextStyle() {
+            this.toggleInputTool(ToolTextStyle);
+        },
+        closeInputTool: function closeInputTool() {
+            this.active_tool = null;
+        },
+        toggleInputTool: function toggleInputTool(tool) {
+            if (!tool || this.active_tool === tool) {
+                this.active_tool = null;
+            } else {
+                this.active_tool_props = {
+                    buffer: this.buffer,
+                    ircinput: this.$refs.input,
+                };
+                this.active_tool = tool;
+            }
+        },
         onAutocompleteCancel: function onAutocompleteCancel() {
             this.autocomplete_open = false;
         },
         onAutocompleteSelected: function onAutocompleteSelected(selectedValue, selectedItem) {
-            let insert = selectedValue;
-            let input = this.$el.querySelector('textarea');
-            let inputVal = input.value;
-            let beginningVal = inputVal.substr(0, input.selectionStart);
-            let endingVal = inputVal.substr(input.selectionStart);
-
-            let idx = 0;
-
-            idx = beginningVal.lastIndexOf(' ');
-            if (idx === -1) {
-                beginningVal = '';
-            } else {
-                beginningVal = beginningVal.substr(0, idx + 1);
-            }
-            idx = endingVal.indexOf(' ');
-            if (idx === -1) {
-                endingVal = '';
-            } else {
-                endingVal = endingVal.substr(idx);
-            }
-
-            // If no beginningVal because we're at the start of the input, auto insert punctuation
-            if (!beginningVal && selectedItem.type !== 'command') {
-                insert += ', ';
-            } else {
-                insert += ' ';
-            }
-
-            this.value = `${beginningVal}${insert}${endingVal}`;
-
-            this.$nextTick(() => {
-                let pos = `${beginningVal}${insert}`.length;
-                input.setSelectionRange(pos, pos);
-            });
-
+            this.$refs.input.setCurrentWord(selectedValue);
             this.autocomplete_open = false;
         },
         inputKeyDown: function inputKeyDown(event) {
@@ -149,17 +155,20 @@ export default {
             } else if (meta && event.keyCode === 219) {
                 // meta + [
                 // TODO: Switch to the previous buffer
+            } else if (meta && event.keyCode === 75) {
+                // meta + k
+                this.toggleInputTool(ToolTextStyle);
+                event.preventDefault();
             }
         },
         inputKeyUp: function inputKeyUp(event) {
-            let input = event.currentTarget;
-            let inputVal = input.value;
-            let tokens = inputVal.substring(0, input.selectionStart).split(' ');
-            let currentToken = tokens[tokens.length - 1];
+            let inputVal = this.$refs.input.raw_value;
+            let currentWord = this.$refs.input.getCurrentWord();
+            let currentToken = currentWord.word.substr(0, currentWord.position);
 
             if (event.keyCode === 27 && this.autocomplete_open) {
                 this.autocomplete_open = false;
-            } else if (currentToken === '') {
+            } else if (this.autocomplete_open && currentToken === '') {
                 this.autocomplete_open = false;
             } else if (this.autocomplete_open) {
                 // @ is a shortcut to open the nicklist autocomplete. It's not part
@@ -212,6 +221,7 @@ export default {
             this.history_pos = this.history.length;
 
             this.value = '';
+            this.$refs.input.reset();
         },
         historyBack: function historyBack() {
             if (this.history_pos > 0) {
@@ -273,6 +283,11 @@ export default {
     },
     created: function created() {
         state.$on('document.keydown', (ev) => {
+            // No input box currently? Nothing to shift focus to
+            if (!this.$refs.input) {
+                return;
+            }
+
             // If we're copying text, don't shift focus
             if (ev.ctrlKey || ev.altKey || ev.metaKey) {
                 return;
@@ -288,7 +303,7 @@ export default {
                 return;
             }
 
-            this.$el.querySelector('.kiwi-controlinput-input').focus();
+            this.$refs.input.focus();
         });
     },
 };
@@ -300,32 +315,43 @@ export default {
     box-sizing: border-box;
 }
 .kiwi-controlinput-inner {
-    align-items: stretch;
     display: flex;
     position: relative;
     height: 100%;
     box-sizing: border-box;
 }
 .kiwi-controlinput-user {
-    flex: 1 80px;
-    display: inline-block;
     height: 100%;
 }
 .kiwi-controlinput-form {
-    flex: 1 100%;
+    flex: 1;
+    overflow: hidden;
 }
+
 .kiwi-controlinput-input-wrap {
     width: 100%;
+    display: inline-block;
     height: 100%;
     box-sizing: border-box;
+    overflow: visible;
 }
 .kiwi-controlinput-input {
     height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    resize: none;
-    white-space: nowrap;
-    overflow-x: hidden;
+    outline: none;
+}
+
+.kiwi-controlinput-tools > a {
+    display: inline-block;
+    padding: 0 1em;
+    cursor: pointer;
+}
+.kiwi-controlinput-tool {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    z-index: 1;
+    background: #f6f6f6;
+    border: 1px solid #dddddd;
 }
 
 </style>
