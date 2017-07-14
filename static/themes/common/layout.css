@@ -321,6 +321,7 @@ p {
     padding: 10px 0;
     text-align: center;
     border-width: 1px 0;
+    border-style: solid;
 }
 .kiwi-nicklist-users {
     padding: 0 20px;
