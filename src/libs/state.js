@@ -31,6 +31,7 @@ const stateObj = {
             coloured_nicklist: true,
             block_pms: false,
             show_emoticons: true,
+            extra_formatting: true,
             mute_sound: false,
         },
         // Startup screen default
