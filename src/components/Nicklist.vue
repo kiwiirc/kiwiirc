@@ -4,7 +4,8 @@
             <i class="fa fa-cog" aria-hidden="true"></i>
         </span>
         <div v-if="settings_open" class="kiwi-nicklist-settings">
-            <label>Show when people join <input type="checkbox" v-model="settingShowJoinParts"></label> <br />
+            <label>Show when people join <input type="checkbox" v-model="settingShowJoinParts"></label>
+            <label>Extra message formatting <input type="checkbox" v-model="settingExtraFormatting"></label>
             <label>Nick colours in the list <input type="checkbox" v-model="settingColouredNicklist"></label>
         </div>
         <div class="kiwi-nicklist-info">{{buffer.users.length}} {{buffer.users.length!=1?'people':'person'}} here</div>
@@ -57,6 +58,14 @@ export default {
             },
             set: function setSettingShowJoinParts(newVal) {
                 return this.buffer.setting('coloured_nicklist', newVal);
+            },
+        },
+        settingExtraFormatting: {
+            get: function settingExtraFormatting() {
+                return this.buffer.setting('extra_formatting');
+            },
+            set: function settingExtraFormatting(newVal) {
+                return this.buffer.setting('extra_formatting', newVal);
             },
         },
         sortedUsers: function sortedUsers() {
@@ -166,5 +175,12 @@ export default {
 }
 .kiwi-nicklist-users {
     list-style: none;
+}
+.kiwi-nicklist-settings label {
+    display: block;
+    margin: 0 5px;
+}
+.kiwi-nicklist-settings input {
+    float: right;
 }
 </style>
