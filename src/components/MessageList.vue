@@ -78,6 +78,10 @@ export default {
     },
     props: ['buffer', 'messages', 'users'],
     computed: {
+        useExtraFormatting: function useExtraFormatting() {
+            // Enables simple markdown formatting
+            return this.buffer.setting('extra_formatting');
+        },
         filteredMessages: function filteredMessages() {
             let network = this.buffer.getNetwork();
             let currentNick = network.nick;
@@ -169,7 +173,7 @@ export default {
             });
 
             let parsed = words.join(' ');
-            parsed = TextFormatting.ircCodesToHtml(parsed);
+            parsed = TextFormatting.ircCodesToHtml(parsed, this.useExtraFormatting);
 
             return parsed;
         },

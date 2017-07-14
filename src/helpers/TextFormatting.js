@@ -8,14 +8,14 @@ import { md5 } from './Md5';
  *   @returns    {String}        The HTML formatted message
  */
 const colourMatchRegexp = /^\x03(([0-9][0-9]?)(,([0-9][0-9]?))?)/;
-export function ircCodesToHtml(input) {
+export function ircCodesToHtml(input, enableExtras) {
     function spanFromOpen() {
         let style = '';
         let colours;
         let classes = [];
         let result = '';
 
-        if (openTags.bold || openTags.italic || openTags.underline || openTags.colour) {
+        if (isTagOpen()) {
             style += (openTags.bold) ? 'font-weight: bold; ' : '';
             style += (openTags.italic) ? 'font-style: italic; ' : '';
             style += (openTags.underline) ? 'text-decoration: underline; ' : '';
@@ -72,6 +72,33 @@ export function ircCodesToHtml(input) {
             return null;
         }
     }
+    function isTagOpen() {
+        return (openTags.bold || openTags.italic || openTags.underline || openTags.colour);
+    }
+    function openTag() {
+        currentTag = spanFromOpen();
+    }
+    function closeTag() {
+        if (isTagOpen()) {
+            out += currentTag + '</span>';
+        }
+    }
+    function addContent(content) {
+        if (isTagOpen()) {
+            currentTag += content;
+        } else {
+            out += content;
+        }
+    }
+    // Invisible characters are still selectable. Ie. when copying text
+    function addInvisibleContent(content) {
+        let tag = `<span class="kiwi-formatting-extras-invisible">${content}</span>`;
+        if (isTagOpen()) {
+            currentTag += tag;
+        } else {
+            out += tag;
+        }
+    }
 
     let msg = input || '';
     let out = '';
@@ -87,32 +114,86 @@ export function ircCodesToHtml(input) {
     let match = null;
 
     for (i = 0; i < msg.length; i++) {
-        switch (msg[i]) {
-        case '\x02':
-            if ((openTags.bold || openTags.italic || openTags.underline || openTags.colour)) {
-                out += currentTag + '</span>';
+        let char = msg[i];
+
+        if (enableExtras) {
+            if (char === '&' && i === 0 && msg.indexOf('&gt; ') === 0) {
+                // Starting with '> '
+                out += '<span class="kiwi-formatting-extras-block">' + msg.substr(5);
+                i = msg.length;
+                break;
+            } else if (char === '`') {
+                let nextQuotePos = msg.indexOf('`', i + 1);
+                // Only quote if there is a closing quote later in the string
+                if (nextQuotePos > -1) {
+                    closeTag();
+
+                    out += '<span class="kiwi-formatting-extras-quote">';
+                    addInvisibleContent('`');
+                    out += msg.substring(i + 1, nextQuotePos);
+                    addInvisibleContent('`');
+                    out += '</span>';
+                    i = nextQuotePos;
+                    continue;
+                }
+            } else if (char === '*') {
+                let isBold = msg.substr(i, 2) === '**';
+                let moreBoldExists = isBold && msg.indexOf('**', i + 2) > -1;
+                let isItalic = !isBold;
+                let moreItalicExists = isItalic && msg.indexOf('*', i + 1) > -1;
+
+                if (isBold && moreBoldExists && !openTags.bold) {
+                    closeTag();
+                    openTags.bold = true;
+                    openTag();
+                    addInvisibleContent('**');
+                    // Skip the next *
+                    i++;
+                    continue;
+                } else if (isBold && openTags.bold) {
+                    addInvisibleContent('**');
+                    closeTag();
+                    openTags.bold = false;
+                    openTag();
+                    // Skip the next *
+                    i++;
+                    continue;
+                } else if (isItalic && moreItalicExists && !openTags.italic) {
+                    closeTag();
+                    openTags.italic = true;
+                    openTag();
+                    addInvisibleContent('*');
+                    continue;
+                } else if (isItalic && openTags.italic) {
+                    addInvisibleContent('*');
+                    closeTag();
+                    openTags.italic = false;
+                    openTag();
+                    continue;
+                }
+            } else if (char === '\n') {
+                addContent('<br>');
+                continue;
             }
+        }
+
+        if (char === '\x02') {
+            closeTag();
             openTags.bold = !openTags.bold;
-            currentTag = spanFromOpen();
-            break;
-        case '\x1D':
-            if ((openTags.bold || openTags.italic || openTags.underline || openTags.colour)) {
-                out += currentTag + '</span>';
-            }
+            openTag();
+            continue;
+        } else if (char === '\x1D') {
+            closeTag();
             openTags.italic = !openTags.italic;
-            currentTag = spanFromOpen();
-            break;
-        case '\x1F':
-            if ((openTags.bold || openTags.italic || openTags.underline || openTags.colour)) {
-                out += currentTag + '</span>';
-            }
+            openTag();
+            continue;
+        } else if (char === '\x1F') {
+            closeTag();
             openTags.underline = !openTags.underline;
-            currentTag = spanFromOpen();
-            break;
-        case '\x03':
-            if ((openTags.bold || openTags.italic || openTags.underline || openTags.colour)) {
-                out += currentTag + '</span>';
-            }
+            openTag();
+            continue;
+        } else if (char === '\x03') {
+            closeTag();
             match = colourMatch(msg.substr(i, 6));
             if (match) {
                 i += match[1].length;
@@ -125,27 +206,18 @@ export function ircCodesToHtml(input) {
             } else {
                 openTags.colour = false;
             }
-            currentTag = spanFromOpen();
-            break;
-        case '\x0F':
-            if ((openTags.bold || openTags.italic || openTags.underline || openTags.colour)) {
-                out += currentTag + '</span>';
-            }
+            openTag();
+            continue;
+        } else if (char === '\x0F') {
+            closeTag();
             openTags.bold = openTags.italic = openTags.underline = openTags.colour = false;
-            break;
-        default:
-            if ((openTags.bold || openTags.italic || openTags.underline || openTags.colour)) {
-                currentTag += msg[i];
-            } else {
-                out += msg[i];
-            }
-            break;
+            continue;
         }
+
+        addContent(msg[i]);
     }
 
-    if ((openTags.bold || openTags.italic || openTags.underline || openTags.colour)) {
-        out += currentTag + '</span>';
-    }
+    closeTag();
 
     return out;
 }
