@@ -127,7 +127,7 @@ p {
 .kiwi-formatting-extras-quote {
     border: 1px solid #b5b5b5;
     padding: 0 3px;
-    border-radius: 5px;
+    border-radius: 3px;
     background: rgba(0,0,0,0.05);
     font-family: monospace;
 }
@@ -135,9 +135,9 @@ p {
     font-size: 0px;
 }
 .kiwi-formatting-extras-block {
-    border: 1px solid gray;
+    border: 1px solid #b5b5b5;
     padding: 0 3px;
-    border-radius: 5px;
+    border-radius: 3px;
     background: rgba(0,0,0,0.05);
     font-family: monospace;
     white-space: pre;
