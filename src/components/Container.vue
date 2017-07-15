@@ -79,13 +79,13 @@ export default {
         },
     },
     created: function created() {
-        state.$on('sidebar.toggle', () => {
+        this.listen(state, 'sidebar.toggle', () => {
             state.$emit('sidebar.' + (this.sidebarOpen ? 'hide' : 'show'));
         });
-        state.$on('sidebar.show', () => {
+        this.listen(state, 'sidebar.show', () => {
             this.sidebarOpen = true;
         });
-        state.$on('sidebar.hide', () => {
+        this.listen(state, 'sidebar.hide', () => {
             this.sidebarOpen = false;
         });
     },
