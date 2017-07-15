@@ -14,10 +14,11 @@
                 'kiwi-container-toggledraw-sidebar': true,
                 'kiwi-container-toggledraw-sidebar--disabled': !buffer.isChannel()
             }">
-                <i class="fa fa-users" aria-hidden="true"></i>
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
             </div>
 
             <sidebar
+                v-if="buffer.isChannel()"
                 :network="network"
                 :buffer="buffer"
                 :users="users"
@@ -79,7 +80,7 @@ export default {
     },
     created: function created() {
         state.$on('sidebar.toggle', () => {
-            this.sidebarOpen = !this.sidebarOpen;
+            state.$emit('sidebar.' + (this.sidebarOpen ? 'hide' : 'show'));
         });
         state.$on('sidebar.show', () => {
             this.sidebarOpen = true;
@@ -111,7 +112,7 @@ export default {
     top: 0;
     bottom: 0;
     width: 200px;
-    z-index: 1;
+    z-index: 2;
 }
 .kiwi-messagelist {
     position: absolute;

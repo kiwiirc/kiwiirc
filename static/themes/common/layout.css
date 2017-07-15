@@ -68,6 +68,11 @@ p {
     display: block;
 }
 
+.u-tabbed-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 .u-tabbed-view-tabs {
 }
 .u-tabbed-view-tab {
@@ -84,7 +89,8 @@ p {
     border-bottom-width: 3px;
 }
 .u-tabbed-content {
-    margin-top: 10px;
+    padding-top: 10px;
+    overflow: auto;
 }
 
 /**

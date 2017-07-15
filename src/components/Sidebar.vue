@@ -1,22 +1,50 @@
 <template>
-    <div class="kiwi-sidebar" >
+    <div class="kiwi-sidebar" :class="{'kiwi-sidebar--settings-open': settings_open}">
         <template v-if="buffer">
-            <span class="kiwi-sidebar-options" @click="settings_open = !settings_open">
-                <i class="fa fa-cog" aria-hidden="true"></i>
-            </span>
+            <template v-if="buffer.isChannel()">
+                <div v-if="false" class="kiwi-sidebar-settings">
+                    <label>Show when people join <input type="checkbox" v-model="settingShowJoinParts"></label>
+                    <label>Extra message formatting <input type="checkbox" v-model="settingExtraFormatting"></label>
+                    <label>Nick colours in the list <input type="checkbox" v-model="settingColouredNicklist"></label>
+                </div>
 
-            <div v-if="settings_open" class="kiwi-sidebar-settings">
-                <label>Show when people join <input type="checkbox" v-model="settingShowJoinParts"></label>
-                <label>Extra message formatting <input type="checkbox" v-model="settingExtraFormatting"></label>
-                <label>Nick colours in the list <input type="checkbox" v-model="settingColouredNicklist"></label>
-            </div>
+                <span class="kiwi-sidebar-options" @click="settings_open = !settings_open">
+                    <i class="fa fa-cog" aria-hidden="true"></i> {{settings_open?'Close options':'Channel options'}}
+                </span>
 
-            <nicklist
-                v-if="buffer.isChannel()"
-                :network="network"
-                :buffer="buffer"
-                :users="users"
-            ></nicklist>
+                <div
+                    v-if="settings_open"
+                    class="kiwi-sidebar-buffersettings"
+                    @click.stop=""
+                >
+
+                    <tabbed-view>
+                        <tabbed-tab :header="'Settings'" :focus="true">
+                            <channel-info v-bind:buffer="buffer"></channel-info>
+                        </tabbed-tab>
+                        <tabbed-tab :header="'Banned Users'">
+                            <channel-banlist v-bind:buffer="buffer"></channel-banlist>
+                        </tabbed-tab>
+                        <tabbed-tab :header="'Notifications'">
+                            <buffer-settings v-bind:buffer="buffer"></buffer-settings>
+                        </tabbed-tab>
+                    </tabbed-view>
+                </div>
+
+                <nicklist
+                    v-if="buffer.isChannel()"
+                    :network="network"
+                    :buffer="buffer"
+                    :users="users"
+                ></nicklist>
+            </template>
+            <template v-else-if="buffer.isQuery()">
+                <!-- TODO:
+                invite to an open channel<br />
+                ignore this user<br />
+                something else
+                -->
+            </template>
         </template>
         <template v-else>
             No buffer set
@@ -26,11 +54,17 @@
 
 <script>
 
-// import state from 'src/libs/state';
+import state from 'src/libs/state';
+import BufferSettings from './BufferSettings';
+import ChannelInfo from './ChannelInfo';
+import ChannelBanlist from './ChannelBanlist';
 import Nicklist from './Nicklist';
 
 export default {
     components: {
+        BufferSettings,
+        ChannelInfo,
+        ChannelBanlist,
         Nicklist,
     },
     data: function data() {
@@ -83,6 +117,9 @@ export default {
     methods: {
     },
     created: function created() {
+        state.$on('sidebar.hide', () => {
+            this.settings_open = false;
+        });
     },
 };
 </script>
@@ -93,13 +130,37 @@ export default {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+}
+
+.kiwi-sidebar--settings-open {
+    width: 500px;
+    border-left: 3px solid #dddddd;
+}
+@media screen and (max-width: 700px) {
+    .kiwi-sidebar--settings-open {
+        width: 100%;
+    }
+}
+.kiwi-sidebar--settings-open .kiwi-sidebar-buffersettings {
+    /*
+    animation-duration: 2s;
+    animation-name: settingstransition;
+    */
+}
+.kiwi-sidebar--settings-open .kiwi-nicklist {
+    display: none;
 }
 
 .kiwi-sidebar-options {
     display: block;
-    margin: 3px 10px;
-    text-align: right;
+    margin: 1em;
     cursor: pointer;
+}
+
+.kiwi-sidebar-buffersettings {
+    overflow: hidden;
+    height: 100%;
 }
 
 .kiwi-sidebar-settings label {
@@ -108,6 +169,15 @@ export default {
 }
 .kiwi-sidebar-settings input {
     float: right;
+}
+
+@keyframes settingstransition {
+  from { margin-top: 50px; }
+  to   { margin-top: 100px; }
+}
+@keyframes nicklisttransition {
+  from { height: 0; }
+  to   { height: 100%; }
 }
 
 </style>
