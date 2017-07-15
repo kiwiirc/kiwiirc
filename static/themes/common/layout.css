@@ -175,6 +175,21 @@ p {
     background: rgba(255,255,255,0.1);
 }
 
+.kiwi-statebrowser-availablenetworks {
+}
+.kiwi-statebrowser-availablenetworks-toggle {
+    padding: 5px 0;
+}
+.kiwi-statebrowser-availablenetworks-type {
+    padding: 10px;
+}
+.kiwi-statebrowser-availablenetworks-name {
+    text-align: center;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+
 .kiwi-statebrowser-network {
     margin-bottom: 2em;
     overflow: hidden;
@@ -563,6 +578,10 @@ p {
 .kiwi-networksettings-connection-port {
     width: 25%;
     float: right;
+}
+.kiwi-networksettings-server-types-info {
+    font-size: 0.9em;
+    font-style: italic;
 }
 .kiwi-networksettings-danger h3 {
     padding: 5px 10px;

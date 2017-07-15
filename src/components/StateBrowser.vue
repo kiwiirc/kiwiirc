@@ -30,6 +30,24 @@
             <a@click="clickAddNetwork" v-if="!isRestrictedServer" ><i class="fa fa-plus" aria-hidden="true"></i></a><a @click="clickAppSettings" ><i class="fa fa-cog" aria-hidden="true"></i></a>
         </div>
 
+        <div v-if="Object.keys(provided_networks).length > 0" class="kiwi-statebrowser-availablenetworks">
+            <div @click="show_provided_networks=!show_provided_networks" class="kiwi-statebrowser-availablenetworks-toggle">&#8618; Available networks</div>
+            <div
+                class="kiwi-statebrowser-availablenetworks-networks"
+                :class="{'kiwi-statebrowser-availablenetworks-networks--open': show_provided_networks}"
+            >
+                <div
+                    v-for="(pNets, pNetTypeName) in provided_networks"
+                    class="kiwi-statebrowser-availablenetworks-type"
+                >
+                    <div class="kiwi-statebrowser-availablenetworks-name">{{pNetTypeName}}</div>
+                    <div v-for="pNet in pNets" class="kiwi-statebrowser-availablenetworks-link" :class="[pNet.connected?'kiwi-statebrowser-availablenetworks-link--connected':'']">
+                        <a @click="connectProvidedNetwork(pNet)">{{pNet.name}}</a><br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="kiwi-statebrowser-scrollarea">
             <div class="kiwi-statebrowser-networks">
                 <state-browser-network
@@ -49,6 +67,14 @@ import StateBrowserNetwork from './StateBrowserNetwork';
 import AppSettings from './AppSettings';
 import NetworkSettings from './NetworkSettings';
 import BufferSettings from './BufferSettings';
+import NetworkProvider from 'src/libs/NetworkProvider';
+import NetworkProviderZnc from 'src/libs/networkproviders/NetworkProviderZnc';
+
+let netProv = new NetworkProvider();
+
+let znc = new NetworkProviderZnc(state);
+netProv.addProvider(znc);
+znc.autoDetectZncNetworks();
 
 export default {
     data: function data() {
@@ -59,6 +85,8 @@ export default {
             popup_top: 0,
             new_channel_input: '',
             is_usermenu_open: false,
+            show_provided_networks: false,
+            provided_networks: Object.create(null),
         };
     },
     props: ['networks'],
@@ -112,6 +140,16 @@ export default {
 
             state.persistence.forgetState();
         },
+        connectProvidedNetwork: function connectProvidedNetwork(pNet) {
+            let net = state.addNetwork(pNet.name, pNet.nick, {
+                server: pNet.server,
+                port: pNet.port,
+                tls: pNet.tls,
+                password: pNet.password,
+            });
+
+            net.ircClient.connect();
+        },
     },
     computed: {
         bufferForPopup: function bufferForPopup() {
@@ -131,6 +169,10 @@ export default {
     created: function created() {
         state.$on('document.clicked', () => {
             this.showBufferPopup(null);
+        });
+
+        netProv.on('networks', networks => {
+            this.provided_networks = networks;
         });
     },
 };
@@ -189,5 +231,22 @@ export default {
     bottom: 0;
     padding: 15px;
     height: 30px;
+}
+
+
+.kiwi-statebrowser-availablenetworks-toggle {
+    cursor: pointer;
+    text-align: center;
+}
+.kiwi-statebrowser-availablenetworks-networks {
+    overflow: hidden;
+    max-height: 0px;
+    transition: max-height 0.5s;
+}
+.kiwi-statebrowser-availablenetworks-networks--open {
+    max-height: 500px;
+}
+.kiwi-statebrowser-availablenetworks-link a {
+    cursor: pointer;
 }
 </style>

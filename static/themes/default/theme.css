@@ -132,6 +132,19 @@
     border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
+.kiwi-statebrowser-availablenetworks {
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+.kiwi-statebrowser-availablenetworks-toggle {
+    background: rgba(255,255,255,0.15);
+}
+.kiwi-statebrowser-availablenetworks-link {
+    border-right: 15px solid red;
+}
+.kiwi-statebrowser-availablenetworks-link--connected {
+    border-color: green;
+}
+
 .kiwi-statebrowser-channel-name {
     color: #a7a7a7;
 }

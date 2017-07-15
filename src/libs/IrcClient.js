@@ -70,7 +70,7 @@ function clientMiddleware(state, networkid) {
 
     return function middlewareFn(client, rawEvents, parsedEvents) {
         parsedEvents.use(parsedEventsHandler);
-        parsedEvents.use(rawEventsHandler);
+        rawEvents.use(rawEventsHandler);
 
         client.on('connecting', () => {
             network.state = 'connecting';
@@ -86,7 +86,8 @@ function clientMiddleware(state, networkid) {
     };
 
 
-    function rawEventsHandler(command, event, client, next) {
+    function rawEventsHandler(command, event, rawLine, client, next) {
+        state.$emit('irc:raw', command, event, network);
         next();
     }
 

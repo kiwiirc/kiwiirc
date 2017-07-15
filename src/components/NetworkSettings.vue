@@ -35,19 +35,22 @@
                         <input-text label="Network" v-model="znc_network" />
                         <input-text label="Password" v-model="znc_password" type="password" />
                     </template>
+                </div>
 
-                    <div class="kiwi-networksettings-server-types">
-                        <a
-                            @click="server_type='network'"
-                            class="u-link"
-                            :class="{'kiwi-networksettings-server-type-active': server_type==='network'}"
-                        >Network</a>
-                        <a
-                            @click="server_type='znc'"
-                            class="u-link"
-                            :class="{'kiwi-networksettings-server-type-active': server_type==='znc'}"
-                        >ZNC</a>
+                <div class="kiwi-networksettings-server-types">
+                    <div v-if="server_type==='znc'" class="kiwi-networksettings-server-types-info">
+                        Other networks on this ZNC account will be listed in the network list
                     </div>
+                    <a
+                        @click="server_type='network'"
+                        class="u-link"
+                        :class="{'kiwi-networksettings-server-type-active': server_type==='network'}"
+                    >Network</a>
+                    <a
+                        @click="server_type='znc'"
+                        class="u-link"
+                        :class="{'kiwi-networksettings-server-type-active': server_type==='znc'}"
+                    >ZNC</a>
                 </div>
             </div>
 
