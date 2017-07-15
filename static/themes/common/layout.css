@@ -92,6 +92,11 @@ p {
     padding-top: 10px;
     overflow: auto;
 }
+@media screen and (max-width: 500px) {
+    .u-tabbed-view-tab {
+        padding: 10px 20px;
+    }
+}
 
 /**
  * Common text formatting styles
