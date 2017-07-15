@@ -202,18 +202,29 @@
 }
 
 .kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-nicklist {
+.kiwi-container-toggledraw-sidebar {
     background: #f6f6f6;
     border-bottom: 1px solid #dddddd;
 }
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #dddddd;
 }
-.kiwi-container-toggledraw-nicklist {
+.kiwi-container-toggledraw-sidebar {
     border-left: 1px solid #dddddd;
 }
-.kiwi-container-toggledraw-nicklist--disabled {
+.kiwi-container-toggledraw-sidebar--disabled {
     color: #b8babd;
+}
+
+
+
+/**
+ * Sidebar
+ */
+
+.kiwi-sidebar {
+    background-color: #f6f6f6;
+    border-left: 1px solid #dddddd;
 }
 
 
@@ -222,10 +233,6 @@
  * Nicklist
  */
 
-.kiwi-nicklist {
-    background-color: #f6f6f6;
-    border-left: 1px solid #dddddd;
-}
 .kiwi-nicklist-info {
     border-color: #ddd;
 }

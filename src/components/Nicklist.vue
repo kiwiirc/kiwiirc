@@ -1,13 +1,5 @@
 <template>
     <div class="kiwi-nicklist">
-        <span class="kiwi-nicklist-options" @click="settings_open = !settings_open">
-            <i class="fa fa-cog" aria-hidden="true"></i>
-        </span>
-        <div v-if="settings_open" class="kiwi-nicklist-settings">
-            <label>Show when people join <input type="checkbox" v-model="settingShowJoinParts"></label>
-            <label>Extra message formatting <input type="checkbox" v-model="settingExtraFormatting"></label>
-            <label>Nick colours in the list <input type="checkbox" v-model="settingColouredNicklist"></label>
-        </div>
         <div class="kiwi-nicklist-info">{{buffer.users.length}} {{buffer.users.length!=1?'people':'person'}} here</div>
         <ul class="kiwi-nicklist-users">
             <li
@@ -38,36 +30,11 @@ import * as TextFormatting from 'src/helpers/TextFormatting';
 export default {
     data: function data() {
         return {
-            settings_open: false,
             userbox_user: null,
         };
     },
     props: ['network', 'buffer', 'users'],
     computed: {
-        settingShowJoinParts: {
-            get: function getSettingShowJoinParts() {
-                return this.buffer.setting('show_joinparts');
-            },
-            set: function setSettingShowJoinParts(newVal) {
-                return this.buffer.setting('show_joinparts', newVal);
-            },
-        },
-        settingColouredNicklist: {
-            get: function getSettingShowJoinParts() {
-                return this.buffer.setting('coloured_nicklist');
-            },
-            set: function setSettingShowJoinParts(newVal) {
-                return this.buffer.setting('coloured_nicklist', newVal);
-            },
-        },
-        settingExtraFormatting: {
-            get: function settingExtraFormatting() {
-                return this.buffer.setting('extra_formatting');
-            },
-            set: function settingExtraFormatting(newVal) {
-                return this.buffer.setting('extra_formatting', newVal);
-            },
-        },
         sortedUsers: function sortedUsers() {
             // Get a list of network prefixes and give them a rank number
             let netPrefixes = this.network.ircClient.network.options.PREFIX;
@@ -167,20 +134,8 @@ export default {
     box-sizing: border-box;
     overflow-y: auto;
 }
-.kiwi-nicklist-options {
-    display: block;
-    margin: 3px 10px;
-    text-align: right;
-    cursor: pointer;
-}
+
 .kiwi-nicklist-users {
     list-style: none;
-}
-.kiwi-nicklist-settings label {
-    display: block;
-    margin: 0 5px;
-}
-.kiwi-nicklist-settings input {
-    float: right;
 }
 </style>

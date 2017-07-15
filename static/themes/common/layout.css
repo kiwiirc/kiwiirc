@@ -307,7 +307,7 @@ p {
 }
 
 .kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-nicklist {
+.kiwi-container-toggledraw-sidebar {
     cursor: pointer;
     text-align: center;
     font-size: 1.6em;
@@ -315,10 +315,20 @@ p {
 }
 .kiwi-container-toggledraw-statebrowser {
 }
-.kiwi-container-toggledraw-nicklist {
+.kiwi-container-toggledraw-sidebar {
 }
-.kiwi-container-toggledraw-nicklist--disabled {
+.kiwi-container-toggledraw-sidebar--disabled {
     cursor: default;
+}
+
+
+
+/**
+ * Sidebar
+ */
+
+.kiwi-sidebar {
+    transition: right 0.5s;
 }
 
 
@@ -328,11 +338,9 @@ p {
  */
 
 .kiwi-nicklist {
-    transition: right 0.5s;
 }
 .kiwi-nicklist-info {
     font-size: 0.9em;
-    margin: 10px 0;
     padding: 10px 0;
     text-align: center;
     border-width: 1px 0;
