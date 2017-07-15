@@ -44,7 +44,7 @@ Vue.mixin({
             source.$on(event, fn);
         },
     },
-    beforeDestroy: function () {
+    beforeDestroy: function beforeDestroy() {
         (this.listeningEvents || []).forEach(fn => fn());
     },
 });
