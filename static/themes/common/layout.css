@@ -334,7 +334,7 @@ p {
  */
 
 .kiwi-sidebar {
-    transition: right 0.5s;
+    transition: width 0.3s;
 }
 
 
