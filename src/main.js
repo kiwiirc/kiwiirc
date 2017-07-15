@@ -43,6 +43,13 @@ Vue.mixin({
             });
             source.$on(event, fn);
         },
+        listenOnce: function listenOnce(source, event, fn) {
+            this.listeningEvents = this.listeningEvents || [];
+            this.listeningEvents.push(() => {
+                source.$off(event, fn);
+            });
+            source.$once(event, fn);
+        },
     },
     beforeDestroy: function beforeDestroy() {
         (this.listeningEvents || []).forEach(fn => fn());
