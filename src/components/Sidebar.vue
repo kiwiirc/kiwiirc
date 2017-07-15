@@ -117,7 +117,7 @@ export default {
     methods: {
     },
     created: function created() {
-        state.$on('sidebar.hide', () => {
+        this.listen(state, 'sidebar.hide', () => {
             this.settings_open = false;
         });
     },

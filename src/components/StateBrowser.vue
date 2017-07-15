@@ -167,7 +167,7 @@ export default {
         },
     },
     created: function created() {
-        state.$on('document.clicked', () => {
+        this.listen(state, 'document.clicked', () => {
             this.showBufferPopup(null);
         });
 

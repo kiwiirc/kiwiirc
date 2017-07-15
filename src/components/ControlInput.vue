@@ -272,7 +272,7 @@ export default {
         },
     },
     created: function created() {
-        state.$on('document.keydown', (ev) => {
+        this.listen(state, 'document.keydown', (ev) => {
             // If we're copying text, don't shift focus
             if (ev.ctrlKey || ev.altKey || ev.metaKey) {
                 return;
