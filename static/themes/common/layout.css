@@ -205,13 +205,14 @@ p {
     margin-bottom: 2em;
     overflow: hidden;
 }
-
+.kiwi-statebrowser-network-header {
+    background: rgba(255,255,255,0.15);
+}
 .kiwi-statebrowser-network-name {
     /*font-weight: bold;*/
     font-size: 1.1em;
     text-align: center;
     display: block;
-    background: rgba(255,255,255,0.15);
     padding: 4px 0;
 }
 .kiwi-statebrowser-network-status {

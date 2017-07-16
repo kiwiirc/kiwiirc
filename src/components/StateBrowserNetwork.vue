@@ -1,21 +1,29 @@
 <template>
-    <div class="kiwi-statebrowser-network" :class="[isActiveNetwork ? 'kiwi-statebrowser-network--active' : '']">
-        <a class="kiwi-statebrowser-network-name u-link" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
+    <div class="kiwi-statebrowser-network" :class="[
+        isActiveNetwork ? 'kiwi-statebrowser-network--active' : '',
+        collapsed ? 'kiwi-statebrowser-network--collapsed' : '',
+    ]">
+        <div class="kiwi-statebrowser-network-header">
+            <a class="kiwi-statebrowser-network-name u-link" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
+            <a class="kiwi-statebrowser-network-toggle" @click="collapsed=!collapsed">
+                <i class="fa" :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" aria-hidden="true"></i>
+            </a>
+        </div>
 
-            <transition name="kiwi-statebrowser-network-status-transition">
-            <div v-if="network.state !== 'connected'" class="kiwi-statebrowser-network-status">
-                <template v-if="!network.connection.server">
-                    <a @click="showNetworkSettings(network)" class="u-link">Configure network</a>
-                </template>
-                <template v-else-if="network.state === 'disconnected'">
-                    Not connected.
-                    <a @click="network.ircClient.connect()" class="u-link">Connect</a>
-                </template>
-                <template v-else-if="network.state === 'connecting'">
-                    Connecting...
-                </template>
-            </div>
-            </transition>
+        <transition name="kiwi-statebrowser-network-status-transition">
+        <div v-if="network.state !== 'connected'" class="kiwi-statebrowser-network-status">
+            <template v-if="!network.connection.server">
+                <a @click="showNetworkSettings(network)" class="u-link">Configure network</a>
+            </template>
+            <template v-else-if="network.state === 'disconnected'">
+                Not connected.
+                <a @click="network.ircClient.connect()" class="u-link">Connect</a>
+            </template>
+            <template v-else-if="network.state === 'connecting'">
+                Connecting...
+            </template>
+        </div>
+        </transition>
 
         <div class="kiwi-statebrowser-channels">
             <div
@@ -82,6 +90,7 @@ export default {
         return {
             new_channel_input_has_focus: false,
             new_channel_input: '',
+            collapsed: false,
         };
     },
     props: ['network'],
@@ -190,6 +199,22 @@ export default {
 </script>
 
 <style>
+.kiwi-statebrowser-network--collapsed .kiwi-statebrowser-channels {
+    display: none;
+}
+.kiwi-statebrowser-network-header {
+    display: flex;
+}
+.kiwi-statebrowser-network-name {
+    flex: 1;
+}
+.kiwi-statebrowser-network-toggle {
+    width: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 .kiwi-statebrowser-channel {
     position: relative;
     display: flex;
