@@ -2,12 +2,6 @@
     <div class="kiwi-sidebar" :class="{'kiwi-sidebar--settings-open': settings_open}">
         <template v-if="buffer">
             <template v-if="buffer.isChannel()">
-                <div v-if="false" class="kiwi-sidebar-settings">
-                    <label>Show when people join <input type="checkbox" v-model="settingShowJoinParts"></label>
-                    <label>Extra message formatting <input type="checkbox" v-model="settingExtraFormatting"></label>
-                    <label>Nick colours in the list <input type="checkbox" v-model="settingColouredNicklist"></label>
-                </div>
-
                 <span class="kiwi-sidebar-options" @click="settings_open = !settings_open">
                     <i class="fa fa-cog" aria-hidden="true"></i> {{settings_open?'Close options':'Channel options'}}
                 </span>
@@ -21,6 +15,13 @@
                     <tabbed-view>
                         <tabbed-tab :header="'Settings'" :focus="true">
                             <channel-info v-bind:buffer="buffer"></channel-info>
+
+                            <div class="kiwi-sidebar-settings">
+                                <h3>Your settings</h3>
+                                <label><input type="checkbox" v-model="settingShowJoinParts"> Show when people join</label>
+                                <label><input type="checkbox" v-model="settingExtraFormatting"> Extra message formatting</label>
+                                <label><input type="checkbox" v-model="settingColouredNicklist"> Nick colours in the list</label>
+                            </div>
                         </tabbed-tab>
                         <tabbed-tab :header="'Banned Users'">
                             <channel-banlist v-bind:buffer="buffer"></channel-banlist>
@@ -165,10 +166,6 @@ export default {
 
 .kiwi-sidebar-settings label {
     display: block;
-    margin: 0 5px;
-}
-.kiwi-sidebar-settings input {
-    float: right;
 }
 
 @keyframes settingstransition {
