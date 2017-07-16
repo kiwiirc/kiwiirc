@@ -57,7 +57,8 @@ export default class NetworkProviderZnc {
         return new Promise((resolve, reject) => {
             let capture = this.lineCapture();
             capture.on('line', line => {
-                if (!this.currentTable && isTableSplitter(line)) {
+                // ZNC tables start with + on the first line
+                if (!this.currentTable && line[0] === '+') {
                     this.currentTable = tableParser(line, onTableResult);
                 } else if (this.currentTable) {
                     this.currentTable(line);
@@ -113,8 +114,20 @@ function tableParser(firstLine, cb) {
     let numSplittersReceived = 0;
     let headers = splitTableRow(firstLine);
     let rows = [];
+    let splitter = '';
+
     function parseTableLine(line) {
-        if (isTableSplitter(line)) {
+        if (!splitter) {
+            // Different ZNC versions format the table differently.
+            // A splitter (start of table line, end of headers line, end of table line)
+            // may be +-- +== or some other combination. We use the fact that they are
+            // all the same in a single output and get the format from the first line
+            // we process. That is then compared to further lines to detect each section
+            // of the table.
+            splitter = line.substr(0, 3);
+        }
+
+        if (line.substr(0, 3) === splitter) {
             numSplittersReceived++;
         }
 
@@ -177,12 +190,7 @@ function parseTableContents(data, headers) {
     return ret;
 }
 
-function isTableSplitter(line) {
-    return line.substr(0, 3) === '+==' || line.substr(0, 3) === '+--';
-}
-// function isRowSplitter(line) {
- //   return line.substr(0, 3) === '+--';
-// }
+
 function isDataRow(line) {
     return line.substr(0, 2) === '| ';
 }
