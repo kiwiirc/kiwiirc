@@ -10,7 +10,7 @@
             Connecting...
         </div>
         <div v-else>
-            Not connected. <a @click="reconnect" class="u-link">Connect</a>
+            <a @click="reconnect" class="u-button u-button-primary">Connect</a>
         </div>
 
         <form class="u-form">
