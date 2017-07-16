@@ -30,6 +30,10 @@
             <a@click="clickAddNetwork" v-if="!isRestrictedServer" ><i class="fa fa-plus" aria-hidden="true"></i></a><a @click="clickAppSettings" ><i class="fa fa-cog" aria-hidden="true"></i></a>
         </div>
 
+        <div v-if="networks.length === 0" class="kiwi-statebrowser-nonetworks">
+            No networks here yet.<br><a class="u-link" @click="clickAddNetwork">Add one?</a>
+        </div>
+
         <div v-if="Object.keys(provided_networks).length > 0" class="kiwi-statebrowser-availablenetworks">
             <div @click="show_provided_networks=!show_provided_networks" class="kiwi-statebrowser-availablenetworks-toggle">&#8618; Available networks</div>
             <div

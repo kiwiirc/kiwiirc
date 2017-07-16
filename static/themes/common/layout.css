@@ -186,6 +186,12 @@ p {
     background: rgba(255,255,255,0.1);
 }
 
+.kiwi-statebrowser-nonetworks {
+    background: rgba(255,255,255,0.15);
+    padding: 5px;
+    text-align: center;
+}
+
 .kiwi-statebrowser-availablenetworks {
 }
 .kiwi-statebrowser-availablenetworks-toggle {
