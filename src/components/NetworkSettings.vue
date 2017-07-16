@@ -154,6 +154,11 @@ export default {
             this.znc_password = match[3] || '';
         }
     },
+    mounted: function mounted() {
+        this.$nextTick(() => {
+            this.$el.querySelector('.kiwi-networksettings-connection-address input').focus();
+        });
+    },
 };
 </script>
 
