@@ -89,7 +89,7 @@ export default {
     methods: {
         nickStyle: function nickColour(nick) {
             let styles = {};
-            if (this.settingColouredNicklist) {
+            if (this.buffer.setting('coloured_nicklist')) {
                 styles.color = TextFormatting.createNickColour(nick);
             }
             return styles;
