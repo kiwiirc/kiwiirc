@@ -10,7 +10,7 @@
             Connecting...
         </div>
         <div v-else>
-            Not connected. <a @click="reconnect" class="u-link">Connect</a>
+            <a @click="reconnect" class="u-button u-button-primary">Connect</a>
         </div>
 
         <form class="u-form">
@@ -35,19 +35,22 @@
                         <input-text label="Network" v-model="znc_network" />
                         <input-text label="Password" v-model="znc_password" type="password" />
                     </template>
+                </div>
 
-                    <div class="kiwi-networksettings-server-types">
-                        <a
-                            @click="server_type='network'"
-                            class="u-link"
-                            :class="{'kiwi-networksettings-server-type-active': server_type==='network'}"
-                        >Network</a>
-                        <a
-                            @click="server_type='znc'"
-                            class="u-link"
-                            :class="{'kiwi-networksettings-server-type-active': server_type==='znc'}"
-                        >ZNC</a>
+                <div class="kiwi-networksettings-server-types">
+                    <div v-if="server_type==='znc'" class="kiwi-networksettings-server-types-info">
+                        Other networks on this ZNC account will be listed in the network list
                     </div>
+                    <a
+                        @click="server_type='network'"
+                        class="u-link"
+                        :class="{'kiwi-networksettings-server-type-active': server_type==='network'}"
+                    >Network</a>
+                    <a
+                        @click="server_type='znc'"
+                        class="u-link"
+                        :class="{'kiwi-networksettings-server-type-active': server_type==='znc'}"
+                    >ZNC</a>
                 </div>
             </div>
 
@@ -150,6 +153,11 @@ export default {
             this.znc_network = match[2] || '';
             this.znc_password = match[3] || '';
         }
+    },
+    mounted: function mounted() {
+        this.$nextTick(() => {
+            this.$el.querySelector('.kiwi-networksettings-connection-address input').focus();
+        });
     },
 };
 </script>

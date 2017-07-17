@@ -31,6 +31,7 @@ const stateObj = {
             coloured_nicklist: true,
             block_pms: false,
             show_emoticons: true,
+            extra_formatting: true,
             mute_sound: false,
         },
         // Startup screen default
@@ -99,6 +100,7 @@ const stateObj = {
             nick: 'prawnsalad',
             username: 'prawn',
             settings: { show_raw: false },
+            is_znc: false,
             buffers: [
                 {
                     id: 0,
@@ -700,6 +702,7 @@ function createEmptyNetworkObject() {
         id: 0,
         name: '',
         state: 'disconnected',
+        is_znc: false,
         connection: {
             server: '',
             port: 6667,

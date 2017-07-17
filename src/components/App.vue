@@ -75,30 +75,30 @@ let themes = ThemeManager.instance(state);
 
 export default {
     created: function created() {
-        state.$on('active.component', (component, props) => {
+        this.listen(state, 'active.component', (component, props) => {
             this.activeComponent = null;
             if (component) {
                 this.activeComponentProps = props;
                 this.activeComponent = component;
             }
         });
-        state.$on('statebrowser.toggle', () => {
+        this.listen(state, 'statebrowser.toggle', () => {
             this.stateBrowserDrawOpen = !this.stateBrowserDrawOpen;
         });
-        state.$on('statebrowser.show', () => {
+        this.listen(state, 'statebrowser.show', () => {
             this.stateBrowserDrawOpen = true;
         });
-        state.$on('statebrowser.hide', () => {
+        this.listen(state, 'statebrowser.hide', () => {
             this.stateBrowserDrawOpen = false;
         });
-        state.$on('mediaviewer.show', (url) => {
+        this.listen(state, 'mediaviewer.show', (url) => {
             this.mediaviewerUrl = url;
             this.mediaviewerOpen = true;
         });
-        state.$on('mediaviewer.hide', () => {
+        this.listen(state, 'mediaviewer.hide', () => {
             this.mediaviewerOpen = false;
         });
-        state.$on('userbox.show', (user, opts) => {
+        this.listen(state, 'userbox.show', (user, opts) => {
             this.userboxUser = user;
             this.userboxBuffer = opts.buffer;
             this.userboxOpen = true;
@@ -107,12 +107,12 @@ export default {
                 left: opts.left,
             };
         });
-        state.$on('userbox.hide', () => {
+        this.listen(state, 'userbox.hide', () => {
             this.userboxOpen = false;
         });
 
         this.themeUrl = themes.themeUrl(themes.currentTheme());
-        state.$on('theme.change', () => {
+        this.listen(state, 'theme.change', () => {
             this.themeUrl = themes.themeUrl(themes.currentTheme());
         });
 

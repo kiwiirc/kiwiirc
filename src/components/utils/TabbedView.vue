@@ -20,7 +20,7 @@
 let Vue = require('vue');
 
 Vue.component('tabbed-tab', {
-    template: '<div class="u-tabbed-content"><slot v-if="active"></slot></div>',
+    template: '<div v-if="active" class="u-tabbed-content"><slot></slot></div>',
     data: function data() {
         return { active: false };
     },

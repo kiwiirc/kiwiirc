@@ -31,6 +31,7 @@
                         <label><span>Show emoticons:</span> <input type="checkbox" v-model="bufferSettings.show_emoticons" /></label>
                         <label><span>Block new private messages:</span> <input type="checkbox" v-model="bufferSettings.block_pms" /></label>
                         <label><span>Messages in scrollback:</span> <input type="number" class="u-input" v-model="bufferSettings.scrollback_size" /></label>
+                        <label><span>Extra formatting:</span> <input type="checkbox" v-model="bufferSettings.extra_formatting" /></label>
                     </div>
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-notifications">

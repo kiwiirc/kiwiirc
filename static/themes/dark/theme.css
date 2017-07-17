@@ -198,33 +198,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-nicklist {
+.kiwi-container-toggledraw-sidebar {
     background: #353535;
     border-bottom: 1px solid #222;
 }
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #222;
 }
-.kiwi-container-toggledraw-nicklist {
+.kiwi-container-toggledraw-sidebar {
     border-left: 1px solid #222;
 }
-.kiwi-container-toggledraw-nicklist--disabled {
+.kiwi-container-toggledraw-sidebar--disabled {
     color: #b8babd;
 }
 
 
 
 /**
- * Nicklist
+ * Sidebar
  */
 
-.kiwi-nicklist {
+.kiwi-sidebar {
     background-color: #353535;
     border-left: 1px solid #222;
 }
+
+
+/**
+ * Nicklist
+ */
+
 .kiwi-nicklist-info {
     border: 1px solid #484747;
-    border-width: 1px 0 1px 0;
+    border-width: 1px 0;
 }
 
 

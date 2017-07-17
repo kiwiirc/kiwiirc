@@ -132,6 +132,19 @@
     border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
+.kiwi-statebrowser-availablenetworks {
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+.kiwi-statebrowser-availablenetworks-toggle {
+    background: rgba(255,255,255,0.15);
+}
+.kiwi-statebrowser-availablenetworks-link {
+    border-right: 15px solid red;
+}
+.kiwi-statebrowser-availablenetworks-link--connected {
+    border-color: green;
+}
+
 .kiwi-statebrowser-channel-name {
     color: #a7a7a7;
 }
@@ -189,18 +202,29 @@
 }
 
 .kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-nicklist {
+.kiwi-container-toggledraw-sidebar {
     background: #f6f6f6;
     border-bottom: 1px solid #dddddd;
 }
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #dddddd;
 }
-.kiwi-container-toggledraw-nicklist {
+.kiwi-container-toggledraw-sidebar {
     border-left: 1px solid #dddddd;
 }
-.kiwi-container-toggledraw-nicklist--disabled {
+.kiwi-container-toggledraw-sidebar--disabled {
     color: #b8babd;
+}
+
+
+
+/**
+ * Sidebar
+ */
+
+.kiwi-sidebar {
+    background-color: #f6f6f6;
+    border-left: 1px solid #dddddd;
 }
 
 
@@ -209,12 +233,8 @@
  * Nicklist
  */
 
-.kiwi-nicklist {
-    background-color: #f6f6f6;
-    border-left: 1px solid #dddddd;
-}
 .kiwi-nicklist-info {
-    border: 1px solid #ddd;
+    border-color: #ddd;
 }
 
 

@@ -8,12 +8,6 @@
     >
 
         <template v-if="isChannel()">
-            <div class="kiwi-header-options">
-                <a
-                    class="u-button u-button-secondary"
-                    @click="buffer_settings_open=!buffer_settings_open"
-                ><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
-            </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div v-if="isJoined" class="kiwi-header-topic" v-html="formatMessage(buffer.topic)+'&nbsp;'"></div>
             <div v-if="!isJoined" class="kiwi-header-notjoined">

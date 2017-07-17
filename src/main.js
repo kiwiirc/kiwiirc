@@ -32,6 +32,30 @@ function getQueryVariable(variable) {
     return false;
 }
 
+// Add a handy this.listen() fn to Vue instances. Saves on the need to add an event listener
+// and then manually remove them all the time.
+Vue.mixin({
+    methods: {
+        listen: function listen(source, event, fn) {
+            this.listeningEvents = this.listeningEvents || [];
+            this.listeningEvents.push(() => {
+                source.$off(event, fn);
+            });
+            source.$on(event, fn);
+        },
+        listenOnce: function listenOnce(source, event, fn) {
+            this.listeningEvents = this.listeningEvents || [];
+            this.listeningEvents.push(() => {
+                source.$off(event, fn);
+            });
+            source.$once(event, fn);
+        },
+    },
+    beforeDestroy: function beforeDestroy() {
+        (this.listeningEvents || []).forEach(fn => fn());
+    },
+});
+
 let configFile = 'static/config.json';
 let configObj = null;
 

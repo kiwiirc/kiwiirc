@@ -1,8 +1,8 @@
 <template>
     <div class="kiwi-container" v-bind:class="{
             /* 'kiwi-container-' + bufferType: true, */
-            'kiwi-container--nicklist-open': nicklistOpen,
-            'kiwi-container--no-nicklist': buffer && !buffer.isChannel(),
+            'kiwi-container--sidebar-open': sidebarOpen,
+            'kiwi-container--no-sidebar': buffer && !buffer.isChannel(),
             'kiwi-container--mini': isHalfSize,
     }">
         <template v-if="buffer">
@@ -10,19 +10,19 @@
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </div>
             <container-header :buffer="buffer"></container-header>
-            <div @click.stop="toggleNicklist" v-bind:class="{
-                'kiwi-container-toggledraw-nicklist': true,
-                'kiwi-container-toggledraw-nicklist--disabled': !buffer.isChannel()
+            <div @click.stop="toggleSidebar" v-bind:class="{
+                'kiwi-container-toggledraw-sidebar': true,
+                'kiwi-container-toggledraw-sidebar--disabled': !buffer.isChannel()
             }">
-                <i class="fa fa-users" aria-hidden="true"></i>
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
             </div>
 
-            <nicklist
+            <sidebar
                 v-if="buffer.isChannel()"
                 :network="network"
                 :buffer="buffer"
                 :users="users"
-            ></nicklist>
+            ></sidebar>
             <message-list :buffer="buffer" :messages="messages" :users="users"></message-list>
         </template>
         <template v-else>
@@ -36,18 +36,18 @@
 
 import state from 'src/libs/state';
 import ContainerHeader from './ContainerHeader';
-import Nicklist from './Nicklist';
+import Sidebar from './Sidebar';
 import MessageList from './MessageList';
 
 export default {
     components: {
         ContainerHeader,
-        Nicklist,
+        Sidebar,
         MessageList,
     },
     data: function data() {
         return {
-            nicklistOpen: false,
+            sidebarOpen: false,
         };
     },
     props: ['network', 'buffer', 'users', 'messages', 'isHalfSize'],
@@ -72,21 +72,21 @@ export default {
         toggleStateBrowser: function toggleStateBrowser() {
             state.$emit('statebrowser.toggle');
         },
-        toggleNicklist: function toggleNicklist() {
+        toggleSidebar: function toggleSidebar() {
             if (this.buffer.isChannel()) {
-                state.$emit('nicklist.toggle');
+                state.$emit('sidebar.toggle');
             }
         },
     },
     created: function created() {
-        state.$on('nicklist.toggle', () => {
-            this.nicklistOpen = !this.nicklistOpen;
+        this.listen(state, 'sidebar.toggle', () => {
+            state.$emit('sidebar.' + (this.sidebarOpen ? 'hide' : 'show'));
         });
-        state.$on('nicklist.show', () => {
-            this.nicklistOpen = true;
+        this.listen(state, 'sidebar.show', () => {
+            this.sidebarOpen = true;
         });
-        state.$on('nicklist.hide', () => {
-            this.nicklistOpen = false;
+        this.listen(state, 'sidebar.hide', () => {
+            this.sidebarOpen = false;
         });
     },
 };
@@ -106,13 +106,13 @@ export default {
     min-height: 50px;
     z-index: 1;
 }
-.kiwi-nicklist {
+.kiwi-sidebar {
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
     width: 200px;
-    z-index: 1;
+    z-index: 2;
 }
 .kiwi-messagelist {
     position: absolute;
@@ -122,13 +122,13 @@ export default {
     bottom: 0;
 }
 
-.kiwi-container--no-nicklist .kiwi-header,
-.kiwi-container--no-nicklist .kiwi-messagelist {
+.kiwi-container--no-sidebar .kiwi-header,
+.kiwi-container--no-sidebar .kiwi-messagelist {
     right: 0;
 }
 
 .kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-nicklist {
+.kiwi-container-toggledraw-sidebar {
     display: none;
     width: 50px;
     position: absolute;
@@ -140,7 +140,7 @@ export default {
 .kiwi-container-toggledraw-statebrowser {
     left: 0;
 }
-.kiwi-container-toggledraw-nicklist {
+.kiwi-container-toggledraw-sidebar {
     right: 0;
 }
 
@@ -150,7 +150,7 @@ export default {
         left: 50px;
         right: 50px;
     }
-    .kiwi-nicklist {
+    .kiwi-sidebar {
         right: -200px;
         top: 50px;
     }
@@ -158,11 +158,11 @@ export default {
         right: 0;
     }
     .kiwi-container-toggledraw-statebrowser,
-    .kiwi-container-toggledraw-nicklist {
+    .kiwi-container-toggledraw-sidebar {
         display: block;
     }
 
-    .kiwi-container--nicklist-open .kiwi-nicklist {
+    .kiwi-container--sidebar-open .kiwi-sidebar {
         right: 0;
     }
 

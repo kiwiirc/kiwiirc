@@ -282,7 +282,7 @@ export default {
         },
     },
     created: function created() {
-        state.$on('document.keydown', (ev) => {
+        this.listen(state, 'document.keydown', (ev) => {
             // No input box currently? Nothing to shift focus to
             if (!this.$refs.input) {
                 return;

@@ -1,7 +1,17 @@
 <template>
-    <div class="kiwi-statebrowser-network" :class="[isActiveNetwork ? 'kiwi-statebrowser-network--active' : '']">
-        <a class="kiwi-statebrowser-network-name u-link" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
+    <div class="kiwi-statebrowser-network" :class="[
+        isActiveNetwork ? 'kiwi-statebrowser-network--active' : '',
+    ]">
+        <div class="kiwi-statebrowser-network-header">
+            <a class="kiwi-statebrowser-network-name u-link" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
+            <a v-if="network.buffers.length > 1" class="kiwi-statebrowser-network-toggle" @click="collapsed=!collapsed">
+                <i class="fa" :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" aria-hidden="true"></i>
+            </a>
+        </div>
 
+        <div class="kiwi-statebrowser-network-toggable-area" :class="[
+            collapsed ? 'kiwi-statebrowser-network-toggable-area--collapsed' : '',
+        ]">
             <transition name="kiwi-statebrowser-network-status-transition">
             <div v-if="network.state !== 'connected'" class="kiwi-statebrowser-network-status">
                 <template v-if="!network.connection.server">
@@ -17,55 +27,56 @@
             </div>
             </transition>
 
-        <div class="kiwi-statebrowser-channels">
-            <div
-                v-for="buffer in orderedBuffers(network.buffers)"
-                class="kiwi-statebrowser-channel"
-                v-bind:class="{
-                    'kiwi-statebrowser-channel-active': isActiveBuffer(buffer),
-                    'kiwi-statebrowser-channel-notjoined': buffer.isChannel() && !buffer.joined
-                }"
-            >
-                <div class="kiwi-statebrowser-channel-name u-link" @click="setActiveBuffer(buffer)">{{buffer.name}}</div>
-                <div class="kiwi-statebrowser-channel-labels">
-                    <transition name="kiwi-statebrowser-channel-label-transition">
-                    <div v-if="buffer.flags.unread" class="kiwi-statebrowser-channel-label">
-                        {{buffer.flags.unread}}
-                    </div>
-                    </transition>
-                </div>
-
+            <div class="kiwi-statebrowser-channels">
                 <div
-                    class="kiwi-statebrowser-channel-settings"
-                    @click.stop="$emit('showBufferSettings', buffer, $event.clientY)"
+                    v-for="buffer in orderedBuffers(network.buffers)"
+                    class="kiwi-statebrowser-channel"
+                    v-bind:class="{
+                        'kiwi-statebrowser-channel-active': isActiveBuffer(buffer),
+                        'kiwi-statebrowser-channel-notjoined': buffer.isChannel() && !buffer.joined
+                    }"
                 >
-                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <div class="kiwi-statebrowser-channel-name u-link" @click="setActiveBuffer(buffer)">{{buffer.name}}</div>
+                    <div class="kiwi-statebrowser-channel-labels">
+                        <transition name="kiwi-statebrowser-channel-label-transition">
+                        <div v-if="buffer.flags.unread" class="kiwi-statebrowser-channel-label">
+                            {{buffer.flags.unread}}
+                        </div>
+                        </transition>
+                    </div>
+
+                    <div
+                        class="kiwi-statebrowser-channel-settings"
+                        @click.stop="$emit('showBufferSettings', buffer, $event.clientY)"
+                    >
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <form
-            v-if="network.state === 'connected'"
-            @submit.prevent="submitNewChannelForm"
-            class="kiwi-statebrowser-newchannel"
-        >
-            <div
-            	class="kiwi-statebrowser-newchannel-inputwrap"
-            	:class="[
-            		new_channel_input_has_focus ?
-            			'kiwi-statebrowser-newchannel-inputwrap--focus' :
-            			''
-            	]"
+            <form
+                v-if="network.state === 'connected'"
+                @submit.prevent="submitNewChannelForm"
+                class="kiwi-statebrowser-newchannel"
             >
-                <input
-                    type="text"
-                    placeholder="Join new #channel"
-                    v-model="new_channel_input"
-                    @focus="onNewChannelInputFocus"
-                    @blur="onNewChannelInputBlur"
-                /> <i @click="submitNewChannelForm" class="fa fa-plus" aria-hidden="true"></i>
-            </div>
-        </form>
+                <div
+                	class="kiwi-statebrowser-newchannel-inputwrap"
+                	:class="[
+                		new_channel_input_has_focus ?
+                			'kiwi-statebrowser-newchannel-inputwrap--focus' :
+                			''
+                	]"
+                >
+                    <input
+                        type="text"
+                        placeholder="Join new #channel"
+                        v-model="new_channel_input"
+                        @focus="onNewChannelInputFocus"
+                        @blur="onNewChannelInputBlur"
+                    /> <i @click="submitNewChannelForm" class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -82,6 +93,7 @@ export default {
         return {
             new_channel_input_has_focus: false,
             new_channel_input: '',
+            collapsed: false,
         };
     },
     props: ['network'],
@@ -190,6 +202,24 @@ export default {
 </script>
 
 <style>
+.kiwi-statebrowser-network-toggable-area {
+}
+.kiwi-statebrowser-network-toggable-area--collapsed {
+    display: none;
+}
+.kiwi-statebrowser-network-header {
+    display: flex;
+}
+.kiwi-statebrowser-network-name {
+    flex: 1;
+}
+.kiwi-statebrowser-network-toggle {
+    width: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 .kiwi-statebrowser-channel {
     position: relative;
     display: flex;
