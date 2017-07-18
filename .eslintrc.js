@@ -22,6 +22,7 @@ module.exports = {
     "no-param-reassign": ["error", { "props": false }],
     "no-alert": 0,
     "no-unused-vars": ["error", { "args": "none" }],
-    "no-restricted-syntax": ["error", "WithStatement"]
+    "no-restricted-syntax": ["error", "WithStatement"],
+    "no-cond-assign": 0
   }
 }
