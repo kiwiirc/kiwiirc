@@ -330,7 +330,6 @@ export default {
 
 .kiwi-controlinput-input-wrap {
     width: 100%;
-    display: inline-block;
     height: 100%;
     box-sizing: border-box;
     overflow: visible;

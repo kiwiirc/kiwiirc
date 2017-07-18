@@ -325,5 +325,6 @@ body {
     bottom: 0;
     height: 40px;
     width: 100%;
+    z-index: 2;
 }
 </style>

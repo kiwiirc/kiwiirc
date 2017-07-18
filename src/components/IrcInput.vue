@@ -9,6 +9,7 @@
             @keypress="updateValueProps(); $emit('keypress', $event)"
             @keydown="updateValueProps(); $emit('keydown', $event)"
             @keyup="updateValueProps(); $emit('keyup', $event)"
+            @textInput="updateValueProps(); onTextInput($event); $emit('textInput', $event)"
             @mouseup="updateValueProps();"
             @click="$emit('click', $event)"
         ></div>
@@ -22,10 +23,12 @@ import htmlparser from 'htmlparser2';
 export default {
     data: function data() {
         return {
-            raw_value: '',
+            text_value: '',
             current_el: null,
             current_el_pos: 0,
             current_range: null,
+            default_colour: null,
+            code_map: Object.create(null),
         };
     },
     props: ['placeholder'],
@@ -34,24 +37,37 @@ export default {
             return this.$refs.editor;
         },
     },
-    watch: {
-        current_range: function currentRange(newVal) {
-            console.log('current_range changed', newVal);
-        },
-    },
     methods: {
+        onTextInput: function onTextInput(event) {
+            // Mobile devices trigger a textInput event for things such as autocompletion
+            // and sugegsted words. Unfortunately they end with a return character which
+            // is not what we expect, so prevent the original event from inserting anything
+            // and manually place it in with the current word.
+            if (event.data[event.data.length - 1] === '\n') {
+                event.preventDefault();
+                this.setCurrentWord(event.data.trim());
+            }
+        },
         updateValueProps: function updateValueProps() {
-            console.log('updateValueProps()');
             let selection = window.getSelection();
             this.current_el_pos = selection.anchorOffset;
             this.current_el = selection.anchorNode;
 
-            let range = selection.getRangeAt(0);
-            this.current_range = range ?
-                range.cloneRange() :
-                null;
+            let range = null;
+            let currentRange = selection.getRangeAt(0);
+            if (currentRange) {
+                range = currentRange.cloneRange();
+                range.selectNodeContents(this.$refs.editor);
+                range.setEnd(currentRange.startContainer, currentRange.startOffset);
+            }
 
-            this.raw_value = this.$refs.editor.innerHTML;
+            let start = range.toString().length;
+            this.current_range = [
+                start,
+                start + currentRange.toString().length,
+            ];
+
+            this.text_value = this.$refs.editor.innerHTML;
         },
         buildIrcText: function buildIrcText() {
             let source = this.$refs.editor.innerHTML;
@@ -59,8 +75,18 @@ export default {
 
             let parser = new htmlparser.Parser({
                 onopentag: (name, attribs) => {
-                    if (attribs['data-code']) {
-                        textValue += '\x03' + attribs['data-code'];
+                    let codeLookup = '';
+                    if (attribs.style) {
+                        let match = attribs.style.match(/color: ([^;]+)/);
+                        if (match) {
+                            codeLookup = match[1];
+                            if (this.code_map[codeLookup]) {
+                                textValue += '\x03' + this.code_map[codeLookup];
+                            }
+                        }
+                    }
+                    if (attribs.src && this.code_map[attribs.src]) {
+                        textValue += this.code_map[attribs.src];
                     }
                 },
                 ontext: text => {
@@ -83,62 +109,49 @@ export default {
         },
         reset: function reset() {
             this.$refs.editor.innerHTML = '';
+
+            // Firefox inserts a <br> on empty contenteditables after it's been reset. But that
+            // fucks up the placeholder :empty CSS selector we use. So just remove it.
+            let br = this.$refs.editor.querySelector('br');
+            if (br) {
+                br.remove();
+            }
+
+            if (this.default_colour) {
+                this.focus();
+                this.setColour(this.default_colour.code, this.default_colour.colour);
+            }
         },
         resetStyles: function resetStyles() {
             this.focus();
             document.execCommand('styleWithCSS', false, true);
             document.execCommand('selectAll', false, null);
             document.execCommand('removeFormat', false, null);
-            this.removeUnstyledTags();
+            this.default_colour = null;
         },
-        removeUnstyledTags: function removeUneededTags() {
-            // Overlapping elements are not automatically removed because we add custom attributes.
-            // But the style attribute is removed so we can remove any elements without a
-            // style attribute.
-            // We can't simply remove the element as it may contain text content so we must replace
-            // it with a TextNode
-            let editorEl = this.$refs.editor;
-            editorEl.querySelectorAll(':not([style]):not(img)').forEach(el => {
-                let t = document.createTextNode(el.innerText);
-                el.parentNode.replaceChild(t, el);
-            });
-
-            /*
-            // Firefox has a trailing br for some reason. So remove it if it's there
-            let lastChild = editorEl.lastChild;
-            if (lastChild && lastChild.tagName && lastChild.tagName.toLowerCase() !== 'br') {
-                lastChild.parent.removeChild(lastChild);
+        setColour: function setColour(code, colour) {
+            // If no current text selection, set this colour as the default colour for
+            // future messages too
+            let range = window.getSelection().getRangeAt(0);
+            if (range && range.collapsed) {
+                this.default_colour = {
+                    code,
+                    colour,
+                };
             }
-            */
-        },
-        setColour: function setColour(code, color) {
-            let editorEl = this.$refs.editor;
 
             this.focus();
             document.execCommand('styleWithCSS', false, true);
-            document.execCommand('foreColor', false, color);
+            document.execCommand('foreColor', false, colour);
 
-            this.removeUnstyledTags();
-
-            // Add the data attributes to any elements that do not have the .handled CSS class.
-            // These elements are only going to be the newly created elements since any previous
-            // elements will have had the CSS class added already.
-            editorEl.querySelectorAll(':not(.handled)').forEach(el => {
-                el.dataset.code = code;
-                el.classList.add('handled');
-            });
+            this.code_map[colour] = code;
         },
         addImg: function addImg(code, url) {
             this.focus();
             document.execCommand('styleWithCSS', false, true);
             document.execCommand('insertImage', false, url);
 
-            let editorEl = this.$refs.editor;
-
-            editorEl.querySelectorAll(':not(.handled)').forEach(el => {
-                el.dataset.code = code;
-                el.classList.add('handled');
-            });
+            this.code_map[url] = code;
         },
 
         // Insert some text at the current position
@@ -216,44 +229,44 @@ export default {
         focus: function focus() {
             if (this.current_range) {
                 let selection = window.getSelection();
+                let savedSel = this.current_range;
+
+                let charIndex = 0;
+                let range = document.createRange();
+                range.setStart(this.$refs.editor, 0);
+                range.collapse(true);
+                let nodeStack = [this.$refs.editor];
+                let node = null;
+                let foundStart = false;
+                let stop = false;
+
+                while (!stop && (node = nodeStack.pop())) {
+                    if (node.nodeType === 3) {
+                        let nextCharIndex = charIndex + node.length;
+                        if (!foundStart && savedSel[0] >= charIndex && savedSel[0] <= nextCharIndex) {
+                            range.setStart(node, savedSel[0] - charIndex);
+                            foundStart = true;
+                        }
+                        if (foundStart && savedSel[1] >= charIndex && savedSel[1] <= nextCharIndex) {
+                            range.setEnd(node, savedSel[1] - charIndex);
+                            stop = true;
+                        }
+                        charIndex = nextCharIndex;
+                    } else {
+                        let i = node.childNodes.length;
+                        while (i--) {
+                            nodeStack.push(node.childNodes[i]);
+                        }
+                    }
+                }
+
+                // Firefox needs the manual focus() call
+                this.$refs.editor.focus();
                 selection.removeAllRanges();
-                let range = this.current_range; // .cloneRange();
-                // range.collapse();
-                console.log('range:', range);
                 selection.addRange(range);
             } else {
-                console.log('focus() no current_el');
                 this.$refs.editor.focus();
             }
-            /*
-            let range = document.createRange();
-
-            if (!this.current_el) {
-                console.log('focus() no current_el');
-                this.$refs.editor.focus();
-                return;
-            }
-            console.log('focus()', this.current_el, this.current_el_pos);
-            // this.current_el.focus();
-            range.setStart(this.current_el, this.current_el_pos);
-            range.setEnd(this.current_el, this.current_el_pos);
-            range.collapse();
-            */
-
-            /*
-            if (!this.current_range) {
-                console.log('focus() no current_el');
-                this.$refs.editor.focus();
-                return;
-            }
-
-            if (this.current_range) {
-                console.log('range:', this.current_range);
-                let selection = window.getSelection();
-                selection.removeAllRanges();
-                selection.addRange(this.current_range);
-            }
-            */
         },
     },
 };
