@@ -162,7 +162,7 @@ export default {
             }
         },
         inputKeyUp: function inputKeyUp(event) {
-            let inputVal = this.$refs.input.raw_value;
+            let inputVal = this.$refs.input.text_value;
             let currentWord = this.$refs.input.getCurrentWord();
             let currentToken = currentWord.word.substr(0, currentWord.position);
 
@@ -183,7 +183,6 @@ export default {
                 this.autocomplete_open = true;
             } else if (inputVal === '/') {
                 // Just typed / so start the command auto completion
-                // TODO: Get the commands typed up so this can be enabled
                 this.autocomplete_items = this.buildAutoCompleteItems({ commands: true });
                 this.autocomplete_open = true;
             } else if (currentToken === '#') {

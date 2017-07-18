@@ -67,7 +67,7 @@ export default {
                 start + currentRange.toString().length,
             ];
 
-            this.text_value = this.$refs.editor.innerHTML;
+            this.text_value = this.$refs.editor.innerText;
         },
         buildIrcText: function buildIrcText() {
             let source = this.$refs.editor.innerHTML;
