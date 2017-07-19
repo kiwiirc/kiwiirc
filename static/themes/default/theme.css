@@ -19,36 +19,29 @@
 }
 .u-button {
     color: #2c3e50;
-    border-radius: 4px;
+    border-radius: 3px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     vertical-align: middle;
     text-align: center;
+    outline: none;
+}
+.u-button:hover {
+    opacity: 0.75;
 }
 .u-button-primary {
-    background-color: #0078e7;
-    border: 1px solid #0078e7;
-    color: #f4faff;
-}
-.u-button-primary:hover {
-    background: #4596e0;
-    border-color: #4596e0;
+    background-color: #86b32d;
+    border: none;
+    border-bottom: 1px solid #5d7d1f;
+    color: #fff;
 }
 .u-button-secondary {
-    border: 1px solid #9a9a9a;
     background: rgba(117, 117, 117, 0.07);
-}
-.u-button-secondary:hover {
-    color: #0078e7;
-    border-color: #0078e7;
+    border-bottom: 1px solid rgba(117, 117, 117, 0.2);
 }
 .u-button-warning {
     background-color: #ca3c3c;
-    border: 1px solid #ca3c3c;
+    border-bottom: 1px solid #5f1515;
     color: #fff4f4;
-}
-.u-button-warning:hover {
-    background: #c37171;
-    border-color: #c37171;
 }
 
 .input-text {
