@@ -80,7 +80,7 @@ export default {
                 tls: options.tls,
                 password: this.password,
                 encoding: _.trim(options.encoding),
-                //direct: true,
+                // direct: true,
             });
 
             // Only switch to the first channel we join if multiple are being joined
