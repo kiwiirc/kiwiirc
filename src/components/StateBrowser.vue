@@ -200,7 +200,6 @@ export default {
 .kiwi-statebrowser-switcher a {
     display: inline-block;
     width: 50%;
-    height: 100%;
 }
 
 .kiwi-statebrowser-scrollarea {
