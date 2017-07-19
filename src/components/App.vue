@@ -14,6 +14,8 @@
         <template v-else>
             <state-browser :networks="networks"></state-browser>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
+                <div class="kiwi-workspace-background"></div>
+
                 <template v-if="!activeComponent && network">
                     <user-box
                         v-if="userboxOpen"
@@ -281,6 +283,14 @@ body {
     opacity: 0;
     transition: opacity .5s;
     will-change: opacity;
+}
+.kiwi-workspace-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
 }
 /* Small screen will cause the statebrowser to act as a drawer */
 @media screen and (max-width: 500px) {

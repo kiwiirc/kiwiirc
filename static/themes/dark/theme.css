@@ -3,12 +3,15 @@
 .kiwi-wrap {
     font-family: Source Sans Pro, Helvetica, sans-serif;
     color: #ccc;
-    background: #201F1F;
 }
 
 .kiwi-workspace:before {
     /* The top bar at the top of the startup page */
     background: -webkit-linear-gradient(left, #BDDE6B 0%,#BDDE6B 20%, #7DBD67 20%, #7DBD67 40%,#ECED77 40%,#ECED77 60%,#F6C358 60%,#F6C358 80%,#F66B58 80%) 0 0 no-repeat;
+}
+
+.kiwi-workspace-background {
+    background: #201F1F;
 }
 
 h1, h2, h3, h4, h5, h6 {
