@@ -28,31 +28,22 @@ h1, h2, h3, h4, h5, h6 {
     vertical-align: middle;
     text-align: center;
 }
+.u-button:hover {
+    opacity: 0.75;
+}
 .u-button-primary {
-    background-color: #444;
-    border: 1px solid #00695C;
+    background-color: #4d6b0f;
+    border-bottom: 1px solid #828282;
     color: #ccc;
 }
-.u-button-primary:hover {
-    background: #4596e0;
-    border-color: #4596e0;
-}
 .u-button-secondary {
-    border: 1px solid #9a9a9a;
-    background: rgba(117, 117, 117, 0.07);
-}
-.u-button-secondary:hover {
-    color: #00695C;
-    border-color: #00695C;
+    border-bottom: 1px solid #9a9a9a;
+    background: #4c4b4b;
 }
 .u-button-warning {
-    background-color: #ca3c3c;
-    border: 1px solid #ca3c3c;
+    background-color: #922c2c;
+    border-bottom: 1px solid #ca3c3c;
     color: #fff4f4;
-}
-.u-button-warning:hover {
-    background: #c37171;
-    border-color: #c37171;
 }
 
 .input-text {
