@@ -322,6 +322,7 @@ p {
  */
 
 .kiwi-container {
+    top: 4px;
 }
 
 .kiwi-container-toggledraw-statebrowser,
@@ -383,13 +384,14 @@ p {
  */
 
 .kiwi-header {
-    padding: 5px;
+    padding: 0 20px;
 }
 .kiwi-header:hover {
-    height: auto;
+    max-height: none;
 }
 .kiwi-header-name {
     font-weight: bold;
+    line-height: 49px;
 }
 .kiwi-header-topic {
     font-size: 0.9em;
@@ -416,7 +418,7 @@ p {
 }
 .kiwi-controlinput-user {
     padding: 0 15px;
-    margin-right: 5px;
+    margin-right: 15px;
     font-weight: bold;
     text-align: center;
 }

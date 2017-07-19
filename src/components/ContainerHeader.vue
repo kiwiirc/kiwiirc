@@ -9,7 +9,7 @@
 
         <template v-if="isChannel()">
             <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div v-if="isJoined" class="kiwi-header-topic" v-html="formatMessage(buffer.topic)+'&nbsp;'"></div>
+            <div v-if="isJoined" class="kiwi-header-topic"></div>
             <div v-if="!isJoined" class="kiwi-header-notjoined">
                 <a @click="joinCurrentBuffer" class="u-link">Join Channel</a>
             </div>

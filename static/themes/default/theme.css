@@ -206,7 +206,7 @@
 
 .kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-sidebar {
-    background: #f6f6f6;
+    background: #fff;
     border-bottom: 1px solid #dddddd;
 }
 .kiwi-container-toggledraw-statebrowser {
@@ -226,7 +226,7 @@
  */
 
 .kiwi-sidebar {
-    background-color: #f6f6f6;
+    background-color: #fff;
     border-left: 1px solid #dddddd;
 }
 
@@ -247,8 +247,8 @@
  */
 
 .kiwi-header {
-    background-color: #f6f6f6;
     border-bottom: 1px solid #dddddd;
+    background: #fff;
 }
 .kiwi-header-topic {
     color: #5f5f5f;
@@ -266,14 +266,11 @@
  */
 
 .kiwi-controlinput {
-    background: #eeeeee;
 }
 .kiwi-controlinput-inner {
-    border: 1px solid #cccccc;
-    background: #ffffff;
 }
 .kiwi-controlinput-user {
-    background: #f6f6f6;
+    border-right: 1px solid #dddddd;
 }
 .kiwi-controlinput-input-wrap {
     background: #fff;

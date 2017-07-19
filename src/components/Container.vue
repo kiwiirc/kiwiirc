@@ -96,16 +96,14 @@ export default {
 
 .kiwi-container {
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 .kiwi-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 200px;
-    height: 50px;
-    min-height: 50px;
+    margin-right: 200px;
     z-index: 1;
 }
+
 .kiwi-sidebar {
     position: absolute;
     right: 0;
@@ -115,11 +113,8 @@ export default {
     z-index: 2;
 }
 .kiwi-messagelist {
-    position: absolute;
-    left: 0;
-    top: 50px;
-    right: 200px;
-    bottom: 0;
+    margin-right: 200px;
+    flex: 1;
 }
 
 .kiwi-container--no-sidebar .kiwi-header,
@@ -147,15 +142,15 @@ export default {
 
 @media screen and (max-width: 850px) {
     .kiwi-header {
-        left: 50px;
-        right: 50px;
+        margin-left: 50px;
+        margin-right: 50px;
     }
     .kiwi-sidebar {
         right: -200px;
         top: 50px;
     }
     .kiwi-messagelist {
-        right: 0;
+        margin-right: 0;
     }
     .kiwi-container-toggledraw-statebrowser,
     .kiwi-container-toggledraw-sidebar {

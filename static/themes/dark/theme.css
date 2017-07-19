@@ -197,19 +197,18 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .kiwi-container {
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #484747;
 }
 
 .kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-sidebar {
-    background: #353535;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #484747;
 }
 .kiwi-container-toggledraw-statebrowser {
-    border-right: 1px solid #222;
+    border-right: 1px solid #484747;
 }
 .kiwi-container-toggledraw-sidebar {
-    border-left: 1px solid #222;
+    border-left: 1px solid #484747;
 }
 .kiwi-container-toggledraw-sidebar--disabled {
     color: #b8babd;
@@ -222,8 +221,8 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .kiwi-sidebar {
-    background-color: #353535;
-    border-left: 1px solid #222;
+    background-color: #201F1F;
+    border-left: 1px solid #484747;
 }
 
 
@@ -243,15 +242,14 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .kiwi-header {
-    background-color: #353535;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #484747;
 }
 .kiwi-header-topic {
     color: #ccc;
 }
 
 .kiwi-header-buffersettings {
-    border-top: 1px solid #222;
+    border-top: 1px solid #484747;
 }
 
 
@@ -262,20 +260,15 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .kiwi-controlinput {
-    background: #353535;
 }
 .kiwi-controlinput-inner {
-    border: 1px solid #222;
-    background: #222;
 }
 .kiwi-controlinput-user {
-    background: #353535;
+    border-right: 1px solid 484747;
 }
 .kiwi-controlinput-input-wrap {
-    background: #222;
 }
 .kiwi-controlinput-input {
-    background: #222;
     color: #ccc;
 }
 
@@ -286,11 +279,11 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .kiwi-autocomplete {
-    border: 1px solid #222;
+    border: 1px solid #484747;
     background: #353535;
 }
 .kiwi-autocomplete-item {
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #484747;
 }
 .kiwi-autocomplete-item--selected {
     background: #000;
