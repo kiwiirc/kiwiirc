@@ -31,10 +31,23 @@ export default {
             code_map: Object.create(null),
         };
     },
-    props: ['placeholder'],
+    props: ['value', 'placeholder'],
     computed: {
         editor: function editor() {
             return this.$refs.editor;
+        },
+    },
+    watch: {
+        value: function watchValue(newVal) {
+            // When we trigger input events Vue updates the value prop for us. If the updated value
+            // matches what we already have then the change came from the editor so we don't need
+            // to update it. But if it differs then the change came from elsewhere so we must
+            // update.
+            if (this.$refs.editor.innerHTML !== newVal) {
+                this.$refs.editor.innerHTML = newVal;
+            }
+
+            this.text_value = this.$refs.editor.innerText;
         },
     },
     methods: {
@@ -67,7 +80,15 @@ export default {
                 start + currentRange.toString().length,
             ];
 
-            this.text_value = this.$refs.editor.innerText;
+            this.maybeEmitInput();
+        },
+        maybeEmitInput: function maybeEmitInput() {
+            let currentHtml = this.$refs.editor.innerHTML;
+            if (this.value !== currentHtml) {
+                // Vuejs v-model stuff picks up this event and sets the value prop
+                // with the value
+                this.$emit('input', currentHtml);
+            }
         },
         buildIrcText: function buildIrcText() {
             let source = this.$refs.editor.innerHTML;
@@ -107,8 +128,8 @@ export default {
 
             return textValue;
         },
-        reset: function reset() {
-            this.$refs.editor.innerHTML = '';
+        reset: function reset(rawHtml) {
+            this.$refs.editor.innerHTML = rawHtml || '';
 
             // Firefox inserts a <br> on empty contenteditables after it's been reset. But that
             // fucks up the placeholder :empty CSS selector we use. So just remove it.
@@ -121,6 +142,8 @@ export default {
                 this.focus();
                 this.setColour(this.default_colour.code, this.default_colour.colour);
             }
+
+            this.updateValueProps();
         },
         resetStyles: function resetStyles() {
             this.focus();
@@ -145,6 +168,7 @@ export default {
             document.execCommand('foreColor', false, colour);
 
             this.code_map[colour] = code;
+            this.updateValueProps();
         },
         addImg: function addImg(code, url) {
             this.focus();
@@ -152,6 +176,7 @@ export default {
             document.execCommand('insertImage', false, url);
 
             this.code_map[url] = code;
+            this.updateValueProps();
         },
 
         // Insert some text at the current position

@@ -15,16 +15,9 @@
                     @cancel="onAutocompleteCancel"
                 ></auto-complete>
                 <div class="kiwi-controlinput-input-wrap">
-                    <!--<textarea
-                        @keydown="inputKeyDown($event)"
-                        @keyup="inputKeyUp($event)"
-                        v-model="currentInputValue"
-                        class="kiwi-controlinput-input"
-                        wrap="off"
-                        placeholder="Send a message..."></textarea>
-                    -->
                     <irc-input
                         ref="input"
+                        v-model="currentInputValue"
                         @keydown="inputKeyDown($event)"
                         @keyup="inputKeyUp($event)"
                         @click="closeInputTool"
@@ -82,7 +75,7 @@ export default {
         },
         currentInputValue: {
             get: function getCurrentInputValue() {
-                return this.history[this.history_pos] || this.$refs.input.buildIrcText();
+                return this.history[this.history_pos] || this.value;
             },
             set: function getCurrentInputValue(newValue) {
                 this.value = newValue;
@@ -205,14 +198,12 @@ export default {
             }
         },
         submitForm: function submitForm() {
-            // Editing a history entry sets .value to the new input value, so check
-            // for that before the history value.
-            let rawInput = this.value || this.currentInputValue;
+            let rawInput = this.currentInputValue;
             if (!rawInput) {
                 return;
             }
 
-            state.$emit('input.raw', rawInput);
+            state.$emit('input.raw', this.$refs.input.buildIrcText());
 
             // Add to history, keeping the history trimmed to the last 50 entries
             this.history.push(rawInput);
