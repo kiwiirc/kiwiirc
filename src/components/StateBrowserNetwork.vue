@@ -49,7 +49,7 @@
                         class="kiwi-statebrowser-channel-settings"
                         @click.stop="$emit('showBufferSettings', buffer, $event.clientY)"
                     >
-                        <i class="fa fa-cog" aria-hidden="true"></i>
+                        <i class="fa fa-bell-o" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
