@@ -250,6 +250,10 @@ export default {
             };
         },
 
+        getRawText: function getRawText() {
+            return this.$refs.editor.innerText;
+        },
+
         // Focus the editable div and move the caret to the end
         focus: function focus() {
             if (this.current_range) {

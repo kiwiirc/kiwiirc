@@ -155,7 +155,7 @@ export default {
             }
         },
         inputKeyUp: function inputKeyUp(event) {
-            let inputVal = this.$refs.input.text_value;
+            let inputVal = this.$refs.input.getRawText();
             let currentWord = this.$refs.input.getCurrentWord();
             let currentToken = currentWord.word.substr(0, currentWord.position);
 
