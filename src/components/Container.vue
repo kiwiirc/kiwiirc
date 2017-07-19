@@ -119,7 +119,7 @@ export default {
 
 .kiwi-container--no-sidebar .kiwi-header,
 .kiwi-container--no-sidebar .kiwi-messagelist {
-    right: 0;
+    margin-right: 0;
 }
 
 .kiwi-container-toggledraw-statebrowser,
