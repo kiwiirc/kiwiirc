@@ -12,6 +12,7 @@
             v-model="currentValue"
             @focus="hasFocus=true"
             @blur="hasFocus=false"
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
         />
         <input
             v-else-if="type==='number'"
@@ -25,6 +26,7 @@
             v-model="currentValue"
             @focus="hasFocus=true"
             @blur="hasFocus=false"
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
         />
 
         <div v-if="$slots.default" class="input-text-c">
