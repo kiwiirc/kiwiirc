@@ -312,7 +312,7 @@ export default {
 }
 .kiwi-ircinput-editor:empty:not(:focus):before {
     content: attr(placeholder);
-    /*display: block;*/
+    cursor: text;
 }
 .kiwi-ircinput-editor img {
     height: 1em;
