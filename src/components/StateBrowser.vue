@@ -186,6 +186,8 @@ export default {
 .kiwi-statebrowser {
     box-sizing: border-box;
     z-index: 3; /* Must be at leats 1 higher than the workspace :after z-index; */
+    display: flex;
+    flex-direction: column;
 }
 
 .kiwi-statebrowser-usermenu-header {
@@ -203,8 +205,8 @@ export default {
 
 .kiwi-statebrowser-scrollarea {
     overflow: auto;
-    height: 100%;
     width: 100%;
+    flex: 1;
 }
 .kiwi-statebrowser-networks {
     padding-bottom: 60px; /* .kiwi-statebrowser-options height+padding */
