@@ -169,6 +169,10 @@ export default {
 .kiwi-header-name {
     display: inline-block;
 }
+.kiwi-header-notjoined {
+    display: inline-block;
+    margin-left: 1em;
+}
 .kiwi-header-server-settings {
     display: inline;
 }
