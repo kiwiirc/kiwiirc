@@ -172,24 +172,21 @@ export default {
                 }
             } else if (currentToken === '@') {
                 // Just typed @ so start the nick auto completion
-                this.autocomplete_items = this.buildAutoCompleteItems({ users: true });
-                this.autocomplete_open = true;
+                this.openAutoComplete(this.buildAutoCompleteItems({ users: true }));
             } else if (inputVal === '/') {
                 // Just typed / so start the command auto completion
-                this.autocomplete_items = this.buildAutoCompleteItems({ commands: true });
-                this.autocomplete_open = true;
+                this.openAutoComplete(this.buildAutoCompleteItems({ commands: true }));
             } else if (currentToken === '#') {
                 // Just typed # so start the command auto completion
-                this.autocomplete_items = this.buildAutoCompleteItems({ buffers: true });
-                this.autocomplete_open = true;
+                this.openAutoComplete(this.buildAutoCompleteItems({ buffers: true }));
             } else if (event.keyCode === 9) {
                 // Tab key was just pressed, start general auto completion
-                this.autocomplete_items = this.buildAutoCompleteItems({
+                let items = this.buildAutoCompleteItems({
                     users: true,
                     commands: true,
                     buffers: true,
                 });
-                this.autocomplete_open = true;
+                this.openAutoComplete(items);
                 event.preventDefault();
             }
 
@@ -223,6 +220,12 @@ export default {
             // so that we can detect if we're not currently using a history value
             if (this.history_pos < this.history.length) {
                 this.history_pos++;
+            }
+        },
+        openAutoComplete: function openAutoComplete(items) {
+            if (state.setting('showAutocomplete')) {
+                this.autocomplete_items = items;
+                this.autocomplete_open = true;
             }
         },
         buildAutoCompleteItems: function buildAutoCompleteItems(_opts) {
