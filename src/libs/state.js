@@ -100,6 +100,7 @@ const stateObj = {
             nick: 'prawnsalad',
             username: 'prawn',
             settings: { show_raw: false },
+            auto_commands: '',
             is_znc: false,
             buffers: [
                 {
@@ -217,6 +218,7 @@ const state = new Vue({
                         direct: network.connection.direct,
                         encoding: network.connection.encoding,
                     },
+                    auto_commands: network.auto_commands,
                     settings: _.cloneDeep(network.settings),
                     nick: network.nick,
                     username: network.username,
@@ -253,6 +255,7 @@ const state = new Vue({
                     network.id = importNetwork.id;
                     network.name = importNetwork.name;
                     network.connection = importNetwork.connection;
+                    network.auto_commands = importNetwork.auto_commands || '';
                     network.settings = importNetwork.settings;
                     network.nick = importNetwork.nick;
                     network.username = importNetwork.username;
@@ -702,6 +705,7 @@ function createEmptyNetworkObject() {
         id: 0,
         name: '',
         state: 'disconnected',
+        auto_commands: '',
         is_znc: false,
         connection: {
             server: '',

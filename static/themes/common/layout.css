@@ -63,6 +63,10 @@ p {
     font-size: 0.9em;
     padding: 3px 5px;
 }
+.u-form label.u-form-block span {
+    width: auto;
+    display: inline-block;
+}
 .u-form .u-submit {
     margin: 2em auto;
     display: block;

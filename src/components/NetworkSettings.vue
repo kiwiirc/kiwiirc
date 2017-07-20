@@ -63,6 +63,10 @@
                 <h3>Advanced</h3>
                 <label><span>Encoding</span> <input v-model="network.connection.encoding" /></label><br />
                 <label><span>Show Raw</span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
+                <label class="u-form-block">
+                    <span>Run commands when connected</span>
+                    <textarea v-model="network.auto_commands" cols=40 rows=5></textarea>
+                </label><br />
             </div>
 
             <div class="kiwi-networksettings-section kiwi-networksettings-danger">

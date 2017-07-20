@@ -118,6 +118,12 @@ function clientMiddleware(state, networkid) {
                 message: `Connected to ${client.network.name}!`,
             });
 
+            if (network.auto_commands) {
+                network.auto_commands.split('\n').forEach(line => {
+                    state.$emit('input.raw', line[0] === '/' ? line : `/${line}`);
+                });
+            }
+
             // Join our channels
             network.buffers.forEach(buffer => {
                 if (buffer.isChannel() && buffer.enabled) {
