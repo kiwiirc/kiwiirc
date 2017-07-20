@@ -39,16 +39,16 @@ Vue.mixin({
         listen: function listen(source, event, fn) {
             this.listeningEvents = this.listeningEvents || [];
             this.listeningEvents.push(() => {
-                source.$off(event, fn);
+                (source.$off || source.off).call(source, event, fn);
             });
-            source.$on(event, fn);
+            (source.$on || source.on).call(source, event, fn);
         },
         listenOnce: function listenOnce(source, event, fn) {
             this.listeningEvents = this.listeningEvents || [];
             this.listeningEvents.push(() => {
-                source.$off(event, fn);
+                (source.$off || source.off).call(source, event, fn);
             });
-            source.$once(event, fn);
+            (source.$once || source.once).call(source, event, fn);
         },
     },
     beforeDestroy: function beforeDestroy() {
