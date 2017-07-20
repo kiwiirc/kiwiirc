@@ -208,7 +208,6 @@ export default {
     flex: 1;
 }
 .kiwi-statebrowser-networks {
-    padding-bottom: 60px; /* .kiwi-statebrowser-options height+padding */
 }
 .kiwi-statebrowser-channel {
     position: relative;

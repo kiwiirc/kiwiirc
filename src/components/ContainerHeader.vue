@@ -177,7 +177,7 @@ export default {
     display: inline;
 }
 .kiwi-header-server-connection {
-    display: block;
+    display: inline-block;
 }
 .kiwi-header-options {
     display: inline-block;
