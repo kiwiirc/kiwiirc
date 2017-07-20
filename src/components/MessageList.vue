@@ -251,6 +251,8 @@ export default {
             if (this.buffer.getNetwork().state === 'connected') {
                 newBuffer.flags.has_opened = true;
             }
+
+            this.$el.scrollTop = this.$el.scrollHeight;
         },
         messages: function watchMessages() {
             if (this.auto_scroll) {
