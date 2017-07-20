@@ -121,7 +121,7 @@
 .kiwi-statebrowser {
     background: #383838;
     /* this also looks cool, background: #05394a; */
-    color: rgb(137, 155, 166);
+    color: #e0e0e0;
 }
 
 .kiwi-statebrowser-usermenu {
@@ -142,20 +142,20 @@
 }
 
 .kiwi-statebrowser-channel-name {
-    color: #a7a7a7;
+    cursor: pointer;
 }
 
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
     color: #d03232;
 }
 .kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
-    color: #e0e0e0;
     border-left: 3px solid #df6b26;
     padding-left: 5px;
 }
 
 .kiwi-statebrowser-channel-label {
     background: green;
+    color: #dedede;
 }
 
 .kiwi-statebrowser-channel-label-transition-enter-active, .kiwi-statebrowser-channel-label-transition-leave-active {
@@ -329,7 +329,6 @@
 }
 
 .kiwi-messagelist-message:not(.kiwi-messagelist-message--unread) + .kiwi-messagelist-message--unread {
-    border-top: 3px solid #d4e5f1;
 }
 .kiwi-messagelist-message--unread {
     border-left-color: #d4e5f1;

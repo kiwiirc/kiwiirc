@@ -36,7 +36,7 @@
                         'kiwi-statebrowser-channel-notjoined': buffer.isChannel() && !buffer.joined
                     }"
                 >
-                    <div class="kiwi-statebrowser-channel-name u-link" @click="setActiveBuffer(buffer)">{{buffer.name}}</div>
+                    <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">{{buffer.name}}</div>
                     <div class="kiwi-statebrowser-channel-labels">
                         <transition name="kiwi-statebrowser-channel-label-transition">
                         <div v-if="buffer.flags.unread" class="kiwi-statebrowser-channel-label">

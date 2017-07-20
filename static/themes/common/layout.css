@@ -572,18 +572,19 @@ p {
  */
 .kiwi-notconnected {
     margin: 3em 0;
+    text-align: center;
 }
 .kiwi-notconnected-bigicon {
-    text-align: center;
+    display: inline-block;
 }
 .kiwi-notconnected-bigicon > i {
     font-size: 4em;
     cursor: pointer;
 }
 .kiwi-notconnected-caption {
-    text-align: center;
+    display: inline-block;
     font-size: 1.2em;
-    margin-top: 1em;
+    margin-left: 2em;
     cursor: pointer;
 }
 .kiwi-notconnected-networksettings {
