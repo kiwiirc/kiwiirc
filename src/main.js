@@ -9,15 +9,17 @@ import StartupError from 'src/components/StartupError';
 import Logger from 'src/libs/Logger';
 import ConfigLoader from 'src/libs/ConfigLoader';
 import state from 'src/libs/state';
+import ThemeManager from 'src/libs/ThemeManager';
 import StatePersistence from 'src/libs/StatePersistence';
 import * as Storage from 'src/libs/storage/Local';
+import GlobalApi from 'src/libs/GlobalApi';
 
 // Global utilities
 import 'src/components/utils/TabbedView';
 import 'src/components/utils/InputText';
 
-// A handy debugging var..
-window.state = state;
+// Add the global API as soon as possible so that things can start listening to it
+let api = window.kiwi = GlobalApi.singleton();
 
 function getQueryVariable(variable) {
     let query = window.location.search.substring(1);
@@ -168,16 +170,22 @@ async function initState() {
     if (stateKey) {
         await persist.loadStateIfExists();
     }
+
+    api.setState(state);
 }
 
 
 function startApp() {
+    api.setThemeManager(ThemeManager.instance(state));
+
     /* eslint-disable no-new */
     new Vue({
         el: '#app',
         render: h => h(App),
         i18n: new VueI18Next(i18next),
     });
+
+    api.emit('ready');
 }
 
 

@@ -73,8 +73,6 @@ import InputHandler from 'src/libs/InputHandler';
 /* eslint-disable no-new */
 new InputHandler(state);
 
-let themes = ThemeManager.instance(state);
-
 export default {
     created: function created() {
         this.listen(state, 'active.component', (component, props) => {
@@ -113,6 +111,7 @@ export default {
             this.userboxOpen = false;
         });
 
+        let themes = ThemeManager.instance();
         this.themeUrl = themes.themeUrl(themes.currentTheme());
         this.listen(state, 'theme.change', () => {
             this.themeUrl = themes.themeUrl(themes.currentTheme());
