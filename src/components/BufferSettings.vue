@@ -2,22 +2,22 @@
     <div class="kiwi-buffersettings">
         <div class="kiwi-buffersettings-alerts">
             <form class="u-form">
-                <b>Notify me when:</b><br />
+                <b>{{$t('settings_notify')}}: </b><br />
                 <label>
-                    <span>All messages</span>
+                    <span>{{$t('settings_notify_all')}}</span>
                     <input type="radio" name="alert_on" value="message" v-model="settingAlertOn">
                 </label><br />
                 <label>
-                    <span>I am mentioned</span>
+                    <span>{{$t('settings_notify_mentioned')}}</span>
                     <input type="radio" name="alert_on" value="highlight" v-model="settingAlertOn">
                 </label><br />
                 <label>
-                    <span>Never</span>
+                    <span>{{$t('settings_notify_never')}}</span>
                     <input type="radio" name="alert_on" value="never" v-model="settingAlertOn">
                 </label><br />
 
                 <label>
-                    <span>Mute sounds</span>
+                    <span>{{$t('settings_notify_mute')}}</span>
                     <input type="checkbox" v-model="settingMuteSound">
                 </label><br />
             </form>

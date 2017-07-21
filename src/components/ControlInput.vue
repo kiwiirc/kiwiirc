@@ -23,7 +23,7 @@
                         @click="closeInputTool"
                         class="kiwi-controlinput-input"
                         wrap="off"
-                        placeholder="Send a message..."></irc-input>
+                        :placeholder="$t('input_placeholder')"></irc-input>
                 </div>
                 <!--<button type="submit">Send</button>-->
             </form>

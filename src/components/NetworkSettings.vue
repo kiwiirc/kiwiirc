@@ -1,25 +1,25 @@
 <template>
     <div class="kiwi-networksettings">
-        <a @click="closeSettings" class="u-button u-button-secondary kiwi-networksettings-close">Close</a>
+        <a @click="closeSettings" class="u-button u-button-secondary kiwi-networksettings-close">{{$t('close')}}</a>
 
         <h3>{{network.name}}</h3>
         <div v-if="network.state === 'connected'">
-            Connected
+            {{$t('connected')}}
         </div>
         <div v-else-if="network.state === 'connecting'">
-            Connecting...
+            {{$t('connecting')}}
         </div>
         <div v-else>
-            <a @click="reconnect" class="u-button u-button-primary">Connect</a>
+            <a @click="reconnect" class="u-button u-button-primary">{{$t('connect')}}</a>
         </div>
 
         <form class="u-form">
             <div class="kiwi-networksettings-section kiwi-networksettings-connection">
-                <h3>Server details</h3>
+                <h3>{{$t('settings_server_details')}}</h3>
 
-                <input-text :label="$t('connection_server')" v-model="network.connection.server" class="kiwi-networksettings-connection-address"/>
+                <input-text :label="$t('server')" v-model="network.connection.server" class="kiwi-networksettings-connection-address"/>
 
-                <input-text label="Port" v-model="network.connection.port" type="number" class="kiwi-networksettings-connection-port">
+                <input-text :label="$t('settings_port')" v-model="network.connection.port" type="number" class="kiwi-networksettings-connection-port">
                     <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[network.connection.tls ? 'kiwi-customserver-tls--enabled' : '']" @click="toggleTls">
                         <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
                         <i v-if="!network.connection.tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
@@ -28,50 +28,50 @@
 
                 <div class="kiwi-networksettings-connection-password">
                     <template v-if="server_type==='network'">
-                        <input-text label="Password" v-model="network.connection.password" type="password" />
+                        <input-text :label="$t('password')" v-model="network.connection.password" type="password" />
                     </template>
                     <template v-else>
-                        <input-text label="Username" v-model="znc_username" />
-                        <input-text label="Network" v-model="znc_network" />
-                        <input-text label="Password" v-model="znc_password" type="password" />
+                        <input-text :label="$t('username')" v-model="znc_username" />
+                        <input-text :label="$t('network')" v-model="znc_network" />
+                        <input-text :label="$t('password')" v-model="znc_password" type="password" />
                     </template>
                 </div>
 
                 <div class="kiwi-networksettings-server-types">
                     <div v-if="server_type==='znc'" class="kiwi-networksettings-server-types-info">
-                        Other networks on this ZNC account will be listed in the network list
+                        {{$t('settings_znc_other')}}
                     </div>
                     <a
                         @click="server_type='network'"
                         class="u-link"
                         :class="{'kiwi-networksettings-server-type-active': server_type==='network'}"
-                    >Network</a>
+                    >{{$t('network')}}</a>
                     <a
                         @click="server_type='znc'"
                         class="u-link"
                         :class="{'kiwi-networksettings-server-type-active': server_type==='znc'}"
-                    >ZNC</a>
+                    >{{$t('znc')}}</a>
                 </div>
             </div>
 
             <div class="kiwi-networksettings-section  kiwi-networksettings-user">
-                <h3>Your details</h3>
-                <label><span>Nickname:</span> <input v-model="network.nick" /></label>
+                <h3>{{$t('settings_your_details')}}</h3>
+                <label><span>{{$t('settings_nickname')}}: </span> <input v-model="network.nick" /></label>
             </div>
 
             <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
-                <h3>Advanced</h3>
-                <label><span>Encoding</span> <input v-model="network.connection.encoding" /></label><br />
-                <label><span>Show Raw</span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
+                <h3>{{$t('settings_advanced')}}</h3>
+                <label><span>{{$t('settings_encoding')}}: </span> <input v-model="network.connection.encoding" /></label><br />
+                <label><span>{{$t('settings_show_raw')}}: </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
                 <label class="u-form-block">
-                    <span>Run commands when connected</span>
+                    <span>{{$t('settings_autorun')}}</span>
                     <textarea v-model="network.auto_commands" cols=40 rows=5></textarea>
                 </label><br />
             </div>
 
             <div class="kiwi-networksettings-section kiwi-networksettings-danger">
-                <h3>Danger zone</h3>
-                <label><a class="u-button u-button-warning" @click="removeNetwork">Remove network</a></label><br />
+                <h3>{{$t('settings_danger')}}</h3>
+                <label><a class="u-button u-button-warning" @click="removeNetwork">{{$t('settings_remove')}}</a></label><br />
             </div>
         </form>
     </div>

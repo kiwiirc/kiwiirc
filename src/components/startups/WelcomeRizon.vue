@@ -1,13 +1,13 @@
 <template>
     <div class="kiwi-welcome-simple">
-        <h2>Kiwi IRC (next gen) - Rizon preview</h2>
-        <h3>Direct websockets. No Kiwi server or webirc involved.</h3>
-        <h3>(Thanks to Adam @Rizon for the development websocket server support!)</h3>
+        <h2>{{$t('rizon_title')}}</h2>
+        <h3>{{$t('rizon_websockets')}}</h3>
+        <h3>{{$t('rizon_thanks')}}</h3>
 
         <form class="u-form kiwi-welcome-simple-form">
-            <label><span>Nick</span> <input type="text" v-model="nick" /></label>
+            <label><span>{{$t('nick')}}</span> <input type="text" v-model="nick" /></label>
         </form>
-        <a class="u-button u-button-primary kiwi-welcome-simple-start" @click="startUp">Give the developer version of Kiwi IRC a try!</a>
+        <a class="u-button u-button-primary kiwi-welcome-simple-start" @click="startUp">{{$t('rizon_dev')}}</a>
     </div>
 </template>
 

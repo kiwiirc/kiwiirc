@@ -7,19 +7,19 @@
 
         <div v-if="!shouldShowLoading" class="kiwi-notconnected-caption">
             <template v-if="isChannel()">
-                <span @click="reconnect">Reconnect to join <i>{{buffer.name}}</i></span>
+                <span @click="reconnect">{{$t('reconnect_channel', {channel: buffer.name})}}</span>
             </template>
             <template v-else-if="isServer()">
-                <span @click="reconnect">Reconnect to <i>{{buffer.getNetwork().name}}</i> to start talking</span>
+                <span @click="reconnect">{{$t('reconnect_network', {network: buffer.getNetwork().name})}}</span>
             </template>
             <template v-else-if="isQuery()">
-                <span @click="reconnect">Reconnect to continue talking to <i>{{buffer.name}}</i></span>
+                <span @click="reconnect">{{$t('reconnect_query', {user: buffer.name})}}</i></span>
             </template>
 
-            <a @click="showNetworkSettings" class="kiwi-notconnected-networksettings u-link">Connection settings</a>
+            <a @click="showNetworkSettings" class="kiwi-notconnected-networksettings u-link">{{$t('reconnect_settings')}}</a>
         </div>
         <div v-else class="kiwi-notconnected-caption">
-            Connecting..
+            {{$t('connecting')}}
         </div>
     </div>
 </template>

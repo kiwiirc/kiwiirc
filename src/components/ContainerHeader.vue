@@ -11,7 +11,7 @@
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div v-if="isJoined" class="kiwi-header-topic"></div>
             <div v-if="!isJoined" class="kiwi-header-notjoined">
-                <a @click="joinCurrentBuffer" class="u-link">Join Channel</a>
+                <a @click="joinCurrentBuffer" class="u-link">{{$t('container_join')}}</a>
             </div>
         </template>
         <template v-else-if="isServer()">
@@ -24,18 +24,18 @@
             <div class="kiwi-header-name">{{buffer.getNetwork().name}}</div>
 
             <div v-if="buffer.getNetwork().state === 'disconnected'" class="kiwi-header-server-connection">
-                Not connected.
-                <a @click="buffer.getNetwork().ircClient.connect()" class="u-link">Connect</a>
+                {{$t('container_notconnected')}}
+                <a @click="buffer.getNetwork().ircClient.connect()" class="u-link">{{$t('connect')}}</a>
             </div>
             <div v-else-if="buffer.getNetwork().state === 'connecting'" class="kiwi-header-server-connection">
-                Connecting...
+                {{$t('connecting')}}
             </div>
         </template>
         <template v-else-if="isQuery()">
             <div class="kiwi-header-options">
-                <a class="u-button u-button-secondary" @click="closeCurrentBuffer">Close</a>
+                <a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a>
             </div>
-            <div class="kiwi-header-name">Private conversation with {{buffer.name}}</div>
+            <div class="kiwi-header-name">{{$t('container_privmsg', {user: buffer.name})}}</div>
         </template>
 
         <div
@@ -45,13 +45,13 @@
         >
 
             <tabbed-view>
-                <tabbed-tab :header="'Settings'" :focus="true">
+                <tabbed-tab :header="$t('settings')" :focus="true">
                     <channel-info v-bind:buffer="buffer"></channel-info>
                 </tabbed-tab>
-                <tabbed-tab :header="'Banned Users'">
+                <tabbed-tab :header="$t('banned')">
                     <channel-banlist v-bind:buffer="buffer"></channel-banlist>
                 </tabbed-tab>
-                <tabbed-tab :header="'Notifications'">
+                <tabbed-tab :header="$t('notifications')">
                     <buffer-settings v-bind:buffer="buffer"></buffer-settings>
                 </tabbed-tab>
             </tabbed-view>

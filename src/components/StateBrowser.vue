@@ -9,7 +9,7 @@
             @click.stop=""
         >
             <buffer-settings v-bind:buffer="bufferForPopup"></buffer-settings>
-            <a @click="closeBuffer" class="u-link">Leave {{bufferForPopup.name}}</a>
+            <a @click="closeBuffer" class="u-link">{{$t('state_leave', {name: bufferForPopup.name})}}</a>
         </div>
 
         <div
@@ -17,12 +17,12 @@
             class="kiwi-statebrowser-usermenu"
             :class="[is_usermenu_open?'kiwi-statebrowser-usermenu--open':'']"
         >
-            <a class="kiwi-statebrowser-usermenu-header" @click="is_usermenu_open=!is_usermenu_open">Your account <i class="fa fa-caret-down"></i></a>
+            <a class="kiwi-statebrowser-usermenu-header" @click="is_usermenu_open=!is_usermenu_open">{{$t('state_account')}} <i class="fa fa-caret-down"></i></a>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
-                Your settings and networks will be remembered on this computer. <br />
-                <a class="u-link" @click="clickForget">Forget me</i></a> <br />
+                {{$t('state_remembered')}}<br />
+                <a class="u-link" @click="clickForget">{{$t('state_forget')}}</i></a> <br />
                 <br />
-                <button class="u-button u-button-primary" @click="is_usermenu_open=false">Close</button>
+                <button class="u-button u-button-primary" @click="is_usermenu_open=false">{{$t('close')}}</button>
             </div>
         </div>
 
@@ -31,11 +31,11 @@
         </div>
 
         <div v-if="networks.length === 0" class="kiwi-statebrowser-nonetworks">
-            No networks here yet.<br><a class="u-link" @click="clickAddNetwork">Add one?</a>
+            {{$t('state_network')}}<br><a class="u-link" @click="clickAddNetwork">{{$t('state_add')}}</a>
         </div>
 
         <div v-if="Object.keys(provided_networks).length > 0" class="kiwi-statebrowser-availablenetworks">
-            <div @click="show_provided_networks=!show_provided_networks" class="kiwi-statebrowser-availablenetworks-toggle">&#8618; Available networks</div>
+            <div @click="show_provided_networks=!show_provided_networks" class="kiwi-statebrowser-availablenetworks-toggle">&#8618; {{$t('state_available')}}</div>
             <div
                 class="kiwi-statebrowser-availablenetworks-networks"
                 :class="{'kiwi-statebrowser-availablenetworks-networks--open': show_provided_networks}"

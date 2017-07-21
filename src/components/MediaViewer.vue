@@ -16,7 +16,7 @@
                 data-card-chrome="0"
                 data-card-controls="0"
                 data-card-recommend="0"
-            >Loading {{url}}...</a>
+            >{{$t('media_loading', {url: url})}}</a>
         </div>
     </div>
 </template>

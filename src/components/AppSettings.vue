@@ -4,47 +4,47 @@
 
         <form class="u-form">
             <tabbed-view>
-                <tabbed-tab :header="'General'" :focus="true">
+                <tabbed-tab :header="$t('settings_general')" :focus="true">
                     <div class="kiwi-appsettings-section kiwi-appsettings-general">
-                        <h3>General</h3>
+                        <h3>{{$t('settings_general')}}</h3>
                         <label>
-                            <span>Theme: </span>
+                            <span>{{$t('settings_theme')}}: </span>
                             <select v-model="theme">
                                 <option v-for="t in settings.themes" :value="t.name">{{t.name}}</option>
                             </select>
                             <a @click="refreshTheme" title="Refresh Theme" class="kiwi-appsettings-theme-reload"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         </label>
                         <label v-if="theme==='custom'">
-                            <span>Theme URL: </span>
+                            <span>{{$t('settings_themeurl')}}: </span>
                             <input v-model="customThemeUrl" class="u-input">
                        </label>
                         <label>
-                            <span>Show autocomplete list: </span>
+                            <span>{{$t('settings_show_autocomplete')}}: </span>
                             <input type="checkbox" v-model="settingShowAutoComplete" />
                         </label>
                     </div>
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-messages">
-                        <h3>Chat Messages</h3>
-                        <label><span>Show timestamps:</span> <input type="checkbox" v-model="bufferSettings.show_timestamps" /></label>
-                        <label><span>Use 24-hour timestamps:</span> <input type="checkbox" v-model="timestamps_24h" /></label>
-                        <label><span>Show emoticons:</span> <input type="checkbox" v-model="bufferSettings.show_emoticons" /></label>
-                        <label><span>Block new private messages:</span> <input type="checkbox" v-model="bufferSettings.block_pms" /></label>
-                        <label><span>Messages in scrollback:</span> <input type="number" class="u-input" v-model="bufferSettings.scrollback_size" /></label>
-                        <label><span>Extra formatting:</span> <input type="checkbox" v-model="bufferSettings.extra_formatting" /></label>
+                        <h3>{{$t('settings_messages_title')}}</h3>
+                        <label><span>{{$t('settings_timestamps')}}: </span> <input type="checkbox" v-model="bufferSettings.show_timestamps" /></label>
+                        <label><span>{{$t('settings_24hour_timestamps')}}: </span> <input type="checkbox" v-model="timestamps_24h" /></label>
+                        <label><span>{{$t('settings_emoticons')}}: </span> <input type="checkbox" v-model="bufferSettings.show_emoticons" /></label>
+                        <label><span>{{$t('settings_block_private')}}: </span> <input type="checkbox" v-model="bufferSettings.block_pms" /></label>
+                        <label><span>{{$t('settings_scrollback')}}: </span> <input type="number" class="u-input" v-model="bufferSettings.scrollback_size" /></label>
+                        <label><span>{{$t('settings_formatting')}}: </span> <input type="checkbox" v-model="bufferSettings.extra_formatting" /></label>
                     </div>
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
-                        <h3>Notifications</h3>
-                        <label><span>Include join/part messages as activity:</span> <input type="checkbox" v-model="bufferSettings.traffic_as_activity" /></label>
-                        <label><span>Mute sound notifications:</span> <input type="checkbox" v-model="bufferSettings.mute_sound" /></label>
-                        <label><span>Highlight on words (space separated):</span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
+                        <h3>{{$t('notifications')}}</h3>
+                        <label><span>{{$t('settings_show_joinpart')}}: </span> <input type="checkbox" v-model="bufferSettings.traffic_as_activity" /></label>
+                        <label><span>{{$t('settings_mute_sound')}}: </span> <input type="checkbox" v-model="bufferSettings.mute_sound" /></label>
+                        <label><span>{{$t('settings_highlight')}}: </span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
                     </div>
                 </tabbed-tab>
 
-                <tabbed-tab :header="'Aliases'">
+                <tabbed-tab :header="$t('settings_aliases')">
                     <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
-                        <h3>Aliases</h3>
+                        <h3>{{$t('settings_aliases')}}</h3>
                         <settings-aliases></settings-aliases>
                     </div>
                 </tabbed-tab>

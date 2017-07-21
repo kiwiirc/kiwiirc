@@ -1,3 +1,67 @@
+#: Common Strings
+
+#: Close
+msgid "close"
+msgstr "Close"
+
+#: Connect
+msgid "connect"
+msgstr "Connect"
+
+#: Connecting...
+msgid "connecting"
+msgstr "Connecting..."
+
+#: Connected
+msgid "connected"
+msgstr "Connected"
+
+#: Settings
+msgid "settings"
+msgstr "Settings"
+
+#: Banned
+msgid "banned"
+msgstr "Banned Users"
+
+#: Notifications
+msgid "notifications"
+msgstr "Notifications"
+
+#: Username
+msgid "username"
+msgstr "Username"
+
+#: Password
+msgid "password"
+msgstr "Password"
+
+#: I have a password
+msgid "password_have"
+msgstr "I have a password"
+
+#: Server
+msgid "server"
+msgstr "Server"
+
+#: Nick (Nickname)
+msgid "nick"
+msgstr "Nick"
+
+#: Channel
+msgid "channel"
+msgstr "Channel"
+
+#: Network
+msgid "network"
+msgstr "Network"
+
+#: ZNC
+msgid "znc"
+msgstr "ZNC"
+
+
+
 #: Realname field in a users whois
 msgid "whois_realname"
 msgstr "Real name"
@@ -22,25 +86,468 @@ msgstr "More information"
 msgid "ignore_user"
 msgstr "Ignore user"
 
-
-
-
-#: Connecting status message
-msgid "status_connecting"
-msgstr "Connecting..."
-
-#: Server input box
-msgid "connection_server"
-msgstr "Server"
-
-#: Nick input box
-msgid "connection_nick"
-msgstr "Nick"
-
-#: Password toggle box
-msgid "connection_password"
-msgstr "I have a password"
-
 #: Channel input box
 msgid "connection_channel"
 msgstr "connection_channel"
+
+
+
+#: AppSettings $t('settings_')
+
+#: General Title
+msgid "settings_general"
+msgstr "General"
+
+#: Theme Title
+msgid "settings_theme"
+msgstr "Theme"
+
+#: Theme URL
+msgid "settings_themeurl"
+msgstr "Theme URL"
+
+#: Show autocomplete list
+msgid "settings_show_autocomplete"
+msgstr "Show autocomplete list"
+
+#: Messages Title
+msgid "settings_messages_title"
+msgstr "Chat Messages"
+
+#: Show timestamps
+msgid "settings_timestamps"
+msgstr "Show timestamps"
+
+#: Use 24-hour timestamps
+msgid "settings_24hour_timestamps"
+msgstr "Use 24-hour timestamps"
+
+#: Show emoticons
+msgid "settings_emoticons"
+msgstr "Show emoticons"
+
+#: Block new Private messages
+msgid "settings_block_private"
+msgstr "Block new private messages"
+
+#: Messages in scrollback
+msgid "setings_scrollback"
+msgstr "Messages in scrollback"
+
+#: Extra formatting
+msgid "settings_formatting"
+msgstr "Extra formatting"
+
+#: Include join/part messages as activity
+msgid "settings_show_joinpart"
+msgstr "Include join/part messages as activity"
+
+#: Mute sound notifications
+msgid "settings_mute_sound"
+msgstr "Mute sound notifications"
+
+#: Highlight on words
+msgid "settings_highlight"
+msgstr "Highlight on words (space seperated)"
+
+#: Aliases Title
+msgid "settings_aliases"
+msgstr "Aliases"
+
+
+
+#: AutoComplete
+
+#: Send Message
+msgid "send_message"
+msgstr "Send Message"
+
+
+
+#: BufferSettings $t('settings_')
+
+#: Notify me when
+msgid "settings_notify"
+msgstr "Notify me when"
+
+#: All messages
+msgid "settings_notify_all"
+msgstr "All messages"
+
+#: I am mentioned
+msgid "settings_notify_mentioned"
+msgstr "I am mentioned"
+
+#: Never
+msgid "settings_notify_never"
+msgstr "Never"
+
+#: Mute sounds
+msgid "settings_notify_mute"
+msgstr "Mute sounds"
+
+
+
+#: ChannelBanlist $t('bans_')
+
+#: Refresh banlist
+msgid "bans_refresh"
+msgstr "Refresh banlist"
+
+#: Banned user
+msgid "bans_user"
+msgstr "Banned user"
+
+#: Banned by
+msgid "bans_by"
+msgstr "Banned by"
+
+#: Refreshing banlist
+msgid "bans_refreshing"
+msgstr "Refreshing banlist..."
+
+#: Nobody is banned
+msgid "bans_nobody"
+msgstr "Nobody is banned!"
+
+
+
+#: ChannelInfo $t('channel_')
+
+#: Topic
+msgid "channel_topic"
+msgstr "Topic"
+
+#: Moderated chat
+msgid "channel_moderated"
+msgstr "Moderated chat"
+
+#: Invite Only
+msgid "channel_invite"
+msgstr "Invite only"
+
+#: Moderated topic
+msgid "channel_moderated_topic"
+msgstr "Only moderators can change the topic"
+
+#: Block external messages
+msgid "channel_external"
+msgstr "Block messages from outside this channel"
+
+
+
+#: Container $t('container_')
+
+#: Welcome to Kiwi IRC!
+msgid "container_welcome"
+msgstr "Welcome to Kiwi IRC! Select a channel on the left."
+
+#: Show statebrowser
+msgid "container_statebrowser"
+msgstr "Show statebrowser"
+
+
+
+#: ContainerHeader $t('container_')
+
+#: Join Channel
+msgid "container_join"
+msgstr "Join Channel"
+
+#: Not connected
+msgid "container_notconnected"
+msgstr "Not Connected"
+
+#: Private conversation with
+msgid "container_privmsg"
+msgstr "Private conversation with {user}"
+
+
+
+#: ControlInput $t('input_')
+
+#: input wrap placeholder
+msgid "input_placeholder"
+msgstr "Send a message..."
+
+
+
+#: MediaViewer $t('media_')
+
+#: Loading
+msgid "media_loading"
+msgstr "Loading {url}..."
+
+
+
+#: MessageList $t('messages_')
+
+#: Load previous
+msgid "messages_load"
+msgstr "Load previous messages"
+
+
+
+#: NetworkSettings $t('settings_')
+msgid "settings_server_details"
+msgstr "Server details"
+
+#: Port
+msgid "settings_port"
+msgstr "Port"
+
+#: Other networks on this ZNC account
+msgid "settings_znc_other"
+msgstr "Other networks on this ZNC account will be listed in the network list"
+
+#: Your details
+msgid "settings_your_details"
+msgstr "Your details"
+
+#: Nickname
+msgid "settings_nickname"
+msgstr "Nickname"
+
+#: Advanced
+msgid "settings_advanced"
+msgstr "Advanced"
+
+#: Encoding
+msgid "settings_encoding"
+msgstr "Encoding"
+
+#: Show Raw
+msgid "settings_show_raw"
+msgstr "Show Raw"
+
+#: Run commands when connected
+msgid "settings_autorun"
+msgstr "Run commands when connected"
+
+#: Danger zone
+msgid "settings_danger"
+msgstr "Danger Zone"
+
+#: Remove network
+msgid "settings_remove"
+msgstr "Remove network"
+
+
+
+#: Nicklist
+
+#: Person key
+msgid "person"
+msgstr "%s person here"
+
+#: Person plural key
+msgid "person_plural"
+msgstr "%s people here"
+
+
+
+#: NotConnected $t('reconnect_')
+
+#: Reconnect Channel
+msgid "reconnect_channel"
+msgstr "Reconnect to join <i>{channel}</i>"
+
+#: Reconnect to network
+msgid "reconnect_network"
+msgstr "Reconnect to <i>{network}</i> to start talking"
+
+#: Reconnect to query
+msgid "reconnect_query"
+msgstr "Reconnect to continue talking with <i>{user}</i>"
+
+#: Connection settings
+msgid "reconnect_settings"
+msgstr "Connection settings"
+
+
+
+#: Sidebar
+
+#: Close options $t('side_')
+msgid "side_close"
+msgstr "Close options"
+
+#: Channel options
+msgid "side_options"
+msgstr "Channel options"
+
+#: Your settings
+msgid "side_settings"
+msgstr "Your settings"
+
+#: Show when people join
+msgid "side_joins"
+msgstr "Show when people join"
+
+#: Extra message formatting
+msgid "side_formatting"
+msgstr "Extra message formatting"
+
+#: Nick colours in the list"
+msgid "side_colours"
+msgstr "Nick colours in the list"
+
+#: No buffer set
+msgid "side_buffer"
+msgstr "No buffer set"
+
+
+
+#: StartupError $t('error_')
+
+#: Error starting
+msgid "error_starting"
+msgstr "There was an error starting Kiwi IRC :("
+
+msgid "error_installed"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded"
+
+
+
+#: StateBrowser $t('state_')
+
+#: Leave
+msgid "state_leave"
+msgstr "Leave {name}"
+
+#: Your account
+msgid "state_account"
+msgstr "Your account"
+
+#: Your settings and networks will be remembered on this computer
+msgid "state_remembered"
+msgstr "Your settings and networks will be remembered on this computer."
+
+#: Forget me
+msgid "state_forget"
+msgstr "Forget me"
+
+#: No networks here yet.
+msgid "state_network"
+msgstr "No networks here yet."
+
+#: Add one?
+msgid "state_add"
+msgstr "Add one?"
+
+#: Available networks
+msgid "state_available"
+msgstr "Available networks"
+
+
+
+#: StateBrowserNetwork
+
+#: Configure network
+msgid "state_configure"
+msgstr "Configure network"
+
+#: Not connected.
+msgid "state_disconnected"
+msgstr "Not connected."
+
+#: Join new #channel
+msgid "state_join"
+msgstr "Join new #channel"
+
+
+#: UserBox $t('user_')
+
+#: Account name
+msgid "user_account"
+msgstr "Account name: {user}"
+
+#: Real name
+msgid "user_realname"
+msgstr "Real name: {realname}"
+
+#: Is a bot
+msgid "user_bot"
+msgstr "Is a bot"
+
+#: Is available for help
+msgid "user_help"
+msgstr "Is avaiable for help"
+
+#: Is an operator
+msgid "user_op"
+msgstr "Is an operator"
+
+#: Connected to
+msgid "user_server"
+msgstr "Connected to {server} {info}"
+
+#: Securely connected via SSL/TLS
+msgid "user_secure"
+msgstr "Securely connected via SSL/TLS"
+
+#: Also in channels
+msgid "user_channels"
+msgstr "Also in channels {channels}"
+
+#: Access level
+msgid "user_access"
+msgstr "Access level"
+
+#: Normal
+msgid "user_normal"
+msgstr "Normal"
+
+#: Kick from channel
+msgid "user_kick"
+msgstr "Kick from the channel"
+
+#: Ban from the channel
+msgid "user_ban"
+msgstr "Ban from the channel"
+
+
+
+#: Personal $t('personal_')
+
+#: Your IRC client
+msgid "personal_client"
+msgstr "Your IRC Client."
+
+#: Add your networks. Join your channels.
+msgid "personal_addjoin"
+msgstr "Add your networks. Join your channels."
+
+#: They will be here when you come back.
+msgid "personal_return"
+msgstr "They will be here when you come back."
+
+#: Add a Network
+msgid "personal_add"
+msgstr "Add a Network"
+
+#: Saved networks
+msgid "personal_saved"
+msgstr "Saved networks"
+
+
+
+#: WelcomeRizon $t('rizon_')
+
+#: Kiwi IRC (next gen) - Rizon preview
+msgid "rizon_title"
+msgstr "Kiwi IRC (next gen) - Rizon preview"
+
+#: Direct websockets. No Kiwi server or webirc involved.
+msgid "rizon_websockets"
+msgstr "Direct websockets. No Kiwi server or webirc involved."
+
+#: (Thanks to Adam @Rizon for the development websocket server support!)
+msgid "rizon_thanks"
+msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
+
+#: Give the developer version of Kiwi IRC a try!
+msgid "rizon_dev"
+msgstr "Give the developer version of Kiwi IRC a try!"
+
+

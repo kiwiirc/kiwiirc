@@ -6,15 +6,15 @@
         </div>
         <form v-on:submit.prevent="startUp" class="u-form kiwi-welcome-form">
             <label>
-                <span>Username</span>
+                <span>{{$t('username')}}</span>
                 <input type="text" v-model="username" />
             </label>
             <label>
-                <span>Password</span>
+                <span>{{$t('password')}}</span>
                 <input type="password" v-model="password" />
             </label>
 
-            <button type="submit" class="u-button u-button-primary u-submit">Connect</button>
+            <button type="submit" class="u-button u-button-primary u-submit">{{$t('connect')}}</button>
         </form>
     </div>
 </template>

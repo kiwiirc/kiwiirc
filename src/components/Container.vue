@@ -26,8 +26,8 @@
             <message-list :buffer="buffer" :messages="messages" :users="users"></message-list>
         </template>
         <template v-else>
-            Welcome to Kiwi IRC! Select a channel on the left. Bla bla.
-            <a @click.stop="toggleStateBrowser">Show statebrowser</a>
+            {{$t('container_welcome')}}
+            <a @click.stop="toggleStateBrowser">{{$t('container_statebrowser')}}</a>
         </template>
     </div>
 </template>

@@ -3,7 +3,7 @@
         <template v-if="buffer">
             <template v-if="buffer.isChannel()">
                 <span class="kiwi-sidebar-options" @click="settings_open = !settings_open">
-                    <i class="fa fa-cog" aria-hidden="true"></i> {{settings_open?'Close options':'Channel options'}}
+                    <i class="fa fa-cog" aria-hidden="true"></i> {{settings_open?$t('side_close'):$t('side_options')}}
                 </span>
 
                 <div
@@ -13,20 +13,20 @@
                 >
 
                     <tabbed-view>
-                        <tabbed-tab :header="'Settings'" :focus="true">
+                        <tabbed-tab :header="$t('settings')" :focus="true">
                             <channel-info v-bind:buffer="buffer"></channel-info>
 
                             <div class="kiwi-sidebar-settings">
-                                <h3>Your settings</h3>
-                                <label><input type="checkbox" v-model="settingShowJoinParts"> Show when people join</label>
-                                <label><input type="checkbox" v-model="settingExtraFormatting"> Extra message formatting</label>
-                                <label><input type="checkbox" v-model="settingColouredNicklist"> Nick colours in the list</label>
+                                <h3>{{$t('side_settings')}}</h3>
+                                <label><input type="checkbox" v-model="settingShowJoinParts"> {{$t('side_joins')}}</label>
+                                <label><input type="checkbox" v-model="settingExtraFormatting"> {{$t('side_formatting')}}</label>
+                                <label><input type="checkbox" v-model="settingColouredNicklist"> {{$t('side_colours')}}</label>
                             </div>
                         </tabbed-tab>
-                        <tabbed-tab :header="'Banned Users'">
+                        <tabbed-tab :header="$t('banned')">
                             <channel-banlist v-bind:buffer="buffer"></channel-banlist>
                         </tabbed-tab>
-                        <tabbed-tab :header="'Notifications'">
+                        <tabbed-tab :header="$t('notifications')">
                             <buffer-settings v-bind:buffer="buffer"></buffer-settings>
                         </tabbed-tab>
                     </tabbed-view>
@@ -48,7 +48,7 @@
             </template>
         </template>
         <template v-else>
-            No buffer set
+            {{$t('side_buffer')}}
         </template>
     </div>
 </template>
