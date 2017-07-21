@@ -186,6 +186,11 @@ export default {
             return parsed;
         },
         isMessageHighlight: function isMessageHighlight(message) {
+            // Highlighting ourselves when we join or leave a channel is silly
+            if (message.type === 'traffic') {
+                return false;
+            }
+
             let network = this.buffer.getNetwork();
             if (message.message.toLowerCase().indexOf(network.nick.toLowerCase()) > -1) {
                 return true;
