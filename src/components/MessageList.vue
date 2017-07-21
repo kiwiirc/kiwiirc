@@ -31,6 +31,9 @@
                 buffer.last_read && message.time > buffer.last_read ?
                     'kiwi-messagelist-message--unread' :
                     '',
+                message.nick.toLowerCase() === ourNick.toLowerCase() ?
+                    'kiwi-messagelist-message--own' :
+                    '',
             ]"
         >
             <div
@@ -143,6 +146,11 @@ export default {
             let isCorrectBufferType = (this.buffer.isChannel() || this.buffer.isQuery());
             let isSupported = !!this.buffer.getNetwork().ircClient.network.supports('chathistory');
             return isCorrectBufferType && isSupported && this.buffer.flags.chathistory_available;
+        },
+        ourNick: function ourNick() {
+            return this.buffer ?
+                this.buffer.getNetwork().nick :
+                '';
         },
     },
     methods: {
