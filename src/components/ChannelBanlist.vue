@@ -1,12 +1,12 @@
 <template>
     <div class="kiwi-channelbanlist">
         <form class="u-form kiwi-channelbanlist" @submit.prevent="">
-            <a @click="updateBanlist" class="u-link">Refresh banlist</a>
+            <a @click="updateBanlist" class="u-link">{{$t('bans_refresh')}}</a>
 
             <table v-if="banlist.length > 0" class="kiwi-channelbanlist-table">
                 <tr>
-                    <th>Banned user</th>
-                    <th>Banned by</th>
+                    <th>{{$t('bans_user')}}</th>
+                    <th>{{$t('bans_by')}}</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -18,10 +18,10 @@
                 </tr>
             </table>
             <div v-else-if="is_refreshing">
-                Refreshing banlist...
+                {{$t('bans_refreshing')}}
             </div>
             <div v-else class="kiwi-channelbanlist-empty">
-                Nobody is banned!
+                {{$t('bans_nobody')}}
             </div>
         </form>
     </div>

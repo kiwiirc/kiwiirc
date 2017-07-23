@@ -2,28 +2,28 @@
     <div class="kiwi-channelinfo">
         <form class="u-form kiwi-channelinfo-basicmodes" @submit.prevent="">
             <label class="kiwi-channelinfo-topic">
-                Topic <br />
+                {{$t('channel_topic')}}<br />
                 <textarea v-model.lazy="topic" rows="2"></textarea>
             </label>
 
             <label>
                 <input type="checkbox" v-model="modeM" />
-                Moderated chat
+                {{$t('channel_moderated')}}
             </label>
             <label>
                 <input type="checkbox" v-model="modeI" />
-                Invite only
+                {{$t('channel_invite')}}
             </label>
             <label>
                 <input type="checkbox" v-model="modeT" />
-                Only moderators can change the topic
+                {{$t('channel_moderated_topic')}}
             </label>
             <label>
                 <input type="checkbox" v-model="modeN" />
-                Block messages from outside this channel
+                {{$t('channel_external')}}
             </label>
             <label>
-                Password <br />
+                {{$t('password')}}<br />
                 <input type="text" class="u-input" v-model.lazy="modeK" />
             </label>
         </form>

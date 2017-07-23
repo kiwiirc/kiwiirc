@@ -1,58 +1,58 @@
 <template>
     <div class="kiwi-customserver" v-bind:class="[is_connecting ? 'kiwi-customserver--connecting' : '']">
         <h2 v-if="!is_connecting">{{title}}</h2>
-        <h2 v-else>{{$t('status_connecting')}} <a @click="infoClick" class="u-link"><i class="fa fa-info-circle" aria-hidden="true"></i></a></h2>
+        <h2 v-else>{{$t('connecting')}} <a @click="infoClick" class="u-link"><i class="fa fa-info-circle" aria-hidden="true"></i></a></h2>
 
         <transition name="connectingloader">
         <form v-if="!is_connecting" v-on:submit.prevent="startUp" class="u-form kiwi-customserver-form">
             <template v-if="server_type === 'default'">
-                <input-text :label="$t('connection_server')" v-model="server">
+                <input-text :label="$t('server')" v-model="server">
                     <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
                         <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
                         <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
                     </span>
                 </input-text>
 
-                <input-text label="Nick" v-model="nick" />
+                <input-text :label="$t('nick')" v-model="nick" />
 
                 <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> I have a password
+                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
                 </label>
                 <input-text v-if="show_password_box" label="Password" v-model="password" type="password" />
 
-                <input-text label="Channel" v-model="channel" />
+                <input-text :label="$t('channel')" v-model="channel" />
             </template>
 
             <template v-if="server_type === 'default_simple'">
-                <input-text label="Nick" v-model="nick" />
+                <input-text :label="$t('nick')" v-model="nick" />
 
                 <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> I have a password
+                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
                 </label>
-                <input-text v-if="show_password_box" label="Password" v-model="password" type="password" />
+                <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 
-                <input-text label="Channel" v-model="channel" class="kiwi-customserver-channel" />
+                <input-text :label="$t('channel')" v-model="channel" class="kiwi-customserver-channel" />
             </template>
 
             <template v-if="server_type === 'znc'">
-                <input-text label="Server" v-model="server">
+                <input-text :label="$t('server')" v-model="server">
                     <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
                         <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
                         <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
                     </span>
                 </input-text>
 
-                <input-text label="Username" v-model="nick" />
+                <input-text :label="$t('username')" v-model="nick" />
 
-                <input-text v-if="znc_network_support" label="Network" v-model="znc_network" />
-                <input-text label="Password" v-model="password" type="password" />
+                <input-text v-if="znc_network_support" :label="$t('network')" v-model="znc_network" />
+                <input-text :label="$t('password')" v-model="password" type="password" />
             </template>
 
-            <button type="submit" class="u-button u-button-primary u-submit">Connect</button>
+            <button type="submit" class="u-button u-button-primary u-submit">{{$t('connect')}}</button>
 
             <div v-if="show_type_switcher" class="kiwi-customserver-server-types">
-                <a @click="server_type = 'default'" class="u-link">Network</a>
-                <a @click="server_type = 'znc'" class="u-link">ZNC</a>
+                <a @click="server_type = 'default'" class="u-link">{{$t('network')}}</a>
+                <a @click="server_type = 'znc'" class="u-link">{{$t('znc')}}</a>
             </div>
         </form>
 

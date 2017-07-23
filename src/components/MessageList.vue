@@ -4,7 +4,7 @@
             v-if="shouldShowChathistoryTools"
             class="kiwi-messagelist-scrollback"
         >
-            <a @click="buffer.requestScrollback()" class="u-link">Load previous messages</a>
+            <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
         <div

@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-wrap kiwi-wrap-error">
-        <h2>There was an error starting Kiwi IRC :(</h2>
-        <h3>Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded</h3>
+        <h2>{{$t('error_starting')}}</h2>
+        <h3>{{$t('error_installed')}}</h3>
     </div>
 </template>
 

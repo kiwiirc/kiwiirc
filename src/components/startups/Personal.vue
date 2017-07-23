@@ -1,12 +1,12 @@
 <template>
     <div class="kiwi-personal">
-        <h1>Your IRC client.</h1>
+        <h1>{{$t('personal_client')}}</h1>
 
-        <p>Add your networks. Join your channels.</p>
-        <p>They will be here when you come back.</p>
+        <p>{{$t('personal_addjoin')}}</p>
+        <p>{{$t('personal_return')}}</p>
 
-        <button @click="addNetwork" class="u-button u-button-primary">Add A Network</button> <br />
-        <a v-if="networks.length>0" @click.stop="toggleStateBrowser" class="u-link kiwi-personal-existing-networks">Saved networks</a>
+        <button @click="addNetwork" class="u-button u-button-primary">{{$t('personal_add')}}</button> <br />
+        <a v-if="networks.length>0" @click.stop="toggleStateBrowser" class="u-link kiwi-personal-existing-networks">{{$t('personal_saved')}}</a>
     </div>
 </template>
 

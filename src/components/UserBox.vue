@@ -29,37 +29,37 @@
             </template>
             <template v-else>
                 <span class="kiwi-userbox-whois-line">{{user.away ? $t('whois_status') + ': ' + user.away : $t('whois_status_available')}}</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.account">Account name: {{user.account}}</span>
-                <span class="kiwi-userbox-whois-line">Real name: {{user.realname}}</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.bot">Is a bot</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.helpop">Is available for help</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.operator">Is an operator</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.server">Connected to {{user.server}} {{user.server_info ? `(${user.server_info})` : ''}}</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.secure">Securely connected via SSL/TLS</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.channels">Also in channels {{user.channels}}</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.account">{{$t('user_account', {user: user.account})}}</span>
+                <span class="kiwi-userbox-whois-line">{{$t('user_realname', {realname: user.realname})}}</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.bot">{{$t('user_bot')}}</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.helpop">{{$t('user_help')}}</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.operator">{{$t('user_op')}}</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.server">{{$t('user_server', { server: user.server, info: (user.server_info ? `(${user.server_info})` : '')})}}</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.secure">{{$t('user_secure')}}</span>
+                <span class="kiwi-userbox-whois-line" v-if="user.channels">{{$t('user_channels', {channels: user.channels})}}</span>
             </template>
         </div>
 
         <div v-if="buffer.isChannel() && areWeAnOp" class="kiwi-userbox-actions-op">
             <form class="u-form" @submit.prevent="">
                 <label>
-                    Access level <select v-model="userMode">
+                    {{$t('user_access')}} <select v-model="userMode">
                         <option v-for="mode in availableChannelModes" v-bind:value="mode.mode">
                             {{mode.description}}
                         </option>
-                        <option value="">Normal</option>
+                        <option value="">{{$t('user_normal')}}</option>
                     </select>
                 </label>
                 <label>
-                    <button @click="kickUser" class="u-button u-button-secondary">Kick from the channel</button>
+                    <button @click="kickUser" class="u-button u-button-secondary">{{$t('user_kick')}}</button>
                 </label>
                 <label>
-                    <button @click="banUser" class="u-button u-button-secondary">Ban from the channel</button>
+                    <button @click="banUser" class="u-button u-button-secondary">{{$t('user_ban')}}</button>
                 </label>
             </form>
         </div>
 
-        <a @click="closeBox" class="u-button u-button-primary">Close</a>
+        <a @click="closeBox" class="u-button u-button-primary">{{$t('close')}}</a>
     </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-nicklist">
-        <div class="kiwi-nicklist-info">{{buffer.users.length}} {{buffer.users.length!=1?'people':'person'}} here</div>
+        <div class="kiwi-nicklist-info">{{$t('person', {count: buffer.users.length})}}</div>
         <ul class="kiwi-nicklist-users">
             <li
                 v-for="user in sortedUsers"

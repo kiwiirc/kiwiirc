@@ -10,7 +10,7 @@
         >
             <template v-if="item.type === 'user'">
                 <span class="kiwi-autocomplete-item-value">{{item.text}}</span>
-                <span class="u-link kiwi-autocomplete-item-action" @click.stop="openQuery(item.text)">Send Message</span>
+                <span class="u-link kiwi-autocomplete-item-action" @click.stop="openQuery(item.text)">{{$t('send_message')}}</span>
             </template>
             <template v-else-if="item.type === 'command'">
                 <span class="kiwi-autocomplete-item-value">{{item.text}}</span>

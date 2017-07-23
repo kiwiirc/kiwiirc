@@ -15,14 +15,14 @@
             <transition name="kiwi-statebrowser-network-status-transition">
             <div v-if="network.state !== 'connected'" class="kiwi-statebrowser-network-status">
                 <template v-if="!network.connection.server">
-                    <a @click="showNetworkSettings(network)" class="u-link">Configure network</a>
+                    <a @click="showNetworkSettings(network)" class="u-link">{{$t('state_configure')}}</a>
                 </template>
                 <template v-else-if="network.state === 'disconnected'">
-                    Not connected.
-                    <a @click="network.ircClient.connect()" class="u-link">Connect</a>
+                    {{$t('state_disconnected')}}
+                    <a @click="network.ircClient.connect()" class="u-link">{{$t('connect')}}</a>
                 </template>
                 <template v-else-if="network.state === 'connecting'">
-                    Connecting...
+                    {{$t('connecting')}}
                 </template>
             </div>
             </transition>
@@ -69,7 +69,7 @@
                 >
                     <input
                         type="text"
-                        placeholder="Join new #channel"
+                        :placeholder="$t('state_join')"
                         v-model="new_channel_input"
                         @focus="onNewChannelInputFocus"
                         @blur="onNewChannelInputBlur"
