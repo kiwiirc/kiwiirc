@@ -809,15 +809,20 @@ function initialiseBufferState(buffer) {
     });
     Object.defineProperty(buffer, 'isQuery', {
         value: function isQuery() {
-            // Internal buffer names
-            let ignorePrefix = '*';
             let chanPrefixes = ['#', '&'];
             let ircNetwork = buffer.getNetwork().ircClient.network;
             if (ircNetwork && ircNetwork.options.CHANTYPES) {
                 chanPrefixes = ircNetwork.options.CHANTYPES;
             }
 
-            return chanPrefixes.indexOf(buffer.name[0]) === -1 && buffer.name[0] !== ignorePrefix;
+            return chanPrefixes.indexOf(buffer.name[0]) === -1 && !this.isSpecial();
+        },
+    });
+    Object.defineProperty(buffer, 'isSpecial', {
+        value: function isSpecial() {
+            // Special buffer names (Usually controller queries, like *status or *raw)
+            let name = buffer.name;
+            return name[0] === '*' && name.length > 1;
         },
     });
     Object.defineProperty(buffer, 'isUserAnOp', {

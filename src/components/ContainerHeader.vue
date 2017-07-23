@@ -37,6 +37,12 @@
             </div>
             <div class="kiwi-header-name">Private conversation with {{buffer.name}}</div>
         </template>
+        <template v-else-if="isSpecial()">
+            <div class="kiwi-header-options">
+                <a class="u-button u-button-secondary" @click="closeCurrentBuffer">Close</a>
+            </div>
+            <div class="kiwi-header-name">{{buffer.name}}</div>
+        </template>
 
         <div
             v-if="buffer_settings_open"
@@ -122,6 +128,9 @@ export default {
         },
         isQuery: function isQuery() {
             return this.buffer.isQuery();
+        },
+        isSpecial: function isSpecial() {
+            return this.buffer.isSpecial();
         },
         showNetworkSettings: function showNetworkSettings(network) {
             state.$emit('active.component', NetworkSettings, {
