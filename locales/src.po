@@ -338,11 +338,11 @@ msgstr "Remove network"
 
 #: Person key
 msgid "person"
-msgstr "%s person here"
+msgstr "{{count}} person here"
 
 #: Person plural key
 msgid "person_plural"
-msgstr "%s people here"
+msgstr "{{count}} people here"
 
 
 
