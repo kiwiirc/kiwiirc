@@ -260,7 +260,7 @@ msgstr "Not Connected"
 
 #: Private conversation with
 msgid "container_privmsg"
-msgstr "Private conversation with {user}"
+msgstr "Private conversation with {{user}}"
 
 
 
@@ -276,7 +276,7 @@ msgstr "Send a message..."
 
 #: Loading
 msgid "media_loading"
-msgstr "Loading {url}..."
+msgstr "Loading {{url}}..."
 
 
 
@@ -350,15 +350,15 @@ msgstr "{{count}} people here"
 
 #: Reconnect Channel
 msgid "reconnect_channel"
-msgstr "Reconnect to join <i>{channel}</i>"
+msgstr "Reconnect to join {{channel}}"
 
 #: Reconnect to network
 msgid "reconnect_network"
-msgstr "Reconnect to <i>{network}</i> to start talking"
+msgstr "Reconnect to {{network}} to start talking"
 
 #: Reconnect to query
 msgid "reconnect_query"
-msgstr "Reconnect to continue talking with <i>{user}</i>"
+msgstr "Reconnect to continue talking with {{user}}"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -413,7 +413,7 @@ msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion c
 
 #: Leave
 msgid "state_leave"
-msgstr "Leave {name}"
+msgstr "Leave {{name}}"
 
 #: Your account
 msgid "state_account"
@@ -460,11 +460,11 @@ msgstr "Join new #channel"
 
 #: Account name
 msgid "user_account"
-msgstr "Account name: {user}"
+msgstr "Account name: {{user}}"
 
 #: Real name
 msgid "user_realname"
-msgstr "Real name: {realname}"
+msgstr "Real name: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
@@ -480,7 +480,7 @@ msgstr "Is an operator"
 
 #: Connected to
 msgid "user_server"
-msgstr "Connected to {server} {info}"
+msgstr "Connected to {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
@@ -488,7 +488,7 @@ msgstr "Securely connected via SSL/TLS"
 
 #: Also in channels
 msgid "user_channels"
-msgstr "Also in channels {channels}"
+msgstr "Also in channels {{channels}}"
 
 #: Access level
 msgid "user_access"
