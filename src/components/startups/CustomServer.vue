@@ -18,7 +18,7 @@
                 <label class="kiwi-customserver-have-password">
                     <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
                 </label>
-                <input-text v-if="show_password_box" label="Password" v-model="password" type="password" />
+                <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 
                 <input-text :label="$t('channel')" v-model="channel" />
             </template>
