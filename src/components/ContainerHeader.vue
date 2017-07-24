@@ -39,7 +39,7 @@
         </template>
         <template v-else-if="isSpecial()">
             <div class="kiwi-header-options">
-                <a class="u-button u-button-secondary" @click="closeCurrentBuffer">Close</a>
+                <a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a>
             </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
         </template>
