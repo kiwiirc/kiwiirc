@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-appsettings">
-        <a @click="closeSettings" class="u-button u-button-secondary kiwi-appsettings-close">Close</a>
+        <a @click="closeSettings" class="u-button u-button-secondary kiwi-appsettings-close">{{$t('close')}}</a>
 
         <form class="u-form">
             <tabbed-view>
