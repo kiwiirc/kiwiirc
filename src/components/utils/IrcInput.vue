@@ -23,6 +23,7 @@ import htmlparser from 'htmlparser2';
 export default {
     data: function data() {
         return {
+            last_known_value: '',
             text_value: '',
             current_el: null,
             current_el_pos: 0,
@@ -31,23 +32,10 @@ export default {
             code_map: Object.create(null),
         };
     },
-    props: ['value', 'placeholder'],
+    props: ['placeholder'],
     computed: {
         editor: function editor() {
             return this.$refs.editor;
-        },
-    },
-    watch: {
-        value: function watchValue(newVal) {
-            // When we trigger input events Vue updates the value prop for us. If the updated value
-            // matches what we already have then the change came from the editor so we don't need
-            // to update it. But if it differs then the change came from elsewhere so we must
-            // update.
-            if (this.$refs.editor.innerHTML !== newVal) {
-                this.$refs.editor.innerHTML = newVal;
-            }
-
-            this.text_value = this.$refs.editor.innerText;
         },
     },
     methods: {
@@ -84,16 +72,22 @@ export default {
         },
         selectionToEnd: function selectionToEnd() {
             // Move the caret to the end
-            let len = this.value.length;
+            let len = this.$refs.editor.innerHTML.length;
             this.current_range = [len, len];
             this.focus();
         },
+        setValue: function setValue(newVal) {
+            this.value = newVal;
+            this.$refs.editor.innerHTML = newVal;
+        },
+        getValue: function getValue() {
+            return this.$refs.editor.innerHTML;
+        },
         maybeEmitInput: function maybeEmitInput() {
             let currentHtml = this.$refs.editor.innerHTML;
-            if (this.value !== currentHtml) {
-                // Vuejs v-model stuff picks up this event and sets the value prop
-                // with the value
+            if (this.last_known_value !== currentHtml) {
                 this.$emit('input', currentHtml);
+                this.last_known_value = currentHtml;
             }
         },
         buildIrcText: function buildIrcText() {

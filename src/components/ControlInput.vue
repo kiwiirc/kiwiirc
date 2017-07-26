@@ -17,7 +17,6 @@
                 <div class="kiwi-controlinput-input-wrap">
                     <irc-input
                         ref="input"
-                        v-model="currentInputValue"
                         @keydown="inputKeyDown($event)"
                         @keyup="inputKeyUp($event)"
                         @click="closeInputTool"
@@ -73,16 +72,11 @@ export default {
                 activeNetwork.nick :
                 '';
         },
-        currentInputValue: {
-            get: function getCurrentInputValue() {
-                return this.history[this.history_pos] || this.value;
-            },
-            set: function getCurrentInputValue(newValue) {
-                this.value = newValue;
-                // Set history position to 1 index over the current size so that
-                // it's not pointing at an existing item
-                this.history_pos = this.history.length;
-            },
+    },
+    watch: {
+        history_pos: function watchhistoryPos(newVal) {
+            let val = this.history[this.history_pos];
+            this.$refs.input.setValue(val || '');
         },
     },
     methods: {
@@ -203,12 +197,13 @@ export default {
             }
         },
         submitForm: function submitForm() {
-            let rawInput = this.currentInputValue;
+            let rawInput = this.$refs.input.getValue();
             if (!rawInput) {
                 return;
             }
 
-            state.$emit('input.raw', this.$refs.input.buildIrcText());
+            let ircText = this.$refs.input.buildIrcText();
+            state.$emit('input.raw', ircText);
 
             // Add to history, keeping the history trimmed to the last 50 entries
             this.history.push(rawInput);
