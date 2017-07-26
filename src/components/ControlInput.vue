@@ -129,10 +129,18 @@ export default {
                 this.submitForm();
             } else if (event.keyCode === 38) {
                 // Up
+                event.preventDefault();
                 this.historyBack();
+                this.$nextTick(() => {
+                    this.$refs.input.selectionToEnd();
+                });
             } else if (event.keyCode === 40) {
                 // Down
+                event.preventDefault();
                 this.historyForward();
+                this.$nextTick(() => {
+                    this.$refs.input.selectionToEnd();
+                });
             } else if (
                 event.keyCode === 9
                 && !event.shiftKey

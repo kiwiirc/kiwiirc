@@ -82,6 +82,12 @@ export default {
 
             this.maybeEmitInput();
         },
+        selectionToEnd: function selectionToEnd() {
+            // Move the caret to the end
+            let len = this.value.length;
+            this.current_range = [len, len];
+            this.focus();
+        },
         maybeEmitInput: function maybeEmitInput() {
             let currentHtml = this.$refs.editor.innerHTML;
             if (this.value !== currentHtml) {
