@@ -56,6 +56,11 @@ export function listenForNewMessages(state) {
                 '';
         notifyMessage += message.message;
 
+        // Ignore our own join/parts
+        if (message.type === 'traffic' && message.nick === network.nick) {
+            return;
+        }
+
         if ((settingAlertOn === 'message' || settingAlertOn === 'highlight') && isHighlight) {
             notification = show('You were mentioned in ' + buffer.name, notifyMessage, {
                 ttl: 7000,
