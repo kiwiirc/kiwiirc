@@ -2,7 +2,7 @@ var path = require('path');
 var fs = require('fs');
 var i18next_conv = require('i18next-conv');
 
-var source_path = path.join(__dirname, '../locales/');
+var source_path = path.join(__dirname, '../src/res/locales/');
 var dest_path = path.join(__dirname, '../static/locales/');
 
 function save(target) {
@@ -12,7 +12,9 @@ function save(target) {
 }
 
 exports.createJsonFiles = function() {
-    return new Promise(function(resolve, reject) {
+    var availableLangs = [];
+
+    var convertLocales = new Promise(function(resolve, reject) {
         fs.readdir(source_path, function(err, files) {
             var complete = 0;
             var total = files.length;
@@ -30,6 +32,7 @@ exports.createJsonFiles = function() {
                 i18next_conv.gettextToI18next(locale, fs.readFileSync(locale_file))
                     .then(save(dest_path + locale.toLowerCase() + '.json'))
                     .then(function() {
+                        availableLangs.push(locale.toLowerCase());
                         complete++;
                         if (complete === total) {
                             resolve();
@@ -38,6 +41,15 @@ exports.createJsonFiles = function() {
             });
         });
     });
+
+    function writeAvailableFile() {
+        var content = JSON.stringify({
+            locales: availableLangs,
+        });
+        fs.writeFileSync(source_path + 'available.json', content);
+    }
+
+    return convertLocales.then(writeAvailableFile);
 };
 
 if (require.main === module) {

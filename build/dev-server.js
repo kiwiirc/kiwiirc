@@ -8,7 +8,7 @@ var webpackConfig = process.env.NODE_ENV === 'testing'
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
 
-// We some translations to use
+// We need some translations to use
 locales.createJsonFiles();
 
 // default port where dev server listens for incoming traffic

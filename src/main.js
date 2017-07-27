@@ -4,6 +4,7 @@ import i18next from 'i18next';
 import i18nextXHR from 'i18next-xhr-backend';
 import VueI18Next from '@panter/vue-i18next';
 
+import AvailableLocales from 'src/res/locales/available.json';
 import App from 'src/components/App';
 import StartupError from 'src/components/StartupError';
 import Logger from 'src/libs/Logger';
@@ -144,9 +145,14 @@ function applyConfigObj(obj, target) {
 function initLocales() {
     Vue.use(VueI18Next);
 
+    // Make the translation services available via the global API
+    api.i18n = i18next;
+
     i18next.use(i18nextXHR);
     i18next.init({
-        lng: 'en_us',
+        whitelist: AvailableLocales.locales,
+        fallbackLng: 'en-us',
+        lowerCaseLng: true,
         backend: {
             // path where resources get loaded from, or a function
             // returning a path:
