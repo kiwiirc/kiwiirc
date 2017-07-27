@@ -123,7 +123,7 @@ msgid "settings_block_private"
 msgstr "Block new private messages"
 
 #: Messages in scrollback
-msgid "setings_scrollback"
+msgid "settings_scrollback"
 msgstr "Messages in scrollback"
 
 #: Extra formatting
