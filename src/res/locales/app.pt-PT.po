@@ -44,7 +44,7 @@ msgstr "Servidor"
 
 #: Nick (Nickname)
 msgid "nick"
-msgstr "Nick"
+msgstr "Utilizador"
 
 #: Channel
 msgid "channel"
@@ -80,7 +80,7 @@ msgstr "Mais informação"
 
 #: Ignore user toggle box
 msgid "ignore_user"
-msgstr "Ignorar utilzador"
+msgstr "Ignorar utilizador"
 
 #: Channel input box
 msgid "connection_channel"
@@ -188,7 +188,7 @@ msgstr "Actualizando lista de bans"
 
 #: Nobody is banned
 msgid "bans_nobody"
-msgstr "Não existem bans"
+msgstr "Não existem utilizadores banidos"
 
 #: Topic
 msgid "channel_topic"
