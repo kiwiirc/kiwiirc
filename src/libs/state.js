@@ -290,16 +290,53 @@ const state = new Vue({
 
         setting: function setting(name, val) {
             if (typeof val !== 'undefined') {
-                state.$set(this.user_settings, name, val);
-                return val;
+                // Setting any setting always goes into the user own settings space
+                return this.setSetting('user_settings.' + name, val);
             }
 
             // Check the user specific settings before reverting to global settings
-            let result = typeof this.user_settings[name] !== 'undefined' ?
-                this.user_settings[name] :
-                this.settings[name];
+            let userSetting = this.getSetting('user_settings.' + name);
+            let result = typeof userSetting !== 'undefined' ?
+                userSetting :
+                this.getSetting('settings.' + name);
 
             return result;
+        },
+
+        // Accept 'dotted.notation' to read a state property of any depth
+        getSetting: function getSetting(name) {
+            let parts = name.split('.');
+            let val = this.$data;
+
+            for (let i = 0; i < parts.length; i++) {
+                val = val[parts[i]];
+                if (typeof val === 'undefined') {
+                    break;
+                }
+            }
+
+            return val;
+        },
+
+        // Accept 'dotted.notation' to set a state property of any depth
+        setSetting: function setSetting(name, newVal) {
+            let parts = name.split('.');
+            let val = this.$data;
+
+            for (let i = 0; i < parts.length; i++) {
+                let propName = parts[i];
+                let nextVal = val[propName];
+
+                if (i < parts.length - 1 && typeof nextVal === 'undefined') {
+                    nextVal = this.$set(val, propName, {});
+                } else if (i === parts.length - 1) {
+                    this.$set(val, propName, newVal);
+                }
+
+                val = nextVal;
+            }
+
+            return val;
         },
 
         getActiveNetwork: function getActiveNetwork() {
@@ -848,7 +885,7 @@ function initialiseBufferState(buffer) {
             // Check the buffer specific settings before reverting to global settings
             let result = typeof buffer.settings[name] !== 'undefined' ?
                 buffer.settings[name] :
-                state.settings.buffers[name];
+                state.setting('buffers.' + name);
 
             return result;
         },

@@ -26,18 +26,18 @@
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-messages">
                         <h3>{{$t('settings_messages_title')}}</h3>
-                        <label><span>{{$t('settings_timestamps')}}: </span> <input type="checkbox" v-model="bufferSettings.show_timestamps" /></label>
+                        <label><span>{{$t('settings_timestamps')}}: </span> <input type="checkbox" v-model="settingBufferShowTimestamps" /></label>
                         <label><span>{{$t('settings_24hour_timestamps')}}: </span> <input type="checkbox" v-model="timestamps_24h" /></label>
-                        <label><span>{{$t('settings_emoticons')}}: </span> <input type="checkbox" v-model="bufferSettings.show_emoticons" /></label>
-                        <label><span>{{$t('settings_block_private')}}: </span> <input type="checkbox" v-model="bufferSettings.block_pms" /></label>
-                        <label><span>{{$t('settings_scrollback')}}: </span> <input type="number" class="u-input" v-model="bufferSettings.scrollback_size" /></label>
-                        <label><span>{{$t('settings_formatting')}}: </span> <input type="checkbox" v-model="bufferSettings.extra_formatting" /></label>
+                        <label><span>{{$t('settings_emoticons')}}: </span> <input type="checkbox" v-model="settingBufferShowEmoticons" /></label>
+                        <label><span>{{$t('settings_block_private')}}: </span> <input type="checkbox" v-model="settingBufferBlockPms" /></label>
+                        <label><span>{{$t('settings_scrollback')}}: </span> <input type="number" class="u-input" v-model="settingBufferScrollbackSize" /></label>
+                        <label><span>{{$t('settings_formatting')}}: </span> <input type="checkbox" v-model="settingBufferExtraFormatting" /></label>
                     </div>
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
                         <h3>{{$t('notifications')}}</h3>
-                        <label><span>{{$t('settings_show_joinpart')}}: </span> <input type="checkbox" v-model="bufferSettings.traffic_as_activity" /></label>
-                        <label><span>{{$t('settings_mute_sound')}}: </span> <input type="checkbox" v-model="bufferSettings.mute_sound" /></label>
+                        <label><span>{{$t('settings_show_joinpart')}}: </span> <input type="checkbox" v-model="settingBufferTrafficAsActivity" /></label>
+                        <label><span>{{$t('settings_mute_sound')}}: </span> <input type="checkbox" v-model="settingBufferMuteSound" /></label>
                         <label><span>{{$t('settings_highlight')}}: </span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
                     </div>
                 </tabbed-tab>
@@ -86,25 +86,27 @@ export default {
         timestamps_24h: {
             get: function get24Timestamps() {
                 // %H is 24 hour format
-                return state.settings.buffers.timestamp_format.substr(0, 2) === '%H';
+                return state.setting('buffers.timestamp_format').substr(0, 2) === '%H';
             },
             set: function set24Timestamps(newVal) {
-                state.settings.buffers.timestamp_format = newVal ?
+                let newFormat = newVal ?
                     '%H:%M:%S' :
                     '%l:%M:%S';
+                state.setting('buffers.timestamp_format', newFormat);
             },
         },
         settings: function getSettings() {
             return state.settings;
         },
-        userSettings: function getUserSettings() {
-            return state.user_settings;
-        },
-        bufferSettings: function bufferSettings() {
-            return state.settings.buffers;
-        },
         settingShowAutoComplete: bindSetting('showAutocomplete'),
         settingHighlights: bindSetting('highlights'),
+        settingBufferShowTimestamps: bindSetting('buffers.show_timestamps'),
+        settingBufferShowEmoticons: bindSetting('buffers.show_emoticons'),
+        settingBufferBlockPms: bindSetting('buffers.block_pms'),
+        settingBufferScrollbackSize: bindSetting('buffers.scrollback_size'),
+        settingBufferExtraFormatting: bindSetting('buffers.extra_formatting'),
+        settingBufferTrafficAsActivity: bindSetting('buffers.traffic_as_activity'),
+        settingBufferMuteSound: bindSetting('buffers.mute_sound'),
     },
     components: {
         SettingsAliases,
