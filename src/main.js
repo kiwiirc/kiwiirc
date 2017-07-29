@@ -18,6 +18,7 @@ import GlobalApi from 'src/libs/GlobalApi';
 // Global utilities
 import 'src/components/utils/TabbedView';
 import 'src/components/utils/InputText';
+import 'src/components/utils/IrcInput';
 
 // Add the global API as soon as possible so that things can start listening to it
 let api = window.kiwi = GlobalApi.singleton();
