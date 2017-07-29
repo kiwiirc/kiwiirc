@@ -9,7 +9,7 @@
         <a v-if="networks.length>0" @click.stop="toggleStateBrowser" class="u-link kiwi-personal-existing-networks">{{$t('personal_saved')}}</a>
 
         <div class="kiwi-sponsor">
-            Sponsored by <a href="https://www.privateinternetaccess.com/">PrivateInternetAccess</a>
+            Sponsored by <a href="//www.privateinternetaccess.com/">PrivateInternetAccess</a>
             <span>Protect your internet with a VPN</span>
         </div>
     </div>
