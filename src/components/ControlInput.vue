@@ -26,7 +26,7 @@
                 </div>
                 <!--<button type="submit">Send</button>-->
             </form>
-            <div class="kiwi-controlinput-tools">
+            <div class="kiwi-controlinput-tools" ref="plugins">
                 <a @click.prevent="onToolClickTextStyle">
                     <i class="fa fa-adjust" aria-hidden="true"></i>
                 </a>
@@ -78,6 +78,9 @@ export default {
         },
     },
     methods: {
+        addPlugin: function addPlugin(domEl) {
+            this.$refs.plugins.appendChild(domEl);
+        },
         onToolClickTextStyle: function onToolClickTextStyle() {
             this.toggleInputTool(ToolTextStyle);
         },
@@ -299,6 +302,9 @@ export default {
 
             this.$refs.input.focus();
         });
+    },
+    mounted: function mounted() {
+        state.$emit('controlinput:show', { controlinput: this });
     },
 };
 </script>
