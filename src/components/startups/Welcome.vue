@@ -124,6 +124,7 @@ export default {
         let options = state.settings.startupOptions;
 
         this.nick = this.processNickRandomNumber(options.nick || '');
+        this.password = options.password || '';
         this.channel = options.channel || '';
         this.showChannel = typeof options.showChannel === 'boolean' ?
             options.showChannel :
