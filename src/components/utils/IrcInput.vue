@@ -20,7 +20,9 @@
 
 import htmlparser from 'htmlparser2';
 
-export default {
+let Vue = require('vue');
+
+export default Vue.component('irc-input', {
     data: function data() {
         return {
             last_known_value: '',
@@ -298,7 +300,7 @@ export default {
             }
         },
     },
-};
+});
 </script>
 
 <style>

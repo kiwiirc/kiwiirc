@@ -63,7 +63,7 @@ Kiwi IRC is tested on the below browsers. Other browsers are not checked and may
 * Chrome Mobile (Android)
 * Firefox
 * IE10+
-* IOS 9+
+* Safari 9+
 
 ## Thanks
 

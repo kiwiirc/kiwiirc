@@ -44,13 +44,11 @@
 import autocompleteCommands from 'src/res/autocompleteCommands';
 import state from 'src/libs/state';
 import AutoComplete from './AutoComplete';
-import IrcInput from './utils/IrcInput';
 import ToolTextStyle from './inputtools/TextStyle';
 
 export default {
     components: {
         AutoComplete,
-        IrcInput,
     },
     data: function data() {
         return {
