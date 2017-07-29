@@ -515,7 +515,7 @@ const state = new Vue({
                 this.messages.splice(messageIdx, 1);
             }
 
-            if (buffer.isChannel()) {
+            if (buffer.isChannel() && buffer.joined) {
                 network.ircClient.part(buffer.name);
             }
 
