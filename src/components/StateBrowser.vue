@@ -143,6 +143,7 @@ export default {
             }
 
             state.persistence.forgetState();
+            window.location.reload();
         },
         connectProvidedNetwork: function connectProvidedNetwork(pNet) {
             let net = state.addNetwork(pNet.name, pNet.nick, {
