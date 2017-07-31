@@ -7,6 +7,7 @@ export default class GlobalApi {
         eventEmitter(this);
         this.state = null;
         this.themes = null;
+        this.controlInputPlugins = [];
     }
 
     static singleton() {
@@ -16,9 +17,18 @@ export default class GlobalApi {
 
     setState(state) {
         this.state = state;
+        this.state.$on('controlinput:show', e => {
+            this.controlInputPlugins.forEach(el => e.controlinput.addPlugin(el));
+        });
     }
 
     setThemeManager(themeManager) {
         this.themes = themeManager;
+    }
+
+    addPlugin(type, element) {
+        if (type === 'controlinput') {
+            this.controlInputPlugins.push(element);
+        }
     }
 }
