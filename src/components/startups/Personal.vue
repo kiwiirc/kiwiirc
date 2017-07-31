@@ -17,7 +17,6 @@
 
 <script>
 
-import NetworkSettings from 'src/components/NetworkSettings';
 import state from 'src/libs/state';
 
 let firstRun = true;
@@ -36,9 +35,7 @@ export default {
         addNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
             let network = state.addNetwork('New Network', nick, {});
-            state.$emit('active.component', NetworkSettings, {
-                network,
-            });
+            state.$emit('network.settings', network);
         },
         toggleStateBrowser() {
             state.$emit('statebrowser.show');

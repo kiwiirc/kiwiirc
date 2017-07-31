@@ -15,21 +15,13 @@
             </div>
         </template>
         <template v-else-if="isServer()">
-            <div class="kiwi-header-options">
-                <a
-                    class="u-button u-button-secondary"
-                    @click="showNetworkSettings(buffer.getNetwork())"
-                ><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
-            </div>
-            <div class="kiwi-header-name">{{buffer.getNetwork().name}}</div>
-
             <div v-if="buffer.getNetwork().state === 'disconnected'" class="kiwi-header-server-connection">
-                {{$t('container_notconnected')}}
-                <a @click="buffer.getNetwork().ircClient.connect()" class="u-link">{{$t('connect')}}</a>
+                <a @click="buffer.getNetwork().ircClient.connect()" class="u-button u-button-primary">{{$t('connect')}}</a>
             </div>
             <div v-else-if="buffer.getNetwork().state === 'connecting'" class="kiwi-header-server-connection">
                 {{$t('connecting')}}
             </div>
+            <div class="kiwi-header-name">{{buffer.getNetwork().name}}</div>
         </template>
         <template v-else-if="isQuery()">
             <div class="kiwi-header-options">
@@ -73,7 +65,6 @@
 
 import _ from 'lodash';
 import state from 'src/libs/state';
-import NetworkSettings from './NetworkSettings';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
@@ -133,9 +124,7 @@ export default {
             return this.buffer.isSpecial();
         },
         showNetworkSettings: function showNetworkSettings(network) {
-            state.$emit('active.component', NetworkSettings, {
-                network,
-            });
+            state.$emit('network.settings', network);
         },
         joinCurrentBuffer: function joinCurrentBuffer() {
             let network = this.buffer.getNetwork();

@@ -1,18 +1,5 @@
 <template>
     <div class="kiwi-networksettings">
-        <a @click="closeSettings" class="u-button u-button-secondary kiwi-networksettings-close">{{$t('close')}}</a>
-
-        <h3>{{network.name}}</h3>
-        <div v-if="network.state === 'connected'">
-            {{$t('connected')}}
-        </div>
-        <div v-else-if="network.state === 'connecting'">
-            {{$t('connecting')}}
-        </div>
-        <div v-else>
-            <a @click="reconnect" class="u-button u-button-primary">{{$t('connect')}}</a>
-        </div>
-
         <form class="u-form">
             <div class="kiwi-networksettings-section kiwi-networksettings-connection">
                 <h3>{{$t('settings_server_details')}}</h3>
@@ -55,18 +42,8 @@
             </div>
 
             <div class="kiwi-networksettings-section  kiwi-networksettings-user">
-                <h3>{{$t('settings_your_details')}}</h3>
-                <label><span>{{$t('settings_nickname')}}: </span> <input v-model="network.nick" /></label>
-            </div>
-
-            <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
-                <h3>{{$t('settings_advanced')}}</h3>
-                <label><span>{{$t('settings_encoding')}}: </span> <input v-model="network.connection.encoding" /></label><br />
-                <label><span>{{$t('settings_show_raw')}}: </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
-                <label class="u-form-block">
-                    <span>{{$t('settings_autorun')}}</span>
-                    <textarea v-model="network.auto_commands" cols=40 rows=5></textarea>
-                </label><br />
+                <h3>{{$t('settings_nickname')}}</h3>
+                <input-text :label="$t('settings_nickname')" v-model="network.nick" />
             </div>
 
             <div class="kiwi-networksettings-section kiwi-networksettings-danger">
@@ -90,16 +67,6 @@ export default {
             znc_password: '',
         };
     },
-    computed: {
-        settingShowRaw: {
-            get: function getSettingAlertOn() {
-                return this.network.setting('show_raw');
-            },
-            set: function setSettingAlertOn(val) {
-                return this.network.setting('show_raw', val);
-            },
-        },
-    },
     props: ['network'],
     components: {
     },
@@ -114,9 +81,6 @@ export default {
             }
 
             state.removeNetwork(this.network.id);
-            state.$emit('active.component');
-        },
-        closeSettings: function closeSettings() {
             state.$emit('active.component');
         },
         setZncPass: function setZncPass() {
@@ -171,7 +135,6 @@ export default {
 .kiwi-networksettings {
     box-sizing: border-box;
     height: 100%;
-    overflow-y: auto;
 }
 .kiwi-networksettings-close {
     float: right;
@@ -179,7 +142,7 @@ export default {
 .kiwi-networksettings form .input-text {
     margin-bottom: 10px;
 }
-.kiwi-networksettings-connection {
+.kiwi-networksettings {
     max-width: 400px;
 }
 .kiwi-networksettings-server-types {
