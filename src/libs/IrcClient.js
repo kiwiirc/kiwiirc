@@ -232,7 +232,12 @@ function clientMiddleware(state, networkid) {
 
         if (command === 'join') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
-            state.addUserToBuffer(buffer, { nick: event.nick });
+            state.addUserToBuffer(buffer, {
+                nick: event.nick,
+                username: event.ident,
+                host: event.hostname,
+                realname: event.gecos,
+            });
 
             if (event.nick === client.user.nick) {
                 buffer.joined = true;
