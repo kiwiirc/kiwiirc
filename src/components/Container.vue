@@ -17,13 +17,18 @@
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
             </div>
 
-            <sidebar
-                v-if="buffer.isChannel()"
-                :network="network"
-                :buffer="buffer"
-                :users="users"
-            ></sidebar>
-            <message-list :buffer="buffer" :messages="messages" :users="users"></message-list>
+            <template v-if="buffer.isServer()">
+                <server-view :network="network" :buffer="buffer"></server-view>
+            </template>
+            <template v-else>
+                <sidebar
+                    v-if="buffer.isChannel()"
+                    :network="network"
+                    :buffer="buffer"
+                    :users="users"
+                ></sidebar>
+                <message-list :buffer="buffer" :messages="messages" :users="users"></message-list>
+            </template>
         </template>
         <template v-else>
             {{$t('container_welcome')}}
@@ -38,12 +43,14 @@ import state from 'src/libs/state';
 import ContainerHeader from './ContainerHeader';
 import Sidebar from './Sidebar';
 import MessageList from './MessageList';
+import ServerView from './ServerView';
 
 export default {
     components: {
         ContainerHeader,
         Sidebar,
         MessageList,
+        ServerView,
     },
     data: function data() {
         return {
@@ -114,6 +121,9 @@ export default {
 }
 .kiwi-messagelist {
     margin-right: 200px;
+    flex: 1;
+}
+.kiwi-serverview {
     flex: 1;
 }
 

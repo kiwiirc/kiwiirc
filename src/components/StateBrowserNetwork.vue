@@ -85,7 +85,6 @@
 import _ from 'lodash';
 import state from 'src/libs/state';
 import * as Misc from 'src/helpers/Misc';
-import NetworkSettings from './NetworkSettings';
 import BufferSettings from './BufferSettings';
 
 export default {
@@ -134,9 +133,7 @@ export default {
             return list;
         },
         showNetworkSettings: function showNetworkSettings(network) {
-            state.$emit('active.component', NetworkSettings, {
-                network,
-            });
+            state.$emit('network.settings', network);
         },
         showBufferPopup: function showBufferPopup(buffer, domY) {
             if (!buffer) {

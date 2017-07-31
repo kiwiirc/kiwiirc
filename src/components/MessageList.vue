@@ -249,6 +249,9 @@ export default {
                 this.auto_scroll = true;
             }
         },
+        scrollToBottom: function scrollToBottom() {
+            this.$el.scrollTop = this.$el.scrollHeight;
+        },
     },
     watch: {
         buffer: function watchBuffer(newBuffer) {
@@ -270,10 +273,15 @@ export default {
         messages: function watchMessages() {
             if (this.auto_scroll) {
                 this.$nextTick(() => {
-                    this.$el.scrollTop = this.$el.scrollHeight;
+                    this.scrollToBottom();
                 });
             }
         },
+    },
+    mounted: function mounted() {
+        this.$nextTick(() => {
+            this.scrollToBottom();
+        });
     },
 };
 </script>
@@ -281,6 +289,7 @@ export default {
 <style>
 .kiwi-messagelist {
     overflow-y: auto;
+    height: 100%;
 }
 .kiwi-messagelist-scrollback {
     text-align: center;

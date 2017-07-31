@@ -82,6 +82,10 @@ export default {
                 this.activeComponent = component;
             }
         });
+        this.listen(state, 'network.settings', (network) => {
+            this.activeComponent = null;
+            state.setActiveBuffer(network.id, network.serverBuffer().name);
+        });
         this.listen(state, 'statebrowser.toggle', () => {
             this.stateBrowserDrawOpen = !this.stateBrowserDrawOpen;
         });

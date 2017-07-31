@@ -95,6 +95,7 @@ p {
 .u-tabbed-content {
     padding-top: 10px;
     overflow: auto;
+    height: 100%;
 }
 @media screen and (max-width: 500px) {
     .u-tabbed-view-tab {
@@ -396,6 +397,7 @@ p {
 .kiwi-header-name {
     font-weight: bold;
     line-height: 49px;
+    margin-left: 1em;
 }
 .kiwi-header-topic {
     font-size: 0.9em;
@@ -600,10 +602,10 @@ p {
  */
 
 .kiwi-networksettings {
-    padding: 1em;
+    margin: 0 auto;
 }
 .kiwi-networksettings-section {
-    margin: 20px 10px 40px 10px;
+    margin: 0 10px 40px 10px;
 }
 .kiwi-networksettings-connection-address {
     width: 70%;
@@ -617,8 +619,15 @@ p {
     font-size: 0.9em;
     font-style: italic;
 }
+.kiwi-networksettings-connection-password {
+    width: 70%;
+}
+.kiwi-networksettings-user {
+    width: 70%;
+}
 .kiwi-networksettings-danger h3 {
     padding: 5px 10px;
+    margin-top: 70px;
     margin-bottom: 1em;
 }
 

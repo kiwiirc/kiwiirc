@@ -69,7 +69,6 @@
 import state from 'src/libs/state';
 import StateBrowserNetwork from './StateBrowserNetwork';
 import AppSettings from './AppSettings';
-import NetworkSettings from './NetworkSettings';
 import BufferSettings from './BufferSettings';
 import NetworkProvider from 'src/libs/NetworkProvider';
 import NetworkProviderZnc from 'src/libs/networkproviders/NetworkProviderZnc';
@@ -128,9 +127,7 @@ export default {
         clickAddNetwork: function clickAddNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
             let network = state.addNetwork('New Network', nick, {});
-            state.$emit('active.component', NetworkSettings, {
-                network,
-            });
+            state.$emit('network.settings', network);
         },
         clickAppSettings: function clickAppSettings() {
             state.$emit('active.component', AppSettings);

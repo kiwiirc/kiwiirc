@@ -27,7 +27,6 @@
 <script>
 
 import state from 'src/libs/state';
-import NetworkSettings from './NetworkSettings';
 
 export default {
     data: function data() {
@@ -78,9 +77,7 @@ export default {
         },
         showNetworkSettings: function showNetworkSettings() {
             let network = this.buffer.getNetwork();
-            state.$emit('active.component', NetworkSettings, {
-                network,
-            });
+            state.$emit('network.settings', network);
         },
     },
 };
