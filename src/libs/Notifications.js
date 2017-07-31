@@ -4,6 +4,7 @@ export function requestPermission() {
     // Do we support notifications?
     if (!('Notification' in window)) {
         isEnabled = false;
+        return;
     }
 
     // Permissions already been granted?

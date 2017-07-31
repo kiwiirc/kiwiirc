@@ -1,7 +1,7 @@
 var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
-var projectRoot = path.resolve(__dirname, '../')
+var projectRoot = path.resolve(__dirname, '../src/')
 
 module.exports = {
   entry: {
@@ -30,14 +30,12 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'eslint',
-        include: projectRoot,
-        exclude: /node_modules/
+        include: projectRoot
       },
       {
         test: /\.js$/,
         loader: 'eslint',
-        include: projectRoot,
-        exclude: /node_modules/
+        include: projectRoot
       }
     ],
     loaders: [
@@ -48,8 +46,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        include: projectRoot,
-        exclude: /node_modules/
+        include: [ projectRoot, path.resolve(__dirname, '../node_modules/irc-framework/')],
       },
       {
         test: /\.json$/,
