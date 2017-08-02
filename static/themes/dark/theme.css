@@ -302,6 +302,9 @@ h1, h2, h3, h4, h5, h6 {
     background: #354028;
     border-left-color: #658841;
 }
+.kiwi-messagelist-message--info-open {
+    background: #484747;
+}
 .kiwi-messagelist-message a {
     color: #5379b7;
 }
@@ -362,6 +365,19 @@ h1, h2, h3, h4, h5, h6 {
     border-left-color: #650505;
 }
 
+
+/**
+ * Message list
+ */
+
+.kiwi-messageinfo {
+    background: #484747;
+    border-bottom: 3px #383737 solid;
+    border-top: 1px #383737 dashed;
+}
+.kiwi-messageinfo-urls {
+    border-top: 1px solid #dddddd;
+}
 
 
 /**

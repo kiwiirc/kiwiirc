@@ -388,6 +388,21 @@
 
 
 /**
+ * Message list
+ */
+
+.kiwi-messageinfo {
+    background: #f6f6f6;
+    border-bottom: 2px #dddddd solid;
+    border-top: 1px #dddddd dashed;
+}
+.kiwi-messageinfo-urls {
+    border-top: 1px solid #dddddd;
+}
+
+
+
+/**
  * Network settings
  */
 

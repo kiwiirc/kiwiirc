@@ -64,9 +64,6 @@ export default {
 
 <style>
 .kiwi-messageinfo {
-    background: #f6f6f6;
-    border-bottom: 2px #dddddd solid;
-    border-top: 1px #dddddd dashed;
     display: block;
     padding-top: 1em;
     padding-bottom: 1em;
@@ -77,7 +74,6 @@ export default {
 }
 .kiwi-messageinfo-urls {
     margin-top: 5px;
-    border-top: 1px solid #dddddd;
     padding-top: 5px;
 }
 .kiwi-messageinfo-url {
