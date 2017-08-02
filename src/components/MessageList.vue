@@ -7,10 +7,9 @@
             <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
-        <template v-for="(message, idx) in filteredMessages">
-        <div>
         <div
-            key="message.time"
+            v-for="(message, idx) in filteredMessages"
+            key="message.id"
             @click="onMessageClick($event, message)"
             class="kiwi-messagelist-message"
             v-bind:class="[
@@ -60,16 +59,14 @@
                 @mouseout="hover_nick='';"
             >{{message.nick}}</div>
             <div class="kiwi-messagelist-body" v-html="formatMessage(message)"></div>
+
+            <message-info
+                v-if="message_info_open===message"
+                :message="message"
+                :buffer="buffer"
+                @close="toggleMessageInfo()"
+            />
         </div>
-        <message-info
-            v-if="message_info_open===message"
-            :message="message"
-            :buffer="buffer"
-            @click.stop
-            @close="toggleMessageInfo(message)"
-        />
-        </div>
-        </template>
 
         <not-connected
             v-if="buffer.getNetwork().state !== 'connected'"
@@ -183,8 +180,10 @@ export default {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
         toggleMessageInfo: function toggleMessageInfo(message) {
-            if (!message || this.message_info_open === message) {
+            if (!message) {
                 this.message_info_open = null;
+            } else if (this.message_info_open === message) {
+                return;
             } else if (this.canShowInfoForMessage(message)) {
                 // If in the process of selecting text, don't show the info box
                 let sel = window.getSelection();
@@ -194,7 +193,7 @@ export default {
                         return;
                     }
                 }
-                console.log('setting message_info_open');
+
                 this.message_info_open = message;
                 this.$nextTick(this.maybeScrollToBottom.bind(this));
             }
