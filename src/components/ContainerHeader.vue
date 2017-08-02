@@ -10,7 +10,7 @@
         <template v-if="isChannel()">
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div v-if="isJoined" class="kiwi-header-topic"></div>
-            <div v-if="!isJoined" class="kiwi-header-notjoined">
+            <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a @click="joinCurrentBuffer" class="u-link">{{$t('container_join')}}</a>
             </div>
         </template>
@@ -81,6 +81,9 @@ export default {
         isJoined: function isJoined() {
             let buffer = this.buffer;
             return buffer.getNetwork().state === 'connected' && buffer.joined;
+        },
+        isConnected: function isConnected() {
+            return this.buffer.getNetwork().state === 'connected';
         },
     },
     components: {

@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-messageinfo" @click="$emit('click', $event)">
+    <div class="kiwi-messageinfo" @click.stop>
         <div class="kiwi-messageinfo-author">Message from {{message.nick}}. <a @click="openQuery" class="u-link">Reply in private</a></div>
 
         <div v-if="areWeAnOp()" class="kiwi-messageinfo-opactions">
@@ -67,7 +67,6 @@ export default {
     display: block;
     padding-top: 1em;
     padding-bottom: 1em;
-    margin-bottom: 1em;
     position: relative;
 }
 .kiwi-messageinfo-opactions a {

@@ -1,8 +1,11 @@
 import _ from 'lodash';
 import * as TextFormatting from 'src/helpers/TextFormatting';
 
+let nextId = 0;
+
 export default class Message {
     constructor(message, user) {
+        this.id = nextId++;
         this.time = message.time || Date.now();
         this.nick = message.nick;
         this.message = message.message;
