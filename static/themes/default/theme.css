@@ -1,4 +1,4 @@
-@import '../common/layout.css';
+@import '../common/layout.css?cb=1';
 
 .kiwi-wrap {
     font-family: Source Sans Pro, Helvetica, sans-serif;
@@ -139,10 +139,6 @@
 }
 .kiwi-statebrowser-availablenetworks-link--connected {
     border-color: green;
-}
-
-.kiwi-statebrowser-channel-name {
-    cursor: pointer;
 }
 
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
@@ -309,6 +305,9 @@
     background: #e3f1d4;
     border-left-color: #80ab52;
 }
+.kiwi-messagelist-message--info-open {
+    background: #f6f6f6;
+}
 
 .kiwi-messagelist-message > div {
 }
@@ -380,6 +379,21 @@
 .kiwi-messagelist-message-error {
     background: #f1d4d4;
     border-left-color: #ab5252;
+}
+
+
+
+/**
+ * Message list
+ */
+
+.kiwi-messageinfo {
+    background: #f6f6f6;
+    border-bottom: 2px #dddddd solid;
+    border-top: 1px #dddddd dashed;
+}
+.kiwi-messageinfo-urls {
+    border-top: 1px solid #dddddd;
 }
 
 

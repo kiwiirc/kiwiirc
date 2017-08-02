@@ -69,6 +69,11 @@ export default {
     created: function created() {
         this.updateEmbed();
     },
+    mounted: function mounted() {
+        this.$nextTick(() => {
+            state.$emit('mediaviewer.opened');
+        });
+    },
     watch: {
         url: function watchUrl() {
             this.updateEmbed();
