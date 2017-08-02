@@ -131,7 +131,7 @@ function handleMessage(type, event, command, line) {
     }
 
     let fnNames = {
-        msg: 'say',
+        privmsg: 'say',
         action: 'action',
         notice: 'notice',
     };
@@ -140,7 +140,7 @@ function handleMessage(type, event, command, line) {
 }
 
 inputCommands.msg = function inputCommandMsg(event, command, line) {
-    handleMessage.call(this, 'msg', event, command, line);
+    handleMessage.call(this, 'privmsg', event, command, line);
 };
 inputCommands.action = function inputCommandMsg(event, command, line) {
     handleMessage.call(this, 'action', event, command, line);

@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-messagelist" @click="onThreadClick" @scroll.self="onThreadScroll">
+    <div class="kiwi-messagelist" @scroll.self="onThreadScroll" @click.self="onListClick">
         <div
             v-if="shouldShowChathistoryTools"
             class="kiwi-messagelist-scrollback"
@@ -7,14 +7,17 @@
             <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
+        <template v-for="(message, idx) in filteredMessages">
+        <div>
         <div
-            v-for="(message, idx) in filteredMessages"
             key="message.time"
+            @click="onMessageClick($event, message)"
             class="kiwi-messagelist-message"
             v-bind:class="[
                 filteredMessages[idx-1] &&
                 filteredMessages[idx-1].nick === message.nick &&
                 message.time - filteredMessages[idx-1].time < 60000 &&
+                filteredMessages[idx-1].type !== 'traffic' &&
                 message.type !== 'traffic' ?
                     'kiwi-messagelist-message-repeat' :
                     '',
@@ -25,7 +28,7 @@
                 isMessageHighlight(message) ?
                     'kiwi-messagelist-message--highlight' :
                     '',
-                message.nick && message.nick.toLowerCase() === hover_nick.toLowerCase() ?
+                isHoveringOverMessage(message) ?
                     'kiwi-messagelist-message--hover' :
                     '',
                 buffer.last_read && message.time > buffer.last_read ?
@@ -34,7 +37,14 @@
                 message.nick.toLowerCase() === ourNick.toLowerCase() ?
                     'kiwi-messagelist-message--own' :
                     '',
+                message_info_open === message ?
+                    'kiwi-messagelist-message--info-open' :
+                    '',
+                message_info_open && message_info_open !== message ?
+                    'kiwi-messagelist-message--blur' :
+                    '',
             ]"
+            :data-message="message"
         >
             <div
                 v-if="bufferSetting('show_timestamps')"
@@ -49,8 +59,17 @@
                 @mouseover="hover_nick=message.nick.toLowerCase();"
                 @mouseout="hover_nick='';"
             >{{message.nick}}</div>
-            <div class="kiwi-messagelist-body" v-html="formatMessage(message.message)"></div>
+            <div class="kiwi-messagelist-body" v-html="formatMessage(message)"></div>
         </div>
+        <message-info
+            v-if="message_info_open===message"
+            :message="message"
+            :buffer="buffer"
+            @click.stop
+            @close="toggleMessageInfo(message)"
+        />
+        </div>
+        </template>
 
         <not-connected
             v-if="buffer.getNetwork().state !== 'connected'"
@@ -63,20 +82,26 @@
 <script>
 
 import strftime from 'strftime';
-import _ from 'lodash';
 import state from 'src/libs/state';
 import * as TextFormatting from 'src/helpers/TextFormatting';
 import NotConnected from './NotConnected';
+import MessageInfo from './MessageInfo';
+
+// If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
+// of the message list
+const BOTTOM_SCROLL_MARGIN = 30;
 
 export default {
     components: {
         NotConnected,
+        MessageInfo,
     },
     data: function data() {
         return {
             auto_scroll: true,
             chathistoryAvailable: true,
             hover_nick: '',
+            message_info_open: null,
         };
     },
     props: ['buffer', 'messages', 'users'],
@@ -154,36 +179,38 @@ export default {
         },
     },
     methods: {
+        isHoveringOverMessage: function isHoveringOverMessage(message) {
+            return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
+        },
+        toggleMessageInfo: function toggleMessageInfo(message) {
+            if (!message || this.message_info_open === message) {
+                this.message_info_open = null;
+            } else if (this.canShowInfoForMessage(message)) {
+                // If in the process of selecting text, don't show the info box
+                let sel = window.getSelection();
+                if (sel.rangeCount > 0) {
+                    let range = sel.getRangeAt(0);
+                    if (range && !range.collapsed) {
+                        return;
+                    }
+                }
+                console.log('setting message_info_open');
+                this.message_info_open = message;
+                this.$nextTick(this.maybeScrollToBottom.bind(this));
+            }
+        },
+        canShowInfoForMessage: function canShowInfoForMessage(message) {
+            let showInfoForTypes = ['privmsg', 'notice', 'action'];
+            return showInfoForTypes.indexOf(message.type) > -1;
+        },
         bufferSetting: function bufferSetting(key) {
             return this.buffer.setting(key);
         },
         formatTime: function formatTime(time) {
             return strftime(this.buffer.setting('timestamp_format') || '%T', new Date(time));
         },
-        formatMessage: function formatMessage(messageBody) {
-            let words = messageBody.split(' ');
-            words = words.map(word => {
-                let parsed;
-
-                parsed = TextFormatting.linkifyUrls(word, {
-                    addHandle: true,
-                    handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
-                });
-                if (parsed !== word) return parsed;
-
-                parsed = TextFormatting.linkifyChannels(word);
-                if (parsed !== word) return parsed;
-
-                parsed = TextFormatting.linkifyUsers(word, this.usersAsObject);
-                if (parsed !== word) return parsed;
-
-                return _.escape(word);
-            });
-
-            let parsed = words.join(' ');
-            parsed = TextFormatting.ircCodesToHtml(parsed, this.useExtraFormatting);
-
-            return parsed;
+        formatMessage: function formatMessage(message) {
+            return message.parseHtml(this);
         },
         isMessageHighlight: function isMessageHighlight(message) {
             // Highlighting ourselves when we join or leave a channel is silly
@@ -212,18 +239,20 @@ export default {
         nickStyle: function nickColour(nick) {
             return 'color:' + TextFormatting.createNickColour(nick) + ';';
         },
-        onThreadClick: function onThreadClick(event) {
+        onListClick: function onListClick(event) {
+            this.toggleMessageInfo();
+        },
+        onMessageClick: function onThreadClick(event, message) {
             let channelName = event.target.getAttribute('data-channel-name');
             if (channelName) {
                 let network = this.buffer.getNetwork();
                 state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
+                return;
             }
 
             let userNick = event.target.getAttribute('data-nick');
             if (userNick) {
-                // let buffer = state.addBuffer(this.buffer.networkid, userNick);
-                // state.setActiveBuffer(buffer.networkid, buffer.name);
                 let user = state.getUser(this.buffer.networkid, userNick);
                 if (user) {
                     state.$emit('userbox.show', user, {
@@ -232,18 +261,34 @@ export default {
                         buffer: this.buffer,
                     });
                 }
+
+                return;
             }
 
             let url = event.target.getAttribute('data-url');
             if (url) {
                 state.$emit('mediaviewer.show', url);
             }
+
+            if (this.message_info_open && this.message_info_open !== message) {
+                // Clicking on another message while another info is open, just close the info
+                this.toggleMessageInfo();
+                event.preventDefault();
+                return;
+            }
+
+            if (this.canShowInfoForMessage(message) && event.target.nodeName === 'A') {
+                // Stop links from doing their thing. We show a preview and normal links for that
+                event.preventDefault();
+            }
+
+            this.toggleMessageInfo(message);
         },
         onThreadScroll: function onThreadScroll() {
             let el = this.$el;
             let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
 
-            if (scrolledUpByPx > 30) {
+            if (scrolledUpByPx > BOTTOM_SCROLL_MARGIN) {
                 this.auto_scroll = false;
             } else {
                 this.auto_scroll = true;
@@ -252,12 +297,19 @@ export default {
         scrollToBottom: function scrollToBottom() {
             this.$el.scrollTop = this.$el.scrollHeight;
         },
+        maybeScrollToBottom: function maybeScrollToBottom() {
+            if (this.auto_scroll) {
+                this.$el.scrollTop = this.$el.scrollHeight;
+            }
+        },
     },
     watch: {
         buffer: function watchBuffer(newBuffer) {
             if (!newBuffer) {
                 return;
             }
+
+            this.message_info_open = null;
 
             // First time opening this buffer, see if we can load any initial scrollback
             if (!newBuffer.flags.has_opened && this.shouldShowChathistoryTools) {
@@ -268,19 +320,21 @@ export default {
                 newBuffer.flags.has_opened = true;
             }
 
-            this.$el.scrollTop = this.$el.scrollHeight;
+            this.scrollToBottom();
         },
         messages: function watchMessages() {
-            if (this.auto_scroll) {
-                this.$nextTick(() => {
-                    this.scrollToBottom();
-                });
-            }
+            this.$nextTick(() => {
+                this.maybeScrollToBottom();
+            });
         },
     },
     mounted: function mounted() {
         this.$nextTick(() => {
             this.scrollToBottom();
+        });
+
+        this.listen(state, 'mediaviewer.opened', () => {
+            this.$nextTick(this.maybeScrollToBottom.apply(this));
         });
     },
 };
@@ -297,6 +351,16 @@ export default {
 }
 .kiwi-messagelist-message {
     overflow: hidden;
+    transition: opacity 0.2s
+}
+.kiwi-messagelist-message-privmsg:hover,
+.kiwi-messagelist-message-action:hover,
+.kiwi-messagelist-message-notice:hover, {
+    cursor: pointer;
+    border-left-color: #80ab52;
+}
+.kiwi-messagelist-message--blur {
+    opacity: 0.5;
 }
 .kiwi-messagelist-nick {
     width: 120px;
@@ -316,6 +380,9 @@ export default {
 .kiwi-messagelist-body a {
     word-break: break-all;
 }
+.kiwi-messageinfo {
+    padding-left: 130px;
+}
 @media screen and (max-width: 700px) {
     .kiwi-messagelist-nick {
         display: inline;
@@ -330,8 +397,12 @@ export default {
     .kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
         display: none;
     }
+    .kiwi-messageinfo {
+        padding-left: 2px;
+    }
 }
 .kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
     display: none;
 }
+
 </style>

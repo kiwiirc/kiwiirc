@@ -240,6 +240,7 @@ const urlRegex = new RegExp('' +
 
 export function linkifyUrls(input, _opts) {
     let opts = _opts || {};
+    let foundUrls = [];
     let result = input.replace(urlRegex, _url => {
         let url = _url;
         let nice = url;
@@ -268,10 +269,14 @@ export function linkifyUrls(input, _opts) {
             out += `<a data-url="${url}" class="${cssClass}">${content}</a>`;
         }
 
+        foundUrls.push(url);
         return out;
     });
 
-    return result;
+    return {
+        urls: foundUrls,
+        html: result,
+    };
 }
 
 export function linkifyChannels(word) {

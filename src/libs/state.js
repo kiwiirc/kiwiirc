@@ -2,6 +2,7 @@ import Vue from 'vue';
 import _ from 'lodash';
 import strftime from 'strftime';
 import * as IrcClient from './IrcClient';
+import Message from './Message';
 
 const stateObj = {
     // May be set by a StatePersistence instance
@@ -537,15 +538,8 @@ const state = new Vue({
                 return;
             }
 
-            let bufferMessage = {
-                time: message.time || Date.now(),
-                nick: message.nick,
-                message: message.message,
-                type: message.type || 'message',
-                type_extra: message.type_extra,
-            };
-
             let user = this.getUser(buffer.networkid, message.nick);
+            let bufferMessage = new Message(message, user);
             if (user && user.ignore) {
                 bufferMessage.ignore = true;
             }
@@ -865,9 +859,16 @@ function initialiseBufferState(buffer) {
     Object.defineProperty(buffer, 'isUserAnOp', {
         value: function isUserAnOp(nick) {
             let user = state.getUser(buffer.networkid, buffer.getNetwork().nick);
-            let userBufferInfo = user.buffers[buffer.id];
-            let modes = userBufferInfo.modes;
+            if (!user) {
+                return false;
+            }
 
+            let userBufferInfo = user.buffers[buffer.id];
+            if (!userBufferInfo) {
+                return false;
+            }
+
+            let modes = userBufferInfo.modes;
             let opModes = ['Y', 'y', 'q', 'a', 'o', 'h'];
             let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
 
