@@ -222,6 +222,7 @@ export default {
     display: flex;
 }
 .kiwi-statebrowser-channel-name {
+    cursor: pointer;
     flex: 1;
 }
 

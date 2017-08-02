@@ -141,10 +141,6 @@
     border-color: green;
 }
 
-.kiwi-statebrowser-channel-name {
-    cursor: pointer;
-}
-
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
     color: #d03232;
 }
