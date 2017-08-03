@@ -3,6 +3,7 @@
     font-size: 14px;
     line-height: 1.6em;
     -webkit-font-smoothing: antialiased;
+    --kiwi-nick-brightness: 50;
 }
 
 .kiwi-workspace:before {
