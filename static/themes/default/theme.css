@@ -3,6 +3,7 @@
 .kiwi-wrap {
     font-family: Source Sans Pro, Helvetica, sans-serif;
     color: #2c3e50;
+    --kiwi-nick-brightness: 40;
 }
 
 .kiwi-workspace:before {
