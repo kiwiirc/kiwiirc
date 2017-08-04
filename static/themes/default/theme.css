@@ -431,13 +431,6 @@
  */
 
 .kiwi-userbox {
-    border: 1px solid #dddddd;
-    background: #f6f6f6;
-    transition: 0.2s top;
-}
-@media screen and (max-width: 500px) {
-    .kiwi-userbox {
-    }
 }
 .kiwi-userbox-usermask {
     color: #9e9e9e;

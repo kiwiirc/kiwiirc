@@ -1,9 +1,13 @@
 <template>
-    <div class="kiwi-sidebar" :class="{'kiwi-sidebar--settings-open': settings_open}">
+    <div class="kiwi-sidebar" :class="{'kiwi-sidebar--wide': sidebarIsWide}">
         <template v-if="buffer">
             <template v-if="buffer.isChannel()">
-                <span class="kiwi-sidebar-options" @click="settings_open = !settings_open">
-                    <i class="fa fa-cog" aria-hidden="true"></i> {{settings_open?$t('side_close'):$t('side_options')}}
+
+                <span v-if="sidebarIsWide" class="kiwi-sidebar-options" @click="sidebarIsWide=false">
+                    {{$t('close')}} <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span v-else class="kiwi-sidebar-options" @click="settings_open = !settings_open">
+                    <i class="fa fa-cog" aria-hidden="true"></i> {{$t('side_options')}}
                 </span>
 
                 <div
@@ -30,6 +34,18 @@
                             <buffer-settings v-bind:buffer="buffer"></buffer-settings>
                         </tabbed-tab>
                     </tabbed-view>
+                </div>
+
+                <div
+                    v-if="userbox_open"
+                    class="kiwi-sidebar-userbox"
+                    @click.stop=""
+                >
+                    <user-box
+                        :user="userbox_user"
+                        :buffer="buffer"
+                        :network="network"
+                    ></user-box>
                 </div>
 
                 <nicklist
@@ -59,6 +75,7 @@ import state from 'src/libs/state';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
+import UserBox from 'src/components/UserBox';
 import Nicklist from './Nicklist';
 
 export default {
@@ -67,14 +84,28 @@ export default {
         ChannelInfo,
         ChannelBanlist,
         Nicklist,
+        UserBox,
     },
     data: function data() {
         return {
             settings_open: false,
+            userbox_open: false,
+            userbox_user: null,
         };
     },
     props: ['network', 'buffer', 'users'],
     computed: {
+        sidebarIsWide: {
+            get: function getSidebarIsWide() {
+                return this.settings_open || this.userbox_open;
+            },
+            set: function setSidebarIsWide(newVal) {
+                if (!newVal) {
+                    this.settings_open = false;
+                    this.userbox_open = false;
+                }
+            },
+        },
         settingShowJoinParts: {
             get: function getSettingShowJoinParts() {
                 return this.buffer.setting('show_joinparts');
@@ -121,6 +152,14 @@ export default {
         this.listen(state, 'sidebar.hide', () => {
             this.settings_open = false;
         });
+
+        this.listen(state, 'userbox.show', (user, opts) => {
+            this.userbox_user = user;
+            this.userbox_open = true;
+        });
+        this.listen(state, 'userbox.hide', () => {
+            this.userbox_open = false;
+        });
     },
 };
 </script>
@@ -134,22 +173,23 @@ export default {
     overflow: hidden;
 }
 
-.kiwi-sidebar--settings-open {
+.kiwi-sidebar--wide {
     width: 500px;
     border-left: 3px solid #dddddd;
 }
 @media screen and (max-width: 700px) {
-    .kiwi-sidebar--settings-open {
+    .kiwi-sidebar--wide {
         width: 100%;
+        right: 0;
     }
 }
-.kiwi-sidebar--settings-open .kiwi-sidebar-buffersettings {
+.kiwi-sidebar--wide .kiwi-sidebar-buffersettings {
     /*
     animation-duration: 2s;
     animation-name: settingstransition;
     */
 }
-.kiwi-sidebar--settings-open .kiwi-nicklist {
+.kiwi-sidebar--wide .kiwi-nicklist {
     display: none;
 }
 

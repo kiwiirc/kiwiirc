@@ -58,8 +58,6 @@
                 </label>
             </form>
         </div>
-
-        <a @click="closeBox" class="u-button u-button-primary">{{$t('close')}}</a>
     </div>
 </template>
 
@@ -152,9 +150,6 @@ export default {
             return modes.length > 0 ?
                 modes[0] :
                 '';
-        },
-        closeBox: function closeViewer() {
-            state.$emit('userbox.hide');
         },
         openQuery: function openQuery() {
             let buffer = state.addBuffer(this.network.id, this.user.nick);

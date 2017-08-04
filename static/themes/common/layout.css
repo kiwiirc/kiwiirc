@@ -358,6 +358,20 @@ div {
 .kiwi-sidebar {
     transition: width 0.3s;
 }
+.kiwi-sidebar-options {
+    border-bottom: 1px solid #dddddd;
+    padding: 0 0 1em 0;
+    text-align: center;
+}
+.kiwi-sidebar-options i {
+    transition: margin-left 0.1s;
+}
+.kiwi-sidebar-options:hover i {
+    margin-left: 1em;
+}
+.kiwi-sidebar--wide .kiwi-sidebar-options {
+    text-align: left;
+}
 
 
 
@@ -369,9 +383,9 @@ div {
 }
 .kiwi-nicklist-info {
     font-size: 0.9em;
-    padding: 10px 0;
+    padding-bottom: 1em;
     text-align: center;
-    border-width: 1px 0;
+    border-width: 0 0 1px 0;
     border-style: solid;
 }
 .kiwi-nicklist-users {
@@ -673,9 +687,7 @@ div {
  */
 
 .kiwi-userbox {
-    border-right-width: 0;
     padding: 10px;
-    max-width: 50%;
 }
 @media screen and (max-width: 500px) {
     .kiwi-userbox {
