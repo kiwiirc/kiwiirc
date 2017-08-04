@@ -22,6 +22,9 @@ h1, h2, h3, h4, h5, h6 {
 p {
     margin: 0.5em 0 1em 0;
 }
+div {
+    -webkit-tap-highlight-color: rgba(0, 0, 0 ,0);
+}
 .u-link {
     text-decoration: none;
     cursor: pointer;
