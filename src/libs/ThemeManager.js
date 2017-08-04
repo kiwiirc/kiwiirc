@@ -6,6 +6,16 @@ export default class ThemeManager {
     constructor(state) {
         this.state = state;
         this.listenForIrcEvents();
+        this.varsEl = null;
+    }
+
+    themeVar(varName) {
+        if (!this.varsEl) {
+            this.varsEl = document.querySelector('.kiwi-wrap');
+        }
+
+        let styles = window.getComputedStyle(this.varsEl);
+        return styles.getPropertyValue('--kiwi-' + varName).trim();
     }
 
     availableThemes() {

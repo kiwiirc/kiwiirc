@@ -17,15 +17,6 @@
                 <div class="kiwi-workspace-background"></div>
 
                 <template v-if="!activeComponent && network">
-                    <user-box
-                        v-if="userboxOpen"
-                        :user="userboxUser"
-                        :buffer="userboxBuffer"
-                        :network="network"
-                        v-bind:style="{
-                            top: userboxPos.top + 'px'
-                        }"
-                    ></user-box>
                     <container
                         :network="network"
                         :buffer="buffer"
@@ -62,7 +53,6 @@ import StateBrowser from 'src/components/StateBrowser';
 import Container from 'src/components/Container';
 import ControlInput from 'src/components/ControlInput';
 import MediaViewer from 'src/components/MediaViewer';
-import UserBox from 'src/components/UserBox';
 import * as Notifications from 'src/libs/Notifications';
 import * as AudioBleep from 'src/libs/AudioBleep';
 import ThemeManager from 'src/libs/ThemeManager';
@@ -101,18 +91,6 @@ export default {
         });
         this.listen(state, 'mediaviewer.hide', () => {
             this.mediaviewerOpen = false;
-        });
-        this.listen(state, 'userbox.show', (user, opts) => {
-            this.userboxUser = user;
-            this.userboxBuffer = opts.buffer;
-            this.userboxOpen = true;
-            this.userboxPos = {
-                top: opts.top,
-                left: opts.left,
-            };
-        });
-        this.listen(state, 'userbox.hide', () => {
-            this.userboxOpen = false;
         });
 
         let themes = ThemeManager.instance();
@@ -154,7 +132,6 @@ export default {
         Container,
         ControlInput,
         MediaViewer,
-        UserBox,
     },
     data: function data() {
         return {
@@ -171,10 +148,6 @@ export default {
             fallbackComponentProps: {},
             mediaviewerOpen: false,
             mediaviewerUrl: '',
-            userboxOpen: false,
-            userboxPos: {},
-            userboxUser: null,
-            userboxBuffer: null,
             themeUrl: '',
         };
     },
@@ -326,12 +299,6 @@ body {
     top: 50%;
     bottom: 40px;
     width: 100%;
-}
-.kiwi-userbox {
-    position: absolute;
-    top: 0;
-    z-index: 2;
-    right: 200px;
 }
 .kiwi-controlinput {
     position: absolute;

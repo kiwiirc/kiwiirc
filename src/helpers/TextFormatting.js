@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import * as Colours from './Colours';
 import { md5 } from './Md5';
+import ThemeManager from 'src/libs/ThemeManager';
 
 /**
  *   Formats a message. Adds bold, underline and colouring
@@ -338,6 +339,12 @@ export function createNickColour(nick) {
         baseColour.s = Math.min(1, ((baseColour.s * 100) + satOffset) / 100);
     } else {
         baseColour.s = Math.max(0, ((baseColour.s * 100) - satOffset) / 100);
+    }
+
+    let themeMngr = ThemeManager.instance();
+    let brightness = themeMngr.themeVar('nick-brightness');
+    if (brightness) {
+        baseColour.l = parseInt(brightness, 10) / 100;
     }
 
     let rgb = Colours.hsl2rgb(baseColour);
