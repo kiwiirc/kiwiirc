@@ -56,6 +56,9 @@
                 <label>
                     <button @click="banUser" class="u-button u-button-secondary">{{$t('user_ban')}}</button>
                 </label>
+                <label>
+                    <button @click="kickbanUser" class="u-button u-button-secondary">{{$t('user_kickban')}}</button>
+                </label>
             </form>
         </div>
     </div>
@@ -173,8 +176,17 @@ export default {
             }
 
             let banMask = `*!${this.user.username}@${this.user.host}`;
+            this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
+        },
+        kickbanUser: function kickbanuser() {
+            if (!this.user.username || !this.user.host) {
+                return;
+            }
+
+            let banMask = `*!${this.user.username}@${this.user.host}`;
             let reason = 'Your behavior is not conducive to the desired environment.';
-            this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask, reason);
+            this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
+            this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
         },
         maybeRepositionTop: function maybeRepositionTop() {
             let rect = this.$el.getBoundingClientRect();
