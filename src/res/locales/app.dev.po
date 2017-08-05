@@ -506,6 +506,10 @@ msgstr "Kick from the channel"
 msgid "user_ban"
 msgstr "Ban from the channel"
 
+#: Kick + Ban from the channel
+msgid "user_kickban"
+msgstr "Ban and kick from the channel"
+
 
 
 #: Personal $t('personal_')
@@ -549,5 +553,3 @@ msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Give the developer version of Kiwi IRC a try!"
-
-
