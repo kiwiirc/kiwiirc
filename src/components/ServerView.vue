@@ -1,16 +1,13 @@
 <template>
     <div class="kiwi-serverview">
         <tabbed-view :key="network.id">
-            <tabbed-tab v-if="hasMessages" :header="'Messages'" :focus="hasMessages">
+            <tabbed-tab :header="'Messages'" :focus="hasMessages">
                 <message-list :buffer="serverBuffer" :messages="serverBuffer.getMessages()"></message-list>
             </tabbed-tab>
             <tabbed-tab :header="$t('settings')" :focus="!hasMessages">
                 <network-settings :network="network"></network-settings>
             </tabbed-tab>
-            <tabbed-tab :header="$t('settings_advanced')">
-                <network-settings-advanced :network="network"></network-settings-advanced>
-            </tabbed-tab>
-            <tabbed-tab :header="'Channels'">
+            <tabbed-tab :header="'Channels'" v-if="network.state==='connected'">
                 <channel-list :network="network"></channel-list>
             </tabbed-tab>
         </tabbed-view>
