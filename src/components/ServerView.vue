@@ -18,7 +18,6 @@
 
 import MessageList from './MessageList';
 import NetworkSettings from './NetworkSettings';
-import NetworkSettingsAdvanced from './NetworkSettingsAdvanced';
 import ChannelList from './ChannelList';
 
 export default {
@@ -30,7 +29,6 @@ export default {
     components: {
         MessageList,
         NetworkSettings,
-        NetworkSettingsAdvanced,
         ChannelList,
     },
     computed: {
