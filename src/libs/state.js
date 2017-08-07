@@ -103,6 +103,8 @@ const stateObj = {
             settings: { show_raw: false },
             auto_commands: '',
             is_znc: false,
+            channel_list: [],
+            channel_list_state: '',
             buffers: [
                 {
                     id: 0,
@@ -743,6 +745,8 @@ function createEmptyNetworkObject() {
         state: 'disconnected',
         auto_commands: '',
         is_znc: false,
+        channel_list: [],
+        channel_list_state: '',
         connection: {
             server: '',
             port: 6667,
