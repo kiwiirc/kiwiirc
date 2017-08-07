@@ -10,6 +10,9 @@
             <tabbed-tab :header="$t('settings_advanced')">
                 <network-settings-advanced :network="network"></network-settings-advanced>
             </tabbed-tab>
+            <tabbed-tab :header="'Channels'">
+                <channel-list :network="network"></channel-list>
+            </tabbed-tab>
         </tabbed-view>
     </div>
 </template>
@@ -19,6 +22,7 @@
 import MessageList from './MessageList';
 import NetworkSettings from './NetworkSettings';
 import NetworkSettingsAdvanced from './NetworkSettingsAdvanced';
+import ChannelList from './ChannelList';
 
 export default {
     data: function data() {
@@ -30,6 +34,7 @@ export default {
         MessageList,
         NetworkSettings,
         NetworkSettingsAdvanced,
+        ChannelList,
     },
     computed: {
         hasMessages: function hasMessages() {

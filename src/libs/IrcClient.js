@@ -412,6 +412,22 @@ function clientMiddleware(state, networkid) {
             });
         }
 
+        if (command === 'channel list start') {
+            network.channel_list_cache = [];
+            network.channel_list_state = 'updating';
+        }
+        if (command === 'channel list') {
+            // Store the channels in channel_list_cache before moving it all to
+            // channel_list at the end. This gives a huge performance boost since
+            // it doesn't need to be all reactive for every update
+            network.channel_list_cache = network.channel_list_cache.concat(event);
+        }
+        if (command === 'channel list end') {
+            network.channel_list = network.channel_list_cache;
+            delete network.channel_list_cache;
+            network.channel_list_state = '';
+        }
+
         if (command === 'motd') {
             let buffer = network.serverBuffer();
             let messageBody = TextFormatting.formatText('motd', {
