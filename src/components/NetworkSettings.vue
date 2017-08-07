@@ -46,6 +46,18 @@
                 <input-text :label="$t('settings_nickname')" v-model="network.nick" />
             </div>
 
+            <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
+                <h3 @click="show_advanced=!show_advanced">Advanced <i class="fa" :class="['fa-caret-'+(show_advanced?'up':'down')]" aria-hidden="true"></i></h3>
+                <template v-if="show_advanced">
+                    <label><span>{{$t('settings_encoding')}}: </span> <input v-model="network.connection.encoding" /></label><br />
+                    <label><span>{{$t('settings_show_raw')}}: </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
+                    <label class="u-form-block">
+                        <span>{{$t('settings_autorun')}}</span>
+                        <textarea v-model="network.auto_commands" cols=40 rows=5></textarea>
+                    </label>
+                </template>
+            </div>
+
             <div class="kiwi-networksettings-section kiwi-networksettings-danger">
                 <h3>{{$t('settings_danger')}}</h3>
                 <label><a class="u-button u-button-warning" @click="removeNetwork">{{$t('settings_remove')}}</a></label><br />
@@ -65,9 +77,20 @@ export default {
             znc_username: '',
             znc_network: '',
             znc_password: '',
+            show_advanced: false,
         };
     },
     props: ['network'],
+    computed: {
+        settingShowRaw: {
+            get: function getSettingAlertOn() {
+                return this.network.setting('show_raw');
+            },
+            set: function setSettingAlertOn(val) {
+                return this.network.setting('show_raw', val);
+            },
+        },
+    },
     components: {
     },
     methods: {
