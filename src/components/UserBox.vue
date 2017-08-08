@@ -40,7 +40,7 @@
             </template>
         </div>
 
-        <div v-if="buffer.isChannel() && areWeAnOp" class="kiwi-userbox-actions-op">
+        <div v-if="isUserOnBuffer && buffer.isChannel() && areWeAnOp" class="kiwi-userbox-actions-op">
             <form class="u-form" @submit.prevent="">
                 <label>
                     {{$t('user_access')}} <select v-model="userMode">
@@ -108,6 +108,18 @@ export default {
 
             return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
         },
+        isUserOnBuffer: function isUserOnBuffer() {
+            if (!this.buffer) {
+                return false;
+            }
+
+            if (!this.user.buffers[this.buffer.id]) {
+                // Probably switched buffer while the userbox was open
+                return false;
+            }
+
+            return true;
+        },
         userMode: {
             get: function getUserMode() {
                 if (!this.buffer) {
@@ -115,6 +127,11 @@ export default {
                 }
 
                 let userBufferInfo = this.user.buffers[this.buffer.id];
+                if (!userBufferInfo) {
+                    // Probably switched buffer while the userbox was open
+                    return '';
+                }
+
                 let modes = userBufferInfo.modes;
                 return modes.length > 0 ?
                     modes[0] :
@@ -157,7 +174,6 @@ export default {
         openQuery: function openQuery() {
             let buffer = state.addBuffer(this.network.id, this.user.nick);
             state.setActiveBuffer(this.network.id, buffer.name);
-            this.closeBox();
         },
         updateWhoisData: function updateWhoisData() {
             this.whoisRequested = true;
