@@ -647,7 +647,7 @@ const state = new Vue({
                 state.removeUserFromBuffer(buffer, user.nick);
             });
 
-            this.$delete(network.users, user.nick);
+            this.$delete(network.users, user.nick.toLowerCase());
         },
 
         addUserToBuffer: function addUserToBuffer(buffer, user, modes) {
@@ -729,7 +729,7 @@ const state = new Vue({
             }
 
             user.nick = newNick;
-            state.$set(network.users, newNick.toLowerCase(), network.users[oldNick]);
+            state.$set(network.users, newNick.toLowerCase(), network.users[oldNick.toLowerCase()]);
             state.$delete(network.users, oldNick.toLowerCase());
         },
     },
