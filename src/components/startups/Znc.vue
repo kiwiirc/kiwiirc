@@ -4,7 +4,7 @@
 
         <template v-if="!network">
             <form @submit.prevent="formSubmit">
-                <input-text v-if="showNick" class="kiwi-welcome-simple-nick" :label="$t('username')"/:label="$t('network')" v-model="nick" />
+                <input-text v-if="showNick" class="kiwi-welcome-simple-nick" :label="$t('username')+'/'+$t('network')" v-model="nick" />
                 <input-text v-if="showPass" class="kiwi-welcome-simple-password" :label="$t('password')" v-model="password" type="password" />
                 <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" :label="$t('channel')" v-model="channel" />
                 <button
