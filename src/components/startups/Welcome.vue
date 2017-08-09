@@ -136,6 +136,9 @@ export default {
         this.showNick = typeof options.showNick === 'boolean' ?
             options.showNick :
             true;
+        this.showPass = typeof options.showPass === 'boolean' ?
+            options.showPass :
+            true;
 
         if (options.autoConnect && this.nick && this.channel) {
             this.startUp();
