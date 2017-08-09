@@ -37,7 +37,7 @@
                 </div>
 
                 <div
-                    v-if="userbox_open"
+                    v-if="userbox_user"
                     class="kiwi-sidebar-userbox"
                     @click.stop=""
                 >
@@ -89,7 +89,6 @@ export default {
     data: function data() {
         return {
             settings_open: false,
-            userbox_open: false,
             userbox_user: null,
         };
     },
@@ -97,12 +96,12 @@ export default {
     computed: {
         sidebarIsWide: {
             get: function getSidebarIsWide() {
-                return this.settings_open || this.userbox_open;
+                return this.settings_open || this.userbox_user;
             },
             set: function setSidebarIsWide(newVal) {
                 if (!newVal) {
                     this.settings_open = false;
-                    this.userbox_open = false;
+                    this.userbox_user = null;
                 }
             },
         },
@@ -155,10 +154,9 @@ export default {
 
         this.listen(state, 'userbox.show', (user, opts) => {
             this.userbox_user = user;
-            this.userbox_open = true;
         });
         this.listen(state, 'userbox.hide', () => {
-            this.userbox_open = false;
+            this.userbox_user = null;
         });
     },
 };
