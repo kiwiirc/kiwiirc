@@ -125,7 +125,7 @@ export default {
 
         this.nick = this.processNickRandomNumber(options.nick || '');
         this.password = options.password || '';
-        this.channel = options.channel || '';
+        this.channel = window.location.hash || options.channel || '';
         this.showChannel = typeof options.showChannel === 'boolean' ?
             options.showChannel :
             true;
