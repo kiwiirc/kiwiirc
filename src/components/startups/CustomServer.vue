@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-customserver" v-bind:class="[is_connecting ? 'kiwi-customserver--connecting' : '']">
-        <h2 v-if="!is_connecting">{{title}}</h2>
+        <h2 v-if="!is_connecting" v-html="title"></h2>
         <h2 v-else>{{$t('connecting')}} <a @click="infoClick" class="u-link"><i class="fa fa-info-circle" aria-hidden="true"></i></a></h2>
 
         <transition name="connectingloader">
@@ -48,7 +48,7 @@
                 <input-text :label="$t('password')" v-model="password" type="password" />
             </template>
 
-            <button type="submit" class="u-button u-button-primary u-submit">{{$t('connect')}}</button>
+            <button type="submit" class="u-button u-button-primary u-submit">{{buttonText}}</button>
 
             <div v-if="show_type_switcher" class="kiwi-customserver-server-types">
                 <a @click="server_type = 'default'" class="u-link">{{$t('network')}}</a>
@@ -73,6 +73,7 @@ export default {
     data: function data() {
         return {
             title: 'Where are you connecting today?',
+            buttonText: '',
             server_type: 'default',
             server: '',
             tls: false,
@@ -327,6 +328,15 @@ export default {
         } else {
             saveThisSessionsState = true;
             this.applyDefaults();
+        }
+
+        if (state.settings.startupOptions.greetingText) {
+            this.title = state.settings.startupOptions.greetingText;
+        }
+        if (state.settings.startupOptions.buttonText) {
+            this.buttonText = state.settings.startupOptions.buttonText;
+        } else {
+            this.buttonText = this.$t('connect');
         }
 
         if (saveThisSessionsState) {
