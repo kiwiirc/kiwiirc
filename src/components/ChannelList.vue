@@ -16,7 +16,7 @@
                 <a @click="prevPage"><i class="fa fa-step-backward" aria-hidden="true"></i></a> {{page + 1}} / {{maxPages + 1}} <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
             </div>
 
-            <form class="u-form kiwi-channellist-search">
+            <form class="u-form kiwi-channellist-search" @submit.prevent>
                 <input v-model="search" placeholder="Search..." class="u-input" />
             </form>
         </div>
