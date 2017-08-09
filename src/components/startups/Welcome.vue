@@ -80,7 +80,7 @@ export default {
                 tls: options.tls,
                 password: this.password,
                 encoding: _.trim(options.encoding),
-                // direct: true,
+                direct: !!options.direct,
             });
 
             // Only switch to the first channel we join if multiple are being joined
@@ -125,7 +125,7 @@ export default {
 
         this.nick = this.processNickRandomNumber(options.nick || '');
         this.password = options.password || '';
-        this.channel = options.channel || '';
+        this.channel = window.location.hash || options.channel || '';
         this.showChannel = typeof options.showChannel === 'boolean' ?
             options.showChannel :
             true;
