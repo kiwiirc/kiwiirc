@@ -760,6 +760,7 @@ div {
     margin: 0 auto;
 }
 .kiwi-welcome-simple-nick,
+.kiwi-welcome-simple-have-password,
 .kiwi-welcome-simple-channel,
 .kiwi-welcome-simple-start {
     margin-top: 2em;
