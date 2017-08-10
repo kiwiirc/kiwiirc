@@ -54,7 +54,7 @@ export default {
                 'Start';
         },
         readyToStart: function readyToStart() {
-            let ready = this.channel && this.nick;
+            let ready = this.nick;
             // Nicks cannot start with [0-9- ]
             // ? is not a valid nick character but we allow it as it gets replaced
             // with a number.
