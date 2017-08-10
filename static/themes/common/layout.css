@@ -755,14 +755,16 @@ div {
  */
 .kiwi-welcome-simple {
     text-align: center;
-    margin-top: 1em;
+    padding-top: 1em;
     width: 300px;
     margin: 0 auto;
 }
-.kiwi-welcome-simple-nick,
-.kiwi-welcome-simple-channel,
-.kiwi-welcome-simple-start {
-    margin-top: 2em;
+.kiwi-welcome-simple .input-text,
+.kiwi-welcome-simple .kiwi-welcome-simple-have-password input {
+    margin-bottom: 1.5em;
+}
+.kiwi-welcome-simple-have-password input:checked {
+    margin-bottom: 0;
 }
 .kiwi-welcome-simple-start {
     font-size: 1.1em;
@@ -785,8 +787,12 @@ div {
     font-size: 1.1em;
     cursor: pointer;
 }
-.kiwi-customserver .input-text {
-    margin-bottom: 1em;
+.kiwi-customserver .input-text,
+.kiwi-customserver .kiwi-customserver-have-password input {
+    margin-bottom: 1.5em;
+}
+.kiwi-customserver-have-password input:checked {
+    margin-bottom: 0;
 }
 .kiwi-customserver-tls {
     color: #bfbfbf;

@@ -3,12 +3,15 @@
         <h2 v-html="greetingText"></h2>
 
         <template v-if="!network">
-            <form @submit.prevent="formSubmit">
+            <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-simple-form">
                 <input-text v-if="showNick" class="kiwi-welcome-simple-nick" :label="$t('nick')" v-model="nick" />
-                <input-text v-if="showPass" class="kiwi-welcome-simple-password" :label="$t('password')" v-model="password" type="password" />
+                <label v-if="showPass" class="kiwi-welcome-simple-have-password">
+                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
+                </label>
+                <input-text v-if="show_password_box" class="kiwi-welcome-simple-password" :label="$t('password')" v-model="password" type="password" />
                 <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" :label="$t('channel')" v-model="channel" />
                 <button
-                    class="u-button u-button-primary kiwi-welcome-simple-start"
+                    class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
                     type="submit"
                     v-html="buttonText"
                     :disabled="!readyToStart"
@@ -38,6 +41,7 @@ export default {
             showChannel: true,
             showPass: true,
             showNick: true,
+            show_password_box: false,
         };
     },
     computed: {
