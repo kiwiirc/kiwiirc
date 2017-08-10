@@ -350,6 +350,9 @@ export default {
 
 .kiwi-customserver {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     overflow-y: auto;
     box-sizing: border-box;
 }
