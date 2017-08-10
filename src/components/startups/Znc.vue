@@ -78,7 +78,7 @@ export default {
                 server: _.trim(options.server),
                 port: options.port,
                 tls: options.tls,
-                password: nick + ':' + this.password,
+                password: this.nick + ':' + this.password,
                 encoding: _.trim(options.encoding),
                 direct: !!options.direct,
             });
