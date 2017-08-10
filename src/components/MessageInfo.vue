@@ -55,7 +55,7 @@ export default {
         },
         openQuery: function openQuery() {
             let network = this.buffer.getNetwork();
-            let buffer = state.addBuffer(network.id, network.nick);
+            let buffer = state.addBuffer(network.id, this.message.nick);
             state.setActiveBuffer(network.id, buffer.name);
         },
     },
