@@ -49,6 +49,7 @@ import startupWelcomeRizon from 'src/components/startups/WelcomeRizon';
 import startupCustomServer from 'src/components/startups/CustomServer';
 import startupKiwiBnc from 'src/components/startups/KiwiBnc';
 import startupPersonal from 'src/components/startups/Personal';
+import startupZnc from 'src/components/startups/Znc';
 import StateBrowser from 'src/components/StateBrowser';
 import Container from 'src/components/Container';
 import ControlInput from 'src/components/ControlInput';
@@ -119,6 +120,7 @@ export default {
             kiwiBnc: startupKiwiBnc,
             welcomeRizon: startupWelcomeRizon,
             personal: startupPersonal,
+            znc: startupZnc,
         };
         let startup = state.settings.startupScreen || 'personal';
         if (!startupScreens[startup]) {
