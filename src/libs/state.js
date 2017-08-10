@@ -365,26 +365,18 @@ const state = new Vue({
                 parseInt(serverInfo.channelId, 10) :
                 _.reduce(this.networks, networkidReduce, 0) + 1;
 
-            let network = {
-                id: networkid,
-                name: name,
-                state: 'disconnected',
-                connection: {
-                    server: serverInfo.server || '',
-                    port: serverInfo.port || 6667,
-                    tls: serverInfo.tls || false,
-                    path: serverInfo.path || '',
-                    password: serverInfo.password || '',
-                    direct: serverInfo.direct,
-                    encoding: serverInfo.encoding || 'utf8',
-                },
-                settings: {},
-                nick: nick,
-                username: serverInfo.username,
-                password: serverInfo.password,
-                buffers: [],
-                users: {},
-            };
+            let network = createEmptyNetworkObject();
+            network.id = networkid;
+            network.name = name;
+            network.username = serverInfo.username;
+            network.password = serverInfo.password;
+            network.connection.server = serverInfo.server || '';
+            network.connection.port = serverInfo.port || 6667;
+            network.connection.tls = serverInfo.tls || false;
+            network.connection.path = serverInfo.path || '';
+            network.connection.password = serverInfo.password || '';
+            network.connection.direct = !!serverInfo.direct;
+            network.connection.encoding = serverInfo.encoding || 'utf8';
 
             if (serverInfo.services) {
                 network.services = serverInfo.services;
@@ -754,6 +746,7 @@ function createEmptyNetworkObject() {
             path: '',
             password: '',
             direct: false,
+            encoding: 'utf8',
         },
         settings: {},
         nick: '',
