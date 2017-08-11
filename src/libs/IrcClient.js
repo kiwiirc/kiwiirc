@@ -192,6 +192,15 @@ function clientMiddleware(state, networkid) {
                 bufferName = event.message.substr(1, event.message.indexOf(']') - 1);
             }
 
+            // Notices from somewhere when we don't have an existing buffer for them should go into
+            // the server tab. ie. notices from servers
+            if (event.type === 'notice') {
+                let existingBuffer = state.getBufferByName(networkid, bufferName);
+                if (!existingBuffer) {
+                    bufferName = '*';
+                }
+            }
+
             let buffer = state.getOrAddBufferByName(networkid, bufferName);
 
             let textFormatType = 'privmsg';
