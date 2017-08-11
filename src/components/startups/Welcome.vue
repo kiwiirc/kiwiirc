@@ -152,4 +152,8 @@ export default {
     box-sizing: border-box;
 }
 
+.kiwi-welcome-simple h2 {
+    margin-bottom: 1em;
+}
+
 </style>
