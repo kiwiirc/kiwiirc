@@ -153,7 +153,7 @@ export default {
 }
 
 .kiwi-welcome-simple h2 {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
 }
 
 </style>

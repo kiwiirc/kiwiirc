@@ -381,7 +381,7 @@ export default {
 }
 
 .kiwi-customserver h2 {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
 }
 .kiwi-customserver h2 i {
     font-size: 0.8em;
