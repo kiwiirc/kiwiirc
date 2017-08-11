@@ -368,6 +368,7 @@ const state = new Vue({
             let network = createEmptyNetworkObject();
             network.id = networkid;
             network.name = name;
+            network.nick = nick;
             network.username = serverInfo.username;
             network.password = serverInfo.password;
             network.connection.server = serverInfo.server || '';
