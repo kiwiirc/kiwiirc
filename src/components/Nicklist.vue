@@ -45,7 +45,7 @@ export default {
 
             // Since vuejs will sort in-place and update views when .sort is called
             // on an array, clone it first so that we have a plain array to sort
-            let users = this.buffer.users.map(b => b);
+            let users = _.values(this.buffer.users);
 
             let bufferId = this.buffer.id;
             return users.sort((a, b) => {

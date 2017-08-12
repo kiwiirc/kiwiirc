@@ -42,7 +42,7 @@ export default class Message {
             parsed = TextFormatting.linkifyChannels(word);
             if (parsed !== word) return parsed;
 
-            parsed = TextFormatting.linkifyUsers(word, messageList.usersAsObject);
+            parsed = TextFormatting.linkifyUsers(word, messageList.buffer.users);
             if (parsed !== word) return parsed;
 
             return _.escape(word);

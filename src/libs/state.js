@@ -3,6 +3,7 @@ import _ from 'lodash';
 import strftime from 'strftime';
 import * as IrcClient from './IrcClient';
 import Message from './Message';
+import batchedAdd from './batchedAdd';
 
 const stateObj = {
     // May be set by a StatePersistence instance
@@ -520,7 +521,11 @@ const state = new Vue({
             }
 
             // Remove this buffer from any users
-            buffer.users.forEach(user => delete user.buffers[buffer.id]);
+            /* eslint-disable guard-for-in */
+            for (let nick in buffer.users) {
+                let user = buffer.users[nick];
+                delete user.buffers[buffer.id];
+            }
         },
 
         addMessage: function addMessage(buffer, message) {
@@ -539,7 +544,7 @@ const state = new Vue({
                 bufferMessage.ignore = true;
             }
 
-            messages.messages.push(bufferMessage);
+            buffer.addMessage(bufferMessage);
 
             // Increment the unread counter if this buffer is not active
             let includeAsActivity = false;
@@ -648,25 +653,10 @@ const state = new Vue({
             let userObj = state.getUser(network.id, user.nick);
 
             if (!userObj) {
-                // Using $set for vues reactivity is very slow when connecting to
-                // a large BNC. We might not ever need full reactivity for the user
-                // objects so just add a plain object for now.
-                /*
-                state.$set(network.users, user.nick, {
-                    nick: user.nick,
-                    host: user.host || '',
-                    username: user.username || '',
-                    modes: user.modes || '',
-                });
-                */
                 userObj = this.addUser(network, user);
-                //  console.log('Setting ' + user.nick + ' on ' +
-                //    buffer.name, network.users[user.nick]);
             }
 
-            if (buffer.users.indexOf(userObj) === -1) {
-                buffer.users.push(userObj);
-            }
+            buffer.addUser(userObj);
 
             // Add the buffer to the users buffer list
             if (!userObj.buffers[buffer.id]) {
@@ -680,13 +670,7 @@ const state = new Vue({
         },
 
         removeUserFromBuffer: function removeUserFromBuffer(buffer, nick) {
-            let userObj = this.getUser(buffer.networkid, nick);
-            let idx = buffer.users.indexOf(userObj);
-            if (idx > -1) {
-                buffer.users.splice(idx, 1);
-            }
-
-            delete userObj.buffers[buffer.id];
+            buffer.removeUser(nick);
         },
 
         getBuffersWithUser: function getBuffersWithUser(networkid, nick) {
@@ -695,14 +679,10 @@ const state = new Vue({
                 return [];
             }
 
-            let user = this.getUser(network.id, nick);
-            if (!user) {
-                return [];
-            }
-
+            let normalisedNick = nick.toLowerCase();
             let buffers = [];
             network.buffers.forEach(buffer => {
-                if (buffer.users.indexOf(user) > -1) {
+                if (buffer.users[normalisedNick]) {
                     buffers.push(buffer);
                 }
             });
@@ -768,7 +748,7 @@ function createEmptyBufferObject() {
         key: '',
         joined: false,
         enabled: true,
-        users: [],
+        users: Object.create(null),
         modes: Object.create(null),
         flags: {
             unread: 0,
@@ -963,9 +943,57 @@ function initialiseBufferState(buffer) {
         }()),
     });
 
-    state.messages.push({
+
+    /**
+     * Batch up floods of addUsers for a huge performance gain.
+     * Generally happens whenr econnecting to a BNC
+     */
+    function addSingleUser(user) {
+        state.$set(buffer.users, user.nick.toLowerCase(), user);
+    }
+    function addMultipleUsers(users) {
+        let o = _.clone(buffer.users);
+        users.forEach(user => {
+            o[user.nick.toLowerCase()] = user;
+        });
+        buffer.users = o;
+    }
+    Object.defineProperty(buffer, 'addUser', {
+        value: batchedAdd(addSingleUser, addMultipleUsers),
+    });
+    Object.defineProperty(buffer, 'removeUser', {
+        value: function removeUser(nick) {
+            let userObj = state.getUser(buffer.networkid, nick);
+
+            // A user could be queued to be added, so make sure it's not there as it
+            // would just be added again. Eg. user joins/parts during a flood
+            _.pull(buffer.addUser.queue(), userObj);
+
+            state.$delete(buffer.users, nick.toLowerCase());
+
+            if (userObj) {
+                delete userObj.buffers[buffer.id];
+            }
+        },
+    });
+
+    /**
+     * batch up floods of new messages for a huge performance gain
+     */
+    function addSingleMessage(message) {
+        messageObj.messages.push(message);
+    }
+    function addMultipleMessages(messages) {
+        messageObj.messages = messageObj.messages.concat(messages);
+    }
+    Object.defineProperty(buffer, 'addMessage', {
+        value: batchedAdd(addSingleMessage, addMultipleMessages),
+    });
+
+    let messageObj = {
         networkid: buffer.networkid,
         buffer: buffer.name,
         messages: [],
-    });
+    };
+    state.messages.push(messageObj);
 }

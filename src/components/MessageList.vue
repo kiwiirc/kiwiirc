@@ -153,12 +153,6 @@ export default {
 
             return list.reverse();
         },
-        usersAsObject: function usersAsObject() {
-            return this.buffer.users.reduce((prev, cur) => {
-                prev[cur] = true;
-                return prev;
-            }, {});
-        },
         shouldShowChathistoryTools: function shouldShowChathistoryTools() {
             // Only show it if we're connected
             if (this.buffer.getNetwork().state !== 'connected') {

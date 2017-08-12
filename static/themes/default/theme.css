@@ -353,10 +353,6 @@
 .kiwi-messagelist-message-traffic-join {
     color: #009900;
 }
-.kiwi-messagelist-message-traffic-join .kiwi-nick:before {
-    color: #009900;
-    content: "→ ";
-}
 .kiwi-messagelist-message-traffic-quit,
 .kiwi-messagelist-message-traffic-part,
 .kiwi-messagelist-message-traffic-kick {
