@@ -295,11 +295,12 @@ export function linkifyUsers(word, userlist) {
     let append = '';
     let nickChars = '_-\\[]{}^`|';
     let validLastChar = nickChars.indexOf(word[word.length - 1]) > -1;
+    let normWord = word.toLowerCase();
 
     let hasProp = Object.prototype.hasOwnProperty;
-    if (hasProp.call(userlist, word)) {
+    if (hasProp.call(userlist, normWord)) {
         nick = word;
-    } else if (hasProp.call(userlist, word.substr(0, word.length - 1)) && !validLastChar) {
+    } else if (hasProp.call(userlist, normWord.substr(0, normWord.length - 1)) && !validLastChar) {
         // The last character is usually punctuation of some kind
         nick = word.substr(0, word.length - 1);
         append = word[word.length - 1];
@@ -327,10 +328,12 @@ export function createNickColour(nick) {
         return nickColourCache[nick];
     }
 
+    let nickLower = nick.toLowerCase();
+
     // The HSL properties are based on this specific colour
     let startingColour = '#36809B'; // '#449fc1';
 
-    let hash = md5(nick);
+    let hash = md5(nickLower);
     let hueOffset = mapRange(hexVal(hash, 14, 3), 0, 4095, 0, 359);
     let satOffset = hexVal(hash, 17);
     let baseColour = Colours.rgb2hsl(Colours.hex2rgb(startingColour));
@@ -351,7 +354,7 @@ export function createNickColour(nick) {
     let rgb = Colours.hsl2rgb(baseColour);
     let nickColour = Colours.rgb2hex(rgb);
 
-    nickColourCache[nick] = nickColour;
+    nickColourCache[nickLower] = nickColour;
 
     return nickColour;
 }
