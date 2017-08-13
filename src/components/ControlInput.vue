@@ -41,6 +41,7 @@
 
 <script>
 
+import _ from 'lodash';
 import autocompleteCommands from 'src/res/autocompleteCommands';
 import state from 'src/libs/state';
 import AutoComplete from './AutoComplete';
@@ -237,7 +238,7 @@ export default {
             let list = [];
 
             if (opts.users) {
-                let userList = this.buffer.users.map(user => {
+                let userList = _.values(this.buffer.users).map(user => {
                     let item = {
                         text: user.nick,
                         type: 'user',
