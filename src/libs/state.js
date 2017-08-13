@@ -734,7 +734,7 @@ function createEmptyNetworkObject() {
         username: '',
         password: '',
         buffers: [],
-        users: {},
+        users: Object.create(null),
     };
 }
 

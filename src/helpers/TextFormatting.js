@@ -296,9 +296,10 @@ export function linkifyUsers(word, userlist) {
     let nickChars = '_-\\[]{}^`|';
     let validLastChar = nickChars.indexOf(word[word.length - 1]) > -1;
 
-    if (userlist[word]) {
+    let hasProp = Object.prototype.hasOwnProperty;
+    if (hasProp.call(userlist, word)) {
         nick = word;
-    } else if (userlist[word.substr(0, word.length - 1)] && !validLastChar) {
+    } else if (hasProp.call(userlist, word.substr(0, word.length - 1)) && !validLastChar) {
         // The last character is usually punctuation of some kind
         nick = word.substr(0, word.length - 1);
         append = word[word.length - 1];
