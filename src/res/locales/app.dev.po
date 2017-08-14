@@ -106,6 +106,10 @@ msgstr "Theme"
 msgid "settings_themeurl"
 msgstr "Theme URL"
 
+#: Use Monospace
+msgid "settings_use_monospace"
+msgstr "Use monospace"
+
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
 msgstr "Show autocomplete list"

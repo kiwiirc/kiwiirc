@@ -2,7 +2,8 @@
     <div
         class="kiwi-wrap"
         v-bind:class="{
-            'kiwi-wrap--statebrowser-drawopen': stateBrowserDrawOpen
+            'kiwi-wrap--statebrowser-drawopen': stateBrowserDrawOpen,
+            'kiwi-wrap--monospace': setting('useMonospace'),
         }"
         @click="emitDocumentClick"
     >
@@ -196,6 +197,9 @@ export default {
         },
         emitDocumentKeyDown: function emitDocumentKeyDown(event) {
             state.$emit('document.keydown', event);
+        },
+        setting: function setting(name) {
+            return state.setting(name);
         },
     },
 };

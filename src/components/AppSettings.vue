@@ -22,6 +22,10 @@
                             <span>{{$t('settings_show_autocomplete')}}: </span>
                             <input type="checkbox" v-model="settingShowAutoComplete" />
                         </label>
+                        <label v-if="themeSupportsMonospace">
+                            <span>{{$t('settings_use_monospace')}}: </span>
+                            <input type="checkbox" v-model="settingUseMonospace" />
+                        </label>
                     </div>
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-messages">
@@ -83,6 +87,12 @@ export default {
         };
     },
     computed: {
+        themeSupportsMonospace: function themeSupportsMonospace() {
+            let themeMgr = ThemeManager.instance();
+            let val = themeMgr.themeVar('supports-monospace');
+            console.log('themeSupportsMonospace', val);
+            return val === '1';
+        },
         timestamps_24h: {
             get: function get24Timestamps() {
                 // %H is 24 hour format
@@ -99,6 +109,7 @@ export default {
             return state.settings;
         },
         settingShowAutoComplete: bindSetting('showAutocomplete'),
+        settingUseMonospace: bindSetting('useMonospace'),
         settingHighlights: bindSetting('highlights'),
         settingBufferShowTimestamps: bindSetting('buffers.show_timestamps'),
         settingBufferShowEmoticons: bindSetting('buffers.show_emoticons'),

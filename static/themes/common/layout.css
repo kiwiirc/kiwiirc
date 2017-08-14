@@ -1,9 +1,16 @@
 /* Layout styles. No colouring */
 .kiwi-wrap {
-    font-size: 14px;
+    font-size: 90%;
     line-height: 1.6em;
+    font-family: Source Sans Pro, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     --kiwi-nick-brightness: 50;
+    --kiwi-supports-monospace: 1;
+}
+
+.kiwi-wrap--monospace {
+    font-family: Consolas, monaco, monospace;
+    font-size: 80%;
 }
 
 .kiwi-workspace:before {

@@ -12,6 +12,7 @@ const stateObj = {
     // Settings may be overridden via config.json
     settings: {
         windowTitle: 'Kiwi IRC - The web IRC client',
+        useMonospace: false,
         theme: 'Default',
         themes: [
             { name: 'Default', url: 'static/themes/default' },
