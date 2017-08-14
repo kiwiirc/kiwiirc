@@ -90,7 +90,6 @@ export default {
         themeSupportsMonospace: function themeSupportsMonospace() {
             let themeMgr = ThemeManager.instance();
             let val = themeMgr.themeVar('supports-monospace');
-            console.log('themeSupportsMonospace', val);
             return val === '1';
         },
         timestamps_24h: {
