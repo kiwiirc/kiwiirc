@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-nicklist">
-        <div class="kiwi-nicklist-info">{{$t('person', {count: buffer.users.length})}}</div>
+        <div class="kiwi-nicklist-info">{{$t('person', {count: bufferUsers.length})}}</div>
         <ul class="kiwi-nicklist-users">
             <li
                 v-for="user in sortedUsers"
@@ -35,6 +35,9 @@ export default {
     },
     props: ['network', 'buffer', 'users'],
     computed: {
+        bufferUsers: function bufferUsers() {
+            return _.values(this.buffer.users);
+        },
         sortedUsers: function sortedUsers() {
             // Get a list of network prefixes and give them a rank number
             let netPrefixes = this.network.ircClient.network.options.PREFIX;
@@ -45,7 +48,7 @@ export default {
 
             // Since vuejs will sort in-place and update views when .sort is called
             // on an array, clone it first so that we have a plain array to sort
-            let users = _.values(this.buffer.users);
+            let users = this.bufferUsers;
 
             let bufferId = this.buffer.id;
             return users.sort((a, b) => {
