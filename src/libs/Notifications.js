@@ -1,3 +1,5 @@
+import * as Misc from 'src/helpers/Misc';
+
 let isEnabled = false;
 
 export function requestPermission() {
@@ -49,7 +51,7 @@ export function listenForNewMessages(state) {
         }
 
         let network = state.getNetwork(buffer.networkid);
-        let isHighlight = message.message.indexOf(network.nick) > -1;
+        let isHighlight = Misc.mentionsNick(message.message, network.nick);
         let settingAlertOn = buffer.setting('alert_on');
         let notification = null;
         let notifyMessage = message.nick ?
