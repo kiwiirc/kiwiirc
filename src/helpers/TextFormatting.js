@@ -292,18 +292,25 @@ export function linkifyChannels(word) {
 export function linkifyUsers(word, userlist) {
     let ret = '';
     let nick = '';
+    let prepend = '';
     let append = '';
-    let nickChars = '_-\\[]{}^`|';
-    let validLastChar = nickChars.indexOf(word[word.length - 1]) > -1;
+    let punc = ',.!:;-+)]?¿\\/<>@';
+    let validLastChar = punc.indexOf(word[word.length - 1]) > -1;
     let normWord = word.toLowerCase();
-
     let hasProp = Object.prototype.hasOwnProperty;
+
+      // Checking for a nick in order of processing cost
     if (hasProp.call(userlist, normWord)) {
         nick = word;
-    } else if (hasProp.call(userlist, normWord.substr(0, normWord.length - 1)) && !validLastChar) {
+    } else if (hasProp.call(userlist, normWord.substr(0, normWord.length - 1)) && validLastChar) {
         // The last character is usually punctuation of some kind
         nick = word.substr(0, word.length - 1);
         append = word[word.length - 1];
+    } else if (hasProp.call(userlist, _.trim(normWord, punc))) {
+        nick = _.trim(word, punc);
+        let nickIdx = word.indexOf(nick);
+        append = word.substr(nickIdx + nick.length);
+        prepend = word.substr(0, nickIdx);
     } else {
         return word;
     }
@@ -312,6 +319,9 @@ export function linkifyUsers(word, userlist) {
     let colour = createNickColour(nick);
     ret = `<a class="kiwi-nick" data-nick="${escaped}" style="color:${colour}">${escaped}</a>`;
 
+    if (prepend) {
+        ret = _.escape(prepend) + ret;
+    }
     if (append) {
         ret += _.escape(append);
     }
