@@ -507,8 +507,10 @@ const state = new Vue({
                 network.buffers.splice(bufferIdx, 1);
             }
 
-            let messages = this.getMessages(buffer);
-            let messageIdx = this.messages.indexOf(messages);
+            let messageIdx = _.findIndex(this.messages, {
+                networkid: network.id,
+                buffer: buffer.name,
+            });
             if (messageIdx > -1) {
                 this.messages.splice(messageIdx, 1);
             }
