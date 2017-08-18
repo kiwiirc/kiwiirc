@@ -13,7 +13,7 @@
                     </span>
                 </input-text>
 
-                <input-text :label="$t('nick')" v-model="nick" />
+                <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
                 <label class="kiwi-customserver-have-password">
                     <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
@@ -95,6 +95,7 @@ export default {
             let net;
 
             if (!this.nick) {
+                this.$el.querySelector('.kiwi-customserver-nick input').focus();
                 return;
             }
 
