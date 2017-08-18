@@ -184,7 +184,13 @@ async function initState() {
 
 
 function startApp() {
-    api.setThemeManager(ThemeManager.instance(state));
+    let themeMgr = ThemeManager.instance(state);
+    api.setThemeManager(themeMgr);
+
+    let argTheme = getQueryVariable('theme');
+    if (argTheme) {
+        themeMgr.setTheme(argTheme);
+    }
 
     /* eslint-disable no-new */
     new Vue({

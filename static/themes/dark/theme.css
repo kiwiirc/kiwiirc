@@ -2,6 +2,7 @@
 
 .kiwi-wrap {
     color: #ccc;
+    background: #201F1F;
 }
 
 .kiwi-workspace:before {
@@ -10,7 +11,6 @@
 }
 
 .kiwi-workspace-background {
-    background: #201F1F;
 }
 
 h1, h2, h3, h4, h5, h6 {
