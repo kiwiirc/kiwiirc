@@ -24,7 +24,7 @@
             </template>
 
             <template v-if="server_type === 'default_simple'">
-                <input-text :label="$t('nick')" v-model="nick" />
+                <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
                 <label class="kiwi-customserver-have-password">
                     <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
@@ -42,7 +42,7 @@
                     </span>
                 </input-text>
 
-                <input-text :label="$t('username')" v-model="nick" />
+                <input-text :label="$t('username')" v-model="nick" class="kiwi-customserver-nick" />
 
                 <input-text v-if="znc_network_support" :label="$t('network')" v-model="znc_network" />
                 <input-text :label="$t('password')" v-model="password" type="password" />
