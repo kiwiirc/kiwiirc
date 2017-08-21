@@ -11,6 +11,7 @@
                     :items="autocomplete_items"
                     :filter="autocomplete_filter"
                     :buffer="buffer"
+                    @temp="onAutocompleteTemp"
                     @selected="onAutocompleteSelected"
                     @cancel="onAutocompleteCancel"
                 ></auto-complete>
@@ -59,6 +60,13 @@ export default {
             autocomplete_open: false,
             autocomplete_items: [],
             autocomplete_filter: '',
+            // Not filtering through the autocomplete list means that the entire word is put
+            // in place when cycling through items. Just as with traditional IRC clients when
+            // tabbing through nicks.
+            // When filtering through the list, we keep typing more of the word we want as the
+            // autocomplete list filters its results to show us the relevant items, not replacing
+            // the current word until we select an item.
+            autocomplete_filtering: true,
             active_tool: null,
             active_tool_props: {},
         };
@@ -102,8 +110,20 @@ export default {
         onAutocompleteCancel: function onAutocompleteCancel() {
             this.autocomplete_open = false;
         },
+        onAutocompleteTemp: function onAutocompleteTemp(selectedValue, selectedItem) {
+            if (!this.autocomplete_filtering) {
+                this.$refs.input.setCurrentWord(selectedValue);
+            }
+        },
         onAutocompleteSelected: function onAutocompleteSelected(selectedValue, selectedItem) {
-            this.$refs.input.setCurrentWord(selectedValue);
+            let word = selectedValue;
+            if (selectedItem.type === 'user') {
+                word += ', ';
+            } else {
+                word += ' ';
+            }
+
+            this.$refs.input.setCurrentWord(word);
             this.autocomplete_open = false;
         },
         inputKeyDown: function inputKeyDown(event) {
@@ -177,24 +197,31 @@ export default {
             } else if (currentToken === '@') {
                 // Just typed @ so start the nick auto completion
                 this.openAutoComplete(this.buildAutoCompleteItems({ users: true }));
+                this.autocomplete_filtering = true;
             } else if (inputVal === '/') {
                 // Just typed / so start the command auto completion
                 this.openAutoComplete(this.buildAutoCompleteItems({ commands: true }));
+                this.autocomplete_filtering = true;
             } else if (currentToken === '#') {
                 // Just typed # so start the command auto completion
                 this.openAutoComplete(this.buildAutoCompleteItems({ buffers: true }));
+                this.autocomplete_filtering = true;
             } else if (event.keyCode === 9) {
                 // Tab key was just pressed, start general auto completion
                 let items = this.buildAutoCompleteItems({
                     users: true,
-                    commands: true,
                     buffers: true,
                 });
                 this.openAutoComplete(items);
+                this.autocomplete_filter = currentToken;
+
+                // Disable filtering so that tabbing cycles through words more like
+                // traditional IRC clients.
+                this.autocomplete_filtering = false;
                 event.preventDefault();
             }
 
-            if (this.autocomplete_open) {
+            if (this.autocomplete_open && this.autocomplete_filtering) {
                 this.autocomplete_filter = currentToken;
             }
         },

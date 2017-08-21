@@ -102,7 +102,7 @@ export default {
         handleOnKeyDown: function handleOnKeyDown(event) {
             let handled = false;
 
-            if (event.keyCode === 13) {
+            if (event.keyCode === 13 || event.keyCode === 32) {
                 // If no item is selected (ie. on an empty list), leave the return key
                 // to do its default action as if the autocomplete box isn't active.
                 if (!this.selectedItem) {
@@ -143,6 +143,13 @@ export default {
             state.setActiveBuffer(buffer.networkid, buffer.name);
             this.cancel();
         },
+        tempCurrentItem: function tempCurrentItem() {
+            let item = this.selectedItem;
+            if (!item) {
+                return;
+            }
+            this.$emit('temp', item.value || item.text, item);
+        },
         selectCurrentItem: function selectCurrentItem() {
             let item = this.selectedItem;
             this.$emit('selected', item.value || item.text, item);
@@ -150,6 +157,9 @@ export default {
         cancel: function cancel() {
             this.$emit('cancel');
         },
+    },
+    mounted: function mounted() {
+        this.tempCurrentItem();
     },
     watch: {
         selected_idx: function watchSelectedIdx() {
@@ -162,6 +172,8 @@ export default {
 
                 this.$el.scrollTop = el.offsetTop - (el.getBoundingClientRect().height * 2);
             });
+
+            this.tempCurrentItem();
         },
         filter: function watchFilter() {
             let numItems = this.filteredAndLimitedItems.length - 1;

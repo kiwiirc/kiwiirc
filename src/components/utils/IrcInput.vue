@@ -312,7 +312,7 @@ export default Vue.component('irc-input', {
     z-index: 1;
 }
 .kiwi-ircinput-editor {
-    white-space: nowrap;
+    white-space: pre;
     overflow-x: hidden;
     outline: none;
 }
