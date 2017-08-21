@@ -123,7 +123,7 @@ export default {
 
                 event.preventDefault();
                 handled = true;
-            } else if (event.keyCode === 40 || event.keyCode === 9) {
+            } else if ((event.keyCode === 40 && !event.altKey) || event.keyCode === 9) {
                 // Down or tab
                 if (this.selected_idx < this.filteredItems.length - 1) {
                     this.selected_idx++;
