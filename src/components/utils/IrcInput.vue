@@ -12,6 +12,7 @@
             @textInput="updateValueProps(); onTextInput($event); $emit('textInput', $event)"
             @mouseup="updateValueProps();"
             @click="$emit('click', $event)"
+            @paste="onPaste"
         ></div>
     </div>
 </template>
@@ -50,6 +51,16 @@ export default Vue.component('irc-input', {
                 event.preventDefault();
                 this.setCurrentWord(event.data.trim());
             }
+        },
+        onPaste: function onPaste(event) {
+            event.stopPropagation();
+            event.preventDefault();
+
+            let clipboardData = event.clipboardData || window.clipboardData;
+            let pastedData = clipboardData.getData('Text');
+
+            this.insertText(pastedData);
+            this.focus();
         },
         updateValueProps: function updateValueProps() {
             let selection = window.getSelection();
@@ -187,6 +198,9 @@ export default Vue.component('irc-input', {
             let pos = this.current_el_pos;
             let val = el.textContent;
             el.textContent = val.substr(0, pos) + text + val.substr(pos);
+
+            let newPos = pos + text.length;
+            this.current_range = [newPos, newPos];
         },
 
         // Replace the word at the current position with another
