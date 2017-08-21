@@ -207,7 +207,7 @@ export default Vue.component('irc-input', {
         setCurrentWord: function setCurrentWord(text, keepPosition) {
             let el = this.current_el;
             let pos = this.current_el_pos;
-            let val = el.textContent;
+            let val = el.textContent || '';
 
             let startVal = val.substr(0, pos);
             let space = startVal.lastIndexOf(' ');
@@ -232,8 +232,16 @@ export default Vue.component('irc-input', {
                 range.setStart(el, pos);
                 range.setEnd(el, pos);
             } else {
-                range.setStart(el, startPos + text.length);
-                range.setEnd(el, startPos + text.length);
+                if (el.nodeType === 3) {
+                    // TEXT_NODE
+                    range.setStart(el, startPos + text.length);
+                    range.setEnd(el, startPos + text.length);
+                } else {
+                    // el is another type of node, so setStart/End() counts in nodes instead
+                    // of text length
+                    range.setStart(el, 1);
+                    range.setEnd(el, 1);
+                }
             }
 
             let sel = window.getSelection();
