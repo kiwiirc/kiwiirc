@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-messageinfo" @click.stop>
-        <div class="kiwi-messageinfo-author">Message from {{message.nick}}. <a @click="openQuery" class="u-link">Reply in private</a></div>
+        <div class="kiwi-messageinfo-author"><a @click="openQuery" class="u-link">Reply in private</a></div>
 
         <div v-if="areWeAnOp()" class="kiwi-messageinfo-opactions">
             <input-prompt @submit="onKick" label="Kick reason:"><a class="u-link">Kick {{message.nick}}</a></input-prompt> <br />
