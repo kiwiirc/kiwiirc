@@ -13,6 +13,7 @@ const stateObj = {
     settings: {
         windowTitle: 'Kiwi IRC - The web IRC client',
         useMonospace: false,
+        messageLayout: 'compact',
         theme: 'Default',
         themes: [
             { name: 'Default', url: 'static/themes/default' },

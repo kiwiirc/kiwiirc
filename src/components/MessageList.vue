@@ -7,72 +7,22 @@
             <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
-        <div
+        <message-list-message-modern
+            v-if="listType === 'modern'"
             v-for="(message, idx) in filteredMessages"
+            :message="message"
+            :idx="idx"
+            :ml="thisMl"
             key="message.id"
-            @click="onMessageClick($event, message)"
-            class="kiwi-messagelist-message"
-            v-bind:class="[
-                filteredMessages[idx-1] &&
-                filteredMessages[idx-1].nick === message.nick &&
-                message.time - filteredMessages[idx-1].time < 60000 &&
-                filteredMessages[idx-1].type !== 'traffic' &&
-                message.type !== 'traffic' ?
-                    'kiwi-messagelist-message-repeat' :
-                    '',
-                'kiwi-messagelist-message-' + message.type,
-                message.type_extra ?
-                    'kiwi-messagelist-message-' + message.type + '-' + message.type_extra :
-                    '',
-                isMessageHighlight(message) ?
-                    'kiwi-messagelist-message--highlight' :
-                    '',
-                isHoveringOverMessage(message) ?
-                    'kiwi-messagelist-message--hover' :
-                    '',
-                buffer.last_read && message.time > buffer.last_read ?
-                    'kiwi-messagelist-message--unread' :
-                    '',
-                message.nick.toLowerCase() === ourNick.toLowerCase() ?
-                    'kiwi-messagelist-message--own' :
-                    '',
-                message_info_open === message ?
-                    'kiwi-messagelist-message--info-open' :
-                    '',
-                message_info_open && message_info_open !== message ?
-                    'kiwi-messagelist-message--blur' :
-                    '',
-            ]"
-            :data-message="message"
-        >
-            <div
-                v-if="bufferSetting('show_timestamps')"
-                class="kiwi-messagelist-time"
-            >
-                {{formatTime(message.time)}}
-            </div>
-            <div
-                class="kiwi-messagelist-nick"
-                v-bind:style="nickStyle(message.nick)"
-                v-bind:data-nick="message.nick"
-                @mouseover="hover_nick=message.nick.toLowerCase();"
-                @mouseout="hover_nick='';"
-            >{{message.nick}}</div>
-            <div class="kiwi-messagelist-body" v-html="formatMessage(message)"></div>
-
-            <message-info
-                v-if="message_info_open===message"
-                :message="message"
-                :buffer="buffer"
-                @close="toggleMessageInfo()"
-            />
-        </div>
-
-        <not-connected
-            v-if="buffer.getNetwork().state !== 'connected'"
-            :buffer="buffer"
-            :network="buffer.getNetwork()"
-        ></not-connected>
+        ></message-list-message-modern>
+        <message-list-message-compact
+            v-if="listType !== 'modern'"
+            v-for="(message, idx) in filteredMessages"
+            :message="message"
+            :idx="idx"
+            :ml="thisMl"
+            key="message.id"
+        ></message-list-message-compact>
     </div>
 </template>
 
@@ -82,7 +32,8 @@ import strftime from 'strftime';
 import state from 'src/libs/state';
 import * as TextFormatting from 'src/helpers/TextFormatting';
 import NotConnected from './NotConnected';
-import MessageInfo from './MessageInfo';
+import MessageListMessageCompact from './MessageListMessageCompact';
+import MessageListMessageModern from './MessageListMessageModern';
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
@@ -91,7 +42,8 @@ const BOTTOM_SCROLL_MARGIN = 30;
 export default {
     components: {
         NotConnected,
-        MessageInfo,
+        MessageListMessageModern,
+        MessageListMessageCompact,
     },
     data: function data() {
         return {
@@ -103,6 +55,12 @@ export default {
     },
     props: ['buffer', 'messages', 'users'],
     computed: {
+        thisMl: function thisMl() {
+            return this;
+        },
+        listType: function listType() {
+            return state.setting('messageLayout');
+        },
         useExtraFormatting: function useExtraFormatting() {
             // Enables simple markdown formatting
             return this.buffer.setting('extra_formatting');
@@ -151,6 +109,7 @@ export default {
                 }
             }
 
+            console.log('filteredMessages', list.length);
             return list.reverse();
         },
         shouldShowChathistoryTools: function shouldShowChathistoryTools() {
@@ -346,53 +305,8 @@ export default {
     overflow: hidden;
     transition: opacity 0.2s
 }
-.kiwi-messagelist-message-privmsg:hover,
-.kiwi-messagelist-message-action:hover,
-.kiwi-messagelist-message-notice:hover, {
-    cursor: pointer;
-    border-left-color: #80ab52;
-}
 .kiwi-messagelist-message--blur {
     opacity: 0.5;
-}
-.kiwi-messagelist-nick {
-    width: 120px;
-    display: inline-block;
-    float: left;
-}
-.kiwi-messagelist-time {
-    display: inline-block;
-    float: right;
-}
-.kiwi-messagelist-body {
-    display: block;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    margin-left: 130px;
-}
-.kiwi-messagelist-body a {
-    word-break: break-all;
-}
-.kiwi-messageinfo {
-    padding-left: 130px;
-}
-@media screen and (max-width: 700px) {
-    .kiwi-messagelist-nick {
-        display: inline;
-        width: auto;
-        float: none;
-    }
-    .kiwi-messagelist-body {
-        margin-left: 2px;
-    }
-    .kiwi-messagelist-time {
-    }
-    .kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
-        display: none;
-    }
-    .kiwi-messageinfo {
-        padding-left: 2px;
-    }
 }
 .kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
     display: none;
