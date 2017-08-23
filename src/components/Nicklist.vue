@@ -25,6 +25,7 @@
 
 import _ from 'lodash';
 import state from 'src/libs/state';
+import Logger from 'src/libs/Logger';
 import * as TextFormatting from 'src/helpers/TextFormatting';
 
 export default {
@@ -52,6 +53,17 @@ export default {
 
             let bufferId = this.buffer.id;
             return users.sort((a, b) => {
+                if (!a.buffers[bufferId]) {
+                    let msg = 'Nicklist.sortedUsers() User A does not have the buffer in its list!';
+                    Logger.error(msg, a.nick, a.buffers);
+                    return -1;
+                }
+                if (!b.buffers[bufferId]) {
+                    let msg = 'Nicklist.sortedUsers() User B does not have the buffer in its list!';
+                    Logger.error(msg, b.nick, b.buffers);
+                    return 1;
+                }
+
                 // Neither user has a prefix, compare text
                 if (
                     a.buffers[bufferId].modes.length === 0 &&
