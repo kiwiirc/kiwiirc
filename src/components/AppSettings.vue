@@ -30,6 +30,10 @@
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-messages">
                         <h3>{{$t('settings_messages_title')}}</h3>
+                        <label>
+                            <span>Traditional IRC layout: </span>
+                            <input type="checkbox" v-model="settingMessageLayout" />
+                        </label>
                         <label><span>{{$t('settings_timestamps')}}: </span> <input type="checkbox" v-model="settingBufferShowTimestamps" /></label>
                         <label><span>{{$t('settings_24hour_timestamps')}}: </span> <input type="checkbox" v-model="timestamps_24h" /></label>
                         <label><span>{{$t('settings_emoticons')}}: </span> <input type="checkbox" v-model="settingBufferShowEmoticons" /></label>
@@ -117,6 +121,18 @@ export default {
         settingBufferExtraFormatting: bindSetting('buffers.extra_formatting'),
         settingBufferTrafficAsActivity: bindSetting('buffers.traffic_as_activity'),
         settingBufferMuteSound: bindSetting('buffers.mute_sound'),
+        settingMessageLayout: {
+            get: function getSettingMessageLayout() {
+                return state.setting('messageLayout') === 'compact';
+            },
+            set: function setSettingMessageLayout(newVal) {
+                if (newVal) {
+                    state.setting('messageLayout', 'compact');
+                } else {
+                    state.setting('messageLayout', 'modern');
+                }
+            },
+        },
     },
     components: {
         SettingsAliases,
