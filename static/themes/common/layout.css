@@ -601,6 +601,11 @@ div {
 }
 
 
+.kiwi-messagelist-message--modern {
+    margin: 0px 20px;
+    margin-left: 10px;
+    padding: 10px;
+}
 
 /**
  * Not connected sign

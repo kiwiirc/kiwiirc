@@ -294,6 +294,12 @@
     /* some message highlights add a left border so add a default invisble one to keep them inline */
     border-left: 3px solid transparent;
 }
+.kiwi-messagelist-message--modern {
+    border-left: 7px solid transparent;
+}
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
+    margin: 18px;
+}
 .kiwi-messagelist-message-whois {
     border-left-color: #939393;
 }

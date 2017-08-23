@@ -118,9 +118,8 @@ export default {
 }
 
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--modern {
-    margin: 10px 20px;
-    padding-top: 10px;
+.kiwi-messagelist-message--modern {
+    border-left: 7px solid transparent;
 }
 .kiwi-messagelist-modern-avatar {
     background: #1869FE;
@@ -166,5 +165,9 @@ export default {
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-repeat .kiwi-messagelist-nick,
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-repeat .kiwi-messagelist-time {
     display: none;
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--highlight {
+    background: none;
 }
 </style>
