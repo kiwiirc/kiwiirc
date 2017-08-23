@@ -109,7 +109,6 @@ export default {
                 }
             }
 
-            console.log('filteredMessages', list.length);
             return list.reverse();
         },
         shouldShowChathistoryTools: function shouldShowChathistoryTools() {
