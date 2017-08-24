@@ -21,6 +21,7 @@
 
 <script>
 
+import _ from 'lodash';
 // import ServerSession from 'src/libs/ServerSession';
 import state from 'src/libs/state';
 import logger from 'src/libs/Logger';
@@ -55,12 +56,10 @@ export default {
 
             net.ircClient.once('registered', async () => {
                 let networks = await net.ircClient.bnc.getNetworks();
-                networks.forEach(async (network) => {
+                for (let network of networks) {
                     network.buffers = [];
                     try {
-                        console.log('Getting buffers for', network.name);
                         let buffers = await net.ircClient.bnc.getBuffers(network.name);
-                        console.log('Got buffers for ' + network.name, buffers);
                         network.buffers = buffers;
                     } catch (err) {
                         // Log the error here or something
@@ -68,8 +67,9 @@ export default {
                     }
 
                     this.addNetworkToState(network);
-                });
+                }
 
+                this.monitorNetworkChanges(net);
                 this.$emit('start');
             });
 
@@ -102,6 +102,74 @@ export default {
                     newBuffer.enabled = true;
                 }
             });
+        },
+
+        monitorNetworkChanges: function monitorNetworkChanges(net) {
+            let existingNets = Object.create(null);
+            function rememberNetworks() {
+                state.networks.forEach(network => {
+                    // Only deal with BNC networks
+                    if (!network.connection.bncname) {
+                        return;
+                    }
+
+                    existingNets[network.connection.bncname] = {
+                        host: network.connection.server || '',
+                        port: network.connection.port,
+                        tls: network.connection.tls,
+                        password: network.connection.password || '',
+                        nick: network.nick || '',
+                    };
+                });
+            }
+
+            rememberNetworks();
+
+            let debouncedSaveState = _.debounce(newVal => {
+                state.networks.forEach(network => {
+                    // Only deal with BNC networks
+                    if (!network.connection.bncname) {
+                        return;
+                    }
+
+                    let current = existingNets[network.connection.bncname] || {};
+                    let tags = {};
+
+                    if (network.connection.server !== current.host) {
+                        tags.host = network.connection.server;
+                    }
+                    if (network.connection.port !== current.port) {
+                        tags.port = network.connection.port.toString();
+                    }
+                    if (network.connection.tls !== current.tls) {
+                        tags.tls = network.connection.tls ? '1' : '0';
+                    }
+                    if (network.connection.password !== current.password) {
+                        tags.password = network.connection.password;
+                    }
+                    if (network.nick !== current.nick) {
+                        tags.nick = network.nick;
+                    }
+
+                    let line = '';
+                    for (let key in tags) {
+                        if (tags.hasOwnProperty(key)) {
+                            line += `${key}=${tags[key]};`;
+                        }
+                    }
+
+                    if (!line) {
+                        return;
+                    }
+
+                    let updateLine = `BOUNCER changenetwork ${network.connection.bncname} ${line}`;
+                    net.ircClient.raw(updateLine);
+                });
+
+                rememberNetworks();
+            }, 2000);
+
+            state.$watch('networks', debouncedSaveState, { deep: true });
         },
     },
 };
