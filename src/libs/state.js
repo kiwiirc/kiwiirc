@@ -24,6 +24,16 @@ const stateObj = {
         startupScreen: 'customServer',
         // Where to find the kiwi server
         kiwiServer: '/webirc/kiwiirc/',
+        // If active, all connections will be routed via this BNC server. Network settings
+        // will be read and updated to the BNC as they are changed.
+        bnc: {
+            active: false,
+            server: '',
+            port: 6667,
+            tls: false,
+            username: '',
+            password: '',
+        },
         // Default buffer settings
         buffers: {
             alert_on: 'highlight',
@@ -381,6 +391,7 @@ const state = new Vue({
             network.connection.password = serverInfo.password || '';
             network.connection.direct = !!serverInfo.direct;
             network.connection.encoding = serverInfo.encoding || 'utf8';
+            network.connection.bncname = serverInfo.bncname || '';
 
             if (serverInfo.services) {
                 network.services = serverInfo.services;
@@ -732,6 +743,7 @@ function createEmptyNetworkObject() {
             password: '',
             direct: false,
             encoding: 'utf8',
+            bncname: '',
         },
         settings: {},
         nick: '',

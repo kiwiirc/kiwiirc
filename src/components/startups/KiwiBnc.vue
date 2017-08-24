@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-welcome">
-        <h2>Kiwi IRC BNC</h2>
+        <h2>Your BNC</h2>
         <div v-if="statusMessage">
             {{statusMessage}}
         </div>
@@ -21,7 +21,7 @@
 
 <script>
 
-import ServerSession from 'src/libs/ServerSession';
+// import ServerSession from 'src/libs/ServerSession';
 import state from 'src/libs/state';
 import logger from 'src/libs/Logger';
 
@@ -34,27 +34,52 @@ export default {
         };
     },
     methods: {
-        startUp: function startUp() {
-            this.session = this.session || new ServerSession();
+        startUp: async function startUp() {
             this.statusMessage = 'Logging in...';
 
-            this.session.auth(this.username, this.password)
-            .then(() => this.session.getNetworks().then(this.sessionToState))
-            .then(() => this.$emit('start'))
-            .catch(err => {
-                if (err && err.stack) {
-                    this.statusMessage = 'Error logging in';
-                    logger.error(err.stack);
-                } else {
-                    this.statusMessage = 'Invalid login';
-                }
+            // Indicate that all our connections will be going through a BNC
+            let bnc = state.setting('bnc');
+            bnc.active = true;
+            bnc.server = '127.0.0.1';
+            bnc.port = 2000;
+            bnc.tls = false;
+            bnc.username = this.username;
+            bnc.password = this.password;
+
+            let net = state.addNetwork(this.username, this.username, {
+                server: '127.0.0.1',
+                port: 2000,
+                tls: false,
+                password: `${this.username}:${this.password}`,
             });
+
+            net.ircClient.once('registered', async () => {
+                let networks = await net.ircClient.bnc.getNetworks();
+                networks.forEach(async (network) => {
+                    network.buffers = [];
+                    try {
+                        console.log('Getting buffers for', network.name);
+                        let buffers = await net.ircClient.bnc.getBuffers(network.name);
+                        console.log('Got buffers for ' + network.name, buffers);
+                        network.buffers = buffers;
+                    } catch (err) {
+                        // Log the error here or something
+                        logger.error(err);
+                    }
+
+                    this.addNetworkToState(network);
+                });
+
+                this.$emit('start');
+            });
+
+            net.ircClient.connect();
         },
 
-        sessionToState: function sessionToState(sessionNetworks) {
-            // Expects sessionNetworks to be in the format of:
-            // [
-            //  {"buffers":[{"channel":"1","name":"#prawnsalad","joined":"1"}],
+        addNetworkToState: function addNetworkToState(network) {
+            // Expects network to be in the format of:
+            //  {
+            //  "buffers":[{"channel":"1","name":"#prawnsalad","joined":"1"}],
             //  "name":"freenode",
             //  "channel":"1",
             //  "connected":"1",
@@ -63,26 +88,21 @@ export default {
             //  "tls":"0",
             //  "nick":"notprawn99829"
             //  },
-            // ]
-            sessionNetworks.forEach(sessionNetwork => {
-                let net = state.addNetwork(sessionNetwork.name, sessionNetwork.nick, {
-                    channelId: sessionNetwork.channel,
-                    server: sessionNetwork.host,
-                    port: parseInt(sessionNetwork.port, 10),
-                    tls: !!parseInt(sessionNetwork.tls, 10),
-                    password: sessionNetwork.password || '',
-                });
+            let net = state.addNetwork(network.name, network.nick, {
+                server: network.host,
+                port: network.port,
+                tls: network.tls,
+                password: network.password,
+                bncname: network.name,
+            });
 
-                sessionNetwork.buffers.forEach(sessionBuffer => {
-                    let buffer = state.addBuffer(net.id, sessionBuffer.name);
-                    if (!!parseInt(sessionBuffer.joined, 10)) {
-                        buffer.enabled = true;
-                    }
-                });
+            network.buffers.forEach(buffer => {
+                let newBuffer = state.addBuffer(net.id, buffer.name);
+                if (buffer.joined) {
+                    newBuffer.enabled = true;
+                }
             });
         },
-    },
-    created: function created() {
     },
 };
 </script>
