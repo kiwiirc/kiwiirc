@@ -49,12 +49,12 @@ export default function bouncerMiddleware() {
             });
         }
 
-        if (params[0] === 'addnetwork' && params[1].substr(0, 4) === 'ERR_') {
+        if (params[0] === 'addnetwork' && params[2].substr(0, 4) === 'ERR_') {
             client.emit('bouncer addnetwork error', {
                 error: params[1],
                 reason: params[2],
             });
-        } else if (params[0] === 'addnetwork' && params[1] === 'RPL_OK') {
+        } else if (params[0] === 'addnetwork' && params[2] === 'RPL_OK') {
             client.emit('bouncer addnetwork ok', {
                 network: params[2],
             });
