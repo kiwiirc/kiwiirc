@@ -38,28 +38,14 @@ export default {
         startUp: async function startUp() {
             this.statusMessage = 'Logging in...';
 
-            // Indicate that all our connections will be going through a BNC
-            let bnc = state.setting('bnc');
-            bnc.active = true;
-            bnc.server = '127.0.0.1';
-            bnc.port = 2000;
-            bnc.tls = false;
-            bnc.username = this.username;
-            bnc.password = this.password;
+            let bncnet = this.getBncNetwork();
 
-            let net = state.addNetwork(this.username, this.username, {
-                server: '127.0.0.1',
-                port: 2000,
-                tls: false,
-                password: `${this.username}:${this.password}`,
-            });
-
-            net.ircClient.once('registered', async () => {
-                let networks = await net.ircClient.bnc.getNetworks();
-                for (let network of networks) {
+            bncnet.ircClient.once('registered', async () => {
+                let bncNetworks = await bncnet.ircClient.bnc.getNetworks();
+                for (let network of bncNetworks) {
                     network.buffers = [];
                     try {
-                        let buffers = await net.ircClient.bnc.getBuffers(network.name);
+                        let buffers = await bncnet.ircClient.bnc.getBuffers(network.name);
                         network.buffers = buffers;
                     } catch (err) {
                         // Log the error here or something
@@ -69,11 +55,38 @@ export default {
                     this.addNetworkToState(network);
                 }
 
-                this.monitorNetworkChanges(net);
+                this.monitorNetworkChanges(bncnet, bncNetworks);
                 this.$emit('start');
             });
 
-            net.ircClient.connect();
+            bncnet.ircClient.connect();
+        },
+
+        getBncNetwork: function getBncNetwork() {
+            let bnc = state.setting('bnc');
+
+            if (bnc.network) {
+                return bnc.network;
+            }
+
+            // Indicate that all our connections will be going through a BNC
+            bnc.active = true;
+            bnc.server = '127.0.0.1';
+            bnc.port = 2000;
+            bnc.tls = false;
+            bnc.username = this.username;
+            bnc.password = this.password;
+
+            let bncnet = state.addNetwork(this.username, this.username, {
+                server: '127.0.0.1',
+                port: 2000,
+                tls: false,
+                password: `${this.username}:${this.password}`,
+            });
+
+            bnc.network = bncnet;
+
+            return bncnet;
         },
 
         addNetworkToState: function addNetworkToState(network) {
@@ -104,7 +117,7 @@ export default {
             });
         },
 
-        monitorNetworkChanges: function monitorNetworkChanges(net) {
+        monitorNetworkChanges: function monitorNetworkChanges(bncNet, bncNetworks) {
             let existingNets = Object.create(null);
             function rememberNetworks() {
                 state.networks.forEach(network => {
@@ -114,11 +127,11 @@ export default {
                     }
 
                     existingNets[network.connection.bncname] = {
-                        host: network.connection.server || '',
+                        host: network.connection.server,
                         port: network.connection.port,
                         tls: network.connection.tls,
-                        password: network.connection.password || '',
-                        nick: network.nick || '',
+                        password: network.connection.password,
+                        nick: network.nick,
                     };
                 });
             }
@@ -163,13 +176,23 @@ export default {
                     }
 
                     let updateLine = `BOUNCER changenetwork ${network.connection.bncname} ${line}`;
-                    net.ircClient.raw(updateLine);
+                    bncNet.ircClient.raw(updateLine);
                 });
 
                 rememberNetworks();
             }, 2000);
 
             state.$watch('networks', debouncedSaveState, { deep: true });
+
+            // Just before we connect to a network, make sure the BNC is connected to it or
+            // at least trying to connect.
+            state.$on('network.connecting', event => {
+                let netName = event.network.connection.bncname;
+                let networkFromBnc = _.find(bncNetworks, { name: netName });
+                if (networkFromBnc && !networkFromBnc.connected) {
+                    bncNet.ircClient.raw('BOUNCER connect ' + netName);
+                }
+            });
         },
     },
 };

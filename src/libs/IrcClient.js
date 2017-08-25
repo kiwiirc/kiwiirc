@@ -60,6 +60,7 @@ export function create(state, networkid) {
             ircClient.options.encoding = network.connection.encoding;
         }
 
+        state.$emit('network.connecting', { network });
         originalIrcClientConnect.apply(ircClient, args);
     };
 
