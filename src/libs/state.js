@@ -903,16 +903,21 @@ function initialiseBufferState(buffer) {
     Object.defineProperty(buffer, 'requestScrollback', {
         value: function requestScrollback() {
             let time = '';
-            let lastMessage = this.getMessages()[0];
+            let lastMessage = this.getMessages().reduce((earliest, current) => {
+                if (earliest.time && earliest.time < current.time) {
+                    return earliest;
+                }
+                return current;
+            }, this.getMessages()[0]);
 
             if (lastMessage) {
-                time = strftime('%FT%T.000Z', new Date(lastMessage.time));
+                time = strftime('%FT%T.%L%:z', new Date(lastMessage.time));
             } else {
-                time = strftime('%FT%T.000Z', new Date());
+                time = strftime('%FT%T.%L%:z', new Date());
             }
 
             let ircClient = this.getNetwork().ircClient;
-            ircClient.raw(`CHATHISTORY ${this.name} ${time} 50`);
+            ircClient.raw(`CHATHISTORY ${this.name} timestamp=${time} message_count=50`);
             ircClient.once('batch end chathistory', (event) => {
                 if (event.commands.length === 0) {
                     this.flags.chathistory_available = false;

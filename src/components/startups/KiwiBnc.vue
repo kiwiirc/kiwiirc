@@ -164,17 +164,18 @@ export default {
                         tags.nick = network.nick;
                     }
 
-                    let line = '';
+                    let lineParts = [];
                     for (let key in tags) {
                         if (tags.hasOwnProperty(key)) {
-                            line += `${key}=${tags[key]};`;
+                            lineParts.push(`${key}=${tags[key]}`);
                         }
                     }
 
-                    if (!line) {
+                    if (lineParts.length === 0) {
                         return;
                     }
 
+                    let line = lineParts.join(';');
                     let updateLine = `BOUNCER changenetwork ${network.connection.bncname} ${line}`;
                     bncNet.ircClient.raw(updateLine);
                 });

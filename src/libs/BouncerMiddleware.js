@@ -97,12 +97,14 @@ function addFunctionsToClient(client) {
         tags.nick = nick;
         tags.user = user;
 
-        let tagString = '';
+        let tagParts = [];
         for (let tag in tags) {
             if (tags.hasOwnProperty(tag)) {
-                tagString += tag + '=' + tags[tag];
+                tagParts.push(tag + '=' + tags[tag]);
             }
         }
+
+        let tagString = tagParts.join(';');
 
         return new Promise((resolve, reject) => {
             client.raw('BOUNCER addnetwork ' + tagString);
