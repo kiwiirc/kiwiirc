@@ -705,9 +705,18 @@ const state = new Vue({
                 return;
             }
 
+            let normalisedNew = newNick.toLowerCase();
+            let normalisedOld = oldNick.toLowerCase();
+
             user.nick = newNick;
-            state.$set(network.users, newNick.toLowerCase(), network.users[oldNick.toLowerCase()]);
-            state.$delete(network.users, oldNick.toLowerCase());
+            state.$set(network.users, normalisedNew, network.users[normalisedOld]);
+            state.$delete(network.users, normalisedOld);
+
+            for (let bufferId in user.buffers) {
+                let buffer = user.buffers[bufferId].buffer;
+                state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
+                state.$delete(buffer.users, normalisedOld);
+            }
         },
     },
 });
