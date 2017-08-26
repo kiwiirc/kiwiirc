@@ -170,8 +170,8 @@ export default {
                         tags.user = network.username;
                     }
 
-                    // A newly added network would not have a name property set yet
-                    // Only save the network if we've entered a host
+                    // A newly added network would not have a current name property set yet.
+                    // Only save the network if we've entered a host.
                     if (!current.name && tags.host) {
                         network.connection.bncname = network.name;
                         bncNet.ircClient.bnc.addNetwork(
@@ -183,20 +183,7 @@ export default {
                             tags.user,
                         );
                     } else if (current.name) {
-                        let lineParts = [];
-                        for (let key in tags) {
-                            if (tags.hasOwnProperty(key)) {
-                                lineParts.push(`${key}=${tags[key]}`);
-                            }
-                        }
-
-                        if (lineParts.length === 0) {
-                            return;
-                        }
-
-                        let line = lineParts.join(';');
-                        let updateLine = `BOUNCER changenetwork ${bncName} ${line}`;
-                        bncNet.ircClient.raw(updateLine);
+                        bncNet.ircClient.bnc.saveNetwork(bncName, tags);
                     }
                 });
 

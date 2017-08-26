@@ -122,6 +122,35 @@ function addFunctionsToClient(client) {
             }
         });
     };
+
+    bnc.saveNetwork = function saveNetwork(netName, opts) {
+        let tags = {};
+
+        if (typeof opts.host !== 'undefined') {
+            tags.host = opts.host;
+        }
+        if (typeof opts.port !== 'undefined') {
+            tags.port = opts.port;
+        }
+        if (typeof opts.tls !== 'undefined') {
+            tags.tls = opts.tls ? 1 : 0;
+        }
+        if (typeof opts.nick !== 'undefined') {
+            tags.nick = opts.nick;
+        }
+        if (typeof opts.user !== 'undefined') {
+            tags.user = opts.user;
+        }
+
+        let tagString = createTagString(tags);
+        return new Promise((resolve, reject) => {
+            if (tagString.length === 0) {
+                resolve();
+            } else {
+                client.raw(`BOUNCER changenetwork ${netName} ${tagString}`);
+            }
+        });
+    };
 }
 
 
