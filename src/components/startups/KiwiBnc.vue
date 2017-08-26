@@ -77,7 +77,7 @@ export default {
             bnc.username = this.username;
             bnc.password = this.password;
 
-            let bncnet = state.addNetwork(this.username, this.username, {
+            let bncnet = state.addNetwork('bnccontrol', this.username, {
                 server: '127.0.0.1',
                 port: 2000,
                 tls: false,
@@ -107,6 +107,7 @@ export default {
                 tls: network.tls,
                 password: network.password,
                 bncname: network.name,
+                username: network.user,
             });
 
             network.buffers.forEach(buffer => {
@@ -121,17 +122,18 @@ export default {
             let existingNets = Object.create(null);
             function rememberNetworks() {
                 state.networks.forEach(network => {
-                    // Only deal with BNC networks
                     if (!network.connection.bncname) {
                         return;
                     }
 
                     existingNets[network.connection.bncname] = {
+                        name: network.connection.bncname,
                         host: network.connection.server,
                         port: network.connection.port,
                         tls: network.connection.tls,
                         password: network.connection.password,
                         nick: network.nick,
+                        username: network.username,
                     };
                 });
             }
@@ -141,11 +143,12 @@ export default {
             let debouncedSaveState = _.debounce(newVal => {
                 state.networks.forEach(network => {
                     // Only deal with BNC networks
-                    if (!network.connection.bncname) {
+                    if (network.name === 'bnccontrol') {
                         return;
                     }
 
-                    let current = existingNets[network.connection.bncname] || {};
+                    let bncName = network.connection.bncname;
+                    let current = existingNets[bncName] || {};
                     let tags = {};
 
                     if (network.connection.server !== current.host) {
@@ -163,21 +166,38 @@ export default {
                     if (network.nick !== current.nick) {
                         tags.nick = network.nick;
                     }
+                    if (network.username !== current.username) {
+                        tags.user = network.username;
+                    }
 
-                    let lineParts = [];
-                    for (let key in tags) {
-                        if (tags.hasOwnProperty(key)) {
-                            lineParts.push(`${key}=${tags[key]}`);
+                    // A newly added network would not have a name property set yet
+                    // Only save the network if we've entered a host
+                    if (!current.name && tags.host) {
+                        network.connection.bncname = network.name;
+                        bncNet.ircClient.bnc.addNetwork(
+                            network.name,
+                            tags.host,
+                            tags.port,
+                            tags.tls,
+                            tags.nick,
+                            tags.user,
+                        );
+                    } else if (current.name) {
+                        let lineParts = [];
+                        for (let key in tags) {
+                            if (tags.hasOwnProperty(key)) {
+                                lineParts.push(`${key}=${tags[key]}`);
+                            }
                         }
-                    }
 
-                    if (lineParts.length === 0) {
-                        return;
-                    }
+                        if (lineParts.length === 0) {
+                            return;
+                        }
 
-                    let line = lineParts.join(';');
-                    let updateLine = `BOUNCER changenetwork ${network.connection.bncname} ${line}`;
-                    bncNet.ircClient.raw(updateLine);
+                        let line = lineParts.join(';');
+                        let updateLine = `BOUNCER changenetwork ${bncName} ${line}`;
+                        bncNet.ircClient.raw(updateLine);
+                    }
                 });
 
                 rememberNetworks();

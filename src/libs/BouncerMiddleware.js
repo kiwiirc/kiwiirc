@@ -14,7 +14,6 @@ export default function bouncerMiddleware() {
         }
 
         let params = message.params;
-        console.log(command, params);
 
         if (params[0] === 'listnetworks' && params[1] === 'end') {
             client.emit('bouncer networks', networks);
@@ -50,14 +49,20 @@ export default function bouncerMiddleware() {
         }
 
         if (params[0] === 'addnetwork' && params[2].substr(0, 4) === 'ERR_') {
-            client.emit('bouncer addnetwork error', {
-                error: params[1],
-                reason: params[2],
-            });
+            let netName = (params[1] || '').toLowerCase();
+            let eventObj = {
+                error: params[2],
+                reason: params[3] || '',
+            };
+            client.emit('bouncer addnetwork error', eventObj);
+            client.emit('bouncer addnetwork error ' + netName, eventObj);
         } else if (params[0] === 'addnetwork' && params[2] === 'RPL_OK') {
-            client.emit('bouncer addnetwork ok', {
+            let netName = (params[1] || '').toLowerCase();
+            let eventObj = {
                 network: params[2],
-            });
+            };
+            client.emit('bouncer addnetwork ok', eventObj);
+            client.emit('bouncer addnetwork ok ' + netName, eventObj);
         }
 
         next();
@@ -80,9 +85,7 @@ function addFunctionsToClient(client) {
     bnc.getBuffers = function getBuffers(netName) {
         return new Promise((resolve, reject) => {
             client.raw('BOUNCER listbuffers ' + netName);
-            console.log('listening for', 'bouncer buffers ' + netName.toLowerCase());
             client.once('bouncer buffers ' + netName.toLowerCase(), buffers => {
-                console.log('resolving buffers', netName);
                 resolve(buffers);
             });
         });
@@ -95,26 +98,23 @@ function addFunctionsToClient(client) {
         tags.port = port;
         tags.tls = tls ? 1 : 0;
         tags.nick = nick;
-        tags.user = user;
 
-        let tagParts = [];
-        for (let tag in tags) {
-            if (tags.hasOwnProperty(tag)) {
-                tagParts.push(tag + '=' + tags[tag]);
-            }
+        if (user) {
+            tags.user = user;
         }
 
-        let tagString = tagParts.join(';');
-
+        let tagString = createTagString(tags);
         return new Promise((resolve, reject) => {
             client.raw('BOUNCER addnetwork ' + tagString);
-            client.on('bouncer addnetwork ok', onOk);
-            client.on('bouncer addnetwork error', onError);
+            client.once('bouncer addnetwork ok', onOk);
+            client.once('bouncer addnetwork error', onError);
 
             function onOk(event) {
+                client.off('bouncer addnetwork error', onError);
                 resolve();
             }
             function onError(event) {
+                client.off('bouncer addnetwork ok', onOk);
                 reject({
                     error: event.error,
                     reason: event.reason,
@@ -136,4 +136,24 @@ function parseTags(tagString) {
     });
 
     return tags;
+}
+
+function createTagString(tags) {
+    let tagParts = [];
+
+    for (let tag in tags) {
+        if (tags.hasOwnProperty(tag)) {
+            let val = tags[tag];
+            if (typeof val !== 'undefined') {
+                val = val.toString()
+                    .replace(' ', '\\s')
+                    .replace(';', '\\:');
+                tagParts.push(tag + '=' + val);
+            } else {
+                tagParts.push(tag);
+            }
+        }
+    }
+
+    return tagParts.join(';');
 }
