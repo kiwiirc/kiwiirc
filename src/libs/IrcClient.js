@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import Irc from 'irc-framework/browser';
+import bouncerMiddleware from './BouncerMiddleware';
 import * as ServerConnection from './ServerConnection';
 import * as TextFormatting from 'src/helpers/TextFormatting';
 
@@ -34,18 +35,32 @@ export function create(state, networkid) {
 
     let ircClient = new Irc.Client(clientOpts);
     ircClient.use(clientMiddleware(state, networkid));
+    ircClient.use(bouncerMiddleware());
 
     // Overload the connect() function to make sure we are connecting with the
     // most recent connection details from the state
     let originalIrcClientConnect = ircClient.connect;
     ircClient.connect = function connect(...args) {
-        ircClient.options.host = network.connection.server;
-        ircClient.options.port = network.connection.port;
-        ircClient.options.tls = network.connection.tls;
-        ircClient.options.password = network.connection.password;
-        ircClient.options.nick = network.nick;
-        ircClient.options.encoding = network.connection.encoding;
+        let bnc = state.setting('bnc');
+        if (bnc.active) {
+            let netname = network.connection.bncname;
 
+            ircClient.options.host = bnc.server;
+            ircClient.options.port = bnc.port;
+            ircClient.options.tls = bnc.tls;
+            ircClient.options.password = `${bnc.username}/${netname}:${bnc.password}`;
+            ircClient.options.nick = network.nick;
+            ircClient.options.encoding = network.connection.encoding;
+        } else {
+            ircClient.options.host = network.connection.server;
+            ircClient.options.port = network.connection.port;
+            ircClient.options.tls = network.connection.tls;
+            ircClient.options.password = network.connection.password;
+            ircClient.options.nick = network.nick;
+            ircClient.options.encoding = network.connection.encoding;
+        }
+
+        state.$emit('network.connecting', { network });
         originalIrcClientConnect.apply(ircClient, args);
     };
 

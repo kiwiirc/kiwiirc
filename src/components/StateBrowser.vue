@@ -55,7 +55,7 @@
         <div class="kiwi-statebrowser-scrollarea">
             <div class="kiwi-statebrowser-networks">
                 <state-browser-network
-                    v-for="network in networks"
+                    v-for="network in networksToShow"
                     :network="network"
                     @showBufferSettings="showBufferPopup"
                 ></state-browser-network>
@@ -126,7 +126,7 @@ export default {
         },
         clickAddNetwork: function clickAddNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
-            let network = state.addNetwork('New Network', nick, {});
+            let network = state.addNetwork('Network', nick, {});
             state.$emit('network.settings', network);
         },
         clickAppSettings: function clickAppSettings() {
@@ -166,6 +166,10 @@ export default {
         },
         isRestrictedServer: function isRestrictedServer() {
             return !!state.settings.restricted;
+        },
+        networksToShow: function networksToShow() {
+            let bncNet = state.setting('bnc').network;
+            return this.networks.filter(network => network !== bncNet);
         },
     },
     created: function created() {
