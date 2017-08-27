@@ -155,10 +155,10 @@ export default {
                         tags.host = network.connection.server;
                     }
                     if (network.connection.port !== current.port) {
-                        tags.port = network.connection.port.toString();
+                        tags.port = network.connection.port;
                     }
                     if (network.connection.tls !== current.tls) {
-                        tags.tls = network.connection.tls ? '1' : '0';
+                        tags.tls = network.connection.tls;
                     }
                     if (network.connection.password !== current.password) {
                         tags.password = network.connection.password;
@@ -199,6 +199,21 @@ export default {
                 let networkFromBnc = _.find(bncNetworks, { name: netName });
                 if (networkFromBnc && !networkFromBnc.connected) {
                     bncNet.ircClient.raw('BOUNCER connect ' + netName);
+                }
+            });
+
+            // Very hacky until we have network name renaming on the bnc. When a new network
+            // is added, change the name to the next available network name.
+            state.$on('network.new', event => {
+                let currentNum = 1;
+                while (true) {
+                    let existingNet = _.find(state.networks, { name: 'Network' + currentNum });
+                    if (!existingNet) {
+                        event.network.name = 'Network' + currentNum;
+                        break;
+                    }
+
+                    currentNum++;
                 }
             });
         },

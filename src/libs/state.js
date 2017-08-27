@@ -403,6 +403,9 @@ const state = new Vue({
             // Add the server server buffer
             this.addBuffer(network.id, '*').joined = true;
 
+            let eventObj = { network };
+            state.$emit('network.new', eventObj);
+
             return network;
         },
 
