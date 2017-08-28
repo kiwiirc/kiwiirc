@@ -13,7 +13,7 @@
             :message="message"
             :idx="idx"
             :ml="thisMl"
-            key="message.id"
+            :key="message.id"
         ></message-list-message-modern>
         <message-list-message-compact
             v-if="listType !== 'modern'"
@@ -21,7 +21,7 @@
             :message="message"
             :idx="idx"
             :ml="thisMl"
-            key="message.id"
+            :key="message.id"
         ></message-list-message-compact>
     </div>
 </template>

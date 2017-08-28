@@ -4,6 +4,7 @@
         <ul class="kiwi-nicklist-users">
             <li
                 v-for="user in sortedUsers"
+                :key="user.nick"
                 class="kiwi-nicklist-user"
                 v-bind:class="[
                     userMode(user) ? 'kiwi-nicklist-user--mode-' + userMode(user) : '',

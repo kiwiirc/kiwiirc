@@ -334,11 +334,11 @@ export function linkifyUsers(word, userlist) {
  */
 let nickColourCache = Object.create(null);
 export function createNickColour(nick) {
-    if (nickColourCache[nick]) {
-        return nickColourCache[nick];
-    }
-
     let nickLower = nick.toLowerCase();
+
+    if (nickColourCache[nickLower]) {
+        return nickColourCache[nickLower];
+    }
 
     // The HSL properties are based on this specific colour
     let startingColour = '#36809B'; // '#449fc1';
