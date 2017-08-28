@@ -50,7 +50,7 @@ export default {
 
             // Since vuejs will sort in-place and update views when .sort is called
             // on an array, clone it first so that we have a plain array to sort
-            let users = this.bufferUsers;
+            let users = _.clone(this.bufferUsers);
 
             let bufferId = this.buffer.id;
             return users.sort((a, b) => {
@@ -101,11 +101,14 @@ export default {
                 return a.nick.localeCompare(b.nick);
             });
         },
+        useColouredNicks: function useColouredNicks() {
+            return this.buffer.setting('coloured_nicklist');
+        },
     },
     methods: {
-        nickStyle: function nickColour(nick) {
+        nickStyle: function nickStyle(nick) {
             let styles = {};
-            if (this.buffer.setting('coloured_nicklist')) {
+            if (this.useColouredNicks) {
                 styles.color = TextFormatting.createNickColour(nick);
             }
             return styles;
