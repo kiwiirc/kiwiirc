@@ -40,7 +40,15 @@ export default {
 
             let bncnet = this.getBncNetwork();
 
-            bncnet.ircClient.once('registered', async () => {
+            let cleanUpEvents = () => {
+                bncnet.ircClient.off('registered', onRegistered);
+                bncnet.ircClient.off('irc error', onError);
+                bncnet.ircClient.off('close', onClose);
+            };
+
+            let onRegistered = async () => {
+                cleanUpEvents();
+
                 let bncNetworks = await bncnet.ircClient.bnc.getNetworks();
                 for (let network of bncNetworks) {
                     network.buffers = [];
@@ -57,8 +65,21 @@ export default {
 
                 this.monitorNetworkChanges(bncnet, bncNetworks);
                 this.$emit('start');
-            });
+            };
 
+            let onError = (event) => {
+                cleanUpEvents();
+                this.statusMessage = 'Invalid login';
+            };
+
+            let onClose = (event) => {
+                cleanUpEvents();
+                this.statusMessage = 'Invalid login';
+            };
+
+            bncnet.ircClient.once('registered', onRegistered);
+            bncnet.ircClient.once('irc error', onError);
+            bncnet.ircClient.once('close', onClose);
             bncnet.ircClient.connect();
         },
 
@@ -66,21 +87,27 @@ export default {
             let bnc = state.setting('bnc');
 
             if (bnc.network) {
+                bnc.username = this.username;
+                bnc.password = this.password;
                 return bnc.network;
             }
 
             // Indicate that all our connections will be going through a BNC
             bnc.active = true;
-            bnc.server = '127.0.0.1';
-            bnc.port = 2000;
-            bnc.tls = false;
+            bnc.server = 'irc.muffinmedic.net';
+            bnc.port = 4723;
+            bnc.tls = true;
             bnc.username = this.username;
             bnc.password = this.password;
 
+            bnc.server = '127.0.0.1';
+            bnc.port = 2000;
+            bnc.tls = false;
+
             let bncnet = state.addNetwork('bnccontrol', this.username, {
-                server: '127.0.0.1',
-                port: 2000,
-                tls: false,
+                server: bnc.server,
+                port: bnc.port,
+                tls: bnc.tls,
                 password: `${this.username}:${this.password}`,
             });
 
