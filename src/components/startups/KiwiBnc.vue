@@ -92,11 +92,13 @@ export default {
                 return bnc.network;
             }
 
+            let options = state.settings.startupOptions;
+
             // Indicate that all our connections will be going through a BNC
             bnc.active = true;
-            bnc.server = 'irc.muffinmedic.net';
-            bnc.port = 4723;
-            bnc.tls = true;
+            bnc.server = options.server || '';
+            bnc.port = options.port || 6667;
+            bnc.tls = !!options.tls;
             bnc.username = this.username;
             bnc.password = this.password;
 
