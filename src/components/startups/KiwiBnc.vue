@@ -1,10 +1,10 @@
 <template>
-    <div class="kiwi-welcome">
-        <h2>Your BNC</h2>
+    <div class="kiwi-startbnc">
+        <h2 v-html="greetingText"></h2>
         <div v-if="statusMessage">
             {{statusMessage}}
         </div>
-        <form v-on:submit.prevent="startUp" class="u-form kiwi-welcome-form">
+        <form v-on:submit.prevent="startUp" class="u-form kiwi-startbnc-form">
             <label>
                 <span>{{$t('username')}}</span>
                 <input type="text" v-model="username" />
@@ -14,7 +14,7 @@
                 <input type="password" v-model="password" />
             </label>
 
-            <button type="submit" class="u-button u-button-primary u-submit">{{$t('connect')}}</button>
+            <button type="submit" class="u-button u-button-primary u-submit" v-html="buttonText"></button>
         </form>
     </div>
 </template>
@@ -33,6 +33,20 @@ export default {
             password: '',
             statusMessage: '',
         };
+    },
+    computed: {
+        greetingText: function greetingText() {
+            let greeting = state.settings.startupOptions.greetingText;
+            return typeof greeting === 'string' ?
+                greeting :
+                'Welcome to Kiwi IRC!';
+        },
+        buttonText: function buttonText() {
+            let greeting = state.settings.startupOptions.buttonText;
+            return typeof greeting === 'string' ?
+                greeting :
+                'Start';
+        },
     },
     methods: {
         startUp: async function startUp() {
@@ -101,10 +115,6 @@ export default {
             bnc.tls = !!options.tls;
             bnc.username = this.username;
             bnc.password = this.password;
-
-            bnc.server = '127.0.0.1';
-            bnc.port = 2000;
-            bnc.tls = false;
 
             let bncnet = state.addNetwork('bnccontrol', this.username, {
                 server: bnc.server,
@@ -252,22 +262,22 @@ export default {
 
 <style>
 
-.kiwi-welcome {
+.kiwi-startbnc {
     text-align: center;
     margin-top: 1em;
 }
-.kiwi-welcome-start {
+.kiwi-startbnc-start {
     font-size: 1.1em;
     cursor: pointer;
 }
-.kiwi-welcome-form {
+.kiwi-startbnc-form {
     width: 300px;
-    margin: 0 auto;
+    margin: 2em auto;
 }
-.kiwi-welcome-server-types {
+.kiwi-startbnc-server-types {
     font-size: 0.9em;
 }
-.kiwi-welcome-server-types a {
+.kiwi-startbnc-server-types a {
     margin: 0 1em;
 }
 </style>
