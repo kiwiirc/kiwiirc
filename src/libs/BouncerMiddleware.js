@@ -28,6 +28,7 @@ export default function bouncerMiddleware() {
                 connect: tags.state === 'connected',
                 nick: tags.nick,
                 currentNick: tags.currentNick,
+                password: tags.password || '',
             });
         } else if (params[0] === 'listbuffers' && params[2] === 'end') {
             let netName = (params[1] || '').toLowerCase();
@@ -91,13 +92,14 @@ function addFunctionsToClient(client) {
         });
     };
 
-    bnc.addNetwork = function addNetwork(netName, host, port, tls, nick, user) {
+    bnc.addNetwork = function addNetwork(netName, host, port, tls, nick, user, password) {
         let tags = {};
         tags.network = netName;
         tags.host = host;
         tags.port = port;
         tags.tls = tls ? 1 : 0;
         tags.nick = nick;
+        tags.password = password;
 
         if (user) {
             tags.user = user;
@@ -140,6 +142,9 @@ function addFunctionsToClient(client) {
         }
         if (typeof opts.user !== 'undefined') {
             tags.user = opts.user;
+        }
+        if (typeof opts.password !== 'undefined') {
+            tags.password = opts.password;
         }
 
         let tagString = createTagString(tags);

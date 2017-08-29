@@ -220,6 +220,7 @@ export default {
                             tags.tls,
                             tags.nick,
                             tags.user,
+                            tags.password,
                         );
                     } else if (current.name) {
                         bncNet.ircClient.bnc.saveNetwork(bncName, tags);
