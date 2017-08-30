@@ -1,3 +1,5 @@
+import * as Misc from 'src/helpers/Misc';
+
 export class AudioBleep {
     constructor() {
         this.lastPlayed = 0;
@@ -34,9 +36,11 @@ export function listenForHighlights(state) {
         }
 
         let network = buffer.getNetwork();
-        let isHighlight = message.message.indexOf(network.nick) > -1;
+        let isHighlight = Misc.mentionsNick(message.message, network.nick);
+        let isActiveBuffer = state.getActiveBuffer() === buffer;
+        let inFocus = isActiveBuffer && state.ui.app_has_focus;
 
-        if (isHighlight) {
+        if (isHighlight || (buffer.isQuery() && !inFocus)) {
             bleep.play();
         }
     });

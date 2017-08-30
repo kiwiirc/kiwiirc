@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import * as Misc from 'src/helpers/Misc';
 
 let isEnabled = false;
@@ -43,6 +44,8 @@ export function show(title, body, opts) {
     return notify;
 }
 
+const throttledShow = _.throttle(show, 2000);
+
 
 export function listenForNewMessages(state) {
     state.$on('message.new', (message, buffer) => {
@@ -65,12 +68,12 @@ export function listenForNewMessages(state) {
         }
 
         if ((settingAlertOn === 'message' || settingAlertOn === 'highlight') && isHighlight) {
-            notification = show('You were mentioned in ' + buffer.name, notifyMessage, {
-                ttl: 7000,
+            notification = throttledShow('You were mentioned in ' + buffer.name, notifyMessage, {
+                ttl: 10000,
             });
         } else if (settingAlertOn === 'message' && !isHighlight) {
-            notification = show(buffer.name, notifyMessage, {
-                ttl: 7000,
+            notification = throttledShow(buffer.name, notifyMessage, {
+                ttl: 10000,
             });
         } else if (settingAlertOn === 'never') {
             // Don't do anything
