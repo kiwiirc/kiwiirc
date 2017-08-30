@@ -119,13 +119,15 @@
  */
 
 .kiwi-statebrowser {
-    background: #383838;
+    background: #2a2c23;
     /* this also looks cool, background: #05394a; */
     color: #e0e0e0;
 }
 
-.kiwi-statebrowser-usermenu {
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+.kiwi-statebrowser-divider {
+    background: rgba(255,255,255,0.3);
+    margin: 8px 12px;
+    height: 1px;
 }
 
 .kiwi-statebrowser-availablenetworks {

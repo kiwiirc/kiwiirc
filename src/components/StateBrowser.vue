@@ -24,6 +24,8 @@
                 <br />
                 <button class="u-button u-button-primary" @click="is_usermenu_open=false">{{$t('close')}}</button>
             </div>
+
+            <div class="kiwi-statebrowser-divider"></div>
         </div>
 
         <div class="kiwi-statebrowser-switcher">

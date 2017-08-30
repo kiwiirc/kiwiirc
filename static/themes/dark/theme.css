@@ -130,8 +130,10 @@ h1, h2, h3, h4, h5, h6 {
     color: rgb(137, 155, 166);
 }
 
-.kiwi-statebrowser-usermenu {
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+.kiwi-statebrowser-divider {
+    background: rgba(255,255,255,0.3);
+    margin: 8px 12px;
+    height: 1px;
 }
 
 .kiwi-statebrowser-channel-name {
