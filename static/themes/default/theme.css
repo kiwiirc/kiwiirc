@@ -155,6 +155,9 @@
     background: green;
     color: #dedede;
 }
+.kiwi-statebrowser-channel-label--highlight {
+    background: #d62323;
+}
 
 .kiwi-statebrowser-channel-label-transition-enter-active, .kiwi-statebrowser-channel-label-transition-leave-active {
     transition: opacity 0.1s;

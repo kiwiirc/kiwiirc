@@ -4,6 +4,7 @@ import strftime from 'strftime';
 import * as IrcClient from './IrcClient';
 import Message from './Message';
 import batchedAdd from './batchedAdd';
+import * as Misc from 'src/helpers/Misc';
 
 const stateObj = {
     // May be set by a StatePersistence instance
@@ -125,7 +126,7 @@ const stateObj = {
                     name: '#kiwiirc',
                     topic: 'A hand-crafted IRC client',
                     joined: true,
-                    flags: { unread: 4 },
+                    flags: { unread: 4, highlight: true },
                     settings: { alert_on: 'all' },
                     users: [ref_to_user_obj],
                 },
@@ -586,6 +587,10 @@ const state = new Vue({
 
             if (includeAsActivity && !isActiveBuffer) {
                 buffer.incrementFlag('unread');
+                let network = buffer.getNetwork();
+                if (Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick)) {
+                    buffer.flag('highlight', true);
+                }
             }
 
             this.$emit('message.new', bufferMessage, buffer);
@@ -953,6 +958,7 @@ function initialiseBufferState(buffer) {
                 );
             } else {
                 buffer.last_read = Date.now();
+                buffer.flag('highlight', false);
             }
         },
     });
