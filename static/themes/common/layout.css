@@ -276,11 +276,9 @@ div {
 }
 
 .kiwi-statebrowser-channel-label {
-    padding: 3px 5px;
-    font-size: 0.7em;
+    padding: 1px 5px;
     border-radius: 5px;
     line-height: 1.3em;
-    font-weight: bold;
 }
 
 .kiwi-statebrowser-channel-label-transition-enter-active, .kiwi-statebrowser-channel-label-transition-leave-active {
