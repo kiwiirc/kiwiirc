@@ -92,6 +92,12 @@ function addFunctionsToClient(client) {
         });
     };
 
+    bnc.closeBuffer = function closeBuffer(netName, bufferName) {
+        return new Promise((resolve, reject) => {
+            client.raw(`BOUNCER delbuffer ${netName} ${bufferName}`);
+        });
+    };
+
     bnc.addNetwork = function addNetwork(netName, host, port, tls, nick, user, password) {
         let tags = {};
         tags.network = netName;

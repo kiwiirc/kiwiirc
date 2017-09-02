@@ -507,6 +507,9 @@ const state = new Vue({
 
             initialiseBufferState(buffer);
 
+            let eventObj = { buffer };
+            state.$emit('buffer.new', eventObj);
+
             return buffer;
         },
 
@@ -517,6 +520,9 @@ const state = new Vue({
             if (!network) {
                 return;
             }
+
+            let eventObj = { buffer };
+            state.$emit('buffer.close', eventObj);
 
             let bufferIdx = network.buffers.indexOf(buffer);
             if (bufferIdx > -1) {

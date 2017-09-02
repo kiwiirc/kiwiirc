@@ -256,6 +256,16 @@ export default {
                     currentNum++;
                 }
             });
+
+            state.$on('buffer.close', event => {
+                let buffer = event.buffer;
+                let network = event.buffer.getNetwork();
+                let bncName = network.connection.bncname;
+
+                if (bncName) {
+                    bncNet.ircClient.bnc.closeBuffer(bncName, buffer.name);
+                }
+            });
         },
     },
 };
