@@ -44,11 +44,19 @@ export function create(state, networkid) {
         let bnc = state.setting('bnc');
         if (bnc.active) {
             let netname = network.connection.bncname;
+            let password = '';
+
+            // bnccontrol is the control connection for BOUNCER commands, not a network
+            if (network.name === 'bnccontrol') {
+                password = `${bnc.username}:${bnc.password}`;
+            } else {
+                password = `${bnc.username}/${netname}:${bnc.password}`;
+            }
 
             ircClient.options.host = bnc.server;
             ircClient.options.port = bnc.port;
             ircClient.options.tls = bnc.tls;
-            ircClient.options.password = `${bnc.username}/${netname}:${bnc.password}`;
+            ircClient.options.password = password;
             ircClient.options.nick = network.nick;
             ircClient.options.encoding = network.connection.encoding;
         } else {
