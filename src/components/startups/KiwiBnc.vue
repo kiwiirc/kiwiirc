@@ -1,34 +1,53 @@
 <template>
-    <div class="kiwi-startbnc">
-        <h2 v-html="greetingText"></h2>
-        <div v-if="statusMessage">
-            {{statusMessage}}
-        </div>
-        <form v-on:submit.prevent="startUp" class="u-form kiwi-startbnc-form">
-            <label>
-                <span>{{$t('username')}}</span>
-                <input type="text" v-model="username" />
-            </label>
-            <label>
-                <span>{{$t('password')}}</span>
-                <input type="password" v-model="password" />
-            </label>
+    <div class="kiwi-startbnc" :class="[closing ? 'kiwi-startbnc--closing' : '']">
+        <div class="kiwi-startbnc-section kiwi-startbnc-section-connection">
+            <h2 v-html="greetingText"></h2>
 
-            <button type="submit" class="u-button u-button-primary u-submit" v-html="buttonText"></button>
-        </form>
+            <div class="kiwi-startbnc-status">{{statusMessage}}</div>
+
+            <form v-on:submit.prevent="startUp" class="kiwi-startbnc-form">
+                <label>
+                    <span>{{$t('username')}}</span>
+                    <input type="text" v-model="username" :disabled="loading" />
+                </label>
+                <label>
+                    <span>{{$t('password')}}</span>
+                    <input type="password" v-model="password" :disabled="loading" />
+                </label>
+
+                <button type="submit" class="u-button u-button-primary u-submit" :disabled="loading || !username || !password">
+                    <span v-if="!loading" v-html="buttonText"></span>
+                    <i v-else class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="kiwi-startbnc-section kiwi-startbnc-section-info" :style="infoStyle">
+            <div class="kiwi-startbnc-section-info-content" v-if="infoContent" v-html="infoContent">
+                <h3>Take your conversations anywhere.</h3>
+                <h4>IRC? No problem.</h4>
+
+                <p>IRC has a history of being difficult, lets makes it usable.</p>
+                <p>Just log in and get going.</p>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 
 import _ from 'lodash';
-// import ServerSession from 'src/libs/ServerSession';
 import state from 'src/libs/state';
 import logger from 'src/libs/Logger';
 
 export default {
+    created: function created() {
+        window.t = this;
+    },
     data: function data() {
         return {
+            closing: false,
+            loading: false,
             username: '',
             password: '',
             statusMessage: '',
@@ -42,15 +61,41 @@ export default {
                 'Welcome to Kiwi IRC!';
         },
         buttonText: function buttonText() {
+            if (this.loading) {
+                return '';
+            }
+
             let greeting = state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
                 'Start';
         },
+        infoStyle: function infoStyle() {
+            let style = {};
+            let options = state.settings.startupOptions;
+
+            if (options.infoBackground) {
+                style['background-image'] = `url(${options.infoBackground})`;
+            } else {
+                style['background-color'] = '#333333';
+            }
+
+            return style;
+        },
+        infoContent: function infoContent() {
+            return state.settings.startupOptions.infoContent || '';
+        },
     },
     methods: {
+        close: function close() {
+            this.closing = true;
+            this.$el.addEventListener('transitionend', (event) => {
+                this.$emit('start');
+            }, false);
+        },
         startUp: async function startUp() {
             this.statusMessage = 'Logging in...';
+            this.loading = true;
 
             let bncnet = this.getBncNetwork();
 
@@ -78,17 +123,19 @@ export default {
                 }
 
                 this.monitorNetworkChanges(bncnet, bncNetworks);
-                this.$emit('start');
+                this.close();
             };
 
             let onError = (event) => {
                 cleanUpEvents();
                 this.statusMessage = 'Invalid login';
+                this.loading = false;
             };
 
             let onClose = (event) => {
                 cleanUpEvents();
                 this.statusMessage = 'Invalid login';
+                this.loading = false;
             };
 
             bncnet.ircClient.once('registered', onRegistered);
@@ -120,7 +167,6 @@ export default {
                 server: bnc.server,
                 port: bnc.port,
                 tls: bnc.tls,
-                password: `${this.username}:${this.password}`,
             });
 
             bnc.network = bncnet;
@@ -246,11 +292,11 @@ export default {
             // is added, change the name to the next available network name.
             state.$on('network.new', event => {
                 let currentNum = 1;
-                while (true) {
-                    let existingNet = _.find(state.networks, { name: 'Network' + currentNum });
+                let existingNet = true;
+                while (existingNet) {
+                    existingNet = _.find(state.networks, { name: 'Network' + currentNum });
                     if (!existingNet) {
                         event.network.name = 'Network' + currentNum;
-                        break;
                     }
 
                     currentNum++;
@@ -275,7 +321,68 @@ export default {
 
 .kiwi-startbnc {
     text-align: center;
-    margin-top: 1em;
+    height: 100%;
+}
+
+.kiwi-startbnc-section {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    padding: 1em;
+    box-sizing: border-box;
+    transition: right 0.3s, left 0.3s;
+    overflow-y: auto;
+}
+.kiwi-startbnc-section-info {
+    right: 0;
+    border: 0 solid #86b32d;
+    border-left-width: 5px;
+    background-size: cover;
+    color: #fff;
+    background-position: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+.kiwi-startbnc-section-info-content {
+    background: rgba(255, 255, 255, 0.74);
+    margin: 3em;
+    color: #1b1b1b;
+    font-size: 1.5em;
+    padding: 1em;
+    line-height: 1.6em;
+}
+
+
+.kiwi-startbnc-section-connection {
+    left: 0;
+    margin-top: 3em;
+    font-size: 1.2em;
+}
+
+.kiwi-startbnc-section-connection label {
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 1.5em;
+}
+.kiwi-startbnc-section-connection input {
+    font-size: 1em;
+    margin-top: 5px;
+    padding: 0.3em 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+.kiwi-startbnc-status {
+    margin: 1em 0;
+    overflow: hidden;
+    max-height: 40px;
+    transition: max-height 0.2s;
+}
+.kiwi-startbnc-status:empty {
+    background: red;
+    max-height: 0;
 }
 .kiwi-startbnc-start {
     font-size: 1.1em;
@@ -290,5 +397,56 @@ export default {
 }
 .kiwi-startbnc-server-types a {
     margin: 0 1em;
+}
+
+.kiwi-startbnc--closing .kiwi-startbnc-section-connection {
+    left: -50%;
+}
+.kiwi-startbnc--closing .kiwi-startbnc-section-info {
+    right: -50%;
+}
+
+/** Smaller screen...**/
+@media screen and (max-width: 850px) {
+    .kiwi-startbnc {
+        font-size: 0.9em;
+    }
+
+    .kiwi-startbnc-section-connection {
+        margin-top: 1em;
+    }
+    .kiwi-startbnc-section-info-content {
+        margin: 1em;
+    }
+}
+
+/** Even smaller screen.. probably phones **/
+@media screen and (max-width: 750px) {
+    .kiwi-startbnc {
+        font-size: 0.9em;
+        overflow-y: auto;
+    }
+
+    .kiwi-startbnc-section {
+        left: 0;
+        width: 100%;
+        right: auto;
+        position: relative;
+    }
+
+    .kiwi-startbnc-section-info {
+        border-width: 5px 0 0 0;
+    }
+    .kiwi-startbnc-section-info-content {
+        margin: 0.5em;
+    }
+
+    /** Closing - the wiping away of the screen **/
+    .kiwi-startbnc--closing .kiwi-startbnc-section-connection {
+        left: -100%;
+    }
+    .kiwi-startbnc--closing .kiwi-startbnc-section-info {
+        left: -100%;
+    }
 }
 </style>
