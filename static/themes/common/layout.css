@@ -765,9 +765,6 @@ div {
  */
 .kiwi-welcome-simple {
     text-align: center;
-    padding-top: 1em;
-    width: 300px;
-    margin: 0 auto;
 }
 .kiwi-welcome-simple .input-text,
 .kiwi-welcome-simple .kiwi-welcome-simple-have-password input {
