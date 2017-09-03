@@ -27,7 +27,7 @@
                     :buffer="buffer"
                     :users="users"
                 ></sidebar>
-                <message-list :buffer="buffer" :messages="messages" :users="users"></message-list>
+                <message-list :buffer="buffer" :users="users"></message-list>
             </template>
         </template>
         <template v-else>
@@ -57,7 +57,7 @@ export default {
             sidebarOpen: false,
         };
     },
-    props: ['network', 'buffer', 'users', 'messages', 'isHalfSize'],
+    props: ['network', 'buffer', 'users', 'isHalfSize'],
     computed: {
         bufferType: function bufferType() {
             let type = '';

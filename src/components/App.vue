@@ -22,7 +22,6 @@
                         :network="network"
                         :buffer="buffer"
                         :users="users"
-                        :messages="messages"
                         :isHalfSize="mediaviewerOpen"
                     ></container>
                     <media-viewer
@@ -167,11 +166,6 @@ export default {
             }
 
             return activeNetwork.users;
-        },
-        messages() {
-            return this.buffer ?
-                this.buffer.getMessages() :
-                [];
         },
     },
     methods: {

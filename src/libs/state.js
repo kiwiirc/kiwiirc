@@ -183,36 +183,38 @@ const stateObj = {
             },
         }, */
     ],
-    messages: [
-        /* {
-            networkid: 1,
-            buffer: '#kiwiirc',
-            messages: [
-                {
-                    time: Date.now(),
-                    nick: 'prawnsalad',
-                    message: 'hello',
-                },
-            ],
-        },
-        {
-            networkid: 2,
-            buffer: '#orangechat',
-            messages: [
-                {
-                    time: Date.now(),
-                    nick: 'prawnsalad',
-                    message: 'boom boom boom',
-                },
-                {
-                    time: Date.now() + 10000,
-                    nick: 'someone',
-                    message: '.. you want me in your room?',
-                },
-            ],
-        }, */
-    ],
 };
+
+// Messages are seperate from the above state object to keep them from being reactive. Saves CPU.
+const messages = [
+    /* {
+        networkid: 1,
+        buffer: '#kiwiirc',
+        messages: [
+            {
+                time: Date.now(),
+                nick: 'prawnsalad',
+                message: 'hello',
+            },
+        ],
+    },
+    {
+        networkid: 2,
+        buffer: '#orangechat',
+        messages: [
+            {
+                time: Date.now(),
+                nick: 'prawnsalad',
+                message: 'boom boom boom',
+            },
+            {
+                time: Date.now() + 10000,
+                nick: 'someone',
+                message: '.. you want me in your room?',
+            },
+        ],
+    }, */
+];
 
 // TODO: Move these state changing methods into vuex or something
 const state = new Vue({
@@ -529,12 +531,12 @@ const state = new Vue({
                 network.buffers.splice(bufferIdx, 1);
             }
 
-            let messageIdx = _.findIndex(this.messages, {
+            let messageIdx = _.findIndex(messages, {
                 networkid: network.id,
                 buffer: buffer.name,
             });
             if (messageIdx > -1) {
-                this.messages.splice(messageIdx, 1);
+                messages.splice(messageIdx, 1);
             }
 
             if (buffer.isChannel() && buffer.joined) {
@@ -554,15 +556,6 @@ const state = new Vue({
         },
 
         addMessage: function addMessage(buffer, message) {
-            let messages = _.find(this.messages, {
-                networkid: buffer.networkid,
-                buffer: buffer.name,
-            });
-
-            if (!messages) {
-                return;
-            }
-
             let user = this.getUser(buffer.networkid, message.nick);
             let bufferMessage = new Message(message, user);
             if (user && user.ignore) {
@@ -603,13 +596,13 @@ const state = new Vue({
         },
 
         getMessages: function getMessages(buffer) {
-            let messages = _.find(this.messages, {
+            let bufMessages = _.find(messages, {
                 networkid: buffer.networkid,
                 buffer: buffer.name,
             });
 
-            return messages ?
-                messages.messages :
+            return bufMessages ?
+                bufMessages.messages :
                 [];
         },
 
@@ -799,6 +792,7 @@ function createEmptyBufferObject() {
         },
         last_read: Date.now(),
         active_timeout: null,
+        message_count: 0,
     };
 }
 
@@ -1025,11 +1019,13 @@ function initialiseBufferState(buffer) {
     /**
      * batch up floods of new messages for a huge performance gain
      */
-    function addSingleMessage(message) {
-        messageObj.messages.push(message);
+    function addSingleMessage(newMessage) {
+        messageObj.messages.push(newMessage);
+        buffer.message_count = messageObj.messages.length;
     }
-    function addMultipleMessages(messages) {
-        messageObj.messages = messageObj.messages.concat(messages);
+    function addMultipleMessages(newMessages) {
+        messageObj.messages = messageObj.messages.concat(newMessages);
+        buffer.message_count = messageObj.messages.length;
     }
     Object.defineProperty(buffer, 'addMessage', {
         value: batchedAdd(addSingleMessage, addMultipleMessages),
@@ -1040,5 +1036,5 @@ function initialiseBufferState(buffer) {
         buffer: buffer.name,
         messages: [],
     };
-    state.messages.push(messageObj);
+    messages.push(messageObj);
 }

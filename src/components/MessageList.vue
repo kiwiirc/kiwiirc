@@ -1,5 +1,9 @@
 <template>
-    <div class="kiwi-messagelist" @scroll.self="onThreadScroll" @click.self="onListClick">
+    <!--
+        The buffer.message_count key here forces the emssage list to re-render when a new message comes in.
+        This way we don't need to have all the messages within vues reactive state to save CPU time.
+    -->
+    <div class="kiwi-messagelist" @scroll.self="onThreadScroll" @click.self="onListClick" :key="buffer.message_count">
         <div
             v-if="shouldShowChathistoryTools"
             class="kiwi-messagelist-scrollback"
@@ -9,7 +13,7 @@
 
         <message-list-message-modern
             v-if="listType === 'modern'"
-            v-for="(message, idx) in filteredMessages"
+            v-for="(message, idx) in filteredMessages()"
             :message="message"
             :idx="idx"
             :ml="thisMl"
@@ -17,7 +21,7 @@
         ></message-list-message-modern>
         <message-list-message-compact
             v-if="listType !== 'modern'"
-            v-for="(message, idx) in filteredMessages"
+            v-for="(message, idx) in filteredMessages()"
             :message="message"
             :idx="idx"
             :ml="thisMl"
@@ -53,7 +57,7 @@ export default {
             message_info_open: null,
         };
     },
-    props: ['buffer', 'messages', 'users'],
+    props: ['buffer', 'users'],
     computed: {
         thisMl: function thisMl() {
             return this;
@@ -65,11 +69,29 @@ export default {
             // Enables simple markdown formatting
             return this.buffer.setting('extra_formatting');
         },
+        shouldShowChathistoryTools: function shouldShowChathistoryTools() {
+            // Only show it if we're connected
+            if (this.buffer.getNetwork().state !== 'connected') {
+                return false;
+            }
+
+            let isCorrectBufferType = (this.buffer.isChannel() || this.buffer.isQuery());
+            let isSupported = !!this.buffer.getNetwork().ircClient.network.supports('chathistory');
+            return isCorrectBufferType && isSupported && this.buffer.flags.chathistory_available;
+        },
+        ourNick: function ourNick() {
+            return this.buffer ?
+                this.buffer.getNetwork().nick :
+                '';
+        },
+    },
+    methods: {
         filteredMessages: function filteredMessages() {
             let network = this.buffer.getNetwork();
             let currentNick = network.nick;
+            let bufferMessages = this.buffer.getMessages();
 
-            let messages = this.messages.slice(0, this.messages.length);
+            let messages = bufferMessages.slice(0, bufferMessages.length);
             messages.sort((a, b) => {
                 if (a.time > b.time) {
                     return 1;
@@ -111,23 +133,6 @@ export default {
 
             return list.reverse();
         },
-        shouldShowChathistoryTools: function shouldShowChathistoryTools() {
-            // Only show it if we're connected
-            if (this.buffer.getNetwork().state !== 'connected') {
-                return false;
-            }
-
-            let isCorrectBufferType = (this.buffer.isChannel() || this.buffer.isQuery());
-            let isSupported = !!this.buffer.getNetwork().ircClient.network.supports('chathistory');
-            return isCorrectBufferType && isSupported && this.buffer.flags.chathistory_available;
-        },
-        ourNick: function ourNick() {
-            return this.buffer ?
-                this.buffer.getNetwork().nick :
-                '';
-        },
-    },
-    methods: {
         isHoveringOverMessage: function isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
