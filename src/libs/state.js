@@ -617,7 +617,17 @@ const state = new Vue({
             return user;
         },
 
-        addUser: function addUser(networkid, user) {
+        usersTransaction: function usersTransaction(networkid, fn) {
+            let network = this.getNetwork(networkid);
+            if (!network) {
+                return;
+            }
+
+            let users = _.clone(network.users);
+            fn(users);
+            this.$set(network, 'users', users);
+        },
+        addUser: function addUser(networkid, user, usersArr_) {
             let network = null;
 
             // Accept either a network ID or a direct network object
@@ -631,10 +641,11 @@ const state = new Vue({
                 return null;
             }
 
+            let usersArr = usersArr_ || network.users;
             let userObj = null;
 
-            if (!network.users[user.nick.toLowerCase()]) {
-                userObj = network.users[user.nick.toLowerCase()] = {
+            if (!usersArr[user.nick.toLowerCase()]) {
+                userObj = usersArr[user.nick.toLowerCase()] = {
                     nick: user.nick,
                     host: user.host || '',
                     username: user.username || '',

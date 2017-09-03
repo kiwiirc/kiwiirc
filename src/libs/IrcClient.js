@@ -432,15 +432,17 @@ function clientMiddleware(state, networkid) {
         }
 
         if (command === 'wholist') {
-            event.users.forEach(user => {
-                let userObj = {
-                    nick: user.nick,
-                    host: user.hostname || undefined,
-                    username: user.ident || undefined,
-                    away: user.away ? 'Away' : '',
-                    realname: user.real_name,
-                };
-                state.addUser(networkid, userObj);
+            state.usersTransaction(networkid, users => {
+                event.users.forEach(user => {
+                    let userObj = {
+                        nick: user.nick,
+                        host: user.hostname || undefined,
+                        username: user.ident || undefined,
+                        away: user.away ? 'Away' : '',
+                        realname: user.real_name,
+                    };
+                    state.addUser(networkid, userObj, users);
+                });
             });
         }
 
