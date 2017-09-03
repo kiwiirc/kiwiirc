@@ -278,7 +278,7 @@ export default {
 
             this.scrollToBottom();
         },
-        messages: function watchMessages() {
+        'buffer.message_count': function watchBufferMessageCount() {
             this.$nextTick(() => {
                 this.maybeScrollToBottom();
             });
