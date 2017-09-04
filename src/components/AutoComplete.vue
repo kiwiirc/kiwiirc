@@ -102,14 +102,23 @@ export default {
         handleOnKeyDown: function handleOnKeyDown(event) {
             let handled = false;
 
-            if (event.keyCode === 13 || event.keyCode === 32) {
+            let cancelKeyCodes = [
+                13, // return
+                32, // space
+                188, // comma
+                190, // period
+            ];
+
+            if (cancelKeyCodes.indexOf(event.keyCode) > -1) {
                 // If no item is selected (ie. on an empty list), leave the return key
                 // to do its default action as if the autocomplete box isn't active.
                 if (!this.selectedItem) {
                     this.cancel();
                 } else {
                     this.selectCurrentItem();
-                    event.preventDefault();
+                    if (event.keyCode === 13) {
+                        event.preventDefault();
+                    }
                     handled = true;
                 }
             } else if (event.keyCode === 38 || (event.keyCode === 9 && event.shiftKey)) {

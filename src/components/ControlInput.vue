@@ -117,12 +117,6 @@ export default {
         },
         onAutocompleteSelected: function onAutocompleteSelected(selectedValue, selectedItem) {
             let word = selectedValue;
-            if (selectedItem.type === 'user') {
-                word += ', ';
-            } else {
-                word += ' ';
-            }
-
             this.$refs.input.setCurrentWord(word);
             this.autocomplete_open = false;
         },
@@ -138,6 +132,12 @@ export default {
             // If autocomplete has handled the event, don't also handle it here
             if (this.autocomplete_open && this.$refs.autocomplete.handleOnKeyDown(event)) {
                 return;
+            }
+
+            // When not filtering, select the current autocomplete item so that we can type any
+            // character directly after a nick
+            if (this.autocomplete_open && !this.autocomplete_filtering) {
+                this.$refs.autocomplete.selectCurrentItem();
             }
 
             if (event.keyCode === 13) {
