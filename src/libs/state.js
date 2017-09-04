@@ -617,6 +617,8 @@ const state = new Vue({
             return user;
         },
 
+        // Modify a networks user array without hitting vues reactive system until fn()
+        // has completed. Good for making large changes in bulk
         usersTransaction: function usersTransaction(networkid, fn) {
             let network = this.getNetwork(networkid);
             if (!network) {
@@ -627,6 +629,7 @@ const state = new Vue({
             fn(users);
             this.$set(network, 'users', users);
         },
+
         addUser: function addUser(networkid, user, usersArr_) {
             let network = null;
 
@@ -679,6 +682,36 @@ const state = new Vue({
             });
 
             this.$delete(network.users, user.nick.toLowerCase());
+        },
+
+        addMultipleUsersToBuffer: function addMultipleUsersToBuffer(buffer, newUsers) {
+            let network = this.getNetwork(buffer.networkid);
+            let bufUsers = _.clone(buffer.users);
+
+            state.usersTransaction(network.id, users => {
+                newUsers.forEach(newUser => {
+                    let user = newUser.user;
+                    let modes = newUser.modes;
+                    let userObj = state.getUser(network.id, user.nick);
+
+                    if (!userObj) {
+                        userObj = this.addUser(network, user, users);
+                    }
+                    bufUsers[userObj.nick.toLowerCase()] = userObj;
+
+                    // Add the buffer to the users buffer list
+                    if (!userObj.buffers[buffer.id]) {
+                        userObj.buffers[buffer.id] = {
+                            modes: modes || [],
+                            buffer: buffer,
+                        };
+                    } else {
+                        userObj.buffers[buffer.id].modes = modes || [];
+                    }
+                });
+            });
+
+            buffer.users = bufUsers;
         },
 
         addUserToBuffer: function addUserToBuffer(buffer, user, modes) {

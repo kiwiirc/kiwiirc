@@ -513,13 +513,18 @@ function clientMiddleware(state, networkid) {
 
         if (command === 'userlist') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
+            let users = [];
             event.users.forEach(user => {
-                state.addUserToBuffer(buffer, {
-                    nick: user.nick,
-                    username: user.ident,
-                    hostname: user.hostname,
-                }, user.modes);
+                users.push({
+                    user: {
+                        nick: user.nick,
+                        username: user.ident,
+                        hostname: user.hostname,
+                    },
+                    modes: user.modes,
+                });
             });
+            state.addMultipleUsersToBuffer(buffer, users);
         }
 
         if (command === 'channel info') {
