@@ -3,7 +3,7 @@
         The buffer.message_count key here forces the emssage list to re-render when a new message comes in.
         This way we don't need to have all the messages within vues reactive state to save CPU time.
     -->
-    <div class="kiwi-messagelist" @scroll.self="onThreadScroll" @click.self="onListClick" :key="buffer.message_count">
+    <div class="kiwi-messagelist" @scroll.self="onThreadScroll" @click.self="onListClick" :key="buffer.name">
         <div
             v-if="shouldShowChathistoryTools"
             class="kiwi-messagelist-scrollback"
@@ -90,6 +90,13 @@ export default {
             let network = this.buffer.getNetwork();
             let currentNick = network.nick;
             let bufferMessages = this.buffer.getMessages();
+
+            // Hack; We need to make vue aware that we depend on buffer.message_count in order to
+            // get the messagelist to update its DOM, as the change of message_count alerts
+            // us that the messages have changed. This is done so that vue does not have to make
+            // every emssage reactive which gets very expensive.
+            /* eslint-disable no-unused-vars */
+            let ignoredVar = this.buffer.message_count;
 
             let messages = bufferMessages.slice(0, bufferMessages.length);
             messages.sort((a, b) => {
