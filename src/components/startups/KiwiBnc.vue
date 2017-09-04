@@ -303,6 +303,10 @@ export default {
                 }
             });
 
+            state.$on('network.removed', event => {
+                bncNet.ircClient.bnc.removeNetwork(event.network.connection.bncname);
+            });
+
             state.$on('buffer.close', event => {
                 let buffer = event.buffer;
                 let network = event.buffer.getNetwork();

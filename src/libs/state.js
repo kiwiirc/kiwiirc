@@ -428,6 +428,9 @@ const state = new Vue({
 
             let idx = this.networks.indexOf(network);
             this.networks.splice(idx, 1);
+
+            let eventObj = { network };
+            state.$emit('network.removed', eventObj);
         },
 
         getActiveBuffer: function getActiveBuffer() {

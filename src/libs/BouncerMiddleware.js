@@ -131,6 +131,12 @@ function addFunctionsToClient(client) {
         });
     };
 
+    bnc.removeNetwork = function removeNetwork(netName, bufferName) {
+        return new Promise((resolve, reject) => {
+            client.raw(`BOUNCER delnetwork ${netName}`);
+        });
+    };
+
     bnc.saveNetwork = function saveNetwork(netName, opts) {
         let tags = {};
 
