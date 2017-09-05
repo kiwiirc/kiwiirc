@@ -1,42 +1,42 @@
 #: Close
 msgid "close"
-msgstr "Fechar"
+msgstr "Tancar"
 
 #: Connect
 msgid "connect"
-msgstr "Ligar"
+msgstr "Connectar"
 
 #: Connecting...
 msgid "connecting"
-msgstr "A ligar..."
+msgstr "Connectant..."
 
 #: Connected
 msgid "connected"
-msgstr "Ligado"
+msgstr "Connectat"
 
 #: Settings
 msgid "settings"
-msgstr "Definições"
+msgstr "Configuració"
 
 #: Banned
 msgid "banned"
-msgstr "Utilizadores banidos"
+msgstr "Usuaris banejats"
 
 #: Notifications
 msgid "notifications"
-msgstr "Notificações"
+msgstr "Notificacions"
 
 #: Username
 msgid "username"
-msgstr "Nome de utilizador"
+msgstr "Nom d'usuari"
 
 #: Password
 msgid "password"
-msgstr "Palavra-passe"
+msgstr "Contrasenya"
 
 #: I have a password
 msgid "password_have"
-msgstr "Eu tenho uma palavra-passe"
+msgstr "Tinc una contrasenya"
 
 #: Server
 msgid "server"
@@ -44,7 +44,7 @@ msgstr "Servidor"
 
 #: Nick (Nickname)
 msgid "nick"
-msgstr "Utilizador"
+msgstr "Alies"
 
 #: Channel
 msgid "channel"
@@ -52,7 +52,7 @@ msgstr "Canal"
 
 #: Network
 msgid "network"
-msgstr "Rede"
+msgstr "Xarxa"
 
 #: ZNC
 msgid "znc"
@@ -68,27 +68,27 @@ msgstr ""
 
 #: Realname field in a users whois
 msgid "whois_realname"
-msgstr "Nome real"
+msgstr "Real name"
 
 #: Away status in a users whois
 msgid "whois_status"
-msgstr "Estado"
+msgstr "Estat"
 
 #: Away status in a users whois
 msgid "whois_status_available"
-msgstr "Está disponível"
+msgstr "Està disponible"
 
 #: Send user a message button
 msgid "send_a_message"
-msgstr "Enviar uma mensagem"
+msgstr "Envia un missatge"
 
 #: Show more information
 msgid "more_information"
-msgstr "Mais informação"
+msgstr "Més informació"
 
 #: Ignore user toggle box
 msgid "ignore_user"
-msgstr "Ignorar utilizador"
+msgstr "Ignorar a un usuari"
 
 #: Channel input box
 msgid "connection_channel"
@@ -96,7 +96,7 @@ msgstr "Canal"
 
 #: General Title
 msgid "settings_general"
-msgstr "Geral"
+msgstr "General"
 
 #: Theme Title
 msgid "settings_theme"
@@ -104,7 +104,7 @@ msgstr "Tema"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "URL do tema"
+msgstr "URL del tema"
 
 #: Use Monospace
 msgid "settings_use_monospace"
@@ -112,27 +112,27 @@ msgstr ""
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Mostrar lista de auto-completação"
+msgstr "Mostrar llista d'autocompletar"
 
 #: Messages Title
 msgid "settings_messages_title"
-msgstr "Mensagens"
+msgstr "Missatges"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Mostrar hora"
+msgstr "Mostrar la hora"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Mostrar hora em formato 24h"
+msgstr "Fer servir marques de temps de 24 hores"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Mostrar emoticons"
+msgstr "Mostrar emoticones"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Bloquear novas mensagens privadas"
+msgstr "Bloquejar privats nous"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -140,91 +140,91 @@ msgstr ""
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Formatação extra"
+msgstr "Format extra"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Incluir mensagens de entrada/saída como actividade"
+msgstr "Incloure missatges d'entrada i sortida com a activitat"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Silenciar notificações"
+msgstr "Silenciar notificacions"
 
 #: Highlight on words
 msgid "settings_highlight"
-msgstr "Palavras a destacar (separadas por espaço)"
+msgstr "Destacar paraules (separa-les amb un espai)"
 
 #: Aliases Title
 msgid "settings_aliases"
-msgstr "Aliases"
+msgstr "Alies"
 
 #: Send Message
 msgid "send_message"
-msgstr "Enviar mensagem"
+msgstr "Enviar un missatge"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Notificar-me quando"
+msgstr "Notificar quan"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "Todas as mensagens"
+msgstr "Tots els missatges"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "For mencionado"
+msgstr "He estat esmentat"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Nunca"
+msgstr "Mai"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Desactivar sons"
+msgstr "Deshabilitar el so"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Actualizar lista de bans"
+msgstr "Actualitzar la llista de bans"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Utilizador banido"
+msgstr "Usuari banejat"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Banido por"
+msgstr "Banejat per"
 
 #: Refreshing banlist
 msgid "bans_refreshing"
-msgstr "Actualizando lista de bans"
+msgstr "Actualitzant la llista de bans"
 
 #: Nobody is banned
 msgid "bans_nobody"
-msgstr "Não existem utilizadores banidos"
+msgstr "Ningú està banejat"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Tópico"
+msgstr "Tòpic"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Canal moderado"
+msgstr "Canal moderat"
 
 #: Invite Only
 msgid "channel_invite"
-msgstr "Apenas por convite"
+msgstr "Es necessita una invitació per entrar"
 
 #: Moderated topic
 msgid "channel_moderated_topic"
-msgstr "Apenas OPs podem alterar o tópico"
+msgstr "Només els moderadors poden canviar el tòpic"
 
 #: Block external messages
 msgid "channel_external"
-msgstr "Bloquear mensagens externas"
+msgstr "Bloquejar missatges externs"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Bem vindos ao Kiwi IRC! Escolha um canal à esquerda."
+msgstr "Benvingut a Kiwi IRC! Selecciona un canal."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -232,206 +232,206 @@ msgstr "Mostrar statebrowser"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Entrar num canal"
+msgstr "Entrar a un canal"
 
 #: Not connected
 msgid "container_notconnected"
-msgstr "Não ligado"
+msgstr "Desconnectat"
 
 #: Private conversation with
 msgid "container_privmsg"
-msgstr "Conversa privada com {{user}}"
+msgstr "Conversa privada amb {{user}}"
 
 #: input wrap placeholder
 msgid "input_placeholder"
-msgstr "Envie uma mensagem..."
+msgstr "Enviar un missatge..."
 
 #: Loading
 msgid "media_loading"
-msgstr "Carregando {{url}}..."
+msgstr "Carregant {{url}}..."
 
 #: Load previous
 msgid "messages_load"
-msgstr "Carregar mensagens anteriores"
+msgstr "Carregar l'anterior"
 
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"
-msgstr "Definições de rede"
+msgstr "Detalls del servidor"
 
 #: Port
 msgid "settings_port"
-msgstr "Porta"
+msgstr "Port"
 
 #: Other networks on this ZNC account
 msgid "settings_znc_other"
-msgstr "Outras redes nesta conta de ZNC aparecerão na lista de redes"
+msgstr "Altres xarxes en aquesta compta ZNC seràn llistades a la llista de xarxes"
 
 #: Your details
 msgid "settings_your_details"
-msgstr "Os seus detalhes"
+msgstr "Els teus detalls"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Sobrenom"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Avançado"
+msgstr "Avançat"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Codificação"
+msgstr "Codificació"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Mostrar raw"
+msgstr "Mostrar l'original"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Comandos a executar após ligação"
+msgstr "Executa comandes al connectar"
 
 #: Danger zone
 msgid "settings_danger"
-msgstr "Zona de perigo"
+msgstr "Zona de perill"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Remover rede"
+msgstr "Eliminar xarxa"
 
 #: Person key
 msgid "person"
-msgstr "{{count}} pessoa aqui"
+msgstr "{{count}} usuari aquí"
 
 #: Person plural key
 msgid "person_plural"
-msgstr "{{count}} pessoas aqui"
+msgstr "{{count}} usuaris aquí"
 
 #: Reconnect Channel
 msgid "reconnect_channel"
-msgstr "Volte a ligar para entrar no {{channel}}"
+msgstr "Reconnectar per entrar a {{channel}}"
 
 #: Reconnect to network
 msgid "reconnect_network"
-msgstr "Volte a ligar à rede {{network}} para começar a conversar"
+msgstr "Reconnectar a {{network}} per a començar a xatejar"
 
 #: Reconnect to query
 msgid "reconnect_query"
-msgstr "Volte a ligar para continuar a conversar com {{user}}"
+msgstr "Reconnectar per a continuar parlant amb {{user}}"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Definições de ligação"
+msgstr "Configuració de la connexió"
 
 #: Close options $t('side_')
 msgid "side_close"
-msgstr "Fechar opções"
+msgstr "Tancar les opcions"
 
 #: Channel options
 msgid "side_options"
-msgstr "Opções de canal"
+msgstr "Opcions del canal"
 
 #: Your settings
 msgid "side_settings"
-msgstr "As suas definições"
+msgstr "La teva configuració"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Mostrar quando entram utilizadores"
+msgstr "Mostrar quan la gent entra al canal"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Formatação extra de mensagens"
+msgstr "Format extra dels missatges"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Nomes coloridos na lista de nicks"
+msgstr "Colorejar nicks a la llista"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "Sem buffer definido"
+msgstr "No hi ha buffer configurat."
 
 #: Error starting
 msgid "error_starting"
-msgstr "Houve um erro ao iniciar o Kiwi IRC :("
+msgstr "Hi ha hagut un error iniciant Kiwi IRC :("
 
 msgid "error_installed"
-msgstr "Verifique se instalou o Kiwi IRC correctamente e que o ficheiro de configuração pode ser carregado."
+msgstr "Comprova que has instal·lat el Kiwi IRC correctament i la configuració pot carregar-se."
 
 #: Leave
 msgid "state_leave"
-msgstr "Sair do {{name}}"
+msgstr "Sortir de {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr "A sua conta"
+msgstr "La teva compta"
 
 #: Your settings and networks will be remembered on this computer
 msgid "state_remembered"
-msgstr "As suas definições e redes serão guardadas neste computador."
+msgstr "La teva configuració i les xarxes es recordaran en aquest ordinador."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Esquecer-me"
+msgstr "Esborrar la configuració"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "Sem redes definidas ainda."
+msgstr "Encara no has configurat cap xarxa."
 
 #: Add one?
 msgid "state_add"
-msgstr "Adicionar uma?"
+msgstr "Vols afegir-ne una?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Redes disponíveis"
+msgstr "Xarxes disponibles"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Configurar rede"
+msgstr "Configurar xarxa"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Não ligado."
+msgstr "Desconnectat."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Entrar num novo #canal"
+msgstr "Entrar en un #canal nou"
 
 #: Account name
 msgid "user_account"
-msgstr "Nome de conta: {{user}}"
+msgstr "Nom de la compta: {{user}}"
 
 #: Real name
 msgid "user_realname"
-msgstr "Nome real: {{realname}}"
+msgstr "Real name: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "É um bot"
+msgstr "És un robot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Está disponível para ajudar"
+msgstr "Està disponible per a ajudar"
 
 #: Is an operator
 msgid "user_op"
-msgstr "É um IRCop"
+msgstr "És un operador"
 
 #: Connected to
 msgid "user_server"
-msgstr "Ligado a {{server}} {{info}}"
+msgstr "Connectat a {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Ligado com segurança através de SSL/TLS"
+msgstr "Connectat de forma segura amb SSL/TLS"
 
 #: Also in channels
 msgid "user_channels"
-msgstr "Também nos canais {{channels}}"
+msgstr "Està també als canals {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr "Nível de acesso"
+msgstr "Nivell d'accés"
 
 #: Normal
 msgid "user_normal"
@@ -439,11 +439,11 @@ msgstr "Normal"
 
 #: Kick from channel
 msgid "user_kick"
-msgstr "Kickar do canal"
+msgstr "Expulsar del canal"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Banir do canal"
+msgstr "Banejar del canal"
 
 #: Kick + Ban from the channel
 msgid "user_kickban"
@@ -451,37 +451,37 @@ msgstr ""
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "O seu cliente de IRC."
+msgstr "El teu client d'IRC"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Adicione as suas redes. Entre nos seus canais."
+msgstr "Afegeix les teves xarxes. Entra als teus canals."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "Eles estarão aqui quando voltar."
+msgstr "Estaran aquí quan tornis."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Adicionar uma rede"
+msgstr "Afegeix una xarxa"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Redes guardadas"
+msgstr "Xarxes guardades"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (próxima geração) - Pré-visualização Rizon"
+msgstr "Kiwi IRC (nova generació) - Previsualització Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Websocket directo. Nenhum servidor Kiwi ou webirc envolvido."
+msgstr "Websocket directe. Sense servidor Kiwi ni webirc."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Obrigado a Adam @Rizon pelo desenvolvimento do suporte a servidor websocket!)"
+msgstr "(Gràcies a Adam @Rizon per el desenvolupament del suport del servidor de websockets!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Dê à versão de desenvolvimento do Kiwi IRC uma tentativa!"
+msgstr "Prova la versió en desenvolupament del Kiwi IRC!"
 
