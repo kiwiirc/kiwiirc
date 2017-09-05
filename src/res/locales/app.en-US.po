@@ -58,6 +58,14 @@ msgstr "Network"
 msgid "znc"
 msgstr "ZNC"
 
+#: Logging in...
+msgid "logging_in"
+msgstr "Logging in..."
+
+#: Invalid login
+msgid "invalid_login"
+msgstr "Invalid login"
+
 #: Realname field in a users whois
 msgid "whois_realname"
 msgstr "Real name"
@@ -97,6 +105,10 @@ msgstr "Theme"
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "Theme URL"
+
+#: Use Monospace
+msgid "settings_use_monospace"
+msgstr "Use monospace"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -432,6 +444,10 @@ msgstr "Kick from the channel"
 #: Ban from the channel
 msgid "user_ban"
 msgstr "Ban from the channel"
+
+#: Kick + Ban from the channel
+msgid "user_kickban"
+msgstr "Ban and kick from the channel"
 
 #: Your IRC client
 msgid "personal_client"

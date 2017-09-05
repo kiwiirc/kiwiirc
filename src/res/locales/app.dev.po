@@ -60,6 +60,14 @@ msgstr "Network"
 msgid "znc"
 msgstr "ZNC"
 
+#: Logging in...
+msgid "logging_in"
+msgstr "Logging in..."
+
+#: Invalid login
+msgid "invalid_login"
+msgstr "Invalid login"
+
 
 
 #: Realname field in a users whois

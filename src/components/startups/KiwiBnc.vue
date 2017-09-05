@@ -94,7 +94,7 @@ export default {
             }, false);
         },
         startUp: async function startUp() {
-            this.statusMessage = 'Logging in...';
+            this.statusMessage = this.$t('logging_in');
             this.loading = true;
 
             let bncnet = this.getBncNetwork();
@@ -128,13 +128,13 @@ export default {
 
             let onError = (event) => {
                 cleanUpEvents();
-                this.statusMessage = 'Invalid login';
+                this.statusMessage = this.$t('invalid_login');
                 this.loading = false;
             };
 
             let onClose = (event) => {
                 cleanUpEvents();
-                this.statusMessage = 'Invalid login';
+                this.statusMessage = this.$t('invalid_login');
                 this.loading = false;
             };
 
