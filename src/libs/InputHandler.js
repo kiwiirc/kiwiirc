@@ -37,7 +37,12 @@ export default class InputHandler {
         let activeBuffer = this.state.getActiveBuffer();
 
         // If no command specified, server buffers = send raw, channels/queries = send message
-        if (line[0] !== '/') {
+        let escapedCommand = line.substr(0, 2) === '//';
+        if (line[0] !== '/' || escapedCommand) {
+            if (escapedCommand) {
+                line = line.substr(1);
+            }
+
             if (activeBuffer.isServer()) {
                 line = '/quote ' + line;
             } else {
