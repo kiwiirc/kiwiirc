@@ -60,11 +60,11 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "Verificando credenciais..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "Credenciais inválidas"
 
 #: Realname field in a users whois
 msgid "whois_realname"
@@ -108,7 +108,7 @@ msgstr "URL do tema"
 
 #: Use Monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Usar fonte Monospace"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -136,7 +136,7 @@ msgstr "Bloquear novas mensaxes privadas"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "Mensaxes no histórico"
 
 #: Extra formatting
 msgid "settings_formatting"
@@ -447,7 +447,7 @@ msgstr "Banear da sala"
 
 #: Kick + Ban from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "Kick + Ban do canle"
 
 #: Your IRC client
 msgid "personal_client"

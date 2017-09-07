@@ -60,11 +60,11 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "Влизане..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "Неправилно вписване"
 
 #: Realname field in a users whois
 msgid "whois_realname"
@@ -108,7 +108,7 @@ msgstr "Адрес на визията"
 
 #: Use Monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Използвайте Monospace"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -136,7 +136,7 @@ msgstr "Забраняване на лични съобщения"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "съобщения в историята"
 
 #: Extra formatting
 msgid "settings_formatting"
@@ -447,7 +447,7 @@ msgstr "Бан от канал"
 
 #: Kick + Ban from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "забрани и премахни от канала"
 
 #: Your IRC client
 msgid "personal_client"
