@@ -96,15 +96,18 @@ function clientMiddleware(state, networkid) {
         rawEvents.use(rawEventsHandler);
 
         client.on('connecting', () => {
+            network.state_error = '';
             network.state = 'connecting';
         });
 
         client.on('connected', () => {
+            network.state_error = '';
             network.state = 'connected';
         });
 
-        client.on('socket close', () => {
+        client.on('socket close', (err) => {
             network.state = 'disconnected';
+            network.state_error = err || '';
         });
     };
 

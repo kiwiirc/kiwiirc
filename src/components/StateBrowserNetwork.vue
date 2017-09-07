@@ -14,7 +14,10 @@
         ]">
             <transition name="kiwi-statebrowser-network-status-transition">
             <div v-if="network.state !== 'connected'" class="kiwi-statebrowser-network-status">
-                <template v-if="!network.connection.server">
+                <template v-if="network.state_error">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <a @click="showNetworkSettings(network)" class="u-link">{{$t('state_configure')}}</a>
+                </template>
+                <template v-else-if="!network.connection.server">
                     <a @click="showNetworkSettings(network)" class="u-link">{{$t('state_configure')}}</a>
                 </template>
                 <template v-else-if="network.state === 'disconnected'">

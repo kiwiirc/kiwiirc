@@ -4,6 +4,8 @@
             <div class="kiwi-networksettings-section kiwi-networksettings-connection">
                 <h3>{{$t('settings_server_details')}}</h3>
 
+                <div class="kiwi-networksettings-error" v-if="network.state_error">We couldn't connect to that server :( <span>{{readableStateError(network.state_error)}}</span></div>
+
                 <input-text :label="$t('server')" v-model="network.connection.server" class="kiwi-networksettings-connection-address"/>
 
                 <input-text :label="$t('settings_port')" v-model="network.connection.port" type="number" class="kiwi-networksettings-connection-port">
@@ -94,6 +96,18 @@ export default {
     components: {
     },
     methods: {
+        readableStateError(err) {
+            let errs = {
+                err_unknown_host: 'Unknown domain name or host',
+                err_forbidden: 'Forbidden to connect',
+                err_timeout: 'Took too long to connect',
+                err_refused: 'The server refused the connection',
+                err_tls: 'Could not connect securely',
+                err_proxy: 'The Kiwi IRC server had an error',
+            };
+
+            return errs[err] || 'Unknown error';
+        },
         reconnect: function reconnect() {
             this.network.ircClient.connect();
         },
@@ -167,6 +181,15 @@ export default {
 }
 .kiwi-networksettings {
     max-width: 400px;
+}
+.kiwi-networksettings-error {
+    text-align: center;
+    margin: 1em;
+    padding: 0.3em;
+}
+.kiwi-networksettings-error span {
+    display: block;
+    font-style: italic;
 }
 .kiwi-networksettings-server-types {
     margin-top: 1em;

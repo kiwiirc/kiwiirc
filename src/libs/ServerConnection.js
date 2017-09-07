@@ -183,8 +183,9 @@ function createChannelOnConnection(connection, channelId) {
                 }
 
                 if (event.data.indexOf('control closed') === 0) {
+                    let err = event.data.split(' ')[2];
                     channel.remoteState = 0;
-                    channel.emit('close');
+                    channel.emit('close', err);
                 }
             }
 

@@ -106,6 +106,7 @@ const stateObj = {
             id: 1,
             name: 'sumnetwork',
             state: 'disconnected',
+            state_error: '',
             connection: {
                 server: 'irc.freenode.net',
                 port: 6667,
@@ -794,6 +795,7 @@ function createEmptyNetworkObject() {
         id: 0,
         name: '',
         state: 'disconnected',
+        state_error: '',
         auto_commands: '',
         is_znc: false,
         channel_list: [],
