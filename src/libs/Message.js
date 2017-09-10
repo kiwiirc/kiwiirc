@@ -49,7 +49,9 @@ export default class Message {
         });
 
         let parsed = words.join(' ');
-        parsed = TextFormatting.ircCodesToHtml(parsed, messageList.useExtraFormatting);
+        let useExtraFormatting = messageList.useExtraFormatting && this.type === 'privmsg';
+
+        parsed = TextFormatting.ircCodesToHtml(parsed, useExtraFormatting);
 
         this.html = parsed;
         return this.html;
