@@ -236,7 +236,7 @@ body {
     z-index: 1;
 }
 /* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .kiwi-statebrowser {
         left: -200px;
     }
@@ -273,7 +273,7 @@ body {
     z-index: -1;
 }
 /* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .kiwi-workspace {
         left: 0;
         margin-left: 0;
