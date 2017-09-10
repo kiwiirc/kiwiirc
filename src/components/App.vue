@@ -4,6 +4,7 @@
         v-bind:class="{
             'kiwi-wrap--statebrowser-drawopen': stateBrowserDrawOpen,
             'kiwi-wrap--monospace': setting('useMonospace'),
+            'kiwi-wrap--touch': state.ui.is_touch,
         }"
         @click="emitDocumentClick"
     >
@@ -109,6 +110,10 @@ export default {
         window.addEventListener('blur', event => {
             state.ui.app_has_focus = false;
         }, false);
+        window.addEventListener('touchstart', event => {
+            // Parts of the UI adjust themselves if we're known to be using a touchscreen
+            state.ui.is_touch = true;
+        });
     },
     mounted: function mounted() {
         // Decide which startup screen to use depending on the config
@@ -150,6 +155,9 @@ export default {
         };
     },
     computed: {
+        state() {
+            return state;
+        },
         networks() {
             return state.networks;
         },

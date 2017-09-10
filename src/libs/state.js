@@ -100,6 +100,7 @@ const stateObj = {
         active_network: 0,
         active_buffer: '',
         app_has_focus: true,
+        is_touch: false,
     },
     networks: [
         /* {

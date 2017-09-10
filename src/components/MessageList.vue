@@ -236,12 +236,15 @@ export default {
                 return;
             }
 
-            if (this.canShowInfoForMessage(message) && event.target.nodeName === 'A') {
-                // Stop links from doing their thing. We show a preview and normal links for that
-                event.preventDefault();
-            }
+            if (state.ui.is_touch) {
+                if (this.canShowInfoForMessage(message) && event.target.nodeName === 'A') {
+                    // We show message info boxes on touch screen devices so that the user has an
+                    // option to preview the links or do other stuff.
+                    event.preventDefault();
+                }
 
-            this.toggleMessageInfo(message);
+                this.toggleMessageInfo(message);
+            }
         },
         onThreadScroll: function onThreadScroll() {
             let el = this.$el;
