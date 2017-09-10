@@ -9,7 +9,7 @@
 
         <message-list-message-modern
             v-if="listType === 'modern'"
-            v-for="(message, idx) in filteredMessages()"
+            v-for="(message, idx) in filteredMessages"
             :message="message"
             :idx="idx"
             :ml="thisMl"
@@ -17,7 +17,7 @@
         ></message-list-message-modern>
         <message-list-message-compact
             v-if="listType !== 'modern'"
-            v-for="(message, idx) in filteredMessages()"
+            v-for="(message, idx) in filteredMessages"
             :message="message"
             :idx="idx"
             :ml="thisMl"
@@ -80,9 +80,7 @@ export default {
                 this.buffer.getNetwork().nick :
                 '';
         },
-    },
-    methods: {
-        filteredMessages: function filteredMessages() {
+        filteredMessages() {
             let network = this.buffer.getNetwork();
             let currentNick = network.nick;
             let bufferMessages = this.buffer.getMessages();
@@ -136,6 +134,8 @@ export default {
 
             return list.reverse();
         },
+    },
+    methods: {
         isHoveringOverMessage: function isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
