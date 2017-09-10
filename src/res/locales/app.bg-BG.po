@@ -4,11 +4,11 @@ msgstr "Затвори"
 
 #: Connect
 msgid "connect"
-msgstr "свързване"
+msgstr "Свързване"
 
 #: Connecting...
 msgid "connecting"
-msgstr "свързва се..."
+msgstr "Свързване..."
 
 #: Connected
 msgid "connected"
@@ -20,7 +20,7 @@ msgstr "Настройки"
 
 #: Banned
 msgid "banned"
-msgstr "Баннат"
+msgstr "Изгонени"
 
 #: Notifications
 msgid "notifications"
@@ -36,7 +36,7 @@ msgstr "Парола"
 
 #: I have a password
 msgid "password_have"
-msgstr "Имам парола"
+msgstr "Вече имам парола."
 
 #: Server
 msgid "server"
@@ -44,7 +44,7 @@ msgstr "Сървър"
 
 #: Nick (Nickname)
 msgid "nick"
-msgstr "Никнейм"
+msgstr "Потребителско име"
 
 #: Channel
 msgid "channel"
@@ -68,7 +68,7 @@ msgstr "Неправилно вписване"
 
 #: Realname field in a users whois
 msgid "whois_realname"
-msgstr "Поле за истинско име на потребителя при whois"
+msgstr "Истинско име"
 
 #: Away status in a users whois
 msgid "whois_status"
@@ -76,7 +76,7 @@ msgstr "Статус"
 
 #: Away status in a users whois
 msgid "whois_status_available"
-msgstr "Статус"
+msgstr "на линия"
 
 #: Send user a message button
 msgid "send_a_message"
@@ -92,7 +92,7 @@ msgstr "Добави в игнора"
 
 #: Channel input box
 msgid "connection_channel"
-msgstr "Автоматично влизане в канали."
+msgstr "Автоматично влизане в канали"
 
 #: General Title
 msgid "settings_general"
@@ -100,11 +100,11 @@ msgstr "Главни настройки"
 
 #: Theme Title
 msgid "settings_theme"
-msgstr "Настройки на визията"
+msgstr "Настройки на темата"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Адрес на визията"
+msgstr "Адрес на темата"
 
 #: Use Monospace
 msgid "settings_use_monospace"
@@ -112,27 +112,27 @@ msgstr "Използвайте Monospace"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Показване на кутийката с подсказките"
+msgstr "Показване на списъка за автоматично довършване"
 
 #: Messages Title
 msgid "settings_messages_title"
-msgstr "Наименование на съобщението"
+msgstr "Настойки за Съобщенията"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Време към съобщенията"
+msgstr "Покажи времето"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Показване на 24 часово време"
+msgstr "Показване на 24h време"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Настройки на емотИкони"
+msgstr "Покажи емотикони"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Забраняване на лични съобщения"
+msgstr "Блокирай нови лични съобщения"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -144,7 +144,7 @@ msgstr "Допълнително форматиране"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Известия за влизане/излизане от канал"
+msgstr "Добави влизания/излизаня съобщения като активност"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
@@ -172,11 +172,11 @@ msgstr "При всяко съобщение"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "Само когато споменат прякора ми"
+msgstr "Само когато ме споменат."
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Да не ме известява"
+msgstr "Никога"
 
 #: Mute sounds
 msgid "settings_notify_mute"
@@ -192,11 +192,11 @@ msgstr "Списък с банове"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Наложен от "
+msgstr "Изгонен от"
 
 #: Refreshing banlist
 msgid "bans_refreshing"
-msgstr "Опресняване на Бан лист-а"
+msgstr "Опресняване на Бан лист-а...."
 
 #: Nobody is banned
 msgid "bans_nobody"
@@ -244,7 +244,7 @@ msgstr "Частен разговор с {{user}}"
 
 #: input wrap placeholder
 msgid "input_placeholder"
-msgstr "Вмъкнете контейнера за.."
+msgstr "Изпрати съобщение.... "
 
 #: Loading
 msgid "media_loading"
@@ -276,7 +276,7 @@ msgstr "Прякор"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Други настройки"
+msgstr "Разширени настройки"
 
 #: Encoding
 msgid "settings_encoding"
@@ -300,11 +300,11 @@ msgstr "Премахни тази мрежа"
 
 #: Person key
 msgid "person"
-msgstr "{{count}} Прякор тук"
+msgstr "{{count}} Потребителя"
 
 #: Person plural key
 msgid "person_plural"
-msgstr "{{count}} Прякор тук"
+msgstr "{{count}} Потребителя"
 
 #: Reconnect Channel
 msgid "reconnect_channel"
@@ -328,7 +328,7 @@ msgstr "Затвори настройките"
 
 #: Channel options
 msgid "side_options"
-msgstr "Опции на #канала"
+msgstr "Опции на канала"
 
 #: Your settings
 msgid "side_settings"
@@ -403,7 +403,7 @@ msgstr "Потребителско име: {{user}}"
 
 #: Real name
 msgid "user_realname"
-msgstr "Истинско име {{realname}"
+msgstr "Истинско име: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
@@ -419,11 +419,11 @@ msgstr "Оператор"
 
 #: Connected to
 msgid "user_server"
-msgstr "Свързан към сървър {{server}} {{info}}"
+msgstr "Свързан към сървър: {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Използва защитена връзка SSL/TLS"
+msgstr "Използва защитена връзка: SSL/TLS"
 
 #: Also in channels
 msgid "user_channels"
