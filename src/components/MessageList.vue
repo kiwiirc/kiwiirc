@@ -1,8 +1,4 @@
 <template>
-    <!--
-        The buffer.message_count key here forces the emssage list to re-render when a new message comes in.
-        This way we don't need to have all the messages within vues reactive state to save CPU time.
-    -->
     <div class="kiwi-messagelist" @scroll.self="onThreadScroll" @click.self="onListClick" :key="buffer.name">
         <div
             v-if="shouldShowChathistoryTools"
