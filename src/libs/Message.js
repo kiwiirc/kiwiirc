@@ -31,7 +31,7 @@ export default class Message {
             let parsed;
 
             let linkified = TextFormatting.linkifyUrls(word, {
-                addHandle: false,
+                addHandle: true,
                 handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
             });
             if (linkified.urls.length > 0) {
