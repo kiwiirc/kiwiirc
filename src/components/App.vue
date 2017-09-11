@@ -123,11 +123,15 @@ export default {
             kiwiBnc: startupKiwiBnc,
             personal: startupPersonal,
         };
-        let startup = state.settings.startupScreen || 'personal';
-        if (!startupScreens[startup]) {
-            logger.error(`Startup screen "${state.settings.startupScreen}" does not exist`);
+        let extraStartupScreens = state.getStartups();
+
+        let startupName = state.settings.startupScreen || 'personal';
+        let startup = extraStartupScreens[startupName] || startupScreens[startupName];
+
+        if (!startup) {
+            logger.error(`Startup screen "${startupName}" does not exist`);
         } else {
-            this.startupComponent = startupScreens[startup];
+            this.startupComponent = startup;
         }
     },
     components: {

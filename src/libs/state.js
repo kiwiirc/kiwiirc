@@ -218,6 +218,8 @@ const messages = [
     }, */
 ];
 
+const availableStartups = Object.create(null);
+
 // TODO: Move these state changing methods into vuex or something
 const state = new Vue({
     data: stateObj,
@@ -784,6 +786,10 @@ const state = new Vue({
                 state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
                 state.$delete(buffer.users, normalisedOld);
             }
+        },
+
+        getStartups() {
+            return availableStartups;
         },
     },
 });

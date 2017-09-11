@@ -7,11 +7,6 @@
 
         <button @click="addNetwork" class="u-button u-button-primary">{{$t('personal_add')}}</button> <br />
         <a v-if="networks.length>0" @click.stop="toggleStateBrowser" class="u-link kiwi-personal-existing-networks">{{$t('personal_saved')}}</a>
-
-        <div class="kiwi-sponsor">
-            Sponsored by <a href="//www.privateinternetaccess.com/">PrivateInternetAccess</a>
-            <span>Protect your internet with a VPN</span>
-        </div>
     </div>
 </template>
 
@@ -57,32 +52,6 @@ export default {
 </script>
 
 <style>
-
-.kiwi-sponsor {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: #8a8a8a;
-    border-radius: 4px 0 0 0;
-    padding: 3px 10px;
-    font-size: 0.8em;
-    color: #e0e0e0;
-}
-.kiwi-sponsor a {
-    color: #e0e0e0;
-}
-.kiwi-sponsor span {
-    display: none;
-    font-style: italic;
-}
-.kiwi-sponsor:hover span {
-    display: block;
-}
-.kiwi-sponsor a:hover {
-    color: #bbe073;
-    text-decoration: none;
-}
-
 
 .kiwi-personal {
     box-sizing: border-box;

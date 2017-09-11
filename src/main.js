@@ -25,6 +25,9 @@ import 'src/components/utils/InputPrompt';
 // Add the global API as soon as possible so that things can start listening to it
 let api = window.kiwi = GlobalApi.singleton();
 
+// Third party imports now have access to the state and api
+import 'src/thirdparty/';
+
 function getQueryVariable(variable) {
     let query = window.location.search.substring(1);
     let vars = query.split('&');
@@ -212,6 +215,8 @@ function startApp() {
     if (argTheme) {
         themeMgr.setTheme(argTheme);
     }
+
+    api.emit('init');
 
     /* eslint-disable no-new */
     new Vue({

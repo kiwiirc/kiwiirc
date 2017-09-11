@@ -31,4 +31,9 @@ export default class GlobalApi {
             this.controlInputPlugins.push(element);
         }
     }
+
+    addStartup(name, ctor) {
+        let startups = this.state.getStartups();
+        startups[name] = ctor;
+    }
 }
