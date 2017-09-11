@@ -189,7 +189,7 @@ export default {
 <style>
 .kiwi-statebrowser {
     box-sizing: border-box;
-    z-index: 3; /* Must be at leats 1 higher than the workspace :after z-index; */
+    z-index: 11; /* Must be at least 1 higher than the workspace :after z-index; */
     display: flex;
     flex-direction: column;
 }

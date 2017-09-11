@@ -7,7 +7,12 @@
     }">
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
-                <i class="fa fa-bars" aria-hidden="true"></i>
+                <i v-if="!unreadMessages.count" class="fa fa-bars" aria-hidden="true"></i>
+                <div 
+                    v-else
+                    class="kiwi-container-toggledraw-statebrowser-messagecount"
+                    :class="{'kiwi-container-toggledraw-statebrowser-messagecount--highlight': unreadMessages.highlight}"
+                >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}</div>
             </div>
             <container-header :buffer="buffer"></container-header>
             <div @click.stop="toggleSidebar" v-bind:class="{
@@ -73,6 +78,19 @@ export default {
             }
 
             return type;
+        },
+        unreadMessages() {
+            let count = 0;
+            let highlight = false;
+            state.networks.forEach(network => {
+                network.buffers.forEach(buffer => {
+                    count += (buffer.flags.unread || 0);
+                    if (buffer.flags.highlight) {
+                        highlight = true;
+                    }
+                });
+            });
+            return { count, highlight };
         },
     },
     methods: {
@@ -147,6 +165,37 @@ export default {
 }
 .kiwi-container-toggledraw-sidebar {
     right: 0;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount {
+    position: relative;
+    font-size: 0.6em;
+    background: #ddd;
+    border-radius: 3px;
+    line-height: 2em;
+    box-sizing: border-box;
+    top: 10px;
+    left: 10px;
+    padding: 0 5px;
+    z-index: 3;
+    white-space: nowrap;
+}
+.kiwi-container-toggledraw-statebrowser-messagecount:after {
+    right: 99%;
+    top: 20%;
+    border: 0.6em solid transparent;
+    border-right-color: #ddd;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    background: #d62323;
+}
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight:after {
+    border-right-color: #d62323;
 }
 
 

@@ -286,7 +286,7 @@ body {
         width: 100%;
         height: 100%;
         opacity: 1;
-        z-index: 2;
+        z-index: 10;
     }
 }
 .kiwi-container {
