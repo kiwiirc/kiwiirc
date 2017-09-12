@@ -109,7 +109,7 @@ export default {
                 let stateBrowserTopPosition = this.$el.getBoundingClientRect();
                 this.popup_buffername = buffer.name;
                 this.popup_networkid = buffer.networkid;
-                this.popup_top = domY - stateBrowserTopPosition;
+                this.popup_top = domY - stateBrowserTopPosition.top;
             }
         },
         closeBuffer: function closeBuffer() {
