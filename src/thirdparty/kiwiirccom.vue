@@ -8,6 +8,20 @@
         <button @click="addNetwork" class="u-button u-button-primary">{{$t('personal_add')}}</button> <br />
         <a v-if="networks.length>0" @click.stop="toggleStateBrowser" class="u-link kiwi-personal-existing-networks">{{$t('personal_saved')}}</a>
 
+        <div
+            class="kiwi-aboutnew-content"
+            :class="{'kiwi-aboutnew-content--open': about_open}"
+            v-html="aboutContent"
+        ></div>
+        <div class="kiwi-aboutnew">
+            <div class="kiwi-aboutnew-sep"></div>
+            <a class="u-link" @click="about_open=!about_open">Link to your network / channel</a>
+
+            <div class="kiwi-aboutnew-help">
+                <a @click="about_open=!about_open"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
         <div class="kiwi-sponsor">
             Sponsored by <a href="//www.privateinternetaccess.com/">PrivateInternetAccess</a>
             <span>Protect your internet with a VPN</span>
@@ -18,17 +32,22 @@
 <script>
 
 import state from 'src/libs/state';
+import aboutContent from './about.html';
 
 let firstRun = true;
 
 const ctor = {
     data: function data() {
         return {
+            about_open: false,
         };
     },
     computed: {
         networks() {
             return state.networks;
+        },
+        aboutContent() {
+            return aboutContent;
         },
     },
     methods: {
@@ -61,15 +80,61 @@ state.getStartups().kiwiirccom = ctor;
 
 <style>
 
-.kiwi-sponsor {
+.kiwi-aboutnew {
     position: absolute;
+    bottom: 0px;
+    height: 53px;
+    left: 0px;
+    right: 0px;
+    padding: 0 10px 10px 10px;
+    box-sizing: border-box;
+}
+.kiwi-aboutnew-sep {
+    margin-bottom: 10px;
+    border-top: 1px solid #ddd;
+}
+.kiwi-aboutnew-help {
+    font-size: 1.9em;
+    float: right;
+    cursor: pointer;
+}
+.kiwi-aboutnew-content {
+    display: none;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    bottom: 53px;
+    width: 100%;
+    background: #fff;
+    text-align: left;
+    line-height: 1.6em;
+    padding: 2em;
+    box-sizing: border-box;
+    overflow: auto;
+}
+.kiwi-aboutnew-content--open {
+    display: block;
+}
+@media screen and (min-width: 700px) {
+    .kiwi-aboutnew-content {
+        padding: 2em 3em;
+    }
+}
+
+.kiwi-sponsor {
+    position: fixed;
+    z-index: 20;
     bottom: 0;
-    right: 0;
-    background: #8a8a8a;
-    border-radius: 4px 0 0 0;
-    padding: 3px 10px;
+    left: 0;
+    width: 185px;
+    padding: 10px 0;
     font-size: 0.8em;
     color: #e0e0e0;
+}
+@media screen and (max-width: 600px) {
+    .kiwi-sponsor {
+        display: none;
+    }
 }
 .kiwi-sponsor a {
     color: #e0e0e0;
