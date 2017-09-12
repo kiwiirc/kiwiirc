@@ -288,6 +288,10 @@ function clientMiddleware(state, networkid) {
             });
 
             if (event.nick === client.user.nick) {
+                if (network.ircClient.network.supports('chathistory')) {
+                    buffer.requestScrollback();
+                }
+
                 buffer.joined = true;
                 network.ircClient.raw('MODE', event.channel);
                 network.ircClient.who(event.channel);
@@ -307,10 +311,6 @@ function clientMiddleware(state, networkid) {
                 type: 'traffic',
                 type_extra: 'join',
             });
-
-            if (network.ircClient.network.supports('chathistory')) {
-                buffer.requestScrollback();
-            }
         }
         if (command === 'kick') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
