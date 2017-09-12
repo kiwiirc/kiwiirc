@@ -106,14 +106,10 @@ export default {
                 this.popup_networkid = null;
                 this.popup_top = 0;
             } else {
-                let h = 0;
-                let sb = document.getElementsByClassName('kiwi-statebrowser')[0];
-                if (sb.style && sb.style.top) {
-                    h = parseInt(sb.style.top, 10);
-                }
+                let stateBrowserTopPosition = this.$el.getBoundingClientRect();
                 this.popup_buffername = buffer.name;
                 this.popup_networkid = buffer.networkid;
-                this.popup_top = domY - h;
+                this.popup_top = domY - stateBrowserTopPosition;
             }
         },
         closeBuffer: function closeBuffer() {
