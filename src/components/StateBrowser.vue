@@ -106,9 +106,10 @@ export default {
                 this.popup_networkid = null;
                 this.popup_top = 0;
             } else {
+                let stateBrowserTopPosition = this.$el.getBoundingClientRect();
                 this.popup_buffername = buffer.name;
                 this.popup_networkid = buffer.networkid;
-                this.popup_top = domY;
+                this.popup_top = domY - stateBrowserTopPosition.top;
             }
         },
         closeBuffer: function closeBuffer() {
