@@ -3,6 +3,7 @@ export default function bouncerMiddleware() {
     let buffers = {};
 
     return function middleware(client, rawEvents, parsedEvents) {
+        client.requestCap('BOUNCER');
         addFunctionsToClient(client);
         rawEvents.use(theMiddleware);
     };

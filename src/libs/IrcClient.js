@@ -90,6 +90,7 @@ export function create(state, networkid) {
 
 function clientMiddleware(state, networkid) {
     let network = state.getNetwork(networkid);
+    let hasRequestedInitialChathistory = false;
 
     return function middlewareFn(client, rawEvents, parsedEvents) {
         parsedEvents.use(parsedEventsHandler);
@@ -162,6 +163,18 @@ function clientMiddleware(state, networkid) {
             // If the network name has changed from the irc-framework default, update ours
             if (client.network.name !== 'Network') {
                 network.name = client.network.name;
+            }
+
+            // Get some history for our open queries. Channels handle themselves in their JOIN event
+            let historySupport = !!network.ircClient.network.supports('chathistory');
+            if (!hasRequestedInitialChathistory && historySupport) {
+                network.buffers.forEach(buffer => {
+                    if (buffer.isQuery()) {
+                        buffer.requestScrollback();
+                    }
+                });
+
+                hasRequestedInitialChathistory = true;
             }
         }
 
@@ -294,6 +307,10 @@ function clientMiddleware(state, networkid) {
                 type: 'traffic',
                 type_extra: 'join',
             });
+
+            if (network.ircClient.network.supports('chathistory')) {
+                buffer.requestScrollback();
+            }
         }
         if (command === 'kick') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);

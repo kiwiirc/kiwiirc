@@ -273,11 +273,6 @@ export default {
 
             this.message_info_open = null;
 
-            // First time opening this buffer, see if we can load any initial scrollback
-            if (!newBuffer.flags.has_opened && this.shouldShowChathistoryTools) {
-                newBuffer.requestScrollback();
-            }
-
             if (this.buffer.getNetwork().state === 'connected') {
                 newBuffer.flags.has_opened = true;
             }
