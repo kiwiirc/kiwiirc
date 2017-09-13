@@ -1,0 +1,487 @@
+#: Close
+msgid "close"
+msgstr "Закрити"
+
+#: Connect
+msgid "connect"
+msgstr "З'єднатись"
+
+#: Connecting...
+msgid "connecting"
+msgstr "З’єднання"
+
+#: Connected
+msgid "connected"
+msgstr "З'єднано"
+
+#: Settings
+msgid "settings"
+msgstr "Налаштування"
+
+#: Banned
+msgid "banned"
+msgstr "Заблоковані користувачі"
+
+#: Notifications
+msgid "notifications"
+msgstr "Сповіщення"
+
+#: Username
+msgid "username"
+msgstr "Ім'я користувача"
+
+#: Password
+msgid "password"
+msgstr "Пароль"
+
+#: I have a password
+msgid "password_have"
+msgstr "У мене є пароль"
+
+#: Server
+msgid "server"
+msgstr "Сервер"
+
+#: Nick (Nickname)
+msgid "nick"
+msgstr "Псевдонім"
+
+#: Channel
+msgid "channel"
+msgstr "Канал"
+
+#: Network
+msgid "network"
+msgstr "Мережа"
+
+#: ZNC
+msgid "znc"
+msgstr "ZNC"
+
+#: Logging in...
+msgid "logging_in"
+msgstr "Вхід..."
+
+#: Invalid login
+msgid "invalid_login"
+msgstr "Неправильне ім'я користувача"
+
+#: Realname field in a users whois
+msgid "whois_realname"
+msgstr "Справжнє ім'я"
+
+#: Away status in a users whois
+msgid "whois_status"
+msgstr "Стан"
+
+#: Away status in a users whois
+msgid "whois_status_available"
+msgstr "Доступний"
+
+#: Send user a message button
+msgid "send_a_message"
+msgstr "Надіслати повідомлення"
+
+#: Show more information
+msgid "more_information"
+msgstr "Більше інформації"
+
+#: Ignore user toggle box
+msgid "ignore_user"
+msgstr "Ігнорувати користувача"
+
+#: Channel input box
+msgid "connection_channel"
+msgstr "Канал"
+
+#: General Title
+msgid "settings_general"
+msgstr "Основні"
+
+#: Theme Title
+msgid "settings_theme"
+msgstr "Тема"
+
+#: Theme URL
+msgid "settings_themeurl"
+msgstr "URL-адреса теми"
+
+#: Use Monospace
+msgid "settings_use_monospace"
+msgstr "Шрифт monospace"
+
+#: Show autocomplete list
+msgid "settings_show_autocomplete"
+msgstr "Авто-завершення команд"
+
+#: Messages Title
+msgid "settings_messages_title"
+msgstr "Повідомлення чату"
+
+#: Show timestamps
+msgid "settings_timestamps"
+msgstr "Відмітки часу"
+
+#: Use 24-hour timestamps
+msgid "settings_24hour_timestamps"
+msgstr "24-годинний формат часу"
+
+#: Show emoticons
+msgid "settings_emoticons"
+msgstr "Показувати емоції"
+
+#: Block new Private messages
+msgid "settings_block_private"
+msgstr "Блокувати нові приватні повідомлення"
+
+#: Messages in scrollback
+msgid "settings_scrollback"
+msgstr "Кількість повідомлень історії"
+
+#: Extra formatting
+msgid "settings_formatting"
+msgstr "Екстра форматування"
+
+#: Include join/part messages as activity
+msgid "settings_show_joinpart"
+msgstr "Повідомлення про активність"
+
+#: Mute sound notifications
+msgid "settings_mute_sound"
+msgstr "Вимкнути звук сповіщень"
+
+#: Highlight on words
+msgid "settings_highlight"
+msgstr "Підсвічувати повідомлення зі словами (через пробіл)"
+
+#: Aliases Title
+msgid "settings_aliases"
+msgstr "Профілі"
+
+#: Send Message
+msgid "send_message"
+msgstr "Надіслати повідомлення"
+
+#: Notify me when
+msgid "settings_notify"
+msgstr "Отримувати сповіщення"
+
+#: All messages
+msgid "settings_notify_all"
+msgstr "Всі повідомлення"
+
+#: I am mentioned
+msgid "settings_notify_mentioned"
+msgstr "При згадці"
+
+#: Never
+msgid "settings_notify_never"
+msgstr "Ніколи"
+
+#: Mute sounds
+msgid "settings_notify_mute"
+msgstr "Вимкнути звуки"
+
+#: Refresh banlist
+msgid "bans_refresh"
+msgstr "Оновити список"
+
+#: Banned user
+msgid "bans_user"
+msgstr "Заблокований користувач"
+
+#: Banned by
+msgid "bans_by"
+msgstr "Хто заблокував"
+
+#: Refreshing banlist
+msgid "bans_refreshing"
+msgstr "Оновлення списку..."
+
+#: Nobody is banned
+msgid "bans_nobody"
+msgstr "Нікого не заблоковано!"
+
+#: Topic
+msgid "channel_topic"
+msgstr "Тема"
+
+#: Moderated chat
+msgid "channel_moderated"
+msgstr "Модерований чат"
+
+#: Invite Only
+msgid "channel_invite"
+msgstr "Лише запрошення"
+
+#: Moderated topic
+msgid "channel_moderated_topic"
+msgstr "Лише модератори можуть змінювати тему"
+
+#: Block external messages
+msgid "channel_external"
+msgstr "Блокувати зовнішні повідомлення"
+
+#: Welcome to Kiwi IRC!
+msgid "container_welcome"
+msgstr "Ласкаво просимо до Kiwi IRC! Оберіть канал зліва."
+
+#: Show statebrowser
+msgid "container_statebrowser"
+msgstr "Показати statebrowser"
+
+#: Join Channel
+msgid "container_join"
+msgstr "Приєднатися до каналу"
+
+#: Not connected
+msgid "container_notconnected"
+msgstr "Не з'єднано"
+
+#: Private conversation with
+msgid "container_privmsg"
+msgstr "Приватна розмова з {{user}}"
+
+#: input wrap placeholder
+msgid "input_placeholder"
+msgstr "Надіслати повідомлення..."
+
+#: Loading
+msgid "media_loading"
+msgstr "Завантаження {{url}}..."
+
+#: Load previous
+msgid "messages_load"
+msgstr "Завантажити попередні повідомлення"
+
+#: NetworkSettings $t('settings_')
+msgid "settings_server_details"
+msgstr "Подробиці сервера"
+
+#: Port
+msgid "settings_port"
+msgstr "Порт"
+
+#: Other networks on this ZNC account
+msgid "settings_znc_other"
+msgstr "Інші мережі в цьому обліковому записі ZNC будуть перелічені в списку мереж"
+
+#: Your details
+msgid "settings_your_details"
+msgstr "Ваші подробиці"
+
+#: Nickname
+msgid "settings_nickname"
+msgstr "Псевдонім"
+
+#: Advanced
+msgid "settings_advanced"
+msgstr "Розширені"
+
+#: Encoding
+msgid "settings_encoding"
+msgstr "Кодування"
+
+#: Show Raw
+msgid "settings_show_raw"
+msgstr "Необроблений вигляд"
+
+#: Run commands when connected
+msgid "settings_autorun"
+msgstr "Виконати команди при підключенні"
+
+#: Danger zone
+msgid "settings_danger"
+msgstr "Небезпечна зона"
+
+#: Remove network
+msgid "settings_remove"
+msgstr "Вилучити мережу"
+
+#: Person key
+msgid "person"
+msgstr "Тут {{count}} людина"
+
+#: Person plural key
+msgid "person_plural"
+msgstr "Тут {{count}} людей"
+
+#: Reconnect Channel
+msgid "reconnect_channel"
+msgstr "З'єднайтесь повторно, щоб приєднатися до {{channel}}"
+
+#: Reconnect to network
+msgid "reconnect_network"
+msgstr "Для початку розмови з'єднайтесь повторно з {{network}}"
+
+#: Reconnect to query
+msgid "reconnect_query"
+msgstr "Для розмови з {{user}}, з'єднайтесь повторно"
+
+#: Connection settings
+msgid "reconnect_settings"
+msgstr "Налаштування з'єднання"
+
+#: Close options $t('side_')
+msgid "side_close"
+msgstr "Опції закриття"
+
+#: Channel options
+msgid "side_options"
+msgstr "Опції каналу"
+
+#: Your settings
+msgid "side_settings"
+msgstr "Ваші налаштування"
+
+#: Show when people join
+msgid "side_joins"
+msgstr "Показувати, коли хтось приєднується"
+
+#: Extra message formatting
+msgid "side_formatting"
+msgstr "Екстра форматування повідомлень"
+
+#: Nick colours in the list"
+msgid "side_colours"
+msgstr "Кольорові псевдоніми в списку"
+
+#: No buffer set
+msgid "side_buffer"
+msgstr "Буфер не встановлено"
+
+#: Error starting
+msgid "error_starting"
+msgstr "Виникла помилка при запуску Kiwi IRC :("
+
+msgid "error_installed"
+msgstr "Переконайтеся, що Kiwi IRC встановлений правильно і можна завантажити конфігурацію"
+
+#: Leave
+msgid "state_leave"
+msgstr "Покинути {{name}}"
+
+#: Your account
+msgid "state_account"
+msgstr "Ваш обліковий запис"
+
+#: Your settings and networks will be remembered on this computer
+msgid "state_remembered"
+msgstr "Ваші налаштування й мережі запам'ятаються на цьому комп'ютері."
+
+#: Forget me
+msgid "state_forget"
+msgstr "Забути мене"
+
+#: No networks here yet.
+msgid "state_network"
+msgstr "Наразі тут немає мереж."
+
+#: Add one?
+msgid "state_add"
+msgstr "Додати одну?"
+
+#: Available networks
+msgid "state_available"
+msgstr "Доступні мережі"
+
+#: Configure network
+msgid "state_configure"
+msgstr "Конфігурація мережі"
+
+#: Not connected.
+msgid "state_disconnected"
+msgstr "Не з'єднано."
+
+#: Join new #channel
+msgid "state_join"
+msgstr "Приєднатися до #каналу"
+
+#: Account name
+msgid "user_account"
+msgstr "Назва облікового запису: {{user}}"
+
+#: Real name
+msgid "user_realname"
+msgstr "Справжнє ім'я: {{realname}}"
+
+#: Is a bot
+msgid "user_bot"
+msgstr "Це бот"
+
+#: Is available for help
+msgid "user_help"
+msgstr "Доступний для допомоги"
+
+#: Is an operator
+msgid "user_op"
+msgstr "Це оператор"
+
+#: Connected to
+msgid "user_server"
+msgstr "З'єднаний з {{server}} {{info}}"
+
+#: Securely connected via SSL/TLS
+msgid "user_secure"
+msgstr "Захищене з'єднання через SSL/TLS"
+
+#: Also in channels
+msgid "user_channels"
+msgstr "Також на каналах {{channels}}"
+
+#: Access level
+msgid "user_access"
+msgstr "Рівень доступу"
+
+#: Normal
+msgid "user_normal"
+msgstr "Звичайний"
+
+#: Kick from channel
+msgid "user_kick"
+msgstr "Виштовхнути з каналу"
+
+#: Ban from the channel
+msgid "user_ban"
+msgstr "Заблокувати на каналі"
+
+#: Kick + Ban from the channel
+msgid "user_kickban"
+msgstr "Заблокувати й виштовхнути з каналу"
+
+#: Your IRC client
+msgid "personal_client"
+msgstr "Ваш IRC-клієнт."
+
+#: Add your networks. Join your channels.
+msgid "personal_addjoin"
+msgstr "Додайте свої мережі. Приєднайтесь до своїх каналів."
+
+#: They will be here when you come back.
+msgid "personal_return"
+msgstr "Вони будуть тут, коли ви повернетесь."
+
+#: Add a Network
+msgid "personal_add"
+msgstr "Додати мережу"
+
+#: Saved networks
+msgid "personal_saved"
+msgstr "Збережені мережі"
+
+#: Kiwi IRC (next gen) - Rizon preview
+msgid "rizon_title"
+msgstr "Kiwi IRC (next gen) - Rizon preview"
+
+#: Direct websockets. No Kiwi server or webirc involved.
+msgid "rizon_websockets"
+msgstr "Прямі веб-сокети. Без участі сервера Kiwi або webirc."
+
+#: (Thanks to Adam @Rizon for the development websocket server support!)
+msgid "rizon_thanks"
+msgstr "(Подяка Adam @Rizon за підтримку в розробці сервера websocket!)"
+
+#: Give the developer version of Kiwi IRC a try!
+msgid "rizon_dev"
+msgstr "Випробуйте розробницьку версію Kiwi IRC!"
+

@@ -1,487 +1,487 @@
 #: Close
 msgid "close"
-msgstr ""
+msgstr "Mbylle"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "Lidhu"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "Duke u lidhur"
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "I lidhur"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "Veglat"
 
 #: Banned
 msgid "banned"
-msgstr ""
+msgstr "I perjashtuar"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "Njoftimet"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "Perdoruesi"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "Passwordi"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "Kam nje password"
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "Serveri"
 
 #: Nick (Nickname)
 msgid "nick"
-msgstr ""
+msgstr "Pseudonimi"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "Kanali"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "Rrjeti"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "I loguar"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "Error ne login"
 
 #: Realname field in a users whois
 msgid "whois_realname"
-msgstr ""
+msgstr "Emri real"
 
 #: Away status in a users whois
 msgid "whois_status"
-msgstr ""
+msgstr "Statusi"
 
 #: Away status in a users whois
 msgid "whois_status_available"
-msgstr ""
+msgstr "Eshte ne linje"
 
 #: Send user a message button
 msgid "send_a_message"
-msgstr ""
+msgstr "Dergo nje mesazh"
 
 #: Show more information
 msgid "more_information"
-msgstr ""
+msgstr "Me shum informacion"
 
 #: Ignore user toggle box
 msgid "ignore_user"
-msgstr ""
+msgstr "Injoroje"
 
 #: Channel input box
 msgid "connection_channel"
-msgstr ""
+msgstr "Lidhja ne kanal"
 
 #: General Title
 msgid "settings_general"
-msgstr ""
+msgstr "Veglat gjenerale"
 
 #: Theme Title
 msgid "settings_theme"
-msgstr ""
+msgstr "Tema"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "Url e temes"
 
 #: Use Monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Perdor monospace"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "Shiko ndihmuesin"
 
 #: Messages Title
 msgid "settings_messages_title"
-msgstr ""
+msgstr "Titulli mesazhit"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "Ora"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "Ora format 24"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "Figurat"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr ""
+msgstr "Bloko privatin"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "Shfleto"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr ""
+msgstr "Formati"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr ""
+msgstr "Shiko hyrje daljet"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "Hiq zilet"
 
 #: Highlight on words
 msgid "settings_highlight"
-msgstr ""
+msgstr "Citimet"
 
 #: Aliases Title
 msgid "settings_aliases"
-msgstr ""
+msgstr "Shkurtimet"
 
 #: Send Message
 msgid "send_message"
-msgstr ""
+msgstr "Dergo mesazhin"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr ""
+msgstr "Me njofto kur"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "Me njofto per te gjitha"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "Kur permendem"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "Mos me njofto"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr ""
+msgstr "Hiq zilet"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr ""
+msgstr "Rifresko ban-et"
 
 #: Banned user
 msgid "bans_user"
-msgstr ""
+msgstr "User ne ban"
 
 #: Banned by
 msgid "bans_by"
-msgstr ""
+msgstr "Ban nga"
 
 #: Refreshing banlist
 msgid "bans_refreshing"
-msgstr ""
+msgstr "Duke rifreskuar listen e ban"
 
 #: Nobody is banned
 msgid "bans_nobody"
-msgstr ""
+msgstr "Asnjeri nuk eshte ne ban"
 
 #: Topic
 msgid "channel_topic"
-msgstr ""
+msgstr "Topiku"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr ""
+msgstr "Chat i moderuar"
 
 #: Invite Only
 msgid "channel_invite"
-msgstr ""
+msgstr "Vetem me ftesa"
 
 #: Moderated topic
 msgid "channel_moderated_topic"
-msgstr ""
+msgstr "Topik i moderuar"
 
 #: Block external messages
 msgid "channel_external"
-msgstr ""
+msgstr "Blloko mesazhet nga jasht"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr ""
+msgstr "Miresevjen ne Kiwi IRC"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr ""
+msgstr "Shiko statusin e browserit"
 
 #: Join Channel
 msgid "container_join"
-msgstr ""
+msgstr "Hyr ne kanal"
 
 #: Not connected
 msgid "container_notconnected"
-msgstr ""
+msgstr "Nuk je i lidhur"
 
 #: Private conversation with
 msgid "container_privmsg"
-msgstr ""
+msgstr "Bisede private me"
 
 #: input wrap placeholder
 msgid "input_placeholder"
-msgstr ""
+msgstr "Vendi i vendosjes se te dhenave"
 
 #: Loading
 msgid "media_loading"
-msgstr ""
+msgstr "Duke u hapur"
 
 #: Load previous
 msgid "messages_load"
-msgstr ""
+msgstr "Shfleto te vjetra"
 
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"
-msgstr ""
+msgstr "Veglat e rrjetit"
 
 #: Port
 msgid "settings_port"
-msgstr ""
+msgstr "Porta"
 
 #: Other networks on this ZNC account
 msgid "settings_znc_other"
-msgstr ""
+msgstr "Rrjete te tjera ne kte llogari ZNC"
 
 #: Your details
 msgid "settings_your_details"
-msgstr ""
+msgstr "Detajet tua"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr ""
+msgstr "Pseudonimi"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr ""
+msgstr "Me shume"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr ""
+msgstr "Kodimi"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr ""
+msgstr "Shiko Raw"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr ""
+msgstr "Bej komandat kur tjesh i lidhur"
 
 #: Danger zone
 msgid "settings_danger"
-msgstr ""
+msgstr "Zone e rrezikshme"
 
 #: Remove network
 msgid "settings_remove"
-msgstr ""
+msgstr "Hiqe rrjetin"
 
 #: Person key
 msgid "person"
-msgstr ""
+msgstr "Celsi i personit"
 
 #: Person plural key
 msgid "person_plural"
-msgstr ""
+msgstr "Celsi plural i personit"
 
 #: Reconnect Channel
 msgid "reconnect_channel"
-msgstr ""
+msgstr "Rilidhu ne kanal"
 
 #: Reconnect to network
 msgid "reconnect_network"
-msgstr ""
+msgstr "Rilidhu ne rrjet"
 
 #: Reconnect to query
 msgid "reconnect_query"
-msgstr ""
+msgstr "Rilidhu ne bisede"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr ""
+msgstr "Veglat e lidhjes"
 
 #: Close options $t('side_')
 msgid "side_close"
-msgstr ""
+msgstr "Mbyll Opsionet"
 
 #: Channel options
 msgid "side_options"
-msgstr ""
+msgstr "Opsionet e kanalit"
 
 #: Your settings
 msgid "side_settings"
-msgstr ""
+msgstr "Veglat e mia"
 
 #: Show when people join
 msgid "side_joins"
-msgstr ""
+msgstr "Shiko kur hyjne njerezit"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr ""
+msgstr "Formati i mesazheve ekstra"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr ""
+msgstr "Pseudonimet me ngjyra ne liste"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr ""
+msgstr "Asnje Amortizim i vendosur"
 
 #: Error starting
 msgid "error_starting"
-msgstr ""
+msgstr "Error duke filluar"
 
 msgid "error_installed"
-msgstr ""
+msgstr "Ky tekst nuk ka asnje info. Teksti esht perdorur ne application.po. pozicioni ne file: 90"
 
 #: Leave
 msgid "state_leave"
-msgstr ""
+msgstr "Largohu"
 
 #: Your account
 msgid "state_account"
-msgstr ""
+msgstr "Llogaria jote"
 
 #: Your settings and networks will be remembered on this computer
 msgid "state_remembered"
-msgstr ""
+msgstr "Veglat dhe rrjeti do ruhen ne kete kompjuter"
 
 #: Forget me
 msgid "state_forget"
-msgstr ""
+msgstr "Me harro"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr ""
+msgstr "Asnje rrjet ketu"
 
 #: Add one?
 msgid "state_add"
-msgstr ""
+msgstr "Shto nje?"
 
 #: Available networks
 msgid "state_available"
-msgstr ""
+msgstr "Rrjetet ne dispozicion"
 
 #: Configure network
 msgid "state_configure"
-msgstr ""
+msgstr "Konfiguro rrjetin"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr ""
+msgstr "Jo i lidhur"
 
 #: Join new #channel
 msgid "state_join"
-msgstr ""
+msgstr "Hyr ne nje #kanal"
 
 #: Account name
 msgid "user_account"
-msgstr ""
+msgstr "Emri llogarise"
 
 #: Real name
 msgid "user_realname"
-msgstr ""
+msgstr "Emri real"
 
 #: Is a bot
 msgid "user_bot"
-msgstr ""
+msgstr "Esht rrobot"
 
 #: Is available for help
 msgid "user_help"
-msgstr ""
+msgstr "Esht i gatshem tju ndihmoje"
 
 #: Is an operator
 msgid "user_op"
-msgstr ""
+msgstr "Esht aop"
 
 #: Connected to
 msgid "user_server"
-msgstr ""
+msgstr "Esht i lidhur ne"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr ""
+msgstr "Perdor nje lidhje te sigurte"
 
 #: Also in channels
 msgid "user_channels"
-msgstr ""
+msgstr "Esht ne kanalet"
 
 #: Access level
 msgid "user_access"
-msgstr ""
+msgstr "Ka akses level"
 
 #: Normal
 msgid "user_normal"
-msgstr ""
+msgstr "Esht user normal"
 
 #: Kick from channel
 msgid "user_kick"
-msgstr ""
+msgstr "Beji kick ne kanal"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr ""
+msgstr "Shtoje ne ban liste"
 
 #: Kick + Ban from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "Beji kickban nga kanali"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr ""
+msgstr "Shfletuesi juaj i Irc"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr ""
+msgstr "Shto rrjetin tend. hyr ne kanalet tua"
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr ""
+msgstr "Ato do jene ketu kur ti te vish serisht"
 
 #: Add a Network
 msgid "personal_add"
-msgstr ""
+msgstr "Shto rrjet"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr ""
+msgstr "Rrjetet e ruajtura"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr ""
+msgstr "Kiwi IRC (Gjenerata e re) - Parashikim Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr ""
+msgstr "Lidhje direkte websockets. Ska Kiwi server ose webirc te perfshire"
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr ""
+msgstr "Faleminderit Adam @Rizon per krijimin e websocket server"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr ""
+msgstr "Beje prove versionin per zhvillues"
 
