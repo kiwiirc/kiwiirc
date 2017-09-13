@@ -92,7 +92,7 @@ msgstr "Ігнорувати користувача"
 
 #: Channel input box
 msgid "connection_channel"
-msgstr ""
+msgstr "Канал"
 
 #: General Title
 msgid "settings_general"
@@ -228,7 +228,7 @@ msgstr "Ласкаво просимо до Kiwi IRC! Оберіть канал �
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Show statebrowser"
+msgstr "Показати statebrowser"
 
 #: Join Channel
 msgid "container_join"
