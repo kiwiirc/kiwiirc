@@ -4,7 +4,7 @@
         <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-connection">
             <h2 v-html="greetingText"></h2>
 
-            <template v-if="!network">
+            <template v-if="!network || network.state === 'disconnected'">
                 <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-simple-form">
                     <input-text v-if="showNick" class="kiwi-welcome-simple-nick" :label="$t('nick')" v-model="nick" />
                     <label v-if="showPass" class="kiwi-welcome-simple-have-password">
@@ -117,6 +117,8 @@ export default {
                     encoding: _.trim(options.encoding),
                     direct: !!options.direct,
                 });
+            } else {
+                net = this.network;
             }
 
             // Only switch to the first channel we join if multiple are being joined
@@ -143,7 +145,6 @@ export default {
                 net.ircClient.off('close', onClosed);
             };
             let onClosed = () => {
-                setTimeout(() => { this.network = null; }, 1000);
                 net.ircClient.off('registered', onRegistered);
                 net.ircClient.off('close', onClosed);
             };
