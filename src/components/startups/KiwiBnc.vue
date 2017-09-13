@@ -226,7 +226,7 @@ export default {
 
             rememberNetworks();
 
-            let debouncedSaveState = _.debounce(newVal => {
+            let saveState = newVal => {
                 state.networks.forEach(network => {
                     // Only deal with BNC networks
                     if (network.name === 'bnccontrol') {
@@ -275,13 +275,17 @@ export default {
                 });
 
                 rememberNetworks();
-            }, 2000);
+            };
+
+            let debouncedSaveState = _.debounce(saveState, 2000);
 
             state.$watch('networks', debouncedSaveState, { deep: true });
 
-            // Just before we connect to a network, make sure the BNC is connected to it or
-            // at least trying to connect.
+            // Just before we connect to a network, make sure the BNC is sabed and connected to
+            // it or at least trying to connect.
             state.$on('network.connecting', event => {
+                saveState();
+
                 let netName = event.network.connection.bncname;
                 let networkFromBnc = _.find(bncNetworks, { name: netName });
                 if (networkFromBnc && !networkFromBnc.connected) {
