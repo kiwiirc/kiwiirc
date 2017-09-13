@@ -198,7 +198,10 @@ function initLocales() {
 
 async function initState() {
     let stateKey = state.settings.startupOptions.state_key;
+
     let persist = new StatePersistence(stateKey || '', state, Storage, Logger);
+    persist.includeBuffers = !!state.settings.startupOptions.remember_buffers;
+
     if (stateKey) {
         await persist.loadStateIfExists();
     }

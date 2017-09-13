@@ -7,6 +7,7 @@ export default class StatePersistence {
         this.storage = storage;
         this.logger = logger;
         this.isPersisting = false;
+        this.includeBuffers = true;
 
         this.state.persistence = this;
     }
@@ -39,7 +40,7 @@ export default class StatePersistence {
                 this.logger('State updated, setting localStorage');
             }
 
-            this.storage.set(this.storageKey, this.state.exportState());
+            this.storage.set(this.storageKey, this.state.exportState(this.includeBuffers));
         }, 1000);
 
         this.state.$watch('networks', debouncedSaveState, { deep: true });

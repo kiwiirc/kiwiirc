@@ -90,6 +90,7 @@ export default {
         close: function close() {
             this.closing = true;
             this.$el.addEventListener('transitionend', (event) => {
+                state.persistence.watchStateForChanges();
                 this.$emit('start');
             }, false);
         },

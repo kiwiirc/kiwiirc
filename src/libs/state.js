@@ -225,43 +225,45 @@ const state = new Vue({
     data: stateObj,
     methods: {
         // Export enough state so that it can be imported in future to resume
-        exportState: function exportState() {
+        exportState: function exportState(includeBuffers) {
             let toExport = {};
 
-            toExport.networks = state.networks.map(network => {
-                let networkObj = {
-                    id: network.id,
-                    name: network.name,
-                    connection: {
-                        server: network.connection.server,
-                        port: network.connection.port,
-                        tls: network.connection.tls,
-                        path: network.connection.path,
-                        password: network.connection.password,
-                        direct: network.connection.direct,
-                        encoding: network.connection.encoding,
-                    },
-                    auto_commands: network.auto_commands,
-                    settings: _.cloneDeep(network.settings),
-                    nick: network.nick,
-                    username: network.username,
-                    password: network.password,
-                    buffers: [],
-                };
-
-                networkObj.buffers = network.buffers.map(buffer => {
-                    let bufferObj = {
-                        name: buffer.name,
-                        key: buffer.key,
-                        enabled: !!buffer.enabled,
-                        settings: _.cloneDeep(buffer.settings),
+            if (includeBuffers) {
+                toExport.networks = state.networks.map(network => {
+                    let networkObj = {
+                        id: network.id,
+                        name: network.name,
+                        connection: {
+                            server: network.connection.server,
+                            port: network.connection.port,
+                            tls: network.connection.tls,
+                            path: network.connection.path,
+                            password: network.connection.password,
+                            direct: network.connection.direct,
+                            encoding: network.connection.encoding,
+                        },
+                        auto_commands: network.auto_commands,
+                        settings: _.cloneDeep(network.settings),
+                        nick: network.nick,
+                        username: network.username,
+                        password: network.password,
+                        buffers: [],
                     };
 
-                    return bufferObj;
-                });
+                    networkObj.buffers = network.buffers.map(buffer => {
+                        let bufferObj = {
+                            name: buffer.name,
+                            key: buffer.key,
+                            enabled: !!buffer.enabled,
+                            settings: _.cloneDeep(buffer.settings),
+                        };
 
-                return networkObj;
-            });
+                        return bufferObj;
+                    });
+
+                    return networkObj;
+                });
+            }
 
             toExport.user_settings = state.user_settings;
 
