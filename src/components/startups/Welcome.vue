@@ -107,14 +107,17 @@ export default {
         startUp: function startUp() {
             let options = state.settings.startupOptions;
 
-            let net = this.network = state.addNetwork('Network', this.nick, {
-                server: _.trim(options.server),
-                port: options.port,
-                tls: options.tls,
-                password: this.password,
-                encoding: _.trim(options.encoding),
-                direct: !!options.direct,
-            });
+            let net;
+            if (!this.network) {
+                net = this.network = state.addNetwork('Network', this.nick, {
+                    server: _.trim(options.server),
+                    port: options.port,
+                    tls: options.tls,
+                    password: this.password,
+                    encoding: _.trim(options.encoding),
+                    direct: !!options.direct,
+                });
+            }
 
             // Only switch to the first channel we join if multiple are being joined
             let hasSwitchedActiveBuffer = false;
