@@ -59,7 +59,15 @@ export default Vue.component('irc-input', {
             let clipboardData = event.clipboardData || window.clipboardData;
             let pastedData = clipboardData.getData('Text');
 
-            this.insertText(pastedData);
+            let selection = window.getSelection();
+            let range = selection.getRangeAt(0);
+            if (range) {
+                range.deleteContents();
+                range.insertNode(document.createTextNode(pastedData));
+
+                let selPos = this.current_range[0] + pastedData.length;
+                this.current_range = [selPos, selPos];
+            }
             this.focus();
         },
         updateValueProps: function updateValueProps() {
