@@ -1,9 +1,11 @@
+import strftime from 'strftime';
+
 export default function bouncerMiddleware() {
     let networks = [];
     let buffers = {};
 
     return function middleware(client, rawEvents, parsedEvents) {
-        client.requestCap('BOUNCER');
+        client.requestCap('bouncer');
         addFunctionsToClient(client);
         rawEvents.use(theMiddleware);
     };
@@ -47,6 +49,7 @@ export default function bouncerMiddleware() {
                 name: tags.buffer,
                 topic: tags.topic,
                 joined: tags.joined === '1',
+                seen: tags.seen,
             });
         }
 
@@ -96,6 +99,13 @@ function addFunctionsToClient(client) {
     bnc.closeBuffer = function closeBuffer(netName, bufferName) {
         return new Promise((resolve, reject) => {
             client.raw(`BOUNCER delbuffer ${netName} ${bufferName}`);
+        });
+    };
+
+    bnc.bufferSeen = function bufferSeen(netName, bufferName, seenTime) {
+        return new Promise((resolve, reject) => {
+            let timeStr = strftime('%FT%T.%L%:z', seenTime);
+            client.raw(`BOUNCER changebuffer ${netName} ${bufferName} seen=${timeStr}`);
         });
     };
 

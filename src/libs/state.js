@@ -589,11 +589,13 @@ const state = new Vue({
                 buffer.name === this.ui.active_buffer
             );
 
-            if (isActiveBuffer && state.ui.app_has_focus) {
+            let isNewMessage = message.time > buffer.last_read;
+
+            if (isNewMessage && isActiveBuffer && state.ui.app_has_focus) {
                 buffer.last_read = message.time;
             }
 
-            if (includeAsActivity && !isActiveBuffer) {
+            if (isNewMessage && includeAsActivity && !isActiveBuffer) {
                 buffer.incrementFlag('unread');
                 let network = buffer.getNetwork();
                 if (Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick)) {
@@ -1017,6 +1019,23 @@ function initialiseBufferState(buffer) {
             } else {
                 buffer.last_read = Date.now();
                 buffer.flag('highlight', false);
+
+                // If running under a bouncer, set it on the server-side too
+                let network = buffer.getNetwork();
+                if (!buffer.isSpecial() && network.connection.bncname) {
+                    let lastMessage = buffer.getMessages().reduce((latest, current) => {
+                        if (latest.time && latest.time > current.time) {
+                            return latest;
+                        }
+                        return current;
+                    }, buffer.getMessages()[0]);
+
+                    network.ircClient.bnc.bufferSeen(
+                        network.connection.bncname,
+                        buffer.name,
+                        new Date(lastMessage.time),
+                    );
+                }
             }
         },
     });

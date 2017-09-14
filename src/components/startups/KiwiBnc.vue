@@ -201,6 +201,9 @@ export default {
                 if (buffer.joined) {
                     newBuffer.enabled = true;
                 }
+                if (buffer.seen) {
+                    newBuffer.last_read = (new Date(buffer.seen)).getTime();
+                }
             });
         },
 
