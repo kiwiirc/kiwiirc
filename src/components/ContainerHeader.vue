@@ -36,6 +36,9 @@
             <div class="kiwi-header-name">{{buffer.name}}</div>
         </template>
 
+        <div class="kiwi-header-tools" ref="channelPlugins" v-bind:style="isChannel() ? '' : 'display:none;'"></div>
+        <div class="kiwi-header-tools" ref="privatePlugins" v-bind:style="isQuery() ? '' : 'display:none;'"></div>
+
         <div
             v-if="buffer_settings_open"
             class="kiwi-header-buffersettings"
@@ -92,6 +95,12 @@ export default {
         ChannelBanlist,
     },
     methods: {
+        addChannelPlugin: function addChannelPlugin(domEl) {
+            this.$refs.channelPlugins.appendChild(domEl);
+        },
+        addPrivatePlugin: function addChannelPlugin(domEl) {
+            this.$refs.privatePlugins.appendChild(domEl);
+        },
         formatMessage: function formatMessage(messageBody) {
             let words = messageBody.split(' ');
             words = words.map(word => {
@@ -151,6 +160,9 @@ export default {
             // When ever the buffer changes, close the settings dropdown
             this.buffer_settings_open = false;
         },
+    },
+    mounted: function mounted() {
+        state.$emit('containerheader:show', { container: this });
     },
 };
 

@@ -62,6 +62,7 @@
                     @showBufferSettings="showBufferPopup"
                 ></state-browser-network>
             </div>
+            <div class="kiwi-statebrowser-scrollarea-tools" ref="plugins"></div>
         </div>
     </div>
 </template>
@@ -100,6 +101,9 @@ export default {
         StateBrowserNetwork,
     },
     methods: {
+        addPlugin: function addPlugin(domEl) {
+            this.$refs.plugins.appendChild(domEl);
+        },
         showBufferPopup: function showBufferPopup(buffer, domY) {
             if (!buffer) {
                 this.popup_buffername = null;
@@ -183,6 +187,9 @@ export default {
         netProv.on('networks', networks => {
             this.provided_networks = networks;
         });
+    },
+    mounted: function mounted() {
+        state.$emit('statebrowser:show', { statebrowser: this });
     },
 };
 </script>

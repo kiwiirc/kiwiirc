@@ -8,6 +8,9 @@ export default class GlobalApi {
         this.state = null;
         this.themes = null;
         this.controlInputPlugins = [];
+        this.stateBrowserPlugins = [];
+        this.channelHeadPlugins = [];
+        this.privateHeadPlugins = [];
     }
 
     static singleton() {
@@ -20,6 +23,13 @@ export default class GlobalApi {
         this.state.$on('controlinput:show', e => {
             this.controlInputPlugins.forEach(el => e.controlinput.addPlugin(el));
         });
+        this.state.$on('statebrowser:show', e => {
+            this.stateBrowserPlugins.forEach(el => e.statebrowser.addPlugin(el));
+        });
+        this.state.$on('containerheader:show', e => {
+            this.channelHeadPlugins.forEach(el => e.container.addChannelPlugin(el));
+            this.privateHeadPlugins.forEach(el => e.container.addPrivatePlugin(el));
+        });
     }
 
     setThemeManager(themeManager) {
@@ -27,8 +37,21 @@ export default class GlobalApi {
     }
 
     addPlugin(type, element) {
-        if (type === 'controlinput') {
+        switch (type) {
+        case 'controlinput':
             this.controlInputPlugins.push(element);
+            break;
+        case 'statebrowser':
+            this.stateBrowserPlugins.push(element);
+            break;
+        case 'channelhead':
+            this.channelHeadPlugins.push(element);
+            break;
+        case 'privatehead':
+            this.privateHeadPlugins.push(element);
+            break;
+        default:
+            break;
         }
     }
 
