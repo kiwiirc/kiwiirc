@@ -13,6 +13,7 @@
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a @click="joinCurrentBuffer" class="u-link">{{$t('container_join')}}</a>
             </div>
+            <div class="kiwi-header-tools" ref="plugins"></div>
         </template>
         <template v-else-if="isServer()">
             <div v-if="buffer.getNetwork().state === 'disconnected'" class="kiwi-header-server-connection">
@@ -28,6 +29,7 @@
                 <a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a>
             </div>
             <div class="kiwi-header-name">{{$t('container_privmsg', {user: buffer.name})}}</div>
+            <div class="kiwi-header-tools" ref="plugins"></div>
         </template>
         <template v-else-if="isSpecial()">
             <div class="kiwi-header-options">
@@ -35,9 +37,6 @@
             </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
         </template>
-
-        <div class="kiwi-header-tools" ref="channelPlugins" v-bind:style="isChannel() ? '' : 'display:none;'"></div>
-        <div class="kiwi-header-tools" ref="privatePlugins" v-bind:style="isQuery() ? '' : 'display:none;'"></div>
 
         <div
             v-if="buffer_settings_open"
@@ -95,11 +94,8 @@ export default {
         ChannelBanlist,
     },
     methods: {
-        addChannelPlugin: function addChannelPlugin(domEl) {
-            this.$refs.channelPlugins.appendChild(domEl);
-        },
-        addPrivatePlugin: function addChannelPlugin(domEl) {
-            this.$refs.privatePlugins.appendChild(domEl);
+        addPlugin: function addPlugin(domEl) {
+            this.$refs.plugins.appendChild(domEl);
         },
         formatMessage: function formatMessage(messageBody) {
             let words = messageBody.split(' ');

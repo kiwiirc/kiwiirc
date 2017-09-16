@@ -27,8 +27,12 @@ export default class GlobalApi {
             this.stateBrowserPlugins.forEach(el => e.statebrowser.addPlugin(el));
         });
         this.state.$on('containerheader:show', e => {
-            this.channelHeadPlugins.forEach(el => e.container.addChannelPlugin(el));
-            this.privateHeadPlugins.forEach(el => e.container.addPrivatePlugin(el));
+            if (e.container.isChannel()) {
+                this.channelHeadPlugins.forEach(el => e.container.addPlugin(el));
+            }
+            if (e.container.isQuery()) {
+                this.privateHeadPlugins.forEach(el => e.container.addPlugin(el));
+            }
         });
     }
 
