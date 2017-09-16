@@ -46,12 +46,14 @@ export default class Message {
             parsed = TextFormatting.linkifyUsers(word, messageList.buffer.users);
             if (parsed !== word) return parsed;
 
-            parsed = TextFormatting.addEmojis(
-                word,
-                state.setting('emojis'),
-                state.setting('emojiLocation')
-            );
-            if (parsed !== word) return parsed;
+            if (state.setting('buffers.show_emoticons')) {
+                parsed = TextFormatting.addEmojis(
+                    word,
+                    state.setting('emojis'),
+                    state.setting('emojiLocation')
+                );
+                if (parsed !== word) return parsed;
+            }
 
             return _.escape(word);
         });

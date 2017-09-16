@@ -153,12 +153,14 @@ export default {
             } else if (event.keyCode === 32) {
                 // Hitting space after just typing an ascii emoji will get it replaced with
                 // its image
-                let currentWord = this.$refs.input.getCurrentWord();
-                let emoji = (state.setting('emojis') || {})[currentWord.word];
-                if (emoji) {
-                    let url = state.setting('emojiLocation') + emoji + '.png';
-                    this.$refs.input.setCurrentWord('');
-                    this.$refs.input.addImg(currentWord.word + ' ', url);
+                if (state.setting('buffers.show_emoticons')) {
+                    let currentWord = this.$refs.input.getCurrentWord();
+                    let emoji = (state.setting('emojis') || {})[currentWord.word];
+                    if (emoji) {
+                        let url = state.setting('emojiLocation') + emoji + '.png';
+                        this.$refs.input.setCurrentWord('');
+                        this.$refs.input.addImg(currentWord.word + ' ', url);
+                    }
                 }
             } else if (event.keyCode === 38) {
                 // Up
