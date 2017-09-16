@@ -280,6 +280,17 @@ export function linkifyUrls(input, _opts) {
     };
 }
 
+export function addEmojis(word, emojiList, emojiLocation) {
+    let emoji = emojiList[word];
+    if (emoji) {
+        let classes = 'kiwi-messagelist-emoji';
+        let src = `${emojiLocation}${emoji}.png`;
+        return `<img class="${classes}" src="${src}" alt="${word}" />`;
+    }
+
+    return word;
+}
+
 export function linkifyChannels(word) {
     return word.replace(/(^|\s)([#&][^ .,\007<>]+)$/i, _channel => {
         let channelName = _channel.trim();

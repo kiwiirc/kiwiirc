@@ -255,6 +255,7 @@ export default Vue.component('irc-input', {
             let sel = window.getSelection();
             sel.removeAllRanges();
             sel.addRange(range);
+            this.updateValueProps();
         },
 
         getCurrentWord: function getCurrentWord() {

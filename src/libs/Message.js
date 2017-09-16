@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import * as TextFormatting from 'src/helpers/TextFormatting';
+import state from './state';
 
 let nextId = 0;
 
@@ -43,6 +44,13 @@ export default class Message {
             if (parsed !== word) return parsed;
 
             parsed = TextFormatting.linkifyUsers(word, messageList.buffer.users);
+            if (parsed !== word) return parsed;
+
+            parsed = TextFormatting.addEmojis(
+                word,
+                state.setting('emojis'),
+                state.setting('emojiLocation')
+            );
             if (parsed !== word) return parsed;
 
             return _.escape(word);
