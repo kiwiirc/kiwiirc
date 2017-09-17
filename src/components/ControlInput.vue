@@ -31,6 +31,9 @@
                 <a @click.prevent="onToolClickTextStyle">
                     <i class="fa fa-adjust" aria-hidden="true"></i>
                 </a>
+                <a @click.prevent="onToolClickEmoji">
+                    <i class="fa fa-smile-o" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
 
@@ -47,6 +50,7 @@ import autocompleteCommands from 'src/res/autocompleteCommands';
 import state from 'src/libs/state';
 import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
+import ToolEmoji from './inputtools/Emoji';
 
 export default {
     components: {
@@ -92,6 +96,9 @@ export default {
         },
         onToolClickTextStyle: function onToolClickTextStyle() {
             this.toggleInputTool(ToolTextStyle);
+        },
+        onToolClickEmoji() {
+            this.toggleInputTool(ToolEmoji);
         },
         closeInputTool: function closeInputTool() {
             this.active_tool = null;
@@ -143,6 +150,18 @@ export default {
             if (event.keyCode === 13) {
                 event.preventDefault();
                 this.submitForm();
+            } else if (event.keyCode === 32) {
+                // Hitting space after just typing an ascii emoji will get it replaced with
+                // its image
+                if (state.setting('buffers.show_emoticons')) {
+                    let currentWord = this.$refs.input.getCurrentWord();
+                    let emoji = (state.setting('emojis') || {})[currentWord.word];
+                    if (emoji) {
+                        let url = state.setting('emojiLocation') + emoji + '.png';
+                        this.$refs.input.setCurrentWord('');
+                        this.$refs.input.addImg(currentWord.word + ' ', url);
+                    }
+                }
             } else if (event.keyCode === 38) {
                 // Up
                 event.preventDefault();

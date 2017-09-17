@@ -497,6 +497,12 @@ div {
         margin: 0;
     }
 }
+.kiwi-messagelist-emoji {
+    width: 1.3em;
+    display: inline-block;
+    pointer-events: none;
+    vertical-align: middle;
+}
 .kiwi-messagelist-message-whois {
 }
 .kiwi-messagelist-message--highlight {

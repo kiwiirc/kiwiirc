@@ -69,8 +69,6 @@ export default function bouncerMiddleware() {
             client.emit('bouncer addnetwork ok', eventObj);
             client.emit('bouncer addnetwork ok ' + netName, eventObj);
         }
-
-        next();
     }
 }
 

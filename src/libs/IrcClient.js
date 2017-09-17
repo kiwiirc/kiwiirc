@@ -152,11 +152,14 @@ function clientMiddleware(state, networkid) {
             }
 
             // Join our channels
-            network.buffers.forEach(buffer => {
-                if (buffer.isChannel() && buffer.enabled) {
-                    client.join(buffer.name, buffer.key);
-                }
-            });
+            // If under bouncer mode, the bouncer will send the channels were joined to instead.
+            if (!network.connection.bncname) {
+                network.buffers.forEach(buffer => {
+                    if (buffer.isChannel() && buffer.enabled) {
+                        client.join(buffer.name, buffer.key);
+                    }
+                });
+            }
         }
 
         if (command === 'server options') {
@@ -169,7 +172,7 @@ function clientMiddleware(state, networkid) {
             let historySupport = !!network.ircClient.network.supports('chathistory');
             if (!hasRequestedInitialChathistory && historySupport) {
                 network.buffers.forEach(buffer => {
-                    if (buffer.isQuery()) {
+                    if (!buffer.isSpecial()) {
                         buffer.requestScrollback();
                     }
                 });
@@ -288,10 +291,6 @@ function clientMiddleware(state, networkid) {
             });
 
             if (event.nick === client.user.nick) {
-                if (network.ircClient.network.supports('chathistory')) {
-                    buffer.requestScrollback();
-                }
-
                 buffer.joined = true;
                 network.ircClient.raw('MODE', event.channel);
                 network.ircClient.who(event.channel);
