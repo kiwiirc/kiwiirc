@@ -295,7 +295,7 @@ export function addEmojis(wordCtx, emojiList, emojiLocation) {
     let emoji = emojiList[word];
     if (emoji) {
         let classes = 'kiwi-messagelist-emoji';
-        if (words.length === 1) {
+        if (_.compact(words).length === 1) {
             classes += ' kiwi-messagelist-emoji--single';
         }
 
