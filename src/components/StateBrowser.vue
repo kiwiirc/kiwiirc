@@ -1,5 +1,7 @@
 <template>
     <div class="kiwi-statebrowser">
+        <div class="kiwi-statebrowser-tools" ref="plugins"></div>
+
         <div
             v-if="bufferForPopup"
             class="kiwi-statebrowser-channel-popup"
@@ -62,7 +64,6 @@
                     @showBufferSettings="showBufferPopup"
                 ></state-browser-network>
             </div>
-            <div class="kiwi-statebrowser-scrollarea-tools" ref="plugins"></div>
         </div>
     </div>
 </template>
