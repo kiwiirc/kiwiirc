@@ -343,12 +343,6 @@
 .kiwi-messagelist-message--unread {
     border-left-color: #d4e5f1;
 }
-.kiwi-messagelist-message--unread:last-of-type::after {
-    content: "Unread messages";
-    font-style: italic;
-    background: #d4e5f1;
-    display: block;
-}
 
 .kiwi-messagelist-body .kiwi-nick {
 }
