@@ -162,12 +162,13 @@ div {
     font-size: 0px;
 }
 .kiwi-formatting-extras-block {
-    border: 1px solid #b5b5b5;
-    padding: 0 3px;
+    border-left: 4px solid #b5b5b5;
+    padding: 1em;
     border-radius: 3px;
     background: rgba(0,0,0,0.05);
     font-family: monospace;
-    white-space: pre;
+    white-space: pre-wrap;
+    display: inline-block;
 }
 
 
