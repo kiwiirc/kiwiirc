@@ -28,7 +28,7 @@ export default class Message {
         }
 
         let words = this.message.split(' ');
-        words = words.map(word => {
+        words = words.map((word, wordIdx) => {
             let parsed;
 
             let linkified = TextFormatting.linkifyUrls(word, {
@@ -48,7 +48,7 @@ export default class Message {
 
             if (state.setting('buffers.show_emoticons')) {
                 parsed = TextFormatting.addEmojis(
-                    word,
+                    { word, words, wordIdx },
                     state.setting('emojis'),
                     state.setting('emojiLocation')
                 );

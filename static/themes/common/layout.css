@@ -504,6 +504,18 @@ div {
     pointer-events: none;
     vertical-align: middle;
 }
+@keyframes emojiIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.kiwi-messagelist-emoji--single {
+    animation: 0.1s ease-in-out 0s 1 emojiIn;
+    font-size: 2em;
+}
 .kiwi-messagelist-message-whois {
 }
 .kiwi-messagelist-message--highlight {
