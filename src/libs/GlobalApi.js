@@ -12,7 +12,7 @@ export default class GlobalApi {
         this.stateBrowserPlugins = [];
         this.channelHeadPlugins = [];
         this.privateHeadPlugins = [];
-        this.windows = {};
+        this.tabs = Object.create(null);
     }
 
     static singleton() {
@@ -43,7 +43,7 @@ export default class GlobalApi {
     }
 
     changeWindow(name) {
-        this.state.$emit('active.component', this.windows[name]);
+        this.state.$emit('active.component', this.tabs[name]);
     }
 
     addPlugin(type, element, opts) {
@@ -60,8 +60,8 @@ export default class GlobalApi {
         case 'privatehead':
             this.privateHeadPlugins.push(element);
             break;
-        case 'window':
-            this.windows[element] = Vue.component(element, opts || {});
+        case 'tab':
+            this.tabs[element] = Vue.component(element, opts || {});
             break;
         default:
             break;
