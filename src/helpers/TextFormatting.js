@@ -280,10 +280,25 @@ export function linkifyUrls(input, _opts) {
     };
 }
 
-export function addEmojis(word, emojiList, emojiLocation) {
+export function addEmojis(wordCtx, emojiList, emojiLocation) {
+    let word = '';
+    let words = [word];
+
+    // wordCtx may be an object with extra context about the word
+    if (typeof wordCtx === 'object') {
+        word = wordCtx.word;
+        words = wordCtx.words;
+    } else {
+        word = wordCtx;
+    }
+
     let emoji = emojiList[word];
     if (emoji) {
         let classes = 'kiwi-messagelist-emoji';
+        if (_.compact(words).length === 1) {
+            classes += ' kiwi-messagelist-emoji--single';
+        }
+
         let src = `${emojiLocation}${emoji}.png`;
         return `<img class="${classes}" src="${src}" alt="${word}" />`;
     }
