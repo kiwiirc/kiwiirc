@@ -1,4 +1,5 @@
 import eventEmitter from 'event-emitter';
+import Vue from 'vue';
 
 let singletonInstance = null;
 
@@ -11,6 +12,7 @@ export default class GlobalApi {
         this.stateBrowserPlugins = [];
         this.channelHeadPlugins = [];
         this.privateHeadPlugins = [];
+        this.windows = {};
     }
 
     static singleton() {
@@ -40,7 +42,11 @@ export default class GlobalApi {
         this.themes = themeManager;
     }
 
-    addPlugin(type, element) {
+    changeWindow(name) {
+        this.state.$emit('active.component', this.windows[name]);
+    }
+
+    addPlugin(type, element, opts) {
         switch (type) {
         case 'controlinput':
             this.controlInputPlugins.push(element);
@@ -53,6 +59,9 @@ export default class GlobalApi {
             break;
         case 'privatehead':
             this.privateHeadPlugins.push(element);
+            break;
+        case 'window':
+            this.windows[element] = Vue.component(element, opts || {});
             break;
         default:
             break;
