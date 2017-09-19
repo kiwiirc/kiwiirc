@@ -292,6 +292,12 @@ export function addEmojis(wordCtx, emojiList, emojiLocation) {
         word = wordCtx;
     }
 
+    // If emojiList.hasOwnProperty exists then use it to check that the word
+    // is actually part of the object
+    if (emojiList.hasOwnProperty && !emojiList.hasOwnProperty(word)) {
+        return word;
+    }
+
     let emoji = emojiList[word];
     if (emoji) {
         let classes = 'kiwi-messagelist-emoji';

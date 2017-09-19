@@ -47,3 +47,20 @@ export function mentionsNick(input, nick) {
 
     return potentialNick.toLowerCase() === nick.toLowerCase();
 }
+
+
+export function queryStringVal(_name, _url) {
+    let url = _url || window.location.href;
+    let name = _.escapeRegExp(_name);
+    let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+    let results = regex.exec(url);
+
+    if (!results) {
+        return null;
+    }
+    if (!results[2]) {
+        return '';
+    }
+
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}

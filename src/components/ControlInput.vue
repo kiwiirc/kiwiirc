@@ -155,8 +155,9 @@ export default {
                 // its image
                 if (state.setting('buffers.show_emoticons')) {
                     let currentWord = this.$refs.input.getCurrentWord();
-                    let emoji = (state.setting('emojis') || {})[currentWord.word];
-                    if (emoji) {
+                    let emojiList = state.setting('emojis');
+                    if (emojiList.hasOwnProperty(currentWord.word)) {
+                        let emoji = emojiList[currentWord.word];
                         let url = state.setting('emojiLocation') + emoji + '.png';
                         this.$refs.input.setCurrentWord('');
                         this.$refs.input.addImg(currentWord.word + ' ', url);
