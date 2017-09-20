@@ -26,10 +26,20 @@ exports.createJsonFiles = function() {
                     return;
                 }
 
-                var locale_file = source_path + file;
                 var locale = match[1];
+                var data = new Buffer([]);
 
-                i18next_conv.gettextToI18next(locale, fs.readFileSync(locale_file))
+                files.forEach(function (file2,idx2) {
+                    var regex = new RegExp("."+locale+".po$", "i");
+                    var match2 = file2.match(regex);
+                    if (!match2) {
+                        return;
+                    }
+                    var locale_file = source_path + file2;
+                    data = Buffer.concat([data, fs.readFileSync(locale_file)]);
+                });
+
+                i18next_conv.gettextToI18next(locale, data)
                     .then(save(dest_path + locale.toLowerCase() + '.json'))
                     .then(function() {
                         availableLangs.push(locale.toLowerCase());
