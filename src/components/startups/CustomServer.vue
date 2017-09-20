@@ -355,7 +355,7 @@ export default {
     box-sizing: border-box;
 }
 .kiwi-customserver-form {
-    width: 300px;
+    max-width: 300px;
     margin: 0 auto;
     max-height: 500px;
     overflow: hidden;

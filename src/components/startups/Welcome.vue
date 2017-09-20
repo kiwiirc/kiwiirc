@@ -247,7 +247,7 @@ export default {
     cursor: pointer;
 }
 .kiwi-welcome-simple-form {
-    width: 300px;
+    max-width: 300px;
     margin: 2em auto;
 }
 
