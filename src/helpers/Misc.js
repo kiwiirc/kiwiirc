@@ -64,3 +64,17 @@ export function queryStringVal(_name, _url) {
 
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+
+export function networkErrorMessage(err) {
+    let errs = {
+        err_unknown_host: 'Unknown domain name or host',
+        err_forbidden: 'Forbidden to connect',
+        err_timeout: 'Took too long to connect',
+        err_refused: 'The server refused the connection',
+        err_tls: 'Could not connect securely',
+        err_proxy: 'The Kiwi IRC server had an error',
+    };
+
+    return errs[err] || 'Unknown error';
+}

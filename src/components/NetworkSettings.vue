@@ -71,6 +71,7 @@
 <script>
 
 import state from 'src/libs/state';
+import * as Misc from 'src/helpers/Misc';
 
 export default {
     data: function data() {
@@ -97,16 +98,7 @@ export default {
     },
     methods: {
         readableStateError(err) {
-            let errs = {
-                err_unknown_host: 'Unknown domain name or host',
-                err_forbidden: 'Forbidden to connect',
-                err_timeout: 'Took too long to connect',
-                err_refused: 'The server refused the connection',
-                err_tls: 'Could not connect securely',
-                err_proxy: 'The Kiwi IRC server had an error',
-            };
-
-            return errs[err] || 'Unknown error';
+            return Misc.networkErrorMessage(err);
         },
         reconnect: function reconnect() {
             this.network.ircClient.connect();

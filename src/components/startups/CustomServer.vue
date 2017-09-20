@@ -5,6 +5,8 @@
 
         <transition name="connectingloader">
         <form v-if="!is_connecting" v-on:submit.prevent="startUp" class="u-form kiwi-customserver-form">
+            <div class="kiwi-customserver-error" v-if="network && network.state_error">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
+
             <template v-if="server_type === 'default'">
                 <input-text :label="$t('server')" v-model="server">
                     <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
@@ -91,6 +93,9 @@ export default {
         };
     },
     methods: {
+        readableStateError(err) {
+            return Misc.networkErrorMessage(err);
+        },
         startUp: function startUp() {
             let net;
 
@@ -355,7 +360,7 @@ export default {
     box-sizing: border-box;
 }
 .kiwi-customserver-form {
-    width: 300px;
+    max-width: 300px;
     margin: 0 auto;
     max-height: 500px;
     overflow: hidden;
@@ -391,6 +396,16 @@ export default {
 .kiwi-customserver--connecting h2 {
     transition: margin-top .7s;
     margin-top: 100px;
+}
+
+.kiwi-customserver-error {
+    text-align: center;
+    margin: 1em 0;
+    padding: 0.3em;
+}
+.kiwi-customserver-error span {
+    display: block;
+    font-style: italic;
 }
 
 .connectingloader-enter-active, .connectingloader-leave-active {

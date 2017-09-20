@@ -6,6 +6,8 @@
 
             <template v-if="!network || network.state === 'disconnected'">
                 <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-simple-form">
+                    <div class="kiwi-welcome-simple-error" v-if="network && network.state_error">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
+
                     <input-text v-if="showNick" class="kiwi-welcome-simple-nick" :label="$t('nick')" v-model="nick" />
                     <label v-if="showPass" class="kiwi-welcome-simple-have-password">
                         <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
@@ -92,6 +94,9 @@ export default {
         },
     },
     methods: {
+        readableStateError(err) {
+            return Misc.networkErrorMessage(err);
+        },
         close: function close() {
             this.closing = true;
             this.$el.addEventListener('transitionend', (event) => {
@@ -223,6 +228,16 @@ export default {
 
 
 /** Left side */
+.kiwi-welcome-simple-error {
+    text-align: center;
+    margin: 1em 0;
+    padding: 0.3em;
+}
+.kiwi-welcome-simple-error span {
+    display: block;
+    font-style: italic;
+}
+
 .kiwi-welcome-simple-section-connection {
     left: 0;
     padding-top: 3em;
@@ -247,7 +262,7 @@ export default {
     cursor: pointer;
 }
 .kiwi-welcome-simple-form {
-    width: 300px;
+    max-width: 300px;
     margin: 2em auto;
 }
 

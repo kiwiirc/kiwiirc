@@ -466,6 +466,9 @@ h1, h2, h3, h4, h5, h6 {
 .kiwi-welcome-simple-start[disabled] {
     opacity: 0.65;
 }
+.kiwi-welcome-simple-error {
+    border: 1px dashed #d86f6f;
+}
 
 
 
