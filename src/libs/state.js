@@ -1222,15 +1222,26 @@ function initialiseBufferState(buffer) {
      */
     function addSingleMessage(newMessage) {
         messageObj.messages.push(newMessage);
-        buffer.message_count = messageObj.messages.length;
+        trimMessages();
+        buffer.message_count++;
     }
     function addMultipleMessages(newMessages) {
         messageObj.messages = messageObj.messages.concat(newMessages);
-        buffer.message_count = messageObj.messages.length;
+        trimMessages();
+        buffer.message_count++;
     }
     Object.defineProperty(buffer, 'addMessage', {
         value: batchedAdd(addSingleMessage, addMultipleMessages),
     });
+
+    function trimMessages() {
+        let scrollbackSize = buffer.setting('scrollback_size');
+        let length = messageObj.messages.length;
+
+        if (messageObj.messages.length > scrollbackSize) {
+            messageObj.messages.splice(0, length - scrollbackSize);
+        }
+    }
 
     let messageObj = {
         networkid: buffer.networkid,
