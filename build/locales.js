@@ -19,6 +19,7 @@ exports.createJsonFiles = function() {
             var complete = 0;
             var total = files.length;
 
+            // Find any app.*.po files and use them to determine which locales we have available
             files.forEach(function(file, idx) {
                 var match = file.match(/^app.([a-z_\-]+).po$/i);
                 if (!match) {
@@ -29,14 +30,16 @@ exports.createJsonFiles = function() {
                 var locale = match[1];
                 var data = new Buffer([]);
 
-                files.forEach(function (file2,idx2) {
-                    var regex = new RegExp("."+locale+".po$", "i");
-                    var match2 = file2.match(regex);
-                    if (!match2) {
+                // Find all the other locale files for this locale and join them together into a
+                // single locale translation
+                files.forEach(function (localeFilename) {
+                    var regex = new RegExp(`.${locale}.po$`, 'i');
+                    if (!localeFilename.match(regex)) {
                         return;
                     }
-                    var locale_file = source_path + file2;
-                    data = Buffer.concat([data, fs.readFileSync(locale_file)]);
+
+                    var fileContent = fs.readFileSync(source_path + localeFilename);
+                    data = Buffer.concat([data, fileContent]);
                 });
 
                 i18next_conv.gettextToI18next(locale, data)
