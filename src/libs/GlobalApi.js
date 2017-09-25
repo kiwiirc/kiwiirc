@@ -10,8 +10,8 @@ export default class GlobalApi {
         this.themes = null;
         this.controlInputPlugins = [];
         this.stateBrowserPlugins = [];
-        this.channelHeadPlugins = [];
-        this.privateHeadPlugins = [];
+        this.channelHeaderPlugins = [];
+        this.queryHeaderPlugins = [];
         this.tabs = Object.create(null);
     }
 
@@ -22,49 +22,51 @@ export default class GlobalApi {
 
     setState(state) {
         this.state = state;
-        this.state.$on('controlinput:show', e => {
-            this.controlInputPlugins.forEach(el => e.controlinput.addPlugin(el));
-        });
-        this.state.$on('statebrowser:show', e => {
-            this.stateBrowserPlugins.forEach(el => e.statebrowser.addPlugin(el));
-        });
-        this.state.$on('containerheader:show', e => {
-            if (e.container.isChannel()) {
-                this.channelHeadPlugins.forEach(el => e.container.addPlugin(el));
-            }
-            if (e.container.isQuery()) {
-                this.privateHeadPlugins.forEach(el => e.container.addPlugin(el));
-            }
-        });
     }
 
     setThemeManager(themeManager) {
         this.themes = themeManager;
     }
 
-    changeWindow(name) {
-        this.state.$emit('active.component', this.tabs[name]);
-    }
-
-    addPlugin(type, element, opts) {
+    /**
+     * addUi('input', domElement)
+     * addUi('browser', domElement)
+     * addUi('header_channel', domElement)
+     * addUi('header_query', domElement)
+     */
+    addUi(type, element) {
         switch (type) {
-        case 'controlinput':
+        case 'input':
             this.controlInputPlugins.push(element);
             break;
-        case 'statebrowser':
+        case 'browser':
             this.stateBrowserPlugins.push(element);
             break;
-        case 'channelhead':
-            this.channelHeadPlugins.push(element);
+        case 'header_channel':
+            this.channelHeaderPlugins.push(element);
             break;
-        case 'privatehead':
-            this.privateHeadPlugins.push(element);
-            break;
-        case 'tab':
-            this.tabs[element] = Vue.component(element, opts || {});
+        case 'header_query':
+            this.queryHeaderPlugins.push(element);
             break;
         default:
             break;
+        }
+    }
+
+    addTab(name, component, props) {
+        this.tabs[name] = {
+            component: Vue.extend(component),
+            props: props || {},
+        };
+    }
+
+    showTab(name) {
+        // null disables any active component and reverts the UI back to the buffers
+        let tab = this.tabs[name];
+        if (tab) {
+            this.state.$emit('active.component', tab.component, tab.props);
+        } else {
+            this.state.$emit('active.component', null);
         }
     }
 

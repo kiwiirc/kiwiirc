@@ -13,7 +13,9 @@
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a @click="joinCurrentBuffer" class="u-link">{{$t('container_join')}}</a>
             </div>
-            <div class="kiwi-header-tools" ref="plugins"></div>
+            <div class="kiwi-header-tools">
+                <div v-for="el in pluginUiChannelElements" v-rawElement="el" class="kiwi-header-tool"></div>
+            </div>
         </template>
         <template v-else-if="isServer()">
             <div v-if="buffer.getNetwork().state === 'disconnected'" class="kiwi-header-server-connection">
@@ -29,7 +31,9 @@
                 <a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a>
             </div>
             <div class="kiwi-header-name">{{$t('container_privmsg', {user: buffer.name})}}</div>
-            <div class="kiwi-header-tools" ref="plugins"></div>
+            <div class="kiwi-header-tools">
+                <div v-for="el in pluginUiQueryElements" v-rawElement="el" class="kiwi-header-tool"></div>
+            </div>
         </template>
         <template v-else-if="isSpecial()">
             <div class="kiwi-header-options">
@@ -67,6 +71,7 @@
 
 import _ from 'lodash';
 import state from 'src/libs/state';
+import GlobalApi from 'src/libs/GlobalApi';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
@@ -76,6 +81,8 @@ export default {
     data: function data() {
         return {
             buffer_settings_open: false,
+            pluginUiChannelElements: GlobalApi.singleton().channelHeaderPlugins,
+            pluginUiQueryElements: GlobalApi.singleton().queryHeaderPlugins,
         };
     },
     props: ['buffer'],
@@ -94,9 +101,6 @@ export default {
         ChannelBanlist,
     },
     methods: {
-        addPlugin: function addPlugin(domEl) {
-            this.$refs.plugins.appendChild(domEl);
-        },
         formatMessage: function formatMessage(messageBody) {
             let words = messageBody.split(' ');
             words = words.map(word => {
@@ -156,9 +160,6 @@ export default {
             // When ever the buffer changes, close the settings dropdown
             this.buffer_settings_open = false;
         },
-    },
-    mounted: function mounted() {
-        state.$emit('containerheader:show', { container: this });
     },
 };
 
