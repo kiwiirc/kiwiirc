@@ -7,6 +7,7 @@ let callbacksOnReady = [];
 export default class GlobalApi {
     constructor() {
         eventEmitter(this);
+        this.Vue = Vue;
         this.state = null;
         this.themes = null;
         this.controlInputPlugins = [];
