@@ -1,5 +1,9 @@
 <template>
     <div class="kiwi-statebrowser">
+        <div class="kiwi-statebrowser-tools">
+            <div v-for="el in pluginUiElements" v-rawElement="el" class="kiwi-statebrowser-tool"></div>
+        </div>
+
         <div
             v-if="bufferForPopup"
             class="kiwi-statebrowser-channel-popup"
@@ -74,6 +78,7 @@ import AppSettings from './AppSettings';
 import BufferSettings from './BufferSettings';
 import NetworkProvider from 'src/libs/NetworkProvider';
 import NetworkProviderZnc from 'src/libs/networkproviders/NetworkProviderZnc';
+import GlobalApi from 'src/libs/GlobalApi';
 
 let netProv = new NetworkProvider();
 
@@ -92,6 +97,7 @@ export default {
             is_usermenu_open: false,
             show_provided_networks: false,
             provided_networks: Object.create(null),
+            pluginUiElements: GlobalApi.singleton().stateBrowserPlugins,
         };
     },
     props: ['networks'],
