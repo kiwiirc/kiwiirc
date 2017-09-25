@@ -65,6 +65,14 @@ Vue.mixin({
     },
 });
 
+// Allow adding existing raw elements to component templates
+// Eg: <div v-rawElement="domElement"></div>
+Vue.directive('rawElement', {
+    bind(el, binding) {
+        el.appendChild(binding.value);
+    },
+});
+
 
 loadApp();
 

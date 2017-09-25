@@ -28,16 +28,17 @@
                 <!--<button type="submit">Send</button>-->
             </form>
             <div class="kiwi-controlinput-tools" ref="plugins">
-                <a @click.prevent="onToolClickTextStyle">
+                <a @click.prevent="onToolClickTextStyle" class="kiwi-controlinput-tool">
                     <i class="fa fa-adjust" aria-hidden="true"></i>
                 </a>
-                <a @click.prevent="onToolClickEmoji">
+                <a @click.prevent="onToolClickEmoji" class="kiwi-controlinput-tool">
                     <i class="fa fa-smile-o" aria-hidden="true"></i>
                 </a>
+                <div v-for="el in pluginUiElements" v-rawElement="el" class="kiwi-controlinput-tool"></div>
             </div>
         </div>
 
-        <div class="kiwi-controlinput-tool">
+        <div class="kiwi-controlinput-active-tool">
             <component v-bind:is="active_tool" v-bind="active_tool_props"></component>
         </div>
     </div>
@@ -48,6 +49,7 @@
 import _ from 'lodash';
 import autocompleteCommands from 'src/res/autocompleteCommands';
 import state from 'src/libs/state';
+import GlobalApi from 'src/libs/GlobalApi';
 import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
@@ -73,6 +75,7 @@ export default {
             autocomplete_filtering: true,
             active_tool: null,
             active_tool_props: {},
+            pluginUiElements: GlobalApi.singleton().controlInputPlugins,
         };
     },
     props: ['container', 'buffer'],
@@ -91,9 +94,6 @@ export default {
         },
     },
     methods: {
-        addPlugin: function addPlugin(domEl) {
-            this.$refs.plugins.appendChild(domEl);
-        },
         onToolClickTextStyle: function onToolClickTextStyle() {
             this.toggleInputTool(ToolTextStyle);
         },
@@ -351,9 +351,6 @@ export default {
             this.$refs.input.focus();
         });
     },
-    mounted: function mounted() {
-        state.$emit('controlinput:show', { controlinput: this });
-    },
 };
 </script>
 
@@ -387,12 +384,14 @@ export default {
     outline: none;
 }
 
-.kiwi-controlinput-tools > a {
+.kiwi-controlinput-tool {
     display: inline-block;
     padding: 0 1em;
+}
+.kiwi-controlinput-tool a {
     cursor: pointer;
 }
-.kiwi-controlinput-tool {
+.kiwi-controlinput-active-tool {
     position: absolute;
     bottom: 100%;
     right: 0;
