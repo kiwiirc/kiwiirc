@@ -14,6 +14,12 @@ export default class GlobalApi {
         this.channelHeaderPlugins = [];
         this.queryHeaderPlugins = [];
         this.tabs = Object.create(null);
+        this.isReady = false;
+
+        this.on('init', () => {
+            this.isReady = true;
+            this.initPlugins();
+        });
     }
 
     static singleton() {
@@ -21,8 +27,8 @@ export default class GlobalApi {
         return singletonInstance;
     }
 
-    onready(fn) {
-        if (singletonInstance) {
+    plugin(pluginName, fn) {
+        if (this.isReady) {
             fn(this);
         } else {
             callbacksOnReady.push(fn);
@@ -44,9 +50,6 @@ export default class GlobalApi {
 
     setState(state) {
         this.state = state;
-        state.$once('init', () => {
-            this.initPlugins();
-        });
     }
 
     setThemeManager(themeManager) {
