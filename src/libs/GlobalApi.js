@@ -2,6 +2,7 @@ import eventEmitter from 'event-emitter';
 import Vue from 'vue';
 
 let singletonInstance = null;
+let callbacksOnReady = [];
 
 export default class GlobalApi {
     constructor() {
@@ -20,8 +21,32 @@ export default class GlobalApi {
         return singletonInstance;
     }
 
+    onready(fn) {
+        if (singletonInstance) {
+            fn(this);
+        } else {
+            callbacksOnReady.push(fn);
+        }
+    }
+
+    // Init any plugins that were added before we were ready
+    initPlugins() {
+        callbacksOnReady.forEach(fn => {
+            try {
+                fn(this);
+            } catch (err) {
+                window.error(err);
+            }
+        });
+
+        callbacksOnReady = [];
+    }
+
     setState(state) {
         this.state = state;
+        state.$once('init', () => {
+            this.initPlugins();
+        });
     }
 
     setThemeManager(themeManager) {
