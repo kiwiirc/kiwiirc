@@ -1,5 +1,6 @@
 import eventEmitter from 'event-emitter';
 import Vue from 'vue';
+import Logger from './Logger';
 
 let singletonInstance = null;
 let callbacksOnReady = [];
@@ -55,6 +56,10 @@ export default class GlobalApi {
 
     setThemeManager(themeManager) {
         this.themes = themeManager;
+    }
+
+    logLevel(newLevel) {
+        Logger.setLevel(newLevel);
     }
 
     /**

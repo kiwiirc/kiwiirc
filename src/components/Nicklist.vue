@@ -29,6 +29,8 @@ import state from 'src/libs/state';
 import Logger from 'src/libs/Logger';
 import * as TextFormatting from 'src/helpers/TextFormatting';
 
+let log = Logger.namespace('Nicklist');
+
 export default {
     data: function data() {
         return {
@@ -56,12 +58,12 @@ export default {
             return users.sort((a, b) => {
                 if (!a.buffers[bufferId]) {
                     let msg = 'Nicklist.sortedUsers() User A does not have the buffer in its list!';
-                    Logger.error(msg, a.nick, a.buffers);
+                    log.error(msg, a.nick, a.buffers);
                     return -1;
                 }
                 if (!b.buffers[bufferId]) {
                     let msg = 'Nicklist.sortedUsers() User B does not have the buffer in its list!';
-                    Logger.error(msg, b.nick, b.buffers);
+                    log.error(msg, b.nick, b.buffers);
                     return 1;
                 }
 

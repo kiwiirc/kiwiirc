@@ -22,6 +22,13 @@ import 'src/components/utils/InputText';
 import 'src/components/utils/IrcInput';
 import 'src/components/utils/InputPrompt';
 
+let logLevelMatch = window.location.href.match(/kiwi-loglevel=(\d)/);
+if (logLevelMatch && logLevelMatch[1]) {
+    Logger.setLevel(parseInt(logLevelMatch[1], 10));
+}
+
+let log = Logger.namespace('main');
+
 // Add the global API as soon as possible so that things can start listening to it
 let api = window.kiwi = GlobalApi.singleton();
 
@@ -97,7 +104,7 @@ function loadApp() {
         try {
             configObj = window.kiwiConfig();
         } catch (err) {
-            Logger.error('Config file: ' + err.stack);
+            log.error('Config file: ' + err.stack);
             showError();
         }
     } else if (document.querySelector('meta[name="kiwiconfig"]')) {
@@ -108,7 +115,7 @@ function loadApp() {
         try {
             configObj = JSON.parse(configContents);
         } catch (parseErr) {
-            Logger.error('Config file: ' + parseErr.stack);
+            log.error('Config file: ' + parseErr.stack);
             showError();
         }
     }
@@ -207,7 +214,8 @@ function initLocales() {
 async function initState() {
     let stateKey = state.settings.startupOptions.state_key;
 
-    let persist = new StatePersistence(stateKey || '', state, Storage, Logger);
+    let persistLog = Logger.namespace('StatePersistence');
+    let persist = new StatePersistence(stateKey || '', state, Storage, persistLog);
     persist.includeBuffers = !!state.settings.startupOptions.remember_buffers;
 
     if (stateKey) {
@@ -242,9 +250,9 @@ function startApp() {
 
 function showError(err) {
     if (err) {
-        Logger.error('Error starting Kiwi IRC:', err);
+        log.error('Error starting Kiwi IRC:', err);
     } else {
-        Logger.error('Unknown error starting Kiwi IRC');
+        log.error('Unknown error starting Kiwi IRC');
     }
 
     /* eslint-disable no-new */

@@ -38,7 +38,9 @@
 
 import _ from 'lodash';
 import state from 'src/libs/state';
-import logger from 'src/libs/Logger';
+import Logger from 'src/libs/Logger';
+
+let log = Logger.namespace('Startup/kiwiBnc');
 
 export default {
     created: function created() {
@@ -117,7 +119,7 @@ export default {
                         network.buffers = buffers;
                     } catch (err) {
                         // Log the error here or something
-                        logger.error(err);
+                        log.error(err);
                     }
 
                     this.addNetworkToState(network);

@@ -56,9 +56,11 @@ import MediaViewer from 'src/components/MediaViewer';
 import * as Notifications from 'src/libs/Notifications';
 import * as AudioBleep from 'src/libs/AudioBleep';
 import ThemeManager from 'src/libs/ThemeManager';
-import logger from 'src/libs/Logger';
+import Logger from 'src/libs/Logger';
 import state from 'src/libs/state';
 import InputHandler from 'src/libs/InputHandler';
+
+let log = Logger.namespace('App.vue');
 
 /* eslint-disable no-new */
 new InputHandler(state);
@@ -129,7 +131,7 @@ export default {
         let startup = extraStartupScreens[startupName] || startupScreens[startupName];
 
         if (!startup) {
-            logger.error(`Startup screen "${startupName}" does not exist`);
+            Logger.error(`Startup screen "${startupName}" does not exist`);
         } else {
             this.startupComponent = startup;
         }
@@ -183,7 +185,7 @@ export default {
     methods: {
         // Triggered by a startup screen event
         startUp: function startUp(opts) {
-            logger('startUp()');
+            log('startUp()');
             if (opts && opts.fallbackComponent) {
                 this.fallbackComponent = opts.fallbackComponent;
             }

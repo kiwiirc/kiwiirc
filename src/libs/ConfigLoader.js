@@ -2,6 +2,8 @@ import xhr from 'xhr';
 import _ from 'lodash';
 import Logger from './Logger';
 
+let log = Logger.namespace('ConfigLoader');
+
 export default class ConfigLoader {
     constructor() {
         this.config = Object.create(null);
@@ -19,7 +21,7 @@ export default class ConfigLoader {
                 try {
                     configObj = JSON.parse(response.body);
                 } catch (parseErr) {
-                    Logger.error('Config file: ' + parseErr.stack);
+                    log.error('Config file: ' + parseErr.stack);
                     reject();
                     return;
                 }
