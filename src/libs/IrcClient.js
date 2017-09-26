@@ -65,6 +65,7 @@ export function create(state, networkid) {
             ircClient.options.tls = network.connection.tls;
             ircClient.options.password = network.connection.password;
             ircClient.options.nick = network.nick;
+            ircClient.options.username = network.username;
             ircClient.options.encoding = network.connection.encoding;
         }
 
