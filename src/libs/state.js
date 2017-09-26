@@ -430,7 +430,7 @@ const state = new Vue({
 
         resetState: function resetState() {
             this.$set(this.$data, 'networks', []);
-            this.$set(this.$data, 'messages', []);
+            messages.splice(0);
         },
 
         setting: function setting(name, val) {
