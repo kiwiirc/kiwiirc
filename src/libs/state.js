@@ -48,6 +48,8 @@ const stateObj = {
             show_emoticons: true,
             extra_formatting: true,
             mute_sound: false,
+            default_ban_mask: '*!%i@%h',
+            default_kick_reason: 'Your behavior is not conducive to the desired environment.',
         },
         // Startup screen default
         startupOptions: {
