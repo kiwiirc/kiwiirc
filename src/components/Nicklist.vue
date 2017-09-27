@@ -56,43 +56,49 @@ export default {
 
             let bufferId = this.buffer.id;
             return users.sort((a, b) => {
-                if (!a.buffers[bufferId]) {
+                let bufferA = a.buffers[bufferId];
+                let bufferB = b.buffers[bufferId];
+
+                if (!bufferA) {
                     let msg = 'Nicklist.sortedUsers() User A does not have the buffer in its list!';
                     log.error(msg, a.nick, a.buffers);
                     return -1;
                 }
-                if (!b.buffers[bufferId]) {
+                if (!bufferB) {
                     let msg = 'Nicklist.sortedUsers() User B does not have the buffer in its list!';
                     log.error(msg, b.nick, b.buffers);
                     return 1;
                 }
 
+                let modesA = a.buffers[bufferId].modes;
+                let modesB = b.buffers[bufferId].modes;
+
                 // Neither user has a prefix, compare text
                 if (
-                    a.buffers[bufferId].modes.length === 0 &&
-                    b.buffers[bufferId].modes.length === 0
+                    modesA.length === 0 &&
+                    modesB.length === 0
                 ) {
                     return a.nick.localeCompare(b.nick);
                 }
 
                 // Compare via prefixes..
                 if (
-                    a.buffers[bufferId].modes.length > 0 &&
-                    b.buffers[bufferId].modes.length === 0
+                    modesA.length > 0 &&
+                    modesB.length === 0
                 ) {
                     return -1;
                 }
 
                 if (
-                    a.buffers[bufferId].modes.length === 0 &&
-                    b.buffers[bufferId].modes.length > 0
+                    modesA.length === 0 &&
+                    modesB.length > 0
                 ) {
                     return 1;
                 }
 
                 // Both users have a prefix so find the highest ranking one
-                let aP = prefixOrders[a.buffers[bufferId].modes];
-                let bP = prefixOrders[b.buffers[bufferId].modes];
+                let aP = prefixOrders[modesA];
+                let bP = prefixOrders[modesB];
                 if (aP > bP) {
                     return 1;
                 } else if (aP < bP) {
