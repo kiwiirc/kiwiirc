@@ -183,15 +183,23 @@ export default {
             });
         },
         kickUser: function kickUser() {
-            let reason = 'Your behavior is not conducive to the desired environment.';
+            let reason = state.setting('buffers.default_kick_reason');
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
+        },
+        banMask: function banMask() {
+            let mask = state.setting('buffers.default_ban_type');
+            mask = mask.replace('%n', this.user.nick);
+            mask = mask.replace('%i', this.user.username);
+            mask = mask.replace('%h', this.user.host);
+
+            return mask;
         },
         banUser: function banUser() {
             if (!this.user.username || !this.user.host) {
                 return;
             }
 
-            let banMask = `*!${this.user.username}@${this.user.host}`;
+            let banMask = this.banMask();
             this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
         },
         kickbanUser: function kickbanuser() {
@@ -199,8 +207,8 @@ export default {
                 return;
             }
 
-            let banMask = `*!${this.user.username}@${this.user.host}`;
-            let reason = 'Your behavior is not conducive to the desired environment.';
+            let banMask = this.banMask();
+            let reason = state.setting('buffers.default_kick_reason');
             this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
         },

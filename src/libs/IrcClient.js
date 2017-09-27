@@ -318,6 +318,10 @@ function clientMiddleware(state, networkid) {
 
             let messageBody = '';
 
+            if (event.message === event.nick) {
+                event.message = state.setting('buffers.default_kick_reason');
+            }
+
             if (event.kicked === client.user.nick) {
                 buffer.joined = false;
                 messageBody = TextFormatting.formatText('channel_selfkick', {
