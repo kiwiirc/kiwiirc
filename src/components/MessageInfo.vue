@@ -49,7 +49,7 @@ export default {
         },
         onKick: function onKick(promptedReason) {
             let network = this.buffer.getNetwork();
-            let defaultReason = state.setting('buffer.default_kick_reason');
+            let defaultReason = state.setting('buffers.default_kick_reason');
             let reason = promptedReason || defaultReason;
             network.ircClient.raw('KICK', this.buffer.name, this.message.nick, reason);
         },
