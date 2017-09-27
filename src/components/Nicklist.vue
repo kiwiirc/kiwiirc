@@ -104,8 +104,8 @@ export default {
                 }
 
                 // Both users have a prefix so find the highest ranking one
-                let aP = prefixOrders[modesA];
-                let bP = prefixOrders[modesB];
+                let aP = prefixOrders[modesA[0]];
+                let bP = prefixOrders[modesB[0]];
                 if (aP > bP) {
                     return 1;
                 } else if (aP < bP) {
