@@ -198,6 +198,18 @@ msgstr "Never"
 msgid "settings_notify_mute"
 msgstr "Mute sounds"
 
+#: operator_tools
+msgid "operator_tools"
+msgstr "Operator tools"
+
+#: settings_default_ban_mask
+msgid "settings_default_ban_mask"
+msgstr "Default ban mask"
+
+#: settings_default_kick_reason
+msgid "settings_default_kick_reason"
+msgstr "Default kick reason"
+
 
 
 #: ChannelBanlist $t('bans_')
