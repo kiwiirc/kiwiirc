@@ -186,8 +186,8 @@ export default {
             let reason = state.setting('buffers.default_kick_reason');
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
         },
-        banMask: function banMask() {
-            let mask = state.setting('buffers.default_ban_type');
+        createBanMask: function banMask() {
+            let mask = state.setting('buffers.default_ban_mask');
             mask = mask.replace('%n', this.user.nick);
             mask = mask.replace('%i', this.user.username);
             mask = mask.replace('%h', this.user.host);
@@ -199,7 +199,7 @@ export default {
                 return;
             }
 
-            let banMask = this.banMask();
+            let banMask = this.createBanMask();
             this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
         },
         kickbanUser: function kickbanuser() {
@@ -207,7 +207,7 @@ export default {
                 return;
             }
 
-            let banMask = this.banMask();
+            let banMask = this.createBanMask();
             let reason = state.setting('buffers.default_kick_reason');
             this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);

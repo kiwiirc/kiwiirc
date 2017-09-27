@@ -51,7 +51,7 @@
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-operator-tools">
                         <h3>{{$t('operator_tools')}}</h3>
-                        <label><span>{{$t('settings_default_ban_type')}}: </span> <input type="text" class="u-input" v-model="settingDefaultBanType" /></label>
+                        <label><span>{{$t('settings_default_ban_mask')}}: </span> <input type="text" class="u-input" v-model="settingDefaultBanMask" /></label>
                         <label><span>{{$t('settings_default_kick_reason')}}: </span> <input type="text" class="u-input" v-model="settingDefaultKickReason" /></label>
                     </div>
                 </tabbed-tab>
@@ -127,7 +127,7 @@ export default {
         settingBufferExtraFormatting: bindSetting('buffers.extra_formatting'),
         settingBufferTrafficAsActivity: bindSetting('buffers.traffic_as_activity'),
         settingBufferMuteSound: bindSetting('buffers.mute_sound'),
-        settingDefaultBanType: bindSetting('buffers.default_ban_type'),
+        settingDefaultBanMask: bindSetting('buffers.default_ban_mask'),
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
         settingMessageLayout: {
             get: function getSettingMessageLayout() {
