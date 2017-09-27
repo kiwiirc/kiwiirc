@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-nicklist">
-        <div class="kiwi-nicklist-info">{{$t('person', {count: bufferUsers.length})}}</div>
+        <div class="kiwi-nicklist-info">{{$t('person', {count: sortedUsers.length})}}</div>
         <ul class="kiwi-nicklist-users">
             <li
                 v-for="user in sortedUsers"
@@ -31,6 +31,16 @@ import * as TextFormatting from 'src/helpers/TextFormatting';
 
 let log = Logger.namespace('Nicklist');
 
+// Hot function, so it's here for easier caching
+function strCompare(a, b) {
+    if (a === b) {
+        return 0;
+    }
+    return a > b ?
+        1 :
+        -1;
+}
+
 export default {
     data: function data() {
         return {
@@ -39,9 +49,6 @@ export default {
     },
     props: ['network', 'buffer', 'users'],
     computed: {
-        bufferUsers: function bufferUsers() {
-            return _.values(this.buffer.users);
-        },
         sortedUsers: function sortedUsers() {
             // Get a list of network prefixes and give them a rank number
             let netPrefixes = this.network.ircClient.network.options.PREFIX;
@@ -52,7 +59,7 @@ export default {
 
             // Since vuejs will sort in-place and update views when .sort is called
             // on an array, clone it first so that we have a plain array to sort
-            let users = _.clone(this.bufferUsers);
+            let users = _.values(this.buffer.users);
 
             let bufferId = this.buffer.id;
             return users.sort((a, b) => {
@@ -70,15 +77,15 @@ export default {
                     return 1;
                 }
 
-                let modesA = a.buffers[bufferId].modes;
-                let modesB = b.buffers[bufferId].modes;
+                let modesA = bufferA.modes;
+                let modesB = bufferB.modes;
 
                 // Neither user has a prefix, compare text
                 if (
                     modesA.length === 0 &&
                     modesB.length === 0
                 ) {
-                    return a.nick.localeCompare(b.nick);
+                    return strCompare(a.nick, b.nick);
                 }
 
                 // Compare via prefixes..
@@ -106,7 +113,7 @@ export default {
                 }
 
                 // Prefixes are the same, resort to comparing text
-                return a.nick.localeCompare(b.nick);
+                return strCompare(a.nick, b.nick);
             });
         },
         useColouredNicks: function useColouredNicks() {
