@@ -367,7 +367,7 @@ const state = new Vue({
                         auto_commands: network.auto_commands,
                         settings: _.cloneDeep(network.settings),
                         nick: network.nick,
-                        username: network.username,
+                        gecos: network.gecos,
                         password: network.password,
                         buffers: [],
                     };
@@ -405,7 +405,7 @@ const state = new Vue({
                     network.auto_commands = importNetwork.auto_commands || '';
                     network.settings = importNetwork.settings;
                     network.nick = importNetwork.nick;
-                    network.username = importNetwork.username;
+                    network.gecos = importNetwork.gecos;
                     network.password = importNetwork.password;
 
                     this.networks.push(network);
@@ -514,6 +514,7 @@ const state = new Vue({
             network.name = name;
             network.nick = nick;
             network.username = serverInfo.username;
+            network.gecos = serverInfo.gecos;
             network.password = serverInfo.password;
             network.connection.server = serverInfo.server || '';
             network.connection.port = serverInfo.port || 6667;
@@ -946,6 +947,7 @@ function createEmptyNetworkObject() {
         settings: {},
         nick: '',
         username: '',
+        gecos: '',
         password: '',
         buffers: [],
         users: Object.create(null),
