@@ -1,14 +1,14 @@
 #: Close
 msgid "close"
-msgstr ""
+msgstr "закрыть"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "подключится"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "подключение"
 
 #: Connected
 msgid "connected"
@@ -180,6 +180,18 @@ msgstr ""
 
 #: Mute sounds
 msgid "settings_notify_mute"
+msgstr ""
+
+#: operator_tools
+msgid "operator_tools"
+msgstr ""
+
+#: settings_default_ban_mask
+msgid "settings_default_ban_mask"
+msgstr ""
+
+#: settings_default_kick_reason
+msgid "settings_default_kick_reason"
 msgstr ""
 
 #: Refresh banlist

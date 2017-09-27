@@ -60,11 +60,11 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "Verificant credencials..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "Credencials invàlides"
 
 #: Realname field in a users whois
 msgid "whois_realname"
@@ -108,7 +108,7 @@ msgstr "URL del tema"
 
 #: Use Monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Fer servir la font Monospace"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -136,7 +136,7 @@ msgstr "Bloquejar privats nous"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "Missatges a l'històric"
 
 #: Extra formatting
 msgid "settings_formatting"
@@ -181,6 +181,18 @@ msgstr "Mai"
 #: Mute sounds
 msgid "settings_notify_mute"
 msgstr "Deshabilitar el so"
+
+#: operator_tools
+msgid "operator_tools"
+msgstr ""
+
+#: settings_default_ban_mask
+msgid "settings_default_ban_mask"
+msgstr ""
+
+#: settings_default_kick_reason
+msgid "settings_default_kick_reason"
+msgstr ""
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -447,7 +459,7 @@ msgstr "Banejar del canal"
 
 #: Kick + Ban from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "Kick + Ban del canal"
 
 #: Your IRC client
 msgid "personal_client"

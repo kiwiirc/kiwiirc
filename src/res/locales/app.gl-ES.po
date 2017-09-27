@@ -182,6 +182,18 @@ msgstr "Nunca"
 msgid "settings_notify_mute"
 msgstr "Deshabilitar sons"
 
+#: operator_tools
+msgid "operator_tools"
+msgstr ""
+
+#: settings_default_ban_mask
+msgid "settings_default_ban_mask"
+msgstr ""
+
+#: settings_default_kick_reason
+msgid "settings_default_kick_reason"
+msgstr ""
+
 #: Refresh banlist
 msgid "bans_refresh"
 msgstr "Actualizar lista de baneos"
