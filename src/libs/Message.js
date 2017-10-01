@@ -27,6 +27,11 @@ export default class Message {
             return this.html;
         }
 
+        // We only want to format emojis + extra formatting for actual message buffers. Other
+        // buffers such as *raw shouldnt have highlights or emojis
+        let allowCharacterReplacements = messageList.buffer.isQuery() ||
+            messageList.buffer.isChannel();
+
         let words = this.message.split(' ');
         words = words.map((word, wordIdx) => {
             let parsed;
@@ -46,7 +51,7 @@ export default class Message {
             parsed = TextFormatting.linkifyUsers(word, messageList.buffer.users);
             if (parsed !== word) return parsed;
 
-            if (state.setting('buffers.show_emoticons')) {
+            if (allowCharacterReplacements && state.setting('buffers.show_emoticons')) {
                 parsed = TextFormatting.addEmojis(
                     { word, words, wordIdx },
                     state.setting('emojis'),
@@ -59,7 +64,9 @@ export default class Message {
         });
 
         let parsed = words.join(' ');
-        let useExtraFormatting = messageList.useExtraFormatting && this.type === 'privmsg';
+        let useExtraFormatting = allowCharacterReplacements &&
+            messageList.useExtraFormatting &&
+            this.type === 'privmsg';
 
         parsed = TextFormatting.ircCodesToHtml(parsed, useExtraFormatting);
 
