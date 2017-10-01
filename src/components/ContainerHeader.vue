@@ -8,6 +8,9 @@
     >
 
         <template v-if="isChannel()">
+            <div class="kiwi-header-options">
+                <a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a>
+            </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div v-if="isJoined" class="kiwi-header-topic"></div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
