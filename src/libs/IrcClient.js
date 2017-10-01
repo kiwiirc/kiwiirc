@@ -320,6 +320,7 @@ function clientMiddleware(state, networkid) {
 
             if (event.kicked === client.user.nick) {
                 buffer.joined = false;
+                buffer.clearUsers();
                 messageBody = TextFormatting.formatText('channel_selfkick', {
                     nick: event.nick,
                     username: event.ident,
@@ -353,6 +354,7 @@ function clientMiddleware(state, networkid) {
             state.removeUserFromBuffer(buffer, event.nick);
             if (event.nick === client.user.nick) {
                 buffer.joined = false;
+                buffer.clearUsers();
             }
 
             let messageBody = TextFormatting.formatText('channel_part', {
@@ -379,6 +381,7 @@ function clientMiddleware(state, networkid) {
 
                 if (event.nick === client.user.nick) {
                     buffer.joined = false;
+                    buffer.clearUsers();
                 }
 
                 let messageBody = TextFormatting.formatText('channel_quit', {

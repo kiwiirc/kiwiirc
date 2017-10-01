@@ -1218,6 +1218,19 @@ function initialiseBufferState(buffer) {
             }
         },
     });
+    Object.defineProperty(buffer, 'clearUsers', {
+        value: function clearUsers() {
+            // Users could be queued to be added, so make sure to clear them as they
+            // would just be added again. Eg. user joins/parts during a flood
+            buffer.addUser.queue().splice(0);
+
+            _.each(buffer.users, (userObj, nick) => {
+                delete userObj.buffers[buffer.id];
+            });
+
+            state.$set(buffer, 'users', {});
+        },
+    });
 
     /**
      * batch up floods of new messages for a huge performance gain
