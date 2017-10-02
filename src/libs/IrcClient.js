@@ -15,7 +15,7 @@ export function create(state, networkid) {
         password: network.connection.password,
         nick: network.nick,
         username: network.username || network.nick,
-        gecos: 'https://kiwiirc.com/',
+        gecos: network.gecos || 'https://kiwiirc.com/',
         version: 'Kiwi IRC',
         auto_reconnect: false,
         encoding: network.connection.encoding,
@@ -66,6 +66,7 @@ export function create(state, networkid) {
             ircClient.options.password = network.connection.password;
             ircClient.options.nick = network.nick;
             ircClient.options.username = network.username;
+            ircClient.options.gecos = network.gecos;
             ircClient.options.encoding = network.connection.encoding;
         }
 
