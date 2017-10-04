@@ -161,7 +161,13 @@ export default {
         },
         selectCurrentItem: function selectCurrentItem() {
             let item = this.selectedItem;
-            this.$emit('selected', item.value || item.text, item);
+            let value = '';
+
+            if (item) {
+                value = item.value || item.text;
+            }
+
+            this.$emit('selected', value, item);
         },
         cancel: function cancel() {
             this.$emit('cancel');
