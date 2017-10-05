@@ -1100,24 +1100,50 @@ function initialiseBufferState(buffer) {
         },
     });
     Object.defineProperty(buffer, 'requestScrollback', {
-        value: function requestScrollback() {
+        value: function requestScrollback(_direction) {
+            let direction = _direction || 'backward';
             let time = '';
-            let lastMessage = this.getMessages().reduce((earliest, current) => {
-                if (earliest.time && earliest.time < current.time) {
-                    return earliest;
-                }
-                return current;
-            }, this.getMessages()[0]);
+            // Negative number gets messages before the timestamps, positive gets messages after
+            let numMessages = -50;
 
-            if (lastMessage) {
-                time = strftime('%FT%T.%L%:z', new Date(lastMessage.time));
+            // Going backwards takes the earliest message we already have and requests messages
+            // before it. Going forward takes the last emssage we have and requests messages after
+            // it.
+
+            if (direction === 'backward') {
+                let lastMessage = this.getMessages().reduce((earliest, current) => {
+                    let validType = earliest.type !== 'traffic';
+                    if (validType && earliest.time && earliest.time < current.time) {
+                        return earliest;
+                    }
+                    return current;
+                }, this.getMessages()[0]);
+
+                numMessages = -50;
+                time = lastMessage ?
+                    new Date(lastMessage.time) :
+                    new Date();
+            } else if (direction === 'forward') {
+                let firstMessage = this.getMessages().reduce((latest, current) => {
+                    let validType = latest.type !== 'traffic';
+                    if (validType && latest.time && latest.time > current.time) {
+                        return latest;
+                    }
+                    return current;
+                }, this.getMessages()[0]);
+
+                numMessages = 50;
+                time = firstMessage ?
+                    new Date(firstMessage.time) :
+                    new Date();
             } else {
-                time = strftime('%FT%T.%L%:z', new Date());
+                throw new Error('Invalid direction for requestScrollback(): ' + _direction);
             }
 
-            let ircClient = this.getNetwork().ircClient;
-            ircClient.raw(`CHATHISTORY ${this.name} timestamp=${time} message_count=50`);
-            ircClient.once('batch end chathistory', (event) => {
+            let irc = this.getNetwork().ircClient;
+            let timeStr = strftime('%FT%T.%L%:z', time);
+            irc.raw(`CHATHISTORY ${this.name} timestamp=${timeStr} message_count=${numMessages}`);
+            irc.once('batch end chathistory', (event) => {
                 if (event.commands.length === 0) {
                     this.flags.chathistory_available = false;
                 } else {
@@ -1144,7 +1170,8 @@ function initialiseBufferState(buffer) {
 
                 // If running under a bouncer, set it on the server-side too
                 let network = buffer.getNetwork();
-                if (!buffer.isSpecial() && network.connection.bncname) {
+                let allowedUpdate = buffer.isChannel() || buffer.isQuery();
+                if (allowedUpdate && network.connection.bncname) {
                     let lastMessage = buffer.getMessages().reduce((latest, current) => {
                         if (latest.time && latest.time > current.time) {
                             return latest;

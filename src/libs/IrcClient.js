@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import strftime from 'strftime';
 import Irc from 'irc-framework/browser';
 import bouncerMiddleware from './BouncerMiddleware';
 import * as ServerConnection from './ServerConnection';
@@ -91,7 +92,9 @@ export function create(state, networkid) {
 
 function clientMiddleware(state, networkid) {
     let network = state.getNetwork(networkid);
-    let hasRequestedInitialChathistory = false;
+    let numConnects = 0;
+    // Requested chathistory for this connection yet
+    let requestedCh = false;
 
     return function middlewareFn(client, rawEvents, parsedEvents) {
         parsedEvents.use(parsedEventsHandler);
@@ -161,6 +164,10 @@ function clientMiddleware(state, networkid) {
                     }
                 });
             }
+
+            // Haven't yet requested chathistory for this connection
+            requestedCh = false;
+            numConnects++;
         }
 
         if (command === 'server options') {
@@ -169,16 +176,25 @@ function clientMiddleware(state, networkid) {
                 network.name = client.network.name;
             }
 
-            // Get some history for our open queries. Channels handle themselves in their JOIN event
             let historySupport = !!network.ircClient.network.supports('chathistory');
-            if (!hasRequestedInitialChathistory && historySupport) {
+
+            // If this is a reconnect then request chathistory from our last position onwards
+            // to get any missed messages. (bouncer mode only)
+            if (numConnects > 1 && !requestedCh && historySupport && network.connection.bncname) {
+                requestedCh = true;
                 network.buffers.forEach(buffer => {
-                    if (!buffer.isSpecial()) {
-                        buffer.requestScrollback();
+                    if (buffer.isChannel() || buffer.isQuery()) {
+                        buffer.requestScrollback('forward');
                     }
                 });
+            }
 
-                hasRequestedInitialChathistory = true;
+            // The first time we connect in bouncer mode, request the last 50 messages for every
+            // buffer we have
+            if (numConnects === 1 && !requestedCh && historySupport && network.connection.bncname) {
+                requestedCh = true;
+                let time = strftime('%FT%T.%L%:z', new Date());
+                network.ircClient.raw(`CHATHISTORY * timestamp=${time} message_count=-50`);
             }
         }
 
