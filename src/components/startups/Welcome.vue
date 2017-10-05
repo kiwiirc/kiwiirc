@@ -121,6 +121,7 @@ export default {
                     password: this.password,
                     encoding: _.trim(options.encoding),
                     direct: !!options.direct,
+                    gecos: options.gecos,
                 });
             } else {
                 net = this.network;
