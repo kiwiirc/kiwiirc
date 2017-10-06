@@ -8,7 +8,12 @@
         </div>
 
         <template v-for="(message, idx) in filteredMessages">
-            <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator"><span>{{$t('unread_messages')}}</span></div>
+            <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator">
+                <span>{{$t('unread_messages')}}</span>
+            </div>
+            <div v-if="shouldShowDateChangeMarker(idx)" class="kiwi-messagelist-seperator">
+                <span>{{(new Date(message.time)).toDateString()}}</span>
+            </div>
 
             <message-list-message-modern
                 v-if="listType === 'modern'"
@@ -171,6 +176,21 @@ export default {
 
             // If the last message has been read, and this message not read
             if (previous && previous.time < lastRead && current.time > lastRead) {
+                return true;
+            }
+
+            return false;
+        },
+        shouldShowDateChangeMarker(idx) {
+            let previous = this.filteredMessages[idx - 1];
+            let current = this.filteredMessages[idx];
+
+            if (!previous) {
+                return false;
+            }
+
+            // If the last message has been read, and this message not read
+            if ((new Date(previous.time)).getDay() !== (new Date(current.time)).getDay()) {
                 return true;
             }
 
