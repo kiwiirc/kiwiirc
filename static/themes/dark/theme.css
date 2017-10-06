@@ -335,6 +335,16 @@ h1, h2, h3, h4, h5, h6 {
     cursor: default;
 }
 
+.kiwi-messagelist-seperator:after {
+    border-color: #383838;
+}
+.kiwi-messagelist-seperator > span {
+    background: #201f1f;
+}
+.kiwi-messagelist-seperator + .kiwi-messagelist-message {
+    border-top: none;
+}
+
 .kiwi-messagelist-body .kiwi-nick {
 }
 

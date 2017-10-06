@@ -7,22 +7,24 @@
             <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
-        <message-list-message-modern
-            v-if="listType === 'modern'"
-            v-for="(message, idx) in filteredMessages"
-            :message="message"
-            :idx="idx"
-            :ml="thisMl"
-            :key="message.id"
-        ></message-list-message-modern>
-        <message-list-message-compact
-            v-if="listType !== 'modern'"
-            v-for="(message, idx) in filteredMessages"
-            :message="message"
-            :idx="idx"
-            :ml="thisMl"
-            :key="message.id"
-        ></message-list-message-compact>
+        <template v-for="(message, idx) in filteredMessages">
+            <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator"><span>{{$t('unread_messages')}}</span></div>
+
+            <message-list-message-modern
+                v-if="listType === 'modern'"
+                :message="message"
+                :idx="idx"
+                :ml="thisMl"
+                :key="message.id"
+            ></message-list-message-modern>
+            <message-list-message-compact
+                v-if="listType !== 'modern'"
+                :message="message"
+                :idx="idx"
+                :ml="thisMl"
+                :key="message.id"
+            ></message-list-message-compact>
+        </template>
     </div>
 </template>
 
@@ -157,6 +159,22 @@ export default {
                 this.message_info_open = message;
                 this.$nextTick(this.maybeScrollToBottom.bind(this));
             }
+        },
+        shouldShowUnreadMarker(idx) {
+            let previous = this.filteredMessages[idx - 1];
+            let current = this.filteredMessages[idx];
+            let lastRead = this.buffer.last_read;
+
+            if (!lastRead) {
+                return false;
+            }
+
+            // If the last message has been read, and this message not read
+            if (previous && previous.time < lastRead && current.time > lastRead) {
+                return true;
+            }
+
+            return false;
         },
         canShowInfoForMessage: function canShowInfoForMessage(message) {
             let showInfoForTypes = ['privmsg', 'notice', 'action'];
@@ -317,4 +335,23 @@ export default {
     display: none;
 }
 
+.kiwi-messagelist-seperator {
+    text-align: center;
+    display: block;
+    margin: 1em;
+}
+.kiwi-messagelist-seperator > span {
+    background: #fff;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    padding: 0 1em;
+}
+.kiwi-messagelist-seperator:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid blue;
+    position: relative;
+    top: -0.8em;
+}
 </style>

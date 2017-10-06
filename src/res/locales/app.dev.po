@@ -310,6 +310,10 @@ msgstr "Loading {{url}}..."
 msgid "messages_load"
 msgstr "Load previous messages"
 
+#: Unread Messages
+msgid "unread_messages"
+msgstr "Unread Messages"
+
 
 
 #: NetworkSettings $t('settings_')

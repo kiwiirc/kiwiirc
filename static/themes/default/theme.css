@@ -344,6 +344,13 @@
     border-left-color: #d4e5f1;
 }
 
+.kiwi-messagelist-seperator:after {
+    border-color: #ddd;
+}
+.kiwi-messagelist-seperator + .kiwi-messagelist-message {
+    border-top: none;
+}
+
 .kiwi-messagelist-body .kiwi-nick {
 }
 
