@@ -8,11 +8,11 @@
         </div>
 
         <template v-for="(message, idx) in filteredMessages">
-            <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator">
-                <span>{{$t('unread_messages')}}</span>
-            </div>
             <div v-if="shouldShowDateChangeMarker(idx)" class="kiwi-messagelist-seperator">
                 <span>{{(new Date(message.time)).toDateString()}}</span>
+            </div>
+            <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator">
+                <span>{{$t('unread_messages')}}</span>
             </div>
 
             <message-list-message-modern
