@@ -184,15 +184,15 @@ msgstr "Deshabilitar sons"
 
 #: operator_tools
 msgid "operator_tools"
-msgstr ""
+msgstr "Ferramentas do Operador"
 
 #: settings_default_ban_mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Máscara de ban por defecto"
 
 #: settings_default_kick_reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "Mensaxe de expulsión por defecto"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -265,6 +265,10 @@ msgstr "Cargando {{url}}..."
 #: Load previous
 msgid "messages_load"
 msgstr "Cargar mensaxes anteriores"
+
+#: Unread Messages
+msgid "unread_messages"
+msgstr ""
 
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"

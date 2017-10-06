@@ -266,6 +266,10 @@ msgstr "Зареждане на  {{url}}..."
 msgid "messages_load"
 msgstr "Зареждане на предишни"
 
+#: Unread Messages
+msgid "unread_messages"
+msgstr ""
+
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"
 msgstr "Мрежови настройки"

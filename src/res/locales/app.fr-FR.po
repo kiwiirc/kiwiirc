@@ -266,6 +266,10 @@ msgstr ""
 msgid "messages_load"
 msgstr ""
 
+#: Unread Messages
+msgid "unread_messages"
+msgstr ""
+
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"
 msgstr ""

@@ -184,15 +184,15 @@ msgstr "Desativar sons"
 
 #: operator_tools
 msgid "operator_tools"
-msgstr ""
+msgstr "Ferramentas de Op"
 
 #: settings_default_ban_mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Máscara de ban predefinida"
 
 #: settings_default_kick_reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "Mensagem de kick predefinida"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -265,6 +265,10 @@ msgstr "Carregando {{url}}..."
 #: Load previous
 msgid "messages_load"
 msgstr "Carregar mensagens anteriores"
+
+#: Unread Messages
+msgid "unread_messages"
+msgstr "Mensagens não lidas"
 
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"

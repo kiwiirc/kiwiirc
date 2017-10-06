@@ -266,6 +266,10 @@ msgstr "Duke u hapur"
 msgid "messages_load"
 msgstr "Shfleto te vjetra"
 
+#: Unread Messages
+msgid "unread_messages"
+msgstr ""
+
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"
 msgstr "Veglat e rrjetit"

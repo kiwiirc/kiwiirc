@@ -184,15 +184,15 @@ msgstr "Deshabilitar el so"
 
 #: operator_tools
 msgid "operator_tools"
-msgstr ""
+msgstr "Eines d'operador"
 
 #: settings_default_ban_mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Màscara dels bans per defecte"
 
 #: settings_default_kick_reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "Motiu d'expulsió per defecte"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -265,6 +265,10 @@ msgstr "Carregant {{url}}..."
 #: Load previous
 msgid "messages_load"
 msgstr "Carregar l'anterior"
+
+#: Unread Messages
+msgid "unread_messages"
+msgstr ""
 
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"

@@ -427,7 +427,7 @@ msgstr "Is a bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is avaiable for help"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"

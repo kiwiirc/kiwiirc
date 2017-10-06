@@ -184,15 +184,15 @@ msgstr "Вимкнути звуки"
 
 #: operator_tools
 msgid "operator_tools"
-msgstr ""
+msgstr "Інструменти оператора"
 
 #: settings_default_ban_mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Типовий шаблон блокування"
 
 #: settings_default_kick_reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "Типова причина виштовхування"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -265,6 +265,10 @@ msgstr "Завантаження {{url}}..."
 #: Load previous
 msgid "messages_load"
 msgstr "Завантажити попередні повідомлення"
+
+#: Unread Messages
+msgid "unread_messages"
+msgstr ""
 
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"
