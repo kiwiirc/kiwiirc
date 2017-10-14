@@ -66,8 +66,8 @@ export function create(state, networkid) {
             ircClient.options.tls = network.connection.tls;
             ircClient.options.password = network.connection.password;
             ircClient.options.nick = network.nick;
-            ircClient.options.username = network.username;
-            ircClient.options.gecos = network.gecos;
+            ircClient.options.username = network.username || network.nick;
+            ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
             ircClient.options.encoding = network.connection.encoding;
         }
 
