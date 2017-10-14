@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import * as Misc from 'src/helpers/Misc';
 
 let isEnabled = false;
 
@@ -48,41 +47,29 @@ const throttledShow = _.throttle(show, 2000);
 
 
 export function listenForNewMessages(state) {
-    state.$on('message.new', (message, buffer) => {
+    state.$on('notification.show', (message, _opts) => {
         if (!isEnabled) {
             return;
         }
 
-        let network = state.getNetwork(buffer.networkid);
-        let isHighlight = Misc.mentionsNick(message.message, network.nick);
-        let settingAlertOn = buffer.setting('alert_on');
-        let notification = null;
-        let notifyMessage = message.nick ?
-                message.nick + ': ' :
-                '';
-        notifyMessage += message.message;
+        let opts = Object.assign({
+            title: 'Kiwi IRC',
+            message: message,
+            icon: '',
+            onclick: null,
+            ttl: 10000,
+        }, _opts);
 
-        // Ignore our own join/parts
-        if (message.type === 'traffic' && message.nick === network.nick) {
+        if (!opts.message) {
             return;
         }
 
-        if ((settingAlertOn === 'message' || settingAlertOn === 'highlight') && isHighlight) {
-            notification = throttledShow('You were mentioned in ' + buffer.name, notifyMessage, {
-                ttl: 10000,
-            });
-        } else if (settingAlertOn === 'message' && !isHighlight) {
-            notification = throttledShow(buffer.name, notifyMessage, {
-                ttl: 10000,
-            });
-        } else if (settingAlertOn === 'never') {
-            // Don't do anything
-        }
+        let notification = throttledShow(opts.title, opts.message, {
+            ttl: opts.ttl,
+        });
 
-        if (notification) {
-            notification.onclick = () => {
-                state.setActiveBuffer(buffer.networkid, buffer.name);
-            };
+        if (notification && typeof opts.onclick === 'function') {
+            notification.onclick = opts.onclick;
         }
     });
 }

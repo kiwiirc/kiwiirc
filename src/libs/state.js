@@ -714,17 +714,54 @@ const state = new Vue({
                 buffer.name === this.ui.active_buffer
             );
 
+            let network = buffer.getNetwork();
             let isNewMessage = message.time > buffer.last_read;
+            let isHighlight = Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
 
             if (isNewMessage && isActiveBuffer && state.ui.app_has_focus) {
                 buffer.last_read = message.time;
             }
 
+            // Handle buffer flags
             if (isNewMessage && includeAsActivity && !isActiveBuffer) {
                 buffer.incrementFlag('unread');
-                let network = buffer.getNetwork();
-                if (Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick)) {
+                if (isHighlight) {
                     buffer.flag('highlight', true);
+                }
+            }
+
+            // Handle any notifications
+            let settingAlertOn = buffer.setting('alert_on');
+            let isOurJoin = message.type === 'traffic' && message.nick === network.nick;
+            if (isNewMessage && settingAlertOn !== 'never' && !isOurJoin) {
+                let notifyTitle = '';
+                let notifyMessage = message.nick ?
+                        message.nick + ': ' :
+                        '';
+                notifyMessage += message.message;
+
+                if (isHighlight) {
+                    notifyTitle = 'You were mentioned in ' + buffer.name;
+                } else if (settingAlertOn === 'message' && !isHighlight) {
+                    notifyTitle = buffer.name;
+                }
+
+                if (notifyTitle) {
+                    this.$emit('notification.show', notifyMessage, {
+                        title: notifyTitle,
+                        onclick: () => {
+                            state.setActiveBuffer(buffer.networkid, buffer.name);
+
+                            // Newer webkit browser use parent.focus() will older webkit uses
+                            // window.focus()
+                            if (parent && parent.focus) {
+                                parent.focus();
+                            }
+                            if (window.focus) {
+                                window.focus();
+                            }
+                        },
+                    });
                 }
             }
 
