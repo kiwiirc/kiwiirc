@@ -176,8 +176,12 @@ export default {
             let hasSwitchedActiveBuffer = false;
             bufferObjs.forEach(bufferObj => {
                 let chanName = bufferObj.name;
-                let newBuffer = state.addBuffer(network.id, chanName);
+                let ignoreNames = ['#0', '0', '&0'];
+                if (ignoreNames.indexOf(chanName) > -1 || chanName.replace(/[#&]/g, '') === '') {
+                    return;
+                }
 
+                let newBuffer = state.addBuffer(network.id, chanName);
                 if (newBuffer && !hasSwitchedActiveBuffer) {
                     state.setActiveBuffer(network.id, newBuffer.name);
                     hasSwitchedActiveBuffer = true;
