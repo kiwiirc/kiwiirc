@@ -293,6 +293,13 @@ export default {
                     return item;
                 });
 
+                if (this.buffer.isQuery()) {
+                    userList.push({
+                        text: this.buffer.name,
+                        type: 'user',
+                    });
+                }
+
                 list = list.concat(userList);
             }
 
