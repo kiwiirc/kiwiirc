@@ -1,7 +1,11 @@
 <template>
     <div class="kiwi-controlinput">
+        <div class="kiwi-controlinput-selfuser" :class="{'kiwi-controlinput-selfuser--open': selfuser_open}">
+            <self-user :network="buffer.getNetwork()" v-if="selfuser_open && networkState==='connected'"></self-user>
+        </div>
+
         <div class="kiwi-controlinput-inner">
-            <div v-if="currentNick" class="kiwi-controlinput-user">
+            <div v-if="currentNick" class="kiwi-controlinput-user" @click="selfuser_open=!selfuser_open">
                 {{ currentNick }}
             </div>
             <form @submit.prevent="submitForm" class="kiwi-controlinput-form">
@@ -53,13 +57,16 @@ import GlobalApi from 'src/libs/GlobalApi';
 import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
+import SelfUser from './SelfUser';
 
 export default {
     components: {
         AutoComplete,
+        SelfUser,
     },
     data: function data() {
         return {
+            selfuser_open: false,
             value: '',
             history: [],
             history_pos: 0,
@@ -84,6 +91,12 @@ export default {
             let activeNetwork = state.getActiveNetwork();
             return activeNetwork ?
                 activeNetwork.nick :
+                '';
+        },
+        networkState() {
+            let activeNetwork = state.getActiveNetwork();
+            return activeNetwork ?
+                activeNetwork.state :
                 '';
         },
     },
@@ -405,6 +418,24 @@ export default {
     z-index: 1;
     background: #f6f6f6;
     border: 1px solid #dddddd;
+}
+
+.kiwi-controlinput-user {
+    cursor: pointer;
+}
+
+.kiwi-controlinput-selfuser {
+    background: #f6f6f6;
+    border: 1px solid #dddddd;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    max-height: 0;
+    transition: max-height 0.2s;
+    overflow: hidden;
+}
+.kiwi-controlinput-selfuser--open {
+    max-height: 300px;
 }
 
 </style>
