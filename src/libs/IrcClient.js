@@ -150,6 +150,9 @@ function clientMiddleware(state, networkid) {
                 message: `Connected to ${client.network.name}!`,
             });
 
+            // Get some extra info about ourselves
+            client.raw('WHO ' + event.nick);
+
             if (network.auto_commands) {
                 network.auto_commands.split('\n').forEach(line => {
                     state.$emit('input.raw', line[0] === '/' ? line : `/${line}`);
