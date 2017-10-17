@@ -21,10 +21,16 @@ export default {
     props: ['network'],
     computed: {
         modeString() {
-            let str = '+';
+            let str = '';
             this.network.ircClient.user.modes.forEach(mode => {
                 str += mode;
             });
+
+            // Only show the + if there are modes to show
+            if (str) {
+                str = '+' + str;
+            }
+
             return str;
         },
         netUser() {
