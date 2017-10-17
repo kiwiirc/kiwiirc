@@ -459,6 +459,19 @@
 
 
 /**
+ * Self user box
+ */
+.kiwi-selfuser-actions {
+    border-top: 1px solid #dddddd;
+}
+.kiwi-controlinput-selfuser {
+    background: #f6f6f6;
+    border: 1px solid #dddddd;
+}
+
+
+
+/**
  * Channel list
  */
 .kiwi-channellist table tbody tr:nth-child(even) {
