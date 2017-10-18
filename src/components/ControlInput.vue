@@ -5,8 +5,9 @@
         </div>
 
         <div class="kiwi-controlinput-inner">
-            <div v-if="currentNick" class="kiwi-controlinput-user" @click="selfuser_open=!selfuser_open">
+            <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
                 {{ currentNick }}
+                <i class="fa fa-caret-up" aria-hidden="true"></i>
             </div>
             <form @submit.prevent="submitForm" class="kiwi-controlinput-form">
                 <auto-complete
@@ -107,6 +108,11 @@ export default {
         },
     },
     methods: {
+        toggleSelfUser() {
+            if (this.networkState === 'connected') {
+                this.selfuser_open = !this.selfuser_open;
+            }
+        },
         onToolClickTextStyle: function onToolClickTextStyle() {
             this.toggleInputTool(ToolTextStyle);
         },
