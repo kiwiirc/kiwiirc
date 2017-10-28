@@ -1,66 +1,71 @@
 <template>
     <div class="kiwi-customserver" v-bind:class="[is_connecting ? 'kiwi-customserver--connecting' : '']">
-        <h2 v-if="!is_connecting" v-html="title"></h2>
-        <h2 v-else>{{$t('connecting')}} <a @click="infoClick" class="u-link"><i class="fa fa-info-circle" aria-hidden="true"></i></a></h2>
 
         <transition name="connectingloader">
-        <form v-if="!is_connecting" v-on:submit.prevent="startUp" class="u-form kiwi-customserver-form">
-            <div class="kiwi-customserver-error" v-if="network && network.state_error">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
+          <form v-if="!is_connecting" v-on:submit.prevent="startUp" class="u-form kiwi-customserver-form">
 
-            <template v-if="server_type === 'default'">
-                <input-text :label="$t('server')" v-model="server">
-                    <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
-                        <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
-                        <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
-                    </span>
-                </input-text>
+              <div class='form_title' v-html="title">Connection Setup:</div>
+              <div class="kiwi-customserver-error" v-if="network && network.state_error">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
 
-                <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
+              <div class="input-padding-wrapper">
+                <template v-if="server_type === 'default'">
+                    <input-text :label="$t('server')" v-model="server">
+                        <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
+                            <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
+                            <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
+                        </span>
+                    </input-text>
 
-                <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
-                </label>
-                <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
+                    <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
-                <input-text :label="$t('channel')" v-model="channel" />
-            </template>
+                    <label class="kiwi-customserver-have-password">
+                        <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
+                    </label>
+                    <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 
-            <template v-if="server_type === 'default_simple'">
-                <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
+                    <input-text :label="$t('channel')" v-model="channel" />
+                </template>
 
-                <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
-                </label>
-                <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
+                <template v-if="server_type === 'default_simple'">
+                    <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
-                <input-text :label="$t('channel')" v-model="channel" class="kiwi-customserver-channel" />
-            </template>
+                    <label class="kiwi-customserver-have-password">
+                        <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
+                    </label>
+                    <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 
-            <template v-if="server_type === 'znc'">
-                <input-text :label="$t('server')" v-model="server">
-                    <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
-                        <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
-                        <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
-                    </span>
-                </input-text>
+                    <input-text :label="$t('channel')" v-model="channel" class="kiwi-customserver-channel" />
+                </template>
 
-                <input-text :label="$t('username')" v-model="nick" class="kiwi-customserver-nick" />
+                <template v-if="server_type === 'znc'">
+                    <input-text :label="$t('server')" v-model="server">
+                        <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
+                            <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
+                            <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
+                        </span>
+                    </input-text>
 
-                <input-text v-if="znc_network_support" :label="$t('network')" v-model="znc_network" />
-                <input-text :label="$t('password')" v-model="password" type="password" />
-            </template>
+                    <input-text :label="$t('username')" v-model="nick" class="kiwi-customserver-nick" />
 
-            <button type="submit" class="u-button u-button-primary u-submit">{{buttonText}}</button>
+                    <input-text v-if="znc_network_support" :label="$t('network')" v-model="znc_network" />
+                    <input-text :label="$t('password')" v-model="password" type="password" />
+                </template>
 
-            <div v-if="show_type_switcher" class="kiwi-customserver-server-types">
-                <a @click="server_type = 'default'" class="u-link">{{$t('network')}}</a>
-                <a @click="server_type = 'znc'" class="u-link">{{$t('znc')}}</a>
-            </div>
-        </form>
+                <button type="submit" class="u-button u-button-primary u-submit">{{buttonText}}</button>
 
-        <div v-else class="kiwi-customserver-loader">
+                <div v-if="show_type_switcher" class="kiwi-customserver-server-types">
+                    <a @click="server_type = 'default'" class="u-link">{{$t('network')}}</a>
+                    <a @click="server_type = 'znc'" class="u-link">{{$t('znc')}}</a>
+                </div>
+              </div>
+
+          </form>
+
+          <div v-else class="kiwi-customserver-loader">
+            <h2>Now Connecting...<a @click="infoClick" class="u-link"><i class="fa fa-info-circle" aria-hidden="true"></i></a></h2>
             <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
-        </div>
+          </div>
+
         </transition>
     </div>
 </template>
@@ -251,7 +256,7 @@ export default {
                 this.server += ':' + state.settings.startupOptions.port.toString();
             }
 
-            this.title = 'Where are you connecting today?';
+            this.title = 'Connection Setup:';
         },
     },
     created: async function created() {
@@ -354,17 +359,65 @@ export default {
 
 <style>
 
+body{
+  background-color: #ececec;
+}
+*{
+  box-sizing: border-box;
+}
 .kiwi-customserver {
     height: 100%;
     overflow-y: auto;
     box-sizing: border-box;
 }
+
+/*On Desktops the form will be centred */
 .kiwi-customserver-form {
     max-width: 300px;
-    margin: 0 auto;
+    width: 300px;
+    margin:  auto;
+    background:#fff;
+    border-radius: 4px;
     max-height: 500px;
     overflow: hidden;
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left:-150px;
+    margin-top: -205px;
 }
+  @media screen and (max-width: 600px){
+    .kiwi-customserver-form{
+      top:0px;
+      margin-top: 0;
+    }
+  }
+  @media screen and (max-width: 300px){
+    .kiwi-customserver-form{
+      width: 100%;
+      max-width: none;
+      border-radius: 0;
+    }
+  }
+
+.kiwi-customserver-form .form_title{
+  width: 100%;
+  cursor: default;
+  font-size: 1.4em;
+  padding: 10px 20px;
+  color: #000;
+  opacity: 0.8;
+  font-weight: 800;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.input-padding-wrapper{
+  width: 100%;
+  height: auto;
+  padding: 20px;
+}
+
 .kiwi-customserver .input-text {
     margin-bottom: 1em;
 }
@@ -413,6 +466,57 @@ export default {
 }
 .connectingloader-enter, .connectingloader-leave-to {
   max-height: 0
+}
+
+.input-text--reveal-value .input-text-label {
+  top: 0;
+  font-size: 1em;
+  font-weight: 800;
+  opacity: 0.5;
+}
+
+.u-form .input-text input{
+  padding: 5px 10px;
+  line-height: normal;
+  font-size: 1.2em;
+}
+
+.u-form .u-button-primary.u-submit{
+  float:left;
+  width: 100%;
+  line-height: 50px;
+  height: 50px;
+  padding: 0;
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  font-weight: 900;
+  border-bottom: 2px solid #5d7d1f;
+  transition: all 0.3s;
+}
+
+.u-form .input-text-underline-active{
+  background-color: #86b32d;
+  left:0;
+  width:0%;
+  right:auto;
+  bottom:0;
+  transition: all 0.3s;
+}
+.u-form .input-text--focus .input-text-underline-active{
+  width: 100%;
+}
+
+.u-form .input-text-c{
+  bottom:5px;
+}
+
+.u-form .input-text--reveal-value .input-text-label{
+  left:0;
+  font-size: 1em;
+  font-weight: 900;
+  opacity: 0.6;
 }
 
 </style>
