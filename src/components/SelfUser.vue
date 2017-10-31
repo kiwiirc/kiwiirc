@@ -6,7 +6,7 @@
         </div>
         <div class="kiwi-selfuser-modes">{{modeString}}</div>
         <div class="kiwi-selfuser-actions">
-            <input-prompt @submit="changeNick" label="Change nick:"><a class="u-link">Change nick</a></input-prompt>
+            <input-prompt @submit="changeNick" :label="$t('change_nick')+':'"><a class="u-link">{{$t('change_nick')}}</a></input-prompt>
         </div>
     </div>
 </template>

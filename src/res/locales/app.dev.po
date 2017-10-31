@@ -484,6 +484,13 @@ msgid "state_join"
 msgstr "Join new #channel"
 
 
+#: SelfUser
+
+#: Change nick
+msgid "change_nick"
+msgstr "Change nick"
+
+
 #: UserBox $t('user_')
 
 #: Account name
