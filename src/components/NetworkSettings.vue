@@ -49,7 +49,7 @@
             </div>
 
             <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
-                <h3 @click="show_advanced=!show_advanced">Advanced <i class="fa" :class="['fa-caret-'+(show_advanced?'up':'down')]" aria-hidden="true"></i></h3>
+                <h3 @click="show_advanced=!show_advanced">{{$t('settings_advanced')}} <i class="fa" :class="['fa-caret-'+(show_advanced?'up':'down')]" aria-hidden="true"></i></h3>
                 <template v-if="show_advanced">
                     <label><span>{{$t('settings_encoding')}}: </span> <input v-model="network.connection.encoding" /></label><br />
                     <label><span>{{$t('settings_show_raw')}}: </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />

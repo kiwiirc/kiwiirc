@@ -17,7 +17,7 @@
             </div>
 
             <form class="u-form kiwi-channellist-search" @submit.prevent>
-                <input v-model="search" placeholder="Search..." class="u-input" />
+                <input v-model="search" :placeholder="$t('do_search')" class="u-input" />
             </form>
         </div>
         <table v-if="listState === ''" width="100%" :key="last_updated">

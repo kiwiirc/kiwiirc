@@ -31,7 +31,7 @@
                     <div class="kiwi-appsettings-section kiwi-appsettings-messages">
                         <h3>{{$t('settings_messages_title')}}</h3>
                         <label>
-                            <span>Traditional IRC layout: </span>
+                            <span>{{$t('settings_layout_compact')}}: </span>
                             <input type="checkbox" v-model="settingMessageLayout" />
                         </label>
                         <label><span>{{$t('settings_timestamps')}}: </span> <input type="checkbox" v-model="settingBufferShowTimestamps" /></label>

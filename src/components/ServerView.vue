@@ -8,7 +8,7 @@
                 <tabbed-tab :header="$t('settings')" :focus="!hasMessages">
                     <network-settings :network="network"></network-settings>
                 </tabbed-tab>
-                <tabbed-tab :header="'Channels'" v-if="network.state==='connected'">
+                <tabbed-tab :header="$t('channels')" v-if="network.state==='connected'">
                     <channel-list :network="network"></channel-list>
                 </tabbed-tab>
             </tabbed-view>

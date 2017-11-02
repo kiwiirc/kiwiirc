@@ -20,6 +20,10 @@ msgstr "Connected"
 msgid "settings"
 msgstr "Settings"
 
+#: Channels
+msgid "channels"
+msgstr "Channels"
+
 #: Banned
 msgid "banned"
 msgstr "Banned Users"
@@ -68,6 +72,17 @@ msgstr "Logging in..."
 msgid "invalid_login"
 msgstr "Invalid login"
 
+#: Search...
+msgid "do_search"
+msgstr "Search..."
+
+#: OK
+msgid "ok"
+msgstr "OK"
+
+#: Cancel
+msgid "cancel"
+msgstr "Cancel"
 
 
 #: Realname field in a users whois
@@ -117,6 +132,10 @@ msgstr "Theme URL"
 #: Use Monospace
 msgid "settings_use_monospace"
 msgstr "Use monospace"
+
+#: Traditional IRC layout
+msgid "settings_layout_compact"
+msgstr "Traditional IRC layout"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"

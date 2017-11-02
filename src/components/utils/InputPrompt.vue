@@ -5,8 +5,8 @@
         <form class="u-form" v-if="state==='prompt'" @submit.prevent="complete">
             <span class="input-prompt-label">{{label}}</span>
             <input class="u-input" v-model="value" @keyup.esc="cancel" />
-            <a @click="complete" class="u-button u-button-primary">OK</a>
-            <a @click="cancel" class="u-button u-button-secondary">Cancel</a>
+            <a @click="complete" class="u-button u-button-primary">{{$t('ok')}}</a>
+            <a @click="cancel" class="u-button u-button-secondary">{{$t('cancel')}}</a>
         </form>
     </div>
 </template>
