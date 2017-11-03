@@ -124,7 +124,7 @@ export default {
             welcome: startupWelcome,
             customServer: startupCustomServer,
             kiwiBnc: startupKiwiBnc,
-            zncLogin: startupZncLogin,
+            znc: startupZncLogin,
             personal: startupPersonal,
         };
         let extraStartupScreens = state.getStartups();

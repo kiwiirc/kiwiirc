@@ -98,7 +98,8 @@ export default {
             if (sNets.length === 0) {
                 sNets.push('');
             }
-            sNets.forEach((newNet, idx) => {
+            sNets.forEach((_newNet, idx) => {
+                let newNet = _.trim(_newNet);
                 let password = this.username;
                 if (newNet) {
                     password += '/' + newNet;
