@@ -179,7 +179,7 @@ msgstr "Mute sound notifications"
 
 #: Highlight on words
 msgid "settings_highlight"
-msgstr "Highlight on words (space seperated)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases Title
 msgid "settings_aliases"
