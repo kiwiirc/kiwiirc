@@ -46,6 +46,7 @@
 import 'font-awesome-webpack';
 
 import startupWelcome from 'src/components/startups/Welcome';
+import startupZncLogin from 'src/components/startups/ZncLogin';
 import startupCustomServer from 'src/components/startups/CustomServer';
 import startupKiwiBnc from 'src/components/startups/KiwiBnc';
 import startupPersonal from 'src/components/startups/Personal';
@@ -123,6 +124,7 @@ export default {
             welcome: startupWelcome,
             customServer: startupCustomServer,
             kiwiBnc: startupKiwiBnc,
+            zncLogin: startupZncLogin,
             personal: startupPersonal,
         };
         let extraStartupScreens = state.getStartups();
