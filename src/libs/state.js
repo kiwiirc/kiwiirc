@@ -207,8 +207,6 @@ const stateObj = {
             '=]': '1f642',
             '=)': '1f642',
             ':]': '1f642',
-            '*\\0/*': '1f646',
-            '*\\O/*': '1f646',
         },
         emojiLocation: 'https://kiwiirc.com/shared/emoji/',
     },
