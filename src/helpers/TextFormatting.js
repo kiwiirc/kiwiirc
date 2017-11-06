@@ -223,7 +223,7 @@ export function ircCodesToHtml(input, enableExtras) {
     return out;
 }
 
-const urlRegex = new RegExp('' +
+const urlRegex = new RegExp('^' +
     // Detect either a protocol or 'www.' to start a URL
     /(([A-Za-z][A-Za-z0-9-]*:\/\/)|(www\.))/.source +
     // The hostname..
@@ -235,8 +235,9 @@ const urlRegex = new RegExp('' +
     // Optional path..
     /(\/[\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF!:.?$'()[\]*,;~+=&%@!\-/]*)?/.source +
     // Optional fragment
-    /(#.*)?/.source,
-    'ig'
+    /(#.*)?/.source +
+    '$',
+    'i'
 );
 
 export function linkifyUrls(input, _opts) {
