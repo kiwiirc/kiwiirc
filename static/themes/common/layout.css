@@ -846,6 +846,30 @@ div {
 
 
 /**
+ * ZNC startup screen
+ */
+.kiwi-welcome-znc {
+    text-align: center;
+}
+.kiwi-welcome-znc .input-text,
+.kiwi-welcome-znc .kiwi-welcome-znc-have-password input {
+    margin-bottom: 1.5em;
+}
+.kiwi-welcome-znc-have-password input:checked {
+    margin-bottom: 0;
+}
+.kiwi-welcome-znc-start {
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.kiwi-welcome-znc-start[disabled] {
+    cursor: not-allowed;
+}
+
+
+
+
+/**
  * Misc styles
  */
 

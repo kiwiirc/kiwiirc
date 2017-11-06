@@ -1,16 +1,16 @@
 <template>
-    <div class="kiwi-welcome-simple" :class="[closing ? 'kiwi-welcome-simple--closing' : '']">
+    <div class="kiwi-welcome-znc" :class="[closing ? 'kiwi-welcome-znc--closing' : '']">
     
-        <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-connection">
+        <div class="kiwi-welcome-znc-section kiwi-welcome-znc-section-connection">
             <h2 v-html="greetingText"></h2>
 
             <template v-if="!network">
-                <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-simple-form">
-                    <input-text v-if="showUser" class="kiwi-welcome-simple-nick" :label="$t('username')" v-model="username" />
-                    <input-text v-if="showPass" class="kiwi-welcome-simple-password" :label="$t('password')" v-model="password" type="password" />
-                    <input-text v-if="showNetwork" class="kiwi-welcome-simple-channel" :label="$t('network')" v-model="znc_network" />
+                <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-znc-form">
+                    <input-text v-if="showUser" class="kiwi-welcome-znc-nick" :label="$t('username')" v-model="username" />
+                    <input-text v-if="showPass" class="kiwi-welcome-znc-password" :label="$t('password')" v-model="password" type="password" />
+                    <input-text v-if="showNetwork" class="kiwi-welcome-znc-channel" :label="$t('network')" v-model="znc_network" />
                     <button
-                        class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
+                        class="u-button u-button-primary u-submit kiwi-welcome-znc-start"
                         type="submit"
                         v-html="buttonText"
                         :disabled="!readyToStart"
@@ -22,8 +22,8 @@
             </template>
         </div>
         
-        <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-info" :style="infoStyle">
-            <div class="kiwi-welcome-simple-section-info-content" v-if="infoContent" v-html="infoContent"></div>
+        <div class="kiwi-welcome-znc-section kiwi-welcome-znc-section-info" :style="infoStyle">
+            <div class="kiwi-welcome-znc-section-info-content" v-if="infoContent" v-html="infoContent"></div>
         </div>
     </div>
 </template>
@@ -169,7 +169,7 @@ export default {
 
 <style>
 
-.kiwi-welcome-simple {
+.kiwi-welcome-znc {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -178,11 +178,11 @@ export default {
     box-sizing: border-box;
 }
 
-.kiwi-welcome-simple h2 {
+.kiwi-welcome-znc h2 {
     margin-bottom: 1.5em;
 }
 
-.kiwi-welcome-simple-section {
+.kiwi-welcome-znc-section {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -195,7 +195,7 @@ export default {
 
 
 /** Right side */
-.kiwi-welcome-simple-section-info {
+.kiwi-welcome-znc-section-info {
     right: 0;
     border: 0 solid #86b32d;
     border-left-width: 5px;
@@ -207,7 +207,7 @@ export default {
     justify-content: center;
     min-height: 100%;
 }
-.kiwi-welcome-simple-section-info-content {
+.kiwi-welcome-znc-section-info-content {
     background: rgba(255, 255, 255, 0.74);
     margin: 2em;
     color: #1b1b1b;
@@ -218,7 +218,7 @@ export default {
 
 
 /** Left side */
-.kiwi-welcome-simple-section-connection {
+.kiwi-welcome-znc-section-connection {
     left: 0;
     padding-top: 3em;
     font-size: 1.2em;
@@ -227,12 +227,12 @@ export default {
     justify-content: center;
 }
 
-.kiwi-welcome-simple-section-connection label {
+.kiwi-welcome-znc-section-connection label {
     text-align: left;
     display: inline-block;
     margin-bottom: 1.5em;
 }
-.kiwi-welcome-simple-section-connection input[type="text"] {
+.kiwi-welcome-znc-section-connection input[type="text"] {
     font-size: 1em;
     margin-top: 5px;
     padding: 0.3em 1em;
@@ -240,63 +240,63 @@ export default {
     box-sizing: border-box;
 }
 
-.kiwi-welcome-simple-start {
+.kiwi-welcome-znc-start {
     font-size: 1.1em;
     cursor: pointer;
 }
-.kiwi-welcome-simple-form {
+.kiwi-welcome-znc-form {
     width: 300px;
     margin: 2em auto;
 }
 
 /** Closing - the wiping away of the screen **/
-.kiwi-welcome-simple--closing .kiwi-welcome-simple-section-connection {
+.kiwi-welcome-znc--closing .kiwi-welcome-znc-section-connection {
     left: -50%;
 }
-.kiwi-welcome-simple--closing .kiwi-welcome-simple-section-info {
+.kiwi-welcome-znc--closing .kiwi-welcome-znc-section-info {
     right: -50%;
 }
 
 /** Smaller screen...**/
 @media screen and (max-width: 850px) {
-    .kiwi-welcome-simple {
+    .kiwi-welcome-znc {
         font-size: 0.9em;
     }
 
     .kiwi-startbnc-section-connection {
         margin-top: 1em;
     }
-    .kiwi-welcome-simple-section-info-content {
+    .kiwi-welcome-znc-section-info-content {
         margin: 1em;
     }
 }
 
 /** Even smaller screen.. probably phones **/
 @media screen and (max-width: 750px) {
-    .kiwi-welcome-simple {
+    .kiwi-welcome-znc {
         font-size: 0.9em;
         overflow-y: auto;
     }
 
-    .kiwi-welcome-simple-section {
+    .kiwi-welcome-znc-section {
         left: 0;
         width: 100%;
         right: auto;
         position: relative;
     }
 
-    .kiwi-welcome-simple-section-info {
+    .kiwi-welcome-znc-section-info {
         border-width: 5px 0 0 0;
     }
-    .kiwi-welcome-simple-section-info-content {
+    .kiwi-welcome-znc-section-info-content {
         margin: 0.5em;
     }
 
     /** Closing - the wiping away of the screen **/
-    .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-connection {
+    .kiwi-welcome-znc--closing .kiwi-welcome-znc-section-connection {
         left: -100%;
     }
-    .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-info {
+    .kiwi-welcome-znc--closing .kiwi-welcome-znc-section-info {
         left: -100%;
     }
 }
