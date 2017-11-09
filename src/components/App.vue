@@ -50,6 +50,7 @@ import startupZncLogin from 'src/components/startups/ZncLogin';
 import startupCustomServer from 'src/components/startups/CustomServer';
 import startupKiwiBnc from 'src/components/startups/KiwiBnc';
 import startupPersonal from 'src/components/startups/Personal';
+import startupZnc from 'src/components/startups/Znc';
 import StateBrowser from 'src/components/StateBrowser';
 import Container from 'src/components/Container';
 import ControlInput from 'src/components/ControlInput';
@@ -126,6 +127,7 @@ export default {
             kiwiBnc: startupKiwiBnc,
             znc: startupZncLogin,
             personal: startupPersonal,
+            znc: startupZnc,
         };
         let extraStartupScreens = state.getStartups();
 
