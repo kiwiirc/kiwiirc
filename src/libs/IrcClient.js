@@ -420,6 +420,25 @@ function clientMiddleware(state, networkid) {
                 });
             });
 
+            // Mention the quit in any query windows
+            let queryBuffer = network.bufferByName(event.nick);
+            if (queryBuffer) {
+                let messageBody = TextFormatting.formatText('channel_quit', {
+                    nick: event.nick,
+                    username: event.ident,
+                    host: event.hostname,
+                    text: `has left (${event.message})`,
+                });
+
+                state.addMessage(queryBuffer, {
+                    time: Date.now(),
+                    nick: event.nick,
+                    message: messageBody,
+                    type: 'traffic',
+                    type_extra: 'quit',
+                });
+            }
+
             state.removeUser(networkid, {
                 nick: event.nick,
             });
