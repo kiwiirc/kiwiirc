@@ -195,10 +195,14 @@ export default {
                 this.fallbackComponentProps = opts.fallbackComponentProps;
             }
 
+            // Make sure a startup screen can't trigger these more than once
+            if (!this.hasStarted) {
+                Notifications.requestPermission();
+                Notifications.listenForNewMessages(state);
+                AudioBleep.listenForHighlights(state);
+            }
+
             this.hasStarted = true;
-            Notifications.requestPermission();
-            Notifications.listenForNewMessages(state);
-            AudioBleep.listenForHighlights(state);
         },
         emitDocumentClick: function emitDocumentClick(event) {
             state.$emit('document.clicked', event);
