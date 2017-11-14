@@ -17,7 +17,7 @@ export function create(state, networkid) {
         nick: network.nick,
         username: network.username || network.nick,
         gecos: network.gecos || 'https://kiwiirc.com/',
-        version: 'Kiwi IRC',
+        version: null,
         auto_reconnect: false,
         encoding: network.connection.encoding,
     };
@@ -678,6 +678,10 @@ function clientMiddleware(state, networkid) {
                 message: messageBody,
                 type: 'error',
             });
+
+            if (command === 'ctcp request' && event.type === 'VERSION') {
+                client.ctcpResponse(event.nick, 'VERSION', 'Kiwi IRC');
+            }
         }
 
         if (command === 'irc error') {
