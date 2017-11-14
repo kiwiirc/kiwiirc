@@ -33,7 +33,7 @@
             <div class="kiwi-header-options">
                 <a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a>
             </div>
-            <div class="kiwi-header-name">{{$t('container_privmsg', {user: buffer.name})}}</div>
+            <div class="kiwi-header-name">{{buffer.name}}</div>
             <div class="kiwi-header-tools">
                 <div v-for="el in pluginUiQueryElements" v-rawElement="el" class="kiwi-header-tool"></div>
             </div>
