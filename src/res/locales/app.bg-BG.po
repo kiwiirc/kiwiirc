@@ -18,6 +18,10 @@ msgstr "Свързан"
 msgid "settings"
 msgstr "Настройки"
 
+#: Channels
+msgid "channels"
+msgstr "Канали"
+
 #: Banned
 msgid "banned"
 msgstr "Изгонени"
@@ -66,6 +70,22 @@ msgstr "Влизане..."
 msgid "invalid_login"
 msgstr "Неправилно вписване"
 
+#: Search...
+msgid "do_search"
+msgstr "Търси..."
+
+#: OK
+msgid "ok"
+msgstr "ОК"
+
+#: Cancel
+msgid "cancel"
+msgstr "Откажи"
+
+#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+msgid "window_unload"
+msgstr ""
+
 #: Realname field in a users whois
 msgid "whois_realname"
 msgstr "Истинско име"
@@ -109,6 +129,10 @@ msgstr "Адрес на темата"
 #: Use Monospace
 msgid "settings_use_monospace"
 msgstr "Използвайте Monospace"
+
+#: Traditional IRC layout
+msgid "settings_layout_compact"
+msgstr "Традиционно IRC оформление"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -184,19 +208,19 @@ msgstr "Забрани всички звукови известия"
 
 #: operator_tools
 msgid "operator_tools"
-msgstr ""
+msgstr "Оп Инструменти"
 
 #: settings_default_ban_mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Бан маска по подразбиране"
 
 #: settings_default_kick_reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "Причита по подразбиране за KICK"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Опресняване на Бан лист-а"
+msgstr "Опресняване на Бан листата"
 
 #: Banned user
 msgid "bans_user"
@@ -208,7 +232,7 @@ msgstr "Изгонен от"
 
 #: Refreshing banlist
 msgid "bans_refreshing"
-msgstr "Опресняване на Бан лист-а...."
+msgstr "Опресняване на Бан листата"
 
 #: Nobody is banned
 msgid "bans_nobody"
@@ -268,7 +292,7 @@ msgstr "Зареждане на предишни"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Непрочетени съобщения"
 
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"
@@ -383,7 +407,7 @@ msgstr "Твоят Акаунт"
 
 #: Your settings and networks will be remembered on this computer
 msgid "state_remembered"
-msgstr "Вашите настройки и мрежи ще бъдат запомнени на този компютър"
+msgstr "Вашите настройки и мрежи ще бъдат запаметени на този компютър"
 
 #: Forget me
 msgid "state_forget"
@@ -399,7 +423,7 @@ msgstr "Добави"
 
 #: Available networks
 msgid "state_available"
-msgstr "Достъпен"
+msgstr "Налични мрежи"
 
 #: Configure network
 msgid "state_configure"
@@ -412,6 +436,10 @@ msgstr "Не сте свързан"
 #: Join new #channel
 msgid "state_join"
 msgstr "Влез в нов #канал"
+
+#: Change nick
+msgid "change_nick"
+msgstr "Промяна на ник"
 
 #: Account name
 msgid "user_account"
@@ -463,7 +491,7 @@ msgstr "Бан от канал"
 
 #: Kick + Ban from the channel
 msgid "user_kickban"
-msgstr "забрани и премахни от канала"
+msgstr "Забрани и премахни от канала"
 
 #: Your IRC client
 msgid "personal_client"
@@ -471,7 +499,7 @@ msgstr "Твоят IRC клиент"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Добави твоя мрежа.Влез в твой канал."
+msgstr "Добави своя мрежа. Влез в твоите канали."
 
 #: They will be here when you come back.
 msgid "personal_return"

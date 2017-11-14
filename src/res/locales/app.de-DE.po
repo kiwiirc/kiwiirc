@@ -18,6 +18,10 @@ msgstr "verbunden"
 msgid "settings"
 msgstr "Einstellungen"
 
+#: Channels
+msgid "channels"
+msgstr ""
+
 #: Banned
 msgid "banned"
 msgstr "gebannt"
@@ -66,6 +70,22 @@ msgstr "Logge ein..."
 msgid "invalid_login"
 msgstr "Ungültige Zugangsdaten"
 
+#: Search...
+msgid "do_search"
+msgstr ""
+
+#: OK
+msgid "ok"
+msgstr ""
+
+#: Cancel
+msgid "cancel"
+msgstr ""
+
+#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+msgid "window_unload"
+msgstr ""
+
 #: Realname field in a users whois
 msgid "whois_realname"
 msgstr "Realname"
@@ -109,6 +129,10 @@ msgstr "Theme URL"
 #: Use Monospace
 msgid "settings_use_monospace"
 msgstr "Verwende Monospace"
+
+#: Traditional IRC layout
+msgid "settings_layout_compact"
+msgstr ""
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -412,6 +436,10 @@ msgstr "Nicht verbunden."
 #: Join new #channel
 msgid "state_join"
 msgstr "Betrete #channel"
+
+#: Change nick
+msgid "change_nick"
+msgstr ""
 
 #: Account name
 msgid "user_account"

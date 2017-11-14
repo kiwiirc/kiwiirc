@@ -18,6 +18,10 @@ msgstr "Connectat"
 msgid "settings"
 msgstr "Configuració"
 
+#: Channels
+msgid "channels"
+msgstr "Canals"
+
 #: Banned
 msgid "banned"
 msgstr "Usuaris banejats"
@@ -66,6 +70,22 @@ msgstr "Verificant credencials..."
 msgid "invalid_login"
 msgstr "Credencials invàlides"
 
+#: Search...
+msgid "do_search"
+msgstr "Buscar..."
+
+#: OK
+msgid "ok"
+msgstr "D'acord"
+
+#: Cancel
+msgid "cancel"
+msgstr "Cancel·lar"
+
+#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+msgid "window_unload"
+msgstr ""
+
 #: Realname field in a users whois
 msgid "whois_realname"
 msgstr "Real name"
@@ -110,6 +130,10 @@ msgstr "URL del tema"
 msgid "settings_use_monospace"
 msgstr "Fer servir la font Monospace"
 
+#: Traditional IRC layout
+msgid "settings_layout_compact"
+msgstr "Disseny IRC tradicional"
+
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
 msgstr "Mostrar llista d'autocompletar"
@@ -120,7 +144,7 @@ msgstr "Missatges"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Mostrar la hora"
+msgstr "Mostrar l'hora"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
@@ -268,7 +292,7 @@ msgstr "Carregar l'anterior"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Missatges sense llegir"
 
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"
@@ -412,6 +436,10 @@ msgstr "Desconnectat."
 #: Join new #channel
 msgid "state_join"
 msgstr "Entrar en un #canal nou"
+
+#: Change nick
+msgid "change_nick"
+msgstr "Canviar el nick"
 
 #: Account name
 msgid "user_account"

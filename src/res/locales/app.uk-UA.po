@@ -18,6 +18,10 @@ msgstr "З'єднано"
 msgid "settings"
 msgstr "Налаштування"
 
+#: Channels
+msgid "channels"
+msgstr "Канали"
+
 #: Banned
 msgid "banned"
 msgstr "Заблоковані користувачі"
@@ -66,6 +70,22 @@ msgstr "Вхід..."
 msgid "invalid_login"
 msgstr "Неправильне ім'я користувача"
 
+#: Search...
+msgid "do_search"
+msgstr "Пошук..."
+
+#: OK
+msgid "ok"
+msgstr "OK"
+
+#: Cancel
+msgid "cancel"
+msgstr "Скасувати"
+
+#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+msgid "window_unload"
+msgstr ""
+
 #: Realname field in a users whois
 msgid "whois_realname"
 msgstr "Справжнє ім'я"
@@ -109,6 +129,10 @@ msgstr "URL-адреса теми"
 #: Use Monospace
 msgid "settings_use_monospace"
 msgstr "Шрифт monospace"
+
+#: Traditional IRC layout
+msgid "settings_layout_compact"
+msgstr "Традиційний формат IRC"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -268,7 +292,7 @@ msgstr "Завантажити попередні повідомлення"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Нечитані повідомлення"
 
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"
@@ -412,6 +436,10 @@ msgstr "Не з'єднано."
 #: Join new #channel
 msgid "state_join"
 msgstr "Приєднатися до #каналу"
+
+#: Change nick
+msgid "change_nick"
+msgstr "Змінити псевдонім"
 
 #: Account name
 msgid "user_account"

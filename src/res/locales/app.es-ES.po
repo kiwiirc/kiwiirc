@@ -18,6 +18,10 @@ msgstr "Conectado"
 msgid "settings"
 msgstr "Configuración"
 
+#: Channels
+msgid "channels"
+msgstr "Salas"
+
 #: Banned
 msgid "banned"
 msgstr "Usuarios baneados"
@@ -66,6 +70,22 @@ msgstr "Verificando credenciales..."
 msgid "invalid_login"
 msgstr "Credenciales inválidas"
 
+#: Search...
+msgid "do_search"
+msgstr "Buscar..."
+
+#: OK
+msgid "ok"
+msgstr "De acuerdo"
+
+#: Cancel
+msgid "cancel"
+msgstr "Cancelar"
+
+#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+msgid "window_unload"
+msgstr ""
+
 #: Realname field in a users whois
 msgid "whois_realname"
 msgstr "Nombre real"
@@ -109,6 +129,10 @@ msgstr "URL del tema"
 #: Use Monospace
 msgid "settings_use_monospace"
 msgstr "Usar fuente Monospace"
+
+#: Traditional IRC layout
+msgid "settings_layout_compact"
+msgstr "Diseño IRC tradicional"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -268,7 +292,7 @@ msgstr "Cargar mensajes anteriores"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Mensajes sin leer"
 
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"
@@ -412,6 +436,10 @@ msgstr "Desconectado."
 #: Join new #channel
 msgid "state_join"
 msgstr "Entrar en una #sala nueva"
+
+#: Change nick
+msgid "change_nick"
+msgstr "Cambiar nick"
 
 #: Account name
 msgid "user_account"
