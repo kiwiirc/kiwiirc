@@ -260,10 +260,9 @@ div {
 }
 
 .kiwi-statebrowser-channels {
-    margin: 0px 10px;
 }
 .kiwi-statebrowser-channel {
-    margin-top: 5px;
+    padding: 5px 10px;
 }
 
 .kiwi-statebrowser-channel-name {
@@ -273,7 +272,8 @@ div {
 
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
 }
-.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
+.kiwi-statebrowser-channel-active {
+    background: rgba(255,255,255,0.05);
 }
 
 .kiwi-statebrowser-channel-label {

@@ -144,9 +144,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #d03232;
 }
 .kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
-    color: #e0e0e0;
-    border-left: 3px solid #df6b26;
-    padding-left: 5px;
+    color: #df6b26;
 }
 
 .kiwi-statebrowser-channel-label {
