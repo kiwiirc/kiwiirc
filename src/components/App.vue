@@ -197,12 +197,16 @@ export default {
 
             // Make sure a startup screen can't trigger these more than once
             if (!this.hasStarted) {
+                this.warnOnPageClose();
                 Notifications.requestPermission();
                 Notifications.listenForNewMessages(state);
                 AudioBleep.listenForHighlights(state);
             }
 
             this.hasStarted = true;
+        },
+        warnOnPageClose() {
+            window.onbeforeunload = () => this.$t('window_unload');
         },
         emitDocumentClick: function emitDocumentClick(event) {
             state.$emit('document.clicked', event);
