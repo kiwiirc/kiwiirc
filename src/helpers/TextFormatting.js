@@ -223,7 +223,7 @@ export function ircCodesToHtml(input, enableExtras) {
     return out;
 }
 
-const urlRegex = new RegExp('^' +
+const urlRegex = new RegExp(
     // Detect either a protocol or 'www.' to start a URL
     /(([A-Za-z][A-Za-z0-9-]*:\/\/)|(www\.))/.source +
     // The hostname..
@@ -235,17 +235,18 @@ const urlRegex = new RegExp('^' +
     // Optional path..
     /(\/[\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF!:.?$'()[\]*,;~+=&%@!\-/]*)?/.source +
     // Optional fragment
-    /(#.*)?/.source +
-    '$',
+    /(#.*)?/.source,
     'i'
 );
 
 export function linkifyUrls(input, _opts) {
     let opts = _opts || {};
     let foundUrls = [];
+    let urls = Object.create(null);
     let result = input.replace(urlRegex, _url => {
         let url = _url;
-        let nice = url;
+        let nice = '';
+        let suffix = '';
 
         // Don't allow javascript execution
         if (url.match(/^javascript:/i)) {
@@ -256,6 +257,17 @@ export function linkifyUrls(input, _opts) {
         if (url.match(/^www\./i)) {
             url = 'http://' + url;
         }
+
+        // Links almost always contain an opening bracket if the last character is a closing
+        // bracket and should be part of the URL.
+        // If there isn't an opening bracket but the URL ends in a closing bracket, consider the
+        // closing bracket as punctuation outside of the URL.
+        if (url.indexOf('(') === -1 && url[url.length - 1] === ')') {
+            suffix += ')';
+            url = url.substr(0, url.length - 1);
+        }
+
+        nice = url;
 
         // Shorten the displayed URL if it's going to be too long
         if (nice.length > 100) {
@@ -271,8 +283,20 @@ export function linkifyUrls(input, _opts) {
             out += `<a data-url="${url}" class="${cssClass}">${content}</a>`;
         }
 
+        // Pretty hacky, but replace all URLs with random keys that won't get caught up in the HTML
+        // escaping. Once escaped, replace the random keys back with the URL links.
+        let urlId = '---url' + (Math.random() * 1e+17) + '---';
+        urls[urlId] = out;
+        out = urlId;
+
         foundUrls.push(url);
-        return out;
+        return out + suffix;
+    });
+
+    // Replace the random URL keys back with their URL links
+    result = _.escape(result);
+    Object.keys(urls).forEach(urlId => {
+        result = result.replace(urlId, urls[urlId]);
     });
 
     return {
