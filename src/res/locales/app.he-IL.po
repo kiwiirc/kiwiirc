@@ -1,531 +1,531 @@
 #: Close
 msgid "close"
-msgstr ""
+msgstr "סגור"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "התחבר"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "מתחבר"
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "מחובר"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "הגדרות"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "חדרים"
 
 #: Banned
 msgid "banned"
-msgstr ""
+msgstr "חסום"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "התראות"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "שם משתמש"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "סיסמה"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "יש לי סיסמה"
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "שרת"
 
 #: Nick (Nickname)
 msgid "nick"
-msgstr ""
+msgstr "כינוי"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "חדר"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "רשת"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "מתחבר"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "כניסה_שגויה"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "חיפוש"
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "אישור"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "ביטול"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "סגירת החלון זה תסגור את כל השיחות בצ'ט. לסגור את החלון"
 
 #: Realname field in a users whois
 msgid "whois_realname"
-msgstr ""
+msgstr "שם אמיתי"
 
 #: Away status in a users whois
 msgid "whois_status"
-msgstr ""
+msgstr "מצב"
 
 #: Away status in a users whois
 msgid "whois_status_available"
-msgstr ""
+msgstr "זמין לשיחה"
 
 #: Send user a message button
 msgid "send_a_message"
-msgstr ""
+msgstr "שלח הודעה"
 
 #: Show more information
 msgid "more_information"
-msgstr ""
+msgstr "עוד מידע"
 
 #: Ignore user toggle box
 msgid "ignore_user"
-msgstr ""
+msgstr "התעלם מהמשתמש"
 
 #: Channel input box
 msgid "connection_channel"
-msgstr ""
+msgstr "חדר"
 
 #: General Title
 msgid "settings_general"
-msgstr ""
+msgstr "כללי"
 
 #: Theme Title
 msgid "settings_theme"
-msgstr ""
+msgstr "נושא"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "קישור נושא"
 
 #: Use Monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "שימוש במונוספייס"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "עיצוב IRC סטנדרטי"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "הצג רשימת השלמה אוטומטית"
 
 #: Messages Title
 msgid "settings_messages_title"
-msgstr ""
+msgstr "הודעות צ'ט"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "הצג חותמת זמן"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "הצג חותמות זמן בפורמט 24 מספרים (בלי AM/PM)"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "הצג רגשונים"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr ""
+msgstr "חסום הודעות פרטיות חדשות"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "הודעות בגלילה לאחורה"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr ""
+msgstr "עיצוב נוסף"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr ""
+msgstr "הצג הודעות כניסה ויציאה"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "השתק התראות"
 
 #: Highlight on words
 msgid "settings_highlight"
-msgstr ""
+msgstr "הדגשה על מילים"
 
 #: Aliases Title
 msgid "settings_aliases"
-msgstr ""
+msgstr "פקודות"
 
 #: Send Message
 msgid "send_message"
-msgstr ""
+msgstr "שלח הודעה"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr ""
+msgstr "הודע לי כאשר"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "נשלחה הודעה"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "שמי מוזכר"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "לעולם לא"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr ""
+msgstr "השתק צלילים"
 
 #: operator_tools
 msgid "operator_tools"
-msgstr ""
+msgstr "כלי ניהול"
 
 #: settings_default_ban_mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "ברירת מחדל של תבנית חסימה"
 
 #: settings_default_kick_reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "ברירת מחדל של סיבת בעיטה"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr ""
+msgstr "רענן רשימת חסומים"
 
 #: Banned user
 msgid "bans_user"
-msgstr ""
+msgstr "משתמש חסום"
 
 #: Banned by
 msgid "bans_by"
-msgstr ""
+msgstr "נחסם ע\"י"
 
 #: Refreshing banlist
 msgid "bans_refreshing"
-msgstr ""
+msgstr "מרענן רשימת חסימות"
 
 #: Nobody is banned
 msgid "bans_nobody"
-msgstr ""
+msgstr "אף אחד לא חסום"
 
 #: Topic
 msgid "channel_topic"
-msgstr ""
+msgstr "כותרת"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr ""
+msgstr "מצב שיח מוגבל (רק בעלי דרגות רשאים לדבר)"
 
 #: Invite Only
 msgid "channel_invite"
-msgstr ""
+msgstr "בהזמנה בלבד"
 
 #: Moderated topic
 msgid "channel_moderated_topic"
-msgstr ""
+msgstr "רק מנהלים רשאים לשנות כותרת"
 
 #: Block external messages
 msgid "channel_external"
-msgstr ""
+msgstr "חסום הודעות שבאות מחוץ לחדר זה"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr ""
+msgstr "ברוך הבא ל-Kiwi IRC בחר חדר משמאל"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr ""
+msgstr "הצג דפדפן מצב"
 
 #: Join Channel
 msgid "container_join"
-msgstr ""
+msgstr "הצטרף לחדר"
 
 #: Not connected
 msgid "container_notconnected"
-msgstr ""
+msgstr "לא מחובר"
 
 #: Private conversation with
 msgid "container_privmsg"
-msgstr ""
+msgstr "שיחה פרטית עם {{user}}"
 
 #: input wrap placeholder
 msgid "input_placeholder"
-msgstr ""
+msgstr "שלח הודעה"
 
 #: Loading
 msgid "media_loading"
-msgstr ""
+msgstr "טוען {{url}}"
 
 #: Load previous
 msgid "messages_load"
-msgstr ""
+msgstr "טען הודעות קודמות"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "הודעות שטרם נקראו"
 
 #: NetworkSettings $t('settings_')
 msgid "settings_server_details"
-msgstr ""
+msgstr "פרטי שרת"
 
 #: Port
 msgid "settings_port"
-msgstr ""
+msgstr "פורט"
 
 #: Other networks on this ZNC account
 msgid "settings_znc_other"
-msgstr ""
+msgstr "רשתות אחרות על חשבון ה-ZNC יוצגו ברשימת הרשתות"
 
 #: Your details
 msgid "settings_your_details"
-msgstr ""
+msgstr "הפרטים שלך"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr ""
+msgstr "כינוי"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr ""
+msgstr "מתקדם"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr ""
+msgstr "קידוד"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr ""
+msgstr "הצג מידע גולמי"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr ""
+msgstr "הרץ פקודות כשאת\\ה מחובר\\ת"
 
 #: Danger zone
 msgid "settings_danger"
-msgstr ""
+msgstr "איזור סכנה"
 
 #: Remove network
 msgid "settings_remove"
-msgstr ""
+msgstr "הסר רשת"
 
 #: Person key
 msgid "person"
-msgstr ""
+msgstr "{{count}} הבנאדם כאן"
 
 #: Person plural key
 msgid "person_plural"
-msgstr ""
+msgstr "{{count}} אנשים כאן"
 
 #: Reconnect Channel
 msgid "reconnect_channel"
-msgstr ""
+msgstr "הצטרף מחדש לחדר {{channel}}"
 
 #: Reconnect to network
 msgid "reconnect_network"
-msgstr ""
+msgstr "התחבר מחדש לרשת {{network}} כדי להמשיך לצ'וטט"
 
 #: Reconnect to query
 msgid "reconnect_query"
-msgstr ""
+msgstr "התחבר מחדש כדי להמשיך לשוחח {{user}}"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr ""
+msgstr "הגדרות התחברות"
 
 #: Close options $t('side_')
 msgid "side_close"
-msgstr ""
+msgstr "סגור אפשרויות"
 
 #: Channel options
 msgid "side_options"
-msgstr ""
+msgstr "אפשרויות חדר"
 
 #: Your settings
 msgid "side_settings"
-msgstr ""
+msgstr "ההגדרות שלך"
 
 #: Show when people join
 msgid "side_joins"
-msgstr ""
+msgstr "הראה כניסות משתמשים"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr ""
+msgstr "תצוגת הודעות נוספות"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr ""
+msgstr "צבע כינויי משתמשים"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr ""
+msgstr "לא הוגדר באפר"
 
 #: Error starting
 msgid "error_starting"
-msgstr ""
+msgstr "התרחשה שגיאה באיתחול הממשק :("
 
 msgid "error_installed"
-msgstr ""
+msgstr "וודא שהתקנת נכונה את Kiwi IRC ושהקונפיגורציה יכולה להטען"
 
 #: Leave
 msgid "state_leave"
-msgstr ""
+msgstr "עזוב {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr ""
+msgstr "החשבון שלך"
 
 #: Your settings and networks will be remembered on this computer
 msgid "state_remembered"
-msgstr ""
+msgstr "הגדרותייך והרשתות שלך יזכרו במחשב זה"
 
 #: Forget me
 msgid "state_forget"
-msgstr ""
+msgstr "שכח אותי"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr ""
+msgstr "לא הגדרת אף רשת\\שרת"
 
 #: Add one?
 msgid "state_add"
-msgstr ""
+msgstr "הוסף אחד"
 
 #: Available networks
 msgid "state_available"
-msgstr ""
+msgstr "רשתות זמינות"
 
 #: Configure network
 msgid "state_configure"
-msgstr ""
+msgstr "קנפג רשת"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr ""
+msgstr "לא מחובר"
 
 #: Join new #channel
 msgid "state_join"
-msgstr ""
+msgstr "הצטרף ל- #חדר חדש"
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "החלף כינוי"
 
 #: Account name
 msgid "user_account"
-msgstr ""
+msgstr "שם החשבון: {{user}}"
 
 #: Real name
 msgid "user_realname"
-msgstr ""
+msgstr "שם מלא: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr ""
+msgstr "הוא רובוט"
 
 #: Is available for help
 msgid "user_help"
-msgstr ""
+msgstr "זמין לעזרה"
 
 #: Is an operator
 msgid "user_op"
-msgstr ""
+msgstr "הוא אופר"
 
 #: Connected to
 msgid "user_server"
-msgstr ""
+msgstr "מחובר ל- {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr ""
+msgstr "מחובר באבטחת SSL/TLS"
 
 #: Also in channels
 msgid "user_channels"
-msgstr ""
+msgstr "גם נמצא\\ת בחדר(ים) {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr ""
+msgstr "דרגת גישה\\ניהול"
 
 #: Normal
 msgid "user_normal"
-msgstr ""
+msgstr "רגיל"
 
 #: Kick from channel
 msgid "user_kick"
-msgstr ""
+msgstr "בעיטה מהחדר"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr ""
+msgstr "חסימה מהחדר"
 
 #: Kick + Ban from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "חסימה + בעיטה מהחדר"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr ""
+msgstr "תוכנת הצ'ט שלך"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr ""
+msgstr "הוסף את הרשתות שלך. היכנס לחדרים שלך"
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr ""
+msgstr "הם יהיו כאן כשתחזור"
 
 #: Add a Network
 msgid "personal_add"
-msgstr ""
+msgstr "הוסף רשת"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr ""
+msgstr "רשתות שמורות"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr ""
+msgstr "קיווי איי.אר.סי (הדור הבא) - קדימון Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr ""
+msgstr "וובסוקטים ישירים. אין סרבר של קיווי או ווב-איי.אר.סי מעורב"
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr ""
+msgstr "תודה לאדם @ריזון על הפיתוח של תמיכת שרת וובסוקטים"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr ""
+msgstr "נסה\\נסי את גרסת הפיתוח של קיווי איי.אר.סי"
 

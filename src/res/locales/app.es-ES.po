@@ -84,7 +84,7 @@ msgstr "Cancelar"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "Se van a cerrar todas las conversaciones de KiwiIRC. ¿Seguro que quieres cerrar esta ventana?"
 
 #: Realname field in a users whois
 msgid "whois_realname"
@@ -439,7 +439,7 @@ msgstr "Entrar en una #sala nueva"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Cambiar nick"
+msgstr "Cambiar alias"
 
 #: Account name
 msgid "user_account"
