@@ -17,10 +17,7 @@
 
                 <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
-                <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
-                </label>
-                <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
+                <optional-password v-model="password"/>
 
                 <input-text :label="$t('channel')" v-model="channel" />
             </template>
@@ -28,10 +25,7 @@
             <template v-if="server_type === 'default_simple'">
                 <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
-                <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
-                </label>
-                <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
+                <optional-password v-model="password" v-if="showPass"/>
 
                 <input-text :label="$t('channel')" v-model="channel" class="kiwi-customserver-channel" />
             </template>

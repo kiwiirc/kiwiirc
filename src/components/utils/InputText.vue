@@ -13,6 +13,7 @@
             @focus="hasFocus=true"
             @blur="hasFocus=false"
             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+            ref="usedInput"
         />
         <input
             v-else-if="type==='number'"
@@ -20,6 +21,7 @@
             v-model="currentValue"
             @focus="hasFocus=true"
             @blur="hasFocus=false"
+            ref="usedInput"
         />
         <input
             v-else
@@ -27,6 +29,7 @@
             @focus="hasFocus=true"
             @blur="hasFocus=false"
             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+            ref="usedInput"
         />
 
         <div v-if="$slots.default" class="input-text-c">
@@ -66,6 +69,11 @@ export default Vue.component('input-text', {
     methods: {
         updateValue: function updateValue(newValue) {
             this.$emit('input', newValue);
+        },
+        focus: function focus() {
+            setTimeout(() => {
+                this.$refs.usedInput.focus();
+            });
         },
     },
 });
