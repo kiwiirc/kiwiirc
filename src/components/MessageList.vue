@@ -234,7 +234,7 @@ export default {
             return highlightFound;
         },
         nickStyle: function nickColour(nick) {
-            if (state.setting('buffers.colour_nicknames_in_messages')) {
+            if (this.bufferSetting('colour_nicknames_in_messages')) {
                 return 'color:' + TextFormatting.createNickColour(nick) + ';';
             }
             return '';
