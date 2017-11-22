@@ -96,7 +96,10 @@ export default {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
         nickColour: function nickColour(nick) {
-            return TextFormatting.createNickColour(nick);
+            if (this.ml.bufferSetting('colour_nicknames_in_messages')) {
+                return TextFormatting.createNickColour(nick);
+            }
+            return '';
         },
         isMessage: function isMessage(message) {
             let types = ['privmsg', 'action', 'notice'];

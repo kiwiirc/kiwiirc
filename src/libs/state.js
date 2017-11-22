@@ -44,6 +44,7 @@ const stateObj = {
             show_joinparts: true,
             traffic_as_activity: false,
             coloured_nicklist: true,
+            colour_nicknames_in_messages: true,
             block_pms: false,
             show_emoticons: true,
             extra_formatting: true,

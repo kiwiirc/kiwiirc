@@ -40,6 +40,7 @@
                         <label><span>{{$t('settings_block_private')}}: </span> <input type="checkbox" v-model="settingBufferBlockPms" /></label>
                         <label><span>{{$t('settings_scrollback')}}: </span> <input type="number" class="u-input" v-model="settingBufferScrollbackSize" /></label>
                         <label><span>{{$t('settings_formatting')}}: </span> <input type="checkbox" v-model="settingBufferExtraFormatting" /></label>
+                        <label><span>{{$t('settings_nick_colouring')}}: </span> <input type="checkbox" v-model="settingBufferColourNicknames" /></label>
                     </div>
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
@@ -120,6 +121,7 @@ export default {
         settingShowAutoComplete: bindSetting('showAutocomplete'),
         settingUseMonospace: bindSetting('useMonospace'),
         settingHighlights: bindSetting('highlights'),
+        settingBufferColourNicknames: bindSetting('buffers.colour_nicknames_in_messages'),
         settingBufferShowTimestamps: bindSetting('buffers.show_timestamps'),
         settingBufferShowEmoticons: bindSetting('buffers.show_emoticons'),
         settingBufferBlockPms: bindSetting('buffers.block_pms'),

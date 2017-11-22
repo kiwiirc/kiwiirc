@@ -234,7 +234,10 @@ export default {
             return highlightFound;
         },
         nickStyle: function nickColour(nick) {
-            return 'color:' + TextFormatting.createNickColour(nick) + ';';
+            if (this.bufferSetting('colour_nicknames_in_messages')) {
+                return 'color:' + TextFormatting.createNickColour(nick) + ';';
+            }
+            return '';
         },
         onListClick: function onListClick(event) {
             this.toggleMessageInfo();
