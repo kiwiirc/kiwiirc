@@ -166,6 +166,10 @@ msgstr "Messages in scrollback"
 msgid "settings_formatting"
 msgstr "Extra formatting"
 
+#: Nickname Colouring
+msg "settings_nick_colouring"
+msgstr: "Colour nicknames in messages"
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Include join/part messages as activity"
