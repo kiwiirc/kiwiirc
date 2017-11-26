@@ -22,7 +22,7 @@ msgstr "הגדרות"
 msgid "channels"
 msgstr "חדרים"
 
-#: Banned
+#: Banned Users
 msgid "banned"
 msgstr "חסום"
 
@@ -46,7 +46,7 @@ msgstr "יש לי סיסמה"
 msgid "server"
 msgstr "שרת"
 
-#: Nick (Nickname)
+#: Nick
 msgid "nick"
 msgstr "כינוי"
 
@@ -86,39 +86,39 @@ msgstr "ביטול"
 msgid "window_unload"
 msgstr "סגירת החלון זה תסגור את כל השיחות בצ'ט. לסגור את החלון"
 
-#: Realname field in a users whois
+#: Real name
 msgid "whois_realname"
 msgstr "שם אמיתי"
 
-#: Away status in a users whois
+#: Status
 msgid "whois_status"
 msgstr "מצב"
 
-#: Away status in a users whois
+#: Is available
 msgid "whois_status_available"
 msgstr "זמין לשיחה"
 
-#: Send user a message button
+#: Send a message
 msgid "send_a_message"
 msgstr "שלח הודעה"
 
-#: Show more information
+#: More information
 msgid "more_information"
 msgstr "עוד מידע"
 
-#: Ignore user toggle box
+#: Ignore user
 msgid "ignore_user"
 msgstr "התעלם מהמשתמש"
 
-#: Channel input box
+#: Channel
 msgid "connection_channel"
 msgstr "חדר"
 
-#: General Title
+#: General
 msgid "settings_general"
 msgstr "כללי"
 
-#: Theme Title
+#: Theme
 msgid "settings_theme"
 msgstr "נושא"
 
@@ -126,7 +126,7 @@ msgstr "נושא"
 msgid "settings_themeurl"
 msgstr "קישור נושא"
 
-#: Use Monospace
+#: Use monospace
 msgid "settings_use_monospace"
 msgstr "שימוש במונוספייס"
 
@@ -138,7 +138,7 @@ msgstr "עיצוב IRC סטנדרטי"
 msgid "settings_show_autocomplete"
 msgstr "הצג רשימת השלמה אוטומטית"
 
-#: Messages Title
+#: Chat Messages
 msgid "settings_messages_title"
 msgstr "הודעות צ'ט"
 
@@ -166,6 +166,10 @@ msgstr "הודעות בגלילה לאחורה"
 msgid "settings_formatting"
 msgstr "עיצוב נוסף"
 
+#: Colour nicknames in messages
+msgid "settings_nick_colouring"
+msgstr ""
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "הצג הודעות כניסה ויציאה"
@@ -174,11 +178,11 @@ msgstr "הצג הודעות כניסה ויציאה"
 msgid "settings_mute_sound"
 msgstr "השתק התראות"
 
-#: Highlight on words
+#: Highlight on words (space seperated)
 msgid "settings_highlight"
 msgstr "הדגשה על מילים"
 
-#: Aliases Title
+#: Aliases
 msgid "settings_aliases"
 msgstr "פקודות"
 
@@ -206,15 +210,15 @@ msgstr "לעולם לא"
 msgid "settings_notify_mute"
 msgstr "השתק צלילים"
 
-#: operator_tools
+#: Operator tools
 msgid "operator_tools"
 msgstr "כלי ניהול"
 
-#: settings_default_ban_mask
+#: Default ban mask
 msgid "settings_default_ban_mask"
 msgstr "ברירת מחדל של תבנית חסימה"
 
-#: settings_default_kick_reason
+#: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "ברירת מחדל של סיבת בעיטה"
 
@@ -230,11 +234,11 @@ msgstr "משתמש חסום"
 msgid "bans_by"
 msgstr "נחסם ע\"י"
 
-#: Refreshing banlist
+#: Refreshing banlist...
 msgid "bans_refreshing"
 msgstr "מרענן רשימת חסימות"
 
-#: Nobody is banned
+#: Nobody is banned!
 msgid "bans_nobody"
 msgstr "אף אחד לא חסום"
 
@@ -246,15 +250,15 @@ msgstr "כותרת"
 msgid "channel_moderated"
 msgstr "מצב שיח מוגבל (רק בעלי דרגות רשאים לדבר)"
 
-#: Invite Only
+#: Invite only
 msgid "channel_invite"
 msgstr "בהזמנה בלבד"
 
-#: Moderated topic
+#: Only moderators can change the topic
 msgid "channel_moderated_topic"
 msgstr "רק מנהלים רשאים לשנות כותרת"
 
-#: Block external messages
+#: Block messages from outside this channel
 msgid "channel_external"
 msgstr "חסום הודעות שבאות מחוץ לחדר זה"
 
@@ -270,23 +274,23 @@ msgstr "הצג דפדפן מצב"
 msgid "container_join"
 msgstr "הצטרף לחדר"
 
-#: Not connected
+#: Not Connected
 msgid "container_notconnected"
 msgstr "לא מחובר"
 
-#: Private conversation with
+#: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "שיחה פרטית עם {{user}}"
 
-#: input wrap placeholder
+#: Send a message...
 msgid "input_placeholder"
 msgstr "שלח הודעה"
 
-#: Loading
+#: Loading {{url}}...
 msgid "media_loading"
 msgstr "טוען {{url}}"
 
-#: Load previous
+#: Load previous messages
 msgid "messages_load"
 msgstr "טען הודעות קודמות"
 
@@ -294,7 +298,7 @@ msgstr "טען הודעות קודמות"
 msgid "unread_messages"
 msgstr "הודעות שטרם נקראו"
 
-#: NetworkSettings $t('settings_')
+#: Server details
 msgid "settings_server_details"
 msgstr "פרטי שרת"
 
@@ -302,7 +306,7 @@ msgstr "פרטי שרת"
 msgid "settings_port"
 msgstr "פורט"
 
-#: Other networks on this ZNC account
+#: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
 msgstr "רשתות אחרות על חשבון ה-ZNC יוצגו ברשימת הרשתות"
 
@@ -330,7 +334,7 @@ msgstr "הצג מידע גולמי"
 msgid "settings_autorun"
 msgstr "הרץ פקודות כשאת\\ה מחובר\\ת"
 
-#: Danger zone
+#: Danger Zone
 msgid "settings_danger"
 msgstr "איזור סכנה"
 
@@ -338,23 +342,23 @@ msgstr "איזור סכנה"
 msgid "settings_remove"
 msgstr "הסר רשת"
 
-#: Person key
+#: {{count}} person here
 msgid "person"
 msgstr "{{count}} הבנאדם כאן"
 
-#: Person plural key
+#: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} אנשים כאן"
 
-#: Reconnect Channel
+#: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr "הצטרף מחדש לחדר {{channel}}"
 
-#: Reconnect to network
+#: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
 msgstr "התחבר מחדש לרשת {{network}} כדי להמשיך לצ'וטט"
 
-#: Reconnect to query
+#: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
 msgstr "התחבר מחדש כדי להמשיך לשוחח {{user}}"
 
@@ -362,7 +366,7 @@ msgstr "התחבר מחדש כדי להמשיך לשוחח {{user}}"
 msgid "reconnect_settings"
 msgstr "הגדרות התחברות"
 
-#: Close options $t('side_')
+#: Close options
 msgid "side_close"
 msgstr "סגור אפשרויות"
 
@@ -390,14 +394,15 @@ msgstr "צבע כינויי משתמשים"
 msgid "side_buffer"
 msgstr "לא הוגדר באפר"
 
-#: Error starting
+#: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "התרחשה שגיאה באיתחול הממשק :("
 
+#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
 msgstr "וודא שהתקנת נכונה את Kiwi IRC ושהקונפיגורציה יכולה להטען"
 
-#: Leave
+#: Leave {{name}}
 msgid "state_leave"
 msgstr "עזוב {{name}}"
 
@@ -405,7 +410,7 @@ msgstr "עזוב {{name}}"
 msgid "state_account"
 msgstr "החשבון שלך"
 
-#: Your settings and networks will be remembered on this computer
+#: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
 msgstr "הגדרותייך והרשתות שלך יזכרו במחשב זה"
 
@@ -441,11 +446,11 @@ msgstr "הצטרף ל- #חדר חדש"
 msgid "change_nick"
 msgstr "החלף כינוי"
 
-#: Account name
+#: Account name: {{user}}
 msgid "user_account"
 msgstr "שם החשבון: {{user}}"
 
-#: Real name
+#: Real name: {{realname}}
 msgid "user_realname"
 msgstr "שם מלא: {{realname}}"
 
@@ -461,7 +466,7 @@ msgstr "זמין לעזרה"
 msgid "user_op"
 msgstr "הוא אופר"
 
-#: Connected to
+#: Connected to {{server}} {{info}}
 msgid "user_server"
 msgstr "מחובר ל- {{server}} {{info}}"
 
@@ -469,7 +474,7 @@ msgstr "מחובר ל- {{server}} {{info}}"
 msgid "user_secure"
 msgstr "מחובר באבטחת SSL/TLS"
 
-#: Also in channels
+#: Also in channels {{channels}}
 msgid "user_channels"
 msgstr "גם נמצא\\ת בחדר(ים) {{channels}}"
 
@@ -481,7 +486,7 @@ msgstr "דרגת גישה\\ניהול"
 msgid "user_normal"
 msgstr "רגיל"
 
-#: Kick from channel
+#: Kick from the channel
 msgid "user_kick"
 msgstr "בעיטה מהחדר"
 
@@ -489,7 +494,7 @@ msgstr "בעיטה מהחדר"
 msgid "user_ban"
 msgstr "חסימה מהחדר"
 
-#: Kick + Ban from the channel
+#: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "חסימה + בעיטה מהחדר"
 
