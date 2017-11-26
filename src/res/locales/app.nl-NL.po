@@ -22,7 +22,7 @@ msgstr "Instellingen"
 msgid "channels"
 msgstr "Kanalen"
 
-#: Banned
+#: Banned Users
 msgid "banned"
 msgstr "Verbannen gebruikers"
 
@@ -46,7 +46,7 @@ msgstr "Ik heb een wachtwoord"
 msgid "server"
 msgstr "Server"
 
-#: Nick (Nickname)
+#: Nick
 msgid "nick"
 msgstr "Nicknaam"
 
@@ -86,39 +86,39 @@ msgstr "Annuleren"
 msgid "window_unload"
 msgstr "Als je dit venster sluit, sluit je alle KiwiIRC gesprekken. Weet je zeker dat je het venster wil sluiten?"
 
-#: Realname field in a users whois
+#: Real name
 msgid "whois_realname"
 msgstr "Realname"
 
-#: Away status in a users whois
+#: Status
 msgid "whois_status"
 msgstr "Status"
 
-#: Away status in a users whois
+#: Is available
 msgid "whois_status_available"
 msgstr "Is beschikbaar"
 
-#: Send user a message button
+#: Send a message
 msgid "send_a_message"
 msgstr "Stuur een bericht"
 
-#: Show more information
+#: More information
 msgid "more_information"
 msgstr "Meer informatie"
 
-#: Ignore user toggle box
+#: Ignore user
 msgid "ignore_user"
 msgstr "Negeer gebruiker"
 
-#: Channel input box
+#: Channel
 msgid "connection_channel"
 msgstr "Kanaal"
 
-#: General Title
+#: General
 msgid "settings_general"
 msgstr "Algemeen"
 
-#: Theme Title
+#: Theme
 msgid "settings_theme"
 msgstr "Thema"
 
@@ -126,7 +126,7 @@ msgstr "Thema"
 msgid "settings_themeurl"
 msgstr "Thema link"
 
-#: Use Monospace
+#: Use monospace
 msgid "settings_use_monospace"
 msgstr "Gebruik monospace"
 
@@ -138,7 +138,7 @@ msgstr "Klassieke IRC layout"
 msgid "settings_show_autocomplete"
 msgstr "Automatisch-aanvullen lijst weergeven"
 
-#: Messages Title
+#: Chat Messages
 msgid "settings_messages_title"
 msgstr "Berichten"
 
@@ -166,6 +166,10 @@ msgstr "Berichten in scrollback"
 msgid "settings_formatting"
 msgstr "Extra opmaak"
 
+#: Colour nicknames in messages
+msgid "settings_nick_colouring"
+msgstr ""
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Join/part als activiteit meetellen"
@@ -174,11 +178,11 @@ msgstr "Join/part als activiteit meetellen"
 msgid "settings_mute_sound"
 msgstr "Geluidsnotificaties dempen"
 
-#: Highlight on words
+#: Highlight on words (space seperated)
 msgid "settings_highlight"
 msgstr "Highlighten op woorden (gescheiden door spaties)"
 
-#: Aliases Title
+#: Aliases
 msgid "settings_aliases"
 msgstr "Aliassen"
 
@@ -206,15 +210,15 @@ msgstr "Nooit"
 msgid "settings_notify_mute"
 msgstr "Geluiden dempen"
 
-#: operator_tools
+#: Operator tools
 msgid "operator_tools"
 msgstr "Operator gereedschap"
 
-#: settings_default_ban_mask
+#: Default ban mask
 msgid "settings_default_ban_mask"
 msgstr "Standaard ban formaat"
 
-#: settings_default_kick_reason
+#: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Standaard kick reden"
 
@@ -230,11 +234,11 @@ msgstr "Verbannen gebruiker"
 msgid "bans_by"
 msgstr "Verbannen door"
 
-#: Refreshing banlist
+#: Refreshing banlist...
 msgid "bans_refreshing"
 msgstr "Banlijst wordt ververst..."
 
-#: Nobody is banned
+#: Nobody is banned!
 msgid "bans_nobody"
 msgstr "Niemand is verbannen!"
 
@@ -246,15 +250,15 @@ msgstr "Topic"
 msgid "channel_moderated"
 msgstr "Kanaal is gemodereerd"
 
-#: Invite Only
+#: Invite only
 msgid "channel_invite"
 msgstr "Alleen op uitnodiging"
 
-#: Moderated topic
+#: Only moderators can change the topic
 msgid "channel_moderated_topic"
 msgstr "Alleen moderators mogen het topic aanpassen"
 
-#: Block external messages
+#: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Externe berichten blokkeren"
 
@@ -270,23 +274,23 @@ msgstr "Toon statebrowser"
 msgid "container_join"
 msgstr "Join kanaal"
 
-#: Not connected
+#: Not Connected
 msgid "container_notconnected"
 msgstr "Niet verbonden"
 
-#: Private conversation with
+#: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Privé gesprek met {{user}}"
 
-#: input wrap placeholder
+#: Send a message...
 msgid "input_placeholder"
 msgstr "Stuur een bericht..."
 
-#: Loading
+#: Loading {{url}}...
 msgid "media_loading"
 msgstr "{{url}} wordt geladen..."
 
-#: Load previous
+#: Load previous messages
 msgid "messages_load"
 msgstr "Laadt vorige berichten"
 
@@ -294,7 +298,7 @@ msgstr "Laadt vorige berichten"
 msgid "unread_messages"
 msgstr "Ongelezen berichten"
 
-#: NetworkSettings $t('settings_')
+#: Server details
 msgid "settings_server_details"
 msgstr "Server details"
 
@@ -302,7 +306,7 @@ msgstr "Server details"
 msgid "settings_port"
 msgstr "Poort"
 
-#: Other networks on this ZNC account
+#: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
 msgstr "Andere netwerken op deze ZNC account zullen weergegeven worden in de netwerk lijst"
 
@@ -330,7 +334,7 @@ msgstr "Ruwe berichten weergeven"
 msgid "settings_autorun"
 msgstr "Uit te voeren commando's nadat er een verbinding is gemaakt"
 
-#: Danger zone
+#: Danger Zone
 msgid "settings_danger"
 msgstr "Gevaren zone"
 
@@ -338,23 +342,23 @@ msgstr "Gevaren zone"
 msgid "settings_remove"
 msgstr "Verwijder netwerk"
 
-#: Person key
+#: {{count}} person here
 msgid "person"
 msgstr "{{count}} gebruiker aanwezig"
 
-#: Person plural key
+#: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} personen aanwezig"
 
-#: Reconnect Channel
+#: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr "Verbind opnieuw om {{channel}} te joinen"
 
-#: Reconnect to network
+#: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
 msgstr "Verbind opnieuw met {{network}} om te beginnen met praten"
 
-#: Reconnect to query
+#: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
 msgstr "Verbind opnieuw om door te gaan met je gesprek met {{user}}"
 
@@ -362,7 +366,7 @@ msgstr "Verbind opnieuw om door te gaan met je gesprek met {{user}}"
 msgid "reconnect_settings"
 msgstr "Verbindingsinstellingen"
 
-#: Close options $t('side_')
+#: Close options
 msgid "side_close"
 msgstr "Sluit instellingen"
 
@@ -390,14 +394,15 @@ msgstr "Gekleurde nicknamen weergeven"
 msgid "side_buffer"
 msgstr "Nog geen buffer gezet"
 
-#: Error starting
+#: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "Er was een fout tijdens het opstarten van Kiwi IRC :("
 
+#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
 msgstr "Zorg ervoor dat je Kiwi IRC goed geïnstalleerd hebt en de configuratie geladen kan worden"
 
-#: Leave
+#: Leave {{name}}
 msgid "state_leave"
 msgstr "Verlaat {{name}}"
 
@@ -405,7 +410,7 @@ msgstr "Verlaat {{name}}"
 msgid "state_account"
 msgstr "Jouw account"
 
-#: Your settings and networks will be remembered on this computer
+#: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
 msgstr "Je instellingen en netwerken worden op deze computer onthouden."
 
@@ -441,11 +446,11 @@ msgstr "Ga nieuw #kanaal binnen"
 msgid "change_nick"
 msgstr "Nick veranderen"
 
-#: Account name
+#: Account name: {{user}}
 msgid "user_account"
 msgstr "Account naam: {{user}}"
 
-#: Real name
+#: Real name: {{realname}}
 msgid "user_realname"
 msgstr "Real name: {{realname}}"
 
@@ -461,7 +466,7 @@ msgstr "Is beschikbaar voor hulp"
 msgid "user_op"
 msgstr "Is een IRC Operator"
 
-#: Connected to
+#: Connected to {{server}} {{info}}
 msgid "user_server"
 msgstr "Verbonden met {{server}} {{info}}"
 
@@ -469,7 +474,7 @@ msgstr "Verbonden met {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Veilig verbonden d.m.v. SSL/TLS"
 
-#: Also in channels
+#: Also in channels {{channels}}
 msgid "user_channels"
 msgstr "Ook in kanalen {{channels}}"
 
@@ -481,7 +486,7 @@ msgstr "Toegangsniveau"
 msgid "user_normal"
 msgstr "Normaal"
 
-#: Kick from channel
+#: Kick from the channel
 msgid "user_kick"
 msgstr "Uit het kanaal kicken"
 
@@ -489,7 +494,7 @@ msgstr "Uit het kanaal kicken"
 msgid "user_ban"
 msgstr "Uit het kanaal verbannen"
 
-#: Kick + Ban from the channel
+#: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "Kick en verban uit het kanaal"
 
