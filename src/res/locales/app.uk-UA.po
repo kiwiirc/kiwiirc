@@ -22,7 +22,7 @@ msgstr "Налаштування"
 msgid "channels"
 msgstr "Канали"
 
-#: Banned
+#: Banned Users
 msgid "banned"
 msgstr "Заблоковані користувачі"
 
@@ -46,7 +46,7 @@ msgstr "У мене є пароль"
 msgid "server"
 msgstr "Сервер"
 
-#: Nick (Nickname)
+#: Nick
 msgid "nick"
 msgstr "Псевдонім"
 
@@ -86,39 +86,39 @@ msgstr "Скасувати"
 msgid "window_unload"
 msgstr "Це закриє усі розмови KiwiIRC. Ви дійсно хочете закрити це вікно?"
 
-#: Realname field in a users whois
+#: Real name
 msgid "whois_realname"
 msgstr "Справжнє ім'я"
 
-#: Away status in a users whois
+#: Status
 msgid "whois_status"
 msgstr "Стан"
 
-#: Away status in a users whois
+#: Is available
 msgid "whois_status_available"
 msgstr "Доступний"
 
-#: Send user a message button
+#: Send a message
 msgid "send_a_message"
 msgstr "Надіслати повідомлення"
 
-#: Show more information
+#: More information
 msgid "more_information"
 msgstr "Більше інформації"
 
-#: Ignore user toggle box
+#: Ignore user
 msgid "ignore_user"
 msgstr "Ігнорувати користувача"
 
-#: Channel input box
+#: Channel
 msgid "connection_channel"
 msgstr "Канал"
 
-#: General Title
+#: General
 msgid "settings_general"
 msgstr "Основні"
 
-#: Theme Title
+#: Theme
 msgid "settings_theme"
 msgstr "Тема"
 
@@ -126,7 +126,7 @@ msgstr "Тема"
 msgid "settings_themeurl"
 msgstr "URL-адреса теми"
 
-#: Use Monospace
+#: Use monospace
 msgid "settings_use_monospace"
 msgstr "Шрифт monospace"
 
@@ -138,7 +138,7 @@ msgstr "Традиційний формат IRC"
 msgid "settings_show_autocomplete"
 msgstr "Авто-завершення команд"
 
-#: Messages Title
+#: Chat Messages
 msgid "settings_messages_title"
 msgstr "Повідомлення чату"
 
@@ -166,6 +166,10 @@ msgstr "Кількість повідомлень історії"
 msgid "settings_formatting"
 msgstr "Екстра форматування"
 
+#: Colour nicknames in messages
+msgid "settings_nick_colouring"
+msgstr ""
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Повідомлення про активність"
@@ -174,11 +178,11 @@ msgstr "Повідомлення про активність"
 msgid "settings_mute_sound"
 msgstr "Вимкнути звук сповіщень"
 
-#: Highlight on words
+#: Highlight on words (space seperated)
 msgid "settings_highlight"
 msgstr "Підсвічувати повідомлення зі словами (через пробіл)"
 
-#: Aliases Title
+#: Aliases
 msgid "settings_aliases"
 msgstr "Профілі"
 
@@ -206,15 +210,15 @@ msgstr "Ніколи"
 msgid "settings_notify_mute"
 msgstr "Вимкнути звуки"
 
-#: operator_tools
+#: Operator tools
 msgid "operator_tools"
 msgstr "Інструменти оператора"
 
-#: settings_default_ban_mask
+#: Default ban mask
 msgid "settings_default_ban_mask"
 msgstr "Типовий шаблон блокування"
 
-#: settings_default_kick_reason
+#: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Типова причина виштовхування"
 
@@ -230,11 +234,11 @@ msgstr "Заблокований користувач"
 msgid "bans_by"
 msgstr "Хто заблокував"
 
-#: Refreshing banlist
+#: Refreshing banlist...
 msgid "bans_refreshing"
 msgstr "Оновлення списку..."
 
-#: Nobody is banned
+#: Nobody is banned!
 msgid "bans_nobody"
 msgstr "Нікого не заблоковано!"
 
@@ -246,15 +250,15 @@ msgstr "Тема"
 msgid "channel_moderated"
 msgstr "Модерований чат"
 
-#: Invite Only
+#: Invite only
 msgid "channel_invite"
 msgstr "Лише запрошення"
 
-#: Moderated topic
+#: Only moderators can change the topic
 msgid "channel_moderated_topic"
 msgstr "Лише модератори можуть змінювати тему"
 
-#: Block external messages
+#: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Блокувати зовнішні повідомлення"
 
@@ -270,23 +274,23 @@ msgstr "Показати statebrowser"
 msgid "container_join"
 msgstr "Приєднатися до каналу"
 
-#: Not connected
+#: Not Connected
 msgid "container_notconnected"
 msgstr "Не з'єднано"
 
-#: Private conversation with
+#: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Приватна розмова з {{user}}"
 
-#: input wrap placeholder
+#: Send a message...
 msgid "input_placeholder"
 msgstr "Надіслати повідомлення..."
 
-#: Loading
+#: Loading {{url}}...
 msgid "media_loading"
 msgstr "Завантаження {{url}}..."
 
-#: Load previous
+#: Load previous messages
 msgid "messages_load"
 msgstr "Завантажити попередні повідомлення"
 
@@ -294,7 +298,7 @@ msgstr "Завантажити попередні повідомлення"
 msgid "unread_messages"
 msgstr "Нечитані повідомлення"
 
-#: NetworkSettings $t('settings_')
+#: Server details
 msgid "settings_server_details"
 msgstr "Подробиці сервера"
 
@@ -302,7 +306,7 @@ msgstr "Подробиці сервера"
 msgid "settings_port"
 msgstr "Порт"
 
-#: Other networks on this ZNC account
+#: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
 msgstr "Інші мережі в цьому обліковому записі ZNC будуть перелічені в списку мереж"
 
@@ -330,7 +334,7 @@ msgstr "Необроблений вигляд"
 msgid "settings_autorun"
 msgstr "Виконати команди при підключенні"
 
-#: Danger zone
+#: Danger Zone
 msgid "settings_danger"
 msgstr "Небезпечна зона"
 
@@ -338,23 +342,23 @@ msgstr "Небезпечна зона"
 msgid "settings_remove"
 msgstr "Вилучити мережу"
 
-#: Person key
+#: {{count}} person here
 msgid "person"
 msgstr "Тут {{count}} людина"
 
-#: Person plural key
+#: {{count}} people here
 msgid "person_plural"
 msgstr "Тут {{count}} людей"
 
-#: Reconnect Channel
+#: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr "З'єднайтесь повторно, щоб приєднатися до {{channel}}"
 
-#: Reconnect to network
+#: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
 msgstr "Для початку розмови з'єднайтесь повторно з {{network}}"
 
-#: Reconnect to query
+#: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
 msgstr "Для розмови з {{user}}, з'єднайтесь повторно"
 
@@ -362,7 +366,7 @@ msgstr "Для розмови з {{user}}, з'єднайтесь повторн�
 msgid "reconnect_settings"
 msgstr "Налаштування з'єднання"
 
-#: Close options $t('side_')
+#: Close options
 msgid "side_close"
 msgstr "Опції закриття"
 
@@ -390,14 +394,15 @@ msgstr "Кольорові псевдоніми в списку"
 msgid "side_buffer"
 msgstr "Буфер не встановлено"
 
-#: Error starting
+#: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "Виникла помилка при запуску Kiwi IRC :("
 
+#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
 msgstr "Переконайтеся, що Kiwi IRC встановлений правильно і можна завантажити конфігурацію"
 
-#: Leave
+#: Leave {{name}}
 msgid "state_leave"
 msgstr "Покинути {{name}}"
 
@@ -405,7 +410,7 @@ msgstr "Покинути {{name}}"
 msgid "state_account"
 msgstr "Ваш обліковий запис"
 
-#: Your settings and networks will be remembered on this computer
+#: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
 msgstr "Ваші налаштування й мережі запам'ятаються на цьому комп'ютері."
 
@@ -441,11 +446,11 @@ msgstr "Приєднатися до #каналу"
 msgid "change_nick"
 msgstr "Змінити псевдонім"
 
-#: Account name
+#: Account name: {{user}}
 msgid "user_account"
 msgstr "Назва облікового запису: {{user}}"
 
-#: Real name
+#: Real name: {{realname}}
 msgid "user_realname"
 msgstr "Справжнє ім'я: {{realname}}"
 
@@ -461,7 +466,7 @@ msgstr "Доступний для допомоги"
 msgid "user_op"
 msgstr "Це оператор"
 
-#: Connected to
+#: Connected to {{server}} {{info}}
 msgid "user_server"
 msgstr "З'єднаний з {{server}} {{info}}"
 
@@ -469,7 +474,7 @@ msgstr "З'єднаний з {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Захищене з'єднання через SSL/TLS"
 
-#: Also in channels
+#: Also in channels {{channels}}
 msgid "user_channels"
 msgstr "Також на каналах {{channels}}"
 
@@ -481,7 +486,7 @@ msgstr "Рівень доступу"
 msgid "user_normal"
 msgstr "Звичайний"
 
-#: Kick from channel
+#: Kick from the channel
 msgid "user_kick"
 msgstr "Виштовхнути з каналу"
 
@@ -489,7 +494,7 @@ msgstr "Виштовхнути з каналу"
 msgid "user_ban"
 msgstr "Заблокувати на каналі"
 
-#: Kick + Ban from the channel
+#: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "Заблокувати й виштовхнути з каналу"
 
