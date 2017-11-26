@@ -22,7 +22,7 @@ msgstr "Settings"
 msgid "channels"
 msgstr "Channels"
 
-#: Banned
+#: Banned Users
 msgid "banned"
 msgstr "Banned Users"
 
@@ -46,7 +46,7 @@ msgstr "I have a password"
 msgid "server"
 msgstr "Server"
 
-#: Nick (Nickname)
+#: Nick
 msgid "nick"
 msgstr "Nick"
 
@@ -86,39 +86,39 @@ msgstr "Cancel"
 msgid "window_unload"
 msgstr "This will close all KiwiIRC conversations. Are you sure you want to close this window?"
 
-#: Realname field in a users whois
+#: Real name
 msgid "whois_realname"
 msgstr "Real name"
 
-#: Away status in a users whois
+#: Status
 msgid "whois_status"
 msgstr "Status"
 
-#: Away status in a users whois
+#: Is available
 msgid "whois_status_available"
 msgstr "Is available"
 
-#: Send user a message button
+#: Send a message
 msgid "send_a_message"
 msgstr "Send a message"
 
-#: Show more information
+#: More information
 msgid "more_information"
 msgstr "More information"
 
-#: Ignore user toggle box
+#: Ignore user
 msgid "ignore_user"
 msgstr "Ignore user"
 
-#: Channel input box
+#: Channel
 msgid "connection_channel"
 msgstr "Channel"
 
-#: General Title
+#: General
 msgid "settings_general"
 msgstr "General"
 
-#: Theme Title
+#: Theme
 msgid "settings_theme"
 msgstr "Theme"
 
@@ -126,7 +126,7 @@ msgstr "Theme"
 msgid "settings_themeurl"
 msgstr "Theme URL"
 
-#: Use Monospace
+#: Use monospace
 msgid "settings_use_monospace"
 msgstr "Use monospace"
 
@@ -138,7 +138,7 @@ msgstr "Traditional IRC layout"
 msgid "settings_show_autocomplete"
 msgstr "Show autocomplete list"
 
-#: Messages Title
+#: Chat Messages
 msgid "settings_messages_title"
 msgstr "Chat Messages"
 
@@ -166,6 +166,10 @@ msgstr "Messages in scrollback"
 msgid "settings_formatting"
 msgstr "Extra formatting"
 
+#: Colour nicknames in messages
+msgid "settings_nick_colouring"
+msgstr ""
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Include join/part messages as activity"
@@ -174,11 +178,11 @@ msgstr "Include join/part messages as activity"
 msgid "settings_mute_sound"
 msgstr "Mute sound notifications"
 
-#: Highlight on words
+#: Highlight on words (space seperated)
 msgid "settings_highlight"
 msgstr "Highlight on words (space separated)"
 
-#: Aliases Title
+#: Aliases
 msgid "settings_aliases"
 msgstr "Aliases"
 
@@ -206,15 +210,15 @@ msgstr "Never"
 msgid "settings_notify_mute"
 msgstr "Mute sounds"
 
-#: operator_tools
+#: Operator tools
 msgid "operator_tools"
 msgstr "Operator Tools"
 
-#: settings_default_ban_mask
+#: Default ban mask
 msgid "settings_default_ban_mask"
 msgstr "Default ban mask"
 
-#: settings_default_kick_reason
+#: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Default kick reason"
 
@@ -230,11 +234,11 @@ msgstr "Banned user"
 msgid "bans_by"
 msgstr "Banned by"
 
-#: Refreshing banlist
+#: Refreshing banlist...
 msgid "bans_refreshing"
 msgstr "Refreshing banlist..."
 
-#: Nobody is banned
+#: Nobody is banned!
 msgid "bans_nobody"
 msgstr "Nobody is banned!"
 
@@ -246,15 +250,15 @@ msgstr "Topic"
 msgid "channel_moderated"
 msgstr "Moderated chat"
 
-#: Invite Only
+#: Invite only
 msgid "channel_invite"
 msgstr "Invite only"
 
-#: Moderated topic
+#: Only moderators can change the topic
 msgid "channel_moderated_topic"
 msgstr "Only moderators can change the topic"
 
-#: Block external messages
+#: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Block messages from outside this channel"
 
@@ -270,23 +274,23 @@ msgstr "Show statebrowser"
 msgid "container_join"
 msgstr "Join Channel"
 
-#: Not connected
+#: Not Connected
 msgid "container_notconnected"
 msgstr "Not Connected"
 
-#: Private conversation with
+#: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Private conversation with {{user}}"
 
-#: input wrap placeholder
+#: Send a message...
 msgid "input_placeholder"
 msgstr "Send a message..."
 
-#: Loading
+#: Loading {{url}}...
 msgid "media_loading"
 msgstr "Loading {{url}}..."
 
-#: Load previous
+#: Load previous messages
 msgid "messages_load"
 msgstr "Load previous messages"
 
@@ -294,7 +298,7 @@ msgstr "Load previous messages"
 msgid "unread_messages"
 msgstr "Unread Messages"
 
-#: NetworkSettings $t('settings_')
+#: Server details
 msgid "settings_server_details"
 msgstr "Server details"
 
@@ -302,7 +306,7 @@ msgstr "Server details"
 msgid "settings_port"
 msgstr "Port"
 
-#: Other networks on this ZNC account
+#: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
 msgstr "Other networks on this ZNC account will be listed in the network list"
 
@@ -330,7 +334,7 @@ msgstr "Show Raw"
 msgid "settings_autorun"
 msgstr "Run commands when connected"
 
-#: Danger zone
+#: Danger Zone
 msgid "settings_danger"
 msgstr "Danger Zone"
 
@@ -338,23 +342,23 @@ msgstr "Danger Zone"
 msgid "settings_remove"
 msgstr "Remove network"
 
-#: Person key
+#: {{count}} person here
 msgid "person"
 msgstr "{{count}} person here"
 
-#: Person plural key
+#: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} people here"
 
-#: Reconnect Channel
+#: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr "Reconnect to join {{channel}}"
 
-#: Reconnect to network
+#: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
 msgstr "Reconnect to {{network}} to start talking"
 
-#: Reconnect to query
+#: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
 msgstr "Reconnect to continue talking with {{user}}"
 
@@ -362,7 +366,7 @@ msgstr "Reconnect to continue talking with {{user}}"
 msgid "reconnect_settings"
 msgstr "Connection settings"
 
-#: Close options $t('side_')
+#: Close options
 msgid "side_close"
 msgstr "Close options"
 
@@ -390,14 +394,15 @@ msgstr "Nick colours in the list"
 msgid "side_buffer"
 msgstr "No buffer set"
 
-#: Error starting
+#: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "There was an error starting Kiwi IRC :("
 
+#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
 msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded"
 
-#: Leave
+#: Leave {{name}}
 msgid "state_leave"
 msgstr "Leave {{name}}"
 
@@ -405,7 +410,7 @@ msgstr "Leave {{name}}"
 msgid "state_account"
 msgstr "Your account"
 
-#: Your settings and networks will be remembered on this computer
+#: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
 msgstr "Your settings and networks will be remembered on this computer."
 
@@ -441,11 +446,11 @@ msgstr "Join new #channel"
 msgid "change_nick"
 msgstr "Change nick"
 
-#: Account name
+#: Account name: {{user}}
 msgid "user_account"
 msgstr "Account name: {{user}}"
 
-#: Real name
+#: Real name: {{realname}}
 msgid "user_realname"
 msgstr "Real name: {{realname}}"
 
@@ -461,7 +466,7 @@ msgstr "Is available for help"
 msgid "user_op"
 msgstr "Is an operator"
 
-#: Connected to
+#: Connected to {{server}} {{info}}
 msgid "user_server"
 msgstr "Connected to {{server}} {{info}}"
 
@@ -469,7 +474,7 @@ msgstr "Connected to {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Securely connected via SSL/TLS"
 
-#: Also in channels
+#: Also in channels {{channels}}
 msgid "user_channels"
 msgstr "Also in channels {{channels}}"
 
@@ -481,7 +486,7 @@ msgstr "Access level"
 msgid "user_normal"
 msgstr "Normal"
 
-#: Kick from channel
+#: Kick from the channel
 msgid "user_kick"
 msgstr "Kick from the channel"
 
@@ -489,7 +494,7 @@ msgstr "Kick from the channel"
 msgid "user_ban"
 msgstr "Ban from the channel"
 
-#: Kick + Ban from the channel
+#: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "Ban and kick from the channel"
 
