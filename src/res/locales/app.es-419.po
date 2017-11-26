@@ -396,7 +396,7 @@ msgstr "No hay buffer configurado"
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "Ha habido un error iniciando Kiwi IRC :("
+msgstr "Hubo un error iniciando Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
@@ -412,19 +412,19 @@ msgstr "Tu cuenta"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr "Tu configuración y redes se recordarán en este ordenador."
+msgstr "Tu configuración y redes serán recordadas en este computador."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Borrar configuración"
+msgstr "Olvidar configuración"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "Aún no has configurado ninguna red."
+msgstr "No hay redes configuradas aún."
 
 #: Add one?
 msgid "state_add"
-msgstr "¿Quieres añadir una?"
+msgstr "¿Agregar una?"
 
 #: Available networks
 msgid "state_available"
@@ -440,11 +440,11 @@ msgstr "Desconectado."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Entrar en una #sala nueva"
+msgstr "ingresar a un #canal nuevo"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Cambiar apodo"
+msgstr "Cambiar nick"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -456,7 +456,7 @@ msgstr "Nombre real: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Es un robot"
+msgstr "Es un bot"
 
 #: Is available for help
 msgid "user_help"
@@ -472,11 +472,11 @@ msgstr "Conectado a {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Conectado de forma segura con SSL/TLS"
+msgstr "Conección segura via SSL/TLS"
 
 #: Also in channels {{channels}}
 msgid "user_channels"
-msgstr "Está también en las salas {{channels}}"
+msgstr "Está también en los canales {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -488,15 +488,15 @@ msgstr "Normal"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Expulsar de la sala"
+msgstr "Expulsar del canal"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Banear de la sala"
+msgstr "Banear del canal"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Kick + Ban de la sala"
+msgstr "Banear y expulsar del canal"
 
 #: Your IRC client
 msgid "personal_client"
@@ -504,15 +504,15 @@ msgstr "Tu cliente de IRC"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Añade tus redes. Entra en tus salas."
+msgstr "Agrega tus redes. Ingresa a tus canales."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "Estarán aquí cuando vuelvas."
+msgstr "Estarán aquí cuando regreses."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Añade una Red"
+msgstr "Agregar una Red"
 
 #: Saved networks
 msgid "personal_saved"
@@ -520,15 +520,15 @@ msgstr "Redes guardadas"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (nueva generación) - Previsualización Rizon"
+msgstr "Kiwi IRC (nueva generación) - vista previa de Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Websocket directo. Sin servidor Kiwi ni webirc."
+msgstr "Websockets directos. Sin servidor Kiwi o webirc involucrado."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Gracias a Adam @Rizon por el desarrollo del soporte del servidor de websockets!)"
+msgstr "(Gracias a Adam @Rizon por el desarrollo del soporte para websocket server!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
