@@ -22,7 +22,7 @@ msgstr "الاعدادات"
 msgid "channels"
 msgstr "كل الغرف"
 
-#: Banned
+#: Banned Users
 msgid "banned"
 msgstr "قائمة المنع"
 
@@ -46,7 +46,7 @@ msgstr "هل لديك كلمة سر"
 msgid "server"
 msgstr "خادم"
 
-#: Nick (Nickname)
+#: Nick
 msgid "nick"
 msgstr "اسم"
 
@@ -86,39 +86,39 @@ msgstr "الغاء"
 msgid "window_unload"
 msgstr ""
 
-#: Realname field in a users whois
+#: Real name
 msgid "whois_realname"
 msgstr "الهوية"
 
-#: Away status in a users whois
+#: Status
 msgid "whois_status"
 msgstr "الحالة"
 
-#: Away status in a users whois
+#: Is available
 msgid "whois_status_available"
 msgstr "متاح"
 
-#: Send user a message button
+#: Send a message
 msgid "send_a_message"
 msgstr "إرسال رسالة"
 
-#: Show more information
+#: More information
 msgid "more_information"
 msgstr "المزيد من المعلومات"
 
-#: Ignore user toggle box
+#: Ignore user
 msgid "ignore_user"
 msgstr "تجاهل مستخدم"
 
-#: Channel input box
+#: Channel
 msgid "connection_channel"
 msgstr "غرفة"
 
-#: General Title
+#: General
 msgid "settings_general"
 msgstr "عام"
 
-#: Theme Title
+#: Theme
 msgid "settings_theme"
 msgstr "الثيم"
 
@@ -126,7 +126,7 @@ msgstr "الثيم"
 msgid "settings_themeurl"
 msgstr "رابط الثيم"
 
-#: Use Monospace
+#: Use monospace
 msgid "settings_use_monospace"
 msgstr "اعدادات المساحه"
 
@@ -138,7 +138,7 @@ msgstr "صورة الاسم"
 msgid "settings_show_autocomplete"
 msgstr "إظهار قائمة الاكمال التلقائى"
 
-#: Messages Title
+#: Chat Messages
 msgid "settings_messages_title"
 msgstr "رسائل المحادثة"
 
@@ -166,6 +166,10 @@ msgstr "الرسائل فى شريط التنقل للخلف"
 msgid "settings_formatting"
 msgstr "تنسيق إضافي"
 
+#: Colour nicknames in messages
+msgid "settings_nick_colouring"
+msgstr ""
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "تضمين رسائل الانضمام / المغادرة كنشاط"
@@ -174,11 +178,11 @@ msgstr "تضمين رسائل الانضمام / المغادرة كنشاط"
 msgid "settings_mute_sound"
 msgstr "كتم الصوت الإخطارات"
 
-#: Highlight on words
+#: Highlight on words (space seperated)
 msgid "settings_highlight"
 msgstr "تسليط الضوء على الكلمات (مساحة منفصلة)"
 
-#: Aliases Title
+#: Aliases
 msgid "settings_aliases"
 msgstr "اوامر"
 
@@ -206,15 +210,15 @@ msgstr "أبدا"
 msgid "settings_notify_mute"
 msgstr "كتم الأصوات"
 
-#: operator_tools
+#: Operator tools
 msgid "operator_tools"
 msgstr "أدوات المشغل"
 
-#: settings_default_ban_mask
+#: Default ban mask
 msgid "settings_default_ban_mask"
 msgstr "قناع الحظر الافتراضي"
 
-#: settings_default_kick_reason
+#: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "سبب الطرد الافتراضى"
 
@@ -230,11 +234,11 @@ msgstr "شخص ممنوع"
 msgid "bans_by"
 msgstr "منع بواسطه"
 
-#: Refreshing banlist
+#: Refreshing banlist...
 msgid "bans_refreshing"
 msgstr "تحديث  قائمة المنع"
 
-#: Nobody is banned
+#: Nobody is banned!
 msgid "bans_nobody"
 msgstr "لا يوجد اى شخص ممنوع!"
 
@@ -246,15 +250,15 @@ msgstr "توبيك"
 msgid "channel_moderated"
 msgstr "مود الشات"
 
-#: Invite Only
+#: Invite only
 msgid "channel_invite"
 msgstr "للمدعوين فقط"
 
-#: Moderated topic
+#: Only moderators can change the topic
 msgid "channel_moderated_topic"
 msgstr "الادارة فقط من تستطيع تغيير التوبيك"
 
-#: Block external messages
+#: Block messages from outside this channel
 msgid "channel_external"
 msgstr "منع الرسائل من خارج هذه الغرفة"
 
@@ -270,23 +274,23 @@ msgstr "اظهار متصفح الشات"
 msgid "container_join"
 msgstr "دخول غرفة"
 
-#: Not connected
+#: Not Connected
 msgid "container_notconnected"
 msgstr "غير متصل"
 
-#: Private conversation with
+#: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "محادثة خاصة مع {{user}}"
 
-#: input wrap placeholder
+#: Send a message...
 msgid "input_placeholder"
 msgstr "ارسل رسالة..."
 
-#: Loading
+#: Loading {{url}}...
 msgid "media_loading"
 msgstr "تحميل {{url}}..."
 
-#: Load previous
+#: Load previous messages
 msgid "messages_load"
 msgstr "تحميل الرسائل السابقة"
 
@@ -294,7 +298,7 @@ msgstr "تحميل الرسائل السابقة"
 msgid "unread_messages"
 msgstr "رسائل غير مقروءة"
 
-#: NetworkSettings $t('settings_')
+#: Server details
 msgid "settings_server_details"
 msgstr "معلومات البال تل"
 
@@ -302,7 +306,7 @@ msgstr "معلومات البال تل"
 msgid "settings_port"
 msgstr "منفذ"
 
-#: Other networks on this ZNC account
+#: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
 msgstr "سيتم سرد الشبكات الأخرى على حساب شل هذا في قائمة الشبكة"
 
@@ -330,7 +334,7 @@ msgstr "إظهار الخام"
 msgid "settings_autorun"
 msgstr "تشغيل الأوامر عند الاتصال"
 
-#: Danger zone
+#: Danger Zone
 msgid "settings_danger"
 msgstr "منطقة الخطر"
 
@@ -338,23 +342,23 @@ msgstr "منطقة الخطر"
 msgid "settings_remove"
 msgstr "حذف الشبكه"
 
-#: Person key
+#: {{count}} person here
 msgid "person"
 msgstr "{{count}} شخص هنا"
 
-#: Person plural key
+#: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} أشخاص هنا"
 
-#: Reconnect Channel
+#: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr "اعادة دخول {{channel}}"
 
-#: Reconnect to network
+#: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
 msgstr "إعادة الاتصال بـ {{network}} لبدء المحادثة"
 
-#: Reconnect to query
+#: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
 msgstr "إعادة الاتصال لمتابعة الحديث مع {{user}}"
 
@@ -362,7 +366,7 @@ msgstr "إعادة الاتصال لمتابعة الحديث مع {{user}}"
 msgid "reconnect_settings"
 msgstr "إعدادات الإتصال"
 
-#: Close options $t('side_')
+#: Close options
 msgid "side_close"
 msgstr "إغلاق الخيارات"
 
@@ -390,14 +394,15 @@ msgstr "اسم الالوان فى القائمه"
 msgid "side_buffer"
 msgstr "لا مجموعة عازلة"
 
-#: Error starting
+#: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "يوجد خطأ فى البال تل :("
 
+#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
 msgstr "تأكد من تثبيت الكيوي اى ار سى بشكل صحيح و الاعدادات يمكن تحميلها"
 
-#: Leave
+#: Leave {{name}}
 msgid "state_leave"
 msgstr "مغادرة {{name}}"
 
@@ -405,7 +410,7 @@ msgstr "مغادرة {{name}}"
 msgid "state_account"
 msgstr "الحساب الخاص بك"
 
-#: Your settings and networks will be remembered on this computer
+#: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
 msgstr "سيتم تذكر الإعدادات والشبكات على هذا الكمبيوتر."
 
@@ -441,11 +446,11 @@ msgstr "انضم إلى غرفة جديدة"
 msgid "change_nick"
 msgstr "تغيير الاسم"
 
-#: Account name
+#: Account name: {{user}}
 msgid "user_account"
 msgstr "أسم الحساب: {{user}}"
 
-#: Real name
+#: Real name: {{realname}}
 msgid "user_realname"
 msgstr "الاسم الحقيقي: {{realname}}"
 
@@ -461,7 +466,7 @@ msgstr "متاح للمساعدة"
 msgid "user_op"
 msgstr "هو المشغل"
 
-#: Connected to
+#: Connected to {{server}} {{info}}
 msgid "user_server"
 msgstr "متصل بـ {{server}} {{info}}"
 
@@ -469,7 +474,7 @@ msgstr "متصل بـ {{server}} {{info}}"
 msgid "user_secure"
 msgstr "اتصال آمن عبر SSL/TLS"
 
-#: Also in channels
+#: Also in channels {{channels}}
 msgid "user_channels"
 msgstr "أيضا في الغرف {{channels}}"
 
@@ -481,7 +486,7 @@ msgstr "مستوى الوصول"
 msgid "user_normal"
 msgstr "عادي"
 
-#: Kick from channel
+#: Kick from the channel
 msgid "user_kick"
 msgstr "طرد من الغرفة"
 
@@ -489,7 +494,7 @@ msgstr "طرد من الغرفة"
 msgid "user_ban"
 msgstr "منع من الغرفة"
 
-#: Kick + Ban from the channel
+#: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "منع وطرد من الغرفة"
 
