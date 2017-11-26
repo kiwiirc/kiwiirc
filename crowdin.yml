@@ -1,0 +1,3 @@
+files:
+  - source: /src/res/locales/app.dev.po
+    translation: /src/res/locales/app.%locale%.po
