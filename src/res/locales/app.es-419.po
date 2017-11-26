@@ -20,7 +20,7 @@ msgstr "Configuración"
 
 #: Channels
 msgid "channels"
-msgstr "Salas"
+msgstr "Canales"
 
 #: Banned Users
 msgid "banned"
@@ -48,11 +48,11 @@ msgstr "Servidor"
 
 #: Nick
 msgid "nick"
-msgstr "Apodo"
+msgstr "Nick"
 
 #: Channel
 msgid "channel"
-msgstr "Sala"
+msgstr "Canal"
 
 #: Network
 msgid "network"
@@ -76,7 +76,7 @@ msgstr "Buscar..."
 
 #: OK
 msgid "ok"
-msgstr "De acuerdo"
+msgstr "OK"
 
 #: Cancel
 msgid "cancel"
@@ -84,7 +84,7 @@ msgstr "Cancelar"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "Se van a cerrar todas las conversaciones de KiwiIRC. ¿Seguro que quieres cerrar esta ventana?"
+msgstr "Esto cerrará todas las conversaciones de KiwiIRC. ¿Estás seguro que quieres cerrar esta ventana?"
 
 #: Real name
 msgid "whois_realname"
@@ -112,7 +112,7 @@ msgstr "Ignorar usuario"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Sala"
+msgstr "Canal"
 
 #: General
 msgid "settings_general"
@@ -120,23 +120,23 @@ msgstr "General"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Tema"
+msgstr "Estilo"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "URL del tema"
+msgstr "URL del estilo"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Usar fuente Monospace"
+msgstr "Usar monospace"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Diseño IRC tradicional"
+msgstr "Diseño tradicional de IRC"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Mostrar lista autocompletado"
+msgstr "Mostrar lista  de autocompletado"
 
 #: Chat Messages
 msgid "settings_messages_title"
@@ -144,11 +144,11 @@ msgstr "Mensajes"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Mostrar hora"
+msgstr "Mostrar hora y fecha"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Mostrar hora en formato 24 horas"
+msgstr "Usar formato de 24 horas"
 
 #: Show emoticons
 msgid "settings_emoticons"
@@ -156,7 +156,7 @@ msgstr "Mostrar emoticonos"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Bloquear nuevos mensajes privados"
+msgstr "Bloquear mensajes privados nuevos"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -164,15 +164,15 @@ msgstr "Mensajes en el histórico"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Formateado extra"
+msgstr "Formatos adicionales"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Colorear nicks en los mensajes"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Incluir mensajes de entrada y salida como actividad"
+msgstr "Incluir mensajes de entrada/salida como actividad"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
@@ -180,7 +180,7 @@ msgstr "Silenciar notificaciones"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Palabras a destacar (sepáralas con un espacio)"
+msgstr "Destacado de palabras (sepáralas con un espacio)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -200,7 +200,7 @@ msgstr "Todos los mensajes"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "He sido mencionado"
+msgstr "Soy mencionado"
 
 #: Never
 msgid "settings_notify_never"
@@ -216,7 +216,7 @@ msgstr "Herramientas del Operador"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Máscara de ban por defecto"
+msgstr "Máscara de baneo por defecto"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
@@ -240,31 +240,31 @@ msgstr "Actualizando lista de baneos"
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Nadie está baneado"
+msgstr "¡Nadie está baneado!"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Tópico"
+msgstr "Tema"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Sala moderada"
+msgstr "Canal moderado"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Se necesita invitación para entrar"
+msgstr "Solo con invitación"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Solo los moderadores pueden cambiar el tópico"
+msgstr "Solo los moderadores pueden cambiar el tema"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Bloquear mensajes externos"
+msgstr "Bloquear mensajes externos al canal"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "¡Bienvenido a Kiwi IRC! Selecciona una sala de la izquierda."
+msgstr "¡Bienvenido a Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -272,7 +272,7 @@ msgstr "Mostrar barra estado del navegador"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Entrar a una sala"
+msgstr "Entrar al Canal"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -316,7 +316,7 @@ msgstr "Tus detalles"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Apodo"
+msgstr "Nick"
 
 #: Advanced
 msgid "settings_advanced"
@@ -328,11 +328,11 @@ msgstr "Codificación"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Mostrar el original"
+msgstr "Mostrar sin procesar"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Ejecuta comandos al conectar"
+msgstr "Ejecutar comandos al conectar"
 
 #: Danger Zone
 msgid "settings_danger"
@@ -344,15 +344,15 @@ msgstr "Eliminar red"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} usuario aquí"
+msgstr "{{count}} persona aquí"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "{{count}} usuarios aquí"
+msgstr "{{count}} personas aquí"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Reconectar para entrar en {{channel}}"
+msgstr "Reconectar para entrar a {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
@@ -360,7 +360,7 @@ msgstr "Reconectar a {{network}} para empezar a chatear"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Reconectar para continuar hablando con {{user}}"
+msgstr "Reconectar para seguir hablando con {{user}}"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -372,7 +372,7 @@ msgstr "Cerrar opciones"
 
 #: Channel options
 msgid "side_options"
-msgstr "Opciones de la sala"
+msgstr "Opciones del canal"
 
 #: Your settings
 msgid "side_settings"
@@ -380,15 +380,15 @@ msgstr "Tu configuración"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Mostrar cuando la gente entra a la sala"
+msgstr "Mostrar cuando la gente ingresa"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Formateo extra de los mensajes"
+msgstr "Formateo adicional de mensajes"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Colorear alias en la lista"
+msgstr "Colorear nicks en la lista"
 
 #: No buffer set
 msgid "side_buffer"
@@ -444,7 +444,7 @@ msgstr "Entrar en una #sala nueva"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Cambiar alias"
+msgstr "Cambiar apodo"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -496,7 +496,7 @@ msgstr "Banear de la sala"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Kick + Ban del canal"
+msgstr "Kick + Ban de la sala"
 
 #: Your IRC client
 msgid "personal_client"
