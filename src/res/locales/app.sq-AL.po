@@ -22,7 +22,7 @@ msgstr "Veglat"
 msgid "channels"
 msgstr ""
 
-#: Banned
+#: Banned Users
 msgid "banned"
 msgstr "I perjashtuar"
 
@@ -46,7 +46,7 @@ msgstr "Kam nje password"
 msgid "server"
 msgstr "Serveri"
 
-#: Nick (Nickname)
+#: Nick
 msgid "nick"
 msgstr "Pseudonimi"
 
@@ -86,39 +86,39 @@ msgstr ""
 msgid "window_unload"
 msgstr ""
 
-#: Realname field in a users whois
+#: Real name
 msgid "whois_realname"
 msgstr "Emri real"
 
-#: Away status in a users whois
+#: Status
 msgid "whois_status"
 msgstr "Statusi"
 
-#: Away status in a users whois
+#: Is available
 msgid "whois_status_available"
 msgstr "Eshte ne linje"
 
-#: Send user a message button
+#: Send a message
 msgid "send_a_message"
 msgstr "Dergo nje mesazh"
 
-#: Show more information
+#: More information
 msgid "more_information"
 msgstr "Me shum informacion"
 
-#: Ignore user toggle box
+#: Ignore user
 msgid "ignore_user"
 msgstr "Injoroje"
 
-#: Channel input box
+#: Channel
 msgid "connection_channel"
 msgstr "Lidhja ne kanal"
 
-#: General Title
+#: General
 msgid "settings_general"
 msgstr "Veglat gjenerale"
 
-#: Theme Title
+#: Theme
 msgid "settings_theme"
 msgstr "Tema"
 
@@ -126,7 +126,7 @@ msgstr "Tema"
 msgid "settings_themeurl"
 msgstr "Url e temes"
 
-#: Use Monospace
+#: Use monospace
 msgid "settings_use_monospace"
 msgstr "Perdor monospace"
 
@@ -138,7 +138,7 @@ msgstr ""
 msgid "settings_show_autocomplete"
 msgstr "Shiko ndihmuesin"
 
-#: Messages Title
+#: Chat Messages
 msgid "settings_messages_title"
 msgstr "Titulli mesazhit"
 
@@ -166,6 +166,10 @@ msgstr "Shfleto"
 msgid "settings_formatting"
 msgstr "Formati"
 
+#: Colour nicknames in messages
+msgid "settings_nick_colouring"
+msgstr ""
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Shiko hyrje daljet"
@@ -174,11 +178,11 @@ msgstr "Shiko hyrje daljet"
 msgid "settings_mute_sound"
 msgstr "Hiq zilet"
 
-#: Highlight on words
+#: Highlight on words (space seperated)
 msgid "settings_highlight"
 msgstr "Citimet"
 
-#: Aliases Title
+#: Aliases
 msgid "settings_aliases"
 msgstr "Shkurtimet"
 
@@ -206,15 +210,15 @@ msgstr "Mos me njofto"
 msgid "settings_notify_mute"
 msgstr "Hiq zilet"
 
-#: operator_tools
+#: Operator tools
 msgid "operator_tools"
 msgstr ""
 
-#: settings_default_ban_mask
+#: Default ban mask
 msgid "settings_default_ban_mask"
 msgstr ""
 
-#: settings_default_kick_reason
+#: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr ""
 
@@ -230,11 +234,11 @@ msgstr "User ne ban"
 msgid "bans_by"
 msgstr "Ban nga"
 
-#: Refreshing banlist
+#: Refreshing banlist...
 msgid "bans_refreshing"
 msgstr "Duke rifreskuar listen e ban"
 
-#: Nobody is banned
+#: Nobody is banned!
 msgid "bans_nobody"
 msgstr "Asnjeri nuk eshte ne ban"
 
@@ -246,15 +250,15 @@ msgstr "Topiku"
 msgid "channel_moderated"
 msgstr "Chat i moderuar"
 
-#: Invite Only
+#: Invite only
 msgid "channel_invite"
 msgstr "Vetem me ftesa"
 
-#: Moderated topic
+#: Only moderators can change the topic
 msgid "channel_moderated_topic"
 msgstr "Topik i moderuar"
 
-#: Block external messages
+#: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Blloko mesazhet nga jasht"
 
@@ -270,23 +274,23 @@ msgstr "Shiko statusin e browserit"
 msgid "container_join"
 msgstr "Hyr ne kanal"
 
-#: Not connected
+#: Not Connected
 msgid "container_notconnected"
 msgstr "Nuk je i lidhur"
 
-#: Private conversation with
+#: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Bisede private me"
 
-#: input wrap placeholder
+#: Send a message...
 msgid "input_placeholder"
 msgstr "Vendi i vendosjes se te dhenave"
 
-#: Loading
+#: Loading {{url}}...
 msgid "media_loading"
 msgstr "Duke u hapur"
 
-#: Load previous
+#: Load previous messages
 msgid "messages_load"
 msgstr "Shfleto te vjetra"
 
@@ -294,7 +298,7 @@ msgstr "Shfleto te vjetra"
 msgid "unread_messages"
 msgstr ""
 
-#: NetworkSettings $t('settings_')
+#: Server details
 msgid "settings_server_details"
 msgstr "Veglat e rrjetit"
 
@@ -302,7 +306,7 @@ msgstr "Veglat e rrjetit"
 msgid "settings_port"
 msgstr "Porta"
 
-#: Other networks on this ZNC account
+#: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
 msgstr "Rrjete te tjera ne kte llogari ZNC"
 
@@ -330,7 +334,7 @@ msgstr "Shiko Raw"
 msgid "settings_autorun"
 msgstr "Bej komandat kur tjesh i lidhur"
 
-#: Danger zone
+#: Danger Zone
 msgid "settings_danger"
 msgstr "Zone e rrezikshme"
 
@@ -338,23 +342,23 @@ msgstr "Zone e rrezikshme"
 msgid "settings_remove"
 msgstr "Hiqe rrjetin"
 
-#: Person key
+#: {{count}} person here
 msgid "person"
 msgstr "Celsi i personit"
 
-#: Person plural key
+#: {{count}} people here
 msgid "person_plural"
 msgstr "Celsi plural i personit"
 
-#: Reconnect Channel
+#: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr "Rilidhu ne kanal"
 
-#: Reconnect to network
+#: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
 msgstr "Rilidhu ne rrjet"
 
-#: Reconnect to query
+#: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
 msgstr "Rilidhu ne bisede"
 
@@ -362,7 +366,7 @@ msgstr "Rilidhu ne bisede"
 msgid "reconnect_settings"
 msgstr "Veglat e lidhjes"
 
-#: Close options $t('side_')
+#: Close options
 msgid "side_close"
 msgstr "Mbyll Opsionet"
 
@@ -390,14 +394,15 @@ msgstr "Pseudonimet me ngjyra ne liste"
 msgid "side_buffer"
 msgstr "Asnje Amortizim i vendosur"
 
-#: Error starting
+#: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "Error duke filluar"
 
+#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
 msgstr "Ky tekst nuk ka asnje info. Teksti esht perdorur ne application.po. pozicioni ne file: 90"
 
-#: Leave
+#: Leave {{name}}
 msgid "state_leave"
 msgstr "Largohu"
 
@@ -405,7 +410,7 @@ msgstr "Largohu"
 msgid "state_account"
 msgstr "Llogaria jote"
 
-#: Your settings and networks will be remembered on this computer
+#: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
 msgstr "Veglat dhe rrjeti do ruhen ne kete kompjuter"
 
@@ -441,11 +446,11 @@ msgstr "Hyr ne nje #kanal"
 msgid "change_nick"
 msgstr ""
 
-#: Account name
+#: Account name: {{user}}
 msgid "user_account"
 msgstr "Emri llogarise"
 
-#: Real name
+#: Real name: {{realname}}
 msgid "user_realname"
 msgstr "Emri real"
 
@@ -461,7 +466,7 @@ msgstr "Esht i gatshem tju ndihmoje"
 msgid "user_op"
 msgstr "Esht aop"
 
-#: Connected to
+#: Connected to {{server}} {{info}}
 msgid "user_server"
 msgstr "Esht i lidhur ne"
 
@@ -469,7 +474,7 @@ msgstr "Esht i lidhur ne"
 msgid "user_secure"
 msgstr "Perdor nje lidhje te sigurte"
 
-#: Also in channels
+#: Also in channels {{channels}}
 msgid "user_channels"
 msgstr "Esht ne kanalet"
 
@@ -481,7 +486,7 @@ msgstr "Ka akses level"
 msgid "user_normal"
 msgstr "Esht user normal"
 
-#: Kick from channel
+#: Kick from the channel
 msgid "user_kick"
 msgstr "Beji kick ne kanal"
 
@@ -489,7 +494,7 @@ msgstr "Beji kick ne kanal"
 msgid "user_ban"
 msgstr "Shtoje ne ban liste"
 
-#: Kick + Ban from the channel
+#: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "Beji kickban nga kanali"
 
