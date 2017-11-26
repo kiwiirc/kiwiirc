@@ -168,7 +168,7 @@ msgstr "Format extra"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Colorejar nicks en els missatges"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
