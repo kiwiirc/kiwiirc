@@ -168,7 +168,7 @@ msgstr "Екстра форматування"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "кольорові псевдоніми в повідомленнях"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
