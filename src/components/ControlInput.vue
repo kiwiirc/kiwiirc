@@ -6,7 +6,7 @@
 
         <div class="kiwi-controlinput-inner">
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
-                {{ currentNick }}
+                <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i class="fa fa-caret-up" aria-hidden="true"></i>
             </div>
             <form @submit.prevent="submitForm" class="kiwi-controlinput-form">
