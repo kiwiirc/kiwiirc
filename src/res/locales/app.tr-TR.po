@@ -1,42 +1,42 @@
 #: Close
 msgid "close"
-msgstr ""
+msgstr "kapat"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "bağlan"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "bağlanıyor"
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "bağlandı"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "ayarlar"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "kanallar"
 
 #: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "engellendi"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "bildirimler"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "kullanıcı adı"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "şifre"
 
 #: I have a password
 msgid "password_have"
