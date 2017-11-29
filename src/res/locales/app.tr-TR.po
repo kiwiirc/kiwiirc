@@ -40,55 +40,55 @@ msgstr "şifre"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "password_have"
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "sunucu"
 
 #: Nick
 msgid "nick"
-msgstr ""
+msgstr "takma ad"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "kanal"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "ağ"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "znC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "logging_in"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "invalid_login"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "do_search"
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "tamam"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "iptal"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "window_unload"
 
 #: Real name
 msgid "whois_realname"
-msgstr ""
+msgstr "whois_realname"
 
 #: Status
 msgid "whois_status"
