@@ -1,86 +1,86 @@
 #: Close
 msgid "close"
-msgstr ""
+msgstr "Chiudi"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "Connettiti"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "Connessione in corso..."
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "Connesso"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "Impostazioni"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "Canali"
 
 #: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "Utenti bloccati"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "Notifiche"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "Nome utente"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "Password"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "Ho una password"
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "Server"
 
 #: Nick
 msgid "nick"
-msgstr ""
+msgstr "Nickname"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "Canale"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "Rete"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "Accesso in corso..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "Parametri di accesso non validi"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "Ricerca..."
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "Ok"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "Annulla"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
