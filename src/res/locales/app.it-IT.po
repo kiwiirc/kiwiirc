@@ -308,215 +308,215 @@ msgstr "Porta"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr ""
+msgstr "Verranno mostrate altre reti di questo account nell'elenco delle reti"
 
 #: Your details
 msgid "settings_your_details"
-msgstr ""
+msgstr "I tuoi dettagli"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr ""
+msgstr "Nickname"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr ""
+msgstr "Avanzate"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr ""
+msgstr "Codifica"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr ""
+msgstr "Mostra dati grezzi"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr ""
+msgstr "Comandi da eseguire quando connesso"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr ""
+msgstr "Zona pericolosa"
 
 #: Remove network
 msgid "settings_remove"
-msgstr ""
+msgstr "Rimuovi rete"
 
 #: {{count}} person here
 msgid "person"
-msgstr ""
+msgstr "{{count}} persona qui"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr ""
+msgstr "{{count}} persone qui"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr ""
+msgstr "Riconnettiti per collegarti a {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr ""
+msgstr "Riconnettiti a {{network}} per iniziare a conversare"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr ""
+msgstr "Riconnettiti per continuare a conversare con {{user}}"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr ""
+msgstr "Impostazioni della connessione"
 
 #: Close options
 msgid "side_close"
-msgstr ""
+msgstr "Opzioni di chiusura"
 
 #: Channel options
 msgid "side_options"
-msgstr ""
+msgstr "Opzioni del canale"
 
 #: Your settings
 msgid "side_settings"
-msgstr ""
+msgstr "Impostazioni personali"
 
 #: Show when people join
 msgid "side_joins"
-msgstr ""
+msgstr "Mostra quando le persone si collegato"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr ""
+msgstr "Formattazione aggiuntiva dei messaggi"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr ""
+msgstr "Colori nickname dell'elenco"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr ""
+msgstr "Nessun buffer impostato"
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr ""
+msgstr "Si è verificato un errore durante l'avvio di Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr ""
+msgstr "Assicurarsi di aver installato Kiwi IRC correttamente e che la configurazione possa essere caricata"
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr ""
+msgstr "Abbandona {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr ""
+msgstr "Account personale"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr ""
+msgstr "Le impostazioni personali e le reti verranno ricordate su questo computer."
 
 #: Forget me
 msgid "state_forget"
-msgstr ""
+msgstr "Dimenticati di me"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr ""
+msgstr "Ancora nessuna rete qui."
 
 #: Add one?
 msgid "state_add"
-msgstr ""
+msgstr "Aggiungerne una?"
 
 #: Available networks
 msgid "state_available"
-msgstr ""
+msgstr "Reti disponibili"
 
 #: Configure network
 msgid "state_configure"
-msgstr ""
+msgstr "Configura rete"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr ""
+msgstr "Non connesso."
 
 #: Join new #channel
 msgid "state_join"
-msgstr ""
+msgstr "Unisciti a nuovo #canale"
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "Cambia nickname"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr ""
+msgstr "Nome account: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr ""
+msgstr "Nome utente reale: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr ""
+msgstr "È un bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr ""
+msgstr "È disponibile ad aiutare"
 
 #: Is an operator
 msgid "user_op"
-msgstr ""
+msgstr "È un operatore"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr ""
+msgstr "Connesso a {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr ""
+msgstr "Connesso in modo protetto da SSL/TLS"
 
 #: Also in channels {{channels}}
 msgid "user_channels"
-msgstr ""
+msgstr "Anche nei canali {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr ""
+msgstr "Livello di accesso"
 
 #: Normal
 msgid "user_normal"
-msgstr ""
+msgstr "Normale"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr ""
+msgstr "Espelli dal canale"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr ""
+msgstr "Bandisci dal canale"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "Bandisci ed espelli dal canale"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr ""
+msgstr "Il tuo client IRC."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr ""
+msgstr "Aggiungi le tue reti. Unisciti ai tuoi canali."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr ""
+msgstr "Li troverai qui al tuo ritorno."
 
 #: Add a Network
 msgid "personal_add"
-msgstr ""
+msgstr "Aggiungi una rete"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr ""
+msgstr "Reti salvate"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
