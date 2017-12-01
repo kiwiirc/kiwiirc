@@ -520,17 +520,17 @@ msgstr "Reti salvate"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr ""
+msgstr "Kiwi IRC (next gen) - Anteprima Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr ""
+msgstr "WebSocket diretti. Nessun server Kiwi o WebIRC coinvolto."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr ""
+msgstr "(Grazie ad Adam di Rizon per il supporto nello sviluppo del server WebSocket!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr ""
+msgstr "Prova la versione di sviluppo di Kiwi IRC!"
 
