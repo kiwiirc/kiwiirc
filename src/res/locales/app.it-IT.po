@@ -84,227 +84,227 @@ msgstr "Annulla"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "Verranno chiuse tutte le conversazioni di KiwiIRC. Chiudere questa finestra?"
 
 #: Real name
 msgid "whois_realname"
-msgstr ""
+msgstr "Nome reale"
 
 #: Status
 msgid "whois_status"
-msgstr ""
+msgstr "Stato"
 
 #: Is available
 msgid "whois_status_available"
-msgstr ""
+msgstr "disponibile"
 
 #: Send a message
 msgid "send_a_message"
-msgstr ""
+msgstr "Invia un messaggio"
 
 #: More information
 msgid "more_information"
-msgstr ""
+msgstr "Ulteriori informazioni"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr ""
+msgstr "Ignora utente"
 
 #: Channel
 msgid "connection_channel"
-msgstr ""
+msgstr "Canale"
 
 #: General
 msgid "settings_general"
-msgstr ""
+msgstr "Generali"
 
 #: Theme
 msgid "settings_theme"
-msgstr ""
+msgstr "Tema"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "URL del tema"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Usa carattere a dimensione fissa"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "Schema IRC tradizionale"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "Mostra elenco autocompletamento"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "Messaggi delle chat"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "Mostra date e orari"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "Usa formato orario a 24 ore"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "Mostra emoticon"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr ""
+msgstr "Blocca nuovi messaggi privati"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "Messaggi all'indietro"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr ""
+msgstr "Formattazione aggiuntiva"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Colora i nickname nel messaggi"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr ""
+msgstr "Includi messaggi di ingresso/uscita come attività"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "Silenzia notifiche sonore"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr ""
+msgstr "Parole da evidenziare (separate da spazi)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr ""
+msgstr "Alias"
 
 #: Send Message
 msgid "send_message"
-msgstr ""
+msgstr "Invia messaggio"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr ""
+msgstr "Inviami una notifica per"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "tutti i messaggi"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "vengo menzionato"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "mai"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr ""
+msgstr "Silenzia suoni"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr ""
+msgstr "Strumenti operatore"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Maschera di blocco predefinita"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "Motivo di blocco predefinito"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr ""
+msgstr "Aggiorna elenco bloccati"
 
 #: Banned user
 msgid "bans_user"
-msgstr ""
+msgstr "Blocca utente"
 
 #: Banned by
 msgid "bans_by"
-msgstr ""
+msgstr "Bloccato da"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr ""
+msgstr "Aggiornamento elenco bloccati in corso..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr ""
+msgstr "Nessuno è bloccato!"
 
 #: Topic
 msgid "channel_topic"
-msgstr ""
+msgstr "Argomento"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr ""
+msgstr "Chat moderata"
 
 #: Invite only
 msgid "channel_invite"
-msgstr ""
+msgstr "Solo su invito"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr ""
+msgstr "Solo i moderatori possono modificare l'argomento"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr ""
+msgstr "Blocca i messaggi provenienti dall'esterno di questo canale"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr ""
+msgstr "Benvenuto in Kiwi IRC! Selezionare un canale sulla sinistra."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr ""
+msgstr "Mostra elenco stati"
 
 #: Join Channel
 msgid "container_join"
-msgstr ""
+msgstr "Unisciti al canale"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr ""
+msgstr "Nessuno collegato"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr ""
+msgstr "Conversazione privata con {{utente}}"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr ""
+msgstr "Invia un messaggio..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr ""
+msgstr "Caricamento di {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr ""
+msgstr "Carica messaggi precedenti"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Messaggi non letti"
 
 #: Server details
 msgid "settings_server_details"
-msgstr ""
+msgstr "Dettagli del server"
 
 #: Port
 msgid "settings_port"
-msgstr ""
+msgstr "Porta"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
