@@ -84,7 +84,7 @@ msgstr "Откажи"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "Това ще затвори всички разговори в Уебчата. Наистина ли искате да затворите този прозорец?"
 
 #: Real name
 msgid "whois_realname"
@@ -168,7 +168,7 @@ msgstr "Допълнително форматиране"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Цветни никове в съобщенията"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
