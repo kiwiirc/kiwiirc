@@ -171,11 +171,6 @@ export default {
 
 .kiwi-welcome-znc {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow-y: auto;
-    box-sizing: border-box;
     text-align: center;
 }
 
@@ -223,9 +218,6 @@ export default {
     left: 0;
     padding-top: 3em;
     font-size: 1.2em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .kiwi-welcome-znc-section-connection label {
@@ -257,7 +249,7 @@ export default {
     cursor: not-allowed;
 }
 .kiwi-welcome-znc-form {
-    width: 300px;
+    max-width: 300px;
     margin: 2em auto;
 }
 
