@@ -779,12 +779,19 @@ const state = new Vue({
                 [];
         },
 
-        getUser: function getUser(networkid, nick) {
+        getUser: function getUser(networkid, nick, usersArr_) {
             let user = null;
-            let network = this.getNetwork(networkid);
+            let users = usersArr_;
 
-            if (network) {
-                user = network.users[nick.toLowerCase()];
+            if (!users) {
+                let network = this.getNetwork(networkid);
+                if (network) {
+                    users = network.users;
+                }
+            }
+
+            if (users) {
+                user = users[nick.toLowerCase()];
             }
 
             return user;
@@ -832,7 +839,7 @@ const state = new Vue({
                 };
             } else {
                 // Update the existing user object with any new info we have
-                userObj = state.getUser(network.id, user.nick);
+                userObj = state.getUser(network.id, user.nick, usersArr);
                 _.each(user, (val, prop) => {
                     if (typeof val !== 'undefined') {
                         userObj[prop] = val;
@@ -865,7 +872,7 @@ const state = new Vue({
                 newUsers.forEach(newUser => {
                     let user = newUser.user;
                     let modes = newUser.modes;
-                    let userObj = state.getUser(network.id, user.nick);
+                    let userObj = state.getUser(network.id, user.nick, users);
 
                     if (!userObj) {
                         userObj = this.addUser(network, user, users);
