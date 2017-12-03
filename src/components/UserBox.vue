@@ -40,9 +40,9 @@
             </template>
         </div>
 
-        <div v-if="isUserOnBuffer && buffer.isChannel() && areWeAnOp" class="kiwi-userbox-actions-op">
+        <div v-if="buffer.isChannel() && areWeAnOp" class="kiwi-userbox-actions-op">
             <form class="u-form" @submit.prevent="">
-                <label>
+                <label v-if="isUserOnBuffer">
                     {{$t('user_access')}} <select v-model="userMode">
                         <option v-for="mode in availableChannelModes" v-bind:value="mode.mode">
                             {{mode.description}}
@@ -50,13 +50,13 @@
                         <option value="">{{$t('user_normal')}}</option>
                     </select>
                 </label>
-                <label>
+                <label v-if="isUserOnBuffer">
                     <button @click="kickUser" class="u-button u-button-secondary">{{$t('user_kick')}}</button>
                 </label>
                 <label>
                     <button @click="banUser" class="u-button u-button-secondary">{{$t('user_ban')}}</button>
                 </label>
-                <label>
+                <label v-if="isUserOnBuffer">
                     <button @click="kickbanUser" class="u-button u-button-secondary">{{$t('user_kickban')}}</button>
                 </label>
             </form>
