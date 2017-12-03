@@ -4,8 +4,10 @@
         <div class="kiwi-welcome-znc-section kiwi-welcome-znc-section-connection">
             <h2 v-html="greetingText"></h2>
 
-            <template v-if="!network">
+            <template v-if="!network || network.state === 'disconnected'"">
                 <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-znc-form">
+                    <div class="kiwi-welcome-znc-error" v-if="network && network.state === 'disconnected'">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
+
                     <input-text v-if="showUser" class="kiwi-welcome-znc-nick" :label="$t('username')" v-model="username" />
                     <input-text v-if="showPass" class="kiwi-welcome-znc-password" :label="$t('password')" v-model="password" type="password" />
                     <input-text v-if="showNetwork" class="kiwi-welcome-znc-channel" :label="$t('network')" v-model="znc_network" />
@@ -31,6 +33,7 @@
 <script>
 
 import _ from 'lodash';
+import * as Misc from 'src/helpers/Misc';
 import state from 'src/libs/state';
 
 export default {
@@ -80,6 +83,9 @@ export default {
         },
     },
     methods: {
+        readableStateError(err) {
+            return Misc.networkErrorMessage(err);
+        },
         close: function close() {
             this.closing = true;
             this.$el.addEventListener('transitionend', (event) => {
@@ -122,7 +128,6 @@ export default {
                         net.ircClient.off('close', onClosed);
                     };
                     let onClosed = () => {
-                        setTimeout(() => { this.network = null; }, 1000);
                         net.ircClient.off('registered', onRegistered);
                         net.ircClient.off('close', onClosed);
                     };
@@ -214,6 +219,17 @@ export default {
 
 
 /** Left side */
+.kiwi-welcome-znc-error {
+    text-align: center;
+    margin: 1em 0;
+    padding: 0.3em;
+}
+
+.kiwi-welcome-znc-error span {
+    display: block;
+    font-style: italic;
+}
+
 .kiwi-welcome-znc-section-connection {
     left: 0;
     padding-top: 3em;
