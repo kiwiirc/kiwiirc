@@ -40,6 +40,7 @@ export default {
     data: function data() {
         return {
             network: null,
+            network_extras: null,
             username: '',
             password: '',
             znc_network: '',
@@ -97,55 +98,54 @@ export default {
                 this.startUp();
             }
         },
-        startUp: function startUp() {
+        addNetwork: function addNetwork(netName) {
             let options = state.settings.startupOptions;
-
-            let sNets = _.compact(this.znc_network.split(','));
-            if (sNets.length === 0) {
-                sNets.push('');
+            let password = this.username;
+            if (netName) {
+                password += '/' + netName;
             }
-            sNets.forEach((_newNet, idx) => {
-                let newNet = _.trim(_newNet);
-                let password = this.username;
-                if (newNet) {
-                    password += '/' + newNet;
-                }
-                if (this.password) {
-                    password += ':' + this.password;
-                }
+            password += ':' + this.password;
 
-                let net = this.network = state.addNetwork(this.netNet, this.username, {
-                    server: _.trim(options.server),
-                    port: options.port,
-                    tls: options.tls,
-                    password: password,
-                });
-
-                if (sNets.length === 1) {
-                    let onRegistered = () => {
-                        this.close();
-                        net.ircClient.off('registered', onRegistered);
-                        net.ircClient.off('close', onClosed);
-                    };
-                    let onClosed = () => {
-                        net.ircClient.off('registered', onRegistered);
-                        net.ircClient.off('close', onClosed);
-                    };
-                    net.ircClient.once('registered', onRegistered);
-                    net.ircClient.once('close', onClosed);
-                } else if (idx === 0) {
-                    let onRegistered = () => {
-                        state.setActiveBuffer(net.id, net.serverBuffer().name);
-                        net.ircClient.off('registered', onRegistered);
-                    };
-                    net.ircClient.once('registered', onRegistered);
-                }
-
-                net.ircClient.connect();
+            let net = state.addNetwork(netName, this.username, {
+                server: _.trim(options.server),
+                port: options.port,
+                tls: options.tls,
+                password: password,
             });
-            if (sNets.length > 1) {
-                this.close();
+            return net;
+        },
+        startUp: function startUp() {
+            if (this.network) {
+                state.removeNetwork(this.network.id);
             }
+
+            let netList = _.compact(this.znc_network.split(','));
+            if (netList.length === 0) {
+                netList.push('');
+            }
+
+            // add our first network and make sure we can connect
+            // before trying to add other networks.
+            let net = this.network = this.addNetwork(netList.shift());
+            this.network_extras = netList;
+
+            let onRegistered = () => {
+                state.setActiveBuffer(net.id, net.serverBuffer().name);
+                net.ircClient.off('registered', onRegistered);
+                net.ircClient.off('close', onClosed);
+                this.network_extras.forEach((netName, idx) => {
+                    let extraNet = this.addNetwork(_.trim(netName));
+                    extraNet.ircClient.connect();
+                });
+                this.close();
+            };
+            let onClosed = () => {
+                net.ircClient.off('registered', onRegistered);
+                net.ircClient.off('close', onClosed);
+            };
+            net.ircClient.once('registered', onRegistered);
+            net.ircClient.once('close', onClosed);
+            net.ircClient.connect();
         },
     },
     created: function created() {
