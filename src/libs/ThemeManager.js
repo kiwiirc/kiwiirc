@@ -15,7 +15,8 @@ export default class ThemeManager {
         }
 
         let styles = window.getComputedStyle(this.varsEl);
-        return styles.getPropertyValue('--kiwi-' + varName).trim();
+        let v = styles.getPropertyValue('--kiwi-' + varName);
+        return (v || '').trim();
     }
 
     availableThemes() {
