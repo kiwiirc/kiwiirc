@@ -132,7 +132,21 @@ export default {
                     continue;
                 }
 
-                list.push(messages[i]);
+                // When we join a channel the topic is usually sent next. But this looks
+                // ugly when rendered. So we switch the topic + join messages around so
+                // that the topic is first in the message list.
+                if (
+                    messages[i].type === 'topic' &&
+                    messages[i - 1] &&
+                    messages[i - 1].type === 'traffic' &&
+                    messages[i - 1].nick === currentNick
+                ) {
+                    list.push(messages[i - 1]);
+                    list.push(messages[i]);
+                    i--;
+                } else {
+                    list.push(messages[i]);
+                }
             }
 
             return list.reverse();
