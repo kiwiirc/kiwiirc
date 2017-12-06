@@ -382,6 +382,18 @@ msgstr "Твойте настройки"
 msgid "side_joins"
 msgstr "Показва кога влизат потребители в канала"
 
+#: Show when channel topic changes
+msgid "side_topics"
+msgstr ""
+
+#: Show when users change their nicks
+msgid "side_nick_changes"
+msgstr ""
+
+#: Show when users change channel modes
+msgid "side_mode_changes"
+msgstr ""
+
 #: Extra message formatting
 msgid "side_formatting"
 msgstr "Допълнтите настройки за съобщения"
