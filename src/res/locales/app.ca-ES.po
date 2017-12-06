@@ -384,15 +384,15 @@ msgstr "Mostrar quan la gent entra al canal"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Mostrar els canvis de topic del canal"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Mostrar els canvis d'àlies dels usuaris"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Mostrar els canvis de modes dels canals"
 
 #: Extra message formatting
 msgid "side_formatting"
