@@ -88,6 +88,8 @@ export default {
                 '';
         },
         filteredMessages() {
+            let network = this.buffer.getNetwork();
+            let currentNick = network.nick;
             let bufferMessages = this.buffer.getMessages();
 
             // Hack; We need to make vue aware that we depend on buffer.message_count in order to
