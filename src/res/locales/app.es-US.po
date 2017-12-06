@@ -168,7 +168,7 @@ msgstr "Formateado extra"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Colorear apodos en los mensajes"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -382,13 +382,25 @@ msgstr "Tu configuración"
 msgid "side_joins"
 msgstr "Mostrar cuando la gente entra a la sala"
 
+#: Show when channel topic changes
+msgid "side_topics"
+msgstr ""
+
+#: Show when users change their nicks
+msgid "side_nick_changes"
+msgstr ""
+
+#: Show when users change channel modes
+msgid "side_mode_changes"
+msgstr ""
+
 #: Extra message formatting
 msgid "side_formatting"
 msgstr "Formateo extra de los mensajes"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Colorear alias en la lista"
+msgstr "Colorear apodos en la lista"
 
 #: No buffer set
 msgid "side_buffer"
@@ -444,7 +456,7 @@ msgstr "Entrar en una #sala nueva"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Cambiar alias"
+msgstr "Cambiar apodo"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -496,7 +508,7 @@ msgstr "Banear de la sala"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Kick + Ban del canal"
+msgstr "Kick + Ban de la sala"
 
 #: Your IRC client
 msgid "personal_client"
