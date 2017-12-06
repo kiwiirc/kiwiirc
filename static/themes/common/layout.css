@@ -452,6 +452,11 @@ div {
     font-weight: bold;
     text-align: center;
 }
+@media screen and (max-width: 500px) {
+    .kiwi-controlinput-user-nick {
+        display: none;
+    }
+}
 .kiwi-controlinput-tools {
     margin-left: 10px;
 }
