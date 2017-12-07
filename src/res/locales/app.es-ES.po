@@ -384,15 +384,15 @@ msgstr "Mostrar cuando la gente entra a la sala"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Mostrar los cambios de tópico del canal"
+msgstr "Mostrar los cambios de tópico de la sala"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Mostrar los cambios de alias de los usuarios"
+msgstr "Mostrar los cambios de apodo de los usuarios"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Mostrar los cambios de modo de canal"
+msgstr "Mostrar los cambios de modos de sala"
 
 #: Extra message formatting
 msgid "side_formatting"
