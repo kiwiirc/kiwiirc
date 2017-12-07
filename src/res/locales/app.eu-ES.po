@@ -1,10 +1,10 @@
 #: Close
 msgid "close"
-msgstr "Ixtea"
+msgstr "Itxi"
 
 #: Connect
 msgid "connect"
-msgstr "Konektatzea"
+msgstr "Konektatu"
 
 #: Connecting...
 msgid "connecting"
