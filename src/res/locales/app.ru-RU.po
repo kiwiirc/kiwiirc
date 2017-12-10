@@ -20,7 +20,7 @@ msgstr ""
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "каналы"
 
 #: Banned Users
 msgid "banned"
