@@ -60,7 +60,7 @@ export default {
             let greeting = state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
-                'Welcome to Kiwi IRC!';
+                this.$t('start_greeting');
         },
         buttonText: function buttonText() {
             if (this.loading) {
@@ -70,7 +70,7 @@ export default {
             let greeting = state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
-                'Start';
+                this.$t('start_button');
         },
         infoStyle: function infoStyle() {
             let style = {};

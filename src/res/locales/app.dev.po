@@ -1,5 +1,13 @@
 #: Common Strings
 
+#: Start
+msgid "start_button"
+msgstr "Start"
+
+#: Welcome to Kiwi IRC!
+msgid "start_greeting"
+msgstr "Welcome to Kiwi IRC!"
+
 #: Close
 msgid "close"
 msgstr "Close"
