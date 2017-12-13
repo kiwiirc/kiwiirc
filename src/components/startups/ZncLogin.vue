@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-welcome-znc" :class="[closing ? 'kiwi-welcome-znc--closing' : '']">
-    
+
         <div class="kiwi-welcome-znc-section kiwi-welcome-znc-section-connection">
             <h2 v-html="greetingText"></h2>
 
@@ -21,7 +21,7 @@
                 <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" aria-hidden="true"></i>
             </template>
         </div>
-        
+
         <div class="kiwi-welcome-znc-section kiwi-welcome-znc-section-info" :style="infoStyle">
             <div class="kiwi-welcome-znc-section-info-content" v-if="infoContent" v-html="infoContent"></div>
         </div>
@@ -52,13 +52,13 @@ export default {
             let greeting = state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
-                'Welcome to Kiwi IRC!';
+                this.$t('start_greeting');
         },
         buttonText: function buttonText() {
             let greeting = state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
-                'Start';
+                this.$t('start_button');
         },
         readyToStart: function readyToStart() {
             return this.username && (this.password || this.showPass === false);

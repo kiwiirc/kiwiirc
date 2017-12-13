@@ -26,7 +26,7 @@
                 <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" aria-hidden="true"></i>
             </template>
         </div>
-        
+
         <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-info" :style="infoStyle">
             <div class="kiwi-welcome-simple-section-info-content" v-if="infoContent" v-html="infoContent"></div>
         </div>
@@ -58,13 +58,13 @@ export default {
             let greeting = state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
-                'Welcome to Kiwi IRC!';
+                this.$t('start_greeting');
         },
         buttonText: function buttonText() {
             let greeting = state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
-                'Start';
+                this.$t('start_button');
         },
         readyToStart: function readyToStart() {
             let ready = this.channel && this.nick;
