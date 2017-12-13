@@ -219,7 +219,7 @@ export default {
             return strftime(this.buffer.setting('timestamp_format') || '%T', new Date(time));
         },
         formatMessage: function formatMessage(message) {
-            return message.parseHtml(this);
+            return message.toHtml(this);
         },
         isMessageHighlight: function isMessageHighlight(message) {
             // Highlighting ourselves when we join or leave a channel is silly
