@@ -1,3 +1,11 @@
+#: Start
+msgid "start_button"
+msgstr ""
+
+#: Welcome to Kiwi IRC!
+msgid "start_greeting"
+msgstr ""
+
 #: Close
 msgid "close"
 msgstr "Tancar"
