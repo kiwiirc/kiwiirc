@@ -48,39 +48,39 @@ msgstr "Server"
 
 #: Nick
 msgid "nick"
-msgstr ""
+msgstr "Nama panggilan"
 
 #: Channel
 msgid "channel"
-msgstr "kanal"
+msgstr "Kanal"
 
 #: Network
 msgid "network"
-msgstr "jejaring"
+msgstr "Jejaring"
 
 #: ZNC
 msgid "znc"
-msgstr "znc"
+msgstr "ZNZ"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "Masuk..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "Masuk tidak valid"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "Cari..."
 
 #: OK
 msgid "ok"
-msgstr "oke"
+msgstr "Oke"
 
 #: Cancel
 msgid "cancel"
-msgstr "batal"
+msgstr "Batal"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
