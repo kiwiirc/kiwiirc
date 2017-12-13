@@ -1,26 +1,26 @@
 #: Close
 msgid "close"
-msgstr "tutup"
+msgstr "Tutup"
 
 #: Connect
 msgid "connect"
-msgstr "sambung"
+msgstr "Sambung"
 
 #: Connecting...
 msgid "connecting"
-msgstr "menyambungkan"
+msgstr "Menyambungkan..."
 
 #: Connected
 msgid "connected"
-msgstr "tersambung"
+msgstr "Tersambung"
 
 #: Settings
 msgid "settings"
-msgstr "pengaturan"
+msgstr "Pengaturan"
 
 #: Channels
 msgid "channels"
-msgstr "kanal"
+msgstr "Kanal"
 
 #: Banned Users
 msgid "banned"
