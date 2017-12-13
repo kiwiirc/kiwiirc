@@ -24,27 +24,27 @@ msgstr "Kanal"
 
 #: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "Pemain yang Dilarang"
 
 #: Notifications
 msgid "notifications"
-msgstr "notifikasi"
+msgstr "Notifikasi"
 
 #: Username
 msgid "username"
-msgstr "nama pengguna"
+msgstr "Nama pengguna"
 
 #: Password
 msgid "password"
-msgstr "kata sandi"
+msgstr "Kata sandi"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "Saya punya kata sandi"
 
 #: Server
 msgid "server"
-msgstr "server"
+msgstr "Server"
 
 #: Nick
 msgid "nick"
