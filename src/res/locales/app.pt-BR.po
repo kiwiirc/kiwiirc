@@ -1,3 +1,11 @@
+#: Start
+msgid "start_button"
+msgstr ""
+
+#: Welcome to Kiwi IRC!
+msgid "start_greeting"
+msgstr ""
+
 #: Close
 msgid "close"
 msgstr "Fechar"
@@ -168,7 +176,7 @@ msgstr "Formatação extra"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Colorir os nicks nas mensagens"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -384,15 +392,15 @@ msgstr "Mostrar quando usuários entram no canal"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Mostrar quando o tópico do canal é alterado"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Mostrar quando os utilizadores alteram o nick"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Mostrar quando os modos de canal são alterados"
 
 #: Extra message formatting
 msgid "side_formatting"
