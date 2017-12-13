@@ -35,6 +35,7 @@ export function create(state, networkid) {
     }
 
     let ircClient = new Irc.Client(clientOpts);
+    ircClient.requestCap('znc.in/self-message');
     ircClient.use(clientMiddleware(state, networkid));
     ircClient.use(bouncerMiddleware());
 
