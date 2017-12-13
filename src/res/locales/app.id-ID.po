@@ -84,47 +84,47 @@ msgstr "Batal"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "Ini akan menutup semua percakapan KiwiIRC. Yakin ingin menutup jendela ini?"
 
 #: Real name
 msgid "whois_realname"
-msgstr ""
+msgstr "Nama asli"
 
 #: Status
 msgid "whois_status"
-msgstr ""
+msgstr "Status"
 
 #: Is available
 msgid "whois_status_available"
-msgstr ""
+msgstr "Tersedia"
 
 #: Send a message
 msgid "send_a_message"
-msgstr ""
+msgstr "Kirim pesan"
 
 #: More information
 msgid "more_information"
-msgstr ""
+msgstr "Informasi lebih"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr ""
+msgstr "Abaikan pengguna"
 
 #: Channel
 msgid "connection_channel"
-msgstr ""
+msgstr "Kanal"
 
 #: General
 msgid "settings_general"
-msgstr ""
+msgstr "Umum"
 
 #: Theme
 msgid "settings_theme"
-msgstr ""
+msgstr "Tema"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "URL Tema"
 
 #: Use monospace
 msgid "settings_use_monospace"
