@@ -1,25 +1,26 @@
-/* eslint-disable */
 const tokens = Object.create(null);
+
 /**
  * Token functions may return:
- * undefined - move forward in the input by the length of the token
+ * null - move forward in the input by the length of the token
  * -1 - do not treat this character as a token and continue as normal content
  * 0+ - move to this point in the input
  */
 
+/* eslint-disable dot-notation */
 tokens['_'] = {
     token: '_',
     extra: true,
-    fn: function(inp, pos, block, prevBlock, openToks) {
+    fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
-            delete block.styles['underline'];
+            delete block.styles.underline;
             openToks[this.token] = null;
             prevBlock.content += this.token;
-            return;
+            return null;
         }
 
         // If this style is alrady open by something else, ignore it
-        if (block.styles['underline'] === true) {
+        if (block.styles.underline === true) {
             return -1;
         }
 
@@ -35,23 +36,25 @@ tokens['_'] = {
         }
 
         openToks[this.token] = true;
-        block.styles['underline'] = true;
+        block.styles.underline = true;
         block.content += this.token;
+
+        return null;
     },
 };
 tokens['*'] = {
     token: '*',
     extra: true,
-    fn: function(inp, pos, block, prevBlock, openToks) {
+    fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
-            delete block.styles['bold'];
+            delete block.styles.bold;
             openToks[this.token] = null;
             prevBlock.content += this.token;
-            return;
+            return null;
         }
 
         // If this style is alrady open by something else, ignore it
-        if (block.styles['bold'] === true) {
+        if (block.styles.bold === true) {
             return -1;
         }
 
@@ -66,103 +69,113 @@ tokens['*'] = {
         }
 
         openToks[this.token] = true;
-        block.styles['bold'] = true;
+        block.styles.bold = true;
         block.content += this.token;
+
+        return null;
     },
 };
 tokens['**'] = {
     token: '**',
     extra: true,
-    fn: function(inp, pos, block, prevBlock, openToks) {
+    fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
-            delete block.styles['italic'];
+            delete block.styles.italic;
             openToks[this.token] = null;
             prevBlock.content += this.token;
-            return;
+            return null;
         }
 
         // If this style is alrady open by something else, ignore it
-        if (block.styles['italic'] === true) {
+        if (block.styles.italic === true) {
             return -1;
         }
 
         // Only style if we have a closing ** further on
         if (inp.substr(pos).indexOf(this.token) > -1) {
             openToks[this.token] = true;
-            block.styles['italic'] = true;
+            block.styles.italic = true;
             block.content += this.token;
         }
+
+        return null;
     },
 };
 tokens['`'] = {
     token: '`',
     extra: true,
-    fn: function(inp, pos, block, prevBlock, openToks) {
+    fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
-            delete block.styles['quote'];
+            delete block.styles.quote;
             openToks[this.token] = null;
             prevBlock.content += this.token;
-            return;
+            return null;
         }
 
         // No styling should appear in this codeblock. Add all the content we can
         // before jumping the position forward in the input
         let str = inp.substr(pos + 1);
         let endPos = str.indexOf(this.token);
-        if (endPos > -1) {
-            openToks[this.token] = true;
-            block.styles['quote'] = true;
-            block.content += this.token + str.substr(0, endPos);
-            block.containsContent = true;
-            // The + 1 because:
-            // We added 2 ` characters, but we want the last ` character to call this
-            // fn again so it can be closed.
-            return pos + endPos + 1;
-        } else {
+        if (endPos === -1) {
             return -1;
         }
+
+        openToks[this.token] = true;
+        block.styles.quote = true;
+        block.content += this.token + str.substr(0, endPos);
+        block.containsContent = true;
+        // The + 1 because:
+        // We added 2 ` characters, but we want the last ` character to call this
+        // fn again so it can be closed.
+        return pos + endPos + 1;
     },
 };
 
 tokens['\x02'] = {
     token: '\x02',
     extra: false,
-    fn: function(inp, pos, block, prevBlock, openToks) {
+    fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
-            delete block.styles['bold'];
+            delete block.styles.bold;
             openToks[this.token] = null;
         } else {
             openToks[this.token] = true;
-            block.styles['bold'] = true;
+            block.styles.bold = true;
         }
+
+        return null;
     },
 };
 
 tokens['\x1D'] = {
     token: '\x1D',
     extra: false,
-    fn: function(inp, pos, block, prevBlock, openToks) {
+    fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
-            delete block.styles['italic'];
+            delete block.styles.italic;
             openToks[this.token] = null;
         } else {
             openToks[this.token] = true;
-            block.styles['italic'] = true;
+            block.styles.italic = true;
         }
+
+        return null;
     },
 };
 
 tokens['\x1F'] = {
     token: '\x1F',
     extra: false,
-    fn: function(inp, pos, block, prevBlock, openToks) {
+    fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
-            delete block.styles['underline'];
+            delete block.styles.underline;
             openToks[this.token] = null;
         } else {
             openToks[this.token] = true;
-            block.styles['underline'] = true;
+            block.styles.underline = true;
         }
+
+        return null;
     },
 };
 
@@ -170,19 +183,19 @@ tokens['\x1F'] = {
 tokens['\x0F'] = {
     token: '\x0F',
     extra: false,
-    fn: function(inp, pos, block, prevBlock, openToks) {
+    fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         Object.keys(block.styles).forEach(k => delete block.styles[k]);
         Object.keys(openToks).forEach(k => delete openToks[k]);
+
+        return null;
     },
 };
-
-
 
 // Colours
 tokens['\x03'] = {
     token: '\x03',
     extra: false,
-    fn: function(inp, pos, block, prevBlock, openToks) {
+    fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         let colours = {
             0: 'white',
             1: 'black',
@@ -209,17 +222,20 @@ tokens['\x03'] = {
             let fgColour = colours[parseInt(match[2], 10)];
             let bgColour = colours[parseInt(match[4], 10)];
             if (typeof fgColour !== 'undefined') {
-                block.styles['color'] = fgColour;
+                block.styles.color = fgColour;
             }
             if (typeof bgColour !== 'undefined') {
-                block.styles['background'] = bgColour;
+                block.styles.background = bgColour;
             }
 
             return pos + match[0].length;
-        } else {
-            delete block.styles['color'];
-            delete block.styles['background'];
-        }       
+        }
+
+        // 03 without a colour = delete any existing colour
+        delete block.styles.color;
+        delete block.styles.background;
+
+        return null;
     },
 };
 
@@ -233,7 +249,6 @@ export default function parse(inp, _opts) {
     let len = inp.length;
 
     while (pos < len) {
-        console.log('current pos char:', inp[pos]);
         let tok = findTokenAtPosition();
         if (!tok || (!opts.extras && tok.extra)) {
             block.content += inp[pos];
@@ -253,8 +268,7 @@ export default function parse(inp, _opts) {
         } else {
             newBlock = block;
         }
-        //console.log('block:', block);
-        //console.log('newblock:', newBlock);
+
         Object.assign(newBlock.styles, block.styles);
         let newPos = tok.fn(inp, pos, newBlock, block, openTokens);
 
@@ -295,54 +309,4 @@ export default function parse(inp, _opts) {
         };
         return newBlock;
     }
-
 }
-
-/*
-let line = 'normal *bold* **italic** ***bold+italic*** then. `monospaced *font* goes _here_`*bold* normal';
-//line = '*_bold+underline_* ****** :* **hi** there';
-//line = 'this \x02word\x02 is \x033,5bold';
-//line = 'some_long_word _underline me tho_';
-//line = '*http://google.com/foo_bar/baz* :*';
-let b = parse(line);
-let out = '';
-
-console.log('-----------------');
-
-console.log('Blocks:');
-b.forEach((bl, idx) => {
-    console.log('  ' + idx + '.' ,bl);
-    let style = '';
-    let classes = '';
-
-    Object.keys(bl.styles).forEach(s => {
-        if (s === 'underline') {
-            style += 'text-decoration:underline;';
-        } else if (s === 'bold') {
-            style += 'font-weight:bold;';
-        } else if (s === 'italic') {
-            style += 'font-style:italic;';
-        } else if (s === 'quote') {
-            classes += 'kiwi-formatting-extras-quote ';
-        } else if (s === 'block') {
-            classes += 'kiwi-formatting-extras-block ';
-        } else if (s === 'color') {
-            classes += `irc-fg-colour-${bl.styles[s]} `;
-        } else if (s === 'background') {
-            classes += `irc-bg-colour-${bl.styles[s]} `;
-        }
-    });
-
-    if (style === '' && classes === '') {
-        out += bl.content;
-    } else if (style !== '' && classes !== '') {
-        out += `<span style="${style}" class="${classes}">${bl.content}</span>`;
-    } else if (style !== '') {
-        out += `<span style="${style}">${bl.content}</span>`;
-    } else if (classes !== '') {
-        out += `<span class="${classes}">${bl.content}</span>`;
-    }
-});
-console.log('Original:', line);
-console.log('HTML:', out);
-*/
