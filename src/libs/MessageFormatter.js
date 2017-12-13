@@ -9,6 +9,7 @@ const tokens = Object.create(null);
 
 tokens['_'] = {
     token: '_',
+    extra: true,
     fn: function(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
             delete block.styles['underline'];
@@ -40,6 +41,7 @@ tokens['_'] = {
 };
 tokens['*'] = {
     token: '*',
+    extra: true,
     fn: function(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
             delete block.styles['bold'];
@@ -70,6 +72,7 @@ tokens['*'] = {
 };
 tokens['**'] = {
     token: '**',
+    extra: true,
     fn: function(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
             delete block.styles['italic'];
@@ -93,6 +96,7 @@ tokens['**'] = {
 };
 tokens['`'] = {
     token: '`',
+    extra: true,
     fn: function(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
             delete block.styles['quote'];
@@ -122,6 +126,7 @@ tokens['`'] = {
 
 tokens['\x02'] = {
     token: '\x02',
+    extra: false,
     fn: function(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
             delete block.styles['bold'];
@@ -135,6 +140,7 @@ tokens['\x02'] = {
 
 tokens['\x1D'] = {
     token: '\x1D',
+    extra: false,
     fn: function(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
             delete block.styles['italic'];
@@ -148,6 +154,7 @@ tokens['\x1D'] = {
 
 tokens['\x1F'] = {
     token: '\x1F',
+    extra: false,
     fn: function(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
             delete block.styles['underline'];
@@ -162,6 +169,7 @@ tokens['\x1F'] = {
 // Clear all styles
 tokens['\x0F'] = {
     token: '\x0F',
+    extra: false,
     fn: function(inp, pos, block, prevBlock, openToks) {
         Object.keys(block.styles).forEach(k => delete block.styles[k]);
         Object.keys(openToks).forEach(k => delete openToks[k]);
@@ -173,6 +181,7 @@ tokens['\x0F'] = {
 // Colours
 tokens['\x03'] = {
     token: '\x03',
+    extra: false,
     fn: function(inp, pos, block, prevBlock, openToks) {
         let colours = {
             0: 'white',
@@ -214,7 +223,8 @@ tokens['\x03'] = {
     },
 };
 
-export default function parse(inp) {
+export default function parse(inp, _opts) {
+    let opts = _opts || {};
     let block = createNewBlock();
     let blocks = [block];
     let openTokens = Object.create(null);
@@ -225,7 +235,7 @@ export default function parse(inp) {
     while (pos < len) {
         console.log('current pos char:', inp[pos]);
         let tok = findTokenAtPosition();
-        if (!tok) {
+        if (!tok || (!opts.extras && tok.extra)) {
             block.content += inp[pos];
             block.containsContent = true;
             pos++;

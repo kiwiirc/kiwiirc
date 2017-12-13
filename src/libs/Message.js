@@ -23,79 +23,24 @@ export default class Message {
         });
     }
 
-    parseHtml(messageList) {
-        if (this.html) {
-            return this.html;
-        }
-
-        // We only want to format emojis + extra formatting for actual message buffers. Other
-        // buffers such as *raw shouldnt have highlights or emojis
-        let allowCharacterReplacements = messageList.buffer.isQuery() ||
-            messageList.buffer.isChannel();
-
-        let words = this.message.split(' ');
-        words = words.map((word, wordIdx) => {
-            let parsed;
-
-            let linkified = TextFormatting.linkifyUrls(word, {
-                addHandle: true,
-                handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
-            });
-            if (linkified.urls.length > 0) {
-                this.mentioned_urls = this.mentioned_urls.concat(linkified.urls);
-            }
-            if (linkified.html !== word) return linkified.html;
-
-            parsed = TextFormatting.linkifyChannels(word);
-            if (parsed !== word) return parsed;
-
-            parsed = TextFormatting.linkifyUsers(word, messageList.buffer.users);
-            if (parsed !== word) return parsed;
-
-            if (allowCharacterReplacements && state.setting('buffers.show_emoticons')) {
-                parsed = TextFormatting.addEmojis(
-                    { word, words, wordIdx },
-                    state.setting('emojis'),
-                    state.setting('emojiLocation')
-                );
-                if (parsed !== word) return parsed;
-            }
-
-            return _.escape(word);
-        });
-
-        let parsed = words.join(' ');
-        let useExtraFormatting = allowCharacterReplacements &&
-            messageList.useExtraFormatting &&
-            this.type === 'privmsg';
-
-        parsed = TextFormatting.ircCodesToHtml(parsed, useExtraFormatting);
-
-        this.html = parsed;
-        return this.html;
-    }
-
     toHtml(messageList) {
         if (this.html) {
             return this.html;
         }
-
-        // We only want to format emojis + extra formatting for actual message buffers. Other
-        // buffers such as *raw shouldnt have highlights or emojis
-        // let allowCharacterReplacements = messageList.buffer.isQuery() ||
-        //    messageList.buffer.isChannel();
 
         let showEmoticons = state.setting('buffers.show_emoticons') &&
             !messageList.buffer.isSpecial();
         let emojiList = state.setting('emojis');
         let emojiLocation = state.setting('emojiLocation');
         let userList = messageList.buffer.users;
-        // let useExtraFormatting = allowCharacterReplacements &&
-        //    messageList.useExtraFormatting &&
-        //    this.type === 'privmsg';
+        let useExtraFormatting = !messageList.buffer.isSpecial() &&
+            messageList.useExtraFormatting &&
+            this.type === 'privmsg';
 
         let html = '';
-        let blocks = formatIrcMessage(this.message);
+        let blocks = formatIrcMessage(this.message, {
+            extras: useExtraFormatting,
+        });
 
         blocks.forEach((bl, idx) => {
             console.log('  ' + idx + '.', bl);
