@@ -114,6 +114,8 @@ tokens['`'] = {
             // We added 2 ` characters, but we want the last ` character to call this
             // fn again so it can be closed.
             return pos + endPos + 1;
+        } else {
+            return -1;
         }
     },
 };
