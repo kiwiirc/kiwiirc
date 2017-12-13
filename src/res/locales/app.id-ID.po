@@ -188,7 +188,7 @@ msgstr ""
 
 #: Send Message
 msgid "send_message"
-msgstr ""
+msgstr "Kirim Pesan"
 
 #: Notify me when
 msgid "settings_notify"
@@ -372,11 +372,11 @@ msgstr ""
 
 #: Channel options
 msgid "side_options"
-msgstr ""
+msgstr "Pilihan kanal"
 
 #: Your settings
 msgid "side_settings"
-msgstr ""
+msgstr "Pengaturan Anda"
 
 #: Show when people join
 msgid "side_joins"
@@ -420,7 +420,7 @@ msgstr ""
 
 #: Your account
 msgid "state_account"
-msgstr ""
+msgstr "Akun Anda"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
