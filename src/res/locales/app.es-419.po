@@ -1,3 +1,11 @@
+#: Start
+msgid "start_button"
+msgstr ""
+
+#: Welcome to Kiwi IRC!
+msgid "start_greeting"
+msgstr ""
+
 #: Close
 msgid "close"
 msgstr "Cerrar"
@@ -384,15 +392,15 @@ msgstr "Mostrar cuando la gente ingresa"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Mostrar los cambios de tópico de la sala"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Mostrar los cambios de apodo de los usuarios"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Mostrar los cambios de modos de sala"
 
 #: Extra message formatting
 msgid "side_formatting"
