@@ -32,7 +32,7 @@ msgstr "Kanalak"
 
 #: Banned Users
 msgid "banned"
-msgstr "Botatako erabiltzaileak"
+msgstr "Erabiltzaile kanporatuak"
 
 #: Notifications
 msgid "notifications"
@@ -40,7 +40,7 @@ msgstr "Jakinarazpenak"
 
 #: Username
 msgid "username"
-msgstr "Erabiltzaile-izena"
+msgstr "Erabiltzailea"
 
 #: Password
 msgid "password"
@@ -72,7 +72,7 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Egiaztagiriak egiaztatuz..."
+msgstr "Sartzen..."
 
 #: Invalid login
 msgid "invalid_login"
@@ -208,7 +208,7 @@ msgstr "Mezu guztiak"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "Aipatu naiz"
+msgstr "Aipatua izan naiz"
 
 #: Never
 msgid "settings_notify_never"
@@ -216,7 +216,7 @@ msgstr "Inoiz"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Soinuak desprestatzea"
+msgstr "Soinuak kendu"
 
 #: Operator tools
 msgid "operator_tools"
