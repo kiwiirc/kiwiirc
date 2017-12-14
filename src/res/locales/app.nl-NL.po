@@ -1,10 +1,10 @@
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Starten"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Welkom bij Kiwi IRC!"
 
 #: Close
 msgid "close"
