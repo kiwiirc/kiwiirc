@@ -1,10 +1,10 @@
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Hasi"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Ongi etorri Kiwi IRC-ra!"
 
 #: Close
 msgid "close"
@@ -16,7 +16,7 @@ msgstr "Konektatu"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Konektatuz..."
+msgstr "konektatzen,..."
 
 #: Connected
 msgid "connected"
@@ -392,15 +392,15 @@ msgstr "Jendea sartzen denean kanala erakustea"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Erakutsi gelaren gaia aldatzerakoan"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Erakutsi erabiltzaileek izena aldatzerakoan"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Erakutsi erabiltzaileek kanalaren aukerak aldatzerakoan"
 
 #: Extra message formatting
 msgid "side_formatting"
