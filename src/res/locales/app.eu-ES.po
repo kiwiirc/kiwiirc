@@ -220,55 +220,55 @@ msgstr "Soinuak kendu"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Operatzailearen erremintak"
+msgstr "Operatzailearen tresnak"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Ban-maskara lehenetsi"
+msgstr "Ban-maskara lehenetsia"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Egozpen-mezua lehenetsi"
+msgstr "Kanporatze mezu lehenetsia"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Blokeo-zerrenda eguneratzea"
+msgstr "Kanporatuen zerrenda eguneratu"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Blokeatutako erabiltzailea"
+msgstr "Kanporatutako erabiltzaileak"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Blokeatuta"
+msgstr "Nork kanporatu"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Blokeo-zerrenda eguneratuz"
+msgstr "Kanporatze zerrenda eguneratu"
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Inor ez dago blokeatuta"
+msgstr "Ez dago inor kanporatuta"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topikoa"
+msgstr "Gaia"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Neurrizko kanala"
+msgstr "Kanal moderatua"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Gonbidapena sartzeko behar da"
+msgstr "Sartzeko gonbidapena behar da"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Moderatzaileek soilik topikoa alda dezakete"
+msgstr "Moderatzaileek soilik gaia alda dezakete"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Kanpoko mezuak blokeatzea"
+msgstr "Kanpoko mezuak bloketu"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
