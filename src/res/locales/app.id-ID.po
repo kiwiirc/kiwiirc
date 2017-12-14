@@ -1,10 +1,10 @@
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Mulai"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Selamat datang di Kiwi IRC!"
 
 #: Close
 msgid "close"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "Tata letak IRC lama"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
