@@ -188,11 +188,11 @@ msgstr "Senyapkan suara notifikasi"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr ""
+msgstr "Sorot kata-kata (dipisahkan spasi)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr ""
+msgstr "Alias"
 
 #: Send Message
 msgid "send_message"
@@ -200,119 +200,119 @@ msgstr "Kirim Pesan"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr ""
+msgstr "Beritahu saya ketika"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "Semua pesan"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "Saya disebutkan"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "Tidak pernah"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr ""
+msgstr "Suara senyap"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr ""
+msgstr "Alat Operator"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Dilarang topeng secara bawaan"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "Alasan menendang secara standar"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr ""
+msgstr "Segarkan daftar dilarang"
 
 #: Banned user
 msgid "bans_user"
-msgstr ""
+msgstr "Pengguna dilarang"
 
 #: Banned by
 msgid "bans_by"
-msgstr ""
+msgstr "Dilarang oleh"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr ""
+msgstr "Segarkan daftar dilarang..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr ""
+msgstr "Tidak ada yang dilarang!"
 
 #: Topic
 msgid "channel_topic"
-msgstr ""
+msgstr "Topik"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr ""
+msgstr "Obrolan moderator"
 
 #: Invite only
 msgid "channel_invite"
-msgstr ""
+msgstr "Hanya undangan"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr ""
+msgstr "Hanya moderator yang dapat mengganti topik"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr ""
+msgstr "Blokir pesan yang berasal dari luar saluran"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr ""
+msgstr "Selamat datang di Kiwi IRC! Silakan memilih saluran pada bagian kiri."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr ""
+msgstr "Tampilkan status peramban"
 
 #: Join Channel
 msgid "container_join"
-msgstr ""
+msgstr "Bergabung ke Saluran"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr ""
+msgstr "Tidak Tersambung"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr ""
+msgstr "Percakapan pribadi dengan {{user}}"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr ""
+msgstr "Kirimkan pesan..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr ""
+msgstr "Memuat {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr ""
+msgstr "Muat pesan sebelumnya"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Pesan Belum Terbaca"
 
 #: Server details
 msgid "settings_server_details"
-msgstr ""
+msgstr "Detail server"
 
 #: Port
 msgid "settings_port"
-msgstr ""
+msgstr "Porta"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
