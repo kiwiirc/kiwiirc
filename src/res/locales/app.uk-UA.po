@@ -1,10 +1,10 @@
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Запуск"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Вітаємо в Kiwi IRC!"
 
 #: Close
 msgid "close"
@@ -392,15 +392,15 @@ msgstr "Показувати, коли хтось приєднується"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Показувати, коли змінюється назва теми"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Показувати, коли користувачі змінюють свої псевдоніми"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Показувати, коли користувачі змінюють режими каналу"
 
 #: Extra message formatting
 msgid "side_formatting"
