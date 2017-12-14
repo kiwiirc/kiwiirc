@@ -152,39 +152,39 @@ msgstr "Pesan Obrolan"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "Gunakan stempel waktu"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "Gunakan stempel waktu 24-jam"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "Tampilkan emosikon"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr ""
+msgstr "Blokir pesan pribadi baru"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "Pesan dalam gulir kembali"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr ""
+msgstr "Format ekstra"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Warnai nama panggilan dalam pesan"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr ""
+msgstr "Sertakan pesan masuk/keluar sebagai aktivitas"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "Senyapkan suara notifikasi"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
