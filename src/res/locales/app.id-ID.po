@@ -360,27 +360,27 @@ msgstr "{{count}} orang di sini"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr ""
+msgstr "Sambungkan lagi untuk bergabung ke {{saluran}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr ""
+msgstr "Sambungkan lagi ke {{saluran}} untuk memulai pembicaraan"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr ""
+msgstr "Sambungkan lagi untuk melanjutkan pembicaraan dengan {{user}}"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr ""
+msgstr "Pengaturan koneksi"
 
 #: Close options
 msgid "side_close"
-msgstr ""
+msgstr "Tutup pilihan"
 
 #: Channel options
 msgid "side_options"
-msgstr "Pilihan kanal"
+msgstr "Pilihan saluran"
 
 #: Your settings
 msgid "side_settings"
@@ -388,27 +388,27 @@ msgstr "Pengaturan Anda"
 
 #: Show when people join
 msgid "side_joins"
-msgstr ""
+msgstr "Tampilkan kapan pengguna bergabung"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Tampilkan kapan topik saluran diganti"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Tampilkan kapan pengguna mengganti nama panggilannya"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Tampilkan kapan pengguna mengubah mode saluran"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr ""
+msgstr "Format pesan ekstra"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr ""
+msgstr "Nama panggilan berwarna dalam daftar"
 
 #: No buffer set
 msgid "side_buffer"
@@ -416,7 +416,7 @@ msgstr ""
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr ""
+msgstr "Terjadi eror saat memulai Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
