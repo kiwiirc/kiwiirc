@@ -16,7 +16,7 @@ msgstr "Konektatu"
 
 #: Connecting...
 msgid "connecting"
-msgstr "konektatzen,..."
+msgstr "Konektatzen,..."
 
 #: Connected
 msgid "connected"
