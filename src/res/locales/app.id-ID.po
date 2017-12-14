@@ -412,7 +412,7 @@ msgstr "Nama panggilan berwarna dalam daftar"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr ""
+msgstr "Tanpa diatur penyangga"
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
