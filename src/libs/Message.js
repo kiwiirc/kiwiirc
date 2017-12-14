@@ -43,7 +43,6 @@ export default class Message {
         });
 
         blocks.forEach((bl, idx) => {
-            console.log('  ' + idx + '.', bl);
             let style = '';
             let classes = '';
 

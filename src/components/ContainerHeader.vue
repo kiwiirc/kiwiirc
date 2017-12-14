@@ -72,13 +72,11 @@
 
 <script>
 
-import _ from 'lodash';
 import state from 'src/libs/state';
 import GlobalApi from 'src/libs/GlobalApi';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
-import * as TextFormatting from 'src/helpers/TextFormatting';
 
 export default {
     data: function data() {
@@ -104,28 +102,6 @@ export default {
         ChannelBanlist,
     },
     methods: {
-        formatMessage: function formatMessage(messageBody) {
-            let words = messageBody.split(' ');
-            words = words.map(word => {
-                let parsed;
-
-                parsed = TextFormatting.linkifyUrls(word, {
-                    addHandle: true,
-                    handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
-                });
-                if (parsed !== word) return parsed;
-
-                parsed = TextFormatting.linkifyChannels(word);
-                if (parsed !== word) return parsed;
-
-                return _.escape(word);
-            });
-
-            let parsed = words.join(' ');
-            parsed = TextFormatting.ircCodesToHtml(parsed);
-
-            return parsed;
-        },
         isChannel: function isChannel() {
             return this.buffer.isChannel();
         },
