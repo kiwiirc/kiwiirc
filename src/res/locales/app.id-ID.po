@@ -420,11 +420,11 @@ msgstr "Terjadi eror saat memulai Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr ""
+msgstr "Pastikan Anda telah menginstal Kiwi IRC dengan benar dan pengaturannya bisa dimuat"
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr ""
+msgstr "{{name}} meninggalkan"
 
 #: Your account
 msgid "state_account"
@@ -432,99 +432,99 @@ msgstr "Akun Anda"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr ""
+msgstr "Pengaturan dan jaringan Anda akan tersimpan dalam komputer ini."
 
 #: Forget me
 msgid "state_forget"
-msgstr ""
+msgstr "Lupakan saya"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr ""
+msgstr "Tidak ada jaringan di sini"
 
 #: Add one?
 msgid "state_add"
-msgstr ""
+msgstr "Tambahkan?"
 
 #: Available networks
 msgid "state_available"
-msgstr ""
+msgstr "Jaringan yang tersedia"
 
 #: Configure network
 msgid "state_configure"
-msgstr ""
+msgstr "Konfigurasi jaringan"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr ""
+msgstr "Tidak tersambung"
 
 #: Join new #channel
 msgid "state_join"
-msgstr ""
+msgstr "Bergabung ke #saluran baru"
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "Ubah nama panggilan"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr ""
+msgstr "Nama akun: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr ""
+msgstr "Nama asli: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr ""
+msgstr "Adalah robot"
 
 #: Is available for help
 msgid "user_help"
-msgstr ""
+msgstr "Tersedia untuk bantuan"
 
 #: Is an operator
 msgid "user_op"
-msgstr ""
+msgstr "Adalah operator"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr ""
+msgstr "Tersambung ke server {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr ""
+msgstr "Amankan sambungan via SSL/TLS"
 
 #: Also in channels {{channels}}
 msgid "user_channels"
-msgstr ""
+msgstr "Juga dalam saluran {{saluran}}"
 
 #: Access level
 msgid "user_access"
-msgstr ""
+msgstr "Level akses"
 
 #: Normal
 msgid "user_normal"
-msgstr ""
+msgstr "Normal"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr ""
+msgstr "Tendang dari saluran"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr ""
+msgstr "Dilarang dari saluran"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "Larang dan tendang dari saluran"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr ""
+msgstr "Klien IRC Anda."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr ""
+msgstr "Tambahkan jaringan Anda. Bergabung ke saluran Anda."
 
 #: They will be here when you come back.
 msgid "personal_return"
