@@ -1,202 +1,202 @@
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Start"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Dobrodošli na Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr ""
+msgstr "Zatvori"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "Poveži se"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "Povezivanje..."
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "Povezano"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "Podešavanja"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "Kanali"
 
 #: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "Banovani korisnici"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "Obavještenja"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "Korisničko ime"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "Šifra"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "Imam šifru"
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "Server"
 
 #: Nick
 msgid "nick"
-msgstr ""
+msgstr "Nadimak"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "Kanal"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "Mreža"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "Prijavljujemo vas..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "Neispravna prijava"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "Traži..."
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "Zatvori"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "Svi vaši razgovori će biti zatvoreni. Da li ste sigurni da želite zatvoriti ovaj prozor?"
 
 #: Real name
 msgid "whois_realname"
-msgstr ""
+msgstr "Pravo ime"
 
 #: Status
 msgid "whois_status"
-msgstr ""
+msgstr "Status"
 
 #: Is available
 msgid "whois_status_available"
-msgstr ""
+msgstr "je dostupan/na"
 
 #: Send a message
 msgid "send_a_message"
-msgstr ""
+msgstr "Pošalji poruku"
 
 #: More information
 msgid "more_information"
-msgstr ""
+msgstr "Više informacija"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr ""
+msgstr "Ignoriši korisnika"
 
 #: Channel
 msgid "connection_channel"
-msgstr ""
+msgstr "Kanal"
 
 #: General
 msgid "settings_general"
-msgstr ""
+msgstr "Općenito"
 
 #: Theme
 msgid "settings_theme"
-msgstr ""
+msgstr "Izgled"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "Link izgleda"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Koristi monospace"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "Izvorni IRC izgled"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "Prikaži automatski generisani popis"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "Chat poruke"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "Prikaži vrijeme"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "Koristi 24-satno vrijeme"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "Prikaži smajliće"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr ""
+msgstr "Blokiraj nove privatne poruke"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "Poruke u scrollbacku"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr ""
+msgstr "Specijalno formatiranje"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Obojeni nadimci u porukama"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr ""
+msgstr "Prikaži pristupio/napustio kao aktivnost"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "Utišaj zvučne obavijesti"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr ""
+msgstr "Istaknite na riječima (razmaknite)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr ""
+msgstr "Pseudonimi"
 
 #: Send Message
 msgid "send_message"
-msgstr ""
+msgstr "Pošalji poruku"
 
 #: Notify me when
 msgid "settings_notify"
