@@ -528,29 +528,29 @@ msgstr "Tambahkan jaringan Anda. Bergabung ke saluran Anda."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr ""
+msgstr "Mereka akan di sini ketika Anda kembali."
 
 #: Add a Network
 msgid "personal_add"
-msgstr ""
+msgstr "Tambahkan Jaringan"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr ""
+msgstr "Simpan jaringan"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr ""
+msgstr "Kiwi IRC (generasi selanjutnya) - pratinjau Rizon "
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr ""
+msgstr "Langsung websocket. Tanpa terlibat server Kiwi atau webirc."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr ""
+msgstr "(Terima kasih kepada Adam @Rizon untuk pengembangan dukungan server websocket!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr ""
+msgstr "Coba Kiwi IRC versi pengembang!"
 
