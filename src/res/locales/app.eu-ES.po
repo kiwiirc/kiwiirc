@@ -124,7 +124,7 @@ msgstr "Kanala"
 
 #: General
 msgid "settings_general"
-msgstr "Jenerala"
+msgstr "Orokorra"
 
 #: Theme
 msgid "settings_theme"
@@ -152,7 +152,7 @@ msgstr "Mezuak"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Ordua erakustea"
+msgstr "Ordua erakutsi"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
