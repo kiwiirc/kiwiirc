@@ -136,7 +136,7 @@ msgstr "URL Tema"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Gunakan monospace"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -144,11 +144,11 @@ msgstr "Tata letak IRC lama"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "Tampilkan daftar isi otomatis"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "Pesan Obrolan"
 
 #: Show timestamps
 msgid "settings_timestamps"
