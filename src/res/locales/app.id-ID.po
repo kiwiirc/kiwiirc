@@ -316,47 +316,47 @@ msgstr "Porta"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr ""
+msgstr "Jaringan lain pada akun ZNC ini akan tercantum dalam daftar jaringan"
 
 #: Your details
 msgid "settings_your_details"
-msgstr ""
+msgstr "Detail Anda"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr ""
+msgstr "Nama panggilan"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr ""
+msgstr "Lanjutan"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr ""
+msgstr "Pengodean"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr ""
+msgstr "Tampilkan Pesan Mentah"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr ""
+msgstr "Jalankan perintah saat tersambung"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr ""
+msgstr "Zona Bahaya"
 
 #: Remove network
 msgid "settings_remove"
-msgstr ""
+msgstr "Singkirkan jaringan"
 
 #: {{count}} person here
 msgid "person"
-msgstr ""
+msgstr "{{count}} orang di sini"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr ""
+msgstr "{{count}} orang di sini"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
