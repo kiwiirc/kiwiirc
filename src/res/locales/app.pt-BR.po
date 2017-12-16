@@ -1,10 +1,10 @@
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Iniciar"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Bem vindos ao Kiwi IRC!"
 
 #: Close
 msgid "close"
@@ -176,7 +176,7 @@ msgstr "Formatação extra"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Colorir os nicks nas mensagens"
+msgstr "Nicknames Coloridos"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
