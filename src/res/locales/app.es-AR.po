@@ -1,10 +1,10 @@
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Empezar"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "¡Bienvenidos a Kiwi IRC!"
 
 #: Close
 msgid "close"
@@ -516,7 +516,7 @@ msgstr "Banear de la sala"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Kick + Ban de la sala"
+msgstr "Kick + Ban del canal"
 
 #: Your IRC client
 msgid "personal_client"
