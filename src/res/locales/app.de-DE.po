@@ -1,3 +1,11 @@
+#: Start
+msgid "start_button"
+msgstr ""
+
+#: Welcome to Kiwi IRC!
+msgid "start_greeting"
+msgstr ""
+
 #: Close
 msgid "close"
 msgstr "schließen"
@@ -22,7 +30,7 @@ msgstr "Einstellungen"
 msgid "channels"
 msgstr ""
 
-#: Banned
+#: Banned Users
 msgid "banned"
 msgstr "gebannt"
 
@@ -46,7 +54,7 @@ msgstr "Ich habe ein Passwort"
 msgid "server"
 msgstr "Server"
 
-#: Nick (Nickname)
+#: Nick
 msgid "nick"
 msgstr "Nickname"
 
@@ -86,39 +94,39 @@ msgstr ""
 msgid "window_unload"
 msgstr ""
 
-#: Realname field in a users whois
+#: Real name
 msgid "whois_realname"
 msgstr "Realname"
 
-#: Away status in a users whois
+#: Status
 msgid "whois_status"
 msgstr "Awaystatus"
 
-#: Away status in a users whois
+#: Is available
 msgid "whois_status_available"
 msgstr "Anwesend"
 
-#: Send user a message button
+#: Send a message
 msgid "send_a_message"
 msgstr "Sende Nachricht"
 
-#: Show more information
+#: More information
 msgid "more_information"
 msgstr "Mehr Informationen"
 
-#: Ignore user toggle box
+#: Ignore user
 msgid "ignore_user"
 msgstr "Ignoriere User"
 
-#: Channel input box
+#: Channel
 msgid "connection_channel"
 msgstr "Channel"
 
-#: General Title
+#: General
 msgid "settings_general"
 msgstr "Allgemein"
 
-#: Theme Title
+#: Theme
 msgid "settings_theme"
 msgstr "Theme"
 
@@ -126,7 +134,7 @@ msgstr "Theme"
 msgid "settings_themeurl"
 msgstr "Theme URL"
 
-#: Use Monospace
+#: Use monospace
 msgid "settings_use_monospace"
 msgstr "Verwende Monospace"
 
@@ -138,7 +146,7 @@ msgstr ""
 msgid "settings_show_autocomplete"
 msgstr "Zeige Autovervollständigung"
 
-#: Messages Title
+#: Chat Messages
 msgid "settings_messages_title"
 msgstr "Nachrichten"
 
@@ -166,6 +174,10 @@ msgstr "Nachrichten im Verlauf"
 msgid "settings_formatting"
 msgstr "Extra Formatierung"
 
+#: Colour nicknames in messages
+msgid "settings_nick_colouring"
+msgstr ""
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Betreten/Verlassen als Aktivität"
@@ -174,11 +186,11 @@ msgstr "Betreten/Verlassen als Aktivität"
 msgid "settings_mute_sound"
 msgstr "Stummschalten"
 
-#: Highlight on words
+#: Highlight on words (space seperated)
 msgid "settings_highlight"
 msgstr "Wörter Benachrichtigen"
 
-#: Aliases Title
+#: Aliases
 msgid "settings_aliases"
 msgstr "Alias"
 
@@ -206,15 +218,15 @@ msgstr "Niemals"
 msgid "settings_notify_mute"
 msgstr "Ton aus"
 
-#: operator_tools
+#: Operator tools
 msgid "operator_tools"
 msgstr "Op Tools"
 
-#: settings_default_ban_mask
+#: Default ban mask
 msgid "settings_default_ban_mask"
 msgstr "Standard Ban Maske"
 
-#: settings_default_kick_reason
+#: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Standard Kickgrund"
 
@@ -230,11 +242,11 @@ msgstr "Gebannte User"
 msgid "bans_by"
 msgstr "Gebannt von"
 
-#: Refreshing banlist
+#: Refreshing banlist...
 msgid "bans_refreshing"
 msgstr "Aktualisiere Bannliste"
 
-#: Nobody is banned
+#: Nobody is banned!
 msgid "bans_nobody"
 msgstr "Niemand ist gebannt"
 
@@ -246,15 +258,15 @@ msgstr "Topic"
 msgid "channel_moderated"
 msgstr "Moderierter Channel"
 
-#: Invite Only
+#: Invite only
 msgid "channel_invite"
 msgstr "Nur mit Einladung"
 
-#: Moderated topic
+#: Only moderators can change the topic
 msgid "channel_moderated_topic"
 msgstr "Moderiertes Topic"
 
-#: Block external messages
+#: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Blocke externe Nachrichten"
 
@@ -270,23 +282,23 @@ msgstr "Status anzeigen"
 msgid "container_join"
 msgstr "Betrete Channel"
 
-#: Not connected
+#: Not Connected
 msgid "container_notconnected"
 msgstr "Nicht verbunden"
 
-#: Private conversation with
+#: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Privater Chat mit"
 
-#: input wrap placeholder
+#: Send a message...
 msgid "input_placeholder"
 msgstr "Schreibe eine Nachricht..."
 
-#: Loading
+#: Loading {{url}}...
 msgid "media_loading"
 msgstr "Lade {{url}}..."
 
-#: Load previous
+#: Load previous messages
 msgid "messages_load"
 msgstr "Lade vorherige Nachrichten"
 
@@ -294,7 +306,7 @@ msgstr "Lade vorherige Nachrichten"
 msgid "unread_messages"
 msgstr ""
 
-#: NetworkSettings $t('settings_')
+#: Server details
 msgid "settings_server_details"
 msgstr "Server Details"
 
@@ -302,7 +314,7 @@ msgstr "Server Details"
 msgid "settings_port"
 msgstr "Port"
 
-#: Other networks on this ZNC account
+#: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
 msgstr "Andere Netzwerke auf diesem ZNC Account"
 
@@ -330,7 +342,7 @@ msgstr "Zeige Raw"
 msgid "settings_autorun"
 msgstr "Führe Befehle nach dem verbinden aus"
 
-#: Danger zone
+#: Danger Zone
 msgid "settings_danger"
 msgstr "Achtung Aufpassen"
 
@@ -338,23 +350,23 @@ msgstr "Achtung Aufpassen"
 msgid "settings_remove"
 msgstr "Entferne Netzwerk"
 
-#: Person key
+#: {{count}} person here
 msgid "person"
 msgstr "{{count}} user online"
 
-#: Person plural key
+#: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} user hier"
 
-#: Reconnect Channel
+#: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr "Rejoin {{channel}}"
 
-#: Reconnect to network
+#: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
 msgstr "Verbinde erneut zu {{network}}"
 
-#: Reconnect to query
+#: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
 msgstr "Starte erneut Privat Chat mit {{user}}"
 
@@ -362,7 +374,7 @@ msgstr "Starte erneut Privat Chat mit {{user}}"
 msgid "reconnect_settings"
 msgstr "Verbindungseinstellungen"
 
-#: Close options $t('side_')
+#: Close options
 msgid "side_close"
 msgstr "Schließen"
 
@@ -378,6 +390,18 @@ msgstr "Deine Einstellungen"
 msgid "side_joins"
 msgstr "Zeige mir joins an"
 
+#: Show when channel topic changes
+msgid "side_topics"
+msgstr ""
+
+#: Show when users change their nicks
+msgid "side_nick_changes"
+msgstr ""
+
+#: Show when users change channel modes
+msgid "side_mode_changes"
+msgstr ""
+
 #: Extra message formatting
 msgid "side_formatting"
 msgstr "Nachrichten Formatierung"
@@ -390,14 +414,15 @@ msgstr "Bunte Nicknamen"
 msgid "side_buffer"
 msgstr "Kein buffer gesetzt"
 
-#: Error starting
+#: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "Es ist ein Fehler aufgetreten beim Starten von Kiwi IRC :("
 
+#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
 msgstr "Stelle sicher das du Kiwi IRV korrekt installiert hast und die Konfigurationsdateien geladen werden können"
 
-#: Leave
+#: Leave {{name}}
 msgid "state_leave"
 msgstr "Verlasse {{name}}"
 
@@ -405,7 +430,7 @@ msgstr "Verlasse {{name}}"
 msgid "state_account"
 msgstr "Dein Account"
 
-#: Your settings and networks will be remembered on this computer
+#: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
 msgstr "Deine Einstellungen und Netzwerke werden auf diesem Computer gespeichert."
 
@@ -441,11 +466,11 @@ msgstr "Betrete #channel"
 msgid "change_nick"
 msgstr ""
 
-#: Account name
+#: Account name: {{user}}
 msgid "user_account"
 msgstr "Account Name"
 
-#: Real name
+#: Real name: {{realname}}
 msgid "user_realname"
 msgstr "Realname"
 
@@ -461,7 +486,7 @@ msgstr "Ist verfügbar für Hilfe"
 msgid "user_op"
 msgstr "Ist ein Op"
 
-#: Connected to
+#: Connected to {{server}} {{info}}
 msgid "user_server"
 msgstr "Verbunden mit"
 
@@ -469,7 +494,7 @@ msgstr "Verbunden mit"
 msgid "user_secure"
 msgstr "Sicher verbunden mit SSL/TLS"
 
-#: Also in channels
+#: Also in channels {{channels}}
 msgid "user_channels"
 msgstr "Im Channel"
 
@@ -481,7 +506,7 @@ msgstr "Zugriffslevel"
 msgid "user_normal"
 msgstr "Normal"
 
-#: Kick from channel
+#: Kick from the channel
 msgid "user_kick"
 msgstr "Kick aus Channel"
 
@@ -489,7 +514,7 @@ msgstr "Kick aus Channel"
 msgid "user_ban"
 msgstr "Bann vom Channel"
 
-#: Kick + Ban from the channel
+#: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "Kick+Bann vom Channel"
 
