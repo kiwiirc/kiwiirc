@@ -453,6 +453,8 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             mask: '{{nick}}!{{user}}@{{host}} ({{real_name}})',
             idle: 'Idle for {{idle}} seconds',
             logon: 'Connected at {{logon}}',
+            actualip: 'Real IP: {{actualip}}',
+            actualhost: 'Real hostname: {{actualhost}}',
 
             // The following entries will be ignored from whoisData as display() ignores
             // empty lines.
@@ -501,6 +503,12 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
         if (whoisData.channels) {
             display(formats.channels.replace('{{channels}}', whoisData.channels));
         }
+        if (whoisData.actualip) {
+            display(formats.actualip.replace('{{actualip}}', whoisData.actualip));
+        }
+        if (whoisData.actualhost) {
+            display(formats.actualhost.replace('{{actualhost}}', whoisData.actualhost));
+        }
 
         _.each(whoisData, (val, key) => {
             // Only include lines we haven't already used
@@ -509,10 +517,12 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             }
         });
 
-        this.state.addMessage(buffer, {
-            nick: parts[0],
-            message: out.join('\n'),
-            type: 'whois',
+        out.forEach(l => {
+            this.state.addMessage(buffer, {
+                nick: parts[0],
+                message: l,
+                type: 'whois',
+            });
         });
     });
 };
