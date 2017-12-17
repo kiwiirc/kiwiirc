@@ -609,6 +609,17 @@ div {
     display: none;
 }
 
+.kiwi-messagelist-message-connection {
+    text-align: center;
+    font-weight: bold;
+}
+.kiwi-messagelist-message-connection-connected {
+    color: green;
+}
+.kiwi-messagelist-message-connection-disconnected {
+    color: red;
+}
+
 /* MOTD */
 .kiwi-messagelist-message-motd {
     font-family: monospace;

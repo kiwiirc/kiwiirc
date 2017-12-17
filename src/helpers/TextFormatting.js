@@ -257,6 +257,7 @@ const textFormats = {
     selfmode: 'ⓘ %nick %text',
     nickname_alreadyinuse: '⚠ %text',
     network_disconnected: '⚠ %text',
+    network_connected: '⚠ %text',
     whois_channels: '%text',
     whois_idle_and_signon: '%text',
     whois_away: '%text',

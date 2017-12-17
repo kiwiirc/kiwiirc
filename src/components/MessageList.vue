@@ -30,6 +30,12 @@
                 :key="message.id"
             ></message-list-message-compact>
         </template>
+
+        <not-connected     
+            v-if="buffer.getNetwork().state !== 'connected'"      
+            :buffer="buffer"      
+            :network="buffer.getNetwork()"        
+        ></not-connected>
     </div>
 </template>
 

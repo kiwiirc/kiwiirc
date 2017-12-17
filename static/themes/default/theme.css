@@ -388,6 +388,13 @@
     border-left-color: #ab5252;
 }
 
+.kiwi-messagelist-message-connection-connected {
+    color: #009900;
+}
+.kiwi-messagelist-message-connection-disconnected {
+    color: #900;
+}
+
 
 
 /**
