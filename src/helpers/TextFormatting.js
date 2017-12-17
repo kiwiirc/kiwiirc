@@ -118,9 +118,12 @@ export function addEmojis(wordCtx, emojiList, emojiLocation) {
 }
 
 export function linkifyChannels(word) {
-    return word.replace(/(^|\s)([#&][^ .,\007<>]+)$/i, _channel => {
+    return word.replace(/(^|\\s|[@+~&%}]+)([#&][^ .,\\007<>]+)$/i, _channel => {
         let channelName = _channel.trim();
-        return `<a class="u-link kiwi-channel" data-channel-name="${_.escape(channelName)}">` +
+        let channelNodeWithoutUserModes = channelName.replace(/[@+~&%}]+/, '');
+
+        return `<a class="u-link kiwi-channel" 
+            data-channel-name="${_.escape(channelNodeWithoutUserModes)}">` +
             _.escape(_channel) +
         '</a>';
     });
