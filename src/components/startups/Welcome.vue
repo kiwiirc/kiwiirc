@@ -190,6 +190,7 @@ export default {
 
 .kiwi-welcome-simple {
     height: 100%;
+    text-align: center;
 }
 
 .kiwi-welcome-simple h2 {
@@ -261,9 +262,20 @@ export default {
     box-sizing: border-box;
 }
 
+.kiwi-welcome-simple .input-text,
+.kiwi-welcome-simple .kiwi-welcome-simple-have-password input {
+    margin-bottom: 1.5em;
+}
+.kiwi-welcome-simple-have-password input:checked {
+    margin-bottom: 0;
+}
+
 .kiwi-welcome-simple-start {
     font-size: 1.1em;
     cursor: pointer;
+}
+.kiwi-welcome-simple-start[disabled] {
+    cursor: not-allowed;
 }
 .kiwi-welcome-simple-form {
     max-width: 300px;

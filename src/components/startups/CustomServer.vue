@@ -358,6 +358,12 @@ export default {
     height: 100%;
     overflow-y: auto;
     box-sizing: border-box;
+    text-align: center;
+    padding-top: 1em;
+}
+.kiwi-customserver-start {
+    font-size: 1.1em;
+    cursor: pointer;
 }
 .kiwi-customserver-form {
     max-width: 300px;
@@ -365,12 +371,20 @@ export default {
     max-height: 500px;
     overflow: hidden;
 }
-.kiwi-customserver .input-text {
-    margin-bottom: 1em;
+.kiwi-customserver .input-text,
+.kiwi-customserver .kiwi-customserver-have-password input {
+    margin-bottom: 1.5em;
+}
+.kiwi-customserver-have-password input:checked {
+    margin-bottom: 0;
 }
 .kiwi-customserver-tls {
     cursor: pointer;
     top: 6px;
+    color: #bfbfbf;
+}
+.kiwi-customserver-tls--enabled {
+    color: green;
 }
 .kiwi-customserver-tls-lock {
     font-size: 1.2em;
@@ -384,6 +398,17 @@ export default {
 .kiwi-customserver-loader {
     margin-top: 1em;
     font-size: 2em;
+}
+
+.kiwi-customserver-channel {
+    margin-top: 1em;
+}
+.kiwi-customserver-server-types {
+    font-size: 0.9em;
+    text-align: center;
+}
+.kiwi-customserver-server-types a {
+    margin: 0 1em;
 }
 
 .kiwi-customserver h2 {

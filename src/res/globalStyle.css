@@ -1,0 +1,118 @@
+h1, h2, h3, h4, h5, h6 {
+    padding: 0.7em 0 0.2em 0;
+    margin: 0;
+}
+p {
+    margin: 0.5em 0 1em 0;
+}
+div {
+    -webkit-tap-highlight-color: rgba(0, 0, 0 ,0);
+}
+.u-link {
+    text-decoration: none;
+    cursor: pointer;
+}
+.u-button {
+    display: inline-block;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: .4em 0.9em;
+    font-size: 1em;
+}
+.u-button-primary {
+}
+.u-button-primary:hover {
+}
+.u-button-secondary {
+}
+.u-button-secondary:hover {
+}
+.u-button-warning {
+}
+.u-button-warning:hover {
+}
+
+.u-form {
+    text-align: left;
+}
+.u-form label {
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.u-form label span {
+    display: inline-block;
+    width: 100px;
+    margin-right: 1em;
+    text-align: right;
+}
+.u-form .u-input,
+.u-form textarea {
+    font-size: 0.9em;
+    padding: 3px 5px;
+}
+.u-form label.u-form-block span {
+    width: auto;
+    display: inline-block;
+}
+.u-form .u-submit {
+    margin: 2em auto;
+    display: block;
+}
+
+
+/**
+ * Common text formatting styles
+ */
+.irc-fg-colour-white { }
+.irc-fg-colour-black { }
+.irc-fg-colour-blue { }
+.irc-fg-colour-green { }
+.irc-fg-colour-light-red { }
+.irc-fg-colour-brown { }
+.irc-fg-colour-purple { }
+.irc-fg-colour-orange { }
+.irc-fg-colour-yellow { }
+.irc-fg-colour-light-green { }
+.irc-fg-colour-cyan { }
+.irc-fg-colour-light-cyan { }
+.irc-fg-colour-light-blue { }
+.irc-fg-colour-pink { }
+.irc-fg-colour-grey { }
+.irc-fg-colour-light-grey { }
+
+.irc-bg-colour-white { }
+.irc-bg-colour-black { }
+.irc-bg-colour-blue { }
+.irc-bg-colour-green { }
+.irc-bg-colour-light-red { }
+.irc-bg-colour-brown { }
+.irc-bg-colour-purple { }
+.irc-bg-colour-orange { }
+.irc-bg-colour-yellow { }
+.irc-bg-colour-light-green { }
+.irc-bg-colour-cyan { }
+.irc-bg-colour-light-cyan { }
+.irc-bg-colour-light-blue { }
+.irc-bg-colour-pink { }
+.irc-bg-colour-grey { }
+.irc-bg-colour-light-grey { }
+
+.kiwi-formatting-extras-quote {
+    border: 1px solid #b5b5b5;
+    padding: 0 3px;
+    border-radius: 3px;
+    background: rgba(0,0,0,0.05);
+    font-family: monospace;
+}
+.kiwi-formatting-extras-invisible {
+    font-size: 0px;
+}
+.kiwi-formatting-extras-block {
+    border-left: 4px solid #b5b5b5;
+    padding: 1em;
+    border-radius: 3px;
+    background: rgba(0,0,0,0.05);
+    font-family: monospace;
+    white-space: pre-wrap;
+    display: inline-block;
+}

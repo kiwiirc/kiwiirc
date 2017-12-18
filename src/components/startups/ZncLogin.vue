@@ -176,6 +176,7 @@ export default {
     justify-content: center;
     overflow-y: auto;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .kiwi-welcome-znc h2 {
@@ -240,9 +241,20 @@ export default {
     box-sizing: border-box;
 }
 
+.kiwi-welcome-znc .input-text,
+.kiwi-welcome-znc .kiwi-welcome-znc-have-password input {
+    margin-bottom: 1.5em;
+}
+.kiwi-welcome-znc-have-password input:checked {
+    margin-bottom: 0;
+}
+
 .kiwi-welcome-znc-start {
     font-size: 1.1em;
     cursor: pointer;
+}
+.kiwi-welcome-znc-start[disabled] {
+    cursor: not-allowed;
 }
 .kiwi-welcome-znc-form {
     width: 300px;
