@@ -236,23 +236,15 @@ div {
  */
 
 .kiwi-container {
-    top: 4px;
+    
 }
 
-.kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-sidebar {
-    cursor: pointer;
-    text-align: center;
-    font-size: 1.6em;
-    line-height: 50px;
-}
+
 .kiwi-container-toggledraw-statebrowser {
 }
 .kiwi-container-toggledraw-sidebar {
 }
-.kiwi-container-toggledraw-sidebar--disabled {
-    cursor: default;
-}
+
 
 
 
@@ -261,22 +253,14 @@ div {
  */
 
 .kiwi-sidebar {
-    transition: width 0.3s;
+    
 }
 .kiwi-sidebar-options {
-    border-bottom: 1px solid #dddddd;
-    padding: 0 0 1em 0;
-    text-align: center;
+
 }
-.kiwi-sidebar-options i {
-    transition: margin-left 0.1s;
-}
-.kiwi-sidebar-options:hover i {
-    margin-left: 1em;
-}
-.kiwi-sidebar--wide .kiwi-sidebar-options {
-    text-align: left;
-}
+
+
+
 
 
 

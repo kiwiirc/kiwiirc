@@ -196,6 +196,7 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition: width 0.3s;
 }
 
 .kiwi-sidebar--wide {
@@ -222,6 +223,19 @@ export default {
     display: block;
     margin: 1em;
     cursor: pointer;
+    border-bottom: 1px solid #dddddd;
+    padding: 0 0 1em 0;
+    text-align: center;
+}
+.kiwi-sidebar-options i {
+    transition: margin-left 0.1s;
+}
+.kiwi-sidebar-options:hover i {
+    margin-left: 1em;
+}
+
+.kiwi-sidebar--wide .kiwi-sidebar-options {
+    text-align: left;
 }
 
 .kiwi-sidebar-buffersettings {
