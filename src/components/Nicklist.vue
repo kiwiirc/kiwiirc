@@ -168,8 +168,25 @@ export default {
     box-sizing: border-box;
     overflow-y: auto;
 }
+.kiwi-nicklist-info {
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    text-align: center;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+}
 
 .kiwi-nicklist-users {
     list-style: none;
+    padding: 0 20px;
+    line-height: 1.2em;
 }
+.kiwi-nicklist-user {
+    padding: 3px 0;
+}
+.kiwi-nicklist-user-nick {
+    font-weight: bold;
+    cursor: pointer;
+}
+
 </style>

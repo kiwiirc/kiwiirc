@@ -244,5 +244,48 @@ export default {
 <style>
 .kiwi-userbox {
     box-sizing: border-box;
+    padding: 10px;
+}
+@media screen and (max-width: 500px) {
+    .kiwi-userbox {
+        left: 0;
+        right: 0;
+        bottom: 40px;
+        top: auto !important;
+        max-width: 100%;
+        border-width: 1px 0;
+    }
+}
+.kiwi-userbox-icon {
+    font-size: 2.8em;
+    margin-right: 0.3em;
+    position: absolute;
+}
+.kiwi-userbox-header h3 {
+    margin: 0 0 0 40px;
+    padding: 0;
+}
+.kiwi-userbox-usermask {
+    display: block;
+    margin: 0 0 0 40px;
+    font-size: 0.9em;
+}
+.kiwi-userbox-actions a {
+    margin-right: 1em;
+}
+.kiwi-userbox-whois {
+    padding: 5px;
+    line-height: 1.4em;
+}
+.kiwi-userbox-whois-line {
+    display: block;
+}
+.kiwi-userbox-actions-op {
+    margin: 0.7em 0 0 0;
+    padding: 0.7em 0;
+}
+.kiwi-userbox-actions-op form label {
+    display: block;
+    margin-bottom: 0.7em;
 }
 </style>

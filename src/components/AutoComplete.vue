@@ -211,4 +211,16 @@ export default {
     z-index: 1;
     max-height: 300px;
 }
+.kiwi-autocomplete-item {
+    padding: 5px 2em;
+}
+.kiwi-autocomplete-item--selected {
+}
+.kiwi-autocomplete-item-value {
+    font-weight: bold;
+}
+.kiwi-autocomplete-item-action {
+    float: right;
+    font-size: 0.9em;
+}
 </style>

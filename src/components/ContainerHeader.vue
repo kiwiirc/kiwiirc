@@ -149,6 +149,10 @@ export default {
     box-sizing: border-box;
     z-index: 2;
     overflow: hidden;
+    padding: 0 20px;
+}
+.kiwi-header:hover {
+    max-height: none;
 }
 .kiwi-header--showall {
     height: auto;
@@ -157,7 +161,15 @@ export default {
 }
 .kiwi-header-name {
     display: inline-block;
+    font-weight: bold;
+    line-height: 49px;
+    margin-left: 1em;
 }
+.kiwi-header-topic {
+    font-size: 0.9em;
+    text-overflow: ellipsis;
+}
+
 .kiwi-header-notjoined {
     display: inline-block;
     margin-left: 1em;
@@ -177,4 +189,9 @@ export default {
 .kiwi-header-close-buffersettings {
     float: right;
 }
+.kiwi-header-buffersettings {
+    padding: 5px;
+    margin-top: 1em;
+}
+
 </style>
