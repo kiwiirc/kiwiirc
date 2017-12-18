@@ -177,156 +177,55 @@ div {
  * State browser
  */
 
-.kiwi-statebrowser {
-    border-right: 5px solid rgba(255,255,255,0.3);
-}
 
-.kiwi-statebrowser-usermenu {
-    text-align: center;
-    padding: 7px 0;
-    font-size: 1.1em;
-}
-.kiwi-statebrowser-usermenu-body {
-    font-size: 0.9em;
-    margin: 5px;
-}
 
-.kiwi-statebrowser-switcher a {
-    padding: 5px 0;
-    font-size: 1.2em;
-    cursor: pointer;
-}
-.kiwi-statebrowser-switcher a:first-of-type {
-    background: rgba(255,255,255,0.15);
-}
-.kiwi-statebrowser-switcher a:hover {
-    background: rgba(255,255,255,0.1);
-}
 
-.kiwi-statebrowser-nonetworks {
-    background: rgba(255,255,255,0.15);
-    padding: 5px;
-    text-align: center;
-}
 
-.kiwi-statebrowser-availablenetworks {
-}
+
+
 .kiwi-statebrowser-availablenetworks-toggle {
-    padding: 5px 0;
-}
-.kiwi-statebrowser-availablenetworks-type {
-    padding: 10px;
-}
-.kiwi-statebrowser-availablenetworks-name {
-    text-align: center;
-    font-weight: bold;
-    text-transform: capitalize;
+    
 }
 
 
-.kiwi-statebrowser-network {
-    margin-bottom: 2em;
-    overflow: hidden;
-}
+
+
+
 .kiwi-statebrowser-network-header {
-    background: rgba(255,255,255,0.15);
+    
 }
 .kiwi-statebrowser-network-name {
     /*font-weight: bold;*/
-    font-size: 1.1em;
-    text-align: center;
-    display: block;
-    padding: 4px 0;
+
 }
-.kiwi-statebrowser-network-status {
-    background: rgba(255,255,255,0.1);
-    text-align: center;
-    padding: 4px;
-    overflow: hidden;
-    position: relative;
-    height: 1.5em;
-    font-size: 0.9em;
-}
-/* During DOM entering and leaving */
-.kiwi-statebrowser-network-status-transition-enter-active,
-.kiwi-statebrowser-network-status-transition-leave-active {
-    transition: height .7s, padding .7s;
-}
-/*  */
-.kiwi-statebrowser-network-status-transition-enter,
-.kiwi-statebrowser-network-status-transition-leave-active {
-    height: 0;
-    padding: 0;
-}
+
+
 
 .kiwi-statebrowser-channels {
 }
 .kiwi-statebrowser-channel {
-    padding: 5px 10px;
+    
 }
 
-.kiwi-statebrowser-channel-name {
-    flex: 1;
-    transition: padding 0.1s, border 0.1s;
-}
 
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
 }
-.kiwi-statebrowser-channel-active {
-    background: rgba(255,255,255,0.05);
-}
 
-.kiwi-statebrowser-channel-label {
-    padding: 1px 5px;
-    border-radius: 5px;
-    line-height: 1.3em;
-}
 
-.kiwi-statebrowser-channel-label-transition-enter-active, .kiwi-statebrowser-channel-label-transition-leave-active {
-    transition: opacity 0.1s;
-}
-.kiwi-statebrowser-channel-label-transition-enter, .kiwi-statebrowser-channel-label-transition-leave-active {
-    opacity: 0;
-}
+
+
+
 
 .kiwi-statebrowser-channel-settings {
-    height: 100%;
-    width: 20px;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
+
 }
 
 .kiwi-statebrowser-channel-popup {
 }
 
-.kiwi-statebrowser-newchannel {
-    margin: 1em 0.5em;
-}
-.kiwi-statebrowser-newchannel-inputwrap {
-    padding: 3px;
-}
-.kiwi-statebrowser-newchannel-inputwrap--focus {
-}
-.kiwi-statebrowser-newchannel-inputwrap input {
-    outline: none;
-    border: none;
-    display: block;
-    /* left: 0; */
-    /* right: 10px; */
-    width: calc(100% - 20px);
-    margin-right: 30px;
-}
-.kiwi-statebrowser-newchannel-inputwrap i {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    cursor: pointer;
-}
+
 
 .kiwi-statebrowser-options {
-    /* some space on the right so it doesnt overlap the parent elements scrollbar */
-    margin-right: 10px;
 }
 
 

@@ -213,9 +213,14 @@ export default {
 }
 .kiwi-statebrowser-network-header {
     display: flex;
+    background: rgba(255,255,255,0.15);
 }
 .kiwi-statebrowser-network-name {
     flex: 1;
+    font-size: 1.1em;
+    text-align: center;
+    display: block;
+    padding: 4px 0;
 }
 .kiwi-statebrowser-network-toggle {
     width: 2em;
@@ -224,17 +229,60 @@ export default {
     justify-content: center;
     cursor: pointer;
 }
+.kiwi-statebrowser-network-status {
+    background: rgba(255,255,255,0.1);
+    text-align: center;
+    padding: 4px;
+    overflow: hidden;
+    position: relative;
+    height: 1.5em;
+    font-size: 0.9em;
+}
+/* During DOM entering and leaving */
+.kiwi-statebrowser-network-status-transition-enter-active,
+.kiwi-statebrowser-network-status-transition-leave-active {
+    transition: height .7s, padding .7s;
+}
+/*  */
+.kiwi-statebrowser-network-status-transition-enter,
+.kiwi-statebrowser-network-status-transition-leave-active {
+    height: 0;
+    padding: 0;
+}
+
 .kiwi-statebrowser-channel {
     position: relative;
     display: flex;
+    padding: 5px 10px;
+}
+.kiwi-statebrowser-channel-active {
+    background: rgba(255,255,255,0.05);
 }
 .kiwi-statebrowser-channel-name {
     cursor: pointer;
     flex: 1;
+    transition: padding 0.1s, border 0.1s;
+}
+
+.kiwi-statebrowser-channel-label {
+    padding: 1px 5px;
+    border-radius: 5px;
+    line-height: 1.3em;
+}
+.kiwi-statebrowser-channel-label-transition-enter-active, .kiwi-statebrowser-channel-label-transition-leave-active {
+    transition: opacity 0.1s;
+}
+.kiwi-statebrowser-channel-label-transition-enter, .kiwi-statebrowser-channel-label-transition-leave-active {
+    opacity: 0;
 }
 
 .kiwi-statebrowser-channel-settings {
     display: none;
+    height: 100%;
+    width: 20px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
 }
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings {
     display: inline-block;

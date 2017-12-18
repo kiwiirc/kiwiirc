@@ -199,10 +199,21 @@ export default {
     z-index: 11; /* Must be at least 1 higher than the workspace :after z-index; */
     display: flex;
     flex-direction: column;
+    border-right: 5px solid rgba(255,255,255,0.3);
 }
 
+.kiwi-statebrowser-usermenu {
+    text-align: center;
+    padding: 7px 0;
+    font-size: 1.1em;
+}
 .kiwi-statebrowser-usermenu-header {
     cursor: pointer;
+}
+
+.kiwi-statebrowser-usermenu-body {
+    font-size: 0.9em;
+    margin: 5px;
 }
 
 .kiwi-statebrowser-switcher {
@@ -211,6 +222,15 @@ export default {
 .kiwi-statebrowser-switcher a {
     display: inline-block;
     width: 50%;
+    padding: 5px 0;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.kiwi-statebrowser-switcher a:first-of-type {
+    background: rgba(255,255,255,0.15);
+}
+.kiwi-statebrowser-switcher a:hover {
+    background: rgba(255,255,255,0.1);
 }
 
 .kiwi-statebrowser-scrollarea {
@@ -220,38 +240,39 @@ export default {
 }
 .kiwi-statebrowser-networks {
 }
-.kiwi-statebrowser-channel {
-    position: relative;
-    display: flex;
-}
-.kiwi-statebrowser-channel-name {
-    flex: 1;
+.kiwi-statebrowser-network {
+    margin-bottom: 2em;
+    overflow: hidden;
 }
 
-.kiwi-statebrowser-channel-settings {
-    display: none;
-}
-.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings {
-    display: inline-block;
-}
-.kiwi-statebrowser-channel-popup {
-    display: block;
-    position: absolute;
-    left: 100%;
-    width: 100%;
-}
 
 .kiwi-statebrowser-options {
     position: absolute;
     bottom: 0;
     padding: 15px;
     height: 30px;
+    /* some space on the right so it doesnt overlap the parent elements scrollbar */
+    margin-right: 10px;
 }
 
+.kiwi-statebrowser-nonetworks {
+    background: rgba(255,255,255,0.15);
+    padding: 5px;
+    text-align: center;
+}
 
 .kiwi-statebrowser-availablenetworks-toggle {
     cursor: pointer;
     text-align: center;
+    padding: 5px 0;
+}
+.kiwi-statebrowser-availablenetworks-type {
+    padding: 10px;
+}
+.kiwi-statebrowser-availablenetworks-name {
+    text-align: center;
+    font-weight: bold;
+    text-transform: capitalize;
 }
 .kiwi-statebrowser-availablenetworks-networks {
     overflow: hidden;
@@ -262,6 +283,30 @@ export default {
     max-height: 500px;
 }
 .kiwi-statebrowser-availablenetworks-link a {
+    cursor: pointer;
+}
+
+.kiwi-statebrowser-newchannel {
+    margin: 1em 0.5em;
+}
+.kiwi-statebrowser-newchannel-inputwrap {
+    padding: 3px;
+}
+.kiwi-statebrowser-newchannel-inputwrap--focus {
+}
+.kiwi-statebrowser-newchannel-inputwrap input {
+    outline: none;
+    border: none;
+    display: block;
+    /* left: 0; */
+    /* right: 10px; */
+    width: calc(100% - 20px);
+    margin-right: 30px;
+}
+.kiwi-statebrowser-newchannel-inputwrap i {
+    position: absolute;
+    right: 5px;
+    top: 5px;
     cursor: pointer;
 }
 </style>
