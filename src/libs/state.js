@@ -718,7 +718,7 @@ const state = new Vue({
             );
 
             let network = buffer.getNetwork();
-            let isNewMessage = message.time > buffer.last_read;
+            let isNewMessage = message.time >= buffer.last_read;
             let isHighlight = Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
 
             if (isNewMessage && isActiveBuffer && state.ui.app_has_focus) {
