@@ -17,7 +17,7 @@ export default class NetworkProviderZnc {
                     // Use the same password as this current ZNC connection but replace
                     // the network name
                     let password = network.connection.password;
-                    password = password.replace(/\/([^/]*):/, `/${zncNet.name}:`);
+                    password = password.replace(/(\/[^/]*)?:/, `/${zncNet.name}:`);
 
                     return {
                         name: zncNet.name,
