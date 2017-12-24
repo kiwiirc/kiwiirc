@@ -205,7 +205,15 @@ function initLocales() {
         },
     });
 
-    if (state.setting('language')) {
+    if (navigator && navigator.language) {
+        i18next.changeLanguage(navigator.language, (err, t) => {
+            if (err) {
+                if (state.setting('language')) {
+                    i18next.changeLanguage(state.setting('language'));
+                }
+            }
+        });
+    } else if (state.setting('language')) {
         i18next.changeLanguage(state.setting('language'));
     }
 }
