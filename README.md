@@ -2,17 +2,12 @@
 
 > The next generation of the KiwiIRC web based IRC client
 
-### Status
-This is an entirely new version of the original Kiwi IRC client. It now uses Vue.js instead of backbone.js for the javascript framework.
-
-It almost has feature parity with the original Kiwi IRC client, the outstanding features being in the issue tracker. The original Kiwi IRC will still be supported for some time with bug and security patches but no extra features will be worked on. Only this new version will be actively developed.
-
-If you're just looking to run Kiwi IRC and not develop or modify it then there are pre-built and ready to use packages here: https://kiwiirc.com/downloads/index.html
+### Easy supported ways to install Kiwi IRC
+If you just want to run Kiwi IRC and not modify it then pre-built and ready to use packages/installers/archives can be found here: https://kiwiirc.com/downloads/index.html
 
 
-### Development dependencies
-Before you can build or start to develop on KiwiIRC, make sure to have the
-following installed on your system:
+### Dependancies
+Before you can build or start to develop on KiwiIRC, make sure to have the following installed on your system:
 * [Nodejs](https://nodejs.org/)
 * [yarn](https://yarnpkg.com/)
 
@@ -48,7 +43,7 @@ be found in [static/config.json](static/config.json)
 
 ## Getting started
 
-If you're just looking to run Kiwi IRC and not develop or modify it then there are pre-built and ready to use packages here: https://kiwiirc.com/downloads/index.html
+If you just want to run Kiwi IRC and not modify it then pre-built and ready to use packages/installers/archives can be found here: https://kiwiirc.com/downloads/index.html
 
 **Just looking to build a theme? Try the online [theme builder](https://kiwiirc.com/nextclient-themebuilder)**
 
