@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import * as TextFormatting from 'src/helpers/TextFormatting';
 import formatIrcMessage from 'src/libs/MessageFormatter';
+import GlobalApi from 'src/libs/GlobalApi';
 import state from './state';
 
 let nextId = 0;
@@ -25,6 +26,12 @@ export default class Message {
     }
 
     toHtml(messageList) {
+        if (this.html) {
+            return this.html;
+        }
+
+        // Allow plugins to render their own messages if needed
+        GlobalApi.singleton().emit('message:render', { message: this });
         if (this.html) {
             return this.html;
         }
