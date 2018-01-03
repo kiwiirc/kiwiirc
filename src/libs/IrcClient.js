@@ -322,6 +322,7 @@ function clientMiddleware(state, networkid) {
                 nick: event.nick,
                 message: messageBody,
                 type: event.type,
+                tags: event.tags,
             });
         }
 

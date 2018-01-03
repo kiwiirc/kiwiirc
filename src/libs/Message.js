@@ -11,6 +11,7 @@ export default class Message {
         this.time = message.time || Date.now();
         this.nick = message.nick;
         this.message = message.message;
+        this.tags = message.tags;
         this.type = message.type || 'message';
         this.type_extra = message.type_extra;
         this.ignore = false;
