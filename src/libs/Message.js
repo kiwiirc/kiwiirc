@@ -8,7 +8,9 @@ let nextId = 0;
 
 export default class Message {
     constructor(message, user) {
-        this.id = nextId++;
+        this.id = message.tags && message.tags['draft/msgid'] ?
+            message.tags['draft/msgid'] :
+            nextId++;
         this.time = message.time || Date.now();
         this.nick = message.nick;
         this.message = message.message;
