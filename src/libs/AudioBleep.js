@@ -35,6 +35,10 @@ export function listenForHighlights(state) {
             return;
         }
 
+        if (message.type === 'connection') {
+            return;
+        }
+
         let network = buffer.getNetwork();
         let isHighlight = Misc.mentionsNick(message.message, network.nick);
         let isActiveBuffer = state.getActiveBuffer() === buffer;

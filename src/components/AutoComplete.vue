@@ -104,7 +104,6 @@ export default {
 
             let cancelKeyCodes = [
                 13, // return
-                32, // space
                 188, // comma
                 190, // period
             ];
@@ -211,5 +210,17 @@ export default {
     left: 0;
     z-index: 1;
     max-height: 300px;
+}
+.kiwi-autocomplete-item {
+    padding: 5px 2em;
+}
+.kiwi-autocomplete-item--selected {
+}
+.kiwi-autocomplete-item-value {
+    font-weight: bold;
+}
+.kiwi-autocomplete-item-action {
+    float: right;
+    font-size: 0.9em;
 }
 </style>

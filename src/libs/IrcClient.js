@@ -35,6 +35,7 @@ export function create(state, networkid) {
     }
 
     let ircClient = new Irc.Client(clientOpts);
+    ircClient.requestCap('znc.in/self-message');
     ircClient.use(clientMiddleware(state, networkid));
     ircClient.use(bouncerMiddleware());
 
@@ -109,11 +110,47 @@ function clientMiddleware(state, networkid) {
         client.on('connected', () => {
             network.state_error = '';
             network.state = 'connected';
+
+            network.buffers.forEach(buffer => {
+                if (!buffer) {
+                    return;
+                }
+
+                let messageBody = TextFormatting.formatText('network_connected', {
+                    text: 'Connected',
+                });
+
+                state.addMessage(buffer, {
+                    time: Date.now(),
+                    nick: '',
+                    message: messageBody,
+                    type: 'connection',
+                    type_extra: 'connected',
+                });
+            });
         });
 
         client.on('socket close', (err) => {
             network.state = 'disconnected';
             network.state_error = err || '';
+
+            network.buffers.forEach(buffer => {
+                if (!buffer) {
+                    return;
+                }
+
+                let messageBody = TextFormatting.formatText('network_disconnected', {
+                    text: 'Disconnected',
+                });
+
+                state.addMessage(buffer, {
+                    time: Date.now(),
+                    nick: '',
+                    message: messageBody,
+                    type: 'connection',
+                    type_extra: 'disconnected',
+                });
+            });
         });
     };
 
@@ -285,6 +322,7 @@ function clientMiddleware(state, networkid) {
                 nick: event.nick,
                 message: messageBody,
                 type: event.type,
+                tags: event.tags,
             });
         }
 

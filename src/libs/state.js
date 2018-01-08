@@ -42,6 +42,9 @@ const stateObj = {
             show_timestamps: true,
             scrollback_size: 250,
             show_joinparts: true,
+            show_topics: true,
+            show_nick_changes: true,
+            show_mode_changes: true,
             traffic_as_activity: false,
             coloured_nicklist: true,
             colour_nicknames_in_messages: true,
@@ -524,6 +527,7 @@ const state = new Vue({
             network.connection.path = serverInfo.path || '';
             network.connection.password = serverInfo.password || '';
             network.connection.direct = !!serverInfo.direct;
+            network.connection.path = serverInfo.path || '';
             network.connection.encoding = serverInfo.encoding || 'utf8';
             network.connection.bncname = serverInfo.bncname || '';
 
@@ -715,7 +719,7 @@ const state = new Vue({
             );
 
             let network = buffer.getNetwork();
-            let isNewMessage = message.time > buffer.last_read;
+            let isNewMessage = message.time >= buffer.last_read;
             let isHighlight = Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
 
             if (isNewMessage && isActiveBuffer && state.ui.app_has_focus) {
@@ -779,12 +783,19 @@ const state = new Vue({
                 [];
         },
 
-        getUser: function getUser(networkid, nick) {
+        getUser: function getUser(networkid, nick, usersArr_) {
             let user = null;
-            let network = this.getNetwork(networkid);
+            let users = usersArr_;
 
-            if (network) {
-                user = network.users[nick.toLowerCase()];
+            if (!users) {
+                let network = this.getNetwork(networkid);
+                if (network) {
+                    users = network.users;
+                }
+            }
+
+            if (users) {
+                user = users[nick.toLowerCase()];
             }
 
             return user;
@@ -832,7 +843,7 @@ const state = new Vue({
                 };
             } else {
                 // Update the existing user object with any new info we have
-                userObj = state.getUser(network.id, user.nick);
+                userObj = state.getUser(network.id, user.nick, usersArr);
                 _.each(user, (val, prop) => {
                     if (typeof val !== 'undefined') {
                         userObj[prop] = val;
@@ -865,7 +876,7 @@ const state = new Vue({
                 newUsers.forEach(newUser => {
                     let user = newUser.user;
                     let modes = newUser.modes;
-                    let userObj = state.getUser(network.id, user.nick);
+                    let userObj = state.getUser(network.id, user.nick, users);
 
                     if (!userObj) {
                         userObj = this.addUser(network, user, users);

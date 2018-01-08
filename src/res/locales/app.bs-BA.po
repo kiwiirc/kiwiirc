@@ -1,531 +1,556 @@
+#: Start
+msgid "start_button"
+msgstr "Start"
+
+#: Welcome to Kiwi IRC!
+msgid "start_greeting"
+msgstr "Dobrodošli na Kiwi IRC!"
+
 #: Close
 msgid "close"
-msgstr ""
+msgstr "Zatvori"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "Poveži se"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "Povezivanje..."
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "Povezano"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "Podešavanja"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "Kanali"
 
-#: Banned
+#: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "Banovani korisnici"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "Obavještenja"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "Korisničko ime"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "Šifra"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "Imam šifru"
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "Server"
 
-#: Nick (Nickname)
+#: Nick
 msgid "nick"
-msgstr ""
+msgstr "Nadimak"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "Kanal"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "Mreža"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "Prijavljujemo vas..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "Neispravna prijava"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "Traži..."
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "Zatvori"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "Svi vaši razgovori će biti zatvoreni. Da li ste sigurni da želite zatvoriti ovaj prozor?"
 
-#: Realname field in a users whois
+#: Real name
 msgid "whois_realname"
-msgstr ""
+msgstr "Pravo ime"
 
-#: Away status in a users whois
+#: Status
 msgid "whois_status"
-msgstr ""
+msgstr "Status"
 
-#: Away status in a users whois
+#: Is available
 msgid "whois_status_available"
-msgstr ""
+msgstr "je dostupan/na"
 
-#: Send user a message button
+#: Send a message
 msgid "send_a_message"
-msgstr ""
+msgstr "Pošalji poruku"
 
-#: Show more information
+#: More information
 msgid "more_information"
-msgstr ""
+msgstr "Više informacija"
 
-#: Ignore user toggle box
+#: Ignore user
 msgid "ignore_user"
-msgstr ""
+msgstr "Ignoriši korisnika"
 
-#: Channel input box
+#: Channel
 msgid "connection_channel"
-msgstr ""
+msgstr "Kanal"
 
-#: General Title
+#: General
 msgid "settings_general"
-msgstr ""
+msgstr "Općenito"
 
-#: Theme Title
+#: Theme
 msgid "settings_theme"
-msgstr ""
+msgstr "Izgled"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "Link izgleda"
 
-#: Use Monospace
+#: Use monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Koristi monospace"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "Izvorni IRC izgled"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "Prikaži automatski generisani popis"
 
-#: Messages Title
+#: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "Chat poruke"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "Prikaži vrijeme"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "Koristi 24-satno vrijeme"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "Prikaži smajliće"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr ""
+msgstr "Blokiraj nove privatne poruke"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "Poruke u scrollbacku"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr ""
+msgstr "Specijalno formatiranje"
+
+#: Colour nicknames in messages
+msgid "settings_nick_colouring"
+msgstr "Obojeni nadimci u porukama"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr ""
+msgstr "Prikaži pristupio/napustio kao aktivnost"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "Utišaj zvučne obavijesti"
 
-#: Highlight on words
+#: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr ""
+msgstr "Istaknite na riječima (razmaknite)"
 
-#: Aliases Title
+#: Aliases
 msgid "settings_aliases"
-msgstr ""
+msgstr "Pseudonimi"
 
 #: Send Message
 msgid "send_message"
-msgstr ""
+msgstr "Pošalji poruku"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr ""
+msgstr "Obavijesti me"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "Na sve poruke"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "Kada sam spomenut"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "Nikad"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr ""
+msgstr "Utišaj zvukove"
 
-#: operator_tools
+#: Operator tools
 msgid "operator_tools"
-msgstr ""
+msgstr "Alati operatora"
 
-#: settings_default_ban_mask
+#: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Zadana ban maska"
 
-#: settings_default_kick_reason
+#: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "Zadani razlog izbacivanja"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr ""
+msgstr "Osvježi popis banovanih"
 
 #: Banned user
 msgid "bans_user"
-msgstr ""
+msgstr "Banovani korisnici"
 
 #: Banned by
 msgid "bans_by"
-msgstr ""
+msgstr "Banovan od"
 
-#: Refreshing banlist
+#: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr ""
+msgstr "Osvježavamo popis banovanih..."
 
-#: Nobody is banned
+#: Nobody is banned!
 msgid "bans_nobody"
-msgstr ""
+msgstr "Niko nije banovan!"
 
 #: Topic
 msgid "channel_topic"
-msgstr ""
+msgstr "Tema"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr ""
+msgstr "Moderirani chat"
 
-#: Invite Only
+#: Invite only
 msgid "channel_invite"
-msgstr ""
+msgstr "Samo na poziv"
 
-#: Moderated topic
+#: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr ""
+msgstr "Samo moderatori mogu mijenjati temu"
 
-#: Block external messages
+#: Block messages from outside this channel
 msgid "channel_external"
-msgstr ""
+msgstr "Blokirajte vanjske poruke"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr ""
+msgstr "Dobrodošli na Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr ""
+msgstr "Prikaži statebrowser"
 
 #: Join Channel
 msgid "container_join"
-msgstr ""
+msgstr "Pristupi kanalu"
 
-#: Not connected
+#: Not Connected
 msgid "container_notconnected"
-msgstr ""
+msgstr "Niste povezani"
 
-#: Private conversation with
+#: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr ""
+msgstr "Privatni razgovor sa {{user}}"
 
-#: input wrap placeholder
+#: Send a message...
 msgid "input_placeholder"
-msgstr ""
+msgstr "Pošalji poruku..."
 
-#: Loading
+#: Loading {{url}}...
 msgid "media_loading"
-msgstr ""
+msgstr "Učitavanje {{url}}..."
 
-#: Load previous
+#: Load previous messages
 msgid "messages_load"
-msgstr ""
+msgstr "Učitaj prethodne poruke"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Nepročitane poruke"
 
-#: NetworkSettings $t('settings_')
+#: Server details
 msgid "settings_server_details"
-msgstr ""
+msgstr "Informacije servera"
 
 #: Port
 msgid "settings_port"
-msgstr ""
+msgstr "Port"
 
-#: Other networks on this ZNC account
+#: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr ""
+msgstr "Ostale mreže na ovom ZNC računu prikazati će se u popisu mreža"
 
 #: Your details
 msgid "settings_your_details"
-msgstr ""
+msgstr "Vaše informacije"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr ""
+msgstr "Nadimak"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr ""
+msgstr "Napredno"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr ""
+msgstr "Šifriranje"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr ""
+msgstr "Prikaži ravno"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr ""
+msgstr "Automatske komande za pokrenuti nakon povezivanja"
 
-#: Danger zone
+#: Danger Zone
 msgid "settings_danger"
-msgstr ""
+msgstr "Opasna zona"
 
 #: Remove network
 msgid "settings_remove"
-msgstr ""
+msgstr "Ukloni mrežu"
 
-#: Person key
+#: {{count}} person here
 msgid "person"
-msgstr ""
+msgstr "{{count}} dostupna osoba"
 
-#: Person plural key
+#: {{count}} people here
 msgid "person_plural"
-msgstr ""
+msgstr "{{count}} dostupnih osoba"
 
-#: Reconnect Channel
+#: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr ""
+msgstr "ponovo se poveži na kanal {{channel}}"
 
-#: Reconnect to network
+#: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr ""
+msgstr "Ponovo se poveži na {{network}} za razgovor"
 
-#: Reconnect to query
+#: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr ""
+msgstr "Ponovo se poveži da nastaviš razgovor sa {{user}}"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr ""
+msgstr "Podešavanja povezivanja"
 
-#: Close options $t('side_')
+#: Close options
 msgid "side_close"
-msgstr ""
+msgstr "Zatvori opcije"
 
 #: Channel options
 msgid "side_options"
-msgstr ""
+msgstr "Opcije kanala"
 
 #: Your settings
 msgid "side_settings"
-msgstr ""
+msgstr "Vaša podešavanja"
 
 #: Show when people join
 msgid "side_joins"
-msgstr ""
+msgstr "Prikaži kada se neko prijavi"
+
+#: Show when channel topic changes
+msgid "side_topics"
+msgstr "Prikaži kada se tema kanala promijeni"
+
+#: Show when users change their nicks
+msgid "side_nick_changes"
+msgstr "Prikaži kada korisnici promijene svoj nadimak"
+
+#: Show when users change channel modes
+msgid "side_mode_changes"
+msgstr "Prikaži kada korisnici mijenjaju modove kanale"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr ""
+msgstr "Specijalno formatiranje poruka"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr ""
+msgstr "Boje nadimaka na popisu"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr ""
+msgstr "Nema podešenog prozora razgovora ili kanala"
 
-#: Error starting
+#: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr ""
+msgstr "Greška prilikom pokretanja Kiwi IRC klijenta :("
 
+#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr ""
+msgstr "Provjerite da li ste instalirali Kiwi IRC ispravno i da li se konfiguracija može učitati"
 
-#: Leave
+#: Leave {{name}}
 msgid "state_leave"
-msgstr ""
+msgstr "Izašao {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr ""
+msgstr "Vaš profil"
 
-#: Your settings and networks will be remembered on this computer
+#: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr ""
+msgstr "Vaša podešavanja i mreže će biti zapamćeni na ovom računaru."
 
 #: Forget me
 msgid "state_forget"
-msgstr ""
+msgstr "Zaboravi me"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr ""
+msgstr "Još nema dodanih mreža."
 
 #: Add one?
 msgid "state_add"
-msgstr ""
+msgstr "Dodaj?"
 
 #: Available networks
 msgid "state_available"
-msgstr ""
+msgstr "Dostupne mreže"
 
 #: Configure network
 msgid "state_configure"
-msgstr ""
+msgstr "Konfiguracija mreže"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr ""
+msgstr "Niste povezani."
 
 #: Join new #channel
 msgid "state_join"
-msgstr ""
+msgstr "Priključi se na kanal"
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "Promijeni nadimak"
 
-#: Account name
+#: Account name: {{user}}
 msgid "user_account"
-msgstr ""
+msgstr "Korisničko ime: {{user}}"
 
-#: Real name
+#: Real name: {{realname}}
 msgid "user_realname"
-msgstr ""
+msgstr "Pravo ime: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr ""
+msgstr "je bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr ""
+msgstr "je dostupan za pomoć"
 
 #: Is an operator
 msgid "user_op"
-msgstr ""
+msgstr "je operator"
 
-#: Connected to
+#: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr ""
+msgstr "Povezani ste na {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr ""
+msgstr "Sigurno povezani preko SSL/TLS"
 
-#: Also in channels
+#: Also in channels {{channels}}
 msgid "user_channels"
-msgstr ""
+msgstr "Također na kanalima {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr ""
+msgstr "Pristupni level"
 
 #: Normal
 msgid "user_normal"
-msgstr ""
+msgstr "Normalan"
 
-#: Kick from channel
+#: Kick from the channel
 msgid "user_kick"
-msgstr ""
+msgstr "Izbaci sa kanala"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr ""
+msgstr "Banuj sa kanala"
 
-#: Kick + Ban from the channel
+#: Ban and kick from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "Banuj i izbaci sa kanala"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr ""
+msgstr "Vaš IRC klijent"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr ""
+msgstr "Dodajte vaše mreže. Priključite se vašim kanalima."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr ""
+msgstr "Ostaje ovdje kada se vratite."
 
 #: Add a Network
 msgid "personal_add"
-msgstr ""
+msgstr "Dodaj mrežu"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr ""
+msgstr "Sačuvane mreže"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr ""
+msgstr "Kiwi IRC (next gen) - Rizon prikaz"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr ""
+msgstr "Direktni web socketi. Nema Kiwi servera ili webirc-a povezanog."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr ""
+msgstr "(Hvala Adamu @Rizon za programersku podršku serverskom web socketu!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr ""
+msgstr "Prikaži programersku verziju Kiwi IRC-a i isprobaj!"
 

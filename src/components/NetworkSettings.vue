@@ -164,16 +164,19 @@ export default {
 .kiwi-networksettings {
     box-sizing: border-box;
     height: 100%;
+    margin: 0 auto;
+    max-width: 400px;
 }
 .kiwi-networksettings-close {
     float: right;
 }
+.kiwi-networksettings-section {
+    margin: 0 10px 40px 10px;
+}
 .kiwi-networksettings form .input-text {
     margin-bottom: 10px;
 }
-.kiwi-networksettings {
-    max-width: 400px;
-}
+
 .kiwi-networksettings-error {
     text-align: center;
     margin: 1em;
@@ -190,7 +193,32 @@ export default {
 .kiwi-networksettings-server-types a {
     margin-right: 1em;
 }
+.kiwi-networksettings-server-types-info {
+    font-size: 0.9em;
+    font-style: italic;
+}
 .kiwi-networksettings-server-type-active {
     font-weight: bold;
+}
+.kiwi-networksettings-connection-address {
+    width: 70%;
+    display: inline-block;
+}
+.kiwi-networksettings-connection-port {
+    width: 25%;
+    float: right;
+}
+
+.kiwi-networksettings-connection-password {
+    width: 70%;
+}
+
+.kiwi-networksettings-user {
+    width: 70%;
+}
+.kiwi-networksettings-danger h3 {
+    padding: 5px 10px;
+    margin-top: 70px;
+    margin-bottom: 1em;
 }
 </style>

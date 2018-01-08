@@ -205,8 +205,18 @@ function initLocales() {
         },
     });
 
-    if (state.setting('language')) {
-        i18next.changeLanguage(state.setting('language'));
+    let defaultLang = state.setting('language');
+    let preferredLangs = (window.navigator && window.navigator.languages) || [];
+    let preferredLang = preferredLangs[0];
+
+    if (preferredLang) {
+        i18next.changeLanguage(preferredLang, (err, t) => {
+            if (err && defaultLang) {
+                i18next.changeLanguage(defaultLang);
+            }
+        });
+    } else if (defaultLang) {
+        i18next.changeLanguage(defaultLang);
     }
 }
 

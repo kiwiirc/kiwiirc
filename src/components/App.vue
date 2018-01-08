@@ -44,6 +44,7 @@
 <script>
 
 import 'font-awesome-webpack';
+import '../res/globalStyle.css';
 
 import startupWelcome from 'src/components/startups/Welcome';
 import startupZncLogin from 'src/components/startups/ZncLogin';
@@ -238,8 +239,19 @@ body {
 
 
 .kiwi-wrap {
+    font-size: 90%;
+    line-height: 1.6em;
+    font-family: Source Sans Pro, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
     height: 100%;
     overflow: hidden;
+    --kiwi-nick-brightness: 50;
+    --kiwi-supports-monospace: 1;
+}
+
+.kiwi-wrap--monospace {
+    font-family: Consolas, monaco, monospace;
+    font-size: 80%;
 }
 
 .kiwi-statebrowser {
@@ -267,6 +279,14 @@ body {
     display: block;
     height: 100%;
     transition: left 0.5s, margin-left 0.5s;
+}
+.kiwi-workspace:before {
+    position: absolute;
+    content: '';
+    height: 4px;
+    right: 0;
+    left: 0;
+    top: 0;
 }
 /* When the statebrowser opens as a draw, darken the workspace */
 .kiwi-workspace:after {

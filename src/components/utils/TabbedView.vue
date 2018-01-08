@@ -63,3 +63,36 @@ export default Vue.component('tabbed-view', {
     },
 });
 </script>
+
+<style>
+.u-tabbed-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.u-tabbed-view-tabs {
+}
+.u-tabbed-view-tab {
+    padding: 1em 2em;
+    display: inline-block;
+    cursor: pointer;
+    border-width: 0;
+    border-style: solid;
+}
+.u-tabbed-view-tab:hover {
+    border-bottom-width: 3px;
+}
+.u-tabbed-view-tab--active {
+    border-bottom-width: 3px;
+}
+.u-tabbed-content {
+    padding-top: 10px;
+    overflow: auto;
+    height: 100%;
+}
+@media screen and (max-width: 500px) {
+    .u-tabbed-view-tab {
+        padding: 10px 20px;
+    }
+}
+</style>

@@ -123,6 +123,7 @@ export default {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    top: 4px;
 }
 .kiwi-header {
     margin-right: 200px;
@@ -165,6 +166,17 @@ export default {
 }
 .kiwi-container-toggledraw-sidebar {
     right: 0;
+}
+.kiwi-container-toggledraw-sidebar--disabled {
+    cursor: default;
+}
+
+.kiwi-container-toggledraw-statebrowser,
+.kiwi-container-toggledraw-sidebar {
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.6em;
+    line-height: 50px;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount {

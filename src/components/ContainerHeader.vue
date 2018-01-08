@@ -72,13 +72,11 @@
 
 <script>
 
-import _ from 'lodash';
 import state from 'src/libs/state';
 import GlobalApi from 'src/libs/GlobalApi';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
-import * as TextFormatting from 'src/helpers/TextFormatting';
 
 export default {
     data: function data() {
@@ -104,28 +102,6 @@ export default {
         ChannelBanlist,
     },
     methods: {
-        formatMessage: function formatMessage(messageBody) {
-            let words = messageBody.split(' ');
-            words = words.map(word => {
-                let parsed;
-
-                parsed = TextFormatting.linkifyUrls(word, {
-                    addHandle: true,
-                    handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
-                });
-                if (parsed !== word) return parsed;
-
-                parsed = TextFormatting.linkifyChannels(word);
-                if (parsed !== word) return parsed;
-
-                return _.escape(word);
-            });
-
-            let parsed = words.join(' ');
-            parsed = TextFormatting.ircCodesToHtml(parsed);
-
-            return parsed;
-        },
         isChannel: function isChannel() {
             return this.buffer.isChannel();
         },
@@ -173,6 +149,10 @@ export default {
     box-sizing: border-box;
     z-index: 2;
     overflow: hidden;
+    padding: 0 20px;
+}
+.kiwi-header:hover {
+    max-height: none;
 }
 .kiwi-header--showall {
     height: auto;
@@ -181,7 +161,15 @@ export default {
 }
 .kiwi-header-name {
     display: inline-block;
+    font-weight: bold;
+    line-height: 49px;
+    margin-left: 1em;
 }
+.kiwi-header-topic {
+    font-size: 0.9em;
+    text-overflow: ellipsis;
+}
+
 .kiwi-header-notjoined {
     display: inline-block;
     margin-left: 1em;
@@ -201,4 +189,9 @@ export default {
 .kiwi-header-close-buffersettings {
     float: right;
 }
+.kiwi-header-buffersettings {
+    padding: 5px;
+    margin-top: 1em;
+}
+
 </style>

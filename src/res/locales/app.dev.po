@@ -1,5 +1,13 @@
 #: Common Strings
 
+#: Start
+msgid "start_button"
+msgstr "Start"
+
+#: Welcome to Kiwi IRC!
+msgid "start_greeting"
+msgstr "Welcome to Kiwi IRC!"
+
 #: Close
 msgid "close"
 msgstr "Close"
@@ -438,6 +446,18 @@ msgstr "Your settings"
 #: Show when people join
 msgid "side_joins"
 msgstr "Show when people join"
+
+#: Show when channel topic changes
+msgid "side_topics"
+msgstr "Show when channel topic changes"
+
+#: Show when users change their nicks
+msgid "side_nick_changes"
+msgstr "Show when users change their nicks"
+
+#: Show when users change channel modes
+msgid "side_mode_changes"
+msgstr "Show when users change channel modes"
 
 #: Extra message formatting
 msgid "side_formatting"

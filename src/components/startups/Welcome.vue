@@ -26,7 +26,7 @@
                 <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" aria-hidden="true"></i>
             </template>
         </div>
-        
+
         <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-info" :style="infoStyle">
             <div class="kiwi-welcome-simple-section-info-content" v-if="infoContent" v-html="infoContent"></div>
         </div>
@@ -58,13 +58,13 @@ export default {
             let greeting = state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
-                'Welcome to Kiwi IRC!';
+                this.$t('start_greeting');
         },
         buttonText: function buttonText() {
             let greeting = state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
-                'Start';
+                this.$t('start_button');
         },
         readyToStart: function readyToStart() {
             let ready = this.channel && this.nick;
@@ -121,6 +121,7 @@ export default {
                     password: this.password,
                     encoding: _.trim(options.encoding),
                     direct: !!options.direct,
+                    path: options.direct_path || '',
                     gecos: options.gecos,
                 });
             } else {
@@ -190,6 +191,7 @@ export default {
 
 .kiwi-welcome-simple {
     height: 100%;
+    text-align: center;
 }
 
 .kiwi-welcome-simple h2 {
@@ -261,9 +263,20 @@ export default {
     box-sizing: border-box;
 }
 
+.kiwi-welcome-simple .input-text,
+.kiwi-welcome-simple .kiwi-welcome-simple-have-password input {
+    margin-bottom: 1.5em;
+}
+.kiwi-welcome-simple-have-password input:checked {
+    margin-bottom: 0;
+}
+
 .kiwi-welcome-simple-start {
     font-size: 1.1em;
     cursor: pointer;
+}
+.kiwi-welcome-simple-start[disabled] {
+    cursor: not-allowed;
 }
 .kiwi-welcome-simple-form {
     max-width: 300px;

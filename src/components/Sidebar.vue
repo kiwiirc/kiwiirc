@@ -23,6 +23,9 @@
                             <div class="kiwi-sidebar-settings">
                                 <h3>{{$t('side_settings')}}</h3>
                                 <label><input type="checkbox" v-model="settingShowJoinParts"> {{$t('side_joins')}}</label>
+                                <label><input type="checkbox" v-model="settingShowTopics"> {{$t('side_topics')}}</label>
+                                <label><input type="checkbox" v-model="settingShowNickChanges"> {{$t('side_nick_changes')}}</label>
+                                <label><input type="checkbox" v-model="settingShowModeChanges"> {{$t('side_mode_changes')}}</label>
                                 <label><input type="checkbox" v-model="settingExtraFormatting"> {{$t('side_formatting')}}</label>
                                 <label><input type="checkbox" v-model="settingColouredNicklist"> {{$t('side_colours')}}</label>
                             </div>
@@ -113,6 +116,30 @@ export default {
                 return this.buffer.setting('show_joinparts', newVal);
             },
         },
+        settingShowTopics: {
+            get: function getSettingShowTopics() {
+                return this.buffer.setting('show_topics');
+            },
+            set: function setSettingShowTopics(newVal) {
+                return this.buffer.setting('show_topics', newVal);
+            },
+        },
+        settingShowNickChanges: {
+            get: function getSettingShowNickChanges() {
+                return this.buffer.setting('show_nick_changes');
+            },
+            set: function setSettingShowNickChanges(newVal) {
+                return this.buffer.setting('show_nick_changes', newVal);
+            },
+        },
+        settingShowModeChanges: {
+            get: function getSettingShowModeChanges() {
+                return this.buffer.setting('show_mode_changes');
+            },
+            set: function setSettingShowModeChanges(newVal) {
+                return this.buffer.setting('show_mode_changes', newVal);
+            },
+        },
         settingColouredNicklist: {
             get: function getSettingShowJoinParts() {
                 return this.buffer.setting('coloured_nicklist');
@@ -169,6 +196,7 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition: width 0.3s;
 }
 
 .kiwi-sidebar--wide {
@@ -195,6 +223,19 @@ export default {
     display: block;
     margin: 1em;
     cursor: pointer;
+    border-bottom: 1px solid #dddddd;
+    padding: 0 0 1em 0;
+    text-align: center;
+}
+.kiwi-sidebar-options i {
+    transition: margin-left 0.1s;
+}
+.kiwi-sidebar-options:hover i {
+    margin-left: 1em;
+}
+
+.kiwi-sidebar--wide .kiwi-sidebar-options {
+    text-align: left;
 }
 
 .kiwi-sidebar-buffersettings {

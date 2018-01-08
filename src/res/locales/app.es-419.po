@@ -1,70 +1,70 @@
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Empezar"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "¡Bienvenidos a Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr "Mbylle"
+msgstr "Cerrar"
 
 #: Connect
 msgid "connect"
-msgstr "Lidhu"
+msgstr "Conectar"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Duke u lidhur"
+msgstr "Conectando..."
 
 #: Connected
 msgid "connected"
-msgstr "I lidhur"
+msgstr "Conectado"
 
 #: Settings
 msgid "settings"
-msgstr "Veglat"
+msgstr "Configuración"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "Canales"
 
 #: Banned Users
 msgid "banned"
-msgstr "I perjashtuar"
+msgstr "Usuarios baneados"
 
 #: Notifications
 msgid "notifications"
-msgstr "Njoftimet"
+msgstr "Notificaciones"
 
 #: Username
 msgid "username"
-msgstr "Perdoruesi"
+msgstr "Nombre de usuario"
 
 #: Password
 msgid "password"
-msgstr "Passwordi"
+msgstr "Contraseña"
 
 #: I have a password
 msgid "password_have"
-msgstr "Kam nje password"
+msgstr "Tengo contraseña"
 
 #: Server
 msgid "server"
-msgstr "Serveri"
+msgstr "Servidor"
 
 #: Nick
 msgid "nick"
-msgstr "Pseudonimi"
+msgstr "Nick"
 
 #: Channel
 msgid "channel"
-msgstr "Kanali"
+msgstr "Canal"
 
 #: Network
 msgid "network"
-msgstr "Rrjeti"
+msgstr "Red"
 
 #: ZNC
 msgid "znc"
@@ -72,485 +72,485 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "I loguar"
+msgstr "Verificando credenciales..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Error ne login"
+msgstr "Credenciales inválidas"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "Buscar..."
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "Esto cerrará todas las conversaciones de KiwiIRC. ¿Estás seguro que quieres cerrar esta ventana?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Emri real"
+msgstr "Nombre real"
 
 #: Status
 msgid "whois_status"
-msgstr "Statusi"
+msgstr "Estado"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Eshte ne linje"
+msgstr "Está disponible"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Dergo nje mesazh"
+msgstr "Envía un mensaje"
 
 #: More information
 msgid "more_information"
-msgstr "Me shum informacion"
+msgstr "Más información"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Injoroje"
+msgstr "Ignorar usuario"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Lidhja ne kanal"
+msgstr "Canal"
 
 #: General
 msgid "settings_general"
-msgstr "Veglat gjenerale"
+msgstr "General"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Tema"
+msgstr "Estilo"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Url e temes"
+msgstr "URL del estilo"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Perdor monospace"
+msgstr "Usar monospace"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "Diseño tradicional de IRC"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Shiko ndihmuesin"
+msgstr "Mostrar lista  de autocompletado"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Titulli mesazhit"
+msgstr "Mensajes"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Ora"
+msgstr "Mostrar hora y fecha"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Ora format 24"
+msgstr "Usar formato de 24 horas"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Figurat"
+msgstr "Mostrar emoticonos"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Bloko privatin"
+msgstr "Bloquear mensajes privados nuevos"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Shfleto"
+msgstr "Mensajes en el histórico"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Formati"
+msgstr "Formatos adicionales"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Colorear nicks en los mensajes"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Shiko hyrje daljet"
+msgstr "Incluir mensajes de entrada/salida como actividad"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Hiq zilet"
+msgstr "Silenciar notificaciones"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Citimet"
+msgstr "Destacado de palabras (sepáralas con un espacio)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Shkurtimet"
+msgstr "Alias"
 
 #: Send Message
 msgid "send_message"
-msgstr "Dergo mesazhin"
+msgstr "Enviar mensaje"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Me njofto kur"
+msgstr "Notificarme cuando"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "Me njofto per te gjitha"
+msgstr "Todos los mensajes"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "Kur permendem"
+msgstr "Soy mencionado"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Mos me njofto"
+msgstr "Nunca"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Hiq zilet"
+msgstr "Deshabilitar sonidos"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr ""
+msgstr "Herramientas del Operador"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Máscara de baneo por defecto"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "Mensaje de expulsión por defecto"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Rifresko ban-et"
+msgstr "Actualizar lista de baneos"
 
 #: Banned user
 msgid "bans_user"
-msgstr "User ne ban"
+msgstr "Usuario baneado"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Ban nga"
+msgstr "Baneado por"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Duke rifreskuar listen e ban"
+msgstr "Actualizando lista de baneos"
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Asnjeri nuk eshte ne ban"
+msgstr "¡Nadie está baneado!"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topiku"
+msgstr "Tema"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Chat i moderuar"
+msgstr "Canal moderado"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Vetem me ftesa"
+msgstr "Solo con invitación"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Topik i moderuar"
+msgstr "Solo los moderadores pueden cambiar el tema"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Blloko mesazhet nga jasht"
+msgstr "Bloquear mensajes externos al canal"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Miresevjen ne Kiwi IRC"
+msgstr "¡Bienvenido a Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Shiko statusin e browserit"
+msgstr "Mostrar barra estado del navegador"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Hyr ne kanal"
+msgstr "Entrar al Canal"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Nuk je i lidhur"
+msgstr "Desconectado"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Bisede private me"
+msgstr "Conversación privada con {{user}}"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Vendi i vendosjes se te dhenave"
+msgstr "Enviar un mensaje..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Duke u hapur"
+msgstr "Cargando {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Shfleto te vjetra"
+msgstr "Cargar mensajes anteriores"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Mensajes sin leer"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Veglat e rrjetit"
+msgstr "Detalles del servidor"
 
 #: Port
 msgid "settings_port"
-msgstr "Porta"
+msgstr "Puerto"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Rrjete te tjera ne kte llogari ZNC"
+msgstr "Otras redes en esta cuenta ZNC serán listadas en la lista de redes"
 
 #: Your details
 msgid "settings_your_details"
-msgstr "Detajet tua"
+msgstr "Tus detalles"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Pseudonimi"
+msgstr "Nick"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Me shume"
+msgstr "Avanzado"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Kodimi"
+msgstr "Codificación"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Shiko Raw"
+msgstr "Mostrar sin procesar"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Bej komandat kur tjesh i lidhur"
+msgstr "Ejecutar comandos al conectar"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Zone e rrezikshme"
+msgstr "Zona de peligro"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Hiqe rrjetin"
+msgstr "Eliminar red"
 
 #: {{count}} person here
 msgid "person"
-msgstr "Celsi i personit"
+msgstr "{{count}} persona aquí"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "Celsi plural i personit"
+msgstr "{{count}} personas aquí"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Rilidhu ne kanal"
+msgstr "Reconectar para entrar a {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Rilidhu ne rrjet"
+msgstr "Reconectar a {{network}} para empezar a chatear"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Rilidhu ne bisede"
+msgstr "Reconectar para seguir hablando con {{user}}"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Veglat e lidhjes"
+msgstr "Configuración de la conexión"
 
 #: Close options
 msgid "side_close"
-msgstr "Mbyll Opsionet"
+msgstr "Cerrar opciones"
 
 #: Channel options
 msgid "side_options"
-msgstr "Opsionet e kanalit"
+msgstr "Opciones del canal"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Veglat e mia"
+msgstr "Tu configuración"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Shiko kur hyjne njerezit"
+msgstr "Mostrar cuando la gente ingresa"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Mostrar los cambios de tópico de la sala"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Mostrar los cambios de apodo de los usuarios"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Mostrar los cambios de modos de sala"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Formati i mesazheve ekstra"
+msgstr "Formateo adicional de mensajes"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Pseudonimet me ngjyra ne liste"
+msgstr "Colorear nicks en la lista"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "Asnje Amortizim i vendosur"
+msgstr "No hay buffer configurado"
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "Error duke filluar"
+msgstr "Hubo un error iniciando Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Ky tekst nuk ka asnje info. Teksti esht perdorur ne application.po. pozicioni ne file: 90"
+msgstr "Comprueba que has instalado el Kiwi IRC correctamente y que la configuración puede cargarse."
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Largohu"
+msgstr "Salir de {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr "Llogaria jote"
+msgstr "Tu cuenta"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr "Veglat dhe rrjeti do ruhen ne kete kompjuter"
+msgstr "Tu configuración y redes serán recordadas en este computador."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Me harro"
+msgstr "Olvidar configuración"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "Asnje rrjet ketu"
+msgstr "No hay redes configuradas aún."
 
 #: Add one?
 msgid "state_add"
-msgstr "Shto nje?"
+msgstr "¿Agregar una?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Rrjetet ne dispozicion"
+msgstr "Redes disponibles"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Konfiguro rrjetin"
+msgstr "Configurar red"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Jo i lidhur"
+msgstr "Desconectado."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Hyr ne nje #kanal"
+msgstr "ingresar a un #canal nuevo"
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "Cambiar nick"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Emri llogarise"
+msgstr "Nombre de la cuenta: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Emri real"
+msgstr "Nombre real: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Esht rrobot"
+msgstr "Es un bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Esht i gatshem tju ndihmoje"
+msgstr "Está disponible para ayudar"
 
 #: Is an operator
 msgid "user_op"
-msgstr "Esht aop"
+msgstr "Es un operador"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Esht i lidhur ne"
+msgstr "Conectado a {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Perdor nje lidhje te sigurte"
+msgstr "Conección segura via SSL/TLS"
 
 #: Also in channels {{channels}}
 msgid "user_channels"
-msgstr "Esht ne kanalet"
+msgstr "Está también en los canales {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr "Ka akses level"
+msgstr "Nivel de acceso"
 
 #: Normal
 msgid "user_normal"
-msgstr "Esht user normal"
+msgstr "Normal"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Beji kick ne kanal"
+msgstr "Expulsar del canal"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Shtoje ne ban liste"
+msgstr "Banear del canal"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Beji kickban nga kanali"
+msgstr "Banear y expulsar del canal"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Shfletuesi juaj i Irc"
+msgstr "Tu cliente de IRC"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Shto rrjetin tend. hyr ne kanalet tua"
+msgstr "Agrega tus redes. Ingresa a tus canales."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "Ato do jene ketu kur ti te vish serisht"
+msgstr "Estarán aquí cuando regreses."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Shto rrjet"
+msgstr "Agregar una Red"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Rrjetet e ruajtura"
+msgstr "Redes guardadas"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (Gjenerata e re) - Parashikim Rizon"
+msgstr "Kiwi IRC (nueva generación) - vista previa de Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Lidhje direkte websockets. Ska Kiwi server ose webirc te perfshire"
+msgstr "Websockets directos. Sin servidor Kiwi o webirc involucrado."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "Faleminderit Adam @Rizon per krijimin e websocket server"
+msgstr "(Gracias a Adam @Rizon por el desarrollo del soporte para websocket server!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Beje prove versionin per zhvillues"
+msgstr "¡Prueba la versión en desarrollo del Kiwi IRC!"
 

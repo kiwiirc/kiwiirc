@@ -6,7 +6,7 @@
 
         <div class="kiwi-controlinput-inner">
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
-                {{ currentNick }}
+                <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i class="fa fa-caret-up" aria-hidden="true"></i>
             </div>
             <form @submit.prevent="submitForm" class="kiwi-controlinput-form">
@@ -384,15 +384,26 @@ export default {
 
 .kiwi-controlinput {
     box-sizing: border-box;
+    padding: 4px;
 }
 .kiwi-controlinput-inner {
     display: flex;
     position: relative;
     height: 100%;
     box-sizing: border-box;
+    padding: 3px;
 }
 .kiwi-controlinput-user {
     height: 100%;
+    padding: 0 15px;
+    margin-right: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+@media screen and (max-width: 500px) {
+    .kiwi-controlinput-user-nick {
+        display: none;
+    }
 }
 .kiwi-controlinput-form {
     flex: 1;
@@ -408,8 +419,12 @@ export default {
 .kiwi-controlinput-input {
     height: 100%;
     outline: none;
+    border: none;
 }
 
+.kiwi-controlinput-tools {
+    margin-left: 10px;
+}
 .kiwi-controlinput-tool {
     display: inline-block;
     padding: 0 1em;

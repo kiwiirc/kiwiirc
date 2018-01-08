@@ -1,11 +1,13 @@
 <template>
     <div class="kiwi-welcome-znc" :class="[closing ? 'kiwi-welcome-znc--closing' : '']">
-    
+
         <div class="kiwi-welcome-znc-section kiwi-welcome-znc-section-connection">
             <h2 v-html="greetingText"></h2>
 
-            <template v-if="!network">
+            <template v-if="!network || network.state === 'disconnected'"">
                 <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-znc-form">
+                    <div class="kiwi-welcome-znc-error" v-if="network && network.state === 'disconnected'">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
+
                     <input-text v-if="showUser" class="kiwi-welcome-znc-nick" :label="$t('username')" v-model="username" />
                     <input-text v-if="showPass" class="kiwi-welcome-znc-password" :label="$t('password')" v-model="password" type="password" />
                     <input-text v-if="showNetwork" class="kiwi-welcome-znc-channel" :label="$t('network')" v-model="znc_network" />
@@ -21,7 +23,7 @@
                 <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" aria-hidden="true"></i>
             </template>
         </div>
-        
+
         <div class="kiwi-welcome-znc-section kiwi-welcome-znc-section-info" :style="infoStyle">
             <div class="kiwi-welcome-znc-section-info-content" v-if="infoContent" v-html="infoContent"></div>
         </div>
@@ -31,12 +33,14 @@
 <script>
 
 import _ from 'lodash';
+import * as Misc from 'src/helpers/Misc';
 import state from 'src/libs/state';
 
 export default {
     data: function data() {
         return {
             network: null,
+            network_extras: null,
             username: '',
             password: '',
             znc_network: '',
@@ -52,13 +56,13 @@ export default {
             let greeting = state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
-                'Welcome to Kiwi IRC!';
+                this.$t('start_greeting');
         },
         buttonText: function buttonText() {
             let greeting = state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
-                'Start';
+                this.$t('start_button');
         },
         readyToStart: function readyToStart() {
             return this.username && (this.password || this.showPass === false);
@@ -80,6 +84,9 @@ export default {
         },
     },
     methods: {
+        readableStateError(err) {
+            return Misc.networkErrorMessage(err);
+        },
         close: function close() {
             this.closing = true;
             this.$el.addEventListener('transitionend', (event) => {
@@ -91,56 +98,54 @@ export default {
                 this.startUp();
             }
         },
-        startUp: function startUp() {
+        addNetwork: function addNetwork(netName) {
             let options = state.settings.startupOptions;
-
-            let sNets = _.compact(this.znc_network.split(','));
-            if (sNets.length === 0) {
-                sNets.push('');
+            let password = this.username;
+            if (netName) {
+                password += '/' + netName;
             }
-            sNets.forEach((_newNet, idx) => {
-                let newNet = _.trim(_newNet);
-                let password = this.username;
-                if (newNet) {
-                    password += '/' + newNet;
-                }
-                if (this.password) {
-                    password += ':' + this.password;
-                }
+            password += ':' + this.password;
 
-                let net = this.network = state.addNetwork(this.netNet, this.username, {
-                    server: _.trim(options.server),
-                    port: options.port,
-                    tls: options.tls,
-                    password: password,
-                });
-
-                if (sNets.length === 1) {
-                    let onRegistered = () => {
-                        this.close();
-                        net.ircClient.off('registered', onRegistered);
-                        net.ircClient.off('close', onClosed);
-                    };
-                    let onClosed = () => {
-                        setTimeout(() => { this.network = null; }, 1000);
-                        net.ircClient.off('registered', onRegistered);
-                        net.ircClient.off('close', onClosed);
-                    };
-                    net.ircClient.once('registered', onRegistered);
-                    net.ircClient.once('close', onClosed);
-                } else if (idx === 0) {
-                    let onRegistered = () => {
-                        state.setActiveBuffer(net.id, net.serverBuffer().name);
-                        net.ircClient.off('registered', onRegistered);
-                    };
-                    net.ircClient.once('registered', onRegistered);
-                }
-
-                net.ircClient.connect();
+            let net = state.addNetwork(netName, this.username, {
+                server: _.trim(options.server),
+                port: options.port,
+                tls: options.tls,
+                password: password,
             });
-            if (sNets.length > 1) {
-                this.close();
+            return net;
+        },
+        startUp: function startUp() {
+            if (this.network) {
+                state.removeNetwork(this.network.id);
             }
+
+            let netList = _.compact(this.znc_network.split(','));
+            if (netList.length === 0) {
+                netList.push('');
+            }
+
+            // add our first network and make sure we can connect
+            // before trying to add other networks.
+            let net = this.network = this.addNetwork(netList.shift());
+            this.network_extras = netList;
+
+            let onRegistered = () => {
+                state.setActiveBuffer(net.id, net.serverBuffer().name);
+                net.ircClient.off('registered', onRegistered);
+                net.ircClient.off('close', onClosed);
+                this.network_extras.forEach((netName, idx) => {
+                    let extraNet = this.addNetwork(_.trim(netName));
+                    extraNet.ircClient.connect();
+                });
+                this.close();
+            };
+            let onClosed = () => {
+                net.ircClient.off('registered', onRegistered);
+                net.ircClient.off('close', onClosed);
+            };
+            net.ircClient.once('registered', onRegistered);
+            net.ircClient.once('close', onClosed);
+            net.ircClient.connect();
         },
     },
     created: function created() {
@@ -171,11 +176,7 @@ export default {
 
 .kiwi-welcome-znc {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow-y: auto;
-    box-sizing: border-box;
+    text-align: center;
 }
 
 .kiwi-welcome-znc h2 {
@@ -218,13 +219,21 @@ export default {
 
 
 /** Left side */
+.kiwi-welcome-znc-error {
+    text-align: center;
+    margin: 1em 0;
+    padding: 0.3em;
+}
+
+.kiwi-welcome-znc-error span {
+    display: block;
+    font-style: italic;
+}
+
 .kiwi-welcome-znc-section-connection {
     left: 0;
     padding-top: 3em;
     font-size: 1.2em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .kiwi-welcome-znc-section-connection label {
@@ -240,12 +249,23 @@ export default {
     box-sizing: border-box;
 }
 
+.kiwi-welcome-znc .input-text,
+.kiwi-welcome-znc .kiwi-welcome-znc-have-password input {
+    margin-bottom: 1.5em;
+}
+.kiwi-welcome-znc-have-password input:checked {
+    margin-bottom: 0;
+}
+
 .kiwi-welcome-znc-start {
     font-size: 1.1em;
     cursor: pointer;
 }
+.kiwi-welcome-znc-start[disabled] {
+    cursor: not-allowed;
+}
 .kiwi-welcome-znc-form {
-    width: 300px;
+    max-width: 300px;
     margin: 2em auto;
 }
 

@@ -1,5 +1,3 @@
-@import '../common/layout.css?cb=1';
-
 .kiwi-wrap {
     color: #2c3e50;
     --kiwi-nick-brightness: 40;
@@ -386,6 +384,13 @@
 .kiwi-messagelist-message-error {
     background: #f1d4d4;
     border-left-color: #ab5252;
+}
+
+.kiwi-messagelist-message-connection-connected {
+    color: #009900;
+}
+.kiwi-messagelist-message-connection-disconnected {
+    color: #900;
 }
 
 

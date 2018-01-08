@@ -57,9 +57,20 @@ export default {
                 prefixOrders[prefix.mode] = idx;
             });
 
-            // Since vuejs will sort in-place and update views when .sort is called
-            // on an array, clone it first so that we have a plain array to sort
-            let users = _.values(this.buffer.users);
+            // A few things here:
+            // * Since vuejs will sort in-place and update views when .sort is called
+            //   on an array, clone it first so that we have a plain array to sort
+            // * Keep a map of lowercased nicks to we don't need to call .toLowerCase()
+            //   on each one all the time. This is a hot function!
+            let nickMap = Object.create(null);
+            let users = [];
+            let bufferUsers = this.buffer.users;
+            /* eslint-disable guard-for-in */
+            for (let lowercaseNick in bufferUsers) {
+                let user = bufferUsers[lowercaseNick];
+                nickMap[user.nick] = lowercaseNick;
+                users.push(user);
+            }
 
             let bufferId = this.buffer.id;
             return users.sort((a, b) => {
@@ -85,7 +96,7 @@ export default {
                     modesA.length === 0 &&
                     modesB.length === 0
                 ) {
-                    return strCompare(a.nick, b.nick);
+                    return strCompare(nickMap[a.nick], nickMap[b.nick]);
                 }
 
                 // Compare via prefixes..
@@ -113,7 +124,7 @@ export default {
                 }
 
                 // Prefixes are the same, resort to comparing text
-                return strCompare(a.nick, b.nick);
+                return strCompare(nickMap[a.nick], nickMap[b.nick]);
             });
         },
         useColouredNicks: function useColouredNicks() {
@@ -168,8 +179,25 @@ export default {
     box-sizing: border-box;
     overflow-y: auto;
 }
+.kiwi-nicklist-info {
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    text-align: center;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+}
 
 .kiwi-nicklist-users {
     list-style: none;
+    padding: 0 20px;
+    line-height: 1.2em;
 }
+.kiwi-nicklist-user {
+    padding: 3px 0;
+}
+.kiwi-nicklist-user-nick {
+    font-weight: bold;
+    cursor: pointer;
+}
+
 </style>
