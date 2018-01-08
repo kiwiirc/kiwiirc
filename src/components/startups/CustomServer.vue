@@ -86,6 +86,7 @@ export default {
             znc_network: '',
             znc_network_support: true,
             direct: false,
+            direct_path: '',
             show_type_switcher: true,
             show_password_box: false,
             is_connecting: false,
@@ -127,6 +128,7 @@ export default {
                     tls: this.tls,
                     password: this.password,
                     direct: this.direct,
+                    path: this.direct_path,
                     encoding: this.encoding,
                 });
             }
@@ -244,6 +246,7 @@ export default {
             this.nick = this.processNickRandomNumber(state.settings.startupOptions.nick);
             this.channel = state.settings.startupOptions.channel;
             this.direct = state.settings.startupOptions.direct;
+            this.direct_path = state.settings.startupOptions.direct_path;
             this.encoding = state.settings.startupOptions.encoding;
 
             // Only include the port in the server box if it's not the default

@@ -527,6 +527,7 @@ const state = new Vue({
             network.connection.path = serverInfo.path || '';
             network.connection.password = serverInfo.password || '';
             network.connection.direct = !!serverInfo.direct;
+            network.connection.path = serverInfo.path || '';
             network.connection.encoding = serverInfo.encoding || 'utf8';
             network.connection.bncname = serverInfo.bncname || '';
 

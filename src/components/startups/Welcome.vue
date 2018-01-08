@@ -121,6 +121,7 @@ export default {
                     password: this.password,
                     encoding: _.trim(options.encoding),
                     direct: !!options.direct,
+                    path: options.direct_path || '',
                     gecos: options.gecos,
                 });
             } else {
