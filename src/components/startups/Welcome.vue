@@ -23,10 +23,12 @@
             <template v-else-if="network.state !== 'connected'">
                 <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" aria-hidden="true"></i>
             </template>
-            <p class='help'>Need help? Visit <a href="https://kiwiirc.com/docs/" target="_blank" alt="The Kiwi Docs">The Kiwi Docs</a>.</p>
-        </div>
-
-
+          </div>
+          <p class='help'>Need help? Visit <a href="https://kiwiirc.com/docs/" target="_blank" alt="The Kiwi Docs">The Kiwi Docs</a>.</p>
+          <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-info" :style="infoStyle">
+             <div class="kiwi-welcome-simple-section-info-content" v-if="infoContent" v-html="infoContent"></div>
+         </div>
+      </div>
     </div>
 </template>
 
@@ -185,11 +187,6 @@ export default {
 
 <style>
 
-body{
-  background-color: #3E3E3E;
-}
-
-
 .kiwi-welcome-simple {
     height: 100%;
     text-align: center;
@@ -296,13 +293,14 @@ body{
 }
 .kiwi-welcome-simple-form {
     position: absolute;
-    left:50%;
+    left:25%;
     top:50%;
     width: 300px;
     margin: -150px auto 0 -150px;
     background-color: #fff;
     border-radius: 0.5em;
     padding: 1em;
+    border:1px solid #ececec;
 }
 
 .kiwi-welcome-simple-form input{
@@ -324,7 +322,7 @@ body{
   margin: 0;
   transition: all 0.2s;
   border:none;
-  background-color: #8BB65E;
+  background-color: #86b32d;
 }
 .kiwi-welcome-simple-form .u-submit:hover{
   border: none;
@@ -341,13 +339,14 @@ body{
 .help{
   position: absolute;
   bottom:0.2em;
-  width: 100%;
   font-size: 0.8em;
-  color:#fff;
+  color:#666;
+  width: 50%;
+  text-align: center;
 }
 .help a{
   text-decoration: underline;
-  color:#fff;
+  color:#666;
 }
 .help a:hover{
   color:#A9D87A;
@@ -364,6 +363,16 @@ body{
     }
     .kiwi-welcome-simple-section-info-content {
         margin: 1em;
+    }
+    .kiwi-welcome-simple-form {
+        position: static;
+        left: auto;
+        margin: 15% auto 15% auto;
+    }
+    p.help{
+        position: static;
+        float:left;
+        width: 100%;
     }
 }
 
@@ -383,6 +392,10 @@ body{
 
     .kiwi-welcome-simple-section-info {
         border-width: 5px 0 0 0;
+        min-height: 20px;
+        position: absolute;
+        top:auto;
+        bottom:0;
     }
     .kiwi-welcome-simple-section-info-content {
         margin: 0.5em;
