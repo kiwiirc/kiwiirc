@@ -193,9 +193,9 @@ export default {
 }
 
 .kiwi-welcome-simple h2 {
-  text-align: center;
-  padding: 0;
-  margin: 0.5em 0 1em 0;
+    text-align: center;
+    padding: 0;
+    margin: 0.5em 0 1em 0;
 }
 
 .kiwi-welcome-simple-section {
@@ -257,6 +257,7 @@ export default {
     margin-bottom: 0.8em;
     padding: 0 0.5em;
 }
+
 .kiwi-welcome-simple-section-connection input[type="text"] {
     font-size: 1em;
     margin-top: 5px;
@@ -266,31 +267,31 @@ export default {
 }
 
 .kiwi-welcome-simple .input-text{
-  font-weight: 600;
-  opacity:0.6;
-  margin-bottom: 0.8em;
+    font-weight: 600;
+    opacity:0.6;
+    margin-bottom: 0.8em;
 }
 
 .kiwi-welcome-simple .kiwi-welcome-simple-have-password input,
 .kiwi-welcome-simple-have-password {
-  font-size: 0.8em;
-  margin: 0.8em 0;
-}
-.kiwi-welcome-simple-have-password{
-  margin-top: 0;
-}
-.kiwi-welcome-simple-password.input-text{
-  margin-top: 0;
+    font-size: 0.8em;
+    margin: 0.8em 0;
 }
 
+.kiwi-welcome-simple-have-password,
+.kiwi-welcome-simple-password.input-text{
+    margin-top: 0;
+}
 
 .kiwi-welcome-simple-start {
     font-size: 1.1em;
     cursor: pointer;
 }
+
 .kiwi-welcome-simple-start[disabled] {
     cursor: not-allowed;
 }
+
 .kiwi-welcome-simple-form {
     position: absolute;
     left:25%;
@@ -304,28 +305,25 @@ export default {
 }
 
 .kiwi-welcome-simple-form input{
-  padding: 0.5em;
+    padding: 0.5em;
 }
 
 .kiwi-welcome-simple-channel{
-  margin-bottom: 0.8em;
+    margin-bottom: 0.8em;
 }
 
 .kiwi-welcome-simple-form .u-submit{
-  width: 100%;
-  line-height: 50px;
-  padding: 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 400;
-  text-shadow: none;
-  margin: 0;
-  transition: all 0.2s;
-  border:none;
-  background-color: #86b32d;
-}
-.kiwi-welcome-simple-form .u-submit:hover{
-  border: none;
+    width: 100%;
+    line-height: 50px;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-shadow: none;
+    margin: 0;
+    transition: all 0.2s;
+    border:none;
+    background-color: #86b32d;
 }
 
 /** Closing - the wiping away of the screen **/
@@ -337,19 +335,19 @@ export default {
 }
 
 .help{
-  position: absolute;
-  bottom:0.2em;
-  font-size: 0.8em;
-  color:#666;
-  width: 50%;
-  text-align: center;
+    position: absolute;
+    bottom:0.2em;
+    font-size: 0.8em;
+    color:#666;
+    width: 50%;
+    text-align: center;
 }
 .help a{
-  text-decoration: underline;
-  color:#666;
+    text-decoration: underline;
+    color:#666;
 }
 .help a:hover{
-  color:#A9D87A;
+    color:#A9D87A;
 }
 
 /** Smaller screen...**/
