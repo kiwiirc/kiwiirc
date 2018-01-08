@@ -21,6 +21,7 @@ import 'src/components/utils/TabbedView';
 import 'src/components/utils/InputText';
 import 'src/components/utils/IrcInput';
 import 'src/components/utils/InputPrompt';
+import 'src/components/utils/OptionalPassword';
 
 let logLevelMatch = window.location.href.match(/kiwi-loglevel=(\d)/);
 if (logLevelMatch && logLevelMatch[1]) {

@@ -9,10 +9,7 @@
                     <div class="kiwi-welcome-simple-error" v-if="network && network.state_error">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
 
                     <input-text v-if="showNick" class="kiwi-welcome-simple-nick" :label="$t('nick')" v-model="nick" />
-                    <label v-if="showPass" class="kiwi-welcome-simple-have-password">
-                        <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
-                    </label>
-                    <input-text v-if="show_password_box" class="kiwi-welcome-simple-password" :label="$t('password')" v-model="password" type="password" />
+                    <optional-password v-model="password" v-if="showPass"/>
                     <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" :label="$t('channel')" v-model="channel" />
                     <button
                         class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
