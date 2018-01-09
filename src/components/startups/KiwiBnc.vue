@@ -115,6 +115,7 @@ export default {
                 for (let network of bncNetworks) {
                     network.buffers = [];
                     try {
+                        /* eslint-disable no-await-in-loop */
                         let buffers = await bncnet.ircClient.bnc.getBuffers(network.name);
                         network.buffers = buffers;
                     } catch (err) {

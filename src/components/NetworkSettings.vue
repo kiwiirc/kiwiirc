@@ -104,6 +104,7 @@ export default {
             this.network.ircClient.connect();
         },
         removeNetwork: function removeNetwork() {
+            /* eslint-disable no-restricted-globals */
             let confirmed = confirm('Really remove this network? This cannot be undone!');
             if (!confirmed) {
                 return;

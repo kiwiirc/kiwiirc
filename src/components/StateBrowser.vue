@@ -144,6 +144,7 @@ export default {
         },
         clickForget: function clickForget() {
             let msg = 'This will delete all stored networks and start fresh. Are you sure?';
+            /* eslint-disable no-restricted-globals */
             let confirmed = confirm(msg);
             if (!confirmed) {
                 return;

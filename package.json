@@ -34,7 +34,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^0.9.0",
     "font-awesome": "^4.7.0",
-    "font-awesome-webpack": "^0.0.4",
+    "font-awesome-webpack": "^0.0.5-beta.2",
     "function-bind": "^1.0.2",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.8.1",

@@ -93,7 +93,7 @@ export default class AliasRewriter {
             }
 
             // Refering to an input word ($N)
-            if (!isNaN(currentAliasWord[1])) {
+            if (!Number.isNaN(currentAliasWord[1])) {
                 let num = currentAliasWord.match(/\$(\d+)(\+)?(\d+)?/);
 
                 // Did we find anything or does the word it refers to non-existant?

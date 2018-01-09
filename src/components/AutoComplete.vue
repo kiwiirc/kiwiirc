@@ -76,10 +76,10 @@ export default {
                 // * Item 4
                 // * Item 5 < selected
                 if (idxFrom < 0) {
-                    idxTo = idxTo + -idxFrom;
+                    idxTo += -idxFrom;
                     idxFrom = 0;
                 } else if (idxTo > numItems) {
-                    idxFrom = idxFrom - (idxTo - numItems);
+                    idxFrom -= (idxTo - numItems);
                     idxTo = numItems;
                 }
 

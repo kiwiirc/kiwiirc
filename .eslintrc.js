@@ -50,5 +50,6 @@ module.exports = {
     "no-prototype-builtins": 0,
     "no-lonely-if": 0,
     "no-control-regex": 0,
+    "function-paren-newline": 0,
   }
 }
