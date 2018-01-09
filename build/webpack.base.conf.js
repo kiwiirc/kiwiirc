@@ -72,7 +72,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [ projectRoot, path.resolve(__dirname, '../node_modules/irc-framework/')],
+        include: [ projectRoot ],
       },
       {
         test: /\.json$/,
