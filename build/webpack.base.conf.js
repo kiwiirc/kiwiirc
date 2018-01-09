@@ -33,12 +33,18 @@ module.exports = {
         loader: 'eslint-loader',
         include: projectRoot,
         enforce: 'pre',
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+        }
       },
       {
         test: /\.js$/,
         loader: 'eslint-loader',
         include: projectRoot,
         enforce: 'pre',
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+        }
       },
       {
         test: /\.vue$/,

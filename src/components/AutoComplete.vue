@@ -54,8 +54,8 @@ export default {
 
                 return s;
             })
-            .sort((a, b) => a.text.localeCompare(b.text))
-            .value();
+                .sort((a, b) => a.text.localeCompare(b.text))
+                .value();
         },
         filteredAndLimitedItems: function filteredAndLimitedItems() {
             return this.filteredItems.filter((item, itemIdx, items) => {
