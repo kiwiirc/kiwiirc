@@ -37,8 +37,8 @@
 <script>
 
 import _ from 'lodash';
-import state from 'src/libs/state';
-import Logger from 'src/libs/Logger';
+import state from '@/libs/state';
+import Logger from '@/libs/Logger';
 
 let log = Logger.namespace('Startup/kiwiBnc');
 
@@ -115,6 +115,7 @@ export default {
                 for (let network of bncNetworks) {
                     network.buffers = [];
                     try {
+                        /* eslint-disable no-await-in-loop */
                         let buffers = await bncnet.ircClient.bnc.getBuffers(network.name);
                         network.buffers = buffers;
                     } catch (err) {

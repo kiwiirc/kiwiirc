@@ -74,11 +74,11 @@
 
 <script>
 
-import state from 'src/libs/state';
+import state from '@/libs/state';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
-import UserBox from 'src/components/UserBox';
+import UserBox from '@/components/UserBox';
 import Nicklist from './Nicklist';
 
 export default {

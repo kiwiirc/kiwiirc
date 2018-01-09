@@ -86,8 +86,8 @@
 <script>
 
 import _ from 'lodash';
-import state from 'src/libs/state';
-import * as Misc from 'src/helpers/Misc';
+import state from '@/libs/state';
+import * as Misc from '@/helpers/Misc';
 import BufferSettings from './BufferSettings';
 
 export default {

@@ -52,9 +52,9 @@
 <script>
 
 import _ from 'lodash';
-import autocompleteCommands from 'src/res/autocompleteCommands';
-import state from 'src/libs/state';
-import GlobalApi from 'src/libs/GlobalApi';
+import autocompleteCommands from '@/res/autocompleteCommands';
+import state from '@/libs/state';
+import GlobalApi from '@/libs/GlobalApi';
 import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';

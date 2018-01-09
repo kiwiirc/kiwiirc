@@ -8,41 +8,38 @@ var merge = require('webpack-merge');
 var baseConfig = require('../../build/webpack.base.conf');
 var utils = require('../../build/utils');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var projectRoot = path.resolve(__dirname, '../../');
 
 var webpackConfig = merge(baseConfig, {
   // use inline sourcemap for karma-sourcemap-loader
   module: {
-    loaders: utils.styleLoaders()
+    rules: utils.styleLoaders()
   },
   devtool: '#inline-source-map',
-  vue: {
-    loaders: {
-      js: 'isparta'
+  resolveLoader: {
+    alias: {
+      // necessary to to make lang="scss" work in test when using vue-loader's ?inject option
+      // see discussion at https://github.com/vuejs/vue-loader/issues/724
+      'scss-loader': 'sass-loader'
     }
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../../config/test.env')
-    })
+    }),
+    new ExtractTextPlugin({
+      disable: true,
+    }),
   ]
 });
 
 // no need for app entry during tests
 delete webpackConfig.entry;
 
-// make sure isparta loader is applied before eslint
-webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
-webpackConfig.module.preLoaders.unshift({
-  test: /\.js$/,
-  loader: 'isparta',
-  include: path.resolve(projectRoot, 'src'),
-});
-
-// only apply babel for test files when using isparta
-webpackConfig.module.loaders.some(function (loader, i) {
-  if (loader.loader === 'babel') {
-    loader.include = path.resolve(projectRoot, 'test/unit');
+webpackConfig.module.rules.some(function (loader, i) {
+  if (/^babel(-loader)?$/.test(loader.loader)) {
+    loader.include.push(path.resolve(projectRoot, 'test/unit'));
     return true;
   }
 });

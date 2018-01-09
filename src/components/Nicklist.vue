@@ -25,9 +25,9 @@
 <script>
 
 import _ from 'lodash';
-import state from 'src/libs/state';
-import Logger from 'src/libs/Logger';
-import * as TextFormatting from 'src/helpers/TextFormatting';
+import state from '@/libs/state';
+import Logger from '@/libs/Logger';
+import * as TextFormatting from '@/helpers/TextFormatting';
 
 let log = Logger.namespace('Nicklist');
 

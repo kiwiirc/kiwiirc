@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import AliasRewriter from './AliasRewriter';
-import * as Misc from 'src/helpers/Misc';
+import * as Misc from '@/helpers/Misc';
 
 // Map of commandName=commandHandlerFn
 const inputCommands = {};
@@ -167,7 +167,7 @@ inputCommands.ctcp = function inputCommandCtcp(event, command, line) {
     }
 
     let network = this.state.getActiveNetwork();
-    network.ircClient.ctcpRequest.apply(network.ircClient, [target, ctcpType].concat(params));
+    network.ircClient.ctcpRequest(...[target, ctcpType].concat(params));
 };
 
 
@@ -495,7 +495,7 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
         }
         if (whoisData.logon) {
             let logonTime = parseInt(whoisData.logon, 10);
-            if (!isNaN(logonTime)) {
+            if (!Number.isNaN(logonTime)) {
                 let logonDate = new Date(logonTime * 1000);
                 display(formats.logon.replace('{{logon}}', logonDate));
             }

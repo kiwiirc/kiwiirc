@@ -26,7 +26,7 @@
 <script>
 
 import _ from 'lodash';
-import state from 'src/libs/state';
+import state from '@/libs/state';
 
 export default {
     data: function data() {
@@ -54,8 +54,8 @@ export default {
 
                 return s;
             })
-            .sort((a, b) => a.text.localeCompare(b.text))
-            .value();
+                .sort((a, b) => a.text.localeCompare(b.text))
+                .value();
         },
         filteredAndLimitedItems: function filteredAndLimitedItems() {
             return this.filteredItems.filter((item, itemIdx, items) => {
@@ -76,10 +76,10 @@ export default {
                 // * Item 4
                 // * Item 5 < selected
                 if (idxFrom < 0) {
-                    idxTo = idxTo + -idxFrom;
+                    idxTo += -idxFrom;
                     idxFrom = 0;
                 } else if (idxTo > numItems) {
-                    idxFrom = idxFrom - (idxTo - numItems);
+                    idxFrom -= (idxTo - numItems);
                     idxTo = numItems;
                 }
 

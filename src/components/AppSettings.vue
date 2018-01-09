@@ -70,9 +70,9 @@
 
 <script>
 
-import state from 'src/libs/state';
+import state from '@/libs/state';
 import SettingsAliases from './SettingsAliases';
-import ThemeManager from 'src/libs/ThemeManager';
+import ThemeManager from '@/libs/ThemeManager';
 
 /**
  * Returns an object for a vuejs computated property on a state settings value

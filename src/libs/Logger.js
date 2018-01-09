@@ -2,18 +2,18 @@ let LOG_INFO = false;
 let LOG_ERROR = true;
 
 export default function logger(...args) {
-    logger.info.apply(logger, args);
+    logger.info(...args);
 }
 
 logger.info = function logInfo(...args) {
     if (LOG_INFO) {
-        window.console.log.apply(window.console, args);
+        window.console.log(...args);
     }
 };
 
 logger.error = function logError(...args) {
     if (LOG_ERROR) {
-        window.console.error.apply(window.console, args);
+        window.console.error(...args);
     }
 };
 
@@ -32,19 +32,19 @@ logger.setLevel = function setLevel(newLevel) {
 
 logger.namespace = function namespace(label) {
     function namespacedLogger(...args) {
-        namespacedLogger.info.apply(namespacedLogger, args);
+        namespacedLogger.info(...args);
     }
 
     namespacedLogger.info = function logInfo(...args) {
         let newArgs = args;
         newArgs[0] = `[${label}] ${newArgs[0]}`;
-        logger.info.apply(logger, newArgs);
+        logger.info(...newArgs);
     };
 
     namespacedLogger.error = function logError(...args) {
         let newArgs = args;
         newArgs[0] = `[${label}] ${newArgs[0]}`;
-        logger.error.apply(logger, newArgs);
+        logger.error(...newArgs);
     };
 
     return namespacedLogger;

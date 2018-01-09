@@ -62,6 +62,7 @@
             <div class="kiwi-statebrowser-networks">
                 <state-browser-network
                     v-for="network in networksToShow"
+                    :key="network.id"
                     :network="network"
                     @showBufferSettings="showBufferPopup"
                 ></state-browser-network>
@@ -72,13 +73,13 @@
 
 <script>
 
-import state from 'src/libs/state';
+import state from '@/libs/state';
 import StateBrowserNetwork from './StateBrowserNetwork';
 import AppSettings from './AppSettings';
 import BufferSettings from './BufferSettings';
-import NetworkProvider from 'src/libs/NetworkProvider';
-import NetworkProviderZnc from 'src/libs/networkproviders/NetworkProviderZnc';
-import GlobalApi from 'src/libs/GlobalApi';
+import NetworkProvider from '@/libs/NetworkProvider';
+import NetworkProviderZnc from '@/libs/networkproviders/NetworkProviderZnc';
+import GlobalApi from '@/libs/GlobalApi';
 
 let netProv = new NetworkProvider();
 
@@ -143,6 +144,7 @@ export default {
         },
         clickForget: function clickForget() {
             let msg = 'This will delete all stored networks and start fresh. Are you sure?';
+            /* eslint-disable no-restricted-globals */
             let confirmed = confirm(msg);
             if (!confirmed) {
                 return;

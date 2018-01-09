@@ -42,8 +42,8 @@
 <script>
 
 import strftime from 'strftime';
-import state from 'src/libs/state';
-import * as TextFormatting from 'src/helpers/TextFormatting';
+import state from '@/libs/state';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
@@ -168,7 +168,7 @@ export default {
             if (!message) {
                 this.message_info_open = null;
             } else if (this.message_info_open === message) {
-                return;
+                // It's already open, so don't do anything
             } else if (this.canShowInfoForMessage(message)) {
                 // If in the process of selecting text, don't show the info box
                 let sel = window.getSelection();

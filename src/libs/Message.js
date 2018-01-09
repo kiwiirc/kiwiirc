@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import * as TextFormatting from 'src/helpers/TextFormatting';
-import formatIrcMessage from 'src/libs/MessageFormatter';
-import GlobalApi from 'src/libs/GlobalApi';
+import * as TextFormatting from '@/helpers/TextFormatting';
+import formatIrcMessage from '@/libs/MessageFormatter';
+import GlobalApi from '@/libs/GlobalApi';
 import state from './state';
 
 let nextId = 0;

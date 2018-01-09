@@ -70,8 +70,8 @@
 
 <script>
 
-import state from 'src/libs/state';
-import * as Misc from 'src/helpers/Misc';
+import state from '@/libs/state';
+import * as Misc from '@/helpers/Misc';
 
 export default {
     data: function data() {
@@ -104,6 +104,7 @@ export default {
             this.network.ircClient.connect();
         },
         removeNetwork: function removeNetwork() {
+            /* eslint-disable no-restricted-globals */
             let confirmed = confirm('Really remove this network? This cannot be undone!');
             if (!confirmed) {
                 return;
