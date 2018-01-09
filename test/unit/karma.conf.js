@@ -8,6 +8,7 @@ var merge = require('webpack-merge');
 var baseConfig = require('../../build/webpack.base.conf');
 var utils = require('../../build/utils');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var projectRoot = path.resolve(__dirname, '../../');
 
 var webpackConfig = merge(baseConfig, {
@@ -26,7 +27,10 @@ var webpackConfig = merge(baseConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../../config/test.env')
-    })
+    }),
+    new ExtractTextPlugin({
+      disable: true,
+    }),
   ]
 });
 
