@@ -3,7 +3,7 @@ import strftime from 'strftime';
 import Irc from 'irc-framework/browser';
 import bouncerMiddleware from './BouncerMiddleware';
 import * as ServerConnection from './ServerConnection';
-import * as TextFormatting from 'src/helpers/TextFormatting';
+import * as TextFormatting from '@/helpers/TextFormatting';
 
 export function create(state, networkid) {
     let network = state.getNetwork(networkid);

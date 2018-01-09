@@ -42,8 +42,8 @@
 <script>
 
 import strftime from 'strftime';
-import state from 'src/libs/state';
-import * as TextFormatting from 'src/helpers/TextFormatting';
+import state from '@/libs/state';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';

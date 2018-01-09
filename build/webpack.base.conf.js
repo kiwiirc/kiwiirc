@@ -3,6 +3,11 @@ var config = require('../config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../src/')
 
+var env = process.env.NODE_ENV === 'testing'
+  ? require('../config/test.env')
+  : config.build.env
+var isProduction = env.NODE_ENV === '"production"';
+
 module.exports = {
   entry: {
     app: './src/main.js'
@@ -13,48 +18,63 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.vue'],
-    fallback: [path.join(__dirname, '../node_modules')],
+    extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue': 'vue/dist/vue',
-      'src': path.resolve(__dirname, '../src'),
+      '@': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
       'components': path.resolve(__dirname, '../src/components')
     }
   },
-  resolveLoader: {
-    fallback: [path.join(__dirname, '../node_modules')]
-  },
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.vue$/,
-        loader: 'eslint',
-        include: projectRoot
+        loader: 'eslint-loader',
+        include: projectRoot,
+        enforce: 'pre',
       },
       {
         test: /\.js$/,
-        loader: 'eslint',
-        include: projectRoot
-      }
-    ],
-    loaders: [
+        loader: 'eslint-loader',
+        include: projectRoot,
+        enforce: 'pre',
+      },
       {
         test: /\.vue$/,
-        loader: 'vue'
+        loader: 'vue-loader',
+        options: {
+          loaders: utils.cssLoaders({
+            sourceMap: isProduction,
+            extract: isProduction
+          }),
+          cssSourceMap: isProduction,
+          cacheBusting: config.dev.cacheBusting,
+          transformToRequire: {
+            video: ['src', 'poster'],
+            source: 'src',
+            img: 'src',
+            image: 'xlink:href'
+          },
+          postcss: [
+            require('autoprefixer')({
+              browsers: ['last 2 versions']
+            })
+          ],
+        },
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         include: [ projectRoot, path.resolve(__dirname, '../node_modules/irc-framework/')],
       },
       {
         test: /\.json$/,
-        loader: 'json'
+        loader: 'json-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
@@ -71,15 +91,4 @@ module.exports = {
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
     ]
   },
-  eslint: {
-    formatter: require('eslint-friendly-formatter')
-  },
-  vue: {
-    loaders: utils.cssLoaders(),
-    postcss: [
-      require('autoprefixer')({
-        browsers: ['last 2 versions']
-      })
-    ]
-  }
 }

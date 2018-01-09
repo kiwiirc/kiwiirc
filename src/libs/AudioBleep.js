@@ -1,4 +1,4 @@
-import * as Misc from 'src/helpers/Misc';
+import * as Misc from '@/helpers/Misc';
 
 export class AudioBleep {
     constructor() {

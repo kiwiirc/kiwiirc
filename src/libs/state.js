@@ -4,7 +4,7 @@ import strftime from 'strftime';
 import * as IrcClient from './IrcClient';
 import Message from './Message';
 import batchedAdd from './batchedAdd';
-import * as Misc from 'src/helpers/Misc';
+import * as Misc from '@/helpers/Misc';
 
 const stateObj = {
     // May be set by a StatePersistence instance
@@ -740,8 +740,8 @@ const state = new Vue({
             if (isNewMessage && settingAlertOn !== 'never' && !isOurJoin) {
                 let notifyTitle = '';
                 let notifyMessage = message.nick ?
-                        message.nick + ': ' :
-                        '';
+                    message.nick + ': ' :
+                    '';
                 notifyMessage += message.message;
 
                 if (isHighlight) {
@@ -756,8 +756,9 @@ const state = new Vue({
                         onclick: () => {
                             state.setActiveBuffer(buffer.networkid, buffer.name);
 
-                            // Newer webkit browser use parent.focus() will older webkit uses
+                            // Newer webkit browser use parent.focus() while older webkit uses
                             // window.focus()
+                            /* eslint-disable no-restricted-globals */
                             if (parent && parent.focus) {
                                 parent.focus();
                             }

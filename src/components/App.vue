@@ -46,21 +46,21 @@
 import 'font-awesome-webpack';
 import '../res/globalStyle.css';
 
-import startupWelcome from 'src/components/startups/Welcome';
-import startupZncLogin from 'src/components/startups/ZncLogin';
-import startupCustomServer from 'src/components/startups/CustomServer';
-import startupKiwiBnc from 'src/components/startups/KiwiBnc';
-import startupPersonal from 'src/components/startups/Personal';
-import StateBrowser from 'src/components/StateBrowser';
-import Container from 'src/components/Container';
-import ControlInput from 'src/components/ControlInput';
-import MediaViewer from 'src/components/MediaViewer';
-import * as Notifications from 'src/libs/Notifications';
-import * as AudioBleep from 'src/libs/AudioBleep';
-import ThemeManager from 'src/libs/ThemeManager';
-import Logger from 'src/libs/Logger';
-import state from 'src/libs/state';
-import InputHandler from 'src/libs/InputHandler';
+import startupWelcome from '@/components/startups/Welcome';
+import startupZncLogin from '@/components/startups/ZncLogin';
+import startupCustomServer from '@/components/startups/CustomServer';
+import startupKiwiBnc from '@/components/startups/KiwiBnc';
+import startupPersonal from '@/components/startups/Personal';
+import StateBrowser from '@/components/StateBrowser';
+import Container from '@/components/Container';
+import ControlInput from '@/components/ControlInput';
+import MediaViewer from '@/components/MediaViewer';
+import * as Notifications from '@/libs/Notifications';
+import * as AudioBleep from '@/libs/AudioBleep';
+import ThemeManager from '@/libs/ThemeManager';
+import Logger from '@/libs/Logger';
+import state from '@/libs/state';
+import InputHandler from '@/libs/InputHandler';
 
 let log = Logger.namespace('App.vue');
 

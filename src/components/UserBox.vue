@@ -66,7 +66,7 @@
 
 <script>
 
-import state from 'src/libs/state';
+import state from '@/libs/state';
 
 export default {
     data: function data() {

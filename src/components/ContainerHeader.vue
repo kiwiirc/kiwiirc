@@ -72,8 +72,8 @@
 
 <script>
 
-import state from 'src/libs/state';
-import GlobalApi from 'src/libs/GlobalApi';
+import state from '@/libs/state';
+import GlobalApi from '@/libs/GlobalApi';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';

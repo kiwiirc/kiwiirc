@@ -44,7 +44,7 @@
 
 <script>
 
-import state from 'src/libs/state';
+import state from '@/libs/state';
 import ContainerHeader from './ContainerHeader';
 import Sidebar from './Sidebar';
 import MessageList from './MessageList';

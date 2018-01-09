@@ -37,8 +37,8 @@
 <script>
 
 import _ from 'lodash';
-import state from 'src/libs/state';
-import Logger from 'src/libs/Logger';
+import state from '@/libs/state';
+import Logger from '@/libs/Logger';
 
 let log = Logger.namespace('Startup/kiwiBnc');
 

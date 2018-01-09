@@ -75,8 +75,8 @@
 
 <script>
 
-// import state from 'src/libs/state';
-import * as TextFormatting from 'src/helpers/TextFormatting';
+// import state from '@/libs/state';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import MessageInfo from './MessageInfo';
 
 

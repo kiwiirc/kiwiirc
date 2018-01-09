@@ -4,23 +4,23 @@ import i18next from 'i18next';
 import i18nextXHR from 'i18next-xhr-backend';
 import VueI18Next from '@panter/vue-i18next';
 
-import AvailableLocales from 'src/res/locales/available.json';
-import FallbackLocale from 'src/../static/locales/en-us.json';
-import App from 'src/components/App';
-import StartupError from 'src/components/StartupError';
-import Logger from 'src/libs/Logger';
-import ConfigLoader from 'src/libs/ConfigLoader';
-import state from 'src/libs/state';
-import ThemeManager from 'src/libs/ThemeManager';
-import StatePersistence from 'src/libs/StatePersistence';
-import * as Storage from 'src/libs/storage/Local';
-import GlobalApi from 'src/libs/GlobalApi';
+import AvailableLocales from '@/res/locales/available.json';
+import FallbackLocale from '@/../static/locales/en-us.json';
+import App from '@/components/App';
+import StartupError from '@/components/StartupError';
+import Logger from '@/libs/Logger';
+import ConfigLoader from '@/libs/ConfigLoader';
+import state from '@/libs/state';
+import ThemeManager from '@/libs/ThemeManager';
+import StatePersistence from '@/libs/StatePersistence';
+import * as Storage from '@/libs/storage/Local';
+import GlobalApi from '@/libs/GlobalApi';
 
 // Global utilities
-import 'src/components/utils/TabbedView';
-import 'src/components/utils/InputText';
-import 'src/components/utils/IrcInput';
-import 'src/components/utils/InputPrompt';
+import '@/components/utils/TabbedView';
+import '@/components/utils/InputText';
+import '@/components/utils/IrcInput';
+import '@/components/utils/InputPrompt';
 
 let logLevelMatch = window.location.href.match(/kiwi-loglevel=(\d)/);
 if (logLevelMatch && logLevelMatch[1]) {
@@ -33,7 +33,8 @@ let log = Logger.namespace('main');
 let api = window.kiwi = GlobalApi.singleton();
 
 // Third party imports now have access to the state and api
-import 'src/thirdparty/';
+/* eslint-disable import/first */
+import '@/thirdparty/';
 
 function getQueryVariable(variable) {
     let query = window.location.search.substring(1);

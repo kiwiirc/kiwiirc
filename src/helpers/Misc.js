@@ -22,6 +22,10 @@ export function extractBuffers(str) {
     return buffers;
 }
 
+export function splitHost(uri) {
+
+}
+
 export function mentionsNick(input, nick) {
     let punc = ',.!:;-+)]?¿\\/<>@';
 

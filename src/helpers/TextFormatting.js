@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import * as Colours from './Colours';
 import { md5 } from './Md5';
-import ThemeManager from 'src/libs/ThemeManager';
+import ThemeManager from '@/libs/ThemeManager';
 
 const urlRegex = new RegExp(
     // Detect either a protocol or 'www.' to start a URL
@@ -140,7 +140,7 @@ export function linkifyUsers(word, userlist) {
     let normWord = word.toLowerCase();
     let hasProp = Object.prototype.hasOwnProperty;
 
-      // Checking for a nick in order of processing cost
+    // Checking for a nick in order of processing cost
     if (hasProp.call(userlist, normWord)) {
         nick = word;
     } else if (hasProp.call(userlist, normWord.substr(0, normWord.length - 1)) && validLastChar) {

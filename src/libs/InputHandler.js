@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import AliasRewriter from './AliasRewriter';
-import * as Misc from 'src/helpers/Misc';
+import * as Misc from '@/helpers/Misc';
 
 // Map of commandName=commandHandlerFn
 const inputCommands = {};
