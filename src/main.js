@@ -210,14 +210,18 @@ function initLocales() {
     let preferredLangs = (window.navigator && window.navigator.languages) || [];
     let preferredLang = preferredLangs[0];
 
-    if (preferredLang) {
-        i18next.changeLanguage(preferredLang, (err, t) => {
-            if (err && defaultLang) {
-                i18next.changeLanguage(defaultLang);
+    if (defaultLang) {
+        i18next.changeLanguage(defaultLang, (err, t) => {
+            if (err) {
+                i18next.changeLanguage('en-us');
             }
         });
-    } else if (defaultLang) {
-        i18next.changeLanguage(defaultLang);
+    } else if (preferredLang) {
+        i18next.changeLanguage(preferredLang, (err, t) => {
+            if (err) {
+                i18next.changeLanguage('en-us');
+            }
+        });
     }
 }
 
