@@ -1,67 +1,75 @@
 <template>
-    <div class="kiwi-customserver" v-bind:class="[is_connecting ? 'kiwi-customserver--connecting' : '']">
-        <h2 v-if="!is_connecting" v-html="title"></h2>
-        <h2 v-else>{{$t('connecting')}} <a @click="infoClick" class="u-link"><i class="fa fa-info-circle" aria-hidden="true"></i></a></h2>
+    <div class="kiwi-customserver" v-bind:class="[closing ? 'kiwi-customserver--closing' : '']">
+        <div v-bind:class="'kiwi-customserver-section kiwi-customserver-section-connection' + [showSplit ? ' kiwi-customserver-section-split' : '']">
+            <h2 v-if="!is_connecting" v-html="title"></h2>
+            <h2 v-else>{{$t('connecting')}} <a @click="infoClick" class="u-link"><i class="fa fa-info-circle" aria-hidden="true"></i></a></h2>
 
-        <transition name="connectingloader">
-        <form v-if="!is_connecting" v-on:submit.prevent="startUp" class="u-form kiwi-customserver-form">
-            <div class="kiwi-customserver-error" v-if="network && network.state_error">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
+            <form v-if="!network || network.state === 'disconnected'" @submit.prevent="startUp" class="u-form kiwi-customserver-form">
+                <div class="kiwi-customserver-error" v-if="network && network.state_error">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
 
-            <template v-if="server_type === 'default'">
-                <input-text :label="$t('server')" v-model="server">
-                    <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
-                        <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
-                        <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
-                    </span>
-                </input-text>
+                <template v-if="server_type === 'default'">
+                    <input-text :label="$t('server')" v-model="server">
+                        <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
+                            <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
+                            <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
+                        </span>
+                    </input-text>
 
-                <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
+                    <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
-                <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
-                </label>
-                <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
+                    <label class="kiwi-customserver-have-password">
+                        <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
+                    </label>
+                    <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 
-                <input-text :label="$t('channel')" v-model="channel" />
-            </template>
+                    <input-text :label="$t('channel')" v-model="channel" />
+                </template>
 
-            <template v-if="server_type === 'default_simple'">
-                <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
+                <template v-if="server_type === 'default_simple'">
+                    <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
-                <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
-                </label>
-                <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
+                    <label class="kiwi-customserver-have-password">
+                        <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
+                    </label>
+                    <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 
-                <input-text :label="$t('channel')" v-model="channel" class="kiwi-customserver-channel" />
-            </template>
+                    <input-text :label="$t('channel')" v-model="channel" class="kiwi-customserver-channel" />
+                </template>
 
-            <template v-if="server_type === 'znc'">
-                <input-text :label="$t('server')" v-model="server">
-                    <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
-                        <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
-                        <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
-                    </span>
-                </input-text>
+                <template v-if="server_type === 'znc'">
+                    <input-text :label="$t('server')" v-model="server">
+                        <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[tls ? 'kiwi-customserver-tls--enabled' : '']" @click="tls=!tls">
+                            <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
+                            <i v-if="!tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
+                        </span>
+                    </input-text>
 
-                <input-text :label="$t('username')" v-model="nick" class="kiwi-customserver-nick" />
+                    <input-text :label="$t('username')" v-model="nick" class="kiwi-customserver-nick" />
 
-                <input-text v-if="znc_network_support" :label="$t('network')" v-model="znc_network" />
-                <input-text :label="$t('password')" v-model="password" type="password" />
-            </template>
+                    <input-text v-if="znc_network_support" :label="$t('network')" v-model="znc_network" />
+                    <input-text :label="$t('password')" v-model="password" type="password" />
+                </template>
 
-            <button type="submit" class="u-button u-button-primary u-submit">{{buttonText}}</button>
+                <button
+                    class="u-button u-button-primary u-submit kiwi-customserver-start"
+                    type="submit"
+                    v-html="buttonText"
+                ></button>
 
-            <div v-if="show_type_switcher" class="kiwi-customserver-server-types">
-                <a @click="server_type = 'default'" class="u-link">{{$t('network')}}</a>
-                <a @click="server_type = 'znc'" class="u-link">{{$t('znc')}}</a>
+                <div v-if="show_type_switcher" class="kiwi-customserver-server-types">
+                    <a @click="server_type = 'default'" class="u-link">{{$t('network')}}</a>
+                    <a @click="server_type = 'znc'" class="u-link">{{$t('znc')}}</a>
+                </div>
+            </form>
+
+            <div v-else-if="network.state !== 'connected'">
+                <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" aria-hidden="true"></i>
             </div>
-        </form>
-
-        <div v-else class="kiwi-customserver-loader">
-            <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
         </div>
-        </transition>
+        
+        <div v-if="infoContent || infoBackground" class="kiwi-customserver-section kiwi-customserver-section-split kiwi-customserver-section-info" :style="infoStyle">
+            <div class="kiwi-customserver-section-info-content" v-if="infoContent" v-html="infoContent"></div>
+        </div>
     </div>
 </template>
 
@@ -74,6 +82,7 @@ import * as Misc from '@/helpers/Misc';
 export default {
     data: function data() {
         return {
+            network: null,
             title: 'Where are you connecting today?',
             buttonText: '',
             server_type: 'default',
@@ -91,11 +100,42 @@ export default {
             show_password_box: false,
             is_connecting: false,
             connecting_net: null,
+            closing: false,
         };
+    },
+    computed: {
+        infoStyle: function infoStyle() {
+            let style = {};
+            let options = state.settings.startupOptions;
+
+            if (options.infoBackground) {
+                style['background-image'] = `url(${options.infoBackground})`;
+            } else {
+                style['background-color'] = '#333333';
+            }
+
+            return style;
+        },
+        infoContent: function infoContent() {
+            return state.settings.startupOptions.infoContent || '';
+        },
+        infoBackground: function infoBackground() {
+            return state.settings.startupOptions.infoBackground || '';
+        },
+        showSplit: function showSplit() {
+            return this.infoContent || this.infoBackground;
+        },
     },
     methods: {
         readableStateError(err) {
             return Misc.networkErrorMessage(err);
+        },
+        close: function close() {
+            this.closing = true;
+            this.$el.addEventListener('transitionend', (event) => {
+                state.persistence.watchStateForChanges();
+                this.$emit('start');
+            }, false);
         },
         startUp: function startUp() {
             let net;
@@ -115,14 +155,14 @@ export default {
                 }
                 password += ':' + this.password;
 
-                net = state.addNetwork('ZNC', nick, {
+                net = this.network = state.addNetwork('ZNC', nick, {
                     server: this.server.split(':')[0],
                     port: parseInt(this.server.split(':')[1] || 6667, 10),
                     tls: this.tls,
                     password: password,
                 });
             } else {
-                net = state.addNetwork('Network', nick, {
+                net = this.network = state.addNetwork('Network', nick, {
                     server: this.server.split(':')[0],
                     port: parseInt(this.server.split(':')[1] || 6667, 10),
                     tls: this.tls,
@@ -160,13 +200,11 @@ export default {
                 net.ircClient.connect();
 
                 let onRegistered = () => {
-                    setTimeout(() => { this.is_connecting = false; }, 1000);
-                    this.$emit('start');
+                    this.close();
                     net.ircClient.off('registered', onRegistered);
                     net.ircClient.off('close', onClosed);
                 };
                 let onClosed = () => {
-                    setTimeout(() => { this.is_connecting = false; }, 1000);
                     net.ircClient.off('registered', onRegistered);
                     net.ircClient.off('close', onClosed);
                 };
@@ -359,73 +397,57 @@ export default {
 
 .kiwi-customserver {
     height: 100%;
-    overflow-y: auto;
-    box-sizing: border-box;
     text-align: center;
-    padding-top: 1em;
-}
-.kiwi-customserver-start {
-    font-size: 1.1em;
-    cursor: pointer;
-}
-.kiwi-customserver-form {
-    max-width: 300px;
-    margin: 0 auto;
-    max-height: 500px;
-    overflow: hidden;
-}
-.kiwi-customserver .input-text,
-.kiwi-customserver .kiwi-customserver-have-password input {
-    margin-bottom: 1.5em;
-}
-.kiwi-customserver-have-password input:checked {
-    margin-bottom: 0;
-}
-.kiwi-customserver-tls {
-    cursor: pointer;
-    top: 6px;
-    color: #bfbfbf;
-}
-.kiwi-customserver-tls--enabled {
-    color: green;
-}
-.kiwi-customserver-tls-lock {
-    font-size: 1.2em;
-}
-.kiwi-customserver-tls-minus {
-    color: red;
-    font-size: 0.7em;
-    top: 3px;
-}
-
-.kiwi-customserver-loader {
-    margin-top: 1em;
-    font-size: 2em;
-}
-
-.kiwi-customserver-channel {
-    margin-top: 1em;
-}
-.kiwi-customserver-server-types {
-    font-size: 0.9em;
-    text-align: center;
-}
-.kiwi-customserver-server-types a {
-    margin: 0 1em;
 }
 
 .kiwi-customserver h2 {
     margin-bottom: 1.5em;
 }
-.kiwi-customserver h2 i {
-    font-size: 0.8em;
-    margin-left: 1em;
-}
-.kiwi-customserver--connecting h2 {
-    transition: margin-top .7s;
-    margin-top: 100px;
+
+.kiwi-customserver-section {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+    transition: right 0.3s, left 0.3s;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    flex-direction: column;
 }
 
+.kiwi-customserver-section-split {
+    width: 50%;
+}
+
+/** Right side */
+.kiwi-customserver-section-info {
+    right: 0;
+    border: 0 solid #86b32d;
+    border-left-width: 5px;
+    background-size: cover;
+    color: #fff;
+    background-position: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+.kiwi-customserver-section-info-content {
+    background: rgba(255, 255, 255, 0.74);
+    margin: 2em;
+    color: #1b1b1b;
+    font-size: 1.5em;
+    padding: 2em;
+    line-height: 1.6em;
+}
+
+
+/** Left side */
 .kiwi-customserver-error {
     text-align: center;
     margin: 1em 0;
@@ -436,11 +458,100 @@ export default {
     font-style: italic;
 }
 
-.connectingloader-enter-active, .connectingloader-leave-active {
-  transition: max-height .5s
+.kiwi-customserver-section-connection {
+    left: 0;
+    font-size: 1.2em;
 }
-.connectingloader-enter, .connectingloader-leave-to {
-  max-height: 0
+
+.kiwi-customserver-section-connection label {
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 1.5em;
+}
+.kiwi-customserver-section-connection input[type="text"] {
+    font-size: 1em;
+    margin-top: 5px;
+    padding: 0.3em 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.kiwi-customserver .input-text,
+.kiwi-customserver .kiwi-customserver-have-password input {
+    margin-bottom: 1.5em;
+}
+.kiwi-customserver-have-password input:checked {
+    margin-bottom: 0;
+}
+.kiwi-customserver-server-types {
+    font-size: 0.9em;
+    text-align: center;
+}
+.kiwi-customserver-server-types a {
+    margin: 0 1em;
+}
+.kiwi-customserver-start {
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.kiwi-customserver-start[disabled] {
+    cursor: not-allowed;
+}
+.kiwi-customserver-form {
+    width: 300px;
+    margin: 2em auto;
+}
+
+/** Closing - the wiping away of the screen **/
+.kiwi-customserver--closing .kiwi-customserver-section-connection {
+    left: -50%;
+}
+.kiwi-customserver--closing .kiwi-customserver-section-info {
+    right: -50%;
+}
+
+/** Smaller screen...**/
+@media screen and (max-width: 850px) {
+    .kiwi-customserver {
+        font-size: 0.9em;
+    }
+
+    .kiwi-startbnc-section-connection {
+        margin-top: 1em;
+    }
+    .kiwi-customserver-section-info-content {
+        margin: 1em;
+    }
+}
+
+/** Even smaller screen.. probably phones **/
+@media screen and (max-width: 750px) {
+    .kiwi-customserver {
+        font-size: 0.9em;
+        overflow-y: auto;
+    }
+
+    .kiwi-customserver-section {
+        left: 0;
+        width: 100%;
+        right: auto;
+        position: relative;
+    }
+
+    .kiwi-customserver-section-info {
+        border-width: 5px 0 0 0;
+    }
+    .kiwi-customserver-section-info-content {
+        margin: 0.5em;
+    }
+
+    /** Closing - the wiping away of the screen **/
+    .kiwi-customserver--closing .kiwi-customserver-section-connection {
+        left: -100%;
+    }
+    .kiwi-customserver--closing .kiwi-customserver-section-info {
+        left: -100%;
+    }
 }
 
 </style>
