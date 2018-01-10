@@ -53,6 +53,29 @@ export function mentionsNick(input, nick) {
 }
 
 
+export function userModePrefix(user, buffer) {
+    let modes = user.buffers[buffer.id].modes;
+    if (modes.length === 0) {
+        return '';
+    }
+
+    let network = buffer.getNetwork();
+    let netPrefixes = network.ircClient.network.options.PREFIX;
+    let prefix = _.find(netPrefixes, { mode: modes[0] });
+    return prefix ?
+        prefix.symbol :
+        '';
+}
+
+
+export function userMode(user, buffer) {
+    let modes = user.buffers[buffer.id].modes;
+    return modes.length === 0 ?
+        '' :
+        modes[0];
+}
+
+
 export function queryStringVal(_name, _url) {
     let url = _url || window.location.href;
     let name = _.escapeRegExp(_name);

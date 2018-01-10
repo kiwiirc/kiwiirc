@@ -24,10 +24,10 @@
 
 <script>
 
-import _ from 'lodash';
 import state from '@/libs/state';
 import Logger from '@/libs/Logger';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import * as Misc from '@/helpers/Misc';
 
 let log = Logger.namespace('Nicklist');
 
@@ -140,22 +140,10 @@ export default {
             return styles;
         },
         userModePrefix: function userModePrefix(user) {
-            let modes = user.buffers[this.buffer.id].modes;
-            if (modes.length === 0) {
-                return '';
-            }
-
-            let netPrefixes = this.network.ircClient.network.options.PREFIX;
-            let prefix = _.find(netPrefixes, { mode: modes[0] });
-            return prefix ?
-                prefix.symbol :
-                '';
+            return Misc.userModePrefix(user, this.buffer);
         },
         userMode: function userMode(user) {
-            let modes = user.buffers[this.buffer.id].modes;
-            return modes.length === 0 ?
-                '' :
-                modes[0];
+            return Misc.userMode(user, this.buffer);
         },
         openQuery: function openQuery(user) {
             let buffer = state.addBuffer(this.buffer.networkid, user.nick);

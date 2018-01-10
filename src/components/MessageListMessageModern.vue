@@ -54,7 +54,7 @@
                 v-bind:data-nick="message.nick"
                 @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                 @mouseout="ml.hover_nick='';"
-            >{{message.nick}}</div>
+            >{{message.user ? userModePrefix(message.user) : ''}}{{message.nick}}</div>
             <div
                 v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
                 class="kiwi-messagelist-time"
@@ -77,6 +77,7 @@
 
 // import state from '@/libs/state';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import * as Misc from '@/helpers/Misc';
 import MessageInfo from './MessageInfo';
 
 
@@ -104,6 +105,9 @@ export default {
         isMessage: function isMessage(message) {
             let types = ['privmsg', 'action', 'notice'];
             return types.indexOf(message.type) > -1;
+        },
+        userModePrefix: function userModePrefix(user) {
+            return Misc.userModePrefix(user, this.ml.buffer);
         },
     },
 };

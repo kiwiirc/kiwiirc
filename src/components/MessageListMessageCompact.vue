@@ -47,7 +47,7 @@
             v-bind:data-nick="message.nick"
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
             @mouseout="ml.hover_nick='';"
-        >{{message.nick}}</div>
+        >{{message.user ? userModePrefix(message.user) : ''}}{{message.nick}}</div>
         <div class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"></div>
 
         <message-info
@@ -62,6 +62,7 @@
 <script>
 
 // import state from '@/libs/state';
+import * as Misc from '@/helpers/Misc';
 import MessageInfo from './MessageInfo';
 
 
@@ -79,6 +80,9 @@ export default {
     methods: {
         isHoveringOverMessage: function isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
+        },
+        userModePrefix: function userModePrefix(user) {
+            return Misc.userModePrefix(user, this.ml.buffer);
         },
     },
 };
