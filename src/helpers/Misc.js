@@ -54,6 +54,11 @@ export function mentionsNick(input, nick) {
 
 
 export function userModePrefix(user, buffer) {
+    // The user may not be on the buffer
+    if (!user.buffers[buffer.id]) {
+        return '';
+    }
+
     let modes = user.buffers[buffer.id].modes;
     if (modes.length === 0) {
         return '';
@@ -69,6 +74,11 @@ export function userModePrefix(user, buffer) {
 
 
 export function userMode(user, buffer) {
+    // The user may not be on the buffer
+    if (!user.buffers[buffer.id]) {
+        return '';
+    }
+
     let modes = user.buffers[buffer.id].modes;
     return modes.length === 0 ?
         '' :
