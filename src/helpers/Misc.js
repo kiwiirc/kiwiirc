@@ -26,6 +26,7 @@ export function splitHost(uri) {
 
 }
 
+// Does a string mention a nickname
 export function mentionsNick(input, nick) {
     let punc = ',.!:;-+)]?¿\\/<>@';
 
@@ -53,6 +54,7 @@ export function mentionsNick(input, nick) {
 }
 
 
+// Get a users prefix symbol on a buffer from its modes
 export function userModePrefix(user, buffer) {
     // The user may not be on the buffer
     if (!user.buffers[buffer.id]) {
@@ -73,6 +75,7 @@ export function userModePrefix(user, buffer) {
 }
 
 
+// Get a users mode on a buffer
 export function userMode(user, buffer) {
     // The user may not be on the buffer
     if (!user.buffers[buffer.id]) {
@@ -86,6 +89,7 @@ export function userMode(user, buffer) {
 }
 
 
+// Get a query string value from the current URL
 export function queryStringVal(_name, _url) {
     let url = _url || window.location.href;
     let name = _.escapeRegExp(_name);
@@ -103,6 +107,7 @@ export function queryStringVal(_name, _url) {
 }
 
 
+// Convert a known error code to a human readable message
 export function networkErrorMessage(err) {
     let errs = {
         err_unknown_host: 'Unknown domain name or host',
