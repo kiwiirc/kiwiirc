@@ -60,7 +60,7 @@ export function linkifyUrls(input, _opts) {
         if (opts.addHandle) {
             let cssClass = opts.handleClass || '';
             let content = opts.handleContent || '';
-            out += `<a data-url="${url}" class="${cssClass}">${content}</a>`;
+            out += `<a data-url="${_.escape(url)}" class="${cssClass}">${content}</a>`;
         }
 
         // Pretty hacky, but replace all URLs with random keys that won't get caught up in the HTML
