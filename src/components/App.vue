@@ -44,7 +44,7 @@
 <script>
 
 import 'font-awesome-webpack';
-import '../res/globalStyle.css';
+import '@/res/globalStyle.css';
 
 import startupWelcome from '@/components/startups/Welcome';
 import startupZncLogin from '@/components/startups/ZncLogin';

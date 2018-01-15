@@ -4,9 +4,7 @@ import StartupError from '@/components/StartupError';
 Vue.mixin({
     computed: {
         $t() {
-            return (key, options) => {
-                return key;
-            };
+            return (key, options) => key;
         },
     },
 });
