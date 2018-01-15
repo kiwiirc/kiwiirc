@@ -2,11 +2,16 @@
     <div class="kiwi-selfuser">
         <div class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">{{network.nick}}</span>
-            <span class="kiwi-selfuser-host">{{netUser.username}}@{{netUser.host}}</span>    
+            <span class="kiwi-selfuser-host">{{netUser.username}}@{{netUser.host}}</span>
         </div>
         <div class="kiwi-selfuser-modes">{{modeString}}</div>
         <div class="kiwi-selfuser-actions">
-            <input-prompt @submit="changeNick" :label="$t('change_nick')+':'"><a class="u-link">{{$t('change_nick')}}</a></input-prompt>
+            <input-prompt @submit="changeNick" :label="$t('change_nick')+':'">
+              <a class="u-link u-button u-button-primary">{{$t('change_nick')}}</a>
+            </input-prompt>
+        </div>
+        <div class="close-icon" @click="toggleSelfUser">
+          icon
         </div>
     </div>
 </template>
@@ -38,6 +43,11 @@ export default {
         },
     },
     methods: {
+        toggleSelfUser() {
+            if (this.networkState === 'connected') {
+                this.selfuser_open = !this.selfuser_open;
+            }
+        },
         changeNick(newNick) {
             let nick = newNick.trim();
             if (!nick.match(/(^[0-9])|(\s)/)) {
@@ -69,5 +79,21 @@ export default {
     border-top: 1px solid #dddddd;
     margin-top: 1em;
     padding-top: 1em;
+    width: 100%;
 }
+
+.kiwi-selfuser-actions .input-prompt{
+    width: 100%;
+}
+
+.kiwi-selfuser-actions .u-button{
+    background-color: #42b983;
+    width: 100%;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8em;
+    box-sizing: border-box;
+}
+
 </style>

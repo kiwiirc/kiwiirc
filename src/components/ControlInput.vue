@@ -33,9 +33,6 @@
                 <!--<button type="submit">Send</button>-->
             </form>
             <div class="kiwi-controlinput-tools" ref="plugins">
-                <a @click.prevent="onToolClickTextStyle" class="kiwi-controlinput-tool">
-                    <i class="fa fa-adjust" aria-hidden="true"></i>
-                </a>
                 <a @click.prevent="onToolClickEmoji" class="kiwi-controlinput-tool">
                     <i class="fa fa-smile-o" aria-hidden="true"></i>
                 </a>
@@ -384,7 +381,6 @@ export default {
 
 .kiwi-controlinput {
     box-sizing: border-box;
-    padding: 4px;
 }
 .kiwi-controlinput-inner {
     display: flex;
@@ -395,11 +391,22 @@ export default {
 }
 .kiwi-controlinput-user {
     height: 100%;
-    padding: 0 15px;
-    margin-right: 15px;
     font-weight: bold;
     text-align: center;
+    padding: 0 1.2em;
+    margin-right: 1em;
+    line-height: 2.5em;
 }
+
+.kiwi-controlinput-user span{
+  float:left;
+  margin-right: 0.5em;
+}
+.kiwi-controlinput-user i{
+  float:right;
+  line-height: 2.3em;
+}
+
 @media screen and (max-width: 500px) {
     .kiwi-controlinput-user-nick {
         display: none;
@@ -420,10 +427,12 @@ export default {
     height: 100%;
     outline: none;
     border: none;
+    line-height: 2.5em;
 }
 
 .kiwi-controlinput-tools {
     margin-left: 10px;
+    line-height: 2.5em;
 }
 .kiwi-controlinput-tool {
     display: inline-block;
