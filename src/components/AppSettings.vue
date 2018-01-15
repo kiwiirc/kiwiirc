@@ -230,4 +230,16 @@ export default {
     margin-left: 1em;
     cursor: pointer;
 }
+
+.kiwi-appsettings-section{
+    width: 25%;
+    display: block;
+    text-align: left;
+}
+.kiwi-appsettings-section span{
+  text-align: left;
+  width: 100%;
+}
+
+
 </style>
