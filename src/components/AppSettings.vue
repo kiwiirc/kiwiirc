@@ -175,7 +175,7 @@ export default {
                 if (themeMgr.currentTheme().name === 'custom') {
                     themeMgr.setCustomThemeUrl(newVal);
                 }
-            };
+            }; 
 
             // Remove all our attached events to cleanup
             let teardownFn = () => {
