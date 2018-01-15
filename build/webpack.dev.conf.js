@@ -42,6 +42,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
+    },
+    before: function() {
+      return require('./locales').createJsonFiles();
     }
   },
   plugins: [
