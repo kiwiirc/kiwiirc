@@ -52,6 +52,7 @@ const stateObj = {
             block_pms: false,
             show_emoticons: true,
             extra_formatting: true,
+            formatting_blacklist: [],
             mute_sound: false,
             hide_message_counts: false,
             default_ban_mask: '*!%i@%h',

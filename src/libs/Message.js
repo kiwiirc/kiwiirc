@@ -50,6 +50,7 @@ export default class Message {
         let html = '';
         let blocks = formatIrcMessage(this.message, {
             extras: useExtraFormatting,
+            blacklist: state.setting('buffers.formatting_blacklist'),
         });
 
         blocks.forEach((bl, idx) => {
