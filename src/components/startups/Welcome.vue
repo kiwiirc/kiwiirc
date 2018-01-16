@@ -21,7 +21,7 @@
                 </form>
             </template>
             <template v-else-if="network.state !== 'connected'">
-                <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" aria-hidden="true"></i>
+                <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
             </template>
           </div>
           <p class='help'>Need help? Visit <a href="https://kiwiirc.com/docs/" target="_blank" alt="The Kiwi Docs">The Kiwi Docs</a>.</p>
@@ -297,7 +297,7 @@ export default {
     left:25%;
     top:50%;
     width: 300px;
-    margin: -150px auto 0 -150px;
+    margin: -161px auto 0 -150px;
     background-color: #fff;
     border-radius: 0.5em;
     padding: 1em;
@@ -366,12 +366,33 @@ export default {
         position: static;
         left: auto;
         margin: 15% auto 15% auto;
+        z-index: 100;
+        position: relative;
     }
     p.help{
         position: static;
         float:left;
         width: 100%;
     }
+
+    .kiwi-welcome-simple-section-info {
+        border-width: 5px 0 0 0;
+        min-height: 20px;
+        top:0;
+        z-index: 0;
+        padding: 10% 1em;
+    }
+}
+
+.fa-spinner{
+  font-size: 2em;
+  position: absolute;
+  top: 50%;
+  z-index: 999;
+  font-size: 100px;
+  margin-top: -0.5em;
+  left: 25%;
+  margin-left: -40px;
 }
 
 /** Even smaller screen.. probably phones **/
@@ -387,14 +408,7 @@ export default {
         right: auto;
         position: relative;
     }
-  
-    .kiwi-welcome-simple-section-info {
-        border-width: 5px 0 0 0;
-        min-height: 20px;
-        position: absolute;
-        top:auto;
-        bottom:0;
-    }
+
     .kiwi-welcome-simple-section-info-content {
         margin: 0.5em;
     }
