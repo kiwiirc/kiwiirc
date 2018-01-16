@@ -387,7 +387,7 @@ export default {
         right: auto;
         position: relative;
     }
-
+  
     .kiwi-welcome-simple-section-info {
         border-width: 5px 0 0 0;
         min-height: 20px;
