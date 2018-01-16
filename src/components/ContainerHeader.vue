@@ -13,8 +13,8 @@
             </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div v-if="isJoined" class="kiwi-header-topic">{{buffer.topic}}</div>
-            <div v-if="!isJoined && !isConnected" class="kiwi-header-notjoined">
-                <a @click="joinCurrentBuffer" class="u-link join-channel-button">{{$t('container_join')}}</a>
+            <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
+                <a @click="joinCurrentBuffer" class="u-link kiwi-header-join-channel-button">{{$t('container_join')}}</a>
             </div>
             <div class="kiwi-header-tools">
                 <div v-for="el in pluginUiChannelElements" v-rawElement="el" class="kiwi-header-tool"></div>
@@ -166,10 +166,21 @@ export default {
     line-height: 1.7em;
     cursor: default;
     font-size: 1.3em;
+    margin-right: 0.5em;
 }
 .kiwi-header-topic {
-    font-size: 0.9em;
-    text-overflow: ellipsis;
+    font-size: 1em;
+    line-height: 1.7em;
+    cursor: default;
+    opacity: 0.8;
+    line-height: 2.2em;
+    max-width: 50%;
+    height: 1.7em;
+    overflow: hidden;
+}
+
+.kiwi-header-topic:hover{
+  height: auto;
 }
 
 .kiwi-header-notjoined {
@@ -201,7 +212,7 @@ export default {
   border-radius: 0.4em;
 }
 
-.kiwi-header .join-channel-button{
+.kiwi-header .kiwi-header-join-channel-button{
   background-color: #42b983;
   border-radius: 0.3em;
   color: #fff;
@@ -212,9 +223,6 @@ export default {
   display: inline-block;
   padding: 0.2em 1em;
   font-size: 0.8em;
-}
-.kiwi-header .join-channel-button:hover{
-
 }
 
 .kiwi-header-close-buffersettings {
