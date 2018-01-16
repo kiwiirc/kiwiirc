@@ -350,12 +350,22 @@ export default {
     color:#A9D87A;
 }
 
+.fa-spinner{
+    font-size: 2em;
+    position: absolute;
+    top: 50%;
+    z-index: 999;
+    font-size: 100px;
+    margin-top: -0.5em;
+    left: 25%;
+    margin-left: -40px;
+}
+
 /** Smaller screen...**/
 @media screen and (max-width: 850px) {
     .kiwi-welcome-simple {
         font-size: 0.9em;
     }
-
     .kiwi-startbnc-section-connection {
         margin-top: 1em;
     }
@@ -370,29 +380,39 @@ export default {
         position: relative;
     }
     p.help{
-        position: static;
-        float:left;
+        position: absolute;
+        bottom:20px;
         width: 100%;
+        color:#fff;
+        z-index: 100;
     }
-
+    p.help a{
+        color: #fff;
+    }
     .kiwi-welcome-simple-section-info {
         border-width: 5px 0 0 0;
         min-height: 20px;
-        top:0;
+        bottom:0;
+        top:auto;
         z-index: 0;
         padding: 10% 1em;
+        position: absolute;
+        left:0;
+        width: 100%;
+        min-height: 100%;
     }
-}
 
-.fa-spinner{
-  font-size: 2em;
-  position: absolute;
-  top: 50%;
-  z-index: 999;
-  font-size: 100px;
-  margin-top: -0.5em;
-  left: 25%;
-  margin-left: -40px;
+    .fa-spinner{
+        position: absolute;
+        left: 48%;
+        top: 50%;
+        margin-top: -50px;
+        color: #fff;
+    }
+
+    .kiwi-welcome-simple-section-connection{
+      min-height: 400px;
+    }
 }
 
 /** Even smaller screen.. probably phones **/
@@ -402,7 +422,7 @@ export default {
         overflow-y: auto;
     }
 
-    .kiwi-welcome-simple-section {
+    .kiwi-welcome-simple-section-connection{
         left: 0;
         width: 100%;
         right: auto;
