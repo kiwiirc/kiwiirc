@@ -378,6 +378,7 @@ export default {
         margin: 15% auto 15% auto;
         z-index: 100;
         position: relative;
+        top:auto;
     }
     p.help{
         position: absolute;
