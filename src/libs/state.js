@@ -52,6 +52,7 @@ const stateObj = {
             show_emoticons: true,
             extra_formatting: true,
             mute_sound: false,
+            hide_message_counts: false,
             default_ban_mask: '*!%i@%h',
             default_kick_reason: 'Your behavior is not conducive to the desired environment.',
         },

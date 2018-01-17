@@ -42,7 +42,7 @@
                     <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">{{buffer.name}}</div>
                     <div class="kiwi-statebrowser-channel-labels">
                         <transition name="kiwi-statebrowser-channel-label-transition">
-                        <div v-if="buffer.flags.unread" class="kiwi-statebrowser-channel-label" :class="{'kiwi-statebrowser-channel-label--highlight': buffer.flags.highlight}">
+                        <div v-if="buffer.flags.unread && showMessageCounts(buffer)" class="kiwi-statebrowser-channel-label" :class="{'kiwi-statebrowser-channel-label--highlight': buffer.flags.highlight}">
                             {{buffer.flags.unread}}
                         </div>
                         </transition>
@@ -103,6 +103,9 @@ export default {
         BufferSettings,
     },
     methods: {
+        showMessageCounts: function showMessageCounts(buffer) {
+            return !buffer.setting('hide_message_counts');
+        },
         setActiveBuffer: function switchContainer(buffer) {
             // Clear any active component to show the buffer again
             state.$emit('active.component', null);
