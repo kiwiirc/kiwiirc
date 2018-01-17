@@ -398,7 +398,6 @@ export default {
         font-size: 0.9em;
         overflow-y: auto;
     }
-
     .kiwi-welcome-simple-section-connection{
         left: 0;
         width: 100%;
@@ -414,6 +413,12 @@ export default {
     }
     .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-info {
         left: -100%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .kiwi-welcome-simple-form {
+      width: 90%;
     }
 }
 </style>
