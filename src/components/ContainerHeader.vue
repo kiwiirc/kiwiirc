@@ -180,7 +180,7 @@ export default {
 }
 
 .kiwi-header-topic:hover{
-  height: auto;
+    height: auto;
 }
 
 .kiwi-header-notjoined {
@@ -199,30 +199,30 @@ export default {
 }
 
 .kiwi-header-topic{
-  display: inline-block;
+    display: inline-block;
 }
 
 .kiwi-header-options .u-button{
-  text-transform: uppercase;
-  font-size: 0.7em;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  padding: 0.5em 1.7em;
-  line-height: 2em;
-  border-radius: 0.4em;
+    text-transform: uppercase;
+    font-size: 0.7em;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    padding: 0.5em 1.7em;
+    line-height: 2em;
+    border-radius: 0.4em;
 }
 
 .kiwi-header .kiwi-header-join-channel-button{
-  background-color: #42b983;
-  border-radius: 0.3em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  line-height: inherit;
-  height: auto;
-  display: inline-block;
-  padding: 0.2em 1em;
-  font-size: 0.8em;
+    background-color: #42b983;
+    border-radius: 0.3em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    line-height: inherit;
+    height: auto;
+    display: inline-block;
+    padding: 0.2em 1em;
+    font-size: 0.8em;
 }
 
 .kiwi-header-close-buffersettings {

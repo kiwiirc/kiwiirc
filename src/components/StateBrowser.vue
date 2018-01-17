@@ -225,7 +225,7 @@ export default {
 }
 
 .kiwi-statebrowser-divider{
-  display:none;
+    display:none;
 }
 
 .kiwi-statebrowser-usermenu-body {
@@ -236,6 +236,7 @@ export default {
     border-bottom: 1px solid rgba(255,255,255,0.3);
     text-align: center;
 }
+
 .kiwi-statebrowser-usermenu-body p{
     padding: 0 1em 1em 1em;
     margin: 0;
@@ -262,7 +263,6 @@ export default {
     border: none;
 }
 
-
 .kiwi-statebrowser-switcher a {
     display: inline-block;
     width: 50%;
@@ -282,8 +282,6 @@ export default {
     overflow: auto;
     width: 100%;
     flex: 1;
-}
-.kiwi-statebrowser-networks {
 }
 .kiwi-statebrowser-network {
     margin-bottom: 2em;

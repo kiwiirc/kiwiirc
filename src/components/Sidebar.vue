@@ -209,12 +209,7 @@ export default {
         right: 0;
     }
 }
-.kiwi-sidebar--wide .kiwi-sidebar-buffersettings {
-    /*
-    animation-duration: 2s;
-    animation-name: settingstransition;
-    */
-}
+
 .kiwi-sidebar--wide .kiwi-nicklist {
     display: none;
 }
