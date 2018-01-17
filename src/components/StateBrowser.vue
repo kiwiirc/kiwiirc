@@ -352,4 +352,13 @@ export default {
     top: 5px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 600px){
+  .kiwi-container-toggledraw-statebrowser-messagecount{
+    width: 30px;
+    color: #000;
+    font-weight: 600;
+  }
+}
+
 </style>

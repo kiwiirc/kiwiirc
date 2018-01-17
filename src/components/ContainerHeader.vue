@@ -233,4 +233,15 @@ export default {
     margin-top: 1em;
 }
 
+@media screen and (max-width: 600px){
+  .kiwi-header{
+    padding: 0.6em 1.2em;
+  }
+
+  .kiwi-header-name{
+    line-height: 2.2em;
+    font-size: 1em;
+  }
+}
+
 </style>
