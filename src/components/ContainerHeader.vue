@@ -212,7 +212,7 @@ export default {
     border-radius: 0.4em;
 }
 
-.kiwi-header .kiwi-header-join-channel-button{
+.kiwi-header-join-channel-button{
     background-color: #42b983;
     border-radius: 0.3em;
     color: #fff;
