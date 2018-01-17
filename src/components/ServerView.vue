@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-serverview">
         <div class="kiwi-serverview-inner">
-            <tabbed-view :key="network.id" :start="getStartTab()">
+            <tabbed-view :key="network.id" name="serverTabs" :start="getStartTab()">
                 <tabbed-tab :header="'Messages'" :focus="hasMessages">
                     <message-list :buffer="serverBuffer" :messages="serverBuffer.getMessages()"></message-list>
                 </tabbed-tab>
@@ -51,7 +51,7 @@ export default {
     },
     watch: {
         'network.state': function watchNetworkState() {
-            state.$emit('tab.update');
+            state.$emit('tab.update', 'serverTabs');
         },
     },
 };

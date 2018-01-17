@@ -38,7 +38,7 @@ export default Vue.component('tabbed-view', {
             a: 1,
         };
     },
-    props: ['start'],
+    props: ['name', 'start'],
     computed: {
         tabs: function computedtabs() {
             return this.$children;
@@ -87,14 +87,18 @@ export default Vue.component('tabbed-view', {
     },
     mounted: function created() {
         this.setActiveCheck();
-        this.listen(state, 'tab.show', (name) => {
-            this.setActiveByName(name);
+        this.listen(state, 'tab.show', (viewName, tabName) => {
+            if (viewName === this.name) {
+                this.setActiveByName(tabName);
+            }
         });
-        this.listen(state, 'tab.update', () => {
-            this.$nextTick(function updateTabs() {
-                this.a++;
-                this.setActiveCheck();
-            });
+        this.listen(state, 'tab.update', (viewName) => {
+            if (viewName === this.name) {
+                this.$nextTick(function updateTabs() {
+                    this.a++;
+                    this.setActiveCheck();
+                });
+            }
         });
     },
 });

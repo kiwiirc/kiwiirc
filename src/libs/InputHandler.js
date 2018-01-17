@@ -602,7 +602,7 @@ inputCommands.list = function inputCommandList(event, command, line) {
         network.ircClient.raw('LIST');
     }
     if (this.state.getActiveBuffer() === network.serverBuffer()) {
-        this.state.$emit('tab.show', 'channels');
+        this.state.$emit('tab.show', 'serverTabs', 'channels');
     } else {
         network.serverBuffer().startTab = 'channels';
         this.state.setActiveBuffer(network.id, network.serverBuffer().name);
