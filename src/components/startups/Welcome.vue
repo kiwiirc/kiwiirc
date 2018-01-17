@@ -191,13 +191,11 @@ export default {
     height: 100%;
     text-align: center;
 }
-
 .kiwi-welcome-simple h2 {
     text-align: center;
     padding: 0;
     margin: 0.5em 0 1em 0;
 }
-
 .kiwi-welcome-simple-section {
     position: absolute;
     top: 0;
@@ -208,8 +206,6 @@ export default {
     transition: right 0.3s, left 0.3s;
     overflow-y: auto;
 }
-
-
 /** Right side */
 .kiwi-welcome-simple-section-info {
     right: 0;
@@ -231,8 +227,6 @@ export default {
     padding: 2em;
     line-height: 1.6em;
 }
-
-
 /** Left side */
 .kiwi-welcome-simple-error {
     text-align: center;
@@ -243,21 +237,18 @@ export default {
     display: block;
     font-style: italic;
 }
-
 .kiwi-welcome-simple-section-connection {
     left: 0;
     font-size: 1.2em;
     width: 100%;
     text-align: center;
 }
-
 .kiwi-welcome-simple-section-connection label {
     text-align: left;
     display: inline-block;
     margin-bottom: 0.8em;
     padding: 0 0.5em;
 }
-
 .kiwi-welcome-simple-section-connection input[type="text"] {
     font-size: 1em;
     margin-top: 5px;
@@ -265,33 +256,27 @@ export default {
     width: 100%;
     box-sizing: border-box;
 }
-
 .kiwi-welcome-simple .input-text{
     font-weight: 600;
     opacity:0.6;
     margin-bottom: 0.8em;
 }
-
 .kiwi-welcome-simple .kiwi-welcome-simple-have-password input,
 .kiwi-welcome-simple-have-password {
     font-size: 0.8em;
     margin: 0.8em 0;
 }
-
 .kiwi-welcome-simple-have-password,
 .kiwi-welcome-simple-password.input-text{
     margin-top: 0;
 }
-
 .kiwi-welcome-simple-start {
     font-size: 1.1em;
     cursor: pointer;
 }
-
 .kiwi-welcome-simple-start[disabled] {
     cursor: not-allowed;
 }
-
 .kiwi-welcome-simple-form {
     position: absolute;
     left:25%;
@@ -303,15 +288,12 @@ export default {
     padding: 1em;
     border:1px solid #ececec;
 }
-
 .kiwi-welcome-simple-form input{
     padding: 0.5em;
 }
-
 .kiwi-welcome-simple-channel{
     margin-bottom: 0.8em;
 }
-
 .kiwi-welcome-simple-form .u-submit{
     width: 100%;
     line-height: 50px;
@@ -325,7 +307,6 @@ export default {
     border:none;
     background-color: #86b32d;
 }
-
 /** Closing - the wiping away of the screen **/
 .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-connection {
     left: -50%;
@@ -333,7 +314,6 @@ export default {
 .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-info {
     right: -50%;
 }
-
 .help{
     position: absolute;
     bottom:0.2em;
@@ -349,7 +329,6 @@ export default {
 .help a:hover{
     color:#A9D87A;
 }
-
 .fa-spinner{
     font-size: 2em;
     position: absolute;
@@ -360,7 +339,6 @@ export default {
     left: 25%;
     margin-left: -40px;
 }
-
 /** Smaller screen...**/
 @media screen and (max-width: 850px) {
     .kiwi-welcome-simple {
@@ -402,7 +380,6 @@ export default {
         width: 100%;
         min-height: 100%;
     }
-
     .fa-spinner{
         position: absolute;
         left: 48%;
@@ -410,7 +387,6 @@ export default {
         margin-top: -50px;
         color: #fff;
     }
-
     .kiwi-welcome-simple-section-connection{
       min-height: 400px;
     }
@@ -429,11 +405,9 @@ export default {
         right: auto;
         position: relative;
     }
-
     .kiwi-welcome-simple-section-info-content {
         margin: 0.5em;
     }
-
     /** Closing - the wiping away of the screen **/
     .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-connection {
         left: -100%;
