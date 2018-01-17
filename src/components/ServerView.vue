@@ -18,6 +18,7 @@
 
 <script>
 
+import state from '@/libs/state';
 import MessageList from './MessageList';
 import NetworkSettings from './NetworkSettings';
 import ChannelList from './ChannelList';
@@ -46,6 +47,11 @@ export default {
             let tab = this.network.serverBuffer().startTab;
             this.network.serverBuffer().startTab = null;
             return tab;
+        },
+    },
+    watch: {
+        'network.state': function watchNetworkState() {
+            state.$emit('tab.update');
         },
     },
 };

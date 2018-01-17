@@ -45,6 +45,15 @@ export default Vue.component('tabbed-view', {
         },
     },
     methods: {
+        getActive: function getActive() {
+            for (let i = 0; i < this.$children.length; i++) {
+                let c = this.$children[i];
+                if (c.active === true) {
+                    return c;
+                }
+            }
+            return null;
+        },
         setActive: function setActive(c) {
             this.$children.forEach(child => {
                 if (child !== c) {
@@ -63,19 +72,29 @@ export default Vue.component('tabbed-view', {
                 }
             });
         },
+        setActiveCheck: function setActiveCheck() {
+            if (this.start) {
+                this.setActiveByName(this.start);
+            }
+            if (!this.getActive()) {
+                this.$children.forEach(t => {
+                    if (t.focus) {
+                        this.setActive(t);
+                    }
+                });
+            }
+        },
     },
     mounted: function created() {
-        if (this.start) {
-            this.setActiveByName(this.start);
-        } else {
-            this.$children.forEach(t => {
-                if (t.focus) {
-                    this.setActive(t);
-                }
-            });
-        }
+        this.setActiveCheck();
         this.listen(state, 'tab.show', (name) => {
             this.setActiveByName(name);
+        });
+        this.listen(state, 'tab.update', () => {
+            this.$nextTick(function updateTabs() {
+                this.a++;
+                this.setActiveCheck();
+            });
         });
     },
 });
