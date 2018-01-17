@@ -17,6 +17,8 @@
 
 <script>
 
+import state from '@/libs/state';
+
 let Vue = require('vue');
 
 Vue.component('tabbed-tab', {
@@ -24,7 +26,7 @@ Vue.component('tabbed-tab', {
     data: function data() {
         return { active: false };
     },
-    props: ['header', 'focus'],
+    props: ['header', 'focus', 'name'],
 });
 
 export default Vue.component('tabbed-view', {
@@ -36,6 +38,7 @@ export default Vue.component('tabbed-view', {
             a: 1,
         };
     },
+    props: ['start'],
     computed: {
         tabs: function computedtabs() {
             return this.$children;
@@ -53,12 +56,26 @@ export default Vue.component('tabbed-view', {
             // Without this, vue doesnt update itself with the new $children :(
             this.a++;
         },
+        setActiveByName: function setActiveByName(name) {
+            this.$children.forEach(t => {
+                if (t.name === name) {
+                    this.setActive(t);
+                }
+            });
+        },
     },
     mounted: function created() {
-        this.$children.forEach(t => {
-            if (t.focus) {
-                this.setActive(t);
-            }
+        if (this.start) {
+            this.setActiveByName(this.start);
+        } else {
+            this.$children.forEach(t => {
+                if (t.focus) {
+                    this.setActive(t);
+                }
+            });
+        }
+        this.listen(state, 'tab.show', (name) => {
+            this.setActiveByName(name);
         });
     },
 });
