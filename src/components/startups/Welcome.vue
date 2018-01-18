@@ -80,13 +80,13 @@ export default {
             let style = {};
             let options = state.settings.startupOptions;
 
-            if(window.innerWidth > 850){
-              if (options.infoBackground) {
-                  style['background-image'] = `url(${options.infoBackground})`;
-              } else {
-                  style['background-color'] = '#333333';
-              }
-            }else{
+            if (window.innerWidth > 850) {
+                if (options.infoBackground) {
+                    style['background-image'] = `url(${options.infoBackground})`;
+                } else {
+                    style['background-color'] = '#333333';
+                }
+            } else {
                 style['background-color'] = '#333333';
             }
             return style;
@@ -96,12 +96,12 @@ export default {
             let style = {};
             let options = state.settings.startupOptions;
 
-            if(window.innerWidth < 850){
-              if (options.infoBackground) {
-                  style['background-image'] = `url(${options.infoBackground})`;
-              } else {
-                  style['background-color'] = '#333333';
-              }
+            if (window.innerWidth < 850) {
+                if (options.infoBackground) {
+                    style['background-image'] = `url(${options.infoBackground})`;
+                } else {
+                    style['background-color'] = '#333333';
+                }
             }
             return style;
         },
