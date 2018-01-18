@@ -24,7 +24,7 @@
                 <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
             </template>
           </div>
-          <p class='help'>Need help? Visit <a href="https://kiwiirc.com/docs/" target="_blank" alt="The Kiwi Docs">The Kiwi Docs</a>.</p>
+          <p class='help'></p>
           <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-info" :style="infoStyle">
              <div class="kiwi-welcome-simple-section-info-content" v-if="infoContent" v-html="infoContent"></div>
          </div>
