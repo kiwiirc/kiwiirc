@@ -169,6 +169,7 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition: width 0.3s;
 }
 
 .kiwi-sidebar--wide {
@@ -193,8 +194,23 @@ export default {
 
 .kiwi-sidebar-options {
     display: block;
-    margin: 1em;
     cursor: pointer;
+    border-bottom: 1px solid #dddddd;
+    text-align: center;
+    padding: 0;
+    line-height: normal;
+    text-transform: uppercase;
+    padding: 1.15em 0;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+.kiwi-sidebar-options:hover i ,
+.kiwi-sidebar-options:hover {
+    color:#42b983;
+}
+
+.kiwi-sidebar--wide .kiwi-sidebar-options {
+    text-align: left;
 }
 
 .kiwi-sidebar-buffersettings {

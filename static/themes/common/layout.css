@@ -350,6 +350,7 @@ div {
 .kiwi-container-toggledraw-statebrowser {
 }
 .kiwi-container-toggledraw-sidebar {
+
 }
 .kiwi-container-toggledraw-sidebar--disabled {
     cursor: default;
@@ -366,7 +367,7 @@ div {
 }
 .kiwi-sidebar-options {
     border-bottom: 1px solid #dddddd;
-    padding: 0 0 1em 0;
+    padding: 1.15em 0;
     text-align: center;
 }
 .kiwi-sidebar-options i {
@@ -375,9 +376,7 @@ div {
 .kiwi-sidebar-options:hover i {
     margin-left: 1em;
 }
-.kiwi-sidebar--wide .kiwi-sidebar-options {
-    text-align: left;
-}
+
 
 
 
