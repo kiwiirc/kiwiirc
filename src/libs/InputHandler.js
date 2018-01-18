@@ -594,6 +594,20 @@ inputCommands.echo = function inputCommandEcho(event, command, line) {
     });
 };
 
+inputCommands.list = function inputCommandList(event, command, line) {
+    event.handled = true;
+    let network = this.state.getActiveNetwork();
+    if (!network.channel_list.length && network.channel_list_state !== 'updating') {
+        network.channel_list_state = 'updating';
+        network.ircClient.raw('LIST');
+    }
+    if (this.state.getActiveBuffer() === network.serverBuffer()) {
+        this.state.$emit('tab.show', 'serverTabs', 'channels');
+    } else {
+        network.serverBuffer().startTab = 'channels';
+        this.state.setActiveBuffer(network.id, network.serverBuffer().name);
+    }
+};
 
 inputCommands.server = function inputCommandServer(event, command, line) {
     event.handled = true;

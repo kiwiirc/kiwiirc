@@ -17,6 +17,8 @@
 
 <script>
 
+import state from '@/libs/state';
+
 let Vue = require('vue');
 
 Vue.component('tabbed-tab', {
@@ -24,7 +26,7 @@ Vue.component('tabbed-tab', {
     data: function data() {
         return { active: false };
     },
-    props: ['header', 'focus'],
+    props: ['header', 'focus', 'name'],
 });
 
 export default Vue.component('tabbed-view', {
@@ -36,12 +38,22 @@ export default Vue.component('tabbed-view', {
             a: 1,
         };
     },
+    props: ['name', 'start'],
     computed: {
         tabs: function computedtabs() {
             return this.$children;
         },
     },
     methods: {
+        getActive: function getActive() {
+            for (let i = 0; i < this.$children.length; i++) {
+                let c = this.$children[i];
+                if (c.active === true) {
+                    return c;
+                }
+            }
+            return null;
+        },
         setActive: function setActive(c) {
             this.$children.forEach(child => {
                 if (child !== c) {
@@ -53,11 +65,39 @@ export default Vue.component('tabbed-view', {
             // Without this, vue doesnt update itself with the new $children :(
             this.a++;
         },
+        setActiveByName: function setActiveByName(name) {
+            this.$children.forEach(t => {
+                if (t.name === name) {
+                    this.setActive(t);
+                }
+            });
+        },
+        setActiveCheck: function setActiveCheck() {
+            if (this.start) {
+                this.setActiveByName(this.start);
+            }
+            if (!this.getActive()) {
+                this.$children.forEach(t => {
+                    if (t.focus) {
+                        this.setActive(t);
+                    }
+                });
+            }
+        },
     },
     mounted: function created() {
-        this.$children.forEach(t => {
-            if (t.focus) {
-                this.setActive(t);
+        this.setActiveCheck();
+        this.listen(state, 'tab.show', (viewName, tabName) => {
+            if (viewName === this.name) {
+                this.setActiveByName(tabName);
+            }
+        });
+        this.listen(state, 'tab.update', (viewName) => {
+            if (viewName === this.name) {
+                this.$nextTick(function updateTabs() {
+                    this.a++;
+                    this.setActiveCheck();
+                });
             }
         });
     },
