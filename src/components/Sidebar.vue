@@ -264,4 +264,10 @@ export default {
   to   { height: 100%; }
 }
 
+@media screen and (max-width: 600px){
+  .u-tabbed-view-tabs .u-tabbed-view-tab{
+    width: 100%;
+  }
+}
+
 </style>
