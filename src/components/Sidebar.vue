@@ -4,7 +4,7 @@
             <template v-if="buffer.isChannel()">
 
                 <span v-if="sidebarIsWide" class="kiwi-sidebar-options" @click="sidebarIsWide=false">
-                    {{$t('close')}} <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    <i class="fa fa-caret-left" aria-hidden="true"></i> {{$t('close')}} 
                 </span>
                 <span v-else class="kiwi-sidebar-options" @click="settings_open = !settings_open">
                     <i class="fa fa-cog" aria-hidden="true"></i> {{$t('side_options')}}

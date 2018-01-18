@@ -106,6 +106,7 @@ div {
 .u-tabbed-content {
     padding-top: 10px;
     overflow: auto;
+    padding: 1em;
     height: 100%;
 }
 @media screen and (max-width: 500px) {
@@ -376,7 +377,9 @@ div {
 .kiwi-sidebar-options:hover i {
     margin-left: 1em;
 }
-
+.kiwi-sidebar--wide .kiwi-sidebar-options {
+    text-align:center;
+}
 
 
 
