@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2018-01-18 01:31-0500\n"
+"PO-Revision-Date: 2018-01-18 05:32-0500\n"
 
 #: Start
 msgid "start_button"
@@ -235,7 +235,7 @@ msgstr "Deshabilitar el so"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr ""
+msgstr "Amagar comptador de missatges no llegits"
 
 #: Operator tools
 msgid "operator_tools"
