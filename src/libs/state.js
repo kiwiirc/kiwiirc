@@ -745,7 +745,9 @@ const state = new Vue({
             }
 
             if (isActiveBuffer) {
-                this.setActiveBuffer(network.id, network.serverBuffer().name);
+                let target = (network.buffers.length > 1) ?
+                    network.buffers[1].name : network.serverBuffer().name;
+                this.setActiveBuffer(network.id, target);
             }
 
             // Remove this buffer from any users
