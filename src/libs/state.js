@@ -1063,6 +1063,16 @@ function initialiseNetworkState(network) {
             return chanPrefixes.indexOf(input[0]) > -1;
         },
     });
+    Object.defineProperty(network, 'showServerBuffer', {
+        value: function showServerBuffer(tabName) {
+            state.setActiveBuffer(network.id, network.serverBuffer().name);
+            // Hacky, but the server buffer component listens for events to switch
+            // between tabs
+            setImmediate(() => {
+                state.$emit('server.tab.show', tabName || 'settings');
+            });
+        },
+    });
 
     // If this network is being imported from a stored state, make sure it is
     // now set as 'disconnected' as it will not connected at this point.

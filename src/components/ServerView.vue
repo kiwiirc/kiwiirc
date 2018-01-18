@@ -1,14 +1,14 @@
 <template>
     <div class="kiwi-serverview">
         <div class="kiwi-serverview-inner">
-            <tabbed-view :key="network.id">
-                <tabbed-tab :header="'Messages'" :focus="hasMessages">
+            <tabbed-view :key="network.id" :activeTab="activeTab">
+                <tabbed-tab :header="'Messages'" :focus="hasMessages" name="messages">
                     <message-list :buffer="serverBuffer" :messages="serverBuffer.getMessages()"></message-list>
                 </tabbed-tab>
-                <tabbed-tab :header="$t('settings')" :focus="!hasMessages">
+                <tabbed-tab :header="$t('settings')" :focus="!hasMessages" name="settings">
                     <network-settings :network="network"></network-settings>
                 </tabbed-tab>
-                <tabbed-tab :header="$t('channels')" v-if="network.state==='connected'">
+                <tabbed-tab :header="$t('channels')" v-if="network.state==='connected'" name="channels">
                     <channel-list :network="network"></channel-list>
                 </tabbed-tab>
             </tabbed-view>
@@ -18,6 +18,7 @@
 
 <script>
 
+import state from '@/libs/state';
 import MessageList from './MessageList';
 import NetworkSettings from './NetworkSettings';
 import ChannelList from './ChannelList';
@@ -25,6 +26,7 @@ import ChannelList from './ChannelList';
 export default {
     data: function data() {
         return {
+            activeTab: '',
         };
     },
     props: ['network'],
@@ -40,6 +42,16 @@ export default {
         serverBuffer: function serverBuffer() {
             return this.network.serverBuffer();
         },
+    },
+    methods: {
+        showTab(tabName) {
+            this.activeTab = tabName;
+        },
+    },
+    created() {
+        this.listen(state, 'server.tab.show', tabName => {
+            this.showTab(tabName);
+        });
     },
 };
 </script>
