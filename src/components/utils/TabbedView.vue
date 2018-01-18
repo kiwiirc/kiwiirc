@@ -24,7 +24,7 @@ Vue.component('tabbed-tab', {
     data: function data() {
         return { active: false };
     },
-    props: ['header', 'focus'],
+    props: ['header', 'focus', 'name'],
 });
 
 export default Vue.component('tabbed-view', {
@@ -36,12 +36,23 @@ export default Vue.component('tabbed-view', {
             a: 1,
         };
     },
+    props: ['activeTab'],
     computed: {
         tabs: function computedtabs() {
             return this.$children;
         },
     },
     methods: {
+        getActive: function getActive() {
+            let foundChild = null;
+            this.$children.forEach(child => {
+                if (child.active) {
+                    foundChild = child;
+                }
+            });
+
+            return foundChild;
+        },
         setActive: function setActive(c) {
             this.$children.forEach(child => {
                 if (child !== c) {
@@ -53,13 +64,32 @@ export default Vue.component('tabbed-view', {
             // Without this, vue doesnt update itself with the new $children :(
             this.a++;
         },
+        setActiveByName: function setActiveByName(name) {
+            this.$children.forEach(child => {
+                if (child.name === name) {
+                    this.setActive(child);
+                }
+            });
+        },
+        setActiveCheck: function setActiveCheck() {
+            if (this.activeTab) {
+                this.setActiveByName(this.activeTab);
+            } else {
+                this.$children.forEach(t => {
+                    if (t.focus) {
+                        this.setActive(t);
+                    }
+                });
+            }
+        },
     },
     mounted: function created() {
-        this.$children.forEach(t => {
-            if (t.focus) {
-                this.setActive(t);
-            }
-        });
+        this.setActiveCheck();
+    },
+    watch: {
+        activeTab(newVal) {
+            this.setActiveCheck();
+        },
     },
 });
 </script>

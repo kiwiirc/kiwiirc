@@ -52,6 +52,7 @@ const stateObj = {
             show_emoticons: true,
             extra_formatting: true,
             mute_sound: false,
+            hide_message_counts: false,
             default_ban_mask: '*!%i@%h',
             default_kick_reason: 'Your behavior is not conducive to the desired environment.',
         },
@@ -496,6 +497,7 @@ const state = new Vue({
         },
 
         resetState: function resetState() {
+            this.$set(this.$data, 'user_settings', []);
             this.$set(this.$data, 'networks', []);
             messages.splice(0);
         },
@@ -796,8 +798,8 @@ const state = new Vue({
 
             // Handle any notifications
             let settingAlertOn = buffer.setting('alert_on');
-            let isOurJoin = message.type === 'traffic' && message.nick === network.nick;
-            if (isNewMessage && settingAlertOn !== 'never' && !isOurJoin) {
+            let isSelf = message.nick === network.nick;
+            if (isNewMessage && settingAlertOn !== 'never' && !isSelf) {
                 let notifyTitle = '';
                 let notifyMessage = message.nick ?
                     message.nick + ': ' :
@@ -1119,6 +1121,16 @@ function initialiseNetworkState(network) {
 
             let chanPrefixes = this.ircClient.network.supports('CHANTYPES') || '#&';
             return chanPrefixes.indexOf(input[0]) > -1;
+        },
+    });
+    Object.defineProperty(network, 'showServerBuffer', {
+        value: function showServerBuffer(tabName) {
+            state.setActiveBuffer(network.id, network.serverBuffer().name);
+            // Hacky, but the server buffer component listens for events to switch
+            // between tabs
+            setImmediate(() => {
+                state.$emit('server.tab.show', tabName || 'settings');
+            });
         },
     });
 

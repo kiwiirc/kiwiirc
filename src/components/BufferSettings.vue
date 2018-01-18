@@ -20,6 +20,10 @@
                     <span>{{$t('settings_notify_mute')}}</span>
                     <input type="checkbox" v-model="settingMuteSound">
                 </label><br />
+                <label>
+                    <span>{{$t('settings_show_message_counts')}}</span>
+                    <input type="checkbox" v-model="settingHideMessageCount">
+                </label><br />
             </form>
         </div>
     </div>
@@ -50,6 +54,14 @@ export default {
             },
             set: function setSettingAlertOn(val) {
                 return this.buffer.setting('mute_sound', val);
+            },
+        },
+        settingHideMessageCount: {
+            get: function getsettingHideMessageCount() {
+                return this.buffer.setting('hide_message_counts');
+            },
+            set: function setsettingHideMessageCount(val) {
+                return this.buffer.setting('hide_message_counts', val);
             },
         },
     },
