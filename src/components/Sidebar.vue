@@ -242,6 +242,10 @@ export default {
     height: 100%;
 }
 
+.kiwi-sidebar-buffersettings .u-tabbed-content{
+  padding: 1em;
+}
+
 .kiwi-sidebar-settings label {
     display: block;
 }
