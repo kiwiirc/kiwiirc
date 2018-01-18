@@ -738,8 +738,8 @@ const state = new Vue({
 
             // Handle any notifications
             let settingAlertOn = buffer.setting('alert_on');
-            let isOurJoin = message.type === 'traffic' && message.nick === network.nick;
-            if (isNewMessage && settingAlertOn !== 'never' && !isOurJoin) {
+            let isSelf = message.nick === network.nick;
+            if (isNewMessage && settingAlertOn !== 'never' && !isSelf) {
                 let notifyTitle = '';
                 let notifyMessage = message.nick ?
                     message.nick + ': ' :
