@@ -68,10 +68,20 @@ export function userModePrefix(user, buffer) {
 
     let network = buffer.getNetwork();
     let netPrefixes = network.ircClient.network.options.PREFIX;
-    let prefix = _.find(netPrefixes, { mode: modes[0] });
-    return prefix ?
-        prefix.symbol :
-        '';
+
+    // find the highest ranking user mode
+    // some users may have been given voice and op
+    for (let p in netPrefixes) {
+        if (netPrefixes[p]) {
+            for (let m in modes) {
+                if (modes[m] && netPrefixes[p].mode === modes[m]) {
+                    return netPrefixes[p].symbol;
+                }
+            }
+        }
+    }
+
+    return '';
 }
 
 
@@ -83,9 +93,26 @@ export function userMode(user, buffer) {
     }
 
     let modes = user.buffers[buffer.id].modes;
-    return modes.length === 0 ?
-        '' :
-        modes[0];
+    if (modes.length === 0) {
+        return '';
+    }
+
+    let network = buffer.getNetwork();
+    let netPrefixes = network.ircClient.network.options.PREFIX;
+
+    // find the highest ranking user mode
+    // some users may have been given voice and op
+    for (let p in netPrefixes) {
+        if (netPrefixes[p]) {
+            for (let m in modes) {
+                if (modes[m] && netPrefixes[p].mode === modes[m]) {
+                    return modes[m];
+                }
+            }
+        }
+    }
+
+    return '';
 }
 
 
