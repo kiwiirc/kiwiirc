@@ -1,3 +1,18 @@
+msgid ""
+msgstr ""
+"Start\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Language: hu\n"
+"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"Project-Id-Version: kiwiirc\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Language-Team: Hungarian\n"
+"Language: hu_HU\n"
+"PO-Revision-Date: 2018-01-18 01:31-0500\n"
+
 #: Start
 msgid "start_button"
 msgstr ""
@@ -216,6 +231,10 @@ msgstr ""
 
 #: Mute sounds
 msgid "settings_notify_mute"
+msgstr ""
+
+#: Hide unread message count
+msgid "settings_show_message_counts"
 msgstr ""
 
 #: Operator tools
