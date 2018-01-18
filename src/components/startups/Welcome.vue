@@ -405,12 +405,6 @@ export default {
         font-size: 0.9em;
         overflow-y: auto;
     }
-    .kiwi-welcome-simple-section-connection{
-        left: 0;
-        width: 100%;
-        right: auto;
-        position: relative;
-    }
     .kiwi-welcome-simple-section-info-content {
         margin: 0.5em;
     }
