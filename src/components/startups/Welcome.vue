@@ -192,6 +192,7 @@ export default {
     text-align: center;
 }
 .kiwi-welcome-simple h2 {
+    font-size: 1.7em;
     text-align: center;
     padding: 0;
     margin: 0.5em 0 1em 0;
@@ -263,6 +264,7 @@ export default {
 .kiwi-welcome-simple .input-text{
     font-weight: 600;
     opacity:0.6;
+    font-size: 1.2em;
     margin-bottom: 0.8em;
 }
 .kiwi-welcome-simple .kiwi-welcome-simple-have-password input,
@@ -332,13 +334,13 @@ export default {
 
 /* Styling the preloader */
 .kiwi-welcome-simple .fa-spinner{
-    font-size: 2em;
+    font-size: 1.5em;
     position: absolute;
     top: 50%;
     z-index: 999;
     font-size: 100px;
     margin-top: -0.5em;
-    left: 25%;
+    left: 50%;
     margin-left: -40px;
 }
 /** Smaller screen...**/
