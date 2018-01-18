@@ -1,3 +1,18 @@
+msgid ""
+msgstr ""
+"Start\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Language: bs\n"
+"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"Project-Id-Version: kiwiirc\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Language-Team: Bosnian\n"
+"Language: bs_BA\n"
+"PO-Revision-Date: 2018-01-18 01:31-0500\n"
+
 #: Start
 msgid "start_button"
 msgstr "Start"
@@ -217,6 +232,10 @@ msgstr "Nikad"
 #: Mute sounds
 msgid "settings_notify_mute"
 msgstr "Utišaj zvukove"
+
+#: Hide unread message count
+msgid "settings_show_message_counts"
+msgstr ""
 
 #: Operator tools
 msgid "operator_tools"
