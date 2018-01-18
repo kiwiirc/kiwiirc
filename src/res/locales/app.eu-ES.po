@@ -1,3 +1,18 @@
+msgid ""
+msgstr ""
+"Start\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Language: eu\n"
+"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"Project-Id-Version: kiwiirc\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Language-Team: Basque\n"
+"Language: eu_ES\n"
+"PO-Revision-Date: 2018-01-18 01:31-0500\n"
+
 #: Start
 msgid "start_button"
 msgstr "Hasi"
@@ -76,11 +91,11 @@ msgstr "Sartzen..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Egiaztagiri baliogabeak"
+msgstr "Sarbide hutsegitea"
 
 #: Search...
 msgid "do_search"
-msgstr "Bilatzea..."
+msgstr "Bilatu..."
 
 #: OK
 msgid "ok"
@@ -88,19 +103,19 @@ msgstr "Ados"
 
 #: Cancel
 msgid "cancel"
-msgstr "Ezeztatzea"
+msgstr "Utzi"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "KiwiIRC-elkarrizketa guztiak itxiko dira. Segurua leiho hau itxi nahi duzula?"
+msgstr "KiwiIRC-elkarrizketa guztiak itxiko dira. Lehio hau itxi nahi duzu?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Izen erreala"
+msgstr "Benetako izena"
 
 #: Status
 msgid "whois_status"
-msgstr "Estatua"
+msgstr "Egoera"
 
 #: Is available
 msgid "whois_status_available"
@@ -108,7 +123,7 @@ msgstr "Libre dago"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Mezua bidaltzen du"
+msgstr "Bidali mezu bat"
 
 #: More information
 msgid "more_information"
@@ -116,7 +131,7 @@ msgstr "Informazio gehiago"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Erabiltzaileari ezikusiarena egitea"
+msgstr "Erabiltzailea ezikusiarena egin"
 
 #: Channel
 msgid "connection_channel"
@@ -132,19 +147,19 @@ msgstr "Gaia"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Gaiko URL-a"
+msgstr "Gaiaren URL-a"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Monospace iturria erabiltzea"
+msgstr "Monospace iturria erabili"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "IRC-a diseinu tradizionala"
+msgstr "IRC ohiko diseinua"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Zerrenda autoosatuta erakustea"
+msgstr "Zerrenda autoosatuta erakutsi"
 
 #: Chat Messages
 msgid "settings_messages_title"
@@ -156,39 +171,39 @@ msgstr "Ordua erakutsi"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Formatuko ordua 24 ordu erakustea"
+msgstr "24 orduko formatua erabili"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Begitarteak erakustea"
+msgstr "Emotikonoak erakutsi"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Mezu pribatu berriak blokeatzea"
+msgstr "Mezu pribatu berriak blokeatu"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Historikoko mezuak"
+msgstr "Aurreko mezuak"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Formateatze estra"
+msgstr "Formato gehigarriak"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Ezizena mezuetan koloratzea"
+msgstr "Ezizena mezuetan kolorea eman"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Sarrerako eta jarduera bezala irteerako mezuak sartzea"
+msgstr "Jasotako eta bidalitako mezuak ekintza gisa sartu"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Jakinarazpenak isiltzea"
+msgstr "Jakinarazpenak isildu"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Nabarmentzeko hitzak (banan itzazu espazioarekin) "
+msgstr "Nabarmendu hitzak (banatu  espazioekin) "
 
 #: Aliases
 msgid "settings_aliases"
@@ -196,11 +211,11 @@ msgstr "Ezizena"
 
 #: Send Message
 msgid "send_message"
-msgstr "Mezua bidaltzea"
+msgstr "Mezua bidali"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Ni jakinaraztea noiz"
+msgstr "Noiz jakinarazi niri"
 
 #: All messages
 msgid "settings_notify_all"
@@ -217,6 +232,10 @@ msgstr "Inoiz"
 #: Mute sounds
 msgid "settings_notify_mute"
 msgstr "Soinuak kendu"
+
+#: Hide unread message count
+msgid "settings_show_message_counts"
+msgstr ""
 
 #: Operator tools
 msgid "operator_tools"
@@ -276,11 +295,11 @@ msgstr "Ongi Etorria Kiwi IRC-ra! Ezkerreko kanal bat aukeratu."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Nabigatzailearen barra estatu erakustea"
+msgstr "Nabigatzailearen barra egoera erakutsi"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Kanal batean sartzea"
+msgstr "Kanal batean sartu"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -288,23 +307,23 @@ msgstr "Deskonektatuta"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Elkarrizketa pribatua {{user}}"
+msgstr "Elkarrizketa pribatua {{user}}-rekin"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Mezua bidaltzea..."
+msgstr "Mezua bidali..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Kargatuz {{url}}..."
+msgstr "{{url}}-a kargatzen"
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Aurreko mezuak kargatzea"
+msgstr "Aurreko mezuak kargatzen"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Mezuak irakurri gabe"
+msgstr "Irakurri gabeko mezuak"
 
 #: Server details
 msgid "settings_server_details"
@@ -312,11 +331,11 @@ msgstr "Zerbitzariaren xehetasunak"
 
 #: Port
 msgid "settings_port"
-msgstr "Portua"
+msgstr "Ataka"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Sare-zerrendan ZNC-a kontu honetako beste sare batzuk zerrendatuko dira"
+msgstr "ZNC kontu honetako sareak zerrenda sarean ikusiko dira"
 
 #: Your details
 msgid "settings_your_details"
@@ -336,7 +355,7 @@ msgstr "Kodifikazioa"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Jatorrizkoa erakustea"
+msgstr "Jatorria erakutsi"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -344,31 +363,31 @@ msgstr "Komandoak exekutatzen ditu konektatzerakoan"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Arrisku-zona"
+msgstr "Arrisku-gunea"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Sarea ezabatzea"
+msgstr "Sarea ezabatu"
 
 #: {{count}} person here
 msgid "person"
-msgstr "Hemen {{count}} erabiltzaile"
+msgstr "Hemen {{count}} erabiltzailea"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "Hemen {{count}} erabiltzaile"
+msgstr "Hemen {{count}} erabiltzaileak"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Sartzeko birkonektatzea {{channel}}"
+msgstr "{{channel}}-ean birkonektatu"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Txateatzen hasteko {{network}} birkonektatzea"
+msgstr "Txateatzen hasteko {{network}} birkonektatu"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Hitz egiten jarraitzeko birkonektatzea  {{user}}"
+msgstr "Birkonektatu  {{user}}-rekin hitz egiten jarraitzeko"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -376,19 +395,19 @@ msgstr "Konexioaren konfigurazioa"
 
 #: Close options
 msgid "side_close"
-msgstr "Aukerak ixtea"
+msgstr "Aukerak itxi"
 
 #: Channel options
 msgid "side_options"
-msgstr "Kanalaren aukerak"
+msgstr "Kanalaren ezarpenak"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Zure konfigurazioa"
+msgstr "Zure ezarpenak"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Jendea sartzen denean kanala erakustea"
+msgstr "Jendea sartzen denean kanala erakutsi"
 
 #: Show when channel topic changes
 msgid "side_topics"
@@ -404,19 +423,19 @@ msgstr "Erakutsi erabiltzaileek kanalaren aukerak aldatzerakoan"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Mezuen formatua emate estra"
+msgstr "Mezuen estrari formatua eman"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Ezizena zerrendan koloratzea"
+msgstr "Ezizenen zerrenda kolorekin"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "Itxuratutako bufferrik ez dago"
+msgstr "Bufferra ez dago konfiguratuta"
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "Akatsa Kiwi IRC-i irakatsiz egon da :("
+msgstr "Akatsa bat egon da Kiwi IRC-i hasterakoan :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
@@ -448,7 +467,7 @@ msgstr "Bat gehitu nahi duzu?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Sare libreak"
+msgstr "Sare erabilgarriak"
 
 #: Configure network
 msgid "state_configure"
@@ -492,11 +511,11 @@ msgstr "{{server}}ra Konektatuta {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Era seguruan SSL/TLS-arekin konektatuta"
+msgstr "Era seguruan SSL/TLS-rekin konektatuta"
 
 #: Also in channels {{channels}}
 msgid "user_channels"
-msgstr "Aretoetan ere dago {{channels}}"
+msgstr "Baita {{channels}} kanaletan dago"
 
 #: Access level
 msgid "user_access"
@@ -508,15 +527,15 @@ msgstr "Normala"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Kanaletik botatzea"
+msgstr "Kanaletik botata"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Kanaleko blokeatzea"
+msgstr "Kanalean blokeatuta"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Kanaleko Botatzea + Blokeatzea"
+msgstr "Kanaletik Botata + Blokeatuta"
 
 #: Your IRC client
 msgid "personal_client"
@@ -524,7 +543,7 @@ msgstr "Zure IRC-bezeroa"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Zure sareak gehitzen ditu. Zure kanaletan sartzen da."
+msgstr "Zure sareak gehitu. Zure kanaletan sartu."
 
 #: They will be here when you come back.
 msgid "personal_return"
@@ -532,7 +551,7 @@ msgstr "Hemen egongo dira itzultzen zarenean."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Sare bat gehitzen du"
+msgstr "Sare bat gehitu"
 
 #: Saved networks
 msgid "personal_saved"
@@ -540,17 +559,17 @@ msgstr "Gordetako sareak"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (sorkuntza berria) - Rizon Aurrebista"
+msgstr "Kiwi IRC (berria) - Rizon Aurrebista"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Zuzeneko Websocket. Kiwi zerbitzaririk ez webirc-ik gabe."
+msgstr "Zuzeneko Websocketak. Kiwi zerbitzaririk ez webirc-rik gabe."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(@Rizon Adam-i esker websockets-zerbitzariaren euskarriaren garapenagatiko!)"
+msgstr "(@Rizon Adam-i esker websockets-zerbitzariaren euskarria)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Bertsioa probatzen du Kiwi IRC-aren garapenean!"
+msgstr "Kiwi IRC-ren garapen bertsioan probatu!"
 
