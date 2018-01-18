@@ -21,7 +21,7 @@ export default class ConfigLoader {
                 try {
                     configObj = JSON.parse(response.body);
                 } catch (parseErr) {
-                    log.error('Config file: ' + parseErr.stack);
+                    log.error('Config ' + parseErr.message);
                     reject();
                     return;
                 }
