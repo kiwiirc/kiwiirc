@@ -19,7 +19,6 @@
                     <tabbed-view>
                         <tabbed-tab :header="$t('settings')" :focus="true">
                             <channel-info v-bind:buffer="buffer"></channel-info>
-
                             <div class="kiwi-sidebar-settings">
                                 <h3>{{$t('side_settings')}}</h3>
                                 <label><input type="checkbox" v-model="settingShowJoinParts"> {{$t('side_joins')}}</label>
@@ -245,6 +244,15 @@ export default {
 
 .kiwi-sidebar-settings label {
     display: block;
+}
+
+.u-tabbed-view-tabs .u-tabbed-view-tab{
+    width: 33.3%;
+    box-sizing: border-box;
+    padding: 1em;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 @keyframes settingstransition {
