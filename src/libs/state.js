@@ -437,6 +437,7 @@ const state = new Vue({
         },
 
         resetState: function resetState() {
+            this.$set(this.$data, 'user_settings', []);
             this.$set(this.$data, 'networks', []);
             messages.splice(0);
         },
