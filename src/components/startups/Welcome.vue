@@ -206,6 +206,15 @@ export default {
     transition: right 0.3s, left 0.3s;
     overflow-y: auto;
 }
+
+.kiwi-welcome-simple-section-connection{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 /** Right side */
 .kiwi-welcome-simple-section-info {
     right: 0;
@@ -237,12 +246,7 @@ export default {
     display: block;
     font-style: italic;
 }
-.kiwi-welcome-simple-section-connection {
-    left: 0;
-    font-size: 1.2em;
-    width: 100%;
-    text-align: center;
-}
+
 .kiwi-welcome-simple-section-connection label {
     text-align: left;
     display: inline-block;
@@ -278,11 +282,7 @@ export default {
     cursor: not-allowed;
 }
 .kiwi-welcome-simple-form {
-    position: absolute;
-    left:25%;
-    top:50%;
     width: 300px;
-    margin: -161px auto 0 -150px;
     background-color: #fff;
     border-radius: 0.5em;
     padding: 1em;
@@ -314,7 +314,7 @@ export default {
 .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-info {
     right: -50%;
 }
-.help{
+.kiwi-welcome-simple .help{
     position: absolute;
     bottom:0.2em;
     font-size: 0.8em;
@@ -322,14 +322,16 @@ export default {
     width: 50%;
     text-align: center;
 }
-.help a{
+.kiwi-welcome-simple .help a{
     text-decoration: underline;
     color:#666;
 }
-.help a:hover{
+.kiwi-welcome-simple .help a:hover{
     color:#A9D87A;
 }
-.fa-spinner{
+
+/* Styling the preloader */
+.kiwi-welcome-simple .fa-spinner{
     font-size: 2em;
     position: absolute;
     top: 50%;
@@ -347,6 +349,9 @@ export default {
     .kiwi-startbnc-section-connection {
         margin-top: 1em;
     }
+    .kiwi-welcome-simple-section-connection{
+      width: 100%;
+    }
     .kiwi-welcome-simple-section-info-content {
         margin: 1em;
     }
@@ -358,14 +363,14 @@ export default {
         position: relative;
         top:auto;
     }
-    p.help{
+    .kiwi-welcome-simple p.help{
         position: absolute;
         bottom:20px;
         width: 100%;
         color:#fff;
         z-index: 100;
     }
-    p.help a{
+    .kiwi-welcome-simple p.help a{
         color: #fff;
     }
     .kiwi-welcome-simple-section-info {
