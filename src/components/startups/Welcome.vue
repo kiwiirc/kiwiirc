@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-welcome-simple" :class="[closing ? 'kiwi-welcome-simple--closing' : '']">
+    <div class="kiwi-welcome-simple" :class="[closing ? 'kiwi-welcome-simple--closing' : '']" :style="infoStyleMobile">
         <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-connection">
             <template v-if="!network || network.state === 'disconnected'">
                 <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-simple-form">
@@ -80,10 +80,28 @@ export default {
             let style = {};
             let options = state.settings.startupOptions;
 
-            if (options.infoBackground) {
-                style['background-image'] = `url(${options.infoBackground})`;
-            } else {
+            if(window.innerWidth > 850){
+              if (options.infoBackground) {
+                  style['background-image'] = `url(${options.infoBackground})`;
+              } else {
+                  style['background-color'] = '#333333';
+              }
+            }else{
                 style['background-color'] = '#333333';
+            }
+            return style;
+        },
+
+        infoStyleMobile: function infoStyleMobile() {
+            let style = {};
+            let options = state.settings.startupOptions;
+
+            if(window.innerWidth < 850){
+              if (options.infoBackground) {
+                  style['background-image'] = `url(${options.infoBackground})`;
+              } else {
+                  style['background-color'] = '#333333';
+              }
             }
             return style;
         },
@@ -206,15 +224,28 @@ export default {
     box-sizing: border-box;
     transition: right 0.3s, left 0.3s;
     overflow-y: auto;
+    background-size: cover;
 }
 
 .kiwi-welcome-simple-section-connection{
   width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  min-height: 100%;
 }
 
+.kiwi-welcome-simple-form {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 0.5em;
+    padding: 1em;
+    border:1px solid #ececec;
+    position: absolute;
+    top:50%;
+    left:50%;
+    bottom:auto;
+    /* Using absolute positoning so we need to use negative margin to centre the form */
+    margin: -150px auto 0 -150px;
+}
 
 /** Right side */
 .kiwi-welcome-simple-section-info {
@@ -282,13 +313,6 @@ export default {
 }
 .kiwi-welcome-simple-start[disabled] {
     cursor: not-allowed;
-}
-.kiwi-welcome-simple-form {
-    width: 300px;
-    background-color: #fff;
-    border-radius: 0.5em;
-    padding: 1em;
-    border:1px solid #ececec;
 }
 .kiwi-welcome-simple-form input{
     padding: 0.5em;
@@ -360,10 +384,11 @@ export default {
     .kiwi-welcome-simple-form {
         position: static;
         left: auto;
-        margin: 15% auto 15% auto;
+        margin: 20px auto 20px auto;
         z-index: 100;
         position: relative;
         top:auto;
+        align-self: flex-start;
     }
     .kiwi-welcome-simple p.help{
         position: absolute;
@@ -375,18 +400,16 @@ export default {
     .kiwi-welcome-simple p.help a{
         color: #fff;
     }
-    .kiwi-welcome-simple-section-info {
-        border-width: 5px 0 0 0;
-        min-height: 20px;
-        bottom:0;
-        top:auto;
-        z-index: 0;
-        padding: 10% 1em;
-        position: absolute;
-        left:0;
-        width: 100%;
-        min-height: 100%;
+
+    .kiwi-welcome-simple-section-info{
+      background-color: rgb(51, 51, 51);
+      position: static;
+      width: 100%;
+      border: none;
+      border-top: 3px solid  #86b32d;
+      min-height: 0px;
     }
+
     .fa-spinner{
         position: absolute;
         left: 48%;
@@ -397,6 +420,16 @@ export default {
     .kiwi-welcome-simple-section-connection{
       min-height: 400px;
     }
+
+    .kiwi-welcome-simple{
+      position: relative;
+      min-height: 100%;
+    }
+
+    .kiwi-welcome-simple-section .kiwi-welcome-simple-section-connection{
+      position: static;
+    }
+
 }
 
 /** Even smaller screen.. probably phones **/
