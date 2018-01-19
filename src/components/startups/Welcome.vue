@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-welcome-simple" :class="[closing ? 'kiwi-welcome-simple--closing' : '']" :style="infoStyleMobile">
+    <div class="kiwi-welcome-simple" :class="[closing ? 'kiwi-welcome-simple--closing' : '']" :style="backgroundStyle">
         <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-connection">
             <template v-if="!network || network.state === 'disconnected'">
                 <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-simple-form">
@@ -10,7 +10,7 @@
                     <label v-if="showPass" class="kiwi-welcome-simple-have-password">
                         <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
                     </label>
-                    <input-text v-if="show_password_box" class="kiwi-welcome-simple-password input-text--reveal-value"" :label="$t('password')" v-model="password" type="password" />
+                    <input-text v-if="show_password_box" class="kiwi-welcome-simple-password input-text--reveal-value" :label="$t('password')" v-model="password" type="password" />
                     <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" :label="$t('channel')" v-model="channel" />
                     <button
                         class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
@@ -25,7 +25,7 @@
             </template>
           </div>
           <p class='help'></p>
-          <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-info" :style="infoStyle">
+          <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-info" :style="backgroundStyle">
              <div class="kiwi-welcome-simple-section-info-content" v-if="infoContent" v-html="infoContent"></div>
          </div>
       </div>
@@ -76,32 +76,12 @@ export default {
 
             return ready;
         },
-        infoStyle: function infoStyle() {
+        backgroundStyle() {
             let style = {};
             let options = state.settings.startupOptions;
 
-            if (window.innerWidth > 850) {
-                if (options.infoBackground) {
-                    style['background-image'] = `url(${options.infoBackground})`;
-                } else {
-                    style['background-color'] = '#333333';
-                }
-            } else {
-                style['background-color'] = '#333333';
-            }
-            return style;
-        },
-
-        infoStyleMobile: function infoStyleMobile() {
-            let style = {};
-            let options = state.settings.startupOptions;
-
-            if (window.innerWidth < 850) {
-                if (options.infoBackground) {
-                    style['background-image'] = `url(${options.infoBackground})`;
-                } else {
-                    style['background-color'] = '#333333';
-                }
+            if (options.infoBackground) {
+                style['background-image'] = `url(${options.infoBackground})`;
             }
             return style;
         },
@@ -209,6 +189,7 @@ export default {
     height: 100%;
     text-align: center;
 }
+
 .kiwi-welcome-simple h2 {
     font-size: 1.7em;
     text-align: center;
@@ -224,7 +205,6 @@ export default {
     box-sizing: border-box;
     transition: right 0.3s, left 0.3s;
     overflow-y: auto;
-    background-size: cover;
 }
 
 .kiwi-welcome-simple-section-connection{
@@ -250,11 +230,7 @@ export default {
 /** Right side */
 .kiwi-welcome-simple-section-info {
     right: 0;
-    border: 0 solid #86b32d;
-    border-left-width: 5px;
-    background-size: cover;
     color: #fff;
-    background-position: bottom;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -367,6 +343,29 @@ export default {
     left: 50%;
     margin-left: -40px;
 }
+
+
+/** Background /border switching between screen sizes **/
+.kiwi-welcome-simple {
+    background-size: 0;
+    /*background-color: #fff;*/
+}
+.kiwi-welcome-simple-section-info {
+    background-size: cover;
+    background-position: bottom;
+    /*background-color: rgb(51, 51, 51);*/
+    border-left: 5px solid #86b32d;
+}
+@media screen and (max-width: 850px) {
+    .kiwi-welcome-simple {
+        background-size: cover;
+    }
+    .kiwi-welcome-simple-section-info {
+        background-size: 0;
+        border-left: none;
+    }
+}
+
 /** Smaller screen...**/
 @media screen and (max-width: 850px) {
     .kiwi-welcome-simple {
@@ -402,11 +401,9 @@ export default {
     }
 
     .kiwi-welcome-simple-section-info{
-      background-color: rgb(51, 51, 51);
       position: static;
       width: 100%;
       border: none;
-      border-top: 3px solid  #86b32d;
       min-height: 0px;
     }
 
