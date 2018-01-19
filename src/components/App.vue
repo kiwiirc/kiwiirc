@@ -211,7 +211,9 @@ export default {
                 if (state.setting('warnOnExit')) {
                     return this.$t('window_unload');
                 }
-            }
+
+                return null;
+            };
         },
         emitDocumentClick: function emitDocumentClick(event) {
             state.$emit('document.clicked', event);
