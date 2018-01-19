@@ -594,6 +594,17 @@ inputCommands.echo = function inputCommandEcho(event, command, line) {
     });
 };
 
+inputCommands.list = function inputCommandList(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    if (!network.channel_list.length && network.channel_list_state !== 'updating') {
+        network.channel_list_state = 'updating';
+        network.ircClient.raw('LIST');
+    }
+
+    network.showServerBuffer('channels');
+};
 
 inputCommands.server = function inputCommandServer(event, command, line) {
     event.handled = true;

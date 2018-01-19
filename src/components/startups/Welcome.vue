@@ -1,18 +1,19 @@
 <template>
-    <div class="kiwi-welcome-simple" :class="[closing ? 'kiwi-welcome-simple--closing' : '']">
-
+    <div class="kiwi-welcome-simple" :class="[
+        closing ? 'kiwi-welcome-simple--closing' : '',
+        backgroundImage ? '' : 'kiwi-welcome-simple--no-bg',
+    ]" :style="backgroundStyle">
         <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-connection">
-            <h2 v-html="greetingText"></h2>
-
             <template v-if="!network || network.state === 'disconnected'">
                 <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-simple-form">
+                    <h2 v-html="greetingText"></h2>
                     <div class="kiwi-welcome-simple-error" v-if="network && network.state_error">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
 
                     <input-text v-if="showNick" class="kiwi-welcome-simple-nick" :label="$t('nick')" v-model="nick" />
                     <label v-if="showPass" class="kiwi-welcome-simple-have-password">
                         <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
                     </label>
-                    <input-text v-if="show_password_box" class="kiwi-welcome-simple-password" :label="$t('password')" v-model="password" type="password" />
+                    <input-text v-if="show_password_box" class="kiwi-welcome-simple-password input-text--reveal-value" :label="$t('password')" v-model="password" type="password" />
                     <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" :label="$t('channel')" v-model="channel" />
                     <button
                         class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
@@ -23,13 +24,14 @@
                 </form>
             </template>
             <template v-else-if="network.state !== 'connected'">
-                <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" aria-hidden="true"></i>
+                <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
             </template>
-        </div>
-
-        <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-info" :style="infoStyle">
-            <div class="kiwi-welcome-simple-section-info-content" v-if="infoContent" v-html="infoContent"></div>
-        </div>
+          </div>
+          <p class='help'></p>
+          <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-info" :style="backgroundStyle">
+             <div class="kiwi-welcome-simple-section-info-content" v-if="infoContent" v-html="infoContent"></div>
+         </div>
+      </div>
     </div>
 </template>
 
@@ -77,17 +79,17 @@ export default {
 
             return ready;
         },
-        infoStyle: function infoStyle() {
+        backgroundStyle() {
             let style = {};
             let options = state.settings.startupOptions;
 
             if (options.infoBackground) {
                 style['background-image'] = `url(${options.infoBackground})`;
-            } else {
-                style['background-color'] = '#333333';
             }
-
             return style;
+        },
+        backgroundImage() {
+            return state.settings.startupOptions.infoBackground || '';
         },
         infoContent: function infoContent() {
             return state.settings.startupOptions.infoContent || '';
@@ -195,9 +197,11 @@ export default {
 }
 
 .kiwi-welcome-simple h2 {
-    margin-bottom: 1.5em;
+    font-size: 1.7em;
+    text-align: center;
+    padding: 0;
+    margin: 0.5em 0 1em 0;
 }
-
 .kiwi-welcome-simple-section {
     position: absolute;
     top: 0;
@@ -209,15 +213,27 @@ export default {
     overflow-y: auto;
 }
 
+.kiwi-welcome-simple-section-connection{
+    width: 50%;
+    position: relative;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kiwi-welcome-simple-form {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 0.5em;
+    padding: 1em;
+    border:1px solid #ececec;
+}
 
 /** Right side */
 .kiwi-welcome-simple-section-info {
     right: 0;
-    border: 0 solid #86b32d;
-    border-left-width: 5px;
-    background-size: cover;
     color: #fff;
-    background-position: bottom;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -231,8 +247,6 @@ export default {
     padding: 2em;
     line-height: 1.6em;
 }
-
-
 /** Left side */
 .kiwi-welcome-simple-error {
     text-align: center;
@@ -244,16 +258,11 @@ export default {
     font-style: italic;
 }
 
-.kiwi-welcome-simple-section-connection {
-    left: 0;
-    padding-top: 3em;
-    font-size: 1.2em;
-}
-
 .kiwi-welcome-simple-section-connection label {
     text-align: left;
     display: inline-block;
-    margin-bottom: 1.5em;
+    margin-bottom: 0.8em;
+    padding: 0 0.5em;
 }
 .kiwi-welcome-simple-section-connection input[type="text"] {
     font-size: 1em;
@@ -262,15 +271,21 @@ export default {
     width: 100%;
     box-sizing: border-box;
 }
-
-.kiwi-welcome-simple .input-text,
-.kiwi-welcome-simple .kiwi-welcome-simple-have-password input {
-    margin-bottom: 1.5em;
+.kiwi-welcome-simple .input-text{
+    font-weight: 600;
+    opacity:0.6;
+    font-size: 1.2em;
+    margin-bottom: 0.8em;
 }
-.kiwi-welcome-simple-have-password input:checked {
-    margin-bottom: 0;
+.kiwi-welcome-simple .kiwi-welcome-simple-have-password input,
+.kiwi-welcome-simple-have-password {
+    font-size: 0.8em;
+    margin: 0.8em 0;
 }
-
+.kiwi-welcome-simple-have-password,
+.kiwi-welcome-simple-password.input-text{
+    margin-top: 0;
+}
 .kiwi-welcome-simple-start {
     font-size: 1.1em;
     cursor: pointer;
@@ -278,11 +293,25 @@ export default {
 .kiwi-welcome-simple-start[disabled] {
     cursor: not-allowed;
 }
-.kiwi-welcome-simple-form {
-    max-width: 300px;
-    margin: 2em auto;
+.kiwi-welcome-simple-form input{
+    padding: 0.5em;
 }
-
+.kiwi-welcome-simple-channel{
+    margin-bottom: 0.8em;
+}
+.kiwi-welcome-simple-form .u-submit{
+    width: 100%;
+    line-height: 50px;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-shadow: none;
+    margin: 0;
+    transition: all 0.2s;
+    border:none;
+    background-color: #86b32d;
+}
 /** Closing - the wiping away of the screen **/
 .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-connection {
     left: -50%;
@@ -290,19 +319,95 @@ export default {
 .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-info {
     right: -50%;
 }
+.kiwi-welcome-simple .help{
+    position: absolute;
+    bottom:0.2em;
+    font-size: 0.8em;
+    color:#666;
+    width: 50%;
+    text-align: center;
+}
+.kiwi-welcome-simple .help a{
+    text-decoration: underline;
+    color:#666;
+}
+.kiwi-welcome-simple .help a:hover{
+    color:#A9D87A;
+}
+
+/* Styling the preloader */
+.kiwi-welcome-simple .fa-spinner{
+    font-size: 1.5em;
+    position: absolute;
+    top: 50%;
+    z-index: 999;
+    font-size: 100px;
+    margin-top: -0.5em;
+    left: 50%;
+    margin-left: -40px;
+}
 
 /** Smaller screen...**/
 @media screen and (max-width: 850px) {
     .kiwi-welcome-simple {
         font-size: 0.9em;
     }
-
     .kiwi-startbnc-section-connection {
         margin-top: 1em;
+    }
+    .kiwi-welcome-simple-section-connection{
+      width: 100%;
     }
     .kiwi-welcome-simple-section-info-content {
         margin: 1em;
     }
+    .kiwi-welcome-simple-form {
+        position: static;
+        left: auto;
+        margin: 20px auto 20px auto;
+        z-index: 100;
+        position: relative;
+        top:auto;
+        align-self: flex-start;
+    }
+    .kiwi-welcome-simple p.help{
+        position: absolute;
+        bottom:20px;
+        width: 100%;
+        color:#fff;
+        z-index: 100;
+    }
+    .kiwi-welcome-simple p.help a{
+        color: #fff;
+    }
+
+    .kiwi-welcome-simple-section-info{
+      position: static;
+      width: 100%;
+      border: none;
+      min-height: 0px;
+    }
+
+    .fa-spinner{
+        position: absolute;
+        left: 48%;
+        top: 50%;
+        margin-top: -50px;
+        color: #fff;
+    }
+    .kiwi-welcome-simple-section-connection{
+      min-height: 400px;
+    }
+
+    .kiwi-welcome-simple{
+      position: relative;
+      min-height: 100%;
+    }
+
+    .kiwi-welcome-simple-section .kiwi-welcome-simple-section-connection{
+      position: static;
+    }
+
 }
 
 /** Even smaller screen.. probably phones **/
@@ -311,27 +416,56 @@ export default {
         font-size: 0.9em;
         overflow-y: auto;
     }
-
-    .kiwi-welcome-simple-section {
-        left: 0;
-        width: 100%;
-        right: auto;
-        position: relative;
-    }
-
-    .kiwi-welcome-simple-section-info {
-        border-width: 5px 0 0 0;
-    }
     .kiwi-welcome-simple-section-info-content {
         margin: 0.5em;
     }
-
     /** Closing - the wiping away of the screen **/
     .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-connection {
         left: -100%;
     }
     .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-info {
         left: -100%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .kiwi-welcome-simple-form {
+      width: 90%;
+    }
+}
+
+
+/** Background /border switching between screen sizes **/
+.kiwi-welcome-simple {
+    background-size: 0;
+    background-position: bottom;
+}
+.kiwi-welcome-simple-section-info {
+    background-size: cover;
+    background-position: bottom;
+    border-left: 5px solid #86b32d;
+}
+.kiwi-welcome-simple--no-bg .kiwi-welcome-simple-section-info {
+    background-color: rgb(51, 51, 51);
+}
+@media screen and (max-width: 850px) {
+    /* Apply some flex so that the info panel fills the rest of the bottom screen */
+    .kiwi-welcome-simple {
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+    }
+    .kiwi-welcome-simple-section {
+        overflow-y: visible;
+    }
+    .kiwi-welcome-simple-section-info {
+        background-size: 0;
+        border-left: none;
+        flex: 1 0;
+        display: block;
+    }
+    .kiwi-welcome-simple--no-bg .kiwi-welcome-simple-section-info {
+        border-top: 5px solid #86b32d;
     }
 }
 </style>
