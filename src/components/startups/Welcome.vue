@@ -1,5 +1,8 @@
 <template>
-    <div class="kiwi-welcome-simple" :class="[closing ? 'kiwi-welcome-simple--closing' : '']" :style="backgroundStyle">
+    <div class="kiwi-welcome-simple" :class="[
+        closing ? 'kiwi-welcome-simple--closing' : '',
+        backgroundImage ? '' : 'kiwi-welcome-simple--no-bg',
+    ]" :style="backgroundStyle">
         <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-connection">
             <template v-if="!network || network.state === 'disconnected'">
                 <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-simple-form">
@@ -84,6 +87,9 @@ export default {
                 style['background-image'] = `url(${options.infoBackground})`;
             }
             return style;
+        },
+        backgroundImage() {
+            return state.settings.startupOptions.infoBackground || '';
         },
         infoContent: function infoContent() {
             return state.settings.startupOptions.infoContent || '';
@@ -345,21 +351,30 @@ export default {
 /** Background /border switching between screen sizes **/
 .kiwi-welcome-simple {
     background-size: 0;
-    /*background-color: #fff;*/
+    background-position: bottom;
 }
 .kiwi-welcome-simple-section-info {
     background-size: cover;
     background-position: bottom;
-    /*background-color: rgb(51, 51, 51);*/
     border-left: 5px solid #86b32d;
 }
+.kiwi-welcome-simple--no-bg .kiwi-welcome-simple-section-info {
+    background-color: rgb(51, 51, 51);
+}
 @media screen and (max-width: 850px) {
+    /* Apply some flex so that the info panel fills the rest of the bottom screen */
     .kiwi-welcome-simple {
         background-size: cover;
+        display: flex;
+        flex-direction: column;
     }
     .kiwi-welcome-simple-section-info {
         background-size: 0;
         border-left: none;
+        flex-grow: 1;
+    }
+    .kiwi-welcome-simple--no-bg .kiwi-welcome-simple-section-info {
+        border-top: 5px solid #86b32d;
     }
 }
 
