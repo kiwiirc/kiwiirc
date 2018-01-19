@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2018-01-18 09:50-0500\n"
+"PO-Revision-Date: 2018-01-19 07:20-0500\n"
 
 #: Start
 msgid "start_button"
@@ -235,7 +235,7 @@ msgstr "Mute sounds"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr ""
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
