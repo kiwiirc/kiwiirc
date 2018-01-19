@@ -207,7 +207,11 @@ export default {
             this.hasStarted = true;
         },
         warnOnPageClose() {
-            window.onbeforeunload = () => this.$t('window_unload');
+            window.onbeforeunload = () => {
+                if (state.setting('warnOnExit')) {
+                    return this.$t('window_unload');
+                }
+            }
         },
         emitDocumentClick: function emitDocumentClick(event) {
             state.$emit('document.clicked', event);
