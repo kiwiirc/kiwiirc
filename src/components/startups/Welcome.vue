@@ -347,37 +347,6 @@ export default {
     margin-left: -40px;
 }
 
-
-/** Background /border switching between screen sizes **/
-.kiwi-welcome-simple {
-    background-size: 0;
-    background-position: bottom;
-}
-.kiwi-welcome-simple-section-info {
-    background-size: cover;
-    background-position: bottom;
-    border-left: 5px solid #86b32d;
-}
-.kiwi-welcome-simple--no-bg .kiwi-welcome-simple-section-info {
-    background-color: rgb(51, 51, 51);
-}
-@media screen and (max-width: 850px) {
-    /* Apply some flex so that the info panel fills the rest of the bottom screen */
-    .kiwi-welcome-simple {
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-    }
-    .kiwi-welcome-simple-section-info {
-        background-size: 0;
-        border-left: none;
-        flex-grow: 1;
-    }
-    .kiwi-welcome-simple--no-bg .kiwi-welcome-simple-section-info {
-        border-top: 5px solid #86b32d;
-    }
-}
-
 /** Smaller screen...**/
 @media screen and (max-width: 850px) {
     .kiwi-welcome-simple {
@@ -462,6 +431,41 @@ export default {
 @media screen and (max-width: 400px){
     .kiwi-welcome-simple-form {
       width: 90%;
+    }
+}
+
+
+/** Background /border switching between screen sizes **/
+.kiwi-welcome-simple {
+    background-size: 0;
+    background-position: bottom;
+}
+.kiwi-welcome-simple-section-info {
+    background-size: cover;
+    background-position: bottom;
+    border-left: 5px solid #86b32d;
+}
+.kiwi-welcome-simple--no-bg .kiwi-welcome-simple-section-info {
+    background-color: rgb(51, 51, 51);
+}
+@media screen and (max-width: 850px) {
+    /* Apply some flex so that the info panel fills the rest of the bottom screen */
+    .kiwi-welcome-simple {
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+    }
+    .kiwi-welcome-simple-section {
+        overflow-y: visible;
+    }
+    .kiwi-welcome-simple-section-info {
+        background-size: 0;
+        border-left: none;
+        flex: 1 0;
+        display: block;
+    }
+    .kiwi-welcome-simple--no-bg .kiwi-welcome-simple-section-info {
+        border-top: 5px solid #86b32d;
     }
 }
 </style>
