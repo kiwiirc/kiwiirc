@@ -208,9 +208,12 @@ export default {
 }
 
 .kiwi-welcome-simple-section-connection{
-  width: 50%;
-  position: relative;
-  min-height: 100%;
+    width: 50%;
+    position: relative;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .kiwi-welcome-simple-form {
@@ -219,12 +222,6 @@ export default {
     border-radius: 0.5em;
     padding: 1em;
     border:1px solid #ececec;
-    position: absolute;
-    top:50%;
-    left:50%;
-    bottom:auto;
-    /* Using absolute positoning so we need to use negative margin to centre the form */
-    margin: -150px auto 0 -150px;
 }
 
 /** Right side */
