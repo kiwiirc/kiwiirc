@@ -13,9 +13,7 @@
 		"tls": false,
 		"direct": false,
 		"channel": "#kiwiirc",
-		"nick": "kiwi-n?",
-		"infoContent": "Kiwi Rocks",
-		"infoBackground": "https://source.unsplash.com/random/?nature"
+		"nick": "kiwi-n?"
 	},
 	"embedly": {
 		"key": ""
