@@ -210,6 +210,11 @@
     color: #b8babd;
 }
 
+.kiwi-header-join-channel-button{
+    background-color: #42b983;
+    color: #fff;
+}
+
 
 
 /**
@@ -504,6 +509,3 @@
 .kiwi-welcome-simple-error {
     border: 1px dashed #d86f6f;
 }
-
-
-

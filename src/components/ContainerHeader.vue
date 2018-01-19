@@ -213,9 +213,7 @@ export default {
 }
 
 .kiwi-header-join-channel-button{
-    background-color: #42b983;
     border-radius: 0.3em;
-    color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     line-height: inherit;

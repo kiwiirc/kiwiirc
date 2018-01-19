@@ -218,10 +218,10 @@ export default {
     border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 .kiwi-statebrowser-usermenu-header i{
-  float: right;
-  line-height: 1.2em;
-  display: block;
-  font-size: 16px;
+    float: right;
+    line-height: 1.2em;
+    display: block;
+    font-size: 16px;
 }
 
 .kiwi-statebrowser-divider{
@@ -240,6 +240,13 @@ export default {
 .kiwi-statebrowser-usermenu-body p{
     padding: 0 1em 1em 1em;
     margin: 0;
+}
+
+.kiwi-statebrowser-usermenu-body a{
+  cursor: pointer;
+}
+.kiwi-statebrowser-usermenu-body a:hover{
+  text-decoration: underline; 
 }
 
 .kiwi-statebrowser-usermenu-body .close-icon{
@@ -355,9 +362,9 @@ export default {
 
 @media screen and (max-width: 600px){
   .kiwi-container-toggledraw-statebrowser-messagecount{
-    width: 30px;
-    color: #000;
-    font-weight: 600;
+      width: 30px;
+      color: #000;
+      font-weight: 600;
   }
 }
 
