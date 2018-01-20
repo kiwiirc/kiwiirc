@@ -35,7 +35,7 @@ export function listenForHighlights(state) {
             return;
         }
 
-        if (message.type === 'connection') {
+        if (message.type === 'connection' || message.type === 'traffic') {
             return;
         }
 
