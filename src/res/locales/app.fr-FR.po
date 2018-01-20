@@ -11,15 +11,15 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2018-01-18 09:50-0500\n"
+"PO-Revision-Date: 2018-01-20 06:53-0500\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Démarrer"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Bienvenue sur Kiwi IRC !"
 
 #: Close
 msgid "close"
@@ -107,7 +107,7 @@ msgstr "Annuler"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "Vous allez fermer toutes les conversations sur KiwiIRC. Voulez-vous vraiment fermer cette fenêtre ?"
 
 #: Real name
 msgid "whois_realname"
@@ -419,7 +419,7 @@ msgstr ""
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Afficher les changements de mode"
 
 #: Extra message formatting
 msgid "side_formatting"
