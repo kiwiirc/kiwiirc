@@ -1042,8 +1042,11 @@ function createEmptyNetworkObject() {
     return {
         id: 0,
         name: '',
+        // State of the transport
         state: 'disconnected',
         state_error: '',
+        // Last error from the IRC server. Resets on reconnect
+        last_error: '',
         auto_commands: '',
         is_znc: false,
         channel_list: [],

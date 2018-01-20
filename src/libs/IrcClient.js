@@ -105,6 +105,7 @@ function clientMiddleware(state, networkid) {
         client.on('connecting', () => {
             network.state_error = '';
             network.state = 'connecting';
+            network.last_error = '';
         });
 
         client.on('connected', () => {
@@ -754,6 +755,8 @@ function clientMiddleware(state, networkid) {
             // ie. password_mismatch.
 
             if (event.reason) {
+                network.last_error = event.reason;
+
                 let messageBody = TextFormatting.formatText('general_error', {
                     text: event.reason || event.error,
                 });
