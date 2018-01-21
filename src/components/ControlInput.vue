@@ -245,7 +245,14 @@ export default {
                 // Just typed # so start the command auto completion
                 this.openAutoComplete(this.buildAutoCompleteItems({ buffers: true }));
                 this.autocomplete_filtering = true;
-            } else if (event.keyCode === 9) {
+            } else if (
+                event.keyCode === 9
+                && !event.shiftKey
+                && !event.altKey
+                && !event.metaKey
+                && !event.ctrlKey
+            ) {
+                // Tab and no other keys as tab+other is often a keyboard shortcut
                 // Tab key was just pressed, start general auto completion
                 let items = this.buildAutoCompleteItems({
                     users: true,
