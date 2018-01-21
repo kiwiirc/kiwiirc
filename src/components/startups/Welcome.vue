@@ -116,8 +116,14 @@ export default {
 
             let net;
             if (!this.network) {
-                net = this.network = state.addNetwork('Network', this.nick, {
-                    server: _.trim(options.server),
+                let netAddress = _.trim(options.server);
+
+                // Check if we have this network already
+                net = state.getNetworkFromAddress(netAddress);
+
+                // If the network doesn't already exist, add a new one
+                net = net || state.addNetwork('Network', this.nick, {
+                    server: netAddress,
                     port: options.port,
                     tls: options.tls,
                     password: this.password,
@@ -126,6 +132,8 @@ export default {
                     path: options.direct_path || '',
                     gecos: options.gecos,
                 });
+
+                this.network = net;
             } else {
                 net = this.network;
             }

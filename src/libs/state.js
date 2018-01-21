@@ -566,6 +566,13 @@ const state = new Vue({
             return network;
         },
 
+        getNetworkFromAddress(netAddr) {
+            return _.find(this.networks, net => {
+                let isMatch = netAddr.toLowerCase() === net.connection.server.toLowerCase();
+                return isMatch;
+            });
+        },
+
         addNetwork: function addNetwork(name, nick, serverInfo) {
             // Find the current largest ID and increment it by 1
             function networkidReduce(currentMax, network) {
