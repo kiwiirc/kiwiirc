@@ -638,6 +638,12 @@ const state = new Vue({
             state.$emit('network.removed', eventObj);
         },
 
+        removeAllNetworks: function removeAllNetworks(networkid) {
+            while (this.networks.length > 0) {
+                this.removeNetwork(this.networks[0].id);
+            }
+        },
+
         getActiveBuffer: function getActiveBuffer() {
             return this.getBufferByName(this.ui.active_network, this.ui.active_buffer);
         },
