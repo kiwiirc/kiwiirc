@@ -13,6 +13,7 @@ export default function batchedAdd(singleFn, batchedFn) {
         if (queue.length) {
             batchedFn(queue);
             queue = [];
+            numInLastSec = 0;
             setTimeout(queueLoop, loopInterval);
         } else {
             isLooping = false;
@@ -27,16 +28,27 @@ export default function batchedAdd(singleFn, batchedFn) {
         isLooping = true;
         setTimeout(queueLoop, loopInterval);
     }
+
+    function resetAddCounter(doResetNum) {
+        if (doResetNum) {
+            numInLastSec = 0;
+        }
+        if (!isLooping) {
+            setTimeout(resetAddCounter, 1000, true);
+        }
+    }
+
     function batchFn(item) {
+        numInLastSec++;
+
         // Under 1 second, queue them
         if (queue.length || numInLastSec > 3) {
             queue.push(item);
             maybeStartLoop();
         } else {
             singleFn(item);
+            resetAddCounter();
         }
-
-        numInLastSec++;
     }
     batchFn.queue = function getQueue() {
         return queue;
