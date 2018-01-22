@@ -205,6 +205,9 @@ export default {
     border-right: 5px solid rgba(255,255,255,0.3);
 }
 
+.kiwi-statebrowser-usermenu .fa-caret-down{
+    transition: all 0.3s;
+}
 
 .kiwi-statebrowser-usermenu--open .fa-caret-down{
     transform: rotate(-180deg);
@@ -213,10 +216,10 @@ export default {
 .kiwi-statebrowser-usermenu-header {
     display: block;
     cursor: pointer;
-    font-size: 0.8em;
-    padding: 1.4em 1em 1em 1em;
+    font-size: 1em;
+    padding: 1em 1em 1em 1em;
     width: 100%;
-    letter-spacing: 0.2em;
+    font-weight: 600;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(255,255,255,0.3);
 }
@@ -242,6 +245,7 @@ export default {
 .kiwi-statebrowser-usermenu-body p{
     padding: 0 1em 1em 1em;
     margin: 0;
+    cursor: default;
 }
 
 .kiwi-statebrowser-usermenu-body a{
@@ -261,10 +265,10 @@ export default {
     border-radius:0 0 0 0.4em;
     background-color:#fc6262;
     color:#ffffff;
+    transition: all 0.3s;
 }
 .kiwi-statebrowser-usermenu-body .close-icon:hover{
-    text-decoration: underline;
-    opacity: 1;
+    background-color: #fe7575;
 }
 
 .kiwi-statebrowser-usermenu-body a{
