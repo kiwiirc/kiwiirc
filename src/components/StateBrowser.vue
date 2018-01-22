@@ -26,7 +26,6 @@
                 <p> {{$t('state_remembered')}} </p>
                 <a @click="clickForget">{{$t('state_forget')}}</a>
                 <div class="close-icon" @click="is_usermenu_open=false">
-                  {{$t('close')}}
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </div>
             </div>
@@ -206,13 +205,17 @@ export default {
     border-right: 5px solid rgba(255,255,255,0.3);
 }
 
+
+.kiwi-statebrowser-usermenu--open .fa-caret-down{
+    transform: rotate(-180deg);
+}
+
 .kiwi-statebrowser-usermenu-header {
     display: block;
     cursor: pointer;
     font-size: 0.8em;
     padding: 1.4em 1em 1em 1em;
     width: 100%;
-    text-transform: uppercase;
     letter-spacing: 0.2em;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(255,255,255,0.3);
@@ -234,7 +237,6 @@ export default {
     margin: 0 0 1em 0;
     padding: 2.5em 0 1em 0;
     border-bottom: 1px solid rgba(255,255,255,0.3);
-    text-align: center;
 }
 
 .kiwi-statebrowser-usermenu-body p{
@@ -246,16 +248,19 @@ export default {
   cursor: pointer;
 }
 .kiwi-statebrowser-usermenu-body a:hover{
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 .kiwi-statebrowser-usermenu-body .close-icon{
     position: absolute;
-    right:1em;
-    top:0.5em;
+    right:0em;
+    top:0em;
     cursor: pointer;
-    opacity:0.8;
     transition: all 0.1s;
+    padding: 0.2em 0.4em;
+    border-radius:0 0 0 0.4em;
+    background-color:#fc6262;
+    color:#ffffff;
 }
 .kiwi-statebrowser-usermenu-body .close-icon:hover{
     text-decoration: underline;
@@ -264,9 +269,11 @@ export default {
 
 .kiwi-statebrowser-usermenu-body a{
     width: 100%;
+    display:block;
     margin: 0 auto;
+    text-align:center;
     color: #42b983;
-    text-transform: uppercase;
+    text-decoration:underline;
     border: none;
 }
 
@@ -294,7 +301,9 @@ export default {
     margin-bottom: 2em;
     overflow: hidden;
 }
-
+.kiwi-statebrowser-network:last-child {
+    margin-bottom: 0px;
+}
 
 .kiwi-statebrowser-options {
     position: absolute;
