@@ -211,7 +211,7 @@ export default {
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 769px) {
     .kiwi-header {
         margin-left: 50px;
         margin-right: 50px;
