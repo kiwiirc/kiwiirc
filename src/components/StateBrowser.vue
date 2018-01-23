@@ -219,7 +219,6 @@ export default {
     font-size: 1em;
     padding: 1em 1em 1em 1em;
     width: 100%;
-    font-weight: 600;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(255,255,255,0.3);
 }
