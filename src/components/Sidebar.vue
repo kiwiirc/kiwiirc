@@ -221,17 +221,15 @@ export default {
 
 .kiwi-sidebar-options {
     display: block;
-    margin: 1em;
     cursor: pointer;
     border-bottom: 1px solid #dddddd;
-    padding: 0 0 1em 0;
+    padding: 0.75em 1em 0.76em 1em;
     text-align: center;
+    transition: all 0.2s;
 }
-.kiwi-sidebar-options i {
-    transition: margin-left 0.1s;
-}
-.kiwi-sidebar-options:hover i {
-    margin-left: 1em;
+.kiwi-sidebar-options:hover i ,
+.kiwi-sidebar-options:hover {
+    color:#42b983;
 }
 
 .kiwi-sidebar--wide .kiwi-sidebar-options {
