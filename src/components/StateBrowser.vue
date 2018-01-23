@@ -23,12 +23,10 @@
         >
             <a class="kiwi-statebrowser-usermenu-header" @click="is_usermenu_open=!is_usermenu_open">{{$t('state_account')}} <i class="fa fa-caret-down"></i></a>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
-                <p> {{$t('state_remembered')}} </p>
-                <a @click="clickForget">{{$t('state_forget')}}</a>
-                <div class="close-icon" @click="is_usermenu_open=false">
-                  {{$t('close')}}
-                  <i class="fa fa-times" aria-hidden="true"></i>
-                </div>
+                {{$t('state_remembered')}}<br />
+                <a class="u-link" @click="clickForget">{{$t('state_forget')}}</i></a> <br />
+                <br />
+                <button class="u-button u-button-primary" @click="is_usermenu_open=false">{{$t('close')}}</button>
             </div>
 
             <div class="kiwi-statebrowser-divider"></div>
@@ -206,70 +204,29 @@ export default {
     border-right: 5px solid rgba(255,255,255,0.3);
 }
 
+.kiwi-statebrowser-usermenu {
+    text-align: center;
+    padding: 7px 0;
+    font-size: 1.1em;
+}
 .kiwi-statebrowser-usermenu-header {
-    display: block;
     cursor: pointer;
-    font-size: 0.8em;
-    padding: 1.1em 1em 0.6em 1em;
-    width: 100%;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    box-sizing: border-box;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-}
-.kiwi-statebrowser-usermenu-header i{
-  float: right;
-  line-height: 1.2em;
-  display: block;
-  font-size: 16px;
-}
-
-.kiwi-statebrowser-divider{
-  display:none;
 }
 
 .kiwi-statebrowser-usermenu-body {
     font-size: 0.9em;
-    position: relative;
-    margin: 0 0 1em 0;
-    padding: 2.5em 0 1em 0;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    margin: 5px;
+}
+
+.kiwi-statebrowser-switcher {
     text-align: center;
 }
-.kiwi-statebrowser-usermenu-body p{
-    padding: 0 1em 1em 1em;
-    margin: 0;
-}
-
-.kiwi-statebrowser-usermenu-body .close-icon{
-    position: absolute;
-    right:1em;
-    top:0.5em;
-    cursor: pointer;
-    opacity:0.8;
-    transition: all 0.1s;
-}
-.kiwi-statebrowser-usermenu-body .close-icon:hover{
-    text-decoration: underline;
-    opacity: 1;
-}
-
-.kiwi-statebrowser-usermenu-body a{
-    width: 100%;
-    margin: 0 auto;
-    color: #42b983;
-    text-transform: uppercase;
-    border: none;
-}
-
-
 .kiwi-statebrowser-switcher a {
     display: inline-block;
     width: 50%;
     padding: 5px 0;
     font-size: 1.2em;
     cursor: pointer;
-    text-align: center;
 }
 .kiwi-statebrowser-switcher a:first-of-type {
     background: rgba(255,255,255,0.15);

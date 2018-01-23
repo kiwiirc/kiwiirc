@@ -13,8 +13,8 @@
             </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div v-if="isJoined" class="kiwi-header-topic"></div>
-            <div v-if="isJoined && isConnected" class="kiwi-header-notjoined">
-                <a @click="joinCurrentBuffer" class="u-link join-channel-button">{{$t('container_join')}}</a>
+            <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
+                <a @click="joinCurrentBuffer" class="u-link">{{$t('container_join')}}</a>
             </div>
             <div class="kiwi-header-tools">
                 <div v-for="el in pluginUiChannelElements" v-rawElement="el" class="kiwi-header-tool"></div>
@@ -149,7 +149,7 @@ export default {
     box-sizing: border-box;
     z-index: 2;
     overflow: hidden;
-    padding: 0.5em 1em;
+    padding: 0 20px;
 }
 .kiwi-header:hover {
     max-height: none;
@@ -160,12 +160,10 @@ export default {
     overflow-y: auto;
 }
 .kiwi-header-name {
-    float:left;
+    display: inline-block;
     font-weight: bold;
-    opacity: 0.6;
-    line-height: 1.7em;
-    cursor: default;
-    font-size: 1.3em;
+    line-height: 49px;
+    margin-left: 1em;
 }
 .kiwi-header-topic {
     font-size: 0.9em;
@@ -185,38 +183,9 @@ export default {
 .kiwi-header-options {
     display: inline-block;
     float: right;
+    margin-top: 4px;
+    margin-right: 4px;
 }
-
-.kiwi-header-topic{
-  display: inline-block;
-}
-
-.kiwi-header-options .u-button{
-  text-transform: uppercase;
-  font-size: 0.7em;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  padding: 0.5em 1.7em;
-  line-height: 2em;
-  border-radius: 0.4em;
-}
-
-.kiwi-header .join-channel-button{
-  background-color: #42b983;
-  border-radius: 0.3em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  line-height: inherit;
-  height: auto;
-  display: inline-block;
-  padding: 0.2em 1em;
-  font-size: 0.8em;
-}
-.kiwi-header .join-channel-button:hover{
-
-}
-
 .kiwi-header-close-buffersettings {
     float: right;
 }
