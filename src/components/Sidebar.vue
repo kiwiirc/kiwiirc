@@ -222,7 +222,7 @@ export default {
     text-align: center;
     transition: all 0.2s;
 }
-.kiwi-sidebar-options:hover i ,
+
 .kiwi-sidebar-options:hover {
     color:#42b983;
 }
