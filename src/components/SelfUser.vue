@@ -2,7 +2,7 @@
     <div class="kiwi-selfuser">
         <div class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">{{network.nick}}</span>
-            <span class="kiwi-selfuser-host">{{netUser.username}}@{{netUser.host}}</span>
+            <span class="kiwi-selfuser-host">{{netUser.username}}@{{netUser.host}}</span>    
         </div>
         <div class="kiwi-selfuser-modes">{{modeString}}</div>
         <div class="kiwi-selfuser-actions">
