@@ -29,7 +29,7 @@
                 </span>
             </template>
 
-            <a @click="showNetworkSettings" class="kiwi-notconnected-networksettings button">
+            <a @click="showNetworkSettings" class="kiwi-notconnected-networksettings button connection-settings">
                 <i class="fa fa-cogs" aria-hidden="true"></i>{{$t('reconnect_settings')}}
             </a>
 
@@ -101,26 +101,21 @@ export default {
 
 </script>
 
-<style>
+<style lang="less">
 .kiwi-notconnected {
     box-sizing: border-box;
     text-align: center;
     padding: 10% 0;
     margin:1em 0 0 0;
     color: #ffffff;
-    background-color: #fc6262;
-    border-top: 0.2em solid #d15b5b;
+    background-color: #8f8f8f;
     transition: background-color 0.3s;
-}
-.kiwi-notconnected.connecting{
-    background-color: #A9D87A;
-    border-color: #91BA69;
 }
 
 .kiwi-notconnected-bigicon {
     display: inline-block;
     width: 100%;
-    margin: 0 0 1em 0;
+    margin: 0 0 1em 0; 
 }
 .kiwi-notconnected-bigicon > i {
     font-size: 4em;
@@ -155,19 +150,32 @@ export default {
     margin: 0 0.8em;
     cursor: pointer;
     transition: all 0.3s;
-}
-.kiwi-notconnected .button-container .button:hover{
-    background-color: #fff;
-    color:#000;
-    transition: all 0.2s;
+
+    :hover{
+        background-color: #fff;
+        color:#000;
+        transition: all 0.2s;
+    }
+
+    i{
+        float:left;
+        font-size: 1.6em;
+        line-height: 0.8em;
+        margin-right: 0.4em;
+    }
+
+    &.connection-settings{
+        font-size: 0.6em;
+        clear: both;
+        display: block;
+        max-width: 160px;
+        margin: 1em auto;
+        i{
+            line-height: 1em;
+        }
+    }
 }
 
-.kiwi-notconnected .button-container .button i{
-    float:left;
-    font-size: 1.6em;
-    line-height: 0.8em;
-    margin-right: 0.4em;
-}
 
 @media screen and (max-width: 1024px){
 
@@ -183,6 +191,10 @@ export default {
         padding: 0.6em 0.8em 0.6em 0.4em;
         width: 90%;
         box-sizing: border-box;
+        &.connection-settings{
+            font-size: 1em;
+            max-width: none;
+        }
     }
     .kiwi-notconnected .button-container .button i{
         display: none;
