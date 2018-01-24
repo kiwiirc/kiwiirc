@@ -23,10 +23,11 @@
         >
             <a class="kiwi-statebrowser-usermenu-header" @click="is_usermenu_open=!is_usermenu_open">{{$t('state_account')}} <i class="fa fa-caret-down"></i></a>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
-                {{$t('state_remembered')}}<br />
-                <a class="u-link" @click="clickForget">{{$t('state_forget')}}</i></a> <br />
-                <br />
-                <button class="u-button u-button-primary" @click="is_usermenu_open=false">{{$t('close')}}</button>
+                <p> {{$t('state_remembered')}} </p>
+                <a @click="clickForget">{{$t('state_forget')}}</a>
+                <div class="close-icon" @click="is_usermenu_open=false">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
             </div>
 
             <div class="kiwi-statebrowser-divider"></div>
@@ -204,29 +205,88 @@ export default {
     border-right: 5px solid rgba(255,255,255,0.3);
 }
 
-.kiwi-statebrowser-usermenu {
-    text-align: center;
-    padding: 7px 0;
-    font-size: 1.1em;
+.kiwi-statebrowser-usermenu .fa-caret-down{
+    transition: all 0.3s;
 }
+
+.kiwi-statebrowser-usermenu--open .fa-caret-down{
+    transform: rotate(-180deg);
+}
+
 .kiwi-statebrowser-usermenu-header {
+    display: block;
     cursor: pointer;
+    font-size: 1em;
+    padding: 1em 1em 1em 1em;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+.kiwi-statebrowser-usermenu-header i{
+    float: right;
+    line-height: 1.2em;
+    display: block;
+    font-size: 16px;
+}
+
+.kiwi-statebrowser-divider{
+    display:none;
 }
 
 .kiwi-statebrowser-usermenu-body {
     font-size: 0.9em;
-    margin: 5px;
+    position: relative;
+    margin: 0 0 1em 0;
+    padding: 2.5em 0 1em 0;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
-.kiwi-statebrowser-switcher {
-    text-align: center;
+.kiwi-statebrowser-usermenu-body p{
+    padding: 0 1em 1em 1em;
+    margin: 0;
+    cursor: default;
 }
+
+.kiwi-statebrowser-usermenu-body a{
+    cursor: pointer;
+}
+.kiwi-statebrowser-usermenu-body a:hover{
+    text-decoration: underline;
+}
+
+.kiwi-statebrowser-usermenu-body .close-icon{
+    position: absolute;
+    right:0em;
+    top:0em;
+    cursor: pointer;
+    transition: all 0.1s;
+    padding: 0.2em 0.4em;
+    border-radius:0 0 0 0.4em;
+    background-color:#fc6262;
+    color:#ffffff;
+    transition: all 0.3s;
+}
+.kiwi-statebrowser-usermenu-body .close-icon:hover{
+    background-color: #fe7575;
+}
+
+.kiwi-statebrowser-usermenu-body a{
+    width: 100%;
+    display:block;
+    margin: 0 auto;
+    text-align:center;
+    color: #42b983;
+    text-decoration:underline;
+    border: none;
+}
+
 .kiwi-statebrowser-switcher a {
     display: inline-block;
     width: 50%;
     padding: 5px 0;
     font-size: 1.2em;
     cursor: pointer;
+    text-align: center;
 }
 .kiwi-statebrowser-switcher a:first-of-type {
     background: rgba(255,255,255,0.15);
@@ -240,13 +300,13 @@ export default {
     width: 100%;
     flex: 1;
 }
-.kiwi-statebrowser-networks {
-}
 .kiwi-statebrowser-network {
     margin-bottom: 2em;
     overflow: hidden;
 }
-
+.kiwi-statebrowser-network:last-child {
+    margin-bottom: 0px;
+}
 
 .kiwi-statebrowser-options {
     position: absolute;
@@ -311,4 +371,23 @@ export default {
     top: 5px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 600px){
+  .kiwi-header{
+      text-align: center;
+  }
+
+  .kiwi-header .kiwi-header-notjoined{
+      display: inline-block;
+      margin: 10px auto;
+  }
+
+  .kiwi-container-toggledraw-statebrowser-messagecount{
+    width: 30px;
+    color: #000;
+    font-weight: 600;
+    max-height: 49.5px;
+  }
+}
+
 </style>
