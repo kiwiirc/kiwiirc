@@ -622,7 +622,7 @@ msgstr "takes half-ops from"
 msgid "modes_give_voice"
 msgstr "gives voice to"
 
-#: Take 
+#: Take voice
 msgid "modes_take_voice"
 msgstr "takes voice from"
 
@@ -630,17 +630,25 @@ msgstr "takes voice from"
 msgid "modes_give_admin"
 msgstr "gives admin to"
 
-#: Take 
+#: Take admin
 msgid "modes_take_admin"
 msgstr "takes admin from"
 
-#: Give 
+#: Give owner
 msgid "modes_give_owner"
 msgstr "gives owner to"
 
-#: Take 
+#: Take owner
 msgid "modes_take_owner"
 msgstr "takes owner from"
+
+#: Prepend unknown mode eg. sets +k on: %target
+msgid "modes_other_prepend"
+msgstr "sets"
+
+#: Append unknown mode 
+msgid "modes_other_append"
+msgstr "on"
 
 
 
