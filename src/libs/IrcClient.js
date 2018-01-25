@@ -651,20 +651,12 @@ function clientMiddleware(state, networkid) {
 
         if (command === 'mode') {
             let buffer = network.bufferByName(event.target);
+            let modeStrs = {};
             if (buffer) {
                 event.modes.forEach(mode => {
-                    let messageBody = TextFormatting.formatText('mode', {
-                        nick: event.nick,
-                        username: event.ident,
-                        host: event.hostname,
-                        text: `set ${mode.mode} ${mode.param || ''}`,
-                    });
-                    state.addMessage(buffer, {
-                        time: event.time || Date.now(),
-                        nick: '',
-                        message: messageBody,
-                        type: 'mode',
-                    });
+                    // Build our arrays for returning to the user
+                    modeStrs[mode.mode] = modeStrs[mode.mode] || [];
+                    modeStrs[mode.mode].push(mode.param);
 
                     // If this mode has a user prefix then we need to update the user object
                     let prefix = _.find(network.ircClient.network.options.PREFIX, {
@@ -697,6 +689,23 @@ function clientMiddleware(state, networkid) {
                             state.$delete(buffer.modes, modeChar);
                         }
                     }
+                });
+
+                // build our mode string for sending to the buffer
+                let modes = [];
+                _.each(modeStrs, (params, mode) => { modes.push(mode + ' ' + params.join(' ')); });
+
+                let messageBody = TextFormatting.formatText('mode', {
+                    nick: event.nick,
+                    username: event.ident,
+                    host: event.hostname,
+                    text: `set ${modes.join(', ')}`,
+                });
+                state.addMessage(buffer, {
+                    time: event.time || Date.now(),
+                    nick: '',
+                    message: messageBody,
+                    type: 'mode',
                 });
             }
         }
