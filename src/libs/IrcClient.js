@@ -692,16 +692,16 @@ function clientMiddleware(state, networkid) {
                 });
 
                 let modes = {
-                    '+o': this.$t('modes_give_ops'),
-                    '-o': this.$t('modes_take_ops'),
-                    '+h': this.$t('modes_give_halfops'),
-                    '-h': this.$t('modes_take_halfops'),
-                    '+v': this.$t('modes_give_voice'),
-                    '-v': this.$t('modes_take_voice'),
-                    '+a': this.$t('modes_give_admin'),
-                    '-a': this.$t('modes_take_admin'),
-                    '+q': this.$t('modes_give_owner'),
-                    '-q': this.$t('modes_take_owner'),
+                    '+o': 'modes_give_ops',
+                    '-o': 'modes_take_ops',
+                    '+h': 'modes_give_halfops',
+                    '-h': 'modes_take_halfops',
+                    '+v': 'modes_give_voice',
+                    '-v': 'modes_take_voice',
+                    '+a': 'modes_give_admin',
+                    '-a': 'modes_take_admin',
+                    '+q': 'modes_give_owner',
+                    '-q': 'modes_take_owner',
                 };
 
                 // Send one mode change & multiple users per line
@@ -711,7 +711,7 @@ function clientMiddleware(state, networkid) {
                         username: event.ident,
                         host: event.hostname,
                         targets: params.join(', '),
-                        text: (modes[mode] ? modes[mode] : `${this.$t('modes_other_prepend')} ${mode} ${this.$t('modes_other_append')}`),
+                        text: (modes[mode] ? this.$t(modes[mode]) : `${this.$t('modes_other_prepend')} ${mode} ${this.$t('modes_other_append')}`),
                     });
                     state.addMessage(buffer, {
                         time: event.time || Date.now(),
