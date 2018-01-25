@@ -209,12 +209,7 @@ export default {
         right: 0;
     }
 }
-.kiwi-sidebar--wide .kiwi-sidebar-buffersettings {
-    /*
-    animation-duration: 2s;
-    animation-name: settingstransition;
-    */
-}
+
 .kiwi-sidebar--wide .kiwi-nicklist {
     display: none;
 }
@@ -227,7 +222,7 @@ export default {
     text-align: center;
     transition: all 0.2s;
 }
-.kiwi-sidebar-options:hover i ,
+
 .kiwi-sidebar-options:hover {
     color:#42b983;
 }
@@ -241,8 +236,21 @@ export default {
     height: 100%;
 }
 
+.kiwi-sidebar-buffersettings .u-tabbed-content{
+    padding: 1em;
+}
+
 .kiwi-sidebar-settings label {
     display: block;
+}
+
+.kiwi-sidebar .u-tabbed-view-tab{
+    width: 33.3%;
+    box-sizing: border-box;
+    padding: 1em;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 @keyframes settingstransition {
@@ -252,6 +260,12 @@ export default {
 @keyframes nicklisttransition {
   from { height: 0; }
   to   { height: 100%; }
+}
+
+@media screen and (max-width: 600px){
+    .u-tabbed-view-tabs .u-tabbed-view-tab{
+        width: 100%;
+    }
 }
 
 </style>
