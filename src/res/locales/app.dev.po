@@ -599,6 +599,51 @@ msgstr "Ban and kick from the channel"
 
 
 
+
+#: Mode Changes $t('modes_')
+
+#: Give ops
+msgid "modes_give_ops"
+msgstr "gives ops to"
+
+#: Take ops
+msgid "modes_take_ops"
+msgstr "takes ops from"
+
+#: Give half-ops
+msgid "modes_give_halfops"
+msgstr "gives half-ops to"
+
+#: Take half-ops
+msgid "modes_take_halfops"
+msgstr "takes half-ops from"
+
+#: Give voice
+msgid "modes_give_voice"
+msgstr "gives voice to"
+
+#: Take 
+msgid "modes_take_voice"
+msgstr "takes voice from"
+
+#: Give admin
+msgid "modes_give_admin"
+msgstr "gives admin to"
+
+#: Take 
+msgid "modes_take_admin"
+msgstr "takes admin from"
+
+#: Give 
+msgid "modes_give_owner"
+msgstr "gives owner to"
+
+#: Take 
+msgid "modes_take_owner"
+msgstr "takes owner from"
+
+
+
 #: Personal $t('personal_')
 
 #: Your IRC client

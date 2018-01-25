@@ -698,6 +698,10 @@ function clientMiddleware(state, networkid) {
                     '-h': this.$t('modes_take_halfops'),
                     '+v': this.$t('modes_give_voice'),
                     '-v': this.$t('modes_take_voice'),
+                    '+a': this.$t('modes_give_admin'),
+                    '-a': this.$t('modes_take_admin'),
+                    '+q': this.$t('modes_give_owner'),
+                    '-q': this.$t('modes_take_owner'),
                 };
 
                 // Send one mode change & multiple users per line
@@ -707,7 +711,7 @@ function clientMiddleware(state, networkid) {
                         username: event.ident,
                         host: event.hostname,
                         targets: params.join(', '),
-                        text: (modes[mode] ? modes[mode] : this.$t('modes_other_prepend') + mode + this.$t('modes_other_append')),
+                        text: (modes[mode] ? modes[mode] : `${this.$t('modes_other_prepend')} ${mode} ${this.$t('modes_other_append')}`),
                     });
                     state.addMessage(buffer, {
                         time: event.time || Date.now(),
