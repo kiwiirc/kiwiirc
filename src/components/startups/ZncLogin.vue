@@ -122,8 +122,6 @@ export default {
             return net;
         },
         startUp: function startUp() {
-            state.removeAllNetworks();
-
             let netList = _.compact(this.znc_network.split(','));
             if (netList.length === 0) {
                 netList.push('');
