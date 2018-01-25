@@ -81,6 +81,22 @@ Vue.directive('rawElement', {
     },
 });
 
+// Register a global custom directive called `v-focus`
+Vue.directive('focus', {
+    // When the bound element is inserted into the DOM...
+    inserted(el) {
+        // Element is input so focus it
+        if (el.tagName === 'INPUT') {
+            el.focus();
+            return;
+        }
+        // Try to focus the first input element
+        let input = el.getElementsByTagName('input')[0];
+        if (input) {
+            input.focus();
+        }
+    },
+});
 
 loadApp();
 

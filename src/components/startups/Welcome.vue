@@ -13,7 +13,7 @@
                     <label v-if="showPass" class="kiwi-welcome-simple-have-password">
                         <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
                     </label>
-                    <input-text v-if="show_password_box" class="kiwi-welcome-simple-password input-text--reveal-value" :label="$t('password')" v-model="password" type="password" />
+                    <input-text v-focus v-if="show_password_box" class="kiwi-welcome-simple-password input-text--reveal-value" :label="$t('password')" v-model="password" type="password" />
                     <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" :label="$t('channel')" v-model="channel" />
                     <button
                         class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
