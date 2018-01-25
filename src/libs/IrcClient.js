@@ -691,22 +691,23 @@ function clientMiddleware(state, networkid) {
                     }
                 });
 
-                // build our mode string for sending to the buffer
                 let modes = {
-                    '+o': 'gives ops to: ',
-                    '-o': 'takes ops from: ',
-                    '+h': 'gives half-ops to: ',
-                    '-h': 'takes half-ops from: ',
-                    '+v': 'gives voice to: ',
-                    '-v': 'takes voice from: ',
+                    '+o': this.$t('modes_give_ops'),
+                    '-o': this.$t('modes_take_ops'),
+                    '+h': this.$t('modes_give_halfops'),
+                    '-h': this.$t('modes_take_halfops'),
+                    '+v': this.$t('modes_give_voice'),
+                    '-v': this.$t('modes_take_voice'),
                 };
+
+                // Send one mode change & multiple users per line
                 _.each(modeStrs, (params, mode) => {
                     let messageBody = TextFormatting.formatText('mode', {
                         nick: event.nick,
                         username: event.ident,
                         host: event.hostname,
-                        text: (modes[mode] ? modes[mode] : 'sets ' + mode + ' on ') +
-                            params.join(', '),
+                        targets: params.join(', '),
+                        text: (modes[mode] ? modes[mode] : this.$t('modes_other_prepend') + mode + this.$t('modes_other_append')),
                     });
                     state.addMessage(buffer, {
                         time: event.time || Date.now(),

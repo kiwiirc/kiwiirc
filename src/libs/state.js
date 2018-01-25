@@ -233,7 +233,7 @@ const stateObj = {
             channel_has_been_invited: 'ⓘ %nick %text',
             server_connecting: '%text',
             server_connecting_error: '%text',
-            mode: 'ⓘ %nick %text',
+            mode: 'ⓘ %nick %text: %targets',
             selfmode: 'ⓘ %nick %text',
             nickname_alreadyinuse: '⚠ %text',
             network_disconnected: '⚠ %text',
