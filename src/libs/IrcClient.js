@@ -50,7 +50,8 @@ export function create(state, networkid) {
 
             // bnccontrol is the control connection for BOUNCER commands, not a network
             if (network.name === 'bnccontrol') {
-                password = `${bnc.username}:${bnc.password}`;
+                // Some bouncers require a network to be set, so set a (hopefully) invalid one
+                password = `${bnc.username}/__kiwiauth:${bnc.password}`;
             } else {
                 password = `${bnc.username}/${netname}:${bnc.password}`;
             }

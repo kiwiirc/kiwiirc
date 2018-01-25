@@ -40,6 +40,12 @@ export default class NetworkProviderZnc {
 
     autoDetectZncNetworks() {
         this.state.$on('irc:raw', (command, event, network) => {
+            // Ignore if we're using the BOUNCER module already
+            let bnc = this.state.setting('bnc');
+            if (bnc.active) {
+                return;
+            }
+
             let isZnc = event.prefix && event.prefix.indexOf('irc.znc.in') > -1;
             if (isZnc && !network.is_znc) {
                 network.is_znc = true;
@@ -47,6 +53,12 @@ export default class NetworkProviderZnc {
         });
 
         this.state.$on('irc:registered', (event, network) => {
+            // Ignore if we're using the BOUNCER module already
+            let bnc = this.state.setting('bnc');
+            if (bnc.active) {
+                return;
+            }
+
             if (network.is_znc) {
                 this.enumNetworks(network);
             }
