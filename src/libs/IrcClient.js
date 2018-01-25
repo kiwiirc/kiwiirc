@@ -692,20 +692,28 @@ function clientMiddleware(state, networkid) {
                 });
 
                 // build our mode string for sending to the buffer
-                let modes = [];
-                _.each(modeStrs, (params, mode) => { modes.push(mode + ' ' + params.join(' ')); });
-
-                let messageBody = TextFormatting.formatText('mode', {
-                    nick: event.nick,
-                    username: event.ident,
-                    host: event.hostname,
-                    text: `set ${modes.join(', ')}`,
-                });
-                state.addMessage(buffer, {
-                    time: event.time || Date.now(),
-                    nick: '',
-                    message: messageBody,
-                    type: 'mode',
+                let modes = {
+                    '+o': 'gives ops to: ',
+                    '-o': 'takes ops from: ',
+                    '+h': 'gives half-ops to: ',
+                    '-h': 'takes half-ops from: ',
+                    '+v': 'gives voice to: ',
+                    '-v': 'takes voice from: ',
+                };
+                _.each(modeStrs, (params, mode) => {
+                    let messageBody = TextFormatting.formatText('mode', {
+                        nick: event.nick,
+                        username: event.ident,
+                        host: event.hostname,
+                        text: (modes[mode] ? modes[mode] : 'sets ' + mode + ' on ') +
+                            params.join(', '),
+                    });
+                    state.addMessage(buffer, {
+                        time: event.time || Date.now(),
+                        nick: '',
+                        message: messageBody,
+                        type: 'mode',
+                    });
                 });
             }
         }
