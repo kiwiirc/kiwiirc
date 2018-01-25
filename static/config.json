@@ -13,11 +13,9 @@
 		"tls": false,
 		"direct": false,
 		"channel": "#kiwiirc",
-		"nick": "kiwi-n?",
-		"infoBackground": "https://source.unsplash.com/random/?nature",
-		"infoContent": "<h1>Welcome to the test client</h1>"
+		"nick": "kiwi-n?"
 	},
 	"embedly": {
 		"key": ""
 	}
-} 
+}

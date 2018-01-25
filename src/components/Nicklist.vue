@@ -166,7 +166,6 @@ export default {
     overflow: hidden;
     box-sizing: border-box;
     overflow-y: auto;
-    padding-top: 1em;
 }
 .kiwi-nicklist-info {
     font-size: 0.9em;
