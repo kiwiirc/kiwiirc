@@ -6,7 +6,7 @@
 
                 <div class="kiwi-networksettings-error" v-if="network.state_error">We couldn't connect to that server :( <span>{{readableStateError(network.state_error)}}</span></div>
 
-                <input-text :label="$t('server')" v-model="network.connection.server" class="kiwi-networksettings-connection-address"/>
+                <input-text :label="$t('server')" v-focus v-model="network.connection.server" class="kiwi-networksettings-connection-address"/>
 
                 <input-text :label="$t('settings_port')" v-model="network.connection.port" type="number" class="kiwi-networksettings-connection-port">
                     <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[network.connection.tls ? 'kiwi-customserver-tls--enabled' : '']" @click="toggleTls">
@@ -151,11 +151,6 @@ export default {
             this.znc_network = match[2] || '';
             this.znc_password = match[3] || '';
         }
-    },
-    mounted: function mounted() {
-        this.$nextTick(() => {
-            this.$el.querySelector('.kiwi-networksettings-connection-address input').focus();
-        });
     },
 };
 </script>
