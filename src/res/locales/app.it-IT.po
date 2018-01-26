@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-01-18 09:50-0500\n"
+"PO-Revision-Date: 2018-01-26 04:11-0500\n"
 
 #: Start
 msgid "start_button"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Benvenuto su Kiwi IRC!"
 
 #: Close
 msgid "close"
@@ -235,7 +235,7 @@ msgstr "Silenzia suoni"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr ""
+msgstr "Nascondi il counteggio dei messaggi non letti"
 
 #: Operator tools
 msgid "operator_tools"
@@ -411,15 +411,15 @@ msgstr "Mostra quando le persone si collegato"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Mostra quando il topic del canale viene cambiato"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Mostra quando gli utenti cambiano i loro nick"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Mostra quando vengono cambiati i mode del canale"
 
 #: Extra message formatting
 msgid "side_formatting"
