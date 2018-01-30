@@ -306,7 +306,7 @@ function clientMiddleware(state, networkid) {
             let blockNewPms = state.setting('buffers.block_pms');
             let buffer = state.getBufferByName(networkid, bufferName);
             if (isPrivateMessage && !buffer && blockNewPms) {
-                return
+                return;
             } else if (!buffer) {
                 buffer = state.getOrAddBufferByName(networkid, bufferName);
             }
