@@ -303,7 +303,13 @@ function clientMiddleware(state, networkid) {
                 }
             }
 
-            let buffer = state.getOrAddBufferByName(networkid, bufferName);
+            let blockNewPms = state.setting('buffers.block_pms');
+            let buffer = state.getBufferByName(networkid, bufferName);
+            if (isPrivateMessage && !buffer && blockNewPms) {
+                return
+            } else if (!buffer) {
+                buffer = state.getOrAddBufferByName(networkid, bufferName);
+            }
 
             let textFormatType = 'privmsg';
             if (event.type === 'action') {
