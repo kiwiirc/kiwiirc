@@ -11,11 +11,11 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-01-26 04:11-0500\n"
+"PO-Revision-Date: 2018-02-01 02:40-0500\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Avvia"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
