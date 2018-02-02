@@ -15,6 +15,9 @@
                     </label>
                     <input-text v-focus v-if="show_password_box" class="kiwi-welcome-simple-password input-text--reveal-value" :label="$t('password')" v-model="password" type="password" />
                     <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" :label="$t('channel')" v-model="channel" />
+
+                    <div v-if="recaptchaSiteId" class="g-recaptcha" :data-sitekey="recaptchaSiteId"></div>
+
                     <button
                         class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
                         type="submit"
@@ -53,6 +56,8 @@ export default {
             showNick: true,
             show_password_box: false,
             closing: false,
+            recaptchaSiteId: '',
+            recaptchaResponseCache: '',
         };
     },
     computed: {
@@ -96,6 +101,27 @@ export default {
         },
     },
     methods: {
+        captchaSuccess() {
+            if (!this.recaptchaSiteId) {
+                return true;
+            }
+
+            return !!this.captchaResponse();
+        },
+        captchaResponse() {
+            // Cache the response code since the recaptcha UI may not be here if we come back to
+            // this screen after an IRC connection fail
+            if (this.recaptchaResponseCache) {
+                return this.recaptchaResponseCache;
+            }
+
+            let gEl = this.$el.querySelector('#g-recaptcha-response');
+            this.recaptchaResponseCache = gEl ?
+                gEl.value :
+                '';
+
+            return this.recaptchaResponseCache;
+        },
         readableStateError(err) {
             return Misc.networkErrorMessage(err);
         },
@@ -113,6 +139,10 @@ export default {
         },
         startUp: function startUp() {
             let options = state.settings.startupOptions;
+
+            if (!this.captchaSuccess()) {
+                return;
+            }
 
             let net;
             if (!this.network) {
@@ -133,6 +163,7 @@ export default {
                     gecos: options.gecos,
                 });
 
+                net.captchaResponse = this.captchaResponse();
                 this.network = net;
             } else {
                 net = this.network;
@@ -192,6 +223,15 @@ export default {
 
         if (options.autoConnect && this.nick && this.channel) {
             this.startUp();
+        }
+
+        this.recaptchaSiteId = options.recaptchaSiteId || '';
+    },
+    mounted() {
+        if (this.recaptchaSiteId) {
+            let scr = document.createElement('script');
+            scr.src = 'https://www.google.com/recaptcha/api.js';
+            this.$el.appendChild(scr);
         }
     },
 };
@@ -293,6 +333,9 @@ export default {
 .kiwi-welcome-simple-have-password,
 .kiwi-welcome-simple-password.input-text{
     margin-top: 0;
+}
+.kiwi-welcome-simple .g-recaptcha {
+    margin-bottom: 10px;
 }
 .kiwi-welcome-simple-start {
     font-size: 1.1em;

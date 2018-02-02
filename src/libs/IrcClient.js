@@ -154,6 +154,12 @@ function clientMiddleware(state, networkid) {
                 });
             });
         });
+
+        client.on('socket connected', err => {
+            if (network.captchaResponse) {
+                client.raw('CAPTCHA', network.captchaResponse);
+            }
+        });
     };
 
 
