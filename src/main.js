@@ -233,7 +233,12 @@ function initLocales() {
     // set a default language
     i18next.changeLanguage('en-us');
 
-    _.forEach(preferredLangs, (lang) => {
+    for (let idx = 0; idx < preferredLangs.length; idx++) {
+        let lang = preferredLangs[idx];
+        if (lang.length === 2) {
+            preferredLangs.splice(idx + 1, 0, lang + '-' + lang);
+        }
+
         if (_.includes(AvailableLocales.locales, lang.toLowerCase())) {
             i18next.changeLanguage(lang, (err, t) => {
                 if (err) {
@@ -241,10 +246,9 @@ function initLocales() {
                     i18next.changeLanguage('en-us');
                 }
             });
-            return false;
+            break;
         }
-        return true;
-    });
+    }
 }
 
 
