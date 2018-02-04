@@ -1,6 +1,9 @@
 <template>
     <div class="kiwi-nicklist">
-        <div class="kiwi-nicklist-info">{{$t('person', {count: sortedUsers.length})}}</div>
+        <div class="kiwi-nicklist-info">
+            <input :placeholder="$t('person', {count: sortedUsers.length})" v-model="search">
+            <i class="fa fa-search"></i>
+        </div>
         <ul class="kiwi-nicklist-users">
             <li
                 v-for="user in sortedUsers"
@@ -45,6 +48,7 @@ export default {
     data: function data() {
         return {
             userbox_user: null,
+            search: null,
         };
     },
     props: ['network', 'buffer', 'users'],
@@ -69,7 +73,9 @@ export default {
             for (let lowercaseNick in bufferUsers) {
                 let user = bufferUsers[lowercaseNick];
                 nickMap[user.nick] = lowercaseNick;
-                users.push(user);
+                if (!this.search || lowercaseNick.indexOf(this.search.toLowerCase()) !== -1) {
+                    users.push(user);
+                }
             }
 
             let bufferId = this.buffer.id;
@@ -169,10 +175,30 @@ export default {
 }
 .kiwi-nicklist-info {
     font-size: 0.9em;
-    padding-bottom: 1em;
+    padding-bottom: 0;
     text-align: center;
     border-width: 0 0 1px 0;
     border-style: solid;
+}
+.kiwi-nicklist-info input {
+    color: #222;
+    border: 0;
+    background: 0 0;
+    padding-left: 10px;
+    margin: 0;
+}
+.kiwi-nicklist-info input {
+    outline: 0;
+}
+i.fa-search {
+    position: relative;
+    z-index: 1;
+    left: -25px;
+    top: 1px;
+    color: #cfcfcf;
+    cursor:pointer;
+    width: 0;
+    line-height: 50px;
 }
 
 .kiwi-nicklist-users {
