@@ -1,12 +1,13 @@
 <template>
-    <div class="kiwi-welcome-znc" :class="[closing ? 'kiwi-welcome-znc--closing' : '']">
-
+    <div class="kiwi-welcome-znc" :class="[
+        closing ? 'kiwi-welcome-znc--closing' : '',
+        backgroundImage ? '' : 'kiwi-welcome-znc--no-bg',
+    ]" :style="backgroundStyle">
         <div class="kiwi-welcome-znc-section kiwi-welcome-znc-section-connection">
-            <h2 v-html="greetingText"></h2>
-
-            <template v-if="!network || network.state === 'disconnected'"">
+            <template v-if="!network || network.state === 'disconnected'">
                 <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-znc-form">
-                    <div class="kiwi-welcome-znc-error" v-if="network && network.state === 'disconnected'">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
+                    <h2 v-html="greetingText"></h2>
+                    <div class="kiwi-welcome-znc-error" v-if="network && (network.last_error || network.state_error)">We couldn't connect to the server :( <span>{{network.last_error || readableStateError(network.state_error)}}</span></div>
 
                     <input-text v-if="showUser" class="kiwi-welcome-znc-nick" :label="$t('username')" v-model="username" />
                     <input-text v-if="showPass" class="kiwi-welcome-znc-password" :label="$t('password')" v-model="password" type="password" />
@@ -20,13 +21,14 @@
                 </form>
             </template>
             <template v-else-if="network.state !== 'connected'">
-                <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" aria-hidden="true"></i>
+                <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
             </template>
-        </div>
-
-        <div class="kiwi-welcome-znc-section kiwi-welcome-znc-section-info" :style="infoStyle">
-            <div class="kiwi-welcome-znc-section-info-content" v-if="infoContent" v-html="infoContent"></div>
-        </div>
+          </div>
+          <p class='help'></p>
+          <div class="kiwi-welcome-znc-section kiwi-welcome-znc-section-info" :style="backgroundStyle">
+             <div class="kiwi-welcome-znc-section-info-content" v-if="infoContent" v-html="infoContent"></div>
+         </div>
+      </div>
     </div>
 </template>
 
@@ -67,17 +69,17 @@ export default {
         readyToStart: function readyToStart() {
             return this.username && (this.password || this.showPass === false);
         },
-        infoStyle: function infoStyle() {
+        backgroundStyle() {
             let style = {};
             let options = state.settings.startupOptions;
 
             if (options.infoBackground) {
                 style['background-image'] = `url(${options.infoBackground})`;
-            } else {
-                style['background-color'] = '#333333';
             }
-
             return style;
+        },
+        backgroundImage() {
+            return state.settings.startupOptions.infoBackground || '';
         },
         infoContent: function infoContent() {
             return state.settings.startupOptions.infoContent || '';
@@ -90,6 +92,7 @@ export default {
         close: function close() {
             this.closing = true;
             this.$el.addEventListener('transitionend', (event) => {
+                state.persistence.watchStateForChanges();
                 this.$emit('start');
             }, false);
         },
@@ -111,14 +114,14 @@ export default {
                 port: options.port,
                 tls: options.tls,
                 password: password,
+                encoding: _.trim(options.encoding),
+                direct: !!options.direct,
+                path: options.direct_path || '',
+                gecos: options.gecos,
             });
             return net;
         },
         startUp: function startUp() {
-            if (this.network) {
-                state.removeNetwork(this.network.id);
-            }
-
             let netList = _.compact(this.znc_network.split(','));
             if (netList.length === 0) {
                 netList.push('');
@@ -164,7 +167,6 @@ export default {
             options.showPass :
             true;
 
-
         if (options.autoConnect && this.username && this.password) {
             this.startUp();
         }
@@ -180,9 +182,11 @@ export default {
 }
 
 .kiwi-welcome-znc h2 {
-    margin-bottom: 1.5em;
+    font-size: 1.7em;
+    text-align: center;
+    padding: 0;
+    margin: 0.5em 0 1em 0;
 }
-
 .kiwi-welcome-znc-section {
     position: absolute;
     top: 0;
@@ -194,15 +198,27 @@ export default {
     overflow-y: auto;
 }
 
+.kiwi-welcome-znc-section-connection{
+    width: 50%;
+    position: relative;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kiwi-welcome-znc-form {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 0.5em;
+    padding: 1em;
+    border:1px solid #ececec;
+}
 
 /** Right side */
 .kiwi-welcome-znc-section-info {
     right: 0;
-    border: 0 solid #86b32d;
-    border-left-width: 5px;
-    background-size: cover;
     color: #fff;
-    background-position: bottom;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -216,30 +232,22 @@ export default {
     padding: 2em;
     line-height: 1.6em;
 }
-
-
 /** Left side */
 .kiwi-welcome-znc-error {
     text-align: center;
     margin: 1em 0;
     padding: 0.3em;
 }
-
 .kiwi-welcome-znc-error span {
     display: block;
     font-style: italic;
 }
 
-.kiwi-welcome-znc-section-connection {
-    left: 0;
-    padding-top: 3em;
-    font-size: 1.2em;
-}
-
 .kiwi-welcome-znc-section-connection label {
     text-align: left;
     display: inline-block;
-    margin-bottom: 1.5em;
+    margin-bottom: 0.8em;
+    padding: 0 0.5em;
 }
 .kiwi-welcome-znc-section-connection input[type="text"] {
     font-size: 1em;
@@ -248,15 +256,21 @@ export default {
     width: 100%;
     box-sizing: border-box;
 }
-
-.kiwi-welcome-znc .input-text,
-.kiwi-welcome-znc .kiwi-welcome-znc-have-password input {
-    margin-bottom: 1.5em;
+.kiwi-welcome-znc .input-text{
+    font-weight: 600;
+    opacity:0.6;
+    font-size: 1.2em;
+    margin-bottom: 0.8em;
 }
-.kiwi-welcome-znc-have-password input:checked {
-    margin-bottom: 0;
+.kiwi-welcome-znc .kiwi-welcome-znc-have-password input,
+.kiwi-welcome-znc-have-password {
+    font-size: 0.8em;
+    margin: 0.8em 0;
 }
-
+.kiwi-welcome-znc-have-password,
+.kiwi-welcome-znc-password.input-text{
+    margin-top: 0;
+}
 .kiwi-welcome-znc-start {
     font-size: 1.1em;
     cursor: pointer;
@@ -264,11 +278,25 @@ export default {
 .kiwi-welcome-znc-start[disabled] {
     cursor: not-allowed;
 }
-.kiwi-welcome-znc-form {
-    max-width: 300px;
-    margin: 2em auto;
+.kiwi-welcome-znc-form input{
+    padding: 0.5em;
 }
-
+.kiwi-welcome-znc-channel{
+    margin-bottom: 0.8em;
+}
+.kiwi-welcome-znc-form .u-submit{
+    width: 100%;
+    line-height: 50px;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-shadow: none;
+    margin: 0;
+    transition: all 0.2s;
+    border:none;
+    background-color: #86b32d;
+}
 /** Closing - the wiping away of the screen **/
 .kiwi-welcome-znc--closing .kiwi-welcome-znc-section-connection {
     left: -50%;
@@ -276,19 +304,95 @@ export default {
 .kiwi-welcome-znc--closing .kiwi-welcome-znc-section-info {
     right: -50%;
 }
+.kiwi-welcome-znc .help{
+    position: absolute;
+    bottom:0.2em;
+    font-size: 0.8em;
+    color:#666;
+    width: 50%;
+    text-align: center;
+}
+.kiwi-welcome-znc .help a{
+    text-decoration: underline;
+    color:#666;
+}
+.kiwi-welcome-znc .help a:hover{
+    color:#A9D87A;
+}
+
+/* Styling the preloader */
+.kiwi-welcome-znc .fa-spinner{
+    font-size: 1.5em;
+    position: absolute;
+    top: 50%;
+    z-index: 999;
+    font-size: 100px;
+    margin-top: -0.5em;
+    left: 50%;
+    margin-left: -40px;
+}
 
 /** Smaller screen...**/
 @media screen and (max-width: 850px) {
     .kiwi-welcome-znc {
         font-size: 0.9em;
     }
-
     .kiwi-startbnc-section-connection {
         margin-top: 1em;
+    }
+    .kiwi-welcome-znc-section-connection{
+      width: 100%;
     }
     .kiwi-welcome-znc-section-info-content {
         margin: 1em;
     }
+    .kiwi-welcome-znc-form {
+        position: static;
+        left: auto;
+        margin: 20px auto 20px auto;
+        z-index: 100;
+        position: relative;
+        top:auto;
+        align-self: flex-start;
+    }
+    .kiwi-welcome-znc p.help{
+        position: absolute;
+        bottom:20px;
+        width: 100%;
+        color:#fff;
+        z-index: 100;
+    }
+    .kiwi-welcome-znc p.help a{
+        color: #fff;
+    }
+
+    .kiwi-welcome-znc-section-info{
+      position: static;
+      width: 100%;
+      border: none;
+      min-height: 0px;
+    }
+
+    .fa-spinner{
+        position: absolute;
+        left: 48%;
+        top: 50%;
+        margin-top: -50px;
+        color: #fff;
+    }
+    .kiwi-welcome-znc-section-connection{
+      min-height: 400px;
+    }
+
+    .kiwi-welcome-znc{
+      position: relative;
+      min-height: 100%;
+    }
+
+    .kiwi-welcome-znc-section .kiwi-welcome-znc-section-connection{
+      position: static;
+    }
+
 }
 
 /** Even smaller screen.. probably phones **/
@@ -297,27 +401,56 @@ export default {
         font-size: 0.9em;
         overflow-y: auto;
     }
-
-    .kiwi-welcome-znc-section {
-        left: 0;
-        width: 100%;
-        right: auto;
-        position: relative;
-    }
-
-    .kiwi-welcome-znc-section-info {
-        border-width: 5px 0 0 0;
-    }
     .kiwi-welcome-znc-section-info-content {
         margin: 0.5em;
     }
-
     /** Closing - the wiping away of the screen **/
     .kiwi-welcome-znc--closing .kiwi-welcome-znc-section-connection {
         left: -100%;
     }
     .kiwi-welcome-znc--closing .kiwi-welcome-znc-section-info {
         left: -100%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .kiwi-welcome-znc-form {
+      width: 90%;
+    }
+}
+
+
+/** Background /border switching between screen sizes **/
+.kiwi-welcome-znc {
+    background-size: 0;
+    background-position: bottom;
+}
+.kiwi-welcome-znc-section-info {
+    background-size: cover;
+    background-position: bottom;
+    border-left: 5px solid #86b32d;
+}
+.kiwi-welcome-znc--no-bg .kiwi-welcome-znc-section-info {
+    background-color: rgb(51, 51, 51);
+}
+@media screen and (max-width: 850px) {
+    /* Apply some flex so that the info panel fills the rest of the bottom screen */
+    .kiwi-welcome-znc {
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+    }
+    .kiwi-welcome-znc-section {
+        overflow-y: visible;
+    }
+    .kiwi-welcome-znc-section-info {
+        background-size: 0;
+        border-left: none;
+        flex: 1 0;
+        display: block;
+    }
+    .kiwi-welcome-znc--no-bg .kiwi-welcome-znc-section-info {
+        border-top: 5px solid #86b32d;
     }
 }
 </style>
