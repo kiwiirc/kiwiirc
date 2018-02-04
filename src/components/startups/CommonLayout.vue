@@ -42,10 +42,15 @@ export default {
     methods: {
         close() {
             this.closing = true;
-            this.$el.addEventListener('transitionend', (event) => {
+            let startApp = (event) => {
+                this.$el.removeEventListener('transitionend', startApp);
                 state.persistence.watchStateForChanges();
-                this.$emit('start');
-            }, false);
+                // Hacky to be using $parent but this component should only be used in a sepcific
+                // scope within startup screens
+                this.$parent.$emit('start');
+            };
+
+            this.$el.addEventListener('transitionend', startApp, false);
         },
     },
 };
