@@ -1,11 +1,11 @@
 <template>
-    <div class="kiwi-startbnc" :class="[closing ? 'kiwi-startbnc--closing' : '']">
-        <div class="kiwi-startbnc-section kiwi-startbnc-section-connection">
-            <h2 v-html="greetingText"></h2>
-
-            <div class="kiwi-startbnc-status">{{statusMessage}}</div>
-
+    <startup-layout class="kiwi-startbnc" ref="layout">
+        <div slot="connection">
             <form v-on:submit.prevent="startUp" class="kiwi-startbnc-form">
+                <h2 v-html="greetingText"></h2>
+
+                <div class="kiwi-startbnc-status">{{statusMessage}}</div>
+
                 <label>
                     <span>{{$t('username')}}</span>
                     <input type="text" v-model="username" :disabled="loading" />
@@ -21,17 +21,7 @@
                 </button>
             </form>
         </div>
-
-        <div class="kiwi-startbnc-section kiwi-startbnc-section-info" :style="infoStyle">
-            <div class="kiwi-startbnc-section-info-content" v-if="infoContent" v-html="infoContent">
-                <h3>Take your conversations anywhere.</h3>
-                <h4>IRC? No problem.</h4>
-
-                <p>IRC has a history of being difficult, lets makes it usable.</p>
-                <p>Just log in and get going.</p>
-            </div>
-        </div>
-    </div>
+    </startup-layout>
 </template>
 
 <script>
@@ -39,16 +29,16 @@
 import _ from 'lodash';
 import state from '@/libs/state';
 import Logger from '@/libs/Logger';
+import StartupLayout from './CommonLayout';
 
 let log = Logger.namespace('Startup/kiwiBnc');
 
 export default {
-    created: function created() {
-        window.t = this;
+    components: {
+        StartupLayout,
     },
     data: function data() {
         return {
-            closing: false,
             loading: false,
             username: '',
             password: '',
@@ -72,30 +62,8 @@ export default {
                 greeting :
                 this.$t('start_button');
         },
-        infoStyle: function infoStyle() {
-            let style = {};
-            let options = state.settings.startupOptions;
-
-            if (options.infoBackground) {
-                style['background-image'] = `url(${options.infoBackground})`;
-            } else {
-                style['background-color'] = '#333333';
-            }
-
-            return style;
-        },
-        infoContent: function infoContent() {
-            return state.settings.startupOptions.infoContent || '';
-        },
     },
     methods: {
-        close: function close() {
-            this.closing = true;
-            this.$el.addEventListener('transitionend', (event) => {
-                state.persistence.watchStateForChanges();
-                this.$emit('start');
-            }, false);
-        },
         startUp: async function startUp() {
             this.statusMessage = this.$t('logging_in');
             this.loading = true;
@@ -127,7 +95,7 @@ export default {
                 }
 
                 this.monitorNetworkChanges(bncnet, bncNetworks);
-                this.close();
+                this.$refs.layout.close();
             };
 
             let onError = (event) => {
@@ -334,55 +302,12 @@ export default {
 
 <style>
 
-.kiwi-startbnc {
-    text-align: center;
-    height: 100%;
-}
-
-.kiwi-startbnc-section {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50%;
-    padding: 1em;
-    box-sizing: border-box;
-    transition: right 0.3s, left 0.3s;
-    overflow-y: auto;
-}
-.kiwi-startbnc-section-info {
-    right: 0;
-    border: 0 solid #86b32d;
-    border-left-width: 5px;
-    background-size: cover;
-    color: #fff;
-    background-position: bottom;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100%;
-}
-.kiwi-startbnc-section-info-content {
-    background: rgba(255, 255, 255, 0.74);
-    margin: 3em;
-    color: #1b1b1b;
-    font-size: 1.5em;
-    padding: 1em;
-    line-height: 1.6em;
-}
-
-
-.kiwi-startbnc-section-connection {
-    left: 0;
-    margin-top: 3em;
-    font-size: 1.2em;
-}
-
-.kiwi-startbnc-section-connection label {
+.kiwi-startbnc-form label {
     text-align: left;
-    display: inline-block;
+    display: block;
     margin-bottom: 1.5em;
 }
-.kiwi-startbnc-section-connection input {
+.kiwi-startbnc-form input {
     font-size: 1em;
     margin-top: 5px;
     padding: 0.3em 1em;
@@ -405,63 +330,10 @@ export default {
 }
 .kiwi-startbnc-form {
     width: 300px;
-    margin: 2em auto;
-}
-.kiwi-startbnc-server-types {
-    font-size: 0.9em;
-}
-.kiwi-startbnc-server-types a {
-    margin: 0 1em;
+    background-color: #fff;
+    border-radius: 0.5em;
+    padding: 1em;
+    border:1px solid #ececec;
 }
 
-.kiwi-startbnc--closing .kiwi-startbnc-section-connection {
-    left: -50%;
-}
-.kiwi-startbnc--closing .kiwi-startbnc-section-info {
-    right: -50%;
-}
-
-/** Smaller screen...**/
-@media screen and (max-width: 850px) {
-    .kiwi-startbnc {
-        font-size: 0.9em;
-    }
-
-    .kiwi-startbnc-section-connection {
-        margin-top: 1em;
-    }
-    .kiwi-startbnc-section-info-content {
-        margin: 1em;
-    }
-}
-
-/** Even smaller screen.. probably phones **/
-@media screen and (max-width: 750px) {
-    .kiwi-startbnc {
-        font-size: 0.9em;
-        overflow-y: auto;
-    }
-
-    .kiwi-startbnc-section {
-        left: 0;
-        width: 100%;
-        right: auto;
-        position: relative;
-    }
-
-    .kiwi-startbnc-section-info {
-        border-width: 5px 0 0 0;
-    }
-    .kiwi-startbnc-section-info-content {
-        margin: 0.5em;
-    }
-
-    /** Closing - the wiping away of the screen **/
-    .kiwi-startbnc--closing .kiwi-startbnc-section-connection {
-        left: -100%;
-    }
-    .kiwi-startbnc--closing .kiwi-startbnc-section-info {
-        left: -100%;
-    }
-}
 </style>
