@@ -136,7 +136,9 @@ export default {
                     gecos: options.gecos,
                 });
 
-                net.captchaResponse = this.captchaResponse();
+                if (options.recaptchaSiteId) {
+                    net.captchaResponse = this.captchaResponse();
+                }
                 this.network = net;
             } else {
                 net = this.network;
