@@ -287,6 +287,7 @@ const stateObj = {
     ui: {
         active_network: 0,
         active_buffer: '',
+        last_active_buffers: [],
         app_has_focus: true,
         is_touch: false,
     },
@@ -648,9 +649,16 @@ const state = new Vue({
                 this.ui.active_network = 0;
                 this.ui.active_buffer = '';
             } else {
-                let network = this.getNetwork(networkid);
-                if (network) {
-                    network.lastActiveBuffer = this.ui.active_buffer;
+                if (this.ui.active_network) {
+                    // Keep track of last 20 viewed buffers. When closing buffers we can go back to
+                    // one of the previous ones
+                    this.ui.last_active_buffers.push({
+                        networkid: this.ui.active_network,
+                        bufferName: this.ui.active_buffer,
+                    });
+
+                    let lastActive = this.ui.last_active_buffers;
+                    this.ui.last_active_buffers = lastActive.splice(lastActive.length - 20);
                 }
 
                 this.ui.active_network = networkid;
@@ -663,30 +671,51 @@ const state = new Vue({
                 }
 
                 // Update the buffers last read time
-                buffer.markAsRead(true);
+                if (buffer) {
+                    buffer.markAsRead(true);
+                }
             }
         },
 
-        setLastActiveBuffer: function setLastActiveBuffer(networkid) {
-            let target;
-            let network = this.getNetwork(networkid);
-            if (network && network.lastActiveBuffer) {
-                for (let b in network.buffers) {
-                    if (network.buffers[b] &&
-                        network.buffers[b].name === network.lastActiveBuffer
-                    ) {
-                        target = network.lastActiveBuffer;
-                    }
+        openLastActiveBuffer: function openLastActiveBuffer() {
+            let targetNetwork;
+            let targetBuffer;
+            let lastActive = this.ui.last_active_buffers;
+
+            // Find the last buffer in our history that still exists
+            for (let i = lastActive.length - 1; i >= 0; i--) {
+                let network = this.getNetwork(lastActive[i].networkid);
+                if (!network) {
+                    continue;
+                }
+
+                let buffer = network.bufferByName(lastActive[i].bufferName);
+                if (!buffer) {
+                    continue;
+                }
+
+                targetNetwork = network;
+                targetBuffer = buffer;
+
+                // Trim the buffer history to this point
+                lastActive.splice(i);
+                break;
+            }
+
+            // If we ran out of buffer history, try going to the active networks server buffer
+            if (!targetBuffer) {
+                let network = this.getActiveNetwork();
+                if (network) {
+                    targetNetwork = network;
+                    targetBuffer = network.serverBuffer().name;
                 }
             }
 
-            if (!target) {
-                target = network ?
-                    network.serverBuffer().name :
-                    '';
+            if (targetBuffer) {
+                this.setActiveBuffer(targetNetwork.id, targetBuffer.name);
+            } else {
+                this.setActiveBuffer();
             }
-
-            this.setActiveBuffer(networkid, target);
         },
 
         updateBufferLastRead: function updateBufferLastRead(networkid, bufferName) {
@@ -714,6 +743,10 @@ const state = new Vue({
         },
 
         getBufferByName: function getBufferByName(networkid, bufferName) {
+            if (!bufferName) {
+                return null;
+            }
+
             let network = this.getNetwork(networkid);
             if (!network) {
                 return null;
@@ -780,7 +813,7 @@ const state = new Vue({
             }
 
             if (isActiveBuffer) {
-                this.setLastActiveBuffer(network.id);
+                this.openLastActiveBuffer();
             }
 
             // Remove this buffer from any users
