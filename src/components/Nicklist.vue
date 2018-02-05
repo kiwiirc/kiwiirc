@@ -1,8 +1,8 @@
 <template>
     <div class="kiwi-nicklist">
         <div class="kiwi-nicklist-info">
-            <input :placeholder="$t('person', {count: sortedUsers.length})" v-model="search">
-            <i class="fa fa-search"></i>
+            <input :placeholder="$t('person', {count: sortedUsers.length})" v-model="user_filter" ref="user_filter">
+            <i class="fa fa-search" @click="$refs.user_filter.focus()"></i>
         </div>
         <ul class="kiwi-nicklist-users">
             <li
@@ -48,7 +48,7 @@ export default {
     data: function data() {
         return {
             userbox_user: null,
-            search: null,
+            user_filter: '',
         };
     },
     props: ['network', 'buffer', 'users'],
@@ -69,11 +69,12 @@ export default {
             let nickMap = Object.create(null);
             let users = [];
             let bufferUsers = this.buffer.users;
+            let nickFilter = this.user_filter.toLowerCase();
             /* eslint-disable guard-for-in */
             for (let lowercaseNick in bufferUsers) {
                 let user = bufferUsers[lowercaseNick];
                 nickMap[user.nick] = lowercaseNick;
-                if (!this.search || lowercaseNick.indexOf(this.search.toLowerCase()) !== -1) {
+                if (!nickFilter || lowercaseNick.indexOf(nickFilter) !== -1) {
                     users.push(user);
                 }
             }
@@ -179,25 +180,22 @@ export default {
     text-align: center;
     border-width: 0 0 1px 0;
     border-style: solid;
+    display: flex;
 }
 .kiwi-nicklist-info input {
-    color: #222;
+    flex: 1;
     border: 0;
     background: 0 0;
-    padding-left: 10px;
+    padding: 10px 0 10px 20px;
     margin: 0;
-}
-.kiwi-nicklist-info input {
     outline: 0;
+    text-align: center;
 }
-i.fa-search {
-    position: relative;
-    z-index: 1;
-    left: -25px;
-    top: 1px;
+.kiwi-nicklist-info  i.fa-search {
+    flex: 1;
+    margin-right: 25px;
     color: #cfcfcf;
-    cursor:pointer;
-    width: 0;
+    cursor: pointer;
     line-height: 50px;
 }
 
