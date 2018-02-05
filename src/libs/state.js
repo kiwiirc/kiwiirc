@@ -648,6 +648,11 @@ const state = new Vue({
                 this.ui.active_network = 0;
                 this.ui.active_buffer = '';
             } else {
+                let network = this.getNetwork(networkid);
+                if (network) {
+                    network.lastActiveBuffer = this.ui.active_buffer;
+                }
+
                 this.ui.active_network = networkid;
                 this.ui.active_buffer = bufferName;
 
@@ -660,6 +665,28 @@ const state = new Vue({
                 // Update the buffers last read time
                 buffer.markAsRead(true);
             }
+        },
+
+        setLastActiveBuffer: function setLastActiveBuffer(networkid) {
+            let target;
+            let network = this.getNetwork(networkid);
+            if (network && network.lastActiveBuffer) {
+                for (let b in network.buffers) {
+                    if (network.buffers[b] &&
+                        network.buffers[b].name === network.lastActiveBuffer
+                    ) {
+                        target = network.lastActiveBuffer;
+                    }
+                }
+            }
+
+            if (!target) {
+                target = network ?
+                    network.serverBuffer().name :
+                    '';
+            }
+
+            this.setActiveBuffer(networkid, target);
         },
 
         updateBufferLastRead: function updateBufferLastRead(networkid, bufferName) {
@@ -753,7 +780,7 @@ const state = new Vue({
             }
 
             if (isActiveBuffer) {
-                this.setActiveBuffer(network.id, network.serverBuffer().name);
+                this.setLastActiveBuffer(network.id);
             }
 
             // Remove this buffer from any users
