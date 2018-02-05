@@ -142,6 +142,7 @@ function loadApp() {
         .then(applyConfig)
         .then(initState)
         .then(initLocales)
+        .then(loadPlugins)
         .then(startApp)
         .catch(showError);
 }
@@ -175,6 +176,37 @@ function applyConfigObj(obj, target) {
             applyConfigObj(val, target[key]);
         } else {
             Vue.set(target, key, val);
+        }
+    });
+}
+
+
+function loadPlugins() {
+    return new Promise((resolve, reject) => {
+        let plugins = state.settings.plugins || [];
+        let pluginIdx = -1;
+
+        loadNextScript();
+
+        function loadNextScript(sSrc, fOnload) {
+            let plugin = plugins[++pluginIdx];
+
+            if (!plugin) {
+                resolve();
+                return;
+            }
+
+            let scr = document.createElement('script');
+            scr.onerror = () => {
+                log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
+                loadNextScript();
+            };
+            scr.onload = () => {
+                loadNextScript();
+            };
+
+            document.body.appendChild(scr);
+            scr.src = plugin.url;
         }
     });
 }

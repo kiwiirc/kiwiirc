@@ -3,7 +3,7 @@ import Vue from 'vue';
 import Logger from './Logger';
 
 let singletonInstance = null;
-let callbacksOnReady = [];
+let plugins = [];
 
 export default class GlobalApi {
     constructor() {
@@ -30,24 +30,27 @@ export default class GlobalApi {
     }
 
     plugin(pluginName, fn) {
+        let plugin = { name: pluginName, fn: fn };
         if (this.isReady) {
-            fn(this);
+            this.initPlugin(plugin);
         } else {
-            callbacksOnReady.push(fn);
+            plugins.push(plugin);
         }
     }
 
     // Init any plugins that were added before we were ready
     initPlugins() {
-        callbacksOnReady.forEach(fn => {
-            try {
-                fn(this);
-            } catch (err) {
-                window.error(err);
-            }
-        });
+        plugins.forEach(plugin => this.initPlugin(plugin));
+        plugins = [];
+    }
 
-        callbacksOnReady = [];
+    initPlugin(plugin) {
+        let pluginLogger = Logger.namespace(`Plugin ${plugin.name}`);
+        try {
+            plugin.fn(this, pluginLogger);
+        } catch (err) {
+            pluginLogger.error(err.stack);
+        }
     }
 
     setState(state) {
