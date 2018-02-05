@@ -414,7 +414,7 @@ const state = new Vue({
     data: stateObj,
     methods: {
         // Export enough state so that it can be imported in future to resume
-        exportState: function exportState(includeBuffers) {
+        exportState(includeBuffers) {
             let toExport = {};
 
             if (includeBuffers) {
@@ -461,7 +461,7 @@ const state = new Vue({
         },
 
         // Import a previously exported state to continue that state
-        importState: function importState(stateStr) {
+        importState(stateStr) {
             let importObj = JSON.parse(stateStr);
             if (importObj && importObj.networks) {
                 this.resetState();
@@ -499,13 +499,13 @@ const state = new Vue({
             }
         },
 
-        resetState: function resetState() {
+        resetState() {
             this.$set(this.$data, 'user_settings', []);
             this.$set(this.$data, 'networks', []);
             messages.splice(0);
         },
 
-        setting: function setting(name, val) {
+        setting(name, val) {
             if (typeof val !== 'undefined') {
                 // Setting any setting always goes into the user own settings space
                 return this.setSetting('user_settings.' + name, val);
@@ -521,7 +521,7 @@ const state = new Vue({
         },
 
         // Accept 'dotted.notation' to read a state property of any depth
-        getSetting: function getSetting(name) {
+        getSetting(name) {
             let parts = name.split('.');
             let val = this.$data;
 
@@ -536,7 +536,7 @@ const state = new Vue({
         },
 
         // Accept 'dotted.notation' to set a state property of any depth
-        setSetting: function setSetting(name, newVal) {
+        setSetting(name, newVal) {
             let parts = name.split('.');
             let val = this.$data;
 
@@ -556,11 +556,11 @@ const state = new Vue({
             return val;
         },
 
-        getActiveNetwork: function getActiveNetwork() {
+        getActiveNetwork() {
             return this.getNetwork(this.ui.active_network);
         },
 
-        getNetwork: function getNetwork(networkid) {
+        getNetwork(networkid) {
             let network = _.find(this.networks, {
                 id: networkid,
             });
@@ -575,7 +575,7 @@ const state = new Vue({
             });
         },
 
-        addNetwork: function addNetwork(name, nick, serverInfo) {
+        addNetwork(name, nick, serverInfo) {
             // Find the current largest ID and increment it by 1
             function networkidReduce(currentMax, network) {
                 return network.id > currentMax ?
@@ -619,7 +619,7 @@ const state = new Vue({
             return network;
         },
 
-        removeNetwork: function removeNetwork(networkid) {
+        removeNetwork(networkid) {
             let network = this.getNetwork(networkid);
             if (!network) {
                 return;
@@ -640,11 +640,11 @@ const state = new Vue({
             state.$emit('network.removed', eventObj);
         },
 
-        getActiveBuffer: function getActiveBuffer() {
+        getActiveBuffer() {
             return this.getBufferByName(this.ui.active_network, this.ui.active_buffer);
         },
 
-        setActiveBuffer: function setActiveBuffer(networkid, bufferName) {
+        setActiveBuffer(networkid, bufferName) {
             if (!networkid) {
                 this.ui.active_network = 0;
                 this.ui.active_buffer = '';
@@ -718,7 +718,7 @@ const state = new Vue({
             }
         },
 
-        updateBufferLastRead: function updateBufferLastRead(networkid, bufferName) {
+        updateBufferLastRead(networkid, bufferName) {
             let buffer = this.getBufferByName(networkid, bufferName);
             if (buffer) {
                 buffer.last_read = Date.now();
@@ -726,7 +726,7 @@ const state = new Vue({
             }
         },
 
-        getOrAddBufferByName: function getOrAddBufferByName(networkid, bufferName) {
+        getOrAddBufferByName(networkid, bufferName) {
             let network = this.getNetwork(networkid);
             if (!network) {
                 return null;
@@ -742,7 +742,7 @@ const state = new Vue({
             return buffer;
         },
 
-        getBufferByName: function getBufferByName(networkid, bufferName) {
+        getBufferByName(networkid, bufferName) {
             if (!bufferName) {
                 return null;
             }
@@ -758,7 +758,7 @@ const state = new Vue({
             return buffer;
         },
 
-        addBuffer: function addBuffer(networkid, bufferName) {
+        addBuffer(networkid, bufferName) {
             // If we already have this buffer, don't re-add it
             let buffer = this.getBufferByName(networkid, bufferName);
             if (buffer) {
@@ -784,7 +784,7 @@ const state = new Vue({
             return buffer;
         },
 
-        removeBuffer: function removeBuffer(buffer) {
+        removeBuffer(buffer) {
             let isActiveBuffer = (this.getActiveBuffer() === buffer);
 
             let network = this.getNetwork(buffer.networkid);
@@ -824,7 +824,7 @@ const state = new Vue({
             }
         },
 
-        addMessage: function addMessage(buffer, message) {
+        addMessage(buffer, message) {
             let user = this.getUser(buffer.networkid, message.nick);
             let bufferMessage = new Message(message, user);
             if (user && user.ignore) {
@@ -904,7 +904,7 @@ const state = new Vue({
             this.$emit('message.new', bufferMessage, buffer);
         },
 
-        getMessages: function getMessages(buffer) {
+        getMessages(buffer) {
             let bufMessages = _.find(messages, {
                 networkid: buffer.networkid,
                 buffer: buffer.name,
@@ -915,7 +915,7 @@ const state = new Vue({
                 [];
         },
 
-        getUser: function getUser(networkid, nick, usersArr_) {
+        getUser(networkid, nick, usersArr_) {
             let user = null;
             let users = usersArr_;
 
@@ -935,7 +935,7 @@ const state = new Vue({
 
         // Modify a networks user array without hitting vues reactive system until fn()
         // has completed. Good for making large changes in bulk
-        usersTransaction: function usersTransaction(networkid, fn) {
+        usersTransaction(networkid, fn) {
             let network = this.getNetwork(networkid);
             if (!network) {
                 return;
@@ -946,7 +946,7 @@ const state = new Vue({
             this.$set(network, 'users', users);
         },
 
-        addUser: function addUser(networkid, user, usersArr_) {
+        addUser(networkid, user, usersArr_) {
             let network = null;
 
             // Accept either a network ID or a direct network object
@@ -986,7 +986,7 @@ const state = new Vue({
             return userObj;
         },
 
-        removeUser: function removeUser(networkid, user) {
+        removeUser(networkid, user) {
             let network = this.getNetwork(networkid);
             if (!network) {
                 return;
@@ -1000,7 +1000,7 @@ const state = new Vue({
             this.$delete(network.users, user.nick.toLowerCase());
         },
 
-        addMultipleUsersToBuffer: function addMultipleUsersToBuffer(buffer, newUsers) {
+        addMultipleUsersToBuffer(buffer, newUsers) {
             let network = this.getNetwork(buffer.networkid);
             let bufUsers = _.clone(buffer.users);
 
@@ -1030,7 +1030,7 @@ const state = new Vue({
             buffer.users = bufUsers;
         },
 
-        addUserToBuffer: function addUserToBuffer(buffer, user, modes) {
+        addUserToBuffer(buffer, user, modes) {
             let network = this.getNetwork(buffer.networkid);
             let userObj = state.getUser(network.id, user.nick);
 
@@ -1051,11 +1051,11 @@ const state = new Vue({
             }
         },
 
-        removeUserFromBuffer: function removeUserFromBuffer(buffer, nick) {
+        removeUserFromBuffer(buffer, nick) {
             buffer.removeUser(nick);
         },
 
-        getBuffersWithUser: function getBuffersWithUser(networkid, nick) {
+        getBuffersWithUser(networkid, nick) {
             let network = this.getNetwork(networkid);
             if (!network) {
                 return [];
@@ -1072,7 +1072,7 @@ const state = new Vue({
             return buffers;
         },
 
-        changeUserNick: function changeUserNick(networkid, oldNick, newNick) {
+        changeUserNick(networkid, oldNick, newNick) {
             let network = this.getNetwork(networkid);
             if (!network) {
                 return;
