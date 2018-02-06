@@ -59,16 +59,24 @@ export default class GlobalApi extends EventEmitter {
 
         // Hacky, but since Vues emitter doesnt support 'all', hijack its $emit call
         // so that we can forward the event on to plugins
-        let oldEmit = this.state.$emit;
+        let stateEmit = this.state.$emit;
+        let thisEmit = this.emit;
+
         this.state.$emit = (...args) => {
             try {
-                this.emit('all', ...args.slice(1));
-                this.emit(...args);
+                thisEmit.call(this, 'all', args[0], ...args.slice(1));
+                thisEmit.call(this, ...args);
             } catch (err) {
                 Logger.error(err.stack);
             }
 
-            return oldEmit.call(this.state, ...args);
+            return stateEmit.call(this.state, ...args);
+        };
+
+        // Let plugins emit events into the internal state
+        this.emit = (...args) => {
+            stateEmit.call(this.state, ...args);
+            thisEmit.call(this, ...args);
         };
     }
 
