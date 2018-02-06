@@ -39,7 +39,7 @@ export default class NetworkProviderZnc {
     }
 
     autoDetectZncNetworks() {
-        this.state.$on('irc:raw', (command, event, network) => {
+        this.state.$on('irc.raw', (command, event, network) => {
             // Ignore if we're using the BOUNCER module already
             let bnc = this.state.setting('bnc');
             if (bnc.active) {
@@ -52,7 +52,7 @@ export default class NetworkProviderZnc {
             }
         });
 
-        this.state.$on('irc:registered', (event, network) => {
+        this.state.$on('irc.registered', (event, network) => {
             // Ignore if we're using the BOUNCER module already
             let bnc = this.state.setting('bnc');
             if (bnc.active) {
@@ -99,11 +99,11 @@ export default class NetworkProviderZnc {
     lineCapture() {
         let ee = eventEmitter();
         ee.stop = () => {
-            this.state.$off('irc:message', onLine);
+            this.state.$off('irc.message', onLine);
             return ee;
         };
         ee.start = () => {
-            this.state.$on('irc:message', onLine);
+            this.state.$on('irc.message', onLine);
             return ee;
         };
 

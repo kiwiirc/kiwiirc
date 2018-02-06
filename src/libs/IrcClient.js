@@ -164,7 +164,8 @@ function clientMiddleware(state, networkid) {
 
 
     function rawEventsHandler(command, event, rawLine, client, next) {
-        state.$emit('irc:raw', command, event, network);
+        state.$emit('irc.raw', command, event, network);
+        state.$emit('irc.raw.' + command, command, event, network);
         next();
     }
 
@@ -173,7 +174,7 @@ function clientMiddleware(state, networkid) {
         // Trigger this event through the state object first. If it's been handled
         // somewhere else then we ignore it.
         let ircEventObj = { handled: false };
-        state.$emit('irc:' + command, event, network, ircEventObj);
+        state.$emit('irc.' + command, event, network, ircEventObj);
         if (ircEventObj.handled) {
             next();
             return;
