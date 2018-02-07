@@ -160,7 +160,7 @@ export default {
 }
 
 /** Background /border switching between screen sizes **/
-/* stylelint-disable */
+/* stylelint-disable  no-duplicate-selectors */
 .kiwi-startup-common {
     background-size: 0;
     background-position: bottom;
@@ -175,7 +175,8 @@ export default {
 .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
     background-color: rgb(51, 51, 51);
 }
-/* stylint-enable*/
+
+/* stylint-enable */
 
 @media (max-width: 850px) {
     /* Apply some flex so that the info panel fills the rest of the bottom screen */
