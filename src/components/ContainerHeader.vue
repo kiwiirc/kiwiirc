@@ -145,22 +145,26 @@ export default {
 </script>
 
 <style>
+
 .kiwi-header {
     box-sizing: border-box;
     z-index: 2;
     overflow: hidden;
     padding: 0.5em 1em;
 }
+
 .kiwi-header:hover {
     max-height: none;
 }
+
 .kiwi-header--showall {
     height: auto;
     max-height: 100%;
     overflow-y: auto;
 }
+
 .kiwi-header-name {
-    float:left;
+    float: left;
     font-weight: bold;
     opacity: 0.6;
     line-height: 1.7em;
@@ -168,18 +172,19 @@ export default {
     font-size: 1.3em;
     margin-right: 0.5em;
 }
+
 .kiwi-header-topic {
     font-size: 1em;
-    line-height: 1.7em;
     cursor: default;
     opacity: 0.8;
     line-height: 2.2em;
     max-width: 50%;
     height: 1.7em;
     overflow: hidden;
+    display: inline-block;
 }
 
-.kiwi-header-topic:hover{
+.kiwi-header-topic:hover {
     height: auto;
 }
 
@@ -187,22 +192,21 @@ export default {
     display: inline-block;
     margin-left: 1em;
 }
+
 .kiwi-header-server-settings {
     display: inline;
 }
+
 .kiwi-header-server-connection {
     display: inline-block;
 }
+
 .kiwi-header-options {
     display: inline-block;
     float: right;
 }
 
-.kiwi-header-topic{
-    display: inline-block;
-}
-
-.kiwi-header-options .u-button{
+.kiwi-header-options .u-button {
     text-transform: uppercase;
     font-size: 0.7em;
     font-weight: 600;
@@ -212,7 +216,7 @@ export default {
     border-radius: 0.4em;
 }
 
-.kiwi-header-join-channel-button{
+.kiwi-header-join-channel-button {
     border-radius: 0.3em;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -226,17 +230,18 @@ export default {
 .kiwi-header-close-buffersettings {
     float: right;
 }
+
 .kiwi-header-buffersettings {
     padding: 5px;
     margin-top: 1em;
 }
 
-@media screen and (max-width: 600px){
-    .kiwi-header{
+@media screen and (max-width: 600px) {
+    .kiwi-header {
         padding: 0.6em 1.2em;
     }
 
-    .kiwi-header-name{
+    .kiwi-header-name {
         line-height: 2.2em;
         font-size: 1em;
     }

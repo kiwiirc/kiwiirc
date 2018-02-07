@@ -2,7 +2,7 @@
     <div class="kiwi-selfuser">
         <div class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">{{network.nick}}</span>
-            <span class="kiwi-selfuser-host">{{netUser.username}}@{{netUser.host}}</span>    
+            <span class="kiwi-selfuser-host">{{netUser.username}}@{{netUser.host}}</span>
         </div>
         <div class="kiwi-selfuser-modes">{{modeString}}</div>
         <div class="kiwi-selfuser-actions">
@@ -60,13 +60,13 @@ export default {
     font-weight: bold;
     font-size: 1.1em;
 }
+
 .kiwi-selfuser-host {
     font-style: italic;
 }
-.kiwi-selfuser-modes {
-}
+
 .kiwi-selfuser-actions {
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #ddd;
     margin-top: 1em;
     padding-top: 1em;
 }

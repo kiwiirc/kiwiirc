@@ -89,6 +89,7 @@ export default {
 </script>
 
 <style lang="less">
+
 .kiwi-messagelist-message--compact {
     .kiwi-messagelist-message-privmsg:hover,
     .kiwi-messagelist-message-action:hover,
@@ -96,48 +97,57 @@ export default {
         cursor: pointer;
         border-left-color: #80ab52;
     }
+
     .kiwi-messagelist-message--blur {
         opacity: 0.5;
     }
+
     .kiwi-messagelist-nick {
         width: 120px;
         display: inline-block;
         float: left;
     }
+
     .kiwi-messagelist-time {
         display: inline-block;
         float: right;
     }
+
     .kiwi-messagelist-body {
         display: block;
         white-space: pre-wrap;
         word-wrap: break-word;
         margin-left: 130px;
     }
+
     .kiwi-messagelist-body a {
         word-break: break-all;
     }
+
     .kiwi-messageinfo {
         padding-left: 130px;
     }
+
     @media screen and (max-width: 700px) {
         .kiwi-messagelist-nick {
             display: inline;
             width: auto;
             float: none;
         }
+
         .kiwi-messagelist-body {
             margin-left: 2px;
         }
-        .kiwi-messagelist-time {
-        }
+
         .kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
             display: none;
         }
+
         .kiwi-messageinfo {
             padding-left: 2px;
         }
     }
+
     .kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
         display: none;
     }

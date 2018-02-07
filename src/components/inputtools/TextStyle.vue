@@ -98,11 +98,12 @@ export default {
 .kiwi-inputtools-colours-img {
     background-size: contain;
 }
+
 .kiwi-inputtools-colours-reset {
     font-size: 23px;
     line-height: 30px;
     text-align: center;
-    background: #000000;
+    background: #000;
     color: #cacaca;
 }
 

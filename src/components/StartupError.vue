@@ -25,12 +25,11 @@ body {
     padding: 0;
 }
 
-
-
 .kiwi-wrap {
     height: 100%;
     overflow: hidden;
 }
+
 .kiwi-wrap-error {
     text-align: center;
 }
