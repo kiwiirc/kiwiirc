@@ -210,11 +210,6 @@
     color: #b8babd;
 }
 
-.kiwi-header-join-channel-button{
-    background-color: #42b983;
-    color: #fff;
-}
-
 
 
 /**
@@ -364,7 +359,7 @@
 }
 
 .kiwi-messagelist-message-traffic-join {
-    color: #009900;
+    color: #42b983;
 }
 .kiwi-messagelist-message-traffic-quit,
 .kiwi-messagelist-message-traffic-part,
@@ -377,7 +372,7 @@
     content: "← ";
 }
 .kiwi-messagelist-message-action .kiwi-messagelist-body {
-    color: #009900;
+    color: #42b983;
 }
 
 /* MOTD */
@@ -392,7 +387,7 @@
 }
 
 .kiwi-messagelist-message-connection-connected {
-    color: #009900;
+    color: #42b983;
 }
 .kiwi-messagelist-message-connection-disconnected {
     color: #900;
@@ -465,6 +460,31 @@
     border-top: 1px solid #9e9e9e;
 }
 
+
+.kiwi-userbox-actions-op .kick,
+.kiwi-userbox-actions-op .ban,
+.kiwi-userbox-actions-op .kickban{
+    color:#fff;
+}
+
+.kiwi-userbox-actions-op .kick{
+    background-color: #F6C358;
+    &:hover{
+        background-color:#FCCE6E;
+    }
+}
+.kiwi-userbox-actions-op .ban{
+    background-color: #FCB46E;
+    &:hover{
+        background-color:#FFCA97;
+    }
+}
+.kiwi-userbox-actions-op .kickban{
+    background-color: #FB846A;
+    &:hover{
+        background-color: #FFAF9E;
+    }
+}
 
 
 /**
