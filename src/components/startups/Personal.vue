@@ -61,17 +61,21 @@ export default {
     padding-top: 1em;
     font-size: 1.2em;
 }
+
 .kiwi-personal h1 {
     margin: 2em 0;
 }
+
 .kiwi-personal button {
     margin-top: 2.7em;
     margin-bottom: 1.5em;
 }
+
 /* Only show the toggle state browser link if on a small screen */
 .kiwi-personal-existing-networks {
     display: none;
 }
+
 @media screen and (max-width: 500px) {
     .kiwi-personal-existing-networks {
         display: inherit;

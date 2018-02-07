@@ -224,7 +224,7 @@ export default {
     background-color: #fff;
     border-radius: 0.5em;
     padding: 1em;
-    border:1px solid #ececec;
+    border: 1px solid #ececec;
 }
 
 .kiwi-welcome-simple-error {
@@ -232,6 +232,7 @@ export default {
     margin: 1em 0;
     padding: 0.3em;
 }
+
 .kiwi-welcome-simple-error span {
     display: block;
     font-style: italic;
@@ -243,6 +244,7 @@ export default {
     margin-bottom: 0.8em;
     padding: 0 0.5em;
 }
+
 .kiwi-welcome-simple-section-connection input[type="text"] {
     font-size: 1em;
     margin-top: 5px;
@@ -250,38 +252,47 @@ export default {
     width: 100%;
     box-sizing: border-box;
 }
-.kiwi-welcome-simple .input-text{
+
+.kiwi-welcome-simple .input-text {
     font-weight: 600;
-    opacity:0.6;
+    opacity: 0.6;
     font-size: 1.2em;
     margin-bottom: 0.8em;
 }
+
+.kiwi-welcome-simple-form input {
+    padding: 0.5em;
+}
+
 .kiwi-welcome-simple .kiwi-welcome-simple-have-password input,
 .kiwi-welcome-simple-have-password {
     font-size: 0.8em;
     margin: 0.8em 0;
 }
+
 .kiwi-welcome-simple-have-password,
-.kiwi-welcome-simple-password.input-text{
+.kiwi-welcome-simple-password.input-text {
     margin-top: 0;
 }
+
 .kiwi-welcome-simple .g-recaptcha {
     margin-bottom: 10px;
 }
+
 .kiwi-welcome-simple-start {
     font-size: 1.1em;
     cursor: pointer;
 }
+
 .kiwi-welcome-simple-start[disabled] {
     cursor: not-allowed;
 }
-.kiwi-welcome-simple-form input{
-    padding: 0.5em;
-}
-.kiwi-welcome-simple-channel{
+
+.kiwi-welcome-simple-channel {
     margin-bottom: 0.8em;
 }
-.kiwi-welcome-simple-form .u-submit{
+
+.kiwi-welcome-simple-form .u-submit {
     width: 100%;
     line-height: 50px;
     padding: 0;
@@ -291,28 +302,30 @@ export default {
     text-shadow: none;
     margin: 0;
     transition: all 0.2s;
-    border:none;
+    border: none;
     background-color: #86b32d;
 }
-.kiwi-welcome-simple .help{
+
+.kiwi-welcome-simple .help {
     position: absolute;
-    bottom:0.2em;
+    bottom: 0.2em;
     font-size: 0.8em;
-    color:#666;
+    color: #666;
     width: 50%;
     text-align: center;
 }
-.kiwi-welcome-simple .help a{
+
+.kiwi-welcome-simple .help a {
     text-decoration: underline;
-    color:#666;
+    color: #666;
 }
-.kiwi-welcome-simple .help a:hover{
-    color:#A9D87A;
+
+.kiwi-welcome-simple .help a:hover {
+    color: #a9d87a;
 }
 
 /* Styling the preloader */
-.kiwi-welcome-simple .fa-spinner{
-    font-size: 1.5em;
+.kiwi-welcome-simple .fa-spinner {
     position: absolute;
     top: 50%;
     z-index: 999;
@@ -322,29 +335,30 @@ export default {
     margin-left: -40px;
 }
 
-/** Smaller screen...**/
+/** Smaller screen... **/
 @media screen and (max-width: 850px) {
     .kiwi-welcome-simple-form {
-        position: static;
         left: auto;
         margin: 20px auto 20px auto;
         z-index: 100;
         position: relative;
-        top:auto;
+        top: auto;
         align-self: flex-start;
     }
-    .kiwi-welcome-simple p.help{
+
+    .kiwi-welcome-simple p.help {
         position: absolute;
-        bottom:20px;
+        bottom: 20px;
         width: 100%;
-        color:#fff;
+        color: #fff;
         z-index: 100;
     }
-    .kiwi-welcome-simple p.help a{
+
+    .kiwi-welcome-simple p.help a {
         color: #fff;
     }
 
-    .fa-spinner{
+    .fa-spinner {
         position: absolute;
         left: 48%;
         top: 50%;
@@ -353,7 +367,7 @@ export default {
     }
 }
 
-@media (max-width: 400px){
+@media (max-width: 400px) {
     .kiwi-welcome-simple-form {
         width: 90%;
     }

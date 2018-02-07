@@ -349,6 +349,7 @@ export default {
     transition: right 0.3s, left 0.3s;
     overflow-y: auto;
 }
+
 .kiwi-startbnc-section-info {
     right: 0;
     border: 0 solid #86b32d;
@@ -361,6 +362,7 @@ export default {
     justify-content: center;
     min-height: 100%;
 }
+
 .kiwi-startbnc-section-info-content {
     background: rgba(255, 255, 255, 0.74);
     margin: 3em;
@@ -369,7 +371,6 @@ export default {
     padding: 1em;
     line-height: 1.6em;
 }
-
 
 .kiwi-startbnc-section-connection {
     left: 0;
@@ -382,6 +383,7 @@ export default {
     display: inline-block;
     margin-bottom: 1.5em;
 }
+
 .kiwi-startbnc-section-connection input {
     font-size: 1em;
     margin-top: 5px;
@@ -389,27 +391,33 @@ export default {
     width: 100%;
     box-sizing: border-box;
 }
+
 .kiwi-startbnc-status {
     margin: 1em 0;
     overflow: hidden;
     max-height: 40px;
     transition: max-height 0.2s;
 }
+
 .kiwi-startbnc-status:empty {
     background: red;
     max-height: 0;
 }
+
 .kiwi-startbnc-start {
     font-size: 1.1em;
     cursor: pointer;
 }
+
 .kiwi-startbnc-form {
     width: 300px;
     margin: 2em auto;
 }
+
 .kiwi-startbnc-server-types {
     font-size: 0.9em;
 }
+
 .kiwi-startbnc-server-types a {
     margin: 0 1em;
 }
@@ -417,11 +425,12 @@ export default {
 .kiwi-startbnc--closing .kiwi-startbnc-section-connection {
     left: -50%;
 }
+
 .kiwi-startbnc--closing .kiwi-startbnc-section-info {
     right: -50%;
 }
 
-/** Smaller screen...**/
+/** Smaller screen... **/
 @media screen and (max-width: 850px) {
     .kiwi-startbnc {
         font-size: 0.9em;
@@ -430,6 +439,7 @@ export default {
     .kiwi-startbnc-section-connection {
         margin-top: 1em;
     }
+
     .kiwi-startbnc-section-info-content {
         margin: 1em;
     }
@@ -452,6 +462,7 @@ export default {
     .kiwi-startbnc-section-info {
         border-width: 5px 0 0 0;
     }
+
     .kiwi-startbnc-section-info-content {
         margin: 0.5em;
     }
@@ -460,6 +471,7 @@ export default {
     .kiwi-startbnc--closing .kiwi-startbnc-section-connection {
         left: -100%;
     }
+
     .kiwi-startbnc--closing .kiwi-startbnc-section-info {
         left: -100%;
     }

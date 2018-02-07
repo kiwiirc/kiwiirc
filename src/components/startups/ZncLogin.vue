@@ -4,7 +4,7 @@
         <div class="kiwi-welcome-znc-section kiwi-welcome-znc-section-connection">
             <h2 v-html="greetingText"></h2>
 
-            <template v-if="!network || network.state === 'disconnected'"">
+            <template v-if="!network || network.state === 'disconnected'">
                 <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-znc-form">
                     <div class="kiwi-welcome-znc-error" v-if="network && network.state === 'disconnected'">We couldn't connect to the server :( <span>{{readableStateError(network.state_error)}}</span></div>
 
@@ -194,7 +194,6 @@ export default {
     overflow-y: auto;
 }
 
-
 /** Right side */
 .kiwi-welcome-znc-section-info {
     right: 0;
@@ -208,6 +207,7 @@ export default {
     justify-content: center;
     min-height: 100%;
 }
+
 .kiwi-welcome-znc-section-info-content {
     background: rgba(255, 255, 255, 0.74);
     margin: 2em;
@@ -216,7 +216,6 @@ export default {
     padding: 2em;
     line-height: 1.6em;
 }
-
 
 /** Left side */
 .kiwi-welcome-znc-error {
@@ -241,6 +240,7 @@ export default {
     display: inline-block;
     margin-bottom: 1.5em;
 }
+
 .kiwi-welcome-znc-section-connection input[type="text"] {
     font-size: 1em;
     margin-top: 5px;
@@ -253,6 +253,7 @@ export default {
 .kiwi-welcome-znc .kiwi-welcome-znc-have-password input {
     margin-bottom: 1.5em;
 }
+
 .kiwi-welcome-znc-have-password input:checked {
     margin-bottom: 0;
 }
@@ -261,9 +262,11 @@ export default {
     font-size: 1.1em;
     cursor: pointer;
 }
+
 .kiwi-welcome-znc-start[disabled] {
     cursor: not-allowed;
 }
+
 .kiwi-welcome-znc-form {
     max-width: 300px;
     margin: 2em auto;
@@ -273,11 +276,12 @@ export default {
 .kiwi-welcome-znc--closing .kiwi-welcome-znc-section-connection {
     left: -50%;
 }
+
 .kiwi-welcome-znc--closing .kiwi-welcome-znc-section-info {
     right: -50%;
 }
 
-/** Smaller screen...**/
+/** Smaller screen... **/
 @media screen and (max-width: 850px) {
     .kiwi-welcome-znc {
         font-size: 0.9em;
@@ -286,6 +290,7 @@ export default {
     .kiwi-startbnc-section-connection {
         margin-top: 1em;
     }
+
     .kiwi-welcome-znc-section-info-content {
         margin: 1em;
     }
@@ -308,6 +313,7 @@ export default {
     .kiwi-welcome-znc-section-info {
         border-width: 5px 0 0 0;
     }
+
     .kiwi-welcome-znc-section-info-content {
         margin: 0.5em;
     }
@@ -316,6 +322,7 @@ export default {
     .kiwi-welcome-znc--closing .kiwi-welcome-znc-section-connection {
         left: -100%;
     }
+
     .kiwi-welcome-znc--closing .kiwi-welcome-znc-section-info {
         left: -100%;
     }

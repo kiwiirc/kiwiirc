@@ -61,6 +61,8 @@ export default {
 .kiwi-startup-common {
     height: 100%;
     text-align: center;
+    background-size: 0;
+    background-position: bottom;
 }
 
 .kiwi-startup-common-section {
@@ -89,7 +91,11 @@ export default {
     align-items: center;
     justify-content: center;
     min-height: 100%;
+    background-size: cover;
+    background-position: bottom;
+    border-left: 5px solid #86b32d;
 }
+
 .kiwi-startup-common-section-info-content {
     background: rgba(255, 255, 255, 0.74);
     margin: 2em;
@@ -104,15 +110,17 @@ export default {
     .kiwi-startup-common-section {
         transition: right 0.3s, left 0.3s;
     }
+
     .kiwi-startup-common--closing .kiwi-startup-common-section-connection {
         left: -50%;
     }
+
     .kiwi-startup-common--closing .kiwi-startup-common-section-info {
         right: -50%;
     }
 }
 
-/** Smaller screen...**/
+/** Smaller screen... **/
 @media (max-width: 850px) {
     .kiwi-startup-common {
         font-size: 0.9em;
@@ -121,16 +129,19 @@ export default {
         transition: left 0.3s;
         left: 0;
     }
+
     .kiwi-startup-common-section-connection {
         min-height: 400px;
         width: 100%;
         position: static;
     }
+
     .kiwi-startup-common-section-info {
-        min-height: 0px;
+        min-height: 0;
         width: 100%;
         position: static;
     }
+
     .kiwi-startup-common-section-info-content {
         margin: 1em;
     }
@@ -147,25 +158,16 @@ export default {
         font-size: 0.9em;
         overflow-y: auto;
     }
+
     .kiwi-startup-common-section-info-content {
         margin: 0.5em;
     }
 }
 
-
-/** Background /border switching between screen sizes **/
-.kiwi-startup-common {
-    background-size: 0;
-    background-position: bottom;
-}
-.kiwi-startup-common-section-info {
-    background-size: cover;
-    background-position: bottom;
-    border-left: 5px solid #86b32d;
-}
 .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
     background-color: rgb(51, 51, 51);
 }
+
 @media (max-width: 850px) {
     /* Apply some flex so that the info panel fills the rest of the bottom screen */
     .kiwi-startup-common {
@@ -173,15 +175,18 @@ export default {
         display: flex;
         flex-direction: column;
     }
+
     .kiwi-startup-common-section {
         overflow-y: visible;
     }
+
     .kiwi-startup-common-section-info {
         background-size: 0;
         border-left: none;
         flex: 1 0;
         display: block;
     }
+
     .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
         border-top: 5px solid #86b32d;
     }

@@ -209,15 +209,15 @@ export default {
 </script>
 
 <style>
-.kiwi-statebrowser-network-toggable-area {
-}
 .kiwi-statebrowser-network-toggable-area--collapsed {
     display: none;
 }
+
 .kiwi-statebrowser-network-header {
     display: flex;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
 }
+
 .kiwi-statebrowser-network-name {
     flex: 1;
     font-size: 1.1em;
@@ -225,6 +225,7 @@ export default {
     display: block;
     padding: 4px 0;
 }
+
 .kiwi-statebrowser-network-toggle {
     width: 2em;
     display: flex;
@@ -232,8 +233,9 @@ export default {
     justify-content: center;
     cursor: pointer;
 }
+
 .kiwi-statebrowser-network-status {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     text-align: center;
     padding: 4px;
     overflow: hidden;
@@ -241,12 +243,13 @@ export default {
     height: 1.5em;
     font-size: 0.9em;
 }
+
 /* During DOM entering and leaving */
 .kiwi-statebrowser-network-status-transition-enter-active,
 .kiwi-statebrowser-network-status-transition-leave-active {
-    transition: height .7s, padding .7s;
+    transition: height 0.7s, padding 0.7s;
 }
-/*  */
+
 .kiwi-statebrowser-network-status-transition-enter,
 .kiwi-statebrowser-network-status-transition-leave-active {
     height: 0;
@@ -258,9 +261,11 @@ export default {
     display: flex;
     padding: 5px 10px;
 }
+
 .kiwi-statebrowser-channel-active {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
 }
+
 .kiwi-statebrowser-channel-name {
     cursor: pointer;
     flex: 1;
@@ -272,10 +277,14 @@ export default {
     border-radius: 5px;
     line-height: 1.3em;
 }
-.kiwi-statebrowser-channel-label-transition-enter-active, .kiwi-statebrowser-channel-label-transition-leave-active {
+
+.kiwi-statebrowser-channel-label-transition-enter-active,
+.kiwi-statebrowser-channel-label-transition-leave-active {
     transition: opacity 0.1s;
 }
-.kiwi-statebrowser-channel-label-transition-enter, .kiwi-statebrowser-channel-label-transition-leave-active {
+
+.kiwi-statebrowser-channel-label-transition-enter,
+.kiwi-statebrowser-channel-label-transition-leave-active {
     opacity: 0;
 }
 
@@ -287,13 +296,16 @@ export default {
     font-weight: bold;
     cursor: pointer;
 }
+
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings {
     display: inline-block;
 }
+
 .kiwi-statebrowser-channel-popup {
     display: block;
     position: absolute;
     left: 100%;
     width: 100%;
 }
+
 </style>
