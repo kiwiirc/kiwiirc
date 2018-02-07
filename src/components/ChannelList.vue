@@ -144,6 +144,7 @@ export default {
     margin: 0 2em;
     font-size: 1.2em;
 }
+
 .kiwi-channellist-pagination a {
     display: inline-block;
     margin: 0 10px;
@@ -157,14 +158,16 @@ export default {
 .kiwi-channellist table {
     border: none;
     border-collapse: collapse;
-
 }
+
 .kiwi-channellist table tbody td {
     padding: 2px 1em;
 }
+
 .kiwi-channellist tr td:first-child {
     white-space: nowrap;
 }
+
 .kiwi-channellist-users {
     display: inline-block;
 }

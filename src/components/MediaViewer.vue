@@ -87,12 +87,14 @@ export default {
 .kiwi-mediaviewer {
     box-sizing: border-box;
 }
+
 .kiwi-mediaviewer-controls {
     position: absolute;
     top: 0;
     right: 0;
     z-index: 1;
 }
+
 .kiwi-mediaviewer-controls-close {
     padding: 3px 15px;
 }

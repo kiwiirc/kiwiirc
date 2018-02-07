@@ -72,11 +72,13 @@ export default Vue.component('input-text', {
 </script>
 
 <style>
+
 .input-text {
     position: relative;
     padding-top: 1.2em;
     font-size: 1em;
 }
+
 .input-text input {
     display: block;
     box-sizing: border-box;
@@ -87,6 +89,7 @@ export default Vue.component('input-text', {
     line-height: 1.6em;
     font-size: 1em;
 }
+
 .input-text-label {
     position: absolute;
     left: 3px;
@@ -94,22 +97,24 @@ export default Vue.component('input-text', {
     transition: top 0.2s, font-size 0.2s;
     pointer-events: none;
 }
-.input-text--focus {
-}
+
 .input-text--reveal-value .input-text-label {
     top: 0;
     font-size: 0.8em;
 }
+
 .input-text-c {
     position: absolute;
     right: 0;
     bottom: 0;
 }
+
 .input-text-underline {
     border-width: 0;
     border-bottom: 1px solid #a9a9a9;
     position: relative;
 }
+
 .input-text-underline-active {
     background: #42b983;
     transition: left 0.3s;
@@ -119,7 +124,9 @@ export default Vue.component('input-text', {
     right: 0;
     left: 100%;
 }
+
 .input-text--focus .input-text-underline-active {
     left: 0;
 }
+
 </style>

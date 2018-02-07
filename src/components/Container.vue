@@ -8,7 +8,7 @@
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
                 <i v-if="!unreadMessages.count" class="fa fa-bars" aria-hidden="true"></i>
-                <div 
+                <div
                     v-else
                     class="kiwi-container-toggledraw-statebrowser-messagecount"
                     :class="{'kiwi-container-toggledraw-statebrowser-messagecount--highlight': unreadMessages.highlight}"
@@ -125,6 +125,7 @@ export default {
     flex-direction: column;
     top: 4px;
 }
+
 .kiwi-header {
     margin-right: 200px;
     z-index: 1;
@@ -138,10 +139,12 @@ export default {
     width: 200px;
     z-index: 2;
 }
+
 .kiwi-messagelist {
     margin-right: 200px;
     flex: 1;
 }
+
 .kiwi-serverview {
     flex: 1;
 }
@@ -159,24 +162,22 @@ export default {
     top: 0;
     height: 50px;
     box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.6em;
+    line-height: 50px;
 }
 
 .kiwi-container-toggledraw-statebrowser {
     left: 0;
 }
+
 .kiwi-container-toggledraw-sidebar {
     right: 0;
 }
+
 .kiwi-container-toggledraw-sidebar--disabled {
     cursor: default;
-}
-
-.kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-sidebar {
-    cursor: pointer;
-    text-align: center;
-    font-size: 1.6em;
-    line-height: 50px;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount {
@@ -192,7 +193,8 @@ export default {
     z-index: 3;
     white-space: nowrap;
 }
-.kiwi-container-toggledraw-statebrowser-messagecount:after {
+
+.kiwi-container-toggledraw-statebrowser-messagecount::after {
     right: 99%;
     top: 20%;
     border: 0.6em solid transparent;
@@ -203,13 +205,14 @@ export default {
     position: absolute;
     pointer-events: none;
 }
+
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight {
     background: #d62323;
 }
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight:after {
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
     border-right-color: #d62323;
 }
-
 
 @media screen and (max-width: 769px) {
     .kiwi-header {
@@ -217,13 +220,16 @@ export default {
         margin-right: 50px;
         max-height: 50px;
     }
+
     .kiwi-sidebar {
         right: -200px;
         top: 50px;
     }
+
     .kiwi-messagelist {
         margin-right: 0;
     }
+
     .kiwi-container-toggledraw-statebrowser,
     .kiwi-container-toggledraw-sidebar {
         display: block;
@@ -232,7 +238,6 @@ export default {
     .kiwi-container--sidebar-open .kiwi-sidebar {
         right: 0;
     }
-
 }
 
 </style>
