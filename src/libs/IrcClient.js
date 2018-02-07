@@ -666,10 +666,10 @@ function clientMiddleware(state, networkid) {
             let buffer = network.bufferByName(event.target);
             let modeStrs = {};
             if (buffer) {
+                // Join all the same mode changes together so they can be shown on one
+                // line such as "prawnsalad sets +b on nick1, nick2"
                 event.modes.forEach(mode => {
-                    // Build our arrays for returning to the user
                     modeStrs[mode.mode] = modeStrs[mode.mode] || [];
-                    modeStrs[mode.mode].push(mode.param);
 
                     // If this mode has a user prefix then we need to update the user object
                     let prefix = _.find(network.ircClient.network.options.PREFIX, {
@@ -690,6 +690,8 @@ function clientMiddleware(state, networkid) {
                                 modes.splice(modeIdx, 1);
                             }
                         }
+
+                        modeStrs[mode.mode].push({ target: mode.param });
                     } else {
                         // Not a user prefix, add it as a channel mode
                         // TODO: Why are these not appearing as the 'channel info' command?
@@ -701,10 +703,12 @@ function clientMiddleware(state, networkid) {
                         } else if (!adding) {
                             state.$delete(buffer.modes, modeChar);
                         }
+
+                        modeStrs[mode.mode].push({ target: buffer.name, param: mode.param });
                     }
                 });
 
-                let modes = {
+                let modeLocaleIds = {
                     '+o': 'modes_give_ops',
                     '-o': 'modes_take_ops',
                     '+h': 'modes_give_halfops',
@@ -715,16 +719,24 @@ function clientMiddleware(state, networkid) {
                     '-a': 'modes_take_admin',
                     '+q': 'modes_give_owner',
                     '-q': 'modes_take_owner',
+                    '+b': 'modes_gives_ban',
+                    '-b': 'modes_takes_ban',
                 };
 
-                // Send one mode change & multiple users per line
-                _.each(modeStrs, (params, mode) => {
+                // Show one line per mode, listing each effecting user
+                _.each(modeStrs, (targets, mode) => {
+                    let text = TextFormatting.t(modeLocaleIds[mode] || 'modes_other', {
+                        mode: mode + (targets[0].param ? ' ' + targets[0].param : ''),
+                        target: targets.map(t => t.target).join(', '),
+                        nick: event.nick,
+                    });
+
                     let messageBody = TextFormatting.formatText('mode', {
                         nick: event.nick,
                         username: event.ident,
                         host: event.hostname,
-                        targets: params.join(', '),
-                        text: (modes[mode] ? this.$t(modes[mode]) : `${this.$t('modes_other_prepend')} ${mode} ${this.$t('modes_other_append')}`),
+                        target: targets.map(t => t.target).join(', '),
+                        text,
                     });
                     state.addMessage(buffer, {
                         time: event.time || Date.now(),
