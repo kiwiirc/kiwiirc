@@ -1,9 +1,6 @@
 <template>
-    <div class="kiwi-welcome-simple" :class="[
-        closing ? 'kiwi-welcome-simple--closing' : '',
-        backgroundImage ? '' : 'kiwi-welcome-simple--no-bg',
-    ]" :style="backgroundStyle">
-        <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-connection">
+    <startup-layout class="kiwi-welcome-simple" ref="layout">
+        <div slot="connection">
             <template v-if="!network || network.state === 'disconnected'">
                 <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-simple-form">
                     <h2 v-html="greetingText"></h2>
@@ -13,8 +10,11 @@
                     <label v-if="showPass" class="kiwi-welcome-simple-have-password">
                         <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
                     </label>
-                    <input-text v-if="show_password_box" class="kiwi-welcome-simple-password input-text--reveal-value" :label="$t('password')" v-model="password" type="password" />
+                    <input-text v-focus v-if="show_password_box" class="kiwi-welcome-simple-password input-text--reveal-value" :label="$t('password')" v-model="password" type="password" />
                     <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" :label="$t('channel')" v-model="channel" />
+
+                    <div v-if="recaptchaSiteId" class="g-recaptcha" :data-sitekey="recaptchaSiteId"></div>
+
                     <button
                         class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
                         type="submit"
@@ -26,13 +26,8 @@
             <template v-else-if="network.state !== 'connected'">
                 <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
             </template>
-          </div>
-          <p class='help'></p>
-          <div class="kiwi-welcome-simple-section kiwi-welcome-simple-section-info" :style="backgroundStyle">
-             <div class="kiwi-welcome-simple-section-info-content" v-if="infoContent" v-html="infoContent"></div>
-         </div>
-      </div>
-    </div>
+        </div>
+    </startup-layout>
 </template>
 
 <script>
@@ -40,8 +35,12 @@
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import state from '@/libs/state';
+import StartupLayout from './CommonLayout';
 
 export default {
+    components: {
+        StartupLayout,
+    },
     data: function data() {
         return {
             network: null,
@@ -52,7 +51,8 @@ export default {
             showPass: true,
             showNick: true,
             show_password_box: false,
-            closing: false,
+            recaptchaSiteId: '',
+            recaptchaResponseCache: '',
         };
     },
     computed: {
@@ -79,32 +79,31 @@ export default {
 
             return ready;
         },
-        backgroundStyle() {
-            let style = {};
-            let options = state.settings.startupOptions;
-
-            if (options.infoBackground) {
-                style['background-image'] = `url(${options.infoBackground})`;
-            }
-            return style;
-        },
-        backgroundImage() {
-            return state.settings.startupOptions.infoBackground || '';
-        },
-        infoContent: function infoContent() {
-            return state.settings.startupOptions.infoContent || '';
-        },
     },
     methods: {
+        captchaSuccess() {
+            if (!this.recaptchaSiteId) {
+                return true;
+            }
+
+            return !!this.captchaResponse();
+        },
+        captchaResponse() {
+            // Cache the response code since the recaptcha UI may not be here if we come back to
+            // this screen after an IRC connection fail
+            if (this.recaptchaResponseCache) {
+                return this.recaptchaResponseCache;
+            }
+
+            let gEl = this.$el.querySelector('#g-recaptcha-response');
+            this.recaptchaResponseCache = gEl ?
+                gEl.value :
+                '';
+
+            return this.recaptchaResponseCache;
+        },
         readableStateError(err) {
             return Misc.networkErrorMessage(err);
-        },
-        close: function close() {
-            this.closing = true;
-            this.$el.addEventListener('transitionend', (event) => {
-                state.persistence.watchStateForChanges();
-                this.$emit('start');
-            }, false);
         },
         formSubmit: function formSubmit() {
             if (this.readyToStart) {
@@ -113,6 +112,10 @@ export default {
         },
         startUp: function startUp() {
             let options = state.settings.startupOptions;
+
+            if (!this.captchaSuccess()) {
+                return;
+            }
 
             let net;
             if (!this.network) {
@@ -133,6 +136,9 @@ export default {
                     gecos: options.gecos,
                 });
 
+                if (options.recaptchaSiteId) {
+                    net.captchaResponse = this.captchaResponse();
+                }
                 this.network = net;
             } else {
                 net = this.network;
@@ -157,7 +163,7 @@ export default {
 
             net.ircClient.connect();
             let onRegistered = () => {
-                this.close();
+                this.$refs.layout.close();
                 net.ircClient.off('registered', onRegistered);
                 net.ircClient.off('close', onClosed);
             };
@@ -193,41 +199,26 @@ export default {
         if (options.autoConnect && this.nick && this.channel) {
             this.startUp();
         }
+
+        this.recaptchaSiteId = options.recaptchaSiteId || '';
+    },
+    mounted() {
+        if (this.recaptchaSiteId) {
+            let scr = document.createElement('script');
+            scr.src = 'https://www.google.com/recaptcha/api.js';
+            this.$el.appendChild(scr);
+        }
     },
 };
 </script>
 
 <style>
 
-.kiwi-welcome-simple {
-    height: 100%;
-    text-align: center;
-}
-
 .kiwi-welcome-simple h2 {
     font-size: 1.7em;
     text-align: center;
     padding: 0;
     margin: 0.5em 0 1em 0;
-}
-.kiwi-welcome-simple-section {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50%;
-    padding: 1em;
-    box-sizing: border-box;
-    transition: right 0.3s, left 0.3s;
-    overflow-y: auto;
-}
-
-.kiwi-welcome-simple-section-connection{
-    width: 50%;
-    position: relative;
-    min-height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .kiwi-welcome-simple-form {
@@ -238,24 +229,6 @@ export default {
     border:1px solid #ececec;
 }
 
-/** Right side */
-.kiwi-welcome-simple-section-info {
-    right: 0;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100%;
-}
-.kiwi-welcome-simple-section-info-content {
-    background: rgba(255, 255, 255, 0.74);
-    margin: 2em;
-    color: #1b1b1b;
-    font-size: 1.5em;
-    padding: 2em;
-    line-height: 1.6em;
-}
-/** Left side */
 .kiwi-welcome-simple-error {
     text-align: center;
     margin: 1em 0;
@@ -294,6 +267,9 @@ export default {
 .kiwi-welcome-simple-password.input-text{
     margin-top: 0;
 }
+.kiwi-welcome-simple .g-recaptcha {
+    margin-bottom: 10px;
+}
 .kiwi-welcome-simple-start {
     font-size: 1.1em;
     cursor: pointer;
@@ -319,13 +295,6 @@ export default {
     transition: all 0.2s;
     border:none;
     background-color: #86b32d;
-}
-/** Closing - the wiping away of the screen **/
-.kiwi-welcome-simple--closing .kiwi-welcome-simple-section-connection {
-    left: -50%;
-}
-.kiwi-welcome-simple--closing .kiwi-welcome-simple-section-info {
-    right: -50%;
 }
 .kiwi-welcome-simple .help{
     position: absolute;
@@ -357,18 +326,6 @@ export default {
 
 /** Smaller screen...**/
 @media screen and (max-width: 850px) {
-    .kiwi-welcome-simple {
-        font-size: 0.9em;
-    }
-    .kiwi-startbnc-section-connection {
-        margin-top: 1em;
-    }
-    .kiwi-welcome-simple-section-connection{
-      width: 100%;
-    }
-    .kiwi-welcome-simple-section-info-content {
-        margin: 1em;
-    }
     .kiwi-welcome-simple-form {
         position: static;
         left: auto;
@@ -389,13 +346,6 @@ export default {
         color: #fff;
     }
 
-    .kiwi-welcome-simple-section-info{
-      position: static;
-      width: 100%;
-      border: none;
-      min-height: 0px;
-    }
-
     .fa-spinner{
         position: absolute;
         left: 48%;
@@ -403,77 +353,12 @@ export default {
         margin-top: -50px;
         color: #fff;
     }
-    .kiwi-welcome-simple-section-connection{
-      min-height: 400px;
-    }
-
-    .kiwi-welcome-simple{
-      position: relative;
-      min-height: 100%;
-    }
-
-    .kiwi-welcome-simple-section .kiwi-welcome-simple-section-connection{
-      position: static;
-    }
-
 }
 
-/** Even smaller screen.. probably phones **/
-@media screen and (max-width: 750px) {
-    .kiwi-welcome-simple {
-        font-size: 0.9em;
-        overflow-y: auto;
-    }
-    .kiwi-welcome-simple-section-info-content {
-        margin: 0.5em;
-    }
-    /** Closing - the wiping away of the screen **/
-    .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-connection {
-        left: -100%;
-    }
-    .kiwi-welcome-simple--closing .kiwi-welcome-simple-section-info {
-        left: -100%;
-    }
-}
-
-@media screen and (max-width: 400px){
+@media (max-width: 400px){
     .kiwi-welcome-simple-form {
-      width: 90%;
+        width: 90%;
     }
 }
 
-
-/** Background /border switching between screen sizes **/
-.kiwi-welcome-simple {
-    background-size: 0;
-    background-position: bottom;
-}
-.kiwi-welcome-simple-section-info {
-    background-size: cover;
-    background-position: bottom;
-    border-left: 5px solid #86b32d;
-}
-.kiwi-welcome-simple--no-bg .kiwi-welcome-simple-section-info {
-    background-color: rgb(51, 51, 51);
-}
-@media screen and (max-width: 850px) {
-    /* Apply some flex so that the info panel fills the rest of the bottom screen */
-    .kiwi-welcome-simple {
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-    }
-    .kiwi-welcome-simple-section {
-        overflow-y: visible;
-    }
-    .kiwi-welcome-simple-section-info {
-        background-size: 0;
-        border-left: none;
-        flex: 1 0;
-        display: block;
-    }
-    .kiwi-welcome-simple--no-bg .kiwi-welcome-simple-section-info {
-        border-top: 5px solid #86b32d;
-    }
-}
 </style>

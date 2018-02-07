@@ -108,7 +108,7 @@ export default class ThemeManager {
 
     // When we get a CTCP 'kiwi theme reload' then reload our theme. Handy for theme devs
     listenForIrcEvents() {
-        this.state.$on('irc:ctcp request', (event, network) => {
+        this.state.$on('irc.ctcp request', (event, network) => {
             let ctcpType = (event.type || '').toLowerCase();
             if (ctcpType === 'kiwi' && event.message.indexOf('theme reload') > -1) {
                 this.reload();

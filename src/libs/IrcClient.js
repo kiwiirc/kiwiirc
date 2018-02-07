@@ -50,7 +50,8 @@ export function create(state, networkid) {
 
             // bnccontrol is the control connection for BOUNCER commands, not a network
             if (network.name === 'bnccontrol') {
-                password = `${bnc.username}:${bnc.password}`;
+                // Some bouncers require a network to be set, so set a (hopefully) invalid one
+                password = `${bnc.username}/__kiwiauth:${bnc.password}`;
             } else {
                 password = `${bnc.username}/${netname}:${bnc.password}`;
             }
@@ -153,11 +154,18 @@ function clientMiddleware(state, networkid) {
                 });
             });
         });
+
+        client.on('socket connected', err => {
+            if (network.captchaResponse) {
+                client.raw('CAPTCHA', network.captchaResponse);
+            }
+        });
     };
 
 
     function rawEventsHandler(command, event, rawLine, client, next) {
-        state.$emit('irc:raw', command, event, network);
+        state.$emit('irc.raw', command, event, network);
+        state.$emit('irc.raw.' + command, command, event, network);
         next();
     }
 
@@ -166,7 +174,7 @@ function clientMiddleware(state, networkid) {
         // Trigger this event through the state object first. If it's been handled
         // somewhere else then we ignore it.
         let ircEventObj = { handled: false };
-        state.$emit('irc:' + command, event, network, ircEventObj);
+        state.$emit('irc.' + command, event, network, ircEventObj);
         if (ircEventObj.handled) {
             next();
             return;
@@ -302,7 +310,13 @@ function clientMiddleware(state, networkid) {
                 }
             }
 
-            let buffer = state.getOrAddBufferByName(networkid, bufferName);
+            let blockNewPms = state.setting('buffers.block_pms');
+            let buffer = state.getBufferByName(networkid, bufferName);
+            if (isPrivateMessage && !buffer && blockNewPms) {
+                return;
+            } else if (!buffer) {
+                buffer = state.getOrAddBufferByName(networkid, bufferName);
+            }
 
             let textFormatType = 'privmsg';
             if (event.type === 'action') {
