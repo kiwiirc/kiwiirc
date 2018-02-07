@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import i18next from 'i18next';
 import * as Colours from './Colours';
 import { md5 } from './Md5';
 import state from '@/libs/state';
@@ -255,4 +256,8 @@ export function formatText(formatId, params) {
     });
 
     return result;
+}
+
+export function t(...args) {
+    return i18next.t(...args);
 }
