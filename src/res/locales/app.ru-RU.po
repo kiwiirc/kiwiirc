@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2018-01-18 09:50-0500\n"
+"PO-Revision-Date: 2018-02-07 18:00-0500\n"
 
 #: Start
 msgid "start_button"
@@ -535,6 +535,58 @@ msgstr ""
 
 #: Ban and kick from the channel
 msgid "user_kickban"
+msgstr ""
+
+#: {{nick}} gives ops to {{target}}
+msgid "modes_give_ops"
+msgstr ""
+
+#: {{nick}} takes ops from {{target}}
+msgid "modes_take_ops"
+msgstr ""
+
+#: {{nick}} gives half-ops to {{target}}
+msgid "modes_give_halfops"
+msgstr ""
+
+#: {{nick}} takes half-ops from {{target}}
+msgid "modes_take_halfops"
+msgstr ""
+
+#: {{nick}} gives voice to {{target}}
+msgid "modes_give_voice"
+msgstr ""
+
+#: {{nick}} takes voice from {{target}}
+msgid "modes_take_voice"
+msgstr ""
+
+#: {{nick}} gives admin to {{target}}
+msgid "modes_give_admin"
+msgstr ""
+
+#: {{nick}} takes admin from {{target}}
+msgid "modes_take_admin"
+msgstr ""
+
+#: {{nick}} gives owner to {{target}}
+msgid "modes_give_owner"
+msgstr ""
+
+#: {{nick}} takes owner from {{target}}
+msgid "modes_take_owner"
+msgstr ""
+
+#: {{nick}} has banned {{target}}
+msgid "modes_gives_ban"
+msgstr ""
+
+#: {{nick}} has unbanned {{target}}
+msgid "modes_takes_ban"
+msgstr ""
+
+#: {{nick}} sets {{mode}} on {{target}}
+msgid "modes_other"
 msgstr ""
 
 #: Your IRC client
