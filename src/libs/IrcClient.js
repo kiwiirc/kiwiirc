@@ -664,20 +664,12 @@ function clientMiddleware(state, networkid) {
 
         if (command === 'mode') {
             let buffer = network.bufferByName(event.target);
+            let modeStrs = {};
             if (buffer) {
                 event.modes.forEach(mode => {
-                    let messageBody = TextFormatting.formatText('mode', {
-                        nick: event.nick,
-                        username: event.ident,
-                        host: event.hostname,
-                        text: `set ${mode.mode} ${mode.param || ''}`,
-                    });
-                    state.addMessage(buffer, {
-                        time: event.time || Date.now(),
-                        nick: '',
-                        message: messageBody,
-                        type: 'mode',
-                    });
+                    // Build our arrays for returning to the user
+                    modeStrs[mode.mode] = modeStrs[mode.mode] || [];
+                    modeStrs[mode.mode].push(mode.param);
 
                     // If this mode has a user prefix then we need to update the user object
                     let prefix = _.find(network.ircClient.network.options.PREFIX, {
@@ -710,6 +702,36 @@ function clientMiddleware(state, networkid) {
                             state.$delete(buffer.modes, modeChar);
                         }
                     }
+                });
+
+                let modes = {
+                    '+o': 'modes_give_ops',
+                    '-o': 'modes_take_ops',
+                    '+h': 'modes_give_halfops',
+                    '-h': 'modes_take_halfops',
+                    '+v': 'modes_give_voice',
+                    '-v': 'modes_take_voice',
+                    '+a': 'modes_give_admin',
+                    '-a': 'modes_take_admin',
+                    '+q': 'modes_give_owner',
+                    '-q': 'modes_take_owner',
+                };
+
+                // Send one mode change & multiple users per line
+                _.each(modeStrs, (params, mode) => {
+                    let messageBody = TextFormatting.formatText('mode', {
+                        nick: event.nick,
+                        username: event.ident,
+                        host: event.hostname,
+                        targets: params.join(', '),
+                        text: (modes[mode] ? this.$t(modes[mode]) : `${this.$t('modes_other_prepend')} ${mode} ${this.$t('modes_other_append')}`),
+                    });
+                    state.addMessage(buffer, {
+                        time: event.time || Date.now(),
+                        nick: '',
+                        message: messageBody,
+                        type: 'mode',
+                    });
                 });
             }
         }
