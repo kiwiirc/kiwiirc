@@ -242,8 +242,6 @@ body {
     padding: 0;
 }
 
-
-
 .kiwi-wrap {
     font-size: 90%;
     line-height: 1.6em;
@@ -251,6 +249,7 @@ body {
     -webkit-font-smoothing: antialiased;
     height: 100%;
     overflow: hidden;
+
     --kiwi-nick-brightness: 50;
     --kiwi-supports-monospace: 1;
 }
@@ -269,15 +268,18 @@ body {
     transition: left 0.5s;
     z-index: 1;
 }
+
 /* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 769px) {
     .kiwi-statebrowser {
         left: -200px;
     }
+
     .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
         left: 0;
     }
 }
+
 .kiwi-workspace {
     position: relative;
     margin-left: 200px;
@@ -286,7 +288,8 @@ body {
     height: 100%;
     transition: left 0.5s, margin-left 0.5s;
 }
-.kiwi-workspace:before {
+
+.kiwi-workspace::before {
     position: absolute;
     content: '';
     height: 4px;
@@ -294,18 +297,20 @@ body {
     left: 0;
     top: 0;
 }
+
 /* When the statebrowser opens as a draw, darken the workspace */
-.kiwi-workspace:after {
+.kiwi-workspace::after {
     position: fixed;
     top: 0;
     right: 0;
     content: '';
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0, 0, 0, 0.4);
     overflow: hidden;
     opacity: 0;
-    transition: opacity .5s;
+    transition: opacity 0.5s;
     will-change: opacity;
 }
+
 .kiwi-workspace-background {
     position: absolute;
     top: 0;
@@ -314,38 +319,45 @@ body {
     width: 100%;
     z-index: -1;
 }
+
 /* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 769px) {
     .kiwi-workspace {
         left: 0;
         margin-left: 0;
     }
+
     .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
         left: 200px;
         margin-left: 0;
     }
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace:after {
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
         width: 100%;
         height: 100%;
         opacity: 1;
         z-index: 10;
     }
 }
+
 .kiwi-container {
     position: absolute;
     top: 0;
     bottom: 40px;
     width: 100%;
 }
+
 .kiwi-container--mini {
     bottom: 50%;
 }
+
 .kiwi-mediaviewer {
     position: absolute;
     top: 50%;
     bottom: 40px;
     width: 100%;
 }
+
 .kiwi-controlinput {
     position: absolute;
     bottom: 0;

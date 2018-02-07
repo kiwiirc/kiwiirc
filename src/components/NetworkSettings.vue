@@ -6,7 +6,7 @@
 
                 <div class="kiwi-networksettings-error" v-if="network.state_error">We couldn't connect to that server :( <span>{{readableStateError(network.state_error)}}</span></div>
 
-                <input-text :label="$t('server')" v-model="network.connection.server" class="kiwi-networksettings-connection-address"/>
+                <input-text :label="$t('server')" v-focus v-model="network.connection.server" class="kiwi-networksettings-connection-address"/>
 
                 <input-text :label="$t('settings_port')" v-model="network.connection.port" type="number" class="kiwi-networksettings-connection-port">
                     <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[network.connection.tls ? 'kiwi-customserver-tls--enabled' : '']" @click="toggleTls">
@@ -152,11 +152,6 @@ export default {
             this.znc_password = match[3] || '';
         }
     },
-    mounted: function mounted() {
-        this.$nextTick(() => {
-            this.$el.querySelector('.kiwi-networksettings-connection-address input').focus();
-        });
-    },
 };
 </script>
 
@@ -168,12 +163,15 @@ export default {
     margin: 0 auto;
     max-width: 400px;
 }
+
 .kiwi-networksettings-close {
     float: right;
 }
+
 .kiwi-networksettings-section {
     margin: 0 10px 40px 10px;
 }
+
 .kiwi-networksettings form .input-text {
     margin-bottom: 10px;
 }
@@ -183,28 +181,35 @@ export default {
     margin: 1em;
     padding: 0.3em;
 }
+
 .kiwi-networksettings-error span {
     display: block;
     font-style: italic;
 }
+
 .kiwi-networksettings-server-types {
     margin-top: 1em;
     text-align: center;
 }
+
 .kiwi-networksettings-server-types a {
     margin-right: 1em;
 }
+
 .kiwi-networksettings-server-types-info {
     font-size: 0.9em;
     font-style: italic;
 }
+
 .kiwi-networksettings-server-type-active {
     font-weight: bold;
 }
+
 .kiwi-networksettings-connection-address {
     width: 70%;
     display: inline-block;
 }
+
 .kiwi-networksettings-connection-port {
     width: 25%;
     float: right;
@@ -217,6 +222,7 @@ export default {
 .kiwi-networksettings-user {
     width: 70%;
 }
+
 .kiwi-networksettings-danger h3 {
     padding: 5px 10px;
     margin-top: 70px;

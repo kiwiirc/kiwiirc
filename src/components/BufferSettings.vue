@@ -73,6 +73,7 @@ export default {
 .kiwi-buffersettings {
     box-sizing: border-box;
 }
+
 .kiwi-buffersettings-alerts {
     margin-bottom: 1em;
 }

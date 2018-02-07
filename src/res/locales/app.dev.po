@@ -599,6 +599,63 @@ msgstr "Ban and kick from the channel"
 
 
 
+
+#: Mode Changes $t('modes_')
+
+#: {{nick}} gives ops to {{target}}
+msgid "modes_give_ops"
+msgstr "{{nick}} gives ops to {{target}}"
+
+#: {{nick}} takes ops from {{target}}
+msgid "modes_take_ops"
+msgstr "{{nick}} takes ops from {{target}}"
+
+#: {{nick}} gives half-ops to {{target}}
+msgid "modes_give_halfops"
+msgstr "{{nick}} gives half-ops to {{target}}"
+
+#: {{nick}} takes half-ops from {{target}}
+msgid "modes_take_halfops"
+msgstr "{{nick}} takes half-ops from {{target}}"
+
+#: {{nick}} gives voice to {{target}}
+msgid "modes_give_voice"
+msgstr "{{nick}} gives voice to {{target}}"
+
+#: {{nick}} takes voice from {{target}}
+msgid "modes_take_voice"
+msgstr "{{nick}} takes voice from {{target}}"
+
+#: {{nick}} gives admin to {{target}}
+msgid "modes_give_admin"
+msgstr "{{nick}} gives admin to {{target}}"
+
+#: {{nick}} takes admin from {{target}}
+msgid "modes_take_admin"
+msgstr "{{nick}} takes admin from {{target}}"
+
+#: {{nick}} gives owner to {{target}}
+msgid "modes_give_owner"
+msgstr "{{nick}} gives owner to {{target}}"
+
+#: {{nick}} takes owner from {{target}}
+msgid "modes_take_owner"
+msgstr "{{nick}} takes owner from {{target}}"
+
+#: {{nick}} has banned {{target}}
+msgid "modes_gives_ban"
+msgstr "{{nick}} has banned {{target}}"
+
+#: {{nick}} has unbanned {{target}}
+msgid "modes_takes_ban"
+msgstr "{{nick}} has unbanned {{target}}"
+
+#: {{nick}} sets {{mode}} on {{target}}
+msgid "modes_other"
+msgstr "{{nick}} sets {{mode}} on {{target}}"
+
+
+
 #: Personal $t('personal_')
 
 #: Your IRC client

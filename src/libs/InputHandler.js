@@ -421,6 +421,14 @@ inputCommands.nick = function inputCommandNick(event, command, line) {
 };
 
 
+inputCommands.away = function inputCommandAway(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    network.ircClient.raw('AWAY', line);
+};
+
+
 inputCommands.quote = function inputCommandQuote(event, command, line) {
     event.handled = true;
 

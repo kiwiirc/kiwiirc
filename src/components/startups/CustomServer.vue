@@ -20,7 +20,7 @@
                 <label class="kiwi-customserver-have-password">
                     <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
                 </label>
-                <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
+                <input-text v-focus v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 
                 <input-text :label="$t('channel')" v-model="channel" />
             </template>
@@ -31,7 +31,7 @@
                 <label class="kiwi-customserver-have-password">
                     <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
                 </label>
-                <input-text v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
+                <input-text v-focus v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 
                 <input-text :label="$t('channel')" v-model="channel" class="kiwi-customserver-channel" />
             </template>
@@ -364,34 +364,42 @@ export default {
     text-align: center;
     padding-top: 1em;
 }
+
 .kiwi-customserver-start {
     font-size: 1.1em;
     cursor: pointer;
 }
+
 .kiwi-customserver-form {
     max-width: 300px;
     margin: 0 auto;
     max-height: 500px;
     overflow: hidden;
 }
+
 .kiwi-customserver .input-text,
 .kiwi-customserver .kiwi-customserver-have-password input {
     margin-bottom: 1.5em;
 }
+
 .kiwi-customserver-have-password input:checked {
     margin-bottom: 0;
 }
+
 .kiwi-customserver-tls {
     cursor: pointer;
     top: 6px;
     color: #bfbfbf;
 }
+
 .kiwi-customserver-tls--enabled {
     color: green;
 }
+
 .kiwi-customserver-tls-lock {
     font-size: 1.2em;
 }
+
 .kiwi-customserver-tls-minus {
     color: red;
     font-size: 0.7em;
@@ -406,10 +414,12 @@ export default {
 .kiwi-customserver-channel {
     margin-top: 1em;
 }
+
 .kiwi-customserver-server-types {
     font-size: 0.9em;
     text-align: center;
 }
+
 .kiwi-customserver-server-types a {
     margin: 0 1em;
 }
@@ -417,12 +427,14 @@ export default {
 .kiwi-customserver h2 {
     margin-bottom: 1.5em;
 }
+
 .kiwi-customserver h2 i {
     font-size: 0.8em;
     margin-left: 1em;
 }
+
 .kiwi-customserver--connecting h2 {
-    transition: margin-top .7s;
+    transition: margin-top 0.7s;
     margin-top: 100px;
 }
 
@@ -431,16 +443,20 @@ export default {
     margin: 1em 0;
     padding: 0.3em;
 }
+
 .kiwi-customserver-error span {
     display: block;
     font-style: italic;
 }
 
-.connectingloader-enter-active, .connectingloader-leave-active {
-  transition: max-height .5s
+.connectingloader-enter-active,
+.connectingloader-leave-active {
+    transition: max-height 0.5s;
 }
-.connectingloader-enter, .connectingloader-leave-to {
-  max-height: 0
+
+.connectingloader-enter,
+.connectingloader-leave-to {
+    max-height: 0;
 }
 
 </style>

@@ -18,7 +18,7 @@ export default function bouncerMiddleware() {
 
         let params = message.params;
 
-        if (params[0] === 'listnetworks' && params[1] === 'end') {
+        if (params[0] === 'listnetworks' && params[1] === 'RPL_OK') {
             client.emit('bouncer networks', networks);
             networks = [];
         } else if (params[0] === 'listnetworks') {
@@ -33,7 +33,7 @@ export default function bouncerMiddleware() {
                 currentNick: tags.currentNick,
                 password: tags.password || '',
             });
-        } else if (params[0] === 'listbuffers' && params[2] === 'end') {
+        } else if (params[0] === 'listbuffers' && params[2] === 'RPL_OK') {
             let netName = (params[1] || '').toLowerCase();
             let detectedBuffers = buffers[netName] || [];
             delete buffers[netName];
