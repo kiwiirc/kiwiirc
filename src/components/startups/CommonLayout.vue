@@ -61,8 +61,6 @@ export default {
 .kiwi-startup-common {
     height: 100%;
     text-align: center;
-    background-size: 0;
-    background-position: bottom;
 }
 
 .kiwi-startup-common-section {
@@ -91,9 +89,6 @@ export default {
     align-items: center;
     justify-content: center;
     min-height: 100%;
-    background-size: cover;
-    background-position: bottom;
-    border-left: 5px solid #86b32d;
 }
 
 .kiwi-startup-common-section-info-content {
@@ -164,9 +159,23 @@ export default {
     }
 }
 
+/** Background /border switching between screen sizes **/
+/* stylelint-disable */
+.kiwi-startup-common {
+    background-size: 0;
+    background-position: bottom;
+}
+
+.kiwi-startup-common-section-info {
+    background-size: cover;
+    background-position: bottom;
+    border-left: 5px solid #86b32d;
+}
+
 .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
     background-color: rgb(51, 51, 51);
 }
+/* stylint-enable*/
 
 @media (max-width: 850px) {
     /* Apply some flex so that the info panel fills the rest of the bottom screen */
@@ -191,4 +200,5 @@ export default {
         border-top: 5px solid #86b32d;
     }
 }
+
 </style>
