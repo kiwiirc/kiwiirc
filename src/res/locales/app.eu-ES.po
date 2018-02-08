@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2018-02-08 11:35-0500\n"
+"PO-Revision-Date: 2018-02-08 11:44-0500\n"
 
 #: Start
 msgid "start_button"
@@ -583,11 +583,11 @@ msgstr "{{nick}}-k  {{target}} kanporatu du"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr ""
+msgstr "{{nick}}-k {{target}} desbaneatu du"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}} doitu du  {{mode}} {{target}}-en"
 
 #: Your IRC client
 msgid "personal_client"
