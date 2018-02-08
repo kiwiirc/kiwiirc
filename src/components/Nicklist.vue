@@ -174,6 +174,7 @@ export default {
     box-sizing: border-box;
     overflow-y: auto;
 }
+
 .kiwi-nicklist-info {
     font-size: 0.9em;
     padding-bottom: 0;
@@ -182,6 +183,7 @@ export default {
     border-style: solid;
     display: flex;
 }
+
 .kiwi-nicklist-info input {
     flex: 1;
     border: 0;
@@ -191,7 +193,8 @@ export default {
     outline: 0;
     text-align: center;
 }
-.kiwi-nicklist-info  i.fa-search {
+
+.kiwi-nicklist-info i.fa-search {
     flex: 1;
     margin-right: 25px;
     color: #cfcfcf;
@@ -204,9 +207,11 @@ export default {
     padding: 0 20px;
     line-height: 1.2em;
 }
+
 .kiwi-nicklist-user {
     padding: 3px 0;
 }
+
 .kiwi-nicklist-user-nick {
     font-weight: bold;
     cursor: pointer;

@@ -342,15 +342,18 @@ export default Vue.component('irc-input', {
     overflow: visible;
     z-index: 1;
 }
+
 .kiwi-ircinput-editor {
     white-space: pre;
     overflow-x: hidden;
     outline: none;
 }
-.kiwi-ircinput-editor:empty:not(:focus):before {
+
+.kiwi-ircinput-editor:empty:not(:focus)::before {
     content: attr(placeholder);
     cursor: text;
 }
+
 .kiwi-ircinput-editor img {
     height: 1em;
 }

@@ -393,6 +393,7 @@ export default {
     box-sizing: border-box;
     padding: 4px;
 }
+
 .kiwi-controlinput-inner {
     display: flex;
     position: relative;
@@ -400,18 +401,22 @@ export default {
     box-sizing: border-box;
     padding: 3px;
 }
+
 .kiwi-controlinput-user {
     height: 100%;
     padding: 0 15px;
     margin-right: 15px;
     font-weight: bold;
     text-align: center;
+    cursor: pointer;
 }
+
 @media screen and (max-width: 500px) {
     .kiwi-controlinput-user-nick {
         display: none;
     }
 }
+
 .kiwi-controlinput-form {
     flex: 1;
     overflow: hidden;
@@ -423,6 +428,7 @@ export default {
     box-sizing: border-box;
     overflow: visible;
 }
+
 .kiwi-controlinput-input {
     height: 100%;
     outline: none;
@@ -432,24 +438,23 @@ export default {
 .kiwi-controlinput-tools {
     margin-left: 10px;
 }
+
 .kiwi-controlinput-tool {
     display: inline-block;
     padding: 0 1em;
 }
+
 .kiwi-controlinput-tool a {
     cursor: pointer;
 }
+
 .kiwi-controlinput-active-tool {
     position: absolute;
     bottom: 100%;
     right: 0;
     z-index: 1;
     background: #f6f6f6;
-    border: 1px solid #dddddd;
-}
-
-.kiwi-controlinput-user {
-    cursor: pointer;
+    border: 1px solid #ddd;
 }
 
 .kiwi-controlinput-selfuser {
@@ -460,6 +465,7 @@ export default {
     transition: max-height 0.2s;
     overflow: hidden;
 }
+
 .kiwi-controlinput-selfuser--open {
     max-height: 300px;
 }

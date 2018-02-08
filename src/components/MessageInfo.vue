@@ -69,16 +69,17 @@ export default {
     padding-bottom: 1em;
     position: relative;
 }
-.kiwi-messageinfo-opactions a {
-}
+
 .kiwi-messageinfo-urls {
     margin-top: 5px;
     padding-top: 5px;
 }
+
 .kiwi-messageinfo-url {
     margin-bottom: 10px;
     display: flex;
 }
+
 .kiwi-messageinfo-url .u-link {
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -87,6 +88,7 @@ export default {
     flex: 1;
     margin: 0.4em 1em 0 1em;
 }
+
 .kiwi-messageinfo-close {
     position: absolute;
     right: 20px;

@@ -75,6 +75,7 @@ export default {
 </script>
 
 <style>
+
 .kiwi-settings-aliases-input {
     width: 80%;
     height: 200px;
@@ -82,14 +83,18 @@ export default {
     line-height: 1.4em;
     font-family: monospace;
 }
+
 .kiwi-settings-aliases-showhelp {
     display: block;
 }
+
 .kiwi-settings-aliases-help {
     padding: 1em;
     margin: 1em 0;
 }
+
 .kiwi-settings-aliases-help em {
     padding: 1px 2px;
 }
+
 </style>

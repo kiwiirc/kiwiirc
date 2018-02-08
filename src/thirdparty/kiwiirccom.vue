@@ -82,22 +82,25 @@ state.getStartups().kiwiirccom = ctor;
 
 .kiwi-aboutnew {
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     height: 53px;
-    left: 0px;
-    right: 0px;
+    left: 0;
+    right: 0;
     padding: 0 10px 10px 10px;
     box-sizing: border-box;
 }
+
 .kiwi-aboutnew-sep {
     margin-bottom: 10px;
     border-top: 1px solid #ddd;
 }
+
 .kiwi-aboutnew-help {
     font-size: 1.9em;
     float: right;
     cursor: pointer;
 }
+
 .kiwi-aboutnew-content {
     display: none;
     position: absolute;
@@ -112,9 +115,11 @@ state.getStartups().kiwiirccom = ctor;
     box-sizing: border-box;
     overflow: auto;
 }
+
 .kiwi-aboutnew-content--open {
     display: block;
 }
+
 @media screen and (min-width: 700px) {
     .kiwi-aboutnew-content {
         padding: 2em 3em;
@@ -131,26 +136,30 @@ state.getStartups().kiwiirccom = ctor;
     font-size: 0.8em;
     color: #e0e0e0;
 }
+
 @media screen and (max-width: 600px) {
     .kiwi-sponsor {
         display: none;
     }
 }
+
 .kiwi-sponsor a {
     color: #e0e0e0;
 }
+
 .kiwi-sponsor span {
     display: none;
     font-style: italic;
 }
+
 .kiwi-sponsor:hover span {
     display: block;
 }
+
 .kiwi-sponsor a:hover {
     color: #bbe073;
     text-decoration: none;
 }
-
 
 .kiwi-personal {
     box-sizing: border-box;
@@ -160,17 +169,21 @@ state.getStartups().kiwiirccom = ctor;
     padding-top: 1em;
     font-size: 1.2em;
 }
+
 .kiwi-personal h1 {
     margin: 2em 0;
 }
+
 .kiwi-personal button {
     margin-top: 2.7em;
     margin-bottom: 1.5em;
 }
+
 /* Only show the toggle state browser link if on a small screen */
 .kiwi-personal-existing-networks {
     display: none;
 }
+
 @media screen and (max-width: 500px) {
     .kiwi-personal-existing-networks {
         display: inherit;

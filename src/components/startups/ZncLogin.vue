@@ -155,11 +155,10 @@ export default {
 <style>
 
 .kiwi-welcome-znc h2 {
-    margin-bottom: 1.5em;
     font-size: 1.7em;
     text-align: center;
     padding: 0;
-    margin: 0.5em 0 1em 0;
+    margin: 0.5em 0 1.5em 0;
 }
 
 .kiwi-welcome-znc-error {
@@ -178,7 +177,7 @@ export default {
     background-color: #fff;
     border-radius: 0.5em;
     padding: 1em;
-    border:1px solid #ececec;
+    border: 1px solid #ececec;
 }
 
 .kiwi-welcome-znc-form label {
@@ -186,6 +185,7 @@ export default {
     display: inline-block;
     margin-bottom: 1.5em;
 }
+
 .kiwi-welcome-znc-form input[type="text"] {
     font-size: 1em;
     margin-top: 5px;
@@ -198,6 +198,7 @@ export default {
 .kiwi-welcome-znc .kiwi-welcome-znc-have-password input {
     margin-bottom: 1.5em;
 }
+
 .kiwi-welcome-znc-have-password input:checked {
     margin-bottom: 0;
 }
@@ -206,6 +207,7 @@ export default {
     font-size: 1.1em;
     cursor: pointer;
 }
+
 .kiwi-welcome-znc-start[disabled] {
     cursor: not-allowed;
 }

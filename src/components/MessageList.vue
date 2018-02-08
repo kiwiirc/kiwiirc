@@ -31,10 +31,10 @@
             ></message-list-message-compact>
         </template>
 
-        <not-connected     
-            v-if="buffer.getNetwork().state !== 'connected'"      
-            :buffer="buffer"      
-            :network="buffer.getNetwork()"        
+        <not-connected
+            v-if="buffer.getNetwork().state !== 'connected'"
+            :buffer="buffer"
+            :network="buffer.getNetwork()"
         ></not-connected>
     </div>
 </template>
@@ -361,83 +361,28 @@ export default {
     overflow-y: auto;
     height: 100%;
 }
+
 .kiwi-messagelist-scrollback {
     text-align: center;
     padding: 5px;
 }
+
 .kiwi-messagelist-message {
     overflow: hidden;
     transition: opacity 0.2s;
     line-height: 1.5em;
     margin: 0 3px;
 }
+
 @media screen and (max-width: 700px) {
     .kiwi-messagelist-message,
     .kiwi-messageinfo {
         margin: 0;
     }
 }
+
 .kiwi-messagelist-message--blur {
     opacity: 0.5;
-}
-.kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
-    display: none;
-}
-
-.kiwi-messagelist-seperator {
-    text-align: center;
-    display: block;
-    margin: 1em;
-}
-.kiwi-messagelist-seperator > span {
-    background: #fff;
-    display: inline-block;
-    position: relative;
-    z-index: 2;
-    padding: 0 1em;
-}
-.kiwi-messagelist-seperator:after {
-    content: "";
-    display: block;
-    border-bottom: 1px solid blue;
-    position: relative;
-    top: -0.8em;
-}
-
-/**
- * Displaying an emoji in a message
- */
-.kiwi-messagelist-emoji {
-    width: 1.3em;
-    display: inline-block;
-    pointer-events: none;
-    vertical-align: middle;
-}
-@keyframes emojiIn {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-.kiwi-messagelist-emoji--single {
-    animation: 0.1s ease-in-out 0s 1 emojiIn;
-    font-size: 2em;
-}
-
-/**
- * Message structure
- */
-
-.kiwi-messagelist-time,
-.kiwi-messagelist-nick,
-.kiwi-messagelist-body {
-    padding: 2px 4px;
-}
-
-.kiwi-messagelist-time {
-    font-size: 0.8em;
 }
 
 .kiwi-messagelist-nick {
@@ -447,19 +392,74 @@ export default {
     overflow: hidden;
     vertical-align: top;
     cursor: pointer;
+    padding: 2px 4px;
 }
+
+.kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
+    display: none;
+}
+
+.kiwi-messagelist-seperator {
+    text-align: center;
+    display: block;
+    margin: 1em;
+}
+
+.kiwi-messagelist-seperator > span {
+    background: #fff;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    padding: 0 1em;
+}
+
+.kiwi-messagelist-seperator::after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid blue;
+    position: relative;
+    top: -0.8em;
+}
+
+/** Displaying an emoji in a message */
+.kiwi-messagelist-emoji {
+    width: 1.3em;
+    display: inline-block;
+    pointer-events: none;
+    vertical-align: middle;
+}
+
+@keyframes emojiIn {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.kiwi-messagelist-emoji--single {
+    animation: 0.1s ease-in-out 0s 1 emojiIn;
+    font-size: 2em;
+}
+
+/** Message structure */
+.kiwi-messagelist-time,
+.kiwi-messagelist-body {
+    padding: 2px 4px;
+}
+
+.kiwi-messagelist-time {
+    font-size: 0.8em;
+}
+
 .kiwi-messagelist-nick:hover {
     overflow: visible;
 }
 
 .kiwi-messagelist-body {
     line-height: 1.5em;
-}
-
-.kiwi-messagelist-message-repeat {
-}
-.kiwi-messagelist-message-repeat .kiwi-messagelist-nick,
-.kiwi-messagelist-message-repeat .kiwi-messagelist-time {
 }
 
 .kiwi-messagelist-body .kiwi-nick {
@@ -472,12 +472,15 @@ export default {
     padding: 5px;
     text-align: center;
 }
+
 .kiwi-messagelist-message-topic.kiwi-messagelist-message-topic .kiwi-messagelist-time {
     display: none;
 }
+
 .kiwi-messagelist-message-topic.kiwi-messagelist-message-topic .kiwi-messagelist-nick {
     display: none;
 }
+
 .kiwi-messagelist-message-topic .kiwi-messagelist-body {
     margin-left: 0;
 }
@@ -491,23 +494,15 @@ export default {
 .kiwi-messagelist-message-traffic.kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
     display: none;
 }
+
 .kiwi-messagelist-message-traffic .kiwi-messagelist-body {
     font-style: italic;
 }
-.kiwi-messagelist-message-traffic-join {
-}
-.kiwi-messagelist-message-traffic-join .kiwi-nick:before {
-}
-.kiwi-messagelist-message-traffic-quit,
-.kiwi-messagelist-message-traffic-part,
-.kiwi-messagelist-message-traffic-kick {
-}
-.kiwi-messagelist-message-traffic-quit .kiwi-nick:before,
-.kiwi-messagelist-message-traffic-part .kiwi-nick:before, {
-}
+
 .kiwi-messagelist-message-action .kiwi-messagelist-body {
     font-style: italic;
 }
+
 .kiwi-messagelist-message-action.kiwi-messagelist-message-action .kiwi-messagelist-nick {
     display: none;
 }
@@ -516,9 +511,11 @@ export default {
     text-align: center;
     font-weight: bold;
 }
+
 .kiwi-messagelist-message-connection-connected {
     color: green;
 }
+
 .kiwi-messagelist-message-connection-disconnected {
     color: red;
 }
@@ -533,17 +530,13 @@ export default {
     margin-left: 4px;
     font-size: 0.8em;
 }
+
 .kiwi-wrap--touch .kiwi-messagelist-message-linkhandle {
     display: none;
 }
 
-/* Errors */
-.kiwi-messagelist-message-error {
-}
-
-
 .kiwi-messagelist-message--modern {
-    margin: 0px 20px;
+    margin: 0 20px;
     margin-left: 10px;
     padding: 10px;
 }

@@ -214,18 +214,23 @@ export default {
     overflow-y: auto;
     padding: 1em;
 }
+
 .kiwi-appsettings-close {
     float: right;
 }
+
 .kiwi-appsettings .u-form label {
     display: block;
 }
+
 .kiwi-appsettings .u-form label span {
     width: 200px;
 }
+
 .kiwi-appsettings-aliases > div {
     margin-left: 30px;
 }
+
 .kiwi-appsettings-theme-reload {
     margin-left: 1em;
     cursor: pointer;

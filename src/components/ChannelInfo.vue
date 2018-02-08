@@ -135,6 +135,7 @@ export default {
 .kiwi-channelinfo-basicmodes.kiwi-channelinfo-basicmodes label {
     display: block;
 }
+
 .kiwi-channelinfo-topic textarea {
     width: 500px;
     max-width: 80%;
