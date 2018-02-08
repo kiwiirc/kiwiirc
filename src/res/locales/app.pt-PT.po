@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2018-02-08 08:01-0500\n"
+"PO-Revision-Date: 2018-02-08 08:11-0500\n"
 
 #: Start
 msgid "start_button"
@@ -539,31 +539,31 @@ msgstr "Kickar + Banir do canal"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} deu op a {{target}}"
+msgstr "{{nick}} deu estatuto de op a {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} tirou op a {{target}}"
+msgstr "{{nick}} tirou estatuto de op a {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} deu half-op a {{target}}"
+msgstr "{{nick}} deu estatuto de half-op a {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} tirou half-op a {{target}}"
+msgstr "{{nick}} tirou estatuto de half-op a {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} deu voice a {{target}}"
+msgstr "{{nick}} deu estatuto de voice a {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} tirou voice a {{target}}"
+msgstr "{{nick}} tirou estatuto de voice a {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} deu admin a {{target}}"
+msgstr "{{nick}} deu estatuto de admin a {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
@@ -579,15 +579,15 @@ msgstr "{{nick}} tirou estatuto de owner a {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} baniu {{target}}"
+msgstr "{{target}} foi banido por {{nick}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr ""
+msgstr "{{target}} foi desbanido por {{nick}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}} colocou o modo {{mode}} em {{target}}"
 
 #: Your IRC client
 msgid "personal_client"
