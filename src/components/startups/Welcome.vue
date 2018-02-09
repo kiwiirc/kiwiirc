@@ -124,6 +124,13 @@ export default {
                 // Check if we have this network already
                 net = state.getNetworkFromAddress(netAddress);
 
+                // If we retreived an existing network, update the nick+password with what
+                // the user has just put in place
+                if (net) {
+                    net.nick = this.nick;
+                    net.connection.password = this.password;
+                }
+
                 // If the network doesn't already exist, add a new one
                 net = net || state.addNetwork('Network', this.nick, {
                     server: netAddress,
