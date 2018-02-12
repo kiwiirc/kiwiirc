@@ -15,15 +15,16 @@
                 <span>{{$t('unread_messages')}}</span>
             </div>
 
+            <component v-if="message.render() && message.template" v-bind:is="message.template" :message="message" :buffer="buffer"></component>
             <message-list-message-modern
-                v-if="listType === 'modern'"
+                v-else-if="listType === 'modern'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
                 :key="message.id"
             ></message-list-message-modern>
             <message-list-message-compact
-                v-if="listType !== 'modern'"
+                v-else-if="listType !== 'modern'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
