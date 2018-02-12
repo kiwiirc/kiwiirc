@@ -31,7 +31,7 @@ export default class Message {
 
     render() {
         // Allow plugins to render their own messages if needed
-        GlobalApi.singleton().emit('message:render', { message: this });
+        GlobalApi.singleton().emit('message.render', { message: this });
         return this;
     }
 
