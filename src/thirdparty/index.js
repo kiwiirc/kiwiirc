@@ -2,4 +2,5 @@
 
 // import './myStartupScreen';
 
+import './concept-theme-plugin.js';
 import './kiwiirccom';
