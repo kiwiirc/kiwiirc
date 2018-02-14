@@ -56,29 +56,6 @@
                     </div>
                 </div>
             </div>
-
-            <form
-                v-if="network.state === 'connected'"
-                @submit.prevent="submitNewChannelForm"
-                class="kiwi-statebrowser-newchannel"
-            >
-                <div
-                	class="kiwi-statebrowser-newchannel-inputwrap"
-                	:class="[
-                		new_channel_input_has_focus ?
-                			'kiwi-statebrowser-newchannel-inputwrap--focus' :
-                			''
-                	]"
-                >
-                    <input
-                        type="text"
-                        :placeholder="$t('state_join')"
-                        v-model="new_channel_input"
-                        @focus="onNewChannelInputFocus"
-                        @blur="onNewChannelInputBlur"
-                    /> <i @click="submitNewChannelForm" class="fa fa-plus" aria-hidden="true"></i>
-                </div>
-            </form>
         </div>
     </div>
 </template>
@@ -87,14 +64,11 @@
 
 import _ from 'lodash';
 import state from '@/libs/state';
-import * as Misc from '@/helpers/Misc';
 import BufferSettings from './BufferSettings';
 
 export default {
     data: function data() {
         return {
-            new_channel_input_has_focus: false,
-            new_channel_input: '',
             collapsed: false,
         };
     },
@@ -151,53 +125,6 @@ export default {
                 this.popup_networkid = buffer.networkid;
                 this.popup_top = domY;
             }
-        },
-        onNewChannelInputFocus: function onNewChannelInputFocus() {
-            // Auto insert the # if no value is already in. Easier for mobile users
-            if (!this.new_channel_input) {
-                this.new_channel_input = '#';
-            }
-
-            this.new_channel_input_has_focus = true;
-        },
-        onNewChannelInputBlur: function onNewChannelInputBlur() {
-            // Remove the # since we may have auto inserted it as they tabbed past
-            if (this.new_channel_input === '#') {
-                this.new_channel_input = '';
-            }
-
-            this.new_channel_input_has_focus = false;
-        },
-        submitNewChannelForm: function submitNewChannelForm() {
-            let newChannelVal = this.new_channel_input;
-            this.new_channel_input = '#';
-
-            let network = this.network;
-            let bufferObjs = Misc.extractBuffers(newChannelVal);
-
-            // Only switch to the first channel we join if multiple are being joined
-            let hasSwitchedActiveBuffer = false;
-            bufferObjs.forEach(bufferObj => {
-                let chanName = bufferObj.name;
-                let ignoreNames = ['#0', '0', '&0'];
-                if (ignoreNames.indexOf(chanName) > -1 || chanName.replace(/[#&]/g, '') === '') {
-                    return;
-                }
-
-                let newBuffer = state.addBuffer(network.id, chanName);
-                if (newBuffer && !hasSwitchedActiveBuffer) {
-                    state.setActiveBuffer(network.id, newBuffer.name);
-                    hasSwitchedActiveBuffer = true;
-                }
-
-                if (bufferObj.key) {
-                    newBuffer.key = bufferObj.key;
-                }
-
-                if (network.isChannelName(chanName)) {
-                    network.ircClient.join(chanName, bufferObj.key);
-                }
-            });
         },
     },
     computed: {
