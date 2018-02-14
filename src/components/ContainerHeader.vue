@@ -9,7 +9,9 @@
 
         <template v-if="isChannel()">
             <div class="kiwi-header-options">
-                <a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a>
+                <div>{{$t('person', {count: Object.keys(buffer.users).length})}}</div>
+                <div><a class="u-button u-button-secondary" @click="showSidebar">Channel Settings</a></div>
+                <div><a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a></div>
             </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div v-if="isJoined" class="kiwi-header-topic">{{buffer.topic}}</div>
@@ -117,6 +119,9 @@ export default {
         showNetworkSettings: function showNetworkSettings(network) {
             state.$emit('network.settings', network);
         },
+        showSidebar() {
+            state.$emit('sidebar.show');
+        },
         joinCurrentBuffer: function joinCurrentBuffer() {
             let network = this.buffer.getNetwork();
             this.buffer.enabled = true;
@@ -204,6 +209,10 @@ export default {
 .kiwi-header-options {
     display: inline-block;
     float: right;
+}
+
+.kiwi-header-options > div {
+    display: inline-block;
 }
 
 .kiwi-header-options .u-button {
