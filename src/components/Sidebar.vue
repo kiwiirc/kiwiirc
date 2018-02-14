@@ -196,7 +196,6 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: width 0.3s;
 }
 
 .kiwi-sidebar--wide {

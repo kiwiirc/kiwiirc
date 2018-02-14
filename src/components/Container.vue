@@ -127,21 +127,24 @@ export default {
 }
 
 .kiwi-header {
-    margin-right: 200px;
     z-index: 1;
 }
 
 .kiwi-sidebar {
     position: absolute;
-    right: 0;
+    right: -200px;
     top: 0;
     bottom: 0;
     width: 200px;
     z-index: 2;
+    transition: right 0.2s, width 0.2s;
+}
+
+.kiwi-container--sidebar-open .kiwi-sidebar {
+    right: 0;
 }
 
 .kiwi-messagelist {
-    margin-right: 200px;
     flex: 1;
 }
 
@@ -221,22 +224,9 @@ export default {
         max-height: 50px;
     }
 
-    .kiwi-sidebar {
-        right: -200px;
-        top: 50px;
-    }
-
-    .kiwi-messagelist {
-        margin-right: 0;
-    }
-
     .kiwi-container-toggledraw-statebrowser,
     .kiwi-container-toggledraw-sidebar {
         display: block;
-    }
-
-    .kiwi-container--sidebar-open .kiwi-sidebar {
-        right: 0;
     }
 }
 

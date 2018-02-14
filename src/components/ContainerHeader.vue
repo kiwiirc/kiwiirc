@@ -120,7 +120,7 @@ export default {
             state.$emit('network.settings', network);
         },
         showSidebar() {
-            state.$emit('sidebar.show');
+            state.$emit('sidebar.toggle');
         },
         joinCurrentBuffer: function joinCurrentBuffer() {
             let network = this.buffer.getNetwork();
