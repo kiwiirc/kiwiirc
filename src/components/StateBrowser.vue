@@ -1,5 +1,19 @@
 <template>
     <div class="kiwi-statebrowser">
+
+        <h1>Kiwi IRC</h1>
+
+        <div class="kiwi-statebrowser-profile">
+            <div class="user-avatar">
+                U
+            </div>
+            <div class="user-options">
+                <span>User</span></br>
+                [[USERNAME]] <i class="fa fa-cog" aria-hidden="true"></i>
+            </div>
+        </div>
+
+
         <div class="kiwi-statebrowser-tools">
             <div v-for="el in pluginUiElements" v-rawElement="el" class="kiwi-statebrowser-tool"></div>
         </div>
@@ -16,11 +30,13 @@
             <a @click="closeBuffer" class="u-link">{{$t('state_leave', {name: bufferForPopup.name})}}</a>
         </div>
 
+
         <div
             v-if="isPersistingState"
             class="kiwi-statebrowser-usermenu"
             :class="[is_usermenu_open?'kiwi-statebrowser-usermenu--open':'']"
         >
+            <!--
             <a class="kiwi-statebrowser-usermenu-header" @click="is_usermenu_open=!is_usermenu_open">{{$t('state_account')}} <i class="fa fa-caret-down"></i></a>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
                 <p> {{$t('state_remembered')}} </p>
@@ -29,13 +45,17 @@
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </div>
             </div>
+            -->
 
-            <div class="kiwi-statebrowser-divider"></div>
+
+            <!-- <div class="kiwi-statebrowser-divider"></div> -->
         </div>
 
+        <!--
         <div class="kiwi-statebrowser-switcher">
             <a@click="clickAddNetwork" v-if="!isRestrictedServer" ><i class="fa fa-plus" aria-hidden="true"></i></a><a @click="clickAppSettings" ><i class="fa fa-cog" aria-hidden="true"></i></a>
         </div>
+        -->
 
         <div v-if="networks.length === 0" class="kiwi-statebrowser-nonetworks">
             {{$t('state_network')}}<br><a class="u-link" @click="clickAddNetwork">{{$t('state_add')}}</a>
@@ -64,7 +84,7 @@
                 @submit.prevent="submitNewChannelForm"
                 class="kiwi-statebrowser-newchannel"
             >
-                <a class="u-button u-button-primary" @click="add_channel_open=true">Add Channel</a>
+                <a class="u-button u-button-primary" @click="add_channel_open=true">Add Channel <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 <div
                     v-if="add_channel_open"
                     v-focus
@@ -89,7 +109,9 @@
                 <input
                     type="text"
                     v-model="channel_filter"
-                /> 
+                    placeholder="Filter Channels..."
+                />
+                <p>Show Advanced Options</p>
             </div>
         </div>
 

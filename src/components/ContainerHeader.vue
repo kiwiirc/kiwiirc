@@ -9,12 +9,12 @@
 
         <template v-if="isChannel()">
             <div class="kiwi-header-options">
-                <div>{{$t('person', {count: Object.keys(buffer.users).length})}}</div>
-                <div><a class="u-button u-button-secondary" @click="showSidebar">Channel Settings</a></div>
-                <div><a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a></div>
+                <div class="option"><a @click="showSidebar"><i class="fa fa-users" aria-hidden="true"></i></i> {{$t('person', {count: Object.keys(buffer.users).length})}}</a></div>
+                <div class="option"><a @click="settings_open = !settings_open"><i class="fa fa-cog" aria-hidden="true"></i> Channel Settings</a></div>
+                <div class="option"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i> {{$t('Leave Channel')}}</a></div>
             </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div v-if="isJoined" class="kiwi-header-topic">{{buffer.topic}}</div>
+            <div v-if="isJoined && buffer.topic.length > 0" class="kiwi-header-topic">{{buffer.topic}}</div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a @click="joinCurrentBuffer" class="u-link kiwi-header-join-channel-button">{{$t('container_join')}}</a>
             </div>

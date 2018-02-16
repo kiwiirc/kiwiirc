@@ -146,7 +146,228 @@
     color: #e0e0e0;
     border-right: none;
     width: 10.4%;
+    text-align: center;
 }
+
+.kiwi-statebrowser h1 {
+    width: 100%;
+    font-size: 1em;
+    opacity: 0.8;
+    cursor: default;
+    padding: 20px 0 27px 0;
+}
+
+.kiwi-statebrowser-profile {
+    width: 100%;
+}
+
+.kiwi-statebrowser-profile .user-avatar {
+    width: 78px;
+    height: 78px;
+    border: 2px solid #42b992;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 2em;
+    text-align: center;
+    line-height: 78px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 15px auto;
+    transition: all 0.3s;
+}
+
+.kiwi-statebrowser-profile .user-avatar:hover{
+    background-color: #42b992;
+    color: #fff;
+}
+
+.kiwi-statebrowser-profile .user-options {
+    width: 100%;
+    text-align: left;
+    padding: 16px 14px 16px 10px;
+    border-bottom: 1px solid #4c4c49;
+    font-size: 1em;
+    box-sizing: border-box;
+    font-weight: 400;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.kiwi-statebrowser-profile .user-options span {
+    font-weight: 600;
+}
+
+.kiwi-statebrowser-profile .user-options i{
+    float: right;
+    line-height: 23px;
+    font-size: 1.2em;
+}
+
+.kiwi-statebrowser-profile .user-options:hover{
+    background: #42b992;
+    color: #fff;
+    opacity: 1;
+}
+
+/* New Channel Button */
+form.kiwi-statebrowser-newchannel {
+    padding: 0;
+    margin: 0;
+    height: auto;
+    width: 100%;
+    border-top: 1px solid #000000;
+    box-sizing: border-box;
+}
+
+form.kiwi-statebrowser-newchannel a {
+    width: 100%;
+    padding: 0 15px 0 10px;
+    color: #fff;
+    line-height: 40px;
+    font-size: 1em;
+    font-weight: 400;
+    cursor: pointer;
+    display: block;
+    box-sizing: border-box;
+    background: none;
+    text-align: left;
+    position: relative;
+    border-radius: 0;
+    opacity: 0.8;
+    border: none;
+    transition: all 0.3s;
+}
+
+form.kiwi-statebrowser-newchannel a i {
+    position: absolute;
+    right: 15px;
+    line-height: 40px;
+    font-size: 1em;
+}
+
+form.kiwi-statebrowser-newchannel a:hover {
+    background: #42b992;
+    opacity: 1;
+    color: #fff;
+}
+
+/* Set the height of the networks scroll box */
+.kiwi-statebrowser-scrollarea{
+    flex: unset;
+    height: auto;
+    max-height: 220px;
+    padding-right: 14px;
+    background-color: #131312;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+
+/*Channel search input */
+.kiwi-statebrowser-channelfilter {
+    width: 100%;
+    padding: 10px 15px 10px 5px;
+    box-sizing: border-box;
+    position: relative;
+    opacity: 0.8;
+    transition: all 0.3s;
+}
+.kiwi-statebrowser-channelfilter:hover {
+    opacity: 1;
+}
+
+.kiwi-statebrowser-channelfilter:after{
+    content: '\f002';
+    position: absolute;
+    top: 12px;
+    right: 25px;
+    font-size: 1em;
+    color: #000;
+    z-index: 10;
+    pointer-events: none;
+    font-family: fontAwesome;
+}
+
+.kiwi-statebrowser-channelfilter input{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #fff;
+    color: #000;
+    padding: 0 5px;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+.kiwi-statebrowser-channelfilter p {
+    color: #42b992;
+    text-align: center;
+    font-size: 0.9em;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.kiwi-statebrowser-channelfilter p:hover {
+    text-decoration: underline;
+    color: #6dcdad;
+}
+
+
+/* Add network button */
+.kiwi-statebrowser-newnetwork{
+    width: 100%;
+    position: static;
+    padding: 0 15px 0 5px;
+    margin: 0 0 10px 0;
+    box-sizing: border-box;
+}
+
+.kiwi-statebrowser-newnetwork a{
+    width: 100%;
+    padding: 0 10px;
+    color: #fff;
+    opacity: 0.8;
+    line-height: 36px;
+    font-size: 1em;
+    font-weight: 400;
+    cursor: pointer;
+    display: block;
+    box-sizing: border-box;
+    background: none;
+    text-align: left;
+    position: relative;
+    border-radius: 0;
+    font-weight: 600;
+    font-weight: 1.2em;
+    transition: all 0.3s;
+    border: 2px solid #b8b8b7;
+}
+
+.kiwi-statebrowser-newnetwork a i{
+    position: absolute;
+    right: 10px;
+    line-height: 36px;
+    font-size: 1.2em;
+}
+
+.kiwi-statebrowser-newnetwork a:hover {
+    background: #42b992;
+    border-color: #42b992;
+    opacity: 1;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header{
     line-height: 45px;
@@ -200,6 +421,8 @@
 
 .kiwi-statebrowser-channels .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name{
     color:#fff;
+    text-align: left;
+    font-weight: 100;
 }
 
 .kiwi-statebrowser-divider {
@@ -305,10 +528,42 @@
     color: #fff;
 }
 
+
+/* When the sidebar is open we will put a shadow over the text area */
+.kiwi-container--sidebar-open{
+    position: relative;
+    min-height: 100%;
+}
+.kiwi-container--sidebar-open:before{
+    content:'';
+    z-index: 10;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.25;
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* Sidebar */
 .kiwi-sidebar {
     background-color: #fff;
     border-left: 5px solid #e6e6e6;
+    z-index: 200;
+    right: -20%;
+    width: 20%;
 }
 
 .kiwi-sidebar .kiwi-nicklist-info{
@@ -327,7 +582,7 @@
     line-height: 30px;
     background-color: #f5f5f5;
     color:#000;
-    font-weight: normal;
+    font-weight: normal;  
 }
 
 .kiwi-sidebar .kiwi-nicklist-info .fa.fa-search{
@@ -345,7 +600,8 @@
     float: left;
     width: 100%;
     height: auto;
-    padding: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .kiwi-sidebar .kiwi-nicklist-users .kiwi-nicklist-user{
@@ -358,7 +614,7 @@
     transition: all 0.3s;
     position: relative;
     border-top: 1px solid #858585;
-    border-bottom: 1px solid #858585;
+    border-right: 1px solid #858585;
     box-sizing: border-box;
 }
 
@@ -434,7 +690,7 @@
 .kiwi-header-name {
     float:left;
     color: #22231f;
-    padding: 0.4em 1em;
+    padding: 0.4em 20px;
     opacity: 1;
     font-size: 22px;
     line-height: normal;
@@ -458,44 +714,39 @@
     width: auto;
 }
 
-.kiwi-header-options .u-button {
+.kiwi-header-options .option{
     border: none;
     float:left;
     background: none;
-    line-height: 45px;
-    padding: 0;
     display: block;
     font-size: 0.8em;
-    position: relative;
-    font-weight: 100;
-    padding-left: 2em;
     border-left: 1px solid #22231f;
-    padding-left: 30px;
-    padding-right: 30px;
+}
+
+.kiwi-header-options .option a{
+    padding: 0 20px 0 10px;
+    line-height: 45px;
+    display: block;
+    font-size: 1.2em;
+    font-weight: 600;
+    opacity: 0.8;
+    cursor: pointer;
     transition: all 0.3s;
-    border-radius: 0px;
 }
 
-.kiwi-header-options .u-button:before {
-    content: '\f00d';
-    font-family: fontAwesome;
-    position: absolute;
-    left:10px;
-    top:50%;
-    color: #22231f;
-    margin-top: -1.4em;
-    font-size: 1.4em;
-    transition: all 0s;
+.kiwi-header-options .option a i{
+    margin-right: 10px;
+    font-size: 1.2em;
+    float:left;
+    line-height: 45px;
 }
 
-.kiwi-header-options .u-button:hover {
+.kiwi-header-options .option a:hover {
     background-color: #42b992;
     color: #fff;
+    opacity: 1;
 }
-.kiwi-header-options .u-button:hover:before {
-    color:#fff;
-    transition: all 0.3s;
-}
+
 
 @media screen and (max-width: 900px){
     .kiwi-header-options .u-button{
@@ -636,6 +887,7 @@
     min-height: 0;
     line-height: normal;
     margin: 1em 0.5em;
+    text-align: left;
 }
 
 /* Remove the min height from the message, as again, makes the page look bloated */
@@ -644,6 +896,9 @@
 .kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body{
     min-height: 0;
     margin: 0;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /*Remove the avatars from the divs too */
