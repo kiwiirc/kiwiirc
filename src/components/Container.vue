@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-container" v-bind:class="{
             /* 'kiwi-container-' + bufferType: true, */
-            'kiwi-container--sidebar-open': sidebarOpen,
+            'kiwi-container--sidebar-open': uiState.sidebarOpen,
             'kiwi-container--no-sidebar': buffer && !buffer.isChannel(),
             'kiwi-container--mini': isHalfSize,
     }">
@@ -14,7 +14,7 @@
                     :class="{'kiwi-container-toggledraw-statebrowser-messagecount--highlight': unreadMessages.highlight}"
                 >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}</div>
             </div>
-            <container-header :buffer="buffer"></container-header>
+            <container-header :buffer="buffer" :uiState="uiState"></container-header>
             <div @click.stop="toggleSidebar" v-bind:class="{
                 'kiwi-container-toggledraw-sidebar': true,
                 'kiwi-container-toggledraw-sidebar--disabled': !buffer.isChannel()
@@ -23,7 +23,7 @@
             </div>
 
             <template v-if="buffer.isServer()">
-                <server-view :network="network" :buffer="buffer"></server-view>
+                <server-view :network="network" :buffer="buffer" :uiState="uiState"></server-view>
             </template>
             <template v-else>
                 <sidebar
@@ -31,8 +31,9 @@
                     :network="network"
                     :buffer="buffer"
                     :users="users"
+                    :uiState="uiState"
                 ></sidebar>
-                <message-list :buffer="buffer" :users="users"></message-list>
+                <message-list :buffer="buffer" :users="users" :uiState="uiState"></message-list>
             </template>
         </template>
         <template v-else>
@@ -44,11 +45,24 @@
 
 <script>
 
+import Vue from 'vue';
 import state from '@/libs/state';
 import ContainerHeader from './ContainerHeader';
 import Sidebar from './Sidebar';
 import MessageList from './MessageList';
 import ServerView from './ServerView';
+
+// ContainerUiState gets passed around to child components so they all know
+// what state the UI is in. Ie. sidebar open or closed, what section of the
+// sidebar is open, etc.
+let ContainerUiState = Vue.extend({
+    data() {
+        return {
+            sidebarOpen: false,
+            sidebarSection: '',
+        };
+    },
+});
 
 export default {
     components: {
@@ -59,7 +73,7 @@ export default {
     },
     data: function data() {
         return {
-            sidebarOpen: false,
+            uiState: new ContainerUiState(),
         };
     },
     props: ['network', 'buffer', 'users', 'isHalfSize'],
@@ -105,16 +119,16 @@ export default {
     },
     created: function created() {
         this.listen(state, 'sidebar.toggle', () => {
-            state.$emit('sidebar.' + (this.sidebarOpen ? 'hide' : 'show'));
+            state.$emit('sidebar.' + (this.uiState.sidebarOpen ? 'hide' : 'show'));
         });
         this.listen(state, 'sidebar.show', () => {
-            this.sidebarOpen = true;
+            this.uiState.sidebarOpen = true;
         });
         this.listen(state, 'sidebar.hide', () => {
-            this.sidebarOpen = false;
+            this.uiState.sidebarOpen = false;
         });
         this.listen(state, 'userbox.show', (user, opts) => {
-            this.sidebarOpen = true;
+            this.uiState.sidebarOpen = true;
         });
     },
 };

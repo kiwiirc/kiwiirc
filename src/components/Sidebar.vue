@@ -6,12 +6,12 @@
                 <span v-if="sidebarIsWide" class="kiwi-sidebar-options" @click="sidebarIsWide=false">
                     {{$t('close')}} <i class="fa fa-caret-right" aria-hidden="true"></i>
                 </span>
-                <span v-else class="kiwi-sidebar-options" @click="settings_open = !settings_open">
+                <span v-else class="kiwi-sidebar-options" @click="isSettingsOpen = !isSettingsOpen">
                     <i class="fa fa-cog" aria-hidden="true"></i> {{$t('side_options')}}
                 </span>
 
                 <div
-                    v-if="settings_open"
+                    v-if="uiState.sidebarSection === 'settings'"
                     class="kiwi-sidebar-buffersettings"
                     @click.stop=""
                 >
@@ -40,7 +40,7 @@
                 </div>
 
                 <div
-                    v-if="userbox_user"
+                    v-if="uiState.sidebarSection==='user' && userbox_user"
                     class="kiwi-sidebar-userbox"
                     @click.stop=""
                 >
@@ -52,7 +52,7 @@
                 </div>
 
                 <nicklist
-                    v-if="buffer.isChannel()"
+                    v-if="buffer.isChannel() && uiState.sidebarSection === 'nicklist'"
                     :network="network"
                     :buffer="buffer"
                     :users="users"
@@ -91,19 +91,32 @@ export default {
     },
     data: function data() {
         return {
-            settings_open: false,
             userbox_user: null,
         };
     },
-    props: ['network', 'buffer', 'users'],
+    props: ['network', 'buffer', 'users', 'uiState'],
     computed: {
+        isSettingsOpen: {
+            get() {
+                return this.uiState.sidebarOpen && this.uiState.sidebarSection === 'settings';
+            },
+            set(newVal) {
+                if (newVal) {
+                    this.uiState.sidebarOpen = true;
+                    this.uiState.sidebarSection = 'settings';
+                } else {
+                    this.uiState.sidebarOpen = false;
+                    this.uiState.sidebarSection = '';
+                }
+            },
+        },
         sidebarIsWide: {
             get: function getSidebarIsWide() {
-                return this.settings_open || this.userbox_user;
+                return this.isSettingsOpen || this.userbox_user;
             },
             set: function setSidebarIsWide(newVal) {
                 if (!newVal) {
-                    this.settings_open = false;
+                    this.isSettingsOpen = false;
                     this.userbox_user = null;
                 }
             },
@@ -176,11 +189,13 @@ export default {
     },
     created: function created() {
         this.listen(state, 'sidebar.hide', () => {
-            this.settings_open = false;
+            this.uiState.sidebarOpen = false;
         });
 
         this.listen(state, 'userbox.show', (user, opts) => {
             this.userbox_user = user;
+            this.uiState.sidebarSection = 'user';
+            this.uiState.sidebarOpen = true;
         });
         this.listen(state, 'userbox.hide', () => {
             this.userbox_user = null;
