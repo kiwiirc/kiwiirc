@@ -113,6 +113,9 @@ export default {
         this.listen(state, 'sidebar.hide', () => {
             this.sidebarOpen = false;
         });
+        this.listen(state, 'userbox.show', (user, opts) => {
+            this.sidebarOpen = true;
+        });
     },
 };
 </script>
