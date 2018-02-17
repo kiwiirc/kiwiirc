@@ -40,7 +40,7 @@ export function listenForHighlights(state) {
         }
 
         let network = buffer.getNetwork();
-        let isHighlight = Misc.mentionsNick(message.message, network.nick);
+        let isHighlight = message.isHighlight;
         let isActiveBuffer = state.getActiveBuffer() === buffer;
         let inFocus = isActiveBuffer && state.ui.app_has_focus;
 
