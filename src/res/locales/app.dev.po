@@ -706,6 +706,10 @@ msgstr "Connected"
 msgid "disconnected"
 msgstr "Disconnected"
 
+#: Connected to
+msgid "connected_to"
+msgstr "Connected to"
+
 #: Has joined
 msgid "has_joined"
 msgstr "has joined"

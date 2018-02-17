@@ -193,7 +193,7 @@ function clientMiddleware(state, networkid) {
             state.addMessage(serverBuffer, {
                 time: Date.now(),
                 nick: '',
-                message: `Connected to ${client.network.name}!`,
+                message: `${TextFormatting.t('connected_to')} ${client.network.name}!`,
             });
 
             // Get some extra info about ourselves
