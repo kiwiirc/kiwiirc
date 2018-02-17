@@ -59,8 +59,27 @@ let ContainerUiState = Vue.extend({
     data() {
         return {
             sidebarOpen: false,
+            // sidebarSection may be either '', 'user', 'settings', 'nicklist'
             sidebarSection: '',
         };
+    },
+    methods: {
+        close() {
+            this.sidebarOpen = false;
+            this.sidebarSection = '';
+        },
+        showUser() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'user';
+        },
+        showNicklist() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'nicklist';
+        },
+        showBufferSettings() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'settings';
+        },
     },
 });
 
@@ -122,13 +141,13 @@ export default {
             state.$emit('sidebar.' + (this.uiState.sidebarOpen ? 'hide' : 'show'));
         });
         this.listen(state, 'sidebar.show', () => {
-            this.uiState.sidebarOpen = true;
+            this.uiState.showNicklist();
         });
         this.listen(state, 'sidebar.hide', () => {
-            this.uiState.sidebarOpen = false;
+            this.uiState.close();
         });
         this.listen(state, 'userbox.show', (user, opts) => {
-            this.uiState.sidebarOpen = true;
+            this.uiState.showUser();
         });
     },
 };

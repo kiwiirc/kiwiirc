@@ -9,8 +9,8 @@
 
         <template v-if="isChannel()">
             <div class="kiwi-header-options">
-                <div class="option"><a @click="uiState.sidebarOpen=true;uiState.sidebarSection='nicklist'"><i class="fa fa-users" aria-hidden="true"></i></i> {{$t('person', {count: Object.keys(buffer.users).length})}}</a></div>
-                <div class="option"><a @click="uiState.sidebarOpen=true;uiState.sidebarSection='settings'"><i class="fa fa-cog" aria-hidden="true"></i> Channel Settings</a></div>
+                <div class="option"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> {{$t('person', {count: Object.keys(buffer.users).length})}}</a></div>
+                <div class="option"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> Channel Settings</a></div>
                 <div class="option"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i> {{$t('Leave Channel')}}</a></div>
             </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
