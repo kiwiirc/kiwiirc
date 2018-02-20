@@ -290,6 +290,7 @@ const stateObj = {
         last_active_buffers: [],
         app_has_focus: true,
         is_touch: false,
+        favicon_counter: 0,
     },
     networks: [
         /* {
