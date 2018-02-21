@@ -1013,7 +1013,13 @@ form.kiwi-statebrowser-newchannel a:hover {
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message-repeat .kiwi-messagelist-body {
-    padding-left: 20px;
+    padding-left: 0;
+    min-height: 0 !important;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--compact.kiwi-messagelist-message-repeat.kiwi-messagelist-message-privmsg.kiwi-messagelist-message--own{
+    min-height: 0 !important;
+    height: auto !important;
 }
 
 /* Style the joined connection message */
