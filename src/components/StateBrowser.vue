@@ -7,7 +7,7 @@
             <div class="user-avatar">
                 U
             </div>
-            <div class="user-options">
+            <div class="user-options" @click="clickAppSettings">
                 Settings <i class="fa fa-cog" aria-hidden="true"></i>
             </div>
         </div>
