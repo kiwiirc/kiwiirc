@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-statebrowser">
 
-        <h1>Kiwi IRC</h1>
+        <h1>&nbsp;</h1>
 
         <div class="kiwi-statebrowser-profile">
             <div class="user-avatar">
@@ -56,9 +56,11 @@
         </div>
         -->
 
+        <!--
         <div v-if="networks.length === 0" class="kiwi-statebrowser-nonetworks">
             {{$t('state_network')}}<br><a class="u-link" @click="clickAddNetwork">{{$t('state_add')}}</a>
         </div>
+        -->
 
         <div v-if="Object.keys(provided_networks).length > 0" class="kiwi-statebrowser-availablenetworks">
             <div @click="show_provided_networks=!show_provided_networks" class="kiwi-statebrowser-availablenetworks-toggle">&#8618; {{$t('state_available')}}</div>

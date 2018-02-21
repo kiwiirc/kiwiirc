@@ -333,7 +333,6 @@ form.kiwi-statebrowser-newchannel a:hover {
 .kiwi-statebrowser-scrollarea {
     flex: unset;
     height: auto;
-    max-height: 220px;
     background-color: #131312;
     margin-bottom: 10px;
     box-sizing: border-box;
@@ -926,15 +925,22 @@ form.kiwi-statebrowser-newchannel a:hover {
     margin-bottom: 20px;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-body ,
+.kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
     background-color: #42b992;
     font-size: 1.2em;
     color:#fff;
     height: auto;
     padding: 1em;
-    margin: 0 0 40px 0;
+    margin: 0;
     min-height: 0;
     line-height: normal;
+    text-align: center;
+    cursor: default;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
+    background-color: #b9424a;
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-time,
@@ -942,7 +948,8 @@ form.kiwi-statebrowser-newchannel a:hover {
     display: none;
 }
 
-.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected{
+.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected,
+.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-disconnected{
     margin-left: 0;
     padding: 0;
     border: none;
@@ -951,15 +958,10 @@ form.kiwi-statebrowser-newchannel a:hover {
     text-align: center !important;
 }
 
-.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-modern-right{
+.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-modern-right,
+.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-modern-right{
     margin-left: 0;
     padding: 0;
-}
-
-.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body{
-    margin-bottom: 0;
-    text-align: center;
-    cursor: default;
 }
 
 /* End of connection message styling */
