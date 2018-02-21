@@ -72,7 +72,7 @@
     margin: 1em auto;
 }
 
-.kiwi-notconnected .button-container .button.connection-settings i
+.kiwi-notconnected .button-container .button.connection-settings i{
     line-height: 1em;
 }
 
@@ -844,6 +844,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 /* Control input */
 .kiwi-controlinput {
     background-color: #fff;
+    z-index: 100;
 }
 
 .kiwi-controlinput-user {
@@ -1223,6 +1224,10 @@ form.kiwi-statebrowser-newchannel a:hover {
 /**
  * User box
  */
+
+.kiwi-sidebar-userbox{
+    overflow-y: auto;     
+}
 
 .kiwi-userbox-usermask {
     color: #9e9e9e;
