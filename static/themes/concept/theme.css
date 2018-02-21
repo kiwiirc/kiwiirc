@@ -76,31 +76,6 @@
     line-height: 1em;
 }
 
-@media screen and (max-width: 1024px) {
-    .kiwi-notconnected-caption {
-        font-size: 1em;
-    }
-
-    .kiwi-notconnected .button-container .button {
-        clear: both;
-        margin: 0 5% 1em;
-        font-size: 1em;
-        display: block;
-        padding: 0.6em 0.8em 0.6em 0.4em;
-        width: 90%;
-        box-sizing: border-box;
-    }
-
-    .kiwi-notconnected .button-container .button.connection-settings{
-        font-size: 1em;
-        max-width: none;
-    }
-
-    .kiwi-notconnected .button-container .button i {
-        display: none;
-    }
-}
-
 /* Welcome custom server button colour */
 .kiwi-welcome-simple-form .u-submit{
     background-color: #42b992;
@@ -122,13 +97,6 @@
 .kiwi-workspace{
     margin-left: 10.4%;
     background-color: #f1f1f1;
-}
-
-@media screen and (max-width: 900px){
-    .kiwi-workspace{
-        width: 100%;
-        margin: 0;
-    }
 }
 
 .kiwi-workspace:before {
@@ -525,7 +493,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 }
 
 .kiwi-statebrowser-divider {
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
     margin: 8px 12px;
     height: 1px;
 }
@@ -608,12 +576,6 @@ form.kiwi-statebrowser-newchannel a:hover {
 .kiwi-container-toggledraw-sidebar {
     background: #fff;
     border-bottom: 1px solid #ddd;
-}
-
-@media screen and (max-width: 900px){
-    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
-        width: 100%;
-    }
 }
 
 .kiwi-container-toggledraw-statebrowser {
@@ -860,16 +822,6 @@ form.kiwi-statebrowser-newchannel a:hover {
     opacity: 1;
 }
 
-@media screen and (max-width: 900px){
-    .kiwi-header-options .u-button {
-        padding: 0;
-        float:right;
-    }
-    .kiwi-header-options .u-button:before {
-        display: none;
-    }
-}
-
 /* The not joined button */
 .kiwi-header .kiwi-header-notjoined {
     border-radius: 0;
@@ -964,82 +916,8 @@ form.kiwi-statebrowser-newchannel a:hover {
 }
 
 
-/*Not connected message */
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected{
-    margin-left: 0;
-    padding: 0;
-    border: none;
-    margin: 0;
-    background: none;
-    text-align: center !important;
-}
-
-.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-nick{
-    display: none;
-}
-
-.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-modern-right{
-    margin-left: 0;
-    padding: 0;
-}
-
-.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-modern-right .kiwi-messagelist-body{
-    margin-bottom: 0;
-    text-align: center;
-    cursor: default;
-}
-
-/* End of connection message styling */
-
-/* Remove the styling for none user messages, as they make the page look bloated */
-.kiwi-messagelist-message.kiwi-messagelist-message-mode,
-.kiwi-messagelist-message.kiwi-messagelist-message-traffic,
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected {
-    padding: 0.1em 0.5em;
-    min-height: 0;
-    line-height: normal;
-    margin: 1em 0.5em;
-    text-align: left;
-}
-
-/* Remove the min height from the message, as again, makes the page look bloated */
-.kiwi-messagelist-message.kiwi-messagelist-message-mode .kiwi-messagelist-body,
-.kiwi-messagelist-message.kiwi-messagelist-message-traffic .kiwi-messagelist-body,
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body,
-.kiwi-messagelist-message.kiwi-messagelist-message-repeat .kiwi-messagelist-body {
-    min-height: 0;
-    margin: 0;
-    text-align: left;
-    padding-right: 20px;
-}
-
-.kiwi-messagelist-message--modern .kiwi-messagelist-modern-avatar {
-    text-transform: uppercase;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    line-height: 44px;
-    font-size: 1.1em;
-    font-weight: 900;
-    margin-top: 6px;
-    margin-left: -5px;
-    border: 2px solid #42b992;
-    margin-top: 3px;
-}
-
-/* If the user types another message after thier first, fix the spacing issues */
-.kiwi-messagelist-message.kiwi-messagelist-message-repeat .kiwi-messagelist-time,
-.kiwi-messagelist-message.kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
-    display: none;
-}
-
-.kiwi-messagelist-message.kiwi-messagelist-message--compact.kiwi-messagelist-message-repeat.kiwi-messagelist-message-privmsg.kiwi-messagelist-message--own{
-    min-height: 0 !important;
-    height: auto !important;
-}
-
-/* Style the joined connection message */
-.kiwi-messagelist-message.kiwi-messagelist-message-connection {
+/* Start of the not connected message styling */
+.kiwi-messagelist-message-connection {
     text-align: left;
     background-color: #fff;
     border-bottom: 1px solid #c0c0c0;
@@ -1058,8 +936,76 @@ form.kiwi-statebrowser-newchannel a:hover {
     line-height: normal;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-time {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-time,
+.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-nick {
     display: none;
+}
+
+.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected{
+    margin-left: 0;
+    padding: 0;
+    border: none;
+    margin: 0;
+    background: none;
+    text-align: center !important;
+}
+
+.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-modern-right{
+    margin-left: 0;
+    padding: 0;
+}
+
+.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body{
+    margin-bottom: 0;
+    text-align: center;
+    cursor: default;
+}
+
+/* End of connection message styling */
+
+/* Remove the styling for none user messages, as they make the page look bloated */
+.kiwi-messagelist-message-mode,
+.kiwi-messagelist-message-traffic,
+.kiwi-messagelist-message-connection-connected {
+    padding: 0.1em 0.5em;
+    min-height: 0;
+    line-height: normal;
+    margin: 1em 0.5em;
+    text-align: left;
+}
+
+/* Remove the min height from the message, as again, makes the page look bloated */
+.kiwi-messagelist-body {
+    min-height: 0;
+    margin: 0;
+    text-align: left;
+    padding-right: 20px;
+}
+
+/* Style the HTML Avatar */
+.kiwi-messagelist-modern-avatar {
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1em;
+    font-weight: 400;
+    margin-top: 6px;
+    margin-left: -5px;
+    border: 2px solid #42b992;
+    margin-top: 3px;
+}
+
+/* If the user types another message after thier first, fix the spacing issues */
+.kiwi-messagelist-message.kiwi-messagelist-message-repeat .kiwi-messagelist-time,
+.kiwi-messagelist-message.kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
+    display: none;
+}
+
+.kiwi-messagelist-message--own{
+    min-height: 0 !important;
+    height: auto !important;
 }
 
 /* Topic Styling */
@@ -1091,8 +1037,8 @@ form.kiwi-statebrowser-newchannel a:hover {
 }
 
 /* Channel messages - e.g 'server on #testing22 ' message and such */
-.kiwi-messagelist-message.kiwi-messagelist-message-mode,
-.kiwi-messagelist-message.kiwi-messagelist-message-traffic-join {
+.kiwi-messagelist-message-mode,
+.kiwi-messagelist-message-traffic-join {
     padding: 10px 0 !important;
     margin-bottom: 10px;
     font-weight: 600;
@@ -1104,18 +1050,18 @@ form.kiwi-statebrowser-newchannel a:hover {
     border-bottom: 1px solid #c8c8c7;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-mode .kiwi-messagelist-time,
-.kiwi-messagelist-message.kiwi-messagelist-message-traffic-join .kiwi-messagelist-time {
+.kiwi-messagelist-message-mode .kiwi-messagelist-time,
+.kiwi-messagelist-message-traffic-join .kiwi-messagelist-time {
     display: none;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--modern.kiwi-messagelist-message-mode .kiwi-messagelist-nick{
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-mode .kiwi-messagelist-nick{
     display: none;
 }
 
 
-.kiwi-messagelist-message.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic.kiwi-messagelist-message-traffic-join.kiwi-messagelist-message--own,
-.kiwi-messagelist-message.kiwi-messagelist-message--modern.kiwi-messagelist-message-mode{
+.kiwi-messagelist-message-traffic.kiwi-messagelist-message-traffic-join.kiwi-messagelist-message--own,
+.kiwi-messagelist-message-mode{
     padding-left: 23px !important;
 }
 
@@ -1145,9 +1091,8 @@ form.kiwi-statebrowser-newchannel a:hover {
 }
 
 /* Absolute position the time on these messages so it's not above the message, it looks awful */
-.kiwi-messagelist-message.kiwi-messagelist-message-mode .kiwi-messagelist-time,
-.kiwi-messagelist-message.kiwi-messagelist-message-traffic .kiwi-messagelist-time,
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-time {
+.kiwi-messagelist-message-mode .kiwi-messagelist-time,
+.kiwi-messagelist-message-traffic .kiwi-messagelist-time{
     position: absolute;
     top: 1px;
     right: 20px;
@@ -1381,5 +1326,51 @@ form.kiwi-statebrowser-newchannel a:hover {
     }
     .kiwi-workspace{
         margin-left: 20%;
+    }
+}
+
+/* Tablet Size */
+
+@media screen and (max-width: 1024px) {
+    .kiwi-notconnected-caption {
+        font-size: 1em;
+    }
+
+    .kiwi-notconnected .button-container .button {
+        clear: both;
+        margin: 0 5% 1em;
+        font-size: 1em;
+        display: block;
+        padding: 0.6em 0.8em 0.6em 0.4em;
+        width: 90%;
+        box-sizing: border-box;
+    }
+
+    .kiwi-notconnected .button-container .button.connection-settings{
+        font-size: 1em;
+        max-width: none;
+    }
+
+    .kiwi-notconnected .button-container .button i {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .kiwi-workspace{
+        width: 100%;
+        margin: 0;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
+        width: 100%;
+    }
+
+    .kiwi-header-options .u-button {
+        padding: 0;
+        float:right;
+    }
+    .kiwi-header-options .u-button:before {
+        display: none;
     }
 }
