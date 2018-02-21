@@ -786,9 +786,9 @@ form.kiwi-statebrowser-newchannel a:hover {
 .kiwi-header-name {
     float:left;
     color: #22231f;
-    padding: 0.4em 20px;
+    padding: 0.5em 20px;
     opacity: 1;
-    font-size: 22px;
+    font-size: 20px;
     line-height: normal;
 }
 
@@ -956,23 +956,35 @@ form.kiwi-statebrowser-newchannel a:hover {
 .kiwi-messagelist-message.kiwi-messagelist-message--compact {
     padding: 0.5em 0 0.5em 95px;
     position: relative;
-    min-height: 70px;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--compact::before {
-    position: absolute;
-    content:'A';
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid #42b983;
-    background: #eee;
-    left:15px;
-    top:5px;
-    text-align: center;
-    font-weight: 600;
-    line-height: 50px;
+
+/*Not connected message */
+.kiwi-messagelist-message.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected{
+    margin-left: 0;
+    padding: 0;
+    border: none;
+    margin: 0;
+    background: none;
+    text-align: center !important;
 }
+
+.kiwi-messagelist-message.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-nick{
+    display: none;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-modern-right{
+    margin-left: 0;
+    padding: 0;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-modern-right .kiwi-messagelist-body{
+    margin-bottom: 0;
+    text-align: center;
+    cursor: default;
+}
+
+/* End of connection message styling */
 
 /* Remove the styling for none user messages, as they make the page look bloated */
 .kiwi-messagelist-message.kiwi-messagelist-message-mode,
@@ -997,24 +1009,24 @@ form.kiwi-statebrowser-newchannel a:hover {
     padding-right: 20px;
 }
 
-/*Remove the avatars from the divs too */
-.kiwi-messagelist-message.kiwi-messagelist-message-mode::before,
-.kiwi-messagelist-message.kiwi-messagelist-message-traffic::before,
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected::before,
-.kiwi-messagelist-message-connection-disconnected::before ,
-.kiwi-messagelist-message.kiwi-messagelist-message-repeat::before {
-    display: none;
+.kiwi-messagelist-message--modern .kiwi-messagelist-modern-avatar {
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 1.1em;
+    font-weight: 900;
+    margin-top: 6px;
+    margin-left: -5px;
+    border: 2px solid #42b992;
+    margin-top: 3px;
 }
 
 /* If the user types another message after thier first, fix the spacing issues */
 .kiwi-messagelist-message.kiwi-messagelist-message-repeat .kiwi-messagelist-time,
 .kiwi-messagelist-message.kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
     display: none;
-}
-
-.kiwi-messagelist-message.kiwi-messagelist-message-repeat .kiwi-messagelist-body {
-    padding-left: 0;
-    min-height: 0 !important;
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message--compact.kiwi-messagelist-message-repeat.kiwi-messagelist-message-privmsg.kiwi-messagelist-message--own{
@@ -1045,6 +1057,11 @@ form.kiwi-statebrowser-newchannel a:hover {
 .kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-time {
     display: none;
 }
+
+.kiwi-messagelist-message.kiwi-messagelist-message--modern.kiwi-messagelist-message-repeat.kiwi-messagelist-message-privmsg.kiwi-messagelist-message--own .kiwi-messagelist-body{
+    padding-left: 0;
+}
+
 
 /* Topic Styling */
 .kiwi-container .kiwi-messagelist-message-topic {
@@ -1093,18 +1110,21 @@ form.kiwi-statebrowser-newchannel a:hover {
     display: none;
 }
 
+.kiwi-messagelist-message.kiwi-messagelist-message--modern.kiwi-messagelist-message-mode .kiwi-messagelist-nick{
+    display: none;
+}
+
 /* Style the user nickname and time */
 .kiwi-messagelist-message .kiwi-messagelist-nick {
     float: left;
     width: auto;
     text-align: left;
     padding: 0;
-    margin: 0;
-    font-size: 1em;
+    margin: 0 10px 10px 0;
+    font-size: 1.1em;
     color:#22231f;
     border-right: 1px solid #000;
     padding-right: 10px;
-    margin-right: 10px;
     color:#000;
 }
 
@@ -1112,9 +1132,11 @@ form.kiwi-statebrowser-newchannel a:hover {
     float:none;
     display: inline-block;
     color:#a0a09f;
-    font-size: 1em;
-    font-weight: 600;
+    font-size: 1.1em;
+    font-weight: 400;
     padding: 0;
+    opacity: 0.8
+    cursor: default;
 }
 
 /* Absolute position the time on these messages so it's not above the message, it looks awful */
@@ -1130,7 +1152,6 @@ form.kiwi-statebrowser-newchannel a:hover {
     float: left;
     width: 100%;
     margin: 0;
-    min-height: 50px;
     padding: 0;
 }
 
@@ -1339,8 +1360,24 @@ form.kiwi-statebrowser-newchannel a:hover {
     border: 1px dashed #d86f6f;
 }
 
+@media screen and (max-width: 1500px){
+    .kiwi-statebrowser{
+        width: 15%;
+    }
+    .kiwi-workspace{
+        margin-left: 15%;
+    }
+}
 
 
+@media screen and (max-width: 1200px){
+    .kiwi-statebrowser{
+        width: 20%;
+    }
+    .kiwi-workspace{
+        margin-left: 20%;
+    }
+}
 
 
 </style>

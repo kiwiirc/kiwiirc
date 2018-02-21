@@ -8,7 +8,7 @@
     >
 
         <template v-if="isChannel()">
-            <div class="kiwi-header-options">
+            <div class="kiwi-header-options" v-if="isJoined && isConnected">
                 <div class="option"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> {{$t('person', {count: Object.keys(buffer.users).length})}}</a></div>
                 <div class="option"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> Channel Settings</a></div>
                 <div class="option leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i> {{$t('Leave Channel')}}</a></div>
