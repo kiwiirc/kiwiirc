@@ -1,22 +1,39 @@
 <template>
-    <div class="kiwi-notconnected">
+    <div class="kiwi-notconnected" v-bind:class="{ connecting: shouldShowLoading }">
         <div class="kiwi-notconnected-bigicon">
-            <i v-if="!shouldShowLoading" @click="reconnect" class="fa fa-plug" aria-hidden="true"></i>
+            <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true"></i>
             <i v-else class="fa fa-refresh fa-spin kiwi-notconnected-bigicon" aria-hidden="true"></i>
         </div>
 
         <div v-if="!shouldShowLoading" class="kiwi-notconnected-caption">
+
+            <span class="disconnect-information">You are not currently connected!</span>
+
+            <div class="button-container">
             <template v-if="isChannel()">
-                <span @click="reconnect">{{$t('reconnect_channel', {channel: buffer.name})}}</span>
+                <span @click="reconnect" class="button">
+                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                    {{$t('reconnect_channel', {channel: buffer.name})}}
+                </span>
             </template>
             <template v-else-if="isServer()">
-                <span @click="reconnect">{{$t('reconnect_network', {network: buffer.getNetwork().name})}}</span>
+                <span @click="reconnect" class="button">
+                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                    {{$t('reconnect_network', {network: buffer.getNetwork().name})}}
+                </span>
             </template>
             <template v-else-if="isQuery()">
-                <span @click="reconnect">{{$t('reconnect_query', {user: buffer.name})}}</i></span>
+                <span @click="reconnect" class="button">
+                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                    {{$t('reconnect_query', {user: buffer.name})}}</i>
+                </span>
             </template>
 
-            <a @click="showNetworkSettings" class="kiwi-notconnected-networksettings u-link">{{$t('reconnect_settings')}}</a>
+            <a @click="showNetworkSettings" class="kiwi-notconnected-networksettings button connection-settings">
+                <i class="fa fa-cogs" aria-hidden="true"></i>{{$t('reconnect_settings')}}
+            </a>
+
+            </div>
         </div>
         <div v-else class="kiwi-notconnected-caption">
             {{$t('connecting')}}
@@ -25,6 +42,8 @@
 </template>
 
 <script>
+
+import state from '@/libs/state';
 
 export default {
     data: function data() {
@@ -75,39 +94,9 @@ export default {
         },
         showNetworkSettings: function showNetworkSettings() {
             let network = this.buffer.getNetwork();
-            network.showServerBuffer('channels');
+            state.$emit('network.settings', network);
         },
     },
 };
 
 </script>
-
-<style>
-.kiwi-notconnected {
-    box-sizing: border-box;
-    margin: 3em 0;
-    text-align: center;
-}
-
-.kiwi-notconnected-bigicon {
-    display: inline-block;
-}
-
-.kiwi-notconnected-bigicon > i {
-    font-size: 4em;
-    cursor: pointer;
-}
-
-.kiwi-notconnected-caption {
-    display: inline-block;
-    font-size: 1.2em;
-    margin-left: 2em;
-    cursor: pointer;
-}
-
-.kiwi-notconnected-networksettings {
-    display: block;
-    font-size: 0.9em;
-    margin-top: 1em;
-}
-</style>

@@ -8,8 +8,7 @@
                 U
             </div>
             <div class="user-options">
-                <span>User</span></br>
-                [[USERNAME]] <i class="fa fa-cog" aria-hidden="true"></i>
+                Settings <i class="fa fa-cog" aria-hidden="true"></i>
             </div>
         </div>
 
