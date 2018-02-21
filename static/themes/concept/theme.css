@@ -1226,7 +1226,7 @@ form.kiwi-statebrowser-newchannel a:hover {
  */
 
 .kiwi-sidebar-userbox{
-    overflow-y: auto;     
+    overflow-y: auto;
 }
 
 .kiwi-userbox-usermask {
@@ -1239,7 +1239,7 @@ form.kiwi-statebrowser-newchannel a:hover {
     border: 1px dashed #9e9e9e;
 }
 
-.kiwi-userbox-actions-op {
+.kiwi-userbox .kiwi-userbox-actions-op {
     border-top: 1px solid #9e9e9e;
     padding: 1em;
 }
