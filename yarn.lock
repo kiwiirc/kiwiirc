@@ -3961,13 +3961,13 @@ ipaddr.js@1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.5.2.tgz#d4b505bde9946987ccf0fc58d9010ff9607e3fa0"
 
-irc-framework@^2.10.3:
-  version "2.10.3"
-  resolved "https://registry.yarnpkg.com/irc-framework/-/irc-framework-2.10.3.tgz#c290051a9603236c4bb88407344a365c5dde2c15"
+irc-framework@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/irc-framework/-/irc-framework-2.11.0.tgz#3d2cc98c5244f04a3046ebac4a65485b744d4b14"
   dependencies:
     eventemitter3 "^2.0.2"
     iconv-lite "^0.4.11"
-    lodash "^3.10.1"
+    lodash "^4.17.4"
     middleware-handler "^0.2.0"
     socksjs "^0.5.0"
 
@@ -4894,7 +4894,7 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@^3.10.1, lodash@^3.8.0:
+lodash@^3.8.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
