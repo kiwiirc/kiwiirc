@@ -234,23 +234,7 @@ export default {
                 return false;
             }
 
-            let network = this.buffer.getNetwork();
-            if (message.message.toLowerCase().indexOf(network.nick.toLowerCase()) > -1) {
-                return true;
-            }
-
-            let highlightFound = false;
-            (state.setting('highlights') || '').toLowerCase().split(' ').forEach(word => {
-                if (!word) {
-                    return;
-                }
-
-                if (message.message.indexOf(word) > -1) {
-                    highlightFound = true;
-                }
-            });
-
-            return highlightFound;
+            return message.isHighlight;
         },
         nickStyle: function nickColour(nick) {
             if (this.bufferSetting('colour_nicknames_in_messages')) {

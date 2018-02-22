@@ -22,6 +22,7 @@ export default class Message {
         this.html = '';
         // template should be null or a Vue component to render this message
         this.template = null;
+        this.isHighlight = false;
 
         // We don't want the user object to be enumerable
         Object.defineProperty(this, 'user', {

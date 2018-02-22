@@ -290,6 +290,7 @@ const stateObj = {
         last_active_buffers: [],
         app_has_focus: true,
         is_touch: false,
+        favicon_counter: 0,
     },
     networks: [
         /* {
@@ -852,6 +853,22 @@ const state = new Vue({
             let network = buffer.getNetwork();
             let isNewMessage = message.time >= buffer.last_read;
             let isHighlight = Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
+
+            // Check for extra custom highlight words
+            let extraHighlights = (state.setting('highlights') || '').toLowerCase().split(' ');
+            if (!isHighlight && extraHighlights.length > 0) {
+                extraHighlights.forEach(word => {
+                    if (!word) {
+                        return;
+                    }
+
+                    if (bufferMessage.message.indexOf(word) > -1) {
+                        isHighlight = true;
+                    }
+                });
+            }
+
+            bufferMessage.isHighlight = isHighlight;
 
             if (isNewMessage && isActiveBuffer && state.ui.app_has_focus) {
                 buffer.last_read = message.time;

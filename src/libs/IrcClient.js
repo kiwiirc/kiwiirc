@@ -180,6 +180,12 @@ function clientMiddleware(state, networkid) {
             return;
         }
 
+        // Ignore any of the control messages. They're transport related to kiwi internals
+        if (event.command === 'CONTROL') {
+            next();
+            return;
+        }
+
         if (command === 'registered') {
             if (client.options.nickserv) {
                 let options = client.options.nickserv;
