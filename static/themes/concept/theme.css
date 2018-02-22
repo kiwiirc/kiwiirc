@@ -1317,6 +1317,49 @@ form.kiwi-statebrowser-newchannel a:hover {
     border: 1px dashed #d86f6f;
 }
 
+/* Styling form inputs */
+.u-form label{
+    display: block;
+    line-height: 20px;
+}
+.u-form input[type='checkbox']{
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    background-color: #fff;
+    display: inline-block;
+    margin-top: -4px;
+}
+
+.u-form input[type='checkbox']::after{ 
+    position: absolute;
+    content:'';
+    left: 4px;
+    top: 4px;
+    width: 15px;
+    height: 15px;
+    background: #42b992;
+    z-index: 10;
+    transition: all 0.3s;
+    opacity: 0;
+}
+
+.u-form input[type='checkbox']:checked::after{
+    position: absolute;
+    content:'';
+    left: 4px;
+    top: 4px;
+    width: 15px;
+    height: 15px;
+    background: #42b992;
+    z-index: 10;
+    transition: all 0.3s;
+    opacity: 1;
+}
+
 @media screen and (max-width: 1500px){
     .kiwi-statebrowser{
         width: 15%;
@@ -1325,7 +1368,6 @@ form.kiwi-statebrowser-newchannel a:hover {
         margin-left: 15%;
     }
 }
-
 
 @media screen and (max-width: 1200px){
     .kiwi-statebrowser{
@@ -1337,7 +1379,6 @@ form.kiwi-statebrowser-newchannel a:hover {
 }
 
 /* Tablet Size */
-
 @media screen and (max-width: 1024px) {
     .kiwi-notconnected-caption {
         font-size: 1em;
