@@ -18,7 +18,7 @@
                 <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
                 <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
+                    <input type="checkbox" v-model="show_password_box" /> <span> {{$t('password_have')}} </span>
                 </label>
                 <input-text v-focus v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 
@@ -29,7 +29,7 @@
                 <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
                 <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
+                    <input type="checkbox" v-model="show_password_box" /> <span> {{$t('password_have')}} </span>
                 </label>
                 <input-text v-focus v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 

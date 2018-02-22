@@ -3,10 +3,11 @@
         <a @click="closeSettings" class="u-button u-button-secondary kiwi-appsettings-close">{{$t('close')}}</a>
 
         <form class="u-form">
-            <tabbed-view>
+            <tabbed-view class="app-settings-tab-container">
                 <tabbed-tab :header="$t('settings_general')" :focus="true">
+                    <h3>{{$t('settings_general')}}</h3>
+                    <hr>
                     <div class="kiwi-appsettings-section kiwi-appsettings-general">
-                        <h3>{{$t('settings_general')}}</h3>
                         <label>
                             <span>{{$t('settings_theme')}}: </span>
                             <select v-model="theme">
@@ -45,6 +46,7 @@
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
                         <h3>{{$t('notifications')}}</h3>
+                        <hr>
                         <label><span>{{$t('settings_show_joinpart')}}: </span> <input type="checkbox" v-model="settingBufferTrafficAsActivity" /></label>
                         <label><span>{{$t('settings_mute_sound')}}: </span> <input type="checkbox" v-model="settingBufferMuteSound" /></label>
                         <label><span>{{$t('settings_highlight')}}: </span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
@@ -52,6 +54,7 @@
 
                     <div class="kiwi-appsettings-section kiwi-appsettings-operator-tools">
                         <h3>{{$t('operator_tools')}}</h3>
+                        <hr>
                         <label><span>{{$t('settings_default_ban_mask')}}: </span> <input type="text" class="u-input" v-model="settingDefaultBanMask" /></label>
                         <label><span>{{$t('settings_default_kick_reason')}}: </span> <input type="text" class="u-input" v-model="settingDefaultKickReason" /></label>
                     </div>
@@ -60,6 +63,7 @@
                 <tabbed-tab :header="$t('settings_aliases')">
                     <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
                         <h3>{{$t('settings_aliases')}}</h3>
+                        <hr>
                         <settings-aliases></settings-aliases>
                     </div>
                 </tabbed-tab>

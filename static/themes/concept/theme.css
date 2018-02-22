@@ -318,7 +318,7 @@ form.kiwi-statebrowser-newchannel a {
 
 form.kiwi-statebrowser-newchannel a i {
     position: absolute;
-    right: 15px;
+    right: 16px;
     line-height: 40px;
     font-size: 1em;
 }
@@ -342,7 +342,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 /*Channel search input */
 .kiwi-statebrowser-channelfilter {
     width: 100%;
-    padding: 10px 15px 10px 5px;
+    padding: 10px 15px 10px 10px;
     box-sizing: border-box;
     position: relative;
     opacity: 0.8;
@@ -622,6 +622,16 @@ form.kiwi-statebrowser-newchannel a:hover {
     width: 25%;
 }
 
+.kiwi-sidebar h3{
+    cursor: default;
+    padding: 0;
+    margin: 0 0 5px 0;
+}
+
+.kiwi-sidebar hr{
+    margin: 0 0 10px 0;
+}
+
 .kiwi-sidebar .kiwi-nicklist {
     height: auto;
     min-height: 100px;
@@ -639,8 +649,8 @@ form.kiwi-statebrowser-newchannel a:hover {
     width: 100%;
     border: none;
     padding: 0 1em;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     background-color: #f5f5f5;
     color:#000;
     font-weight: normal;
@@ -650,10 +660,11 @@ form.kiwi-statebrowser-newchannel a:hover {
     position: absolute;
     top:50%;
     margin-top: -0.5em;
-    right: 5%;
+    right: 2.5%;
     color:#000;
     opacity: 0.5;
     line-height: normal;
+    font-size: 1.2em;
 }
 
 .kiwi-sidebar .kiwi-nicklist-users {
@@ -742,11 +753,11 @@ form.kiwi-statebrowser-newchannel a:hover {
     max-height: 45px;
     overflow: hidden;
     z-index: 200;
+    transition: all 0.3s;
 }
 
 .kiwi-header:hover{
-    max-height: 45px;
-    overflow: hidden;
+    max-height: none;
 }
 
 .kiwi-header-name {
@@ -759,12 +770,16 @@ form.kiwi-statebrowser-newchannel a:hover {
 }
 
 .kiwi-header-topic {
-    float:left;
     color: #22231f;
     height: 45px;
-    padding: 1em 1em 1em 0;
+    padding: 0 20px;
     line-height: normal;
     max-width: none;
+    width: 100%;
+    float: right;
+    box-sizing: border-box;
+    height: auto;
+    margin-bottom: 15px;
 }
 
 .kiwi-header-buffersettings {
@@ -1321,8 +1336,10 @@ form.kiwi-statebrowser-newchannel a:hover {
 .u-form label{
     display: block;
     line-height: 20px;
+    margin: 0 0 10px 0;
 }
 .u-form input[type='checkbox']{
+    float: left;
     -webkit-appearance: none;
     -moz-appearance:    none;
     appearance:         none;
@@ -1331,16 +1348,18 @@ form.kiwi-statebrowser-newchannel a:hover {
     border: 2px solid #000;
     background-color: #fff;
     display: inline-block;
-    margin-top: -4px;
+    position: relative;
+    border-radius: 1px;
+    cursor: pointer;
 }
 
-.u-form input[type='checkbox']::after{ 
+.u-form input[type='checkbox']::after{
     position: absolute;
     content:'';
-    left: 4px;
-    top: 4px;
-    width: 15px;
-    height: 15px;
+    left: 1px;
+    top: 1px;
+    width: 14px;
+    height: 14px;
     background: #42b992;
     z-index: 10;
     transition: all 0.3s;
@@ -1350,14 +1369,102 @@ form.kiwi-statebrowser-newchannel a:hover {
 .u-form input[type='checkbox']:checked::after{
     position: absolute;
     content:'';
-    left: 4px;
-    top: 4px;
-    width: 15px;
-    height: 15px;
+    left: 1px;
+    top: 1px;
+    width: 14px;
+    height: 14px;
     background: #42b992;
     z-index: 10;
     transition: all 0.3s;
     opacity: 1;
+}
+
+.u-form label span {
+    display: inline-block;
+    line-height: 25px;
+    width: auto;
+    margin-left: 5px;
+    font-weight: 500;
+    font-size: 1em;
+    text-align: left;
+    width: auto;
+    max-width: none;
+}
+
+.u-form label input[type='text'],
+.u-form label input[type='password'],
+.u-form label input[type='email'],
+.u-form textarea{
+    width: 100%;
+    height: 40px;
+    border: none;
+    padding: 0 10px;
+    line-height: 40px;
+    font-size: 1em;
+    color: #000;
+    box-sizing: border-box;
+    border-bottom: 2px solid #42b992;
+    background: #ffffff;
+    border: 1px solid #42b992;
+    border-radius: 1px;
+    min-height: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: none;
+}
+
+.u-form label.password,
+.kiwi-channelinfo-topic{
+    padding-left: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 5px;
+}
+
+.u-form label.password span,
+.kiwi-channelinfo-topic span{
+    width: 100%;
+    text-align: left;
+    margin: 0;
+}
+
+
+
+/* Welcome Screen fixes for the checkboxes */
+.kiwi-welcome-simple-have-password input[type='checkbox']{
+    margin: 0;
+}
+
+.kiwi-welcome-simple-have-password label span{
+    line-height: 22px;
+}
+
+/* Style fixes for the app settings section */
+.kiwi-appsettings-close{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.kiwi-appsettings .u-form label span{
+    width: auto;
+    max-width: none;
+}
+
+.app-settings-tab-container{
+    width: 100%;
+    max-width: none;
+    position: relative;
+}
+
+/* Aliases Spacing fix */
+.kiwi-appsettings-aliases .kiwi-settings-aliases{
+    margin-left: 0;
+}
+
+.kiwi-settings-aliases-input{
+    height: auto;
+    min-height: 500px;
 }
 
 @media screen and (max-width: 1500px){

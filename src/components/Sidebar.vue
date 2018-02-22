@@ -15,16 +15,21 @@
 
                     <tabbed-view>
                         <tabbed-tab :header="$t('settings')" :focus="true">
+                            <h3>Channel Settings</h3>
+                            <hr>
                             <channel-info v-bind:buffer="buffer"></channel-info>
 
                             <div class="kiwi-sidebar-settings">
                                 <h3>{{$t('side_settings')}}</h3>
-                                <label><input type="checkbox" v-model="settingShowJoinParts"> {{$t('side_joins')}}</label>
-                                <label><input type="checkbox" v-model="settingShowTopics"> {{$t('side_topics')}}</label>
-                                <label><input type="checkbox" v-model="settingShowNickChanges"> {{$t('side_nick_changes')}}</label>
-                                <label><input type="checkbox" v-model="settingShowModeChanges"> {{$t('side_mode_changes')}}</label>
-                                <label><input type="checkbox" v-model="settingExtraFormatting"> {{$t('side_formatting')}}</label>
-                                <label><input type="checkbox" v-model="settingColouredNicklist"> {{$t('side_colours')}}</label>
+                                <hr>
+                                <form class="u-form">
+                                    <label><input type="checkbox" v-model="settingShowJoinParts"> <span>{{$t('side_joins')}}</span></label>
+                                    <label><input type="checkbox" v-model="settingShowTopics"> <span>{{$t('side_topics')}}</span></label>
+                                    <label><input type="checkbox" v-model="settingShowNickChanges"> <span>{{$t('side_nick_changes')}}</span></label>
+                                    <label><input type="checkbox" v-model="settingShowModeChanges"> <span>{{$t('side_mode_changes')}}</span></label>
+                                    <label><input type="checkbox" v-model="settingExtraFormatting"> <span>{{$t('side_formatting')}}</span></label>
+                                    <label><input type="checkbox" v-model="settingColouredNicklist"> <span>{{$t('side_colours')}}</span></label>
+                                </form>
                             </div>
                         </tabbed-tab>
                         <tabbed-tab :header="$t('banned')">

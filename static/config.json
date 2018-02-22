@@ -3,16 +3,16 @@
 	"startupScreen": "welcome",
 	"kiwiServer": "https://localdev.clients.kiwiirc.com/webirc/kiwiirc/",
 	"restricted": true,
-	"theme": "default",
+	"theme": "Concept",
 	"themes": [
-		{ "name": "Default", "url": "static/themes/default" }
+		{ "name": "Concept", "url": "static/themes/concept" }
 	],
 	"startupOptions" : {
 		"server": "irc.freenode.net",
 		"port": 6667,
 		"tls": false,
 		"direct": false,
-		"channel": "#kiwiirc",
+		"channel": "#testing22",
 		"nick": "kiwi-n?"
 	},
 	"embedly": {
