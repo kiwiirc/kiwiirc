@@ -705,7 +705,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 }
 
 /*Sidebar when open */
-.kiwi-sidebar.kiwi-sidebar--wide .kiwi-sidebar-options {
+.kiwi-sidebar-options {
     background-color: #42b992;
     color:#fff;
     font-weight: 600;
@@ -717,7 +717,7 @@ form.kiwi-statebrowser-newchannel a:hover {
     box-sizing: border-box;
 }
 
-.kiwi-sidebar.kiwi-sidebar--wide .kiwi-sidebar-options:after {
+.kiwi-sidebar-options:after {
     font-family: fontAwesome;
     color:#fff;
     font-size: 1.4em;

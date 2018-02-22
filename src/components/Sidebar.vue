@@ -1,13 +1,10 @@
 <template>
-    <div class="kiwi-sidebar" :class="{'kiwi-sidebar--wide': sidebarIsWide}">
+    <div class="kiwi-sidebar" :class="['kiwi-sidebar-section-' + uiState.sidebarSection]">
         <template v-if="buffer">
             <template v-if="buffer.isChannel()">
 
-                <span v-if="sidebarIsWide" class="kiwi-sidebar-options" @click="sidebarIsWide=false">
+                <span class="kiwi-sidebar-options" @click="uiState.close()">
                     {{$t('close')}} <i class="fa fa-caret-right" aria-hidden="true"></i>
-                </span>
-                <span v-else class="kiwi-sidebar-options" @click="isSettingsOpen = !isSettingsOpen">
-                    <i class="fa fa-cog" aria-hidden="true"></i> {{$t('side_options')}}
                 </span>
 
                 <div
@@ -110,17 +107,6 @@ export default {
                 }
             },
         },
-        sidebarIsWide: {
-            get: function getSidebarIsWide() {
-                return this.isSettingsOpen || this.userbox_user;
-            },
-            set: function setSidebarIsWide(newVal) {
-                if (!newVal) {
-                    this.isSettingsOpen = false;
-                    this.userbox_user = null;
-                }
-            },
-        },
         settingShowJoinParts: {
             get: function getSettingShowJoinParts() {
                 return this.buffer.setting('show_joinparts');
@@ -211,22 +197,15 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-}
-
-.kiwi-sidebar--wide {
     width: 500px;
     border-left: 3px solid #ddd;
 }
 
 @media screen and (max-width: 700px) {
-    .kiwi-sidebar--wide {
+    .kiwi-sidebar {
         width: 100%;
         right: 0;
     }
-}
-
-.kiwi-sidebar--wide .kiwi-nicklist {
-    display: none;
 }
 
 .kiwi-sidebar-options {
@@ -234,16 +213,7 @@ export default {
     cursor: pointer;
     border-bottom: 1px solid #ddd;
     padding: 0.75em 1em 0.76em 1em;
-    text-align: center;
     transition: all 0.2s;
-}
-
-.kiwi-sidebar-options:hover {
-    color: #42b983;
-}
-
-.kiwi-sidebar--wide .kiwi-sidebar-options {
-    text-align: left;
 }
 
 .kiwi-sidebar-buffersettings {
