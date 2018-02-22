@@ -1483,6 +1483,15 @@ form.kiwi-statebrowser-newchannel a:hover {
     .kiwi-workspace{
         margin-left: 20%;
     }
+
+    .kiwi-container--sidebar-open .kiwi-sidebar-section-settings{
+        right: 0%;
+        width: 40%;
+    }
+
+    .kiwi-sidebar-section-settings{
+        right: -40%;
+    }
 }
 
 /* Tablet Size */
