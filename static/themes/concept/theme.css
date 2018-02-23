@@ -222,6 +222,7 @@
     border-right: none;
     width: 10.4%;
     text-align: center;
+    overflow: hidden;
 }
 
 .kiwi-statebrowser h1 {
@@ -287,13 +288,28 @@
     opacity: 1;
 }
 
+.kiwi-statebrowser-channel-label {
+    background: red;
+    color: #dedede;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 900;
+    padding: 2px;
+    line-height: 16px;
+    width: 16px;
+    top: 3px;
+    position: absolute;
+    right: 38px;
+    font-weight: 100;
+}
+
 /* New Channel Button */
 form.kiwi-statebrowser-newchannel {
     padding: 0;
     margin: 0;
     height: auto;
     width: 100%;
-    border-top: 1px solid #000;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
 }
 
@@ -466,7 +482,6 @@ form.kiwi-statebrowser-newchannel a:hover {
 
 /* Channel Styling */
 .kiwi-statebrowser-channels .kiwi-statebrowser-channel {
-    border-top: 1px solid #4a4b47;
     border-bottom: 1px solid #4a4b47;
     line-height: 30px;
     padding: 0 1em;
@@ -622,6 +637,11 @@ form.kiwi-statebrowser-newchannel a:hover {
     width: 25%;
 }
 
+.kiwi-sidebar-section-user{
+    width: 40%;
+    right: -40%;
+}
+
 .kiwi-sidebar h3{
     cursor: default;
     padding: 0;
@@ -750,14 +770,28 @@ form.kiwi-statebrowser-newchannel a:hover {
     background: #fff;
     border-bottom: none;
     padding: 0;
-    max-height: 45px;
     overflow: hidden;
     z-index: 200;
     transition: all 0.3s;
+    line-height: 10px;
+    box-sizing: border-box;
+}
+
+.kiwi-header .kiwi-header-topic{
+    display: none;
 }
 
 .kiwi-header:hover{
-    max-height: none;
+    max-height: none !important;
+}
+.kiwi-header:hover .kiwi-header-topic{
+    display: block;
+}
+
+.kiwi-header:hover .view-topic{
+    background-color: #42b992;
+    color: #fff;
+    opacity: 1;
 }
 
 .kiwi-header-name {
@@ -1064,7 +1098,6 @@ form.kiwi-statebrowser-newchannel a:hover {
     margin: 0;
     text-align: center;
     background: #ececec;
-    border-top: 1px solid #c8c8c7;
     border-bottom: 1px solid #c8c8c7;
 }
 
@@ -1289,6 +1322,15 @@ form.kiwi-statebrowser-newchannel a:hover {
     }
 }
 
+.kiwi-userbox .main-title{
+    display: none;
+}
+
+.kiwi-userbox .kiwi-userbox-basicinfo{
+    borer-top: 1px solid rgba(0,0,0,0.2);
+}
+
+
 /**
  * Self user box
  */
@@ -1391,10 +1433,36 @@ form.kiwi-statebrowser-newchannel a:hover {
     max-width: none;
 }
 
+.kiwi-statebrowser-newchannel a.active{
+    background: #42b992;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.kiwi-statebrowser-newchannel-inputwrap{
+    background: none;
+    padding: 0 10px 0 9px;
+    position: relative;
+    margin:10px 0 10px 0;
+}
+
+.kiwi-statebrowser-newchannel-inputwrap i {
+    position: absolute;
+    right: 20px;
+    pointer-events: none;
+    top: 14px;
+}
+
+.kiwi-statebrowser-channelfilter{
+    padding: 10px;
+}
+
 .u-form label input[type='text'],
 .u-form label input[type='password'],
 .u-form label input[type='email'],
-.u-form textarea{
+.u-form textarea,
+.kiwi-statebrowser-newchannel-inputwrap input[type='text'],
+.kiwi-statebrowser-channelfilter input[type='text']{
     width: 100%;
     height: 40px;
     border: none;
@@ -1411,6 +1479,12 @@ form.kiwi-statebrowser-newchannel a:hover {
     overflow-x: hidden;
     overflow-y: auto;
     max-width: none;
+}
+
+.kiwi-statebrowser-channelfilter::after{
+    top: 18px;
+    right: 17px;
+    opacity: 0.2;
 }
 
 .u-form label.password,
@@ -1444,6 +1518,7 @@ form.kiwi-statebrowser-newchannel a:hover {
     position: absolute;
     top: 20px;
     right: 30px;
+    z-index: 200;
 }
 
 .kiwi-appsettings .u-form label span{
@@ -1465,6 +1540,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 .kiwi-settings-aliases-input{
     height: auto;
     min-height: 500px;
+    line-height: normal;
 }
 
 @media screen and (max-width: 1700px){
@@ -1476,16 +1552,16 @@ form.kiwi-statebrowser-newchannel a:hover {
     .kiwi-sidebar-section-settings{
         right: -40%;
     }
-}
 
-@media screen and (max-width: 1500px){
     .kiwi-statebrowser{
         width: 15%;
     }
     .kiwi-workspace{
         margin-left: 15%;
     }
+
 }
+
 
 @media screen and (max-width: 1200px){
     .kiwi-statebrowser{
@@ -1493,6 +1569,15 @@ form.kiwi-statebrowser-newchannel a:hover {
     }
     .kiwi-workspace{
         margin-left: 20%;
+    }
+
+    .kiwi-container--sidebar-open .kiwi-sidebar-section-settings{
+        right: 0%;
+        width: 50%;
+    }
+
+    .kiwi-sidebar-section-settings{
+        right: -50%;
     }
 }
 

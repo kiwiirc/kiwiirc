@@ -27,9 +27,11 @@
                 {{$t('more_information')}}
             </a>
 
-            <label>
-                <input type="checkbox" v-model="user.ignore" /> {{$t('ignore_user')}}
-            </label>
+            <form class="u-form" style="padding-left: 20px;">
+                <label>
+                    <input type="checkbox" v-model="user.ignore" /> <span> {{$t('ignore_user')}} </span>
+                </label>
+            </form>
         </p>
 
         <div
@@ -273,7 +275,7 @@ export default {
         font-size: 1.4em;
         cursor: default;
         margin: 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     }
 
     .kiwi-userbox-header {
@@ -302,8 +304,7 @@ export default {
 
     .kiwi-userbox-basicinfo {
         width: 100%;
-        border-top: 1px solid rgba(0, 0, 0, 0.5);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         margin: 0;
         display: block;
         padding: 1em 1em 0 1.4em;
@@ -384,7 +385,7 @@ export default {
                 padding: 10px;
                 border-radius: 0.25em;
                 box-shadow: none;
-                border: 1px solid rgba(0, 0, 0, 0.5);
+                border: 1px solid rgba(0, 0, 0, 0.2);
                 width: 100%;
                 cursor: pointer;
             }

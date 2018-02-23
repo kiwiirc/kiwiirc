@@ -3,6 +3,7 @@
         <form class="u-form">
             <div class="kiwi-networksettings-section kiwi-networksettings-connection">
                 <h3>{{$t('settings_server_details')}}</h3>
+                <hr>
 
                 <div class="kiwi-networksettings-error" v-if="network.state_error">We couldn't connect to that server :( <span>{{readableStateError(network.state_error)}}</span></div>
 

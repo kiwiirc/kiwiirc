@@ -85,7 +85,7 @@
                 @submit.prevent="submitNewChannelForm"
                 class="kiwi-statebrowser-newchannel"
             >
-                <a class="u-button u-button-primary" @click="add_channel_open=true">Add Channel <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                <a class="u-button u-button-primary" v-bind:class="{ active: add_channel_open }"  @click="add_channel_open=true">Add Channel <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 <div
                     v-if="add_channel_open"
                     v-focus
@@ -106,7 +106,7 @@
                 </div>
             </form>
 
-            <div class="kiwi-statebrowser-channelfilter">
+            <div class="kiwi-statebrowser-channelfilter" v-if="isConnected  && !add_channel_open">
                 <input
                     type="text"
                     v-model="channel_filter"
@@ -127,7 +127,7 @@
             </div>
         </div>
 
-        <div v-if="!isRestrictedServer" class="kiwi-statebrowser-newnetwork">
+        <div  class="kiwi-statebrowser-newnetwork">
             <a @click="clickAddNetwork" class="u-button u-button-primary">Add network<i class="fa fa-plus" aria-hidden="true"></i></a>
         </div>
     </div>
@@ -279,6 +279,9 @@ export default {
         networksToShow: function networksToShow() {
             let bncNet = state.setting('bnc').network;
             return this.networks.filter(network => network !== bncNet);
+        },
+        isConnected: function isConnected() {
+            return state.getActiveNetwork().state === 'connected';
         },
     },
     created: function created() {
