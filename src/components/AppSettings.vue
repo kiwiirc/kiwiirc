@@ -1,6 +1,13 @@
 <template>
     <div class="kiwi-appsettings">
-        <a @click="closeSettings" class="u-button u-button-secondary kiwi-appsettings-close">{{$t('close')}}</a>
+
+        <div class="title">
+            <h2>Kiwi Client Settings: </h2>
+            <a @click="closeSettings" class="u-button u-button-secondary kiwi-appsettings-close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+        </div>
+
 
         <form class="u-form">
             <tabbed-view class="app-settings-tab-container">
@@ -221,13 +228,64 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="less">
 .kiwi-appsettings {
     box-sizing: border-box;
     height: 100%;
     overflow-y: auto;
-    padding: 1em;
+    padding: 8px 0 0 0;
+    background: #fff;
+
+    .title {
+        width: 100%;
+        cursor: default;
+
+        h2 {
+            padding: 10px 0 11px 20px;
+            width: auto;
+            float: left;
+        }
+
+        a {
+            float: right;
+            position: static;
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.4em;
+        }
+    }
+
+    .u-form {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .kiwi-appsettings-aliases {
+        padding: 1em 20px 2em 20px;
+    }
+}
+
+.app-settings-tab-container {
+    width: 100%;
+
+    .u-tabbed-view-tab {
+        width: 50%;
+        box-sizing: border-box;
+        padding: 1em 20px;
+        border-bottom: 2px solid #fff;
+        font-size: 1em;
+
+        &:hover {
+            border-bottom: 2px solid #42b992;
+        }
+
+        &.u-tabbed-view-tab--active {
+            border-bottom: 2px solid #42b992;
+            background-color: #42b992;
+            color: #fff;
+        }
+    }
 }
 
 .kiwi-appsettings-close {
@@ -272,6 +330,10 @@ export default {
 
 @media screen and (max-width: 999px) {
     .app-settings-block {
+        width: 100%;
+    }
+
+    .u-tabbed-view-tab {
         width: 100%;
     }
 }
