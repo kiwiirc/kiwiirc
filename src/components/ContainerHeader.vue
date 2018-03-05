@@ -5,17 +5,16 @@
             'kiwi-header--showall': buffer_settings_open,
         }"
         @click="onHeaderClick"
-    >
+    > 
 
         <template v-if="isChannel()">
-            <div class="kiwi-header-options" v-if="isJoined && isConnected">
-                <div class="option view-topic"><a><i class="fa fa-ellipsis-h" aria-hidden="true"></i>View Topic</a></div>
-                <div class="option"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> {{$t('person', {count: Object.keys(buffer.users).length})}}</a></div>
-                <div class="option"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> Channel Settings</a></div>
-                <div class="option leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i> {{$t('Leave Channel')}}</a></div>
-            </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div v-if="isJoined && buffer.topic.length > 0" class="kiwi-header-topic">{{buffer.topic}}</div>
+            <div class="kiwi-header-options" v-if="isJoined && isConnected">
+                <div class="option"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
+                <div class="option"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>Channel Settings</span></a></div>
+                <div class="option leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i> <span>{{$t('Leave Channel')}}</span></a></div>
+            </div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a @click="joinCurrentBuffer" class="u-link kiwi-header-join-channel-button">{{$t('container_join')}}</a>
             </div>

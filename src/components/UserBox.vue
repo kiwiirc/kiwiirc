@@ -395,11 +395,11 @@ export default {
                 padding: 0 1em;
                 text-align: left;
                 border: none;
-                line-height: 3em;
+                line-height: 2.8em;
                 font-size: 1em;
 
                 i {
-                    margin-right: 0.8em;
+                    margin-right: 0.3em;
                 }
             }
         }

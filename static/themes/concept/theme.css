@@ -2,7 +2,7 @@
     box-sizing: border-box;
     text-align: center;
     padding: 10% 0;
-    margin: 1em 0 0 0;
+    margin: 0;
     color: #fff;
     background-color: #8f8f8f;
     transition: background-color 0.3s;
@@ -95,7 +95,7 @@
 }
 
 .kiwi-workspace{
-    margin-left: 10.4%;
+    margin-left: 220px;
     background-color: #f1f1f1;
 }
 
@@ -220,8 +220,9 @@
     background: #22231f;
     color: #e0e0e0;
     border-right: none;
-    width: 10.4%;
+    width: 220px;
     text-align: center;
+    padding-top: 20px;
     overflow: hidden;
 }
 
@@ -262,7 +263,7 @@
     width: 100%;
     text-align: left;
     padding: 0px 14px 0px 10px;
-    border-bottom: 1px solid #4c4c49;
+    border-bottom: 1px solid #42b992;
     font-size: 1em;
     box-sizing: border-box;
     font-weight: 400;
@@ -309,7 +310,7 @@ form.kiwi-statebrowser-newchannel {
     margin: 0;
     height: auto;
     width: 100%;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: none;
     box-sizing: border-box;
 }
 
@@ -350,7 +351,7 @@ form.kiwi-statebrowser-newchannel a:hover {
     flex: unset;
     height: auto;
     background-color: #131312;
-    margin-bottom: 10px;
+    margin-bottom: 0;
     box-sizing: border-box;
     overflow-y: auto;
 }
@@ -411,7 +412,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 .kiwi-statebrowser-newnetwork {
     width: 100%;
     position: static;
-    padding: 0 15px 0 5px;
+    padding: 0;
     margin: 0 0 10px 0;
     box-sizing: border-box;
 }
@@ -431,15 +432,16 @@ form.kiwi-statebrowser-newchannel a:hover {
     text-align: left;
     position: relative;
     border-radius: 0;
-    font-weight: 600;
     font-weight: 1.2em;
     transition: all 0.3s;
-    border: 2px solid #b8b8b7;
+    border: 1px solid #b8b8b7;
+    border-right: none;
+    border-left: none;
 }
 
 .kiwi-statebrowser-newnetwork a i{
     position: absolute;
-    right: 10px;
+    right: 16px;
     line-height: 36px;
     font-size: 1.2em;
 }
@@ -464,6 +466,7 @@ form.kiwi-statebrowser-newchannel a:hover {
     text-transform: capitalize;
     color:#fff;
     width: 100%;
+    font-size: 1em;
     font-weight: 600;
 }
 
@@ -504,6 +507,7 @@ form.kiwi-statebrowser-newchannel a:hover {
     color:#fff;
     text-align: left;
     font-weight: 100;
+    font-size: 0.8em;
 }
 
 .kiwi-statebrowser-divider {
@@ -574,6 +578,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 
 .kiwi-statebrowser-newchannel-inputwrap--focus {
     opacity: 1;
+    background-color: #fff;
 }
 
 .kiwi-statebrowser-options {
@@ -594,6 +599,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #ddd;
+    z-index: 0;
 }
 
 .kiwi-container-toggledraw-sidebar {
@@ -615,6 +621,35 @@ form.kiwi-statebrowser-newchannel a:hover {
     min-height: 100%;
 }
 
+.kiwi-container.kiwi-container--sidebar-open:after{
+    content:'';
+    z-index: 10;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    position: absolute;
+    pointer-events: none;
+}
+
+/* If the sidebar is open, make the cursor stay as a pointer, so user's cannot interact with the elements whilst options are open */
+.kiwi-container.kiwi-container--sidebar-open .kiwi-header *,
+.kiwi-container.kiwi-container--sidebar-open .kiwi-messagelist .kiwi-controlinput *,
+.kiwi-container.kiwi-container--sidebar-open .kiwi-messagelist .kiwi-ircinput-editor{
+    cursor: default !important;
+    pointer-events: none !important;
+}
+
+
+
+
+
+
+
+
+/*
 .kiwi-container--sidebar-open .kiwi-messagelist:before {
     content:'';
     z-index: 10;
@@ -627,6 +662,11 @@ form.kiwi-statebrowser-newchannel a:hover {
     position: absolute;
     pointer-events: none;
 }
+*/
+
+
+
+
 
 /* Sidebar */
 .kiwi-sidebar {
@@ -652,9 +692,34 @@ form.kiwi-statebrowser-newchannel a:hover {
     margin: 0 0 10px 0;
 }
 
+/* Setting max widths on sidebars for desktop to give a more uniform feel */
+.kiwi-sidebar-section-user,
+.kiwi-sidebar.kiwi-sidebar-section-nicklist{
+    max-width: 250px;
+    width: 250px;
+    border-left: none;
+}
+
+.kiwi-sidebar .u-tabbed-view-tab{
+    width: 100%;
+    text-align: left;
+    border-bottom: 2px solid #fff;
+}
+.kiwi-sidebar .u-tabbed-view-tab--active{
+    border-bottom: 2px solid #42b992;
+}
+
+.kiwi-sidebar .u-tabbed-view-tab.u-tabbed-view-tab--active{
+    background: #42b992;
+    color: #fff;
+}
+
 .kiwi-sidebar .kiwi-nicklist {
     height: auto;
+    height: 100%;
+    display: block;
     min-height: 100px;
+    overflow: hidden;
 }
 
 .kiwi-sidebar .kiwi-nicklist-info {
@@ -692,7 +757,7 @@ form.kiwi-statebrowser-newchannel a:hover {
     float: left;
     width: 100%;
     height: auto;
-    padding: 0 10px;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -702,11 +767,10 @@ form.kiwi-statebrowser-newchannel a:hover {
     line-height: 40px;
     padding: 0 1em;
     margin: 0;
-    border-left: 5px solid #42b992;
+    border-left: 3px solid #42b992;
     transition: all 0.3s;
     position: relative;
     border-top: 1px solid #858585;
-    border-right: 1px solid #858585;
     box-sizing: border-box;
 }
 
@@ -771,7 +835,7 @@ form.kiwi-statebrowser-newchannel a:hover {
     border-bottom: none;
     padding: 0;
     overflow: hidden;
-    z-index: 200;
+    z-index: 1;
     transition: all 0.3s;
     line-height: 10px;
     box-sizing: border-box;
@@ -892,7 +956,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 /* Control input */
 .kiwi-controlinput {
     background-color: #fff;
-    z-index: 100;
+    z-index: 0;
 }
 
 .kiwi-controlinput-user {
@@ -980,13 +1044,20 @@ form.kiwi-statebrowser-newchannel a:hover {
     font-size: 1.2em;
     color:#fff;
     height: auto;
-    padding: 1em;
-    margin: 0;
-    min-height: 0;
     line-height: normal;
     text-align: center;
     cursor: default;
+    width: auto;
+    float: none;
+    display: block;
+    width: 250px;
+    padding: 0.5em 0;
+    margin: 1em auto 0.5em auto;
+    border-radius: 0.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
+
 
 .kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
     background-color: #b9424a;
@@ -1024,6 +1095,12 @@ form.kiwi-statebrowser-newchannel a:hover {
     line-height: normal;
     margin: 1em 0.5em;
     text-align: left;
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-right,
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-mode .kiwi-messagelist-modern-right{
+    float:left;
+    margin-left: 0;
 }
 
 /* Remove the min height from the message, as again, makes the page look bloated */
@@ -1122,10 +1199,9 @@ form.kiwi-statebrowser-newchannel a:hover {
     width: auto;
     text-align: left;
     padding: 0;
-    margin: 0 10px 10px 0;
+    margin: 0 10px 6px 0;
     font-size: 1.1em;
     color:#22231f;
-    border-right: 1px solid #000;
     padding-right: 10px;
     color:#000;
 }
@@ -1393,6 +1469,7 @@ form.kiwi-statebrowser-newchannel a:hover {
     position: relative;
     border-radius: 1px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .u-form input[type='checkbox']::after{
@@ -1454,7 +1531,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 }
 
 .kiwi-statebrowser-channelfilter{
-    padding: 10px;
+    padding: 0;
 }
 
 .u-form label input[type='text'],
@@ -1481,10 +1558,42 @@ form.kiwi-statebrowser-newchannel a:hover {
     max-width: none;
 }
 
+.kiwi-statebrowser-channelfilter input[type='text']{
+    border-right: none;
+    border-left: none;
+    background: none;
+    opacity: 1;
+    margin-bottom: 0px;
+    color: #fff;
+}
+
+
+.kiwi-statebrowser-channelfilter input::-webkit-input-placeholder,
+.kiwi-statebrowser-channelfilter input::-ms-input-placeholder,
+.kiwi-statebrowser-channelfilter input::-moz-placeholder,
+.kiwi-statebrowser-channelfilter input::placeholder
+{
+    color: #fff !important;
+    opacity: 1;
+}
+
+
 .kiwi-statebrowser-channelfilter::after{
-    top: 18px;
+    top: 8px;
+    color: #fff;
     right: 17px;
-    opacity: 0.2;
+    opacity: 0.9;
+}
+
+
+.kiwi-statebrowser-channelfilter input:focus{
+    background-color: #fff;
+    color: #000;
+}
+
+.kiwi-statebrowser-channelfilter input:focus:after{
+    color: #000;
+    opacity: 0.8;
 }
 
 .u-form label.password,
@@ -1506,7 +1615,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 
 /* Welcome Screen fixes for the checkboxes */
 .kiwi-welcome-simple-have-password input[type='checkbox']{
-    margin: 0;
+    margin: 2px 0 0 0;
 }
 
 .kiwi-welcome-simple-have-password label span{
@@ -1535,6 +1644,7 @@ form.kiwi-statebrowser-newchannel a:hover {
 /* Aliases Spacing fix */
 .kiwi-appsettings-aliases .kiwi-settings-aliases{
     margin-left: 0;
+    line-height: normal;
 }
 
 .kiwi-settings-aliases-input{
@@ -1543,43 +1653,42 @@ form.kiwi-statebrowser-newchannel a:hover {
     line-height: normal;
 }
 
-@media screen and (max-width: 1700px){
-    .kiwi-container--sidebar-open .kiwi-sidebar-section-settings{
-        right: 0%;
-        width: 40%;
-    }
 
-    .kiwi-sidebar-section-settings{
-        right: -40%;
-    }
-
-    .kiwi-statebrowser{
-        width: 15%;
-    }
-    .kiwi-workspace{
-        margin-left: 15%;
-    }
-
+/* Kiwi Disconnected */
+.kiwi-notconnected{
+    background-color: #bf5155;
 }
 
 
-@media screen and (max-width: 1200px){
-    .kiwi-statebrowser{
-        width: 20%;
-    }
-    .kiwi-workspace{
-        margin-left: 20%;
-    }
-
-    .kiwi-container--sidebar-open .kiwi-sidebar-section-settings{
-        right: 0%;
-        width: 50%;
-    }
-
-    .kiwi-sidebar-section-settings{
-        right: -50%;
-    }
+.kiwi-container--sidebar-open .kiwi-sidebar-section-settings{
+    right: 0;
+    width: 250px;
+    max-width: 250px;
+    border-left: none;
 }
+
+.kiwi-sidebar-section-settings{
+    right: -250px;
+}
+
+.kiwi-sidebar-buffersettings .u-tabbed-content{
+    padding: 1em 14px;
+}
+
+.kiwi-sidebar-section-settings .u-form label{
+    float:left;
+    width: 100%;
+}
+.kiwi-sidebar-section-settings .u-form label span{
+    float:left;
+    width: 180px;
+    margin: 0;
+}
+
+.kiwi-sidebar-section-settings .kiwi-channelinfo-topic{
+    padding: 0;
+}
+
 
 /* Tablet Size */
 @media screen and (max-width: 1024px) {
@@ -1607,16 +1716,160 @@ form.kiwi-statebrowser-newchannel a:hover {
     }
 }
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: 770px){
     .kiwi-workspace{
         width: 100%;
+        margin-left: 0;
+    }
+
+    .kiwi-container{
+        width: 100%;
+    }
+
+    .kiwi-messagelist{
+        padding-top: 51px;
+    }
+
+    /* State Browser -  Left sidebar start */
+
+    .kiwi-statebrowser{
+        left: 100%;
+        width: 100%;
+        z-index: 900;
+    }
+
+    .kiwi-statebrowser-newnetwork{
+        position: absolute;
+        bottom: 0px;
+        margin-bottom: 0;
+    }
+
+    /* Statebrowser - End */
+
+
+    /* Kiwi-Header - Start */
+    .kiwi-header{
+        border-bottom: 1px solid rgba(0,0,0,0.4);
+        max-height: none;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        height: auto;
+        padding: 0 50px;
+        position: absolute !important;
+        top:0;
+        overflow: visible;
+    }
+
+    .kiwi-header-name{
+        font-size: 1em;
+        padding: 0;
+        text-align: left;
+        max-height: 50px;
+        overflow: hidden;
+        line-height: 50px;
+        width: 100%;
+        padding-left: 10px;
+        background-color: #fff;
+    }
+
+    .kiwi-header-options{
+        position: absolute;
+        top: 0;
+        z-index: 10;
+        right:0;
+        background: #fff;
+        border-bottom:none;
+        border-left: 1px solid rgba(0,0,0,0.4);
+    }
+
+    .kiwi-header-options .option{
+        border-left: 1px solid #ddd;
+    }
+
+    .kiwi-header-options .option:first-of-type{
+        border-left: none;
+    }
+
+    .kiwi-header-options .option.leave{
+        float:left;
+        position: static;
+    }
+
+    .kiwi-header-options .option span{
+        display: none;
+    }
+
+    .kiwi-header-options .option a{
+        padding: 0 18px;
+        display: block;
+        height: 50px;
+    }
+
+    .kiwi-header-options .option:hover{
+        background: #42b992;
+    }
+
+    .kiwi-header-options .option a:hover i{
+        color: #fff;
+    }
+
+    .kiwi-header-options .option a i{
+        font-size: 1.2em;
+        margin: 0 !important;
+        line-height: 50px;
+    }
+
+    .kiwi-header-options .option.leave{
+        position: static;
+    }
+
+    .kiwi-container-toggledraw-statebrowser,
+    .kiwi-container-toggledraw-sidebar{
+        z-index: 0;
+        height: 50px;
+        border-bottom: none;
+        line-height: 50px;
+    }
+
+
+    /* Main Chat Area - Start */
+    .kiwi-messagelist-message{
+        padding: 0 10px;
         margin: 0;
     }
 
-    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
-        width: 100%;
+    .kiwi-messagelist-message--modern .kiwi-messagelist-modern-avatar{
+        display: none;
     }
 
+    .kiwi-messagelist-message--modern .kiwi-messagelist-modern-right{
+        margin-left: 0;
+        width: 100%;
+        float: left;
+    }
+
+    /* Connection message styling */
+    .kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-body,
+    .kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body{
+        width: 80%;
+        margin: 2em 10%;
+    }
+
+    .kiwi-messagelist-message-traffic.kiwi-messagelist-message-traffic-join.kiwi-messagelist-message--own,
+    .kiwi-messagelist-message-mode{
+        padding-left: 10px !important;
+    }
+
+    .kiwi-messagelist-message .kiwi-messagelist-nick,
+    .kiwi-messagelist-time{
+        margin: 10px 0 0 0;
+    }
+    .kiwi-messagelist-time{
+        float:right;
+    }
+
+    /* Main Chat Area - End */
     .kiwi-header-options .u-button {
         padding: 0;
         float:right;
@@ -1624,4 +1877,196 @@ form.kiwi-statebrowser-newchannel a:hover {
     .kiwi-header-options .u-button:before {
         display: none;
     }
+
+
+    /* Start of the sidebar -- users */
+    .kiwi-container--sidebar-open .kiwi-sidebar{
+        width: 100%;
+        z-index: 999;
+        border-left: 0;
+    }
+
+    /* Sidebar title */
+    .kiwi-sidebar-options{
+        text-transform: uppercase;
+    }
+
+    /* Styling Inputs */
+    .u-form label span{
+        margin-left: 0;
+    }
+
+    .kiwi-channelinfo-basicmodes.kiwi-channelinfo-basicmodes label{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .kiwi-sidebar  .kiwi-nicklist-info{ 
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .kiwi-sidebar .kiwi-nicklist-info input{
+        border-top: 1px solid #42b992 !important;
+        border-bottom: 1px solid #42b992 !important;
+    }
+
+    .kiwi-sidebar .kiwi-nicklist-info .fa.fa-search{
+        right: 20px;
+        margin-right: 0;
+    }
+
+    .u-form input[type="checkbox"]{
+        margin-left: 0;
+        margin-right: 5px;
+    }
+
+    .u-form input[type="radio"]{
+        float:right;
+    }
+
+    .kiwi-sidebar .kiwi-nicklist-users .kiwi-nicklist-user::after{
+        right: 20px;
+    }
+
+    .u-form label span{
+        font-size: 0.85em;
+    }
+
+    /* User text input */
+    .kiwi-controlinput,
+    .kiwi-controlinput-inner{
+        padding: 0;
+    }
+
+    .kiwi-controlinput-user{
+        margin-right: 10px;
+        line-height: 40px;
+    }
+
+    .kiwi-controlinput-tools{
+        line-height: 40px;
+    }
+
+    .kiwi-controlinput-form{
+        padding: 8px 0 0 0;
+    }
+
+    /* Users */
+    .kiwi-nicklist-users{
+        padding: 0;
+    }
+
+    .kiwi-sidebar .kiwi-nicklist-users{
+        padding: 0;
+    }
+
+    /* Styling tabs */
+    .u-tabbed-view-tabs .u-tabbed-view-tab{
+        border-bottom: 2px solid #fff;
+    }
+
+    .u-tabbed-view-tabs .u-tabbed-view-tab:hover,
+    .u-tabbed-view-tab .u-tabbed-view-tab--active{
+        border-bottom: 2px solid #42b992;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser{
+        width: 75%;
+    }
+
+    /* Statebrowser open, move the main text container */
+    .kiwi-wrap.kiwi-wrap--statebrowser-drawopen .kiwi-workspace{
+        left: 75%;
+    }
+
+    .kiwi-container-toggledraw-statebrowser-messagecount{
+        width: 30px;
+    }
+
+    .kiwi-container-toggledraw-sidebar{
+        display: none;
+    }
+
+    .kiwi-container-toggledraw-statebrowser{
+        z-index: 10;
+    }
+
+    /* Set all sidebars to be fullwidth on mobile devices, since they have the 'close' option at the top */
+    .kiwi-sidebar.kiwi-sidebar-section-settings,
+    .kiwi-sidebar.kiwi-sidebar-section-nicklist,
+    .kiwi-sidebar.kiwi-sidebar-section-user{
+        width: 100%;
+        max-width: none;
+    }
+
+    .kiwi-sidebar.kiwi-sidebar-section-user{
+        z-index: 999;
+    }
+
+    .kiwi-sidebar.kiwi-sidebar-section-user .kiwi-userbox-actions{
+        padding-bottom: 0px;
+    }
+
+    .kiwi-sidebar.kiwi-sidebar-section-user .kiwi-userbox-actions .u-button{
+        width: 100%;
+        text-align: left;
+        margin: 0 0 10px 0;
+        box-sizing: border-box;
+    }
+
+    /*Styling the Client settings */
+    .kiwi-appsettings{
+        padding: 0;
+    }
+
+    .app-settings-tab-container .u-tabbed-view-tabs{
+        margin-top: 60px;
+        border-top: 1px solid rgba(0,0,0,0.2);
+    }
+
+    .app-settings-tab-container .u-tabbed-view-tabs .u-tabbed-view-tab{
+        padding-left: 22px;
+        padding-right: 20px;
+        border-bottom: 2px solid #fff;
+        box-sizing: border-box;
+    }
+
+    .app-settings-tab-container .u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active{
+        border-bottom: 2px solid #42b992;
+        background-color: #42b992;
+        color: #fff;
+    }
+
+    .kiwi-appsettings .u-tabbed-content{
+        padding: 10px 20px;
+    }
+
+    .kiwi-appsettings-close{
+        top: 13px;
+        right: 13px;
+    }
+
+    .u-tabbed-content h2,
+    .u-tabbed-content h3,
+    .u-tabbed-content h4{
+        font-size: 1em;
+    }
+
+    /*The following options will now open full screen on mobile, so the user can more easily edit them */
+    .kiwi-appsettings,
+    .kiwi-serverview{
+        z-index: 999;
+        background:#fff;
+        position: fixed;
+        left:0;
+        top:0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .kiwi-statebrowser-newnetwork{
+        background-color: #22231f;
+    }
+
 }

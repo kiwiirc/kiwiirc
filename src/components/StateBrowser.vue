@@ -1,8 +1,6 @@
 <template>
     <div class="kiwi-statebrowser">
 
-        <h1>&nbsp;</h1>
-
         <div class="kiwi-statebrowser-profile">
             <div class="user-avatar">
                 U
@@ -27,7 +25,7 @@
         >
             <buffer-settings v-bind:buffer="bufferForPopup"></buffer-settings>
             <a @click="closeBuffer" class="u-link">{{$t('state_leave', {name: bufferForPopup.name})}}</a>
-        </div>
+        </div> 
 
 
         <div
@@ -84,6 +82,7 @@
             <form
                 @submit.prevent="submitNewChannelForm"
                 class="kiwi-statebrowser-newchannel"
+                v-if="isConnected"
             >
                 <a class="u-button u-button-primary" v-bind:class="{ active: add_channel_open }"  @click="add_channel_open=true">Add Channel <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 <div
@@ -127,7 +126,7 @@
             </div>
         </div>
 
-        <div  class="kiwi-statebrowser-newnetwork">
+        <div class="kiwi-statebrowser-newnetwork">
             <a @click="clickAddNetwork" class="u-button u-button-primary">Add network<i class="fa fa-plus" aria-hidden="true"></i></a>
         </div>
     </div>
