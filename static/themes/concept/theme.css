@@ -103,6 +103,7 @@
     /* The top bar at the top of the startup page */
     background: #42b992;
     height: 7px;
+    z-index: 999;
 }
 
 .kiwi-workspace-background {
@@ -1052,7 +1053,7 @@ form.kiwi-statebrowser-newchannel a:hover {
     display: block;
     width: 250px;
     padding: 0.5em 0;
-    margin: 1em auto 0.5em auto;
+    margin: 1em auto 1em auto;
     border-radius: 0.2em;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -1901,7 +1902,7 @@ form.kiwi-statebrowser-newchannel a:hover {
         padding-right: 0;
     }
 
-    .kiwi-sidebar  .kiwi-nicklist-info{ 
+    .kiwi-sidebar  .kiwi-nicklist-info{
         padding-left:0;
         padding-right:0;
     }
