@@ -1,9 +1,10 @@
 <template>
     <div class="kiwi-nicklist">
-        <div class="kiwi-nicklist-info">
-            <input :placeholder="$t('person', {count: sortedUsers.length})" v-model="user_filter" ref="user_filter">
-            <i class="fa fa-search" @click="$refs.user_filter.focus()"></i>
+        <div class="user-count">
+            <span class="count-title">User Count</span>
+            <span class="count">{{$t('person', {count: sortedUsers.length})}}</span>
         </div>
+
         <ul class="kiwi-nicklist-users">
             <li
                 v-for="user in sortedUsers"
@@ -13,14 +14,19 @@
                     userMode(user) ? 'kiwi-nicklist-user--mode-' + userMode(user) : '',
                     user.away ? 'kiwi-nicklist-user--away' : ''
                 ]"
+                @click="openUserbox(user, $event)"
             >
                 <span class="kiwi-nicklist-user-prefix">{{userModePrefix(user)}}</span><span
                     class="kiwi-nicklist-user-nick"
-                    @click="openUserbox(user, $event)"
                     v-bind:style="nickStyle(user.nick)"
                 >{{user.nick}}</span>
             </li>
         </ul>
+
+        <div class="kiwi-nicklist-info">
+            <input placeholder="Filter users in channel" v-model="user_filter" ref="user_filter">
+            <i class="fa fa-search" @click="$refs.user_filter.focus()"></i>
+        </div>
     </div>
 </template>
 
@@ -168,11 +174,124 @@ export default {
 </script>
 
 
-<style>
+<style lang="less">
+.kiwi-sidebar.kiwi-sidebar-section-nicklist {
+    max-width: 250px;
+    width: 250px;
+    border-left: none;
+}
+
 .kiwi-nicklist {
     overflow: hidden;
     box-sizing: border-box;
     overflow-y: auto;
+    height: auto;
+    height: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+
+    .user-count {
+        width: 100%;
+        text-align: left;
+        padding: 0.5em 10px;
+        cursor: default;
+
+        span.count-title {
+            display: block;
+            width: 100%;
+            font-size: 1em;
+            font-weight: 600;
+            margin: 0 0 5px 0;
+        }
+
+        span.count {
+            font-weight: 400;
+        }
+    }
+
+    .kiwi-nicklist-info {
+        float: right;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+
+        input {
+            text-align: left;
+            float: left;
+            width: 100%;
+            border: none;
+            padding: 0 1em;
+            height: 50px;
+            line-height: 50px;
+            background-color: #fff;
+            border-top: 2px solid #42b992;
+            color: #000;
+            font-weight: normal;
+        }
+
+        .fa.fa-search {
+            position: absolute;
+            top: 50%;
+            margin-top: -0.5em;
+            color: #000;
+            opacity: 0.5;
+            line-height: normal;
+            font-size: 1.2em;
+            right: 20px;
+            margin-right: 0;
+        }
+    }
+
+    .kiwi-nicklist-users {
+        margin: 0;
+        display: flex;
+        flex: 1;
+        width: 100%;
+        padding: 0;
+        height: 100%;
+        overflow: scroll;
+        box-sizing: border-box;
+
+        .kiwi-nicklist-user {
+            display: block;
+            height: 40px;
+            width: 100%;
+            line-height: 40px;
+            padding: 0 1em;
+            margin: 0;
+            border-left: 3px solid #42b992;
+            position: relative;
+            border-top: 1px solid #858585;
+            box-sizing: border-box;
+            transition: background 0.3s;
+
+            &::after {
+                position: absolute;
+                content: '\f075';
+                right: 1em;
+                font-family: fontAwesome, sans-serif;
+                font-size: 1em;
+                top: 50%;
+                margin-top: -1.3em;
+                color: #666764;
+            }
+
+            &:hover {
+                background-color: #42b992;
+                cursor: pointer;
+                color: #fff;
+
+                .kiwi-nicklist-user-nick {
+                    color: #fff !important;
+                }
+
+                &::after {
+                    color: #fff;
+                }
+            }
+        }
+    }
 }
 
 .kiwi-nicklist-info {
@@ -215,6 +334,13 @@ export default {
 .kiwi-nicklist-user-nick {
     font-weight: bold;
     cursor: pointer;
+}
+
+@media screen and (max-width: 759px) {
+    .kiwi-sidebar.kiwi-sidebar-section-nicklist {
+        width: 100%;
+        max-width: none;
+    }
 }
 
 </style>

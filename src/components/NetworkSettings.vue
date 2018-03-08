@@ -46,6 +46,7 @@
 
             <div class="kiwi-networksettings-section  kiwi-networksettings-user">
                 <h3>{{$t('settings_nickname')}}</h3>
+                <hr>
                 <input-text :label="$t('settings_nickname')" v-model="network.nick" />
             </div>
 
@@ -156,21 +157,88 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
+
+.u-tabbed-content {
+    background-color: #f1f1f1;
+}
 
 .kiwi-networksettings {
     box-sizing: border-box;
     height: 100%;
     margin: 0 auto;
-    max-width: 400px;
+
+    .u-form {
+        max-width: 400px;
+        display: block;
+        margin: 1em auto;
+        padding: 0;
+        height: auto;
+        overflow: hidden;
+        clear: both;
+        background: #fff;
+    }
+
+    input[type='text'],
+    input[type='password'],
+    input[type='email'],
+    textarea,
+    .input-text input {
+        clear: both;
+        width: 100%;
+        height: 40px;
+        padding: 0 10px;
+        line-height: 40px;
+        font-size: 1em;
+        color: #000;
+        box-sizing: border-box;
+        background: #fff;
+        border-bottom: 1px solid #42b992;
+        border-radius: 1px;
+        min-height: none;
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-width: none;
+    }
+
+    .input-text .input-text-label {
+        margin-left: -5px;
+    }
+
+    .kiwi-networksettings-connection-password {
+        .input-text {
+            float: left;
+            padding-right: 10px;
+            width: 33.3%;
+            box-sizing: border-box;
+
+            &:last-of-type {
+                padding-left: 10px;
+                padding-right: 0;
+            }
+        }
+    }
+
+    .kiwi-networksettings-server-types-info {
+        width: 100%;
+        text-align: left;
+    }
+
+    .kiwi-customserver-tls-lock {
+        background: #fff;
+        margin-top: -2px;
+    }
+}
+
+.kiwi-networksettings-section {
+    float: left;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1em;
 }
 
 .kiwi-networksettings-close {
     float: right;
-}
-
-.kiwi-networksettings-section {
-    margin: 0 10px 40px 10px;
 }
 
 .kiwi-networksettings form .input-text {
@@ -216,17 +284,39 @@ export default {
     float: right;
 }
 
-.kiwi-networksettings-connection-password {
-    width: 70%;
+.kiwi-networksettings-danger {
+    h3 {
+        padding: 0;
+        margin-top: 10px;
+        margin-bottom: 0.5em;
+    }
+
+    label {
+        float: left;
+        margin: 0;
+        width: 100%;
+    }
+
+    .u-button-warning {
+        width: 100%;
+        height: 50px;
+        border-radius: 4px;
+        background-color: #d16c6c;
+        color: #fff;
+        text-align: center;
+        line-height: 50px;
+        padding: 0;
+        margin: 0;
+    }
 }
 
-.kiwi-networksettings-user {
-    width: 70%;
-}
-
-.kiwi-networksettings-danger h3 {
-    padding: 5px 10px;
-    margin-top: 70px;
-    margin-bottom: 1em;
+@media screen and (max-width: 769px) {
+    .kiwi-networksettings {
+        z-index: 100;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
 </style>

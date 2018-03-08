@@ -131,14 +131,21 @@ export default {
 
 </script>
 
-<style>
+<style lang="less">
 .kiwi-channelinfo-basicmodes.kiwi-channelinfo-basicmodes label {
     display: block;
 }
 
 .kiwi-channelinfo-topic textarea {
-    width: 500px;
-    max-width: 80%;
     resize: none;
 }
+
+.u-form .kiwi-channelinfo-topic {
+    span {
+        text-align: left;
+        font-weight: 600;
+        margin: 0;
+    }
+}
+
 </style>

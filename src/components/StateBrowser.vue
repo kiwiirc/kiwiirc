@@ -1,12 +1,17 @@
 <template>
     <div class="kiwi-statebrowser">
 
+        <div class="mobile-close-statebrowser" @click="hideStatebrowser">
+            <span> Close </span>
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+
         <div class="kiwi-statebrowser-profile">
             <div class="user-avatar">
                 U
             </div>
             <div class="user-options" @click="clickAppSettings">
-                Settings <i class="fa fa-cog" aria-hidden="true"></i>
+                Kiwi Settings <i class="fa fa-cog" aria-hidden="true"></i>
             </div>
         </div>
 
@@ -25,7 +30,7 @@
         >
             <buffer-settings v-bind:buffer="bufferForPopup"></buffer-settings>
             <a @click="closeBuffer" class="u-link">{{$t('state_leave', {name: bufferForPopup.name})}}</a>
-        </div> 
+        </div>
 
 
         <div
@@ -78,7 +83,27 @@
             </div>
         </div>
 
-        <div class="kiwi-statebrowser-channels-info">
+        <div class="kiwi-statebrowser-scrollarea">
+            <div class="kiwi-statebrowser-networks">
+                <state-browser-network
+                    v-for="network in networksToShow"
+                    :key="network.id"
+                    :network="network"
+                    @showBufferSettings="showBufferPopup"
+                ></state-browser-network>
+            </div>
+        </div>
+
+        <div class="kiwi-statebrowser-channelfilter" v-if="isConnected  && !add_channel_open">
+            <input
+                type="text"
+                v-model="channel_filter"
+                placeholder="Filter Channels..."
+            />
+            <p v-if="channel_filter">Show Advanced Options</p>
+        </div>
+
+        <div class="kiwi-statebrowser-channels-info" v-if="!channel_filter">
             <form
                 @submit.prevent="submitNewChannelForm"
                 class="kiwi-statebrowser-newchannel"
@@ -104,30 +129,10 @@
                     /> <i @click="submitNewChannelForm" class="fa fa-plus" aria-hidden="true"></i>
                 </div>
             </form>
-
-            <div class="kiwi-statebrowser-channelfilter" v-if="isConnected  && !add_channel_open">
-                <input
-                    type="text"
-                    v-model="channel_filter"
-                    placeholder="Filter Channels..."
-                />
-                <p>Show Advanced Options</p>
-            </div>
         </div>
 
-        <div class="kiwi-statebrowser-scrollarea">
-            <div class="kiwi-statebrowser-networks">
-                <state-browser-network
-                    v-for="network in networksToShow"
-                    :key="network.id"
-                    :network="network"
-                    @showBufferSettings="showBufferPopup"
-                ></state-browser-network>
-            </div>
-        </div>
-
-        <div class="kiwi-statebrowser-newnetwork">
-            <a @click="clickAddNetwork" class="u-button u-button-primary">Add network<i class="fa fa-plus" aria-hidden="true"></i></a>
+        <div class="kiwi-statebrowser-newnetwork" v-if="!channel_filter && !add_channel_open">
+            <a @click="clickAddNetwork" class="u-button u-button-primary">Add Network<i class="fa fa-plus" aria-hidden="true"></i></a>
         </div>
     </div>
 </template>
@@ -239,6 +244,9 @@ export default {
         clickAppSettings: function clickAppSettings() {
             state.$emit('active.component', AppSettings);
         },
+        hideStatebrowser: function hideStatebrowser() {
+            state.$emit('statebrowser.hide');
+        },
         clickForget: function clickForget() {
             let msg = 'This will delete all stored networks and start fresh. Are you sure?';
             /* eslint-disable no-restricted-globals */
@@ -295,14 +303,351 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 
 .kiwi-statebrowser {
     box-sizing: border-box;
     z-index: 11; /* Must be at least 1 higher than the workspace :after z-index; */
     display: flex;
     flex-direction: column;
-    border-right: 5px solid rgba(255, 255, 255, 0.3);
+    background: #22231f;
+    border-right: none;
+    width: 220px;
+    color: #fff;
+    text-align: center;
+    padding-top: 10px;
+    overflow: hidden;
+
+    h1 {
+        width: 100%;
+        font-size: 1em;
+        opacity: 0.8;
+        cursor: default;
+        padding: 20px 0 27px 0;
+    }
+
+    .kiwi-statebrowser-profile {
+        width: 100%;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        margin-bottom: 10px;
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #42b992;
+            background-color: #000;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.5em;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 10px auto;
+            transition: all 0.3s;
+
+            &:hover {
+                background-color: #42b992;
+                color: #fff;
+            }
+        }
+
+        /* User Settings */
+        .user-options {
+            width: 90%;
+            text-align: left;
+            padding: 0 10px 0 10px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            font-size: 0.8em;
+            border-radius: 4px;
+            box-sizing: border-box;
+            opacity: 1;
+            line-height: 35px;
+            cursor: pointer;
+            margin: 0 5%;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+
+            &:hover {
+                background: #42b992;
+                color: #fff;
+                opacity: 1;
+            }
+        }
+
+        .user-options span {
+            font-weight: 600;
+        }
+
+        .user-options i {
+            float: right;
+            line-height: 35px;
+            font-size: 1.2em;
+        }
+    }
+
+    /* Add channel input */
+    .kiwi-statebrowser-newchannel-inputwrap {
+        border-radius: 3px;
+        color: #fff;
+        opacity: 1;
+        transition: opacity 0.3s;
+        background: none;
+        padding: 0 10px 0 10px;
+        position: relative;
+        margin: 10px 0 10px 0;
+
+        i {
+            position: absolute;
+            right: 20px;
+            pointer-events: none;
+            top: 14px;
+        }
+    }
+
+    .kiwi-statebrowser-newchannel-inputwrap input[type='text'] {
+        width: 100%;
+        height: 40px;
+        padding: 0 10px;
+        line-height: 40px;
+        font-size: 1em;
+        color: #000;
+        box-sizing: border-box;
+        background: #fff;
+        border: none;
+        margin: 15px 0 10px 0;
+        border-radius: 2px;
+        min-height: none;
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-width: none;
+    }
+
+    .kiwi-statebrowser-newchannel-inputwrap--focus {
+        opacity: 1;
+        background-color: #fff;
+    }
+
+    /* Set the height of the networks scroll box */
+    .kiwi-statebrowser-scrollarea {
+        height: auto;
+        background-color: #131312;
+        margin-bottom: 0;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+    /*Channel search input */
+    .kiwi-statebrowser-channelfilter {
+        width: 100%;
+        padding: 0 0 0 0;
+        box-sizing: border-box;
+        position: relative;
+        opacity: 0.8;
+        transition: all 0.3s;
+        margin-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .kiwi-statebrowser-channelfilter:hover {
+        opacity: 1;
+    }
+
+    .kiwi-statebrowser-channelfilter::after {
+        content: '\f002';
+        position: absolute;
+        top: 9px;
+        right: 20px;
+        font-size: 1em;
+        color: #000;
+        z-index: 10;
+        pointer-events: none;
+        font-family: fontAwesome, sans-serif;
+    }
+
+    .kiwi-statebrowser-channelfilter input {
+        width: 100%;
+        height: 42px;
+        line-height: 42px;
+        background-color: #fff;
+        color: #000;
+        padding: 0 15px;
+        border: none;
+        border-radius: 0;
+        box-sizing: border-box;
+    }
+
+    .kiwi-statebrowser-channelfilter p {
+        color: #42b992;
+        text-align: center;
+        font-size: 0.9em;
+        margin: 10px 0 10px 0;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .kiwi-statebrowser-channelfilter p:hover {
+        text-decoration: underline;
+        color: #6dcdad;
+    }
+
+    /* Add network button */
+    .kiwi-statebrowser-newnetwork {
+        width: 100%;
+        position: static;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .kiwi-statebrowser-newnetwork a {
+        width: 90%;
+        padding: 0 10px;
+        margin: 0 5% 10px 5%;
+        color: #fff;
+        opacity: 1;
+        line-height: 35px;
+        cursor: pointer;
+        display: block;
+        box-sizing: border-box;
+        background: none;
+        text-align: left;
+        position: relative;
+        border-radius: 4px;
+        font-size: 0.8em;
+        transition: all 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .kiwi-statebrowser-newnetwork a i {
+        position: absolute;
+        right: 10px;
+        line-height: 35px;
+        font-size: 1.2em;
+    }
+
+    .kiwi-statebrowser-newnetwork a:hover {
+        background: #42b992;
+        border-color: #42b992;
+        opacity: 1;
+        color: #fff;
+    }
+
+    .kiwi-statebrowser-network .kiwi-statebrowser-network-header {
+        line-height: 45px;
+        text-align: left;
+        background-color: #454545;
+        position: relative;
+    }
+
+    .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
+        text-align: left;
+        padding: 0 1em;
+        text-transform: capitalize;
+        color: #fff;
+        width: 100%;
+        font-size: 1em;
+        font-weight: 600;
+    }
+
+    .kiwi-statebrowser-network .kiwi-statebrowser-network-header .kiwi-statebrowser-network-toggle {
+        position: absolute;
+        top: 50%;
+        margin: -6px 5px 0 0;
+        width: 14px;
+        right: 0;
+    }
+
+    /* Active Network Styling */
+    .kiwi-statebrowser-network.kiwi-statebrowser-network--active .kiwi-statebrowser-network-header {
+        border-left: 3px solid #42b992;
+    }
+
+    /* Channel Styling */
+    .kiwi-statebrowser-channels {
+        .kiwi-statebrowser-channel {
+            border-bottom: 1px solid #4a4b47;
+            line-height: 30px;
+            padding: 0 1em;
+            color: #fff;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+
+            .kiwi-statebrowser-channel-name {
+                color: #fff;
+                text-align: left;
+                font-weight: 100;
+                font-size: 0.8em;
+            }
+
+            .kiwi-statebrowser-channel-label {
+                background: #d16c6c;
+                margin: 4px 0;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
+            border-left: 3px solid #42b992;
+            font-weight: 600;
+            opacity: 1;
+        }
+    }
+
+    .kiwi-statebrowser-divider {
+        background: rgba(255, 255, 255, 0.3);
+        margin: 8px 12px;
+        height: 1px;
+    }
+
+    /* New Channel Button */
+    .kiwi-statebrowser-newchannel {
+        padding: 0;
+        margin: 0;
+        height: auto;
+        width: 100%;
+        border-top: none;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+
+        a {
+            width: 90%;
+            padding: 0 10px 0 10px;
+            color: #fff;
+            line-height: 35px;
+            font-size: 0.8em;
+            font-weight: 500;
+            cursor: pointer;
+            display: block;
+            box-sizing: border-box;
+            background: none;
+            text-align: left;
+            position: relative;
+            border-radius: 4px;
+            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            margin: 0 5%;
+            transition: all 0.3s;
+
+            i {
+                position: absolute;
+                right: 10px;
+                line-height: 35px;
+                font-size: 1.2em;
+            }
+
+            &:hover {
+                background: #42b992;
+                opacity: 1;
+                color: #fff;
+            }
+        }
+    }
 }
 
 .kiwi-statebrowser-usermenu .fa-caret-down {
@@ -313,50 +658,8 @@ export default {
     transform: rotate(-180deg);
 }
 
-.kiwi-statebrowser-usermenu-header {
-    display: block;
-    cursor: pointer;
-    font-size: 1em;
-    padding: 1em 1em 1em 1em;
-    width: 100%;
-    box-sizing: border-box;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.kiwi-statebrowser-usermenu-header i {
-    float: right;
-    line-height: 1.2em;
-    display: block;
-    font-size: 16px;
-}
-
 .kiwi-statebrowser-divider {
     display: none;
-}
-
-.kiwi-statebrowser-usermenu-body {
-    font-size: 0.9em;
-    position: relative;
-    margin: 0 0 1em 0;
-    padding: 2.5em 0 1em 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.kiwi-statebrowser-usermenu-body p {
-    padding: 0 1em 1em 1em;
-    margin: 0;
-    cursor: default;
-}
-
-.kiwi-statebrowser-usermenu-body a {
-    width: 100%;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    color: #42b983;
-    text-decoration: underline;
-    border: none;
-    cursor: pointer;
 }
 
 .kiwi-statebrowser-switcher a {
@@ -480,7 +783,26 @@ export default {
     cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
+.mobile-close-statebrowser {
+    display: none;
+}
+
+@media screen and (max-width: 769px) {
+    .kiwi-statebrowser {
+        left: -220px;
+        padding-top: 0;
+    }
+
+    .kiwi-wrap.kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
+        width: 100%;
+        left: 0;
+        z-index: 999;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
+        width: 0;
+    }
+
     .kiwi-header {
         text-align: center;
     }
@@ -495,6 +817,37 @@ export default {
         color: #000;
         font-weight: 600;
         max-height: 49.5px;
+    }
+
+    //Resize the buttons within the statebrowser
+    .kiwi-statebrowser .kiwi-statebrowser-newchannel a,
+    .kiwi-statebrowser .kiwi-statebrowser-profile .user-options,
+    .kiwi-statebrowser .kiwi-statebrowser-newnetwork a {
+        margin-right: 2.5%;
+        margin-left: 2.5%;
+        width: 95%;
+    }
+
+    .mobile-close-statebrowser {
+        width: 100%;
+        color: #fff;
+        display: block;
+        font-size: 1em;
+        padding: 0.5em 10px;
+        font-weight: 600;
+        background: #42b992;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+
+        span {
+            float: left;
+        }
+
+        i {
+            float: right;
+            font-size: 1.2em;
+        }
     }
 }
 

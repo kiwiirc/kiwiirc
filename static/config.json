@@ -5,7 +5,7 @@
 	"restricted": true,
 	"theme": "Concept",
 	"themes": [
-		{ "name": "Concept", "url": "static/themes/concept" }
+		{ "name": "Concept", "url": "static/themes/concept2" }
 	],
 	"startupOptions" : {
 		"server": "irc.freenode.net",
@@ -15,7 +15,7 @@
 		"channel": "#testing22",
 		"nick": "kiwi-n?"
 	},
-	"embedly": { 
+	"embedly": {
 		"key": ""
 	}
 }

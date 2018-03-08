@@ -1,11 +1,9 @@
 <template>
     <div class="kiwi-appsettings">
 
-        <div class="title">
-            <h2>Kiwi Client Settings: </h2>
-            <a @click="closeSettings" class="u-button u-button-secondary kiwi-appsettings-close">
-                <i class="fa fa-times" aria-hidden="true"></i>
-            </a>
+        <div class="title" @click="closeSettings">
+            <span>Close</span>
+            <i class="fa fa-times" aria-hidden="true"></i>
         </div>
 
 
@@ -268,24 +266,6 @@ export default {
 
 .app-settings-tab-container {
     width: 100%;
-
-    .u-tabbed-view-tab {
-        width: 50%;
-        box-sizing: border-box;
-        padding: 1em 20px;
-        border-bottom: 2px solid #fff;
-        font-size: 1em;
-
-        &:hover {
-            border-bottom: 2px solid #42b992;
-        }
-
-        &.u-tabbed-view-tab--active {
-            border-bottom: 2px solid #42b992;
-            background-color: #42b992;
-            color: #fff;
-        }
-    }
 }
 
 .kiwi-appsettings-close {
@@ -300,13 +280,16 @@ export default {
     width: 200px;
 }
 
-.kiwi-appsettings-aliases > div {
-    margin-left: 30px;
-}
-
 .kiwi-appsettings-theme-reload {
     margin-left: 1em;
     cursor: pointer;
+}
+
+.u-form .kiwi-settings-aliases-input {
+    height: auto;
+    min-height: 300px;
+    max-height: 500px;
+    line-height: normal;
 }
 
 .app-settings-block {
@@ -314,6 +297,35 @@ export default {
     float: left;
     box-sizing: border-box;
     padding: 0 20px;
+}
+
+.title {
+    display: block;
+    cursor: pointer !important;
+    padding: 0 10px;
+    margin: -1px 0 0 0;
+    background-color: #42b992;
+    color: #fff;
+    font-weight: 600;
+    width: 100%;
+    position: relative;
+    font-size: 1em;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    line-height: 47px;
+    text-align: right;
+    transition: background 0.3s;
+
+    i {
+        margin-left: 10px;
+        font-size: 1.5em;
+        float: right;
+        line-height: 47px;
+    }
+
+    &:hover {
+        background: #d16c6c;
+    }
 }
 
 @media screen and (max-width: 1558px) {
@@ -338,4 +350,13 @@ export default {
     }
 }
 
+@media screen and (max-width: 769px) {
+    .kiwi-appsettings {
+        width: 100%;
+        z-index: 999;
+        position: fixed;
+        left: 0;
+        transition: left 0.5s;
+    }
+}
 </style>

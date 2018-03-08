@@ -6,6 +6,9 @@
             hasFocus || currentValue ? 'input-text--reveal-value' : ''
         ]"
     >
+
+        <label>{{label}}</label>
+
         <input
             v-if="type==='password'"
             type="password"
@@ -32,8 +35,6 @@
         <div v-if="$slots.default" class="input-text-c">
             <slot></slot>
         </div>
-
-        <span class="input-text-label">{{label}}</span>
 
         <div class="input-text-underline">
             <div class="input-text-underline-active"></div>

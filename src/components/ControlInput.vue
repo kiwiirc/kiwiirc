@@ -387,28 +387,42 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 
-.kiwi-controlinput {
-    box-sizing: border-box;
-    padding: 4px;
-}
-
+.kiwi-controlinput,
 .kiwi-controlinput-inner {
-    display: flex;
-    position: relative;
-    height: 100%;
+    padding: 0;
     box-sizing: border-box;
-    padding: 3px;
-}
 
-.kiwi-controlinput-user {
-    height: 100%;
-    padding: 0 15px;
-    margin-right: 15px;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
+    .kiwi-controlinput-user {
+        height: 100%;
+        padding: 0 15px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        margin-right: 10px;
+        line-height: 40px;
+    }
+
+    .kiwi-controlinput-tools {
+        line-height: 40px;
+    }
+
+    .kiwi-controlinput-form {
+        padding: 8px 0 0 0;
+    }
+
+    .kiwi-controlinput-inner {
+        display: flex;
+        position: relative;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 3px;
+    }
+
+    .kiwi-controlinput-input {
+        text-align: left;
+    }
 }
 
 @media screen and (max-width: 500px) {

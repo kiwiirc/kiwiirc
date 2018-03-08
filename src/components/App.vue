@@ -255,7 +255,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="less">
 html {
     height: 100%;
     margin: 0;
@@ -285,43 +285,24 @@ body {
     font-size: 80%;
 }
 
-.kiwi-statebrowser {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    bottom: 0;
-    transition: left 0.5s;
-    z-index: 1;
-}
-
-/* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 769px) {
-    .kiwi-statebrowser {
-        left: -200px;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
-        left: 0;
-    }
-}
-
 .kiwi-workspace {
     position: relative;
-    margin-left: 200px;
+    margin-left: 220px;
     left: 0;
     display: block;
     height: 100%;
-    transition: left 0.5s, margin-left 0.5s;
+    transition: left 0.2s, margin-left 0.2s;
 }
 
 .kiwi-workspace::before {
     position: absolute;
     content: '';
-    height: 4px;
     right: 0;
     left: 0;
     top: 0;
+    background: #42b992;
+    height: 7px;
+    z-index: 999;
 }
 
 /* When the statebrowser opens as a draw, darken the workspace */
@@ -346,6 +327,168 @@ body {
     z-index: -1;
 }
 
+.kiwi-statebrowser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    bottom: 0;
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+/* Style the tabs, across the app */
+.u-tabbed-view {
+    display: block;
+}
+
+.u-tabbed-view-tabs {
+    background: rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+    padding-top: 15px;
+
+    .u-tabbed-view-tab {
+        border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+        background: #fff;
+        font-weight: 600;
+        opacity: 1;
+        z-index: 1;
+        margin-bottom: -3px;
+        position: relative;
+        width: auto;
+        text-align: left;
+        box-sizing: border-box;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        transition: border 0.3s;
+
+        &:hover,
+        &.u-tabbed-view-tab--active {
+            border-bottom: 3px solid #42b992;
+        }
+
+        &:last-of-type {
+            z-index: 1;
+            border-radius: 0 4px 0 0;
+        }
+    }
+}
+
+.u-tabbed-content h2,
+.u-tabbed-content h3,
+.u-tabbed-content h4 {
+    font-size: 1em;
+    padding: 0;
+}
+
+/*Style all form inputs */
+.u-form {
+    label {
+        display: block;
+        line-height: 20px;
+        margin: 0 0 10px 0;
+
+        span {
+            display: inline-block;
+            line-height: 25px;
+            width: auto;
+            margin-left: 5px;
+            font-weight: 500;
+            font-size: 1em;
+            text-align: left;
+            max-width: none;
+        }
+    }
+
+    input[type='checkbox'] {
+        float: left;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #000;
+        background-color: #fff;
+        display: inline-block;
+        position: relative;
+        border-radius: 1px;
+        cursor: pointer;
+        margin-left: 0;
+        margin-right: 5px;
+
+        &::after {
+            position: absolute;
+            content: '';
+            left: 1px;
+            top: 1px;
+            width: 14px;
+            height: 14px;
+            background: #42b992;
+            z-index: 10;
+            transition: all 0.3s;
+            opacity: 0;
+        }
+
+        &:checked::after {
+            position: absolute;
+            content: '';
+            left: 1px;
+            top: 1px;
+            width: 14px;
+            height: 14px;
+            background: #42b992;
+            z-index: 10;
+            transition: all 0.3s;
+            opacity: 1;
+        }
+    }
+
+    input[type="radio"] {
+        float: right;
+    }
+
+    label input[type='text'],
+    label input[type='password'],
+    label input[type='email'],
+    textarea {
+        clear: both;
+        width: 100%;
+        height: 40px;
+        padding: 0 10px;
+        line-height: 40px;
+        font-size: 1em;
+        color: #000;
+        box-sizing: border-box;
+        background: #fff;
+        border: 1px solid #42b992;
+        border-radius: 1px;
+        min-height: none;
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-width: none;
+    }
+}
+
+.kiwi-channelinfo-basicmodes.kiwi-channelinfo-basicmodes label {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.kiwi-sidebar .kiwi-nicklist-users .kiwi-nicklist-user::after {
+    right: 20px;
+}
+
+/* Small screen will cause the statebrowser to act as a drawer */
+@media screen and (max-width: 769px) {
+    .kiwi-statebrowser {
+        left: -200px;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
+        left: 0;
+    }
+}
+
 /* Small screen will cause the statebrowser to act as a drawer */
 @media screen and (max-width: 769px) {
     .kiwi-workspace {
@@ -363,6 +506,10 @@ body {
         height: 100%;
         opacity: 1;
         z-index: 10;
+    }
+
+    .u-tabbed-view-tabs .u-tabbed-view-tab {
+        width: auto;
     }
 }
 

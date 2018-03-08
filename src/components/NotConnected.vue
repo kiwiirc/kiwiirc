@@ -100,3 +100,109 @@ export default {
 };
 
 </script>
+
+<style lang="less">
+.kiwi-notconnected {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10% 0;
+    margin: 0;
+    color: #fff;
+    background-color: #bf5155;
+    transition: background-color 0.3s;
+
+    .kiwi-notconnected-bigicon {
+        display: inline-block;
+        width: 100%;
+        margin: 0 0 1em 0;
+
+        i {
+            font-size: 4em;
+            cursor: default;
+        }
+    }
+
+    .kiwi-notconnected-caption {
+        display: block;
+        width: 100%;
+        font-size: 1.6em;
+        cursor: default;
+        margin: 0 0 0.5em 0;
+    }
+
+    .kiwi-notconnected-networksettings {
+        display: block;
+        font-size: 0.9em;
+    }
+}
+
+.button-container {
+    width: 100%;
+    text-align: center;
+    padding-top: 1em;
+
+    .button {
+        width: auto;
+        display: inline-block;
+        padding: 0.8em 1em 0.8em 0.6em;
+        border: 2px solid #fff;
+        color: #fff;
+        font-size: 0.8em;
+        border-radius: 0.4em;
+        margin: 0 0.8em;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: #fff;
+            color: #000;
+            transition: all 0.2s;
+        }
+
+        i {
+            float: left;
+            font-size: 1.6em;
+            line-height: 0.8em;
+            margin-right: 0.4em;
+        }
+    }
+
+    .button.connection-settings {
+        font-size: 0.6em;
+        clear: both;
+        display: block;
+        max-width: 160px;
+        margin: 1em auto;
+
+        i {
+            line-height: 1em;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .kiwi-notconnected-caption {
+        font-size: 1em;
+    }
+
+    .kiwi-notconnected .button-container .button {
+        clear: both;
+        margin: 0 5% 1em;
+        font-size: 1em;
+        display: block;
+        padding: 0.6em 0.8em 0.6em 0.4em;
+        width: 90%;
+        box-sizing: border-box;
+    }
+
+    .kiwi-notconnected .button-container .button.connection-settings {
+        font-size: 1em;
+        max-width: none;
+    }
+
+    .kiwi-notconnected .button-container .button i {
+        display: none;
+    }
+}
+
+</style>

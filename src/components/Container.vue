@@ -15,13 +15,7 @@
                 >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}</div>
             </div>
             <container-header :buffer="buffer" :uiState="uiState"></container-header>
-            <div @click.stop="toggleSidebar" v-bind:class="{
-                'kiwi-container-toggledraw-sidebar': true,
-                'kiwi-container-toggledraw-sidebar--disabled': !buffer.isChannel()
-            }">
-                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </div>
-
+            
             <template v-if="buffer.isServer()">
                 <server-view :network="network" :buffer="buffer" :uiState="uiState"></server-view>
             </template>
@@ -160,6 +154,33 @@ export default {
     display: flex;
     flex-direction: column;
     top: 4px;
+}
+
+/* When the sidebar is open we will put a shadow over the text area */
+.kiwi-container--sidebar-open {
+    position: relative;
+    min-height: 100%;
+}
+
+.kiwi-container.kiwi-container--sidebar-open::after {
+    content: '';
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    position: absolute;
+    pointer-events: none;
+}
+
+/* If the sidebar is open, make the cursor stay as a pointer, so user's cannot interact with the elements whilst options are open */
+.kiwi-container.kiwi-container--sidebar-open .kiwi-header *,
+.kiwi-container.kiwi-container--sidebar-open .kiwi-messagelist .kiwi-controlinput *,
+.kiwi-container.kiwi-container--sidebar-open .kiwi-messagelist .kiwi-ircinput-editor {
+    cursor: default !important;
+    pointer-events: none !important;
 }
 
 .kiwi-header {

@@ -5,15 +5,19 @@
             'kiwi-header--showall': buffer_settings_open,
         }"
         @click="onHeaderClick"
-    > 
+    >
 
         <template v-if="isChannel()">
             <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div v-if="isJoined && buffer.topic.length > 0" class="kiwi-header-topic">{{buffer.topic}}</div>
             <div class="kiwi-header-options" v-if="isJoined && isConnected">
+                <div class="option topic" @click="showTopic" v-bind:class="{ active: viewTopic == true }" v-if="buffer.topic.length > 0">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                    <a v-if="viewTopic == true">Hide Topic</a>
+                    <a v-if="viewTopic == false">Display Topic</a>
+                </div>
                 <div class="option"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
                 <div class="option"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>Channel Settings</span></a></div>
-                <div class="option leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i> <span>{{$t('Leave Channel')}}</span></a></div>
+                <div class="option leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
             </div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a @click="joinCurrentBuffer" class="u-link kiwi-header-join-channel-button">{{$t('container_join')}}</a>
@@ -21,7 +25,18 @@
             <div class="kiwi-header-tools">
                 <div v-for="el in pluginUiChannelElements" v-rawElement="el" class="kiwi-header-tool"></div>
             </div>
+
+            <div v-if="isJoined && buffer.topic.length > 0 && viewTopic" class="kiwi-header-topic">
+                <div class="topic-title">
+                    Channel Topic:
+                </div>
+                <div class="content">
+                    {{buffer.topic}}
+                </div>
+            </div>
+
         </template>
+
         <template v-else-if="isServer()">
             <div v-if="buffer.getNetwork().state === 'disconnected'" class="kiwi-header-server-connection">
                 <a @click="buffer.getNetwork().ircClient.connect()" class="u-button u-button-primary">{{$t('connect')}}</a>
@@ -31,6 +46,7 @@
             </div>
             <div class="kiwi-header-name">{{buffer.getNetwork().name}}</div>
         </template>
+
         <template v-else-if="isQuery()">
             <div class="kiwi-header-options">
                 <a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a>
@@ -40,6 +56,7 @@
                 <div v-for="el in pluginUiQueryElements" v-rawElement="el" class="kiwi-header-tool"></div>
             </div>
         </template>
+
         <template v-else-if="isSpecial()">
             <div class="kiwi-header-options">
                 <a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a>
@@ -86,6 +103,7 @@ export default {
             buffer_settings_open: false,
             pluginUiChannelElements: GlobalApi.singleton().channelHeaderPlugins,
             pluginUiQueryElements: GlobalApi.singleton().queryHeaderPlugins,
+            viewTopic: false,
         };
     },
     props: ['buffer', 'uiState'],
@@ -122,6 +140,9 @@ export default {
         showSidebar() {
             state.$emit('sidebar.toggle');
         },
+        showTopic() {
+            this.viewTopic = !this.viewTopic;
+        },
         joinCurrentBuffer: function joinCurrentBuffer() {
             let network = this.buffer.getNetwork();
             this.buffer.enabled = true;
@@ -149,17 +170,171 @@ export default {
 
 </script>
 
-<style>
-
+<style lang="less">
 .kiwi-header {
+    background: #fff;
+    border-bottom: none;
+    padding: 0;
+    z-index: 1;
+    transition: all 0.3s;
+    line-height: 10px;
     box-sizing: border-box;
-    z-index: 2;
-    overflow: hidden;
-    padding: 0.5em 1em;
+
+    .kiwi-header-topic {
+        padding: 0 10px;
+        line-height: normal;
+        max-width: none;
+        border-top: 2px solid #42b992;
+        border-bottom: 2px solid #42b992;
+        width: 100%;
+        float: right;
+        box-sizing: border-box;
+        height: auto;
+
+        .topic-title {
+            padding: 10px 0 5px 0;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .content {
+            height: 35px;
+            max-height: 35px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            color: #22231f;
+            font-size: 0.8;
+            cursor: default;
+            margin-bottom: 10px;
+        }
+    }
+
+    &:hover {
+        max-height: none !important;
+
+        .kiwi-header-topic {
+            display: block;
+        }
+
+        .view-topic {
+            background-color: #42b992;
+            color: #fff;
+            opacity: 1;
+        }
+    }
+
+    .kiwi-header-name {
+        float: left;
+        color: #22231f;
+        padding: 0.5em 10px;
+        opacity: 1;
+        margin: 0;
+        font-size: 20px;
+        line-height: normal;
+    }
+
+    .kiwi-header-buffersettings {
+        border-top: 1px solid #ddd;
+    }
+
+    .show-topic {
+        float: left;
+        line-height: 45px;
+        cursor: pointer;
+        font-size: 0.8em;
+    }
+
+    .kiwi-header-options {
+        float: right;
+        width: auto;
+
+        .option {
+            border: none;
+            float: left;
+            background: none;
+            display: block;
+            font-size: 0.8em;
+            opacity: 0.85;
+            border-left: 1px solid rgba(0, 0, 0, 0.6);
+            text-transform: capitalize;
+
+            .fa-info {
+                display: none;
+            }
+
+            &.leave {
+                opacity: 1;
+                margin: 0;
+                transition: all 0.3s;
+
+                a {
+                    padding: 0 10px;
+
+                    &:hover {
+                        background-color: #d16c6c;
+                    }
+                }
+
+                i {
+                    margin: 0;
+                }
+            }
+
+            a {
+                float: left;
+                padding: 0 10px;
+                line-height: 45px;
+                display: block;
+                font-size: 1em;
+                font-weight: 600;
+                opacity: 0.8;
+                cursor: pointer;
+                transition: all 0.3s;
+
+                i {
+                    margin-right: 10px;
+                    font-size: 1.2em;
+                    float: left;
+                    line-height: 45px;
+                }
+
+                &:hover {
+                    background-color: #42b992;
+                    color: #fff;
+                    opacity: 1;
+                }
+            }
+
+            &.active {
+                opacity: 1;
+
+                a {
+                    background-color: #42b992;
+                    color: #fff;
+                    opacity: 1;
+                }
+            }
+        }
+    }
 }
 
-.kiwi-header:hover {
-    max-height: none;
+/* The not joined button */
+.kiwi-header .kiwi-header-notjoined {
+    border-radius: 0;
+    float: left;
+}
+
+.kiwi-header .kiwi-header-notjoined .u-link {
+    font-weight: 600;
+    line-height: 45px;
+    padding: 0 25px;
+    background-color: #42b992;
+    border-radius: 0;
+    transition: all 0.3;
+}
+
+.kiwi-header .kiwi-header-notjoined .u-link:hover {
+    background-color: #5ec9a6;
 }
 
 .kiwi-header--showall {
@@ -171,26 +346,13 @@ export default {
 .kiwi-header-name {
     float: left;
     font-weight: bold;
-    opacity: 0.6;
-    line-height: 1.7em;
     cursor: default;
-    font-size: 1.3em;
     margin-right: 0.5em;
-}
-
-.kiwi-header-topic {
-    font-size: 1em;
-    cursor: default;
-    opacity: 0.8;
-    line-height: 2.2em;
-    max-width: 50%;
-    height: 1.7em;
-    overflow: hidden;
-    display: inline-block;
-}
-
-.kiwi-header-topic:hover {
-    height: auto;
+    color: #22231f;
+    padding: 0.5em 20px;
+    opacity: 1;
+    font-size: 20px;
+    line-height: normal;
 }
 
 .kiwi-header-notjoined {
@@ -203,7 +365,19 @@ export default {
 }
 
 .kiwi-header-server-connection {
-    display: inline-block;
+    float: right;
+    padding-right: 10px;
+
+    .u-button {
+        float: right;
+        line-height: 35px;
+        font-size: 1em;
+        padding: 0 1em;
+        margin: 4px 0;
+        border-radius: 4px;
+        background: #42b992;
+        color: #fff;
+    }
 }
 
 .kiwi-header-options {
@@ -245,14 +419,46 @@ export default {
     margin-top: 1em;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 769px) {
     .kiwi-header {
-        padding: 0.6em 1.2em;
+        margin-right: 0;
+        overflow: visible;
+        height: auto;
+        max-height: none;
+        padding-left: 0;
+        margin-left: 0;
+
+        .kiwi-header-name {
+            line-height: 2.2em;
+            font-size: 1em;
+            padding-left: 50px;
+        }
     }
 
-    .kiwi-header-name {
-        line-height: 2.2em;
-        font-size: 1em;
+    .kiwi-header .kiwi-header-options .option {
+        a {
+            i {
+                margin-right: 0;
+            }
+        }
+
+        &.topic {
+            a {
+                display: none;
+            }
+        }
+
+        .fa-info {
+            display: block;
+            font-size: 1.5em;
+            padding: 0 10px;
+            opacity: 0.8;
+            line-height: 45px;
+        }
+
+        span {
+            display: none;
+        }
     }
 }
 

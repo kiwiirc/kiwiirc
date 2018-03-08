@@ -4,7 +4,8 @@
             <template v-if="buffer.isChannel()">
 
                 <span class="kiwi-sidebar-options" @click="uiState.close()">
-                    {{$t('close')}} <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    {{$t('close')}}
+                    <i class="fa fa-times" aria-hidden="true"></i>
                 </span>
 
                 <div
@@ -195,52 +196,79 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 
 .kiwi-sidebar {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    width: 500px;
-    border-left: 3px solid #ddd;
-}
+    width: 380px;
+    border-left: none;
+    right: -380px;
+    max-width: none;
+    z-index: 200;
+    background: #fff;
 
-@media screen and (max-width: 700px) {
-    .kiwi-sidebar {
+    /* Users Styling */
+    .kiwi-sidebar-section-user {
+        max-width: none;
+        width: auto;
+    }
+
+    .kiwi-sidebar .u-form label {
+        float: left;
         width: 100%;
-        right: 0;
+    }
+
+    .kiwi-sidebar .u-form label span {
+        width: auto;
     }
 }
 
 .kiwi-sidebar-options {
     display: block;
     cursor: pointer;
-    border-bottom: 1px solid #ddd;
-    padding: 0.75em 1em 0.76em 1em;
-    transition: all 0.2s;
+    padding: 0 10px;
+    background-color: #42b992;
+    color: #fff;
+    font-weight: 600;
+    width: 100%;
+    position: relative;
+    font-size: 1em;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    line-height: 47px;
+    text-align: right;
+    transition: background 0.3s;
+
+    i {
+        margin-left: 10px;
+        font-size: 1.5em;
+        float: right;
+        line-height: 47px;
+    }
+
+    &:hover {
+        background: #d16c6c;
+    }
 }
 
 .kiwi-sidebar-buffersettings {
     overflow: hidden;
     height: 100%;
+
+    .u-tabbed-content {
+        padding: 1em;
+    }
 }
 
-.kiwi-sidebar-buffersettings .u-tabbed-content {
-    padding: 1em;
-}
+.kiwi-sidebar-settings {
+    margin-bottom: 20px;
 
-.kiwi-sidebar-settings label {
-    display: block;
-}
-
-.kiwi-sidebar .u-tabbed-view-tab {
-    width: 33.3%;
-    box-sizing: border-box;
-    padding: 1em;
-    font-size: 0.8em;
-    text-transform: uppercase;
-    text-align: center;
+    label {
+        display: block;
+    }
 }
 
 @keyframes settingstransition {
@@ -253,9 +281,23 @@ export default {
     to { height: 100%; }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 759px) {
     .u-tabbed-view-tabs .u-tabbed-view-tab {
         width: 100%;
+
+        &.u-tabbed-view-tab--active {
+            border-bottom: 3px solid #42b992;
+            margin-bottom: 0;
+        }
+    }
+
+    .u-form label span {
+        font-size: 11px;
+    }
+
+    .kiwi-container--sidebar-open .kiwi-sidebar {
+        width: 100%;
+        max-width: none;
     }
 }
 
