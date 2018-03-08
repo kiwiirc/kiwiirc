@@ -245,12 +245,13 @@ export default {
 
     .kiwi-nicklist-users {
         margin: 0;
-        display: flex;
+        display: block;
         flex: 1;
         width: 100%;
         padding: 0;
         height: 100%;
-        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
         box-sizing: border-box;
 
         .kiwi-nicklist-user {

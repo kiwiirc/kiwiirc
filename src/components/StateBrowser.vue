@@ -608,7 +608,7 @@ export default {
     /* New Channel Button */
     .kiwi-statebrowser-newchannel {
         padding: 0;
-        margin: 0;
+        margin: 10px 0 0 0;
         height: auto;
         width: 100%;
         border-top: none;
