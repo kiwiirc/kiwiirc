@@ -312,7 +312,8 @@ export default {
     margin: 0;
     transition: all 0.2s;
     border: none;
-    background-color: #86b32d;
+    background-color: #42b992;
+    color: #fff;
 }
 
 .kiwi-welcome-simple .help {

@@ -169,7 +169,7 @@ export default {
 .kiwi-startup-common-section-info {
     background-size: cover;
     background-position: bottom;
-    border-left: 5px solid #86b32d;
+    border-left: 5px solid #42b992;
 }
 
 .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
