@@ -191,6 +191,11 @@ export default {
         float: right;
         box-sizing: border-box;
         height: auto;
+        color: #5f5f5f;
+
+        .kiwi-header-buffersettings {
+            border-top: 1px solid #ddd;
+        }
 
         .topic-title {
             padding: 10px 0 5px 0;

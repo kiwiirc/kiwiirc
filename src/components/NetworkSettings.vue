@@ -249,6 +249,7 @@ export default {
     text-align: center;
     margin: 1em;
     padding: 0.3em;
+    border: 1px dashed #d86f6f;
 }
 
 .kiwi-networksettings-error span {
@@ -289,6 +290,7 @@ export default {
         padding: 0;
         margin-top: 10px;
         margin-bottom: 0.5em;
+        background: #d86f6f;
     }
 
     label {

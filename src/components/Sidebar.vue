@@ -207,7 +207,7 @@ export default {
     border-left: none;
     right: -380px;
     max-width: none;
-    z-index: 200;
+    z-index: 999;
     background: #fff;
 
     /* Users Styling */

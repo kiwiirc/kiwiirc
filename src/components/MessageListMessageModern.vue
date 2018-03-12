@@ -136,7 +136,7 @@ export default {
     }
 
     .kiwi-messagelist-modern-right {
-        margin-left: 10px;
+        margin-left: 5px;
         padding-top: 5px;
         width: 100%;
     }
@@ -167,7 +167,6 @@ export default {
     }
 
     .kiwi-messagelist-time {
-        float: right;
         margin: 0 10px 0 0;
         display: inline-block;
         color: #a0a09f;
@@ -179,8 +178,8 @@ export default {
     }
 
     &.kiwi-messagelist-message-repeat {
-        margin-top: -5px;
-        margin-bottom: 5px;
+        margin-top: 0;
+        margin-bottom: 0;
         padding-top: 0;
 
         .kiwi-messagelist-modern-right {

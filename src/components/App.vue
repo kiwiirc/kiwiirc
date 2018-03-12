@@ -478,6 +478,46 @@ body {
     right: 20px;
 }
 
+/* Styling for global elements across the app, buttons, links etc */
+.u-button {
+    color: #2c3e50;
+    border-radius: 3px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    vertical-align: middle;
+    text-align: center;
+    outline: none;
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+.u-link {
+    color: #42b992;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.u-button-primary {
+    background-color: #42b992;
+    border: none;
+    border-bottom: 1px solid #42b992;
+    color: #fff;
+}
+
+.u-button-secondary {
+    background: rgba(117, 117, 117, 0.07);
+    border-bottom: 1px solid rgba(117, 117, 117, 0.2);
+}
+
+.u-button-warning {
+    background-color: #ca3c3c;
+    border-bottom: 1px solid #5f1515;
+    color: #fff4f4;
+}
+
 /* Small screen will cause the statebrowser to act as a drawer */
 @media screen and (max-width: 769px) {
     .kiwi-statebrowser {

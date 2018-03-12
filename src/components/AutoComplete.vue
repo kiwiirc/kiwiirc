@@ -210,10 +210,18 @@ export default {
     left: 0;
     z-index: 1;
     max-height: 300px;
+    box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
+    border: 1px solid #ccc;
+    background: #eee;
 }
 
 .kiwi-autocomplete-item {
     padding: 5px 2em;
+    border-bottom: 1px solid #ccc;
+}
+
+.kiwi-autocomplete-item--selected {
+    background: #d1eacd;
 }
 
 .kiwi-autocomplete-item-value {
@@ -224,4 +232,5 @@ export default {
     float: right;
     font-size: 0.9em;
 }
+
 </style>

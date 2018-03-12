@@ -148,12 +148,12 @@ export default {
 </script>
 
 <style>
-
 .kiwi-container {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     top: 4px;
+    border-bottom: 1px solid #ddd;
 }
 
 /* When the sidebar is open we will put a shadow over the text area */
@@ -172,6 +172,11 @@ export default {
 
 .kiwi-header {
     z-index: 1;
+}
+
+.kiwi-header-join-channel-button {
+    background-color: #42b983;
+    color: #fff;
 }
 
 .kiwi-sidebar {
@@ -213,18 +218,23 @@ export default {
     text-align: center;
     font-size: 1.6em;
     line-height: 50px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
 }
 
 .kiwi-container-toggledraw-statebrowser {
     left: 0;
+    border-right: 1px solid #ddd;
 }
 
 .kiwi-container-toggledraw-sidebar {
     right: 0;
+    border-left: 1px solid #ddd;
 }
 
 .kiwi-container-toggledraw-sidebar--disabled {
     cursor: default;
+    color: #b8babd;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount {

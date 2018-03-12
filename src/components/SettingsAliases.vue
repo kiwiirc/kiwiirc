@@ -82,6 +82,7 @@ export default {
     font-size: 0.8em;
     line-height: 1.4em;
     font-family: monospace;
+    border-color: #ccc;
 }
 
 .kiwi-settings-aliases-showhelp {
@@ -91,10 +92,14 @@ export default {
 .kiwi-settings-aliases-help {
     padding: 1em;
     margin: 1em 0;
+    background: #f3f2f2;
+    border: 1px dashed gray;
 }
 
 .kiwi-settings-aliases-help em {
     padding: 1px 2px;
+    color: #ab1010;
+    background: #fff6a5;
 }
 
 </style>

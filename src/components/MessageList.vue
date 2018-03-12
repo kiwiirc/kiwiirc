@@ -349,7 +349,10 @@ export default {
 
     .kiwi-messagelist-message {
         padding: 0 10px;
-        margin: 20px 0 0 0;
+        margin: 10px 0 0 0;
+
+        /* some message highlights add a left border so add a default invisble one to keep them inline */
+        border-left: 3px solid transparent;
 
         &:last-of-type {
             margin-bottom: 20px;
@@ -469,7 +472,7 @@ export default {
         padding: 5px 0 !important;
         font-weight: 600;
         margin: 5px 0;
-        opacity: 0.4;
+        opacity: 0.85;
         text-align: center;
         border: none;
         transition: all 0.3s;
@@ -572,6 +575,61 @@ export default {
     margin: 0 3px;
 }
 
+.kiwi-messagelist-message-repeat {
+    border-top: none;
+}
+
+.kiwi-messagelist-message-repeat .kiwi-messagelist-nick,
+.kiwi-messagelist-message-repeat .kiwi-messagelist-time {
+    /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
+    opacity: 0;
+    cursor: default;
+}
+
+.kiwi-messagelist-message--unread {
+    border-left-color: #d4e5f1;
+}
+
+.kiwi-messagelist-seperator + .kiwi-messagelist-message {
+    border-top: none;
+}
+
+/* Topic changes */
+.kiwi-messagelist-message-traffic-join {
+    color: #090;
+}
+
+.kiwi-messagelist-message-traffic-quit,
+.kiwi-messagelist-message-traffic-part,
+.kiwi-messagelist-message-traffic-kick {
+    color: #900;
+}
+
+.kiwi-messagelist-message-traffic-quit .kiwi-nick::before,
+.kiwi-messagelist-message-traffic-part .kiwi-nick::before, {
+    color: #900;
+    content: "← ";
+}
+
+.kiwi-messagelist-message-action .kiwi-messagelist-body {
+    color: #090;
+    font-style: italic;
+}
+
+/* Errors */
+.kiwi-messagelist-message-error {
+    background: #f1d4d4;
+    border-left-color: #ab5252;
+}
+
+.kiwi-messagelist-message-connection-connected {
+    color: #090;
+}
+
+.kiwi-messagelist-message-connection-disconnected {
+    color: #900;
+}
+
 @media screen and (max-width: 700px) {
     .kiwi-messagelist-message,
     .kiwi-messageinfo {
@@ -614,6 +672,7 @@ export default {
 .kiwi-messagelist-seperator::after {
     content: "";
     display: block;
+    border-color: #ddd;
     border-bottom: 1px solid blue;
     position: relative;
     top: -0.8em;
@@ -658,6 +717,9 @@ export default {
 
 /* Topic changes */
 .kiwi-messagelist-message-topic {
+    background: #fff5ab;
+    border: 1px solid #f3c572;
+    border-radius: 5px;
     margin: 18px;
     padding: 5px;
     text-align: center;
@@ -689,10 +751,6 @@ export default {
     font-style: italic;
 }
 
-.kiwi-messagelist-message-action .kiwi-messagelist-body {
-    font-style: italic;
-}
-
 .kiwi-messagelist-message-action.kiwi-messagelist-message-action .kiwi-messagelist-nick {
     display: none;
 }
@@ -702,17 +760,10 @@ export default {
     font-weight: bold;
 }
 
-.kiwi-messagelist-message-connection-connected {
-    color: green;
-}
-
-.kiwi-messagelist-message-connection-disconnected {
-    color: red;
-}
-
 /* MOTD */
 .kiwi-messagelist-message-motd {
     font-family: monospace;
+    color: #666;
 }
 
 /* Links */
@@ -729,5 +780,46 @@ export default {
     margin: 0 20px;
     margin-left: 10px;
     padding: 10px;
+    border-left: 7px solid transparent;
 }
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
+    margin: 18px;
+}
+
+.kiwi-messagelist-message-whois {
+    border-left-color: #939393;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight {
+    background: #8cdbc1;
+    border-left: 3px solid #42b992;
+    color: #fff;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--hover {
+    background: #42b992;
+    border-left: 3px solid #42b992;
+    color: #fff !important;
+
+    a {
+        color: #fff !important;
+        text-decoration: underline;
+    }
+}
+
+.kiwi-messagelist-message--info-open {
+    background: #f6f6f6;
+}
+
+.kiwi-messageinfo {
+    background: #f6f6f6;
+    border-bottom: 2px #ddd solid;
+    border-top: 1px #ddd dashed;
+}
+
+.kiwi-messageinfo-urls {
+    border-top: 1px solid #ddd;
+}
+
 </style>

@@ -263,6 +263,13 @@ export default {
 </script>
 
 <style lang="less">
+.kiwi-userbox-usermask {
+    color: #9e9e9e;
+}
+
+.kiwi-userbox-actions-op {
+    border-top: 1px solid #9e9e9e;
+}
 
 .kiwi-container--sidebar-open .kiwi-sidebar-userbox {
     right: 0;
