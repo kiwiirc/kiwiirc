@@ -547,6 +547,19 @@ export default {
     }
 }
 
+.kiwi-container--sidebar-open .kiwi-messagelist::after {
+    content: '';
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    position: absolute;
+    pointer-events: none;
+}
+
 .kiwi-messagelist-scrollback {
     text-align: center;
     padding: 5px;

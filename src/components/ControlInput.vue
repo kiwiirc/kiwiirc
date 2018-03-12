@@ -389,6 +389,12 @@ export default {
 
 <style lang="less">
 
+.kiwi-controlinput {
+    background: #fff;
+    z-index: 10;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
 .kiwi-controlinput,
 .kiwi-controlinput-inner {
     padding: 0;
@@ -396,12 +402,13 @@ export default {
 
     .kiwi-controlinput-user {
         height: 100%;
-        padding: 0 15px;
+        padding: 0 10px;
         font-weight: bold;
         text-align: center;
         cursor: pointer;
         margin-right: 10px;
         line-height: 40px;
+        border-right: 1px solid rgba(0, 0, 0, 0.2);
     }
 
     .kiwi-controlinput-tools {
@@ -417,7 +424,7 @@ export default {
         position: relative;
         height: 100%;
         box-sizing: border-box;
-        padding: 3px;
+        padding: 0;
     }
 
     .kiwi-controlinput-input {

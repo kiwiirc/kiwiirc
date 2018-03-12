@@ -301,6 +301,10 @@ export default {
     margin-bottom: 0.8em;
 }
 
+.kiwi-welcome-simple .kiwi-welcome-simple-have-password input {
+    margin-top: 2px;
+}
+
 .kiwi-welcome-simple-form .u-submit {
     width: 100%;
     line-height: 50px;

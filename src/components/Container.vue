@@ -15,7 +15,7 @@
                 >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}</div>
             </div>
             <container-header :buffer="buffer" :uiState="uiState"></container-header>
-            
+
             <template v-if="buffer.isServer()">
                 <server-view :network="network" :buffer="buffer" :uiState="uiState"></server-view>
             </template>
@@ -160,19 +160,6 @@ export default {
 .kiwi-container--sidebar-open {
     position: relative;
     min-height: 100%;
-}
-
-.kiwi-container.kiwi-container--sidebar-open::after {
-    content: '';
-    z-index: 10;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    opacity: 0.5;
-    position: absolute;
-    pointer-events: none;
 }
 
 /* If the sidebar is open, make the cursor stay as a pointer, so user's cannot interact with the elements whilst options are open */

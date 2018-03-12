@@ -222,12 +222,13 @@ export default {
             width: 100%;
             border: none;
             padding: 0 1em;
-            height: 50px;
-            line-height: 50px;
+            height: 43px;
+            line-height: 43px;
             background-color: #fff;
             border-top: 2px solid #42b992;
             color: #000;
             font-weight: normal;
+            border-left: 1px solid rgba(0, 0, 0, 0.2);
         }
 
         .fa.fa-search {

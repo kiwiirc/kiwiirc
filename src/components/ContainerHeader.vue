@@ -179,6 +179,7 @@ export default {
     transition: all 0.3s;
     line-height: 10px;
     box-sizing: border-box;
+    text-align: center;
 
     .kiwi-header-topic {
         padding: 0 10px;
@@ -321,20 +322,22 @@ export default {
 /* The not joined button */
 .kiwi-header .kiwi-header-notjoined {
     border-radius: 0;
-    float: left;
-}
+    margin: 0 auto;
+    float: none;
 
-.kiwi-header .kiwi-header-notjoined .u-link {
-    font-weight: 600;
-    line-height: 45px;
-    padding: 0 25px;
-    background-color: #42b992;
-    border-radius: 0;
-    transition: all 0.3;
-}
+    .u-link {
+        font-weight: 600;
+        line-height: 45px;
+        padding: 0 25px;
+        background-color: #42b992;
+        border-radius: 0;
+        color: #fff;
+        transition: all 0.3;
 
-.kiwi-header .kiwi-header-notjoined .u-link:hover {
-    background-color: #5ec9a6;
+        &:hover {
+            background-color: #5ec9a6;
+        }
+    }
 }
 
 .kiwi-header--showall {

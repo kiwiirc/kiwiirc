@@ -376,7 +376,7 @@ export default {
         width: 100%;
         text-align: center;
         box-sizing: border-box;
-        margin: 1em 0;
+        margin: 0 0 1em 0;
         border-top: 1px solid #9e9e9e;
         padding: 1em;
 
@@ -395,6 +395,7 @@ export default {
                 box-shadow: none;
                 border: 1px solid rgba(0, 0, 0, 0.2);
                 width: 100%;
+                margin-top: 10px;
                 cursor: pointer;
             }
 
