@@ -275,7 +275,9 @@ body {
     -webkit-font-smoothing: antialiased;
     height: 100%;
     overflow: hidden;
+    color: #2c3e50;
 
+    --kiwi-nick-brightness: 40;
     --kiwi-nick-brightness: 50;
     --kiwi-supports-monospace: 1;
 }
@@ -288,6 +290,7 @@ body {
 .kiwi-workspace {
     position: relative;
     margin-left: 220px;
+    background: #fff;
     left: 0;
     display: block;
     height: 100%;
@@ -338,10 +341,6 @@ body {
 }
 
 /* Style the tabs, across the app */
-.u-tabbed-view {
-    display: block;
-}
-
 .u-tabbed-view-tabs {
     background: rgba(0, 0, 0, 0.1);
     border-bottom: 3px solid rgba(0, 0, 0, 0.1);
@@ -382,6 +381,34 @@ body {
 }
 
 /*Style all form inputs */
+.input-text {
+    background: #fff;
+}
+
+.input-text-label {
+    color: gray;
+}
+
+.input-text--focus {
+    border-color: #42b992;
+}
+
+.input-text-underline {
+    border-color: #a9a9a9;
+}
+
+.input-text-underline-active {
+    background: #42b992;
+}
+
+.u-form .u-input,
+.u-form textarea {
+    border: 1px solid #ccc;
+    border-bottom: 2px solid #42b992;
+    background: #fff;
+    outline-color: #42b992;
+}
+
 .u-form {
     label {
         display: block;

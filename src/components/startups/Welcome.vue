@@ -240,6 +240,7 @@ export default {
     text-align: center;
     margin: 1em 0;
     padding: 0.3em;
+    border: 1px dashed #d86f6f;
 }
 
 .kiwi-welcome-simple-error span {
@@ -295,6 +296,7 @@ export default {
 
 .kiwi-welcome-simple-start[disabled] {
     cursor: not-allowed;
+    opacity: 0.65;
 }
 
 .kiwi-welcome-simple-channel {

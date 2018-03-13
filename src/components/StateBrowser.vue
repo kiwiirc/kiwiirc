@@ -390,13 +390,13 @@ export default {
 
     /* Add channel input */
     .kiwi-statebrowser-newchannel-inputwrap {
+        position: relative;
         border-radius: 3px;
         color: #fff;
         opacity: 1;
         transition: opacity 0.3s;
         background: none;
         padding: 0 10px 0 10px;
-        position: relative;
         margin: 10px 0 10px 0;
 
         i {
@@ -723,6 +723,7 @@ export default {
     bottom: 0;
     padding: 15px;
     height: 30px;
+    background: #383838;
 
     /* some space on the right so it doesnt overlap the parent elements scrollbar */
     margin-right: 10px;
@@ -736,6 +737,7 @@ export default {
 
 .kiwi-statebrowser-availablenetworks-toggle {
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.15);
     text-align: center;
     padding: 5px 0;
 }
@@ -785,6 +787,55 @@ export default {
 
 .mobile-close-statebrowser {
     display: none;
+}
+
+.kiwi-statebrowser-availablenetworks {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.kiwi-statebrowser-availablenetworks-link {
+    border-right: 15px solid red;
+}
+
+.kiwi-statebrowser-availablenetworks-link--connected {
+    border-color: green;
+}
+
+.kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
+    color: #d03232;
+}
+
+.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
+    color: #df6b26;
+}
+
+.kiwi-statebrowser-channel-label {
+    background: green;
+    color: #dedede;
+}
+
+.kiwi-statebrowser-channel-label--highlight {
+    background: #d62323;
+}
+
+.kiwi-statebrowser-channel-label-transition-enter-active,
+.kiwi-statebrowser-channel-label-transition-leave-active {
+    transition: opacity 0.1s;
+}
+
+.kiwi-statebrowser-channel-label-transition-enter,
+.kiwi-statebrowser-channel-label-transition-leave-active {
+    opacity: 0;
+}
+
+.kiwi-statebrowser-channel-popup {
+    background: #383838;
+    border: 3px solid #6b6b6b;
+    border-left: none;
+}
+
+.kiwi-statebrowser-newchannel-inputwrap--focus {
+    opacity: 1;
 }
 
 @media screen and (max-width: 769px) {
