@@ -390,9 +390,7 @@ export default {
 <style lang="less">
 
 .kiwi-controlinput {
-    background: #fff;
     z-index: 10;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .kiwi-controlinput,
@@ -408,7 +406,6 @@ export default {
         cursor: pointer;
         margin-right: 10px;
         line-height: 40px;
-        border-right: 1px solid rgba(0, 0, 0, 0.2);
     }
 
     .kiwi-controlinput-tools {
@@ -474,8 +471,6 @@ export default {
     bottom: 100%;
     right: 0;
     z-index: 1;
-    background: #f6f6f6;
-    border: 1px solid #ddd;
 }
 
 .kiwi-controlinput-selfuser {

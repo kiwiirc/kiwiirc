@@ -208,7 +208,6 @@ export default {
     right: -380px;
     max-width: none;
     z-index: 999;
-    background: #fff;
 
     /* Users Styling */
     .kiwi-sidebar-section-user {
@@ -230,7 +229,6 @@ export default {
     display: block;
     cursor: pointer;
     padding: 0 10px;
-    background-color: #42b992;
     color: #fff;
     font-weight: 600;
     width: 100%;
@@ -247,10 +245,6 @@ export default {
         font-size: 1.5em;
         float: right;
         line-height: 47px;
-    }
-
-    &:hover {
-        background: #d16c6c;
     }
 }
 

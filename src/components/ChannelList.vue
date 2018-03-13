@@ -168,18 +168,9 @@ export default {
     white-space: nowrap;
 }
 
-.kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.kiwi-channellist table tbody tr {
-    border-top: 1px solid lightgray;
-}
-
 .kiwi-channellist-users {
     display: inline-block;
     width: 80px;
-    background: #7dbd67;
     padding: 2px 0;
     border-radius: 3px;
     text-align: center;

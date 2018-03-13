@@ -3,9 +3,9 @@
 	"startupScreen": "welcome",
 	"kiwiServer": "https://localdev.clients.kiwiirc.com/webirc/kiwiirc/",
 	"restricted": true,
-	"theme": "Concept",
+	"theme": "Default",
 	"themes": [
-		{ "name": "Concept", "url": "static/themes/concept2" }
+		{ "name": "Default", "url": "static/themes/default" }
 	],
 	"startupOptions" : {
 		"server": "irc.freenode.net",

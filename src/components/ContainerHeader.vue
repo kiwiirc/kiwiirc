@@ -172,7 +172,6 @@ export default {
 
 <style lang="less">
 .kiwi-header {
-    background: #fff;
     border-bottom: none;
     padding: 0;
     z-index: 1;
@@ -185,17 +184,10 @@ export default {
         padding: 0 10px;
         line-height: normal;
         max-width: none;
-        border-top: 2px solid #42b992;
-        border-bottom: 2px solid #42b992;
         width: 100%;
         float: right;
         box-sizing: border-box;
         height: auto;
-        color: #5f5f5f;
-
-        .kiwi-header-buffersettings {
-            border-top: 1px solid #ddd;
-        }
 
         .topic-title {
             padding: 10px 0 5px 0;
@@ -208,7 +200,6 @@ export default {
             max-height: 35px;
             overflow-x: hidden;
             overflow-y: auto;
-            color: #22231f;
             font-size: 0.8;
             cursor: default;
             margin-bottom: 10px;
@@ -223,24 +214,17 @@ export default {
         }
 
         .view-topic {
-            background-color: #42b992;
-            color: #fff;
             opacity: 1;
         }
     }
 
     .kiwi-header-name {
         float: left;
-        color: #22231f;
         padding: 0.5em 10px;
         opacity: 1;
         margin: 0;
         font-size: 20px;
         line-height: normal;
-    }
-
-    .kiwi-header-buffersettings {
-        border-top: 1px solid #ddd;
     }
 
     .show-topic {
@@ -261,7 +245,6 @@ export default {
             display: block;
             font-size: 0.8em;
             opacity: 0.85;
-            border-left: 1px solid rgba(0, 0, 0, 0.6);
             text-transform: capitalize;
 
             .fa-info {
@@ -275,10 +258,6 @@ export default {
 
                 a {
                     padding: 0 10px;
-
-                    &:hover {
-                        background-color: #d16c6c;
-                    }
                 }
 
                 i {
@@ -305,8 +284,6 @@ export default {
                 }
 
                 &:hover {
-                    background-color: #42b992;
-                    color: #fff;
                     opacity: 1;
                 }
             }
@@ -315,8 +292,6 @@ export default {
                 opacity: 1;
 
                 a {
-                    background-color: #42b992;
-                    color: #fff;
                     opacity: 1;
                 }
             }
@@ -334,14 +309,8 @@ export default {
         font-weight: 600;
         line-height: 45px;
         padding: 0 25px;
-        background-color: #42b992;
         border-radius: 0;
-        color: #fff;
         transition: all 0.3;
-
-        &:hover {
-            background-color: #5ec9a6;
-        }
     }
 }
 
@@ -356,7 +325,6 @@ export default {
     font-weight: bold;
     cursor: default;
     margin-right: 0.5em;
-    color: #22231f;
     padding: 0.5em 20px;
     opacity: 1;
     font-size: 20px;

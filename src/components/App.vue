@@ -303,7 +303,6 @@ body {
     right: 0;
     left: 0;
     top: 0;
-    background: #42b992;
     height: 7px;
     z-index: 999;
 }
@@ -314,7 +313,6 @@ body {
     top: 0;
     right: 0;
     content: '';
-    background-color: rgba(0, 0, 0, 0.4);
     overflow: hidden;
     opacity: 0;
     transition: opacity 0.5s;
@@ -342,12 +340,9 @@ body {
 
 /* Style the tabs, across the app */
 .u-tabbed-view-tabs {
-    background: rgba(0, 0, 0, 0.1);
-    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
     padding-top: 15px;
 
     .u-tabbed-view-tab {
-        border-bottom: 3px solid rgba(0, 0, 0, 0.1);
         background: #fff;
         font-weight: 600;
         opacity: 1;
@@ -360,11 +355,6 @@ body {
         padding: 0.5em 1em;
         font-size: 1em;
         transition: border 0.3s;
-
-        &:hover,
-        &.u-tabbed-view-tab--active {
-            border-bottom: 3px solid #42b992;
-        }
 
         &:last-of-type {
             z-index: 1;
@@ -381,34 +371,6 @@ body {
 }
 
 /*Style all form inputs */
-.input-text {
-    background: #fff;
-}
-
-.input-text-label {
-    color: gray;
-}
-
-.input-text--focus {
-    border-color: #42b992;
-}
-
-.input-text-underline {
-    border-color: #a9a9a9;
-}
-
-.input-text-underline-active {
-    background: #42b992;
-}
-
-.u-form .u-input,
-.u-form textarea {
-    border: 1px solid #ccc;
-    border-bottom: 2px solid #42b992;
-    background: #fff;
-    outline-color: #42b992;
-}
-
 .u-form {
     label {
         display: block;
@@ -434,8 +396,6 @@ body {
         appearance: none;
         width: 20px;
         height: 20px;
-        border: 2px solid #000;
-        background-color: #fff;
         display: inline-block;
         position: relative;
         border-radius: 1px;
@@ -450,7 +410,6 @@ body {
             top: 1px;
             width: 14px;
             height: 14px;
-            background: #42b992;
             z-index: 10;
             transition: all 0.3s;
             opacity: 0;
@@ -463,7 +422,6 @@ body {
             top: 1px;
             width: 14px;
             height: 14px;
-            background: #42b992;
             z-index: 10;
             transition: all 0.3s;
             opacity: 1;
@@ -484,10 +442,7 @@ body {
         padding: 0 10px;
         line-height: 40px;
         font-size: 1em;
-        color: #000;
         box-sizing: border-box;
-        background: #fff;
-        border: 1px solid #42b992;
         border-radius: 1px;
         min-height: none;
         overflow-x: hidden;
@@ -507,9 +462,7 @@ body {
 
 /* Styling for global elements across the app, buttons, links etc */
 .u-button {
-    color: #2c3e50;
     border-radius: 3px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     vertical-align: middle;
     text-align: center;
     outline: none;
@@ -520,29 +473,9 @@ body {
 }
 
 .u-link {
-    color: #42b992;
-
     &:hover {
         text-decoration: underline;
     }
-}
-
-.u-button-primary {
-    background-color: #42b992;
-    border: none;
-    border-bottom: 1px solid #42b992;
-    color: #fff;
-}
-
-.u-button-secondary {
-    background: rgba(117, 117, 117, 0.07);
-    border-bottom: 1px solid rgba(117, 117, 117, 0.2);
-}
-
-.u-button-warning {
-    background-color: #ca3c3c;
-    border-bottom: 1px solid #5f1515;
-    color: #fff4f4;
 }
 
 /* Small screen will cause the statebrowser to act as a drawer */

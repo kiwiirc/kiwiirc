@@ -116,8 +116,9 @@ export default {
 <style lang="less">
 
 .kiwi-messagelist-message--modern {
-    border-left: 7px solid transparent;
+    border-left: 7px solid transparent !important;
     display: flex;
+    transition: none !important;
 
     .kiwi-messagelist-body {
         white-space: pre-wrap;
@@ -137,7 +138,7 @@ export default {
 
     .kiwi-messagelist-modern-right {
         margin-left: 5px;
-        padding-top: 5px;
+        padding-top: 0;
         width: 100%;
     }
 
@@ -152,7 +153,6 @@ export default {
         font-size: 1em;
         font-weight: 600;
         color: #fff;
-        border: 2px solid #42b992;
         margin-top: 3px;
     }
 
@@ -163,13 +163,11 @@ export default {
         padding: 0;
         font-size: 1.1em;
         padding-right: 10px;
-        color: #000;
     }
 
     .kiwi-messagelist-time {
         margin: 0 10px 0 0;
         display: inline-block;
-        color: #a0a09f;
         font-size: 0.8em;
         font-weight: 400;
         padding: 0;

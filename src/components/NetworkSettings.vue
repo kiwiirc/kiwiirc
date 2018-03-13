@@ -159,10 +159,6 @@ export default {
 
 <style lang="less">
 
-.u-tabbed-content {
-    background-color: #f1f1f1;
-}
-
 .kiwi-networksettings {
     box-sizing: border-box;
     height: 100%;
@@ -176,7 +172,6 @@ export default {
         height: auto;
         overflow: hidden;
         clear: both;
-        background: #fff;
     }
 
     input[type='text'],
@@ -249,7 +244,6 @@ export default {
     text-align: center;
     margin: 1em;
     padding: 0.3em;
-    border: 1px dashed #d86f6f;
 }
 
 .kiwi-networksettings-error span {
@@ -290,7 +284,6 @@ export default {
         padding: 0;
         margin-top: 10px;
         margin-bottom: 0.5em;
-        background: #d86f6f;
     }
 
     label {
@@ -303,8 +296,6 @@ export default {
         width: 100%;
         height: 50px;
         border-radius: 4px;
-        background-color: #d16c6c;
-        color: #fff;
         text-align: center;
         line-height: 50px;
         padding: 0;

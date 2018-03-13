@@ -50,11 +50,6 @@ export default {
 </script>
 
 <style>
-.kiwi-controlinput-selfuser {
-    background: #f6f6f6;
-    border: 1px solid #ddd;
-}
-
 .kiwi-selfuser {
     box-sizing: border-box;
     padding: 1em;
@@ -71,7 +66,6 @@ export default {
 }
 
 .kiwi-selfuser-actions {
-    border-top: 1px solid #ddd;
     margin-top: 1em;
     padding-top: 1em;
 }

@@ -366,8 +366,6 @@ export default {
     /* Start of the not connected message styling */
     .kiwi-messagelist-message-connection {
         text-align: left;
-        background-color: #fff;
-        border-bottom: 1px solid #c0c0c0;
         padding: 0;
         margin-bottom: 20px;
     }
@@ -379,9 +377,7 @@ export default {
 
     .kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-body,
     .kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
-        background-color: #42b992;
         font-size: 1.2em;
-        color: #fff;
         height: auto;
         line-height: normal;
         text-align: center;
@@ -518,11 +514,9 @@ export default {
 
     /* Topic Styling */
     .kiwi-messagelist-message-topic {
-        background-color: #fff;
         text-align: left;
         position: relative;
         min-height: 0;
-        border-top: 2px solid #42b992;
         padding: 35px 1em 1em 1em;
 
         .kiwi-messagelist-modern-left {
@@ -557,7 +551,6 @@ export default {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: #000;
     opacity: 0.5;
     position: absolute;
     pointer-events: none;
@@ -586,48 +579,13 @@ export default {
     cursor: default;
 }
 
-.kiwi-messagelist-message--unread {
-    border-left-color: #d4e5f1;
-}
-
 .kiwi-messagelist-seperator + .kiwi-messagelist-message {
     border-top: none;
 }
 
-/* Topic changes */
-.kiwi-messagelist-message-traffic-join {
-    color: #090;
-}
-
-.kiwi-messagelist-message-traffic-quit,
-.kiwi-messagelist-message-traffic-part,
-.kiwi-messagelist-message-traffic-kick {
-    color: #900;
-}
-
 .kiwi-messagelist-message-traffic-quit .kiwi-nick::before,
 .kiwi-messagelist-message-traffic-part .kiwi-nick::before, {
-    color: #900;
     content: "← ";
-}
-
-.kiwi-messagelist-message-action .kiwi-messagelist-body {
-    color: #090;
-    font-style: italic;
-}
-
-/* Errors */
-.kiwi-messagelist-message-error {
-    background: #f1d4d4;
-    border-left-color: #ab5252;
-}
-
-.kiwi-messagelist-message-connection-connected {
-    color: #090;
-}
-
-.kiwi-messagelist-message-connection-disconnected {
-    color: #900;
 }
 
 @media screen and (max-width: 700px) {

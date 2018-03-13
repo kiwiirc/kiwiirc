@@ -142,7 +142,6 @@ export default {
 
 .kiwi-statebrowser-network-header {
     display: flex;
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .kiwi-statebrowser-network-name {
@@ -162,7 +161,6 @@ export default {
 }
 
 .kiwi-statebrowser-network-status {
-    background: rgba(255, 255, 255, 0.1);
     text-align: center;
     padding: 4px;
     overflow: hidden;
@@ -187,10 +185,6 @@ export default {
     position: relative;
     display: flex;
     padding: 5px 10px;
-}
-
-.kiwi-statebrowser-channel-active {
-    background: rgba(255, 255, 255, 0.05);
 }
 
 .kiwi-statebrowser-channel-name {

@@ -310,10 +310,8 @@ export default {
     z-index: 11; /* Must be at least 1 higher than the workspace :after z-index; */
     display: flex;
     flex-direction: column;
-    background: #22231f;
     border-right: none;
     width: 220px;
-    color: #fff;
     text-align: center;
     padding-top: 10px;
     overflow: hidden;
@@ -329,14 +327,11 @@ export default {
     .kiwi-statebrowser-profile {
         width: 100%;
         padding-bottom: 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
         margin-bottom: 10px;
 
         .user-avatar {
             width: 50px;
             height: 50px;
-            border: 2px solid #42b992;
-            background-color: #000;
             color: #fff;
             cursor: pointer;
             font-size: 1.5em;
@@ -346,11 +341,6 @@ export default {
             overflow: hidden;
             margin: 0 auto 10px auto;
             transition: all 0.3s;
-
-            &:hover {
-                background-color: #42b992;
-                color: #fff;
-            }
         }
 
         /* User Settings */
@@ -358,7 +348,6 @@ export default {
             width: 90%;
             text-align: left;
             padding: 0 10px 0 10px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
             font-size: 0.8em;
             border-radius: 4px;
             box-sizing: border-box;
@@ -371,8 +360,6 @@ export default {
             transition: all 0.3s;
 
             &:hover {
-                background: #42b992;
-                color: #fff;
                 opacity: 1;
             }
         }
@@ -392,7 +379,6 @@ export default {
     .kiwi-statebrowser-newchannel-inputwrap {
         position: relative;
         border-radius: 3px;
-        color: #fff;
         opacity: 1;
         transition: opacity 0.3s;
         background: none;
@@ -413,9 +399,7 @@ export default {
         padding: 0 10px;
         line-height: 40px;
         font-size: 1em;
-        color: #000;
         box-sizing: border-box;
-        background: #fff;
         border: none;
         margin: 15px 0 10px 0;
         border-radius: 2px;
@@ -427,13 +411,11 @@ export default {
 
     .kiwi-statebrowser-newchannel-inputwrap--focus {
         opacity: 1;
-        background-color: #fff;
     }
 
     /* Set the height of the networks scroll box */
     .kiwi-statebrowser-scrollarea {
         height: auto;
-        background-color: #131312;
         margin-bottom: 0;
         box-sizing: border-box;
         overflow-y: auto;
@@ -448,7 +430,6 @@ export default {
         opacity: 0.8;
         transition: all 0.3s;
         margin-bottom: 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     }
 
     .kiwi-statebrowser-channelfilter:hover {
@@ -461,7 +442,6 @@ export default {
         top: 9px;
         right: 20px;
         font-size: 1em;
-        color: #000;
         z-index: 10;
         pointer-events: none;
         font-family: fontAwesome, sans-serif;
@@ -471,8 +451,6 @@ export default {
         width: 100%;
         height: 42px;
         line-height: 42px;
-        background-color: #fff;
-        color: #000;
         padding: 0 15px;
         border: none;
         border-radius: 0;
@@ -480,7 +458,6 @@ export default {
     }
 
     .kiwi-statebrowser-channelfilter p {
-        color: #42b992;
         text-align: center;
         font-size: 0.9em;
         margin: 10px 0 10px 0;
@@ -490,7 +467,6 @@ export default {
 
     .kiwi-statebrowser-channelfilter p:hover {
         text-decoration: underline;
-        color: #6dcdad;
     }
 
     /* Add network button */
@@ -506,7 +482,6 @@ export default {
         width: 90%;
         padding: 0 10px;
         margin: 0 5% 10px 5%;
-        color: #fff;
         opacity: 1;
         line-height: 35px;
         cursor: pointer;
@@ -529,16 +504,12 @@ export default {
     }
 
     .kiwi-statebrowser-newnetwork a:hover {
-        background: #42b992;
-        border-color: #42b992;
         opacity: 1;
-        color: #fff;
     }
 
     .kiwi-statebrowser-network .kiwi-statebrowser-network-header {
         line-height: 45px;
         text-align: left;
-        background-color: #454545;
         position: relative;
     }
 
@@ -546,7 +517,6 @@ export default {
         text-align: left;
         padding: 0 1em;
         text-transform: capitalize;
-        color: #fff;
         width: 100%;
         font-size: 1em;
         font-weight: 600;
@@ -560,30 +530,21 @@ export default {
         right: 0;
     }
 
-    /* Active Network Styling */
-    .kiwi-statebrowser-network.kiwi-statebrowser-network--active .kiwi-statebrowser-network-header {
-        border-left: 3px solid #42b992;
-    }
-
     /* Channel Styling */
     .kiwi-statebrowser-channels {
         .kiwi-statebrowser-channel {
-            border-bottom: 1px solid #4a4b47;
             line-height: 30px;
             padding: 0 1em;
-            color: #fff;
             opacity: 0.8;
             transition: opacity 0.3s;
 
             .kiwi-statebrowser-channel-name {
-                color: #fff;
                 text-align: left;
                 font-weight: 100;
                 font-size: 0.8em;
             }
 
             .kiwi-statebrowser-channel-label {
-                background: #d16c6c;
                 margin: 4px 0;
             }
 
@@ -593,14 +554,12 @@ export default {
         }
 
         .kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
-            border-left: 3px solid #42b992;
             font-weight: 600;
             opacity: 1;
         }
     }
 
     .kiwi-statebrowser-divider {
-        background: rgba(255, 255, 255, 0.3);
         margin: 8px 12px;
         height: 1px;
     }
@@ -618,7 +577,6 @@ export default {
         a {
             width: 90%;
             padding: 0 10px 0 10px;
-            color: #fff;
             line-height: 35px;
             font-size: 0.8em;
             font-weight: 500;
@@ -629,8 +587,6 @@ export default {
             text-align: left;
             position: relative;
             border-radius: 4px;
-            border: none;
-            border: 1px solid rgba(255, 255, 255, 0.5);
             margin: 0 5%;
             transition: all 0.3s;
 
@@ -642,9 +598,7 @@ export default {
             }
 
             &:hover {
-                background: #42b992;
                 opacity: 1;
-                color: #fff;
             }
         }
     }
@@ -723,21 +677,18 @@ export default {
     bottom: 0;
     padding: 15px;
     height: 30px;
-    background: #383838;
 
     /* some space on the right so it doesnt overlap the parent elements scrollbar */
     margin-right: 10px;
 }
 
 .kiwi-statebrowser-nonetworks {
-    background: rgba(255, 255, 255, 0.15);
     padding: 5px;
     text-align: center;
 }
 
 .kiwi-statebrowser-availablenetworks-toggle {
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.15);
     text-align: center;
     padding: 5px 0;
 }
@@ -789,33 +740,12 @@ export default {
     display: none;
 }
 
-.kiwi-statebrowser-availablenetworks {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
 .kiwi-statebrowser-availablenetworks-link {
     border-right: 15px solid red;
 }
 
 .kiwi-statebrowser-availablenetworks-link--connected {
     border-color: green;
-}
-
-.kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
-    color: #d03232;
-}
-
-.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
-    color: #df6b26;
-}
-
-.kiwi-statebrowser-channel-label {
-    background: green;
-    color: #dedede;
-}
-
-.kiwi-statebrowser-channel-label--highlight {
-    background: #d62323;
 }
 
 .kiwi-statebrowser-channel-label-transition-enter-active,
@@ -829,8 +759,6 @@ export default {
 }
 
 .kiwi-statebrowser-channel-popup {
-    background: #383838;
-    border: 3px solid #6b6b6b;
     border-left: none;
 }
 

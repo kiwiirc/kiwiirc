@@ -224,11 +224,7 @@ export default {
             padding: 0 1em;
             height: 43px;
             line-height: 43px;
-            background-color: #fff;
-            border-top: 2px solid #42b992;
-            color: #000;
             font-weight: normal;
-            border-left: 1px solid rgba(0, 0, 0, 0.2);
         }
 
         .fa.fa-search {
@@ -280,17 +276,7 @@ export default {
             }
 
             &:hover {
-                background-color: #42b992;
                 cursor: pointer;
-                color: #fff;
-
-                .kiwi-nicklist-user-nick {
-                    color: #fff !important;
-                }
-
-                &::after {
-                    color: #fff;
-                }
             }
         }
     }

@@ -68,8 +68,4 @@ export default {
     width: 100%;
     border-collapse: collapse;
 }
-
-.kiwi-channelbanlist-table tr {
-    border-bottom: 1px solid #ddd;
-}
 </style>

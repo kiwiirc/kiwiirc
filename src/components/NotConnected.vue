@@ -107,8 +107,6 @@ export default {
     text-align: center;
     padding: 10% 0;
     margin: 0;
-    color: #fff;
-    background-color: #bf5155;
     transition: background-color 0.3s;
 
     .kiwi-notconnected-bigicon {
@@ -145,8 +143,6 @@ export default {
         width: auto;
         display: inline-block;
         padding: 0.8em 1em 0.8em 0.6em;
-        border: 2px solid #fff;
-        color: #fff;
         font-size: 0.8em;
         border-radius: 0.4em;
         margin: 0 0.8em;
@@ -154,8 +150,6 @@ export default {
         transition: all 0.3s;
 
         &:hover {
-            background-color: #fff;
-            color: #000;
             transition: all 0.2s;
         }
 

@@ -230,17 +230,14 @@ export default {
 
 .kiwi-welcome-simple-form {
     width: 300px;
-    background-color: #fff;
     border-radius: 0.5em;
     padding: 1em;
-    border: 1px solid #ececec;
 }
 
 .kiwi-welcome-simple-error {
     text-align: center;
     margin: 1em 0;
     padding: 0.3em;
-    border: 1px dashed #d86f6f;
 }
 
 .kiwi-welcome-simple-error span {
@@ -318,26 +315,18 @@ export default {
     margin: 0;
     transition: all 0.2s;
     border: none;
-    background-color: #42b992;
-    color: #fff;
 }
 
 .kiwi-welcome-simple .help {
     position: absolute;
     bottom: 0.2em;
     font-size: 0.8em;
-    color: #666;
     width: 50%;
     text-align: center;
 }
 
 .kiwi-welcome-simple .help a {
     text-decoration: underline;
-    color: #666;
-}
-
-.kiwi-welcome-simple .help a:hover {
-    color: #a9d87a;
 }
 
 /* Styling the preloader */

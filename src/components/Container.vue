@@ -153,7 +153,6 @@ export default {
     display: flex;
     flex-direction: column;
     top: 4px;
-    border-bottom: 1px solid #ddd;
 }
 
 /* When the sidebar is open we will put a shadow over the text area */
@@ -172,11 +171,6 @@ export default {
 
 .kiwi-header {
     z-index: 1;
-}
-
-.kiwi-header-join-channel-button {
-    background-color: #42b983;
-    color: #fff;
 }
 
 .kiwi-sidebar {
@@ -218,29 +212,23 @@ export default {
     text-align: center;
     font-size: 1.6em;
     line-height: 50px;
-    background: #fff;
-    border-bottom: 1px solid #ddd;
 }
 
 .kiwi-container-toggledraw-statebrowser {
     left: 0;
-    border-right: 1px solid #ddd;
 }
 
 .kiwi-container-toggledraw-sidebar {
     right: 0;
-    border-left: 1px solid #ddd;
 }
 
 .kiwi-container-toggledraw-sidebar--disabled {
     cursor: default;
-    color: #b8babd;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount {
     position: relative;
     font-size: 0.6em;
-    background: #ddd;
     border-radius: 3px;
     line-height: 2em;
     box-sizing: border-box;
@@ -255,20 +243,11 @@ export default {
     right: 99%;
     top: 20%;
     border: 0.6em solid transparent;
-    border-right-color: #ddd;
     content: " ";
     height: 0;
     width: 0;
     position: absolute;
     pointer-events: none;
-}
-
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
-    background: #d62323;
-}
-
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
-    border-right-color: #d62323;
 }
 
 @media screen and (max-width: 769px) {

@@ -263,14 +263,6 @@ export default {
 </script>
 
 <style lang="less">
-.kiwi-userbox-usermask {
-    color: #9e9e9e;
-}
-
-.kiwi-userbox-actions-op {
-    border-top: 1px solid #9e9e9e;
-}
-
 .kiwi-container--sidebar-open .kiwi-sidebar-userbox {
     right: 0;
     width: 380px;
@@ -289,7 +281,6 @@ export default {
         font-size: 1.4em;
         cursor: default;
         margin: 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     }
 
     .kiwi-userbox-header {
@@ -318,7 +309,6 @@ export default {
 
     .kiwi-userbox-basicinfo {
         width: 100%;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         margin: 0;
         display: block;
         padding: 1em 1em 0 1.4em;
@@ -459,9 +449,6 @@ export default {
 .kiwi-userbox-whois {
     padding: 5px;
     line-height: 1.4em;
-    background: #fff;
-    color: #2c3e50;
-    border: 1px dashed #9e9e9e;
 }
 
 .kiwi-userbox-whois-line {

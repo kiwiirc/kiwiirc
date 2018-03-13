@@ -232,7 +232,6 @@ export default {
     height: 100%;
     overflow-y: auto;
     padding: 8px 0 0 0;
-    background: #fff;
 
     .title {
         width: 100%;
@@ -304,8 +303,6 @@ export default {
     cursor: pointer !important;
     padding: 0 10px;
     margin: -1px 0 0 0;
-    background-color: #42b992;
-    color: #fff;
     font-weight: 600;
     width: 100%;
     position: relative;
@@ -321,10 +318,6 @@ export default {
         font-size: 1.5em;
         float: right;
         line-height: 47px;
-    }
-
-    &:hover {
-        background: #d16c6c;
     }
 }
 
