@@ -232,6 +232,7 @@ export default {
     height: 100%;
     overflow-y: auto;
     padding: 8px 0 0 0;
+    margin-top: -7px;
 
     .title {
         width: 100%;
@@ -293,9 +294,11 @@ export default {
 
 .app-settings-block {
     width: 25%;
-    float: left;
+    display: block;
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 0 auto 20px auto;
 }
 
 .title {

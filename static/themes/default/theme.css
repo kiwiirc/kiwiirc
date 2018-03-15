@@ -575,10 +575,6 @@
     color: #fff;
 }
 
-.kiwi-statebrowser .kiwi-statebrowser-profile {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-}
-
 .kiwi-statebrowser .user-avatar {
     border: 2px solid #42b992;
     background-color: #000;
@@ -586,6 +582,20 @@
 }
 
 .kiwi-statebrowser .user-avatar:hover {
+    background-color: #42b992;
+    color: #fff;
+}
+
+.kiwi-statebrowser-scrollarea {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* If the user clicks on their avatar we 'open' the settings */
+.kiwi-statebrowser.user_profile_open .kiwi-statebrowser-profile {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.kiwi-statebrowser.user_profile_open .user-avatar {
     background-color: #42b992;
     color: #fff;
 }
@@ -599,6 +609,22 @@
     background: #42b992;
     color: #fff;
     opacity: 1;
+}
+
+/* Statebrowser list */
+.kiwi-statebrowser-scrollarea h4,
+.kiwi-statebrowser-scrollarea h4 {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.kiwi-channel-options-header .option-button:hover,
+.kiwi-channel-options-header .option-button.active {
+    background-color: #42b992;
+    color: #fff;
+}
+
+.kiwi-statebrowser-channel-leave:hover{
+    background: #d16c6c;
 }
 
 /* Add channel input */
@@ -624,7 +650,6 @@
 /*Channel search input */
 .kiwi-statebrowser-channelfilter {
     transition: all 0.3s;
-    margin-bottom: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
@@ -695,6 +720,11 @@
 .kiwi-statebrowser-divider {
     background: rgba(255, 255, 255, 0.3);
 }
+
+.kiwi-search-channels.active{
+    background: #42b992;
+}
+
 
 /* New Channel Button */
 .kiwi-statebrowser-newchannel a {

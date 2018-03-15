@@ -2,6 +2,52 @@
     <div class="kiwi-statebrowser-network" :class="[
         isActiveNetwork ? 'kiwi-statebrowser-network--active' : '',
     ]">
+
+        <div class="kiwi-channel-options-header">
+            <span>Network:</span>
+
+            <div class="option-button kiwi--channel" v-bind:class="{ active: channel_add_display == true }"  @click="toggle_add_channel()">
+                <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+            </div>
+            <div class="option-button kiwi-search-channels"  v-bind:class="{ active: channel_filter_display == true }"  @click="toggle_filter_channel()">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="kiwi-statebrowser-channelfilter" v-if="channel_filter_display == true">
+            <input
+                type="text"
+                v-model="channel_filter"
+                placeholder="Filter Channels..."
+            />
+            <p>Show Advanced Options</p>
+        </div>
+
+        <div class="kiwi-statebrowser-channels-info" v-if="channel_add_display == true">
+            <form
+                @submit.prevent="submitNewChannelForm"
+                class="kiwi-statebrowser-newchannel"
+            >
+                <div
+                    v-focus
+                    class="kiwi-statebrowser-newchannel-inputwrap"
+                    :class="[
+                        new_channel_input_has_focus ?
+                            'kiwi-statebrowser-newchannel-inputwrap--focus' :
+                            ''
+                    ]"
+                >
+                    <input
+                        type="text"
+                        :placeholder="$t('state_join')"
+                        v-model="new_channel_input"
+                        @focus="onNewChannelInputFocus"
+                        @blur="onNewChannelInputBlur"
+                    />
+                </div>
+            </form>
+        </div>
+
         <div class="kiwi-statebrowser-network-header">
             <a class="kiwi-statebrowser-network-name u-link" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
             <a v-if="network.buffers.length > 1" class="kiwi-statebrowser-network-toggle" @click="collapsed=!collapsed">
@@ -50,9 +96,13 @@
 
                     <div
                         class="kiwi-statebrowser-channel-settings"
-                        @click.stop="$emit('showBufferSettings', buffer, $event.clientY)"
+                        @click="uiState.showBufferSettings()"
                     >
                         <i class="fa fa-bell-o" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="kiwi-statebrowser-channel-leave" @click="closeCurrentBuffer">
+                        <i class="fa fa-times" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -63,6 +113,7 @@
 <script>
 
 import _ from 'lodash';
+import GlobalApi from '@/libs/GlobalApi';
 import state from '@/libs/state';
 import BufferSettings from './BufferSettings';
 
@@ -70,13 +121,19 @@ export default {
     data: function data() {
         return {
             collapsed: false,
+            channel_filter: '',
+            channel_add_display: false,
+            channel_filter_display: false,
         };
     },
-    props: ['network'],
+    props: ['network', 'buffer', 'uiState'],
     components: {
         BufferSettings,
     },
     methods: {
+        closeCurrentBuffer: function closeCurrentBuffer() {
+            state.removeBuffer(this.buffer);
+        },
         showMessageCounts: function showMessageCounts(buffer) {
             return !buffer.setting('hide_message_counts');
         },
@@ -126,6 +183,14 @@ export default {
                 this.popup_top = domY;
             }
         },
+        toggle_add_channel: function toggle_add_channel(){
+            this.channel_add_display = !this.channel_add_display;
+            this.channel_filter_display = false;
+        },
+        toggle_filter_channel: function toggle_filter_channel(){
+            this.channel_filter_display = !this.channel_filter_display;
+            this.channel_add_display = false;
+        }
     },
     computed: {
         isActiveNetwork: function isActiveNetwork() {
@@ -136,12 +201,41 @@ export default {
 </script>
 
 <style>
+
+.kiwi-channel-options-header {
+    text-align: left;
+    padding: 0 0 0 10px;
+    margin: 0;
+    opacity: 1;
+    cursor: default;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.kiwi-channel-options-header span {
+    padding: 5px 0;
+    float: left;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.kiwi-channel-options-header .option-button {
+    float: right;
+    width: 35px;
+    transition: all 0.3s;
+    padding: 5px 0;
+    text-align: center;
+    cursor: pointer;
+}
+
 .kiwi-statebrowser-network-toggable-area--collapsed {
     display: none;
 }
 
 .kiwi-statebrowser-network-header {
     display: flex;
+    padding-right: 0;
 }
 
 .kiwi-statebrowser-network-name {
@@ -210,12 +304,19 @@ export default {
 }
 
 .kiwi-statebrowser-channel-settings {
-    display: none;
+    display: block;
     height: 100%;
-    width: 20px;
+    width: 35px;
     text-align: center;
     font-weight: bold;
     cursor: pointer;
+}
+
+.kiwi-statebrowser-channel-leave {
+    float: right;
+    width: 35px;
+    cursor: pointer;
+    margin-right: 0;
 }
 
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings {
@@ -227,6 +328,79 @@ export default {
     position: absolute;
     left: 100%;
     width: 100%;
+}
+
+/* Add channel input */
+.kiwi-statebrowser-newchannel-inputwrap {
+    float: left;
+    width: 100%;
+    position: relative;
+    border-radius: 3px;
+    opacity: 1;
+    transition: opacity 0.3s;
+    background: none;
+    padding: 0;
+    margin: 0 0 0 0;
+    box-sizing: border-box;
+}
+
+.kiwi-statebrowser-newchannel-inputwrap input[type='text'] {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    line-height: 40px;
+    font-size: 0.8em;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    border-radius: 0;
+    min-height: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: none;
+}
+
+.kiwi-statebrowser-newchannel-inputwrap--focus {
+    opacity: 1;
+}
+
+/* Channel search input */
+.kiwi-statebrowser-channelfilter {
+    float: left;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    opacity: 1;
+    transition: all 0.3s;
+    margin-bottom: 0;
+    color: #131312;
+}
+
+.kiwi-statebrowser-channelfilter:hover {
+    opacity: 1;
+}
+
+.kiwi-statebrowser-channelfilter input {
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+.kiwi-statebrowser-channelfilter p {
+    text-align: center;
+    font-size: 0.9em;
+    margin: 10px 0 10px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.kiwi-statebrowser-channelfilter p:hover {
+    text-decoration: underline;
 }
 
 </style>

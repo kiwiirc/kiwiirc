@@ -390,7 +390,7 @@ export default {
 <style lang="less">
 
 .kiwi-controlinput {
-    z-index: 10;
+    z-index: 999;
 }
 
 .kiwi-controlinput,
@@ -426,6 +426,12 @@ export default {
 
     .kiwi-controlinput-input {
         text-align: left;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .kiwi-controlinput {
+        z-index: 0;
     }
 }
 

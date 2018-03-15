@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-statebrowser">
+    <div class="kiwi-statebrowser" v-bind:class="{ user_profile_open: is_usermenu_open }">
 
         <div class="mobile-close-statebrowser" @click="hideStatebrowser">
             <span> Close </span>
@@ -7,14 +7,23 @@
         </div>
 
         <div class="kiwi-statebrowser-profile">
-            <div class="user-avatar">
+            <div class="user-avatar" @click="is_usermenu_open=!is_usermenu_open">
                 U
             </div>
-            <div class="user-options" @click="clickAppSettings">
-                Kiwi Settings <i class="fa fa-cog" aria-hidden="true"></i>
+            <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
+                <p> {{$t('state_remembered')}} </p>
+                <a @click="clickForget" class="u-link">{{$t('state_forget')}}</a>
+                <div class="close-icon" @click="is_usermenu_open=false">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
             </div>
         </div>
 
+        <div class="user-options" @click="clickAppSettings">
+            Kiwi Settings <i class="fa fa-cog" aria-hidden="true"></i>
+        </div>
+
+        <hr>
 
         <div class="kiwi-statebrowser-tools">
             <div v-for="el in pluginUiElements" v-rawElement="el" class="kiwi-statebrowser-tool"></div>
@@ -38,17 +47,6 @@
             class="kiwi-statebrowser-usermenu"
             :class="[is_usermenu_open?'kiwi-statebrowser-usermenu--open':'']"
         >
-            <!--
-            <a class="kiwi-statebrowser-usermenu-header" @click="is_usermenu_open=!is_usermenu_open">{{$t('state_account')}} <i class="fa fa-caret-down"></i></a>
-            <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
-                <p> {{$t('state_remembered')}} </p>
-                <a @click="clickForget">{{$t('state_forget')}}</a>
-                <div class="close-icon" @click="is_usermenu_open=false">
-                  <i class="fa fa-times" aria-hidden="true"></i>
-                </div>
-            </div>
-            -->
-
 
             <!-- <div class="kiwi-statebrowser-divider"></div> -->
         </div>
@@ -92,43 +90,6 @@
                     @showBufferSettings="showBufferPopup"
                 ></state-browser-network>
             </div>
-        </div>
-
-        <div class="kiwi-statebrowser-channelfilter" v-if="isConnected  && !add_channel_open">
-            <input
-                type="text"
-                v-model="channel_filter"
-                placeholder="Filter Channels..."
-            />
-            <p v-if="channel_filter">Show Advanced Options</p>
-        </div>
-
-        <div class="kiwi-statebrowser-channels-info" v-if="!channel_filter">
-            <form
-                @submit.prevent="submitNewChannelForm"
-                class="kiwi-statebrowser-newchannel"
-                v-if="isConnected"
-            >
-                <a class="u-button u-button-primary" v-bind:class="{ active: add_channel_open }"  @click="add_channel_open=true">Add Channel <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                <div
-                    v-if="add_channel_open"
-                    v-focus
-                    class="kiwi-statebrowser-newchannel-inputwrap"
-                    :class="[
-                        new_channel_input_has_focus ?
-                            'kiwi-statebrowser-newchannel-inputwrap--focus' :
-                            ''
-                    ]"
-                >
-                    <input
-                        type="text"
-                        :placeholder="$t('state_join')"
-                        v-model="new_channel_input"
-                        @focus="onNewChannelInputFocus"
-                        @blur="onNewChannelInputBlur"
-                    /> <i @click="submitNewChannelForm" class="fa fa-plus" aria-hidden="true"></i>
-                </div>
-            </form>
         </div>
 
         <div class="kiwi-statebrowser-newnetwork" v-if="!channel_filter && !add_channel_open">
@@ -313,7 +274,6 @@ export default {
     border-right: none;
     width: 220px;
     text-align: center;
-    padding-top: 10px;
     overflow: hidden;
 
     h1 {
@@ -324,10 +284,17 @@ export default {
         padding: 20px 0 27px 0;
     }
 
+    hr {
+        width: 100%;
+        margin: 0;
+        opacity: 0.3;
+    }
+
     .kiwi-statebrowser-profile {
         width: 100%;
-        padding-bottom: 10px;
+        padding-bottom: 0;
         margin-bottom: 10px;
+        padding-top: 10px;
 
         .user-avatar {
             width: 50px;
@@ -343,74 +310,49 @@ export default {
             transition: all 0.3s;
         }
 
-        /* User Settings */
-        .user-options {
-            width: 90%;
-            text-align: left;
-            padding: 0 10px 0 10px;
-            font-size: 0.8em;
-            border-radius: 4px;
+        .kiwi-statebrowser-usermenu-body {
+            width: 100%;
             box-sizing: border-box;
-            opacity: 1;
-            line-height: 35px;
-            cursor: pointer;
-            margin: 0 5%;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: all 0.3s;
+            padding: 0 10px;
+            font-size: 0.8em;
+            margin-bottom: 10px;
 
-            &:hover {
-                opacity: 1;
+            p {
+                margin-bottom: 0;
             }
         }
+    }
 
-        .user-options span {
+    /* User Settings */
+    .user-options {
+        width: 90%;
+        text-align: left;
+        padding: 0 10px 0 10px;
+        font-size: 0.8em;
+        border-radius: 4px;
+        box-sizing: border-box;
+        opacity: 1;
+        line-height: 35px;
+        cursor: pointer;
+        margin: 0 5%;
+        font-weight: 500;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        margin-bottom: 10px;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        span {
             font-weight: 600;
         }
 
-        .user-options i {
+        i {
             float: right;
             line-height: 35px;
             font-size: 1.2em;
         }
-    }
-
-    /* Add channel input */
-    .kiwi-statebrowser-newchannel-inputwrap {
-        position: relative;
-        border-radius: 3px;
-        opacity: 1;
-        transition: opacity 0.3s;
-        background: none;
-        padding: 0 10px 0 10px;
-        margin: 10px 0 10px 0;
-
-        i {
-            position: absolute;
-            right: 20px;
-            pointer-events: none;
-            top: 14px;
-        }
-    }
-
-    .kiwi-statebrowser-newchannel-inputwrap input[type='text'] {
-        width: 100%;
-        height: 40px;
-        padding: 0 10px;
-        line-height: 40px;
-        font-size: 1em;
-        box-sizing: border-box;
-        border: none;
-        margin: 15px 0 10px 0;
-        border-radius: 2px;
-        min-height: none;
-        overflow-x: hidden;
-        overflow-y: auto;
-        max-width: none;
-    }
-
-    .kiwi-statebrowser-newchannel-inputwrap--focus {
-        opacity: 1;
     }
 
     /* Set the height of the networks scroll box */
@@ -421,60 +363,12 @@ export default {
         overflow-y: auto;
     }
 
-    /*Channel search input */
-    .kiwi-statebrowser-channelfilter {
-        width: 100%;
-        padding: 0 0 0 0;
-        box-sizing: border-box;
-        position: relative;
-        opacity: 0.8;
-        transition: all 0.3s;
-        margin-bottom: 10px;
-    }
-
-    .kiwi-statebrowser-channelfilter:hover {
-        opacity: 1;
-    }
-
-    .kiwi-statebrowser-channelfilter::after {
-        content: '\f002';
-        position: absolute;
-        top: 9px;
-        right: 20px;
-        font-size: 1em;
-        z-index: 10;
-        pointer-events: none;
-        font-family: fontAwesome, sans-serif;
-    }
-
-    .kiwi-statebrowser-channelfilter input {
-        width: 100%;
-        height: 42px;
-        line-height: 42px;
-        padding: 0 15px;
-        border: none;
-        border-radius: 0;
-        box-sizing: border-box;
-    }
-
-    .kiwi-statebrowser-channelfilter p {
-        text-align: center;
-        font-size: 0.9em;
-        margin: 10px 0 10px 0;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .kiwi-statebrowser-channelfilter p:hover {
-        text-decoration: underline;
-    }
-
     /* Add network button */
     .kiwi-statebrowser-newnetwork {
         width: 100%;
         position: static;
         padding: 0;
-        margin: 0;
+        margin: 10px 0 0 0;
         box-sizing: border-box;
     }
 
@@ -508,6 +402,8 @@ export default {
     }
 
     .kiwi-statebrowser-network .kiwi-statebrowser-network-header {
+        float: left;
+        width: 100%;
         line-height: 45px;
         text-align: left;
         position: relative;
@@ -515,7 +411,7 @@ export default {
 
     .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
         text-align: left;
-        padding: 0 1em;
+        padding: 0 0 0 10px;
         text-transform: capitalize;
         width: 100%;
         font-size: 1em;
@@ -524,17 +420,21 @@ export default {
 
     .kiwi-statebrowser-network .kiwi-statebrowser-network-header .kiwi-statebrowser-network-toggle {
         position: absolute;
-        top: 50%;
-        margin: -6px 5px 0 0;
-        width: 14px;
+        width: 35px;
+        margin: 0;
         right: 0;
+        top: 0;
+        text-align: center;
+        display: block;
+        font-size: 1em;
+        padding: 0 !important;
     }
 
     /* Channel Styling */
     .kiwi-statebrowser-channels {
         .kiwi-statebrowser-channel {
             line-height: 30px;
-            padding: 0 1em;
+            padding: 0 0 0 8px;
             opacity: 0.8;
             transition: opacity 0.3s;
 
@@ -770,6 +670,7 @@ export default {
     .kiwi-statebrowser {
         left: -220px;
         padding-top: 0;
+        z-index: 1000;
     }
 
     .kiwi-wrap.kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
@@ -812,12 +713,14 @@ export default {
         color: #fff;
         display: block;
         font-size: 1em;
-        padding: 0.5em 10px;
+        padding: 0 10px;
         font-weight: 600;
         background: #42b992;
         box-sizing: border-box;
         margin-bottom: 10px;
         text-transform: uppercase;
+        line-height: 45px;
+        height: 45px;
 
         span {
             float: left;
@@ -826,6 +729,7 @@ export default {
         i {
             float: right;
             font-size: 1.2em;
+            line-height: 45px;
         }
     }
 }

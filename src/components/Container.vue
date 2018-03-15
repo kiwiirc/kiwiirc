@@ -206,7 +206,7 @@ export default {
     width: 50px;
     position: absolute;
     top: 0;
-    height: 50px;
+    height: 45px;
     box-sizing: border-box;
     cursor: pointer;
     text-align: center;

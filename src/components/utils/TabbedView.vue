@@ -118,7 +118,7 @@ export default Vue.component('tabbed-view', {
 }
 
 .u-tabbed-content {
-    padding-top: 10px;
+    padding-top: 20px;
     overflow: auto;
     height: 100%;
 }

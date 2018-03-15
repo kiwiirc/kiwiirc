@@ -236,7 +236,7 @@ export default {
     font-size: 1em;
     box-sizing: border-box;
     text-transform: uppercase;
-    line-height: 47px;
+    line-height: 45px;
     text-align: right;
     transition: background 0.3s;
 
@@ -251,6 +251,7 @@ export default {
 .kiwi-sidebar-buffersettings {
     overflow: hidden;
     height: 100%;
+    padding-bottom: 42px;
 
     .u-tabbed-content {
         padding: 1em;
@@ -276,6 +277,10 @@ export default {
 }
 
 @media screen and (max-width: 759px) {
+    .kiwi-sidebar {
+        z-index: 100;
+    }
+
     .u-tabbed-view-tabs .u-tabbed-view-tab {
         width: 100%;
 
@@ -292,6 +297,10 @@ export default {
     .kiwi-container--sidebar-open .kiwi-sidebar {
         width: 100%;
         max-width: none;
+    }
+
+    .kiwi-sidebar-buffersettings {
+        padding-bottom: 10px;
     }
 }
 
