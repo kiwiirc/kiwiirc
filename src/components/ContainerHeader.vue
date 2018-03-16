@@ -172,37 +172,36 @@ export default {
 
 <style lang="less">
 .kiwi-header {
-    border-bottom: none;
     padding: 0;
     z-index: 1;
     transition: all 0.3s;
     line-height: 10px;
     box-sizing: border-box;
     text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 
     .kiwi-header-topic {
-        padding: 0 10px;
+        padding: 0;
         line-height: normal;
         max-width: none;
         width: 100%;
         float: right;
         box-sizing: border-box;
         height: auto;
+        text-align: left;
 
         .topic-title {
-            padding: 10px 0 5px 0;
+            padding: 0 10px;
             font-weight: 600;
             font-size: 1em;
+            line-height: 45px;
         }
 
         .content {
-            height: 35px;
-            max-height: 35px;
-            overflow-x: hidden;
-            overflow-y: auto;
+            height: auto;
             font-size: 0.8;
             cursor: default;
-            margin-bottom: 10px;
+            padding: 10px;
         }
     }
 

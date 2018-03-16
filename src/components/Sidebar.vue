@@ -191,6 +191,7 @@ export default {
         });
         this.listen(state, 'userbox.hide', () => {
             this.userbox_user = null;
+            this.uiState.close();
         });
     },
 };
@@ -204,6 +205,7 @@ export default {
     flex-direction: column;
     overflow: hidden;
     width: 380px;
+    top: -4px;
     border-left: none;
     right: -380px;
     max-width: none;
@@ -236,7 +238,7 @@ export default {
     font-size: 1em;
     box-sizing: border-box;
     text-transform: uppercase;
-    line-height: 45px;
+    line-height: 50px;
     text-align: right;
     transition: background 0.3s;
 

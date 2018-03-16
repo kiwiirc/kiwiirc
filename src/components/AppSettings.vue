@@ -15,11 +15,11 @@
                         <h3>{{$t('settings_general')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-general">
                             <label>
-                                <span>{{$t('settings_theme')}} </span>
-                                <select v-model="theme">
+                                <span style="margin-left: 0;">{{$t('settings_theme')}} </span>
+                                <a @click="refreshTheme" style="float: right;" title="Refresh Theme" class="kiwi-appsettings-theme-reload"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                <select v-model="theme" style="float: right;">
                                     <option v-for="t in settings.themes" :value="t.name">{{t.name}}</option>
                                 </select>
-                                <a @click="refreshTheme" title="Refresh Theme" class="kiwi-appsettings-theme-reload"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                             </label>
                             <label v-if="theme==='custom'">
                                 <span>{{$t('settings_themeurl')}} </span>
@@ -47,7 +47,7 @@
                             <label><span>{{$t('settings_24hour_timestamps')}} </span> <input type="checkbox" v-model="timestamps_24h" /></label>
                             <label><span>{{$t('settings_emoticons')}} </span> <input type="checkbox" v-model="settingBufferShowEmoticons" /></label>
                             <label><span>{{$t('settings_block_private')}} </span> <input type="checkbox" v-model="settingBufferBlockPms" /></label>
-                            <label><span style="margin: 0; width: 100%;">{{$t('settings_scrollback')}} </span> <input type="number" class="u-input" v-model="settingBufferScrollbackSize" /></label>
+                            <label><span style="margin: 0; width: 100%;">{{$t('settings_scrollback')}} </span> <br> <input type="number" class="u-input kiwi-scrollback-count" v-model="settingBufferScrollbackSize" /></label>
                             <label><span>{{$t('settings_formatting')}} </span> <input type="checkbox" v-model="settingBufferExtraFormatting" /></label>
                             <label><span>{{$t('settings_nick_colouring')}} </span> <input type="checkbox" v-model="settingBufferColourNicknames" /></label>
                         </div>
@@ -56,7 +56,7 @@
                     <div class="app-settings-block">
                         <h3>{{$t('notifications')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
-                            <label><span>{{$t('settings_show_joinpart')}} </span> <input type="checkbox" v-model="settingBufferTrafficAsActivity" /></label>
+                            <label><span style="max-width: none !important;">{{$t('settings_show_joinpart')}} </span> <input type="checkbox" v-model="settingBufferTrafficAsActivity" /></label>
                             <label><span>{{$t('settings_mute_sound')}} </span> <input type="checkbox" v-model="settingBufferMuteSound" /></label>
                             <label><span style="margin:0; width: 100%;">{{$t('settings_highlight')}} </span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
                         </div>
@@ -252,6 +252,14 @@ export default {
     .u-form {
         width: 100%;
         overflow: hidden;
+
+        .kiwi-scrollback-count {
+            width: 100%;
+            box-sizing: border-box;
+            line-height: 30px;
+            height: 40px;
+            border: 1px solid #42b992;
+        }
     }
 
     .kiwi-appsettings-aliases {

@@ -15,7 +15,7 @@
 
             <form class="u-form">
                 <label>
-                    <input type="checkbox" v-model="user.ignore" /> <span> {{$t('ignore_user')}} </span>
+                    <input type="checkbox" v-model="user.ignore" /> <span class="kiwi-ignore-user-span"> {{$t('ignore_user')}} </span>
                 </label>
             </form>
         </div>
@@ -195,6 +195,7 @@ export default {
         openQuery: function openQuery() {
             let buffer = state.addBuffer(this.network.id, this.user.nick);
             state.setActiveBuffer(this.network.id, buffer.name);
+            state.$emit('userbox.hide');
         },
         updateWhoisData: function updateWhoisData() {
             this.whoisRequested = true;
@@ -316,6 +317,7 @@ export default {
 
         span {
             font-weight: 600;
+            width: 100%;
             margin: 0 0 0.4em 0;
         }
 
@@ -332,6 +334,8 @@ export default {
             font-size: 1.2em;
             opacity: 0.8;
             line-height: 1.2em;
+            padding: 0;
+            text-align: left;
         }
 
         .data {
@@ -366,6 +370,11 @@ export default {
         label {
             display: block;
             cursor: pointer;
+
+            span {
+                text-align: left;
+                width: auto;
+            }
         }
     }
 
@@ -453,6 +462,11 @@ export default {
 
 .kiwi-userbox-whois-line {
     display: block;
+}
+
+.kiwi-userbox .kiwi-userbox-basicinfo .kiwi-ignore-user-span {
+    text-align: left;
+    width: auto;
 }
 
 @media screen and (max-width: 500px) {

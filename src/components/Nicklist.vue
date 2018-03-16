@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-nicklist">
         <div class="user-count">
-            <span class="count-title">User Count</span>
+            <span class="count-title">Users</span>
             <span class="count">{{$t('person', {count: sortedUsers.length})}}</span>
         </div>
 
@@ -271,12 +271,16 @@ export default {
                 font-family: fontAwesome, sans-serif;
                 font-size: 1em;
                 top: 50%;
-                margin-top: -1.3em;
+                margin-top: -1.5em;
                 color: #666764;
             }
 
             &:hover {
                 cursor: pointer;
+
+                &::after {
+                    color: #fff;
+                }
             }
         }
     }

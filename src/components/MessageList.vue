@@ -344,7 +344,7 @@ export default {
 <style lang="less">
 .kiwi-messagelist {
     overflow-y: auto;
-    background: #f1f1f1;
+    background: #fff;
     height: 100%;
 
     .kiwi-messagelist-message {
@@ -362,6 +362,8 @@ export default {
     .kiwi-messagelist-message-mode,
     .kiwi-messagelist-message-traffic {
         padding-left: 10px !important;
+        padding-top: 5px;
+        padding-bottom: 5px;
 
         .kiwi-messagelist-modern-left {
             width: 10px;
@@ -470,10 +472,11 @@ export default {
     .kiwi-messagelist-message-traffic-leave,
     .kiwi-messagelist-message-traffic-quit,
     .kiwi-messagelist-message-nick {
-        padding: 0  0 10px 0 !important;
+        padding: 5px  0 5px 0 !important;
         font-weight: 600;
-        margin: 5px 0;
+        margin: 10px 0;
         opacity: 0.85;
+        font-size: 0.9em;
         text-align: center;
         border: none;
         transition: all 0.3s;
@@ -638,7 +641,7 @@ export default {
     content: "";
     display: block;
     border-color: #ddd;
-    border-bottom: 1px solid blue;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     position: relative;
     top: -0.8em;
 }
@@ -771,6 +774,10 @@ export default {
         color: #fff !important;
         text-decoration: underline;
     }
+
+    .kiwi-messagelist-time {
+        color: #fff !important;
+    }
 }
 
 .kiwi-messagelist-message--info-open {
@@ -785,6 +792,10 @@ export default {
 
 .kiwi-messageinfo-urls {
     border-top: 1px solid #ddd;
+}
+
+.kiwi-statebrowser-divider {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 </style>
