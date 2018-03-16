@@ -14,7 +14,7 @@
             <component v-bind:is="startupComponent" v-on:start="startUp"></component>
         </template>
         <template v-else>
-            <state-browser :networks="networks"></state-browser>
+            <state-browser :networks="networks" :uiState="uiState"></state-browser>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"></div>
 
@@ -24,6 +24,7 @@
                         :buffer="buffer"
                         :users="users"
                         :isHalfSize="mediaviewerOpen"
+                        :uiState="uiState"
                     ></container>
                     <media-viewer
                         v-if="mediaviewerOpen"
@@ -46,6 +47,7 @@
 import 'font-awesome-webpack';
 import '@/res/globalStyle.css';
 import Tinycon from 'tinycon';
+import Vue from 'vue';
 
 import startupWelcome from '@/components/startups/Welcome';
 import startupZncLogin from '@/components/startups/ZncLogin';
@@ -67,6 +69,37 @@ let log = Logger.namespace('App.vue');
 
 /* eslint-disable no-new */
 new InputHandler(state);
+
+// ContainerUiState gets passed around to child components so they all know
+// what state the UI is in. Ie. sidebar open or closed, what section of the
+// sidebar is open, etc.
+let ContainerUiState = Vue.extend({
+    data() {
+        return {
+            sidebarOpen: false,
+            // sidebarSection may be either '', 'user', 'settings', 'nicklist'
+            sidebarSection: '',
+        };
+    },
+    methods: {
+        close() {
+            this.sidebarOpen = false;
+            this.sidebarSection = '';
+        },
+        showUser() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'user';
+        },
+        showNicklist() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'nicklist';
+        },
+        showBufferSettings() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'settings';
+        },
+    },
+});
 
 export default {
     created: function created() {
@@ -187,6 +220,7 @@ export default {
             mediaviewerOpen: false,
             mediaviewerUrl: '',
             themeUrl: '',
+            uiState: new ContainerUiState(),
         };
     },
     computed: {

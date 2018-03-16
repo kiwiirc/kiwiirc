@@ -87,6 +87,7 @@
                     v-for="network in networksToShow"
                     :key="network.id"
                     :network="network"
+                    :uiState="uiState"
                     @showBufferSettings="showBufferPopup"
                 ></state-browser-network>
             </div>
@@ -132,7 +133,7 @@ export default {
             channel_filter: '',
         };
     },
-    props: ['networks'],
+    props: ['networks', 'uiState'],
     components: {
         BufferSettings,
         StateBrowserNetwork,

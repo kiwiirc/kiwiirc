@@ -39,43 +39,11 @@
 
 <script>
 
-import Vue from 'vue';
 import state from '@/libs/state';
 import ContainerHeader from './ContainerHeader';
 import Sidebar from './Sidebar';
 import MessageList from './MessageList';
 import ServerView from './ServerView';
-
-// ContainerUiState gets passed around to child components so they all know
-// what state the UI is in. Ie. sidebar open or closed, what section of the
-// sidebar is open, etc.
-let ContainerUiState = Vue.extend({
-    data() {
-        return {
-            sidebarOpen: false,
-            // sidebarSection may be either '', 'user', 'settings', 'nicklist'
-            sidebarSection: '',
-        };
-    },
-    methods: {
-        close() {
-            this.sidebarOpen = false;
-            this.sidebarSection = '';
-        },
-        showUser() {
-            this.sidebarOpen = true;
-            this.sidebarSection = 'user';
-        },
-        showNicklist() {
-            this.sidebarOpen = true;
-            this.sidebarSection = 'nicklist';
-        },
-        showBufferSettings() {
-            this.sidebarOpen = true;
-            this.sidebarSection = 'settings';
-        },
-    },
-});
 
 export default {
     components: {
@@ -86,10 +54,9 @@ export default {
     },
     data: function data() {
         return {
-            uiState: new ContainerUiState(),
         };
     },
-    props: ['network', 'buffer', 'users', 'isHalfSize'],
+    props: ['network', 'buffer', 'users', 'isHalfSize', 'uiState'],
     computed: {
         bufferType: function bufferType() {
             let type = '';
