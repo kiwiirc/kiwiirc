@@ -195,6 +195,7 @@ export default {
         openQuery: function openQuery() {
             let buffer = state.addBuffer(this.network.id, this.user.nick);
             state.setActiveBuffer(this.network.id, buffer.name);
+            state.$emit('userbox.hide');
         },
         updateWhoisData: function updateWhoisData() {
             this.whoisRequested = true;

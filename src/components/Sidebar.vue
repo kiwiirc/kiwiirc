@@ -191,6 +191,7 @@ export default {
         });
         this.listen(state, 'userbox.hide', () => {
             this.userbox_user = null;
+            this.uiState.close();
         });
     },
 };
