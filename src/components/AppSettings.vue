@@ -73,9 +73,11 @@
                 </tabbed-tab>
 
                 <tabbed-tab :header="$t('settings_aliases')">
-                    <h3>{{$t('settings_aliases')}}</h3>
-                    <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
-                        <settings-aliases></settings-aliases>
+                    <div class="app-settings-block">
+                        <h3>{{$t('settings_aliases')}}</h3>
+                        <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
+                            <settings-aliases></settings-aliases>
+                        </div>
                     </div>
                 </tabbed-tab>
             </tabbed-view>
@@ -339,28 +341,6 @@ export default {
     }
 }
 
-@media screen and (max-width: 1558px) {
-    .app-settings-block {
-        width: 33.3%;
-    }
-}
-
-@media screen and (max-width: 1230px) {
-    .app-settings-block {
-        width: 50%;
-    }
-}
-
-@media screen and (max-width: 999px) {
-    .app-settings-block {
-        width: 100%;
-    }
-
-    .u-tabbed-view-tab {
-        width: 100%;
-    }
-}
-
 @media screen and (max-width: 769px) {
     .kiwi-appsettings {
         width: 100%;
@@ -368,6 +348,14 @@ export default {
         position: fixed;
         left: 0;
         transition: left 0.5s;
+    }
+
+    .kiwi-appsettings .app-settings-block {
+        width: 90%;
+    }
+
+    .kiwi-appsettings-section.kiwi-appsettings-general label span {
+        width: auto;
     }
 }
 </style>

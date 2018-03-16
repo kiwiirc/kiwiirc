@@ -31,8 +31,10 @@
             </template>
         </template>
         <template v-else>
-            {{$t('container_welcome')}}
-            <a @click.stop="toggleStateBrowser">{{$t('container_statebrowser')}}</a>
+            <div class="kiwi-no-messagelist">
+                <h4>{{$t('container_welcome')}}</h4>
+                <a @click.stop="toggleStateBrowser" class="u-button">{{$t('container_statebrowser')}}</a>
+            </div>
         </template>
     </div>
 </template>
@@ -207,6 +209,20 @@ export default {
     width: 0;
     position: absolute;
     pointer-events: none;
+}
+
+.kiwi-no-messagelist {
+    text-align: center;
+    padding: 1em;
+}
+
+.kiwi-no-messagelist .u-button {
+    border-radius: 3px;
+    background-color: #42b992;
+    color: #fff;
+    font-weight: 500;
+    line-height: 50px;
+    padding: 0 14px;
 }
 
 @media screen and (max-width: 769px) {

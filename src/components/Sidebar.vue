@@ -198,8 +198,8 @@ export default {
 </script>
 
 <style lang="less">
-
 .kiwi-sidebar {
+    background: #fff;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -212,17 +212,18 @@ export default {
     z-index: 999;
 
     /* Users Styling */
+
     .kiwi-sidebar-section-user {
         max-width: none;
         width: auto;
     }
 
-    .kiwi-sidebar .u-form label {
+    .u-form label {
         float: left;
         width: 100%;
     }
 
-    .kiwi-sidebar .u-form label span {
+    .u-form label span {
         width: auto;
     }
 }
@@ -303,6 +304,19 @@ export default {
 
     .kiwi-sidebar-buffersettings {
         padding-bottom: 10px;
+    }
+
+    .kiwi-channelbanlist {
+        float: left;
+        width: 100%;
+
+        .kiwi-channelbanlist-table {
+            margin-top: 30px;
+        }
+    }
+
+    .kiwi-channelbanlist .u-form {
+        line-height: 10px;
     }
 }
 

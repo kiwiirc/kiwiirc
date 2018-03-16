@@ -221,7 +221,6 @@
 .kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-sidebar {
     background: #fff;
-    border-bottom: 1px solid #ddd;
 }
 
 .kiwi-container-toggledraw-statebrowser {
@@ -359,10 +358,6 @@
 }
 
 /* Message list - Standard messages ( MessageList.vue ) */
-.kiwi-messagelist {
-    background: #f1f1f1;
-}
-
 .kiwi-messagelist-message-action .kiwi-messagelist-body {
     color: #090;
     font-style: italic;
@@ -408,7 +403,7 @@
 }
 
 .kiwi-messagelist-message-traffic-quit .kiwi-nick::before,
-.kiwi-messagelist-message-traffic-part .kiwi-nick::before, {
+.kiwi-messagelist-message-traffic-part .kiwi-nick::before {
     color: #900;
 }
 
@@ -544,34 +539,6 @@
 }
 
 /* Sidebar ( Sidebar.vue ) */
-.kiwi-sidebar {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    width: 380px;
-    border-left: none;
-    right: -380px;
-    max-width: none;
-    z-index: 999;
-    background: #fff;
-
-    /* Users Styling */
-    .kiwi-sidebar-section-user {
-        max-width: none;
-        width: auto;
-    }
-
-    .kiwi-sidebar .u-form label {
-        float: left;
-        width: 100%;
-    }
-
-    .kiwi-sidebar .u-form label span {
-        width: auto;
-    }
-}
-
 .kiwi-sidebar-options {
     background-color: #42b992;
     color: #fff;
@@ -789,7 +756,7 @@
 }
 
 .kiwi-statebrowser-availablenetworks-link--connected {
-    border-color: green;
+    border-color: #42b992;
 }
 
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
@@ -801,7 +768,7 @@
 }
 
 .kiwi-statebrowser-channel-label {
-    background: green;
+    background: #42b992;
     color: #dedede;
 }
 
@@ -861,7 +828,7 @@
 }
 
 .kiwi-statebrowser-channel-label {
-    background: green;
+    background: #42b992;
     color: #dedede;
 }
 

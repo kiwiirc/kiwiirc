@@ -204,7 +204,8 @@ export default {
         width: 10px;
     }
 
-    .kiwi-messagelist-message--modern.kiwi-messagelist-message-privmsg .kiwi-messagelist-modern-left {
+    .kiwi-messagelist-message--modern.kiwi-messagelist-message-privmsg .kiwi-messagelist-modern-left,
+    .kiwi-messagelist-message-notice .kiwi-messagelist-modern-left {
         display: none;
     }
 

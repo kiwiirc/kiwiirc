@@ -469,7 +469,11 @@ export default {
     width: auto;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 769px) {
+    .kiwi-container--sidebar-open .kiwi-sidebar-userbox {
+        width: 100%;
+    }
+
     .kiwi-userbox {
         left: 0;
         right: 0;
@@ -477,6 +481,38 @@ export default {
         top: auto !important;
         max-width: 100%;
         border-width: 1px 0;
+
+        .u-form {
+            width: 100%;
+            float: left;
+        }
+    }
+
+    .kiwi-userbox .kiwi-userbox-header {
+        padding-left: 10px;
+    }
+
+    .kiwi-userbox .kiwi-userbox-header i {
+        display: none;
+    }
+
+    .kiwi-userbox .kiwi-userbox-basicinfo {
+        padding: 10px 10px;
+        float: left;
+    }
+
+    .kiwi-userbox-actions {
+        float: left;
+        padding: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .kiwi-userbox .kiwi-userbox-actions .u-button {
+        width: 200px;
+        clear: both;
+        margin: 0 auto 20px auto;
+        display: block;
     }
 }
 </style>

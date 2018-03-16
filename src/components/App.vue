@@ -572,4 +572,10 @@ body {
     width: 100%;
     z-index: 2;
 }
+
+@media screen and (max-width: 769px) {
+    .u-tabbed-view-tabs {
+        padding-top: 0;
+    }
+}
 </style>

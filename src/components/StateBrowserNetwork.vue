@@ -335,10 +335,6 @@ export default {
     opacity: 1;
 }
 
-.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings {
-    display: inline-block;
-}
-
 .kiwi-statebrowser-channel-popup {
     display: block;
     position: absolute;
@@ -417,6 +413,23 @@ export default {
 
 .kiwi-statebrowser-channelfilter p:hover {
     text-decoration: underline;
+}
+
+@media screen and (max-width: 769px) {
+    .kiwi-statebrowser-network-header .kiwi-network-name-options {
+        right: 0;
+        opacity: 1;
+    }
+
+    .kiwi-statebrowser .kiwi-statebrowser-channels .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name {
+        line-height: 40px;
+    }
+
+    .kiwi-statebrowser-channel .kiwi-statebrowser-channel-settings,
+    .kiwi-statebrowser-channel .kiwi-statebrowser-channel-leave {
+        opacity: 1;
+        line-height: 40px;
+    }
 }
 
 </style>
