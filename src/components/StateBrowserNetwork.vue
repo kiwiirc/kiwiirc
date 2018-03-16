@@ -6,10 +6,10 @@
         <div class="kiwi-channel-options-header">
             <span>Network:</span>
 
-            <div class="option-button kiwi--channel" v-bind:class="{ active: channel_add_display == true }"  @click="toggle_add_channel()">
+            <div class="option-button kiwi--channel" v-bind:class="{ active: channel_add_display == true }"  @click="toggleAddChannel()">
                 <i class="fa fa-plus-square-o" aria-hidden="true"></i>
             </div>
-            <div class="option-button kiwi-search-channels"  v-bind:class="{ active: channel_filter_display == true }"  @click="toggle_filter_channel()">
+            <div class="option-button kiwi-search-channels"  v-bind:class="{ active: channel_filter_display == true }"  @click="toggleFilterChannel()">
                 <i class="fa fa-search" aria-hidden="true"></i>
             </div>
         </div>
@@ -113,7 +113,6 @@
 <script>
 
 import _ from 'lodash';
-import GlobalApi from '@/libs/GlobalApi';
 import state from '@/libs/state';
 import BufferSettings from './BufferSettings';
 
@@ -183,14 +182,14 @@ export default {
                 this.popup_top = domY;
             }
         },
-        toggle_add_channel: function toggle_add_channel(){
+        toggleAddChannel() {
             this.channel_add_display = !this.channel_add_display;
             this.channel_filter_display = false;
         },
-        toggle_filter_channel: function toggle_filter_channel(){
+        toggleFilterChannel() {
             this.channel_filter_display = !this.channel_filter_display;
             this.channel_add_display = false;
-        }
+        },
     },
     computed: {
         isActiveNetwork: function isActiveNetwork() {
