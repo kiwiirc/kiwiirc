@@ -296,8 +296,16 @@
     opacity: 1;
 }
 
+.kiwi-statebrowser-network .kiwi-statebrowser-network-header a.kiwi-statebrowser-network-toggle:hover {
+        background-color: #d16c6c;
+}
+
 .kiwi-header-options .option.leave a:hover {
     background-color: #d16c6c;
+}
+
+.kiwi-statebrowser-channel-settings:hover{
+    background-color: #42b992;
 }
 
 .kiwi-header .kiwi-header-notjoined .u-link {
@@ -617,10 +625,14 @@
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.kiwi-channel-options-header .option-button:hover,
-.kiwi-channel-options-header .option-button.active {
+.kiwi-network-name-options .option-button:hover,
+.kiwi-network-name-options .option-button.active {
     background-color: #42b992;
     color: #fff;
+}
+
+.kiwi-network-name-options .kiwi--collapse {
+    background: #d16c6c;    
 }
 
 .kiwi-statebrowser-channel-leave:hover{

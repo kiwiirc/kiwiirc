@@ -359,8 +359,13 @@ export default {
         }
     }
 
-    .kiwi-messagelist-message-mode {
+    .kiwi-messagelist-message-mode,
+    .kiwi-messagelist-message-traffic {
         padding-left: 10px !important;
+
+        .kiwi-messagelist-modern-left {
+            width: 10px;
+        }
     }
 
     /* Start of the not connected message styling */
@@ -465,7 +470,7 @@ export default {
     .kiwi-messagelist-message-traffic-leave,
     .kiwi-messagelist-message-traffic-quit,
     .kiwi-messagelist-message-nick {
-        padding: 5px 0 !important;
+        padding: 0  0 10px 0 !important;
         font-weight: 600;
         margin: 5px 0;
         opacity: 0.85;
@@ -517,7 +522,10 @@ export default {
         text-align: left;
         position: relative;
         min-height: 0;
-        padding: 35px 1em 1em 1em;
+        display: block;
+        padding: 1em !important;
+        color: #000;
+        border: 1px solid #42b992 !important;
 
         .kiwi-messagelist-modern-left {
             display: none;
@@ -525,20 +533,10 @@ export default {
 
         .kiwi-messagelist-body {
             min-height: 0 !important;
+            margin: 0;
 
             &::before {
                 display: none;
-            }
-
-            &::after {
-                content: 'Channel Topic';
-                top: 0.8em;
-                left: 1em;
-                position: absolute;
-                line-height: normal;
-                width: 100%;
-                font-size: 1em;
-                font-weight: 900;
             }
         }
     }
@@ -554,6 +552,15 @@ export default {
     opacity: 0.5;
     position: absolute;
     pointer-events: none;
+}
+
+.kiwi-container--sidebar-open.kiwi-container--no-sidebar .kiwi-messagelist::after {
+    width: 0;
+    height: 0;
+    display: none;
+    pointer-events: inherit;
+    position: static;
+    z-index: 0;
 }
 
 .kiwi-messagelist-scrollback {
@@ -742,14 +749,14 @@ export default {
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-    margin: 18px;
+    margin: 5px 18px 15px  18px;
 }
 
 .kiwi-messagelist-message-whois {
     border-left-color: #939393;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--highlight {
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight:hover {
     background: #8cdbc1;
     border-left: 3px solid #42b992;
     color: #fff;

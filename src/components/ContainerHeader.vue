@@ -48,12 +48,12 @@
         </template>
 
         <template v-else-if="isQuery()">
-            <div class="kiwi-header-options">
-                <a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a>
-            </div>
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div class="kiwi-header-tools">
                 <div v-for="el in pluginUiQueryElements" v-rawElement="el" class="kiwi-header-tool"></div>
+            </div>
+            <div class="kiwi-header-options">
+                <div class="option leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
             </div>
         </template>
 
@@ -245,6 +245,7 @@ export default {
             display: block;
             font-size: 0.8em;
             opacity: 0.85;
+            border-left: 1px solid rgba(0, 0, 0, 0.25);
             text-transform: capitalize;
 
             .fa-info {
@@ -303,7 +304,7 @@ export default {
 .kiwi-header .kiwi-header-notjoined {
     border-radius: 0;
     margin: 0 auto;
-    float: none;
+    float: right;
 
     .u-link {
         font-weight: 600;

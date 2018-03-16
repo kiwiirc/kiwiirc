@@ -13,7 +13,6 @@
 
                     <div class="app-settings-block">
                         <h3>{{$t('settings_general')}}</h3>
-                        <hr>
                         <div class="kiwi-appsettings-section kiwi-appsettings-general">
                             <label>
                                 <span>{{$t('settings_theme')}} </span>
@@ -38,9 +37,8 @@
                     </div>
 
                     <div class="app-settings-block">
+                        <h3>{{$t('settings_messages_title')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-messages">
-                            <h3>{{$t('settings_messages_title')}}</h3>
-                            <hr>
                             <label>
                                 <span>{{$t('settings_layout_compact')}} </span>
                                 <input type="checkbox" v-model="settingMessageLayout" />
@@ -49,26 +47,24 @@
                             <label><span>{{$t('settings_24hour_timestamps')}} </span> <input type="checkbox" v-model="timestamps_24h" /></label>
                             <label><span>{{$t('settings_emoticons')}} </span> <input type="checkbox" v-model="settingBufferShowEmoticons" /></label>
                             <label><span>{{$t('settings_block_private')}} </span> <input type="checkbox" v-model="settingBufferBlockPms" /></label>
-                            <label><span>{{$t('settings_scrollback')}} </span> <input type="number" class="u-input" v-model="settingBufferScrollbackSize" /></label>
+                            <label><span style="margin: 0; width: 100%;">{{$t('settings_scrollback')}} </span> <input type="number" class="u-input" v-model="settingBufferScrollbackSize" /></label>
                             <label><span>{{$t('settings_formatting')}} </span> <input type="checkbox" v-model="settingBufferExtraFormatting" /></label>
                             <label><span>{{$t('settings_nick_colouring')}} </span> <input type="checkbox" v-model="settingBufferColourNicknames" /></label>
                         </div>
                     </div>
 
                     <div class="app-settings-block">
+                        <h3>{{$t('notifications')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
-                            <h3>{{$t('notifications')}}</h3>
-                            <hr>
                             <label><span>{{$t('settings_show_joinpart')}} </span> <input type="checkbox" v-model="settingBufferTrafficAsActivity" /></label>
                             <label><span>{{$t('settings_mute_sound')}} </span> <input type="checkbox" v-model="settingBufferMuteSound" /></label>
-                            <label><span>{{$t('settings_highlight')}} </span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
+                            <label><span style="margin:0; width: 100%;">{{$t('settings_highlight')}} </span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
                         </div>
                     </div>
 
                     <div class="app-settings-block">
+                        <h3>{{$t('operator_tools')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-operator-tools">
-                            <h3>{{$t('operator_tools')}}</h3>
-                            <hr>
                             <label><span>{{$t('settings_default_ban_mask')}} </span> <input type="text" class="u-input" v-model="settingDefaultBanMask" /></label>
                             <label><span>{{$t('settings_default_kick_reason')}}</span> <input type="text" class="u-input" v-model="settingDefaultKickReason" /></label>
                         </div>
@@ -77,9 +73,8 @@
                 </tabbed-tab>
 
                 <tabbed-tab :header="$t('settings_aliases')">
+                    <h3>{{$t('settings_aliases')}}</h3>
                     <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
-                        <h3>{{$t('settings_aliases')}}</h3>
-                        <hr>
                         <settings-aliases></settings-aliases>
                     </div>
                 </tabbed-tab>
@@ -296,9 +291,21 @@ export default {
     width: 25%;
     display: block;
     box-sizing: border-box;
-    padding: 20px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     margin: 0 auto 20px auto;
+
+    h3 {
+        width: 100%;
+        background: #42b992;
+        color: #fff;
+        line-height: 45px;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .kiwi-appsettings-section {
+        padding: 10px;
+    }
 }
 
 .title {

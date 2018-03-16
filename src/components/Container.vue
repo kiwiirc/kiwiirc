@@ -128,14 +128,6 @@ export default {
     min-height: 100%;
 }
 
-/* If the sidebar is open, make the cursor stay as a pointer, so user's cannot interact with the elements whilst options are open */
-.kiwi-container.kiwi-container--sidebar-open .kiwi-header *,
-.kiwi-container.kiwi-container--sidebar-open .kiwi-messagelist .kiwi-controlinput *,
-.kiwi-container.kiwi-container--sidebar-open .kiwi-messagelist .kiwi-ircinput-editor {
-    cursor: default !important;
-    pointer-events: none !important;
-}
-
 .kiwi-header {
     z-index: 1;
 }

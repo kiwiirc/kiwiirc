@@ -2,15 +2,18 @@
     <div class="kiwi-statebrowser-network" :class="[
         isActiveNetwork ? 'kiwi-statebrowser-network--active' : '',
     ]">
-
-        <div class="kiwi-channel-options-header">
-            <span>Network:</span>
-
-            <div class="option-button kiwi--channel" v-bind:class="{ active: channel_add_display == true }"  @click="toggleAddChannel()">
-                <i class="fa fa-plus-square-o" aria-hidden="true"></i>
-            </div>
-            <div class="option-button kiwi-search-channels"  v-bind:class="{ active: channel_filter_display == true }"  @click="toggleFilterChannel()">
-                <i class="fa fa-search" aria-hidden="true"></i>
+        <div class="kiwi-statebrowser-network-header">
+            <a class="kiwi-statebrowser-network-name u-link" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
+            <div class="kiwi-network-name-options" v-if="network.buffers.length > 1">
+                <div class="option-button kiwi--collapse" @click="collapsed=!collapsed">
+                    <i class="fa" :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" aria-hidden="true"></i>
+                </div>
+                <div class="option-button kiwi--channel" v-bind:class="{ active: channel_add_display == true }"  @click="toggleAddChannel()">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+                <div class="option-button kiwi-search-channels"  v-bind:class="{ active: channel_filter_display == true }"  @click="toggleFilterChannel()">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
             </div>
         </div>
 
@@ -46,13 +49,6 @@
                     />
                 </div>
             </form>
-        </div>
-
-        <div class="kiwi-statebrowser-network-header">
-            <a class="kiwi-statebrowser-network-name u-link" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
-            <a v-if="network.buffers.length > 1" class="kiwi-statebrowser-network-toggle" @click="collapsed=!collapsed">
-                <i class="fa" :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" aria-hidden="true"></i>
-            </a>
         </div>
 
         <div class="kiwi-statebrowser-network-toggable-area" :class="[
@@ -219,22 +215,12 @@ export default {
     font-weight: 600;
 }
 
-.kiwi-channel-options-header .option-button {
-    float: right;
-    width: 35px;
-    transition: all 0.3s;
-    padding: 5px 0;
-    text-align: center;
-    cursor: pointer;
-}
-
-.kiwi-statebrowser-network-toggable-area--collapsed {
-    display: none;
-}
-
 .kiwi-statebrowser-network-header {
-    display: flex;
+    display: block;
     padding-right: 0;
+    position: relative;
+    overflow: hidden;
+    height: auto;
 }
 
 .kiwi-statebrowser-network-name {
@@ -243,14 +229,36 @@ export default {
     text-align: center;
     display: block;
     padding: 4px 0;
+    box-sizing: border-box;
 }
 
-.kiwi-statebrowser-network-toggle {
-    width: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.kiwi-network-name-options {
+    position: absolute;
+    top: 0;
+    height: 45px;
+    z-index: 10;
+    background-color: #131312;
+    right: -300px;
+    transition: all 0.3s;
+}
+
+.kiwi-statebrowser-network-header:hover .kiwi-network-name-options {
+    right: 0;
+    opacity: 1;
+}
+
+.kiwi-network-name-options .option-button {
+    float: right;
+    width: 35px;
+    transition: all 0.3s;
+    padding: 0;
+    line-height: 45px;
+    text-align: center;
     cursor: pointer;
+}
+
+.kiwi-statebrowser-network-toggable-area--collapsed {
+    display: none;
 }
 
 .kiwi-statebrowser-network-status {
@@ -306,16 +314,25 @@ export default {
     display: block;
     height: 100%;
     width: 35px;
+    opacity: 0;
     text-align: center;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .kiwi-statebrowser-channel-leave {
     float: right;
+    opacity: 0;
     width: 35px;
     cursor: pointer;
     margin-right: 0;
+    transition: all 0.3s;
+}
+
+.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings,
+.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave {
+    opacity: 1;
 }
 
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings {

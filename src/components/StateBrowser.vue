@@ -81,6 +81,10 @@
             </div>
         </div>
 
+        <div class="kiwi-channel-options-header">
+            <span>Networks:</span>
+        </div>
+
         <div class="kiwi-statebrowser-scrollarea">
             <div class="kiwi-statebrowser-networks">
                 <state-browser-network
@@ -369,33 +373,33 @@ export default {
         width: 100%;
         position: static;
         padding: 0;
-        margin: 10px 0 0 0;
+        margin: 0;
         box-sizing: border-box;
     }
 
     .kiwi-statebrowser-newnetwork a {
-        width: 90%;
+        width: 100%;
         padding: 0 10px;
-        margin: 0 5% 10px 5%;
+        margin: 0;
         opacity: 1;
-        line-height: 35px;
+        line-height: 39px;
         cursor: pointer;
         display: block;
         box-sizing: border-box;
         background: none;
         text-align: left;
         position: relative;
-        border-radius: 4px;
-        font-size: 0.8em;
+        border-radius: 0;
+        font-size: 0.9em;
         transition: all 0.3s;
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        border: none;
     }
 
     .kiwi-statebrowser-newnetwork a i {
         position: absolute;
         right: 10px;
-        line-height: 35px;
-        font-size: 1.2em;
+        line-height: 39px;
+        font-size: 1.15em;
     }
 
     .kiwi-statebrowser-newnetwork a:hover {
@@ -417,18 +421,6 @@ export default {
         width: 100%;
         font-size: 1em;
         font-weight: 600;
-    }
-
-    .kiwi-statebrowser-network .kiwi-statebrowser-network-header .kiwi-statebrowser-network-toggle {
-        position: absolute;
-        width: 35px;
-        margin: 0;
-        right: 0;
-        top: 0;
-        text-align: center;
-        display: block;
-        font-size: 1em;
-        padding: 0 !important;
     }
 
     /* Channel Styling */
