@@ -101,7 +101,7 @@
                         <i class="fa fa-bell-o" aria-hidden="true"></i>
                     </div>
 
-                    <div class="kiwi-statebrowser-channel-leave" @click="closeCurrentBuffer">
+                    <div class="kiwi-statebrowser-channel-leave" @click="closeBuffer(buffer)">
                         <i class="fa fa-times" aria-hidden="true"></i>
                     </div>
                 </div>
@@ -125,13 +125,13 @@ export default {
             channel_filter_display: false,
         };
     },
-    props: ['network', 'buffer', 'uiState'],
+    props: ['network', 'uiState'],
     components: {
         BufferSettings,
     },
     methods: {
-        closeCurrentBuffer: function closeCurrentBuffer() {
-            state.removeBuffer(this.buffer);
+        closeBuffer(buffer) {
+            state.removeBuffer(buffer);
         },
         showMessageCounts: function showMessageCounts(buffer) {
             return !buffer.setting('hide_message_counts');
