@@ -144,7 +144,6 @@ export default {
             options.showPass :
             true;
 
-
         if (options.autoConnect && this.username && this.password) {
             this.startUp();
         }

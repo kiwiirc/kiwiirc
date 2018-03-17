@@ -65,7 +65,6 @@
 import * as Misc from '@/helpers/Misc';
 import MessageInfo from './MessageInfo';
 
-
 export default {
     components: {
         MessageInfo,

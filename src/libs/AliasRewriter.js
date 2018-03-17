@@ -21,12 +21,11 @@ export default class AliasRewriter {
         this.aliases = {};
     }
 
-
     importFromString(str) {
         // Clear out the current aliases before adding new ones in
         this.aliases = {};
 
-        str.split('\n').forEach(line => {
+        str.split('\n').forEach((line) => {
             if (line[0] !== '/') {
                 return;
             }
@@ -45,7 +44,6 @@ export default class AliasRewriter {
             this.aliases[command.toLowerCase()] = actions;
         });
     }
-
 
     // Takes an array of words to process!
     processInput(input, vars) {
@@ -116,7 +114,6 @@ export default class AliasRewriter {
                 continue;
             }
 
-
             // Refering to a variable
             if (typeof vars[currentAliasWord.substr(1)] !== 'undefined') {
                 // Get the variable
@@ -128,7 +125,6 @@ export default class AliasRewriter {
 
         return compiled;
     }
-
 
     process(input, vars) {
         let line = input || '';
