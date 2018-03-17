@@ -302,6 +302,7 @@ export default Vue.component('irc-input', {
                 let foundStart = false;
                 let stop = false;
 
+                /* eslint-disable max-len */
                 while (!stop && (node = nodeStack.pop())) {
                     if (node.nodeType === 3) {
                         let nextCharIndex = charIndex + node.length;
@@ -321,6 +322,7 @@ export default Vue.component('irc-input', {
                         }
                     }
                 }
+                /* eslint-enable max-len */
 
                 // Firefox needs the manual focus() call
                 this.$refs.editor.focus();

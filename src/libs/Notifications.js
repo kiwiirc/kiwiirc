@@ -15,7 +15,7 @@ export function requestPermission() {
     }
 
     if (Notification.permission !== 'denied') {
-        Notification.requestPermission(permission => {
+        Notification.requestPermission((permission) => {
             if (permission === 'granted') {
                 isEnabled = true;
             } else {
@@ -24,7 +24,6 @@ export function requestPermission() {
         });
     }
 }
-
 
 export function show(title, body, opts) {
     if (!isEnabled) {
@@ -44,7 +43,6 @@ export function show(title, body, opts) {
 }
 
 const throttledShow = _.throttle(show, 2000);
-
 
 export function listenForNewMessages(state) {
     state.$on('notification.show', (message, _opts) => {

@@ -60,7 +60,6 @@ export default {
         this.updateBanlist();
     },
 };
-
 </script>
 
 <style lang="less">

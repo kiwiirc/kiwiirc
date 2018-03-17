@@ -72,14 +72,13 @@ export default function bouncerMiddleware() {
     }
 }
 
-
 function addFunctionsToClient(client) {
     let bnc = client.bnc = {};
 
     bnc.getNetworks = function getNetworks() {
         return new Promise((resolve, reject) => {
             client.raw('BOUNCER listnetworks');
-            client.once('bouncer networks', networks => {
+            client.once('bouncer networks', (networks) => {
                 resolve(networks);
             });
         });
@@ -88,7 +87,7 @@ function addFunctionsToClient(client) {
     bnc.getBuffers = function getBuffers(netName) {
         return new Promise((resolve, reject) => {
             client.raw('BOUNCER listbuffers ' + netName);
-            client.once('bouncer buffers ' + netName.toLowerCase(), buffers => {
+            client.once('bouncer buffers ' + netName.toLowerCase(), (buffers) => {
                 resolve(buffers);
             });
         });
@@ -179,10 +178,9 @@ function addFunctionsToClient(client) {
     };
 }
 
-
 function parseTags(tagString) {
     let tags = Object.create(null);
-    (tagString || '').split(';').forEach(tag => {
+    (tagString || '').split(';').forEach((tag) => {
         let parts = tag.replace('\\s', ' ')
             .replace('\\:', ';')
             .split('=');
