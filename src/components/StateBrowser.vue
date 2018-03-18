@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="kiwi-statebrowser-newnetwork" v-if="!channel_filter && !add_channel_open">
+        <div class="kiwi-statebrowser-newnetwork" v-if="!isRestrictedServer">
             <a @click="clickAddNetwork" class="u-button u-button-primary">Add Network<i class="fa fa-plus" aria-hidden="true"></i></a>
         </div>
     </div>
@@ -112,7 +112,6 @@ import BufferSettings from './BufferSettings';
 import NetworkProvider from '@/libs/NetworkProvider';
 import NetworkProviderZnc from '@/libs/networkproviders/NetworkProviderZnc';
 import GlobalApi from '@/libs/GlobalApi';
-import * as Misc from '@/helpers/Misc';
 
 let netProv = new NetworkProvider();
 
@@ -131,10 +130,6 @@ export default {
             show_provided_networks: false,
             provided_networks: Object.create(null),
             pluginUiElements: GlobalApi.singleton().stateBrowserPlugins,
-            new_channel_input: '',
-            add_channel_open: false,
-            new_channel_input_has_focus: false,
-            channel_filter: '',
         };
     },
     props: ['networks', 'uiState'],
@@ -157,50 +152,6 @@ export default {
         },
         closeBuffer: function closeBuffer() {
             state.removeBuffer(this.bufferForPopup);
-        },
-        onNewChannelInputFocus: function onNewChannelInputFocus() {
-            // Auto insert the # if no value is already in. Easier for mobile users
-            if (!this.new_channel_input) {
-                this.new_channel_input = '#';
-            }
-        },
-        onNewChannelInputBlur: function onNewChannelInputBlur() {
-            // Remove the # since we may have auto inserted it as they tabbed past
-            if (this.new_channel_input === '#') {
-                this.new_channel_input = '';
-            }
-            this.add_channel_open = false;
-        },
-        submitNewChannelForm() {
-            let newChannelVal = this.new_channel_input;
-            this.new_channel_input = '#';
-
-            let network = state.getActiveNetwork();
-            let bufferObjs = Misc.extractBuffers(newChannelVal);
-
-            // Only switch to the first channel we join if multiple are being joined
-            let hasSwitchedActiveBuffer = false;
-            bufferObjs.forEach(bufferObj => {
-                let chanName = bufferObj.name;
-                let ignoreNames = ['#0', '0', '&0'];
-                if (ignoreNames.indexOf(chanName) > -1 || chanName.replace(/[#&]/g, '') === '') {
-                    return;
-                }
-
-                let newBuffer = state.addBuffer(network.id, chanName);
-                if (newBuffer && !hasSwitchedActiveBuffer) {
-                    state.setActiveBuffer(network.id, newBuffer.name);
-                    hasSwitchedActiveBuffer = true;
-                }
-
-                if (bufferObj.key) {
-                    newBuffer.key = bufferObj.key;
-                }
-
-                if (network.isChannelName(chanName)) {
-                    network.ircClient.join(chanName, bufferObj.key);
-                }
-            });
         },
         clickAddNetwork: function clickAddNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);

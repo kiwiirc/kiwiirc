@@ -17,16 +17,18 @@
             </div>
         </div>
 
-        <div class="kiwi-statebrowser-channelfilter" v-if="channel_filter_display == true">
+        <div class="kiwi-statebrowser-channelfilter" v-if="channel_filter_display">
             <input
                 type="text"
+                v-focus
                 v-model="channel_filter"
+                @blur="onChannelFilterInputBlur"
                 placeholder="Filter Channels..."
             />
             <p>Show Advanced Options</p>
         </div>
 
-        <div class="kiwi-statebrowser-channels-info" v-if="channel_add_display == true">
+        <div class="kiwi-statebrowser-channels-info" v-if="channel_add_display">
             <form
                 @submit.prevent="submitNewChannelForm"
                 class="kiwi-statebrowser-newchannel"
@@ -35,7 +37,7 @@
                     v-focus
                     class="kiwi-statebrowser-newchannel-inputwrap"
                     :class="[
-                        new_channel_input_has_focus ?
+                        channel_add_input_has_focus ?
                             'kiwi-statebrowser-newchannel-inputwrap--focus' :
                             ''
                     ]"
@@ -43,7 +45,7 @@
                     <input
                         type="text"
                         :placeholder="$t('state_join')"
-                        v-model="new_channel_input"
+                        v-model="channel_add_input"
                         @focus="onNewChannelInputFocus"
                         @blur="onNewChannelInputBlur"
                     />
@@ -110,6 +112,7 @@
 
 import _ from 'lodash';
 import state from '@/libs/state';
+import * as Misc from '@/helpers/Misc';
 import BufferSettings from './BufferSettings';
 
 export default {
@@ -117,8 +120,10 @@ export default {
         return {
             collapsed: false,
             channel_filter: '',
-            channel_add_display: false,
             channel_filter_display: false,
+            channel_add_display: false,
+            channel_add_input_has_focus: false,
+            channel_add_input: '',
         };
     },
     props: ['network', 'uiState'],
@@ -126,6 +131,64 @@ export default {
         BufferSettings,
     },
     methods: {
+        onNewChannelInputFocus() {
+            // Auto insert the # if no value is already in. Easier for mobile users
+            if (!this.channel_add_input) {
+                this.channel_add_input = '#';
+            }
+
+            this.channel_add_input_has_focus = true;
+        },
+        onNewChannelInputBlur() {
+            // Remove the # since we may have auto inserted it as they tabbed past
+            if (this.channel_add_input === '#') {
+                this.channel_add_input = '';
+            }
+
+            // If nothing was entered into the input box, hide it just to clean up the UI
+            if (!this.channel_add_input) {
+                this.channel_add_display = false;
+            }
+
+            this.channel_add_input_has_focus = false;
+        },
+        submitNewChannelForm() {
+            let newChannelVal = this.channel_add_input;
+            this.channel_add_input = '#';
+
+            let network = this.network;
+            let bufferObjs = Misc.extractBuffers(newChannelVal);
+
+            // Only switch to the first channel we join if multiple are being joined
+            let hasSwitchedActiveBuffer = false;
+            bufferObjs.forEach(bufferObj => {
+                let chanName = bufferObj.name;
+                let ignoreNames = ['#0', '0', '&0'];
+                if (ignoreNames.indexOf(chanName) > -1 || chanName.replace(/[#&]/g, '') === '') {
+                    return;
+                }
+
+                let newBuffer = state.addBuffer(network.id, chanName);
+                if (newBuffer && !hasSwitchedActiveBuffer) {
+                    state.setActiveBuffer(network.id, newBuffer.name);
+                    hasSwitchedActiveBuffer = true;
+                }
+
+                if (bufferObj.key) {
+                    newBuffer.key = bufferObj.key;
+                }
+
+                if (network.isChannelName(chanName)) {
+                    network.ircClient.join(chanName, bufferObj.key);
+                }
+            });
+        },
+        onChannelFilterInputBlur() {
+            // If nothing was entered into the input box, hide it just to clean up the UI
+            if (!this.channel_filter) {
+                this.channel_filter_display = false;
+            }
+        },
         closeBuffer(buffer) {
             state.removeBuffer(buffer);
         },
