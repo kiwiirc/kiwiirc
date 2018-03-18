@@ -434,7 +434,7 @@ export default {
             .kiwi-statebrowser-channel-name {
                 text-align: left;
                 font-weight: 100;
-                font-size: 0.8em;
+                font-size: 1em;
             }
 
             .kiwi-statebrowser-channel-label {
@@ -694,8 +694,7 @@ export default {
 
     //Resize the buttons within the statebrowser
     .kiwi-statebrowser .kiwi-statebrowser-newchannel a,
-    .kiwi-statebrowser .kiwi-statebrowser-profile .user-options,
-    .kiwi-statebrowser .kiwi-statebrowser-newnetwork a {
+    .kiwi-statebrowser .kiwi-statebrowser-profile .user-options {
         margin-right: 2.5%;
         margin-left: 2.5%;
         width: 95%;

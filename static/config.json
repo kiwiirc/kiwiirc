@@ -12,7 +12,7 @@
 		"port": 6667,
 		"tls": false,
 		"direct": false,
-		"channel": "#testing22",
+		"channel": "#ubuntu",
 		"nick": "kiwi-n?"
 	},
 	"embedly": {

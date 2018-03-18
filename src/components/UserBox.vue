@@ -15,7 +15,7 @@
 
             <form class="u-form">
                 <label>
-                    <input type="checkbox" v-model="user.ignore" /> <span> {{$t('ignore_user')}} </span>
+                    <input type="checkbox" v-model="user.ignore" /> <span class="kiwi-ignore-user-span"> {{$t('ignore_user')}} </span>
                 </label>
             </form>
         </div>
@@ -317,6 +317,7 @@ export default {
 
         span {
             font-weight: 600;
+            width: 100%;
             margin: 0 0 0.4em 0;
         }
 
@@ -333,6 +334,8 @@ export default {
             font-size: 1.2em;
             opacity: 0.8;
             line-height: 1.2em;
+            padding: 0;
+            text-align: left;
         }
 
         .data {
@@ -367,6 +370,11 @@ export default {
         label {
             display: block;
             cursor: pointer;
+
+            span {
+                text-align: left;
+                width: auto;
+            }
         }
     }
 
@@ -456,7 +464,16 @@ export default {
     display: block;
 }
 
-@media screen and (max-width: 500px) {
+.kiwi-userbox .kiwi-userbox-basicinfo .kiwi-ignore-user-span {
+    text-align: left;
+    width: auto;
+}
+
+@media screen and (max-width: 769px) {
+    .kiwi-container--sidebar-open .kiwi-sidebar-userbox {
+        width: 100%;
+    }
+
     .kiwi-userbox {
         left: 0;
         right: 0;
@@ -464,6 +481,38 @@ export default {
         top: auto !important;
         max-width: 100%;
         border-width: 1px 0;
+
+        .u-form {
+            width: 100%;
+            float: left;
+        }
+    }
+
+    .kiwi-userbox .kiwi-userbox-header {
+        padding-left: 10px;
+    }
+
+    .kiwi-userbox .kiwi-userbox-header i {
+        display: none;
+    }
+
+    .kiwi-userbox .kiwi-userbox-basicinfo {
+        padding: 10px 10px;
+        float: left;
+    }
+
+    .kiwi-userbox-actions {
+        float: left;
+        padding: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .kiwi-userbox .kiwi-userbox-actions .u-button {
+        width: 200px;
+        clear: both;
+        margin: 0 auto 20px auto;
+        display: block;
     }
 }
 </style>

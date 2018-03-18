@@ -198,7 +198,7 @@ export default {
     }
 
     .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
-        border-top: 5px solid #86b32d;
+        border-top: 5px solid #42b992;
     }
 }
 

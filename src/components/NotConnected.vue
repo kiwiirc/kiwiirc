@@ -199,4 +199,15 @@ export default {
     }
 }
 
+@media screen and (max-width: 769px) {
+    .kiwi-notconnected {
+        font-size: 0.8em;
+    }
+
+    .kiwi-notconnected .button-container .button,
+    .kiwi-notconnected .button-container .button.connection-settings {
+        font-size: 0.7em;
+    }
+}
+
 </style>
