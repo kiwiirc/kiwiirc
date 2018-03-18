@@ -192,7 +192,7 @@ export default {
 
         this.nick = this.processNickRandomNumber(Misc.queryStringVal('nick') || options.nick || '');
         this.password = options.password || '';
-        this.channel = window.location.hash || options.channel || '';
+        this.channel = decodeURI(window.location.hash) || options.channel || '';
         this.showChannel = typeof options.showChannel === 'boolean' ?
             options.showChannel :
             true;
