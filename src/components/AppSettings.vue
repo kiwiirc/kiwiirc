@@ -15,9 +15,9 @@
                         <h3>{{$t('settings_general')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-general">
                             <label>
-                                <span style="margin-left: 0;">{{$t('settings_theme')}} </span>
-                                <a @click="refreshTheme" style="float: right;" title="Refresh Theme" class="kiwi-appsettings-theme-reload"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                <select v-model="theme" style="float: right;">
+                                <span class="kiwi-span-settings-theme">{{$t('settings_theme')}} </span>
+                                <a @click="refreshTheme" title="Refresh Theme" class="kiwi-appsettings-theme-reload"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                <select v-model="theme" class="kiwi-span-theme">
                                     <option v-for="t in settings.themes" :value="t.name">{{t.name}}</option>
                                 </select>
                             </label>
@@ -47,7 +47,7 @@
                             <label><span>{{$t('settings_24hour_timestamps')}} </span> <input type="checkbox" v-model="timestamps_24h" /></label>
                             <label><span>{{$t('settings_emoticons')}} </span> <input type="checkbox" v-model="settingBufferShowEmoticons" /></label>
                             <label><span>{{$t('settings_block_private')}} </span> <input type="checkbox" v-model="settingBufferBlockPms" /></label>
-                            <label><span style="margin: 0; width: 100%;">{{$t('settings_scrollback')}} </span> <br> <input type="number" class="u-input kiwi-scrollback-count" v-model="settingBufferScrollbackSize" /></label>
+                            <label><span class="kiwi-span-fullwidth">{{$t('settings_scrollback')}} </span> <br> <input type="number" class="u-input kiwi-scrollback-count" v-model="settingBufferScrollbackSize" /></label>
                             <label><span>{{$t('settings_formatting')}} </span> <input type="checkbox" v-model="settingBufferExtraFormatting" /></label>
                             <label><span>{{$t('settings_nick_colouring')}} </span> <input type="checkbox" v-model="settingBufferColourNicknames" /></label>
                         </div>
@@ -56,9 +56,9 @@
                     <div class="app-settings-block">
                         <h3>{{$t('notifications')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
-                            <label><span style="max-width: none !important;">{{$t('settings_show_joinpart')}} </span> <input type="checkbox" v-model="settingBufferTrafficAsActivity" /></label>
+                            <label><span class="kiwi-showjoinpart-span">{{$t('settings_show_joinpart')}} </span> <input type="checkbox" v-model="settingBufferTrafficAsActivity" /></label>
                             <label><span>{{$t('settings_mute_sound')}} </span> <input type="checkbox" v-model="settingBufferMuteSound" /></label>
-                            <label><span style="margin:0; width: 100%;">{{$t('settings_highlight')}} </span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
+                            <label><span class="kiwi-span-fullwidth">{{$t('settings_highlight')}} </span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
                         </div>
                     </div>
 
@@ -255,6 +255,23 @@ export default {
         width: 100%;
         overflow: hidden;
 
+        .kiwi-span-settings-theme {
+            margin-left: 0;
+        }
+
+        .kiwi-showjoinpart-span {
+            max-width: none;
+        }
+
+        .kiwi-span-fullwidth {
+            margin: 0;
+            width: 100%;
+        }
+
+        .kiwi-span-theme {
+            float: right;
+        }
+
         .kiwi-scrollback-count {
             width: 100%;
             box-sizing: border-box;
@@ -287,6 +304,7 @@ export default {
 
 .kiwi-appsettings-theme-reload {
     margin-left: 1em;
+    float: right;
     cursor: pointer;
 }
 
@@ -320,7 +338,7 @@ export default {
 
 .title {
     display: block;
-    cursor: pointer !important;
+    cursor: pointer;
     padding: 0 10px;
     margin: -1px 0 0 0;
     font-weight: 600;

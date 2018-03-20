@@ -478,7 +478,7 @@ export default {
         left: 0;
         right: 0;
         bottom: 40px;
-        top: auto !important;
+        top: auto;
         max-width: 100%;
         border-width: 1px 0;
 

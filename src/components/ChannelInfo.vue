@@ -136,8 +136,9 @@ export default {
     display: block;
 }
 
-.kiwi-channelinfo-topic textarea {
+.kiwi-channelinfo-topic .u-form textarea {
     resize: none;
+    line-height: normal;
 }
 
 .u-form .kiwi-channelinfo-topic {

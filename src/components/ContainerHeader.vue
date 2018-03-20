@@ -206,7 +206,7 @@ export default {
     }
 
     &:hover {
-        max-height: none !important;
+        max-height: none;
 
         .kiwi-header-topic {
             display: block;
