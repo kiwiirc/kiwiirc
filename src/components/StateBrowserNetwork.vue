@@ -4,6 +4,9 @@
     ]">
         <div class="kiwi-statebrowser-network-header">
             <a class="kiwi-statebrowser-network-name u-link" @click="setActiveBuffer(network.serverBuffer())">{{network.name}}</a>
+            <div class="kiwi-network-name-hover-icon">
+                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+            </div>
             <div class="kiwi-network-name-options" v-if="network.buffers.length > 1">
                 <div class="option-button kiwi--collapse" @click="collapsed=!collapsed">
                     <i class="fa" :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" aria-hidden="true"></i>
@@ -94,7 +97,7 @@
                         class="kiwi-statebrowser-channel-settings"
                         @click="uiState.showBufferSettings()"
                     >
-                        <i class="fa fa-bell-o" aria-hidden="true"></i>
+                        <i class="fa fa-cog" aria-hidden="true"></i>
                     </div>
 
                     <div class="kiwi-statebrowser-channel-leave" @click="closeBuffer(buffer)">
@@ -230,6 +233,17 @@ export default {
     display: block;
     padding: 4px 0;
     box-sizing: border-box;
+}
+
+.kiwi-network-name-hover-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 45px;
+    z-index: 2;
+    width: 45px;
+    text-align: center;
+    line-height: 45px;
 }
 
 .kiwi-network-name-options {

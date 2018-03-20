@@ -452,6 +452,14 @@
 }
 
 /* Nicklist ( Nicklist.vu ) */
+.kiwi-nicklist  .user-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.kiwi-nicklist .kiwi-nicklist-info{
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
 .kiwi-nicklist-info input {
     background-color: #fff;
     border-top: 2px solid #42b992;
@@ -461,8 +469,11 @@
 }
 
 .kiwi-nicklist-users .kiwi-nicklist-user {
-    border-left: 3px solid #42b992;
     border-top: 1px solid #858585;
+}
+
+.kiwi-nicklist-users .kiwi-nicklist-user:first-of-type {
+    border-top: none;
 }
 
 .kiwi-nicklist-users .kiwi-nicklist-user:after {
