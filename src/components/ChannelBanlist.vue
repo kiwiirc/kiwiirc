@@ -63,9 +63,24 @@ export default {
 
 </script>
 
-<style>
+<style lang="less">
 .kiwi-channelbanlist-table {
     width: 100%;
     border-collapse: collapse;
+    line-height: 20px;
+    margin-top: 10px;
+
+    .kiwi-channelbanlist-table-bannedat {
+        min-width: 150px;
+    }
+
+    .kiwi-channelbanlist-table-actions {
+        min-width: 50px;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s;
+        z-index: 1;
+    }
 }
 </style>

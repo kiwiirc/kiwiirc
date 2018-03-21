@@ -125,11 +125,6 @@ export default {
 }
 
 /* When the sidebar is open we will put a shadow over the text area */
-.kiwi-container--sidebar-open {
-    position: relative;
-    min-height: 100%;
-}
-
 .kiwi-header {
     z-index: 1;
 }

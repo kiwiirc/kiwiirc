@@ -254,7 +254,6 @@ export default {
 .kiwi-sidebar-buffersettings {
     overflow: hidden;
     height: 100%;
-    padding-bottom: 42px;
 
     .u-tabbed-content {
         padding: 1em;

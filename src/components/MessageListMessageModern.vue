@@ -184,7 +184,7 @@ export default {
             padding-top: 0;
         }
 
-        .kiwi-messagelist-message-topic {
+        &.kiwi-messagelist-message-topic {
             padding-top: 10px;
             padding-bottom: 10px;
         }
