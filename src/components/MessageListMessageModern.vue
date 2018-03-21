@@ -178,12 +178,6 @@ export default {
         cursor: default;
     }
 
-    &.kiwi-messagelist-message-traffic {
-        .kiwi-messagelist-modern-left {
-            width: 10px;
-        }
-    }
-
     &.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-right,
     &.kiwi-messagelist-message-mode .kiwi-messagelist-modern-right {
         float: left;
