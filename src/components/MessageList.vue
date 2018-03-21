@@ -346,204 +346,147 @@ export default {
     overflow-y: auto;
     background: #fff;
     height: 100%;
+}
 
-    .kiwi-messagelist-message {
-        padding: 0 10px;
-        margin: 10px 0 0 0;
+.kiwi-messagelist-message {
+    padding: 0 10px;
 
-        /* some message highlights add a left border so add a default invisble one to keep them inline */
-        border-left: 3px solid transparent;
+    /* some message highlights add a left border so add a default invisble one to keep them inline */
+    border-left: 3px solid transparent;
+    overflow: hidden;
+    transition: opacity 0.2s;
+    line-height: 1.5em;
+    margin: 0 3px;
 
-        &:last-of-type {
-            margin-bottom: 20px;
-        }
-    }
-
-    .kiwi-messagelist-message-mode,
-    .kiwi-messagelist-message-traffic {
-        padding-left: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-
-        .kiwi-messagelist-modern-left {
-            width: 10px;
-        }
-    }
-
-    /* Start of the not connected message styling */
-    .kiwi-messagelist-message-connection {
-        text-align: left;
-        padding: 0;
+    &:last-of-type {
         margin-bottom: 20px;
     }
+}
 
-    .kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-modern-left,
-    .kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-modern-left {
+.kiwi-messagelist-message-mode,
+.kiwi-messagelist-message-traffic {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Start of the not connected message styling */
+.kiwi-messagelist-message-connection {
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.kiwi-messagelist-message-connection .kiwi-messagelist-body,
+.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
+    font-size: 1.2em;
+    height: auto;
+    line-height: normal;
+    text-align: center;
+    cursor: default;
+    float: none;
+    display: block;
+    width: 250px;
+    padding: 0.5em 0;
+    margin: 1em auto 1em auto;
+    border-radius: 0.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
+    background-color: #b9424a;
+}
+
+.kiwi-messagelist-message-connection .kiwi-messagelist-time,
+.kiwi-messagelist-message-connection-connected .kiwi-messagelist-nick {
+    display: none;
+}
+
+.kiwi-messagelist-message-connection-connected,
+.kiwi-messagelist-message-connection-disconnected {
+    padding: 0;
+    border: none;
+    margin: 0;
+    background: none;
+    text-align: center;
+}
+
+/* Remove the styling for none user messages, as they make the page look bloated */
+.kiwi-messagelist-message-mode,
+.kiwi-messagelist-message-traffic,
+.kiwi-messagelist-message-connection-connected {
+    padding: 0.1em 0.5em;
+    min-height: 0;
+    line-height: normal;
+    margin: 1em 0.5em;
+    text-align: left;
+}
+
+/* Remove the min height from the message, as again, makes the page look bloated */
+.kiwi-messagelist-body {
+    min-height: 0;
+    margin: 0;
+    text-align: left;
+    padding: 2px 4px;
+    padding-right: 20px;
+    line-height: 1.5em;
+}
+
+.kiwi-messagelist-message--own {
+    min-height: 0;
+    height: auto;
+}
+
+/* Channel messages - e.g 'server on #testing22 ' message and such */
+.kiwi-messagelist-message-mode,
+.kiwi-messagelist-message-traffic-join,
+.kiwi-messagelist-message-traffic-leave,
+.kiwi-messagelist-message-traffic-quit,
+.kiwi-messagelist-message-nick {
+    padding: 5px  0 5px 0;
+    font-weight: 600;
+    margin: 10px 0;
+    opacity: 0.85;
+    font-size: 0.9em;
+    text-align: center;
+    border: none;
+    transition: all 0.3s;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    .kiwi-messagelist-time {
         display: none;
     }
+}
 
-    .kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-body,
-    .kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
-        font-size: 1.2em;
-        height: auto;
-        line-height: normal;
-        text-align: center;
-        cursor: default;
-        float: none;
-        display: block;
-        width: 250px;
-        padding: 0.5em 0;
-        margin: 1em auto 1em auto;
-        border-radius: 0.2em;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
+/* Absolute position the time on these messages so it's not above the message, it looks awful */
+.kiwi-messagelist-message-mode .kiwi-messagelist-time,
+.kiwi-messagelist-message-traffic .kiwi-messagelist-time {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+}
 
-    .kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
-        background-color: #b9424a;
-    }
+.kiwi-messagelist-message .kiwi-messagelist-body {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
-    .kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-time,
-    .kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-nick {
-        display: none;
-    }
+.kiwi-messagelist-message-repeat {
+    border-top: none;
+}
 
-    .kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected,
-    .kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-disconnected {
-        padding: 0;
-        border: none;
-        margin: 0;
-        background: none;
-        text-align: center;
-    }
-
-    .kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-modern-right,
-    .kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-modern-right {
-        margin-left: 0;
-        padding: 0;
-    }
-
-    /* End of connection message styling */
-
-    .kiwi-messagelist-message.kiwi-messagelist-message--compact {
-        padding: 0.5em 0 0.5em 95px;
-        position: relative;
-    }
-
-    /* Remove the styling for none user messages, as they make the page look bloated */
-    .kiwi-messagelist-message-mode,
-    .kiwi-messagelist-message-traffic,
-    .kiwi-messagelist-message-connection-connected {
-        padding: 0.1em 0.5em;
-        min-height: 0;
-        line-height: normal;
-        margin: 1em 0.5em;
-        text-align: left;
-    }
-
-    .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-right,
-    .kiwi-messagelist-message--modern.kiwi-messagelist-message-mode .kiwi-messagelist-modern-right {
-        float: left;
-        margin-left: 0;
-    }
-
-    /* Remove the min height from the message, as again, makes the page look bloated */
-    .kiwi-messagelist-body {
-        min-height: 0;
-        margin: 0;
-        text-align: left;
-        padding-right: 20px;
-    }
-
-    /* If the user types another message after thier first, fix the spacing issues */
-    .kiwi-messagelist-message.kiwi-messagelist-message-repeat .kiwi-messagelist-time,
-    .kiwi-messagelist-message.kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
-        display: none;
-    }
-
-    .kiwi-messagelist-message--own {
-        min-height: 0;
-        height: auto;
-    }
-
-    /* Channel messages - e.g 'server on #testing22 ' message and such */
-    .kiwi-messagelist-message-mode,
-    .kiwi-messagelist-message-traffic-join,
-    .kiwi-messagelist-message-traffic-leave,
-    .kiwi-messagelist-message-traffic-quit,
-    .kiwi-messagelist-message-nick {
-        padding: 5px  0 5px 0;
-        font-weight: 600;
-        margin: 10px 0;
-        opacity: 0.85;
-        font-size: 0.9em;
-        text-align: center;
-        border: none;
-        transition: all 0.3s;
-
-        &:hover {
-            opacity: 1;
-        }
-
-        .kiwi-messagelist-time {
-            display: none;
-        }
-    }
-
-    .kiwi-messagelist-message--modern.kiwi-messagelist-message-mode .kiwi-messagelist-nick {
-        display: none;
-    }
-
-    /* Absolute position the time on these messages so it's not above the message, it looks awful */
-    .kiwi-messagelist-message-mode .kiwi-messagelist-time,
-    .kiwi-messagelist-message-traffic .kiwi-messagelist-time {
-        position: absolute;
-        top: 1px;
-        right: 20px;
-    }
-
-    .kiwi-messagelist-message .kiwi-messagelist-body {
-        float: left;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .kiwi-messagelist-message-repeat {
-        border-top: none;
-    }
-
-    .kiwi-messagelist-message-repeat .kiwi-messagelist-nick,
-    .kiwi-messagelist-message-repeat .kiwi-messagelist-time {
-        /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
-        opacity: 0;
-        cursor: default;
-    }
-
-    /* Topic Styling */
-    .kiwi-messagelist-message-topic {
-        text-align: left;
-        position: relative;
-        min-height: 0;
-        display: block;
-        padding: 1em;
-        color: #000;
-        border: 1px solid #42b992;
-        margin-bottom: 0;
-
-        .kiwi-messagelist-modern-left {
-            display: none;
-        }
-
-        .kiwi-messagelist-body {
-            min-height: 0;
-            margin: 0;
-
-            &::before {
-                display: none;
-            }
-        }
-    }
+.kiwi-messagelist-message-repeat .kiwi-messagelist-nick,
+.kiwi-messagelist-message-repeat .kiwi-messagelist-time {
+    /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
+    opacity: 0;
+    cursor: default;
 }
 
 .kiwi-container--sidebar-open .kiwi-messagelist::after {
@@ -570,24 +513,6 @@ export default {
 .kiwi-messagelist-scrollback {
     text-align: center;
     padding: 5px;
-}
-
-.kiwi-messagelist-message {
-    overflow: hidden;
-    transition: opacity 0.2s;
-    line-height: 1.5em;
-    margin: 0 3px;
-}
-
-.kiwi-messagelist-message-repeat {
-    border-top: none;
-}
-
-.kiwi-messagelist-message-repeat .kiwi-messagelist-nick,
-.kiwi-messagelist-message-repeat .kiwi-messagelist-time {
-    /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
-    opacity: 0;
-    cursor: default;
 }
 
 .kiwi-messagelist-seperator + .kiwi-messagelist-message {
@@ -671,13 +596,8 @@ export default {
 }
 
 /** Message structure */
-.kiwi-messagelist-body {
-    padding: 2px 4px;
-    line-height: 1.5em;
-
-    .kiwi-nick {
-        cursor: pointer;
-    }
+.kiwi-messagelist-body .kiwi-nick {
+    cursor: pointer;
 }
 
 .kiwi-messagelist-nick:hover {
@@ -690,8 +610,21 @@ export default {
     border: 1px solid #f3c572;
     border-radius: 5px;
     margin: 18px;
+    margin-left: 0;
     padding: 5px;
     text-align: center;
+    position: relative;
+    min-height: 0;
+    display: block;
+}
+
+.kiwi-messagelist-message-topic .kiwi-messagelist-body {
+    min-height: 0;
+    margin: 0;
+
+    &::before {
+        display: none;
+    }
 }
 
 .kiwi-messagelist-message-topic.kiwi-messagelist-message-topic .kiwi-messagelist-time {
@@ -700,10 +633,6 @@ export default {
 
 .kiwi-messagelist-message-topic.kiwi-messagelist-message-topic .kiwi-messagelist-nick {
     display: none;
-}
-
-.kiwi-messagelist-message-topic .kiwi-messagelist-body {
-    margin-left: 0;
 }
 
 /* Actions */
@@ -724,11 +653,6 @@ export default {
     display: none;
 }
 
-.kiwi-messagelist-message-connection {
-    text-align: center;
-    font-weight: bold;
-}
-
 /* MOTD */
 .kiwi-messagelist-message-motd {
     font-family: monospace;
@@ -743,17 +667,6 @@ export default {
 
 .kiwi-wrap--touch .kiwi-messagelist-message-linkhandle {
     display: none;
-}
-
-.kiwi-messagelist-message--modern {
-    margin: 0 20px;
-    margin-left: 10px;
-    padding: 10px;
-    border-left: 7px solid transparent;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-    margin: 5px 18px 15px  18px;
 }
 
 .kiwi-messagelist-message-whois {

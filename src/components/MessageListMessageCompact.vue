@@ -91,6 +91,8 @@ export default {
 <style lang="less">
 
 .kiwi-messagelist-message--compact {
+    position: relative;
+
     .kiwi-messagelist-message-privmsg:hover,
     .kiwi-messagelist-message-action:hover,
     .kiwi-messagelist-message-notice:hover, {
@@ -114,6 +116,7 @@ export default {
     }
 
     .kiwi-messagelist-body {
+        float: none;
         display: block;
         white-space: pre-wrap;
         word-wrap: break-word;

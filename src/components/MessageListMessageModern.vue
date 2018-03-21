@@ -119,6 +119,9 @@ export default {
     border-left: 7px solid transparent;
     display: flex;
     transition: none;
+    margin: 0 20px;
+    margin-left: 10px;
+    padding: 10px;
 
     .kiwi-messagelist-body {
         white-space: pre-wrap;
@@ -173,6 +176,41 @@ export default {
         padding: 0;
         opacity: 0.8;
         cursor: default;
+    }
+
+    &.kiwi-messagelist-message-traffic {
+        .kiwi-messagelist-modern-left {
+            width: 10px;
+        }
+    }
+
+    &.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-right,
+    &.kiwi-messagelist-message-mode .kiwi-messagelist-modern-right {
+        float: left;
+        margin-left: 0;
+    }
+
+    &.kiwi-messagelist-message-mode .kiwi-messagelist-nick {
+        display: none;
+    }
+
+    &.kiwi-messagelist-message-topic {
+        margin: 5px 18px 15px  18px;
+
+        .kiwi-messagelist-modern-left {
+            display: none;
+        }
+    }
+
+    &.kiwi-messagelist-message-connection {
+        .kiwi-messagelist-modern-left {
+            display: none;
+        }
+
+        .kiwi-messagelist-modern-right {
+            margin-left: 0;
+            padding: 0;
+        }
     }
 
     &.kiwi-messagelist-message-repeat {
