@@ -1,7 +1,6 @@
 <template>
     <div class="kiwi-nicklist">
         <div class="user-count">
-            <span class="count-title">Users</span>
             <span class="count">{{$t('person', {count: sortedUsers.length})}}</span>
         </div>
 
@@ -188,28 +187,28 @@ export default {
     min-height: 100px;
     margin: auto;
     width: 100%;
-    padding-bottom: 42px;
+    //Padding bottom is needed, otherwise the scrollbar will show on the right side.
+    padding-bottom: 1px;
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 
     .user-count {
         display: flex;
         width: 100%;
-        text-align: left;
+        text-align: center;
         flex-direction: column;
         align-items: flex-start;
         padding: 0.5em 10px;
         cursor: default;
-
-        span.count-title {
-            font-size: 1em;
-            font-weight: 600;
-            margin: 0 0 5px 0;
-        }
+        height: 38px;
+        box-sizing: border-box;
 
         span.count {
-            font-weight: 400;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
         }
     }
 
@@ -217,6 +216,7 @@ export default {
         float: right;
         width: 100%;
         margin: auto;
+        height: 43px;
         box-sizing: border-box;
         position: relative;
 
@@ -254,6 +254,7 @@ export default {
         overflow-x: hidden;
         box-sizing: border-box;
         max-height: 100%;
+        flex: 1 auto;
 
         .kiwi-nicklist-user {
             height: 40px;

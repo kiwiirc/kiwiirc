@@ -371,7 +371,14 @@ export default {
     transition: padding 0.1s, border 0.1s;
 }
 
+.kiwi-statebrowser-channel-labels {
+    position: absolute;
+    right: 10px;
+    text-align: center;
+}
+
 .kiwi-statebrowser-channel-label {
+    display: inline-block;
     padding: 1px 5px;
     border-radius: 5px;
     line-height: 1.3em;

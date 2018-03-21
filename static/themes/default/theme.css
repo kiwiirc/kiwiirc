@@ -308,6 +308,11 @@
     background-color: #d16c6c;
 }
 
+.kiwi-statebrowser-channel-settings,
+.kiwi-statebrowser-channel-leave {
+    background-color: #22231f;
+}
+
 .kiwi-statebrowser-channel-settings:hover{
     background-color: #42b992;
 }
@@ -384,6 +389,15 @@
 
 .kiwi-messagelist-message--unread {
     border-left-color: #d4e5f1;
+}
+
+/* Style the banlist */
+.kiwi-channelbanlist-table-actions:hover {
+    background-color: #b9424a;
+}
+
+.kiwi-channelbanlist-table-actions:hover i {
+    color: #fff;
 }
 
 /* Topic Styling */
