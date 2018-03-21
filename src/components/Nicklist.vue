@@ -185,21 +185,24 @@ export default {
     overflow: hidden;
     box-sizing: border-box;
     overflow-y: auto;
-    height: auto;
-    height: 100%;
     min-height: 100px;
+    margin: auto;
+    width: 100%;
+    padding-bottom: 42px;
+    height: 100%;
     display: flex;
     flex-direction: column;
 
     .user-count {
+        display: flex;
         width: 100%;
         text-align: left;
+        flex-direction: column;
+        align-items: flex-start;
         padding: 0.5em 10px;
         cursor: default;
 
         span.count-title {
-            display: block;
-            width: 100%;
             font-size: 1em;
             font-weight: 600;
             margin: 0 0 5px 0;
@@ -213,6 +216,7 @@ export default {
     .kiwi-nicklist-info {
         float: right;
         width: 100%;
+        margin: auto;
         box-sizing: border-box;
         position: relative;
 
@@ -241,24 +245,21 @@ export default {
     }
 
     .kiwi-nicklist-users {
-        margin: 0;
-        display: block;
-        flex: 1;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
         width: 100%;
         padding: 0;
-        height: 100%;
         overflow-y: scroll;
         overflow-x: hidden;
         box-sizing: border-box;
+        max-height: 100%;
 
         .kiwi-nicklist-user {
-            display: block;
             height: 40px;
-            width: 100%;
             line-height: 40px;
             padding: 0 1em;
             margin: 0;
-            border-left: 3px solid #42b992;
             position: relative;
             border-top: 1px solid #858585;
             box-sizing: border-box;
@@ -293,16 +294,17 @@ export default {
     border-width: 0 0 1px 0;
     border-style: solid;
     display: flex;
-}
+    flex-direction: column;
 
-.kiwi-nicklist-info input {
-    flex: 1;
-    border: 0;
-    background: 0 0;
-    padding: 10px 0 10px 20px;
-    margin: 0;
-    outline: 0;
-    text-align: center;
+    input {
+        flex: 1;
+        border: 0;
+        background: 0 0;
+        padding: 10px 0 10px 20px;
+        margin: 0;
+        outline: 0;
+        text-align: center;
+    }
 }
 
 .kiwi-nicklist-info i.fa-search {

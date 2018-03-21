@@ -116,9 +116,9 @@ export default {
 <style lang="less">
 
 .kiwi-messagelist-message--modern {
-    border-left: 7px solid transparent !important;
+    border-left: 7px solid transparent;
     display: flex;
-    transition: none !important;
+    transition: none;
 
     .kiwi-messagelist-body {
         white-space: pre-wrap;
@@ -182,6 +182,11 @@ export default {
 
         .kiwi-messagelist-modern-right {
             padding-top: 0;
+        }
+
+        .kiwi-messagelist-message-topic {
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
     }
 

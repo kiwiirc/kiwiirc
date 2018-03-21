@@ -361,7 +361,7 @@ export default {
 
     .kiwi-messagelist-message-mode,
     .kiwi-messagelist-message-traffic {
-        padding-left: 10px !important;
+        padding-left: 10px;
         padding-top: 5px;
         padding-bottom: 5px;
 
@@ -414,7 +414,7 @@ export default {
         border: none;
         margin: 0;
         background: none;
-        text-align: center !important;
+        text-align: center;
     }
 
     .kiwi-messagelist-message-connection.kiwi-messagelist-message-connection-connected .kiwi-messagelist-modern-right,
@@ -462,8 +462,8 @@ export default {
     }
 
     .kiwi-messagelist-message--own {
-        min-height: 0 !important;
-        height: auto !important;
+        min-height: 0;
+        height: auto;
     }
 
     /* Channel messages - e.g 'server on #testing22 ' message and such */
@@ -472,7 +472,7 @@ export default {
     .kiwi-messagelist-message-traffic-leave,
     .kiwi-messagelist-message-traffic-quit,
     .kiwi-messagelist-message-nick {
-        padding: 5px  0 5px 0 !important;
+        padding: 5px  0 5px 0;
         font-weight: 600;
         margin: 10px 0;
         opacity: 0.85;
@@ -526,16 +526,17 @@ export default {
         position: relative;
         min-height: 0;
         display: block;
-        padding: 1em !important;
+        padding: 1em;
         color: #000;
-        border: 1px solid #42b992 !important;
+        border: 1px solid #42b992;
+        margin-bottom: 0;
 
         .kiwi-messagelist-modern-left {
             display: none;
         }
 
         .kiwi-messagelist-body {
-            min-height: 0 !important;
+            min-height: 0;
             margin: 0;
 
             &::before {
@@ -768,15 +769,15 @@ export default {
 .kiwi-messagelist-message.kiwi-messagelist-message--hover {
     background: #42b992;
     border-left: 3px solid #42b992;
-    color: #fff !important;
+    color: #fff;
 
     a {
-        color: #fff !important;
+        color: #fff;
         text-decoration: underline;
     }
 
     .kiwi-messagelist-time {
-        color: #fff !important;
+        color: #fff;
     }
 }
 
