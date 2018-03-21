@@ -399,6 +399,18 @@
 }
 
 
+/**
+ * Disconnected Stats colouring
+ */
+ .kiwi-notconnected {
+     background-color: #fc6262;
+     border-top: 0.2em solid #d15b5b;
+}
+.kiwi-notconnected.connecting{
+    background-color: #A9D87A;
+    border-color: #91BA69;
+}
+
 
 /**
  * Message list

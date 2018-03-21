@@ -1,22 +1,39 @@
 <template>
-    <div class="kiwi-notconnected">
+    <div class="kiwi-notconnected" v-bind:class="{ connecting: shouldShowLoading }">
         <div class="kiwi-notconnected-bigicon">
-            <i v-if="!shouldShowLoading" @click="reconnect" class="fa fa-plug" aria-hidden="true"></i>
+            <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true"></i>
             <i v-else class="fa fa-refresh fa-spin kiwi-notconnected-bigicon" aria-hidden="true"></i>
         </div>
 
         <div v-if="!shouldShowLoading" class="kiwi-notconnected-caption">
+
+            <span class="disconnect-information">You are not currently connected!</span>
+
+            <div class="button-container">
             <template v-if="isChannel()">
-                <span @click="reconnect">{{$t('reconnect_channel', {channel: buffer.name})}}</span>
+                <span @click="reconnect" class="button">
+                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                    {{$t('reconnect_channel', {channel: buffer.name})}}
+                </span>
             </template>
             <template v-else-if="isServer()">
-                <span @click="reconnect">{{$t('reconnect_network', {network: buffer.getNetwork().name})}}</span>
+                <span @click="reconnect" class="button">
+                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                    {{$t('reconnect_network', {network: buffer.getNetwork().name})}}
+                </span>
             </template>
             <template v-else-if="isQuery()">
-                <span @click="reconnect">{{$t('reconnect_query', {user: buffer.name})}}</i></span>
+                <span @click="reconnect" class="button">
+                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                    {{$t('reconnect_query', {user: buffer.name})}}</i>
+                </span>
             </template>
 
-            <a @click="showNetworkSettings" class="kiwi-notconnected-networksettings u-link">{{$t('reconnect_settings')}}</a>
+            <a @click="showNetworkSettings" class="kiwi-notconnected-networksettings button connection-settings">
+                <i class="fa fa-cogs" aria-hidden="true"></i>{{$t('reconnect_settings')}}
+            </a>
+
+            </div>
         </div>
         <div v-else class="kiwi-notconnected-caption">
             {{$t('connecting')}}
@@ -82,32 +99,108 @@ export default {
 
 </script>
 
-<style>
+<style lang="less">
 .kiwi-notconnected {
     box-sizing: border-box;
-    margin: 3em 0;
     text-align: center;
+    padding: 10% 0;
+    margin:1em 0 0 0;
+    color: #ffffff;
+    background-color: #8f8f8f;
+    transition: background-color 0.3s;
 }
 
 .kiwi-notconnected-bigicon {
     display: inline-block;
+    width: 100%;
+    margin: 0 0 1em 0; 
 }
 
 .kiwi-notconnected-bigicon > i {
     font-size: 4em;
-    cursor: pointer;
+    cursor: default;
 }
 
 .kiwi-notconnected-caption {
-    display: inline-block;
-    font-size: 1.2em;
-    margin-left: 2em;
-    cursor: pointer;
+    display: block;
+    width:100%;
+    font-size: 1.6em;
+    cursor: default;
+    margin: 0 0 0.5em 0;
 }
 
 .kiwi-notconnected-networksettings {
     display: block;
     font-size: 0.9em;
-    margin-top: 1em;
 }
+
+.kiwi-notconnected .button-container{
+    width: 100%;
+    text-align: center;
+    padding-top: 1em;
+}
+
+.kiwi-notconnected .button-container .button{
+    width: auto;
+    display: inline-block;
+    padding: 0.8em 1em 0.8em 0.6em;
+    border: 2px solid #ffffff;
+    color:#ffffff;
+    font-size: 0.8em;
+    border-radius: 0.4em;
+    margin: 0 0.8em;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    :hover{
+        background-color: #fff;
+        color:#000;
+        transition: all 0.2s;
+    }
+
+    i{
+        float:left;
+        font-size: 1.6em;
+        line-height: 0.8em;
+        margin-right: 0.4em;
+    }
+
+    &.connection-settings{
+        font-size: 0.6em;
+        clear: both;
+        display: block;
+        max-width: 160px;
+        margin: 1em auto;
+        i{
+            line-height: 1em;
+        }
+    }
+}
+
+
+@media screen and (max-width: 1024px){
+
+    .kiwi-notconnected-caption{
+        font-size: 1em;
+    }
+
+    .kiwi-notconnected .button-container .button{
+        clear: both;
+        margin: 0 5% 1em;
+        font-size: 1em;
+        display: block;
+        padding: 0.6em 0.8em 0.6em 0.4em;
+        width: 90%;
+        box-sizing: border-box;
+        &.connection-settings{
+            font-size: 1em;
+            max-width: none;
+        }
+    }
+    .kiwi-notconnected .button-container .button i{
+        display: none;
+    }
+}
+
+
 </style>
