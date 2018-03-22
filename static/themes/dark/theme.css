@@ -325,11 +325,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-.kiwi-messagelist-message-repeat {
+.kiwi-messagelist-message--authorrepeat {
     border-top: none;
 }
-.kiwi-messagelist-message-repeat .kiwi-messagelist-nick,
-.kiwi-messagelist-message-repeat .kiwi-messagelist-time {
+.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick,
+.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-time {
     /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
     opacity: 0;
     cursor: default;

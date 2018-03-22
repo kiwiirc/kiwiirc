@@ -8,7 +8,7 @@
             message.time - ml.filteredMessages[idx-1].time < 60000 &&
             ml.filteredMessages[idx-1].type !== 'traffic' &&
             message.type !== 'traffic' ?
-                'kiwi-messagelist-message-repeat' :
+                'kiwi-messagelist-message--authorrepeat' :
                 '',
             'kiwi-messagelist-message-' + message.type,
             message.type_extra ?
@@ -142,7 +142,7 @@ export default {
             margin-left: 2px;
         }
 
-        .kiwi-messagelist-message-repeat .kiwi-messagelist-nick {
+        .kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick {
             display: none;
         }
 

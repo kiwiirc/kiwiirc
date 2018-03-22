@@ -3,13 +3,9 @@
         @click="ml.onMessageClick($event, message)"
         class="kiwi-messagelist-message kiwi-messagelist-message--modern"
         v-bind:class="[
-            ml.filteredMessages[idx-1] &&
-            ml.filteredMessages[idx-1].nick === message.nick &&
-            message.time - ml.filteredMessages[idx-1].time < 60000 &&
-            ml.filteredMessages[idx-1].type !== 'traffic' &&
-            message.type !== 'traffic' ?
-                'kiwi-messagelist-message-repeat' :
-                '',
+            isRepeat() ?
+                'kiwi-messagelist-message--authorrepeat' :
+                'kiwi-messagelist-message--authorfirst',
             'kiwi-messagelist-message-' + message.type,
             message.type_extra ?
                 'kiwi-messagelist-message-' + message.type + '-' + message.type_extra :
@@ -93,6 +89,18 @@ export default {
     computed: {
     },
     methods: {
+        isRepeat() {
+            let ml = this.ml;
+            let idx = this.idx;
+            let message = this.message;
+            let prevMessage = ml.filteredMessages[idx - 1];
+
+            return prevMessage &&
+                prevMessage.nick === message.nick &&
+                message.time - prevMessage.time < 60000 &&
+                prevMessage.type !== 'traffic' &&
+                message.type !== 'traffic';
+        },
         isHoveringOverMessage: function isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
@@ -121,7 +129,66 @@ export default {
     transition: none;
     margin: 0 20px;
     margin-left: 10px;
-    padding: 10px;
+    padding: 0 10px;
+
+    &.kiwi-messagelist-message--authorfirst {
+        margin-top: 15px;
+    }
+
+    &.kiwi-messagelist-message--authorrepeat {
+        margin-top: 5px;
+
+        .kiwi-messagelist-modern-right {
+            padding-top: 0;
+        }
+
+        &.kiwi-messagelist-message-topic {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+
+    &.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-modern-avatar {
+        display: none;
+    }
+
+    &.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick,
+    &.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-time {
+        display: none;
+    }
+
+    &.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-right,
+    &.kiwi-messagelist-message-mode .kiwi-messagelist-modern-right {
+        float: left;
+        margin-left: 0;
+    }
+
+    &.kiwi-messagelist-message-mode .kiwi-messagelist-nick {
+        display: none;
+    }
+
+    &.kiwi-messagelist-message-topic {
+        margin: 5px 18px 15px  18px;
+
+        .kiwi-messagelist-modern-left {
+            display: none;
+        }
+    }
+
+    &.kiwi-messagelist-message-connection {
+        .kiwi-messagelist-modern-left {
+            display: none;
+        }
+
+        .kiwi-messagelist-modern-right {
+            margin-left: 0;
+            padding: 0;
+        }
+    }
+
+    &.kiwi-messagelist-message--highlight {
+        background: none;
+    }
 
     .kiwi-messagelist-body {
         white-space: pre-wrap;
@@ -176,63 +243,6 @@ export default {
         padding: 0;
         opacity: 0.8;
         cursor: default;
-    }
-
-    &.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-right,
-    &.kiwi-messagelist-message-mode .kiwi-messagelist-modern-right {
-        float: left;
-        margin-left: 0;
-    }
-
-    &.kiwi-messagelist-message-mode .kiwi-messagelist-nick {
-        display: none;
-    }
-
-    &.kiwi-messagelist-message-topic {
-        margin: 5px 18px 15px  18px;
-
-        .kiwi-messagelist-modern-left {
-            display: none;
-        }
-    }
-
-    &.kiwi-messagelist-message-connection {
-        .kiwi-messagelist-modern-left {
-            display: none;
-        }
-
-        .kiwi-messagelist-modern-right {
-            margin-left: 0;
-            padding: 0;
-        }
-    }
-
-    &.kiwi-messagelist-message-repeat {
-        margin-top: 0;
-        margin-bottom: 0;
-        padding-top: 0;
-
-        .kiwi-messagelist-modern-right {
-            padding-top: 0;
-        }
-
-        &.kiwi-messagelist-message-topic {
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-    }
-
-    &.kiwi-messagelist-message-repeat .kiwi-messagelist-modern-avatar {
-        display: none;
-    }
-
-    &.kiwi-messagelist-message-repeat .kiwi-messagelist-nick,
-    &.kiwi-messagelist-message-repeat .kiwi-messagelist-time {
-        display: none;
-    }
-
-    &.kiwi-messagelist-message--highlight {
-        background: none;
     }
 }
 

@@ -7,7 +7,7 @@
             <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
-        <div v-for="(message, idx) in filteredMessages" :key="message.id">
+        <div v-for="(message, idx) in filteredMessages" :key="message.id" class="kiwi-messagelist-item">
             <div v-if="shouldShowDateChangeMarker(idx)" class="kiwi-messagelist-seperator">
                 <span>{{(new Date(message.time)).toDateString()}}</span>
             </div>
@@ -346,6 +346,11 @@ export default {
     height: 100%;
 }
 
+.kiwi-messagelist-item {
+    /* Allow child elements to make use of margins+padding within messagelist items */
+    overflow: hidden;
+}
+
 .kiwi-messagelist-message {
     padding: 0 10px;
 
@@ -355,10 +360,6 @@ export default {
     transition: opacity 0.2s;
     line-height: 1.5em;
     margin: 0 3px;
-
-    &:last-of-type {
-        margin-bottom: 20px;
-    }
 }
 
 .kiwi-messagelist-message-mode,
@@ -476,12 +477,12 @@ export default {
     padding: 0;
 }
 
-.kiwi-messagelist-message-repeat {
+.kiwi-messagelist-message--authorrepeat {
     border-top: none;
 }
 
-.kiwi-messagelist-message-repeat .kiwi-messagelist-nick,
-.kiwi-messagelist-message-repeat .kiwi-messagelist-time {
+.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick,
+.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-time {
     /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
     opacity: 0;
     cursor: default;
