@@ -518,11 +518,6 @@ export default {
     border-top: none;
 }
 
-.kiwi-messagelist-message-traffic-quit .kiwi-nick::before,
-.kiwi-messagelist-message-traffic-part .kiwi-nick::before, {
-    content: "← ";
-}
-
 @media screen and (max-width: 700px) {
     .kiwi-messagelist-message,
     .kiwi-messageinfo {
