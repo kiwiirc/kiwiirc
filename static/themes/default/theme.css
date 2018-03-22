@@ -402,8 +402,8 @@
 
 /* Topic Styling */
 .kiwi-messagelist-message-topic {
-    background-color: #fff;
-    border-top: 2px solid #42b992;
+    background: rgba(0,0,0,0.02);
+    border: 2px solid #42b992;
 }
 
 .kiwi-messagelist-message-traffic-join {

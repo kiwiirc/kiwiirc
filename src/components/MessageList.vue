@@ -672,25 +672,9 @@ export default {
     border-left-color: #939393;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--highlight:hover {
-    background: #8cdbc1;
-    border-left: 3px solid #42b992;
-    color: #fff;
-}
-
 .kiwi-messagelist-message.kiwi-messagelist-message--hover {
-    background: #42b992;
-    border-left: 3px solid #42b992;
-    color: #fff;
-
-    a {
-        color: #fff;
-        text-decoration: underline;
-    }
-
-    .kiwi-messagelist-time {
-        color: #fff;
-    }
+    position: relative;
+    border-color: #42b992;
 }
 
 .kiwi-messagelist-message--info-open {

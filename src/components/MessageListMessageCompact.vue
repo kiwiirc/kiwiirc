@@ -131,6 +131,27 @@ export default {
         padding-left: 130px;
     }
 
+    //Channel traffic messages
+    &.kiwi-messagelist-message-traffic {
+        margin: 0;
+    }
+
+    //Channel topic
+    &.kiwi-messagelist-message-topic {
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+        margin: 5px 0;
+    }
+
+    //Repeat messages, remove the time and author name
+    &.kiwi-messagelist-message--authorrepeat {
+        .kiwi-messagelist-time,
+        .kiwi-messagelist-nick {
+            display: none;
+        }
+    }
+
     @media screen and (max-width: 700px) {
         .kiwi-messagelist-nick {
             display: inline;
