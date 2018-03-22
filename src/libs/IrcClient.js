@@ -181,7 +181,7 @@ function clientMiddleware(state, networkid) {
         }
 
         // Ignore any of the control messages. They're transport related to kiwi internals
-        if (event.command === 'CONTROL') {
+        if (event && event.command === 'CONTROL') {
             next();
             return;
         }
