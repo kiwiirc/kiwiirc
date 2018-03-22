@@ -181,7 +181,7 @@ function clientMiddleware(state, networkid) {
         }
 
         // Ignore any of the control messages. They're transport related to kiwi internals
-        if (event.command === 'CONTROL') {
+        if (event && event.command === 'CONTROL') {
             next();
             return;
         }
@@ -575,10 +575,10 @@ function clientMiddleware(state, networkid) {
             // Store the channels in channel_list_cache before moving it all to
             // channel_list at the end. This gives a huge performance boost since
             // it doesn't need to be all reactive for every update
-            network.channel_list_cache = network.channel_list_cache.concat(event);
+            network.channel_list_cache = (network.channel_list_cache || []).concat(event);
         }
         if (command === 'channel list end') {
-            network.channel_list = network.channel_list_cache;
+            network.channel_list = network.channel_list_cache || [];
             delete network.channel_list_cache;
             network.channel_list_state = '';
         }
