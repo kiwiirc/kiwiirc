@@ -7,7 +7,7 @@
             <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
-        <template v-for="(message, idx) in filteredMessages">
+        <div v-for="(message, idx) in filteredMessages" :key="message.id">
             <div v-if="shouldShowDateChangeMarker(idx)" class="kiwi-messagelist-seperator">
                 <span>{{(new Date(message.time)).toDateString()}}</span>
             </div>
@@ -21,16 +21,14 @@
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
-                :key="message.id"
             ></message-list-message-modern>
             <message-list-message-compact
                 v-else-if="listType !== 'modern'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
-                :key="message.id"
             ></message-list-message-compact>
-        </template>
+        </div>
 
         <not-connected
             v-if="buffer.getNetwork().state !== 'connected'"
