@@ -244,12 +244,6 @@ export default {
         opacity: 0.8;
         cursor: default;
     }
-
-    &.kiwi-messagelist-message-traffic {
-        .kiwi-messagelist-modern-left {
-            display: none;
-        }
-    }
 }
 
 .kiwi-messagelist-item:last-of-type {
