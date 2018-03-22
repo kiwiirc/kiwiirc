@@ -183,7 +183,6 @@ export default {
 .kiwi-nicklist {
     overflow: hidden;
     box-sizing: border-box;
-    overflow-y: auto;
     min-height: 100px;
     margin: auto;
     width: 100%;
