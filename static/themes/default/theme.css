@@ -370,6 +370,17 @@
     font-style: italic;
 }
 
+/*When hovering over a users messages */
+.kiwi-messagelist-message--hover{
+    background-color: #42b992;
+    color: #fff;
+}
+
+.kiwi-messagelist-message--hover a,
+.kiwi-messagelist-message--hover .kiwi-messagelist-time {
+    color: #fff;
+}
+
 .kiwi-container--sidebar-open .kiwi-messagelist::after {
     background-color: #000;
 }
@@ -379,14 +390,14 @@
     border-bottom: 1px solid #c0c0c0;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-body,
-.kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     background-color: #42b992;
     color: #fff;
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
     background-color: #b9424a;
+    color: #fff;
 }
 
 .kiwi-messagelist-message--unread {

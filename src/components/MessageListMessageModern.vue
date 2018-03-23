@@ -309,5 +309,13 @@ export default {
             }
         }
     }
+
+    .kiwi-messagelist-message-action .kiwi-messagelist-modern-left {
+        display: none;
+    }
+
+    .kiwi-messagelist-message--modern .kiwi-messagelist-modern-avatar {
+        display: none;
+    }
 }
 </style>
