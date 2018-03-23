@@ -316,7 +316,7 @@ export default {
     z-index: 10;
     background-color: #131312;
     right: -300px;
-    transition: all 0.3s;
+    transition: all 0.15s;
 }
 
 .kiwi-statebrowser-network-header:hover .kiwi-network-name-options {
@@ -327,7 +327,7 @@ export default {
 .kiwi-network-name-options .option-button {
     float: right;
     width: 35px;
-    transition: all 0.3s;
+    transition: all 0.15s;
     padding: 0;
     line-height: 45px;
     text-align: center;
@@ -365,6 +365,10 @@ export default {
     padding: 5px 10px;
 }
 
+.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-name {
+    text-decoration: underline;
+}
+
 .kiwi-statebrowser-channel-name {
     cursor: pointer;
     flex: 1;
@@ -373,15 +377,18 @@ export default {
 
 .kiwi-statebrowser-channel-labels {
     position: absolute;
-    right: 10px;
+    right: 0;
     text-align: center;
+    z-index: 0;
+    top: -4px;
 }
 
 .kiwi-statebrowser-channel-label {
     display: inline-block;
-    padding: 1px 5px;
-    border-radius: 5px;
-    line-height: 1.3em;
+    padding: 0 10px;
+    border-radius: 0;
+    line-height: 30px;
+    height: 30px;
 }
 
 .kiwi-statebrowser-channel-label-transition-enter-active,
@@ -403,6 +410,7 @@ export default {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s;
+    z-index: 10;
 }
 
 .kiwi-statebrowser-channel-leave {
@@ -412,6 +420,7 @@ export default {
     cursor: pointer;
     margin-right: 0;
     transition: all 0.3s;
+    z-index: 10;
 }
 
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings,

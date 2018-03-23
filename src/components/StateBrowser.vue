@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="kiwi-statebrowser-newnetwork" v-if="!isRestrictedServer">
+        <div class="kiwi-statebrowser-newnetwork">
             <a @click="clickAddNetwork" class="u-button u-button-primary">Add Network<i class="fa fa-plus" aria-hidden="true"></i></a>
         </div>
     </div>
@@ -379,12 +379,11 @@ export default {
         .kiwi-statebrowser-channel {
             line-height: 30px;
             padding: 0 0 0 8px;
-            opacity: 0.8;
             transition: opacity 0.3s;
 
             .kiwi-statebrowser-channel-name {
                 text-align: left;
-                font-weight: 100;
+                font-weight: 600;
                 font-size: 1em;
             }
 
@@ -612,15 +611,15 @@ export default {
 
 @media screen and (max-width: 769px) {
     .kiwi-statebrowser {
-        left: -220px;
+        left: -100%;
         padding-top: 0;
         z-index: 1000;
     }
 
     .kiwi-wrap.kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
-        width: 100%;
+        width: 75%;
         left: 0;
-        z-index: 999;
+        z-index: 100;
     }
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {

@@ -299,7 +299,8 @@ export default {
 }
 
 .kiwi-appsettings .u-form label span {
-    width: 200px;
+    text-align: left;
+    margin-left: 0;
 }
 
 .kiwi-appsettings-theme-reload {
@@ -316,7 +317,7 @@ export default {
 }
 
 .app-settings-block {
-    width: 25%;
+    width: 400px;
     display: block;
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.2);

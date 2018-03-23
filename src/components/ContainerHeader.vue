@@ -27,9 +27,6 @@
             </div>
 
             <div v-if="isJoined && buffer.topic.length > 0 && viewTopic" class="kiwi-header-topic">
-                <div class="topic-title">
-                    Channel Topic:
-                </div>
                 <div class="content">
                     {{buffer.topic}}
                 </div>
@@ -343,6 +340,7 @@ export default {
 .kiwi-header-server-connection {
     float: right;
     padding-right: 10px;
+    line-height: 46px;
 
     .u-button {
         float: right;

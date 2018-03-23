@@ -42,7 +42,7 @@ div {
     display: inline-block;
     width: 100px;
     margin-right: 1em;
-    text-align: right;
+    text-align: left;
 }
 
 .u-form .u-input,
