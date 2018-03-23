@@ -7,14 +7,14 @@
             <div class="kiwi-network-name-hover-icon">
                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
             </div>
-            <div class="kiwi-network-name-options" v-if="network.buffers.length > 1">
+            <div class="kiwi-network-name-options">
                 <div class="option-button kiwi--collapse" @click="collapsed=!collapsed">
                     <i class="fa" :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" aria-hidden="true"></i>
                 </div>
                 <div class="option-button kiwi--channel" v-bind:class="{ active: channel_add_display == true }"  @click="toggleAddChannel()">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                 </div>
-                <div class="option-button kiwi-search-channels"  v-bind:class="{ active: channel_filter_display == true }"  @click="toggleFilterChannel()">
+                <div class="option-button kiwi-search-channels" v-if="network.buffers.length > 1"  v-bind:class="{ active: channel_filter_display == true }"  @click="toggleFilterChannel()">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </div>
             </div>
