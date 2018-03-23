@@ -209,7 +209,7 @@ export default {
     border-left: none;
     right: -380px;
     max-width: none;
-    z-index: 999;
+    z-index: 10;
 
     /* Users Styling */
 

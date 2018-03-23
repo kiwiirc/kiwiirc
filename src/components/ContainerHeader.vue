@@ -395,7 +395,7 @@ export default {
 
 @media screen and (max-width: 769px) {
     .kiwi-container-toggledraw-statebrowser {
-        z-index: 100;
+        z-index: 10;
         border-bottom: none;
         height: 46px;
     }

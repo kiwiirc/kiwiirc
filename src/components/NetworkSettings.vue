@@ -70,13 +70,12 @@
                 </div>
 
                 <div class="kiwi-padded-form-element-container">
-                    <div class="u-button kiwi-connect-to-newnetwork">
+                    <div class="u-button kiwi-connect-to-newnetwork" @click="network.ircClient.connect()">
                         Connect To Network
                     </div>
                 </div>
 
-                <!-- Try placing this below the container, since we want a 'connect' button to appear here instead
-                <div class="kiwi-padded-form-element-container">
+                <div class="kiwi-padded-form-element-container kiwi-dangerzone">
                     <div class="kiwi-networksettings-section kiwi-networksettings-danger">
                         <h3>{{$t('settings_danger')}}</h3>
                         <a class="u-button u-button-warning" @click="removeNetwork">
@@ -84,8 +83,8 @@
                         </a>
                     </div>
                 </div>
-                -->
             </div>
+
         </form>
     </div>
 </template>
@@ -261,6 +260,11 @@ export default {
         .input-text {
             padding-top: 0;
         }
+
+        &.kiwi-dangerzone {
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
     }
 
     .input-text .input-text-label {
@@ -398,17 +402,19 @@ export default {
         text-align: center;
         line-height: 30px;
         padding: 0;
+        opacity: 0.8;
         margin: 0 auto;
+        transition: all 0.3s;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 }
 
 @media screen and (max-width: 769px) {
     .kiwi-networksettings {
         z-index: 100;
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 100%;
     }
 }
 </style>
