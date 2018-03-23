@@ -241,7 +241,6 @@ export default {
             display: block;
             font-size: 0.8em;
             opacity: 0.85;
-            border-left: 1px solid rgba(0, 0, 0, 0.25);
             text-transform: capitalize;
 
             .fa-info {

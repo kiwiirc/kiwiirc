@@ -197,6 +197,7 @@ export default {
         margin: 10px auto;
         width: 200px;
         border: none;
+        opacity: 0.8;
 
         .kiwi-messagelist-time {
             display: none;
@@ -305,6 +306,7 @@ export default {
             background: #42b992;
             width: 100%;
             border-radius: 0;
+            opacity: 0.8;
 
             .kiwi-messagelist-body {
                 line-height: 50px;

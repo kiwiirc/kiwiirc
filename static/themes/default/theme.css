@@ -290,7 +290,7 @@
 }
 
 .kiwi-header-options .option {
-    border-left: 1px solid rgba(0, 0, 0, 0.6);
+    border-left: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .kiwi-header .kiwi-header-options .option a:hover,
