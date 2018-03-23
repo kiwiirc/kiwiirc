@@ -295,6 +295,8 @@ export default {
     }
 
     .kiwi-messagelist-message--modern {
+        margin: 0;
+
         &.kiwi-messagelist-message-connection-connected {
             padding: 0;
             box-sizing: border-box;

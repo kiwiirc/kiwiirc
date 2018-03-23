@@ -403,6 +403,7 @@
 
 .kiwi-messagelist-message--unread {
     border-left-color: #d4e5f1;
+    background-color: #d4e5f1;
 }
 
 /* Style the banlist */
