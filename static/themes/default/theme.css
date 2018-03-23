@@ -259,7 +259,7 @@
 
 .kiwi-header .kiwi-header-topic {
     border-top: 2px solid #42b992;
-    border-bottom: 2px solid #42b992;
+    border-bottom: 1px solid #42b992;
     color: #5f5f5f;
 }
 
@@ -304,6 +304,7 @@
         background-color: #d16c6c;
 }
 
+.kiwi-header-options .option.topic.active,
 .kiwi-header-options .option.leave a:hover {
     background-color: #d16c6c;
 }
@@ -429,10 +430,11 @@
 
 .kiwi-messagelist-message-connection-connected {
     color: #090;
+    border: none;
 }
 
-.kiwi-messagelist-message-connection-disconnected {
-    color: #900;
+.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
+    color: #bf5155;
 }
 
 /* Kiwi Modern Message list ( MessageListMessageModern.vue ) */
@@ -448,16 +450,35 @@
 }
 
 /* Network Settings ( NetworkSettings.vue ) */
+.kiwi-networksettings .kiwi-title {
+    background: #42b992;
+    color: #fff;
+    border-top: 1px solid #42b992;
+}
+
+.kiwi-networksettings .kiwi-title span {
+    color: #42b992;
+    background: #fff;
+}
+
+.kiwi-networksettings input[type='text'],
+.kiwi-networksettings input[type='password'],
+.kiwi-networksettings input[type='email'],
+.kiwi-networksettings textarea,
+.input-text input {
+    border-bottom: 1px solid #42b992;
+}
+
+.kiwi-networksettings-advanced h3:hover {
+    color: #42b992;
+}
+
 .kiwi-networksettings .u-form{
     background: #fff;
 }
 
 .kiwi-networksettings-error {
     border: 1px dashed #d86f6f;
-}
-
-.kiwi-networksettings-danger  h3{
-    background: #d86f6f;
 }
 
 .kiwi-networksettings-danger .u-button-warning {
@@ -794,7 +815,7 @@
 
 .kiwi-statebrowser-channel-label {
     background: #42b992;
-    color: #dedede;
+    color: #fff;
 }
 
 .kiwi-statebrowser-channel-label--highlight {
