@@ -15,10 +15,14 @@
                 ]"
                 @click="openUserbox(user, $event)"
             >
-                <span class="kiwi-nicklist-user-prefix">{{userModePrefix(user)}}</span><span
-                    class="kiwi-nicklist-user-nick"
-                    v-bind:style="nickStyle(user.nick)"
-                >{{user.nick}}</span>
+                <span class="kiwi-nicklist-user-prefix">{{userModePrefix(user)}}</span>
+                <span class="kiwi-nicklist-user-nick"
+                        v-bind:style="nickStyle(user.nick)"
+                        >{{user.nick}}
+                </span>
+                <span class="kiwi-nicklist-messageuser" @click="openQuery">
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                </span>
             </li>
         </ul>
 
@@ -266,7 +270,7 @@ export default {
             box-sizing: border-box;
             transition: background 0.3s;
 
-            &::after {
+            .kiwi-nicklist-messageuser {
                 position: absolute;
                 content: '\f075';
                 right: 1em;
@@ -280,7 +284,7 @@ export default {
             &:hover {
                 cursor: pointer;
 
-                &::after {
+                .kiwi-nicklist-messageuser {
                     color: #fff;
                 }
             }
