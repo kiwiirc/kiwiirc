@@ -12,12 +12,6 @@
             <span class="data">{{user.realname}} </span>
             <span class="title">{{$t('whois_status')}}:</span>
             <span class="data">{{user.away ? user.away : $t('whois_status_available')}}  </span>
-
-            <form class="u-form">
-                <label>
-                    <input type="checkbox" v-model="user.ignore" /> <span class="kiwi-ignore-user-span"> {{$t('ignore_user')}} </span>
-                </label>
-            </form>
         </div>
 
         <p class="kiwi-userbox-actions">
@@ -29,6 +23,13 @@
                 <i class="fa fa-question-circle" aria-hidden="true"></i>
                 {{$t('more_information')}}
             </a>
+
+            <form class="u-form kiwi-ignore-user-form">
+                <label>
+                    <input type="checkbox" v-model="user.ignore" />
+                    <span class="kiwi-ignore-user-span"> {{$t('ignore_user')}} </span>
+                </label>
+            </form>
         </p>
 
         <div
@@ -462,6 +463,12 @@ export default {
 
 .kiwi-userbox-whois-line {
     display: block;
+}
+
+.kiwi-ignore-user-form {
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .kiwi-userbox .kiwi-userbox-basicinfo .kiwi-ignore-user-span {
