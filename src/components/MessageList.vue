@@ -431,6 +431,7 @@ export default {
     padding: 2px 4px;
     padding-right: 20px;
     line-height: 1.5em;
+    font-size: 1.05em;
 }
 
 .kiwi-messagelist-message--own {
@@ -448,7 +449,7 @@ export default {
     font-weight: 600;
     margin: 10px 0;
     opacity: 0.85;
-    font-size: 0.9em;
+    font-size: 1em;
     text-align: center;
     border: none;
     transition: all 0.3s;
