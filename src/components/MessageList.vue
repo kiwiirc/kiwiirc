@@ -490,7 +490,7 @@ export default {
 
 .kiwi-container--sidebar-open .kiwi-messagelist::after {
     content: '';
-    z-index: 10;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
