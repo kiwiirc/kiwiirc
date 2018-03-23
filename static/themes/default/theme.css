@@ -307,6 +307,7 @@
 .kiwi-header-options .option.topic.active,
 .kiwi-header-options .option.leave a:hover {
     background-color: #d16c6c;
+    color: #fff;
 }
 
 .kiwi-statebrowser-channel-settings,
