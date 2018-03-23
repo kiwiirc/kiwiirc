@@ -377,7 +377,8 @@
 }
 
 .kiwi-messagelist-message--hover a,
-.kiwi-messagelist-message--hover .kiwi-messagelist-time {
+.kiwi-messagelist-message--hover .kiwi-messagelist-time ,
+.kiwi-messagelist-message--hover .kiwi-messagelist-nick{
     color: #fff;
 }
 

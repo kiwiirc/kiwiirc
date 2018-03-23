@@ -256,6 +256,7 @@ export default {
         padding: 0;
         font-size: 1.1em;
         padding-right: 10px;
+        opacity: 0.8;
     }
 
     .kiwi-messagelist-time {
