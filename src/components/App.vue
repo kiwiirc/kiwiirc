@@ -531,7 +531,7 @@ body {
     }
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
-        left: 20%;
+        left: 75%;
         width: 80%;
     }
 

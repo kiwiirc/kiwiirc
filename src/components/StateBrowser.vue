@@ -624,10 +624,6 @@ export default {
         z-index: 100;
     }
 
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
-        width: 0;
-    }
-
     .kiwi-header {
         text-align: center;
     }

@@ -279,10 +279,6 @@ export default {
 }
 
 @media screen and (max-width: 759px) {
-    .kiwi-sidebar {
-        z-index: 100;
-    }
-
     .u-tabbed-view-tabs .u-tabbed-view-tab {
         width: 100%;
 
