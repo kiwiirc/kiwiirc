@@ -197,6 +197,7 @@ export default {
         margin: 10px auto;
         width: 200px;
         border: none;
+        opacity: 0.8;
 
         .kiwi-messagelist-time {
             display: none;
@@ -256,6 +257,7 @@ export default {
         padding: 0;
         font-size: 1.1em;
         padding-right: 10px;
+        opacity: 0.8;
     }
 
     .kiwi-messagelist-time {
@@ -288,6 +290,8 @@ export default {
     }
 
     .kiwi-messagelist-message--modern {
+        margin: 0;
+
         &.kiwi-messagelist-message-connection-connected {
             padding: 0;
             box-sizing: border-box;
@@ -296,12 +300,21 @@ export default {
             background: #42b992;
             width: 100%;
             border-radius: 0;
+            opacity: 0.8;
 
             .kiwi-messagelist-body {
                 line-height: 50px;
                 font-weight: 600;
             }
         }
+    }
+
+    .kiwi-messagelist-message-action .kiwi-messagelist-modern-left {
+        display: none;
+    }
+
+    .kiwi-messagelist-message--modern .kiwi-messagelist-modern-avatar {
+        display: none;
     }
 }
 </style>

@@ -389,6 +389,8 @@ export default {
 
             .kiwi-statebrowser-channel-label {
                 margin: 4px 0;
+                border-radius: 5px 0 0 5px;
+                font-weight: 600;
             }
 
             &:hover {
@@ -620,10 +622,6 @@ export default {
         width: 75%;
         left: 0;
         z-index: 100;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
-        width: 0;
     }
 
     .kiwi-header {

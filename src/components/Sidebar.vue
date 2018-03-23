@@ -279,10 +279,6 @@ export default {
 }
 
 @media screen and (max-width: 759px) {
-    .kiwi-sidebar {
-        z-index: 100;
-    }
-
     .u-tabbed-view-tabs .u-tabbed-view-tab {
         width: 100%;
 
@@ -292,8 +288,14 @@ export default {
         }
     }
 
+    .u-form input[type="checkbox"] {
+        margin-right: 4px;
+    }
+
     .u-form label span {
-        font-size: 11px;
+        font-size: 1em;
+        margin-right: 0;
+        margin-left: 0;
     }
 
     .kiwi-container--sidebar-open .kiwi-sidebar {

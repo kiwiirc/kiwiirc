@@ -290,7 +290,7 @@
 }
 
 .kiwi-header-options .option {
-    border-left: 1px solid rgba(0, 0, 0, 0.6);
+    border-left: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .kiwi-header .kiwi-header-options .option a:hover,
@@ -307,6 +307,7 @@
 .kiwi-header-options .option.topic.active,
 .kiwi-header-options .option.leave a:hover {
     background-color: #d16c6c;
+    color: #fff;
 }
 
 .kiwi-statebrowser-channel-settings,
@@ -369,6 +370,18 @@
     font-style: italic;
 }
 
+/*When hovering over a users messages */
+.kiwi-messagelist-message--hover{
+    background-color: #42b992;
+    color: #fff;
+}
+
+.kiwi-messagelist-message--hover a,
+.kiwi-messagelist-message--hover .kiwi-messagelist-time ,
+.kiwi-messagelist-message--hover .kiwi-messagelist-nick{
+    color: #fff !important;
+}
+
 .kiwi-container--sidebar-open .kiwi-messagelist::after {
     background-color: #000;
 }
@@ -378,18 +391,19 @@
     border-bottom: 1px solid #c0c0c0;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-body,
-.kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     background-color: #42b992;
     color: #fff;
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
     background-color: #b9424a;
+    color: #fff;
 }
 
 .kiwi-messagelist-message--unread {
     border-left-color: #d4e5f1;
+    background-color: #d4e5f1;
 }
 
 /* Style the banlist */
