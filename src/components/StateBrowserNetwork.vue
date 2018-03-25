@@ -79,7 +79,7 @@
 
             <div class="kiwi-statebrowser-channels">
                 <div
-                    v-for="buffer in orderedBuffers(network.buffers)"
+                    v-for="buffer in filteredBuffers(network.buffers)"
                     class="kiwi-statebrowser-channel"
                     v-bind:class="{
                         'kiwi-statebrowser-channel-active': isActiveBuffer(buffer),
@@ -230,6 +230,21 @@ export default {
             });
 
             return list;
+        },
+        filteredBuffers(buffers) {
+            let filter = this.channel_filter;
+            let filtered = [];
+
+            if (!filter) {
+                filtered = buffers;
+            } else {
+                filtered = _.filter(buffers, buffer => {
+                    let name = buffer.name.toLowerCase();
+                    return name.indexOf(filter) > -1;
+                });
+            }
+
+            return this.orderedBuffers(filtered);
         },
         showNetworkSettings: function showNetworkSettings(network) {
             network.showServerBuffer('settings');
