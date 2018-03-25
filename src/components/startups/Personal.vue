@@ -30,7 +30,7 @@ export default {
         addNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
             let network = state.addNetwork('New Network', nick, {});
-            state.$emit('network.settings', network);
+            network.showServerBuffer('settings');
         },
         toggleStateBrowser() {
             state.$emit('statebrowser.show');
