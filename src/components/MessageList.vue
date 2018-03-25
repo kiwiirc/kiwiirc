@@ -446,7 +446,6 @@ export default {
 .kiwi-messagelist-message-traffic-quit,
 .kiwi-messagelist-message-nick {
     padding: 5px  0 5px 0;
-    font-weight: 600;
     margin: 10px 0;
     opacity: 0.85;
     font-size: 1em;
