@@ -96,6 +96,7 @@
                     </div>
 
                     <div
+                        v-if="buffer.isChannel()"
                         class="kiwi-statebrowser-channel-settings"
                         @click="uiState.showBufferSettings()"
                     >
