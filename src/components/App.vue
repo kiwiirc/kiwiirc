@@ -368,7 +368,7 @@ body {
     left: 0;
     width: 200px;
     bottom: 0;
-    transition: left 0.5s;
+    transition: left 0.2s;
     z-index: 1;
 }
 
