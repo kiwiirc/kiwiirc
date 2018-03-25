@@ -43,8 +43,6 @@
 
 <script>
 
-import state from '@/libs/state';
-
 export default {
     data: function data() {
         return {
