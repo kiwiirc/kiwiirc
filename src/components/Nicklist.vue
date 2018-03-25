@@ -20,7 +20,7 @@
                         v-bind:style="nickStyle(user.nick)"
                         >{{user.nick}}
                 </span>
-                <span class="kiwi-nicklist-messageuser" @click="openQuery">
+                <span class="kiwi-nicklist-messageuser" @click="openQuery(user)">
                     <i class="fa fa-comment" aria-hidden="true"></i>
                 </span>
             </li>
