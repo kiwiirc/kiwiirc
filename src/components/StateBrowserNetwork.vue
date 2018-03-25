@@ -8,7 +8,7 @@
                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
             </div>
             <div class="kiwi-network-name-options">
-                <div class="option-button kiwi--collapse" v-if="network.buffers.length > 1" @click="collapsed=!collapsed">
+                <div class="option-button kiwi--collapse" v-if="totalNetworkCount > 1" @click="collapsed=!collapsed">
                     <i class="fa" :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" aria-hidden="true"></i>
                 </div>
                 <div class="option-button kiwi--channel" v-bind:class="{ active: channel_add_display == true }"  @click="toggleAddChannel()">
@@ -256,6 +256,9 @@ export default {
     computed: {
         isActiveNetwork: function isActiveNetwork() {
             return state.getActiveNetwork() === this.network;
+        },
+        totalNetworkCount() {
+            return state.networks.length;
         },
     },
 };
