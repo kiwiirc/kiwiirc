@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-02-08 18:11-0500\n"
+"PO-Revision-Date: 2018-03-25 12:51-0400\n"
 
 #: Start
 msgid "start_button"
@@ -379,7 +379,7 @@ msgstr "{{count}} Потребителя"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Влезте отново за да влезете в {{channel}}"
+msgstr "влезте отново за да чатите в {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
