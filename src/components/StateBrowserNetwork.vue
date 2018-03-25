@@ -279,7 +279,7 @@ export default {
         closeFilterChannel() {
             this.channel_filter = '';
             this.channel_filter_display = false;
-        }
+        },
     },
     computed: {
         isActiveNetwork: function isActiveNetwork() {
