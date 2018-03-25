@@ -28,7 +28,7 @@
                 @blur="onChannelFilterInputBlur"
                 placeholder="Filter Channels..."
             />
-            <p><a @click="showNetworkChannels(network)">Find more channels</a></p>
+            <p><a @click="closeFilterChannel(); showNetworkChannels(network)">Find more channels</a></p>
         </div>
 
         <div class="kiwi-statebrowser-channels-info" v-if="channel_add_display">
@@ -194,7 +194,7 @@ export default {
                 // clicked a link in this filter UI, then the click event will not hit the target
                 // link as it has been removed before the event reaches it.
                 setTimeout(() => {
-                    this.channel_filter_display = false;
+                    this.closeFilterChannel();
                 }, 100);
             }
         },
@@ -276,6 +276,10 @@ export default {
             this.channel_filter_display = !this.channel_filter_display;
             this.channel_add_display = false;
         },
+        closeFilterChannel() {
+            this.channel_filter = '';
+            this.channel_filter_display = false;
+        }
     },
     computed: {
         isActiveNetwork: function isActiveNetwork() {
