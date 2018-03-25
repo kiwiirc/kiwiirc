@@ -94,7 +94,7 @@ export default {
         },
         showNetworkSettings: function showNetworkSettings() {
             let network = this.buffer.getNetwork();
-            state.$emit('network.settings', network);
+            network.showServerBuffer('settings');
         },
     },
 };

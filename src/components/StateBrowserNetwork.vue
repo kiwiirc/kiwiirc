@@ -231,7 +231,7 @@ export default {
             return list;
         },
         showNetworkSettings: function showNetworkSettings(network) {
-            state.$emit('network.settings', network);
+            network.showServerBuffer('settings');
         },
         showBufferPopup: function showBufferPopup(buffer, domY) {
             if (!buffer) {
