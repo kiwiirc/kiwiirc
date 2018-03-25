@@ -554,7 +554,7 @@ export default {
     background: #fff;
     display: inline-block;
     position: relative;
-    z-index: 0;
+    z-index: 1;
     padding: 0 1em;
 }
 
