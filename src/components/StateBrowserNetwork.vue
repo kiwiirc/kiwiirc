@@ -28,7 +28,7 @@
                 @blur="onChannelFilterInputBlur"
                 placeholder="Filter Channels..."
             />
-            <p>Show Advanced Options</p>
+            <p><a @click="showNetworkChannels(network)">Find more channels</a></p>
         </div>
 
         <div class="kiwi-statebrowser-channels-info" v-if="channel_add_display">
@@ -190,7 +190,12 @@ export default {
         onChannelFilterInputBlur() {
             // If nothing was entered into the input box, hide it just to clean up the UI
             if (!this.channel_filter) {
-                this.channel_filter_display = false;
+                // Hacky, but if we remove the channel filter UI at this blur event and the user
+                // clicked a link in this filter UI, then the click event will not hit the target
+                // link as it has been removed before the event reaches it.
+                setTimeout(() => {
+                    this.channel_filter_display = false;
+                }, 100);
             }
         },
         closeBuffer(buffer) {
@@ -248,6 +253,9 @@ export default {
         },
         showNetworkSettings: function showNetworkSettings(network) {
             network.showServerBuffer('settings');
+        },
+        showNetworkChannels(network) {
+            network.showServerBuffer('channels');
         },
         showBufferPopup: function showBufferPopup(buffer, domY) {
             if (!buffer) {
