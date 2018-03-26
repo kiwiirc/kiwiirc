@@ -206,7 +206,6 @@ export default {
         .kiwi-messagelist-body {
             line-height: 30px;
             font-weight: 100;
-            font-size: 1em;
         }
 
         .kiwi-messagelist-message {
@@ -244,7 +243,6 @@ export default {
         border-radius: 50%;
         text-align: center;
         line-height: 40px;
-        font-size: 1em;
         font-weight: 600;
         color: #fff;
         margin-top: 3px;

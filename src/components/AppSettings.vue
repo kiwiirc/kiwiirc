@@ -345,7 +345,6 @@ export default {
     font-weight: 600;
     width: 100%;
     position: relative;
-    font-size: 1em;
     box-sizing: border-box;
     text-transform: uppercase;
     line-height: 47px;

@@ -383,7 +383,6 @@ body {
         text-align: left;
         box-sizing: border-box;
         padding: 0.5em 1em;
-        font-size: 1em;
         transition: border 0.3s;
 
         &:last-of-type {
@@ -396,7 +395,6 @@ body {
 .u-tabbed-content h2,
 .u-tabbed-content h3,
 .u-tabbed-content h4 {
-    font-size: 1em;
     padding: 0;
 }
 
@@ -411,9 +409,7 @@ body {
             display: inline-block;
             line-height: 25px;
             width: auto;
-            margin-left: 5px;
             font-weight: 500;
-            font-size: 1em;
             text-align: left;
             max-width: none;
         }
@@ -471,7 +467,6 @@ body {
         height: 40px;
         padding: 0 10px;
         line-height: 40px;
-        font-size: 1em;
         box-sizing: border-box;
         border-radius: 1px;
         min-height: none;

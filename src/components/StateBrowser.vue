@@ -652,7 +652,6 @@ export default {
         width: 100%;
         color: #fff;
         display: block;
-        font-size: 1em;
         padding: 0 10px;
         font-weight: 600;
         background: #42b992;

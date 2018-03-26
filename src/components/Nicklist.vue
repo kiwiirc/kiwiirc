@@ -274,7 +274,6 @@ export default {
                 content: '\f075';
                 right: 1em;
                 font-family: fontAwesome, sans-serif;
-                font-size: 1em;
                 top: 50%;
                 margin-top: -1.5em;
                 color: #666764;

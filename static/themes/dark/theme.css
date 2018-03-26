@@ -53,13 +53,14 @@
 }
 
 .u-tabbed-view-tabs {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(105, 105, 105);
     border-bottom: 3px solid rgba(255, 255, 255, 0.1);
 }
 
 .u-tabbed-view-tabs .u-tabbed-view-tab {
-        border-bottom: 3px solid rgba(255, 255, 255, 0.1);
-        background: #fff;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    background: #2c2c2c;
+    color: #fff;
 }
 
 .u-tabbed-view-tabs .u-tabbed-view-tab:hover,
@@ -108,7 +109,6 @@
     display: inline-block;
     line-height: 25px;
     width: auto;
-    margin-left: 5px;
     font-weight: 500;
     font-size: 1em;
     text-align: left;
@@ -168,7 +168,7 @@
 
 /* Application settings ( AppSettings.vue ) */
 .kiwi-appsettings {
-    background: #fff;
+    background: #1e1e1e;
 }
 
 .kiwi-appsettings .app-settings-block {
@@ -559,6 +559,8 @@
 .kiwi-networksettings textarea,
 .input-text input {
     border-bottom: 1px solid #42b992;
+    background: #dadada;
+    color: #000;
 }
 
 .kiwi-networksettings-advanced h3:hover {

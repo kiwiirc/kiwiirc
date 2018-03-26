@@ -77,7 +77,6 @@ export default Vue.component('input-text', {
 .input-text {
     position: relative;
     padding-top: 1.2em;
-    font-size: 1em;
 }
 
 .input-text input {
@@ -88,7 +87,6 @@ export default Vue.component('input-text', {
     border: none;
     outline: none;
     line-height: 1.6em;
-    font-size: 1em;
 }
 
 .input-text-label {

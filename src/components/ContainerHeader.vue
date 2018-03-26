@@ -198,7 +198,6 @@ export default {
         .topic-title {
             padding: 0 20px;
             font-weight: 600;
-            font-size: 1em;
             line-height: 45px;
         }
 
@@ -274,7 +273,6 @@ export default {
                 padding: 0 10px;
                 line-height: 45px;
                 display: block;
-                font-size: 1em;
                 font-weight: 600;
                 opacity: 0.8;
                 cursor: pointer;
@@ -352,7 +350,6 @@ export default {
     .u-button {
         float: right;
         line-height: 35px;
-        font-size: 1em;
         padding: 0 1em;
         margin: 4px 0;
         border-radius: 4px;
@@ -417,7 +414,6 @@ export default {
 
         .kiwi-header-name {
             line-height: 2.2em;
-            font-size: 1em;
             padding-left: 60px;
         }
     }
