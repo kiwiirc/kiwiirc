@@ -236,7 +236,6 @@ export default {
     font-weight: 600;
     width: 100%;
     position: relative;
-    font-size: 1em;
     box-sizing: border-box;
     text-transform: uppercase;
     line-height: 50px;
@@ -293,7 +292,6 @@ export default {
     }
 
     .u-form label span {
-        font-size: 1em;
         margin-right: 0;
         margin-left: 0;
     }
@@ -318,6 +316,10 @@ export default {
 
     .kiwi-channelbanlist .u-form {
         line-height: 10px;
+    }
+
+    .kiwi-sidebar-options {
+        line-height: 47px;
     }
 }
 

@@ -227,7 +227,6 @@ export default {
         height: 40px;
         padding: 0 10px;
         line-height: 40px;
-        font-size: 1em;
         color: #000;
         box-sizing: border-box;
         background: #fff;

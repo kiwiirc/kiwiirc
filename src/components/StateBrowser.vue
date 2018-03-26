@@ -391,6 +391,13 @@ export default {
                 margin: 4px 0;
                 border-radius: 5px 0 0 5px;
                 font-weight: 600;
+
+                &.kiwi-statebrowser-channel-label--highlight {
+                    border-radius: 10px 0 0 10px;
+                    font-weight: 600;
+                    padding-right: 15px;
+                    padding-left: 15px;
+                }
             }
 
             &:hover {
@@ -652,7 +659,6 @@ export default {
         width: 100%;
         color: #fff;
         display: block;
-        font-size: 1em;
         padding: 0 10px;
         font-weight: 600;
         background: #42b992;

@@ -448,7 +448,6 @@ export default {
     padding: 5px  0 5px 0;
     margin: 10px 0;
     opacity: 0.85;
-    font-size: 1em;
     text-align: center;
     border: none;
     transition: all 0.3s;

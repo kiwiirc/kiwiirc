@@ -253,7 +253,6 @@ export default {
 }
 
 .kiwi-welcome-simple-section-connection input[type="text"] {
-    font-size: 1em;
     margin-top: 5px;
     padding: 0.3em 1em;
     width: 100%;

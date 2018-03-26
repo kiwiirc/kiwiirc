@@ -92,6 +92,7 @@
     border: 1px solid #ccc;
     border-bottom: 2px solid #42b992;
     background: #fff;
+    line-height: normal;
     outline-color: #42b992;
 }
 
@@ -106,7 +107,6 @@
     display: inline-block;
     line-height: 25px;
     width: auto;
-    margin-left: 5px;
     font-weight: 500;
     font-size: 1em;
     text-align: left;
@@ -226,6 +226,13 @@
     background: #fff;
 }
 
+.kiwi-wrap {
+    background: #201F1F;
+    --kiwi-nick-brightness: 40;
+    --kiwi-nick-brightness: 50;
+    --kiwi-supports-monospace: 1;
+}
+
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #ddd;
 }
@@ -247,8 +254,8 @@
     border-right-color: #ddd;
 }
 
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
-    background: #d62323;
+.kiwi-statebrowser-channel-label--highlight {
+    background: #e45e5e;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
