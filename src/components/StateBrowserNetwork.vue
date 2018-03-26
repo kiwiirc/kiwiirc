@@ -98,7 +98,7 @@
                     <div
                         v-if="buffer.isChannel()"
                         class="kiwi-statebrowser-channel-settings"
-                        @click="uiState.showBufferSettings()"
+                        @click="showBufferSettings(buffer)"
                     >
                         <i class="fa fa-cog" aria-hidden="true"></i>
                     </div>
@@ -256,6 +256,10 @@ export default {
         },
         showNetworkChannels(network) {
             network.showServerBuffer('channels');
+        },
+        showBufferSettings(buffer) {
+            this.setActiveBuffer(buffer);
+            this.uiState.showBufferSettings();
         },
         showBufferPopup: function showBufferPopup(buffer, domY) {
             if (!buffer) {
