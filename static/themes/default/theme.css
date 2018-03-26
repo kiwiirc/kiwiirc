@@ -223,6 +223,13 @@
     background: #fff;
 }
 
+.kiwi-wrap {
+    background: #201F1F;
+    --kiwi-nick-brightness: 40;
+    --kiwi-nick-brightness: 50;
+    --kiwi-supports-monospace: 1;
+}
+
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #ddd;
 }

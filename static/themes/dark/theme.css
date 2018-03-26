@@ -223,6 +223,9 @@
 
 .kiwi-wrap {
     background: #201F1F;
+    --kiwi-nick-brightness: 40;
+    --kiwi-nick-brightness: 40;
+    --kiwi-supports-monospace: 1;
 }
 
 /* Container - Main ( Container.vue ) */

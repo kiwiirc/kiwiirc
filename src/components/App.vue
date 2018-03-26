@@ -306,10 +306,6 @@ body {
     height: 100%;
     overflow: hidden;
     color: #2c3e50;
-
-    --kiwi-nick-brightness: 40;
-    --kiwi-nick-brightness: 50;
-    --kiwi-supports-monospace: 1;
 }
 
 .kiwi-wrap--monospace {
