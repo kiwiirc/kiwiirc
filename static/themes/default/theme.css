@@ -4,7 +4,10 @@
 
  */
 
-
+.kiwi-wrap {
+    --kiwi-nick-brightness: 40;
+    --kiwi-supports-monospace: 1;
+}
 
 
  /* Welcome Screen ( Welcome.vue ) */
