@@ -3,7 +3,7 @@
         <form class="u-form">
             <div class="kiwi-networksettings-section kiwi-networksettings-connection">
 
-                <div class='kiwi-title'><span>1</span>{{$t('settings_server_details')}}</div>
+                <div class='kiwi-title'>{{$t('settings_server_details')}}</div>
                 <div class="kiwi-padded-form-element-container">
                     <div class="kiwi-networksettings-error" v-if="network.state_error">We couldn't connect to that server :( <span>{{readableStateError(network.state_error)}}</span></div>
 
@@ -26,54 +26,56 @@
                             <input-text :label="$t('password')" v-model="znc_password" type="password" />
                         </template>
                     </div>
-                </div>
-                <div class="kiwi-title"><span>2</span> Network Type </div>
-                <div class="kiwi-padded-form-element-container">
-                    <div class="kiwi-networksettings-server-types">
-                        <div v-if="server_type==='znc'" class="kiwi-networksettings-server-types-info">
-                            {{$t('settings_znc_other')}}
-                        </div>
-                        <a
-                            @click="server_type='network'"
-                            class="u-link kiwi-network-type-button"
-                            :class="{'kiwi-networksettings-server-type-active': server_type==='network'}"
-                        >{{$t('network')}}</a>
-                        <a
-                            @click="server_type='znc'"
-                            class="u-link kiwi-network-type-button"
-                            :class="{'kiwi-networksettings-server-type-active': server_type==='znc'}"
-                        >{{$t('znc')}}</a>
-                    </div>
-                </div>
 
-                <div class="kiwi-title"><span>3</span>{{$t('settings_nickname')}}</div>
-                <div class="kiwi-padded-form-element-container">
+                    <div class="kiwi-padded-form-element-container">
+                        <div class="kiwi-networksettings-server-types">
+                            <div v-if="server_type==='znc'" class="kiwi-networksettings-server-types-info">
+                                {{$t('settings_znc_other')}}
+                            </div>
+                            <a
+                                @click="server_type='network'"
+                                class="u-link kiwi-network-type-button"
+                                :class="{'kiwi-networksettings-server-type-active': server_type==='network'}"
+                            >{{$t('network')}}</a>
+                            <a
+                                @click="server_type='znc'"
+                                class="u-link kiwi-network-type-button"
+                                :class="{'kiwi-networksettings-server-type-active': server_type==='znc'}"
+                            >{{$t('znc')}}</a>
+                        </div>
+                    </div>
+
+                    <label>{{$t('settings_nickname')}}</label>
                     <div class="kiwi-networksettings-section  kiwi-networksettings-user kiwi-networksettings-username">
                         <input-text v-model="network.nick" />
                     </div>
-                </div>
 
-                <div class="kiwi-title"  @click="show_advanced=!show_advanced"><span>4</span>{{$t('settings_advanced')}} <i class="fa" :class="['fa-caret-'+(show_advanced?'up':'down')]" aria-hidden="true"></i></div>
-                <div class="kiwi-padded-form-element-container">
-                    <div class="kiwi-networksettings-section  kiwi-networksettings-user">
-                        <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
-                            <template v-if="show_advanced">
-                                <label><span>{{$t('settings_encoding')}}: </span> <input v-model="network.connection.encoding" /></label><br />
-                                <label><span>{{$t('settings_show_raw')}}: </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
-                                <label class="u-form-block">
-                                    <span>{{$t('settings_autorun')}}</span>
-                                    <textarea v-model="network.auto_commands" cols=40 rows=5></textarea>
-                                </label>
-                            </template>
+                    <h4 @click="show_advanced=!show_advanced" class="kiwi-show-advanced-title">{{$t('settings_advanced')}} <i class="fa" :class="['fa-caret-'+(show_advanced?'up':'down')]" aria-hidden="true"></i></h4>
+                    <div class="kiwi-padded-form-element-container">
+                        <div class="kiwi-networksettings-section  kiwi-networksettings-user">
+                            <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
+                                <template v-if="show_advanced">
+                                    <label><span>{{$t('settings_encoding')}}: </span> <input v-model="network.connection.encoding" /></label><br />
+                                    <label><span>{{$t('settings_show_raw')}}: </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
+                                    <label class="u-form-block">
+                                        <span>{{$t('settings_autorun')}}</span>
+                                        <textarea v-model="network.auto_commands" cols=40 rows=5></textarea>
+                                    </label>
+                                </template>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="kiwi-padded-form-element-container">
+                        <div class="u-button kiwi-connect-to-newnetwork" @click="network.ircClient.connect()">
+                            Connect To Network
+                        </div>
+                    </div>
+
+
                 </div>
 
-                <div class="kiwi-padded-form-element-container">
-                    <div class="u-button kiwi-connect-to-newnetwork" @click="network.ircClient.connect()">
-                        Connect To Network
-                    </div>
-                </div>
+
 
                 <div class="kiwi-padded-form-element-container kiwi-dangerzone">
                     <div class="kiwi-networksettings-section kiwi-networksettings-danger">
@@ -245,12 +247,22 @@ export default {
         text-align: center;
     }
 
+    .kiwi-show-advanced-title {
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: -10px;
+    }
+
+    .kiwi-networksettings-advanced {
+        margin-top: 10px;
+    }
+
     .kiwi-padded-form-element-container {
         float: left;
         width: 100%;
         padding: 10px 20px;
         box-sizing: border-box;
-        margin-bottom: 10px;
 
         label {
             margin: 0;
@@ -325,7 +337,12 @@ export default {
         background: #42b992;
         color: #fff;
         display: block;
+        cursor: pointer;
         line-height: 35px;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 }
 

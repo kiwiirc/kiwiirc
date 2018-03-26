@@ -305,7 +305,6 @@ body {
     -webkit-font-smoothing: antialiased;
     height: 100%;
     overflow: hidden;
-    color: #2c3e50;
 }
 
 .kiwi-wrap--monospace {

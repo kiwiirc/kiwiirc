@@ -73,7 +73,7 @@
                 </tabbed-tab>
 
                 <tabbed-tab :header="$t('settings_aliases')">
-                    <div class="app-settings-block">
+                    <div class="app-settings-block kiwi-aliases-block">
                         <h3>{{$t('settings_aliases')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
                             <settings-aliases></settings-aliases>
@@ -317,16 +317,14 @@ export default {
 }
 
 .app-settings-block {
-    width: 400px;
+    max-width: 400px;
+    width: auto;
     display: block;
     box-sizing: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.2);
     margin: 0 auto 20px auto;
 
     h3 {
         width: 100%;
-        background: #42b992;
-        color: #fff;
         line-height: 45px;
         padding: 0 10px;
         box-sizing: border-box;
@@ -334,6 +332,10 @@ export default {
 
     .kiwi-appsettings-section {
         padding: 10px;
+    }
+
+    &.kiwi-aliases-block {
+        max-width: 750px;
     }
 }
 

@@ -28,6 +28,10 @@ div {
     padding: 0.4em 0.9em;
 }
 
+.u-button:hover {
+    opacity: 1;
+}
+
 .u-form {
     text-align: left;
 }

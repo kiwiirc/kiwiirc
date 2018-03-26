@@ -389,9 +389,9 @@ export default {
     width: 250px;
     padding: 0.5em 0;
     margin: 1em auto 1em auto;
-    border-radius: 0.2em;
     text-transform: uppercase;
     letter-spacing: 2px;
+    border-radius: 0;
 }
 
 .kiwi-messagelist-message-disconnected .kiwi-messagelist-body {

@@ -5,9 +5,10 @@
  */
 
 .kiwi-wrap {
-    background: #201F1F;
+    background: #fff;
     --kiwi-nick-brightness: 40;
     --kiwi-supports-monospace: 1;
+    color: #201F1F;
 }
 
  /* Welcome Screen ( Welcome.vue ) */
@@ -167,6 +168,15 @@
 /* Application settings ( AppSettings.vue ) */
 .kiwi-appsettings {
     background: #fff;
+}
+
+.kiwi-appsettings .app-settings-block {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.kiwi-appsettings .app-settings-block h3 {
+    background: #42b992;
+    color: #fff;
 }
 
 .kiwi-appsettings .title {
@@ -985,9 +995,8 @@
 }
 
 .kiwi-userbox-whois {
-    background: #fff;
-    color: #2c3e50;
-    border: 1px dashed #9e9e9e;
+    border: 1px solid #9e9e9e;
+    border-radius: 2px;
 }
 
 

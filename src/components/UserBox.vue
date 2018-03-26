@@ -332,10 +332,11 @@ export default {
 
         .title {
             font-weight: 600;
-            font-size: 1.2em;
+            font-size: 1em;
             opacity: 0.8;
-            line-height: 1.2em;
+            line-height: 1em;
             padding: 0;
+            text-transform: capitalize;
             text-align: left;
         }
 
@@ -457,8 +458,13 @@ export default {
 }
 
 .kiwi-userbox-whois {
-    padding: 5px;
+    float: left;
     line-height: 1.4em;
+    padding: 1em;
+    width: 90%;
+    margin: 0 5% 20px 5%;
+    background: none;
+    box-sizing: border-box;
 }
 
 .kiwi-userbox-whois-line {
