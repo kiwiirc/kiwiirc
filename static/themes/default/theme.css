@@ -251,8 +251,8 @@
     border-right-color: #ddd;
 }
 
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
-    background: #d62323;
+.kiwi-statebrowser-channel-label--highlight {
+    background: #e45e5e;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
