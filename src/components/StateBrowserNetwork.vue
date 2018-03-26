@@ -261,17 +261,6 @@ export default {
             this.setActiveBuffer(buffer);
             this.uiState.showBufferSettings();
         },
-        showBufferPopup: function showBufferPopup(buffer, domY) {
-            if (!buffer) {
-                this.popup_buffername = null;
-                this.popup_networkid = null;
-                this.popup_top = 0;
-            } else {
-                this.popup_buffername = buffer.name;
-                this.popup_networkid = buffer.networkid;
-                this.popup_top = domY;
-            }
-        },
         toggleAddChannel() {
             this.channel_add_display = !this.channel_add_display;
             this.channel_filter_display = false;
@@ -461,13 +450,6 @@ export default {
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings,
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave {
     opacity: 1;
-}
-
-.kiwi-statebrowser-channel-popup {
-    display: block;
-    position: absolute;
-    left: 100%;
-    width: 100%;
 }
 
 /* Add channel input */

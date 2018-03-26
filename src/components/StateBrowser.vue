@@ -30,19 +30,6 @@
         </div>
 
         <div
-            v-if="bufferForPopup"
-            class="kiwi-statebrowser-channel-popup"
-            v-bind:style="{
-                top: popup_top + 'px'
-            }"
-            @click.stop=""
-        >
-            <buffer-settings v-bind:buffer="bufferForPopup"></buffer-settings>
-            <a @click="closeBuffer" class="u-link">{{$t('state_leave', {name: bufferForPopup.name})}}</a>
-        </div>
-
-
-        <div
             v-if="isPersistingState"
             class="kiwi-statebrowser-usermenu"
             :class="[is_usermenu_open?'kiwi-statebrowser-usermenu--open':'']"
@@ -92,7 +79,6 @@
                     :key="network.id"
                     :network="network"
                     :uiState="uiState"
-                    @showBufferSettings="showBufferPopup"
                 ></state-browser-network>
             </div>
         </div>
@@ -122,10 +108,6 @@ znc.autoDetectZncNetworks();
 export default {
     data: function data() {
         return {
-            // Name of the buffer that should show its popup
-            popup_buffername: null,
-            popup_networkid: null,
-            popup_top: 0,
             is_usermenu_open: false,
             show_provided_networks: false,
             provided_networks: Object.create(null),
@@ -138,21 +120,6 @@ export default {
         StateBrowserNetwork,
     },
     methods: {
-        showBufferPopup: function showBufferPopup(buffer, domY) {
-            if (!buffer) {
-                this.popup_buffername = null;
-                this.popup_networkid = null;
-                this.popup_top = 0;
-            } else {
-                let stateBrowserTopPosition = this.$el.getBoundingClientRect();
-                this.popup_buffername = buffer.name;
-                this.popup_networkid = buffer.networkid;
-                this.popup_top = domY - stateBrowserTopPosition.top;
-            }
-        },
-        closeBuffer: function closeBuffer() {
-            state.removeBuffer(this.bufferForPopup);
-        },
         clickAddNetwork: function clickAddNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
             let network = state.addNetwork('Network', nick, {});
@@ -187,13 +154,6 @@ export default {
         },
     },
     computed: {
-        bufferForPopup: function bufferForPopup() {
-            if (!this.popup_buffername || !this.popup_networkid) {
-                return false;
-            }
-
-            return state.getBufferByName(this.popup_networkid, this.popup_buffername);
-        },
         isPersistingState: function isPersistingState() {
             return !!state.persistence;
         },
@@ -209,10 +169,6 @@ export default {
         },
     },
     created: function created() {
-        this.listen(state, 'document.clicked', () => {
-            this.showBufferPopup(null);
-        });
-
         netProv.on('networks', networks => {
             this.provided_networks = networks;
         });
@@ -608,10 +564,6 @@ export default {
 .kiwi-statebrowser-channel-label-transition-enter,
 .kiwi-statebrowser-channel-label-transition-leave-active {
     opacity: 0;
-}
-
-.kiwi-statebrowser-channel-popup {
-    border-left: none;
 }
 
 .kiwi-statebrowser-newchannel-inputwrap--focus {
