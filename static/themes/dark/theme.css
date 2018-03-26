@@ -93,6 +93,7 @@
     border: 1px solid #ccc;
     border-bottom: 2px solid #42b992;
     background: #dadada;
+    line-height: normal;
     outline-color: #42b992;
 }
 
