@@ -476,6 +476,14 @@ export default {
     width: auto;
 }
 
+.u-form.kiwi-ignore-user-form {
+    width: 120px;
+
+    span {
+        float: left;
+    }
+}
+
 @media screen and (max-width: 769px) {
     .kiwi-container--sidebar-open .kiwi-sidebar-userbox {
         width: 100%;
@@ -520,6 +528,11 @@ export default {
         clear: both;
         margin: 0 auto 20px auto;
         display: block;
+    }
+
+    .u-form.kiwi-ignore-user-form {
+        width: 120px;
+        float: none;
     }
 }
 </style>

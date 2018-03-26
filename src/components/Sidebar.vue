@@ -319,6 +319,10 @@ export default {
     .kiwi-channelbanlist .u-form {
         line-height: 10px;
     }
+
+    .kiwi-sidebar-options {
+        line-height: 47px;
+    }
 }
 
 </style>
