@@ -12,7 +12,7 @@
                     <input-text :label="$t('settings_port')" v-model="network.connection.port" type="number" class="kiwi-networksettings-connection-port">
                         <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[network.connection.tls ? 'kiwi-customserver-tls--enabled' : '']" @click="toggleTls">
                             <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
-                            <i v-if="!network.connection.tls" class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"></i>
+                            <i v-if="!network.connection.tls" class="fa fa-unlock fa-stack-1x kiwi-customserver-tls-minus"></i>
                         </span>
                     </input-text>
 
@@ -325,9 +325,32 @@ export default {
         display: none;
     }
 
+    .kiwi-customserver-tls {
+        cursor: pointer;
+        top: 6px;
+        color: #bfbfbf;
+    }
+
+    .kiwi-customserver-tls--enabled {
+        color: green;
+    }
+
     .kiwi-customserver-tls-lock {
-        background: #fff;
-        margin-top: -2px;
+        font-size: 1.4em;
+        opacity: 0;
+        left: 3px;
+    }
+
+    .kiwi-customserver-tls--enabled .kiwi-customserver-tls-lock {
+        color: green;
+        opacity: 1;
+    }
+
+    .kiwi-customserver-tls-minus {
+        color: red;
+        font-size: 1.4em;
+        top: 0;
+        left: 3px;
     }
 
     .kiwi-connect-to-newnetwork {

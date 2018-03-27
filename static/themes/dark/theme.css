@@ -203,15 +203,16 @@
 .kiwi-autocomplete {
     box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
     border: 1px solid #ccc;
-    background: #eee;
+    background: #201F1F;
+    color: #fff;
 }
 
 .kiwi-autocomplete-item {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #666;
 }
 
 .kiwi-autocomplete-item--selected {
-    background: #d1eacd;
+    background: #515151;
 }
 
 /* Channel Banlist ( Channelbanlist.vue ) */
@@ -221,7 +222,7 @@
 
 /* Channel List ( ChannelList.vue ) */
 .kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #262626;
 }
 
 .kiwi-channellist table tbody tr {
@@ -229,7 +230,7 @@
 }
 
 .kiwi-channellist-users {
-    background: #7dbd67;
+    background: #42b992;
 }
 
 /* Container - Main ( Container.vue ) */
@@ -260,20 +261,13 @@
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount {
-    background: #ddd;
+    background-color: #42b983;
+    color: #fff;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
     border: 0.6em solid transparent;
     border-right-color: #ddd;
-}
-
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
-    background: #d62323;
-}
-
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
-    border-right-color: #d62323;
 }
 
 /* Sidebar uservue colouring */
@@ -413,6 +407,12 @@
 .kiwi-controlinput-active-tool {
     background: #f6f6f6;
     border: 1px solid #ddd;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--unread {
+    padding-top: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 5px solid rgba(0, 0, 0, 0.5);
 }
 
 /* Message list - Standard messages ( MessageList.vue ) */
@@ -672,8 +672,9 @@
 
 /* Self User ( SelfUser.vue ) */
 .kiwi-controlinput-selfuser {
-    background: #f6f6f6;
+    background: #201F1F;
     border: 1px solid #ddd;
+    color: #dedede;
 }
 
 .kiwi-selfuser-actions {

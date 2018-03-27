@@ -7,12 +7,10 @@
     }">
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
-                <i v-if="!unreadMessages.count" class="fa fa-bars" aria-hidden="true"></i>
                 <div
-                    v-else
-                    class="kiwi-container-toggledraw-statebrowser-messagecount"
+                    class="kiwi-container-toggledraw-statebrowser-messagecount kiwi-container-toggledraw-statebrowser-messagecount--highlight"
                     :class="{'kiwi-container-toggledraw-statebrowser-messagecount--highlight': unreadMessages.highlight}"
-                >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}</div>
+                >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}39</div>
             </div>
             <container-header :buffer="buffer" :uiState="uiState"></container-header>
 
@@ -189,21 +187,11 @@ export default {
     line-height: 2em;
     box-sizing: border-box;
     top: 10px;
-    left: 10px;
-    padding: 0 5px;
     z-index: 3;
     white-space: nowrap;
-}
-
-.kiwi-container-toggledraw-statebrowser-messagecount::after {
-    right: 99%;
-    top: 20%;
-    border: 0.6em solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
+    left: 6px;
+    width: 37px;
+    padding: 0;
 }
 
 .kiwi-no-messagelist {

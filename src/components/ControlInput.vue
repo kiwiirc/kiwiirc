@@ -410,6 +410,7 @@ export default {
 
     .kiwi-controlinput-tools {
         line-height: 40px;
+        cursor: pointer;
     }
 
     .kiwi-controlinput-form {

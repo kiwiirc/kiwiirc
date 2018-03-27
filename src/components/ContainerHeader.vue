@@ -401,7 +401,6 @@ export default {
     .kiwi-container-toggledraw-statebrowser {
         z-index: 10;
         border-bottom: none;
-        height: 46px;
     }
 
     .kiwi-header {
@@ -413,7 +412,7 @@ export default {
         margin-left: 0;
 
         .kiwi-header-name {
-            line-height: 2.2em;
+            line-height: normal;
             padding-left: 60px;
         }
     }

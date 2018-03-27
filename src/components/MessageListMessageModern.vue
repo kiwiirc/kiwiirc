@@ -314,4 +314,18 @@ export default {
         display: none;
     }
 }
+
+.kiwi-messagelist-message.kiwi-messagelist-message--unread {
+    padding-top: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 5px solid rgba(0, 0, 0, 0.5);
+    margin: 0;
+    transition: all 0.2s;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--unread:last-of-type {
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+
 </style>
