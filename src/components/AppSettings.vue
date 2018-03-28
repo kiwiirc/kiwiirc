@@ -312,8 +312,11 @@ export default {
 .u-form .kiwi-settings-aliases-input {
     height: auto;
     min-height: 300px;
-    max-height: 500px;
+    min-height: 400px;
     line-height: normal;
+    width: 100%;
+    max-width: 100%;
+    resize: vertical;
 }
 
 .app-settings-block {
