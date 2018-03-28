@@ -424,7 +424,7 @@
 }
 
 .kiwi-messagelist-message-action .kiwi-messagelist-body {
-    color: #090;
+    color: #44f944;
     font-style: italic;
 }
 
@@ -442,6 +442,10 @@
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
     color: #dedede;
+}
+
+.kiwi-messagelist-body a {
+    color: #3351f8;
 }
 
 .kiwi-messagelist-message--hover a,
@@ -506,12 +510,12 @@
 .kiwi-messagelist-message-traffic-quit,
 .kiwi-messagelist-message-traffic-part,
 .kiwi-messagelist-message-traffic-kick {
-    color: #900;
+    color: #fb5151;
 }
 
 .kiwi-messagelist-message-traffic-quit .kiwi-nick::before,
 .kiwi-messagelist-message-traffic-part .kiwi-nick::before {
-    color: #900;
+    color: #fb5151;
 }
 
 /* Errors */

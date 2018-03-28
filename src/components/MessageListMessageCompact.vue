@@ -134,11 +134,16 @@ export default {
     //Channel traffic messages
     &.kiwi-messagelist-message-traffic {
         margin: 0;
+
+        .kiwi-messagelist-time {
+            display: none;
+        }
     }
 
     //Channel Connection
     &.kiwi-messagelist-message-connection-connected {
-        .kiwi-messagelist-nick {
+        .kiwi-messagelist-nick,
+        .kiwi-messagelist-time {
             display: none;
         }
 
@@ -165,6 +170,8 @@ export default {
     }
 
     @media screen and (max-width: 700px) {
+        padding: 5px;
+
         .kiwi-messagelist-nick {
             display: inline;
             width: auto;
