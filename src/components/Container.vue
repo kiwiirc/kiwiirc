@@ -10,7 +10,7 @@
                 <div
                     class="kiwi-container-toggledraw-statebrowser-messagecount kiwi-container-toggledraw-statebrowser-messagecount--highlight"
                     :class="{'kiwi-container-toggledraw-statebrowser-messagecount--highlight': unreadMessages.highlight}"
-                >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}39</div>
+                >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}</div>
             </div>
             <container-header :buffer="buffer" :uiState="uiState"></container-header>
 
