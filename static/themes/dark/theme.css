@@ -410,9 +410,8 @@
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message--unread {
-    padding-top: 10px;
-    background: rgba(0, 0, 0, 0.2);
-    border-left: 5px solid rgba(0, 0, 0, 0.5);
+    border-left-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Message list - Standard messages ( MessageList.vue ) */
@@ -468,11 +467,6 @@
 .kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
     background-color: #b9424a;
     color: #dedede;
-}
-
-.kiwi-messagelist-message--unread {
-    border-left-color: rgba(255, 255, 255, 0.1);
-    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /*Sidebar*/
