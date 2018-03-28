@@ -286,6 +286,11 @@ export default {
     margin-bottom: 10px;
 }
 
+.kiwi-welcome-simple .u-form label span {
+    font-size: 1.1em;
+    margin-left: 5px;
+}
+
 .kiwi-welcome-simple-start {
     font-size: 1.1em;
     cursor: pointer;
