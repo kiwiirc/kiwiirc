@@ -615,7 +615,7 @@ export default {
         font-weight: 600;
         background: #42b992;
         box-sizing: border-box;
-        margin-bottom: 10px;
+        margin-bottom: 0;
         text-transform: uppercase;
         line-height: 45px;
         height: 45px;
@@ -629,6 +629,10 @@ export default {
             font-size: 1.2em;
             line-height: 45px;
         }
+    }
+
+    .kiwi-statebrowser-profile {
+        position: relative;
     }
 }
 
