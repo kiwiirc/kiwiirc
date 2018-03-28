@@ -443,6 +443,13 @@ export default {
         }
     }
 
+    .kiwi-header-server-connection .u-button {
+        line-height: 32px;
+        margin: 7px 0 0 0;
+        opacity: 1;
+        font-weight: 600;
+    }
+
     .kiwi-header-notjoined {
         height: 46px;
     }

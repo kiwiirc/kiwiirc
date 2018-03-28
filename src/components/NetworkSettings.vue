@@ -354,13 +354,14 @@ export default {
     }
 
     .kiwi-connect-to-newnetwork {
-        width: 200px;
+        width: auto;
         margin: -10px auto 0 auto;
         border-radius: 3px;
         background: #42b992;
         color: #fff;
         display: block;
         cursor: pointer;
+        padding: 0 10px;
         line-height: 35px;
 
         &:hover {
@@ -435,12 +436,12 @@ export default {
     }
 
     .u-button-warning {
-        width: 140px;
+        width: auto;
         height: 30px;
         border-radius: 4px;
         text-align: center;
         line-height: 30px;
-        padding: 0;
+        padding: 0 10px;
         opacity: 0.8;
         margin: 0 auto;
         transition: all 0.3s;
