@@ -42,10 +42,13 @@ div {
 }
 
 .u-form label span {
-    display: inline-block;
-    width: 100px;
     margin-right: 1em;
+    display: inline-block;
+    line-height: 25px;
+    width: auto;
+    font-weight: 500;
     text-align: left;
+    max-width: none;
 }
 
 .u-form .u-input,

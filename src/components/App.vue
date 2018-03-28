@@ -399,15 +399,6 @@ body {
         display: block;
         line-height: 20px;
         margin: 0 0 10px 0;
-
-        span {
-            display: inline-block;
-            line-height: 25px;
-            width: auto;
-            font-weight: 500;
-            text-align: left;
-            max-width: none;
-        }
     }
 
     input[type='checkbox'] {
