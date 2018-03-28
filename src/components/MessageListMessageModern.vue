@@ -199,7 +199,8 @@ export default {
         border: none;
         opacity: 0.8;
 
-        .kiwi-messagelist-time {
+        .kiwi-messagelist-time,
+        .kiwi-messagelist-nick {
             display: none;
         }
 

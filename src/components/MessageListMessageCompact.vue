@@ -136,6 +136,18 @@ export default {
         margin: 0;
     }
 
+    //Channel Connection
+    &.kiwi-messagelist-message-connection-connected {
+        .kiwi-messagelist-nick {
+            display: none;
+        }
+
+        .kiwi-messagelist-body {
+            margin: 0 auto;
+            max-width: 240px;
+        }
+    }
+
     //Channel topic
     &.kiwi-messagelist-message-topic {
         border-radius: 0;

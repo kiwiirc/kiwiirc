@@ -454,11 +454,6 @@
     background-color: #000;
 }
 
-.kiwi-messagelist-message-connection {
-    background-color: #dedede;
-    border-bottom: 1px solid #c0c0c0;
-}
-
 .kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     background-color: #42b992;
     color: #dedede;
