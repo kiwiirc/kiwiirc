@@ -22,7 +22,7 @@
                 <input type="checkbox" v-model="modeN" />
                 <span>{{$t('channel_external')}}</span>
             </label>
-            <label class="password">
+            <label>
                 <span>{{$t('password')}}</span>
                 <input type="text" class="u-input" v-model.lazy="modeK" />
             </label>
@@ -132,23 +132,4 @@ export default {
 </script>
 
 <style lang="less">
-.kiwi-channelinfo-basicmodes.kiwi-channelinfo-basicmodes label {
-    display: block;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.kiwi-channelinfo-topic .u-form textarea {
-    resize: none;
-    line-height: normal;
-}
-
-.u-form .kiwi-channelinfo-topic {
-    span {
-        text-align: left;
-        font-weight: 600;
-        margin: 0;
-    }
-}
-
 </style>
