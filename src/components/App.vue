@@ -315,7 +315,6 @@ body {
 .kiwi-workspace {
     position: relative;
     margin-left: 220px;
-    background: #fff;
     left: 0;
     display: block;
     height: 100%;
@@ -363,132 +362,6 @@ body {
     z-index: 1;
 }
 
-/* Style the tabs, across the app */
-.u-tabbed-view-tabs {
-    padding-top: 15px;
-
-    .u-tabbed-view-tab {
-        background: #fff;
-        font-weight: 600;
-        opacity: 1;
-        z-index: 1;
-        margin-bottom: -3px;
-        position: relative;
-        width: auto;
-        text-align: left;
-        box-sizing: border-box;
-        padding: 0.5em 1em;
-        transition: border 0.3s;
-
-        &:last-of-type {
-            z-index: 1;
-            border-radius: 0 4px 0 0;
-        }
-    }
-}
-
-.u-tabbed-content h2,
-.u-tabbed-content h3,
-.u-tabbed-content h4 {
-    padding: 0;
-}
-
-/*Style all form inputs */
-.u-form {
-    label {
-        display: block;
-        line-height: 20px;
-        margin: 0 0 10px 0;
-    }
-
-    input[type='checkbox'] {
-        float: left;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        width: 20px;
-        height: 20px;
-        display: inline-block;
-        position: relative;
-        border-radius: 1px;
-        cursor: pointer;
-        margin-left: 0;
-        margin-right: 5px;
-
-        &::after {
-            position: absolute;
-            content: '';
-            left: 1px;
-            top: 1px;
-            width: 14px;
-            height: 14px;
-            z-index: 10;
-            transition: all 0.3s;
-            opacity: 0;
-        }
-
-        &:checked::after {
-            position: absolute;
-            content: '';
-            left: 1px;
-            top: 1px;
-            width: 14px;
-            height: 14px;
-            z-index: 10;
-            transition: all 0.3s;
-            opacity: 1;
-        }
-    }
-
-    input[type="radio"] {
-        float: right;
-    }
-
-    label input[type='text'],
-    label input[type='password'],
-    label input[type='email'],
-    textarea {
-        clear: both;
-        width: 100%;
-        height: 40px;
-        padding: 0 10px;
-        line-height: 40px;
-        box-sizing: border-box;
-        border-radius: 1px;
-        min-height: none;
-        overflow-x: hidden;
-        overflow-y: auto;
-        max-width: none;
-    }
-}
-
-.kiwi-channelinfo-basicmodes.kiwi-channelinfo-basicmodes label {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.kiwi-sidebar .kiwi-nicklist-users .kiwi-nicklist-user::after {
-    right: 20px;
-}
-
-/* Styling for global elements across the app, buttons, links etc */
-.u-button {
-    border-radius: 3px;
-    vertical-align: middle;
-    text-align: center;
-    outline: none;
-
-    &:hover {
-        opacity: 0.75;
-    }
-}
-
-.u-link {
-    &:hover {
-        text-decoration: underline;
-    }
-}
-
 /* Small screen will cause the statebrowser to act as a drawer */
 @media screen and (max-width: 769px) {
     .kiwi-statebrowser {
@@ -518,10 +391,6 @@ body {
         opacity: 1;
         z-index: 10;
     }
-
-    .u-tabbed-view-tabs .u-tabbed-view-tab {
-        width: auto;
-    }
 }
 
 .kiwi-container {
@@ -548,11 +417,5 @@ body {
     height: 40px;
     width: 100%;
     z-index: 2;
-}
-
-@media screen and (max-width: 769px) {
-    .u-tabbed-view-tabs {
-        padding-top: 0;
-    }
 }
 </style>

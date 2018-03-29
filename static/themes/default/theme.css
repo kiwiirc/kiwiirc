@@ -40,6 +40,9 @@
 
 
 /* App ( App.vue ) */
+.kiwi-workspace {
+    background: #fff;
+}
 .kiwi-workspace::before {
     background: #42b992;
 }

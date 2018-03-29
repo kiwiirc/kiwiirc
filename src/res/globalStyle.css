@@ -21,15 +21,23 @@ div {
     cursor: pointer;
 }
 
+.u-link:hover {
+    text-decoration: underline;
+}
+
 .u-button {
     display: inline-block;
     white-space: nowrap;
     cursor: pointer;
     padding: 0.4em 0.9em;
+    border-radius: 3px;
+    vertical-align: middle;
+    text-align: center;
+    outline: none;
 }
 
 .u-button:hover {
-    opacity: 1;
+    opacity: 0.75;
 }
 
 .u-form {
@@ -37,8 +45,9 @@ div {
 }
 
 .u-form label {
-    margin-bottom: 5px;
-    display: inline-block;
+    display: block;
+    line-height: 20px;
+    margin: 0 0 10px 0;
 }
 
 .u-form label span {
@@ -51,15 +60,72 @@ div {
     max-width: none;
 }
 
-.u-form .u-input,
-.u-form textarea {
-    font-size: 0.9em;
-    padding: 3px 5px;
-}
-
 .u-form label.u-form-block span {
     width: auto;
     display: inline-block;
+}
+
+/* Style all form inputs */
+.u-form input[type='checkbox'] {
+    float: left;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    border-radius: 1px;
+    cursor: pointer;
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+.u-form input[type='checkbox']::after {
+    position: absolute;
+    content: '';
+    left: 1px;
+    top: 1px;
+    width: 14px;
+    height: 14px;
+    z-index: 10;
+    transition: all 0.3s;
+    opacity: 0;
+}
+
+.u-form input[type='checkbox']:checked::after {
+    position: absolute;
+    content: '';
+    left: 1px;
+    top: 1px;
+    width: 14px;
+    height: 14px;
+    z-index: 10;
+    transition: all 0.3s;
+    opacity: 1;
+}
+
+.u-form input[type="radio"] {
+    float: right;
+}
+
+.u-form .u-input,
+.u-form input[type='text'],
+.u-form input[type='password'],
+.u-form input[type='email'],
+.u-form textarea {
+    font-size: 0.9em;
+    clear: both;
+    width: 100%;
+    height: 40px;
+    padding: 3px 5px;
+    line-height: 40px;
+    box-sizing: border-box;
+    border-radius: 1px;
+    min-height: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: none;
 }
 
 .u-form .u-submit {

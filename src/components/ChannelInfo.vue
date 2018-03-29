@@ -134,6 +134,8 @@ export default {
 <style lang="less">
 .kiwi-channelinfo-basicmodes.kiwi-channelinfo-basicmodes label {
     display: block;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .kiwi-channelinfo-topic .u-form textarea {
