@@ -18,9 +18,9 @@
                 </label>
             </form>
 
-            <h3>Notification Settings:</h3>
+            <h3>{{$t('settings')}}</h3>
             <hr>
-            <form class="u-form" action="index.html" method="post">
+            <form class="u-form">
                 <label>
                     <span>{{$t('settings_notify_mute')}}</span>
                     <input type="checkbox" v-model="settingMuteSound">
