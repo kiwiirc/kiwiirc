@@ -396,8 +396,7 @@
 }
 
 .kiwi-messagelist-message--hover a,
-.kiwi-messagelist-message--hover .kiwi-messagelist-time ,
-.kiwi-messagelist-message--hover .kiwi-messagelist-nick{
+.kiwi-messagelist-message--hover .kiwi-messagelist-time {
     color: #fff !important;
 }
 
@@ -421,8 +420,14 @@
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message--unread {
-    background: rgba(255, 255, 255, 0.2);
-    border-left: 5px solid rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.09);
+    border-left: 5px solid rgba(0, 0, 0, 0.05);
+}
+
+.kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread,
+.kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread a,
+.kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread .kiwi-messagelist-time{
+    color: #000 !important;
 }
 
 /* Style the banlist */

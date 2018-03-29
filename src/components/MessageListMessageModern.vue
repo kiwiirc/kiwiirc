@@ -317,13 +317,15 @@ export default {
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message--unread {
-    padding-top: 15px;
+    padding-top: 5px;
     background: rgba(0, 0, 0, 0.2);
     border-left: 5px solid rgba(0, 0, 0, 0.5);
+    margin-top: 0;
+    padding-bottom: 5px;
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message--unread:last-of-type {
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     margin-bottom: 0;
 }
 
