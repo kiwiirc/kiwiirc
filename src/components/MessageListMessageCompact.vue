@@ -105,9 +105,11 @@ export default {
     }
 
     .kiwi-messagelist-nick {
-        width: 120px;
+        width: 110px;
         display: inline-block;
-        float: left;
+        left: 0;
+        top: 0;
+        position: absolute;
     }
 
     .kiwi-messagelist-time {
@@ -120,7 +122,7 @@ export default {
         display: block;
         white-space: pre-wrap;
         word-wrap: break-word;
-        margin-left: 130px;
+        margin-left: 120px;
     }
 
     .kiwi-messagelist-body a {
@@ -134,6 +136,10 @@ export default {
     //Channel traffic messages
     &.kiwi-messagelist-message-traffic {
         margin: 0;
+
+        .kiwi-messagelist-body {
+            margin-left: 132px;
+        }
 
         .kiwi-messagelist-time {
             display: none;
@@ -159,6 +165,12 @@ export default {
         border-left: 0;
         border-right: 0;
         margin: 5px 0;
+
+        .kiwi-messagelist-body {
+            padding-right: 0;
+            max-width: 95%;
+            margin-left: 20px;
+        }
     }
 
     //Repeat messages, remove the time and author name
@@ -175,11 +187,18 @@ export default {
         .kiwi-messagelist-nick {
             display: inline;
             width: auto;
-            float: none;
+            float: left;
+            position: static;
+        }
+
+        .kiwi-messagelist-time {
+            text-align: right;
         }
 
         .kiwi-messagelist-body {
             margin-left: 2px;
+            float: left;
+            width: 100%;
         }
 
         .kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick {
@@ -189,11 +208,19 @@ export default {
         .kiwi-messageinfo {
             padding-left: 2px;
         }
+
+        &.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
+            margin-left: 0;
+        }
     }
 
     .kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
         display: none;
     }
+}
+
+.kiwi-messagelist-item:last-of-type {
+    margin-bottom: 5px;
 }
 
 </style>
