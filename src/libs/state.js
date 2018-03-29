@@ -1258,12 +1258,15 @@ function initialiseBufferState(buffer) {
                 chanPrefixes = ircNetwork.options.CHANTYPES;
             }
 
-            return chanPrefixes.indexOf(buffer.name[0]) === -1 && !this.isSpecial();
+            return chanPrefixes.indexOf(buffer.name[0]) === -1 &&
+                !this.isSpecial() &&
+                !this.isServer();
         },
     });
     Object.defineProperty(buffer, 'isSpecial', {
         value: function isSpecial() {
-            // Special buffer names (Usually controller queries, like *status or *raw)
+            // Special buffer names (Usually controller queries, like *status or *raw).
+            // Server buffer '*' is not included in this classification.
             let name = buffer.name;
             return name[0] === '*' && name.length > 1;
         },
