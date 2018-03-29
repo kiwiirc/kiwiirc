@@ -173,21 +173,21 @@
     background: #fff;
 }
 
-.kiwi-appsettings .app-settings-block {
+.kiwi-appsettings-block {
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.kiwi-appsettings .app-settings-block h3 {
+.kiwi-appsettings-block h3 {
     background: #42b992;
     color: #fff;
 }
 
-.kiwi-appsettings .title {
+.kiwi-appsettings-title {
     background-color: #42b992;
     color: #fff;
 }
 
-.kiwi-appsettings .title:hover{
+.kiwi-appsettings-title:hover{
     background: #d16c6c;
 }
 

@@ -1,23 +1,23 @@
 <template>
     <div class="kiwi-appsettings">
 
-        <div class="title" @click="closeSettings">
+        <div class="kiwi-appsettings-title" @click="closeSettings">
             <span>Close</span>
             <i class="fa fa-times" aria-hidden="true"></i>
         </div>
 
 
         <form class="u-form">
-            <tabbed-view class="app-settings-tab-container">
+            <tabbed-view class="kiwi-appsettings-tab-container">
                 <tabbed-tab :header="$t('settings_general')" :focus="true">
 
-                    <div class="app-settings-block">
+                    <div class="kiwi-appsettings-block">
                         <h3>{{$t('settings_general')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-general">
-                            <label>
-                                <span class="kiwi-span-settings-theme">{{$t('settings_theme')}} </span>
+                            <label class="kiwi-appsettings-setting-theme">
+                                <span>{{$t('settings_theme')}} </span>
                                 <a @click="refreshTheme" title="Refresh Theme" class="kiwi-appsettings-theme-reload"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                <select v-model="theme" class="kiwi-span-theme">
+                                <select v-model="theme">
                                     <option v-for="t in settings.themes" :value="t.name">{{t.name}}</option>
                                 </select>
                             </label>
@@ -36,7 +36,7 @@
                         </div>
                     </div>
 
-                    <div class="app-settings-block">
+                    <div class="kiwi-appsettings-block">
                         <h3>{{$t('settings_messages_title')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-messages">
                             <label>
@@ -47,22 +47,22 @@
                             <label><span>{{$t('settings_24hour_timestamps')}} </span> <input type="checkbox" v-model="timestamps_24h" /></label>
                             <label><span>{{$t('settings_emoticons')}} </span> <input type="checkbox" v-model="settingBufferShowEmoticons" /></label>
                             <label><span>{{$t('settings_block_private')}} </span> <input type="checkbox" v-model="settingBufferBlockPms" /></label>
-                            <label><span class="kiwi-span-fullwidth">{{$t('settings_scrollback')}} </span> <br> <input type="number" class="u-input kiwi-scrollback-count" v-model="settingBufferScrollbackSize" /></label>
+                            <label class="kiwi-appsettings-full kiwi-appsettings-setting-scrollback"><span>{{$t('settings_scrollback')}} </span> <br> <input type="number" class="u-input" v-model="settingBufferScrollbackSize" /></label>
                             <label><span>{{$t('settings_formatting')}} </span> <input type="checkbox" v-model="settingBufferExtraFormatting" /></label>
                             <label><span>{{$t('settings_nick_colouring')}} </span> <input type="checkbox" v-model="settingBufferColourNicknames" /></label>
                         </div>
                     </div>
 
-                    <div class="app-settings-block">
+                    <div class="kiwi-appsettings-block">
                         <h3>{{$t('notifications')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
-                            <label><span class="kiwi-showjoinpart-span">{{$t('settings_show_joinpart')}} </span> <input type="checkbox" v-model="settingBufferTrafficAsActivity" /></label>
+                            <label class="kiwi-appsettings-setting-showjoinpart"><span>{{$t('settings_show_joinpart')}} </span> <input type="checkbox" v-model="settingBufferTrafficAsActivity" /></label>
                             <label><span>{{$t('settings_mute_sound')}} </span> <input type="checkbox" v-model="settingBufferMuteSound" /></label>
-                            <label><span class="kiwi-span-fullwidth">{{$t('settings_highlight')}} </span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
+                            <label class="kiwi-appsettings-full"><span>{{$t('settings_highlight')}} </span> <input type="text" class="u-input" v-model="settingHighlights" /></label>
                         </div>
                     </div>
 
-                    <div class="app-settings-block">
+                    <div class="kiwi-appsettings-block">
                         <h3>{{$t('operator_tools')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-operator-tools">
                             <label><span>{{$t('settings_default_ban_mask')}} </span> <input type="text" class="u-input" v-model="settingDefaultBanMask" /></label>
@@ -73,7 +73,7 @@
                 </tabbed-tab>
 
                 <tabbed-tab :header="$t('settings_aliases')">
-                    <div class="app-settings-block kiwi-aliases-block">
+                    <div class="kiwi-appsettings-block kiwi-appsettings-block-aliases">
                         <h3>{{$t('settings_aliases')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
                             <settings-aliases></settings-aliases>
@@ -231,62 +231,42 @@ export default {
     padding: 8px 0 0 0;
     margin-top: -7px;
 
-    .title {
-        width: 100%;
-        cursor: default;
-
-        h2 {
-            padding: 10px 0 11px 20px;
-            width: auto;
-            float: left;
-        }
-
-        a {
-            float: right;
-            position: static;
-            background: none;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.4em;
-        }
-    }
-
     .u-form {
         width: 100%;
         overflow: hidden;
-
-        .kiwi-span-settings-theme {
-            margin-left: 0;
-        }
-
-        .kiwi-showjoinpart-span {
-            max-width: none;
-        }
-
-        .kiwi-span-fullwidth {
-            margin: 0;
-            width: 100%;
-        }
-
-        .kiwi-span-theme {
-            float: right;
-        }
-
-        .kiwi-scrollback-count {
-            width: 100%;
-            box-sizing: border-box;
-            line-height: 30px;
-            height: 40px;
-            border: 1px solid #42b992;
-        }
-    }
-
-    .kiwi-appsettings-aliases {
-        padding: 1em 20px 2em 20px;
     }
 }
 
-.app-settings-tab-container {
+.kiwi-appsettings-setting-theme span {
+    margin-left: 0;
+}
+
+.kiwi-appsettings-setting-theme select {
+    float: right;
+}
+
+.kiwi-appsettings-setting-showjoinpart span {
+    max-width: none;
+}
+
+.kiwi-appsettings-full span {
+    margin: 0;
+    width: 100%;
+}
+
+.kiwi-appsettings-aliases {
+    padding: 1em 20px 2em 20px;
+}
+
+.kiwi-appsettings-setting-scrollback input {
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 30px;
+    height: 40px;
+    border: 1px solid #42b992;
+}
+
+.kiwi-appsettings-tab-container {
     width: 100%;
 }
 
@@ -309,7 +289,7 @@ export default {
     cursor: pointer;
 }
 
-.u-form .kiwi-settings-aliases-input {
+.kiwi-settings-aliases-input {
     height: auto;
     min-height: 300px;
     min-height: 400px;
@@ -319,7 +299,7 @@ export default {
     resize: vertical;
 }
 
-.app-settings-block {
+.kiwi-appsettings-block {
     max-width: 400px;
     width: auto;
     display: block;
@@ -332,17 +312,17 @@ export default {
         padding: 0 10px;
         box-sizing: border-box;
     }
-
-    .kiwi-appsettings-section {
-        padding: 10px;
-    }
-
-    &.kiwi-aliases-block {
-        max-width: 750px;
-    }
 }
 
-.title {
+.kiwi-appsettings-section {
+    padding: 10px;
+}
+
+.kiwi-appsettings-block-aliases {
+    max-width: 750px;
+}
+
+.kiwi-appsettings-title {
     display: block;
     cursor: pointer;
     padding: 0 10px;
@@ -355,6 +335,21 @@ export default {
     line-height: 47px;
     text-align: right;
     transition: background 0.3s;
+
+    h2 {
+        padding: 10px 0 11px 20px;
+        width: auto;
+        float: left;
+    }
+
+    a {
+        float: right;
+        position: static;
+        background: none;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.4em;
+    }
 
     i {
         margin-left: 10px;
@@ -373,7 +368,7 @@ export default {
         transition: left 0.5s;
     }
 
-    .kiwi-appsettings .app-settings-block {
+    .kiwi-appsettings .kiwi-appsettings-block {
         width: 90%;
     }
 
