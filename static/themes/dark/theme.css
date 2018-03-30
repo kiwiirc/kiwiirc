@@ -301,27 +301,17 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.kiwi-header .kiwi-header-topic {
+.kiwi-header-topic {
     border-top: 2px solid #42b992;
     border-bottom: 1px solid #42b992;
     color: #dedede;
 }
 
-.kiwi-header .kiwi-header-topic  .topic-title{
-    background-color: #42b992;
-    color: #dedede;
-}
-
-.kiwi-header .kiwi-header-buffersettings {
+.kiwi-header-buffersettings {
     border-top: 1px solid #ddd;
 }
 
-.kiwi-header .kiwi-header-topic .content {
-    color: #dedede;
-}
-
-.kiwi-header .kiwi-header-topic:hover .view-topic {
-    background-color: #42b992;
+.kiwi-header-topic > div {
     color: #dedede;
 }
 
@@ -333,13 +323,8 @@
     border-top: 1px solid #ddd;
 }
 
-.kiwi-header-options .option {
-    border-left: 1px solid rgba(255, 255, 255, 0.6);
-    opacity: 1;
-}
-
-.kiwi-header .kiwi-header-options .option a:hover,
-.kiwi-header .kiwi-header.options .option a.active {
+.kiwi-header-option a:hover,
+.kiwi-header-option--active a {
     background-color: #42b992;
     color: #dedede;
     opacity: 1;
@@ -349,8 +334,8 @@
     background-color: #d16c6c;
 }
 
-.kiwi-header-options .option.topic.active,
-.kiwi-header-options .option.leave a:hover {
+.kiwi-header-option-topic.kiwi-header-option--active,
+.kiwi-header-option-leave a:hover {
     background-color: #d16c6c;
     color: #dedede;
 }

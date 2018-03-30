@@ -10,14 +10,14 @@
         <template v-if="isChannel()">
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div class="kiwi-header-options" v-if="isJoined && isConnected">
-                <div class="option topic" @click="showTopic" v-bind:class="{ active: viewTopic == true }" v-if="buffer.topic.length > 0">
+                <div class="kiwi-header-option kiwi-header-option-topic" @click="showTopic" v-bind:class="{ 'kiwi-header-option--active': viewTopic == true }" v-if="buffer.topic.length > 0">
                     <i class="fa fa-info" aria-hidden="true"></i>
                     <a v-if="viewTopic == true">Hide Topic</a>
                     <a v-if="viewTopic == false">Display Topic</a>
                 </div>
-                <div class="option"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
-                <div class="option"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>Channel Settings</span></a></div>
-                <div class="option leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
+                <div class="kiwi-header-option kiwi-header-option-nicklist"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
+                <div class="kiwi-header-option kiwi-header-option-settings"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>Channel Settings</span></a></div>
+                <div class="kiwi-header-option kiwi-header-option-leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
             </div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a @click="joinCurrentBuffer" class="u-link kiwi-header-join-channel-button">{{$t('container_join')}}</a>
@@ -27,7 +27,7 @@
             </div>
 
             <div v-if="isJoined && buffer.topic.length > 0 && viewTopic" class="kiwi-header-topic">
-                <div class="content">
+                <div>
                     {{buffer.topic}}
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 <div v-for="el in pluginUiQueryElements" v-rawElement="el" class="kiwi-header-tool"></div>
             </div>
             <div class="kiwi-header-options">
-                <div class="option leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
+                <div class="kiwi-header-option kiwi-header-option-leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
             </div>
         </template>
 
@@ -184,126 +184,117 @@ export default {
     box-sizing: border-box;
     text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.kiwi-header--showall {
+    height: auto;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+/* why this hover? */
+.kiwi-header:hover {
+    max-height: none;
 
     .kiwi-header-topic {
-        padding: 0;
-        line-height: normal;
-        max-width: none;
-        width: 100%;
-        float: right;
-        box-sizing: border-box;
-        height: auto;
-        text-align: left;
+        display: block;
+    }
+}
 
-        .topic-title {
-            padding: 0 20px;
-            font-weight: 600;
-            line-height: 45px;
-        }
+.kiwi-header-topic {
+    padding: 0;
+    line-height: normal;
+    max-width: none;
+    width: 100%;
+    float: right;
+    box-sizing: border-box;
+    height: auto;
+    text-align: left;
+}
 
-        .content {
-            height: auto;
-            font-size: 0.8;
-            cursor: default;
-            padding: 10px 20px;
-        }
+.kiwi-header-topic > div {
+    height: auto;
+    font-size: 0.8;
+    cursor: default;
+    padding: 10px 20px;
+}
+
+.kiwi-header-name {
+    font-weight: bold;
+    cursor: default;
+    margin: 0;
+    margin-right: 0.5em;
+    padding: 0.5em 20px;
+    opacity: 1;
+    font-size: 20px;
+    line-height: normal;
+    float: left;
+}
+
+.kiwi-header-options {
+    width: auto;
+    display: inline-block;
+    float: right;
+}
+
+.kiwi-header-option {
+    border: none;
+    float: left;
+    background: none;
+    display: inline-block;
+    font-size: 0.8em;
+    opacity: 0.85;
+    text-transform: capitalize;
+
+    .fa-info {
+        display: none;
     }
 
-    &:hover {
-        max-height: none;
+    a {
+        float: left;
+        padding: 0 10px;
+        line-height: 45px;
+        display: block;
+        font-weight: 600;
+        opacity: 0.8;
+        cursor: pointer;
+        transition: all 0.3s;
 
-        .kiwi-header-topic {
-            display: block;
-        }
-
-        .view-topic {
+        &:hover {
             opacity: 1;
         }
     }
 
-    .kiwi-header-name {
-        float: left;
-        padding: 0.5em 20px;
-        opacity: 1;
-        margin: 0;
-        font-size: 20px;
-        line-height: normal;
-    }
-
-    .show-topic {
+    i {
+        margin-right: 10px;
+        font-size: 1.2em;
         float: left;
         line-height: 45px;
-        cursor: pointer;
-        font-size: 0.8em;
     }
 
-    .kiwi-header-options {
-        float: right;
-        width: auto;
+    &--active {
+        opacity: 1;
 
-        .option {
-            border: none;
-            float: left;
-            background: none;
-            display: block;
-            font-size: 0.8em;
-            opacity: 0.85;
-            text-transform: capitalize;
-
-            .fa-info {
-                display: none;
-            }
-
-            &.leave {
-                opacity: 1;
-                margin: 0;
-                transition: all 0.3s;
-
-                a {
-                    padding: 0 10px;
-                }
-
-                i {
-                    margin: 0;
-                }
-            }
-
-            a {
-                float: left;
-                padding: 0 10px;
-                line-height: 45px;
-                display: block;
-                font-weight: 600;
-                opacity: 0.8;
-                cursor: pointer;
-                transition: all 0.3s;
-
-                i {
-                    margin-right: 10px;
-                    font-size: 1.2em;
-                    float: left;
-                    line-height: 45px;
-                }
-
-                &:hover {
-                    opacity: 1;
-                }
-            }
-
-            &.active {
-                opacity: 1;
-
-                a {
-                    opacity: 1;
-                }
-            }
+        a {
+            opacity: 1;
         }
     }
 }
 
+.kiwi-header-option-leave {
+    opacity: 1;
+    margin: 0;
+    transition: all 0.3s;
+
+    i {
+        margin: 0;
+    }
+}
+
 /* The not joined button */
-.kiwi-header .kiwi-header-notjoined {
+.kiwi-header-notjoined {
     border-radius: 0;
+    display: inline-block;
     margin: 0 auto;
     float: right;
 
@@ -314,28 +305,6 @@ export default {
         border-radius: 0;
         transition: all 0.3;
     }
-}
-
-.kiwi-header--showall {
-    height: auto;
-    max-height: 100%;
-    overflow-y: auto;
-}
-
-.kiwi-header-name {
-    float: left;
-    font-weight: bold;
-    cursor: default;
-    margin-right: 0.5em;
-    padding: 0.5em 20px;
-    opacity: 1;
-    font-size: 20px;
-    line-height: normal;
-}
-
-.kiwi-header-notjoined {
-    display: inline-block;
-    margin-left: 1em;
 }
 
 .kiwi-header-server-settings {
@@ -356,15 +325,6 @@ export default {
         background: #42b992;
         color: #fff;
     }
-}
-
-.kiwi-header-options {
-    display: inline-block;
-    float: right;
-}
-
-.kiwi-header-options > div {
-    display: inline-block;
 }
 
 .kiwi-header-options .u-button {
@@ -417,14 +377,14 @@ export default {
         }
     }
 
-    .kiwi-header .kiwi-header-options .option {
+    .kiwi-header-option {
         a {
             i {
                 margin-right: 0;
             }
         }
 
-        &.topic {
+        &-topic {
             a {
                 display: none;
             }
