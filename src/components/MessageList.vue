@@ -426,12 +426,13 @@ export default {
 /* Remove the min height from the message, as again, makes the page look bloated */
 .kiwi-messagelist-body {
     min-height: 0;
-    margin: 0;
     text-align: left;
-    padding: 2px 4px;
-    padding-right: 20px;
     line-height: 1.5em;
     font-size: 1.05em;
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .kiwi-messagelist-message--own {
@@ -467,13 +468,6 @@ export default {
     position: absolute;
     top: 1px;
     right: 20px;
-}
-
-.kiwi-messagelist-message .kiwi-messagelist-body {
-    float: left;
-    width: 100%;
-    margin: 0;
-    padding: 0;
 }
 
 .kiwi-messagelist-message--authorrepeat {
