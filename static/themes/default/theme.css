@@ -514,50 +514,48 @@
 }
 
 /* Nicklist ( Nicklist.vu ) */
-.kiwi-nicklist  .user-count {
+.kiwi-nicklist-usercount {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.kiwi-nicklist .kiwi-nicklist-info{
+.kiwi-nicklist-info{
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .kiwi-nicklist-info input {
     background-color: #fff;
-    border-top: 2px solid #42b992;
     color: #000;
-    font-weight: normal;
     border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.kiwi-nicklist-users .kiwi-nicklist-user {
+.kiwi-nicklist-user {
     border-top: 1px solid #858585;
 }
 
-.kiwi-nicklist-users .kiwi-nicklist-user:first-of-type {
+.kiwi-nicklist-user:first-of-type {
     border-top: none;
 }
 
-.kiwi-nicklist-users .kiwi-nicklist-user:after {
+.kiwi-nicklist-user:after {
     color: #666764;
 }
 
-.kiwi-nicklist-users .kiwi-nicklist-user:hover {
+.kiwi-nicklist-user:hover {
     background-color: #42b992;
     color: #fff;
 }
 
-.kiwi-nicklist-users .kiwi-nicklist-user:hover {
+.kiwi-nicklist-user:hover {
     background-color: #42b992;
     cursor: pointer;
     color: #fff;
 }
 
-.kiwi-nicklist-users .kiwi-nicklist-user:hover .kiwi-nicklist-user-nick {
+.kiwi-nicklist-user:hover .kiwi-nicklist-user-nick {
     color: #fff !important;
 }
 
-.kiwi-nicklist-users .kiwi-nicklist-user:hover .kiwi-nicklist-user-nick:after {
+.kiwi-nicklist-user:hover .kiwi-nicklist-user-nick:after {
     color: #fff;
 }
 

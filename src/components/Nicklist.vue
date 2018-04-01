@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-nicklist">
-        <div class="user-count">
-            <span class="count">{{$t('person', {count: sortedUsers.length})}}</span>
+        <div class="kiwi-nicklist-usercount">
+            <span>{{$t('person', {count: sortedUsers.length})}}</span>
         </div>
 
         <ul class="kiwi-nicklist-users">
@@ -178,10 +178,19 @@ export default {
 
 
 <style lang="less">
+
+/* Adjust the sidebars width when this nicklist is in view */
 .kiwi-sidebar.kiwi-sidebar-section-nicklist {
     max-width: 250px;
     width: 250px;
     border-left: none;
+}
+
+@media screen and (max-width: 759px) {
+    .kiwi-sidebar.kiwi-sidebar-section-nicklist {
+        width: 100%;
+        max-width: none;
+    }
 }
 
 .kiwi-nicklist {
@@ -196,101 +205,33 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
 
-    .user-count {
-        display: flex;
+.kiwi-nicklist-usercount {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5em 10px;
+    cursor: default;
+    height: 38px;
+    box-sizing: border-box;
+
+    span {
+        font-weight: 600;
         width: 100%;
         text-align: center;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0.5em 10px;
-        cursor: default;
-        height: 38px;
-        box-sizing: border-box;
-
-        span.count {
-            font-weight: 600;
-            width: 100%;
-            text-align: center;
-        }
-    }
-
-    .kiwi-nicklist-info {
-        float: right;
-        width: 100%;
-        margin: auto;
-        height: 43px;
-        box-sizing: border-box;
-        position: relative;
-
-        input {
-            text-align: left;
-            float: left;
-            width: 100%;
-            border: none;
-            padding: 0 1em;
-            height: 43px;
-            line-height: 43px;
-            font-weight: normal;
-        }
-
-        .fa.fa-search {
-            position: absolute;
-            top: 50%;
-            margin-top: -0.5em;
-            color: #000;
-            opacity: 0.5;
-            line-height: normal;
-            font-size: 1.2em;
-            right: 20px;
-            margin-right: 0;
-        }
-    }
-
-    .kiwi-nicklist-users {
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: 0;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        box-sizing: border-box;
-        max-height: 100%;
-        flex: 1 auto;
-
-        .kiwi-nicklist-user {
-            height: 40px;
-            line-height: 40px;
-            padding: 0 1em;
-            margin: 0;
-            position: relative;
-            border-top: 1px solid #858585;
-            box-sizing: border-box;
-            transition: background 0.3s;
-
-            .kiwi-nicklist-messageuser {
-                position: absolute;
-                content: '\f075';
-                right: 1em;
-                font-family: fontAwesome, sans-serif;
-                top: 50%;
-                margin-top: -1.5em;
-                color: #666764;
-            }
-
-            &:hover {
-                cursor: pointer;
-
-                .kiwi-nicklist-messageuser {
-                    color: #fff;
-                }
-            }
-        }
     }
 }
 
 .kiwi-nicklist-info {
+    float: right;
+    width: 100%;
+    margin: auto;
+    height: 43px;
+    box-sizing: border-box;
+    position: relative;
     font-size: 0.9em;
     padding-bottom: 0;
     text-align: center;
@@ -300,14 +241,70 @@ export default {
     flex-direction: column;
 
     input {
+        text-align: left;
+        float: left;
+        width: 100%;
+        border: none;
+        padding: 0 1em;
+        height: 43px;
+        line-height: 43px;
+        font-weight: normal;
         flex: 1;
-        border: 0;
         background: 0 0;
-        padding: 10px 0 10px 20px;
-        margin: 0;
         outline: 0;
-        text-align: center;
     }
+
+    .fa.fa-search {
+        position: absolute;
+        top: 50%;
+        margin-top: -0.5em;
+        color: #000;
+        opacity: 0.5;
+        line-height: normal;
+        font-size: 1.2em;
+        right: 20px;
+        margin-right: 0;
+    }
+}
+
+.kiwi-nicklist-users {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    max-height: 100%;
+    flex: 1 auto;
+    list-style: none;
+    line-height: 1.2em;
+}
+
+.kiwi-nicklist-user {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 1em;
+    margin: 0;
+    position: relative;
+    border-top: 1px solid #858585;
+    box-sizing: border-box;
+    transition: background 0.3s;
+}
+
+.kiwi-nicklist-messageuser {
+    position: absolute;
+    content: '\f075';
+    right: 1em;
+    font-family: fontAwesome, sans-serif;
+    top: 50%;
+    margin-top: -1.5em;
+    color: #666764;
+}
+
+.kiwi-nicklist-messageuser:hover {
+    cursor: pointer;
 }
 
 .kiwi-nicklist-info i.fa-search {
@@ -318,26 +315,9 @@ export default {
     line-height: 50px;
 }
 
-.kiwi-nicklist-users {
-    list-style: none;
-    padding: 0 20px;
-    line-height: 1.2em;
-}
-
-.kiwi-nicklist-user {
-    padding: 3px 0;
-}
-
 .kiwi-nicklist-user-nick {
     font-weight: bold;
     cursor: pointer;
-}
-
-@media screen and (max-width: 759px) {
-    .kiwi-sidebar.kiwi-sidebar-section-nicklist {
-        width: 100%;
-        max-width: none;
-    }
 }
 
 </style>
