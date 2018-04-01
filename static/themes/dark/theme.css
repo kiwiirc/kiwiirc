@@ -637,12 +637,12 @@
     background-color: #bf5155;
 }
 
-.button-container .button {
+.kiwi-notconnected-button {
     border: 2px solid #dedede;
     color: #dedede;
 }
 
-.button-container .button:hover{
+.kiwi-notconnected-button:hover{
     background-color: #dedede;
     color: #000;
 }

@@ -5,36 +5,35 @@
             <i v-else class="fa fa-refresh fa-spin kiwi-notconnected-bigicon" aria-hidden="true"></i>
         </div>
 
-        <div v-if="!shouldShowLoading" class="kiwi-notconnected-caption">
-
-            <span class="disconnect-information">You are not currently connected!</span>
-
-            <div class="button-container">
+        <template v-if="!shouldShowLoading">
+        <div class="kiwi-notconnected-caption">
+            <span>You are not currently connected!</span>
+        </div>
+        <div class="kiwi-notconnected-buttons">
             <template v-if="isChannel()">
-                <span @click="reconnect" class="button">
+                <span @click="reconnect" class="kiwi-notconnected-button">
                     <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
                     {{$t('reconnect_channel', {channel: buffer.name})}}
                 </span>
             </template>
             <template v-else-if="isServer()">
-                <span @click="reconnect" class="button">
+                <span @click="reconnect" class="kiwi-notconnected-button">
                     <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
                     {{$t('reconnect_network', {network: buffer.getNetwork().name})}}
                 </span>
             </template>
             <template v-else-if="isQuery()">
-                <span @click="reconnect" class="button">
+                <span @click="reconnect" class="kiwi-notconnected-button">
                     <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
                     {{$t('reconnect_query', {user: buffer.name})}}</i>
                 </span>
             </template>
 
-            <a @click="showNetworkSettings" class="kiwi-notconnected-networksettings button connection-settings">
+            <a @click="showNetworkSettings" class="kiwi-notconnected-button kiwi-notconnected-button-settings">
                 <i class="fa fa-cogs" aria-hidden="true"></i>{{$t('reconnect_settings')}}
             </a>
-
-            </div>
         </div>
+        </template>
         <div v-else class="kiwi-notconnected-caption">
             {{$t('connecting')}}
         </div>
@@ -106,69 +105,65 @@ export default {
     padding: 10% 0;
     margin: 10px 0 0 0;
     transition: background-color 0.3s;
+}
 
-    .kiwi-notconnected-bigicon {
-        display: inline-block;
-        width: 100%;
-        margin: 0 0 1em 0;
+.kiwi-notconnected-bigicon {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 1em 0;
 
-        i {
-            font-size: 4em;
-            cursor: default;
-        }
-    }
-
-    .kiwi-notconnected-caption {
-        display: block;
-        width: 100%;
-        font-size: 1.6em;
+    i {
+        font-size: 4em;
         cursor: default;
-        margin: 0 0 0.5em 0;
-    }
-
-    .kiwi-notconnected-networksettings {
-        display: block;
-        font-size: 0.9em;
     }
 }
 
-.button-container {
+.kiwi-notconnected-caption {
+    display: block;
+    width: 100%;
+    font-size: 1.6em;
+    cursor: default;
+    margin: 0 0 0.5em 0;
+}
+
+.kiwi-notconnected-buttons {
     width: 100%;
     text-align: center;
+    font-size: 1.6em;
     padding-top: 1em;
+}
 
-    .button {
-        width: auto;
-        display: inline-block;
-        padding: 0.8em 1em 0.8em 0.6em;
-        font-size: 0.8em;
-        border-radius: 0.4em;
-        margin: 0 0.8em;
-        cursor: pointer;
-        transition: all 0.3s;
+.kiwi-notconnected-button {
+    width: auto;
+    display: inline-block;
+    padding: 0.8em 1em 0.8em 0.6em;
+    font-size: 0.8em;
+    border-radius: 0.4em;
+    margin: 0 0.8em;
+    cursor: pointer;
+    transition: all 0.3s;
 
-        &:hover {
-            transition: all 0.2s;
-        }
-
-        i {
-            float: left;
-            font-size: 1.6em;
-            line-height: 0.8em;
-            margin-right: 0.4em;
-        }
+    &:hover {
+        transition: all 0.2s;
     }
 
-    .button.connection-settings {
-        font-size: 0.6em;
-        clear: both;
-        display: block;
-        max-width: 160px;
-        margin: 1em auto;
+    i {
+        float: left;
+        font-size: 1.6em;
+        line-height: 0.8em;
+        margin-right: 0.4em;
+    }
+}
 
-        i {
-            line-height: 1em;
-        }
+.kiwi-notconnected-button-settings {
+    font-size: 0.6em;
+    clear: both;
+    display: block;
+    max-width: 160px;
+    margin: 1em auto;
+
+    i {
+        line-height: 1em;
     }
 }
 
@@ -177,7 +172,7 @@ export default {
         font-size: 1em;
     }
 
-    .kiwi-notconnected .button-container .button {
+    .kiwi-notconnected-button {
         clear: both;
         margin: 0 5% 1em;
         font-size: 1em;
@@ -187,12 +182,12 @@ export default {
         box-sizing: border-box;
     }
 
-    .kiwi-notconnected .button-container .button.connection-settings {
+    .kiwi-notconnected-button-settings {
         font-size: 1em;
         max-width: none;
     }
 
-    .kiwi-notconnected .button-container .button i {
+    .kiwi-notconnected-button i {
         display: none;
     }
 }
@@ -202,8 +197,7 @@ export default {
         font-size: 0.8em;
     }
 
-    .kiwi-notconnected .button-container .button,
-    .kiwi-notconnected .button-container .button.connection-settings {
+    .kiwi-notconnected-button {
         font-size: 0.7em;
     }
 }
