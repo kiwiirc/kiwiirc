@@ -11,155 +11,155 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-02-07 18:01-0500\n"
+"PO-Revision-Date: 2018-04-03 17:40-0400\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "开始"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "欢迎来到 Kiwi IRC！"
 
 #: Close
 msgid "close"
-msgstr ""
+msgstr "关闭"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "连接"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "正在连接···"
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "已连接"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "设置"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "频道"
 
 #: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "封禁用户"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "通知消息"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "用户名"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "密码"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "我有密码"
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "服务器"
 
 #: Nick
 msgid "nick"
-msgstr ""
+msgstr "昵称"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "频道"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "网络"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "正在登陆···"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "无效登录"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "搜索···"
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "好"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "取消"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "这将关闭所有的 KiwiIRC 对话。您确定关闭此窗口吗？"
 
 #: Real name
 msgid "whois_realname"
-msgstr ""
+msgstr "真实名称"
 
 #: Status
 msgid "whois_status"
-msgstr ""
+msgstr "状态"
 
 #: Is available
 msgid "whois_status_available"
-msgstr ""
+msgstr "可用"
 
 #: Send a message
 msgid "send_a_message"
-msgstr ""
+msgstr "发送消息"
 
 #: More information
 msgid "more_information"
-msgstr ""
+msgstr "更多信息"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr ""
+msgstr "忽略用户"
 
 #: Channel
 msgid "connection_channel"
-msgstr ""
+msgstr "频道"
 
 #: General
 msgid "settings_general"
-msgstr ""
+msgstr "通用"
 
 #: Theme
 msgid "settings_theme"
-msgstr ""
+msgstr "主题"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "主题地址"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "使用等宽字体"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "传统 IRC 布局"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "显示自动补全列表"
 
 #: Chat Messages
 msgid "settings_messages_title"
