@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-04-03 17:40-0400\n"
+"PO-Revision-Date: 2018-04-03 17:50-0400\n"
 
 #: Start
 msgid "start_button"
@@ -163,35 +163,35 @@ msgstr "显示自动补全列表"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "聊天信息"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "显示时间戳"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "使用 24 小时制时间戳"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "显示表情"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr ""
+msgstr "不接收新私信"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "历史消息"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr ""
+msgstr "额外格式"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "聊天彩色昵称"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -199,27 +199,27 @@ msgstr ""
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "静音提示"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr ""
+msgstr "高亮单词（使用空格分开）"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr ""
+msgstr "别名"
 
 #: Send Message
 msgid "send_message"
-msgstr ""
+msgstr "发送消息"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr ""
+msgstr "提示我"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "所有信息"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
@@ -419,7 +419,7 @@ msgstr ""
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "当用户改变频道模式时显示"
 
 #: Extra message formatting
 msgid "side_formatting"
