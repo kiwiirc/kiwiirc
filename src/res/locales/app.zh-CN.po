@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-04-04 08:22-0400\n"
+"PO-Revision-Date: 2018-04-04 08:31-0400\n"
 
 #: Start
 msgid "start_button"
@@ -195,7 +195,7 @@ msgstr "聊天彩色昵称"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr ""
+msgstr "令加入/部分信息变成活动"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
@@ -243,7 +243,7 @@ msgstr "操作工具"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "默认封禁理由"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
@@ -355,7 +355,7 @@ msgstr "编码"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr ""
+msgstr "显示原始信息"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -427,139 +427,139 @@ msgstr "额外信息格式"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr ""
+msgstr "列表中的昵称颜色"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr ""
+msgstr "无缓冲区"
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr ""
+msgstr "启动 Kiwi IRC 时出现问题：（"
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr ""
+msgstr "请确保您已正确安装 Kiwi IRC 并可加载配置"
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr ""
+msgstr "离开 {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr ""
+msgstr "您的账户"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr ""
+msgstr "您的设置和网络将保存在此电脑上。"
 
 #: Forget me
 msgid "state_forget"
-msgstr ""
+msgstr "忘记我"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr ""
+msgstr "这里还没有网络。"
 
 #: Add one?
 msgid "state_add"
-msgstr ""
+msgstr "是否添加一个？"
 
 #: Available networks
 msgid "state_available"
-msgstr ""
+msgstr "可用网络"
 
 #: Configure network
 msgid "state_configure"
-msgstr ""
+msgstr "配置网络"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr ""
+msgstr "未连接。"
 
 #: Join new #channel
 msgid "state_join"
-msgstr ""
+msgstr "加入新 #频道"
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "修改昵称"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr ""
+msgstr "账户名：{{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr ""
+msgstr "真实名称：{{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr ""
+msgstr "是否为机器人"
 
 #: Is available for help
 msgid "user_help"
-msgstr ""
+msgstr "是否可寻求帮助"
 
 #: Is an operator
 msgid "user_op"
-msgstr ""
+msgstr "是否为管理员"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr ""
+msgstr "已连接至 {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr ""
+msgstr "通过 SSL/TLS 安全连接"
 
 #: Also in channels {{channels}}
 msgid "user_channels"
-msgstr ""
+msgstr "也在 {{channels}} 频道"
 
 #: Access level
 msgid "user_access"
-msgstr ""
+msgstr "访问等级"
 
 #: Normal
 msgid "user_normal"
-msgstr ""
+msgstr "普通"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr ""
+msgstr "从频道中踢出"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr ""
+msgstr "从频道中封禁"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "从频道中踢出并封禁"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "{{nick}} 将管理员权限授予了 {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr ""
+msgstr "{{nick}} 移除了 {{target}} 的管理员权限"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr ""
+msgstr "{{nick}} 将半管理员权限授予了 {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr ""
+msgstr "{{nick}} 移除了 {{target}} 的半管理员权限"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr ""
+msgstr "{{nick}} 将语音权限授予了 {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr ""
+msgstr "{{nick}} 移除了 {{target}} 的语音权限"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
