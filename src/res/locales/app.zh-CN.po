@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-04-04 08:31-0400\n"
+"PO-Revision-Date: 2018-04-04 08:41-0400\n"
 
 #: Start
 msgid "start_button"
@@ -563,65 +563,65 @@ msgstr "{{nick}} 移除了 {{target}} 的语音权限"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr ""
+msgstr "{{nick}} 将行政员权限授予了 {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr ""
+msgstr "{{nick}} 移除了 {{target}} 的行政员权限"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr ""
+msgstr "{{nick}} 将所有者权限授予了 {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr ""
+msgstr "{{nick}} 移除了 {{target}} 的所有者权限"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr ""
+msgstr "{{nick}} 封禁了 {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr ""
+msgstr "{{nick}} 解封了 {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}} 将 {{mode}} 设置在 {{target}} 上"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr ""
+msgstr "您的 IRC 客户端"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr ""
+msgstr "添加您的网络。加入您的频道。"
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr ""
+msgstr "您回来时他们仍然在这等您。"
 
 #: Add a Network
 msgid "personal_add"
-msgstr ""
+msgstr "添加网络"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr ""
+msgstr "已保存的网络"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr ""
+msgstr "Kiwi IRC (全新版本) - Rizon 预览版"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr ""
+msgstr "直接网页套接字。无需 Kiwi 服务器或 webirc 的介入。"
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr ""
+msgstr "（感谢 Adam @Rizon 开发网页套接字服务器的支持！）"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr ""
+msgstr "试试开发者版本的 Kiwi IRC！"
 
