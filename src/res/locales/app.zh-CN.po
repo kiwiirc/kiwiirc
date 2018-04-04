@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-04-03 17:50-0400\n"
+"PO-Revision-Date: 2018-04-04 04:41-0400\n"
 
 #: Start
 msgid "start_button"
@@ -223,15 +223,15 @@ msgstr "所有信息"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "我被提及"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "从不"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr ""
+msgstr "静音"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
