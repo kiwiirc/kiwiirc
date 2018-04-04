@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-04-04 04:41-0400\n"
+"PO-Revision-Date: 2018-04-04 04:51-0400\n"
 
 #: Start
 msgid "start_button"
@@ -235,11 +235,11 @@ msgstr "静音"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr ""
+msgstr "隐藏未读消息计数"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr ""
+msgstr "操作工具"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
@@ -247,75 +247,75 @@ msgstr ""
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "默认踢出原因"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr ""
+msgstr "刷新封禁列表"
 
 #: Banned user
 msgid "bans_user"
-msgstr ""
+msgstr "已封禁用户"
 
 #: Banned by
 msgid "bans_by"
-msgstr ""
+msgstr "封禁"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr ""
+msgstr "正在刷新封禁列表···"
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr ""
+msgstr "无人被封禁！"
 
 #: Topic
 msgid "channel_topic"
-msgstr ""
+msgstr "主题"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr ""
+msgstr "主持聊天"
 
 #: Invite only
 msgid "channel_invite"
-msgstr ""
+msgstr "仅限邀请"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr ""
+msgstr "只有管理员可以修改主题"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr ""
+msgstr "阻挡除此频道之外的信息"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr ""
+msgstr "欢迎来到 Kiwi IRC！"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr ""
+msgstr "显示状态浏览器"
 
 #: Join Channel
 msgid "container_join"
-msgstr ""
+msgstr "加入频道"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr ""
+msgstr "未连接"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr ""
+msgstr "与 {{user}} 的私聊"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr ""
+msgstr "在此处发送信息···"
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr ""
+msgstr "正在加载 {{url}}···"
 
 #: Load previous messages
 msgid "messages_load"
