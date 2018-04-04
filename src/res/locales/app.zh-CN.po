@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-04-04 04:51-0400\n"
+"PO-Revision-Date: 2018-04-04 08:11-0400\n"
 
 #: Start
 msgid "start_button"
@@ -319,27 +319,27 @@ msgstr "正在加载 {{url}}···"
 
 #: Load previous messages
 msgid "messages_load"
-msgstr ""
+msgstr "载入历史聊天记录"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "未读信息"
 
 #: Server details
 msgid "settings_server_details"
-msgstr ""
+msgstr "服务器信息"
 
 #: Port
 msgid "settings_port"
-msgstr ""
+msgstr "端口"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr ""
+msgstr "在此 ZNC 账号上的其他网络将被添加至网络列表中"
 
 #: Your details
 msgid "settings_your_details"
-msgstr ""
+msgstr "您的信息"
 
 #: Nickname
 msgid "settings_nickname"
