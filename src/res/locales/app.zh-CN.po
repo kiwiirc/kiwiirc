@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-04-04 08:11-0400\n"
+"PO-Revision-Date: 2018-04-04 08:22-0400\n"
 
 #: Start
 msgid "start_button"
@@ -343,15 +343,15 @@ msgstr "您的信息"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr ""
+msgstr "昵称"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr ""
+msgstr "高级"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr ""
+msgstr "编码"
 
 #: Show Raw
 msgid "settings_show_raw"
@@ -359,63 +359,63 @@ msgstr ""
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr ""
+msgstr "当连接时运行指令"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr ""
+msgstr "危险选项"
 
 #: Remove network
 msgid "settings_remove"
-msgstr ""
+msgstr "移除网络"
 
 #: {{count}} person here
 msgid "person"
-msgstr ""
+msgstr "有 {{count}} 人在线"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr ""
+msgstr "有 {{count}} 人在线"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr ""
+msgstr "重连至 {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr ""
+msgstr "重连至 {{network}} 以开始聊天"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr ""
+msgstr "重连以继续和 {{user}} 的聊天"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr ""
+msgstr "连接设置"
 
 #: Close options
 msgid "side_close"
-msgstr ""
+msgstr "关闭设置"
 
 #: Channel options
 msgid "side_options"
-msgstr ""
+msgstr "频道设置"
 
 #: Your settings
 msgid "side_settings"
-msgstr ""
+msgstr "您的设置"
 
 #: Show when people join
 msgid "side_joins"
-msgstr ""
+msgstr "在成员加入时显示"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "当频道主题改变时显示"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "当用户修改昵称时显示"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
@@ -423,7 +423,7 @@ msgstr "当用户改变频道模式时显示"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr ""
+msgstr "额外信息格式"
 
 #: Nick colours in the list"
 msgid "side_colours"
