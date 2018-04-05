@@ -8,10 +8,10 @@
         </div>
 
         <div class="kiwi-userbox-basicinfo">
-            <span class="title">{{$t('whois_realname')}}:</span>
-            <span class="data">{{user.realname}} </span>
-            <span class="title">{{$t('whois_status')}}:</span>
-            <span class="data">{{user.away ? user.away : $t('whois_status_available')}}  </span>
+            <span class="kiwi-userbox-basicinfo-title">{{$t('whois_realname')}}:</span>
+            <span class="kiwi-userbox-basicinfo-data">{{user.realname}} </span>
+            <span class="kiwi-userbox-basicinfo-title">{{$t('whois_status')}}:</span>
+            <span class="kiwi-userbox-basicinfo-data">{{user.away ? user.away : $t('whois_status_available')}}  </span>
         </div>
 
         <p class="kiwi-userbox-actions">
@@ -24,10 +24,10 @@
                 {{$t('more_information')}}
             </a>
 
-            <form class="u-form kiwi-ignore-user-form">
+            <form class="u-form kiwi-userbox-ignoreuser">
                 <label>
                     <input type="checkbox" v-model="user.ignore" />
-                    <span class="kiwi-ignore-user-span"> {{$t('ignore_user')}} </span>
+                    <span> {{$t('ignore_user')}} </span>
                 </label>
             </form>
         </p>
@@ -53,7 +53,7 @@
             </template>
         </div>
 
-        <div v-if="buffer.isChannel() && areWeAnOp" class="kiwi-userbox-actions-op">
+        <div v-if="buffer.isChannel() && areWeAnOp" class="kiwi-userbox-opactions">
             <form class="u-form" @submit.prevent="">
                 <label v-if="isUserOnBuffer">
                     {{$t('user_access')}} <select v-model="userMode">
@@ -64,19 +64,19 @@
                     </select>
                 </label>
                 <label v-if="isUserOnBuffer">
-                    <button @click="kickUser" class="u-button u-button-secondary kick action">
+                    <button @click="kickUser" class="u-button u-button-secondary kiwi-userbox-opaction-kick kiwi-userbox-opaction">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                         {{$t('user_kick')}}
                     </button>
                 </label>
                 <label>
-                    <button @click="banUser" class="u-button u-button-secondary ban action">
+                    <button @click="banUser" class="u-button u-button-secondary kiwi-userbox-opaction-ban kiwi-userbox-opaction">
                         <i class="fa fa-ban" aria-hidden="true"></i>
                         {{$t('user_ban')}}
                     </button>
                 </label>
                 <label v-if="isUserOnBuffer">
-                    <button @click="kickbanUser" class="u-button u-button-secondary kickban action">
+                    <button @click="kickbanUser" class="u-button u-button-secondary kiwi-userbox-opaction-kickban kiwi-userbox-opaction">
                         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         {{$t('user_kickban')}}
                     </button>
@@ -276,180 +276,172 @@ export default {
 
 .kiwi-userbox {
     box-sizing: border-box;
+}
 
-    .main-title {
+.kiwi-userbox-header {
+    position: relative;
+    padding: 0.5em 1em 0.5em 5em;
+    overflow: hidden;
+
+    h3 {
         width: 100%;
-        padding: 1em;
-        font-size: 1.4em;
+        padding: 0;
         cursor: default;
-        margin: 0;
     }
+}
 
-    .kiwi-userbox-header {
-        position: relative;
-        padding: 0.5em 1em 0.5em 5em;
-        overflow: hidden;
+.kiwi-userbox-icon {
+    position: absolute;
+    left: 0.5em;
+    top: 0.25em;
+    font-size: 3em;
+}
 
-        .kiwi-userbox-icon {
-            position: absolute;
-            left: 0.5em;
-            top: 0.25em;
-            font-size: 3em;
-        }
+.kiwi-userbox-usermask {
+    width: 100%;
+    cursor: default;
+}
 
-        h3 {
-            width: 100%;
-            padding: 0;
-            cursor: default;
-        }
+.kiwi-userbox-basicinfo {
+    width: 100%;
+    margin: 0;
+    display: block;
+    padding: 1em 1em 0 1.4em;
+    box-sizing: border-box;
 
-        .kiwi-userbox-usermask {
-            width: 100%;
-            cursor: default;
-        }
-    }
-
-    .kiwi-userbox-basicinfo {
+    span {
+        font-weight: 600;
         width: 100%;
-        margin: 0;
-        display: block;
-        padding: 1em 1em 0 1.4em;
-        box-sizing: border-box;
-
-        span {
-            font-weight: 600;
-            width: 100%;
-            margin: 0 0 0.4em 0;
-        }
-
-        .title,
-        .data {
-            display: block;
-            width: 100%;
-            cursor: default;
-            margin: 0;
-        }
-
-        .title {
-            font-weight: 600;
-            font-size: 1em;
-            opacity: 0.8;
-            line-height: 1em;
-            padding: 0;
-            text-transform: capitalize;
-            text-align: left;
-        }
-
-        .data {
-            margin-bottom: 1em;
-            font-weight: normal;
-        }
+        margin: 0 0 0.4em 0;
     }
+}
 
-    .kiwi-userbox-actions {
-        width: 100%;
-        padding: 1em;
-        text-align: center;
-        margin: 0;
-        box-sizing: border-box;
+.kiwi-userbox-basicinfo-title,
+.kiwi-userbox-basicinfo-data {
+    display: block;
+    width: 100%;
+    cursor: default;
+    margin: 0;
+}
 
-        .u-button {
-            display: inline-block;
-            border: 1px solid #000;
-            padding: 0.5em 1em;
-            color: #000;
-            cursor: pointer;
-            margin: 0 5px 0 5px;
-            transition: all 0.3s;
-            border-radius: 3px;
+.kiwi-userbox-basicinfo-title {
+    font-weight: 600;
+    font-size: 1em;
+    opacity: 0.8;
+    line-height: 1em;
+    padding: 0;
+    text-transform: capitalize;
+    text-align: left;
+}
 
-            &:hover {
-                background-color: #000;
-                color: #fff;
-            }
-        }
+.kiwi-userbox-basicinfo-data {
+    margin-bottom: 1em;
+    font-weight: normal;
+}
 
-        label {
-            display: block;
-            cursor: pointer;
+.kiwi-userbox-actions {
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
 
-            span {
-                text-align: left;
-                width: auto;
-            }
-        }
-    }
+    .u-button {
+        display: inline-block;
+        border: 1px solid #000;
+        padding: 0.5em 1em;
+        color: #000;
+        cursor: pointer;
+        margin: 0 5px 0 5px;
+        transition: all 0.3s;
+        border-radius: 3px;
 
-    .kiwi-userbox-actions-op {
-        width: 100%;
-        text-align: center;
-        box-sizing: border-box;
-        margin: 0 0 1em 0;
-        border-top: 1px solid #9e9e9e;
-        padding: 1em;
-
-        label {
-            width: 100%;
-            font-size: 1.2em;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 0.7em;
-
-            select {
-                display: block;
-                clear: both;
-                padding: 10px;
-                border-radius: 0.25em;
-                box-shadow: none;
-                border: 1px solid rgba(0, 0, 0, 0.2);
-                width: 100%;
-                margin-top: 10px;
-                cursor: pointer;
-            }
-
-            .action {
-                width: 100%;
-                padding: 0 1em;
-                text-align: left;
-                border: none;
-                line-height: 2.8em;
-                font-size: 1em;
-
-                i {
-                    margin-right: 0.3em;
-                }
-            }
-        }
-
-        .kick,
-        .ban,
-        .kickban {
+        &:hover {
+            background-color: #000;
             color: #fff;
         }
+    }
 
-        .kick {
-            background-color: #f6c358;
+    label {
+        display: block;
+        cursor: pointer;
 
-            &:hover {
-                background-color: #fcce6e;
-            }
+        span {
+            text-align: left;
+            width: auto;
         }
+    }
+}
 
-        .ban {
-            background-color: #fcb46e;
+.kiwi-userbox-opactions {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0 0 1em 0;
+    border-top: 1px solid #9e9e9e;
+    padding: 1em;
 
-            &:hover {
-                background-color: #ffca97;
-            }
+    label {
+        width: 100%;
+        font-size: 1.2em;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.7em;
+
+        select {
+            display: block;
+            clear: both;
+            padding: 10px;
+            border-radius: 0.25em;
+            box-shadow: none;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            width: 100%;
+            margin-top: 10px;
+            cursor: pointer;
         }
+    }
+}
 
-        .kickban {
-            background-color: #fb846a;
+.kiwi-userbox-opaction {
+    width: 100%;
+    padding: 0 1em;
+    text-align: left;
+    border: none;
+    line-height: 2.8em;
+    font-size: 1em;
 
-            &:hover {
-                background-color: #ffaf9e;
-            }
-        }
+    i {
+        margin-right: 0.3em;
+    }
+}
+
+.kiwi-userbox-opaction-kick,
+.kiwi-userbox-opaction-ban,
+.kiwi-userbox-opaction-kickban {
+    color: #fff;
+}
+
+.kiwi-userbox-opaction-kick {
+    background-color: #f6c358;
+
+    &:hover {
+        background-color: #fcce6e;
+    }
+}
+
+.kiwi-userbox-opaction-ban {
+    background-color: #fcb46e;
+
+    &:hover {
+        background-color: #ffca97;
+    }
+}
+
+.kiwi-userbox-opaction-kickban {
+    background-color: #fb846a;
+
+    &:hover {
+        background-color: #ffaf9e;
     }
 }
 
@@ -458,7 +450,6 @@ export default {
 }
 
 .kiwi-userbox-whois {
-    float: left;
     line-height: 1.4em;
     padding: 1em;
     width: 90%;
@@ -471,22 +462,14 @@ export default {
     display: block;
 }
 
-.kiwi-ignore-user-form {
-    width: 100px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.kiwi-userbox .kiwi-userbox-basicinfo .kiwi-ignore-user-span {
-    text-align: left;
-    width: auto;
-}
-
-.u-form.kiwi-ignore-user-form {
-    width: 120px;
+.kiwi-userbox-ignoreuser {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
     span {
-        float: left;
+        /* This fixes a vertical align issue between the checkbox and span */
+        float: right;
     }
 }
 
@@ -502,11 +485,6 @@ export default {
         top: auto;
         max-width: 100%;
         border-width: 1px 0;
-
-        .u-form {
-            width: 100%;
-            float: left;
-        }
     }
 
     .kiwi-userbox .kiwi-userbox-header {
@@ -519,11 +497,9 @@ export default {
 
     .kiwi-userbox .kiwi-userbox-basicinfo {
         padding: 10px 10px;
-        float: left;
     }
 
     .kiwi-userbox-actions {
-        float: left;
         padding: 0;
         width: 100%;
         box-sizing: border-box;
@@ -534,11 +510,6 @@ export default {
         clear: both;
         margin: 0 auto 20px auto;
         display: block;
-    }
-
-    .u-form.kiwi-ignore-user-form {
-        width: 120px;
-        float: none;
     }
 }
 </style>

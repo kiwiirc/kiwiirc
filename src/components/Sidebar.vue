@@ -217,15 +217,6 @@ export default {
         max-width: none;
         width: auto;
     }
-
-    .u-form label {
-        float: left;
-        width: 100%;
-    }
-
-    .u-form label span {
-        width: auto;
-    }
 }
 
 .kiwi-sidebar-options {
