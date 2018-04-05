@@ -619,13 +619,13 @@
     color: #fff;
 }
 
-.kiwi-statebrowser .user-avatar {
+.kiwi-statebrowser-usermenu-avatar {
     border: 2px solid #42b992;
     background-color: #000;
     color: #fff;
 }
 
-.kiwi-statebrowser .user-avatar:hover {
+.kiwi-statebrowser-usermenu-avatar:hover {
     background-color: #42b992;
     color: #fff;
 }
@@ -635,21 +635,21 @@
 }
 
 /* If the user clicks on their avatar we 'open' the settings */
-.kiwi-statebrowser.user_profile_open .kiwi-statebrowser-profile {
+.kiwi-statebrowser-usermenu--open {
     background: rgba(255, 255, 255, 0.1);
 }
 
-.kiwi-statebrowser.user_profile_open .user-avatar {
+.kiwi-statebrowser-usermenu--open .kiwi-statebrowser-usermenu-avatars {
     background-color: #42b992;
     color: #fff;
 }
 
 /* User Settings */
-.kiwi-statebrowser .user-options {
+.kiwi-statebrowser-appsettings {
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.kiwi-statebrowser .user-options:hover {
+.kiwi-statebrowser-appsettings:hover {
     background: #42b992;
     color: #fff;
     opacity: 1;

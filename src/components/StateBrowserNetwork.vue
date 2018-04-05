@@ -386,7 +386,6 @@ export default {
 .kiwi-statebrowser-channel {
     position: relative;
     display: flex;
-    padding: 5px 10px;
 }
 
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-name {
