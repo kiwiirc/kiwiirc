@@ -271,15 +271,10 @@ export default {
     padding: 0.5em;
 }
 
-.kiwi-welcome-simple .kiwi-welcome-simple-have-password input,
-.kiwi-welcome-simple-have-password {
+.kiwi-welcome-simple-have-password input {
     font-size: 0.8em;
     margin: 0.8em 0;
-}
-
-.kiwi-welcome-simple-have-password,
-.kiwi-welcome-simple-password.input-text {
-    margin-top: 0;
+    margin-top: 2px;
 }
 
 .kiwi-welcome-simple .g-recaptcha {
@@ -303,10 +298,6 @@ export default {
 
 .kiwi-welcome-simple-channel {
     margin-bottom: 0.8em;
-}
-
-.kiwi-welcome-simple .kiwi-welcome-simple-have-password input {
-    margin-top: 2px;
 }
 
 .kiwi-welcome-simple-form .u-submit {
