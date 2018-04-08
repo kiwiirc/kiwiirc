@@ -342,7 +342,6 @@ export default {
 <style lang="less">
 .kiwi-messagelist {
     overflow-y: auto;
-    background: #fff;
     height: 100%;
 }
 
@@ -392,10 +391,6 @@ export default {
     text-transform: uppercase;
     letter-spacing: 2px;
     border-radius: 0;
-}
-
-.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
-    background-color: #b9424a;
 }
 
 .kiwi-messagelist-message-connection .kiwi-messagelist-time,
@@ -553,8 +548,6 @@ export default {
 .kiwi-messagelist-seperator::after {
     content: "";
     display: block;
-    border-color: #ddd;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     position: relative;
     top: -0.8em;
 }
@@ -593,8 +586,6 @@ export default {
 
 /* Topic changes */
 .kiwi-messagelist-message-topic {
-    background: #fff5ab;
-    border: 1px solid #f3c572;
     border-radius: 5px;
     margin: 18px;
     margin-left: 0;
@@ -643,7 +634,6 @@ export default {
 /* MOTD */
 .kiwi-messagelist-message-motd {
     font-family: monospace;
-    color: #666;
 }
 
 /* Links */
@@ -655,32 +645,4 @@ export default {
 .kiwi-wrap--touch .kiwi-messagelist-message-linkhandle {
     display: none;
 }
-
-.kiwi-messagelist-message-whois {
-    border-left-color: #939393;
-}
-
-.kiwi-messagelist-message.kiwi-messagelist-message--hover {
-    position: relative;
-    border-color: #42b992;
-}
-
-.kiwi-messagelist-message--info-open {
-    background: #f6f6f6;
-}
-
-.kiwi-messageinfo {
-    background: #f6f6f6;
-    border-bottom: 2px #ddd solid;
-    border-top: 1px #ddd dashed;
-}
-
-.kiwi-messageinfo-urls {
-    border-top: 1px solid #ddd;
-}
-
-.kiwi-statebrowser-divider {
-    background: rgba(255, 255, 255, 0.3);
-}
-
 </style>

@@ -322,8 +322,6 @@ export default {
         padding: 0 1em;
         margin: 4px 0;
         border-radius: 4px;
-        background: #42b992;
-        color: #fff;
     }
 }
 

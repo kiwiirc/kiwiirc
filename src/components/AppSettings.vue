@@ -263,7 +263,7 @@ export default {
     box-sizing: border-box;
     line-height: 30px;
     height: 40px;
-    border: 1px solid #42b992;
+    border: 1px solid;
 }
 
 .kiwi-appsettings-tab-container {

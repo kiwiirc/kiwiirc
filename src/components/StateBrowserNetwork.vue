@@ -338,7 +338,6 @@ export default {
     top: 0;
     height: 45px;
     z-index: 10;
-    background-color: #131312;
     right: -300px;
     transition: all 0.15s;
 }
@@ -495,7 +494,6 @@ export default {
     opacity: 1;
     transition: all 0.3s;
     margin-bottom: 0;
-    color: #131312;
 }
 
 .kiwi-statebrowser-channelfilter:hover {

@@ -378,28 +378,28 @@ export default {
     text-align: center;
     box-sizing: border-box;
     margin: 0 0 1em 0;
-    border-top: 1px solid #9e9e9e;
+    border-top: 1px solid;
     padding: 1em;
+}
 
-    label {
-        width: 100%;
-        font-size: 1.2em;
-        font-weight: 600;
-        display: block;
-        margin-bottom: 0.7em;
+.kiwi-userbox-opactions label {
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.7em;
+}
 
-        select {
-            display: block;
-            clear: both;
-            padding: 10px;
-            border-radius: 0.25em;
-            box-shadow: none;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            width: 100%;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-    }
+.kiwi-userbox-opactions label select {
+    display: block;
+    clear: both;
+    padding: 10px;
+    border-radius: 0.25em;
+    box-shadow: none;
+    border: 1px solid;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .kiwi-userbox-opaction {
@@ -412,36 +412,6 @@ export default {
 
     i {
         margin-right: 0.3em;
-    }
-}
-
-.kiwi-userbox-opaction-kick,
-.kiwi-userbox-opaction-ban,
-.kiwi-userbox-opaction-kickban {
-    color: #fff;
-}
-
-.kiwi-userbox-opaction-kick {
-    background-color: #f6c358;
-
-    &:hover {
-        background-color: #fcce6e;
-    }
-}
-
-.kiwi-userbox-opaction-ban {
-    background-color: #fcb46e;
-
-    &:hover {
-        background-color: #ffca97;
-    }
-}
-
-.kiwi-userbox-opaction-kickban {
-    background-color: #fb846a;
-
-    &:hover {
-        background-color: #ffaf9e;
     }
 }
 

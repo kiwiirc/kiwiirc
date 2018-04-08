@@ -288,7 +288,6 @@ export default {
     padding: 0 1em;
     margin: 0;
     position: relative;
-    border-top: 1px solid #858585;
     box-sizing: border-box;
     transition: background 0.3s;
 }
@@ -300,7 +299,6 @@ export default {
     font-family: fontAwesome, sans-serif;
     top: 50%;
     margin-top: -1.5em;
-    color: #666764;
 }
 
 .kiwi-nicklist-messageuser:hover {
@@ -310,7 +308,6 @@ export default {
 .kiwi-nicklist-info i.fa-search {
     flex: 1;
     margin-right: 25px;
-    color: #cfcfcf;
     cursor: pointer;
     line-height: 50px;
 }

@@ -201,8 +201,6 @@ export default {
 
 .kiwi-container-empty .u-button {
     border-radius: 3px;
-    background-color: #42b992;
-    color: #fff;
     font-weight: 500;
     line-height: 50px;
     padding: 0 14px;

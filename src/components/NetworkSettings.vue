@@ -185,188 +185,170 @@ export default {
     height: 100%;
     margin: 0 auto;
     padding: 0;
+}
 
-    .kiwi-title {
-        float: left;
-        width: 100%;
-        line-height: 45px;
-        height: 46px;
-        padding: 0 10px;
-        box-sizing: border-box;
-        text-align: left;
-        font-weight: 600;
-        cursor: default;
+.kiwi-networksettings .kiwi-title {
+    float: left;
+    width: 100%;
+    line-height: 45px;
+    height: 46px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    text-align: left;
+    font-weight: 600;
+    cursor: default;
+}
 
-        span {
-            text-align: center;
-            width: 46px;
-            line-height: 46px;
-            margin: 0 5px 0 -10px;
-            font-weight: 600;
-            font-size: 1.2em;
-        }
+.kiwi-networksettings span {
+    text-align: center;
+    width: 46px;
+    line-height: 46px;
+    margin: 0 5px 0 -10px;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.kiwi-networksettings .u-form {
+    max-width: 400px;
+    display: block;
+    margin: 1em auto;
+    padding: 0;
+    height: auto;
+    overflow: hidden;
+    clear: both;
+    border-radius: 2px;
+}
+
+.kiwi-networksettings input[type='text'],
+    .kiwi-networksettings input[type='password'],
+    .kiwi-networksettings input[type='email'],
+    .kiwi-networksettings textarea,
+    .kiwi-networksettings .input-text input {
+    clear: both;
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    line-height: 40px;
+    color: #000;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 1px;
+    min-height: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: none;
+}
+
+.kiwi-networksettings .input-text-c {
+    bottom: 3px;
+    height: 46px;
+    background-color: #fff;
+    line-height: 46px;
+    text-align: center;
+}
+
+.kiwi-networksettings .kiwi-show-advanced-title {
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: -10px;
+}
+
+.kiwi-networksettings .kiwi-networksettings-advanced {
+    margin-top: 10px;
+}
+
+.kiwi-networksettings .kiwi-padded-form-element-container {
+    float: left;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+
+    label {
+        margin: 0;
     }
 
-    .u-form {
-        max-width: 400px;
-        display: block;
-        margin: 1em auto;
-        padding: 0;
-        height: auto;
-        overflow: hidden;
-        clear: both;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 2px;
+    .input-text {
+        padding-top: 0;
     }
 
-    input[type='text'],
-    input[type='password'],
-    input[type='email'],
-    textarea,
-    .input-text input {
-        clear: both;
-        width: 100%;
-        height: 40px;
-        padding: 0 10px;
-        line-height: 40px;
-        color: #000;
-        box-sizing: border-box;
-        background: #fff;
-        border-radius: 1px;
-        min-height: none;
-        overflow-x: hidden;
-        overflow-y: auto;
-        max-width: none;
-    }
-
-    .input-text-c {
-        bottom: 3px;
-        height: 46px;
-        background-color: #fff;
-        line-height: 46px;
+    &.kiwi-dangerzone {
         text-align: center;
     }
+}
 
-    .kiwi-show-advanced-title {
-        width: 100%;
-        text-align: center;
-        cursor: pointer;
-        margin-bottom: -10px;
-    }
+.kiwi-networksettings .input-text .input-text-label {
+    margin-left: -5px;
+}
 
-    .kiwi-networksettings-advanced {
-        margin-top: 10px;
-    }
+.kiwi-networksettings .kiwi-networksettings-connection-password {
+    float: left;
+    width: 100%;
+}
 
-    .kiwi-padded-form-element-container {
-        float: left;
-        width: 100%;
-        padding: 10px 20px;
-        box-sizing: border-box;
+.kiwi-networksettings .kiwi-networksettings-connection-password .input-text {
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-        label {
-            margin: 0;
-        }
+.kiwi-networksettings .kiwi-networksettings-server-types-info {
+    float: left;
+    width: 100%;
+    text-align: left;
+    clear: both;
+}
 
-        .input-text {
-            padding-top: 0;
-        }
+.kiwi-networksettings .kiwi-networksettings-server-types {
+    text-align: center;
+}
 
-        &.kiwi-dangerzone {
-            border-top: 1px solid rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-    }
+.kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
+    margin: 0 10px 0 10px;
+    display: inline-block;
+    line-height: 35px;
+    padding: 0 10px;
+    border: 1px solid;
+    transition: all 0.3s;
+    border-radius: 4px;
+}
 
-    .input-text .input-text-label {
-        margin-left: -5px;
-    }
+.kiwi-networksettings .kiwi-networksettings-username label {
+    display: none;
+}
 
-    .kiwi-networksettings-connection-password {
-        float: left;
-        width: 100%;
+.kiwi-networksettings .kiwi-customserver-tls {
+    cursor: pointer;
+    top: 6px;
+}
 
-        .input-text {
-            float: left;
-            width: 100%;
-            box-sizing: border-box;
-        }
-    }
+.kiwi-networksettings .kiwi-customserver-tls-lock {
+    font-size: 1.4em;
+    opacity: 0;
+    left: 3px;
+}
 
-    .kiwi-networksettings-server-types-info {
-        float: left;
-        width: 100%;
-        text-align: left;
-        clear: both;
-    }
+.kiwi-networksettings .kiwi-customserver-tls--enabled .kiwi-customserver-tls-lock {
+    opacity: 1;
+}
 
-    .kiwi-networksettings-server-types {
-        text-align: center;
+.kiwi-networksettings .kiwi-customserver-tls-minus {
+    font-size: 1.4em;
+    top: 0;
+    left: 3px;
+}
 
-        .kiwi-network-type-button {
-            margin: 0 10px 0 10px;
-            display: inline-block;
-            line-height: 35px;
-            padding: 0 10px;
-            border: 1px solid #42b992;
-            transition: all 0.3s;
-            border-radius: 4px;
-            color: #42b992;
+.kiwi-networksettings .kiwi-connect-to-newnetwork {
+    width: auto;
+    margin: -10px auto 0 auto;
+    border-radius: 3px;
+    display: block;
+    cursor: pointer;
+    padding: 0 10px;
+    line-height: 35px;
 
-            &:hover,
-            &.kiwi-networksettings-server-type-active {
-                background: #42b992;
-                color: #fff;
-            }
-        }
-    }
-
-    .kiwi-networksettings-username label {
-        display: none;
-    }
-
-    .kiwi-customserver-tls {
-        cursor: pointer;
-        top: 6px;
-        color: #bfbfbf;
-    }
-
-    .kiwi-customserver-tls--enabled {
-        color: green;
-    }
-
-    .kiwi-customserver-tls-lock {
-        font-size: 1.4em;
-        opacity: 0;
-        left: 3px;
-    }
-
-    .kiwi-customserver-tls--enabled .kiwi-customserver-tls-lock {
-        color: green;
+    &:hover {
         opacity: 1;
-    }
-
-    .kiwi-customserver-tls-minus {
-        color: red;
-        font-size: 1.4em;
-        top: 0;
-        left: 3px;
-    }
-
-    .kiwi-connect-to-newnetwork {
-        width: auto;
-        margin: -10px auto 0 auto;
-        border-radius: 3px;
-        background: #42b992;
-        color: #fff;
-        display: block;
-        cursor: pointer;
-        padding: 0 10px;
-        line-height: 35px;
-
-        &:hover {
-            opacity: 1;
-        }
     }
 }
 
@@ -422,33 +404,31 @@ export default {
     cursor: pointer;
 }
 
-.kiwi-networksettings-danger {
-    h3 {
-        padding: 0;
-        margin-top: 10px;
-        margin-bottom: 0.5em;
-    }
+.kiwi-networksettings-danger h3 {
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 0.5em;
+}
 
-    label {
-        float: left;
-        margin: 0;
-        width: 100%;
-    }
+.kiwi-networksettings-danger label {
+    float: left;
+    margin: 0;
+    width: 100%;
+}
 
-    .u-button-warning {
-        width: auto;
-        height: 30px;
-        border-radius: 4px;
-        text-align: center;
-        line-height: 30px;
-        padding: 0 10px;
-        opacity: 0.8;
-        margin: 0 auto;
-        transition: all 0.3s;
+.kiwi-networksettings-danger .u-button-warning {
+    width: auto;
+    height: 30px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 30px;
+    padding: 0 10px;
+    opacity: 0.8;
+    margin: 0 auto;
+    transition: all 0.3s;
 
-        &:hover {
-            opacity: 1;
-        }
+    &:hover {
+        opacity: 1;
     }
 }
 

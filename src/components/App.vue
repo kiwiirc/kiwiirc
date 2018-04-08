@@ -362,37 +362,6 @@ body {
     z-index: 1;
 }
 
-/* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 769px) {
-    .kiwi-statebrowser {
-        left: -200px;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
-        left: 0;
-    }
-}
-
-/* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 769px) {
-    .kiwi-workspace {
-        left: 0;
-        margin-left: 0;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
-        left: 75%;
-        width: 80%;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-        z-index: 10;
-    }
-}
-
 .kiwi-container {
     position: absolute;
     top: 0;
@@ -417,5 +386,33 @@ body {
     height: 40px;
     width: 100%;
     z-index: 2;
+}
+
+/* Small screen will cause the statebrowser to act as a drawer */
+@media screen and (max-width: 769px) {
+    .kiwi-workspace {
+        left: 0;
+        margin-left: 0;
+    }
+
+    .kiwi-statebrowser {
+        left: -200px;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
+        left: 0;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
+        left: 75%;
+        width: 80%;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        z-index: 10;
+    }
 }
 </style>

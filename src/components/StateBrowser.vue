@@ -170,20 +170,20 @@ export default {
     width: 220px;
     text-align: center;
     overflow: hidden;
+}
 
-    h1 {
-        width: 100%;
-        font-size: 1em;
-        opacity: 0.8;
-        cursor: default;
-        padding: 20px 0 27px 0;
-    }
+.kiwi-statebrowser h1 {
+    width: 100%;
+    font-size: 1em;
+    opacity: 0.8;
+    cursor: default;
+    padding: 20px 0 27px 0;
+}
 
-    hr {
-        width: 100%;
-        margin: 0;
-        opacity: 0.3;
-    }
+.kiwi-statebrowser hr {
+    width: 100%;
+    margin: 0;
+    opacity: 0.3;
 }
 
 /* User Settings */
@@ -228,7 +228,6 @@ export default {
 .kiwi-statebrowser-usermenu-avatar {
     width: 50px;
     height: 50px;
-    color: #fff;
     cursor: pointer;
     font-size: 1.5em;
     text-align: center;
@@ -311,29 +310,29 @@ export default {
     line-height: 30px;
     padding: 0 0 0 8px;
     transition: opacity 0.3s;
+}
 
-    .kiwi-statebrowser-channel-name {
-        text-align: left;
-        font-weight: 600;
-        font-size: 1em;
-    }
+.kiwi-statebrowser-channel .kiwi-statebrowser-channel-name {
+    text-align: left;
+    font-weight: 600;
+    font-size: 1em;
+}
 
-    .kiwi-statebrowser-channel-label {
-        margin: 4px 0;
-        border-radius: 5px 0 0 5px;
-        font-weight: 600;
+.kiwi-statebrowser-channel .kiwi-statebrowser-channel-label {
+    margin: 4px 0;
+    border-radius: 5px 0 0 5px;
+    font-weight: 600;
+}
 
-        &.kiwi-statebrowser-channel-label--highlight {
-            border-radius: 10px 0 0 10px;
-            font-weight: 600;
-            padding-right: 15px;
-            padding-left: 15px;
-        }
-    }
+.kiwi-statebrowser-channel .kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
+    border-radius: 10px 0 0 10px;
+    font-weight: 600;
+    padding-right: 15px;
+    padding-left: 15px;
+}
 
-    &:hover {
-        opacity: 1;
-    }
+.kiwi-statebrowser-channel .kiwi-statebrowser-channel-label:hover {
+    opacity: 1;
 }
 
 .kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
@@ -349,34 +348,34 @@ export default {
     border-top: none;
     box-sizing: border-box;
     margin: 1em 0.5em;
+}
 
-    a {
-        width: 90%;
-        padding: 0 10px 0 10px;
-        line-height: 35px;
-        font-size: 0.8em;
-        font-weight: 500;
-        cursor: pointer;
-        display: block;
-        box-sizing: border-box;
-        background: none;
-        text-align: left;
-        position: relative;
-        border-radius: 4px;
-        margin: 0 5%;
-        transition: all 0.3s;
+.kiwi-statebrowser-newchannel a {
+    width: 90%;
+    padding: 0 10px 0 10px;
+    line-height: 35px;
+    font-size: 0.8em;
+    font-weight: 500;
+    cursor: pointer;
+    display: block;
+    box-sizing: border-box;
+    background: none;
+    text-align: left;
+    position: relative;
+    border-radius: 4px;
+    margin: 0 5%;
+    transition: all 0.3s;
+}
 
-        i {
-            position: absolute;
-            right: 10px;
-            line-height: 35px;
-            font-size: 1.2em;
-        }
+.kiwi-statebrowser-newchannel a i {
+    position: absolute;
+    right: 10px;
+    line-height: 35px;
+    font-size: 1.2em;
+}
 
-        &:hover {
-            opacity: 1;
-        }
-    }
+.kiwi-statebrowser-newchannel a i:hover {
+    opacity: 1;
 }
 
 .kiwi-statebrowser-usermenu .fa-caret-down {
@@ -411,21 +410,7 @@ export default {
     cursor: pointer;
     padding: 0.2em 0.4em;
     border-radius: 0 0 0 0.4em;
-    background-color: #fc6262;
-    color: #fff;
     transition: all 0.3s;
-}
-
-.kiwi-statebrowser-usermenu-body .close-icon:hover {
-    background-color: #fe7575;
-}
-
-.kiwi-statebrowser-switcher a:first-of-type {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.kiwi-statebrowser-switcher a:hover {
-    background: rgba(255, 255, 255, 0.1);
 }
 
 .kiwi-statebrowser-scrollarea {
