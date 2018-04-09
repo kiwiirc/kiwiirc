@@ -196,9 +196,10 @@ export default {
     padding: 0;
     box-sizing: border-box;
     margin: 10px auto;
-    width: 200px;
+    width: 100%;
     border: none;
     opacity: 0.8;
+    text-align: center;
 
     .kiwi-messagelist-time,
     .kiwi-messagelist-nick {
@@ -208,6 +209,8 @@ export default {
     .kiwi-messagelist-body {
         line-height: 30px;
         font-weight: 100;
+        margin: 0 auto;
+        display: inline-block;
     }
 
     .kiwi-messagelist-message {
