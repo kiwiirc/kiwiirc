@@ -290,7 +290,7 @@ export default {
     }
 }
 
-.kiwi-userbox-icon {
+.fa-user.kiwi-userbox-icon {
     position: absolute;
     left: 0.5em;
     top: 0.25em;
