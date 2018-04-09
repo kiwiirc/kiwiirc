@@ -15,11 +15,11 @@
         </div>
 
         <p class="kiwi-userbox-actions">
-            <a @click="openQuery" class="u-button">
+            <a @click="openQuery" class="kiwi-userbox-action">
                 <i class="fa fa-comment-o" aria-hidden="true"></i>
                 {{$t('send_a_message')}}
             </a>
-            <a v-if="!whoisRequested" class="u-button" @click="updateWhoisData">
+            <a v-if="!whoisRequested" class="kiwi-userbox-action" @click="updateWhoisData">
                 <i class="fa fa-question-circle" aria-hidden="true"></i>
                 {{$t('more_information')}}
             </a>
@@ -346,7 +346,7 @@ export default {
     margin: 0;
     box-sizing: border-box;
 
-    .u-button {
+    .kiwi-userbox-action {
         display: inline-block;
         border: 1px solid #000;
         padding: 0.5em 1em;

@@ -256,6 +256,12 @@ export default {
     label {
         display: block;
     }
+
+    textarea {
+        min-width: 100%;
+        max-width: 100%;
+        resize: vertical;
+    }
 }
 
 @keyframes settingstransition {
