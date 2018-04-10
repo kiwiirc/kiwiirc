@@ -51,10 +51,6 @@
             </div>
         </div>
 
-        <div class="kiwi-channel-options-header">
-            <span>Networks:</span>
-        </div>
-
         <div class="kiwi-statebrowser-scrollarea">
             <div class="kiwi-statebrowser-networks">
                 <state-browser-network
