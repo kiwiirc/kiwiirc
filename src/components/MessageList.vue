@@ -368,6 +368,7 @@ export default {
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin: 0;
 }
 
 /* Start of the not connected message styling */
@@ -448,7 +449,7 @@ export default {
 .kiwi-messagelist-message-traffic-quit,
 .kiwi-messagelist-message-nick {
     padding: 5px  0 5px 0;
-    margin: 10px 0;
+    margin: 0;
     opacity: 0.85;
     text-align: center;
     border: none;
