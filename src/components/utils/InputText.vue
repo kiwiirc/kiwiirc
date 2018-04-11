@@ -7,7 +7,7 @@
         ]"
     >
 
-        <label>{{label}}</label>
+        <span class="input-text-label">{{label}}</span>
 
         <input
             v-if="type==='password'"
