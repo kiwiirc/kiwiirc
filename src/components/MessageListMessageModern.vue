@@ -218,6 +218,10 @@ export default {
     }
 }
 
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection-connected {
+    width: 250px;
+}
+
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
     white-space: pre-wrap;
     word-wrap: break-word;
