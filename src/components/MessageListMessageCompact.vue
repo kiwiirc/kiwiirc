@@ -136,6 +136,7 @@ export default {
 //Channel traffic messages
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic {
     margin: 0;
+    padding: 1px 0;
 
     .kiwi-messagelist-body {
         margin-left: 132px;
