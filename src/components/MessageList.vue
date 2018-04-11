@@ -343,6 +343,7 @@ export default {
 .kiwi-messagelist {
     overflow-y: auto;
     height: 100%;
+    padding-top: 10px;
 }
 
 .kiwi-messagelist-item {
