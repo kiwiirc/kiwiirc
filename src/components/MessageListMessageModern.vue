@@ -323,6 +323,14 @@ export default {
             line-height: 50px;
             font-weight: 600;
         }
+
+        &.kiwi-messagelist-message--unread {
+            background: red;
+
+            .kiwi-messagelist-body {
+                background: transparent;
+            }
+        }
     }
 
     .kiwi-messagelist-message-action .kiwi-messagelist-modern-left {
