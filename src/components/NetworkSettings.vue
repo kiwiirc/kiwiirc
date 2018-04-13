@@ -56,7 +56,7 @@
                             <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
                                 <template v-if="show_advanced">
                                     <label><span>{{$t('settings_encoding')}}: </span> <input v-model="network.connection.encoding" /></label><br />
-                                    <label><span>{{$t('settings_show_raw')}}: </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
+                                    <label><span class="kiwi-appsettings-showraw-label">{{$t('settings_show_raw')}}: </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
                                     <label class="u-form-block">
                                         <span>{{$t('settings_autorun')}}</span>
                                         <textarea v-model="network.auto_commands" cols=40 rows=5></textarea>
@@ -220,10 +220,10 @@ export default {
 }
 
 .kiwi-networksettings input[type='text'],
-    .kiwi-networksettings input[type='password'],
-    .kiwi-networksettings input[type='email'],
-    .kiwi-networksettings textarea,
-    .kiwi-networksettings .input-text input {
+.kiwi-networksettings input[type='password'],
+.kiwi-networksettings input[type='email'],
+.kiwi-networksettings textarea,
+.kiwi-networksettings .input-text input {
     clear: both;
     width: 100%;
     height: 40px;
@@ -256,6 +256,10 @@ export default {
 
 .kiwi-networksettings .kiwi-networksettings-advanced {
     margin-top: 10px;
+}
+
+.kiwi-networksettings .kiwi-networksettings-advanced .kiwi-appsettings-showraw-label {
+    margin-left: 5px;
 }
 
 .kiwi-networksettings .kiwi-padded-form-element-container {
