@@ -90,8 +90,13 @@ export default {
         this.listen(state, 'statebrowser.hide', () => {
             this.stateBrowserDrawOpen = false;
         });
-        this.listen(state, 'mediaviewer.show', (url) => {
-            this.mediaviewerUrl = url;
+        this.listen(state, 'mediaviewer.show', (url, iframe = false) => {
+            state.settings.mediaviewerIframe = iframe;
+            if (iframe) {
+                state.settings.mediaviewerUrl = url;
+            } else {
+                this.mediaviewerUrl = url;
+            }
             this.mediaviewerOpen = true;
         });
         this.listen(state, 'mediaviewer.hide', () => {

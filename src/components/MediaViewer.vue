@@ -32,7 +32,7 @@ export default {
         return {
         };
     },
-    props: ['url'],
+    props: ['url', 'iframe'],
     computed: {
         embedlyKey: function embedlyKey() {
             return state.settings.embedly.key;
@@ -41,14 +41,31 @@ export default {
     methods: {
         updateEmbed: function updateEmbed() {
             let checkEmbedlyAndShowCard = () => {
+                let el = document.getElementsByClassName('kiwi-mediaviewer')[0];
                 // If the embedly function doesn't exist it's probably still loading
                 // the embedly script
-                if (typeof window.embedly !== 'function') {
+                if (typeof window.embedly !== 'function' || typeof el === 'undefined') {
                     setTimeout(checkEmbedlyAndShowCard, 100);
                     return;
                 }
-
-                window.embedly('card', { selector: '.embedly-card' });
+                if (state.settings.mediaviewerIframe) {
+                    if (typeof document.getElementsByClassName('embedly-card')[0] !== 'undefined') {
+                        document.getElementsByClassName('embedly-card')[0].innerHTML = '';
+                    }
+                    let iframe = document.createElement('iframe');
+                    iframe.className = 'mediaviewerIframe';
+                    iframe.style.height = iframe.style.width = '100%';
+                    iframe.style.position = 'absolute';
+                    iframe.style.top = 0;
+                    iframe.src = state.settings.mediaviewerUrl;
+                    el.appendChild(iframe);
+                } else {
+                    if (typeof document.getElementsByClassName('mediaviewerIframe')[0] !== 'undefined') {
+                        document.getElementsByClassName('mediaviewerIframe')[0].parentNode.removeChild(document.getElementsByClassName('mediaviewerIframe')[0]);
+                    }
+                    state.settings.mediaviewerIframe = false;
+                    window.embedly('card', { selector: '.embedly-card' });
+                }
             };
 
             if (!embedlyTagIncluded) {
@@ -63,6 +80,7 @@ export default {
             checkEmbedlyAndShowCard();
         },
         closeViewer: function closeViewer() {
+            state.settings.mediaviewerIframe = false;
             state.$emit('mediaviewer.hide');
         },
     },
