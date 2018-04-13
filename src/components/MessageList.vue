@@ -535,7 +535,7 @@ export default {
 .kiwi-messagelist-seperator {
     text-align: center;
     display: block;
-    margin: 1em;
+    margin: 1em 0;
 }
 
 .kiwi-messagelist-seperator > span {
