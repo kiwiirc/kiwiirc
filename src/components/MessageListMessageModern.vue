@@ -216,7 +216,7 @@ export default {
     margin: 10px auto;
     width: 100%;
     border: none;
-    opacity: 0.8;
+    opacity: 1;
     border-left: none;
     text-align: center;
 

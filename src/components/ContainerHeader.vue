@@ -244,7 +244,6 @@ export default {
     font-size: 0.8em;
     opacity: 0.9;
     font-weight: 900;
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
     text-transform: capitalize;
 
     a {

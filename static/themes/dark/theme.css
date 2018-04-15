@@ -13,9 +13,13 @@
 
  /* Welcome Screen ( Welcome.vue ) */
  .kiwi-welcome-simple-form {
-     background-color: #dedede;
+     background-color: #ffffff;
      color: #000;
      border: 1px solid #ececec;
+ }
+
+ .kiwi-welcome-simple-form .input-text {
+     background: #fff;
  }
 
  .kiwi-welcome-simple-error {
@@ -115,7 +119,7 @@
 
 .u-form input[type='checkbox'] {
     border: 2px solid #000;
-    background-color: #dedede;
+    background-color: #ffffff;
 }
 
 .u-form input[type='checkbox']:after {
@@ -314,6 +318,10 @@
 
 .kiwi-header-buffersettings {
     border-top: 1px solid #ddd;
+}
+
+.kiwi-header-option {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .kiwi-header-option a:hover,
@@ -526,6 +534,10 @@
 .kiwi-messagelist-message-error {
     background: #f1d4d4;
     border-left-color: #ab5252;
+}
+
+.kiwi-messagelist-message-error .kiwi-messagelist-body {
+    color: #000;
 }
 
 .kiwi-messagelist-message-connection-connected {
@@ -1144,6 +1156,11 @@
 .kiwi-userbox-whois {
     border: 1px solid #9e9e9e;
     border-radius: 2px;
+}
+
+.kiwi-userbox .kiwi-userbox-actions {
+    color: #fff;
+    border-color: #fff;
 }
 
 .kiwi-messagelist-message-whois {
