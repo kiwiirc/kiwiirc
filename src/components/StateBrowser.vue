@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="kiwi-statebrowser-scrollarea">
             <div class="kiwi-statebrowser-networks">
                 <state-browser-network
@@ -343,7 +343,7 @@ export default {
     width: 100%;
     border-top: none;
     box-sizing: border-box;
-    margin: 1em 0.5em;
+    margin: 1em 0;
 }
 
 .kiwi-statebrowser-newchannel a {
