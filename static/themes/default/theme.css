@@ -423,6 +423,11 @@
     border-left: 5px solid rgba(0, 0, 0, 0.05);
 }
 
+.kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message--unread {
+  border-left: 2px solid #42b992;
+  background: #fff;
+}
+
 .kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread,
 .kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread a,
 .kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread .kiwi-messagelist-time{
@@ -483,6 +488,7 @@
 
 .kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
     color: #bf5155;
+    background: #bf5155;
 }
 
 /* Kiwi Modern Message list ( MessageListMessageModern.vue ) */
@@ -1097,4 +1103,3 @@
 .kiwi-messagelist-message-motd {
     color: #666;
 }
-

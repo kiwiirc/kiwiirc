@@ -404,6 +404,10 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+.kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message--unread {
+  border-left: 2px solid #42b992;
+}
+
 /* Message list - Standard messages ( MessageList.vue ) */
 .kiwi-messagelist {
     background: transparent;
@@ -1155,4 +1159,3 @@
 .kiwi-messagelist-message-motd {
     color: #666;
 }
-
