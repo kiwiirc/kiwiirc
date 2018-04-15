@@ -11,9 +11,8 @@
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div class="kiwi-header-options" v-if="isJoined && isConnected">
                 <div class="kiwi-header-option kiwi-header-option-topic" @click="showTopic" v-bind:class="{ 'kiwi-header-option--active': viewTopic == true }" v-if="buffer.topic.length > 0">
-                    <i class="fa fa-info" aria-hidden="true"></i>
-                    <a v-if="viewTopic == true">Hide Topic</a>
-                    <a v-if="viewTopic == false">Display Topic</a>
+                    <a v-if="viewTopic == true"><i class="fa fa-info" aria-hidden="true"></i> Hide Topic</a>
+                    <a v-if="viewTopic == false"><i class="fa fa-info" aria-hidden="true"></i> Display Topic</a>
                 </div>
                 <div class="kiwi-header-option kiwi-header-option-nicklist"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
                 <div class="kiwi-header-option kiwi-header-option-settings"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>Channel Settings</span></a></div>
@@ -243,12 +242,10 @@ export default {
     background: none;
     display: inline-block;
     font-size: 0.8em;
-    opacity: 0.85;
+    opacity: 0.9;
+    font-weight: 900;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
     text-transform: capitalize;
-
-    .fa-info {
-        display: none;
-    }
 
     a {
         float: left;
