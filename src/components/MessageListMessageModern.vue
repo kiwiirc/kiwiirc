@@ -132,6 +132,10 @@ export default {
     padding: 0 10px;
 }
 
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic {
+    margin-right: 0;
+}
+
 .kiwi-messagelist-message--modern .kiwi-messagelist-message--authorfirst {
     margin-top: 15px;
 }
