@@ -261,6 +261,7 @@ export default {
 .kiwi-sidebar .u-form textarea {
     min-width: 100%;
     max-width: 100%;
+    min-height: 80px;
     resize: vertical;
 }
 
