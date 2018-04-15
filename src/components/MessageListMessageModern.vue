@@ -210,6 +210,7 @@ export default {
     width: 100%;
     border: none;
     opacity: 0.8;
+    border-left: none;
     text-align: center;
 
     .kiwi-messagelist-time,
