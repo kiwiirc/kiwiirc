@@ -333,6 +333,7 @@
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a.kiwi-statebrowser-network-toggle:hover {
     background-color: #d16c6c;
+    border-top-color: #d16c6c;
 }
 
 .kiwi-header-option-topic.kiwi-header-option--active,
@@ -414,6 +415,10 @@
 
 .kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message--unread {
   border-left: 2px solid #42b992;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
+  border-left: none;
 }
 
 /* Message list - Standard messages ( MessageList.vue ) */

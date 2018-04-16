@@ -433,6 +433,10 @@
   background: #fff;
 }
 
+.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
+  border-left: none;
+}
+
 .kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread,
 .kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread a,
 .kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread .kiwi-messagelist-time{
