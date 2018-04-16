@@ -414,11 +414,11 @@
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message--unread {
-  border-left: 2px solid #42b992;
+    border-left: 2px solid #42b992;
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
-  border-left: none;
+    border-left: none;
 }
 
 /* Message list - Standard messages ( MessageList.vue ) */
@@ -776,7 +776,6 @@
 .kiwi-sidebar-options:hover {
     background: #d16c6c;
 }
-
 
 /* Statebrowser - Left sidebar ( StateBrowser.vue ) */
 .kiwi-statebrowser {

@@ -61,8 +61,8 @@
 }
 
 .u-tabbed-view-tabs .u-tabbed-view-tab {
-        border-bottom: 3px solid rgba(0, 0, 0, 0.1);
-        background: #fff;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+    background: #fff;
 }
 
 .u-tabbed-view-tabs .u-tabbed-view-tab:hover,
@@ -369,7 +369,6 @@
     border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-
 .kiwi-controlinput-active-tool {
     background: #f6f6f6;
     border: 1px solid #ddd;
@@ -429,12 +428,12 @@
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message--unread {
-  border-left: 2px solid #42b992;
-  background: #fff;
+    border-left: 2px solid #42b992;
+    background: #fff;
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
-  border-left: none;
+    border-left: none;
 }
 
 .kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread,
@@ -650,7 +649,6 @@
 .kiwi-nicklist-info i.fa-search {
     color: #cfcfcf;
 }
-
 
 /* Not connected message ( NotConnected.vue ) */
 .kiwi-notconnected {
