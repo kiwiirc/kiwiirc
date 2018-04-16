@@ -9,7 +9,13 @@
             </a>
         </div>
         <div :key="url">
+            <iframe
+                v-if="isIframe"
+                class="kiwi-mediaviewer-iframe"
+                :src="url"
+            ></iframe>
             <a
+                v-else
                 v-bind:href="url"
                 class="embedly-card"
                 :data-card-key="embedlyKey"
@@ -32,7 +38,7 @@ export default {
         return {
         };
     },
-    props: ['url', 'iframe'],
+    props: ['url', 'isIframe'],
     computed: {
         embedlyKey: function embedlyKey() {
             return state.settings.embedly.key;
@@ -41,31 +47,13 @@ export default {
     methods: {
         updateEmbed: function updateEmbed() {
             let checkEmbedlyAndShowCard = () => {
-                let el = document.getElementsByClassName('kiwi-mediaviewer')[0];
                 // If the embedly function doesn't exist it's probably still loading
                 // the embedly script
                 if (typeof window.embedly !== 'function' || typeof el === 'undefined') {
                     setTimeout(checkEmbedlyAndShowCard, 100);
                     return;
                 }
-                if (state.settings.mediaviewerIframe) {
-                    if (typeof document.getElementsByClassName('embedly-card')[0] !== 'undefined') {
-                        document.getElementsByClassName('embedly-card')[0].innerHTML = '';
-                    }
-                    let iframe = document.createElement('iframe');
-                    iframe.className = 'mediaviewerIframe';
-                    iframe.style.height = iframe.style.width = '100%';
-                    iframe.style.position = 'absolute';
-                    iframe.style.top = 0;
-                    iframe.src = state.settings.mediaviewerUrl;
-                    el.appendChild(iframe);
-                } else {
-                    if (typeof document.getElementsByClassName('mediaviewerIframe')[0] !== 'undefined') {
-                        document.getElementsByClassName('mediaviewerIframe')[0].parentNode.removeChild(document.getElementsByClassName('mediaviewerIframe')[0]);
-                    }
-                    state.settings.mediaviewerIframe = false;
-                    window.embedly('card', { selector: '.embedly-card' });
-                }
+                window.embedly('card', { selector: '.embedly-card' });
             };
 
             if (!embedlyTagIncluded) {
@@ -76,7 +64,6 @@ export default {
                 head.appendChild(script);
                 embedlyTagIncluded = true;
             }
-
             checkEmbedlyAndShowCard();
         },
         closeViewer: function closeViewer() {
@@ -94,6 +81,9 @@ export default {
     },
     watch: {
         url: function watchUrl() {
+            this.updateEmbed();
+        },
+        isIframe: function watchUrl() {
             this.updateEmbed();
         },
     },
@@ -115,5 +105,12 @@ export default {
 
 .kiwi-mediaviewer-controls-close {
     padding: 3px 15px;
+}
+
+.kiwi-mediaviewer-iframe {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
 }
 </style>
