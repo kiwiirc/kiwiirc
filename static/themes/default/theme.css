@@ -300,7 +300,7 @@
 }
 
 .kiwi-header-option {
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .kiwi-header-option a:hover,
@@ -312,6 +312,7 @@
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a.kiwi-statebrowser-network-toggle:hover {
     background-color: #d16c6c;
+    border-top-color: #d16c6c;
 }
 
 .kiwi-header-option-topic.kiwi-header-option--active,
