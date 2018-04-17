@@ -60,15 +60,24 @@ export default {
     text-align: center;
     padding-top: 1em;
     font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .kiwi-personal h1 {
-    margin: 2em 0;
+    margin: 0 0 20px 0;
+}
+
+.kiwi-personal p {
+    margin: 0 0 10px 0;
 }
 
 .kiwi-personal button {
-    margin-top: 2.7em;
-    margin-bottom: 1.5em;
+    margin: 0 auto;
+    padding: 0 40px;
+    line-height: 40px;
 }
 
 /* Only show the toggle state browser link if on a small screen */
