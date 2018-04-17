@@ -75,8 +75,9 @@ export default {
 }
 
 .kiwi-personal button {
-    margin: 0 auto;
+    margin: 10px auto 0 auto;
     padding: 0 40px;
+    font-size: 1em;
     line-height: 40px;
 }
 

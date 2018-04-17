@@ -100,16 +100,6 @@
     outline-color: #42b992;
 }
 
-.u-form span {
-    display: inline-block;
-    line-height: 25px;
-    width: auto;
-    font-weight: 500;
-    font-size: 1em;
-    text-align: left;
-    max-width: none;
-}
-
 .u-form input[type='checkbox'] {
     border: 2px solid #000;
     background-color: #fff;
@@ -520,6 +510,10 @@
     background: #42b992;
     color: #fff;
     border-top: 1px solid #42b992;
+}
+
+.kiwi-network-nicknamelabel {
+    color: rgb(128, 128, 128);
 }
 
 .kiwi-networksettings .kiwi-padded-form-element-container.kiwi-dangerzone {

@@ -45,7 +45,7 @@
                         </div>
                     </div>
 
-                    <label>{{$t('settings_nickname')}}</label>
+                    <label class="kiwi-network-nicknamelabel">{{$t('settings_nickname')}}</label>
                     <div class="kiwi-networksettings-section  kiwi-networksettings-user kiwi-networksettings-username">
                         <input-text v-model="network.nick" />
                     </div>
@@ -71,11 +71,7 @@
                             Connect To Network
                         </div>
                     </div>
-
-
                 </div>
-
-
 
                 <div class="kiwi-padded-form-element-container kiwi-dangerzone">
                     <div class="kiwi-networksettings-section kiwi-networksettings-danger">
@@ -219,6 +215,24 @@ export default {
     border-radius: 2px;
 }
 
+.kiwi-networksettings .u-form span,
+.kiwi-network-nicknamelabel {
+    display: inline-block;
+    line-height: 25px;
+    width: auto;
+    font-weight: 500;
+    font-size: 1em;
+    text-align: left;
+    max-width: none;
+    top: 10px;
+}
+
+.kiwi-networksettings .u-form .input-text--reveal-value span {
+    top: -14px;
+    font-size: 1em;
+    font-size: 0.8em;
+}
+
 .kiwi-networksettings input[type='text'],
     .kiwi-networksettings input[type='password'],
     .kiwi-networksettings input[type='email'],
@@ -240,11 +254,12 @@ export default {
 }
 
 .kiwi-networksettings .input-text-c {
-    bottom: 3px;
-    height: 46px;
+    bottom: auto;
+    height: 40px;
     background-color: #fff;
-    line-height: 46px;
+    line-height: 40px;
     text-align: center;
+    top: 8px;
 }
 
 .kiwi-networksettings .kiwi-show-advanced-title {
@@ -265,7 +280,7 @@ export default {
 .kiwi-networksettings .kiwi-padded-form-element-container {
     float: left;
     width: 100%;
-    padding: 10px 20px;
+    padding: 20px;
     box-sizing: border-box;
 
     label {
@@ -398,6 +413,10 @@ export default {
 .kiwi-networksettings-connection-port {
     width: 25%;
     float: right;
+}
+
+.kiwi-networksettings-connection-port span.input-text-label {
+    top: -16px;
 }
 
 .kiwi-networksettings-advanced h3 {
