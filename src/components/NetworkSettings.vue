@@ -45,9 +45,8 @@
                         </div>
                     </div>
 
-                    <label class="kiwi-network-nicknamelabel">{{$t('settings_nickname')}}</label>
                     <div class="kiwi-networksettings-section  kiwi-networksettings-user kiwi-networksettings-username">
-                        <input-text v-model="network.nick" />
+                        <input-text v-model="network.nick" :label="$t('settings_nickname')" />
                     </div>
 
                     <h4 @click="show_advanced=!show_advanced" class="kiwi-show-advanced-title">{{$t('settings_advanced')}} <i class="fa" :class="['fa-caret-'+(show_advanced?'up':'down')]" aria-hidden="true"></i></h4>
@@ -215,8 +214,7 @@ export default {
     border-radius: 2px;
 }
 
-.kiwi-networksettings .u-form span,
-.kiwi-network-nicknamelabel {
+.kiwi-networksettings .u-form span {
     display: inline-block;
     line-height: 25px;
     width: auto;
