@@ -220,14 +220,6 @@ export default {
 
 <style>
 
-.kiwi-startup-common-section.kiwi-startup-common-section-connection {
-    width: 25%;
-}
-
-.kiwi-startup-common-section.kiwi-startup-common-section-info {
-    width: 75%;
-}
-
 .kiwi-welcome-simple h2 {
     font-size: 1.7em;
     text-align: center;
@@ -343,23 +335,8 @@ export default {
     margin-left: -40px;
 }
 
-@media screen and (max-width: 1325px) {
-    .kiwi-startup-common-section.kiwi-startup-common-section-connection {
-        width: 32%;
-    }
-
-    .kiwi-startup-common-section.kiwi-startup-common-section-info {
-        width: 68%;
-    }
-}
-
 /** Smaller screen... **/
 @media screen and (max-width: 850px) {
-    .kiwi-startup-common-section.kiwi-startup-common-section-connection,
-    .kiwi-startup-common-section.kiwi-startup-common-section-info {
-        width: 100%;
-    }
-
     .kiwi-welcome-simple-form {
         left: auto;
         margin: 20px auto 20px auto;

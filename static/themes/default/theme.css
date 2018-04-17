@@ -310,6 +310,10 @@
     opacity: 1;
 }
 
+.kiwi-header-option--active {
+    border-left: 1px solid #42b992;
+}
+
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a.kiwi-statebrowser-network-toggle:hover {
     background-color: #d16c6c;
     border-top-color: #d16c6c;
@@ -432,7 +436,7 @@
     background: #fff;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
+.kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
     border-left: none;
 }
 
@@ -509,10 +513,6 @@
 
 .kiwi-messagelist-time {
     color: #a0a09f;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection-connected {
-    background: #42b992;
 }
 
 /* Network Settings ( NetworkSettings.vue ) */

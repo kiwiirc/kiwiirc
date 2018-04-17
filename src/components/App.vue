@@ -328,7 +328,7 @@ body {
     left: 0;
     top: 0;
     height: 7px;
-    z-index: 999;
+    z-index: 0;
 }
 
 /* When the statebrowser opens as a draw, darken the workspace */
