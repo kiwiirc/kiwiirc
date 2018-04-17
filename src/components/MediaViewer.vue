@@ -67,7 +67,6 @@ export default {
             checkEmbedlyAndShowCard();
         },
         closeViewer: function closeViewer() {
-            state.settings.mediaviewerIframe = false;
             state.$emit('mediaviewer.hide');
         },
     },
