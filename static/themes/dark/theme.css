@@ -610,9 +610,8 @@
 .kiwi-networksettings input[type='email'],
 .kiwi-networksettings textarea,
 .kiwi-networksettings .input-text input {
-    border-bottom: 1px solid #42b992;
-    background: #dadada;
-    color: #000;
+    background: rgb(62, 62, 62);
+    color: #fff;
 }
 
 .kiwi-networksettings-advanced h3:hover {
@@ -1182,6 +1181,16 @@
 .kiwi-userbox .kiwi-userbox-actions {
     color: #fff;
     border-color: #fff;
+}
+
+.kiwi-userbox-actions .kiwi-userbox-action {
+    color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.kiwi-userbox-actions .kiwi-userbox-action:hover {
+  color: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 1);
 }
 
 .kiwi-messagelist-message-whois {
