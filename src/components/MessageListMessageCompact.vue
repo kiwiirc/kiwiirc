@@ -203,7 +203,6 @@ export default {
     }
 
     .kiwi-messagelist-message--compact .kiwi-messagelist-body {
-        margin-left: 2px;
         float: left;
         width: 100%;
     }
