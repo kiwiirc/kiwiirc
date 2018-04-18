@@ -7,7 +7,7 @@
 .kiwi-wrap {
     background: #201F1F;
     color: #dedede;
-    --kiwi-nick-brightness: 40;
+    --kiwi-nick-brightness: 50;
     --kiwi-supports-monospace: 1;
 }
 
