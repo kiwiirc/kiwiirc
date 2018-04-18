@@ -530,11 +530,6 @@ export default {
         text-align: center;
     }
 
-    .kiwi-header .kiwi-header-notjoined {
-        display: inline-block;
-        margin: 10px auto;
-    }
-
     .kiwi-container-toggledraw-statebrowser-messagecount {
         width: 30px;
         color: #000;

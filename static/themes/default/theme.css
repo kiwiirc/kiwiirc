@@ -344,7 +344,7 @@
 }
 
 .kiwi-header .kiwi-header-notjoined .u-link:hover {
-        background-color: #5ec9a6;
+    background-color: #5ec9a6;
 }
 
 .kiwi-header-name {
@@ -429,6 +429,7 @@
 
 .kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
     border-left: none;
+    background: #42b983;
 }
 
 .kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread,

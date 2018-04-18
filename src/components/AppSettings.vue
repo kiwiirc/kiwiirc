@@ -372,8 +372,10 @@ export default {
         width: 90%;
     }
 
-    .kiwi-appsettings-section.kiwi-appsettings-general label span {
+    .kiwi-appsettings .u-form label span {
         width: auto;
+        margin-right: 0;
+        display: inline-block;
     }
 }
 </style>

@@ -405,7 +405,13 @@ export default {
     }
 
     .kiwi-header-notjoined {
-        height: 46px;
+        height: 45px;
+        margin: 0;
+    }
+
+    .kiwi-header-notjoined .kiwi-header-join-channel-button {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
 
