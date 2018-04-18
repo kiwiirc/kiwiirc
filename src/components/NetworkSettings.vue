@@ -50,11 +50,11 @@
                     </div>
 
                     <h4 @click="show_advanced=!show_advanced" class="kiwi-show-advanced-title">{{$t('settings_advanced')}} <i class="fa" :class="['fa-caret-'+(show_advanced?'up':'down')]" aria-hidden="true"></i></h4>
-                    <div class="kiwi-padded-form-element-container">
+                    <div class="kiwi-advanced-settings-container">
                         <div class="kiwi-networksettings-section  kiwi-networksettings-user">
                             <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
                                 <template v-if="show_advanced">
-                                    <label><span>{{$t('settings_encoding')}}: </span> <input v-model="network.connection.encoding" /></label><br />
+                                    <input-text :label="$t('settings_encoding')" v-model="network.connection.encoding" />
                                     <label><span class="kiwi-appsettings-showraw-label">{{$t('settings_show_raw')}}: </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
                                     <label class="u-form-block">
                                         <span>{{$t('settings_autorun')}}</span>
@@ -292,6 +292,18 @@ export default {
     &.kiwi-dangerzone {
         text-align: center;
     }
+}
+
+.kiwi-networksettings .kiwi-advanced-settings-container {
+    padding: 20px 0;
+}
+
+.kiwi-networksettings .kiwi-advanced-settings-container span {
+    margin-left: 0;
+}
+
+.kiwi-networksettings .kiwi-advanced-settings-container .u-form-block label {
+    float: left;
 }
 
 .kiwi-networksettings .input-text .input-text-label {
