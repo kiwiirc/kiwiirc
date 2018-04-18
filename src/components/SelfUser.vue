@@ -69,4 +69,8 @@ export default {
     margin-top: 1em;
     padding-top: 1em;
 }
+
+.kiwi-selfuser-actions .u-input {
+    margin-bottom: 10px;
+}
 </style>

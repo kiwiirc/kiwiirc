@@ -47,7 +47,7 @@
                             <label><span>{{$t('settings_24hour_timestamps')}} </span> <input type="checkbox" v-model="timestamps_24h" /></label>
                             <label><span>{{$t('settings_emoticons')}} </span> <input type="checkbox" v-model="settingBufferShowEmoticons" /></label>
                             <label><span>{{$t('settings_block_private')}} </span> <input type="checkbox" v-model="settingBufferBlockPms" /></label>
-                            <label class="kiwi-appsettings-full kiwi-appsettings-setting-scrollback"><span>{{$t('settings_scrollback')}} </span> <br> <input type="number" class="u-input" v-model="settingBufferScrollbackSize" /></label>
+                            <label class="kiwi-appsettings-full kiwi-appsettings-setting-scrollback"><input type="number" class="u-input" v-model="settingBufferScrollbackSize" /><span>{{$t('settings_scrollback')}} </span></label>
                             <label><span>{{$t('settings_formatting')}} </span> <input type="checkbox" v-model="settingBufferExtraFormatting" /></label>
                             <label><span>{{$t('settings_nick_colouring')}} </span> <input type="checkbox" v-model="settingBufferColourNicknames" /></label>
                         </div>
@@ -258,12 +258,18 @@ export default {
     padding: 1em 20px 2em 20px;
 }
 
-.kiwi-appsettings-setting-scrollback input {
-    width: 100%;
+.u-form .kiwi-appsettings-setting-scrollback {
+    line-height: 40px;
+}
+
+.u-form .kiwi-appsettings-setting-scrollback input {
     box-sizing: border-box;
     line-height: 30px;
     height: 40px;
     border: 1px solid;
+    float: left;
+    margin-right: 10px;
+    width: 80px;
 }
 
 .kiwi-appsettings-tab-container {

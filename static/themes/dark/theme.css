@@ -756,6 +756,11 @@
     border-top: 1px solid #ddd;
 }
 
+.kiwi-selfuser-actions .u-button-secondary {
+  background-color: #b9424a;
+  color: #dedede;
+}
+
 /* Settings Aliases ( SettingsAliases.vue ) */
 .kiwi-settings-aliases-input {
     border-color: #ccc;
