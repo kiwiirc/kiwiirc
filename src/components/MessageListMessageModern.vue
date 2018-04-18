@@ -147,6 +147,10 @@ export default {
     padding-top: 15px;
 }
 
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorfirst.kiwi-messagelist-message-topic {
+    padding: 10px 20px;
+}
+
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
     margin-top: 0;
     padding-top: 0;
