@@ -392,13 +392,7 @@
 
 /*When hovering over a users messages */
 .kiwi-messagelist-message--hover{
-    background-color: #42b992;
-    color: #fff;
-}
-
-.kiwi-messagelist-message--hover a,
-.kiwi-messagelist-message--hover .kiwi-messagelist-time {
-    color: #fff !important;
+    background-color: #f2f2f2;
 }
 
 .kiwi-container--sidebar-open .kiwi-messagelist::after {
