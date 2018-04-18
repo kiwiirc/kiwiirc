@@ -64,6 +64,10 @@ export default {
     position: relative;
 }
 
+.kiwi-serverview .kiwi-messagelist {
+    padding-top: 0;
+}
+
 .kiwi-serverview-inner {
     /* Mobile safari can't work out the height for scrolling to work without this wrapper element */
     position: absolute;
