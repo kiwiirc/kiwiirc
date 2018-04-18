@@ -487,6 +487,15 @@
 .kiwi-messagelist-modern-avatar {
     border: 2px solid #42b992;
 }
+
+.kiwi-messagelist-message--modern .kiwi-messagelist-body a {
+  color: #0093ce;
+}
+
+.kiwi-messagelist-message--modern .kiwi-messagelist-body a:hover {
+  color: #3db0de;
+}
+
 .kiwi-messagelist-nick {
     color: #000;
 }
