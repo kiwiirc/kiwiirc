@@ -47,9 +47,13 @@ export default {
     methods: {
         updateEmbed: function updateEmbed() {
             let checkEmbedlyAndShowCard = () => {
+                if (!this.isIframe) {
+                    return;
+                }
+
                 // If the embedly function doesn't exist it's probably still loading
                 // the embedly script
-                if (typeof window.embedly !== 'function' || typeof el === 'undefined') {
+                if (typeof window.embedly !== 'function') {
                     setTimeout(checkEmbedlyAndShowCard, 100);
                     return;
                 }
@@ -111,5 +115,6 @@ export default {
     width: 100%;
     position: absolute;
     top: 0;
+    border: none;
 }
 </style>

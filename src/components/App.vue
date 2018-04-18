@@ -28,7 +28,7 @@
                     <media-viewer
                         v-if="mediaviewerOpen"
                         :url="mediaviewerUrl"
-                        :isIframe="isIframe"
+                        :isIframe="mediaviewerIframe"
                     ></media-viewer>
                     <control-input :container="networks" :buffer="buffer"></control-input>
                 </template>
@@ -91,9 +91,18 @@ export default {
         this.listen(state, 'statebrowser.hide', () => {
             this.stateBrowserDrawOpen = false;
         });
-        this.listen(state, 'mediaviewer.show', (url, iframe = false) => {
-            this.mediaviewerUrl = url;
-            this.isIframe = iframe;
+        this.listen(state, 'mediaviewer.show', (url) => {
+            let opts = {};
+
+            // The passed url may be a string or an options object
+            if (typeof url === 'string') {
+                opts = { url: url };
+            } else {
+                opts = url;
+            }
+
+            this.mediaviewerUrl = opts.url;
+            this.mediaviewerIframe = opts.iframe;
             this.mediaviewerOpen = true;
         });
         this.listen(state, 'mediaviewer.hide', () => {
@@ -188,6 +197,7 @@ export default {
             fallbackComponentProps: {},
             mediaviewerOpen: false,
             mediaviewerUrl: '',
+            mediaviewerIframe: false,
             themeUrl: '',
         };
     },
