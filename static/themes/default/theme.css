@@ -671,13 +671,13 @@
 }
 
 .kiwi-settings-aliases-help {
-    background: #f3f2f2;
-    border: 1px dashed gray;
+    background: transparent;
+    border: 1px dashed rgba(0,0,0, 0.4);
 }
 
 .kiwi-settings-aliases-help em {
-    color: #ab1010;
-    background: #fff6a5;
+    color: #42b992;
+    font-weight: 900;
 }
 
 /* Sidebar ( Sidebar.vue ) */
