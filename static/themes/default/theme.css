@@ -526,14 +526,6 @@
     background: #fff;
 }
 
-.kiwi-networksettings input[type='text'],
-.kiwi-networksettings input[type='password'],
-.kiwi-networksettings input[type='email'],
-.kiwi-networksettings textarea,
-.input-text input {
-    border-bottom: 1px solid #42b992;
-}
-
 .kiwi-networksettings-advanced h3:hover {
     color: #42b992;
 }
