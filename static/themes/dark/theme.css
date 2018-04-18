@@ -436,7 +436,11 @@
 }
 
 .kiwi-messagelist-body a {
-    color: #63bafb;
+    color: #0a6bb4;
+}
+
+.kiwi-messagelist-body a:hover {
+    color: #3a99e1;
 }
 
 .kiwi-container-empty .u-button {
@@ -458,10 +462,6 @@
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
     color: #dedede;
-}
-
-.kiwi-messagelist-body a {
-    color: #3351f8;
 }
 
 .kiwi-messagelist-message--hover a,
@@ -672,6 +672,10 @@
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button.kiwi-networksettings-server-type-active {
     background: #42b992;
     color: #fff;
+}
+
+.u-button.kiwi-channellist-refresh.u-button-secondary {
+  background: #42b992;
 }
 
 /* Nicklist ( Nicklist.vu ) */
