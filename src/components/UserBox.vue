@@ -306,7 +306,7 @@ export default {
     width: 100%;
     margin: 0;
     display: block;
-    padding: 1em 1em 0 1.4em;
+    padding: 1em 1em 1em 1.4em;
     box-sizing: border-box;
 
     span {
@@ -325,18 +325,20 @@ export default {
 }
 
 .kiwi-userbox-basicinfo-title {
-    font-weight: 600;
     font-size: 1em;
-    opacity: 0.8;
     line-height: 1em;
     padding: 0;
     text-transform: capitalize;
     text-align: left;
+    opacity: 0.5;
+    font-weight: 900;
 }
 
 .kiwi-userbox-basicinfo-data {
     margin-bottom: 1em;
     font-weight: normal;
+    font-weight: 100;
+    opacity: 1;
 }
 
 .kiwi-userbox-actions {
@@ -467,6 +469,7 @@ export default {
 
     .kiwi-userbox .kiwi-userbox-basicinfo {
         padding: 10px 10px;
+        margin-bottom: 20px;
     }
 
     .kiwi-userbox-actions {
@@ -475,7 +478,7 @@ export default {
         box-sizing: border-box;
     }
 
-    .kiwi-userbox .kiwi-userbox-actions .u-button {
+    .kiwi-userbox-actions .kiwi-userbox-action {
         width: 200px;
         clear: both;
         margin: 0 auto 20px auto;

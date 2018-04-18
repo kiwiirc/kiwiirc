@@ -304,7 +304,7 @@ export default {
     width: auto;
     display: block;
     box-sizing: border-box;
-    margin: 0 auto 20px auto;
+    margin: 20px auto 20px auto;
 
     h3 {
         width: 100%;
