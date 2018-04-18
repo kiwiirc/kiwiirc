@@ -11,6 +11,7 @@
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div class="kiwi-header-options" v-if="isJoined && isConnected">
                 <div class="kiwi-header-option kiwi-header-option-topic" @click="showTopic" v-bind:class="{ 'kiwi-header-option--active': viewTopic == true }" v-if="buffer.topic.length > 0">
+                    <i class="fa fa-info kiwi-topic-mobile-icon" aria-hidden="true"></i>
                     <a v-if="viewTopic == true"><i class="fa fa-info" aria-hidden="true"></i> Hide Topic</a>
                     <a v-if="viewTopic == false"><i class="fa fa-info" aria-hidden="true"></i> Display Topic</a>
                 </div>
@@ -277,6 +278,10 @@ export default {
     }
 }
 
+.kiwi-header-option .kiwi-topic-mobile-icon {
+    display: none;
+}
+
 .kiwi-header-option-leave {
     opacity: 1;
     margin: 0;
@@ -412,6 +417,11 @@ export default {
     .kiwi-header-notjoined .kiwi-header-join-channel-button {
         padding-left: 10px;
         padding-right: 10px;
+    }
+
+    .kiwi-header-option .kiwi-topic-mobile-icon {
+        display: block;
+        margin-right: 0;
     }
 }
 
