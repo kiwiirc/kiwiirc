@@ -426,12 +426,6 @@
     background: #42b983;
 }
 
-.kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread,
-.kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread a,
-.kiwi-messagelist-message--hover.kiwi-messagelist-message.kiwi-messagelist-message--unread .kiwi-messagelist-time{
-    color: #000 !important;
-}
-
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-privmsg:hover,
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-action:hover,
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-notice:hover, {
