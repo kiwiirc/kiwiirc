@@ -456,7 +456,7 @@
 
 /*When hovering over a users messages */
 .kiwi-messagelist-message--hover{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
