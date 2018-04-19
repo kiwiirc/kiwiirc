@@ -508,6 +508,11 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
+  border-bottom: 2px solid #42b992;
+}
+
+
 /* Network Settings ( NetworkSettings.vue ) */
 .kiwi-networksettings .kiwi-title {
     background: #42b992;

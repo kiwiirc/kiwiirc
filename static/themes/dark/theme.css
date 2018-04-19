@@ -567,6 +567,10 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
+  border-bottom: 2px solid #42b992;
+}
+
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection-connected {
     background: #42b992;
 }
