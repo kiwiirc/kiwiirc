@@ -162,9 +162,9 @@
 }
 
 .u-button-warning {
-    background-color: #ca3c3c;
+    background-color: #d16c6c;
     border-bottom: 1px solid #5f1515;
-    color: #dedede4f4;
+    color: #fff;
 }
 
 
@@ -635,11 +635,6 @@
 
 .kiwi-networksettings-error {
     border: 1px dashed #d86f6f;
-}
-
-.kiwi-networksettings-danger .u-button-warning {
-    background-color: #d16c6c;
-    color: #dedede;
 }
 
 .kiwi-networksettings .kiwi-customserver-tls {
