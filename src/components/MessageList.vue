@@ -450,10 +450,6 @@ export default {
     &:hover {
         opacity: 1;
     }
-
-    .kiwi-messagelist-time {
-        display: none;
-    }
 }
 
 /* Absolute position the time on these messages so it's not above the message, it looks awful */
@@ -461,7 +457,7 @@ export default {
 .kiwi-messagelist-message-traffic .kiwi-messagelist-time {
     position: absolute;
     top: 1px;
-    right: 20px;
+    right: 10px;
 }
 
 .kiwi-messagelist-message--authorrepeat {
