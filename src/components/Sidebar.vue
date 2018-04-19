@@ -275,6 +275,10 @@ export default {
     to { height: 100%; }
 }
 
+.kiwi-channelbanlist-empty {
+    margin-top: 10px;
+}
+
 @media screen and (max-width: 769px) {
     .kiwi-sidebar .u-tabbed-view-tab {
         width: 100%;
