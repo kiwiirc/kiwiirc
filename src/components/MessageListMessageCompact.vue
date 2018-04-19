@@ -123,6 +123,7 @@ export default {
 .kiwi-messagelist-message--compact .kiwi-messagelist-time {
     display: inline-block;
     float: right;
+    font-size: 12px;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-body {
