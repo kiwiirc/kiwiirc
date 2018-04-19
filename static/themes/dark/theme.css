@@ -896,6 +896,7 @@
 .kiwi-statebrowser-channelfilter input {
     background-color: #dedede;
     color: #000;
+    outline: none;
 }
 
 .kiwi-statebrowser-channelfilter p {

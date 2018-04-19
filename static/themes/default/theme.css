@@ -415,7 +415,7 @@
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message--unread,
-.kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread {
+.kiwi-messagelist-message.kiwi-messagelist-message--unread {
   border-left: 5px solid #42b992;
   background: #f2f2f2;
   opacity: 1;
@@ -805,6 +805,7 @@
 .kiwi-statebrowser-channelfilter input {
     background-color: #fff;
     color: #000;
+    outline: none;
 }
 
 .kiwi-statebrowser-channelfilter p {
