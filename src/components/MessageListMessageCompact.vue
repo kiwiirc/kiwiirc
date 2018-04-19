@@ -149,10 +149,6 @@ export default {
     .kiwi-messagelist-body {
         margin-left: 131px;
     }
-
-    .kiwi-messagelist-time {
-        display: none;
-    }
 }
 
 //Channel Connection
