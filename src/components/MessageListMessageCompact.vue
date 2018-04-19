@@ -205,6 +205,11 @@ export default {
     .kiwi-messagelist-message--compact .kiwi-messagelist-body {
         float: left;
         width: 100%;
+        margin-left: 3px;
+    }
+
+    .kiwi-messagelist-message--compact.kiwi-messagelist-message--unread .kiwi-messagelist-body {
+        padding-left: 10px;
     }
 
     .kiwi-messagelist-message--compact .kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick {
@@ -217,6 +222,15 @@ export default {
 
     .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
         margin-left: 0;
+    }
+
+    .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic {
+        margin-left: 10px;
+    }
+
+    .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic.kiwi-messagelist-message--unread {
+        margin-left: 0;
+        padding-left: 10px;
     }
 }
 
