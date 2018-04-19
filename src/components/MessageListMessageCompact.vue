@@ -112,6 +112,10 @@ export default {
     position: absolute;
 }
 
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-nick .kiwi-messagelist-time {
+    margin-right: 10px;
+}
+
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-nick {
     margin-right: 14px;
 }
