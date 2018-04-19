@@ -1375,7 +1375,7 @@ function initialiseBufferState(buffer) {
             if (delayed) {
                 buffer.active_timeout = setTimeout(
                     buffer.markAsRead,
-                    600000,
+                    10000,
                     false
                 );
             } else {
