@@ -362,9 +362,5 @@ export default {
     .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic {
         padding-left: 10px;
     }
-
-    .kiwi-messagelist {
-        padding-top: 0;
-    }
 }
 </style>
