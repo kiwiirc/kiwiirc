@@ -126,7 +126,6 @@ export default {
 .kiwi-messagelist-message--modern {
     border-left: 7px solid transparent;
     display: flex;
-    transition: 0s;
     margin: 0 0 0 20px;
     margin-left: 0;
     padding: 15px 10px;
@@ -304,8 +303,6 @@ export default {
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic {
     margin-right: 0;
     padding-left: 60px;
-    padding-top: 0;
-    padding-bottom: 0;
 }
 
 @media screen and (max-width: 769px) {

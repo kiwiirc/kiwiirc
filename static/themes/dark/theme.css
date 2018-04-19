@@ -563,6 +563,10 @@
     color: #a0a09f;
 }
 
+.kiwi-messagelist-message--modern {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection-connected {
     background: #42b992;
 }

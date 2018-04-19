@@ -357,7 +357,6 @@ export default {
     /* some message highlights add a left border so add a default invisble one to keep them inline */
     border-left: 3px solid transparent;
     overflow: hidden;
-    transition: opacity 0.2s;
     line-height: 1.5em;
     margin: 0;
 }
