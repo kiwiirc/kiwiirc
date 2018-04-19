@@ -129,7 +129,7 @@ export default {
     transition: 0s;
     margin: 0 0 0 20px;
     margin-left: 0;
-    padding: 10px 10px;
+    padding: 15px 10px;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left {
