@@ -314,23 +314,6 @@ export default {
     font-size: 1em;
 }
 
-.kiwi-statebrowser-channel .kiwi-statebrowser-channel-label {
-    margin: 4px 0;
-    border-radius: 5px 0 0 5px;
-    font-weight: 600;
-}
-
-.kiwi-statebrowser-channel .kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
-    border-radius: 10px 0 0 10px;
-    font-weight: 600;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-
-.kiwi-statebrowser-channel .kiwi-statebrowser-channel-label:hover {
-    opacity: 1;
-}
-
 .kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
     font-weight: 600;
     opacity: 1;
