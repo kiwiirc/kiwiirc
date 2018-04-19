@@ -273,7 +273,7 @@
     color: #5f5f5f;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic.kiwi-messagelist-message--unread {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic.kiwi-messagelist-message--unread {
     border-left: 2px solid #42b992;
 }
 
