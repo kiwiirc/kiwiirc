@@ -509,7 +509,7 @@
 }
 
 .kiwi-messagelist-message--modern {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #f3f3f3;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
