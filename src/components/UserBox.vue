@@ -354,7 +354,7 @@ export default {
         padding: 0.5em 1em;
         color: #000;
         cursor: pointer;
-        margin: 0 5px 0 5px;
+        margin: 0 auto 20px auto;
         transition: all 0.3s;
         border-radius: 3px;
 
@@ -481,7 +481,6 @@ export default {
     .kiwi-userbox-actions .kiwi-userbox-action {
         width: 200px;
         clear: both;
-        margin: 0 auto 20px auto;
         display: block;
     }
 }
