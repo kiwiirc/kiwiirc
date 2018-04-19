@@ -564,11 +564,23 @@
 }
 
 .kiwi-messagelist-message--modern {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
+  border-top: none;
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic.kiwi-messagelist-message--unread {
+    border-left: 2px solid #42b992;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
   border-bottom: 2px solid #42b992;
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic {
+    border-top: 2px solid #42b992;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection-connected {

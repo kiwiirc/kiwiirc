@@ -277,6 +277,10 @@
     border-left: 2px solid #42b992;
 }
 
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic {
+    border-top: 2px solid #42b992;
+}
+
 .kiwi-header-buffersettings {
     border-top: 1px solid #ddd;
 }
@@ -505,7 +509,11 @@
 }
 
 .kiwi-messagelist-message--modern {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
+  border-top: none;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
