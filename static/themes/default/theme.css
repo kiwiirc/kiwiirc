@@ -581,7 +581,7 @@
     color: #fff;
 }
 
-.kiwi-channellist-refresh.u-button-secondary {
+.u-button.kiwi-channellist-refresh.u-button-secondary {
   background: #42b992;
 }
 
@@ -1093,6 +1093,7 @@
 .kiwi-messagelist-message.kiwi-messagelist-message--hover {
     position: relative;
     border-color: #42b992;
+    opacity: 1;
 }
 
 /* MOTD */

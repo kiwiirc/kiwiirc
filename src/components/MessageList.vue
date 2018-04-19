@@ -359,7 +359,7 @@ export default {
     overflow: hidden;
     transition: opacity 0.2s;
     line-height: 1.5em;
-    margin: 0 3px;
+    margin: 0;
 }
 
 .kiwi-messagelist-message-mode,
@@ -447,7 +447,6 @@ export default {
     opacity: 0.85;
     text-align: center;
     border: none;
-    transition: all 0.3s;
 
     &:hover {
         opacity: 1;

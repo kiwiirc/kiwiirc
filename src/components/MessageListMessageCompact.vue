@@ -143,7 +143,7 @@ export default {
     padding: 1px 0;
 
     .kiwi-messagelist-body {
-        margin-left: 138px;
+        margin-left: 131px;
     }
 
     .kiwi-messagelist-time {

@@ -1199,6 +1199,7 @@
 
 .kiwi-messagelist-message.kiwi-messagelist-message--hover {
     position: relative;
+    opacity: 1;
     border-color: #42b992;
 }
 
