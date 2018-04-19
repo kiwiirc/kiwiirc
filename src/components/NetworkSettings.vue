@@ -50,7 +50,7 @@
                     </div>
 
                     <h4 @click="show_advanced=!show_advanced" class="kiwi-show-advanced-title">{{$t('settings_advanced')}} <i class="fa" :class="['fa-caret-'+(show_advanced?'up':'down')]" aria-hidden="true"></i></h4>
-                    <div class="kiwi-advanced-settings-container">
+                    <div class="kiwi-networksettings-advanced-container">
                         <div class="kiwi-networksettings-section  kiwi-networksettings-user">
                             <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
                                 <template v-if="show_advanced">
@@ -294,15 +294,15 @@ export default {
     }
 }
 
-.kiwi-networksettings .kiwi-advanced-settings-container {
+.kiwi-networksettings-advanced-container {
     padding: 20px 0;
 }
 
-.kiwi-networksettings .kiwi-advanced-settings-container span {
+.kiwi-networksettings-advanced-container span {
     margin-left: 0;
 }
 
-.kiwi-networksettings .kiwi-advanced-settings-container .u-form-block label {
+.kiwi-networksettings-advanced-container .u-form-block label {
     float: left;
 }
 
