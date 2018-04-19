@@ -308,12 +308,6 @@ export default {
     display: block;
     padding: 1em 1em 1em 1.4em;
     box-sizing: border-box;
-
-    span {
-        font-weight: 600;
-        width: 100%;
-        margin: 0 0 0.4em 0;
-    }
 }
 
 .kiwi-userbox-basicinfo-title,
