@@ -108,7 +108,7 @@ export default {
     width: 110px;
     display: inline-block;
     left: 0;
-    top: 0;
+    top: -1px;
     position: absolute;
 }
 
