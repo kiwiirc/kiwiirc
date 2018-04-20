@@ -187,6 +187,7 @@ export default {
     }
 }
 
+// Traffic messages have an opacity lower than 1, so we do a blanket statment to make sure all messages are opacity: 1, rather than just specifying one.
 .kiwi-messagelist-message--compact.kiwi-messagelist-message--unread {
     opacity: 1;
 }
