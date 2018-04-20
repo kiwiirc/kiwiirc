@@ -28,6 +28,7 @@
                     <media-viewer
                         v-if="mediaviewerOpen"
                         :url="mediaviewerUrl"
+                        :isIframe="mediaviewerIframe"
                     ></media-viewer>
                     <control-input :container="networks" :buffer="buffer"></control-input>
                 </template>
@@ -45,6 +46,7 @@
 
 import 'font-awesome-webpack';
 import '@/res/globalStyle.css';
+import Tinycon from 'tinycon';
 
 import startupWelcome from '@/components/startups/Welcome';
 import startupZncLogin from '@/components/startups/ZncLogin';
@@ -90,7 +92,17 @@ export default {
             this.stateBrowserDrawOpen = false;
         });
         this.listen(state, 'mediaviewer.show', (url) => {
-            this.mediaviewerUrl = url;
+            let opts = {};
+
+            // The passed url may be a string or an options object
+            if (typeof url === 'string') {
+                opts = { url: url };
+            } else {
+                opts = url;
+            }
+
+            this.mediaviewerUrl = opts.url;
+            this.mediaviewerIframe = opts.iframe;
             this.mediaviewerOpen = true;
         });
         this.listen(state, 'mediaviewer.hide', () => {
@@ -110,6 +122,8 @@ export default {
             if (buffer) {
                 buffer.markAsRead(true);
             }
+
+            state.ui.favicon_counter = 0;
         }, false);
         window.addEventListener('blur', event => {
             state.ui.app_has_focus = false;
@@ -117,6 +131,29 @@ export default {
         window.addEventListener('touchstart', event => {
             // Parts of the UI adjust themselves if we're known to be using a touchscreen
             state.ui.is_touch = true;
+        });
+
+        // favicon bubble
+        Tinycon.setOptions({
+            width: 7,
+            height: 9,
+            color: '#ffffff',
+            background: '#b32d2d',
+            fallback: true,
+        });
+        state.$watch('ui.favicon_counter', (newVal) => {
+            if (newVal) {
+                Tinycon.setBubble(newVal);
+            } else {
+                Tinycon.reset();
+            }
+        });
+        this.listen(state, 'message.new', (message) => {
+            if (!message.isHighlight || state.ui.app_has_focus) {
+                return;
+            }
+
+            state.ui.favicon_counter++;
         });
     },
     mounted: function mounted() {
@@ -160,6 +197,7 @@ export default {
             fallbackComponentProps: {},
             mediaviewerOpen: false,
             mediaviewerUrl: '',
+            mediaviewerIframe: false,
             themeUrl: '',
         };
     },

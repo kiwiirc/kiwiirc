@@ -180,6 +180,12 @@ function clientMiddleware(state, networkid) {
             return;
         }
 
+        // Ignore any of the control messages. They're transport related to kiwi internals
+        if (event && event.command === 'CONTROL') {
+            next();
+            return;
+        }
+
         if (command === 'registered') {
             if (client.options.nickserv) {
                 let options = client.options.nickserv;
@@ -337,7 +343,7 @@ function clientMiddleware(state, networkid) {
                 nick: event.nick,
                 message: messageBody,
                 type: event.type,
-                tags: event.tags,
+                tags: event.tags || {},
             });
         }
 
@@ -569,10 +575,10 @@ function clientMiddleware(state, networkid) {
             // Store the channels in channel_list_cache before moving it all to
             // channel_list at the end. This gives a huge performance boost since
             // it doesn't need to be all reactive for every update
-            network.channel_list_cache = network.channel_list_cache.concat(event);
+            network.channel_list_cache = (network.channel_list_cache || []).concat(event);
         }
         if (command === 'channel list end') {
-            network.channel_list = network.channel_list_cache;
+            network.channel_list = network.channel_list_cache || [];
             delete network.channel_list_cache;
             network.channel_list_state = '';
         }

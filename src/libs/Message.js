@@ -20,6 +20,9 @@ export default class Message {
         this.ignore = false;
         this.mentioned_urls = [];
         this.html = '';
+        // template should be null or a Vue component to render this message
+        this.template = null;
+        this.isHighlight = false;
 
         // We don't want the user object to be enumerable
         Object.defineProperty(this, 'user', {
@@ -27,13 +30,13 @@ export default class Message {
         });
     }
 
-    toHtml(messageList) {
-        if (this.html) {
-            return this.html;
-        }
-
+    render() {
         // Allow plugins to render their own messages if needed
-        GlobalApi.singleton().emit('message:render', { message: this });
+        GlobalApi.singleton().emit('message.render', { message: this });
+        return this;
+    }
+
+    toHtml(messageList) {
         if (this.html) {
             return this.html;
         }
