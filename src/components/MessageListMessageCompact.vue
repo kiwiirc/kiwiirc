@@ -187,6 +187,10 @@ export default {
     }
 }
 
+.kiwi-messagelist-message--compact.kiwi-messagelist-message--unread {
+    opacity: 1;
+}
+
 @media screen and (max-width: 700px) {
     .kiwi-messagelist-message--compact {
         padding: 5px;

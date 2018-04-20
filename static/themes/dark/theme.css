@@ -43,6 +43,15 @@
      color: #a9d87a;
  }
 
+ /* ZNC startup screen */
+ .kiwi-welcome-znc h2 {
+   color: #000;
+ }
+
+ .kiwi-welcome-znc .input-text {
+   background: #fff;
+ }
+
 
 /* App ( App.vue ) */
 .kiwi-workspace {
@@ -411,14 +420,11 @@
 .kiwi-messagelist-message.kiwi-messagelist-message--unread {
     border-left-color: rgba(255, 255, 255, 0.1);
     background-color: rgba(255, 255, 255, 0.1);
+    opacity: 1;
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message--unread {
     border-left: 2px solid #42b992;
-}
-
-.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
-    border-left: none;
 }
 
 /* Message list - Standard messages ( MessageList.vue ) */
