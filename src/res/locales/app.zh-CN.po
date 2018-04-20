@@ -11,227 +11,231 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-02-07 18:01-0500\n"
+"PO-Revision-Date: 2018-04-04 08:41-0400\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "开始"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "欢迎来到 Kiwi IRC！"
 
 #: Close
 msgid "close"
-msgstr ""
+msgstr "关闭"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "连接"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "正在连接···"
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "已连接"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "设置"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "频道"
 
 #: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "封禁用户"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "通知消息"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "用户名"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "密码"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "我有密码"
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "服务器"
 
 #: Nick
 msgid "nick"
-msgstr ""
+msgstr "昵称"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "频道"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "网络"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "正在登陆···"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "无效登录"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "搜索···"
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "好"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "取消"
 
 #: This will close all KiwiIRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "这将关闭所有的 KiwiIRC 对话。您确定关闭此窗口吗？"
 
 #: Real name
 msgid "whois_realname"
-msgstr ""
+msgstr "真实名称"
 
 #: Status
 msgid "whois_status"
-msgstr ""
+msgstr "状态"
 
 #: Is available
 msgid "whois_status_available"
-msgstr ""
+msgstr "可用"
 
 #: Send a message
 msgid "send_a_message"
-msgstr ""
+msgstr "发送消息"
 
 #: More information
 msgid "more_information"
-msgstr ""
+msgstr "更多信息"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr ""
+msgstr "忽略用户"
 
 #: Channel
 msgid "connection_channel"
-msgstr ""
+msgstr "频道"
 
 #: General
 msgid "settings_general"
-msgstr ""
+msgstr "通用"
 
 #: Theme
 msgid "settings_theme"
-msgstr ""
+msgstr "主题"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "主题地址"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "使用等宽字体"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "传统 IRC 布局"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "显示自动补全列表"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "聊天信息"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "显示时间戳"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "使用 24 小时制时间戳"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "显示表情"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr ""
+msgstr "不接收新私信"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "历史消息"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr ""
+msgstr "额外格式"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "聊天彩色昵称"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr ""
+msgstr "令加入/部分信息变成活动"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "静音提示"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr ""
+msgstr "高亮单词（使用空格分开）"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr ""
+msgstr "别名"
 
 #: Send Message
 msgid "send_message"
-msgstr ""
+msgstr "发送消息"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr ""
+msgstr "提示我"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "所有信息"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "我被提及"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "从不"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr ""
+msgstr "静音"
+
+#: Hide unread message count
+msgid "settings_show_message_counts"
+msgstr "隐藏未读消息计数"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
@@ -239,303 +243,355 @@ msgstr ""
 
 #: Operator tools
 msgid "operator_tools"
-msgstr ""
+msgstr "操作工具"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "默认封禁理由"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "默认踢出原因"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr ""
+msgstr "刷新封禁列表"
 
 #: Banned user
 msgid "bans_user"
-msgstr ""
+msgstr "已封禁用户"
 
 #: Banned by
 msgid "bans_by"
-msgstr ""
+msgstr "封禁"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr ""
+msgstr "正在刷新封禁列表···"
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr ""
+msgstr "无人被封禁！"
 
 #: Topic
 msgid "channel_topic"
-msgstr ""
+msgstr "主题"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr ""
+msgstr "主持聊天"
 
 #: Invite only
 msgid "channel_invite"
-msgstr ""
+msgstr "仅限邀请"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr ""
+msgstr "只有管理员可以修改主题"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr ""
+msgstr "阻挡除此频道之外的信息"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr ""
+msgstr "欢迎来到 Kiwi IRC！"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr ""
+msgstr "显示状态浏览器"
 
 #: Join Channel
 msgid "container_join"
-msgstr ""
+msgstr "加入频道"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr ""
+msgstr "未连接"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr ""
+msgstr "与 {{user}} 的私聊"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr ""
+msgstr "在此处发送信息···"
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr ""
+msgstr "正在加载 {{url}}···"
 
 #: Load previous messages
 msgid "messages_load"
-msgstr ""
+msgstr "载入历史聊天记录"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "未读信息"
 
 #: Server details
 msgid "settings_server_details"
-msgstr ""
+msgstr "服务器信息"
 
 #: Port
 msgid "settings_port"
-msgstr ""
+msgstr "端口"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr ""
+msgstr "在此 ZNC 账号上的其他网络将被添加至网络列表中"
 
 #: Your details
 msgid "settings_your_details"
-msgstr ""
+msgstr "您的信息"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr ""
+msgstr "昵称"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr ""
+msgstr "高级"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr ""
+msgstr "编码"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr ""
+msgstr "显示原始信息"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr ""
+msgstr "当连接时运行指令"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr ""
+msgstr "危险选项"
 
 #: Remove network
 msgid "settings_remove"
-msgstr ""
+msgstr "移除网络"
 
 #: {{count}} person here
 msgid "person"
-msgstr ""
+msgstr "有 {{count}} 人在线"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr ""
+msgstr "有 {{count}} 人在线"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr ""
+msgstr "重连至 {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr ""
+msgstr "重连至 {{network}} 以开始聊天"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr ""
+msgstr "重连以继续和 {{user}} 的聊天"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr ""
+msgstr "连接设置"
 
 #: Close options
 msgid "side_close"
-msgstr ""
+msgstr "关闭设置"
 
 #: Channel options
 msgid "side_options"
-msgstr ""
+msgstr "频道设置"
 
 #: Your settings
 msgid "side_settings"
-msgstr ""
+msgstr "您的设置"
 
 #: Show when people join
 msgid "side_joins"
-msgstr ""
+msgstr "在成员加入时显示"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "当频道主题改变时显示"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "当用户修改昵称时显示"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "当用户改变频道模式时显示"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr ""
+msgstr "额外信息格式"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr ""
+msgstr "列表中的昵称颜色"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr ""
+msgstr "无缓冲区"
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr ""
+msgstr "启动 Kiwi IRC 时出现问题：（"
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr ""
+msgstr "请确保您已正确安装 Kiwi IRC 并可加载配置"
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr ""
+msgstr "离开 {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr ""
+msgstr "您的账户"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr ""
+msgstr "您的设置和网络将保存在此电脑上。"
 
 #: Forget me
 msgid "state_forget"
-msgstr ""
+msgstr "忘记我"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr ""
+msgstr "这里还没有网络。"
 
 #: Add one?
 msgid "state_add"
-msgstr ""
+msgstr "是否添加一个？"
 
 #: Available networks
 msgid "state_available"
-msgstr ""
+msgstr "可用网络"
 
 #: Configure network
 msgid "state_configure"
-msgstr ""
+msgstr "配置网络"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr ""
+msgstr "未连接。"
 
 #: Join new #channel
 msgid "state_join"
-msgstr ""
+msgstr "加入新 #频道"
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "修改昵称"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr ""
+msgstr "账户名：{{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr ""
+msgstr "真实名称：{{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr ""
+msgstr "是否为机器人"
 
 #: Is available for help
 msgid "user_help"
-msgstr ""
+msgstr "是否可寻求帮助"
 
 #: Is an operator
 msgid "user_op"
-msgstr ""
+msgstr "是否为管理员"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr ""
+msgstr "已连接至 {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr ""
+msgstr "通过 SSL/TLS 安全连接"
 
 #: Also in channels {{channels}}
 msgid "user_channels"
-msgstr ""
+msgstr "也在 {{channels}} 频道"
 
 #: Access level
 msgid "user_access"
-msgstr ""
+msgstr "访问等级"
 
 #: Normal
 msgid "user_normal"
-msgstr ""
+msgstr "普通"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr ""
+msgstr "从频道中踢出"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr ""
+msgstr "从频道中封禁"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "从频道中踢出并封禁"
+
+#: {{nick}} gives ops to {{target}}
+msgid "modes_give_ops"
+msgstr "{{nick}} 将管理员权限授予了 {{target}}"
+
+#: {{nick}} takes ops from {{target}}
+msgid "modes_take_ops"
+msgstr "{{nick}} 移除了 {{target}} 的管理员权限"
+
+#: {{nick}} gives half-ops to {{target}}
+msgid "modes_give_halfops"
+msgstr "{{nick}} 将半管理员权限授予了 {{target}}"
+
+#: {{nick}} takes half-ops from {{target}}
+msgid "modes_take_halfops"
+msgstr "{{nick}} 移除了 {{target}} 的半管理员权限"
+
+#: {{nick}} gives voice to {{target}}
+msgid "modes_give_voice"
+msgstr "{{nick}} 将语音权限授予了 {{target}}"
+
+#: {{nick}} takes voice from {{target}}
+msgid "modes_take_voice"
+msgstr "{{nick}} 移除了 {{target}} 的语音权限"
+
+#: {{nick}} gives admin to {{target}}
+msgid "modes_give_admin"
+msgstr "{{nick}} 将行政员权限授予了 {{target}}"
+
+#: {{nick}} takes admin from {{target}}
+msgid "modes_take_admin"
+msgstr "{{nick}} 移除了 {{target}} 的行政员权限"
+
+#: {{nick}} gives owner to {{target}}
+msgid "modes_give_owner"
+msgstr "{{nick}} 将所有者权限授予了 {{target}}"
+
+#: {{nick}} takes owner from {{target}}
+msgid "modes_take_owner"
+msgstr "{{nick}} 移除了 {{target}} 的所有者权限"
+
+#: {{nick}} has banned {{target}}
+msgid "modes_gives_ban"
+msgstr "{{nick}} 封禁了 {{target}}"
+
+#: {{nick}} has unbanned {{target}}
+msgid "modes_takes_ban"
+msgstr "{{nick}} 解封了 {{target}}"
+
+#: {{nick}} sets {{mode}} on {{target}}
+msgid "modes_other"
+msgstr "{{nick}} 将 {{mode}} 设置在 {{target}} 上"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -591,37 +647,37 @@ msgstr ""
 
 #: Your IRC client
 msgid "personal_client"
-msgstr ""
+msgstr "您的 IRC 客户端"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr ""
+msgstr "添加您的网络。加入您的频道。"
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr ""
+msgstr "您回来时他们仍然在这等您。"
 
 #: Add a Network
 msgid "personal_add"
-msgstr ""
+msgstr "添加网络"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr ""
+msgstr "已保存的网络"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr ""
+msgstr "Kiwi IRC (全新版本) - Rizon 预览版"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr ""
+msgstr "直接网页套接字。无需 Kiwi 服务器或 webirc 的介入。"
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr ""
+msgstr "（感谢 Adam @Rizon 开发网页套接字服务器的支持！）"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr ""
+msgstr "试试开发者版本的 Kiwi IRC！"
 
