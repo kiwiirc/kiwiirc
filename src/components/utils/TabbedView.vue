@@ -83,7 +83,7 @@ export default Vue.component('tabbed-view', {
             }
         },
     },
-    mounted: function created() {
+    mounted() {
         this.setActiveCheck();
     },
     watch: {
@@ -101,16 +101,35 @@ export default Vue.component('tabbed-view', {
     height: 100%;
 }
 
+.u-tabbed-view-tabs {
+    padding-top: 15px;
+}
+
 .u-tabbed-view-tab {
-    padding: 1em 2em;
     display: inline-block;
     cursor: pointer;
     border-width: 0;
     border-style: solid;
+    background: #fff;
+    font-weight: 600;
+    opacity: 1;
+    z-index: 1;
+    margin-bottom: -3px;
+    position: relative;
+    width: auto;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+    transition: border 0.3s;
 }
 
 .u-tabbed-view-tab:hover {
     border-bottom-width: 3px;
+}
+
+.u-tabbed-view-tab:last-of-type {
+    z-index: 1;
+    border-radius: 0 4px 0 0;
 }
 
 .u-tabbed-view-tab--active {
@@ -118,14 +137,18 @@ export default Vue.component('tabbed-view', {
 }
 
 .u-tabbed-content {
-    padding-top: 10px;
     overflow: auto;
     height: 100%;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 769px) {
+    .u-tabbed-view-tabs {
+        padding-top: 0;
+    }
+
     .u-tabbed-view-tab {
         padding: 10px 20px;
+        width: auto;
     }
 }
 </style>

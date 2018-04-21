@@ -1,9 +1,9 @@
 <template>
     <div class="kiwi-nicklist">
-        <div class="kiwi-nicklist-info">
-            <input :placeholder="$t('person', {count: sortedUsers.length})" v-model="user_filter" ref="user_filter">
-            <i class="fa fa-search" @click="$refs.user_filter.focus()"></i>
+        <div class="kiwi-nicklist-usercount">
+            <span>{{$t('person', {count: sortedUsers.length})}}</span>
         </div>
+
         <ul class="kiwi-nicklist-users">
             <li
                 v-for="user in sortedUsers"
@@ -13,14 +13,23 @@
                     userMode(user) ? 'kiwi-nicklist-user--mode-' + userMode(user) : '',
                     user.away ? 'kiwi-nicklist-user--away' : ''
                 ]"
+                @click="openUserbox(user, $event)"
             >
-                <span class="kiwi-nicklist-user-prefix">{{userModePrefix(user)}}</span><span
-                    class="kiwi-nicklist-user-nick"
-                    @click="openUserbox(user, $event)"
-                    v-bind:style="nickStyle(user.nick)"
-                >{{user.nick}}</span>
+                <span class="kiwi-nicklist-user-prefix">{{userModePrefix(user)}}</span>
+                <span class="kiwi-nicklist-user-nick"
+                        v-bind:style="nickStyle(user.nick)"
+                        >{{user.nick}}
+                </span>
+                <span class="kiwi-nicklist-messageuser" @click="openQuery(user)">
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                </span>
             </li>
         </ul>
+
+        <div class="kiwi-nicklist-info">
+            <input placeholder="Filter users in channel" v-model="user_filter" ref="user_filter">
+            <i class="fa fa-search" @click="$refs.user_filter.focus()"></i>
+        </div>
     </div>
 </template>
 
@@ -168,48 +177,139 @@ export default {
 </script>
 
 
-<style>
+<style lang="less">
+
+/* Adjust the sidebars width when this nicklist is in view */
+.kiwi-sidebar.kiwi-sidebar-section-nicklist {
+    max-width: 250px;
+    width: 250px;
+    border-left: none;
+}
+
+@media screen and (max-width: 759px) {
+    .kiwi-sidebar.kiwi-sidebar-section-nicklist {
+        width: 100%;
+        max-width: none;
+    }
+}
+
 .kiwi-nicklist {
     overflow: hidden;
     box-sizing: border-box;
-    overflow-y: auto;
+    min-height: 100px;
+    margin: auto;
+    width: 100%;
+    //Padding bottom is needed, otherwise the scrollbar will show on the right side.
+    padding-bottom: 1px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.kiwi-nicklist-usercount {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5em 10px;
+    cursor: default;
+    height: 38px;
+    box-sizing: border-box;
+
+    span {
+        font-weight: 600;
+        width: 100%;
+        text-align: center;
+    }
 }
 
 .kiwi-nicklist-info {
+    float: right;
+    width: 100%;
+    margin: auto;
+    height: 43px;
+    box-sizing: border-box;
+    position: relative;
     font-size: 0.9em;
     padding-bottom: 0;
     text-align: center;
     border-width: 0 0 1px 0;
     border-style: solid;
     display: flex;
+    flex-direction: column;
+
+    input {
+        text-align: left;
+        float: left;
+        width: 100%;
+        border: none;
+        padding: 0 1em;
+        height: 43px;
+        line-height: 43px;
+        font-weight: normal;
+        flex: 1;
+        background: 0 0;
+        outline: 0;
+    }
+
+    .fa.fa-search {
+        position: absolute;
+        top: 50%;
+        margin-top: -0.5em;
+        color: #000;
+        opacity: 0.5;
+        line-height: normal;
+        font-size: 1.2em;
+        right: 20px;
+        margin-right: 0;
+    }
 }
 
-.kiwi-nicklist-info input {
-    flex: 1;
-    border: 0;
-    background: 0 0;
-    padding: 10px 0 10px 20px;
+.kiwi-nicklist-users {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
     margin: 0;
-    outline: 0;
-    text-align: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    max-height: 100%;
+    flex: 1 auto;
+    list-style: none;
+    line-height: 1.2em;
+}
+
+.kiwi-nicklist-user {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 1em;
+    margin: 0;
+    position: relative;
+    box-sizing: border-box;
+    transition: background 0.3s;
+}
+
+.kiwi-nicklist-messageuser {
+    position: absolute;
+    content: '\f075';
+    right: 1em;
+    font-family: fontAwesome, sans-serif;
+    top: 50%;
+    margin-top: -1.5em;
+}
+
+.kiwi-nicklist-messageuser:hover {
+    cursor: pointer;
 }
 
 .kiwi-nicklist-info i.fa-search {
     flex: 1;
     margin-right: 25px;
-    color: #cfcfcf;
     cursor: pointer;
     line-height: 50px;
-}
-
-.kiwi-nicklist-users {
-    list-style: none;
-    padding: 0 20px;
-    line-height: 1.2em;
-}
-
-.kiwi-nicklist-user {
-    padding: 3px 0;
 }
 
 .kiwi-nicklist-user-nick {

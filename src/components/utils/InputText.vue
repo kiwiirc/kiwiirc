@@ -6,6 +6,9 @@
             hasFocus || currentValue ? 'input-text--reveal-value' : ''
         ]"
     >
+
+        <span class="input-text-label">{{label}}</span>
+
         <input
             v-if="type==='password'"
             type="password"
@@ -32,8 +35,6 @@
         <div v-if="$slots.default" class="input-text-c">
             <slot></slot>
         </div>
-
-        <span class="input-text-label">{{label}}</span>
 
         <div class="input-text-underline">
             <div class="input-text-underline-active"></div>
@@ -76,7 +77,6 @@ export default Vue.component('input-text', {
 .input-text {
     position: relative;
     padding-top: 1.2em;
-    font-size: 1em;
 }
 
 .input-text input {
@@ -87,7 +87,7 @@ export default Vue.component('input-text', {
     border: none;
     outline: none;
     line-height: 1.6em;
-    font-size: 1em;
+    font-size: 0.9em;
 }
 
 .input-text-label {
@@ -99,7 +99,7 @@ export default Vue.component('input-text', {
 }
 
 .input-text--reveal-value .input-text-label {
-    top: 0;
+    top: -7px;
     font-size: 0.8em;
 }
 

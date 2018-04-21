@@ -199,6 +199,10 @@ export default {
     margin-bottom: 1.5em;
 }
 
+.kiwi-welcome-znc input[type="password"] {
+    height: 20px;
+}
+
 .kiwi-welcome-znc-have-password input:checked {
     margin-bottom: 0;
 }
@@ -206,6 +210,7 @@ export default {
 .kiwi-welcome-znc-start {
     font-size: 1.1em;
     cursor: pointer;
+    width: 100%;
 }
 
 .kiwi-welcome-znc-start[disabled] {

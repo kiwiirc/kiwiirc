@@ -14,7 +14,7 @@
             <component v-bind:is="startupComponent" v-on:start="startUp"></component>
         </template>
         <template v-else>
-            <state-browser :networks="networks"></state-browser>
+            <state-browser :networks="networks" :uiState="uiState"></state-browser>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"></div>
 
@@ -24,6 +24,7 @@
                         :buffer="buffer"
                         :users="users"
                         :isHalfSize="mediaviewerOpen"
+                        :uiState="uiState"
                     ></container>
                     <media-viewer
                         v-if="mediaviewerOpen"
@@ -47,6 +48,7 @@
 import 'font-awesome-webpack';
 import '@/res/globalStyle.css';
 import Tinycon from 'tinycon';
+import Vue from 'vue';
 
 import startupWelcome from '@/components/startups/Welcome';
 import startupZncLogin from '@/components/startups/ZncLogin';
@@ -69,6 +71,37 @@ let log = Logger.namespace('App.vue');
 /* eslint-disable no-new */
 new InputHandler(state);
 
+// ContainerUiState gets passed around to child components so they all know
+// what state the UI is in. Ie. sidebar open or closed, what section of the
+// sidebar is open, etc.
+let ContainerUiState = Vue.extend({
+    data() {
+        return {
+            sidebarOpen: false,
+            // sidebarSection may be either '', 'user', 'settings', 'nicklist'
+            sidebarSection: '',
+        };
+    },
+    methods: {
+        close() {
+            this.sidebarOpen = false;
+            this.sidebarSection = '';
+        },
+        showUser() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'user';
+        },
+        showNicklist() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'nicklist';
+        },
+        showBufferSettings() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'settings';
+        },
+    },
+});
+
 export default {
     created: function created() {
         this.listen(state, 'active.component', (component, props) => {
@@ -77,10 +110,6 @@ export default {
                 this.activeComponentProps = props;
                 this.activeComponent = component;
             }
-        });
-        this.listen(state, 'network.settings', (network) => {
-            this.activeComponent = null;
-            state.setActiveBuffer(network.id, network.serverBuffer().name);
         });
         this.listen(state, 'statebrowser.toggle', () => {
             this.stateBrowserDrawOpen = !this.stateBrowserDrawOpen;
@@ -199,6 +228,7 @@ export default {
             mediaviewerUrl: '',
             mediaviewerIframe: false,
             themeUrl: '',
+            uiState: new ContainerUiState(),
         };
     },
     computed: {
@@ -267,7 +297,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="less">
 html {
     height: 100%;
     margin: 0;
@@ -287,9 +317,6 @@ body {
     -webkit-font-smoothing: antialiased;
     height: 100%;
     overflow: hidden;
-
-    --kiwi-nick-brightness: 50;
-    --kiwi-supports-monospace: 1;
 }
 
 .kiwi-wrap--monospace {
@@ -297,43 +324,23 @@ body {
     font-size: 80%;
 }
 
-.kiwi-statebrowser {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    bottom: 0;
-    transition: left 0.5s;
-    z-index: 1;
-}
-
-/* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 769px) {
-    .kiwi-statebrowser {
-        left: -200px;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
-        left: 0;
-    }
-}
-
 .kiwi-workspace {
     position: relative;
-    margin-left: 200px;
+    margin-left: 220px;
     left: 0;
     display: block;
     height: 100%;
-    transition: left 0.5s, margin-left 0.5s;
+    transition: left 0.2s, margin-left 0.2s;
 }
 
 .kiwi-workspace::before {
     position: absolute;
     content: '';
-    height: 4px;
     right: 0;
     left: 0;
     top: 0;
+    height: 7px;
+    z-index: 0;
 }
 
 /* When the statebrowser opens as a draw, darken the workspace */
@@ -342,7 +349,6 @@ body {
     top: 0;
     right: 0;
     content: '';
-    background-color: rgba(0, 0, 0, 0.4);
     overflow: hidden;
     opacity: 0;
     transition: opacity 0.5s;
@@ -358,24 +364,14 @@ body {
     z-index: -1;
 }
 
-/* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 769px) {
-    .kiwi-workspace {
-        left: 0;
-        margin-left: 0;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
-        left: 200px;
-        margin-left: 0;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-        z-index: 10;
-    }
+.kiwi-statebrowser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    bottom: 0;
+    transition: left 0.2s;
+    z-index: 1;
 }
 
 .kiwi-container {
@@ -402,5 +398,33 @@ body {
     height: 40px;
     width: 100%;
     z-index: 2;
+}
+
+/* Small screen will cause the statebrowser to act as a drawer */
+@media screen and (max-width: 769px) {
+    .kiwi-workspace {
+        left: 0;
+        margin-left: 0;
+    }
+
+    .kiwi-statebrowser {
+        left: -200px;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
+        left: 0;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
+        left: 75%;
+        width: 80%;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        z-index: 10;
+    }
 }
 </style>
