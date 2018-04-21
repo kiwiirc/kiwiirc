@@ -267,7 +267,8 @@
     background: #fff;
 }
 
-.kiwi-header-topic {
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-topic,
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
     border-top: 2px solid #42b992;
     border-bottom: 1px solid #42b992;
     color: #5f5f5f;
@@ -1103,9 +1104,10 @@
     border-left-color: #939393;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--hover {
+.kiwi-messagelist-message.kiwi-messagelist-message--hover,
+.kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover {
     position: relative;
-    border-color: #42b992;
+    border-color: #c9c9c9;
     opacity: 1;
 }
 

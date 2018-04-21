@@ -108,7 +108,7 @@ export default {
     width: 110px;
     display: inline-block;
     left: 0;
-    top: 0;
+    top: -1px;
     position: absolute;
 }
 
@@ -185,6 +185,11 @@ export default {
     .kiwi-messagelist-nick {
         display: none;
     }
+}
+
+// Traffic messages have an opacity lower than 1, so we do a blanket statment to make sure all messages are opacity: 1, rather than just specifying one.
+.kiwi-messagelist-message--compact.kiwi-messagelist-message--unread {
+    opacity: 1;
 }
 
 @media screen and (max-width: 700px) {
