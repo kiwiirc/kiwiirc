@@ -424,8 +424,6 @@ export default {
     text-align: left;
     line-height: 1.5em;
     font-size: 1.05em;
-    float: left;
-    width: 100%;
     margin: 0;
     padding: 0;
 }

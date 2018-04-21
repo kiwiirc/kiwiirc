@@ -127,7 +127,6 @@ export default {
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-body {
-    float: none;
     display: block;
     white-space: pre-wrap;
     word-wrap: break-word;
