@@ -232,6 +232,10 @@ function initLocales() {
             // allow credentials on cross domain requests
             withCredentials: false,
         },
+        interpolation: {
+            // We let vuejs handle HTML output escaping
+            escapeValue: false,
+        },
     });
 
     // Build in the english translation so it can be used as a fallback
