@@ -714,6 +714,7 @@ function clientMiddleware(state, networkid) {
                     }
                 });
 
+                // Mode -> locale ID mappings
                 let modeLocaleIds = {
                     '+o': 'modes_give_ops',
                     '-o': 'modes_take_ops',
@@ -729,13 +730,34 @@ function clientMiddleware(state, networkid) {
                     '-b': 'modes_takes_ban',
                 };
 
+                // Some modes have specific data for its locale data while most
+                // use a default. The returned objects are passed to the translation
+                // functions to build the translation
+                let modeLocaleDataBuilders = {
+                    default(targets, mode) {
+                        return {
+                            mode: mode + (targets[0].param ? ' ' + targets[0].param : ''),
+                            target: targets.map(t => t.target).join(', '),
+                            nick: event.nick,
+                        };
+                    },
+                    b(targets, mode) {
+                        return {
+                            target: targets[0].param ? ' ' + targets[0].param : '',
+                            nick: event.nick,
+                        };
+                    },
+                };
+
                 // Show one line per mode, listing each effecting user
                 _.each(modeStrs, (targets, mode) => {
-                    let text = TextFormatting.t(modeLocaleIds[mode] || 'modes_other', {
-                        mode: mode + (targets[0].param ? ' ' + targets[0].param : ''),
-                        target: targets.map(t => t.target).join(', '),
-                        nick: event.nick,
-                    });
+                    // Find a locale data builder for this mode
+                    let builders = modeLocaleDataBuilders;
+                    let localeDataFn = builders[mode[1]] || builders.default;
+                    let localeData = localeDataFn(targets, mode);
+
+                    // Translate using the built locale data
+                    let text = TextFormatting.t(modeLocaleIds[mode] || 'modes_other', localeData);
 
                     let messageBody = TextFormatting.formatText('mode', {
                         nick: event.nick,
