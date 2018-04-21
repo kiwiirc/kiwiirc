@@ -201,10 +201,6 @@ export default {
     }
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--highlight {
-    background: none;
-}
-
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection-connected,
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection-disconnected {
     padding: 0;

@@ -460,6 +460,10 @@
     color: #dedede;
 }
 
+.kiwi-messagelist-message--highlight{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 /*When hovering over a users messages */
 .kiwi-messagelist-message--hover{
     background-color: rgba(255, 255, 255, 0.1);
@@ -1214,6 +1218,7 @@
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message--hover,
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight,
 .kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover {
     position: relative;
     opacity: 1;
