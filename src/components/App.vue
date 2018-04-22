@@ -139,9 +139,9 @@ export default {
         });
 
         let themes = ThemeManager.instance();
-        this.themeUrl = themes.themeUrl(themes.currentTheme());
+        this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
         this.listen(state, 'theme.change', () => {
-            this.themeUrl = themes.themeUrl(themes.currentTheme());
+            this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
         });
 
         document.addEventListener('keydown', event => this.emitDocumentKeyDown(event), false);
@@ -294,7 +294,6 @@ export default {
         },
     },
 };
-
 </script>
 
 <style lang="less">
