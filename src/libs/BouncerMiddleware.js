@@ -194,19 +194,17 @@ function parseTags(tagString) {
 function createTagString(tags) {
     let tagParts = [];
 
-    for (let tag in tags) {
-        if (tags.hasOwnProperty(tag)) {
-            let val = tags[tag];
-            if (typeof val !== 'undefined') {
-                val = val.toString()
-                    .replace(' ', '\\s')
-                    .replace(';', '\\:');
-                tagParts.push(tag + '=' + val);
-            } else {
-                tagParts.push(tag);
-            }
+    Object.keys(tags).forEach((tag) => {
+        let val = tags[tag];
+        if (typeof val !== 'undefined') {
+            val = val.toString()
+                .replace(' ', '\\s')
+                .replace(';', '\\:');
+            tagParts.push(tag + '=' + val);
+        } else {
+            tagParts.push(tag);
         }
-    }
+    });
 
     return tagParts.join(';');
 }

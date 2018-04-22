@@ -190,7 +190,7 @@ export default {
             // [ircs?://]irc.network.net:[+]6667/channel?nick=mynick;
             // Parse connection string such as this ^ into an object. Multiple connections
             // may be given, separated by ;
-            /* eslint max-len: off */
+            // eslint-disable-next-line
             let reg = /(?:(ircs?):\/\/)?([a-z.0-9]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
             let connections = [];
             str.split(';').forEach(connectionString => {

@@ -155,7 +155,7 @@ function clientMiddleware(state, networkid) {
             });
         });
 
-        client.on('socket connected', (err) => {
+        client.on('socket connected', () => {
             if (network.captchaResponse) {
                 client.raw('CAPTCHA', network.captchaResponse);
             }

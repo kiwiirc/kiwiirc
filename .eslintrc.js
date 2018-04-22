@@ -37,6 +37,8 @@ module.exports = {
         'no-param-reassign': ['error', { 'props': false }],
         'no-plusplus': 0,
         'no-prototype-builtins': 0,
+        'prefer-promise-reject-errors': 0,
+        'no-control-regex': 0,
         'object-shorthand': 0,
         'operator-linebreak': 0,
         'prefer-const': 0,

@@ -819,10 +819,10 @@ const state = new Vue({
 
             // Remove this buffer from any users
             /* eslint-disable guard-for-in */
-            for (let nick in buffer.users) {
+            Object.keys(buffer.users).forEach((nick) => {
                 let user = buffer.users[nick];
                 delete user.buffers[buffer.id];
-            }
+            });
         },
 
         addMessage(buffer, message) {
@@ -1107,11 +1107,11 @@ const state = new Vue({
             state.$set(network.users, normalisedNew, network.users[normalisedOld]);
             state.$delete(network.users, normalisedOld);
 
-            for (let bufferId in user.buffers) {
+            Object.keys(user.buffers).forEach((bufferId) => {
                 let buffer = user.buffers[bufferId].buffer;
                 state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
                 state.$delete(buffer.users, normalisedOld);
-            }
+            });
         },
 
         getStartups() {
@@ -1283,7 +1283,7 @@ function initialiseBufferState(buffer) {
 
             let modes = userBufferInfo.modes;
             let opModes = ['Y', 'y', 'q', 'a', 'o', 'h'];
-            let hasOp = _.find((modes, mode) => opModes.indexOf(mode.toLowerCase()) > -1);
+            let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
 
             return !!hasOp;
         },
