@@ -90,7 +90,7 @@ export default {
             show_type_switcher: true,
             show_password_box: false,
             is_connecting: false,
-            connecting_net: null,
+            network: null,
         };
     },
     methods: {
@@ -156,7 +156,7 @@ export default {
                 }
 
                 this.is_connecting = true;
-                this.connecting_net = net;
+                this.network = net;
                 net.ircClient.connect();
 
                 let onRegistered = () => {
@@ -180,8 +180,8 @@ export default {
             return _.trim(tmp);
         },
         infoClick: function infoClick() {
-            if (this.connecting_net) {
-                let net = this.connecting_net;
+            if (this.network) {
+                let net = this.network;
                 state.setActiveBuffer(net.id, net.serverBuffer().name);
             }
             this.$emit('start');
