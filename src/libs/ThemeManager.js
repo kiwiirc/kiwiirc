@@ -28,7 +28,7 @@ export default class ThemeManager {
         let currentThemeName = state.setting('theme');
         currentThemeName = currentThemeName.toLowerCase();
 
-        let theme = _.find(state.settings.themes, t => {
+        let theme = _.find(state.settings.themes, (t) => {
             let isMatch = t.name.toLowerCase() === currentThemeName;
             return isMatch;
         });
@@ -46,7 +46,7 @@ export default class ThemeManager {
 
         if (typeof theme === 'string') {
             // Make sure this theme exists
-            theTheme = _.find(this.availableThemes(), t => {
+            theTheme = _.find(this.availableThemes(), (t) => {
                 let isMatch = t.name.toLowerCase() === theme.toLowerCase();
                 return isMatch;
             });
@@ -81,7 +81,7 @@ export default class ThemeManager {
         this.state.$emit('theme.change');
     }
 
-    themeUrl(theme) {
+    static themeUrl(theme) {
         let parts = theme.url.split('?');
         let url = parts[0];
         let qs = parts[1] || '';

@@ -43,7 +43,6 @@ export function createChannelConstructor(_addr, sessionId, _socketChannel) {
     );
 }
 
-
 /**
  * Creates a new socket connection to a kiwi server.
  * Channels will be created on this connection to send data back and forth.
@@ -117,7 +116,6 @@ function createNewConnection(wsAddr, sessionId) {
     return connection;
 }
 
-
 /**
  * Create a channel on a server connection.
  * The ConnectionChannel implements an IrcFramework transport
@@ -127,10 +125,8 @@ function createChannelOnConnection(connection, channelId) {
     return function ConnectionChannelWrapper(options) {
         if (!createdChannels[channelId]) {
             createdChannels[channelId] = new ConnectionChannel(options);
-        } else {
-            if (connection.connected) {
-                createdChannels[channelId].initChannel();
-            }
+        } else if (connection.connected) {
+            createdChannels[channelId].initChannel();
         }
 
         return createdChannels[channelId];
@@ -156,7 +152,7 @@ function createChannelOnConnection(connection, channelId) {
             channel.isOpen = true;
             // channel.emit('open');
             if (sendControlBuffer.length) {
-                sendControlBuffer.forEach(line => {
+                sendControlBuffer.forEach((line) => {
                     channel.sendControl(line);
                 });
                 sendControlBuffer = [];

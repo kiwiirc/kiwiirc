@@ -1,10 +1,10 @@
+import * as Misc from '@/helpers/Misc';
 import Vue from 'vue';
 import _ from 'lodash';
 import strftime from 'strftime';
 import * as IrcClient from './IrcClient';
 import Message from './Message';
 import batchedAdd from './batchedAdd';
-import * as Misc from '@/helpers/Misc';
 
 const stateObj = {
     // May be set by a StatePersistence instance
@@ -419,7 +419,7 @@ const state = new Vue({
             let toExport = {};
 
             if (includeBuffers) {
-                toExport.networks = state.networks.map(network => {
+                toExport.networks = state.networks.map((network) => {
                     let networkObj = {
                         id: network.id,
                         name: network.name,
@@ -441,7 +441,7 @@ const state = new Vue({
                         buffers: [],
                     };
 
-                    networkObj.buffers = network.buffers.map(buffer => {
+                    networkObj.buffers = network.buffers.map((buffer) => {
                         let bufferObj = {
                             name: buffer.name,
                             key: buffer.key,
@@ -466,7 +466,7 @@ const state = new Vue({
             let importObj = JSON.parse(stateStr);
             if (importObj && importObj.networks) {
                 this.resetState();
-                importObj.networks.forEach(importNetwork => {
+                importObj.networks.forEach((importNetwork) => {
                     let network = createEmptyNetworkObject();
                     network.id = importNetwork.id;
                     network.name = importNetwork.name;
@@ -481,7 +481,7 @@ const state = new Vue({
                     this.networks.push(network);
                     initialiseNetworkState(network);
 
-                    importNetwork.buffers.forEach(importBuffer => {
+                    importNetwork.buffers.forEach((importBuffer) => {
                         let buffer = createEmptyBufferObject();
                         buffer.name = importBuffer.name;
                         buffer.key = importBuffer.key;
@@ -570,7 +570,7 @@ const state = new Vue({
         },
 
         getNetworkFromAddress(netAddr) {
-            return _.find(this.networks, net => {
+            return _.find(this.networks, (net) => {
                 let isMatch = netAddr.toLowerCase() === net.connection.server.toLowerCase();
                 return isMatch;
             });
@@ -857,7 +857,7 @@ const state = new Vue({
             // Check for extra custom highlight words
             let extraHighlights = (state.setting('highlights') || '').toLowerCase().split(' ');
             if (!isHighlight && extraHighlights.length > 0) {
-                extraHighlights.forEach(word => {
+                extraHighlights.forEach((word) => {
                     if (!word) {
                         return;
                     }
@@ -1010,7 +1010,7 @@ const state = new Vue({
             }
 
             let buffers = state.getBuffersWithUser(networkid, user.nick);
-            buffers.forEach(buffer => {
+            buffers.forEach((buffer) => {
                 state.removeUserFromBuffer(buffer, user.nick);
             });
 
@@ -1021,8 +1021,8 @@ const state = new Vue({
             let network = this.getNetwork(buffer.networkid);
             let bufUsers = _.clone(buffer.users);
 
-            state.usersTransaction(network.id, users => {
-                newUsers.forEach(newUser => {
+            state.usersTransaction(network.id, (users) => {
+                newUsers.forEach((newUser) => {
                     let user = newUser.user;
                     let modes = newUser.modes;
                     let userObj = state.getUser(network.id, user.nick, users);
@@ -1080,7 +1080,7 @@ const state = new Vue({
 
             let normalisedNick = nick.toLowerCase();
             let buffers = [];
-            network.buffers.forEach(buffer => {
+            network.buffers.forEach((buffer) => {
                 if (buffer.users[normalisedNick]) {
                     buffers.push(buffer);
                 }
@@ -1121,7 +1121,6 @@ const state = new Vue({
 });
 
 export default state;
-
 
 function createEmptyNetworkObject() {
     return {
@@ -1228,7 +1227,6 @@ function initialiseNetworkState(network) {
     network.state = 'disconnected';
 }
 
-
 function initialiseBufferState(buffer) {
     Object.defineProperty(buffer, 'getNetwork', {
         value: function getNetwork() { return state.getNetwork(buffer.networkid); },
@@ -1285,7 +1283,7 @@ function initialiseBufferState(buffer) {
 
             let modes = userBufferInfo.modes;
             let opModes = ['Y', 'y', 'q', 'a', 'o', 'h'];
-            let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
+            let hasOp = _.find((modes, mode) => opModes.indexOf(mode.toLowerCase()) > -1);
 
             return !!hasOp;
         },
@@ -1429,7 +1427,6 @@ function initialiseBufferState(buffer) {
         }()),
     });
 
-
     /**
      * Batch up floods of addUsers for a huge performance gain.
      * Generally happens whenr econnecting to a BNC
@@ -1439,7 +1436,7 @@ function initialiseBufferState(buffer) {
     }
     function addMultipleUsers(users) {
         let o = _.clone(buffer.users);
-        users.forEach(user => {
+        users.forEach((user) => {
             o[user.nick.toLowerCase()] = user;
         });
         buffer.users = o;

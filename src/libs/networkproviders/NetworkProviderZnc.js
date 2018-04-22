@@ -12,8 +12,8 @@ export default class NetworkProviderZnc {
 
     enumNetworks(network) {
         return this.getCommandOutput('listnetworks', network)
-            .then(output => {
-                this.networks = (output.data || []).map(zncNet => {
+            .then((output) => {
+                this.networks = (output.data || []).map((zncNet) => {
                     // Use the same password as this current ZNC connection but replace
                     // the network name
                     let password = network.connection.password;
@@ -68,7 +68,7 @@ export default class NetworkProviderZnc {
     getCommandOutput(command, network) {
         return new Promise((resolve, reject) => {
             let capture = this.lineCapture();
-            capture.on('line', line => {
+            capture.on('line', (line) => {
                 // ZNC tables start with + on the first line
                 if (!this.currentTable && line[0] === '+') {
                     this.currentTable = tableParser(line, onTableResult);
@@ -189,7 +189,7 @@ function parseTableContents(data, headers) {
         ret.type = 'listnetworks';
         ret.data = [];
 
-        data.forEach(network => {
+        data.forEach((network) => {
             ret.data.push({
                 name: network.network,
                 connected: network.onirc.toLowerCase() === 'yes',
@@ -202,14 +202,15 @@ function parseTableContents(data, headers) {
     return ret;
 }
 
-
 function isDataRow(line) {
     return line.substr(0, 2) === '| ';
 }
+
 function splitTableRow(line) {
     let parts = line.split('|').map(s => s.trim());
     return parts.slice(1, parts.length - 1);
 }
+
 function detectTableTypeFromHeaders(headers) {
     function header(idx) {
         return headers[idx] ?

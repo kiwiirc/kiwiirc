@@ -53,7 +53,6 @@ export function mentionsNick(input, nick) {
     return potentialNick.toLowerCase() === nick.toLowerCase();
 }
 
-
 // Get a users prefix symbol on a buffer from its modes
 export function userModePrefix(user, buffer) {
     // The user may not be on the buffer
@@ -75,7 +74,6 @@ export function userModePrefix(user, buffer) {
         prefix.symbol :
         '';
 }
-
 
 // Get a users mode on a buffer
 export function userMode(user, buffer) {
@@ -99,7 +97,6 @@ export function userMode(user, buffer) {
         '';
 }
 
-
 // Get a query string value from the current URL
 export function queryStringVal(_name, _url) {
     let url = _url || window.location.href;
@@ -116,7 +113,6 @@ export function queryStringVal(_name, _url) {
 
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
-
 
 // Convert a known error code to a human readable message
 export function networkErrorMessage(err) {
