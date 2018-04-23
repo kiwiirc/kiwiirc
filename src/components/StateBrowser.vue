@@ -101,8 +101,8 @@ export default {
     methods: {
         clickAddNetwork: function clickAddNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
-            let network = state.getNetworkFromAddress('')
-            if(typeof network === 'undefined') {
+            let network = state.getNetworkFromAddress('');
+            if (typeof network === 'undefined') {
                 network = state.addNetwork('Network', nick, {});
             }
             network.showServerBuffer('settings');
