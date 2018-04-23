@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-03-01 02:31-0500\n"
+"PO-Revision-Date: 2018-04-23 15:20-0400\n"
 
 #: Start
 msgid "start_button"
@@ -231,7 +231,7 @@ msgstr "mai"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Silenzia suoni"
+msgstr "Disattiva suoni"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
@@ -255,11 +255,11 @@ msgstr "Aggiorna elenco bloccati"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Blocca utente"
+msgstr "Bandisci utente"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Bloccato da"
+msgstr "Bandito da"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
