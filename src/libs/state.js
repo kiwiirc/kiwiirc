@@ -586,7 +586,6 @@ const state = new Vue({
             let networkid = serverInfo.channelId ?
                 parseInt(serverInfo.channelId, 10) :
                 _.reduce(this.networks, networkidReduce, 0) + 1;
-
             let network = createEmptyNetworkObject();
             network.id = networkid;
             network.name = name;
@@ -603,20 +602,25 @@ const state = new Vue({
             network.connection.path = serverInfo.path || '';
             network.connection.encoding = serverInfo.encoding || 'utf8';
             network.connection.bncname = serverInfo.bncname || '';
-
             if (serverInfo.services) {
                 network.services = serverInfo.services;
             }
-
-            this.networks.push(network);
-            initialiseNetworkState(network);
-
-            // Add the server server buffer
-            this.addBuffer(network.id, '*').joined = true;
-
-            let eventObj = { network };
-            state.$emit('network.new', eventObj);
-
+            let emptyNetworksExist = false;
+            this.networks.forEach((e) => {
+                if (e.state === 'disconnected' && e.name === 'Network') {
+                    emptyNetworksExist = true;
+                    state.$emit('server.tab.show', 'settings');
+                    network = e;
+                }
+            });
+            if (!emptyNetworksExist) {
+                this.networks.push(network);
+                initialiseNetworkState(network);
+                // Add the server server buffer
+                this.addBuffer(network.id, '*').joined = false;
+                let eventObj = { network };
+                state.$emit('network.new', eventObj);
+            }
             return network;
         },
 
