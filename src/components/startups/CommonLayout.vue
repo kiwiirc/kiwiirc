@@ -67,7 +67,7 @@ export default {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 50%;
+    width: 25%;
     padding: 1em;
     box-sizing: border-box;
     overflow-y: auto;
@@ -86,6 +86,7 @@ export default {
     right: 0;
     color: #fff;
     display: flex;
+    width: 75%;
     align-items: center;
     justify-content: center;
     min-height: 100%;
@@ -98,6 +99,16 @@ export default {
     font-size: 1.5em;
     padding: 2em;
     line-height: 1.6em;
+}
+
+@media (max-width: 1325px) {
+    .kiwi-startup-common-section {
+        width: 40%;
+    }
+
+    .kiwi-startup-common-section-info {
+        width: 60%;
+    }
 }
 
 @media (min-width: 850px) {

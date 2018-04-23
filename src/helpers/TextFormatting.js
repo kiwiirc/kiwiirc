@@ -1,9 +1,9 @@
+import state from '@/libs/state';
+import ThemeManager from '@/libs/ThemeManager';
 import _ from 'lodash';
 import i18next from 'i18next';
 import * as Colours from './Colours';
 import { md5 } from './Md5';
-import state from '@/libs/state';
-import ThemeManager from '@/libs/ThemeManager';
 
 const urlRegex = new RegExp(
     // Detect either a protocol or 'www.' to start a URL
@@ -25,7 +25,7 @@ export function linkifyUrls(input, _opts) {
     let opts = _opts || {};
     let foundUrls = [];
     let urls = Object.create(null);
-    let result = input.replace(urlRegex, _url => {
+    let result = input.replace(urlRegex, (_url) => {
         let url = _url;
         let nice = '';
         let suffix = '';
@@ -77,7 +77,7 @@ export function linkifyUrls(input, _opts) {
 
     // Replace the random URL keys back with their URL links
     result = _.escape(result);
-    Object.keys(urls).forEach(urlId => {
+    Object.keys(urls).forEach((urlId) => {
         result = result.replace(urlId, urls[urlId]);
     });
 

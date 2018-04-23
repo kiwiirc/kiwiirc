@@ -53,7 +53,6 @@ export function mentionsNick(input, nick) {
     return potentialNick.toLowerCase() === nick.toLowerCase();
 }
 
-
 // Get a users prefix symbol on a buffer from its modes
 export function userModePrefix(user, buffer) {
     // The user may not be on the buffer
@@ -75,7 +74,6 @@ export function userModePrefix(user, buffer) {
         prefix.symbol :
         '';
 }
-
 
 // Get a users mode on a buffer
 export function userMode(user, buffer) {
@@ -99,7 +97,6 @@ export function userMode(user, buffer) {
         '';
 }
 
-
 // Get a query string value from the current URL
 export function queryStringVal(_name, _url) {
     let url = _url || window.location.href;
@@ -117,7 +114,6 @@ export function queryStringVal(_name, _url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-
 // Convert a known error code to a human readable message
 export function networkErrorMessage(err) {
     let errs = {
@@ -130,4 +126,58 @@ export function networkErrorMessage(err) {
     };
 
     return errs[err] || 'Unknown error';
+}
+
+export function parseIrcUri(str) {
+    // [ircs?://]irc.network.net:[+]6667/channel?nick=mynick;
+    // Parse connection string such as this ^ into an object. Multiple connections
+    // may be given, separated by ;
+    let reg = /(?:(ircs?):\/\/)?([a-z.0-9]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
+    let connections = [];
+    str.split(';').forEach((connectionString) => {
+        if (!connectionString) {
+            return;
+        }
+
+        let m = connectionString.match(reg);
+
+        if (!m) {
+            return;
+        }
+
+        let tls = m[1] === 'ircs' || !!m[3];
+        let params = Object.create(null);
+        (m[6] || '').split('&').forEach((p) => {
+            let parts = p.split('=');
+            if (parts.length === 2) {
+                params[parts[0].toLowerCase()] = parts[1];
+            }
+        });
+
+        let channels = (m[5] || params.channel || '');
+        channels = _(channels.split(','))
+            .compact()
+            .map((_channelName) => {
+                let hasPrefix = _channelName[0] === '#' ||
+                    _channelName[0] === '&';
+
+                let channelName = hasPrefix ?
+                    _channelName :
+                    '#' + _channelName;
+
+                return channelName;
+            });
+
+        connections.push({
+            tls: tls,
+            server: m[2],
+            port: parseInt(m[4] || (tls ? 6697 : 6667), 10),
+            channels: channels,
+            nick: params.nick || '',
+            encoding: (params.encoding || 'utf8'),
+            params: params,
+        });
+    });
+
+    return connections;
 }

@@ -11,9 +11,8 @@
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div class="kiwi-header-options" v-if="isJoined && isConnected">
                 <div class="kiwi-header-option kiwi-header-option-topic" @click="showTopic" v-bind:class="{ 'kiwi-header-option--active': viewTopic == true }" v-if="buffer.topic.length > 0">
-                    <i class="fa fa-info" aria-hidden="true"></i>
-                    <a v-if="viewTopic == true">Hide Topic</a>
-                    <a v-if="viewTopic == false">Display Topic</a>
+                    <a v-if="viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">Hide Topic</span></a>
+                    <a v-if="!viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">Display Topic</span></a>
                 </div>
                 <div class="kiwi-header-option kiwi-header-option-nicklist"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
                 <div class="kiwi-header-option kiwi-header-option-settings"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>Channel Settings</span></a></div>
@@ -172,7 +171,6 @@ export default {
         },
     },
 };
-
 </script>
 
 <style lang="less">
@@ -183,7 +181,7 @@ export default {
     line-height: 10px;
     box-sizing: border-box;
     text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .kiwi-header--showall {
@@ -243,12 +241,9 @@ export default {
     background: none;
     display: inline-block;
     font-size: 0.8em;
-    opacity: 0.85;
+    opacity: 0.9;
+    font-weight: 900;
     text-transform: capitalize;
-
-    .fa-info {
-        display: none;
-    }
 
     a {
         float: left;
@@ -322,8 +317,6 @@ export default {
         padding: 0 1em;
         margin: 4px 0;
         border-radius: 4px;
-        background: #42b992;
-        color: #fff;
     }
 }
 
@@ -384,16 +377,10 @@ export default {
             }
         }
 
-        &-topic {
-            a {
-                display: none;
-            }
-        }
-
         .fa-info {
             display: block;
             font-size: 1.5em;
-            padding: 0 10px;
+            padding: 0;
             opacity: 0.8;
             line-height: 45px;
         }
@@ -411,7 +398,17 @@ export default {
     }
 
     .kiwi-header-notjoined {
-        height: 46px;
+        height: 45px;
+        margin: 0;
+    }
+
+    .kiwi-header-notjoined .kiwi-header-join-channel-button {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .kiwi-containerheader-hidetext {
+        display: none;
     }
 }
 

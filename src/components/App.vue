@@ -29,6 +29,7 @@
                     <media-viewer
                         v-if="mediaviewerOpen"
                         :url="mediaviewerUrl"
+                        :isIframe="mediaviewerIframe"
                     ></media-viewer>
                     <control-input :container="networks" :buffer="buffer"></control-input>
                 </template>
@@ -120,7 +121,17 @@ export default {
             this.stateBrowserDrawOpen = false;
         });
         this.listen(state, 'mediaviewer.show', (url) => {
-            this.mediaviewerUrl = url;
+            let opts = {};
+
+            // The passed url may be a string or an options object
+            if (typeof url === 'string') {
+                opts = { url: url };
+            } else {
+                opts = url;
+            }
+
+            this.mediaviewerUrl = opts.url;
+            this.mediaviewerIframe = opts.iframe;
             this.mediaviewerOpen = true;
         });
         this.listen(state, 'mediaviewer.hide', () => {
@@ -128,9 +139,9 @@ export default {
         });
 
         let themes = ThemeManager.instance();
-        this.themeUrl = themes.themeUrl(themes.currentTheme());
+        this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
         this.listen(state, 'theme.change', () => {
-            this.themeUrl = themes.themeUrl(themes.currentTheme());
+            this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
         });
 
         document.addEventListener('keydown', event => this.emitDocumentKeyDown(event), false);
@@ -215,6 +226,7 @@ export default {
             fallbackComponentProps: {},
             mediaviewerOpen: false,
             mediaviewerUrl: '',
+            mediaviewerIframe: false,
             themeUrl: '',
             uiState: new ContainerUiState(),
         };
@@ -282,7 +294,6 @@ export default {
         },
     },
 };
-
 </script>
 
 <style lang="less">
@@ -328,7 +339,7 @@ body {
     left: 0;
     top: 0;
     height: 7px;
-    z-index: 999;
+    z-index: 0;
 }
 
 /* When the statebrowser opens as a draw, darken the workspace */
@@ -362,37 +373,6 @@ body {
     z-index: 1;
 }
 
-/* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 769px) {
-    .kiwi-statebrowser {
-        left: -200px;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
-        left: 0;
-    }
-}
-
-/* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 769px) {
-    .kiwi-workspace {
-        left: 0;
-        margin-left: 0;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
-        left: 75%;
-        width: 80%;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-        z-index: 10;
-    }
-}
-
 .kiwi-container {
     position: absolute;
     top: 0;
@@ -417,5 +397,33 @@ body {
     height: 40px;
     width: 100%;
     z-index: 2;
+}
+
+/* Small screen will cause the statebrowser to act as a drawer */
+@media screen and (max-width: 769px) {
+    .kiwi-workspace {
+        left: 0;
+        margin-left: 0;
+    }
+
+    .kiwi-statebrowser {
+        left: -200px;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
+        left: 0;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
+        left: 75%;
+        width: 80%;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        z-index: 10;
+    }
 }
 </style>

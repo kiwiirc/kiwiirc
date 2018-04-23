@@ -13,10 +13,12 @@
 		"port": 6667,
 		"tls": false,
 		"direct": false,
-		"channel": "#ubuntu",
+		"channel": "#kiwiirc-default",
 		"nick": "kiwi-n?"
 	},
 	"embedly": {
 		"key": ""
-	}
+	},
+	"plugins": [
+	]
 }

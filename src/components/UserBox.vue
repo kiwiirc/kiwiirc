@@ -15,11 +15,11 @@
         </div>
 
         <p class="kiwi-userbox-actions">
-            <a @click="openQuery" class="u-button">
+            <a @click="openQuery" class="kiwi-userbox-action">
                 <i class="fa fa-comment-o" aria-hidden="true"></i>
                 {{$t('send_a_message')}}
             </a>
-            <a v-if="!whoisRequested" class="u-button" @click="updateWhoisData">
+            <a v-if="!whoisRequested" class="kiwi-userbox-action" @click="updateWhoisData">
                 <i class="fa fa-question-circle" aria-hidden="true"></i>
                 {{$t('more_information')}}
             </a>
@@ -261,7 +261,6 @@ export default {
         },
     },
 };
-
 </script>
 
 <style lang="less">
@@ -290,7 +289,7 @@ export default {
     }
 }
 
-.kiwi-userbox-icon {
+.fa-user.kiwi-userbox-icon {
     position: absolute;
     left: 0.5em;
     top: 0.25em;
@@ -306,14 +305,8 @@ export default {
     width: 100%;
     margin: 0;
     display: block;
-    padding: 1em 1em 0 1.4em;
+    padding: 1em 1em 1em 1.4em;
     box-sizing: border-box;
-
-    span {
-        font-weight: 600;
-        width: 100%;
-        margin: 0 0 0.4em 0;
-    }
 }
 
 .kiwi-userbox-basicinfo-title,
@@ -325,18 +318,20 @@ export default {
 }
 
 .kiwi-userbox-basicinfo-title {
-    font-weight: 600;
     font-size: 1em;
-    opacity: 0.8;
     line-height: 1em;
     padding: 0;
     text-transform: capitalize;
     text-align: left;
+    opacity: 0.5;
+    font-weight: 900;
 }
 
 .kiwi-userbox-basicinfo-data {
     margin-bottom: 1em;
     font-weight: normal;
+    font-weight: 100;
+    opacity: 1;
 }
 
 .kiwi-userbox-actions {
@@ -346,13 +341,13 @@ export default {
     margin: 0;
     box-sizing: border-box;
 
-    .u-button {
+    .kiwi-userbox-action {
         display: inline-block;
         border: 1px solid #000;
         padding: 0.5em 1em;
         color: #000;
         cursor: pointer;
-        margin: 0 5px 0 5px;
+        margin: 0 auto 20px auto;
         transition: all 0.3s;
         border-radius: 3px;
 
@@ -378,28 +373,28 @@ export default {
     text-align: center;
     box-sizing: border-box;
     margin: 0 0 1em 0;
-    border-top: 1px solid #9e9e9e;
+    border-top: 1px solid;
     padding: 1em;
+}
 
-    label {
-        width: 100%;
-        font-size: 1.2em;
-        font-weight: 600;
-        display: block;
-        margin-bottom: 0.7em;
+.kiwi-userbox-opactions label {
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.7em;
+}
 
-        select {
-            display: block;
-            clear: both;
-            padding: 10px;
-            border-radius: 0.25em;
-            box-shadow: none;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            width: 100%;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-    }
+.kiwi-userbox-opactions label select {
+    display: block;
+    clear: both;
+    padding: 10px;
+    border-radius: 0.25em;
+    box-shadow: none;
+    border: 1px solid;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .kiwi-userbox-opaction {
@@ -412,36 +407,6 @@ export default {
 
     i {
         margin-right: 0.3em;
-    }
-}
-
-.kiwi-userbox-opaction-kick,
-.kiwi-userbox-opaction-ban,
-.kiwi-userbox-opaction-kickban {
-    color: #fff;
-}
-
-.kiwi-userbox-opaction-kick {
-    background-color: #f6c358;
-
-    &:hover {
-        background-color: #fcce6e;
-    }
-}
-
-.kiwi-userbox-opaction-ban {
-    background-color: #fcb46e;
-
-    &:hover {
-        background-color: #ffca97;
-    }
-}
-
-.kiwi-userbox-opaction-kickban {
-    background-color: #fb846a;
-
-    &:hover {
-        background-color: #ffaf9e;
     }
 }
 
@@ -497,6 +462,7 @@ export default {
 
     .kiwi-userbox .kiwi-userbox-basicinfo {
         padding: 10px 10px;
+        margin-bottom: 20px;
     }
 
     .kiwi-userbox-actions {
@@ -505,10 +471,9 @@ export default {
         box-sizing: border-box;
     }
 
-    .kiwi-userbox .kiwi-userbox-actions .u-button {
+    .kiwi-userbox-actions .kiwi-userbox-action {
         width: 200px;
         clear: both;
-        margin: 0 auto 20px auto;
         display: block;
     }
 }

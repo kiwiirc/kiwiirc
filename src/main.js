@@ -52,6 +52,9 @@ function getQueryVariable(variable) {
 // Add a handy this.listen() fn to Vue instances. Saves on the need to add an event listener
 // and then manually remove them all the time.
 Vue.mixin({
+    beforeDestroy: function beforeDestroy() {
+        (this.listeningEvents || []).forEach(fn => fn());
+    },
     methods: {
         listen: function listen(source, event, fn) {
             this.listeningEvents = this.listeningEvents || [];
@@ -67,9 +70,6 @@ Vue.mixin({
             });
             (source.$once || source.once).call(source, event, fn);
         },
-    },
-    beforeDestroy: function beforeDestroy() {
-        (this.listeningEvents || []).forEach(fn => fn());
     },
 });
 
@@ -99,7 +99,6 @@ Vue.directive('focus', {
 });
 
 loadApp();
-
 
 function loadApp() {
     let configFile = 'static/config.json';
@@ -147,7 +146,6 @@ function loadApp() {
         .catch(showError);
 }
 
-
 function applyConfig(config) {
     applyConfigObj(config, state.settings);
 
@@ -155,11 +153,10 @@ function applyConfig(config) {
     if (state.settings.windowTitle) {
         window.document.title = state.settings.windowTitle;
     }
-    state.$watch('settings.windowTitle', newVal => {
+    state.$watch('settings.windowTitle', (newVal) => {
         window.document.title = newVal;
     });
 }
-
 
 // Recursively merge an object onto another via Vue.$set
 function applyConfigObj(obj, target) {
@@ -179,7 +176,6 @@ function applyConfigObj(obj, target) {
         }
     });
 }
-
 
 function loadPlugins() {
     return new Promise((resolve, reject) => {
@@ -211,7 +207,6 @@ function loadPlugins() {
     });
 }
 
-
 function initLocales() {
     Vue.use(VueI18Next);
 
@@ -231,6 +226,10 @@ function initLocales() {
 
             // allow credentials on cross domain requests
             withCredentials: false,
+        },
+        interpolation: {
+            // We let vuejs handle HTML output escaping
+            escapeValue: false,
         },
     });
 
@@ -273,7 +272,6 @@ function initLocales() {
     }
 }
 
-
 async function initState() {
     let stateKey = state.settings.startupOptions.state_key;
 
@@ -287,7 +285,6 @@ async function initState() {
 
     api.setState(state);
 }
-
 
 function startApp() {
     let themeMgr = ThemeManager.instance(state);
@@ -309,7 +306,6 @@ function startApp() {
 
     api.emit('ready');
 }
-
 
 function showError(err) {
     if (err) {

@@ -14,7 +14,6 @@
                     <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" :label="$t('channel')" v-model="channel" />
 
                     <div v-if="recaptchaSiteId" class="g-recaptcha" :data-sitekey="recaptchaSiteId"></div>
-
                     <button
                         class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
                         type="submit"
@@ -229,7 +228,7 @@ export default {
 }
 
 .kiwi-welcome-simple-form {
-    width: 300px;
+    width: 90%;
     border-radius: 0.5em;
     padding: 1em;
 }

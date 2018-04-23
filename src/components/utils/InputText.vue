@@ -87,6 +87,7 @@ export default Vue.component('input-text', {
     border: none;
     outline: none;
     line-height: 1.6em;
+    font-size: 0.9em;
 }
 
 .input-text-label {
@@ -98,7 +99,7 @@ export default Vue.component('input-text', {
 }
 
 .input-text--reveal-value .input-text-label {
-    top: 0;
+    top: -7px;
     font-size: 0.8em;
 }
 

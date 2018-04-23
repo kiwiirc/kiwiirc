@@ -338,7 +338,6 @@ export default {
     top: 0;
     height: 45px;
     z-index: 10;
-    background-color: #131312;
     right: -300px;
     transition: all 0.15s;
 }
@@ -403,15 +402,21 @@ export default {
     right: 0;
     text-align: center;
     z-index: 0;
-    top: -4px;
+    top: 0;
 }
 
 .kiwi-statebrowser-channel-label {
     display: inline-block;
     padding: 0 10px;
-    border-radius: 0;
     line-height: 30px;
     height: 30px;
+    margin: 0;
+    border-radius: 5px 0 0 5px;
+    font-weight: 600;
+}
+
+.kiwi-statebrowser-channel-label:hover {
+    opacity: 1;
 }
 
 .kiwi-statebrowser-channel-label-transition-enter-active,
@@ -495,7 +500,6 @@ export default {
     opacity: 1;
     transition: all 0.3s;
     margin-bottom: 0;
-    color: #131312;
 }
 
 .kiwi-statebrowser-channelfilter:hover {

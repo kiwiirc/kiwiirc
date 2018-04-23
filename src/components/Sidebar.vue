@@ -258,6 +258,13 @@ export default {
     }
 }
 
+.kiwi-sidebar .u-form textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 80px;
+    resize: vertical;
+}
+
 @keyframes settingstransition {
     from { margin-top: 50px; }
     to { margin-top: 100px; }
@@ -266,6 +273,10 @@ export default {
 @keyframes nicklisttransition {
     from { height: 0; }
     to { height: 100%; }
+}
+
+.kiwi-channelbanlist-empty {
+    margin-top: 10px;
 }
 
 @media screen and (max-width: 769px) {
