@@ -137,6 +137,8 @@ export default {
 // Ensure the connection messages do not have a padding on their body, right side
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     padding-right: 0;
+    float: none;
+    margin: 20px auto;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-body a {
