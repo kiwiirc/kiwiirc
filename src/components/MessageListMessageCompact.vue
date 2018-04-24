@@ -123,6 +123,7 @@ export default {
     display: inline-block;
     float: right;
     font-size: 12px;
+    top: 6px;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-body {
@@ -130,6 +131,12 @@ export default {
     white-space: pre-wrap;
     word-wrap: break-word;
     margin-left: 120px;
+    padding-right: 65px;
+}
+
+// Ensure the connection messages do not have a padding on their body, right side
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+    padding-right: 0;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-body a {
