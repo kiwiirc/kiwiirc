@@ -209,7 +209,7 @@ export default {
     .kiwi-messagelist-message--compact .kiwi-messagelist-body {
         float: left;
         width: 100%;
-        margin-left: 3px;
+        margin-left: 0px;
     }
 
     .kiwi-messagelist-message--compact.kiwi-messagelist-message--unread .kiwi-messagelist-body {
