@@ -200,6 +200,7 @@ export default {
         width: auto;
         float: left;
         position: static;
+        padding-left: 0;
     }
 
     .kiwi-messagelist-message--compact .kiwi-messagelist-time {
@@ -209,7 +210,7 @@ export default {
     .kiwi-messagelist-message--compact .kiwi-messagelist-body {
         float: left;
         width: 100%;
-        margin-left: 0px;
+        margin-left: 0;
     }
 
     .kiwi-messagelist-message--compact.kiwi-messagelist-message--unread .kiwi-messagelist-body {
