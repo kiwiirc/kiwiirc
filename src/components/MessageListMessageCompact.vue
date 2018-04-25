@@ -122,8 +122,8 @@ export default {
 .kiwi-messagelist-message--compact .kiwi-messagelist-time {
     display: inline-block;
     float: right;
-    font-size: 12px;
-    line-height: 22px;
+    font-size: 0.8em;
+    line-height: 2.3em;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-body {
