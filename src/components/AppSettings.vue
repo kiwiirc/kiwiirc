@@ -33,6 +33,10 @@
                                 <span>{{$t('settings_use_monospace')}} </span>
                                 <input type="checkbox" v-model="settingUseMonospace" />
                             </label>
+                            <label>
+                                <span>{{$t('settings_display_colour_picker')}}</span>
+                                <input type="checkbox" v-model="settingShowColourPicker" />
+                            </label>
                         </div>
                     </div>
 
@@ -137,6 +141,7 @@ export default {
         },
         settingShowAutoComplete: bindSetting('showAutocomplete'),
         settingUseMonospace: bindSetting('useMonospace'),
+        settingShowColourPicker: bindSetting('showColourPicker'),
         settingHighlights: bindSetting('highlights'),
         settingBufferColourNicknames: bindSetting('buffers.colour_nicknames_in_messages'),
         settingBufferShowTimestamps: bindSetting('buffers.show_timestamps'),

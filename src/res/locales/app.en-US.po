@@ -153,6 +153,10 @@ msgstr "Theme URL"
 msgid "settings_use_monospace"
 msgstr "Use monospace"
 
+#: Display Colour Picker
+msgid "settings_display_colour_picker"
+msgstr "Display text colour picker"
+
 #: Traditional IRC layout
 msgid "settings_layout_compact"
 msgstr "Traditional IRC layout"
@@ -624,4 +628,3 @@ msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Give the developer version of Kiwi IRC a try!"
-

@@ -33,7 +33,7 @@
                 <!--<button type="submit">Send</button>-->
             </form>
             <div class="kiwi-controlinput-tools" ref="plugins">
-                <a @click.prevent="onToolClickTextStyle" class="kiwi-controlinput-tool">
+                <a @click.prevent="onToolClickTextStyle" class="kiwi-controlinput-tool" v-if="display_colour_picker">
                     <i class="fa fa-adjust" aria-hidden="true"></i>
                 </a>
                 <a @click.prevent="onToolClickEmoji" class="kiwi-controlinput-tool">
@@ -71,6 +71,7 @@ export default {
             value: '',
             history: [],
             history_pos: 0,
+            display_colour_picker: false,
             autocomplete_open: false,
             autocomplete_items: [],
             autocomplete_filter: '',
@@ -132,6 +133,10 @@ export default {
                 };
                 this.active_tool = tool;
             }
+        },
+        //Check the users settings to see if they have turned on the colour picker
+        displayColourPicker: function displayColourPicker() {
+           this.display_colour_picker = state.setting('showColourPicker');
         },
         onAutocompleteCancel: function onAutocompleteCancel() {
             this.autocomplete_open = false;
@@ -383,6 +388,7 @@ export default {
 
             this.$refs.input.focus();
         });
+        this.displayColourPicker();
     },
 };
 </script>
