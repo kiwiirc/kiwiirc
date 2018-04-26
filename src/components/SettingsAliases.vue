@@ -91,6 +91,7 @@ export default {
 .kiwi-settings-aliases-help {
     padding: 1em;
     margin: 1em 0;
+    border: 1px dashed gray;
 }
 
 .kiwi-settings-aliases-help em {

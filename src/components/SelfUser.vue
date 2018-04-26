@@ -46,7 +46,6 @@ export default {
         },
     },
 };
-
 </script>
 
 <style>
@@ -66,8 +65,11 @@ export default {
 }
 
 .kiwi-selfuser-actions {
-    border-top: 1px solid #ddd;
     margin-top: 1em;
     padding-top: 1em;
+}
+
+.kiwi-selfuser-actions .u-input {
+    margin-bottom: 10px;
 }
 </style>

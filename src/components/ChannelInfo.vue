@@ -2,28 +2,28 @@
     <div class="kiwi-channelinfo">
         <form class="u-form kiwi-channelinfo-basicmodes" @submit.prevent="">
             <label class="kiwi-channelinfo-topic">
-                {{$t('channel_topic')}}<br />
+                <span>{{$t('channel_topic')}}</span>
                 <textarea v-model.lazy="topic" rows="2"></textarea>
             </label>
 
             <label>
                 <input type="checkbox" v-model="modeM" />
-                {{$t('channel_moderated')}}
+                <span>{{$t('channel_moderated')}}</span>
             </label>
             <label>
                 <input type="checkbox" v-model="modeI" />
-                {{$t('channel_invite')}}
+                <span>{{$t('channel_invite')}}</span>
             </label>
             <label>
                 <input type="checkbox" v-model="modeT" />
-                {{$t('channel_moderated_topic')}}
+                <span>{{$t('channel_moderated_topic')}}</span>
             </label>
             <label>
                 <input type="checkbox" v-model="modeN" />
-                {{$t('channel_external')}}
+                <span>{{$t('channel_external')}}</span>
             </label>
             <label>
-                {{$t('password')}}<br />
+                <span>{{$t('password')}}</span>
                 <input type="text" class="u-input" v-model.lazy="modeK" />
             </label>
         </form>
@@ -128,17 +128,7 @@ export default {
         }
     },
 };
-
 </script>
 
-<style>
-.kiwi-channelinfo-basicmodes.kiwi-channelinfo-basicmodes label {
-    display: block;
-}
-
-.kiwi-channelinfo-topic textarea {
-    width: 500px;
-    max-width: 80%;
-    resize: none;
-}
+<style lang="less">
 </style>

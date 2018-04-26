@@ -19,7 +19,6 @@ export function hex2rgb(_hex) {
     } : null;
 }
 
-
 /**
  * Converts an RGB color value to a hex string.
  * @param  Object rgb RGB as r, g, and b keys
@@ -30,7 +29,6 @@ export function rgb2hex(rgb) {
         .map(key => ('0' + rgb[key].toString(16)).slice(-2))
         .join('');
 }
-
 
 /**
  * Converts an RGB color value to HSL. Conversion formula adapted from
@@ -74,7 +72,6 @@ export function rgb2hsl(rgb) {
 
     return { h, s, l };
 }
-
 
 /**
  * Converts an HSL color value to RGB. Conversion formula adapted from
@@ -122,7 +119,6 @@ export function hsl2rgb(hsl) {
         b: Math.round(b * 255),
     };
 }
-
 
 export function rgb2rgbString(rgb) {
     return 'rgb(' + [rgb.r, rgb.g, rgb.b].join(',') + ')';

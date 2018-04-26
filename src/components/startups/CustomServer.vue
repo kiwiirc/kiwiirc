@@ -18,7 +18,7 @@
                 <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
                 <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
+                    <input type="checkbox" v-model="show_password_box" /> <span> {{$t('password_have')}} </span>
                 </label>
                 <input-text v-focus v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 
@@ -29,7 +29,7 @@
                 <input-text :label="$t('nick')" v-model="nick" class="kiwi-customserver-nick" />
 
                 <label class="kiwi-customserver-have-password">
-                    <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
+                    <input type="checkbox" v-model="show_password_box" /> <span> {{$t('password_have')}} </span>
                 </label>
                 <input-text v-focus v-if="show_password_box" :label="$t('password')" v-model="password" type="password" />
 
@@ -90,7 +90,7 @@ export default {
             show_type_switcher: true,
             show_password_box: false,
             is_connecting: false,
-            connecting_net: null,
+            network: null,
         };
     },
     methods: {
@@ -156,7 +156,7 @@ export default {
                 }
 
                 this.is_connecting = true;
-                this.connecting_net = net;
+                this.network = net;
                 net.ircClient.connect();
 
                 let onRegistered = () => {
@@ -180,65 +180,11 @@ export default {
             return _.trim(tmp);
         },
         infoClick: function infoClick() {
-            if (this.connecting_net) {
-                let net = this.connecting_net;
+            if (this.network) {
+                let net = this.network;
                 state.setActiveBuffer(net.id, net.serverBuffer().name);
             }
             this.$emit('start');
-        },
-        parseConnectionString: function parseConnectionString(str) {
-            // [ircs?://]irc.network.net:[+]6667/channel?nick=mynick;
-            // Parse connection string such as this ^ into an object. Multiple connections
-            // may be given, separated by ;
-            /* eslint max-len: off */
-            let reg = /(?:(ircs?):\/\/)?([a-z.0-9]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
-            let connections = [];
-            str.split(';').forEach(connectionString => {
-                if (!connectionString) {
-                    return;
-                }
-
-                let m = connectionString.match(reg);
-
-                if (!m) {
-                    return;
-                }
-
-                let tls = m[1] === 'ircs' || !!m[3];
-                let params = Object.create(null);
-                (m[6] || '').split('&').forEach(p => {
-                    let parts = p.split('=');
-                    if (parts.length === 2) {
-                        params[parts[0].toLowerCase()] = parts[1];
-                    }
-                });
-
-                let channels = (m[5] || params.channel || '');
-                channels = _(channels.split(','))
-                    .compact()
-                    .map(_channelName => {
-                        let hasPrefix = _channelName[0] === '#' ||
-                            _channelName[0] === '&';
-
-                        let channelName = hasPrefix ?
-                            _channelName :
-                            '#' + _channelName;
-
-                        return channelName;
-                    });
-
-                connections.push({
-                    tls: tls,
-                    server: m[2],
-                    port: parseInt(m[4] || (tls ? 6697 : 6667), 10),
-                    channels: channels,
-                    nick: params.nick || '',
-                    encoding: (params.encoding || 'utf8'),
-                    params: params,
-                });
-            });
-
-            return connections;
         },
         applyDefaults: function applyDefaults() {
             this.server = state.settings.startupOptions.server;
@@ -276,7 +222,7 @@ export default {
                 fragment = decodeURIComponent(fragment);
             }
 
-            let connections = this.parseConnectionString(fragment);
+            let connections = Misc.parseIrcUri(fragment);
 
             // If more than 1 connection string is given, skip the connection screen
             // and add them all right away.

@@ -67,7 +67,7 @@ Without these [Sponsors](sponsors.md) development would be much slower so many t
 
 ## License
 ~~~
-   Copyright 2017 Kiwi IRC
+   Copyright 2018 Kiwi IRC
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

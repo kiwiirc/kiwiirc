@@ -1,33 +1,36 @@
 <template>
-    <div class="kiwi-sidebar" :class="{'kiwi-sidebar--wide': sidebarIsWide}">
+    <div class="kiwi-sidebar" :class="['kiwi-sidebar-section-' + uiState.sidebarSection]">
         <template v-if="buffer">
             <template v-if="buffer.isChannel()">
 
-                <span v-if="sidebarIsWide" class="kiwi-sidebar-options" @click="sidebarIsWide=false">
-                    {{$t('close')}} <i class="fa fa-caret-right" aria-hidden="true"></i>
-                </span>
-                <span v-else class="kiwi-sidebar-options" @click="settings_open = !settings_open">
-                    <i class="fa fa-cog" aria-hidden="true"></i> {{$t('side_options')}}
+                <span class="kiwi-sidebar-options" @click="uiState.close()">
+                    {{$t('close')}}
+                    <i class="fa fa-times" aria-hidden="true"></i>
                 </span>
 
                 <div
-                    v-if="settings_open"
+                    v-if="uiState.sidebarSection === 'settings'"
                     class="kiwi-sidebar-buffersettings"
                     @click.stop=""
                 >
 
                     <tabbed-view>
                         <tabbed-tab :header="$t('settings')" :focus="true">
+                            <h3>Channel Settings</h3>
+                            <hr>
                             <channel-info v-bind:buffer="buffer"></channel-info>
 
                             <div class="kiwi-sidebar-settings">
                                 <h3>{{$t('side_settings')}}</h3>
-                                <label><input type="checkbox" v-model="settingShowJoinParts"> {{$t('side_joins')}}</label>
-                                <label><input type="checkbox" v-model="settingShowTopics"> {{$t('side_topics')}}</label>
-                                <label><input type="checkbox" v-model="settingShowNickChanges"> {{$t('side_nick_changes')}}</label>
-                                <label><input type="checkbox" v-model="settingShowModeChanges"> {{$t('side_mode_changes')}}</label>
-                                <label><input type="checkbox" v-model="settingExtraFormatting"> {{$t('side_formatting')}}</label>
-                                <label><input type="checkbox" v-model="settingColouredNicklist"> {{$t('side_colours')}}</label>
+                                <hr>
+                                <form class="u-form">
+                                    <label><input type="checkbox" v-model="settingShowJoinParts"> <span>{{$t('side_joins')}}</span></label>
+                                    <label><input type="checkbox" v-model="settingShowTopics"> <span>{{$t('side_topics')}}</span></label>
+                                    <label><input type="checkbox" v-model="settingShowNickChanges"> <span>{{$t('side_nick_changes')}}</span></label>
+                                    <label><input type="checkbox" v-model="settingShowModeChanges"> <span>{{$t('side_mode_changes')}}</span></label>
+                                    <label><input type="checkbox" v-model="settingExtraFormatting"> <span>{{$t('side_formatting')}}</span></label>
+                                    <label><input type="checkbox" v-model="settingColouredNicklist"> <span>{{$t('side_colours')}}</span></label>
+                                </form>
                             </div>
                         </tabbed-tab>
                         <tabbed-tab :header="$t('banned')">
@@ -40,7 +43,7 @@
                 </div>
 
                 <div
-                    v-if="userbox_user"
+                    v-if="uiState.sidebarSection==='user' && userbox_user"
                     class="kiwi-sidebar-userbox"
                     @click.stop=""
                 >
@@ -52,7 +55,7 @@
                 </div>
 
                 <nicklist
-                    v-if="buffer.isChannel()"
+                    v-if="buffer.isChannel() && uiState.sidebarSection === 'nicklist'"
                     :network="network"
                     :buffer="buffer"
                     :users="users"
@@ -91,20 +94,22 @@ export default {
     },
     data: function data() {
         return {
-            settings_open: false,
             userbox_user: null,
         };
     },
-    props: ['network', 'buffer', 'users'],
+    props: ['network', 'buffer', 'users', 'uiState'],
     computed: {
-        sidebarIsWide: {
-            get: function getSidebarIsWide() {
-                return this.settings_open || this.userbox_user;
+        isSettingsOpen: {
+            get() {
+                return this.uiState.sidebarOpen && this.uiState.sidebarSection === 'settings';
             },
-            set: function setSidebarIsWide(newVal) {
-                if (!newVal) {
-                    this.settings_open = false;
-                    this.userbox_user = null;
+            set(newVal) {
+                if (newVal) {
+                    this.uiState.sidebarOpen = true;
+                    this.uiState.sidebarSection = 'settings';
+                } else {
+                    this.uiState.sidebarOpen = false;
+                    this.uiState.sidebarSection = '';
                 }
             },
         },
@@ -176,82 +181,88 @@ export default {
     },
     created: function created() {
         this.listen(state, 'sidebar.hide', () => {
-            this.settings_open = false;
+            this.uiState.sidebarOpen = false;
         });
 
         this.listen(state, 'userbox.show', (user, opts) => {
             this.userbox_user = user;
+            this.uiState.sidebarSection = 'user';
+            this.uiState.sidebarOpen = true;
         });
         this.listen(state, 'userbox.hide', () => {
             this.userbox_user = null;
+            this.uiState.close();
         });
     },
 };
 </script>
 
-<style>
-
+<style lang="less">
 .kiwi-sidebar {
+    background: #fff;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: width 0.3s;
-}
+    width: 380px;
+    top: -4px;
+    border-left: none;
+    right: -380px;
+    max-width: none;
+    z-index: 10;
 
-.kiwi-sidebar--wide {
-    width: 500px;
-    border-left: 3px solid #ddd;
-}
+    /* Users Styling */
 
-@media screen and (max-width: 700px) {
-    .kiwi-sidebar--wide {
-        width: 100%;
-        right: 0;
+    .kiwi-sidebar-section-user {
+        max-width: none;
+        width: auto;
     }
-}
-
-.kiwi-sidebar--wide .kiwi-nicklist {
-    display: none;
 }
 
 .kiwi-sidebar-options {
     display: block;
     cursor: pointer;
-    border-bottom: 1px solid #ddd;
-    padding: 0.75em 1em 0.76em 1em;
-    text-align: center;
-    transition: all 0.2s;
-}
+    padding: 0 10px;
+    color: #fff;
+    font-weight: 600;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    line-height: 50px;
+    text-align: right;
+    transition: background 0.3s;
 
-.kiwi-sidebar-options:hover {
-    color: #42b983;
-}
-
-.kiwi-sidebar--wide .kiwi-sidebar-options {
-    text-align: left;
+    i {
+        margin-left: 10px;
+        font-size: 1.5em;
+        float: right;
+        line-height: 47px;
+    }
 }
 
 .kiwi-sidebar-buffersettings {
     overflow: hidden;
     height: 100%;
+
+    .u-tabbed-content {
+        padding: 1em;
+    }
 }
 
-.kiwi-sidebar-buffersettings .u-tabbed-content {
-    padding: 1em;
+.kiwi-sidebar-settings {
+    margin-bottom: 20px;
+
+    label {
+        display: block;
+    }
 }
 
-.kiwi-sidebar-settings label {
-    display: block;
-}
-
-.kiwi-sidebar .u-tabbed-view-tab {
-    width: 33.3%;
-    box-sizing: border-box;
-    padding: 1em;
-    font-size: 0.8em;
-    text-transform: uppercase;
-    text-align: center;
+.kiwi-sidebar .u-form textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 80px;
+    resize: vertical;
 }
 
 @keyframes settingstransition {
@@ -264,9 +275,53 @@ export default {
     to { height: 100%; }
 }
 
-@media screen and (max-width: 600px) {
-    .u-tabbed-view-tabs .u-tabbed-view-tab {
+.kiwi-channelbanlist-empty {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 769px) {
+    .kiwi-sidebar .u-tabbed-view-tab {
         width: 100%;
+
+        &.u-tabbed-view-tab--active {
+            border-bottom: 3px solid #42b992;
+            margin-bottom: 0;
+        }
+    }
+
+    .kiwi-sidebar .u-form input[type="checkbox"] {
+        margin-right: 4px;
+    }
+
+    .kiwi-sidebar .u-form label span {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .kiwi-container--sidebar-open .kiwi-sidebar {
+        width: 100%;
+        max-width: none;
+    }
+
+    .kiwi-sidebar-buffersettings {
+        padding-bottom: 10px;
+    }
+
+    .kiwi-channelbanlist {
+        float: left;
+        width: 100%;
+
+        .kiwi-channelbanlist-table {
+            margin-top: 30px;
+        }
+    }
+
+    .kiwi-channelbanlist .u-form {
+        line-height: 10px;
+    }
+
+    .kiwi-sidebar-options {
+        line-height: 47px;
     }
 }
 

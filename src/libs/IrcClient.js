@@ -1,9 +1,9 @@
+import * as TextFormatting from '@/helpers/TextFormatting';
 import _ from 'lodash';
 import strftime from 'strftime';
 import Irc from 'irc-framework/browser';
 import bouncerMiddleware from './BouncerMiddleware';
 import * as ServerConnection from './ServerConnection';
-import * as TextFormatting from '@/helpers/TextFormatting';
 
 export function create(state, networkid) {
     let network = state.getNetwork(networkid);
@@ -77,7 +77,7 @@ export function create(state, networkid) {
         originalIrcClientConnect.apply(ircClient, args);
     };
 
-    ircClient.on('raw', event => {
+    ircClient.on('raw', (event) => {
         if (!network.setting('show_raw')) {
             return;
         }
@@ -113,7 +113,7 @@ function clientMiddleware(state, networkid) {
             network.state_error = '';
             network.state = 'connected';
 
-            network.buffers.forEach(buffer => {
+            network.buffers.forEach((buffer) => {
                 if (!buffer) {
                     return;
                 }
@@ -136,7 +136,7 @@ function clientMiddleware(state, networkid) {
             network.state = 'disconnected';
             network.state_error = err || '';
 
-            network.buffers.forEach(buffer => {
+            network.buffers.forEach((buffer) => {
                 if (!buffer) {
                     return;
                 }
@@ -155,20 +155,18 @@ function clientMiddleware(state, networkid) {
             });
         });
 
-        client.on('socket connected', err => {
+        client.on('socket connected', () => {
             if (network.captchaResponse) {
                 client.raw('CAPTCHA', network.captchaResponse);
             }
         });
     };
 
-
     function rawEventsHandler(command, event, rawLine, client, next) {
         state.$emit('irc.raw', command, event, network);
         state.$emit('irc.raw.' + command, command, event, network);
         next();
     }
-
 
     function parsedEventsHandler(command, event, client, next) {
         // Trigger this event through the state object first. If it's been handled
@@ -206,7 +204,7 @@ function clientMiddleware(state, networkid) {
             client.raw('WHO ' + event.nick);
 
             if (network.auto_commands) {
-                network.auto_commands.split('\n').forEach(line => {
+                network.auto_commands.split('\n').forEach((line) => {
                     state.$emit('input.raw', line[0] === '/' ? line : `/${line}`);
                 });
             }
@@ -214,7 +212,7 @@ function clientMiddleware(state, networkid) {
             // Join our channels
             // If under bouncer mode, the bouncer will send the channels were joined to instead.
             if (!network.connection.bncname) {
-                network.buffers.forEach(buffer => {
+                network.buffers.forEach((buffer) => {
                     if (buffer.isChannel() && buffer.enabled) {
                         client.join(buffer.name, buffer.key);
                     }
@@ -238,7 +236,7 @@ function clientMiddleware(state, networkid) {
             // to get any missed messages. (bouncer mode only)
             if (numConnects > 1 && !requestedCh && historySupport && network.connection.bncname) {
                 requestedCh = true;
-                network.buffers.forEach(buffer => {
+                network.buffers.forEach((buffer) => {
                     if (buffer.isChannel() || buffer.isQuery()) {
                         buffer.requestScrollback('forward');
                     }
@@ -453,7 +451,7 @@ function clientMiddleware(state, networkid) {
         if (command === 'quit') {
             let buffers = state.getBuffersWithUser(networkid, event.nick);
 
-            buffers.forEach(buffer => {
+            buffers.forEach((buffer) => {
                 if (!buffer) {
                     return;
                 }
@@ -536,7 +534,7 @@ function clientMiddleware(state, networkid) {
                 'account',
                 'secure',
                 'special',
-            ].forEach(prop => {
+            ].forEach((prop) => {
                 if (typeof event[prop] !== 'undefined') {
                     obj[prop] = event[prop];
                 }
@@ -553,8 +551,8 @@ function clientMiddleware(state, networkid) {
         }
 
         if (command === 'wholist') {
-            state.usersTransaction(networkid, users => {
-                event.users.forEach(user => {
+            state.usersTransaction(networkid, (users) => {
+                event.users.forEach((user) => {
                     let userObj = {
                         nick: user.nick,
                         host: user.hostname || undefined,
@@ -622,7 +620,7 @@ function clientMiddleware(state, networkid) {
             });
 
             let buffers = state.getBuffersWithUser(networkid, event.new_nick);
-            buffers.forEach(buffer => {
+            buffers.forEach((buffer) => {
                 state.addMessage(buffer, {
                     time: event.time || Date.now(),
                     nick: '',
@@ -635,7 +633,7 @@ function clientMiddleware(state, networkid) {
         if (command === 'userlist') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             let users = [];
-            event.users.forEach(user => {
+            event.users.forEach((user) => {
                 users.push({
                     user: {
                         nick: user.nick,
@@ -655,7 +653,7 @@ function clientMiddleware(state, networkid) {
             }
 
             if (event.modes) {
-                event.modes.forEach(mode => {
+                event.modes.forEach((mode) => {
                     let adding = mode.mode[0] === '+';
                     let modeChar = mode.mode.substr(1);
 
@@ -674,7 +672,7 @@ function clientMiddleware(state, networkid) {
             if (buffer) {
                 // Join all the same mode changes together so they can be shown on one
                 // line such as "prawnsalad sets +b on nick1, nick2"
-                event.modes.forEach(mode => {
+                event.modes.forEach((mode) => {
                     modeStrs[mode.mode] = modeStrs[mode.mode] || [];
 
                     // If this mode has a user prefix then we need to update the user object
@@ -714,6 +712,7 @@ function clientMiddleware(state, networkid) {
                     }
                 });
 
+                // Mode -> locale ID mappings
                 let modeLocaleIds = {
                     '+o': 'modes_give_ops',
                     '-o': 'modes_take_ops',
@@ -729,13 +728,34 @@ function clientMiddleware(state, networkid) {
                     '-b': 'modes_takes_ban',
                 };
 
+                // Some modes have specific data for its locale data while most
+                // use a default. The returned objects are passed to the translation
+                // functions to build the translation
+                let modeLocaleDataBuilders = {
+                    default(targets, mode) {
+                        return {
+                            mode: mode + (targets[0].param ? ' ' + targets[0].param : ''),
+                            target: targets.map(t => t.target).join(', '),
+                            nick: event.nick,
+                        };
+                    },
+                    b(targets, mode) {
+                        return {
+                            target: targets[0].param ? ' ' + targets[0].param : '',
+                            nick: event.nick,
+                        };
+                    },
+                };
+
                 // Show one line per mode, listing each effecting user
                 _.each(modeStrs, (targets, mode) => {
-                    let text = TextFormatting.t(modeLocaleIds[mode] || 'modes_other', {
-                        mode: mode + (targets[0].param ? ' ' + targets[0].param : ''),
-                        target: targets.map(t => t.target).join(', '),
-                        nick: event.nick,
-                    });
+                    // Find a locale data builder for this mode
+                    let builders = modeLocaleDataBuilders;
+                    let localeDataFn = builders[mode[1]] || builders.default;
+                    let localeData = localeDataFn(targets, mode);
+
+                    // Translate using the built locale data
+                    let text = TextFormatting.t(modeLocaleIds[mode] || 'modes_other', localeData);
 
                     let messageBody = TextFormatting.formatText('mode', {
                         nick: event.nick,

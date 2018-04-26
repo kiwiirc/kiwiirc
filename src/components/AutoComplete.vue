@@ -224,4 +224,5 @@ export default {
     float: right;
     font-size: 0.9em;
 }
+
 </style>

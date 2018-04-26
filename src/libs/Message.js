@@ -59,7 +59,7 @@ export default class Message {
             let style = '';
             let classes = '';
 
-            Object.keys(bl.styles).forEach(s => {
+            Object.keys(bl.styles).forEach((s) => {
                 if (s === 'underline') {
                     style += 'text-decoration:underline;';
                 } else if (s === 'bold') {

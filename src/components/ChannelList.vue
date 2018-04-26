@@ -136,6 +136,7 @@ export default {
 
 .kiwi-channellist-nav {
     text-align: center;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -170,5 +171,9 @@ export default {
 
 .kiwi-channellist-users {
     display: inline-block;
+    width: 80px;
+    padding: 2px 0;
+    border-radius: 3px;
+    text-align: center;
 }
 </style>

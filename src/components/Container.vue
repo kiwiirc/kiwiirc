@@ -1,29 +1,21 @@
 <template>
     <div class="kiwi-container" v-bind:class="{
             /* 'kiwi-container-' + bufferType: true, */
-            'kiwi-container--sidebar-open': sidebarOpen,
+            'kiwi-container--sidebar-open': uiState.sidebarOpen,
             'kiwi-container--no-sidebar': buffer && !buffer.isChannel(),
             'kiwi-container--mini': isHalfSize,
     }">
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
-                <i v-if="!unreadMessages.count" class="fa fa-bars" aria-hidden="true"></i>
                 <div
-                    v-else
-                    class="kiwi-container-toggledraw-statebrowser-messagecount"
+                    class="kiwi-container-toggledraw-statebrowser-messagecount kiwi-container-toggledraw-statebrowser-messagecount--highlight"
                     :class="{'kiwi-container-toggledraw-statebrowser-messagecount--highlight': unreadMessages.highlight}"
                 >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}</div>
             </div>
-            <container-header :buffer="buffer"></container-header>
-            <div @click.stop="toggleSidebar" v-bind:class="{
-                'kiwi-container-toggledraw-sidebar': true,
-                'kiwi-container-toggledraw-sidebar--disabled': !buffer.isChannel()
-            }">
-                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </div>
+            <container-header :buffer="buffer" :uiState="uiState"></container-header>
 
             <template v-if="buffer.isServer()">
-                <server-view :network="network" :buffer="buffer"></server-view>
+                <server-view :network="network" :buffer="buffer" :uiState="uiState"></server-view>
             </template>
             <template v-else>
                 <sidebar
@@ -31,13 +23,16 @@
                     :network="network"
                     :buffer="buffer"
                     :users="users"
+                    :uiState="uiState"
                 ></sidebar>
-                <message-list :buffer="buffer" :users="users"></message-list>
+                <message-list :buffer="buffer" :users="users" :uiState="uiState"></message-list>
             </template>
         </template>
         <template v-else>
-            {{$t('container_welcome')}}
-            <a @click.stop="toggleStateBrowser">{{$t('container_statebrowser')}}</a>
+            <div class="kiwi-container-empty">
+                <h4>{{$t('container_welcome')}}</h4>
+                <a @click.stop="toggleStateBrowser" class="u-button">{{$t('container_statebrowser')}}</a>
+            </div>
         </template>
     </div>
 </template>
@@ -59,10 +54,9 @@ export default {
     },
     data: function data() {
         return {
-            sidebarOpen: false,
         };
     },
-    props: ['network', 'buffer', 'users', 'isHalfSize'],
+    props: ['network', 'buffer', 'users', 'isHalfSize', 'uiState'],
     computed: {
         bufferType: function bufferType() {
             let type = '';
@@ -105,20 +99,22 @@ export default {
     },
     created: function created() {
         this.listen(state, 'sidebar.toggle', () => {
-            state.$emit('sidebar.' + (this.sidebarOpen ? 'hide' : 'show'));
+            state.$emit('sidebar.' + (this.uiState.sidebarOpen ? 'hide' : 'show'));
         });
         this.listen(state, 'sidebar.show', () => {
-            this.sidebarOpen = true;
+            this.uiState.showNicklist();
         });
         this.listen(state, 'sidebar.hide', () => {
-            this.sidebarOpen = false;
+            this.uiState.close();
+        });
+        this.listen(state, 'userbox.show', (user, opts) => {
+            this.uiState.showUser();
         });
     },
 };
 </script>
 
 <style>
-
 .kiwi-container {
     box-sizing: border-box;
     display: flex;
@@ -126,22 +122,26 @@ export default {
     top: 4px;
 }
 
+/* When the sidebar is open we will put a shadow over the text area */
 .kiwi-header {
-    margin-right: 200px;
     z-index: 1;
 }
 
 .kiwi-sidebar {
     position: absolute;
-    right: 0;
+    right: -200px;
     top: 0;
     bottom: 0;
     width: 200px;
     z-index: 2;
+    transition: right 0.2s, width 0.2s;
+}
+
+.kiwi-container--sidebar-open .kiwi-sidebar {
+    right: 0;
 }
 
 .kiwi-messagelist {
-    margin-right: 200px;
     flex: 1;
 }
 
@@ -160,7 +160,7 @@ export default {
     width: 50px;
     position: absolute;
     top: 0;
-    height: 50px;
+    height: 45px;
     box-sizing: border-box;
     cursor: pointer;
     text-align: center;
@@ -183,35 +183,27 @@ export default {
 .kiwi-container-toggledraw-statebrowser-messagecount {
     position: relative;
     font-size: 0.6em;
-    background: #ddd;
     border-radius: 3px;
     line-height: 2em;
     box-sizing: border-box;
     top: 10px;
-    left: 10px;
-    padding: 0 5px;
     z-index: 3;
     white-space: nowrap;
+    left: 6px;
+    width: 37px;
+    padding: 0;
 }
 
-.kiwi-container-toggledraw-statebrowser-messagecount::after {
-    right: 99%;
-    top: 20%;
-    border: 0.6em solid transparent;
-    border-right-color: #ddd;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
+.kiwi-container-empty {
+    text-align: center;
+    padding: 1em;
 }
 
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
-    background: #d62323;
-}
-
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
-    border-right-color: #d62323;
+.kiwi-container-empty .u-button {
+    border-radius: 3px;
+    font-weight: 500;
+    line-height: 50px;
+    padding: 0 14px;
 }
 
 @media screen and (max-width: 769px) {
@@ -221,22 +213,9 @@ export default {
         max-height: 50px;
     }
 
-    .kiwi-sidebar {
-        right: -200px;
-        top: 50px;
-    }
-
-    .kiwi-messagelist {
-        margin-right: 0;
-    }
-
     .kiwi-container-toggledraw-statebrowser,
     .kiwi-container-toggledraw-sidebar {
         display: block;
-    }
-
-    .kiwi-container--sidebar-open .kiwi-sidebar {
-        right: 0;
     }
 }
 
