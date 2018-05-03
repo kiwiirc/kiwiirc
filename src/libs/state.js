@@ -1499,6 +1499,49 @@ function initialiseBufferState(buffer) {
         }
     }
 
+    // Helper functions
+    Object.defineProperty(buffer, 'say', {
+        value: function say(message, opts = {}) {
+            let network = buffer.getNetwork();
+            let newMessage = {
+                time: Date.now(),
+                nick: network.nick,
+                message: message,
+                type: opts.type || 'privmsg',
+            };
+
+            state.addMessage(buffer, newMessage);
+
+            let fnNames = {
+                privmsg: 'say',
+                action: 'action',
+                notice: 'notice',
+            };
+            let fnName = fnNames[opts.type] || 'say';
+            network.ircClient[fnName](buffer.name, message);
+        },
+    });
+    Object.defineProperty(buffer, 'join', {
+        value: function join() {
+            if (!buffer.isChannel()) {
+                return;
+            }
+
+            let network = buffer.getNetwork();
+            network.ircClient.join(buffer.name, buffer.key || '');
+        },
+    });
+    Object.defineProperty(buffer, 'part', {
+        value: function part(reason) {
+            if (!buffer.isChannel()) {
+                return;
+            }
+
+            let network = buffer.getNetwork();
+            network.ircClient.part(buffer.name, reason || '');
+        },
+    });
+
     let messageObj = {
         networkid: buffer.networkid,
         buffer: buffer.name,
