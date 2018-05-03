@@ -697,3 +697,51 @@ msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Give the developer version of Kiwi IRC a try!"
+
+#: Connected
+msgid "connected"
+msgstr "Connected"
+
+#: Disconnected
+msgid "disconnected"
+msgstr "Disconnected"
+
+#: Connected to
+msgid "connected_to"
+msgstr "Connected to"
+
+#: Has joined
+msgid "has_joined"
+msgstr "has joined"
+
+#: kicked you from
+msgid "kicked_you_from"
+msgstr "kicked you from"
+
+#: was kicked from
+msgid "was_kicked_from"
+msgstr "was kicked from"
+
+#: has left
+msgid "has_left"
+msgstr "has left"
+
+#: invited you to join
+msgid "invited_you"
+msgstr "invited you to join"
+
+#: Nickname
+msgid "nick_in_use_nickname"
+msgstr "Nickname"
+
+#: Nickname
+msgid "nick_in_use_trying"
+msgstr "is already in use. Trying"
+
+#: is now known as
+msgid "now_known_as"
+msgstr "is now known as"
+
+#: changed the topic to:
+msgid "changed_topic_to"
+msgstr "changed the topic to:"
