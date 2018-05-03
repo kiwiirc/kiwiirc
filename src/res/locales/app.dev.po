@@ -210,6 +210,16 @@ msgid "send_message"
 msgstr "Send Message"
 
 
+#: BufferKey $t('bufferkey_')
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Enter Channel Key"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "Rejoin {{channel}}"
+
 
 #: BufferSettings $t('settings_')
 

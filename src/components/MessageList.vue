@@ -30,6 +30,11 @@
             ></message-list-message-compact>
         </div>
 
+        <buffer-key
+            v-if="buffer.isChannel() && buffer.flags.channel_badkey"
+            :buffer="buffer"
+            :network="buffer.getNetwork()"
+        ></buffer-key>
         <not-connected
             v-if="buffer.getNetwork().state !== 'connected'"
             :buffer="buffer"
@@ -43,6 +48,7 @@
 import strftime from 'strftime';
 import state from '@/libs/state';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import BufferKey from './BufferKey';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
@@ -53,6 +59,7 @@ const BOTTOM_SCROLL_MARGIN = 30;
 
 export default {
     components: {
+        BufferKey,
         NotConnected,
         MessageListMessageModern,
         MessageListMessageCompact,

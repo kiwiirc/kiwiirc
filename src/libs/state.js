@@ -1171,6 +1171,7 @@ function createEmptyBufferObject() {
             unread: 0,
             alert_on: 'default',
             has_opened: false,
+            channel_badkey: false,
             chathistory_available: true,
         },
         settings: {
