@@ -773,6 +773,22 @@ function clientMiddleware(state, networkid) {
             });
         }
 
+        if (command === 'topicsetby') {
+            let buffer = state.getOrAddBufferByName(networkid, event.channel);
+            let messageBody = TextFormatting.formatText('channel_topic_setby', {
+                nick: event.nick,
+                username: event.ident,
+                host: event.hostname,
+                text: 'Topic set by ' + event.nick + ' (' + (new Date(event.when * 1000)).toDateString() + ')',
+            });
+            state.addMessage(buffer, {
+                time: event.time || Date.now(),
+                nick: '',
+                message: messageBody,
+                type: 'topicsetby',
+            });
+        }
+
         if (command === 'ctcp response' || command === 'ctcp request') {
             let buffer = network.bufferByName(event.target) || network.serverBuffer();
             let textFormatId = command === 'ctcp response' ?
