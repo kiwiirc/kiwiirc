@@ -16,6 +16,9 @@ export default class GlobalApi extends EventEmitter {
         this.stateBrowserPlugins = [];
         this.channelHeaderPlugins = [];
         this.queryHeaderPlugins = [];
+        this.sideBarPlugins = [];
+        this.appSettingsPlugins = [];
+        this.serverViewPlugins = [];
         this.tabs = Object.create(null);
         this.isReady = false;
 
@@ -113,14 +116,35 @@ export default class GlobalApi extends EventEmitter {
         }
     }
 
-    addTab(name, component, props) {
+    /**
+     * addTab('channel', 'title', component, props)
+     * addTab('settings', 'title', component, props)
+     * addTab('server', 'title', component, props)
+     */
+    addTab(type, title, component, props) {
+        switch (type) {
+        case 'channel':
+            this.sideBarPlugins.push({ title: title, component: component, props: props });
+            break;
+        case 'settings':
+            this.appSettingsPlugins.push({ title: title, component: component, props: props });
+            break;
+        case 'server':
+            this.serverViewPlugins.push({ title: title, component: component, props: props });
+            break;
+        default:
+            break;
+        }
+    }
+
+    addView(name, component, props) {
         this.tabs[name] = {
             component: Vue.extend(component),
             props: props || {},
         };
     }
 
-    showTab(name) {
+    showView(name) {
         // null disables any active component and reverts the UI back to the buffers
         let tab = this.tabs[name];
         if (tab) {
