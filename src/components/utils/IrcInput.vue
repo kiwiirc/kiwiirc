@@ -53,7 +53,6 @@ export default Vue.component('irc-input', {
             }
         },
         onPaste: function onPaste(event) {
-            event.stopPropagation();
             event.preventDefault();
 
             let clipboardData = event.clipboardData || window.clipboardData;
