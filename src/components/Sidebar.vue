@@ -39,6 +39,9 @@
                         <tabbed-tab :header="$t('notifications')">
                             <buffer-settings v-bind:buffer="buffer"></buffer-settings>
                         </tabbed-tab>
+                        <tabbed-tab v-for="item in pluginUiElements" :key="item.id" :header="item.title">
+                            <div v-bind:is="item.component" v-bind="item.props"></div>
+                        </tabbed-tab>
                     </tabbed-view>
                 </div>
 
@@ -83,6 +86,7 @@ import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
 import UserBox from '@/components/UserBox';
 import Nicklist from './Nicklist';
+import GlobalApi from '@/libs/GlobalApi';
 
 export default {
     components: {
@@ -95,6 +99,7 @@ export default {
     data: function data() {
         return {
             userbox_user: null,
+            pluginUiElements: GlobalApi.singleton().sideBarPlugins,
         };
     },
     props: ['network', 'buffer', 'users', 'uiState'],
