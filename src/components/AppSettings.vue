@@ -80,6 +80,9 @@
                         </div>
                     </div>
                 </tabbed-tab>
+                <tabbed-tab v-for="item in pluginUiElements" :key="item.id" :header="item.title">
+                    <div v-bind:is="item.component" v-bind="item.props"></div>
+                </tabbed-tab>
             </tabbed-view>
         </form>
     </div>
@@ -90,6 +93,7 @@
 import state from '@/libs/state';
 import SettingsAliases from './SettingsAliases';
 import ThemeManager from '@/libs/ThemeManager';
+import GlobalApi from '@/libs/GlobalApi';
 
 /**
  * Returns an object for a vuejs computated property on a state settings value
@@ -112,6 +116,7 @@ export default {
             state: state,
             theme: '',
             customThemeUrl: '',
+            pluginUiElements: GlobalApi.singleton().appSettingsPlugins,
         };
     },
     computed: {

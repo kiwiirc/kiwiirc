@@ -11,6 +11,9 @@
                 <tabbed-tab :header="$t('channels')" v-if="network.state==='connected'" name="channels">
                     <channel-list :network="network"></channel-list>
                 </tabbed-tab>
+                <tabbed-tab v-for="item in pluginUiElements" :key="item.id" :header="item.title">
+                    <div v-bind:is="item.component" v-bind="item.props"></div>
+                </tabbed-tab>
             </tabbed-view>
         </div>
     </div>
@@ -22,11 +25,13 @@ import state from '@/libs/state';
 import MessageList from './MessageList';
 import NetworkSettings from './NetworkSettings';
 import ChannelList from './ChannelList';
+import GlobalApi from '@/libs/GlobalApi';
 
 export default {
     data: function data() {
         return {
             activeTab: '',
+            pluginUiElements: GlobalApi.singleton().serverViewPlugins,
         };
     },
     props: ['network'],
