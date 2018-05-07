@@ -234,8 +234,71 @@ export function mapRange(value, vMin, vMax, dMin, dMax) {
     return (vValue - vMin) * dRange / vRange + dMin;
 }
 
-export function formatText(formatId, params) {
+/**
+ * Format a string according to the configured textFormats, including a
+ * translation for the %text formatting variable
+ */
+export function formatAndT(formatId, formatParams, localeId, localeParams) {
+    let body = t(localeId, localeParams);
+    if (formatParams) {
+        formatParams.text = body;
+        body = formatText(formatId, formatParams);
+    } else {
+        body = formatText(formatId, { text: body });
+    }
+
+    return body;
+}
+
+/**
+ * Create a user reference string similar to 'nick'
+ */
+export function formatUser(fNick) {
+    let nick = fNick;
+
+    // Allow passing of a user object or irc-framework event
+    if (typeof nick === 'object') {
+        nick = nick.nick;
+    }
+
+    return formatText('user', { nick });
+}
+
+/**
+ * Create a full user reference similar to 'nick (user@host)'
+ */
+export function formatUserFull(fNick, fUsername, fHost) {
+    let nick = '';
+    let username = '';
+    let host = '';
+
+    // Allow passing of a user object or irc-framework event
+    if (typeof fNick === 'object') {
+        let user = fNick;
+        nick = user.nick;
+        username = user.username || user.ident;
+        host = user.hostname || user.host;
+    } else {
+        nick = fNick;
+        username = fUsername;
+        host = fHost;
+    }
+
+    return formatText('user', { nick, username, host });
+}
+
+/**
+ * Format a string according to the configured textFormats
+ */
+export function formatText(formatId, formatParams) {
     let format = state.setting('textFormats.' + formatId);
+    let params = formatParams;
+
+    // Most texts only have a 'text' variable so allow passing of a string for this
+    // variable as shorthand.
+    if (typeof params === 'string') {
+        params = { text: params };
+    }
 
     // Expand a user mask into its individual parts (nick, ident, hostname)
     if (params.user) {
