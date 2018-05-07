@@ -706,42 +706,38 @@ msgstr "Connected"
 msgid "disconnected"
 msgstr "Disconnected"
 
-#: Connected to
+#: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Connected to"
+msgstr "Connected to {{network}}!"
 
-#: Has joined
+#: {{nick}} has joined
 msgid "has_joined"
-msgstr "has joined"
+msgstr "{{nick}} has joined"
 
-#: kicked you from
+#: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "kicked you from"
+msgstr "{{nick}} kicked you from {{channel}}"
 
-#: was kicked from
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "was kicked from"
+msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
 
-#: has left
+#: {{nick}} has left
 msgid "has_left"
-msgstr "has left"
+msgstr "{{nick}} has left"
 
-#: invited you to join
+#: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "invited you to join"
+msgstr "{{nick}} invited you to join {{channel}}"
 
-#: Nickname
-msgid "nick_in_use_nickname"
-msgstr "Nickname"
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
 
-#: Nickname
-msgid "nick_in_use_trying"
-msgstr "is already in use. Trying"
-
-#: is now known as
+#: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "is now known as"
+msgstr "{{nick}} is now known as {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr "changed the topic to:"
+msgstr "{{nick}} changed the topic to: {{topic}}"
