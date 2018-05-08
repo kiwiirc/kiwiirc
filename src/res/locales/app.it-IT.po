@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-05-08 04:01-0400\n"
+"PO-Revision-Date: 2018-05-08 04:26-0400\n"
 
 #: Start
 msgid "start_button"
@@ -655,7 +655,7 @@ msgstr "{{nick}} è uscito"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} ti ha invitato ad accedere nel canale {{channel}}"
+msgstr "{{nick}} ti ha invitato ad accedere al canale {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
