@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-05-08 02:40-0400\n"
+"PO-Revision-Date: 2018-05-08 03:50-0400\n"
 
 #: Start
 msgid "start_button"
@@ -639,7 +639,7 @@ msgstr "Connesso a {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr ""
+msgstr "{{nick}} è entrato"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
@@ -651,7 +651,7 @@ msgstr ""
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr ""
+msgstr "{{nick}} è uscito"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
