@@ -22,17 +22,36 @@ export default class InputHandler {
         this.listenForInput();
     }
 
+    defaultContext() {
+        return {
+            network: this.state.getActiveNetwork(),
+            buffer: this.state.getActiveBuffer(),
+        };
+    }
+
+    validateContext(context) {
+        if (
+            typeof context !== 'object' ||
+            !Object.prototype.hasOwnProperty.call(context, 'buffer') ||
+            !Object.prototype.hasOwnProperty.call(context, 'network') ||
+            typeof context.buffer !== 'object' ||
+            typeof context.network !== 'object'
+        ) {
+            throw new TypeError('context must contain both network and buffer properties');
+        }
+    }
+
     listenForInput() {
-        this.state.$on('input.raw', (input) => {
+        this.state.$on('input.raw', (input, context = this.defaultContext()) => {
             let lines = input.split('\n');
-            lines.forEach(line => this.processLine(line));
+            lines.forEach(line => this.processLine(line, context));
         });
     }
 
-    processLine(rawLine) {
+    processLine(rawLine, context) {
+        this.validateContext(context);
+        const { network, buffer } = context;
         let line = rawLine;
-        let activeNetwork = this.state.getActiveNetwork();
-        let activeBuffer = this.state.getActiveBuffer();
 
         // If no command specified, server buffers = send raw, channels/queries = send message
         let escapedCommand = line.substr(0, 2) === '//';
@@ -41,19 +60,19 @@ export default class InputHandler {
                 line = line.substr(1);
             }
 
-            if (activeBuffer.isServer()) {
+            if (buffer.isServer()) {
                 line = '/quote ' + line;
             } else {
-                line = '/msg ' + activeBuffer.name + ' ' + line;
+                line = '/msg ' + buffer.name + ' ' + line;
             }
         }
 
         let aliasVars = {
-            server: activeNetwork.name,
-            channel: activeNetwork.isChannelName(activeBuffer.name) ? activeBuffer.name : '',
-            query: activeNetwork.isChannelName(activeBuffer.name) ? '' : activeBuffer.name,
-            destination: activeBuffer.name,
-            nick: activeNetwork.nick,
+            server: network.name,
+            channel: network.isChannelName(buffer.name) ? buffer.name : '',
+            query: network.isChannelName(buffer.name) ? '' : buffer.name,
+            destination: buffer.name,
+            nick: network.nick,
         };
         line = this.aliasRewriter.process(line, aliasVars);
 
@@ -82,7 +101,7 @@ export default class InputHandler {
         this.state.$emit('input.command.' + command, eventObj, command, params);
 
         if (!eventObj.handled) {
-            activeNetwork.ircClient.raw(line);
+            network.ircClient.raw(line);
         }
     }
 

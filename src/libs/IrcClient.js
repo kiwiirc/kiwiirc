@@ -119,7 +119,7 @@ function clientMiddleware(state, networkid) {
                 }
 
                 let messageBody = TextFormatting.formatText('network_connected', {
-                    text: 'Connected',
+                    text: TextFormatting.t('connected'),
                 });
 
                 state.addMessage(buffer, {
@@ -142,7 +142,7 @@ function clientMiddleware(state, networkid) {
                 }
 
                 let messageBody = TextFormatting.formatText('network_disconnected', {
-                    text: 'Disconnected',
+                    text: TextFormatting.t('disconnected'),
                 });
 
                 state.addMessage(buffer, {
@@ -197,7 +197,7 @@ function clientMiddleware(state, networkid) {
             state.addMessage(serverBuffer, {
                 time: Date.now(),
                 nick: '',
-                message: `Connected to ${client.network.name}!`,
+                message: TextFormatting.t('connected_to', { network: client.network.name }),
             });
 
             // Get some extra info about ourselves
@@ -374,12 +374,12 @@ function clientMiddleware(state, networkid) {
                 network.ircClient.who(event.channel);
             }
 
-            let messageBody = TextFormatting.formatText('channel_join', {
-                nick: event.nick,
-                username: event.ident,
-                host: event.hostname,
-                text: 'has joined',
-            });
+            let messageBody = TextFormatting.formatAndT(
+                'channel_join',
+                null,
+                'has_joined',
+                { nick: TextFormatting.formatUserFull(event) }
+            );
 
             state.addMessage(buffer, {
                 time: Date.now(),
@@ -398,20 +398,27 @@ function clientMiddleware(state, networkid) {
             if (event.kicked === client.user.nick) {
                 buffer.joined = false;
                 buffer.clearUsers();
-                messageBody = TextFormatting.formatText('channel_selfkick', {
-                    nick: event.nick,
-                    username: event.ident,
-                    host: event.hostname,
-                    text: `${event.nick} kicked you from ${event.channel} (${event.message})`,
-                });
+
+                messageBody = TextFormatting.formatAndT(
+                    'channel_selfkick',
+                    { reason: event.message },
+                    'kicked_you_from',
+                    {
+                        nick: TextFormatting.formatUser(event),
+                        channel: event.channel,
+                    }
+                );
             } else {
-                messageBody = TextFormatting.formatText('channel_kicked', {
-                    nick: event.nick,
-                    username: event.ident,
-                    host: event.hostname,
-                    text: `${event.kicked} was kicked from ${event.channel} by ${event.nick}` +
-                          ` (${event.message})`,
-                });
+                messageBody = TextFormatting.formatAndT(
+                    'channel_kicked',
+                    null,
+                    'was_kicked_from',
+                    {
+                        nick: event.kicked,
+                        channel: event.channel,
+                        chanop: TextFormatting.formatUser(event.nick),
+                    }
+                );
             }
 
             state.addMessage(buffer, {
@@ -434,12 +441,13 @@ function clientMiddleware(state, networkid) {
                 buffer.clearUsers();
             }
 
-            let messageBody = TextFormatting.formatText('channel_part', {
-                nick: event.nick,
-                username: event.ident,
-                host: event.hostname,
-                text: `has left (${event.message})`,
-            });
+            let messageBody = TextFormatting.formatAndT(
+                'channel_part',
+                { reason: event.message },
+                'has_left',
+                { nick: TextFormatting.formatUserFull(event) },
+            );
+
             state.addMessage(buffer, {
                 time: Date.now(),
                 nick: event.nick,
@@ -461,12 +469,12 @@ function clientMiddleware(state, networkid) {
                     buffer.clearUsers();
                 }
 
-                let messageBody = TextFormatting.formatText('channel_quit', {
-                    nick: event.nick,
-                    username: event.ident,
-                    host: event.hostname,
-                    text: `has left (${event.message})`,
-                });
+                let messageBody = TextFormatting.formatAndT(
+                    'channel_quit',
+                    { reason: event.message },
+                    'has_left',
+                    { nick: TextFormatting.formatUserFull(event) }
+                );
 
                 state.addMessage(buffer, {
                     time: Date.now(),
@@ -480,12 +488,12 @@ function clientMiddleware(state, networkid) {
             // Mention the quit in any query windows
             let queryBuffer = network.bufferByName(event.nick);
             if (queryBuffer) {
-                let messageBody = TextFormatting.formatText('channel_quit', {
-                    nick: event.nick,
-                    username: event.ident,
-                    host: event.hostname,
-                    text: `has left (${event.message})`,
-                });
+                let messageBody = TextFormatting.formatAndT(
+                    'channel_quit',
+                    { reason: event.message },
+                    'has_left',
+                    { nick: TextFormatting.formatUserFull(event) }
+                );
 
                 state.addMessage(queryBuffer, {
                     time: Date.now(),
@@ -505,7 +513,10 @@ function clientMiddleware(state, networkid) {
             let buffer = network.serverBuffer();
             state.addMessage(buffer, {
                 nick: '*',
-                message: `${event.nick} invited you to join ${event.channel}`,
+                message: TextFormatting.t('invited_you', {
+                    nick: event.nick,
+                    channel: event.channel,
+                }),
             });
         }
 
@@ -597,9 +608,12 @@ function clientMiddleware(state, networkid) {
         if (command === 'nick in use' && !client.connection.registered) {
             let newNick = client.user.nick + rand(1, 100);
             let serverBuffer = network.serverBuffer();
-            let messageBody = TextFormatting.formatText('nickname_alreadyinuse', {
-                text: `Nickname '${client.user.nick}' is already in use. Trying '${newNick}'..`,
-            });
+            let messageBody = TextFormatting.formatAndT(
+                'nickname_alreadyinuse',
+                null,
+                'nick_in_use_retrying',
+                { nick: client.user.nick, newnick: newNick },
+            );
             state.addMessage(serverBuffer, {
                 time: Date.now(),
                 nick: '',
@@ -615,9 +629,12 @@ function clientMiddleware(state, networkid) {
 
             state.changeUserNick(networkid, event.nick, event.new_nick);
 
-            let messageBody = TextFormatting.formatText('nick_changed', {
-                text: `${event.nick} is now known as ${event.new_nick}`,
-            });
+            let messageBody = TextFormatting.formatAndT(
+                'nick_changed',
+                null,
+                'now_known_as',
+                { nick: event.nick, newnick: event.new_nick },
+            );
 
             let buffers = state.getBuffersWithUser(networkid, event.new_nick);
             buffers.forEach((buffer) => {
@@ -777,14 +794,20 @@ function clientMiddleware(state, networkid) {
         if (command === 'topic') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             buffer.topic = event.topic || '';
-            let messageBody = TextFormatting.formatText('channel_topic', {
-                nick: event.nick,
-                username: event.ident,
-                host: event.hostname,
-                text: event.nick ?
-                    event.nick + ' changed the topic to: ' + event.topic :
-                    event.topic,
-            });
+
+            let messageBody = '';
+
+            if (event.nick) {
+                messageBody = TextFormatting.formatAndT(
+                    'channel_topic',
+                    null,
+                    'changed_topic_to',
+                    { nick: event.nick, topic: event.topic },
+                );
+            } else {
+                messageBody = TextFormatting.formatText('channel_topic', event.topic);
+            }
+
             state.addMessage(buffer, {
                 time: event.time || Date.now(),
                 nick: '',

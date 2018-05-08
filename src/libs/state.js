@@ -217,11 +217,13 @@ const stateObj = {
         },
         emojiLocation: 'https://kiwiirc.com/shared/emoji/',
         textFormats: {
-            channel_join: '→ %nick (%username@%host) %text',
-            channel_part: '← %nick (%username@%host) %text',
-            channel_quit: '← %nick (%username@%host) %text',
+            user: '%nick',
+            user_full: '%nick (%username@%host)',
+            channel_join: '→ %text',
+            channel_part: '← %text (%reason)',
+            channel_quit: '← %text (%reason)',
             channel_kicked: '← %text',
-            channel_selfkick: '× %text',
+            channel_selfkick: '× %text (%reason)',
             channel_badpassword: '× %text',
             channel_topic: 'ⓘ %text',
             channel_banned: '× %text',
@@ -1498,6 +1500,49 @@ function initialiseBufferState(buffer) {
             messageObj.messages.splice(0, length - scrollbackSize);
         }
     }
+
+    // Helper functions
+    Object.defineProperty(buffer, 'say', {
+        value: function say(message, opts = {}) {
+            let network = buffer.getNetwork();
+            let newMessage = {
+                time: Date.now(),
+                nick: network.nick,
+                message: message,
+                type: opts.type || 'privmsg',
+            };
+
+            state.addMessage(buffer, newMessage);
+
+            let fnNames = {
+                privmsg: 'say',
+                action: 'action',
+                notice: 'notice',
+            };
+            let fnName = fnNames[opts.type] || 'say';
+            network.ircClient[fnName](buffer.name, message);
+        },
+    });
+    Object.defineProperty(buffer, 'join', {
+        value: function join() {
+            if (!buffer.isChannel()) {
+                return;
+            }
+
+            let network = buffer.getNetwork();
+            network.ircClient.join(buffer.name, buffer.key || '');
+        },
+    });
+    Object.defineProperty(buffer, 'part', {
+        value: function part(reason) {
+            if (!buffer.isChannel()) {
+                return;
+            }
+
+            let network = buffer.getNetwork();
+            network.ircClient.part(buffer.name, reason || '');
+        },
+    });
 
     let messageObj = {
         networkid: buffer.networkid,

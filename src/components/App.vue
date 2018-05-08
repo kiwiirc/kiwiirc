@@ -7,6 +7,7 @@
             'kiwi-wrap--touch': state.ui.is_touch,
         }"
         @click="emitDocumentClick"
+        @paste="emitBufferPaste"
     >
         <link v-bind:href="themeUrl" rel="stylesheet" type="text/css">
 
@@ -282,6 +283,22 @@ export default {
 
                 return null;
             };
+        },
+        emitBufferPaste: function emitBufferPaste(event) {
+            // bail if no buffer is active, or the buffer is hidden by another component
+            if (!this.state.getActiveBuffer() || this.activeComponent !== null) {
+                return;
+            }
+
+            // bail if a sidebar is open
+            if (this.$data.uiState.sidebarOpen) {
+                return;
+            }
+
+            state.$emit('buffer.paste', event);
+
+            event.stopPropagation();
+            event.preventDefault();
         },
         emitDocumentClick: function emitDocumentClick(event) {
             state.$emit('document.clicked', event);
