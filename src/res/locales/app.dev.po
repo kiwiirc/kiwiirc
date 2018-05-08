@@ -299,6 +299,18 @@ msgstr "Block messages from outside this channel"
 
 
 
+#: ChannelList $t('channel_list_')
+
+#: Click the refresh button to fetch the channel list
+msgid "channel_list_fetch"
+msgstr "Click the refresh button to fetch the channel list."
+
+#: No channels found, Try again later.
+msgid "channel_list_nonefound"
+msgstr "No channels found, Try again later."
+
+
+
 #: Container $t('container_')
 
 #: Welcome to Kiwi IRC!
