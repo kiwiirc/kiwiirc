@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-05-08 03:50-0400\n"
+"PO-Revision-Date: 2018-05-08 04:01-0400\n"
 
 #: Start
 msgid "start_button"
@@ -643,11 +643,11 @@ msgstr "{{nick}} è entrato"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr ""
+msgstr "sei stato allontanato da {{channel}} da {{nick}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr ""
+msgstr "{{nick}} è stato allontanato da {{channel}} da {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
@@ -655,17 +655,17 @@ msgstr "{{nick}} è uscito"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr ""
+msgstr "{{nick}} ti ha invitato ad accedere nel canale {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr ""
+msgstr "Il nickname {{nick}} è già in uso. Provo {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr ""
+msgstr "{{nick}} ha cambiato il suo nick in {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr ""
+msgstr "il topic è stato cambiato in:"
 
