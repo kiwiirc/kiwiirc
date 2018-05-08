@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-05-07 10:01-0400\n"
+"PO-Revision-Date: 2018-05-08 07:10-0400\n"
 
 #: Start
 msgid "start_button"
@@ -631,41 +631,41 @@ msgstr "Свързан"
 
 #: Disconnected
 msgid "disconnected"
-msgstr ""
+msgstr "Изключен"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr ""
+msgstr "Свързан с"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr ""
+msgstr " {{nick}} се присъедини"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr ""
+msgstr " {{nick}} те ритна от {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr ""
+msgstr " {{nick}}  беше изхвърлен от  {{channel}} от {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr ""
+msgstr "{{nick}} напусна "
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr ""
+msgstr "{{nick}} ви покани да се присъедините към {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr ""
+msgstr "Прякор {{nick}} вече се използва. Опитайте нов {{newnick}} ..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr ""
+msgstr "{{nick}} сега е известен като {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr ""
+msgstr "промени темата на:"
 
