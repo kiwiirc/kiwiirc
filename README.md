@@ -1,13 +1,13 @@
-# kiwiirc
+# Kiwi IRC
 
-> The next generation of the KiwiIRC web based IRC client
+> The next generation of the Kiwi IRC web based IRC client
 
 ### Easy supported ways to install Kiwi IRC
 If you just want to run Kiwi IRC and not modify it then pre-built and ready to use packages/installers/archives can be found here: https://kiwiirc.com/downloads/index.html
 
 
 ### Dependancies
-Before you can build or start to develop on KiwiIRC, make sure to have the following installed on your system:
+Before you can build or start to develop on Kiwi IRC, make sure to have the following installed on your system:
 * [Nodejs](https://nodejs.org/)
 * [yarn](https://yarnpkg.com/)
 
