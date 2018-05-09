@@ -28,6 +28,10 @@ msgstr "Connected"
 msgid "settings"
 msgstr "Settings"
 
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Kiwi Settings"
+
 #: Channels
 msgid "channels"
 msgstr "Channels"
@@ -201,7 +205,9 @@ msgstr "Highlight on words (space seperated)"
 msgid "settings_aliases"
 msgstr "Aliases"
 
-
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "What are aliases?"
 
 #: AutoComplete
 
@@ -324,6 +330,18 @@ msgstr "Show statebrowser"
 
 
 #: ContainerHeader $t('container_')
+
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Hide Topic"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Display Topic"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Channel Settings"
 
 #: Join Channel
 msgid "container_join"

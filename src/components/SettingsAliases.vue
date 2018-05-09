@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-settings-aliases">
         <form class="u-form">
-            <a class="u-link kiwi-settings-aliases-showhelp" @click="show_help=!show_help">What are aliases?</a>
+            <a class="u-link kiwi-settings-aliases-showhelp" @click="show_help=!show_help">{{$t('what_are_aliases')}}</a>
             <div v-if="show_help" class="kiwi-settings-aliases-help">
                 <p>Aliases let you rename existing IRC commands or even build entirely new ones.</p>
                 <p>They must be one per line and in the form of <em>/name /what it should do</em>.</p>

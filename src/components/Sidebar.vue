@@ -16,7 +16,7 @@
 
                     <tabbed-view>
                         <tabbed-tab :header="$t('settings')" :focus="true">
-                            <h3>Channel Settings</h3>
+                            <h3>{{$t('channel_settings')}}</h3>
                             <hr>
                             <channel-info v-bind:buffer="buffer"></channel-info>
 

@@ -24,7 +24,7 @@
         </div>
 
         <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
-            Kiwi Settings <i class="fa fa-cog" aria-hidden="true"></i>
+            {{$t('kiwi_settings')}} <i class="fa fa-cog" aria-hidden="true"></i>
         </div>
 
         <hr>
