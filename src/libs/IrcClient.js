@@ -588,8 +588,12 @@ function clientMiddleware(state, networkid) {
         }
         if (command === 'channel list end') {
             network.channel_list = network.channel_list_cache || [];
+            if (network.channel_list.length === 0) {
+                network.channel_list = [{ channel: '', num_users: -1, topic: this.$t('channel_list_nonefound') }];
+            }
+
             delete network.channel_list_cache;
-            network.channel_list_state = '';
+            network.channel_list_state = 'loaded';
         }
 
         if (command === 'motd') {

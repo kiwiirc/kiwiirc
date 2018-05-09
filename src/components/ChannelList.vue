@@ -5,10 +5,10 @@
                 @click="maybeUpdateList"
                 class="u-button kiwi-channellist-refresh"
                 :class="{
-                    'u-button-primary': listState === '',
+                    'u-button-primary': listState === '' || listState === 'loaded',
                     'u-button-secondary': listState === 'updating',
             }">
-                <i v-if="listState===''" class="fa fa-refresh" aria-hidden="true"></i>
+                <i v-if="listState === '' || listState === 'loaded'" class="fa fa-refresh" aria-hidden="true"></i>
                 <i v-else class="fa fa-refresh fa-spin" aria-hidden="true"></i>
             </a>
 
@@ -20,17 +20,20 @@
                 <input v-model="search" :placeholder="$t('do_search')" class="u-input" />
             </form>
         </div>
-        <table v-if="listState === ''" width="100%" :key="last_updated">
+        <table v-if="listState === 'loaded'" width="100%" :key="last_updated">
             <tbody>
                 <tr v-for="channel in paginated">
                     <td>
-                        <span class="kiwi-channellist-users"><i class="fa fa-user" aria-hidden="true"></i> {{channel.num_users}}</span>
+                        <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
+                            <i class="fa fa-user" aria-hidden="true"></i> {{channel.num_users}}
+                        </span>
                         <a class="u-link" @click="joinChannel(channel.channel)">{{channel.channel}}</a>
                     </td>
                     <td>{{channel.topic}}</td>
                 </tr>
             </tbody>
         </table>
+        <div v-else>{{$t('channel_list_fetch')}}</div>
     </div>
 </template>
 
