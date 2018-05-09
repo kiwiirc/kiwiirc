@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-05-01 18:10-0400\n"
+"PO-Revision-Date: 2018-05-08 13:20-0400\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "Ok"
 msgid "cancel"
 msgstr "Annulla"
 
-#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "Verranno chiuse tutte le conversazioni di KiwiIRC. Chiudere questa finestra?"
 
@@ -624,4 +624,48 @@ msgstr "(Grazie ad Adam di Rizon per il supporto nello sviluppo del server WebSo
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Prova la versione di sviluppo di Kiwi IRC!"
+
+#: Connected
+msgid "connected"
+msgstr "Connesso"
+
+#: Disconnected
+msgid "disconnected"
+msgstr "Disconnesso"
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr "Connesso a {{network}}!"
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr "{{nick}} è entrato"
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr "sei stato allontanato da {{channel}} da {{nick}}"
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr "{{nick}} è stato allontanato da {{channel}} da {{chanop}}"
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr "{{nick}} è uscito"
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr "{{nick}} ti ha invitato ad accedere al canale {{channel}}"
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr "Il nickname {{nick}} è già in uso. Provo {{newnick}}..."
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr "{{nick}} ha cambiato il suo nick in {{newnick}}"
+
+#: changed the topic to:
+msgid "changed_topic_to"
+msgstr "il topic è stato cambiato in:"
 

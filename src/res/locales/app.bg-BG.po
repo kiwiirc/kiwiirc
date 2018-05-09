@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-03-25 12:51-0400\n"
+"PO-Revision-Date: 2018-05-08 13:20-0400\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "ОК"
 msgid "cancel"
 msgstr "Откажи"
 
-#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "Това ще затвори всички разговори в Уебчата. Наистина ли искате да затворите този прозорец?"
 
@@ -624,4 +624,48 @@ msgstr " (Благодарности на Adam @Rizon за помощта отн
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Give the developer version of Kiwi IRC a try!"
+
+#: Connected
+msgid "connected"
+msgstr "Свързан"
+
+#: Disconnected
+msgid "disconnected"
+msgstr "Изключен"
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr "Свързан с"
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr " {{nick}} се присъедини"
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr " {{nick}} те ритна от {{channel}}"
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr " {{nick}}  беше изхвърлен от  {{channel}} от {{chanop}}"
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr "{{nick}} напусна "
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr "{{nick}} ви покани да се присъедините към {{channel}}"
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr "Прякор {{nick}} вече се използва. Опитайте нов {{newnick}} ..."
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr "{{nick}} сега е известен като {{newnick}}"
+
+#: changed the topic to:
+msgid "changed_topic_to"
+msgstr "промени темата на:"
 

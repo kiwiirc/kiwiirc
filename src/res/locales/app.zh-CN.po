@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-04-04 08:41-0400\n"
+"PO-Revision-Date: 2018-05-08 13:20-0400\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "好"
 msgid "cancel"
 msgstr "取消"
 
-#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "这将关闭所有的 KiwiIRC 对话。您确定关闭此窗口吗？"
 
@@ -236,10 +236,6 @@ msgstr "静音"
 #: Hide unread message count
 msgid "settings_show_message_counts"
 msgstr "隐藏未读消息计数"
-
-#: Hide unread message count
-msgid "settings_show_message_counts"
-msgstr ""
 
 #: Operator tools
 msgid "operator_tools"
@@ -593,58 +589,6 @@ msgstr "{{nick}} 解封了 {{target}}"
 msgid "modes_other"
 msgstr "{{nick}} 将 {{mode}} 设置在 {{target}} 上"
 
-#: {{nick}} gives ops to {{target}}
-msgid "modes_give_ops"
-msgstr ""
-
-#: {{nick}} takes ops from {{target}}
-msgid "modes_take_ops"
-msgstr ""
-
-#: {{nick}} gives half-ops to {{target}}
-msgid "modes_give_halfops"
-msgstr ""
-
-#: {{nick}} takes half-ops from {{target}}
-msgid "modes_take_halfops"
-msgstr ""
-
-#: {{nick}} gives voice to {{target}}
-msgid "modes_give_voice"
-msgstr ""
-
-#: {{nick}} takes voice from {{target}}
-msgid "modes_take_voice"
-msgstr ""
-
-#: {{nick}} gives admin to {{target}}
-msgid "modes_give_admin"
-msgstr ""
-
-#: {{nick}} takes admin from {{target}}
-msgid "modes_take_admin"
-msgstr ""
-
-#: {{nick}} gives owner to {{target}}
-msgid "modes_give_owner"
-msgstr ""
-
-#: {{nick}} takes owner from {{target}}
-msgid "modes_take_owner"
-msgstr ""
-
-#: {{nick}} has banned {{target}}
-msgid "modes_gives_ban"
-msgstr ""
-
-#: {{nick}} has unbanned {{target}}
-msgid "modes_takes_ban"
-msgstr ""
-
-#: {{nick}} sets {{mode}} on {{target}}
-msgid "modes_other"
-msgstr ""
-
 #: Your IRC client
 msgid "personal_client"
 msgstr "您的 IRC 客户端"
@@ -680,4 +624,48 @@ msgstr "（感谢 Adam @Rizon 开发网页套接字服务器的支持！）"
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "试试开发者版本的 Kiwi IRC！"
+
+#: Connected
+msgid "connected"
+msgstr "已连接"
+
+#: Disconnected
+msgid "disconnected"
+msgstr "已断开"
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr "已连接至 {{network}}！"
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr "{{nick}} 已加入"
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr "{{nick}} 已将您从 {{channel}} 踢出"
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr "{{nick}} 被 {{chanop}} 从 {{channel}} 中踢出"
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr "{{nick}} 已离开"
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr "{{nick}} 邀请您加入 {{channel}}"
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr "昵称 {{nick}} 已被使用。正在重试 {{newnick}}..."
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr "{{nick}} 现在已更名为 {{newnick}}"
+
+#: changed the topic to:
+msgid "changed_topic_to"
+msgstr "修改了主题至："
 
