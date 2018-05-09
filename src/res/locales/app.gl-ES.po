@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2018-05-09 04:53-0400\n"
+"PO-Revision-Date: 2018-05-09 05:00-0400\n"
 
 #: Start
 msgid "start_button"
@@ -295,7 +295,7 @@ msgstr "Pulse o botón Actualizar para actualizar a lista de salas"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr ""
+msgstr "Non se atoparon salas, téntao de novo máis tarde"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
