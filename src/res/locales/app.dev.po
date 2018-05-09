@@ -301,13 +301,13 @@ msgstr "Block messages from outside this channel"
 
 #: ChannelList $t('channel_list_')
 
-#: Click the refresh button to fetch the channel list
+#: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to fetch the channel list."
+msgstr "Click the refresh button to update the channel list"
 
-#: No channels found, Try again later.
+#: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, Try again later."
+msgstr "No channels found, try again later"
 
 
 
