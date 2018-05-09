@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-05-09 04:02-0400\n"
+"PO-Revision-Date: 2018-05-09 13:20-0400\n"
 
 #: Start
 msgid "start_button"
@@ -291,11 +291,11 @@ msgstr "Externe berichten blokkeren"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr ""
+msgstr "Klik op de knop voor vernieuwen om de kanaallijst bij te werken"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr ""
+msgstr "Geen kanalen gevonden, probeer het later opnieuw"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -675,5 +675,5 @@ msgstr "{{nick}} is nu bekend als {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr "heeft het topic gewijzigd naar: {{topic}}"
+msgstr "heeft het topic gewijzigd naar {{topic}}"
 
