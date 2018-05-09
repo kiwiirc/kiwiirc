@@ -48,7 +48,7 @@ export default class InputHandler {
         });
     }
 
-    processLine(rawLine, context) {
+    processLine(rawLine, context = this.defaultContext()) {
         this.validateContext(context);
         const { network, buffer } = context;
         let line = rawLine;
