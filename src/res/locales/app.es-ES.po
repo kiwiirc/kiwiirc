@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2018-05-09 04:53-0400\n"
+"PO-Revision-Date: 2018-05-09 05:00-0400\n"
 
 #: Start
 msgid "start_button"
@@ -291,7 +291,7 @@ msgstr "Bloquear mensajes externos"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Clicar el botón Actualizar para actualizar la lista de canales"
+msgstr "Clicar el botón Actualizar para actualizar la lista de salas"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
