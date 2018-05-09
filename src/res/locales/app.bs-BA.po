@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-05-08 13:21-0400\n"
+"PO-Revision-Date: 2018-05-09 03:43-0400\n"
 
 #: Start
 msgid "start_button"
@@ -288,6 +288,14 @@ msgstr "Samo moderatori mogu mijenjati temu"
 #: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Blokirajte vanjske poruke"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr ""
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr ""
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
