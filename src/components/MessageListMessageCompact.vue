@@ -34,6 +34,7 @@
                 '',
         ]"
         :data-message="message"
+        :data-nick="message.nick||''"
     >
         <div
             v-if="ml.bufferSetting('show_timestamps')"
