@@ -22,6 +22,14 @@ import '@/components/utils/InputText';
 import '@/components/utils/IrcInput';
 import '@/components/utils/InputPrompt';
 
+let url = window.location.href;
+if (url.indexOf('externalConfig=') !== -1) {
+    window.kiwiConfig = () => window.top.currentConfig;
+}
+if (url.indexOf('tokenizedConfig=') !== -1) {
+    window.kiwiConfig = () => JSON.parse(decodeURIComponent(url.substr(url.indexOf('tokenizedConfig=') + 16)));
+}
+
 let logLevelMatch = window.location.href.match(/kiwi-loglevel=(\d)/);
 if (logLevelMatch && logLevelMatch[1]) {
     Logger.setLevel(parseInt(logLevelMatch[1], 10));
