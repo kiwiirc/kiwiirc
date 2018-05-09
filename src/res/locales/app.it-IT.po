@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-05-08 13:20-0400\n"
+"PO-Revision-Date: 2018-05-09 04:12-0400\n"
 
 #: Start
 msgid "start_button"
@@ -289,6 +289,14 @@ msgstr "Solo i moderatori possono modificare l'argomento"
 msgid "channel_external"
 msgstr "Blocca i messaggi provenienti dall'esterno di questo canale"
 
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr "Clicca il pulsante per aggiornare la lista dei canali"
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr "Nessun canale trovato, prova di nuovo più tardi"
+
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
 msgstr "Benvenuto in Kiwi IRC! Selezionare un canale sulla sinistra."
@@ -531,7 +539,7 @@ msgstr "Espelli dal canale"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Bandisci dal canale"
+msgstr "Blocca accesso al canale"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
@@ -579,11 +587,11 @@ msgstr "{{nick}} riceve lo stato di proprietario da {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} ha bandito {{target}}"
+msgstr "{{nick}} ha bloccato {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} ha rimosso il ban su {{target}}"
+msgstr "{{nick}} ha rimosso il blocco su {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
@@ -639,7 +647,7 @@ msgstr "Connesso a {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} è entrato"
+msgstr "{{nick}} è entrato nel canale"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
@@ -651,7 +659,7 @@ msgstr "{{nick}} è stato allontanato da {{channel}} da {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} è uscito"
+msgstr "{{nick}} è uscito dal canale"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
@@ -667,5 +675,5 @@ msgstr "{{nick}} ha cambiato il suo nick in {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr "il topic è stato cambiato in:"
+msgstr "il topic è stato cambiato in: {{topic}}"
 
