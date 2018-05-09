@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2018-05-08 13:20-0400\n"
+"PO-Revision-Date: 2018-05-09 04:01-0400\n"
 
 #: Start
 msgid "start_button"
@@ -288,6 +288,14 @@ msgstr "Apenas moderadores podem alterar o tópico"
 #: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Bloquear mensagens externas"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr ""
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr ""
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -631,41 +639,41 @@ msgstr "Conectado"
 
 #: Disconnected
 msgid "disconnected"
-msgstr ""
+msgstr "Desligado"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr ""
+msgstr "Ligado a rede {{network}}"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr ""
+msgstr "{{nick}} entrou"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr ""
+msgstr "Foste kickado do {{channel}} por {{nick}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr ""
+msgstr "{{nick}} foi kickado do {{channel}} por {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr ""
+msgstr "{{nick}} saiu"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr ""
+msgstr "{{nick}} convidou-te para o canal {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr ""
+msgstr "Alcunha {{nick}} já em uso. Tentando com {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr ""
+msgstr "{{nick}} é agora conhecido como {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr ""
+msgstr "alterou o tópico para: {{topic}}"
 

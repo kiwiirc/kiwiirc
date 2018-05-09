@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2018-05-08 13:20-0400\n"
+"PO-Revision-Date: 2018-05-09 05:20-0400\n"
 
 #: Start
 msgid "start_button"
@@ -288,6 +288,14 @@ msgstr "Només els moderadors poden canviar el tòpic"
 #: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Bloquejar missatges externs"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr "Fes click al botó Actualitzar per refrescar el llistat de sales"
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr "No s'han trobat sales, intenta-ho de nou més tard"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -667,5 +675,5 @@ msgstr "{{nick}} és ara {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr "ha canviat el tòpic a: "
+msgstr "ha canviat el tòpic a: {{topic}}"
 

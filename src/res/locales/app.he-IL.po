@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2018-05-08 13:21-0400\n"
+"PO-Revision-Date: 2018-05-09 03:43-0400\n"
 
 #: Start
 msgid "start_button"
@@ -288,6 +288,14 @@ msgstr "רק מנהלים רשאים לשנות כותרת"
 #: Block messages from outside this channel
 msgid "channel_external"
 msgstr "חסום הודעות שבאות מחוץ לחדר זה"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr ""
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr ""
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
