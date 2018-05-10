@@ -12,7 +12,8 @@
 }
 
  /* Welcome Screen ( Welcome.vue ) */
- .kiwi-welcome-simple-form {
+ .kiwi-welcome-simple-form,
+ .kiwi-customserver-form{
      background-color: #fff;
      border: 1px solid #ececec;
  }
@@ -37,6 +38,11 @@
  .kiwi-welcome-simple .help a:hover {
      color: #a9d87a;
  }
+
+/* Custom server layout */
+.kiwi-customserver {
+	background-color: #fbfbfb;
+}
 
 
 /* App ( App.vue ) */
