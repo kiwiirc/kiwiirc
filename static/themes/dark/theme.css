@@ -12,7 +12,8 @@
 }
 
  /* Welcome Screen ( Welcome.vue ) */
- .kiwi-welcome-simple-form {
+ .kiwi-welcome-simple-form,
+ .kiwi-customserver-form {
      background-color: #ffffff;
      color: #000;
      border: 1px solid #ececec;
@@ -41,6 +42,10 @@
 
  .kiwi-welcome-simple .help a:hover {
      color: #a9d87a;
+ }
+
+ .kiwi-customserver {
+ 	background-color: #fbfbfb;
  }
 
  /* ZNC startup screen */
@@ -521,7 +526,7 @@
     background: rgba(0,0,0,0.02);
     border: 2px solid #42b992;
     color: #dedede;
-}   
+}
 
 .kiwi-messagelist-message-traffic-join {
     color: #090;
