@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-05-09 04:02-0400\n"
+"PO-Revision-Date: 2018-05-10 06:40-0400\n"
 
 #: Start
 msgid "start_button"
@@ -291,11 +291,11 @@ msgstr "Блокиране на външни съобщения"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr ""
+msgstr "Кликнете върху бутона за опресняване, за да актуализирате списъка с канали"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr ""
+msgstr "Няма намерени канали, опитайте отново по-късно"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
