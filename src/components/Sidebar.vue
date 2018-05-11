@@ -67,6 +67,7 @@
                     :network="network"
                     :buffer="buffer"
                     :users="users"
+                    :uiState="uiState"
                 ></nicklist>
             </template>
             <template v-else-if="buffer.isQuery()">

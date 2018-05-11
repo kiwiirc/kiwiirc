@@ -20,7 +20,7 @@
                         v-bind:style="nickStyle(user.nick)"
                         >{{user.nick}}
                 </span>
-                <span class="kiwi-nicklist-messageuser" @click="openQuery(user)">
+                <span class="kiwi-nicklist-messageuser" @click.stop="openQuery(user)">
                     <i class="fa fa-comment" aria-hidden="true"></i>
                 </span>
             </li>
@@ -60,7 +60,7 @@ export default {
             user_filter: '',
         };
     },
-    props: ['network', 'buffer', 'users'],
+    props: ['network', 'buffer', 'users', 'uiState'],
     computed: {
         sortedUsers: function sortedUsers() {
             // Get a list of network prefixes and give them a rank number
@@ -164,6 +164,7 @@ export default {
         openQuery: function openQuery(user) {
             let buffer = state.addBuffer(this.buffer.networkid, user.nick);
             state.setActiveBuffer(buffer.networkid, buffer.name);
+            this.uiState.close();
         },
         openUserbox: function openUserbox(user, mouseEvent) {
             state.$emit('userbox.show', user, {
