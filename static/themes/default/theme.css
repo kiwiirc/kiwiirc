@@ -717,6 +717,10 @@
     background: #d16c6c;
 }
 
+.kiwi-container--sidebar-pinned .kiwi-sidebar {
+    border-color: #b2b2b2;
+}
+
 
 /* Statebrowser - Left sidebar ( StateBrowser.vue ) */
 .kiwi-statebrowser {

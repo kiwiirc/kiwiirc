@@ -79,11 +79,42 @@ let ContainerUiState = Vue.extend({
     data() {
         return {
             sidebarOpen: false,
+            sidebarPinned: false,
             // sidebarSection may be either '', 'user', 'settings', 'nicklist'
             sidebarSection: '',
         };
     },
+    computed: {
+        isPinned() {
+            // Pinned sidebar only works on full width windows otherwise its too small to see
+            return this.sidebarPinned && this.canPin;
+        },
+        isOpen() {
+            return !this.isPinned && this.sidebarOpen;
+        },
+        isClosed() {
+            return !this.isOpen && !this.isPinned;
+        },
+        canPin() {
+            return state.ui.app_width > 769;
+        },
+    },
     methods: {
+        section() {
+            return this.isClosed ?
+                '' :
+                this.sidebarSection || 'nicklist';
+        },
+        pin() {
+            this.sidebarPinned = true;
+            if (this.sidebarSection === '') {
+                this.showNicklist();
+            }
+        },
+        unpin() {
+            this.sidebarPinned = false;
+            this.close();
+        },
         close() {
             this.sidebarOpen = false;
             this.sidebarSection = '';
@@ -161,6 +192,10 @@ export default {
         window.addEventListener('touchstart', event => {
             // Parts of the UI adjust themselves if we're known to be using a touchscreen
             state.ui.is_touch = true;
+        });
+        window.addEventListener('resize', event => {
+            state.ui.app_width = window.innerWidth;
+            state.ui.app_height = window.innerHeight;
         });
 
         // favicon bubble

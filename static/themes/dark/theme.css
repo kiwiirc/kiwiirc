@@ -497,6 +497,10 @@
     background: #1e1e1e;
 }
 
+.kiwi-container--sidebar-pinned .kiwi-sidebar {
+    border-color: #464646;
+}
+
 .kiwi-sidebar .u-form label input[type="text"],
 .kiwi-sidebar .u-form textarea {
     background: #d1d1d1;

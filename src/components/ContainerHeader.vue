@@ -16,6 +16,7 @@
                 </div>
                 <div class="kiwi-header-option kiwi-header-option-nicklist"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
                 <div class="kiwi-header-option kiwi-header-option-settings"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>Channel Settings</span></a></div>
+                <div v-if="uiState.isPinned" class="kiwi-header-option kiwi-header-option-unpinsidebar"><a @click="uiState.unpin()"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a></div>
                 <div class="kiwi-header-option kiwi-header-option-leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
             </div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
@@ -50,6 +51,7 @@
             </div>
             <div class="kiwi-header-options">
                 <div class="kiwi-header-option kiwi-header-option-leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
+                <div v-if="uiState.isPinned" class="kiwi-header-option kiwi-header-option-unpinsidebar"><a @click="uiState.unpin()"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a></div>
             </div>
         </template>
 
@@ -284,6 +286,10 @@ export default {
     i {
         margin: 0;
     }
+}
+
+.kiwi-header-option-unpinsidebar i {
+    margin: 0;
 }
 
 /* The not joined button */

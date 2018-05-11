@@ -291,6 +291,8 @@ const stateObj = {
         active_buffer: '',
         last_active_buffers: [],
         app_has_focus: true,
+        app_width: 0,
+        app_height: 0,
         is_touch: false,
         favicon_counter: 0,
     },

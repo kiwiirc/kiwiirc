@@ -264,11 +264,10 @@ export default {
 </script>
 
 <style lang="less">
-.kiwi-container--sidebar-open .kiwi-sidebar-userbox {
+.kiwi-sidebar-userbox {
     right: 0;
     width: 380px;
     max-width: none;
-    border-left: none;
     height: 100%;
     overflow-y: scroll;
 }
