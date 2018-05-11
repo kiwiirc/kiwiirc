@@ -193,10 +193,14 @@ export default {
             // Parts of the UI adjust themselves if we're known to be using a touchscreen
             state.ui.is_touch = true;
         });
-        window.addEventListener('resize', event => {
+
+        // Track the window dimensions into the reactive ui state
+        function trackWindowDims() {
             state.ui.app_width = window.innerWidth;
             state.ui.app_height = window.innerHeight;
-        });
+        }
+        window.addEventListener('resize', trackWindowDims);
+        trackWindowDims();
 
         // favicon bubble
         Tinycon.setOptions({
