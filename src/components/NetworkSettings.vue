@@ -66,8 +66,11 @@
                     </div>
 
                     <div class="kiwi-padded-form-element-container">
-                        <div class="u-button kiwi-connect-to-newnetwork" @click="network.ircClient.connect()">
+                        <div v-if="network.state === 'disconnected'" class="u-button kiwi-connect-to-newnetwork" @click="network.ircClient.connect()">
                             Connect To Network
+                        </div>
+                        <div v-else-if="network.state === 'connecting'" class="u-button kiwi-connect-to-newnetwork" >
+                            {{$t('connecting')}}
                         </div>
                     </div>
                 </div>
