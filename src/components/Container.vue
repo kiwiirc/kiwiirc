@@ -128,7 +128,7 @@ export default {
 /* When the sidebar is open we will put a shadow over the text area */
 .kiwi-header {
     z-index: 1;
-    flex: 0 1;
+    flex: 0 1 0;
 }
 
 .kiwi-sidebar {
