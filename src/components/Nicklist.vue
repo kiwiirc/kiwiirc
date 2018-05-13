@@ -215,7 +215,6 @@ export default {
     align-items: flex-start;
     padding: 0.5em 10px;
     cursor: default;
-    height: 38px;
     box-sizing: border-box;
 
     span {
@@ -235,8 +234,6 @@ export default {
     font-size: 0.9em;
     padding-bottom: 0;
     text-align: center;
-    border-width: 0 0 1px 0;
-    border-style: solid;
     display: flex;
     flex-direction: column;
 
