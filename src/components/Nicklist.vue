@@ -268,8 +268,6 @@ export default {
 }
 
 .kiwi-nicklist-users {
-    display: flex;
-    flex-direction: column;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -283,7 +281,6 @@ export default {
 }
 
 .kiwi-nicklist-user {
-    height: 40px;
     line-height: 40px;
     padding: 0 1em;
     margin: 0;
