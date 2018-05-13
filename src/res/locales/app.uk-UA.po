@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Start\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: uk\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-02-07 18:01-0500\n"
+"PO-Revision-Date: 2018-05-09 03:42-0400\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "OK"
 msgid "cancel"
 msgstr "Скасувати"
 
-#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "Це закриє усі розмови KiwiIRC. Ви дійсно хочете закрити це вікно?"
 
@@ -288,6 +288,14 @@ msgstr "Лише модератори можуть змінювати тему"
 #: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Блокувати зовнішні повідомлення"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr ""
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr ""
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -539,55 +547,55 @@ msgstr "Заблокувати й виштовхнути з каналу"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "{{nick}} віддає права ops {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr ""
+msgstr "{{nick}} приймає права ops від {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr ""
+msgstr "{{nick}} віддає права half-ops {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr ""
+msgstr "{{nick}} приймає права half-ops від {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr ""
+msgstr "{{nick}} передає голос {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr ""
+msgstr "{{nick}} приймає голос від {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr ""
+msgstr "{{nick}} віддає права admin {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr ""
+msgstr "{{nick}} приймає права admin від {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr ""
+msgstr "{{nick}} віддає права owner {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr ""
+msgstr "{{nick}} приймає права owner від {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr ""
+msgstr "{{nick}} заблокував {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr ""
+msgstr "{{nick}} розблокував {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}} встановив режим {{mode}} на {{target}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -624,4 +632,48 @@ msgstr "(Подяка Adam @Rizon за підтримку в розробці с
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Випробуйте розробницьку версію Kiwi IRC!"
+
+#: Connected
+msgid "connected"
+msgstr "З'єднано"
+
+#: Disconnected
+msgid "disconnected"
+msgstr ""
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr ""
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr ""
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr ""
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr ""
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr ""
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr ""
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr ""
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr ""
+
+#: changed the topic to:
+msgid "changed_topic_to"
+msgstr ""
 

@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2018-02-07 18:01-0500\n"
+"PO-Revision-Date: 2018-05-09 05:20-0400\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "D'acord"
 msgid "cancel"
 msgstr "Cancel·lar"
 
-#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "Això tancarà totes les converses de KiwiIRC. Segur que vols tancar aquesta finestra?"
 
@@ -288,6 +288,14 @@ msgstr "Només els moderadors poden canviar el tòpic"
 #: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Bloquejar missatges externs"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr "Fes click al botó Actualitzar per refrescar el llistat de sales"
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr "No s'han trobat sales, intenta-ho de nou més tard"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -539,55 +547,55 @@ msgstr "Kick + Ban del canal"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "{{nick}} dóna ops a {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr ""
+msgstr "{{nick}} treu ops de {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr ""
+msgstr "{{nick}} dóna half-ops a {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr ""
+msgstr "{{nick}} treu half-ops a {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr ""
+msgstr "{{nick}} dóna veu a {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr ""
+msgstr "{{nick}} li treu veu a {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr ""
+msgstr "{{nick}} dóna admin a {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr ""
+msgstr "{{nick}} treu admin a {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr ""
+msgstr "{{nick}} li dóna estatus de propietari a {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr ""
+msgstr "{{nick}} li treu l'estatus d'admin a {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr ""
+msgstr "{{nick}} ha banejat a {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr ""
+msgstr "{{nick}} ha desbanejat a {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}} ajusta {{mode}} a {{target}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -624,4 +632,48 @@ msgstr "(Gràcies a Adam @Rizon per el desenvolupament del suport del servidor d
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Prova la versió en desenvolupament del Kiwi IRC!"
+
+#: Connected
+msgid "connected"
+msgstr "Connectat"
+
+#: Disconnected
+msgid "disconnected"
+msgstr "Desconnectat"
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr "Connectat a {{network}}!"
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr "{{nick}} ha entrat"
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr "{{nick}} t'ha expulsat de {{channel}}"
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr "{{nick}} ha estat expulsat de {{channel}} per {{chanop}}"
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr "{{nick}} ha sortit"
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr "{{nick}} t'ha convidat a entrar a {{channel}}"
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr "L'àlies {{nick} està en ús. Provant {{newnick}}..."
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr "{{nick}} és ara {{newnick}}"
+
+#: changed the topic to:
+msgid "changed_topic_to"
+msgstr "ha canviat el tòpic a: {{topic}}"
 

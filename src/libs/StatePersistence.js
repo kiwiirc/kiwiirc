@@ -28,7 +28,6 @@ export default class StatePersistence {
         }
     }
 
-
     watchStateForChanges() {
         if (!this.storageKey) {
             return;
@@ -48,7 +47,6 @@ export default class StatePersistence {
 
         this.isPersisting = true;
     }
-
 
     forgetState() {
         this.state.resetState();

@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-02-07 18:01-0500\n"
+"PO-Revision-Date: 2018-05-09 04:02-0400\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "OK"
 msgid "cancel"
 msgstr "Annuleren"
 
-#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "Hierdoor worden alle KiwiIRC-gesprekken gesloten. Weet je zeker dat je dit venster wilt sluiten?"
 
@@ -288,6 +288,14 @@ msgstr "Alleen moderators kunnen het topic wijzigen"
 #: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Externe berichten blokkeren"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr ""
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr ""
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -539,55 +547,55 @@ msgstr "Uit het kanaal zetten en verbannen"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "{{nick}} geeft ops aan {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr ""
+msgstr "{{nick}} neemt ops van {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr ""
+msgstr "{{nick}} geeft half-ops aan {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr ""
+msgstr "{{nick}} neemt half-ops van {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr ""
+msgstr "{{nick}} geeft voice aan {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr ""
+msgstr "{{nick}} neemt voice van {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr ""
+msgstr "{{nick}} geeft admin aan {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr ""
+msgstr "{{nick}} neemt admin van {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr ""
+msgstr "{{nick}} geeft owner aan {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr ""
+msgstr "{{nick}} neemt owner van {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr ""
+msgstr "{{nick}} heeft {{target}} verbannen"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr ""
+msgstr "{{nick}} heeft verbanning van {{target}} opgeheven"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}} stelt {{mode}} in op {{target}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -624,4 +632,48 @@ msgstr "(Dank aan Adam @Rizon voor de ontwikkeling van de websocket-serveronders
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Probeer de ontwikkelaarsversie van Kiwi IRC!"
+
+#: Connected
+msgid "connected"
+msgstr "Verbonden"
+
+#: Disconnected
+msgid "disconnected"
+msgstr "Verbroken"
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr "Verbonden met {{network}}!"
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr "{{nick}} is binnengekomen"
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr "{{nick}} heeft je uit {{channel}} gezet"
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr "{{nick}} is uit {{channel}} gezet door {{chanop}}"
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr "{{nick}} is weggegaan"
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr "{{nick}} heeft je uitgenodigd voor {{channel}}"
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr "Bijnaam {{nick}} is al in gebruik. {{newnick}} proberen..."
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr "{{nick}} is nu bekend als {{newnick}}"
+
+#: changed the topic to:
+msgid "changed_topic_to"
+msgstr "heeft het topic gewijzigd naar: {{topic}}"
 

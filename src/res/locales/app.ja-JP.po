@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2018-02-07 18:00-0500\n"
+"PO-Revision-Date: 2018-05-09 03:42-0400\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr ""
 msgid "cancel"
 msgstr ""
 
-#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr ""
 
@@ -287,6 +287,14 @@ msgstr ""
 
 #: Block messages from outside this channel
 msgid "channel_external"
+msgstr ""
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr ""
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
 msgstr ""
 
 #: Welcome to Kiwi IRC!
@@ -623,5 +631,49 @@ msgstr ""
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
+msgstr ""
+
+#: Connected
+msgid "connected"
+msgstr ""
+
+#: Disconnected
+msgid "disconnected"
+msgstr ""
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr ""
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr ""
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr ""
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr ""
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr ""
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr ""
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr ""
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr ""
+
+#: changed the topic to:
+msgid "changed_topic_to"
 msgstr ""
 

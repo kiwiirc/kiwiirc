@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2018-02-07 18:01-0500\n"
+"PO-Revision-Date: 2018-05-09 03:43-0400\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "Ados"
 msgid "cancel"
 msgstr "Ezeztatzea"
 
-#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "KiwiIRC-elkarrizketa guztiak itxiko dira. Segurua leiho hau itxi nahi duzula?"
 
@@ -288,6 +288,14 @@ msgstr "Moderatzaileek soilik gaia alda dezakete"
 #: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Kanpoko mezuak bloketu"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr ""
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr ""
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -539,55 +547,55 @@ msgstr "Kanaleko Botatzea + Blokeatzea"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "{{nick}} ops ematen dio {{target}}-ri"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr ""
+msgstr "{{nick}} ops kentzen dio {{target}}-ri "
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr ""
+msgstr "{{nick}} half-ops ematen dio {{target}}-ri "
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr ""
+msgstr "{{nick}} half-ops kentzen dio  {{target}}-ri "
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr ""
+msgstr "{{nick}} voice ematen dio {{target}}-ri "
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr ""
+msgstr "{{nick}} half-ops kentzen dio {{target}}-ri "
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr ""
+msgstr "{{nick}} admin ematen dio {{target}}-ri "
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr ""
+msgstr "{{nick}} admin kentzen dio {{target}}-ri "
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr ""
+msgstr "{{nick}} owner ematen dio {{target}}-ri "
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr ""
+msgstr "{{nick}} owner kentzen dio {{target}}-ri "
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr ""
+msgstr "{{nick}}-k {{target}} kanporatu du"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr ""
+msgstr "{{nick}}-k {{target}} desbaneatu du"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}} doitu du {{mode}} {{target}}-en"
 
 #: Your IRC client
 msgid "personal_client"
@@ -624,4 +632,48 @@ msgstr "(@Rizon Adam-i esker websockets-zerbitzariaren euskarriaren garapenagati
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Bertsioa probatzen du Kiwi IRC-aren garapenean!"
+
+#: Connected
+msgid "connected"
+msgstr "Konektatuta"
+
+#: Disconnected
+msgid "disconnected"
+msgstr ""
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr ""
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr ""
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr ""
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr ""
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr ""
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr ""
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr ""
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr ""
+
+#: changed the topic to:
+msgid "changed_topic_to"
+msgstr ""
 

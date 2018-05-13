@@ -1,29 +1,34 @@
 <template>
     <div class="kiwi-buffersettings">
         <div class="kiwi-buffersettings-alerts">
+            <h3>{{$t('settings_notify')}}</h3>
+            <hr>
             <form class="u-form">
-                <b>{{$t('settings_notify')}}: </b><br />
                 <label>
                     <span>{{$t('settings_notify_all')}}</span>
                     <input type="radio" name="alert_on" value="message" v-model="settingAlertOn">
-                </label><br />
+                </label>
                 <label>
                     <span>{{$t('settings_notify_mentioned')}}</span>
                     <input type="radio" name="alert_on" value="highlight" v-model="settingAlertOn">
-                </label><br />
+                </label>
                 <label>
                     <span>{{$t('settings_notify_never')}}</span>
                     <input type="radio" name="alert_on" value="never" v-model="settingAlertOn">
-                </label><br />
+                </label>
+            </form>
 
+            <h3>{{$t('settings')}}</h3>
+            <hr>
+            <form class="u-form">
                 <label>
                     <span>{{$t('settings_notify_mute')}}</span>
                     <input type="checkbox" v-model="settingMuteSound">
-                </label><br />
+                </label>
                 <label>
                     <span>{{$t('settings_show_message_counts')}}</span>
                     <input type="checkbox" v-model="settingHideMessageCount">
-                </label><br />
+                </label>
             </form>
         </div>
     </div>

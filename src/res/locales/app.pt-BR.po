@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2018-02-07 18:00-0500\n"
+"PO-Revision-Date: 2018-05-09 04:01-0400\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "Ok"
 msgid "cancel"
 msgstr "Cancelar"
 
-#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "Isto irá fechar todas as janelas do KiwiIRC. Deseja continuar?"
 
@@ -288,6 +288,14 @@ msgstr "Apenas moderadores podem alterar o tópico"
 #: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Bloquear mensagens externas"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr ""
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr ""
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -539,55 +547,55 @@ msgstr "Kickar + Banir do canal"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "{{nick}} deu estatuto de op a {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr ""
+msgstr "{{nick}} tirou estatuto de op a {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr ""
+msgstr "{{nick}} deu estatuto de half-op a {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr ""
+msgstr "{{nick}} tirou estatuto de half-op a {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr ""
+msgstr "{{nick}} deu estatuto de voice a {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr ""
+msgstr "{{nick}} tirou estatuto de voice a {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr ""
+msgstr "{{nick}} deu estatuto de admin a {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr ""
+msgstr "{{nick}} tirou estatuto de admin a {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr ""
+msgstr "{{nick}} deu estatuto de owner a {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr ""
+msgstr "{{nick}} tirou estatuto de owner a {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr ""
+msgstr "{{target}} foi banido por {{nick}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr ""
+msgstr "{{target}} foi desbanido por {{nick}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}} colocou o modo {{mode}} em {{target}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -624,4 +632,48 @@ msgstr "(Obrigado a Adam @Rizon pelo desenvolvimento do suporte de servidor webs
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Teste a versão em desenvolvimento do Kiwi IRC!"
+
+#: Connected
+msgid "connected"
+msgstr "Conectado"
+
+#: Disconnected
+msgid "disconnected"
+msgstr "Desligado"
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr "Ligado a rede {{network}}"
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr "{{nick}} entrou"
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr "Foste kickado do {{channel}} por {{nick}}"
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr "{{nick}} foi kickado do {{channel}} por {{chanop}}"
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr "{{nick}} saiu"
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr "{{nick}} convidou-te para o canal {{channel}}"
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr "Alcunha {{nick}} já em uso. Tentando com {{newnick}}..."
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr "{{nick}} é agora conhecido como {{newnick}}"
+
+#: changed the topic to:
+msgid "changed_topic_to"
+msgstr "alterou o tópico para: {{topic}}"
 

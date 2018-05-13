@@ -21,12 +21,23 @@ div {
     cursor: pointer;
 }
 
+.u-link:hover {
+    text-decoration: underline;
+}
+
 .u-button {
     display: inline-block;
     white-space: nowrap;
     cursor: pointer;
     padding: 0.4em 0.9em;
-    font-size: 1em;
+    border-radius: 4px;
+    vertical-align: middle;
+    text-align: center;
+    outline: none;
+}
+
+.u-button:hover {
+    opacity: 0.75;
 }
 
 .u-form {
@@ -34,26 +45,87 @@ div {
 }
 
 .u-form label {
-    margin-bottom: 5px;
-    display: inline-block;
+    display: block;
+    line-height: 20px;
+    margin: 0 0 10px 0;
 }
 
 .u-form label span {
-    display: inline-block;
-    width: 100px;
     margin-right: 1em;
-    text-align: right;
-}
-
-.u-form .u-input,
-.u-form textarea {
-    font-size: 0.9em;
-    padding: 3px 5px;
+    display: inline-block;
+    line-height: 25px;
+    width: auto;
+    font-weight: 500;
+    text-align: left;
+    max-width: none;
 }
 
 .u-form label.u-form-block span {
     width: auto;
     display: inline-block;
+}
+
+/* Style all form inputs */
+.u-form input[type='checkbox'] {
+    float: left;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    border-radius: 1px;
+    cursor: pointer;
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+.u-form input[type='checkbox']::after {
+    position: absolute;
+    content: '';
+    left: 1px;
+    top: 1px;
+    width: 14px;
+    height: 14px;
+    z-index: 10;
+    transition: all 0.3s;
+    opacity: 0;
+}
+
+.u-form input[type='checkbox']:checked::after {
+    position: absolute;
+    content: '';
+    left: 1px;
+    top: 1px;
+    width: 14px;
+    height: 14px;
+    z-index: 10;
+    transition: all 0.3s;
+    opacity: 1;
+}
+
+.u-form input[type="radio"] {
+    float: right;
+}
+
+.u-form .u-input,
+.u-form input[type='text'],
+.u-form input[type='password'],
+.u-form input[type='email'],
+.u-form textarea {
+    font-size: 0.9em;
+    clear: both;
+    width: 100%;
+    height: 40px;
+    padding: 3px 5px;
+    line-height: 40px;
+    box-sizing: border-box;
+    border-radius: 1px;
+    min-height: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: none;
 }
 
 .u-form .u-submit {
@@ -82,3 +154,37 @@ div {
     white-space: pre-wrap;
     display: inline-block;
 }
+
+.irc-fg-colour-white { color: #fff; }
+.irc-fg-colour-black { color: #000; }
+.irc-fg-colour-blue { color: #00f; }
+.irc-fg-colour-green { color: #0f0; }
+.irc-fg-colour-light-red { color: #ff5959; }
+.irc-fg-colour-brown { color: #743a00; }
+.irc-fg-colour-purple { color: #a500ff; }
+.irc-fg-colour-orange { color: #ff8c00; }
+.irc-fg-colour-yellow { color: #ff0; }
+.irc-fg-colour-light-green { color: #6fff6f; }
+.irc-fg-colour-cyan { color: #0ff; }
+.irc-fg-colour-light-cyan { color: #6dffff; }
+.irc-fg-colour-light-blue { color: #59b4ff; }
+.irc-fg-colour-pink { color: #f0f; }
+.irc-fg-colour-grey { color: #bcbcbc; }
+.irc-fg-colour-light-grey { color: #e2e2e2; }
+
+.irc-bg-colour-white { background-color: #fff; }
+.irc-bg-colour-black { background-color: #000; }
+.irc-bg-colour-blue { background-color: #00f; }
+.irc-bg-colour-green { background-color: #0f0; }
+.irc-bg-colour-light-red { background-color: #ff5959; }
+.irc-bg-colour-brown { background-color: #743a00; }
+.irc-bg-colour-purple { background-color: #a500ff; }
+.irc-bg-colour-orange { background-color: #ff8c00; }
+.irc-bg-colour-yellow { background-color: #ff0; }
+.irc-bg-colour-light-green { background-color: #6fff6f; }
+.irc-bg-colour-cyan { background-color: #0ff; }
+.irc-bg-colour-light-cyan { background-color: #6dffff; }
+.irc-bg-colour-light-blue { background-color: #59b4ff; }
+.irc-bg-colour-pink { background-color: #f0f; }
+.irc-bg-colour-grey { background-color: #bcbcbc; }
+.irc-bg-colour-light-grey { background-color: #e2e2e2; }

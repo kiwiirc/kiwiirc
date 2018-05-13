@@ -8,13 +8,12 @@
 
                     <input-text v-if="showNick" class="kiwi-welcome-simple-nick" :label="$t('nick')" v-model="nick" />
                     <label v-if="showPass" class="kiwi-welcome-simple-have-password">
-                        <input type="checkbox" v-model="show_password_box" /> {{$t('password_have')}}
+                        <input type="checkbox" v-model="show_password_box" /> <span> {{$t('password_have')}} </span>
                     </label>
                     <input-text v-focus v-if="show_password_box" class="kiwi-welcome-simple-password input-text--reveal-value" :label="$t('password')" v-model="password" type="password" />
                     <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" :label="$t('channel')" v-model="channel" />
 
                     <div v-if="recaptchaSiteId" class="g-recaptcha" :data-sitekey="recaptchaSiteId"></div>
-
                     <button
                         class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
                         type="submit"
@@ -229,11 +228,9 @@ export default {
 }
 
 .kiwi-welcome-simple-form {
-    width: 300px;
-    background-color: #fff;
+    width: 90%;
     border-radius: 0.5em;
     padding: 1em;
-    border: 1px solid #ececec;
 }
 
 .kiwi-welcome-simple-error {
@@ -254,11 +251,11 @@ export default {
     padding: 0 0.5em;
 }
 
-.kiwi-welcome-simple-section-connection input[type="text"] {
-    font-size: 1em;
+.kiwi-welcome-simple-section-connection .input-text input[type="text"] {
     margin-top: 5px;
     padding: 0.3em 1em;
     width: 100%;
+    font-size: 1.1em;
     box-sizing: border-box;
 }
 
@@ -273,19 +270,19 @@ export default {
     padding: 0.5em;
 }
 
-.kiwi-welcome-simple .kiwi-welcome-simple-have-password input,
-.kiwi-welcome-simple-have-password {
+.kiwi-welcome-simple-have-password input {
     font-size: 0.8em;
     margin: 0.8em 0;
-}
-
-.kiwi-welcome-simple-have-password,
-.kiwi-welcome-simple-password.input-text {
-    margin-top: 0;
+    margin-top: 2px;
 }
 
 .kiwi-welcome-simple .g-recaptcha {
     margin-bottom: 10px;
+}
+
+.kiwi-welcome-simple .u-form label span {
+    font-size: 1.1em;
+    margin-left: 5px;
 }
 
 .kiwi-welcome-simple-start {
@@ -295,6 +292,7 @@ export default {
 
 .kiwi-welcome-simple-start[disabled] {
     cursor: not-allowed;
+    opacity: 0.65;
 }
 
 .kiwi-welcome-simple-channel {
@@ -312,25 +310,18 @@ export default {
     margin: 0;
     transition: all 0.2s;
     border: none;
-    background-color: #86b32d;
 }
 
 .kiwi-welcome-simple .help {
     position: absolute;
     bottom: 0.2em;
     font-size: 0.8em;
-    color: #666;
     width: 50%;
     text-align: center;
 }
 
 .kiwi-welcome-simple .help a {
     text-decoration: underline;
-    color: #666;
-}
-
-.kiwi-welcome-simple .help a:hover {
-    color: #a9d87a;
 }
 
 /* Styling the preloader */

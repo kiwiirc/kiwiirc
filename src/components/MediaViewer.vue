@@ -9,7 +9,13 @@
             </a>
         </div>
         <div :key="url">
+            <iframe
+                v-if="isIframe"
+                class="kiwi-mediaviewer-iframe"
+                :src="url"
+            ></iframe>
             <a
+                v-else
                 v-bind:href="url"
                 class="embedly-card"
                 :data-card-key="embedlyKey"
@@ -32,7 +38,7 @@ export default {
         return {
         };
     },
-    props: ['url'],
+    props: ['url', 'isIframe'],
     computed: {
         embedlyKey: function embedlyKey() {
             return state.settings.embedly.key;
@@ -41,13 +47,16 @@ export default {
     methods: {
         updateEmbed: function updateEmbed() {
             let checkEmbedlyAndShowCard = () => {
+                if (!this.isIframe) {
+                    return;
+                }
+
                 // If the embedly function doesn't exist it's probably still loading
                 // the embedly script
                 if (typeof window.embedly !== 'function') {
                     setTimeout(checkEmbedlyAndShowCard, 100);
                     return;
                 }
-
                 window.embedly('card', { selector: '.embedly-card' });
             };
 
@@ -59,7 +68,6 @@ export default {
                 head.appendChild(script);
                 embedlyTagIncluded = true;
             }
-
             checkEmbedlyAndShowCard();
         },
         closeViewer: function closeViewer() {
@@ -78,9 +86,11 @@ export default {
         url: function watchUrl() {
             this.updateEmbed();
         },
+        isIframe: function watchUrl() {
+            this.updateEmbed();
+        },
     },
 };
-
 </script>
 
 <style>
@@ -97,5 +107,13 @@ export default {
 
 .kiwi-mediaviewer-controls-close {
     padding: 3px 15px;
+}
+
+.kiwi-mediaviewer-iframe {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    border: none;
 }
 </style>

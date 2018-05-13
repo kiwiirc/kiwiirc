@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2018-02-07 18:20-0500\n"
+"PO-Revision-Date: 2018-05-09 10:40-0400\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "OK"
 msgid "cancel"
 msgstr "Cancel"
 
-#: This will close all KiwiIRC conversations. Are you sure you want to close this window?
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "This will close all KiwiIRC conversations. Are you sure you want to close this window?"
 
@@ -288,6 +288,14 @@ msgstr "Only moderators can change the topic"
 #: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Block messages from outside this channel"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr "Click the refresh button to update the channel list"
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr "No channels found, try again later"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -624,4 +632,48 @@ msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Give the developer version of Kiwi IRC a try!"
+
+#: Connected
+msgid "connected"
+msgstr "Connected"
+
+#: Disconnected
+msgid "disconnected"
+msgstr "Disconnected"
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr "Connected to {{network}}!"
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr "{{nick}} has joined"
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr "{{nick}} kicked you from {{channel}}"
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr "{{nick}} has left"
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr "{{nick}} invited you to join {{channel}}"
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr "{{nick}} is now known as {{newnick}}"
+
+#: changed the topic to:
+msgid "changed_topic_to"
+msgstr "{{nick}} changed the topic to: {{topic}}"
 

@@ -53,7 +53,6 @@ export default Vue.component('irc-input', {
             }
         },
         onPaste: function onPaste(event) {
-            event.stopPropagation();
             event.preventDefault();
 
             let clipboardData = event.clipboardData || window.clipboardData;
@@ -289,46 +288,46 @@ export default Vue.component('irc-input', {
 
         // Focus the editable div and move the caret to the end
         focus: function focus() {
-            if (this.current_range) {
-                let selection = window.getSelection();
-                let savedSel = this.current_range;
+            if (!this.current_range) {
+                this.$refs.editor.focus();
+                return;
+            }
 
-                let charIndex = 0;
-                let range = document.createRange();
-                range.setStart(this.$refs.editor, 0);
-                range.collapse(true);
-                let nodeStack = [this.$refs.editor];
-                let node = null;
-                let foundStart = false;
-                let stop = false;
+            let selection = window.getSelection();
+            let savedSel = this.current_range;
+            let charIndex = 0;
+            let range = document.createRange();
+            range.setStart(this.$refs.editor, 0);
+            range.collapse(true);
+            let nodeStack = [this.$refs.editor];
+            let node = null;
+            let foundStart = false;
+            let stop = false;
 
-                while (!stop && (node = nodeStack.pop())) {
-                    if (node.nodeType === 3) {
-                        let nextCharIndex = charIndex + node.length;
-                        if (!foundStart && savedSel[0] >= charIndex && savedSel[0] <= nextCharIndex) {
-                            range.setStart(node, savedSel[0] - charIndex);
-                            foundStart = true;
-                        }
-                        if (foundStart && savedSel[1] >= charIndex && savedSel[1] <= nextCharIndex) {
-                            range.setEnd(node, savedSel[1] - charIndex);
-                            stop = true;
-                        }
-                        charIndex = nextCharIndex;
-                    } else {
-                        let i = node.childNodes.length;
-                        while (i--) {
-                            nodeStack.push(node.childNodes[i]);
-                        }
+            while (!stop && (node = nodeStack.pop())) {
+                if (node.nodeType === 3) {
+                    let nextCharIndex = charIndex + node.length;
+                    if (!foundStart && savedSel[0] >= charIndex && savedSel[0] <= nextCharIndex) {
+                        range.setStart(node, savedSel[0] - charIndex);
+                        foundStart = true;
+                    }
+                    if (foundStart && savedSel[1] >= charIndex && savedSel[1] <= nextCharIndex) {
+                        range.setEnd(node, savedSel[1] - charIndex);
+                        stop = true;
+                    }
+                    charIndex = nextCharIndex;
+                } else {
+                    let i = node.childNodes.length;
+                    while (i--) {
+                        nodeStack.push(node.childNodes[i]);
                     }
                 }
-
-                // Firefox needs the manual focus() call
-                this.$refs.editor.focus();
-                selection.removeAllRanges();
-                selection.addRange(range);
-            } else {
-                this.$refs.editor.focus();
             }
+
+            // Firefox needs the manual focus() call
+            this.$refs.editor.focus();
+            selection.removeAllRanges();
+            selection.addRange(range);
         },
     },
 });

@@ -7,6 +7,7 @@
             'kiwi-wrap--touch': state.ui.is_touch,
         }"
         @click="emitDocumentClick"
+        @paste="emitBufferPaste"
     >
         <link v-bind:href="themeUrl" rel="stylesheet" type="text/css">
 
@@ -14,7 +15,7 @@
             <component v-bind:is="startupComponent" v-on:start="startUp"></component>
         </template>
         <template v-else>
-            <state-browser :networks="networks"></state-browser>
+            <state-browser :networks="networks" :uiState="uiState"></state-browser>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"></div>
 
@@ -24,10 +25,12 @@
                         :buffer="buffer"
                         :users="users"
                         :isHalfSize="mediaviewerOpen"
+                        :uiState="uiState"
                     ></container>
                     <media-viewer
                         v-if="mediaviewerOpen"
                         :url="mediaviewerUrl"
+                        :isIframe="mediaviewerIframe"
                     ></media-viewer>
                     <control-input :container="networks" :buffer="buffer"></control-input>
                 </template>
@@ -46,6 +49,7 @@
 import 'font-awesome-webpack';
 import '@/res/globalStyle.css';
 import Tinycon from 'tinycon';
+import Vue from 'vue';
 
 import startupWelcome from '@/components/startups/Welcome';
 import startupZncLogin from '@/components/startups/ZncLogin';
@@ -68,6 +72,68 @@ let log = Logger.namespace('App.vue');
 /* eslint-disable no-new */
 new InputHandler(state);
 
+// ContainerUiState gets passed around to child components so they all know
+// what state the UI is in. Ie. sidebar open or closed, what section of the
+// sidebar is open, etc.
+let ContainerUiState = Vue.extend({
+    data() {
+        return {
+            sidebarOpen: false,
+            sidebarPinned: false,
+            // sidebarSection may be either '', 'user', 'settings', 'nicklist'
+            sidebarSection: '',
+        };
+    },
+    computed: {
+        isPinned() {
+            // Pinned sidebar only works on full width windows otherwise its too small to see
+            return this.sidebarPinned && this.canPin;
+        },
+        isOpen() {
+            return !this.isPinned && this.sidebarOpen;
+        },
+        isClosed() {
+            return !this.isOpen && !this.isPinned;
+        },
+        canPin() {
+            return state.ui.app_width > 769;
+        },
+    },
+    methods: {
+        section() {
+            return this.isClosed ?
+                '' :
+                this.sidebarSection || 'nicklist';
+        },
+        pin() {
+            this.sidebarPinned = true;
+            if (this.sidebarSection === '') {
+                this.showNicklist();
+            }
+        },
+        unpin() {
+            this.sidebarPinned = false;
+            this.close();
+        },
+        close() {
+            this.sidebarOpen = false;
+            this.sidebarSection = '';
+        },
+        showUser() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'user';
+        },
+        showNicklist() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'nicklist';
+        },
+        showBufferSettings() {
+            this.sidebarOpen = true;
+            this.sidebarSection = 'settings';
+        },
+    },
+});
+
 export default {
     created: function created() {
         this.listen(state, 'active.component', (component, props) => {
@@ -76,10 +142,6 @@ export default {
                 this.activeComponentProps = props;
                 this.activeComponent = component;
             }
-        });
-        this.listen(state, 'network.settings', (network) => {
-            this.activeComponent = null;
-            state.setActiveBuffer(network.id, network.serverBuffer().name);
         });
         this.listen(state, 'statebrowser.toggle', () => {
             this.stateBrowserDrawOpen = !this.stateBrowserDrawOpen;
@@ -91,7 +153,17 @@ export default {
             this.stateBrowserDrawOpen = false;
         });
         this.listen(state, 'mediaviewer.show', (url) => {
-            this.mediaviewerUrl = url;
+            let opts = {};
+
+            // The passed url may be a string or an options object
+            if (typeof url === 'string') {
+                opts = { url: url };
+            } else {
+                opts = url;
+            }
+
+            this.mediaviewerUrl = opts.url;
+            this.mediaviewerIframe = opts.iframe;
             this.mediaviewerOpen = true;
         });
         this.listen(state, 'mediaviewer.hide', () => {
@@ -99,9 +171,9 @@ export default {
         });
 
         let themes = ThemeManager.instance();
-        this.themeUrl = themes.themeUrl(themes.currentTheme());
+        this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
         this.listen(state, 'theme.change', () => {
-            this.themeUrl = themes.themeUrl(themes.currentTheme());
+            this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
         });
 
         document.addEventListener('keydown', event => this.emitDocumentKeyDown(event), false);
@@ -121,6 +193,14 @@ export default {
             // Parts of the UI adjust themselves if we're known to be using a touchscreen
             state.ui.is_touch = true;
         });
+
+        // Track the window dimensions into the reactive ui state
+        function trackWindowDims() {
+            state.ui.app_width = window.innerWidth;
+            state.ui.app_height = window.innerHeight;
+        }
+        window.addEventListener('resize', trackWindowDims);
+        trackWindowDims();
 
         // favicon bubble
         Tinycon.setOptions({
@@ -186,7 +266,9 @@ export default {
             fallbackComponentProps: {},
             mediaviewerOpen: false,
             mediaviewerUrl: '',
+            mediaviewerIframe: false,
             themeUrl: '',
+            uiState: new ContainerUiState(),
         };
     },
     computed: {
@@ -241,6 +323,22 @@ export default {
                 return null;
             };
         },
+        emitBufferPaste: function emitBufferPaste(event) {
+            // bail if no buffer is active, or the buffer is hidden by another component
+            if (!this.state.getActiveBuffer() || this.activeComponent !== null) {
+                return;
+            }
+
+            // bail if a sidebar is open
+            if (this.$data.uiState.sidebarOpen) {
+                return;
+            }
+
+            state.$emit('buffer.paste', event);
+
+            event.stopPropagation();
+            event.preventDefault();
+        },
         emitDocumentClick: function emitDocumentClick(event) {
             state.$emit('document.clicked', event);
         },
@@ -252,10 +350,9 @@ export default {
         },
     },
 };
-
 </script>
 
-<style>
+<style lang="less">
 html {
     height: 100%;
     margin: 0;
@@ -275,9 +372,6 @@ body {
     -webkit-font-smoothing: antialiased;
     height: 100%;
     overflow: hidden;
-
-    --kiwi-nick-brightness: 50;
-    --kiwi-supports-monospace: 1;
 }
 
 .kiwi-wrap--monospace {
@@ -285,43 +379,23 @@ body {
     font-size: 80%;
 }
 
-.kiwi-statebrowser {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    bottom: 0;
-    transition: left 0.5s;
-    z-index: 1;
-}
-
-/* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 769px) {
-    .kiwi-statebrowser {
-        left: -200px;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
-        left: 0;
-    }
-}
-
 .kiwi-workspace {
     position: relative;
-    margin-left: 200px;
+    margin-left: 220px;
     left: 0;
     display: block;
     height: 100%;
-    transition: left 0.5s, margin-left 0.5s;
+    transition: left 0.2s, margin-left 0.2s;
 }
 
 .kiwi-workspace::before {
     position: absolute;
     content: '';
-    height: 4px;
     right: 0;
     left: 0;
     top: 0;
+    height: 7px;
+    z-index: 0;
 }
 
 /* When the statebrowser opens as a draw, darken the workspace */
@@ -330,7 +404,6 @@ body {
     top: 0;
     right: 0;
     content: '';
-    background-color: rgba(0, 0, 0, 0.4);
     overflow: hidden;
     opacity: 0;
     transition: opacity 0.5s;
@@ -346,24 +419,14 @@ body {
     z-index: -1;
 }
 
-/* Small screen will cause the statebrowser to act as a drawer */
-@media screen and (max-width: 769px) {
-    .kiwi-workspace {
-        left: 0;
-        margin-left: 0;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
-        left: 200px;
-        margin-left: 0;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-        z-index: 10;
-    }
+.kiwi-statebrowser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    bottom: 0;
+    transition: left 0.2s;
+    z-index: 1;
 }
 
 .kiwi-container {
@@ -390,5 +453,33 @@ body {
     height: 40px;
     width: 100%;
     z-index: 2;
+}
+
+/* Small screen will cause the statebrowser to act as a drawer */
+@media screen and (max-width: 769px) {
+    .kiwi-workspace {
+        left: 0;
+        margin-left: 0;
+    }
+
+    .kiwi-statebrowser {
+        left: -200px;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser {
+        left: 0;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
+        left: 75%;
+        width: 80%;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        z-index: 10;
+    }
 }
 </style>
