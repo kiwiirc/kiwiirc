@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-05-09 03:43-0400\n"
+"PO-Revision-Date: 2018-05-13 17:00-0400\n"
 
 #: Start
 msgid "start_button"
@@ -291,11 +291,11 @@ msgstr "Blokirajte vanjske poruke"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr ""
+msgstr "Klikni na osvježi da ponovo učitaš listu kanala"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr ""
+msgstr "Nema pronađenih kanala, molimo pokušajte kasnije"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -547,23 +547,23 @@ msgstr "Banuj i izbaci sa kanala"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "{{nick}} je postavi za operatora {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr ""
+msgstr "{{nick}} je oduzeo operatora od {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr ""
+msgstr "{{nick}} je postavio poluoperatora za {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr ""
+msgstr "{{nick}} je oduzeo poluoperatora od {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr ""
+msgstr "{{nick}} je dao pravo glasa {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
