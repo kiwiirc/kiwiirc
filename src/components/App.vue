@@ -224,6 +224,9 @@ export default {
 
             state.ui.favicon_counter++;
         });
+        if (this.uiState.canPin && state.getSetting('settings.sidebarPinned')) {
+            this.uiState.pin();
+        }
     },
     mounted: function mounted() {
         // Decide which startup screen to use depending on the config
