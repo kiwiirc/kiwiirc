@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-05-09 04:02-0400\n"
+"PO-Revision-Date: 2018-05-11 22:20-0400\n"
 
 #: Start
 msgid "start_button"
@@ -291,11 +291,11 @@ msgstr "阻挡除此频道之外的信息"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr ""
+msgstr "点击刷新按钮更新频道列表"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr ""
+msgstr "未找到任何频道，请稍后再试"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
