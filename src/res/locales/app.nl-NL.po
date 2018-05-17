@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-05-17 09:33-0400\n"
+"PO-Revision-Date: 2018-05-17 09:42-0400\n"
 
 #: Start
 msgid "start_button"
@@ -183,7 +183,7 @@ msgstr "Nieuwe privéberichten blokkeren"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Berichten in scrollback"
+msgstr "berichten in scrollback"
 
 #: Extra formatting
 msgid "settings_formatting"
