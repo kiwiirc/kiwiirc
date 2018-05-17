@@ -11,75 +11,75 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Afrikaans\n"
 "Language: af_ZA\n"
-"PO-Revision-Date: 2018-05-09 03:43-0400\n"
+"PO-Revision-Date: 2018-05-17 10:30-0400\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "begin_knoppie"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "begin_verwelkoming"
 
 #: Close
 msgid "close"
-msgstr ""
+msgstr "maak toe"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "konnekteer"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "besig om aan te sluit"
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "aangesluit"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "Verstellings "
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "kanale"
 
 #: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "verban"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "kennisgewings"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "gebruikersnaam"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "wagwoord"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "wagwoord_het"
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "server"
 
 #: Nick
 msgid "nick"
-msgstr ""
+msgstr "skuilnaam"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "kanaal"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "netwerk"
 
 #: ZNC
 msgid "znc"
@@ -87,35 +87,35 @@ msgstr ""
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "besig om in te teken"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "verkeerde aansluiting"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "soek iets"
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "reg so"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "kanselleer"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "maak venster toe"
 
 #: Real name
 msgid "whois_realname"
-msgstr ""
+msgstr "regte naam"
 
 #: Status
 msgid "whois_status"
-msgstr ""
+msgstr "status"
 
 #: Is available
 msgid "whois_status_available"
@@ -635,7 +635,7 @@ msgstr ""
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "aangesluit"
 
 #: Disconnected
 msgid "disconnected"
