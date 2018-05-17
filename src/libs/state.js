@@ -69,6 +69,7 @@ const stateObj = {
             state_key: 'kiwi-state',
         },
         showAutocomplete: true,
+        sidebarPinned: false,
         aliases: `
 # General aliases
 /p /part $1+
