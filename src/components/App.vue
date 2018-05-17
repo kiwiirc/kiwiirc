@@ -108,7 +108,7 @@ let ContainerUiState = Vue.extend({
         pin() {
             this.sidebarPinned = true;
             if (this.sidebarSection === '') {
-                this.showNicklist();
+                this.sidebarSection = 'nicklist';
             }
         },
         unpin() {
