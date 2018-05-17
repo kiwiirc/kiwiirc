@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Afrikaans\n"
 "Language: af_ZA\n"
-"PO-Revision-Date: 2018-05-17 10:30-0400\n"
+"PO-Revision-Date: 2018-05-17 10:41-0400\n"
 
 #: Start
 msgid "start_button"
@@ -119,35 +119,35 @@ msgstr "status"
 
 #: Is available
 msgid "whois_status_available"
-msgstr ""
+msgstr "status beskikbaar"
 
 #: Send a message
 msgid "send_a_message"
-msgstr ""
+msgstr "stuur boodskap"
 
 #: More information
 msgid "more_information"
-msgstr ""
+msgstr "meer inligting"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr ""
+msgstr "ignoreer gebruiker"
 
 #: Channel
 msgid "connection_channel"
-msgstr ""
+msgstr "verbindingskanaal"
 
 #: General
 msgid "settings_general"
-msgstr ""
+msgstr "verstellings algemeen"
 
 #: Theme
 msgid "settings_theme"
-msgstr ""
+msgstr "tema verstellings"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "tema skakel"
 
 #: Use monospace
 msgid "settings_use_monospace"
