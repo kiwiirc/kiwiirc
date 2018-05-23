@@ -151,16 +151,18 @@ export default {
     }
 }
 
-//Channel Connection
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection-connected {
+//Channel Connection's
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection {
+    text-align: center;
+
     .kiwi-messagelist-nick,
     .kiwi-messagelist-time {
         display: none;
     }
 
     .kiwi-messagelist-body {
-        margin: 0 auto;
-        max-width: 240px;
+        display: inline-block;
+        margin-left: auto;
     }
 }
 
