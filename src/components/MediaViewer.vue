@@ -14,6 +14,7 @@
                 class="kiwi-mediaviewer-iframe"
                 :src="url"
             ></iframe>
+            <component v-else-if="component" :is="component"></component>
             <a
                 v-else
                 v-bind:href="url"
@@ -38,7 +39,7 @@ export default {
         return {
         };
     },
-    props: ['url', 'isIframe'],
+    props: ['url', 'component', 'isIframe'],
     computed: {
         embedlyKey: function embedlyKey() {
             return state.settings.embedly.key;
