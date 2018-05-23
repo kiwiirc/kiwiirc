@@ -384,13 +384,11 @@ export default {
     line-height: normal;
     text-align: center;
     cursor: default;
-    float: none;
     display: inline-block;
     padding: 0.5em 1em;
     margin: 1em auto 1em auto;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border-radius: 0;
 }
 
 .kiwi-messagelist-message-connection .kiwi-messagelist-time,
@@ -411,7 +409,7 @@ export default {
 
 /* Remove the min height from the message, as again, makes the page look bloated */
 .kiwi-messagelist-body {
-    min-height: none;
+    min-height: 0;
     text-align: left;
     line-height: 1.5em;
     font-size: 1.05em;
