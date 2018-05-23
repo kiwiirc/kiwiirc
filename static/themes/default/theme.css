@@ -416,16 +416,15 @@
 
 .kiwi-messagelist-message-connection {
     background-color: #fff;
-    border-bottom: 1px solid #c0c0c0;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body {
     background-color: #42b992;
     color: #fff;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
-    background-color: #b9424a;
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
+    background-color: #f16f74;
     color: #fff;
 }
 
@@ -486,16 +485,6 @@
 .kiwi-messagelist-message-error {
     background: #f1d4d4;
     border-left-color: #ab5252;
-}
-
-.kiwi-messagelist-message-connection-connected {
-    color: #090;
-    border: none;
-}
-
-.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
-    color: #bf5155;
-    background: #bf5155;
 }
 
 /* Kiwi Modern Message list ( MessageListMessageModern.vue ) */
