@@ -581,6 +581,7 @@ function clientMiddleware(state, networkid) {
             network.channel_list_state = 'updating';
         }
         if (command === 'channel list') {
+            network.channel_list_state = 'updating';
             // Store the channels in channel_list_cache before moving it all to
             // channel_list at the end. This gives a huge performance boost since
             // it doesn't need to be all reactive for every update
@@ -588,8 +589,8 @@ function clientMiddleware(state, networkid) {
         }
         if (command === 'channel list end') {
             network.channel_list = network.channel_list_cache || [];
+            network.channel_list_state = 'updated';
             delete network.channel_list_cache;
-            network.channel_list_state = '';
         }
 
         if (command === 'motd') {

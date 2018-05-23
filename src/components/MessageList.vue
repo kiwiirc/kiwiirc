@@ -244,8 +244,10 @@ export default {
             this.toggleMessageInfo();
         },
         onMessageClick: function onThreadClick(event, message) {
+            let isLink = event.target.tagName === 'A';
+
             let channelName = event.target.getAttribute('data-channel-name');
-            if (channelName) {
+            if (channelName && isLink) {
                 let network = this.buffer.getNetwork();
                 state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
@@ -253,7 +255,7 @@ export default {
             }
 
             let userNick = event.target.getAttribute('data-nick');
-            if (userNick) {
+            if (userNick && isLink) {
                 let user = state.getUser(this.buffer.networkid, userNick);
                 if (user) {
                     state.$emit('userbox.show', user, {
@@ -267,7 +269,7 @@ export default {
             }
 
             let url = event.target.getAttribute('data-url');
-            if (url) {
+            if (url && isLink) {
                 state.$emit('mediaviewer.show', url);
             }
 
@@ -343,7 +345,6 @@ export default {
 .kiwi-messagelist {
     overflow-y: auto;
     height: 100%;
-    padding-top: 10px;
 }
 
 .kiwi-messagelist-item {

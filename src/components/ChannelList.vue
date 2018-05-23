@@ -5,10 +5,10 @@
                 @click="maybeUpdateList"
                 class="u-button kiwi-channellist-refresh"
                 :class="{
-                    'u-button-primary': listState === '',
-                    'u-button-secondary': listState === 'updating',
+                    'u-button-primary': !isLoading,
+                    'u-button-secondary': isLoading,
             }">
-                <i v-if="listState===''" class="fa fa-refresh" aria-hidden="true"></i>
+                <i v-if="!isLoading" class="fa fa-refresh" aria-hidden="true"></i>
                 <i v-else class="fa fa-refresh fa-spin" aria-hidden="true"></i>
             </a>
 
@@ -20,17 +20,21 @@
                 <input v-model="search" :placeholder="$t('do_search')" class="u-input" />
             </form>
         </div>
-        <table v-if="listState === ''" width="100%" :key="last_updated">
+        <table v-if="!isLoading && list.length > 0" width="100%" :key="last_updated">
             <tbody>
                 <tr v-for="channel in paginated">
                     <td>
-                        <span class="kiwi-channellist-users"><i class="fa fa-user" aria-hidden="true"></i> {{channel.num_users}}</span>
+                        <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
+                            <i class="fa fa-user" aria-hidden="true"></i> {{channel.num_users}}
+                        </span>
                         <a class="u-link" @click="joinChannel(channel.channel)">{{channel.channel}}</a>
                     </td>
                     <td>{{channel.topic}}</td>
                 </tr>
             </tbody>
         </table>
+        <div v-else-if="noResults" class="kiwi-channellist-info">{{$t('channel_list_nonefound')}}</div>
+        <div v-else class="kiwi-channellist-info">{{$t('channel_list_fetch')}}</div>
     </div>
 </template>
 
@@ -51,6 +55,12 @@ export default {
     },
     props: ['network'],
     computed: {
+        noResults() {
+            return this.listState === 'updated' && this.list.length === 0;
+        },
+        isLoading() {
+            return this.listState === 'updating';
+        },
         listState: function listState() {
             return this.network.channel_list_state;
         },
@@ -154,6 +164,11 @@ export default {
 
 .kiwi-channellist-search {
     display: inline-block;
+}
+
+.kiwi-channellist-info {
+    text-align: center;
+    padding: 2em 0;
 }
 
 .kiwi-channellist table {

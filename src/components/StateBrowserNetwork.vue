@@ -81,6 +81,7 @@
                 <div
                     v-for="buffer in filteredBuffers(network.buffers)"
                     class="kiwi-statebrowser-channel"
+                    :data-name="buffer.name.toLowerCase()"
                     v-bind:class="{
                         'kiwi-statebrowser-channel-active': isActiveBuffer(buffer),
                         'kiwi-statebrowser-channel-notjoined': buffer.isChannel() && !buffer.joined

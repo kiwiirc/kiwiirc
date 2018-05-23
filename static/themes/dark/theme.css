@@ -12,7 +12,8 @@
 }
 
  /* Welcome Screen ( Welcome.vue ) */
- .kiwi-welcome-simple-form {
+ .kiwi-welcome-simple-form,
+ .kiwi-customserver-form {
      background-color: #ffffff;
      color: #000;
      border: 1px solid #ececec;
@@ -41,6 +42,10 @@
 
  .kiwi-welcome-simple .help a:hover {
      color: #a9d87a;
+ }
+
+ .kiwi-customserver {
+ 	background-color: #fbfbfb;
  }
 
  /* ZNC startup screen */
@@ -492,6 +497,10 @@
     background: #1e1e1e;
 }
 
+.kiwi-container--sidebar-pinned .kiwi-sidebar {
+    border-color: #464646;
+}
+
 .kiwi-sidebar .u-form label input[type="text"],
 .kiwi-sidebar .u-form textarea {
     background: #d1d1d1;
@@ -521,7 +530,7 @@
     background: rgba(0,0,0,0.02);
     border: 2px solid #42b992;
     color: #dedede;
-}   
+}
 
 .kiwi-messagelist-message-traffic-join {
     color: #090;
@@ -709,7 +718,6 @@
     background-color: #dedede;
     color: #000;
     font-weight: normal;
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .kiwi-nicklist-user {

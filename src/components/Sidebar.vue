@@ -1,15 +1,20 @@
 <template>
-    <div class="kiwi-sidebar" :class="['kiwi-sidebar-section-' + uiState.sidebarSection]">
+    <div class="kiwi-sidebar" :class="['kiwi-sidebar-section-' + uiState.section()]">
         <template v-if="buffer">
             <template v-if="buffer.isChannel()">
 
-                <span class="kiwi-sidebar-options" @click="uiState.close()">
-                    {{$t('close')}}
-                    <i class="fa fa-times" aria-hidden="true"></i>
+                <span class="kiwi-sidebar-options">
+                    <div v-if="uiState.isOpen">
+                        <i v-if="uiState.canPin" class="fa fa-thumb-tack" aria-hidden="true" @click="uiState.pin()"></i>
+                        <div @click="uiState.close()">
+                            {{$t('close')}}
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                    </div>
                 </span>
 
                 <div
-                    v-if="uiState.sidebarSection === 'settings'"
+                    v-if="uiState.section() === 'settings'"
                     class="kiwi-sidebar-buffersettings"
                     @click.stop=""
                 >
@@ -46,7 +51,7 @@
                 </div>
 
                 <div
-                    v-if="uiState.sidebarSection==='user' && userbox_user"
+                    v-if="uiState.section()==='user' && userbox_user"
                     class="kiwi-sidebar-userbox"
                     @click.stop=""
                 >
@@ -58,10 +63,11 @@
                 </div>
 
                 <nicklist
-                    v-if="buffer.isChannel() && uiState.sidebarSection === 'nicklist'"
+                    v-if="buffer.isChannel() && uiState.section() === 'nicklist'"
                     :network="network"
                     :buffer="buffer"
                     :users="users"
+                    :uiState="uiState"
                 ></nicklist>
             </template>
             <template v-else-if="buffer.isQuery()">
@@ -106,7 +112,7 @@ export default {
     computed: {
         isSettingsOpen: {
             get() {
-                return this.uiState.sidebarOpen && this.uiState.sidebarSection === 'settings';
+                return !this.uiState.isClosed && this.uiState.sidebarSection === 'settings';
             },
             set(newVal) {
                 if (newVal) {
@@ -209,11 +215,6 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    width: 380px;
-    top: -4px;
-    border-left: none;
-    right: -380px;
-    max-width: none;
     z-index: 10;
 
     /* Users Styling */

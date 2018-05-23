@@ -30,6 +30,7 @@
                 '',
         ]"
         :data-message="message"
+        :data-nick="(message.nick||'').toLowerCase()"
     >
         <div class="kiwi-messagelist-modern-left">
             <div

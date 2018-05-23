@@ -129,7 +129,7 @@ state.getStartups().kiwiirccom = ctor;
 .kiwi-sponsor {
     position: fixed;
     z-index: 20;
-    bottom: 0;
+    bottom: 40px;
     left: 0;
     width: 185px;
     padding: 10px 0;
@@ -168,15 +168,25 @@ state.getStartups().kiwiirccom = ctor;
     text-align: center;
     padding-top: 1em;
     font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .kiwi-personal h1 {
-    margin: 2em 0;
+    margin: 0 0 20px 0;
+}
+
+.kiwi-personal p {
+    margin: 0 0 10px 0;
 }
 
 .kiwi-personal button {
-    margin-top: 2.7em;
-    margin-bottom: 1.5em;
+    margin: 10px auto 0 auto;
+    padding: 0 40px;
+    font-size: 1em;
+    line-height: 40px;
 }
 
 /* Only show the toggle state browser link if on a small screen */

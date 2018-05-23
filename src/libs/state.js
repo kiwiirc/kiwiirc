@@ -69,6 +69,7 @@ const stateObj = {
             state_key: 'kiwi-state',
         },
         showAutocomplete: true,
+        sidebarPinned: false,
         aliases: `
 # General aliases
 /p /part $1+
@@ -291,6 +292,8 @@ const stateObj = {
         active_buffer: '',
         last_active_buffers: [],
         app_has_focus: true,
+        app_width: 0,
+        app_height: 0,
         is_touch: false,
         favicon_counter: 0,
     },
@@ -887,7 +890,7 @@ const state = new Vue({
             // Handle any notifications
             let settingAlertOn = buffer.setting('alert_on');
             let isSelf = message.nick === network.nick;
-            if (isNewMessage && settingAlertOn !== 'never' && !isSelf) {
+            if (isNewMessage && settingAlertOn !== 'never' && message.type !== 'nick' && !isSelf) {
                 let notifyTitle = '';
                 let notifyMessage = message.nick ?
                     message.nick + ': ' :

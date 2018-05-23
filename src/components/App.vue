@@ -79,11 +79,42 @@ let ContainerUiState = Vue.extend({
     data() {
         return {
             sidebarOpen: false,
+            sidebarPinned: false,
             // sidebarSection may be either '', 'user', 'settings', 'nicklist'
             sidebarSection: '',
         };
     },
+    computed: {
+        isPinned() {
+            // Pinned sidebar only works on full width windows otherwise its too small to see
+            return this.sidebarPinned && this.canPin;
+        },
+        isOpen() {
+            return !this.isPinned && this.sidebarOpen;
+        },
+        isClosed() {
+            return !this.isOpen && !this.isPinned;
+        },
+        canPin() {
+            return state.ui.app_width > 769;
+        },
+    },
     methods: {
+        section() {
+            return this.isClosed ?
+                '' :
+                this.sidebarSection || 'nicklist';
+        },
+        pin() {
+            this.sidebarPinned = true;
+            if (this.sidebarSection === '') {
+                this.sidebarSection = 'nicklist';
+            }
+        },
+        unpin() {
+            this.sidebarPinned = false;
+            this.close();
+        },
         close() {
             this.sidebarOpen = false;
             this.sidebarSection = '';
@@ -163,6 +194,14 @@ export default {
             state.ui.is_touch = true;
         });
 
+        // Track the window dimensions into the reactive ui state
+        function trackWindowDims() {
+            state.ui.app_width = window.innerWidth;
+            state.ui.app_height = window.innerHeight;
+        }
+        window.addEventListener('resize', trackWindowDims);
+        trackWindowDims();
+
         // favicon bubble
         Tinycon.setOptions({
             width: 7,
@@ -185,6 +224,9 @@ export default {
 
             state.ui.favicon_counter++;
         });
+        if (this.uiState.canPin && state.getSetting('settings.sidebarPinned')) {
+            this.uiState.pin();
+        }
     },
     mounted: function mounted() {
         // Decide which startup screen to use depending on the config

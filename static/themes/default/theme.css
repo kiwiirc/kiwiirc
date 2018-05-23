@@ -12,7 +12,8 @@
 }
 
  /* Welcome Screen ( Welcome.vue ) */
- .kiwi-welcome-simple-form {
+ .kiwi-welcome-simple-form,
+ .kiwi-customserver-form{
      background-color: #fff;
      border: 1px solid #ececec;
  }
@@ -37,6 +38,11 @@
  .kiwi-welcome-simple .help a:hover {
      color: #a9d87a;
  }
+
+/* Custom server layout */
+.kiwi-customserver {
+	background-color: #fbfbfb;
+}
 
 
 /* App ( App.vue ) */
@@ -614,7 +620,6 @@
 .kiwi-nicklist-info input {
     background-color: #fff;
     color: #000;
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .kiwi-nicklist-user {
@@ -709,6 +714,10 @@
 
 .kiwi-sidebar-options:hover {
     background: #d16c6c;
+}
+
+.kiwi-container--sidebar-pinned .kiwi-sidebar {
+    border-color: #b2b2b2;
 }
 
 

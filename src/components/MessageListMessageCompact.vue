@@ -34,6 +34,7 @@
                 '',
         ]"
         :data-message="message"
+        :data-nick="(message.nick||'').toLowerCase()"
     >
         <div
             v-if="ml.bufferSetting('show_timestamps')"
