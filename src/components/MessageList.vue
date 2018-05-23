@@ -372,22 +372,21 @@ export default {
 /* Start of the not connected message styling */
 .kiwi-messagelist-message-connection {
     padding: 0;
-    margin-bottom: 20px;
     text-align: center;
     font-weight: bold;
+    border: none;
+    margin: 0;
 }
 
-.kiwi-messagelist-message-connection .kiwi-messagelist-body,
-.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
+.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     font-size: 1.2em;
     height: auto;
     line-height: normal;
     text-align: center;
     cursor: default;
     float: none;
-    display: block;
-    width: 250px;
-    padding: 0.5em 0;
+    display: inline-block;
+    padding: 0.5em 1em;
     margin: 1em auto 1em auto;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -395,23 +394,14 @@ export default {
 }
 
 .kiwi-messagelist-message-connection .kiwi-messagelist-time,
-.kiwi-messagelist-message-connection-connected .kiwi-messagelist-nick {
+.kiwi-messagelist-message-connection .kiwi-messagelist-nick {
     display: none;
-}
-
-.kiwi-messagelist-message-connection-connected,
-.kiwi-messagelist-message-connection-disconnected {
-    padding: 0;
-    border: none;
-    margin: 0;
-    background: none;
-    text-align: center;
 }
 
 /* Remove the styling for none user messages, as they make the page look bloated */
 .kiwi-messagelist-message-mode,
 .kiwi-messagelist-message-traffic,
-.kiwi-messagelist-message-connection-connected {
+.kiwi-messagelist-message-connection {
     padding: 0.1em 0.5em;
     min-height: 0;
     line-height: normal;
@@ -421,7 +411,7 @@ export default {
 
 /* Remove the min height from the message, as again, makes the page look bloated */
 .kiwi-messagelist-body {
-    min-height: 0;
+    min-height: none;
     text-align: left;
     line-height: 1.5em;
     font-size: 1.05em;
@@ -429,16 +419,9 @@ export default {
     padding: 0;
 }
 
-.kiwi-messagelist-message--own {
-    min-height: 0;
-    height: auto;
-}
-
 /* Channel messages - e.g 'server on #testing22 ' message and such */
 .kiwi-messagelist-message-mode,
-.kiwi-messagelist-message-traffic-join,
-.kiwi-messagelist-message-traffic-leave,
-.kiwi-messagelist-message-traffic-quit,
+.kiwi-messagelist-message-traffic,
 .kiwi-messagelist-message-nick {
     padding: 5px  0 5px 0;
     margin: 10px 0;
