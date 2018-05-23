@@ -11,195 +11,195 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Afrikaans\n"
 "Language: af_ZA\n"
-"PO-Revision-Date: 2018-05-09 03:43-0400\n"
+"PO-Revision-Date: 2018-05-23 04:41-0400\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "begin_knoppie"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "begin_verwelkoming"
 
 #: Close
 msgid "close"
-msgstr ""
+msgstr "maak toe"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "konnekteer"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "besig om aan te sluit"
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "aangesluit"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "Verstellings "
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "kanale"
 
 #: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "verban"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "kennisgewings"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "gebruikersnaam"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "wagwoord"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "wagwoord_het"
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "server"
 
 #: Nick
 msgid "nick"
-msgstr ""
+msgstr "skuilnaam"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "kanaal"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "netwerk"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "besig om in te teken"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "verkeerde aansluiting"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "soek iets"
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "reg so"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "kanselleer"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "maak venster toe"
 
 #: Real name
 msgid "whois_realname"
-msgstr ""
+msgstr "regte naam"
 
 #: Status
 msgid "whois_status"
-msgstr ""
+msgstr "status"
 
 #: Is available
 msgid "whois_status_available"
-msgstr ""
+msgstr "status beskikbaar"
 
 #: Send a message
 msgid "send_a_message"
-msgstr ""
+msgstr "stuur boodskap"
 
 #: More information
 msgid "more_information"
-msgstr ""
+msgstr "meer inligting"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr ""
+msgstr "ignoreer gebruiker"
 
 #: Channel
 msgid "connection_channel"
-msgstr ""
+msgstr "verbindingskanaal"
 
 #: General
 msgid "settings_general"
-msgstr ""
+msgstr "verstellings algemeen"
 
 #: Theme
 msgid "settings_theme"
-msgstr ""
+msgstr "tema verstellings"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "tema skakel"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Gebruik eweredige spasiëring skrif"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "Tradisionele IRC uitleg"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "Wys outo-voltooi lys"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "Klets boodskappe"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "Wys tyd stempel"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "Gebruik 24-uur tyd stempel"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "Wys emotikone"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr ""
+msgstr "Blok nuwe Privaat boodskappe"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "Boodskappe in terugblaai"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr ""
+msgstr "Ekstra formatering"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Verkleur byname in boodskappe"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr ""
+msgstr "Wys aansluit/verlaat boodskappe as aktiwiteit "
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "Sit klank kennisgewings af"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
@@ -635,7 +635,7 @@ msgstr ""
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "aangesluit"
 
 #: Disconnected
 msgid "disconnected"
