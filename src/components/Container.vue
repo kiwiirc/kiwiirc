@@ -4,7 +4,6 @@
             'kiwi-container--sidebar-open': uiState.isOpen,
             'kiwi-container--sidebar-pinned': uiState.isPinned,
             'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
-            'kiwi-container--mini': isHalfSize,
     }">
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
@@ -14,6 +13,8 @@
                 >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}</div>
             </div>
             <container-header :buffer="buffer" :uiState="uiState"></container-header>
+
+            <slot name="before"></slot>
 
             <div class="kiwi-container-content">
                 <template v-if="buffer.isServer()">
@@ -29,6 +30,8 @@
                         :uiState="uiState"
                     ></sidebar>
                 </template>
+
+                <slot name="after"></slot>
             </div>
         </template>
         <template v-else>
@@ -59,7 +62,7 @@ export default {
         return {
         };
     },
-    props: ['network', 'buffer', 'users', 'isHalfSize', 'uiState'],
+    props: ['network', 'buffer', 'users', 'uiState'],
     computed: {
         bufferType: function bufferType() {
             let type = '';

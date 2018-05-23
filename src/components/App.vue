@@ -24,14 +24,15 @@
                         :network="network"
                         :buffer="buffer"
                         :users="users"
-                        :isHalfSize="mediaviewerOpen"
                         :uiState="uiState"
-                    ></container>
-                    <media-viewer
-                        v-if="mediaviewerOpen"
-                        :url="mediaviewerUrl"
-                        :isIframe="mediaviewerIframe"
-                    ></media-viewer>
+                    >
+                        <media-viewer
+                            v-if="mediaviewerOpen"
+                            :url="mediaviewerUrl"
+                            :isIframe="mediaviewerIframe"
+                            slot="before"
+                        ></media-viewer>
+                    </container>
                     <control-input :container="networks" :buffer="buffer"></control-input>
                 </template>
                 <component v-else-if="!activeComponent" v-bind:is="fallbackComponent" v-bind="fallbackComponentProps"></component>
@@ -439,15 +440,9 @@ body {
     width: 100%;
 }
 
-.kiwi-container--mini {
-    bottom: 50%;
-}
-
 .kiwi-mediaviewer {
-    position: absolute;
-    top: 50%;
-    bottom: 40px;
-    width: 100%;
+    max-height: 70%;
+    overflow: auto;
 }
 
 .kiwi-controlinput {
