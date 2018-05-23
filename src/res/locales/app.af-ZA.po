@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Afrikaans\n"
 "Language: af_ZA\n"
-"PO-Revision-Date: 2018-05-17 10:41-0400\n"
+"PO-Revision-Date: 2018-05-23 04:31-0400\n"
 
 #: Start
 msgid "start_button"
@@ -83,7 +83,7 @@ msgstr "netwerk"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
@@ -151,27 +151,27 @@ msgstr "tema skakel"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Gebruik eweredige spasiëring skrif"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "Tradisionele IRC uitleg"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "Wys outo-voltooi lys"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "Klets boodskappe"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "Wys tyd stempel"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "Gebruik 24-uur tyd stempel"
 
 #: Show emoticons
 msgid "settings_emoticons"
