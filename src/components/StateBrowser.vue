@@ -27,8 +27,6 @@
             Kiwi Settings <i class="fa fa-cog" aria-hidden="true"></i>
         </div>
 
-        <hr>
-
         <div class="kiwi-statebrowser-tools">
             <div v-for="el in pluginUiElements" v-rawElement="el" class="kiwi-statebrowser-tool"></div>
         </div>

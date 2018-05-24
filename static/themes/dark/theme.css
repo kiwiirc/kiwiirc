@@ -313,7 +313,7 @@
 }
 
 .kiwi-header-topic {
-    border-top: 2px solid #42b992;
+    border-top: 1px solid #42b992;
     border-bottom: 1px solid #42b992;
     color: #dedede;
 }
@@ -407,7 +407,6 @@
 
 .kiwi-controlinput-active-tool {
     background: #f6f6f6;
-    border: 1px solid #ddd;
 }
 
 .kiwi-messagelist {
@@ -484,7 +483,7 @@
 
 .kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body {
     background-color: #42b992;
-    color: #dedede;
+    color: #fff;
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
@@ -497,8 +496,24 @@
     background: #1e1e1e;
 }
 
+/* Sidebar ( Sidebar.vue ) */
+.kiwi-sidebar-options {
+    background-color: #42b992;
+    color: #dedede;
+}
+.kiwi-pin-sidebar-icon {
+    border-right: 1px solid #fff;
+    background: #42b992;
+}
+.kiwi-pin-sidebar-icon:hover{
+    background: #62d0ac;
+}
+
+.kiwi-sidebar-options .kiwi-close-sidebar:hover {
+    background: #d16c6c;
+}
 .kiwi-container--sidebar-pinned .kiwi-sidebar {
-    border-color: #464646;
+    border-color: #b2b2b2;
 }
 
 .kiwi-sidebar .u-form label input[type="text"],
@@ -767,8 +782,11 @@
 /* Self User ( SelfUser.vue ) */
 .kiwi-controlinput-selfuser {
     background: #201F1F;
-    border: 1px solid #ddd;
     color: #dedede;
+}
+
+.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
+    border: 1px solid #ddd;
 }
 
 .kiwi-selfuser-actions {
@@ -799,15 +817,7 @@
     font-weight: 900;
 }
 
-/* Sidebar ( Sidebar.vue ) */
-.kiwi-sidebar-options {
-    background-color: #42b992;
-    color: #dedede;
-}
 
-.kiwi-sidebar-options:hover {
-    background: #d16c6c;
-}
 
 /* Statebrowser - Left sidebar ( StateBrowser.vue ) */
 .kiwi-statebrowser {
