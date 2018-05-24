@@ -216,11 +216,9 @@ export default {
     overflow: hidden;
     z-index: 10;
 
-    /* Users Styling */
-
-    .kiwi-sidebar-section-user {
-        max-width: none;
-        width: auto;
+    .sidebar.kiwi-sidebar-section-settings {
+        width: 500px;
+        max-width: 500px;
     }
 }
 

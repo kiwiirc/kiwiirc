@@ -238,21 +238,20 @@
     border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
 .kiwi-header-option a:hover,
-.kiwi-header-option--active:hover a,
-.kiwi-header-option.kiwi-header-option-active {
+.kiwi-header-option--active,
+.kiwi-header-option--active:hover a{
     background-color: #42b992;
     color: #fff;
     opacity: 1;
 }
 
-.kiwi-header-option--active,
-.kiwi-header-option.kiwi-header-option-active {
+.kiwi-header-option--active {
     border-left: none;
     opacity: 1;
 }
 
 /* For active buttons, since they are not being hovered, we need to set the child element opacity to 1 */
-.kiwi-header-option.kiwi-header-option-active a{
+.kiwi-header-option-active a{
     opacity: 1;
 }
 
