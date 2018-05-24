@@ -131,16 +131,19 @@
     max-width: none;
 }
 
-.u-form input[type='checkbox'] {
+.u-form input[type='checkbox'],
+.u-form input[type='radio'] {
     border: 2px solid #000;
     background-color: #ffffff;
 }
 
-.u-form input[type='checkbox']:after {
+.u-form input[type='checkbox']:after,
+.u-form input[type='radio']:after {
     background: #42b992;
 }
 
-.u-form input[type='checkbox']:after {
+.u-form input[type='checkbox']:after,
+.u-form input[type='radio']:after {
     background: #42b992;
 }
 

@@ -28,12 +28,30 @@
                                 <h3>{{$t('side_settings')}}</h3>
                                 <hr>
                                 <form class="u-form">
-                                    <label class="kiwi-checkbox-holder"><input type="checkbox" v-model="settingShowJoinParts"> <span>{{$t('side_joins')}}</span></label>
-                                    <label class="kiwi-checkbox-holder"><input type="checkbox" v-model="settingShowTopics"> <span>{{$t('side_topics')}}</span></label>
-                                    <label class="kiwi-checkbox-holder"><input type="checkbox" v-model="settingShowNickChanges"> <span>{{$t('side_nick_changes')}}</span></label>
-                                    <label class="kiwi-checkbox-holder"><input type="checkbox" v-model="settingShowModeChanges"> <span>{{$t('side_mode_changes')}}</span></label>
-                                    <label class="kiwi-checkbox-holder"><input type="checkbox" v-model="settingExtraFormatting"> <span>{{$t('side_formatting')}}</span></label>
-                                    <label class="kiwi-checkbox-holder"><input type="checkbox" v-model="settingColouredNicklist"> <span>{{$t('side_colours')}}</span></label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_joins')}}</span>
+                                        <input type="checkbox" v-model="settingShowJoinParts">
+                                    </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_topics')}}</span>
+                                        <input type="checkbox" v-model="settingShowTopics">
+                                    </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_nick_changes')}}</span>
+                                        <input type="checkbox" v-model="settingShowNickChanges">
+                                    </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_mode_changes')}}</span>
+                                        <input type="checkbox" v-model="settingShowModeChanges">
+                                    </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_formatting')}}</span>
+                                        <input type="checkbox" v-model="settingExtraFormatting">
+                                    </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_colours')}}</span>
+                                        <input type="checkbox" v-model="settingColouredNicklist">
+                                    </label>
                                 </form>
                             </div>
                         </tabbed-tab>
@@ -294,22 +312,6 @@ export default {
 
 .kiwi-channelbanlist-empty {
     margin-top: 10px;
-}
-
-.kiwi-checkbox-holder {
-    position: relative;
-    padding-left: 30px;
-
-    input[type="checkbox"] {
-        position: absolute;
-        margin: 0;
-        top: 2px;
-        left: 0;
-    }
-
-    label {
-        margin-right: 0;
-    }
 }
 
 @media screen and (max-width: 769px) {

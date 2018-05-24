@@ -108,14 +108,17 @@
 }
 
 /* Checkbox Styling */
-.u-form input[type='checkbox'] {
+.u-form input[type='checkbox'],
+.u-form input[type='radio'] {
     border: 2px solid #000;
     background-color: #fff;
 }
-.u-form input[type='checkbox']:after {
+.u-form input[type='checkbox']:after,
+.u-form input[type='radio']:after {
     background: #42b992;
 }
-.u-form input[type='checkbox']:after {
+.u-form input[type='checkbox']:after,
+.u-form input[type='radio']:after {
     background: #42b992;
 }
 
