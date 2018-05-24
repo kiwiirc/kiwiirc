@@ -292,10 +292,6 @@ export default {
     margin-bottom: 10px;
 }
 
-.kiwi-messagelist-item:last-of-type {
-    margin-bottom: 10px;
-}
-
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic {
     margin-right: 0;
     padding-left: 60px;
