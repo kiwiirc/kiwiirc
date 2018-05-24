@@ -624,7 +624,7 @@
     background: #62d0ac;
 }
 
-.kiwi-sidebar-options .kiwi-close-sidebar:hover {
+.kiwi-sidebar-options .kiwi-sidebar-close:hover {
     background: #d16c6c;
 }
 .kiwi-container--sidebar-pinned .kiwi-sidebar {
@@ -852,13 +852,6 @@
 }
 .kiwi-statebrowser-newchannel-inputwrap--focus {
     opacity: 1;
-}
-.kiwi-statebrowser-usermenu-body .close-icon {
-    background-color: #fc6262;
-    color: #fff;
-}
-.kiwi-statebrowser-usermenu-body .close-icon:hover {
-    background-color: #fe7575;
 }
 
 .kiwi-statebrowser-nonetworks {

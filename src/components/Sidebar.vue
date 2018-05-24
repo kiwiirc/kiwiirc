@@ -7,7 +7,7 @@
                     <div v-if="uiState.canPin" @click="uiState.pin()" class="kiwi-sidebar-pin">
                         <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                     </div>
-                    <div @click="uiState.close()" class="kiwi-close-sidebar">
+                    <div @click="uiState.close()" class="kiwi-sidebar-close">
                         {{$t('close')}}<i class="fa fa-times" aria-hidden="true"></i>
                     </div>
                 </span>
@@ -233,11 +233,18 @@ export default {
     flex-direction: column;
     overflow: hidden;
     z-index: 10;
+}
 
-    .sidebar.kiwi-sidebar-section-settings {
-        width: 500px;
-        max-width: 500px;
-    }
+.kiwi-sidebar.kiwi-sidebar-section-settings {
+    width: 500px;
+    max-width: 500px;
+}
+
+.kiwi-sidebar .u-form textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 80px;
+    resize: vertical;
 }
 
 .kiwi-sidebar-options {
@@ -250,54 +257,47 @@ export default {
     text-transform: uppercase;
     line-height: 50px;
     vertical-align: top;
+}
 
-    .kiwi-sidebar-pin {
-        position: absolute;
-        padding: 0 10px;
-        height: 100%;
-        line-height: 52px;
-        z-index: 1;
-        transition: background 0.3s;
-    }
+.kiwi-sidebar-options .kiwi-sidebar-pin {
+    position: absolute;
+    padding: 0 10px;
+    height: 100%;
+    line-height: 52px;
+    z-index: 1;
+    transition: background 0.3s;
+}
 
-    .kiwi-close-sidebar {
-        width: 100%;
-        display: inline-block;
-        padding: 0 20px 0 40px;
-        text-align: right;
-        box-sizing: border-box;
-        transition: background 0.3s;
+.kiwi-sidebar-options .kiwi-sidebar-close {
+    width: 100%;
+    display: inline-block;
+    padding: 0 20px 0 40px;
+    text-align: right;
+    box-sizing: border-box;
+    transition: background 0.3s;
+}
 
-        i {
-            margin-left: 10px;
-            font-size: 1.5em;
-            line-height: 47px;
-        }
-    }
+.kiwi-sidebar-options .kiwi-sidebar-close i {
+    margin-left: 10px;
+    font-size: 1.5em;
+    line-height: 47px;
 }
 
 .kiwi-sidebar-buffersettings {
     overflow: hidden;
     height: 100%;
+}
 
-    .u-tabbed-content {
-        padding: 1em;
-    }
+.kiwi-sidebar-buffersettings .u-tabbed-content {
+    padding: 1em;
 }
 
 .kiwi-sidebar-settings {
     margin-bottom: 20px;
-
-    label {
-        display: block;
-    }
 }
 
-.kiwi-sidebar .u-form textarea {
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 80px;
-    resize: vertical;
+.kiwi-sidebar-settings label {
+    display: block;
 }
 
 @keyframes settingstransition {
@@ -317,11 +317,11 @@ export default {
 @media screen and (max-width: 769px) {
     .kiwi-sidebar .u-tabbed-view-tab {
         width: 100%;
+    }
 
-        &.u-tabbed-view-tab--active {
-            border-bottom: 3px solid #42b992;
-            margin-bottom: 0;
-        }
+    .kiwi-sidebar .u-tabbed-view-tab.u-tabbed-view-tab--active {
+        border-bottom: 3px solid #42b992;
+        margin-bottom: 0;
     }
 
     .kiwi-sidebar .u-form input[type="checkbox"] {
@@ -345,10 +345,10 @@ export default {
     .kiwi-channelbanlist {
         float: left;
         width: 100%;
+    }
 
-        .kiwi-channelbanlist-table {
-            margin-top: 30px;
-        }
+    .kiwi-channelbanlist-table {
+        margin-top: 30px;
     }
 
     .kiwi-channelbanlist .u-form {
