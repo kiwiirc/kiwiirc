@@ -233,7 +233,6 @@ export default {
     box-sizing: border-box;
     text-transform: uppercase;
     line-height: 50px;
-    transition: background 0.3s;
     vertical-align: top;
 
     .kiwi-pin-sidebar-icon {
@@ -242,6 +241,7 @@ export default {
         height: 100%;
         line-height: 52px;
         z-index: 1;
+        transition: background 0.3s;
     }
 
     .kiwi-close-sidebar {
@@ -250,6 +250,7 @@ export default {
         padding: 0 20px 0 40px;
         text-align: right;
         box-sizing: border-box;
+        transition: background 0.3s;
 
         i {
             margin-left: 10px;
