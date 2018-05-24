@@ -610,12 +610,22 @@
     background-color: #42b992;
     color: #fff;
 }
-.kiwi-sidebar-options:hover {
+.kiwi-pin-sidebar-icon {
+    border-right: 1px solid #fff;
+    background: #42b992;
+    transition: all 0.3s;
+}
+.kiwi-pin-sidebar-icon:hover{
+    background: #62d0ac;
+}
+
+.kiwi-sidebar-options .kiwi-close-sidebar:hover {
     background: #d16c6c;
 }
 .kiwi-container--sidebar-pinned .kiwi-sidebar {
     border-color: #b2b2b2;
 }
+
 
 /* Channel Banlist ( Channelbanlist.vue ) */
 .kiwi-channelbanlist-table tr {

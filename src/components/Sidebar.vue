@@ -3,13 +3,12 @@
         <template v-if="buffer">
             <template v-if="buffer.isChannel()">
 
-                <span class="kiwi-sidebar-options">
-                    <div v-if="uiState.isOpen">
-                        <i v-if="uiState.canPin" class="fa fa-thumb-tack" aria-hidden="true" @click="uiState.pin()"></i>
-                        <div @click="uiState.close()">
-                            {{$t('close')}}
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                        </div>
+                <span v-if="uiState.isOpen" class="kiwi-sidebar-options">
+                    <div v-if="uiState.canPin" @click="uiState.pin()" class="kiwi-pin-sidebar-icon">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                    </div>
+                    <div @click="uiState.close()" class="kiwi-close-sidebar">
+                        {{$t('close')}}<i class="fa fa-times" aria-hidden="true"></i>
                     </div>
                 </span>
 
@@ -228,22 +227,35 @@ export default {
 .kiwi-sidebar-options {
     display: block;
     cursor: pointer;
-    padding: 0 10px;
-    color: #fff;
     font-weight: 600;
     width: 100%;
     position: relative;
     box-sizing: border-box;
     text-transform: uppercase;
     line-height: 50px;
-    text-align: right;
     transition: background 0.3s;
+    vertical-align: top;
 
-    i {
-        margin-left: 10px;
-        font-size: 1.5em;
-        float: right;
-        line-height: 47px;
+    .kiwi-pin-sidebar-icon {
+        position: absolute;
+        padding: 0 10px;
+        height: 100%;
+        line-height: 52px;
+        z-index: 1;
+    }
+
+    .kiwi-close-sidebar {
+        width: 100%;
+        display: inline-block;
+        padding: 0 20px 0 40px;
+        text-align: right;
+        box-sizing: border-box;
+
+        i {
+            margin-left: 10px;
+            font-size: 1.5em;
+            line-height: 47px;
+        }
     }
 }
 
