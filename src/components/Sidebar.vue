@@ -4,7 +4,7 @@
             <template v-if="buffer.isChannel()">
 
                 <span v-if="uiState.isOpen" class="kiwi-sidebar-options">
-                    <div v-if="uiState.canPin" @click="uiState.pin()" class="kiwi-pin-sidebar-icon">
+                    <div v-if="uiState.canPin" @click="uiState.pin()" class="kiwi-sidebar-pin">
                         <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                     </div>
                     <div @click="uiState.close()" class="kiwi-close-sidebar">
@@ -235,7 +235,7 @@ export default {
     line-height: 50px;
     vertical-align: top;
 
-    .kiwi-pin-sidebar-icon {
+    .kiwi-sidebar-pin {
         position: absolute;
         padding: 0 10px;
         height: 100%;

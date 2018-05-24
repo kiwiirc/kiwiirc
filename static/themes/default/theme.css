@@ -610,11 +610,11 @@
     background-color: #42b992;
     color: #fff;
 }
-.kiwi-pin-sidebar-icon {
+.kiwi-sidebar-pin{
     border-right: 1px solid #fff;
     background: #42b992;
 }
-.kiwi-pin-sidebar-icon:hover{
+.kiwi-sidebar-pin:hover{
     background: #62d0ac;
 }
 
