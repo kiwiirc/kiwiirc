@@ -238,7 +238,8 @@
     border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
 .kiwi-header-option a:hover,
-.kiwi-header-option--active a {
+.kiwi-header-option--active a,
+.kiwi-header-option.kiwi-header-option-active {
     background-color: #42b992;
     color: #fff;
     opacity: 1;
@@ -539,7 +540,7 @@
 .kiwi-nicklist-user:after {
     color: #666764;
 }
-.kiwi-nicklist-user:hover .kiwi-nicklist-user-nick {
+.kiwi-nicklist-user:hover .kiwi-nicklist-user-nick i {
     color: #fff !important;
 }
 .kiwi-nicklist-user:hover .kiwi-nicklist-user-nick:after {
