@@ -14,8 +14,8 @@
                     <a v-if="viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">Hide Topic</span></a>
                     <a v-if="!viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">Display Topic</span></a>
                 </div>
-                <div class="kiwi-header-option kiwi-header-option-nicklist" v-bind:class="{ 'kiwi-header-option-active': uiState.sidebarSection ==='nicklist'}"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
-                <div class="kiwi-header-option kiwi-header-option-settings" v-bind:class="{ 'kiwi-header-option-active': uiState.sidebarSection ==='settings'}"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>Channel Settings</span></a></div>
+                <div class="kiwi-header-option kiwi-header-option-nicklist" v-bind:class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='nicklist'}"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
+                <div class="kiwi-header-option kiwi-header-option-settings" v-bind:class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='settings'}"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>Channel Settings</span></a></div>
                 <div v-if="uiState.isPinned" class="kiwi-header-option kiwi-header-option-unpinsidebar"><a @click="uiState.unpin()"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a></div>
                 <div class="kiwi-header-option kiwi-header-option-leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
             </div>

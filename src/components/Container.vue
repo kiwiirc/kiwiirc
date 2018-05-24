@@ -139,7 +139,7 @@ export default {
 
 .kiwi-sidebar {
     position: absolute;
-    right: -443px;
+    right: -100%;
     top: -4px; /* Push the top over the top page border */
     bottom: 0;
     width: 443px;
@@ -160,6 +160,7 @@ export default {
     position: relative;
     border-left-width: 1px;
     border-left-style: solid;
+    max-width: 430px;
 }
 
 .kiwi-container-content {
@@ -232,6 +233,12 @@ export default {
     font-weight: 500;
     line-height: 50px;
     padding: 0 14px;
+}
+
+@media screen and (max-width: 1500px) {
+    .kiwi-container--sidebar-pinned .kiwi-sidebar {
+        max-width: 350px;
+    }
 }
 
 @media screen and (max-width: 769px) {

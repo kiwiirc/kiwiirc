@@ -351,7 +351,8 @@
 }
 
 .kiwi-header-option-topic.kiwi-header-option--active,
-.kiwi-header-option-leave a:hover {
+.kiwi-header-option-leave a:hover,
+.kiwi-header-option-unpinsidebar:hover {
     background-color: #d16c6c;
     color: #dedede;
 }
@@ -501,11 +502,11 @@
     background-color: #42b992;
     color: #dedede;
 }
-.kiwi-pin-sidebar-icon {
+.kiwi-sidebar-pin {
     border-right: 1px solid #fff;
     background: #42b992;
 }
-.kiwi-pin-sidebar-icon:hover{
+.kiwi-sidebar-pin:hover {
     background: #62d0ac;
 }
 
@@ -888,10 +889,6 @@
 }
 
 .kiwi-network-name-options .kiwi--collapse {
-    background: #d16c6c;
-}
-
-.kiwi-statebrowser-channel-leave:hover{
     background: #d16c6c;
 }
 
