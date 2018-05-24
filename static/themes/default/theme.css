@@ -275,9 +275,10 @@
 
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-topic,
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-    border-top: 2px solid #42b992;
+    border-top: 1px solid #42b992;
     border-bottom: 1px solid #42b992;
     color: #5f5f5f;
+    background: #f5f5f5;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic.kiwi-messagelist-message--unread {
@@ -286,6 +287,10 @@
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic {
     border-top: 2px solid #42b992;
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
+  border: 2px solid #42b992;
 }
 
 .kiwi-header-buffersettings {
@@ -380,7 +385,6 @@
 
 .kiwi-controlinput-active-tool {
     background: #f6f6f6;
-    border: 1px solid #ddd;
 }
 
 /* Message list - Standard messages ( MessageList.vue ) */
@@ -455,12 +459,6 @@
     color: #fff;
 }
 
-/* Topic Styling */
-.kiwi-messagelist-message-topic {
-    background: rgba(0,0,0,0.02);
-    border: 2px solid #42b992;
-}
-
 .kiwi-messagelist-message-traffic-join {
     color: #090;
 }
@@ -514,10 +512,6 @@
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
   border-top: none;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-  border-bottom: 2px solid #42b992;
 }
 
 
@@ -669,6 +663,9 @@
 /* Self User ( SelfUser.vue ) */
 .kiwi-controlinput-selfuser {
     background: #fff;
+}
+
+.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
     border: 1px solid #ddd;
 }
 
