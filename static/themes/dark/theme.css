@@ -351,7 +351,8 @@
 }
 
 .kiwi-header-option-topic.kiwi-header-option--active,
-.kiwi-header-option-leave a:hover {
+.kiwi-header-option-leave a:hover,
+.kiwi-header-option-unpinsidebar:hover {
     background-color: #d16c6c;
     color: #dedede;
 }
@@ -888,10 +889,6 @@
 }
 
 .kiwi-network-name-options .kiwi--collapse {
-    background: #d16c6c;
-}
-
-.kiwi-statebrowser-channel-leave:hover{
     background: #d16c6c;
 }
 
