@@ -550,6 +550,7 @@ export default {
 
 .kiwi-messagelist-nick:hover {
     overflow: visible;
+    width: auto;
 }
 
 /* Topic changes */

@@ -469,12 +469,12 @@
 }
 
 .kiwi-messagelist-message--highlight{
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #5a5a5a;
 }
 
 /*When hovering over a users messages */
 .kiwi-messagelist-message--hover{
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #dedede;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
@@ -588,6 +588,10 @@
 }
 .kiwi-messagelist-nick {
     color: #000;
+}
+
+.kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
+    background-color: #dedede;
 }
 
 .kiwi-messagelist-time {

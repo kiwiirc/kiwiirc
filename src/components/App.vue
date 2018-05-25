@@ -29,6 +29,7 @@
                         <media-viewer
                             v-if="mediaviewerOpen"
                             :url="mediaviewerUrl"
+                            :component="mediaviewerComponent"
                             :isIframe="mediaviewerIframe"
                             slot="before"
                         ></media-viewer>
@@ -164,6 +165,7 @@ export default {
             }
 
             this.mediaviewerUrl = opts.url;
+            this.mediaviewerComponent = opts.component
             this.mediaviewerIframe = opts.iframe;
             this.mediaviewerOpen = true;
         });
@@ -270,6 +272,7 @@ export default {
             fallbackComponentProps: {},
             mediaviewerOpen: false,
             mediaviewerUrl: '',
+            mediaviewerComponent: null,
             mediaviewerIframe: false,
             themeUrl: '',
             uiState: new ContainerUiState(),

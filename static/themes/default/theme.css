@@ -453,6 +453,19 @@
 .kiwi-messagelist-message--modern .kiwi-messagelist-body a:hover {
   color: #3db0de;
 }
+
+.kiwi-messagelist-nick {
+    color: #000;
+}
+
+.kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
+    background-color: #f2f2f2;
+}
+
+.kiwi-messagelist-time {
+    color: #a0a09f;
+}
+
 .kiwi-messagelist-message--modern {
   border-top: 1px solid #f3f3f3;
 }
