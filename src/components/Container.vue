@@ -139,7 +139,7 @@ export default {
 
 .kiwi-sidebar {
     position: absolute;
-    right: -100%;
+    right: -443px;
     top: -4px; /* Push the top over the top page border */
     bottom: 0;
     width: 443px;
