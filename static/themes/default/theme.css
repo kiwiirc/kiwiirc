@@ -258,11 +258,6 @@
     opacity: 1;
 }
 
-/* Remove the border from the un-pin icon */
-.kiwi-header-option-unpinsidebar {
-    border-left: none;
-}
-
 /* Leave channel */
 .kiwi-header-option-leave a:hover,
 .kiwi-header-option-unpinsidebar a:hover {

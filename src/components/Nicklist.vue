@@ -307,7 +307,7 @@ export default {
 @media screen and (max-width: 759px) {
     .kiwi-sidebar.kiwi-sidebar-section-nicklist {
         width: 100%;
-        max-width: none;
+        max-width: 380px;
     }
 }
 

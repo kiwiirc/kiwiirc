@@ -453,7 +453,7 @@ export default {
 
 .kiwi-container--sidebar-open .kiwi-messagelist::after {
     content: '';
-    z-index: 1;
+    z-index: 2;
     left: 0;
     top: 0;
     width: 100%;
