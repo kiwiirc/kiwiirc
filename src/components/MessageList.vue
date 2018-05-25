@@ -573,6 +573,11 @@ export default {
     cursor: pointer;
 }
 
+.kiwi-messagelist-nick:hover {
+    overflow: visible;
+    width: auto;
+}
+
 /* Topic changes */
 .kiwi-messagelist-message-topic {
     border-radius: 5px;

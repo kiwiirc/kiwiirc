@@ -509,6 +509,10 @@
     color: #000;
 }
 
+.kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
+    background-color: #f2f2f2;
+}
+
 .kiwi-messagelist-time {
     color: #a0a09f;
 }
