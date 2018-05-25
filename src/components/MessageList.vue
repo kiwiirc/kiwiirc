@@ -481,13 +481,6 @@ export default {
     border-top: none;
 }
 
-@media screen and (max-width: 700px) {
-    .kiwi-messagelist-message,
-    .kiwi-messageinfo {
-        margin: 0;
-    }
-}
-
 .kiwi-messagelist-message--blur {
     opacity: 0.5;
 }
@@ -619,5 +612,12 @@ export default {
 
 .kiwi-wrap--touch .kiwi-messagelist-message-linkhandle {
     display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .kiwi-messagelist-message,
+    .kiwi-messageinfo {
+        margin: 0;
+    }
 }
 </style>

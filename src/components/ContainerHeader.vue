@@ -194,10 +194,10 @@ export default {
 /* why this hover? */
 .kiwi-header:hover {
     max-height: none;
+}
 
-    .kiwi-header-topic {
-        display: block;
-    }
+.kiwi-header:hover .kiwi-header-topic {
+    display: block;
 }
 
 .kiwi-header-topic {
@@ -245,46 +245,46 @@ export default {
     opacity: 0.9;
     font-weight: 900;
     text-transform: capitalize;
+}
 
-    a {
-        float: left;
-        padding: 0 10px;
-        line-height: 45px;
-        display: block;
-        font-weight: 600;
-        opacity: 0.8;
-        cursor: pointer;
-        transition: all 0.3s;
+.kiwi-header-option a {
+    float: left;
+    padding: 0 10px;
+    line-height: 45px;
+    display: block;
+    font-weight: 600;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.3s;
+}
 
-        &:hover {
-            opacity: 1;
-        }
-    }
+.kiwi-header-option a:hover {
+    opacity: 1;
+}
 
-    i {
-        margin-right: 10px;
-        font-size: 1.2em;
-        float: left;
-        line-height: 45px;
-    }
+.kiwi-header-option i {
+    margin-right: 10px;
+    font-size: 1.2em;
+    float: left;
+    line-height: 45px;
+}
 
-    &--active {
-        opacity: 1;
+.kiwi-header-option--active {
+    opacity: 1;
+}
 
-        a {
-            opacity: 1;
-        }
-    }
+.kiwi-header-option--active a {
+    opacity: 1;
 }
 
 .kiwi-header-option-leave {
     opacity: 1;
     margin: 0;
     transition: all 0.3s;
+}
 
-    i {
-        margin: 0;
-    }
+.kiwi-header-option-leave i {
+    margin: 0;
 }
 
 .kiwi-header-option-unpinsidebar i {
@@ -297,14 +297,14 @@ export default {
     display: inline-block;
     margin: 0 auto;
     float: right;
+}
 
-    .u-link {
-        font-weight: 600;
-        line-height: 45px;
-        padding: 0 25px;
-        border-radius: 0;
-        transition: all 0.3;
-    }
+.kiwi-header-notjoined .u-link {
+    font-weight: 600;
+    line-height: 45px;
+    padding: 0 25px;
+    border-radius: 0;
+    transition: all 0.3;
 }
 
 .kiwi-header-server-settings {
@@ -315,14 +315,14 @@ export default {
     float: right;
     padding-right: 10px;
     line-height: 46px;
+}
 
-    .u-button {
-        float: right;
-        line-height: 35px;
-        padding: 0 1em;
-        margin: 4px 0;
-        border-radius: 4px;
-    }
+.kiwi-header-server-connection .u-button {
+    float: right;
+    line-height: 35px;
+    padding: 0 1em;
+    margin: 4px 0;
+    border-radius: 4px;
 }
 
 .kiwi-header-options .u-button {
@@ -368,31 +368,27 @@ export default {
         max-height: none;
         padding-left: 0;
         margin-left: 0;
-
-        .kiwi-header-name {
-            line-height: normal;
-            padding-left: 60px;
-        }
     }
 
-    .kiwi-header-option {
-        a {
-            i {
-                margin-right: 0;
-            }
-        }
+    .kiwi-header .kiwi-header-name {
+        line-height: normal;
+        padding-left: 60px;
+    }
 
-        .fa-info {
-            display: block;
-            font-size: 1.5em;
-            padding: 0;
-            opacity: 0.8;
-            line-height: 45px;
-        }
+    .kiwi-header-option a i {
+        margin-right: 0;
+    }
 
-        span {
-            display: none;
-        }
+    .kiwi-header-option .fa-info {
+        display: block;
+        font-size: 1.5em;
+        padding: 0;
+        opacity: 0.8;
+        line-height: 45px;
+    }
+
+    .kiwi-header-option span {
+        display: none;
     }
 
     .kiwi-header-server-connection .u-button {

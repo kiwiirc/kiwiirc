@@ -400,10 +400,10 @@ export default {
     border: none;
     line-height: 2.8em;
     font-size: 1em;
+}
 
-    i {
-        margin-right: 0.3em;
-    }
+.kiwi-userbox-opaction i {
+    margin-right: 0.3em;
 }
 
 .kiwi-userbox-actions a {
@@ -427,11 +427,11 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
 
-    span {
-        /* This fixes a vertical align issue between the checkbox and span */
-        float: right;
-    }
+.kiwi-userbox-ignoreuser span {
+    /* This fixes a vertical align issue between the checkbox and span */
+    float: right;
 }
 
 @media screen and (max-width: 769px) {

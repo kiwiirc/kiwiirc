@@ -235,10 +235,10 @@ export default {
 }
 
 .kiwi-networksettings input[type='text'],
-    .kiwi-networksettings input[type='password'],
-    .kiwi-networksettings input[type='email'],
-    .kiwi-networksettings textarea,
-    .kiwi-networksettings .input-text input {
+.kiwi-networksettings input[type='password'],
+.kiwi-networksettings input[type='email'],
+.kiwi-networksettings textarea,
+.kiwi-networksettings .input-text input {
     clear: both;
     width: 100%;
     height: 40px;
@@ -283,18 +283,18 @@ export default {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+}
 
-    label {
-        margin: 0;
-    }
+.kiwi-networksettings .kiwi-padded-form-element-container label {
+    margin: 0;
+}
 
-    .input-text {
-        padding-top: 0;
-    }
+.kiwi-networksettings .kiwi-padded-form-element-container .input-text {
+    padding-top: 0;
+}
 
-    &.kiwi-dangerzone {
-        text-align: center;
-    }
+.kiwi-networksettings .kiwi-padded-form-element-container.kiwi-dangerzone {
+    text-align: center;
 }
 
 .kiwi-networksettings-advanced-container {
@@ -378,10 +378,10 @@ export default {
     cursor: pointer;
     padding: 0 10px;
     line-height: 35px;
+}
 
-    &:hover {
-        opacity: 1;
-    }
+.kiwi-networksettings .kiwi-connect-to-newnetwork:hover {
+    opacity: 1;
 }
 
 .kiwi-networksettings-section {
@@ -462,10 +462,10 @@ export default {
     opacity: 0.8;
     margin: 0 auto;
     transition: all 0.3s;
+}
 
-    &:hover {
-        opacity: 1;
-    }
+.kiwi-networksettings-danger .u-button-warning:hover {
+    opacity: 1;
 }
 
 @media screen and (max-width: 769px) {
