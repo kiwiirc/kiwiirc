@@ -636,7 +636,7 @@ const state = new Vue({
             }
 
             if (network === this.getActiveNetwork()) {
-                this.setActiveBuffer(null);
+                this.openLastActiveBuffer();
             }
 
             let idx = this.networks.indexOf(network);
