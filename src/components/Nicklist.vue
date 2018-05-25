@@ -27,7 +27,7 @@
         </ul>
 
         <div class="kiwi-nicklist-info">
-            <input placeholder="Filter users in channel" v-model="user_filter" ref="user_filter">
+            <input :placeholder="$t('filter_users')" v-model="user_filter" ref="user_filter">
             <i class="fa fa-search" @click="$refs.user_filter.focus()"></i>
         </div>
     </div>

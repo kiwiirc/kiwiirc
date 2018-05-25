@@ -26,9 +26,9 @@
                 v-focus
                 v-model="channel_filter"
                 @blur="onChannelFilterInputBlur"
-                placeholder="Filter Channels..."
+                :placeholder="$t('filter_channels')"
             />
-            <p><a @click="closeFilterChannel(); showNetworkChannels(network)">Find more channels</a></p>
+            <p><a @click="closeFilterChannel(); showNetworkChannels(network)">{{$t('find_more_channels')}}</a></p>
         </div>
 
         <div class="kiwi-statebrowser-channels-info" v-if="channel_add_display">

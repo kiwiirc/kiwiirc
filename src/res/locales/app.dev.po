@@ -137,6 +137,10 @@ msgstr "General"
 msgid "settings_theme"
 msgstr "Theme"
 
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Refresh Theme"
+
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "Theme URL"
@@ -423,6 +427,9 @@ msgstr "{{count}} person here"
 msgid "person_plural"
 msgstr "{{count}} people here"
 
+#: Filter users in channel
+msgid "filter_users"
+msgstr "filter users in channel"
 
 
 #: NotConnected $t('reconnect_')
@@ -547,6 +554,13 @@ msgstr "Not connected."
 msgid "state_join"
 msgstr "Join new #channel"
 
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Filter channels"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Find more channels"
 
 #: SelfUser
 

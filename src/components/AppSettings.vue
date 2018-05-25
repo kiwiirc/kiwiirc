@@ -2,7 +2,7 @@
     <div class="kiwi-appsettings">
 
         <div class="kiwi-appsettings-title" @click="closeSettings">
-            <span>Close</span>
+            <span>{{$t('close')}}</span>
             <i class="fa fa-times" aria-hidden="true"></i>
         </div>
 
@@ -16,7 +16,7 @@
                         <div class="kiwi-appsettings-section kiwi-appsettings-general">
                             <label class="kiwi-appsettings-setting-theme">
                                 <span>{{$t('settings_theme')}} </span>
-                                <a @click="refreshTheme" title="Refresh Theme" class="kiwi-appsettings-theme-reload"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                <a @click="refreshTheme" :title="$t('refresh_theme')" class="kiwi-appsettings-theme-reload"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                                 <select v-model="theme">
                                     <option v-for="t in settings.themes" :value="t.name">{{t.name}}</option>
                                 </select>
