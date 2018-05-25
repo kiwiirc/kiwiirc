@@ -199,20 +199,20 @@ export default {
     letter-spacing: 1px;
     transition: all 0.3s;
     margin-bottom: 10px;
+}
 
-    &:hover {
-        opacity: 1;
-    }
+.kiwi-statebrowser-appsettings:hover {
+    opacity: 1;
+}
 
-    span {
-        font-weight: 600;
-    }
+.kiwi-statebrowser-appsettings span {
+    font-weight: 600;
+}
 
-    i {
-        float: right;
-        line-height: 35px;
-        font-size: 1.2em;
-    }
+.kiwi-statebrowser-appsettings i {
+    float: right;
+    line-height: 35px;
+    font-size: 1.2em;
 }
 
 .kiwi-statebrowser-usermenu {
@@ -241,10 +241,10 @@ export default {
     padding: 0 10px;
     font-size: 0.8em;
     margin-bottom: 10px;
+}
 
-    p {
-        margin-bottom: 0;
-    }
+.kiwi-statebrowser-usermenu-body p {
+    margin-bottom: 0;
 }
 
 /* Add network button */

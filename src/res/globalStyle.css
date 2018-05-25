@@ -66,7 +66,8 @@ div {
 }
 
 /* Style all form inputs */
-.u-form input[type='checkbox'] {
+.u-form input[type='checkbox'],
+.u-form input[type='radio'] {
     float: left;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -81,7 +82,8 @@ div {
     margin-right: 5px;
 }
 
-.u-form input[type='checkbox']::after {
+.u-form input[type='checkbox']::after,
+.u-form input[type='radio']::after {
     position: absolute;
     content: '';
     left: 1px;
@@ -93,7 +95,8 @@ div {
     opacity: 0;
 }
 
-.u-form input[type='checkbox']:checked::after {
+.u-form input[type='checkbox']:checked::after,
+.u-form input[type='radio']:checked::after {
     position: absolute;
     content: '';
     left: 1px;
@@ -126,6 +129,23 @@ div {
     overflow-x: hidden;
     overflow-y: auto;
     max-width: none;
+}
+
+.u-checkbox-wrapper {
+    position: relative;
+    padding-left: 30px;
+}
+
+.u-checkbox-wrapper input[type="checkbox"],
+.u-checkbox-wrapper input[type="radio"] {
+    position: absolute;
+    margin: 0;
+    top: 2px;
+    left: 0;
+}
+
+.u-checkbox-wrapper label {
+    margin-right: 0;
 }
 
 .u-form .u-submit {

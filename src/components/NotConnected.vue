@@ -110,11 +110,11 @@ export default {
     display: inline-block;
     width: 100%;
     margin: 0 0 1em 0;
+}
 
-    i {
-        font-size: 4em;
-        cursor: default;
-    }
+.kiwi-notconnected-bigicon i {
+    font-size: 4em;
+    cursor: default;
 }
 
 .kiwi-notconnected-caption {
@@ -141,17 +141,17 @@ export default {
     margin: 0 0.8em;
     cursor: pointer;
     transition: all 0.3s;
+}
 
-    &:hover {
-        transition: all 0.2s;
-    }
+.kiwi-notconnected-button:hover {
+    transition: all 0.2s;
+}
 
-    i {
-        float: left;
-        font-size: 1.6em;
-        line-height: 0.8em;
-        margin-right: 0.4em;
-    }
+.kiwi-notconnected-button i {
+    float: left;
+    font-size: 1.6em;
+    line-height: 0.8em;
+    margin-right: 0.4em;
 }
 
 .kiwi-notconnected-button-settings {
@@ -160,10 +160,10 @@ export default {
     display: block;
     max-width: 160px;
     margin: 1em auto;
+}
 
-    i {
-        line-height: 1em;
-    }
+.kiwi-notconnected-button-settings i {
+    line-height: 1em;
 }
 
 @media screen and (max-width: 1024px) {

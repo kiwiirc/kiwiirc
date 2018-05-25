@@ -145,25 +145,25 @@ export default {
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic {
     margin: 0;
     padding: 1px 0;
+}
 
-    .kiwi-messagelist-body {
-        margin-left: 131px;
-    }
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
+    margin-left: 131px;
 }
 
 //Channel Connection's
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection {
     text-align: center;
+}
 
-    .kiwi-messagelist-nick,
-    .kiwi-messagelist-time {
-        display: none;
-    }
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-nick,
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-time {
+    display: none;
+}
 
-    .kiwi-messagelist-body {
-        display: inline-block;
-        margin-left: auto;
-    }
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+    display: inline-block;
+    margin-left: auto;
 }
 
 //Channel topic
@@ -172,12 +172,12 @@ export default {
     border-left: 0;
     border-right: 0;
     margin: 5px 0;
+}
 
-    .kiwi-messagelist-body {
-        padding-right: 0;
-        max-width: 95%;
-        margin-left: 20px;
-    }
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-topic .kiwi-messagelist-body {
+    padding-right: 0;
+    max-width: 95%;
+    margin-left: 20px;
 }
 
 //Repeat messages, remove the time and author name

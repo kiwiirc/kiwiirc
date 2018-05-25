@@ -190,19 +190,8 @@ export default {
     display: none;
 }
 
+/* Connection styling */
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection {
-    .kiwi-messagelist-modern-left {
-        display: none;
-    }
-
-    .kiwi-messagelist-modern-right {
-        margin-left: 0;
-        padding: 0;
-    }
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection-connected,
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection-disconnected {
     padding: 0;
     box-sizing: border-box;
     margin: 10px auto;
@@ -211,27 +200,32 @@ export default {
     opacity: 1;
     border-left: none;
     text-align: center;
-
-    .kiwi-messagelist-time,
-    .kiwi-messagelist-nick {
-        display: none;
-    }
-
-    .kiwi-messagelist-body {
-        line-height: 30px;
-        font-weight: 100;
-        margin: 0 auto;
-        border-radius: 4px;
-        display: inline-block;
-    }
-
-    .kiwi-messagelist-message {
-        margin-bottom: 0;
-    }
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection-connected {
-    width: 250px;
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-time,
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-nick {
+    display: none;
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+    line-height: 30px;
+    font-weight: 100;
+    margin: 0 auto;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-message {
+    margin-bottom: 0;
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-modern-left {
+    display: none;
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-modern-right {
+    margin-left: 0;
+    padding: 0;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
@@ -315,7 +309,7 @@ export default {
         margin: 0;
     }
 
-    .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection-connected {
+    .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection {
         padding: 0;
         box-sizing: border-box;
         margin: 0;
@@ -324,20 +318,12 @@ export default {
         width: 100%;
         border-radius: 0;
         opacity: 0.8;
+    }
 
-        .kiwi-messagelist-body {
-            line-height: 50px;
-            font-weight: 600;
-            padding: 0;
-        }
-
-        &.kiwi-messagelist-message--unread {
-            background: red;
-
-            .kiwi-messagelist-body {
-                background: transparent;
-            }
-        }
+    .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+        line-height: 50px;
+        font-weight: 600;
+        padding: 0;
     }
 
     .kiwi-messagelist-message-action .kiwi-messagelist-modern-left {
