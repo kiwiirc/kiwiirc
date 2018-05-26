@@ -190,9 +190,18 @@ export default {
     margin-bottom: 5px;
 }
 
-//Highlight messages require padding on the message body to make the timestamps lineup
-.kiwi-messagelist-message--text.kiwi-messagelist-message--highlight .kiwi-messagelist-body {
-    padding: 0 20px 0 12px;
+//Nickname change fixes
+.kiwi-messagelist-message--text.kiwi-messagelist-message-nick {
+    margin: 0;
+    padding: 0;
+}
+
+.kiwi-messagelist-message--text.kiwi-messagelist-message-nick .kiwi-messagelist-body {
+    padding: 0 20px 0 15px;
+}
+
+.kiwi-messagelist-message--text.kiwi-messagelist-message-nick .kiwi-messagelist-nick {
+    display: none;
 }
 
 </style>
