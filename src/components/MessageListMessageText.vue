@@ -157,6 +157,10 @@ export default {
     margin: 0;
 }
 
+.kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-time {
+    display: none;
+}
+
 //Channel topic
 .kiwi-messagelist-message--text.kiwi-messagelist-message-topic {
     border-radius: 0;
