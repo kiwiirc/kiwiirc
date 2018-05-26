@@ -128,6 +128,7 @@ export default {
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-traffic {
     padding: 0 20px 0 12px;
+    margin: 0;
 }
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-traffic .kiwi-messagelist-time {
@@ -147,13 +148,13 @@ export default {
 //Channel Connection's
 .kiwi-messagelist-message--text.kiwi-messagelist-message-connection {
     text-align: center;
-    padding: 10px 0;
+    padding: 0;
     margin: 0;
 }
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     display: inline-block;
-    padding: 0;
+    padding: 5px 0;
     margin: 0;
 }
 
@@ -187,6 +188,11 @@ export default {
 
 .kiwi-messagelist-item:last-of-type {
     margin-bottom: 5px;
+}
+
+//Highlight messages require padding on the message body to make the timestamps lineup
+.kiwi-messagelist-message--text.kiwi-messagelist-message--highlight .kiwi-messagelist-body {
+    padding: 0 20px 0 12px;
 }
 
 </style>
