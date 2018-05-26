@@ -66,6 +66,15 @@ div {
 }
 
 /* Style all form inputs */
+.u-form select {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    cursor: pointer;
+    margin: 0 0 10px 0;
+}
+
 .u-form input[type='checkbox'],
 .u-form input[type='radio'] {
     float: left;
