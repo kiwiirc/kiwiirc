@@ -55,7 +55,7 @@
                             <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
                                 <template v-if="show_advanced">
                                     <input-text :label="$t('settings_encoding')" v-model="network.connection.encoding" />
-                                    <label><span class="kiwi-appsettings-showraw-label">{{$t('settings_show_raw')}}: </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
+                                    <label><span class="kiwi-appsettings-showraw-label">{{$t('settings_show_raw')}} </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
                                     <label class="u-form-block">
                                         <span>{{$t('settings_autorun')}}</span>
                                         <textarea v-model="network.auto_commands" cols=40 rows=5></textarea>
