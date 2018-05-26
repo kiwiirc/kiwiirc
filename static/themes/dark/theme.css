@@ -116,7 +116,7 @@
 .u-form textarea {
     border: 1px solid #ccc;
     border-bottom: 2px solid #42b992;
-    background: #dadada;
+    background: #fff;
     line-height: normal;
     outline-color: #42b992;
 }
@@ -152,7 +152,7 @@
 .u-form label input[type='email'],
 .u-form textarea {
     color: #000;
-    background: #dedede;
+    background: #fff;
     border: 1px solid #42b992;
 }
 
@@ -197,16 +197,16 @@
 
 .kiwi-appsettings-block h3 {
     background: #42b992;
-    color: #dedede;
+    color: #fff;
 }
 
 .kiwi-appsettings .u-form label span {
-    color: #dedede;
+    color: #fff;
 }
 
 .kiwi-appsettings-title {
     background-color: #42b992;
-    color: #dedede;
+    color: #fff;
 }
 
 .kiwi-appsettings-title:hover{
@@ -469,12 +469,12 @@
 }
 
 .kiwi-messagelist-message--highlight{
-    background-color: #5a5a5a;
+    background-color: #333333;
 }
 
 /*When hovering over a users messages */
 .kiwi-messagelist-message--hover{
-    background-color: #dedede;
+    background-color: #333333;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
@@ -503,7 +503,7 @@
 /* Sidebar ( Sidebar.vue ) */
 .kiwi-sidebar-options {
     background-color: #42b992;
-    color: #dedede;
+    color: #fff;
 }
 .kiwi-sidebar-pin {
     border-right: 1px solid #fff;
@@ -520,17 +520,11 @@
     border-color: #b2b2b2;
 }
 
-.kiwi-sidebar .u-form label input[type="text"],
-.kiwi-sidebar .u-form textarea {
-    background: #d1d1d1;
-    color: #000;
-}
-
 .kiwi-sidebar .u-form label span,
 .kiwi-nicklist-usercount,
 .kiwi-sidebar h3,
 .kiwi-channelbanlist-table {
-    color: #dedede;
+    color: #fff;
 }
 
 
@@ -591,7 +585,7 @@
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
-    background-color: #dedede;
+    background-color: #333333;
 }
 
 .kiwi-messagelist-time {
@@ -599,7 +593,7 @@
 }
 
 .kiwi-messagelist-message--modern {
-  border-top: 1px solid #ffffff1a;
+  border-top: 1px solid #ffffff;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
@@ -727,7 +721,7 @@
 }
 
 .kiwi-nicklist-info input {
-    background-color: #dedede;
+    background-color: #fff;
     color: #000;
     font-weight: normal;
 }
@@ -756,11 +750,11 @@
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-user-nick {
-    color: #dedede !important;
+    color: #333333 !important;
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-user-nick:after {
-    color: #dedede;
+    color: #333333;
 }
 
 .kiwi-nicklist-messageuser {
