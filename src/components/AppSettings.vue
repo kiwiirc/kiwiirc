@@ -39,8 +39,17 @@
                     <div class="kiwi-appsettings-block">
                         <h3>{{$t('settings_messages_title')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-messages">
+                            <label for="kiwi-select-layout">
+                                <span>{{$t('settings_select_layout')}}</span>
+                                <select class="" id="kiwi-select-layout" @change="settingMessageLayout()" v-model="settingSelectedLayout">
+                                    <option value="" disabled selected="selected">Please Select Layout</option>
+                                    <option value="modern">Modern Layout (Default)</option>
+                                    <option value="traditional">Traditional Layout</option>
+                                    <option value="text">Text Layout</option>
+                                </select>
+                            </label>
                             <label>
-                                <span>{{$t('settings_layout_compact')}} </span>
+                                <span>{{$t('settings_layout_compact')}}</span>
                                 <input type="checkbox" v-model="settingMessageLayout" />
                             </label>
                             <label><span>{{$t('settings_timestamps')}} </span> <input type="checkbox" v-model="settingBufferShowTimestamps" /></label>
@@ -153,18 +162,7 @@ export default {
         settingBufferMuteSound: bindSetting('buffers.mute_sound'),
         settingDefaultBanMask: bindSetting('buffers.default_ban_mask'),
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
-        settingMessageLayout: {
-            get: function getSettingMessageLayout() {
-                return state.setting('messageLayout') === 'compact';
-            },
-            set: function setSettingMessageLayout(newVal) {
-                if (newVal) {
-                    state.setting('messageLayout', 'compact');
-                } else {
-                    state.setting('messageLayout', 'modern');
-                }
-            },
-        },
+        settingSelectedLayout: bindSetting('messageLayout'),
     },
     components: {
         SettingsAliases,
@@ -220,6 +218,18 @@ export default {
                 this.$watch('theme', watchTheme),
                 this.$watch('customThemeUrl', watchCustomThemeUrl),
             ];
+        },
+        settingMessageLayout: function settingMessageLayout(settingSelectedLayout) {
+            console.log('hi');
+            if (settingSelectedLayout === 'compact') {
+                state.setting('messageLayout', 'compact');
+            }
+            if (settingSelectedLayout === 'modern') {
+                state.setting('messageLayout', 'modern');
+            }
+            if (settingSelectedLayout === 'text') {
+                state.setting('messageLayout', 'text');
+            }
         },
     },
     created: function created() {
