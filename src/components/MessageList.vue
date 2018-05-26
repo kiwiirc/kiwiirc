@@ -17,17 +17,23 @@
 
             <component v-if="message.render() && message.template" v-bind:is="message.template" :message="message" :buffer="buffer"></component>
             <message-list-message-modern
-                v-else-if="listType === 'modern'"
+                v-if="listType === 'modern'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
             ></message-list-message-modern>
             <message-list-message-compact
-                v-else-if="listType !== 'modern'"
+                v-if="listType === 'compact'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
             ></message-list-message-compact>
+            <message-list-message-text
+                v-if="listType === 'text'"
+                :message="message"
+                :idx="idx"
+                :ml="thisMl"
+            ></message-list-message-text>
         </div>
 
         <not-connected
@@ -46,6 +52,7 @@ import * as TextFormatting from '@/helpers/TextFormatting';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
+import MessageListMessageText from './MessageListMessageText';
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
@@ -56,6 +63,7 @@ export default {
         NotConnected,
         MessageListMessageModern,
         MessageListMessageCompact,
+        MessageListMessageText,
     },
     data: function data() {
         return {
