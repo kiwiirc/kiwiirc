@@ -50,7 +50,7 @@
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
             @mouseout="ml.hover_nick='';"
         >
-            {{message.user ? userModePrefix(message.user) : ''}}{{message.nick}}
+            {{message.user ? userModePrefix(message.user) : ''}}{{message.nick}}:
         </span>
         <span v-html="ml.formatMessage(message)"></span>
     </div>
@@ -98,8 +98,18 @@ export default {
     position: relative;
 }
 
+//Hide the timestamp unless the user hovers over the message in question
 .kiwi-messagelist-message--text .kiwi-messagelist-time {
-    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 10px;
+    display: none;
+}
+
+//display timestamp when hovering over the message
+.kiwi-messagelist-message--text:hover .kiwi-messagelist-time {
+    display: block;
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-nick {
@@ -109,11 +119,6 @@ export default {
     max-width: 110px;
     overflow: hidden;
     margin-right: 2px;
-}
-
-//Add an ':' after the user's username
-.kiwi-messagelist-message--text .kiwi-messagelist-nick::after {
-    content: ":";
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-nick:hover {
@@ -134,14 +139,6 @@ export default {
 .kiwi-messagelist-message--text.kiwi-messagelist-message-traffic {
     padding: 0 20px 0 12px;
     margin: 0;
-}
-
-.kiwi-messagelist-message--text.kiwi-messagelist-message-traffic .kiwi-messagelist-time {
-    position: static;
-    display: inline-block;
-    top: auto;
-    right: auto;
-    margin-right: 10px;
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-message-privmsg:hover,
