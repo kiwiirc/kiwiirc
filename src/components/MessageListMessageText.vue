@@ -209,4 +209,12 @@ export default {
     display: none;
 }
 
+@media screen and (max-width: 700px) {
+    .kiwi-messagelist-message--text.kiwi-messagelist-message-traffic,
+    .kiwi-messagelist-message--text.kiwi-messagelist-message-nick .kiwi-messagelist-body,
+    .kiwi-messagelist-message--text .kiwi-messagelist-body {
+        padding-right: 0;
+    }
+}
+
 </style>
