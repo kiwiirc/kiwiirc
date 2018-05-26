@@ -40,7 +40,7 @@
                         <h3>{{$t('settings_messages_title')}}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-messages">
                             <label for="kiwi-select-layout">
-                                <span>{{$t('settings_select_layout')}}</span>
+                                <span>Select message layout</span>
                                 <select class="" id="kiwi-select-layout" @change="settingMessageLayout()" v-model="settingSelectedLayout">
                                     <option value="" disabled selected="selected">Please Select Layout</option>
                                     <option value="modern">Modern Layout (Default)</option>
@@ -216,7 +216,6 @@ export default {
             ];
         },
         settingMessageLayout: function settingMessageLayout(settingSelectedLayout) {
-            console.log('hi');
             if (settingSelectedLayout === 'compact') {
                 state.setting('messageLayout', 'compact');
             }
