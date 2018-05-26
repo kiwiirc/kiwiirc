@@ -48,10 +48,6 @@
                                     <option value="text">Text Layout</option>
                                 </select>
                             </label>
-                            <label>
-                                <span>{{$t('settings_layout_compact')}}</span>
-                                <input type="checkbox" v-model="settingMessageLayout" />
-                            </label>
                             <label><span>{{$t('settings_timestamps')}} </span> <input type="checkbox" v-model="settingBufferShowTimestamps" /></label>
                             <label><span>{{$t('settings_24hour_timestamps')}} </span> <input type="checkbox" v-model="timestamps_24h" /></label>
                             <label><span>{{$t('settings_emoticons')}} </span> <input type="checkbox" v-model="settingBufferShowEmoticons" /></label>
