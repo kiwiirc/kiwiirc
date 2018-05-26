@@ -8,7 +8,7 @@
             message.time - ml.filteredMessages[idx-1].time < 60000 &&
             ml.filteredMessages[idx-1].type !== 'traffic' &&
             message.type !== 'traffic' ?
-                'kiwi-messagelist-message--authorrepeat' :
+                '' :
                 '',
             'kiwi-messagelist-message-' + message.type,
             message.type_extra ?
@@ -108,7 +108,12 @@ export default {
     text-align: left;
     max-width: 110px;
     overflow: hidden;
-    margin-right: 10px;
+    margin-right: 2px;
+}
+
+//Add an ':' after the user's username
+.kiwi-messagelist-message--text .kiwi-messagelist-nick::after {
+    content: ":";
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-nick:hover {
