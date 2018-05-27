@@ -106,7 +106,6 @@ export default {
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
     width: 110px;
-    min-width: 110px;
     display: inline-block;
     left: 0;
     top: -1px;
