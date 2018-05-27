@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-05-17 09:42-0400\n"
+"PO-Revision-Date: 2018-05-27 07:00-0400\n"
 
 #: Start
 msgid "start_button"
@@ -287,7 +287,7 @@ msgstr "Alleen moderators kunnen het topic wijzigen"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Externe berichten blokkeren"
+msgstr "Berichten van buiten dit kanaal blokkeren"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
