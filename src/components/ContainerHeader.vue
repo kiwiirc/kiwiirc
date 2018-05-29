@@ -244,7 +244,6 @@ export default {
     font-size: 0.8em;
     opacity: 0.9;
     font-weight: 900;
-    text-transform: capitalize;
 }
 
 .kiwi-header-option a {

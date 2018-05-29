@@ -317,7 +317,6 @@ export default {
     font-size: 1em;
     line-height: 1em;
     padding: 0;
-    text-transform: capitalize;
     text-align: left;
     opacity: 0.5;
     font-weight: 900;

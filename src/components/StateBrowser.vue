@@ -296,7 +296,6 @@ export default {
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
     text-align: left;
     padding: 0 0 0 10px;
-    text-transform: capitalize;
     width: 100%;
     font-size: 1em;
     font-weight: 600;
@@ -439,7 +438,6 @@ export default {
 .kiwi-statebrowser-availablenetworks-name {
     text-align: center;
     font-weight: bold;
-    text-transform: capitalize;
 }
 
 .kiwi-statebrowser-availablenetworks-networks {
