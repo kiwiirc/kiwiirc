@@ -212,7 +212,7 @@ export default {
             this.uiState.sidebarOpen = false;
         });
 
-        this.listen(state, 'userbox.show', (user, opts) => {
+        this.listen(state, 'userbox.show', (user) => {
             this.userbox_user = user;
             this.uiState.sidebarSection = 'user';
             this.uiState.sidebarOpen = true;

@@ -13,7 +13,7 @@
                     userMode(user) ? 'kiwi-nicklist-user--mode-' + userMode(user) : '',
                     user.away ? 'kiwi-nicklist-user--away' : ''
                 ]"
-                @click="openUserbox(user, $event)"
+                @click="openUserbox(user)"
             >
                 <span class="kiwi-nicklist-user-prefix">{{userModePrefix(user)}}</span>
                 <span class="kiwi-nicklist-user-nick"
@@ -166,10 +166,8 @@ export default {
             state.setActiveBuffer(buffer.networkid, buffer.name);
             this.uiState.close();
         },
-        openUserbox: function openUserbox(user, mouseEvent) {
+        openUserbox: function openUserbox(user) {
             state.$emit('userbox.show', user, {
-                top: mouseEvent.clientY,
-                left: mouseEvent.clientX,
                 buffer: this.buffer,
             });
         },

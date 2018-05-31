@@ -240,6 +240,14 @@ export default {
             }
             return '';
         },
+        openUserBox(nick) {
+            let user = state.getUser(this.buffer.networkid, nick);
+            if (user) {
+                state.$emit('userbox.show', user, {
+                    buffer: this.buffer,
+                });
+            }
+        },
         onListClick: function onListClick(event) {
             this.toggleMessageInfo();
         },
@@ -256,15 +264,7 @@ export default {
 
             let userNick = event.target.getAttribute('data-nick');
             if (userNick && isLink) {
-                let user = state.getUser(this.buffer.networkid, userNick);
-                if (user) {
-                    state.$emit('userbox.show', user, {
-                        top: event.clientY,
-                        left: event.clientX,
-                        buffer: this.buffer,
-                    });
-                }
-
+                this.openUserBox(userNick);
                 return;
             }
 
