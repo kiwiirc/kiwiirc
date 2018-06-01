@@ -3,13 +3,12 @@
         <template v-if="buffer">
             <template v-if="buffer.isChannel()">
 
-                <span class="kiwi-sidebar-options">
-                    <div v-if="uiState.isOpen">
-                        <i v-if="uiState.canPin" class="fa fa-thumb-tack" aria-hidden="true" @click="uiState.pin()"></i>
-                        <div @click="uiState.close()">
-                            {{$t('close')}}
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                        </div>
+                <span v-if="uiState.isOpen" class="kiwi-sidebar-options">
+                    <div v-if="uiState.canPin" @click="uiState.pin()" class="kiwi-sidebar-pin">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                    </div>
+                    <div @click="uiState.close()" class="kiwi-sidebar-close">
+                        {{$t('close')}}<i class="fa fa-times" aria-hidden="true"></i>
                     </div>
                 </span>
 
@@ -29,12 +28,30 @@
                                 <h3>{{$t('side_settings')}}</h3>
                                 <hr>
                                 <form class="u-form">
-                                    <label><input type="checkbox" v-model="settingShowJoinParts"> <span>{{$t('side_joins')}}</span></label>
-                                    <label><input type="checkbox" v-model="settingShowTopics"> <span>{{$t('side_topics')}}</span></label>
-                                    <label><input type="checkbox" v-model="settingShowNickChanges"> <span>{{$t('side_nick_changes')}}</span></label>
-                                    <label><input type="checkbox" v-model="settingShowModeChanges"> <span>{{$t('side_mode_changes')}}</span></label>
-                                    <label><input type="checkbox" v-model="settingExtraFormatting"> <span>{{$t('side_formatting')}}</span></label>
-                                    <label><input type="checkbox" v-model="settingColouredNicklist"> <span>{{$t('side_colours')}}</span></label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_joins')}}</span>
+                                        <input type="checkbox" v-model="settingShowJoinParts">
+                                    </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_topics')}}</span>
+                                        <input type="checkbox" v-model="settingShowTopics">
+                                    </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_nick_changes')}}</span>
+                                        <input type="checkbox" v-model="settingShowNickChanges">
+                                    </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_mode_changes')}}</span>
+                                        <input type="checkbox" v-model="settingShowModeChanges">
+                                    </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_formatting')}}</span>
+                                        <input type="checkbox" v-model="settingExtraFormatting">
+                                    </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{$t('side_colours')}}</span>
+                                        <input type="checkbox" v-model="settingColouredNicklist">
+                                    </label>
                                 </form>
                             </div>
                         </tabbed-tab>
@@ -195,7 +212,7 @@ export default {
             this.uiState.sidebarOpen = false;
         });
 
-        this.listen(state, 'userbox.show', (user, opts) => {
+        this.listen(state, 'userbox.show', (user) => {
             this.userbox_user = user;
             this.uiState.sidebarSection = 'user';
             this.uiState.sidebarOpen = true;
@@ -216,52 +233,11 @@ export default {
     flex-direction: column;
     overflow: hidden;
     z-index: 10;
-
-    /* Users Styling */
-
-    .kiwi-sidebar-section-user {
-        max-width: none;
-        width: auto;
-    }
 }
 
-.kiwi-sidebar-options {
-    display: block;
-    cursor: pointer;
-    padding: 0 10px;
-    color: #fff;
-    font-weight: 600;
-    width: 100%;
-    position: relative;
-    box-sizing: border-box;
-    text-transform: uppercase;
-    line-height: 50px;
-    text-align: right;
-    transition: background 0.3s;
-
-    i {
-        margin-left: 10px;
-        font-size: 1.5em;
-        float: right;
-        line-height: 47px;
-    }
-}
-
-.kiwi-sidebar-buffersettings {
-    overflow: hidden;
-    height: 100%;
-
-    .u-tabbed-content {
-        padding: 1em;
-    }
-}
-
-.kiwi-sidebar-settings {
-    margin-bottom: 20px;
-
-    label {
-        display: block;
-    }
+.kiwi-sidebar.kiwi-sidebar-section-settings {
+    width: 500px;
+    max-width: 500px;
 }
 
 .kiwi-sidebar .u-form textarea {
@@ -269,6 +245,59 @@ export default {
     max-width: 100%;
     min-height: 80px;
     resize: vertical;
+}
+
+.kiwi-sidebar-options {
+    display: block;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    line-height: 50px;
+    vertical-align: top;
+}
+
+.kiwi-sidebar-options .kiwi-sidebar-pin {
+    position: absolute;
+    padding: 0 10px;
+    height: 100%;
+    line-height: 52px;
+    z-index: 1;
+    transition: background 0.3s;
+}
+
+.kiwi-sidebar-options .kiwi-sidebar-close {
+    width: 100%;
+    display: inline-block;
+    padding: 0 20px 0 40px;
+    text-align: right;
+    box-sizing: border-box;
+    transition: background 0.3s;
+}
+
+.kiwi-sidebar-options .kiwi-sidebar-close i {
+    margin-left: 10px;
+    font-size: 1.5em;
+    line-height: 47px;
+}
+
+.kiwi-sidebar-buffersettings {
+    overflow: hidden;
+    height: 100%;
+}
+
+.kiwi-sidebar-buffersettings .u-tabbed-content {
+    padding: 1em;
+}
+
+.kiwi-sidebar-settings {
+    margin-bottom: 20px;
+}
+
+.kiwi-sidebar-settings label {
+    display: block;
 }
 
 @keyframes settingstransition {
@@ -288,11 +317,11 @@ export default {
 @media screen and (max-width: 769px) {
     .kiwi-sidebar .u-tabbed-view-tab {
         width: 100%;
+    }
 
-        &.u-tabbed-view-tab--active {
-            border-bottom: 3px solid #42b992;
-            margin-bottom: 0;
-        }
+    .kiwi-sidebar .u-tabbed-view-tab.u-tabbed-view-tab--active {
+        border-bottom: 3px solid #42b992;
+        margin-bottom: 0;
     }
 
     .kiwi-sidebar .u-form input[type="checkbox"] {
@@ -306,7 +335,7 @@ export default {
 
     .kiwi-container--sidebar-open .kiwi-sidebar {
         width: 100%;
-        max-width: none;
+        max-width: 100%;
     }
 
     .kiwi-sidebar-buffersettings {
@@ -316,10 +345,10 @@ export default {
     .kiwi-channelbanlist {
         float: left;
         width: 100%;
+    }
 
-        .kiwi-channelbanlist-table {
-            margin-top: 30px;
-        }
+    .kiwi-channelbanlist-table {
+        margin-top: 30px;
     }
 
     .kiwi-channelbanlist .u-form {

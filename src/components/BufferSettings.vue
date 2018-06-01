@@ -4,17 +4,17 @@
             <h3>{{$t('settings_notify')}}</h3>
             <hr>
             <form class="u-form">
-                <label>
-                    <span>{{$t('settings_notify_all')}}</span>
+                <label class="u-checkbox-wrapper">
                     <input type="radio" name="alert_on" value="message" v-model="settingAlertOn">
+                    <span>{{$t('settings_notify_all')}}</span>
                 </label>
-                <label>
-                    <span>{{$t('settings_notify_mentioned')}}</span>
+                <label class="u-checkbox-wrapper">
                     <input type="radio" name="alert_on" value="highlight" v-model="settingAlertOn">
+                    <span>{{$t('settings_notify_mentioned')}}</span>
                 </label>
-                <label>
-                    <span>{{$t('settings_notify_never')}}</span>
+                <label class="u-checkbox-wrapper">
                     <input type="radio" name="alert_on" value="never" v-model="settingAlertOn">
+                    <span>{{$t('settings_notify_never')}}</span>
                 </label>
             </form>
 

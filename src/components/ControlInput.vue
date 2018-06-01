@@ -436,18 +436,6 @@ export default {
     border: none;
 }
 
-@media screen and (max-width: 769px) {
-    .kiwi-controlinput {
-        z-index: 0;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .kiwi-controlinput-user-nick {
-        display: none;
-    }
-}
-
 .kiwi-controlinput-input-wrap {
     width: 100%;
     height: 100%;
@@ -482,6 +470,18 @@ export default {
 
 .kiwi-controlinput-selfuser--open {
     max-height: 300px;
+}
+
+@media screen and (max-width: 769px) {
+    .kiwi-controlinput {
+        z-index: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .kiwi-controlinput-user-nick {
+        display: none;
+    }
 }
 
 </style>

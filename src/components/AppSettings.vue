@@ -316,13 +316,13 @@ export default {
     display: block;
     box-sizing: border-box;
     margin: 20px auto 20px auto;
+}
 
-    h3 {
-        width: 100%;
-        line-height: 45px;
-        padding: 0 10px;
-        box-sizing: border-box;
-    }
+.kiwi-appsettings-block h3 {
+    width: 100%;
+    line-height: 45px;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .kiwi-appsettings-section {
@@ -346,28 +346,28 @@ export default {
     line-height: 47px;
     text-align: right;
     transition: background 0.3s;
+}
 
-    h2 {
-        padding: 10px 0 11px 20px;
-        width: auto;
-        float: left;
-    }
+.kiwi-appsettings-title h2 {
+    padding: 10px 0 11px 20px;
+    width: auto;
+    float: left;
+}
 
-    a {
-        float: right;
-        position: static;
-        background: none;
-        border: none;
-        padding: 10px 20px;
-        font-size: 1.4em;
-    }
+.kiwi-appsettings-title a {
+    float: right;
+    position: static;
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.4em;
+}
 
-    i {
-        margin-left: 10px;
-        font-size: 1.5em;
-        float: right;
-        line-height: 47px;
-    }
+.kiwi-appsettings-title i {
+    margin-left: 10px;
+    font-size: 1.5em;
+    float: right;
+    line-height: 47px;
 }
 
 @media screen and (max-width: 769px) {

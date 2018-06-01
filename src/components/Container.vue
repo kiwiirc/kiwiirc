@@ -4,7 +4,6 @@
             'kiwi-container--sidebar-open': uiState.isOpen,
             'kiwi-container--sidebar-pinned': uiState.isPinned,
             'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
-            'kiwi-container--mini': isHalfSize,
     }">
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
@@ -14,6 +13,8 @@
                 >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}</div>
             </div>
             <container-header :buffer="buffer" :uiState="uiState"></container-header>
+
+            <slot name="before"></slot>
 
             <div class="kiwi-container-content">
                 <template v-if="buffer.isServer()">
@@ -29,6 +30,8 @@
                         :uiState="uiState"
                     ></sidebar>
                 </template>
+
+                <slot name="after"></slot>
             </div>
         </template>
         <template v-else>
@@ -59,7 +62,7 @@ export default {
         return {
         };
     },
-    props: ['network', 'buffer', 'users', 'isHalfSize', 'uiState'],
+    props: ['network', 'buffer', 'users', 'uiState'],
     computed: {
         bufferType: function bufferType() {
             let type = '';
@@ -136,11 +139,11 @@ export default {
 
 .kiwi-sidebar {
     position: absolute;
-    right: -380px;
+    right: -443px;
     top: -4px; /* Push the top over the top page border */
     bottom: 0;
-    width: 380px;
-    max-width: 380px;
+    width: 443px;
+    max-width: 443px;
     z-index: 2;
     transition: right 0.2s, width 0.2s;
     flex: 1;
@@ -157,6 +160,7 @@ export default {
     position: relative;
     border-left-width: 1px;
     border-left-style: solid;
+    max-width: 430px;
 }
 
 .kiwi-container-content {
@@ -229,6 +233,12 @@ export default {
     font-weight: 500;
     line-height: 50px;
     padding: 0 14px;
+}
+
+@media screen and (max-width: 1500px) {
+    .kiwi-container--sidebar-pinned .kiwi-sidebar {
+        max-width: 350px;
+    }
 }
 
 @media screen and (max-width: 769px) {

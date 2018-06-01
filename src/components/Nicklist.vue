@@ -13,7 +13,7 @@
                     userMode(user) ? 'kiwi-nicklist-user--mode-' + userMode(user) : '',
                     user.away ? 'kiwi-nicklist-user--away' : ''
                 ]"
-                @click="openUserbox(user, $event)"
+                @click="openUserbox(user)"
             >
                 <span class="kiwi-nicklist-user-prefix">{{userModePrefix(user)}}</span>
                 <span class="kiwi-nicklist-user-nick"
@@ -166,10 +166,8 @@ export default {
             state.setActiveBuffer(buffer.networkid, buffer.name);
             this.uiState.close();
         },
-        openUserbox: function openUserbox(user, mouseEvent) {
+        openUserbox: function openUserbox(user) {
             state.$emit('userbox.show', user, {
-                top: mouseEvent.clientY,
-                left: mouseEvent.clientX,
                 buffer: this.buffer,
             });
         },
@@ -184,13 +182,6 @@ export default {
 .kiwi-sidebar.kiwi-sidebar-section-nicklist {
     max-width: 250px;
     width: 250px;
-}
-
-@media screen and (max-width: 759px) {
-    .kiwi-sidebar.kiwi-sidebar-section-nicklist {
-        width: 100%;
-        max-width: none;
-    }
 }
 
 .kiwi-nicklist {
@@ -216,12 +207,12 @@ export default {
     padding: 0.5em 10px;
     cursor: default;
     box-sizing: border-box;
+}
 
-    span {
-        font-weight: 600;
-        width: 100%;
-        text-align: center;
-    }
+.kiwi-nicklist-usercount span {
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
 }
 
 .kiwi-nicklist-info {
@@ -236,32 +227,32 @@ export default {
     text-align: center;
     display: flex;
     flex-direction: column;
+}
 
-    input {
-        text-align: left;
-        float: left;
-        width: 100%;
-        border: none;
-        padding: 0 1em;
-        height: 43px;
-        line-height: 43px;
-        font-weight: normal;
-        flex: 1;
-        background: 0 0;
-        outline: 0;
-    }
+.kiwi-nicklist-info input {
+    text-align: left;
+    float: left;
+    width: 100%;
+    border: none;
+    padding: 0 1em;
+    height: 43px;
+    line-height: 43px;
+    font-weight: normal;
+    flex: 1;
+    background: 0 0;
+    outline: 0;
+}
 
-    .fa.fa-search {
-        position: absolute;
-        top: 50%;
-        margin-top: -0.5em;
-        color: #000;
-        opacity: 0.5;
-        line-height: normal;
-        font-size: 1.2em;
-        right: 20px;
-        margin-right: 0;
-    }
+.kiwi-nicklist-info .fa.fa-search {
+    position: absolute;
+    top: 50%;
+    margin-top: -0.5em;
+    color: #000;
+    opacity: 0.5;
+    line-height: normal;
+    font-size: 1.2em;
+    right: 20px;
+    margin-right: 0;
 }
 
 .kiwi-nicklist-users {
@@ -309,6 +300,13 @@ export default {
 .kiwi-nicklist-user-nick {
     font-weight: bold;
     cursor: pointer;
+}
+
+@media screen and (max-width: 759px) {
+    .kiwi-sidebar.kiwi-sidebar-section-nicklist {
+        width: 100%;
+        max-width: 380px;
+    }
 }
 
 </style>

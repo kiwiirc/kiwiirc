@@ -27,8 +27,6 @@
             Kiwi Settings <i class="fa fa-cog" aria-hidden="true"></i>
         </div>
 
-        <hr>
-
         <div class="kiwi-statebrowser-tools">
             <div v-for="el in pluginUiElements" v-rawElement="el" class="kiwi-statebrowser-tool"></div>
         </div>
@@ -201,20 +199,20 @@ export default {
     letter-spacing: 1px;
     transition: all 0.3s;
     margin-bottom: 10px;
+}
 
-    &:hover {
-        opacity: 1;
-    }
+.kiwi-statebrowser-appsettings:hover {
+    opacity: 1;
+}
 
-    span {
-        font-weight: 600;
-    }
+.kiwi-statebrowser-appsettings span {
+    font-weight: 600;
+}
 
-    i {
-        float: right;
-        line-height: 35px;
-        font-size: 1.2em;
-    }
+.kiwi-statebrowser-appsettings i {
+    float: right;
+    line-height: 35px;
+    font-size: 1.2em;
 }
 
 .kiwi-statebrowser-usermenu {
@@ -243,10 +241,10 @@ export default {
     padding: 0 10px;
     font-size: 0.8em;
     margin-bottom: 10px;
+}
 
-    p {
-        margin-bottom: 0;
-    }
+.kiwi-statebrowser-usermenu-body p {
+    margin-bottom: 0;
 }
 
 /* Add network button */
@@ -298,7 +296,6 @@ export default {
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
     text-align: left;
     padding: 0 0 0 10px;
-    text-transform: capitalize;
     width: 100%;
     font-size: 1em;
     font-weight: 600;
@@ -441,7 +438,6 @@ export default {
 .kiwi-statebrowser-availablenetworks-name {
     text-align: center;
     font-weight: bold;
-    text-transform: capitalize;
 }
 
 .kiwi-statebrowser-availablenetworks-networks {

@@ -264,12 +264,9 @@ export default {
 </script>
 
 <style lang="less">
-.kiwi-sidebar-userbox {
+.kiwi-sidebar.kiwi-sidebar-section-user {
     right: 0;
     width: 380px;
-    max-width: none;
-    height: 100%;
-    overflow-y: scroll;
 }
 
 .kiwi-userbox {
@@ -320,7 +317,6 @@ export default {
     font-size: 1em;
     line-height: 1em;
     padding: 0;
-    text-transform: capitalize;
     text-align: left;
     opacity: 0.5;
     font-weight: 900;
@@ -403,10 +399,10 @@ export default {
     border: none;
     line-height: 2.8em;
     font-size: 1em;
+}
 
-    i {
-        margin-right: 0.3em;
-    }
+.kiwi-userbox-opaction i {
+    margin-right: 0.3em;
 }
 
 .kiwi-userbox-actions a {
@@ -430,11 +426,11 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
 
-    span {
-        /* This fixes a vertical align issue between the checkbox and span */
-        float: right;
-    }
+.kiwi-userbox-ignoreuser span {
+    /* This fixes a vertical align issue between the checkbox and span */
+    float: right;
 }
 
 @media screen and (max-width: 769px) {

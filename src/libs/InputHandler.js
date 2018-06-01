@@ -1,3 +1,4 @@
+import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import _ from 'lodash';
 import AliasRewriter from './AliasRewriter';
@@ -139,10 +140,22 @@ function handleMessage(type, event, command, line) {
 
     let buffer = this.state.getBufferByName(network.id, bufferName);
     if (buffer) {
+        let textFormatType = 'privmsg';
+        if (type === 'action') {
+            textFormatType = 'action';
+        } else if (type === 'notice') {
+            textFormatType = 'notice';
+        }
+
+        let messageBody = TextFormatting.formatText(textFormatType, {
+            nick: network.nick,
+            text: message,
+        });
+
         let newMessage = {
             time: Date.now(),
-            nick: this.state.getActiveNetwork().nick,
-            message: message,
+            nick: network.nick,
+            message: messageBody,
             type: type,
         };
 

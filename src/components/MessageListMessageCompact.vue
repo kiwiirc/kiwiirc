@@ -45,7 +45,7 @@
         <div
             class="kiwi-messagelist-nick"
             v-bind:style="ml.nickStyle(message.nick)"
-            v-bind:data-nick="message.nick"
+            @click="ml.openUserBox(message.nick)"
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
             @mouseout="ml.hover_nick='';"
         >{{message.user ? userModePrefix(message.user) : ''}}{{message.nick}}</div>
@@ -106,18 +106,19 @@ export default {
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
     width: 110px;
+    min-width: 110px;
     display: inline-block;
     left: 0;
     top: -1px;
     position: absolute;
 }
 
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-nick .kiwi-messagelist-time {
-    margin-right: 10px;
+.kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
+    width: auto;
 }
 
-.kiwi-messagelist-message--compact .kiwi-messagelist-message-nick {
-    margin-right: 14px;
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-nick .kiwi-messagelist-time {
+    margin-right: 10px;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-time {
@@ -145,23 +146,25 @@ export default {
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic {
     margin: 0;
     padding: 1px 0;
-
-    .kiwi-messagelist-body {
-        margin-left: 131px;
-    }
 }
 
-//Channel Connection
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection-connected {
-    .kiwi-messagelist-nick,
-    .kiwi-messagelist-time {
-        display: none;
-    }
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
+    margin-left: 131px;
+}
 
-    .kiwi-messagelist-body {
-        margin: 0 auto;
-        max-width: 240px;
-    }
+//Channel Connection's
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection {
+    text-align: center;
+}
+
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-nick,
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-time {
+    display: none;
+}
+
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+    display: inline-block;
+    margin-left: auto;
 }
 
 //Channel topic
@@ -170,12 +173,12 @@ export default {
     border-left: 0;
     border-right: 0;
     margin: 5px 0;
+}
 
-    .kiwi-messagelist-body {
-        padding-right: 0;
-        max-width: 95%;
-        margin-left: 20px;
-    }
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-topic .kiwi-messagelist-body {
+    padding-right: 0;
+    max-width: 95%;
+    margin-left: 20px;
 }
 
 //Repeat messages, remove the time and author name
@@ -199,6 +202,7 @@ export default {
     .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
         display: inline;
         width: auto;
+        min-width: auto;
         float: left;
         position: static;
         padding-left: 0;
