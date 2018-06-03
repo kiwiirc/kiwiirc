@@ -4,6 +4,7 @@
             class="kiwi-ircinput-editor"
             contenteditable="true"
             role="textbox"
+            spellcheck="true"
             :placeholder="placeholder"
             ref="editor"
             @keypress="updateValueProps(); $emit('keypress', $event)"
@@ -55,19 +56,27 @@ export default Vue.component('irc-input', {
         onPaste: function onPaste(event) {
             event.preventDefault();
 
-            let clipboardData = event.clipboardData || window.clipboardData;
-            let pastedData = clipboardData.getData('Text');
+            let clpData = (event.clipboardData || window.clipboardData);
+            let ignoreThisPaste = false;
 
-            let selection = window.getSelection();
-            let range = selection.getRangeAt(0);
-            if (range) {
-                range.deleteContents();
-                range.insertNode(document.createTextNode(pastedData));
+            clpData.types.forEach(type => {
+                let ignoreTypes = ['Files', 'image'];
+                ignoreTypes.forEach(ig => {
+                    if (type.indexOf(ig) > -1) {
+                        ignoreThisPaste = true;
+                    }
+                });
+            });
 
-                let selPos = this.current_range[0] + pastedData.length;
-                this.current_range = [selPos, selPos];
+            if (ignoreThisPaste) {
+                return;
             }
-            this.focus();
+
+            document.execCommand('insertText', false, clpData.getData('text/plain'));
+
+            setTimeout(() => {
+                this.updateValueProps();
+            }, 0);
         },
         updateValueProps: function updateValueProps() {
             let selection = window.getSelection();

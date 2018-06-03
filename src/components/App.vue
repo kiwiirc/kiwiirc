@@ -342,9 +342,6 @@ export default {
             }
 
             state.$emit('buffer.paste', event);
-
-            event.stopPropagation();
-            event.preventDefault();
         },
         emitDocumentClick: function emitDocumentClick(event) {
             state.$emit('document.clicked', event);
