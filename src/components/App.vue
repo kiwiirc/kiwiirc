@@ -8,6 +8,7 @@
         }"
         @click="emitDocumentClick"
         @paste="emitBufferPaste"
+        :data-activebuffer="buffer ? buffer.name.toLowerCase() : ''"
     >
         <link v-bind:href="themeUrl" rel="stylesheet" type="text/css">
 
