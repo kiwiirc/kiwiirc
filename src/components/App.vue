@@ -8,6 +8,7 @@
         }"
         @click="emitDocumentClick"
         @paste="emitBufferPaste"
+        :data-activebuffer="buffer ? buffer.name.toLowerCase() : ''"
     >
         <link v-bind:href="themeUrl" rel="stylesheet" type="text/css">
 
@@ -342,9 +343,6 @@ export default {
             }
 
             state.$emit('buffer.paste', event);
-
-            event.stopPropagation();
-            event.preventDefault();
         },
         emitDocumentClick: function emitDocumentClick(event) {
             state.$emit('document.clicked', event);

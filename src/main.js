@@ -141,6 +141,7 @@ function loadApp() {
         .then(applyConfig)
         .then(initState)
         .then(initLocales)
+        .then(initThemes)
         .then(loadPlugins)
         .then(startApp)
         .catch(showError);
@@ -286,7 +287,7 @@ async function initState() {
     api.setState(state);
 }
 
-function startApp() {
+function initThemes() {
     let themeMgr = ThemeManager.instance(state);
     api.setThemeManager(themeMgr);
 
@@ -294,7 +295,9 @@ function startApp() {
     if (argTheme) {
         themeMgr.setTheme(argTheme);
     }
+}
 
+function startApp() {
     api.emit('init');
 
     /* eslint-disable no-new */
