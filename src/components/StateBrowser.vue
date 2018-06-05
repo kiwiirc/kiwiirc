@@ -73,14 +73,9 @@ import StateBrowserNetwork from './StateBrowserNetwork';
 import AppSettings from './AppSettings';
 import BufferSettings from './BufferSettings';
 import NetworkProvider from '@/libs/NetworkProvider';
-import NetworkProviderZnc from '@/libs/networkproviders/NetworkProviderZnc';
 import GlobalApi from '@/libs/GlobalApi';
 
 let netProv = new NetworkProvider();
-
-let znc = new NetworkProviderZnc(state);
-netProv.addProvider(znc);
-znc.autoDetectZncNetworks();
 
 export default {
     data: function data() {
