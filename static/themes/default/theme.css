@@ -392,9 +392,9 @@
   background: #f2f2f2;
   opacity: 1;
 }
-.kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
+.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
     border-left: none;
-    background: #42b983;
+    background: none;
 }
 
 /* When hovering over a users messages */

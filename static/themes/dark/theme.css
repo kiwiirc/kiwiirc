@@ -431,8 +431,13 @@
     opacity: 1;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message--unread {
+.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message--unread {
     border-left: 2px solid #42b992;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
+    border-left: none;
+    background: none;
 }
 
 /* Message list - Standard messages ( MessageList.vue ) */
