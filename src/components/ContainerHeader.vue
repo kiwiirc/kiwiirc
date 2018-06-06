@@ -10,6 +10,7 @@
         <template v-if="isChannel()">
             <div class="kiwi-header-name">{{buffer.name}}</div>
             <div class="kiwi-header-options" v-if="isJoined && isConnected">
+                <div v-for="el in pluginUiChannelElements" v-rawElement="el" class="kiwi-header-option"></div>
                 <div class="kiwi-header-option kiwi-header-option-topic" @click="showTopic" v-bind:class="{ 'kiwi-header-option--active': viewTopic == true }" v-if="buffer.topic.length > 0">
                     <a v-if="viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">Hide Topic</span></a>
                     <a v-if="!viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">Display Topic</span></a>
@@ -21,9 +22,6 @@
             </div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a @click="joinCurrentBuffer" class="u-link kiwi-header-join-channel-button">{{$t('container_join')}}</a>
-            </div>
-            <div class="kiwi-header-tools">
-                <div v-for="el in pluginUiChannelElements" v-rawElement="el" class="kiwi-header-tool"></div>
             </div>
 
             <div v-if="isJoined && buffer.topic.length > 0 && viewTopic" class="kiwi-header-topic">
@@ -46,11 +44,13 @@
 
         <template v-else-if="isQuery()">
             <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div class="kiwi-header-tools">
-                <div v-for="el in pluginUiQueryElements" v-rawElement="el" class="kiwi-header-tool"></div>
-            </div>
             <div class="kiwi-header-options">
-                <div class="kiwi-header-option kiwi-header-option-leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
+                <div v-for="el in pluginUiQueryElements" v-rawElement="el" class="kiwi-header-option"></div>
+                <div class="kiwi-header-option kiwi-header-option-leave">
+                    <a @click="closeCurrentBuffer">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </template>
 
