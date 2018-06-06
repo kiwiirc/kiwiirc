@@ -9,7 +9,7 @@
 
         <template v-if="isChannel()">
             <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div class="kiwi-header-options" v-if="isJoined && isConnected">
+            <div class="kiwi-header-options" v-if="isJoined && isConnected" :key="buffer.id">
                 <div v-for="el in pluginUiChannelElements" v-rawElement="el" class="kiwi-header-option"></div>
                 <div class="kiwi-header-option kiwi-header-option-topic" @click="showTopic" v-bind:class="{ 'kiwi-header-option--active': viewTopic == true }" v-if="buffer.topic.length > 0">
                     <a v-if="viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">Hide Topic</span></a>
@@ -44,7 +44,7 @@
 
         <template v-else-if="isQuery()">
             <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div class="kiwi-header-options">
+            <div class="kiwi-header-options" :key="buffer.id">
                 <div v-for="el in pluginUiQueryElements" v-rawElement="el" class="kiwi-header-option"></div>
                 <div class="kiwi-header-option kiwi-header-option-leave">
                     <a @click="closeCurrentBuffer">
