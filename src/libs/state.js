@@ -857,7 +857,8 @@ const state = new Vue({
 
             let network = buffer.getNetwork();
             let isNewMessage = message.time >= buffer.last_read;
-            let isHighlight = Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
+            let isHighlight = !network ?
+                false : Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
 
             // Check for extra custom highlight words
             let extraHighlights = (state.setting('highlights') || '').toLowerCase().split(' ');
@@ -889,7 +890,7 @@ const state = new Vue({
 
             // Handle any notifications
             let settingAlertOn = buffer.setting('alert_on');
-            let isSelf = message.nick === network.nick;
+            let isSelf = !network ? false : message.nick === network.nick;
             if (isNewMessage && settingAlertOn !== 'never' && message.type !== 'nick' && !isSelf) {
                 let notifyTitle = '';
                 let notifyMessage = message.nick ?
@@ -1390,7 +1391,7 @@ function initialiseBufferState(buffer) {
 
                 // If running under a bouncer, set it on the server-side too
                 let network = buffer.getNetwork();
-                let allowedUpdate = buffer.isChannel() || buffer.isQuery();
+                let allowedUpdate = !network ? false : buffer.isChannel() || buffer.isQuery();
                 if (allowedUpdate && network.connection.bncname) {
                     let lastMessage = buffer.getMessages().reduce((latest, current) => {
                         if (latest.time && latest.time > current.time) {
