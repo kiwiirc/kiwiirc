@@ -472,7 +472,7 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             secure: 'Using a secure connection',
             channels: 'Also on channels {{channels}}',
             mask: '{{nick}}!{{user}}@{{host}} ({{real_name}})',
-            idle: 'Idle for {{idle}} seconds',
+            idle: 'Idle for {{idle}}',
             logon: 'Connected at {{logon}}',
             actual_ip: 'Real IP: {{actualip}}',
             actual_host: 'Real hostname: {{actualhost}}',
@@ -507,8 +507,8 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             display(formats.secure);
         }
         if (whoisData.idle) {
-            let idleSeconds = Math.floor(parseInt(whoisData.idle, 10) / 1000);
-            display(formats.idle.replace('{{idle}}', idleSeconds));
+            let idleSeconds = Math.floor(parseInt(whoisData.idle, 10));
+            display(formats.idle.replace('{{idle}}', TextFormatting.formatDuration(idleSeconds)));
         }
         if (whoisData.logon) {
             let logonTime = parseInt(whoisData.logon, 10);

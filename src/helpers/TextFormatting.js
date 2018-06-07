@@ -409,6 +409,33 @@ export function styleBlocksToHtml(blocks, showEmoticons, userList) {
     return { html: html, urls: urls };
 }
 
+// Convert a given duration in seconds to human readable weeks,days,hours,minutes,seconds
+// only showing the duration parts that are used eg 3666 --> 1 hour, 1 minute, 6 seconds
+export function formatDuration(timeSeconds) {
+    let seconds = timeSeconds;
+
+    const weeks = Math.floor(seconds / (3600 * 24 * 7));
+    seconds -= weeks * 3600 * 24 * 7;
+
+    const days = Math.floor(seconds / (3600 * 24));
+    seconds -= days * 3600 * 24;
+
+    const hours = Math.floor(seconds / 3600);
+    seconds -= hours * 3600;
+
+    const minutes = Math.floor(seconds / 60);
+    seconds -= minutes * 60;
+
+    const tmp = [];
+    (weeks) && tmp.push(t('week', { count: weeks }));
+    (weeks || days) && tmp.push(t('day', { count: days }));
+    (days || hours) && tmp.push(t('hour', { count: hours }));
+    (days || hours || minutes) && tmp.push(t('minute', { count: minutes }));
+    tmp.push(t('second', { count: seconds }));
+
+    return tmp.join(' ');
+}
+
 export function t(...args) {
     return i18next.t(...args);
 }

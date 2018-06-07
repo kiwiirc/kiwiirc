@@ -130,6 +130,49 @@ msgid "connection_channel"
 msgstr "Channel"
 
 
+#: Durations
+
+#: week
+msgid "week"
+msgstr "{{count}} week"
+
+#: weeks
+msgid "week_plural"
+msgstr "{{count}} weeks"
+
+#: day
+msgid "day"
+msgstr "{{count}} day"
+
+#: days
+msgid "day_plural"
+msgstr "{{count}} days"
+
+#: hour
+msgid "hour"
+msgstr "{{count}} hour"
+
+#: hours
+msgid "hour_plural"
+msgstr "{{count}} hours"
+
+#: minute
+msgid "minute"
+msgstr "{{count}} minute"
+
+#: minutes
+msgid "minute_plural"
+msgstr "{{count}} minutes"
+
+#: second
+msgid "second"
+msgstr "{{count}} second"
+
+#: seconds
+msgid "second_plural"
+msgstr "{{count}} seconds"
+
+
 
 #: AppSettings $t('settings_')
 
