@@ -114,7 +114,10 @@ export default {
             this.uiState.close();
         });
         this.listen(state, 'userbox.show', (user, opts) => {
-            this.uiState.showUser();
+            this.uiState.showUser(user);
+        });
+        this.listen(state, 'userbox.hide', () => {
+            this.uiState.close();
         });
     },
 };

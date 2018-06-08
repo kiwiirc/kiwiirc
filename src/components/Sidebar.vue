@@ -68,19 +68,19 @@
                 </div>
 
                 <div
-                    v-if="uiState.section()==='user' && userbox_user"
+                    v-else-if="uiState.section() === 'user'"
                     class="kiwi-sidebar-userbox"
                     @click.stop=""
                 >
                     <user-box
-                        :user="userbox_user"
+                        :user="uiState.sidebarUser"
                         :buffer="buffer"
                         :network="network"
                     ></user-box>
                 </div>
 
                 <nicklist
-                    v-if="buffer.isChannel() && uiState.section() === 'nicklist'"
+                    v-else-if="uiState.section() === 'nicklist'"
                     :network="network"
                     :buffer="buffer"
                     :users="users"
@@ -121,26 +121,11 @@ export default {
     },
     data: function data() {
         return {
-            userbox_user: null,
             pluginUiElements: GlobalApi.singleton().sideBarPlugins,
         };
     },
     props: ['network', 'buffer', 'users', 'uiState'],
     computed: {
-        isSettingsOpen: {
-            get() {
-                return !this.uiState.isClosed && this.uiState.sidebarSection === 'settings';
-            },
-            set(newVal) {
-                if (newVal) {
-                    this.uiState.sidebarOpen = true;
-                    this.uiState.sidebarSection = 'settings';
-                } else {
-                    this.uiState.sidebarOpen = false;
-                    this.uiState.sidebarSection = '';
-                }
-            },
-        },
         settingShowJoinParts: {
             get: function getSettingShowJoinParts() {
                 return this.buffer.setting('show_joinparts');
@@ -204,24 +189,7 @@ export default {
 
             return type;
         },
-    },
-    methods: {
-    },
-    created: function created() {
-        this.listen(state, 'sidebar.hide', () => {
-            this.uiState.sidebarOpen = false;
-        });
-
-        this.listen(state, 'userbox.show', (user) => {
-            this.userbox_user = user;
-            this.uiState.sidebarSection = 'user';
-            this.uiState.sidebarOpen = true;
-        });
-        this.listen(state, 'userbox.hide', () => {
-            this.userbox_user = null;
-            this.uiState.close();
-        });
-    },
+    }
 };
 </script>
 

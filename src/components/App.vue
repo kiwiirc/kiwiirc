@@ -85,6 +85,7 @@ let ContainerUiState = Vue.extend({
             sidebarPinned: false,
             // sidebarSection may be either '', 'user', 'settings', 'nicklist'
             sidebarSection: '',
+            sidebarUser: null,
         };
     },
     computed: {
@@ -104,9 +105,23 @@ let ContainerUiState = Vue.extend({
     },
     methods: {
         section() {
-            return this.isClosed ?
-                '' :
-                this.sidebarSection || 'nicklist';
+            if (this.isClosed) {
+                return '';
+            }
+
+            let section = this.sidebarSection;
+
+            if (section === 'settings') {
+                return 'settings';
+            } else if (section === 'user' && this.sidebarUser) {
+                return 'user';
+            } else if (section === 'nicklist') {
+                return 'nicklist';
+            }
+
+            // The default section to show if nothing else matched
+            return 'nicklist';
+
         },
         pin() {
             this.sidebarPinned = true;
@@ -122,7 +137,8 @@ let ContainerUiState = Vue.extend({
             this.sidebarOpen = false;
             this.sidebarSection = '';
         },
-        showUser() {
+        showUser(user) {
+            this.sidebarUser = user;
             this.sidebarOpen = true;
             this.sidebarSection = 'user';
         },
