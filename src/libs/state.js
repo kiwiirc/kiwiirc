@@ -867,7 +867,7 @@ const state = new Vue({
                         return;
                     }
 
-                    if (bufferMessage.message.indexOf(word) > -1) {
+                    if (bufferMessage.message.toLowerCase().indexOf(word) > -1) {
                         isHighlight = true;
                     }
                 });
