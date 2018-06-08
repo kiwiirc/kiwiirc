@@ -462,6 +462,20 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
     let buffer = this.state.getActiveBuffer();
 
     network.ircClient.whois(parts[0], parts[0], (whoisData) => {
+        if (!whoisData.error) {
+            let messageBody = TextFormatting.formatText('whois_error', {
+                nick: whoisData.nick,
+                text: whoisData.error,
+            });
+            this.state.addMessage(buffer, {
+                time: Date.now(),
+                nick: '',
+                message: messageBody,
+                type: 'whois',
+            });
+            return;
+        }
+
         let out = [];
         let display = (message) => {
             if (!message) {
@@ -471,41 +485,63 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             out.push(message);
         };
         let formats = {
-            account: 'User account: {{account}}',
-            server: 'Connected to server {{server}} ({{server_info}})',
-            secure: 'Using a secure connection',
-            channels: 'Also on channels {{channels}}',
-            mask: '{{nick}}!{{user}}@{{host}} ({{real_name}})',
-            idle: 'Idle for {{idle}}',
-            logon: 'Connected at {{logon}}',
-            actual_ip: 'Real IP: {{actualip}}',
-            actual_host: 'Real hostname: {{actualhost}}',
+            mask: 'is {{nick}}!{{user}}@{{host}} * ({{real_name}})',
+            from: 'is connecting from {{actual_hostname}} {{actual_ip}}',
+            channels: 'is on {{channels}}',
+            server: 'is using {{server}} ({{server_info}})',
+            account: 'is logged in as {{account}}',
+            secure: 'is using a secure connection',
+            idle: 'has been idle for {{idle}}',
+            logon: 'connected on {{logon}}',
 
             // The following entries will be ignored from whoisData as display() ignores
             // empty lines.
             nick: '',
             user: '',
-            host: '',
+            modes: '',
+            ident: '',
+            operator: '',
+            hostname: '',
             real_name: '',
+            actual_ip: '',
             server_info: '',
+            actual_hostname: '',
+            registered_nick: '',
         };
 
         // Display a select few entries first to keep a consistent order, and then
         // show any extra information at the end
-        if (whoisData.account) {
-            display(formats.account.replace('{{account}}', whoisData.account));
-        }
-        if (whoisData.nick) {
+        if (whoisData.nick && whoisData.hostname) {
             display(formats.mask
                 .replace('{{nick}}', whoisData.nick)
                 .replace('{{user}}', whoisData.ident)
                 .replace('{{host}}', whoisData.hostname)
                 .replace('{{real_name}}', whoisData.real_name));
         }
+        if (whoisData.actual_hostname && whoisData.actual_ip) {
+            display(formats.from
+                .replace('{{actual_hostname}}', whoisData.actual_hostname)
+                .replace('{{actual_ip}}', whoisData.actual_ip));
+        }
+        if (whoisData.channels) {
+            display(formats.channels.replace('{{channels}}', whoisData.channels));
+        }
         if (whoisData.server) {
             display(formats.server
                 .replace('{{server}}', whoisData.server)
                 .replace('{{server_info}}', whoisData.server_info));
+        }
+        if (whoisData.operator) {
+            display(whoisData.operator);
+        }
+        if (whoisData.modes) {
+            display(whoisData.modes);
+        }
+        if (whoisData.account) {
+            display(formats.account.replace('{{account}}', whoisData.account));
+        }
+        if (whoisData.registered_nick) {
+            display(whoisData.registered_nick);
         }
         if (whoisData.secure) {
             display(formats.secure);
@@ -520,15 +556,6 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
                 let logonDate = new Date(logonTime * 1000);
                 display(formats.logon.replace('{{logon}}', logonDate));
             }
-        }
-        if (whoisData.channels) {
-            display(formats.channels.replace('{{channels}}', whoisData.channels));
-        }
-        if (whoisData.actual_ip) {
-            display(formats.actualip.replace('{{actualip}}', whoisData.actual_ip));
-        }
-        if (whoisData.actual_host) {
-            display(formats.actualhost.replace('{{actualhost}}', whoisData.actual_host));
         }
 
         _.each(whoisData, (val, key) => {
