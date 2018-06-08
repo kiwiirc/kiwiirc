@@ -110,17 +110,17 @@ let ContainerUiState = Vue.extend({
             }
 
             let section = this.sidebarSection;
+            let isChannel = state.getActiveBuffer().isChannel();
 
-            if (section === 'settings') {
+            if (section === 'settings' && isChannel) {
                 return 'settings';
-            } else if (section === 'user' && this.sidebarUser) {
+            } else if (section === 'user' && this.sidebarUser && isChannel) {
                 return 'user';
-            } else if (section === 'nicklist') {
+            } else if (section === 'nicklist' && isChannel) {
                 return 'nicklist';
             }
 
-            // The default section to show if nothing else matched
-            return 'nicklist';
+            return '';
 
         },
         pin() {
@@ -136,6 +136,7 @@ let ContainerUiState = Vue.extend({
         close() {
             this.sidebarOpen = false;
             this.sidebarSection = '';
+            this.sidebarUser = null;
         },
         showUser(user) {
             this.sidebarUser = user;

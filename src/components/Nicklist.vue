@@ -60,7 +60,7 @@ export default {
             user_filter: '',
         };
     },
-    props: ['network', 'buffer', 'users', 'uiState'],
+    props: ['network', 'buffer', 'uiState'],
     computed: {
         sortedUsers: function sortedUsers() {
             // Get a list of network prefixes and give them a rank number

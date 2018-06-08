@@ -80,10 +80,9 @@
                 </div>
 
                 <nicklist
-                    v-else-if="uiState.section() === 'nicklist'"
+                    v-else-if="uiState.section() === 'nicklist' || uiState.section() === ''"
                     :network="network"
                     :buffer="buffer"
-                    :users="users"
                     :uiState="uiState"
                 ></nicklist>
             </template>
@@ -124,7 +123,7 @@ export default {
             pluginUiElements: GlobalApi.singleton().sideBarPlugins,
         };
     },
-    props: ['network', 'buffer', 'users', 'uiState'],
+    props: ['network', 'buffer', 'uiState'],
     computed: {
         settingShowJoinParts: {
             get: function getSettingShowJoinParts() {

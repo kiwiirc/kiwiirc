@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-container" v-bind:class="{
             /* 'kiwi-container-' + bufferType: true, */
-            'kiwi-container--sidebar-open': uiState.isOpen,
+            'kiwi-container--sidebar-open': uiState.isOpen && uiState.section() !== '',
             'kiwi-container--sidebar-pinned': uiState.isPinned,
             'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
     }">
@@ -23,11 +23,10 @@
                 <template v-else>
                     <message-list :buffer="buffer" :users="users"></message-list>
                     <sidebar
-                        v-if="buffer.isChannel()"
                         :network="network"
                         :buffer="buffer"
-                        :users="users"
                         :uiState="uiState"
+                        v-if="buffer.isChannel() /* There are no sidebars for queries yet */"
                     ></sidebar>
                 </template>
 
