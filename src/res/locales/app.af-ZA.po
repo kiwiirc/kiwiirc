@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Afrikaans\n"
 "Language: af_ZA\n"
-"PO-Revision-Date: 2018-06-08 08:31-0400\n"
+"PO-Revision-Date: 2018-06-08 08:41-0400\n"
 
 #: Start
 msgid "start_button"
@@ -379,11 +379,11 @@ msgstr "Verwyder netwerk"
 
 #: {{count}} person here
 msgid "person"
-msgstr "persoon"
+msgstr "{{count}} persoon hier"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr ""
+msgstr "{{count}} mense hier"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
