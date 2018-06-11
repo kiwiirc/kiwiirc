@@ -259,6 +259,11 @@ export default {
     padding: 1em;
 }
 
+.kiwi-sidebar-userbox {
+    overflow: hidden;
+    height: 100%;
+}
+
 .kiwi-sidebar-settings {
     margin-bottom: 20px;
 }

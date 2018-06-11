@@ -271,6 +271,8 @@ export default {
 
 .kiwi-userbox {
     box-sizing: border-box;
+    overflow-y: auto;
+    height: 100%;
 }
 
 .kiwi-userbox-header {
