@@ -29,7 +29,7 @@
                 </span>
             </template>
 
-            <a @click="showNetworkSettings" class="kiwi-notconnected-button kiwi-notconnected-button-settings">
+            <a v-if="!restrictedServer" @click="showNetworkSettings" class="kiwi-notconnected-button kiwi-notconnected-button-settings">
                 <i class="fa fa-cogs" aria-hidden="true"></i>{{$t('reconnect_settings')}}
             </a>
         </div>
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+
+import state from '@/libs/state';
 
 export default {
     data: function data() {
@@ -71,6 +73,9 @@ export default {
             }
 
             return false;
+        },
+        restrictedServer() {
+            return state.setting('restricted');
         },
     },
     methods: {
