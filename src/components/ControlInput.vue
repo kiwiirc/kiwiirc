@@ -1,13 +1,13 @@
 <template>
     <div class="kiwi-controlinput">
         <div class="kiwi-controlinput-selfuser" :class="{'kiwi-controlinput-selfuser--open': selfuser_open}">
-            <self-user :network="buffer.getNetwork()" v-if="selfuser_open && networkState==='connected'"></self-user>
+            <self-user :network="buffer.getNetwork()" v-if="selfuser_open && networkState==='connected'" :parent=this></self-user>
         </div>
 
         <div class="kiwi-controlinput-inner">
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
-                <i class="fa fa-caret-up" aria-hidden="true"></i>
+                <i :class="[selfuser_open ? 'fa-caret-down' : 'fa-caret-up']" class="fa" aria-hidden="true"></i>
             </div>
             <form @submit.prevent="submitForm" class="kiwi-controlinput-form">
                 <auto-complete
@@ -397,6 +397,10 @@ export default {
 .kiwi-controlinput-inner {
     padding: 0;
     box-sizing: border-box;
+}
+
+.kiwi-controlinput .kiwi-controlinput-inner i {
+    font-size: 120%;
 }
 
 .kiwi-controlinput-user {
