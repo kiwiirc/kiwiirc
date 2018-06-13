@@ -687,6 +687,7 @@
 .kiwi-statebrowser {
     background: #1b2f24;
     color: #fff;
+    border-right: 1px solid #6fffb0;
 }
 .kiwi-statebrowser-divider {
     background: rgba(255, 255, 255, 0.3);
