@@ -278,15 +278,7 @@ async function initState() {
 
     let persistLog = Logger.namespace('StatePersistence');
     let persist = new StatePersistence(stateKey || '', state, Storage, persistLog);
-
-    let persistSetting = state.settings.startupOptions.remember_buffers;
-    let startupScreen = state.settings.startupScreen;
-
-    if (typeof persistSetting === 'boolean') {
-        persist.includeBuffers = persistSetting;
-    } else {
-        persist.includeBuffers = startupScreen === 'personal';
-    }
+    persist.includeBuffers = !!state.settings.startupOptions.remember_buffers;
 
     if (stateKey) {
         await persist.loadStateIfExists();
