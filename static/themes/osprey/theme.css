@@ -2,10 +2,10 @@
 
 
 /* Colours:
-   red: #a54d4d
-   default blue : #212d3a
-   highlight blue : #4e5c6b
-   green:
+   RED: #a54d4d
+   PRIMARY COLOUR - DARK: #212d3a
+   PRIMARY COLOUR - LIGHT: #4d6075
+   PRIMARY COLOUR - HIGHLIGHT : #4e5c6b
 */
 
 .kiwi-wrap {
@@ -433,7 +433,7 @@
     color: #fff;
 }
 .kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
-    background-color: #f16f74;
+    background-color: #a54d4d;
     color: #fff;
 }
 
@@ -597,7 +597,7 @@
 /* Not connected message ( NotConnected.vue ) */
 .kiwi-notconnected {
     color: #fff;
-    background-color: #bf5155;
+    background-color: #a54d4d;
 }
 .kiwi-notconnected-button {
     border: 2px solid #fff;
