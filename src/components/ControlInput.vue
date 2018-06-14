@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-controlinput">
         <div class="kiwi-controlinput-selfuser" :class="{'kiwi-controlinput-selfuser--open': selfuser_open}">
-            <self-user :network="buffer.getNetwork()" v-if="selfuser_open && networkState==='connected'" :parent=this></self-user>
+            <self-user :network="buffer.getNetwork()" v-if="selfuser_open && networkState==='connected'" @close="selfuser_open=false"></self-user>
         </div>
 
         <div class="kiwi-controlinput-inner">
@@ -399,7 +399,7 @@ export default {
     box-sizing: border-box;
 }
 
-.kiwi-controlinput .kiwi-controlinput-inner i {
+.kiwi-controlinput-inner i {
     font-size: 120%;
 }
 
