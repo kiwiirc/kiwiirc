@@ -17,7 +17,7 @@
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
                 <p> {{$t('state_remembered')}} </p>
                 <a @click="clickForget" class="u-link">{{$t('state_forget')}}</a>
-                <div class="close-icon" @click="is_usermenu_open=false">
+                <div class="kiwi-close-icon" @click="is_usermenu_open=false">
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </div>
             </div>
@@ -375,16 +375,6 @@ export default {
 
 .kiwi-statebrowser-usermenu-body a:hover {
     text-decoration: underline;
-}
-
-.kiwi-statebrowser-usermenu-body .close-icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: pointer;
-    padding: 0.2em 0.4em;
-    border-radius: 0 0 0 0.4em;
-    transition: all 0.3s;
 }
 
 .kiwi-statebrowser-scrollarea {

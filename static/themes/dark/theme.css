@@ -1006,15 +1006,6 @@
     color: #dedede;
 }
 
-.kiwi-statebrowser-usermenu-body .close-icon {
-    background-color: #fc6262;
-    color: #dedede;
-}
-
-.kiwi-statebrowser-usermenu-body .close-icon:hover {
-    background-color: #fe7575;
-}
-
 .kiwi-statebrowser-switcher a:first-of-type {
     background: rgba(255, 255, 255, 0.15);
 }
@@ -1229,4 +1220,20 @@
 /* MOTD */
 .kiwi-messagelist-message-motd {
     color: #666;
+}
+
+/* Global Close Icons */
+.kiwi-close-icon {
+    background-color: #fc6262;
+    color: #fff;
+    border-radius: 0 0 0 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    padding: 0.2em 0.4em;
+    border-radius: 0 0 0 0.4em;
+}
+.kiwi-close-icon:hover {
+    background-color: #fe7575;
 }
