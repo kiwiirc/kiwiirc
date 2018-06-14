@@ -858,7 +858,8 @@ const state = new Vue({
             let network = buffer.getNetwork();
             let isNewMessage = message.time >= buffer.last_read;
             let isHighlight = !network ?
-                false : Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
+                false :
+                Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
 
             // Check for extra custom highlight words
             let extraHighlights = (state.setting('highlights') || '').toLowerCase().split(' ');
