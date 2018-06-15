@@ -1232,7 +1232,6 @@
     top: 0;
     cursor: pointer;
     padding: 0.2em 0.4em;
-    border-radius: 0 0 0 0.4em;
 }
 .kiwi-close-icon:hover {
     background-color: #fe7575;
