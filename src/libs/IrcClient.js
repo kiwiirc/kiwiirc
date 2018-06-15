@@ -443,6 +443,14 @@ function clientMiddleware(state, networkid) {
                 buffer.clearUsers();
             }
 
+            // Remove the user from network state if no remaining common channels
+            let remainingBuffers = state.getBuffersWithUser(networkid, event.nick);
+            if (remainingBuffers.length === 0) {
+                state.removeUser(networkid, {
+                    nick: event.nick,
+                });
+            }
+
             let messageBody = TextFormatting.formatAndT(
                 'channel_part',
                 { reason: event.message },
