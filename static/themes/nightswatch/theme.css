@@ -314,8 +314,14 @@
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic.kiwi-messagelist-message--unread {
     border-left: 2px solid #000000;
 }
+
+.kiwi-sidebar-options {
+    border-left: 1px solid #d8d8d8;
+}
+
 .kiwi-header-buffersettings {
     border-top: 1px solid #ddd;
+    border-left: 1px solid #d8d8d8;
 }
 .kiwi-header-topic > div {
     color: #22231f;
