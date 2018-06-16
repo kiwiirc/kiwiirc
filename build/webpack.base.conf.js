@@ -63,16 +63,19 @@ module.exports = {
           const babelrc = JSON.parse(
             fs.readFileSync(path.join(__dirname, '..', '.babelrc'))
           )
-          return {
-            ...babelrc,
-            babelrc: false,
-            plugins: babelrc.plugins.map(p =>
-              require.resolve(`babel-plugin-${p}`)
-            ),
-            presets: babelrc.presets.map(p =>
-              require.resolve(`babel-preset-${p}`)
-            ),
-          }
+          return Object.assign(
+            {},
+            babelrc,
+            {
+              babelrc: false,
+              plugins: babelrc.plugins.map(p =>
+                require.resolve(`babel-plugin-${p}`)
+              ),
+              presets: babelrc.presets.map(p =>
+                require.resolve(`babel-preset-${p}`)
+              ),
+            }
+          )
         })(),
       },
       {
