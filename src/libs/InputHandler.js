@@ -138,7 +138,7 @@ function handleMessage(type, event, command, line) {
     let bufferName = line.substr(0, spaceIdx);
     let message = line.substr(spaceIdx + 1);
 
-    let buffer = this.state.getBufferByName(network.id, bufferName);
+    let buffer = this.state.getOrAddBufferByName(network.id, bufferName);
     if (buffer) {
         let textFormatType = 'privmsg';
         if (type === 'action') {
