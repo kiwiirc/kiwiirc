@@ -1,4 +1,5 @@
 'use strict'
+const fs = require('fs')
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
@@ -56,8 +57,23 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        exclude: /node_modules\/(core-js|babel-runtime)/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        options: (() => {
+          const babelrc = JSON.parse(
+            fs.readFileSync(path.join(__dirname, '..', '.babelrc')),
+          )
+          return {
+            ...babelrc,
+            babelrc: false,
+            plugins: babelrc.plugins.map(p =>
+              require.resolve(`babel-plugin-${p}`),
+            ),
+            presets: babelrc.presets.map(p =>
+              require.resolve(`babel-preset-${p}`),
+            ),
+          }
+        })(),
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
