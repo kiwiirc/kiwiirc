@@ -1192,6 +1192,11 @@ function initialiseNetworkState(network) {
     Object.defineProperty(network, 'ircClient', {
         value: IrcClient.create(state, network.id),
     });
+    Object.defineProperty(network, 'connect', {
+        value: function connect(...args) {
+            network.ircClient.connect(...args);
+        },
+    });
     Object.defineProperty(network, 'bufferByName', {
         value: _.partial(state.getBufferByName, network.id),
     });
