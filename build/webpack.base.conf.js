@@ -61,16 +61,16 @@ module.exports = {
         loader: 'babel-loader',
         options: (() => {
           const babelrc = JSON.parse(
-            fs.readFileSync(path.join(__dirname, '..', '.babelrc')),
+            fs.readFileSync(path.join(__dirname, '..', '.babelrc'))
           )
           return {
             ...babelrc,
             babelrc: false,
             plugins: babelrc.plugins.map(p =>
-              require.resolve(`babel-plugin-${p}`),
+              require.resolve(`babel-plugin-${p}`)
             ),
             presets: babelrc.presets.map(p =>
-              require.resolve(`babel-preset-${p}`),
+              require.resolve(`babel-preset-${p}`)
             ),
           }
         })(),
