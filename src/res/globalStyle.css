@@ -175,6 +175,22 @@ div {
     display: inline-block;
 }
 
+/* Globally style the close icon */
+.kiwi-close-icon {
+    background-color: #fc6262;
+    color: #fff;
+    border-radius: 0 0 0 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    padding: 0.2em 0.4em;
+}
+
+.kiwi-close-icon:hover {
+    background-color: #fe7575;
+}
+
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
 .irc-fg-colour-blue { color: #00f; }
