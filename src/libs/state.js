@@ -568,8 +568,8 @@ const state = new Vue({
                     if (newVal === null) {
                         this.$delete(val, propName, newVal);
                     } else {
-                    this.$set(val, propName, newVal);
-                }
+                        this.$set(val, propName, newVal);
+                    }
                 }
 
                 val = nextVal;
@@ -738,8 +738,8 @@ const state = new Vue({
                         targetBuffer = buffer;
                     } else {
                         targetBuffer = network.serverBuffer();
+                    }
                 }
-            }
             }
 
             if (targetBuffer) {
@@ -1108,6 +1108,13 @@ const state = new Vue({
 
             if (!userObj) {
                 userObj = this.addUser(network, user);
+            } else {
+                // Verify the user object is correct
+                _.each(user, (val, prop) => {
+                    if (userObj[prop] !== val) {
+                        userObj[prop] = val;
+                    }
+                });
             }
 
             buffer.addUser(userObj);
