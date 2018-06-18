@@ -39,8 +39,10 @@ delete webpackConfig.entry;
 
 webpackConfig.module.rules.some(function (loader, i) {
   if (/^babel(-loader)?$/.test(loader.loader)) {
-    loader.include.push(path.resolve(projectRoot, 'test/unit'));
-    return true;
+    if (loader.include) {
+      loader.include.push(path.resolve(projectRoot, 'test/unit'));
+      return true;
+    }
   }
 });
 
