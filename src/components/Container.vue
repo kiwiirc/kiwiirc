@@ -5,7 +5,7 @@
             'kiwi-container--sidebar-pinned': uiState.isPinned,
             'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
     }">
-        <template v-if="buffer">
+        <template>
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
                 <div
                     class="kiwi-container-toggledraw-statebrowser-messagecount kiwi-container-toggledraw-statebrowser-messagecount--highlight"
@@ -31,12 +31,6 @@
                 </template>
 
                 <slot name="after"></slot>
-            </div>
-        </template>
-        <template v-else>
-            <div class="kiwi-container-empty">
-                <h4>{{$t('container_welcome')}}</h4>
-                <a @click.stop="toggleStateBrowser" class="u-button">{{$t('container_statebrowser')}}</a>
             </div>
         </template>
     </div>
@@ -223,18 +217,6 @@ export default {
     left: 6px;
     width: 37px;
     padding: 0;
-}
-
-.kiwi-container-empty {
-    text-align: center;
-    padding: 1em;
-}
-
-.kiwi-container-empty .u-button {
-    border-radius: 3px;
-    font-weight: 500;
-    line-height: 50px;
-    padding: 0 14px;
 }
 
 @media screen and (max-width: 1500px) {

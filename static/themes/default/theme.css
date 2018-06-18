@@ -223,7 +223,7 @@
     border-right-color: #d62323;
 }
 
-.kiwi-container-empty .u-button {
+.kiwi-fallback-container .u-button {
     background-color: #42b992;
     color: #fff;
 }
