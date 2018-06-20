@@ -57,7 +57,7 @@
     "i18next": "^8.4.0",
     "i18next-conv": "^3.0.3",
     "i18next-xhr-backend": "^1.4.1",
-    "irc-framework": "^2.11.0",
+    "irc-framework": "3",
     "json-loader": "^0.5.4",
     "less": "^2.7.1",
     "less-loader": "^4.0.5",

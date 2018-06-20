@@ -474,8 +474,8 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             mask: '{{nick}}!{{user}}@{{host}} ({{real_name}})',
             idle: 'Idle for {{idle}} seconds',
             logon: 'Connected at {{logon}}',
-            actualip: 'Real IP: {{actualip}}',
-            actualhost: 'Real hostname: {{actualhost}}',
+            actual_ip: 'Real IP: {{actualip}}',
+            actual_host: 'Real hostname: {{actualhost}}',
 
             // The following entries will be ignored from whoisData as display() ignores
             // empty lines.
@@ -494,8 +494,8 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
         if (whoisData.nick) {
             display(formats.mask
                 .replace('{{nick}}', whoisData.nick)
-                .replace('{{user}}', whoisData.user)
-                .replace('{{host}}', whoisData.host)
+                .replace('{{user}}', whoisData.ident)
+                .replace('{{host}}', whoisData.hostname)
                 .replace('{{real_name}}', whoisData.real_name));
         }
         if (whoisData.server) {
@@ -520,11 +520,11 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
         if (whoisData.channels) {
             display(formats.channels.replace('{{channels}}', whoisData.channels));
         }
-        if (whoisData.actualip) {
-            display(formats.actualip.replace('{{actualip}}', whoisData.actualip));
+        if (whoisData.actual_ip) {
+            display(formats.actualip.replace('{{actualip}}', whoisData.actual_ip));
         }
-        if (whoisData.actualhost) {
-            display(formats.actualhost.replace('{{actualhost}}', whoisData.actualhost));
+        if (whoisData.actual_host) {
+            display(formats.actualhost.replace('{{actualhost}}', whoisData.actual_host));
         }
 
         _.each(whoisData, (val, key) => {

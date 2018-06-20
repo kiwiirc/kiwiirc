@@ -523,15 +523,15 @@ function clientMiddleware(state, networkid) {
         if (command === 'whois') {
             let obj = {
                 nick: event.nick,
-                host: event.host,
-                username: event.user,
+                host: event.hostname,
+                username: event.ident,
                 away: event.away || '',
                 realname: event.real_name,
             };
 
             // Some other optional bits of info
             [
-                'actuallhost',
+                'actual_host',
                 'helpop',
                 'bot',
                 'server',
