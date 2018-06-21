@@ -36,6 +36,11 @@ export default {
             state.$emit('statebrowser.show');
         },
         async init() {
+            // persist the buffers in the state by default
+            let persistSetting = state.settings.startupOptions.remember_buffers;
+            if (typeof persistSetting !== 'boolean') {
+                state.persistence.includeBuffers = true;
+            }
             state.persistence.watchStateForChanges();
             this.$emit('start', {
                 fallbackComponent: this.constructor,
