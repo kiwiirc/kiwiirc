@@ -708,12 +708,17 @@ const state = new Vue({
                 break;
             }
 
-            // If we ran out of buffer history, try going to the active networks server buffer
+            // Try to find a suitable buffer
             if (!targetBuffer) {
-                let network = this.getActiveNetwork();
+                let network = this.getActiveNetwork() || this.networks[0];
                 if (network) {
                     targetNetwork = network;
-                    targetBuffer = network.serverBuffer().name;
+                    let buffer = network.buffers[1];
+                    if (buffer) {
+                        targetBuffer = buffer;
+                    } else {
+                        targetBuffer = network.serverBuffer();
+                    }
                 }
             }
 
