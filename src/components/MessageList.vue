@@ -7,6 +7,12 @@
             <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
+        <div v-if="!buffer.joined" style="width:100%; height:75px;">
+            <div class="animationDiv">
+                <LoadingAnimation></LoadingAnimation>
+            </div>
+        </div>
+        <div style="clear: both;"></div><br><br>
         <div v-for="(message, idx) in filteredMessages" :key="message.id" class="kiwi-messagelist-item">
             <div v-if="shouldShowDateChangeMarker(idx)" class="kiwi-messagelist-seperator">
                 <span>{{(new Date(message.time)).toDateString()}}</span>
@@ -46,6 +52,7 @@ import * as TextFormatting from '@/helpers/TextFormatting';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
+import LoadingAnimation from '@/components/LoadingAnimation.vue';
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
@@ -56,6 +63,7 @@ export default {
         NotConnected,
         MessageListMessageModern,
         MessageListMessageCompact,
+        LoadingAnimation,
     },
     data: function data() {
         return {
@@ -613,6 +621,18 @@ export default {
 
 .kiwi-wrap--touch .kiwi-messagelist-message-linkhandle {
     display: none;
+}
+
+.animationDiv {
+    margin-top: 15px;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateY(0);
+    width: 150px;
+    height: 150px;
 }
 
 @media screen and (max-width: 700px) {
