@@ -7,9 +7,9 @@
             <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
-        <div v-if="!buffer.joined" style="width:100%; height:75px;">
-            <div class="animationDiv">
-                <LoadingAnimation></LoadingAnimation>
+        <div class="outerAnimationDiv" v-if="!timeToClose" :class="{'closeAnimation': startClosing}">
+            <div class="animationDiv" :class="{'closeAnimation': startClosing}" ref="animationDiv">
+                <LoadingAnimation :height="animationHeight"></LoadingAnimation>
             </div>
         </div>
         <div style="clear: both;"></div><br><br>
@@ -71,6 +71,9 @@ export default {
             chathistoryAvailable: true,
             hover_nick: '',
             message_info_open: null,
+            timeToClose: false,
+            startClosing: false,
+            animationHeight: '150px',
         };
     },
     props: ['buffer', 'users'],
@@ -345,6 +348,15 @@ export default {
         this.listen(state, 'mediaviewer.opened', () => {
             this.$nextTick(this.maybeScrollToBottom.apply(this));
         });
+
+        let self = this;
+        setTimeout(function () {
+            self.timeToClose = true;
+        }, 10000);
+
+        setTimeout(function () {
+            self.startClosing = true;
+        }, 6000);
     },
 };
 </script>
@@ -624,15 +636,29 @@ export default {
 }
 
 .animationDiv {
-    margin-top: 15px;
     top: 0;
     left: 0;
     right: 0;
+    margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
     transform: translateY(0);
     width: 150px;
     height: 150px;
+    -webkit-transition: height 0.5s, margin-top 0.5s; /* Safari */
+    transition: height 0.5s, margin-top 0.5s;
+}
+
+.outerAnimationDiv {
+    width: 100%;
+    height: 40px;
+    -webkit-transition: height 0.5s; /* Safari */
+    transition: height 0.5s;
+}
+
+.closeAnimation {
+    height: 0;
+    margin-top: 0;
 }
 
 @media screen and (max-width: 700px) {

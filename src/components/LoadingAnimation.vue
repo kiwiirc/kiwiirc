@@ -1,7 +1,9 @@
 <template>
   <div>
     <img src="../res/kiwiLoadingLogo.png" id="kiwiLoadingLogo" ref="kiwiLoadingLogo">
-    <canvas id="canvas" ref="canvas"></canvas>
+    <div class="canvasDiv" :class="{'closeAnimation': startClosing}">
+        <canvas id="canvas" ref="canvas"></canvas>
+    </div>
   </div>
 </template>
 
@@ -18,6 +20,7 @@ export default {
             fontSize: 72,
             font: "bold " + 72 + "px verdana",
             text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu arcu ipsum. `,
+            startClosing: false,
         };
     },
     methods: {
@@ -71,6 +74,11 @@ export default {
         this.logo.onload = () => {
             this.Draw();
         }
+        this.c.style.height = this.height * 0.75;
+        let self = this;
+        setTimeout(function () {
+            self.startClosing = true;
+        }, 4000);
     }
 };
 </script>
@@ -81,7 +89,20 @@ export default {
 }
 
 #canvas {
-    width: 150%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
     height: 150%;
+    width: 150%;
+}
+
+.canvasDiv {
+    height: 75px;
+    -webkit-transition: opacity 2s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 2s;
+}
+
+.closeAnimation {
+    opacity: 0;
 }
 </style>

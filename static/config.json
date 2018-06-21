@@ -9,7 +9,7 @@
 		{ "name": "Dark", "url": "static/themes/dark" }
 	],
 	"startupOptions" : {
-		"server": "irc.freenode.net",
+		"server": "irc.chillspot.org",
 		"port": 6667,
 		"tls": false,
 		"direct": false,
