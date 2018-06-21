@@ -38,10 +38,14 @@ export default {
         async init() {
             // persist the buffers in the state by default
             let persistSetting = state.settings.startupOptions.remember_buffers;
-            if (typeof persistSetting !== 'boolean') {
+            if (typeof persistSetting === 'undefined') {
                 state.persistence.includeBuffers = true;
+            } else {
+                state.persistence.includeBuffers = !!persistSetting;
             }
+
             state.persistence.watchStateForChanges();
+
             this.$emit('start', {
                 fallbackComponent: this.constructor,
             });

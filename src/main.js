@@ -276,6 +276,11 @@ function initLocales() {
 async function initState() {
     let stateKey = state.settings.startupOptions.state_key;
 
+    // Default to a preset key if it wasn't set
+    if (typeof stateKey === 'undefined') {
+        stateKey = 'kiwi-state';
+    }
+
     let persistLog = Logger.namespace('StatePersistence');
     let persist = new StatePersistence(stateKey || '', state, Storage, persistLog);
     persist.includeBuffers = !!state.settings.startupOptions.remember_buffers;
