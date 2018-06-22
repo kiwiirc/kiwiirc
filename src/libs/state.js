@@ -42,6 +42,7 @@ const stateObj = {
             alert_on: 'highlight',
             timestamp_format: '%H:%M:%S',
             show_timestamps: true,
+            timestamp_placement: 'right',
             scrollback_size: 250,
             show_joinparts: true,
             show_topics: true,

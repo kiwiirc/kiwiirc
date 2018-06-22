@@ -38,6 +38,7 @@
     >
         <div
             v-if="ml.bufferSetting('show_timestamps')"
+            v-bind:style="{float: ml.bufferSetting('timestamp_placement')}"
             class="kiwi-messagelist-time"
         >
             {{ml.formatTime(message.time)}}
@@ -123,7 +124,6 @@ export default {
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-time {
     display: inline-block;
-    float: right;
     font-size: 12px;
 }
 
