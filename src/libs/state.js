@@ -618,6 +618,7 @@ const state = new Vue({
 
             // Add the server server buffer
             this.addBuffer(network.id, '*').joined = true;
+            this.addLastActiveBuffer(network.id, '*');
 
             let eventObj = { network };
             state.$emit('network.new', eventObj);
@@ -656,15 +657,7 @@ const state = new Vue({
                 this.ui.active_buffer = '';
             } else {
                 if (this.ui.active_network) {
-                    // Keep track of last 20 viewed buffers. When closing buffers we can go back to
-                    // one of the previous ones
-                    this.ui.last_active_buffers.push({
-                        networkid: this.ui.active_network,
-                        bufferName: this.ui.active_buffer,
-                    });
-
-                    let lastActive = this.ui.last_active_buffers;
-                    this.ui.last_active_buffers = lastActive.splice(lastActive.length - 20);
+                    this.addLastActiveBuffer(this.ui.active_network, this.ui.active_buffer);
                 }
 
                 this.ui.active_network = networkid;
@@ -681,6 +674,18 @@ const state = new Vue({
                     buffer.markAsRead(true);
                 }
             }
+        },
+
+        addLastActiveBuffer(networkid, bufferName) {
+            // Keep track of last 20 viewed buffers. When closing buffers we can go back to
+            // one of the previous ones
+            this.ui.last_active_buffers.push({
+                networkid: networkid,
+                bufferName: bufferName,
+            });
+
+            let lastActive = this.ui.last_active_buffers;
+            this.ui.last_active_buffers = lastActive.splice(lastActive.length - 20);
         },
 
         openLastActiveBuffer: function openLastActiveBuffer() {
