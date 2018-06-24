@@ -25,9 +25,7 @@
             </div>
 
             <div v-if="isJoined && buffer.topic.length > 0 && viewTopic" class="kiwi-header-topic">
-                <div>
-                    {{buffer.topic}}
-                </div>
+                <div v-html="formattedTopic"></div>
             </div>
 
         </template>
@@ -93,6 +91,8 @@ import GlobalApi from '@/libs/GlobalApi';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
+import * as TextFormatting from '@/helpers/TextFormatting';
+import formatIrcMessage from '@/libs/MessageFormatter';
 
 export default {
     data: function data() {
@@ -111,6 +111,12 @@ export default {
         },
         isConnected: function isConnected() {
             return this.buffer.getNetwork().state === 'connected';
+        },
+        formattedTopic: function formattedTopic() {
+            let showEmoticons = state.setting('buffers.show_emoticons');
+            let blocks = formatIrcMessage(this.buffer.topic, { extras: false });
+            let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
+            return content.html;
         },
     },
     components: {
