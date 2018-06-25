@@ -1232,6 +1232,7 @@ function initialiseNetworkState(network) {
     });
     Object.defineProperty(network, 'showServerBuffer', {
         value: function showServerBuffer(tabName) {
+            state.$emit('active.component', null);
             state.setActiveBuffer(network.id, network.serverBuffer().name);
             // Hacky, but the server buffer component listens for events to switch
             // between tabs
