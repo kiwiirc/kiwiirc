@@ -46,6 +46,10 @@ export default {
 
             state.persistence.watchStateForChanges();
 
+            // force restricted: false as users need access
+            // to network settings to add a network
+            state.setSetting('settings.restricted', false);
+
             this.$emit('start', {
                 fallbackComponent: this.constructor,
             });
