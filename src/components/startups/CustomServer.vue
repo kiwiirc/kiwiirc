@@ -117,7 +117,7 @@ export default {
                 }
                 password += ':' + this.password;
 
-                net = state.addNetwork('ZNC', nick, {
+                net = state.addNetwork('ZNC', 'ZNC', {
                     server: this.server.split(':')[0],
                     port: parseInt(this.server.split(':')[1] || 6667, 10),
                     tls: this.tls,
