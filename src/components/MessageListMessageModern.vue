@@ -55,6 +55,7 @@
             <div
                 v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
                 class="kiwi-messagelist-time"
+                :title="ml.formatTimeFull(message.time)"
             >
                 {{ml.formatTime(message.time)}}
             </div>

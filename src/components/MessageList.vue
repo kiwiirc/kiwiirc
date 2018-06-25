@@ -223,6 +223,12 @@ export default {
         formatTime: function formatTime(time) {
             return strftime(this.buffer.setting('timestamp_format') || '%T', new Date(time));
         },
+        formatTimeFull (time) {
+            let format = this.buffer.setting('timestamp_full_format');
+            return format ?
+                strftime(format, new Date(time)) :
+                (new Date(time)).toLocaleString();
+        },
         formatMessage: function formatMessage(message) {
             return message.toHtml(this);
         },
