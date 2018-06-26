@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <img src="../res/kiwiLoadingLogo.png" id="kiwiLoadingLogo" ref="kiwiLoadingLogo">
-    <div class="canvasDiv" :class="{'closeAnimation': startClosing}">
-        <canvas id="canvas" ref="canvas"></canvas>
+    <div>
+      <img src="../res/kiwiLoadingLogo.png" class="kiwiLoadingLogo" ref="kiwiLoadingLogo">
+      <div class="canvasDiv" :class="{'closeAnimation': startClosing}">
+          <canvas class="kiwi-loadingAnimation-canvaswrap"></canvas>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -60,8 +60,8 @@ export default {
       },
     },
     mounted () {
-        this.logo = this.$refs.kiwiLoadingLogo;
-        this.c = this.$refs.canvas;
+        this.logo = document.getElementsByClassName('kiwiLoadingLogo')[0];
+        this.c = document.getElementsByClassName('kiwi-loadingAnimation-canvaswrap')[0];
         this.x = this.c.getContext("2d");
         let tmpText = '';
         for (let i = 0; i < 9; i += 1) tmpText += this.text;
@@ -84,11 +84,11 @@ export default {
 </script>
 
 <style scoped>
-#kiwiLoadingLogo {
+.kiwiLoadingLogo {
     display: none;
 }
 
-#canvas {
+.kiwi-loadingAnimation-canvaswrap {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
