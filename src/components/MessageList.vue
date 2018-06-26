@@ -17,19 +17,19 @@
 
             <component v-if="message.render() && message.template" v-bind:is="message.template" :message="message" :buffer="buffer"></component>
             <message-list-message-modern
-                v-if="listType === 'modern'"
+                v-else-if="listType === 'modern'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
             ></message-list-message-modern>
             <message-list-message-compact
-                v-if="listType === 'compact'"
+                v-else-if="listType === 'compact'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
             ></message-list-message-compact>
             <message-list-message-text
-                v-if="listType === 'text'"
+                v-else-if="listType === 'text'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"

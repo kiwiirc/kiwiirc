@@ -44,7 +44,7 @@
                                 <select class="" id="kiwi-select-layout" @change="settingMessageLayout()" v-model="settingSelectedLayout">
                                     <option value="" disabled selected="selected">Please Select Layout</option>
                                     <option value="modern">Modern Layout (Default)</option>
-                                    <option value="traditional">Traditional Layout</option>
+                                    <option value="compact">Traditional Layout</option>
                                     <option value="text">Text Layout</option>
                                 </select>
                             </label>
