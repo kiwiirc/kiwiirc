@@ -1,7 +1,7 @@
-<template>
+template>
     <div>
         <img src="../res/kiwiLoadingLogo.png" class="kiwi-loader-logo">
-        <div class="kiwi-loader-canvas-div" :class="{'closeAnimation': startClosing}">
+        <div class="kiwi-loader-canvas-div" :class="{'kiwi-loader-close-animation': startClosing}">
             <canvas class="kiwi-loading-animation-canvaswrap"></canvas>
         </div>
     </div>
@@ -102,7 +102,7 @@ export default {
     transition: opacity 2s;
 }
 
-.closeAnimation {
+.kiwi-loader-close-animation {
     opacity: 0;
 }
 </style>
