@@ -892,9 +892,15 @@
 .kiwi-statebrowser-network-status {
     background: rgba(255, 255, 255, 0.1);
 }
+
+.kiwi-statebrowser-network-status .u-link {
+    color: #fff;
+}
+
 .kiwi-statebrowser-channel-active {
     background: rgba(255, 255, 255, 0.05);
 }
+
 
 /* User Box Styling ( UserBox.vue ) */
 .kiwi-userbox-usermask {

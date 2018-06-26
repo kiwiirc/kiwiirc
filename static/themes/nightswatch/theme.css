@@ -40,6 +40,18 @@
      color: #a9d87a;
  }
 
+.kiwi-welcome-simple h2 {
+    color: #fff;
+}
+
+.kiwi-welcome-simple .input-text-label {
+    color: #fff;
+}
+
+.kiwi-welcome-simple .u-form label span {
+    color: #fff;
+}
+
 
 
 
@@ -561,6 +573,11 @@
     background: #000000;
     color: #adadad;
 }
+
+.kiwi-networksettings-danger .u-button-warning {
+    color: #fff;
+}
+
 .u-button.kiwi-channellist-refresh.u-button-secondary {
   background: #000000;
 }
@@ -605,15 +622,15 @@
 
 /* Not connected message ( NotConnected.vue ) */
 .kiwi-notconnected {
-    color: #adadad;
+    color: #fff;
     background-color: #a54d4d;
 }
 .kiwi-notconnected-button {
-    border: 2px solid #adadad;
-    color: #adadad;
+    border: 2px solid #fff;
+    color: #fff;
 }
 .kiwi-notconnected-button:hover{
-    background-color: #adadad;
+    background-color: #adada;
     color: #000;
 }
 
@@ -785,6 +802,7 @@
 .kiwi-statebrowser-newnetwork a {
     color: #adadad;
     border: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: none;
 }
 .kiwi-statebrowser-newnetwork a:hover {
     background: #000000;

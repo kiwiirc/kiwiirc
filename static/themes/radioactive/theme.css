@@ -80,7 +80,7 @@
     background: #fff;
 }
 .input-text-label {
-    color: gray;
+    color: #6fffb0;
 }
 .input-text--focus {
     border-color: #1b2f24;
@@ -291,8 +291,8 @@
 }
 
 .kiwi-header-server-connection .u-button {
-    background: #1b2f24;
-    color: #fff;
+    color: #6fffb0;
+    text-decoration: underline;
 }
 
 
@@ -529,7 +529,7 @@
     color: #bfbfbf;
 }
 .kiwi-networksettings .u-form{
-    background: #fff;
+    border: 1px solid #6fffb0;
 }
 .kiwi-networksettings .kiwi-customserver-tls {
     color: #bfbfbf;
@@ -552,12 +552,13 @@
 }
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
     border: 1px solid #1b2f24;
-    color: #1b2f24;
+    color: #fff;
 }
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button:hover,
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button.kiwi-networksettings-server-type-active {
     background: #1b2f24;
     color: #fff;
+    text-decoration: underline;
 }
 .u-button.kiwi-channellist-refresh.u-button-secondary {
   background: #1b2f24;
@@ -789,15 +790,18 @@
 .kiwi-statebrowser-channelfilter p:hover {
     color: #6dcdad;
 }
+
+.kiwi-statebrowser-newnetwork {
+    border-top: 1px solid #6fffb0;
+}
+
 .kiwi-statebrowser-newnetwork a {
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #6fffb0;
 }
 .kiwi-statebrowser-newnetwork a:hover {
-    background: #1b2f24;
-    border-color: #1b2f24;
     opacity: 1;
-    color: #fff;
+    color: #6fffb0;
+    text-decoration: underline;
 }
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header {
     background-color: #5dd895;
@@ -914,8 +918,8 @@
 .kiwi-statebrowser-network-header {
     background: rgba(255, 255, 255, 0.15);
 }
-.kiwi-statebrowser-network-status {
-    background: rgba(255, 255, 255, 0.1);
+.kiwi-statebrowser-network-status .u-link {
+    color: #fff;
 }
 .kiwi-statebrowser-channel-active {
     background: rgba(255, 255, 255, 0.05);
