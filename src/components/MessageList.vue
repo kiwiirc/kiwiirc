@@ -7,8 +7,8 @@
             <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
-        <div class="kiwi-loader-outer-animation-div" v-if="!timeToClose" :class="{'closeAnimation': startClosing}">
-            <div class="kiwi-loader-animation-div" :class="{'closeAnimation': startClosing}" ref="kiwi-loader-animation-div">
+        <div class="kiwi-messagelist-container" v-if="!timeToClose" :class="{'kiwi-messagelist-close-animation': startClosing}">
+            <div class="kiwi-messagelist-animation-div" :class="{'kiwi-messagelist-close-animation': startClosing}">
                 <LoadingAnimation :height="animationHeight"></LoadingAnimation>
             </div>
         </div>
@@ -353,7 +353,7 @@ export default {
             this.timeToClose = true;
         }, 10000);
 
-        setTimeout(function () {
+        setTimeout(() => {
             this.startClosing = true;
         }, 6000);
     },
@@ -634,7 +634,7 @@ export default {
     display: none;
 }
 
-.kiwi-loader-animation-div {
+.kiwi-messagelist-animation-div {
     top: 0;
     left: 0;
     right: 0;
@@ -648,14 +648,14 @@ export default {
     transition: height 0.5s, margin-top 0.5s;
 }
 
-.kiwi-loader-outer-animation-div {
+.kiwi-messagelist-container {
     width: 100%;
     height: 40px;
     -webkit-transition: height 0.5s; /* Safari */
     transition: height 0.5s;
 }
 
-.closeAnimation {
+.kiwi-messagelist-close-animation {
     height: 0;
     margin-top: 0;
 }
