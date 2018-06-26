@@ -7,8 +7,8 @@
             <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
-        <div class="outerAnimationDiv" v-if="!timeToClose" :class="{'closeAnimation': startClosing}">
-            <div class="animationDiv" :class="{'closeAnimation': startClosing}" ref="animationDiv">
+        <div class="kiwi-loader-outer-animation-div" v-if="!timeToClose" :class="{'closeAnimation': startClosing}">
+            <div class="kiwi-loader-animation-div" :class="{'closeAnimation': startClosing}" ref="kiwi-loader-animation-div">
                 <LoadingAnimation :height="animationHeight"></LoadingAnimation>
             </div>
         </div>
@@ -635,7 +635,7 @@ export default {
     display: none;
 }
 
-.animationDiv {
+.kiwi-loader-animation-div {
     top: 0;
     left: 0;
     right: 0;
@@ -649,7 +649,7 @@ export default {
     transition: height 0.5s, margin-top 0.5s;
 }
 
-.outerAnimationDiv {
+.kiwi-loader-outer-animation-div {
     width: 100%;
     height: 40px;
     -webkit-transition: height 0.5s; /* Safari */
