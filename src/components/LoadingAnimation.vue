@@ -1,8 +1,8 @@
 template>
     <div>
-        <img src="../res/kiwiLoadingLogo.png" class="kiwi-loader-logo">
-        <div class="kiwi-loader-canvas-div" :class="{'kiwi-loader-close-animation': startClosing}">
-            <canvas class="kiwi-loading-animation-canvaswrap"></canvas>
+        <img src="../res/kiwiLoadingLogo.png" class="kiwi-messagelist-logo">
+        <div class="kiwi-messagelist-canvas-div" :class="{'kiwi-messagelist-close-animation': startClosing}">
+            <canvas class="kiwi-messagelist-animation"></canvas>
         </div>
     </div>
 </template>
@@ -60,8 +60,8 @@ export default {
       },
     },
     mounted () {
-        this.logo = document.getElementsByClassName('kiwi-loader-logo')[0];
-        this.c = document.getElementsByClassName('kiwi-loading-animation-canvaswrap')[0];
+        this.logo = document.getElementsByClassName('kiwi-messagelist-logo')[0];
+        this.c = document.getElementsByClassName('kiwi-messagelist-animation')[0];
         this.x = this.c.getContext("2d");
         let tmpText = '';
         for (let i = 0; i < 9; i += 1) tmpText += this.text;
@@ -84,11 +84,11 @@ export default {
 </script>
 
 <style scoped>
-.kiwi-loader-logo {
+.kiwi-messagelist-logo {
     display: none;
 }
 
-.kiwi-loading-animation-canvaswrap {
+.kiwi-messagelist-animation {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -96,13 +96,13 @@ export default {
     width: 150%;
 }
 
-.kiwi-loader-canvas-div {
+.kiwi-messagelist-canvas-div {
     height: 75px;
     -webkit-transition: opacity 2s; /* For Safari 3.1 to 6.0 */
     transition: opacity 2s;
 }
 
-.kiwi-loader-close-animation {
+.kiwi-messagelist-close-animation {
     opacity: 0;
 }
 </style>
