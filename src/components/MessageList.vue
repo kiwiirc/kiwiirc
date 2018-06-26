@@ -349,13 +349,12 @@ export default {
             this.$nextTick(this.maybeScrollToBottom.apply(this));
         });
 
-        let self = this;
-        setTimeout(function () {
-            self.timeToClose = true;
+        setTimeout(() => {
+            this.timeToClose = true;
         }, 10000);
 
         setTimeout(function () {
-            self.startClosing = true;
+            this.startClosing = true;
         }, 6000);
     },
 };
