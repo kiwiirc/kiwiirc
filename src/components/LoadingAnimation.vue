@@ -1,9 +1,9 @@
 <template>
     <div>
-      <img src="../res/kiwiLoadingLogo.png" class="kiwiLoadingLogo" ref="kiwiLoadingLogo">
-      <div class="canvasDiv" :class="{'closeAnimation': startClosing}">
-          <canvas class="kiwi-loadingAnimation-canvaswrap"></canvas>
-      </div>
+        <img src="../res/kiwiLoadingLogo.png" class="kiwiLoadingLogo" ref="kiwiLoadingLogo">
+        <div class="canvasDiv" :class="{'closeAnimation': startClosing}">
+            <canvas class="kiwi-loadingAnimation-canvaswrap"></canvas>
+        </div>
     </div>
 </template>
 
