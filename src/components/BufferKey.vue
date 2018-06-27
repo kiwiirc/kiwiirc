@@ -1,7 +1,8 @@
 <template>
     <div class="kiwi-bufferkey">
         <form @submit.prevent="joinChannel">
-            {{$t('bufferkey_input')}} <input type="password" v-model='buffer.key'></input>
+            <label>{{$t('bufferkey_input')}}</label>
+            <input type="password" v-model='buffer.key'></input>
             <div class="kiwi-bufferkey-buttons">
                 <span @click="joinChannel" class="kiwi-bufferkey-button">
                     <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
@@ -37,25 +38,49 @@ export default {
     text-align: center;
     padding: 10% 0;
     margin: 10px 0 0 0;
+    background: #d16c6c;
+    color: #fff;
     transition: background-color 0.3s;
+}
+
+.kiwi-bufferkey label {
+    width: 340px;
+    display: block;
+    margin: 0 auto 10px auto;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.kiwi-bufferkey input[type="password"] {
+    height: 40px;
+    padding: 0 10px;
+    color: #000;
+    border: none;
+    width: 320px;
+    font-size: 1.2em;
+    margin: 0 0 20px 0;
 }
 
 .kiwi-bufferkey-buttons {
     width: 100%;
     text-align: center;
     font-size: 1.6em;
-    padding-top: 1em;
+}
+
+.kiwi-bufferkey-buttons span:hover {
+    text-decoration: underline;
 }
 
 .kiwi-bufferkey-button {
     width: auto;
     display: inline-block;
-    padding: 0.8em 1em 0.8em 0.6em;
     font-size: 0.8em;
-    border-radius: 0.4em;
-    margin: 0 0.8em;
     cursor: pointer;
     transition: all 0.3s;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    padding: 5px 20px;
+    line-height: 40px;
 
     &:hover {
         transition: all 0.2s;
@@ -64,7 +89,7 @@ export default {
     i {
         float: left;
         font-size: 1.6em;
-        line-height: 0.8em;
+        line-height: 40px;
         margin-right: 0.4em;
     }
 }
