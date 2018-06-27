@@ -20,7 +20,7 @@
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"></div>
 
-                <template v-if="!activeComponent && network">
+                <template v-if="!activeComponent && network && buffer">
                     <container
                         :network="network"
                         :buffer="buffer"
@@ -60,6 +60,7 @@ import startupCustomServer from '@/components/startups/CustomServer';
 import startupKiwiBnc from '@/components/startups/KiwiBnc';
 import startupPersonal from '@/components/startups/Personal';
 import StateBrowser from '@/components/StateBrowser';
+import FallbackComponent from '@/components/FallbackComponent';
 import Container from '@/components/Container';
 import ControlInput from '@/components/ControlInput';
 import MediaViewer from '@/components/MediaViewer';
@@ -271,6 +272,7 @@ export default {
     },
     components: {
         StateBrowser,
+        FallbackComponent,
         Container,
         ControlInput,
         MediaViewer,
@@ -286,7 +288,7 @@ export default {
             activeComponentProps: {},
             // If set, will become the main view when no networks are available to be shown
             // and there is no active component set
-            fallbackComponent: null,
+            fallbackComponent: FallbackComponent,
             fallbackComponentProps: {},
             mediaviewerOpen: false,
             mediaviewerUrl: '',
