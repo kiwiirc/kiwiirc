@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2018-06-28 12:31\n"
+"PO-Revision-Date: 2018-06-28 15:56\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "מחובר"
 #: Settings
 msgid "settings"
 msgstr "הגדרות"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr ""
 
 #: Channels
 msgid "channels"
@@ -145,6 +149,10 @@ msgstr "כללי"
 msgid "settings_theme"
 msgstr "נושא"
 
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr ""
+
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "קישור נושא"
@@ -208,6 +216,10 @@ msgstr "הדגשה על מילים"
 #: Aliases
 msgid "settings_aliases"
 msgstr "פקודות"
+
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr ""
 
 #: Send Message
 msgid "send_message"
@@ -313,6 +325,18 @@ msgstr "ברוך הבא ל-Kiwi IRC בחר חדר משמאל"
 msgid "container_statebrowser"
 msgstr "הצג דפדפן מצב"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr ""
+
+#: Display Topic
+msgid "display_topic"
+msgstr ""
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr ""
+
 #: Join Channel
 msgid "container_join"
 msgstr "הצטרף לחדר"
@@ -392,6 +416,10 @@ msgstr "{{count}} הבנאדם כאן"
 #: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} אנשים כאן"
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr ""
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -496,6 +524,14 @@ msgstr "לא מחובר"
 #: Join new #channel
 msgid "state_join"
 msgstr "הצטרף ל- #חדר חדש"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr ""
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr ""
 
 #: Change nick
 msgid "change_nick"
