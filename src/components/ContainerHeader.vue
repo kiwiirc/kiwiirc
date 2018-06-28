@@ -12,11 +12,11 @@
             <div class="kiwi-header-options" v-if="isJoined && isConnected" :key="buffer.id">
                 <div v-for="el in pluginUiChannelElements" v-rawElement="el" class="kiwi-header-option"></div>
                 <div class="kiwi-header-option kiwi-header-option-topic" @click="showTopic" v-bind:class="{ 'kiwi-header-option--active': viewTopic == true }" v-if="buffer.topic.length > 0">
-                    <a v-if="viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">Hide Topic</span></a>
-                    <a v-if="!viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">Display Topic</span></a>
+                    <a v-if="viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">{{$t('hide_topic')}}</span></a>
+                    <a v-if="!viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">{{$t('display_topic')}}</span></a>
                 </div>
                 <div class="kiwi-header-option kiwi-header-option-nicklist" v-bind:class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='nicklist'}"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
-                <div class="kiwi-header-option kiwi-header-option-settings" v-bind:class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='settings'}"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>Channel Settings</span></a></div>
+                <div class="kiwi-header-option kiwi-header-option-settings" v-bind:class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='settings'}"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>{{$t('channel_settings')}}</span></a></div>
                 <div v-if="uiState.isPinned" class="kiwi-header-option kiwi-header-option-unpinsidebar"><a @click="uiState.unpin()"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a></div>
                 <div class="kiwi-header-option kiwi-header-option-leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
             </div>
