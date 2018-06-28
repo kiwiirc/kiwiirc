@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-06-28 16:51\n"
+"PO-Revision-Date: 2018-06-28 17:41\n"
 
 #: Start
 msgid "start_button"
@@ -143,43 +143,43 @@ msgstr "Kanaal"
 
 #: week
 msgid "week"
-msgstr ""
+msgstr "week"
 
 #: weeks
 msgid "week_plural"
-msgstr ""
+msgstr "weken"
 
 #: day
 msgid "day"
-msgstr ""
+msgstr "dag"
 
 #: days
 msgid "day_plural"
-msgstr ""
+msgstr "dagen"
 
 #: hour
 msgid "hour"
-msgstr ""
+msgstr "uur"
 
 #: hours
 msgid "hour_plural"
-msgstr ""
+msgstr "uur"
 
 #: minute
 msgid "minute"
-msgstr ""
+msgstr "minuut"
 
 #: minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "minuten"
 
 #: second
 msgid "second"
-msgstr ""
+msgstr "seconde"
 
 #: seconds
 msgid "second_plural"
-msgstr ""
+msgstr "seconden"
 
 #: General
 msgid "settings_general"
