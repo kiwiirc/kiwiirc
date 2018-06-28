@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2018-06-28 15:20\n"
+"PO-Revision-Date: 2018-06-28 15:56\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "Conectado"
 #: Settings
 msgid "settings"
 msgstr "Axustes"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr ""
 
 #: Channels
 msgid "channels"
@@ -145,6 +149,10 @@ msgstr "Xeral"
 msgid "settings_theme"
 msgstr "Tema"
 
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr ""
+
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "URL do tema"
@@ -208,6 +216,10 @@ msgstr "Palabras a destacar (sepáraas cun espazo)"
 #: Aliases
 msgid "settings_aliases"
 msgstr "Alias"
+
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr ""
 
 #: Send Message
 msgid "send_message"
@@ -313,6 +325,18 @@ msgstr "¡Benvido a Kiwi IRC! Selecciona unha sala da esquerda."
 msgid "container_statebrowser"
 msgstr "Mostrar barra estado do navegador"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr ""
+
+#: Display Topic
+msgid "display_topic"
+msgstr ""
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr ""
+
 #: Join Channel
 msgid "container_join"
 msgstr "Entrar a unha sala"
@@ -392,6 +416,10 @@ msgstr "{{count}} usuario aquí"
 #: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} usuarios aquí"
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr ""
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -496,6 +524,14 @@ msgstr "Desconectado."
 #: Join new #channel
 msgid "state_join"
 msgstr "Entrar nunha #sala nova"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr ""
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr ""
 
 #: Change nick
 msgid "change_nick"
