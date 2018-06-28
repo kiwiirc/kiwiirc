@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-06-28 12:31\n"
+"PO-Revision-Date: 2018-06-28 15:56\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "Свързан"
 #: Settings
 msgid "settings"
 msgstr "Настройки"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr ""
 
 #: Channels
 msgid "channels"
@@ -145,6 +149,10 @@ msgstr "Главни настройки"
 msgid "settings_theme"
 msgstr "Настройки на темата"
 
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr ""
+
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "Адрес на темата"
@@ -208,6 +216,10 @@ msgstr "Персонализирано осветяване (разделяйт�
 #: Aliases
 msgid "settings_aliases"
 msgstr "Алиасес"
+
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr ""
 
 #: Send Message
 msgid "send_message"
@@ -313,6 +325,18 @@ msgstr "Добре дошли в Kiwi IRC!"
 msgid "container_statebrowser"
 msgstr "Покажи statebrowser"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr ""
+
+#: Display Topic
+msgid "display_topic"
+msgstr ""
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr ""
+
 #: Join Channel
 msgid "container_join"
 msgstr "Влез в #канал"
@@ -392,6 +416,10 @@ msgstr "{{count}} Потребителя"
 #: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} Потребителя"
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr ""
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -496,6 +524,14 @@ msgstr "Не сте свързан"
 #: Join new #channel
 msgid "state_join"
 msgstr "Влез в нов #канал"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr ""
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr ""
 
 #: Change nick
 msgid "change_nick"
