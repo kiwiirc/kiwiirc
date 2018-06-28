@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2018-05-09 03:43-0400\n"
+"PO-Revision-Date: 2018-06-28 16:51\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "I lidhur"
 #: Settings
 msgid "settings"
 msgstr "Veglat"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr ""
 
 #: Channels
 msgid "channels"
@@ -137,6 +141,46 @@ msgstr "Injoroje"
 msgid "connection_channel"
 msgstr "Lidhja ne kanal"
 
+#: week
+msgid "week"
+msgstr ""
+
+#: weeks
+msgid "week_plural"
+msgstr ""
+
+#: day
+msgid "day"
+msgstr ""
+
+#: days
+msgid "day_plural"
+msgstr ""
+
+#: hour
+msgid "hour"
+msgstr ""
+
+#: hours
+msgid "hour_plural"
+msgstr ""
+
+#: minute
+msgid "minute"
+msgstr ""
+
+#: minutes
+msgid "minute_plural"
+msgstr ""
+
+#: second
+msgid "second"
+msgstr ""
+
+#: seconds
+msgid "second_plural"
+msgstr ""
+
 #: General
 msgid "settings_general"
 msgstr "Veglat gjenerale"
@@ -144,6 +188,10 @@ msgstr "Veglat gjenerale"
 #: Theme
 msgid "settings_theme"
 msgstr "Tema"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr ""
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -209,9 +257,21 @@ msgstr "Citimet"
 msgid "settings_aliases"
 msgstr "Shkurtimet"
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr ""
+
 #: Send Message
 msgid "send_message"
 msgstr "Dergo mesazhin"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr ""
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr ""
 
 #: Notify me when
 msgid "settings_notify"
@@ -305,6 +365,18 @@ msgstr "Miresevjen ne Kiwi IRC"
 msgid "container_statebrowser"
 msgstr "Shiko statusin e browserit"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr ""
+
+#: Display Topic
+msgid "display_topic"
+msgstr ""
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr ""
+
 #: Join Channel
 msgid "container_join"
 msgstr "Hyr ne kanal"
@@ -384,6 +456,10 @@ msgstr "Celsi i personit"
 #: {{count}} people here
 msgid "person_plural"
 msgstr "Celsi plural i personit"
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr ""
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -488,6 +564,14 @@ msgstr "Jo i lidhur"
 #: Join new #channel
 msgid "state_join"
 msgstr "Hyr ne nje #kanal"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr ""
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr ""
 
 #: Change nick
 msgid "change_nick"
