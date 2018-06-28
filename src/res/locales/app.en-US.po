@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2018-06-28 15:56\n"
+"PO-Revision-Date: 2018-06-28 16:51\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Settings"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Kiwi Settings"
 
 #: Channels
 msgid "channels"
@@ -141,6 +141,46 @@ msgstr "Ignore user"
 msgid "connection_channel"
 msgstr "Channel"
 
+#: week
+msgid "week"
+msgstr "week"
+
+#: weeks
+msgid "week_plural"
+msgstr ""
+
+#: day
+msgid "day"
+msgstr ""
+
+#: days
+msgid "day_plural"
+msgstr ""
+
+#: hour
+msgid "hour"
+msgstr ""
+
+#: hours
+msgid "hour_plural"
+msgstr ""
+
+#: minute
+msgid "minute"
+msgstr ""
+
+#: minutes
+msgid "minute_plural"
+msgstr ""
+
+#: second
+msgid "second"
+msgstr ""
+
+#: seconds
+msgid "second_plural"
+msgstr ""
+
 #: General
 msgid "settings_general"
 msgstr "General"
@@ -151,7 +191,7 @@ msgstr "Theme"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Refresh Theme"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -219,7 +259,7 @@ msgstr "Aliases"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "What are Aliases?"
 
 #: Send Message
 msgid "send_message"
@@ -327,15 +367,15 @@ msgstr "Show statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Hide Topic"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Display Topic"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Channel Settings"
 
 #: Join Channel
 msgid "container_join"
@@ -419,7 +459,7 @@ msgstr "{{count}} people here"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -527,11 +567,11 @@ msgstr "Join new #channel"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Filter Channels"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"
