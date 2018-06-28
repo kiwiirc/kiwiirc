@@ -31,7 +31,7 @@
         </div>
 
         <buffer-key
-            v-if="buffer.isChannel() && buffer.flags.channel_badkey"
+            v-if="buffer.getNetwork().state === 'connected' && buffer.isChannel() && buffer.flags.channel_badkey"
             :buffer="buffer"
             :network="buffer.getNetwork()"
         ></buffer-key>
