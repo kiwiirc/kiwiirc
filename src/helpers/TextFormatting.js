@@ -436,6 +436,12 @@ export function formatDuration(timeSeconds) {
     return tmp.join(' ');
 }
 
-export function t(...args) {
-    return i18next.t(...args);
+export function t(key, options) {
+    let val = i18next.t(key, options);
+    if (!val) {
+        let opts = options || {};
+        opts.lng = 'en-us';
+        val = i18next.t(key, opts);
+    }
+    return val;
 }
