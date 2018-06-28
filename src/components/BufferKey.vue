@@ -2,7 +2,7 @@
     <div class="kiwi-bufferkey">
         <form @submit.prevent="joinChannel">
             <label>{{$t('bufferkey_input')}}</label>
-            <input type="password" v-model='buffer.key'></input>
+            <input v-focus type="password" v-model="buffer.key"></input>
             <div class="kiwi-bufferkey-buttons">
                 <span @click="joinChannel" class="kiwi-bufferkey-button">
                     <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
@@ -21,10 +21,8 @@ export default {
         };
     },
     props: ['buffer', 'network'],
-    computed: {
-    },
     methods: {
-        joinChannel: function joinChannel() {
+        joinChannel() {
             this.buffer.flags.channel_badkey = false;
             this.buffer.join();
         },
