@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-05-11 22:20-0400\n"
+"PO-Revision-Date: 2018-06-28 12:31\n"
 
 #: Start
 msgid "start_button"
@@ -212,6 +212,14 @@ msgstr "别名"
 #: Send Message
 msgid "send_message"
 msgstr "发送消息"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr ""
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr ""
 
 #: Notify me when
 msgid "settings_notify"
