@@ -255,21 +255,31 @@ function initLocales() {
     });
 
     let defaultLang = state.setting('language');
-    let preferredLangs = (window.navigator && window.navigator.languages) || [];
-    let preferredLang = preferredLangs[0];
+    let preferredLangs = _.clone(window.navigator && window.navigator.languages) || [];
 
+    // our configs default lang overrides all others
     if (defaultLang) {
-        i18next.changeLanguage(defaultLang, (err, t) => {
-            if (err) {
-                i18next.changeLanguage('en-us');
-            }
-        });
-    } else if (preferredLang) {
-        i18next.changeLanguage(preferredLang, (err, t) => {
-            if (err) {
-                i18next.changeLanguage('en-us');
-            }
-        });
+        preferredLangs.unshift(defaultLang);
+    }
+
+    // set a default language
+    i18next.changeLanguage('en-us');
+
+    for (let idx = 0; idx < preferredLangs.length; idx++) {
+        let lang = preferredLangs[idx];
+        if (lang.length === 2) {
+            preferredLangs.splice(idx + 1, 0, lang + '-' + lang);
+        }
+
+        if (_.includes(AvailableLocales.locales, lang.toLowerCase())) {
+            i18next.changeLanguage(lang, (err, t) => {
+                if (err) {
+                    // setting the language failed so set default again
+                    i18next.changeLanguage('en-us');
+                }
+            });
+            break;
+        }
     }
 }
 
