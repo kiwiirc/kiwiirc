@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-06-28 15:56\n"
+"PO-Revision-Date: 2018-06-28 16:30\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Instellingen"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Kiwi-instellingen"
 
 #: Channels
 msgid "channels"
@@ -151,7 +151,7 @@ msgstr "Thema"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Thema vernieuwen"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -219,7 +219,7 @@ msgstr "Aliassen"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Wat zijn aliassen?"
 
 #: Send Message
 msgid "send_message"
@@ -327,15 +327,15 @@ msgstr "Statebrowser tonen"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Topic verbergen"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Topic weergeven"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Kanaalinstellingen"
 
 #: Join Channel
 msgid "container_join"
@@ -419,7 +419,7 @@ msgstr "{{count}} personen aanwezig"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Gebruikers in kanaal filteren"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -527,11 +527,11 @@ msgstr "Nieuw #kanaal binnengaan"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Kanalen filteren"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Meer kanalen zoeken"
 
 #: Change nick
 msgid "change_nick"
