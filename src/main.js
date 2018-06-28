@@ -265,8 +265,12 @@ function initLocales() {
     // set a default language
     i18next.changeLanguage('en-us');
 
+    // Go through our browser languages until we find one that we support
     for (let idx = 0; idx < preferredLangs.length; idx++) {
         let lang = preferredLangs[idx];
+
+        // if this is a language such as 'fr', add a following one of 'fr-fr' to cover
+        // both cases
         if (lang.length === 2) {
             preferredLangs.splice(idx + 1, 0, lang + '-' + lang);
         }
