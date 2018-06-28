@@ -1095,7 +1095,9 @@ const state = new Vue({
             let normalisedNick = nick.toLowerCase();
             let buffers = [];
             network.buffers.forEach((buffer) => {
-                if (buffer.users[normalisedNick]) {
+                if (buffer.users[normalisedNick] || buffer.name === nick) {
+                    buffers.push(buffer);
+                } else if (nick === network.nick && buffer.isQuery()) {
                     buffers.push(buffer);
                 }
             });

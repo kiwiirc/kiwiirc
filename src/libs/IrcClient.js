@@ -485,25 +485,6 @@ function clientMiddleware(state, networkid) {
                 });
             });
 
-            // Mention the quit in any query windows
-            let queryBuffer = network.bufferByName(event.nick);
-            if (queryBuffer) {
-                let messageBody = TextFormatting.formatAndT(
-                    'channel_quit',
-                    { reason: event.message },
-                    'has_left',
-                    { nick: TextFormatting.formatUserFull(event) }
-                );
-
-                state.addMessage(queryBuffer, {
-                    time: Date.now(),
-                    nick: event.nick,
-                    message: messageBody,
-                    type: 'traffic',
-                    type_extra: 'quit',
-                });
-            }
-
             state.removeUser(networkid, {
                 nick: event.nick,
             });
