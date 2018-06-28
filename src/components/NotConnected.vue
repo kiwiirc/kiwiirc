@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-notconnected" v-bind:class="{ connecting: shouldShowLoading }">
+    <div class="kiwi-notconnected kiwi-warning-block" v-bind:class="{ connecting: shouldShowLoading }">
         <div class="kiwi-notconnected-bigicon">
             <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true"></i>
             <i v-else class="fa fa-refresh fa-spin kiwi-notconnected-bigicon" aria-hidden="true"></i>
