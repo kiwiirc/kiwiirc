@@ -72,7 +72,7 @@ export default {
             checkEmbedlyAndShowCard();
         },
         closeViewer: function closeViewer() {
-            state.$emit('mediaviewer.hide');
+            state.$emit('mediaviewer.hide', {source: 'user'});
         },
     },
     created: function created() {
