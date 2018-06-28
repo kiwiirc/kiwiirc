@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-notconnected" v-bind:class="{ connecting: shouldShowLoading }">
+    <div class="kiwi-notconnected kiwi-warning-block" v-bind:class="{ connecting: shouldShowLoading }">
         <div class="kiwi-notconnected-bigicon">
             <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true"></i>
             <i v-else class="fa fa-refresh fa-spin kiwi-notconnected-bigicon" aria-hidden="true"></i>
@@ -29,7 +29,7 @@
                 </span>
             </template>
 
-            <a @click="showNetworkSettings" class="kiwi-notconnected-button kiwi-notconnected-button-settings">
+            <a v-if="!restrictedServer" @click="showNetworkSettings" class="kiwi-notconnected-button kiwi-notconnected-button-settings">
                 <i class="fa fa-cogs" aria-hidden="true"></i>{{$t('reconnect_settings')}}
             </a>
         </div>
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+
+import state from '@/libs/state';
 
 export default {
     data: function data() {
@@ -71,6 +73,9 @@ export default {
             }
 
             return false;
+        },
+        restrictedServer() {
+            return state.setting('restricted');
         },
     },
     methods: {
@@ -110,11 +115,11 @@ export default {
     display: inline-block;
     width: 100%;
     margin: 0 0 1em 0;
+}
 
-    i {
-        font-size: 4em;
-        cursor: default;
-    }
+.kiwi-notconnected-bigicon i {
+    font-size: 4em;
+    cursor: default;
 }
 
 .kiwi-notconnected-caption {
@@ -141,17 +146,17 @@ export default {
     margin: 0 0.8em;
     cursor: pointer;
     transition: all 0.3s;
+}
 
-    &:hover {
-        transition: all 0.2s;
-    }
+.kiwi-notconnected-button:hover {
+    transition: all 0.2s;
+}
 
-    i {
-        float: left;
-        font-size: 1.6em;
-        line-height: 0.8em;
-        margin-right: 0.4em;
-    }
+.kiwi-notconnected-button i {
+    float: left;
+    font-size: 1.6em;
+    line-height: 0.8em;
+    margin-right: 0.4em;
 }
 
 .kiwi-notconnected-button-settings {
@@ -160,10 +165,10 @@ export default {
     display: block;
     max-width: 160px;
     margin: 1em auto;
+}
 
-    i {
-        line-height: 1em;
-    }
+.kiwi-notconnected-button-settings i {
+    line-height: 1em;
 }
 
 @media screen and (max-width: 1024px) {

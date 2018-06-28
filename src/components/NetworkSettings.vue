@@ -55,7 +55,7 @@
                             <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
                                 <template v-if="show_advanced">
                                     <input-text :label="$t('settings_encoding')" v-model="network.connection.encoding" />
-                                    <label><span class="kiwi-appsettings-showraw-label">{{$t('settings_show_raw')}}: </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
+                                    <label><span class="kiwi-appsettings-showraw-label">{{$t('settings_show_raw')}} </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
                                     <label class="u-form-block">
                                         <span>{{$t('settings_autorun')}}</span>
                                         <textarea v-model="network.auto_commands" cols=40 rows=5></textarea>
@@ -66,8 +66,11 @@
                     </div>
 
                     <div class="kiwi-padded-form-element-container">
-                        <div class="u-button kiwi-connect-to-newnetwork" @click="network.ircClient.connect()">
+                        <div v-if="network.state === 'disconnected'" class="u-button kiwi-connect-to-newnetwork" @click="network.ircClient.connect()">
                             Connect To Network
+                        </div>
+                        <div v-else-if="network.state === 'connecting'" class="u-button kiwi-connect-to-newnetwork" >
+                            {{$t('connecting')}}
                         </div>
                     </div>
                 </div>
@@ -280,18 +283,18 @@ export default {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+}
 
-    label {
-        margin: 0;
-    }
+.kiwi-networksettings .kiwi-padded-form-element-container label {
+    margin: 0;
+}
 
-    .input-text {
-        padding-top: 0;
-    }
+.kiwi-networksettings .kiwi-padded-form-element-container .input-text {
+    padding-top: 0;
+}
 
-    &.kiwi-dangerzone {
-        text-align: center;
-    }
+.kiwi-networksettings .kiwi-padded-form-element-container.kiwi-dangerzone {
+    text-align: center;
 }
 
 .kiwi-networksettings-advanced-container {
@@ -375,10 +378,10 @@ export default {
     cursor: pointer;
     padding: 0 10px;
     line-height: 35px;
+}
 
-    &:hover {
-        opacity: 1;
-    }
+.kiwi-networksettings .kiwi-connect-to-newnetwork:hover {
+    opacity: 1;
 }
 
 .kiwi-networksettings-section {
@@ -459,10 +462,10 @@ export default {
     opacity: 0.8;
     margin: 0 auto;
     transition: all 0.3s;
+}
 
-    &:hover {
-        opacity: 1;
-    }
+.kiwi-networksettings-danger .u-button-warning:hover {
+    opacity: 1;
 }
 
 @media screen and (max-width: 769px) {

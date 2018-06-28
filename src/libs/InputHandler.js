@@ -1,3 +1,4 @@
+import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import _ from 'lodash';
 import AliasRewriter from './AliasRewriter';
@@ -48,7 +49,7 @@ export default class InputHandler {
         });
     }
 
-    processLine(rawLine, context) {
+    processLine(rawLine, context = this.defaultContext()) {
         this.validateContext(context);
         const { network, buffer } = context;
         let line = rawLine;
@@ -137,12 +138,24 @@ function handleMessage(type, event, command, line) {
     let bufferName = line.substr(0, spaceIdx);
     let message = line.substr(spaceIdx + 1);
 
-    let buffer = this.state.getBufferByName(network.id, bufferName);
+    let buffer = this.state.getOrAddBufferByName(network.id, bufferName);
     if (buffer) {
+        let textFormatType = 'privmsg';
+        if (type === 'action') {
+            textFormatType = 'action';
+        } else if (type === 'notice') {
+            textFormatType = 'notice';
+        }
+
+        let messageBody = TextFormatting.formatText(textFormatType, {
+            nick: network.nick,
+            text: message,
+        });
+
         let newMessage = {
             time: Date.now(),
-            nick: this.state.getActiveNetwork().nick,
-            message: message,
+            nick: network.nick,
+            message: messageBody,
             type: type,
         };
 
@@ -461,8 +474,8 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             mask: '{{nick}}!{{user}}@{{host}} ({{real_name}})',
             idle: 'Idle for {{idle}} seconds',
             logon: 'Connected at {{logon}}',
-            actualip: 'Real IP: {{actualip}}',
-            actualhost: 'Real hostname: {{actualhost}}',
+            actual_ip: 'Real IP: {{actualip}}',
+            actual_host: 'Real hostname: {{actualhost}}',
 
             // The following entries will be ignored from whoisData as display() ignores
             // empty lines.
@@ -481,8 +494,8 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
         if (whoisData.nick) {
             display(formats.mask
                 .replace('{{nick}}', whoisData.nick)
-                .replace('{{user}}', whoisData.user)
-                .replace('{{host}}', whoisData.host)
+                .replace('{{user}}', whoisData.ident)
+                .replace('{{host}}', whoisData.hostname)
                 .replace('{{real_name}}', whoisData.real_name));
         }
         if (whoisData.server) {
@@ -507,11 +520,11 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
         if (whoisData.channels) {
             display(formats.channels.replace('{{channels}}', whoisData.channels));
         }
-        if (whoisData.actualip) {
-            display(formats.actualip.replace('{{actualip}}', whoisData.actualip));
+        if (whoisData.actual_ip) {
+            display(formats.actualip.replace('{{actualip}}', whoisData.actual_ip));
         }
-        if (whoisData.actualhost) {
-            display(formats.actualhost.replace('{{actualhost}}', whoisData.actualhost));
+        if (whoisData.actual_host) {
+            display(formats.actualhost.replace('{{actualhost}}', whoisData.actual_host));
         }
 
         _.each(whoisData, (val, key) => {

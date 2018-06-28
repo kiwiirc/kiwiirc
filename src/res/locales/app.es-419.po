@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Latin America\n"
 "Language: es_419\n"
-"PO-Revision-Date: 2018-05-08 13:21-0400\n"
+"PO-Revision-Date: 2018-05-09 04:02-0400\n"
 
 #: Start
 msgid "start_button"
@@ -288,6 +288,14 @@ msgstr "Solo los moderadores pueden cambiar el tema"
 #: Block messages from outside this channel
 msgid "channel_external"
 msgstr "Bloquear mensajes externos al canal"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr ""
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr ""
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -667,5 +675,5 @@ msgstr "{{nick}} es ahora como {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr "ha cambiado el tópico a:"
+msgstr "ha cambiado el tópico a: {{topic}}"
 

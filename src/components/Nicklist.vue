@@ -13,14 +13,14 @@
                     userMode(user) ? 'kiwi-nicklist-user--mode-' + userMode(user) : '',
                     user.away ? 'kiwi-nicklist-user--away' : ''
                 ]"
-                @click="openUserbox(user, $event)"
+                @click="openUserbox(user)"
             >
                 <span class="kiwi-nicklist-user-prefix">{{userModePrefix(user)}}</span>
                 <span class="kiwi-nicklist-user-nick"
                         v-bind:style="nickStyle(user.nick)"
                         >{{user.nick}}
                 </span>
-                <span class="kiwi-nicklist-messageuser" @click="openQuery(user)">
+                <span class="kiwi-nicklist-messageuser" @click.stop="openQuery(user)">
                     <i class="fa fa-comment" aria-hidden="true"></i>
                 </span>
             </li>
@@ -60,7 +60,7 @@ export default {
             user_filter: '',
         };
     },
-    props: ['network', 'buffer', 'users'],
+    props: ['network', 'buffer', 'uiState'],
     computed: {
         sortedUsers: function sortedUsers() {
             // Get a list of network prefixes and give them a rank number
@@ -164,11 +164,10 @@ export default {
         openQuery: function openQuery(user) {
             let buffer = state.addBuffer(this.buffer.networkid, user.nick);
             state.setActiveBuffer(buffer.networkid, buffer.name);
+            this.uiState.close();
         },
-        openUserbox: function openUserbox(user, mouseEvent) {
+        openUserbox: function openUserbox(user) {
             state.$emit('userbox.show', user, {
-                top: mouseEvent.clientY,
-                left: mouseEvent.clientX,
                 buffer: this.buffer,
             });
         },
@@ -183,14 +182,6 @@ export default {
 .kiwi-sidebar.kiwi-sidebar-section-nicklist {
     max-width: 250px;
     width: 250px;
-    border-left: none;
-}
-
-@media screen and (max-width: 759px) {
-    .kiwi-sidebar.kiwi-sidebar-section-nicklist {
-        width: 100%;
-        max-width: none;
-    }
 }
 
 .kiwi-nicklist {
@@ -215,14 +206,13 @@ export default {
     align-items: flex-start;
     padding: 0.5em 10px;
     cursor: default;
-    height: 38px;
     box-sizing: border-box;
+}
 
-    span {
-        font-weight: 600;
-        width: 100%;
-        text-align: center;
-    }
+.kiwi-nicklist-usercount span {
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
 }
 
 .kiwi-nicklist-info {
@@ -235,41 +225,37 @@ export default {
     font-size: 0.9em;
     padding-bottom: 0;
     text-align: center;
-    border-width: 0 0 1px 0;
-    border-style: solid;
     display: flex;
     flex-direction: column;
+}
 
-    input {
-        text-align: left;
-        float: left;
-        width: 100%;
-        border: none;
-        padding: 0 1em;
-        height: 43px;
-        line-height: 43px;
-        font-weight: normal;
-        flex: 1;
-        background: 0 0;
-        outline: 0;
-    }
+.kiwi-nicklist-info input {
+    text-align: left;
+    float: left;
+    width: 100%;
+    border: none;
+    padding: 0 1em;
+    height: 43px;
+    line-height: 43px;
+    font-weight: normal;
+    flex: 1;
+    background: 0 0;
+    outline: 0;
+}
 
-    .fa.fa-search {
-        position: absolute;
-        top: 50%;
-        margin-top: -0.5em;
-        color: #000;
-        opacity: 0.5;
-        line-height: normal;
-        font-size: 1.2em;
-        right: 20px;
-        margin-right: 0;
-    }
+.kiwi-nicklist-info .fa.fa-search {
+    position: absolute;
+    top: 50%;
+    margin-top: -0.5em;
+    color: #000;
+    opacity: 0.5;
+    line-height: normal;
+    font-size: 1.2em;
+    right: 20px;
+    margin-right: 0;
 }
 
 .kiwi-nicklist-users {
-    display: flex;
-    flex-direction: column;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -283,7 +269,6 @@ export default {
 }
 
 .kiwi-nicklist-user {
-    height: 40px;
     line-height: 40px;
     padding: 0 1em;
     margin: 0;
@@ -315,6 +300,13 @@ export default {
 .kiwi-nicklist-user-nick {
     font-weight: bold;
     cursor: pointer;
+}
+
+@media screen and (max-width: 759px) {
+    .kiwi-sidebar.kiwi-sidebar-section-nicklist {
+        width: 100%;
+        max-width: 380px;
+    }
 }
 
 </style>

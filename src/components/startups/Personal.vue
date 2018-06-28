@@ -36,7 +36,20 @@ export default {
             state.$emit('statebrowser.show');
         },
         async init() {
+            // persist the buffers in the state by default
+            let persistSetting = state.settings.startupOptions.remember_buffers;
+            if (typeof persistSetting === 'undefined') {
+                state.persistence.includeBuffers = true;
+            } else {
+                state.persistence.includeBuffers = !!persistSetting;
+            }
+
             state.persistence.watchStateForChanges();
+
+            // force restricted: false as users need access
+            // to network settings to add a network
+            state.setSetting('settings.restricted', false);
+
             this.$emit('start', {
                 fallbackComponent: this.constructor,
             });

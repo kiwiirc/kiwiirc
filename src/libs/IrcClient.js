@@ -370,6 +370,7 @@ function clientMiddleware(state, networkid) {
 
             if (event.nick === client.user.nick) {
                 buffer.joined = true;
+                buffer.flags.channel_badkey = false;
                 network.ircClient.raw('MODE', event.channel);
                 network.ircClient.who(event.channel);
             }
@@ -523,15 +524,15 @@ function clientMiddleware(state, networkid) {
         if (command === 'whois') {
             let obj = {
                 nick: event.nick,
-                host: event.host,
-                username: event.user,
+                host: event.hostname,
+                username: event.ident,
                 away: event.away || '',
                 realname: event.real_name,
             };
 
             // Some other optional bits of info
             [
-                'actuallhost',
+                'actual_host',
                 'helpop',
                 'bot',
                 'server',
@@ -851,6 +852,10 @@ function clientMiddleware(state, networkid) {
 
             // TODO: Some of these errors contain a .error property whcih we can match against,
             // ie. password_mismatch.
+
+            if (event.error === 'bad_channel_key') {
+                buffer.flags.channel_badkey = true;
+            }
 
             if (event.reason) {
                 network.last_error = event.reason;

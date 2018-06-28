@@ -5,7 +5,7 @@
                 <tabbed-tab :header="'Messages'" :focus="hasMessages" name="messages">
                     <message-list :buffer="serverBuffer" :messages="serverBuffer.getMessages()"></message-list>
                 </tabbed-tab>
-                <tabbed-tab :header="$t('settings')" :focus="!hasMessages" name="settings">
+                <tabbed-tab :header="$t('settings')" :focus="!hasMessages" name="settings" v-if="!restrictedServer">
                     <network-settings :network="network"></network-settings>
                 </tabbed-tab>
                 <tabbed-tab :header="$t('channels')" v-if="network.state==='connected'" name="channels">
@@ -46,6 +46,9 @@ export default {
         },
         serverBuffer: function serverBuffer() {
             return this.network.serverBuffer();
+        },
+        restrictedServer() {
+            return state.setting('restricted');
         },
     },
     methods: {

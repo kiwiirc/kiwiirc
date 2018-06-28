@@ -30,6 +30,11 @@
             ></message-list-message-compact>
         </div>
 
+        <buffer-key
+            v-if="buffer.getNetwork().state === 'connected' && buffer.isChannel() && buffer.flags.channel_badkey"
+            :buffer="buffer"
+            :network="buffer.getNetwork()"
+        ></buffer-key>
         <not-connected
             v-if="buffer.getNetwork().state !== 'connected'"
             :buffer="buffer"
@@ -43,6 +48,7 @@
 import strftime from 'strftime';
 import state from '@/libs/state';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import BufferKey from './BufferKey';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
@@ -53,6 +59,7 @@ const BOTTOM_SCROLL_MARGIN = 30;
 
 export default {
     components: {
+        BufferKey,
         NotConnected,
         MessageListMessageModern,
         MessageListMessageCompact,
@@ -223,6 +230,12 @@ export default {
         formatTime: function formatTime(time) {
             return strftime(this.buffer.setting('timestamp_format') || '%T', new Date(time));
         },
+        formatTimeFull (time) {
+            let format = this.buffer.setting('timestamp_full_format');
+            return format ?
+                strftime(format, new Date(time)) :
+                (new Date(time)).toLocaleString();
+        },
         formatMessage: function formatMessage(message) {
             return message.toHtml(this);
         },
@@ -240,12 +253,22 @@ export default {
             }
             return '';
         },
+        openUserBox(nick) {
+            let user = state.getUser(this.buffer.networkid, nick);
+            if (user) {
+                state.$emit('userbox.show', user, {
+                    buffer: this.buffer,
+                });
+            }
+        },
         onListClick: function onListClick(event) {
             this.toggleMessageInfo();
         },
         onMessageClick: function onThreadClick(event, message) {
+            let isLink = event.target.tagName === 'A';
+
             let channelName = event.target.getAttribute('data-channel-name');
-            if (channelName) {
+            if (channelName && isLink) {
                 let network = this.buffer.getNetwork();
                 state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
@@ -253,21 +276,13 @@ export default {
             }
 
             let userNick = event.target.getAttribute('data-nick');
-            if (userNick) {
-                let user = state.getUser(this.buffer.networkid, userNick);
-                if (user) {
-                    state.$emit('userbox.show', user, {
-                        top: event.clientY,
-                        left: event.clientX,
-                        buffer: this.buffer,
-                    });
-                }
-
+            if (userNick && isLink) {
+                this.openUserBox(userNick);
                 return;
             }
 
             let url = event.target.getAttribute('data-url');
-            if (url) {
+            if (url && isLink) {
                 state.$emit('mediaviewer.show', url);
             }
 
@@ -343,7 +358,6 @@ export default {
 .kiwi-messagelist {
     overflow-y: auto;
     height: 100%;
-    padding-top: 10px;
 }
 
 .kiwi-messagelist-item {
@@ -371,46 +385,34 @@ export default {
 /* Start of the not connected message styling */
 .kiwi-messagelist-message-connection {
     padding: 0;
-    margin-bottom: 20px;
     text-align: center;
     font-weight: bold;
+    border: none;
+    margin: 0;
 }
 
-.kiwi-messagelist-message-connection .kiwi-messagelist-body,
-.kiwi-messagelist-message-disconnected .kiwi-messagelist-body {
+.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     font-size: 1.2em;
     height: auto;
     line-height: normal;
     text-align: center;
     cursor: default;
-    float: none;
-    display: block;
-    width: 250px;
-    padding: 0.5em 0;
+    display: inline-block;
+    padding: 0.5em 1em;
     margin: 1em auto 1em auto;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border-radius: 0;
 }
 
 .kiwi-messagelist-message-connection .kiwi-messagelist-time,
-.kiwi-messagelist-message-connection-connected .kiwi-messagelist-nick {
+.kiwi-messagelist-message-connection .kiwi-messagelist-nick {
     display: none;
-}
-
-.kiwi-messagelist-message-connection-connected,
-.kiwi-messagelist-message-connection-disconnected {
-    padding: 0;
-    border: none;
-    margin: 0;
-    background: none;
-    text-align: center;
 }
 
 /* Remove the styling for none user messages, as they make the page look bloated */
 .kiwi-messagelist-message-mode,
 .kiwi-messagelist-message-traffic,
-.kiwi-messagelist-message-connection-connected {
+.kiwi-messagelist-message-connection {
     padding: 0.1em 0.5em;
     min-height: 0;
     line-height: normal;
@@ -428,16 +430,9 @@ export default {
     padding: 0;
 }
 
-.kiwi-messagelist-message--own {
-    min-height: 0;
-    height: auto;
-}
-
 /* Channel messages - e.g 'server on #testing22 ' message and such */
 .kiwi-messagelist-message-mode,
-.kiwi-messagelist-message-traffic-join,
-.kiwi-messagelist-message-traffic-leave,
-.kiwi-messagelist-message-traffic-quit,
+.kiwi-messagelist-message-traffic,
 .kiwi-messagelist-message-nick {
     padding: 5px  0 5px 0;
     margin: 10px 0;
@@ -471,7 +466,7 @@ export default {
 
 .kiwi-container--sidebar-open .kiwi-messagelist::after {
     content: '';
-    z-index: 1;
+    z-index: 2;
     left: 0;
     top: 0;
     width: 100%;
@@ -497,13 +492,6 @@ export default {
 
 .kiwi-messagelist-seperator + .kiwi-messagelist-message {
     border-top: none;
-}
-
-@media screen and (max-width: 700px) {
-    .kiwi-messagelist-message,
-    .kiwi-messageinfo {
-        margin: 0;
-    }
 }
 
 .kiwi-messagelist-message--blur {
@@ -575,6 +563,7 @@ export default {
 
 .kiwi-messagelist-nick:hover {
     overflow: visible;
+    width: auto;
 }
 
 /* Topic changes */
@@ -637,5 +626,12 @@ export default {
 
 .kiwi-wrap--touch .kiwi-messagelist-message-linkhandle {
     display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .kiwi-messagelist-message,
+    .kiwi-messageinfo {
+        margin: 0;
+    }
 }
 </style>

@@ -86,7 +86,7 @@ export default {
             }
             password += ':' + this.password;
 
-            let net = state.addNetwork(netName, this.username, {
+            let net = state.addNetwork(netName, 'ZNC', {
                 server: _.trim(options.server),
                 port: options.port,
                 tls: options.tls,

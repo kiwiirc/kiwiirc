@@ -1,9 +1,9 @@
 <template>
     <div class="kiwi-container" v-bind:class="{
             /* 'kiwi-container-' + bufferType: true, */
-            'kiwi-container--sidebar-open': uiState.sidebarOpen,
-            'kiwi-container--no-sidebar': buffer && !buffer.isChannel(),
-            'kiwi-container--mini': isHalfSize,
+            'kiwi-container--sidebar-open': uiState.isOpen && uiState.section() !== '',
+            'kiwi-container--sidebar-pinned': uiState.isPinned,
+            'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
     }">
         <template v-if="buffer">
             <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
@@ -14,19 +14,24 @@
             </div>
             <container-header :buffer="buffer" :uiState="uiState"></container-header>
 
-            <template v-if="buffer.isServer()">
-                <server-view :network="network" :buffer="buffer" :uiState="uiState"></server-view>
-            </template>
-            <template v-else>
-                <sidebar
-                    v-if="buffer.isChannel()"
-                    :network="network"
-                    :buffer="buffer"
-                    :users="users"
-                    :uiState="uiState"
-                ></sidebar>
-                <message-list :buffer="buffer" :users="users" :uiState="uiState"></message-list>
-            </template>
+            <slot name="before"></slot>
+
+            <div class="kiwi-container-content">
+                <template v-if="buffer.isServer()">
+                    <server-view :network="network" :buffer="buffer" :uiState="uiState"></server-view>
+                </template>
+                <template v-else>
+                    <message-list :buffer="buffer" :users="users"></message-list>
+                    <sidebar
+                        :network="network"
+                        :buffer="buffer"
+                        :uiState="uiState"
+                        v-if="buffer.isChannel() /* There are no sidebars for queries yet */"
+                    ></sidebar>
+                </template>
+
+                <slot name="after"></slot>
+            </div>
         </template>
         <template v-else>
             <div class="kiwi-container-empty">
@@ -56,7 +61,7 @@ export default {
         return {
         };
     },
-    props: ['network', 'buffer', 'users', 'isHalfSize', 'uiState'],
+    props: ['network', 'buffer', 'users', 'uiState'],
     computed: {
         bufferType: function bufferType() {
             let type = '';
@@ -99,7 +104,7 @@ export default {
     },
     created: function created() {
         this.listen(state, 'sidebar.toggle', () => {
-            state.$emit('sidebar.' + (this.uiState.sidebarOpen ? 'hide' : 'show'));
+            state.$emit('sidebar.' + (this.uiState.isOpen() ? 'hide' : 'show'));
         });
         this.listen(state, 'sidebar.show', () => {
             this.uiState.showNicklist();
@@ -108,7 +113,10 @@ export default {
             this.uiState.close();
         });
         this.listen(state, 'userbox.show', (user, opts) => {
-            this.uiState.showUser();
+            this.uiState.showUser(user);
+        });
+        this.listen(state, 'userbox.hide', () => {
+            this.uiState.close();
         });
     },
 };
@@ -125,20 +133,43 @@ export default {
 /* When the sidebar is open we will put a shadow over the text area */
 .kiwi-header {
     z-index: 1;
+
+    /* IE 11 breaks when using the shorthand flex syntax here */
+    flex-grow: 0;
+    flex-shrink: 1;
 }
 
 .kiwi-sidebar {
     position: absolute;
-    right: -200px;
-    top: 0;
+    right: -443px;
+    top: -4px; /* Push the top over the top page border */
     bottom: 0;
-    width: 200px;
+    width: 443px;
+    max-width: 443px;
     z-index: 2;
     transition: right 0.2s, width 0.2s;
+    flex: 1;
 }
 
 .kiwi-container--sidebar-open .kiwi-sidebar {
     right: 0;
+}
+
+.kiwi-container--sidebar-pinned .kiwi-sidebar {
+    right: 0;
+    top: 0;
+    flex: 1;
+    position: relative;
+    border-left-width: 1px;
+    border-left-style: solid;
+    max-width: 430px;
+}
+
+.kiwi-container-content {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
 }
 
 .kiwi-messagelist {
@@ -204,6 +235,12 @@ export default {
     font-weight: 500;
     line-height: 50px;
     padding: 0 14px;
+}
+
+@media screen and (max-width: 1500px) {
+    .kiwi-container--sidebar-pinned .kiwi-sidebar {
+        max-width: 350px;
+    }
 }
 
 @media screen and (max-width: 769px) {

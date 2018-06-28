@@ -9,26 +9,23 @@
 
         <template v-if="isChannel()">
             <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div class="kiwi-header-options" v-if="isJoined && isConnected">
+            <div class="kiwi-header-options" v-if="isJoined && isConnected" :key="buffer.id">
+                <div v-for="el in pluginUiChannelElements" v-rawElement="el" class="kiwi-header-option"></div>
                 <div class="kiwi-header-option kiwi-header-option-topic" @click="showTopic" v-bind:class="{ 'kiwi-header-option--active': viewTopic == true }" v-if="buffer.topic.length > 0">
                     <a v-if="viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">{{$t('hide_topic')}}</span></a>
                     <a v-if="!viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">{{$t('display_topic')}}</span></a>
                 </div>
-                <div class="kiwi-header-option kiwi-header-option-nicklist"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
-                <div class="kiwi-header-option kiwi-header-option-settings"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>{{$t('channel_settings')}}</span></a></div>
+                <div class="kiwi-header-option kiwi-header-option-nicklist" v-bind:class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='nicklist'}"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
+                <div class="kiwi-header-option kiwi-header-option-settings" v-bind:class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='settings'}"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>{{$t('channel_settings')}}</span></a></div>
+                <div v-if="uiState.isPinned" class="kiwi-header-option kiwi-header-option-unpinsidebar"><a @click="uiState.unpin()"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a></div>
                 <div class="kiwi-header-option kiwi-header-option-leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
             </div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a @click="joinCurrentBuffer" class="u-link kiwi-header-join-channel-button">{{$t('container_join')}}</a>
             </div>
-            <div class="kiwi-header-tools">
-                <div v-for="el in pluginUiChannelElements" v-rawElement="el" class="kiwi-header-tool"></div>
-            </div>
 
             <div v-if="isJoined && buffer.topic.length > 0 && viewTopic" class="kiwi-header-topic">
-                <div>
-                    {{buffer.topic}}
-                </div>
+                <div v-html="formattedTopic"></div>
             </div>
 
         </template>
@@ -45,11 +42,13 @@
 
         <template v-else-if="isQuery()">
             <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div class="kiwi-header-tools">
-                <div v-for="el in pluginUiQueryElements" v-rawElement="el" class="kiwi-header-tool"></div>
-            </div>
-            <div class="kiwi-header-options">
-                <div class="kiwi-header-option kiwi-header-option-leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
+            <div class="kiwi-header-options" :key="buffer.id">
+                <div v-for="el in pluginUiQueryElements" v-rawElement="el" class="kiwi-header-option"></div>
+                <div class="kiwi-header-option kiwi-header-option-leave">
+                    <a @click="closeCurrentBuffer">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </template>
 
@@ -92,6 +91,8 @@ import GlobalApi from '@/libs/GlobalApi';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
+import * as TextFormatting from '@/helpers/TextFormatting';
+import formatIrcMessage from '@/libs/MessageFormatter';
 
 export default {
     data: function data() {
@@ -110,6 +111,12 @@ export default {
         },
         isConnected: function isConnected() {
             return this.buffer.getNetwork().state === 'connected';
+        },
+        formattedTopic: function formattedTopic() {
+            let showEmoticons = state.setting('buffers.show_emoticons');
+            let blocks = formatIrcMessage(this.buffer.topic, { extras: false });
+            let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
+            return content.html;
         },
     },
     components: {
@@ -193,10 +200,10 @@ export default {
 /* why this hover? */
 .kiwi-header:hover {
     max-height: none;
+}
 
-    .kiwi-header-topic {
-        display: block;
-    }
+.kiwi-header:hover .kiwi-header-topic {
+    display: block;
 }
 
 .kiwi-header-topic {
@@ -243,47 +250,50 @@ export default {
     font-size: 0.8em;
     opacity: 0.9;
     font-weight: 900;
-    text-transform: capitalize;
+}
 
-    a {
-        float: left;
-        padding: 0 10px;
-        line-height: 45px;
-        display: block;
-        font-weight: 600;
-        opacity: 0.8;
-        cursor: pointer;
-        transition: all 0.3s;
+.kiwi-header-option a {
+    float: left;
+    padding: 0 10px;
+    line-height: 45px;
+    display: block;
+    font-weight: 600;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.3s;
+}
 
-        &:hover {
-            opacity: 1;
-        }
-    }
+.kiwi-header-option a:hover {
+    opacity: 1;
+}
 
-    i {
-        margin-right: 10px;
-        font-size: 1.2em;
-        float: left;
-        line-height: 45px;
-    }
+.kiwi-header-option i {
+    margin-right: 10px;
+    font-size: 1.2em;
+    float: left;
+    line-height: 45px;
+}
 
-    &--active {
-        opacity: 1;
+.kiwi-header-option--active {
+    opacity: 1;
+}
 
-        a {
-            opacity: 1;
-        }
-    }
+.kiwi-header-option--active a {
+    opacity: 1;
 }
 
 .kiwi-header-option-leave {
     opacity: 1;
     margin: 0;
     transition: all 0.3s;
+}
 
-    i {
-        margin: 0;
-    }
+.kiwi-header-option-leave i {
+    margin: 0;
+}
+
+.kiwi-header-option-unpinsidebar i {
+    margin: 0;
 }
 
 /* The not joined button */
@@ -292,14 +302,14 @@ export default {
     display: inline-block;
     margin: 0 auto;
     float: right;
+}
 
-    .u-link {
-        font-weight: 600;
-        line-height: 45px;
-        padding: 0 25px;
-        border-radius: 0;
-        transition: all 0.3;
-    }
+.kiwi-header-notjoined .u-link {
+    font-weight: 600;
+    line-height: 45px;
+    padding: 0 25px;
+    border-radius: 0;
+    transition: all 0.3;
 }
 
 .kiwi-header-server-settings {
@@ -310,14 +320,14 @@ export default {
     float: right;
     padding-right: 10px;
     line-height: 46px;
+}
 
-    .u-button {
-        float: right;
-        line-height: 35px;
-        padding: 0 1em;
-        margin: 4px 0;
-        border-radius: 4px;
-    }
+.kiwi-header-server-connection .u-button {
+    float: right;
+    line-height: 35px;
+    padding: 0 1em;
+    margin: 4px 0;
+    border-radius: 4px;
 }
 
 .kiwi-header-options .u-button {
@@ -352,7 +362,7 @@ export default {
 
 @media screen and (max-width: 769px) {
     .kiwi-container-toggledraw-statebrowser {
-        z-index: 10;
+        z-index: 2;
         border-bottom: none;
     }
 
@@ -363,31 +373,27 @@ export default {
         max-height: none;
         padding-left: 0;
         margin-left: 0;
-
-        .kiwi-header-name {
-            line-height: normal;
-            padding-left: 60px;
-        }
     }
 
-    .kiwi-header-option {
-        a {
-            i {
-                margin-right: 0;
-            }
-        }
+    .kiwi-header .kiwi-header-name {
+        line-height: normal;
+        padding-left: 60px;
+    }
 
-        .fa-info {
-            display: block;
-            font-size: 1.5em;
-            padding: 0;
-            opacity: 0.8;
-            line-height: 45px;
-        }
+    .kiwi-header-option a i {
+        margin-right: 0;
+    }
 
-        span {
-            display: none;
-        }
+    .kiwi-header-option .fa-info {
+        display: block;
+        font-size: 1.5em;
+        padding: 0;
+        opacity: 0.8;
+        line-height: 45px;
+    }
+
+    .kiwi-header-option span {
+        display: none;
     }
 
     .kiwi-header-server-connection .u-button {

@@ -6,21 +6,21 @@
                 <textarea v-model.lazy="topic" rows="2"></textarea>
             </label>
 
-            <label>
-                <input type="checkbox" v-model="modeM" />
+            <label class="u-checkbox-wrapper">
                 <span>{{$t('channel_moderated')}}</span>
+                <input type="checkbox" v-model="modeM" />
             </label>
-            <label>
-                <input type="checkbox" v-model="modeI" />
+            <label class="u-checkbox-wrapper">
                 <span>{{$t('channel_invite')}}</span>
+                <input type="checkbox" v-model="modeI" />
             </label>
-            <label>
-                <input type="checkbox" v-model="modeT" />
+            <label class="u-checkbox-wrapper">
                 <span>{{$t('channel_moderated_topic')}}</span>
+                <input type="checkbox" v-model="modeT" />
             </label>
-            <label>
-                <input type="checkbox" v-model="modeN" />
+            <label class="u-checkbox-wrapper">
                 <span>{{$t('channel_external')}}</span>
+                <input type="checkbox" v-model="modeN" />
             </label>
             <label>
                 <span>{{$t('password')}}</span>
@@ -129,6 +129,3 @@ export default {
     },
 };
 </script>
-
-<style lang="less">
-</style>

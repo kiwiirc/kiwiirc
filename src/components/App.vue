@@ -8,6 +8,7 @@
         }"
         @click="emitDocumentClick"
         @paste="emitBufferPaste"
+        :data-activebuffer="buffer ? buffer.name.toLowerCase() : ''"
     >
         <link v-bind:href="themeUrl" rel="stylesheet" type="text/css">
 
@@ -24,14 +25,16 @@
                         :network="network"
                         :buffer="buffer"
                         :users="users"
-                        :isHalfSize="mediaviewerOpen"
                         :uiState="uiState"
-                    ></container>
-                    <media-viewer
-                        v-if="mediaviewerOpen"
-                        :url="mediaviewerUrl"
-                        :isIframe="mediaviewerIframe"
-                    ></media-viewer>
+                    >
+                        <media-viewer
+                            v-if="mediaviewerOpen"
+                            :url="mediaviewerUrl"
+                            :component="mediaviewerComponent"
+                            :isIframe="mediaviewerIframe"
+                            slot="before"
+                        ></media-viewer>
+                    </container>
                     <control-input :container="networks" :buffer="buffer"></control-input>
                 </template>
                 <component v-else-if="!activeComponent" v-bind:is="fallbackComponent" v-bind="fallbackComponentProps"></component>
@@ -79,16 +82,64 @@ let ContainerUiState = Vue.extend({
     data() {
         return {
             sidebarOpen: false,
+            sidebarPinned: false,
             // sidebarSection may be either '', 'user', 'settings', 'nicklist'
             sidebarSection: '',
+            sidebarUser: null,
         };
     },
+    computed: {
+        isPinned() {
+            // Pinned sidebar only works on full width windows otherwise its too small to see
+            return this.sidebarPinned && this.canPin;
+        },
+        isOpen() {
+            return !this.isPinned && this.sidebarOpen;
+        },
+        isClosed() {
+            return !this.isOpen && !this.isPinned;
+        },
+        canPin() {
+            return state.ui.app_width > 769;
+        },
+    },
     methods: {
+        section() {
+            if (this.isClosed) {
+                return '';
+            }
+
+            let section = this.sidebarSection;
+            let isChannel = state.getActiveBuffer().isChannel();
+
+            if (section === 'settings' && isChannel) {
+                return 'settings';
+            } else if (section === 'user' && this.sidebarUser && isChannel) {
+                return 'user';
+            } else if (section === 'nicklist' && isChannel) {
+                return 'nicklist';
+            }
+
+            return '';
+
+        },
+        pin() {
+            this.sidebarPinned = true;
+            if (this.sidebarSection === '') {
+                this.sidebarSection = 'nicklist';
+            }
+        },
+        unpin() {
+            this.sidebarPinned = false;
+            this.close();
+        },
         close() {
             this.sidebarOpen = false;
             this.sidebarSection = '';
+            this.sidebarUser = null;
         },
-        showUser() {
+        showUser(user) {
+            this.sidebarUser = user;
             this.sidebarOpen = true;
             this.sidebarSection = 'user';
         },
@@ -132,6 +183,7 @@ export default {
             }
 
             this.mediaviewerUrl = opts.url;
+            this.mediaviewerComponent = opts.component
             this.mediaviewerIframe = opts.iframe;
             this.mediaviewerOpen = true;
         });
@@ -163,6 +215,14 @@ export default {
             state.ui.is_touch = true;
         });
 
+        // Track the window dimensions into the reactive ui state
+        function trackWindowDims() {
+            state.ui.app_width = window.innerWidth;
+            state.ui.app_height = window.innerHeight;
+        }
+        window.addEventListener('resize', trackWindowDims);
+        trackWindowDims();
+
         // favicon bubble
         Tinycon.setOptions({
             width: 7,
@@ -185,6 +245,9 @@ export default {
 
             state.ui.favicon_counter++;
         });
+        if (this.uiState.canPin && state.getSetting('settings.sidebarPinned')) {
+            this.uiState.pin();
+        }
     },
     mounted: function mounted() {
         // Decide which startup screen to use depending on the config
@@ -227,6 +290,7 @@ export default {
             fallbackComponentProps: {},
             mediaviewerOpen: false,
             mediaviewerUrl: '',
+            mediaviewerComponent: null,
             mediaviewerIframe: false,
             themeUrl: '',
             uiState: new ContainerUiState(),
@@ -296,9 +360,6 @@ export default {
             }
 
             state.$emit('buffer.paste', event);
-
-            event.stopPropagation();
-            event.preventDefault();
         },
         emitDocumentClick: function emitDocumentClick(event) {
             state.$emit('document.clicked', event);
@@ -397,15 +458,9 @@ body {
     width: 100%;
 }
 
-.kiwi-container--mini {
-    bottom: 50%;
-}
-
 .kiwi-mediaviewer {
-    position: absolute;
-    top: 50%;
-    bottom: 40px;
-    width: 100%;
+    max-height: 70%;
+    overflow: auto;
 }
 
 .kiwi-controlinput {
