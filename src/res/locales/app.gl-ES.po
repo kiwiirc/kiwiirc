@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2018-06-28 16:51\n"
+"PO-Revision-Date: 2018-06-28 20:20\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Axustes"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Configuración do Kiwi"
 
 #: Channels
 msgid "channels"
@@ -143,43 +143,43 @@ msgstr "Sala"
 
 #: week
 msgid "week"
-msgstr ""
+msgstr "semana"
 
 #: weeks
 msgid "week_plural"
-msgstr ""
+msgstr "semanas"
 
 #: day
 msgid "day"
-msgstr ""
+msgstr "día"
 
 #: days
 msgid "day_plural"
-msgstr ""
+msgstr "días"
 
 #: hour
 msgid "hour"
-msgstr ""
+msgstr "hora"
 
 #: hours
 msgid "hour_plural"
-msgstr ""
+msgstr "horas"
 
 #: minute
 msgid "minute"
-msgstr ""
+msgstr "minuto"
 
 #: minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "minutos"
 
 #: second
 msgid "second"
-msgstr ""
+msgstr "segundo"
 
 #: seconds
 msgid "second_plural"
-msgstr ""
+msgstr "segundos"
 
 #: General
 msgid "settings_general"
@@ -191,7 +191,7 @@ msgstr "Tema"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Refrescar Tema"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -259,7 +259,7 @@ msgstr "Alias"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Que son os alias?"
 
 #: Send Message
 msgid "send_message"
@@ -367,15 +367,15 @@ msgstr "Mostrar barra estado do navegador"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Ocultar Tópico"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Mostrar Tópico"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Configuración da canle"
 
 #: Join Channel
 msgid "container_join"
@@ -459,7 +459,7 @@ msgstr "{{count}} usuarios aquí"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Filtrar usuarios na canle"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -567,11 +567,11 @@ msgstr "Entrar nunha #sala nova"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Filtrar canles"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Find máis canles."
 
 #: Change nick
 msgid "change_nick"
