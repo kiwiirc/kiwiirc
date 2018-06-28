@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-06-28 21:40\n"
+"PO-Revision-Date: 2018-06-28 21:50\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Impostazioni"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Impostazioni KiwiIRC"
 
 #: Channels
 msgid "channels"
@@ -271,7 +271,7 @@ msgstr "Inserisci Password Canale"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr ""
+msgstr "Riaccedi a {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -459,7 +459,7 @@ msgstr "{{count}} persone qui"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Filtra gli utenti nel canale"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -567,11 +567,11 @@ msgstr "Unisciti a nuovo #canale"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Filtra Canali"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Trova altri Canali"
 
 #: Change nick
 msgid "change_nick"
