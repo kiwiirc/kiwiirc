@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2018-05-09 05:00-0400\n"
+"PO-Revision-Date: 2018-06-28 12:31\n"
 
 #: Start
 msgid "start_button"
@@ -212,6 +212,14 @@ msgstr "Alias"
 #: Send Message
 msgid "send_message"
 msgstr "Enviar mensaje"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr ""
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr ""
 
 #: Notify me when
 msgid "settings_notify"
