@@ -521,7 +521,7 @@
     background: rgba(0,0,0,0.02);
     border: 2px solid #42b992;
     color: #dedede;
-}   
+}
 
 .kiwi-messagelist-message-traffic-join {
     color: #090;
@@ -752,7 +752,7 @@
 }
 
 /* Not connected message ( NotConnected.vue ) */
-.kiwi-notconnected {
+.kiwi-warning-block {
     color: #dedede;
     background-color: #bf5155;
 }
@@ -1228,4 +1228,9 @@
 /* MOTD */
 .kiwi-messagelist-message-motd {
     color: #666;
+}
+
+/* Buffer Key */
+.kiwi-bufferkey-button {
+    border: 1px solid #fff;
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-bufferkey">
+    <div class="kiwi-bufferkey kiwi-warning-block">
         <form @submit.prevent="joinChannel">
             <label>{{$t('bufferkey_input')}}</label>
             <input type="password" v-model='buffer.key'></input>
@@ -38,8 +38,6 @@ export default {
     text-align: center;
     padding: 10% 0;
     margin: 10px 0 0 0;
-    background: #d16c6c;
-    color: #fff;
     transition: background-color 0.3s;
 }
 
@@ -77,7 +75,6 @@ export default {
     font-size: 0.8em;
     cursor: pointer;
     transition: all 0.3s;
-    border: 1px solid #fff;
     border-radius: 4px;
     padding: 5px 20px;
     line-height: 40px;
