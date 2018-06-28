@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-06-28 16:51\n"
+"PO-Revision-Date: 2018-06-28 21:40\n"
 
 #: Start
 msgid "start_button"
@@ -143,43 +143,43 @@ msgstr "Canale"
 
 #: week
 msgid "week"
-msgstr ""
+msgstr "settimana"
 
 #: weeks
 msgid "week_plural"
-msgstr ""
+msgstr "settimane"
 
 #: day
 msgid "day"
-msgstr ""
+msgstr "giorno"
 
 #: days
 msgid "day_plural"
-msgstr ""
+msgstr "giorni"
 
 #: hour
 msgid "hour"
-msgstr ""
+msgstr "ora"
 
 #: hours
 msgid "hour_plural"
-msgstr ""
+msgstr "ore"
 
 #: minute
 msgid "minute"
-msgstr ""
+msgstr "minuto"
 
 #: minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "minuti"
 
 #: second
 msgid "second"
-msgstr ""
+msgstr "secondo"
 
 #: seconds
 msgid "second_plural"
-msgstr ""
+msgstr "secondi"
 
 #: General
 msgid "settings_general"
@@ -191,7 +191,7 @@ msgstr "Tema"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Aggiorna Tema"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -259,7 +259,7 @@ msgstr "Alias"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Cosa sono gli Alias"
 
 #: Send Message
 msgid "send_message"
@@ -267,7 +267,7 @@ msgstr "Invia messaggio"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Inserisci Password Canale"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -367,15 +367,15 @@ msgstr "Mostra elenco stati"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Nascondi Topic"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Mostra Topic"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Impostazioni Canale"
 
 #: Join Channel
 msgid "container_join"
