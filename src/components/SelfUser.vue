@@ -1,5 +1,8 @@
 <template>
     <div class="kiwi-selfuser">
+        <div class="kiwi-close-icon" @click="$emit('close')">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
         <div class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">{{network.nick}}</span>
             <span class="kiwi-selfuser-host">{{netUser.username}}@{{netUser.host}}</span>
