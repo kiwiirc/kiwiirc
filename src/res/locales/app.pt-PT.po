@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2018-06-28 16:50\n"
+"PO-Revision-Date: 2018-06-29 12:10\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Definições"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Definições do Kiwi "
 
 #: Channels
 msgid "channels"
@@ -143,43 +143,43 @@ msgstr "Canal"
 
 #: week
 msgid "week"
-msgstr ""
+msgstr "semana"
 
 #: weeks
 msgid "week_plural"
-msgstr ""
+msgstr "semanas"
 
 #: day
 msgid "day"
-msgstr ""
+msgstr "dia"
 
 #: days
 msgid "day_plural"
-msgstr ""
+msgstr "dias"
 
 #: hour
 msgid "hour"
-msgstr ""
+msgstr "hora"
 
 #: hours
 msgid "hour_plural"
-msgstr ""
+msgstr "horas"
 
 #: minute
 msgid "minute"
-msgstr ""
+msgstr "minuto"
 
 #: minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "minutos"
 
 #: second
 msgid "second"
-msgstr ""
+msgstr "segundo"
 
 #: seconds
 msgid "second_plural"
-msgstr ""
+msgstr "segundos"
 
 #: General
 msgid "settings_general"
@@ -191,7 +191,7 @@ msgstr "Tema"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Recarregar Tema"
 
 #: Theme URL
 msgid "settings_themeurl"
