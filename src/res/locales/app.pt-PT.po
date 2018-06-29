@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2018-06-29 12:10\n"
+"PO-Revision-Date: 2018-06-29 12:20\n"
 
 #: Start
 msgid "start_button"
@@ -259,7 +259,7 @@ msgstr "Aliases"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "O que são aliases"
 
 #: Send Message
 msgid "send_message"
@@ -267,11 +267,11 @@ msgstr "Enviar mensagem"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Insira a senha do canal"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr ""
+msgstr "Reentrar no {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -367,15 +367,15 @@ msgstr "Mostrar statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Esconder Tópico"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Mostrar Tópico"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Definições de Canal"
 
 #: Join Channel
 msgid "container_join"
@@ -459,7 +459,7 @@ msgstr "{{count}} pessoas aqui"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Filtrar utilizadores no canal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -567,11 +567,11 @@ msgstr "Entrar num novo #canal"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Filtrar Canais"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Descobrir Mais Canais"
 
 #: Change nick
 msgid "change_nick"
