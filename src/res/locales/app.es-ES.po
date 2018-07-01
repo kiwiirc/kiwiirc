@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2018-05-09 05:00-0400\n"
+"PO-Revision-Date: 2018-06-28 20:10\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "Conectado"
 #: Settings
 msgid "settings"
 msgstr "Configuración"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Configuración del Kiwi"
 
 #: Channels
 msgid "channels"
@@ -137,6 +141,46 @@ msgstr "Ignorar usuario"
 msgid "connection_channel"
 msgstr "Sala"
 
+#: week
+msgid "week"
+msgstr "semana"
+
+#: weeks
+msgid "week_plural"
+msgstr "semanas"
+
+#: day
+msgid "day"
+msgstr "día"
+
+#: days
+msgid "day_plural"
+msgstr "días"
+
+#: hour
+msgid "hour"
+msgstr "hora"
+
+#: hours
+msgid "hour_plural"
+msgstr "horas"
+
+#: minute
+msgid "minute"
+msgstr "minuto"
+
+#: minutes
+msgid "minute_plural"
+msgstr "minutos"
+
+#: second
+msgid "second"
+msgstr "segundo"
+
+#: seconds
+msgid "second_plural"
+msgstr "segundos"
+
 #: General
 msgid "settings_general"
 msgstr "General"
@@ -144,6 +188,10 @@ msgstr "General"
 #: Theme
 msgid "settings_theme"
 msgstr "Tema"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Refrescar Tema"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -209,9 +257,21 @@ msgstr "Palabras a destacar (sepáralas con un espacio)"
 msgid "settings_aliases"
 msgstr "Alias"
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "¿Qué son los alias?"
+
 #: Send Message
 msgid "send_message"
 msgstr "Enviar mensaje"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Escribe la clave del canal:"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "Reentrando al {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -305,6 +365,18 @@ msgstr "¡Bienvenido a Kiwi IRC! Selecciona una sala de la izquierda."
 msgid "container_statebrowser"
 msgstr "Mostrar barra estado del navegador"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Ocultar Tópico"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Mostrar Tópico"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Configuración de la Sala"
+
 #: Join Channel
 msgid "container_join"
 msgstr "Entrar a una sala"
@@ -384,6 +456,10 @@ msgstr "{{count}} usuario aquí"
 #: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} usuarios aquí"
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr "Filtrar usuarios en la sala"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -488,6 +564,14 @@ msgstr "Desconectado."
 #: Join new #channel
 msgid "state_join"
 msgstr "Entrar en una #sala nueva"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Filtrar salas"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Buscar más Salas"
 
 #: Change nick
 msgid "change_nick"

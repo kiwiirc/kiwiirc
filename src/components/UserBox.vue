@@ -2,83 +2,124 @@
     <div class="kiwi-userbox">
 
         <div class="kiwi-userbox-header">
-            <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"></i>
-            <h3>{{user.nick}}</h3>
-            <div class="kiwi-userbox-usermask">{{user.username}}@{{user.host}}</div>
+            <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"/>
+            <h3>{{ user.nick }}</h3>
+            <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
         </div>
 
         <div class="kiwi-userbox-basicinfo">
-            <span class="kiwi-userbox-basicinfo-title">{{$t('whois_realname')}}:</span>
-            <span class="kiwi-userbox-basicinfo-data">{{user.realname}} </span>
-            <span class="kiwi-userbox-basicinfo-title">{{$t('whois_status')}}:</span>
-            <span class="kiwi-userbox-basicinfo-data">{{user.away ? user.away : $t('whois_status_available')}}  </span>
+            <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_realname') }}:</span>
+            <span class="kiwi-userbox-basicinfo-data">{{ user.realname }} </span>
+            <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_status') }}:</span>
+            <span class="kiwi-userbox-basicinfo-data">
+                {{ user.away ? user.away : $t('whois_status_available') }}
+            </span>
         </div>
 
         <p class="kiwi-userbox-actions">
-            <a @click="openQuery" class="kiwi-userbox-action">
-                <i class="fa fa-comment-o" aria-hidden="true"></i>
-                {{$t('send_a_message')}}
+            <a class="kiwi-userbox-action" @click="openQuery">
+                <i class="fa fa-comment-o" aria-hidden="true"/>
+                {{ $t('send_a_message') }}
             </a>
             <a v-if="!whoisRequested" class="kiwi-userbox-action" @click="updateWhoisData">
-                <i class="fa fa-question-circle" aria-hidden="true"></i>
-                {{$t('more_information')}}
+                <i class="fa fa-question-circle" aria-hidden="true"/>
+                {{ $t('more_information') }}
             </a>
 
-            <form class="u-form kiwi-userbox-ignoreuser">
-                <label>
-                    <input type="checkbox" v-model="user.ignore" />
-                    <span> {{$t('ignore_user')}} </span>
-                </label>
-            </form>
         </p>
+
+        <form class="u-form kiwi-userbox-ignoreuser">
+            <label>
+                <input v-model="user.ignore" type="checkbox" >
+                <span> {{ $t('ignore_user') }} </span>
+            </label>
+        </form>
 
         <div
             v-if="whoisRequested"
+            :class="[whoisLoading?'kiwi-userbox-whois--loading':'']"
             class="kiwi-userbox-whois"
-            v-bind:class="[whoisLoading?'kiwi-userbox-whois--loading':'']"
         >
             <template v-if="whoisLoading">
-                <i class="fa fa-spinner" aria-hidden="true"></i>
+                <i class="fa fa-spinner" aria-hidden="true"/>
             </template>
             <template v-else>
-                <span class="kiwi-userbox-whois-line">{{user.away ? $t('whois_status') + ': ' + user.away : $t('whois_status_available')}}</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.account">{{$t('user_account', {user: user.account})}}</span>
-                <span class="kiwi-userbox-whois-line">{{$t('user_realname', {realname: user.realname})}}</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.bot">{{$t('user_bot')}}</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.helpop">{{$t('user_help')}}</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.operator">{{$t('user_op')}}</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.server">{{$t('user_server', { server: user.server, info: (user.server_info ? `(${user.server_info})` : '')})}}</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.secure">{{$t('user_secure')}}</span>
-                <span class="kiwi-userbox-whois-line" v-if="user.channels">{{$t('user_channels', {channels: user.channels})}}</span>
+                <span class="kiwi-userbox-whois-line">
+                    {{ user.away ?
+                        $t('whois_status') + ': ' + user.away :
+                        $t('whois_status_available')
+                    }}
+                </span>
+                <span v-if="user.account" class="kiwi-userbox-whois-line">
+                    {{ $t('user_account', {user: user.account}) }}
+                </span>
+                <span class="kiwi-userbox-whois-line">
+                    {{ $t('user_realname', {realname: user.realname}) }}
+                </span>
+                <span v-if="user.bot" class="kiwi-userbox-whois-line">{{ $t('user_bot') }}</span>
+                <span v-if="user.helpop" class="kiwi-userbox-whois-line">
+                    {{ $t('user_help') }}
+                </span>
+                <span v-if="user.operator" class="kiwi-userbox-whois-line">
+                    {{ $t('user_op') }}
+                </span>
+                <span v-if="user.server" class="kiwi-userbox-whois-line">
+                    {{ $t('user_server', {
+                        server: user.server,
+                        info: (user.server_info ? `(${user.server_info})` : '')
+                    }) }}
+                </span>
+                <span v-if="user.secure" class="kiwi-userbox-whois-line">
+                    {{ $t('user_secure') }}
+                </span>
+                <span v-if="user.channels" class="kiwi-userbox-whois-line">
+                    {{ $t('user_channels', {channels: user.channels}) }}
+                </span>
             </template>
         </div>
 
         <div v-if="buffer.isChannel() && areWeAnOp" class="kiwi-userbox-opactions">
             <form class="u-form" @submit.prevent="">
                 <label v-if="isUserOnBuffer">
-                    {{$t('user_access')}} <select v-model="userMode">
-                        <option v-for="mode in availableChannelModes" v-bind:value="mode.mode">
-                            {{mode.description}}
+                    {{ $t('user_access') }} <select v-model="userMode">
+                        <option
+                            v-for="mode in availableChannelModes"
+                            :key="mode.mode"
+                            :value="mode.mode"
+                        >
+                            {{ mode.description }}
                         </option>
-                        <option value="">{{$t('user_normal')}}</option>
+                        <option value="">{{ $t('user_normal') }}</option>
                     </select>
                 </label>
                 <label v-if="isUserOnBuffer">
-                    <button @click="kickUser" class="u-button u-button-secondary kiwi-userbox-opaction-kick kiwi-userbox-opaction">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i>
-                        {{$t('user_kick')}}
+                    <button
+                        class="u-button u-button-secondary
+                               kiwi-userbox-opaction-kick kiwi-userbox-opaction"
+                        @click="kickUser"
+                    >
+                        <i class="fa fa-sign-out" aria-hidden="true"/>
+                        {{ $t('user_kick') }}
                     </button>
                 </label>
                 <label>
-                    <button @click="banUser" class="u-button u-button-secondary kiwi-userbox-opaction-ban kiwi-userbox-opaction">
-                        <i class="fa fa-ban" aria-hidden="true"></i>
-                        {{$t('user_ban')}}
+                    <button
+                        class="u-button u-button-secondary
+                               kiwi-userbox-opaction-ban kiwi-userbox-opaction"
+                        @click="banUser"
+                    >
+                        <i class="fa fa-ban" aria-hidden="true"/>
+                        {{ $t('user_ban') }}
                     </button>
                 </label>
                 <label v-if="isUserOnBuffer">
-                    <button @click="kickbanUser" class="u-button u-button-secondary kiwi-userbox-opaction-kickban kiwi-userbox-opaction">
-                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                        {{$t('user_kickban')}}
+                    <button
+                        class="u-button u-button-secondary
+                               kiwi-userbox-opaction-kickban kiwi-userbox-opaction"
+                        @click="kickbanUser"
+                    >
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true"/>
+                        {{ $t('user_kickban') }}
                     </button>
                 </label>
             </form>
@@ -91,13 +132,13 @@
 import state from '@/libs/state';
 
 export default {
+    props: ['buffer', 'network', 'user'],
     data: function data() {
         return {
             whoisRequested: false,
             whoisLoading: false,
         };
     },
-    props: ['buffer', 'network', 'user'],
     computed: {
         // Channel modes differ on some IRCds so get them from the network options
         availableChannelModes: function availableChannelModes() {
@@ -111,7 +152,7 @@ export default {
                 h: 'Half-Operator',
                 v: 'Voice',
             };
-            prefixes.forEach(prefix => {
+            prefixes.forEach((prefix) => {
                 let mode = prefix.mode;
                 if (knownPrefix[mode]) {
                     availableModes.push({
@@ -181,6 +222,19 @@ export default {
             },
         },
     },
+    watch: {
+        user: function watchUser() {
+            // Reset the whois view since the user is now different
+            this.whoisRequested = false;
+            this.whoisLoading = false;
+        },
+    },
+    mounted: function mounted() {
+        this.maybeRepositionTop();
+    },
+    updated: function updated() {
+        this.maybeRepositionTop();
+    },
     methods: {
         userModeOnThisBuffer: function userModeOnBuffer(user) {
             if (!this.buffer) {
@@ -245,19 +299,6 @@ export default {
             if (targetTop + rect.height > window.innerHeight) {
                 this.$el.style.top = (window.innerHeight - rect.height) + 'px';
             }
-        },
-    },
-    mounted: function mounted() {
-        this.maybeRepositionTop();
-    },
-    updated: function updated() {
-        this.maybeRepositionTop();
-    },
-    watch: {
-        user: function watchUser() {
-            // Reset the whois view since the user is now different
-            this.whoisRequested = false;
-            this.whoisLoading = false;
         },
     },
 };

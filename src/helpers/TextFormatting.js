@@ -321,6 +321,127 @@ export function formatText(formatId, formatParams) {
     return result;
 }
 
-export function t(...args) {
-    return i18next.t(...args);
+export function enrichText(text, showEmoticons, emojiList, emojiLocation, userList) {
+    let urls = [];
+    let words = text.split(' ');
+    words = words.map((word, wordIdx) => {
+        let parsed;
+
+        let linkified = this.linkifyUrls(word, {
+            addHandle: true,
+            handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
+        });
+        if (linkified.urls.length > 0) {
+            urls = urls.concat(linkified.urls);
+        }
+        if (linkified.html !== word) return linkified.html;
+
+        parsed = this.linkifyChannels(word);
+        if (parsed !== word) return parsed;
+
+        if (userList) {
+            parsed = this.linkifyUsers(word, userList);
+            if (parsed !== word) return parsed;
+        }
+
+        if (showEmoticons) {
+            parsed = this.addEmojis(
+                { word, words, wordIdx },
+                emojiList,
+                emojiLocation
+            );
+            if (parsed !== word) return parsed;
+        }
+
+        return _.escape(word);
+    });
+
+    return { html: words.join(' '), urls: urls };
+}
+
+export function styleBlocksToHtml(blocks, showEmoticons, userList) {
+    let urls = [];
+    let html = '';
+    let emojiList = state.setting('emojis');
+    let emojiLocation = state.setting('emojiLocation');
+
+    blocks.forEach((bl, idx) => {
+        let style = '';
+        let classes = '';
+
+        Object.keys(bl.styles).forEach((s) => {
+            if (s === 'underline') {
+                style += 'text-decoration:underline;';
+            } else if (s === 'bold') {
+                style += 'font-weight:bold;';
+            } else if (s === 'italic') {
+                style += 'font-style:italic;';
+            } else if (s === 'quote') {
+                classes += 'kiwi-formatting-extras-quote ';
+            } else if (s === 'block') {
+                classes += 'kiwi-formatting-extras-block ';
+            } else if (s === 'color') {
+                classes += `irc-fg-colour-${bl.styles[s]} `;
+            } else if (s === 'background') {
+                classes += `irc-bg-colour-${bl.styles[s]} `;
+            }
+        });
+
+        let content = this.enrichText(
+            bl.content,
+            showEmoticons,
+            emojiList,
+            emojiLocation,
+            userList
+        );
+        urls = urls.concat(content.urls);
+
+        if (style === '' && classes === '') {
+            html += content.html;
+        } else if (style !== '' && classes !== '') {
+            html += `<span style="${style}" class="${classes}">${content.html}</span>`;
+        } else if (style !== '') {
+            html += `<span style="${style}">${content.html}</span>`;
+        } else if (classes !== '') {
+            html += `<span class="${classes}">${content.html}</span>`;
+        }
+    });
+    return { html: html, urls: urls };
+}
+
+// Convert a given duration in seconds to human readable weeks,days,hours,minutes,seconds
+// only showing the duration parts that are used eg 3666 --> 1 hour, 1 minute, 6 seconds
+export function formatDuration(timeSeconds) {
+    let seconds = timeSeconds;
+
+    const weeks = Math.floor(seconds / (3600 * 24 * 7));
+    seconds -= weeks * 3600 * 24 * 7;
+
+    const days = Math.floor(seconds / (3600 * 24));
+    seconds -= days * 3600 * 24;
+
+    const hours = Math.floor(seconds / 3600);
+    seconds -= hours * 3600;
+
+    const minutes = Math.floor(seconds / 60);
+    seconds -= minutes * 60;
+
+    const tmp = [];
+    (weeks) && tmp.push(t('week', { count: weeks }));
+    (weeks || days) && tmp.push(t('day', { count: days }));
+    (days || hours) && tmp.push(t('hour', { count: hours }));
+    (days || hours || minutes) && tmp.push(t('minute', { count: minutes }));
+    tmp.push(t('second', { count: seconds }));
+
+    return tmp.join(' ');
+}
+
+export function t(key, options) {
+    let val = i18next.t(key, options);
+    if (!val) {
+        let opts = options || {};
+        opts.lng = 'en-us';
+        val = i18next.t(key, opts);
+    }
+    return val;
 }

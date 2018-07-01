@@ -41,6 +41,8 @@ const stateObj = {
         buffers: {
             alert_on: 'highlight',
             timestamp_format: '%H:%M:%S',
+            // If timestamp_full_format is falsy, the browsers locale date format will be used
+            timestamp_full_format: '',
             show_timestamps: true,
             scrollback_size: 250,
             show_joinparts: true,
@@ -1124,6 +1126,11 @@ const state = new Vue({
                 state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
                 state.$delete(buffer.users, normalisedOld);
             });
+
+            let buffer = this.getBufferByName(network.id, oldNick);
+            if (buffer) {
+                buffer.rename(newNick);
+            }
         },
 
         getStartups() {
@@ -1183,6 +1190,7 @@ function createEmptyBufferObject() {
             unread: 0,
             alert_on: 'default',
             has_opened: false,
+            channel_badkey: false,
             chathistory_available: true,
         },
         settings: {
@@ -1230,6 +1238,7 @@ function initialiseNetworkState(network) {
     });
     Object.defineProperty(network, 'showServerBuffer', {
         value: function showServerBuffer(tabName) {
+            state.$emit('active.component', null);
             state.setActiveBuffer(network.id, network.serverBuffer().name);
             // Hacky, but the server buffer component listens for events to switch
             // between tabs
@@ -1321,6 +1330,23 @@ function initialiseBufferState(buffer) {
             return result;
         },
     });
+    Object.defineProperty(buffer, 'rename', {
+        value: function rename(newName) {
+            let network = buffer.getNetwork();
+            let oldName = buffer.name;
+            let setActive = state.getActiveBuffer() === buffer;
+
+            buffer.name = newName;
+            if (setActive) {
+                state.setActiveBuffer(network.id, newName);
+            }
+
+            // update the buffer name on our messages
+            let bufferMessages = _.find(messages, { networkid: network.id, buffer: oldName });
+            bufferMessages.buffer = newName;
+        },
+    });
+
     Object.defineProperty(buffer, 'flag', {
         value: function flag(name, val) {
             if (typeof val !== 'undefined') {

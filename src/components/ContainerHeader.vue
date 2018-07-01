@@ -1,54 +1,111 @@
 <template>
     <div
-        class="kiwi-header"
-        v-bind:class="{
+        :class="{
             'kiwi-header--showall': buffer_settings_open,
         }"
+        class="kiwi-header"
         @click="onHeaderClick"
     >
 
         <template v-if="isChannel()">
-            <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div class="kiwi-header-options" v-if="isJoined && isConnected" :key="buffer.id">
-                <div v-for="el in pluginUiChannelElements" v-rawElement="el" class="kiwi-header-option"></div>
-                <div class="kiwi-header-option kiwi-header-option-topic" @click="showTopic" v-bind:class="{ 'kiwi-header-option--active': viewTopic == true }" v-if="buffer.topic.length > 0">
-                    <a v-if="viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">Hide Topic</span></a>
-                    <a v-if="!viewTopic"><i class="fa fa-info" aria-hidden="true"></i> <span class="kiwi-containerheader-hidetext">Display Topic</span></a>
+            <div class="kiwi-header-name">{{ buffer.name }}</div>
+            <div
+                v-if="isJoined && isConnected"
+                :key="buffer.id"
+                class="kiwi-header-options"
+            >
+                <div
+                    v-rawElement="el" v-for="el in pluginUiChannelElements"
+                    :key="el"
+                    class="kiwi-header-option"
+                />
+                <div
+                    v-if="buffer.topic.length > 0"
+                    :class="{ 'kiwi-header-option--active': viewTopic == true }"
+                    class="kiwi-header-option kiwi-header-option-topic"
+                    @click="showTopic"
+                >
+                    <a v-if="viewTopic">
+                        <i class="fa fa-info" aria-hidden="true"/>
+                        <span class="kiwi-containerheader-hidetext">{{ $t('hide_topic') }}</span>
+                    </a>
+                    <a v-if="!viewTopic">
+                        <i class="fa fa-info" aria-hidden="true"/>
+                        <span class="kiwi-containerheader-hidetext">{{ $t('display_topic') }}</span>
+                    </a>
                 </div>
-                <div class="kiwi-header-option kiwi-header-option-nicklist" v-bind:class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='nicklist'}"><a @click="uiState.showNicklist()"><i class="fa fa-users" aria-hidden="true"></i></i> <span>{{$t('person', {count: Object.keys(buffer.users).length})}}</span></a></div>
-                <div class="kiwi-header-option kiwi-header-option-settings" v-bind:class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='settings'}"><a @click="uiState.showBufferSettings()"><i class="fa fa-cog" aria-hidden="true"></i> <span>Channel Settings</span></a></div>
-                <div v-if="uiState.isPinned" class="kiwi-header-option kiwi-header-option-unpinsidebar"><a @click="uiState.unpin()"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a></div>
-                <div class="kiwi-header-option kiwi-header-option-leave"><a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"></i></a></div>
+                <div
+                    :class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='nicklist'}"
+                    class="kiwi-header-option kiwi-header-option-nicklist"
+                >
+                    <a @click="uiState.showNicklist()">
+                        <i class="fa fa-users" aria-hidden="true"/>
+                        <span>{{ $t('person', {count: Object.keys(buffer.users).length}) }}</span>
+                    </a>
+                </div>
+                <div
+                    :class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='settings'}"
+                    class="kiwi-header-option kiwi-header-option-settings"
+                >
+                    <a @click="uiState.showBufferSettings()">
+                        <i class="fa fa-cog" aria-hidden="true"/>
+                        <span>{{ $t('channel_settings') }}</span>
+                    </a>
+                </div>
+                <div
+                    v-if="uiState.isPinned"
+                    class="kiwi-header-option kiwi-header-option-unpinsidebar"
+                >
+                    <a @click="uiState.unpin()"><i class="fa fa-thumb-tack" aria-hidden="true"/></a>
+                </div>
+                <div
+                    class="kiwi-header-option kiwi-header-option-leave"
+                >
+                    <a @click="closeCurrentBuffer"><i class="fa fa-times" aria-hidden="true"/></a>
+                </div>
             </div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
-                <a @click="joinCurrentBuffer" class="u-link kiwi-header-join-channel-button">{{$t('container_join')}}</a>
+                <a class="u-link kiwi-header-join-channel-button" @click="joinCurrentBuffer">
+                    {{ $t('container_join') }}
+                </a>
             </div>
 
             <div v-if="isJoined && buffer.topic.length > 0 && viewTopic" class="kiwi-header-topic">
-                <div>
-                    {{buffer.topic}}
-                </div>
+                <div v-html="formattedTopic"/>
             </div>
 
         </template>
 
         <template v-else-if="isServer()">
-            <div v-if="buffer.getNetwork().state === 'disconnected'" class="kiwi-header-server-connection">
-                <a @click="onConnectButtonClick" class="u-button u-button-primary">{{$t('connect')}}</a>
+            <div
+                v-if="buffer.getNetwork().state === 'disconnected'"
+                class="kiwi-header-server-connection"
+            >
+                <a class="u-button u-button-primary" @click="onConnectButtonClick">
+                    {{ $t('connect') }}
+                </a>
             </div>
-            <div v-else-if="buffer.getNetwork().state === 'connecting'" class="kiwi-header-server-connection">
-                {{$t('connecting')}}
+            <div
+                v-else-if="buffer.getNetwork().state === 'connecting'"
+                class="kiwi-header-server-connection"
+            >
+                {{ $t('connecting') }}
             </div>
-            <div class="kiwi-header-name">{{buffer.getNetwork().name}}</div>
+            <div class="kiwi-header-name">{{ buffer.getNetwork().name }}</div>
         </template>
 
         <template v-else-if="isQuery()">
-            <div class="kiwi-header-name">{{buffer.name}}</div>
-            <div class="kiwi-header-options" :key="buffer.id">
-                <div v-for="el in pluginUiQueryElements" v-rawElement="el" class="kiwi-header-option"></div>
+            <div class="kiwi-header-name">{{ buffer.name }}</div>
+            <div :key="buffer.id" class="kiwi-header-options">
+                <div
+                    v-rawElement="el"
+                    v-for="el in pluginUiQueryElements"
+                    :key="el"
+                    class="kiwi-header-option"
+                />
                 <div class="kiwi-header-option kiwi-header-option-leave">
                     <a @click="closeCurrentBuffer">
-                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <i class="fa fa-times" aria-hidden="true"/>
                     </a>
                 </div>
             </div>
@@ -56,9 +113,11 @@
 
         <template v-else-if="isSpecial()">
             <div class="kiwi-header-options">
-                <a class="u-button u-button-secondary" @click="closeCurrentBuffer">{{$t('close')}}</a>
+                <a class="u-button u-button-secondary" @click="closeCurrentBuffer">
+                    {{ $t('close') }}
+                </a>
             </div>
-            <div class="kiwi-header-name">{{buffer.name}}</div>
+            <div class="kiwi-header-name">{{ buffer.name }}</div>
         </template>
 
         <div
@@ -69,18 +128,21 @@
 
             <tabbed-view>
                 <tabbed-tab :header="$t('settings')" :focus="true">
-                    <channel-info v-bind:buffer="buffer"></channel-info>
+                    <channel-info :buffer="buffer"/>
                 </tabbed-tab>
                 <tabbed-tab :header="$t('banned')">
-                    <channel-banlist v-bind:buffer="buffer"></channel-banlist>
+                    <channel-banlist :buffer="buffer"/>
                 </tabbed-tab>
                 <tabbed-tab :header="$t('notifications')">
-                    <buffer-settings v-bind:buffer="buffer"></buffer-settings>
+                    <buffer-settings :buffer="buffer"/>
                 </tabbed-tab>
             </tabbed-view>
 
-            <a @click="buffer_settings_open=false" class="u-button u-button-secondary kiwi-header-close-buffersettings">
-                <i class="fa fa-caret-up" aria-hidden="true"></i>
+            <a
+                class="u-button u-button-secondary kiwi-header-close-buffersettings"
+                @click="buffer_settings_open=false"
+            >
+                <i class="fa fa-caret-up" aria-hidden="true"/>
             </a>
         </div>
     </div>
@@ -90,11 +152,19 @@
 
 import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
+import * as TextFormatting from '@/helpers/TextFormatting';
+import formatIrcMessage from '@/libs/MessageFormatter';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
 
 export default {
+    components: {
+        BufferSettings,
+        ChannelInfo,
+        ChannelBanlist,
+    },
+    props: ['buffer', 'uiState'],
     data: function data() {
         return {
             buffer_settings_open: false,
@@ -103,7 +173,6 @@ export default {
             viewTopic: false,
         };
     },
-    props: ['buffer', 'uiState'],
     computed: {
         isJoined: function isJoined() {
             let buffer = this.buffer;
@@ -112,11 +181,18 @@ export default {
         isConnected: function isConnected() {
             return this.buffer.getNetwork().state === 'connected';
         },
+        formattedTopic: function formattedTopic() {
+            let showEmoticons = state.setting('buffers.show_emoticons');
+            let blocks = formatIrcMessage(this.buffer.topic, { extras: false });
+            let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
+            return content.html;
+        },
     },
-    components: {
-        BufferSettings,
-        ChannelInfo,
-        ChannelBanlist,
+    watch: {
+        buffer: function watchBuffer() {
+            // When ever the buffer changes, close the settings dropdown
+            this.buffer_settings_open = false;
+        },
     },
     methods: {
         isChannel: function isChannel() {
@@ -163,12 +239,6 @@ export default {
                 state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
             }
-        },
-    },
-    watch: {
-        buffer: function watchBuffer() {
-            // When ever the buffer changes, close the settings dropdown
-            this.buffer_settings_open = false;
         },
     },
 };

@@ -1,41 +1,45 @@
 <template>
-    <div class="kiwi-notconnected" v-bind:class="{ connecting: shouldShowLoading }">
+    <div :class="{ connecting: shouldShowLoading }" class="kiwi-notconnected kiwi-warning-block">
         <div class="kiwi-notconnected-bigicon">
-            <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true"></i>
-            <i v-else class="fa fa-refresh fa-spin kiwi-notconnected-bigicon" aria-hidden="true"></i>
+            <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true"/>
+            <i v-else class="fa fa-refresh fa-spin kiwi-notconnected-bigicon" aria-hidden="true"/>
         </div>
 
         <template v-if="!shouldShowLoading">
-        <div class="kiwi-notconnected-caption">
-            <span>You are not currently connected!</span>
-        </div>
-        <div class="kiwi-notconnected-buttons">
-            <template v-if="isChannel()">
-                <span @click="reconnect" class="kiwi-notconnected-button">
-                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-                    {{$t('reconnect_channel', {channel: buffer.name})}}
-                </span>
-            </template>
-            <template v-else-if="isServer()">
-                <span @click="reconnect" class="kiwi-notconnected-button">
-                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-                    {{$t('reconnect_network', {network: buffer.getNetwork().name})}}
-                </span>
-            </template>
-            <template v-else-if="isQuery()">
-                <span @click="reconnect" class="kiwi-notconnected-button">
-                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-                    {{$t('reconnect_query', {user: buffer.name})}}</i>
-                </span>
-            </template>
+            <div class="kiwi-notconnected-caption">
+                <span>You are not currently connected!</span>
+            </div>
+            <div class="kiwi-notconnected-buttons">
+                <template v-if="isChannel()">
+                    <span class="kiwi-notconnected-button" @click="reconnect">
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
+                        {{ $t('reconnect_channel', {channel: buffer.name}) }}
+                    </span>
+                </template>
+                <template v-else-if="isServer()">
+                    <span class="kiwi-notconnected-button" @click="reconnect">
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
+                        {{ $t('reconnect_network', {network: buffer.getNetwork().name}) }}
+                    </span>
+                </template>
+                <template v-else-if="isQuery()">
+                    <span class="kiwi-notconnected-button" @click="reconnect">
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
+                        {{ $t('reconnect_query', {user: buffer.name}) }}
+                    </span>
+                </template>
 
-            <a v-if="!restrictedServer" @click="showNetworkSettings" class="kiwi-notconnected-button kiwi-notconnected-button-settings">
-                <i class="fa fa-cogs" aria-hidden="true"></i>{{$t('reconnect_settings')}}
-            </a>
-        </div>
+                <a
+                    v-if="!restrictedServer"
+                    class="kiwi-notconnected-button kiwi-notconnected-button-settings"
+                    @click="showNetworkSettings"
+                >
+                    <i class="fa fa-cogs" aria-hidden="true"/>{{ $t('reconnect_settings') }}
+                </a>
+            </div>
         </template>
         <div v-else class="kiwi-notconnected-caption">
-            {{$t('connecting')}}
+            {{ $t('connecting') }}
         </div>
     </div>
 </template>
@@ -45,30 +49,20 @@
 import state from '@/libs/state';
 
 export default {
+    props: ['buffer', 'network'],
     data: function data() {
         return {
             forceLoader: false,
         };
     },
-    props: ['buffer', 'network'],
     computed: {
         netStatus: function netStatus() {
             return this.buffer.getNetwork().state;
         },
         shouldShowLoading: function showShowLoading() {
-            // The connection can fail almost imediately making it look like
-            // the connection attempt didn't try anything. Make the connection
-            // loder stay visible for at elast X seconds to indicate it's actually
-            // tried something.
-            let minimumLoaderViewtime = 2000;
-            let networkState = this.network.state;
+            this.maybeForceLoader();
 
-            if (networkState !== 'disconnected' || this.forceLoader) {
-                this.forceLoader = true;
-                setTimeout(() => {
-                    this.forceLoader = false;
-                }, minimumLoaderViewtime);
-
+            if (this.network.state !== 'disconnected' || this.forceLoader) {
                 return true;
             }
 
@@ -79,6 +73,21 @@ export default {
         },
     },
     methods: {
+        maybeForceLoader() {
+            // The connection can fail almost imediately making it look like
+            // the connection attempt didn't try anything. Make the connection
+            // loder stay visible for at elast X seconds to indicate it's actually
+            // tried something.
+            let minimumLoaderViewtime = 2000;
+            let networkState = this.network.state;
+
+            if (networkState !== 'disconnected' && !this.forceLoader) {
+                this.forceLoader = true;
+                setTimeout(() => {
+                    this.forceLoader = false;
+                }, minimumLoaderViewtime);
+            }
+        },
         isChannel: function isChannel() {
             return this.buffer.isChannel();
         },

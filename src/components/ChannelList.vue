@@ -2,39 +2,45 @@
     <div class="kiwi-channellist">
         <div class="kiwi-channellist-nav">
             <a
-                @click="maybeUpdateList"
-                class="u-button kiwi-channellist-refresh"
                 :class="{
                     'u-button-primary': !isLoading,
                     'u-button-secondary': isLoading,
-            }">
-                <i v-if="!isLoading" class="fa fa-refresh" aria-hidden="true"></i>
-                <i v-else class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+                }"
+                class="u-button kiwi-channellist-refresh"
+                @click="maybeUpdateList">
+                <i v-if="!isLoading" class="fa fa-refresh" aria-hidden="true"/>
+                <i v-else class="fa fa-refresh fa-spin" aria-hidden="true"/>
             </a>
 
             <div class="kiwi-channellist-pagination">
-                <a @click="prevPage"><i class="fa fa-step-backward" aria-hidden="true"></i></a> {{page + 1}} / {{maxPages + 1}} <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
+                <a @click="prevPage"><i class="fa fa-step-backward" aria-hidden="true"/></a>
+                {{ page + 1 }} / {{ maxPages + 1 }}
+                <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true"/></a>
             </div>
 
             <form class="u-form kiwi-channellist-search" @submit.prevent>
-                <input v-model="search" :placeholder="$t('do_search')" class="u-input" />
+                <input v-model="search" :placeholder="$t('do_search')" class="u-input" >
             </form>
         </div>
-        <table v-if="!isLoading && list.length > 0" width="100%" :key="last_updated">
+        <table v-if="!isLoading && list.length > 0" :key="last_updated" width="100%">
             <tbody>
-                <tr v-for="channel in paginated">
+                <tr v-for="channel in paginated" :key="channel.channel">
                     <td>
                         <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
-                            <i class="fa fa-user" aria-hidden="true"></i> {{channel.num_users}}
+                            <i class="fa fa-user" aria-hidden="true"/> {{ channel.num_users }}
                         </span>
-                        <a class="u-link" @click="joinChannel(channel.channel)">{{channel.channel}}</a>
+                        <a class="u-link" @click="joinChannel(channel.channel)">
+                            {{ channel.channel }}
+                        </a>
                     </td>
-                    <td>{{channel.topic}}</td>
+                    <td>{{ channel.topic }}</td>
                 </tr>
             </tbody>
         </table>
-        <div v-else-if="noResults" class="kiwi-channellist-info">{{$t('channel_list_nonefound')}}</div>
-        <div v-else class="kiwi-channellist-info">{{$t('channel_list_fetch')}}</div>
+        <div v-else-if="noResults" class="kiwi-channellist-info">
+            {{ $t('channel_list_nonefound') }}
+        </div>
+        <div v-else class="kiwi-channellist-info">{{ $t('channel_list_fetch') }}</div>
     </div>
 </template>
 
@@ -44,6 +50,7 @@ import _ from 'lodash';
 import state from '@/libs/state';
 
 export default {
+    props: ['network'],
     data: function data() {
         return {
             sidebarOpen: false,
@@ -53,7 +60,6 @@ export default {
             last_updated: 0,
         };
     },
-    props: ['network'],
     computed: {
         noResults() {
             return this.listState === 'updated' && this.list.length === 0;
@@ -73,7 +79,7 @@ export default {
             if (this.search.length <= 2) {
                 list = this.list;
             } else {
-                list = this.list.filter(channel => {
+                list = this.list.filter((channel) => {
                     let found = false;
                     if (channel.channel.toLowerCase().indexOf(this.search) > -1) {
                         found = true;
@@ -109,6 +115,11 @@ export default {
             return this.page > 0;
         },
     },
+    watch: {
+        search: function watchSearch() {
+            this.page = 0;
+        },
+    },
     methods: {
         nextPage: function nextPage() {
             if (this.page < this.maxPages) {
@@ -128,11 +139,6 @@ export default {
         joinChannel: function joinChannel(channelName) {
             state.addBuffer(this.network.id, channelName);
             this.network.ircClient.join(channelName);
-        },
-    },
-    watch: {
-        search: function watchSearch() {
-            this.page = 0;
         },
     },
 };

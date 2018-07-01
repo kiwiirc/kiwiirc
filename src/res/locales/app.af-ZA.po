@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Afrikaans\n"
 "Language: af_ZA\n"
-"PO-Revision-Date: 2018-05-23 04:41-0400\n"
+"PO-Revision-Date: 2018-06-28 16:51\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "aangesluit"
 #: Settings
 msgid "settings"
 msgstr "Verstellings "
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr ""
 
 #: Channels
 msgid "channels"
@@ -137,6 +141,46 @@ msgstr "ignoreer gebruiker"
 msgid "connection_channel"
 msgstr "verbindingskanaal"
 
+#: week
+msgid "week"
+msgstr ""
+
+#: weeks
+msgid "week_plural"
+msgstr ""
+
+#: day
+msgid "day"
+msgstr ""
+
+#: days
+msgid "day_plural"
+msgstr ""
+
+#: hour
+msgid "hour"
+msgstr ""
+
+#: hours
+msgid "hour_plural"
+msgstr ""
+
+#: minute
+msgid "minute"
+msgstr ""
+
+#: minutes
+msgid "minute_plural"
+msgstr ""
+
+#: second
+msgid "second"
+msgstr ""
+
+#: seconds
+msgid "second_plural"
+msgstr ""
+
 #: General
 msgid "settings_general"
 msgstr "verstellings algemeen"
@@ -144,6 +188,10 @@ msgstr "verstellings algemeen"
 #: Theme
 msgid "settings_theme"
 msgstr "tema verstellings"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr ""
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -209,25 +257,37 @@ msgstr ""
 msgid "settings_aliases"
 msgstr ""
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr ""
+
 #: Send Message
 msgid "send_message"
+msgstr "Stuur Boodskap"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr ""
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
 msgstr ""
 
 #: Notify me when
 msgid "settings_notify"
-msgstr ""
+msgstr "Stel my in kennis indien"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "Alle boodskappe"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "Ek genoem word"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "Nooit"
 
 #: Mute sounds
 msgid "settings_notify_mute"
@@ -235,7 +295,7 @@ msgstr ""
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr ""
+msgstr "Steek ungeleeste boodskap telling weg"
 
 #: Operator tools
 msgid "operator_tools"
@@ -271,7 +331,7 @@ msgstr ""
 
 #: Topic
 msgid "channel_topic"
-msgstr ""
+msgstr "Onderwerp"
 
 #: Moderated chat
 msgid "channel_moderated"
@@ -279,7 +339,7 @@ msgstr ""
 
 #: Invite only
 msgid "channel_invite"
-msgstr ""
+msgstr "Slegs genooides"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -287,7 +347,7 @@ msgstr ""
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr ""
+msgstr "Verbied boodskappe vanaf buite kanaal"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
@@ -299,39 +359,51 @@ msgstr ""
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr ""
+msgstr "Welkom by Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
 msgstr ""
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr ""
+
+#: Display Topic
+msgid "display_topic"
+msgstr ""
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr ""
+
 #: Join Channel
 msgid "container_join"
-msgstr ""
+msgstr "Sluit aan by Kanaal"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr ""
+msgstr "Nie Aangesluit"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr ""
+msgstr "Privaat gesprek met {{user}}"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr ""
+msgstr "Stuur 'n boodskap..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr ""
+msgstr "Besig om {{url}} te laai..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr ""
+msgstr "Laai vorige boodskappe"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Ongeleeste Boodskappe"
 
 #: Server details
 msgid "settings_server_details"
@@ -339,7 +411,7 @@ msgstr ""
 
 #: Port
 msgid "settings_port"
-msgstr ""
+msgstr "Poort"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
@@ -347,11 +419,11 @@ msgstr ""
 
 #: Your details
 msgid "settings_your_details"
-msgstr ""
+msgstr "Jou informasie"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr ""
+msgstr "Skuilnaam"
 
 #: Advanced
 msgid "settings_advanced"
@@ -375,14 +447,18 @@ msgstr ""
 
 #: Remove network
 msgid "settings_remove"
-msgstr ""
+msgstr "Verwyder netwerk"
 
 #: {{count}} person here
 msgid "person"
-msgstr ""
+msgstr "{{count}} persoon hier"
 
 #: {{count}} people here
 msgid "person_plural"
+msgstr "{{count}} mense hier"
+
+#: Filter users in channel
+msgid "filter_users"
 msgstr ""
 
 #: Reconnect to join {{channel}}
@@ -487,6 +563,14 @@ msgstr ""
 
 #: Join new #channel
 msgid "state_join"
+msgstr ""
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr ""
+
+#: Find More Channels
+msgid "find_more_channels"
 msgstr ""
 
 #: Change nick

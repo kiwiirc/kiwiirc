@@ -1,15 +1,26 @@
 <template>
     <div class="kiwi-controlinput">
-        <div class="kiwi-controlinput-selfuser" :class="{'kiwi-controlinput-selfuser--open': selfuser_open}">
-            <self-user :network="buffer.getNetwork()" v-if="selfuser_open && networkState==='connected'"></self-user>
+        <div
+            :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
+            class="kiwi-controlinput-selfuser"
+        >
+            <self-user
+                v-if="selfuser_open && networkState==='connected'"
+                :network="buffer.getNetwork()"
+                @close="selfuser_open=false"
+            />
         </div>
 
         <div class="kiwi-controlinput-inner">
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
-                <i class="fa fa-caret-up" aria-hidden="true"></i>
+                <i
+                    :class="[selfuser_open ? 'fa-caret-down' : 'fa-caret-up']"
+                    class="fa"
+                    aria-hidden="true"
+                />
             </div>
-            <form @submit.prevent="submitForm" class="kiwi-controlinput-form">
+            <form class="kiwi-controlinput-form" @submit.prevent="submitForm">
                 <auto-complete
                     v-if="autocomplete_open"
                     ref="autocomplete"
@@ -19,32 +30,37 @@
                     @temp="onAutocompleteTemp"
                     @selected="onAutocompleteSelected"
                     @cancel="onAutocompleteCancel"
-                ></auto-complete>
+                />
                 <div class="kiwi-controlinput-input-wrap">
                     <irc-input
                         ref="input"
-                        @keydown="inputKeyDown($event)"
-                        @keyup="inputKeyUp($event)"
-                        @click="closeInputTool"
+                        :placeholder="$t('input_placeholder')"
                         class="kiwi-controlinput-input"
                         wrap="off"
-                        :placeholder="$t('input_placeholder')"></irc-input>
+                        @keydown="inputKeyDown($event)"
+                        @keyup="inputKeyUp($event)"
+                        @click="closeInputTool"/>
                 </div>
                 <!--<button type="submit">Send</button>-->
             </form>
-            <div class="kiwi-controlinput-tools" ref="plugins">
-                <a @click.prevent="onToolClickTextStyle" class="kiwi-controlinput-tool">
-                    <i class="fa fa-adjust" aria-hidden="true"></i>
+            <div ref="plugins" class="kiwi-controlinput-tools">
+                <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
+                    <i class="fa fa-adjust" aria-hidden="true"/>
                 </a>
-                <a @click.prevent="onToolClickEmoji" class="kiwi-controlinput-tool">
-                    <i class="fa fa-smile-o" aria-hidden="true"></i>
+                <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
+                    <i class="fa fa-smile-o" aria-hidden="true"/>
                 </a>
-                <div v-for="el in pluginUiElements" v-rawElement="el" class="kiwi-controlinput-tool"></div>
+                <div
+                    v-rawElement="el"
+                    v-for="el in pluginUiElements"
+                    :key="el"
+                    class="kiwi-controlinput-tool"
+                />
             </div>
         </div>
 
         <div class="kiwi-controlinput-active-tool">
-            <component v-bind:is="active_tool" v-bind="active_tool_props"></component>
+            <component :is="active_tool" v-bind="active_tool_props"/>
         </div>
     </div>
 </template>
@@ -65,6 +81,7 @@ export default {
         AutoComplete,
         SelfUser,
     },
+    props: ['container', 'buffer'],
     data: function data() {
         return {
             selfuser_open: false,
@@ -86,7 +103,6 @@ export default {
             pluginUiElements: GlobalApi.singleton().controlInputPlugins,
         };
     },
-    props: ['container', 'buffer'],
     computed: {
         currentNick: function currentNick() {
             let activeNetwork = state.getActiveNetwork();
@@ -106,6 +122,31 @@ export default {
             let val = this.history[this.history_pos];
             this.$refs.input.setValue(val || '');
         },
+    },
+    created: function created() {
+        this.listen(state, 'document.keydown', (ev) => {
+            // No input box currently? Nothing to shift focus to
+            if (!this.$refs.input) {
+                return;
+            }
+
+            // If we're copying text, don't shift focus
+            if (ev.ctrlKey || ev.altKey || ev.metaKey) {
+                return;
+            }
+
+            // If we're typing into an input box somewhere, ignore
+            let elements = ['input', 'select', 'textarea', 'button', 'datalist', 'keygen'];
+            let doNotRefocus =
+                elements.indexOf(ev.target.tagName.toLowerCase()) > -1 ||
+                ev.target.getAttribute('contenteditable');
+
+            if (doNotRefocus) {
+                return;
+            }
+
+            this.$refs.input.focus();
+        });
     },
     methods: {
         toggleSelfUser() {
@@ -311,7 +352,7 @@ export default {
             let list = [];
 
             if (opts.users) {
-                let userList = _.values(this.buffer.users).map(user => {
+                let userList = _.values(this.buffer.users).map((user) => {
                     let item = {
                         text: user.nick,
                         type: 'user',
@@ -331,7 +372,7 @@ export default {
 
             if (opts.buffers) {
                 let bufferList = [];
-                this.buffer.getNetwork().buffers.forEach(buffer => {
+                this.buffer.getNetwork().buffers.forEach((buffer) => {
                     if (buffer.isChannel()) {
                         bufferList.push({
                             text: buffer.name,
@@ -345,7 +386,7 @@ export default {
 
             if (opts.commands) {
                 let commandList = [];
-                autocompleteCommands.forEach(command => {
+                autocompleteCommands.forEach((command) => {
                     commandList.push({
                         text: '/' + command.command,
                         description: command.description,
@@ -358,31 +399,6 @@ export default {
 
             return list;
         },
-    },
-    created: function created() {
-        this.listen(state, 'document.keydown', (ev) => {
-            // No input box currently? Nothing to shift focus to
-            if (!this.$refs.input) {
-                return;
-            }
-
-            // If we're copying text, don't shift focus
-            if (ev.ctrlKey || ev.altKey || ev.metaKey) {
-                return;
-            }
-
-            // If we're typing into an input box somewhere, ignore
-            let elements = ['input', 'select', 'textarea', 'button', 'datalist', 'keygen'];
-            let doNotRefocus =
-                elements.indexOf(ev.target.tagName.toLowerCase()) > -1 ||
-                ev.target.getAttribute('contenteditable');
-
-            if (doNotRefocus) {
-                return;
-            }
-
-            this.$refs.input.focus();
-        });
     },
 };
 </script>
@@ -397,6 +413,10 @@ export default {
 .kiwi-controlinput-inner {
     padding: 0;
     box-sizing: border-box;
+}
+
+.kiwi-controlinput-inner i {
+    font-size: 120%;
 }
 
 .kiwi-controlinput-user {

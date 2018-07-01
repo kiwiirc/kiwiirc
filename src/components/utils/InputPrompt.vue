@@ -1,29 +1,28 @@
 <template>
     <div class="input-prompt">
-        <div v-if="state==='pre'" @click="prompt"><slot></slot></div>
+        <div v-if="state==='pre'" @click="prompt"><slot/></div>
 
-        <form class="u-form" v-if="state==='prompt'" @submit.prevent="complete">
-            <span class="input-prompt-label">{{label}}</span>
-            <input class="u-input" v-model="value" @keyup.esc="cancel" />
-            <a @click="complete" class="u-button u-button-primary">{{$t('ok')}}</a>
-            <a @click="cancel" class="u-button u-button-warning">{{$t('cancel')}}</a>
+        <form v-if="state==='prompt'" class="u-form" @submit.prevent="complete">
+            <span class="input-prompt-label">{{ label }}</span>
+            <input v-model="value" class="u-input" @keyup.esc="cancel" >
+            <a class="u-button u-button-primary" @click="complete">{{ $t('ok') }}</a>
+            <a class="u-button u-button-warning" @click="cancel">{{ $t('cancel') }}</a>
         </form>
     </div>
 </template>
-
 
 <script>
 
 let Vue = require('vue');
 
 export default Vue.component('input-prompt', {
+    props: ['label'],
     data: function data() {
         return {
             value: '',
             state: 'pre',
         };
     },
-    props: ['label'],
     methods: {
         prompt: function prompt() {
             this.state = 'prompt';

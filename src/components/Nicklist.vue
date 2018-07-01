@@ -1,38 +1,37 @@
 <template>
     <div class="kiwi-nicklist">
         <div class="kiwi-nicklist-usercount">
-            <span>{{$t('person', {count: sortedUsers.length})}}</span>
+            <span>{{ $t('person', {count: sortedUsers.length}) }}</span>
         </div>
 
         <ul class="kiwi-nicklist-users">
             <li
                 v-for="user in sortedUsers"
                 :key="user.nick"
-                class="kiwi-nicklist-user"
-                v-bind:class="[
+                :class="[
                     userMode(user) ? 'kiwi-nicklist-user--mode-' + userMode(user) : '',
                     user.away ? 'kiwi-nicklist-user--away' : ''
                 ]"
+                class="kiwi-nicklist-user"
                 @click="openUserbox(user)"
             >
-                <span class="kiwi-nicklist-user-prefix">{{userModePrefix(user)}}</span>
-                <span class="kiwi-nicklist-user-nick"
-                        v-bind:style="nickStyle(user.nick)"
-                        >{{user.nick}}
+                <span class="kiwi-nicklist-user-prefix">{{ userModePrefix(user) }}</span>
+                <span :style="nickStyle(user.nick)"
+                      class="kiwi-nicklist-user-nick"
+                >{{ user.nick }}
                 </span>
                 <span class="kiwi-nicklist-messageuser" @click.stop="openQuery(user)">
-                    <i class="fa fa-comment" aria-hidden="true"></i>
+                    <i class="fa fa-comment" aria-hidden="true"/>
                 </span>
             </li>
         </ul>
 
         <div class="kiwi-nicklist-info">
-            <input placeholder="Filter users in channel" v-model="user_filter" ref="user_filter">
-            <i class="fa fa-search" @click="$refs.user_filter.focus()"></i>
+            <input ref="user_filter" :placeholder="$t('filter_users')" v-model="user_filter">
+            <i class="fa fa-search" @click="$refs.user_filter.focus()"/>
         </div>
     </div>
 </template>
-
 
 <script>
 
@@ -54,13 +53,13 @@ function strCompare(a, b) {
 }
 
 export default {
+    props: ['network', 'buffer', 'uiState'],
     data: function data() {
         return {
             userbox_user: null,
             user_filter: '',
         };
     },
-    props: ['network', 'buffer', 'uiState'],
     computed: {
         sortedUsers: function sortedUsers() {
             // Get a list of network prefixes and give them a rank number
@@ -79,7 +78,7 @@ export default {
             let users = [];
             let bufferUsers = this.buffer.users;
             let nickFilter = this.user_filter.toLowerCase();
-            /* eslint-disable guard-for-in */
+            /* eslint-disable guard-for-in, no-restricted-syntax */
             for (let lowercaseNick in bufferUsers) {
                 let user = bufferUsers[lowercaseNick];
                 nickMap[user.nick] = lowercaseNick;
@@ -174,7 +173,6 @@ export default {
     },
 };
 </script>
-
 
 <style lang="less">
 

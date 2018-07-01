@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2018-05-09 03:42-0400\n"
+"PO-Revision-Date: 2018-06-28 16:50\n"
 
 #: Start
 msgid "start_button"
@@ -39,6 +39,10 @@ msgstr ""
 
 #: Settings
 msgid "settings"
+msgstr ""
+
+#: Kiwi Settings
+msgid "kiwi_settings"
 msgstr ""
 
 #: Channels
@@ -137,12 +141,56 @@ msgstr ""
 msgid "connection_channel"
 msgstr ""
 
+#: week
+msgid "week"
+msgstr ""
+
+#: weeks
+msgid "week_plural"
+msgstr ""
+
+#: day
+msgid "day"
+msgstr ""
+
+#: days
+msgid "day_plural"
+msgstr ""
+
+#: hour
+msgid "hour"
+msgstr ""
+
+#: hours
+msgid "hour_plural"
+msgstr ""
+
+#: minute
+msgid "minute"
+msgstr ""
+
+#: minutes
+msgid "minute_plural"
+msgstr ""
+
+#: second
+msgid "second"
+msgstr ""
+
+#: seconds
+msgid "second_plural"
+msgstr ""
+
 #: General
 msgid "settings_general"
 msgstr ""
 
 #: Theme
 msgid "settings_theme"
+msgstr ""
+
+#: Refresh Theme
+msgid "refresh_theme"
 msgstr ""
 
 #: Theme URL
@@ -209,8 +257,20 @@ msgstr ""
 msgid "settings_aliases"
 msgstr ""
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr ""
+
 #: Send Message
 msgid "send_message"
+msgstr ""
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr ""
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
 msgstr ""
 
 #: Notify me when
@@ -305,6 +365,18 @@ msgstr ""
 msgid "container_statebrowser"
 msgstr ""
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr ""
+
+#: Display Topic
+msgid "display_topic"
+msgstr ""
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr ""
+
 #: Join Channel
 msgid "container_join"
 msgstr ""
@@ -383,6 +455,10 @@ msgstr ""
 
 #: {{count}} people here
 msgid "person_plural"
+msgstr ""
+
+#: Filter users in channel
+msgid "filter_users"
 msgstr ""
 
 #: Reconnect to join {{channel}}
@@ -487,6 +563,14 @@ msgstr ""
 
 #: Join new #channel
 msgid "state_join"
+msgstr ""
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr ""
+
+#: Find More Channels
+msgid "find_more_channels"
 msgstr ""
 
 #: Change nick

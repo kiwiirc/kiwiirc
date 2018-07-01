@@ -390,6 +390,10 @@ inputCommands.query = function inputCommandQuery(event, command, line) {
     // Only switch to the first buffer we open if multiple are being opened
     let hasSwitchedActiveBuffer = false;
     nicks.forEach((bufferName, idx) => {
+        if (!bufferName) {
+            return;
+        }
+
         let newBuffer = this.state.addBuffer(network.id, bufferName);
 
         if (newBuffer && !hasSwitchedActiveBuffer) {
@@ -472,7 +476,7 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             secure: 'Using a secure connection',
             channels: 'Also on channels {{channels}}',
             mask: '{{nick}}!{{user}}@{{host}} ({{real_name}})',
-            idle: 'Idle for {{idle}} seconds',
+            idle: 'Idle for {{idle}}',
             logon: 'Connected at {{logon}}',
             actual_ip: 'Real IP: {{actualip}}',
             actual_host: 'Real hostname: {{actualhost}}',
@@ -507,8 +511,8 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             display(formats.secure);
         }
         if (whoisData.idle) {
-            let idleSeconds = Math.floor(parseInt(whoisData.idle, 10) / 1000);
-            display(formats.idle.replace('{{idle}}', idleSeconds));
+            let idleSeconds = Math.floor(parseInt(whoisData.idle, 10));
+            display(formats.idle.replace('{{idle}}', TextFormatting.formatDuration(idleSeconds)));
         }
         if (whoisData.logon) {
             let logonTime = parseInt(whoisData.logon, 10);

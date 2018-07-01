@@ -1,18 +1,27 @@
 <template>
     <div class="kiwi-serverview">
         <div class="kiwi-serverview-inner">
-            <tabbed-view :key="network.id" :activeTab="activeTab">
+            <tabbed-view :key="network.id" :active-tab="activeTab">
                 <tabbed-tab :header="'Messages'" :focus="hasMessages" name="messages">
-                    <message-list :buffer="serverBuffer" :messages="serverBuffer.getMessages()"></message-list>
+                    <message-list :buffer="serverBuffer" :messages="serverBuffer.getMessages()"/>
                 </tabbed-tab>
-                <tabbed-tab :header="$t('settings')" :focus="!hasMessages" name="settings" v-if="!restrictedServer">
-                    <network-settings :network="network"></network-settings>
+                <tabbed-tab
+                    v-if="!restrictedServer"
+                    :header="$t('settings')"
+                    :focus="!hasMessages"
+                    name="settings"
+                >
+                    <network-settings :network="network"/>
                 </tabbed-tab>
-                <tabbed-tab :header="$t('channels')" v-if="network.state==='connected'" name="channels">
-                    <channel-list :network="network"></channel-list>
+                <tabbed-tab
+                    v-if="network.state==='connected'"
+                    :header="$t('channels')"
+                    name="channels"
+                >
+                    <channel-list :network="network"/>
                 </tabbed-tab>
                 <tabbed-tab v-for="item in pluginUiElements" :key="item.id" :header="item.title">
-                    <div v-bind:is="item.component" v-bind="item.props"></div>
+                    <div :is="item.component" v-bind="item.props"/>
                 </tabbed-tab>
             </tabbed-view>
         </div>
@@ -22,23 +31,23 @@
 <script>
 
 import state from '@/libs/state';
+import GlobalApi from '@/libs/GlobalApi';
 import MessageList from './MessageList';
 import NetworkSettings from './NetworkSettings';
 import ChannelList from './ChannelList';
-import GlobalApi from '@/libs/GlobalApi';
 
 export default {
+    components: {
+        MessageList,
+        NetworkSettings,
+        ChannelList,
+    },
+    props: ['network'],
     data: function data() {
         return {
             activeTab: '',
             pluginUiElements: GlobalApi.singleton().serverViewPlugins,
         };
-    },
-    props: ['network'],
-    components: {
-        MessageList,
-        NetworkSettings,
-        ChannelList,
     },
     computed: {
         hasMessages: function hasMessages() {
@@ -51,15 +60,15 @@ export default {
             return state.setting('restricted');
         },
     },
+    created() {
+        this.listen(state, 'server.tab.show', (tabName) => {
+            this.showTab(tabName);
+        });
+    },
     methods: {
         showTab(tabName) {
             this.activeTab = tabName;
         },
-    },
-    created() {
-        this.listen(state, 'server.tab.show', tabName => {
-            this.showTab(tabName);
-        });
     },
 };
 </script>

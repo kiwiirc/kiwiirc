@@ -1,23 +1,32 @@
 <template>
     <div class="kiwi-messageinfo" @click.stop>
-        <div class="kiwi-messageinfo-author"><a @click="openQuery" class="u-link">Reply in private</a></div>
+        <div class="kiwi-messageinfo-author">
+            <a class="u-link" @click="openQuery">Reply in private</a>
+        </div>
 
         <div v-if="areWeAnOp()" class="kiwi-messageinfo-opactions">
-            <input-prompt @submit="onKick" label="Kick reason:"><a class="u-link">Kick {{message.nick}}</a></input-prompt> <br />
-            <input-prompt @submit="onBan" label="Ban reason:"><a class="u-link">Ban {{message.nick}}</a></input-prompt>
+            <input-prompt label="Kick reason:" @submit="onKick">
+                <a class="u-link">Kick {{ message.nick }}</a>
+            </input-prompt> <br >
+            <input-prompt label="Ban reason:" @submit="onBan">
+                <a class="u-link">Ban {{ message.nick }}</a>
+            </input-prompt>
         </div>
 
         <div v-if="message.mentioned_urls.length > 0" class="kiwi-messageinfo-urls">
-            <div v-for="url in message.mentioned_urls" class="kiwi-messageinfo-url">
-                <a class="u-button u-button-secondary" @click="urlPreview(url)">Preview</a> <a
+            <div v-for="url in message.mentioned_urls" :key="url" class="kiwi-messageinfo-url">
+                <a class="u-button u-button-secondary" @click="urlPreview(url)">Preview</a>
+                <a
                     :href="url"
                     target="_blank"
                     class="u-link"
-                >{{url}}</a>
+                >
+                    {{ url }}
+                </a>
             </div>
         </div>
 
-        <i class="fa fa-caret-up kiwi-messageinfo-close" @click="$emit('close')"></i>
+        <i class="fa fa-caret-up kiwi-messageinfo-close" @click="$emit('close')"/>
     </div>
 </template>
 
@@ -28,11 +37,11 @@ import state from '@/libs/state';
 export default {
     components: {
     },
+    props: ['buffer', 'message'],
     data: function data() {
         return {
         };
     },
-    props: ['buffer', 'message'],
     computed: {
     },
     methods: {

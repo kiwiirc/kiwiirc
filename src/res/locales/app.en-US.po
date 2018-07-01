@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2018-05-09 10:40-0400\n"
+"PO-Revision-Date: 2018-06-28 17:00\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "Connected"
 #: Settings
 msgid "settings"
 msgstr "Settings"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Kiwi Settings"
 
 #: Channels
 msgid "channels"
@@ -137,6 +141,46 @@ msgstr "Ignore user"
 msgid "connection_channel"
 msgstr "Channel"
 
+#: week
+msgid "week"
+msgstr "week"
+
+#: weeks
+msgid "week_plural"
+msgstr "weeks"
+
+#: day
+msgid "day"
+msgstr "day"
+
+#: days
+msgid "day_plural"
+msgstr "days"
+
+#: hour
+msgid "hour"
+msgstr "hour"
+
+#: hours
+msgid "hour_plural"
+msgstr "hours"
+
+#: minute
+msgid "minute"
+msgstr "minute"
+
+#: minutes
+msgid "minute_plural"
+msgstr "minutes"
+
+#: second
+msgid "second"
+msgstr "second"
+
+#: seconds
+msgid "second_plural"
+msgstr "seconds"
+
 #: General
 msgid "settings_general"
 msgstr "General"
@@ -144,6 +188,10 @@ msgstr "General"
 #: Theme
 msgid "settings_theme"
 msgstr "Theme"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Refresh Theme"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -209,9 +257,21 @@ msgstr "Highlight on words (space separated)"
 msgid "settings_aliases"
 msgstr "Aliases"
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "What are Aliases?"
+
 #: Send Message
 msgid "send_message"
 msgstr "Send Message"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Enter the channel key:"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "Rejoin {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -305,6 +365,18 @@ msgstr "Welcome to Kiwi IRC! Select a channel on the left."
 msgid "container_statebrowser"
 msgstr "Show statebrowser"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Hide Topic"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Display Topic"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Channel Settings"
+
 #: Join Channel
 msgid "container_join"
 msgstr "Join Channel"
@@ -384,6 +456,10 @@ msgstr "{{count}} person here"
 #: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} people here"
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -488,6 +564,14 @@ msgstr "Not connected."
 #: Join new #channel
 msgid "state_join"
 msgstr "Join new #channel"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Filter Channels"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"

@@ -1,12 +1,12 @@
 <template>
     <div class="kiwi-ircinput">
         <div
+            ref="editor"
+            :placeholder="placeholder"
             class="kiwi-ircinput-editor"
             contenteditable="true"
             role="textbox"
             spellcheck="true"
-            :placeholder="placeholder"
-            ref="editor"
             @keypress="updateValueProps(); $emit('keypress', $event)"
             @keydown="updateValueProps(); $emit('keydown', $event)"
             @keyup="updateValueProps(); $emit('keyup', $event)"
@@ -14,7 +14,7 @@
             @mouseup="updateValueProps();"
             @click="$emit('click', $event)"
             @paste="onPaste"
-        ></div>
+        />
     </div>
 </template>
 
@@ -25,6 +25,7 @@ import htmlparser from 'htmlparser2';
 let Vue = require('vue');
 
 export default Vue.component('irc-input', {
+    props: ['placeholder'],
     data: function data() {
         return {
             last_known_value: '',
@@ -36,7 +37,6 @@ export default Vue.component('irc-input', {
             code_map: Object.create(null),
         };
     },
-    props: ['placeholder'],
     computed: {
         editor: function editor() {
             return this.$refs.editor;
@@ -59,9 +59,9 @@ export default Vue.component('irc-input', {
             let clpData = (event.clipboardData || window.clipboardData);
             let ignoreThisPaste = false;
 
-            clpData.types.forEach(type => {
+            clpData.types.forEach((type) => {
                 let ignoreTypes = ['Files', 'image'];
-                ignoreTypes.forEach(ig => {
+                ignoreTypes.forEach((ig) => {
                     if (type.indexOf(ig) > -1) {
                         ignoreThisPaste = true;
                     }
@@ -139,10 +139,10 @@ export default Vue.component('irc-input', {
                         textValue += this.code_map[attribs.src];
                     }
                 },
-                ontext: text => {
+                ontext: (text) => {
                     textValue += text;
                 },
-                onclosetag: tagName => {
+                onclosetag: (tagName) => {
                     if (tagName === 'span') {
                         textValue += '\x03';
                     }
@@ -247,17 +247,15 @@ export default Vue.component('irc-input', {
             if (keepPosition) {
                 range.setStart(el, pos);
                 range.setEnd(el, pos);
+            } else if (el.nodeType === 3) {
+                // TEXT_NODE
+                range.setStart(el, startPos + text.length);
+                range.setEnd(el, startPos + text.length);
             } else {
-                if (el.nodeType === 3) {
-                    // TEXT_NODE
-                    range.setStart(el, startPos + text.length);
-                    range.setEnd(el, startPos + text.length);
-                } else {
-                    // el is another type of node, so setStart/End() counts in nodes instead
-                    // of text length
-                    range.setStart(el, 1);
-                    range.setEnd(el, 1);
-                }
+                // el is another type of node, so setStart/End() counts in nodes instead
+                // of text length
+                range.setStart(el, 1);
+                range.setEnd(el, 1);
             }
 
             let sel = window.getSelection();
@@ -309,11 +307,15 @@ export default Vue.component('irc-input', {
             range.setStart(this.$refs.editor, 0);
             range.collapse(true);
             let nodeStack = [this.$refs.editor];
-            let node = null;
             let foundStart = false;
             let stop = false;
 
-            while (!stop && (node = nodeStack.pop())) {
+            while (!stop) {
+                let node = nodeStack.pop();
+                if (!node) {
+                    break;
+                }
+
                 if (node.nodeType === 3) {
                     let nextCharIndex = charIndex + node.length;
                     if (!foundStart && savedSel[0] >= charIndex && savedSel[0] <= nextCharIndex) {
