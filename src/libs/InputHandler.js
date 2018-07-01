@@ -390,6 +390,10 @@ inputCommands.query = function inputCommandQuery(event, command, line) {
     // Only switch to the first buffer we open if multiple are being opened
     let hasSwitchedActiveBuffer = false;
     nicks.forEach((bufferName, idx) => {
+        if (!bufferName) {
+            return;
+        }
+
         let newBuffer = this.state.addBuffer(network.id, bufferName);
 
         if (newBuffer && !hasSwitchedActiveBuffer) {
