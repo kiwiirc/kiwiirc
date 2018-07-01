@@ -1,42 +1,49 @@
 <template>
-    <div class="kiwi-container" v-bind:class="{
-            /* 'kiwi-container-' + bufferType: true, */
-            'kiwi-container--sidebar-open': uiState.isOpen && uiState.section() !== '',
-            'kiwi-container--sidebar-pinned': uiState.isPinned,
-            'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
-    }">
+    <div :class="{
+        /* 'kiwi-container-' + bufferType: true, */
+        'kiwi-container--sidebar-open': uiState.isOpen && uiState.section() !== '',
+        'kiwi-container--sidebar-pinned': uiState.isPinned,
+        'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
+    }" class="kiwi-container">
         <template v-if="buffer">
-            <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
+            <div class="kiwi-container-toggledraw-statebrowser" @click.stop="toggleStateBrowser">
                 <div
-                    class="kiwi-container-toggledraw-statebrowser-messagecount kiwi-container-toggledraw-statebrowser-messagecount--highlight"
-                    :class="{'kiwi-container-toggledraw-statebrowser-messagecount--highlight': unreadMessages.highlight}"
-                >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}</div>
+                    :class="[
+                        unreadMessages.highlight ?
+                            'kiwi-container-toggledraw-statebrowser-messagecount--highlight' :
+                            ''
+                    ]"
+                    class="kiwi-container-toggledraw-statebrowser-messagecount
+                           kiwi-container-toggledraw-statebrowser-messagecount--highlight"
+                >{{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}</div>
             </div>
-            <container-header :buffer="buffer" :uiState="uiState"></container-header>
+            <container-header :buffer="buffer" :ui-state="uiState"/>
 
-            <slot name="before"></slot>
+            <slot name="before"/>
 
             <div class="kiwi-container-content">
                 <template v-if="buffer.isServer()">
-                    <server-view :network="network" :buffer="buffer" :uiState="uiState"></server-view>
+                    <server-view :network="network" :buffer="buffer" :ui-state="uiState"/>
                 </template>
                 <template v-else>
-                    <message-list :buffer="buffer" :users="users"></message-list>
+                    <message-list :buffer="buffer" :users="users"/>
                     <sidebar
+                        v-if="buffer.isChannel() /* There are no sidebars for queries yet */"
                         :network="network"
                         :buffer="buffer"
-                        :uiState="uiState"
-                        v-if="buffer.isChannel() /* There are no sidebars for queries yet */"
-                    ></sidebar>
+                        :ui-state="uiState"
+                    />
                 </template>
 
-                <slot name="after"></slot>
+                <slot name="after"/>
             </div>
         </template>
         <template v-else>
             <div class="kiwi-container-empty">
-                <h4>{{$t('container_welcome')}}</h4>
-                <a @click.stop="toggleStateBrowser" class="u-button">{{$t('container_statebrowser')}}</a>
+                <h4>{{ $t('container_welcome') }}</h4>
+                <a class="u-button" @click.stop="toggleStateBrowser">
+                    {{ $t('container_statebrowser') }}
+                </a>
             </div>
         </template>
     </div>
@@ -57,11 +64,11 @@ export default {
         MessageList,
         ServerView,
     },
+    props: ['network', 'buffer', 'users', 'uiState'],
     data: function data() {
         return {
         };
     },
-    props: ['network', 'buffer', 'users', 'uiState'],
     computed: {
         bufferType: function bufferType() {
             let type = '';
@@ -81,8 +88,8 @@ export default {
         unreadMessages() {
             let count = 0;
             let highlight = false;
-            state.networks.forEach(network => {
-                network.buffers.forEach(buffer => {
+            state.networks.forEach((network) => {
+                network.buffers.forEach((buffer) => {
                     count += (buffer.flags.unread || 0);
                     if (buffer.flags.highlight) {
                         highlight = true;
@@ -90,16 +97,6 @@ export default {
                 });
             });
             return { count, highlight };
-        },
-    },
-    methods: {
-        toggleStateBrowser: function toggleStateBrowser() {
-            state.$emit('statebrowser.toggle');
-        },
-        toggleSidebar: function toggleSidebar() {
-            if (this.buffer.isChannel()) {
-                state.$emit('sidebar.toggle');
-            }
         },
     },
     created: function created() {
@@ -118,6 +115,16 @@ export default {
         this.listen(state, 'userbox.hide', () => {
             this.uiState.close();
         });
+    },
+    methods: {
+        toggleStateBrowser: function toggleStateBrowser() {
+            state.$emit('statebrowser.toggle');
+        },
+        toggleSidebar: function toggleSidebar() {
+            if (this.buffer.isChannel()) {
+                state.$emit('sidebar.toggle');
+            }
+        },
     },
 };
 </script>

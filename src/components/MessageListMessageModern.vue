@@ -1,8 +1,6 @@
 <template>
     <div
-        @click="ml.onMessageClick($event, message)"
-        class="kiwi-messagelist-message kiwi-messagelist-message--modern"
-        v-bind:class="[
+        :class="[
             isRepeat() ?
                 'kiwi-messagelist-message--authorrepeat' :
                 'kiwi-messagelist-message--authorfirst',
@@ -31,35 +29,37 @@
         ]"
         :data-message="message"
         :data-nick="(message.nick||'').toLowerCase()"
+        class="kiwi-messagelist-message kiwi-messagelist-message--modern"
+        @click="ml.onMessageClick($event, message)"
     >
         <div class="kiwi-messagelist-modern-left">
             <div
                 v-if="isMessage(message)"
-                class="kiwi-messagelist-modern-avatar"
                 :style="{
                     'background-color': nickColour(message.nick)
                 }"
-                v-bind:data-nick="message.nick"
+                :data-nick="message.nick"
+                class="kiwi-messagelist-modern-avatar"
             >
-                {{message.nick[0]}}
+                {{ message.nick[0] }}
             </div>
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div
+                :style="ml.nickStyle(message.nick)"
                 class="kiwi-messagelist-nick"
-                v-bind:style="ml.nickStyle(message.nick)"
                 @click="ml.openUserBox(message.nick)"
                 @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                 @mouseout="ml.hover_nick='';"
-            >{{message.user ? userModePrefix(message.user) : ''}}{{message.nick}}</div>
+            >{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
             <div
                 v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
-                class="kiwi-messagelist-time"
                 :title="ml.formatTimeFull(message.time)"
+                class="kiwi-messagelist-time"
             >
-                {{ml.formatTime(message.time)}}
+                {{ ml.formatTime(message.time) }}
             </div>
-            <div class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"></div>
+            <div class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
 
             <message-info
                 v-if="ml.message_info_open===message"
@@ -73,7 +73,10 @@
 
 <script>
 
-// import state from '@/libs/state';
+// eslint-plugin-vue's max-len rule reads the entire file, including the CSS. so we can't use this
+// here as some of the rules cannot be broken up any smaller
+/* eslint-disable max-len */
+
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import MessageInfo from './MessageInfo';
@@ -82,11 +85,11 @@ export default {
     components: {
         MessageInfo,
     },
+    props: ['ml', 'message', 'idx'],
     data: function data() {
         return {
         };
     },
-    props: ['ml', 'message', 'idx'],
     computed: {
     },
     methods: {

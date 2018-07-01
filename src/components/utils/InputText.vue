@@ -7,53 +7,52 @@
         ]"
     >
 
-        <span class="input-text-label">{{label}}</span>
+        <span class="input-text-label">{{ label }}</span>
 
         <input
             v-if="type==='password'"
-            type="password"
             v-model="currentValue"
-            @focus="hasFocus=true"
-            @blur="hasFocus=false"
-            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-        />
+            type="password"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off" spellcheck="false" @focus="hasFocus=true" @blur="hasFocus=false"
+        >
         <input
             v-else-if="type==='number'"
-            type="number"
             v-model="currentValue"
+            type="number"
             @focus="hasFocus=true"
             @blur="hasFocus=false"
-        />
+        >
         <input
             v-else
             v-model="currentValue"
-            @focus="hasFocus=true"
-            @blur="hasFocus=false"
-            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-        />
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off" spellcheck="false" @focus="hasFocus=true" @blur="hasFocus=false"
+        >
 
         <div v-if="$slots.default" class="input-text-c">
-            <slot></slot>
+            <slot/>
         </div>
 
         <div class="input-text-underline">
-            <div class="input-text-underline-active"></div>
+            <div class="input-text-underline-active"/>
         </div>
     </div>
 </template>
-
 
 <script>
 
 let Vue = require('vue');
 
 export default Vue.component('input-text', {
+    props: ['value', 'label', 'type'],
     data: function data() {
         return {
             hasFocus: false,
         };
     },
-    props: ['value', 'label', 'type'],
     computed: {
         currentValue: {
             get: function getCurrentValue() {

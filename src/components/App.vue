@@ -1,48 +1,49 @@
 <template>
     <div
-        class="kiwi-wrap"
-        v-bind:class="{
+        :class="{
             'kiwi-wrap--statebrowser-drawopen': stateBrowserDrawOpen,
             'kiwi-wrap--monospace': setting('useMonospace'),
             'kiwi-wrap--touch': state.ui.is_touch,
         }"
+        :data-activebuffer="buffer ? buffer.name.toLowerCase() : ''"
+        class="kiwi-wrap"
         @click="emitDocumentClick"
         @paste="emitBufferPaste"
-        :data-activebuffer="buffer ? buffer.name.toLowerCase() : ''"
     >
-        <link v-bind:href="themeUrl" rel="stylesheet" type="text/css">
+        <link :href="themeUrl" rel="stylesheet" type="text/css">
 
         <template v-if="!hasStarted || (!fallbackComponent && networks.length === 0)">
-            <component v-bind:is="startupComponent" v-on:start="startUp"></component>
+            <component :is="startupComponent" @start="startUp"/>
         </template>
         <template v-else>
-            <state-browser :networks="networks" :uiState="uiState"></state-browser>
+            <state-browser :networks="networks" :ui-state="uiState"/>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
-                <div class="kiwi-workspace-background"></div>
+                <div class="kiwi-workspace-background"/>
 
                 <template v-if="!activeComponent && network">
                     <container
                         :network="network"
                         :buffer="buffer"
                         :users="users"
-                        :uiState="uiState"
+                        :ui-state="uiState"
                     >
                         <media-viewer
                             v-if="mediaviewerOpen"
+                            slot="before"
                             :url="mediaviewerUrl"
                             :component="mediaviewerComponent"
-                            :isIframe="mediaviewerIframe"
-                            slot="before"
-                        ></media-viewer>
+                            :is-iframe="mediaviewerIframe"
+                        />
                     </container>
-                    <control-input :container="networks" :buffer="buffer"></control-input>
+                    <control-input :container="networks" :buffer="buffer"/>
                 </template>
-                <component v-else-if="!activeComponent" v-bind:is="fallbackComponent" v-bind="fallbackComponentProps"></component>
-                <component v-else v-bind:is="activeComponent" v-bind="activeComponentProps"></component>
+                <component
+                    v-else-if="!activeComponent"
+                    :is="fallbackComponent"
+                    v-bind="fallbackComponentProps"
+                />
+                <component v-else :is="activeComponent" v-bind="activeComponentProps"/>
             </div>
-        </template>
-        <template v-else>
-            <component v-bind:is="startupComponent" v-on:start="startUp"></component>
         </template>
     </div>
 </template>
@@ -121,7 +122,6 @@ let ContainerUiState = Vue.extend({
             }
 
             return '';
-
         },
         pin() {
             this.sidebarPinned = true;
@@ -155,6 +155,55 @@ let ContainerUiState = Vue.extend({
 });
 
 export default {
+    components: {
+        StateBrowser,
+        Container,
+        ControlInput,
+        MediaViewer,
+    },
+    data: function data() {
+        return {
+            startupComponent: null,
+            hasStarted: false,
+            // When on mobile screens, the statebrowser turns into a drawer
+            stateBrowserDrawOpen: false,
+            // If set, will become the main view instead of a buffer/nicklist container
+            activeComponent: null,
+            activeComponentProps: {},
+            // If set, will become the main view when no networks are available to be shown
+            // and there is no active component set
+            fallbackComponent: null,
+            fallbackComponentProps: {},
+            mediaviewerOpen: false,
+            mediaviewerUrl: '',
+            mediaviewerComponent: null,
+            mediaviewerIframe: false,
+            themeUrl: '',
+            uiState: new ContainerUiState(),
+        };
+    },
+    computed: {
+        state() {
+            return state;
+        },
+        networks() {
+            return state.networks;
+        },
+        network() {
+            return state.getActiveNetwork();
+        },
+        buffer() {
+            return state.getActiveBuffer();
+        },
+        users() {
+            let activeNetwork = this.network;
+            if (!activeNetwork) {
+                return null;
+            }
+
+            return activeNetwork.users;
+        },
+    },
     created: function created() {
         this.listen(state, 'active.component', (component, props) => {
             this.activeComponent = null;
@@ -183,7 +232,7 @@ export default {
             }
 
             this.mediaviewerUrl = opts.url;
-            this.mediaviewerComponent = opts.component
+            this.mediaviewerComponent = opts.component;
             this.mediaviewerIframe = opts.iframe;
             this.mediaviewerOpen = true;
         });
@@ -198,7 +247,7 @@ export default {
         });
 
         document.addEventListener('keydown', event => this.emitDocumentKeyDown(event), false);
-        window.addEventListener('focus', event => {
+        window.addEventListener('focus', (event) => {
             state.ui.app_has_focus = true;
             let buffer = state.getActiveBuffer();
             if (buffer) {
@@ -207,10 +256,10 @@ export default {
 
             state.ui.favicon_counter = 0;
         }, false);
-        window.addEventListener('blur', event => {
+        window.addEventListener('blur', (event) => {
             state.ui.app_has_focus = false;
         }, false);
-        window.addEventListener('touchstart', event => {
+        window.addEventListener('touchstart', (event) => {
             // Parts of the UI adjust themselves if we're known to be using a touchscreen
             state.ui.is_touch = true;
         });
@@ -268,55 +317,6 @@ export default {
         } else {
             this.startupComponent = startup;
         }
-    },
-    components: {
-        StateBrowser,
-        Container,
-        ControlInput,
-        MediaViewer,
-    },
-    data: function data() {
-        return {
-            startupComponent: null,
-            hasStarted: false,
-            // When on mobile screens, the statebrowser turns into a drawer
-            stateBrowserDrawOpen: false,
-            // If set, will become the main view instead of a buffer/nicklist container
-            activeComponent: null,
-            activeComponentProps: {},
-            // If set, will become the main view when no networks are available to be shown
-            // and there is no active component set
-            fallbackComponent: null,
-            fallbackComponentProps: {},
-            mediaviewerOpen: false,
-            mediaviewerUrl: '',
-            mediaviewerComponent: null,
-            mediaviewerIframe: false,
-            themeUrl: '',
-            uiState: new ContainerUiState(),
-        };
-    },
-    computed: {
-        state() {
-            return state;
-        },
-        networks() {
-            return state.networks;
-        },
-        network() {
-            return state.getActiveNetwork();
-        },
-        buffer() {
-            return state.getActiveBuffer();
-        },
-        users() {
-            let activeNetwork = this.network;
-            if (!activeNetwork) {
-                return null;
-            }
-
-            return activeNetwork.users;
-        },
     },
     methods: {
         // Triggered by a startup screen event

@@ -1,13 +1,20 @@
 <template>
-    <div class="kiwi-startup-common" :class="[
+    <div :class="[
         closing ? 'kiwi-startup-common--closing' : '',
         backgroundImage ? '' : 'kiwi-startup-common--no-bg',
-    ]" :style="backgroundStyle">
+    ]" :style="backgroundStyle" class="kiwi-startup-common">
         <div class="kiwi-startup-common-section kiwi-startup-common-section-connection">
-            <slot name="connection"></slot>
+            <slot name="connection"/>
         </div>
-        <div class="kiwi-startup-common-section kiwi-startup-common-section-info" :style="backgroundStyle">
-            <div class="kiwi-startup-common-section-info-content" v-if="infoContent" v-html="infoContent"></div>
+        <div
+            :style="backgroundStyle"
+            class="kiwi-startup-common-section kiwi-startup-common-section-info"
+        >
+            <div
+                v-if="infoContent"
+                class="kiwi-startup-common-section-info-content"
+                v-html="infoContent"
+            />
         </div>
     </div>
 </template>

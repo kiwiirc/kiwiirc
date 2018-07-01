@@ -1,45 +1,64 @@
 <template>
-    <div class="kiwi-messagelist" @scroll.self="onThreadScroll" @click.self="onListClick" :key="buffer.name">
+    <div
+        :key="buffer.name"
+        class="kiwi-messagelist"
+        @scroll.self="onThreadScroll"
+        @click.self="onListClick"
+    >
         <div
             v-if="shouldShowChathistoryTools"
             class="kiwi-messagelist-scrollback"
         >
-            <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
+            <a class="u-link" @click="buffer.requestScrollback()">
+                {{ $t('messages_load') }}
+            </a>
         </div>
 
-        <div v-for="(message, idx) in filteredMessages" :key="message.id" class="kiwi-messagelist-item">
-            <div v-if="shouldShowDateChangeMarker(idx)" class="kiwi-messagelist-seperator">
-                <span>{{(new Date(message.time)).toDateString()}}</span>
+        <div
+            v-for="(message, idx) in filteredMessages"
+            :key="message.id"
+            class="kiwi-messagelist-item"
+        >
+            <div
+                v-if="shouldShowDateChangeMarker(idx)"
+                class="kiwi-messagelist-seperator"
+            >
+                <span>{{ (new Date(message.time)).toDateString() }}</span>
             </div>
             <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator">
-                <span>{{$t('unread_messages')}}</span>
+                <span>{{ $t('unread_messages') }}</span>
             </div>
 
-            <component v-if="message.render() && message.template" v-bind:is="message.template" :message="message" :buffer="buffer"></component>
+            <component
+                v-if="message.render() && message.template"
+                :is="message.template"
+                :message="message"
+                :buffer="buffer"
+            />
             <message-list-message-modern
                 v-else-if="listType === 'modern'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
-            ></message-list-message-modern>
+            />
             <message-list-message-compact
                 v-else-if="listType !== 'modern'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
-            ></message-list-message-compact>
+            />
         </div>
 
         <buffer-key
-            v-if="buffer.getNetwork().state === 'connected' && buffer.isChannel() && buffer.flags.channel_badkey"
+            v-if="shouldRequestChannelKey"
             :buffer="buffer"
             :network="buffer.getNetwork()"
-        ></buffer-key>
+        />
         <not-connected
             v-if="buffer.getNetwork().state !== 'connected'"
             :buffer="buffer"
             :network="buffer.getNetwork()"
-        ></not-connected>
+        />
     </div>
 </template>
 
@@ -64,6 +83,7 @@ export default {
         MessageListMessageModern,
         MessageListMessageCompact,
     },
+    props: ['buffer', 'users'],
     data: function data() {
         return {
             auto_scroll: true,
@@ -72,7 +92,6 @@ export default {
             message_info_open: null,
         };
     },
-    props: ['buffer', 'users'],
     computed: {
         thisMl: function thisMl() {
             return this;
@@ -93,6 +112,11 @@ export default {
             let isCorrectBufferType = (this.buffer.isChannel() || this.buffer.isQuery());
             let isSupported = !!this.buffer.getNetwork().ircClient.network.supports('chathistory');
             return isCorrectBufferType && isSupported && this.buffer.flags.chathistory_available;
+        },
+        shouldRequestChannelKey() {
+            return this.buffer.getNetwork().state === 'connected' &&
+                this.buffer.isChannel() &&
+                this.buffer.flags.channel_badkey;
         },
         ourNick: function ourNick() {
             return this.buffer ?
@@ -166,6 +190,35 @@ export default {
             return list.reverse();
         },
     },
+    watch: {
+        buffer: function watchBuffer(newBuffer) {
+            if (!newBuffer) {
+                return;
+            }
+
+            this.message_info_open = null;
+
+            if (this.buffer.getNetwork().state === 'connected') {
+                newBuffer.flags.has_opened = true;
+            }
+
+            this.scrollToBottom();
+        },
+        'buffer.message_count': function watchBufferMessageCount() {
+            this.$nextTick(() => {
+                this.maybeScrollToBottom();
+            });
+        },
+    },
+    mounted: function mounted() {
+        this.$nextTick(() => {
+            this.scrollToBottom();
+        });
+
+        this.listen(state, 'mediaviewer.opened', () => {
+            this.$nextTick(this.maybeScrollToBottom.apply(this));
+        });
+    },
     methods: {
         isHoveringOverMessage: function isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
@@ -230,7 +283,7 @@ export default {
         formatTime: function formatTime(time) {
             return strftime(this.buffer.setting('timestamp_format') || '%T', new Date(time));
         },
-        formatTimeFull (time) {
+        formatTimeFull(time) {
             let format = this.buffer.setting('timestamp_full_format');
             return format ?
                 strftime(format, new Date(time)) :
@@ -322,35 +375,6 @@ export default {
             }
         },
     },
-    watch: {
-        buffer: function watchBuffer(newBuffer) {
-            if (!newBuffer) {
-                return;
-            }
-
-            this.message_info_open = null;
-
-            if (this.buffer.getNetwork().state === 'connected') {
-                newBuffer.flags.has_opened = true;
-            }
-
-            this.scrollToBottom();
-        },
-        'buffer.message_count': function watchBufferMessageCount() {
-            this.$nextTick(() => {
-                this.maybeScrollToBottom();
-            });
-        },
-    },
-    mounted: function mounted() {
-        this.$nextTick(() => {
-            this.scrollToBottom();
-        });
-
-        this.listen(state, 'mediaviewer.opened', () => {
-            this.$nextTick(this.maybeScrollToBottom.apply(this));
-        });
-    },
 };
 </script>
 
@@ -368,7 +392,7 @@ export default {
 .kiwi-messagelist-message {
     padding: 0 10px;
 
-    /* some message highlights add a left border so add a default invisble one to keep them inline */
+    /* some message highlights add a left border so add a default invisble one in preperation */
     border-left: 3px solid transparent;
     overflow: hidden;
     line-height: 1.5em;
@@ -459,7 +483,7 @@ export default {
 
 .kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick,
 .kiwi-messagelist-message--authorrepeat .kiwi-messagelist-time {
-    /* Set the opacity instead of making it invisible so that it's still selectable when copying text */
+    /* Setting the opacity instead visible:none ensures it's still selectable when copying text */
     opacity: 0;
     cursor: default;
 }

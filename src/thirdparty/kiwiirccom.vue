@@ -1,24 +1,43 @@
 <template>
     <div class="kiwi-personal">
-        <h1>{{$t('personal_client')}}</h1>
+        <h1>{{ $t('personal_client') }}</h1>
 
-        <p>{{$t('personal_addjoin')}}</p>
-        <p>{{$t('personal_return')}}</p>
+        <p>{{ $t('personal_addjoin') }}</p>
+        <p>{{ $t('personal_return') }}</p>
 
-        <button @click="addNetwork" class="u-button u-button-primary">{{$t('personal_add')}}</button> <br />
-        <a v-if="networks.length>0" @click.stop="toggleStateBrowser" class="u-link kiwi-personal-existing-networks">{{$t('personal_saved')}}</a>
+        <button
+            class="u-button u-button-primary"
+            @click="addNetwork"
+        >
+            {{ $t('personal_add') }}
+        </button> <br >
+
+        <a
+            v-if="networks.length>0"
+            class="u-link kiwi-personal-existing-networks"
+            @click.stop="toggleStateBrowser"
+        >
+            {{ $t('personal_saved') }}
+        </a>
 
         <div
-            class="kiwi-aboutnew-content"
             :class="{'kiwi-aboutnew-content--open': about_open}"
+            class="kiwi-aboutnew-content"
             v-html="aboutContent"
-        ></div>
+        />
         <div class="kiwi-aboutnew">
-            <div class="kiwi-aboutnew-sep"></div>
-            <a class="u-link" @click="about_open=!about_open">Link to your network / channel</a>
+            <div class="kiwi-aboutnew-sep"/>
+            <a
+                class="u-link"
+                @click="about_open=!about_open"
+            >
+                Link to your network / channel
+            </a>
 
             <div class="kiwi-aboutnew-help">
-                <a @click="about_open=!about_open"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+                <a @click="about_open=!about_open">
+                    <i class="fa fa-question-circle" aria-hidden="true"/>
+                </a>
             </div>
         </div>
 
