@@ -438,6 +438,7 @@ function clientMiddleware(state, networkid) {
             state.removeUserFromBuffer(buffer, event.nick);
             if (event.nick === client.user.nick) {
                 buffer.joined = false;
+                buffer.enabled = false;
                 buffer.clearUsers();
             }
 

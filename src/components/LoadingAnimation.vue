@@ -1,7 +1,7 @@
 <template>
     <div>
         <img src="../res/kiwiLoadingLogo.png" class="kiwi-loading-logo">
-        <div class="kiwi-loading-container" :class="{'kiwi-loading-close-animation': startClosing}">
+        <div class="kiwi-loading-container">
             <canvas class="kiwi-loading-animation"></canvas>
         </div>
     </div>
@@ -20,7 +20,6 @@ export default {
             fontSize: 72,
             font: "bold " + 72 + "px verdana",
             text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu arcu ipsum. `,
-            startClosing: false,
         };
     },
     methods: {
@@ -60,8 +59,8 @@ export default {
       },
     },
     mounted () {
-        this.logo = document.getElementsByClassName('kiwi-loading-logo')[0];
-        this.c = document.getElementsByClassName('kiwi-loading-animation')[0];
+        this.logo = this.$el.querySelector('.kiwi-loading-logo');
+        this.c = this.$el.querySelector('.kiwi-loading-animation');
         this.x = this.c.getContext("2d");
         let tmpText = '';
         for (let i = 0; i < 9; i += 1) tmpText += this.text;
@@ -75,34 +74,17 @@ export default {
             this.Draw();
         }
         this.c.style.height = this.height * 0.75;
-        let self = this;
-        setTimeout(function () {
-            self.startClosing = true;
-        }, 4000);
     }
 };
 </script>
 
-<style scoped>
+<style>
 .kiwi-loading-logo {
     display: none;
 }
 
 .kiwi-loading-animation {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
     height: 150%;
     width: 150%;
-}
-
-.kiwi-loading-container {
-    height: 75px;
-    -webkit-transition: opacity 2s; /* For Safari 3.1 to 6.0 */
-    transition: opacity 2s;
-}
-
-.kiwi-loading-close-animation {
-    opacity: 0;
 }
 </style>

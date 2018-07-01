@@ -7,12 +7,6 @@
             <a @click="buffer.requestScrollback()" class="u-link">{{$t('messages_load')}}</a>
         </div>
 
-        <div class="kiwi-messagelist-container" v-if="!timeToClose" :class="{'kiwi-messagelist-close-animation': startClosing}">
-            <div class="kiwi-messagelist-animation-div" :class="{'kiwi-messagelist-close-animation': startClosing}">
-                <LoadingAnimation :height="animationHeight"></LoadingAnimation>
-            </div>
-        </div>
-        <div style="clear: both;"></div><br><br>
         <div v-for="(message, idx) in filteredMessages" :key="message.id" class="kiwi-messagelist-item">
             <div v-if="shouldShowDateChangeMarker(idx)" class="kiwi-messagelist-seperator">
                 <span>{{(new Date(message.time)).toDateString()}}</span>
@@ -35,6 +29,12 @@
                 :ml="thisMl"
             ></message-list-message-compact>
         </div>
+
+        <transition name="kiwi-messagelist-joinloadertrans">
+            <div class="kiwi-messagelist-joinloader" v-if="shouldShowJoiningLoader">
+                <LoadingAnimation></LoadingAnimation>
+            </div>
+        </transition>
 
         <not-connected
             v-if="buffer.getNetwork().state !== 'connected'"
@@ -73,7 +73,6 @@ export default {
             message_info_open: null,
             timeToClose: false,
             startClosing: false,
-            animationHeight: '150px',
         };
     },
     props: ['buffer', 'users'],
@@ -150,6 +149,13 @@ export default {
                     continue;
                 }
 
+                // Don't show the first connection message. Channels are only interested in
+                // the joining message at first. Dis/connection messages are only relevant here
+                // if the dis/connection happens between messages (during a conversation)
+                if (messages[i].type === 'connection' && i === 0) {
+                    continue;
+                }
+
                 // When we join a channel the topic is usually sent next. But this looks
                 // ugly when rendered. So we switch the topic + join messages around so
                 // that the topic is first in the message list.
@@ -169,6 +175,11 @@ export default {
 
             return list.reverse();
         },
+        shouldShowJoiningLoader() {
+            return this.buffer.enabled &&
+                !this.buffer.joined &&
+                this.buffer.getNetwork().state === 'connected';
+        }
     },
     methods: {
         isHoveringOverMessage: function isHoveringOverMessage(message) {
@@ -348,14 +359,6 @@ export default {
         this.listen(state, 'mediaviewer.opened', () => {
             this.$nextTick(this.maybeScrollToBottom.apply(this));
         });
-
-        setTimeout(() => {
-            this.timeToClose = true;
-        }, 10000);
-
-        setTimeout(() => {
-            this.startClosing = true;
-        }, 6000);
     },
 };
 </script>
@@ -634,30 +637,27 @@ export default {
     display: none;
 }
 
-.kiwi-messagelist-animation-div {
-    top: 0;
-    left: 0;
-    right: 0;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    transform: translateY(0);
+.kiwi-messagelist-joinloader {
+    margin: 0 auto;
     width: 150px;
-    height: 150px;
-    -webkit-transition: height 0.5s, margin-top 0.5s; /* Safari */
-    transition: height 0.5s, margin-top 0.5s;
+    overflow: hidden;
 }
 
-.kiwi-messagelist-container {
-    width: 100%;
-    height: 40px;
-    -webkit-transition: height 0.5s; /* Safari */
-    transition: height 0.5s;
-}
-
-.kiwi-messagelist-close-animation {
+.kiwi-messagelist-joinloadertrans-enter,
+.kiwi-messagelist-joinloadertrans-leave-to {
     height: 0;
-    margin-top: 0;
+    opacity: 0;
+}
+
+.kiwi-messagelist-joinloadertrans-enter-to,
+.kiwi-messagelist-joinloadertrans-leave {
+    height: 150px;
+    opacity: 1;
+}
+
+.kiwi-messagelist-joinloadertrans-enter-active,
+.kiwi-messagelist-joinloadertrans-leave-active {
+    transition: height 0.5s, opacity 0.5s;
 }
 
 @media screen and (max-width: 700px) {
