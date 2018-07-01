@@ -31,7 +31,7 @@ tokens['_'] = {
 
         // token if it's on it's own
         // Only underline if we have a closing _ further on
-        if (inp.substr(pos).indexOf(this.token) === -1) {
+        if (inp.substr(pos + 1).indexOf(this.token) === -1) {
             return -1;
         }
 
@@ -92,11 +92,13 @@ tokens['**'] = {
         }
 
         // Only style if we have a closing ** further on
-        if (inp.substr(pos).indexOf(this.token) > -1) {
-            openToks[this.token] = true;
-            block.styles.italic = true;
-            block.content += this.token;
+        if (inp.substr(pos + 1).indexOf(this.token) === -1) {
+            return -1;
         }
+
+        openToks[this.token] = true;
+        block.styles.italic = true;
+        block.content += this.token;
 
         return null;
     },
