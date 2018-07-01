@@ -9,6 +9,7 @@
         </div>
         <div class="kiwi-selfuser-modes">{{modeString}}</div>
         <div class="kiwi-selfuser-actions">
+            <div v-if="error_message">{{error_message}}</div>
             <input-prompt @submit="changeNick" :label="$t('change_nick')+':'"><a class="u-link">{{$t('change_nick')}}</a></input-prompt>
         </div>
     </div>
@@ -19,6 +20,7 @@
 export default {
     data: function data() {
         return {
+            error_message: '',
         };
     },
     props: ['network'],
@@ -42,12 +44,19 @@ export default {
     },
     methods: {
         changeNick(newNick) {
+            this.error_message = '';
+
             let nick = newNick.trim();
             if (!nick.match(/(^[0-9])|(\s)/)) {
                 this.network.ircClient.changeNick(newNick);
             }
         },
     },
+    created() {
+        this.listen(this.network.ircClient, 'nick in use', (event) => {
+            this.error_message = `The nickname '${event.nick}' is already in use!`;
+        });
+    }
 };
 </script>
 

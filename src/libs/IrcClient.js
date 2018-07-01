@@ -609,19 +609,33 @@ function clientMiddleware(state, networkid) {
 
         if (command === 'nick in use' && !client.connection.registered) {
             let newNick = client.user.nick + rand(1, 100);
-            let serverBuffer = network.serverBuffer();
             let messageBody = TextFormatting.formatAndT(
                 'nickname_alreadyinuse',
                 null,
                 'nick_in_use_retrying',
                 { nick: client.user.nick, newnick: newNick },
             );
-            state.addMessage(serverBuffer, {
+
+            network.buffers.forEach((b) => {
+                state.addMessage(b, {
+                    time: Date.now(),
+                    nick: '',
+                    message: messageBody,
+                    type: 'error',
+                });
+            });
+
+            client.changeNick(newNick);
+        }
+
+        if (command === 'nick in use' && client.connection.registered) {
+            let buffer = state.getActiveBuffer();
+            buffer && state.addMessage(buffer, {
                 time: Date.now(),
                 nick: '',
-                message: messageBody,
+                type: 'error',
+                message: `The nickname '${event.nick}' is already in use!`,
             });
-            client.changeNick(newNick);
         }
 
         if (command === 'nick') {
