@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2018-06-28 16:50\n"
+"PO-Revision-Date: 2018-06-29 18:40\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Configuració"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Configuració del Kiwi"
 
 #: Channels
 msgid "channels"
@@ -143,43 +143,43 @@ msgstr "Canal"
 
 #: week
 msgid "week"
-msgstr ""
+msgstr "setmana"
 
 #: weeks
 msgid "week_plural"
-msgstr ""
+msgstr "setmanes"
 
 #: day
 msgid "day"
-msgstr ""
+msgstr "dia"
 
 #: days
 msgid "day_plural"
-msgstr ""
+msgstr "dies"
 
 #: hour
 msgid "hour"
-msgstr ""
+msgstr "hora"
 
 #: hours
 msgid "hour_plural"
-msgstr ""
+msgstr "hores"
 
 #: minute
 msgid "minute"
-msgstr ""
+msgstr "minut"
 
 #: minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "minuts"
 
 #: second
 msgid "second"
-msgstr ""
+msgstr "segon"
 
 #: seconds
 msgid "second_plural"
-msgstr ""
+msgstr "segons"
 
 #: General
 msgid "settings_general"
@@ -191,7 +191,7 @@ msgstr "Tema"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Refrescar el tema"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -259,7 +259,7 @@ msgstr "Alies"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Què són els alies?"
 
 #: Send Message
 msgid "send_message"
@@ -267,11 +267,11 @@ msgstr "Enviar un missatge"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Escriu la clau del canal:"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr ""
+msgstr "Reentrant al {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -367,15 +367,15 @@ msgstr "Mostrar statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Amagar el tòpic"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Mostrar el tòpic"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Configuració de la sala"
 
 #: Join Channel
 msgid "container_join"
@@ -459,7 +459,7 @@ msgstr "{{count}} usuaris aquí"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Filtrar els usuarios de la sala"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -567,11 +567,11 @@ msgstr "Entrar en un #canal nou"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Filtrar sales"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Buscar més sales"
 
 #: Change nick
 msgid "change_nick"
