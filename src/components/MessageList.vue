@@ -50,8 +50,8 @@
         </div>
 
         <transition name="kiwi-messagelist-joinloadertrans">
-            <div class="kiwi-messagelist-joinloader" v-if="shouldShowJoiningLoader">
-                <LoadingAnimation></LoadingAnimation>
+            <div v-if="shouldShowJoiningLoader" class="kiwi-messagelist-joinloader">
+                <LoadingAnimation />
             </div>
         </transition>
 
@@ -78,7 +78,7 @@ import BufferKey from './BufferKey';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
-import LoadingAnimation from '@/components/LoadingAnimation.vue';
+import LoadingAnimation from './LoadingAnimation.vue';
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
@@ -211,7 +211,7 @@ export default {
             return this.buffer.enabled &&
                 !this.buffer.joined &&
                 this.buffer.getNetwork().state === 'connected';
-        }
+        },
     },
     watch: {
         buffer: function watchBuffer(newBuffer) {
@@ -677,7 +677,8 @@ export default {
 
 .kiwi-messagelist-joinloader {
     margin: 0 auto;
-    width: 150px;
+    width: 175px;
+    height: calc (175px * 0.85987261146496815286624203821656);
     overflow: hidden;
 }
 
