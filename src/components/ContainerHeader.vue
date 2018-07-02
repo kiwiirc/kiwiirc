@@ -15,8 +15,8 @@
                 class="kiwi-header-options"
             >
                 <div
-                    v-rawElement="el" v-for="el in pluginUiChannelElements"
-                    :key="el"
+                    v-rawElement="plugin.el" v-for="plugin in pluginUiChannelElements"
+                    :key="plugin.id"
                     class="kiwi-header-option"
                 />
                 <div
@@ -98,9 +98,9 @@
             <div class="kiwi-header-name">{{ buffer.name }}</div>
             <div :key="buffer.id" class="kiwi-header-options">
                 <div
-                    v-rawElement="el"
-                    v-for="el in pluginUiQueryElements"
-                    :key="el"
+                    v-rawElement="plugin.el"
+                    v-for="plugin in pluginUiQueryElements"
+                    :key="plugin.id"
                     class="kiwi-header-option"
                 />
                 <div class="kiwi-header-option kiwi-header-option-leave">

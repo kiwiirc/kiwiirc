@@ -51,9 +51,9 @@
                     <i class="fa fa-smile-o" aria-hidden="true"/>
                 </a>
                 <div
-                    v-rawElement="el"
-                    v-for="el in pluginUiElements"
-                    :key="el"
+                    v-rawElement="plugin.el"
+                    v-for="plugin in pluginUiElements"
+                    :key="plugin.id"
                     class="kiwi-controlinput-tool"
                 />
             </div>

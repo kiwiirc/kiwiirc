@@ -4,6 +4,7 @@ import Logger from './Logger';
 
 let singletonInstance = null;
 let pluginsToInit = [];
+let nextPluginId = 0;
 
 export default class GlobalApi extends EventEmitter {
     constructor() {
@@ -98,18 +99,23 @@ export default class GlobalApi extends EventEmitter {
      * addUi('header_query', domElement)
      */
     addUi(type, element) {
+        let plugin = {
+            el: element,
+            id: nextPluginId++,
+        };
+
         switch (type) {
         case 'input':
-            this.controlInputPlugins.push(element);
+            this.controlInputPlugins.push(plugin);
             break;
         case 'browser':
-            this.stateBrowserPlugins.push(element);
+            this.stateBrowserPlugins.push(plugin);
             break;
         case 'header_channel':
-            this.channelHeaderPlugins.push(element);
+            this.channelHeaderPlugins.push(plugin);
             break;
         case 'header_query':
-            this.queryHeaderPlugins.push(element);
+            this.queryHeaderPlugins.push(plugin);
             break;
         default:
             break;
@@ -122,15 +128,22 @@ export default class GlobalApi extends EventEmitter {
      * addTab('server', 'title', component, props)
      */
     addTab(type, title, component, props) {
+        let plugin = {
+            id: nextPluginId++,
+            title,
+            component,
+            props,
+        };
+
         switch (type) {
         case 'channel':
-            this.sideBarPlugins.push({ title: title, component: component, props: props });
+            this.sideBarPlugins.push(plugin);
             break;
         case 'settings':
-            this.appSettingsPlugins.push({ title: title, component: component, props: props });
+            this.appSettingsPlugins.push(plugin);
             break;
         case 'server':
-            this.serverViewPlugins.push({ title: title, component: component, props: props });
+            this.serverViewPlugins.push(plugin);
             break;
         default:
             break;
@@ -139,6 +152,7 @@ export default class GlobalApi extends EventEmitter {
 
     addView(name, component, props) {
         this.tabs[name] = {
+            id: nextPluginId++,
             component: Vue.extend(component),
             props: props || {},
         };
