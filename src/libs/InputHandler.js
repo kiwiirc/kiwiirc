@@ -575,6 +575,48 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
     });
 };
 
+inputCommands.whowas = function inputCommandWhowas(event, command, line) {
+    event.handled = true;
+
+    let parts = line.split(' ');
+    let network = this.state.getActiveNetwork();
+    let buffer = this.state.getActiveBuffer();
+
+    network.ircClient.whowas(parts[0], parts[0], (whowasData) => {
+        if (whowasData.error) {
+            let messageBody = TextFormatting.formatText('whowas_error', {
+                nick: whowasData.nick,
+                text: whowasData.error,
+            });
+            this.state.addMessage(buffer, {
+                time: Date.now(),
+                nick: '',
+                message: messageBody,
+                type: 'whowas',
+            });
+            return;
+        }
+
+        ['whowas_ident', 'whowas_server'].forEach((prop) => {
+            let messageBody = TextFormatting.formatText(prop, {
+                nick: whowasData.nick,
+                ident: whowasData.ident,
+                host: whowasData.hostname,
+                name: whowasData.real_name,
+                server: whowasData.server,
+                info: whowasData.server_info,
+            });
+
+            this.state.addMessage(buffer, {
+                time: Date.now(),
+                nick: whowasData.nick,
+                message: messageBody,
+                type: 'whowas',
+            });
+        });
+    });
+};
+
 inputCommands.mode = function inputCommandMode(event, command, line) {
     event.handled = true;
 
