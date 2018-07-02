@@ -678,6 +678,7 @@ export default {
 .kiwi-messagelist-joinloader {
     margin: 0 auto;
     width: 175px;
+
     /* the magic number below is the exact ratio of the kiwi logo height/width */
     height: calc (175px * 0.85987261146496815286624203821656);
     overflow: hidden;
