@@ -270,6 +270,7 @@ const stateObj = {
             notice: '%text',
             action: '* %nick %text',
             whois_ident: '%nick [%nick!%ident@%host] * %text',
+            whois_error: '[%nick] %text',
             whois: '%text',
             who: '%nick [%nick!%ident@%host] * %realname',
             quit: '%text',
