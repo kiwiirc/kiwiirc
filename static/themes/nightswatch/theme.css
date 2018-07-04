@@ -36,7 +36,7 @@
 }
 
 .kiwi-startup-common-section-info {
-    border-left: 5px solid #fff;
+    border-left: 5px solid #444;
 }
 
 .kiwi-welcome-simple-form .u-submit {
@@ -93,16 +93,16 @@
 }
 .u-tabbed-view-tabs {
     background: #000;
-    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #444;
 }
 .u-tabbed-view-tabs .u-tabbed-view-tab {
-    border-bottom: #adadad;
+    border-bottom: #444;
     background: #000;
     color: #adadad;
 }
 .u-tabbed-view-tabs .u-tabbed-view-tab:hover,
 .u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active{
-    border-bottom: 3px solid #adadad;
+    border-bottom: 3px solid #444;
     background: #1b1b1b;
     color: #fff;
 }
@@ -187,7 +187,7 @@
     background: #adadad;
 }
 .kiwi-appsettings-block {
-    border: 1px solid #adadad
+    border: 1px solid #444;
 }
 .kiwi-appsettings-block h3 {
     background: #000000;
@@ -218,7 +218,7 @@
 
 /* Container - Main ( Container.vue )  The majority of styling related to the messages and user input etc */
 .kiwi-container {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #444;
 }
 
 /* The join button is displayed in the header when the user has not connected to their currently selected network */
@@ -231,10 +231,10 @@
     background: #000000;
 }
 .kiwi-container-toggledraw-statebrowser {
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #444;
 }
 .kiwi-container-toggledraw-sidebar {
-    border-left: 1px solid #ddd;
+    border-left: 1px solid #444;
 }
 .kiwi-container-toggledraw-sidebar--disabled {
     color: #b8babd;
@@ -247,14 +247,14 @@
 }
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
     border: 0.6em solid transparent;
-    border-right-color: #ddd;
+    border-right-color: #444;
 }
 
 .kiwi-statebrowser-channel-label--highlight {
     background: #e45e5e;
 }
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
-    border-right-color: #d62323;
+    border-right-color: #444;
 }
 
 .kiwi-container-empty .u-button {
@@ -264,7 +264,7 @@
 
 /* Container Header ( ContainerHeader.vue ) */
 .kiwi-header {
-    border-bottom: 1px solid #adadad;
+    border-bottom: 1px solid #444;
 }
 .kiwi-header-name {
     color: #adadad;
@@ -272,7 +272,7 @@
 
 /* The header option buttons */
 .kiwi-header-option {
-    border-left: 1px solid #adadad;
+    border-left: 1px solid #444;
     color: #adadad;
 }
 .kiwi-header-option a:hover,
@@ -326,8 +326,8 @@
 
 /* baseline styling for the 'topic' of the channel, if it has one, these are shared between traditional and modern view, but can be made more specific if need be */
 .kiwi-messagelist-message.kiwi-messagelist-message-topic {
-    border-top: 1px solid #adadad;
-    border-bottom: 1px solid #adadad;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
     color: #adadad;
     background: #252525;
 }
@@ -342,18 +342,16 @@
 }
 
 .kiwi-sidebar-options {
-    border-left: 1px solid #d8d8d8;
+    border-left: 1px solid #444;
 }
 
 .kiwi-header-buffersettings {
-    border-top: 1px solid #ddd;
-    border-left: 1px solid #d8d8d8;
+    border-top: 1px solid #444;
+    border-left: 1px solid #444;
 }
 .kiwi-header-topic > div {
-    color: #22231f;
+    color: #adadad;
 }
-
-
 
 /* When hovering over a channel, these options are displayed and coloured upon hover */
 .kiwi-statebrowser-channel-settings,
@@ -366,8 +364,6 @@
 .kiwi-statebrowser-channel-leave:hover{
     background: #a54d4d;
 }
-
-
 
 /* Control Input - displayed at bottom of Kiwi ( ControlInput.vue ) */
 .kiwi-controlinput {
@@ -391,7 +387,7 @@
 /* AutoComplete - If the user has enabled autocomplete in their options, this will style the options (AutoComplete.vue) */
 .kiwi-autocomplete {
     box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
-    border: 1px solid #ccc;
+    border: 1px solid #444;
     background: #adadad;
 }
 .kiwi-autocomplete-item {
@@ -404,8 +400,6 @@
 .kiwi-autocomplete-item--selected .u-link {
     color: #adadad;
 }
-
-
 
 /* Message list - Standard messages ( MessageList.vue ) */
 .kiwi-messagelist {
@@ -423,7 +417,7 @@
     background: #f6f6f6;
 }
 .kiwi-messageinfo-urls {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #444;
 }
 .kiwi-messagelist-message-action .kiwi-messagelist-body {
     color: #090;
@@ -520,7 +514,7 @@
 }
 
 .kiwi-messagelist-message--modern {
-  border-top: 1px solid #f3f3f3;
+  border-top: 1px solid #444;
 }
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
   border-top: none;
