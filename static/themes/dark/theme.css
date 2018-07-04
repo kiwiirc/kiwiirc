@@ -1188,3 +1188,33 @@
 .kiwi-bufferkey-button {
     border: 1px solid #fff;
 }
+
+/* Customer Server Styling */
+.kiwi-customserver {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+.kiwi-customserver-form {
+    background-color: #fff;
+    border: 1px solid #a2846e;
+}
+
+.kiwi-customserver-form .input-text {
+    background-color: #fff;
+}
+
+.kiwi-customserver-form .input-text .input-text-label {
+    color: #42b992;
+}
+
+.kiwi-customserver .u-button {
+    background-color: #42b992;
+    border: 1px solid #42b992;
+    color: #fff;
+}
+
+.kiwi-customserver .u-link {
+    color: #42b992;
+    text-decoration: underline;
+}

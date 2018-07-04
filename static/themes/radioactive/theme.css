@@ -549,6 +549,7 @@
 .kiwi-networksettings .kiwi-connect-to-newnetwork {
     background: #1b2f24;
     color: #fff;
+    border: 1px solid #fff;
 }
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
     border: 1px solid #1b2f24;
@@ -998,4 +999,35 @@
 /* MOTD */
 .kiwi-messagelist-message-motd {
     color: #666;
+}
+
+/* Customer Server Styling */
+.kiwi-customserver {
+    background-color: #1c2933;
+    color: #fff;
+}
+
+.kiwi-customserver-form {
+    background-color: #151414;
+    border: 1px solid #6fffb0;
+}
+
+.kiwi-customserver-form .input-text {
+    background-color: #151414;
+}
+
+.kiwi-customserver-form .input-text input {
+    background-color: #151414;
+    color: #fff;
+}
+
+.kiwi-customserver .u-button {
+    background-color: none;
+    border: 1px solid #6fffb0;
+    color: #6fffb0;
+}
+
+.kiwi-customserver .u-link {
+    color: #6fffb0;
+    text-decoration: underline;
 }

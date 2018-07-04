@@ -10,37 +10,36 @@
 }
 
  /* Welcome Screen ( Welcome.vue ) */
- .kiwi-welcome-simple-form,
- .kiwi-customserver-form{
-     background-color: #fff;
-     border: 1px solid #ececec;
- }
- .kiwi-welcome-simple-error {
-     border: 1px dashed #d86f6f;
- }
- .kiwi-welcome-simple-form .u-submit {
-     background-color: #a2846e;
-     color: #fff;
- }
- .kiwi-welcome-simple .help {
-     color: #666;
- }
- .kiwi-welcome-simple .help a {
-     color: #666;
- }
- .kiwi-welcome-simple .help a:hover {
-     color: #a9d87a;
- }
+.kiwi-welcome-simple-form,
+.kiwi-customserver-form{
+    background-color: #fff;
+    border: 1px solid #ececec;
+}
+.kiwi-welcome-simple-error {
+    border: 1px dashed #d86f6f;
+}
+.kiwi-welcome-simple-form .u-submit {
+    background-color: #a2846e;
+    color: #fff;
+}
+.kiwi-welcome-simple .help {
+    color: #666;
+}
+.kiwi-welcome-simple .help a {
+    color: #666;
+}
+.kiwi-welcome-simple .help a:hover {
+    color: #a9d87a;
+}
 
-
-
+.kiwi-startup-common-section-info {
+    border-left: 6px solid #a2846e;
+ }
 
 /* Custom server layout */
 .kiwi-customserver {
 	background-color: #fbfbfb;
 }
-
-
 
 /* App ( App.vue ) */
 .kiwi-workspace {
@@ -975,4 +974,34 @@
 /* MOTD */
 .kiwi-messagelist-message-motd {
     color: #666;
+}
+
+/* Customer Server Styling */
+.kiwi-customserver {
+    background-color: #382c24;
+    color: #fff;
+}
+
+.kiwi-customserver-form {
+    background-color: #fff;
+    border: 1px solid #a2846e;
+}
+
+.kiwi-customserver-form .input-text {
+    background-color: #fff;
+}
+
+.kiwi-customserver-form .input-text .input-text-label {
+    color: #a2846e;
+}
+
+.kiwi-customserver .u-button {
+    background-color: #a2846e;
+    border: 1px solid #a2846e;
+    color: #fff;
+}
+
+.kiwi-customserver .u-link {
+    color: #a2846e;
+    text-decoration: underline;
 }

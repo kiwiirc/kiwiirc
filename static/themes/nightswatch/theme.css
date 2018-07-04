@@ -17,21 +17,34 @@
 
 
 
- /* Welcome Screen ( Welcome.vue ) */
- .kiwi-welcome-simple-form,
- .kiwi-customserver-form{
-     background-color: #adadad;
-     border: 1px solid #ececec;
- }
- .kiwi-welcome-simple-error {
-     border: 1px dashed #d86f6f;
- }
- .kiwi-welcome-simple-form .u-submit {
-     background-color: #000000;
-     color: #adadad;
- }
- .kiwi-welcome-simple .help {
-     color: #666;
+/* Welcome Screen ( Welcome.vue ) */
+.kiwi-welcome-simple-form,
+.kiwi-customserver-form{
+    border: 1px solid #ececec;
+}
+.kiwi-welcome-simple-error {
+    border: 1px dashed #d86f6f;
+}
+
+.kiwi-welcome-simple .input-text {
+    opacity: 1;
+    background: none;
+}
+
+.kiwi-welcome-simple .input-text input {
+    color: #fff;
+}
+
+.kiwi-startup-common-section-info {
+    border-left: 5px solid #fff;
+}
+
+.kiwi-welcome-simple-form .u-submit {
+    background-color: #000000;
+    color: #fff;
+}
+.kiwi-welcome-simple .help {
+    color: #666;
  }
  .kiwi-welcome-simple .help a {
      color: #666;
@@ -193,7 +206,7 @@
 
 /* Channel List ( ChannelList.vue ) */
 .kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #333;
 }
 .kiwi-channellist table tbody tr {
     border-top: 1px solid lightgray;
@@ -399,10 +412,13 @@
     background: #000;
 }
 
+.kiwi-messagelist a {
+    color: #f1f1f1;
+}
+
 .kiwi-messagelist .kiwi-messagelist-body {
     color: #adadad;
 }
-
 .kiwi-messagelist-message--info-open {
     background: #f6f6f6;
 }
@@ -518,6 +534,10 @@
 }
 
 /* Network Settings ( NetworkSettings.vue ) */
+.kiwi-networksettings-section {
+    background: #1c1c1c;
+}
+
 .kiwi-networksettings .kiwi-title {
     background: #000000;
     color: #adadad;
@@ -760,6 +780,7 @@
 }
 .kiwi-network-name-options .kiwi--collapse {
     background: #d16c6c;
+    color: #fff;
 }
 
 /* Add channel input */
@@ -1005,4 +1026,45 @@
 /* MOTD */
 .kiwi-messagelist-message-motd {
     color: #666;
+}
+
+/* Customer Server Styling */
+.kiwi-customserver {
+    background-color: #000000;
+    color: #fff;
+}
+
+.kiwi-customserver-form {
+    background-color: #000;
+    border: 1px solid #adadad;
+}
+
+.kiwi-customserver-form .input-text {
+    background-color: #000;
+}
+
+.kiwi-customserver .input-text input {
+    color: #fff;
+}
+
+.kiwi-customserver-form .input-text .input-text-label {
+    color: #adadad;
+}
+
+.kiwi-customserver .u-button {
+    background-color: #000;
+    border: 1px solid #adadad;
+    color: #adadad;
+}
+
+.kiwi-customserver .u-link {
+    color: #adadad;
+    text-decoration: underline;
+}
+
+
+.kiwi-statebrowser-channel::before {
+    content: '\f0c0';
+    font-family: fontAwesome;
+    margin-right: 5px;
 }
