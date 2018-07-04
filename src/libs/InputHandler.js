@@ -462,7 +462,7 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
     let buffer = this.state.getActiveBuffer();
 
     network.ircClient.whois(parts[0], parts[0], (whoisData) => {
-        if (!whoisData.error) {
+        if (whoisData.error) {
             let messageBody = TextFormatting.formatText('whois_error', {
                 nick: whoisData.nick,
                 text: whoisData.error,
@@ -471,7 +471,7 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
                 time: Date.now(),
                 nick: '',
                 message: messageBody,
-                type: 'whois',
+                type: 'error',
             });
             return;
         }
@@ -489,7 +489,10 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             from: 'is connecting from {{actual_hostname}} {{actual_ip}}',
             channels: 'is on {{channels}}',
             server: 'is using {{server}} ({{server_info}})',
+            operator: '{{operator}}',
+            modes: '{{modes}}',
             account: 'is logged in as {{account}}',
+            registered_nick: '{{registered_nick}}',
             secure: 'is using a secure connection',
             idle: 'has been idle for {{idle}}',
             logon: 'connected on {{logon}}',
@@ -498,15 +501,12 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             // empty lines.
             nick: '',
             user: '',
-            modes: '',
             ident: '',
-            operator: '',
             hostname: '',
             real_name: '',
             actual_ip: '',
             server_info: '',
             actual_hostname: '',
-            registered_nick: '',
         };
 
         // Display a select few entries first to keep a consistent order, and then
@@ -532,16 +532,16 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
                 .replace('{{server_info}}', whoisData.server_info));
         }
         if (whoisData.operator) {
-            display(whoisData.operator);
+            display(formats.server.replace('{{operator}}', whoisData.operator));
         }
         if (whoisData.modes) {
-            display(whoisData.modes);
+            display(formats.server.replace('{{modes}}', whoisData.modes));
         }
         if (whoisData.account) {
             display(formats.account.replace('{{account}}', whoisData.account));
         }
         if (whoisData.registered_nick) {
-            display(whoisData.registered_nick);
+            display(formats.account.replace('{{registered_nick}}', whoisData.registered_nick));
         }
         if (whoisData.secure) {
             display(formats.secure);
