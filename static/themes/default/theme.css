@@ -759,11 +759,9 @@
 }
 .kiwi-statebrowser-newnetwork a {
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 .kiwi-statebrowser-newnetwork a:hover {
     background: #42b992;
-    border-color: #42b992;
     opacity: 1;
     color: #fff;
 }

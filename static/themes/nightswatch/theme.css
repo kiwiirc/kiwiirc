@@ -722,7 +722,7 @@
 .kiwi-statebrowser {
     background: #000000;
     color: #adadad;
-    border-right: 1px solid #adadad;
+    border-right: 1px solid #444;
 }
 .kiwi-statebrowser-divider {
     background: rgba(255, 255, 255, 0.3);
@@ -827,8 +827,6 @@
 }
 .kiwi-statebrowser-newnetwork a {
     color: #adadad;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: none;
 }
 .kiwi-statebrowser-newnetwork a:hover {
     background: #000000;
