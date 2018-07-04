@@ -83,6 +83,7 @@ export default {
             show_password_box: false,
             recaptchaSiteId: '',
             recaptchaResponseCache: '',
+            connectWithoutChannel: false,
         };
     },
     computed: {
@@ -99,7 +100,12 @@ export default {
                 this.$t('start_button');
         },
         readyToStart: function readyToStart() {
-            let ready = this.channel && this.nick;
+            let ready = !!this.nick;
+
+            if (!this.connectWithoutChannel && !this.channel) {
+                ready = false;
+            }
+
             // Nicks cannot start with [0-9- ]
             // ? is not a valid nick character but we allow it as it gets replaced
             // with a number.
@@ -129,6 +135,8 @@ export default {
         if (options.autoConnect && this.nick && this.channel) {
             this.startUp();
         }
+
+        this.connectWithoutChannel = !!options.allowNoChannel;
 
         this.recaptchaSiteId = options.recaptchaSiteId || '';
     },
