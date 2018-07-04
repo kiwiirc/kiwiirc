@@ -449,8 +449,9 @@
 
 /* When hovering over a users messages */
 .kiwi-messagelist-message--hover{
-    background-color: #f2f2f2;
+    background-color: #444;
 }
+
 
 /* The shadow over the main text area that displays when the sidebar is open */
 .kiwi-container--sidebar-open .kiwi-messagelist::after {
@@ -506,7 +507,7 @@
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
-    background-color: #f2f2f2;
+    background-color: #444;
 }
 
 .kiwi-messagelist-time {
@@ -597,9 +598,6 @@
 }
 
 /* Nicklist ( Nicklist.vu ) */
-.kiwi-nicklist {
-    background: #1b1b1b;
-}
 .kiwi-nicklist-usercount {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -684,6 +682,11 @@
 }
 
 /* Sidebar ( Sidebar.vue ) */
+.kiwi-sidebar {
+    background: #1b1b1b;
+}
+
+
 .kiwi-sidebar-options {
     background-color: #000000;
     color: #adadad;
@@ -1078,4 +1081,15 @@
     font-family: fontAwesome;
     margin-right: 5px;
     font-weight: 100;
+}
+
+
+/* Nightwatch exclusive fix for network settings labels */
+
+.kiwi-networksettings .u-form .input-text .input-text-label {
+    margin-left: 0;
+}
+.kiwi-networksettings .u-form .input-text--reveal-value span {
+    top: -22px;
+    color: #fff;
 }
