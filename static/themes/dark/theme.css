@@ -1218,3 +1218,18 @@
     color: #42b992;
     text-decoration: underline;
 }
+
+/* Icons in the Channel List */
+.kiwi-statebrowser-channel[data-name^="#"]::before {
+    content: '\f0c0';
+}
+.kiwi-statebrowser-channel[data-name^="#help"]::before {
+    content: '\f059';
+}
+
+.kiwi-statebrowser-channel::before {
+    content: '\f007';
+    font-family: fontAwesome;
+    margin-right: 5px;
+    font-weight: 100;
+}

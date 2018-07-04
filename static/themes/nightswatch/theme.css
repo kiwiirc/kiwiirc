@@ -201,6 +201,7 @@
 }
 .kiwi-appsettings-title:hover{
     background: #d16c6c;
+    color: #fff;
 }
 
 
@@ -296,7 +297,7 @@
 .kiwi-header-option-leave a:hover,
 .kiwi-header-option-unpinsidebar a:hover {
     background-color: #a54d4d;
-    color: #adadad;
+    color: #fff;
 }
 
 /* The link to click if the user has not joined this channel */
@@ -370,9 +371,8 @@
 
 /* Control Input - displayed at bottom of Kiwi ( ControlInput.vue ) */
 .kiwi-controlinput {
-    background: #efefef;
-    border-top: 1px solid #e8e8e8;
-    color: #272727;
+    background: #000000;
+    color: #b9b9b9;
 }
 .kiwi-controlinput .kiwi-controlinput-user,
 .kiwi-controlinput-inner .kiwi-controlinput-user {
@@ -603,6 +603,9 @@
 }
 
 /* Nicklist ( Nicklist.vu ) */
+.kiwi-nicklist {
+    background: #1b1b1b;
+}
 .kiwi-nicklist-usercount {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -610,9 +613,14 @@
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 .kiwi-nicklist-info input {
-    background-color: #adadad;
-    color: #000;
+    background-color: #000;
+    color: #b9b9b9;
 }
+
+.kiwi-nicklist-info i {
+    color: #b9b9b9;
+}
+
 .kiwi-nicklist-user {
     border-top: 1px solid #858585;
 }
@@ -1063,8 +1071,17 @@
 }
 
 
-.kiwi-statebrowser-channel::before {
+/* Icons in the Channel List */
+.kiwi-statebrowser-channel[data-name^="#"]::before {
     content: '\f0c0';
+}
+.kiwi-statebrowser-channel[data-name^="#help"]::before {
+    content: '\f059';
+}
+
+.kiwi-statebrowser-channel::before {
+    content: '\f007';
     font-family: fontAwesome;
     margin-right: 5px;
+    font-weight: 100;
 }
