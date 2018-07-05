@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-06-28 16:51\n"
+"PO-Revision-Date: 2018-07-05 15:21\n"
 
 #: Start
 msgid "start_button"
@@ -108,6 +108,14 @@ msgstr "好"
 #: Cancel
 msgid "cancel"
 msgstr "取消"
+
+#: Yes
+msgid "yes"
+msgstr ""
+
+#: No
+msgid "no"
+msgstr ""
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -388,6 +396,10 @@ msgstr "未连接"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "与 {{user}} 的私聊"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr ""
 
 #: Send a message...
 msgid "input_placeholder"
