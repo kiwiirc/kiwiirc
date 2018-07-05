@@ -9,9 +9,14 @@
 */
 
 .kiwi-wrap {
-    background: #fff;
     --kiwi-nick-brightness: 40;
     --kiwi-supports-monospace: 1;
+    color: #201F1F;
+}
+
+/* Kiwi Theme Background is used to apply the same background colour accross components, rather than targeting them all specifically */
+.kiwi-theme-bg {
+    background-color: #fff;
     color: #201F1F;
 }
 
@@ -175,6 +180,7 @@
 }
 .kiwi-appsettings-title:hover{
     background: #d16c6c;
+    color: #fff;
 }
 
 
@@ -200,10 +206,6 @@
     color: #fff;
 }
 
-.kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-sidebar {
-    background: #fff;
-}
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #ddd;
 }
@@ -636,13 +638,10 @@
 }
 
 /* Sidebar ( Sidebar.vue ) */
-.kiwi-sidebar-options {
-    background-color: #212d3a;
-    color: #fff;
-}
 .kiwi-sidebar-pin{
     border-right: 1px solid #fff;
     background: #212d3a;
+    color: #fff;
 }
 .kiwi-sidebar-pin:hover{
     background: #4e5c6b;
@@ -650,6 +649,7 @@
 
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
     background: #a54d4d;
+    color: #fff;
 }
 .kiwi-container--sidebar-pinned .kiwi-sidebar {
     border-color: #b2b2b2;
@@ -708,6 +708,7 @@
 /* User Settings */
 .kiwi-statebrowser-appsettings {
     border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
 }
 .kiwi-statebrowser-appsettings:hover {
     background: #4d6075;
@@ -775,6 +776,7 @@
 .kiwi-statebrowser-newnetwork a {
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: none;
 }
 .kiwi-statebrowser-newnetwork a:hover {
     background: #4d6075;
@@ -984,10 +986,20 @@
     color: #666;
 }
 
+/*Icon before the network in network list */
+.kiwi-statebrowser-network-name::before {
+    content: '\f233';
+    font-family: fontAwesome;
+    margin-right: 2px;
+    font-weight: 100;
+    text-decoration: none;
+}
+
 /* Icons in the Channel List */
 .kiwi-statebrowser-channel[data-name^="#"]::before {
     content: '\f0c0';
 }
+
 .kiwi-statebrowser-channel[data-name^="#help"]::before {
     content: '\f059';
 }
