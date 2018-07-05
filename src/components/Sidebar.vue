@@ -1,5 +1,5 @@
 <template>
-    <div :class="['kiwi-sidebar-section-' + uiState.section()]" class="kiwi-sidebar">
+    <div :class="['kiwi-sidebar-section-' + uiState.section()]" class="kiwi-sidebar kiwi-theme-bg">
         <template v-if="buffer">
             <template v-if="buffer.isChannel()">
 

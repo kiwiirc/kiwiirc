@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-controlinput">
+    <div class="kiwi-controlinput kiwi-theme-bg">
         <div
             :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
             class="kiwi-controlinput-selfuser"

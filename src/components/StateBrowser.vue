@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-statebrowser">
+    <div class="kiwi-statebrowser kiwi-theme-bg">
 
         <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">
             <span> Close </span>

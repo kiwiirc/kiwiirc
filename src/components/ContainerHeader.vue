@@ -3,7 +3,7 @@
         :class="{
             'kiwi-header--showall': buffer_settings_open,
         }"
-        class="kiwi-header"
+        class="kiwi-header kiwi-theme-bg"
         @click="onHeaderClick"
     >
 

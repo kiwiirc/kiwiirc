@@ -6,7 +6,7 @@
             'kiwi-wrap--touch': state.ui.is_touch,
         }"
         :data-activebuffer="buffer ? buffer.name.toLowerCase() : ''"
-        class="kiwi-wrap"
+        class="kiwi-wrap kiwi-theme-bg"
         @click="emitDocumentClick"
         @paste="emitBufferPaste"
     >
