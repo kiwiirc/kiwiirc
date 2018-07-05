@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2018-07-05 15:20\n"
+"PO-Revision-Date: 2018-07-05 16:00\n"
 
 #: Start
 msgid "start_button"
@@ -111,11 +111,11 @@ msgstr "Cancelar"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Sí"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "No"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
