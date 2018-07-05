@@ -1008,6 +1008,12 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.kiwi-userbox-actions .kiwi-userbox-action {
+    border: 1px solid #adadad;
+    color: #adadad;
+}
+
+
 .kiwi-userbox-opaction-kick ,
 .kiwi-userbox-opaction-ban,
 .kiwi-userbox-opaction-kickban {

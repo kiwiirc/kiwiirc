@@ -573,7 +573,7 @@
 }
 
 .kiwi-messagelist-message--modern {
-    border-top: 1px solid #fff;
+    border-top: 1px solid #2f2f2f;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
@@ -835,10 +835,9 @@
 .kiwi-statebrowser-appsettings {
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
-
 .kiwi-statebrowser-appsettings:hover {
     background: #42b992;
-    color: #dedede;
+    color: #fff;
     opacity: 1;
 }
 
@@ -846,6 +845,11 @@
 .kiwi-statebrowser-scrollarea h4,
 .kiwi-statebrowser-scrollarea h4 {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.kiwi-network-name-hover-icon,
+.kiwi-network-name-options .option-button {
+    color: #dedede;
 }
 
 .kiwi-network-name-options {

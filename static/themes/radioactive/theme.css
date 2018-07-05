@@ -913,7 +913,7 @@
 
 /* User Box Styling ( UserBox.vue ) */
 .kiwi-userbox-usermask {
-    color: #9e9e9e;
+    color: #5dd895;
 }
 .kiwi-userbox-opactions {
     border-top: 1px solid #9e9e9e;
@@ -964,6 +964,17 @@
 .kiwi-userbox-opaction-kickban:hover{
     background-color: #ffaf9e;
 }
+
+.kiwi-userbox-actions .kiwi-userbox-action {
+    color: #5dd895;
+    border-color: #5dd895;
+}
+
+.kiwi-userbox-actions .kiwi-userbox-action:hover {
+    background: none;
+    text-decoration: underline;
+}
+
 
 .kiwi-userbox-whois {
     border: 1px solid #9e9e9e;
