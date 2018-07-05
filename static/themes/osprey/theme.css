@@ -67,9 +67,6 @@
 }
 
 /* App - Tabs */
-.u-tabbed-content {
-    background-color: #fff;
-}
 .u-tabbed-view-tabs {
     background: rgba(0, 0, 0, 0.1);
     border-bottom: 3px solid rgba(0, 0, 0, 0.1);
@@ -378,9 +375,6 @@
 
 
 /* Message list - Standard messages ( MessageList.vue ) */
-.kiwi-messagelist {
-    background: #fff;
-}
 .kiwi-messagelist-message--info-open {
     background: #f6f6f6;
 }
