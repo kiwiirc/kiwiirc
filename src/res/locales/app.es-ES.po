@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2018-07-05 16:00\n"
+"PO-Revision-Date: 2018-07-05 16:12\n"
 
 #: Start
 msgid "start_button"
@@ -399,7 +399,7 @@ msgstr "Conversación privada con {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr ""
+msgstr "¿Desea realmente salir de la Sala?"
 
 #: Send a message...
 msgid "input_placeholder"
