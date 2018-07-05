@@ -35,11 +35,6 @@
                  data-code="15" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour kiwi-inputtools-colours-reset"
                  @click="onResetClick"><i class="fa fa-ban" aria-hidden="true"/></div>
-            <div class="kiwi-inputtools-colours-colour kiwi-inputtools-colours-img"
-                 style="background-image:url(/static/emoticons/smile.png);"
-                 data-code=":D"
-                 @click="onImgClick"
-            />
         </div>
     </div>
 </template>
@@ -59,16 +54,6 @@ export default {
                 .getPropertyValue('background-color');
             let code = event.target.dataset.code;
             this.ircinput.setColour(code, colour);
-        },
-        onImgClick: function onImgClick(event) {
-            let url = window.getComputedStyle(event.target, null)
-                .getPropertyValue('background-image');
-
-            // TODO: All this text replacing is ugly. Tidy it pls.
-            url = url.replace('url(', '').replace(')', '');
-            url = url.replace(' ', '').replace(/"/g, '');
-            let code = event.target.dataset.code;
-            this.ircinput.addImg(code, url);
         },
         onResetClick: function onResetClick() {
             this.ircinput.resetStyles();
@@ -96,10 +81,6 @@ export default {
     box-sizing: border-box;
     border: 1px solid gray;
     margin: 0;
-}
-
-.kiwi-inputtools-colours-img {
-    background-size: contain;
 }
 
 .kiwi-inputtools-colours-reset {

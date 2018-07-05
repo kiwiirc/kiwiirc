@@ -33,7 +33,16 @@ export function listenForHighlights(state) {
             return;
         }
 
-        if (message.type === 'connection' || message.type === 'traffic') {
+        let ignoreTypes = [
+            'connection',
+            'traffic',
+            'nick',
+        ];
+        if (ignoreTypes.indexOf(message.type) > -1) {
+            return;
+        }
+
+        if (message.ignore) {
             return;
         }
 

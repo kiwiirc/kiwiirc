@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-autocomplete">
+    <div class="kiwi-autocomplete kiwi-theme-bg">
 
         <div
             v-for="item in filteredAndLimitedItems"

@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-06-28 16:51\n"
+"PO-Revision-Date: 2018-07-04 20:00\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Podešavanja"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Kiwi Podešavanja"
 
 #: Channels
 msgid "channels"
@@ -143,43 +143,43 @@ msgstr "Kanal"
 
 #: week
 msgid "week"
-msgstr ""
+msgstr "sedmica"
 
 #: weeks
 msgid "week_plural"
-msgstr ""
+msgstr "sedmica"
 
 #: day
 msgid "day"
-msgstr ""
+msgstr "dan"
 
 #: days
 msgid "day_plural"
-msgstr ""
+msgstr "dana"
 
 #: hour
 msgid "hour"
-msgstr ""
+msgstr "sat"
 
 #: hours
 msgid "hour_plural"
-msgstr ""
+msgstr "sati"
 
 #: minute
 msgid "minute"
-msgstr ""
+msgstr "minuta"
 
 #: minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "minuta"
 
 #: second
 msgid "second"
-msgstr ""
+msgstr "sekunda"
 
 #: seconds
 msgid "second_plural"
-msgstr ""
+msgstr "sekundi"
 
 #: General
 msgid "settings_general"
@@ -191,7 +191,7 @@ msgstr "Izgled"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Osvježi temu"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -259,7 +259,7 @@ msgstr "Pseudonimi"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Koji su pseudonimi"
 
 #: Send Message
 msgid "send_message"
@@ -267,11 +267,11 @@ msgstr "Pošalji poruku"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Unesite ključ kanala"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr ""
+msgstr "Ponovo pristupite {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -367,15 +367,15 @@ msgstr "Prikaži statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Sakrij temu"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Prikaži temu"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Podešavanja kanala"
 
 #: Join Channel
 msgid "container_join"
@@ -459,7 +459,7 @@ msgstr "{{count}} dostupnih osoba"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Filtriraj korisnike"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -567,11 +567,11 @@ msgstr "Priključi se na kanal"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Filtriraj kanale"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Nađi više kanala"
 
 #: Change nick
 msgid "change_nick"

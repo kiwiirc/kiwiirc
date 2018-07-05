@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-selfuser">
+    <div class="kiwi-selfuser kiwi-theme-bg">
         <div class="kiwi-close-icon" @click="$emit('close')">
             <i class="fa fa-times" aria-hidden="true"/>
         </div>
