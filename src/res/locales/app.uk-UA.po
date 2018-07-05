@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-06-28 16:50\n"
+"PO-Revision-Date: 2018-07-05 15:20\n"
 
 #: Start
 msgid "start_button"
@@ -108,6 +108,14 @@ msgstr "OK"
 #: Cancel
 msgid "cancel"
 msgstr "Скасувати"
+
+#: Yes
+msgid "yes"
+msgstr ""
+
+#: No
+msgid "no"
+msgstr ""
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -388,6 +396,10 @@ msgstr "Не з'єднано"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Приватна розмова з {{user}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr ""
 
 #: Send a message...
 msgid "input_placeholder"
