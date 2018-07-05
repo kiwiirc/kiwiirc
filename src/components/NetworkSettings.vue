@@ -337,7 +337,8 @@ export default {
     background-color: #fff;
     line-height: 40px;
     text-align: center;
-    top: 8px;
+    top: 19px;
+    right: 15px;
 }
 
 .kiwi-networksettings .kiwi-show-advanced-title {

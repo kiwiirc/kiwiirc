@@ -8,14 +8,16 @@
    PRIMARY COLOUR - HIGHLIGHT : #000000
 */
 
-.kiwi-wrap {
+/* Kiwi Theme Background is used to apply the same background colour accross components, rather than targeting them all specifically */
+.kiwi-theme-bg {
     background: #1b1b1b;
+}
+
+.kiwi-wrap {
     --kiwi-nick-brightness: 40;
     --kiwi-supports-monospace: 1;
     color: #adadad;
 }
-
-
 
 /* Welcome Screen ( Welcome.vue ) */
 .kiwi-welcome-simple-form,
@@ -184,7 +186,7 @@
 
 /* Application settings ( AppSettings.vue ) */
 .kiwi-appsettings {
-    background: #adadad;
+    background: #1b1b1b;
 }
 .kiwi-appsettings-block {
     border: 1px solid #444;
@@ -230,6 +232,7 @@
 .kiwi-container-toggledraw-sidebar {
     background: #000000;
 }
+
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #444;
 }
@@ -337,6 +340,11 @@
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
     border: 2px solid #000000;
 }
+
+.kiwi-messagelist-seperator > span {
+    background: none;
+}
+
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic.kiwi-messagelist-message--unread {
     border-left: 2px solid #000000;
 }
@@ -366,10 +374,6 @@
 }
 
 /* Control Input - displayed at bottom of Kiwi ( ControlInput.vue ) */
-.kiwi-controlinput {
-    background: #000000;
-    color: #b9b9b9;
-}
 .kiwi-controlinput .kiwi-controlinput-user,
 .kiwi-controlinput-inner .kiwi-controlinput-user {
     border-right: 1px solid rgba(0, 0, 0, 0.2);
@@ -380,9 +384,19 @@
 
 .kiwi-selfuser,
 .kiwi-inputtool-emoji-emoji {
-    background-color: #efefef;
-    color: #272727;
+    background-color: #101010;
+    color: #adadad;
 }
+
+.kiwi-selfuser .u-link {
+    color: #fff;
+}
+
+.kiwi-inputtool-emoji-palette {
+    background-color: #101010;
+}
+
+
 
 /* AutoComplete - If the user has enabled autocomplete in their options, this will style the options (AutoComplete.vue) */
 .kiwi-autocomplete {
@@ -580,8 +594,8 @@
     color: #adadad;
 }
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
-    border: 1px solid #000000;
-    color: #000000;
+    border: 1px solid #adadad;
+    color: #adadad;
 }
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button:hover,
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button.kiwi-networksettings-server-type-active {
@@ -682,11 +696,6 @@
 }
 
 /* Sidebar ( Sidebar.vue ) */
-.kiwi-sidebar {
-    background: #1b1b1b;
-}
-
-
 .kiwi-sidebar-options {
     background-color: #000000;
     color: #adadad;
@@ -721,7 +730,6 @@
 /* Statebrowser - Left sidebar ( StateBrowser.vue ) */
 .kiwi-statebrowser {
     background: #000000;
-    color: #adadad;
     border-right: 1px solid #444;
 }
 .kiwi-statebrowser-divider {
@@ -751,6 +759,9 @@
 .kiwi-statebrowser-usermenu--open .kiwi-statebrowser-usermenu-avatars {
     background-color: #000000;
     color: #adadad;
+}
+.kiwi-statebrowser-network .kiwi-statebrowser-network-header .u-link {
+    text-decoration: none;
 }
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a.kiwi-statebrowser-network-toggle:hover {
     background-color: #d16c6c;
@@ -1066,6 +1077,15 @@
 }
 
 
+/*Icon before the network in network list */
+.kiwi-statebrowser-network-name::before {
+    content: '\f233';
+    font-family: fontAwesome;
+    margin-right: 5px;
+    font-weight: 100;
+    text-decoration: none;
+}
+
 /* Icons in the Channel List */
 .kiwi-statebrowser-channel[data-name^="#"]::before {
     content: '\f0c0';
@@ -1081,9 +1101,7 @@
     font-weight: 100;
 }
 
-
 /* Nightwatch exclusive fix for network settings labels */
-
 .kiwi-networksettings .u-form .input-text .input-text-label {
     margin-left: 0;
 }
