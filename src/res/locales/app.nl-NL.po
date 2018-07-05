@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-07-05 15:21\n"
+"PO-Revision-Date: 2018-07-05 17:11\n"
 
 #: Start
 msgid "start_button"
@@ -111,11 +111,11 @@ msgstr "Annuleren"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Ja"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "Nee"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -399,7 +399,7 @@ msgstr "Privégesprek met {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr ""
+msgstr "Het kanaal echt verlaten?"
 
 #: Send a message...
 msgid "input_placeholder"
