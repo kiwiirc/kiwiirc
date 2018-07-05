@@ -1081,7 +1081,7 @@
 .kiwi-statebrowser-network-name::before {
     content: '\f233';
     font-family: fontAwesome;
-    margin-right: 5px;
+    margin-right: 2px;
     font-weight: 100;
     text-decoration: none;
 }

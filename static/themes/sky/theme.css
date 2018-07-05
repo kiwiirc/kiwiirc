@@ -7,6 +7,12 @@
     color: #201F1F;
 }
 
+/* Kiwi Theme Background is used to apply the same background colour accross components, rather than targeting them all specifically */
+.kiwi-theme-bg {
+    background: #fff;
+    color: #201F1F;
+}
+
 /* Welcome Screen ( Welcome.vue ) */
 .kiwi-welcome-simple-form,
 .kiwi-customserver-form{
@@ -43,9 +49,6 @@
 
 
 /* App ( App.vue ) */
-.kiwi-workspace {
-    background: #fff;
-}
 .kiwi-workspace::before {
     background: #4dafc5;
 }
@@ -54,9 +57,6 @@
 }
 
 /* App - Tabs */
-.u-tabbed-content {
-    background-color: #fff;
-}
 .u-tabbed-view-tabs {
     background: rgba(0, 0, 0, 0.1);
     border-bottom: 3px solid rgba(0, 0, 0, 0.1);
@@ -145,9 +145,6 @@
 }
 
 /* Application settings ( AppSettings.vue ) */
-.kiwi-appsettings {
-    background: #fff;
-}
 .kiwi-appsettings-block {
     border: 1px solid #fff
 }
@@ -192,10 +189,6 @@
     color: #fff;
 }
 
-.kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-sidebar {
-    background: #fff;
-}
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #ddd;
 }
@@ -368,9 +361,6 @@
 
 
 /* Message list - Standard messages ( MessageList.vue ) */
-.kiwi-messagelist {
-    background: #fff;
-}
 .kiwi-messagelist-message--info-open {
     background: #f6f6f6;
 }
@@ -416,10 +406,6 @@
 }
 
 /* Connection Styling */
-.kiwi-messagelist-message-connection {
-    background-color: #fff;
-}
-
 .kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body {
     background-color: #78c9dc;
     color: #fff;
@@ -628,13 +614,10 @@
 }
 
 /* Sidebar ( Sidebar.vue ) */
-.kiwi-sidebar-options {
-    background-color: #4dafc5;
-    color: #fff;
-}
 .kiwi-sidebar-pin{
     border-right: 1px solid #fff;
     background: #4dafc5;
+    color: #fff;
 }
 .kiwi-sidebar-pin:hover{
     background: #69bdd0;
@@ -642,6 +625,7 @@
 
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
     background: #c54d53;
+    color: #fff;
 }
 .kiwi-container--sidebar-pinned .kiwi-sidebar {
     border-color: #b2b2b2;
@@ -972,6 +956,15 @@
 /* MOTD */
 .kiwi-messagelist-message-motd {
     color: #666;
+}
+
+/*Icon before the network in network list */
+.kiwi-statebrowser-network-name::before {
+    content: '\f233';
+    font-family: fontAwesome;
+    margin-right: 2px;
+    font-weight: 100;
+    text-decoration: none;
 }
 
 /* Icons in the Channel List */
