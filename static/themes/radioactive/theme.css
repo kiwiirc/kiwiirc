@@ -112,7 +112,7 @@
 .u-form input[type='checkbox'],
 .u-form input[type='radio'] {
     border: 2px solid #000;
-    background-color: #fff;
+    background-color: #183123;
 }
 .u-form input[type='checkbox']:after,
 .u-form input[type='radio']:after {
@@ -431,7 +431,6 @@
     color: #fff;
 }
 .kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
-    background-color: #f16f74;
     color: #fff;
 }
 
@@ -607,7 +606,6 @@
 /* Not connected message ( NotConnected.vue ) */
 .kiwi-notconnected {
     color: #fff;
-    background-color: #bf5155;
 }
 .kiwi-notconnected-button {
     border: 2px solid #fff;

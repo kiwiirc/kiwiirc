@@ -14,9 +14,9 @@
 }
 
 .kiwi-wrap {
-    --kiwi-nick-brightness: 40;
+    --kiwi-nick-brightness: 80;
     --kiwi-supports-monospace: 1;
-    color: #adadad;
+    color: #efefef;
 }
 
 /* Welcome Screen ( Welcome.vue ) */
@@ -91,7 +91,6 @@
 /* App - Tabs */
 .u-tabbed-content {
     background-color: #1b1b1b;
-    color: #adadad;
 }
 .u-tabbed-view-tabs {
     background: #000;
@@ -146,15 +145,15 @@
 .u-form input[type='checkbox'],
 .u-form input[type='radio'] {
     border: 2px solid #000;
-    background-color: #adadad;
+    background-color: #000;
 }
 .u-form input[type='checkbox']:after,
 .u-form input[type='radio']:after {
-    background: #000000;
-}
-.u-form input[type='checkbox']:after,
-.u-form input[type='radio']:after {
-    background: #000000;
+    background: #adadad;
+    top:2px;
+    left:2px;
+    width:12px;
+    height: 12px;
 }
 
 /*buttons */

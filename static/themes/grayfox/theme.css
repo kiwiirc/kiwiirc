@@ -8,6 +8,11 @@
     color: #201F1F;
 }
 
+/* Kiwi Theme Background is used to apply the same background colour accross components, rather than targeting them all specifically */
+.kiwi-theme-bg {
+    background-color: #1b2f24;
+}
+
 /* Welcome Screen ( Welcome.vue ) */
 .kiwi-welcome-simple-form,
 .kiwi-customserver-form{
@@ -890,6 +895,10 @@
 }
 .kiwi-statebrowser-channel-active {
     background: rgba(255, 255, 255, 0.05);
+}
+
+.kiwi-statebrowser-network-status .u-link {
+    color: #fff;
 }
 
 /* User Box Styling ( UserBox.vue ) */
