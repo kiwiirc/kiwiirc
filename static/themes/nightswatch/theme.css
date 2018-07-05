@@ -678,6 +678,19 @@
     border-top: 1px solid #ddd;
 }
 
+.kiwi-selfuser-actions .u-button-primary {
+    background: none;
+    border: 1px solid #fff;
+}
+
+.kiwi-selfuser-actions .u-button-primary:hover {
+    color: #fff;
+}
+
+.kiwi-selfuser-actions .u-button-warning {
+    color: #fff;
+}
+
 /* Settings Aliases ( SettingsAliases.vue ) */
 .kiwi-settings-aliases-input {
     border-color: #ccc;
@@ -961,6 +974,7 @@
 }
 .kiwi-statebrowser-network-status {
     background: rgba(255, 255, 255, 0.1);
+    color: #fff;
 }
 .kiwi-statebrowser-channel-active {
     background: rgba(255, 255, 255, 0.05);

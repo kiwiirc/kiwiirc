@@ -10,7 +10,7 @@
 
 /* Kiwi Theme Background is used to apply the same background colour accross components, rather than targeting them all specifically */
 .kiwi-theme-bg {
-    background-color: #1b2f24;
+    background-color: #fff;
 }
 
 /* Welcome Screen ( Welcome.vue ) */
@@ -61,12 +61,11 @@
     background-color: #fff;
 }
 .u-tabbed-view-tabs {
-    background: rgba(0, 0, 0, 0.1);
+    background: #fff;
     border-bottom: 3px solid rgba(0, 0, 0, 0.1);
 }
 .u-tabbed-view-tabs .u-tabbed-view-tab {
     border-bottom: 3px solid rgba(0, 0, 0, 0.1);
-    background: #fff;
 }
 .u-tabbed-view-tabs .u-tabbed-view-tab:hover,
 .u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active{
@@ -195,10 +194,6 @@
     color: #fff;
 }
 
-.kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-sidebar {
-    background: #fff;
-}
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #ddd;
 }
@@ -667,6 +662,11 @@
     background: #414956;
     color: #fff;
 }
+
+.kiwi-network-name-hover-icon {
+    color: #fff;
+}
+
 .kiwi-statebrowser-divider {
     background: rgba(255, 255, 255, 0.3);
 }
@@ -892,6 +892,7 @@
 }
 .kiwi-statebrowser-network-status {
     background: rgba(255, 255, 255, 0.1);
+    color: #fff;
 }
 .kiwi-statebrowser-channel-active {
     background: rgba(255, 255, 255, 0.05);
@@ -980,6 +981,15 @@
 .kiwi-customserver {
     background-color: #414956;
     color: #fff;
+}
+
+/*Icon before the network in network list */
+.kiwi-statebrowser-network-name::before {
+    content: '\f233';
+    font-family: fontAwesome;
+    margin-right: 2px;
+    font-weight: 100;
+    text-decoration: none;
 }
 
 /* Icons in the Channel List */
