@@ -202,7 +202,6 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    z-index: 10;
 }
 
 .kiwi-sidebar.kiwi-sidebar-section-settings {

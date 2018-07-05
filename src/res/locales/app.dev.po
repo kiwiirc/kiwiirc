@@ -96,6 +96,14 @@ msgstr "OK"
 msgid "cancel"
 msgstr "Cancel"
 
+#: Yes
+msgid "yes"
+msgstr "Yes"
+
+#: No
+msgid "no"
+msgstr "No"
+
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -411,6 +419,10 @@ msgstr "Not Connected"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Private conversation with {{user}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Really leave the channel?"
 
 
 

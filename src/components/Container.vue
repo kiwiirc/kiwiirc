@@ -139,7 +139,7 @@ export default {
 
 /* When the sidebar is open we will put a shadow over the text area */
 .kiwi-header {
-    z-index: 1;
+    z-index: 2;
 
     /* IE 11 breaks when using the shorthand flex syntax here */
     flex-grow: 0;
@@ -153,7 +153,7 @@ export default {
     bottom: 0;
     width: 443px;
     max-width: 443px;
-    z-index: 2;
+    z-index: 3;
     transition: right 0.2s, width 0.2s;
     flex: 1;
 }
@@ -170,6 +170,7 @@ export default {
     border-left-width: 1px;
     border-left-style: solid;
     max-width: 430px;
+    z-index: 1;
 }
 
 .kiwi-container-content {
