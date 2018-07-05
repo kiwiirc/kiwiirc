@@ -9,6 +9,11 @@
     color: #201F1F;
 }
 
+/* Kiwi Theme Background is used to apply the same background colour accross components, rather than targeting them all specifically */
+.kiwi-theme-bg {
+    background-color: #fff;
+}
+
  /* Welcome Screen ( Welcome.vue ) */
 .kiwi-welcome-simple-form,
 .kiwi-customserver-form{
@@ -53,9 +58,6 @@
 }
 
 /* App - Tabs */
-.u-tabbed-content {
-    background-color: #fff;
-}
 .u-tabbed-view-tabs {
     background: rgba(0, 0, 0, 0.1);
     border-bottom: 3px solid rgba(0, 0, 0, 0.1);
@@ -144,9 +146,6 @@
 }
 
 /* Application settings ( AppSettings.vue ) */
-.kiwi-appsettings {
-    background: #fff;
-}
 .kiwi-appsettings-block {
     border: 1px solid #fff
 }
@@ -191,13 +190,10 @@
     color: #fff;
 }
 
-.kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-sidebar {
-    background: #fff;
-}
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #ddd;
 }
+
 .kiwi-container-toggledraw-sidebar {
     border-left: 1px solid #ddd;
 }
@@ -714,8 +710,14 @@
 .kiwi-statebrowser-scrollarea h4 {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+.kiwi-network-name-hover-icon {
+    color: #fff;
+}
+
 .kiwi-network-name-options {
     background-color: #8e715c;
+    color: #fff;
 }
 .kiwi-network-name-options .option-button:hover,
 .kiwi-network-name-options .option-button.active {
@@ -1003,6 +1005,15 @@
 .kiwi-customserver .u-link {
     color: #a2846e;
     text-decoration: underline;
+}
+
+/*Icon before the network in network list */
+.kiwi-statebrowser-network-name::before {
+    content: '\f233';
+    font-family: fontAwesome;
+    margin-right: 2px;
+    font-weight: 100;
+    text-decoration: none;
 }
 
 /* Icons in the Channel List */

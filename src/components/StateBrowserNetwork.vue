@@ -404,7 +404,7 @@ export default {
 
 .kiwi-statebrowser-network-status {
     text-align: center;
-    padding: 4px;
+    padding: 4px 4px 6px 4px;
     overflow: hidden;
     position: relative;
     height: 1.5em;
