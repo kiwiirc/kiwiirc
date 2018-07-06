@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-06-28 16:50\n"
+"PO-Revision-Date: 2018-07-06 11:41\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Налаштування"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Налаштування Kiwi"
 
 #: Channels
 msgid "channels"
@@ -109,6 +109,14 @@ msgstr "OK"
 msgid "cancel"
 msgstr "Скасувати"
 
+#: Yes
+msgid "yes"
+msgstr "так"
+
+#: No
+msgid "no"
+msgstr "ні"
+
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "Це закриє усі розмови KiwiIRC. Ви дійсно хочете закрити це вікно?"
@@ -143,43 +151,43 @@ msgstr "Канал"
 
 #: week
 msgid "week"
-msgstr ""
+msgstr "тиждень"
 
 #: weeks
 msgid "week_plural"
-msgstr ""
+msgstr "тижнів"
 
 #: day
 msgid "day"
-msgstr ""
+msgstr "день"
 
 #: days
 msgid "day_plural"
-msgstr ""
+msgstr "днів"
 
 #: hour
 msgid "hour"
-msgstr ""
+msgstr "година"
 
 #: hours
 msgid "hour_plural"
-msgstr ""
+msgstr "годин"
 
 #: minute
 msgid "minute"
-msgstr ""
+msgstr "хвилина"
 
 #: minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "хвилин"
 
 #: second
 msgid "second"
-msgstr ""
+msgstr "секунда"
 
 #: seconds
 msgid "second_plural"
-msgstr ""
+msgstr "секунд"
 
 #: General
 msgid "settings_general"
@@ -191,7 +199,7 @@ msgstr "Тема"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Оновити тему"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -259,7 +267,7 @@ msgstr "Профілі"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Що таке псевдоніми?"
 
 #: Send Message
 msgid "send_message"
@@ -267,11 +275,11 @@ msgstr "Надіслати повідомлення"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Введіть ключ каналу"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr ""
+msgstr "Повторно приєднатися до {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -351,11 +359,11 @@ msgstr "Блокувати зовнішні повідомлення"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr ""
+msgstr "Натисніть кнопку для оновлення списку каналу"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr ""
+msgstr "Каналів не знайдено. Спробуйте знову згодом"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -367,15 +375,15 @@ msgstr "Показати statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Приховати тему"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Показати тему"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Налаштування каналу"
 
 #: Join Channel
 msgid "container_join"
@@ -388,6 +396,10 @@ msgstr "Не з'єднано"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Приватна розмова з {{user}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr ""
 
 #: Send a message...
 msgid "input_placeholder"
@@ -459,7 +471,7 @@ msgstr "Тут {{count}} людей"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Фільтр користувачів на каналі"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -567,11 +579,11 @@ msgstr "Приєднатися до #каналу"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Фільтр каналів"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Знайти більше каналів"
 
 #: Change nick
 msgid "change_nick"
@@ -723,41 +735,41 @@ msgstr "З'єднано"
 
 #: Disconnected
 msgid "disconnected"
-msgstr ""
+msgstr "Від'єднано"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr ""
+msgstr "Під'єднано до {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr ""
+msgstr "{{nick}} приєднався"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr ""
+msgstr "{{nick}} виштовхнув вас з {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr ""
+msgstr "{{chanop}} виштовхнув {{nick}} з каналу {{channel}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr ""
+msgstr "{{nick}} вийшов"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr ""
+msgstr "{{nick}} запрошує вас приєднатися до {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr ""
+msgstr "Псевдонім {{nick}} вже зайнятий. Спроба {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr ""
+msgstr "{{nick}} тепер відомий як {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr ""
+msgstr "{{nick}} змінив тему на: {{topic}}"
 

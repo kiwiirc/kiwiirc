@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-06-28 16:51\n"
+"PO-Revision-Date: 2018-07-06 09:30\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Настройки"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Kiwi Настройки"
 
 #: Channels
 msgid "channels"
@@ -109,6 +109,14 @@ msgstr "ОК"
 msgid "cancel"
 msgstr "Откажи"
 
+#: Yes
+msgid "yes"
+msgstr "Да"
+
+#: No
+msgid "no"
+msgstr "Не"
+
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "Това ще затвори всички разговори в Уебчата. Наистина ли искате да затворите този прозорец?"
@@ -143,43 +151,43 @@ msgstr "Автоматично влизане в канали"
 
 #: week
 msgid "week"
-msgstr ""
+msgstr "седмица"
 
 #: weeks
 msgid "week_plural"
-msgstr ""
+msgstr "седмици"
 
 #: day
 msgid "day"
-msgstr ""
+msgstr "ден"
 
 #: days
 msgid "day_plural"
-msgstr ""
+msgstr "дни"
 
 #: hour
 msgid "hour"
-msgstr ""
+msgstr "час"
 
 #: hours
 msgid "hour_plural"
-msgstr ""
+msgstr "часа"
 
 #: minute
 msgid "minute"
-msgstr ""
+msgstr "минута"
 
 #: minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "минути"
 
 #: second
 msgid "second"
-msgstr ""
+msgstr "секунда"
 
 #: seconds
 msgid "second_plural"
-msgstr ""
+msgstr "секунди"
 
 #: General
 msgid "settings_general"
@@ -191,7 +199,7 @@ msgstr "Настройки на темата"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Oпресняване на темите"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -259,7 +267,7 @@ msgstr "Алиасес"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Какво представляват псевдонимите"
 
 #: Send Message
 msgid "send_message"
@@ -267,11 +275,11 @@ msgstr "Изпрати съобщение"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Въведете ключа на канала"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr ""
+msgstr "се присъедини отново {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -367,15 +375,15 @@ msgstr "Покажи statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Скриване на топика"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Покажи топика"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Настройки на канала"
 
 #: Join Channel
 msgid "container_join"
@@ -388,6 +396,10 @@ msgstr "Не сте свързан"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Частен разговор с {{user}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Наистина ли искате  да напуснете канала?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -459,7 +471,7 @@ msgstr "{{count}} Потребителя"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Филтриране на юзъри в канала"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -567,11 +579,11 @@ msgstr "Влез в нов #канал"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Филтър на канал"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Намери повече канали"
 
 #: Change nick
 msgid "change_nick"

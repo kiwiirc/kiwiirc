@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2018-06-28 16:50\n"
+"PO-Revision-Date: 2018-07-05 15:20\n"
 
 #: Start
 msgid "start_button"
@@ -107,6 +107,14 @@ msgstr ""
 
 #: Cancel
 msgid "cancel"
+msgstr ""
+
+#: Yes
+msgid "yes"
+msgstr ""
+
+#: No
+msgid "no"
 msgstr ""
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
@@ -387,6 +395,10 @@ msgstr ""
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
+msgstr ""
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
 msgstr ""
 
 #: Send a message...
