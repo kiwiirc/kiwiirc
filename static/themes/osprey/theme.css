@@ -151,7 +151,7 @@
     color: #fff;
 }
 .u-link {
-    color: #4d6075;
+    color: #fff;
 }
 
 /* Application settings ( AppSettings.vue ) */
@@ -639,6 +639,11 @@
 }
 .kiwi-sidebar-pin:hover{
     background: #4e5c6b;
+}
+
+.kiwi-sidebar-options {
+    background: #212d3a;
+    color: #fff;
 }
 
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
