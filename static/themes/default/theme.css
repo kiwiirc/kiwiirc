@@ -623,6 +623,7 @@
 
 /* Sidebar ( Sidebar.vue ) */
 .kiwi-sidebar-options {
+    background-color: #42b992;
     color: #fff;
 }
 .kiwi-sidebar-pin{
@@ -631,10 +632,6 @@
 }
 .kiwi-sidebar-pin:hover{
     background: #62d0ac;
-}
-
-.kiwi-sidebar-options .kiwi-sidebar-close {
-    color: #201F1F;
 }
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
     background: #d16c6c;
