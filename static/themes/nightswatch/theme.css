@@ -631,16 +631,16 @@
 }
 .kiwi-nicklist-info{
     border-top: 1px solid rgba(0, 0, 0, 0.2);
+    color: #dedede;
 }
+
 .kiwi-nicklist-info input {
-    background-color: #000;
-    color: #b9b9b9;
+    color: #efefef;
 }
 
-.kiwi-nicklist-info i {
-    color: #b9b9b9;
+.kiwi-nicklist-info .fa.fa-search{
+    color: #efefef;
 }
-
 .kiwi-nicklist-user {
     border-top: 1px solid #858585;
 }
