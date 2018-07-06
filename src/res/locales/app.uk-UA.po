@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-07-05 15:20\n"
+"PO-Revision-Date: 2018-07-06 09:00\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Налаштування"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Налаштування Kiwi"
 
 #: Channels
 msgid "channels"
@@ -111,11 +111,11 @@ msgstr "Скасувати"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "так"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "ні"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -151,43 +151,43 @@ msgstr "Канал"
 
 #: week
 msgid "week"
-msgstr ""
+msgstr "тиждень"
 
 #: weeks
 msgid "week_plural"
-msgstr ""
+msgstr "тижнів"
 
 #: day
 msgid "day"
-msgstr ""
+msgstr "день"
 
 #: days
 msgid "day_plural"
-msgstr ""
+msgstr "днів"
 
 #: hour
 msgid "hour"
-msgstr ""
+msgstr "година"
 
 #: hours
 msgid "hour_plural"
-msgstr ""
+msgstr "годин"
 
 #: minute
 msgid "minute"
-msgstr ""
+msgstr "хвилина"
 
 #: minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "хвилин"
 
 #: second
 msgid "second"
-msgstr ""
+msgstr "секунда"
 
 #: seconds
 msgid "second_plural"
-msgstr ""
+msgstr "секунд"
 
 #: General
 msgid "settings_general"
@@ -199,7 +199,7 @@ msgstr "Тема"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Оновити тему"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -267,7 +267,7 @@ msgstr "Профілі"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Що таке псевдоніми?"
 
 #: Send Message
 msgid "send_message"
@@ -275,7 +275,7 @@ msgstr "Надіслати повідомлення"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Введіть ключ каналу"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
