@@ -285,7 +285,7 @@ export default {
     padding: 0 10px;
     margin: 0;
     opacity: 1;
-    line-height: 39px;
+    line-height: 40px;
     cursor: pointer;
     display: block;
     box-sizing: border-box;

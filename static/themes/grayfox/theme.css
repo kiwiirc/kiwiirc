@@ -8,38 +8,42 @@
     color: #201F1F;
 }
 
- /* Welcome Screen ( Welcome.vue ) */
- .kiwi-welcome-simple-form,
- .kiwi-customserver-form{
-     background-color: #fff;
-     border: 1px solid #ececec;
- }
- .kiwi-welcome-simple-error {
-     border: 1px dashed #d86f6f;
- }
- .kiwi-welcome-simple-form .u-submit {
-     background-color: #747c88;
-     color: #fff;
- }
- .kiwi-welcome-simple .help {
-     color: #666;
- }
- .kiwi-welcome-simple .help a {
-     color: #666;
- }
- .kiwi-welcome-simple .help a:hover {
-     color: #a9d87a;
- }
+/* Kiwi Theme Background is used to apply the same background colour accross components, rather than targeting them all specifically */
+.kiwi-theme-bg {
+    background-color: #fff;
+}
 
+/* Welcome Screen ( Welcome.vue ) */
+.kiwi-welcome-simple-form,
+.kiwi-customserver-form{
+    background-color: #fff;
+    border: 1px solid #ececec;
+}
+.kiwi-welcome-simple-error {
+    border: 1px dashed #d86f6f;
+}
+.kiwi-welcome-simple-form .u-submit {
+    background-color: #747c88;
+    color: #fff;
+}
+.kiwi-welcome-simple .help {
+    color: #666;
+}
+.kiwi-welcome-simple .help a {
+    color: #666;
+}
+.kiwi-welcome-simple .help a:hover {
+    color: #a9d87a;
+}
 
-
+.kiwi-startup-common-section-info {
+    border-left: 5px solid #747c88;
+}
 
 /* Custom server layout */
 .kiwi-customserver {
 	background-color: #fbfbfb;
 }
-
-
 
 /* App ( App.vue ) */
 .kiwi-workspace {
@@ -57,12 +61,11 @@
     background-color: #fff;
 }
 .u-tabbed-view-tabs {
-    background: rgba(0, 0, 0, 0.1);
+    background: #fff;
     border-bottom: 3px solid rgba(0, 0, 0, 0.1);
 }
 .u-tabbed-view-tabs .u-tabbed-view-tab {
     border-bottom: 3px solid rgba(0, 0, 0, 0.1);
-    background: #fff;
 }
 .u-tabbed-view-tabs .u-tabbed-view-tab:hover,
 .u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active{
@@ -140,7 +143,7 @@
     color: #fff;
 }
 .u-link {
-    color: #747c88;
+    color: #fff;
 }
 
 /* Application settings ( AppSettings.vue ) */
@@ -191,10 +194,6 @@
     color: #fff;
 }
 
-.kiwi-container-toggledraw-statebrowser,
-.kiwi-container-toggledraw-sidebar {
-    background: #fff;
-}
 .kiwi-container-toggledraw-statebrowser {
     border-right: 1px solid #ddd;
 }
@@ -345,6 +344,10 @@
 .kiwi-inputtool-emoji-emoji {
     background-color: #efefef;
     color: #272727;
+}
+
+.kiwi-selfuser .u-link {
+    color: #687282;
 }
 
 /* AutoComplete - If the user has enabled autocomplete in their options, this will style the options (AutoComplete.vue) */
@@ -663,6 +666,11 @@
     background: #414956;
     color: #fff;
 }
+
+.kiwi-network-name-hover-icon {
+    color: #fff;
+}
+
 .kiwi-statebrowser-divider {
     background: rgba(255, 255, 255, 0.3);
 }
@@ -745,6 +753,15 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     color: #131312;
 }
+
+.kiwi-statebrowser-channelfilter p a {
+    color: #f1f1f1;
+}
+
+.kiwi-statebrowser-channelfilter p a:hover {
+    color: #fff;
+}
+
 .kiwi-statebrowser-channelfilter::after {
     color: #000;
 }
@@ -765,21 +782,20 @@
 }
 .kiwi-statebrowser-newnetwork a {
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 .kiwi-statebrowser-newnetwork a:hover {
     background: #747c88;
-    border-color: #747c88;
     opacity: 1;
     color: #fff;
 }
-.kiwi-statebrowser-network .kiwi-statebrowser-network-header {
-    background-color: #687282;
-}
+
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
     color: #fff;
 }
 
+.kiwi-statebrowser-network--active .kiwi-statebrowser-network-header {
+    background: #687282;
+}
 
 /* Channel Styling */
 .kiwi-statebrowser-channels  .kiwi-statebrowser-channel {
@@ -890,9 +906,15 @@
 }
 .kiwi-statebrowser-network-status {
     background: rgba(255, 255, 255, 0.1);
+    color: #fff;
 }
+
 .kiwi-statebrowser-channel-active {
-    background: rgba(255, 255, 255, 0.05);
+    background: #555e6b
+}
+
+.kiwi-statebrowser-network-status .u-link {
+    color: #fff;
 }
 
 /* User Box Styling ( UserBox.vue ) */
@@ -968,4 +990,34 @@
 /* MOTD */
 .kiwi-messagelist-message-motd {
     color: #666;
+}
+
+/* Customer Server Styling */
+.kiwi-customserver {
+    background-color: #414956;
+    color: #fff;
+}
+
+/*Icon before the network in network list */
+.kiwi-statebrowser-network-name::before {
+    content: '\f233';
+    font-family: fontAwesome;
+    margin-right: 2px;
+    font-weight: 100;
+    text-decoration: none;
+}
+
+/* Icons in the Channel List */
+.kiwi-statebrowser-channel[data-name^="#"]::before {
+    content: '\f0c0';
+}
+.kiwi-statebrowser-channel[data-name^="#help"]::before {
+    content: '\f059';
+}
+
+.kiwi-statebrowser-channel::before {
+    content: '\f007';
+    font-family: fontAwesome;
+    margin-right: 5px;
+    font-weight: 100;
 }
