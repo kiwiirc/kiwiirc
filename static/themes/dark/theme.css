@@ -400,6 +400,12 @@
     background: #fff;
 }
 
+.kiwi-messagelist-seperator > span {
+    backround: #363636;
+    color: #fff;
+    border: #fff;
+}
+
 .kiwi-messagelist-message--info-open {
     background: #f6f6f6;
 }
