@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-07-05 15:21\n"
+"PO-Revision-Date: 2018-07-06 09:20\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Настройки"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Kiwi Настройки"
 
 #: Channels
 msgid "channels"
@@ -111,11 +111,11 @@ msgstr "Откажи"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Да"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "Не"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -151,35 +151,35 @@ msgstr "Автоматично влизане в канали"
 
 #: week
 msgid "week"
-msgstr ""
+msgstr "седмица"
 
 #: weeks
 msgid "week_plural"
-msgstr ""
+msgstr "седмици"
 
 #: day
 msgid "day"
-msgstr ""
+msgstr "ден"
 
 #: days
 msgid "day_plural"
-msgstr ""
+msgstr "дни"
 
 #: hour
 msgid "hour"
-msgstr ""
+msgstr "час"
 
 #: hours
 msgid "hour_plural"
-msgstr ""
+msgstr "часа"
 
 #: minute
 msgid "minute"
-msgstr ""
+msgstr "минута"
 
 #: minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "минути"
 
 #: second
 msgid "second"
