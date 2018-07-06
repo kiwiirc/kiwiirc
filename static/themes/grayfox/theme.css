@@ -143,7 +143,7 @@
     color: #fff;
 }
 .u-link {
-    color: #747c88;
+    color: #fff;
 }
 
 /* Application settings ( AppSettings.vue ) */
@@ -903,8 +903,9 @@
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
 }
+
 .kiwi-statebrowser-channel-active {
-    background: rgba(255, 255, 255, 0.05);
+    background: #555e6b
 }
 
 .kiwi-statebrowser-network-status .u-link {
