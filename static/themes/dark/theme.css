@@ -498,6 +498,10 @@
     background: #62d0ac;
 }
 
+.kiwi-sidebar-options .kiwi-sidebar-close {
+    background: #42b992;
+}
+
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
     background: #d16c6c;
 }
