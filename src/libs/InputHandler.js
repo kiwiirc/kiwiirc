@@ -532,16 +532,16 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
                 .replace('{{server_info}}', whoisData.server_info));
         }
         if (whoisData.operator) {
-            display(formats.server.replace('{{operator}}', whoisData.operator));
+            display(formats.operator.replace('{{operator}}', whoisData.operator));
         }
         if (whoisData.modes) {
-            display(formats.server.replace('{{modes}}', whoisData.modes));
+            display(formats.modes.replace('{{modes}}', whoisData.modes));
         }
         if (whoisData.account) {
             display(formats.account.replace('{{account}}', whoisData.account));
         }
         if (whoisData.registered_nick) {
-            display(formats.account.replace('{{registered_nick}}', whoisData.registered_nick));
+            display(formats.registered_nick.replace('{{registered_nick}}', whoisData.registered_nick));
         }
         if (whoisData.secure) {
             display(formats.secure);
