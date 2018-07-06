@@ -346,6 +346,10 @@
     color: #272727;
 }
 
+.kiwi-selfuser .u-link {
+    color: #687282;
+}
+
 /* AutoComplete - If the user has enabled autocomplete in their options, this will style the options (AutoComplete.vue) */
 .kiwi-autocomplete {
     box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
