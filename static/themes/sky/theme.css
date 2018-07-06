@@ -141,7 +141,7 @@
     color: #fff;
 }
 .u-link {
-    color: #78c9dc;
+    color: #fff;
 }
 
 /* Application settings ( AppSettings.vue ) */
@@ -623,9 +623,14 @@
     background: #69bdd0;
 }
 
-.kiwi-sidebar-options .kiwi-sidebar-close:hover {
-    background: #c54d53;
+.kiwi-sidebar-options .kiwi-sidebar-close {
+    background: #4dafc5;
     color: #fff;
+}
+
+.kiwi-sidebar-options .kiwi-sidebar-close:hover {
+    background: #fff;
+    color: #c54d53;
 }
 .kiwi-container--sidebar-pinned .kiwi-sidebar {
     border-color: #b2b2b2;
@@ -778,6 +783,11 @@
     border-bottom: 1px solid #69bdd0;
     color: #fff;
 }
+
+.kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
+    background: #70c3d6;
+}
+
 .kiwi-statebrowser-channels  .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name {
     color: #fff;
 }
@@ -877,9 +887,14 @@
 }
 
 /* Statebrowser Network - ( StateBrowser.vue ) */
-.kiwi-statebrowser-network-header {
-    background: rgba(255, 255, 255, 0.15);
+.kiwi-statebrowser-network .kiwi-statebrowser-network-header {
+    background-color: #4f95a7;
 }
+
+.kiwi-statebrowser-network--active .kiwi-statebrowser-network-header {
+    background: #b3dee8;
+}
+
 .kiwi-statebrowser-network-status {
     background: rgba(255, 255, 255, 0.1);
 }
