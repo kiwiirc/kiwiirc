@@ -784,13 +784,14 @@
     opacity: 1;
     color: #fff;
 }
-.kiwi-statebrowser-network .kiwi-statebrowser-network-header {
-    background-color: #687282;
-}
+
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
     color: #fff;
 }
 
+.kiwi-statebrowser-network--active .kiwi-statebrowser-network-header {
+    background: #687282;
+}
 
 /* Channel Styling */
 .kiwi-statebrowser-channels  .kiwi-statebrowser-channel {
