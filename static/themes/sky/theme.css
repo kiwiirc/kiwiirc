@@ -730,6 +730,15 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     color: #131312;
 }
+
+.kiwi-statebrowser-channelfilter p a {
+    color: #fff;
+}
+
+.kiwi-statebrowser-channelfilter p a:hover {
+    color: #fff;
+}
+
 .kiwi-statebrowser-channelfilter::after {
     color: #000;
 }
