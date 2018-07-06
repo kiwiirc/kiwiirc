@@ -135,10 +135,15 @@
 .u-form label input[type='text'],
 .u-form label input[type='password'],
 .u-form label input[type='email'],
-.u-form textarea {
+.u-form textarea,
+.kiwi-networksettings .input-text input {
     color: #000;
     background: #adadad;
     border: 1px solid #000000;
+}
+
+.kiwi-networksettings .input-text input {
+    border: none;
 }
 
 /* Checkbox Styling */
@@ -589,9 +594,17 @@
     border: 1px dashed #d86f6f;
 }
 .kiwi-networksettings .kiwi-connect-to-newnetwork {
-    background: #000000;
-    color: #adadad;
+    background: none;
+    border: 1px solid #000;
+    color: #fff;
+    transition: all 0.3s;
 }
+
+.kiwi-networksettings .kiwi-connect-to-newnetwork:hover {
+    background: #000;
+    text-decoration: underline;
+}
+
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
     border: 1px solid #adadad;
     color: #adadad;
@@ -599,7 +612,7 @@
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button:hover,
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button.kiwi-networksettings-server-type-active {
     background: #000000;
-    color: #adadad;
+    color: #fff;
 }
 
 .kiwi-networksettings-danger .u-button-warning {
