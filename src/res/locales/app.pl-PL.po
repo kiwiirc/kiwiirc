@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2018-07-05 15:20\n"
+"PO-Revision-Date: 2018-07-06 09:51\n"
 
 #: Start
 msgid "start_button"
@@ -111,11 +111,11 @@ msgstr "Anuluj"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Tak"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "Nie"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -151,43 +151,43 @@ msgstr "Kanał"
 
 #: week
 msgid "week"
-msgstr ""
+msgstr "tydzień"
 
 #: weeks
 msgid "week_plural"
-msgstr ""
+msgstr "tygodni(e)"
 
 #: day
 msgid "day"
-msgstr ""
+msgstr "dzień"
 
 #: days
 msgid "day_plural"
-msgstr ""
+msgstr "dni"
 
 #: hour
 msgid "hour"
-msgstr ""
+msgstr "godzina"
 
 #: hours
 msgid "hour_plural"
-msgstr ""
+msgstr "godzin(y)"
 
 #: minute
 msgid "minute"
-msgstr ""
+msgstr "minuta"
 
 #: minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "minut(y)"
 
 #: second
 msgid "second"
-msgstr ""
+msgstr "sekunda"
 
 #: seconds
 msgid "second_plural"
-msgstr ""
+msgstr "sekund(y)"
 
 #: General
 msgid "settings_general"
@@ -199,7 +199,7 @@ msgstr "Motyw"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Odśwież motyw"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -219,7 +219,7 @@ msgstr "Pokazuj listę autouzupełniania"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "Wiadomości czatu"
 
 #: Show timestamps
 msgid "settings_timestamps"
@@ -267,7 +267,7 @@ msgstr "Aliasy"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Co to są aliasy?"
 
 #: Send Message
 msgid "send_message"
@@ -275,7 +275,7 @@ msgstr "Wyślij wiadomość"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Podaj hasło kanału"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
