@@ -321,9 +321,7 @@ export default {
     height: 40px;
     padding: 0 10px;
     line-height: 40px;
-    color: #000;
     box-sizing: border-box;
-    background: #fff;
     border-radius: 1px;
     min-height: none;
     overflow-x: hidden;
@@ -334,7 +332,6 @@ export default {
 .kiwi-networksettings .input-text-c {
     bottom: auto;
     height: 40px;
-    background-color: #fff;
     line-height: 40px;
     text-align: center;
     top: 19px;
