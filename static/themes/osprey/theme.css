@@ -787,11 +787,13 @@
     opacity: 1;
     color: #fff;
 }
-.kiwi-statebrowser-network .kiwi-statebrowser-network-header {
-    background-color: #4e5c6b;
-}
+
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
     color: #fff;
+}
+
+.kiwi-statebrowser-network--active .kiwi-statebrowser-network-header {
+    background: #687282;
 }
 
 
@@ -856,6 +858,11 @@
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
     color: #d03232;
 }
+
+.kiwi-statebrowser-channel-active  {
+    background: #3b4e65;
+}
+
 .kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
     color: #df6b26;
 }
