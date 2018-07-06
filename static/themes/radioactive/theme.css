@@ -142,7 +142,7 @@
     color: #fff;
 }
 .u-link {
-    color: #1b2f24;
+    color: #fff;
 }
 
 /* Application settings ( AppSettings.vue ) */
@@ -167,7 +167,7 @@
     color: #fff;
 }
 .kiwi-appsettings-title:hover{
-    background: #15231b;
+    background: #5cd894;
 }
 
 /* Channel List ( ChannelList.vue ) */
@@ -381,6 +381,11 @@
 .kiwi-messagelist {
     background: #1b2f24;
 }
+
+.kiwi-messagelist-seperator > span {
+    background: none;
+}
+
 .kiwi-messagelist-message--info-open {
     background: #f6f6f6;
 }
@@ -571,10 +576,20 @@
 .kiwi-nicklist-info{
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
-.kiwi-nicklist-info input {
-    background-color: #fff;
-    color: #000;
+
+.kiwi-nicklist-info input,
+.kiwi-nicklist-info input::placeholder,
+.kiwi-nicklist-info input::-webkit-input-placeholder,
+.kiwi-nicklist-info input::-moz-placeholder,
+.kiwi-nicklist-info input:-ms-input-placeholder,
+.kiwi-nicklist-info input:-moz-placeholder {
+  color: #5dd895;
 }
+
+.kiwi-nicklist-info .fa.fa-search {
+    color: #5dd895;
+}
+
 .kiwi-nicklist-user {
     border-top: 1px solid #858585;
 }
@@ -644,7 +659,6 @@
 
 /* Sidebar ( Sidebar.vue ) */
 .kiwi-sidebar-pin{
-    border-right: 1px solid #fff;
     background: #5dd895;
     color: #1b2f24;
 }
@@ -653,7 +667,8 @@
 }
 
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
-    background: #15231b;
+    background: #5cd894;
+    color: #1b2f24;
 }
 .kiwi-container--sidebar-pinned .kiwi-sidebar {
     border-color: #b2b2b2;
@@ -794,8 +809,13 @@
     color: #6fffb0;
     text-decoration: underline;
 }
+
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header {
-    background-color: #5dd895;
+    background: #2d463b;
+}
+
+.kiwi-statebrowser-network--active .kiwi-statebrowser-network-header {
+    background-color: #3b9e6d;
 }
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
     color: #fff;
@@ -811,7 +831,9 @@
     color: #fff;
 }
 .kiwi-statebrowser-channels  .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name  .kiwi-statebrowser-channel-label {
-    background: #d16c6c;
+    background: #3a9065;
+    color: #fff;
+    opacity: 1;
 }
 .kiwi-search-channels.active{
     background: #1b2f24;
@@ -912,8 +934,8 @@
 .kiwi-statebrowser-network-status .u-link {
     color: #fff;
 }
-.kiwi-statebrowser-channel-active {
-    background: rgba(255, 255, 255, 0.05);
+.kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
+    background: #399065;
 }
 
 /* User Box Styling ( UserBox.vue ) */
