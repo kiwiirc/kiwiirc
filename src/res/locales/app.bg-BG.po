@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-07-06 09:20\n"
+"PO-Revision-Date: 2018-07-06 09:30\n"
 
 #: Start
 msgid "start_button"
@@ -183,11 +183,11 @@ msgstr "минути"
 
 #: second
 msgid "second"
-msgstr ""
+msgstr "секунда"
 
 #: seconds
 msgid "second_plural"
-msgstr ""
+msgstr "секунди"
 
 #: General
 msgid "settings_general"
@@ -199,7 +199,7 @@ msgstr "Настройки на темата"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Oпресняване на темите"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -267,7 +267,7 @@ msgstr "Алиасес"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Какво представляват псевдонимите"
 
 #: Send Message
 msgid "send_message"
@@ -275,11 +275,11 @@ msgstr "Изпрати съобщение"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Въведете ключа на канала"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr ""
+msgstr "се присъедини отново {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -375,15 +375,15 @@ msgstr "Покажи statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Скриване на топика"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Покажи топика"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Настройки на канала"
 
 #: Join Channel
 msgid "container_join"
@@ -399,7 +399,7 @@ msgstr "Частен разговор с {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr ""
+msgstr "Наистина ли искате  да напуснете канала?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -471,7 +471,7 @@ msgstr "{{count}} Потребителя"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Филтриране на юзъри в канала"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -579,11 +579,11 @@ msgstr "Влез в нов #канал"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Филтър на канал"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Намери повече канали"
 
 #: Change nick
 msgid "change_nick"
