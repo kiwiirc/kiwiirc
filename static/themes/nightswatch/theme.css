@@ -906,6 +906,22 @@
     background: #000000;
 }
 
+
+/* Style the active state */
+.kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
+    background: #e0e0e0;
+    color: #000;
+}
+.kiwi-statebrowser-channel.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
+    color: #000;
+}
+
+.kiwi-statebrowser-channel.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-settings,
+.kiwi-statebrowser-channel.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-leave {
+    background: #e0e0e0;
+    color: #000;
+}
+
 /* New Channel Button */
 .kiwi-statebrowser-newchannel a {
     border: 1px solid rgba(255, 255, 255, 0.5);
