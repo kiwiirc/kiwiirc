@@ -142,7 +142,7 @@
     color: #fff;
 }
 .u-link {
-    color: #a2846e;
+    color: #fff;
 }
 
 /* Application settings ( AppSettings.vue ) */
@@ -690,6 +690,10 @@
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a.kiwi-statebrowser-network-toggle:hover {
     background-color: #d16c6c;
     border-top-color: #d16c6c;
+}
+
+.kiwi-statebrowser-network .kiwi-statebrowser-network--active .kiwi-statebrowser-network-header {
+    background: #947864;
 }
 
 /* User Settings */
