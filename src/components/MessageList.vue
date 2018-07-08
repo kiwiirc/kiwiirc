@@ -543,7 +543,6 @@ export default {
 }
 
 .kiwi-messagelist-seperator > span {
-    background: #fff;
     display: inline-block;
     position: relative;
     z-index: 1;
