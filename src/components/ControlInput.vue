@@ -37,6 +37,7 @@
                         :placeholder="$t('input_placeholder')"
                         class="kiwi-controlinput-input"
                         wrap="off"
+                        @input="inputUpdate"
                         @keydown="inputKeyDown($event)"
                         @keyup="inputKeyUp($event)"
                         @click="closeInputTool"/>
@@ -122,6 +123,11 @@ export default {
             let val = this.history[this.history_pos];
             this.$refs.input.setValue(val || '');
         },
+        buffer() {
+            if (!state.getSetting('settings.buffers.shared_input')) {
+                this.inputRestore();
+            }
+        },
     },
     created: function created() {
         this.listen(state, 'document.keydown', (ev) => {
@@ -148,7 +154,23 @@ export default {
             this.$refs.input.focus();
         });
     },
+    mounted() {
+        this.inputRestore();
+    },
     methods: {
+        inputUpdate(val) {
+            if (state.getSetting('settings.buffers.shared_input')) {
+                state.ui.current_input = val;
+            } else {
+                this.buffer.current_input = val;
+            }
+        },
+        inputRestore() {
+            let currentInput = state.getSetting('settings.buffers.shared_input') ?
+                state.ui.current_input :
+                this.buffer.current_input;
+            this.$refs.input.reset(currentInput);
+        },
         toggleSelfUser() {
             if (this.networkState === 'connected') {
                 this.selfuser_open = !this.selfuser_open;

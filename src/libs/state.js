@@ -59,6 +59,7 @@ const stateObj = {
             hide_message_counts: false,
             default_ban_mask: '*!%i@%h',
             default_kick_reason: 'Your behavior is not conducive to the desired environment.',
+            shared_input: false,
         },
         // Startup screen default
         startupOptions: {
@@ -299,6 +300,7 @@ const stateObj = {
         app_height: 0,
         is_touch: false,
         favicon_counter: 0,
+        current_input: '',
     },
     networks: [
         /* {
@@ -1206,6 +1208,7 @@ function createEmptyBufferObject() {
         last_read: Date.now(),
         active_timeout: null,
         message_count: 0,
+        current_input: '',
     };
 }
 
