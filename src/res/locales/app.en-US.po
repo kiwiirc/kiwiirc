@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2018-07-06 20:50\n"
+"PO-Revision-Date: 2018-07-12 12:20\n"
 
 #: Start
 msgid "start_button"
@@ -151,15 +151,15 @@ msgstr "Channel"
 
 #: week
 msgid "week"
-msgstr "week"
+msgstr "{{count}} week"
 
 #: weeks
 msgid "week_plural"
-msgstr "weeks"
+msgstr "{{count}} weeks"
 
 #: day
 msgid "day"
-msgstr "day"
+msgstr "{{count}} day"
 
 #: days
 msgid "day_plural"
