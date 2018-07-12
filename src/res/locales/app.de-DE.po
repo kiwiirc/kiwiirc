@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 15:06\n"
+"PO-Revision-Date: 2018-07-12 15:10\n"
 
 #: Start
 msgid "start_button"
@@ -643,7 +643,7 @@ msgstr "Kick+Bann vom Channel"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "{{nick}} ernennt {{target}} zum Operator"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
