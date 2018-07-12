@@ -149,45 +149,45 @@ msgstr "Ignora utente"
 msgid "connection_channel"
 msgstr "Canale"
 
-#: week
+#: {{count}} week
 msgid "week"
-msgstr "settimana"
+msgstr "{{count}} settimana"
 
-#: weeks
+#: {{count}} weeks
 msgid "week_plural"
-msgstr "settimane"
+msgstr "{{count}} settimane"
 
-#: day
+#: {{count}} day
 msgid "day"
-msgstr "giorno"
+msgstr "{{count}} giorno"
 
-#: days
+#: {{count}} days
 msgid "day_plural"
-msgstr "giorni"
+msgstr "{{count}} giorni"
 
-#: hour
+#: {{count}} hour
 msgid "hour"
-msgstr "ora"
+msgstr "{{count}} ora"
 
-#: hours
+#: {{count}} hours
 msgid "hour_plural"
-msgstr "ore"
+msgstr "{{count}} ore"
 
-#: minute
+#: {{count}} minute
 msgid "minute"
-msgstr "minuto"
+msgstr "{{count}} minuto"
 
-#: minutes
+#: {{count}} minutes
 msgid "minute_plural"
-msgstr "minuti"
+msgstr "{{count}} minuti"
 
-#: second
+#: {{count}} second
 msgid "second"
-msgstr "secondo"
+msgstr "{{count}} secondo"
 
-#: seconds
+#: {{count}} seconds
 msgid "second_plural"
-msgstr "secondi"
+msgstr "{{count}} secondi"
 
 #: General
 msgid "settings_general"

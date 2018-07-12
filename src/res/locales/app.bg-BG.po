@@ -149,45 +149,45 @@ msgstr "Добави в игнора"
 msgid "connection_channel"
 msgstr "Автоматично влизане в канали"
 
-#: week
+#: {{count}} week
 msgid "week"
-msgstr "седмица"
+msgstr "{{count}} седмица"
 
-#: weeks
+#: {{count}} weeks
 msgid "week_plural"
-msgstr "седмици"
+msgstr "{{count}} седмици"
 
-#: day
+#: {{count}} day
 msgid "day"
-msgstr "ден"
+msgstr "{{count}} ден"
 
-#: days
+#: {{count}} days
 msgid "day_plural"
-msgstr "дни"
+msgstr "{{count}} дни"
 
-#: hour
+#: {{count}} hour
 msgid "hour"
-msgstr "час"
+msgstr "{{count}} час"
 
-#: hours
+#: {{count}} hours
 msgid "hour_plural"
-msgstr "часа"
+msgstr "{{count}} часа"
 
-#: minute
+#: {{count}} minute
 msgid "minute"
-msgstr "минута"
+msgstr "{{count}} минута"
 
-#: minutes
+#: {{count}} minutes
 msgid "minute_plural"
-msgstr "минути"
+msgstr "{{count}} минути"
 
-#: second
+#: {{count}} second
 msgid "second"
-msgstr "секунда"
+msgstr "{{count}} секунда"
 
-#: seconds
+#: {{count}} seconds
 msgid "second_plural"
-msgstr "секунди"
+msgstr "{{count}} секунди"
 
 #: General
 msgid "settings_general"
