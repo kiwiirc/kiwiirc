@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 14:50\n"
+"PO-Revision-Date: 2018-07-12 15:06\n"
 
 #: Start
 msgid "start_button"
@@ -359,11 +359,11 @@ msgstr "Blocke externe Nachrichten"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr ""
+msgstr "Bestätige den Refresh-Button, um die Raumliste zu aktualisieren"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr ""
+msgstr "Keine Räume gefunden, versuche es später noch einmal"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -375,15 +375,15 @@ msgstr "Status anzeigen"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Thema verstecken"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Thema anzeigen"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Raumeinstellungen"
 
 #: Join Channel
 msgid "container_join"
@@ -399,7 +399,7 @@ msgstr "Privater Chat mit"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr ""
+msgstr "Den Raum wirklich verlassen?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -415,7 +415,7 @@ msgstr "Lade vorherige Nachrichten"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Ungelesene Nachrichten"
 
 #: Server details
 msgid "settings_server_details"
@@ -471,7 +471,7 @@ msgstr "{{count}} user hier"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Nutzer im Raum filtern"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -507,15 +507,15 @@ msgstr "Zeige mir joins an"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Veränderungen des Raumthemas anzeigen"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Namensänderungen anzeigen"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Veränderungen der \"Channel Modes\" anzeigen"
 
 #: Extra message formatting
 msgid "side_formatting"
@@ -579,11 +579,11 @@ msgstr "Betrete #channel"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Räume filtern"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Finde weitere Räume"
 
 #: Change nick
 msgid "change_nick"
