@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 14:30\n"
+"PO-Revision-Date: 2018-07-12 14:41\n"
 
 #: Start
 msgid "start_button"
@@ -211,7 +211,7 @@ msgstr "Verwende Monospace"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "Traditionelles IRC Layout"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -247,7 +247,7 @@ msgstr "Extra Formatierung"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Spitznamen einfärben"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -267,7 +267,7 @@ msgstr "Alias"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Was sind Aliasse"
 
 #: Send Message
 msgid "send_message"
