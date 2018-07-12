@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 14:21\n"
+"PO-Revision-Date: 2018-07-12 14:30\n"
 
 #: Start
 msgid "start_button"
@@ -119,7 +119,7 @@ msgstr "Nein"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "Dies wird deine gesamten Kiwi IRC Unterhaltungen beenden. Bist du dir sicher?"
 
 #: Real name
 msgid "whois_realname"
@@ -151,43 +151,43 @@ msgstr "Channel"
 
 #: {{count}} week
 msgid "week"
-msgstr ""
+msgstr "Woche"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr ""
+msgstr "Wochen"
 
 #: {{count}} day
 msgid "day"
-msgstr ""
+msgstr "Tag"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr ""
+msgstr "Tage"
 
 #: {{count}} hour
 msgid "hour"
-msgstr ""
+msgstr "Stunde"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr ""
+msgstr "Stunden"
 
 #: {{count}} minute
 msgid "minute"
-msgstr ""
+msgstr "Minute"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "Minuten"
 
 #: {{count}} second
 msgid "second"
-msgstr ""
+msgstr "Sekunde"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr ""
+msgstr "Sekunden"
 
 #: General
 msgid "settings_general"
