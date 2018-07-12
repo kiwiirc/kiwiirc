@@ -149,45 +149,45 @@ msgstr "Ignoriši korisnika"
 msgid "connection_channel"
 msgstr "Kanal"
 
-#: week
+#: {{count}} week
 msgid "week"
-msgstr "sedmica"
+msgstr "{{count}} sedmica"
 
-#: weeks
+#: {{count}} weeks
 msgid "week_plural"
-msgstr "sedmica"
+msgstr "{{count}} sedmica"
 
-#: day
+#: {{count}} day
 msgid "day"
-msgstr "dan"
+msgstr "{{count}} dan"
 
-#: days
+#: {{count}} days
 msgid "day_plural"
-msgstr "dana"
+msgstr "{{count}} dana"
 
-#: hour
+#: {{count}} hour
 msgid "hour"
-msgstr "sat"
+msgstr "{{count}} sat"
 
-#: hours
+#: {{count}} hours
 msgid "hour_plural"
-msgstr "sati"
+msgstr "{{count}} sati"
 
-#: minute
+#: {{count}} minute
 msgid "minute"
-msgstr "minuta"
+msgstr "{{count}} minuta"
 
-#: minutes
+#: {{count}} minutes
 msgid "minute_plural"
-msgstr "minuta"
+msgstr "{{count}} minuta"
 
-#: second
+#: {{count}} second
 msgid "second"
-msgstr "sekunda"
+msgstr "{{count}} sekunda"
 
-#: seconds
+#: {{count}} seconds
 msgid "second_plural"
-msgstr "sekundi"
+msgstr "{{count}} sekundi"
 
 #: General
 msgid "settings_general"

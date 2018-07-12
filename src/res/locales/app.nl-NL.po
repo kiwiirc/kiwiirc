@@ -149,45 +149,45 @@ msgstr "Gebruiker negeren"
 msgid "connection_channel"
 msgstr "Kanaal"
 
-#: week
+#: {{count}} week
 msgid "week"
-msgstr "week"
+msgstr "{{count}} week"
 
-#: weeks
+#: {{count}} weeks
 msgid "week_plural"
-msgstr "weken"
+msgstr "{{count}} weken"
 
-#: day
+#: {{count}} day
 msgid "day"
-msgstr "dag"
+msgstr "{{count}} dag"
 
-#: days
+#: {{count}} days
 msgid "day_plural"
-msgstr "dagen"
+msgstr "{{count}} dagen"
 
-#: hour
+#: {{count}} hour
 msgid "hour"
-msgstr "uur"
+msgstr "{{count}} uur"
 
-#: hours
+#: {{count}} hours
 msgid "hour_plural"
-msgstr "uur"
+msgstr "{{count}} uur"
 
-#: minute
+#: {{count}} minute
 msgid "minute"
-msgstr "minuut"
+msgstr "{{count}} minuut"
 
-#: minutes
+#: {{count}} minutes
 msgid "minute_plural"
-msgstr "minuten"
+msgstr "{{count}} minuten"
 
-#: second
+#: {{count}} second
 msgid "second"
-msgstr "seconde"
+msgstr "{{count}} seconde"
 
-#: seconds
+#: {{count}} seconds
 msgid "second_plural"
-msgstr "seconden"
+msgstr "{{count}} seconden"
 
 #: General
 msgid "settings_general"
