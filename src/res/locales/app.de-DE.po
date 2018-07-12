@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 16:20\n"
+"PO-Revision-Date: 2018-07-12 16:35\n"
 
 #: Start
 msgid "start_button"
@@ -151,43 +151,43 @@ msgstr "Channel"
 
 #: {{count}} week
 msgid "week"
-msgstr "Woche"
+msgstr "{{count}} Woche"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "Wochen"
+msgstr "{{count}} Wochen"
 
 #: {{count}} day
 msgid "day"
-msgstr "Tag"
+msgstr "{{count}} Tag"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "Tage"
+msgstr "{{count}} Tage"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "Stunde"
+msgstr "{{count}} Stunde"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "Stunden"
+msgstr "{{count}} Stunden"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "Minute"
+msgstr "{{count}} Minute"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "Minuten"
+msgstr "{{count}} Minuten"
 
 #: {{count}} second
 msgid "second"
-msgstr "Sekunde"
+msgstr "{{count}} Sekunde"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "Sekunden"
+msgstr "{{count}} Sekunden"
 
 #: General
 msgid "settings_general"
@@ -687,7 +687,7 @@ msgstr "{{nick}} hat {{target}} verbannt"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} hat die Verbannung von {{target}} aufgehoben"
+msgstr "{{nick}} hat den Ban von {{target}} aufgehoben"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
