@@ -11,15 +11,15 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 14:10\n"
+"PO-Revision-Date: 2018-07-12 14:21\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Start"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Wilkommen im Kiwi IRC!"
 
 #: Close
 msgid "close"
@@ -43,11 +43,11 @@ msgstr "Einstellungen"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Kiwi Einstellungen"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "Chaträume"
 
 #: Banned Users
 msgid "banned"
@@ -103,19 +103,19 @@ msgstr "suche"
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Ja"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "Nein"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
