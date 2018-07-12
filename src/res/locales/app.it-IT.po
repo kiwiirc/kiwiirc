@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-07-06 06:30\n"
+"PO-Revision-Date: 2018-07-12 13:41\n"
 
 #: Start
 msgid "start_button"
@@ -149,43 +149,43 @@ msgstr "Ignora utente"
 msgid "connection_channel"
 msgstr "Canale"
 
-#: week
+#: {{count}} week
 msgid "week"
 msgstr "settimana"
 
-#: weeks
+#: {{count}} weeks
 msgid "week_plural"
 msgstr "settimane"
 
-#: day
+#: {{count}} day
 msgid "day"
 msgstr "giorno"
 
-#: days
+#: {{count}} days
 msgid "day_plural"
 msgstr "giorni"
 
-#: hour
+#: {{count}} hour
 msgid "hour"
 msgstr "ora"
 
-#: hours
+#: {{count}} hours
 msgid "hour_plural"
 msgstr "ore"
 
-#: minute
+#: {{count}} minute
 msgid "minute"
 msgstr "minuto"
 
-#: minutes
+#: {{count}} minutes
 msgid "minute_plural"
 msgstr "minuti"
 
-#: second
+#: {{count}} second
 msgid "second"
 msgstr "secondo"
 
-#: seconds
+#: {{count}} seconds
 msgid "second_plural"
 msgstr "secondi"
 
