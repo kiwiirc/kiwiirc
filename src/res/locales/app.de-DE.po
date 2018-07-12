@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 15:23\n"
+"PO-Revision-Date: 2018-07-12 15:30\n"
 
 #: Start
 msgid "start_button"
@@ -767,9 +767,9 @@ msgstr ""
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr ""
+msgstr "{{nick}} ist nun bekannt als {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr ""
+msgstr "{{nick}} hat das Raumthema verändert zu: {{topic}}"
 
