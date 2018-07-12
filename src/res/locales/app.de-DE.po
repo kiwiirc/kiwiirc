@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 15:40\n"
+"PO-Revision-Date: 2018-07-12 15:50\n"
 
 #: Start
 msgid "start_button"
@@ -199,7 +199,7 @@ msgstr "Theme"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Theme erneuern"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -651,19 +651,19 @@ msgstr "{{nick}} entfernt Operator-Rechte von {{target}} "
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr ""
+msgstr "{{nick}} gibt \"half-ops\" an {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr ""
+msgstr "{{nick}} nimmt \"half-ops\" von {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr ""
+msgstr "{{nick}} gibt \"voice\" an {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr ""
+msgstr "{{nick}} nimmt \"voice\" von {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -691,7 +691,7 @@ msgstr ""
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}} setzt {{mode}} auf {{target}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -735,7 +735,7 @@ msgstr "verbunden"
 
 #: Disconnected
 msgid "disconnected"
-msgstr ""
+msgstr "Verbindung getrennt"
 
 #: Connected to {{network}}!
 msgid "connected_to"
