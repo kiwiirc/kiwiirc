@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 15:30\n"
+"PO-Revision-Date: 2018-07-12 15:40\n"
 
 #: Start
 msgid "start_button"
@@ -739,7 +739,7 @@ msgstr ""
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr ""
+msgstr "Verbunden mit {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
@@ -747,23 +747,23 @@ msgstr "hat den Raum betreten"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr ""
+msgstr "{{nick}} hat dich aus {{channel}} gestoßen"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr ""
+msgstr "{{nick}} wurde von {{chanop}} aus {{channel}} gestoßen"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr ""
+msgstr "{{nick}} hat den Raum verlassen"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr ""
+msgstr "{{nick}} hat dich dazu eingeladen, {{channel}} zu betreten"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr ""
+msgstr "Der Spitzname {{nick}} ist bereits in Verwendung. Probiere {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
