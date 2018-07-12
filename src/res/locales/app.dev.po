@@ -140,43 +140,43 @@ msgstr "Channel"
 
 #: Durations
 
-#: week
+#: {{count}} week
 msgid "week"
 msgstr "{{count}} week"
 
-#: weeks
+#: {{count}} weeks
 msgid "week_plural"
 msgstr "{{count}} weeks"
 
-#: day
+#: {{count}} day
 msgid "day"
 msgstr "{{count}} day"
 
-#: days
+#: {{count}} days
 msgid "day_plural"
 msgstr "{{count}} days"
 
-#: hour
+#: {{count}} hour
 msgid "hour"
 msgstr "{{count}} hour"
 
-#: hours
+#: {{count}} hours
 msgid "hour_plural"
 msgstr "{{count}} hours"
 
-#: minute
+#: {{count}} minute
 msgid "minute"
 msgstr "{{count}} minute"
 
-#: minutes
+#: {{count}} minutes
 msgid "minute_plural"
 msgstr "{{count}} minutes"
 
-#: second
+#: {{count}} second
 msgid "second"
 msgstr "{{count}} second"
 
-#: seconds
+#: {{count}} seconds
 msgid "second_plural"
 msgstr "{{count}} seconds"
 
