@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 13:41\n"
+"PO-Revision-Date: 2018-07-12 14:10\n"
 
 #: Start
 msgid "start_button"
@@ -99,7 +99,7 @@ msgstr "Ungültige Zugangsdaten"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "suche"
 
 #: OK
 msgid "ok"
@@ -587,7 +587,7 @@ msgstr ""
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "ändere deinen Spitznamen"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -743,7 +743,7 @@ msgstr ""
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr ""
+msgstr "hat den Raum betreten"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
