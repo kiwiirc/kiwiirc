@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-07-06 11:41\n"
+"PO-Revision-Date: 2018-07-12 13:40\n"
 
 #: Start
 msgid "start_button"
@@ -149,43 +149,43 @@ msgstr "Ігнорувати користувача"
 msgid "connection_channel"
 msgstr "Канал"
 
-#: week
+#: {{count}} week
 msgid "week"
 msgstr "тиждень"
 
-#: weeks
+#: {{count}} weeks
 msgid "week_plural"
 msgstr "тижнів"
 
-#: day
+#: {{count}} day
 msgid "day"
 msgstr "день"
 
-#: days
+#: {{count}} days
 msgid "day_plural"
 msgstr "днів"
 
-#: hour
+#: {{count}} hour
 msgid "hour"
 msgstr "година"
 
-#: hours
+#: {{count}} hours
 msgid "hour_plural"
 msgstr "годин"
 
-#: minute
+#: {{count}} minute
 msgid "minute"
 msgstr "хвилина"
 
-#: minutes
+#: {{count}} minutes
 msgid "minute_plural"
 msgstr "хвилин"
 
-#: second
+#: {{count}} second
 msgid "second"
 msgstr "секунда"
 
-#: seconds
+#: {{count}} seconds
 msgid "second_plural"
 msgstr "секунд"
 
