@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 15:10\n"
+"PO-Revision-Date: 2018-07-12 15:23\n"
 
 #: Start
 msgid "start_button"
@@ -275,7 +275,7 @@ msgstr "Sende Nachricht"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Passworteingabe erforderlich"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -647,7 +647,7 @@ msgstr "{{nick}} ernennt {{target}} zum Operator"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr ""
+msgstr "{{nick}} entfernt Operator-Rechte von {{target}} "
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
