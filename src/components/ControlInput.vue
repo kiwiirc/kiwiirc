@@ -50,6 +50,9 @@
                 <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
                     <i class="fa fa-smile-o" aria-hidden="true"/>
                 </a>
+                <a class="kiwi-controlinput-tool" @click.prevent="onToolClickGiphy">
+                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                </a>
                 <div
                     v-rawElement="plugin.el"
                     v-for="plugin in pluginUiElements"
@@ -74,6 +77,7 @@ import GlobalApi from '@/libs/GlobalApi';
 import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
+import Giphy from './inputtools/Giphy';
 import SelfUser from './SelfUser';
 
 export default {
@@ -159,6 +163,9 @@ export default {
         },
         onToolClickEmoji() {
             this.toggleInputTool(ToolEmoji);
+        },
+        onToolClickGiphy: function onToolClickGiphy() {
+            this.toggleInputTool(Giphy);
         },
         closeInputTool: function closeInputTool() {
             this.active_tool = null;
