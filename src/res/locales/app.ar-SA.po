@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2018-07-05 15:21\n"
+"PO-Revision-Date: 2018-07-12 13:41\n"
 
 #: Start
 msgid "start_button"
@@ -149,43 +149,43 @@ msgstr "تجاهل مستخدم"
 msgid "connection_channel"
 msgstr "غرفة"
 
-#: week
+#: {{count}} week
 msgid "week"
 msgstr ""
 
-#: weeks
+#: {{count}} weeks
 msgid "week_plural"
 msgstr ""
 
-#: day
+#: {{count}} day
 msgid "day"
 msgstr ""
 
-#: days
+#: {{count}} days
 msgid "day_plural"
 msgstr ""
 
-#: hour
+#: {{count}} hour
 msgid "hour"
 msgstr ""
 
-#: hours
+#: {{count}} hours
 msgid "hour_plural"
 msgstr ""
 
-#: minute
+#: {{count}} minute
 msgid "minute"
 msgstr ""
 
-#: minutes
+#: {{count}} minutes
 msgid "minute_plural"
 msgstr ""
 
-#: second
+#: {{count}} second
 msgid "second"
 msgstr ""
 
-#: seconds
+#: {{count}} seconds
 msgid "second_plural"
 msgstr ""
 

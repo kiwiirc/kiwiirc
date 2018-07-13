@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-07-05 15:21\n"
+"PO-Revision-Date: 2018-07-12 13:41\n"
 
 #: Start
 msgid "start_button"
@@ -111,11 +111,11 @@ msgstr "Zatvori"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "da"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "ne"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -149,43 +149,43 @@ msgstr "Ignoriši korisnika"
 msgid "connection_channel"
 msgstr "Kanal"
 
-#: week
+#: {{count}} week
 msgid "week"
 msgstr "sedmica"
 
-#: weeks
+#: {{count}} weeks
 msgid "week_plural"
 msgstr "sedmica"
 
-#: day
+#: {{count}} day
 msgid "day"
 msgstr "dan"
 
-#: days
+#: {{count}} days
 msgid "day_plural"
 msgstr "dana"
 
-#: hour
+#: {{count}} hour
 msgid "hour"
 msgstr "sat"
 
-#: hours
+#: {{count}} hours
 msgid "hour_plural"
 msgstr "sati"
 
-#: minute
+#: {{count}} minute
 msgid "minute"
 msgstr "minuta"
 
-#: minutes
+#: {{count}} minutes
 msgid "minute_plural"
 msgstr "minuta"
 
-#: second
+#: {{count}} second
 msgid "second"
 msgstr "sekunda"
 
-#: seconds
+#: {{count}} seconds
 msgid "second_plural"
 msgstr "sekundi"
 
@@ -399,7 +399,7 @@ msgstr "Privatni razgovor sa {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr ""
+msgstr "Da li ćete sigurno napustiti kanal?"
 
 #: Send a message...
 msgid "input_placeholder"

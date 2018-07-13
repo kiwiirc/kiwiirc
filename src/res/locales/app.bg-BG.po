@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-07-06 09:30\n"
+"PO-Revision-Date: 2018-07-12 13:41\n"
 
 #: Start
 msgid "start_button"
@@ -149,43 +149,43 @@ msgstr "Добави в игнора"
 msgid "connection_channel"
 msgstr "Автоматично влизане в канали"
 
-#: week
+#: {{count}} week
 msgid "week"
 msgstr "седмица"
 
-#: weeks
+#: {{count}} weeks
 msgid "week_plural"
 msgstr "седмици"
 
-#: day
+#: {{count}} day
 msgid "day"
 msgstr "ден"
 
-#: days
+#: {{count}} days
 msgid "day_plural"
 msgstr "дни"
 
-#: hour
+#: {{count}} hour
 msgid "hour"
 msgstr "час"
 
-#: hours
+#: {{count}} hours
 msgid "hour_plural"
 msgstr "часа"
 
-#: minute
+#: {{count}} minute
 msgid "minute"
 msgstr "минута"
 
-#: minutes
+#: {{count}} minutes
 msgid "minute_plural"
 msgstr "минути"
 
-#: second
+#: {{count}} second
 msgid "second"
 msgstr "секунда"
 
-#: seconds
+#: {{count}} seconds
 msgid "second_plural"
 msgstr "секунди"
 

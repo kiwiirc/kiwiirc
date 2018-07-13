@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish, Argentina\n"
 "Language: es_AR\n"
-"PO-Revision-Date: 2018-07-05 15:20\n"
+"PO-Revision-Date: 2018-07-12 13:40\n"
 
 #: Start
 msgid "start_button"
@@ -111,11 +111,11 @@ msgstr "Cancelar"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Sí"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "No"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -149,43 +149,43 @@ msgstr "Ignorar usuario"
 msgid "connection_channel"
 msgstr "Sala"
 
-#: week
+#: {{count}} week
 msgid "week"
 msgstr "semana"
 
-#: weeks
+#: {{count}} weeks
 msgid "week_plural"
 msgstr "semanas"
 
-#: day
+#: {{count}} day
 msgid "day"
 msgstr "día"
 
-#: days
+#: {{count}} days
 msgid "day_plural"
 msgstr "días"
 
-#: hour
+#: {{count}} hour
 msgid "hour"
 msgstr "hora"
 
-#: hours
+#: {{count}} hours
 msgid "hour_plural"
 msgstr "horas"
 
-#: minute
+#: {{count}} minute
 msgid "minute"
 msgstr "minuto"
 
-#: minutes
+#: {{count}} minutes
 msgid "minute_plural"
 msgstr "minutos"
 
-#: second
+#: {{count}} second
 msgid "second"
 msgstr "segundo"
 
-#: seconds
+#: {{count}} seconds
 msgid "second_plural"
 msgstr "segundos"
 
@@ -399,7 +399,7 @@ msgstr "Conversación privada con {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr ""
+msgstr "¿Desea realmente salir de la Sala?"
 
 #: Send a message...
 msgid "input_placeholder"
