@@ -59,7 +59,7 @@
                     }"
                     v-for="plugin in pluginUiElements"
                     :key="plugin.id"
-                    class="kiwi-controlinput-tool"                    
+                    class="kiwi-controlinput-tool"
                 />
             </div>
         </div>
