@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-05-13 17:10-0400\n"
+"PO-Revision-Date: 2018-07-12 13:41\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "Povezano"
 #: Settings
 msgid "settings"
 msgstr "Podešavanja"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Kiwi Podešavanja"
 
 #: Channels
 msgid "channels"
@@ -105,6 +109,14 @@ msgstr "OK"
 msgid "cancel"
 msgstr "Zatvori"
 
+#: Yes
+msgid "yes"
+msgstr "da"
+
+#: No
+msgid "no"
+msgstr "ne"
+
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "Svi vaši razgovori će biti zatvoreni. Da li ste sigurni da želite zatvoriti ovaj prozor?"
@@ -137,6 +149,46 @@ msgstr "Ignoriši korisnika"
 msgid "connection_channel"
 msgstr "Kanal"
 
+#: {{count}} week
+msgid "week"
+msgstr "sedmica"
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr "sedmica"
+
+#: {{count}} day
+msgid "day"
+msgstr "dan"
+
+#: {{count}} days
+msgid "day_plural"
+msgstr "dana"
+
+#: {{count}} hour
+msgid "hour"
+msgstr "sat"
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr "sati"
+
+#: {{count}} minute
+msgid "minute"
+msgstr "minuta"
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr "minuta"
+
+#: {{count}} second
+msgid "second"
+msgstr "sekunda"
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr "sekundi"
+
 #: General
 msgid "settings_general"
 msgstr "Općenito"
@@ -144,6 +196,10 @@ msgstr "Općenito"
 #: Theme
 msgid "settings_theme"
 msgstr "Izgled"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Osvježi temu"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -209,9 +265,21 @@ msgstr "Istaknite na riječima (razmaknite)"
 msgid "settings_aliases"
 msgstr "Pseudonimi"
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "Koji su pseudonimi"
+
 #: Send Message
 msgid "send_message"
 msgstr "Pošalji poruku"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Unesite ključ kanala"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "Ponovo pristupite {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -305,6 +373,18 @@ msgstr "Dobrodošli na Kiwi IRC!"
 msgid "container_statebrowser"
 msgstr "Prikaži statebrowser"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Sakrij temu"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Prikaži temu"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Podešavanja kanala"
+
 #: Join Channel
 msgid "container_join"
 msgstr "Pristupi kanalu"
@@ -316,6 +396,10 @@ msgstr "Niste povezani"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Privatni razgovor sa {{user}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Da li ćete sigurno napustiti kanal?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -384,6 +468,10 @@ msgstr "{{count}} dostupna osoba"
 #: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} dostupnih osoba"
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr "Filtriraj korisnike"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -488,6 +576,14 @@ msgstr "Niste povezani."
 #: Join new #channel
 msgid "state_join"
 msgstr "Priključi se na kanal"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Filtriraj kanale"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Nađi više kanala"
 
 #: Change nick
 msgid "change_nick"

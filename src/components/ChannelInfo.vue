@@ -2,29 +2,29 @@
     <div class="kiwi-channelinfo">
         <form class="u-form kiwi-channelinfo-basicmodes" @submit.prevent="">
             <label class="kiwi-channelinfo-topic">
-                <span>{{$t('channel_topic')}}</span>
-                <textarea v-model.lazy="topic" rows="2"></textarea>
+                <span>{{ $t('channel_topic') }}</span>
+                <textarea v-model.lazy="topic" rows="2"/>
             </label>
 
             <label class="u-checkbox-wrapper">
-                <span>{{$t('channel_moderated')}}</span>
-                <input type="checkbox" v-model="modeM" />
+                <span>{{ $t('channel_moderated') }}</span>
+                <input v-model="modeM" type="checkbox" >
             </label>
             <label class="u-checkbox-wrapper">
-                <span>{{$t('channel_invite')}}</span>
-                <input type="checkbox" v-model="modeI" />
+                <span>{{ $t('channel_invite') }}</span>
+                <input v-model="modeI" type="checkbox" >
             </label>
             <label class="u-checkbox-wrapper">
-                <span>{{$t('channel_moderated_topic')}}</span>
-                <input type="checkbox" v-model="modeT" />
+                <span>{{ $t('channel_moderated_topic') }}</span>
+                <input v-model="modeT" type="checkbox" >
             </label>
             <label class="u-checkbox-wrapper">
-                <span>{{$t('channel_external')}}</span>
-                <input type="checkbox" v-model="modeN" />
+                <span>{{ $t('channel_external') }}</span>
+                <input v-model="modeN" type="checkbox" >
             </label>
             <label>
-                <span>{{$t('password')}}</span>
-                <input type="text" class="u-input" v-model.lazy="modeK" />
+                <span>{{ $t('password') }}</span>
+                <input v-model.lazy="modeK" type="text" class="u-input" >
             </label>
         </form>
     </div>
@@ -66,11 +66,38 @@ function generateComputedModeWithParam(mode) {
 }
 
 export default {
+    props: ['buffer'],
     data: function data() {
         return {
         };
     },
-    props: ['buffer'],
+    computed: {
+        modeM: generateComputedMode('m'),
+        modeI: generateComputedMode('i'),
+        modeT: generateComputedMode('t'),
+        modeN: generateComputedMode('n'),
+        modeK: generateComputedModeWithParam('k'),
+        topic: {
+            get: function computedTopicGet() {
+                return this.buffer.topic;
+            },
+            set: function computedTopicSet(newVal) {
+                let newTopic = newVal.replace('\n', ' ');
+                this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newTopic);
+            },
+        },
+    },
+    updated: function updated() {
+        let rect = this.$el.getBoundingClientRect();
+        // $el may be in the middle of a transition still, making rect.top/rect.bottom
+        // the current position of the transition and not where it will be after the
+        // transition has ended. So read the top property directly from its style.
+        let targetTop = parseInt((this.$el.style.top || '').replace('px', ''), 10);
+
+        if (targetTop + rect.height > window.innerHeight) {
+            this.$el.style.top = (window.innerHeight - rect.height) + 'px';
+        }
+    },
     methods: {
         updateBanList: function updateBanList() {
             this.buffer.getNetwork().ircClient.raw('MODE', this.buffer.name, '+b');
@@ -97,35 +124,6 @@ export default {
         areWeAnOp: function areWeAnOp() {
             return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
         },
-    },
-    computed: {
-        modeM: generateComputedMode('m'),
-        modeI: generateComputedMode('i'),
-        modeT: generateComputedMode('t'),
-        modeN: generateComputedMode('n'),
-        modeK: generateComputedModeWithParam('k'),
-        topic: {
-            get: function computedTopicGet() {
-                return this.buffer.topic;
-            },
-            set: function computedTopicSet(newVal) {
-                let newTopic = newVal.replace('\n', ' ');
-                this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newTopic);
-            },
-        },
-    },
-    created: function created() {
-    },
-    updated: function updated() {
-        let rect = this.$el.getBoundingClientRect();
-        // $el may be in the middle of a transition still, making rect.top/rect.bottom
-        // the current position of the transition and not where it will be after the
-        // transition has ended. So read the top property directly from its style.
-        let targetTop = parseInt((this.$el.style.top || '').replace('px', ''), 10);
-
-        if (targetTop + rect.height > window.innerHeight) {
-            this.$el.style.top = (window.innerHeight - rect.height) + 'px';
-        }
     },
 };
 </script>

@@ -28,6 +28,10 @@ msgstr "Connected"
 msgid "settings"
 msgstr "Settings"
 
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Kiwi Settings"
+
 #: Channels
 msgid "channels"
 msgstr "Channels"
@@ -92,6 +96,14 @@ msgstr "OK"
 msgid "cancel"
 msgstr "Cancel"
 
+#: Yes
+msgid "yes"
+msgstr "Yes"
+
+#: No
+msgid "no"
+msgstr "No"
+
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -126,6 +138,49 @@ msgid "connection_channel"
 msgstr "Channel"
 
 
+#: Durations
+
+#: {{count}} week
+msgid "week"
+msgstr "{{count}} week"
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr "{{count}} weeks"
+
+#: {{count}} day
+msgid "day"
+msgstr "{{count}} day"
+
+#: {{count}} days
+msgid "day_plural"
+msgstr "{{count}} days"
+
+#: {{count}} hour
+msgid "hour"
+msgstr "{{count}} hour"
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr "{{count}} hours"
+
+#: {{count}} minute
+msgid "minute"
+msgstr "{{count}} minute"
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr "{{count}} minutes"
+
+#: {{count}} second
+msgid "second"
+msgstr "{{count}} second"
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr "{{count}} seconds"
+
+
 
 #: AppSettings $t('settings_')
 
@@ -136,6 +191,10 @@ msgstr "General"
 #: Theme
 msgid "settings_theme"
 msgstr "Theme"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Refresh Theme"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -201,7 +260,9 @@ msgstr "Highlight on words (space seperated)"
 msgid "settings_aliases"
 msgstr "Aliases"
 
-
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "What are aliases?"
 
 #: AutoComplete
 
@@ -209,6 +270,16 @@ msgstr "Aliases"
 msgid "send_message"
 msgstr "Send Message"
 
+
+#: BufferKey $t('bufferkey_')
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Enter Channel Key"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "Rejoin {{channel}}"
 
 
 #: BufferSettings $t('settings_')
@@ -325,6 +396,18 @@ msgstr "Show statebrowser"
 
 #: ContainerHeader $t('container_')
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Hide Topic"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Display Topic"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Channel Settings"
+
 #: Join Channel
 msgid "container_join"
 msgstr "Join Channel"
@@ -336,6 +419,10 @@ msgstr "Not Connected"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Private conversation with {{user}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Really leave the channel?"
 
 
 
@@ -423,6 +510,9 @@ msgstr "{{count}} person here"
 msgid "person_plural"
 msgstr "{{count}} people here"
 
+#: Filter users in channel
+msgid "filter_users"
+msgstr "filter users in channel"
 
 
 #: NotConnected $t('reconnect_')
@@ -547,6 +637,13 @@ msgstr "Not connected."
 msgid "state_join"
 msgstr "Join new #channel"
 
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Filter channels"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Find more channels"
 
 #: SelfUser
 

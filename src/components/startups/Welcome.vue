@@ -1,29 +1,60 @@
 <template>
-    <startup-layout class="kiwi-welcome-simple" ref="layout">
+    <startup-layout ref="layout" class="kiwi-welcome-simple">
         <div slot="connection">
             <template v-if="!network || network.state === 'disconnected'">
-                <form @submit.prevent="formSubmit" class="u-form kiwi-welcome-simple-form">
-                    <h2 v-html="greetingText"></h2>
-                    <div class="kiwi-welcome-simple-error" v-if="network && (network.last_error || network.state_error)">We couldn't connect to the server :( <span>{{network.last_error || readableStateError(network.state_error)}}</span></div>
+                <form class="u-form kiwi-welcome-simple-form" @submit.prevent="formSubmit">
+                    <h2 v-html="greetingText"/>
+                    <div
+                        v-if="network && (network.last_error || network.state_error)"
+                        class="kiwi-welcome-simple-error"
+                    >
+                        We couldn't connect to the server :(
+                        <span>
+                            {{ network.last_error || readableStateError(network.state_error) }}
+                        </span>
+                    </div>
 
-                    <input-text v-if="showNick" class="kiwi-welcome-simple-nick" :label="$t('nick')" v-model="nick" />
+                    <input-text
+                        v-if="showNick"
+                        :label="$t('nick')"
+                        v-model="nick"
+                        class="kiwi-welcome-simple-nick"
+                    />
                     <label v-if="showPass" class="kiwi-welcome-simple-have-password">
-                        <input type="checkbox" v-model="show_password_box" /> <span> {{$t('password_have')}} </span>
+                        <input v-model="show_password_box" type="checkbox" >
+                        <span> {{ $t('password_have') }} </span>
                     </label>
-                    <input-text v-focus v-if="show_password_box" class="kiwi-welcome-simple-password input-text--reveal-value" :label="$t('password')" v-model="password" type="password" />
-                    <input-text v-if="showChannel" class="kiwi-welcome-simple-channel" :label="$t('channel')" v-model="channel" />
+                    <input-text
+                        v-focus
+                        v-if="show_password_box"
+                        :label="$t('password')"
+                        v-model="password"
+                        class="kiwi-welcome-simple-password input-text--reveal-value"
+                        type="password"
+                    />
+                    <input-text
+                        v-if="showChannel"
+                        :label="$t('channel')"
+                        v-model="channel"
+                        class="kiwi-welcome-simple-channel"
+                    />
 
-                    <div v-if="recaptchaSiteId" class="g-recaptcha" :data-sitekey="recaptchaSiteId"></div>
+                    <div
+                        v-if="recaptchaSiteId"
+                        :data-sitekey="recaptchaSiteId"
+                        class="g-recaptcha"
+                    />
+
                     <button
+                        :disabled="!readyToStart"
                         class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
                         type="submit"
                         v-html="buttonText"
-                        :disabled="!readyToStart"
-                    ></button>
+                    />
                 </form>
             </template>
             <template v-else-if="network.state !== 'connected'">
-                <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+                <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
             </template>
         </div>
     </startup-layout>
@@ -52,6 +83,7 @@ export default {
             show_password_box: false,
             recaptchaSiteId: '',
             recaptchaResponseCache: '',
+            connectWithoutChannel: false,
         };
     },
     computed: {
@@ -68,7 +100,12 @@ export default {
                 this.$t('start_button');
         },
         readyToStart: function readyToStart() {
-            let ready = this.channel && this.nick;
+            let ready = !!this.nick;
+
+            if (!this.connectWithoutChannel && !this.channel) {
+                ready = false;
+            }
+
             // Nicks cannot start with [0-9- ]
             // ? is not a valid nick character but we allow it as it gets replaced
             // with a number.
@@ -78,6 +115,37 @@ export default {
 
             return ready;
         },
+    },
+    created: function created() {
+        let options = state.settings.startupOptions;
+
+        this.nick = this.processNickRandomNumber(Misc.queryStringVal('nick') || options.nick || '');
+        this.password = options.password || '';
+        this.channel = decodeURI(window.location.hash) || options.channel || '';
+        this.showChannel = typeof options.showChannel === 'boolean' ?
+            options.showChannel :
+            true;
+        this.showNick = typeof options.showNick === 'boolean' ?
+            options.showNick :
+            true;
+        this.showPass = typeof options.showPassword === 'boolean' ?
+            options.showPassword :
+            true;
+
+        if (options.autoConnect && this.nick && this.channel) {
+            this.startUp();
+        }
+
+        this.connectWithoutChannel = !!options.allowNoChannel;
+
+        this.recaptchaSiteId = options.recaptchaSiteId || '';
+    },
+    mounted() {
+        if (this.recaptchaSiteId) {
+            let scr = document.createElement('script');
+            scr.src = 'https://www.google.com/recaptcha/api.js';
+            this.$el.appendChild(scr);
+        }
     },
     methods: {
         captchaSuccess() {
@@ -153,7 +221,7 @@ export default {
             // Only switch to the first channel we join if multiple are being joined
             let hasSwitchedActiveBuffer = false;
             let bufferObjs = Misc.extractBuffers(this.channel);
-            bufferObjs.forEach(bufferObj => {
+            bufferObjs.forEach((bufferObj) => {
                 let newBuffer = state.addBuffer(net.id, bufferObj.name);
                 newBuffer.enabled = true;
 
@@ -185,35 +253,6 @@ export default {
             let tmp = (nick || '').replace(/\?/g, () => Math.floor(Math.random() * 100).toString());
             return _.trim(tmp);
         },
-    },
-    created: function created() {
-        let options = state.settings.startupOptions;
-
-        this.nick = this.processNickRandomNumber(Misc.queryStringVal('nick') || options.nick || '');
-        this.password = options.password || '';
-        this.channel = decodeURI(window.location.hash) || options.channel || '';
-        this.showChannel = typeof options.showChannel === 'boolean' ?
-            options.showChannel :
-            true;
-        this.showNick = typeof options.showNick === 'boolean' ?
-            options.showNick :
-            true;
-        this.showPass = typeof options.showPassword === 'boolean' ?
-            options.showPassword :
-            true;
-
-        if (options.autoConnect && this.nick && this.channel) {
-            this.startUp();
-        }
-
-        this.recaptchaSiteId = options.recaptchaSiteId || '';
-    },
-    mounted() {
-        if (this.recaptchaSiteId) {
-            let scr = document.createElement('script');
-            scr.src = 'https://www.google.com/recaptcha/api.js';
-            this.$el.appendChild(scr);
-        }
     },
 };
 </script>

@@ -1,49 +1,75 @@
 <template>
-    <div class="kiwi-statebrowser">
+    <div class="kiwi-statebrowser kiwi-theme-bg">
 
         <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">
             <span> Close </span>
-            <i class="fa fa-times" aria-hidden="true"></i>
+            <i class="fa fa-times" aria-hidden="true"/>
         </div>
 
         <div
             v-if="isPersistingState"
-            class="kiwi-statebrowser-usermenu"
             :class="[is_usermenu_open?'kiwi-statebrowser-usermenu--open':'']"
+            class="kiwi-statebrowser-usermenu"
         >
-            <div class="kiwi-statebrowser-usermenu-avatar" @click="is_usermenu_open=!is_usermenu_open">
+            <div
+                class="kiwi-statebrowser-usermenu-avatar"
+                @click="is_usermenu_open=!is_usermenu_open"
+            >
                 U
             </div>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
-                <p> {{$t('state_remembered')}} </p>
-                <a @click="clickForget" class="u-link">{{$t('state_forget')}}</a>
-                <div class="close-icon" @click="is_usermenu_open=false">
-                  <i class="fa fa-times" aria-hidden="true"></i>
+                <p> {{ $t('state_remembered') }} </p>
+                <a class="u-link" @click="clickForget">{{ $t('state_forget') }}</a>
+                <div class="kiwi-close-icon" @click="is_usermenu_open=false">
+                    <i class="fa fa-times" aria-hidden="true"/>
                 </div>
             </div>
         </div>
 
         <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
-            Kiwi Settings <i class="fa fa-cog" aria-hidden="true"></i>
+            {{ $t('kiwi_settings') }} <i class="fa fa-cog" aria-hidden="true"/>
         </div>
 
         <div class="kiwi-statebrowser-tools">
-            <div v-for="el in pluginUiElements" v-rawElement="el" class="kiwi-statebrowser-tool"></div>
+            <div
+                v-rawElement="plugin.el"
+                v-for="plugin in pluginUiElements"
+                :key="plugin.id"
+                class="kiwi-statebrowser-tool"
+            />
         </div>
 
-        <div v-if="Object.keys(provided_networks).length > 0" class="kiwi-statebrowser-availablenetworks">
-            <div @click="show_provided_networks=!show_provided_networks" class="kiwi-statebrowser-availablenetworks-toggle">&#8618; {{$t('state_available')}}</div>
+        <div
+            v-if="Object.keys(provided_networks).length > 0"
+            class="kiwi-statebrowser-availablenetworks"
+        >
             <div
+                class="kiwi-statebrowser-availablenetworks-toggle"
+                @click="show_provided_networks=!show_provided_networks"
+            >
+                &#8618; {{ $t('state_available') }}
+            </div>
+            <div
+                :class="{
+                    'kiwi-statebrowser-availablenetworks-networks--open': show_provided_networks
+                }"
                 class="kiwi-statebrowser-availablenetworks-networks"
-                :class="{'kiwi-statebrowser-availablenetworks-networks--open': show_provided_networks}"
             >
                 <div
                     v-for="(pNets, pNetTypeName) in provided_networks"
+                    :key="pNetTypeName"
                     class="kiwi-statebrowser-availablenetworks-type"
                 >
-                    <div class="kiwi-statebrowser-availablenetworks-name">{{pNetTypeName}}</div>
-                    <div v-for="pNet in pNets" class="kiwi-statebrowser-availablenetworks-link" :class="[pNet.connected?'kiwi-statebrowser-availablenetworks-link--connected':'']">
-                        <a @click="connectProvidedNetwork(pNet)">{{pNet.name}}</a><br/>
+                    <div class="kiwi-statebrowser-availablenetworks-name">{{ pNetTypeName }}</div>
+                    <div
+                        v-for="pNet in pNets"
+                        :key="pNet.name"
+                        :class="[
+                            pNet.connected?'kiwi-statebrowser-availablenetworks-link--connected':''
+                        ]"
+                        class="kiwi-statebrowser-availablenetworks-link"
+                    >
+                        <a @click="connectProvidedNetwork(pNet)">{{ pNet.name }}</a><br>
                     </div>
                 </div>
             </div>
@@ -55,13 +81,16 @@
                     v-for="network in networksToShow"
                     :key="network.id"
                     :network="network"
-                    :uiState="uiState"
-                ></state-browser-network>
+                    :ui-state="uiState"
+                />
             </div>
         </div>
 
         <div v-if="!isRestrictedServer" class="kiwi-statebrowser-newnetwork">
-            <a @click="clickAddNetwork" class="u-button u-button-primary">Add Network<i class="fa fa-plus" aria-hidden="true"></i></a>
+            <a class="u-button u-button-primary" @click="clickAddNetwork">
+                Add Network
+                <i class="fa fa-plus" aria-hidden="true"/>
+            </a>
         </div>
     </div>
 </template>
@@ -69,20 +98,20 @@
 <script>
 
 import state from '@/libs/state';
+import NetworkProvider from '@/libs/NetworkProvider';
+import GlobalApi from '@/libs/GlobalApi';
 import StateBrowserNetwork from './StateBrowserNetwork';
 import AppSettings from './AppSettings';
 import BufferSettings from './BufferSettings';
-import NetworkProvider from '@/libs/NetworkProvider';
-import NetworkProviderZnc from '@/libs/networkproviders/NetworkProviderZnc';
-import GlobalApi from '@/libs/GlobalApi';
 
 let netProv = new NetworkProvider();
 
-let znc = new NetworkProviderZnc(state);
-netProv.addProvider(znc);
-znc.autoDetectZncNetworks();
-
 export default {
+    components: {
+        BufferSettings,
+        StateBrowserNetwork,
+    },
+    props: ['networks', 'uiState'],
     data: function data() {
         return {
             is_usermenu_open: false,
@@ -91,10 +120,25 @@ export default {
             pluginUiElements: GlobalApi.singleton().stateBrowserPlugins,
         };
     },
-    props: ['networks', 'uiState'],
-    components: {
-        BufferSettings,
-        StateBrowserNetwork,
+    computed: {
+        isPersistingState: function isPersistingState() {
+            return !!state.persistence;
+        },
+        isRestrictedServer: function isRestrictedServer() {
+            return !!state.settings.restricted;
+        },
+        networksToShow: function networksToShow() {
+            let bncNet = state.setting('bnc').network;
+            return this.networks.filter(network => network !== bncNet);
+        },
+        isConnected: function isConnected() {
+            return state.getActiveNetwork().state === 'connected';
+        },
+    },
+    created: function created() {
+        netProv.on('networks', (networks) => {
+            this.provided_networks = networks;
+        });
     },
     methods: {
         clickAddNetwork: function clickAddNetwork() {
@@ -113,7 +157,7 @@ export default {
         },
         clickForget: function clickForget() {
             let msg = 'This will delete all stored networks and start fresh. Are you sure?';
-            /* eslint-disable no-restricted-globals */
+            /* eslint-disable no-restricted-globals, no-alert */
             let confirmed = confirm(msg);
             if (!confirmed) {
                 return;
@@ -132,26 +176,6 @@ export default {
 
             net.ircClient.connect();
         },
-    },
-    computed: {
-        isPersistingState: function isPersistingState() {
-            return !!state.persistence;
-        },
-        isRestrictedServer: function isRestrictedServer() {
-            return !!state.settings.restricted;
-        },
-        networksToShow: function networksToShow() {
-            let bncNet = state.setting('bnc').network;
-            return this.networks.filter(network => network !== bncNet);
-        },
-        isConnected: function isConnected() {
-            return state.getActiveNetwork().state === 'connected';
-        },
-    },
-    created: function created() {
-        netProv.on('networks', networks => {
-            this.provided_networks = networks;
-        });
     },
 };
 </script>
@@ -261,7 +285,7 @@ export default {
     padding: 0 10px;
     margin: 0;
     opacity: 1;
-    line-height: 39px;
+    line-height: 40px;
     cursor: pointer;
     display: block;
     box-sizing: border-box;
@@ -380,16 +404,6 @@ export default {
 
 .kiwi-statebrowser-usermenu-body a:hover {
     text-decoration: underline;
-}
-
-.kiwi-statebrowser-usermenu-body .close-icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: pointer;
-    padding: 0.2em 0.4em;
-    border-radius: 0 0 0 0.4em;
-    transition: all 0.3s;
 }
 
 .kiwi-statebrowser-scrollarea {

@@ -370,6 +370,7 @@ function clientMiddleware(state, networkid) {
 
             if (event.nick === client.user.nick) {
                 buffer.joined = true;
+                buffer.flags.channel_badkey = false;
                 network.ircClient.raw('MODE', event.channel);
                 network.ircClient.who(event.channel);
             }
@@ -523,15 +524,15 @@ function clientMiddleware(state, networkid) {
         if (command === 'whois') {
             let obj = {
                 nick: event.nick,
-                host: event.host,
-                username: event.user,
+                host: event.hostname,
+                username: event.ident,
                 away: event.away || '',
                 realname: event.real_name,
             };
 
             // Some other optional bits of info
             [
-                'actuallhost',
+                'actual_host',
                 'helpop',
                 'bot',
                 'server',
@@ -608,19 +609,33 @@ function clientMiddleware(state, networkid) {
 
         if (command === 'nick in use' && !client.connection.registered) {
             let newNick = client.user.nick + rand(1, 100);
-            let serverBuffer = network.serverBuffer();
             let messageBody = TextFormatting.formatAndT(
                 'nickname_alreadyinuse',
                 null,
                 'nick_in_use_retrying',
                 { nick: client.user.nick, newnick: newNick },
             );
-            state.addMessage(serverBuffer, {
+
+            network.buffers.forEach((b) => {
+                state.addMessage(b, {
+                    time: Date.now(),
+                    nick: '',
+                    message: messageBody,
+                    type: 'error',
+                });
+            });
+
+            client.changeNick(newNick);
+        }
+
+        if (command === 'nick in use' && client.connection.registered) {
+            let buffer = state.getActiveBuffer();
+            buffer && state.addMessage(buffer, {
                 time: Date.now(),
                 nick: '',
-                message: messageBody,
+                type: 'error',
+                message: `The nickname '${event.nick}' is already in use!`,
             });
-            client.changeNick(newNick);
         }
 
         if (command === 'nick') {
@@ -851,6 +866,10 @@ function clientMiddleware(state, networkid) {
 
             // TODO: Some of these errors contain a .error property whcih we can match against,
             // ie. password_mismatch.
+
+            if (event.error === 'bad_channel_key') {
+                buffer.flags.channel_badkey = true;
+            }
 
             if (event.reason) {
                 network.last_error = event.reason;

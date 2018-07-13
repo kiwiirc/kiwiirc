@@ -3,62 +3,132 @@
         <form class="u-form">
             <div class="kiwi-networksettings-section kiwi-networksettings-connection">
 
-                <div class='kiwi-title'>{{$t('settings_server_details')}}</div>
+                <div class="kiwi-title">{{ $t('settings_server_details') }}</div>
                 <div class="kiwi-padded-form-element-container">
-                    <div class="kiwi-networksettings-error" v-if="network.state_error">We couldn't connect to that server :( <span>{{readableStateError(network.state_error)}}</span></div>
+                    <div v-if="network.state_error" class="kiwi-networksettings-error">
+                        We couldn't connect to that server :(
+                        <span>{{ readableStateError(network.state_error) }}</span>
+                    </div>
 
-                    <input-text :label="$t('server')" v-focus v-model="network.connection.server" class="kiwi-networksettings-connection-address"/>
+                    <input-text
+                        v-focus
+                        :label="$t('server')"
+                        v-model="network.connection.server"
+                        class="kiwi-networksettings-connection-address"
+                    />
 
-                    <input-text :label="$t('settings_port')" v-model="network.connection.port" type="number" class="kiwi-networksettings-connection-port">
-                        <span class="fa-stack fa-lg kiwi-customserver-tls" :class="[network.connection.tls ? 'kiwi-customserver-tls--enabled' : '']" @click="toggleTls">
-                            <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"></i>
-                            <i v-if="!network.connection.tls" class="fa fa-unlock fa-stack-1x kiwi-customserver-tls-minus"></i>
+                    <input-text
+                        :label="$t('settings_port')"
+                        v-model="network.connection.port"
+                        type="number"
+                        class="kiwi-networksettings-connection-port"
+                    >
+                        <span
+                            :class="[
+                                network.connection.tls ?
+                                    'kiwi-customserver-tls--enabled' :
+                                    ''
+                            ]"
+                            class="fa-stack fa-lg kiwi-customserver-tls"
+                            @click="toggleTls"
+                        >
+                            <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"/>
+                            <i
+                                v-if="!network.connection.tls"
+                                class="fa fa-unlock fa-stack-1x kiwi-customserver-tls-minus"
+                            />
                         </span>
                     </input-text>
 
                     <div class="kiwi-networksettings-connection-password">
                         <template v-if="server_type==='network'">
-                            <input-text :label="$t('password')" v-model="network.connection.password" type="password" />
+                            <input-text
+                                :label="$t('password')"
+                                v-model="network.connection.password"
+                                type="password"
+                            />
                         </template>
                         <template v-else>
                             <input-text :label="$t('username')" v-model="znc_username" />
                             <input-text :label="$t('network')" v-model="znc_network" />
-                            <input-text :label="$t('password')" v-model="znc_password" type="password" />
+                            <input-text
+                                :label="$t('password')"
+                                v-model="znc_password"
+                                type="password"
+                            />
                         </template>
                     </div>
 
                     <div class="kiwi-padded-form-element-container">
                         <div class="kiwi-networksettings-server-types">
-                            <div v-if="server_type==='znc'" class="kiwi-networksettings-server-types-info">
-                                {{$t('settings_znc_other')}}
+                            <div
+                                v-if="server_type==='znc'"
+                                class="kiwi-networksettings-server-types-info"
+                            >
+                                {{ $t('settings_znc_other') }}
                             </div>
                             <a
+                                :class="{
+                                    'kiwi-networksettings-server-type-active':
+                                        server_type==='network'
+                                }"
+                                class="u-link kiwi-network-type-button"
                                 @click="server_type='network'"
-                                class="u-link kiwi-network-type-button"
-                                :class="{'kiwi-networksettings-server-type-active': server_type==='network'}"
-                            >{{$t('network')}}</a>
+                            >
+                                {{ $t('network') }}
+                            </a>
                             <a
-                                @click="server_type='znc'"
+                                :class="{
+                                    'kiwi-networksettings-server-type-active': server_type==='znc'
+                                }"
                                 class="u-link kiwi-network-type-button"
-                                :class="{'kiwi-networksettings-server-type-active': server_type==='znc'}"
-                            >{{$t('znc')}}</a>
+                                @click="server_type='znc'"
+                            >
+                                {{ $t('znc') }}
+                            </a>
                         </div>
                     </div>
 
-                    <div class="kiwi-networksettings-section  kiwi-networksettings-user kiwi-networksettings-username">
+                    <div
+                        class="kiwi-networksettings-section kiwi-networksettings-user
+                               kiwi-networksettings-username"
+                    >
                         <input-text v-model="network.nick" :label="$t('settings_nickname')" />
                     </div>
 
-                    <h4 @click="show_advanced=!show_advanced" class="kiwi-show-advanced-title">{{$t('settings_advanced')}} <i class="fa" :class="['fa-caret-'+(show_advanced?'up':'down')]" aria-hidden="true"></i></h4>
+                    <h4
+                        class="kiwi-show-advanced-title"
+                        @click="show_advanced=!show_advanced"
+                    >
+                        {{ $t('settings_advanced') }}
+                        <i
+                            :class="['fa-caret-'+(show_advanced?'up':'down')]"
+                            class="fa"
+                            aria-hidden="true"
+                        />
+                    </h4>
                     <div class="kiwi-networksettings-advanced-container">
                         <div class="kiwi-networksettings-section  kiwi-networksettings-user">
                             <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
                                 <template v-if="show_advanced">
-                                    <input-text :label="$t('settings_encoding')" v-model="network.connection.encoding" />
-                                    <label><span class="kiwi-appsettings-showraw-label">{{$t('settings_show_raw')}} </span> <input v-model="settingShowRaw" type="checkbox" /></label><br />
+                                    <input-text
+                                        :label="$t('settings_encoding')"
+                                        v-model="network.connection.encoding"
+                                    />
+                                    <label>
+                                        <span class="kiwi-appsettings-showraw-label">
+                                            {{ $t('settings_show_raw') }}
+                                        </span>
+                                        <input v-model="settingShowRaw" type="checkbox" >
+                                    </label><br >
+
                                     <label class="u-form-block">
-                                        <span>{{$t('settings_autorun')}}</span>
-                                        <textarea v-model="network.auto_commands" cols=40 rows=5></textarea>
+                                        <span>{{ $t('settings_autorun') }}</span>
+                                        <textarea
+                                            v-model="network.auto_commands"
+                                            cols="40"
+                                            rows="5"
+                                        />
                                     </label>
                                 </template>
                             </div>
@@ -66,20 +136,27 @@
                     </div>
 
                     <div class="kiwi-padded-form-element-container">
-                        <div v-if="network.state === 'disconnected'" class="u-button kiwi-connect-to-newnetwork" @click="network.ircClient.connect()">
+                        <div
+                            v-if="network.state === 'disconnected'"
+                            class="u-button kiwi-connect-to-newnetwork"
+                            @click="network.ircClient.connect()"
+                        >
                             Connect To Network
                         </div>
-                        <div v-else-if="network.state === 'connecting'" class="u-button kiwi-connect-to-newnetwork" >
-                            {{$t('connecting')}}
+                        <div
+                            v-else-if="network.state === 'connecting'"
+                            class="u-button kiwi-connect-to-newnetwork"
+                        >
+                            {{ $t('connecting') }}
                         </div>
                     </div>
                 </div>
 
                 <div class="kiwi-padded-form-element-container kiwi-dangerzone">
                     <div class="kiwi-networksettings-section kiwi-networksettings-danger">
-                        <h3>{{$t('settings_danger')}}</h3>
+                        <h3>{{ $t('settings_danger') }}</h3>
                         <a class="u-button u-button-warning" @click="removeNetwork">
-                            <i class="fa fa-times" aria-hidden="true"></i> {{$t('settings_remove')}}
+                            <i class="fa fa-times" aria-hidden="true"/> {{ $t('settings_remove') }}
                         </a>
                     </div>
                 </div>
@@ -95,6 +172,9 @@ import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
 
 export default {
+    components: {
+    },
+    props: ['network'],
     data: function data() {
         return {
             server_type: 'network',
@@ -104,7 +184,6 @@ export default {
             show_advanced: false,
         };
     },
-    props: ['network'],
     computed: {
         settingShowRaw: {
             get: function getSettingAlertOn() {
@@ -113,41 +192,6 @@ export default {
             set: function setSettingAlertOn(val) {
                 return this.network.setting('show_raw', val);
             },
-        },
-    },
-    components: {
-    },
-    methods: {
-        readableStateError(err) {
-            return Misc.networkErrorMessage(err);
-        },
-        reconnect: function reconnect() {
-            this.network.ircClient.connect();
-        },
-        removeNetwork: function removeNetwork() {
-            /* eslint-disable no-restricted-globals */
-            let confirmed = confirm('Really remove this network? This cannot be undone!');
-            if (!confirmed) {
-                return;
-            }
-
-            state.removeNetwork(this.network.id);
-            state.$emit('active.component');
-        },
-        setZncPass: function setZncPass() {
-            let newPass = `${this.znc_username}/${this.znc_network}:${this.znc_password}`;
-            this.network.connection.password = newPass;
-        },
-        toggleTls: function toggleTls() {
-            let connection = this.network.connection;
-            connection.tls = !connection.tls;
-
-            // Switching the port only if were currently using the most common TLS/plain text ports
-            if (connection.tls && connection.port === 6667) {
-                connection.port = 6697;
-            } else if (!connection.tls && connection.port === 6697) {
-                connection.port = 6667;
-            }
         },
     },
     watch: {
@@ -172,6 +216,39 @@ export default {
             this.znc_network = match[2] || '';
             this.znc_password = match[3] || '';
         }
+    },
+    methods: {
+        readableStateError(err) {
+            return Misc.networkErrorMessage(err);
+        },
+        reconnect: function reconnect() {
+            this.network.ircClient.connect();
+        },
+        removeNetwork: function removeNetwork() {
+            /* eslint-disable no-restricted-globals, no-alert */
+            let confirmed = confirm('Really remove this network? This cannot be undone!');
+            if (!confirmed) {
+                return;
+            }
+
+            state.removeNetwork(this.network.id);
+            state.$emit('active.component');
+        },
+        setZncPass: function setZncPass() {
+            let newPass = `${this.znc_username}/${this.znc_network}:${this.znc_password}`;
+            this.network.connection.password = newPass;
+        },
+        toggleTls: function toggleTls() {
+            let connection = this.network.connection;
+            connection.tls = !connection.tls;
+
+            // Switching the port only if were currently using the most common TLS/plain text ports
+            if (connection.tls && connection.port === 6667) {
+                connection.port = 6697;
+            } else if (!connection.tls && connection.port === 6697) {
+                connection.port = 6667;
+            }
+        },
     },
 };
 </script>
@@ -244,9 +321,7 @@ export default {
     height: 40px;
     padding: 0 10px;
     line-height: 40px;
-    color: #000;
     box-sizing: border-box;
-    background: #fff;
     border-radius: 1px;
     min-height: none;
     overflow-x: hidden;
@@ -257,10 +332,10 @@ export default {
 .kiwi-networksettings .input-text-c {
     bottom: auto;
     height: 40px;
-    background-color: #fff;
     line-height: 40px;
     text-align: center;
-    top: 8px;
+    top: 19px;
+    right: 15px;
 }
 
 .kiwi-networksettings .kiwi-show-advanced-title {

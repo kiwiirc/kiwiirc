@@ -1,14 +1,14 @@
 <template>
-    <div class="kiwi-sidebar" :class="['kiwi-sidebar-section-' + uiState.section()]">
+    <div :class="['kiwi-sidebar-section-' + uiState.section()]" class="kiwi-sidebar kiwi-theme-bg">
         <template v-if="buffer">
             <template v-if="buffer.isChannel()">
 
                 <span v-if="uiState.isOpen" class="kiwi-sidebar-options">
-                    <div v-if="uiState.canPin" @click="uiState.pin()" class="kiwi-sidebar-pin">
-                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                    <div v-if="uiState.canPin" class="kiwi-sidebar-pin" @click="uiState.pin()">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"/>
                     </div>
-                    <div @click="uiState.close()" class="kiwi-sidebar-close">
-                        {{$t('close')}}<i class="fa fa-times" aria-hidden="true"></i>
+                    <div class="kiwi-sidebar-close" @click="uiState.close()">
+                        {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
                     </div>
                 </span>
 
@@ -20,72 +20,75 @@
 
                     <tabbed-view>
                         <tabbed-tab :header="$t('settings')" :focus="true">
-                            <h3>Channel Settings</h3>
+                            <h3>{{ $t('channel_settings') }}</h3>
                             <hr>
-                            <channel-info v-bind:buffer="buffer"></channel-info>
+                            <channel-info :buffer="buffer"/>
 
                             <div class="kiwi-sidebar-settings">
-                                <h3>{{$t('side_settings')}}</h3>
+                                <h3>{{ $t('side_settings') }}</h3>
                                 <hr>
                                 <form class="u-form">
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{$t('side_joins')}}</span>
-                                        <input type="checkbox" v-model="settingShowJoinParts">
+                                        <span>{{ $t('side_joins') }}</span>
+                                        <input v-model="settingShowJoinParts" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{$t('side_topics')}}</span>
-                                        <input type="checkbox" v-model="settingShowTopics">
+                                        <span>{{ $t('side_topics') }}</span>
+                                        <input v-model="settingShowTopics" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{$t('side_nick_changes')}}</span>
-                                        <input type="checkbox" v-model="settingShowNickChanges">
+                                        <span>{{ $t('side_nick_changes') }}</span>
+                                        <input v-model="settingShowNickChanges" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{$t('side_mode_changes')}}</span>
-                                        <input type="checkbox" v-model="settingShowModeChanges">
+                                        <span>{{ $t('side_mode_changes') }}</span>
+                                        <input v-model="settingShowModeChanges" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{$t('side_formatting')}}</span>
-                                        <input type="checkbox" v-model="settingExtraFormatting">
+                                        <span>{{ $t('side_formatting') }}</span>
+                                        <input v-model="settingExtraFormatting" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{$t('side_colours')}}</span>
-                                        <input type="checkbox" v-model="settingColouredNicklist">
+                                        <span>{{ $t('side_colours') }}</span>
+                                        <input v-model="settingColouredNicklist" type="checkbox">
                                     </label>
                                 </form>
                             </div>
                         </tabbed-tab>
                         <tabbed-tab :header="$t('banned')">
-                            <channel-banlist v-bind:buffer="buffer"></channel-banlist>
+                            <channel-banlist :buffer="buffer"/>
                         </tabbed-tab>
                         <tabbed-tab :header="$t('notifications')">
-                            <buffer-settings v-bind:buffer="buffer"></buffer-settings>
+                            <buffer-settings :buffer="buffer"/>
                         </tabbed-tab>
-                        <tabbed-tab v-for="item in pluginUiElements" :key="item.id" :header="item.title">
-                            <div v-bind:is="item.component" v-bind="item.props"></div>
+                        <tabbed-tab
+                            v-for="item in pluginUiElements"
+                            :key="item.id"
+                            :header="item.title"
+                        >
+                            <div :is="item.component" v-bind="item.props"/>
                         </tabbed-tab>
                     </tabbed-view>
                 </div>
 
                 <div
-                    v-if="uiState.section()==='user' && userbox_user"
+                    v-else-if="uiState.section() === 'user'"
                     class="kiwi-sidebar-userbox"
                     @click.stop=""
                 >
                     <user-box
-                        :user="userbox_user"
+                        :user="uiState.sidebarUser"
                         :buffer="buffer"
                         :network="network"
-                    ></user-box>
+                    />
                 </div>
 
                 <nicklist
-                    v-if="buffer.isChannel() && uiState.section() === 'nicklist'"
+                    v-else-if="uiState.section() === 'nicklist' || uiState.section() === ''"
                     :network="network"
                     :buffer="buffer"
-                    :users="users"
-                    :uiState="uiState"
-                ></nicklist>
+                    :ui-state="uiState"
+                />
             </template>
             <template v-else-if="buffer.isQuery()">
                 <!-- TODO:
@@ -96,20 +99,19 @@
             </template>
         </template>
         <template v-else>
-            {{$t('side_buffer')}}
+            {{ $t('side_buffer') }}
         </template>
     </div>
 </template>
 
 <script>
 
-import state from '@/libs/state';
+import UserBox from '@/components/UserBox';
+import GlobalApi from '@/libs/GlobalApi';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
-import UserBox from '@/components/UserBox';
 import Nicklist from './Nicklist';
-import GlobalApi from '@/libs/GlobalApi';
 
 export default {
     components: {
@@ -119,28 +121,13 @@ export default {
         Nicklist,
         UserBox,
     },
+    props: ['network', 'buffer', 'uiState'],
     data: function data() {
         return {
-            userbox_user: null,
             pluginUiElements: GlobalApi.singleton().sideBarPlugins,
         };
     },
-    props: ['network', 'buffer', 'users', 'uiState'],
     computed: {
-        isSettingsOpen: {
-            get() {
-                return !this.uiState.isClosed && this.uiState.sidebarSection === 'settings';
-            },
-            set(newVal) {
-                if (newVal) {
-                    this.uiState.sidebarOpen = true;
-                    this.uiState.sidebarSection = 'settings';
-                } else {
-                    this.uiState.sidebarOpen = false;
-                    this.uiState.sidebarSection = '';
-                }
-            },
-        },
         settingShowJoinParts: {
             get: function getSettingShowJoinParts() {
                 return this.buffer.setting('show_joinparts');
@@ -205,23 +192,6 @@ export default {
             return type;
         },
     },
-    methods: {
-    },
-    created: function created() {
-        this.listen(state, 'sidebar.hide', () => {
-            this.uiState.sidebarOpen = false;
-        });
-
-        this.listen(state, 'userbox.show', (user) => {
-            this.userbox_user = user;
-            this.uiState.sidebarSection = 'user';
-            this.uiState.sidebarOpen = true;
-        });
-        this.listen(state, 'userbox.hide', () => {
-            this.userbox_user = null;
-            this.uiState.close();
-        });
-    },
 };
 </script>
 
@@ -232,7 +202,6 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    z-index: 10;
 }
 
 .kiwi-sidebar.kiwi-sidebar-section-settings {
@@ -290,6 +259,11 @@ export default {
 
 .kiwi-sidebar-buffersettings .u-tabbed-content {
     padding: 1em;
+}
+
+.kiwi-sidebar-userbox {
+    overflow: hidden;
+    height: 100%;
 }
 
 .kiwi-sidebar-settings {

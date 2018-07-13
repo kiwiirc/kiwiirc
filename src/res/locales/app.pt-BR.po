@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2018-05-09 04:01-0400\n"
+"PO-Revision-Date: 2018-07-12 13:40\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "Conectado"
 #: Settings
 msgid "settings"
 msgstr "Configurações"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Definições do Kiwi "
 
 #: Channels
 msgid "channels"
@@ -105,6 +109,14 @@ msgstr "Ok"
 msgid "cancel"
 msgstr "Cancelar"
 
+#: Yes
+msgid "yes"
+msgstr "Sim"
+
+#: No
+msgid "no"
+msgstr "Não"
+
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "Isto irá fechar todas as janelas do KiwiIRC. Deseja continuar?"
@@ -137,6 +149,46 @@ msgstr "Ignorar usuário"
 msgid "connection_channel"
 msgstr "Canal"
 
+#: {{count}} week
+msgid "week"
+msgstr "semana"
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr "semanas"
+
+#: {{count}} day
+msgid "day"
+msgstr "dia"
+
+#: {{count}} days
+msgid "day_plural"
+msgstr "dias"
+
+#: {{count}} hour
+msgid "hour"
+msgstr "hora"
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr "horas"
+
+#: {{count}} minute
+msgid "minute"
+msgstr "minuto"
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr "minutos"
+
+#: {{count}} second
+msgid "second"
+msgstr "segundo"
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr "segundos"
+
 #: General
 msgid "settings_general"
 msgstr "Geral"
@@ -144,6 +196,10 @@ msgstr "Geral"
 #: Theme
 msgid "settings_theme"
 msgstr "Tema"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Recarregar Tema"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -209,9 +265,21 @@ msgstr "Palavras a destacar (separadas com um espaço)"
 msgid "settings_aliases"
 msgstr "Aliás"
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "O que são aliases"
+
 #: Send Message
 msgid "send_message"
 msgstr "Enviar mensagem"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Insira a senha do canal"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "Reentrar no {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -291,11 +359,11 @@ msgstr "Bloquear mensagens externas"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr ""
+msgstr "Clique no botão atualizar para atualizar a lista de canais"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr ""
+msgstr "Nenhum canal encontrado, tente novamente mais tarde"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -304,6 +372,18 @@ msgstr "Bem-vindos ao Kiwi IRC! Escolha um canal à esquerda."
 #: Show statebrowser
 msgid "container_statebrowser"
 msgstr "Mostrar barra estado do navegador"
+
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Esconder Tópico"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Mostrar Tópico"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Definições de Canal"
 
 #: Join Channel
 msgid "container_join"
@@ -316,6 +396,10 @@ msgstr "Desconectado"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Conversa privada com {{user}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Deseja mesmo sair do canal?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -384,6 +468,10 @@ msgstr "{{count}} usuário aqui"
 #: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} usuários aqui"
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr "Filtrar utilizadores no canal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -488,6 +576,14 @@ msgstr "Desconectado."
 #: Join new #channel
 msgid "state_join"
 msgstr "Entrar num novo #canal"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Filtrar Canais"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Descobrir Mais Canais"
 
 #: Change nick
 msgid "change_nick"

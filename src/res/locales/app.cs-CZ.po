@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2018-05-09 03:43-0400\n"
+"PO-Revision-Date: 2018-07-12 13:41\n"
 
 #: Start
 msgid "start_button"
@@ -39,6 +39,10 @@ msgstr ""
 
 #: Settings
 msgid "settings"
+msgstr ""
+
+#: Kiwi Settings
+msgid "kiwi_settings"
 msgstr ""
 
 #: Channels
@@ -105,6 +109,14 @@ msgstr ""
 msgid "cancel"
 msgstr ""
 
+#: Yes
+msgid "yes"
+msgstr ""
+
+#: No
+msgid "no"
+msgstr ""
+
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr ""
@@ -137,12 +149,56 @@ msgstr ""
 msgid "connection_channel"
 msgstr ""
 
+#: {{count}} week
+msgid "week"
+msgstr ""
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr ""
+
+#: {{count}} day
+msgid "day"
+msgstr ""
+
+#: {{count}} days
+msgid "day_plural"
+msgstr ""
+
+#: {{count}} hour
+msgid "hour"
+msgstr ""
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr ""
+
+#: {{count}} minute
+msgid "minute"
+msgstr ""
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr ""
+
+#: {{count}} second
+msgid "second"
+msgstr ""
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr ""
+
 #: General
 msgid "settings_general"
 msgstr ""
 
 #: Theme
 msgid "settings_theme"
+msgstr ""
+
+#: Refresh Theme
+msgid "refresh_theme"
 msgstr ""
 
 #: Theme URL
@@ -209,8 +265,20 @@ msgstr ""
 msgid "settings_aliases"
 msgstr ""
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr ""
+
 #: Send Message
 msgid "send_message"
+msgstr ""
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr ""
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
 msgstr ""
 
 #: Notify me when
@@ -305,6 +373,18 @@ msgstr ""
 msgid "container_statebrowser"
 msgstr ""
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr ""
+
+#: Display Topic
+msgid "display_topic"
+msgstr ""
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr ""
+
 #: Join Channel
 msgid "container_join"
 msgstr ""
@@ -315,6 +395,10 @@ msgstr ""
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
+msgstr ""
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
 msgstr ""
 
 #: Send a message...
@@ -383,6 +467,10 @@ msgstr ""
 
 #: {{count}} people here
 msgid "person_plural"
+msgstr ""
+
+#: Filter users in channel
+msgid "filter_users"
 msgstr ""
 
 #: Reconnect to join {{channel}}
@@ -487,6 +575,14 @@ msgstr ""
 
 #: Join new #channel
 msgid "state_join"
+msgstr ""
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr ""
+
+#: Find More Channels
+msgid "find_more_channels"
 msgstr ""
 
 #: Change nick

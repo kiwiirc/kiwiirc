@@ -5,13 +5,15 @@
  */
 
 .kiwi-wrap {
-    background: #fff;
     --kiwi-nick-brightness: 40;
     --kiwi-supports-monospace: 1;
     color: #201F1F;
 }
 
-
+/* Kiwi Theme Background is used to apply the same background colour accross components, rather than targeting them all specifically */
+.kiwi-theme-bg {
+    background-color: #fff;
+}
 
  /* Welcome Screen ( Welcome.vue ) */
  .kiwi-welcome-simple-form,
@@ -363,6 +365,7 @@
 .kiwi-messagelist {
     background: #fff;
 }
+
 .kiwi-messagelist-message--info-open {
     background: #f6f6f6;
 }
@@ -392,9 +395,9 @@
   background: #f2f2f2;
   opacity: 1;
 }
-.kiwi-messagelist-message.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
+.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
     border-left: none;
-    background: #42b983;
+    background: none;
 }
 
 /* When hovering over a users messages */
@@ -579,7 +582,7 @@
 }
 
 /* Not connected message ( NotConnected.vue ) */
-.kiwi-notconnected {
+.kiwi-warning-block {
     color: #fff;
     background-color: #bf5155;
 }
@@ -631,9 +634,9 @@
 .kiwi-sidebar-pin:hover{
     background: #62d0ac;
 }
-
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
     background: #d16c6c;
+    color: #fff;
 }
 .kiwi-container--sidebar-pinned .kiwi-sidebar {
     border-color: #b2b2b2;
@@ -716,8 +719,12 @@
     background-color: #42b992;
     color: #fff;
 }
-.kiwi-network-name-options .kiwi--collapse {
-    background: #d16c6c;
+.kiwi-network-name-options .option-button {
+    color: #fff;
+}
+
+.kiwi-network-name-hover-icon {
+    color: #fff;
 }
 
 /* Add channel input */
@@ -759,11 +766,9 @@
 }
 .kiwi-statebrowser-newnetwork a {
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 .kiwi-statebrowser-newnetwork a:hover {
     background: #42b992;
-    border-color: #42b992;
     opacity: 1;
     color: #fff;
 }
@@ -805,14 +810,6 @@
     background: #42b992;
     opacity: 1;
     color: #fff;
-}
-
-.kiwi-statebrowser-usermenu-body .close-icon {
-    background-color: #fc6262;
-    color: #fff;
-}
-.kiwi-statebrowser-usermenu-body .close-icon:hover {
-    background-color: #fe7575;
 }
 
 .kiwi-statebrowser-switcher a:first-of-type {
@@ -969,4 +966,33 @@
 /* MOTD */
 .kiwi-messagelist-message-motd {
     color: #666;
+}
+
+/* Buffer Key */
+.kiwi-bufferkey-button {
+    border: 1px solid #fff;
+}
+
+/*Icon before the network in network list */
+.kiwi-statebrowser-network-name::before {
+    content: '\f233';
+    font-family: fontAwesome;
+    margin-right: 2px;
+    font-weight: 100;
+    text-decoration: none;
+}
+
+/* Icons in the Channel List */
+.kiwi-statebrowser-channel[data-name^="#"]::before {
+    content: '\f0c0';
+}
+.kiwi-statebrowser-channel[data-name^="#help"]::before {
+    content: '\f059';
+}
+
+.kiwi-statebrowser-channel::before {
+    content: '\f007';
+    font-family: fontAwesome;
+    margin-right: 5px;
+    font-weight: 100;
 }

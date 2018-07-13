@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-05-27 07:00-0400\n"
+"PO-Revision-Date: 2018-07-12 13:41\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "Verbonden"
 #: Settings
 msgid "settings"
 msgstr "Instellingen"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Kiwi-instellingen"
 
 #: Channels
 msgid "channels"
@@ -105,6 +109,14 @@ msgstr "OK"
 msgid "cancel"
 msgstr "Annuleren"
 
+#: Yes
+msgid "yes"
+msgstr "Ja"
+
+#: No
+msgid "no"
+msgstr "Nee"
+
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
 msgstr "Hierdoor worden alle KiwiIRC-gesprekken gesloten. Weet je zeker dat je dit venster wilt sluiten?"
@@ -137,6 +149,46 @@ msgstr "Gebruiker negeren"
 msgid "connection_channel"
 msgstr "Kanaal"
 
+#: {{count}} week
+msgid "week"
+msgstr "week"
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr "weken"
+
+#: {{count}} day
+msgid "day"
+msgstr "dag"
+
+#: {{count}} days
+msgid "day_plural"
+msgstr "dagen"
+
+#: {{count}} hour
+msgid "hour"
+msgstr "uur"
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr "uur"
+
+#: {{count}} minute
+msgid "minute"
+msgstr "minuut"
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr "minuten"
+
+#: {{count}} second
+msgid "second"
+msgstr "seconde"
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr "seconden"
+
 #: General
 msgid "settings_general"
 msgstr "Algemeen"
@@ -144,6 +196,10 @@ msgstr "Algemeen"
 #: Theme
 msgid "settings_theme"
 msgstr "Thema"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Thema vernieuwen"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -209,9 +265,21 @@ msgstr "Markeren op woorden (gescheiden door spaties)"
 msgid "settings_aliases"
 msgstr "Aliassen"
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "Wat zijn aliassen?"
+
 #: Send Message
 msgid "send_message"
 msgstr "Bericht sturen"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Voer kanaalsleutel in"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "{{channel}} weer binnengaan"
 
 #: Notify me when
 msgid "settings_notify"
@@ -305,6 +373,18 @@ msgstr "Welkom bij Kiwi IRC!"
 msgid "container_statebrowser"
 msgstr "Statebrowser tonen"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Topic verbergen"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Topic weergeven"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Kanaalinstellingen"
+
 #: Join Channel
 msgid "container_join"
 msgstr "Kanaal binnengaan"
@@ -316,6 +396,10 @@ msgstr "Niet verbonden"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Privégesprek met {{user}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Het kanaal echt verlaten?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -384,6 +468,10 @@ msgstr "{{count}} persoon aanwezig"
 #: {{count}} people here
 msgid "person_plural"
 msgstr "{{count}} personen aanwezig"
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr "Gebruikers in kanaal filteren"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -488,6 +576,14 @@ msgstr "Niet verbonden."
 #: Join new #channel
 msgid "state_join"
 msgstr "Nieuw #kanaal binnengaan"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Kanalen filteren"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Meer kanalen zoeken"
 
 #: Change nick
 msgid "change_nick"

@@ -1,12 +1,18 @@
 <template>
-    <div class="kiwi-selfuser">
-        <div class="kiwi-selfuser-mask">
-            <span class="kiwi-selfuser-nick">{{network.nick}}</span>
-            <span class="kiwi-selfuser-host">{{netUser.username}}@{{netUser.host}}</span>
+    <div class="kiwi-selfuser kiwi-theme-bg">
+        <div class="kiwi-close-icon" @click="$emit('close')">
+            <i class="fa fa-times" aria-hidden="true"/>
         </div>
-        <div class="kiwi-selfuser-modes">{{modeString}}</div>
+        <div class="kiwi-selfuser-mask">
+            <span class="kiwi-selfuser-nick">{{ network.nick }}</span>
+            <span class="kiwi-selfuser-host">{{ netUser.username }}@{{ netUser.host }}</span>
+        </div>
+        <div class="kiwi-selfuser-modes">{{ modeString }}</div>
         <div class="kiwi-selfuser-actions">
-            <input-prompt @submit="changeNick" :label="$t('change_nick')+':'"><a class="u-link">{{$t('change_nick')}}</a></input-prompt>
+            <div v-if="error_message">{{ error_message }}</div>
+            <input-prompt :label="$t('change_nick')+':'" @submit="changeNick">
+                <a class="u-link">{{ $t('change_nick') }}</a>
+            </input-prompt>
         </div>
     </div>
 </template>
@@ -14,15 +20,16 @@
 <script>
 
 export default {
+    props: ['network'],
     data: function data() {
         return {
+            error_message: '',
         };
     },
-    props: ['network'],
     computed: {
         modeString() {
             let str = '';
-            this.network.ircClient.user.modes.forEach(mode => {
+            this.network.ircClient.user.modes.forEach((mode) => {
                 str += mode;
             });
 
@@ -37,8 +44,15 @@ export default {
             return this.network.ircClient.user;
         },
     },
+    created() {
+        this.listen(this.network.ircClient, 'nick in use', (event) => {
+            this.error_message = `The nickname '${event.nick}' is already in use!`;
+        });
+    },
     methods: {
         changeNick(newNick) {
+            this.error_message = '';
+
             let nick = newNick.trim();
             if (!nick.match(/(^[0-9])|(\s)/)) {
                 this.network.ircClient.changeNick(newNick);

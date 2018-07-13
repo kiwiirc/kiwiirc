@@ -41,6 +41,8 @@ const stateObj = {
         buffers: {
             alert_on: 'highlight',
             timestamp_format: '%H:%M:%S',
+            // If timestamp_full_format is falsy, the browsers locale date format will be used
+            timestamp_full_format: '',
             show_timestamps: true,
             scrollback_size: 250,
             show_joinparts: true,
@@ -268,6 +270,7 @@ const stateObj = {
             notice: '%text',
             action: '* %nick %text',
             whois_ident: '%nick [%nick!%ident@%host] * %text',
+            whois_error: '[%nick] %text',
             whois: '%text',
             who: '%nick [%nick!%ident@%host] * %realname',
             quit: '%text',
@@ -708,12 +711,17 @@ const state = new Vue({
                 break;
             }
 
-            // If we ran out of buffer history, try going to the active networks server buffer
+            // Try to find a suitable buffer
             if (!targetBuffer) {
-                let network = this.getActiveNetwork();
+                let network = this.getActiveNetwork() || this.networks[0];
                 if (network) {
                     targetNetwork = network;
-                    targetBuffer = network.serverBuffer().name;
+                    let buffer = network.buffers[1];
+                    if (buffer) {
+                        targetBuffer = buffer;
+                    } else {
+                        targetBuffer = network.serverBuffer();
+                    }
                 }
             }
 
@@ -857,7 +865,9 @@ const state = new Vue({
 
             let network = buffer.getNetwork();
             let isNewMessage = message.time >= buffer.last_read;
-            let isHighlight = Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
+            let isHighlight = !network ?
+                false :
+                Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
 
             // Check for extra custom highlight words
             let extraHighlights = (state.setting('highlights') || '').toLowerCase().split(' ');
@@ -867,7 +877,7 @@ const state = new Vue({
                         return;
                     }
 
-                    if (bufferMessage.message.indexOf(word) > -1) {
+                    if (bufferMessage.message.toLowerCase().indexOf(word) > -1) {
                         isHighlight = true;
                     }
                 });
@@ -889,8 +899,15 @@ const state = new Vue({
 
             // Handle any notifications
             let settingAlertOn = buffer.setting('alert_on');
-            let isSelf = message.nick === network.nick;
-            if (isNewMessage && settingAlertOn !== 'never' && message.type !== 'nick' && !isSelf) {
+            let isSelf = !network ? false : message.nick === network.nick;
+            if (
+                isNewMessage &&
+                settingAlertOn !== 'never' &&
+                message.type !== 'nick' &&
+                message.type !== 'traffic' &&
+                !bufferMessage.ignore &&
+                !isSelf
+            ) {
                 let notifyTitle = '';
                 let notifyMessage = message.nick ?
                     message.nick + ': ' :
@@ -1117,6 +1134,11 @@ const state = new Vue({
                 state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
                 state.$delete(buffer.users, normalisedOld);
             });
+
+            let buffer = this.getBufferByName(network.id, oldNick);
+            if (buffer) {
+                buffer.rename(newNick);
+            }
         },
 
         getStartups() {
@@ -1176,6 +1198,7 @@ function createEmptyBufferObject() {
             unread: 0,
             alert_on: 'default',
             has_opened: false,
+            channel_badkey: false,
             chathistory_available: true,
         },
         settings: {
@@ -1189,6 +1212,11 @@ function createEmptyBufferObject() {
 function initialiseNetworkState(network) {
     Object.defineProperty(network, 'ircClient', {
         value: IrcClient.create(state, network.id),
+    });
+    Object.defineProperty(network, 'connect', {
+        value: function connect(...args) {
+            network.ircClient.connect(...args);
+        },
     });
     Object.defineProperty(network, 'bufferByName', {
         value: _.partial(state.getBufferByName, network.id),
@@ -1218,6 +1246,7 @@ function initialiseNetworkState(network) {
     });
     Object.defineProperty(network, 'showServerBuffer', {
         value: function showServerBuffer(tabName) {
+            state.$emit('active.component', null);
             state.setActiveBuffer(network.id, network.serverBuffer().name);
             // Hacky, but the server buffer component listens for events to switch
             // between tabs
@@ -1309,6 +1338,23 @@ function initialiseBufferState(buffer) {
             return result;
         },
     });
+    Object.defineProperty(buffer, 'rename', {
+        value: function rename(newName) {
+            let network = buffer.getNetwork();
+            let oldName = buffer.name;
+            let setActive = state.getActiveBuffer() === buffer;
+
+            buffer.name = newName;
+            if (setActive) {
+                state.setActiveBuffer(network.id, newName);
+            }
+
+            // update the buffer name on our messages
+            let bufferMessages = _.find(messages, { networkid: network.id, buffer: oldName });
+            bufferMessages.buffer = newName;
+        },
+    });
+
     Object.defineProperty(buffer, 'flag', {
         value: function flag(name, val) {
             if (typeof val !== 'undefined') {
@@ -1390,7 +1436,7 @@ function initialiseBufferState(buffer) {
 
                 // If running under a bouncer, set it on the server-side too
                 let network = buffer.getNetwork();
-                let allowedUpdate = buffer.isChannel() || buffer.isQuery();
+                let allowedUpdate = !network ? false : buffer.isChannel() || buffer.isQuery();
                 if (allowedUpdate && network.connection.bncname) {
                     let lastMessage = buffer.getMessages().reduce((latest, current) => {
                         if (latest.time && latest.time > current.time) {

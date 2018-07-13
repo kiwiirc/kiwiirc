@@ -2,41 +2,39 @@
     <div class="kiwi-inputtool-colours">
         <div class="kiwi-inputtool-colours-palette" @mousedown.prevent @click.prevent>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-white"
-                    @click="onColourClick" data-code="00"></div>
+                 data-code="00" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-black"
-                    @click="onColourClick" data-code="01"></div>
+                 data-code="01" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-blue"
-                    @click="onColourClick" data-code="02"></div>
+                 data-code="02" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-green"
-                    @click="onColourClick" data-code="03"></div>
+                 data-code="03" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-red"
-                    @click="onColourClick" data-code="04"></div>
+                 data-code="04" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-brown"
-                    @click="onColourClick" data-code="05"></div>
+                 data-code="05" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-purple"
-                    @click="onColourClick" data-code="06"></div>
+                 data-code="06" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-orange"
-                    @click="onColourClick" data-code="07"></div>
+                 data-code="07" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-yellow"
-                    @click="onColourClick" data-code="08"></div>
+                 data-code="08" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-green"
-                    @click="onColourClick" data-code="09"></div>
+                 data-code="09" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-cyan"
-                    @click="onColourClick" data-code="10"></div>
+                 data-code="10" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-cyan"
-                    @click="onColourClick" data-code="11"></div>
+                 data-code="11" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-blue"
-                    @click="onColourClick" data-code="12"></div>
+                 data-code="12" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-pink"
-                    @click="onColourClick" data-code="13"></div>
+                 data-code="13" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-grey"
-                    @click="onColourClick" data-code="14"></div>
+                 data-code="14" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-grey"
-                    @click="onColourClick" data-code="15"></div>
+                 data-code="15" @click="onColourClick"/>
             <div class="kiwi-inputtools-colours-colour kiwi-inputtools-colours-reset"
-                    @click="onResetClick"><i class="fa fa-ban" aria-hidden="true"></i></div>
-            <div class="kiwi-inputtools-colours-colour kiwi-inputtools-colours-img"
-                    @click="onImgClick" style="background-image:url(/static/emoticons/smile.png);" data-code=":D"></div>
+                 @click="onResetClick"><i class="fa fa-ban" aria-hidden="true"/></div>
         </div>
     </div>
 </template>
@@ -44,11 +42,11 @@
 <script>
 
 export default {
+    props: ['ircinput'],
     data: function data() {
         return {
         };
     },
-    props: ['ircinput'],
 
     methods: {
         onColourClick: function onColourClick(event) {
@@ -56,16 +54,6 @@ export default {
                 .getPropertyValue('background-color');
             let code = event.target.dataset.code;
             this.ircinput.setColour(code, colour);
-        },
-        onImgClick: function onImgClick(event) {
-            let url = window.getComputedStyle(event.target, null)
-                .getPropertyValue('background-image');
-
-            // TODO: All this text replacing is ugly. Tidy it pls.
-            url = url.replace('url(', '').replace(')', '');
-            url = url.replace(' ', '').replace(/"/g, '');
-            let code = event.target.dataset.code;
-            this.ircinput.addImg(code, url);
         },
         onResetClick: function onResetClick() {
             this.ircinput.resetStyles();
@@ -93,10 +81,6 @@ export default {
     box-sizing: border-box;
     border: 1px solid gray;
     margin: 0;
-}
-
-.kiwi-inputtools-colours-img {
-    background-size: contain;
 }
 
 .kiwi-inputtools-colours-reset {

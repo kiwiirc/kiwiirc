@@ -1,7 +1,9 @@
 <template>
-    <div class="kiwi-autocomplete">
+    <div class="kiwi-autocomplete kiwi-theme-bg">
 
-        <div v-for="(item, item_idx) in filteredAndLimitedItems"
+        <div
+            v-for="item in filteredAndLimitedItems"
+            :key="item.type+item.text"
             :class="{
                 'kiwi-autocomplete-item': true,
                 'kiwi-autocomplete-item--selected': item.idx === selected_idx}
@@ -9,15 +11,22 @@
             @click="selected_idx = item.idx; selectCurrentItem()"
         >
             <template v-if="item.type === 'user'">
-                <span class="kiwi-autocomplete-item-value">{{item.text}}</span>
-                <span class="u-link kiwi-autocomplete-item-action" @click.stop="openQuery(item.text)">{{$t('send_message')}}</span>
+                <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
+                <span
+                    class="u-link kiwi-autocomplete-item-action"
+                    @click.stop="openQuery(item.text)"
+                >
+                    {{ $t('send_message') }}
+                </span>
             </template>
             <template v-else-if="item.type === 'command'">
-                <span class="kiwi-autocomplete-item-value">{{item.text}}</span>
-                <span class="u-link kiwi-autocomplete-item-description">{{item.description}}</span>
+                <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
+                <span class="u-link kiwi-autocomplete-item-description">
+                    {{ item.description }}
+                </span>
             </template>
             <template v-else>
-                <span class="kiwi-autocomplete-item-value">{{item.text}}</span>
+                <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
             </template>
         </div>
     </div>
@@ -29,6 +38,7 @@ import _ from 'lodash';
 import state from '@/libs/state';
 
 export default {
+    props: ['filter', 'buffer', 'items'],
     data: function data() {
         return {
             items_: [
@@ -41,12 +51,11 @@ export default {
             selected_idx: 0,
         };
     },
-    props: ['filter', 'buffer', 'items'],
     computed: {
         filteredItems: function filteredItems() {
             let filterVal = (this.filter || '').toLowerCase();
 
-            return _(this.items).filter(item => {
+            return _(this.items).filter((item) => {
                 let s = false;
                 if (item.text.toLowerCase().indexOf(filterVal) === 0) {
                     s = true;
@@ -97,6 +106,30 @@ export default {
             let item = this.filteredItems[this.selected_idx];
             return item || null;
         },
+    },
+    watch: {
+        selected_idx: function watchSelectedIdx() {
+            // nextTick() as the DOM hasn't updated yet
+            this.$nextTick(() => {
+                let el = this.$el.querySelector('.kiwi-autocomplete-item--selected');
+                if (!el) {
+                    return;
+                }
+
+                this.$el.scrollTop = el.offsetTop - (el.getBoundingClientRect().height * 2);
+            });
+
+            this.tempCurrentItem();
+        },
+        filter: function watchFilter() {
+            let numItems = this.filteredAndLimitedItems.length - 1;
+            if (this.selected_idx > numItems) {
+                this.selected_idx = numItems;
+            }
+        },
+    },
+    mounted: function mounted() {
+        this.tempCurrentItem();
     },
     methods: {
         handleOnKeyDown: function handleOnKeyDown(event) {
@@ -170,30 +203,6 @@ export default {
         },
         cancel: function cancel() {
             this.$emit('cancel');
-        },
-    },
-    mounted: function mounted() {
-        this.tempCurrentItem();
-    },
-    watch: {
-        selected_idx: function watchSelectedIdx() {
-            // nextTick() as the DOM hasn't updated yet
-            this.$nextTick(() => {
-                let el = this.$el.querySelector('.kiwi-autocomplete-item--selected');
-                if (!el) {
-                    return;
-                }
-
-                this.$el.scrollTop = el.offsetTop - (el.getBoundingClientRect().height * 2);
-            });
-
-            this.tempCurrentItem();
-        },
-        filter: function watchFilter() {
-            let numItems = this.filteredAndLimitedItems.length - 1;
-            if (this.selected_idx > numItems) {
-                this.selected_idx = numItems;
-            }
         },
     },
 };

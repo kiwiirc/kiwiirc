@@ -1,33 +1,40 @@
 <template>
     <div class="u-tabbed-view">
-        <div class="u-tabbed-view-tabs" :key="a">
+        <div :key="a" class="u-tabbed-view-tabs">
             <a
                 v-for="c in tabs"
-                @click="setActive(c)"
+                :key="c.name || c.header"
                 :class="{
                     'u-tabbed-view-tab': true,
                     'u-tabbed-view-tab--active': c.active
                 }"
-            >{{c.header}}</a>
+                @click="setActive(c)"
+            >{{ c.header }}</a>
         </div>
-        <slot></slot>
+        <slot/>
     </div>
 </template>
-
 
 <script>
 
 let Vue = require('vue');
 
 Vue.component('tabbed-tab', {
-    template: '<div v-if="active" class="u-tabbed-content"><slot></slot></div>',
+    props: {
+        header: { status: String },
+        focus: { status: Boolean },
+        name: { status: String },
+    },
     data: function data() {
         return { active: false };
     },
-    props: ['header', 'focus', 'name'],
+    template: '<div v-if="active" class="u-tabbed-content"><slot></slot></div>',
 });
 
 export default Vue.component('tabbed-view', {
+    props: {
+        activeTab: { status: String },
+    },
     data: function data() {
         return {
             // We increment this when we need to re-render the tabs.
@@ -36,16 +43,23 @@ export default Vue.component('tabbed-view', {
             a: 1,
         };
     },
-    props: ['activeTab'],
     computed: {
         tabs: function computedtabs() {
             return this.$children;
         },
     },
+    watch: {
+        activeTab(newVal) {
+            this.setActiveCheck();
+        },
+    },
+    mounted() {
+        this.setActiveCheck();
+    },
     methods: {
         getActive: function getActive() {
             let foundChild = null;
-            this.$children.forEach(child => {
+            this.$children.forEach((child) => {
                 if (child.active) {
                     foundChild = child;
                 }
@@ -54,7 +68,7 @@ export default Vue.component('tabbed-view', {
             return foundChild;
         },
         setActive: function setActive(c) {
-            this.$children.forEach(child => {
+            this.$children.forEach((child) => {
                 if (child !== c) {
                     child.active = false;
                 }
@@ -65,7 +79,7 @@ export default Vue.component('tabbed-view', {
             this.a++;
         },
         setActiveByName: function setActiveByName(name) {
-            this.$children.forEach(child => {
+            this.$children.forEach((child) => {
                 if (child.name === name) {
                     this.setActive(child);
                 }
@@ -75,20 +89,12 @@ export default Vue.component('tabbed-view', {
             if (this.activeTab) {
                 this.setActiveByName(this.activeTab);
             } else {
-                this.$children.forEach(t => {
+                this.$children.forEach((t) => {
                     if (t.focus) {
                         this.setActive(t);
                     }
                 });
             }
-        },
-    },
-    mounted() {
-        this.setActiveCheck();
-    },
-    watch: {
-        activeTab(newVal) {
-            this.setActiveCheck();
         },
     },
 });
