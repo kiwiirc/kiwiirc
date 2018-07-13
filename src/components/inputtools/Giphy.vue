@@ -53,21 +53,16 @@ export default {
                 image_data = this.responseText;
                 image_data = JSON.parse(image_data);
                 image_data = image_data.data;
-
                 var i;
                 for (i = 0; i < image_data.length; i++) {
                     self.$set(self.giphy_image_array, i, image_data[i].images.original.url);
-                    console.log(self.giphy_image_array);
                 }
-                console.log(image_data[0]);
-
             };
 
             xhttp.open("GET", api_string, true);
             xhttp.send();
         },
         onInput: function onInput(input) {
-            console.log(input);
             this.updateImages(input);
         },
         onImgClick: function onImgClick(event) {
@@ -78,9 +73,7 @@ export default {
             url = url.replace('url(', '').replace(')', '');
             url = url.replace(' ', '').replace(/"/g, '');
             let code = event.target.dataset.code;
-            var iframe_string = '<iframe src="'+ url +'" width="480" height="460" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>';
-            this.ircinput.setValue('allan');
-            //this.ircinput.addImg(url, url);
+            this.ircinput.addImg(url, url);
         },
     },
 };
