@@ -51,10 +51,15 @@
                     <i class="fa fa-smile-o" aria-hidden="true"/>
                 </a>
                 <div
-                    v-rawElement="plugin.el"
+                    v-rawElement="{
+                        el: plugin.el,
+                        props: {
+                            controlinput: self,
+                        }
+                    }"
                     v-for="plugin in pluginUiElements"
                     :key="plugin.id"
-                    class="kiwi-controlinput-tool"
+                    class="kiwi-controlinput-tool"                    
                 />
             </div>
         </div>
@@ -84,6 +89,7 @@ export default {
     props: ['container', 'buffer'],
     data: function data() {
         return {
+            self: this,
             selfuser_open: false,
             value: '',
             history: [],

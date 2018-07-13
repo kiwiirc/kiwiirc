@@ -76,9 +76,29 @@ Vue.mixin({
 
 // Allow adding existing raw elements to component templates
 // Eg: <div v-rawElement="domElement"></div>
+// Eg: <div v-rawElement="{el: domElement, data:{foo:'bar'}}"></div>
 Vue.directive('rawElement', {
     bind(el, binding) {
-        el.appendChild(binding.value);
+        if (binding.value.nodeName) {
+            el.appendChild(binding.value);
+        } else if(binding.value.el) {
+            let rawEl = binding.value.el;
+            el.appendChild(rawEl);
+
+            // Add any data attributes to the raw element
+            if (binding.value.data) {
+                Object.keys(binding.value.data).forEach(key => {
+                    rawEl.dataset[key] = binding.value.data[key];
+                });
+            }
+
+            // Add any properties to the raw element
+            if (binding.value.props) {
+                Object.keys(binding.value.props).forEach(key => {
+                    rawEl[key] = binding.value.props[key];
+                });
+            }
+        }
     },
 });
 
