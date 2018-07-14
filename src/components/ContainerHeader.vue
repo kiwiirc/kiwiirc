@@ -213,7 +213,8 @@ export default {
     created() {
         this.listen(state, 'document.clicked', (e) => {
             // If clicking anywhere else on the page, close all our prompts
-            if (!this.$el.contains(e.srcElement)) {
+            let target = e.target || e.srcElement;
+            if (!this.$el.contains(target)) {
                 Object.keys(this.prompts).forEach((prompt) => {
                     this.prompts[prompt] = false;
                 });
