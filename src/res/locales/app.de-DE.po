@@ -11,15 +11,15 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-07-12 13:41\n"
+"PO-Revision-Date: 2018-07-12 16:35\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Start"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Wilkommen im Kiwi IRC!"
 
 #: Close
 msgid "close"
@@ -43,11 +43,11 @@ msgstr "Einstellungen"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Kiwi Einstellungen"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "Chaträume"
 
 #: Banned Users
 msgid "banned"
@@ -99,27 +99,27 @@ msgstr "Ungültige Zugangsdaten"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "suche"
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Ja"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "Nein"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "Dies wird deine gesamten Kiwi IRC Unterhaltungen beenden. Bist du dir sicher?"
 
 #: Real name
 msgid "whois_realname"
@@ -151,43 +151,43 @@ msgstr "Channel"
 
 #: {{count}} week
 msgid "week"
-msgstr ""
+msgstr "{{count}} Woche"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr ""
+msgstr "{{count}} Wochen"
 
 #: {{count}} day
 msgid "day"
-msgstr ""
+msgstr "{{count}} Tag"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr ""
+msgstr "{{count}} Tage"
 
 #: {{count}} hour
 msgid "hour"
-msgstr ""
+msgstr "{{count}} Stunde"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr ""
+msgstr "{{count}} Stunden"
 
 #: {{count}} minute
 msgid "minute"
-msgstr ""
+msgstr "{{count}} Minute"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "{{count}} Minuten"
 
 #: {{count}} second
 msgid "second"
-msgstr ""
+msgstr "{{count}} Sekunde"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr ""
+msgstr "{{count}} Sekunden"
 
 #: General
 msgid "settings_general"
@@ -199,7 +199,7 @@ msgstr "Theme"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Theme erneuern"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -211,7 +211,7 @@ msgstr "Verwende Monospace"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "Traditionelles IRC Layout"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -247,7 +247,7 @@ msgstr "Extra Formatierung"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Spitznamen einfärben"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -267,7 +267,7 @@ msgstr "Alias"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Was sind Aliasse"
 
 #: Send Message
 msgid "send_message"
@@ -275,11 +275,11 @@ msgstr "Sende Nachricht"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Passworteingabe erforderlich"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr ""
+msgstr "Raum {{channel}} erneut betreten"
 
 #: Notify me when
 msgid "settings_notify"
@@ -303,7 +303,7 @@ msgstr "Ton aus"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr ""
+msgstr "Zähler für neue Nachrichten ausblenden"
 
 #: Operator tools
 msgid "operator_tools"
@@ -359,11 +359,11 @@ msgstr "Blocke externe Nachrichten"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr ""
+msgstr "Bestätige den Refresh-Button, um die Raumliste zu aktualisieren"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr ""
+msgstr "Keine Räume gefunden, versuche es später noch einmal"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
@@ -375,15 +375,15 @@ msgstr "Status anzeigen"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Thema verstecken"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Thema anzeigen"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Raumeinstellungen"
 
 #: Join Channel
 msgid "container_join"
@@ -399,7 +399,7 @@ msgstr "Privater Chat mit"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr ""
+msgstr "Den Raum wirklich verlassen?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -415,7 +415,7 @@ msgstr "Lade vorherige Nachrichten"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Ungelesene Nachrichten"
 
 #: Server details
 msgid "settings_server_details"
@@ -471,7 +471,7 @@ msgstr "{{count}} user hier"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Nutzer im Raum filtern"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -507,15 +507,15 @@ msgstr "Zeige mir joins an"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Veränderungen des Raumthemas anzeigen"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Namensänderungen anzeigen"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Veränderungen der \"Channel Modes\" anzeigen"
 
 #: Extra message formatting
 msgid "side_formatting"
@@ -579,15 +579,15 @@ msgstr "Betrete #channel"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Räume filtern"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Finde weitere Räume"
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "ändere deinen Spitznamen"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -643,55 +643,55 @@ msgstr "Kick+Bann vom Channel"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "{{nick}} ernennt {{target}} zum Operator"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr ""
+msgstr "{{nick}} entfernt Operator-Rechte von {{target}} "
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr ""
+msgstr "{{nick}} gibt \"half-ops\" an {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr ""
+msgstr "{{nick}} nimmt \"half-ops\" von {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr ""
+msgstr "{{nick}} gibt \"voice\" an {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr ""
+msgstr "{{nick}} nimmt \"voice\" von {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr ""
+msgstr "{{nick}} gibt Admin-Rechte an {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr ""
+msgstr "{{nick}} nimmt Admin-Rechte von {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr ""
+msgstr "{{nick}} gibt Owner-Rechte an {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr ""
+msgstr "{{nick}} nimmt Owner-Rechte von {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr ""
+msgstr "{{nick}} hat {{target}} verbannt"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr ""
+msgstr "{{nick}} hat den Ban von {{target}} aufgehoben"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}} setzt {{mode}} auf {{target}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -735,41 +735,41 @@ msgstr "verbunden"
 
 #: Disconnected
 msgid "disconnected"
-msgstr ""
+msgstr "Verbindung getrennt"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr ""
+msgstr "Verbunden mit {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr ""
+msgstr "hat den Raum betreten"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr ""
+msgstr "{{nick}} hat dich aus {{channel}} gestoßen"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr ""
+msgstr "{{nick}} wurde von {{chanop}} aus {{channel}} gestoßen"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr ""
+msgstr "{{nick}} hat den Raum verlassen"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr ""
+msgstr "{{nick}} hat dich dazu eingeladen, {{channel}} zu betreten"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr ""
+msgstr "Der Spitzname {{nick}} ist bereits in Verwendung. Probiere {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr ""
+msgstr "{{nick}} ist nun bekannt als {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr ""
+msgstr "{{nick}} hat das Raumthema verändert zu: {{topic}}"
 
