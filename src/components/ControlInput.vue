@@ -277,6 +277,20 @@ export default {
                 && !event.ctrlKey
             ) {
                 // Tab and no other keys as tab+other is often a keyboard shortcut
+                // Tab key was just pressed, start general auto completion
+                let currentWord = this.$refs.input.getCurrentWord();
+                let currentToken = currentWord.word.substr(0, currentWord.position);
+
+                let items = this.buildAutoCompleteItems({
+                    users: true,
+                    buffers: true,
+                });
+                this.openAutoComplete(items);
+                this.autocomplete_filter = currentToken;
+
+                // Disable filtering so that tabbing cycles through words more like
+                // traditional IRC clients.
+                this.autocomplete_filtering = false;
                 event.preventDefault();
             } else if (meta && event.keyCode === 221) {
                 // meta + ]
@@ -326,17 +340,6 @@ export default {
                 && !event.ctrlKey
             ) {
                 // Tab and no other keys as tab+other is often a keyboard shortcut
-                // Tab key was just pressed, start general auto completion
-                let items = this.buildAutoCompleteItems({
-                    users: true,
-                    buffers: true,
-                });
-                this.openAutoComplete(items);
-                this.autocomplete_filter = currentToken;
-
-                // Disable filtering so that tabbing cycles through words more like
-                // traditional IRC clients.
-                this.autocomplete_filtering = false;
                 event.preventDefault();
             }
 
