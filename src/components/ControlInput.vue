@@ -124,9 +124,11 @@ export default {
             this.$refs.input.setValue(val || '');
         },
         buffer() {
-            if (!state.getSetting('settings.buffers.shared_input')) {
+            if (!state.setting('buffers.shared_input')) {
                 this.inputRestore();
             }
+
+            this.autocomplete_open = false;
         },
     },
     created: function created() {
@@ -159,17 +161,19 @@ export default {
     },
     methods: {
         inputUpdate(val) {
-            if (state.getSetting('settings.buffers.shared_input')) {
+            if (state.setting('buffers.shared_input')) {
                 state.ui.current_input = val;
             } else {
                 this.buffer.current_input = val;
             }
         },
         inputRestore() {
-            let currentInput = state.getSetting('settings.buffers.shared_input') ?
+            let currentInput = state.setting('buffers.shared_input') ?
                 state.ui.current_input :
                 this.buffer.current_input;
+
             this.$refs.input.reset(currentInput);
+            this.$refs.input.selectionToEnd();
         },
         toggleSelfUser() {
             if (this.networkState === 'connected') {
