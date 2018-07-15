@@ -80,6 +80,11 @@ export default Vue.component('irc-input', {
         },
         updateValueProps: function updateValueProps() {
             let selection = window.getSelection();
+
+            if (selection.rangeCount === 0) {
+                return;
+            }
+
             this.current_el_pos = selection.anchorOffset;
             this.current_el = selection.anchorNode;
 
