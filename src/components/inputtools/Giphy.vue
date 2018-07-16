@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-inputtool-giphy"  v-bind:class="{results: giphy_image_array.length}">
+    <div :class="{results: giphy_image_array.length}" class="kiwi-inputtool-giphy">
         <a
             class="u-button u-button-warning kiwi-mediaviewer-controls-close kiwi-close-icon"
             @click="closeGiphy"
@@ -10,13 +10,17 @@
             <form class="u-form kiwi-giphy-search-form">
                 <label for="kiwi-giphy-search">
                     <span> Search Giphy </span>
-                    <input type="text" ref="kiwiGifySearch" placeholder="Search Giphy..." id="kiwi-giphy-search" @input="updateImages($event.target.value)"/>
-                    <div class="kiwi-giphy-clear" @click="clearSearch()"><i class="fa fa-times" aria-hidden="true"></i></div>
+                    <input id="kiwi-giphy-search" ref="kiwiGifySearch" type="text"
+                           placeholder="Search Giphy..."
+                           @input="updateImages($event.target.value)"/>
+                    <div class="kiwi-giphy-clear" @click="clearSearch()">
+                        <i class="fa fa-times" aria-hidden="true"/>
+                    </div>
                 </label>
             </form>
         </div>
 
-        <div class='kiwi-giphy-container'>
+        <div class="kiwi-giphy-container">
             <img
                 v-for="item in giphy_image_array"
                 :key="item"
@@ -24,7 +28,8 @@
                 class="kiwi-giphy-images"
                 @click="onImgClick"
             />
-            <p class='kiwi_no_gifs' v-if="giphy_image_array.length === 0 && giphy_search_string != ''">
+            <p v-if="giphy_image_array.length === 0 && giphy_searchString != ''"
+               class="kiwi_no_gifs">
                 <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
             </p>
         </div>
@@ -42,7 +47,7 @@ export default {
     data: function data() {
         return {
             giphy_image_array: [],
-            giphy_search_string: '',
+            giphy_searchString: '',
         };
     },
     computed: {
@@ -56,33 +61,33 @@ export default {
         },
     },
     methods: {
-        updateImages: function updateImages(search_string) {
-            var self = this;
-            this.giphy_search_string = search_string;
-            var image_data;
-            var api_string = "http://api.giphy.com/v1/gifs/search?q=" + search_string + "&api_key=L6PXwfcWjNM4PR7c5QVpdOUxRqv24XDy&limit=35";
-            var xhttp = new XMLHttpRequest();
+        updateImages: function updateImages(searchString) {
+            let self = this;
+            let imageData;
+            let apiString = 'http://api.giphy.com/v1/gifs/search?q=' + searchString + '&api_key=L6PXwfcWjNM4PR7c5QVpdOUxRqv24XDy&limit=35';
+            let xhttp = new XMLHttpRequest();
+            this.giphy_searchString = searchString;
             xhttp.onreadystatechange = function() {
-                image_data = this.responseText;
-                image_data = JSON.parse(image_data);
-                image_data = image_data.data;
-                var i;
-                for (i = 0; i < image_data.length; i++) {
-                    self.$set(self.giphy_image_array, i, image_data[i].images.original.url);
+                let i;
+                imageData = this.responseText;
+                imageData = JSON.parse(imageData);
+                imageData = imageData.data;
+                for (i = 0; i < imageData.length; i++) {
+                    self.$set(self.giphy_image_array, i, imageData[i].images.original.url);
                 }
             };
 
-            xhttp.open("GET", api_string, true);
+            xhttp.open('GET', apiString, true);
             xhttp.send();
         },
         clearSearch: function clearSearch() {
             this.giphy_image_array = [];
-            this.giphy_search_string = '';
+            this.giphy_searchString = '';
             this.$refs.kiwiGifySearch.value = '';
         },
         onImgClick: function onImgClick(img) {
-            let img_source = img.srcElement.src;
-            state.$emit('input.raw', img_source);
+            let imgSource = img.srcElement.src;
+            state.$emit('input.raw', imgSource);
         },
         closeGiphy: function closeGiphy() {
             this.$parent.active_tool = null;

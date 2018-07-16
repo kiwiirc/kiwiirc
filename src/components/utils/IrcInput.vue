@@ -207,7 +207,6 @@ export default Vue.component('irc-input', {
             this.code_map[url] = code;
             this.updateValueProps();
         },
-
         // Insert some text at the current position
         insertText: function insertText(text) {
             let el = this.current_el;

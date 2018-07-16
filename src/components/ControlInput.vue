@@ -51,7 +51,7 @@
                     <i class="fa fa-smile-o" aria-hidden="true"/>
                 </a>
                 <a class="kiwi-controlinput-tool" @click.prevent="onToolClickGiphy">
-                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                    <i class="fa fa-picture-o" aria-hidden="true"/>
                 </a>
                 <div
                     v-rawElement="plugin.el"
