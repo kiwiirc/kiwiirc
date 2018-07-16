@@ -12,7 +12,7 @@
                     <span> Search Giphy </span>
                     <input id="kiwi-giphy-search" ref="kiwiGifySearch" type="text"
                            placeholder="Search Giphy..."
-                           @input="updateImages($event.target.value)"/>
+                           @input="updateImages($event.target.value)">
                     <div class="kiwi-giphy-clear" @click="clearSearch()">
                         <i class="fa fa-times" aria-hidden="true"/>
                     </div>
@@ -27,7 +27,7 @@
                 :src="item"
                 class="kiwi-giphy-images"
                 @click="onImgClick"
-            />
+            >
             <p v-if="giphy_image_array.length === 0 && giphy_searchString != ''"
                class="kiwi_no_gifs">
                 <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
@@ -67,7 +67,7 @@ export default {
             let apiString = 'http://api.giphy.com/v1/gifs/search?q=' + searchString + '&api_key=L6PXwfcWjNM4PR7c5QVpdOUxRqv24XDy&limit=35';
             let xhttp = new XMLHttpRequest();
             this.giphy_searchString = searchString;
-            xhttp.onreadystatechange = function() {
+            xhttp.onreadystatechange = function giphyReady() {
                 let i;
                 imageData = this.responseText;
                 imageData = JSON.parse(imageData);
