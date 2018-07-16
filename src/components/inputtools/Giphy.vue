@@ -1,20 +1,26 @@
 <template>
-    <div class="kiwi-inputtool-giphy">
+    <div class="kiwi-inputtool-giphy"  v-bind:class="{results: giphy_image_array.length}">
         <div class="kiwi-giphy-input">
-            <form class="kiwi-giphy-search-form" v-on:submit="updateImages">
-                <input type="text" name="" value="" placeholder="Search Giphy..." id="kiwi-giphy-search" @input="onInput($event.target.value)" />
-                <input type="button" name="" value="Search Giphy">
+            <form class="u-form kiwi-giphy-search-form">
+                <label for="kiwi-giphy-search">
+                    <span> Search Giphy </span>
+                    <input type="text" ref="kiwiGifySearch" placeholder="Search Giphy..." id="kiwi-giphy-search" @input="updateImages($event.target.value)"/>
+                    <div class="kiwi-giphy-clear" @click="clearSearch()"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </label>
             </form>
         </div>
 
         <div class='kiwi-giphy-container'>
-            <div
+            <img
                 v-for="item in giphy_image_array"
                 :key="item"
-                :style="{'background-image':`url(${item})`}"
+                :src="item"
                 class="kiwi-giphy-images"
                 @click="onImgClick"
             />
+            <p class='kiwi_no_gifs' v-if="giphy_image_array.length === 0 && giphy_search_string != ''">
+                <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
+            </p>
         </div>
 
     </div>
@@ -30,7 +36,7 @@ export default {
     data: function data() {
         return {
             giphy_image_array: [],
-            location: state.setting('emojiLocation'),
+            giphy_search_string: '',
         };
     },
     computed: {
@@ -46,8 +52,9 @@ export default {
     methods: {
         updateImages: function updateImages(search_string) {
             var self = this;
+            this.giphy_search_string = search_string;
             var image_data;
-            var api_string = "http://api.giphy.com/v1/gifs/search?q=" + search_string + "&api_key=L6PXwfcWjNM4PR7c5QVpdOUxRqv24XDy&limit=10";
+            var api_string = "http://api.giphy.com/v1/gifs/search?q=" + search_string + "&api_key=L6PXwfcWjNM4PR7c5QVpdOUxRqv24XDy&limit=35";
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 image_data = this.responseText;
@@ -62,18 +69,25 @@ export default {
             xhttp.open("GET", api_string, true);
             xhttp.send();
         },
-        onInput: function onInput(input) {
-            this.updateImages(input);
+        clearSearch: function clearSearch() {
+            this.giphy_image_array = [];
+            this.giphy_search_string = '';
+            this.$refs.kiwiGifySearch.value = '';
         },
         onImgClick: function onImgClick(event) {
             let url = window.getComputedStyle(event.target, null)
                 .getPropertyValue('background-image');
 
+            url = url.replace('https:','');
             // TODO: All this text replacing is ugly. Tidy it pls.
             url = url.replace('url(', '').replace(')', '');
             url = url.replace(' ', '').replace(/"/g, '');
             let code = event.target.dataset.code;
+            let img_tag = '<img src="'+url+'" alt="Powered by Giphy" >';
             this.ircinput.addImg(url, url);
+            state.$emit('input.raw', img_tag);
+            this.state.$emit('input.raw', img_tag);
+            console.log('allan');
         },
     },
 };
@@ -83,25 +97,62 @@ export default {
 
 .kiwi-controlinput-active-tool {
     width: 100%;
-    height: 200px;
+}
+
+.kiwi-inputtool-giphy {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    transition: height 0.2s;
+}
+
+.kiwi-inputtool-giphy.results {
+    height: 350px;
+}
+
+.kiwi-giphy-input {
+    display: block;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.kiwi-giphy-search-form {
+    display: inline-block;
+    max-width: 320px;
+    position: relative;
+}
+
+.kiwi-giphy-clear {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    z-index: 10;
+    margin-top: -3px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.kiwi-giphy-clear:hover {
+    color: red;
 }
 
 .kiwi-giphy-container {
     display: block;
-    width: 100%;
-    height: 177px;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    text-align: center;
+}
+
+.kiwi_no_gifs {
+    font-size: 2em;
 }
 
 .kiwi-giphy-images {
     display: inline-block;
-    margin: 0;
-    width: 150px;
+    margin: 0 0.5%;
     height: 150px;
     cursor: pointer;
     background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .kiwi-inputtool-emoji-emoji {
