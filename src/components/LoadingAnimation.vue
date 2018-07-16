@@ -18,6 +18,7 @@ export default {
             fontSize: 72,
             font: 'bold ' + 72 + 'px verdana',
             text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu arcu ipsum. `,
+            animationFrame: null,
         };
     },
     mounted() {
@@ -33,11 +34,14 @@ export default {
             this.Y.push(i * this.fontSize - 1600);
         }
         this.logo.onload = () => {
-            this.Draw();
+            this.draw();
         };
     },
+    destroyed() {
+        cancelAnimationFrame(this.animationFrame);
+    },
     methods: {
-        Draw() {
+        draw() {
             this.x.clearRect(0, 0, this.c.width, this.c.height);
             this.x.globalCompositeOperation = 'source-over';
             this.x.drawImage(this.logo, 0, 0, this.c.width, this.c.height);
@@ -68,7 +72,7 @@ export default {
             this.x.globalAlpha = 0.1;
             this.x.drawImage(this.logo, 0, 0, this.c.width, this.c.height);
             this.x.globalAlpha = 1;
-            requestAnimationFrame(this.Draw);
+            this.animationFrame = requestAnimationFrame(this.draw);
             this.t += 1 / 40;
         },
     },
