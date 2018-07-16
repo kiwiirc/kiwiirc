@@ -64,7 +64,7 @@ export default {
         updateImages: function updateImages(searchString) {
             let self = this;
             let imageData;
-            let apiString = 'http://api.giphy.com/v1/gifs/search?q=' + searchString + '&api_key=L6PXwfcWjNM4PR7c5QVpdOUxRqv24XDy&limit=35';
+            let apiString = 'https://api.giphy.com/v1/gifs/search?q=' + searchString + '&api_key=L6PXwfcWjNM4PR7c5QVpdOUxRqv24XDy&limit=35';
             let xhttp = new XMLHttpRequest();
             this.giphy_searchString = searchString;
             xhttp.onreadystatechange = function giphyReady() {
@@ -86,8 +86,9 @@ export default {
             this.$refs.kiwiGifySearch.value = '';
         },
         onImgClick: function onImgClick(img) {
-            let imgSource = img.srcElement.src;
+            let imgSource = img.srcTarget.src;
             state.$emit('input.raw', imgSource);
+            closeGiphy();
         },
         closeGiphy: function closeGiphy() {
             this.$parent.active_tool = null;
