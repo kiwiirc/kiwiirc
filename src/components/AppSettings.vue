@@ -36,11 +36,11 @@
                                 <span>{{ $t('settings_themeurl') }} </span>
                                 <input v-model="customThemeUrl" class="u-input">
                             </label>
-                            <label>
+                            <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_show_autocomplete') }} </span>
                                 <input v-model="settingShowAutoComplete" type="checkbox" >
                             </label>
-                            <label v-if="themeSupportsMonospace">
+                            <label v-if="themeSupportsMonospace" class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_use_monospace') }} </span>
                                 <input v-model="settingUseMonospace" type="checkbox" >
                             </label>
@@ -50,23 +50,23 @@
                     <div class="kiwi-appsettings-block">
                         <h3>{{ $t('settings_messages_title') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-messages">
-                            <label>
+                            <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_layout_compact') }} </span>
                                 <input v-model="settingMessageLayout" type="checkbox" >
                             </label>
-                            <label>
+                            <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_timestamps') }} </span>
                                 <input v-model="settingBufferShowTimestamps" type="checkbox" >
                             </label>
-                            <label>
+                            <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_24hour_timestamps') }} </span>
                                 <input v-model="timestamps_24h" type="checkbox" >
                             </label>
-                            <label>
+                            <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_emoticons') }} </span>
                                 <input v-model="settingBufferShowEmoticons" type="checkbox" >
                             </label>
-                            <label>
+                            <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_block_private') }} </span>
                                 <input v-model="settingBufferBlockPms" type="checkbox" >
                             </label>
@@ -80,11 +80,11 @@
                                 >
                                 <span>{{ $t('settings_scrollback') }} </span>
                             </label>
-                            <label>
+                            <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_formatting') }} </span>
                                 <input v-model="settingBufferExtraFormatting" type="checkbox" >
                             </label>
-                            <label>
+                            <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_nick_colouring') }} </span>
                                 <input v-model="settingBufferColourNicknames" type="checkbox" >
                             </label>
@@ -94,11 +94,11 @@
                     <div class="kiwi-appsettings-block">
                         <h3>{{ $t('notifications') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
-                            <label class="kiwi-appsettings-setting-showjoinpart">
+                            <label class="kiwi-appsettings-setting-showjoinpart u-checkbox-wrapper">
                                 <span>{{ $t('settings_show_joinpart') }} </span>
                                 <input v-model="settingBufferTrafficAsActivity" type="checkbox" >
                             </label>
-                            <label>
+                            <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_mute_sound') }} </span>
                                 <input v-model="settingBufferMuteSound" type="checkbox" >
                             </label>
