@@ -1,5 +1,11 @@
 <template>
     <div class="kiwi-inputtool-giphy"  v-bind:class="{results: giphy_image_array.length}">
+        <a
+            class="u-button u-button-warning kiwi-mediaviewer-controls-close kiwi-close-icon"
+            @click="closeGiphy"
+        >
+            <i class="fa fa-window-close" aria-hidden="true"/>
+        </a>
         <div class="kiwi-giphy-input">
             <form class="u-form kiwi-giphy-search-form">
                 <label for="kiwi-giphy-search">
@@ -74,20 +80,12 @@ export default {
             this.giphy_search_string = '';
             this.$refs.kiwiGifySearch.value = '';
         },
-        onImgClick: function onImgClick(event) {
-            let url = window.getComputedStyle(event.target, null)
-                .getPropertyValue('background-image');
-
-            url = url.replace('https:','');
-            // TODO: All this text replacing is ugly. Tidy it pls.
-            url = url.replace('url(', '').replace(')', '');
-            url = url.replace(' ', '').replace(/"/g, '');
-            let code = event.target.dataset.code;
-            let img_tag = '<img src="'+url+'" alt="Powered by Giphy" >';
-            this.ircinput.addImg(url, url);
-            state.$emit('input.raw', img_tag);
-            this.state.$emit('input.raw', img_tag);
-            console.log('allan');
+        onImgClick: function onImgClick(img) {
+            let img_source = img.srcElement.src;
+            state.$emit('input.raw', img_source);
+        },
+        closeGiphy: function closeGiphy() {
+            this.$parent.active_tool = null;
         },
     },
 };
