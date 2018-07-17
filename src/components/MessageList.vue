@@ -208,7 +208,8 @@ export default {
             return list.reverse();
         },
         shouldShowJoiningLoader() {
-            return this.buffer.enabled &&
+            return this.buffer.isChannel() &&
+                this.buffer.enabled &&
                 !this.buffer.joined &&
                 this.buffer.getNetwork().state === 'connected';
         },
