@@ -51,10 +51,14 @@ export default class Message {
             extras: useExtraFormatting,
         });
 
+        state.$emit('message.prestyle', { message: this, blocks: blocks });
+
         let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, userList);
 
         this.mentioned_urls = content.urls;
         this.html = content.html;
+
+        state.$emit('message.poststyle', { message: this, blocks: blocks });
         return this.html;
     }
 }
