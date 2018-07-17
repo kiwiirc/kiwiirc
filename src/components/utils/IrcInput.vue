@@ -207,10 +207,18 @@ export default Vue.component('irc-input', {
         addImg: function addImg(code, url) {
             this.focus();
             document.execCommand('styleWithCSS', false, true);
-            document.execCommand('insertImage', false, url);
-
             this.code_map[url] = code;
             this.updateValueProps();
+            let el = this.current_el;
+            if (el.childNodes.length) {
+                let range = document.createRange();
+                let sel = window.getSelection();
+                range.setStart(el, el.childNodes.length);
+                range.collapse(true);
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+            document.execCommand('insertImage', false, url);
         },
 
         // Insert some text at the current position
