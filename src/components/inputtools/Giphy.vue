@@ -68,12 +68,14 @@ export default {
             let xhttp = new XMLHttpRequest();
             this.giphy_searchString = searchString;
             xhttp.onreadystatechange = function giphyReady() {
-                let i;
-                imageData = this.responseText;
-                imageData = JSON.parse(imageData);
-                imageData = imageData.data;
-                for (i = 0; i < imageData.length; i++) {
-                    self.$set(self.giphy_image_array, i, imageData[i].images.original.url);
+                if(xhttp.readyState === 4 && xhttp.status === 200) {
+                    let i;
+                    imageData = this.responseText;
+                    imageData = JSON.parse(imageData);
+                    imageData = imageData.data;
+                    for (i = 0; i < imageData.length; i++) {
+                        self.$set(self.giphy_image_array, i, imageData[i].images.original.url);
+                    }
                 }
             };
 
@@ -86,7 +88,7 @@ export default {
             this.$refs.kiwiGifySearch.value = '';
         },
         onImgClick: function onImgClick(img) {
-            let imgSource = img.srcTarget.src;
+            let imgSource = img.target.src;
             state.$emit('input.raw', imgSource);
             closeGiphy();
         },
