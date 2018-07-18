@@ -68,7 +68,7 @@ export default {
             let xhttp = new XMLHttpRequest();
             this.giphy_searchString = searchString;
             xhttp.onreadystatechange = function giphyReady() {
-                if(xhttp.readyState === 4 && xhttp.status === 200) {
+                if (xhttp.readyState === 4 && xhttp.status === 200) {
                     let i;
                     imageData = this.responseText;
                     imageData = JSON.parse(imageData);
@@ -78,7 +78,6 @@ export default {
                     }
                 }
             };
-
             xhttp.open('GET', apiString, true);
             xhttp.send();
         },
@@ -90,7 +89,7 @@ export default {
         onImgClick: function onImgClick(img) {
             let imgSource = img.target.src;
             state.$emit('input.raw', imgSource);
-            closeGiphy();
+            this.closeGiphy();
         },
         closeGiphy: function closeGiphy() {
             this.$parent.active_tool = null;
