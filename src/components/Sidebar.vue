@@ -7,8 +7,11 @@
                     <div v-if="uiState.canPin" class="kiwi-sidebar-pin" @click="uiState.pin()">
                         <i class="fa fa-thumb-tack" aria-hidden="true"/>
                     </div>
+
+                    <p class="kiwi-sidebar-breadcrumbs">Sidebar -> Example </p>
+
                     <div class="kiwi-sidebar-close" @click="uiState.close()">
-                        {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
+                        <i class="fa fa-times" aria-hidden="true"/>
                     </div>
                 </span>
 
@@ -225,6 +228,8 @@ export default {
     box-sizing: border-box;
     text-transform: uppercase;
     line-height: 50px;
+    border-bottom: 1px solid;
+    text-align: center;
     vertical-align: top;
 }
 
@@ -237,18 +242,26 @@ export default {
     transition: background 0.3s;
 }
 
-.kiwi-sidebar-options .kiwi-sidebar-close {
-    width: 100%;
+.kiwi-sidebar-breadcrumbs {
     display: inline-block;
-    padding: 0 20px 0 40px;
+    margin: 0;
+    padding-left: 35px;
+    line-height: 20px;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.kiwi-sidebar-options .kiwi-sidebar-close {
+    float: right;
+    display: inline-block;
+    padding: 0 10px;
     text-align: right;
     box-sizing: border-box;
     transition: background 0.3s;
 }
 
 .kiwi-sidebar-options .kiwi-sidebar-close i {
-    margin-left: 10px;
-    font-size: 1.5em;
+    font-size: 1.2em;
     line-height: 47px;
 }
 
