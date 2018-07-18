@@ -210,13 +210,15 @@ export default Vue.component('irc-input', {
             this.code_map[url] = code;
             this.updateValueProps();
             let el = this.current_el;
-            if (el.childNodes.length) {
+            if (el.childNodes.length || el.textContent.length) {
                 let range = document.createRange();
                 let sel = window.getSelection();
-                range.setStart(el, el.childNodes.length);
+                range.setStart(el, this.current_el_pos + el.childNodes.length);
                 range.collapse(true);
                 sel.removeAllRanges();
                 sel.addRange(range);
+                let newPos = this.current_range[1] + 1e3;
+                this.current_range = [newPos, newPos];
             }
             document.execCommand('insertImage', false, url);
         },
