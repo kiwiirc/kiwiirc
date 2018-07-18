@@ -221,6 +221,7 @@ export default {
         float: left;
         width: 100%;
         margin-left: 0;
+        box-sizing: border-box;
     }
 
     .kiwi-messagelist-message--compact.kiwi-messagelist-message--unread .kiwi-messagelist-body {
