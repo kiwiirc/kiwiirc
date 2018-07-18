@@ -680,6 +680,53 @@ inputCommands.echo = function inputCommandEcho(event, command, line) {
     });
 };
 
+inputCommands.set = function inputCommandEcho(event, command, line) {
+    event.handled = true;
+
+    let buffer = this.state.getActiveBuffer();
+
+    let setting = '';
+    let spacePos = line.indexOf(' ');
+
+    if (spacePos > -1) {
+        // Anything after the space becomes the new setting value
+        // false = boolean false
+        // true = boolean true
+        // off = boolean false
+        // on = boolean true
+        // "false" = string false
+        // "true" = string true
+        setting = line.substr(0, spacePos);
+        let value = line.substr(spacePos + 1).trim();
+        switch (value.toLowerCase().trim()) {
+        case 'true':
+        case 'on':
+            value = true;
+            break;
+        case 'false':
+        case 'off':
+            value = false;
+            break;
+        default:
+        }
+
+        // Unquote any quoted values
+        // ie.  "true" should jsut be the string true
+        if (value[0] === '"' && value[value.length - 1] === '"') {
+            value = value.substr(1, value.length - 2);
+        }
+
+        this.state.setting(setting, value);
+    } else {
+        setting = line;
+    }
+
+    this.state.addMessage(buffer, {
+        nick: '*',
+        message: `${setting} = ${this.state.setting(setting)}`,
+    });
+};
+
 inputCommands.list = function inputCommandList(event, command, line) {
     event.handled = true;
 
