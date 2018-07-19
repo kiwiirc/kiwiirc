@@ -643,6 +643,10 @@ const state = new Vue({
                 network.ircClient.quit();
             }
 
+            while (network.buffers.length > 0) {
+                this.removeBuffer(network.buffers[0]);
+            }
+
             if (network === this.getActiveNetwork()) {
                 this.setActiveBuffer(null);
             }
