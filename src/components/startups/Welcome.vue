@@ -237,7 +237,9 @@ export default {
 
             net.ircClient.connect();
             let onRegistered = () => {
-                this.$refs.layout.close();
+                if (this.$refs.layout) {
+                    this.$refs.layout.close();
+                }
                 net.ircClient.off('registered', onRegistered);
                 net.ircClient.off('close', onClosed);
             };
