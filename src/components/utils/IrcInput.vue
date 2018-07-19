@@ -204,23 +204,44 @@ export default Vue.component('irc-input', {
             this.code_map[colour] = code;
             this.updateValueProps();
         },
+        previousNode: function previousNode(node) {
+            var previous = node.previousSibling;
+            if (previous) {
+                node = previous;
+                while (node.hasChildNodes()) {
+                    node = node.lastChild;
+                }
+                return node;
+            }
+            var parent = node.parentNode;
+            if (parent && parent.hasChildNodes()) {
+                return parent;
+            }
+            return null;
+        },
         addImg: function addImg(code, url) {
-            this.focus();
+            // this.focus();
+            this.$refs.editor.focus();
             document.execCommand('styleWithCSS', false, true);
             this.code_map[url] = code;
-            this.updateValueProps();
-            let el = this.current_el;
-            if (el.childNodes.length || el.textContent.length) {
-                let range = document.createRange();
-                let sel = window.getSelection();
-                range.setStart(el, this.current_el_pos + el.childNodes.length);
-                range.collapse(true);
-                sel.removeAllRanges();
-                sel.addRange(range);
-                let newPos = this.current_range[1] + 1e3;
-                this.current_range = [newPos, newPos];
-            }
+            let sel = window.getSelection();
+            let range = sel.getRangeAt(0);
+            range.deleteContents();
             document.execCommand('insertImage', false, url);
+            sel = window.getSelection();
+            if (sel.rangeCount > 0) {
+                range = sel.getRangeAt(0);
+                var node = range.startContainer;
+                if (node.hasChildNodes() && range.startOffset > 0) {
+                    node = node.childNodes[range.startOffset - 1];
+                }
+                while (node) {
+                    if (node.nodeType === 1 && node.tagName.toLowerCase() === "img") {
+                        break;
+                    }
+                    node = this.previousNode(node);
+                }
+            }
         },
 
         // Insert some text at the current position
