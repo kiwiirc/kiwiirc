@@ -844,6 +844,12 @@ const state = new Vue({
         },
 
         addMessage(buffer, message) {
+            // Some messages try to be added after a network has been removed, meaning no buffer
+            // will be available
+            if (!buffer) {
+                return;
+            }
+
             let user = this.getUser(buffer.networkid, message.nick);
             let bufferMessage = new Message(message, user);
             if (user && user.ignore) {
