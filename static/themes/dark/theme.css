@@ -962,10 +962,6 @@
     color: #dedede;
 }
 
-.kiwi-statebrowser-channels .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name .kiwi-statebrowser-channel-label {
-    background: #d16c6c;
-}
-
 .kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
     border-left: 3px solid #42b992;
 }
@@ -1030,9 +1026,10 @@
     color: #dedede;
 }
 
-.kiwi-statebrowser-channel-label--highlight {
+.kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
     background: #d62323;
 }
+
 
 .kiwi-statebrowser-channel-popup {
     background: #383838;
@@ -1074,11 +1071,6 @@
 
 .kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
     color: #df6b26;
-}
-
-.kiwi-statebrowser-channel-label {
-    background: #42b992;
-    color: #dedede;
 }
 
 .kiwi-statebrowser-channel-popup {
