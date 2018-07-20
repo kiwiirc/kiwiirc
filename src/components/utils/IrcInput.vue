@@ -204,13 +204,44 @@ export default Vue.component('irc-input', {
             this.code_map[colour] = code;
             this.updateValueProps();
         },
+        previousNode: function previousNode(node) {
+            var previous = node.previousSibling;
+            if (previous) {
+                node = previous;
+                while (node.hasChildNodes()) {
+                    node = node.lastChild;
+                }
+                return node;
+            }
+            var parent = node.parentNode;
+            if (parent && parent.hasChildNodes()) {
+                return parent;
+            }
+            return null;
+        },
         addImg: function addImg(code, url) {
-            this.focus();
+            // this.focus();
+            this.$refs.editor.focus();
             document.execCommand('styleWithCSS', false, true);
-            document.execCommand('insertImage', false, url);
-
             this.code_map[url] = code;
-            this.updateValueProps();
+            let sel = window.getSelection();
+            let range = sel.getRangeAt(0);
+            range.deleteContents();
+            document.execCommand('insertImage', false, url);
+            sel = window.getSelection();
+            if (sel.rangeCount > 0) {
+                range = sel.getRangeAt(0);
+                var node = range.startContainer;
+                if (node.hasChildNodes() && range.startOffset > 0) {
+                    node = node.childNodes[range.startOffset - 1];
+                }
+                while (node) {
+                    if (node.nodeType === 1 && node.tagName.toLowerCase() === "img") {
+                        break;
+                    }
+                    node = this.previousNode(node);
+                }
+            }
         },
 
         // Insert some text at the current position
