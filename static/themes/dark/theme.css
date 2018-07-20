@@ -181,6 +181,10 @@
 }
 
 /* Application settings ( AppSettings.vue ) */
+.kiwi-appsettings-tab-container {
+    background: #272626;
+}
+
 .kiwi-appsettings-block {
     background-color: #272626;
     border: 1px solid rgba(0, 0, 0, 0.2);
