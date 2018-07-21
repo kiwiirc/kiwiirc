@@ -521,6 +521,10 @@ const state = new Vue({
 
         setting(name, val) {
             if (typeof val !== 'undefined') {
+                if (val === this.getSetting('settings.' + name)) {
+                    // Remove setting from user_settings if its the default
+                    return this.setSetting('user_settings.' + name, null);
+                }
                 // Setting any setting always goes into the user own settings space
                 return this.setSetting('user_settings.' + name, val);
             }
@@ -561,7 +565,11 @@ const state = new Vue({
                 if (i < parts.length - 1 && typeof nextVal === 'undefined') {
                     nextVal = this.$set(val, propName, {});
                 } else if (i === parts.length - 1) {
-                    this.$set(val, propName, newVal);
+                    if (newVal === null) {
+                        this.$delete(val, propName, newVal);
+                    } else {
+                        this.$set(val, propName, newVal);
+                    }
                 }
 
                 val = nextVal;
