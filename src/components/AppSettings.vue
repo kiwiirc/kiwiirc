@@ -7,8 +7,8 @@
         </div>
 
         <form class="u-form">
-            <tabbed-view class="kiwi-appsettings-tab-container">
-                <tabbed-tab :header="$t('settings_general')" :focus="true">
+            <tabbed-view :active-tab="activeTab" class="kiwi-appsettings-tab-container">
+                <tabbed-tab :header="$t('settings_general')" :focus="true" name="general">
 
                     <div class="kiwi-appsettings-block">
                         <h3>{{ $t('settings_general') }}</h3>
@@ -129,13 +129,13 @@
                             <div><span>{{ $t('settings_advanced_warning_title') }}</span>
                                 {{ $t('settings_advanced_warning') }}
                             </div>
-                            <a class="u-button" @click="settingAdvancedEnable = true"
+                            <a class="u-button" @click="enableAdvancedTab()"
                             >{{ $t('settings_advanced_button') }}</a>
                         </div>
                     </div>
                 </tabbed-tab>
 
-                <tabbed-tab :header="$t('settings_aliases')">
+                <tabbed-tab :header="$t('settings_aliases')" name="aliases">
                     <div class="kiwi-appsettings-block kiwi-appsettings-block-aliases">
                         <h3>{{ $t('settings_aliases') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
@@ -146,7 +146,8 @@
 
                 <tabbed-tab
                     v-if="settingAdvancedEnable"
-                    :header="$t('settings_advanced')">
+                    :header="$t('settings_advanced')"
+                    name="advanced">
                     <div class="kiwi-appsettings-block kiwi-appsettings-block-advanced">
                         <h3>{{ $t('settings_advanced') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-advanced">
@@ -155,7 +156,11 @@
                     </div>
                 </tabbed-tab>
 
-                <tabbed-tab v-for="item in pluginUiElements" :key="item.id" :header="item.title">
+                <tabbed-tab
+                    v-for="item in pluginUiElements"
+                    :key="item.id"
+                    :header="item.title"
+                    :name="item.title">
                     <div :is="item.component" v-bind="item.props"/>
                 </tabbed-tab>
             </tabbed-view>
@@ -195,6 +200,7 @@ export default {
         return {
             state: state,
             theme: '',
+            activeTab: '',
             customThemeUrl: '',
             pluginUiElements: GlobalApi.singleton().appSettingsPlugins,
         };
@@ -308,6 +314,13 @@ export default {
                 this.$watch('theme', watchTheme),
                 this.$watch('customThemeUrl', watchCustomThemeUrl),
             ];
+        },
+        enableAdvancedTab() {
+            this.settingAdvancedEnable = true;
+            this.$nextTick(() => {
+                this.activeTab = 'advanced';
+                this.$el.scrollTop = 0;
+            });
         },
     },
 };

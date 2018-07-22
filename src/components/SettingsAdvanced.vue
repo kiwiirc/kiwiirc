@@ -27,13 +27,13 @@
                                :value="setting.val"
                                class="u-input"
                                type="number"
-                               @keydown="keyDown($event)"
+                               @keydown="blurOnEnter($event)"
                                @change="updateSetting($event, setting.key)"
                                @blur="updateSetting($event, setting.key)">
                         <input v-else
                                :value="setting.val"
                                class="u-input"
-                               @keydown="keyDown($event)"
+                               @keydown="blurOnEnter($event)"
                                @blur="updateSetting($event, setting.key)">
                     </td>
                 </tr>
@@ -68,9 +68,13 @@ export default {
     },
     methods: {
         resetValue(event, settingKey) {
-            state.setting(settingKey, state.getSetting('settings.' + settingKey));
+            let newVal = state.getSetting('settings.' + settingKey);
+            if (!newVal) {
+                newVal = null;
+            }
+            state.setting(settingKey, newVal);
         },
-        keyDown(event) {
+        blurOnEnter(event) {
             if (event.keyCode === 13) {
                 event.target.blur();
             }

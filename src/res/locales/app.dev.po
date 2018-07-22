@@ -328,9 +328,9 @@ msgstr "Advanced Settings"
 msgid "settings_advanced_warning_title"
 msgstr "Warning"
 
-#: Mosters be here, only click this button if you know what your doing
+#: Monsters be here, only click this button if you know what your doing
 msgid "settings_advanced_warning"
-msgstr "Mosters be here, only click this button if you know what your doing"
+msgstr "Monsters be here, only click this button if you know what your doing"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
