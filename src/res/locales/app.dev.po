@@ -320,6 +320,47 @@ msgstr "Default ban mask"
 msgid "settings_default_kick_reason"
 msgstr "Default kick reason"
 
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr "Advanced Settings"
+
+#: Warning
+msgid "settings_advanced_warning_title"
+msgstr "Warning"
+
+#: Mosters be here, only click this button if you know what your doing
+msgid "settings_advanced_warning"
+msgstr "Mosters be here, only click this button if you know what your doing"
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr "Enable Advanced Settings"
+
+#: Danger Zone: changing these settings can engatively impact your kiwiirc experiance
+msgid "settings_advanced_header"
+msgstr "Danger Zone: changing these settings can engatively impact your kiwiirc experiance"
+
+#: Setting Name
+msgid "settings_advanced_name"
+msgstr "Setting Name"
+
+#: Status
+msgid "settings_advanced_status"
+msgstr "Status"
+
+#: Value
+msgid "settings_advanced_value"
+msgstr "Value"
+
+#: default
+msgid "settings_advanced_default"
+msgstr "default"
+
+#: modified
+msgid "settings_advanced_modified"
+msgstr "modified"
+
+
 
 
 #: ChannelBanlist $t('bans_')

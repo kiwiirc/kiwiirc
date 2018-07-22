@@ -122,6 +122,17 @@
                             </label>
                         </div>
                     </div>
+                    <div v-if="!state.setting('hide_advanced') && !settingAdvancedEnable"
+                         class="kiwi-appsettings-block">
+                        <h3>{{ $t('settings_advanced_title') }}</h3>
+                        <div class="kiwi-appsettings-section kiwi-appsettings-advanced-enable">
+                            <div><span>{{ $t('settings_advanced_warning_title') }}</span>
+                                {{ $t('settings_advanced_warning') }}
+                            </div>
+                            <a class="u-button" @click="settingAdvancedEnable = true"
+                            >{{ $t('settings_advanced_button') }}</a>
+                        </div>
+                    </div>
                 </tabbed-tab>
 
                 <tabbed-tab :header="$t('settings_aliases')">
@@ -132,6 +143,18 @@
                         </div>
                     </div>
                 </tabbed-tab>
+
+                <tabbed-tab
+                    v-if="settingAdvancedEnable"
+                    :header="$t('settings_advanced')">
+                    <div class="kiwi-appsettings-block kiwi-appsettings-block-advanced">
+                        <h3>{{ $t('settings_advanced') }}</h3>
+                        <div class="kiwi-appsettings-section kiwi-appsettings-advanced">
+                            <settings-advanced/>
+                        </div>
+                    </div>
+                </tabbed-tab>
+
                 <tabbed-tab v-for="item in pluginUiElements" :key="item.id" :header="item.title">
                     <div :is="item.component" v-bind="item.props"/>
                 </tabbed-tab>
@@ -146,6 +169,7 @@ import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import GlobalApi from '@/libs/GlobalApi';
 import SettingsAliases from './SettingsAliases';
+import SettingsAdvanced from './SettingsAdvanced';
 
 /**
  * Returns an object for a vuejs computated property on a state settings value
@@ -165,6 +189,7 @@ function bindSetting(settingName) {
 export default {
     components: {
         SettingsAliases,
+        SettingsAdvanced,
     },
     data: function data() {
         return {
@@ -208,6 +233,14 @@ export default {
         settingBufferMuteSound: bindSetting('buffers.mute_sound'),
         settingDefaultBanMask: bindSetting('buffers.default_ban_mask'),
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
+        settingAdvancedEnable: {
+            get: function getSettingShowAdvancedTab() {
+                return state.getSetting('ui.show_advanced_tab');
+            },
+            set: function setSettingShowAdvancedTab(newVal) {
+                state.setSetting('ui.show_advanced_tab', newVal);
+            },
+        },
         settingMessageLayout: {
             get: function getSettingMessageLayout() {
                 return state.setting('messageLayout') === 'compact';
