@@ -294,7 +294,7 @@ export default {
 
             state.ui.favicon_counter++;
         });
-        if (this.uiState.canPin && state.getSetting('settings.sidebarPinned')) {
+        if (this.uiState.canPin && state.setting('sidebarPinned')) {
             this.uiState.pin();
         }
     },
