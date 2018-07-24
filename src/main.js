@@ -170,6 +170,7 @@ function loadApp() {
 
 function applyConfig(config) {
     applyConfigObj(config, state.settings);
+    dedotConfig([], state.getSetting('settings'));
 
     // Update the window title if we have one
     if (state.settings.windowTitle) {
@@ -195,6 +196,24 @@ function applyConfigObj(obj, target) {
             applyConfigObj(val, target[key]);
         } else {
             Vue.set(target, key, val);
+        }
+    });
+}
+
+// Scan though settings and correct any that are dot notated
+function dedotConfig(place, confObj) {
+    let regex = RegExp('\\w\\.\\w');
+    _.each(confObj, (val, key) => {
+        let ourPlace = place.concat([key]);
+
+        if (typeof val === 'object') {
+            dedotConfig(ourPlace, confObj[key]);
+            return;
+        }
+
+        if (regex.test(key)) {
+            state.setSetting('settings.' + ourPlace.join('.'), val);
+            state.$delete(confObj, key);
         }
     });
 }

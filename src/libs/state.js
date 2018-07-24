@@ -566,7 +566,7 @@ const state = new Vue({
                     nextVal = this.$set(val, propName, {});
                 } else if (i === parts.length - 1) {
                     if (newVal === null) {
-                        this.$delete(val, propName, newVal);
+                        this.$delete(val, propName);
                     } else {
                         this.$set(val, propName, newVal);
                     }
