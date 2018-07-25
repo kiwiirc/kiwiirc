@@ -2,37 +2,35 @@
     <div class="kiwi-settings-advanced">
         <div class="kiwi-settings-advanced-notice">{{ $t('settings_advanced_header') }}</div>
         <form class="u-form">
-            <div>
-                <span>{{ $t('settings_filter') }}:</span>
-                <input v-model="filterString">
+            <div class="kiwi-settings-advanced-filter">
+                <label for="filter" style="display: inline-block;">
+                    {{ $t('settings_advanced_filter') }}:</label>
+                <input id="filter" v-model="filterString" class="u-input">
                 <i v-if="filterString"
                    class="fa fa-times"
                    style="cursor: pointer;"
                    @click="filterString = ''"/>
             </div>
             <table class="u-table kiwi-settings-advanced-table" cellspacing="0">
-                <thead>
-                    <th>{{ $t('settings_advanced_name') }}</th>
-                    <th>{{ $t('settings_advanced_status') }}</th>
-                    <th style="min-width: 400px;">{{ $t('settings_advanced_value') }}</th>
-                </thead>
                 <tr v-for="setting in filteredSettings"
                     :key="setting.key"
-                    :style="{'font-weight': (setting.status === 'modified') ? 'bold' : 'normal' }">
-                    <td>{{ setting.key }}</td>
-                    <td>{{ $t('settings_advanced_' + setting.status) }}
-                        <i v-if="setting.status === 'modified'"
-                           class="fa fa-undo reset-icon"
+                    :style="{'font-weight': (setting.modified) ? 'bold' : 'normal' }">
+                    <td><label :for="setting.key">{{ setting.key }}</label></td>
+                    <td v-if="setting.modified">{{ $t('settings_advanced_reset') }}
+                        <i class="fa fa-undo reset-icon"
                            style="cursor: pointer;"
                            @click="resetValue($event, setting.key)"/>
                     </td>
+                    <td v-else />
                     <td>
                         <input v-if="setting.type === 'boolean'"
                                :checked="setting.val"
+                               :id="setting.key"
                                type="checkbox"
                                @click="updateSetting($event, setting.key)">
                         <input v-else-if="setting.type === 'number'"
                                :value="setting.val"
+                               :id="setting.key"
                                class="u-input"
                                type="number"
                                @keydown.13="$event.target.blur()"
@@ -40,6 +38,7 @@
                                @blur="updateSetting($event, setting.key)">
                         <input v-else
                                :value="setting.val"
+                               :id="setting.key"
                                class="u-input"
                                @keydown.13="$event.target.blur()"
                                @blur="updateSetting($event, setting.key)">
@@ -77,8 +76,8 @@ export default {
         settings() {
             let out = {};
             let base = [];
-            this.buildTree(out, base, state.getSetting('settings'), 'default');
-            this.buildTree(out, base, state.getSetting('user_settings'), 'modified');
+            this.buildTree(out, base, state.getSetting('settings'), false);
+            this.buildTree(out, base, state.getSetting('user_settings'), true);
 
             return _.orderBy(Object.values(out), [
                 o => o.key.split('.').length - 1,
@@ -119,7 +118,7 @@ export default {
 
             state.setting(settingKey, val);
         },
-        buildTree(data, base, object, status) {
+        buildTree(data, base, object, modified) {
             Object.entries(object).forEach(([key, value]) => {
                 let ourBase = base.concat([key]);
                 if (['string', 'boolean', 'number'].includes(typeof value)) {
@@ -133,11 +132,11 @@ export default {
                             key: ourBase.join('.'),
                             val: value,
                             type: typeof value,
-                            status: status,
+                            modified: modified,
                         };
                     }
                 } else if (typeof value === 'object') {
-                    this.buildTree(data, ourBase, value, status);
+                    this.buildTree(data, ourBase, value, modified);
                 }
             });
         },
@@ -156,8 +155,42 @@ export default {
     width: 100%;
 }
 
-.kiwi-settings-advanced .u-input {
+.kiwi-settings-advanced-table .u-input {
+    border-bottom: 2px solid red;
     height: auto;
+}
+
+.kiwi-settings-advanced-table td {
+    padding: 2px, 10px;
+    height: 30px;
+}
+
+.kiwi-settings-advanced-table td:nth-child(2) {
+    min-width: 100px;
+}
+
+.kiwi-settings-advanced-table td:nth-child(3) {
+    min-width: 350px;
+}
+
+.kiwi-settings-advanced .u-table td .u-input {
+    height: 30px;
+}
+
+.kiwi-settings-advanced-filter {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    padding: 0 0 5px 11px;
+}
+
+.kiwi-settings-advanced-filter label {
+    font-weight: 600;
+}
+
+.kiwi-settings-advanced-filter .u-input {
+    display: inline-block;
+    height: 30px;
+    width: auto;
+    min-width: 200px;
 }
 
 .kiwi-settings-advanced-notice {

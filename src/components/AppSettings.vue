@@ -126,11 +126,17 @@
                          class="kiwi-appsettings-block">
                         <h3>{{ $t('settings_advanced_title') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-advanced-enable">
-                            <div><span>{{ $t('settings_advanced_warning_title') }}</span>
+                            <div>
+                                <span style="font-weight: 600;">
+                                    {{ $t('settings_advanced_warning_title') }}
+                                </span>
                                 {{ $t('settings_advanced_warning') }}
                             </div>
-                            <a class="u-button" @click="enableAdvancedTab()"
-                            >{{ $t('settings_advanced_button') }}</a>
+                            <div style="margin-top: 10px; text-align: center;">
+                                <a class="u-button u-button-warning" @click="enableAdvancedTab()">
+                                    <i>{{ $t('settings_advanced_button') }}</i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </tabbed-tab>

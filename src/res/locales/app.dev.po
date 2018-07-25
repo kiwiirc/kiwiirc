@@ -338,7 +338,7 @@ msgstr "Enable Advanced Settings"
 
 #: Danger Zone: changing these settings can engatively impact your kiwiirc experiance
 msgid "settings_advanced_header"
-msgstr "Danger Zone: changing these settings can engatively impact your kiwiirc experiance"
+msgstr "Danger Zone: changing these settings can negatively impact your kiwiirc experience"
 
 #: Setting Name
 msgid "settings_advanced_name"
@@ -349,23 +349,15 @@ msgid "settings_advanced_status"
 msgstr "Status"
 
 #: Reset
-msgid "settings_advanced_value"
+msgid "settings_advanced_reset"
 msgstr "Reset"
 
 #: Value
 msgid "settings_advanced_value"
 msgstr "Value"
 
-#: default
-msgid "settings_advanced_default"
-msgstr "default"
-
-#: modified
-msgid "settings_advanced_modified"
-msgstr "modified"
-
 #: Filter
-msgid "settings_filter"
+msgid "settings_advanced_filter"
 msgstr "Filter"
 
 
