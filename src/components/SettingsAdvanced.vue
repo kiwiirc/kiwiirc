@@ -19,6 +19,7 @@
                            class="fa fa-undo reset-icon"
                            style="cursor: pointer;"
                            @click="resetValue($event, setting.key)"/>
+                    </td>
                     <td>
                         <input v-if="setting.type === 'boolean'"
                                :checked="setting.val"
