@@ -16,10 +16,11 @@
                     :key="setting.key"
                     :style="{'font-weight': (setting.modified) ? 'bold' : 'normal' }">
                     <td><label :for="setting.key">{{ setting.key }}</label></td>
-                    <td v-if="setting.modified">{{ $t('settings_advanced_reset') }}
-                        <i class="fa fa-undo reset-icon"
-                           style="cursor: pointer;"
-                           @click="resetValue($event, setting.key)"/>
+                    <td v-if="setting.modified">
+                        <a class="u-link" @click="resetValue($event, setting.key)">
+                            {{ $t('settings_advanced_reset') }}
+                            <i class="fa fa-undo reset-icon" style="margin-left: 10px;"/>
+                        </a>
                     </td>
                     <td v-else />
                     <td>
@@ -158,6 +159,10 @@ export default {
 .kiwi-settings-advanced-table .u-input {
     border-bottom: 2px solid red;
     height: auto;
+}
+
+.kiwi-settings-advanced-table label {
+    margin: 0;
 }
 
 .kiwi-settings-advanced-table td {
