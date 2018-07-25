@@ -149,7 +149,6 @@
                     :header="$t('settings_advanced')"
                     name="advanced">
                     <div class="kiwi-appsettings-block kiwi-appsettings-block-advanced">
-                        <h3>{{ $t('settings_advanced') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-advanced">
                             <settings-advanced/>
                         </div>

@@ -73,6 +73,29 @@
     text-decoration: underline;
 }
 
+/* Style Global tables */
+.u-table {
+    width: 100%;
+}
+.u-table thead th {
+    padding: 10px;
+    border-bottom: 1px solid;
+}
+.u-table tr:first-of-type td {
+    padding-top: 10px;
+}
+.u-table th,
+.u-table td {
+    padding: 0 10px;
+}
+.u-table td .reset-icon {
+    font-size: 1.2em;
+}
+.u-table td .u-input {
+    height: 40px;
+}
+
+
 /*Style all inputs */
 .input-text {
     background: #fff;

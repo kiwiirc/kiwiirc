@@ -1,23 +1,24 @@
 <template>
     <div class="kiwi-settings-advanced">
+        <div class="kiwi-settings-advanced-notice">{{ $t('settings_advanced_header') }}</div>
         <form class="u-form">
-            <div>{{ $t('settings_advanced_header') }}</div>
-            <table class="kiwi-settings-advanced-table">
-                <tr>
+            <table class="u-table kiwi-settings-advanced-table">
+                <thead>
                     <th style="min-width: 300px;">{{ $t('settings_advanced_name') }}</th>
                     <th style="min-width: 86px;">{{ $t('settings_advanced_status') }}</th>
+                    <th style="min-width: 50px;">{{ $t('settings_advanced_reset') }}</th>
                     <th style="min-width: 400px;">{{ $t('settings_advanced_value') }}</th>
-                </tr>
+                </thead>
                 <tr v-for="setting in getSettings"
                     :key="setting.key"
                     :style="{'font-weight': (setting.status === 'modified') ? 'bold' : 'normal' }">
                     <td>{{ setting.key }}</td>
-                    <td>{{ $t('settings_advanced_' + setting.status) }}
+                    <td>{{ $t('settings_advanced_' + setting.status) }}</td>
+                    <td style="text-align:center;">
                         <i v-if="setting.status === 'modified'"
-                           class="fa fa-undo"
-                           style="float: right; cursor: pointer;"
+                           class="fa fa-undo reset-icon"
+                           style="cursor: pointer;"
                            @click="resetValue($event, setting.key)"/>
-                    </td>
                     <td>
                         <input v-if="setting.type === 'boolean'"
                                :checked="setting.val"
@@ -151,9 +152,12 @@ export default {
     height: auto;
 }
 
-.kiwi-settings-advanced-table th,
-td {
-    padding: 0 10px;
+.kiwi-settings-advanced-notice {
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid #fff;
+    margin: 0 0 10px 0;
+    border-radius: 2px;
 }
 
 </style>

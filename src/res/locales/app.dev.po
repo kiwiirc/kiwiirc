@@ -348,6 +348,10 @@ msgstr "Setting Name"
 msgid "settings_advanced_status"
 msgstr "Status"
 
+#: Reset
+msgid "settings_advanced_value"
+msgstr "Reset"
+
 #: Value
 msgid "settings_advanced_value"
 msgstr "Value"
