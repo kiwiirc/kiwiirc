@@ -655,12 +655,17 @@ const state = new Vue({
                 this.removeBuffer(network.buffers[0]);
             }
 
+            let findNewNetwork = false;
             if (network === this.getActiveNetwork()) {
-                this.setActiveBuffer(null);
+                findNewNetwork = true;
             }
 
             let idx = this.networks.indexOf(network);
             this.networks.splice(idx, 1);
+
+            if (findNewNetwork) {
+                this.openLastActiveBuffer();
+            }
 
             let eventObj = { network };
             state.$emit('network.removed', eventObj);
