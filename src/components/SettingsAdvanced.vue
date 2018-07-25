@@ -2,19 +2,17 @@
     <div class="kiwi-settings-advanced">
         <div class="kiwi-settings-advanced-notice">{{ $t('settings_advanced_header') }}</div>
         <form class="u-form">
-            <table class="u-table kiwi-settings-advanced-table">
+            <table class="u-table kiwi-settings-advanced-table" cellspacing="0">
                 <thead>
-                    <th style="min-width: 300px;">{{ $t('settings_advanced_name') }}</th>
-                    <th style="min-width: 86px;">{{ $t('settings_advanced_status') }}</th>
-                    <th style="min-width: 50px;">{{ $t('settings_advanced_reset') }}</th>
+                    <th>{{ $t('settings_advanced_name') }}</th>
+                    <th>{{ $t('settings_advanced_status') }}</th>
                     <th style="min-width: 400px;">{{ $t('settings_advanced_value') }}</th>
                 </thead>
                 <tr v-for="setting in getSettings"
                     :key="setting.key"
                     :style="{'font-weight': (setting.status === 'modified') ? 'bold' : 'normal' }">
                     <td>{{ setting.key }}</td>
-                    <td>{{ $t('settings_advanced_' + setting.status) }}</td>
-                    <td style="text-align:center;">
+                    <td>{{ $t('settings_advanced_' + setting.status) }}
                         <i v-if="setting.status === 'modified'"
                            class="fa fa-undo reset-icon"
                            style="cursor: pointer;"
@@ -159,6 +157,12 @@ export default {
     border: 1px solid #fff;
     margin: 0 0 10px 0;
     border-radius: 2px;
+}
+
+@media screen and (max-width: 600px) {
+    .u-form {
+        overflow-x: scroll;
+    }
 }
 
 </style>

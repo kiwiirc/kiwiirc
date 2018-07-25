@@ -1078,3 +1078,13 @@
     margin-right: 5px;
     font-weight: 100;
 }
+
+/* U table line breaks */
+.u-table td {
+    border-bottom: 1px solid #5dd895;
+}
+
+.kiwi-settings-advanced-notice {
+    color: #5dd895;
+    border-color: #5dd895;
+}

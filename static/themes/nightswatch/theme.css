@@ -1168,3 +1168,9 @@
     top: -22px;
     color: #fff;
 }
+
+.kiwi-settings-advanced-notice {
+    color: #fff;
+    border-color: #fff;
+    background: #000;
+}

@@ -169,7 +169,12 @@ div {
 
 .u-table th,
 .u-table td {
-    padding: 0 10px;
+    padding: 5px 10px;
+}
+
+.u-table td {
+    height: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .u-table td .reset-icon {
