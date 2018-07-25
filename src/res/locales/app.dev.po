@@ -364,6 +364,9 @@ msgstr "default"
 msgid "settings_advanced_modified"
 msgstr "modified"
 
+#: Filter
+msgid "settings_filter"
+msgstr "Filter"
 
 
 

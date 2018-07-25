@@ -2,13 +2,21 @@
     <div class="kiwi-settings-advanced">
         <div class="kiwi-settings-advanced-notice">{{ $t('settings_advanced_header') }}</div>
         <form class="u-form">
+            <div>
+                <span>{{ $t('settings_filter') }}:</span>
+                <input v-model="filterString">
+                <i v-if="filterString"
+                   class="fa fa-times"
+                   style="cursor: pointer;"
+                   @click="filterString = ''"/>
+            </div>
             <table class="u-table kiwi-settings-advanced-table" cellspacing="0">
                 <thead>
                     <th>{{ $t('settings_advanced_name') }}</th>
                     <th>{{ $t('settings_advanced_status') }}</th>
                     <th style="min-width: 400px;">{{ $t('settings_advanced_value') }}</th>
                 </thead>
-                <tr v-for="setting in getSettings"
+                <tr v-for="setting in filteredSettings"
                     :key="setting.key"
                     :style="{'font-weight': (setting.status === 'modified') ? 'bold' : 'normal' }">
                     <td>{{ setting.key }}</td>
@@ -27,13 +35,13 @@
                                :value="setting.val"
                                class="u-input"
                                type="number"
-                               @keydown="blurOnEnter($event)"
+                               @keydown.13="$event.target.blur()"
                                @change="updateSetting($event, setting.key)"
                                @blur="updateSetting($event, setting.key)">
                         <input v-else
                                :value="setting.val"
                                class="u-input"
-                               @keydown="blurOnEnter($event)"
+                               @keydown.13="$event.target.blur()"
                                @blur="updateSetting($event, setting.key)">
                     </td>
                 </tr>
@@ -50,16 +58,28 @@ import _ from 'lodash';
 export default {
     data: function data() {
         return {
+            filterString: '',
             ignoreKeys: ['emojis', 'themes', 'bnc', 'aliases', 'restricted',
-                'hide_advanced', 'windowTitle', 'startupOptions'],
+                'hide_advanced', 'windowTitle', 'startupOptions', 'plugins'],
         };
     },
     computed: {
-        getSettings() {
+        filteredSettings() {
+            let settings = this.settings;
+            let out = [];
+            Object.values(settings).forEach((value, index) => {
+                if (value.key.toLowerCase().includes(this.filterString.toLowerCase())) {
+                    out.push(value);
+                }
+            });
+            return out;
+        },
+        settings() {
             let out = {};
             let base = [];
             this.buildTree(out, base, state.getSetting('settings'), 'default');
             this.buildTree(out, base, state.getSetting('user_settings'), 'modified');
+
             return _.orderBy(Object.values(out), [
                 o => o.key.split('.').length - 1,
                 'key',
@@ -100,37 +120,26 @@ export default {
             state.setting(settingKey, val);
         },
         buildTree(data, base, object, status) {
-            /* eslint-disable guard-for-in, no-restricted-syntax */
-            for (let key in object) {
+            Object.entries(object).forEach(([key, value]) => {
                 let ourBase = base.concat([key]);
-                let val = object[key];
-                if (['string', 'boolean', 'number'].includes(typeof val)) {
+                if (['string', 'boolean', 'number'].includes(typeof value)) {
                     if (this.ignoreKeys.includes(key) ||
                      (ourBase[0] && this.ignoreKeys.includes(ourBase[0]))) {
-                        continue;
+                        return;
                     }
-                    if (!data[ourBase.join('.')] || data[ourBase.join('.')].val !== val) {
+
+                    if (!data[ourBase.join('.')] || data[ourBase.join('.')].val !== value) {
                         data[ourBase.join('.')] = {
                             key: ourBase.join('.'),
-                            val: val,
-                            type: typeof val,
+                            val: value,
+                            type: typeof value,
                             status: status,
                         };
                     }
-                } else if (typeof val === 'object') {
-                    this.buildTree(data, ourBase, object[key], status);
+                } else if (typeof value === 'object') {
+                    this.buildTree(data, ourBase, value, status);
                 }
-            }
-        },
-        bindSetting(settingName) {
-            return {
-                get: function settingGetter() {
-                    return state.setting(settingName);
-                },
-                set: function settingSetter(newVal) {
-                    state.setting(settingName, newVal);
-                },
-            };
+            });
         },
     },
 };
