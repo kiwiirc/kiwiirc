@@ -421,6 +421,11 @@ export default {
     margin: 20px auto 20px auto;
 }
 
+.kiwi-appsettings-block.kiwi-appsettings-block-advanced {
+    max-width: inherit;
+    margin: 20px;
+}
+
 .kiwi-appsettings-block h3 {
     width: 100%;
     line-height: 45px;

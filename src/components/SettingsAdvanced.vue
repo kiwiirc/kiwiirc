@@ -151,12 +151,6 @@ export default {
 </script>
 
 <style>
-
-.kiwi-appsettings-block-advanced {
-    max-width: inherit;
-    margin: 20px;
-}
-
 .kiwi-settings-advanced {
     width: 100%;
 }
