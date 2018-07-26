@@ -4,8 +4,10 @@
         <form class="u-form">
             <div class="kiwi-settings-advanced-filter">
                 <div class="kiwi-settings-filter-container">
-                    <input id="filter" v-model="filterString" class="u-input" v-bind:placeholder="$t('settings_advanced_filter')">
-                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <input id="filter" v-model="filterString"
+                           :placeholder="$t('settings_advanced_filter')"
+                           class="u-input">
+                    <i class="fa fa-search" aria-hidden="true"/>
                 </div>
                 <i v-if="filterString"
                    class="fa fa-times"
