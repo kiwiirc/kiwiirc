@@ -1,10 +1,10 @@
 <template>
     <div class="kiwi-settings-advanced">
         <div class="kiwi-settings-advanced-notice">{{ $t('settings_advanced_header') }}</div>
-        <form class="u-form">
+        <form class="u-form kiwi-settings-advanced">
             <div class="kiwi-settings-advanced-filter">
                 <div class="kiwi-settings-filter-container">
-                    <input id="filter" v-model="filterString"
+                    <input v-model="filterString"
                            :placeholder="$t('settings_advanced_filter')"
                            class="u-input">
                     <i v-if="!filterString" class="fa fa-search" aria-hidden="true"/>
@@ -12,12 +12,14 @@
                 </div>
             </div>
             <table class="u-table kiwi-settings-advanced-table" cellspacing="0">
-                <p v-if="filteredSettings.length === 0" class="kiwi-settings-advanced-noresult">
-                    {{ $t('settings_advanced_noresult') }}
-                </p>
+                <tr v-if="filteredSettings.length === 0">
+                    <td class="kiwi-settings-advanced-noresult">
+                    {{ filterString }} - {{ $t('settings_advanced_noresult') }}
+                    </td>
+                </tr>
                 <tr v-for="setting in filteredSettings" v-else
                     :key="setting.key"
-                    :style="{'font-weight': (setting.modified) ? 'bold' : 'normal' }">
+                    :class="{'kiwi-advanced-setting--modified': setting.modified}">
                     <td><label :for="setting.key">{{ setting.key }}</label></td>
                     <td v-if="setting.modified">
                         <a class="u-link" @click="resetValue($event, setting.key)">
@@ -180,6 +182,10 @@ export default {
     min-width: 350px;
 }
 
+.kiwi-settings-advanced tr.kiwi-advanced-setting--modified {
+    font-weight: 900;
+}
+
 .kiwi-settings-advanced .u-table td .u-input {
     height: 30px;
 }
@@ -207,7 +213,7 @@ export default {
     font-weight: 600;
 }
 
-.u-form .kiwi-settings-advanced-filter .u-input {
+.u-form.kiwi-settings-advanced .kiwi-settings-advanced-filter .u-input {
     display: inline-block;
     border: 1px solid #000;
     height: 40px;
@@ -221,8 +227,16 @@ export default {
     font-weight: 900;
 }
 
+.kiwi-settings-advanced .kiwi-settings-advanced-noresult {
+    width: 100%;
+    margin: 50px 0 30px 0;
+    text-align: center;
+    font-weight: 900;
+    font-size: 1em;
+}
+
 @media screen and (max-width: 600px) {
-    .u-form {
+    .u-form.kiwi-settings-advanced {
         overflow-x: scroll;
     }
 }
