@@ -360,6 +360,10 @@ msgstr "Value"
 msgid "settings_advanced_filter"
 msgstr "Filter"
 
+#: No results found.
+msgid "settings_advanced_noresult"
+msgstr "No results found."
+
 
 
 #: ChannelBanlist $t('bans_')

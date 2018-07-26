@@ -7,16 +7,15 @@
                     <input id="filter" v-model="filterString"
                            :placeholder="$t('settings_advanced_filter')"
                            class="u-input">
-                    <i class="fa fa-search" aria-hidden="true"/>
+                    <i v-if="!filterString" class="fa fa-search" aria-hidden="true"/>
+                    <i v-else class="fa fa-times" aria-hidden="true" @click="filterString = ''"/>
                 </div>
-                <i v-if="filterString"
-                   class="fa fa-times"
-                   style="cursor: pointer;"
-                   @click="filterString = ''"/>
             </div>
             <table class="u-table kiwi-settings-advanced-table" cellspacing="0">
-                <p v-if="!filteredSettings">No results found, sorry. </p>
-                <tr v-for="setting in filteredSettings"
+                <p v-if="filteredSettings.length === 0" class="kiwi-settings-advanced-noresult">
+                    {{ $t('settings_advanced_noresult') }}
+                </p>
+                <tr v-for="setting in filteredSettings" v-else
                     :key="setting.key"
                     :style="{'font-weight': (setting.modified) ? 'bold' : 'normal' }">
                     <td><label :for="setting.key">{{ setting.key }}</label></td>
@@ -195,7 +194,8 @@ export default {
     max-width: 224px;
 }
 
-.kiwi-settings-filter-container .fa-search {
+.kiwi-settings-filter-container .fa-search,
+.kiwi-settings-filter-container .fa-times {
     position: absolute;
     top: 12px;
     right: 10px;
