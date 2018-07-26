@@ -1010,8 +1010,7 @@
     font-weight: 100;
 }
 
-
 .kiwi-settings-advanced-notice {
-    color: #78c9dc;
-    border-color: #78c9dc;
+    color: #fff;
+    background: #d16c6c;
 }

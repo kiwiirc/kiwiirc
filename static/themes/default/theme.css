@@ -998,6 +998,6 @@
 }
 
 .kiwi-settings-advanced-notice {
-    color: #000;
-    border-color: #000;
+    color: #fff;
+    background: #d16c6c;
 }

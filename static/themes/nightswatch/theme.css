@@ -1170,7 +1170,6 @@
 }
 
 .kiwi-settings-advanced-notice {
-    color: #fff;
-    border-color: #fff;
-    background: #000;
+    color: #000;
+    background: #d16c6c;
 }

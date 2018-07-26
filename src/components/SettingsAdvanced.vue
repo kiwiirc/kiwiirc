@@ -3,15 +3,17 @@
         <div class="kiwi-settings-advanced-notice">{{ $t('settings_advanced_header') }}</div>
         <form class="u-form">
             <div class="kiwi-settings-advanced-filter">
-                <label for="filter" style="display: inline-block;">
-                    {{ $t('settings_advanced_filter') }}:</label>
-                <input id="filter" v-model="filterString" class="u-input">
+                <div class="kiwi-settings-filter-container">
+                    <input id="filter" v-model="filterString" class="u-input" v-bind:placeholder="$t('settings_advanced_filter')">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
                 <i v-if="filterString"
                    class="fa fa-times"
                    style="cursor: pointer;"
                    @click="filterString = ''"/>
             </div>
             <table class="u-table kiwi-settings-advanced-table" cellspacing="0">
+                <p v-if="!filteredSettings">No results found, sorry. </p>
                 <tr v-for="setting in filteredSettings"
                     :key="setting.key"
                     :style="{'font-weight': (setting.modified) ? 'bold' : 'normal' }">
@@ -166,7 +168,6 @@ export default {
 }
 
 .kiwi-settings-advanced-table td {
-    padding: 2px, 10px;
     height: 30px;
 }
 
@@ -184,26 +185,38 @@ export default {
 
 .kiwi-settings-advanced-filter {
     border-bottom: 1px solid rgba(128, 128, 128, 0.5);
-    padding: 0 0 5px 11px;
+    padding: 0 0 5px 0;
+}
+
+.kiwi-settings-filter-container {
+    position: relative;
+    max-width: 224px;
+}
+
+.kiwi-settings-filter-container .fa-search {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    z-index: 10;
+    cursor: default;
 }
 
 .kiwi-settings-advanced-filter label {
     font-weight: 600;
 }
 
-.kiwi-settings-advanced-filter .u-input {
+.u-form .kiwi-settings-advanced-filter .u-input {
     display: inline-block;
-    height: 30px;
-    width: auto;
-    min-width: 200px;
+    border: 1px solid #000;
+    height: 40px;
+    padding: 0 10px;
 }
 
 .kiwi-settings-advanced-notice {
     text-align: center;
     padding: 10px 0;
-    border: 1px solid #fff;
-    margin: 0 0 10px 0;
-    border-radius: 2px;
+    margin: 5px 0 15px 0;
+    font-weight: 900;
 }
 
 @media screen and (max-width: 600px) {
