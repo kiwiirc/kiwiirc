@@ -20,7 +20,7 @@
                 <tr v-for="setting in filteredSettings" v-else
                     :key="setting.key"
                     :class="{'kiwi-advanced-setting--modified': setting.modified}">
-                    <td><label :for="setting.key">{{ setting.key }}</label></td>
+                    <td><label :for="'setting-' + setting.key">{{ setting.key }}</label></td>
                     <td v-if="setting.modified">
                         <a class="u-link" @click="resetValue($event, setting.key)">
                             {{ $t('settings_advanced_reset') }}
@@ -31,12 +31,12 @@
                     <td>
                         <input v-if="setting.type === 'boolean'"
                                :checked="setting.val"
-                               :id="setting.key"
+                               :id="'setting-' + setting.key"
                                type="checkbox"
-                               @click="updateSetting($event, setting.key)">
+                               @change="updateSetting($event, setting.key)">
                         <input v-else-if="setting.type === 'number'"
                                :value="setting.val"
-                               :id="setting.key"
+                               :id="'setting-' + setting.key"
                                class="u-input"
                                type="number"
                                @keydown.13="$event.target.blur()"
@@ -44,7 +44,7 @@
                                @blur="updateSetting($event, setting.key)">
                         <input v-else
                                :value="setting.val"
-                               :id="setting.key"
+                               :id="'setting-' + setting.key"
                                class="u-input"
                                @keydown.13="$event.target.blur()"
                                @blur="updateSetting($event, setting.key)">
@@ -71,9 +71,10 @@ export default {
     computed: {
         filteredSettings() {
             let settings = this.settings;
+            let filter = this.filterString.toLowerCase();
             let out = [];
             Object.values(settings).forEach((value, index) => {
-                if (value.key.toLowerCase().includes(this.filterString.toLowerCase())) {
+                if (value.key.toLowerCase().includes(filter)) {
                     out.push(value);
                 }
             });
@@ -98,11 +99,6 @@ export default {
                 newVal = null;
             }
             state.setting(settingKey, newVal);
-        },
-        blurOnEnter(event) {
-            if (event.keyCode === 13) {
-                event.target.blur();
-            }
         },
         updateSetting(event, settingKey) {
             let target = event.target;
@@ -151,6 +147,7 @@ export default {
 </script>
 
 <style>
+
 .kiwi-settings-advanced {
     width: 100%;
 }

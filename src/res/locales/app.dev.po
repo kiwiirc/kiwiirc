@@ -340,21 +340,9 @@ msgstr "Enable Advanced Settings"
 msgid "settings_advanced_header"
 msgstr "Danger Zone: changing these settings can negatively impact your kiwiirc experience"
 
-#: Setting Name
-msgid "settings_advanced_name"
-msgstr "Setting Name"
-
-#: Status
-msgid "settings_advanced_status"
-msgstr "Status"
-
 #: Reset
 msgid "settings_advanced_reset"
 msgstr "Reset"
-
-#: Value
-msgid "settings_advanced_value"
-msgstr "Value"
 
 #: Filter
 msgid "settings_advanced_filter"

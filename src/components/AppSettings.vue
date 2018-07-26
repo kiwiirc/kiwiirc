@@ -246,10 +246,10 @@ export default {
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
         settingAdvancedEnable: {
             get: function getSettingShowAdvancedTab() {
-                return state.getSetting('ui.show_advanced_tab');
+                return state.ui.show_advanced_tab;
             },
             set: function setSettingShowAdvancedTab(newVal) {
-                state.setSetting('ui.show_advanced_tab', newVal);
+                state.ui.show_advanced_tab = newVal;
             },
         },
         settingMessageLayout: {
