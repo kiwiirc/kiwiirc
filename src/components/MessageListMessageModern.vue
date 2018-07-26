@@ -135,6 +135,10 @@ export default {
     padding: 15px 10px;
 }
 
+.kiwi-messagelist-modern-left {
+    user-select: none;
+}
+
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left {
     display: none;
 }
