@@ -14,7 +14,7 @@
             <table class="u-table kiwi-settings-advanced-table" cellspacing="0">
                 <tr v-if="filteredSettings.length === 0">
                     <td class="kiwi-settings-advanced-noresult">
-                    {{ filterString }} - {{ $t('settings_advanced_noresult') }}
+                        {{ filterString }} - {{ $t('settings_advanced_noresult') }}
                     </td>
                 </tr>
                 <tr v-for="setting in filteredSettings" v-else
