@@ -202,6 +202,10 @@ export default {
     cursor: default;
 }
 
+.kiwi-settings-advanced-filter-container .fa-times {
+    cursor: pointer;
+}
+
 .kiwi-settings-advanced-filter label {
     font-weight: 600;
 }
