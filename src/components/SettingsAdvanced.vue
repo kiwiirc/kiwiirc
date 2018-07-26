@@ -1,8 +1,8 @@
 <template>
     <div class="kiwi-settings-advanced">
         <div class="kiwi-settings-advanced-notice">{{ $t('settings_advanced_header') }}</div>
-        <form class="u-form kiwi-settings-advanced">
-            <div class="kiwi-settings-advanced-filter">
+        <form class="u-form">
+            <div class="kiwi-settings-advanced-filter-container">
                 <div class="kiwi-settings-filter-container">
                     <input v-model="filterString"
                            :placeholder="$t('settings_advanced_filter')"
@@ -19,7 +19,9 @@
                 </tr>
                 <tr v-for="setting in filteredSettings" v-else
                     :key="setting.key"
-                    :class="{'kiwi-advanced-setting--modified': setting.modified}">
+                    :class="{'kiwi-advanced-setting': !setting.modified,
+                             'kiwi-advanced-setting--modified': setting.modified,
+                }">
                     <td><label :for="'setting-' + setting.key">{{ setting.key }}</label></td>
                     <td v-if="setting.modified">
                         <a class="u-link" @click="resetValue($event, setting.key)">
@@ -186,13 +188,13 @@ export default {
     padding: 0 0 5px 0;
 }
 
-.kiwi-settings-filter-container {
+.kiwi-settings-advanced-filter-container {
     position: relative;
     max-width: 224px;
 }
 
-.kiwi-settings-filter-container .fa-search,
-.kiwi-settings-filter-container .fa-times {
+.kiwi-settings-advanced-filter-container .fa-search,
+.kiwi-settings-advanced-filter-container .fa-times {
     position: absolute;
     top: 12px;
     right: 10px;
@@ -204,7 +206,7 @@ export default {
     font-weight: 600;
 }
 
-.u-form.kiwi-settings-advanced .kiwi-settings-advanced-filter .u-input {
+.kiwi-settings-advanced .u-form .kiwi-settings-advanced-filter .u-input {
     display: inline-block;
     border: 1px solid #000;
     height: 40px;
@@ -227,7 +229,7 @@ export default {
 }
 
 @media screen and (max-width: 600px) {
-    .u-form.kiwi-settings-advanced {
+    .kiwi-settings-advanced .u-form {
         overflow-x: scroll;
     }
 }
