@@ -75,8 +75,9 @@ export default {
             let settings = this.settings;
             let filter = this.filterString.toLowerCase();
             let out = [];
-            Object.values(settings).forEach((value, index) => {
-                if (value.key.toLowerCase().includes(filter)) {
+            Object.keys(settings).forEach((key) => {
+                let value = settings[key];
+                if (value.key.toLowerCase().indexOf(filter) !== -1) {
                     out.push(value);
                 }
             });
@@ -88,7 +89,7 @@ export default {
             this.buildTree(out, base, state.getSetting('settings'), false);
             this.buildTree(out, base, state.getSetting('user_settings'), true);
 
-            return _.orderBy(Object.values(out), [
+            return _.orderBy(Object.keys(out).map(key => out[key]), [
                 o => o.key.split('.').length - 1,
                 'key',
             ], ['asc']);
@@ -123,11 +124,12 @@ export default {
             state.setting(settingKey, val);
         },
         buildTree(data, base, object, modified) {
-            Object.entries(object).forEach(([key, value]) => {
+            Object.keys(object).forEach((key) => {
+                let value = object[key];
                 let ourBase = base.concat([key]);
-                if (['string', 'boolean', 'number'].includes(typeof value)) {
-                    if (this.ignoreKeys.includes(key) ||
-                     (ourBase[0] && this.ignoreKeys.includes(ourBase[0]))) {
+                if (['string', 'boolean', 'number'].indexOf(typeof value) !== -1) {
+                    if (this.ignoreKeys.indexOf(key) !== -1 ||
+                     (ourBase[0] && this.ignoreKeys.indexOf(ourBase[0])) !== -1) {
                         return;
                     }
 
