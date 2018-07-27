@@ -3,7 +3,7 @@
         <div class="kiwi-settings-advanced-notice">{{ $t('settings_advanced_header') }}</div>
         <form class="u-form">
             <div class="kiwi-settings-advanced-filter-container">
-                <div class="kiwi-settings-filter-container">
+                <div class="kiwi-settings-advanced-filter-container">
                     <input v-model="filterString"
                            :placeholder="$t('settings_advanced_filter')"
                            class="u-input">

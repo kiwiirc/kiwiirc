@@ -336,9 +336,9 @@ msgstr "Monsters be here, only click this button if you know what your doing"
 msgid "settings_advanced_button"
 msgstr "Enable Advanced Settings"
 
-#: Danger Zone: changing these settings can engatively impact your kiwiirc experiance
+#: Danger Zone: Changing some of these settings can break Kiwi IRC!
 msgid "settings_advanced_header"
-msgstr "Danger Zone: changing these settings can negatively impact your kiwiirc experience"
+msgstr "Danger Zone: Changing some of these settings can break Kiwi IRC!"
 
 #: Reset
 msgid "settings_advanced_reset"
@@ -348,9 +348,9 @@ msgstr "Reset"
 msgid "settings_advanced_filter"
 msgstr "Filter"
 
-#: No results found.
+#: Not found.
 msgid "settings_advanced_noresult"
-msgstr "No results found."
+msgstr "Not found."
 
 
 
