@@ -286,7 +286,7 @@ const stateObj = {
             message_nick: '%prefix%nick',
             general_error: '%text',
         },
-        presetNetworks: [ ],
+        presetNetworks: [],
     },
     user_settings: {
     },

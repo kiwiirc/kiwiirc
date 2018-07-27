@@ -1,20 +1,24 @@
 <template>
     <div
-        class="kiwi-serverselector"
         :class="{'kiwi-serverselector--custom': presetServer === 'custom'}"
+        class="kiwi-serverselector"
     >
         <div v-if="usePreset && presetNetworks.length > 0" class="kiwi-serverselector-presets">
             <label>
                 <span>{{ $t('server') }}</span>
-            	<select v-model="presetServer">
-            		<option value="custom">Custom Server</option>
-            		<option disabled>-----------------</option>
-            		<option v-for="s in presetNetworks" :value="toUri(s)">{{s.name}}</option>
-            	</select>
+                <select v-model="presetServer">
+                    <option value="custom">Custom Server</option>
+                    <option disabled>-----------------</option>
+                    <option
+                        v-for="s in presetNetworks"
+                        :key="s.name"
+                        :value="toUri(s)"
+                    >{{ s.name }}</option>
+                </select>
             </label>
         </div>
 
-    	<template v-if="showCustom || presetNetworks.length === 0 || !usePreset">
+        <template v-if="showCustom || presetNetworks.length === 0 || !usePreset">
             <input-text
                 v-focus
                 :label="$t('server')"
@@ -46,11 +50,9 @@
 
 <script>
 
-import * as Misc from '@/helpers/Misc';
+import _ from 'lodash';
 
 export default {
-    components: {
-    },
     props: {
         usePreset: {
             type: Boolean,
@@ -77,8 +79,8 @@ export default {
         };
     },
     computed: {
-    	presetServer: {
-    		set(newVal) {
+        presetServer: {
+            set(newVal) {
                 if (newVal === 'custom') {
                     this.name = '';
                     this.server = '';
@@ -87,21 +89,32 @@ export default {
 
                     this.showCustom = true;
                 } else {
-        			let addr = this.parseFormatted(newVal);
+                    let addr = this.parseFormatted(newVal);
                     this.name = addr.name;
-        			this.server = addr.server;
-        			this.port = addr.port;
-        			this.tls = addr.tls;
+                    this.server = addr.server;
+                    this.port = addr.port;
+                    this.tls = addr.tls;
 
                     this.showCustom = false;
                 }
-    		},
-    		get() {
-    			return this.showCustom ?
+            },
+            get() {
+                return this.showCustom ?
                     'custom' :
                     this.toUri(this);
-    		}
-    	},
+            },
+        },
+    },
+    watch: {
+        server() {
+            this.emitValue();
+        },
+        port() {
+            this.emitValue();
+        },
+        tls() {
+            this.emitValue();
+        },
     },
     created() {
         if (this.networkList) {
@@ -114,7 +127,8 @@ export default {
 
             // If the given network is in the preset server list, select it
             if (_.find(this.presetNetworks, (s) => {
-                return s.server === this.server && s.port === this.port && s.tls === this.tls;
+                let match = s.server === this.server && s.port === this.port && s.tls === this.tls;
+                return match;
             })) {
                 this.showCustom = false;
             }
@@ -122,9 +136,9 @@ export default {
     },
     methods: {
         toUri(s) {
-            return `${s.server}:${s.tls?'+':''}${s.port}`;
+            return `${s.server}:${s.tls ? '+' : ''}${s.port}`;
         },
-    	emitValue() {
+        emitValue() {
             if (this.willEmit) {
                 return;
             }
@@ -134,11 +148,11 @@ export default {
             this.$nextTick(() => {
                 this.willEmit = false;
 
-        		this.$emit('input', {
-        			server: this.server,
-        			port: this.port,
-        			tls: this.tls,
-        		});
+                this.$emit('input', {
+                    server: this.server,
+                    port: this.port,
+                    tls: this.tls,
+                });
 
                 if (this.network) {
                     this.network.connection.server = this.server;
@@ -146,7 +160,7 @@ export default {
                     this.network.connection.tls = this.tls;
                 }
             });
-    	},
+        },
         toggleTls: function toggleTls() {
             this.tls = !this.tls;
 
@@ -159,14 +173,14 @@ export default {
         },
         // parseFormatted - Parse freenode|irc.freenode.net:+6697 links
         parseFormatted(input) {
-        	let ret = {
+            let ret = {
                 name: '',
-        		server: '',
-        		port: 6667,
-        		tls: false,
-        	};
+                server: '',
+                port: 6667,
+                tls: false,
+            };
 
-        	let val = input;
+            let val = input;
 
             let pipePos = val.indexOf('|');
             if (pipePos > -1) {
@@ -174,47 +188,36 @@ export default {
                 val = val.substr(pipePos + 1);
             }
 
-        	let colonPos = val.indexOf(':');
-        	if (colonPos === -1) {
-        		ret.server = val;
-        		val = '';
-        	} else {
-        		ret.server = val.substr(0, colonPos);
-        		val = val.substr(colonPos + 1);
-        	}
+            let colonPos = val.indexOf(':');
+            if (colonPos === -1) {
+                ret.server = val;
+                val = '';
+            } else {
+                ret.server = val.substr(0, colonPos);
+                val = val.substr(colonPos + 1);
+            }
 
-        	if (val[0] === '+') {
-        		ret.tls = true;
-        		val = val.substr(1);
-        	}
+            if (val[0] === '+') {
+                ret.tls = true;
+                val = val.substr(1);
+            }
 
-        	if (val.length > 0) {
-        		ret.port = parseInt(val, 10);
-        		val = '';
-        	}
+            if (val.length > 0) {
+                ret.port = parseInt(val, 10);
+                val = '';
+            }
 
             if (!ret.name) {
                 ret.name = ret.server;
             }
 
-        	return ret;
+            return ret;
         },
         importUris(serverList) {
             // [ 'freenode|irc.freenode.net:+6697', 'irc.snoonet.org:6667' ]
-            let servers = serverList.map((s) => this.parseFormatted(s));
+            let servers = serverList.map(s => this.parseFormatted(s));
             this.$set(this, 'presetNetworks', servers);
         },
-    },
-    watch: {
-    	server() {
-    		this.emitValue();
-    	},
-    	port() {
-    		this.emitValue();
-    	},
-    	tls() {
-    		this.emitValue();
-    	}
     },
 };
 </script>

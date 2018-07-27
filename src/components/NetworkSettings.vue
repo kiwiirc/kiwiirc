@@ -10,7 +10,10 @@
                         <span>{{ readableStateError(network.state_error) }}</span>
                     </div>
 
-                    <server-selector :network="network" :networkList="networkList" @input="onServerInput"/>
+                    <server-selector
+                        :network="network"
+                        :network-list="networkList"
+                        @input="onServerInput" />
 
                     <div class="kiwi-networksettings-connection-password">
                         <template v-if="server_type==='network'">
