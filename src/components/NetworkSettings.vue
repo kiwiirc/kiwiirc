@@ -10,35 +10,7 @@
                         <span>{{ readableStateError(network.state_error) }}</span>
                     </div>
 
-                    <input-text
-                        v-focus
-                        :label="$t('server')"
-                        v-model="network.connection.server"
-                        class="kiwi-networksettings-connection-address"
-                    />
-
-                    <input-text
-                        :label="$t('settings_port')"
-                        v-model="network.connection.port"
-                        type="number"
-                        class="kiwi-networksettings-connection-port"
-                    >
-                        <span
-                            :class="[
-                                network.connection.tls ?
-                                    'kiwi-customserver-tls--enabled' :
-                                    ''
-                            ]"
-                            class="fa-stack fa-lg kiwi-customserver-tls"
-                            @click="toggleTls"
-                        >
-                            <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"/>
-                            <i
-                                v-if="!network.connection.tls"
-                                class="fa fa-unlock fa-stack-1x kiwi-customserver-tls-minus"
-                            />
-                        </span>
-                    </input-text>
+                    <server-selector :network="network" :networkList="networkList" @input="onServerInput"/>
 
                     <div class="kiwi-networksettings-connection-password">
                         <template v-if="server_type==='network'">
@@ -170,9 +142,11 @@
 
 import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
+import ServerSelector from './ServerSelector';
 
 export default {
     components: {
+        ServerSelector,
     },
     props: ['network'],
     data: function data() {
@@ -182,6 +156,7 @@ export default {
             znc_network: '',
             znc_password: '',
             show_advanced: false,
+            networkList: state.setting('presetNetworks') || [],
         };
     },
     computed: {
@@ -248,6 +223,11 @@ export default {
             } else if (!connection.tls && connection.port === 6697) {
                 connection.port = 6667;
             }
+        },
+        onServerInput(server) {
+            this.network.connection.server = server.server;
+            this.network.connection.port = server.port;
+            this.network.connection.tls = server.tls;
         },
     },
 };
