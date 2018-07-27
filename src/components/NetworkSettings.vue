@@ -317,8 +317,8 @@ export default {
     height: 40px;
     line-height: 40px;
     text-align: center;
-    top: 19px;
-    right: 15px;
+    top: 10px;
+    right: 17px;
 }
 
 .kiwi-networksettings .kiwi-show-advanced-title {
