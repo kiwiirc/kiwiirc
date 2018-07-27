@@ -67,7 +67,7 @@ export default {
         return {
             filterString: '',
             ignoreKeys: ['emojis', 'themes', 'bnc', 'aliases', 'restricted',
-                'hide_advanced', 'windowTitle', 'startupOptions', 'plugins'],
+                'hide_advanced', 'windowTitle', 'startupOptions', 'plugins', 'presetNetworks'],
         };
     },
     computed: {
