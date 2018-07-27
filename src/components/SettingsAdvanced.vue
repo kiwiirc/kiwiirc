@@ -195,6 +195,10 @@ export default {
     max-width: 224px;
 }
 
+.kiwi-settings-advanced-filter-container input::-ms-clear {
+    display: none;
+}
+
 .kiwi-settings-advanced-filter-container .fa-search,
 .kiwi-settings-advanced-filter-container .fa-times {
     position: absolute;
