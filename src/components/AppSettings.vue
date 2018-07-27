@@ -128,7 +128,7 @@
                         <div class="kiwi-appsettings-section kiwi-appsettings-advanced-enable">
                             <div>
                                 <span style="font-weight: 600;">
-                                    {{ $t('settings_advanced_warning_title') }}
+                                    {{ $t('warning') }}
                                 </span>
                                 {{ $t('settings_advanced_warning') }}
                             </div>

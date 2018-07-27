@@ -14,7 +14,7 @@
             <table class="u-table kiwi-settings-advanced-table" cellspacing="0">
                 <tr v-if="filteredSettings.length === 0">
                     <td class="kiwi-settings-advanced-noresult">
-                        {{ filterString }} - {{ $t('settings_advanced_noresult') }}
+                        {{ filterString }} - {{ $t('not_found') }}
                     </td>
                 </tr>
                 <tr v-for="setting in filteredSettings" v-else
@@ -66,7 +66,7 @@ export default {
     data: function data() {
         return {
             filterString: '',
-            ignoreKeys: ['emojis', 'themes', 'bnc', 'aliases', 'restricted',
+            ignoreKeys: ['emojis', 'themes', 'bnc', 'aliases', 'restricted', 'kiwiServer',
                 'hide_advanced', 'windowTitle', 'startupOptions', 'plugins', 'presetNetworks'],
         };
     },

@@ -223,6 +223,10 @@ div {
     background-color: #fe7575;
 }
 
+.kiwi-settings-advanced-table tr:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
 .irc-fg-colour-blue { color: #00f; }
