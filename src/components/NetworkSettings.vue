@@ -4,7 +4,7 @@
             <div class="kiwi-networksettings-section kiwi-networksettings-connection">
 
                 <div class="kiwi-title">{{ $t('settings_server_details') }}</div>
-                <div class="kiwi-padded-form-element-container">
+                <div class="kiwi-padded-form-element-container kiwi-no-padding-bottom">
                     <div v-if="network.state_error" class="kiwi-networksettings-error">
                         We couldn't connect to that server :(
                         <span>{{ readableStateError(network.state_error) }}</span>
@@ -109,21 +109,21 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="kiwi-padded-form-element-container">
-                        <div
-                            v-if="network.state === 'disconnected'"
-                            class="u-button kiwi-connect-to-newnetwork"
-                            @click="network.ircClient.connect()"
-                        >
-                            Connect To Network
-                        </div>
-                        <div
-                            v-else-if="network.state === 'connecting'"
-                            class="u-button kiwi-connect-to-newnetwork"
-                        >
-                            {{ $t('connecting') }}
-                        </div>
+                <div class="kiwi-padded-form-element-container">
+                    <div
+                        v-if="network.state === 'disconnected'"
+                        class="u-button kiwi-connect-to-newnetwork"
+                        @click="network.ircClient.connect()"
+                    >
+                        Connect To Network
+                    </div>
+                    <div
+                        v-else-if="network.state === 'connecting'"
+                        class="u-button kiwi-connect-to-newnetwork"
+                    >
+                        {{ $t('connecting') }}
                     </div>
                 </div>
 
@@ -257,15 +257,6 @@ export default {
     cursor: default;
 }
 
-.kiwi-networksettings span {
-    text-align: center;
-    width: 46px;
-    line-height: 46px;
-    margin: 0 5px 0 -10px;
-    font-weight: 600;
-    font-size: 1.2em;
-}
-
 .kiwi-networksettings .u-form {
     max-width: 400px;
     display: block;
@@ -317,8 +308,8 @@ export default {
     height: 40px;
     line-height: 40px;
     text-align: center;
-    top: 10px;
-    right: 17px;
+    top: 12px;
+    right: 24px;
 }
 
 .kiwi-networksettings .kiwi-show-advanced-title {
@@ -343,6 +334,10 @@ export default {
     box-sizing: border-box;
 }
 
+.kiwi-networksettings .kiwi-padded-form-element-container.kiwi-no-padding-bottom {
+    padding-bottom: 0;
+}
+
 .kiwi-networksettings .kiwi-padded-form-element-container label {
     margin: 0;
 }
@@ -356,7 +351,7 @@ export default {
 }
 
 .kiwi-networksettings-advanced-container {
-    padding: 20px 0;
+    padding: 0 0 10px 0;
 }
 
 .kiwi-networksettings-advanced-container span {
@@ -500,7 +495,7 @@ export default {
 
 .kiwi-networksettings-danger h3 {
     padding: 0;
-    margin-top: 10px;
+    margin-top: 0;
     margin-bottom: 0.5em;
 }
 
