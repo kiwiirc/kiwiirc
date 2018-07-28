@@ -1234,7 +1234,7 @@ function createEmptyBufferObject() {
         },
         settings: {
         },
-        last_read: Date.now(),
+        last_read: 0,
         active_timeout: null,
         message_count: 0,
         current_input: '',
