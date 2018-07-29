@@ -141,6 +141,9 @@ function clientMiddleware(state, networkid) {
                     return;
                 }
 
+                buffer.joined = false;
+                buffer.clearUsers();
+
                 let messageBody = TextFormatting.formatText('network_disconnected', {
                     text: TextFormatting.t('disconnected'),
                 });
