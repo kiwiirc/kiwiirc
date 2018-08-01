@@ -623,7 +623,10 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
     // /mode [target] [+-modes]
 
     let network = this.state.getActiveNetwork();
-    let target = network.nick;
+    let buffer = this.state.getActiveBuffer();
+    let target = buffer.isChannel() ?
+        buffer.name :
+        network.nick;
 
     let parts = _.compact(line.split(' '));
 
