@@ -115,7 +115,7 @@ export default {
             return '';
         },
         isMessage: function isMessage(message) {
-            let types = ['privmsg', 'action', 'notice'];
+            let types = ['privmsg', 'action', 'notice', 'message'];
             return types.indexOf(message.type) > -1;
         },
         userModePrefix: function userModePrefix(user) {
