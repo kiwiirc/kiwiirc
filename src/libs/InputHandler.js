@@ -641,6 +641,16 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
     } else {
         // No modes specified will request the modes for the target
         network.ircClient.mode(target);
+
+        if (target === buffer.name) {
+            // If we have requested modes for the active channel then flag it to show
+            // the response in the buffer itself. Wait a few seconds before removing
+            // the flag as there is no way to determine that everything has been received.
+            buffer.flags.requested_modes = true;
+            setTimeout(() => {
+                buffer.flags.requested_modes = false;
+            }, 4000);
+        }
     }
 };
 

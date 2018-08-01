@@ -671,6 +671,8 @@ function clientMiddleware(state, networkid) {
             }
 
             if (event.modes) {
+                let modeStrs = [];
+
                 event.modes.forEach((mode) => {
                     let adding = mode.mode[0] === '+';
                     let modeChar = mode.mode.substr(1);
@@ -680,6 +682,29 @@ function clientMiddleware(state, networkid) {
                     } else if (!adding) {
                         state.$delete(buffer.modes, modeChar);
                     }
+
+                    modeStrs.push(mode.mode + (mode.param ? ' ' + mode.param : ''));
+                });
+
+                if (buffer.flags.requested_modes) {
+                    state.addMessage(buffer, {
+                        time: event.time || Date.now(),
+                        nick: '*',
+                        message: buffer.name + ' ' + modeStrs.join(', '),
+                    });
+                }
+            }
+
+            if (event.created_at && buffer.flags.requested_modes) {
+                let tFormat = buffer.setting('timestamp_full_format');
+                let timeCreated = tFormat ?
+                    strftime(tFormat, new Date(event.created_at * 1000)) :
+                    (new Date(event.created_at * 1000)).toLocaleString();
+
+                state.addMessage(buffer, {
+                    time: event.time || Date.now(),
+                    nick: '*',
+                    message: buffer.name + ' ' + timeCreated,
                 });
             }
         }

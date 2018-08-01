@@ -1231,6 +1231,7 @@ function createEmptyBufferObject() {
             has_opened: false,
             channel_badkey: false,
             chathistory_available: true,
+            requested_modes: false,
         },
         settings: {
         },
