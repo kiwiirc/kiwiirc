@@ -772,8 +772,14 @@ function clientMiddleware(state, networkid) {
                     let localeDataFn = builders[mode[1]] || builders.default;
                     let localeData = localeDataFn(targets, mode);
 
+                    let prefixes = network.ircClient.network.supports('prefix') || [];
+                    let isUserChanMode = !!_.find(prefixes, { mode: mode[1] });
+
                     // Translate using the built locale data
-                    let text = TextFormatting.t(modeLocaleIds[mode] || 'modes_other', localeData);
+                    let localeKey = isUserChanMode ?
+                        modeLocaleIds[mode] || 'modes_other' :
+                        'modes_other';
+                    let text = TextFormatting.t(localeKey, localeData);
 
                     let messageBody = TextFormatting.formatText('mode', {
                         nick: event.nick,
