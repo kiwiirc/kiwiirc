@@ -2,8 +2,7 @@
     <div class="kiwi-networksettings">
         <form class="u-form">
             <div class="kiwi-title">{{ $t('settings_server_details') }}</div>
-            <div class="kiwi-networksettings-section-block
-                        kiwi-networksettings-section-block-padded">
+            <div class="kiwi-networksettings-section-block">
                 <div v-if="network.state_error" class="kiwi-networksettings-error">
                     We couldn't connect to that server :(
                     <span>{{ readableStateError(network.state_error) }}</span>
@@ -77,30 +76,28 @@
                     />
                 </h4>
 
-                <div v-if="show_advanced" class="kiwi-networksettings-section-block">
-                    <div class="kiwi-networksettings-section-block kiwi-networksettings-advanced">
-                        <template>
-                            <input-text
-                                :label="$t('settings_encoding')"
-                                v-model="network.connection.encoding"
-                            />
-                            <label>
-                                <span class="kiwi-appsettings-showraw-label">
-                                    {{ $t('settings_show_raw') }}
-                                </span>
-                                <input v-model="settingShowRaw" type="checkbox" >
-                            </label>
+                <div v-if="show_advanced" class="kiwi-networksettings-advanced">
+                    <template>
+                        <input-text
+                            :label="$t('settings_encoding')"
+                            v-model="network.connection.encoding"
+                        />
+                        <label>
+                            <span class="kiwi-appsettings-showraw-label">
+                                {{ $t('settings_show_raw') }}
+                            </span>
+                            <input v-model="settingShowRaw" type="checkbox" >
+                        </label>
 
-                            <label class="u-form-block">
-                                <span>{{ $t('settings_autorun') }}</span>
-                                <textarea
-                                    v-model="network.auto_commands"
-                                    cols="40"
-                                    rows="5"
-                                />
-                            </label>
-                        </template>
-                    </div>
+                        <label class="u-form-block">
+                            <span>{{ $t('settings_autorun') }}</span>
+                            <textarea
+                                v-model="network.auto_commands"
+                                cols="40"
+                                rows="5"
+                            />
+                        </label>
+                    </template>
                 </div>
 
                 <div
@@ -295,12 +292,9 @@ export default {
 }
 
 //The 'Sections' of the form
-.kiwi-networksettings-sectionblock {
+.kiwi-networksettings-section-block {
     box-sizing: border-box;
     width: 100%;
-}
-
-.kiwi-networksettings-section-block-padded {
     padding: 20px;
 }
 
