@@ -77,8 +77,7 @@
                     />
                 </h4>
 
-                <div v-if="show_advanced"
-                    class="kiwi-networksettings-section-block">
+                <div v-if="show_advanced" class="kiwi-networksettings-section-block">
                     <div class="kiwi-networksettings-section-block kiwi-networksettings-advanced">
                         <template>
                             <input-text
