@@ -378,6 +378,14 @@ export default {
     opacity: 1;
 }
 
+.kiwi-networksettings-user {
+    margin-top: 15px;
+}
+
+.kiwi-networksettings-advanced {
+    margin-bottom: 20px;
+}
+
 //Danger zone - bottom section
 .kiwi-dangerzone {
     text-align: center;
