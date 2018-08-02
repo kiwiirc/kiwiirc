@@ -1,8 +1,9 @@
 <template>
     <div class="kiwi-networksettings">
-        <form class="u-form kiwi-networksettings-section kiwi-networksettings-connection">
+        <form class="u-form">
             <div class="kiwi-title">{{ $t('settings_server_details') }}</div>
-            <div class="kiwi-padded-form-element-container kiwi-no-padding-bottom">
+            <div class="kiwi-networksettings-section-block
+                        kiwi-networksettings-section-block-padded">
                 <div v-if="network.state_error" class="kiwi-networksettings-error">
                     We couldn't connect to that server :(
                     <span>{{ readableStateError(network.state_error) }}</span>
@@ -32,40 +33,35 @@
                     </template>
                 </div>
 
-                <div class="kiwi-padded-form-element-container">
-                    <div class="kiwi-networksettings-server-types">
-                        <div
-                            v-if="server_type==='znc'"
-                            class="kiwi-networksettings-server-types-info"
-                        >
-                            {{ $t('settings_znc_other') }}
-                        </div>
-                        <a
-                            :class="{
-                                'kiwi-networksettings-server-type-active':
-                                    server_type==='network'
-                            }"
-                            class="u-link kiwi-network-type-button"
-                            @click="server_type='network'"
-                        >
-                            {{ $t('network') }}
-                        </a>
-                        <a
-                            :class="{
-                                'kiwi-networksettings-server-type-active': server_type==='znc'
-                            }"
-                            class="u-link kiwi-network-type-button"
-                            @click="server_type='znc'"
-                        >
-                            {{ $t('znc') }}
-                        </a>
+                <div class="kiwi-networksettings-server-types">
+                    <div
+                        v-if="server_type==='znc'"
+                        class="kiwi-networksettings-server-types-info"
+                    >
+                        {{ $t('settings_znc_other') }}
                     </div>
+                    <a
+                        :class="{
+                            'kiwi-networksettings-server-type-active':
+                                server_type==='network'
+                        }"
+                        class="u-link kiwi-network-type-button"
+                        @click="server_type='network'"
+                    >
+                        {{ $t('network') }}
+                    </a>
+                    <a
+                        :class="{
+                            'kiwi-networksettings-server-type-active': server_type==='znc'
+                        }"
+                        class="u-link kiwi-network-type-button"
+                        @click="server_type='znc'"
+                    >
+                        {{ $t('znc') }}
+                    </a>
                 </div>
 
-                <div
-                    class="kiwi-networksettings-section kiwi-networksettings-user
-                           kiwi-networksettings-username"
-                >
+                <div class="kiwi-networksettings-user">
                     <input-text v-model="network.nick" :label="$t('settings_nickname')" />
                 </div>
 
@@ -80,36 +76,34 @@
                         aria-hidden="true"
                     />
                 </h4>
-                <div class="kiwi-networksettings-advanced-container">
-                    <div class="kiwi-networksettings-section  kiwi-networksettings-user">
-                        <div class="kiwi-networksettings-section kiwi-networksettings-advanced">
-                            <template v-if="show_advanced">
-                                <input-text
-                                    :label="$t('settings_encoding')"
-                                    v-model="network.connection.encoding"
-                                />
-                                <label>
-                                    <span class="kiwi-appsettings-showraw-label">
-                                        {{ $t('settings_show_raw') }}
-                                    </span>
-                                    <input v-model="settingShowRaw" type="checkbox" >
-                                </label><br >
 
-                                <label class="u-form-block">
-                                    <span>{{ $t('settings_autorun') }}</span>
-                                    <textarea
-                                        v-model="network.auto_commands"
-                                        cols="40"
-                                        rows="5"
-                                    />
-                                </label>
-                            </template>
-                        </div>
+                <div v-if="show_advanced"
+                    class="kiwi-networksettings-section-block">
+                    <div class="kiwi-networksettings-section-block kiwi-networksettings-advanced">
+                        <template>
+                            <input-text
+                                :label="$t('settings_encoding')"
+                                v-model="network.connection.encoding"
+                            />
+                            <label>
+                                <span class="kiwi-appsettings-showraw-label">
+                                    {{ $t('settings_show_raw') }}
+                                </span>
+                                <input v-model="settingShowRaw" type="checkbox" >
+                            </label>
+
+                            <label class="u-form-block">
+                                <span>{{ $t('settings_autorun') }}</span>
+                                <textarea
+                                    v-model="network.auto_commands"
+                                    cols="40"
+                                    rows="5"
+                                />
+                            </label>
+                        </template>
                     </div>
                 </div>
-            </div>
 
-            <div class="kiwi-padded-form-element-container">
                 <div
                     v-if="network.state === 'disconnected'"
                     class="u-button kiwi-connect-to-newnetwork"
@@ -125,13 +119,11 @@
                 </div>
             </div>
 
-            <div class="kiwi-padded-form-element-container kiwi-dangerzone">
-                <div class="kiwi-networksettings-section kiwi-networksettings-danger">
-                    <h3>{{ $t('settings_danger') }}</h3>
-                    <a class="u-button u-button-warning" @click="removeNetwork">
-                        <i class="fa fa-times" aria-hidden="true"/> {{ $t('settings_remove') }}
-                    </a>
-                </div>
+            <div class="kiwi-dangerzone">
+                <h3>{{ $t('settings_danger') }}</h3>
+                <a class="u-button u-button-warning" @click="removeNetwork">
+                    <i class="fa fa-times" aria-hidden="true"/> {{ $t('settings_remove') }}
+                </a>
             </div>
         </form>
     </div>
@@ -298,100 +290,30 @@ export default {
     max-width: none;
 }
 
+.kiwi-networksettings .input-text {
+    padding-top: 0;
+    margin-bottom: 20px;
+}
+
+//The 'Sections' of the form
+.kiwi-networksettings-sectionblock {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.kiwi-networksettings-section-block-padded {
+    padding: 20px;
+}
+
+//Style the 'secrue/unsecure' port icon
 .kiwi-networksettings .input-text-c {
     bottom: auto;
     height: 40px;
     line-height: 40px;
     text-align: center;
     top: 12px;
+    cursor: pointer;
     right: 24px;
-}
-
-.kiwi-networksettings .kiwi-show-advanced-title {
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-    margin-bottom: -10px;
-}
-
-.kiwi-networksettings .kiwi-networksettings-advanced {
-    margin-top: 10px;
-}
-
-.kiwi-networksettings .kiwi-networksettings-advanced .kiwi-appsettings-showraw-label {
-    margin-left: 5px;
-}
-
-.kiwi-networksettings .kiwi-padded-form-element-container {
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.kiwi-networksettings .kiwi-padded-form-element-container.kiwi-no-padding-bottom {
-    padding-bottom: 0;
-}
-
-.kiwi-networksettings .kiwi-padded-form-element-container label {
-    margin: 0;
-}
-
-.kiwi-networksettings .kiwi-padded-form-element-container .input-text {
-    padding-top: 0;
-}
-
-.kiwi-networksettings .kiwi-padded-form-element-container.kiwi-dangerzone {
-    text-align: center;
-}
-
-.kiwi-networksettings-advanced-container {
-    padding: 0 0 10px 0;
-}
-
-.kiwi-networksettings-advanced-container span {
-    margin-left: 0;
-}
-
-.kiwi-networksettings .input-text .input-text-label {
-    margin-left: -5px;
-}
-
-.kiwi-networksettings .kiwi-networksettings-connection-password {
-    width: 100%;
-}
-
-.kiwi-networksettings .kiwi-networksettings-connection-password .input-text {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.kiwi-networksettings .kiwi-networksettings-server-types-info {
-    width: 100%;
-    text-align: left;
-    clear: both;
-}
-
-.kiwi-networksettings .kiwi-networksettings-server-types {
-    text-align: center;
-}
-
-.kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
-    margin: 0 10px 0 10px;
-    display: inline-block;
-    line-height: 35px;
-    padding: 0 10px;
-    border: 1px solid;
-    transition: all 0.3s;
-    border-radius: 4px;
-}
-
-.kiwi-networksettings .kiwi-networksettings-username label {
-    display: none;
-}
-
-.kiwi-networksettings .kiwi-customserver-tls {
-    cursor: pointer;
-    top: 6px;
 }
 
 .kiwi-networksettings .kiwi-customserver-tls-lock {
@@ -410,6 +332,45 @@ export default {
     left: 3px;
 }
 
+//Style the network types section
+.kiwi-networksettings .kiwi-networksettings-server-types-info {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.kiwi-networksettings .kiwi-networksettings-server-types {
+    text-align: center;
+}
+
+.kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
+    margin: 0 10px 0 10px;
+    display: inline-block;
+    line-height: 35px;
+    padding: 0 10px;
+    border: 1px solid;
+    transition: all 0.3s;
+    border-radius: 4px;
+}
+
+//User nickname input, remove bottom margin
+.kiwi-networksettings form .kiwi-networksettings-user .input-text {
+    margin-bottom: 10px;
+}
+
+.kiwi-networksettings .kiwi-show-advanced-title {
+    text-align: center;
+    cursor: pointer;
+    padding-top: 0;
+    margin: 0 0 20px 0;
+}
+
+//Apply spacing to the advanced options checkbox label
+.kiwi-networksettings .kiwi-networksettings-advanced .kiwi-appsettings-showraw-label {
+    margin-left: 5px;
+}
+
+//Large connection button
 .kiwi-networksettings .kiwi-connect-to-newnetwork {
     width: auto;
     margin: -10px auto 0 auto;
@@ -424,17 +385,15 @@ export default {
     opacity: 1;
 }
 
-.kiwi-networksettings-section {
-    box-sizing: border-box;
-    width: 100%;
+//Danger zone - bottom section
+.kiwi-dangerzone {
+    text-align: center;
+    padding: 10px 0 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.kiwi-networksettings-close {
-    float: right;
-}
-
-.kiwi-networksettings form .input-text {
-    margin-bottom: 10px;
+.kiwi-dangerzone h3 {
+    padding-top: 0;
 }
 
 .kiwi-networksettings-error {
@@ -471,23 +430,10 @@ export default {
     top: -16px;
 }
 
-.kiwi-networksettings-advanced h3 {
-    transition: all 0.3s;
-}
-
-.kiwi-networksettings-advanced h3:hover {
-    cursor: pointer;
-}
-
 .kiwi-networksettings-danger h3 {
     padding: 0;
     margin-top: 0;
     margin-bottom: 0.5em;
-}
-
-.kiwi-networksettings-danger label {
-    margin: 0;
-    width: 100%;
 }
 
 .kiwi-networksettings-danger .u-button-warning {
