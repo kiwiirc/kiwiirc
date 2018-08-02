@@ -919,7 +919,7 @@ const state = new Vue({
             }
 
             // Handle buffer flags
-            if (isNewMessage && includeAsActivity && !isActiveBuffer) {
+            if (isNewMessage && includeAsActivity && !isActiveBuffer && !bufferMessage.ignore) {
                 buffer.incrementFlag('unread');
                 if (isHighlight) {
                     buffer.flag('highlight', true);
