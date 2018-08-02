@@ -257,34 +257,46 @@ function clientMiddleware(state, networkid) {
 
         // Show unhandled data from the server in the servers tab
         if (command === 'unknown command') {
-            let buffer = network.serverBuffer();
-            let message = '';
-
-            // Only show non-numeric commands
-            if (!event.command.match(/^\d+$/)) {
-                message += event.command + ' ';
-            }
-
-            let containsNick = event.params[0] === network.ircClient.user.nick;
-            let isChannelMessage = network.isChannelName(event.params[1]);
-
-            // Strip out the nick if it's the first params (many commands include this)
-            if (containsNick && isChannelMessage) {
-                let channelBuffer = network.bufferByName(event.params[1]);
-                if (channelBuffer) {
-                    buffer = channelBuffer;
-                }
-                message += event.params.slice(2).join(', ');
-            } else if (containsNick) {
-                message += event.params.slice(1).join(', ');
+            if (event.command === '486') {
+                // You must log in with services to message this user
+                let targetNick = event.params[1];
+                let buffer = state.getOrAddBufferByName(network.id, targetNick);
+                state.addMessage(buffer, {
+                    time: Date.now(),
+                    nick: '*',
+                    message: event.params[2],
+                    type: 'error',
+                });
             } else {
-                message += event.params.join(', ');
-            }
+                let buffer = network.serverBuffer();
+                let message = '';
 
-            state.addMessage(buffer, {
-                nick: '',
-                message: message,
-            });
+                // Only show non-numeric commands
+                if (!event.command.match(/^\d+$/)) {
+                    message += event.command + ' ';
+                }
+
+                let containsNick = event.params[0] === network.ircClient.user.nick;
+                let isChannelMessage = network.isChannelName(event.params[1]);
+
+                // Strip out the nick if it's the first params (many commands include this)
+                if (containsNick && isChannelMessage) {
+                    let channelBuffer = network.bufferByName(event.params[1]);
+                    if (channelBuffer) {
+                        buffer = channelBuffer;
+                    }
+                    message += event.params.slice(2).join(', ');
+                } else if (containsNick) {
+                    message += event.params.slice(1).join(', ');
+                } else {
+                    message += event.params.join(', ');
+                }
+
+                state.addMessage(buffer, {
+                    nick: '',
+                    message: message,
+                });
+            }
         }
 
         if (command === 'message') {
