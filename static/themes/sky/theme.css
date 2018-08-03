@@ -174,9 +174,6 @@
 .kiwi-channellist table tbody tr {
     border-top: 1px solid lightgray;
 }
-.kiwi-channellist-users {
-    background: #78c9dc;
-}
 
 /* Container - Main ( Container.vue )  The majority of styling related to the messages and user input etc */
 .kiwi-container {

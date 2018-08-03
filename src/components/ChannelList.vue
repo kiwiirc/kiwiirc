@@ -23,10 +23,10 @@
             </div>
             <table v-if="!isLoading && list.length > 0" :key="last_updated" width="100%">
                 <thead>
-                    <th>Users</th>
+                    <th class="kiwi-channellist-user-center">Users</th>
                     <th>Channel name</th>
                     <th>Channel topic</th>
-                    <th style="min-width:100px;">Join Channel</th>
+                    <th class="kiwi-channellist-user-center" style="min-width:100px;">Join Channel</th>
                 </thead>
                 <tbody>
                     <tr v-for="channel in paginated" :key="channel.channel">
@@ -238,7 +238,7 @@ export default {
     font-size: 1.1em;
     cursor: default;
     text-align: left;
-    padding: 20px 1em 5px 1em;
+    padding: 10px 1em 5px 1em;
 }
 
 .kiwi-channellist table tbody td {

@@ -172,13 +172,16 @@
 
 /* Channel List ( ChannelList.vue ) */
 .kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #254233;
 }
 .kiwi-channellist table tbody tr {
     border-top: 1px solid lightgray;
 }
-.kiwi-channellist-users {
-    background: #1b2f24;
+
+.kiwi-channellist table tbody tr .u-button-primary {
+    background: none;
+    border: 1px solid #6fffb0;
+    color: #6fffb0;
 }
 
 /* Container - Main ( Container.vue )  The majority of styling related to the messages and user input etc */
@@ -747,7 +750,7 @@
 }
 .kiwi-network-name-options .option-button:hover,
 .kiwi-network-name-options .option-button.active {
-    background-color: #6a7b8e;
+    background-color: #6efdb0;
     color: #fff;
 }
 .kiwi-network-name-options .kiwi--collapse {

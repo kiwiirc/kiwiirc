@@ -188,8 +188,9 @@
 .kiwi-channellist table tbody tr {
     border-top: 1px solid lightgray;
 }
-.kiwi-channellist-users {
-    background: #4d6075;
+
+.kiwi-channellist-content-container .u-link {
+    color: #4d6075;
 }
 
 /* Container - Main ( Container.vue )  The majority of styling related to the messages and user input etc */
