@@ -26,7 +26,8 @@
                     <th class="kiwi-channellist-user-center">Users</th>
                     <th>Channel name</th>
                     <th>Channel topic</th>
-                    <th class="kiwi-channellist-user-center" style="min-width:100px;">Join Channel</th>
+                    <th class="kiwi-channellist-user-center"
+                        style="min-width:100px;">Join Channel</th>
                 </thead>
                 <tbody>
                     <tr v-for="channel in paginated" :key="channel.channel">
