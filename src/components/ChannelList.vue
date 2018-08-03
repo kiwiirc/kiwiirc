@@ -1,5 +1,5 @@
 <template>
-    <div :class="{'kiwi-channellist-padding-top': list.length == 0}" class="kiwi-channellist">
+    <div :class="{'kiwi-channellist-padding-top': !list.length}" class="kiwi-channellist">
         <div class="kiwi-channellist-content-container">
             <div class="kiwi-channellist-nav">
                 <form class="u-form kiwi-channellist-search" @submit.prevent>
@@ -15,24 +15,38 @@
                         <i v-else class="fa fa-refresh fa-spin" aria-hidden="true"/>
                     </a>
                 </form>
-                <div v-if="paginated && !isLoading" class="kiwi-channellist-pagination">
+                <div v-if="list.length" class="kiwi-channellist-pagination">
                     <a @click="prevPage"><i class="fa fa-step-backward" aria-hidden="true"/></a>
                     {{ page + 1 }} / {{ maxPages + 1 }}
                     <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true"/></a>
                 </div>
             </div>
             <table v-if="!isLoading && list.length > 0" :key="last_updated" width="100%">
+                <thead>
+                    <th>Users</th>
+                    <th>Channel name</th>
+                    <th>Channel topic</th>
+                    <th style="min-width:100px;">Join Channel</th>
+                </thead>
                 <tbody>
                     <tr v-for="channel in paginated" :key="channel.channel">
-                        <td>
+                        <td class="kiwi-channellist-user-center">
                             <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
                                 <i class="fa fa-user" aria-hidden="true"/> {{ channel.num_users }}
                             </span>
+                        </td>
+                        <td class="kiwi-channellist-user-center">
                             <a class="u-link" @click="joinChannel(channel.channel)">
                                 {{ channel.channel }}
                             </a>
                         </td>
                         <td>{{ channel.topic }}</td>
+                        <td class="kiwi-channellist-user-center">
+                            <a class="u-button u-button-primary"
+                               @click="joinChannel(channel.channel)">Join
+                                <i class="fa fa-sign-in" aria-hidden="true"/>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -214,13 +228,26 @@ export default {
     text-align: center;
 }
 
+/* Table Styling */
 .kiwi-channellist table {
     border: none;
     border-collapse: collapse;
 }
 
+.kiwi-channellist table thead th {
+    font-size: 1.1em;
+    cursor: default;
+    text-align: left;
+    padding: 20px 1em 5px 1em;
+}
+
 .kiwi-channellist table tbody td {
     padding: 2px 1em;
+    text-align: left;
+}
+
+.kiwi-channellist table .kiwi-channellist-user-center {
+    text-align: center;
 }
 
 .kiwi-channellist tr td:first-child {
@@ -229,9 +256,7 @@ export default {
 
 .kiwi-channellist-users {
     display: inline-block;
-    width: 80px;
-    padding: 2px 0;
-    border-radius: 3px;
+    font-weight: 900;
     text-align: center;
 }
 </style>
