@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-serverview">
         <div class="kiwi-serverview-inner">
-            <tabbed-view :key="network.id" :active-tab="activeTab">
+            <tabbed-view ref="tabs" :key="network.id">
                 <tabbed-tab :header="'Messages'" :focus="hasMessages" name="messages">
                     <message-list :buffer="serverBuffer" :messages="serverBuffer.getMessages()"/>
                 </tabbed-tab>
@@ -45,7 +45,6 @@ export default {
     props: ['network'],
     data: function data() {
         return {
-            activeTab: '',
             pluginUiElements: GlobalApi.singleton().serverViewPlugins,
         };
     },
@@ -67,7 +66,7 @@ export default {
     },
     methods: {
         showTab(tabName) {
-            this.activeTab = tabName;
+            this.$refs.tabs.setActiveByName(tabName);
         },
     },
 };

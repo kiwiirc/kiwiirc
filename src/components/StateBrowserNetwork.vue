@@ -28,7 +28,6 @@
                     <i class="fa fa-plus" aria-hidden="true"/>
                 </div>
                 <div
-                    v-if="network.buffers.length > 1"
                     :class="{ active: channel_filter_display == true }"
                     class="option-button kiwi-search-channels"
                     @click="toggleFilterChannel()"
@@ -244,7 +243,7 @@ export default {
                 // link as it has been removed before the event reaches it.
                 setTimeout(() => {
                     this.closeFilterChannel();
-                }, 100);
+                }, 200);
             }
         },
         closeBuffer(buffer) {
@@ -300,7 +299,7 @@ export default {
 
             return this.orderedBuffers(filtered);
         },
-        showNetworkSettings: function showNetworkSettings(network) {
+        showNetworkSettings(network) {
             network.showServerBuffer('settings');
         },
         showNetworkChannels(network) {
