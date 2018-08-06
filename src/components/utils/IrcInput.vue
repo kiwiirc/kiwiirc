@@ -196,6 +196,18 @@ export default Vue.component('irc-input', {
             this.code_map[colour] = code;
             this.updateValueProps();
         },
+        toggleBold() {
+            document.execCommand('bold', false, null);
+            this.updateValueProps();
+        },
+        toggleItalic() {
+            document.execCommand('italic', false, null);
+            this.updateValueProps();
+        },
+        toggleUnderline() {
+            document.execCommand('underline', false, null);
+            this.updateValueProps();
+        },
         addImg(code, url) {
             this.focus();
 

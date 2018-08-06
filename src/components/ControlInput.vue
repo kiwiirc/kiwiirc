@@ -206,6 +206,15 @@ export default {
                 this.active_tool = tool;
             }
         },
+        toggleBold() {
+            this.$refs.input.toggleBold();
+        },
+        toggleItalic() {
+            this.$refs.input.toggleItalic();
+        },
+        toggleUnderline() {
+            this.$refs.input.toggleUnderline();
+        },
         onAutocompleteCancel: function onAutocompleteCancel() {
             this.autocomplete_open = false;
         },
@@ -225,7 +234,7 @@ export default {
             if (navigator.appVersion.indexOf('Mac') !== -1) {
                 meta = event.metaKey;
             } else {
-                meta = event.altKey;
+                meta = event.ctrlKey;
             }
 
             // If autocomplete has handled the event, don't also handle it here
@@ -292,15 +301,21 @@ export default {
                 // traditional IRC clients.
                 this.autocomplete_filtering = false;
                 event.preventDefault();
-            } else if (meta && event.keyCode === 221) {
-                // meta + ]
-                // TODO: Switch to the next buffer
-            } else if (meta && event.keyCode === 219) {
-                // meta + [
-                // TODO: Switch to the previous buffer
             } else if (meta && event.keyCode === 75) {
                 // meta + k
                 this.toggleInputTool(ToolTextStyle);
+                event.preventDefault();
+            } else if (meta && event.keyCode === 66) {
+                // meta + b
+                this.toggleBold();
+                event.preventDefault();
+            } else if (meta && event.keyCode === 73) {
+                // meta + i
+                this.toggleItalic();
+                event.preventDefault();
+            } else if (meta && event.keyCode === 85) {
+                // meta + u
+                this.toggleUnderline();
                 event.preventDefault();
             }
         },
