@@ -61,6 +61,7 @@ import startupCustomServer from '@/components/startups/CustomServer';
 import startupKiwiBnc from '@/components/startups/KiwiBnc';
 import startupPersonal from '@/components/startups/Personal';
 import StateBrowser from '@/components/StateBrowser';
+import AppSettings from '@/components/AppSettings';
 import Container from '@/components/Container';
 import ControlInput from '@/components/ControlInput';
 import MediaViewer from '@/components/MediaViewer';
@@ -388,6 +389,17 @@ export default {
                 let buffer = bufferTools.getPreviousBuffer();
                 if (buffer) {
                     state.setActiveBuffer(buffer.networkid, buffer.name);
+                }
+                event.preventDefault();
+            } else if (meta && event.keyCode === 79) {
+                // meta + o
+                state.$emit('active.component', AppSettings);
+                event.preventDefault();
+            } else if (meta && event.keyCode === 83) {
+                // meta + s
+                let network = state.getActiveNetwork();
+                if (network) {
+                    network.showServerBuffer('settings');
                 }
                 event.preventDefault();
             }
