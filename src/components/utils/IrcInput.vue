@@ -41,6 +41,9 @@ export default Vue.component('irc-input', {
             return this.$refs.editor;
         },
     },
+    mounted() {
+        this.resetStyles();
+    },
     methods: {
         onTextInput(event) {
             // Mobile devices trigger a textInput event for things such as autocompletion
@@ -120,8 +123,19 @@ export default Vue.component('irc-input', {
             let source = this.$refs.editor.innerHTML;
             let textValue = '';
 
+            // Toggles are IRC style and colour codes that should be reset at the end of
+            // the current tag
+            let toggles = [];
+            function addToggle(t) {
+                toggles[toggles.length - 1] += t;
+            }
+            function getToggles() {
+                return toggles[toggles.length -1];
+            }
+
             let parser = new htmlparser.Parser({
                 onopentag: (name, attribs) => {
+                    toggles.push('');
                     let codeLookup = '';
                     if (attribs.style) {
                         let match = attribs.style.match(/color: ([^;]+)/);
@@ -129,7 +143,21 @@ export default Vue.component('irc-input', {
                             codeLookup = match[1];
                             if (this.code_map[codeLookup]) {
                                 textValue += '\x03' + this.code_map[codeLookup];
+                                addToggle('\x03' + this.code_map[codeLookup]);
                             }
+                        }
+
+                        if (attribs.style.indexOf('bold') > -1) {
+                            textValue += '\x02';
+                            addToggle('\x02');
+                        }
+                        if (attribs.style.indexOf('italic') > -1) {
+                            textValue += '\x1d';
+                            addToggle('\x1d');
+                        }
+                        if (attribs.style.indexOf('underline') > -1) {
+                            textValue += '\x1f';
+                            addToggle('\x1f');
                         }
                     }
                     if (attribs.src && this.code_map[attribs.src]) {
@@ -140,9 +168,8 @@ export default Vue.component('irc-input', {
                     textValue += text;
                 },
                 onclosetag: (tagName) => {
-                    if (tagName === 'span') {
-                        textValue += '\x03';
-                    }
+                    textValue += getToggles();
+                    toggles.pop();
                 },
             }, {
                 decodeEntities: true,
@@ -156,6 +183,9 @@ export default Vue.component('irc-input', {
         },
         reset(rawHtml) {
             this.$refs.editor.innerHTML = rawHtml || '';
+
+            this.current_el_pos = 0;
+            this.current_el = this.$refs.editor;
 
             // Firefox inserts a <br> on empty contenteditables after it's been reset. But that
             // fucks up the placeholder :empty CSS selector we use. So just remove it.
@@ -330,7 +360,7 @@ export default Vue.component('irc-input', {
         focus() {
             let selection = window.getSelection();
             let range = document.createRange();
-            range.setStart(this.current_el, this.current_el_pos);
+            range.setStart(this.current_el || this.$refs.editor, this.current_el_pos || 0);
 
             selection.removeAllRanges();
             selection.addRange(range);
