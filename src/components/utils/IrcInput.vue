@@ -130,7 +130,7 @@ export default Vue.component('irc-input', {
                 toggles[toggles.length - 1] += t;
             }
             function getToggles() {
-                return toggles[toggles.length -1];
+                return toggles[toggles.length - 1];
             }
 
             let parser = new htmlparser.Parser({
