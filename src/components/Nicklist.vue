@@ -1,10 +1,15 @@
 <template>
     <div class="kiwi-nicklist">
         <div class="kiwi-nicklist-usercount">
-            <span v-if="!filterVisible">{{ $t('person', {count: sortedUsers.length}) }}</span>
+            <span v-if="!filterVisible">
+                {{ $t('person', {count: sortedUsers.length}) }}
+            </span>
+            <span v-if="filterVisible">
+                {{ sortedUsers.length }}
+            </span>
             <input ref="user_filter" :class="{active: filterVisible }"
                    :placeholder="$t('filter_users')" v-model="user_filter">
-            <i class="fa fa-search" @click="toggleUserFilter()"/>
+            <i :class="{active: filterVisible }" class="fa fa-search" @click="toggleUserFilter()"/>
         </div>
 
         <ul class="kiwi-nicklist-users">
@@ -222,13 +227,14 @@ export default {
     position: absolute;
     right: 15px;
     top: 0;
-    opacity: 0.8;
+    opacity: 0.6;
     cursor: pointer;
     line-height: 42px;
     font-size: 1.2em;
 }
 
-.kiwi-nicklist-usercount .fa-search:hover {
+.kiwi-nicklist-usercount .fa-search:hover,
+.kiwi-nicklist-usercount .fa-search.active {
     opacity: 1;
 }
 
@@ -240,7 +246,7 @@ export default {
     font-weight: normal;
     background: none;
     outline: 0;
-    padding: 0 15px;
+    padding: 0 15px 0 40px;
     opacity: 0;
     box-sizing: border-box;
     transition: all 0.2s;
