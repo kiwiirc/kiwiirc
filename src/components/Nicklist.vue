@@ -1,15 +1,15 @@
 <template>
     <div class="kiwi-nicklist">
         <div class="kiwi-nicklist-usercount">
-            <span v-if="!filterVisible">
+            <span v-if="!filter_visible">
                 {{ $t('person', {count: sortedUsers.length}) }}
             </span>
-            <span v-if="filterVisible">
+            <span v-else>
                 {{ sortedUsers.length }}
             </span>
-            <input ref="user_filter" :class="{active: filterVisible }"
+            <input ref="user_filter" :class="{active: filter_visible }"
                    :placeholder="$t('filter_users')" v-model="user_filter">
-            <i :class="{active: filterVisible }" class="fa fa-search" @click="toggleUserFilter()"/>
+            <i :class="{active: filter_visible }" class="fa fa-search" @click="toggleUserFilter()"/>
         </div>
 
         <ul class="kiwi-nicklist-users">
@@ -61,7 +61,7 @@ export default {
         return {
             userbox_user: null,
             user_filter: '',
-            filterVisible: false,
+            filter_visible: false,
         };
     },
     computed: {
@@ -151,32 +151,32 @@ export default {
         },
     },
     methods: {
-        nickStyle: function nickStyle(nick) {
+        nickStyle(nick) {
             let styles = {};
             if (this.useColouredNicks) {
                 styles.color = TextFormatting.createNickColour(nick);
             }
             return styles;
         },
-        userModePrefix: function userModePrefix(user) {
+        userModePrefix(user) {
             return Misc.userModePrefix(user, this.buffer);
         },
-        userMode: function userMode(user) {
+        userMode(user) {
             return Misc.userMode(user, this.buffer);
         },
-        openQuery: function openQuery(user) {
+        openQuery(user) {
             let buffer = state.addBuffer(this.buffer.networkid, user.nick);
             state.setActiveBuffer(buffer.networkid, buffer.name);
             this.uiState.close();
         },
-        openUserbox: function openUserbox(user) {
+        openUserbox(user) {
             state.$emit('userbox.show', user, {
                 buffer: this.buffer,
             });
         },
-        toggleUserFilter: function toggleUserFilter() {
-            this.filterVisible = !this.filterVisible;
-            if (this.filterVisible) {
+        toggleUserFilter() {
+            this.filter_visible = !this.filter_visible;
+            if (this.filter_visible) {
                 this.$refs.user_filter.focus();
             }
         },
