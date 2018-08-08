@@ -1,7 +1,9 @@
 <template>
     <div class="kiwi-nicklist">
         <div class="kiwi-nicklist-usercount">
-            <span>{{ $t('person', {count: sortedUsers.length}) }}</span>
+            <span><i class="fa fa-users" aria-hidden="true"/> {{ sortedUsers.length }}</span>
+            <input ref="user_filter" :placeholder="$t('filter_users')" v-model="user_filter">
+            <i class="fa fa-search" @click="displayUserFilter()"/>
         </div>
 
         <ul class="kiwi-nicklist-users">
@@ -25,11 +27,6 @@
                 </span>
             </li>
         </ul>
-
-        <div class="kiwi-nicklist-info">
-            <input ref="user_filter" :placeholder="$t('filter_users')" v-model="user_filter">
-            <i class="fa fa-search" @click="$refs.user_filter.focus()"/>
-        </div>
     </div>
 </template>
 
@@ -170,6 +167,14 @@ export default {
                 buffer: this.buffer,
             });
         },
+        displayUserFilter: function displayUserFilter() {
+            if (this.$refs.user_filter.classList.contains('active')) {
+                this.$refs.user_filter.classList.remove('active');
+            } else {
+                this.$refs.user_filter.classList.add('active');
+                this.$refs.user_filter.focus();
+            }
+        },
     },
 };
 </script>
@@ -197,60 +202,54 @@ export default {
 }
 
 .kiwi-nicklist-usercount {
-    display: flex;
+    display: block;
     width: 100%;
-    text-align: center;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0.5em 10px;
     cursor: default;
     box-sizing: border-box;
+    position: relative;
+    height: 43px;
 }
 
 .kiwi-nicklist-usercount span {
-    font-weight: 600;
-    width: 100%;
-    text-align: center;
-}
-
-.kiwi-nicklist-info {
-    float: right;
-    width: 100%;
-    margin: auto;
-    height: 43px;
-    box-sizing: border-box;
-    position: relative;
-    font-size: 0.9em;
-    padding-bottom: 0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.kiwi-nicklist-info input {
-    text-align: left;
-    float: left;
-    width: 100%;
-    border: none;
-    padding: 0 1em;
-    height: 43px;
-    line-height: 43px;
-    font-weight: normal;
-    flex: 1;
-    background: 0 0;
-    outline: 0;
-}
-
-.kiwi-nicklist-info .fa.fa-search {
     position: absolute;
-    top: 50%;
-    margin-top: -0.5em;
-    color: #000;
-    opacity: 0.5;
-    line-height: normal;
+    left: 15px;
+    top: 0;
+    font-weight: 600;
+    line-height: 44px;
+}
+
+.kiwi-nicklist-usercount .fa-search {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    opacity: 0.8;
+    cursor: pointer;
+    line-height: 42px;
     font-size: 1.2em;
-    right: 20px;
-    margin-right: 0;
+}
+
+.kiwi-nicklist-usercount .fa-search:hover {
+    opacity: 1;
+}
+
+.kiwi-nicklist-usercount input {
+    text-align: left;
+    width: 0%;
+    border: none;
+    height: 44px;
+    font-weight: normal;
+    background: none;
+    outline: 0;
+    padding-left: 60px;
+    opacity: 0;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+
+.kiwi-nicklist-usercount input.active {
+    width: 100%;
+    opacity: 1;
+    transition: all 0.1s;
 }
 
 .kiwi-nicklist-users {
@@ -275,6 +274,11 @@ export default {
     transition: background 0.3s;
 }
 
+.kiwi-nicklist-user-nick {
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .kiwi-nicklist-messageuser {
     position: absolute;
     content: '\f075';
@@ -282,22 +286,16 @@ export default {
     font-family: fontAwesome, sans-serif;
     top: 50%;
     margin-top: -1.5em;
+    opacity: 0;
 }
 
 .kiwi-nicklist-messageuser:hover {
     cursor: pointer;
 }
 
-.kiwi-nicklist-info i.fa-search {
-    flex: 1;
-    margin-right: 25px;
-    cursor: pointer;
-    line-height: 50px;
-}
-
-.kiwi-nicklist-user-nick {
-    font-weight: bold;
-    cursor: pointer;
+.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
+    opacity: 1;
+    transition: all 0.3s;
 }
 
 @media screen and (max-width: 759px) {
