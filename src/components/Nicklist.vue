@@ -1,9 +1,10 @@
 <template>
     <div class="kiwi-nicklist">
         <div class="kiwi-nicklist-usercount">
-            <span><i class="fa fa-users" aria-hidden="true"/> {{ sortedUsers.length }}</span>
-            <input ref="user_filter" :placeholder="$t('filter_users')" v-model="user_filter">
-            <i class="fa fa-search" @click="displayUserFilter()"/>
+            <span v-if="!filterVisible">{{ $t('person', {count: sortedUsers.length}) }}</span>
+            <input ref="user_filter" :class="{active: filterVisible }"
+                   :placeholder="$t('filter_users')" v-model="user_filter">
+            <i class="fa fa-search" @click="toggleUserFilter()"/>
         </div>
 
         <ul class="kiwi-nicklist-users">
@@ -55,6 +56,7 @@ export default {
         return {
             userbox_user: null,
             user_filter: '',
+            filterVisible: false,
         };
     },
     computed: {
@@ -167,11 +169,9 @@ export default {
                 buffer: this.buffer,
             });
         },
-        displayUserFilter: function displayUserFilter() {
-            if (this.$refs.user_filter.classList.contains('active')) {
-                this.$refs.user_filter.classList.remove('active');
-            } else {
-                this.$refs.user_filter.classList.add('active');
+        toggleUserFilter: function toggleUserFilter() {
+            this.filterVisible = !this.filterVisible;
+            if (this.filterVisible) {
                 this.$refs.user_filter.focus();
             }
         },
@@ -240,7 +240,7 @@ export default {
     font-weight: normal;
     background: none;
     outline: 0;
-    padding-left: 60px;
+    padding: 0 15px;
     opacity: 0;
     box-sizing: border-box;
     transition: all 0.2s;
