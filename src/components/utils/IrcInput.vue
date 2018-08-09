@@ -20,6 +20,7 @@
 
 <script>
 
+import _ from 'lodash';
 import htmlparser from 'htmlparser2';
 
 let Vue = require('vue');
@@ -241,14 +242,14 @@ export default Vue.component('irc-input', {
         addImg(code, url) {
             this.focus();
 
-            let existingImages = [...this.$refs.editor.querySelectorAll('img').values()];
+            let existingImages = [..._.values(this.$refs.editor.querySelectorAll('img'))];
 
             document.execCommand('styleWithCSS', false, true);
             document.execCommand('insertImage', false, url);
             this.code_map[url] = code;
 
             let newImg = null;
-            let images = [...this.$refs.editor.querySelectorAll('img').values()];
+            let images = [..._.values(this.$refs.editor.querySelectorAll('img'))];
 
             // Find image that has just been inserted
             images.forEach((img) => {
