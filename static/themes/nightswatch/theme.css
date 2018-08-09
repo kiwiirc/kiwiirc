@@ -1172,3 +1172,8 @@
     top: -22px;
     color: #fff;
 }
+
+.kiwi-settings-advanced-notice {
+    color: #000;
+    background: #d16c6c;
+}

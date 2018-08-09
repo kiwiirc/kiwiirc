@@ -104,6 +104,13 @@ msgstr "Yes"
 msgid "no"
 msgstr "No"
 
+#: Not found.
+msgid "not_found"
+msgstr "Not found."
+
+#: Warning!
+msgid "warning"
+msgstr "Warning!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -319,6 +326,30 @@ msgstr "Default ban mask"
 #: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Default kick reason"
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr "Advanced Settings"
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr "Monsters be here, only click this button if you know what you are doing"
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr "Enable Advanced Settings"
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr "Danger Zone: Changing some of these settings may break things!"
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr "Reset"
+
+#: Filter
+msgid "settings_advanced_filter"
+msgstr "Filter"
 
 
 

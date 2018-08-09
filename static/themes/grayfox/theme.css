@@ -1025,3 +1025,8 @@
     margin-right: 5px;
     font-weight: 100;
 }
+
+.kiwi-settings-advanced-notice {
+    color: #fff;
+    background: #d16c6c;
+}

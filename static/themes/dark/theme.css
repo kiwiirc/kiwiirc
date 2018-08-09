@@ -1236,3 +1236,14 @@
     margin-right: 5px;
     font-weight: 100;
 }
+
+.kiwi-settings-advanced-notice {
+    color: #fff;
+    background: none;
+    font-weight: 900;
+}
+
+.kiwi-settings-advanced-notice {
+    color: #000;
+    background: #d16c6c;
+}

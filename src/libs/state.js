@@ -305,6 +305,7 @@ const stateObj = {
         is_touch: false,
         favicon_counter: 0,
         current_input: '',
+        show_advanced_tab: false,
     },
     networks: [
         /* {

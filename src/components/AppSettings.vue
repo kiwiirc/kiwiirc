@@ -7,8 +7,8 @@
         </div>
 
         <form class="u-form">
-            <tabbed-view class="kiwi-appsettings-tab-container">
-                <tabbed-tab :header="$t('settings_general')" :focus="true">
+            <tabbed-view :active-tab="activeTab" class="kiwi-appsettings-tab-container">
+                <tabbed-tab :header="$t('settings_general')" :focus="true" name="general">
 
                     <div class="kiwi-appsettings-block">
                         <h3>{{ $t('settings_general') }}</h3>
@@ -122,9 +122,26 @@
                             </label>
                         </div>
                     </div>
+                    <div v-if="!state.setting('hide_advanced') && !settingAdvancedEnable"
+                         class="kiwi-appsettings-block">
+                        <h3>{{ $t('settings_advanced_title') }}</h3>
+                        <div class="kiwi-appsettings-section kiwi-appsettings-advanced-enable">
+                            <div>
+                                <span style="font-weight: 600;">
+                                    {{ $t('warning') }}
+                                </span>
+                                {{ $t('settings_advanced_warning') }}
+                            </div>
+                            <div style="margin-top: 10px; text-align: center;">
+                                <a class="u-button u-button-warning" @click="enableAdvancedTab()">
+                                    <i>{{ $t('settings_advanced_button') }}</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </tabbed-tab>
 
-                <tabbed-tab :header="$t('settings_aliases')">
+                <tabbed-tab :header="$t('settings_aliases')" name="aliases">
                     <div class="kiwi-appsettings-block kiwi-appsettings-block-aliases">
                         <h3>{{ $t('settings_aliases') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
@@ -132,7 +149,23 @@
                         </div>
                     </div>
                 </tabbed-tab>
-                <tabbed-tab v-for="item in pluginUiElements" :key="item.id" :header="item.title">
+
+                <tabbed-tab
+                    v-if="settingAdvancedEnable"
+                    :header="$t('settings_advanced')"
+                    name="advanced">
+                    <div class="kiwi-appsettings-block kiwi-appsettings-block-advanced">
+                        <div class="kiwi-appsettings-section kiwi-appsettings-advanced">
+                            <settings-advanced/>
+                        </div>
+                    </div>
+                </tabbed-tab>
+
+                <tabbed-tab
+                    v-for="item in pluginUiElements"
+                    :key="item.id"
+                    :header="item.title"
+                    :name="item.title">
                     <div :is="item.component" v-bind="item.props"/>
                 </tabbed-tab>
             </tabbed-view>
@@ -146,6 +179,7 @@ import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import GlobalApi from '@/libs/GlobalApi';
 import SettingsAliases from './SettingsAliases';
+import SettingsAdvanced from './SettingsAdvanced';
 
 /**
  * Returns an object for a vuejs computated property on a state settings value
@@ -165,11 +199,13 @@ function bindSetting(settingName) {
 export default {
     components: {
         SettingsAliases,
+        SettingsAdvanced,
     },
     data: function data() {
         return {
             state: state,
             theme: '',
+            activeTab: '',
             customThemeUrl: '',
             pluginUiElements: GlobalApi.singleton().appSettingsPlugins,
         };
@@ -208,6 +244,14 @@ export default {
         settingBufferMuteSound: bindSetting('buffers.mute_sound'),
         settingDefaultBanMask: bindSetting('buffers.default_ban_mask'),
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
+        settingAdvancedEnable: {
+            get: function getSettingShowAdvancedTab() {
+                return state.ui.show_advanced_tab;
+            },
+            set: function setSettingShowAdvancedTab(newVal) {
+                state.ui.show_advanced_tab = newVal;
+            },
+        },
         settingMessageLayout: {
             get: function getSettingMessageLayout() {
                 return state.setting('messageLayout') === 'compact';
@@ -275,6 +319,13 @@ export default {
                 this.$watch('theme', watchTheme),
                 this.$watch('customThemeUrl', watchCustomThemeUrl),
             ];
+        },
+        enableAdvancedTab() {
+            this.settingAdvancedEnable = true;
+            this.$nextTick(() => {
+                this.activeTab = 'advanced';
+                this.$el.scrollTop = 0;
+            });
         },
     },
 };
@@ -368,6 +419,11 @@ export default {
     display: block;
     box-sizing: border-box;
     margin: 20px auto 20px auto;
+}
+
+.kiwi-appsettings-block.kiwi-appsettings-block-advanced {
+    max-width: inherit;
+    margin: 20px;
 }
 
 .kiwi-appsettings-block h3 {
