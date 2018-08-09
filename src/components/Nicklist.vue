@@ -1,15 +1,21 @@
 <template>
-    <div class="kiwi-nicklist">
+    <div class="kiwi-nicklist" :class="{'kiwi-nicklist--filtering': filter_visible }">
         <div class="kiwi-nicklist-usercount">
-            <span v-if="!filter_visible">
-                {{ $t('person', {count: sortedUsers.length}) }}
+            <span>
+                {{
+                    filter_visible ?
+                        sortedUsers.length :
+                        $t('person', {count: sortedUsers.length})
+                }}
             </span>
-            <span v-else>
-                {{ sortedUsers.length }}
-            </span>
-            <input ref="user_filter" :class="{active: filter_visible }"
-                   :placeholder="$t('filter_users')" v-model="user_filter">
-            <i :class="{active: filter_visible }" class="fa fa-search" @click="toggleUserFilter()"/>
+
+            <input
+                ref="user_filter"
+                :placeholder="$t('filter_users')"
+                v-model="user_filter"
+                @blur="onFilterBlur"
+            >
+            <i class="fa fa-search" @click="toggleUserFilter"/>
         </div>
 
         <ul class="kiwi-nicklist-users">
@@ -177,7 +183,14 @@ export default {
         toggleUserFilter() {
             this.filter_visible = !this.filter_visible;
             if (this.filter_visible) {
-                this.$refs.user_filter.focus();
+                this.$nextTick(() => this.$refs.user_filter.focus());
+            } else {
+                this.user_filter = '';
+            }
+        },
+        onFilterBlur() {
+            if (!this.user_filter) {
+                this.filter_visible = false;
             }
         },
     },
@@ -207,55 +220,50 @@ export default {
 }
 
 .kiwi-nicklist-usercount {
-    display: block;
-    width: 100%;
+    display: flex;
+    justify-content: space-between;
     cursor: default;
     box-sizing: border-box;
-    position: relative;
     height: 43px;
+    width: 100%;
 }
 
 .kiwi-nicklist-usercount span {
-    position: absolute;
-    left: 15px;
-    top: 0;
+    margin-left: 15px;
     font-weight: 600;
     line-height: 44px;
 }
 
 .kiwi-nicklist-usercount .fa-search {
-    position: absolute;
-    right: 15px;
-    top: 0;
     opacity: 0.6;
     cursor: pointer;
     line-height: 42px;
     font-size: 1.2em;
+    align-self: flex-start;
+    margin-right: 15px;
 }
 
 .kiwi-nicklist-usercount .fa-search:hover,
-.kiwi-nicklist-usercount .fa-search.active {
+.kiwi-nicklist--filtering .kiwi-nicklist-usercount .fa-search {
     opacity: 1;
 }
 
 .kiwi-nicklist-usercount input {
-    text-align: left;
     width: 0%;
     border: none;
     height: 44px;
     font-weight: normal;
     background: none;
     outline: 0;
-    padding: 0 15px 0 40px;
+    padding: 0 15px 0 15px;
     opacity: 0;
     box-sizing: border-box;
+    flex-grow: 1;
     transition: all 0.2s;
 }
 
-.kiwi-nicklist-usercount input.active {
-    width: 100%;
+.kiwi-nicklist--filtering .kiwi-nicklist-usercount input {
     opacity: 1;
-    transition: all 0.1s;
 }
 
 .kiwi-nicklist-users {
