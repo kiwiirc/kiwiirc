@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2018-08-09 14:01\n"
+"PO-Revision-Date: 2018-08-09 14:11\n"
 
 #: Start
 msgid "start_button"
@@ -339,15 +339,15 @@ msgstr "Habilitar Configuración Avanzada"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Zona de Peligro: ¡Cambiar algunos de estos ajustes puede romper las cosas!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Resetear"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Filtro"
 
 #: Refresh banlist
 msgid "bans_refresh"
