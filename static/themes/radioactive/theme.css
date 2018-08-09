@@ -570,11 +570,13 @@
     color: #5dd895 !important;
 }
 
-.kiwi-nicklist-usercount {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.kiwi-nicklist-usercount,
+.kiwi-nicklist-user {
+    border-bottom: 1px solid #6fffb0;
 }
-.kiwi-nicklist-info{
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
+    color: #6fffb0;
 }
 
 .kiwi-nicklist-info input,
@@ -726,7 +728,8 @@
 
 /* User Settings */
 .kiwi-statebrowser-appsettings {
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid #6fffb0;
+    color: #6fffb0;
 }
 .kiwi-statebrowser-appsettings:hover {
     background: #1b2f24;
