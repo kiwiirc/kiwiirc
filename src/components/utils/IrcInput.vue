@@ -20,6 +20,7 @@
 
 <script>
 
+import 'babel-polyfill';
 import htmlparser from 'htmlparser2';
 
 let Vue = require('vue');
