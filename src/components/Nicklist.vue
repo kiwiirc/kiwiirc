@@ -225,20 +225,20 @@ export default {
     cursor: default;
     box-sizing: border-box;
     height: 43px;
+    line-height: 39px;
     width: 100%;
 }
 
 .kiwi-nicklist-usercount span {
     margin-left: 15px;
     font-weight: 600;
-    line-height: 44px;
 }
 
 .kiwi-nicklist-usercount .fa-search {
     opacity: 0.6;
     cursor: pointer;
-    line-height: 42px;
     font-size: 1.2em;
+    padding-top: 10px;
     align-self: flex-start;
     margin-right: 15px;
 }
@@ -251,11 +251,10 @@ export default {
 .kiwi-nicklist-usercount input {
     width: 0%;
     border: none;
-    height: 44px;
     font-weight: normal;
     background: none;
     outline: 0;
-    padding: 0 15px 0 15px;
+    padding: 0 15px 0 10px;
     opacity: 0;
     box-sizing: border-box;
     flex-grow: 1;
@@ -285,7 +284,6 @@ export default {
     margin: 0;
     position: relative;
     box-sizing: border-box;
-    transition: background 0.3s;
 }
 
 .kiwi-nicklist-user-nick {
@@ -309,7 +307,6 @@ export default {
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
     opacity: 1;
-    transition: all 0.3s;
 }
 
 @media screen and (max-width: 759px) {
