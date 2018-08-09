@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2018-08-09 13:54\n"
+"PO-Revision-Date: 2018-08-09 16:10\n"
 
 #: Start
 msgid "start_button"
@@ -119,11 +119,11 @@ msgstr "Non"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "Non atopado."
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "Perigo!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -327,27 +327,27 @@ msgstr "Mensaxe de expulsión por defecto"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr ""
+msgstr "Configuración Avanzada"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr ""
+msgstr "Os monstros están aquí, só feixe clic neste botón se sabes o que estás a facer"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr ""
+msgstr "Habilitar Configuración Avanzada"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Zona de Perigo: Cambiar algúns destes axustes pode romper as cousas!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Restablecer"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Filtro"
 
 #: Refresh banlist
 msgid "bans_refresh"
