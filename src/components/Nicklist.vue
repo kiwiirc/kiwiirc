@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-nicklist" :class="{'kiwi-nicklist--filtering': filter_visible }">
+    <div :class="{'kiwi-nicklist--filtering': filter_visible }" class="kiwi-nicklist">
         <div class="kiwi-nicklist-usercount">
             <span>
                 {{
