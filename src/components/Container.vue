@@ -115,6 +115,40 @@ export default {
         this.listen(state, 'userbox.hide', () => {
             this.uiState.close();
         });
+        this.listen(state, 'document.keydown', (ev) => {
+            // Return if not Page Up or Page Down keys
+            if (ev.keyCode !== 33 && ev.keyCode !== 34) {
+                return;
+            }
+
+            // if no messagelist, select the first tabbed content to allow channel list scrolling
+            let messageList = this.$el.querySelector('.kiwi-messagelist') ||
+                this.$el.querySelector('.u-tabbed-content');
+
+            if (!messageList) {
+                return;
+            }
+
+            let scrollDistance = messageList.clientHeight - (0.1 * messageList.clientHeight);
+            let scrollTop = messageList.scrollTop;
+            let scrollMax = messageList.scrollHeight;
+
+            if (ev.keyCode === 33) {
+                // up
+                scrollTop -= scrollDistance;
+                if (scrollTop < 0) {
+                    scrollTop = 0;
+                }
+            } else {
+                // down
+                scrollTop += scrollDistance;
+                if (scrollTop > scrollMax) {
+                    scrollTop = scrollMax;
+                }
+            }
+
+            messageList.scrollTop = scrollTop;
+        });
     },
     methods: {
         toggleStateBrowser: function toggleStateBrowser() {
