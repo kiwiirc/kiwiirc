@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-08-11 09:50\n"
+"PO-Revision-Date: 2018-08-11 10:00\n"
 
 #: Start
 msgid "start_button"
@@ -339,7 +339,7 @@ msgstr "Geavanceerde instellingen inschakelen"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Gevarenzone: het wijzigen van bepaalde instellingen kan defecten veroorzaken!"
 
 #: Reset
 msgid "settings_advanced_reset"
