@@ -284,7 +284,7 @@ export function formatUserFull(fNick, fUsername, fHost) {
         host = fHost;
     }
 
-    return formatText('user', { nick, username, host });
+    return formatText('user_full', { nick, username, host });
 }
 
 /**
