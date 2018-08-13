@@ -326,27 +326,6 @@ const stateObj = {
             is_znc: false,
             channel_list: [],
             channel_list_state: '',
-            buffers: [
-                {
-                    id: 0,
-                    networkid: 1,
-                    name: '#kiwiirc',
-                    topic: 'A hand-crafted IRC client',
-                    joined: true,
-                    flags: { unread: 4, highlight: true },
-                    settings: { alert_on: 'all' },
-                    users: [ref_to_user_obj],
-                },
-            ],
-            users: {
-                prawnsalad: {
-                    nick: 'prawnsalad',
-                    host: 'isp.net',
-                    username: 'prawn',
-                    modes: '+ix',
-                    buffers: {1: {modes: []}}
-                },
-            },
         },
         {
             id: 2,
@@ -360,37 +339,57 @@ const stateObj = {
             },
             nick: 'prawnsalad',
             username: 'prawn',
-            buffers: [
-                {
-                    id: 1
-                    networkid: 2,
-                    name: '#orangechat',
-                    topic: '',
-                    joined: false,
-                    flags: { unread: 0 },
-                    settings: { alert_on: 'all' },
-                    users: [ref_to_user_obj],
-                },
-            ],
-            users: {
-                prawnsalad: {
-                    nick: 'prawnsalad',
-                    host: 'isp.net',
-                    username: 'prawn',
-                    modes: '+ix',
-                    buffers: {1: {modes: []}},
-                },
-                someone: {
-                    nick: 'someone',
-                    host: 'masked.com',
-                    username: 'someirc',
-                    modes: '+ix',
-                    buffers: {1: {modes: []}},
-                },
-            },
         }, */
     ],
 };
+
+const userDict = new Vue({
+    data() {
+        return {
+            networks: {},
+        };
+    },
+    /*
+    (network id): {
+        prawnsalad: {
+            nick: 'prawnsalad',
+            host: 'isp.net',
+            username: 'prawn',
+            modes: '+ix',
+            buffers: {1: {modes: []}},
+        },
+        someone: {
+            nick: 'someone',
+            host: 'masked.com',
+            username: 'someirc',
+            modes: '+ix',
+            buffers: {1: {modes: []}},
+        },
+    },
+    */
+});
+
+const bufferDict = new Vue({
+    data() {
+        return {
+            networks: {},
+        };
+    },
+    /*
+    (network id): [
+        {
+            id: 1
+            networkid: 2,
+            name: '#orangechat',
+            topic: '',
+            joined: false,
+            flags: { unread: 0 },
+            settings: { alert_on: 'all' },
+            users: [ref_to_user_obj],
+        },
+    ]
+    */
+});
 
 // Messages are seperate from the above state object to keep them from being reactive. Saves CPU.
 const messages = [
@@ -1012,7 +1011,7 @@ const state = new Vue({
 
             let users = _.clone(network.users);
             fn(users);
-            this.$set(network, 'users', users);
+            network.users = users;
         },
 
         addUser(networkid, user, usersArr_) {
@@ -1209,8 +1208,6 @@ function createEmptyNetworkObject() {
         username: '',
         gecos: '',
         password: '',
-        buffers: [],
-        users: Object.create(null),
     };
 }
 
@@ -1293,6 +1290,22 @@ function initialiseNetworkState(network) {
     // If this network is being imported from a stored state, make sure it is
     // now set as 'disconnected' as it will not connected at this point.
     network.state = 'disconnected';
+
+    let users = Object.create(null);
+    Vue.set(userDict.networks, network.id, users);
+    Object.defineProperty(network, 'users', {
+        get: function getUsers() { return users; },
+        set: function setUsers(newVal) {
+            users = newVal;
+            Vue.set(userDict.networks, network.id, users);
+        },
+    });
+
+    let buffers = [];
+    Vue.set(bufferDict.networks, network.id, buffers);
+    Object.defineProperty(network, 'buffers', {
+        get: function getBuffers() { return buffers; },
+    });
 }
 
 function initialiseBufferState(buffer) {
