@@ -188,7 +188,8 @@ function clientMiddleware(state, networkid) {
         }
 
         if (command === 'channel_redirect') {
-            network.bufferByName(event.from).flags.redirect_to = event.to;
+            let b = network.bufferByName(event.from);
+            if (b) b.flags.redirect_to = event.to;
         }
 
         if (command === 'registered') {
