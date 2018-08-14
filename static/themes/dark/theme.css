@@ -702,11 +702,10 @@
 
 /* Nicklist ( Nicklist.vu ) */
 .kiwi-nicklist-usercount {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-
-.kiwi-nicklist-info {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+.kiwi-nicklist-user {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .kiwi-nicklist-info input {
@@ -728,17 +727,17 @@
 }
 
 .kiwi-nicklist-user:hover {
-    background-color: #42b992;
+    background-color: none;
     cursor: pointer;
-    color: #dedede;
+    color: #fff;
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-user-nick {
-    color: #333 !important;
+    color: #fff !important;
 }
 
-.kiwi-nicklist-user:hover .kiwi-nicklist-user-nick::after {
-    color: #333;
+.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
+    color: #fff;
 }
 
 .kiwi-nicklist-messageuser {

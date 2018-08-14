@@ -1,7 +1,21 @@
 <template>
-    <div class="kiwi-nicklist">
+    <div :class="{'kiwi-nicklist--filtering': filter_visible }" class="kiwi-nicklist">
         <div class="kiwi-nicklist-usercount">
-            <span>{{ $t('person', {count: sortedUsers.length}) }}</span>
+            <span>
+                {{
+                    filter_visible ?
+                        sortedUsers.length :
+                        $t('person', {count: sortedUsers.length})
+                }}
+            </span>
+
+            <input
+                ref="user_filter"
+                :placeholder="$t('filter_users')"
+                v-model="user_filter"
+                @blur="onFilterBlur"
+            >
+            <i class="fa fa-search" @click="toggleUserFilter"/>
         </div>
 
         <ul class="kiwi-nicklist-users">
@@ -25,11 +39,6 @@
                 </span>
             </li>
         </ul>
-
-        <div class="kiwi-nicklist-info">
-            <input ref="user_filter" :placeholder="$t('filter_users')" v-model="user_filter">
-            <i class="fa fa-search" @click="$refs.user_filter.focus()"/>
-        </div>
     </div>
 </template>
 
@@ -58,6 +67,7 @@ export default {
         return {
             userbox_user: null,
             user_filter: '',
+            filter_visible: false,
         };
     },
     computed: {
@@ -147,28 +157,41 @@ export default {
         },
     },
     methods: {
-        nickStyle: function nickStyle(nick) {
+        nickStyle(nick) {
             let styles = {};
             if (this.useColouredNicks) {
                 styles.color = TextFormatting.createNickColour(nick);
             }
             return styles;
         },
-        userModePrefix: function userModePrefix(user) {
+        userModePrefix(user) {
             return Misc.userModePrefix(user, this.buffer);
         },
-        userMode: function userMode(user) {
+        userMode(user) {
             return Misc.userMode(user, this.buffer);
         },
-        openQuery: function openQuery(user) {
+        openQuery(user) {
             let buffer = state.addBuffer(this.buffer.networkid, user.nick);
             state.setActiveBuffer(buffer.networkid, buffer.name);
             this.uiState.close();
         },
-        openUserbox: function openUserbox(user) {
+        openUserbox(user) {
             state.$emit('userbox.show', user, {
                 buffer: this.buffer,
             });
+        },
+        toggleUserFilter() {
+            this.filter_visible = !this.filter_visible;
+            if (this.filter_visible) {
+                this.$nextTick(() => this.$refs.user_filter.focus());
+            } else {
+                this.user_filter = '';
+            }
+        },
+        onFilterBlur() {
+            if (!this.user_filter) {
+                this.filter_visible = false;
+            }
         },
     },
 };
@@ -198,59 +221,48 @@ export default {
 
 .kiwi-nicklist-usercount {
     display: flex;
-    width: 100%;
-    text-align: center;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0.5em 10px;
+    justify-content: space-between;
     cursor: default;
     box-sizing: border-box;
+    height: 43px;
+    line-height: 39px;
+    width: 100%;
 }
 
 .kiwi-nicklist-usercount span {
+    margin-left: 15px;
     font-weight: 600;
-    width: 100%;
-    text-align: center;
 }
 
-.kiwi-nicklist-info {
-    float: right;
-    width: 100%;
-    margin: auto;
-    height: 43px;
-    box-sizing: border-box;
-    position: relative;
-    font-size: 0.9em;
-    padding-bottom: 0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.kiwi-nicklist-info input {
-    text-align: left;
-    float: left;
-    width: 100%;
-    border: none;
-    padding: 0 1em;
-    height: 43px;
-    line-height: 43px;
-    font-weight: normal;
-    flex: 1;
-    background: 0 0;
-    outline: 0;
-}
-
-.kiwi-nicklist-info .fa.fa-search {
-    position: absolute;
-    top: 50%;
-    margin-top: -0.5em;
-    color: #000;
-    opacity: 0.5;
-    line-height: normal;
+.kiwi-nicklist-usercount .fa-search {
+    opacity: 0.3;
+    cursor: pointer;
     font-size: 1.2em;
-    right: 20px;
-    margin-right: 0;
+    padding-top: 10px;
+    align-self: flex-start;
+    margin-right: 15px;
+}
+
+.kiwi-nicklist-usercount .fa-search:hover,
+.kiwi-nicklist--filtering .kiwi-nicklist-usercount .fa-search {
+    opacity: 1;
+}
+
+.kiwi-nicklist-usercount input {
+    width: 0%;
+    border: none;
+    font-weight: normal;
+    background: none;
+    outline: 0;
+    padding: 0 15px 0 10px;
+    opacity: 0;
+    box-sizing: border-box;
+    flex-grow: 1;
+    transition: all 0.2s;
+}
+
+.kiwi-nicklist--filtering .kiwi-nicklist-usercount input {
+    opacity: 1;
 }
 
 .kiwi-nicklist-users {
@@ -272,7 +284,11 @@ export default {
     margin: 0;
     position: relative;
     box-sizing: border-box;
-    transition: background 0.3s;
+}
+
+.kiwi-nicklist-user-nick {
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .kiwi-nicklist-messageuser {
@@ -282,22 +298,15 @@ export default {
     font-family: fontAwesome, sans-serif;
     top: 50%;
     margin-top: -1.5em;
+    opacity: 0;
 }
 
 .kiwi-nicklist-messageuser:hover {
     cursor: pointer;
 }
 
-.kiwi-nicklist-info i.fa-search {
-    flex: 1;
-    margin-right: 25px;
-    cursor: pointer;
-    line-height: 50px;
-}
-
-.kiwi-nicklist-user-nick {
-    font-weight: bold;
-    cursor: pointer;
+.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
+    opacity: 1;
 }
 
 @media screen and (max-width: 759px) {
