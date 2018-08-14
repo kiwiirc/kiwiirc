@@ -235,7 +235,7 @@ export default {
 }
 
 .kiwi-nicklist-usercount .fa-search {
-    opacity: 0.6;
+    opacity: 0.3;
     cursor: pointer;
     font-size: 1.2em;
     padding-top: 10px;
