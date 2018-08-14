@@ -187,6 +187,11 @@ function clientMiddleware(state, networkid) {
             return;
         }
 
+        if (command === 'channel_redirect') {
+           state.removeBuffer(network.bufferByName(event.from));
+           setTimeout( () => { state.setActiveBuffer(network.id, event.to) }, 100);
+        }
+
         if (command === 'registered') {
             if (client.options.nickserv) {
                 let options = client.options.nickserv;
