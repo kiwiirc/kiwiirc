@@ -381,7 +381,10 @@ function clientMiddleware(state, networkid) {
         if (command === 'join') {
             if (event.nick === network.nick) {
                 network.buffers.forEach((e) => {
-                    if (e.flags.redirect_to === event.channel) e.rename(event.channel);
+                    if (e.flags.redirect_to === event.channel) {
+                        delete e.flags.redirect_to;
+                        e.rename(event.channel);
+                    }
                 });
             }
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
