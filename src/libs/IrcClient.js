@@ -5,8 +5,8 @@ import Irc from 'irc-framework/browser';
 import bouncerMiddleware from './BouncerMiddleware';
 import * as ServerConnection from './ServerConnection';
 
-export function create(state, networkid) {
-    let network = state.getNetwork(networkid);
+export function create(state, network) {
+    let networkid = network.id;
 
     let clientOpts = {
         host: network.connection.server,
@@ -36,7 +36,7 @@ export function create(state, networkid) {
 
     let ircClient = new Irc.Client(clientOpts);
     ircClient.requestCap('znc.in/self-message');
-    ircClient.use(clientMiddleware(state, networkid));
+    ircClient.use(clientMiddleware(state, network));
     ircClient.use(bouncerMiddleware());
 
     // Overload the connect() function to make sure we are connecting with the
@@ -93,8 +93,8 @@ export function create(state, networkid) {
     return ircClient;
 }
 
-function clientMiddleware(state, networkid) {
-    let network = state.getNetwork(networkid);
+function clientMiddleware(state, network) {
+    let networkid = network.id;
     let numConnects = 0;
     // Requested chathistory for this connection yet
     let requestedCh = false;
