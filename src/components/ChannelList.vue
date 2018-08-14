@@ -22,13 +22,6 @@
                 </div>
             </div>
             <table v-if="!isLoading && list.length > 0" :key="last_updated" width="100%">
-                <thead>
-                    <th class="kiwi-channellist-user-center">Users</th>
-                    <th>Channel name</th>
-                    <th>Channel topic</th>
-                    <th class="kiwi-channellist-user-center"
-                        style="min-width:100px;">Join Channel</th>
-                </thead>
                 <tbody>
                     <tr v-for="channel in paginated" :key="channel.channel">
                         <td class="kiwi-channellist-user-center">
@@ -36,16 +29,15 @@
                                 <i class="fa fa-user" aria-hidden="true"/> {{ channel.num_users }}
                             </span>
                         </td>
-                        <td class="kiwi-channellist-user-center">
+                        <td>
                             <a class="u-link" @click="joinChannel(channel.channel)">
                                 {{ channel.channel }}
                             </a>
                         </td>
-                        <td>{{ channel.topic }}</td>
+                        <td>{{ trimTopic(channel.topic) }}</td>
                         <td class="kiwi-channellist-user-center">
                             <a class="u-button u-button-primary"
-                               @click="joinChannel(channel.channel)">Join
-                                <i class="fa fa-sign-in" aria-hidden="true"/>
+                               @click="joinChannel(channel.channel)"> {{ $t('container_join') }}
                             </a>
                         </td>
                     </tr>
@@ -85,10 +77,10 @@ export default {
         listState: function listState() {
             return this.network.channel_list_state;
         },
-        list: function list() {
+        list() {
             return this.network.channel_list || [];
         },
-        filteredList: function filteredList() {
+        filteredList() {
             let list = [];
 
             if (this.search.length <= 2) {
@@ -108,7 +100,7 @@ export default {
 
             return _.sortBy(list, 'num_users').reverse();
         },
-        paginated: function paginated() {
+        paginated() {
             let offset = this.page * this.page_size;
             let list = this.filteredList;
             let channels = [];
@@ -120,13 +112,13 @@ export default {
 
             return channels;
         },
-        maxPages: function maxPages() {
+        maxPages() {
             return Math.floor(this.filteredList.length / this.page_size);
         },
-        canGoForward: function canGoForward() {
+        canGoForward() {
             return this.page * this.page_size >= this.filteredList.length;
         },
-        canGoBackward: function canGoBackward() {
+        canGoBackward() {
             return this.page > 0;
         },
     },
@@ -136,22 +128,25 @@ export default {
         },
     },
     methods: {
-        nextPage: function nextPage() {
+        nextPage() {
             if (this.page < this.maxPages) {
                 this.page++;
             }
         },
-        prevPage: function prevPage() {
+        prevPage() {
             if (this.page > 0) {
                 this.page--;
             }
         },
-        maybeUpdateList: function maybeUpdateList() {
+        maybeUpdateList() {
             if (this.listState !== 'updating') {
                 this.network.ircClient.raw('LIST');
             }
         },
-        joinChannel: function joinChannel(channelName) {
+        trimTopic(topic) {
+            return topic.replace(/\[([^\]]+)\] ?/, '');
+        },
+        joinChannel(channelName) {
             state.addBuffer(this.network.id, channelName);
             this.network.ircClient.join(channelName);
         },
@@ -168,7 +163,7 @@ export default {
 }
 
 .kiwi-channellist-padding-top {
-    padding-top: 250px;
+    padding-top: calc(50vh - 80px);
 }
 
 .kiwi-channellist-padding-top .kiwi-channellist-nav {
@@ -260,4 +255,11 @@ export default {
     font-weight: 900;
     text-align: center;
 }
+
+@media screen and (max-width: 1024px) {
+    .kiwi-channellist-padding-top {
+        padding-top: 100px;
+    }
+}
+
 </style>
