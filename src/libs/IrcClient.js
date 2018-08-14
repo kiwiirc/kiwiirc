@@ -382,7 +382,7 @@ function clientMiddleware(state, networkid) {
             if (event.nick === network.nick) {
                 network.buffers.forEach((e) => {
                     if (e.flags.redirect_to === event.channel) {
-                        delete e.flags.redirect_to;
+                        state.$delete(e.flags, 'redirect_to');
                         e.rename(event.channel);
                     }
                 });
