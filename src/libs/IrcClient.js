@@ -188,8 +188,7 @@ function clientMiddleware(state, networkid) {
         }
 
         if (command === 'channel_redirect') {
-            state.removeBuffer(network.bufferByName(event.from));
-            setTimeout(() => { state.setActiveBuffer(network.id, event.to); }, 100);
+            network.bufferByName(event.from).flags.redirect_to = event.to;
         }
 
         if (command === 'registered') {
@@ -380,6 +379,11 @@ function clientMiddleware(state, networkid) {
         }
 
         if (command === 'join') {
+            if (event.nick === network.nick) {
+                network.buffers.forEach((e) => {
+                    if (e.flags.redirect_to === event.channel) e.rename(event.channel);
+                });
+            }
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             state.addUserToBuffer(buffer, {
                 nick: event.nick,
