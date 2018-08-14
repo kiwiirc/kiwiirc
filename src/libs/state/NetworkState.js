@@ -2,8 +2,8 @@ import * as IrcClient from '../IrcClient';
 
 export default class NetworkState {
     constructor(id, appState, userDict, bufferDict) {
-    	// Enumerable properties that become relative under Vue
-        this.id =  id;
+        // Enumerable properties that become relative under Vue
+        this.id = id;
         this.name = '';
         // State of the transport
         this.state = 'disconnected';
@@ -92,8 +92,8 @@ function def(target, key, value, canSet) {
     let definition = {
         get() {
             return val;
-        }
-    }
+        },
+    };
 
     if (canSet) {
         definition.set = function set(newVal) {

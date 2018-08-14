@@ -1,11 +1,12 @@
 import strftime from 'strftime';
+import _ from 'lodash';
 import batchedAdd from '../batchedAdd';
 
 let nextBufferId = 0;
 
 export default class BufferState {
-	constructor(name, networkid, state, messageDict) {
-		// Enumerable properties that become relative under Vue
+    constructor(name, networkid, state, messageDict) {
+        // Enumerable properties that become relative under Vue
         this.id = nextBufferId++;
         this.networkid = networkid;
         this.name = name;
@@ -33,35 +34,35 @@ export default class BufferState {
         def(this, 'state', state, false);
         def(this, 'messageDict', messageDict, false);
 
-	    let messagesObj = {
-	        networkid: this.networkid,
-	        buffer: this.name,
-	        messages: [],
-	    };
-	    this.messageDict.push(messagesObj);
-	    def(this, 'messagesObj', messagesObj, false);
-	}
+        let messagesObj = {
+            networkid: this.networkid,
+            buffer: this.name,
+            messages: [],
+        };
+        this.messageDict.push(messagesObj);
+        def(this, 'messagesObj', messagesObj, false);
+    }
 
-	getNetwork() {
-		return this.state.getNetwork(this.networkid);
-	}
+    getNetwork() {
+        return this.state.getNetwork(this.networkid);
+    }
 
-	getMessages() {
-	    let bufMessages = _.find(this.messageDict, {
-	        networkid: this.networkid,
-	        buffer: this.name,
-	    });
+    getMessages() {
+        let bufMessages = _.find(this.messageDict, {
+            networkid: this.networkid,
+            buffer: this.name,
+        });
 
-	    return bufMessages ?
-	        bufMessages.messages :
-	        [];
-	}
+        return bufMessages ?
+            bufMessages.messages :
+            [];
+    }
 
-	isServer() {
-		return this.name === '*';
-	}
+    isServer() {
+        return this.name === '*';
+    }
 
-	isChannel() {
+    isChannel() {
         let chanPrefixes = ['#', '&'];
         let ircNetwork = this.getNetwork().ircClient.network;
         if (ircNetwork && ircNetwork.options.CHANTYPES) {
@@ -69,9 +70,9 @@ export default class BufferState {
         }
 
         return chanPrefixes.indexOf(this.name[0]) > -1;
-	}
+    }
 
-	isQuery() {
+    isQuery() {
         let chanPrefixes = ['#', '&'];
         let ircNetwork = this.getNetwork().ircClient.network;
         if (ircNetwork && ircNetwork.options.CHANTYPES) {
@@ -81,16 +82,16 @@ export default class BufferState {
         return chanPrefixes.indexOf(this.name[0]) === -1 &&
             !this.isSpecial() &&
             !this.isServer();
-	}
+    }
 
-	isSpecial() {
+    isSpecial() {
         // Special buffer names (Usually controller queries, like *status or *raw).
         // Server buffer '*' is not included in this classification.
         let name = this.name;
         return name[0] === '*' && name.length > 1;
-	}
+    }
 
-	isUserAnOp(nick) {
+    isUserAnOp(nick) {
         let user = this.state.getUser(this.networkid, this.getNetwork().nick);
         if (!user) {
             return false;
@@ -106,9 +107,9 @@ export default class BufferState {
         let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
 
         return !!hasOp;
-	}
+    }
 
-	setting(name, val) {
+    setting(name, val) {
         if (typeof val !== 'undefined') {
             this.state.$set(this.settings, name, val);
             return val;
@@ -120,9 +121,9 @@ export default class BufferState {
             this.state.setting('buffers.' + name);
 
         return result;
-	}
+    }
 
-	rename(newName) {
+    rename(newName) {
         let network = this.getNetwork();
         let oldName = this.name;
         let setActive = this.state.getActiveBuffer() === this;
@@ -135,18 +136,18 @@ export default class BufferState {
         // update the buffer name on our messages
         let bufferMessages = _.find(this.messageDict, { networkid: network.id, buffer: oldName });
         bufferMessages.buffer = newName;
-	}
+    }
 
-	flag(name, val) {
+    flag(name, val) {
         if (typeof val !== 'undefined') {
             this.state.$set(this.flags, name, val);
             return val;
         }
 
         return this.flags[name];
-	}
+    }
 
-	requestScrollback(_direction) {
+    requestScrollback(_direction) {
         let direction = _direction || 'backward';
         let time = '';
         // Negative number gets messages before the timestamps, positive gets messages after
@@ -196,9 +197,9 @@ export default class BufferState {
                 this.flags.chathistory_available = true;
             }
         });
-	}
+    }
 
-	markAsRead(delayed) {
+    markAsRead(delayed) {
         if (this.active_timeout) {
             clearTimeout(this.active_timeout);
             this.active_timeout = null;
@@ -235,39 +236,36 @@ export default class BufferState {
                 );
             }
         }
-	}
+    }
 
-	incrementFlag(flagName) {
-		this.flags[flagName] = (this.flags[flagName] || 0) + 1;
-	}
+    incrementFlag(flagName) {
+        this.flags[flagName] = (this.flags[flagName] || 0) + 1;
+    }
 
-	addUser(user) {
-		if (!this.addUserBatch) {
-			let state = this.state;
-			let buffer = this;
+    addUser(user) {
+        if (!this.addUserBatch) {
+            /**
+             * Batch up floods of addUsers for a huge performance gain.
+             * Generally happens whenr econnecting to a BNC
+             */
+            let addSingleUser = (u) => {
+                this.state.$set(this.users, u.nick.toLowerCase(), u);
+            };
+            let addMultipleUsers = (users) => {
+                let o = _.clone(this.users);
+                users.forEach((u) => {
+                    o[u.nick.toLowerCase()] = u;
+                });
+                this.users = o;
+            };
 
-		    /**
-		     * Batch up floods of addUsers for a huge performance gain.
-		     * Generally happens whenr econnecting to a BNC
-		     */
-		    function addSingleUser(user) {
-		        state.$set(buffer.users, user.nick.toLowerCase(), user);
-		    }
-		    function addMultipleUsers(users) {
-		        let o = _.clone(buffer.users);
-		        users.forEach((user) => {
-		            o[user.nick.toLowerCase()] = user;
-		        });
-		        buffer.users = o;
-		    }
+            def(this, 'addUserBatch', batchedAdd(addSingleUser, addMultipleUsers));
+        }
 
-			def(this, 'addUserBatch', batchedAdd(addSingleUser, addMultipleUsers));
-		}
+        this.addUserBatch(user);
+    }
 
-		this.addUserBatch(user);
-	}
-
-	removeUser(nick) {
+    removeUser(nick) {
         let userObj = this.state.getUser(this.networkid, nick);
 
         // A user could be queued to be added, so make sure it's not there as it
@@ -279,9 +277,9 @@ export default class BufferState {
         if (userObj) {
             delete userObj.buffers[this.id];
         }
-	}
+    }
 
-	clearUsers() {
+    clearUsers() {
         // Users could be queued to be added, so make sure to clear them as they
         // would just be added again. Eg. user joins/parts during a flood
         this.addUserBatch && this.addUserBatch.queue().splice(0);
@@ -291,43 +289,39 @@ export default class BufferState {
         });
 
         this.state.$set(this, 'users', {});
-	}
+    }
 
-	addMessage(message) {
-		if (!this.addMessageBatch) {
-			let state = this.state;
-			let buffer = this;
-			let messagesObj = this.messagesObj;
+    addMessage(message) {
+        if (!this.addMessageBatch) {
+            /**
+             * batch up floods of new messages for a huge performance gain
+             */
+            let addSingleMessage = (newMessage) => {
+                this.messagesObj.messages.push(newMessage);
+                trimMessages();
+                this.message_count++;
+            };
+            let addMultipleMessages = (newMessages) => {
+                this.messagesObj.messages = this.messagesObj.messages.concat(newMessages);
+                trimMessages();
+                this.message_count++;
+            };
+            let trimMessages = () => {
+                let scrollbackSize = this.setting('scrollback_size');
+                let length = this.messagesObj.messages.length;
 
-		    /**
-		     * batch up floods of new messages for a huge performance gain
-		     */
-		    function addSingleMessage(newMessage) {
-		        messagesObj.messages.push(newMessage);
-		        trimMessages();
-		        buffer.message_count++;
-		    }
-		    function addMultipleMessages(newMessages) {
-		        messagesObj.messages = messagesObj.messages.concat(newMessages);
-		        trimMessages();
-		        buffer.message_count++;
-		    }
-		    function trimMessages() {
-		        let scrollbackSize = buffer.setting('scrollback_size');
-		        let length = messagesObj.messages.length;
+                if (this.messagesObj.messages.length > scrollbackSize) {
+                    this.messagesObj.messages.splice(0, length - scrollbackSize);
+                }
+            };
 
-		        if (messagesObj.messages.length > scrollbackSize) {
-		            messagesObj.messages.splice(0, length - scrollbackSize);
-		        }
-		    }
+            def(this, 'addMessageBatch', batchedAdd(addSingleMessage, addMultipleMessages));
+        }
 
-			def(this, 'addMessageBatch', batchedAdd(addSingleMessage, addMultipleMessages));
-		}
+        this.addMessageBatch(message);
+    }
 
-		this.addMessageBatch(message);
-	}
-
-	say(message, opts = {}) {
+    say(message, opts = {}) {
         let network = this.getNetwork();
         let newMessage = {
             time: Date.now(),
@@ -345,25 +339,25 @@ export default class BufferState {
         };
         let fnName = fnNames[opts.type] || 'say';
         network.ircClient[fnName](this.name, message);
-	}
+    }
 
-	join() {
+    join() {
         if (!this.isChannel()) {
             return;
         }
 
         let network = this.getNetwork();
         network.ircClient.join(this.name, this.key || '');
-	}
+    }
 
-	part(reason) {
+    part(reason) {
         if (!this.isChannel()) {
             return;
         }
 
         let network = this.getNetwork();
         network.ircClient.part(this.name, reason || '');
-	}
+    }
 }
 
 // Define a non-enumerable property on an object with an optional setter callback
@@ -373,8 +367,8 @@ function def(target, key, value, canSet) {
     let definition = {
         get() {
             return val;
-        }
-    }
+        },
+    };
 
     if (canSet) {
         definition.set = function set(newVal) {
