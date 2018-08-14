@@ -188,8 +188,8 @@ function clientMiddleware(state, networkid) {
         }
 
         if (command === 'channel_redirect') {
-           state.removeBuffer(network.bufferByName(event.from));
-           setTimeout( () => { state.setActiveBuffer(network.id, event.to) }, 100);
+            state.removeBuffer(network.bufferByName(event.from));
+            setTimeout(() => { state.setActiveBuffer(network.id, event.to); }, 100);
         }
 
         if (command === 'registered') {
