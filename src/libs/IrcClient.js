@@ -189,7 +189,9 @@ function clientMiddleware(state, networkid) {
 
         if (command === 'channel_redirect') {
             let b = network.bufferByName(event.from);
-            if (b) b.flags.redirect_to = event.to;
+            if (b) {
+                b.flags.redirect_to = event.to;
+            }
         }
 
         if (command === 'registered') {
@@ -380,14 +382,17 @@ function clientMiddleware(state, networkid) {
         }
 
         if (command === 'join') {
-            if (event.nick === network.nick) {
-                network.buffers.forEach((e) => {
-                    if (e.flags.redirect_to === event.channel) {
-                        state.$delete(e.flags, 'redirect_to');
-                        e.rename(event.channel);
+            // If we have any buffers marked as being redirected to this new channel, update
+            // that buffer instead of creating a new one
+            if (event.nick === client.user.nick) {
+                network.buffers.forEach((b) => {
+                    if ((b.flags.redirect_to || '').toLowerCase() === event.channel.toLowerCase()) {
+                        state.$delete(b.flags, 'redirect_to');
+                        b.rename(event.channel);
                     }
                 });
             }
+
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             state.addUserToBuffer(buffer, {
                 nick: event.nick,
