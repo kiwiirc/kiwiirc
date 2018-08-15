@@ -181,3 +181,21 @@ export function parseIrcUri(str) {
 
     return connections;
 }
+
+// Scan though an object and extend any dot notated keys
+export function dedotObject(confObj, _place) {
+    let place = _place || [];
+    let regex = /\w\.\w/;
+
+    _.each(confObj, (val, key) => {
+        let ourPlace = place.concat([key]);
+        if (typeof val === 'object') {
+            dedotObject(confObj[key], ourPlace);
+            return;
+        }
+        if (regex.test(key)) {
+            delete confObj[key];
+            _.set(confObj, ourPlace.join('.'), val);
+        }
+    });
+}

@@ -53,6 +53,7 @@ export default class GlobalApi extends EventEmitter {
         let pluginLogger = Logger.namespace(`Plugin ${plugin.name}`);
         try {
             plugin.fn(this, pluginLogger);
+            this.state.$emit('plugin.loaded', { name: plugin.name });
         } catch (err) {
             pluginLogger.error(err.stack);
         }

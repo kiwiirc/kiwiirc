@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2018-08-09 13:54\n"
+"PO-Revision-Date: 2018-08-14 06:31\n"
 
 #: Start
 msgid "start_button"
@@ -23,23 +23,23 @@ msgstr ""
 
 #: Close
 msgid "close"
-msgstr ""
+msgstr "bezár"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "Kapcsolódás"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "Kapcsolódás..."
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "kapcsolódva"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "Beállítások"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
@@ -47,7 +47,7 @@ msgstr ""
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "csatornák"
 
 #: Banned Users
 msgid "banned"
@@ -55,15 +55,15 @@ msgstr ""
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "Értesítések"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "felhasználónév"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "jelszó"
 
 #: I have a password
 msgid "password_have"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "szerver"
 
 #: Nick
 msgid "nick"
@@ -79,7 +79,7 @@ msgstr ""
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "csatorna"
 
 #: Network
 msgid "network"
@@ -87,7 +87,7 @@ msgstr ""
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "znc"
 
 #: Logging in...
 msgid "logging_in"
@@ -107,19 +107,19 @@ msgstr ""
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "mégsem"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "igen"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "nem"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "nem található"
 
 #: Warning!
 msgid "warning"
@@ -159,7 +159,7 @@ msgstr ""
 
 #: {{count}} week
 msgid "week"
-msgstr ""
+msgstr "hét"
 
 #: {{count}} weeks
 msgid "week_plural"
@@ -167,7 +167,7 @@ msgstr ""
 
 #: {{count}} day
 msgid "day"
-msgstr ""
+msgstr "nap"
 
 #: {{count}} days
 msgid "day_plural"
@@ -175,7 +175,7 @@ msgstr ""
 
 #: {{count}} hour
 msgid "hour"
-msgstr ""
+msgstr "óra"
 
 #: {{count}} hours
 msgid "hour_plural"
@@ -183,7 +183,7 @@ msgstr ""
 
 #: {{count}} minute
 msgid "minute"
-msgstr ""
+msgstr "perc"
 
 #: {{count}} minutes
 msgid "minute_plural"
@@ -191,7 +191,7 @@ msgstr ""
 
 #: {{count}} second
 msgid "second"
-msgstr ""
+msgstr "másodperc"
 
 #: {{count}} seconds
 msgid "second_plural"
@@ -495,7 +495,7 @@ msgstr ""
 
 #: {{count}} person here
 msgid "person"
-msgstr ""
+msgstr "személy"
 
 #: {{count}} people here
 msgid "person_plural"
@@ -763,7 +763,7 @@ msgstr ""
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "kapcsolódva"
 
 #: Disconnected
 msgid "disconnected"

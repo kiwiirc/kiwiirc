@@ -179,9 +179,6 @@
 .kiwi-channellist table tbody tr {
     border-top: 1px solid lightgray;
 }
-.kiwi-channellist-users {
-    background: #42b992;
-}
 
 /* Container - Main ( Container.vue )  The majority of styling related to the messages and user input etc */
 .kiwi-container {
@@ -545,20 +542,10 @@
 
 /* Nicklist ( Nicklist.vu ) */
 .kiwi-nicklist-usercount {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-.kiwi-nicklist-info{
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-}
-.kiwi-nicklist-info input {
-    background-color: #fff;
-    color: #000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 .kiwi-nicklist-user {
-    border-top: 1px solid #858585;
-}
-.kiwi-nicklist-user:first-of-type {
-    border-top: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .kiwi-nicklist-user:hover {
     background-color: #42b992;
