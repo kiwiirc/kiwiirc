@@ -17,8 +17,7 @@ div {
 }
 
 input,
-textarea,
-select {
+textarea {
     color: inherit;
 }
 
