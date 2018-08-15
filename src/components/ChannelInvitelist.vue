@@ -3,14 +3,14 @@
         <form class="u-form kiwi-channelinvitelist" @submit.prevent="">
             <a class="u-link" @click="updateInvitelist">{{ $t('invites_refresh') }}</a>
 
-            <table v-if="invitelist.length > 0" class="kiwi-channelinvitelist-table">
+            <table v-if="inviteList.length > 0" class="kiwi-channelinvitelist-table">
                 <tr>
                     <th>{{ $t('invites_user') }}</th>
                     <th>{{ $t('invites_by') }}</th>
                     <th/>
                     <th/>
                 </tr>
-                <tr v-for="invite in invitelist" :key="invite.invited">
+                <tr v-for="invite in inviteList" :key="invite.invited">
                     <td class="kiwi-channelinvitelist-table-mask">{{ invite.invited }}</td>
                     <td class="kiwi-channelinvitelist-table-invitedby">{{ invite.invited_by }}</td>
                     <td class="kiwi-channelinvitelist-table-invitedat">
@@ -38,7 +38,7 @@ export default {
     props: ['buffer'],
     data: function data() {
         return {
-            invitelist: [],
+            inviteList: [],
             is_refreshing: false,
         };
     },
@@ -53,15 +53,15 @@ export default {
 
             let channelName = this.buffer.name;
             this.is_refreshing = true;
-            this.buffer.getNetwork().ircClient.invitelist(channelName, (inviteEvent) => {
-                this.invitelist = inviteEvent.invites;
+            this.buffer.getNetwork().ircClient.inviteList(channelName, (inviteEvent) => {
+                this.inviteList = inviteEvent.invites;
                 this.is_refreshing = false;
             });
         },
         removeInvite: function removeInvite(mask) {
             let channelName = this.buffer.name;
-            this.buffer.getNetwork().ircClient.uninvite(channelName, mask);
-            this.invitelist = this.invitelist.filter(invite => invite.invited !== mask);
+            this.buffer.getNetwork().ircClient.removeInvite(channelName, mask);
+            this.inviteList = this.inviteList.filter(invite => invite.invited !== mask);
         },
     },
 };
