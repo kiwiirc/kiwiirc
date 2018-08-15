@@ -58,7 +58,7 @@
                         <tabbed-tab :header="$t('banned')">
                             <channel-banlist :buffer="buffer"/>
                         </tabbed-tab>
-                        <tabbed-tab :header="$t('Invited Users')">
+                        <tabbed-tab :header="$t('invited')">
                             <channel-invitelist :buffer="buffer"/>
                         </tabbed-tab>
                         <tabbed-tab :header="$t('notifications')">

@@ -1,12 +1,12 @@
 <template>
     <div class="kiwi-channelinvitelist">
         <form class="u-form kiwi-channelinvitelist" @submit.prevent="">
-            <a class="u-link" @click="updateInvitelist">{{ $t('Refresh Invites') }}</a>
+            <a class="u-link" @click="updateInvitelist">{{ $t('invites_refresh') }}</a>
 
             <table v-if="invitelist.length > 0" class="kiwi-channelinvitelist-table">
                 <tr>
-                    <th>{{ $t('Invited User') }}</th>
-                    <th>{{ $t('Invited By') }}</th>
+                    <th>{{ $t('invites_user') }}</th>
+                    <th>{{ $t('invites_by') }}</th>
                     <th/>
                     <th/>
                 </tr>
