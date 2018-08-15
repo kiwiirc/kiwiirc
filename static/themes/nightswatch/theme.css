@@ -128,7 +128,6 @@
 .u-form textarea {
     border: 1px solid #ccc;
     border-bottom: 2px solid #000000;
-    background: #adadad;
     line-height: normal;
     outline-color: #000000;
 }
@@ -137,8 +136,6 @@
 .u-form label input[type='email'],
 .u-form textarea,
 .kiwi-networksettings .input-text input {
-    color: #000;
-    background: #adadad;
     border: 1px solid #000000;
 }
 

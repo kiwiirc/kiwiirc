@@ -17,8 +17,10 @@ div {
 }
 
 input,
-textarea {
+textarea,
+select {
     color: inherit;
+    background: inherit;
 }
 
 .u-link {
