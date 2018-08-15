@@ -12,6 +12,7 @@ import Logger from '@/libs/Logger';
 import ConfigLoader from '@/libs/ConfigLoader';
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
+import InputHandler from '@/libs/InputHandler';
 import StatePersistence from '@/libs/StatePersistence';
 import * as Storage from '@/libs/storage/Local';
 import * as Misc from '@/helpers/Misc';
@@ -71,6 +72,15 @@ Vue.mixin({
                 (source.$off || source.off).call(source, event, fn);
             });
             (source.$once || source.once).call(source, event, fn);
+        },
+    },
+});
+
+// Make the state available to all components by default
+Vue.mixin({
+    computed: {
+        $state() {
+            return state;
         },
     },
 });
@@ -162,6 +172,7 @@ function loadApp() {
     (configObj ? configLoader.loadFromObj(configObj) : configLoader.loadFromUrl(configFile))
         .then(applyConfig)
         .then(initState)
+        .then(initInputCommands)
         .then(initLocales)
         .then(initThemes)
         .then(loadPlugins)
@@ -337,6 +348,11 @@ function initThemes() {
     if (argTheme) {
         themeMgr.setTheme(argTheme);
     }
+}
+
+function initInputCommands() {
+    /* eslint-disable no-new */
+    new InputHandler(state);
 }
 
 function startApp() {

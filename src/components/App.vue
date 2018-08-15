@@ -2,8 +2,8 @@
     <div
         :class="{
             'kiwi-wrap--statebrowser-drawopen': stateBrowserDrawOpen,
-            'kiwi-wrap--monospace': setting('useMonospace'),
-            'kiwi-wrap--touch': state.ui.is_touch,
+            'kiwi-wrap--monospace': $state.setting('useMonospace'),
+            'kiwi-wrap--touch': $state.ui.is_touch,
         }"
         :data-activebuffer="buffer ? buffer.name.toLowerCase() : ''"
         class="kiwi-wrap kiwi-theme-bg"
@@ -70,13 +70,8 @@ import * as AudioBleep from '@/libs/AudioBleep';
 import * as bufferTools from '@/libs/bufferTools';
 import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
-import state from '@/libs/state';
-import InputHandler from '@/libs/InputHandler';
 
 let log = Logger.namespace('App.vue');
-
-/* eslint-disable no-new */
-new InputHandler(state);
 
 // ContainerUiState gets passed around to child components so they all know
 // what state the UI is in. Ie. sidebar open or closed, what section of the
@@ -103,7 +98,7 @@ let ContainerUiState = Vue.extend({
             return !this.isOpen && !this.isPinned;
         },
         canPin() {
-            return state.ui.app_width > 769;
+            return this.$state.ui.app_width > 769;
         },
     },
     methods: {
@@ -113,7 +108,7 @@ let ContainerUiState = Vue.extend({
             }
 
             let section = this.sidebarSection;
-            let isChannel = state.getActiveBuffer().isChannel();
+            let isChannel = this.$state.getActiveBuffer().isChannel();
 
             if (section === 'settings' && isChannel) {
                 return 'settings';
@@ -163,7 +158,7 @@ export default {
         ControlInput,
         MediaViewer,
     },
-    data: function data() {
+    data() {
         return {
             startupComponent: null,
             hasStarted: false,
@@ -185,17 +180,14 @@ export default {
         };
     },
     computed: {
-        state() {
-            return state;
-        },
         networks() {
-            return state.networks;
+            return this.$state.networks;
         },
         network() {
-            return state.getActiveNetwork();
+            return this.$state.getActiveNetwork();
         },
         buffer() {
-            return state.getActiveBuffer();
+            return this.$state.getActiveBuffer();
         },
         users() {
             let activeNetwork = this.network;
@@ -206,101 +198,24 @@ export default {
             return activeNetwork.users;
         },
     },
-    created: function created() {
-        this.listen(state, 'active.component', (component, props) => {
-            this.activeComponent = null;
-            if (component) {
-                this.activeComponentProps = props;
-                this.activeComponent = component;
-            }
-        });
-        this.listen(state, 'statebrowser.toggle', () => {
-            this.stateBrowserDrawOpen = !this.stateBrowserDrawOpen;
-        });
-        this.listen(state, 'statebrowser.show', () => {
-            this.stateBrowserDrawOpen = true;
-        });
-        this.listen(state, 'statebrowser.hide', () => {
-            this.stateBrowserDrawOpen = false;
-        });
-        this.listen(state, 'mediaviewer.show', (url) => {
-            let opts = {};
-
-            // The passed url may be a string or an options object
-            if (typeof url === 'string') {
-                opts = { url: url };
-            } else {
-                opts = url;
-            }
-
-            this.mediaviewerUrl = opts.url;
-            this.mediaviewerComponent = opts.component;
-            this.mediaviewerIframe = opts.iframe;
-            this.mediaviewerOpen = true;
-        });
-        this.listen(state, 'mediaviewer.hide', () => {
-            this.mediaviewerOpen = false;
-        });
-
-        let themes = ThemeManager.instance();
-        this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
-        this.listen(state, 'theme.change', () => {
-            this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
-        });
+    created() {
+        this.listenForActiveComponents();
+        this.watchForThemes();
+        this.initStateBrowser();
+        this.initMediaviewer();
+        this.trackWindowDimensions();
+        this.configureFavicon();
 
         document.addEventListener('keydown', event => this.onKeyDown(event), false);
-        window.addEventListener('focus', (event) => {
-            state.ui.app_has_focus = true;
-            let buffer = state.getActiveBuffer();
-            if (buffer) {
-                buffer.markAsRead(true);
-            }
+        window.addEventListener('focus', event => this.onFocus(event), false);
+        window.addEventListener('blur', event => this.onBlur(event), false);
+        window.addEventListener('touchstart', event => this.onTouchStart(event));
 
-            state.ui.favicon_counter = 0;
-        }, false);
-        window.addEventListener('blur', (event) => {
-            state.ui.app_has_focus = false;
-        }, false);
-        window.addEventListener('touchstart', (event) => {
-            // Parts of the UI adjust themselves if we're known to be using a touchscreen
-            state.ui.is_touch = true;
-        });
-
-        // Track the window dimensions into the reactive ui state
-        function trackWindowDims() {
-            state.ui.app_width = window.innerWidth;
-            state.ui.app_height = window.innerHeight;
-        }
-        window.addEventListener('resize', trackWindowDims);
-        trackWindowDims();
-
-        // favicon bubble
-        Tinycon.setOptions({
-            width: 7,
-            height: 9,
-            color: '#ffffff',
-            background: '#b32d2d',
-            fallback: true,
-        });
-        state.$watch('ui.favicon_counter', (newVal) => {
-            if (newVal) {
-                Tinycon.setBubble(newVal);
-            } else {
-                Tinycon.reset();
-            }
-        });
-        this.listen(state, 'message.new', (message) => {
-            if (!message.isHighlight || state.ui.app_has_focus) {
-                return;
-            }
-
-            state.ui.favicon_counter++;
-        });
-        if (this.uiState.canPin && state.setting('sidebarPinned')) {
+        if (this.uiState.canPin && this.$state.setting('sidebarPinned')) {
             this.uiState.pin();
         }
     },
-    mounted: function mounted() {
+    mounted() {
         // Decide which startup screen to use depending on the config
         let startupScreens = {
             welcome: startupWelcome,
@@ -309,9 +224,9 @@ export default {
             znc: startupZncLogin,
             personal: startupPersonal,
         };
-        let extraStartupScreens = state.getStartups();
+        let extraStartupScreens = this.$state.getStartups();
 
-        let startupName = state.settings.startupScreen || 'personal';
+        let startupName = this.$state.settings.startupScreen || 'personal';
         let startup = extraStartupScreens[startupName] || startupScreens[startupName];
 
         if (!startup) {
@@ -335,15 +250,98 @@ export default {
             if (!this.hasStarted) {
                 this.warnOnPageClose();
                 Notifications.requestPermission();
-                Notifications.listenForNewMessages(state);
-                AudioBleep.listenForHighlights(state);
+                Notifications.listenForNewMessages(this.$state);
+                AudioBleep.listenForHighlights(this.$state);
             }
 
             this.hasStarted = true;
         },
+        listenForActiveComponents() {
+            this.listen(this.$state, 'active.component', (component, props) => {
+                this.activeComponent = null;
+                if (component) {
+                    this.activeComponentProps = props;
+                    this.activeComponent = component;
+                }
+            });
+        },
+        watchForThemes() {
+            let themes = ThemeManager.instance();
+            this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
+            this.listen(this.$state, 'theme.change', () => {
+                this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
+            });
+        },
+        initStateBrowser() {
+            this.listen(this.$state, 'statebrowser.toggle', () => {
+                this.stateBrowserDrawOpen = !this.stateBrowserDrawOpen;
+            });
+            this.listen(this.$state, 'statebrowser.show', () => {
+                this.stateBrowserDrawOpen = true;
+            });
+            this.listen(this.$state, 'statebrowser.hide', () => {
+                this.stateBrowserDrawOpen = false;
+            });
+        },
+        initMediaviewer() {
+            this.listen(this.$state, 'mediaviewer.show', (url) => {
+                let opts = {};
+
+                // The passed url may be a string or an options object
+                if (typeof url === 'string') {
+                    opts = { url: url };
+                } else {
+                    opts = url;
+                }
+
+                this.mediaviewerUrl = opts.url;
+                this.mediaviewerComponent = opts.component;
+                this.mediaviewerIframe = opts.iframe;
+                this.mediaviewerOpen = true;
+            });
+
+            this.listen(this.$state, 'mediaviewer.hide', () => {
+                this.mediaviewerOpen = false;
+            });
+        },
+        configureFavicon() {
+            // favicon bubble
+            Tinycon.setOptions({
+                width: 7,
+                height: 9,
+                color: '#ffffff',
+                background: '#b32d2d',
+                fallback: true,
+            });
+
+            this.$state.$watch('ui.favicon_counter', (newVal) => {
+                if (newVal) {
+                    Tinycon.setBubble(newVal);
+                } else {
+                    Tinycon.reset();
+                }
+            });
+
+            this.listen(this.$state, 'message.new', (message) => {
+                if (!message.isHighlight || message.ignore || this.$state.ui.app_has_focus) {
+                    return;
+                }
+
+                this.$state.ui.favicon_counter++;
+            });
+        },
+        trackWindowDimensions() {
+            // Track the window dimensions into the reactive ui state
+            let trackWindowDims = () => {
+                this.$state.ui.app_width = window.innerWidth;
+                this.$state.ui.app_height = window.innerHeight;
+            };
+            window.addEventListener('resize', trackWindowDims);
+            trackWindowDims();
+        },
         warnOnPageClose() {
             window.onbeforeunload = () => {
-                if (state.setting('warnOnExit')) {
+                if (this.$state.setting('warnOnExit')) {
                     return this.$t('window_unload');
                 }
 
@@ -352,7 +350,7 @@ export default {
         },
         emitBufferPaste(event) {
             // bail if no buffer is active, or the buffer is hidden by another component
-            if (!this.state.getActiveBuffer() || this.activeComponent !== null) {
+            if (!this.$state.getActiveBuffer() || this.activeComponent !== null) {
                 return;
             }
 
@@ -361,13 +359,29 @@ export default {
                 return;
             }
 
-            state.$emit('buffer.paste', event);
+            this.$state.$emit('buffer.paste', event);
         },
         emitDocumentClick(event) {
-            state.$emit('document.clicked', event);
+            this.$state.$emit('document.clicked', event);
+        },
+        onTouchStart(event) {
+            // Parts of the UI adjust themselves if we're known to be using a touchscreen
+            this.$state.ui.is_touch = true;
+        },
+        onBlur(event) {
+            this.$state.ui.app_has_focus = false;
+        },
+        onFocus(event) {
+            this.$state.ui.app_has_focus = true;
+            let buffer = this.$state.getActiveBuffer();
+            if (buffer) {
+                buffer.markAsRead(true);
+            }
+
+            this.$state.ui.favicon_counter = 0;
         },
         onKeyDown(event) {
-            state.$emit('document.keydown', event);
+            this.$state.$emit('document.keydown', event);
 
             let meta = false;
 
@@ -381,31 +395,28 @@ export default {
                 // meta + ]
                 let buffer = bufferTools.getNextBuffer();
                 if (buffer) {
-                    state.setActiveBuffer(buffer.networkid, buffer.name);
+                    this.$state.setActiveBuffer(buffer.networkid, buffer.name);
                 }
                 event.preventDefault();
             } else if (meta && event.keyCode === 219) {
                 // meta + [
                 let buffer = bufferTools.getPreviousBuffer();
                 if (buffer) {
-                    state.setActiveBuffer(buffer.networkid, buffer.name);
+                    this.$state.setActiveBuffer(buffer.networkid, buffer.name);
                 }
                 event.preventDefault();
             } else if (meta && event.keyCode === 79) {
                 // meta + o
-                state.$emit('active.component', AppSettings);
+                this.$state.$emit('active.component', AppSettings);
                 event.preventDefault();
             } else if (meta && event.keyCode === 83) {
                 // meta + s
-                let network = state.getActiveNetwork();
+                let network = this.$state.getActiveNetwork();
                 if (network) {
                     network.showServerBuffer('settings');
                 }
                 event.preventDefault();
             }
-        },
-        setting(name) {
-            return state.setting(name);
         },
     },
 };
