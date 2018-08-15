@@ -1,10 +1,9 @@
 import * as Misc from '@/helpers/Misc';
 import Vue from 'vue';
 import _ from 'lodash';
-import strftime from 'strftime';
-import * as IrcClient from './IrcClient';
+import NetworkState from './state/NetworkState';
+import BufferState from './state/BufferState';
 import Message from './Message';
-import batchedAdd from './batchedAdd';
 
 const stateObj = {
     // May be set by a StatePersistence instance
@@ -326,27 +325,6 @@ const stateObj = {
             is_znc: false,
             channel_list: [],
             channel_list_state: '',
-            buffers: [
-                {
-                    id: 0,
-                    networkid: 1,
-                    name: '#kiwiirc',
-                    topic: 'A hand-crafted IRC client',
-                    joined: true,
-                    flags: { unread: 4, highlight: true },
-                    settings: { alert_on: 'all' },
-                    users: [ref_to_user_obj],
-                },
-            ],
-            users: {
-                prawnsalad: {
-                    nick: 'prawnsalad',
-                    host: 'isp.net',
-                    username: 'prawn',
-                    modes: '+ix',
-                    buffers: {1: {modes: []}}
-                },
-            },
         },
         {
             id: 2,
@@ -360,37 +338,57 @@ const stateObj = {
             },
             nick: 'prawnsalad',
             username: 'prawn',
-            buffers: [
-                {
-                    id: 1
-                    networkid: 2,
-                    name: '#orangechat',
-                    topic: '',
-                    joined: false,
-                    flags: { unread: 0 },
-                    settings: { alert_on: 'all' },
-                    users: [ref_to_user_obj],
-                },
-            ],
-            users: {
-                prawnsalad: {
-                    nick: 'prawnsalad',
-                    host: 'isp.net',
-                    username: 'prawn',
-                    modes: '+ix',
-                    buffers: {1: {modes: []}},
-                },
-                someone: {
-                    nick: 'someone',
-                    host: 'masked.com',
-                    username: 'someirc',
-                    modes: '+ix',
-                    buffers: {1: {modes: []}},
-                },
-            },
         }, */
     ],
 };
+
+const userDict = new Vue({
+    data() {
+        return {
+            networks: {},
+        };
+    },
+    /*
+    (network id): {
+        prawnsalad: {
+            nick: 'prawnsalad',
+            host: 'isp.net',
+            username: 'prawn',
+            modes: '+ix',
+            buffers: {1: {modes: []}},
+        },
+        someone: {
+            nick: 'someone',
+            host: 'masked.com',
+            username: 'someirc',
+            modes: '+ix',
+            buffers: {1: {modes: []}},
+        },
+    },
+    */
+});
+
+const bufferDict = new Vue({
+    data() {
+        return {
+            networks: {},
+        };
+    },
+    /*
+    (network id): [
+        {
+            id: 1
+            networkid: 2,
+            name: '#orangechat',
+            topic: '',
+            joined: false,
+            flags: { unread: 0 },
+            settings: { alert_on: 'all' },
+            users: [ref_to_user_obj],
+        },
+    ]
+    */
+});
 
 // Messages are seperate from the above state object to keep them from being reactive. Saves CPU.
 const messages = [
@@ -482,8 +480,7 @@ const state = new Vue({
             if (importObj && importObj.networks) {
                 this.resetState();
                 importObj.networks.forEach((importNetwork) => {
-                    let network = createEmptyNetworkObject();
-                    network.id = importNetwork.id;
+                    let network = new NetworkState(importNetwork.id, state, userDict, bufferDict);
                     network.name = importNetwork.name;
                     network.connection = importNetwork.connection;
                     network.auto_commands = importNetwork.auto_commands || '';
@@ -494,18 +491,14 @@ const state = new Vue({
                     network.password = importNetwork.password;
 
                     this.networks.push(network);
-                    initialiseNetworkState(network);
 
-                    importNetwork.buffers.forEach((importBuffer) => {
-                        let buffer = createEmptyBufferObject();
-                        buffer.name = importBuffer.name;
-                        buffer.key = importBuffer.key;
-                        buffer.networkid = network.id;
-                        buffer.enabled = !!importBuffer.enabled;
-                        buffer.settings = importBuffer.settings;
+                    importNetwork.buffers.forEach((impBuffer) => {
+                        let buffer = new BufferState(impBuffer.name, network.id, state, messages);
+                        buffer.key = impBuffer.key;
+                        buffer.enabled = !!impBuffer.enabled;
+                        buffer.settings = impBuffer.settings;
 
                         network.buffers.push(buffer);
-                        initialiseBufferState(buffer);
                     });
                 });
             }
@@ -610,8 +603,7 @@ const state = new Vue({
                 parseInt(serverInfo.channelId, 10) :
                 _.reduce(this.networks, networkidReduce, 0) + 1;
 
-            let network = createEmptyNetworkObject();
-            network.id = networkid;
+            let network = new NetworkState(networkid, state, userDict, bufferDict);
             network.name = name;
             network.nick = nick;
             network.username = serverInfo.username;
@@ -632,7 +624,6 @@ const state = new Vue({
             }
 
             this.networks.push(network);
-            initialiseNetworkState(network);
 
             // Add the server server buffer
             this.addBuffer(network.id, '*').joined = true;
@@ -809,12 +800,8 @@ const state = new Vue({
                 return false;
             }
 
-            buffer = createEmptyBufferObject();
-            buffer.networkid = network.id;
-            buffer.name = bufferName;
+            buffer = new BufferState(bufferName, network.id, state, messages);
             network.buffers.push(buffer);
-
-            initialiseBufferState(buffer);
 
             let eventObj = { buffer };
             state.$emit('buffer.new', eventObj);
@@ -973,17 +960,6 @@ const state = new Vue({
             this.$emit('message.new', bufferMessage, buffer);
         },
 
-        getMessages(buffer) {
-            let bufMessages = _.find(messages, {
-                networkid: buffer.networkid,
-                buffer: buffer.name,
-            });
-
-            return bufMessages ?
-                bufMessages.messages :
-                [];
-        },
-
         getUser(networkid, nick, usersArr_) {
             let user = null;
             let users = usersArr_;
@@ -1012,7 +988,7 @@ const state = new Vue({
 
             let users = _.clone(network.users);
             fn(users);
-            this.$set(network, 'users', users);
+            network.users = users;
         },
 
         addUser(networkid, user, usersArr_) {
@@ -1180,457 +1156,3 @@ const state = new Vue({
 });
 
 export default state;
-
-function createEmptyNetworkObject() {
-    return {
-        id: 0,
-        name: '',
-        // State of the transport
-        state: 'disconnected',
-        state_error: '',
-        // Last error from the IRC server. Resets on reconnect
-        last_error: '',
-        auto_commands: '',
-        is_znc: false,
-        channel_list: [],
-        channel_list_state: '',
-        connection: {
-            server: '',
-            port: 6667,
-            tls: false,
-            path: '',
-            password: '',
-            direct: false,
-            encoding: 'utf8',
-            bncname: '',
-        },
-        settings: {},
-        nick: '',
-        username: '',
-        gecos: '',
-        password: '',
-        buffers: [],
-        users: Object.create(null),
-    };
-}
-
-let nextBufferId = 0;
-function createEmptyBufferObject() {
-    return {
-        id: nextBufferId++,
-        networkid: 0,
-        name: '',
-        topic: '',
-        key: '',
-        joined: false,
-        enabled: true,
-        users: Object.create(null),
-        modes: Object.create(null),
-        flags: {
-            unread: 0,
-            alert_on: 'default',
-            has_opened: false,
-            channel_badkey: false,
-            chathistory_available: true,
-            requested_modes: false,
-        },
-        settings: {
-        },
-        last_read: 0,
-        active_timeout: null,
-        message_count: 0,
-        current_input: '',
-    };
-}
-
-function initialiseNetworkState(network) {
-    Object.defineProperty(network, 'ircClient', {
-        value: IrcClient.create(state, network.id),
-    });
-    Object.defineProperty(network, 'connect', {
-        value: function connect(...args) {
-            network.ircClient.connect(...args);
-        },
-    });
-    Object.defineProperty(network, 'bufferByName', {
-        value: _.partial(state.getBufferByName, network.id),
-    });
-    Object.defineProperty(network, 'serverBuffer', {
-        value: _.partial(state.getBufferByName, network.id, '*'),
-    });
-    Object.defineProperty(network, 'setting', {
-        value: function setting(name, val) {
-            if (typeof val !== 'undefined') {
-                state.$set(network.settings, name, val);
-                return val;
-            }
-
-            return network.settings[name];
-        },
-    });
-    Object.defineProperty(network, 'isChannelName', {
-        value: function isChannelName(input) {
-            if (typeof input !== 'string' || !input) {
-                return false;
-            }
-
-            let chanPrefixes = this.ircClient.network.supports('CHANTYPES') || '#&';
-            return chanPrefixes.indexOf(input[0]) > -1;
-        },
-    });
-    Object.defineProperty(network, 'showServerBuffer', {
-        value: function showServerBuffer(tabName) {
-            state.$emit('active.component', null);
-            state.setActiveBuffer(network.id, network.serverBuffer().name);
-            // Hacky, but the server buffer component listens for events to switch
-            // between tabs
-            setImmediate(() => {
-                state.$emit('server.tab.show', tabName || 'settings');
-            });
-        },
-    });
-
-    // If this network is being imported from a stored state, make sure it is
-    // now set as 'disconnected' as it will not connected at this point.
-    network.state = 'disconnected';
-}
-
-function initialiseBufferState(buffer) {
-    Object.defineProperty(buffer, 'getNetwork', {
-        value: function getNetwork() { return state.getNetwork(buffer.networkid); },
-    });
-    Object.defineProperty(buffer, 'getMessages', {
-        value: function getNetwork() { return state.getMessages(buffer); },
-    });
-    Object.defineProperty(buffer, 'isServer', {
-        value: function isServer() { return buffer.name === '*'; },
-    });
-    Object.defineProperty(buffer, 'isChannel', {
-        value: function isChannel() {
-            let chanPrefixes = ['#', '&'];
-            let ircNetwork = buffer.getNetwork().ircClient.network;
-            if (ircNetwork && ircNetwork.options.CHANTYPES) {
-                chanPrefixes = ircNetwork.options.CHANTYPES;
-            }
-
-            return chanPrefixes.indexOf(buffer.name[0]) > -1;
-        },
-    });
-    Object.defineProperty(buffer, 'isQuery', {
-        value: function isQuery() {
-            let chanPrefixes = ['#', '&'];
-            let ircNetwork = buffer.getNetwork().ircClient.network;
-            if (ircNetwork && ircNetwork.options.CHANTYPES) {
-                chanPrefixes = ircNetwork.options.CHANTYPES;
-            }
-
-            return chanPrefixes.indexOf(buffer.name[0]) === -1 &&
-                !this.isSpecial() &&
-                !this.isServer();
-        },
-    });
-    Object.defineProperty(buffer, 'isSpecial', {
-        value: function isSpecial() {
-            // Special buffer names (Usually controller queries, like *status or *raw).
-            // Server buffer '*' is not included in this classification.
-            let name = buffer.name;
-            return name[0] === '*' && name.length > 1;
-        },
-    });
-    Object.defineProperty(buffer, 'isUserAnOp', {
-        value: function isUserAnOp(nick) {
-            let user = state.getUser(buffer.networkid, buffer.getNetwork().nick);
-            if (!user) {
-                return false;
-            }
-
-            let userBufferInfo = user.buffers[buffer.id];
-            if (!userBufferInfo) {
-                return false;
-            }
-
-            let modes = userBufferInfo.modes;
-            let opModes = ['Y', 'y', 'q', 'a', 'o', 'h'];
-            let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
-
-            return !!hasOp;
-        },
-    });
-    // Get/set a setting set on this buffer. If undefined, get the global setting
-    Object.defineProperty(buffer, 'setting', {
-        value: function setting(name, val) {
-            if (typeof val !== 'undefined') {
-                state.$set(buffer.settings, name, val);
-                return val;
-            }
-
-            // Check the buffer specific settings before reverting to global settings
-            let result = typeof buffer.settings[name] !== 'undefined' ?
-                buffer.settings[name] :
-                state.setting('buffers.' + name);
-
-            return result;
-        },
-    });
-    Object.defineProperty(buffer, 'rename', {
-        value: function rename(newName) {
-            let network = buffer.getNetwork();
-            let oldName = buffer.name;
-            let setActive = state.getActiveBuffer() === buffer;
-
-            buffer.name = newName;
-            if (setActive) {
-                state.setActiveBuffer(network.id, newName);
-            }
-
-            // update the buffer name on our messages
-            let bufferMessages = _.find(messages, { networkid: network.id, buffer: oldName });
-            bufferMessages.buffer = newName;
-        },
-    });
-
-    Object.defineProperty(buffer, 'flag', {
-        value: function flag(name, val) {
-            if (typeof val !== 'undefined') {
-                state.$set(buffer.flags, name, val);
-                return val;
-            }
-
-            return buffer.flags[name];
-        },
-    });
-    Object.defineProperty(buffer, 'requestScrollback', {
-        value: function requestScrollback(_direction) {
-            let direction = _direction || 'backward';
-            let time = '';
-            // Negative number gets messages before the timestamps, positive gets messages after
-            let numMessages = -50;
-
-            // Going backwards takes the earliest message we already have and requests messages
-            // before it. Going forward takes the last emssage we have and requests messages after
-            // it.
-
-            if (direction === 'backward') {
-                let lastMessage = this.getMessages().reduce((earliest, current) => {
-                    let validType = earliest.type !== 'traffic';
-                    if (validType && earliest.time && earliest.time < current.time) {
-                        return earliest;
-                    }
-                    return current;
-                }, this.getMessages()[0]);
-
-                numMessages = -50;
-                time = lastMessage ?
-                    new Date(lastMessage.time) :
-                    new Date();
-            } else if (direction === 'forward') {
-                let firstMessage = this.getMessages().reduce((latest, current) => {
-                    let validType = latest.type !== 'traffic';
-                    if (validType && latest.time && latest.time > current.time) {
-                        return latest;
-                    }
-                    return current;
-                }, this.getMessages()[0]);
-
-                numMessages = 50;
-                time = firstMessage ?
-                    new Date(firstMessage.time) :
-                    new Date();
-            } else {
-                throw new Error('Invalid direction for requestScrollback(): ' + _direction);
-            }
-
-            let irc = this.getNetwork().ircClient;
-            let timeStr = strftime('%FT%T.%L%:z', time);
-            irc.raw(`CHATHISTORY ${this.name} timestamp=${timeStr} message_count=${numMessages}`);
-            irc.once('batch end chathistory', (event) => {
-                if (event.commands.length === 0) {
-                    this.flags.chathistory_available = false;
-                } else {
-                    this.flags.chathistory_available = true;
-                }
-            });
-        },
-    });
-    Object.defineProperty(buffer, 'markAsRead', {
-        value: function markAsRead(delayed) {
-            if (buffer.active_timeout) {
-                clearTimeout(buffer.active_timeout);
-                buffer.active_timeout = null;
-            }
-            if (delayed) {
-                buffer.active_timeout = setTimeout(
-                    buffer.markAsRead,
-                    10000,
-                    false
-                );
-            } else {
-                buffer.last_read = Date.now();
-                buffer.flag('highlight', false);
-
-                // If running under a bouncer, set it on the server-side too
-                let network = buffer.getNetwork();
-                let allowedUpdate = !network ? false : buffer.isChannel() || buffer.isQuery();
-                if (allowedUpdate && network.connection.bncname) {
-                    let lastMessage = buffer.getMessages().reduce((latest, current) => {
-                        if (latest.time && latest.time > current.time) {
-                            return latest;
-                        }
-                        return current;
-                    }, buffer.getMessages()[0]);
-
-                    if (!lastMessage) {
-                        return;
-                    }
-
-                    network.ircClient.bnc.bufferSeen(
-                        network.connection.bncname,
-                        buffer.name,
-                        new Date(lastMessage.time),
-                    );
-                }
-            }
-        },
-    });
-
-    // incrementFlag batches up the changes to the flags object as some of them can be
-    // very taxing on DOM updates
-    Object.defineProperty(buffer, 'incrementFlag', {
-        value: (function incrementFlagFn() {
-            let batches = Object.create(null);
-            let processBatches = _.debounce(() => {
-                _.each(batches, (incrBy, flagName) => {
-                    buffer.flags[flagName] = (buffer.flags[flagName] || 0) + incrBy;
-                    batches[flagName] = 0;
-                });
-            }, 500);
-            return function incrementFlag(flagName) {
-                batches[flagName] = batches[flagName] || 0;
-                batches[flagName]++;
-                processBatches();
-            };
-        }()),
-    });
-
-    /**
-     * Batch up floods of addUsers for a huge performance gain.
-     * Generally happens whenr econnecting to a BNC
-     */
-    function addSingleUser(user) {
-        state.$set(buffer.users, user.nick.toLowerCase(), user);
-    }
-    function addMultipleUsers(users) {
-        let o = _.clone(buffer.users);
-        users.forEach((user) => {
-            o[user.nick.toLowerCase()] = user;
-        });
-        buffer.users = o;
-    }
-    Object.defineProperty(buffer, 'addUser', {
-        value: batchedAdd(addSingleUser, addMultipleUsers),
-    });
-    Object.defineProperty(buffer, 'removeUser', {
-        value: function removeUser(nick) {
-            let userObj = state.getUser(buffer.networkid, nick);
-
-            // A user could be queued to be added, so make sure it's not there as it
-            // would just be added again. Eg. user joins/parts during a flood
-            _.pull(buffer.addUser.queue(), userObj);
-
-            state.$delete(buffer.users, nick.toLowerCase());
-
-            if (userObj) {
-                delete userObj.buffers[buffer.id];
-            }
-        },
-    });
-    Object.defineProperty(buffer, 'clearUsers', {
-        value: function clearUsers() {
-            // Users could be queued to be added, so make sure to clear them as they
-            // would just be added again. Eg. user joins/parts during a flood
-            buffer.addUser.queue().splice(0);
-
-            _.each(buffer.users, (userObj, nick) => {
-                delete userObj.buffers[buffer.id];
-            });
-
-            state.$set(buffer, 'users', {});
-        },
-    });
-
-    /**
-     * batch up floods of new messages for a huge performance gain
-     */
-    function addSingleMessage(newMessage) {
-        messageObj.messages.push(newMessage);
-        trimMessages();
-        buffer.message_count++;
-    }
-    function addMultipleMessages(newMessages) {
-        messageObj.messages = messageObj.messages.concat(newMessages);
-        trimMessages();
-        buffer.message_count++;
-    }
-    Object.defineProperty(buffer, 'addMessage', {
-        value: batchedAdd(addSingleMessage, addMultipleMessages),
-    });
-
-    function trimMessages() {
-        let scrollbackSize = buffer.setting('scrollback_size');
-        let length = messageObj.messages.length;
-
-        if (messageObj.messages.length > scrollbackSize) {
-            messageObj.messages.splice(0, length - scrollbackSize);
-        }
-    }
-
-    // Helper functions
-    Object.defineProperty(buffer, 'say', {
-        value: function say(message, opts = {}) {
-            let network = buffer.getNetwork();
-            let newMessage = {
-                time: Date.now(),
-                nick: network.nick,
-                message: message,
-                type: opts.type || 'privmsg',
-            };
-
-            state.addMessage(buffer, newMessage);
-
-            let fnNames = {
-                privmsg: 'say',
-                action: 'action',
-                notice: 'notice',
-            };
-            let fnName = fnNames[opts.type] || 'say';
-            network.ircClient[fnName](buffer.name, message);
-        },
-    });
-    Object.defineProperty(buffer, 'join', {
-        value: function join() {
-            if (!buffer.isChannel()) {
-                return;
-            }
-
-            let network = buffer.getNetwork();
-            network.ircClient.join(buffer.name, buffer.key || '');
-        },
-    });
-    Object.defineProperty(buffer, 'part', {
-        value: function part(reason) {
-            if (!buffer.isChannel()) {
-                return;
-            }
-
-            let network = buffer.getNetwork();
-            network.ircClient.part(buffer.name, reason || '');
-        },
-    });
-
-    let messageObj = {
-        networkid: buffer.networkid,
-        buffer: buffer.name,
-        messages: [],
-    };
-    messages.push(messageObj);
-}
