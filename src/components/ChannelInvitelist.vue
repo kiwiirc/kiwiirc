@@ -69,9 +69,11 @@ export default {
     line-height: 20px;
     margin-top: 10px;
 }
+
 .kiwi-channelinvitelist-table-invitedat {
     min-width: 150px;
 }
+
 .kiwi-channelinvitelist-table-actions {
     min-width: 50px;
     text-align: center;
