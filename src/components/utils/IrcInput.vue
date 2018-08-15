@@ -20,32 +20,35 @@
 
 <script>
 
+import _ from 'lodash';
 import htmlparser from 'htmlparser2';
 
 let Vue = require('vue');
 
 export default Vue.component('irc-input', {
     props: ['placeholder'],
-    data: function data() {
+    data() {
         return {
             last_known_value: '',
             text_value: '',
             current_el: null,
             current_el_pos: 0,
-            current_range: null,
             default_colour: null,
             code_map: Object.create(null),
         };
     },
     computed: {
-        editor: function editor() {
+        editor() {
             return this.$refs.editor;
         },
     },
+    mounted() {
+        this.resetStyles();
+    },
     methods: {
-        onTextInput: function onTextInput(event) {
+        onTextInput(event) {
             // Mobile devices trigger a textInput event for things such as autocompletion
-            // and sugegsted words. Unfortunately they end with a return character which
+            // and suggested words. Unfortunately they end with a return character which
             // is not what we expect, so prevent the original event from inserting anything
             // and manually place it in with the current word.
             if (event.data[event.data.length - 1] === '\n') {
@@ -53,7 +56,7 @@ export default Vue.component('irc-input', {
                 this.setCurrentWord(event.data.trim());
             }
         },
-        onPaste: function onPaste(event) {
+        onPaste(event) {
             event.preventDefault();
 
             let clpData = (event.clipboardData || window.clipboardData);
@@ -78,53 +81,62 @@ export default Vue.component('irc-input', {
                 this.updateValueProps();
             }, 0);
         },
-        updateValueProps: function updateValueProps() {
+        updateValueProps() {
             let selection = window.getSelection();
+
+            if (selection.rangeCount === 0) {
+                return;
+            }
+
             this.current_el_pos = selection.anchorOffset;
             this.current_el = selection.anchorNode;
 
-            let range = null;
-            let currentRange = selection.getRangeAt(0);
-            if (currentRange) {
-                range = currentRange.cloneRange();
-                range.selectNodeContents(this.$refs.editor);
-                range.setEnd(currentRange.startContainer, currentRange.startOffset);
-            }
-
-            let start = range.toString().length;
-            this.current_range = [
-                start,
-                start + currentRange.toString().length,
-            ];
-
             this.maybeEmitInput();
         },
-        selectionToEnd: function selectionToEnd() {
+        selectionToEnd() {
             // Move the caret to the end
-            let len = this.$refs.editor.innerHTML.length;
-            this.current_range = [len, len];
+            let el = this.$refs.editor.lastChild || this.$refs.editor;
+            this.current_el = el;
+
+            if (el.nodeType === 3) {
+                this.current_el_pos = el.length;
+            } else {
+                this.current_el_pos = 0;
+            }
+
             this.focus();
         },
-        setValue: function setValue(newVal) {
+        setValue(newVal) {
             this.value = newVal;
             this.$refs.editor.innerHTML = newVal;
         },
-        getValue: function getValue() {
+        getValue() {
             return this.$refs.editor.innerHTML;
         },
-        maybeEmitInput: function maybeEmitInput() {
+        maybeEmitInput() {
             let currentHtml = this.$refs.editor.innerHTML;
             if (this.last_known_value !== currentHtml) {
                 this.$emit('input', currentHtml);
                 this.last_known_value = currentHtml;
             }
         },
-        buildIrcText: function buildIrcText() {
+        buildIrcText() {
             let source = this.$refs.editor.innerHTML;
             let textValue = '';
 
+            // Toggles are IRC style and colour codes that should be reset at the end of
+            // the current tag
+            let toggles = [];
+            function addToggle(t) {
+                toggles[toggles.length - 1] += t;
+            }
+            function getToggles() {
+                return toggles[toggles.length - 1];
+            }
+
             let parser = new htmlparser.Parser({
                 onopentag: (name, attribs) => {
+                    toggles.push('');
                     let codeLookup = '';
                     if (attribs.style) {
                         let match = attribs.style.match(/color: ([^;]+)/);
@@ -132,7 +144,21 @@ export default Vue.component('irc-input', {
                             codeLookup = match[1];
                             if (this.code_map[codeLookup]) {
                                 textValue += '\x03' + this.code_map[codeLookup];
+                                addToggle('\x03' + this.code_map[codeLookup]);
                             }
+                        }
+
+                        if (attribs.style.indexOf('bold') > -1) {
+                            textValue += '\x02';
+                            addToggle('\x02');
+                        }
+                        if (attribs.style.indexOf('italic') > -1) {
+                            textValue += '\x1d';
+                            addToggle('\x1d');
+                        }
+                        if (attribs.style.indexOf('underline') > -1) {
+                            textValue += '\x1f';
+                            addToggle('\x1f');
                         }
                     }
                     if (attribs.src && this.code_map[attribs.src]) {
@@ -143,9 +169,8 @@ export default Vue.component('irc-input', {
                     textValue += text;
                 },
                 onclosetag: (tagName) => {
-                    if (tagName === 'span') {
-                        textValue += '\x03';
-                    }
+                    textValue += getToggles();
+                    toggles.pop();
                 },
             }, {
                 decodeEntities: true,
@@ -157,8 +182,11 @@ export default Vue.component('irc-input', {
 
             return textValue;
         },
-        reset: function reset(rawHtml) {
+        reset(rawHtml) {
             this.$refs.editor.innerHTML = rawHtml || '';
+
+            this.current_el_pos = 0;
+            this.current_el = this.$refs.editor;
 
             // Firefox inserts a <br> on empty contenteditables after it's been reset. But that
             // fucks up the placeholder :empty CSS selector we use. So just remove it.
@@ -174,14 +202,14 @@ export default Vue.component('irc-input', {
 
             this.updateValueProps();
         },
-        resetStyles: function resetStyles() {
+        resetStyles() {
             this.focus();
             document.execCommand('styleWithCSS', false, true);
             document.execCommand('selectAll', false, null);
             document.execCommand('removeFormat', false, null);
             this.default_colour = null;
         },
-        setColour: function setColour(code, colour) {
+        setColour(code, colour) {
             // If no current text selection, set this colour as the default colour for
             // future messages too
             let range = window.getSelection().getRangeAt(0);
@@ -199,28 +227,64 @@ export default Vue.component('irc-input', {
             this.code_map[colour] = code;
             this.updateValueProps();
         },
-        addImg: function addImg(code, url) {
+        toggleBold() {
+            document.execCommand('bold', false, null);
+            this.updateValueProps();
+        },
+        toggleItalic() {
+            document.execCommand('italic', false, null);
+            this.updateValueProps();
+        },
+        toggleUnderline() {
+            document.execCommand('underline', false, null);
+            this.updateValueProps();
+        },
+        addImg(code, url) {
             this.focus();
+
+            let existingImages = [..._.values(this.$refs.editor.querySelectorAll('img'))];
+
             document.execCommand('styleWithCSS', false, true);
             document.execCommand('insertImage', false, url);
-
             this.code_map[url] = code;
+
+            let newImg = null;
+            let images = [..._.values(this.$refs.editor.querySelectorAll('img'))];
+
+            // Find image that has just been inserted
+            images.forEach((img) => {
+                if (existingImages.indexOf(img) === -1) {
+                    newImg = img;
+                }
+            });
+
+            // Find the position of this new image node
+            let prevElCnt = 0;
+            let el = newImg;
+            while (el) {
+                el = el.previousSibling;
+                prevElCnt++;
+            }
+
+            this.current_el = this.$refs.editor;
+            this.current_el_pos = prevElCnt;
+
             this.updateValueProps();
+            this.focus();
         },
 
         // Insert some text at the current position
-        insertText: function insertText(text) {
+        insertText(text) {
             let el = this.current_el;
             let pos = this.current_el_pos;
             let val = el.textContent;
-            el.textContent = val.substr(0, pos) + text + val.substr(pos);
 
-            let newPos = pos + text.length;
-            this.current_range = [newPos, newPos];
+            el.textContent = val.substr(0, pos) + text + val.substr(pos);
+            this.current_el_pos = pos + text.length;
         },
 
         // Replace the word at the current position with another
-        setCurrentWord: function setCurrentWord(text, keepPosition) {
+        setCurrentWord(text, keepPosition) {
             let el = this.current_el;
             let pos = this.current_el_pos;
             let val = el.textContent || '';
@@ -264,7 +328,7 @@ export default Vue.component('irc-input', {
             this.updateValueProps();
         },
 
-        getCurrentWord: function getCurrentWord() {
+        getCurrentWord() {
             let el = this.current_el;
             let pos = this.current_el_pos;
             let val = el.textContent;
@@ -289,54 +353,16 @@ export default Vue.component('irc-input', {
             };
         },
 
-        getRawText: function getRawText() {
+        getRawText() {
             return this.$refs.editor.innerText;
         },
 
         // Focus the editable div and move the caret to the end
-        focus: function focus() {
-            if (!this.current_range) {
-                this.$refs.editor.focus();
-                return;
-            }
-
+        focus() {
             let selection = window.getSelection();
-            let savedSel = this.current_range;
-            let charIndex = 0;
             let range = document.createRange();
-            range.setStart(this.$refs.editor, 0);
-            range.collapse(true);
-            let nodeStack = [this.$refs.editor];
-            let foundStart = false;
-            let stop = false;
+            range.setStart(this.current_el || this.$refs.editor, this.current_el_pos || 0);
 
-            while (!stop) {
-                let node = nodeStack.pop();
-                if (!node) {
-                    break;
-                }
-
-                if (node.nodeType === 3) {
-                    let nextCharIndex = charIndex + node.length;
-                    if (!foundStart && savedSel[0] >= charIndex && savedSel[0] <= nextCharIndex) {
-                        range.setStart(node, savedSel[0] - charIndex);
-                        foundStart = true;
-                    }
-                    if (foundStart && savedSel[1] >= charIndex && savedSel[1] <= nextCharIndex) {
-                        range.setEnd(node, savedSel[1] - charIndex);
-                        stop = true;
-                    }
-                    charIndex = nextCharIndex;
-                } else {
-                    let i = node.childNodes.length;
-                    while (i--) {
-                        nodeStack.push(node.childNodes[i]);
-                    }
-                }
-            }
-
-            // Firefox needs the manual focus() call
-            this.$refs.editor.focus();
             selection.removeAllRanges();
             selection.addRange(range);
         },

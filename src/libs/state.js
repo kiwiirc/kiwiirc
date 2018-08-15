@@ -59,6 +59,7 @@ const stateObj = {
             hide_message_counts: false,
             default_ban_mask: '*!%i@%h',
             default_kick_reason: 'Your behavior is not conducive to the desired environment.',
+            shared_input: false,
         },
         // Startup screen default
         startupOptions: {
@@ -272,6 +273,9 @@ const stateObj = {
             whois_ident: '%nick [%nick!%ident@%host] * %text',
             whois_error: '[%nick] %text',
             whois: '%text',
+            whowas_ident: 'was [%nick!%ident@%host] * %name',
+            whowas_server: 'using %server (%info)',
+            whowas_error: '[%nick] %text',
             who: '%nick [%nick!%ident@%host] * %realname',
             quit: '%text',
             rejoin: '%text',
@@ -282,6 +286,7 @@ const stateObj = {
             message_nick: '%prefix%nick',
             general_error: '%text',
         },
+        presetNetworks: [],
     },
     user_settings: {
     },
@@ -299,6 +304,8 @@ const stateObj = {
         app_height: 0,
         is_touch: false,
         favicon_counter: 0,
+        current_input: '',
+        show_advanced_tab: false,
     },
     networks: [
         /* {
@@ -509,13 +516,17 @@ const state = new Vue({
         },
 
         resetState() {
-            this.$set(this.$data, 'user_settings', []);
+            this.$set(this.$data, 'user_settings', {});
             this.$set(this.$data, 'networks', []);
             messages.splice(0);
         },
 
         setting(name, val) {
             if (typeof val !== 'undefined') {
+                if (val === this.getSetting('settings.' + name)) {
+                    // Remove setting from user_settings if its the default
+                    return this.setSetting('user_settings.' + name, null);
+                }
                 // Setting any setting always goes into the user own settings space
                 return this.setSetting('user_settings.' + name, val);
             }
@@ -556,7 +567,11 @@ const state = new Vue({
                 if (i < parts.length - 1 && typeof nextVal === 'undefined') {
                     nextVal = this.$set(val, propName, {});
                 } else if (i === parts.length - 1) {
-                    this.$set(val, propName, newVal);
+                    if (newVal === null) {
+                        this.$delete(val, propName);
+                    } else {
+                        this.$set(val, propName, newVal);
+                    }
                 }
 
                 val = nextVal;
@@ -638,12 +653,21 @@ const state = new Vue({
                 network.ircClient.quit();
             }
 
+            while (network.buffers.length > 0) {
+                this.removeBuffer(network.buffers[0]);
+            }
+
+            let findNewNetwork = false;
             if (network === this.getActiveNetwork()) {
-                this.setActiveBuffer(null);
+                findNewNetwork = true;
             }
 
             let idx = this.networks.indexOf(network);
             this.networks.splice(idx, 1);
+
+            if (findNewNetwork) {
+                this.openLastActiveBuffer();
+            }
 
             let eventObj = { network };
             state.$emit('network.removed', eventObj);
@@ -839,6 +863,12 @@ const state = new Vue({
         },
 
         addMessage(buffer, message) {
+            // Some messages try to be added after a network has been removed, meaning no buffer
+            // will be available
+            if (!buffer) {
+                return;
+            }
+
             let user = this.getUser(buffer.networkid, message.nick);
             let bufferMessage = new Message(message, user);
             if (user && user.ignore) {
@@ -890,7 +920,7 @@ const state = new Vue({
             }
 
             // Handle buffer flags
-            if (isNewMessage && includeAsActivity && !isActiveBuffer) {
+            if (isNewMessage && includeAsActivity && !isActiveBuffer && !bufferMessage.ignore) {
                 buffer.incrementFlag('unread');
                 if (isHighlight) {
                     buffer.flag('highlight', true);
@@ -1103,7 +1133,9 @@ const state = new Vue({
             let normalisedNick = nick.toLowerCase();
             let buffers = [];
             network.buffers.forEach((buffer) => {
-                if (buffer.users[normalisedNick]) {
+                if (buffer.users[normalisedNick] || buffer.name === nick) {
+                    buffers.push(buffer);
+                } else if (nick === network.nick && buffer.isQuery()) {
                     buffers.push(buffer);
                 }
             });
@@ -1200,12 +1232,14 @@ function createEmptyBufferObject() {
             has_opened: false,
             channel_badkey: false,
             chathistory_available: true,
+            requested_modes: false,
         },
         settings: {
         },
-        last_read: Date.now(),
+        last_read: 0,
         active_timeout: null,
         message_count: 0,
+        current_input: '',
     };
 }
 

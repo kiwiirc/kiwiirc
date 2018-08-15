@@ -549,20 +549,10 @@
 
 /* Nicklist ( Nicklist.vu ) */
 .kiwi-nicklist-usercount {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-.kiwi-nicklist-info{
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-}
-.kiwi-nicklist-info input {
-    background-color: #fff;
-    color: #000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 .kiwi-nicklist-user {
-    border-top: 1px solid #858585;
-}
-.kiwi-nicklist-user:first-of-type {
-    border-top: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .kiwi-nicklist-user:hover {
     background-color: #a2846e;
@@ -1034,16 +1024,26 @@
 }
 
 /* Icons in the Channel List */
-.kiwi-statebrowser-channel[data-name^="#"]::before {
-    content: '\f0c0';
+.kiwi-statebrowser-channel:not([data-name^="#"])::before {
+    content: '\f007';
 }
-.kiwi-statebrowser-channel[data-name^="#help"]::before {
+
+.kiwi-statebrowser-channel[data-name^="*"]::before {
+    content: '\f006';
+}
+
+.kiwi-statebrowser-channel[data-name="#help"]::before {
     content: '\f059';
 }
 
 .kiwi-statebrowser-channel::before {
-    content: '\f007';
     font-family: fontAwesome;
     margin-right: 5px;
     font-weight: 100;
+}
+
+.kiwi-settings-advanced-notice {
+    color: #000;
+    background: #fff;
+    font-weight: 900;
 }

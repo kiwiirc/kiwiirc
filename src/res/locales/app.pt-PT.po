@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2018-07-12 13:40\n"
+"PO-Revision-Date: 2018-08-09 14:11\n"
 
 #: Start
 msgid "start_button"
@@ -116,6 +116,14 @@ msgstr "Sim"
 #: No
 msgid "no"
 msgstr "Não"
+
+#: Not found.
+msgid "not_found"
+msgstr "Não encontrado."
+
+#: Warning!
+msgid "warning"
+msgstr "Atenção!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -316,6 +324,30 @@ msgstr "Máscara de ban predefinida"
 #: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Mensagem de kick predefinida"
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr "Configurações avançadas"
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr "Monstros habitam aqui, apenas clique neste botão se você sabe o que está fazendo"
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr "Ativar Configurações Avançadas"
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr "Zona de perigo: Alterar algumas dessas configurações pode quebrar as coisas!"
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr "Restabelecer"
+
+#: Filter
+msgid "settings_advanced_filter"
+msgstr "Filtro"
 
 #: Refresh banlist
 msgid "bans_refresh"

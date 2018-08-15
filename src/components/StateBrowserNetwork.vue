@@ -28,7 +28,6 @@
                     <i class="fa fa-plus" aria-hidden="true"/>
                 </div>
                 <div
-                    v-if="network.buffers.length > 1"
                     :class="{ active: channel_filter_display == true }"
                     class="option-button kiwi-search-channels"
                     @click="toggleFilterChannel()"
@@ -158,6 +157,7 @@
 import _ from 'lodash';
 import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
+import * as bufferTools from '@/libs/bufferTools';
 import BufferSettings from './BufferSettings';
 
 export default {
@@ -244,7 +244,7 @@ export default {
                 // link as it has been removed before the event reaches it.
                 setTimeout(() => {
                     this.closeFilterChannel();
-                }, 100);
+                }, 200);
             }
         },
         closeBuffer(buffer) {
@@ -264,27 +264,6 @@ export default {
                 buffer.name === state.ui.active_buffer
             );
         },
-        orderedBuffers: function orderedBuffers(buffers) {
-            // Since vuejs will sort in-place and update views when .sort is called
-            // on an array, clone it first so that we have a plain array to sort
-            let list = buffers.map(b => b);
-
-            list = _.filter(list, buffer => !buffer.isServer());
-            list = list.sort((a, b) => {
-                let order = 0;
-                if (a.isChannel() && b.isQuery()) {
-                    order = -1;
-                } else if (a.isQuery() && b.isChannel()) {
-                    order = 1;
-                } else {
-                    order = a.name.localeCompare(b.name);
-                }
-
-                return order;
-            });
-
-            return list;
-        },
         filteredBuffers(buffers) {
             let filter = this.channel_filter;
             let filtered = [];
@@ -298,9 +277,9 @@ export default {
                 });
             }
 
-            return this.orderedBuffers(filtered);
+            return bufferTools.orderBuffers(filtered);
         },
-        showNetworkSettings: function showNetworkSettings(network) {
+        showNetworkSettings(network) {
             network.showServerBuffer('settings');
         },
         showNetworkChannels(network) {

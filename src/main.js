@@ -14,6 +14,7 @@ import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import StatePersistence from '@/libs/StatePersistence';
 import * as Storage from '@/libs/storage/Local';
+import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 
 // Global utilities
@@ -169,6 +170,7 @@ function loadApp() {
 }
 
 function applyConfig(config) {
+    Misc.dedotObject(config);
     applyConfigObj(config, state.settings);
 
     // Update the window title if we have one

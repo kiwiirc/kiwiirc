@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-07-12 13:41\n"
+"PO-Revision-Date: 2018-08-10 22:30\n"
 
 #: Start
 msgid "start_button"
@@ -116,6 +116,14 @@ msgstr "da"
 #: No
 msgid "no"
 msgstr "ne"
+
+#: Not found.
+msgid "not_found"
+msgstr "Nije pronađeno."
+
+#: Warning!
+msgid "warning"
+msgstr "Upozorenje!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -316,6 +324,30 @@ msgstr "Zadana ban maska"
 #: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Zadani razlog izbacivanja"
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr "Napredna podešavanja"
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr "Kliknite ovo dugme samo ukoliko ste znate šta radite"
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr "Omogući napredna podešavanja"
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr "Opasna zona: Izmjena nekih od ovih podešavanja može prouzrokovati problem!"
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr "Osvježi"
+
+#: Filter
+msgid "settings_advanced_filter"
+msgstr "Filtriraj"
 
 #: Refresh banlist
 msgid "bans_refresh"

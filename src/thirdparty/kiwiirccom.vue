@@ -40,11 +40,6 @@
                 </a>
             </div>
         </div>
-
-        <div class="kiwi-sponsor">
-            Sponsored by <a href="//www.privateinternetaccess.com/">PrivateInternetAccess</a>
-            <span>Protect your internet with a VPN</span>
-        </div>
     </div>
 </template>
 
@@ -143,41 +138,6 @@ state.getStartups().kiwiirccom = ctor;
     .kiwi-aboutnew-content {
         padding: 2em 3em;
     }
-}
-
-.kiwi-sponsor {
-    position: fixed;
-    z-index: 20;
-    bottom: 40px;
-    left: 0;
-    width: 185px;
-    padding: 10px 0;
-    font-size: 0.8em;
-    color: #e0e0e0;
-}
-
-@media screen and (max-width: 600px) {
-    .kiwi-sponsor {
-        display: none;
-    }
-}
-
-.kiwi-sponsor a {
-    color: #e0e0e0;
-}
-
-.kiwi-sponsor span {
-    display: none;
-    font-style: italic;
-}
-
-.kiwi-sponsor:hover span {
-    display: block;
-}
-
-.kiwi-sponsor a:hover {
-    color: #bbe073;
-    text-decoration: none;
 }
 
 .kiwi-personal {

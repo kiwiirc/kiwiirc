@@ -575,13 +575,58 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
     });
 };
 
+inputCommands.whowas = function inputCommandWhowas(event, command, line) {
+    event.handled = true;
+
+    let parts = line.split(' ');
+    let network = this.state.getActiveNetwork();
+    let buffer = this.state.getActiveBuffer();
+
+    network.ircClient.whowas(parts[0], parts[0], (whowasData) => {
+        if (whowasData.error) {
+            let messageBody = TextFormatting.formatText('whowas_error', {
+                nick: whowasData.nick,
+                text: whowasData.error,
+            });
+            this.state.addMessage(buffer, {
+                time: Date.now(),
+                nick: '',
+                message: messageBody,
+                type: 'whowas',
+            });
+            return;
+        }
+
+        ['whowas_ident', 'whowas_server'].forEach((prop) => {
+            let messageBody = TextFormatting.formatText(prop, {
+                nick: whowasData.nick,
+                ident: whowasData.ident,
+                host: whowasData.hostname,
+                name: whowasData.real_name,
+                server: whowasData.server,
+                info: whowasData.server_info,
+            });
+
+            this.state.addMessage(buffer, {
+                time: Date.now(),
+                nick: whowasData.nick,
+                message: messageBody,
+                type: 'whowas',
+            });
+        });
+    });
+};
+
 inputCommands.mode = function inputCommandMode(event, command, line) {
     event.handled = true;
 
     // /mode [target] [+-modes]
 
     let network = this.state.getActiveNetwork();
-    let target = network.nick;
+    let buffer = this.state.getActiveBuffer();
+    let target = buffer.isChannel() ?
+        buffer.name :
+        network.nick;
 
     let parts = _.compact(line.split(' '));
 
@@ -596,6 +641,16 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
     } else {
         // No modes specified will request the modes for the target
         network.ircClient.mode(target);
+
+        if (target === buffer.name) {
+            // If we have requested modes for the active channel then flag it to show
+            // the response in the buffer itself. Wait a few seconds before removing
+            // the flag as there is no way to determine that everything has been received.
+            buffer.flags.requested_modes = true;
+            setTimeout(() => {
+                buffer.flags.requested_modes = false;
+            }, 4000);
+        }
     }
 };
 
@@ -635,6 +690,53 @@ inputCommands.echo = function inputCommandEcho(event, command, line) {
     this.state.addMessage(buffer, {
         nick: '*',
         message: line,
+    });
+};
+
+inputCommands.set = function inputCommandEcho(event, command, line) {
+    event.handled = true;
+
+    let buffer = this.state.getActiveBuffer();
+
+    let setting = '';
+    let spacePos = line.indexOf(' ');
+
+    if (spacePos > -1) {
+        // Anything after the space becomes the new setting value
+        // false = boolean false
+        // true = boolean true
+        // off = boolean false
+        // on = boolean true
+        // "false" = string false
+        // "true" = string true
+        setting = line.substr(0, spacePos);
+        let value = line.substr(spacePos + 1).trim();
+        switch (value.toLowerCase().trim()) {
+        case 'true':
+        case 'on':
+            value = true;
+            break;
+        case 'false':
+        case 'off':
+            value = false;
+            break;
+        default:
+        }
+
+        // Unquote any quoted values
+        // ie.  "true" should jsut be the string true
+        if (value[0] === '"' && value[value.length - 1] === '"') {
+            value = value.substr(1, value.length - 2);
+        }
+
+        this.state.setting(setting, value);
+    } else {
+        setting = line;
+    }
+
+    this.state.addMessage(buffer, {
+        nick: '*',
+        message: `${setting} = ${this.state.setting(setting)}`,
     });
 };
 

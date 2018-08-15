@@ -61,7 +61,7 @@
                 <div
                     class="kiwi-header-option kiwi-header-option-leave"
                 >
-                    <a @click="prompts.closeChannel=true">
+                    <a @click="showPrompt('closeChannel')">
                         <i class="fa fa-times" aria-hidden="true"/>
                     </a>
                 </div>
@@ -126,9 +126,11 @@
 
         <template v-else-if="isSpecial()">
             <div class="kiwi-header-options">
-                <a class="u-button u-button-secondary" @click="closeCurrentBuffer">
-                    {{ $t('close') }}
-                </a>
+                <div class="kiwi-header-option kiwi-header-option-leave">
+                    <a @click="closeCurrentBuffer">
+                        <i class="fa fa-times" aria-hidden="true"/>
+                    </a>
+                </div>
             </div>
             <div class="kiwi-header-name">{{ buffer.name }}</div>
         </template>
@@ -213,7 +215,7 @@ export default {
     created() {
         this.listen(state, 'document.clicked', (e) => {
             // If clicking anywhere else on the page, close all our prompts
-            if (!this.$el.contains(e.srcElement)) {
+            if (!this.$el.contains(e.target)) {
                 Object.keys(this.prompts).forEach((prompt) => {
                     this.prompts[prompt] = false;
                 });
@@ -221,6 +223,9 @@ export default {
         });
     },
     methods: {
+        showPrompt(prompt) {
+            this.prompts[prompt] = true;
+        },
         isChannel: function isChannel() {
             return this.buffer.isChannel();
         },

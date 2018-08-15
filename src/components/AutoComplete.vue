@@ -175,6 +175,8 @@ export default {
 
                 event.preventDefault();
                 handled = true;
+            } else if (event.keyCode === 16) {
+                handled = true;
             }
 
             return handled;

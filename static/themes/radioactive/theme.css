@@ -155,9 +155,7 @@
 
 .kiwi-appsettings-section {
     background: none;
-    border-right: 1px solid #5dd895;
-    border-bottom: 1px solid #5dd895;
-    border-left: 1px solid #5dd895;
+    border: 1px solid #5dd895;
     color: #5dd895;
 }
 
@@ -570,11 +568,13 @@
     color: #5dd895 !important;
 }
 
-.kiwi-nicklist-usercount {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.kiwi-nicklist-usercount,
+.kiwi-nicklist-user {
+    border-bottom: 1px solid #6fffb0;
 }
-.kiwi-nicklist-info{
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
+    color: #6fffb0;
 }
 
 .kiwi-nicklist-info input,
@@ -726,7 +726,8 @@
 
 /* User Settings */
 .kiwi-statebrowser-appsettings {
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid #6fffb0;
+    color: #6fffb0;
 }
 .kiwi-statebrowser-appsettings:hover {
     background: #1b2f24;
@@ -1065,16 +1066,30 @@
 }
 
 /* Icons in the Channel List */
-.kiwi-statebrowser-channel[data-name^="#"]::before {
-    content: '\f0c0';
+.kiwi-statebrowser-channel:not([data-name^="#"])::before {
+    content: '\f007';
 }
-.kiwi-statebrowser-channel[data-name^="#help"]::before {
+
+.kiwi-statebrowser-channel[data-name^="*"]::before {
+    content: '\f006';
+}
+
+.kiwi-statebrowser-channel[data-name="#help"]::before {
     content: '\f059';
 }
 
 .kiwi-statebrowser-channel::before {
-    content: '\f007';
     font-family: fontAwesome;
     margin-right: 5px;
     font-weight: 100;
+}
+
+/* U table line breaks */
+.u-table td {
+    border-bottom: 1px solid #5dd895;
+}
+
+.kiwi-settings-advanced-notice {
+    color: #5dd895;
+    border: 1px solid #5dd895;
 }

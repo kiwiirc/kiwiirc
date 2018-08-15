@@ -32,9 +32,6 @@ Vue.component('tabbed-tab', {
 });
 
 export default Vue.component('tabbed-view', {
-    props: {
-        activeTab: { status: String },
-    },
     data: function data() {
         return {
             // We increment this when we need to re-render the tabs.
@@ -46,11 +43,6 @@ export default Vue.component('tabbed-view', {
     computed: {
         tabs: function computedtabs() {
             return this.$children;
-        },
-    },
-    watch: {
-        activeTab(newVal) {
-            this.setActiveCheck();
         },
     },
     mounted() {
@@ -86,15 +78,11 @@ export default Vue.component('tabbed-view', {
             });
         },
         setActiveCheck: function setActiveCheck() {
-            if (this.activeTab) {
-                this.setActiveByName(this.activeTab);
-            } else {
-                this.$children.forEach((t) => {
-                    if (t.focus) {
-                        this.setActive(t);
-                    }
-                });
-            }
+            this.$children.forEach((t) => {
+                if (t.focus) {
+                    this.setActive(t);
+                }
+            });
         },
     },
 });

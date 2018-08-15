@@ -115,7 +115,7 @@ export default {
             return '';
         },
         isMessage: function isMessage(message) {
-            let types = ['privmsg', 'action', 'notice'];
+            let types = ['privmsg', 'action', 'notice', 'message'];
             return types.indexOf(message.type) > -1;
         },
         userModePrefix: function userModePrefix(user) {
@@ -133,6 +133,10 @@ export default {
     margin: 0 0 0 20px;
     margin-left: 0;
     padding: 15px 10px;
+}
+
+.kiwi-messagelist-modern-left {
+    user-select: none;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left {

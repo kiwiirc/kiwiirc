@@ -61,11 +61,13 @@ import startupCustomServer from '@/components/startups/CustomServer';
 import startupKiwiBnc from '@/components/startups/KiwiBnc';
 import startupPersonal from '@/components/startups/Personal';
 import StateBrowser from '@/components/StateBrowser';
+import AppSettings from '@/components/AppSettings';
 import Container from '@/components/Container';
 import ControlInput from '@/components/ControlInput';
 import MediaViewer from '@/components/MediaViewer';
 import * as Notifications from '@/libs/Notifications';
 import * as AudioBleep from '@/libs/AudioBleep';
+import * as bufferTools from '@/libs/bufferTools';
 import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
 import state from '@/libs/state';
@@ -246,7 +248,7 @@ export default {
             this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
         });
 
-        document.addEventListener('keydown', event => this.emitDocumentKeyDown(event), false);
+        document.addEventListener('keydown', event => this.onKeyDown(event), false);
         window.addEventListener('focus', (event) => {
             state.ui.app_has_focus = true;
             let buffer = state.getActiveBuffer();
@@ -294,7 +296,7 @@ export default {
 
             state.ui.favicon_counter++;
         });
-        if (this.uiState.canPin && state.getSetting('settings.sidebarPinned')) {
+        if (this.uiState.canPin && state.setting('sidebarPinned')) {
             this.uiState.pin();
         }
     },
@@ -320,7 +322,7 @@ export default {
     },
     methods: {
         // Triggered by a startup screen event
-        startUp: function startUp(opts) {
+        startUp(opts) {
             log('startUp()');
             if (opts && opts.fallbackComponent) {
                 this.fallbackComponent = opts.fallbackComponent;
@@ -348,7 +350,7 @@ export default {
                 return null;
             };
         },
-        emitBufferPaste: function emitBufferPaste(event) {
+        emitBufferPaste(event) {
             // bail if no buffer is active, or the buffer is hidden by another component
             if (!this.state.getActiveBuffer() || this.activeComponent !== null) {
                 return;
@@ -361,13 +363,48 @@ export default {
 
             state.$emit('buffer.paste', event);
         },
-        emitDocumentClick: function emitDocumentClick(event) {
+        emitDocumentClick(event) {
             state.$emit('document.clicked', event);
         },
-        emitDocumentKeyDown: function emitDocumentKeyDown(event) {
+        onKeyDown(event) {
             state.$emit('document.keydown', event);
+
+            let meta = false;
+
+            if (navigator.appVersion.indexOf('Mac') !== -1) {
+                meta = event.metaKey;
+            } else {
+                meta = event.ctrlKey;
+            }
+
+            if (meta && event.keyCode === 221) {
+                // meta + ]
+                let buffer = bufferTools.getNextBuffer();
+                if (buffer) {
+                    state.setActiveBuffer(buffer.networkid, buffer.name);
+                }
+                event.preventDefault();
+            } else if (meta && event.keyCode === 219) {
+                // meta + [
+                let buffer = bufferTools.getPreviousBuffer();
+                if (buffer) {
+                    state.setActiveBuffer(buffer.networkid, buffer.name);
+                }
+                event.preventDefault();
+            } else if (meta && event.keyCode === 79) {
+                // meta + o
+                state.$emit('active.component', AppSettings);
+                event.preventDefault();
+            } else if (meta && event.keyCode === 83) {
+                // meta + s
+                let network = state.getActiveNetwork();
+                if (network) {
+                    network.showServerBuffer('settings');
+                }
+                event.preventDefault();
+            }
         },
-        setting: function setting(name) {
+        setting(name) {
             return state.setting(name);
         },
     },

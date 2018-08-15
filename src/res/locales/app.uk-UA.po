@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-07-12 13:40\n"
+"PO-Revision-Date: 2018-08-10 07:40\n"
 
 #: Start
 msgid "start_button"
@@ -111,11 +111,19 @@ msgstr "Скасувати"
 
 #: Yes
 msgid "yes"
-msgstr "так"
+msgstr "Так"
 
 #: No
 msgid "no"
-msgstr "ні"
+msgstr "Ні"
+
+#: Not found.
+msgid "not_found"
+msgstr "Не знайдено"
+
+#: Warning!
+msgid "warning"
+msgstr "Попередження!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -151,43 +159,43 @@ msgstr "Канал"
 
 #: {{count}} week
 msgid "week"
-msgstr "тиждень"
+msgstr "{{count}} тиждень"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "тижнів"
+msgstr "{{count}} тижнів"
 
 #: {{count}} day
 msgid "day"
-msgstr "день"
+msgstr "{{count}} день"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "днів"
+msgstr "{{count}} днів"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "година"
+msgstr "{{count}} година"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "годин"
+msgstr "{{count}} годин"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "хвилина"
+msgstr "{{count}} хвилина"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "хвилин"
+msgstr "{{count}} хвилин"
 
 #: {{count}} second
 msgid "second"
-msgstr "секунда"
+msgstr "{{count}} секунда"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "секунд"
+msgstr "{{count}} секунд"
 
 #: General
 msgid "settings_general"
@@ -275,7 +283,7 @@ msgstr "Надіслати повідомлення"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Введіть ключ каналу"
+msgstr "Введіть ключ каналу:"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -316,6 +324,30 @@ msgstr "Типовий шаблон блокування"
 #: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Типова причина виштовхування"
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr "Додаткові налаштування"
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr "Натискайте цю кнопку лише якщо впевнені в своїх діях"
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr "Увімкнути додаткові налаштування"
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr "Небезпечна зона: Зміна цих налаштувань може пошкодити роботу!"
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr "Відновити"
+
+#: Filter
+msgid "settings_advanced_filter"
+msgstr "Фільтр"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -359,7 +391,7 @@ msgstr "Блокувати зовнішні повідомлення"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Натисніть кнопку для оновлення списку каналу"
+msgstr "Натисніть кнопку для оновлення списку каналів"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
@@ -399,7 +431,7 @@ msgstr "Приватна розмова з {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr ""
+msgstr "Справді покинути канал?"
 
 #: Send a message...
 msgid "input_placeholder"

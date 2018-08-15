@@ -49,11 +49,18 @@
             />
         </div>
 
+        <transition name="kiwi-messagelist-joinloadertrans">
+            <div v-if="shouldShowJoiningLoader" class="kiwi-messagelist-joinloader">
+                <LoadingAnimation />
+            </div>
+        </transition>
+
         <buffer-key
             v-if="shouldRequestChannelKey"
             :buffer="buffer"
             :network="buffer.getNetwork()"
         />
+
         <not-connected
             v-if="buffer.getNetwork().state !== 'connected'"
             :buffer="buffer"
@@ -71,6 +78,7 @@ import BufferKey from './BufferKey';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
+import LoadingAnimation from './LoadingAnimation.vue';
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
@@ -82,6 +90,7 @@ export default {
         NotConnected,
         MessageListMessageModern,
         MessageListMessageCompact,
+        LoadingAnimation,
     },
     props: ['buffer', 'users'],
     data: function data() {
@@ -90,6 +99,8 @@ export default {
             chathistoryAvailable: true,
             hover_nick: '',
             message_info_open: null,
+            timeToClose: false,
+            startClosing: false,
         };
     },
     computed: {
@@ -170,6 +181,13 @@ export default {
                     continue;
                 }
 
+                // Don't show the first connection message. Channels are only interested in
+                // the joining message at first. Dis/connection messages are only relevant here
+                // if the dis/connection happens between messages (during a conversation)
+                if (messages[i].type === 'connection' && i === 0) {
+                    continue;
+                }
+
                 // When we join a channel the topic is usually sent next. But this looks
                 // ugly when rendered. So we switch the topic + join messages around so
                 // that the topic is first in the message list.
@@ -188,6 +206,12 @@ export default {
             }
 
             return list.reverse();
+        },
+        shouldShowJoiningLoader() {
+            return this.buffer.isChannel() &&
+                this.buffer.enabled &&
+                !this.buffer.joined &&
+                this.buffer.getNetwork().state === 'connected';
         },
     },
     watch: {
@@ -649,6 +673,32 @@ export default {
 
 .kiwi-wrap--touch .kiwi-messagelist-message-linkhandle {
     display: none;
+}
+
+.kiwi-messagelist-joinloader {
+    margin: 1em auto;
+    width: 100px;
+
+    /* the magic number below is the exact ratio of the kiwi logo height/width */
+    height: calc (100px * 0.85987261146496815286624203821656);
+    overflow: hidden;
+}
+
+.kiwi-messagelist-joinloadertrans-enter,
+.kiwi-messagelist-joinloadertrans-leave-to {
+    height: 0;
+    opacity: 0;
+}
+
+.kiwi-messagelist-joinloadertrans-enter-to,
+.kiwi-messagelist-joinloadertrans-leave {
+    height: 150px;
+    opacity: 1;
+}
+
+.kiwi-messagelist-joinloadertrans-enter-active,
+.kiwi-messagelist-joinloadertrans-leave-active {
+    transition: height 0.5s, opacity 0.5s;
 }
 
 @media screen and (max-width: 700px) {
