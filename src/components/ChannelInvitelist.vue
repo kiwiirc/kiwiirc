@@ -2,7 +2,7 @@
     <div class="kiwi-channelinvitelist">
         <form class="u-form kiwi-channelinvitelist" @submit.prevent="">
             <a class="u-link" @click="updateInvitelist">{{ $t('invites_refresh') }}</a>
-             <table v-if="inviteList.length > 0" class="kiwi-channelinvitelist-table">
+            <table v-if="inviteList.length > 0" class="kiwi-channelinvitelist-table">
                 <tr>
                     <th>{{ $t('invites_user') }}</th>
                     <th>{{ $t('invites_by') }}</th>
@@ -30,8 +30,8 @@
         </form>
     </div>
 </template>
- <script>
- export default {
+<script>
+export default {
     props: ['buffer'],
     data: function data() {
         return {
@@ -47,7 +47,7 @@
             if (this.buffer.getNetwork().state !== 'connected' || this.is_refreshing) {
                 return;
             }
-             let channelName = this.buffer.name;
+            let channelName = this.buffer.name;
             this.is_refreshing = true;
             this.buffer.getNetwork().ircClient.inviteList(channelName, (inviteEvent) => {
                 this.inviteList = inviteEvent.invites;
@@ -62,17 +62,17 @@
     },
 };
 </script>
- <style lang="less">
+<style lang="less">
 .kiwi-channelinvitelist-table {
     width: 100%;
     border-collapse: collapse;
     line-height: 20px;
     margin-top: 10px;
 }
- .kiwi-channelinvitelist-table-invitedat {
+.kiwi-channelinvitelist-table-invitedat {
     min-width: 150px;
 }
- .kiwi-channelinvitelist-table-actions {
+.kiwi-channelinvitelist-table-actions {
     min-width: 50px;
     text-align: center;
     cursor: pointer;
@@ -81,4 +81,3 @@
     z-index: 1;
 }
 </style>
-
