@@ -144,7 +144,7 @@ export default {
             }
         },
         trimTopic(topic) {
-            return topic.replace(/\[([^\]]+)\] ?/, '');
+            return topic.replace(/^\[([^\]]+)\] ?/, '');
         },
         joinChannel(channelName) {
             state.addBuffer(this.network.id, channelName);
