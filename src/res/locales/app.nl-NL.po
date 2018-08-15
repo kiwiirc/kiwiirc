@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-08-11 10:00\n"
+"PO-Revision-Date: 2018-08-15 12:10\n"
 
 #: Start
 msgid "start_button"
@@ -331,7 +331,7 @@ msgstr "Geavanceerde instellingen"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Hier wonen monsters; klik alleen op deze knop als je weet wat je doet"
+msgstr "Hier wonen monsters; klik alleen op deze knop als je weet wat je doet."
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
