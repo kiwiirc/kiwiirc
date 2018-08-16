@@ -235,6 +235,14 @@ select {
     background-color: rgba(128, 128, 128, 0.1);
 }
 
+.kiwi-statebrowser-usermenu-avatar--connected {
+    border: 2px solid #42b992;
+}
+
+.kiwi-statebrowser-usermenu-avatar--disconnected {
+    border: 2px solid #bf5155;
+}
+
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
 .irc-fg-colour-blue { color: #00f; }

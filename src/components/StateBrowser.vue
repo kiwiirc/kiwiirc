@@ -12,10 +12,14 @@
             class="kiwi-statebrowser-usermenu"
         >
             <div
+                :class="[isConnected ?
+                    'kiwi-statebrowser-usermenu-avatar--connected' :
+                    'kiwi-statebrowser-usermenu-avatar--disconnected'
+                ]"
                 class="kiwi-statebrowser-usermenu-avatar"
                 @click="is_usermenu_open=!is_usermenu_open"
             >
-                U
+                {{ userInitial }}
             </div>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
                 <p> {{ $t('state_remembered') }} </p>
@@ -23,6 +27,9 @@
                 <div class="kiwi-close-icon" @click="is_usermenu_open=false">
                     <i class="fa fa-times" aria-hidden="true"/>
                 </div>
+            </div>
+            <div v-else class="kiwi-statebrowser-usermenu-network">
+                {{ networkName }}
             </div>
         </div>
 
@@ -121,6 +128,22 @@ export default {
         };
     },
     computed: {
+        userInitial() {
+            let network = state.getActiveNetwork();
+            let initial = 'U';
+            if (network && network.nick) {
+                initial = network.nick.charAt(0).toUpperCase();
+            }
+            return initial;
+        },
+        networkName() {
+            let network = state.getActiveNetwork();
+            let name = 'No Network';
+            if (network) {
+                name = network.name;
+            }
+            return name;
+        },
         isPersistingState: function isPersistingState() {
             return !!state.persistence;
         },
@@ -132,7 +155,8 @@ export default {
             return this.networks.filter(network => network !== bncNet);
         },
         isConnected: function isConnected() {
-            return state.getActiveNetwork().state === 'connected';
+            let network = state.getActiveNetwork();
+            return network && network.state === 'connected';
         },
     },
     created: function created() {
