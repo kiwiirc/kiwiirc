@@ -837,6 +837,16 @@ const state = new Vue({
                 network.ircClient.part(buffer.name);
             }
 
+            // Remove the user from network state if no remaining common channels
+            if (buffer.isQuery()) {
+                let remainingBuffers = state.getBuffersWithUser(network.id, buffer.name);
+                if (remainingBuffers.length === 0) {
+                    state.removeUser(network.d, {
+                        nick: buffer.name,
+                    });
+                }
+            }
+
             if (isActiveBuffer) {
                 this.openLastActiveBuffer();
             }
@@ -1081,6 +1091,13 @@ const state = new Vue({
 
             if (!userObj) {
                 userObj = this.addUser(network, user);
+            } else {
+                // Verify the user object is correct
+                _.each(user, (val, prop) => {
+                    if (userObj[prop] !== val) {
+                        userObj[prop] = val;
+                    }
+                });
             }
 
             buffer.addUser(userObj);
@@ -1109,7 +1126,7 @@ const state = new Vue({
             let normalisedNick = nick.toLowerCase();
             let buffers = [];
             network.buffers.forEach((buffer) => {
-                if (buffer.users[normalisedNick] || buffer.name === nick) {
+                if (buffer.users[normalisedNick] || normalisedNick === buffer.name.toLowerCase()) {
                     buffers.push(buffer);
                 } else if (nick === network.nick && buffer.isQuery()) {
                     buffers.push(buffer);
