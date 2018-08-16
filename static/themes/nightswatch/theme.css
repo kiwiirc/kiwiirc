@@ -128,7 +128,6 @@
 .u-form textarea {
     border: 1px solid #ccc;
     border-bottom: 2px solid #000000;
-    background: #adadad;
     line-height: normal;
     outline-color: #000000;
 }
@@ -137,8 +136,6 @@
 .u-form label input[type='email'],
 .u-form textarea,
 .kiwi-networksettings .input-text input {
-    color: #000;
-    background: #adadad;
     border: 1px solid #000000;
 }
 
@@ -198,6 +195,11 @@
 .kiwi-appsettings-block h3 {
     background: #000000;
     color: #adadad;
+}
+
+.kiwi-appsettings-section {
+    background-color: #1b1b1b;
+    color: #969895;
 }
 
 /* Title bar, at the top of the Application settings component */

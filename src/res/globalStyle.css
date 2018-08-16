@@ -16,6 +16,14 @@ div {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+input,
+textarea,
+select {
+    color: inherit;
+    background: inherit;
+    background-color: inherit;
+}
+
 .u-link {
     text-decoration: none;
     cursor: pointer;

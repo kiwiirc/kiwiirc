@@ -117,7 +117,6 @@
 .u-form textarea {
     border: 1px solid #ccc;
     border-bottom: 2px solid #42b992;
-    background: #fff;
     line-height: normal;
     outline-color: #42b992;
 }
@@ -147,8 +146,6 @@
 .u-form label input[type='password'],
 .u-form label input[type='email'],
 .u-form textarea {
-    color: #000;
-    background: #fff;
     border: 1px solid #42b992;
 }
 
@@ -193,6 +190,11 @@
 .kiwi-appsettings-block h3 {
     background: #42b992;
     color: #fff;
+}
+
+.kiwi-appsettings-section {
+    background-color: #272626;
+    color: #969895;
 }
 
 .kiwi-appsettings .u-form label span {
