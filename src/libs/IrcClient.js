@@ -402,6 +402,7 @@ function clientMiddleware(state, network) {
             });
 
             if (event.nick === client.user.nick) {
+                buffer.enabled = true;
                 buffer.joined = true;
                 buffer.flags.channel_badkey = false;
                 network.ircClient.raw('MODE', event.channel);
@@ -929,6 +930,12 @@ function clientMiddleware(state, network) {
                     message: messageBody,
                     type: 'error',
                 });
+            }
+
+            // Getting an error about a channel while we are not joined means that we couldn't join
+            // or do some action on it. Disable it until we manually reattempt to join.
+            if (buffer.isChannel() && !buffer.joined) {
+                buffer.enabled = false;
             }
         }
 
