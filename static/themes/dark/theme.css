@@ -192,6 +192,11 @@
     color: #fff;
 }
 
+.kiwi-appsettings-section {
+    background-color: #272626;
+    color: #969895;
+}
+
 .kiwi-appsettings .u-form label span {
     color: #fff;
 }

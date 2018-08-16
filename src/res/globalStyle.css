@@ -21,6 +21,7 @@ textarea,
 select {
     color: inherit;
     background: inherit;
+    background-color: inherit;
 }
 
 .u-link {

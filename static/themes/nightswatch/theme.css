@@ -197,6 +197,11 @@
     color: #adadad;
 }
 
+.kiwi-appsettings-section {
+    background-color: #1b1b1b;
+    color: #969895;
+}
+
 /* Title bar, at the top of the Application settings component */
 .kiwi-appsettings-title {
     background-color: #000000;

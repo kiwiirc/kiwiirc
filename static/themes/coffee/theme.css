@@ -91,7 +91,6 @@
 .u-form textarea {
     border: 1px solid #ccc;
     border-bottom: 2px solid #a2846e;
-    background: #fff;
     line-height: normal;
     outline-color: #a2846e;
 }
@@ -99,8 +98,6 @@
 .u-form label input[type='password'],
 .u-form label input[type='email'],
 .u-form textarea {
-    color: #000;
-    background: #fff;
     border: 1px solid #a2846e;
 }
 

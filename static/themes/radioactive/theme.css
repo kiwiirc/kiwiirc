@@ -95,15 +95,11 @@
     border-bottom: 2px solid #1b2f24;
     line-height: normal;
     outline-color: #1b2f24;
-    color: #5dd895;
-    background: #244633;
 }
 .u-form label input[type='text'],
 .u-form label input[type='password'],
 .u-form label input[type='email'],
 .u-form textarea {
-    color: #5dd895;
-    background: #244633;
     border: 1px solid #1b2f24;
 }
 
