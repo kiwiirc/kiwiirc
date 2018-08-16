@@ -49,6 +49,7 @@ export default class Message {
 
         let blocks = formatIrcMessage(this.message, {
             extras: useExtraFormatting,
+            blacklist: state.setting('buffers.formatting_blacklist'),
         });
 
         state.$emit('message.prestyle', { message: this, blocks: blocks });

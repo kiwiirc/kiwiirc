@@ -252,10 +252,17 @@ export default function parse(inp, _opts) {
 
     while (pos < len) {
         let tok = findTokenAtPosition();
-        if (!tok || (!opts.extras && tok.extra)) {
-            block.content += inp[pos];
-            block.containsContent = true;
-            pos++;
+        let toklen = (tok) ? tok.token.length : 1;
+        if (!tok || (!opts.extras && tok.extra) || opts.blacklist.includes(tok.token)) {
+            // advance token length to allow for blacklisted tokens
+            //   and prevent them matching other tokens
+            // Eg, if ** is disabled; '**word**', char1 gets skipped as ** is disabled,
+            //   then char2 gets matched again as token *
+            for (let i = 0; i < toklen; i++) {
+                block.content += inp[pos];
+                block.containsContent = true;
+                pos++;
+            }
             continue;
         }
 
