@@ -208,9 +208,13 @@ export default {
             return list.reverse();
         },
         shouldShowJoiningLoader() {
+            console.log(this.buffer.getNetwork().last_error);
             return this.buffer.isChannel() &&
                 this.buffer.enabled &&
                 !this.buffer.joined &&
+                this.buffer.getNetwork().last_error !== 'Cannot join channel (+b) - you are banned' &&
+                this.buffer.getNetwork().last_error !== 'Cannot join channel (+k) - bad key' &&
+                this.buffer.getNetwork().last_error !== 'Cannot join channel (+i) - you must be invited' &&
                 this.buffer.getNetwork().state === 'connected';
         },
     },
