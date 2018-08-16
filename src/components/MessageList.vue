@@ -211,6 +211,9 @@ export default {
             return this.buffer.isChannel() &&
                 this.buffer.enabled &&
                 !this.buffer.joined &&
+                typeof this.buffer.modes.k === 'undefined' &&
+                typeof this.buffer.modes.i === 'undefined' &&
+                this.buffer.getNetwork().last_error !== 'Cannot join channel (+b) - you are banned' &&
                 this.buffer.getNetwork().state === 'connected';
         },
     },
