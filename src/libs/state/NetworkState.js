@@ -40,8 +40,11 @@ export default class NetworkState {
             appState.$set(userDict.networks, this.id, newVal);
         });
 
-        def(this, 'buffers', [], false);
-        appState.$set(bufferDict.networks, this.id, this.buffers);
+        bufferDict.$set(bufferDict.networks, this.id, []);
+    }
+
+    get buffers() {
+        return this.bufferDict.networks[this.id];
     }
 
     connect(...args) {

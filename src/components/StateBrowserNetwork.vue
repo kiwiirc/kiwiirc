@@ -107,7 +107,7 @@
 
             <div class="kiwi-statebrowser-channels">
                 <div
-                    v-for="buffer in filteredBuffers(network.buffers)"
+                    v-for="buffer in filteredBuffers"
                     :key="buffer.name"
                     :data-name="buffer.name.toLowerCase()"
                     :class="{
@@ -181,6 +181,21 @@ export default {
         },
         totalNetworkCount() {
             return state.networks.length;
+        },
+        filteredBuffers() {
+            let filter = this.channel_filter;
+            let filtered = [];
+
+            if (!filter) {
+                filtered = this.network.buffers;
+            } else {
+                filtered = _.filter(this.network.buffers, (buffer) => {
+                    let name = buffer.name.toLowerCase();
+                    return name.indexOf(filter) > -1;
+                });
+            }
+
+            return bufferTools.orderBuffers(filtered);
         },
     },
     methods: {
@@ -263,21 +278,6 @@ export default {
                 buffer.networkid === state.ui.active_network &&
                 buffer.name === state.ui.active_buffer
             );
-        },
-        filteredBuffers(buffers) {
-            let filter = this.channel_filter;
-            let filtered = [];
-
-            if (!filter) {
-                filtered = buffers;
-            } else {
-                filtered = _.filter(buffers, (buffer) => {
-                    let name = buffer.name.toLowerCase();
-                    return name.indexOf(filter) > -1;
-                });
-            }
-
-            return bufferTools.orderBuffers(filtered);
         },
         showNetworkSettings(network) {
             network.showServerBuffer('settings');
