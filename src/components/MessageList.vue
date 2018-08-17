@@ -71,6 +71,7 @@
 
 <script>
 
+import Logger from '@/libs/Logger';
 import strftime from 'strftime';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import BufferKey from './BufferKey';
@@ -78,6 +79,8 @@ import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
 import LoadingAnimation from './LoadingAnimation.vue';
+
+let log = Logger.namespace('App.vue');
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
@@ -107,7 +110,10 @@ export default {
             return this;
         },
         listType() {
-            return this.buffer.setting('messageLayout');
+            if (this.$state.setting('messageLayout')) {
+                log.info('Deprecation Warning: The config option \'messageLayout\' has been moved to buffers.messageLayout');
+            }
+            return this.buffer.setting('messageLayout') || this.$state.setting('messageLayout');
         },
         useExtraFormatting() {
             // Enables simple markdown formatting
