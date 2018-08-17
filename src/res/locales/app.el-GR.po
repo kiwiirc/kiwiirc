@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 02:20\n"
+"PO-Revision-Date: 2018-08-17 02:30\n"
 
 #: Start
 msgid "start_button"
@@ -427,15 +427,15 @@ msgstr "Μη συνδεδεμένο"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr ""
+msgstr "Προσωπική συνομιλία με τον {{χρήστη}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr ""
+msgstr "Αφήστε πραγματικά το κανάλι;"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr ""
+msgstr "Στείλτε μήνυμα"
 
 #: Loading {{url}}...
 msgid "media_loading"
