@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 02:10\n"
+"PO-Revision-Date: 2018-08-17 02:20\n"
 
 #: Start
 msgid "start_button"
@@ -147,71 +147,71 @@ msgstr "Στείλτε μήνυμα"
 
 #: More information
 msgid "more_information"
-msgstr ""
+msgstr "Περισσότερες πληροφορίες"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr ""
+msgstr "Αγνοήστε τον χρήστη"
 
 #: Channel
 msgid "connection_channel"
-msgstr ""
+msgstr "Κανάλι"
 
 #: {{count}} week
 msgid "week"
-msgstr ""
+msgstr "Εβδομάδα"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr ""
+msgstr "Εβδομάδες"
 
 #: {{count}} day
 msgid "day"
-msgstr ""
+msgstr "Ημέρα"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr ""
+msgstr "Μέρες"
 
 #: {{count}} hour
 msgid "hour"
-msgstr ""
+msgstr "Ώρα"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr ""
+msgstr "Ώρες"
 
 #: {{count}} minute
 msgid "minute"
-msgstr ""
+msgstr "Λεπτό"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "Λεπτά"
 
 #: {{count}} second
 msgid "second"
-msgstr ""
+msgstr "Δευτερόλεπτο"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr ""
+msgstr "Δευτερόλεπτα"
 
 #: General
 msgid "settings_general"
-msgstr ""
+msgstr "Γενικά"
 
 #: Theme
 msgid "settings_theme"
-msgstr ""
+msgstr "Θέμα"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Ανανέωση του θέματος"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "Θέμα URL"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -415,15 +415,15 @@ msgstr ""
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Ρυθμίσεις Καναλιού"
 
 #: Join Channel
 msgid "container_join"
-msgstr ""
+msgstr "Συμμετοχή στο κανάλι"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr ""
+msgstr "Μη συνδεδεμένο"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
