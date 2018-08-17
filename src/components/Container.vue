@@ -50,6 +50,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import state from '@/libs/state';
 import ContainerHeader from './ContainerHeader';

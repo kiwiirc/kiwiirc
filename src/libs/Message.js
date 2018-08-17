@@ -1,3 +1,5 @@
+'kiwi public';
+
 import * as TextFormatting from '@/helpers/TextFormatting';
 import formatIrcMessage from '@/libs/MessageFormatter';
 import GlobalApi from '@/libs/GlobalApi';

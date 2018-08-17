@@ -1,5 +1,6 @@
 import EventEmitter from 'eventemitter3';
 import Vue from 'vue';
+import _ from 'lodash';
 import Logger from './Logger';
 
 let singletonInstance = null;
@@ -22,6 +23,8 @@ export default class GlobalApi extends EventEmitter {
         this.serverViewPlugins = [];
         this.tabs = Object.create(null);
         this.isReady = false;
+        /* eslint-disable no-underscore-dangle */
+        this.exports = window._kiwi_exports || {};
 
         this.on('init', () => {
             this.isReady = true;
@@ -57,6 +60,11 @@ export default class GlobalApi extends EventEmitter {
         } catch (err) {
             pluginLogger.error(err.stack);
         }
+    }
+
+    require(mod) {
+        let path = mod.replace('/', '.');
+        return _.get(this.exports, path);
     }
 
     setState(state) {

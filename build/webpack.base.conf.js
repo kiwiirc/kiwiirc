@@ -46,6 +46,9 @@ module.exports = {
       'vue$': 'vue/dist/vue.common.js',
     }
   },
+  resolveLoader: {
+    modules: ['node_modules', path.resolve(__dirname)]
+  },
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
@@ -56,7 +59,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: [{loader: 'exports-loader'}, {loader: 'babel-loader'}],
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
