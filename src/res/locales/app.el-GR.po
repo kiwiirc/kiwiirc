@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 10:50\n"
+"PO-Revision-Date: 2018-08-17 11:00\n"
 
 #: Start
 msgid "start_button"
@@ -675,55 +675,55 @@ msgstr "Απαγόρευση και κλωτσιά από το κανάλι"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "δίνει ops στο"
+msgstr "{{nick}} δίνει ops στο {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "παίρνει ops από"
+msgstr "{{nick}} παίρνει ops από {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "δίνει μισό-ops στο"
+msgstr "{{nick}} δίνει μισό-ops στο {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "παίρνει μισό-ops από"
+msgstr "{{nick}} παίρνει μισό-ops από {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "δίνει φωνή σε"
+msgstr "{{nick}} δίνει φωνή σε {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "παίρνει φωνή από"
+msgstr "{{nick}} παίρνει φωνή από {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "δίνει τον διαχειριστή στο"
+msgstr "{{nick}} δίνει τον διαχειριστή στο {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr ""
+msgstr "{{nick}} παίρνει διαχειριστή από {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr ""
+msgstr "{{nick}} δίνει ιδιόκτηση σε {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr ""
+msgstr "{{nick}} παίρνει ιδιόκτηση από {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr ""
+msgstr "{{nick}} έχει απαγορεύσει {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr ""
+msgstr "έχει καταργήσει την απαγόρευση"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}} καθόριση {{mode}} επί {{target}}"
 
 #: Your IRC client
 msgid "personal_client"
