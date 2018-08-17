@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 09:30\n"
+"PO-Revision-Date: 2018-08-17 09:51\n"
 
 #: Start
 msgid "start_button"
@@ -323,79 +323,79 @@ msgstr "Προκαθορισμένη απαγορευμένη μάσκα"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "Προκαθορισμένη κλωτσιά με λόγο"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr ""
+msgstr "Προηγμένες ρυθμίσεις"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr ""
+msgstr "Τα τέρατα είναι εδώ, κάντε κλικ σε αυτό το κουμπί μόνο αν ξέρετε τι κάνετε"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr ""
+msgstr "Ενεργοποίηση προχωρημένων ρυθμίσεων"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Ζώνη κινδύνου: Η αλλαγή ορισμένων από αυτές τις ρυθμίσεις μπορεί να σπάσει τα πράγματα!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Επαναφορά"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Φίλτρο"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr ""
+msgstr "Ανανέωση λίστας απαγόρευσης"
 
 #: Banned user
 msgid "bans_user"
-msgstr ""
+msgstr "Αποκλεισμένος χρήστης"
 
 #: Banned by
 msgid "bans_by"
-msgstr ""
+msgstr "Αποκλεισμένος από"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr ""
+msgstr "Ανανέωση λίστας απαγόρευσης"
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr ""
+msgstr "Κανείς δεν έχει απαγορευτεί!"
 
 #: Topic
 msgid "channel_topic"
-msgstr ""
+msgstr "Θέμα"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr ""
+msgstr "Συντονισμένη συνομιλία"
 
 #: Invite only
 msgid "channel_invite"
-msgstr ""
+msgstr "Πρόσκληση μόνο"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr ""
+msgstr "Μόνο οι συντονιστές μπορούν να αλλάξουν το θέμα"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr ""
+msgstr "Αποκλείστε μηνύματα από το εξωτερικό του καναλιού"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr ""
+msgstr "Κάντε κλικ στο κουμπί ανανέωσης για να ενημερώσετε τη λίστα καναλιών"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr ""
+msgstr "Δεν βρέθηκαν κανάλια, δοκιμάστε ξανά αργότερα"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
