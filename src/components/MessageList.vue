@@ -71,9 +71,9 @@
 
 <script>
 
-import Logger from '@/libs/Logger';
 import strftime from 'strftime';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import Logger from '@/libs/Logger';
 import BufferKey from './BufferKey';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
