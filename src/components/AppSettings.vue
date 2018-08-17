@@ -254,13 +254,13 @@ export default {
         },
         settingMessageLayout: {
             get: function getSettingMessageLayout() {
-                return state.setting('messageLayout') === 'compact';
+                return state.setting('buffers.messageLayout') === 'compact';
             },
             set: function setSettingMessageLayout(newVal) {
                 if (newVal) {
-                    state.setting('messageLayout', 'compact');
+                    state.setting('buffers.messageLayout', 'compact');
                 } else {
-                    state.setting('messageLayout', 'modern');
+                    state.setting('buffers.messageLayout', 'modern');
                 }
             },
         },
