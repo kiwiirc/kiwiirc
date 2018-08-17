@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 08:20\n"
+"PO-Revision-Date: 2018-08-17 08:30\n"
 
 #: Start
 msgid "start_button"
@@ -215,23 +215,23 @@ msgstr "Θέμα URL"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Χρησιμοποιήστε τη μονοσωματική"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "Παραδοσιακή διάταξη IRC"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "Εμφάνιση της λίστας αυτόματων συμπλήσεων"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "Μηνύματα συνομιλίας"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "Εμφάνιση χρονικών σημείων"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
@@ -459,11 +459,11 @@ msgstr "Θύρα"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr ""
+msgstr "Άλλα δίκτυα σε αυτόν τον λογαριασμό ZNC θα εμφανίζονται στη λίστα δικτύου"
 
 #: Your details
 msgid "settings_your_details"
-msgstr ""
+msgstr "Τα στοιχεία σας"
 
 #: Nickname
 msgid "settings_nickname"
