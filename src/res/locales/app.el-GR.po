@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 11:34\n"
+"PO-Revision-Date: 2018-08-17 11:40\n"
 
 #: Start
 msgid "start_button"
@@ -471,43 +471,43 @@ msgstr "Παρατσούκλι"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr ""
+msgstr "Προηγμένη"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr ""
+msgstr "Κωδικοποίηση"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr ""
+msgstr "Εμφάνιση ακατέργαστου"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr ""
+msgstr "Εκτελέστε εντολές όταν συνδεθείτε"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr ""
+msgstr "Επικίνδυνη Ζώνη"
 
 #: Remove network
 msgid "settings_remove"
-msgstr ""
+msgstr "Κατάργηση δικτύου"
 
 #: {{count}} person here
 msgid "person"
-msgstr ""
+msgstr "{{count}} άτομο εδώ"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr ""
+msgstr "{{count}} άτομα εδώ"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Φιλτράρισμα χρηστών στο κανάλι"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr ""
+msgstr "Επανασυνδεθείτε για να συμμετάσχετε στο {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
