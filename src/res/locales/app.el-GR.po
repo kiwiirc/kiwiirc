@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 10:29\n"
+"PO-Revision-Date: 2018-08-17 10:50\n"
 
 #: Start
 msgid "start_button"
@@ -687,19 +687,19 @@ msgstr "δίνει μισό-ops στο"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr ""
+msgstr "παίρνει μισό-ops από"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr ""
+msgstr "δίνει φωνή σε"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr ""
+msgstr "παίρνει φωνή από"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr ""
+msgstr "δίνει τον διαχειριστή στο"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
