@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 12:11\n"
+"PO-Revision-Date: 2018-08-17 12:21\n"
 
 #: Start
 msgid "start_button"
@@ -59,7 +59,7 @@ msgstr "Ειδοποιήσεις"
 
 #: Username
 msgid "username"
-msgstr "Ψευδώνυμο"
+msgstr "Όνομα χρήστη"
 
 #: Password
 msgid "password"
@@ -427,7 +427,7 @@ msgstr "Μη συνδεδεμένο"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Προσωπική συνομιλία με τον"
+msgstr "Προσωπική συνομιλία με"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
@@ -467,7 +467,7 @@ msgstr "Τα στοιχεία σας"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Παρατσούκλι"
+msgstr "Ψευδώνυμο"
 
 #: Advanced
 msgid "settings_advanced"
@@ -639,35 +639,35 @@ msgstr "Διατίθεται για βοήθεια"
 
 #: Is an operator
 msgid "user_op"
-msgstr ""
+msgstr "Είναι ένας χειριστής"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr ""
+msgstr "Σύνδεθηκε με {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr ""
+msgstr "Ασφαλής σύνδεση μέσω SSL/TLS"
 
 #: Also in channels {{channels}}
 msgid "user_channels"
-msgstr ""
+msgstr "Επίσης στα κανάλια {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr ""
+msgstr "Επίπεδο πρόσβασης"
 
 #: Normal
 msgid "user_normal"
-msgstr ""
+msgstr "Κανονικό"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr ""
+msgstr "Κλωτσιά από το κανάλι"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr ""
+msgstr "Απαγόρευση από το κανάλι"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
