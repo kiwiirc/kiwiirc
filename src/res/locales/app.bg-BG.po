@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-08-17 08:00\n"
+"PO-Revision-Date: 2018-08-17 08:10\n"
 
 #: Start
 msgid "start_button"
@@ -343,11 +343,11 @@ msgstr "Опасна зона: Промяната на някои от тези 
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Рестартиране"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Филтриране"
 
 #: Refresh banlist
 msgid "bans_refresh"
