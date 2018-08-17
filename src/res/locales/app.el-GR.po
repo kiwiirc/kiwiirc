@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 07:50\n"
+"PO-Revision-Date: 2018-08-17 08:20\n"
 
 #: Start
 msgid "start_button"
@@ -443,19 +443,19 @@ msgstr "Φόρτωση"
 
 #: Load previous messages
 msgid "messages_load"
-msgstr ""
+msgstr "Φόρτωση προηγούμενων μηνυμάτων"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Μη αναγνωσμένα μηνύματα"
 
 #: Server details
 msgid "settings_server_details"
-msgstr ""
+msgstr "Λεπτομέρειες διακομιστή"
 
 #: Port
 msgid "settings_port"
-msgstr ""
+msgstr "Θύρα"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
