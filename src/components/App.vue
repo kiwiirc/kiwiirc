@@ -80,7 +80,6 @@ let ContainerUiState = Vue.extend({
     data() {
         return {
             sidebarOpen: false,
-            sidebarPinned: false,
             // sidebarSection may be either '', 'user', 'settings', 'nicklist'
             sidebarSection: '',
             sidebarUser: null,
@@ -100,9 +99,9 @@ let ContainerUiState = Vue.extend({
         canPin() {
             return this.$state.ui.app_width > 769;
         },
-    },
-    created() {
-        this.sidebarPinned = this.$state.setting('sidebarPinned');
+        sidebarPinned() {
+            return this.$state.setting('sidebarPinned');
+        },
     },
     methods: {
         section() {
@@ -125,14 +124,12 @@ let ContainerUiState = Vue.extend({
         },
         pin() {
             this.$state.setting('sidebarPinned', true);
-            this.sidebarPinned = true;
             if (this.sidebarSection === '') {
                 this.sidebarSection = 'nicklist';
             }
         },
         unpin() {
             this.$state.setting('sidebarPinned', false);
-            this.sidebarPinned = false;
             this.close();
         },
         close() {
