@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 12:00\n"
+"PO-Revision-Date: 2018-08-17 12:11\n"
 
 #: Start
 msgid "start_button"
@@ -571,71 +571,71 @@ msgstr "Βεβαιωθείτε ότι έχετε εγκαταστήσει σωσ
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr ""
+msgstr "Εφυγέ {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr ""
+msgstr "Ο λογαριασμός σας"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr ""
+msgstr "Οι ρυθμίσεις και τα δίκτυά σας θα αποθηκευτούν σε αυτόν τον υπολογιστή."
 
 #: Forget me
 msgid "state_forget"
-msgstr ""
+msgstr "Ξέχασέ με"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr ""
+msgstr "Δεν υπάρχουν δίκτυα εδώ ακόμη."
 
 #: Add one?
 msgid "state_add"
-msgstr ""
+msgstr "Προσθέστε ένα;"
 
 #: Available networks
 msgid "state_available"
-msgstr ""
+msgstr "Διαθέσιμα δίκτυα"
 
 #: Configure network
 msgid "state_configure"
-msgstr ""
+msgstr "Ρύθμιση δικτύου"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr ""
+msgstr "Μη συνδεδεμένο."
 
 #: Join new #channel
 msgid "state_join"
-msgstr ""
+msgstr "Συμμετοχή σε νέο #κανάλι"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Φιλτράρετε τα κανάλια"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Βρείτε περισσότερα κανάλια"
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "Αλλαγή ψευδώνυμου"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr ""
+msgstr "Ονομα λογαριασμού: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr ""
+msgstr "Πραγματικό όνομα: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr ""
+msgstr "Είναι ένα bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr ""
+msgstr "Διατίθεται για βοήθεια"
 
 #: Is an operator
 msgid "user_op"
