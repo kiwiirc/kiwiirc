@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 11:00\n"
+"PO-Revision-Date: 2018-08-17 11:11\n"
 
 #: Start
 msgid "start_button"
@@ -719,7 +719,7 @@ msgstr "{{nick}} έχει απαγορεύσει {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "έχει καταργήσει την απαγόρευση"
+msgstr "{{nick}} έχει καταργήσει την απαγόρευση {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
@@ -727,27 +727,27 @@ msgstr "{{nick}} καθόριση {{mode}} επί {{target}}"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr ""
+msgstr "Ο IRC πελάτης σας"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr ""
+msgstr "Προσθέστε τα δίκτυά σας. Συμμετέχετε στα κανάλια σας."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr ""
+msgstr "Θα είναι εδώ όταν επιστρέψετε."
 
 #: Add a Network
 msgid "personal_add"
-msgstr ""
+msgstr "Προσθέστε ένα Δίκτυο"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr ""
+msgstr "Αποθηκευμένα δίκτυα"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr ""
+msgstr "Kiwi IRC (επόμενης γενεάς) - Ρίζα προεπισκόπησης "
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
