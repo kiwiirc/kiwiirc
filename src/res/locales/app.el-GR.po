@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 09:20\n"
+"PO-Revision-Date: 2018-08-17 09:30\n"
 
 #: Start
 msgid "start_button"
@@ -287,39 +287,39 @@ msgstr "Εισαγάγετε κλειδί καναλιού"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr ""
+msgstr "Επανασύνδεση"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr ""
+msgstr "Ενημερώσε με πότε"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "Όλα τα μηνύματα"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "Αναφέρομαι"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "Ποτέ"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr ""
+msgstr "Σίγαση ήχων"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr ""
+msgstr "Απόκρυψη αριθμού μη αναγνωσμένων μηνυμάτων"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr ""
+msgstr "Εργαλεία Διαχειριστή"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Προκαθορισμένη απαγορευμένη μάσκα"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
