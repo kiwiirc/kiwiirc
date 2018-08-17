@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 02:00\n"
+"PO-Revision-Date: 2018-08-17 02:10\n"
 
 #: Start
 msgid "start_button"
@@ -95,55 +95,55 @@ msgstr "Σύνδεση"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "Άκυρη σύνδεση"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "Αναζήτηση"
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "Εντάξει"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "Ακύρωση"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Ναί"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "Όχι"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "Δεν βρέθηκε"
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "Προσοχή"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "Αυτό θα κλείσει όλες τις συνομιλίες Kiwi IRC. Είστε βέβαιοι ότι θέλετε να κλείσετε αυτό το παράθυρο;"
 
 #: Real name
 msgid "whois_realname"
-msgstr ""
+msgstr "Πραγματικό όνομα"
 
 #: Status
 msgid "whois_status"
-msgstr ""
+msgstr "Κατάσταση"
 
 #: Is available
 msgid "whois_status_available"
-msgstr ""
+msgstr "Είναι διαθέσιμο"
 
 #: Send a message
 msgid "send_a_message"
-msgstr ""
+msgstr "Στείλτε μήνυμα"
 
 #: More information
 msgid "more_information"
