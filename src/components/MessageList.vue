@@ -72,7 +72,6 @@
 <script>
 
 import strftime from 'strftime';
-import state from '@/libs/state';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import BufferKey from './BufferKey';
 import NotConnected from './NotConnected';
@@ -93,7 +92,7 @@ export default {
         LoadingAnimation,
     },
     props: ['buffer'],
-    data: function data() {
+    data() {
         return {
             auto_scroll: true,
             chathistoryAvailable: true,
@@ -104,17 +103,17 @@ export default {
         };
     },
     computed: {
-        thisMl: function thisMl() {
+        thisMl() {
             return this;
         },
-        listType: function listType() {
-            return state.setting('messageLayout');
+        listType() {
+            return this.buffer.setting('messageLayout');
         },
-        useExtraFormatting: function useExtraFormatting() {
+        useExtraFormatting() {
             // Enables simple markdown formatting
             return this.buffer.setting('extra_formatting');
         },
-        shouldShowChathistoryTools: function shouldShowChathistoryTools() {
+        shouldShowChathistoryTools() {
             // Only show it if we're connected
             if (this.buffer.getNetwork().state !== 'connected') {
                 return false;
@@ -129,7 +128,7 @@ export default {
                 this.buffer.isChannel() &&
                 this.buffer.flags.channel_badkey;
         },
-        ourNick: function ourNick() {
+        ourNick() {
             return this.buffer ?
                 this.buffer.getNetwork().nick :
                 '';
@@ -215,7 +214,7 @@ export default {
         },
     },
     watch: {
-        buffer: function watchBuffer(newBuffer) {
+        buffer(newBuffer) {
             if (!newBuffer) {
                 return;
             }
@@ -228,26 +227,26 @@ export default {
 
             this.scrollToBottom();
         },
-        'buffer.message_count': function watchBufferMessageCount() {
+        'buffer.message_count'() {
             this.$nextTick(() => {
                 this.maybeScrollToBottom();
             });
         },
     },
-    mounted: function mounted() {
+    mounted() {
         this.$nextTick(() => {
             this.scrollToBottom();
         });
 
-        this.listen(state, 'mediaviewer.opened', () => {
+        this.listen(this.$state, 'mediaviewer.opened', () => {
             this.$nextTick(this.maybeScrollToBottom.apply(this));
         });
     },
     methods: {
-        isHoveringOverMessage: function isHoveringOverMessage(message) {
+        isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
-        toggleMessageInfo: function toggleMessageInfo(message) {
+        toggleMessageInfo(message) {
             if (!message) {
                 this.message_info_open = null;
             } else if (this.message_info_open === message) {
@@ -297,14 +296,14 @@ export default {
 
             return false;
         },
-        canShowInfoForMessage: function canShowInfoForMessage(message) {
+        canShowInfoForMessage(message) {
             let showInfoForTypes = ['privmsg', 'notice', 'action'];
             return showInfoForTypes.indexOf(message.type) > -1;
         },
-        bufferSetting: function bufferSetting(key) {
+        bufferSetting(key) {
             return this.buffer.setting(key);
         },
-        formatTime: function formatTime(time) {
+        formatTime(time) {
             return strftime(this.buffer.setting('timestamp_format') || '%T', new Date(time));
         },
         formatTimeFull(time) {
@@ -313,10 +312,10 @@ export default {
                 strftime(format, new Date(time)) :
                 (new Date(time)).toLocaleString();
         },
-        formatMessage: function formatMessage(message) {
+        formatMessage(message) {
             return message.toHtml(this);
         },
-        isMessageHighlight: function isMessageHighlight(message) {
+        isMessageHighlight(message) {
             // Highlighting ourselves when we join or leave a channel is silly
             if (message.type === 'traffic') {
                 return false;
@@ -324,30 +323,30 @@ export default {
 
             return message.isHighlight;
         },
-        nickStyle: function nickColour(nick) {
+        nickStyle(nick) {
             if (this.bufferSetting('colour_nicknames_in_messages')) {
                 return 'color:' + TextFormatting.createNickColour(nick) + ';';
             }
             return '';
         },
         openUserBox(nick) {
-            let user = state.getUser(this.buffer.networkid, nick);
+            let user = this.$state.getUser(this.buffer.networkid, nick);
             if (user) {
-                state.$emit('userbox.show', user, {
+                this.$state.$emit('userbox.show', user, {
                     buffer: this.buffer,
                 });
             }
         },
-        onListClick: function onListClick(event) {
+        onListClick(event) {
             this.toggleMessageInfo();
         },
-        onMessageClick: function onThreadClick(event, message) {
+        onMessageClick(event, message) {
             let isLink = event.target.tagName === 'A';
 
             let channelName = event.target.getAttribute('data-channel-name');
             if (channelName && isLink) {
                 let network = this.buffer.getNetwork();
-                state.addBuffer(this.buffer.networkid, channelName);
+                this.$state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
                 return;
             }
@@ -360,7 +359,7 @@ export default {
 
             let url = event.target.getAttribute('data-url');
             if (url && isLink) {
-                state.$emit('mediaviewer.show', url);
+                this.$state.$emit('mediaviewer.show', url);
             }
 
             if (this.message_info_open && this.message_info_open !== message) {
@@ -370,7 +369,7 @@ export default {
                 return;
             }
 
-            if (state.ui.is_touch) {
+            if (this.$state.ui.is_touch) {
                 if (this.canShowInfoForMessage(message) && event.target.nodeName === 'A') {
                     // We show message info boxes on touch screen devices so that the user has an
                     // option to preview the links or do other stuff.
@@ -380,7 +379,7 @@ export default {
                 this.toggleMessageInfo(message);
             }
         },
-        onThreadScroll: function onThreadScroll() {
+        onThreadScroll() {
             let el = this.$el;
             let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
 
@@ -390,10 +389,10 @@ export default {
                 this.auto_scroll = true;
             }
         },
-        scrollToBottom: function scrollToBottom() {
+        scrollToBottom() {
             this.$el.scrollTop = this.$el.scrollHeight;
         },
-        maybeScrollToBottom: function maybeScrollToBottom() {
+        maybeScrollToBottom() {
             if (this.auto_scroll) {
                 this.$el.scrollTop = this.$el.scrollHeight;
             }
