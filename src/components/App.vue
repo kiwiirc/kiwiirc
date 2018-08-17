@@ -101,6 +101,9 @@ let ContainerUiState = Vue.extend({
             return this.$state.ui.app_width > 769;
         },
     },
+    created() {
+        this.sidebarPinned = this.$state.setting('sidebarPinned');
+    },
     methods: {
         section() {
             if (this.isClosed) {
@@ -121,12 +124,14 @@ let ContainerUiState = Vue.extend({
             return '';
         },
         pin() {
+            this.$state.setting('sidebarPinned', true);
             this.sidebarPinned = true;
             if (this.sidebarSection === '') {
                 this.sidebarSection = 'nicklist';
             }
         },
         unpin() {
+            this.$state.setting('sidebarPinned', false);
             this.sidebarPinned = false;
             this.close();
         },
