@@ -1,3 +1,4 @@
+'kiwi public';
 
 /**
  * Converts a hex CSS color value to RGB.

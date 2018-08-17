@@ -1,3 +1,5 @@
+'kiwi public';
+
 /* eslint-disable */
 // http://www.myersdaily.org/joseph/javascript/md5-text.html
 

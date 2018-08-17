@@ -1,3 +1,5 @@
+'kiwi public';
+
 import _ from 'lodash';
 
 // "#chan,#chan2" => 2 channels without a key
