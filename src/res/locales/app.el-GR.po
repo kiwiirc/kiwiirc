@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 01:50\n"
+"PO-Revision-Date: 2018-08-17 02:00\n"
 
 #: Start
 msgid "start_button"
@@ -83,15 +83,15 @@ msgstr "Κανάλι"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "Δίκτυο"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "Σύνδεση"
 
 #: Invalid login
 msgid "invalid_login"
