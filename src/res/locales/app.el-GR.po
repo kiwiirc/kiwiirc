@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 11:40\n"
+"PO-Revision-Date: 2018-08-17 11:50\n"
 
 #: Start
 msgid "start_button"
@@ -511,39 +511,39 @@ msgstr "Επανασυνδεθείτε για να συμμετάσχετε στ
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr ""
+msgstr "Επανασυνδέστε στο {{network}} για να αρχίσετε να μιλάτε"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr ""
+msgstr "Επανασυνδέστε για να συνεχίσετε να μιλάτε με {{user}}"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr ""
+msgstr "Ρυθμίσεις σύνδεσης"
 
 #: Close options
 msgid "side_close"
-msgstr ""
+msgstr "Κλείσιμο επιλογών"
 
 #: Channel options
 msgid "side_options"
-msgstr ""
+msgstr "Επιλογές καναλιού"
 
 #: Your settings
 msgid "side_settings"
-msgstr ""
+msgstr "Οι ρυθμίσεις σας"
 
 #: Show when people join
 msgid "side_joins"
-msgstr ""
+msgstr "Εμφάνιση όταν συμμετέχουν τα άτομα"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Εμφάνιση όταν αλλάζει το θέμα του καναλιού"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Εμφάνιση όταν οι χρήστες αλλάζουν τα ψευδώνυμά τους"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
