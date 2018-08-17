@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 08:40\n"
+"PO-Revision-Date: 2018-08-17 09:20\n"
 
 #: Start
 msgid "start_button"
@@ -259,31 +259,31 @@ msgstr "Χρώμα ψευδωνύμων σε μηνύματα"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr ""
+msgstr "Συμπεριλάβετε μηνύματα δραστηριοτήτων Συμμετοχής / Αναχώρησης"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "Σίγαση ειδοποιήσεων ήχου"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr ""
+msgstr "Επισημάνετε τα λόγια (διαχωρισμένος χώρος)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr ""
+msgstr "Ψευδώνυμα"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Τι είναι τα ψευδώνυμα"
 
 #: Send Message
 msgid "send_message"
-msgstr ""
+msgstr "Στείλετε μήνυμα"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Εισαγάγετε κλειδί καναλιού"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
