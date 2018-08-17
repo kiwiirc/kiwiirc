@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 11:50\n"
+"PO-Revision-Date: 2018-08-17 12:00\n"
 
 #: Start
 msgid "start_button"
@@ -547,27 +547,27 @@ msgstr "Εμφάνιση όταν οι χρήστες αλλάζουν τα ψε
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Εμφάνιση όταν οι χρήστες αλλάζουν τις λειτουργίες στα κανάλια"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr ""
+msgstr "Επιπλέον μορφοποίηση μηνυμάτων"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr ""
+msgstr "Χρώματα ψευδώνυμων στη λίστα"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr ""
+msgstr "Δεν έχει οριστεί ρυθμιστής"
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr ""
+msgstr "Παρουσιάστηκε σφάλμα κατά την εκκίνηση του Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr ""
+msgstr "Βεβαιωθείτε ότι έχετε εγκαταστήσει σωστά το Kiwi IRC και ότι η διαμόρφωση μπορεί να φορτωθεί"
 
 #: Leave {{name}}
 msgid "state_leave"
