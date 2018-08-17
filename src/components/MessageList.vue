@@ -80,7 +80,7 @@ import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
 import LoadingAnimation from './LoadingAnimation.vue';
 
-let log = Logger.namespace('App.vue');
+let log = Logger.namespace('MessageList.vue');
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
