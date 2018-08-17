@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-08-09 13:54\n"
+"PO-Revision-Date: 2018-08-17 08:10\n"
 
 #: Start
 msgid "start_button"
@@ -119,11 +119,11 @@ msgstr "Не"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "Не е намерен."
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "Внимание!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -327,27 +327,27 @@ msgstr "Причита по подразбиране за KICK"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr ""
+msgstr "Разширени настройки"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr ""
+msgstr "Чудовищата са тук, кликнете само върху този бутон, ако знаете какво правите"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr ""
+msgstr "Активирайте Разширени настройки"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Опасна зона: Промяната на някои от тези настройки може да наруши нещата!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Рестартиране"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Филтриране"
 
 #: Refresh banlist
 msgid "bans_refresh"
