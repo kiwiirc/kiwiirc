@@ -26,7 +26,7 @@
                     <server-view :network="network" :buffer="buffer" :ui-state="uiState"/>
                 </template>
                 <template v-else>
-                    <message-list :buffer="buffer" :users="users"/>
+                    <message-list :buffer="buffer"/>
                     <sidebar
                         v-if="buffer.isChannel() /* There are no sidebars for queries yet */"
                         :network="network"
@@ -65,7 +65,7 @@ export default {
         MessageList,
         ServerView,
     },
-    props: ['network', 'buffer', 'users', 'uiState'],
+    props: ['network', 'buffer', 'uiState'],
     data: function data() {
         return {
         };

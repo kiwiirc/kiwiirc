@@ -24,7 +24,6 @@
                     <container
                         :network="network"
                         :buffer="buffer"
-                        :users="users"
                         :ui-state="uiState"
                     >
                         <media-viewer
@@ -190,14 +189,6 @@ export default {
         },
         buffer() {
             return this.$state.getActiveBuffer();
-        },
-        users() {
-            let activeNetwork = this.network;
-            if (!activeNetwork) {
-                return null;
-            }
-
-            return activeNetwork.users;
         },
     },
     created() {

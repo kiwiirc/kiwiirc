@@ -92,7 +92,7 @@ export default {
         MessageListMessageCompact,
         LoadingAnimation,
     },
-    props: ['buffer', 'users'],
+    props: ['buffer'],
     data: function data() {
         return {
             auto_scroll: true,
