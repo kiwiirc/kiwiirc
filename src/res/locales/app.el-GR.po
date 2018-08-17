@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 11:11\n"
+"PO-Revision-Date: 2018-08-17 11:34\n"
 
 #: Start
 msgid "start_button"
@@ -751,15 +751,15 @@ msgstr "Kiwi IRC (επόμενης γενεάς) - Ρίζα προεπισκόπ
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr ""
+msgstr "Άμεσες υποδοχές ιστού. Δεν εμπλέκεται κανένας διακομιστής Kiwi ή webirc."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr ""
+msgstr "(Χάρη στον Adam @ Rizon για την υποστήριξη ανάπτυξης διακομιστή υποδοχής ιστού!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr ""
+msgstr "Δώστε την δοκιμαστική έκδοση του προγράμματος ανάπτυξης Kiwi IRC!"
 
 #: Connected
 msgid "connected"
@@ -767,41 +767,41 @@ msgstr "Συνδέθηκε"
 
 #: Disconnected
 msgid "disconnected"
-msgstr ""
+msgstr "Αποσυνδέθηκε"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr ""
+msgstr "Σύνδεθηκε με {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr ""
+msgstr "{{nick}} έχει γίνει μέλος"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr ""
+msgstr "{{nick}} σας κλώτσησε από {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr ""
+msgstr "{{nick}} σας κλώτσησε από {{channel}} με {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr ""
+msgstr "{{nick}} έχει φύγει"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr ""
+msgstr "{{nick}} σας προσκάλεσε να συμμετάσχετε στο {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr ""
+msgstr "Το παρατσούκλι {{nick}} είναι ήδη σε χρηση. Δοκιμάστε {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr ""
+msgstr "{{nick}} είναι τώρα γνωστό ως {{newnick}}"
 
 #: changed the topic to:
 msgid "changed_topic_to"
-msgstr ""
+msgstr "άλλαξε το θέμα σε: {{topic}}"
 
