@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 09:51\n"
+"PO-Revision-Date: 2018-08-17 09:58\n"
 
 #: Start
 msgid "start_button"
@@ -399,19 +399,19 @@ msgstr "Δεν βρέθηκαν κανάλια, δοκιμάστε ξανά αρ
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr ""
+msgstr "Καλώς ήλθατε στο Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr ""
+msgstr "Εμφάνιση κατάστασης περιήγησης"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Απόκρυψη θέματος"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Θέμα προβολής"
 
 #: Channel Settings
 msgid "channel_settings"
@@ -467,7 +467,7 @@ msgstr "Τα στοιχεία σας"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr ""
+msgstr "Παρατσούκλι"
 
 #: Advanced
 msgid "settings_advanced"
@@ -671,7 +671,7 @@ msgstr ""
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "Απαγόρευση και κλωτσιά από το κανάλι"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
