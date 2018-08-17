@@ -14,7 +14,6 @@ const stateObj = {
         plugins: [],
         windowTitle: 'Kiwi IRC - The web IRC client',
         useMonospace: false,
-        messageLayout: 'compact',
         theme: 'Default',
         themes: [
             { name: 'Default', url: 'static/themes/default' },
@@ -38,6 +37,7 @@ const stateObj = {
         warnOnExit: true,
         // Default buffer settings
         buffers: {
+            messageLayout: 'compact',
             alert_on: 'highlight',
             timestamp_format: '%H:%M:%S',
             // If timestamp_full_format is falsy, the browsers locale date format will be used
