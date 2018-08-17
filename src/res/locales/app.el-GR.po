@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-17 09:58\n"
+"PO-Revision-Date: 2018-08-17 10:10\n"
 
 #: Start
 msgid "start_button"
@@ -675,7 +675,7 @@ msgstr "Απαγόρευση και κλωτσιά από το κανάλι"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "δίνει ops στο"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
