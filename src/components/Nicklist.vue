@@ -44,6 +44,8 @@
 
 <script>
 
+'kiwi public';
+
 import state from '@/libs/state';
 import Logger from '@/libs/Logger';
 import * as TextFormatting from '@/helpers/TextFormatting';
