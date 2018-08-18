@@ -3,34 +3,34 @@ const path = require('path');
 const entry = 'window._kiwi_exports';
 
 function accesorString(value) {
-  const childProperties = value.split('.');
-  let propertyString = entry;
-  let result = '';
+    const childProperties = value.split('.');
+    let propertyString = entry;
+    let result = '';
 
-  for (let i = 0; i < childProperties.length; i++) {
-    if (i > 0) result += `if(!${propertyString}) ${propertyString} = {};\n`;
-    propertyString += `[${JSON.stringify(childProperties[i])}]`;
-  }
+    for (let i = 0; i < childProperties.length; i++) {
+        if (i > 0) result += `if(!${propertyString}) ${propertyString} = {};\n`;
+        propertyString += `[${JSON.stringify(childProperties[i])}]`;
+    }
 
-  result += `${propertyString}`;
-  return result;
+    result += `${propertyString}`;
+    return result;
 }
 
 module.exports = function(source) {
-	if (source.indexOf('\'kiwi public\'') > -1) {
-		let resource = this.resourcePath;
-		let pos = resource.indexOf(path.sep + 'src' + path.sep);
-		resource = resource.substr(pos + 5);
-		resource = resource.replace(path.sep, '.');
-		resource = resource.replace(/\.(vue|js)$/, '');
+    if (source.indexOf('\'kiwi public\'') > -1) {
+        let resource = this.resourcePath;
+        let pos = resource.indexOf(path.sep + 'src' + path.sep);
+        resource = resource.substr(pos + 5);
+        resource = resource.replace(path.sep, '.');
+        resource = resource.replace(/\.(vue|js)$/, '');
 
-		let a = '\r\n';
-		a += `${entry} = ${entry} || {};\r\n`;
-		a += accesorString(resource);
-		a += `\r\n${entry}.${resource} = exports.default ? exports.default : exports;\r\n`;
+        let a = '\r\n';
+        a += `${entry} = ${entry} || {};\r\n`;
+        a += accesorString(resource);
+        a += `\r\n${entry}.${resource} = exports.default ? exports.default : exports;\r\n`;
 
-		source += a;
-	}
+        source += a;
+    }
 
-	return source;
+    return source;
 };
