@@ -1,3 +1,5 @@
+'kiwi public';
+
 /**
  * Command input Alias + re-writing
  *

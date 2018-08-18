@@ -1,3 +1,5 @@
+'kiwi public';
+
 export class AudioBleep {
     constructor() {
         this.lastPlayed = 0;

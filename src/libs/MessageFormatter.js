@@ -1,3 +1,5 @@
+'kiwi public';
+
 const tokens = Object.create(null);
 
 /**

@@ -1,3 +1,5 @@
+'kiwi public';
+
 import EventEmitter from 'eventemitter3';
 import Vue from 'vue';
 import _ from 'lodash';

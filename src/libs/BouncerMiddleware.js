@@ -1,3 +1,5 @@
+'kiwi public';
+
 import strftime from 'strftime';
 
 export default function bouncerMiddleware() {

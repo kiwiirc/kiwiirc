@@ -1,3 +1,5 @@
+'kiwi public';
+
 import * as Misc from '@/helpers/Misc';
 import Vue from 'vue';
 import _ from 'lodash';

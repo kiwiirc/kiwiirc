@@ -1,3 +1,5 @@
+'kiwi public';
+
 import SockJS from 'sockjs-client';
 import EventEmitter from 'eventemitter3';
 

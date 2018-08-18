@@ -1,3 +1,5 @@
+'kiwi public';
+
 import xhr from 'xhr';
 import _ from 'lodash';
 import Logger from './Logger';
