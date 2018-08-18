@@ -1,6 +1,7 @@
 import EventEmitter from 'eventemitter3';
 import Vue from 'vue';
 import _ from 'lodash';
+import * as Misc from '@/helpers/Misc';
 import Logger from './Logger';
 
 let singletonInstance = null;
@@ -180,5 +181,14 @@ export default class GlobalApi extends EventEmitter {
     addStartup(name, ctor) {
         let startups = this.state.getStartups();
         startups[name] = ctor;
+    }
+
+    replaceModule(dest, source) {
+        let mod = this.require(dest);
+        if (!mod) {
+            throw new Error(`The module ${dest} does not exist`);
+        }
+
+        Misc.replaceObjectProps(mod, source);
     }
 }

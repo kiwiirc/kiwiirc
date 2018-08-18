@@ -201,3 +201,16 @@ export function dedotObject(confObj, _place) {
         }
     });
 }
+
+// Replace the target object with source, while keeping the target object reference intact.
+// Delete all the properties from the target object and copy the properties from source
+// over to the target.
+// a = {one: 1, two: 2, three: 3}
+// b = {four: 4, five: 5, six: 6}
+// replaceObjectProps(a, b)
+// a.one === undefined;
+// a.six === 6;
+export function replaceObjectProps(target, source) {
+    Object.keys(target).forEach(prop => delete target[prop]);
+    Object.keys(source).forEach((prop) => { target[prop] = source[prop]; });
+}
