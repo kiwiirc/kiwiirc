@@ -1,3 +1,5 @@
+const path = require('path');
+
 const entry = 'window._kiwi_exports';
 
 function accesorString(value) {
@@ -17,9 +19,9 @@ function accesorString(value) {
 module.exports = function(source) {
 	if (source.indexOf('\'kiwi public\'') > -1) {
 		let resource = this.resourcePath;
-		let pos = resource.indexOf('/src/');
+		let pos = resource.indexOf(path.sep + 'src' + path.sep);
 		resource = resource.substr(pos + 5);
-		resource = resource.replace('/', '.');
+		resource = resource.replace(path.sep, '.');
 		resource = resource.replace(/\.(vue|js)$/, '');
 
 		let a = '\r\n';
