@@ -88,7 +88,7 @@
                     v-for="network in networksToShow"
                     :key="network.id"
                     :network="network"
-                    :ui-state="uiState"
+                    :sidebar-state="sidebarState"
                 />
             </div>
         </div>
@@ -118,7 +118,7 @@ export default {
         BufferSettings,
         StateBrowserNetwork,
     },
-    props: ['networks', 'uiState'],
+    props: ['networks', 'sidebarState'],
     data: function data() {
         return {
             is_usermenu_open: false,

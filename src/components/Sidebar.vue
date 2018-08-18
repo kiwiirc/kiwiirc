@@ -1,19 +1,26 @@
 <template>
-    <div :class="['kiwi-sidebar-section-' + uiState.section()]" class="kiwi-sidebar kiwi-theme-bg">
+    <div
+        :class="['kiwi-sidebar-section-' + sidebarState.section()]"
+        class="kiwi-sidebar kiwi-theme-bg"
+    >
         <template v-if="buffer">
             <template v-if="buffer.isChannel()">
 
-                <span v-if="uiState.isOpen" class="kiwi-sidebar-options">
-                    <div v-if="uiState.canPin" class="kiwi-sidebar-pin" @click="uiState.pin()">
+                <span v-if="sidebarState.isOpen" class="kiwi-sidebar-options">
+                    <div
+                        v-if="sidebarState.canPin"
+                        class="kiwi-sidebar-pin"
+                        @click="sidebarState.pin()"
+                    >
                         <i class="fa fa-thumb-tack" aria-hidden="true"/>
                     </div>
-                    <div class="kiwi-sidebar-close" @click="uiState.close()">
+                    <div class="kiwi-sidebar-close" @click="sidebarState.close()">
                         {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
                     </div>
                 </span>
 
                 <div
-                    v-if="uiState.section() === 'settings'"
+                    v-if="sidebarState.section() === 'settings'"
                     class="kiwi-sidebar-buffersettings"
                     @click.stop=""
                 >
@@ -72,22 +79,22 @@
                 </div>
 
                 <div
-                    v-else-if="uiState.section() === 'user'"
+                    v-else-if="sidebarState.section() === 'user'"
                     class="kiwi-sidebar-userbox"
                     @click.stop=""
                 >
                     <user-box
-                        :user="uiState.sidebarUser"
+                        :user="sidebarState.sidebarUser"
                         :buffer="buffer"
                         :network="network"
                     />
                 </div>
 
                 <nicklist
-                    v-else-if="uiState.section() === 'nicklist' || uiState.section() === ''"
+                    v-else-if="sidebarState.section() === 'nicklist' || !sidebarState.section()"
                     :network="network"
                     :buffer="buffer"
-                    :ui-state="uiState"
+                    :sidebar-state="sidebarState"
                 />
             </template>
             <template v-else-if="buffer.isQuery()">
@@ -108,10 +115,13 @@
 
 import UserBox from '@/components/UserBox';
 import GlobalApi from '@/libs/GlobalApi';
+import SidebarState from './SidebarState';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
 import Nicklist from './Nicklist';
+
+export { SidebarState as State };
 
 export default {
     components: {
@@ -121,7 +131,7 @@ export default {
         Nicklist,
         UserBox,
     },
-    props: ['network', 'buffer', 'uiState'],
+    props: ['network', 'buffer', 'sidebarState'],
     data: function data() {
         return {
             pluginUiElements: GlobalApi.singleton().sideBarPlugins,
@@ -193,6 +203,7 @@ export default {
         },
     },
 };
+
 </script>
 
 <style lang="less">

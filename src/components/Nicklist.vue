@@ -62,7 +62,7 @@ function strCompare(a, b) {
 }
 
 export default {
-    props: ['network', 'buffer', 'uiState'],
+    props: ['network', 'buffer', 'sidebarState'],
     data: function data() {
         return {
             userbox_user: null,
@@ -173,7 +173,7 @@ export default {
         openQuery(user) {
             let buffer = state.addBuffer(this.buffer.networkid, user.nick);
             state.setActiveBuffer(buffer.networkid, buffer.name);
-            this.uiState.close();
+            this.sidebarState.close();
         },
         openUserbox(user) {
             state.$emit('userbox.show', user, {

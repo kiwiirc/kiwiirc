@@ -35,28 +35,34 @@
                     </a>
                 </div>
                 <div
-                    :class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='nicklist'}"
+                    :class="{
+                        'kiwi-header-option--active': sidebarState.sidebarSection === 'nicklist'
+                    }"
                     class="kiwi-header-option kiwi-header-option-nicklist"
                 >
-                    <a @click="uiState.showNicklist()">
+                    <a @click="sidebarState.showNicklist()">
                         <i class="fa fa-users" aria-hidden="true"/>
                         <span>{{ $t('person', {count: Object.keys(buffer.users).length}) }}</span>
                     </a>
                 </div>
                 <div
-                    :class="{ 'kiwi-header-option--active': uiState.sidebarSection ==='settings'}"
+                    :class="{
+                        'kiwi-header-option--active': sidebarState.sidebarSection === 'settings'
+                    }"
                     class="kiwi-header-option kiwi-header-option-settings"
                 >
-                    <a @click="uiState.showBufferSettings()">
+                    <a @click="sidebarState.showBufferSettings()">
                         <i class="fa fa-cog" aria-hidden="true"/>
                         <span>{{ $t('channel_settings') }}</span>
                     </a>
                 </div>
                 <div
-                    v-if="uiState.isPinned"
+                    v-if="sidebarState.isPinned"
                     class="kiwi-header-option kiwi-header-option-unpinsidebar"
                 >
-                    <a @click="uiState.unpin()"><i class="fa fa-thumb-tack" aria-hidden="true"/></a>
+                    <a @click="sidebarState.unpin()">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"/>
+                    </a>
                 </div>
                 <div
                     class="kiwi-header-option kiwi-header-option-leave"
@@ -179,7 +185,7 @@ export default {
         ChannelInfo,
         ChannelBanlist,
     },
-    props: ['buffer', 'uiState'],
+    props: ['buffer', 'sidebarState'],
     data: function data() {
         return {
             buffer_settings_open: false,

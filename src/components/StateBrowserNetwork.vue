@@ -164,7 +164,7 @@ export default {
     components: {
         BufferSettings,
     },
-    props: ['network', 'uiState'],
+    props: ['network', 'sidebarState'],
     data: function data() {
         return {
             collapsed: false,
@@ -287,7 +287,7 @@ export default {
         },
         showBufferSettings(buffer) {
             this.setActiveBuffer(buffer);
-            this.uiState.showBufferSettings();
+            this.sidebarState.showBufferSettings();
         },
         toggleAddChannel() {
             this.channel_add_display = !this.channel_add_display;
