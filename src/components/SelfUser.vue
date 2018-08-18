@@ -19,6 +19,8 @@
 
 <script>
 
+'kiwi public';
+
 export default {
     props: ['network'],
     data: function data() {

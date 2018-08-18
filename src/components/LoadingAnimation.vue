@@ -7,6 +7,8 @@
 
 <script>
 
+'kiwi public';
+
 export default {
     data() {
         return {

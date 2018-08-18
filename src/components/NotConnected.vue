@@ -46,6 +46,8 @@
 
 <script>
 
+'kiwi public';
+
 import state from '@/libs/state';
 
 export default {

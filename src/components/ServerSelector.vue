@@ -50,6 +50,8 @@
 
 <script>
 
+'kiwi public';
+
 import _ from 'lodash';
 
 export default {
