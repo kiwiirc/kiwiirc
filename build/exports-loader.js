@@ -19,9 +19,9 @@ function accesorString(value) {
 module.exports = function(source) {
     if (source.indexOf('\'kiwi public\'') > -1) {
         let resource = this.resourcePath;
-        let pos = resource.indexOf(path.sep + 'src' + path.sep);
+        let pos = resource.lastIndexOf(path.sep + 'src' + path.sep);
         resource = resource.substr(pos + 5);
-        resource = resource.replace(path.sep, '.');
+        resource = resource.split(path.sep).join('.');
         resource = resource.replace(/\.(vue|js)$/, '');
 
         let a = '\r\n';
