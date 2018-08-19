@@ -30,7 +30,6 @@
 
 <script>
 
-import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
 import MessageList from './MessageList';
 import NetworkSettings from './NetworkSettings';
@@ -49,28 +48,29 @@ export default {
         };
     },
     computed: {
-        networkConnected() {
-            return this.network.state === 'connected';
-        },
-        hasMessages: function hasMessages() {
+        hasMessages() {
             return this.network.serverBuffer().getMessages().length > 0;
         },
-        serverBuffer: function serverBuffer() {
+        serverBuffer() {
             return this.network.serverBuffer();
         },
         restrictedServer() {
-            return state.setting('restricted');
+            return this.$state.setting('restricted');
+        },
+        networkConnected() {
+            return this.network.state === 'connected';
         },
     },
     watch: {
         networkConnected() {
             this.$nextTick(() => {
+                // force update of tabbed-view
                 this.$refs.tabs.a++;
             });
         },
     },
     created() {
-        this.listen(state, 'server.tab.show', (tabName) => {
+        this.listen(this.$state, 'server.tab.show', (tabName) => {
             this.showTab(tabName);
         });
     },
