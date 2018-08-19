@@ -14,7 +14,7 @@
                     <network-settings :network="network"/>
                 </tabbed-tab>
                 <tabbed-tab
-                    v-if="network.state==='connected'"
+                    v-if="networkConnected"
                     :header="$t('channels')"
                     name="channels"
                 >
@@ -49,6 +49,9 @@ export default {
         };
     },
     computed: {
+        networkConnected() {
+            return this.network.state === 'connected';
+        },
         hasMessages: function hasMessages() {
             return this.network.serverBuffer().getMessages().length > 0;
         },
@@ -57,6 +60,13 @@ export default {
         },
         restrictedServer() {
             return state.setting('restricted');
+        },
+    },
+    watch: {
+        networkConnected() {
+            this.$nextTick(() => {
+                this.$refs.tabs.a++;
+            });
         },
     },
     created() {
