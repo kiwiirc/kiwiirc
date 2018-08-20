@@ -6,7 +6,7 @@ let nextBufferId = 0;
 
 export default class BufferState {
     constructor(name, networkid, state, messageDict) {
-        // Enumerable properties that become relative under Vue
+        // Enumerable properties that become reactive under Vue
         this.id = nextBufferId++;
         this.networkid = networkid;
         this.name = name;
@@ -30,7 +30,7 @@ export default class BufferState {
         this.message_count = 0;
         this.current_input = '';
 
-        // Some non-enumerable properties
+        // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'state', state, false);
         def(this, 'messageDict', messageDict, false);
 

@@ -2,7 +2,7 @@ import * as IrcClient from '../IrcClient';
 
 export default class NetworkState {
     constructor(id, appState, userDict, bufferDict) {
-        // Enumerable properties that become relative under Vue
+        // Enumerable properties that become reactive under Vue
         this.id = id;
         this.name = '';
         // State of the transport
@@ -30,7 +30,7 @@ export default class NetworkState {
         this.gecos = '';
         this.password = '';
 
-        // Some non-enumerable properties
+        // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'appState', appState, false);
         def(this, 'userDict', userDict, false);
         def(this, 'bufferDict', bufferDict, false);
