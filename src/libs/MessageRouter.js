@@ -23,7 +23,7 @@ $network - the network name
 # matching a message from a rule
 to - if a message is targetted to this name (channel or nick), then match this rule
 from - if a message is from this name (nick), then match this rule
-isPm - if this pessage is a private message sent to us
+pm - if this pessage is a private message sent to us
 contains - if a message contains this text, then match this rule
 type - if the type of message is an action/notice/message, apply this rule
 irc.command - if the irc command that created this message is this value, then match the rule
@@ -125,7 +125,12 @@ export default class MessageRouter {
             targetBuffer = ircMessage.message.substr(1, ircMessage.message.indexOf(']') - 1);
         }
 
-        let rule = this.findMatchingRule(ircMessage, ircClient, isPm, vars);
+        // Add some extra vars that the rules can make use of
+        let ruleVars = Object.assign({}, vars, {
+            defaultBuffer: targetBuffer,
+        });
+
+        let rule = this.findMatchingRule(ircMessage, ircClient, isPm, ruleVars);
 
         // No rule found, keep everything as default
         if (!rule) {
@@ -141,12 +146,21 @@ export default class MessageRouter {
 
         // Put the message in some buffers
         if (rule.put) {
-            buffers = rule.put.split(',');
+            buffers = _.compact(
+                rule.put.split(/[, ]/)
+                .map(b => b.trim())
+                .map(input => applyVars(input, ruleVars))
+            );
         }
 
         // Copy the messages to some buffers
         if (rule.copy) {
-            buffers = [targetBuffer, ...rule.copy.split(',')];
+            let bufs = _.compact(
+                rule.copy.split(/[, ]/)
+                .map(b => b.trim())
+                .map(input => applyVars(input, ruleVars))
+            );
+            buffers = [targetBuffer, ...bufs];
         }
 
         // Execute some IRC commands
@@ -163,21 +177,7 @@ export default class MessageRouter {
 
     // Find the first rule that matches an IRC message
     findMatchingRule(ircMessage, ircClient, isPm, vars = {}) {
-        // Apply any vars to the input string
-        let doVars = (input) => {
-            if (typeof input !== 'string') {
-                return input;
-            }
-
-            let out = input;
-            Object.keys(vars).forEach((varName) => {
-                // TODO: Cache these regexs somewhere
-                let regexp = new RegExp(_.escapeRegExp('$' + varName), 'g');
-                out = out.replace(regexp, vars[varName]);
-            });
-
-            return out;
-        };
+        let doVars = input => applyVars(input, vars);
 
         // Compare 2 strings helper
         let compare = (s1, s2) => {
@@ -221,10 +221,10 @@ export default class MessageRouter {
         for (let i = 0; i < this.rules.length; i++) {
             let rule = this.rules[i];
 
-            if (rule.isPm === 'yes' && !isPm) {
+            if (rule.pm === 'yes' && !isPm) {
                 continue;
             }
-            if (rule.isPm === 'no' && isPm) {
+            if (rule.pm === 'no' && isPm) {
                 continue;
             }
             if (!undef(rule.type) && !compare(rule.type, ircMessage.type)) {
@@ -277,3 +277,19 @@ export default class MessageRouter {
         return matchedRule;
     }
 }
+
+// Apply any $vars to the input string
+function applyVars(input, vars) {
+    if (typeof input !== 'string') {
+        return input;
+    }
+
+    let out = input;
+    Object.keys(vars).forEach((varName) => {
+        // TODO: Cache these regexs somewhere
+        let regexp = new RegExp(_.escapeRegExp('$' + varName), 'g');
+        out = out.replace(regexp, vars[varName]);
+    });
+
+    return out;
+};
