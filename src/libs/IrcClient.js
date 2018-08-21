@@ -6,6 +6,7 @@ import strftime from 'strftime';
 import Irc from 'irc-framework/browser';
 import bouncerMiddleware from './BouncerMiddleware';
 import * as ServerConnection from './ServerConnection';
+import MessageRouter from './MessageRouter';
 
 export function create(state, network) {
     let networkid = network.id;
@@ -100,6 +101,9 @@ function clientMiddleware(state, network) {
     let numConnects = 0;
     // Requested chathistory for this connection yet
     let requestedCh = false;
+
+    let mRouter = new MessageRouter();
+    mRouter.resetRulesFromString(state.setting('messageRoutes') || '');
 
     return function middlewareFn(client, rawEvents, parsedEvents) {
         parsedEvents.use(parsedEventsHandler);
@@ -309,63 +313,61 @@ function clientMiddleware(state, network) {
         }
 
         if (command === 'message') {
-            let isPrivateMessage = false;
-            let bufferName = event.from_server ? '*' : event.target;
-
-            // PMs should go to a buffer with the name of the other user
-            if (!event.from_server && event.target === client.user.nick) {
-                isPrivateMessage = true;
-                bufferName = event.nick;
-            }
-
-            // Chanserv sometimes PMs messages about a channel on join in the format of
-            // [#channel] welcome!
-            // Redirect these to #channel
-            if (
-                event.nick.toLowerCase() === 'chanserv' &&
-                isPrivateMessage &&
-                event.message[0] === '['
-            ) {
-                bufferName = event.message.substr(1, event.message.indexOf(']') - 1);
-            }
-
-            // Notices from somewhere when we don't have an existing buffer for them should go into
-            // the server tab. ie. notices from servers
-            if (event.type === 'notice') {
-                let existingBuffer = state.getBufferByName(networkid, bufferName);
-                if (!existingBuffer) {
-                    bufferName = '*';
-                }
-            }
-
-            let blockNewPms = state.setting('buffers.block_pms');
-            let buffer = state.getBufferByName(networkid, bufferName);
-            if (isPrivateMessage && !buffer && blockNewPms) {
-                return;
-            } else if (!buffer) {
-                buffer = state.getOrAddBufferByName(networkid, bufferName);
-            }
-
-            let textFormatType = 'privmsg';
-            if (event.type === 'action') {
-                textFormatType = 'action';
-            } else if (event.type === 'notice') {
-                textFormatType = 'notice';
-            }
-
-            let messageBody = TextFormatting.formatText(textFormatType, {
-                nick: event.nick,
-                username: event.ident,
-                host: event.hostname,
-                text: event.message,
+            let mRoute = mRouter.bufferNamesFromMessage(event, client, {
+                nick: client.user.nick,
+                network: network.name,
             });
 
-            state.addMessage(buffer, {
-                time: event.time || Date.now(),
-                nick: event.nick,
-                message: messageBody,
-                type: event.type,
-                tags: event.tags || {},
+            let blockNewPms = state.setting('buffers.block_pms');
+            let isPm = false;
+            if (!event.from_server && event.target === client.user.nick) {
+                isPm = true;
+            }
+
+            let buffers = mRoute.buffers.length ?
+                mRoute.buffers :
+                [mRoute.defaultBuffer];
+
+            buffers.forEach((targetBufferName) => {
+                let bufferName = targetBufferName;
+
+                // Notices from somewhere when we don't have an existing buffer for them should go
+                // into the server tab. ie. notices from servers
+                if (event.type === 'notice') {
+                    let existingBuffer = state.getBufferByName(networkid, bufferName);
+                    if (!existingBuffer) {
+                        bufferName = '*';
+                    }
+                }
+
+                let buffer = state.getBufferByName(networkid, bufferName);
+                if (isPm && !buffer && blockNewPms) {
+                    return;
+                } else if (!buffer) {
+                    buffer = state.getOrAddBufferByName(networkid, bufferName);
+                }
+
+                let textFormatType = 'privmsg';
+                if (event.type === 'action') {
+                    textFormatType = 'action';
+                } else if (event.type === 'notice') {
+                    textFormatType = 'notice';
+                }
+
+                let messageBody = TextFormatting.formatText(textFormatType, {
+                    nick: event.nick,
+                    username: event.ident,
+                    host: event.hostname,
+                    text: event.message,
+                });
+
+                state.addMessage(buffer, {
+                    time: event.time || Date.now(),
+                    nick: event.nick,
+                    message: messageBody,
+                    type: event.type,
+                    tags: event.tags || {},
+                });
             });
         }
 

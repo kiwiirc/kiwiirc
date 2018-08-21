@@ -114,11 +114,26 @@ export default class MessageRouter {
             isPm = true;
         }
 
+        // Chanserv sometimes PMs messages about a channel on join in the format of
+        // [#channel] welcome!
+        // Redirect these to #channel
+        if (
+            ircMessage.nick.toLowerCase() === 'chanserv' &&
+            isPm &&
+            ircMessage.message[0] === '['
+        ) {
+            targetBuffer = ircMessage.message.substr(1, ircMessage.message.indexOf(']') - 1);
+        }
+
         let rule = this.findMatchingRule(ircMessage, ircClient, isPm, vars);
 
         // No rule found, keep everything as default
         if (!rule) {
-            return { buffers: [targetBuffer], execs: [] };
+            return {
+                defaultBuffer: targetBuffer,
+                buffers: [targetBuffer],
+                execs: [],
+            };
         }
 
         let buffers = [];
@@ -139,7 +154,11 @@ export default class MessageRouter {
             execs.push(rule.exec);
         }
 
-        return { buffers, execs };
+        return {
+            defaultBuffer: targetBuffer,
+            buffers,
+            execs,
+        };
     }
 
     // Find the first rule that matches an IRC message
@@ -195,59 +214,66 @@ export default class MessageRouter {
             return input.toLowerCase().trim();
         };
 
-        let rule = null;
+        let undef = input => typeof input === 'undefined';
+
+        let matchedRule = null;
 
         for (let i = 0; i < this.rules.length; i++) {
-            rule = this.rules[i];
+            let rule = this.rules[i];
 
-            if (rule.isPm === 'yes' && isPm) {
-                break;
+            if (rule.isPm === 'yes' && !isPm) {
+                continue;
             }
-            if (rule.isPm === 'no' && !isPm) {
-                break;
+            if (rule.isPm === 'no' && isPm) {
+                continue;
             }
-            if (compare(rule.type, ircMessage.type)) {
-                break;
+            if (!undef(rule.type) && !compare(rule.type, ircMessage.type)) {
+                continue;
             }
-            if (compareWithVars(rule.to, ircMessage.target)) {
-                break;
+            if (!undef(rule.to) && !compareWithVars(rule.to, ircMessage.target)) {
+                continue;
             }
-            if (compareWithVars(rule.from, ircMessage.nick)) {
-                break;
+            if (!undef(rule.from) && !compareWithVars(rule.from, ircMessage.nick)) {
+                continue;
             }
 
             // rule.contains could be a /regex/ or plain string
             if (isRegex(rule.contains)) {
                 try {
                     let r = new RegExp(rule.contains, 'gi');
-                    if (r.test(ircMessage.message || '')) {
-                        break;
+                    if (!r.test(ircMessage.message || '')) {
+                        continue;
                     }
                 } catch (err) {
                     // TODO: Log this regex parse fail somewhere
                 }
-            } else if (rule.contains && n(ircMessage.message).indexOf(n(rule.contains)) > -1) {
-                break;
+            } else if (rule.contains && n(ircMessage.message).indexOf(n(rule.contains)) === -1) {
+                continue;
             }
 
             // Does the message contain a specific tag
             let t = doVars(rule['tags.contains']);
-            if (t && typeof ircMessage.tags[t] !== 'undefined') {
-                break;
+            if (t && typeof ircMessage.tags[t] === 'undefined') {
+                continue;
             }
 
             // Does the message contain a tag and does it match a specific value
-            if (compareWithVars(rule['tags.match'], ircMessage.tags[rule['tags.match']])) {
-                break;
+            if (
+                !undef(rule['tags.match']) &&
+                !compareWithVars(rule['tags.match'], ircMessage.tags[rule['tags.match']])
+            ) {
+                continue;
             }
 
-            if (compare(rule['irc.command'], ircMessage.command)) {
-                break;
+            if (!undef(rule['irc.command']) && compare(rule['irc.command'], ircMessage.command)) {
+                continue;
             }
 
-            rule = null;
+            // If we passed all fo the above rule checks, consider the rule matched
+            matchedRule = rule;
+            break;
         }
 
-        return rule;
+        return matchedRule;
     }
 }
