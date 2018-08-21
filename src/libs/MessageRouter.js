@@ -3,8 +3,7 @@ import _ from 'lodash';
 
 /*
 
-# Idea
-Provide a text box that the user can enter custom message routing rules.
+# Custom message routing rules
 Eg:
     * Copying all messages from a single user to another buffer
     * Moving notice messages from a services bot to your active channel or another buffer
@@ -17,8 +16,9 @@ to="$me" from="chanserv" contains="kiwi" put=#kiwi_mentions exec="/notice #kiwii
 
 # variables
 $me - your current nick
-$channel - your current channel
 $network - the network name
+$defualtBuffer - where the message would end up without any rules applied
+$activeBuffer - the buffer the user currently has focus on
 
 # matching a message from a rule
 to - if a message is targetted to this name (channel or nick), then match this rule

@@ -313,9 +313,15 @@ function clientMiddleware(state, network) {
         }
 
         if (command === 'message') {
+            let activeBuffer = state.getActiveBuffer();
+            let activeBufferName = (activeBuffer && activeBuffer.networkid === networkid) ?
+                activeBuffer.name :
+                '*';
+
             let mRoute = mRouter.bufferNamesFromMessage(event, client, {
-                nick: client.user.nick,
+                me: client.user.nick,
                 network: network.name,
+                activeBuffer: activeBufferName,
             });
 
             let blockNewPms = state.setting('buffers.block_pms');
