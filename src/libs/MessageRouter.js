@@ -146,6 +146,10 @@ export default class MessageRouter {
     findMatchingRule(ircMessage, ircClient, isPm, vars = {}) {
         // Apply any vars to the input string
         let doVars = (input) => {
+            if (typeof input !== 'string') {
+                return input;
+            }
+
             let out = input;
             Object.keys(vars).forEach((varName) => {
                 // TODO: Cache these regexs somewhere
