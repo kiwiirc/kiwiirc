@@ -170,7 +170,7 @@ export default class MessageRouter {
 
         return {
             defaultBuffer: targetBuffer,
-            buffers,
+            _.uniq(buffers),
             execs,
         };
     }

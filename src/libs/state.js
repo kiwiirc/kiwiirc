@@ -74,6 +74,9 @@ const stateObj = {
         },
         showAutocomplete: true,
         sidebarPinned: false,
+        messageRoutes: `
+type=notice copy=$activeBuffer
+        `,
         aliases: `
 # General aliases
 /p /part $1+
