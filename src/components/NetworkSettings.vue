@@ -126,6 +126,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';

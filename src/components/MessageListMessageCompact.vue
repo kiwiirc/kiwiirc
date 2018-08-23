@@ -62,6 +62,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 // eslint-plugin-vue's max-len rule reads the entire file, including the CSS. so we can't use this
 // here as some of the rules cannot be broken up any smaller

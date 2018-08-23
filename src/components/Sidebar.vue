@@ -112,6 +112,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import UserBox from '@/components/UserBox';
 import GlobalApi from '@/libs/GlobalApi';

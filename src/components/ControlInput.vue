@@ -72,6 +72,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import _ from 'lodash';
 import autocompleteCommands from '@/res/autocompleteCommands';

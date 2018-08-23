@@ -153,6 +153,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import _ from 'lodash';
 import state from '@/libs/state';

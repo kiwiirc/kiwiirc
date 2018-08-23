@@ -44,6 +44,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import state from '@/libs/state';
 import aboutContent from './about.html';
