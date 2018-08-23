@@ -15,6 +15,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 let Vue = require('vue');
 

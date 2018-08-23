@@ -61,6 +61,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';

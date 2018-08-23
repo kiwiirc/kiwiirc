@@ -48,6 +48,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import 'font-awesome-webpack';
 import '@/res/globalStyle.css';

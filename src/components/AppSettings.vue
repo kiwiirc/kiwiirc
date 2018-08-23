@@ -174,6 +174,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';

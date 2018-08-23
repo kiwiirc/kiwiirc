@@ -70,6 +70,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import strftime from 'strftime';
 import * as TextFormatting from '@/helpers/TextFormatting';

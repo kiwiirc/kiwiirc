@@ -31,6 +31,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 // Helper to generate Vues computed methods for simple channel modes.
 // Eg. +i, +n, etc
