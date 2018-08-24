@@ -19,25 +19,12 @@
         </div>
 
         <ul class="kiwi-nicklist-users">
-            <li
+            <nicklist-user
                 v-for="user in sortedUsers"
                 :key="user.nick"
-                :class="[
-                    userMode(user) ? 'kiwi-nicklist-user--mode-' + userMode(user) : '',
-                    user.away ? 'kiwi-nicklist-user--away' : ''
-                ]"
-                class="kiwi-nicklist-user"
-                @click="openUserbox(user)"
-            >
-                <span class="kiwi-nicklist-user-prefix">{{ userModePrefix(user) }}</span>
-                <span :style="nickStyle(user.nick)"
-                      class="kiwi-nicklist-user-nick"
-                >{{ user.nick }}
-                </span>
-                <span class="kiwi-nicklist-messageuser" @click.stop="openQuery(user)">
-                    <i class="fa fa-comment" aria-hidden="true"/>
-                </span>
-            </li>
+                :user="user"
+                :nicklist="self"
+            />
         </ul>
     </div>
 </template>
@@ -50,6 +37,7 @@ import state from '@/libs/state';
 import Logger from '@/libs/Logger';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
+import NicklistUser from './NicklistUser';
 
 let log = Logger.namespace('Nicklist');
 
@@ -64,12 +52,16 @@ function strCompare(a, b) {
 }
 
 export default {
+    components: {
+        NicklistUser,
+    },
     props: ['network', 'buffer', 'sidebarState'],
     data: function data() {
         return {
             userbox_user: null,
             user_filter: '',
             filter_visible: false,
+            self: this,
         };
     },
     computed: {
@@ -278,37 +270,6 @@ export default {
     flex: 1 auto;
     list-style: none;
     line-height: 1.2em;
-}
-
-.kiwi-nicklist-user {
-    line-height: 40px;
-    padding: 0 1em;
-    margin: 0;
-    position: relative;
-    box-sizing: border-box;
-}
-
-.kiwi-nicklist-user-nick {
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.kiwi-nicklist-messageuser {
-    position: absolute;
-    content: '\f075';
-    right: 1em;
-    font-family: fontAwesome, sans-serif;
-    top: 50%;
-    margin-top: -1.5em;
-    opacity: 0;
-}
-
-.kiwi-nicklist-messageuser:hover {
-    cursor: pointer;
-}
-
-.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
-    opacity: 1;
 }
 
 @media screen and (max-width: 759px) {
