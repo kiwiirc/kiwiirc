@@ -250,7 +250,7 @@ function loadPlugins() {
 
                     // The browser won't execute any script elements so we need to extract them and
                     // place them into the DOM using our own script elements
-                    el.querySelectorAll('script').forEach(limitedScr => {
+                    el.querySelectorAll('script').forEach((limitedScr) => {
                         limitedScr.parentElement.removeChild(limitedScr);
                         let scr = document.createElement('script');
                         scr.text = limitedScr.text;
