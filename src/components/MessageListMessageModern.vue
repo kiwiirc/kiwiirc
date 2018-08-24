@@ -33,16 +33,11 @@
         @click="ml.onMessageClick($event, message)"
     >
         <div class="kiwi-messagelist-modern-left">
-            <div
+            <message-avatar
                 v-if="isMessage(message)"
-                :style="{
-                    'background-color': nickColour(message.nick)
-                }"
+                :message="message"
                 :data-nick="message.nick"
-                class="kiwi-messagelist-modern-avatar"
-            >
-                {{ message.nick[0] }}
-            </div>
+            />
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div
@@ -81,9 +76,11 @@
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import MessageInfo from './MessageInfo';
+import MessageListAvatar from './MessageListAvatar';
 
 export default {
     components: {
+        MessageAvatar: MessageListAvatar,
         MessageInfo,
     },
     props: ['ml', 'message', 'idx'],
@@ -180,7 +177,7 @@ export default {
     display: none;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-modern-avatar {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-avatar {
     display: none;
 }
 
@@ -259,19 +256,6 @@ export default {
     width: 100%;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-modern-avatar {
-    text-transform: uppercase;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
-    font-weight: 600;
-    color: #fff;
-    margin-top: 3px;
-}
-
 .kiwi-messagelist-message--modern .kiwi-messagelist-nick {
     float: left;
     width: auto;
@@ -339,7 +323,7 @@ export default {
         display: none;
     }
 
-    .kiwi-messagelist-message--modern .kiwi-messagelist-modern-avatar {
+    .kiwi-messagelist-message--modern .kiwi-messagelist-avatar {
         display: none;
     }
 
