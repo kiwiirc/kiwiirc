@@ -227,17 +227,43 @@ function loadPlugins() {
                 return;
             }
 
-            let scr = document.createElement('script');
-            scr.onerror = () => {
-                log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
-                loadNextScript();
-            };
-            scr.onload = () => {
-                loadNextScript();
-            };
+            if (plugin.url.indexOf('.js') > -1) {
+                // The plugin is a .js file so inject it as a script
+                let scr = document.createElement('script');
+                scr.onerror = () => {
+                    log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
+                    loadNextScript();
+                };
+                scr.onload = () => {
+                    loadNextScript();
+                };
 
-            document.body.appendChild(scr);
-            scr.src = plugin.url;
+                document.body.appendChild(scr);
+                scr.src = plugin.url;
+            } else {
+                // Treat the plugin as a HTML document and just inject it into the document
+                fetch(plugin.url).then(response => response.text()).then((pluginRaw) => {
+                    let el = document.createElement('div');
+                    el.id = 'kiwi_plugin_' + plugin.name.replace(/[ "']/g, '');
+                    el.style.display = 'none';
+                    el.innerHTML = pluginRaw;
+
+                    // The browser won't execute any script elements so we need to extract them and
+                    // place them into the DOM using our own script elements
+                    el.querySelectorAll('script').forEach(limitedScr => {
+                        limitedScr.parentElement.removeChild(limitedScr);
+                        let scr = document.createElement('script');
+                        scr.text = limitedScr.text;
+                        el.appendChild(scr);
+                    });
+
+                    document.body.appendChild(el);
+                    loadNextScript();
+                }).catch(() => {
+                    log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
+                    loadNextScript();
+                });
+            }
         }
     });
 }
