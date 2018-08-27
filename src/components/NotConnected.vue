@@ -117,14 +117,13 @@ export default {
 .kiwi-notconnected {
     box-sizing: border-box;
     text-align: center;
-    padding: 10% 0;
+    padding: 4% 0;
     margin: 10px 0 0 0;
     transition: background-color 0.3s;
 }
 
 .kiwi-notconnected-bigicon {
     display: inline-block;
-    width: 100%;
     margin: 0 0 1em 0;
 }
 
