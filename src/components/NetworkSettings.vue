@@ -128,7 +128,6 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
 import ServerSelector from './ServerSelector';
 
@@ -137,7 +136,7 @@ export default {
         ServerSelector,
     },
     props: ['network'],
-    data: function data() {
+    data() {
         return {
             server_type: 'network',
             znc_username: '',
@@ -145,27 +144,27 @@ export default {
             znc_password: '',
             show_advanced: false,
             switch_tabs_on_connect: false,
-            network_list: state.setting('presetNetworks') || [],
+            network_list: [],
         };
     },
     computed: {
         settingShowRaw: {
-            get: function getSettingAlertOn() {
+            get() {
                 return this.network.setting('show_raw');
             },
-            set: function setSettingAlertOn(val) {
+            set(val) {
                 return this.network.setting('show_raw', val);
             },
         },
     },
     watch: {
-        znc_username: function watchZncUsername() {
+        znc_username() {
             this.setZncPass();
         },
-        znc_network: function watchZncNetwork() {
+        znc_network() {
             this.setZncPass();
         },
-        znc_password: function watchZncPassword() {
+        znc_password() {
             this.setZncPass();
         },
         'network.state'() {
@@ -181,7 +180,7 @@ export default {
             }
         },
     },
-    created: function created() {
+    created() {
         let isZnc = !!(this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
         this.server_type = isZnc ?
             'znc' :
@@ -192,6 +191,8 @@ export default {
             this.znc_network = match[2] || '';
             this.znc_password = match[3] || '';
         }
+
+        this.network_list = this.$state.setting('presetNetworks') || [];
     },
     methods: {
         readableStateError(err) {
@@ -201,24 +202,24 @@ export default {
             this.switch_tabs_on_connect = true;
             this.network.ircClient.connect();
         },
-        reconnect: function reconnect() {
+        reconnect() {
             this.network.ircClient.connect();
         },
-        removeNetwork: function removeNetwork() {
+        removeNetwork() {
             /* eslint-disable no-restricted-globals, no-alert */
             let confirmed = confirm('Really remove this network? This cannot be undone!');
             if (!confirmed) {
                 return;
             }
 
-            state.removeNetwork(this.network.id);
-            state.$emit('active.component');
+            this.$state.removeNetwork(this.network.id);
+            this.$state.$emit('active.component');
         },
-        setZncPass: function setZncPass() {
+        setZncPass() {
             let newPass = `${this.znc_username}/${this.znc_network}:${this.znc_password}`;
             this.network.connection.password = newPass;
         },
-        toggleTls: function toggleTls() {
+        toggleTls() {
             let connection = this.network.connection;
             connection.tls = !connection.tls;
 
