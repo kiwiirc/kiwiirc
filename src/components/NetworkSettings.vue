@@ -10,7 +10,7 @@
 
                 <server-selector
                     :network="network"
-                    :network-list="networkList"
+                    :network-list="network_list"
                     @input="onServerInput" />
 
                 <div class="kiwi-networksettings-connection-password">
@@ -103,7 +103,7 @@
                 <div
                     v-if="network.state === 'disconnected'"
                     class="u-button kiwi-connect-to-newnetwork"
-                    @click="network.ircClient.connect()"
+                    @click="connect()"
                 >
                     Connect To Network
                 </div>
@@ -144,7 +144,8 @@ export default {
             znc_network: '',
             znc_password: '',
             show_advanced: false,
-            networkList: state.setting('presetNetworks') || [],
+            switch_tabs_on_connect: false,
+            network_list: state.setting('presetNetworks') || [],
         };
     },
     computed: {
@@ -167,6 +168,18 @@ export default {
         znc_password: function watchZncPassword() {
             this.setZncPass();
         },
+        'network.state'() {
+            if (!this.switch_tabs_on_connect) {
+                return;
+            }
+
+            if (this.network.state === 'connected') {
+                this.switch_tabs_on_connect = false;
+                this.$state.$emit('server.tab.show', 'messages');
+            } else if (this.network.state_error) {
+                this.switch_tabs_on_connect = false;
+            }
+        },
     },
     created: function created() {
         let isZnc = !!(this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
@@ -183,6 +196,10 @@ export default {
     methods: {
         readableStateError(err) {
             return Misc.networkErrorMessage(err);
+        },
+        connect() {
+            this.switch_tabs_on_connect = true;
+            this.network.ircClient.connect();
         },
         reconnect: function reconnect() {
             this.network.ircClient.connect();
