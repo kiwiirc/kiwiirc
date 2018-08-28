@@ -48,20 +48,18 @@
 
 'kiwi public';
 
-import state from '@/libs/state';
-
 export default {
     props: ['buffer', 'network'],
-    data: function data() {
+    data() {
         return {
             forceLoader: false,
         };
     },
     computed: {
-        netStatus: function netStatus() {
+        netStatus() {
             return this.buffer.getNetwork().state;
         },
-        shouldShowLoading: function showShowLoading() {
+        shouldShowLoading() {
             this.maybeForceLoader();
 
             if (this.network.state !== 'disconnected' || this.forceLoader) {
@@ -71,7 +69,7 @@ export default {
             return false;
         },
         restrictedServer() {
-            return state.setting('restricted');
+            return this.$state.setting('restricted');
         },
     },
     methods: {
@@ -90,22 +88,22 @@ export default {
                 }, minimumLoaderViewtime);
             }
         },
-        isChannel: function isChannel() {
+        isChannel() {
             return this.buffer.isChannel();
         },
-        isServer: function isServer() {
+        isServer() {
             return this.buffer.isServer();
         },
-        isQuery: function isQuery() {
+        isQuery() {
             return this.buffer.isQuery();
         },
-        reconnect: function reconnect() {
+        reconnect() {
             if (this.buffer.isChannel()) {
                 this.buffer.enabled = true;
             }
             this.buffer.getNetwork().ircClient.connect();
         },
-        showNetworkSettings: function showNetworkSettings() {
+        showNetworkSettings() {
             let network = this.buffer.getNetwork();
             network.showServerBuffer('settings');
         },
