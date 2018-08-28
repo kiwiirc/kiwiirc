@@ -8,7 +8,7 @@
         :data-activebuffer="buffer ? buffer.name.toLowerCase() : ''"
         class="kiwi-wrap kiwi-theme-bg"
         @click="emitDocumentClick"
-        @paste="emitBufferPaste"
+        @paste.capture="emitBufferPaste"
     >
         <link :href="themeUrl" rel="stylesheet" type="text/css">
 
