@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2018-08-09 13:53\n"
+"PO-Revision-Date: 2018-08-29 15:11\n"
 
 #: Start
 msgid "start_button"
@@ -79,6 +79,10 @@ msgstr ""
 
 #: Channel
 msgid "channel"
+msgstr ""
+
+#: Messages
+msgid "messages"
 msgstr ""
 
 #: Network
@@ -517,8 +521,20 @@ msgstr ""
 msgid "reconnect_query"
 msgstr ""
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr ""
+
 #: Connection settings
 msgid "reconnect_settings"
+msgstr ""
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr ""
+
+#: Connect To Network
+msgid "network_connect"
 msgstr ""
 
 #: Close options
