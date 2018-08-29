@@ -610,10 +610,12 @@ function clientMiddleware(state, network) {
         }
         if (command === 'channel list') {
             network.channel_list_state = 'updating';
+            // Filter private channels from the channel list
+            let filteredEvent = _.filter(event, o => o.channel !== '*');
             // Store the channels in channel_list_cache before moving it all to
             // channel_list at the end. This gives a huge performance boost since
             // it doesn't need to be all reactive for every update
-            network.channel_list_cache = (network.channel_list_cache || []).concat(event);
+            network.channel_list_cache = (network.channel_list_cache || []).concat(filteredEvent);
         }
         if (command === 'channel list end') {
             network.channel_list = network.channel_list_cache || [];
