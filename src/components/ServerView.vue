@@ -2,7 +2,7 @@
     <div class="kiwi-serverview">
         <div class="kiwi-serverview-inner">
             <tabbed-view ref="tabs" :key="network.id">
-                <tabbed-tab :header="'Messages'" :focus="hasMessages" name="messages">
+                <tabbed-tab :header="$t('messages')" :focus="hasMessages" name="messages">
                     <message-list :buffer="serverBuffer" :messages="serverBuffer.getMessages()"/>
                 </tabbed-tab>
                 <tabbed-tab

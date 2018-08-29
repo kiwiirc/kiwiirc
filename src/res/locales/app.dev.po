@@ -68,6 +68,10 @@ msgstr "Nick"
 msgid "channel"
 msgstr "Channel"
 
+#: Messages
+msgid "messages"
+msgstr "Messages"
+
 #: Network
 msgid "network"
 msgstr "Network"
@@ -560,9 +564,25 @@ msgstr "Reconnect to {{network}} to start talking"
 msgid "reconnect_query"
 msgstr "Reconnect to continue talking with {{user}}"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr "You are not currently connected!"
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Connection settings"
+
+
+
+#: NetworkSettings $t('network_')
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr "We couldn't connect to that server :("
+
+#: Connect To Network
+msgid "network_connect"
+msgstr "Connect To Network"
 
 
 

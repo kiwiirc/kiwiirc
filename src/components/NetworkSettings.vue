@@ -4,7 +4,7 @@
             <div class="kiwi-title">{{ $t('settings_server_details') }}</div>
             <div class="kiwi-networksettings-section-block">
                 <div v-if="network.state_error" class="kiwi-networksettings-error">
-                    We couldn't connect to that server :(
+                    {{ $t('network_noconnect') }}
                     <span>{{ readableStateError(network.state_error) }}</span>
                 </div>
 
@@ -105,7 +105,7 @@
                     class="u-button kiwi-connect-to-newnetwork"
                     @click="connect()"
                 >
-                    Connect To Network
+                    {{ $t('network_connect') }}
                 </div>
                 <div
                     v-else-if="network.state === 'connecting'"
