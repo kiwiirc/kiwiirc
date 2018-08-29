@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-08-10 22:30\n"
+"PO-Revision-Date: 2018-08-29 15:11\n"
 
 #: Start
 msgid "start_button"
@@ -80,6 +80,10 @@ msgstr "Nadimak"
 #: Channel
 msgid "channel"
 msgstr "Kanal"
+
+#: Messages
+msgid "messages"
+msgstr ""
 
 #: Network
 msgid "network"
@@ -517,9 +521,21 @@ msgstr "Ponovo se poveži na {{network}} za razgovor"
 msgid "reconnect_query"
 msgstr "Ponovo se poveži da nastaviš razgovor sa {{user}}"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr ""
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Podešavanja povezivanja"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr ""
+
+#: Connect To Network
+msgid "network_connect"
+msgstr ""
 
 #: Close options
 msgid "side_close"
