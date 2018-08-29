@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2018-08-29 15:44\n"
+"PO-Revision-Date: 2018-08-29 15:50\n"
 
 #: Start
 msgid "start_button"
@@ -531,11 +531,11 @@ msgstr "Configuración da conexión"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr ""
+msgstr "Non se puido conectar ao servidor :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr ""
+msgstr "Conectar á Rede"
 
 #: Close options
 msgid "side_close"
