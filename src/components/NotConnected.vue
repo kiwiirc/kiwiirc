@@ -7,7 +7,7 @@
 
         <template v-if="!shouldShowLoading">
             <div class="kiwi-notconnected-caption">
-                <span>You are not currently connected!</span>
+                <span>{{ $t('not_connected') }}</span>
             </div>
             <div class="kiwi-notconnected-buttons">
                 <template v-if="isChannel()">
