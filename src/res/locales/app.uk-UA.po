@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-08-10 07:40\n"
+"PO-Revision-Date: 2018-08-29 15:11\n"
 
 #: Start
 msgid "start_button"
@@ -80,6 +80,10 @@ msgstr "Псевдонім"
 #: Channel
 msgid "channel"
 msgstr "Канал"
+
+#: Messages
+msgid "messages"
+msgstr ""
 
 #: Network
 msgid "network"
@@ -517,9 +521,21 @@ msgstr "Для початку розмови з'єднайтесь повтор�
 msgid "reconnect_query"
 msgstr "Для розмови з {{user}}, з'єднайтесь повторно"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr ""
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Налаштування з'єднання"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr ""
+
+#: Connect To Network
+msgid "network_connect"
+msgstr ""
 
 #: Close options
 msgid "side_close"
