@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-08-15 12:10\n"
+"PO-Revision-Date: 2018-08-30 13:20\n"
 
 #: Start
 msgid "start_button"
@@ -80,6 +80,10 @@ msgstr "Bijnaam"
 #: Channel
 msgid "channel"
 msgstr "Kanaal"
+
+#: Messages
+msgid "messages"
+msgstr "Berichten"
 
 #: Network
 msgid "network"
@@ -517,9 +521,21 @@ msgstr "Verbind opnieuw met {{network}} om met praten te beginnen"
 msgid "reconnect_query"
 msgstr "Verbind opnieuw om verder met {{user}} te praten"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr "Je bent momenteel niet verbonden!"
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Verbindingsinstellingen"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr "We konden geen verbinding maken met die server :("
+
+#: Connect To Network
+msgid "network_connect"
+msgstr "Verbinden met netwerk"
 
 #: Close options
 msgid "side_close"

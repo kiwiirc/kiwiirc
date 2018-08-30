@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2018-08-09 14:21\n"
+"PO-Revision-Date: 2018-08-29 15:21\n"
 
 #: Start
 msgid "start_button"
@@ -80,6 +80,10 @@ msgstr "Nick"
 #: Channel
 msgid "channel"
 msgstr "Channel"
+
+#: Messages
+msgid "messages"
+msgstr "Messages"
 
 #: Network
 msgid "network"
@@ -517,9 +521,21 @@ msgstr "Reconnect to {{network}} to start talking"
 msgid "reconnect_query"
 msgstr "Reconnect to continue talking with {{user}}"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr "You are not currently connected!"
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Connection settings"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr "We couldn't connect to that server :("
+
+#: Connect To Network
+msgid "network_connect"
+msgstr "Connect To Network"
 
 #: Close options
 msgid "side_close"
