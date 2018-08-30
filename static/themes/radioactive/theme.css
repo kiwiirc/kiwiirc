@@ -724,9 +724,6 @@
 
 /* User Settings */
 .kiwi-statebrowser-appsettings {
-    border: 1px solid #6fffb0;
-    border-left: none;
-    border-top: none;
     color: #6fffb0;
 }
 .kiwi-statebrowser-appsettings:hover {

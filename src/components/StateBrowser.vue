@@ -240,15 +240,15 @@ export default {
     width: auto;
     text-align: left;
     padding: 0 10px;
-    font-size: 0.8em;
+    font-size: 1em;
     box-sizing: border-box;
-    opacity: 1;
     line-height: 35px;
     cursor: pointer;
     font-weight: 500;
     letter-spacing: 1px;
     transition: all 0.3s;
     border-radius: 0 0 6px 0;
+    opacity: 0.8;
 }
 
 .kiwi-statebrowser-appsettings:hover {
@@ -269,7 +269,7 @@ export default {
     width: 100%;
     padding-bottom: 0;
     margin-bottom: 10px;
-    padding-top: 10px;
+    padding-top: 34px;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
