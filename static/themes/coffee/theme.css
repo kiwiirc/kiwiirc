@@ -690,6 +690,8 @@
 /* User Settings */
 .kiwi-statebrowser-appsettings {
     border: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: none;
+    border-top: none;
 }
 .kiwi-statebrowser-appsettings:hover {
     background: #a2846e;

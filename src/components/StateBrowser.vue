@@ -1,6 +1,10 @@
 <template>
     <div class="kiwi-statebrowser kiwi-theme-bg">
 
+        <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
+            <i class="fa fa-cog" aria-hidden="true"/>
+        </div>
+
         <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">
             <span> Close </span>
             <i class="fa fa-times" aria-hidden="true"/>
@@ -31,10 +35,6 @@
             <div v-else class="kiwi-statebrowser-usermenu-network">
                 {{ networkName }}
             </div>
-        </div>
-
-        <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
-            {{ $t('kiwi_settings') }} <i class="fa fa-cog" aria-hidden="true"/>
         </div>
 
         <div class="kiwi-statebrowser-tools">
@@ -234,20 +234,21 @@ export default {
 
 /* User Settings */
 .kiwi-statebrowser-appsettings {
-    width: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
     text-align: left;
-    padding: 0 10px 0 10px;
+    padding: 0 10px;
     font-size: 0.8em;
-    border-radius: 4px;
     box-sizing: border-box;
     opacity: 1;
     line-height: 35px;
     cursor: pointer;
-    margin: 0 5%;
     font-weight: 500;
     letter-spacing: 1px;
     transition: all 0.3s;
-    margin-bottom: 10px;
+    border-radius: 0 0 6px 0;
 }
 
 .kiwi-statebrowser-appsettings:hover {
