@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-29 15:12\n"
+"PO-Revision-Date: 2018-08-30 12:50\n"
 
 #: Start
 msgid "start_button"
@@ -83,7 +83,7 @@ msgstr "Κανάλι"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "Μυνήματα"
 
 #: Network
 msgid "network"
@@ -523,7 +523,7 @@ msgstr "Επανασυνδέστε για να συνεχίσετε να μιλ�
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr ""
+msgstr "Δεν είστε συνδεδεμένοι αυτήν τη στιγμή!"
 
 #: Connection settings
 msgid "reconnect_settings"
