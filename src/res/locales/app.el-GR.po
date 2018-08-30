@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-08-30 12:50\n"
+"PO-Revision-Date: 2018-08-30 13:00\n"
 
 #: Start
 msgid "start_button"
@@ -531,11 +531,11 @@ msgstr "Ρυθμίσεις σύνδεσης"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η σύνδεση με αυτόν το διακομιστή :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr ""
+msgstr "Σύνδεση στο δίκτυο"
 
 #: Close options
 msgid "side_close"
