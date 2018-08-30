@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-08-30 12:50\n"
+"PO-Revision-Date: 2018-08-30 13:20\n"
 
 #: Start
 msgid "start_button"
@@ -535,7 +535,7 @@ msgstr "We konden geen verbinding maken met die server :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr ""
+msgstr "Verbinden met netwerk"
 
 #: Close options
 msgid "side_close"
