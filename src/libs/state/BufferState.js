@@ -42,6 +42,7 @@ export default class BufferState {
         this.messageDict.push(messagesObj);
         def(this, 'messagesObj', messagesObj, false);
 
+        def(this, 'addMessageBatch', createMessageBatch(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
     }
 
@@ -275,32 +276,6 @@ export default class BufferState {
     }
 
     addMessage(message) {
-        if (!this.addMessageBatch) {
-            /**
-             * batch up floods of new messages for a huge performance gain
-             */
-            let addSingleMessage = (newMessage) => {
-                this.messagesObj.messages.push(newMessage);
-                trimMessages();
-                this.message_count++;
-            };
-            let addMultipleMessages = (newMessages) => {
-                this.messagesObj.messages = this.messagesObj.messages.concat(newMessages);
-                trimMessages();
-                this.message_count++;
-            };
-            let trimMessages = () => {
-                let scrollbackSize = this.setting('scrollback_size');
-                let length = this.messagesObj.messages.length;
-
-                if (this.messagesObj.messages.length > scrollbackSize) {
-                    this.messagesObj.messages.splice(0, length - scrollbackSize);
-                }
-            };
-
-            def(this, 'addMessageBatch', batchedAdd(addSingleMessage, addMultipleMessages));
-        }
-
         this.addMessageBatch(message);
     }
 
@@ -360,6 +335,32 @@ function createUserBatch(bufferState) {
     };
 
     return batchedAdd(addSingleUser, addMultipleUsers);
+}
+
+/**
+ * batch up floods of new messages for a huge performance gain
+ */
+function createMessageBatch(bufferState) {
+    let addSingleMessage = (newMessage) => {
+        bufferState.messagesObj.messages.push(newMessage);
+        trimMessages();
+        bufferState.message_count++;
+    };
+    let addMultipleMessages = (newMessages) => {
+        bufferState.messagesObj.messages = bufferState.messagesObj.messages.concat(newMessages);
+        trimMessages();
+        bufferState.message_count++;
+    };
+    let trimMessages = () => {
+        let scrollbackSize = bufferState.setting('scrollback_size');
+        let length = bufferState.messagesObj.messages.length;
+
+        if (bufferState.messagesObj.messages.length > scrollbackSize) {
+            bufferState.messagesObj.messages.splice(0, length - scrollbackSize);
+        }
+    };
+
+    return batchedAdd(addSingleMessage, addMultipleMessages);
 }
 
 // Define a non-enumerable property on an object with an optional setter callback
