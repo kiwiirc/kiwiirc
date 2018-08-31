@@ -41,6 +41,8 @@ export default class BufferState {
         };
         this.messageDict.push(messagesObj);
         def(this, 'messagesObj', messagesObj, false);
+
+        def(this, 'addUserBatch', createUserBatch(this), false);
     }
 
     getNetwork() {
@@ -243,25 +245,6 @@ export default class BufferState {
     }
 
     addUser(user) {
-        if (!this.addUserBatch) {
-            /**
-             * Batch up floods of addUsers for a huge performance gain.
-             * Generally happens whenr econnecting to a BNC
-             */
-            let addSingleUser = (u) => {
-                this.state.$set(this.users, u.nick.toLowerCase(), u);
-            };
-            let addMultipleUsers = (users) => {
-                let o = _.clone(this.users);
-                users.forEach((u) => {
-                    o[u.nick.toLowerCase()] = u;
-                });
-                this.users = o;
-            };
-
-            def(this, 'addUserBatch', batchedAdd(addSingleUser, addMultipleUsers));
-        }
-
         this.addUserBatch(user);
     }
 
@@ -358,6 +341,25 @@ export default class BufferState {
         let network = this.getNetwork();
         network.ircClient.part(this.name, reason || '');
     }
+}
+
+/**
+ * Batch up floods of addUsers for a huge performance gain.
+ * Generally happens when reconnecting to a BNC
+ */
+function createUserBatch(bufferState) {
+    let addSingleUser = (u) => {
+        bufferState.state.$set(bufferState.users, u.nick.toLowerCase(), u);
+    };
+    let addMultipleUsers = (users) => {
+        let o = _.clone(bufferState.users);
+        users.forEach((u) => {
+            o[u.nick.toLowerCase()] = u;
+        });
+        bufferState.users = o;
+    };
+
+    return batchedAdd(addSingleUser, addMultipleUsers);
 }
 
 // Define a non-enumerable property on an object with an optional setter callback
