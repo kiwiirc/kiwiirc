@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-08-29 15:11\n"
+"PO-Revision-Date: 2018-09-02 17:10\n"
 
 #: Start
 msgid "start_button"
@@ -83,7 +83,7 @@ msgstr "Canale"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "Messaggi"
 
 #: Network
 msgid "network"
@@ -123,11 +123,11 @@ msgstr "No"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "Non trovato"
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "Attenzione!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -331,27 +331,27 @@ msgstr "Motivo di blocco predefinito"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr ""
+msgstr "Impostazioni avanzate"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr ""
+msgstr "Fare attenzione: premere questo pulsante solamente se si sa quello che si sta facendo"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr ""
+msgstr "Abilita impostazioni avanzate"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Area pericolosa: cambiare alcune di queste impostazioni può causare l'interruzione del servizio!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Reimposta"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Filtro"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -523,7 +523,7 @@ msgstr "Riconnettiti per continuare a conversare con {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr ""
+msgstr "Al momento non si è connessi!"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -531,11 +531,11 @@ msgstr "Impostazioni della connessione"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr ""
+msgstr "Non è stato possibile connettersi a quel server :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr ""
+msgstr "Connessione alla rete"
 
 #: Close options
 msgid "side_close"
