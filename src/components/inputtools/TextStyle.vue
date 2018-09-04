@@ -1,52 +1,60 @@
 <template>
-    <div class="kiwi-inputtool-colours">
-        <div class="kiwi-inputtool-colours-palette" @mousedown.prevent @click.prevent>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-white"
+    <div class="kiwi-inputtools-textstyle">
+        <div class="kiwi-inputtools-textstyle-picker" @mousedown.prevent @click.prevent>
+            <div class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-reset"
+                 @click="onResetClick"><i class="fa fa-ban" aria-hidden="true"/></div>
+            <div class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-bold"
+                 @click="toggleBold">B</div>
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-white"
                  data-code="00" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-black"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-black"
                  data-code="01" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-blue"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-blue"
                  data-code="02" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-green"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-green"
                  data-code="03" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-red"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-light-red"
                  data-code="04" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-brown"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-brown"
                  data-code="05" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-purple"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-purple"
                  data-code="06" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-orange"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-orange"
                  data-code="07" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-yellow"
+            <div class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-italic"
+                 @click="toggleItalic">I</div>
+            <div class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-underline"
+                 @click="toggleUnderline">U</div>
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-yellow"
                  data-code="08" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-green"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-light-green"
                  data-code="09" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-cyan"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-cyan"
                  data-code="10" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-cyan"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-light-cyan"
                  data-code="11" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-blue"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-light-blue"
                  data-code="12" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-pink"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-pink"
                  data-code="13" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-grey"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-grey"
                  data-code="14" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-grey"
+            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-light-grey"
                  data-code="15" @click="onColourClick"
             />
             <div class="kiwi-inputtools-colours-colour kiwi-inputtools-colours-reset"
@@ -63,13 +71,21 @@ import * as Colours from '@/helpers/Colours';
 
 export default {
     props: ['ircinput'],
-    data: function data() {
+    data() {
         return {
         };
     },
-
     methods: {
-        onColourClick: function onColourClick(event) {
+        toggleBold() {
+            this.ircinput.toggleBold();
+        },
+        toggleItalic() {
+            this.ircinput.toggleItalic();
+        },
+        toggleUnderline() {
+            this.ircinput.toggleUnderline();
+        },
+        onColourClick(event) {
             let colour = window.getComputedStyle(event.target, null)
                 .getPropertyValue('background-color');
             // Convert rgb(x,x,x) to its hex form
@@ -86,7 +102,7 @@ export default {
             let code = event.target.dataset.code;
             this.ircinput.setColour(code, colour);
         },
-        onResetClick: function onResetClick() {
+        onResetClick() {
             this.ircinput.resetStyles();
         },
     },
@@ -95,16 +111,14 @@ export default {
 
 <style lang="less">
 
-.kiwi-inputtools-colours {
+.kiwi-inputtools-textstyle {
     bottom: 100%;
-    right: 0;
-    overflow: hidden;
-    position: absolute;
-    height: 30px;
+    width: 300px;
+    z-index: 1;
 }
 
-.kiwi-inputtools-colours-colour {
-    display: block;
+.kiwi-inputtools-textstyle-item {
+    /*display: inline-block;*/
     float: left;
     height: 30px;
     width: 30px;
@@ -112,12 +126,24 @@ export default {
     box-sizing: border-box;
     border: 1px solid gray;
     margin: 0;
-}
-
-.kiwi-inputtools-colours-reset {
+    text-align: center;
     font-size: 23px;
     line-height: 30px;
-    text-align: center;
+}
+
+.kiwi-inputtools-textstyle-bold {
+    font-weight: 600;
+}
+
+.kiwi-inputtools-textstyle-italic {
+    font-style: italic;
+}
+
+.kiwi-inputtools-textstyle-underline {
+    text-decoration: underline;
+}
+
+.kiwi-inputtools-textstyle-reset {
     background: #000;
     color: #cacaca;
 }

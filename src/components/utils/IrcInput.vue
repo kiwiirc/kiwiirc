@@ -298,14 +298,17 @@ export default Vue.component('irc-input', {
             this.updateValueProps();
         },
         toggleBold() {
+            this.focus();
             document.execCommand('bold', false, null);
             this.updateValueProps();
         },
         toggleItalic() {
+            this.focus();
             document.execCommand('italic', false, null);
             this.updateValueProps();
         },
         toggleUnderline() {
+            this.focus();
             document.execCommand('underline', false, null);
             this.updateValueProps();
         },
