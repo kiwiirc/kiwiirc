@@ -45,10 +45,13 @@
                 <!--<button type="submit">Send</button>-->
             </form>
             <div ref="plugins" class="kiwi-controlinput-tools">
-                <div v-if="showPluginUiElements">
-                    <span class="collapsed_plugins" @click="showPluginUiElements = false">
-                        &gt;&gt;&gt;
-                    </span>
+                <i
+                    :class="['fa fa-angle-double-' + (showPluginUiElements ? 'right':'left')]"
+                    class="kiwi-controlinput-tool"
+                    aria-hidden="true"
+                    @click.prevent="showPluginUiElements=!showPluginUiElements"
+                />
+                <div v-if="showPluginUiElements" class="inline-block">
                     <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                         <i class="fa fa-adjust" aria-hidden="true"/>
                     </a>
@@ -66,9 +69,6 @@
                         :key="plugin.id"
                         class="kiwi-controlinput-tool"
                     />
-                </div>
-                <div v-else @click="showPluginUiElements = true">
-                    <span class="collapsed_plugins">&lt;&lt;&lt;</span>
                 </div>
             </div>
         </div>
@@ -565,6 +565,11 @@ export default {
 }
 
 .collapsed_plugins {
-    margin-right: 10px;
+    background: red;
+    display: inline-block;
+}
+
+.inline-block {
+    display: inline-block;
 }
 </style>
