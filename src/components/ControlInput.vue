@@ -45,23 +45,31 @@
                 <!--<button type="submit">Send</button>-->
             </form>
             <div ref="plugins" class="kiwi-controlinput-tools">
-                <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
-                    <i class="fa fa-adjust" aria-hidden="true"/>
-                </a>
-                <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
-                    <i class="fa fa-smile-o" aria-hidden="true"/>
-                </a>
-                <div
-                    v-rawElement="{
-                        el: plugin.el,
-                        props: {
-                            controlinput: self,
-                        }
-                    }"
-                    v-for="plugin in pluginUiElements"
-                    :key="plugin.id"
-                    class="kiwi-controlinput-tool"
-                />
+                <div v-if="showPluginUiElements">
+                    <span class="collapsed_plugins" @click="showPluginUiElements = false">
+                        &gt;&gt;&gt;
+                    </span>
+                    <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
+                        <i class="fa fa-adjust" aria-hidden="true"/>
+                    </a>
+                    <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
+                        <i class="fa fa-smile-o" aria-hidden="true"/>
+                    </a>
+                    <div
+                        v-rawElement="{
+                            el: plugin.el,
+                            props: {
+                                controlinput: self,
+                            }
+                        }"
+                        v-for="plugin in pluginUiElements"
+                        :key="plugin.id"
+                        class="kiwi-controlinput-tool"
+                    />
+                </div>
+                <div v-else @click="showPluginUiElements = true">
+                    <span class="collapsed_plugins">&lt;&lt;&lt;</span>
+                </div>
             </div>
         </div>
 
@@ -109,6 +117,7 @@ export default {
             active_tool: null,
             active_tool_props: {},
             pluginUiElements: GlobalApi.singleton().controlInputPlugins,
+            showPluginUiElements: true,
         };
     },
     computed: {
@@ -555,4 +564,7 @@ export default {
     }
 }
 
+.collapsed_plugins {
+    margin-right: 10px;
+}
 </style>
