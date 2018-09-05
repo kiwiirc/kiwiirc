@@ -51,7 +51,7 @@
                     aria-hidden="true"
                     @click.prevent="showPluginUiElements=!showPluginUiElements"
                 />
-                <div v-if="showPluginUiElements" class="kiwi-inline-block">
+                <div v-if="showPluginUiElements" class="kiwi-controlinput-tools-container">
                     <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                         <i class="fa fa-adjust" aria-hidden="true"/>
                     </a>
@@ -564,7 +564,7 @@ export default {
     }
 }
 
-.kiwi-inline-block {
+.kiwi-controlinput-tools-container {
     display: inline-block;
 }
 </style>
