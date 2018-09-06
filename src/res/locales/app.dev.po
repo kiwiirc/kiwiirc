@@ -796,6 +796,13 @@ msgstr "Ban and kick from the channel"
 
 
 
+#: Errors
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr "Please specify a channel to join. eg /join #example"
+
+
 
 #: Mode Changes $t('modes_')
 
