@@ -45,29 +45,40 @@
                 <!--<button type="submit">Send</button>-->
             </form>
             <div ref="plugins" class="kiwi-controlinput-tools">
-                <i
-                    :class="['fa fa-angle-double-' + (showPluginUiElements ? 'right':'left')]"
-                    class="kiwi-controlinput-tool"
-                    aria-hidden="true"
-                    @click.prevent="showPluginUiElements=!showPluginUiElements"
-                />
-                <div v-if="showPluginUiElements" class="kiwi-controlinput-tools-container">
-                    <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
-                        <i class="fa fa-adjust" aria-hidden="true"/>
-                    </a>
-                    <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
-                        <i class="fa fa-smile-o" aria-hidden="true"/>
-                    </a>
-                    <div
-                        v-rawElement="{
-                            el: plugin.el,
-                            props: {
-                                controlinput: self,
-                            }
-                        }"
-                        v-for="plugin in pluginUiElements"
-                        :key="plugin.id"
+                <transition name="kiwi-plugin-Ui-trans">
+                    <div v-if="showPluginUiElements" class="kiwi-controlinput-tools-container">
+                        <i
+                            :class="['fa fa-angle-double-' +
+                            (showPluginUiElements ? 'right':'left')]"
+                            class="kiwi-controlinput-tool"
+                            aria-hidden="true"
+                            @click.prevent="showPluginUiElements=!showPluginUiElements"
+                        />
+                        <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
+                            <i class="fa fa-adjust" aria-hidden="true"/>
+                        </a>
+                        <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
+                            <i class="fa fa-smile-o" aria-hidden="true"/>
+                        </a>
+                        <div
+                            v-rawElement="{
+                                el: plugin.el,
+                                props: {
+                                    controlinput: self,
+                                }
+                            }"
+                            v-for="plugin in pluginUiElements"
+                            :key="plugin.id"
+                            class="kiwi-controlinput-tool"
+                        />
+                    </div>
+                </transition>
+                <div v-if="!showPluginUiElements" class="kiwi-controlinput-tools-container-expand">
+                    <i
+                        :class="['fa fa-angle-double-' + (showPluginUiElements ? 'right':'left')]"
                         class="kiwi-controlinput-tool"
+                        aria-hidden="true"
+                        @click.prevent="showPluginUiElements=!showPluginUiElements"
                     />
                 </div>
             </div>
@@ -565,6 +576,31 @@ export default {
 }
 
 .kiwi-controlinput-tools-container {
+    position: relative;
+    top: 0;
+    margin-left: 0;
     display: inline-block;
 }
+
+.kiwi-controlinput-tools-container-expand {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+}
+
+.kiwi-plugin-Ui-trans-enter,
+.kiwi-plugin-Ui-trans-leave-to {
+    right: calc(-100% + 30px);
+}
+
+.kiwi-plugin-Ui-trans-enter-to,
+.kiwi-plugin-Ui-trans-leave {
+    right: 0;
+}
+
+.kiwi-plugin-Ui-trans-enter-active,
+.kiwi-plugin-Ui-trans-leave-active {
+    transition: right 0.5s;
+}
+
 </style>
