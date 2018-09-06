@@ -975,6 +975,8 @@ function clientMiddleware(state, network) {
             let messageBody = '';
 
             if (event.nick) {
+                buffer.topic_by = event.nick;
+                buffer.topic_when = event.time || Date.now();
                 messageBody = TextFormatting.formatAndT(
                     'channel_topic',
                     null,
@@ -991,6 +993,12 @@ function clientMiddleware(state, network) {
                 message: messageBody,
                 type: 'topic',
             });
+        }
+
+        if (command === 'topicsetby') {
+            let buffer = state.getOrAddBufferByName(networkid, event.channel);
+            buffer.topic_by = event.nick;
+            buffer.topic_when = event.when * 1000;
         }
 
         if (command === 'ctcp response' || command === 'ctcp request') {
