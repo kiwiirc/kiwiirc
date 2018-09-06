@@ -992,6 +992,7 @@ function clientMiddleware(state, network) {
                 nick: '',
                 message: messageBody,
                 type: 'topic',
+                type_extra: event.nick ? 'changed' : '',
             });
         }
 
@@ -999,6 +1000,18 @@ function clientMiddleware(state, network) {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             buffer.topic_by = event.nick;
             buffer.topic_when = event.when * 1000;
+
+            // add setby to the most recent topic component
+            let messages = buffer.getMessages();
+            for (let i = messages.length - 1; i >= 0; i--) {
+                let message = messages[i];
+                if (message.type === 'topic') {
+                    message.template = message.template.extend({
+                        data() { return { topic_by: event.nick, topic_when: buffer.topic_when }; },
+                    });
+                    return;
+                }
+            }
         }
 
         if (command === 'ctcp response' || command === 'ctcp request') {
