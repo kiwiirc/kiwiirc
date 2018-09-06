@@ -78,7 +78,7 @@ tokens['*'] = {
         let nextPos = remainingText.indexOf(this.token);
         if (
             nextPos === -1 ||
-            (nextPos < remainingText.length - 1 && remainingText[nextPos + 1] != ' ')
+            (nextPos < remainingText.length - 1 && remainingText[nextPos + 1] !== ' ')
         ) {
             return -1;
         }
