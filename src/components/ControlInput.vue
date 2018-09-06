@@ -600,7 +600,7 @@ export default {
 
 .kiwi-plugin-Ui-trans-enter-active,
 .kiwi-plugin-Ui-trans-leave-active {
-    transition: right 0.5s;
+    transition: right 0.2s;
 }
 
 </style>
