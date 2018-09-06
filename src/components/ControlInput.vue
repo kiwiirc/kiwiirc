@@ -590,7 +590,7 @@ export default {
 
 .kiwi-plugin-Ui-trans-enter,
 .kiwi-plugin-Ui-trans-leave-to {
-    right: calc(-100% + 30px);
+    right: -100%;
 }
 
 .kiwi-plugin-Ui-trans-enter-to,
