@@ -191,9 +191,8 @@ export default {
     },
     methods: {
         hidePluginsIfNeeded() {
-            let bodyWidth = document.body.clientWidth;
             let rawText = this.$refs.input.getRawText();
-            if (bodyWidth < 500 && rawText.length) {
+            if (this.$state.ui.app_width < 500 && rawText.length) {
                 this.showPluginUiElements = false;
             }
         },
