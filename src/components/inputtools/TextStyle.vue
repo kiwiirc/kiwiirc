@@ -118,7 +118,6 @@ export default {
 }
 
 .kiwi-inputtools-textstyle-item {
-    /*display: inline-block;*/
     float: left;
     height: 30px;
     width: 30px;
@@ -129,6 +128,7 @@ export default {
     text-align: center;
     font-size: 23px;
     line-height: 30px;
+    user-select: none;
 }
 
 .kiwi-inputtools-textstyle-bold {
