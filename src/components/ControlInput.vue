@@ -185,8 +185,18 @@ export default {
     },
     mounted() {
         this.inputRestore();
+        window.onresize = () => {
+            this.hidePluginsIfNeeded();
+        }
     },
     methods: {
+        hidePluginsIfNeeded() {
+            let bodyWidth = document.body.clientWidth;
+            let rawText = this.$refs.input.getRawText();
+            if(bodyWidth < 500 && rawText.length) {
+                this.showPluginUiElements = false;
+            }
+        },
         inputUpdate(val) {
             if (state.setting('buffers.shared_input')) {
                 state.ui.current_input = val;
@@ -382,6 +392,7 @@ export default {
             if (this.autocomplete_open && this.autocomplete_filtering) {
                 this.autocomplete_filter = currentToken;
             }
+            this.hidePluginsIfNeeded();
         },
         submitForm: function submitForm() {
             let rawInput = this.$refs.input.getValue();
