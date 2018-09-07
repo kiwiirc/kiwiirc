@@ -187,13 +187,13 @@ export default {
         this.inputRestore();
         window.onresize = () => {
             this.hidePluginsIfNeeded();
-        }
+        };
     },
     methods: {
         hidePluginsIfNeeded() {
             let bodyWidth = document.body.clientWidth;
             let rawText = this.$refs.input.getRawText();
-            if(bodyWidth < 500 && rawText.length) {
+            if (bodyWidth < 500 && rawText.length) {
                 this.showPluginUiElements = false;
             }
         },
