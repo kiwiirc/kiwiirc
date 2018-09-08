@@ -449,7 +449,7 @@ function clientMiddleware(state, network) {
             } else {
                 messageBody = TextFormatting.formatAndT(
                     'channel_kicked',
-                    null,
+                    { reason: event.message },
                     'was_kicked_from',
                     {
                         nick: event.kicked,
