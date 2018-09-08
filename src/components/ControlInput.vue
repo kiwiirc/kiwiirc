@@ -42,16 +42,22 @@
                         @keyup="inputKeyUp($event)"
                         @click="closeInputTool"/>
                 </div>
-                <!--<button type="submit">Send</button>-->
+                <button
+                    v-if="shouldShowSendButton"
+                    type="submit"
+                    class="kiwi-controlinput-send fa fa-paper-plane" />
             </form>
+
             <div ref="plugins" class="kiwi-controlinput-tools">
-                <transition name="kiwi-plugin-Ui-trans">
+                <div
+                    :class="{'kiwi-controlinput-tools-container-expand--inverse': !showPlugins}"
+                    class="kiwi-controlinput-tools-container-expand"
+                    @click="showPlugins=!showPlugins"
+                >
+                    <i class="fa fa-angle-double-right" aria-hidden="true" />
+                </div>
+                <transition name="kiwi-plugin-ui-trans">
                     <div v-if="shouldShowPlugins" class="kiwi-controlinput-tools-container">
-                        <i
-                            class="kiwi-controlinput-tool fa fa-angle-double-right"
-                            aria-hidden="true"
-                            @click.prevent="showPlugins=!showPlugins"
-                        />
                         <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                             <i class="fa fa-adjust" aria-hidden="true"/>
                         </a>
@@ -71,13 +77,6 @@
                         />
                     </div>
                 </transition>
-                <div v-if="!shouldShowPlugins" class="kiwi-controlinput-tools-container-expand">
-                    <i
-                        class="kiwi-controlinput-tool fa fa-angle-double-left"
-                        aria-hidden="true"
-                        @click.prevent="showPlugins=!showPlugins"
-                    />
-                </div>
             </div>
         </div>
 
@@ -148,6 +147,9 @@ export default {
             }
 
             return this.showPlugins;
+        },
+        shouldShowSendButton() {
+            return this.$state.ui.is_touch || this.$state.setting('showSendButton');
         },
     },
     watch: {
@@ -405,6 +407,7 @@ export default {
             this.history_pos = this.history.length;
 
             this.$refs.input.reset();
+            this.$refs.input.focus();
         },
         historyBack() {
             if (this.history_pos > 0) {
@@ -513,9 +516,16 @@ export default {
 }
 
 .kiwi-controlinput-form {
-    padding: 8px 0 0 0;
     flex: 1;
     overflow: hidden;
+    display: flex;
+}
+
+.kiwi-controlinput-send {
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
 }
 
 .kiwi-controlinput-inner {
@@ -538,6 +548,7 @@ export default {
     height: 100%;
     box-sizing: border-box;
     overflow: visible;
+    padding-top: 8px;
 }
 
 .kiwi-controlinput-tool {
@@ -581,31 +592,36 @@ export default {
     }
 }
 
+.kiwi-controlinput-tools-container-expand {
+    display: inline-block;
+    padding: 0 1em;
+}
+
+.kiwi-controlinput-tools-container-expand i {
+    transition: transform 0.2s;
+}
+
+.kiwi-controlinput-tools-container-expand--inverse i {
+    transform: rotateZ(180deg);
+}
+
 .kiwi-controlinput-tools-container {
     position: relative;
-    top: 0;
-    margin-left: 0;
     display: inline-block;
 }
 
-.kiwi-controlinput-tools-container-expand {
-    position: absolute;
-    right: 0;
-    z-index: 2;
-}
-
-.kiwi-plugin-Ui-trans-enter,
-.kiwi-plugin-Ui-trans-leave-to {
+.kiwi-plugin-ui-trans-enter,
+.kiwi-plugin-ui-trans-leave-to {
     right: -100%;
 }
 
-.kiwi-plugin-Ui-trans-enter-to,
-.kiwi-plugin-Ui-trans-leave {
+.kiwi-plugin-ui-trans-enter-to,
+.kiwi-plugin-ui-trans-leave {
     right: 0;
 }
 
-.kiwi-plugin-Ui-trans-enter-active,
-.kiwi-plugin-Ui-trans-leave-active {
+.kiwi-plugin-ui-trans-enter-active,
+.kiwi-plugin-ui-trans-leave-active {
     transition: right 0.2s;
 }
 

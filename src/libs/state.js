@@ -73,6 +73,7 @@ const stateObj = {
             state_key: 'kiwi-state',
         },
         showAutocomplete: true,
+        showSendButton: false,
         sidebarPinned: false,
         aliases: `
 # General aliases
