@@ -105,7 +105,7 @@ export default {
         SelfUser,
     },
     props: ['container', 'buffer'],
-    data: function data() {
+    data() {
         return {
             self: this,
             selfuser_open: false,
@@ -129,7 +129,7 @@ export default {
         };
     },
     computed: {
-        currentNick: function currentNick() {
+        currentNick() {
             let activeNetwork = state.getActiveNetwork();
             return activeNetwork ?
                 activeNetwork.nick :
@@ -151,7 +151,7 @@ export default {
         },
     },
     watch: {
-        history_pos: function watchhistoryPos(newVal) {
+        history_pos(newVal) {
             let val = this.history[this.history_pos];
             this.$refs.input.setValue(val || '');
         },
@@ -163,7 +163,7 @@ export default {
             this.autocomplete_open = false;
         },
     },
-    created: function created() {
+    created() {
         this.listen(state, 'document.keydown', (ev) => {
             // No input box currently? Nothing to shift focus to
             if (!this.$refs.input) {
@@ -214,16 +214,16 @@ export default {
                 this.selfuser_open = !this.selfuser_open;
             }
         },
-        onToolClickTextStyle: function onToolClickTextStyle() {
+        onToolClickTextStyle() {
             this.toggleInputTool(ToolTextStyle);
         },
         onToolClickEmoji() {
             this.toggleInputTool(ToolEmoji);
         },
-        closeInputTool: function closeInputTool() {
+        closeInputTool() {
             this.active_tool = null;
         },
-        toggleInputTool: function toggleInputTool(tool) {
+        toggleInputTool(tool) {
             if (!tool || this.active_tool === tool) {
                 this.active_tool = null;
             } else {
@@ -243,20 +243,20 @@ export default {
         toggleUnderline() {
             this.$refs.input.toggleUnderline();
         },
-        onAutocompleteCancel: function onAutocompleteCancel() {
+        onAutocompleteCancel() {
             this.autocomplete_open = false;
         },
-        onAutocompleteTemp: function onAutocompleteTemp(selectedValue, selectedItem) {
+        onAutocompleteTemp(selectedValue, selectedItem) {
             if (!this.autocomplete_filtering) {
                 this.$refs.input.setCurrentWord(selectedValue);
             }
         },
-        onAutocompleteSelected: function onAutocompleteSelected(selectedValue, selectedItem) {
+        onAutocompleteSelected(selectedValue, selectedItem) {
             let word = selectedValue;
             this.$refs.input.setCurrentWord(word);
             this.autocomplete_open = false;
         },
-        inputKeyDown: function inputKeyDown(event) {
+        inputKeyDown(event) {
             let meta = false;
 
             if (navigator.appVersion.indexOf('Mac') !== -1) {
@@ -347,7 +347,7 @@ export default {
                 event.preventDefault();
             }
         },
-        inputKeyUp: function inputKeyUp(event) {
+        inputKeyUp(event) {
             let inputVal = this.$refs.input.getRawText();
             let currentWord = this.$refs.input.getCurrentWord();
             let currentToken = currentWord.word.substr(0, currentWord.position);
@@ -390,7 +390,7 @@ export default {
                 this.autocomplete_filter = currentToken;
             }
         },
-        submitForm: function submitForm() {
+        submitForm() {
             let rawInput = this.$refs.input.getValue();
             if (!rawInput) {
                 return;
@@ -406,25 +406,25 @@ export default {
 
             this.$refs.input.reset();
         },
-        historyBack: function historyBack() {
+        historyBack() {
             if (this.history_pos > 0) {
                 this.history_pos--;
             }
         },
-        historyForward: function historyForward() {
+        historyForward() {
             // Purposely let history_pos go 1 index beyond the history length
             // so that we can detect if we're not currently using a history value
             if (this.history_pos < this.history.length) {
                 this.history_pos++;
             }
         },
-        openAutoComplete: function openAutoComplete(items) {
+        openAutoComplete(items) {
             if (state.setting('showAutocomplete')) {
                 this.autocomplete_items = items;
                 this.autocomplete_open = true;
             }
         },
-        buildAutoCompleteItems: function buildAutoCompleteItems(_opts) {
+        buildAutoCompleteItems(_opts) {
             let opts = _opts || {};
             let list = [];
 
