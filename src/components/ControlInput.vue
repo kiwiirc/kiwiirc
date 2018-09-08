@@ -46,13 +46,11 @@
             </form>
             <div ref="plugins" class="kiwi-controlinput-tools">
                 <transition name="kiwi-plugin-Ui-trans">
-                    <div v-if="showPluginUiElements" class="kiwi-controlinput-tools-container">
+                    <div v-if="shouldShowPlugins" class="kiwi-controlinput-tools-container">
                         <i
-                            :class="['fa fa-angle-double-' +
-                            (showPluginUiElements ? 'right':'left')]"
-                            class="kiwi-controlinput-tool"
+                            class="kiwi-controlinput-tool fa fa-angle-double-right"
                             aria-hidden="true"
-                            @click.prevent="showPluginUiElements=!showPluginUiElements"
+                            @click.prevent="showPlugins=!showPlugins"
                         />
                         <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                             <i class="fa fa-adjust" aria-hidden="true"/>
@@ -73,12 +71,11 @@
                         />
                     </div>
                 </transition>
-                <div v-if="!showPluginUiElements" class="kiwi-controlinput-tools-container-expand">
+                <div v-if="!shouldShowPlugins" class="kiwi-controlinput-tools-container-expand">
                     <i
-                        :class="['fa fa-angle-double-' + (showPluginUiElements ? 'right':'left')]"
-                        class="kiwi-controlinput-tool"
+                        class="kiwi-controlinput-tool fa fa-angle-double-left"
                         aria-hidden="true"
-                        @click.prevent="showPluginUiElements=!showPluginUiElements"
+                        @click.prevent="showPlugins=!showPlugins"
                     />
                 </div>
             </div>
@@ -112,7 +109,6 @@ export default {
         return {
             self: this,
             selfuser_open: false,
-            value: '',
             history: [],
             history_pos: 0,
             autocomplete_open: false,
@@ -128,7 +124,8 @@ export default {
             active_tool: null,
             active_tool_props: {},
             pluginUiElements: GlobalApi.singleton().controlInputPlugins,
-            showPluginUiElements: true,
+            showPlugins: true,
+            current_input_value: '',
         };
     },
     computed: {
@@ -143,6 +140,14 @@ export default {
             return activeNetwork ?
                 activeNetwork.state :
                 '';
+        },
+        shouldShowPlugins() {
+            // Save some space if we're typing on a small screen
+            if (this.current_input_value.length > 0 && this.$state.ui.app_width < 500) {
+                return false;
+            }
+
+            return this.showPlugins;
         },
     },
     watch: {
@@ -185,18 +190,11 @@ export default {
     },
     mounted() {
         this.inputRestore();
-        window.onresize = () => {
-            this.hidePluginsIfNeeded();
-        };
     },
     methods: {
-        hidePluginsIfNeeded() {
-            let rawText = this.$refs.input.getRawText();
-            if (this.$state.ui.app_width < 500 && rawText.length) {
-                this.showPluginUiElements = false;
-            }
-        },
         inputUpdate(val) {
+            this.current_input_value = val;
+
             if (state.setting('buffers.shared_input')) {
                 state.ui.current_input = val;
             } else {
@@ -391,7 +389,6 @@ export default {
             if (this.autocomplete_open && this.autocomplete_filtering) {
                 this.autocomplete_filter = currentToken;
             }
-            this.hidePluginsIfNeeded();
         },
         submitForm: function submitForm() {
             let rawInput = this.$refs.input.getValue();
@@ -407,7 +404,6 @@ export default {
             this.history.splice(0, this.history.length - 50);
             this.history_pos = this.history.length;
 
-            this.value = '';
             this.$refs.input.reset();
         },
         historyBack: function historyBack() {
