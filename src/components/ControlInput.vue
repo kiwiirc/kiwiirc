@@ -45,23 +45,39 @@
                 <!--<button type="submit">Send</button>-->
             </form>
             <div ref="plugins" class="kiwi-controlinput-tools">
-                <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
-                    <i class="fa fa-adjust" aria-hidden="true"/>
-                </a>
-                <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
-                    <i class="fa fa-smile-o" aria-hidden="true"/>
-                </a>
-                <div
-                    v-rawElement="{
-                        el: plugin.el,
-                        props: {
-                            controlinput: self,
-                        }
-                    }"
-                    v-for="plugin in pluginUiElements"
-                    :key="plugin.id"
-                    class="kiwi-controlinput-tool"
-                />
+                <transition name="kiwi-plugin-Ui-trans">
+                    <div v-if="shouldShowPlugins" class="kiwi-controlinput-tools-container">
+                        <i
+                            class="kiwi-controlinput-tool fa fa-angle-double-right"
+                            aria-hidden="true"
+                            @click.prevent="showPlugins=!showPlugins"
+                        />
+                        <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
+                            <i class="fa fa-adjust" aria-hidden="true"/>
+                        </a>
+                        <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
+                            <i class="fa fa-smile-o" aria-hidden="true"/>
+                        </a>
+                        <div
+                            v-rawElement="{
+                                el: plugin.el,
+                                props: {
+                                    controlinput: self,
+                                }
+                            }"
+                            v-for="plugin in pluginUiElements"
+                            :key="plugin.id"
+                            class="kiwi-controlinput-tool"
+                        />
+                    </div>
+                </transition>
+                <div v-if="!shouldShowPlugins" class="kiwi-controlinput-tools-container-expand">
+                    <i
+                        class="kiwi-controlinput-tool fa fa-angle-double-left"
+                        aria-hidden="true"
+                        @click.prevent="showPlugins=!showPlugins"
+                    />
+                </div>
             </div>
         </div>
 
@@ -89,11 +105,10 @@ export default {
         SelfUser,
     },
     props: ['container', 'buffer'],
-    data: function data() {
+    data() {
         return {
             self: this,
             selfuser_open: false,
-            value: '',
             history: [],
             history_pos: 0,
             autocomplete_open: false,
@@ -109,10 +124,12 @@ export default {
             active_tool: null,
             active_tool_props: {},
             pluginUiElements: GlobalApi.singleton().controlInputPlugins,
+            showPlugins: true,
+            current_input_value: '',
         };
     },
     computed: {
-        currentNick: function currentNick() {
+        currentNick() {
             let activeNetwork = state.getActiveNetwork();
             return activeNetwork ?
                 activeNetwork.nick :
@@ -124,9 +141,17 @@ export default {
                 activeNetwork.state :
                 '';
         },
+        shouldShowPlugins() {
+            // Save some space if we're typing on a small screen
+            if (this.current_input_value.length > 0 && this.$state.ui.app_width < 500) {
+                return false;
+            }
+
+            return this.showPlugins;
+        },
     },
     watch: {
-        history_pos: function watchhistoryPos(newVal) {
+        history_pos(newVal) {
             let val = this.history[this.history_pos];
             this.$refs.input.setValue(val || '');
         },
@@ -138,7 +163,7 @@ export default {
             this.autocomplete_open = false;
         },
     },
-    created: function created() {
+    created() {
         this.listen(state, 'document.keydown', (ev) => {
             // No input box currently? Nothing to shift focus to
             if (!this.$refs.input) {
@@ -168,6 +193,8 @@ export default {
     },
     methods: {
         inputUpdate(val) {
+            this.current_input_value = val;
+
             if (state.setting('buffers.shared_input')) {
                 state.ui.current_input = val;
             } else {
@@ -187,16 +214,16 @@ export default {
                 this.selfuser_open = !this.selfuser_open;
             }
         },
-        onToolClickTextStyle: function onToolClickTextStyle() {
+        onToolClickTextStyle() {
             this.toggleInputTool(ToolTextStyle);
         },
         onToolClickEmoji() {
             this.toggleInputTool(ToolEmoji);
         },
-        closeInputTool: function closeInputTool() {
+        closeInputTool() {
             this.active_tool = null;
         },
-        toggleInputTool: function toggleInputTool(tool) {
+        toggleInputTool(tool) {
             if (!tool || this.active_tool === tool) {
                 this.active_tool = null;
             } else {
@@ -216,20 +243,20 @@ export default {
         toggleUnderline() {
             this.$refs.input.toggleUnderline();
         },
-        onAutocompleteCancel: function onAutocompleteCancel() {
+        onAutocompleteCancel() {
             this.autocomplete_open = false;
         },
-        onAutocompleteTemp: function onAutocompleteTemp(selectedValue, selectedItem) {
+        onAutocompleteTemp(selectedValue, selectedItem) {
             if (!this.autocomplete_filtering) {
                 this.$refs.input.setCurrentWord(selectedValue);
             }
         },
-        onAutocompleteSelected: function onAutocompleteSelected(selectedValue, selectedItem) {
+        onAutocompleteSelected(selectedValue, selectedItem) {
             let word = selectedValue;
             this.$refs.input.setCurrentWord(word);
             this.autocomplete_open = false;
         },
-        inputKeyDown: function inputKeyDown(event) {
+        inputKeyDown(event) {
             let meta = false;
 
             if (navigator.appVersion.indexOf('Mac') !== -1) {
@@ -320,7 +347,7 @@ export default {
                 event.preventDefault();
             }
         },
-        inputKeyUp: function inputKeyUp(event) {
+        inputKeyUp(event) {
             let inputVal = this.$refs.input.getRawText();
             let currentWord = this.$refs.input.getCurrentWord();
             let currentToken = currentWord.word.substr(0, currentWord.position);
@@ -363,7 +390,7 @@ export default {
                 this.autocomplete_filter = currentToken;
             }
         },
-        submitForm: function submitForm() {
+        submitForm() {
             let rawInput = this.$refs.input.getValue();
             if (!rawInput) {
                 return;
@@ -377,28 +404,27 @@ export default {
             this.history.splice(0, this.history.length - 50);
             this.history_pos = this.history.length;
 
-            this.value = '';
             this.$refs.input.reset();
         },
-        historyBack: function historyBack() {
+        historyBack() {
             if (this.history_pos > 0) {
                 this.history_pos--;
             }
         },
-        historyForward: function historyForward() {
+        historyForward() {
             // Purposely let history_pos go 1 index beyond the history length
             // so that we can detect if we're not currently using a history value
             if (this.history_pos < this.history.length) {
                 this.history_pos++;
             }
         },
-        openAutoComplete: function openAutoComplete(items) {
+        openAutoComplete(items) {
             if (state.setting('showAutocomplete')) {
                 this.autocomplete_items = items;
                 this.autocomplete_open = true;
             }
         },
-        buildAutoCompleteItems: function buildAutoCompleteItems(_opts) {
+        buildAutoCompleteItems(_opts) {
             let opts = _opts || {};
             let list = [];
 
@@ -553,6 +579,34 @@ export default {
     .kiwi-controlinput-user-nick {
         display: none;
     }
+}
+
+.kiwi-controlinput-tools-container {
+    position: relative;
+    top: 0;
+    margin-left: 0;
+    display: inline-block;
+}
+
+.kiwi-controlinput-tools-container-expand {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+}
+
+.kiwi-plugin-Ui-trans-enter,
+.kiwi-plugin-Ui-trans-leave-to {
+    right: -100%;
+}
+
+.kiwi-plugin-Ui-trans-enter-to,
+.kiwi-plugin-Ui-trans-leave {
+    right: 0;
+}
+
+.kiwi-plugin-Ui-trans-enter-active,
+.kiwi-plugin-Ui-trans-leave-active {
+    transition: right 0.2s;
 }
 
 </style>
