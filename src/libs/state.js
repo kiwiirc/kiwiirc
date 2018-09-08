@@ -227,7 +227,7 @@ const stateObj = {
             channel_join: '→ %text',
             channel_part: '← %text (%reason)',
             channel_quit: '← %text (%reason)',
-            channel_kicked: '← %text',
+            channel_kicked: '← %text (%reason)',
             channel_selfkick: '× %text (%reason)',
             channel_badpassword: '× %text',
             channel_topic: 'ⓘ %text',
