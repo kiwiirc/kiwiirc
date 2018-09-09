@@ -49,10 +49,10 @@
 // Eg. +i, +n, etc
 function generateComputedMode(mode) {
     return {
-        get: function computedModeGet() {
+        get() {
             return this.modeVal(mode);
         },
-        set: function computedModeSet(newVal) {
+        set(newVal) {
             return this.setMode((newVal ? '+' : '-') + mode);
         },
     };
@@ -62,13 +62,13 @@ function generateComputedMode(mode) {
 // Eg. "+k key"
 function generateComputedModeWithParam(mode) {
     return {
-        get: function computedModeWithParamGet() {
+        get() {
             let val = this.modeVal(mode);
             return val === false ?
                 '' :
                 val;
         },
-        set: function computedModeWithParamSet(newVal) {
+        set(newVal) {
             if (newVal) {
                 this.setMode('+' + mode, newVal);
             } else {
@@ -92,23 +92,23 @@ export default {
         modeN: generateComputedMode('n'),
         modeK: generateComputedModeWithParam('k'),
         topic: {
-            get: function computedTopicGet() {
+            get() {
                 return this.buffer.topic;
             },
-            set: function computedTopicSet(newVal) {
+            set(newVal) {
                 let newTopic = newVal.replace('\n', ' ');
                 this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newTopic);
             },
         },
     },
     methods: {
-        updateBanList: function updateBanList() {
+        updateBanList() {
             this.buffer.getNetwork().ircClient.raw('MODE', this.buffer.name, '+b');
         },
-        setMode: function setMode(mode, param) {
+        setMode(mode, param) {
             this.buffer.getNetwork().ircClient.raw('MODE', this.buffer.name, mode, param);
         },
-        modeVal: function modeVal(mode) {
+        modeVal(mode) {
             let val = false;
 
             if (typeof this.buffer.modes[mode] === 'undefined') {
@@ -124,7 +124,7 @@ export default {
 
             return val;
         },
-        areWeAnOp: function areWeAnOp() {
+        areWeAnOp() {
             return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
         },
     },
