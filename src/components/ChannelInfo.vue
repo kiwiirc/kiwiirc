@@ -3,7 +3,7 @@
         <form class="u-form kiwi-channelinfo-basicmodes" @submit.prevent="">
             <label class="kiwi-channelinfo-topic">
                 <span>{{ $t('channel_topic') }}</span>
-                <textarea v-model.lazy="topic" rows="2"/>
+                <textarea v-model.lazy="topic" :disabled="!areWeAnOp()" rows="2"/>
             </label>
 
             <div v-if="buffer.topics.length > 1" class="kiwi-channelinfo-previoustopics">
@@ -20,23 +20,23 @@
 
             <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_moderated') }}</span>
-                <input v-model="modeM" type="checkbox" >
+                <input v-model="modeM" :disabled="!areWeAnOp()" type="checkbox">
             </label>
             <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_invite') }}</span>
-                <input v-model="modeI" type="checkbox" >
+                <input v-model="modeI" :disabled="!areWeAnOp()" type="checkbox">
             </label>
             <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_moderated_topic') }}</span>
-                <input v-model="modeT" type="checkbox" >
+                <input v-model="modeT" :disabled="!areWeAnOp()" type="checkbox">
             </label>
             <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_external') }}</span>
-                <input v-model="modeN" type="checkbox" >
+                <input v-model="modeN" :disabled="!areWeAnOp()" type="checkbox">
             </label>
             <label>
                 <span>{{ $t('password') }}</span>
-                <input v-model.lazy="modeK" type="text" class="u-input" >
+                <input v-model.lazy="modeK" :disabled="!areWeAnOp()" type="text" class="u-input">
             </label>
         </form>
     </div>
