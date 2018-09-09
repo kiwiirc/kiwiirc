@@ -72,7 +72,8 @@ export default class InputHandler {
         }
 
         let aliasVars = {
-            server: network.name,
+            network: network.name,
+            server: network.connection.server,
             channel: network.isChannelName(buffer.name) ? buffer.name : '',
             query: network.isChannelName(buffer.name) ? '' : buffer.name,
             destination: buffer.name,
