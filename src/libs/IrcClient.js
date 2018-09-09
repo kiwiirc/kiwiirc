@@ -917,8 +917,8 @@ function clientMiddleware(state, network) {
 
         if (command === 'irc error') {
             let buffer;
-            if (event.channel) {
-                buffer = state.getOrAddBufferByName(network.id, event.channel);
+            if (event.channel || event.nick) {
+                buffer = state.getOrAddBufferByName(network.id, event.channel || event.nick);
             }
             if (!buffer) {
                 buffer = network.serverBuffer();
