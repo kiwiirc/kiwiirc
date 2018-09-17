@@ -34,13 +34,21 @@ export default class NetworkState {
         def(this, 'appState', appState, false);
         def(this, 'userDict', userDict, false);
         def(this, 'bufferDict', bufferDict, false);
-        def(this, 'ircClient', IrcClient.create(appState, this), true);
+        def(this, '_ircClient', null, true);
 
         def(this, 'users', Object.create(null), (newVal) => {
             appState.$set(userDict.networks, this.id, newVal);
         });
 
         bufferDict.$set(bufferDict.networks, this.id, []);
+    }
+
+    get ircClient() {
+        if (!this._ircClient) {
+            this._ircClient = IrcClient.create(this.appState, this);
+        }
+
+        return this._ircClient;
     }
 
     get buffers() {
