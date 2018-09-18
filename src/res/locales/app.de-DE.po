@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-09-18 16:50\n"
+"PO-Revision-Date: 2018-09-18 17:00\n"
 
 #: Start
 msgid "start_button"
@@ -635,15 +635,15 @@ msgstr "Finde weitere Räume"
 
 #: Change nick
 msgid "change_nick"
-msgstr "ändere deinen Spitznamen"
+msgstr "Ändere Nickname"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Account Name"
+msgstr "Account name: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Realname"
+msgstr "Realname: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
@@ -659,7 +659,7 @@ msgstr "Ist ein Op"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Verbunden mit"
+msgstr "Verbunden mit {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
