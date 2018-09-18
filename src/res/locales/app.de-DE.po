@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-09-18 17:00\n"
+"PO-Revision-Date: 2018-09-18 17:50\n"
 
 #: Start
 msgid "start_button"
@@ -699,19 +699,19 @@ msgstr "{{nick}} entfernt Operator-Rechte von {{target}} "
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} gibt \"half-ops\" an {{target}}"
+msgstr "{{nick}} gibt Half-Op an {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} nimmt \"half-ops\" von {{target}}"
+msgstr "{{nick}} nimmt Half-Op von {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} gibt \"voice\" an {{target}}"
+msgstr "{{nick}} gibt voice an {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} nimmt \"voice\" von {{target}}"
+msgstr "{{nick}} nimmt voice von {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -731,11 +731,11 @@ msgstr "{{nick}} nimmt Owner-Rechte von {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} hat {{target}} verbannt"
+msgstr "{{nick}} hat {{target}} gebannt"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} hat den Ban von {{target}} aufgehoben"
+msgstr "{{nick}} hat den Bann von {{target}} aufgehoben"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
@@ -791,15 +791,15 @@ msgstr "Verbunden mit {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "hat den Raum betreten"
+msgstr "{{nick}} hat den Raum betreten"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} hat dich aus {{channel}} gestoßen"
+msgstr "{{nick}} hat dich aus {{channel}} gekickt"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} wurde von {{chanop}} aus {{channel}} gestoßen"
+msgstr "{{nick}} wurde von {{chanop}} aus {{channel}} gekickt"
 
 #: {{nick}} has left
 msgid "has_left"
