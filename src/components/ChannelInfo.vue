@@ -88,17 +88,6 @@ export default {
             },
         },
     },
-    updated: function updated() {
-        let rect = this.$el.getBoundingClientRect();
-        // $el may be in the middle of a transition still, making rect.top/rect.bottom
-        // the current position of the transition and not where it will be after the
-        // transition has ended. So read the top property directly from its style.
-        let targetTop = parseInt((this.$el.style.top || '').replace('px', ''), 10);
-
-        if (targetTop + rect.height > this.$el.clientHeight) {
-            this.$el.style.top = (this.$el.clientHeight - rect.height) + 'px';
-        }
-    },
     methods: {
         updateBanList: function updateBanList() {
             this.buffer.getNetwork().ircClient.raw('MODE', this.buffer.name, '+b');

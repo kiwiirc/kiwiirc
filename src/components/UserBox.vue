@@ -231,12 +231,6 @@ export default {
             this.whoisLoading = false;
         },
     },
-    mounted: function mounted() {
-        this.maybeRepositionTop();
-    },
-    updated: function updated() {
-        this.maybeRepositionTop();
-    },
     methods: {
         userModeOnThisBuffer: function userModeOnBuffer(user) {
             if (!this.buffer) {
@@ -290,17 +284,6 @@ export default {
             let reason = state.setting('buffers.default_kick_reason');
             this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
-        },
-        maybeRepositionTop: function maybeRepositionTop() {
-            let rect = this.$el.getBoundingClientRect();
-            // $el may be in the middle of a transition still, making rect.top/rect.bottom
-            // the current position of the transition and not where it will be after the
-            // transition has ended. So read the top property directly from its style.
-            let targetTop = parseInt((this.$el.style.top || '').replace('px', ''), 10);
-
-            if (targetTop + rect.height > this.$el.clientHeight) {
-                this.$el.style.top = (this.$el.clientHeight - rect.height) + 'px';
-            }
         },
     },
 };

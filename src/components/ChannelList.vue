@@ -164,7 +164,7 @@ export default {
 }
 
 .kiwi-channellist-padding-top {
-    padding-top: calc(50vh - 80px);
+    padding-top: calc(40% - 80px);
 }
 
 .kiwi-channellist-padding-top .kiwi-channellist-nav {

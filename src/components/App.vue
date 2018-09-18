@@ -117,7 +117,6 @@ export default {
         this.watchForThemes();
         this.initStateBrowser();
         this.initMediaviewer();
-        this.trackWindowDimensions();
         this.configureFavicon();
 
         document.addEventListener('keydown', event => this.onKeyDown(event), false);
@@ -148,6 +147,7 @@ export default {
         } else {
             this.startupComponent = startup;
         }
+        this.trackWindowDimensions();
     },
     methods: {
         // Triggered by a startup screen event
