@@ -95,8 +95,8 @@ export default {
         // transition has ended. So read the top property directly from its style.
         let targetTop = parseInt((this.$el.style.top || '').replace('px', ''), 10);
 
-        if (targetTop + rect.height > window.innerHeight) {
-            this.$el.style.top = (window.innerHeight - rect.height) + 'px';
+        if (targetTop + rect.height > this.$el.clientHeight) {
+            this.$el.style.top = (this.$el.clientHeight - rect.height) + 'px';
         }
     },
     methods: {

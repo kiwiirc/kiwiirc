@@ -247,8 +247,8 @@ export default {
         trackWindowDimensions() {
             // Track the window dimensions into the reactive ui state
             let trackWindowDims = () => {
-                this.$state.ui.app_width = window.innerWidth;
-                this.$state.ui.app_height = window.innerHeight;
+                this.$state.ui.app_width = this.$el.clientWidth;
+                this.$state.ui.app_height = this.$el.clientHeight;
             };
             window.addEventListener('resize', trackWindowDims);
             trackWindowDims();
