@@ -828,7 +828,8 @@ function clientMiddleware(state, network) {
                     },
                     b(targets, mode) {
                         return {
-                            target: targets[0].param ? ' ' + targets[0].param : '',
+                            mode: mode,
+                            target: targets[0].param ? targets[0].param : '',
                             nick: event.nick,
                         };
                     },
@@ -841,13 +842,8 @@ function clientMiddleware(state, network) {
                     let localeDataFn = builders[mode[1]] || builders.default;
                     let localeData = localeDataFn(targets, mode);
 
-                    let prefixes = network.ircClient.network.supports('prefix') || [];
-                    let isUserChanMode = !!_.find(prefixes, { mode: mode[1] });
-
                     // Translate using the built locale data
-                    let localeKey = isUserChanMode ?
-                        modeLocaleIds[mode] || 'modes_other' :
-                        'modes_other';
+                    let localeKey = modeLocaleIds[mode] || 'modes_other';
                     let text = TextFormatting.t(localeKey, localeData);
 
                     let messageBody = TextFormatting.formatText('mode', {
