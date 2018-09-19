@@ -117,7 +117,6 @@ export default {
         this.watchForThemes();
         this.initStateBrowser();
         this.initMediaviewer();
-        this.trackWindowDimensions();
         this.configureFavicon();
 
         document.addEventListener('keydown', event => this.onKeyDown(event), false);
@@ -148,6 +147,7 @@ export default {
         } else {
             this.startupComponent = startup;
         }
+        this.trackWindowDimensions();
     },
     methods: {
         // Triggered by a startup screen event
@@ -247,8 +247,8 @@ export default {
         trackWindowDimensions() {
             // Track the window dimensions into the reactive ui state
             let trackWindowDims = () => {
-                this.$state.ui.app_width = window.innerWidth;
-                this.$state.ui.app_height = window.innerHeight;
+                this.$state.ui.app_width = this.$el.clientWidth;
+                this.$state.ui.app_height = this.$el.clientHeight;
             };
             window.addEventListener('resize', trackWindowDims);
             trackWindowDims();
