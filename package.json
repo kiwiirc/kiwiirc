@@ -75,7 +75,6 @@
     "stylelint-config-standard": "^18.0.0",
     "stylelint-webpack-plugin": "^0.10.1",
     "tinycon": "^0.6.8",
-    "uppy": "^0.18.0",
     "url-loader": "^0.5.7",
     "vue": "^2.5.13",
     "vue-loader": "^13.7.0",
