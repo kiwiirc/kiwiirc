@@ -1,7 +1,12 @@
 'kiwi public';
 
+/** @module */
+
 import strftime from 'strftime';
 
+/**
+ * Adds the BOUNCER IRCv3 spec to irc-framework
+ */
 export default function bouncerMiddleware() {
     let networks = [];
     let buffers = {};

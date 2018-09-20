@@ -13,7 +13,8 @@
     "lint:eslint": "eslint --ext .js,.vue src test/unit/specs",
     "lint:stylelint": "stylelint \"src/**/*.{vue,htm,html,css,sss,less,scss}\"",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
-    "lint:fix": "npm run lint:eslint -- --fix && npm run lint:stylelint -- --fix"
+    "lint:fix": "npm run lint:eslint -- --fix && npm run lint:stylelint -- --fix",
+    "gendocs": "rm -rf srcdocs/ && jsdoc -c jsdoc.json"
   },
   "engines": {
     "node": ">=6",
@@ -92,6 +93,7 @@
     "express": "^4.13.3",
     "http-proxy-middleware": "^0.17.2",
     "inject-loader": "^2.0.1",
+    "jsdoc": "^3.5.5",
     "karma": "^1.3.0",
     "karma-coverage": "^1.1.1",
     "karma-mocha": "^1.2.0",

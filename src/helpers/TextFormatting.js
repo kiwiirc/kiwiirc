@@ -1,5 +1,7 @@
 'kiwi public';
 
+/** @module */
+
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import _ from 'lodash';

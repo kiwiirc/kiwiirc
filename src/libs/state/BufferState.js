@@ -1,9 +1,12 @@
+/** @module */
+
 import strftime from 'strftime';
 import _ from 'lodash';
 import batchedAdd from '../batchedAdd';
 
 let nextBufferId = 0;
 
+/** The IRC buffer instance */
 export default class BufferState {
     constructor(name, networkid, state, messageDict) {
         // Enumerable properties that become reactive under Vue

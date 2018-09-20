@@ -1,5 +1,10 @@
 'kiwi public';
 
+/** @module */
+
+/**
+ * Plays alert sounds
+ */
 export class AudioBleep {
     constructor() {
         this.lastPlayed = 0;
@@ -18,6 +23,7 @@ export class AudioBleep {
         this.audio.appendChild(source);
     }
 
+    /** Play the alert sound */
     play() {
         // Only play the bleep once every 2 seconds
         if (!this.lastPlayed || Date.now() - this.lastPlayed > 2000) {
@@ -27,6 +33,7 @@ export class AudioBleep {
     }
 }
 
+/** Watch the Kiwi state for any message highlights and play an alert */
 export function listenForHighlights(state) {
     let bleep = new AudioBleep();
 

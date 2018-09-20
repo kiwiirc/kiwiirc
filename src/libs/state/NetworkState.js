@@ -1,5 +1,8 @@
+/** @module */
+
 import * as IrcClient from '../IrcClient';
 
+/** The IRC network instance */
 export default class NetworkState {
     constructor(id, appState, userDict, bufferDict) {
         // Enumerable properties that become reactive under Vue
