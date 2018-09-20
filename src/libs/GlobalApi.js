@@ -48,7 +48,7 @@ export default class GlobalApi extends EventEmitter {
 
     /**
      * Register a plugin with kiwi
-     * 
+     *
      * Plugins being loaded at startup will be registered once Kiwi is ready. At any
      * other point the plugin will be registered instantly
      * @param {String} pluginName The name of this plugin
@@ -81,7 +81,7 @@ export default class GlobalApi extends EventEmitter {
 
     /**
      * Get a reference to an internal Kiwi module
-     * 
+     *
      * E.g. require('helpers/TextFormatting');
      * @param {String} mod The module path
      */
@@ -234,7 +234,7 @@ export default class GlobalApi extends EventEmitter {
     }
 
     /**
-     * 
+     *
      * @param {String} dest The module path to replace
      * @param {Object} source The new module to insert in place
      */
