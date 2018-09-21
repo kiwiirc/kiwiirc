@@ -133,7 +133,7 @@ export default {
         UserBox,
     },
     props: ['network', 'buffer', 'sidebarState'],
-    data: function data() {
+    data() {
         return {
             pluginUiElements: GlobalApi.singleton().sideBarPlugins,
         };
@@ -143,54 +143,54 @@ export default {
             return this.sidebarState.section() || 'nicklist';
         },
         settingShowJoinParts: {
-            get: function getSettingShowJoinParts() {
+            get() {
                 return this.buffer.setting('show_joinparts');
             },
-            set: function setSettingShowJoinParts(newVal) {
+            set(newVal) {
                 return this.buffer.setting('show_joinparts', newVal);
             },
         },
         settingShowTopics: {
-            get: function getSettingShowTopics() {
+            get() {
                 return this.buffer.setting('show_topics');
             },
-            set: function setSettingShowTopics(newVal) {
+            set(newVal) {
                 return this.buffer.setting('show_topics', newVal);
             },
         },
         settingShowNickChanges: {
-            get: function getSettingShowNickChanges() {
+            get() {
                 return this.buffer.setting('show_nick_changes');
             },
-            set: function setSettingShowNickChanges(newVal) {
+            set(newVal) {
                 return this.buffer.setting('show_nick_changes', newVal);
             },
         },
         settingShowModeChanges: {
-            get: function getSettingShowModeChanges() {
+            get() {
                 return this.buffer.setting('show_mode_changes');
             },
-            set: function setSettingShowModeChanges(newVal) {
+            set(newVal) {
                 return this.buffer.setting('show_mode_changes', newVal);
             },
         },
         settingColouredNicklist: {
-            get: function getSettingShowJoinParts() {
+            get() {
                 return this.buffer.setting('coloured_nicklist');
             },
-            set: function setSettingShowJoinParts(newVal) {
+            set(newVal) {
                 return this.buffer.setting('coloured_nicklist', newVal);
             },
         },
         settingExtraFormatting: {
-            get: function settingExtraFormatting() {
+            get() {
                 return this.buffer.setting('extra_formatting');
             },
-            set: function settingExtraFormatting(newVal) {
+            set(newVal) {
                 return this.buffer.setting('extra_formatting', newVal);
             },
         },
-        bufferType: function bufferType() {
+        bufferType() {
             let type = '';
 
             if (!this.buffer) {
