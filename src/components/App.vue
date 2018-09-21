@@ -123,10 +123,6 @@ export default {
         window.addEventListener('focus', event => this.onFocus(event), false);
         window.addEventListener('blur', event => this.onBlur(event), false);
         window.addEventListener('touchstart', event => this.onTouchStart(event));
-
-        if (this.sidebarState.canPin && this.$state.setting('sidebarPinned')) {
-            this.sidebarState.pin();
-        }
     },
     mounted() {
         // Decide which startup screen to use depending on the config
