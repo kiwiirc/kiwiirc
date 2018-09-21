@@ -1,6 +1,6 @@
 <template>
     <div
-        :class="['kiwi-sidebar-section-' + sidebarState.section()]"
+        :class="['kiwi-sidebar-section-' + section]"
         class="kiwi-sidebar kiwi-theme-bg"
     >
         <template v-if="buffer">
@@ -20,7 +20,7 @@
                 </span>
 
                 <div
-                    v-if="sidebarState.section() === 'settings'"
+                    v-if="section === 'settings'"
                     class="kiwi-sidebar-buffersettings"
                     @click.stop=""
                 >
@@ -79,7 +79,7 @@
                 </div>
 
                 <div
-                    v-else-if="sidebarState.section() === 'user'"
+                    v-else-if="section === 'user'"
                     class="kiwi-sidebar-userbox"
                     @click.stop=""
                 >
@@ -91,7 +91,7 @@
                 </div>
 
                 <nicklist
-                    v-else-if="sidebarState.section() === 'nicklist' || !sidebarState.section()"
+                    v-else-if="section === 'nicklist'"
                     :network="network"
                     :buffer="buffer"
                     :sidebar-state="sidebarState"
@@ -139,6 +139,9 @@ export default {
         };
     },
     computed: {
+        section() {
+            return this.sidebarState.section() || 'nicklist';
+        },
         settingShowJoinParts: {
             get: function getSettingShowJoinParts() {
                 return this.buffer.setting('show_joinparts');
