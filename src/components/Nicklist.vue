@@ -195,7 +195,6 @@ export default {
 
 /* Adjust the sidebars width when this nicklist is in view */
 .kiwi-sidebar.kiwi-sidebar-section-nicklist {
-    max-width: 250px;
     width: 250px;
 }
 
