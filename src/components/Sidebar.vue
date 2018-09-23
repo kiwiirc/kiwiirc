@@ -3,7 +3,13 @@
         :class="['kiwi-sidebar-section-' + section]"
         class="kiwi-sidebar kiwi-theme-bg"
     >
-        <template v-if="buffer">
+        <template v-if="sidebarState.activeComponent">
+            <component
+                :is="sidebarState.activeComponent"
+                :bind="{ network, buffer, sidebarState }"
+            />
+        </template>
+        <template v-else-if="buffer">
             <template v-if="buffer.isChannel()">
 
                 <span v-if="sidebarState.isOpen" class="kiwi-sidebar-options">
@@ -140,6 +146,10 @@ export default {
     },
     computed: {
         section() {
+            if (this.sidebarState.activeComponent) {
+                return 'component';
+            }
+
             return this.sidebarState.section() || 'nicklist';
         },
         settingShowJoinParts: {

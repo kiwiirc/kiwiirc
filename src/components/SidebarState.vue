@@ -10,6 +10,7 @@ export default Vue.extend({
             // sidebarSection may be either '', 'user', 'settings', 'nicklist'
             sidebarSection: '',
             sidebarUser: null,
+            activeComponent: null,
         };
     },
     computed: {
@@ -29,6 +30,11 @@ export default Vue.extend({
         sidebarPinned() {
             return this.$state.setting('sidebarPinned');
         },
+    },
+    created() {
+        this.listen(this.$state, 'sidebar.component', (component) => {
+            this.activeComponent = component;
+        });
     },
     methods: {
         section() {
@@ -65,15 +71,18 @@ export default Vue.extend({
             this.sidebarUser = null;
         },
         showUser(user) {
+            this.activeComponent = null;
             this.sidebarUser = user;
             this.sidebarOpen = true;
             this.sidebarSection = 'user';
         },
         showNicklist() {
+            this.activeComponent = null;
             this.sidebarOpen = true;
             this.sidebarSection = 'nicklist';
         },
         showBufferSettings() {
+            this.activeComponent = null;
             this.sidebarOpen = true;
             this.sidebarSection = 'settings';
         },
