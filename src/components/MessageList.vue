@@ -347,7 +347,22 @@ export default {
         onListClick(event) {
             this.toggleMessageInfo();
         },
-        onMessageClick(event, message) {
+        onMessageDblClick(event, message) {
+            clearTimeout(this.messageClickTmr);
+  
+            let userNick = event.target.getAttribute('data-nick');
+            if (userNick) {
+                this.$state.$emit('input.insertnick', userNick);
+            }
+        },
+        onMessageClick(event, message, delay) {
+            // Delaying the click for 200ms allows us to check for a second click. ie. double click
+            if (delay) {
+                clearTimeout(this.messageClickTmr);
+                this.messageClickTmr = setTimeout(this.onMessageClick, 200, event, message, false);
+                return;
+            }
+
             let isLink = event.target.tagName === 'A';
 
             let channelName = event.target.getAttribute('data-channel-name');

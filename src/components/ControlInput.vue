@@ -189,6 +189,21 @@ export default {
 
             this.$refs.input.focus();
         });
+
+        this.listen(this.$state, 'input.insertnick', (nick) => {
+            if (!this.$refs.input) {
+                return;
+            }
+
+            let val = nick;
+            if (this.current_input_value === '') {
+                val += ': ';
+            } else {
+                val += ' ';
+            }
+
+            this.$refs.input.insertText(val);
+        });
     },
     mounted() {
         this.inputRestore();
