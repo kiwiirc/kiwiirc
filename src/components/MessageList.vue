@@ -349,7 +349,7 @@ export default {
         },
         onMessageDblClick(event, message) {
             clearTimeout(this.messageClickTmr);
-  
+
             let userNick = event.target.getAttribute('data-nick');
             if (userNick) {
                 this.$state.$emit('input.insertnick', userNick);
