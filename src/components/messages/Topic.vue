@@ -48,6 +48,24 @@ export function listenForMessages(state) {
             message.template.$mount();
         }
     });
+
+    state.$on('irc.topicsetby', (event, network) => {
+        let buffer = network.bufferByName(event.channel);
+        if (!buffer) {
+            return;
+        }
+
+        // add setby to the most recent topic component
+        let messages = buffer.getMessages();
+        for (let i = messages.length - 1; i >= 0; i--) {
+            let message = messages[i];
+            if (message.type === 'topic' && message.template) {
+                message.template.topic_by = event.nick;
+                message.template.topic_when = event.when * 1000;
+                return;
+            }
+        }
+    });
 }
 </script>
 
