@@ -1005,10 +1005,9 @@ function clientMiddleware(state, network) {
             let messages = buffer.getMessages();
             for (let i = messages.length - 1; i >= 0; i--) {
                 let message = messages[i];
-                if (message.type === 'topic') {
-                    message.template = message.template.extend({
-                        data() { return { topic_by: event.nick, topic_when: buffer.topic_when }; },
-                    });
+                if (message.type === 'topic' && message.template) {
+                    message.template.topic_by = event.nick;
+                    message.template.topic_when = buffer.topic_when;
                     return;
                 }
             }

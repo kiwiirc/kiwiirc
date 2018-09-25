@@ -39,11 +39,13 @@ const component = {
 export default component;
 
 export function listenForMessages(state) {
+    const Ctor = Vue.extend(component);
+
     state.$on('message.new', (message, buffer) => {
         if (message.type === 'topic') {
-            message.template = Vue.extend(component).extend({
-                data() { return { topic: message.message }; },
-            });
+            message.template = new Ctor();
+            message.template.topic = message.message;
+            message.template.$mount();
         }
     });
 }
