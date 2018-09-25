@@ -81,7 +81,7 @@ export function create(state, network) {
     };
 
     ircClient.on('raw', (event) => {
-        if (!network.setting('show_raw')) {
+        if (!network.setting('show_raw') && !state.setting('showRaw')) {
             return;
         }
 
