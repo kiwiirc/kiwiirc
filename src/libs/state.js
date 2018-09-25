@@ -75,6 +75,7 @@ const stateObj = {
         showAutocomplete: true,
         showSendButton: false,
         sidebarPinned: false,
+        showRaw: false,
         aliases: `
 # General aliases
 /p /part $1+
