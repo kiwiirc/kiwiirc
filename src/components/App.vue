@@ -189,10 +189,8 @@ export default {
             this.popped = !this.popped;
             this.mediaviewerButtonText = this.popped ? 'Pop In' : 'Pop Out';
             if (this.popped) {
-                this.mediaviewerButtonText = 'Pop In';
                 this.popOut();
             } else {
-                this.mediaviewerButtonText = 'Pop Out';
                 this.popIn();
             }
         },
