@@ -97,9 +97,10 @@ export default {
 
 <style>
 .kiwi-mediaviewer {
-    box-sizing: border-box;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     position: relative;
+    height: calc(100% - 50px);
+    padding: 5px;
 }
 
 .kiwi-mediaviewer-controls {

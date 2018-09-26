@@ -19,20 +19,47 @@
             <state-browser :networks="networks" :sidebar-state="sidebarState"/>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"/>
-
+                <div
+                    v-if="mediaviewerOpen"
+                    ref="vdrContainer"
+                    style="position:absolute; z-index: 200; width: 100%; height: 40%;"
+                >
+                    <VueDraggableResizable
+                        ref="vdr"
+                        :draggable="popped"
+                        :resizable="popped"
+                        :set-width="vdrWidth"
+                        :set-height="vdrHeight"
+                        :set-top="vdrTop"
+                        :set-left="vdrLeft"
+                        :class="{'mediaviewerPoppedIn': !popped}"
+                        style="border: 2px solid #8883;"
+                    >
+                        <button
+                            class="kiwi-popout-button"
+                            @click="doPop()"
+                        >
+                            {{ mediaviewerButtonText }}
+                        </button>
+                        <div v-if="popped" style="width:100%; background: #eee; height: 40px;">
+                            <hr class="kiwi-mediaviewer-handle-hr">
+                            <hr class="kiwi-mediaviewer-handle-hr">
+                            <hr class="kiwi-mediaviewer-handle-hr">
+                        </div>
+                        <media-viewer
+                            :url="mediaviewerUrl"
+                            :component="mediaviewerComponent"
+                            :is-iframe="mediaviewerIframe"
+                        />
+                    </VueDraggableResizable>
+                </div>
                 <template v-if="!activeComponent && network">
                     <container
                         :network="network"
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
                     >
-                        <media-viewer
-                            v-if="mediaviewerOpen"
-                            slot="before"
-                            :url="mediaviewerUrl"
-                            :component="mediaviewerComponent"
-                            :is-iframe="mediaviewerIframe"
-                        />
+                        <div v-if="mediaviewerOpen && !popped" slot="before" style="height: 40vh;"/>
                     </container>
                     <control-input :container="networks" :buffer="buffer"/>
                 </template>
@@ -70,6 +97,7 @@ import * as AudioBleep from '@/libs/AudioBleep';
 import * as bufferTools from '@/libs/bufferTools';
 import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
+import VueDraggableResizable from '@/components/VueDraggableResizable';
 
 let log = Logger.namespace('App.vue');
 
@@ -79,6 +107,7 @@ export default {
         Container,
         ControlInput,
         MediaViewer,
+        VueDraggableResizable,
     },
     data() {
         return {
@@ -99,6 +128,12 @@ export default {
             mediaviewerIframe: false,
             themeUrl: '',
             sidebarState: new SidebarState(),
+            mediaviewerButtonText: 'Pop Out',
+            popped: false,
+            vdrWidth: 500,
+            vdrHeight: 500,
+            vdrTop: 0,
+            vdrLeft: 0,
         };
     },
     computed: {
@@ -146,6 +181,29 @@ export default {
         this.trackWindowDimensions();
     },
     methods: {
+        doPop() {
+            this.popped = !this.popped;
+            this.mediaviewerButtonText = this.popped ? 'Pop In' : 'Pop Out';
+            if (this.popped) {
+                this.mediaviewerButtonText = 'Pop In';
+                this.popOut();
+            } else {
+                this.mediaviewerButtonText = 'Pop Out';
+                this.popIn();
+            }
+        },
+        popIn() {
+            this.vdrWidth = this.$refs.vdrContainer.clientWidth;
+            this.vdrHeight = this.$refs.vdrContainer.clientHeight;
+            this.vdrTop = 0;
+            this.vdrLeft = 0;
+        },
+        popOut() {
+            this.vdrWidth = 600;
+            this.vdrHeight = 400;
+            this.vdrLeft = this.$refs.vdrContainer.clientWidth / 2 - 200;
+            this.vdrTop = 200;
+        },
         // Triggered by a startup screen event
         startUp(opts) {
             log('startUp()');
@@ -208,6 +266,11 @@ export default {
                 this.mediaviewerComponent = opts.component;
                 this.mediaviewerIframe = opts.iframe;
                 this.mediaviewerOpen = true;
+                let self = this;
+                this.$nextTick(() => {
+                    self.doPop();
+                    self.$nextTick(() => self.doPop());
+                });
             });
 
             this.listen(this.$state, 'mediaviewer.hide', () => {
@@ -245,6 +308,10 @@ export default {
             let trackWindowDims = () => {
                 this.$state.ui.app_width = this.$el.clientWidth;
                 this.$state.ui.app_height = this.$el.clientHeight;
+                if (this.mediaviewerOpen) {
+                    this.doPop();
+                    this.doPop();
+                }
             };
             window.addEventListener('resize', trackWindowDims);
             trackWindowDims();
@@ -417,8 +484,8 @@ body {
 }
 
 .kiwi-mediaviewer {
-    max-height: 70%;
     overflow: auto;
+    background: #888;
 }
 
 .kiwi-controlinput {
@@ -455,5 +522,27 @@ body {
         opacity: 1;
         z-index: 10;
     }
+}
+
+.kiwi-mediaviewer-handle-hr {
+    border: 1px solid #aaa;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.mediaviewerPoppedIn {
+    margin-top: 50px;
+}
+
+.kiwi-popout-button {
+    position: absolute;
+    z-index: 2;
+    margin: 5px;
+    background: #175;
+    font-size: 1.1em;
+    color: #efe;
+    border: 0;
+    padding: 5px;
+    border-radius: 5px;
 }
 </style>
