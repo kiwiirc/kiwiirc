@@ -9,6 +9,7 @@
 'kiwi public';
 
 import Vue from 'vue';
+import _ from 'lodash';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import formatIrcMessage from '@/libs/MessageFormatter';
 
@@ -55,15 +56,12 @@ export function listenForMessages(state) {
             return;
         }
 
-        // add setby to the most recent topic component
-        let messages = buffer.getMessages();
-        for (let i = messages.length - 1; i >= 0; i--) {
-            let message = messages[i];
-            if (message.type === 'topic' && message.template) {
-                message.template.topic_by = event.nick;
-                message.template.topic_when = event.when * 1000;
-                return;
-            }
+        // add setby to the most recent topic component if it exists
+        let topicMessage = _.findLast(buffer.getMessages(), m => m.type === 'topic' && m.template);
+
+        if (topicMessage) {
+            topicMessage.template.topic_by = event.nick;
+            topicMessage.template.topic_when = event.when * 1000;
         }
     });
 }
