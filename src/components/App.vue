@@ -97,7 +97,7 @@ import * as AudioBleep from '@/libs/AudioBleep';
 import * as bufferTools from '@/libs/bufferTools';
 import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
-import VueDraggableResizable from '@/components/VueDraggableResizable';
+import VueDraggableResizable from 'vue-draggable-resizable';
 
 let log = Logger.namespace('App.vue');
 
