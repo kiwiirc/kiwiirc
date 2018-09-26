@@ -98,7 +98,7 @@ export default class BufferState {
     }
 
     isUserAnOp(nick) {
-        let user = this.state.getUser(this.networkid, this.getNetwork().nick);
+        let user = this.state.getUser(this.networkid, nick);
         if (!user) {
             return false;
         }
