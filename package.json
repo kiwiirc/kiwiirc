@@ -78,7 +78,6 @@
     "uppy": "^0.18.0",
     "url-loader": "^0.5.7",
     "vue": "^2.5.13",
-    "vue-draggable-resizable": "^1.7.2",
     "vue-loader": "^13.7.0",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^3.10.0",
