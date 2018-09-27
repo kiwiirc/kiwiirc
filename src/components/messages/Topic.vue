@@ -10,10 +10,12 @@
 
 import Vue from 'vue';
 import _ from 'lodash';
+import strftime from 'strftime';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import formatIrcMessage from '@/libs/MessageFormatter';
 
 const component = {
+    props: ['buffer', 'message'],
     data() {
         return {
             topic: '',
@@ -29,9 +31,15 @@ const component = {
             return content.html;
         },
         formattedSetBy() {
+            let tFormat = this.buffer.setting('timestamp_full_format');
+            let d = new Date(this.topic_when);
+            let whenDate = tFormat ?
+                strftime(tFormat, d) :
+                d.toLocaleString();
+
             return TextFormatting.t('topic_setby', {
                 who: this.topic_by,
-                when: new Date(this.topic_when).toLocaleString(),
+                when: whenDate,
             });
         },
     },
@@ -44,7 +52,7 @@ export function listenForMessages(state) {
 
     state.$on('message.new', (message, buffer) => {
         if (message.type === 'topic') {
-            message.template = new Ctor();
+            message.template = new Ctor({ propsData: { message, buffer } });
             message.template.topic = message.message;
             message.template.$mount();
         }
@@ -70,15 +78,17 @@ export function listenForMessages(state) {
 <style>
 
 .kiwi-message-topic {
-    border-top: 1px solid #42b992;
-    border-bottom: 1px solid #42b992;
-    background: #f5f5f5;
+    border-radius: 5px;
+    margin: 18px;
+    text-align: center;
+    position: relative;
+    min-height: 0;
+    display: block;
     padding: 4px 60px;
     overflow: hidden;
 }
 
 .kiwi-message-topic-setby {
-    display: inline-block;
     font-size: 80%;
     float: right;
 }

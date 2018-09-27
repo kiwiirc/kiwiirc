@@ -180,20 +180,6 @@ export default {
     padding: 10px 0;
 }
 
-//Channel topic
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-topic {
-    border-radius: 0;
-    border-left: 0;
-    border-right: 0;
-    margin: 5px 0;
-}
-
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-topic .kiwi-messagelist-body {
-    padding-right: 0;
-    max-width: 95%;
-    margin-left: 20px;
-}
-
 //Repeat messages, remove the time and author name
 .kiwi-messagelist-message--compact.kiwi-messagelist-message--authorrepeat {
     .kiwi-messagelist-time,

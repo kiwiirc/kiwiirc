@@ -1,6 +1,7 @@
 <template>
     <div
         :key="buffer.name"
+        :class="['kiwi-messagelist--' + listType]"
         class="kiwi-messagelist"
         @scroll.self="onThreadScroll"
         @click.self="onListClick"
@@ -645,35 +646,6 @@ export default {
 .kiwi-messagelist-nick:hover {
     overflow: visible;
     width: auto;
-}
-
-/* Topic changes */
-.kiwi-messagelist-message-topic {
-    border-radius: 5px;
-    margin: 18px;
-    margin-left: 0;
-    padding: 5px;
-    text-align: center;
-    position: relative;
-    min-height: 0;
-    display: block;
-}
-
-.kiwi-messagelist-message-topic .kiwi-messagelist-body {
-    min-height: 0;
-    margin: 0;
-
-    &::before {
-        display: none;
-    }
-}
-
-.kiwi-messagelist-message-topic.kiwi-messagelist-message-topic .kiwi-messagelist-time {
-    display: none;
-}
-
-.kiwi-messagelist-message-topic.kiwi-messagelist-message-topic .kiwi-messagelist-nick {
-    display: none;
 }
 
 /* Actions */
