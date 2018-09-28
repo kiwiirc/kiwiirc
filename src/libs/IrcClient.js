@@ -860,6 +860,47 @@ function clientMiddleware(state, network) {
                         type: 'mode',
                     });
                 });
+            } else {
+                // target is not a channel buffer (user mode ?)
+                // if mode had param, show in a new line
+                let modeslines = {};
+                event.modes.forEach((mode) => {
+                    if (mode.param) {
+                        modeslines[mode.mode] = mode.param;
+                    } else if (mode.mode[0] === '-') {
+                        if (!modeslines['-']) {
+                            modeslines['-'] = '';
+                        }
+                        modeslines['-'] += mode.mode.slice(1);
+                    } else {
+                        if (!modeslines['+']) {
+                            modeslines['+'] = '';
+                        }
+                        modeslines['+'] += mode.mode.slice(1);
+                    }
+                });
+
+                let serverBuffer = network.serverBuffer();
+                _.each(modeslines, (mode, value) => {
+                    let text = TextFormatting.t('modes_other', {
+                        nick: event.nick,
+                        target: event.target,
+                        mode: value + mode,
+                    });
+                    let messageBody = TextFormatting.formatText('mode', {
+                        nick: event.nick,
+                        username: event.ident,
+                        host: event.hostname,
+                        target: event.target,
+                        text,
+                    });
+                    state.addMessage(serverBuffer, {
+                        time: Date.now(),
+                        nick: '',
+                        message: messageBody,
+                        type: 'mode',
+                    });
+                });
             }
         }
 
