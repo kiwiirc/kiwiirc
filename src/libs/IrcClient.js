@@ -589,6 +589,13 @@ function clientMiddleware(state, network) {
             });
         }
 
+        if (command === 'back') {
+            state.addUser(networkid, {
+                nick: event.nick,
+                away: '',
+            });
+        }
+
         if (command === 'wholist') {
             state.usersTransaction(networkid, (users) => {
                 event.users.forEach((user) => {
