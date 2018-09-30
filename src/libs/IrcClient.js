@@ -334,8 +334,14 @@ function clientMiddleware(state, network) {
             // the server tab. ie. notices from servers
             if (event.type === 'notice') {
                 let existingBuffer = state.getBufferByName(networkid, bufferName);
+                let noticeActiveBuffer = state.setting('noticeActiveBuffer');
+                let activeBuffer = state.getActiveBuffer();
                 if (!existingBuffer) {
-                    bufferName = '*';
+                    if (noticeActiveBuffer && activeBuffer.networkid === networkid) {
+                        bufferName = activeBuffer.name;
+                    } else {
+                        bufferName = '*';
+                    }
                 }
             }
 
