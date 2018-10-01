@@ -48,8 +48,11 @@
                 <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                     <i class="fa fa-adjust" aria-hidden="true"/>
                 </a>
-                <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
+                <a class="kiwi-controlinput-tool tooltip-parent" @click.prevent="onToolClickEmoji">
                     <i class="fa fa-smile-o" aria-hidden="true"/>
+                    <div class="tooltip top right">
+                        Emoji tool: Select, insert and view all Kiwi Emojis.
+                    </div>
                 </a>
                 <div
                     v-rawElement="{

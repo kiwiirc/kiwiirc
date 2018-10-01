@@ -22,7 +22,7 @@
                 <div
                     v-if="buffer.topic.length > 0"
                     :class="{ 'kiwi-header-option--active': viewTopic == true }"
-                    class="kiwi-header-option kiwi-header-option-topic"
+                    class="kiwi-header-option kiwi-header-option-topic tooltip-parent"
                     @click="showTopic"
                 >
                     <a v-if="viewTopic">
@@ -33,6 +33,9 @@
                         <i class="fa fa-info" aria-hidden="true"/>
                         <span class="kiwi-containerheader-hidetext">{{ $t('display_topic') }}</span>
                     </a>
+                    <div class="tooltip bottom centre">
+                        Example tooltip here
+                    </div>
                 </div>
                 <div
                     :class="{

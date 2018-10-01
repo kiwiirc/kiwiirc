@@ -1,8 +1,11 @@
 <template>
     <div class="kiwi-statebrowser kiwi-theme-bg">
 
-        <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
+        <div class="kiwi-statebrowser-appsettings tooltip-parent" @click="clickAppSettings">
             <i class="fa fa-cog" aria-hidden="true"/>
+            <div class="tooltip bottom centre">
+                example string here
+            </div>
         </div>
 
         <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">
