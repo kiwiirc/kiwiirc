@@ -60,7 +60,12 @@ module.exports = {
       {
         test: /\.js$/,
         use: [{loader: 'exports-loader'}, {loader: 'babel-loader'}],
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [
+            resolve('src'),
+            resolve('test'),
+            resolve('node_modules/ip-regex'),
+            resolve('node_modules/webpack-dev-server/client')
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

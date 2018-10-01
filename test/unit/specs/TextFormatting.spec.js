@@ -30,6 +30,9 @@ describe('TextFormatting.js', function() {
             ['www.example.com', 'http://www.example.com'],
             ['https://www.example.com', 'https://www.example.com'],
             ['https://127.0.0.1/test.html?test=foo#bar', 'https://127.0.0.1/test.html?test=foo#bar'],
+            ['http://2001:0000:1234:0000:0000:C1C0:ABCD:0876/', 'http://2001:0000:1234:0000:0000:C1C0:ABCD:0876/'],
+            ['http://[2001:db8:1f70::999:de8:7648:6e8]:100/', 'http://[2001:db8:1f70::999:de8:7648:6e8]:100/'],
+            ['ldap://[2001:db8::7]/c=GB?objectClass?one', 'ldap://[2001:db8::7]/c=GB?objectClass?one'],
         ];
 
         tests.forEach((c) => {
