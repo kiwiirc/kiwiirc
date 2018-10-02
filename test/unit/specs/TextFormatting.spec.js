@@ -21,23 +21,24 @@ describe('TextFormatting.js', function() {
 
     it('should return valid url links', function() {
         let tests = [
-            ['http://example.com', 'http://example.com'],
-            ['http://127.0.0.1', 'http://127.0.0.1'],
-            ['http://example.com:8080', 'http://example.com:8080'],
-            ['http://127.0.0.1:8001', 'http://127.0.0.1:8001'],
-            ['http://example.com/test.html?test=foo#bar', 'http://example.com/test.html?test=foo#bar'],
-            ['http://127.0.0.1/test.html?test=foo#bar', 'http://127.0.0.1/test.html?test=foo#bar'],
             ['www.example.com', 'http://www.example.com'],
-            ['https://www.example.com', 'https://www.example.com'],
-            ['https://127.0.0.1/test.html?test=foo#bar', 'https://127.0.0.1/test.html?test=foo#bar'],
-            ['http://2001:0000:1234:0000:0000:C1C0:ABCD:0876/', 'http://2001:0000:1234:0000:0000:C1C0:ABCD:0876/'],
-            ['http://[2001:db8:1f70::999:de8:7648:6e8]:100/', 'http://[2001:db8:1f70::999:de8:7648:6e8]:100/'],
-            ['ldap://[2001:db8::7]/c=GB?objectClass?one', 'ldap://[2001:db8::7]/c=GB?objectClass?one'],
+            ['http://example.com'],
+            ['http://127.0.0.1'],
+            ['http://example.com:8080'],
+            ['http://127.0.0.1:8001'],
+            ['http://example.com/test.html?test=foo#bar'],
+            ['http://127.0.0.1/test.html?test=foo#bar'],
+            ['https://www.example.com'],
+            ['https://127.0.0.1/test.html?test=foo#bar'],
+            ['http://2001:0000:1234:0000:0000:C1C0:ABCD:0876/'],
+            ['http://[2001:db8:1f70::999:de8:7648:6e8]:100/'],
+            ['ldap://[2001:db8::7]/c=GB?objectClass?one'],
         ];
 
         tests.forEach((c) => {
             let linkified = TextFormatting.linkifyUrls(c[0]);
-            expect(linkified.urls[0]).to.equal(c[1]);
+            let compare = c.length === 2 ? c[1] : c[0];
+            expect(linkified.urls[0]).to.equal(compare);
         });
     });
 
