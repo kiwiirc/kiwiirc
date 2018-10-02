@@ -1,3 +1,5 @@
+import _ from 'lodash';
+import ThemeManager from '@/libs/ThemeManager';
 import * as TextFormatting from '@/helpers/TextFormatting';
 
 describe('TextFormatting.js', function() {
@@ -48,6 +50,54 @@ describe('TextFormatting.js', function() {
         tests.forEach((c) => {
             let linkified = TextFormatting.linkifyUrls(c);
             expect(linkified.urls.length).to.equal(0);
+        });
+    });
+
+    it('should return valid user links', function() {
+        // mock users list
+        let users = {
+            testnick1: { nick: 'TestNick1', username: 'testnick1' },
+            testnick2: { nick: 'TestNick2', username: 'testnick2' },
+        };
+        let tests = [
+            // word, nick, prefix, suffix
+            ['testnick1'],
+            ['TestNick1'],
+            ['TestNick2'],
+            ['testnick1:', 'testnick1', '', ':'],
+            ['@testnick2', 'testnick2', '@', ''],
+            ['@TestNick2:', 'TestNick2', '@', ':'],
+        ];
+
+        // mock ThemeManager
+        sinon.stub(ThemeManager, 'instance').returns({ themeVar: () => 40 });
+
+        tests.forEach((c) => {
+            let linkified = TextFormatting.linkifyUsers(c[0], users);
+
+            let escaped = c.length >= 2 ? _.escape(c[1]) : _.escape(c[0]);
+            let prefix = c[2] || '';
+            let suffix = c[3] || '';
+
+            let regex = new RegExp('^' + _.escape(prefix) +
+                '<a class="kiwi-nick" data-nick="' + escaped +
+                '" style="color:#[0-9A-Fa-f]{3,6}">' + escaped +
+                '</a>' + _.escape(suffix) + '$');
+            expect(linkified).to.match(regex);
+        });
+    });
+
+    it('should reject invalid users', function() {
+        // mock users list
+        let users = {
+            testnick1: { nick: 'TestNick1', username: 'testnick1' },
+            testnick2: { nick: 'TestNick2', username: 'testnick2' },
+        };
+        let tests = ['notauser', 'ttestnick', 'testnick11', 'ttestnick11'];
+
+        tests.forEach((c) => {
+            let linkified = TextFormatting.linkifyUsers(c, users);
+            expect(linkified).to.equal(c);
         });
     });
 });
