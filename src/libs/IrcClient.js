@@ -247,8 +247,8 @@ function clientMiddleware(state, network) {
             let historySupport = !!network.ircClient.network.supports('chathistory');
 
             // If this is a reconnect then request chathistory from our last position onwards
-            // to get any missed messages. (bouncer mode only)
-            if (numConnects > 1 && !requestedCh && historySupport && network.connection.bncname) {
+            // to get any missed messages
+            if (numConnects > 1 && !requestedCh && historySupport) {
                 requestedCh = true;
                 network.buffers.forEach((buffer) => {
                     if (buffer.isChannel() || buffer.isQuery()) {
@@ -257,9 +257,9 @@ function clientMiddleware(state, network) {
                 });
             }
 
-            // The first time we connect in bouncer mode, request the last 50 messages for every
-            // buffer we have
-            if (numConnects === 1 && !requestedCh && historySupport && network.connection.bncname) {
+            // The first time we connect, request the last 50 messages for every buffer we have
+            // if CHATHISTORY is supported
+            if (numConnects === 1 && !requestedCh && historySupport) {
                 requestedCh = true;
                 let time = Misc.dateIso();
                 network.buffers.forEach((buffer) => {
