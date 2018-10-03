@@ -19,47 +19,31 @@
             <state-browser :networks="networks" :sidebar-state="sidebarState"/>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"/>
-                <div
-                    v-if="mediaviewerOpen"
-                    ref="vdrContainer"
-                    style="position:absolute; z-index: 200; width: 100%; height: 40%;"
-                >
-                    <VueDraggableResizable
-                        ref="vdr"
-                        :draggable="popped"
-                        :resizable="popped"
-                        :set-width="vdrWidth"
-                        :set-height="vdrHeight"
-                        :set-top="vdrTop"
-                        :set-left="vdrLeft"
-                        :class="{'mediaviewerPoppedIn': !popped}"
-                        style="border: 2px solid #8883;"
-                    >
-                        <button
-                            class="kiwi-popout-button"
-                            @click="doPop()"
-                        >
-                            {{ mediaviewerButtonText }}
-                        </button>
-                        <div v-if="popped" style="width:100%; background: #eee; height: 40px;">
-                            <hr class="kiwi-mediaviewer-handle-hr">
-                            <hr class="kiwi-mediaviewer-handle-hr">
-                            <hr class="kiwi-mediaviewer-handle-hr">
-                        </div>
-                        <media-viewer
-                            :url="mediaviewerUrl"
-                            :component="mediaviewerComponent"
-                            :is-iframe="mediaviewerIframe"
-                        />
-                    </VueDraggableResizable>
-                </div>
+                <component
+                    v-for="(mediaViewer, index) in mediaViewers"
+                    :ref="'mediaViewer' + index"
+                    :key="mediaViewer.index"
+                    :is="mediaViewer.type"
+                    :id="index"
+                    :url="mediaViewer.mediaviewerUrl"
+                    :component="mediaviewerComponent"
+                    :viewer-embedded="viewerEmbedded"
+                    :is-iframe="mediaViewer.isIframe"
+                    :style="'z-index: ' + mediaViewer.zIndex"
+                    :viewerdragging="viewerDragging"
+                    @viewerdragging="setViewerDragging"
+                    @viewermousedown="setViewerDepth"
+                    @viewerpopped="viewerPop"
+                    @closeviewer="closeViewer"
+                />
                 <template v-if="!activeComponent && network">
                     <container
                         :network="network"
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
                     >
-                        <div v-if="mediaviewerOpen && !popped" slot="before" style="height: 40vh;"/>
+                        <div v-if="mediaviewerOpen && viewerEmbedded"
+                             slot="before" style="height: calc(40% + 40px);"/>
                     </container>
                     <control-input :container="networks" :buffer="buffer"/>
                 </template>
@@ -97,7 +81,6 @@ import * as AudioBleep from '@/libs/AudioBleep';
 import * as bufferTools from '@/libs/bufferTools';
 import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
-import VueDraggableResizable from 'vue-draggable-resizable';
 
 let log = Logger.namespace('App.vue');
 
@@ -107,7 +90,6 @@ export default {
         Container,
         ControlInput,
         MediaViewer,
-        VueDraggableResizable,
     },
     data() {
         return {
@@ -122,18 +104,17 @@ export default {
             // and there is no active component set
             fallbackComponent: null,
             fallbackComponentProps: {},
-            mediaviewerOpen: false,
             mediaviewerUrl: '',
             mediaviewerComponent: null,
             mediaviewerIframe: false,
             themeUrl: '',
             sidebarState: new SidebarState(),
-            mediaviewerButtonText: 'Pop Out',
-            popped: false,
-            vdrWidth: 500,
-            vdrHeight: 500,
-            vdrTop: 0,
-            vdrLeft: 0,
+            mediaViewers: [],
+            mediaviewerOpen: false,
+            viewerEmbedded: true,
+            viewerEmbeddedIndex: -1,
+            viewerCount: 0,
+            viewerDragging: false,
         };
     },
     computed: {
@@ -185,26 +166,46 @@ export default {
         this.trackWindowDimensions();
     },
     methods: {
-        doPop() {
-            this.popped = !this.popped;
-            this.mediaviewerButtonText = this.popped ? 'Pop In' : 'Pop Out';
-            if (this.popped) {
-                this.popOut();
-            } else {
-                this.popIn();
+        // fixes window drag-halting when cursor moves over viewer content
+        setViewerDragging(val) {
+            this.viewerDragging = val;
+        },
+        // handle z-Index. (bring focused window to top)
+        setViewerDepth(index) {
+            if (this.mediaViewers[index].popped) {
+                let max = -1;
+                for (let i = 0; i < this.mediaViewers.length; ++i) {
+                    if (this.mediaViewers[index].popped && this.mediaViewers[i].zIndex > max) {
+                        max = this.mediaViewers[i].zIndex;
+                    }
+                }
+                this.mediaViewers[index].zIndex = max + 1;
+                let min = 1000000000;
+                for (let i = 0; i < this.mediaViewers.length; ++i) {
+                    if (this.mediaViewers[index].popped && this.mediaViewers[i].zIndex < min) {
+                        min = this.mediaViewers[i].zIndex;
+                    }
+                }
+                for (let i = 0; i < this.mediaViewers.length; ++i) {
+                    if (this.mediaViewers[index].popped) {
+                        this.mediaViewers[i].zIndex -= min - 1000;
+                    }
+                }
             }
         },
-        popIn() {
-            this.vdrWidth = this.$refs.vdrContainer.clientWidth;
-            this.vdrHeight = this.$refs.vdrContainer.clientHeight;
-            this.vdrTop = 0;
-            this.vdrLeft = 0;
+        closeViewer(index) {
+            if (!this.mediaViewers[index].popped) {
+                this.viewerEmbedded = false;
+            }
+            this.mediaViewers.splice(index, 1);
+            if (this.mediaViewers.length === 0) this.mediaviewerOpen = false;
         },
-        popOut() {
-            this.vdrWidth = 600;
-            this.vdrHeight = 400;
-            this.vdrLeft = this.$refs.vdrContainer.clientWidth / 2 - 200;
-            this.vdrTop = 200;
+        // viewer is popping in or out
+        viewerPop(index) {
+            this.viewerEmbedded = this.mediaViewers[index].popped;
+            this.mediaViewers[index].popped = !this.mediaViewers[index].popped;
+            this.mediaViewers[index].zIndex = this.mediaViewers[index].popped ? 1000 : 10;
+            this.setViewerDepth(index);
         },
         // Triggered by a startup screen event
         startUp(opts) {
@@ -264,19 +265,31 @@ export default {
                     opts = url;
                 }
 
-                this.mediaviewerUrl = opts.url;
-                this.mediaviewerComponent = opts.component;
-                this.mediaviewerIframe = opts.iframe;
+                if (!this.viewerEmbedded || this.mediaViewers.length === 0) {
+                    this.mediaViewers.push({
+                        type: 'media-viewer',
+                        mediaviewerUrl: opts.url,
+                        index: this.viewerCount,
+                        zIndex: 10,
+                        popped: false,
+                        isIframe: opts.iframe,
+                    });
+                    this.viewerEmbeddedIndex = this.mediaViewers.length - 1;
+                } else {
+                    this.mediaViewers.splice(this.viewerEmbeddedIndex, 1);
+                    this.mediaViewers.push({
+                        type: 'media-viewer',
+                        mediaviewerUrl: opts.url,
+                        index: this.viewerCount,
+                        zIndex: 10,
+                        popped: false,
+                        isIframe: opts.iframe,
+                    });
+                    this.viewerEmbeddedIndex = this.mediaViewers.length - 1;
+                }
+                this.viewerCount++;
                 this.mediaviewerOpen = true;
-                let self = this;
-                this.$nextTick(() => {
-                    self.doPop();
-                    self.$nextTick(() => self.doPop());
-                });
-            });
-
-            this.listen(this.$state, 'mediaviewer.hide', () => {
-                this.mediaviewerOpen = false;
+                this.viewerEmbedded = true;
             });
         },
         configureFavicon() {
@@ -310,9 +323,8 @@ export default {
             let trackWindowDims = () => {
                 this.$state.ui.app_width = this.$el.clientWidth;
                 this.$state.ui.app_height = this.$el.clientHeight;
-                if (this.mediaviewerOpen) {
-                    this.doPop();
-                    this.doPop();
+                if (this.mediaviewerOpen && this.viewerEmbedded) {
+                    this.$refs['mediaViewer' + this.viewerEmbeddedIndex][0].resetPop();
                 }
             };
             window.addEventListener('resize', trackWindowDims);
@@ -487,7 +499,7 @@ body {
 
 .kiwi-mediaviewer {
     overflow: auto;
-    background: #888;
+    background: #fff;
 }
 
 .kiwi-controlinput {
@@ -524,27 +536,5 @@ body {
         opacity: 1;
         z-index: 10;
     }
-}
-
-.kiwi-mediaviewer-handle-hr {
-    border: 1px solid #aaa;
-    margin: 0;
-    margin-bottom: 10px;
-}
-
-.mediaviewerPoppedIn {
-    margin-top: 50px;
-}
-
-.kiwi-popout-button {
-    position: absolute;
-    z-index: 2;
-    margin: 5px;
-    background: #175;
-    font-size: 1.1em;
-    color: #efe;
-    border: 0;
-    padding: 5px;
-    border-radius: 5px;
 }
 </style>
