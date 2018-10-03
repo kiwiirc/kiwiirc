@@ -1,7 +1,7 @@
 /** @module */
 
-import strftime from 'strftime';
 import _ from 'lodash';
+import * as Misc from '@/helpers/Misc';
 import batchedAdd from '../batchedAdd';
 
 let nextBufferId = 0;
@@ -194,7 +194,7 @@ export default class BufferState {
         }
 
         let irc = this.getNetwork().ircClient;
-        let timeStr = strftime('%FT%T.%L%:z', time);
+        let timeStr = Misc.dateIso(time);
         irc.raw(`CHATHISTORY ${this.name} timestamp=${timeStr} message_count=${numMessages}`);
         irc.once('batch end chathistory', (event) => {
             if (event.commands.length === 0) {

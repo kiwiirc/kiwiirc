@@ -3,6 +3,7 @@
 /** @module */
 
 import _ from 'lodash';
+import strftime from 'strftime';
 
 /**
  * Extract an array of buffers from a string, parsing multiple buffer names and channel keys
@@ -248,4 +249,13 @@ export function dedotObject(confObj, _place) {
 export function replaceObjectProps(target, source) {
     Object.keys(target).forEach(prop => delete target[prop]);
     Object.keys(source).forEach((prop) => { target[prop] = source[prop]; });
+}
+
+/**
+ * Create an ISO8601 formatted date
+ * @param {Date} date The date object to create the time from. Defaults to the current time
+ */
+export function dateIso(date) {
+    let d = date || new Date();
+    return strftime('%FT%T.%L%:z', d);
 }

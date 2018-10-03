@@ -1,9 +1,10 @@
 'kiwi public';
 
-import * as TextFormatting from '@/helpers/TextFormatting';
 import _ from 'lodash';
 import strftime from 'strftime';
 import Irc from 'irc-framework/browser';
+import * as TextFormatting from '@/helpers/TextFormatting';
+import * as Misc from '@/helpers/Misc';
 import bouncerMiddleware from './BouncerMiddleware';
 import * as ServerConnection from './ServerConnection';
 
@@ -260,7 +261,7 @@ function clientMiddleware(state, network) {
             // buffer we have
             if (numConnects === 1 && !requestedCh && historySupport && network.connection.bncname) {
                 requestedCh = true;
-                let time = strftime('%FT%T.%L%:z', new Date());
+                let time = Misc.dateIso();
                 network.buffers.forEach((buffer) => {
                     if (buffer.isChannel() || buffer.isQuery()) {
                         let line = `CHATHISTORY ${buffer.name} timestamp=${time} message_count=-50`;
