@@ -261,7 +261,12 @@ function clientMiddleware(state, network) {
             if (numConnects === 1 && !requestedCh && historySupport && network.connection.bncname) {
                 requestedCh = true;
                 let time = strftime('%FT%T.%L%:z', new Date());
-                network.ircClient.raw(`CHATHISTORY * timestamp=${time} message_count=-50`);
+                network.buffers.forEach((buffer) => {
+                    if (buffer.isChannel() || buffer.isQuery()) {
+                        let line = `CHATHISTORY ${buffer.name} timestamp=${time} message_count=-50`;
+                        network.ircClient.raw(line);
+                    }
+                });
             }
         }
 
