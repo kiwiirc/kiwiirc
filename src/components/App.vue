@@ -43,7 +43,7 @@
                         :sidebar-state="sidebarState"
                     >
                         <div v-if="mediaviewerOpen && viewerEmbedded"
-                             slot="before" style="height: calc(40% + 40px);"/>
+                             slot="before" style="height: calc(40% + 20px);"/>
                     </container>
                     <control-input :container="networks" :buffer="buffer"/>
                 </template>
