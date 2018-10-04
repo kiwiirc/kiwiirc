@@ -66,58 +66,6 @@ export function mentionsNick(input, nick) {
 }
 
 /**
- * Get a users prefix symbol on a buffer from its modes
- * @param {Object} user The user object
- * @param {Object} buffer The buffer object
- */
-export function userModePrefix(user, buffer) {
-    // The user may not be on the buffer
-    if (!user.buffers[buffer.id]) {
-        return '';
-    }
-
-    let modes = user.buffers[buffer.id].modes;
-    if (modes.length === 0) {
-        return '';
-    }
-
-    let network = buffer.getNetwork();
-    let netPrefixes = network.ircClient.network.options.PREFIX;
-    // Find the first (highest) netPrefix in the users buffer modes
-    let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
-
-    return prefix ?
-        prefix.symbol :
-        '';
-}
-
-/**
- * Get a users mode on a buffer
- * @param user {Object} The user object
- * @param buffer {Object} The buffer object
- */
-export function userMode(user, buffer) {
-    // The user may not be on the buffer
-    if (!user.buffers[buffer.id]) {
-        return '';
-    }
-
-    let modes = user.buffers[buffer.id].modes;
-    if (modes.length === 0) {
-        return '';
-    }
-
-    let network = buffer.getNetwork();
-    let netPrefixes = network.ircClient.network.options.PREFIX;
-    // Find the first (highest) netPrefix in the users buffer modes
-    let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
-
-    return prefix ?
-        prefix.mode :
-        '';
-}
-
-/**
  * Get a query string value from the current URL
  * @param {string} _name The query string variable name
  * @param {string} _url The full URL to extract the variable from

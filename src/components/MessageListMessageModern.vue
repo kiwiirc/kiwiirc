@@ -75,7 +75,6 @@
 /* eslint-disable max-len */
 
 import * as TextFormatting from '@/helpers/TextFormatting';
-import * as Misc from '@/helpers/Misc';
 import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
 
@@ -118,7 +117,7 @@ export default {
             return types.indexOf(message.type) > -1;
         },
         userModePrefix: function userModePrefix(user) {
-            return Misc.userModePrefix(user, this.ml.buffer);
+            return this.ml.buffer.userModePrefix(user);
         },
     },
 };
