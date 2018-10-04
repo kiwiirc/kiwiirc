@@ -12,9 +12,13 @@
             :set-left="VueDraggableResizableLeft"
             :handles="['br']"
             :class="{'kiwi-mediaviewer-poppedin': !viewerPopped}"
-            style="border: 2px solid #3334;"
+            style="border: 2px solid #3334; border-radius: 2px;"
         >
-            <div class="kiwi-mediaviewer-controls" @mousedown="setDepth()">
+            <div
+                ref="windowHandle"
+                class="kiwi-mediaviewer-controls"
+                @mousedown="setDepth()"
+            >
                 <button
                     v-if="!viewerEmbedded || !viewerPopped"
                     :title="popButtonToolTip"
@@ -23,6 +27,18 @@
                 >
                     {{ mediaviewerButtonText }}
                 </button>
+                <div
+                    v-if="!viewerEmbedded || !viewerPopped"
+                    style="width: 40px; float:left; height: 40px;"
+                />
+                <a
+                    :href="getRootDomain.URL"
+                    class="kiwi-viewer-header-link"
+                    target="_blank"
+                    rel="nofollow"
+                >
+                    {{ getRootDomain.domain }}
+                </a>
                 <a
                     class="u-button u-button-warning kiwi-mediaviewer-controls-close"
                     style="float: right;"
@@ -32,9 +48,7 @@
                 </a>
             </div>
             <div
-                v-if="viewerPopped"
-                ref="windowHandle"
-                style="width:100%; background: #eee; height: 30px;"
+                style="width:100%; text-align: center; background: #eee; height: 30px;"
             />
 
             <div ref="kiwiMediaViewer" class="kiwi-mediaviewer" @mousedown="setDepth()">
@@ -87,6 +101,14 @@ export default {
     computed: {
         embedlyKey: function embedlyKey() {
             return state.settings.embedly.key;
+        },
+        getRootDomain() {
+            let a = document.createElement('a');
+            a.href = this.url;
+            return {
+                domain: a.hostname,
+                URL: this.url.split('//')[0] + '//' + a.hostname,
+            };
         },
     },
     watch: {
@@ -205,6 +227,7 @@ export default {
     right: 0;
     width: 100%;
     z-index: 1;
+    cursor: pointer;
 }
 
 .kiwi-mediaviewer-controls-close {
@@ -225,11 +248,10 @@ export default {
 
 .kiwi-pop-button {
     position: absolute;
-    z-index: 2;
-    background: #4548;
+    background: #eee;
     border: none;
     font-size: 1.75em;
-    color: #efe;
+    color: #001;
     padding: 0;
     height: 30px;
     padding-left: 4px;
@@ -247,5 +269,20 @@ export default {
     position: absolute;
     width: 0;
     height: 0;
+}
+
+.kiwi-viewer-header-link {
+    float: left;
+    font-size: 1.1em;
+    color: #efe;
+    margin: 3px;
+    padding: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin-left: 2px;
+    background: #99a;
+    line-height: 0.98em;
 }
 </style>
