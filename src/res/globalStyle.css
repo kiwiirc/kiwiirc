@@ -293,29 +293,54 @@ select {
     display: none;
     position: absolute;
     padding: 8px;
-    font-size: 1em;
     line-height: 20px;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.7);
     color: #f1f1f1;
-    width: 150px;
     border-radius: 2px;
-}
-
-.tooltip.bottom {
-    top: 99%;
+    width: 150px;
+    font-size: 12px;
 }
 
 .tooltip.top {
     bottom: 99%;
 }
 
-.tooltip.centre {
-    margin-left: -75px;
-    left: 50%;
+.tooltip.middle {
+    top: 30%;
+}
+
+.tooltip.bottom {
+    top: 99%;
+}
+
+.tooltip.left {
+    left: 0;
+    margin: 0;
+    width: auto;
 }
 
 .tooltip.right {
     right: 0;
+    margin: 0;
+    width: auto;
+}
+
+.tooltip.offset-right {
+    left: 100%;
+    margin: 0;
+    width: auto;
     border-radius: 2px 0 0 2px;
+}
+
+.tooltip.offset-left {
+    right: 100%;
+    margin: 0;
+    width: auto;
+    border-radius: 0 2px 2px 0;
+}
+
+.tooltip.centre {
+    margin-left: -75px;
+    left: 50%;
 }

@@ -45,14 +45,15 @@
                 <!--<button type="submit">Send</button>-->
             </form>
             <div ref="plugins" class="kiwi-controlinput-tools">
-                <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
+                <a
+                    v-KiwiToolTip="{ message: 'Text Styling Options', position: 'left'}"
+                    class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                     <i class="fa fa-adjust" aria-hidden="true"/>
                 </a>
-                <a class="kiwi-controlinput-tool tooltip-parent" @click.prevent="onToolClickEmoji">
+                <a
+                    v-KiwiToolTip="{ message: 'Emoji tool!', position: 'left'}"
+                    class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
                     <i class="fa fa-smile-o" aria-hidden="true"/>
-                    <div class="tooltip top right">
-                        Emoji tool: Select, insert and view all Kiwi Emojis.
-                    </div>
                 </a>
                 <div
                     v-rawElement="{

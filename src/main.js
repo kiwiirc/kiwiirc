@@ -113,6 +113,22 @@ Vue.directive('rawElement', {
     },
 });
 
+// Adds a tooltip to the selected element by inserting a 'tooltip' item into the DOM
+// We want to add a directive to a 'parent' div - then the directive should create
+// A child div within the parent, using the string for content, and class names
+Vue.directive('KiwiToolTip', {
+    bind(el, binding, vnode) {
+            var toolTip = document.createElement("div");
+            toolTip.setAttribute('class','tooltip');
+            toolTip.innerHTML = binding.value.message;
+            el.className += ' tooltip-parent';
+
+            toolTip.className += ' ' + binding.value.position;
+
+            el.appendChild(toolTip);
+    },
+});
+
 // Register a global custom directive called `v-focus`
 Vue.directive('focus', {
     // When the bound element is inserted into the DOM...

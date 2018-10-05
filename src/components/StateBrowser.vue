@@ -1,11 +1,10 @@
 <template>
     <div class="kiwi-statebrowser kiwi-theme-bg">
 
-        <div class="kiwi-statebrowser-appsettings tooltip-parent" @click="clickAppSettings">
+        <div
+            v-KiwiToolTip="{ message: 'Kiwi Option Settings', position: 'offset-right'}"
+            class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
             <i class="fa fa-cog" aria-hidden="true"/>
-            <div class="tooltip bottom centre">
-                example string here
-            </div>
         </div>
 
         <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">

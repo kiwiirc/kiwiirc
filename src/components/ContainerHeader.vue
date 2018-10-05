@@ -8,7 +8,8 @@
     >
 
         <template v-if="isChannel()">
-            <div class="kiwi-header-name">{{ buffer.name }}</div>
+            <div v-KiwiToolTip="{ message: 'this is an example', position: 'bottom'}"
+                 class="kiwi-header-name">{{ buffer.name }}</div>
             <div
                 v-if="isJoined && isConnected"
                 :key="buffer.id"
