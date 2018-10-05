@@ -118,14 +118,12 @@ Vue.directive('rawElement', {
 // A child div within the parent, using the string for content, and class names
 Vue.directive('KiwiToolTip', {
     bind(el, binding, vnode) {
-            var toolTip = document.createElement("div");
-            toolTip.setAttribute('class','tooltip');
-            toolTip.innerHTML = binding.value.message;
-            el.className += ' tooltip-parent';
-
-            toolTip.className += ' ' + binding.value.position;
-
-            el.appendChild(toolTip);
+        let toolTip = document.createElement('div');
+        toolTip.setAttribute('class', 'tooltip');
+        toolTip.innerHTML = binding.value.message;
+        el.className += ' tooltip-parent';
+        toolTip.className += ' ' + binding.value.position;
+        el.appendChild(toolTip);
     },
 });
 
