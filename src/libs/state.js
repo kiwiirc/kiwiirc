@@ -72,6 +72,7 @@ const stateObj = {
             direct: false,
             state_key: 'kiwi-state',
         },
+        noticeActiveBuffer: false,
         showAutocomplete: true,
         showSendButton: false,
         sidebarPinned: false,
