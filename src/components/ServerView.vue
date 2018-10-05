@@ -64,7 +64,8 @@ export default {
     watch: {
         networkConnected() {
             this.$nextTick(() => {
-                // force update of tabbed-view
+                // Vue won't update the tabs being displayed here so we to
+                // manually update a property to force a re-render of the tabs
                 this.$refs.tabs.a++;
             });
         },
