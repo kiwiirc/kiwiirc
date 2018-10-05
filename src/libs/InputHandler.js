@@ -565,7 +565,12 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
         _.each(whoisData, (val, key) => {
             // Only include lines we haven't already used
             if (typeof formats[key] === 'undefined') {
-                display(`${key}: ${val}`);
+                // Some keys such as `special` are arrays of values
+                if (_.isArray(val)) {
+                    val.forEach(v => display(`${key}: ${v}`));
+                } else {
+                    display(`${key}: ${val}`);
+                }
             }
         });
 
