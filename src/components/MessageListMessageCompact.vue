@@ -68,7 +68,6 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
-import * as Misc from '@/helpers/Misc';
 import MessageInfo from './MessageInfo';
 
 export default {
@@ -87,7 +86,7 @@ export default {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
         userModePrefix: function userModePrefix(user) {
-            return Misc.userModePrefix(user, this.ml.buffer);
+            return this.ml.buffer.userModePrefix(user);
         },
     },
 };

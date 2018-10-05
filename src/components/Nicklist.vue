@@ -36,7 +36,6 @@
 import state from '@/libs/state';
 import Logger from '@/libs/Logger';
 import * as TextFormatting from '@/helpers/TextFormatting';
-import * as Misc from '@/helpers/Misc';
 import NicklistUser from './NicklistUser';
 
 let log = Logger.namespace('Nicklist');
@@ -159,10 +158,10 @@ export default {
             return styles;
         },
         userModePrefix(user) {
-            return Misc.userModePrefix(user, this.buffer);
+            return this.buffer.userModePrefix(user);
         },
         userMode(user) {
-            return Misc.userMode(user, this.buffer);
+            return this.buffer.userMode(user);
         },
         openQuery(user) {
             let buffer = state.addBuffer(this.buffer.networkid, user.nick);

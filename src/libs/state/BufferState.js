@@ -115,6 +115,56 @@ export default class BufferState {
         return !!hasOp;
     }
 
+    /**
+     * Get a users prefix symbol on a buffer from its modes
+     * @param {Object} user The user object
+     */
+    userModePrefix(user) {
+        // The user may not be on the buffer
+        if (!user.buffers[this.id]) {
+            return '';
+        }
+
+        let modes = user.buffers[this.id].modes;
+        if (modes.length === 0) {
+            return '';
+        }
+
+        let network = this.getNetwork();
+        let netPrefixes = network.ircClient.network.options.PREFIX;
+        // Find the first (highest) netPrefix in the users buffer modes
+        let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
+
+        return prefix ?
+            prefix.symbol :
+            '';
+    }
+
+    /**
+     * Get a users mode on a buffer
+     * @param user {Object} The user object
+     */
+    userMode(user) {
+        // The user may not be on the buffer
+        if (!user.buffers[this.id]) {
+            return '';
+        }
+
+        let modes = user.buffers[this.id].modes;
+        if (modes.length === 0) {
+            return '';
+        }
+
+        let network = this.getNetwork();
+        let netPrefixes = network.ircClient.network.options.PREFIX;
+        // Find the first (highest) netPrefix in the users buffer modes
+        let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
+
+        return prefix ?
+            prefix.mode :
+            '';
+    }
+
     setting(name, val) {
         if (typeof val !== 'undefined') {
             this.state.$set(this.settings, name, val);
