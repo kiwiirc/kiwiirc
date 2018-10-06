@@ -65,6 +65,9 @@
                         <tabbed-tab :header="$t('banned')">
                             <channel-banlist :buffer="buffer"/>
                         </tabbed-tab>
+                        <tabbed-tab :header="$t('invited')">
+                            <channel-invitelist :buffer="buffer"/>
+                        </tabbed-tab>
                         <tabbed-tab :header="$t('notifications')">
                             <buffer-settings :buffer="buffer"/>
                         </tabbed-tab>
@@ -120,6 +123,7 @@ import SidebarState from './SidebarState';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
+import ChannelInvitelist from './ChannelInvitelist';
 import Nicklist from './Nicklist';
 
 export { SidebarState as State };
@@ -129,6 +133,7 @@ export default {
         BufferSettings,
         ChannelInfo,
         ChannelBanlist,
+        ChannelInvitelist,
         Nicklist,
         UserBox,
     },
