@@ -78,6 +78,7 @@
     "tinycon": "^0.6.8",
     "url-loader": "^0.5.7",
     "vue": "^2.5.13",
+    "vue-draggable-resizable": "https://github.com/srmcgann/vue-draggable-resizable.git",
     "vue-loader": "^13.7.0",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^3.10.0",
