@@ -1,7 +1,7 @@
 <template>
     <div
         ref="VueDraggableResizableContainer"
-        :class="{'kiwi-viewer-popped-out': viewerPopped, 'kiwi-viewer-popped-in': !viewerPopped}"
+        class="kiwi-viewer-container"
     >
         <VueDraggableResizable
             :draggable="viewerPopped"
@@ -259,13 +259,7 @@ export default {
     cursor: pointer;
 }
 
-.kiwi-viewer-popped-out {
-    position: absolute;
-    width: 0;
-    height: 0;
-}
-
-.kiwi-viewer-popped-in {
+.kiwi-viewer-container {
     position: absolute;
     width: 0;
     height: 0;

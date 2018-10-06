@@ -42,7 +42,7 @@
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
                     >
-                        <div v-if="mediaviewerOpen && viewerEmbedded"
+                        <div v-if="!componentOpen() && mediaviewerOpen && viewerEmbedded"
                              slot="before" style="height: calc(40% + 20px);"/>
                     </container>
                     <control-input :container="networks" :buffer="buffer"/>
@@ -166,6 +166,20 @@ export default {
         this.trackWindowDimensions();
     },
     methods: {
+        componentOpen() {
+            if (document.querySelectorAll('.kiwi-appsettings').length ||
+                document.querySelectorAll('.kiwi-serverview').length) {
+                for (let i = 0; i < this.mediaViewers.length; ++i) {
+                    if (this.mediaViewers[i].zIndex > 0) this.mediaViewers[i].zIndex -= 10000;
+                }
+            } else {
+                for (let i = 0; i < this.mediaViewers.length; ++i) {
+                    if (this.mediaViewers[i].zIndex < 0) this.mediaViewers[i].zIndex += 10000;
+                }
+            }
+            return document.querySelectorAll('.kiwi-appsettings').length ||
+                document.querySelectorAll('.kiwi-serverview').length;
+        },
         // fixes window drag-halting when cursor moves over viewer content
         setViewerDragging(val) {
             this.viewerDragging = val;
@@ -234,6 +248,7 @@ export default {
                     this.activeComponentProps = props;
                     this.activeComponent = component;
                 }
+                this.$nextTick(() => this.$nextTick(this.componentOpen));
             });
         },
         watchForThemes() {
