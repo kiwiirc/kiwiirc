@@ -237,6 +237,10 @@ export default {
     line-height: 53px;
 }
 
+.kiwi-container--sidebar-pinned .kiwi-sidebar .kiwi-nicklist-usercount .fa-search {
+    margin-right: 15px;
+}
+
 .kiwi-nicklist-usercount .fa-search:hover,
 .kiwi-nicklist--filtering .kiwi-nicklist-usercount .fa-search {
     opacity: 1;
