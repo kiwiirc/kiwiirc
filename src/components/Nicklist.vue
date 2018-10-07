@@ -218,8 +218,8 @@ export default {
     justify-content: space-between;
     cursor: default;
     box-sizing: border-box;
-    height: 43px;
-    line-height: 39px;
+    height: 58px;
+    line-height: 55px;
     width: 100%;
 }
 
@@ -231,10 +231,10 @@ export default {
 .kiwi-nicklist-usercount .fa-search {
     opacity: 0.3;
     cursor: pointer;
-    font-size: 1.2em;
-    padding-top: 10px;
+    font-size: 16px;
     align-self: flex-start;
-    margin-right: 15px;
+    margin-right: 75px;
+    line-height: 53px;
 }
 
 .kiwi-nicklist-usercount .fa-search:hover,
@@ -276,6 +276,20 @@ export default {
     .kiwi-sidebar.kiwi-sidebar-section-nicklist {
         width: 100%;
         max-width: 380px;
+    }
+
+    .kiwi-nicklist-usercount {
+        height: 58px;
+    }
+
+    .kiwi-nicklist-usercount span {
+        line-height: 50px;
+    }
+
+    .kiwi-nicklist-usercount .fa-search {
+        margin-right: 50px;
+        padding-top: 0;
+        line-height: 50px;
     }
 }
 

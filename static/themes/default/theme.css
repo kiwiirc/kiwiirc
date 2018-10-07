@@ -160,12 +160,9 @@
 }
 
 /* Title bar, at the top of the Application settings component */
-.kiwi-appsettings-title {
-    background-color: #42b992;
-    color: #fff;
-}
-.kiwi-appsettings-title:hover{
+.kiwi-appsettings-close {
     background: #d16c6c;
+    color: #fff;
 }
 
 
@@ -608,15 +605,17 @@
 
 /* Sidebar ( Sidebar.vue ) */
 .kiwi-sidebar-options {
-    background-color: #42b992;
+    background-color: #e6e6e6;
     color: #fff;
 }
 .kiwi-sidebar-pin{
-    border-right: 1px solid #fff;
     background: #42b992;
 }
 .kiwi-sidebar-pin:hover{
     background: #62d0ac;
+}
+.kiwi-sidebar-options .kiwi-sidebar-close {
+    background: #d16c6c;
 }
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
     background: #d16c6c;
@@ -625,7 +624,6 @@
 .kiwi-container--sidebar-pinned .kiwi-sidebar {
     border-color: #b2b2b2;
 }
-
 
 /* Channel Banlist ( Channelbanlist.vue ) */
 .kiwi-channelbanlist-table tr {
@@ -677,7 +675,6 @@
 
 /* User Settings */
 .kiwi-statebrowser-appsettings:hover {
-    background: #42b992;
     color: #fff;
     opacity: 1;
 }

@@ -570,7 +570,7 @@ export default {
         display: block;
         padding: 0 10px;
         font-weight: 600;
-        background: #42b992;
+        background: #d16c6c;
         box-sizing: border-box;
         margin-bottom: 0;
         text-transform: uppercase;
@@ -581,7 +581,7 @@ export default {
 
         i {
             float: right;
-            font-size: 1.2em;
+            font-size: 16px;
             line-height: 50px;
         }
     }

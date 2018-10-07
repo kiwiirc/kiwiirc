@@ -1,8 +1,7 @@
 <template>
     <div class="kiwi-appsettings">
 
-        <div class="kiwi-appsettings-title" @click="closeSettings">
-            <span>{{ $t('close') }}</span>
+        <div class="kiwi-appsettings-close" @click="closeSettings">
             <i class="fa fa-times" aria-hidden="true"/>
         </div>
 
@@ -337,8 +336,6 @@ export default {
     box-sizing: border-box;
     height: 100%;
     overflow-y: auto;
-    padding: 8px 0 0 0;
-    margin-top: -7px;
 
     .u-form {
         width: 100%;
@@ -383,10 +380,6 @@ export default {
 
 .kiwi-appsettings-tab-container {
     width: 100%;
-}
-
-.kiwi-appsettings-close {
-    float: right;
 }
 
 .kiwi-appsettings .u-form label {
@@ -442,40 +435,21 @@ export default {
     max-width: 750px;
 }
 
-.kiwi-appsettings-title {
-    display: block;
+.kiwi-appsettings-close {
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    right: 0;
+    width: auto;
     cursor: pointer;
     padding: 0 10px;
-    margin: -1px 0 0 0;
-    font-weight: 600;
-    width: 100%;
-    position: relative;
-    box-sizing: border-box;
-    text-transform: uppercase;
-    line-height: 47px;
     text-align: right;
+    box-sizing: border-box;
     transition: background 0.3s;
 }
 
-.kiwi-appsettings-title h2 {
-    padding: 10px 0 11px 20px;
-    width: auto;
-    float: left;
-}
-
-.kiwi-appsettings-title a {
-    float: right;
-    position: static;
-    background: none;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.4em;
-}
-
-.kiwi-appsettings-title i {
-    margin-left: 10px;
-    font-size: 1.5em;
-    float: right;
+.kiwi-appsettings-close i {
+    font-size: 18px;
     line-height: 47px;
 }
 
@@ -486,6 +460,14 @@ export default {
         position: fixed;
         left: 0;
         transition: left 0.5s;
+    }
+
+    .kiwi-appsettings-close {
+        top: 0;
+    }
+
+    .kiwi-appsettings-close i {
+        line-height: 45px;
     }
 
     .kiwi-appsettings .kiwi-appsettings-block {

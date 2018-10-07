@@ -21,7 +21,7 @@
                         <i class="fa fa-thumb-tack" aria-hidden="true"/>
                     </div>
                     <div class="kiwi-sidebar-close" @click="sidebarState.close()">
-                        {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
+                        <i class="fa fa-times" aria-hidden="true"/>
                     </div>
                 </span>
 
@@ -242,38 +242,30 @@ export default {
 }
 
 .kiwi-sidebar-options {
-    display: block;
-    cursor: pointer;
+    position: absolute;
+    right: 0;
+    width: auto;
     font-weight: 600;
-    width: 100%;
-    position: relative;
     box-sizing: border-box;
     text-transform: uppercase;
-    line-height: 50px;
     vertical-align: top;
+    font-size: 0;
 }
 
-.kiwi-sidebar-options .kiwi-sidebar-pin {
-    position: absolute;
+.kiwi-sidebar-options .kiwi-sidebar-pin,
+.kiwi-sidebar-options .kiwi-sidebar-close {
+    display: inline-block;
+    cursor: pointer;
     padding: 0 10px;
-    height: 100%;
     line-height: 52px;
     z-index: 1;
+    font-size: 18px;
     transition: background 0.3s;
 }
 
-.kiwi-sidebar-options .kiwi-sidebar-close {
-    width: 100%;
-    display: inline-block;
-    padding: 0 20px 0 40px;
-    text-align: right;
-    box-sizing: border-box;
-    transition: background 0.3s;
-}
-
+.kiwi-sidebar-options .kiwi-sidebar-pin i,
 .kiwi-sidebar-options .kiwi-sidebar-close i {
-    margin-left: 10px;
-    font-size: 1.5em;
+    font-size: 0.95em;
     line-height: 47px;
 }
 
@@ -314,15 +306,6 @@ export default {
 }
 
 @media screen and (max-width: 769px) {
-    .kiwi-sidebar .u-tabbed-view-tab {
-        width: 100%;
-    }
-
-    .kiwi-sidebar .u-tabbed-view-tab.u-tabbed-view-tab--active {
-        border-bottom: 3px solid #42b992;
-        margin-bottom: 0;
-    }
-
     .kiwi-sidebar .u-form input[type="checkbox"] {
         margin-right: 4px;
     }
@@ -353,9 +336,21 @@ export default {
     .kiwi-channelbanlist .u-form {
         line-height: 10px;
     }
+}
 
-    .kiwi-sidebar-options {
-        line-height: 47px;
+@media screen and (max-width: 500px) {
+    .kiwi-sidebar .u-tabbed-view-tab {
+        width: 100%;
+    }
+
+    .kiwi-sidebar .u-tabbed-view-tab.u-tabbed-view-tab--active {
+        border-bottom: 3px solid #42b992;
+        margin-bottom: 0;
+    }
+
+    .kiwi-sidebar-options .kiwi-sidebar-pin,
+    .kiwi-sidebar-options .kiwi-sidebar-close {
+        line-height: 49px;
     }
 }
 
