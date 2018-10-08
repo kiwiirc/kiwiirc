@@ -20,7 +20,7 @@
                     aria-hidden="true"
                 />
             </div>
-            <form class="kiwi-controlinput-form" @submit.prevent="submitForm">
+            <form class="kiwi-controlinput-form" @submit.prevent="submitForm" @click="this.maybeHidePlugins">
                 <auto-complete
                     v-if="autocomplete_open"
                     ref="autocomplete"
@@ -57,7 +57,7 @@
                     <i class="fa fa-angle-double-right" aria-hidden="true" />
                 </div>
                 <transition name="kiwi-plugin-ui-trans">
-                    <div v-if="shouldShowPlugins" class="kiwi-controlinput-tools-container">
+                    <div v-if="showPlugins" class="kiwi-controlinput-tools-container">
                         <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                             <i class="fa fa-adjust" aria-hidden="true"/>
                         </a>
@@ -140,14 +140,6 @@ export default {
                 activeNetwork.state :
                 '';
         },
-        shouldShowPlugins() {
-            // Save some space if we're typing on a small screen
-            if (this.current_input_value.length > 0 && this.$state.ui.app_width < 500) {
-                return false;
-            }
-
-            return this.showPlugins;
-        },
         shouldShowSendButton() {
             return this.$state.ui.is_touch || this.$state.setting('showSendButton');
         },
@@ -217,6 +209,8 @@ export default {
             } else {
                 this.buffer.current_input = val;
             }
+
+            this.maybeHidePlugins();
         },
         inputRestore() {
             let currentInput = state.setting('buffers.shared_input') ?
@@ -229,6 +223,12 @@ export default {
         toggleSelfUser() {
             if (this.networkState === 'connected') {
                 this.selfuser_open = !this.selfuser_open;
+            }
+        },
+        maybeHidePlugins() {
+            // Save some space if we're typing on a small screen
+            if (this.$state.ui.app_width < 500) {
+                this.showPlugins = false;
             }
         },
         onToolClickTextStyle() {
@@ -525,9 +525,11 @@ export default {
 }
 
 .kiwi-controlinput-tools {
-    line-height: 40px;
+    /* 38px = 40px controlinput height - margin top+botton */
+    line-height: 38px;
+    margin: 1px 0 1px 10px;
+    border-radius: 10px 0 0 10px;
     cursor: pointer;
-    margin-left: 10px;
 }
 
 .kiwi-controlinput-form {
@@ -538,7 +540,10 @@ export default {
 
 .kiwi-controlinput-send {
     border: none;
-    background: none;
+    border-radius: 50%;
+    margin: 2px 0;
+    height: 35px;
+    width: 35px;
     cursor: pointer;
     outline: none;
 }

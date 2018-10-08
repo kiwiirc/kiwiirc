@@ -343,6 +343,15 @@
 .kiwi-controlinput-inner .kiwi-controlinput-user {
     border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
+
+.kiwi-controlinput-send {
+    background: #e0e0e0;
+    color: inherit;
+}
+.kiwi-controlinput-tools {
+    background: #e0e0e0;
+}
+
 .kiwi-controlinput-active-tool {
     background: #f6f6f6;
 }

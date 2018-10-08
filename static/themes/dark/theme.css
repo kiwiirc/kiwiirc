@@ -395,6 +395,13 @@
     border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.kiwi-controlinput-send {
+    background: #3a3a3a;
+    color: inherit;
+}
+.kiwi-controlinput-tools {
+    background: #3a3a3a;
+}
 
 .kiwi-controlinput-active-tool {
     background: #f6f6f6;
