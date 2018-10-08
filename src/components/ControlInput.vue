@@ -20,7 +20,11 @@
                     aria-hidden="true"
                 />
             </div>
-            <form class="kiwi-controlinput-form" @submit.prevent="submitForm" @click="this.maybeHidePlugins">
+            <form
+                class="kiwi-controlinput-form"
+                @submit.prevent="submitForm"
+                @click="maybeHidePlugins"
+            >
                 <auto-complete
                     v-if="autocomplete_open"
                     ref="autocomplete"
