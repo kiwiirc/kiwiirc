@@ -57,7 +57,7 @@ Kiwi IRC is tested on the below browsers. Other browsers are not checked and may
 * Chrome
 * Chrome Mobile (Android)
 * Firefox
-* IE10+
+* IE11
 * Safari 9+
 
 ## Thanks
