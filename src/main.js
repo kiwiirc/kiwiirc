@@ -169,6 +169,15 @@ function loadApp() {
     }
 
     let configLoader = new ConfigLoader();
+    configLoader
+        .addValueReplacement('hostname', window.location.hostname)
+        .addValueReplacement('host', window.location.hostname)
+        .addValueReplacement('host', window.location.host)
+        .addValueReplacement('port', window.location.port || 80)
+        .addValueReplacement('hash', (window.location.hash || '').substr(1))
+        .addValueReplacement('query', (window.location.search || '').substr(1))
+        .addValueReplacement('referrer', window.document.referrer);
+
     (configObj ? configLoader.loadFromObj(configObj) : configLoader.loadFromUrl(configFile))
         .then(applyConfig)
         .then(initState)
