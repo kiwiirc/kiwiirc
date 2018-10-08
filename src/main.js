@@ -118,12 +118,47 @@ Vue.directive('rawElement', {
 // A child div within the parent, using the string for content, and class names
 Vue.directive('KiwiToolTip', {
     bind(el, binding, vnode) {
+        let body = document.getElementsByTagName('body')[0];
         let toolTip = document.createElement('div');
-        toolTip.setAttribute('class', 'tooltip');
+        toolTip.setAttribute('class', 'kiwi-toolTip');
         toolTip.innerHTML = binding.value.message;
         el.className += ' tooltip-parent';
-        toolTip.className += ' ' + binding.value.position;
         el.appendChild(toolTip);
+        el.addEventListener('mouseenter', function() {
+            // If this tooltip goes out of bounds of X / Y - Display in opposite direction
+            let bodyHeight = body.offsetHeight;
+            let bodyWidth = body.offsetWidth;
+            // Get information about the element that has been moused into
+            let rect = el.getBoundingClientRect();
+            // Tooltip variables
+            let toolTipWidth = toolTip.offsetWidth;
+            let toolTipHeight = toolTip.offsetHeight;
+            let elementBottomPosition = bodyHeight - el.offsetHeight + toolTipHeight;
+            let elementLeftPosition = 0 + rect.left - toolTipWidth;
+            let elementRightPosition = bodyWidth - el.offsetWidth + toolTipWidth;
+            //Check if tooltip would not fit above element
+            if (rect.top < toolTipHeight) {
+                toolTip.className += ' bottom';
+            }
+            if (elementLeftPosition < 0) {
+                toolTip.className += ' right';
+            }
+            if ( elementRightPosition > bodyWidth) {
+                toolTip.className += ' left';
+            }
+            //Check if tooltip would not fit below
+            if (elementBottomPosition > bodyHeight) {
+                toolTip.className += ' top';
+            }
+            toolTip.className += ' visible';
+        });
+        el.addEventListener('mouseleave', function() {
+            toolTip.classList.remove('visible');
+        });
+    },
+    unbind: function(el, binding, vnode) {
+        el.removeEventListener('mouseenter');
+        el.removeEventListener('mouseleave');
     },
 });
 

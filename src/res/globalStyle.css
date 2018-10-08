@@ -284,13 +284,11 @@ select {
 .tooltip-parent:hover .tooltip {
     opacity: 1;
     z-index: 1;
-    display: block;
 }
 
-.tooltip {
+.kiwi-toolTip {
     opacity: 0;
     z-index: -1;
-    display: none;
     position: absolute;
     padding: 8px;
     line-height: 20px;
@@ -302,45 +300,51 @@ select {
     font-size: 12px;
 }
 
-.tooltip.top {
+.kiwi-toolTip.visible {
+    opacity: 1;
+    z-index: 100;
+    transition: all 0.3s;
+}
+
+.kiwi-toolTip.top {
     bottom: 99%;
 }
 
-.tooltip.middle {
+.kiwi-toolTip.middle {
     top: 30%;
 }
 
-.tooltip.bottom {
+.kiwi-toolTip.bottom {
     top: 99%;
 }
 
-.tooltip.left {
+.kiwi-toolTip.left {
     left: 0;
     margin: 0;
     width: auto;
 }
 
-.tooltip.right {
+.kiwi-toolTip.right {
     right: 0;
     margin: 0;
     width: auto;
 }
 
-.tooltip.offset-right {
+.kiwi-toolTip.offset-right {
     left: 100%;
     margin: 0;
     width: auto;
     border-radius: 2px 0 0 2px;
 }
 
-.tooltip.offset-left {
+.kiwi-toolTip.offset-left {
     right: 100%;
     margin: 0;
     width: auto;
     border-radius: 0 2px 2px 0;
 }
 
-.tooltip.centre {
+.kiwi-toolTip.centre {
     margin-left: -75px;
     left: 50%;
 }
