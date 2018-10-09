@@ -1,13 +1,6 @@
 <template>
     <div
         :class="[
-            ml.filteredMessages[idx-1] &&
-                ml.filteredMessages[idx-1].nick === message.nick &&
-                message.time - ml.filteredMessages[idx-1].time < 60000 &&
-                ml.filteredMessages[idx-1].type !== 'traffic' &&
-                message.type !== 'traffic' ?
-                    '' :
-                    '',
             'kiwi-messagelist-message-' + message.type,
             message.type_extra ?
                 'kiwi-messagelist-message-' + message.type + '-' + message.type_extra :
@@ -86,7 +79,7 @@ export default {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
         userModePrefix: function userModePrefix(user) {
-            return Misc.userModePrefix(user, this.ml.buffer);
+            return this.ml.buffer.userModePrefix(user);
         },
     },
 };

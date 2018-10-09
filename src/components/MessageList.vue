@@ -41,14 +41,14 @@
                 :idx="idx"
                 :ml="thisMl"
             />
-            <message-list-message-compact
-                v-else-if="listType !== 'modern'"
+            <message-list-message-text
+                v-else-if="listType === 'text'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
             />
-            <message-list-message-text
-                v-else-if="listType === 'text'"
+            <message-list-message-compact
+                v-else-if="listType !== 'modern'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"

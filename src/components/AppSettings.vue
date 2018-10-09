@@ -269,6 +269,15 @@ export default {
                     state.setting('buffers.messageLayout', 'text');
                 }
             },
+            get() {
+                let s = state.setting('buffers.messageLayout');
+                let v = {
+                    compact: 'traditional',
+                    modern: 'modern',
+                    text: 'text',
+                };
+                return v[s];
+            },
         },
     },
     created: function created() {
