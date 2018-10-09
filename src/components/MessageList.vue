@@ -47,6 +47,12 @@
                 :idx="idx"
                 :ml="thisMl"
             />
+            <message-list-message-text
+                v-else-if="listType === 'text'"
+                :message="message"
+                :idx="idx"
+                :ml="thisMl"
+            />
         </div>
 
         <transition name="kiwi-messagelist-joinloadertrans">
@@ -79,6 +85,7 @@ import BufferKey from './BufferKey';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
+import MessageListMessageText from './MessageListMessageText';
 import LoadingAnimation from './LoadingAnimation.vue';
 
 let log = Logger.namespace('MessageList.vue');
@@ -93,6 +100,7 @@ export default {
         NotConnected,
         MessageListMessageModern,
         MessageListMessageCompact,
+        MessageListMessageText,
         LoadingAnimation,
     },
     props: ['buffer'],
