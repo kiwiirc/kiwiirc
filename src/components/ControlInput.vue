@@ -46,12 +46,12 @@
             </form>
             <div ref="plugins" class="kiwi-controlinput-tools">
                 <a
-                    v-KiwiToolTip="{ message: 'Text Styling Options', position: 'left'}"
+                    v-KiwiToolTip="{ message: 'Text Styling Options' }"
                     class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                     <i class="fa fa-adjust" aria-hidden="true"/>
                 </a>
                 <a
-                    v-KiwiToolTip="{ message: 'Emoji tool!', position: 'left'}"
+                    v-KiwiToolTip="{ message: 'Emoji tool!' }"
                     class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
                     <i class="fa fa-smile-o" aria-hidden="true"/>
                 </a>

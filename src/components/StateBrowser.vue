@@ -2,7 +2,7 @@
     <div class="kiwi-statebrowser kiwi-theme-bg">
 
         <div
-            v-KiwiToolTip="{ message: 'Kiwi Option Settings', position: 'offset-right'}"
+            v-KiwiToolTip="{ message: 'Kiwi Option Settings' }"
             class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
             <i class="fa fa-cog" aria-hidden="true"/>
         </div>

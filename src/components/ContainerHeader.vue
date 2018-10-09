@@ -8,7 +8,7 @@
     >
 
         <template v-if="isChannel()">
-            <div v-KiwiToolTip="{ message: 'this is an example', position: 'bottom'}"
+            <div v-KiwiToolTip="{ message: 'this is an example' }"
                  class="kiwi-header-name">{{ buffer.name }}</div>
             <div
                 v-if="isJoined && isConnected"
@@ -34,9 +34,6 @@
                         <i class="fa fa-info" aria-hidden="true"/>
                         <span class="kiwi-containerheader-hidetext">{{ $t('display_topic') }}</span>
                     </a>
-                    <div class="tooltip bottom centre">
-                        Example tooltip here
-                    </div>
                 </div>
                 <div
                     :class="{
