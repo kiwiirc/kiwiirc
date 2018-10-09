@@ -547,6 +547,7 @@ export default {
     border-radius: 50%;
     margin: 2px 0;
     height: 35px;
+    text-align: center;
     width: 35px;
     cursor: pointer;
     outline: none;
