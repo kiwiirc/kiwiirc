@@ -53,9 +53,6 @@
                             <label class="kiwi-appsettings-messagelistDisplay">
                                 <span>{{ $t('settings_messagelist') }} </span>
                                 <select v-model="settingMessageLayout">
-                                    <option value="-0" selected="selected">
-                                        {{ state.setting('buffers.messageLayout') }}
-                                    </option>
                                     <option value="traditional">Traditional</option>
                                     <option value="modern">Modern</option>
                                     <option value="text">Text</option>
@@ -485,6 +482,10 @@ export default {
     font-size: 1.5em;
     float: right;
     line-height: 47px;
+}
+
+.kiwi-appsettings-messagelistDisplay select {
+    float: right;
 }
 
 @media screen and (max-width: 769px) {
