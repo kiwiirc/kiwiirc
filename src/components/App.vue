@@ -66,7 +66,6 @@ import ControlInput from '@/components/ControlInput';
 import MediaViewer from '@/components/MediaViewer';
 import { State as SidebarState } from '@/components/Sidebar';
 import * as Notifications from '@/libs/Notifications';
-import * as AudioBleep from '@/libs/AudioBleep';
 import * as bufferTools from '@/libs/bufferTools';
 import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
@@ -161,7 +160,6 @@ export default {
                 this.warnOnPageClose();
                 Notifications.requestPermission();
                 Notifications.listenForNewMessages(this.$state);
-                AudioBleep.listenForHighlights(this.$state);
             }
 
             this.hasStarted = true;

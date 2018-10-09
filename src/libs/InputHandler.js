@@ -2,7 +2,6 @@
 
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
-import { AudioBleep } from '@/libs/AudioBleep';
 import _ from 'lodash';
 import AliasRewriter from './AliasRewriter';
 
@@ -788,8 +787,7 @@ inputCommands.server = function inputCommandServer(event, command, line) {
 };
 
 inputCommands.beep = function inputCommandBeep(event, command, line) {
-    let bleep = new AudioBleep();
-    bleep.play();
+    this.state.$emit('audio.bleep');
 };
 
 inputCommands.notify = function inputCommandNotify(event, command, line) {

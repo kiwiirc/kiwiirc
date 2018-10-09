@@ -17,6 +17,8 @@ import StatePersistence from '@/libs/StatePersistence';
 import * as Storage from '@/libs/storage/Local';
 import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
+import { AudioBleep } from '@/libs/AudioBleep';
+import { AudioSound } from '@/libs/AudioSound';
 
 // Global utilities
 import '@/components/utils/TabbedView';
@@ -185,6 +187,7 @@ function loadApp() {
         .then(initLocales)
         .then(initThemes)
         .then(loadPlugins)
+        .then(initSound)
         .then(startApp)
         .catch(showError);
 }
@@ -383,6 +386,14 @@ function initThemes() {
     if (argTheme) {
         themeMgr.setTheme(argTheme);
     }
+}
+
+function initSound() {
+    let sound = new AudioSound();
+    let bleep = new AudioBleep(sound);
+
+    bleep.listen(state);
+    bleep.listenForHighlights(state);
 }
 
 function initInputCommands() {
