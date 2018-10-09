@@ -43,7 +43,7 @@
                 @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                 @mouseout="ml.hover_nick='';"
             >
-                {{ message.user ? userModePrefix(message.user) : '' }} {{ message.nick }}:
+                {{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}:
             </span>
             <span v-html="ml.formatMessage(message)" />
         </div>
@@ -59,8 +59,6 @@
 
 <script>
 
-// import state from '@/libs/state';
-import * as Misc from '@/helpers/Misc';
 import MessageInfo from './MessageInfo';
 
 export default {
@@ -112,6 +110,7 @@ export default {
     max-width: 110px;
     overflow: hidden;
     margin-right: 2px;
+    padding: 0;
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-nick:hover {
@@ -123,6 +122,7 @@ export default {
     display: block;
     width: 100%;
     padding: 0;
+    margin: 4px 0;
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-body a {
