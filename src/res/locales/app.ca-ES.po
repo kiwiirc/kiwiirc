@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2018-05-09 05:20-0400\n"
+"PO-Revision-Date: 2018-08-30 00:20\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "Connectat"
 #: Settings
 msgid "settings"
 msgstr "Configuració"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Configuració del Kiwi"
 
 #: Channels
 msgid "channels"
@@ -77,6 +81,10 @@ msgstr "Alies"
 msgid "channel"
 msgstr "Canal"
 
+#: Messages
+msgid "messages"
+msgstr "Missatges"
+
 #: Network
 msgid "network"
 msgstr "Xarxa"
@@ -104,6 +112,22 @@ msgstr "D'acord"
 #: Cancel
 msgid "cancel"
 msgstr "Cancel·lar"
+
+#: Yes
+msgid "yes"
+msgstr "Si"
+
+#: No
+msgid "no"
+msgstr "No"
+
+#: Not found.
+msgid "not_found"
+msgstr "No s'ha trobat."
+
+#: Warning!
+msgid "warning"
+msgstr "Atenció!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -137,6 +161,46 @@ msgstr "Ignorar a un usuari"
 msgid "connection_channel"
 msgstr "Canal"
 
+#: {{count}} week
+msgid "week"
+msgstr "setmana"
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr "setmanes"
+
+#: {{count}} day
+msgid "day"
+msgstr "dia"
+
+#: {{count}} days
+msgid "day_plural"
+msgstr "dies"
+
+#: {{count}} hour
+msgid "hour"
+msgstr "hora"
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr "hores"
+
+#: {{count}} minute
+msgid "minute"
+msgstr "minut"
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr "minuts"
+
+#: {{count}} second
+msgid "second"
+msgstr "segon"
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr "segons"
+
 #: General
 msgid "settings_general"
 msgstr "General"
@@ -144,6 +208,10 @@ msgstr "General"
 #: Theme
 msgid "settings_theme"
 msgstr "Tema"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Refrescar el tema"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -209,9 +277,21 @@ msgstr "Destacar paraules (separa-les amb un espai)"
 msgid "settings_aliases"
 msgstr "Alies"
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "Què són els alies?"
+
 #: Send Message
 msgid "send_message"
 msgstr "Enviar un missatge"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Escriu la clau del canal:"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "Reentrant al {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -248,6 +328,30 @@ msgstr "Màscara dels bans per defecte"
 #: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Motiu d'expulsió per defecte"
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr "Configuració avançada"
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr "Els monstres estan aquí, només fes click en aquest botó si saps el que estàs fent"
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr "Habilitar Configuració Avançada"
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr "Zona de perill: modificar algun d'aquests paràmetres pot trencar les coses!"
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr "Restablir"
+
+#: Filter
+msgid "settings_advanced_filter"
+msgstr "Filtre"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -305,6 +409,18 @@ msgstr "Benvingut a Kiwi IRC! Selecciona un canal."
 msgid "container_statebrowser"
 msgstr "Mostrar statebrowser"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Amagar el tòpic"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Mostrar el tòpic"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Configuració de la sala"
+
 #: Join Channel
 msgid "container_join"
 msgstr "Entrar a un canal"
@@ -316,6 +432,10 @@ msgstr "Desconnectat"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Conversa privada amb {{user}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Segur que vols sortir del canal?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -385,6 +505,10 @@ msgstr "{{count}} usuari aquí"
 msgid "person_plural"
 msgstr "{{count}} usuaris aquí"
 
+#: Filter users in channel
+msgid "filter_users"
+msgstr "Filtrar els usuarios de la sala"
+
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr "Reconnectar per entrar a {{channel}}"
@@ -397,9 +521,21 @@ msgstr "Reconnectar a {{network}} per a començar a xatejar"
 msgid "reconnect_query"
 msgstr "Reconnectar per a continuar parlant amb {{user}}"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr "No estàs connectat!"
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Configuració de la connexió"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr "No hem pogut connectar amb el servidor :("
+
+#: Connect To Network
+msgid "network_connect"
+msgstr "Connectar a la Xarxa"
 
 #: Close options
 msgid "side_close"
@@ -488,6 +624,14 @@ msgstr "Desconnectat."
 #: Join new #channel
 msgid "state_join"
 msgstr "Entrar en un #canal nou"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Filtrar sales"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Buscar més sales"
 
 #: Change nick
 msgid "change_nick"

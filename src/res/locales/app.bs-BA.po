@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-05-13 17:10-0400\n"
+"PO-Revision-Date: 2018-08-30 21:00\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "Povezano"
 #: Settings
 msgid "settings"
 msgstr "Podešavanja"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Kiwi Podešavanja"
 
 #: Channels
 msgid "channels"
@@ -77,6 +81,10 @@ msgstr "Nadimak"
 msgid "channel"
 msgstr "Kanal"
 
+#: Messages
+msgid "messages"
+msgstr "Poruke"
+
 #: Network
 msgid "network"
 msgstr "Mreža"
@@ -104,6 +112,22 @@ msgstr "OK"
 #: Cancel
 msgid "cancel"
 msgstr "Zatvori"
+
+#: Yes
+msgid "yes"
+msgstr "da"
+
+#: No
+msgid "no"
+msgstr "ne"
+
+#: Not found.
+msgid "not_found"
+msgstr "Nije pronađeno."
+
+#: Warning!
+msgid "warning"
+msgstr "Upozorenje!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -137,6 +161,46 @@ msgstr "Ignoriši korisnika"
 msgid "connection_channel"
 msgstr "Kanal"
 
+#: {{count}} week
+msgid "week"
+msgstr "sedmica"
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr "sedmica"
+
+#: {{count}} day
+msgid "day"
+msgstr "dan"
+
+#: {{count}} days
+msgid "day_plural"
+msgstr "dana"
+
+#: {{count}} hour
+msgid "hour"
+msgstr "sat"
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr "sati"
+
+#: {{count}} minute
+msgid "minute"
+msgstr "minuta"
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr "minuta"
+
+#: {{count}} second
+msgid "second"
+msgstr "sekunda"
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr "sekundi"
+
 #: General
 msgid "settings_general"
 msgstr "Općenito"
@@ -144,6 +208,10 @@ msgstr "Općenito"
 #: Theme
 msgid "settings_theme"
 msgstr "Izgled"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Osvježi temu"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -209,9 +277,21 @@ msgstr "Istaknite na riječima (razmaknite)"
 msgid "settings_aliases"
 msgstr "Pseudonimi"
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "Koji su pseudonimi"
+
 #: Send Message
 msgid "send_message"
 msgstr "Pošalji poruku"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Unesite ključ kanala"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "Ponovo pristupite {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -248,6 +328,30 @@ msgstr "Zadana ban maska"
 #: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Zadani razlog izbacivanja"
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr "Napredna podešavanja"
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr "Kliknite ovo dugme samo ukoliko ste znate šta radite"
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr "Omogući napredna podešavanja"
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr "Opasna zona: Izmjena nekih od ovih podešavanja može prouzrokovati problem!"
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr "Osvježi"
+
+#: Filter
+msgid "settings_advanced_filter"
+msgstr "Filtriraj"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -305,6 +409,18 @@ msgstr "Dobrodošli na Kiwi IRC!"
 msgid "container_statebrowser"
 msgstr "Prikaži statebrowser"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Sakrij temu"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Prikaži temu"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Podešavanja kanala"
+
 #: Join Channel
 msgid "container_join"
 msgstr "Pristupi kanalu"
@@ -316,6 +432,10 @@ msgstr "Niste povezani"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Privatni razgovor sa {{user}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Da li ćete sigurno napustiti kanal?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -385,6 +505,10 @@ msgstr "{{count}} dostupna osoba"
 msgid "person_plural"
 msgstr "{{count}} dostupnih osoba"
 
+#: Filter users in channel
+msgid "filter_users"
+msgstr "Filtriraj korisnike"
+
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr "ponovo se poveži na kanal {{channel}}"
@@ -397,9 +521,21 @@ msgstr "Ponovo se poveži na {{network}} za razgovor"
 msgid "reconnect_query"
 msgstr "Ponovo se poveži da nastaviš razgovor sa {{user}}"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr "Niste konektovani!"
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Podešavanja povezivanja"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr "Ne možemo se povezati na server :("
+
+#: Connect To Network
+msgid "network_connect"
+msgstr "Poveži se na mrežu"
 
 #: Close options
 msgid "side_close"
@@ -488,6 +624,14 @@ msgstr "Niste povezani."
 #: Join new #channel
 msgid "state_join"
 msgstr "Priključi se na kanal"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Filtriraj kanale"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Nađi više kanala"
 
 #: Change nick
 msgid "change_nick"

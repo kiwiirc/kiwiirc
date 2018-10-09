@@ -1,11 +1,12 @@
 <template>
     <div class="kiwi-wrap kiwi-wrap-error">
-        <h2>{{$t('error_starting')}}</h2>
-        <h3>{{$t('error_installed')}}</h3>
+        <h2>{{ $t('error_starting') }}</h2>
+        <h3>{{ $t('error_installed') }}</h3>
     </div>
 </template>
 
 <script>
+'kiwi public';
 
 export default {
 };

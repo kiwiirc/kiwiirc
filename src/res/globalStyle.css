@@ -16,6 +16,14 @@ div {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+input,
+textarea,
+select {
+    color: inherit;
+    background: inherit;
+    background-color: inherit;
+}
+
 .u-link {
     text-decoration: none;
     cursor: pointer;
@@ -162,6 +170,38 @@ div {
     display: block;
 }
 
+/* Style Global tables */
+.u-table {
+    width: 100%;
+}
+
+.u-table thead th {
+    padding: 10px;
+    border-bottom: 1px solid;
+}
+
+.u-table tr:first-of-type td {
+    padding-top: 10px;
+}
+
+.u-table th,
+.u-table td {
+    padding: 5px 10px;
+}
+
+.u-table td {
+    height: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.u-table td .reset-icon {
+    font-size: 1.2em;
+}
+
+.u-table td .u-input {
+    height: 40px;
+}
+
 .kiwi-formatting-extras-quote {
     border: 1px solid #b5b5b5;
     padding: 0 3px;
@@ -182,6 +222,34 @@ div {
     font-family: monospace;
     white-space: pre-wrap;
     display: inline-block;
+}
+
+/* Globally style the close icon */
+.kiwi-close-icon {
+    background-color: #fc6262;
+    color: #fff;
+    border-radius: 0 0 0 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    padding: 0.2em 0.4em;
+}
+
+.kiwi-close-icon:hover {
+    background-color: #fe7575;
+}
+
+.kiwi-settings-advanced-table tr:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+.kiwi-statebrowser-usermenu-avatar--connected {
+    border: 2px solid #42b992;
+}
+
+.kiwi-statebrowser-usermenu-avatar--disconnected {
+    border: 2px solid #bf5155;
 }
 
 .irc-fg-colour-white { color: #fff; }

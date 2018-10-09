@@ -1,49 +1,82 @@
 <template>
-    <div class="kiwi-statebrowser">
+    <div class="kiwi-statebrowser kiwi-theme-bg">
+
+        <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
+            <i class="fa fa-cog" aria-hidden="true"/>
+        </div>
 
         <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">
             <span> Close </span>
-            <i class="fa fa-times" aria-hidden="true"></i>
+            <i class="fa fa-times" aria-hidden="true"/>
         </div>
 
         <div
             v-if="isPersistingState"
-            class="kiwi-statebrowser-usermenu"
             :class="[is_usermenu_open?'kiwi-statebrowser-usermenu--open':'']"
+            class="kiwi-statebrowser-usermenu"
         >
-            <div class="kiwi-statebrowser-usermenu-avatar" @click="is_usermenu_open=!is_usermenu_open">
-                U
+            <div
+                :class="[isConnected ?
+                    'kiwi-statebrowser-usermenu-avatar--connected' :
+                    'kiwi-statebrowser-usermenu-avatar--disconnected'
+                ]"
+                class="kiwi-statebrowser-usermenu-avatar"
+                @click="is_usermenu_open=!is_usermenu_open"
+            >
+                {{ userInitial }}
             </div>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
-                <p> {{$t('state_remembered')}} </p>
-                <a @click="clickForget" class="u-link">{{$t('state_forget')}}</a>
-                <div class="close-icon" @click="is_usermenu_open=false">
-                  <i class="fa fa-times" aria-hidden="true"></i>
+                <p> {{ $t('state_remembered') }} </p>
+                <a class="u-link" @click="clickForget">{{ $t('state_forget') }}</a>
+                <div class="kiwi-close-icon" @click="is_usermenu_open=false">
+                    <i class="fa fa-times" aria-hidden="true"/>
                 </div>
             </div>
-        </div>
-
-        <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
-            Kiwi Settings <i class="fa fa-cog" aria-hidden="true"></i>
+            <div v-else class="kiwi-statebrowser-usermenu-network">
+                {{ networkName }}
+            </div>
         </div>
 
         <div class="kiwi-statebrowser-tools">
-            <div v-for="el in pluginUiElements" v-rawElement="el" class="kiwi-statebrowser-tool"></div>
+            <div
+                v-rawElement="plugin.el"
+                v-for="plugin in pluginUiElements"
+                :key="plugin.id"
+                class="kiwi-statebrowser-tool"
+            />
         </div>
 
-        <div v-if="Object.keys(provided_networks).length > 0" class="kiwi-statebrowser-availablenetworks">
-            <div @click="show_provided_networks=!show_provided_networks" class="kiwi-statebrowser-availablenetworks-toggle">&#8618; {{$t('state_available')}}</div>
+        <div
+            v-if="Object.keys(provided_networks).length > 0"
+            class="kiwi-statebrowser-availablenetworks"
+        >
             <div
+                class="kiwi-statebrowser-availablenetworks-toggle"
+                @click="show_provided_networks=!show_provided_networks"
+            >
+                &#8618; {{ $t('state_available') }}
+            </div>
+            <div
+                :class="{
+                    'kiwi-statebrowser-availablenetworks-networks--open': show_provided_networks
+                }"
                 class="kiwi-statebrowser-availablenetworks-networks"
-                :class="{'kiwi-statebrowser-availablenetworks-networks--open': show_provided_networks}"
             >
                 <div
                     v-for="(pNets, pNetTypeName) in provided_networks"
+                    :key="pNetTypeName"
                     class="kiwi-statebrowser-availablenetworks-type"
                 >
-                    <div class="kiwi-statebrowser-availablenetworks-name">{{pNetTypeName}}</div>
-                    <div v-for="pNet in pNets" class="kiwi-statebrowser-availablenetworks-link" :class="[pNet.connected?'kiwi-statebrowser-availablenetworks-link--connected':'']">
-                        <a @click="connectProvidedNetwork(pNet)">{{pNet.name}}</a><br/>
+                    <div class="kiwi-statebrowser-availablenetworks-name">{{ pNetTypeName }}</div>
+                    <div
+                        v-for="pNet in pNets"
+                        :key="pNet.name"
+                        :class="[
+                            pNet.connected?'kiwi-statebrowser-availablenetworks-link--connected':''
+                        ]"
+                        class="kiwi-statebrowser-availablenetworks-link"
+                    >
+                        <a @click="connectProvidedNetwork(pNet)">{{ pNet.name }}</a><br>
                     </div>
                 </div>
             </div>
@@ -55,34 +88,38 @@
                     v-for="network in networksToShow"
                     :key="network.id"
                     :network="network"
-                    :uiState="uiState"
-                ></state-browser-network>
+                    :sidebar-state="sidebarState"
+                />
             </div>
         </div>
 
         <div v-if="!isRestrictedServer" class="kiwi-statebrowser-newnetwork">
-            <a @click="clickAddNetwork" class="u-button u-button-primary">Add Network<i class="fa fa-plus" aria-hidden="true"></i></a>
+            <a class="u-button u-button-primary" @click="clickAddNetwork">
+                Add Network
+                <i class="fa fa-plus" aria-hidden="true"/>
+            </a>
         </div>
     </div>
 </template>
 
 <script>
+'kiwi public';
 
 import state from '@/libs/state';
+import NetworkProvider from '@/libs/NetworkProvider';
+import GlobalApi from '@/libs/GlobalApi';
 import StateBrowserNetwork from './StateBrowserNetwork';
 import AppSettings from './AppSettings';
 import BufferSettings from './BufferSettings';
-import NetworkProvider from '@/libs/NetworkProvider';
-import NetworkProviderZnc from '@/libs/networkproviders/NetworkProviderZnc';
-import GlobalApi from '@/libs/GlobalApi';
 
 let netProv = new NetworkProvider();
 
-let znc = new NetworkProviderZnc(state);
-netProv.addProvider(znc);
-znc.autoDetectZncNetworks();
-
 export default {
+    components: {
+        BufferSettings,
+        StateBrowserNetwork,
+    },
+    props: ['networks', 'sidebarState'],
     data: function data() {
         return {
             is_usermenu_open: false,
@@ -91,10 +128,42 @@ export default {
             pluginUiElements: GlobalApi.singleton().stateBrowserPlugins,
         };
     },
-    props: ['networks', 'uiState'],
-    components: {
-        BufferSettings,
-        StateBrowserNetwork,
+    computed: {
+        userInitial() {
+            let network = state.getActiveNetwork();
+            let initial = 'U';
+            if (network && network.nick) {
+                initial = network.nick.charAt(0).toUpperCase();
+            }
+            return initial;
+        },
+        networkName() {
+            let network = state.getActiveNetwork();
+            let name = 'No Network';
+            if (network) {
+                name = network.name;
+            }
+            return name;
+        },
+        isPersistingState: function isPersistingState() {
+            return !!state.persistence;
+        },
+        isRestrictedServer: function isRestrictedServer() {
+            return !!state.settings.restricted;
+        },
+        networksToShow: function networksToShow() {
+            let bncNet = state.setting('bnc').network;
+            return this.networks.filter(network => network !== bncNet);
+        },
+        isConnected: function isConnected() {
+            let network = state.getActiveNetwork();
+            return network && network.state === 'connected';
+        },
+    },
+    created: function created() {
+        netProv.on('networks', (networks) => {
+            this.provided_networks = networks;
+        });
     },
     methods: {
         clickAddNetwork: function clickAddNetwork() {
@@ -113,7 +182,7 @@ export default {
         },
         clickForget: function clickForget() {
             let msg = 'This will delete all stored networks and start fresh. Are you sure?';
-            /* eslint-disable no-restricted-globals */
+            /* eslint-disable no-restricted-globals, no-alert */
             let confirmed = confirm(msg);
             if (!confirmed) {
                 return;
@@ -132,26 +201,6 @@ export default {
 
             net.ircClient.connect();
         },
-    },
-    computed: {
-        isPersistingState: function isPersistingState() {
-            return !!state.persistence;
-        },
-        isRestrictedServer: function isRestrictedServer() {
-            return !!state.settings.restricted;
-        },
-        networksToShow: function networksToShow() {
-            let bncNet = state.setting('bnc').network;
-            return this.networks.filter(network => network !== bncNet);
-        },
-        isConnected: function isConnected() {
-            return state.getActiveNetwork().state === 'connected';
-        },
-    },
-    created: function created() {
-        netProv.on('networks', networks => {
-            this.provided_networks = networks;
-        });
     },
 };
 </script>
@@ -185,20 +234,21 @@ export default {
 
 /* User Settings */
 .kiwi-statebrowser-appsettings {
-    width: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
     text-align: left;
-    padding: 0 10px 0 10px;
-    font-size: 0.8em;
-    border-radius: 4px;
+    padding: 0 10px;
+    font-size: 1em;
     box-sizing: border-box;
-    opacity: 1;
     line-height: 35px;
     cursor: pointer;
-    margin: 0 5%;
     font-weight: 500;
     letter-spacing: 1px;
     transition: all 0.3s;
-    margin-bottom: 10px;
+    border-radius: 0 0 6px 0;
+    opacity: 0.8;
 }
 
 .kiwi-statebrowser-appsettings:hover {
@@ -219,7 +269,7 @@ export default {
     width: 100%;
     padding-bottom: 0;
     margin-bottom: 10px;
-    padding-top: 10px;
+    padding-top: 34px;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
@@ -261,7 +311,7 @@ export default {
     padding: 0 10px;
     margin: 0;
     opacity: 1;
-    line-height: 39px;
+    line-height: 40px;
     cursor: pointer;
     display: block;
     box-sizing: border-box;
@@ -296,7 +346,6 @@ export default {
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
     text-align: left;
     padding: 0 0 0 10px;
-    text-transform: capitalize;
     width: 100%;
     font-size: 1em;
     font-weight: 600;
@@ -383,16 +432,6 @@ export default {
     text-decoration: underline;
 }
 
-.kiwi-statebrowser-usermenu-body .close-icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: pointer;
-    padding: 0.2em 0.4em;
-    border-radius: 0 0 0 0.4em;
-    transition: all 0.3s;
-}
-
 .kiwi-statebrowser-scrollarea {
     height: auto;
     margin-bottom: 0;
@@ -439,7 +478,6 @@ export default {
 .kiwi-statebrowser-availablenetworks-name {
     text-align: center;
     font-weight: bold;
-    text-transform: capitalize;
 }
 
 .kiwi-statebrowser-availablenetworks-networks {

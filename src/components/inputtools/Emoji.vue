@@ -1,18 +1,26 @@
 <template>
     <div class="kiwi-inputtool-emoji">
         <div class="kiwi-inputtool-emoji-palette" @mousedown.prevent @click.prevent>
-            <div v-for="(text, eCode) in emojis" class="kiwi-inputtool-emoji-emoji"
-                    @click="onImgClick" :style="{'background-image':`url(${location}${eCode}.png)`}" :data-code="text + ' '"></div>
+            <div
+                v-for="(text, eCode) in emojis"
+                :key="eCode"
+                :style="{'background-image':`url(${location}${eCode}.png)`}"
+                :data-code="text + ' '"
+                class="kiwi-inputtool-emoji-emoji"
+                @click="onImgClick"
+            />
         </div>
     </div>
 </template>
 
 <script>
+'kiwi public';
 
 import _ from 'lodash';
 import state from '@/libs/state';
 
 export default {
+    props: ['ircinput'],
     data: function data() {
         return {
             location: state.setting('emojiLocation'),
@@ -28,7 +36,6 @@ export default {
             return list;
         },
     },
-    props: ['ircinput'],
     methods: {
         onImgClick: function onImgClick(event) {
             let url = window.getComputedStyle(event.target, null)

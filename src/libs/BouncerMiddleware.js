@@ -1,5 +1,12 @@
-import strftime from 'strftime';
+'kiwi public';
 
+/** @module */
+
+import * as Misc from '@/helpers/Misc';
+
+/**
+ * Adds the BOUNCER IRCv3 spec to irc-framework
+ */
 export default function bouncerMiddleware() {
     let networks = [];
     let buffers = {};
@@ -18,7 +25,7 @@ export default function bouncerMiddleware() {
 
         let params = message.params;
 
-        if (params[0] === 'listnetworks' && params[1] === 'RPL_OK') {
+        if (params[0] === 'listnetworks' && ['end', 'RPL_OK'].indexOf(params[1]) > -1) {
             client.emit('bouncer networks', networks);
             networks = [];
         } else if (params[0] === 'listnetworks') {
@@ -33,7 +40,7 @@ export default function bouncerMiddleware() {
                 currentNick: tags.currentNick,
                 password: tags.password || '',
             });
-        } else if (params[0] === 'listbuffers' && params[2] === 'RPL_OK') {
+        } else if (params[0] === 'listbuffers' && ['end', 'RPL_OK'].indexOf(params[2]) > -1) {
             let netName = (params[1] || '').toLowerCase();
             let detectedBuffers = buffers[netName] || [];
             delete buffers[netName];
@@ -61,7 +68,7 @@ export default function bouncerMiddleware() {
             };
             client.emit('bouncer addnetwork error', eventObj);
             client.emit('bouncer addnetwork error ' + netName, eventObj);
-        } else if (params[0] === 'addnetwork' && params[2] === 'RPL_OK') {
+        } else if (params[0] === 'addnetwork' && ['end', 'RPL_OK'].indexOf(params[2]) > -1) {
             let netName = (params[1] || '').toLowerCase();
             let eventObj = {
                 network: params[2],
@@ -101,7 +108,7 @@ function addFunctionsToClient(client) {
 
     bnc.bufferSeen = function bufferSeen(netName, bufferName, seenTime) {
         return new Promise((resolve, reject) => {
-            let timeStr = strftime('%FT%T.%L%:z', seenTime);
+            let timeStr = Misc.dateIso(seenTime);
             client.raw(`BOUNCER changebuffer ${netName} ${bufferName} seen=${timeStr}`);
         });
     };

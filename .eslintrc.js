@@ -14,7 +14,6 @@ module.exports = {
     },
     // required to lint *.vue files
     plugins: [
-        'html',
         'vue',
     ],
     // add your custom rules here
@@ -48,5 +47,7 @@ module.exports = {
         'space-before-function-paren': ['error', 'never'],
         'vue/html-indent': ['error', 4],
         'vue/max-attributes-per-line': 0,
+        'vue/require-prop-types': 0,
+        'vue/require-default-prop': 0,
     }
 }

@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-05-10 06:40-0400\n"
+"PO-Revision-Date: 2018-08-29 15:11\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "Свързан"
 #: Settings
 msgid "settings"
 msgstr "Настройки"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Kiwi Настройки"
 
 #: Channels
 msgid "channels"
@@ -77,6 +81,10 @@ msgstr "Потребителско име"
 msgid "channel"
 msgstr "Канал"
 
+#: Messages
+msgid "messages"
+msgstr ""
+
 #: Network
 msgid "network"
 msgstr "IRC Мрежа"
@@ -104,6 +112,22 @@ msgstr "ОК"
 #: Cancel
 msgid "cancel"
 msgstr "Откажи"
+
+#: Yes
+msgid "yes"
+msgstr "Да"
+
+#: No
+msgid "no"
+msgstr "Не"
+
+#: Not found.
+msgid "not_found"
+msgstr "Не е намерен."
+
+#: Warning!
+msgid "warning"
+msgstr "Внимание!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -137,6 +161,46 @@ msgstr "Добави в игнора"
 msgid "connection_channel"
 msgstr "Автоматично влизане в канали"
 
+#: {{count}} week
+msgid "week"
+msgstr "седмица"
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr "седмици"
+
+#: {{count}} day
+msgid "day"
+msgstr "ден"
+
+#: {{count}} days
+msgid "day_plural"
+msgstr "дни"
+
+#: {{count}} hour
+msgid "hour"
+msgstr "час"
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr "часа"
+
+#: {{count}} minute
+msgid "minute"
+msgstr "минута"
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr "минути"
+
+#: {{count}} second
+msgid "second"
+msgstr "секунда"
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr "секунди"
+
 #: General
 msgid "settings_general"
 msgstr "Главни настройки"
@@ -144,6 +208,10 @@ msgstr "Главни настройки"
 #: Theme
 msgid "settings_theme"
 msgstr "Настройки на темата"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Oпресняване на темите"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -209,9 +277,21 @@ msgstr "Персонализирано осветяване (разделяйт�
 msgid "settings_aliases"
 msgstr "Алиасес"
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "Какво представляват псевдонимите"
+
 #: Send Message
 msgid "send_message"
 msgstr "Изпрати съобщение"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Въведете ключа на канала"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "се присъедини отново {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -248,6 +328,30 @@ msgstr "Бан маска по подразбиране"
 #: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Причита по подразбиране за KICK"
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr "Разширени настройки"
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr "Чудовищата са тук, кликнете само върху този бутон, ако знаете какво правите"
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr "Активирайте Разширени настройки"
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr "Опасна зона: Промяната на някои от тези настройки може да наруши нещата!"
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr "Рестартиране"
+
+#: Filter
+msgid "settings_advanced_filter"
+msgstr "Филтриране"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -305,6 +409,18 @@ msgstr "Добре дошли в Kiwi IRC!"
 msgid "container_statebrowser"
 msgstr "Покажи statebrowser"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Скриване на топика"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Покажи топика"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Настройки на канала"
+
 #: Join Channel
 msgid "container_join"
 msgstr "Влез в #канал"
@@ -316,6 +432,10 @@ msgstr "Не сте свързан"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Частен разговор с {{user}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Наистина ли искате  да напуснете канала?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -385,6 +505,10 @@ msgstr "{{count}} Потребителя"
 msgid "person_plural"
 msgstr "{{count}} Потребителя"
 
+#: Filter users in channel
+msgid "filter_users"
+msgstr "Филтриране на юзъри в канала"
+
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr "влезте отново за да чатите в {{channel}}"
@@ -397,9 +521,21 @@ msgstr "Влезте отново в  {{network}} за да  общувате о
 msgid "reconnect_query"
 msgstr "Влезте отново за продължите разговора си с {{user}}"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr ""
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Настройки за свързване"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr ""
+
+#: Connect To Network
+msgid "network_connect"
+msgstr ""
 
 #: Close options
 msgid "side_close"
@@ -488,6 +624,14 @@ msgstr "Не сте свързан"
 #: Join new #channel
 msgid "state_join"
 msgstr "Влез в нов #канал"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Филтър на канал"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Намери повече канали"
 
 #: Change nick
 msgid "change_nick"

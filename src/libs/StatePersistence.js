@@ -1,3 +1,5 @@
+'kiwi public';
+
 import _ from 'lodash';
 
 export default class StatePersistence {
@@ -44,6 +46,41 @@ export default class StatePersistence {
 
         this.state.$watch('networks', debouncedSaveState, { deep: true });
         this.state.$watch('user_settings', debouncedSaveState, { deep: true });
+
+        let bufferWatchers = [];
+        let watchBuffers = () => {
+            // Clear any previous watchers
+            bufferWatchers.forEach(w => w());
+            bufferWatchers = [];
+
+            // For each buffer in a network, select all the properties we want to watch for
+            // changes so that vue can compare it to the previous check. If any of them has changed
+            // then the $watch()er will call debouncedSaveState().
+            this.state.networks.forEach((network) => {
+                let bufferNames = network.buffers.map(b => b.name).join(',');
+
+                network.buffers.forEach((buffer) => {
+                    let unwatch = this.state.$watch(() => {
+                        let val = JSON.stringify([
+                            bufferNames,
+                            buffer.name,
+                            buffer.settings,
+                            buffer.joined,
+                            buffer.enabled,
+                            buffer.last_read,
+                        ]);
+
+                        return val;
+                    }, debouncedSaveState);
+
+                    bufferWatchers.push(unwatch);
+                });
+            });
+
+            setTimeout(watchBuffers, 2000);
+        };
+
+        setTimeout(watchBuffers, 2000);
 
         this.isPersisting = true;
     }

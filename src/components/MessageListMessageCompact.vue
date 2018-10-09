@@ -1,15 +1,13 @@
 <template>
     <div
-        @click="ml.onMessageClick($event, message)"
-        class="kiwi-messagelist-message kiwi-messagelist-message--compact"
-        v-bind:class="[
+        :class="[
             ml.filteredMessages[idx-1] &&
-            ml.filteredMessages[idx-1].nick === message.nick &&
-            message.time - ml.filteredMessages[idx-1].time < 60000 &&
-            ml.filteredMessages[idx-1].type !== 'traffic' &&
-            message.type !== 'traffic' ?
-                'kiwi-messagelist-message--authorrepeat' :
-                '',
+                ml.filteredMessages[idx-1].nick === message.nick &&
+                message.time - ml.filteredMessages[idx-1].time < 60000 &&
+                ml.filteredMessages[idx-1].type !== 'traffic' &&
+                message.type !== 'traffic' ?
+                    'kiwi-messagelist-message--authorrepeat' :
+                    '',
             'kiwi-messagelist-message-' + message.type,
             message.type_extra ?
                 'kiwi-messagelist-message-' + message.type + '-' + message.type_extra :
@@ -35,21 +33,24 @@
         ]"
         :data-message="message"
         :data-nick="(message.nick||'').toLowerCase()"
+        class="kiwi-messagelist-message kiwi-messagelist-message--compact"
+        @click="ml.onMessageClick($event, message)"
     >
         <div
             v-if="ml.bufferSetting('show_timestamps')"
+            :title="ml.formatTimeFull(message.time)"
             class="kiwi-messagelist-time"
         >
-            {{ml.formatTime(message.time)}}
+            {{ ml.formatTime(message.time) }}
         </div>
         <div
+            :style="ml.nickStyle(message.nick)"
             class="kiwi-messagelist-nick"
-            v-bind:style="ml.nickStyle(message.nick)"
-            v-bind:data-nick="message.nick"
+            @click="ml.openUserBox(message.nick)"
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
             @mouseout="ml.hover_nick='';"
-        >{{message.user ? userModePrefix(message.user) : ''}}{{message.nick}}</div>
-        <div class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"></div>
+        >{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
+        <div class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
 
         <message-info
             v-if="ml.message_info_open===message"
@@ -61,20 +62,23 @@
 </template>
 
 <script>
+'kiwi public';
 
-// import state from '@/libs/state';
-import * as Misc from '@/helpers/Misc';
+// eslint-plugin-vue's max-len rule reads the entire file, including the CSS. so we can't use this
+// here as some of the rules cannot be broken up any smaller
+/* eslint-disable max-len */
+
 import MessageInfo from './MessageInfo';
 
 export default {
     components: {
         MessageInfo,
     },
+    props: ['ml', 'message', 'idx'],
     data: function data() {
         return {
         };
     },
-    props: ['ml', 'message', 'idx'],
     computed: {
     },
     methods: {
@@ -82,7 +86,7 @@ export default {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
         userModePrefix: function userModePrefix(user) {
-            return Misc.userModePrefix(user, this.ml.buffer);
+            return this.ml.buffer.userModePrefix(user);
         },
     },
 };
@@ -106,6 +110,7 @@ export default {
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
     width: 110px;
+    min-width: 110px;
     display: inline-block;
     left: 0;
     top: -1px;
@@ -188,7 +193,8 @@ export default {
     }
 }
 
-// Traffic messages have an opacity lower than 1, so we do a blanket statment to make sure all messages are opacity: 1, rather than just specifying one.
+// Traffic messages have an opacity lower than 1, so we do a blanket statment to make sure all
+// messages are opacity: 1, rather than just specifying one.
 .kiwi-messagelist-message--compact.kiwi-messagelist-message--unread {
     opacity: 1;
 }
@@ -201,6 +207,7 @@ export default {
     .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
         display: inline;
         width: auto;
+        min-width: auto;
         float: left;
         position: static;
         padding-left: 0;
@@ -214,6 +221,7 @@ export default {
         float: left;
         width: 100%;
         margin-left: 0;
+        box-sizing: border-box;
     }
 
     .kiwi-messagelist-message--compact.kiwi-messagelist-message--unread .kiwi-messagelist-body {

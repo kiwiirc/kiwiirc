@@ -1,12 +1,15 @@
-import * as TextFormatting from '@/helpers/TextFormatting';
+'kiwi public';
+
 import _ from 'lodash';
 import strftime from 'strftime';
 import Irc from 'irc-framework/browser';
+import * as TextFormatting from '@/helpers/TextFormatting';
+import * as Misc from '@/helpers/Misc';
 import bouncerMiddleware from './BouncerMiddleware';
 import * as ServerConnection from './ServerConnection';
 
-export function create(state, networkid) {
-    let network = state.getNetwork(networkid);
+export function create(state, network) {
+    let networkid = network.id;
 
     let clientOpts = {
         host: network.connection.server,
@@ -36,7 +39,7 @@ export function create(state, networkid) {
 
     let ircClient = new Irc.Client(clientOpts);
     ircClient.requestCap('znc.in/self-message');
-    ircClient.use(clientMiddleware(state, networkid));
+    ircClient.use(clientMiddleware(state, network));
     ircClient.use(bouncerMiddleware());
 
     // Overload the connect() function to make sure we are connecting with the
@@ -61,6 +64,7 @@ export function create(state, networkid) {
             ircClient.options.tls = bnc.tls;
             ircClient.options.password = password;
             ircClient.options.nick = network.nick;
+            ircClient.options.username = bnc.username;
             ircClient.options.encoding = network.connection.encoding;
         } else {
             ircClient.options.host = network.connection.server;
@@ -78,7 +82,7 @@ export function create(state, networkid) {
     };
 
     ircClient.on('raw', (event) => {
-        if (!network.setting('show_raw')) {
+        if (!network.setting('show_raw') && !state.setting('showRaw')) {
             return;
         }
 
@@ -93,8 +97,8 @@ export function create(state, networkid) {
     return ircClient;
 }
 
-function clientMiddleware(state, networkid) {
-    let network = state.getNetwork(networkid);
+function clientMiddleware(state, network) {
+    let networkid = network.id;
     let numConnects = 0;
     // Requested chathistory for this connection yet
     let requestedCh = false;
@@ -141,6 +145,9 @@ function clientMiddleware(state, networkid) {
                     return;
                 }
 
+                buffer.joined = false;
+                buffer.clearUsers();
+
                 let messageBody = TextFormatting.formatText('network_disconnected', {
                     text: TextFormatting.t('disconnected'),
                 });
@@ -182,6 +189,13 @@ function clientMiddleware(state, networkid) {
         if (event && event.command === 'CONTROL') {
             next();
             return;
+        }
+
+        if (command === 'channel_redirect') {
+            let b = network.bufferByName(event.from);
+            if (b) {
+                b.flags.redirect_to = event.to;
+            }
         }
 
         if (command === 'registered') {
@@ -233,8 +247,8 @@ function clientMiddleware(state, networkid) {
             let historySupport = !!network.ircClient.network.supports('chathistory');
 
             // If this is a reconnect then request chathistory from our last position onwards
-            // to get any missed messages. (bouncer mode only)
-            if (numConnects > 1 && !requestedCh && historySupport && network.connection.bncname) {
+            // to get any missed messages
+            if (numConnects > 1 && !requestedCh && historySupport) {
                 requestedCh = true;
                 network.buffers.forEach((buffer) => {
                     if (buffer.isChannel() || buffer.isQuery()) {
@@ -243,45 +257,62 @@ function clientMiddleware(state, networkid) {
                 });
             }
 
-            // The first time we connect in bouncer mode, request the last 50 messages for every
-            // buffer we have
-            if (numConnects === 1 && !requestedCh && historySupport && network.connection.bncname) {
+            // The first time we connect, request the last 50 messages for every buffer we have
+            // if CHATHISTORY is supported
+            if (numConnects === 1 && !requestedCh && historySupport) {
                 requestedCh = true;
-                let time = strftime('%FT%T.%L%:z', new Date());
-                network.ircClient.raw(`CHATHISTORY * timestamp=${time} message_count=-50`);
+                let time = Misc.dateIso();
+                network.buffers.forEach((buffer) => {
+                    if (buffer.isChannel() || buffer.isQuery()) {
+                        let line = `CHATHISTORY ${buffer.name} timestamp=${time} message_count=-50`;
+                        network.ircClient.raw(line);
+                    }
+                });
             }
         }
 
         // Show unhandled data from the server in the servers tab
         if (command === 'unknown command') {
-            let buffer = network.serverBuffer();
-            let message = '';
-
-            // Only show non-numeric commands
-            if (!event.command.match(/^\d+$/)) {
-                message += event.command + ' ';
-            }
-
-            let containsNick = event.params[0] === network.ircClient.user.nick;
-            let isChannelMessage = network.isChannelName(event.params[1]);
-
-            // Strip out the nick if it's the first params (many commands include this)
-            if (containsNick && isChannelMessage) {
-                let channelBuffer = network.bufferByName(event.params[1]);
-                if (channelBuffer) {
-                    buffer = channelBuffer;
-                }
-                message += event.params.slice(2).join(', ');
-            } else if (containsNick) {
-                message += event.params.slice(1).join(', ');
+            if (event.command === '486') {
+                // You must log in with services to message this user
+                let targetNick = event.params[1];
+                let buffer = state.getOrAddBufferByName(network.id, targetNick);
+                state.addMessage(buffer, {
+                    time: Date.now(),
+                    nick: '*',
+                    message: event.params[2],
+                    type: 'error',
+                });
             } else {
-                message += event.params.join(', ');
-            }
+                let buffer = network.serverBuffer();
+                let message = '';
 
-            state.addMessage(buffer, {
-                nick: '',
-                message: message,
-            });
+                // Only show non-numeric commands
+                if (!event.command.match(/^\d+$/)) {
+                    message += event.command + ' ';
+                }
+
+                let containsNick = event.params[0] === network.ircClient.user.nick;
+                let isChannelMessage = network.isChannelName(event.params[1]);
+
+                // Strip out the nick if it's the first params (many commands include this)
+                if (containsNick && isChannelMessage) {
+                    let channelBuffer = network.bufferByName(event.params[1]);
+                    if (channelBuffer) {
+                        buffer = channelBuffer;
+                    }
+                    message += event.params.slice(2).join(', ');
+                } else if (containsNick) {
+                    message += event.params.slice(1).join(', ');
+                } else {
+                    message += event.params.join(', ');
+                }
+
+                state.addMessage(buffer, {
+                    nick: '',
+                    message: message,
+                });
+            }
         }
 
         if (command === 'message') {
@@ -309,8 +340,14 @@ function clientMiddleware(state, networkid) {
             // the server tab. ie. notices from servers
             if (event.type === 'notice') {
                 let existingBuffer = state.getBufferByName(networkid, bufferName);
+                let noticeActiveBuffer = state.setting('noticeActiveBuffer');
+                let activeBuffer = state.getActiveBuffer();
                 if (!existingBuffer) {
-                    bufferName = '*';
+                    if (noticeActiveBuffer && activeBuffer.networkid === networkid) {
+                        bufferName = activeBuffer.name;
+                    } else {
+                        bufferName = '*';
+                    }
                 }
             }
 
@@ -360,6 +397,17 @@ function clientMiddleware(state, networkid) {
         }
 
         if (command === 'join') {
+            // If we have any buffers marked as being redirected to this new channel, update
+            // that buffer instead of creating a new one
+            if (event.nick === client.user.nick) {
+                network.buffers.forEach((b) => {
+                    if ((b.flags.redirect_to || '').toLowerCase() === event.channel.toLowerCase()) {
+                        state.$delete(b.flags, 'redirect_to');
+                        b.rename(event.channel);
+                    }
+                });
+            }
+
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             state.addUserToBuffer(buffer, {
                 nick: event.nick,
@@ -369,7 +417,9 @@ function clientMiddleware(state, networkid) {
             });
 
             if (event.nick === client.user.nick) {
+                buffer.enabled = true;
                 buffer.joined = true;
+                buffer.flags.channel_badkey = false;
                 network.ircClient.raw('MODE', event.channel);
                 network.ircClient.who(event.channel);
             }
@@ -411,7 +461,7 @@ function clientMiddleware(state, networkid) {
             } else {
                 messageBody = TextFormatting.formatAndT(
                     'channel_kicked',
-                    null,
+                    { reason: event.message },
                     'was_kicked_from',
                     {
                         nick: event.kicked,
@@ -438,7 +488,16 @@ function clientMiddleware(state, networkid) {
             state.removeUserFromBuffer(buffer, event.nick);
             if (event.nick === client.user.nick) {
                 buffer.joined = false;
+                buffer.enabled = false;
                 buffer.clearUsers();
+            }
+
+            // Remove the user from network state if no remaining common channels
+            let remainingBuffers = state.getBuffersWithUser(networkid, event.nick);
+            if (remainingBuffers.length === 0) {
+                state.removeUser(networkid, {
+                    nick: event.nick,
+                });
             }
 
             let messageBody = TextFormatting.formatAndT(
@@ -485,25 +544,6 @@ function clientMiddleware(state, networkid) {
                 });
             });
 
-            // Mention the quit in any query windows
-            let queryBuffer = network.bufferByName(event.nick);
-            if (queryBuffer) {
-                let messageBody = TextFormatting.formatAndT(
-                    'channel_quit',
-                    { reason: event.message },
-                    'has_left',
-                    { nick: TextFormatting.formatUserFull(event) }
-                );
-
-                state.addMessage(queryBuffer, {
-                    time: Date.now(),
-                    nick: event.nick,
-                    message: messageBody,
-                    type: 'traffic',
-                    type_extra: 'quit',
-                });
-            }
-
             state.removeUser(networkid, {
                 nick: event.nick,
             });
@@ -523,15 +563,15 @@ function clientMiddleware(state, networkid) {
         if (command === 'whois') {
             let obj = {
                 nick: event.nick,
-                host: event.host,
-                username: event.user,
+                host: event.hostname,
+                username: event.ident,
                 away: event.away || '',
                 realname: event.real_name,
             };
 
             // Some other optional bits of info
             [
-                'actuallhost',
+                'actual_host',
                 'helpop',
                 'bot',
                 'server',
@@ -561,6 +601,13 @@ function clientMiddleware(state, networkid) {
             });
         }
 
+        if (command === 'back') {
+            state.addUser(networkid, {
+                nick: event.nick,
+                away: '',
+            });
+        }
+
         if (command === 'wholist') {
             state.usersTransaction(networkid, (users) => {
                 event.users.forEach((user) => {
@@ -582,10 +629,12 @@ function clientMiddleware(state, networkid) {
         }
         if (command === 'channel list') {
             network.channel_list_state = 'updating';
+            // Filter private channels from the channel list
+            let filteredEvent = _.filter(event, o => o.channel !== '*');
             // Store the channels in channel_list_cache before moving it all to
             // channel_list at the end. This gives a huge performance boost since
             // it doesn't need to be all reactive for every update
-            network.channel_list_cache = (network.channel_list_cache || []).concat(event);
+            network.channel_list_cache = (network.channel_list_cache || []).concat(filteredEvent);
         }
         if (command === 'channel list end') {
             network.channel_list = network.channel_list_cache || [];
@@ -608,19 +657,33 @@ function clientMiddleware(state, networkid) {
 
         if (command === 'nick in use' && !client.connection.registered) {
             let newNick = client.user.nick + rand(1, 100);
-            let serverBuffer = network.serverBuffer();
             let messageBody = TextFormatting.formatAndT(
                 'nickname_alreadyinuse',
                 null,
                 'nick_in_use_retrying',
                 { nick: client.user.nick, newnick: newNick },
             );
-            state.addMessage(serverBuffer, {
+
+            network.buffers.forEach((b) => {
+                state.addMessage(b, {
+                    time: Date.now(),
+                    nick: '',
+                    message: messageBody,
+                    type: 'error',
+                });
+            });
+
+            client.changeNick(newNick);
+        }
+
+        if (command === 'nick in use' && client.connection.registered) {
+            let buffer = state.getActiveBuffer();
+            buffer && state.addMessage(buffer, {
                 time: Date.now(),
                 nick: '',
-                message: messageBody,
+                type: 'error',
+                message: `The nickname '${event.nick}' is already in use!`,
             });
-            client.changeNick(newNick);
         }
 
         if (command === 'nick') {
@@ -671,6 +734,8 @@ function clientMiddleware(state, networkid) {
             }
 
             if (event.modes) {
+                let modeStrs = [];
+
                 event.modes.forEach((mode) => {
                     let adding = mode.mode[0] === '+';
                     let modeChar = mode.mode.substr(1);
@@ -680,6 +745,29 @@ function clientMiddleware(state, networkid) {
                     } else if (!adding) {
                         state.$delete(buffer.modes, modeChar);
                     }
+
+                    modeStrs.push(mode.mode + (mode.param ? ' ' + mode.param : ''));
+                });
+
+                if (buffer.flags.requested_modes) {
+                    state.addMessage(buffer, {
+                        time: event.time || Date.now(),
+                        nick: '*',
+                        message: buffer.name + ' ' + modeStrs.join(', '),
+                    });
+                }
+            }
+
+            if (event.created_at && buffer.flags.requested_modes) {
+                let tFormat = buffer.setting('timestamp_full_format');
+                let timeCreated = tFormat ?
+                    strftime(tFormat, new Date(event.created_at * 1000)) :
+                    (new Date(event.created_at * 1000)).toLocaleString();
+
+                state.addMessage(buffer, {
+                    time: event.time || Date.now(),
+                    nick: '*',
+                    message: buffer.name + ' ' + timeCreated,
                 });
             }
         }
@@ -759,7 +847,8 @@ function clientMiddleware(state, networkid) {
                     },
                     b(targets, mode) {
                         return {
-                            target: targets[0].param ? ' ' + targets[0].param : '',
+                            mode: mode,
+                            target: targets[0].param ? targets[0].param : '',
                             nick: event.nick,
                         };
                     },
@@ -773,7 +862,8 @@ function clientMiddleware(state, networkid) {
                     let localeData = localeDataFn(targets, mode);
 
                     // Translate using the built locale data
-                    let text = TextFormatting.t(modeLocaleIds[mode] || 'modes_other', localeData);
+                    let localeKey = modeLocaleIds[mode] || 'modes_other';
+                    let text = TextFormatting.t(localeKey, localeData);
 
                     let messageBody = TextFormatting.formatText('mode', {
                         nick: event.nick,
@@ -842,8 +932,8 @@ function clientMiddleware(state, networkid) {
 
         if (command === 'irc error') {
             let buffer;
-            if (event.channel) {
-                buffer = state.getOrAddBufferByName(network.id, event.channel);
+            if (event.channel || event.nick) {
+                buffer = state.getOrAddBufferByName(network.id, event.channel || event.nick);
             }
             if (!buffer) {
                 buffer = network.serverBuffer();
@@ -851,6 +941,10 @@ function clientMiddleware(state, networkid) {
 
             // TODO: Some of these errors contain a .error property whcih we can match against,
             // ie. password_mismatch.
+
+            if (event.error === 'bad_channel_key') {
+                buffer.flags.channel_badkey = true;
+            }
 
             if (event.reason) {
                 network.last_error = event.reason;
@@ -864,6 +958,12 @@ function clientMiddleware(state, networkid) {
                     message: messageBody,
                     type: 'error',
                 });
+            }
+
+            // Getting an error about a channel while we are not joined means that we couldn't join
+            // or do some action on it. Disable it until we manually reattempt to join.
+            if (buffer.isChannel() && !buffer.joined) {
+                buffer.enabled = false;
             }
         }
 

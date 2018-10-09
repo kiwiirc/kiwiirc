@@ -1,3 +1,5 @@
+'kiwi public';
+
 import EventEmitter from 'eventemitter3';
 import state from './state';
 import * as ServerConnection from './ServerConnection';

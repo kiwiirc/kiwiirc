@@ -1,49 +1,56 @@
 <template>
-    <div class="kiwi-container" v-bind:class="{
-            /* 'kiwi-container-' + bufferType: true, */
-            'kiwi-container--sidebar-open': uiState.isOpen,
-            'kiwi-container--sidebar-pinned': uiState.isPinned,
-            'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
-    }">
+    <div :class="{
+        /* 'kiwi-container-' + bufferType: true, */
+        'kiwi-container--sidebar-open': sidebarState.isOpen && sidebarState.section() !== '',
+        'kiwi-container--sidebar-pinned': sidebarState.isPinned,
+        'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
+    }" class="kiwi-container">
         <template v-if="buffer">
-            <div @click.stop="toggleStateBrowser" class="kiwi-container-toggledraw-statebrowser">
+            <div class="kiwi-container-toggledraw-statebrowser" @click.stop="toggleStateBrowser">
                 <div
-                    class="kiwi-container-toggledraw-statebrowser-messagecount kiwi-container-toggledraw-statebrowser-messagecount--highlight"
-                    :class="{'kiwi-container-toggledraw-statebrowser-messagecount--highlight': unreadMessages.highlight}"
-                >{{unreadMessages.count > 999 ? '999+' : unreadMessages.count}}</div>
+                    :class="[
+                        unreadMessages.highlight ?
+                            'kiwi-container-toggledraw-statebrowser-messagecount--highlight' :
+                            ''
+                    ]"
+                    class="kiwi-container-toggledraw-statebrowser-messagecount
+                           kiwi-container-toggledraw-statebrowser-messagecount--highlight"
+                >{{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}</div>
             </div>
-            <container-header :buffer="buffer" :uiState="uiState"></container-header>
+            <container-header :buffer="buffer" :sidebar-state="sidebarState"/>
 
-            <slot name="before"></slot>
+            <slot name="before"/>
 
             <div class="kiwi-container-content">
                 <template v-if="buffer.isServer()">
-                    <server-view :network="network" :buffer="buffer" :uiState="uiState"></server-view>
+                    <server-view :network="network" :buffer="buffer" :sidebar-state="sidebarState"/>
                 </template>
                 <template v-else>
-                    <message-list :buffer="buffer" :users="users"></message-list>
+                    <message-list :buffer="buffer"/>
                     <sidebar
-                        v-if="buffer.isChannel()"
+                        v-if="buffer.isChannel() /* There are no sidebars for queries yet */"
                         :network="network"
                         :buffer="buffer"
-                        :users="users"
-                        :uiState="uiState"
-                    ></sidebar>
+                        :sidebar-state="sidebarState"
+                    />
                 </template>
 
-                <slot name="after"></slot>
+                <slot name="after"/>
             </div>
         </template>
         <template v-else>
             <div class="kiwi-container-empty">
-                <h4>{{$t('container_welcome')}}</h4>
-                <a @click.stop="toggleStateBrowser" class="u-button">{{$t('container_statebrowser')}}</a>
+                <h4>{{ $t('container_welcome') }}</h4>
+                <a class="u-button" @click.stop="toggleStateBrowser">
+                    {{ $t('container_statebrowser') }}
+                </a>
             </div>
         </template>
     </div>
 </template>
 
 <script>
+'kiwi public';
 
 import state from '@/libs/state';
 import ContainerHeader from './ContainerHeader';
@@ -58,11 +65,11 @@ export default {
         MessageList,
         ServerView,
     },
+    props: ['network', 'buffer', 'sidebarState'],
     data: function data() {
         return {
         };
     },
-    props: ['network', 'buffer', 'users', 'uiState'],
     computed: {
         bufferType: function bufferType() {
             let type = '';
@@ -82,8 +89,8 @@ export default {
         unreadMessages() {
             let count = 0;
             let highlight = false;
-            state.networks.forEach(network => {
-                network.buffers.forEach(buffer => {
+            state.networks.forEach((network) => {
+                network.buffers.forEach((buffer) => {
                     count += (buffer.flags.unread || 0);
                     if (buffer.flags.highlight) {
                         highlight = true;
@@ -92,6 +99,57 @@ export default {
             });
             return { count, highlight };
         },
+    },
+    created: function created() {
+        this.listen(state, 'sidebar.toggle', () => {
+            state.$emit('sidebar.' + (this.sidebarState.isOpen() ? 'hide' : 'show'));
+        });
+        this.listen(state, 'sidebar.show', () => {
+            this.sidebarState.showNicklist();
+        });
+        this.listen(state, 'sidebar.hide', () => {
+            this.sidebarState.close();
+        });
+        this.listen(state, 'userbox.show', (user, opts) => {
+            this.sidebarState.showUser(user);
+        });
+        this.listen(state, 'userbox.hide', () => {
+            this.sidebarState.close();
+        });
+        this.listen(state, 'document.keydown', (ev) => {
+            // Return if not Page Up or Page Down keys
+            if (ev.keyCode !== 33 && ev.keyCode !== 34) {
+                return;
+            }
+
+            // if no messagelist, select the first tabbed content to allow channel list scrolling
+            let messageList = this.$el.querySelector('.kiwi-messagelist') ||
+                this.$el.querySelector('.u-tabbed-content');
+
+            if (!messageList) {
+                return;
+            }
+
+            let scrollDistance = messageList.clientHeight - (0.1 * messageList.clientHeight);
+            let scrollTop = messageList.scrollTop;
+            let scrollMax = messageList.scrollHeight;
+
+            if (ev.keyCode === 33) {
+                // up
+                scrollTop -= scrollDistance;
+                if (scrollTop < 0) {
+                    scrollTop = 0;
+                }
+            } else {
+                // down
+                scrollTop += scrollDistance;
+                if (scrollTop > scrollMax) {
+                    scrollTop = scrollMax;
+                }
+            }
+
+            messageList.scrollTop = scrollTop;
+        });
     },
     methods: {
         toggleStateBrowser: function toggleStateBrowser() {
@@ -102,20 +160,6 @@ export default {
                 state.$emit('sidebar.toggle');
             }
         },
-    },
-    created: function created() {
-        this.listen(state, 'sidebar.toggle', () => {
-            state.$emit('sidebar.' + (this.uiState.isOpen() ? 'hide' : 'show'));
-        });
-        this.listen(state, 'sidebar.show', () => {
-            this.uiState.showNicklist();
-        });
-        this.listen(state, 'sidebar.hide', () => {
-            this.uiState.close();
-        });
-        this.listen(state, 'userbox.show', (user, opts) => {
-            this.uiState.showUser();
-        });
     },
 };
 </script>
@@ -130,7 +174,7 @@ export default {
 
 /* When the sidebar is open we will put a shadow over the text area */
 .kiwi-header {
-    z-index: 1;
+    z-index: 2;
 
     /* IE 11 breaks when using the shorthand flex syntax here */
     flex-grow: 0;
@@ -144,7 +188,7 @@ export default {
     bottom: 0;
     width: 443px;
     max-width: 443px;
-    z-index: 2;
+    z-index: 3;
     transition: right 0.2s, width 0.2s;
     flex: 1;
 }
@@ -161,6 +205,7 @@ export default {
     border-left-width: 1px;
     border-left-style: solid;
     max-width: 430px;
+    z-index: 1;
 }
 
 .kiwi-container-content {

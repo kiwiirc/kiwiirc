@@ -1,3 +1,5 @@
+'kiwi public';
+
 const tokens = Object.create(null);
 
 /**
@@ -31,7 +33,7 @@ tokens['_'] = {
 
         // token if it's on it's own
         // Only underline if we have a closing _ further on
-        if (inp.substr(pos).indexOf(this.token) === -1) {
+        if (inp.substr(pos + 1).indexOf(this.token) === -1) {
             return -1;
         }
 
@@ -63,8 +65,21 @@ tokens['*'] = {
             return -1;
         }
 
-        // Only style if we have a closing * further on
-        if (inp.substr(pos + 1).indexOf(this.token) === -1) {
+        // * may be part of a word (ie. pasting code) or URL so only start bolding if * is after a
+        // space
+        if (pos > 0 && inp[pos - 1] !== ' ') {
+            return -1;
+        }
+
+        // Only style if:
+        //     * we have a closing * further on
+        //     * the * further on has a space after it or is the last character
+        let remainingText = inp.substr(pos + 1);
+        let nextPos = remainingText.indexOf(this.token);
+        if (
+            nextPos === -1 ||
+            (nextPos < remainingText.length - 1 && remainingText[nextPos + 1] !== ' ')
+        ) {
             return -1;
         }
 
@@ -92,11 +107,13 @@ tokens['**'] = {
         }
 
         // Only style if we have a closing ** further on
-        if (inp.substr(pos).indexOf(this.token) > -1) {
-            openToks[this.token] = true;
-            block.styles.italic = true;
-            block.content += this.token;
+        if (inp.substr(pos + 1).indexOf(this.token) === -1) {
+            return -1;
         }
+
+        openToks[this.token] = true;
+        block.styles.italic = true;
+        block.content += this.token;
 
         return null;
     },

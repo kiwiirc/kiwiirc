@@ -12,15 +12,20 @@ import Logger from '@/libs/Logger';
 import ConfigLoader from '@/libs/ConfigLoader';
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
+import InputHandler from '@/libs/InputHandler';
 import StatePersistence from '@/libs/StatePersistence';
 import * as Storage from '@/libs/storage/Local';
+import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
+import { AudioManager } from '@/libs/AudioManager';
+import { SoundBleep } from '@/libs/SoundBleep';
 
 // Global utilities
 import '@/components/utils/TabbedView';
 import '@/components/utils/InputText';
 import '@/components/utils/IrcInput';
 import '@/components/utils/InputPrompt';
+import '@/components/utils/InputConfirm';
 
 let logLevelMatch = window.location.href.match(/kiwi-loglevel=(\d)/);
 if (logLevelMatch && logLevelMatch[1]) {
@@ -73,11 +78,40 @@ Vue.mixin({
     },
 });
 
+// Make the state available to all components by default
+Vue.mixin({
+    computed: {
+        $state() {
+            return state;
+        },
+    },
+});
+
 // Allow adding existing raw elements to component templates
 // Eg: <div v-rawElement="domElement"></div>
+// Eg: <div v-rawElement="{el: domElement, data:{foo:'bar'}}"></div>
 Vue.directive('rawElement', {
     bind(el, binding) {
-        el.appendChild(binding.value);
+        if (binding.value.nodeName) {
+            el.appendChild(binding.value);
+        } else if (binding.value.el) {
+            let rawEl = binding.value.el;
+            el.appendChild(rawEl);
+
+            // Add any data attributes to the raw element
+            if (binding.value.data) {
+                Object.keys(binding.value.data).forEach((key) => {
+                    rawEl.dataset[key] = binding.value.data[key];
+                });
+            }
+
+            // Add any properties to the raw element
+            if (binding.value.props) {
+                Object.keys(binding.value.props).forEach((key) => {
+                    rawEl[key] = binding.value.props[key];
+                });
+            }
+        }
     },
 });
 
@@ -137,16 +171,29 @@ function loadApp() {
     }
 
     let configLoader = new ConfigLoader();
+    configLoader
+        .addValueReplacement('hostname', window.location.hostname)
+        .addValueReplacement('host', window.location.hostname)
+        .addValueReplacement('host', window.location.host)
+        .addValueReplacement('port', window.location.port || 80)
+        .addValueReplacement('hash', (window.location.hash || '').substr(1))
+        .addValueReplacement('query', (window.location.search || '').substr(1))
+        .addValueReplacement('referrer', window.document.referrer);
+
     (configObj ? configLoader.loadFromObj(configObj) : configLoader.loadFromUrl(configFile))
         .then(applyConfig)
         .then(initState)
+        .then(initInputCommands)
         .then(initLocales)
+        .then(initThemes)
         .then(loadPlugins)
+        .then(initSound)
         .then(startApp)
         .catch(showError);
 }
 
 function applyConfig(config) {
+    Misc.dedotObject(config);
     applyConfigObj(config, state.settings);
 
     // Update the window title if we have one
@@ -192,17 +239,43 @@ function loadPlugins() {
                 return;
             }
 
-            let scr = document.createElement('script');
-            scr.onerror = () => {
-                log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
-                loadNextScript();
-            };
-            scr.onload = () => {
-                loadNextScript();
-            };
+            if (plugin.url.indexOf('.js') > -1) {
+                // The plugin is a .js file so inject it as a script
+                let scr = document.createElement('script');
+                scr.onerror = () => {
+                    log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
+                    loadNextScript();
+                };
+                scr.onload = () => {
+                    loadNextScript();
+                };
 
-            document.body.appendChild(scr);
-            scr.src = plugin.url;
+                document.body.appendChild(scr);
+                scr.src = plugin.url;
+            } else {
+                // Treat the plugin as a HTML document and just inject it into the document
+                fetch(plugin.url).then(response => response.text()).then((pluginRaw) => {
+                    let el = document.createElement('div');
+                    el.id = 'kiwi_plugin_' + plugin.name.replace(/[ "']/g, '');
+                    el.style.display = 'none';
+                    el.innerHTML = pluginRaw;
+
+                    // The browser won't execute any script elements so we need to extract them and
+                    // place them into the DOM using our own script elements
+                    el.querySelectorAll('script').forEach((limitedScr) => {
+                        limitedScr.parentElement.removeChild(limitedScr);
+                        let scr = document.createElement('script');
+                        scr.text = limitedScr.text;
+                        el.appendChild(scr);
+                    });
+
+                    document.body.appendChild(el);
+                    loadNextScript();
+                }).catch(() => {
+                    log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
+                    loadNextScript();
+                });
+            }
         }
     });
 }
@@ -254,26 +327,45 @@ function initLocales() {
     });
 
     let defaultLang = state.setting('language');
-    let preferredLangs = (window.navigator && window.navigator.languages) || [];
-    let preferredLang = preferredLangs[0];
+    let preferredLangs = _.clone(window.navigator && window.navigator.languages) || [];
 
+    // our configs default lang overrides all others
     if (defaultLang) {
-        i18next.changeLanguage(defaultLang, (err, t) => {
-            if (err) {
-                i18next.changeLanguage('en-us');
-            }
-        });
-    } else if (preferredLang) {
-        i18next.changeLanguage(preferredLang, (err, t) => {
-            if (err) {
-                i18next.changeLanguage('en-us');
-            }
-        });
+        preferredLangs.unshift(defaultLang);
+    }
+
+    // set a default language
+    i18next.changeLanguage('en-us');
+
+    // Go through our browser languages until we find one that we support
+    for (let idx = 0; idx < preferredLangs.length; idx++) {
+        let lang = preferredLangs[idx];
+
+        // if this is a language such as 'fr', add a following one of 'fr-fr' to cover
+        // both cases
+        if (lang.length === 2) {
+            preferredLangs.splice(idx + 1, 0, lang + '-' + lang);
+        }
+
+        if (_.includes(AvailableLocales.locales, lang.toLowerCase())) {
+            i18next.changeLanguage(lang, (err, t) => {
+                if (err) {
+                    // setting the language failed so set default again
+                    i18next.changeLanguage('en-us');
+                }
+            });
+            break;
+        }
     }
 }
 
 async function initState() {
     let stateKey = state.settings.startupOptions.state_key;
+
+    // Default to a preset key if it wasn't set
+    if (typeof stateKey === 'undefined') {
+        stateKey = 'kiwi-state';
+    }
 
     let persistLog = Logger.namespace('StatePersistence');
     let persist = new StatePersistence(stateKey || '', state, Storage, persistLog);
@@ -286,7 +378,7 @@ async function initState() {
     api.setState(state);
 }
 
-function startApp() {
+function initThemes() {
     let themeMgr = ThemeManager.instance(state);
     api.setThemeManager(themeMgr);
 
@@ -294,7 +386,22 @@ function startApp() {
     if (argTheme) {
         themeMgr.setTheme(argTheme);
     }
+}
 
+function initSound() {
+    let sound = new SoundBleep();
+    let bleep = new AudioManager(sound);
+
+    bleep.listen(state);
+    bleep.listenForHighlights(state);
+}
+
+function initInputCommands() {
+    /* eslint-disable no-new */
+    new InputHandler(state);
+}
+
+function startApp() {
     api.emit('init');
 
     /* eslint-disable no-new */

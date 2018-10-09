@@ -1,3 +1,5 @@
+'kiwi public';
+
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import _ from 'lodash';
@@ -69,7 +71,8 @@ export default class InputHandler {
         }
 
         let aliasVars = {
-            server: network.name,
+            network: network.name,
+            server: network.connection.server,
             channel: network.isChannelName(buffer.name) ? buffer.name : '',
             query: network.isChannelName(buffer.name) ? '' : buffer.name,
             destination: buffer.name,
@@ -138,7 +141,7 @@ function handleMessage(type, event, command, line) {
     let bufferName = line.substr(0, spaceIdx);
     let message = line.substr(spaceIdx + 1);
 
-    let buffer = this.state.getBufferByName(network.id, bufferName);
+    let buffer = this.state.getOrAddBufferByName(network.id, bufferName);
     if (buffer) {
         let textFormatType = 'privmsg';
         if (type === 'action') {
@@ -390,6 +393,10 @@ inputCommands.query = function inputCommandQuery(event, command, line) {
     // Only switch to the first buffer we open if multiple are being opened
     let hasSwitchedActiveBuffer = false;
     nicks.forEach((bufferName, idx) => {
+        if (!bufferName) {
+            return;
+        }
+
         let newBuffer = this.state.addBuffer(network.id, bufferName);
 
         if (newBuffer && !hasSwitchedActiveBuffer) {
@@ -458,6 +465,20 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
     let buffer = this.state.getActiveBuffer();
 
     network.ircClient.whois(parts[0], parts[0], (whoisData) => {
+        if (whoisData.error) {
+            let messageBody = TextFormatting.formatText('whois_error', {
+                nick: whoisData.nick,
+                text: whoisData.error,
+            });
+            this.state.addMessage(buffer, {
+                time: Date.now(),
+                nick: '',
+                message: messageBody,
+                type: 'error',
+            });
+            return;
+        }
+
         let out = [];
         let display = (message) => {
             if (!message) {
@@ -467,48 +488,70 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             out.push(message);
         };
         let formats = {
-            account: 'User account: {{account}}',
-            server: 'Connected to server {{server}} ({{server_info}})',
-            secure: 'Using a secure connection',
-            channels: 'Also on channels {{channels}}',
-            mask: '{{nick}}!{{user}}@{{host}} ({{real_name}})',
-            idle: 'Idle for {{idle}} seconds',
-            logon: 'Connected at {{logon}}',
-            actualip: 'Real IP: {{actualip}}',
-            actualhost: 'Real hostname: {{actualhost}}',
+            mask: 'is {{nick}}!{{user}}@{{host}} * ({{real_name}})',
+            from: 'is connecting from {{actual_hostname}} {{actual_ip}}',
+            channels: 'is on {{channels}}',
+            server: 'is using {{server}} ({{server_info}})',
+            operator: '{{operator}}',
+            modes: '{{modes}}',
+            account: 'is logged in as {{account}}',
+            registered_nick: '{{registered_nick}}',
+            secure: 'is using a secure connection',
+            idle: 'has been idle for {{idle}}',
+            logon: 'connected on {{logon}}',
 
             // The following entries will be ignored from whoisData as display() ignores
             // empty lines.
             nick: '',
             user: '',
-            host: '',
+            ident: '',
+            hostname: '',
             real_name: '',
+            actual_ip: '',
             server_info: '',
+            actual_hostname: '',
         };
 
         // Display a select few entries first to keep a consistent order, and then
         // show any extra information at the end
-        if (whoisData.account) {
-            display(formats.account.replace('{{account}}', whoisData.account));
-        }
-        if (whoisData.nick) {
+        if (whoisData.nick && whoisData.hostname) {
             display(formats.mask
                 .replace('{{nick}}', whoisData.nick)
-                .replace('{{user}}', whoisData.user)
-                .replace('{{host}}', whoisData.host)
+                .replace('{{user}}', whoisData.ident)
+                .replace('{{host}}', whoisData.hostname)
                 .replace('{{real_name}}', whoisData.real_name));
+        }
+        if (whoisData.actual_hostname && whoisData.actual_ip) {
+            display(formats.from
+                .replace('{{actual_hostname}}', whoisData.actual_hostname)
+                .replace('{{actual_ip}}', whoisData.actual_ip));
+        }
+        if (whoisData.channels) {
+            display(formats.channels.replace('{{channels}}', whoisData.channels));
         }
         if (whoisData.server) {
             display(formats.server
                 .replace('{{server}}', whoisData.server)
                 .replace('{{server_info}}', whoisData.server_info));
         }
+        if (whoisData.operator) {
+            display(formats.operator.replace('{{operator}}', whoisData.operator));
+        }
+        if (whoisData.modes) {
+            display(formats.modes.replace('{{modes}}', whoisData.modes));
+        }
+        if (whoisData.account) {
+            display(formats.account.replace('{{account}}', whoisData.account));
+        }
+        if (whoisData.registered_nick) {
+            display(formats.registered_nick.replace('{{registered_nick}}', whoisData.registered_nick));
+        }
         if (whoisData.secure) {
             display(formats.secure);
         }
         if (whoisData.idle) {
-            let idleSeconds = Math.floor(parseInt(whoisData.idle, 10) / 1000);
-            display(formats.idle.replace('{{idle}}', idleSeconds));
+            let idleSeconds = Math.floor(parseInt(whoisData.idle, 10));
+            display(formats.idle.replace('{{idle}}', TextFormatting.formatDuration(idleSeconds)));
         }
         if (whoisData.logon) {
             let logonTime = parseInt(whoisData.logon, 10);
@@ -517,20 +560,16 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
                 display(formats.logon.replace('{{logon}}', logonDate));
             }
         }
-        if (whoisData.channels) {
-            display(formats.channels.replace('{{channels}}', whoisData.channels));
-        }
-        if (whoisData.actualip) {
-            display(formats.actualip.replace('{{actualip}}', whoisData.actualip));
-        }
-        if (whoisData.actualhost) {
-            display(formats.actualhost.replace('{{actualhost}}', whoisData.actualhost));
-        }
 
         _.each(whoisData, (val, key) => {
             // Only include lines we haven't already used
             if (typeof formats[key] === 'undefined') {
-                display(`${key}: ${val}`);
+                // Some keys such as `special` are arrays of values
+                if (_.isArray(val)) {
+                    val.forEach(v => display(`${key}: ${v}`));
+                } else {
+                    display(`${key}: ${val}`);
+                }
             }
         });
 
@@ -544,13 +583,58 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
     });
 };
 
+inputCommands.whowas = function inputCommandWhowas(event, command, line) {
+    event.handled = true;
+
+    let parts = line.split(' ');
+    let network = this.state.getActiveNetwork();
+    let buffer = this.state.getActiveBuffer();
+
+    network.ircClient.whowas(parts[0], parts[0], (whowasData) => {
+        if (whowasData.error) {
+            let messageBody = TextFormatting.formatText('whowas_error', {
+                nick: whowasData.nick,
+                text: whowasData.error,
+            });
+            this.state.addMessage(buffer, {
+                time: Date.now(),
+                nick: '',
+                message: messageBody,
+                type: 'whowas',
+            });
+            return;
+        }
+
+        ['whowas_ident', 'whowas_server'].forEach((prop) => {
+            let messageBody = TextFormatting.formatText(prop, {
+                nick: whowasData.nick,
+                ident: whowasData.ident,
+                host: whowasData.hostname,
+                name: whowasData.real_name,
+                server: whowasData.server,
+                info: whowasData.server_info,
+            });
+
+            this.state.addMessage(buffer, {
+                time: Date.now(),
+                nick: whowasData.nick,
+                message: messageBody,
+                type: 'whowas',
+            });
+        });
+    });
+};
+
 inputCommands.mode = function inputCommandMode(event, command, line) {
     event.handled = true;
 
     // /mode [target] [+-modes]
 
     let network = this.state.getActiveNetwork();
-    let target = network.nick;
+    let buffer = this.state.getActiveBuffer();
+    let target = buffer.isChannel() ?
+        buffer.name :
+        network.nick;
 
     let parts = _.compact(line.split(' '));
 
@@ -565,6 +649,16 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
     } else {
         // No modes specified will request the modes for the target
         network.ircClient.mode(target);
+
+        if (target === buffer.name) {
+            // If we have requested modes for the active channel then flag it to show
+            // the response in the buffer itself. Wait a few seconds before removing
+            // the flag as there is no way to determine that everything has been received.
+            buffer.flags.requested_modes = true;
+            setTimeout(() => {
+                buffer.flags.requested_modes = false;
+            }, 4000);
+        }
     }
 };
 
@@ -607,6 +701,53 @@ inputCommands.echo = function inputCommandEcho(event, command, line) {
     });
 };
 
+inputCommands.set = function inputCommandEcho(event, command, line) {
+    event.handled = true;
+
+    let buffer = this.state.getActiveBuffer();
+
+    let setting = '';
+    let spacePos = line.indexOf(' ');
+
+    if (spacePos > -1) {
+        // Anything after the space becomes the new setting value
+        // false = boolean false
+        // true = boolean true
+        // off = boolean false
+        // on = boolean true
+        // "false" = string false
+        // "true" = string true
+        setting = line.substr(0, spacePos);
+        let value = line.substr(spacePos + 1).trim();
+        switch (value.toLowerCase().trim()) {
+        case 'true':
+        case 'on':
+            value = true;
+            break;
+        case 'false':
+        case 'off':
+            value = false;
+            break;
+        default:
+        }
+
+        // Unquote any quoted values
+        // ie.  "true" should jsut be the string true
+        if (value[0] === '"' && value[value.length - 1] === '"') {
+            value = value.substr(1, value.length - 2);
+        }
+
+        this.state.setting(setting, value);
+    } else {
+        setting = line;
+    }
+
+    this.state.addMessage(buffer, {
+        nick: '*',
+        message: `${setting} = ${this.state.setting(setting)}`,
+    });
+};
+
 inputCommands.list = function inputCommandList(event, command, line) {
     event.handled = true;
 
@@ -643,4 +784,12 @@ inputCommands.server = function inputCommandServer(event, command, line) {
         tls: serverTls,
         password: serverPassword,
     });
+};
+
+inputCommands.beep = function inputCommandBeep(event, command, line) {
+    this.state.$emit('audio.bleep');
+};
+
+inputCommands.notify = function inputCommandNotify(event, command, line) {
+    this.state.$emit('notification.show', line);
 };

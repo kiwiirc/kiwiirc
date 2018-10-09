@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-05-09 04:12-0400\n"
+"PO-Revision-Date: 2018-09-02 17:10\n"
 
 #: Start
 msgid "start_button"
@@ -40,6 +40,10 @@ msgstr "Connesso"
 #: Settings
 msgid "settings"
 msgstr "Impostazioni"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Impostazioni KiwiIRC"
 
 #: Channels
 msgid "channels"
@@ -77,6 +81,10 @@ msgstr "Nickname"
 msgid "channel"
 msgstr "Canale"
 
+#: Messages
+msgid "messages"
+msgstr "Messaggi"
+
 #: Network
 msgid "network"
 msgstr "Rete"
@@ -104,6 +112,22 @@ msgstr "Ok"
 #: Cancel
 msgid "cancel"
 msgstr "Annulla"
+
+#: Yes
+msgid "yes"
+msgstr "Si"
+
+#: No
+msgid "no"
+msgstr "No"
+
+#: Not found.
+msgid "not_found"
+msgstr "Non trovato"
+
+#: Warning!
+msgid "warning"
+msgstr "Attenzione!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -137,6 +161,46 @@ msgstr "Ignora utente"
 msgid "connection_channel"
 msgstr "Canale"
 
+#: {{count}} week
+msgid "week"
+msgstr "settimana"
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr "settimane"
+
+#: {{count}} day
+msgid "day"
+msgstr "giorno"
+
+#: {{count}} days
+msgid "day_plural"
+msgstr "giorni"
+
+#: {{count}} hour
+msgid "hour"
+msgstr "ora"
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr "ore"
+
+#: {{count}} minute
+msgid "minute"
+msgstr "minuto"
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr "minuti"
+
+#: {{count}} second
+msgid "second"
+msgstr "secondo"
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr "secondi"
+
 #: General
 msgid "settings_general"
 msgstr "Generali"
@@ -144,6 +208,10 @@ msgstr "Generali"
 #: Theme
 msgid "settings_theme"
 msgstr "Tema"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Aggiorna Tema"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -209,9 +277,21 @@ msgstr "Parole da evidenziare (separate da spazi)"
 msgid "settings_aliases"
 msgstr "Alias"
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "Cosa sono gli Alias"
+
 #: Send Message
 msgid "send_message"
 msgstr "Invia messaggio"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Inserisci Password Canale"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "Riaccedi a {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -248,6 +328,30 @@ msgstr "Maschera di blocco predefinita"
 #: Default kick reason
 msgid "settings_default_kick_reason"
 msgstr "Motivo di blocco predefinito"
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr "Impostazioni avanzate"
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr "Fare attenzione: premere questo pulsante solamente se si sa quello che si sta facendo"
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr "Abilita impostazioni avanzate"
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr "Area pericolosa: cambiare alcune di queste impostazioni può causare l'interruzione del servizio!"
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr "Reimposta"
+
+#: Filter
+msgid "settings_advanced_filter"
+msgstr "Filtro"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -305,6 +409,18 @@ msgstr "Benvenuto in Kiwi IRC! Selezionare un canale sulla sinistra."
 msgid "container_statebrowser"
 msgstr "Mostra elenco stati"
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Nascondi Topic"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Mostra Topic"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Impostazioni Canale"
+
 #: Join Channel
 msgid "container_join"
 msgstr "Unisciti al canale"
@@ -316,6 +432,10 @@ msgstr "Nessuno collegato"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Conversazione privata con {{utente}}"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Vuoi veramente uscire dal canale?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -385,6 +505,10 @@ msgstr "{{count}} persona qui"
 msgid "person_plural"
 msgstr "{{count}} persone qui"
 
+#: Filter users in channel
+msgid "filter_users"
+msgstr "Filtra gli utenti nel canale"
+
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr "Riconnettiti per collegarti a {{channel}}"
@@ -397,9 +521,21 @@ msgstr "Riconnettiti a {{network}} per iniziare a conversare"
 msgid "reconnect_query"
 msgstr "Riconnettiti per continuare a conversare con {{user}}"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr "Al momento non si è connessi!"
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Impostazioni della connessione"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr "Non è stato possibile connettersi a quel server :("
+
+#: Connect To Network
+msgid "network_connect"
+msgstr "Connessione alla rete"
 
 #: Close options
 msgid "side_close"
@@ -488,6 +624,14 @@ msgstr "Non connesso."
 #: Join new #channel
 msgid "state_join"
 msgstr "Unisciti a nuovo #canale"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Filtra Canali"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Trova altri Canali"
 
 #: Change nick
 msgid "change_nick"

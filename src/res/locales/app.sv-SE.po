@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2018-05-09 03:42-0400\n"
+"PO-Revision-Date: 2018-08-29 15:11\n"
 
 #: Start
 msgid "start_button"
@@ -39,6 +39,10 @@ msgstr ""
 
 #: Settings
 msgid "settings"
+msgstr ""
+
+#: Kiwi Settings
+msgid "kiwi_settings"
 msgstr ""
 
 #: Channels
@@ -77,6 +81,10 @@ msgstr ""
 msgid "channel"
 msgstr ""
 
+#: Messages
+msgid "messages"
+msgstr ""
+
 #: Network
 msgid "network"
 msgstr ""
@@ -103,6 +111,22 @@ msgstr ""
 
 #: Cancel
 msgid "cancel"
+msgstr ""
+
+#: Yes
+msgid "yes"
+msgstr ""
+
+#: No
+msgid "no"
+msgstr ""
+
+#: Not found.
+msgid "not_found"
+msgstr ""
+
+#: Warning!
+msgid "warning"
 msgstr ""
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
@@ -137,12 +161,56 @@ msgstr ""
 msgid "connection_channel"
 msgstr ""
 
+#: {{count}} week
+msgid "week"
+msgstr ""
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr ""
+
+#: {{count}} day
+msgid "day"
+msgstr ""
+
+#: {{count}} days
+msgid "day_plural"
+msgstr ""
+
+#: {{count}} hour
+msgid "hour"
+msgstr ""
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr ""
+
+#: {{count}} minute
+msgid "minute"
+msgstr ""
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr ""
+
+#: {{count}} second
+msgid "second"
+msgstr ""
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr ""
+
 #: General
 msgid "settings_general"
 msgstr ""
 
 #: Theme
 msgid "settings_theme"
+msgstr ""
+
+#: Refresh Theme
+msgid "refresh_theme"
 msgstr ""
 
 #: Theme URL
@@ -209,8 +277,20 @@ msgstr ""
 msgid "settings_aliases"
 msgstr ""
 
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr ""
+
 #: Send Message
 msgid "send_message"
+msgstr ""
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr ""
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
 msgstr ""
 
 #: Notify me when
@@ -247,6 +327,30 @@ msgstr ""
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
+msgstr ""
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr ""
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr ""
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr ""
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr ""
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr ""
+
+#: Filter
+msgid "settings_advanced_filter"
 msgstr ""
 
 #: Refresh banlist
@@ -305,6 +409,18 @@ msgstr ""
 msgid "container_statebrowser"
 msgstr ""
 
+#: Hide Topic
+msgid "hide_topic"
+msgstr ""
+
+#: Display Topic
+msgid "display_topic"
+msgstr ""
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr ""
+
 #: Join Channel
 msgid "container_join"
 msgstr ""
@@ -315,6 +431,10 @@ msgstr ""
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
+msgstr ""
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
 msgstr ""
 
 #: Send a message...
@@ -385,6 +505,10 @@ msgstr ""
 msgid "person_plural"
 msgstr ""
 
+#: Filter users in channel
+msgid "filter_users"
+msgstr ""
+
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
 msgstr ""
@@ -397,8 +521,20 @@ msgstr ""
 msgid "reconnect_query"
 msgstr ""
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr ""
+
 #: Connection settings
 msgid "reconnect_settings"
+msgstr ""
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr ""
+
+#: Connect To Network
+msgid "network_connect"
 msgstr ""
 
 #: Close options
@@ -487,6 +623,14 @@ msgstr ""
 
 #: Join new #channel
 msgid "state_join"
+msgstr ""
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr ""
+
+#: Find More Channels
+msgid "find_more_channels"
 msgstr ""
 
 #: Change nick

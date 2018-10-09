@@ -1,8 +1,6 @@
 <template>
     <div
-        @click="ml.onMessageClick($event, message)"
-        class="kiwi-messagelist-message kiwi-messagelist-message--modern"
-        v-bind:class="[
+        :class="[
             isRepeat() ?
                 'kiwi-messagelist-message--authorrepeat' :
                 'kiwi-messagelist-message--authorfirst',
@@ -31,34 +29,33 @@
         ]"
         :data-message="message"
         :data-nick="(message.nick||'').toLowerCase()"
+        class="kiwi-messagelist-message kiwi-messagelist-message--modern"
+        @click="ml.onMessageClick($event, message, true)"
+        @dblclick="ml.onMessageDblClick($event, message)"
     >
         <div class="kiwi-messagelist-modern-left">
-            <div
+            <message-avatar
                 v-if="isMessage(message)"
-                class="kiwi-messagelist-modern-avatar"
-                :style="{
-                    'background-color': nickColour(message.nick)
-                }"
-                v-bind:data-nick="message.nick"
-            >
-                {{message.nick[0]}}
-            </div>
+                :message="message"
+                :data-nick="message.nick"
+            />
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div
+                :style="ml.nickStyle(message.nick)"
                 class="kiwi-messagelist-nick"
-                v-bind:style="ml.nickStyle(message.nick)"
-                v-bind:data-nick="message.nick"
+                @click="ml.openUserBox(message.nick)"
                 @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                 @mouseout="ml.hover_nick='';"
-            >{{message.user ? userModePrefix(message.user) : ''}}{{message.nick}}</div>
+            >{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
             <div
                 v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
+                :title="ml.formatTimeFull(message.time)"
                 class="kiwi-messagelist-time"
             >
-                {{ml.formatTime(message.time)}}
+                {{ ml.formatTime(message.time) }}
             </div>
-            <div class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"></div>
+            <div class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
 
             <message-info
                 v-if="ml.message_info_open===message"
@@ -71,21 +68,26 @@
 </template>
 
 <script>
+'kiwi public';
 
-// import state from '@/libs/state';
+// eslint-plugin-vue's max-len rule reads the entire file, including the CSS. so we can't use this
+// here as some of the rules cannot be broken up any smaller
+/* eslint-disable max-len */
+
 import * as TextFormatting from '@/helpers/TextFormatting';
-import * as Misc from '@/helpers/Misc';
 import MessageInfo from './MessageInfo';
+import MessageListAvatar from './MessageListAvatar';
 
 export default {
     components: {
+        MessageAvatar: MessageListAvatar,
         MessageInfo,
     },
+    props: ['ml', 'message', 'idx'],
     data: function data() {
         return {
         };
     },
-    props: ['ml', 'message', 'idx'],
     computed: {
     },
     methods: {
@@ -111,11 +113,11 @@ export default {
             return '';
         },
         isMessage: function isMessage(message) {
-            let types = ['privmsg', 'action', 'notice'];
+            let types = ['privmsg', 'action', 'notice', 'message'];
             return types.indexOf(message.type) > -1;
         },
         userModePrefix: function userModePrefix(user) {
-            return Misc.userModePrefix(user, this.ml.buffer);
+            return this.ml.buffer.userModePrefix(user);
         },
     },
 };
@@ -129,6 +131,10 @@ export default {
     margin: 0 0 0 20px;
     margin-left: 0;
     padding: 15px 10px;
+}
+
+.kiwi-messagelist-modern-left {
+    user-select: none;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left {
@@ -171,7 +177,7 @@ export default {
     display: none;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-modern-avatar {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-avatar {
     display: none;
 }
 
@@ -250,19 +256,6 @@ export default {
     width: 100%;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-modern-avatar {
-    text-transform: uppercase;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
-    font-weight: 600;
-    color: #fff;
-    margin-top: 3px;
-}
-
 .kiwi-messagelist-message--modern .kiwi-messagelist-nick {
     float: left;
     width: auto;
@@ -330,7 +323,7 @@ export default {
         display: none;
     }
 
-    .kiwi-messagelist-message--modern .kiwi-messagelist-modern-avatar {
+    .kiwi-messagelist-message--modern .kiwi-messagelist-avatar {
         display: none;
     }
 

@@ -1,16 +1,25 @@
 <template>
     <div class="kiwi-personal">
-        <h1>{{$t('personal_client')}}</h1>
+        <h1>{{ $t('personal_client') }}</h1>
 
-        <p>{{$t('personal_addjoin')}}</p>
-        <p>{{$t('personal_return')}}</p>
+        <p>{{ $t('personal_addjoin') }}</p>
+        <p>{{ $t('personal_return') }}</p>
 
-        <button @click="addNetwork" class="u-button u-button-primary">{{$t('personal_add')}}</button> <br />
-        <a v-if="networks.length>0" @click.stop="toggleStateBrowser" class="u-link kiwi-personal-existing-networks">{{$t('personal_saved')}}</a>
+        <button class="u-button u-button-primary" @click="addNetwork">
+            {{ $t('personal_add') }}
+        </button> <br >
+        <a
+            v-if="networks.length>0"
+            class="u-link kiwi-personal-existing-networks"
+            @click.stop="toggleStateBrowser"
+        >
+            {{ $t('personal_saved') }}
+        </a>
     </div>
 </template>
 
 <script>
+'kiwi public';
 
 import state from '@/libs/state';
 
@@ -26,6 +35,12 @@ export default {
             return state.networks;
         },
     },
+    created: async function created() {
+        if (firstRun) {
+            this.init();
+            firstRun = false;
+        }
+    },
     methods: {
         addNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
@@ -36,17 +51,24 @@ export default {
             state.$emit('statebrowser.show');
         },
         async init() {
+            // persist the buffers in the state by default
+            let persistSetting = state.settings.startupOptions.remember_buffers;
+            if (typeof persistSetting === 'undefined') {
+                state.persistence.includeBuffers = true;
+            } else {
+                state.persistence.includeBuffers = !!persistSetting;
+            }
+
             state.persistence.watchStateForChanges();
+
+            // force restricted: false as users need access
+            // to network settings to add a network
+            state.setSetting('settings.restricted', false);
+
             this.$emit('start', {
                 fallbackComponent: this.constructor,
             });
         },
-    },
-    created: async function created() {
-        if (firstRun) {
-            this.init();
-            firstRun = false;
-        }
     },
 };
 </script>
