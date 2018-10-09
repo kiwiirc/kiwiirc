@@ -17,8 +17,8 @@ import StatePersistence from '@/libs/StatePersistence';
 import * as Storage from '@/libs/storage/Local';
 import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
-import { AudioBleep } from '@/libs/AudioBleep';
-import { AudioSound } from '@/libs/AudioSound';
+import { AudioManager } from '@/libs/AudioManager';
+import { SoundBleep } from '@/libs/SoundBleep';
 
 // Global utilities
 import '@/components/utils/TabbedView';
@@ -389,8 +389,8 @@ function initThemes() {
 }
 
 function initSound() {
-    let sound = new AudioSound();
-    let bleep = new AudioBleep(sound);
+    let sound = new SoundBleep();
+    let bleep = new AudioManager(sound);
 
     bleep.listen(state);
     bleep.listenForHighlights(state);

@@ -1,4 +1,4 @@
-export class AudioSound {
+export class SoundBleep {
     constructor() {
         this.audio = document.createElement('audio');
         let source = document.createElement('source');

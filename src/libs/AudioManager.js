@@ -5,7 +5,7 @@
 /**
  * Plays alert sounds
  */
-export class AudioBleep {
+export class AudioManager {
     constructor(audio) {
         this.lastPlayed = 0;
         this.audio = audio;
