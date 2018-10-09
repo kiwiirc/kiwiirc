@@ -50,9 +50,16 @@
                     <div class="kiwi-appsettings-block">
                         <h3>{{ $t('settings_messages_title') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-messages">
-                            <label class="u-checkbox-wrapper">
-                                <span>{{ $t('settings_layout_compact') }} </span>
-                                <input v-model="settingMessageLayout" type="checkbox" >
+                            <label class="kiwi-appsettings-messagelistDisplay">
+                                <span>{{ $t('settings_messagelist') }} </span>
+                                <select v-model="settingMessageLayout">
+                                    <option value="-0" selected="selected">
+                                        {{ state.setting('buffers.messageLayout') }}
+                                    </option>
+                                    <option value="traditional">Traditional</option>
+                                    <option value="modern">Modern</option>
+                                    <option value="text">Text</option>
+                                </select>
                             </label>
                             <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_timestamps') }} </span>
@@ -254,14 +261,15 @@ export default {
             },
         },
         settingMessageLayout: {
-            get: function getSettingMessageLayout() {
-                return state.setting('buffers.messageLayout') === 'compact';
-            },
             set: function setSettingMessageLayout(newVal) {
-                if (newVal) {
+                if (newVal === 'traditional') {
                     state.setting('buffers.messageLayout', 'compact');
-                } else {
+                }
+                if (newVal === 'modern') {
                     state.setting('buffers.messageLayout', 'modern');
+                }
+                if (newVal === 'text') {
+                    state.setting('buffers.messageLayout', 'text');
                 }
             },
         },
