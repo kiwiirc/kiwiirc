@@ -58,7 +58,7 @@
                     class="kiwi-controlinput-tools-container-expand"
                     @click="showPlugins=!showPlugins"
                 >
-                    <i class="fa fa-angle-double-right" aria-hidden="true" />
+                    <i class="fa fa-bars" aria-hidden="true" />
                 </div>
                 <transition name="kiwi-plugin-ui-trans">
                     <div v-if="showPlugins" class="kiwi-controlinput-tools-container">
