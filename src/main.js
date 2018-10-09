@@ -125,29 +125,23 @@ Vue.directive('KiwiToolTip', {
         el.className += ' tooltip-parent';
         el.appendChild(toolTip);
         el.addEventListener('mouseenter', function() {
-            // If this tooltip goes out of bounds of X / Y - Display in opposite direction
-            let bodyHeight = body.offsetHeight;
-            let bodyWidth = body.offsetWidth;
             // Get information about the element that has been moused into
             let rect = el.getBoundingClientRect();
-            // Tooltip variables
-            let toolTipWidth = toolTip.offsetWidth;
-            let toolTipHeight = toolTip.offsetHeight;
-            let elementBottomPosition = bodyHeight - el.offsetHeight + toolTipHeight;
-            let elementLeftPosition = 0 + rect.left - toolTipWidth;
-            let elementRightPosition = bodyWidth - el.offsetWidth + toolTipWidth;
-            //Check if tooltip would not fit above element
-            if (rect.top < toolTipHeight) {
+            let elementBottomPosition = body.offsetHeight - el.offsetHeight + toolTip.offsetHeight;
+            let elementLeftPosition = 0 + rect.left - toolTip.offsetWidth;
+            let elementRightPosition = body.offsetWidth - el.offsetWidth + toolTip.offsetWidth;
+            //Sizing
+            if (rect.top < body.offsetHeight) {
                 toolTip.className += ' bottom';
             }
             if (elementLeftPosition < 0) {
                 toolTip.className += ' right';
             }
-            if ( elementRightPosition > bodyWidth) {
+            if ( elementRightPosition > body.offsetWidth) {
                 toolTip.className += ' left';
             }
-            //Check if tooltip would not fit below
-            if (elementBottomPosition > bodyHeight) {
+            // Check if tooltip would not fit below
+            if (elementBottomPosition > body.offsetHeight) {
                 toolTip.className += ' top';
             }
             toolTip.className += ' visible';
