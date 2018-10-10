@@ -30,7 +30,7 @@
         @click="ml.onMessageClick($event, message, true)"
         @dblclick="ml.onMessageDblClick($event, message)"
     >
-        <div class="kiwi-messagelist-body">
+        <div>
             <span
                 v-if="ml.bufferSetting('show_timestamps')"
                 class="kiwi-messagelist-time"
@@ -44,9 +44,9 @@
                 @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                 @mouseout="ml.hover_nick='';"
             >
-                {{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}:
+                {{ displayNick }}
             </span>
-            <span v-html="ml.formatMessage(message)" />
+            <div class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
         </div>
 
         <message-info
@@ -67,17 +67,20 @@ export default {
         MessageInfo,
     },
     props: ['ml', 'message', 'idx'],
-    data: function data() {
-        return {
-        };
-    },
     computed: {
+        displayNick() {
+            let prefix = this.message.user ?
+                this.userModePrefix(this.message.user) :
+                '';
+            
+            return prefix + this.message.nick + ':';
+        },
+    },
+    data: function data() {
+        return { };
     },
     methods: {
-        isHoveringOverMessage: function isHoveringOverMessage(message) {
-            return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
-        },
-        userModePrefix: function userModePrefix(user) {
+        userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
         },
     },
@@ -88,6 +91,7 @@ export default {
 
 .kiwi-messagelist-message--text {
     position: relative;
+    padding: 4px 10px;
 }
 
 //Hide the timestamp unless the user hovers over the message in question
@@ -105,11 +109,8 @@ export default {
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-nick {
-    display: inline-block;
-    min-width: none;
+    display: inline;
     text-align: left;
-    max-width: 110px;
-    overflow: hidden;
     margin-right: 2px;
     padding: 0;
 }
@@ -120,10 +121,9 @@ export default {
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-body {
-    display: block;
-    width: 100%;
+    display: inline;
     padding: 0;
-    margin: 4px 0;
+    white-space: pre-wrap;
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-body a {
@@ -133,6 +133,7 @@ export default {
 .kiwi-messagelist-message--text.kiwi-messagelist-message-traffic {
     padding: 0 20px 0 12px;
     margin: 0;
+    text-align: left;
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-message-privmsg:hover,
@@ -164,7 +165,6 @@ export default {
     border-left: 0;
     border-right: 0;
     margin: 0;
-    padding: 0;
 }
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-topic .kiwi-messagelist-body {
