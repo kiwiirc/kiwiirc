@@ -67,7 +67,7 @@ export default {
         MessageInfo,
     },
     props: ['ml', 'message', 'idx'],
-    data: function data() {
+    data() {
         return { };
     },
     computed: {
