@@ -14,6 +14,7 @@
             @mouseup="updateValueProps();"
             @click="$emit('click', $event)"
             @paste="onPaste"
+            @focus="onFocus()"
         />
     </div>
 </template>
@@ -81,6 +82,13 @@ export default Vue.component('irc-input', {
             setTimeout(() => {
                 this.updateValueProps();
             }, 0);
+        },
+        onFocus(event) {
+            // when the input is empty there are no children to remember the current colour
+            // so upon regaining focus we must set the current colour again
+            if (!this.getRawText() && this.default_colour) {
+                this.setColour(this.default_colour.code, this.default_colour.colour);
+            }
         },
         updateValueProps() {
             let selection = window.getSelection();
