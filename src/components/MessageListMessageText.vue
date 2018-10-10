@@ -27,7 +27,8 @@
         :data-message="message"
         :data-nick="(message.nick||'').toLowerCase()"
         class="kiwi-messagelist-message kiwi-messagelist-message--text"
-        @click="ml.onMessageClick($event, message)"
+        @click="ml.onMessageClick($event, message, true)"
+        @dblclick="ml.onMessageDblClick($event, message)"
     >
         <div class="kiwi-messagelist-body">
             <span
