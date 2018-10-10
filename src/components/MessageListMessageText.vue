@@ -67,17 +67,17 @@ export default {
         MessageInfo,
     },
     props: ['ml', 'message', 'idx'],
+    data: function data() {
+        return { };
+    },
     computed: {
         displayNick() {
             let prefix = this.message.user ?
                 this.userModePrefix(this.message.user) :
                 '';
-            
+
             return prefix + this.message.nick + ':';
         },
-    },
-    data: function data() {
-        return { };
     },
     methods: {
         userModePrefix(user) {
