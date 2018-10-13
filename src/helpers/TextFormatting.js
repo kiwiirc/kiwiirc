@@ -15,7 +15,7 @@ const urlRegex = new RegExp(
     /(([A-Za-z][A-Za-z0-9-]*:\/\/)|(www\.))/.source +
     '(' +
         // Hostname and tld
-        /([\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF.-]+\.[a-zA-Z]{2,6})/.source + '|' +
+        /([\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF.-]+\.[a-zA-Z]{2,63})/.source + '|' +
         // IPv4 address
         ipRegex.v4().source + '|' +
         // IPv6 address

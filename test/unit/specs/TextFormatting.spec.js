@@ -29,6 +29,7 @@ describe('TextFormatting.js', function() {
             ['http://example.com:8080'],
             ['http://127.0.0.1:8001'],
             ['http://example.com/test.html?test=foo#bar'],
+            ['http://example.computer/some/path/test.html?test=foo#bar'],
             ['http://127.0.0.1/test.html?test=foo#bar'],
             ['https://www.example.com'],
             ['https://127.0.0.1/test.html?test=foo#bar'],
