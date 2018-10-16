@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2018-08-29 15:21\n"
+"PO-Revision-Date: 2018-10-16 13:41\n"
 
 #: Start
 msgid "start_button"
@@ -216,6 +216,10 @@ msgstr "Refresh Theme"
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "Theme URL"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr ""
 
 #: Use monospace
 msgid "settings_use_monospace"
