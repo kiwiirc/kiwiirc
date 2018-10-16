@@ -150,16 +150,9 @@ export default {
     cursor: pointer;
 }
 
-//Channel Connection's
-.kiwi-messagelist-message--text.kiwi-messagelist-message-connection {
-    text-align: center;
-    padding: 0;
-    margin: 0;
-}
-
 .kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     display: inline-block;
-    padding: 5px 0;
+    padding: 5px;
     margin: 0;
 }
 
