@@ -41,6 +41,7 @@
                 :style="ml.nickStyle(message.nick)"
                 :data-nick="message.nick"
                 class="kiwi-messagelist-nick"
+                @click="ml.openUserBox(message.nick)"
                 @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                 @mouseout="ml.hover_nick='';"
             >
@@ -76,7 +77,11 @@ export default {
                 this.userModePrefix(this.message.user) :
                 '';
 
-            return prefix + this.message.nick + ':';
+            let suffix = this.message.nick ?
+                ':' :
+                '';
+
+            return prefix + this.message.nick + suffix;
         },
     },
     methods: {
@@ -92,6 +97,8 @@ export default {
 .kiwi-messagelist-message--text {
     position: relative;
     padding: 4px 10px;
+    margin: 0;
+    text-align: left;
 }
 
 //Hide the timestamp unless the user hovers over the message in question
@@ -106,6 +113,13 @@ export default {
 //display timestamp when hovering over the message
 .kiwi-messagelist-message--text:hover .kiwi-messagelist-time {
     display: block;
+    background: #fff;
+    border-radius: 5px 0 0 5px;
+}
+
+// Hide the unread message seperator
+.kiwi-messagelist-message--text .kiwi-messagelist-seperator {
+    display: none;
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-nick {
@@ -164,7 +178,7 @@ export default {
     border-radius: 0;
     border-left: 0;
     border-right: 0;
-    margin: 0;
+    margin: 10px 0;
 }
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-topic .kiwi-messagelist-body {
@@ -183,16 +197,6 @@ export default {
 
 .kiwi-messagelist-item:last-of-type {
     margin-bottom: 5px;
-}
-
-//Nickname change fixes
-.kiwi-messagelist-message--text.kiwi-messagelist-message-nick {
-    margin: 0;
-    padding: 0;
-}
-
-.kiwi-messagelist-message--text.kiwi-messagelist-message-nick .kiwi-messagelist-body {
-    padding: 0 20px 0 15px;
 }
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-nick .kiwi-messagelist-nick {
