@@ -86,7 +86,7 @@ export default class GlobalApi extends EventEmitter {
      * @param {String} mod The module path
      */
     require(mod) {
-        let path = mod.replace('/', '.');
+        let path = mod.replace(/\//g, '.');
         return _.get(this.exports, path);
     }
 
