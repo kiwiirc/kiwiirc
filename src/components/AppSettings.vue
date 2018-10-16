@@ -51,11 +51,11 @@
                         <h3>{{ $t('settings_messages_title') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-messages">
                             <label class="kiwi-appsettings-messagelistDisplay">
-                                <span>{{ $t('settings_messagelist') }} </span>
+                                <span>{{ $t('settings_messagelayout') }} </span>
                                 <select v-model="settingMessageLayout">
                                     <option value="traditional">Traditional</option>
                                     <option value="modern">Modern</option>
-                                    <option value="text">Text</option>
+                                    <option value="inline">Inline</option>
                                 </select>
                             </label>
                             <label class="u-checkbox-wrapper">
@@ -180,6 +180,7 @@
 <script>
 'kiwi public';
 
+import _ from 'lodash';
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import GlobalApi from '@/libs/GlobalApi';
@@ -257,26 +258,22 @@ export default {
                 state.ui.show_advanced_tab = newVal;
             },
         },
+        messageLayouts() {
+            return {
+                traditional: 'compact',
+                modern: 'modern',
+                inline: 'inline',
+            };
+        },
         settingMessageLayout: {
             set: function setSettingMessageLayout(newVal) {
-                if (newVal === 'traditional') {
-                    state.setting('buffers.messageLayout', 'compact');
-                }
-                if (newVal === 'modern') {
-                    state.setting('buffers.messageLayout', 'modern');
-                }
-                if (newVal === 'text') {
-                    state.setting('buffers.messageLayout', 'text');
-                }
+                let l = this.messageLayouts;
+                state.setting('buffers.messageLayout', l[newVal] || l.modern);
             },
             get() {
                 let s = state.setting('buffers.messageLayout');
-                let v = {
-                    compact: 'traditional',
-                    modern: 'modern',
-                    text: 'text',
-                };
-                return v[s];
+                let l = _.invert(this.messageLayouts);
+                return l[s];
             },
         },
     },

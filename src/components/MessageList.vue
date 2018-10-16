@@ -41,14 +41,14 @@
                 :idx="idx"
                 :ml="thisMl"
             />
-            <message-list-message-text
-                v-else-if="listType === 'text'"
+            <message-list-message-inline
+                v-else-if="listType === 'inline'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
             />
             <message-list-message-compact
-                v-else-if="listType !== 'modern'"
+                v-else-if="listType === 'compact'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
@@ -85,7 +85,7 @@ import BufferKey from './BufferKey';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
-import MessageListMessageText from './MessageListMessageText';
+import MessageListMessageInline from './MessageListMessageInline';
 import LoadingAnimation from './LoadingAnimation.vue';
 
 let log = Logger.namespace('MessageList.vue');
@@ -100,7 +100,7 @@ export default {
         NotConnected,
         MessageListMessageModern,
         MessageListMessageCompact,
-        MessageListMessageText,
+        MessageListMessageInline,
         LoadingAnimation,
     },
     props: ['buffer'],
