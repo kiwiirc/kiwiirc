@@ -144,12 +144,6 @@ export default {
     word-break: break-all;
 }
 
-.kiwi-messagelist-message--text.kiwi-messagelist-message-traffic {
-    padding: 0 20px 0 12px;
-    margin: 0;
-    text-align: left;
-}
-
 .kiwi-messagelist-message--text .kiwi-messagelist-message-privmsg:hover,
 .kiwi-messagelist-message--text .kiwi-messagelist-message-action:hover,
 .kiwi-messagelist-message--text .kiwi-messagelist-message-notice:hover, {
