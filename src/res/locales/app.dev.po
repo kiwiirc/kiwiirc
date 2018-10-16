@@ -211,6 +211,10 @@ msgstr "Refresh Theme"
 msgid "settings_themeurl"
 msgstr "Theme URL"
 
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr "Message Layout"
+
 #: Use monospace
 msgid "settings_use_monospace"
 msgstr "Use monospace"
