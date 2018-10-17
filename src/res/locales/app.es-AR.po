@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish, Argentina\n"
 "Language: es_AR\n"
-"PO-Revision-Date: 2018-08-29 15:11\n"
+"PO-Revision-Date: 2018-10-16 13:41\n"
 
 #: Start
 msgid "start_button"
@@ -83,7 +83,7 @@ msgstr "Sala"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "Mensajes"
 
 #: Network
 msgid "network"
@@ -216,6 +216,10 @@ msgstr "Refrescar Tema"
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "URL del tema"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr ""
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -523,7 +527,7 @@ msgstr "Reconectar para continuar hablando con {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr ""
+msgstr "¡No estás conectado!"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -531,11 +535,11 @@ msgstr "Configuración de la conexión"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr ""
+msgstr "No se ha podido conectar al servidor :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr ""
+msgstr "Conectar a la Red"
 
 #: Close options
 msgid "side_close"
