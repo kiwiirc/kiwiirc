@@ -342,8 +342,12 @@ function clientMiddleware(state, network) {
                 let existingBuffer = state.getBufferByName(networkid, bufferName);
                 let noticeActiveBuffer = state.setting('noticeActiveBuffer');
                 let activeBuffer = state.getActiveBuffer();
+                let hasActiveBuffer = activeBuffer && activeBuffer.networkid === networkid;
+
+                // If we don't have a buffer for this notice sender, either show it in our active
+                // buffer or the server buffer
                 if (!existingBuffer) {
-                    if (noticeActiveBuffer && activeBuffer.networkid === networkid) {
+                    if (noticeActiveBuffer && hasActiveBuffer) {
                         bufferName = activeBuffer.name;
                     } else {
                         bufferName = '*';
