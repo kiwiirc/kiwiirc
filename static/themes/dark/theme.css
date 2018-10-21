@@ -325,10 +325,6 @@
     color: #dedede;
 }
 
-.kiwi-header-option {
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
-}
-
 .kiwi-header-option a:hover,
 .kiwi-header-option--active a {
     background-color: #42b992;

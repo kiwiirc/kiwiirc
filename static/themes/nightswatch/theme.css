@@ -280,7 +280,6 @@
 
 /* The header option buttons */
 .kiwi-header-option {
-    border-left: 1px solid #444;
     color: #adadad;
 }
 .kiwi-header-option a:hover,
@@ -292,7 +291,6 @@
 }
 
 .kiwi-header-option--active {
-    border-left: none;
     opacity: 1;
 }
 
