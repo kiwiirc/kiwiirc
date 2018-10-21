@@ -19,7 +19,9 @@
         <template v-if="sidebarState.activeComponent">
             <component
                 :is="sidebarState.activeComponent"
-                :bind="{ network, buffer, sidebarState }"
+                :network="network"
+                :buffer="buffer"
+                :sidebar-state="sidebarState"
             />
         </template>
         <template v-else-if="buffer">
