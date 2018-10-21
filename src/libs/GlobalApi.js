@@ -224,6 +224,14 @@ export default class GlobalApi extends EventEmitter {
     }
 
     /**
+     * Show a Vuejs component in the sidebar
+     * @param {Object} component The vuejs component to render
+     */
+    showInSidebar(component) {
+        this.state.$emit('sidebar.component', component);
+    }
+
+    /**
      * Add a custom startup screen that may be loaded by the configuration file
      * @param {String} name The name of this startup screen
      * @param {Object} ctor The constructor object for the vuejs component
