@@ -379,7 +379,6 @@ inputCommands.close = function inputCommandClose(event, command, line) {
             return;
         }
 
-        network.ircClient.part(bufferName);
         this.state.removeBuffer(buffer);
     });
 };
