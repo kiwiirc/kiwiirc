@@ -583,6 +583,7 @@ export default {
     vertical-align: top;
     cursor: pointer;
     padding: 2px 4px;
+    word-break: break-all;
 }
 
 .kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
