@@ -378,6 +378,8 @@ inputCommands.close = function inputCommandClose(event, command, line) {
         if (!buffer) {
             return;
         }
+
+        this.state.removeBuffer(buffer);
     });
 };
 
