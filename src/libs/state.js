@@ -46,6 +46,7 @@ const stateObj = {
             timestamp_full_format: '',
             show_timestamps: true,
             scrollback_size: 250,
+            show_hostnames: false,
             show_joinparts: true,
             show_topics: true,
             show_nick_changes: true,
