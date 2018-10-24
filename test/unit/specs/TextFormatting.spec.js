@@ -62,11 +62,11 @@ describe('TextFormatting.js', function() {
         };
         let tests = [
             // word, nick, prefix, suffix
-            ['testnick1'],
+            ['testnick1', 'TestNick1'],
             ['TestNick1'],
             ['TestNick2'],
-            ['testnick1:', 'testnick1', '', ':'],
-            ['@testnick2', 'testnick2', '@', ''],
+            ['testnick1:', 'TestNick1', '', ':'],
+            ['@testnick2', 'TestNick2', '@', ''],
             ['@TestNick2:', 'TestNick2', '@', ':'],
         ];
 
@@ -82,7 +82,7 @@ describe('TextFormatting.js', function() {
 
             let regex = new RegExp('^' + _.escape(prefix) +
                 '<a class="kiwi-nick" data-nick="' + escaped +
-                '" style="color:#[0-9A-Fa-f]{3,6}">' + escaped +
+                '"( style="color:#[0-9A-Fa-f]{3,6}")?>' + escaped +
                 '</a>' + _.escape(suffix) + '$');
             expect(linkified).to.match(regex);
         });

@@ -35,7 +35,6 @@
 
 import state from '@/libs/state';
 import Logger from '@/libs/Logger';
-import * as TextFormatting from '@/helpers/TextFormatting';
 import NicklistUser from './NicklistUser';
 
 let log = Logger.namespace('Nicklist');
@@ -150,13 +149,6 @@ export default {
         },
     },
     methods: {
-        nickStyle(nick) {
-            let styles = {};
-            if (this.useColouredNicks) {
-                styles.color = TextFormatting.createNickColour(nick);
-            }
-            return styles;
-        },
         userModePrefix(user) {
             return this.buffer.userModePrefix(user);
         },

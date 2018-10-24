@@ -79,7 +79,6 @@
 'kiwi public';
 
 import strftime from 'strftime';
-import * as TextFormatting from '@/helpers/TextFormatting';
 import Logger from '@/libs/Logger';
 import BufferKey from './BufferKey';
 import NotConnected from './NotConnected';
@@ -337,12 +336,6 @@ export default {
             }
 
             return message.isHighlight;
-        },
-        nickStyle(nick) {
-            if (this.bufferSetting('colour_nicknames_in_messages')) {
-                return 'color:' + TextFormatting.createNickColour(nick) + ';';
-            }
-            return '';
         },
         openUserBox(nick) {
             let user = this.$state.getUser(this.buffer.networkid, nick);

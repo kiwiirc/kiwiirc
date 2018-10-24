@@ -44,7 +44,7 @@
             {{ ml.formatTime(message.time) }}
         </div>
         <div
-            :style="ml.nickStyle(message.nick)"
+            :style="{ 'color': userColour }"
             class="kiwi-messagelist-nick"
             @click="ml.openUserBox(message.nick)"
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
@@ -80,6 +80,12 @@ export default {
         };
     },
     computed: {
+        userColour() {
+            if (this.message.user && this.ml.bufferSetting('colour_nicknames_in_messages')) {
+                return this.message.user.colour;
+            }
+            return '';
+        },
     },
     methods: {
         isHoveringOverMessage: function isHoveringOverMessage(message) {

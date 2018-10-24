@@ -42,7 +42,7 @@
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div
-                :style="ml.nickStyle(message.nick)"
+                :style="{ 'color': userColour }"
                 class="kiwi-messagelist-nick"
                 @click="ml.openUserBox(message.nick)"
                 @mouseover="ml.hover_nick=message.nick.toLowerCase();"
@@ -74,7 +74,6 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
-import * as TextFormatting from '@/helpers/TextFormatting';
 import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
 
@@ -89,6 +88,12 @@ export default {
         };
     },
     computed: {
+        userColour() {
+            if (this.message.user && this.ml.bufferSetting('colour_nicknames_in_messages')) {
+                return this.message.user.colour;
+            }
+            return '';
+        },
     },
     methods: {
         isRepeat() {
@@ -105,12 +110,6 @@ export default {
         },
         isHoveringOverMessage: function isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
-        },
-        nickColour: function nickColour(nick) {
-            if (this.ml.bufferSetting('colour_nicknames_in_messages')) {
-                return TextFormatting.createNickColour(nick);
-            }
-            return '';
         },
         isMessage: function isMessage(message) {
             let types = ['privmsg', 'action', 'notice', 'message'];

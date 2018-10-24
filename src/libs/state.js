@@ -1,6 +1,7 @@
 'kiwi public';
 
 import * as Misc from '@/helpers/Misc';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import Vue from 'vue';
 import _ from 'lodash';
 import NetworkState from './state/NetworkState';
@@ -1031,6 +1032,7 @@ const state = new Vue({
                     realname: user.realname || '',
                     modes: user.modes || '',
                     away: user.away || '',
+                    colour: TextFormatting.createNickColour(user.nick),
                     buffers: Object.create(null),
                 };
             } else {
