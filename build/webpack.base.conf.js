@@ -23,7 +23,9 @@ const createLintingRule = () => ({
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
+    'promise-polyfill': 'core-js/es/promise',
+    'fetch-polyfill': 'whatwg-fetch'
   },
   output: {
     path: config.build.assetsRoot,

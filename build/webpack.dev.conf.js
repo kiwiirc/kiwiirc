@@ -58,7 +58,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
+      excludeChunks: ['promise-polyfill', 'fetch-polyfill']
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
