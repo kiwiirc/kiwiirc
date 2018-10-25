@@ -1,5 +1,6 @@
 /** @module */
 
+import def from '@/libs/state/common';
 import * as TextFormatting from '@/helpers/TextFormatting';
 
 export default class UserState {
@@ -35,32 +36,5 @@ export default class UserState {
             this.colour = TextFormatting.createNickColour(this.nick);
         }
         return this.colour;
-    }
-}
-
-// Define a non-enumerable property on an object with an optional setter callback
-function def(target, key, value, canSet) {
-    let val = value;
-
-    let definition = {
-        get() {
-            return val;
-        },
-    };
-
-    if (canSet) {
-        definition.set = function set(newVal) {
-            let oldVal = val;
-            val = newVal;
-            if (typeof canSet === 'function') {
-                canSet(newVal, oldVal);
-            }
-        };
-    }
-
-    Object.defineProperty(target, key, definition);
-
-    if (typeof canSet === 'function') {
-        canSet(val);
     }
 }
