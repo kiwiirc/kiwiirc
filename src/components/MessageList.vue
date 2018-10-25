@@ -337,6 +337,12 @@ export default {
 
             return message.isHighlight;
         },
+        userColour(user) {
+            if (user && this.bufferSetting('colour_nicknames_in_messages')) {
+                return user.getColour();
+            }
+            return '';
+        },
         openUserBox(nick) {
             let user = this.$state.getUser(this.buffer.networkid, nick);
             if (user) {

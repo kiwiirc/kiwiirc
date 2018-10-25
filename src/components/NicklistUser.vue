@@ -28,7 +28,7 @@ export default {
     computed: {
         userColour() {
             if (this.nicklist.useColouredNicks) {
-                return this.user.colour;
+                return this.user.getColour();
             }
             return '';
         },

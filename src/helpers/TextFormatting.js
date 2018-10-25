@@ -143,7 +143,7 @@ export function linkifyChannels(word) {
 
 export function linkifyUsers(word, userlist) {
     let ret = '';
-    let user = '';
+    let user = null;
     let prepend = '';
     let append = '';
     let punc = ',.!:;-+)]?¿\\/<>@';
@@ -172,7 +172,7 @@ export function linkifyUsers(word, userlist) {
 
     ret = `<a class="kiwi-nick" data-nick="${escaped}"`;
     if (colour) {
-        ret += `style="color:${colour}"`;
+        ret += ` style="color:${colour}"`;
     }
     ret += `>${escaped}</a>`;
 
@@ -189,13 +189,8 @@ export function linkifyUsers(word, userlist) {
 /**
  * Convert a nickname string to a colour code
  */
-let nickColourCache = Object.create(null);
 export function createNickColour(nick) {
     let nickLower = nick.toLowerCase();
-
-    if (nickColourCache[nickLower]) {
-        return nickColourCache[nickLower];
-    }
 
     // The HSL properties are based on this specific colour
     let startingColour = '#36809B'; // '#449fc1';
@@ -220,8 +215,6 @@ export function createNickColour(nick) {
 
     let rgb = Colours.hsl2rgb(baseColour);
     let nickColour = Colours.rgb2hex(rgb);
-
-    nickColourCache[nickLower] = nickColour;
 
     return nickColour;
 }

@@ -89,10 +89,7 @@ export default {
     },
     computed: {
         userColour() {
-            if (this.message.user && this.ml.bufferSetting('colour_nicknames_in_messages')) {
-                return this.message.user.colour;
-            }
-            return '';
+            return this.ml.userColour(this.message.user);
         },
     },
     methods: {
