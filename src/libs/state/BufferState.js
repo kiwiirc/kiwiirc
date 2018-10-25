@@ -1,7 +1,7 @@
 /** @module */
 
 import _ from 'lodash';
-import def from '@/libs/state/common';
+import { def } from '@/libs/state/common';
 import * as Misc from '@/helpers/Misc';
 import batchedAdd from '../batchedAdd';
 

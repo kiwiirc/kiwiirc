@@ -1,6 +1,6 @@
 /** @module */
 
-import def from '@/libs/state/common';
+import { def } from '@/libs/state/common';
 import * as IrcClient from '../IrcClient';
 
 /** The IRC network instance */

@@ -1,6 +1,6 @@
 /** @module */
 
-import def from '@/libs/state/common';
+import { def } from '@/libs/state/common';
 import * as TextFormatting from '@/helpers/TextFormatting';
 
 export default class UserState {
