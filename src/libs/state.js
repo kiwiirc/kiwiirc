@@ -1156,14 +1156,19 @@ const state = new Vue({
             let normalisedOld = oldNick.toLowerCase();
 
             user.nick = newNick;
-            state.$set(network.users, normalisedNew, network.users[normalisedOld]);
-            state.$delete(network.users, normalisedOld);
 
-            Object.keys(user.buffers).forEach((bufferId) => {
-                let buffer = user.buffers[bufferId].buffer;
-                state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
-                state.$delete(buffer.users, normalisedOld);
-            });
+            // If the nick has completely changed (ie. not just a case change) then update all
+            // associated buffers user lists
+            if (normalisedOld !== normalisedNew) {
+                state.$set(network.users, normalisedNew, network.users[normalisedOld]);
+                state.$delete(network.users, normalisedOld);
+
+                Object.keys(user.buffers).forEach((bufferId) => {
+                    let buffer = user.buffers[bufferId].buffer;
+                    state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
+                    state.$delete(buffer.users, normalisedOld);
+                });
+            }
 
             let buffer = this.getBufferByName(network.id, oldNick);
             if (buffer) {
