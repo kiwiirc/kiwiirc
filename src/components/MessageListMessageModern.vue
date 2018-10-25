@@ -105,14 +105,14 @@ export default {
                 prevMessage.type !== 'traffic' &&
                 message.type !== 'traffic';
         },
-        isHoveringOverMessage: function isHoveringOverMessage(message) {
+        isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
-        isMessage: function isMessage(message) {
+        isMessage(message) {
             let types = ['privmsg', 'action', 'notice', 'message'];
             return types.indexOf(message.type) > -1;
         },
-        userModePrefix: function userModePrefix(user) {
+        userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
         },
     },

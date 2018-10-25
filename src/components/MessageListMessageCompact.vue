@@ -85,10 +85,10 @@ export default {
         },
     },
     methods: {
-        isHoveringOverMessage: function isHoveringOverMessage(message) {
+        isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
-        userModePrefix: function userModePrefix(user) {
+        userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
         },
     },
