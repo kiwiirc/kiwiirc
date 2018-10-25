@@ -1156,6 +1156,9 @@ const state = new Vue({
             let normalisedOld = oldNick.toLowerCase();
 
             user.nick = newNick;
+
+            // If the nick has completely changed (ie. not just a case change) then update all
+            // associated buffers user lists
             if (normalisedOld !== normalisedNew) {
                 state.$set(network.users, normalisedNew, network.users[normalisedOld]);
                 state.$delete(network.users, normalisedOld);
