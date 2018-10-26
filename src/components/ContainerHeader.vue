@@ -20,12 +20,14 @@
                     class="kiwi-header-option"
                 />
                 <div
-                    v-if="buffer.topic.length > 0"
-                    :class="{ 'kiwi-header-option--active': viewTopic == true }"
-                    class="kiwi-header-option kiwi-header-option-topic"
-                    @click="showTopic"
+                    :class="{
+                        'kiwi-header-option--active': sidebarState.sidebarSection === 'about'
+                    }"
+                    class="kiwi-header-option kiwi-header-option-about"
                 >
-                    <a :title="$t('display_topic')"><i class="fa fa-info" aria-hidden="true"/></a>
+                    <a @click="sidebarState.showAbout()">
+                        <i class="fa fa-info" aria-hidden="true"/>
+                    </a>
                 </div>
                 <div
                     :class="{
@@ -74,10 +76,6 @@
                 <a class="u-link kiwi-header-join-channel-button" @click="joinCurrentBuffer">
                     {{ $t('container_join') }}
                 </a>
-            </div>
-
-            <div v-if="isJoined && buffer.topic.length > 0 && viewTopic" class="kiwi-header-topic">
-                <div v-html="formattedTopic"/>
             </div>
 
             <transition name="kiwi-header-prompttrans">
@@ -190,7 +188,6 @@ export default {
             buffer_settings_open: false,
             pluginUiChannelElements: GlobalApi.singleton().channelHeaderPlugins,
             pluginUiQueryElements: GlobalApi.singleton().queryHeaderPlugins,
-            viewTopic: false,
             prompts: {
                 closeChannel: false,
             },
@@ -257,9 +254,6 @@ export default {
         showSidebar() {
             state.$emit('sidebar.toggle');
         },
-        showTopic() {
-            this.viewTopic = !this.viewTopic;
-        },
         joinCurrentBuffer: function joinCurrentBuffer() {
             let network = this.buffer.getNetwork();
             this.buffer.enabled = true;
@@ -299,28 +293,6 @@ export default {
 /* why this hover? */
 .kiwi-header:hover {
     max-height: none;
-}
-
-.kiwi-header:hover .kiwi-header-topic {
-    display: block;
-}
-
-.kiwi-header-topic {
-    padding: 0;
-    line-height: normal;
-    max-width: none;
-    width: 100%;
-    float: right;
-    box-sizing: border-box;
-    height: auto;
-    text-align: left;
-}
-
-.kiwi-header-topic > div {
-    height: auto;
-    font-size: 0.8;
-    cursor: default;
-    padding: 10px 20px;
 }
 
 .kiwi-header-name {
