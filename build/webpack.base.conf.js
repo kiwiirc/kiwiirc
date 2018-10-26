@@ -23,7 +23,10 @@ const createLintingRule = () => ({
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: [
+        'core-js/fn/promise', // required by the webpack runtime for async import(). babel polyfills don't help us here. ie11
+        './src/main.js'
+    ]
   },
   output: {
     path: config.build.assetsRoot,
