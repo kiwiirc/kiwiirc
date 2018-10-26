@@ -37,6 +37,15 @@
                 </ul>
             </div>
         </div>
+
+        <div
+            v-for="plugin in pluginUiSections"
+            :key="plugin.id"
+            class="kiwi-aboutbuffer-section"
+        >
+            <h4><i class="fa fa-angle-right"/> {{plugin.args.title}}</h4>
+            <div v-rawElement="plugin.el" />
+        </div>
     </div>
 </template>
 
@@ -44,6 +53,7 @@
 
 'kiwi public';
 
+import GlobalApi from '@/libs/GlobalApi';
 import formatIrcMessage from '@/libs/MessageFormatter';
 import * as TextFormatting from '@/helpers/TextFormatting';
 
@@ -51,6 +61,7 @@ export default {
     props: ['network', 'buffer', 'sidebarState'],
     data() {
         return {
+            pluginUiSections: GlobalApi.singleton().aboutBufferPlugins,
         };
     },
     computed: {
