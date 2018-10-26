@@ -28,22 +28,12 @@
             </div>
         </div>
 
-        <div class="kiwi-aboutbuffer-section">
-            <h4><i class="fa fa-angle-right"/> Shared Files</h4>
-            <div>
-                <ul>
-                    <li>image 1.jpg</li>
-                    <li>important_file.pdf</li>
-                </ul>
-            </div>
-        </div>
-
         <div
             v-for="plugin in pluginUiSections"
             :key="plugin.id"
             class="kiwi-aboutbuffer-section"
         >
-            <h4><i class="fa fa-angle-right"/> {{plugin.args.title}}</h4>
+            <h4><i class="fa fa-angle-right"/> {{ plugin.args.title }}</h4>
             <div v-rawElement="plugin.el" />
         </div>
     </div>
