@@ -253,7 +253,7 @@ export default {
                     return this.$t('window_unload');
                 }
 
-                return null;
+                return undefined;
             };
         },
         emitBufferPaste(event) {
