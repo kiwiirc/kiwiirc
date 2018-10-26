@@ -3,7 +3,7 @@
         <h3>{{ b.name }}</h3>
 
         <div class="kiwi-aboutbuffer-section">
-            <h4><i class="fa fa-circle-thin"/> About</h4>
+            <h4><i class="fa fa-angle-right"/> About</h4>
             <div>
                 <p v-if="b.topic" v-html="formattedTopic"/>
                 <p v-else>There is no topic for this channel</p>
@@ -17,7 +17,7 @@
         </div>
 
         <div class="kiwi-aboutbuffer-section">
-            <h4><i class="fa fa-circle-thin"/> Highlights</h4>
+            <h4><i class="fa fa-angle-right"/> Highlights</h4>
             <div>
                 <ul v-if="highlights.length > 0" class="display:none;">
                     <li v-for="msg in highlights" :key="msg.id">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="kiwi-aboutbuffer-section">
-            <h4><i class="fa fa-circle-thin"/> Shared Files</h4>
+            <h4><i class="fa fa-angle-right"/> Shared Files</h4>
             <div>
                 <ul>
                     <li>image 1.jpg</li>
@@ -66,6 +66,10 @@ export default {
         },
 
         highlights() {
+            // Tap into buffer.message_count to force vuejs to update this function when
+            // it changes
+            /* eslint-disable no-unused-vars */
+            let tmp = this.buffer.message_count;
             return this.buffer.getMessages()
                 .filter(m => m.isHighlight)
                 .filter(m => m.type !== 'traffic')
@@ -81,8 +85,8 @@ export default {
 
 /* Adjust the sidebars width when this component is in view */
 .kiwi-sidebar.kiwi-sidebar-section-about {
-    max-width: 250px;
-    width: 250px;
+    max-width: 300px;
+    width: 300px;
 }
 
 .kiwi-aboutbuffer {
@@ -102,7 +106,9 @@ export default {
 .kiwi-aboutbuffer h3 {
     padding: 10px;
     background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.71);
     width: 100%;
+    box-sizing: border-box;
 }
 
 .kiwi-aboutbuffer-section {

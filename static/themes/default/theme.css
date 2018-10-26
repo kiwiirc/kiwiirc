@@ -628,6 +628,11 @@
     border-color: #b2b2b2;
 }
 
+.kiwi-aboutbuffer h4 {
+    background-color: #42b992;
+    color: #fff;
+}
+
 
 /* Channel Banlist ( Channelbanlist.vue ) */
 .kiwi-channelbanlist-table tr {
