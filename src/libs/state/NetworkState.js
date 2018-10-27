@@ -1,5 +1,6 @@
 /** @module */
 
+import { def } from './common';
 import * as IrcClient from '../IrcClient';
 
 /** The IRC network instance */
@@ -96,32 +97,5 @@ export default class NetworkState {
         setImmediate(() => {
             this.appState.$emit('server.tab.show', tabName || 'settings');
         });
-    }
-}
-
-// Define a non-enumerable property on an object with an optional setter callback
-function def(target, key, value, canSet) {
-    let val = value;
-
-    let definition = {
-        get() {
-            return val;
-        },
-    };
-
-    if (canSet) {
-        definition.set = function set(newVal) {
-            let oldVal = val;
-            val = newVal;
-            if (typeof canSet === 'function') {
-                canSet(newVal, oldVal);
-            }
-        };
-    }
-
-    Object.defineProperty(target, key, definition);
-
-    if (typeof canSet === 'function') {
-        canSet(val);
     }
 }

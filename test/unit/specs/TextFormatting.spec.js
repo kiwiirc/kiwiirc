@@ -57,16 +57,18 @@ describe('TextFormatting.js', function() {
     it('should return valid user links', function() {
         // mock users list
         let users = {
-            testnick1: { nick: 'TestNick1', username: 'testnick1' },
-            testnick2: { nick: 'TestNick2', username: 'testnick2' },
+            testnick1: { nick: 'TestNick1', username: 'testnick1', colour: '#a1fc5d' },
+            testnick2: { nick: 'TestNick2', username: 'testnick2', colour: '#7363fe' },
+            testnick3: { nick: 'TestNick3', username: 'testnick3' },
         };
         let tests = [
             // word, nick, prefix, suffix
-            ['testnick1'],
+            ['testnick1', 'TestNick1'],
             ['TestNick1'],
             ['TestNick2'],
-            ['testnick1:', 'testnick1', '', ':'],
-            ['@testnick2', 'testnick2', '@', ''],
+            ['Testnick3', 'TestNick3'],
+            ['testnick1:', 'TestNick1', '', ':'],
+            ['@testnick2', 'TestNick2', '@', ''],
             ['@TestNick2:', 'TestNick2', '@', ':'],
         ];
 
@@ -76,14 +78,18 @@ describe('TextFormatting.js', function() {
         tests.forEach((c) => {
             let linkified = TextFormatting.linkifyUsers(c[0], users);
 
+            let user = c.length >= 2 ? users[c[1].toLowerCase()] : users[c[0].toLowerCase()];
             let escaped = c.length >= 2 ? _.escape(c[1]) : _.escape(c[0]);
             let prefix = c[2] || '';
             let suffix = c[3] || '';
 
-            let regex = new RegExp('^' + _.escape(prefix) +
-                '<a class="kiwi-nick" data-nick="' + escaped +
-                '" style="color:#[0-9A-Fa-f]{3,6}">' + escaped +
-                '</a>' + _.escape(suffix) + '$');
+            let regexString = '^' + _.escape(prefix) +
+                '<a class="kiwi-nick" data-nick="' + escaped + '"';
+            if (user.colour) {
+                regexString += ' style="color:#[0-9A-Fa-f]{3,6}"';
+            }
+            regexString += '>' + escaped + '</a>' + _.escape(suffix) + '$';
+            let regex = new RegExp(regexString);
             expect(linkified).to.match(regex);
         });
     });

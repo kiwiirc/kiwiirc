@@ -5,6 +5,7 @@ import Vue from 'vue';
 import _ from 'lodash';
 import NetworkState from './state/NetworkState';
 import BufferState from './state/BufferState';
+import UserState from './state/UserState';
 import Message from './Message';
 
 const stateObj = {
@@ -1025,15 +1026,7 @@ const state = new Vue({
             let userObj = null;
 
             if (!usersArr[user.nick.toLowerCase()]) {
-                userObj = usersArr[user.nick.toLowerCase()] = {
-                    nick: user.nick,
-                    host: user.host || '',
-                    username: user.username || '',
-                    realname: user.realname || '',
-                    modes: user.modes || '',
-                    away: user.away || '',
-                    buffers: Object.create(null),
-                };
+                userObj = usersArr[user.nick.toLowerCase()] = new UserState(user);
             } else {
                 // Update the existing user object with any new info we have
                 userObj = state.getUser(network.id, user.nick, usersArr);

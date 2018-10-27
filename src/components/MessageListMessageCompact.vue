@@ -44,7 +44,7 @@
             {{ ml.formatTime(message.time) }}
         </div>
         <div
-            :style="ml.nickStyle(message.nick)"
+            :style="{ 'color': userColour }"
             class="kiwi-messagelist-nick"
             @click="ml.openUserBox(message.nick)"
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
@@ -80,12 +80,15 @@ export default {
         };
     },
     computed: {
+        userColour() {
+            return this.ml.userColour(this.message.user);
+        },
     },
     methods: {
-        isHoveringOverMessage: function isHoveringOverMessage(message) {
+        isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
-        userModePrefix: function userModePrefix(user) {
+        userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
         },
     },

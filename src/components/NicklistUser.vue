@@ -9,7 +9,7 @@
         @click="nicklist.openUserbox(user)"
     >
         <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span>
-        <span :style="nicklist.nickStyle(user.nick)"
+        <span :style="{ 'color': userColour }"
               class="kiwi-nicklist-user-nick"
         >{{ user.nick }}
         </span>
@@ -25,6 +25,15 @@
 
 export default {
     props: ['user', 'nicklist'],
+    computed: {
+        userColour() {
+            if (this.nicklist.useColouredNicks) {
+                return this.user.getColour();
+            }
+            return '';
+        },
+
+    },
 };
 </script>
 

@@ -42,7 +42,7 @@
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div
-                :style="ml.nickStyle(message.nick)"
+                :style="{ 'color': userColour }"
                 class="kiwi-messagelist-nick"
                 @click="ml.openUserBox(message.nick)"
                 @mouseover="ml.hover_nick=message.nick.toLowerCase();"
@@ -74,7 +74,6 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
-import * as TextFormatting from '@/helpers/TextFormatting';
 import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
 
@@ -89,6 +88,9 @@ export default {
         };
     },
     computed: {
+        userColour() {
+            return this.ml.userColour(this.message.user);
+        },
     },
     methods: {
         isRepeat() {
@@ -103,20 +105,14 @@ export default {
                 prevMessage.type !== 'traffic' &&
                 message.type !== 'traffic';
         },
-        isHoveringOverMessage: function isHoveringOverMessage(message) {
+        isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
-        nickColour: function nickColour(nick) {
-            if (this.ml.bufferSetting('colour_nicknames_in_messages')) {
-                return TextFormatting.createNickColour(nick);
-            }
-            return '';
-        },
-        isMessage: function isMessage(message) {
+        isMessage(message) {
             let types = ['privmsg', 'action', 'notice', 'message'];
             return types.indexOf(message.type) > -1;
         },
-        userModePrefix: function userModePrefix(user) {
+        userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
         },
     },

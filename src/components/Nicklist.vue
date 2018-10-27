@@ -33,9 +33,7 @@
 
 'kiwi public';
 
-import state from '@/libs/state';
 import Logger from '@/libs/Logger';
-import * as TextFormatting from '@/helpers/TextFormatting';
 import NicklistUser from './NicklistUser';
 
 let log = Logger.namespace('Nicklist');
@@ -64,7 +62,7 @@ export default {
         };
     },
     computed: {
-        sortedUsers: function sortedUsers() {
+        sortedUsers() {
             // Get a list of network prefixes and give them a rank number
             let netPrefixes = this.network.ircClient.network.options.PREFIX;
             let prefixOrders = Object.create(null);
@@ -145,18 +143,11 @@ export default {
                 return strCompare(nickMap[a.nick], nickMap[b.nick]);
             });
         },
-        useColouredNicks: function useColouredNicks() {
+        useColouredNicks() {
             return this.buffer.setting('coloured_nicklist');
         },
     },
     methods: {
-        nickStyle(nick) {
-            let styles = {};
-            if (this.useColouredNicks) {
-                styles.color = TextFormatting.createNickColour(nick);
-            }
-            return styles;
-        },
         userModePrefix(user) {
             return this.buffer.userModePrefix(user);
         },
@@ -164,12 +155,12 @@ export default {
             return this.buffer.userMode(user);
         },
         openQuery(user) {
-            let buffer = state.addBuffer(this.buffer.networkid, user.nick);
-            state.setActiveBuffer(buffer.networkid, buffer.name);
+            let buffer = this.$state.addBuffer(this.buffer.networkid, user.nick);
+            this.$state.setActiveBuffer(buffer.networkid, buffer.name);
             this.sidebarState.close();
         },
         openUserbox(user) {
-            state.$emit('userbox.show', user, {
+            this.$state.$emit('userbox.show', user, {
                 buffer: this.buffer,
             });
         },

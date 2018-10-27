@@ -38,7 +38,7 @@
                 {{ ml.formatTime(message.time) }}
             </span>
             <span
-                :style="ml.nickStyle(message.nick)"
+                :style="{ 'color': userColour }"
                 :data-nick="message.nick"
                 class="kiwi-messagelist-nick"
                 @click="ml.openUserBox(message.nick)"
@@ -82,6 +82,9 @@ export default {
                 '';
 
             return prefix + this.message.nick + suffix;
+        },
+        userColour() {
+            return this.ml.userColour(this.message.user);
         },
     },
     methods: {
