@@ -1,8 +1,8 @@
 /** @module */
 
 import _ from 'lodash';
-import { def } from '@/libs/state/common';
 import * as Misc from '@/helpers/Misc';
+import { def } from './common';
 import batchedAdd from '../batchedAdd';
 
 let nextBufferId = 0;

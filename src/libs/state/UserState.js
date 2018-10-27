@@ -1,7 +1,7 @@
 /** @module */
 
-import { def } from '@/libs/state/common';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import { def } from './common';
 
 export default class UserState {
     constructor(user) {
