@@ -21,7 +21,7 @@ export default {
             return this.message.user ?
                 this.message.user.getColour() :
                 '';
-        }
+        },
     },
 };
 
