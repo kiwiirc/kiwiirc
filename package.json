@@ -87,8 +87,10 @@
     "xhr": "^2.3.2"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.26.0",
     "chai": "^3.5.0",
     "connect-history-api-fallback": "^1.1.0",
+    "core-js": "^2.5.7",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.13.3",
     "http-proxy-middleware": "^0.17.2",
