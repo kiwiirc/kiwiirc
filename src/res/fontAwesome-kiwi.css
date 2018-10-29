@@ -1,0 +1,248 @@
+/* stylelint-disable */
+@font-face {
+  font-family: 'fontAwesome-kiwi';
+  src:
+    url('fonts/fontAwesome-kiwi.ttf?2631tj') format('truetype'),
+    url('fonts/fontAwesome-kiwi.woff?2631tj') format('woff'),
+    url('fonts/fontAwesome-kiwi.svg?2631tj#fontAwesome-kiwi') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="fa-"], [class*=" fa-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'fontAwesome-kiwi' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-asterisk:before {
+  content: "\f069";
+}
+.fa-plus:before {
+  content: "\f067";
+}
+.fa-question:before {
+  content: "\f128";
+}
+.fa-minus:before {
+  content: "\f068";
+}
+.fa-search:before {
+  content: "\f002";
+}
+.fa-star:before {
+  content: "\f005";
+}
+.fa-star-o:before {
+  content: "\f006";
+}
+.fa-user:before {
+  content: "\f007";
+}
+.fa-check:before {
+  content: "\f00c";
+}
+.fa-close:before {
+  content: "\f00d";
+}
+.fa-remove:before {
+  content: "\f00d";
+}
+.fa-times:before {
+  content: "\f00d";
+}
+.fa-cog:before {
+  content: "\f013";
+}
+.fa-gear:before {
+  content: "\f013";
+}
+.fa-repeat:before {
+  content: "\f01e";
+}
+.fa-rotate-right:before {
+  content: "\f01e";
+}
+.fa-refresh:before {
+  content: "\f021";
+}
+.fa-lock:before {
+  content: "\f023";
+}
+.fa-adjust:before {
+  content: "\f042";
+}
+.fa-step-backward:before {
+  content: "\f048";
+}
+.fa-step-forward:before {
+  content: "\f051";
+}
+.fa-chevron-left:before {
+  content: "\f053";
+}
+.fa-chevron-right:before {
+  content: "\f054";
+}
+.fa-plus-circle:before {
+  content: "\f055";
+}
+.fa-minus-circle:before {
+  content: "\f056";
+}
+.fa-times-circle:before {
+  content: "\f057";
+}
+.fa-check-circle:before {
+  content: "\f058";
+}
+.fa-question-circle:before {
+  content: "\f059";
+}
+.fa-info-circle:before {
+  content: "\f05a";
+}
+.fa-ban:before {
+  content: "\f05e";
+}
+.fa-exclamation-circle:before {
+  content: "\f06a";
+}
+.fa-exclamation-triangle:before {
+  content: "\f071";
+}
+.fa-warning:before {
+  content: "\f071";
+}
+.fa-comment:before {
+  content: "\f075";
+}
+.fa-cogs:before {
+  content: "\f085";
+}
+.fa-gears:before {
+  content: "\f085";
+}
+.fa-sign-out:before {
+  content: "\f08b";
+}
+.fa-thumb-tack:before {
+  content: "\f08d";
+}
+.fa-external-link:before {
+  content: "\f08e";
+}
+.fa-sign-in:before {
+  content: "\f090";
+}
+.fa-phone:before {
+  content: "\f095";
+}
+.fa-unlock:before {
+  content: "\f09c";
+}
+.fa-arrow-circle-left:before {
+  content: "\f0a8";
+}
+.fa-arrow-circle-right:before {
+  content: "\f0a9";
+}
+.fa-arrow-circle-up:before {
+  content: "\f0aa";
+}
+.fa-arrow-circle-down:before {
+  content: "\f0ab";
+}
+.fa-group:before {
+  content: "\f0c0";
+}
+.fa-users:before {
+  content: "\f0c0";
+}
+.fa-bars:before {
+  content: "\f0c9";
+}
+.fa-navicon:before {
+  content: "\f0c9";
+}
+.fa-reorder:before {
+  content: "\f0c9";
+}
+.fa-caret-down:before {
+  content: "\f0d7";
+}
+.fa-caret-up:before {
+  content: "\f0d8";
+}
+.fa-caret-left:before {
+  content: "\f0d9";
+}
+.fa-caret-right:before {
+  content: "\f0da";
+}
+.fa-rotate-left:before {
+  content: "\f0e2";
+}
+.fa-undo:before {
+  content: "\f0e2";
+}
+.fa-comment-o:before {
+  content: "\f0e5";
+}
+.fa-spinner:before {
+  content: "\f110";
+}
+.fa-smile-o:before {
+  content: "\f118";
+}
+.fa-frown-o:before {
+  content: "\f119";
+}
+.fa-info:before {
+  content: "\f129";
+}
+.fa-ellipsis-h:before {
+  content: "\f141";
+}
+.fa-ellipsis-v:before {
+  content: "\f142";
+}
+.fa-minus-square-o:before {
+  content: "\f147";
+}
+.fa-thumbs-up:before {
+  content: "\f164";
+}
+.fa-thumbs-down:before {
+  content: "\f165";
+}
+.fa-plus-square-o:before {
+  content: "\f196";
+}
+.fa-paper-plane:before {
+  content: "\f1d8";
+}
+.fa-send:before {
+  content: "\f1d8";
+}
+.fa-trash:before {
+  content: "\f1f8";
+}
+.fa-server:before {
+  content: "\f233";
+}
+.fa-times-rectangle:before {
+  content: "\f2d3";
+}
+.fa-window-close:before {
+  content: "\f2d3";
+}

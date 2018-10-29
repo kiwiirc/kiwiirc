@@ -68,7 +68,7 @@ export default {
     position: absolute;
     content: '\f075';
     right: -1em;
-    font-family: fontAwesome, sans-serif;
+    font-family: fontAwesome-kiwi, sans-serif;
     line-height: 26px;
     opacity: 0;
 }

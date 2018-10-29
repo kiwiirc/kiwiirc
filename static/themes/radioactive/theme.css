@@ -1206,7 +1206,7 @@
 /*Icon before the network in network list */
 .kiwi-statebrowser-network-name::before {
     content: '\f233';
-    font-family: fontAwesome;
+    font-family: fontAwesome-kiwi;
     margin-right: 2px;
     font-weight: 100;
     text-decoration: none;
@@ -1215,12 +1215,12 @@
 /* Icons in the Channel List */
 .kiwi-statebrowser-channel[data-name^="*"]::before {
     content: '\f006';
-    font-family: fontAwesome;
+    font-family: fontAwesome-kiwi;
 }
 
 .kiwi-statebrowser-channel[data-name="#help"]::before {
     content: '\f059';
-    font-family: fontAwesome;
+    font-family: fontAwesome-kiwi;
 }
 
 /* U table line breaks */

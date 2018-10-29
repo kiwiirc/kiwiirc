@@ -554,7 +554,7 @@
 /* Icon before the network in network list */
 .kiwi-statebrowser-network-name::before {
     content: '\f233';
-    font-family: fontAwesome, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-family: fontAwesome-kiwi, Helvetica, Arial, Verdana, Tahoma, sans-serif;
     margin-right: 2px;
     font-weight: 100;
     text-decoration: none;
@@ -570,7 +570,7 @@
 }
 
 .kiwi-statebrowser-channel::before {
-    font-family: fontAwesome, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-family: fontAwesome-kiwi, Helvetica, Arial, Verdana, Tahoma, sans-serif;
     margin-right: 8px;
     font-weight: 100;
 }
