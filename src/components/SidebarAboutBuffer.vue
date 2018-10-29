@@ -115,13 +115,10 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background: rgba(0, 0, 0, 0.03);
 }
 
 .kiwi-aboutbuffer h3 {
     padding: 10px;
-    color: rgba(0, 0, 0, 0.71);
-    background: #fff;
     width: 100%;
     box-sizing: border-box;
 }
