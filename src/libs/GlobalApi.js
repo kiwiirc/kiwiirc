@@ -30,6 +30,7 @@ export default class GlobalApi extends EventEmitter {
         this.sideBarPlugins = [];
         this.appSettingsPlugins = [];
         this.serverViewPlugins = [];
+        this.aboutBufferPlugins = [];
         this.tabs = Object.create(null);
         this.isReady = false;
         /* eslint-disable no-underscore-dangle */
@@ -136,11 +137,13 @@ export default class GlobalApi extends EventEmitter {
      * - addUi('header_query', domElement)
      * @param {string} type Where this DOM element should be added
      * @param {element} element The HTML element to add
+     * @param {object} args Optional arguments for this plugis
      */
-    addUi(type, element) {
+    addUi(type, element, args = {}) {
         let plugin = {
             el: element,
             id: nextPluginId++,
+            args,
         };
 
         switch (type) {
@@ -155,6 +158,9 @@ export default class GlobalApi extends EventEmitter {
             break;
         case 'header_query':
             this.queryHeaderPlugins.push(plugin);
+            break;
+        case 'about_buffer':
+            this.aboutBufferPlugins.push(plugin);
             break;
         default:
             break;

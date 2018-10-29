@@ -138,10 +138,14 @@
     color: #fff;
 }
 .u-link {
-    color: #fff;
+    color: #4dafc5;
 }
 
 /* Application settings ( AppSettings.vue ) */
+.kiwi-appsettings {
+  background: #fff;
+}
+
 .kiwi-appsettings-block {
     border: 1px solid #fff
 }
@@ -409,11 +413,11 @@
 }
 
 /* Connection Styling */
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected {
     background-color: #78c9dc;
     color: #fff;
 }
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected {
     background-color: #a54d4d;
     color: #fff;
 }
@@ -633,6 +637,19 @@
     border-color: #b2b2b2;
 }
 
+.kiwi-aboutbuffer {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.kiwi-aboutbuffer h3 {
+    color: rgba(0, 0, 0, 0.71);
+    background: #fff;
+}
+
+.kiwi-aboutbuffer h4 {
+    background-color: #4dafc5;
+    color: #fff;
+}
 
 /* Channel Banlist ( Channelbanlist.vue ) */
 .kiwi-channelbanlist-table tr {

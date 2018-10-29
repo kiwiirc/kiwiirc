@@ -19,7 +19,9 @@
         <template v-if="sidebarState.activeComponent">
             <component
                 :is="sidebarState.activeComponent"
-                :bind="{ network, buffer, sidebarState }"
+                :network="network"
+                :buffer="buffer"
+                :sidebar-state="sidebarState"
             />
         </template>
         <template v-else-if="buffer">
@@ -101,6 +103,13 @@
                     :buffer="buffer"
                     :sidebar-state="sidebarState"
                 />
+
+                <sidebar-about-buffer
+                    v-else-if="section === 'about'"
+                    :network="network"
+                    :buffer="buffer"
+                    :sidebar-state="sidebarState"
+                />
             </template>
             <template v-else-if="buffer.isQuery()">
                 <!-- TODO:
@@ -124,6 +133,7 @@ import GlobalApi from '@/libs/GlobalApi';
 import SidebarState from './SidebarState';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
+import SidebarAboutBuffer from './SidebarAboutBuffer';
 import ChannelBanlist from './ChannelBanlist';
 import Nicklist from './Nicklist';
 
@@ -132,6 +142,7 @@ export { SidebarState as State };
 export default {
     components: {
         BufferSettings,
+        SidebarAboutBuffer,
         ChannelInfo,
         ChannelBanlist,
         Nicklist,

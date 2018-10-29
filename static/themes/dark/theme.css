@@ -486,12 +486,12 @@
     background-color: #000;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected {
     background-color: #42b992;
     color: #fff;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected {
     background-color: #f16f74;
     color: #fff;
 }
@@ -628,6 +628,19 @@
 
 .kiwi-networksettings .kiwi-padded-form-element-container.kiwi-dangerzone {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.kiwi-aboutbuffer {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.kiwi-aboutbuffer h3 {
+    color: rgba(255, 255, 255, 0.71);
+}
+
+.kiwi-aboutbuffer h4 {
+    background-color: #42b992;
+    color: #fff;
 }
 
 .kiwi-networksettings .kiwi-title span {

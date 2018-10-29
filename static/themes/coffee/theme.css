@@ -139,10 +139,14 @@
     color: #fff;
 }
 .u-link {
-    color: #fff;
+    color: #8e715c;
 }
 
 /* Application settings ( AppSettings.vue ) */
+.kiwi-appsettings {
+  background: #fff;
+}
+
 .kiwi-appsettings-block {
     border: 1px solid #fff
 }
@@ -419,11 +423,11 @@
     background-color: #fff;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected {
     background-color: #a2846e;
     color: #fff;
 }
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected {
     background-color: #a54d4d;
     color: #fff;
 }
@@ -668,6 +672,20 @@
     color: #fff;
 }
 .kiwi-statebrowser-usermenu-avatar:hover {
+    background-color: #8e715c;
+    color: #fff;
+}
+
+.kiwi-aboutbuffer {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.kiwi-aboutbuffer h3 {
+    color: rgba(0, 0, 0, 0.71);
+    background: #fff;
+}
+
+.kiwi-aboutbuffer h4 {
     background-color: #8e715c;
     color: #fff;
 }

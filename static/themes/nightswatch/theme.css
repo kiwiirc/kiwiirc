@@ -669,6 +669,19 @@
     color: #cfcfcf;
 }
 
+.kiwi-aboutbuffer {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.kiwi-aboutbuffer h3 {
+    color: rgba(255, 255, 255, 0.71);
+}
+
+.kiwi-aboutbuffer h4 {
+    background-color: #e1e1e1;
+    color: #000;
+}
+
 /* Not connected message ( NotConnected.vue ) */
 .kiwi-notconnected {
     color: #fff;

@@ -434,11 +434,11 @@
     background-color: #000;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected {
     background-color: #1b2f24;
     color: #fff;
 }
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected {
     color: #fff;
 }
 
@@ -680,6 +680,18 @@
     border-color: #b2b2b2;
 }
 
+.kiwi-aboutbuffer {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.kiwi-aboutbuffer h3 {
+    color: #5dd895;
+}
+
+.kiwi-aboutbuffer h4 {
+    background-color: #5dd895;
+    color: #fff;
+}
 
 /* Channel Banlist ( Channelbanlist.vue ) */
 .kiwi-channelbanlist-table tr {

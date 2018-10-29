@@ -16,6 +16,10 @@ div {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+ul {
+    padding-left: 1em;
+}
+
 input,
 textarea,
 select {

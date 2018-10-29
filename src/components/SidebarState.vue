@@ -7,7 +7,7 @@ export default Vue.extend({
     data() {
         return {
             sidebarOpen: false,
-            // sidebarSection may be either '', 'user', 'settings', 'nicklist'
+            // sidebarSection may be either '', 'user', 'settings', 'nicklist', 'about'
             sidebarSection: '',
             sidebarUser: null,
             activeComponent: null,
@@ -51,6 +51,8 @@ export default Vue.extend({
                 return 'user';
             } else if (section === 'nicklist' && isChannel) {
                 return 'nicklist';
+            } else if (section === 'about') {
+                return 'about';
             }
 
             return '';
@@ -85,6 +87,11 @@ export default Vue.extend({
             this.activeComponent = null;
             this.sidebarOpen = true;
             this.sidebarSection = 'settings';
+        },
+        showAbout() {
+            this.activeComponent = null;
+            this.sidebarOpen = true;
+            this.sidebarSection = 'about';
         },
     },
 });
