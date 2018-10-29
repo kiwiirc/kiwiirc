@@ -131,6 +131,7 @@ export default {
 .kiwi-aboutbuffer-section h4 {
     padding: 10px;
     cursor: pointer;
+    user-select: none;
 }
 
 .kiwi-aboutbuffer-section h4 i {
