@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-10-16 13:41\n"
+"PO-Revision-Date: 2018-10-29 20:30\n"
 
 #: Start
 msgid "start_button"
@@ -83,7 +83,7 @@ msgstr "Канал"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "Съобщения"
 
 #: Network
 msgid "network"
@@ -219,7 +219,7 @@ msgstr "Адрес на темата"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr ""
+msgstr "Разпределение на съобщенията"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -527,7 +527,7 @@ msgstr "Влезте отново за продължите разговора �
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr ""
+msgstr "Понастоящем не сте свързани!"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -535,11 +535,11 @@ msgstr "Настройки за свързване"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr ""
+msgstr "Не можaхме да се свържем с този сървър :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr ""
+msgstr "Свържете се към мрежата"
 
 #: Close options
 msgid "side_close"
@@ -580,6 +580,26 @@ msgstr "Цветни  никове в списъка с потребители"
 #: No buffer set
 msgid "side_buffer"
 msgstr "Няма зададен буфер"
+
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr "Няма тема за този канал"
+
+#: About
+msgid "about"
+msgstr "Относно"
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr "Създаден на {{when}}"
+
+#: Highlights
+msgid "highlights"
+msgstr "Акценти"
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr "Никой все още не ви споменал ..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"

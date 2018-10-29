@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Norwegian\n"
 "Language: no_NO\n"
-"PO-Revision-Date: 2018-10-16 13:40\n"
+"PO-Revision-Date: 2018-10-29 19:41\n"
 
 #: Start
 msgid "start_button"
@@ -579,6 +579,26 @@ msgstr ""
 
 #: No buffer set
 msgid "side_buffer"
+msgstr ""
+
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr ""
+
+#: About
+msgid "about"
+msgstr ""
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr ""
+
+#: Highlights
+msgid "highlights"
+msgstr ""
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
 msgstr ""
 
 #: There was an error starting Kiwi IRC :(
