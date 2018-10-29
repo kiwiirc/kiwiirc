@@ -633,6 +633,28 @@ msgid "side_buffer"
 msgstr "No buffer set"
 
 
+#: Sidebar About Buffer
+
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr "There is no topic for this channel"
+
+#: About
+msgid "about"
+msgstr "About"
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr "Created at {{when}}"
+
+#: Highlights
+msgid "highlights"
+msgstr "Highlights"
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr "Nobody has mentioned you yet..."
+
 
 #: StartupError $t('error_')
 

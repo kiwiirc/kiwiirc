@@ -6,13 +6,15 @@
             :class="{'kiwi-aboutbuffer-section--closed': closedSections.about}"
             class="kiwi-aboutbuffer-section"
         >
-            <h4 @click="toggleSection('about')"><i class="fa fa-angle-right"/> About</h4>
+            <h4 @click="toggleSection('about')">
+                <i class="fa fa-angle-right"/> {{ $t('about') }}
+            </h4>
             <div>
                 <p v-if="b.topic" v-html="formattedTopic"/>
-                <p v-else>There is no topic for this channel</p>
+                <p v-else>{{ $t('no_topic_set') }}</p>
 
                 <p v-if="b.created_at">
-                    Created at {{ new Intl.DateTimeFormat().format(b.created_at) }}
+                    {{ $t('created_at', { when: new Intl.DateTimeFormat().format(b.created_at) }) }}
                 </p>
 
                 <p class="kiwi-aboutbuffer-usercount">
@@ -27,14 +29,16 @@
             :class="{'kiwi-aboutbuffer-section--closed': closedSections.highlights}"
             class="kiwi-aboutbuffer-section"
         >
-            <h4 @click="toggleSection('highlights')"><i class="fa fa-angle-right"/> Highlights</h4>
+            <h4 @click="toggleSection('highlights')">
+                <i class="fa fa-angle-right"/> {{ $t('highlights') }}
+            </h4>
             <div>
                 <ul v-if="highlights.length > 0" class="display:none;">
                     <li v-for="msg in highlights" :key="msg.id">
                         {{ msg.nick }}: {{ msg.message }}
                     </li>
                 </ul>
-                <p v-else>Nobody has mentioned you yet...</p>
+                <p v-else>{{ $t('nobody_mentioned_you') }}</p>
             </div>
         </div>
 
