@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-10-17 17:30\n"
+"PO-Revision-Date: 2018-10-29 19:41\n"
 
 #: Start
 msgid "start_button"
@@ -580,6 +580,26 @@ msgstr "Boje nadimaka na popisu"
 #: No buffer set
 msgid "side_buffer"
 msgstr "Nema podešenog prozora razgovora ili kanala"
+
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr ""
+
+#: About
+msgid "about"
+msgstr ""
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr ""
+
+#: Highlights
+msgid "highlights"
+msgstr ""
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr ""
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
