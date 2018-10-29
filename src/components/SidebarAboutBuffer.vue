@@ -11,8 +11,8 @@
                 <p v-if="b.topic" v-html="formattedTopic"/>
                 <p v-else>There is no topic for this channel</p>
 
-                <p>
-                    <a class="u-link" @click="sidebarState.showNicklist()">
+                <p class="kiwi-aboutbuffer-usercount">
+                    <a class="u-link " @click="sidebarState.showNicklist()">
                         {{ $t('person', {count: Object.keys(b.users || {}).length}) }}
                     </a>
                 </p>
@@ -115,12 +115,13 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    background: rgba(0, 0, 0, 0.03);
 }
 
 .kiwi-aboutbuffer h3 {
     padding: 10px;
-    background: rgba(0, 0, 0, 0.1);
     color: rgba(0, 0, 0, 0.71);
+    background: #fff;
     width: 100%;
     box-sizing: border-box;
 }
@@ -128,11 +129,6 @@ export default {
 .kiwi-aboutbuffer-section {
     display: block;
     width: 100%;
-    margin-top: 1em;
-}
-
-.kiwi-aboutbuffer-section:first-of-type {
-    margin-top: 0;
 }
 
 .kiwi-aboutbuffer-section h4 {
@@ -150,10 +146,22 @@ export default {
 }
 
 .kiwi-aboutbuffer-section > div {
-    padding: 0 1em;
+    padding: 1em;
     transition: max-height 0.2s, padding 0.2s, opacity 0.2s;
     overflow: hidden;
     max-height: 500px;
+}
+
+.kiwi-aboutbuffer-section .kiwi-aboutbuffer-usercount {
+    text-align: center;
+}
+
+.kiwi-aboutbuffer-section > div p {
+    margin: 0 0 1em 0;
+}
+
+.kiwi-aboutbuffer-section > div p:last-of-type {
+    margin-bottom: 0;
 }
 
 .kiwi-aboutbuffer-section--closed > div {
