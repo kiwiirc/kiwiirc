@@ -11,6 +11,10 @@
                 <p v-if="b.topic" v-html="formattedTopic"/>
                 <p v-else>There is no topic for this channel</p>
 
+                <p v-if="b.created_at">
+                    Created at {{ new Intl.DateTimeFormat().format(b.created_at) }}
+                </p>
+
                 <p class="kiwi-aboutbuffer-usercount">
                     <a class="u-link " @click="sidebarState.showNicklist()">
                         {{ $t('person', {count: Object.keys(b.users || {}).length}) }}

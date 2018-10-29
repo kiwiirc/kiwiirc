@@ -762,6 +762,10 @@ function clientMiddleware(state, network) {
                 }
             }
 
+            if (event.created_at) {
+                buffer.created_at = new Date(event.created_at * 1000);
+            }
+
             if (event.created_at && buffer.flags.requested_modes) {
                 let tFormat = buffer.setting('timestamp_full_format');
                 let timeCreated = tFormat ?
