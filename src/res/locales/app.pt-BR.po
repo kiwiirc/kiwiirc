@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2018-10-16 13:40\n"
+"PO-Revision-Date: 2018-10-29 19:41\n"
 
 #: Start
 msgid "start_button"
@@ -219,7 +219,7 @@ msgstr "URL do tema"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr ""
+msgstr "Esquema de Mensagens"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -580,6 +580,26 @@ msgstr "Colorir nomes na lista"
 #: No buffer set
 msgid "side_buffer"
 msgstr "Não há buffer configurado"
+
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr ""
+
+#: About
+msgid "about"
+msgstr ""
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr ""
+
+#: Highlights
+msgid "highlights"
+msgstr ""
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr ""
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
