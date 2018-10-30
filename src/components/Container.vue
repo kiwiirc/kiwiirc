@@ -103,8 +103,17 @@ export default {
         this.listen(state, 'sidebar.toggle', () => {
             state.$emit('sidebar.' + (this.sidebarState.isDrawn ? 'hide' : 'show'));
         });
-        this.listen(state, 'sidebar.show', () => {
-            this.sidebarState.showNicklist();
+        this.listen(state, 'sidebar.show', (what) => {
+            switch (what) {
+            case 'about':
+                this.sidebarState.showAbout();
+                break;
+            case 'settings':
+                this.sidebarState.showSettings();
+                break;
+            default:
+                this.sidebarState.showNicklist();
+            }
         });
         this.listen(state, 'sidebar.hide', () => {
             this.sidebarState.close();

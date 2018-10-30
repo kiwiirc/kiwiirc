@@ -1,7 +1,9 @@
 <template>
     <div class="kiwi-message-topic">
         <div class="kiwi-message-topic-content" v-html="formattedTopic"/>
-        <div v-if="topic_by" class="kiwi-message-topic-setby">{{ formattedSetBy }}</div>
+        <div class="kiwi-message-topic-setby">
+            <a class="fa fa-info-circle" @click="moreInfo()" />
+        </div>
     </div>
 </template>
 
@@ -10,7 +12,6 @@
 
 import Vue from 'vue';
 import _ from 'lodash';
-import strftime from 'strftime';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import formatIrcMessage from '@/libs/MessageFormatter';
 
@@ -30,17 +31,10 @@ const component = {
             let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
             return content.html;
         },
-        formattedSetBy() {
-            let tFormat = this.buffer.setting('timestamp_full_format');
-            let d = new Date(this.topic_when);
-            let whenDate = tFormat ?
-                strftime(tFormat, d) :
-                d.toLocaleString();
-
-            return TextFormatting.t('topic_setby', {
-                who: this.topic_by,
-                when: whenDate,
-            });
+    },
+    methods: {
+        moreInfo() {
+            this.$state.$emit('sidebar.show', 'about');
         },
     },
 };
@@ -84,13 +78,22 @@ export function listenForMessages(state) {
     position: relative;
     min-height: 0;
     display: block;
-    padding: 4px 60px;
+    padding: 4px 4px;
     overflow: hidden;
 }
 
+.kiwi-message-topic-content {
+    margin: 0 20px;
+}
+
 .kiwi-message-topic-setby {
-    font-size: 80%;
-    float: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 2px;
+    margin-right: 4px;
+    font-size: 120%;
+    cursor: pointer;
 }
 
 </style>
