@@ -583,6 +583,10 @@ function clientMiddleware(state, network) {
             });
         }
 
+        if (command === 'account') {
+            state.addUser(networkid, { nick: event.nick, account: event.account || '' });
+        }
+
         if (command === 'whois') {
             let obj = {
                 nick: event.nick,
@@ -640,6 +644,7 @@ function clientMiddleware(state, network) {
                         username: user.ident || undefined,
                         away: user.away ? 'Away' : '',
                         realname: user.real_name,
+                        account: user.account === 0 ? '' : user.account,
                     };
                     state.addUser(networkid, userObj, users);
                 });

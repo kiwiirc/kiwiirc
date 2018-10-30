@@ -13,6 +13,7 @@ export default class UserState {
         this.away = user.away || '';
         this.colour = user.colour || '';
         this.buffers = Object.create(null);
+        this.account = '';
 
         // Whois details are non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'actual_host', '', true);
@@ -26,7 +27,6 @@ export default class UserState {
         def(this, 'idle', '', true);
         def(this, 'logon', '', true);
         def(this, 'registered_nick', '', true);
-        def(this, 'account', '', true);
         def(this, 'secure', '', true);
         def(this, 'special', '', true);
     }
