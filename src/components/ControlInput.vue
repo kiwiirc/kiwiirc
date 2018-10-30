@@ -531,8 +531,8 @@ export default {
 .kiwi-controlinput-tools {
     /* 38px = 40px controlinput height - margin top+botton */
     line-height: 38px;
-    margin: 1px 0 1px 10px;
-    border-radius: 10px 0 0 10px;
+    margin: 2px 0 2px 10px;
+    border-radius: 7px 0 0 7px;
     cursor: pointer;
 }
 
@@ -544,8 +544,9 @@ export default {
 
 .kiwi-controlinput-send {
     border: none;
-    border-radius: 50%;
+    border-radius: 7px;
     margin: 2px 0;
+    padding: 0;
     height: 35px;
     text-align: center;
     width: 35px;
