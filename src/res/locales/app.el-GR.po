@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-10-29 19:42\n"
+"PO-Revision-Date: 2018-10-30 01:30\n"
 
 #: Start
 msgid "start_button"
@@ -583,23 +583,23 @@ msgstr "Δεν έχει οριστεί ρυθμιστής"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr ""
+msgstr "Δεν υπάρχει θέμα για αυτό το κανάλι"
 
 #: About
 msgid "about"
-msgstr ""
+msgstr "Σχετικά"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "Δημιουργήθηκε στο {{πότε}}"
 
 #: Highlights
 msgid "highlights"
-msgstr ""
+msgstr "Επισημάνσεις"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr ""
+msgstr "Κανείς δεν σας έχει αναφέρει ακόμα..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
