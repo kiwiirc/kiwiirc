@@ -23,7 +23,7 @@ msgstr "Wilkommen bei Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr "schließen"
+msgstr "Schließen"
 
 #: Connect
 msgid "connect"
@@ -95,7 +95,7 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logge ein..."
+msgstr "Melde an..."
 
 #: Invalid login
 msgid "invalid_login"
@@ -139,7 +139,7 @@ msgstr "Realname"
 
 #: Status
 msgid "whois_status"
-msgstr "Awaystatus"
+msgstr "Status"
 
 #: Is available
 msgid "whois_status_available"
@@ -147,7 +147,7 @@ msgstr "Anwesend"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Sende Nachricht"
+msgstr "Sende eine Nachricht"
 
 #: More information
 msgid "more_information"
@@ -155,7 +155,7 @@ msgstr "Mehr Informationen"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignoriere User"
+msgstr "Benutzer ignorieren"
 
 #: Channel
 msgid "connection_channel"
@@ -219,7 +219,7 @@ msgstr "Theme URL"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr ""
+msgstr "Nachrichtengestaltung"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -243,7 +243,7 @@ msgstr "Zeige Zeitstempel"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Benutze 24 Stunden Format"
+msgstr "Benutze 24-Stunden Format"
 
 #: Show emoticons
 msgid "settings_emoticons"
@@ -251,7 +251,7 @@ msgstr "Zeige Emoticons"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Blockiere Private Nachrichten"
+msgstr "Blockiere private Nachrichten"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -323,7 +323,7 @@ msgstr "Zähler für neue Nachrichten ausblenden"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Op Tools"
+msgstr "Op Werkzeuge"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
@@ -583,23 +583,23 @@ msgstr "Kein buffer gesetzt"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr ""
+msgstr "Es gibt kein Thema für diesen Chatraum"
 
 #: About
 msgid "about"
-msgstr ""
+msgstr "Über"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "Erstellt am {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr ""
+msgstr "Besonderes"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr ""
+msgstr "Niemand hat dich erwähnt"
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -844,4 +844,3 @@ msgstr "{{nick}} ist jetzt als {{newnick}}} bekannt."
 #: changed the topic to:
 msgid "changed_topic_to"
 msgstr "{{nick}} hat das Thema geändert zu: {{topic}}"
-
