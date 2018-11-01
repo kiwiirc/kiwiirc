@@ -364,7 +364,8 @@ export default {
         },
         onMessageClick(event, message, delay) {
             // Delaying the click for 200ms allows us to check for a second click. ie. double click
-            if (delay) {
+            // Quick hack as we only need double click for nicks, nothing else
+            if (delay && event.target.getAttribute('data-nick')) {
                 clearTimeout(this.messageClickTmr);
                 this.messageClickTmr = setTimeout(this.onMessageClick, 200, event, message, false);
                 return;
