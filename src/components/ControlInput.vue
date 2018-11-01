@@ -65,7 +65,11 @@
                         <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                             <i class="fa fa-adjust" aria-hidden="true"/>
                         </a>
-                        <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
+                        <a
+                            v-if="shouldShowEmojiPicker"
+                            class="kiwi-controlinput-tool"
+                            @click.prevent="onToolClickEmoji"
+                        >
                             <i class="fa fa-smile-o" aria-hidden="true"/>
                         </a>
                         <div
@@ -146,6 +150,9 @@ export default {
         },
         shouldShowSendButton() {
             return this.$state.ui.is_touch || this.$state.setting('showSendButton');
+        },
+        shouldShowEmojiPicker() {
+            return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
         },
     },
     watch: {
