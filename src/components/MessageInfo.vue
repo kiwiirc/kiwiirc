@@ -73,8 +73,6 @@ export default {
 <style>
 .kiwi-messageinfo {
     display: block;
-    padding-top: 1em;
-    padding-bottom: 1em;
     position: relative;
 }
 
