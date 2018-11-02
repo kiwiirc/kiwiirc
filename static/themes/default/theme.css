@@ -663,10 +663,25 @@
     background: rgba(255, 255, 255, 0.3);
 }
 
-.kiwi-messageinfo {
-    background: #f6f6f6;
-    border-bottom: 2px #ddd solid;
-    border-top: 1px #ddd dashed;
+/* MessageInfo */
+.kiwi-messagelist-message--info-open {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Private message user button */
+.kiwi-messageinfo-author {
+  width: 100%;
+  text-align: center;
+}
+
+/* Ban / Kick Buttons */
+.kiwi-messageinfo-opactions {
+  width: 100%;
+  text-align: center;
+}
+
+.kiwi-messageinfo{
+
 }
 
 .kiwi-statebrowser-usermenu-avatar {

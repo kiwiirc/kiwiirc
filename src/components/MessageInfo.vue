@@ -1,18 +1,5 @@
 <template>
     <div class="kiwi-messageinfo" @click.stop>
-        <div class="kiwi-messageinfo-author">
-            <a class="u-link" @click="openQuery">Reply in private</a>
-        </div>
-
-        <div v-if="areWeAnOp()" class="kiwi-messageinfo-opactions">
-            <input-prompt label="Kick reason:" @submit="onKick">
-                <a class="u-link">Kick {{ message.nick }}</a>
-            </input-prompt> <br >
-            <input-prompt label="Ban reason:" @submit="onBan">
-                <a class="u-link">Ban {{ message.nick }}</a>
-            </input-prompt>
-        </div>
-
         <div v-if="message.mentioned_urls.length > 0" class="kiwi-messageinfo-urls">
             <div v-for="url in message.mentioned_urls" :key="url" class="kiwi-messageinfo-url">
                 <a class="u-button u-button-secondary" @click="urlPreview(url)">Preview</a>
@@ -26,7 +13,19 @@
             </div>
         </div>
 
-        <i class="fa fa-caret-up kiwi-messageinfo-close" @click="$emit('close')"/>
+        <div class="kiwi-messageinfo-author">
+            <a class="u-link" @click="openQuery">Reply in private</a>
+        </div>
+
+        <div v-if="areWeAnOp()" class="kiwi-messageinfo-opactions">
+            <input-prompt label="Kick reason:" @submit="onKick">
+                <a class="u-link">Kick {{ message.nick }}</a>
+            </input-prompt>
+            <input-prompt label="Ban reason:" @submit="onBan">
+                <a class="u-link">Ban {{ message.nick }}</a>
+            </input-prompt>
+        </div>
+
     </div>
 </template>
 
