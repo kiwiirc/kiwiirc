@@ -13,19 +13,18 @@
             </div>
         </div>
 
-        <div class="kiwi-messageinfo-author">
+        <div class="kiwi-messageinfo-actions">
             <a class="u-link" @click="openQuery">Reply in private</a>
-        </div>
 
-        <div v-if="areWeAnOp()" class="kiwi-messageinfo-opactions">
-            <input-prompt label="Kick reason:" @submit="onKick">
-                <a class="u-link">Kick {{ message.nick }}</a>
-            </input-prompt>
-            <input-prompt label="Ban reason:" @submit="onBan">
-                <a class="u-link">Ban {{ message.nick }}</a>
-            </input-prompt>
+            <div class="kiwi-messageinfo-opbuttons">
+              <input-prompt label="Kick reason:" @submit="onKick">
+                  <a class="u-link kick-user">Kick {{ message.nick }}</a>
+              </input-prompt>
+              <input-prompt label="Ban reason:" @submit="onBan">
+                  <a class="u-link ban-user">Ban {{ message.nick }}</a>
+              </input-prompt>
+            </div>
         </div>
-
     </div>
 </template>
 
@@ -80,12 +79,14 @@ export default {
 }
 
 .kiwi-messageinfo-urls {
-    margin-top: 5px;
-    padding-top: 5px;
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .kiwi-messageinfo-url {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: flex;
 }
 
@@ -95,7 +96,8 @@ export default {
     display: inline-block;
     overflow: hidden;
     flex: 1;
-    margin: 0.4em 1em 0 1em;
+    line-height: 30px;
+    margin-left: 10px;
 }
 
 .kiwi-messageinfo-close {
