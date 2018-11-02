@@ -1,6 +1,6 @@
 <template>
     <div :class="{'kiwi-nicklist--filtering': filter_visible }" class="kiwi-nicklist">
-        <div class="kiwi-nicklist-usercount">
+        <div class="kiwi-nicklist-usercount" @click="toggleUserFilter">
             <span>
                 {{
                     filter_visible ?
@@ -15,7 +15,7 @@
                 v-model="user_filter"
                 @blur="onFilterBlur"
             >
-            <i class="fa fa-search" @click="toggleUserFilter"/>
+            <i class="fa fa-search"/>
         </div>
 
         <ul class="kiwi-nicklist-users">
