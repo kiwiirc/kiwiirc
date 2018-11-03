@@ -253,9 +253,19 @@
 
 /* Leave channel */
 .kiwi-header-option-leave a:hover,
-.kiwi-header-option-unpinsidebar a:hover {
+.kiwi-header-option-unpinsidebar {
     background-color: #c54d53;
     color: #fff;
+    opacity: 1;
+}
+
+.kiwi-header-option-unpinsidebar a {
+    opacity: 1;
+}
+
+.kiwi-header-option-unpinsidebar a:hover {
+    opacity: 1;
+    background: #c54d53;
 }
 
 /* The link to click if the user has not joined this channel */
