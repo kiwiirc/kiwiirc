@@ -30,6 +30,14 @@
                     </a>
                 </div>
                 <div
+                    v-if="sidebarState.sidebarSection === 'user'"
+                    class="kiwi-header-option kiwi-header-option-user kiwi-header-option--active"
+                >
+                    <a @click="sidebarState.showUser()">
+                        <i class="fa fa-user" aria-hidden="true"/>
+                    </a>
+                </div>
+                <div
                     :class="{
                         'kiwi-header-option--active': sidebarState.sidebarSection === 'nicklist'
                     }"
@@ -362,10 +370,6 @@ export default {
 }
 
 .kiwi-header-option-leave i {
-    margin: 0;
-}
-
-.kiwi-header-option-unpinsidebar i {
     margin: 0;
 }
 

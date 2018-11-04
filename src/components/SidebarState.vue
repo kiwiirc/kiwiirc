@@ -14,21 +14,14 @@ export default Vue.extend({
         };
     },
     computed: {
-        isPinned() {
-            // Pinned sidebar only works on full width windows otherwise its too small to see
-            return this.sidebarPinned && this.canPin;
-        },
         isOpen() {
-            return !this.isPinned && this.sidebarOpen;
+            return this.sidebarOpen;
         },
         isClosed() {
-            return !this.isOpen && !this.isPinned;
+            return !this.isOpen;
         },
         canPin() {
-            return this.$state.ui.app_width > 769;
-        },
-        sidebarPinned() {
-            return this.$state.setting('sidebarPinned');
+            return this.isOpen && this.$state.ui.app_width > 769;
         },
     },
     created() {
@@ -57,38 +50,44 @@ export default Vue.extend({
 
             return '';
         },
-        pin() {
-            this.$state.setting('sidebarPinned', true);
-            if (this.sidebarSection === '') {
-                this.sidebarSection = 'nicklist';
-            }
-        },
-        unpin() {
-            this.$state.setting('sidebarPinned', false);
-            this.close();
-        },
         close() {
             this.sidebarOpen = false;
             this.sidebarSection = '';
             this.sidebarUser = null;
         },
         showUser(user) {
+            if (this.sidebarSection === 'user') {
+                this.close();
+                return;
+            }
             this.activeComponent = null;
             this.sidebarUser = user;
             this.sidebarOpen = true;
             this.sidebarSection = 'user';
         },
         showNicklist() {
+            if (this.sidebarSection === 'nicklist') {
+                this.close();
+                return;
+            }
             this.activeComponent = null;
             this.sidebarOpen = true;
             this.sidebarSection = 'nicklist';
         },
         showBufferSettings() {
+            if (this.sidebarSection === 'settings') {
+                this.close();
+                return;
+            }
             this.activeComponent = null;
             this.sidebarOpen = true;
             this.sidebarSection = 'settings';
         },
         showAbout() {
+            if (this.sidebarSection === 'about') {
+                this.close();
+                return;
+            }
             this.activeComponent = null;
             this.sidebarOpen = true;
             this.sidebarSection = 'about';
