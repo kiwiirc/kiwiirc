@@ -324,7 +324,7 @@ export default {
 
 .kiwi-header-option a {
     float: left;
-    padding: 0 15px;
+    padding: 0 11px;
     line-height: 45px;
     display: block;
     font-weight: 600;
@@ -471,9 +471,23 @@ export default {
         margin-left: 0;
     }
 
+    .kiwi-header-options {
+        width: auto;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+    }
+
     .kiwi-header .kiwi-header-name {
-        line-height: normal;
-        padding-left: 60px;
+        margin-right: 0;
+        width: 100%;
+        text-align: left;
+        padding-right: 132px;
+        box-sizing: border-box;
+        word-break: break-all;
+        line-height: 26px;
+        padding-left: 58px;
     }
 
     .kiwi-header-option span {
