@@ -56,41 +56,40 @@ export default Vue.extend({
             this.sidebarUser = null;
         },
         showUser(user) {
-            if (this.sidebarSection === 'user') {
-                this.close();
-                return;
-            }
             this.activeComponent = null;
             this.sidebarUser = user;
             this.sidebarOpen = true;
             this.sidebarSection = 'user';
         },
         showNicklist() {
-            if (this.sidebarSection === 'nicklist') {
-                this.close();
-                return;
-            }
             this.activeComponent = null;
             this.sidebarOpen = true;
             this.sidebarSection = 'nicklist';
         },
         showBufferSettings() {
-            if (this.sidebarSection === 'settings') {
-                this.close();
-                return;
-            }
             this.activeComponent = null;
             this.sidebarOpen = true;
             this.sidebarSection = 'settings';
         },
         showAbout() {
-            if (this.sidebarSection === 'about') {
-                this.close();
-                return;
-            }
             this.activeComponent = null;
             this.sidebarOpen = true;
             this.sidebarSection = 'about';
+        },
+        toggleNicklist() {
+            this.sidebarSection === 'nicklist' ?
+                this.close() :
+                this.showNicklist();
+        },
+        toggleBufferSettings() {
+            this.sidebarSection === 'settings' ?
+                this.close() :
+                this.showBufferSettings();
+        },
+        toggleAbout() {
+            this.sidebarSection === 'about' ?
+                this.close() :
+                this.showAbout();
         },
     },
 });
