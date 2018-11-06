@@ -924,6 +924,6 @@ msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
 msgid "now_known_as"
 msgstr "{{nick}} is now known as {{newnick}}"
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
 msgstr "{{nick}} changed the topic to: {{topic}}"
