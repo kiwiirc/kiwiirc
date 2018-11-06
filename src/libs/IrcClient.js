@@ -413,19 +413,14 @@ function clientMiddleware(state, network) {
             }
 
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
-            let user = {
+
+            state.addUserToBuffer(buffer, {
                 nick: event.nick,
                 username: event.ident,
                 host: event.hostname,
                 realname: event.gecos,
-            };
-
-            // Add account to the user object if extended-join is enabled
-            if (client.network.cap.isEnabled('extended-join')) {
-                user.account = event.account || '';
-            }
-
-            state.addUserToBuffer(buffer, user);
+                account: event.account || '',
+            });
 
             if (event.nick === client.user.nick) {
                 buffer.enabled = true;
