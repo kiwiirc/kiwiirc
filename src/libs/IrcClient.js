@@ -413,11 +413,13 @@ function clientMiddleware(state, network) {
             }
 
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
+
             state.addUserToBuffer(buffer, {
                 nick: event.nick,
                 username: event.ident,
                 host: event.hostname,
                 realname: event.gecos,
+                account: event.account || '',
             });
 
             if (event.nick === client.user.nick) {
@@ -576,6 +578,10 @@ function clientMiddleware(state, network) {
             });
         }
 
+        if (command === 'account') {
+            state.addUser(networkid, { nick: event.nick, account: event.account || '' });
+        }
+
         if (command === 'whois') {
             let obj = {
                 nick: event.nick,
@@ -633,6 +639,7 @@ function clientMiddleware(state, network) {
                         username: user.ident || undefined,
                         away: user.away ? 'Away' : '',
                         realname: user.real_name,
+                        account: user.account || '',
                     };
                     state.addUser(networkid, userObj, users);
                 });
