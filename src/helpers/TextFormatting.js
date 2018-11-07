@@ -447,7 +447,7 @@ export function t(key, options) {
     let val = i18next.t(key, options);
     if (!val) {
         let opts = options || {};
-        opts.lng = 'en-us';
+        opts.lng = 'dev';
         val = i18next.t(key, opts);
     }
     return val;

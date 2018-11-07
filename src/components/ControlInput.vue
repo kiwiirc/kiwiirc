@@ -94,6 +94,7 @@
 'kiwi public';
 
 import _ from 'lodash';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import autocompleteCommands from '@/res/autocompleteCommands';
 import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
@@ -488,7 +489,7 @@ export default {
                 autocompleteCommands.forEach((command) => {
                     commandList.push({
                         text: '/' + command.command,
-                        description: command.description,
+                        description: TextFormatting.t(command.description),
                         type: 'command',
                     });
                 });
