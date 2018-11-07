@@ -6,7 +6,7 @@
         </div>
 
         <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">
-            <span> Close </span>
+            <span>{{ $t('close') }}</span>
             <i class="fa fa-times" aria-hidden="true"/>
         </div>
 
@@ -95,7 +95,7 @@
 
         <div v-if="!isRestrictedServer" class="kiwi-statebrowser-newnetwork">
             <a class="u-button u-button-primary" @click="clickAddNetwork">
-                Add Network
+                {{ $t('add_network') }}
                 <i class="fa fa-plus" aria-hidden="true"/>
             </a>
         </div>
@@ -105,6 +105,7 @@
 <script>
 'kiwi public';
 
+import * as TextFormatting from '@/helpers/TextFormatting';
 import state from '@/libs/state';
 import NetworkProvider from '@/libs/NetworkProvider';
 import GlobalApi from '@/libs/GlobalApi';
@@ -139,7 +140,7 @@ export default {
         },
         networkName() {
             let network = state.getActiveNetwork();
-            let name = 'No Network';
+            let name = TextFormatting.t('no_network');
             if (network) {
                 name = network.name;
             }
