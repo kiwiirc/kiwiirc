@@ -6,7 +6,7 @@
 If you just want to run Kiwi IRC and not modify it then pre-built and ready to use packages/installers/archives can be found here: https://kiwiirc.com/downloads/index.html
 
 
-### Dependancies
+### Dependencies
 Before you can build or start to develop on Kiwi IRC, make sure to have the following installed on your system:
 * [Nodejs](https://nodejs.org/)
 * [yarn](https://yarnpkg.com/)
