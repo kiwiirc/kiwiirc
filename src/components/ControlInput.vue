@@ -487,9 +487,12 @@ export default {
             if (opts.commands) {
                 let commandList = [];
                 autocompleteCommands.forEach((command) => {
+                    let desc = command.description.startsWith('command_') ?
+                        TextFormatting.t(command.description) :
+                        command.description;
                     commandList.push({
                         text: '/' + command.command,
-                        description: TextFormatting.t(command.description),
+                        description: desc,
                         type: 'command',
                     });
                 });
