@@ -132,7 +132,9 @@ Vue.directive('focus', {
     },
 });
 
-loadApp();
+// a short delay to allow parent apps (if any) to optionally
+// attach a kiwiConfig function to the window object
+setTimeout(() => loadApp(), 100);
 
 function loadApp() {
     let configFile = 'static/config.json';
