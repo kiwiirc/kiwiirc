@@ -1,10 +1,10 @@
 <template>
-    <iframe src="../node_modules/kiwiirc/dist/" ref="kiwi" @load="pushConfig" class="kiwiObj"></iframe>
+    <iframe :src="kiwiPath" ref="kiwi" @load="pushConfig" class="kiwiObj"></iframe>
 </template>
 
 <script>
 export default {
-    props: ['kiwiConfig'],
+    props: ['kiwiConfig', 'kiwiPath'],
     methods: {
         pushConfig() {
             this.$refs.kiwi.contentWindow.kiwiConfig = () => this.kiwiConfig
