@@ -576,8 +576,12 @@
     border: 2px solid #42b992;
 }
 
+.kiwi-messagelist-avatar {
+    background-color: #555;
+}
+
 .kiwi-messagelist-nick {
-    color: #000;
+    color: #999;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
