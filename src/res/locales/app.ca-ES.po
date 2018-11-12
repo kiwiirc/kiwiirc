@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2018-10-30 00:50\n"
+"PO-Revision-Date: 2018-11-06 13:11\n"
 
 #: Start
 msgid "start_button"
@@ -841,7 +841,7 @@ msgstr "L'àlies {{nick} està en ús. Provant {{newnick}}..."
 msgid "now_known_as"
 msgstr "{{nick}} és ara {{newnick}}"
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
 msgstr "ha canviat el tòpic a: {{topic}}"
 

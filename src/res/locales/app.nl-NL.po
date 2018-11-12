@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-10-29 21:20\n"
+"PO-Revision-Date: 2018-11-06 13:12\n"
 
 #: Start
 msgid "start_button"
@@ -841,7 +841,7 @@ msgstr "Bijnaam {{nick}} is al in gebruik. {{newnick}} proberen..."
 msgid "now_known_as"
 msgstr "{{nick}} is nu bekend als {{newnick}}"
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
 msgstr "heeft het topic gewijzigd naar {{topic}}"
 

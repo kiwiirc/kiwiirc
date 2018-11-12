@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2018-10-29 19:41\n"
+"PO-Revision-Date: 2018-11-06 13:11\n"
 
 #: Start
 msgid "start_button"
@@ -583,23 +583,23 @@ msgstr "Não há buffer configurado"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr ""
+msgstr "Não existe nenhum tópico neste canal"
 
 #: About
 msgid "about"
-msgstr ""
+msgstr "Acerca"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "Criado em {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr ""
+msgstr "Menções"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr ""
+msgstr "Ninguém o mencionou ainda..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -841,7 +841,7 @@ msgstr "Alcunha {{nick}} já em uso. Tentando com {{newnick}}..."
 msgid "now_known_as"
 msgstr "{{nick}} é agora conhecido como {{newnick}}"
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
 msgstr "alterou o tópico para: {{topic}}"
 
