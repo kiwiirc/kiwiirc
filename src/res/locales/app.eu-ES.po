@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2018-11-12 16:30\n"
+"PO-Revision-Date: 2018-11-12 16:42\n"
 
 #: Start
 msgid "start_button"
@@ -399,7 +399,7 @@ msgstr "Kanpoko mezuak bloketu"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Egin klik Barrezi botoian kanalen zerrenda eguneratzeko"
+msgstr "Egin klik Berrezi botoian kanalen zerrenda eguneratzeko"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
@@ -511,7 +511,7 @@ msgstr "Hemen {{count}} erabiltzaile"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "ragazi erabiltzaileak kanalean"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -583,7 +583,7 @@ msgstr "Itxuratutako bufferrik ez dago"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr ""
+msgstr "Kanal honetako gairik ez dago"
 
 #: About
 msgid "about"
@@ -599,7 +599,7 @@ msgstr "Nabarmenduak"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr ""
+msgstr "Inork ez zaitu oraindik aipatu ..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -651,11 +651,11 @@ msgstr "#Kanal berrian sartu"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Iragazi kanalak"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Bilatu kanal gehiago"
 
 #: Change nick
 msgid "change_nick"
@@ -819,7 +819,7 @@ msgstr "{{nick}} sartu da"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr ""
+msgstr "{{nick}} {{channel}} kanaletik bota zaitu"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
