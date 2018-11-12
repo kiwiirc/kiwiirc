@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2018-11-06 13:12\n"
+"PO-Revision-Date: 2018-11-12 06:00\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Konfigurazioa"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Kiwi Ezarpenak"
 
 #: Channels
 msgid "channels"
@@ -83,7 +83,7 @@ msgstr "Kanala"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "Mezuak"
 
 #: Network
 msgid "network"
@@ -115,19 +115,19 @@ msgstr "Ezeztatzea"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Bai"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "Ez"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "Ez da aurkitu"
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "Errorea!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -163,43 +163,43 @@ msgstr "Kanala"
 
 #: {{count}} week
 msgid "week"
-msgstr ""
+msgstr "aste"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr ""
+msgstr "asteak"
 
 #: {{count}} day
 msgid "day"
-msgstr ""
+msgstr "Eguna"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr ""
+msgstr "egunak"
 
 #: {{count}} hour
 msgid "hour"
-msgstr ""
+msgstr "ordu"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr ""
+msgstr "orduak"
 
 #: {{count}} minute
 msgid "minute"
-msgstr ""
+msgstr "minutu"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "minutuak"
 
 #: {{count}} second
 msgid "second"
-msgstr ""
+msgstr "segundo"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr ""
+msgstr "segundoak"
 
 #: General
 msgid "settings_general"
@@ -211,7 +211,7 @@ msgstr "Gaia"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Gaia Berritu"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -219,7 +219,7 @@ msgstr "Gaiko URL-a"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr ""
+msgstr "Mezuen diseinua"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -283,7 +283,7 @@ msgstr "Ezizena"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Zer dira Aliasak"
 
 #: Send Message
 msgid "send_message"
