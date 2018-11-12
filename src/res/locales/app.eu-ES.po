@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2018-11-12 08:51\n"
+"PO-Revision-Date: 2018-11-12 16:10\n"
 
 #: Start
 msgid "start_button"
@@ -291,11 +291,11 @@ msgstr "Mezua bidaltzea"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Sartu kanalaren gakoa"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr ""
+msgstr "Itzuli {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -335,7 +335,7 @@ msgstr "Kanporatze mezu lehenetsia"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr ""
+msgstr "Ezarpen aurreratuak"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
