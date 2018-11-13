@@ -102,7 +102,7 @@ export default {
     },
     created: function created() {
         this.listen(state, 'sidebar.toggle', () => {
-            state.$emit('sidebar.' + (this.sidebarState.isDrawn() ? 'hide' : 'show'));
+            state.$emit('sidebar.' + (this.sidebarState.isDrawn ? 'hide' : 'show'));
         });
         this.listen(state, 'sidebar.show', () => {
             this.sidebarState.showNicklist();
