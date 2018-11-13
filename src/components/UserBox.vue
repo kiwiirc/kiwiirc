@@ -462,7 +462,7 @@ export default {
 }
 
 @media screen and (max-width: 769px) {
-    .kiwi-container--sidebar-open .kiwi-sidebar-userbox {
+    .kiwi-container--sidebar-drawn .kiwi-sidebar-userbox {
         width: 100%;
     }
 

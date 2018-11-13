@@ -480,7 +480,7 @@
 
 
 /* The shadow over the main text area that displays when the sidebar is open */
-.kiwi-container--sidebar-open .kiwi-messagelist::after {
+.kiwi-container--sidebar-drawn .kiwi-messagelist::after {
     background-color: rgba(27, 33, 37, 0.5);
 }
 
@@ -752,7 +752,7 @@
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
     background: #a54d4d;
 }
-.kiwi-container--sidebar-pinned .kiwi-sidebar {
+.kiwi-container--sidebar-open .kiwi-sidebar {
     border-color: #b2b2b2;
 }
 

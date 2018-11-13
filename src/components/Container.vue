@@ -1,8 +1,8 @@
 <template>
     <div :class="{
         /* 'kiwi-container-' + bufferType: true, */
-        'kiwi-container--sidebar-open': sidebarState.isOpen && sidebarState.section() !== '',
-        'kiwi-container--sidebar-pinned': sidebarState.canPin,
+        'kiwi-container--sidebar-drawn': sidebarState.isOpen && sidebarState.section() !== '',
+        'kiwi-container--sidebar-open': sidebarState.canPin,
         'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
     }" class="kiwi-container">
         <template v-if="buffer">
@@ -193,11 +193,11 @@ export default {
     flex: 1;
 }
 
-.kiwi-container--sidebar-open .kiwi-sidebar {
+.kiwi-container--sidebar-drawn .kiwi-sidebar {
     right: 0;
 }
 
-.kiwi-container--sidebar-pinned .kiwi-sidebar {
+.kiwi-container--sidebar-open .kiwi-sidebar {
     right: 0;
     top: 0;
     flex: 1;
@@ -281,7 +281,7 @@ export default {
 }
 
 @media screen and (max-width: 1500px) {
-    .kiwi-container--sidebar-pinned .kiwi-sidebar {
+    .kiwi-container--sidebar-open .kiwi-sidebar {
         max-width: 350px;
     }
 }

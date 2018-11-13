@@ -326,7 +326,7 @@ export default {
         margin-left: 0;
     }
 
-    .kiwi-container--sidebar-open .kiwi-sidebar {
+    .kiwi-container--sidebar-drawn .kiwi-sidebar {
         width: 100%;
         max-width: 100%;
     }
