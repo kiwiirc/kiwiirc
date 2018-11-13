@@ -14,14 +14,14 @@ export default Vue.extend({
         };
     },
     computed: {
-        isOpen() {
-            return this.sidebarOpen;
+        isDrawn() {
+            return this.sidebarOpen && this.section() !== '';
         },
         isClosed() {
-            return !this.isOpen;
+            return !this.sidebarOpen;
         },
-        canOpen() {
-            return this.isOpen && this.$state.ui.app_width > 769;
+        isOpen() {
+            return this.isDrawn && this.$state.ui.app_width > 769;
         },
     },
     created() {

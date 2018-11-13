@@ -1,8 +1,8 @@
 <template>
     <div :class="{
         /* 'kiwi-container-' + bufferType: true, */
-        'kiwi-container--sidebar-drawn': sidebarState.isOpen && sidebarState.section() !== '',
-        'kiwi-container--sidebar-open': sidebarState.canOpen,
+        'kiwi-container--sidebar-drawn': sidebarState.isDrawn,
+        'kiwi-container--sidebar-open': sidebarState.isOpen,
         'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
     }" class="kiwi-container">
         <template v-if="buffer">
@@ -102,7 +102,7 @@ export default {
     },
     created: function created() {
         this.listen(state, 'sidebar.toggle', () => {
-            state.$emit('sidebar.' + (this.sidebarState.isOpen() ? 'hide' : 'show'));
+            state.$emit('sidebar.' + (this.sidebarState.isDrawn() ? 'hide' : 'show'));
         });
         this.listen(state, 'sidebar.show', () => {
             this.sidebarState.showNicklist();
