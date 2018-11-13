@@ -3,7 +3,7 @@
         :class="['kiwi-sidebar-section-' + section]"
         class="kiwi-sidebar kiwi-theme-bg"
     >
-        <span v-if="!sidebarState.canPin" class="kiwi-sidebar-options">
+        <span v-if="!sidebarState.canOpen" class="kiwi-sidebar-options">
             <div class="kiwi-sidebar-close" @click="sidebarState.close()">
                 {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
             </div>

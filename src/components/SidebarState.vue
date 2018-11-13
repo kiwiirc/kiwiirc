@@ -20,7 +20,7 @@ export default Vue.extend({
         isClosed() {
             return !this.isOpen;
         },
-        canPin() {
+        canOpen() {
             return this.isOpen && this.$state.ui.app_width > 769;
         },
     },

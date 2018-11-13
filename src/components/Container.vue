@@ -2,7 +2,7 @@
     <div :class="{
         /* 'kiwi-container-' + bufferType: true, */
         'kiwi-container--sidebar-drawn': sidebarState.isOpen && sidebarState.section() !== '',
-        'kiwi-container--sidebar-open': sidebarState.canPin,
+        'kiwi-container--sidebar-open': sidebarState.canOpen,
         'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
     }" class="kiwi-container">
         <template v-if="buffer">
