@@ -28,6 +28,16 @@ export default Vue.extend({
         this.listen(this.$state, 'sidebar.component', (component) => {
             this.activeComponent = component;
         });
+
+        // Allow forcing the sidebar open at startup
+        this.$nextTick(() => {
+            // nextTick is needed because app_width is 0 on created()
+            let sidebarDefault = this.$state.setting('sidebarDefault');
+            if (sidebarDefault && this.$state.ui.app_width > 769) {
+                this.sidebarSection = sidebarDefault;
+                this.sidebarOpen = true;
+            }
+        });
     },
     methods: {
         section() {
