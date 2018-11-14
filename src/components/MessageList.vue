@@ -541,6 +541,18 @@ export default {
     cursor: default;
 }
 
+.kiwi-container--sidebar-drawn .kiwi-messagelist::after {
+    content: '';
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    pointer-events: none;
+}
+
 .kiwi-container--sidebar-drawn.kiwi-container--no-sidebar .kiwi-messagelist::after {
     width: 0;
     height: 0;
@@ -723,20 +735,6 @@ export default {
     .kiwi-messagelist-message,
     .kiwi-messageinfo {
         margin: 0;
-    }
-}
-
-@media screen and (max-width: 769px) {
-    .kiwi-container--sidebar-drawn .kiwi-messagelist::after {
-        content: '';
-        z-index: 2;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.5;
-        position: absolute;
-        pointer-events: none;
     }
 }
 
