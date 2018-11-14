@@ -4,6 +4,7 @@
   "description": "Web based IRC client",
   "author": "Darren <darren@darrenwhitlen.com>",
   "private": true,
+  "main": "vue.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "build": "node build/build.js",
@@ -14,7 +15,8 @@
     "lint:stylelint": "stylelint \"src/**/*.{vue,htm,html,css,sss,less,scss}\"",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:fix": "npm run lint:eslint -- --fix && npm run lint:stylelint -- --fix",
-    "gendocs": "rm -rf srcdocs/ && jsdoc -c jsdoc.json"
+    "gendocs": "rm -rf srcdocs/ && jsdoc -c jsdoc.json",
+    "install": "if [ $(basename $(dirname $(pwd))) = \"node_modules\" ];then node build/buildModule.js;fi"
   },
   "engines": {
     "node": ">=6",

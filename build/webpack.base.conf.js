@@ -25,13 +25,13 @@ module.exports = {
   entry: {
     app: [
         'core-js/fn/promise', // required by the webpack runtime for async import(). babel polyfills don't help us here. ie11
-        './src/main.js'
+        './src/main.' + (process.env.NODE_ENV === 'module' ? 'vue' : 'js')
     ]
   },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
+    publicPath: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'module'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
