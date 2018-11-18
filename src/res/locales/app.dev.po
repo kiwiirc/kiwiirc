@@ -698,6 +698,17 @@ msgstr "Add one?"
 msgid "state_available"
 msgstr "Available networks"
 
+#: Add Network
+msgid "add_network"
+msgstr "Add Network"
+
+#: New Network
+msgid "new_network"
+msgstr "New Network"
+
+#: No Network
+msgid "no_network"
+msgstr "No Network"
 
 
 #: StateBrowserNetwork
