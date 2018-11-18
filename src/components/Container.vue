@@ -1,8 +1,8 @@
 <template>
     <div :class="{
         /* 'kiwi-container-' + bufferType: true, */
-        'kiwi-container--sidebar-open': sidebarState.isOpen && sidebarState.section() !== '',
-        'kiwi-container--sidebar-pinned': sidebarState.isPinned,
+        'kiwi-container--sidebar-drawn': sidebarState.isDrawn,
+        'kiwi-container--sidebar-open': sidebarState.isOpen,
         'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
     }" class="kiwi-container">
         <template v-if="buffer">
@@ -102,7 +102,7 @@ export default {
     },
     created: function created() {
         this.listen(state, 'sidebar.toggle', () => {
-            state.$emit('sidebar.' + (this.sidebarState.isOpen() ? 'hide' : 'show'));
+            state.$emit('sidebar.' + (this.sidebarState.isDrawn ? 'hide' : 'show'));
         });
         this.listen(state, 'sidebar.show', () => {
             this.sidebarState.showNicklist();
@@ -193,11 +193,11 @@ export default {
     flex: 1;
 }
 
-.kiwi-container--sidebar-open .kiwi-sidebar {
+.kiwi-container--sidebar-drawn .kiwi-sidebar {
     right: 0;
 }
 
-.kiwi-container--sidebar-pinned .kiwi-sidebar {
+.kiwi-container--sidebar-open .kiwi-sidebar {
     right: 0;
     top: 0;
     flex: 1;
@@ -281,7 +281,7 @@ export default {
 }
 
 @media screen and (max-width: 1500px) {
-    .kiwi-container--sidebar-pinned .kiwi-sidebar {
+    .kiwi-container--sidebar-open .kiwi-sidebar {
         max-width: 350px;
     }
 }

@@ -541,9 +541,9 @@ export default {
     cursor: default;
 }
 
-.kiwi-container--sidebar-open .kiwi-messagelist::after {
+.kiwi-container--sidebar-drawn .kiwi-messagelist::after {
     content: '';
-    z-index: 2;
+    z-index: 3;
     left: 0;
     top: 0;
     width: 100%;
@@ -553,7 +553,7 @@ export default {
     pointer-events: none;
 }
 
-.kiwi-container--sidebar-open.kiwi-container--no-sidebar .kiwi-messagelist::after {
+.kiwi-container--sidebar-drawn.kiwi-container--no-sidebar .kiwi-messagelist::after {
     width: 0;
     height: 0;
     display: none;
@@ -737,4 +737,5 @@ export default {
         margin: 0;
     }
 }
+
 </style>

@@ -25,8 +25,16 @@
                     }"
                     class="kiwi-header-option kiwi-header-option-about"
                 >
-                    <a @click="sidebarState.showAbout()">
+                    <a @click="sidebarState.toggleAbout()">
                         <i class="fa fa-info" aria-hidden="true"/>
+                    </a>
+                </div>
+                <div
+                    v-if="sidebarState.sidebarSection === 'user'"
+                    class="kiwi-header-option kiwi-header-option-user kiwi-header-option--active"
+                >
+                    <a @click="sidebarState.close()">
+                        <i class="fa fa-user" aria-hidden="true"/>
                     </a>
                 </div>
                 <div
@@ -37,7 +45,7 @@
                 >
                     <a
                         :title="$t('person', {count: Object.keys(buffer.users).length})"
-                        @click="sidebarState.showNicklist()"
+                        @click="sidebarState.toggleNicklist()"
                     >
                         <i class="fa fa-users" aria-hidden="true"/>
                         <span>{{ Object.keys(buffer.users).length }}</span>
@@ -51,7 +59,7 @@
                 >
                     <a
                         :title="$t('channel_settings')"
-                        @click="sidebarState.showBufferSettings()"
+                        @click="sidebarState.toggleBufferSettings()"
                     >
                         <i class="fa fa-cog" aria-hidden="true"/>
                     </a>
@@ -362,10 +370,6 @@ export default {
 }
 
 .kiwi-header-option-leave i {
-    margin: 0;
-}
-
-.kiwi-header-option-unpinsidebar i {
     margin: 0;
 }
 

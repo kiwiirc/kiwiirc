@@ -77,7 +77,7 @@ const stateObj = {
         noticeActiveBuffer: true,
         showAutocomplete: true,
         showSendButton: false,
-        sidebarPinned: false,
+        sidebarDefault: '',
         showRaw: false,
         aliases: `
 # General aliases

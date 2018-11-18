@@ -14,26 +14,29 @@ export default Vue.extend({
         };
     },
     computed: {
-        isPinned() {
-            // Pinned sidebar only works on full width windows otherwise its too small to see
-            return this.sidebarPinned && this.canPin;
-        },
-        isOpen() {
-            return !this.isPinned && this.sidebarOpen;
+        isDrawn() {
+            return this.sidebarOpen && this.$state.ui.app_width <= 769;
         },
         isClosed() {
-            return !this.isOpen && !this.isPinned;
+            return !this.sidebarOpen;
         },
-        canPin() {
-            return this.$state.ui.app_width > 769;
-        },
-        sidebarPinned() {
-            return this.$state.setting('sidebarPinned');
+        isOpen() {
+            return this.sidebarOpen && this.$state.ui.app_width > 769;
         },
     },
     created() {
         this.listen(this.$state, 'sidebar.component', (component) => {
             this.activeComponent = component;
+        });
+
+        // Allow forcing the sidebar open at startup
+        this.$nextTick(() => {
+            // nextTick is needed because app_width is 0 on created()
+            let sidebarDefault = this.$state.setting('sidebarDefault');
+            if (sidebarDefault && this.$state.ui.app_width > 769) {
+                this.sidebarSection = sidebarDefault;
+                this.sidebarOpen = true;
+            }
         });
     },
     methods: {
@@ -56,16 +59,6 @@ export default Vue.extend({
             }
 
             return '';
-        },
-        pin() {
-            this.$state.setting('sidebarPinned', true);
-            if (this.sidebarSection === '') {
-                this.sidebarSection = 'nicklist';
-            }
-        },
-        unpin() {
-            this.$state.setting('sidebarPinned', false);
-            this.close();
         },
         close() {
             this.sidebarOpen = false;
@@ -92,6 +85,21 @@ export default Vue.extend({
             this.activeComponent = null;
             this.sidebarOpen = true;
             this.sidebarSection = 'about';
+        },
+        toggleNicklist() {
+            this.sidebarSection === 'nicklist' ?
+                this.close() :
+                this.showNicklist();
+        },
+        toggleBufferSettings() {
+            this.sidebarSection === 'settings' ?
+                this.close() :
+                this.showBufferSettings();
+        },
+        toggleAbout() {
+            this.sidebarSection === 'about' ?
+                this.close() :
+                this.showAbout();
         },
     },
 });

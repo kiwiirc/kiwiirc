@@ -3,14 +3,7 @@
         :class="['kiwi-sidebar-section-' + section]"
         class="kiwi-sidebar kiwi-theme-bg"
     >
-        <span v-if="sidebarState.isOpen" class="kiwi-sidebar-options">
-            <div
-                v-if="sidebarState.canPin"
-                class="kiwi-sidebar-pin"
-                @click="sidebarState.pin()"
-            >
-                <i class="fa fa-thumb-tack" aria-hidden="true"/>
-            </div>
+        <span v-if="!sidebarState.isOpen" class="kiwi-sidebar-options">
             <div class="kiwi-sidebar-close" @click="sidebarState.close()">
                 {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
             </div>
@@ -263,15 +256,6 @@ export default {
     vertical-align: top;
 }
 
-.kiwi-sidebar-options .kiwi-sidebar-pin {
-    position: absolute;
-    padding: 0 10px;
-    height: 100%;
-    line-height: 52px;
-    z-index: 1;
-    transition: background 0.3s;
-}
-
 .kiwi-sidebar-options .kiwi-sidebar-close {
     width: 100%;
     display: inline-block;
@@ -342,7 +326,7 @@ export default {
         margin-left: 0;
     }
 
-    .kiwi-container--sidebar-open .kiwi-sidebar {
+    .kiwi-container--sidebar-drawn .kiwi-sidebar {
         width: 100%;
         max-width: 100%;
     }
