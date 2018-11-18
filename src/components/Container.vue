@@ -1,7 +1,7 @@
 <template>
     <div :class="{
         /* 'kiwi-container-' + bufferType: true, */
-        'kiwi-container--sidebar-drawn': sidebarState.isDrawn && !sidebarState.isOpen,
+        'kiwi-container--sidebar-drawn': sidebarState.isDrawn,
         'kiwi-container--sidebar-open': sidebarState.isOpen,
         'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
     }" class="kiwi-container">

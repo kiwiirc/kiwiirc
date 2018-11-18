@@ -15,13 +15,13 @@ export default Vue.extend({
     },
     computed: {
         isDrawn() {
-            return this.sidebarOpen && this.section() !== '';
+            return this.sidebarOpen && this.$state.ui.app_width <= 769;
         },
         isClosed() {
             return !this.sidebarOpen;
         },
         isOpen() {
-            return this.isDrawn && this.$state.ui.app_width > 769;
+            return this.sidebarOpen && this.$state.ui.app_width > 769;
         },
     },
     created() {
