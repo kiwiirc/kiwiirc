@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2018-11-12 16:42\n"
+"PO-Revision-Date: 2018-11-12 19:22\n"
 
 #: Start
 msgid "start_button"
@@ -511,7 +511,7 @@ msgstr "Hemen {{count}} erabiltzaile"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "ragazi erabiltzaileak kanalean"
+msgstr "Ragazi erabiltzaileak kanalean"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
