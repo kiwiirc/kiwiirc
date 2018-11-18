@@ -453,14 +453,6 @@
     background-color: #252525;
 }
 
-/* Standard username and usertime styling */
-.kiwi-messagelist-nick {
-    color: #000;
-}
-.kiwi-messagelist-time {
-    color: #a0a09f;
-}
-
 /* Unread user messages */
 .kiwi-messagelist-message.kiwi-messagelist-message--unread,
 .kiwi-messagelist-message.kiwi-messagelist-message--unread {
@@ -521,6 +513,9 @@
 .kiwi-messagelist-modern-avatar {
     border: 2px solid #000000;
 }
+.kiwi-messagelist-avatar {
+    background-color: #555;
+}
 .kiwi-messagelist-message--modern .kiwi-messagelist-body a {
   color: #0093ce;
 }
@@ -529,7 +524,7 @@
 }
 
 .kiwi-messagelist-nick {
-    color: #000;
+    color: #999;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
@@ -784,11 +779,11 @@
 }
 
 .kiwi-statebrowser-usermenu-avatar {
-    background-color: #000;
+    background-color: #999;
     color: #d8d8d8;
 }
 .kiwi-statebrowser-usermenu-avatar:hover {
-    background-color: #000000;
+    background-color: #ddd;
     color: #fff;
 }
 
