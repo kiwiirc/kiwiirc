@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2018-11-19 00:10\n"
+"PO-Revision-Date: 2018-11-19 16:01\n"
 
 #: Start
 msgid "start_button"
@@ -587,7 +587,7 @@ msgstr "No hay ningun tópico para este canal"
 
 #: About
 msgid "about"
-msgstr "Sobre"
+msgstr "Acerca de"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -599,7 +599,7 @@ msgstr "Destacados"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nadie te ha mencionado aun..."
+msgstr "Nadie te ha mencionado aún..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
