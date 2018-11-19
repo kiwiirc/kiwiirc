@@ -896,7 +896,7 @@ msgid "command_notice"
 msgstr "Send a notice"
 
 #: Send a raw command to the IRC server
-msgid "command_raw"
+msgid "command_quote"
 msgstr "Send a raw command to the IRC server"
 
 #: Kick somebody from the channel
