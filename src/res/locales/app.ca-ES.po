@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2018-11-19 00:01\n"
+"PO-Revision-Date: 2018-11-19 01:10\n"
 
 #: Start
 msgid "start_button"
@@ -639,15 +639,15 @@ msgstr "Xarxes disponibles"
 
 #: Add Network
 msgid "add_network"
-msgstr ""
+msgstr "Afegir xarxa"
 
 #: New Network
 msgid "new_network"
-msgstr ""
+msgstr "Nova xarxa"
 
 #: No Network
 msgid "no_network"
-msgstr ""
+msgstr "Sense xarxa"
 
 #: Configure network
 msgid "state_configure"
