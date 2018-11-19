@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-11-19 00:02\n"
+"PO-Revision-Date: 2018-11-19 15:21\n"
 
 #: Start
 msgid "start_button"
@@ -639,15 +639,15 @@ msgstr "Διαθέσιμα δίκτυα"
 
 #: Add Network
 msgid "add_network"
-msgstr ""
+msgstr "Προσθήκη Δικτύου"
 
 #: New Network
 msgid "new_network"
-msgstr ""
+msgstr "Νέο Δίκτυο"
 
 #: No Network
 msgid "no_network"
-msgstr ""
+msgstr "Δεν υπάρχει δίκτυο"
 
 #: Configure network
 msgid "state_configure"
