@@ -488,8 +488,8 @@ export default {
                 let commandList = [];
                 autocompleteCommands.forEach((command) => {
                     // allow descriptions to be translation keys or static strings
-                    let desc = command.description.startsWith('command_') ?
-                        TextFormatting.t(command.description) :
+                    let desc = command.description.startsWith('locale_id_') ?
+                        TextFormatting.t(command.description.substr(10)) :
                         command.description;
                     commandList.push({
                         text: '/' + command.command,
