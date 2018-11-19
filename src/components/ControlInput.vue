@@ -487,6 +487,7 @@ export default {
             if (opts.commands) {
                 let commandList = [];
                 autocompleteCommands.forEach((command) => {
+                    // allow descriptions to be translation keys or static strings
                     let desc = command.description.startsWith('command_') ?
                         TextFormatting.t(command.description) :
                         command.description;

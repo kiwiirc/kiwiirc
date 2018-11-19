@@ -1,5 +1,8 @@
+'kiwi public';
+
 /* eslint-disable */
 
+// command descriptions can be either a static string or a translation key starting with command_
 export default [
     { command: 'msg', alias: [], description: 'command_msg' },
     { command: 'action', alias: [], description: 'command_action' },
