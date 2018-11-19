@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-11-19 00:02\n"
+"PO-Revision-Date: 2018-11-19 03:51\n"
 
 #: Start
 msgid "start_button"
@@ -639,15 +639,15 @@ msgstr "Beschikbare netwerken"
 
 #: Add Network
 msgid "add_network"
-msgstr ""
+msgstr "Netwerk toevoegen"
 
 #: New Network
 msgid "new_network"
-msgstr ""
+msgstr "Nieuw netwerk"
 
 #: No Network
 msgid "no_network"
-msgstr ""
+msgstr "Geen netwerk"
 
 #: Configure network
 msgid "state_configure"
