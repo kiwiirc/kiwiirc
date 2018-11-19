@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-11-19 20:20\n"
+"PO-Revision-Date: 2018-11-19 20:30\n"
 
 #: Start
 msgid "start_button"
@@ -587,15 +587,15 @@ msgstr "Цей канал не має теми"
 
 #: About
 msgid "about"
-msgstr ""
+msgstr "Про"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "Створено {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr ""
+msgstr "Основні характеристики"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
