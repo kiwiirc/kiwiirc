@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2018-11-19 16:10\n"
+"PO-Revision-Date: 2018-11-20 03:50\n"
 
 #: Start
 msgid "start_button"
@@ -583,7 +583,7 @@ msgstr "No hay buffer configurado"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "No hay ningun tópico para este canal"
+msgstr "No hay ningún tópico para este canal"
 
 #: About
 msgid "about"
