@@ -44,6 +44,9 @@ export default class NetworkState {
             appState.$set(userDict.networks, this.id, newVal);
         });
 
+        // Pending prviate messages awaiting whois operator check
+        def(this, 'pendingPms', [], false);
+
         bufferDict.$set(bufferDict.networks, this.id, []);
     }
 

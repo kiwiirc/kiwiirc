@@ -355,10 +355,14 @@ function clientMiddleware(state, network) {
                 }
             }
 
+            let blockExempt = isPrivateMessage && Misc.isNickBlockPmsExempt(networkid, event.nick);
             let blockNewPms = state.setting('buffers.block_pms');
             let buffer = state.getBufferByName(networkid, bufferName);
-            if (isPrivateMessage && !buffer && blockNewPms) {
-                return;
+            if (isPrivateMessage && !buffer && blockNewPms && !blockExempt) {
+                // user might be a network operator, this is handled below
+                if (blockExempt !== null) {
+                    return;
+                }
             } else if (!buffer) {
                 buffer = state.getOrAddBufferByName(networkid, bufferName);
             }
@@ -377,13 +381,33 @@ function clientMiddleware(state, network) {
                 text: event.message,
             });
 
-            state.addMessage(buffer, {
+            let message = {
                 time: event.time || Date.now(),
                 nick: event.nick,
                 message: messageBody,
                 type: event.type,
                 tags: event.tags || {},
-            });
+            };
+
+            // it is possible that the pm is from a network operator
+            // hold the message until the result of whois
+            if (blockExempt === null) {
+                network.pendingPms.push({ bufferName, message });
+                network.ircClient.whois(event.nick, event.nick, (whoisData) => {
+                    network.pendingPms.forEach((pm, idx, obj) => {
+                        if (pm.message.nick === whoisData.nick) {
+                            if (whoisData.operator) {
+                                buffer = state.getOrAddBufferByName(network.id, pm.bufferName);
+                                state.addMessage(buffer, pm.message);
+                            }
+                            obj.splice(idx, 1);
+                        }
+                    });
+                });
+                return;
+            }
+
+            state.addMessage(buffer, message);
         }
 
         if (command === 'wallops') {
@@ -589,6 +613,7 @@ function clientMiddleware(state, network) {
                 username: event.ident,
                 away: event.away || '',
                 realname: event.real_name,
+                hasWhois: true,
             };
 
             // Some other optional bits of info
