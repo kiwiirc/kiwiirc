@@ -122,6 +122,13 @@ export default {
         window.addEventListener('focus', event => this.onFocus(event), false);
         window.addEventListener('blur', event => this.onBlur(event), false);
         window.addEventListener('touchstart', event => this.onTouchStart(event));
+        window.addEventListener('beforeunload', (event) => {
+            this.$state.networks.forEach((network) => {
+                if (network.state === 'connected') {
+                    network.ircClient.quit('Client closed!');
+                }
+            });
+        });
     },
     mounted() {
         // Decide which startup screen to use depending on the config
