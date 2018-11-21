@@ -384,6 +384,11 @@
     color: #a0a09f;
 }
 
+/* User Notice command */
+.kiwi-messagelist-message.kiwi-messagelist-message-notice {
+    background: #ffdede;
+}
+
 /* Unread user messages */
 .kiwi-messagelist-message.kiwi-messagelist-message--unread,
 .kiwi-messagelist-message.kiwi-messagelist-message--unread {

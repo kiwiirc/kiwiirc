@@ -431,6 +431,11 @@
     border-left: 2px solid #42b992;
 }
 
+/* User Notice command */
+.kiwi-messagelist-message.kiwi-messagelist-message-notice {
+    background: #3c2828;
+}
+
 .kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
     border-left: none;
     background: none;

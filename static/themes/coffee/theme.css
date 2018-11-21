@@ -282,6 +282,11 @@
 }
 
 
+/* User Notice command */
+.kiwi-messagelist-message.kiwi-messagelist-message-notice {
+    background: #e8d4c4;
+}
+
 /* baseline styling for the 'topic' of the channel, if it has one, these are shared between traditional and modern view, but can be made more specific if need be */
 .kiwi-messagelist-message.kiwi-messagelist-message-topic {
     border-top: 1px solid #a2846e;
