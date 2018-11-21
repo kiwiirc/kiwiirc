@@ -206,6 +206,7 @@ export default {
     border-left-style: solid;
     max-width: 430px;
     z-index: 1;
+    transition: top 0;
 }
 
 .kiwi-container-content {
