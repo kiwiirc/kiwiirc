@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-11-19 00:01\n"
+"PO-Revision-Date: 2018-11-20 15:31\n"
 
 #: Start
 msgid "start_button"
@@ -219,7 +219,7 @@ msgstr "URL-адреса теми"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr ""
+msgstr "Шаблон повідомлення"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -583,23 +583,23 @@ msgstr "Буфер не встановлено"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr ""
+msgstr "Цей канал не має теми"
 
 #: About
 msgid "about"
-msgstr ""
+msgstr "Про"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "Створено {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr ""
+msgstr "Основні характеристики"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr ""
+msgstr "Досі ніхто вас не згадував..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -639,15 +639,15 @@ msgstr "Доступні мережі"
 
 #: Add Network
 msgid "add_network"
-msgstr ""
+msgstr "Додати мережу"
 
 #: New Network
 msgid "new_network"
-msgstr ""
+msgstr "Нова мережа"
 
 #: No Network
 msgid "no_network"
-msgstr ""
+msgstr "Немає мережі"
 
 #: Configure network
 msgid "state_configure"
