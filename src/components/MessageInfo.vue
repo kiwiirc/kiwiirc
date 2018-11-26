@@ -90,6 +90,13 @@ export default {
 .kiwi-messageinfo-actions {
     margin-top: 10px;
     overflow: hidden;
+    width: 100%;
+    text-align: left;
+}
+
+.kiwi-messageinfo-opbuttons {
+    float: right;
+    width: auto;
 }
 
 .kiwi-messageinfo-url .u-link {
@@ -108,5 +115,17 @@ export default {
     bottom: 5px;
     font-size: 1.3em;
     cursor: pointer;
+}
+
+@media screen and (max-width: 410px) {
+    .kiwi-messageinfo-actions {
+        text-align: center;
+    }
+
+    .kiwi-messageinfo-opbuttons {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 </style>
