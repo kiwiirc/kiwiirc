@@ -677,13 +677,13 @@
 
 /* Start button stying */
 .kiwi-messageinfo-actions{
-  width: 100%;
-  text-align: left;
+    width: 100%;
+    text-align: left;
 }
 
 .kiwi-messageinfo-opbuttons {
-  float: right;
-  width: auto;
+    float: right;
+    width: auto;
 }
 
 .kiwi-messageinfo-actions .u-link {

@@ -626,10 +626,10 @@
 }
 
 .kiwi-messageinfo-url .u-button-secondary {
-  color: #f1f1f1;
-  border: 1px solid #3a3a3a;
-  background: none;
-  text-shadow: none;
+    color: #f1f1f1;
+    border: 1px solid #3a3a3a;
+    background: none;
+    text-shadow: none;
 }
 
 .kiwi-messageinfo-urls .kiwi-messageinfo-url:last-of-type {

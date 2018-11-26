@@ -504,10 +504,10 @@
 }
 
 .kiwi-messageinfo-url .u-button-secondary {
-  color: #010101;
-  border: 1px solid #010101;
-  background: none;
-  text-shadow: none;
+    color: #010101;
+    border: 1px solid #010101;
+    background: none;
+    text-shadow: none;
 }
 
 .kiwi-messageinfo-urls .kiwi-messageinfo-url:last-of-type {
