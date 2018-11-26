@@ -79,13 +79,17 @@ export default {
 .kiwi-messageinfo-urls {
     margin-top: 10px;
     padding-top: 10px;
-    margin-bottom: 10px;
     padding-bottom: 10px;
 }
 
 .kiwi-messageinfo-url {
     margin-bottom: 5px;
     display: flex;
+}
+
+.kiwi-messageinfo-actions {
+    margin-top: 10px;
+    overflow: hidden;
 }
 
 .kiwi-messageinfo-url .u-link {
