@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2018-11-27 05:59\n"
+"PO-Revision-Date: 2018-11-27 06:00\n"
 
 #: Start
 msgid "start_button"
@@ -787,59 +787,59 @@ msgstr "Send a message"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Do something physical"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Join a channel"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Leave a channel"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Leave, then re-join a channel"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Change your nickname"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Start a private conversation with someone"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Invite somebody into the channel"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Set the topic for this channel"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Send a notice"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Send a raw command to the IRC server"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Kick somebody from the channel"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Clear all messages from this window"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Send a CTCP command to somebody"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Disconnect from the IRC server"
 
 #: Connect to a new IRC network
 msgid "command_connect"
