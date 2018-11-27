@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-11-27 05:59\n"
+"PO-Revision-Date: 2018-11-27 13:41\n"
 
 #: Start
 msgid "start_button"
@@ -727,7 +727,7 @@ msgstr "Απαγόρευση και κλωτσιά από το κανάλι"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr ""
+msgstr "Προσδιορίστε ένα κανάλι για να συμμετάσχετε. πχ /join #παράδειγμα"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -783,47 +783,47 @@ msgstr "{{nick}} καθόριση {{mode}} επί {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Στείλτε ένα μήνυμα"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Κάνε κάτι φυσικό"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Συμμετάσχετε σε ένα κανάλι"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Αφήστε το κανάλι"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Αφήστε και, στη συνέχεια, επανέλθετε πίσω στο κανάλι"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Αλλάξτε το ψευδώνυμό σας"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Ξεκινήστε μια ιδιωτική συνομιλία με κάποιον"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Προσκαλέστε κάποιον στο κανάλι"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Ορίστε το θέμα για αυτό το κανάλι"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Στείλτε μια ειδοποίηση"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Στείλτε μια ακατέργαστη εντολή στο διακομιστή IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
