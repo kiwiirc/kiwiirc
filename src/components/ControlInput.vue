@@ -94,6 +94,7 @@
 'kiwi public';
 
 import _ from 'lodash';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import autocompleteCommands from '@/res/autocompleteCommands';
 import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
@@ -486,9 +487,13 @@ export default {
             if (opts.commands) {
                 let commandList = [];
                 autocompleteCommands.forEach((command) => {
+                    // allow descriptions to be translation keys or static strings
+                    let desc = command.description.startsWith('locale_id_') ?
+                        TextFormatting.t(command.description.substr(10)) :
+                        command.description;
                     commandList.push({
                         text: '/' + command.command,
-                        description: command.description,
+                        description: desc,
                         type: 'command',
                     });
                 });

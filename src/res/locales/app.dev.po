@@ -860,6 +860,98 @@ msgstr "{{nick}} sets {{mode}} on {{target}}"
 
 
 
+#: autocompleteCommands  $t('command_')
+
+#: Send a message
+msgid "command_msg"
+msgstr "Send a message"
+
+#: Do something physical
+msgid "command_action"
+msgstr "Do something physical"
+
+#: Join a channel
+msgid "command_join"
+msgstr "Join a channel"
+
+#: Leave a channel
+msgid "command_part"
+msgstr "Leave a channel"
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr "Leave, then re-join a channel"
+
+#: Change your nickname
+msgid "command_nick"
+msgstr "Change your nickname"
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr "Start a private conversation with someone"
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr "Invite somebody into the channel"
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr "Set the topic for this channel"
+
+#: Send a notice
+msgid "command_notice"
+msgstr "Send a notice"
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr "Send a raw command to the IRC server"
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr "Kick somebody from the channel"
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr "Clear all messages from this window"
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr "Send a CTCP command to somebody"
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr "Disconnect from the IRC server"
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr "Connect to a new IRC network"
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr "Request information on somebody"
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr "Request information on somebody that disconnected recently"
+
+#: Mark yourself as away
+msgid "command_away"
+msgstr "Mark yourself as away"
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr "Change your connection encoding"
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr "Ignore messages from somebody"
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr "Stop ignoring somebody"
+
+
+
 #: Personal $t('personal_')
 
 #: Your IRC client
