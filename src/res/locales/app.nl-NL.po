@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-11-27 16:44\n"
+"PO-Revision-Date: 2018-11-27 16:55\n"
 
 #: Start
 msgid "start_button"
@@ -811,63 +811,63 @@ msgstr "Een privégesprek met iemand beginnen"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Iemand in het kanaal uitnodigen"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Het topic voor dit kanaal instellen"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Een kennisgeving sturen"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Een directe opdracht naar de IRC-server sturen"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Iemand uit het kanaal zetten"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Alle berichten in dit venster wissen"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Een CTCP-opdracht naar iemand sturen"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Verbinding met de IRC-server verbreken"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Verbinding met een nieuw IRC-netwerk maken"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Informatie over iemand opvragen"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Informatie over iemand opvragen die onlangs is weggegaan"
 
 #: Mark yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Jezelf als afwezig markeren"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "De codering van je verbinding wijzigen"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Berichten van iemand negeren"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Negeren van iemand stoppen"
 
 #: Your IRC client
 msgid "personal_client"
