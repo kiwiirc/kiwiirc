@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-11-27 06:30\n"
+"PO-Revision-Date: 2018-11-27 06:40\n"
 
 #: Start
 msgid "start_button"
@@ -811,63 +811,63 @@ msgstr "Avvia una conversazione privata con qualcuno"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Invita qualcuno nel canale"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Imposta il topic per questo canale"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Invia un notice"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Invia un comando raw al server IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Espelli qualcuno dal canale"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Svuota la finestra di chat dai messaggi"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Invia un comando CTCP a qualcuno"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Disconnettiti dal server IRC"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Connettiti a un nuovo network IRC"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Richiedi informazioni su qualcuno"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Richiedi informazioni su qualcuno che si è disconnesso di recente"
 
 #: Mark yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Impostati come assente"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Cambia l' encoding della tua connessione"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Ignora i messaggi da qualcuno"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Smetti di ignorare i messaggi di qualcuno"
 
 #: Your IRC client
 msgid "personal_client"
