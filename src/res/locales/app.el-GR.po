@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-11-27 12:21\n"
+"PO-Revision-Date: 2018-11-27 13:32\n"
 
 #: Start
 msgid "start_button"
@@ -795,11 +795,11 @@ msgstr "Συμμετάσχετε σε ένα κανάλι"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Αφήστε το κανάλι"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Αφήστε και, στη συνέχεια, επανέλθετε πίσω στο κανάλι"
 
 #: Change your nickname
 msgid "command_nick"
