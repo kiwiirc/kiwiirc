@@ -205,9 +205,28 @@ inputCommands.join = function inputCommandJoin(event, command, line) {
     let network = this.state.getActiveNetwork();
     let bufferObjs = Misc.extractBuffers(line);
 
+    // handle join without any buffers specified
+    if (bufferObjs.length === 0) {
+        let buffer = this.state.getActiveBuffer();
+
+        // join the active channel if its not joined
+        if (buffer.isChannel() && !buffer.joined) {
+            network.ircClient.join(buffer.name, buffer.key);
+            return;
+        }
+
+        // report an error if the user tries to join without specifying the channel
+        this.state.addMessage(buffer, {
+            nick: '*',
+            message: TextFormatting.t('error_no_channel_join'),
+            type: 'error',
+        });
+        return;
+    }
+
     // Only switch to the first channel we join if multiple are being joined
     let hasSwitchedActiveBuffer = false;
-    bufferObjs.forEach((bufferObj) => {
+    bufferObjs.forEach((bufferObj, idx) => {
         // /join 0 parts all channels and is only ever used to troll IRC newbies.
         // Just disable it entirely.
         if (bufferObj.name === '0') {

@@ -22,6 +22,10 @@ export function extractBuffers(str) {
 
     let buffers = [];
     bufferNames.forEach((bufferName, idx) => {
+        // return if bufferName is empty
+        if (!bufferName.trim()) {
+            return;
+        }
         buffers.push({
             name: bufferName,
             key: keys[idx] || '',
