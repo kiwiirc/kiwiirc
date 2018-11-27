@@ -122,13 +122,6 @@ export default {
         window.addEventListener('focus', event => this.onFocus(event), false);
         window.addEventListener('blur', event => this.onBlur(event), false);
         window.addEventListener('touchstart', event => this.onTouchStart(event));
-        window.addEventListener('beforeunload', (event) => {
-            this.$state.networks.forEach((network) => {
-                if (network.state === 'connected') {
-                    network.ircClient.quit('Client closed!');
-                }
-            });
-        });
     },
     mounted() {
         // Decide which startup screen to use depending on the config
@@ -165,6 +158,9 @@ export default {
             // Make sure a startup screen can't trigger these more than once
             if (!this.hasStarted) {
                 this.warnOnPageClose();
+                // quitOnPageClose must be called after warnOnPageClose
+                // incase the close is unintentional
+                this.quitOnPageClose();
                 Notifications.requestPermission();
                 Notifications.listenForNewMessages(this.$state);
             }
@@ -260,6 +256,21 @@ export default {
                     return this.$t('window_unload');
                 }
 
+                return undefined;
+            };
+        },
+        quitOnPageClose() {
+            window.onunload = (event) => {
+                console.log(' unload', event);
+                if (!this.$state.setting('quitOnExit')) {
+                    return undefined;
+                }
+
+                this.$state.networks.forEach((network) => {
+                    if (network.state === 'connected') {
+                        network.ircClient.quit('Client closed!');
+                    }
+                });
                 return undefined;
             };
         },
