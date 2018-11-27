@@ -18,6 +18,7 @@ module.exports = {
     ],
     // add your custom rules here
     'rules': {
+        'class-name-prefix': 'warn',
         'class-methods-use-this': 0,
         'comma-dangle': ['error', {
             'arrays': 'always-multiline',
