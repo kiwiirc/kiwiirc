@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-11-27 05:59\n"
+"PO-Revision-Date: 2018-11-27 16:44\n"
 
 #: Start
 msgid "start_button"
@@ -727,7 +727,7 @@ msgstr "Uit het kanaal zetten en verbannen"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr ""
+msgstr "Geef een kanaal op om bij te wonen, bv. /join #voorbeeld"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -783,31 +783,31 @@ msgstr "{{nick}} stelt {{mode}} in op {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Een bericht sturen"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Iets fysieks doen"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Een kanaal binnengaan"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Een kanaal verlaten"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Een kanaal verlaten en weer binnengaan"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Je bijnaam wijzigen"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Een privégesprek met iemand beginnen"
 
 #: Invite somebody into the channel
 msgid "command_invite"
