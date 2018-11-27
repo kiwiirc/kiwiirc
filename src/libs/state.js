@@ -76,6 +76,7 @@ const stateObj = {
         },
         noticeActiveBuffer: true,
         showAutocomplete: true,
+        showEmojiPicker: true,
         showSendButton: false,
         sidebarDefault: '',
         showRaw: false,
