@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2018-11-27 06:00\n"
+"PO-Revision-Date: 2018-11-27 06:10\n"
 
 #: Start
 msgid "start_button"
@@ -843,31 +843,31 @@ msgstr "Disconnect from the IRC server"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Connect to a new IRC network"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Request information on somebody"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Request information on somebody that disconnected recently"
 
 #: Mark yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Mark yourself as away"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Change your connection encoding"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Ignore messages from somebody"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Stop ignoring somebody"
 
 #: Your IRC client
 msgid "personal_client"
