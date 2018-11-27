@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2018-11-27 07:40\n"
+"PO-Revision-Date: 2018-11-27 07:51\n"
 
 #: Start
 msgid "start_button"
@@ -783,71 +783,71 @@ msgstr "{{nick}} axusta {{mode}} en {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Envía unha mensaxe"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Para indicar o que estás a facer"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Entrar a unha canle"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Saír dunha canle"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Saír e reentrar á canle"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Cambia o teu alcume"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Inicia unha conversación privada con alguén"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Convida a alguén dentro da canle"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Axusta o tópico para esta canle"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Envía unha nota"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Envía un comando raw ao servidor IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Bota a alguén da canle"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Borra todas as mensaxes desde esta xanela"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Envía un comando CTCP a alguén"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Desconecta do servidor IRC"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Conecta a unha nova rede de IRC"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Solicita información sobre alguén"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
