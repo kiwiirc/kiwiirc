@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-11-27 13:51\n"
+"PO-Revision-Date: 2018-11-27 14:00\n"
 
 #: Start
 msgid "start_button"
@@ -863,11 +863,11 @@ msgstr "Αλλάξτε την κωδικοποίηση σύνδεσή σας"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Αγνοήστε τα μηνύματα από κάποιον"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Σταματήστε να αγνοείτε κάποιον"
 
 #: Your IRC client
 msgid "personal_client"
