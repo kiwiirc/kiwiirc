@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2018-11-27 06:30\n"
+"PO-Revision-Date: 2018-11-27 07:40\n"
 
 #: Start
 msgid "start_button"
@@ -727,7 +727,7 @@ msgstr "Kick + Ban de la sala"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Por favor especifica la sala a entrar. Ej /join #ejemplo"
+msgstr "Por favor especifica la sala a entrar. Por ej. /join #ejemplo"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
