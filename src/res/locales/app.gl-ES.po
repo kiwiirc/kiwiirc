@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2018-11-27 07:51\n"
+"PO-Revision-Date: 2018-11-27 08:01\n"
 
 #: Start
 msgid "start_button"
@@ -851,23 +851,23 @@ msgstr "Solicita información sobre alguén"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Solicita información sobre alguén que se desconectou recentemente"
 
 #: Mark yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Marca como ausente"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Cambia a codificación da túa conexión"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Ignora as mensaxes de alguén"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Deixa de ignorar a alguén"
 
 #: Your IRC client
 msgid "personal_client"
