@@ -355,7 +355,7 @@ function clientMiddleware(state, network) {
                 }
             }
 
-            let blockExempt = isPrivateMessage && Misc.isNickBlockPmsExempt(networkid, event.nick);
+            let blockExempt = isPrivateMessage && network.isNickBlockNewPmExempt(event.nick);
             let blockNewPms = state.setting('buffers.block_pms');
             let buffer = state.getBufferByName(networkid, bufferName);
             if (isPrivateMessage && !buffer && blockNewPms && !blockExempt) {

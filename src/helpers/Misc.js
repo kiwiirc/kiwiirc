@@ -4,7 +4,6 @@
 
 import _ from 'lodash';
 import strftime from 'strftime';
-import state from '@/libs/state';
 
 /**
  * Extract an array of buffers from a string, parsing multiple buffer names and channel keys
@@ -207,26 +206,4 @@ export function replaceObjectProps(target, source) {
 export function dateIso(date) {
     let d = date || new Date();
     return strftime('%FT%T.%L%:z', d);
-}
-
-export function isNickBlockPmsExempt(networkid, nick) {
-    // Check if nick is op of shared channel
-    let buffers = state.getBuffersWithUser(networkid, nick);
-    for (let i = 0; i < buffers.length; i++) {
-        let buffer = buffers[i];
-        if (buffer.isUserAnOp(nick)) {
-            return true;
-        }
-    }
-
-    let user = state.getUser(networkid, nick);
-    // if we have not seen or whois the user they might be a network oper
-    if (!user || !user.hasWhois) {
-        return null;
-    }
-
-    if (user.operator) {
-        return true;
-    }
-    return false;
 }
