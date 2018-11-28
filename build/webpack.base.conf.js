@@ -23,7 +23,10 @@ const createLintingRule = () => ({
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: [
+        'core-js/fn/promise', // required by the webpack runtime for async import(). babel polyfills don't help us here. ie11
+        './src/main.js'
+    ]
   },
   output: {
     path: config.build.assetsRoot,
@@ -46,6 +49,9 @@ module.exports = {
       'vue$': 'vue/dist/vue.common.js',
     }
   },
+  resolveLoader: {
+    modules: ['node_modules', path.resolve(__dirname)]
+  },
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
@@ -56,8 +62,13 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        use: [{loader: 'exports-loader'}, {loader: 'babel-loader'}],
+        include: [
+            resolve('src'),
+            resolve('test'),
+            resolve('node_modules/ip-regex'),
+            resolve('node_modules/webpack-dev-server/client')
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

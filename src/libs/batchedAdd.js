@@ -1,3 +1,5 @@
+'kiwi public';
+
 /**
  * batchedAdd prevents a flood of new inserts into state. After X inserts/sec, batch
  * each second worth of new items at the same time.

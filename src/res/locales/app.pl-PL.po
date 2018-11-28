@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2018-08-09 13:53\n"
+"PO-Revision-Date: 2018-11-27 05:58\n"
 
 #: Start
 msgid "start_button"
@@ -80,6 +80,10 @@ msgstr "Pseudonim"
 #: Channel
 msgid "channel"
 msgstr "Kanał"
+
+#: Messages
+msgid "messages"
+msgstr ""
 
 #: Network
 msgid "network"
@@ -212,6 +216,10 @@ msgstr "Odśwież motyw"
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "URL motywu"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr ""
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -517,9 +525,21 @@ msgstr "Podłącz się ponownie do sieci {{network}}, aby zacząć rozmawiać"
 msgid "reconnect_query"
 msgstr "Podłącz się ponownie, żeby kontynuować rozmowę z {{user}}"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr ""
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Ustawienia połączenia"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr ""
+
+#: Connect To Network
+msgid "network_connect"
+msgstr ""
 
 #: Close options
 msgid "side_close"
@@ -561,6 +581,26 @@ msgstr "Kolory pseudonimów na liście"
 msgid "side_buffer"
 msgstr "Nie ustawiono buforu"
 
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr ""
+
+#: About
+msgid "about"
+msgstr ""
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr ""
+
+#: Highlights
+msgid "highlights"
+msgstr ""
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr ""
+
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "Pojawił się problem przy uruchamianiu Kiwi IRC-a :("
@@ -596,6 +636,18 @@ msgstr "Dodać jedną?"
 #: Available networks
 msgid "state_available"
 msgstr "Dostępne sieci"
+
+#: Add Network
+msgid "add_network"
+msgstr ""
+
+#: New Network
+msgid "new_network"
+msgstr ""
+
+#: No Network
+msgid "no_network"
+msgstr ""
 
 #: Configure network
 msgid "state_configure"
@@ -673,6 +725,10 @@ msgstr "Zablokuj na kanale"
 msgid "user_kickban"
 msgstr "Zablokuj i wyrzuć z kanału"
 
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr ""
+
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
 msgstr "{{nick}} nadaje prawa operatora {{target}}"
@@ -724,6 +780,94 @@ msgstr "{{nick}} odblokowuje {{target}}"
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
 msgstr "{{nick}} ustawia tryb {{mode}} dla {{target}}"
+
+#: Send a message
+msgid "command_msg"
+msgstr ""
+
+#: Do something physical
+msgid "command_action"
+msgstr ""
+
+#: Join a channel
+msgid "command_join"
+msgstr ""
+
+#: Leave a channel
+msgid "command_part"
+msgstr ""
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr ""
+
+#: Change your nickname
+msgid "command_nick"
+msgstr ""
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr ""
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr ""
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr ""
+
+#: Send a notice
+msgid "command_notice"
+msgstr ""
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr ""
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr ""
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr ""
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr ""
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr ""
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr ""
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr ""
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr ""
+
+#: Mark yourself as away
+msgid "command_away"
+msgstr ""
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr ""
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr ""
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr ""
 
 #: Your IRC client
 msgid "personal_client"
@@ -801,7 +945,7 @@ msgstr "Pseudonim {{nick}} jest już w użyciu. Próbuję użyć {{newnick}}…"
 msgid "now_known_as"
 msgstr "{{nick}} jest teraz znany jako {{newnick}}"
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
 msgstr "zmienia temat kanału na: {{topic}}"
 

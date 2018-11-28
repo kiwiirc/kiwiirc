@@ -17,6 +17,8 @@ import StatePersistence from '@/libs/StatePersistence';
 import * as Storage from '@/libs/storage/Local';
 import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
+import { AudioManager } from '@/libs/AudioManager';
+import { SoundBleep } from '@/libs/SoundBleep';
 
 // Global utilities
 import '@/components/utils/TabbedView';
@@ -169,6 +171,15 @@ function loadApp() {
     }
 
     let configLoader = new ConfigLoader();
+    configLoader
+        .addValueReplacement('hostname', window.location.hostname)
+        .addValueReplacement('host', window.location.hostname)
+        .addValueReplacement('host', window.location.host)
+        .addValueReplacement('port', window.location.port || 80)
+        .addValueReplacement('hash', (window.location.hash || '').substr(1))
+        .addValueReplacement('query', (window.location.search || '').substr(1))
+        .addValueReplacement('referrer', window.document.referrer);
+
     (configObj ? configLoader.loadFromObj(configObj) : configLoader.loadFromUrl(configFile))
         .then(applyConfig)
         .then(initState)
@@ -176,6 +187,7 @@ function loadApp() {
         .then(initLocales)
         .then(initThemes)
         .then(loadPlugins)
+        .then(initSound)
         .then(startApp)
         .catch(showError);
 }
@@ -227,17 +239,43 @@ function loadPlugins() {
                 return;
             }
 
-            let scr = document.createElement('script');
-            scr.onerror = () => {
-                log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
-                loadNextScript();
-            };
-            scr.onload = () => {
-                loadNextScript();
-            };
+            if (plugin.url.indexOf('.js') > -1) {
+                // The plugin is a .js file so inject it as a script
+                let scr = document.createElement('script');
+                scr.onerror = () => {
+                    log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
+                    loadNextScript();
+                };
+                scr.onload = () => {
+                    loadNextScript();
+                };
 
-            document.body.appendChild(scr);
-            scr.src = plugin.url;
+                document.body.appendChild(scr);
+                scr.src = plugin.url;
+            } else {
+                // Treat the plugin as a HTML document and just inject it into the document
+                fetch(plugin.url).then(response => response.text()).then((pluginRaw) => {
+                    let el = document.createElement('div');
+                    el.id = 'kiwi_plugin_' + plugin.name.replace(/[ "']/g, '');
+                    el.style.display = 'none';
+                    el.innerHTML = pluginRaw;
+
+                    // The browser won't execute any script elements so we need to extract them and
+                    // place them into the DOM using our own script elements
+                    el.querySelectorAll('script').forEach((limitedScr) => {
+                        limitedScr.parentElement.removeChild(limitedScr);
+                        let scr = document.createElement('script');
+                        scr.text = limitedScr.text;
+                        el.appendChild(scr);
+                    });
+
+                    document.body.appendChild(el);
+                    loadNextScript();
+                }).catch(() => {
+                    log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
+                    loadNextScript();
+                });
+            }
         }
     });
 }
@@ -348,6 +386,14 @@ function initThemes() {
     if (argTheme) {
         themeMgr.setTheme(argTheme);
     }
+}
+
+function initSound() {
+    let sound = new SoundBleep();
+    let bleep = new AudioManager(sound);
+
+    bleep.listen(state);
+    bleep.listenForHighlights(state);
 }
 
 function initInputCommands() {

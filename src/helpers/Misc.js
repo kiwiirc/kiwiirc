@@ -1,9 +1,18 @@
-import _ from 'lodash';
+'kiwi public';
 
-// "#chan,#chan2" => 2 channels without a key
-// "#chan,#chan2 key" => 2 channels, the first having a key
-// "#chan,#chan2 key1,key2" => 2 channels, both having a key
-// "#chan,#chan2 ,key2" => 2 channels, the second having a key
+/** @module */
+
+import _ from 'lodash';
+import strftime from 'strftime';
+
+/**
+ * Extract an array of buffers from a string, parsing multiple buffer names and channel keys
+ * "#chan,#chan2" => 2 channels without a key
+ * "#chan,#chan2 key" => 2 channels, the first having a key
+ * "#chan,#chan2 key1,key2" => 2 channels, both having a key
+ * "#chan,#chan2 ,key2" => 2 channels, the second having a key
+ * @param {string} str List of buffer names and channel keys
+ */
 export function extractBuffers(str) {
     let spaceIdx = str.indexOf(' ');
     if (spaceIdx === -1) spaceIdx = str.length;
@@ -13,6 +22,10 @@ export function extractBuffers(str) {
 
     let buffers = [];
     bufferNames.forEach((bufferName, idx) => {
+        // return if bufferName is empty
+        if (!bufferName.trim()) {
+            return;
+        }
         buffers.push({
             name: bufferName,
             key: keys[idx] || '',
@@ -26,7 +39,11 @@ export function splitHost(uri) {
 
 }
 
-// Does a string mention a nickname
+/**
+ * Does a string mention a nickname?
+ * @param {string} input The string to search within
+ * @param {string} nick The nick to search for
+ */
 export function mentionsNick(input, nick) {
     let punc = ',.!:;-+)]?¿\\/<>@';
 
@@ -53,51 +70,11 @@ export function mentionsNick(input, nick) {
     return potentialNick.toLowerCase() === nick.toLowerCase();
 }
 
-// Get a users prefix symbol on a buffer from its modes
-export function userModePrefix(user, buffer) {
-    // The user may not be on the buffer
-    if (!user.buffers[buffer.id]) {
-        return '';
-    }
-
-    let modes = user.buffers[buffer.id].modes;
-    if (modes.length === 0) {
-        return '';
-    }
-
-    let network = buffer.getNetwork();
-    let netPrefixes = network.ircClient.network.options.PREFIX;
-    // Find the first (highest) netPrefix in the users buffer modes
-    let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
-
-    return prefix ?
-        prefix.symbol :
-        '';
-}
-
-// Get a users mode on a buffer
-export function userMode(user, buffer) {
-    // The user may not be on the buffer
-    if (!user.buffers[buffer.id]) {
-        return '';
-    }
-
-    let modes = user.buffers[buffer.id].modes;
-    if (modes.length === 0) {
-        return '';
-    }
-
-    let network = buffer.getNetwork();
-    let netPrefixes = network.ircClient.network.options.PREFIX;
-    // Find the first (highest) netPrefix in the users buffer modes
-    let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
-
-    return prefix ?
-        prefix.mode :
-        '';
-}
-
-// Get a query string value from the current URL
+/**
+ * Get a query string value from the current URL
+ * @param {string} _name The query string variable name
+ * @param {string} _url The full URL to extract the variable from
+ */
 export function queryStringVal(_name, _url) {
     let url = _url || window.location.href;
     let name = _.escapeRegExp(_name);
@@ -114,7 +91,10 @@ export function queryStringVal(_name, _url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-// Convert a known error code to a human readable message
+/**
+ * Convert a known error code to a human readable message
+ * @param {string} err The error message from the network connection
+ */
 export function networkErrorMessage(err) {
     let errs = {
         err_unknown_host: 'Unknown domain name or host',
@@ -128,10 +108,13 @@ export function networkErrorMessage(err) {
     return errs[err] || 'Unknown error';
 }
 
+/**
+ * Parse a connection string into an object
+ * E.g. [ircs?://]irc.network.net:[+]6667/channel?nick=mynick;
+ * Multiple connections may be given, separated by ;
+ * @param {string} str The connection string URI
+ */
 export function parseIrcUri(str) {
-    // [ircs?://]irc.network.net:[+]6667/channel?nick=mynick;
-    // Parse connection string such as this ^ into an object. Multiple connections
-    // may be given, separated by ;
     let reg = /(?:(ircs?):\/\/)?([a-z.0-9]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
     let connections = [];
     str.split(';').forEach((connectionString) => {
@@ -182,7 +165,10 @@ export function parseIrcUri(str) {
     return connections;
 }
 
-// Scan though an object and extend any dot notated keys
+/**
+ * Scan though an object and extend any dot notated keys
+ * @param {Object} confObj Source object to traverse
+ */
 export function dedotObject(confObj, _place) {
     let place = _place || [];
     let regex = /\w\.\w/;
@@ -198,4 +184,30 @@ export function dedotObject(confObj, _place) {
             _.set(confObj, ourPlace.join('.'), val);
         }
     });
+}
+
+/**
+ * Replace the target object with source, while keeping the target object reference intact.
+ * Delete all the properties from the target object and copy the properties from source
+ * over to the target.
+ * a = {one: 1, two: 2, three: 3}
+ * b = {four: 4, five: 5, six: 6}
+ * replaceObjectProps(a, b)
+ * a.one === undefined;
+ * a.six === 6;
+ * @param {Object} target The target object that will be replaced
+ * @param {Object} source The source object from which all properties will be copied from
+ */
+export function replaceObjectProps(target, source) {
+    Object.keys(target).forEach(prop => delete target[prop]);
+    Object.keys(source).forEach((prop) => { target[prop] = source[prop]; });
+}
+
+/**
+ * Create an ISO8601 formatted date
+ * @param {Date} date The date object to create the time from. Defaults to the current time
+ */
+export function dateIso(date) {
+    let d = date || new Date();
+    return strftime('%FT%T.%L%:z', d);
 }

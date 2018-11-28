@@ -19,6 +19,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import _ from 'lodash';
 import htmlparser from 'htmlparser2';
@@ -275,12 +276,10 @@ export default Vue.component('irc-input', {
 
         // Insert some text at the current position
         insertText(text) {
-            let el = this.current_el;
-            let pos = this.current_el_pos;
-            let val = el.textContent;
-
-            el.textContent = val.substr(0, pos) + text + val.substr(pos);
-            this.current_el_pos = pos + text.length;
+            this.focus();
+            document.execCommand('insertText', false, text);
+            this.updateValueProps();
+            this.focus();
         },
 
         // Replace the word at the current position with another

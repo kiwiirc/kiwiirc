@@ -1,19 +1,26 @@
 <template>
-    <div :class="['kiwi-sidebar-section-' + uiState.section()]" class="kiwi-sidebar kiwi-theme-bg">
-        <template v-if="buffer">
+    <div
+        :class="['kiwi-sidebar-section-' + section]"
+        class="kiwi-sidebar kiwi-theme-bg"
+    >
+        <span v-if="!sidebarState.isOpen" class="kiwi-sidebar-options">
+            <div class="kiwi-sidebar-close" @click="sidebarState.close()">
+                {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
+            </div>
+        </span>
+
+        <template v-if="sidebarState.activeComponent">
+            <component
+                :is="sidebarState.activeComponent"
+                :network="network"
+                :buffer="buffer"
+                :sidebar-state="sidebarState"
+            />
+        </template>
+        <template v-else-if="buffer">
             <template v-if="buffer.isChannel()">
-
-                <span v-if="uiState.isOpen" class="kiwi-sidebar-options">
-                    <div v-if="uiState.canPin" class="kiwi-sidebar-pin" @click="uiState.pin()">
-                        <i class="fa fa-thumb-tack" aria-hidden="true"/>
-                    </div>
-                    <div class="kiwi-sidebar-close" @click="uiState.close()">
-                        {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
-                    </div>
-                </span>
-
                 <div
-                    v-if="uiState.section() === 'settings'"
+                    v-if="section === 'settings'"
                     class="kiwi-sidebar-buffersettings"
                     @click.stop=""
                 >
@@ -58,9 +65,6 @@
                         <tabbed-tab :header="$t('banned')">
                             <channel-banlist :buffer="buffer"/>
                         </tabbed-tab>
-                        <tabbed-tab :header="$t('invited')">
-                            <channel-invitelist :buffer="buffer"/>
-                        </tabbed-tab>
                         <tabbed-tab :header="$t('notifications')">
                             <buffer-settings :buffer="buffer"/>
                         </tabbed-tab>
@@ -75,22 +79,29 @@
                 </div>
 
                 <div
-                    v-else-if="uiState.section() === 'user'"
+                    v-else-if="section === 'user'"
                     class="kiwi-sidebar-userbox"
                     @click.stop=""
                 >
                     <user-box
-                        :user="uiState.sidebarUser"
+                        :user="sidebarState.sidebarUser"
                         :buffer="buffer"
                         :network="network"
                     />
                 </div>
 
                 <nicklist
-                    v-else-if="uiState.section() === 'nicklist' || uiState.section() === ''"
+                    v-else-if="section === 'nicklist'"
                     :network="network"
                     :buffer="buffer"
-                    :ui-state="uiState"
+                    :sidebar-state="sidebarState"
+                />
+
+                <sidebar-about-buffer
+                    v-else-if="section === 'about'"
+                    :network="network"
+                    :buffer="buffer"
+                    :sidebar-state="sidebarState"
                 />
             </template>
             <template v-else-if="buffer.isQuery()">
@@ -108,80 +119,91 @@
 </template>
 
 <script>
+'kiwi public';
 
 import UserBox from '@/components/UserBox';
 import GlobalApi from '@/libs/GlobalApi';
+import SidebarState from './SidebarState';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
+import SidebarAboutBuffer from './SidebarAboutBuffer';
 import ChannelBanlist from './ChannelBanlist';
-import ChannelInvitelist from './ChannelInvitelist';
 import Nicklist from './Nicklist';
+
+export { SidebarState as State };
 
 export default {
     components: {
         BufferSettings,
+        SidebarAboutBuffer,
         ChannelInfo,
         ChannelBanlist,
-        ChannelInvitelist,
         Nicklist,
         UserBox,
     },
-    props: ['network', 'buffer', 'uiState'],
-    data: function data() {
+    props: ['network', 'buffer', 'sidebarState'],
+    data() {
         return {
             pluginUiElements: GlobalApi.singleton().sideBarPlugins,
         };
     },
     computed: {
+        section() {
+            if (this.sidebarState.activeComponent) {
+                return 'component';
+            }
+
+            return this.sidebarState.section() || 'nicklist';
+        },
         settingShowJoinParts: {
-            get: function getSettingShowJoinParts() {
+            get() {
                 return this.buffer.setting('show_joinparts');
             },
-            set: function setSettingShowJoinParts(newVal) {
+            set(newVal) {
                 return this.buffer.setting('show_joinparts', newVal);
             },
         },
         settingShowTopics: {
-            get: function getSettingShowTopics() {
+            get() {
                 return this.buffer.setting('show_topics');
             },
-            set: function setSettingShowTopics(newVal) {
+            set(newVal) {
                 return this.buffer.setting('show_topics', newVal);
             },
         },
         settingShowNickChanges: {
-            get: function getSettingShowNickChanges() {
+            get() {
                 return this.buffer.setting('show_nick_changes');
             },
-            set: function setSettingShowNickChanges(newVal) {
+            set(newVal) {
                 return this.buffer.setting('show_nick_changes', newVal);
             },
         },
         settingShowModeChanges: {
-            get: function getSettingShowModeChanges() {
+            get() {
                 return this.buffer.setting('show_mode_changes');
             },
-            set: function setSettingShowModeChanges(newVal) {
+            set(newVal) {
                 return this.buffer.setting('show_mode_changes', newVal);
             },
         },
         settingColouredNicklist: {
-            get: function getSettingShowJoinParts() {
+            get() {
                 return this.buffer.setting('coloured_nicklist');
             },
-            set: function setSettingShowJoinParts(newVal) {
+            set(newVal) {
                 return this.buffer.setting('coloured_nicklist', newVal);
             },
         },
         settingExtraFormatting: {
-            get: function settingExtraFormatting() {
+            get() {
                 return this.buffer.setting('extra_formatting');
             },
-            set: function settingExtraFormatting(newVal) {
+            set(newVal) {
                 return this.buffer.setting('extra_formatting', newVal);
             },
         },
-        bufferType: function bufferType() {
+        bufferType() {
             let type = '';
 
             if (!this.buffer) {
@@ -198,6 +220,7 @@ export default {
         },
     },
 };
+
 </script>
 
 <style lang="less">
@@ -231,15 +254,6 @@ export default {
     text-transform: uppercase;
     line-height: 50px;
     vertical-align: top;
-}
-
-.kiwi-sidebar-options .kiwi-sidebar-pin {
-    position: absolute;
-    padding: 0 10px;
-    height: 100%;
-    line-height: 52px;
-    z-index: 1;
-    transition: background 0.3s;
 }
 
 .kiwi-sidebar-options .kiwi-sidebar-close {
@@ -312,7 +326,7 @@ export default {
         margin-left: 0;
     }
 
-    .kiwi-container--sidebar-open .kiwi-sidebar {
+    .kiwi-container--sidebar-drawn .kiwi-sidebar {
         width: 100%;
         max-width: 100%;
     }

@@ -61,6 +61,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
@@ -184,39 +185,34 @@ export default {
                 return;
             }
 
-            let net;
-            if (!this.network) {
-                let netAddress = _.trim(options.server);
+            let netAddress = _.trim(options.server);
 
-                // Check if we have this network already
-                net = state.getNetworkFromAddress(netAddress);
+            // Check if we have this network already
+            let net = this.network || state.getNetworkFromAddress(netAddress);
 
-                // If we retreived an existing network, update the nick+password with what
-                // the user has just put in place
-                if (net) {
-                    net.nick = this.nick;
-                    net.connection.password = this.password;
-                }
-
-                // If the network doesn't already exist, add a new one
-                net = net || state.addNetwork('Network', this.nick, {
-                    server: netAddress,
-                    port: options.port,
-                    tls: options.tls,
-                    password: this.password,
-                    encoding: _.trim(options.encoding),
-                    direct: !!options.direct,
-                    path: options.direct_path || '',
-                    gecos: options.gecos,
-                });
-
-                if (options.recaptchaSiteId) {
-                    net.captchaResponse = this.captchaResponse();
-                }
-                this.network = net;
-            } else {
-                net = this.network;
+            // If we retreived an existing network, update the nick+password with what
+            // the user has just put in place
+            if (net) {
+                net.nick = this.nick;
+                net.connection.password = this.password;
             }
+
+            // If the network doesn't already exist, add a new one
+            net = net || state.addNetwork('Network', this.nick, {
+                server: netAddress,
+                port: options.port,
+                tls: options.tls,
+                password: this.password,
+                encoding: _.trim(options.encoding),
+                direct: !!options.direct,
+                path: options.direct_path || '',
+                gecos: options.gecos,
+            });
+
+            if (!this.network && options.recaptchaSiteId) {
+                net.captchaResponse = this.captchaResponse();
+            }
+            this.network = net;
 
             // Only switch to the first channel we join if multiple are being joined
             let hasSwitchedActiveBuffer = false;

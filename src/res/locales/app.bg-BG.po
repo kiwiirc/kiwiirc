@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-08-09 13:54\n"
+"PO-Revision-Date: 2018-11-27 05:59\n"
 
 #: Start
 msgid "start_button"
@@ -81,6 +81,10 @@ msgstr "Потребителско име"
 msgid "channel"
 msgstr "Канал"
 
+#: Messages
+msgid "messages"
+msgstr "Съобщения"
+
 #: Network
 msgid "network"
 msgstr "IRC Мрежа"
@@ -119,11 +123,11 @@ msgstr "Не"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "Не е намерен."
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "Внимание!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -212,6 +216,10 @@ msgstr "Oпресняване на темите"
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "Адрес на темата"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr "Разпределение на съобщенията"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -327,27 +335,27 @@ msgstr "Причита по подразбиране за KICK"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr ""
+msgstr "Разширени настройки"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr ""
+msgstr "Чудовищата са тук, кликнете само върху този бутон, ако знаете какво правите"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr ""
+msgstr "Активирайте Разширени настройки"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Опасна зона: Промяната на някои от тези настройки може да наруши нещата!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Рестартиране"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Филтриране"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -517,9 +525,21 @@ msgstr "Влезте отново в  {{network}} за да  общувате о
 msgid "reconnect_query"
 msgstr "Влезте отново за продължите разговора си с {{user}}"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr "Понастоящем не сте свързани!"
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Настройки за свързване"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr "Не можaхме да се свържем с този сървър :("
+
+#: Connect To Network
+msgid "network_connect"
+msgstr "Свържете се към мрежата"
 
 #: Close options
 msgid "side_close"
@@ -561,6 +581,26 @@ msgstr "Цветни  никове в списъка с потребители"
 msgid "side_buffer"
 msgstr "Няма зададен буфер"
 
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr "Няма тема за този канал"
+
+#: About
+msgid "about"
+msgstr "Относно"
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr "Създаден на {{when}}"
+
+#: Highlights
+msgid "highlights"
+msgstr "Акценти"
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr "Никой все още не ви споменал ..."
+
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "Грешка при стартирането"
@@ -596,6 +636,18 @@ msgstr "Добави"
 #: Available networks
 msgid "state_available"
 msgstr "Налични мрежи"
+
+#: Add Network
+msgid "add_network"
+msgstr ""
+
+#: New Network
+msgid "new_network"
+msgstr ""
+
+#: No Network
+msgid "no_network"
+msgstr ""
 
 #: Configure network
 msgid "state_configure"
@@ -673,6 +725,10 @@ msgstr "Бан от канал"
 msgid "user_kickban"
 msgstr "Забрани и премахни от канала"
 
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr ""
+
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
 msgstr "{{nick}} дава оп на {{target}}"
@@ -724,6 +780,94 @@ msgstr "{{nick}} премахва забраната в/у {{target}}"
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
 msgstr "{{nick}} задава {{mode}} на {{target}}"
+
+#: Send a message
+msgid "command_msg"
+msgstr ""
+
+#: Do something physical
+msgid "command_action"
+msgstr ""
+
+#: Join a channel
+msgid "command_join"
+msgstr ""
+
+#: Leave a channel
+msgid "command_part"
+msgstr ""
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr ""
+
+#: Change your nickname
+msgid "command_nick"
+msgstr ""
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr ""
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr ""
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr ""
+
+#: Send a notice
+msgid "command_notice"
+msgstr ""
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr ""
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr ""
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr ""
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr ""
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr ""
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr ""
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr ""
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr ""
+
+#: Mark yourself as away
+msgid "command_away"
+msgstr ""
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr ""
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr ""
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr ""
 
 #: Your IRC client
 msgid "personal_client"
@@ -801,7 +945,7 @@ msgstr "Прякор {{nick}} вече се използва. Опитайте �
 msgid "now_known_as"
 msgstr "{{nick}} сега е известен като {{newnick}}"
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
 msgstr "промени темата на: {{topic}}"
 

@@ -40,6 +40,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 export default {
     props: ['ircinput'],

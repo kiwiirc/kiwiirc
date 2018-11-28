@@ -95,15 +95,11 @@
     border-bottom: 2px solid #1b2f24;
     line-height: normal;
     outline-color: #1b2f24;
-    color: #5dd895;
-    background: #244633;
 }
 .u-form label input[type='text'],
 .u-form label input[type='password'],
 .u-form label input[type='email'],
 .u-form textarea {
-    color: #5dd895;
-    background: #244633;
     border: 1px solid #1b2f24;
 }
 
@@ -237,7 +233,6 @@
 
 /* The header option buttons */
 .kiwi-header-option {
-    border-left: 1px solid #6fffb0;
     color: #6fffb0;
 }
 .kiwi-header-option a:hover,
@@ -248,7 +243,6 @@
 }
 
 .kiwi-header-option--active {
-    border-left: none;
     opacity: 1;
 }
 
@@ -335,6 +329,15 @@
 .kiwi-controlinput-inner .kiwi-controlinput-user {
     border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
+
+.kiwi-controlinput-send {
+    background: #294835;
+    color: inherit;
+}
+.kiwi-controlinput-tools {
+    background: #294835;
+}
+
 .kiwi-controlinput-active-tool {
     background: #5dd895;
 }
@@ -427,15 +430,15 @@
 }
 
 /* The shadow over the main text area that displays when the sidebar is open */
-.kiwi-container--sidebar-open .kiwi-messagelist::after {
+.kiwi-container--sidebar-drawn .kiwi-messagelist::after {
     background-color: #000;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected {
     background-color: #1b2f24;
     color: #fff;
 }
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected {
     color: #fff;
 }
 
@@ -673,10 +676,22 @@
     background: #5cd894;
     color: #1b2f24;
 }
-.kiwi-container--sidebar-pinned .kiwi-sidebar {
+.kiwi-container--sidebar-open .kiwi-sidebar {
     border-color: #b2b2b2;
 }
 
+.kiwi-aboutbuffer {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.kiwi-aboutbuffer h3 {
+    color: #5dd895;
+}
+
+.kiwi-aboutbuffer h4 {
+    background-color: #5dd895;
+    color: #fff;
+}
 
 /* Channel Banlist ( Channelbanlist.vue ) */
 .kiwi-channelbanlist-table tr {
@@ -705,7 +720,6 @@
 }
 
 .kiwi-statebrowser-usermenu-avatar {
-    border: 2px solid #5dd895;
     background-color: #000;
     color: #fff;
 }
@@ -729,7 +743,6 @@
 
 /* User Settings */
 .kiwi-statebrowser-appsettings {
-    border: 1px solid #6fffb0;
     color: #6fffb0;
 }
 .kiwi-statebrowser-appsettings:hover {

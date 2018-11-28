@@ -107,7 +107,7 @@
 
             <div class="kiwi-statebrowser-channels">
                 <div
-                    v-for="buffer in filteredBuffers(network.buffers)"
+                    v-for="buffer in filteredBuffers"
                     :key="buffer.name"
                     :data-name="buffer.name.toLowerCase()"
                     :class="{
@@ -153,6 +153,7 @@
 </template>
 
 <script>
+'kiwi public';
 
 import _ from 'lodash';
 import state from '@/libs/state';
@@ -164,7 +165,7 @@ export default {
     components: {
         BufferSettings,
     },
-    props: ['network', 'uiState'],
+    props: ['network', 'sidebarState'],
     data: function data() {
         return {
             collapsed: false,
@@ -181,6 +182,21 @@ export default {
         },
         totalNetworkCount() {
             return state.networks.length;
+        },
+        filteredBuffers() {
+            let filter = this.channel_filter;
+            let filtered = [];
+
+            if (!filter) {
+                filtered = this.network.buffers;
+            } else {
+                filtered = _.filter(this.network.buffers, (buffer) => {
+                    let name = buffer.name.toLowerCase();
+                    return name.indexOf(filter) > -1;
+                });
+            }
+
+            return bufferTools.orderBuffers(filtered);
         },
     },
     methods: {
@@ -264,21 +280,6 @@ export default {
                 buffer.name === state.ui.active_buffer
             );
         },
-        filteredBuffers(buffers) {
-            let filter = this.channel_filter;
-            let filtered = [];
-
-            if (!filter) {
-                filtered = buffers;
-            } else {
-                filtered = _.filter(buffers, (buffer) => {
-                    let name = buffer.name.toLowerCase();
-                    return name.indexOf(filter) > -1;
-                });
-            }
-
-            return bufferTools.orderBuffers(filtered);
-        },
         showNetworkSettings(network) {
             network.showServerBuffer('settings');
         },
@@ -287,7 +288,7 @@ export default {
         },
         showBufferSettings(buffer) {
             this.setActiveBuffer(buffer);
-            this.uiState.showBufferSettings();
+            this.sidebarState.showBufferSettings();
         },
         toggleAddChannel() {
             this.channel_add_display = !this.channel_add_display;

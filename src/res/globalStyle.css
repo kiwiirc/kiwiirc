@@ -16,6 +16,18 @@ div {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+ul {
+    padding-left: 1em;
+}
+
+input,
+textarea,
+select {
+    color: inherit;
+    background: inherit;
+    background-color: inherit;
+}
+
 .u-link {
     text-decoration: none;
     cursor: pointer;
@@ -225,6 +237,14 @@ div {
 
 .kiwi-settings-advanced-table tr:hover {
     background-color: rgba(128, 128, 128, 0.1);
+}
+
+.kiwi-statebrowser-usermenu-avatar--connected {
+    border: 2px solid #42b992;
+}
+
+.kiwi-statebrowser-usermenu-avatar--disconnected {
+    border: 2px solid #bf5155;
 }
 
 .irc-fg-colour-white { color: #fff; }

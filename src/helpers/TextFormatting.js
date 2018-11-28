@@ -1,17 +1,26 @@
+'kiwi public';
+
+/** @module */
+
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import _ from 'lodash';
 import i18next from 'i18next';
+import * as ipRegex from 'ip-regex';
 import * as Colours from './Colours';
 import { md5 } from './Md5';
 
 const urlRegex = new RegExp(
     // Detect either a protocol or 'www.' to start a URL
     /(([A-Za-z][A-Za-z0-9-]*:\/\/)|(www\.))/.source +
-    // The hostname..
-    /([\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF.-]+)/.source +
-    // The hostname must end in 2-6 alpha characters (the TLD)
-    /([a-zA-Z]{2,6})/.source +
+    '(' +
+        // Hostname and tld
+        /([\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF.-]+\.[a-zA-Z]{2,63})/.source + '|' +
+        // IPv4 address
+        ipRegex.v4().source + '|' +
+        // IPv6 address
+        '(\\[?' + ipRegex.v6().source + '\\]?)' +
+    ')' +
     // Optional port..
     /(:[0-9]+)?/.source +
     // Optional path..
@@ -119,7 +128,7 @@ export function addEmojis(wordCtx, emojiList, emojiLocation) {
     return word;
 }
 
-const channelMatch = /(^|\s|[@+~&%}]+)([#&][^ .,\007<>\n\r]+)([.,<>\n\r]+)?$/i;
+const channelMatch = /(^|\s|[@+~&%}]+)([#&][^ .,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i;
 export function linkifyChannels(word) {
     // "@#kiwiirc," = 3 parts. (prefix=@)(channel=#kiwiirc)(suffix=,)
     return word.replace(channelMatch, (match, mPrefix, mChannel, mSuffix) => {
@@ -134,7 +143,7 @@ export function linkifyChannels(word) {
 
 export function linkifyUsers(word, userlist) {
     let ret = '';
-    let nick = '';
+    let user = null;
     let prepend = '';
     let append = '';
     let punc = ',.!:;-+)]?¿\\/<>@';
@@ -142,25 +151,30 @@ export function linkifyUsers(word, userlist) {
     let normWord = word.toLowerCase();
     let hasProp = Object.prototype.hasOwnProperty;
 
-    // Checking for a nick in order of processing cost
+    // Checking for a user in order of processing cost
     if (hasProp.call(userlist, normWord)) {
-        nick = word;
+        user = userlist[normWord];
     } else if (hasProp.call(userlist, normWord.substr(0, normWord.length - 1)) && validLastChar) {
         // The last character is usually punctuation of some kind
-        nick = word.substr(0, word.length - 1);
+        user = userlist[normWord.substr(0, normWord.length - 1)];
         append = word[word.length - 1];
     } else if (hasProp.call(userlist, _.trim(normWord, punc))) {
-        nick = _.trim(word, punc);
-        let nickIdx = word.indexOf(nick);
-        append = word.substr(nickIdx + nick.length);
+        user = userlist[_.trim(normWord, punc)];
+        let nickIdx = normWord.indexOf(user.nick.toLowerCase());
+        append = word.substr(nickIdx + user.nick.length);
         prepend = word.substr(0, nickIdx);
     } else {
         return word;
     }
 
-    let escaped = _.escape(nick);
-    let colour = createNickColour(nick);
-    ret = `<a class="kiwi-nick" data-nick="${escaped}" style="color:${colour}">${escaped}</a>`;
+    let escaped = _.escape(user.nick);
+    let colour = user.colour;
+
+    ret = `<a class="kiwi-nick" data-nick="${escaped}"`;
+    if (colour) {
+        ret += ` style="color:${colour}"`;
+    }
+    ret += `>${escaped}</a>`;
 
     if (prepend) {
         ret = _.escape(prepend) + ret;
@@ -175,13 +189,8 @@ export function linkifyUsers(word, userlist) {
 /**
  * Convert a nickname string to a colour code
  */
-let nickColourCache = Object.create(null);
 export function createNickColour(nick) {
     let nickLower = nick.toLowerCase();
-
-    if (nickColourCache[nickLower]) {
-        return nickColourCache[nickLower];
-    }
 
     // The HSL properties are based on this specific colour
     let startingColour = '#36809B'; // '#449fc1';
@@ -206,8 +215,6 @@ export function createNickColour(nick) {
 
     let rgb = Colours.hsl2rgb(baseColour);
     let nickColour = Colours.rgb2hex(rgb);
-
-    nickColourCache[nickLower] = nickColour;
 
     return nickColour;
 }
@@ -333,8 +340,8 @@ export function enrichText(text, showEmoticons, emojiList, emojiLocation, userLi
         });
         if (linkified.urls.length > 0) {
             urls = urls.concat(linkified.urls);
+            return linkified.html;
         }
-        if (linkified.html !== word) return linkified.html;
 
         parsed = this.linkifyChannels(word);
         if (parsed !== word) return parsed;

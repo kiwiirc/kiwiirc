@@ -1,3 +1,5 @@
+'kiwi public';
+
 import _ from 'lodash';
 
 let createdInstance = null;

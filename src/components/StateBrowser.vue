@@ -1,8 +1,12 @@
 <template>
     <div class="kiwi-statebrowser kiwi-theme-bg">
 
+        <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
+            <i class="fa fa-cog" aria-hidden="true"/>
+        </div>
+
         <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">
-            <span> Close </span>
+            <span>{{ $t('close') }}</span>
             <i class="fa fa-times" aria-hidden="true"/>
         </div>
 
@@ -12,10 +16,14 @@
             class="kiwi-statebrowser-usermenu"
         >
             <div
+                :class="[isConnected ?
+                    'kiwi-statebrowser-usermenu-avatar--connected' :
+                    'kiwi-statebrowser-usermenu-avatar--disconnected'
+                ]"
                 class="kiwi-statebrowser-usermenu-avatar"
                 @click="is_usermenu_open=!is_usermenu_open"
             >
-                U
+                {{ userInitial }}
             </div>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
                 <p> {{ $t('state_remembered') }} </p>
@@ -24,10 +32,9 @@
                     <i class="fa fa-times" aria-hidden="true"/>
                 </div>
             </div>
-        </div>
-
-        <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
-            {{ $t('kiwi_settings') }} <i class="fa fa-cog" aria-hidden="true"/>
+            <div v-else class="kiwi-statebrowser-usermenu-network">
+                {{ networkName }}
+            </div>
         </div>
 
         <div class="kiwi-statebrowser-tools">
@@ -81,14 +88,14 @@
                     v-for="network in networksToShow"
                     :key="network.id"
                     :network="network"
-                    :ui-state="uiState"
+                    :sidebar-state="sidebarState"
                 />
             </div>
         </div>
 
         <div v-if="!isRestrictedServer" class="kiwi-statebrowser-newnetwork">
             <a class="u-button u-button-primary" @click="clickAddNetwork">
-                Add Network
+                {{ $t('add_network') }}
                 <i class="fa fa-plus" aria-hidden="true"/>
             </a>
         </div>
@@ -96,7 +103,9 @@
 </template>
 
 <script>
+'kiwi public';
 
+import * as TextFormatting from '@/helpers/TextFormatting';
 import state from '@/libs/state';
 import NetworkProvider from '@/libs/NetworkProvider';
 import GlobalApi from '@/libs/GlobalApi';
@@ -111,7 +120,7 @@ export default {
         BufferSettings,
         StateBrowserNetwork,
     },
-    props: ['networks', 'uiState'],
+    props: ['networks', 'sidebarState'],
     data: function data() {
         return {
             is_usermenu_open: false,
@@ -121,6 +130,22 @@ export default {
         };
     },
     computed: {
+        userInitial() {
+            let network = state.getActiveNetwork();
+            let initial = 'U';
+            if (network && network.nick) {
+                initial = network.nick.charAt(0).toUpperCase();
+            }
+            return initial;
+        },
+        networkName() {
+            let network = state.getActiveNetwork();
+            let name = TextFormatting.t('no_network');
+            if (network) {
+                name = network.name;
+            }
+            return name;
+        },
         isPersistingState: function isPersistingState() {
             return !!state.persistence;
         },
@@ -132,7 +157,8 @@ export default {
             return this.networks.filter(network => network !== bncNet);
         },
         isConnected: function isConnected() {
-            return state.getActiveNetwork().state === 'connected';
+            let network = state.getActiveNetwork();
+            return network && network.state === 'connected';
         },
     },
     created: function created() {
@@ -209,20 +235,21 @@ export default {
 
 /* User Settings */
 .kiwi-statebrowser-appsettings {
-    width: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
     text-align: left;
-    padding: 0 10px 0 10px;
-    font-size: 0.8em;
-    border-radius: 4px;
+    padding: 0 10px;
+    font-size: 1em;
     box-sizing: border-box;
-    opacity: 1;
     line-height: 35px;
     cursor: pointer;
-    margin: 0 5%;
     font-weight: 500;
     letter-spacing: 1px;
     transition: all 0.3s;
-    margin-bottom: 10px;
+    border-radius: 0 0 6px 0;
+    opacity: 0.8;
 }
 
 .kiwi-statebrowser-appsettings:hover {
@@ -243,7 +270,7 @@ export default {
     width: 100%;
     padding-bottom: 0;
     margin-bottom: 10px;
-    padding-top: 10px;
+    padding-top: 34px;
 }
 
 .kiwi-statebrowser-usermenu-avatar {

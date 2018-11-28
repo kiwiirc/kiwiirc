@@ -34,7 +34,7 @@
                                 {{ channel.channel }}
                             </a>
                         </td>
-                        <td>{{ trimTopic(channel.topic) }}</td>
+                        <td><div v-html="formatAndTrimTopic(channel.topic)"/></td>
                         <td class="kiwi-channellist-user-center">
                             <a class="u-button u-button-primary"
                                @click="joinChannel(channel.channel)"> {{ $t('container_join') }}
@@ -52,9 +52,11 @@
 </template>
 
 <script>
+'kiwi public';
 
 import _ from 'lodash';
-import state from '@/libs/state';
+import * as TextFormatting from '@/helpers/TextFormatting';
+import formatIrcMessage from '@/libs/MessageFormatter';
 
 export default {
     props: ['network'],
@@ -74,7 +76,7 @@ export default {
         isLoading() {
             return this.listState === 'updating';
         },
-        listState: function listState() {
+        listState() {
             return this.network.channel_list_state;
         },
         list() {
@@ -123,7 +125,7 @@ export default {
         },
     },
     watch: {
-        search: function watchSearch() {
+        search() {
             this.page = 0;
         },
     },
@@ -143,11 +145,15 @@ export default {
                 this.network.ircClient.raw('LIST');
             }
         },
-        trimTopic(topic) {
-            return topic.replace(/^\[([^\]]+)\] ?/, '');
+        formatAndTrimTopic(rawTopic) {
+            let topic = rawTopic.replace(/^\[([^\]]+)\] ?/, '');
+            let showEmoticons = this.$state.setting('buffers.show_emoticons');
+            let blocks = formatIrcMessage(topic, { extras: false });
+            let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
+            return content.html;
         },
         joinChannel(channelName) {
-            state.addBuffer(this.network.id, channelName);
+            this.$state.addBuffer(this.network.id, channelName);
             this.network.ircClient.join(channelName);
         },
     },
@@ -163,7 +169,7 @@ export default {
 }
 
 .kiwi-channellist-padding-top {
-    padding-top: calc(50vh - 80px);
+    padding-top: calc(40% - 80px);
 }
 
 .kiwi-channellist-padding-top .kiwi-channellist-nav {

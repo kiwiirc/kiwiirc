@@ -128,7 +128,6 @@
 .u-form textarea {
     border: 1px solid #ccc;
     border-bottom: 2px solid #000000;
-    background: #adadad;
     line-height: normal;
     outline-color: #000000;
 }
@@ -137,8 +136,6 @@
 .u-form label input[type='email'],
 .u-form textarea,
 .kiwi-networksettings .input-text input {
-    color: #000;
-    background: #adadad;
     border: 1px solid #000000;
 }
 
@@ -198,6 +195,11 @@
 .kiwi-appsettings-block h3 {
     background: #000000;
     color: #adadad;
+}
+
+.kiwi-appsettings-section {
+    background-color: #1b1b1b;
+    color: #969895;
 }
 
 /* Title bar, at the top of the Application settings component */
@@ -278,7 +280,6 @@
 
 /* The header option buttons */
 .kiwi-header-option {
-    border-left: 1px solid #444;
     color: #adadad;
 }
 .kiwi-header-option a:hover,
@@ -290,7 +291,6 @@
 }
 
 .kiwi-header-option--active {
-    border-left: none;
     opacity: 1;
 }
 
@@ -381,6 +381,15 @@
 .kiwi-controlinput-inner .kiwi-controlinput-user {
     border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
+
+.kiwi-controlinput-send {
+    background: #3a3a3a;
+    color: inherit;
+}
+.kiwi-controlinput-tools {
+    background: #3a3a3a;
+}
+
 .kiwi-controlinput-active-tool {
     background: #f6f6f6;
 }
@@ -444,14 +453,6 @@
     background-color: #252525;
 }
 
-/* Standard username and usertime styling */
-.kiwi-messagelist-nick {
-    color: #000;
-}
-.kiwi-messagelist-time {
-    color: #a0a09f;
-}
-
 /* Unread user messages */
 .kiwi-messagelist-message.kiwi-messagelist-message--unread,
 .kiwi-messagelist-message.kiwi-messagelist-message--unread {
@@ -471,7 +472,7 @@
 
 
 /* The shadow over the main text area that displays when the sidebar is open */
-.kiwi-container--sidebar-open .kiwi-messagelist::after {
+.kiwi-container--sidebar-drawn .kiwi-messagelist::after {
     background-color: rgba(27, 33, 37, 0.5);
 }
 
@@ -512,6 +513,9 @@
 .kiwi-messagelist-modern-avatar {
     border: 2px solid #000000;
 }
+.kiwi-messagelist-avatar {
+    background-color: #555;
+}
 .kiwi-messagelist-message--modern .kiwi-messagelist-body a {
   color: #0093ce;
 }
@@ -520,7 +524,7 @@
 }
 
 .kiwi-messagelist-nick {
-    color: #000;
+    color: #999;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
@@ -660,6 +664,19 @@
     color: #cfcfcf;
 }
 
+.kiwi-aboutbuffer {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.kiwi-aboutbuffer h3 {
+    color: rgba(255, 255, 255, 0.71);
+}
+
+.kiwi-aboutbuffer h4 {
+    background-color: #e1e1e1;
+    color: #000;
+}
+
 /* Not connected message ( NotConnected.vue ) */
 .kiwi-notconnected {
     color: #fff;
@@ -730,7 +747,7 @@
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
     background: #a54d4d;
 }
-.kiwi-container--sidebar-pinned .kiwi-sidebar {
+.kiwi-container--sidebar-open .kiwi-sidebar {
     border-color: #b2b2b2;
 }
 
@@ -762,12 +779,11 @@
 }
 
 .kiwi-statebrowser-usermenu-avatar {
-    border: 2px solid #d8d8d8;
-    background-color: #000;
+    background-color: #999;
     color: #d8d8d8;
 }
 .kiwi-statebrowser-usermenu-avatar:hover {
-    background-color: #000000;
+    background-color: #ddd;
     color: #fff;
 }
 
@@ -788,9 +804,6 @@
 }
 
 /* User Settings */
-.kiwi-statebrowser-appsettings {
-    border: 1px solid rgba(255, 255, 255, 0.5);
-}
 .kiwi-statebrowser-appsettings:hover {
     background: #000000;
     color: #adadad;

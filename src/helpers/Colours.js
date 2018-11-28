@@ -1,10 +1,13 @@
+'kiwi public';
+
+/** @module */
 
 /**
  * Converts a hex CSS color value to RGB.
  * Adapted from http://stackoverflow.com/a/5624139.
  *
- * @param   String  hex     The hexadecimal color value
- * @return  Object          The RGB representation
+ * @param   {String}  _hex     The hexadecimal color value
+ * @return  {Object}          The RGB representation
  */
 export function hex2rgb(_hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -21,8 +24,8 @@ export function hex2rgb(_hex) {
 
 /**
  * Converts an RGB color value to a hex string.
- * @param  Object rgb RGB as r, g, and b keys
- * @return String     Hex color string
+ * @param  {Object} rgb RGB as r, g, and b keys
+ * @return {String}     Hex color string
  */
 export function rgb2hex(rgb) {
     return '#' + ['r', 'g', 'b']

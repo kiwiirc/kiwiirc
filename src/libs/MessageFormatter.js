@@ -1,3 +1,5 @@
+'kiwi public';
+
 const tokens = Object.create(null);
 
 /**
@@ -63,8 +65,21 @@ tokens['*'] = {
             return -1;
         }
 
-        // Only style if we have a closing * further on
-        if (inp.substr(pos + 1).indexOf(this.token) === -1) {
+        // * may be part of a word (ie. pasting code) or URL so only start bolding if * is after a
+        // space
+        if (pos > 0 && inp[pos - 1] !== ' ') {
+            return -1;
+        }
+
+        // Only style if:
+        //     * we have a closing * further on
+        //     * the * further on has a space after it or is the last character
+        let remainingText = inp.substr(pos + 1);
+        let nextPos = remainingText.indexOf(this.token);
+        if (
+            nextPos === -1 ||
+            (nextPos < remainingText.length - 1 && remainingText[nextPos + 1] !== ' ')
+        ) {
             return -1;
         }
 

@@ -1,3 +1,5 @@
+'kiwi public';
+
 import eventEmitter from 'event-emitter';
 
 export default class NetworkProvider {

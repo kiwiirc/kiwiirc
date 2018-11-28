@@ -40,10 +40,6 @@ msgstr "Channels"
 msgid "banned"
 msgstr "Banned Users"
 
-#: Invited Users
-msgid "invited"
-msgstr "Invited Users"
-
 #: Notifications
 msgid "notifications"
 msgstr "Notifications"
@@ -71,6 +67,10 @@ msgstr "Nick"
 #: Channel
 msgid "channel"
 msgstr "Channel"
+
+#: Messages
+msgid "messages"
+msgstr "Messages"
 
 #: Network
 msgid "network"
@@ -210,6 +210,10 @@ msgstr "Refresh Theme"
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "Theme URL"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr "Message Layout"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -378,30 +382,6 @@ msgstr "Refreshing banlist..."
 #: Nobody is banned!
 msgid "bans_nobody"
 msgstr "Nobody is banned!"
-
-
-
-#: ChannelInvitelist $t('invites_')
-
-#: Refresh invite list
-msgid "invites_refresh"
-msgstr "Refresh invite list"
-
-#: Invited user
-msgid "invites_user"
-msgstr "Invited user"
-
-#: Invited by
-msgid "invites_by"
-msgstr "Invited by"
-
-#: Refreshing invite list...
-msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
-
-#: Nobody is invited!
-msgid "invites_nobody"
-msgstr "Nobody is invited!"
 
 
 
@@ -588,9 +568,25 @@ msgstr "Reconnect to {{network}} to start talking"
 msgid "reconnect_query"
 msgstr "Reconnect to continue talking with {{user}}"
 
+#: You are not currently connected!
+msgid "not_connected"
+msgstr "You are not currently connected!"
+
 #: Connection settings
 msgid "reconnect_settings"
 msgstr "Connection settings"
+
+
+
+#: NetworkSettings $t('network_')
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr "We couldn't connect to that server :("
+
+#: Connect To Network
+msgid "network_connect"
+msgstr "Connect To Network"
 
 
 
@@ -637,6 +633,28 @@ msgid "side_buffer"
 msgstr "No buffer set"
 
 
+#: Sidebar About Buffer
+
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr "There is no topic for this channel"
+
+#: About
+msgid "about"
+msgstr "About"
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr "Created at {{when}}"
+
+#: Highlights
+msgid "highlights"
+msgstr "Highlights"
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr "Nobody has mentioned you yet..."
+
 
 #: StartupError $t('error_')
 
@@ -680,6 +698,17 @@ msgstr "Add one?"
 msgid "state_available"
 msgstr "Available networks"
 
+#: Add Network
+msgid "add_network"
+msgstr "Add Network"
+
+#: New Network
+msgid "new_network"
+msgstr "New Network"
+
+#: No Network
+msgid "no_network"
+msgstr "No Network"
 
 
 #: StateBrowserNetwork
@@ -767,6 +796,13 @@ msgstr "Ban and kick from the channel"
 
 
 
+#: Errors
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr "Please specify a channel to join. eg /join #example"
+
+
 
 #: Mode Changes $t('modes_')
 
@@ -821,6 +857,98 @@ msgstr "{{nick}} has unbanned {{target}}"
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
 msgstr "{{nick}} sets {{mode}} on {{target}}"
+
+
+
+#: autocompleteCommands  $t('command_')
+
+#: Send a message
+msgid "command_msg"
+msgstr "Send a message"
+
+#: Do something physical
+msgid "command_action"
+msgstr "Do something physical"
+
+#: Join a channel
+msgid "command_join"
+msgstr "Join a channel"
+
+#: Leave a channel
+msgid "command_part"
+msgstr "Leave a channel"
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr "Leave, then re-join a channel"
+
+#: Change your nickname
+msgid "command_nick"
+msgstr "Change your nickname"
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr "Start a private conversation with someone"
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr "Invite somebody into the channel"
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr "Set the topic for this channel"
+
+#: Send a notice
+msgid "command_notice"
+msgstr "Send a notice"
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr "Send a raw command to the IRC server"
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr "Kick somebody from the channel"
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr "Clear all messages from this window"
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr "Send a CTCP command to somebody"
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr "Disconnect from the IRC server"
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr "Connect to a new IRC network"
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr "Request information on somebody"
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr "Request information on somebody that disconnected recently"
+
+#: Mark yourself as away
+msgid "command_away"
+msgstr "Mark yourself as away"
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr "Change your connection encoding"
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr "Ignore messages from somebody"
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr "Stop ignoring somebody"
 
 
 
@@ -906,6 +1034,6 @@ msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
 msgid "now_known_as"
 msgstr "{{nick}} is now known as {{newnick}}"
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
 msgstr "{{nick}} changed the topic to: {{topic}}"

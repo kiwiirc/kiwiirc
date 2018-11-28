@@ -1,8 +1,11 @@
+'kiwi public';
+
 import * as Misc from '@/helpers/Misc';
 import Vue from 'vue';
 import _ from 'lodash';
 import NetworkState from './state/NetworkState';
 import BufferState from './state/BufferState';
+import UserState from './state/UserState';
 import Message from './Message';
 
 const stateObj = {
@@ -14,7 +17,6 @@ const stateObj = {
         plugins: [],
         windowTitle: 'Kiwi IRC - The web IRC client',
         useMonospace: false,
-        messageLayout: 'compact',
         theme: 'Default',
         themes: [
             { name: 'Default', url: 'static/themes/default' },
@@ -38,12 +40,14 @@ const stateObj = {
         warnOnExit: true,
         // Default buffer settings
         buffers: {
+            messageLayout: 'compact',
             alert_on: 'highlight',
             timestamp_format: '%H:%M:%S',
             // If timestamp_full_format is falsy, the browsers locale date format will be used
             timestamp_full_format: '',
             show_timestamps: true,
             scrollback_size: 250,
+            show_hostnames: false,
             show_joinparts: true,
             show_topics: true,
             show_nick_changes: true,
@@ -70,8 +74,12 @@ const stateObj = {
             direct: false,
             state_key: 'kiwi-state',
         },
+        noticeActiveBuffer: true,
         showAutocomplete: true,
-        sidebarPinned: false,
+        showEmojiPicker: true,
+        showSendButton: false,
+        sidebarDefault: '',
+        showRaw: false,
         aliases: `
 # General aliases
 /p /part $1+
@@ -225,7 +233,7 @@ const stateObj = {
             channel_join: '→ %text',
             channel_part: '← %text (%reason)',
             channel_quit: '← %text (%reason)',
-            channel_kicked: '← %text',
+            channel_kicked: '← %text (%reason)',
             channel_selfkick: '× %text (%reason)',
             channel_badpassword: '× %text',
             channel_topic: 'ⓘ %text',
@@ -837,6 +845,16 @@ const state = new Vue({
                 network.ircClient.part(buffer.name);
             }
 
+            // Remove the user from network state if no remaining common channels
+            if (buffer.isQuery()) {
+                let remainingBuffers = state.getBuffersWithUser(network.id, buffer.name);
+                if (remainingBuffers.length === 0) {
+                    state.removeUser(network.d, {
+                        nick: buffer.name,
+                    });
+                }
+            }
+
             if (isActiveBuffer) {
                 this.openLastActiveBuffer();
             }
@@ -921,7 +939,9 @@ const state = new Vue({
                 isNewMessage &&
                 settingAlertOn !== 'never' &&
                 message.type !== 'nick' &&
+                message.type !== 'mode' &&
                 message.type !== 'traffic' &&
+                !buffer.isSpecial() &&
                 !bufferMessage.ignore &&
                 !isSelf
             ) {
@@ -1009,15 +1029,7 @@ const state = new Vue({
             let userObj = null;
 
             if (!usersArr[user.nick.toLowerCase()]) {
-                userObj = usersArr[user.nick.toLowerCase()] = {
-                    nick: user.nick,
-                    host: user.host || '',
-                    username: user.username || '',
-                    realname: user.realname || '',
-                    modes: user.modes || '',
-                    away: user.away || '',
-                    buffers: Object.create(null),
-                };
+                userObj = usersArr[user.nick.toLowerCase()] = new UserState(user);
             } else {
                 // Update the existing user object with any new info we have
                 userObj = state.getUser(network.id, user.nick, usersArr);
@@ -1081,6 +1093,13 @@ const state = new Vue({
 
             if (!userObj) {
                 userObj = this.addUser(network, user);
+            } else {
+                // Verify the user object is correct
+                _.each(user, (val, prop) => {
+                    if (userObj[prop] !== val) {
+                        userObj[prop] = val;
+                    }
+                });
             }
 
             buffer.addUser(userObj);
@@ -1109,7 +1128,7 @@ const state = new Vue({
             let normalisedNick = nick.toLowerCase();
             let buffers = [];
             network.buffers.forEach((buffer) => {
-                if (buffer.users[normalisedNick] || buffer.name === nick) {
+                if (buffer.users[normalisedNick] || normalisedNick === buffer.name.toLowerCase()) {
                     buffers.push(buffer);
                 } else if (nick === network.nick && buffer.isQuery()) {
                     buffers.push(buffer);
@@ -1134,14 +1153,19 @@ const state = new Vue({
             let normalisedOld = oldNick.toLowerCase();
 
             user.nick = newNick;
-            state.$set(network.users, normalisedNew, network.users[normalisedOld]);
-            state.$delete(network.users, normalisedOld);
 
-            Object.keys(user.buffers).forEach((bufferId) => {
-                let buffer = user.buffers[bufferId].buffer;
-                state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
-                state.$delete(buffer.users, normalisedOld);
-            });
+            // If the nick has completely changed (ie. not just a case change) then update all
+            // associated buffers user lists
+            if (normalisedOld !== normalisedNew) {
+                state.$set(network.users, normalisedNew, network.users[normalisedOld]);
+                state.$delete(network.users, normalisedOld);
+
+                Object.keys(user.buffers).forEach((bufferId) => {
+                    let buffer = user.buffers[bufferId].buffer;
+                    state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
+                    state.$delete(buffer.users, normalisedOld);
+                });
+            }
 
             let buffer = this.getBufferByName(network.id, oldNick);
             if (buffer) {

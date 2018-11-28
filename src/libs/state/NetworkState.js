@@ -1,8 +1,12 @@
+/** @module */
+
+import { def } from './common';
 import * as IrcClient from '../IrcClient';
 
+/** The IRC network instance */
 export default class NetworkState {
     constructor(id, appState, userDict, bufferDict) {
-        // Enumerable properties that become relative under Vue
+        // Enumerable properties that become reactive under Vue
         this.id = id;
         this.name = '';
         // State of the transport
@@ -30,18 +34,29 @@ export default class NetworkState {
         this.gecos = '';
         this.password = '';
 
-        // Some non-enumerable properties
+        // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'appState', appState, false);
         def(this, 'userDict', userDict, false);
         def(this, 'bufferDict', bufferDict, false);
-        def(this, 'ircClient', IrcClient.create(appState, this), true);
+        def(this, 'frameworkClient', null, true);
 
         def(this, 'users', Object.create(null), (newVal) => {
             appState.$set(userDict.networks, this.id, newVal);
         });
 
-        def(this, 'buffers', [], false);
-        appState.$set(bufferDict.networks, this.id, this.buffers);
+        bufferDict.$set(bufferDict.networks, this.id, []);
+    }
+
+    get ircClient() {
+        if (!this.frameworkClient) {
+            this.frameworkClient = IrcClient.create(this.appState, this);
+        }
+
+        return this.frameworkClient;
+    }
+
+    get buffers() {
+        return this.bufferDict.networks[this.id];
     }
 
     connect(...args) {
@@ -82,32 +97,5 @@ export default class NetworkState {
         setImmediate(() => {
             this.appState.$emit('server.tab.show', tabName || 'settings');
         });
-    }
-}
-
-// Define a non-enumerable property on an object with an optional setter callback
-function def(target, key, value, canSet) {
-    let val = value;
-
-    let definition = {
-        get() {
-            return val;
-        },
-    };
-
-    if (canSet) {
-        definition.set = function set(newVal) {
-            let oldVal = val;
-            val = newVal;
-            if (typeof canSet === 'function') {
-                canSet(newVal, oldVal);
-            }
-        };
-    }
-
-    Object.defineProperty(target, key, definition);
-
-    if (typeof canSet === 'function') {
-        canSet(val);
     }
 }
