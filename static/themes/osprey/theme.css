@@ -500,7 +500,8 @@
 }
 
 /* MessageInfo */
-.kiwi-messagelist-message--info-open {
+.kiwi-messagelist-message--info-open,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open  {
     border-top: 1px solid #909090;
     border-bottom: 1px solid #909090;
 }

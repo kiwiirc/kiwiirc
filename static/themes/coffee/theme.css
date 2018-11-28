@@ -374,7 +374,8 @@
 .kiwi-messagelist {
     background: #fff;
 }
-.kiwi-messagelist-message--info-open {
+.kiwi-messagelist-message--info-open,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open  {
     background: #f6f6f6;
 }
 .kiwi-messageinfo-urls {
@@ -492,7 +493,8 @@
 }
 
 /* MessageInfo */
-.kiwi-messagelist-message--info-open {
+.kiwi-messagelist-message--info-open,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open  {
     border-top: 1px solid #909090;
     border-bottom: 1px solid #909090;
 }

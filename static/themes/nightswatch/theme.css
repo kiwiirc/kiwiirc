@@ -554,9 +554,11 @@
 
 
 /* MessageInfo */
-.kiwi-messagelist-message--info-open {
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+.kiwi-messagelist-message--info-open,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open {
+    border-top: 1px solid #585858;
+    border-bottom: 1px solid #585858;
+    background: #131319;
 }
 
 /* MessageInfo URLs */

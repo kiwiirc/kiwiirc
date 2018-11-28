@@ -362,7 +362,8 @@
     background: #fff;
 }
 
-.kiwi-messagelist-message--info-open {
+.kiwi-messagelist-message--info-open,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open  {
     background: #f6f6f6;
 }
 .kiwi-messagelist-message-action .kiwi-messagelist-body {
