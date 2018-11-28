@@ -131,6 +131,8 @@ inputCommands.lines = function inputCommandLines(event, command, line) {
 };
 
 function handleMessage(type, event, command, line) {
+    if (event.handled) return;
+
     event.handled = true;
 
     let network = this.state.getActiveNetwork();
