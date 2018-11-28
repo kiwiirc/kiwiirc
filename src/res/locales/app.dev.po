@@ -40,6 +40,10 @@ msgstr "Channels"
 msgid "banned"
 msgstr "Banned Users"
 
+#: Invited Users
+msgid "invited"
+msgstr "Invited Users"
+
 #: Notifications
 msgid "notifications"
 msgstr "Notifications"
@@ -382,6 +386,30 @@ msgstr "Refreshing banlist..."
 #: Nobody is banned!
 msgid "bans_nobody"
 msgstr "Nobody is banned!"
+
+
+
+#: ChannelInvitelist $t('invites_')
+
+#: Refresh invite list
+msgid "invites_refresh"
+msgstr "Refresh invite list"
+
+#: Invited user
+msgid "invites_user"
+msgstr "Invited user"
+
+#: Invited by
+msgid "invites_by"
+msgstr "Invited by"
+
+#: Refreshing invite list...
+msgid "invites_refreshing"
+msgstr "Refreshing invite list..."
+
+#: Nobody is invited!
+msgid "invites_nobody"
+msgstr "Nobody is invited!"
 
 
 
