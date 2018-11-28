@@ -29,7 +29,7 @@
                         v-if="show_password_box"
                         :label="$t('password')"
                         v-model="password"
-                        class="kiwi-welcome-simple-password input-text--reveal-value"
+                        class="kiwi-welcome-simple-password kiwi-input-text--reveal-value"
                         type="password"
                     />
                     <input-text
@@ -42,7 +42,7 @@
                     <div
                         v-if="recaptchaSiteId"
                         :data-sitekey="recaptchaSiteId"
-                        class="g-recaptcha"
+                        class="kiwi-g-recaptcha"
                     />
 
                     <button
@@ -313,7 +313,7 @@ export default {
     margin-top: 2px;
 }
 
-.kiwi-welcome-simple .g-recaptcha {
+.kiwi-welcome-simple .kiwi-g-recaptcha {
     margin-bottom: 10px;
 }
 

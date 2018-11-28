@@ -1,13 +1,13 @@
 <template>
     <div
         :class="[
-            'input-text',
-            hasFocus ? 'input-text--focus' : '',
-            hasFocus || currentValue ? 'input-text--reveal-value' : ''
+            'kiwi-input-text',
+            hasFocus ? 'kiwi-input-text--focus' : '',
+            hasFocus || currentValue ? 'kiwi-input-text--reveal-value' : ''
         ]"
     >
 
-        <span class="input-text-label">{{ label }}</span>
+        <span class="kiwi-input-text-label">{{ label }}</span>
 
         <input
             v-if="type==='password'"
@@ -32,12 +32,12 @@
             autocapitalize="off" spellcheck="false" @focus="hasFocus=true" @blur="hasFocus=false"
         >
 
-        <div v-if="$slots.default" class="input-text-c">
+        <div v-if="$slots.default" class="kiwi-input-text-c">
             <slot/>
         </div>
 
-        <div class="input-text-underline">
-            <div class="input-text-underline-active"/>
+        <div class="kiwi-input-text-underline">
+            <div class="kiwi-input-text-underline-active"/>
         </div>
     </div>
 </template>
@@ -74,12 +74,12 @@ export default Vue.component('input-text', {
 
 <style>
 
-.input-text {
+.kiwi-input-text {
     position: relative;
     padding-top: 1.2em;
 }
 
-.input-text input {
+.kiwi-input-text input {
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -90,7 +90,7 @@ export default Vue.component('input-text', {
     font-size: 0.9em;
 }
 
-.input-text-label {
+.kiwi-input-text-label {
     position: absolute;
     left: 3px;
     top: 1.2em;
@@ -98,24 +98,24 @@ export default Vue.component('input-text', {
     pointer-events: none;
 }
 
-.input-text--reveal-value .input-text-label {
+.kiwi-input-text--reveal-value .kiwi-input-text-label {
     top: -7px;
     font-size: 0.8em;
 }
 
-.input-text-c {
+.kiwi-input-text-c {
     position: absolute;
     right: 0;
     bottom: 0;
 }
 
-.input-text-underline {
+.kiwi-input-text-underline {
     border-width: 0;
     border-bottom: 1px solid #a9a9a9;
     position: relative;
 }
 
-.input-text-underline-active {
+.kiwi-input-text-underline-active {
     background: #42b983;
     transition: left 0.3s;
     position: absolute;
@@ -125,7 +125,7 @@ export default Vue.component('input-text', {
     left: 100%;
 }
 
-.input-text--focus .input-text-underline-active {
+.kiwi-input-text--focus .kiwi-input-text-underline-active {
     left: 0;
 }
 
