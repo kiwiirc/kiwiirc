@@ -587,13 +587,11 @@
 }
 
 .kiwi-messageinfo-actions .u-link.kick-user {
-    background: #f6c358;
-    color: #fff;
+    color: #f6c358;
 }
 
 .kiwi-messageinfo-actions .u-link.ban-user {
-    background: #fcb46e;
-    color: #fff;
+    color: #fcb46e;
 }
 
 
@@ -818,11 +816,6 @@
 }
 .kiwi-statebrowser-divider {
     background: rgba(255, 255, 255, 0.3);
-}
-
-.kiwi-messageinfo {
-    border-bottom: 2px #f1f1f1 solid;
-    border-top: 1px #f1f1f1 solid;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
