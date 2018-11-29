@@ -890,7 +890,7 @@
     color: #dedede;
 }
 
-.kiwi-network-name-options .kiwi--collapse {
+.kiwi-network-name-option-collapse {
     background: #d16c6c;
 }
 
@@ -981,7 +981,7 @@
     border-left: 3px solid #42b992;
 }
 
-.kiwi-search-channels.active{
+.kiwi-network-name-option-chanfilter.active{
     background: #42b992;
 }
 

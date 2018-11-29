@@ -15,21 +15,21 @@
             <div class="kiwi-network-name-options">
                 <div
                     v-if="totalNetworkCount > 1"
-                    class="kiwi-network-name-option kiwi--collapse"
+                    class="kiwi-network-name-option kiwi-network-name-option-collapse"
                     @click="collapsed=!collapsed"
                 >
                     <i :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" class="fa" />
                 </div>
                 <div
                     :class="{ active: channel_add_display == true }"
-                    class="kiwi-network-name-option kiwi--channel"
+                    class="kiwi-network-name-option kiwi-network-name-option-channel"
                     @click="toggleAddChannel()"
                 >
                     <i class="fa fa-plus" aria-hidden="true"/>
                 </div>
                 <div
                     :class="{ active: channel_filter_display == true }"
-                    class="kiwi-network-name-option kiwi-search-channels"
+                    class="kiwi-network-name-option kiwi-network-name-option-chanfilter"
                     @click="toggleFilterChannel()"
                 >
                     <i class="fa fa-search" aria-hidden="true"/>

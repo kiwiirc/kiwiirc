@@ -794,7 +794,7 @@
 .kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
     border-left: 3px solid #42b992;
 }
-.kiwi-search-channels.active{
+.kiwi-network-name-option-chanfilter.active{
     background: #42b992;
 }
 

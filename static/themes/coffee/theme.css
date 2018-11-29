@@ -736,7 +736,7 @@
     background-color: #a2846e;
     color: #fff;
 }
-.kiwi-network-name-options .kiwi--collapse {
+.kiwi-network-name-option-collapse {
     background: #d16c6c;
 }
 
@@ -814,7 +814,7 @@
 .kiwi-statebrowser-channels  .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name  .kiwi-statebrowser-channel-label {
     background: #d16c6c;
 }
-.kiwi-search-channels.active{
+.kiwi-network-name-option-chanfilter.active{
     background: #a2846e;
 }
 
