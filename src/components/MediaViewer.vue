@@ -19,7 +19,7 @@
                 v-else
                 :href="url"
                 :data-card-key="embedlyKey"
-                class="embedly-card"
+                class="kiwi-embedly-card"
                 data-card-chrome="0"
                 data-card-controls="0"
                 data-card-recommend="0"
@@ -75,7 +75,7 @@ export default {
                     setTimeout(checkEmbedlyAndShowCard, 100);
                     return;
                 }
-                window.embedly('card', { selector: '.embedly-card' });
+                window.embedly('card', { selector: '.kiwi-embedly-card' });
             };
 
             if (!embedlyTagIncluded) {
