@@ -4,6 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const inputExt = (process.env.NODE_ENV === 'module' ? 'vue' : 'js')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -25,7 +26,7 @@ module.exports = {
   entry: {
     app: [
         'core-js/fn/promise', // required by the webpack runtime for async import(). babel polyfills don't help us here. ie11
-        './src/main.' + (process.env.NODE_ENV === 'module' ? 'vue' : 'js')
+        './src/main.' + inputExt
     ]
   },
   output: {

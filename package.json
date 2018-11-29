@@ -16,7 +16,7 @@
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:fix": "npm run lint:eslint -- --fix && npm run lint:stylelint -- --fix",
     "gendocs": "rm -rf srcdocs/ && jsdoc -c jsdoc.json",
-    "install": "if [ $(basename $(dirname $(pwd))) = \"node_modules\" ];then node build/buildModule.js;fi"
+    "install": "if [ $(basename $(dirname $(pwd))) = \"node_modules\" ];then node build/module.js;fi"
   },
   "engines": {
     "node": ">=6",
