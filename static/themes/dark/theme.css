@@ -876,7 +876,7 @@
 }
 
 .kiwi-network-name-hover-icon,
-.kiwi-network-name-options .kiwi-option-button {
+.kiwi-network-name-option {
     color: #dedede;
 }
 
@@ -884,8 +884,8 @@
     background-color: #131312;
 }
 
-.kiwi-network-name-options .kiwi-option-button:hover,
-.kiwi-network-name-options .kiwi-option-button.active {
+.kiwi-network-name-option:hover,
+.kiwi-network-name-option.active {
     background-color: #42b992;
     color: #dedede;
 }

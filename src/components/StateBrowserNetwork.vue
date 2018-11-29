@@ -15,21 +15,21 @@
             <div class="kiwi-network-name-options">
                 <div
                     v-if="totalNetworkCount > 1"
-                    class="kiwi-option-button kiwi--collapse"
+                    class="kiwi-network-name-option kiwi--collapse"
                     @click="collapsed=!collapsed"
                 >
                     <i :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" class="fa" />
                 </div>
                 <div
                     :class="{ active: channel_add_display == true }"
-                    class="kiwi-option-button kiwi--channel"
+                    class="kiwi-network-name-option kiwi--channel"
                     @click="toggleAddChannel()"
                 >
                     <i class="fa fa-plus" aria-hidden="true"/>
                 </div>
                 <div
                     :class="{ active: channel_filter_display == true }"
-                    class="kiwi-option-button kiwi-search-channels"
+                    class="kiwi-network-name-option kiwi-search-channels"
                     @click="toggleFilterChannel()"
                 >
                     <i class="fa fa-search" aria-hidden="true"/>
@@ -368,7 +368,7 @@ export default {
     opacity: 1;
 }
 
-.kiwi-network-name-options .kiwi-option-button {
+.kiwi-network-name-option {
     float: right;
     width: 35px;
     transition: all 0.15s;
