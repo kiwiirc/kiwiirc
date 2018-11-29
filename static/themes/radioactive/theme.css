@@ -74,19 +74,19 @@
 }
 
 /*Style all inputs */
-.input-text {
+.kiwi-input-text {
     background: #fff;
 }
-.input-text-label {
+.kiwi-input-text-label {
     color: #6fffb0;
 }
-.input-text--focus {
+.kiwi-input-text--focus {
     border-color: #1b2f24;
 }
-.input-text-underline {
+.kiwi-input-text-underline {
     border-color: #a9a9a9;
 }
-.input-text-underline-active {
+.kiwi-input-text-underline-active {
     background: #1b2f24;
 }
 .u-form .u-input,
@@ -762,8 +762,8 @@
 .kiwi-network-name-options {
     background-color: #5dd895;
 }
-.kiwi-network-name-options .option-button:hover,
-.kiwi-network-name-options .option-button.active {
+.kiwi-network-name-options .kiwi-option-button:hover,
+.kiwi-network-name-options .kiwi-option-button.active {
     background-color: #6efdb0;
     color: #fff;
 }
@@ -1052,11 +1052,11 @@
     border: 1px solid #6fffb0;
 }
 
-.kiwi-customserver-form .input-text {
+.kiwi-customserver-form .kiwi-input-text {
     background-color: #151414;
 }
 
-.kiwi-customserver-form .input-text input {
+.kiwi-customserver-form .kiwi-input-text input {
     background-color: #151414;
     color: #fff;
 }

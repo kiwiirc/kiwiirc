@@ -72,19 +72,19 @@
 }
 
 /*Style all inputs */
-.input-text {
+.kiwi-input-text {
     background: #fff;
 }
-.input-text-label {
+.kiwi-input-text-label {
     color: gray;
 }
-.input-text--focus {
+.kiwi-input-text--focus {
     border-color: #a2846e;
 }
-.input-text-underline {
+.kiwi-input-text-underline {
     border-color: #a9a9a9;
 }
-.input-text-underline-active {
+.kiwi-input-text-underline-active {
     background: #a2846e;
 }
 .u-form .u-input,
@@ -731,8 +731,8 @@
     background-color: #8e715c;
     color: #fff;
 }
-.kiwi-network-name-options .option-button:hover,
-.kiwi-network-name-options .option-button.active {
+.kiwi-network-name-options .kiwi-option-button:hover,
+.kiwi-network-name-options .kiwi-option-button.active {
     background-color: #a2846e;
     color: #fff;
 }
@@ -1009,11 +1009,11 @@
     border: 1px solid #a2846e;
 }
 
-.kiwi-customserver-form .input-text {
+.kiwi-customserver-form .kiwi-input-text {
     background-color: #fff;
 }
 
-.kiwi-customserver-form .input-text .input-text-label {
+.kiwi-customserver-form .kiwi-input-text .kiwi-input-text-label {
     color: #a2846e;
 }
 

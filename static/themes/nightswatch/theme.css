@@ -28,12 +28,12 @@
     border: 1px dashed #d86f6f;
 }
 
-.kiwi-welcome-simple .input-text {
+.kiwi-welcome-simple .kiwi-input-text {
     opacity: 1;
     background: none;
 }
 
-.kiwi-welcome-simple .input-text input {
+.kiwi-welcome-simple .kiwi-input-text input {
     color: #fff;
 }
 
@@ -59,7 +59,7 @@
     color: #fff;
 }
 
-.kiwi-welcome-simple .input-text-label {
+.kiwi-welcome-simple .kiwi-input-text-label {
     color: #fff;
 }
 
@@ -109,19 +109,19 @@
 }
 
 /*Style all inputs */
-.input-text {
+.kiwi-input-text {
     background: #adadad;
 }
-.input-text-label {
+.kiwi-input-text-label {
     color: gray;
 }
-.input-text--focus {
+.kiwi-input-text--focus {
     border-color: #000000;
 }
-.input-text-underline {
+.kiwi-input-text-underline {
     border-color: #a9a9a9;
 }
-.input-text-underline-active {
+.kiwi-input-text-underline-active {
     background: #000000;
 }
 .u-form .u-input,
@@ -135,11 +135,11 @@
 .u-form label input[type='password'],
 .u-form label input[type='email'],
 .u-form textarea,
-.kiwi-networksettings .input-text input {
+.kiwi-networksettings .kiwi-input-text input {
     border: 1px solid #000000;
 }
 
-.kiwi-networksettings .input-text input {
+.kiwi-networksettings .kiwi-input-text input {
     border: none;
 }
 
@@ -821,8 +821,8 @@
 .kiwi-network-name-options {
     background-color: #000000;
 }
-.kiwi-network-name-options .option-button:hover,
-.kiwi-network-name-options .option-button.active {
+.kiwi-network-name-options .kiwi-option-button:hover,
+.kiwi-network-name-options .kiwi-option-button.active {
     background-color: #6a7b8e;
     color: #adadad;
 }
@@ -1117,15 +1117,15 @@
     border: 1px solid #adadad;
 }
 
-.kiwi-customserver-form .input-text {
+.kiwi-customserver-form .kiwi-input-text {
     background-color: #000;
 }
 
-.kiwi-customserver .input-text input {
+.kiwi-customserver .kiwi-input-text input {
     color: #fff;
 }
 
-.kiwi-customserver-form .input-text .input-text-label {
+.kiwi-customserver-form .kiwi-input-text .kiwi-input-text-label {
     color: #adadad;
 }
 
@@ -1170,10 +1170,10 @@
 }
 
 /* Nightwatch exclusive fix for network settings labels */
-.kiwi-networksettings .u-form .input-text .input-text-label {
+.kiwi-networksettings .u-form .kiwi-input-text .kiwi-input-text-label {
     margin-left: 0;
 }
-.kiwi-networksettings .u-form .input-text--reveal-value span {
+.kiwi-networksettings .u-form .kiwi-input-text--reveal-value span {
     top: -22px;
     color: #fff;
 }

@@ -71,19 +71,19 @@
 }
 
 /*Style all inputs */
-.input-text {
+.kiwi-input-text {
     background: #fff;
 }
-.input-text-label {
+.kiwi-input-text-label {
     color: gray;
 }
-.input-text--focus {
+.kiwi-input-text--focus {
     border-color: #78c9dc;
 }
-.input-text-underline {
+.kiwi-input-text-underline {
     border-color: #a9a9a9;
 }
-.input-text-underline-active {
+.kiwi-input-text-underline-active {
     background: #78c9dc;
 }
 .u-form .u-input,
@@ -717,8 +717,8 @@
 .kiwi-network-name-options {
     background-color: #69bdd0;
 }
-.kiwi-network-name-options .option-button:hover,
-.kiwi-network-name-options .option-button.active {
+.kiwi-network-name-options .kiwi-option-button:hover,
+.kiwi-network-name-options .kiwi-option-button.active {
     background-color: #6a7b8e;
     color: #fff;
 }

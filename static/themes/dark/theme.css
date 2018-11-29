@@ -26,7 +26,7 @@
     border: 1px solid #ececec;
 }
 
-.kiwi-welcome-simple-form .input-text {
+.kiwi-welcome-simple-form .kiwi-input-text {
     background: #fff;
 }
 
@@ -60,7 +60,7 @@
     color: #000;
 }
 
-.kiwi-welcome-znc .input-text {
+.kiwi-welcome-znc .kiwi-input-text {
     background: #fff;
 }
 
@@ -94,23 +94,23 @@
 }
 
 /* Style all inputs */
-.input-text {
+.kiwi-input-text {
     background: #dedede;
 }
 
-.input-text-label {
+.kiwi-input-text-label {
     color: gray;
 }
 
-.input-text--focus {
+.kiwi-input-text--focus {
     border-color: #42b992;
 }
 
-.input-text-underline {
+.kiwi-input-text-underline {
     border-color: #a9a9a9;
 }
 
-.input-text-underline-active {
+.kiwi-input-text-underline-active {
     background: #42b992;
 }
 
@@ -656,7 +656,7 @@
 .kiwi-networksettings input[type='password'],
 .kiwi-networksettings input[type='email'],
 .kiwi-networksettings textarea,
-.kiwi-networksettings .input-text input {
+.kiwi-networksettings .kiwi-input-text input {
     background: rgb(62, 62, 62);
     color: #fff;
 }
@@ -671,7 +671,7 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.kiwi-networksettings .u-form .input-text {
+.kiwi-networksettings .u-form .kiwi-input-text {
     background: none;
 }
 
@@ -876,7 +876,7 @@
 }
 
 .kiwi-network-name-hover-icon,
-.kiwi-network-name-options .option-button {
+.kiwi-network-name-options .kiwi-option-button {
     color: #dedede;
 }
 
@@ -884,8 +884,8 @@
     background-color: #131312;
 }
 
-.kiwi-network-name-options .option-button:hover,
-.kiwi-network-name-options .option-button.active {
+.kiwi-network-name-options .kiwi-option-button:hover,
+.kiwi-network-name-options .kiwi-option-button.active {
     background-color: #42b992;
     color: #dedede;
 }
@@ -1205,11 +1205,11 @@
     border: 1px solid #a2846e;
 }
 
-.kiwi-customserver-form .input-text {
+.kiwi-customserver-form .kiwi-input-text {
     background-color: #fff;
 }
 
-.kiwi-customserver-form .input-text .input-text-label {
+.kiwi-customserver-form .kiwi-input-text .kiwi-input-text-label {
     color: #42b992;
 }
 
