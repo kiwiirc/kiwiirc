@@ -81,19 +81,19 @@
 }
 
 /*Style all inputs */
-.kiwi-input-text {
+.u-input-text {
     background: #fff;
 }
-.kiwi-input-text-label {
+.u-input-text-label {
     color: gray;
 }
-.kiwi-input-text--focus {
+.u-input-text--focus {
     border-color: #4d6075;
 }
-.kiwi-input-text-underline {
+.u-input-text-underline {
     border-color: #a9a9a9;
 }
-.kiwi-input-text-underline-active {
+.u-input-text-underline-active {
     background: #4d6075;
 }
 .u-form .u-input,
