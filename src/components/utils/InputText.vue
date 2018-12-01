@@ -82,7 +82,6 @@ export default Vue.component('input-text', {
 .u-input-text input {
     display: block;
     box-sizing: border-box;
-    height: 40px;
     width: 100%;
     background-color: transparent;
     border: none;
