@@ -291,6 +291,10 @@ export default {
     font-size: 0.8em;
 }
 
+.kiwi-networksettings .u-input-text input {
+    height: 40px;
+}
+
 .kiwi-networksettings input[type='text'],
     .kiwi-networksettings input[type='password'],
     .kiwi-networksettings input[type='email'],
