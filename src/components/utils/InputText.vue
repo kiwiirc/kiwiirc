@@ -44,7 +44,9 @@
 
 <script>
 'kiwi public';
+
 let Vue = require('vue');
+
 export default Vue.component('input-text', {
     props: ['value', 'label', 'type'],
     data: function data() {
@@ -71,10 +73,12 @@ export default Vue.component('input-text', {
 </script>
 
 <style>
+
 .u-input-text {
     position: relative;
     padding-top: 1.2em;
 }
+
 .u-input-text input {
     display: block;
     box-sizing: border-box;
@@ -85,6 +89,7 @@ export default Vue.component('input-text', {
     line-height: 1.6em;
     font-size: 0.9em;
 }
+
 .u-input-text-label {
     position: absolute;
     left: 3px;
@@ -92,20 +97,24 @@ export default Vue.component('input-text', {
     transition: top 0.2s, font-size 0.2s;
     pointer-events: none;
 }
+
 .u-input-text--reveal-value .u-input-text-label {
     top: -7px;
     font-size: 0.8em;
 }
+
 .u-input-text-c {
     position: absolute;
     right: 0;
     bottom: 0;
 }
+
 .u-input-text-underline {
     border-width: 0;
     border-bottom: 1px solid #a9a9a9;
     position: relative;
 }
+
 .u-input-text-underline-active {
     background: #42b983;
     transition: left 0.3s;
@@ -115,7 +124,9 @@ export default Vue.component('input-text', {
     right: 0;
     left: 100%;
 }
+
 .u-input-text--focus .u-input-text-underline-active {
     left: 0;
 }
+
 </style>
