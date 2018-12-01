@@ -296,7 +296,6 @@ export default {
     width: 100%;
     height: 40px;
     padding: 0 10px;
-    line-height: 40px;
     box-sizing: border-box;
     border-radius: 1px;
     min-height: none;
