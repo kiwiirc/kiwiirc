@@ -270,6 +270,11 @@ export default {
     border-radius: 2px;
 }
 
+.kiwi-networksettings .u-form .u-input-text {
+    padding-top: 0;
+    margin-bottom: 40px;
+}
+
 .kiwi-networksettings .u-form span {
     display: inline-block;
     line-height: 25px;
@@ -281,9 +286,8 @@ export default {
     top: 10px;
 }
 
-.kiwi-networksettings .u-form .input-text--reveal-value span {
+.kiwi-networksettings .u-form .u-input-text--reveal-value span {
     top: -14px;
-    font-size: 1em;
     font-size: 0.8em;
 }
 
