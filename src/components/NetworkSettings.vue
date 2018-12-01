@@ -295,7 +295,7 @@ export default {
     .kiwi-networksettings input[type='password'],
     .kiwi-networksettings input[type='email'],
     .kiwi-networksettings textarea,
-    .kiwi-networksettings .input-text input {
+    .kiwi-networksettings .u-input-text input {
     clear: both;
     width: 100%;
     height: 40px;
@@ -309,7 +309,7 @@ export default {
     max-width: none;
 }
 
-.kiwi-networksettings .input-text {
+.kiwi-networksettings .u-input-text {
     padding-top: 0;
     margin-bottom: 20px;
 }
@@ -322,7 +322,7 @@ export default {
 }
 
 //Style the 'secrue/unsecure' port icon
-.kiwi-networksettings .input-text-c {
+.kiwi-networksettings .u-input-text-c {
     bottom: auto;
     height: 40px;
     line-height: 40px;
@@ -370,7 +370,7 @@ export default {
 }
 
 //User nickname input, remove bottom margin
-.kiwi-networksettings form .kiwi-networksettings-user .input-text {
+.kiwi-networksettings form .kiwi-networksettings-user .u-input-text {
     margin-bottom: 10px;
 }
 
@@ -450,7 +450,7 @@ export default {
     float: right;
 }
 
-.kiwi-networksettings-connection-port span.input-text-label {
+.kiwi-networksettings-connection-port span.u-input-text-label {
     top: -16px;
 }
 
