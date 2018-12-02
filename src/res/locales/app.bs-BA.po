@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-11-27 05:59\n"
+"PO-Revision-Date: 2018-12-02 02:00\n"
 
 #: Start
 msgid "start_button"
@@ -727,7 +727,7 @@ msgstr "Banuj i izbaci sa kanala"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr ""
+msgstr "Molimo naznačite na koji kanal se želite sojiti. npr /join #primjer"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -783,7 +783,7 @@ msgstr "{{nick}} postavlja {{mode}} za {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Pošalji poruku"
 
 #: Do something physical
 msgid "command_action"
