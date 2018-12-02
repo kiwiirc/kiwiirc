@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-12-02 02:00\n"
+"PO-Revision-Date: 2018-12-02 02:10\n"
 
 #: Start
 msgid "start_button"
@@ -787,87 +787,87 @@ msgstr "Pošalji poruku"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Rekreirajte se"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Pridružite se kanalu"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Napustite kanal"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Napusti, pa ponovno pristupi kanalu"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Promijeni nadimak"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Započni privatni razgovor s nekim"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Pozovi nekoga na kanal"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Postavi temu za ovaj kanal"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Pošalji napomenu"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Pošalji komandu na IRC server"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Izbaci nekoga sa kanala"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Očisti sve poruke sa prozora"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Pošalji CTCP komandu nekome"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Odspoji se sa IRC servera"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Spoji se na novu IRC mrežu"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Zatraži informacije o nekome"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Zatraži informacije o nekome ko se nedavno odspojio"
 
 #: Mark yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Označi sebe odsutnim"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Promijeni način kodiranja konektovanja"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Ignoriši poruke od nekoga"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Prestani ignorisati nekoga"
 
 #: Your IRC client
 msgid "personal_client"
