@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-11-27 06:40\n"
+"PO-Revision-Date: 2018-12-03 08:30\n"
 
 #: Start
 msgid "start_button"
@@ -787,7 +787,7 @@ msgstr "Invia un messaggio"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Fa qualcosa di fisico"
 
 #: Join a channel
 msgid "command_join"
