@@ -56,12 +56,12 @@ export default class InputHandler {
         const { network, buffer } = context;
         let line = rawLine;
 
-        // If no command specified, server buffers = send raw, channels/queries = send message
-        let escapedCommand = line.substr(0, 2) === '//';
         let tmp = line.split('/');
         if (tmp.length && tmp[0].indexOf(String.fromCharCode(3)) !== -1 && tmp[0].length < 5) {
             line = line.substr(line.indexOf('/')).split(String.fromCharCode(3))[0];
         }
+        // If no command specified, server buffers = send raw, channels/queries = send message
+        let escapedCommand = line.substr(0, 2) === '//';
         if (line[0] !== '/' || escapedCommand) {
             if (escapedCommand) {
                 line = line.substr(1);
