@@ -195,10 +195,10 @@ export default {
             window.location.reload();
         },
         clickClearNotices() {
-            state.networks.forEach((e) => {
-                e.buffers.forEach((el) => {
-                    el.flags.unread = 0;
-                    el.flags.highlight = false;
+            state.networks.forEach((network) => {
+                network.buffers.forEach((buffer) => {
+                    buffer.flags.unread = 0;
+                    buffer.flags.highlight = false;
                 });
             });
         },
