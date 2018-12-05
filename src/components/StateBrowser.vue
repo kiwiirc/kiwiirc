@@ -28,6 +28,8 @@
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
                 <p> {{ $t('state_remembered') }} </p>
                 <a class="u-link" @click="clickForget">{{ $t('state_forget') }}</a>
+                <br>
+                <a class="u-link" @click="clickClearNotices">{{ $t('state_clear_notices') }}</a>
                 <div class="kiwi-close-icon" @click="is_usermenu_open=false">
                     <i class="fa fa-times" aria-hidden="true"/>
                 </div>
@@ -121,7 +123,7 @@ export default {
         StateBrowserNetwork,
     },
     props: ['networks', 'sidebarState'],
-    data: function data() {
+    data() {
         return {
             is_usermenu_open: false,
             show_provided_networks: false,
@@ -146,28 +148,28 @@ export default {
             }
             return name;
         },
-        isPersistingState: function isPersistingState() {
+        isPersistingState() {
             return !!state.persistence;
         },
-        isRestrictedServer: function isRestrictedServer() {
+        isRestrictedServer() {
             return !!state.settings.restricted;
         },
-        networksToShow: function networksToShow() {
+        networksToShow() {
             let bncNet = state.setting('bnc').network;
             return this.networks.filter(network => network !== bncNet);
         },
-        isConnected: function isConnected() {
+        isConnected() {
             let network = state.getActiveNetwork();
             return network && network.state === 'connected';
         },
     },
-    created: function created() {
+    created() {
         netProv.on('networks', (networks) => {
             this.provided_networks = networks;
         });
     },
     methods: {
-        clickAddNetwork: function clickAddNetwork() {
+        clickAddNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
             let network = state.getNetworkFromAddress('');
             if (typeof network === 'undefined') {
@@ -175,13 +177,13 @@ export default {
             }
             network.showServerBuffer('settings');
         },
-        clickAppSettings: function clickAppSettings() {
+        clickAppSettings() {
             state.$emit('active.component', AppSettings);
         },
-        hideStatebrowser: function hideStatebrowser() {
+        hideStatebrowser() {
             state.$emit('statebrowser.hide');
         },
-        clickForget: function clickForget() {
+        clickForget() {
             let msg = 'This will delete all stored networks and start fresh. Are you sure?';
             /* eslint-disable no-restricted-globals, no-alert */
             let confirmed = confirm(msg);
@@ -192,7 +194,15 @@ export default {
             state.persistence.forgetState();
             window.location.reload();
         },
-        connectProvidedNetwork: function connectProvidedNetwork(pNet) {
+        clickClearNotices() {
+            state.networks.forEach((e) => {
+                e.buffers.forEach((el) => {
+                    el.flags.unread = 0;
+                    el.flags.highlight = false;
+                });
+            });
+        },
+        connectProvidedNetwork(pNet) {
             let net = state.addNetwork(pNet.name, pNet.nick, {
                 server: pNet.server,
                 port: pNet.port,
