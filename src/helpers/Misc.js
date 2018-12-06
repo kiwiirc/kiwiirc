@@ -115,7 +115,7 @@ export function networkErrorMessage(err) {
  * @param {string} str The connection string URI
  */
 export function parseIrcUri(str) {
-    let reg = /(?:(ircs?):\/\/)?([a-z.0-9]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
+    let reg = /(?:(ircs?):\/\/)?([a-z.0-9-]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
     let connections = [];
     str.split(';').forEach((connectionString) => {
         if (!connectionString) {
