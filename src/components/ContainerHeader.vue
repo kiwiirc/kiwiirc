@@ -121,6 +121,16 @@
             <div class="kiwi-header-name">{{ buffer.name }}</div>
             <div :key="buffer.id" class="kiwi-header-options">
                 <div
+                    :class="{
+                        'kiwi-header-option--active': sidebarState.sidebarSection === 'user'
+                    }"
+                    class="kiwi-header-option kiwi-header-option-user"
+                >
+                    <a @click="sidebarState.toggleUser(buffer.name)">
+                        <i class="fa fa-user" aria-hidden="true"/>
+                    </a>
+                </div>
+                <div
                     v-rawElement="plugin.el"
                     v-for="plugin in pluginUiQueryElements"
                     :key="plugin.id"

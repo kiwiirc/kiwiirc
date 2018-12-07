@@ -157,7 +157,6 @@ export default {
         openQuery(user) {
             let buffer = this.$state.addBuffer(this.buffer.networkid, user.nick);
             this.$state.setActiveBuffer(buffer.networkid, buffer.name);
-            this.sidebarState.close();
         },
         openUserbox(user) {
             this.$state.$emit('userbox.show', user, {

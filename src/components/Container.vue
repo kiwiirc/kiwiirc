@@ -3,7 +3,7 @@
         /* 'kiwi-container-' + bufferType: true, */
         'kiwi-container--sidebar-drawn': sidebarState.isDrawn,
         'kiwi-container--sidebar-open': sidebarState.isOpen,
-        'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
+        'kiwi-container--no-sidebar': !sidebarState.isDrawn && !sidebarState.isOpen,
     }" class="kiwi-container">
         <template v-if="buffer">
             <div class="kiwi-container-toggledraw-statebrowser" @click.stop="toggleStateBrowser">
@@ -28,7 +28,7 @@
                 <template v-else>
                     <message-list :buffer="buffer"/>
                     <sidebar
-                        v-if="buffer.isChannel() /* There are no sidebars for queries yet */"
+                        v-if="buffer.isChannel() || buffer.isQuery()"
                         :network="network"
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
@@ -101,11 +101,11 @@ export default {
         },
     },
     created: function created() {
-        this.listen(state, 'sidebar.toggle', () => {
-            state.$emit('sidebar.' + (this.sidebarState.isDrawn ? 'hide' : 'show'));
+        this.listen(state, 'sidebar.toggle', (section, opts) => {
+            this.sidebarState.toggleSidebar(section, opts);
         });
-        this.listen(state, 'sidebar.show', () => {
-            this.sidebarState.showNicklist();
+        this.listen(state, 'sidebar.show', (section, opts) => {
+            this.sidebarState.showSidebar(section, opts);
         });
         this.listen(state, 'sidebar.hide', () => {
             this.sidebarState.close();

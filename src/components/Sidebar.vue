@@ -110,6 +110,17 @@
                 ignore this user<br />
                 something else
                 -->
+                <div
+                    v-if="section === 'user'"
+                    class="kiwi-sidebar-userbox"
+                    @click.stop=""
+                >
+                    <user-box
+                        :user="sidebarState.sidebarUser"
+                        :buffer="buffer"
+                        :network="network"
+                    />
+                </div>
             </template>
         </template>
         <template v-else>
