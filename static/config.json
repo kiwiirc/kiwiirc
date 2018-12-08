@@ -21,7 +21,8 @@
         "direct": false,
         "channel": "#kiwiirc-default",
         "nick": "kiwi-n?",
-        "checkNickname": true
+        "nickname_check_rules": "^[a-z_\\\\[\\]{}^`|][a-z0-9_\\-\\\\[\\]{}^`|]*$",
+        "nickname_check_rules_mode": "i"
     },
     "embedly": {
         "key": ""
