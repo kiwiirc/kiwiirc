@@ -20,7 +20,8 @@
         "tls": false,
         "direct": false,
         "channel": "#kiwiirc-default",
-        "nick": "kiwi-n?"
+        "nick": "kiwi-n?",
+        "checkNickname": true
     },
     "embedly": {
         "key": ""
