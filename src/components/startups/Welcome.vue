@@ -110,7 +110,8 @@ export default {
             // Nicks cannot start with [0-9- ]
             // ? is not a valid nick character but we allow it as it gets replaced
             // with a number.
-            if (!this.nick.match(/^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i)) {
+            let needCheckNickname = state.settings.startupOptions.needCheckNickname
+            if (needCheckNickname === true && !this.nick.match(/^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i)) {
                 ready = false;
             }
 
