@@ -111,6 +111,9 @@ export default {
             // ? is not a valid nick character but we allow it as it gets replaced
             // with a number.
             let needCheckNickname = state.settings.startupOptions.needCheckNickname
+            if (needCheckNickname === undefined){
+                needCheckNickname = true;
+            }
             if (needCheckNickname === true && !this.nick.match(/^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i)) {
                 ready = false;
             }
