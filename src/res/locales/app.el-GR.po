@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 11:31\n"
+"PO-Revision-Date: 2018-12-11 11:41\n"
 
 #: Start
 msgid "start_button"
@@ -395,7 +395,7 @@ msgstr "Μόνο οι συντονιστές μπορούν να αλλάξου�
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Αποκλείστε μηνύματα από το εξωτερικό του καναλιού"
+msgstr "Αποκλείστε τα μηνύματα εκτός του καναλιού"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
@@ -563,7 +563,7 @@ msgstr "Εμφάνιση όταν αλλάζει το θέμα του καναλ
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Εμφάνιση όταν οι χρήστες αλλάζουν τα ψευδώνυμά τους"
+msgstr "Εμφάνιση όταν οι χρήστες αλλάζουν το ψευδώνυμό τους"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
@@ -591,7 +591,7 @@ msgstr "Σχετικά"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Δημιουργήθηκε στο {{πότε}}"
+msgstr "Δημιουργήθηκε στις {{when}}"
 
 #: Highlights
 msgid "highlights"
@@ -603,11 +603,11 @@ msgstr "Κανείς δεν σας έχει αναφέρει ακόμα..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "Παρουσιάστηκε σφάλμα κατά την εκκίνηση του Kiwi IRC :("
+msgstr "Παρουσιάστηκε κάποιο σφάλμα κατά την εκκίνηση του Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Βεβαιωθείτε ότι έχετε εγκαταστήσει σωστά το Kiwi IRC και ότι η διαμόρφωση μπορεί να φορτωθεί"
+msgstr "Βεβαιωθείτε ότι έχετε εγκαταστήσει σωστά το Kiwi IRC και ότι όλες σας οι ρυθμίσεις μπορούν να φορτωθούν"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -623,7 +623,7 @@ msgstr "Οι ρυθμίσεις και τα δίκτυά σας θα αποθη�
 
 #: Forget me
 msgid "state_forget"
-msgstr "Ξέχασέ με"
+msgstr "Ξέχασε με"
 
 #: No networks here yet.
 msgid "state_network"
@@ -659,15 +659,15 @@ msgstr "Μη συνδεδεμένο."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Συμμετοχή σε νέο #κανάλι"
+msgstr "Είσοδος σε νέο #κανάλι"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Φιλτράρετε τα κανάλια"
+msgstr "Φιλτράρετε τα Κανάλια"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Βρείτε περισσότερα κανάλια"
+msgstr "Βρείτε Περισσότερα Κανάλια"
 
 #: Change nick
 msgid "change_nick"
@@ -687,15 +687,15 @@ msgstr "Είναι ένα bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Διατίθεται για βοήθεια"
+msgstr "Διατίθεται για περαιτέρω βοήθεια"
 
 #: Is an operator
 msgid "user_op"
-msgstr "Είναι ένας χειριστής"
+msgstr "Είναι ένας διαχειριστής"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Σύνδεθηκε με {{server}} {{info}}"
+msgstr "Συνδέθηκε σε {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
