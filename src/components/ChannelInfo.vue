@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-channelinfo">
-        <form class="u-form kiwi-channelinfo-basicmodes" :class="{ 'kiwi-channelinfo-disabled': !areWeAnOp() }" @submit.prevent="">
-            <span class="kiwi-channelinfo-notice">You are not an OP in this channel. <br> You cannot edit these settings.</span>
+        <form :class="{ 'kiwi-channelinfo-disabled': !areWeAnOp() }"
+              class="u-form kiwi-channelinfo-basicmodes" @submit.prevent="">
 
             <label class="kiwi-channelinfo-topic">
                 <span>{{ $t('channel_topic') }}</span>
