@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 22:01\n"
+"PO-Revision-Date: 2018-12-11 22:21\n"
 
 #: Start
 msgid "start_button"
@@ -491,7 +491,7 @@ msgstr "Εμφάνιση Ακατέργαστου"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Εκτελέστε ορισμένες εντολές όταν συνδεθείτε"
+msgstr "Εκτελέστε εντολές όταν συνδεθείτε"
 
 #: Danger Zone
 msgid "settings_danger"
