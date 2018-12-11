@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 11:01\n"
+"PO-Revision-Date: 2018-12-11 11:10\n"
 
 #: Start
 msgid "start_button"
@@ -299,7 +299,7 @@ msgstr "Επανασύνδεση στο {{channel}} κανάλι"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Ενημερώσε με πότε"
+msgstr "Ενημερώσε με όταν"
 
 #: All messages
 msgid "settings_notify_all"
@@ -319,7 +319,7 @@ msgstr "Σίγαση ήχων"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Απόκρυψη αριθμού μη αναγνωσμένων μηνυμάτων"
+msgstr "Απόκρυψη αριθμού των μη αναγνωρισμένων μηνυμάτων"
 
 #: Operator tools
 msgid "operator_tools"
@@ -331,11 +331,11 @@ msgstr "Προκαθορισμένη απαγορευμένη μάσκα"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Προκαθορισμένη κλωτσιά με λόγο"
+msgstr "Προκαθορισμένος λόγος απομάκρυνσης"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Προηγμένες ρυθμίσεις"
+msgstr "Προηγμένες Ρυθμίσεις"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
@@ -343,11 +343,11 @@ msgstr "Τα τέρατα είναι εδώ, κάντε κλικ σε αυτό �
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Ενεργοποίηση προχωρημένων ρυθμίσεων"
+msgstr "Ενεργοποίηση Προχωρημένων Ρυθμίσεων"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Ζώνη κινδύνου: Η αλλαγή ορισμένων από αυτές τις ρυθμίσεις μπορεί να σπάσει τα πράγματα!"
+msgstr "Ζώνη Κινδύνου: Η αλλαγή ορισμένων από αυτών των ρυθμίσεων ενδέχεται να χαλάσει τα τωρινά σας δεδομένα!"
 
 #: Reset
 msgid "settings_advanced_reset"
@@ -367,7 +367,7 @@ msgstr "Αποκλεισμένος χρήστης"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Αποκλεισμένος από"
+msgstr "Αποκλείστηκε από"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
@@ -375,7 +375,7 @@ msgstr "Ανανέωση λίστας απαγόρευσης"
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Κανείς δεν έχει απαγορευτεί!"
+msgstr "Κανένας δεν είναι απαγορευμένος!"
 
 #: Topic
 msgid "channel_topic"
@@ -383,7 +383,7 @@ msgstr "Θέμα"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Συντονισμένη συνομιλία"
+msgstr "Περιορισμένη συνομιλία"
 
 #: Invite only
 msgid "channel_invite"
@@ -415,7 +415,7 @@ msgstr "Εμφάνιση κατάστασης περιήγησης"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Απόκρυψη θέματος"
+msgstr "Απόκρυψη Θέματος"
 
 #: Display Topic
 msgid "display_topic"
