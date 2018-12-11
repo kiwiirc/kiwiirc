@@ -770,9 +770,9 @@ msgstr "Connected to {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Securely connected via SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
-msgstr "Also in channels {{channels}}"
+msgstr "In channels {{channels}}"
 
 #: Access level
 msgid "user_access"
