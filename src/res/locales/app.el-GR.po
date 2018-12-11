@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 11:41\n"
+"PO-Revision-Date: 2018-12-11 11:59\n"
 
 #: Start
 msgid "start_button"
@@ -715,15 +715,15 @@ msgstr "Κανονικό"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Κλωτσιά από το κανάλι"
+msgstr "Απομάκρυνση από το κανάλι"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Απαγόρευση από το κανάλι"
+msgstr "Απαγόρευση στο κανάλι"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Απαγόρευση και κλωτσιά από το κανάλι"
+msgstr "Απαγόρευση και απομάκρυνση από το κανάλι"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -731,55 +731,55 @@ msgstr "Προσδιορίστε ένα κανάλι για να συμμετά�
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} δίνει ops στο {{target}}"
+msgstr "{{nick}} δίνει op σε {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} παίρνει ops από {{target}}"
+msgstr "{{nick}} παίρνει το op από {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} δίνει μισό-ops στο {{target}}"
+msgstr "{{nick}} δίνει halfop σε {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} παίρνει μισό-ops από {{target}}"
+msgstr "{{nick}} παίρνει το halfop από {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} δίνει φωνή σε {{target}}"
+msgstr "{{nick}} δίνει voice σε {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} παίρνει φωνή από {{target}}"
+msgstr "{{nick}} παίρνει το voice από {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} δίνει τον διαχειριστή στο {{target}}"
+msgstr "{{nick}} δίνει admin σε {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} παίρνει διαχειριστή από {{target}}"
+msgstr "{{nick}} παίρνει το admin από {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} δίνει ιδιόκτηση σε {{target}}"
+msgstr "{{nick}} δίνει owner σε {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} παίρνει ιδιόκτηση από {{target}}"
+msgstr "{{nick}} παίρνει το owner από {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} έχει απαγορεύσει {{target}}"
+msgstr "{{nick}} δίνει ban σε {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} έχει καταργήσει την απαγόρευση {{target}}"
+msgstr "{{nick}} παίρνει το ban από {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr "{{nick}} καθόριση {{mode}} επί {{target}}"
+msgstr "{{nick}} όρισε {{mode}} σε {{target}}"
 
 #: Send a message
 msgid "command_msg"
@@ -787,7 +787,7 @@ msgstr "Στείλτε ένα μήνυμα"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Κάνε κάτι φυσικό"
+msgstr "Στείλτε ένα ιδιαίτερο μήνυμα"
 
 #: Join a channel
 msgid "command_join"
@@ -827,7 +827,7 @@ msgstr "Στείλτε μια ακατέργαστη εντολή στο δια�
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Διώξτε κάποιον από το κανάλι"
+msgstr "Απομακρύνετε κάποιον από το κανάλι"
 
 #: Clear all messages from this window
 msgid "command_clear"
@@ -839,7 +839,7 @@ msgstr "Στείλτε μια εντολή CTCP σε κάποιον"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Αποσυνδεθείτε από το διακομιστή IRC"
+msgstr "Αποσυνδεθείτε από τον διακομιστή IRC"
 
 #: Connect to a new IRC network
 msgid "command_connect"
@@ -859,7 +859,7 @@ msgstr "Σημειώστε τον εαυτό σας ως μακριά"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Αλλάξτε την κωδικοποίηση σύνδεσή σας"
+msgstr "Αλλάξτε την κωδικοποίηση της σύνδεσή σας"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
@@ -871,11 +871,11 @@ msgstr "Σταματήστε να αγνοείτε κάποιον"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Ο IRC πελάτης σας"
+msgstr "Το IRC πρόγραμμά σας"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Προσθέστε τα δίκτυά σας. Συμμετέχετε στα κανάλια σας."
+msgstr "Προσθέστε τα δίκτυά σας. Κάντε είσοδο στα κανάλια σας."
 
 #: They will be here when you come back.
 msgid "personal_return"
@@ -891,7 +891,7 @@ msgstr "Αποθηκευμένα δίκτυα"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (επόμενης γενεάς) - Ρίζα προεπισκόπησης "
+msgstr "Kiwi IRC (επόμενης γενιάς) - Προ επισκόπηση σε Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
@@ -899,7 +899,7 @@ msgstr "Άμεσες υποδοχές ιστού. Δεν εμπλέκεται κ
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Χάρη στον Adam @ Rizon για την υποστήριξη ανάπτυξης διακομιστή υποδοχής ιστού!)"
+msgstr "(Ευχαριστούμε τον Adam @Rizon για την υποστήριξη στην ανάπτυξη διακομιστή υποδοχής ιστού!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
