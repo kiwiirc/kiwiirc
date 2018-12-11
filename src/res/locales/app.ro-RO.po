@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2018-11-27 05:58\n"
+"PO-Revision-Date: 2018-12-11 10:26\n"
 
 #: Start
 msgid "start_button"
@@ -701,7 +701,7 @@ msgstr ""
 msgid "user_secure"
 msgstr ""
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr ""
 
