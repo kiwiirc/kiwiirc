@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 21:51\n"
+"PO-Revision-Date: 2018-12-11 22:01\n"
 
 #: Start
 msgid "start_button"
@@ -379,11 +379,11 @@ msgstr "Κανένας δεν είναι προς το παρόν αποκλει
 
 #: Topic
 msgid "channel_topic"
-msgstr "Θέμα:"
+msgstr "Θέμα"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Περιορισμένη συνομιλία μόνο"
+msgstr "Περιορισμένη συνομιλία"
 
 #: Invite only
 msgid "channel_invite"
@@ -395,7 +395,7 @@ msgstr "Μόνο οι συντονιστές θα μπορούν να αλλάζ
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Αποκλείστε όλα τα μηνύματα εκτός του καναλιού"
+msgstr "Αποκλείστε τα μηνύματα εκτός του καναλιού"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
@@ -455,7 +455,7 @@ msgstr "Φόρτωση προηγούμενων μηνυμάτων"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Μη Διαβασμένα Μηνύματα"
+msgstr "Μη Αναγνωσμένα Μηνύματα"
 
 #: Server details
 msgid "settings_server_details"
