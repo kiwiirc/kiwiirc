@@ -21,7 +21,11 @@
 
 /* Welcome Screen ( Welcome.vue ) */
 .kiwi-welcome-simple-form,
-.kiwi-customserver-form{
+.kiwi-customserver-form,
+.kiwi-welcome-znc-form,
+.kiwi-startbnc-form {
+    background-color: #fff;
+    color: #000;
     border: 1px solid #ececec;
 }
 .kiwi-welcome-simple-error {
