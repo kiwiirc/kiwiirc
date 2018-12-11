@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 13:11\n"
+"PO-Revision-Date: 2018-12-11 13:22\n"
 
 #: Start
 msgid "start_button"
@@ -255,7 +255,7 @@ msgstr "Αποκλεισμός νέων Ιδιωτικών μηνυμάτων"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Μηνύματα στη μετακίνηση προς τα πίσω"
+msgstr "Μηνύματα κατά την μετακίνηση προς τα επάνω"
 
 #: Extra formatting
 msgid "settings_formatting"
@@ -267,7 +267,7 @@ msgstr "Χρώμα ψευδωνύμων σε μηνύματα"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Συμπεριλάβετε μηνύματα δραστηριοτήτων Συμμετοχής / Αναχώρησης"
+msgstr "Συμπεριλάβετε μηνύματα δραστηριοτήτων Εισόδου / Αποχώρησης"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
@@ -387,7 +387,7 @@ msgstr "Περιορισμένη συνομιλία μόνο"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Είσοδος με Πρόσκληση μόνο"
+msgstr "Είσοδος με πρόσκληση μόνο"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -427,7 +427,7 @@ msgstr "Ρυθμίσεις Καναλιού"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Συμμετοχή στο Κανάλι"
+msgstr "Είσοδος στο Κανάλι"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -479,7 +479,7 @@ msgstr "Ψευδώνυμο"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Προηγμένη"
+msgstr "Προηγμένες"
 
 #: Encoding
 msgid "settings_encoding"
@@ -575,7 +575,7 @@ msgstr "Επιπλέον μορφοποίηση μηνυμάτων"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Χρώματα ψευδώνυμων στη λίστα"
+msgstr "Χρωματισμός ψευδώνυμων στη λίστα"
 
 #: No buffer set
 msgid "side_buffer"
