@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 13:31\n"
+"PO-Revision-Date: 2018-12-11 13:42\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Ρυθμίσεις"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Ρυθμίσεις"
+msgstr "Ρυθμίσεις Kiwi"
 
 #: Channels
 msgid "channels"
@@ -63,7 +63,7 @@ msgstr "Όνομα χρήστη"
 
 #: Password
 msgid "password"
-msgstr "Κωδικός"
+msgstr "Συνθηματικό Κλειδί:"
 
 #: I have a password
 msgid "password_have"
@@ -303,7 +303,7 @@ msgstr "Ενημερώσε με όταν"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "Όλα τα μηνύματα"
+msgstr "Υπάρχει νέο μήνυμα"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
@@ -327,7 +327,7 @@ msgstr "Εργαλεία Διαχειριστή"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Προκαθορισμένη απαγορευμένη μάσκα"
+msgstr "Προκαθορισμένη αποκλεισμένη μάσκα"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
@@ -359,7 +359,7 @@ msgstr "Φίλτρο"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Ανανέωση λίστας απαγόρευσης"
+msgstr "Ανανέωση λίστας αποκλεισμένων"
 
 #: Banned user
 msgid "bans_user"
@@ -371,15 +371,15 @@ msgstr "Αποκλείστηκε από"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Ανανέωση λίστας απαγόρευσης"
+msgstr "Γίνεται ανανέωση λίστας αποκλεισμένων..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Κανένας δεν είναι απαγορευμένος!"
+msgstr "Κανένας δεν είναι προς το παρόν αποκλεισμένος!"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Θέμα"
+msgstr "Θέμα:"
 
 #: Moderated chat
 msgid "channel_moderated"
@@ -719,11 +719,11 @@ msgstr "Απομάκρυνση από το κανάλι"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Απαγόρευση στο κανάλι"
+msgstr "Αποκλεισμός από το κανάλι"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Απαγόρευση και απομάκρυνση από το κανάλι"
+msgstr "Αποκλεισμό και απομάκρυνση από το κανάλι"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
