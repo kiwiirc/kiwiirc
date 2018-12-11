@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 14:03\n"
+"PO-Revision-Date: 2018-12-11 14:12\n"
 
 #: Start
 msgid "start_button"
@@ -391,11 +391,11 @@ msgstr "Είσοδος με πρόσκληση μόνο"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Μόνο οι συντονιστές να μπορούν να αλλάζουν το θέμα"
+msgstr "Μόνο οι συντονιστές θα μπορούν να αλλάζουν το θέμα"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Αποκλείστε τα μηνύματα εκτός του καναλιού"
+msgstr "Αποκλείστε όλα τα μηνύματα εκτός του καναλιού"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
@@ -419,7 +419,7 @@ msgstr "Απόκρυψη Θέματος"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Θέμα προβολής"
+msgstr "Προβολή Θέματος"
 
 #: Channel Settings
 msgid "channel_settings"
@@ -519,7 +519,7 @@ msgstr "Επανασυνδεθείτε για να εισέλθετε στο {{c
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Επανασυνδέστε στο {{network}} για να αρχίσετε να μιλάτε"
+msgstr "Επανασυνδεθείτε στο {{network}} για να αρχίσετε να μιλάτε"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
