@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 11:20\n"
+"PO-Revision-Date: 2018-12-11 11:31\n"
 
 #: Start
 msgid "start_button"
@@ -319,7 +319,7 @@ msgstr "Σίγαση ήχων"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Απόκρυψη αριθμού των μη αναγνωρισμένων μηνυμάτων"
+msgstr "Απόκρυψη αριθμού των μη διαβασμένων μηνυμάτων"
 
 #: Operator tools
 msgid "operator_tools"
@@ -443,11 +443,11 @@ msgstr "Θέλετε να αποχωρήσετε πραγματικά από τ�
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Στείλτε μήνυμα"
+msgstr "Στείλτε ένα μήνυμα..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Φόρτωση"
+msgstr "Γίνεται Φόρτωση {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
@@ -455,7 +455,7 @@ msgstr "Φόρτωση προηγούμενων μηνυμάτων"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Μη αναγνωσμένα μηνύματα"
+msgstr "Μη Διαβασμένα Μηνύματα"
 
 #: Server details
 msgid "settings_server_details"
@@ -487,11 +487,11 @@ msgstr "Κωδικοποίηση"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Εμφάνιση ακατέργαστου"
+msgstr "Εμφάνιση Ακατέργαστου"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Εκτελέστε εντολές όταν συνδεθείτε"
+msgstr "Εκτελέστε ορισμένες εντολές όταν συνδεθείτε"
 
 #: Danger Zone
 msgid "settings_danger"
@@ -523,7 +523,7 @@ msgstr "Επανασυνδέστε στο {{network}} για να αρχίσετ
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Επανασυνδέστε για να συνεχίσετε να μιλάτε με {{user}}"
+msgstr "Επανασυνδεθείτε για να συνεχίσετε να μιλάτε με {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
@@ -535,11 +535,11 @@ msgstr "Ρυθμίσεις σύνδεσης"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "Δεν ήταν δυνατή η σύνδεση με αυτόν το διακομιστή :("
+msgstr "Δεν ήταν δυνατή η σύνδεση με αυτόν τον διακομιστή :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Σύνδεση στο δίκτυο"
+msgstr "Σύνδεση στο Δίκτυο"
 
 #: Close options
 msgid "side_close"
@@ -555,7 +555,7 @@ msgstr "Οι ρυθμίσεις σας"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Εμφάνιση όταν συμμετέχουν τα άτομα"
+msgstr "Εμφάνιση όταν εισέρχονται τα άτομα"
 
 #: Show when channel topic changes
 msgid "side_topics"
