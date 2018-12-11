@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 14:12\n"
+"PO-Revision-Date: 2018-12-11 21:51\n"
 
 #: Start
 msgid "start_button"
@@ -63,7 +63,7 @@ msgstr "Όνομα χρήστη"
 
 #: Password
 msgid "password"
-msgstr "Συνθηματικό Κλειδί:"
+msgstr "Κωδικός"
 
 #: I have a password
 msgid "password_have"
@@ -115,7 +115,7 @@ msgstr "Ακύρωση"
 
 #: Yes
 msgid "yes"
-msgstr "Ναι"
+msgstr "Ναί"
 
 #: No
 msgid "no"
@@ -143,7 +143,7 @@ msgstr "Κατάσταση"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Είναι εντός"
+msgstr "Είναι διαθέσιμο"
 
 #: Send a message
 msgid "send_a_message"
@@ -207,7 +207,7 @@ msgstr "Γενικά"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Τρέχον Θέμα:"
+msgstr "Θέμα"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -303,7 +303,7 @@ msgstr "Ενημέρωσε με όταν"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "Υπάρχει νέο μήνυμα"
+msgstr "Όλα τα μηνύματα"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
@@ -327,11 +327,11 @@ msgstr "Εργαλεία Διαχειριστή"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Προκαθορισμένη αποκλεισμένη μάσκα:"
+msgstr "Προκαθορισμένη αποκλεισμένη μάσκα"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Προκαθορισμένος λόγος απομάκρυνσης:"
+msgstr "Προκαθορισμένος λόγος απομάκρυνσης"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
@@ -339,7 +339,7 @@ msgstr "Προηγμένες Ρυθμίσεις"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Όλα τα τέρατα των ρυθμίσεων είναι εδώ, κάντε κλικ σε αυτό το κουμπί μόνο αν ξέρετε τι πραγματικά πρέπει να κάνετε..."
+msgstr "Όλα τα τέρατα των ρυθμίσεων είναι εδώ, κάντε κλικ σε αυτό το κουμπί μόνο αν ξέρετε τι πραγματικά πρέπει να κάνετε"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
