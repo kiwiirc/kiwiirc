@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 22:41\n"
+"PO-Revision-Date: 2018-12-11 22:51\n"
 
 #: Start
 msgid "start_button"
@@ -731,11 +731,11 @@ msgstr "Προσδιορίστε ένα κανάλι για να εισέλθε�
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} δίνει διαχείριση σε {{target}}"
+msgstr "{{nick}} δίνει χειρισή σε {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} παίρνει την διαχείριση από {{target}}"
+msgstr "{{nick}} παίρνει τον χειρισή από {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
@@ -755,27 +755,27 @@ msgstr "{{nick}} παίρνει φωνή από {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} δίνει admin σε {{target}}"
+msgstr "{{nick}} δίνει διαχείριση σε {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} παίρνει το admin από {{target}}"
+msgstr "{{nick}} παίρνει τον διαχείριση από {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} δίνει owner σε {{target}}"
+msgstr "{{nick}} δίνει ιδιόκτηση σε {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} παίρνει το owner από {{target}}"
+msgstr "{{nick}} παίρνει ιδιόκτηση από {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} δίνει ban σε {{target}}"
+msgstr "{{nick}} δίνει απόκλιση σε {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} παίρνει το ban από {{target}}"
+msgstr "{{nick}} παίρνει την απόκλιση από {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
