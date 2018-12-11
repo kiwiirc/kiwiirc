@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 12:01\n"
+"PO-Revision-Date: 2018-12-11 12:12\n"
 
 #: Start
 msgid "start_button"
@@ -923,11 +923,11 @@ msgstr "{{nick}} μόλις εισήλθε στο κανάλι"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} σας κλώτσησε από {{channel}}"
+msgstr "{{nick}} σας απομάκρυνε από το {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} σας κλώτσησε από {{channel}} με {{chanop}}"
+msgstr "{{nick}} απομακρύνθηκε από το {{channel}} κανάλι από {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
@@ -939,13 +939,13 @@ msgstr "{{nick}} σας προσκάλεσε να συμμετάσχετε στ�
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Το παρατσούκλι {{nick}} είναι ήδη σε χρηση. Δοκιμάστε {{newnick}}..."
+msgstr "Το ψευδώνυμο {{nick}} είναι ήδη σε χρηση. Δοκιμάζουμε το {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} είναι τώρα γνωστό ως {{newnick}}"
+msgstr "{{nick}} άλλαξε ψευδώνυμο σε {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "άλλαξε το θέμα σε: {{topic}}"
+msgstr "{{nick}} άλλαξε το θέμα του καναλιού σε: {{topic}}"
 
