@@ -356,7 +356,7 @@ function clientMiddleware(state, network) {
             }
 
             const PM_BLOCK_BLOCKED = false;
-            const PM_BLOCK_NOT_BLOCKED = true;
+            // const PM_BLOCK_NOT_BLOCKED = true;
             const PM_BLOCK_REQUIRES_CHECK = null;
 
             let pmBlock = network.isNickExemptFromPmBlocks(event.nick);
@@ -392,7 +392,14 @@ function clientMiddleware(state, network) {
 
             // If we need to manually check if this user is blocked..
             if (blockNewPms && isPrivateMessage && !buffer && pmBlock === PM_BLOCK_REQUIRES_CHECK) {
+                // if the nick is in pendingPms it has already issued a whois request
+                let awaitingWhois = !!_.find(network.pendingPms, { nick: event.nick });
                 network.pendingPms.push({ bufferName, message });
+
+                // Don't send another whois if we are already awaiting another
+                if (awaitingWhois) {
+                    return;
+                }
 
                 network.ircClient.whois(event.nick, event.nick, (whoisData) => {
                     network.pendingPms.forEach((pm, idx, obj) => {
