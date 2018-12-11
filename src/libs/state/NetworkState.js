@@ -44,6 +44,9 @@ export default class NetworkState {
             appState.$set(userDict.networks, this.id, newVal);
         });
 
+        // Pending prviate messages awaiting whois operator check
+        def(this, 'pendingPms', [], false);
+
         bufferDict.$set(bufferDict.networks, this.id, []);
     }
 
@@ -97,5 +100,33 @@ export default class NetworkState {
         setImmediate(() => {
             this.appState.$emit('server.tab.show', tabName || 'settings');
         });
+    }
+
+    /**
+     * Check if a nick is exempt from block PM's
+     * @param {String} nick of the user to check
+     * @returns {Boolean} If the boolean is null a whois check is required
+     */
+    isNickExemptFromPmBlocks(nick) {
+        // Check if nick is op of shared channel
+        let buffers = this.appState.getBuffersWithUser(this.id, nick);
+        for (let i = 0; i < buffers.length; i++) {
+            let buffer = buffers[i];
+            if (buffer.isUserAnOp(nick)) {
+                return true;
+            }
+        }
+
+        let user = this.appState.getUser(this.indexOf, nick);
+        if (!user || !user.hasWhois) {
+            // if we have not seen or whois the user they might be a network oper
+            // so return null then a whois can be performed
+            return null;
+        }
+
+        if (user.operator) {
+            return true;
+        }
+        return false;
     }
 }
