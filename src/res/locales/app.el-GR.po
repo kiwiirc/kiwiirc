@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 10:50\n"
+"PO-Revision-Date: 2018-12-11 11:01\n"
 
 #: Start
 msgid "start_button"
@@ -215,11 +215,11 @@ msgstr "Ανανέωση του Θέματος"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Θέμα URL"
+msgstr "URL του Θέματος"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Διάταξη μηνύματος"
+msgstr "Διάταξη Μηνύματος"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -235,7 +235,7 @@ msgstr "Εμφάνιση της λίστας αυτόματων συμπλήσε
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Μηνύματα συνομιλίας"
+msgstr "Μηνύματα Συνομιλίας"
 
 #: Show timestamps
 msgid "settings_timestamps"
@@ -251,7 +251,7 @@ msgstr "Εμφάνιση εικονιδίων"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Αποκλεισμός νέων ιδιωτικών μηνυμάτων"
+msgstr "Αποκλεισμός νέων Ιδιωτικών μηνυμάτων"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -275,7 +275,7 @@ msgstr "Σίγαση ειδοποιήσεων ήχου"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Επισημάνετε τα λόγια (διαχωρισμένος χώρος)"
+msgstr "Επισημάνετε στα λόγια (διαχωρισμένος χώρος)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -287,15 +287,15 @@ msgstr "Τι είναι τα ψευδώνυμα"
 
 #: Send Message
 msgid "send_message"
-msgstr "Στείλετε μήνυμα"
+msgstr "Στείλτε Μήνυμα"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Εισαγάγετε κλειδί καναλιού"
+msgstr "Εισαγάγετε Κλειδί Καναλιού"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Επανασύνδεση"
+msgstr "Επανασύνδεση στο {{channel}} κανάλι"
 
 #: Notify me when
 msgid "settings_notify"
