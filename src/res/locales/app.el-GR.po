@@ -11,11 +11,11 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 13:42\n"
+"PO-Revision-Date: 2018-12-11 13:52\n"
 
 #: Start
 msgid "start_button"
-msgstr "Αρχή"
+msgstr "Εκκίνηση"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
@@ -31,7 +31,7 @@ msgstr "Σύνδεση"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Γίνεται σύνδεση"
+msgstr "Γίνεται σύνδεση..."
 
 #: Connected
 msgid "connected"
@@ -83,7 +83,7 @@ msgstr "Κανάλι"
 
 #: Messages
 msgid "messages"
-msgstr "Μυνήματα"
+msgstr "Μηνύματα"
 
 #: Network
 msgid "network"
@@ -115,7 +115,7 @@ msgstr "Ακύρωση"
 
 #: Yes
 msgid "yes"
-msgstr "Ναί"
+msgstr "Ναι"
 
 #: No
 msgid "no"
@@ -143,7 +143,7 @@ msgstr "Κατάσταση"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Είναι διαθέσιμο"
+msgstr "Είναι εντός"
 
 #: Send a message
 msgid "send_a_message"
@@ -207,7 +207,7 @@ msgstr "Γενικά"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Θέμα"
+msgstr "Τρέχον Θέμα:"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -219,7 +219,7 @@ msgstr "URL του Θέματος"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Διάταξη Μηνύματος"
+msgstr "Διάταξη Μηνυμάτων:"
 
 #: Use monospace
 msgid "settings_use_monospace"
