@@ -1,6 +1,8 @@
 <template>
     <div class="kiwi-channelinfo">
-        <form class="u-form kiwi-channelinfo-basicmodes" @submit.prevent="">
+        <form class="u-form kiwi-channelinfo-basicmodes" :class="{ 'kiwi-channelinfo-disabled': !areWeAnOp() }" @submit.prevent="">
+            <span class="kiwi-channelinfo-notice">You are not an OP in this channel. <br> You cannot edit these settings.</span>
+
             <label class="kiwi-channelinfo-topic">
                 <span>{{ $t('channel_topic') }}</span>
                 <textarea v-model.lazy="topic" :disabled="!areWeAnOp()" rows="2"/>
@@ -141,4 +143,12 @@ export default {
     margin-top: 0;
 }
 
+.kiwi-channelinfo-basicmodes {
+    margin-bottom: 2.5em;
+}
+
+.kiwi-channelinfo-disabled {
+    opacity: 0.5;
+}
 </style>
+

@@ -253,6 +253,11 @@ export default {
     padding: 1em;
 }
 
+.kiwi-sidebar-buffersettings .u-tabbed-content h3 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
 .kiwi-sidebar-userbox {
     overflow: hidden;
     height: 100%;
