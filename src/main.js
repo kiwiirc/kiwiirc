@@ -265,15 +265,15 @@ function loadPlugins() {
 
                     // The browser won't execute any script elements so we need to extract them and
                     // place them into the DOM using our own script elements
-                    let scripts = el.querySelectorAll('script');
+                    let scripts = [...el.querySelectorAll('script')];
 
                     // IE11 does not support nodes.forEach()
-                    for (let limitedScr of scripts) { // eslint-disable-line no-restricted-syntax
+                    scripts.forEach((limitedScr) => {
                         limitedScr.parentElement.removeChild(limitedScr);
                         let scr = document.createElement('script');
                         scr.text = limitedScr.text;
                         el.appendChild(scr);
-                    }
+                    });
 
                     document.body.appendChild(el);
                     loadNextScript();
