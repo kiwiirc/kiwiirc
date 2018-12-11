@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 13:52\n"
+"PO-Revision-Date: 2018-12-11 14:03\n"
 
 #: Start
 msgid "start_button"
@@ -223,7 +223,7 @@ msgstr "Διάταξη Μηνυμάτων:"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Χρησιμοποιήστε τη μονοσωματική"
+msgstr "Χρησιμοποιήστε τη μονοχρωματική διάταξη"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -231,7 +231,7 @@ msgstr "Παραδοσιακή διάταξη IRC"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Εμφάνιση της λίστας αυτόματων συμπλήσεων"
+msgstr "Εμφάνιση της λίστας αυτόματων συμπληρώσεων"
 
 #: Chat Messages
 msgid "settings_messages_title"
@@ -243,7 +243,7 @@ msgstr "Εμφάνιση χρονικών σημείων"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Χρησιμοποιήστε 24-ωρες χρονικές σημάνσεις"
+msgstr "Χρησιμοποιήστε 24-ωρες χρονικές σημάνσεις των σημείων"
 
 #: Show emoticons
 msgid "settings_emoticons"
@@ -271,7 +271,7 @@ msgstr "Συμπεριλάβετε μηνύματα δραστηριοτήτων
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Σίγαση ειδοποιήσεων ήχου"
+msgstr "Σίγαση ήχων ειδοποιήσεων"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
@@ -291,7 +291,7 @@ msgstr "Στείλτε Μήνυμα"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Εισαγάγετε Κλειδί Καναλιού"
+msgstr "Εισαγάγετε το Συνθηματικό Κλειδί Καναλιού"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -299,7 +299,7 @@ msgstr "Επανασύνδεση στο {{channel}} κανάλι"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Ενημερώσε με όταν"
+msgstr "Ενημέρωσε με όταν"
 
 #: All messages
 msgid "settings_notify_all"
@@ -307,7 +307,7 @@ msgstr "Υπάρχει νέο μήνυμα"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "Αναφέρομαι"
+msgstr "Με αναφέρουν"
 
 #: Never
 msgid "settings_notify_never"
@@ -315,7 +315,7 @@ msgstr "Ποτέ"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Σίγαση ήχων"
+msgstr "Σίγαση των ήχων"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
@@ -327,11 +327,11 @@ msgstr "Εργαλεία Διαχειριστή"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Προκαθορισμένη αποκλεισμένη μάσκα"
+msgstr "Προκαθορισμένη αποκλεισμένη μάσκα:"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Προκαθορισμένος λόγος απομάκρυνσης"
+msgstr "Προκαθορισμένος λόγος απομάκρυνσης:"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
@@ -339,7 +339,7 @@ msgstr "Προηγμένες Ρυθμίσεις"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Τα τέρατα είναι εδώ, κάντε κλικ σε αυτό το κουμπί μόνο αν ξέρετε τι κάνετε"
+msgstr "Όλα τα τέρατα των ρυθμίσεων είναι εδώ, κάντε κλικ σε αυτό το κουμπί μόνο αν ξέρετε τι πραγματικά πρέπει να κάνετε..."
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
@@ -347,7 +347,7 @@ msgstr "Ενεργοποίηση Προχωρημένων Ρυθμίσεων"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Ζώνη Κινδύνου: Η αλλαγή ορισμένων από αυτών των ρυθμίσεων ενδέχεται να χαλάσει τα τωρινά σας δεδομένα!"
+msgstr "Ζώνη Κινδύνου: Ενημερώνουμε ότι η αλλαγή ορισμένων από αυτών των ρυθμίσεων ενδέχεται να χαλάσει τα τωρινά δεδομένα στο πρόγραμμά σας!"
 
 #: Reset
 msgid "settings_advanced_reset"
