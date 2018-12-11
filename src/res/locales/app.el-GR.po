@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 22:21\n"
+"PO-Revision-Date: 2018-12-11 22:41\n"
 
 #: Start
 msgid "start_button"
@@ -731,27 +731,27 @@ msgstr "Προσδιορίστε ένα κανάλι για να εισέλθε�
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} δίνει op σε {{target}}"
+msgstr "{{nick}} δίνει διαχείριση σε {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} παίρνει το op από {{target}}"
+msgstr "{{nick}} παίρνει την διαχείριση από {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} δίνει halfop σε {{target}}"
+msgstr "{{nick}} δίνει μισή διαχείριση σε {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} παίρνει το halfop από {{target}}"
+msgstr "{{nick}} παίρνει μισή διαχείριση από {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} δίνει voice σε {{target}}"
+msgstr "{{nick}} δίνει φωνή σε {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} παίρνει το voice από {{target}}"
+msgstr "{{nick}} παίρνει φωνή από {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
