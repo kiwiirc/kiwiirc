@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 11:59\n"
+"PO-Revision-Date: 2018-12-11 12:01\n"
 
 #: Start
 msgid "start_button"
@@ -903,7 +903,7 @@ msgstr "(Ευχαριστούμε τον Adam @Rizon για την υποστή�
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Δώστε την δοκιμαστική έκδοση του προγράμματος ανάπτυξης Kiwi IRC!"
+msgstr "Δοκιμάστε την έκδοση προγραμματιστή του προγράμματος ανάπτυξης Kiwi IRC!"
 
 #: Connected
 msgid "connected"
@@ -931,7 +931,7 @@ msgstr "{{nick}} σας κλώτσησε από {{channel}} με {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} έχει φύγει"
+msgstr "{{nick}} αποχώρισε από το κανάλι"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
