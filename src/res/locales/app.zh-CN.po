@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-11-27 05:59\n"
+"PO-Revision-Date: 2018-12-11 10:26\n"
 
 #: Start
 msgid "start_button"
@@ -701,7 +701,7 @@ msgstr "已连接至 {{server}} {{info}}"
 msgid "user_secure"
 msgstr "通过 SSL/TLS 安全连接"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "也在 {{channels}} 频道"
 

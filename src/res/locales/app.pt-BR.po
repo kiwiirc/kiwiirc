@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2018-11-27 05:58\n"
+"PO-Revision-Date: 2018-12-11 10:26\n"
 
 #: Start
 msgid "start_button"
@@ -701,7 +701,7 @@ msgstr "Conectado a {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Conectado de forma segura com SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "Está também nos canais {{channels}}"
 
@@ -727,7 +727,7 @@ msgstr "Kickar + Banir do canal"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr ""
+msgstr "Por favor especifique um canal para entrar, por exemplo, /join #exemplo"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -783,91 +783,91 @@ msgstr "{{nick}} colocou o modo {{mode}} em {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Enviar uma mensagem"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Faça algo físico"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Entrar num canal"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Sair de um canal"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Sair, e depois reentrar num canal"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Mudar o seu nickname"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Inicie uma conversa privada com alguém"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Convide alguém para o canal"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Definir o tópico para este canal"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Envie um notice"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Envie um comando raw para o servidor de IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Kickar alguém do canal"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Limpar todas as mensagens desta janela"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Envie um comando CTCP para alguém"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Desconectar do servidor de IRC"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Conecte-se a uma nova rede de IRC"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Solicite informações sobre alguém"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Solicitar informações sobre alguém que se desconectou recentemente"
 
 #: Mark yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Marque-se como ausente"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Altere sua codificação de texto nesta conexão"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Ignorar mensagens de alguém"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Pare de ignorar alguém"
 
 #: Your IRC client
 msgid "personal_client"

@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-11-27 05:59\n"
+"PO-Revision-Date: 2018-12-11 10:26\n"
 
 #: Start
 msgid "start_button"
@@ -701,7 +701,7 @@ msgstr "Свързан към сървър: {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Използва защитена връзка: SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "Канали в които е: {{channels}}"
 

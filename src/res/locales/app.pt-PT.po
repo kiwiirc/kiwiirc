@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2018-12-09 13:11\n"
+"PO-Revision-Date: 2018-12-11 10:26\n"
 
 #: Start
 msgid "start_button"
@@ -701,7 +701,7 @@ msgstr "Ligado a {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Ligado com segurança através de SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "Também nos canais {{channels}}"
 

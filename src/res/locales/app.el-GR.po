@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-11-27 14:00\n"
+"PO-Revision-Date: 2018-12-11 11:01\n"
 
 #: Start
 msgid "start_button"
@@ -95,15 +95,15 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Σύνδεση"
+msgstr "Γίνεται σύνδεση..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Άκυρη σύνδεση"
+msgstr "Εσφαλμένη σύνδεση"
 
 #: Search...
 msgid "do_search"
-msgstr "Αναζήτηση"
+msgstr "Αναζήτηση..."
 
 #: OK
 msgid "ok"
@@ -123,15 +123,15 @@ msgstr "Όχι"
 
 #: Not found.
 msgid "not_found"
-msgstr "Δεν βρέθηκε"
+msgstr "Δεν βρέθηκε."
 
 #: Warning!
 msgid "warning"
-msgstr "Προσοχή"
+msgstr "Προσοχή!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "Αυτό θα κλείσει όλες τις συνομιλίες Kiwi IRC. Είστε βέβαιοι ότι θέλετε να κλείσετε αυτό το παράθυρο;"
+msgstr "Αυτό θα κλείσει όλες σας τις συνομιλίες στο Kiwi IRC. Είστε βέβαιοι ότι θέλετε να κλείσετε αυτό το παράθυρο;"
 
 #: Real name
 msgid "whois_realname"
@@ -163,43 +163,43 @@ msgstr "Κανάλι"
 
 #: {{count}} week
 msgid "week"
-msgstr "Εβδομάδα"
+msgstr "{{count}} εβδομάδα"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "Εβδομάδες"
+msgstr "{{count}} εβδομάδες"
 
 #: {{count}} day
 msgid "day"
-msgstr "Ημέρα"
+msgstr "{{count}} ημέρα"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "Μέρες"
+msgstr "{{count}} ημέρες"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "Ώρα"
+msgstr "{{count}} ώρα"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "Ώρες"
+msgstr "{{count}} ώρες"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "Λεπτό"
+msgstr "{{count}} λεπτό"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "Λεπτά"
+msgstr "{{count}} λεπτά"
 
 #: {{count}} second
 msgid "second"
-msgstr "Δευτερόλεπτο"
+msgstr "{{count}} δευτερόλεπτο"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "Δευτερόλεπτα"
+msgstr "{{count}} δευτερόλεπτα"
 
 #: General
 msgid "settings_general"
@@ -211,15 +211,15 @@ msgstr "Θέμα"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Ανανέωση του θέματος"
+msgstr "Ανανέωση του Θέματος"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Θέμα URL"
+msgstr "URL του Θέματος"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Διάταξη μηνύματος"
+msgstr "Διάταξη Μηνύματος"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -235,7 +235,7 @@ msgstr "Εμφάνιση της λίστας αυτόματων συμπλήσε
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Μηνύματα συνομιλίας"
+msgstr "Μηνύματα Συνομιλίας"
 
 #: Show timestamps
 msgid "settings_timestamps"
@@ -251,7 +251,7 @@ msgstr "Εμφάνιση εικονιδίων"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Αποκλεισμός νέων ιδιωτικών μηνυμάτων"
+msgstr "Αποκλεισμός νέων Ιδιωτικών μηνυμάτων"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -275,7 +275,7 @@ msgstr "Σίγαση ειδοποιήσεων ήχου"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Επισημάνετε τα λόγια (διαχωρισμένος χώρος)"
+msgstr "Επισημάνετε στα λόγια (διαχωρισμένος χώρος)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -287,15 +287,15 @@ msgstr "Τι είναι τα ψευδώνυμα"
 
 #: Send Message
 msgid "send_message"
-msgstr "Στείλετε μήνυμα"
+msgstr "Στείλτε Μήνυμα"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Εισαγάγετε κλειδί καναλιού"
+msgstr "Εισαγάγετε Κλειδί Καναλιού"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Επανασύνδεση"
+msgstr "Επανασύνδεση στο {{channel}} κανάλι"
 
 #: Notify me when
 msgid "settings_notify"
@@ -701,7 +701,7 @@ msgstr "Σύνδεθηκε με {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Ασφαλής σύνδεση μέσω SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "Επίσης στα κανάλια {{channels}}"
 
