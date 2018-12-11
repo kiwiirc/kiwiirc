@@ -355,17 +355,13 @@ function clientMiddleware(state, network) {
                 }
             }
 
-            let blockExempt = isPrivateMessage && network.isNickBlockNewPmExempt(event.nick);
+            const PM_BLOCK_BLOCKED = false;
+            const PM_BLOCK_NOT_BLOCKED = true;
+            const PM_BLOCK_REQUIRES_CHECK = null;
+
+            let pmBlock = network.isNickExemptFromPmBlocks(event.nick);
             let blockNewPms = state.setting('buffers.block_pms');
             let buffer = state.getBufferByName(networkid, bufferName);
-            if (isPrivateMessage && !buffer && blockNewPms && !blockExempt) {
-                // user might be a network operator, this is handled below
-                if (blockExempt !== null) {
-                    return;
-                }
-            } else if (!buffer) {
-                buffer = state.getOrAddBufferByName(networkid, bufferName);
-            }
 
             let textFormatType = 'privmsg';
             if (event.type === 'action') {
@@ -389,10 +385,15 @@ function clientMiddleware(state, network) {
                 tags: event.tags || {},
             };
 
-            // it is possible that the pm is from a network operator
-            // hold the message until the result of whois
-            if (blockExempt === null) {
+            // If this is a new PM and the sending user is not exempt from blocks, ignore it
+            if (blockNewPms && isPrivateMessage && !buffer && pmBlock === PM_BLOCK_BLOCKED) {
+                return;
+            }
+
+            // If we need to manually check if this user is blocked..
+            if (blockNewPms && isPrivateMessage && !buffer && pmBlock === PM_BLOCK_REQUIRES_CHECK) {
                 network.pendingPms.push({ bufferName, message });
+
                 network.ircClient.whois(event.nick, event.nick, (whoisData) => {
                     network.pendingPms.forEach((pm, idx, obj) => {
                         if (pm.message.nick === whoisData.nick) {
@@ -404,9 +405,14 @@ function clientMiddleware(state, network) {
                         }
                     });
                 });
+
                 return;
             }
 
+            // Make sure we have a buffer for our message
+            if (!buffer) {
+                buffer = state.getOrAddBufferByName(networkid, bufferName);
+            }
             state.addMessage(buffer, message);
         }
 

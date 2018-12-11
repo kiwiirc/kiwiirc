@@ -107,7 +107,7 @@ export default class NetworkState {
      * @param {String} nick of the user to check
      * @returns {Boolean} If the boolean is null a whois check is required
      */
-    isNickBlockNewPmExempt(nick) {
+    isNickExemptFromPmBlocks(nick) {
         // Check if nick is op of shared channel
         let buffers = this.appState.getBuffersWithUser(this.id, nick);
         for (let i = 0; i < buffers.length; i++) {
