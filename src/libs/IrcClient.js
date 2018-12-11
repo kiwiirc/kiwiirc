@@ -403,7 +403,8 @@ function clientMiddleware(state, network) {
 
                 network.ircClient.whois(event.nick, event.nick, (whoisData) => {
                     network.pendingPms.forEach((pm, idx, obj) => {
-                        if (pm.message.nick === whoisData.nick) {
+                        let nickLower = pm.message.nick.toLowerCase();
+                        if (nickLower === whoisData.nick.toLowerCase()) {
                             if (whoisData.operator) {
                                 buffer = state.getOrAddBufferByName(network.id, pm.bufferName);
                                 state.addMessage(buffer, pm.message);
