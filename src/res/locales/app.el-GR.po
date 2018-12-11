@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 11:10\n"
+"PO-Revision-Date: 2018-12-11 11:20\n"
 
 #: Start
 msgid "start_button"
@@ -427,19 +427,19 @@ msgstr "Ρυθμίσεις Καναλιού"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Συμμετοχή στο κανάλι"
+msgstr "Συμμετοχή στο Κανάλι"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Μη συνδεδεμένο"
+msgstr "Μη Συνδεδεμένο"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Προσωπική συνομιλία με"
+msgstr "Προσωπική συνομιλία με {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Αφήστε πραγματικά το κανάλι;"
+msgstr "Θέλετε να αποχωρήσετε πραγματικά από το κανάλι;"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -611,7 +611,7 @@ msgstr "Βεβαιωθείτε ότι έχετε εγκαταστήσει σωσ
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Εφυγέ {{name}}"
+msgstr "Αποχώρησε {{name}}"
 
 #: Your account
 msgid "state_account"
@@ -795,11 +795,11 @@ msgstr "Συμμετάσχετε σε ένα κανάλι"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Αφήστε το κανάλι"
+msgstr "Αποχωρήστε από το κανάλι"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Αφήστε και, στη συνέχεια, επανέλθετε πίσω στο κανάλι"
+msgstr "Αποχωρήστε, και στη συνέχεια, επανέλθετε πίσω στο κανάλι"
 
 #: Change your nickname
 msgid "command_nick"
@@ -919,7 +919,7 @@ msgstr "Σύνδεθηκε με {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} έχει γίνει μέλος"
+msgstr "{{nick}} μόλις εισήλθε στο κανάλι"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
