@@ -176,4 +176,10 @@ export default {
     opacity: 0;
 }
 
+@media screen and (max-width: 769px) {
+    .kiwi-sidebar.kiwi-sidebar-section-about {
+        max-width: 100%;
+        width: 100%;
+    }
+}
 </style>
