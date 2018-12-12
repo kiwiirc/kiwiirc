@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-12-12 10:59\n"
+"PO-Revision-Date: 2018-12-12 11:01\n"
 
 #: Start
 msgid "start_button"
@@ -827,23 +827,23 @@ msgstr "Надіслати необроблену команду на серве
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Вилучіть когось з каналу"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Стерти всі повідомлення з цього вікна"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Надішліть комусь команду CTCP"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Від'єднатися від сервера IRC"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Під'єднатися до нової мережі IRC"
 
 #: Request information on somebody
 msgid "command_whois"
