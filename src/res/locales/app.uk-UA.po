@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-12-12 11:01\n"
+"PO-Revision-Date: 2018-12-12 11:13\n"
 
 #: Start
 msgid "start_button"
@@ -847,27 +847,27 @@ msgstr "Під'єднатися до нової мережі IRC"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Запит інформації про когось"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Запит інформації про когось, хто нещодавно від'єднався"
 
 #: Mark yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Позначити себе як відійшов"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Змінити кодування з'єднання"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Ігнорувати повідомлення від когось"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Припинити ігнорування"
 
 #: Your IRC client
 msgid "personal_client"
