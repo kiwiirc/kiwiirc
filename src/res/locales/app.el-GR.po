@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-11 14:12\n"
+"PO-Revision-Date: 2018-12-11 22:51\n"
 
 #: Start
 msgid "start_button"
@@ -63,7 +63,7 @@ msgstr "Όνομα χρήστη"
 
 #: Password
 msgid "password"
-msgstr "Συνθηματικό Κλειδί:"
+msgstr "Κωδικός"
 
 #: I have a password
 msgid "password_have"
@@ -115,7 +115,7 @@ msgstr "Ακύρωση"
 
 #: Yes
 msgid "yes"
-msgstr "Ναι"
+msgstr "Ναί"
 
 #: No
 msgid "no"
@@ -143,7 +143,7 @@ msgstr "Κατάσταση"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Είναι εντός"
+msgstr "Είναι διαθέσιμο"
 
 #: Send a message
 msgid "send_a_message"
@@ -207,7 +207,7 @@ msgstr "Γενικά"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Τρέχον Θέμα:"
+msgstr "Θέμα"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -303,7 +303,7 @@ msgstr "Ενημέρωσε με όταν"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "Υπάρχει νέο μήνυμα"
+msgstr "Όλα τα μηνύματα"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
@@ -327,11 +327,11 @@ msgstr "Εργαλεία Διαχειριστή"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Προκαθορισμένη αποκλεισμένη μάσκα:"
+msgstr "Προκαθορισμένη αποκλεισμένη μάσκα"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Προκαθορισμένος λόγος απομάκρυνσης:"
+msgstr "Προκαθορισμένος λόγος απομάκρυνσης"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
@@ -339,7 +339,7 @@ msgstr "Προηγμένες Ρυθμίσεις"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Όλα τα τέρατα των ρυθμίσεων είναι εδώ, κάντε κλικ σε αυτό το κουμπί μόνο αν ξέρετε τι πραγματικά πρέπει να κάνετε..."
+msgstr "Όλα τα τέρατα των ρυθμίσεων είναι εδώ, κάντε κλικ σε αυτό το κουμπί μόνο αν ξέρετε τι πραγματικά πρέπει να κάνετε"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
@@ -379,11 +379,11 @@ msgstr "Κανένας δεν είναι προς το παρόν αποκλει
 
 #: Topic
 msgid "channel_topic"
-msgstr "Θέμα:"
+msgstr "Θέμα"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Περιορισμένη συνομιλία μόνο"
+msgstr "Περιορισμένη συνομιλία"
 
 #: Invite only
 msgid "channel_invite"
@@ -395,7 +395,7 @@ msgstr "Μόνο οι συντονιστές θα μπορούν να αλλάζ
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Αποκλείστε όλα τα μηνύματα εκτός του καναλιού"
+msgstr "Αποκλείστε τα μηνύματα εκτός του καναλιού"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
@@ -455,7 +455,7 @@ msgstr "Φόρτωση προηγούμενων μηνυμάτων"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Μη Διαβασμένα Μηνύματα"
+msgstr "Μη Αναγνωσμένα Μηνύματα"
 
 #: Server details
 msgid "settings_server_details"
@@ -491,7 +491,7 @@ msgstr "Εμφάνιση Ακατέργαστου"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Εκτελέστε ορισμένες εντολές όταν συνδεθείτε"
+msgstr "Εκτελέστε εντολές όταν συνδεθείτε"
 
 #: Danger Zone
 msgid "settings_danger"
@@ -731,51 +731,51 @@ msgstr "Προσδιορίστε ένα κανάλι για να εισέλθε�
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} δίνει op σε {{target}}"
+msgstr "{{nick}} δίνει χειρισή σε {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} παίρνει το op από {{target}}"
+msgstr "{{nick}} παίρνει τον χειρισή από {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} δίνει halfop σε {{target}}"
+msgstr "{{nick}} δίνει μισή διαχείριση σε {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} παίρνει το halfop από {{target}}"
+msgstr "{{nick}} παίρνει μισή διαχείριση από {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} δίνει voice σε {{target}}"
+msgstr "{{nick}} δίνει φωνή σε {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} παίρνει το voice από {{target}}"
+msgstr "{{nick}} παίρνει φωνή από {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} δίνει admin σε {{target}}"
+msgstr "{{nick}} δίνει διαχείριση σε {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} παίρνει το admin από {{target}}"
+msgstr "{{nick}} παίρνει τον διαχείριση από {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} δίνει owner σε {{target}}"
+msgstr "{{nick}} δίνει ιδιόκτηση σε {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} παίρνει το owner από {{target}}"
+msgstr "{{nick}} παίρνει ιδιόκτηση από {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} δίνει ban σε {{target}}"
+msgstr "{{nick}} δίνει απόκλιση σε {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} παίρνει το ban από {{target}}"
+msgstr "{{nick}} παίρνει την απόκλιση από {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"

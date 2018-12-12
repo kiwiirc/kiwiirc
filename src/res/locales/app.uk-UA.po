@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-12-11 10:26\n"
+"PO-Revision-Date: 2018-12-12 11:13\n"
 
 #: Start
 msgid "start_button"
@@ -727,7 +727,7 @@ msgstr "Заблокувати й виштовхнути з каналу"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr ""
+msgstr "Будь ласка, вкажіть канал для приєднання, наприклад, /join #example"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -783,91 +783,91 @@ msgstr "{{nick}} встановив режим {{mode}} на {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Надіслати повідомлення"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Зробіть щось фізично"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Приєднатися до каналу"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Покинути канал"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Покинути, потім повернутися на канал"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Змініть свій псевдонім"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Почніть приватну розмову з кимось"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Запросіть когось на канал"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Встановіть тему для каналу"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Надіслати сповіщення"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Надіслати необроблену команду на сервер IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Вилучіть когось з каналу"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Стерти всі повідомлення з цього вікна"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Надішліть комусь команду CTCP"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Від'єднатися від сервера IRC"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Під'єднатися до нової мережі IRC"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Запит інформації про когось"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Запит інформації про когось, хто нещодавно від'єднався"
 
 #: Mark yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Позначити себе як відійшов"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Змінити кодування з'єднання"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Ігнорувати повідомлення від когось"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Припинити ігнорування"
 
 #: Your IRC client
 msgid "personal_client"
