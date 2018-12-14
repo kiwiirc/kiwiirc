@@ -36,6 +36,7 @@ export default class UserState {
         if (!this.colour) {
             this.colour = TextFormatting.createNickColour(this.nick);
         }
-        return this.colour;
+        // default will use the themes default text colour
+        return this.colour === 'default' ? '' : this.colour;
     }
 }
