@@ -2,6 +2,7 @@
 
 import xhr from 'xhr';
 import _ from 'lodash';
+import JSON5 from 'json5';
 import Logger from './Logger';
 
 let log = Logger.namespace('ConfigLoader');
@@ -27,10 +28,16 @@ export default class ConfigLoader {
 
                 let configObj = null;
                 try {
-                    configObj = JSON.parse(response.body);
+                    configObj = JSON5.parse(response.body);
                 } catch (parseErr) {
                     log.error('Config ' + parseErr.message);
-                    reject();
+                    let errMsg = 'Config file error: ' + parseErr.message.replace('JSON5: ', '');
+                    // Convert "at 22:16" to "at line 22, position 16"
+                    /* eslint-disable arrow-body-style */
+                    errMsg = errMsg.replace(/at (\d+):(\d+)/g, (m, m1, m2) => {
+                        return `line ${m1}, position ${m2}`;
+                    });
+                    reject(errMsg);
                     return;
                 }
 

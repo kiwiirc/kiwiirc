@@ -62,6 +62,7 @@
     "ip-regex": "2.1.0",
     "irc-framework": "^4.0.0",
     "json-loader": "^0.5.4",
+    "json5": "^2.1.0",
     "less": "^2.7.1",
     "less-loader": "^4.0.5",
     "node-notifier": "^5.2.1",
