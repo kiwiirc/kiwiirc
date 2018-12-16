@@ -1132,30 +1132,31 @@
 .kiwi-userbox-opaction-ban,
 .kiwi-userbox-opaction-kickban {
     color: #dedede;
+    border: 2px solid #dedede;
 }
 
 .kiwi-userbox-opaction-kick {
-    background-color: #f6c358;
+    border-color: #f6c358;
 }
 
 .kiwi-userbox-opaction-kick:hover {
-    background-color: #fcce6e;
+    border-color: #fcce6e;
 }
 
 .kiwi-userbox-opaction-ban {
-    background-color: #fcb46e;
+    border-color: #fcb46e;
 }
 
 .kiwi-userbox-opaction-ban:hover {
-    background-color: #ffca97;
+    border-color: #ffca97;
 }
 
 .kiwi-userbox-opaction-kickban {
-    background-color: #fb846a;
+    border-color: #fb846a;
 }
 
 .kiwi-userbox-opaction-kickban:hover {
-    background-color: #ffaf9e;
+    border-color: #ffaf9e;
 }
 
 .kiwi-userbox-whois {
