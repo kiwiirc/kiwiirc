@@ -208,6 +208,10 @@ export default {
 
             this.$refs.input.insertText(val);
         });
+
+        this.listen(this.$state, 'input.tool', (toolComponent) => {
+            this.toggleInputTool(toolComponent);
+        });
     },
     mounted() {
         this.inputRestore();
@@ -602,6 +606,7 @@ export default {
     position: absolute;
     bottom: 100%;
     right: 0;
+    width: 100%;
     z-index: 1;
 }
 
