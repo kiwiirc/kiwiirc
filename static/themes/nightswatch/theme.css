@@ -37,10 +37,6 @@
     background: none;
 }
 
-.kiwi-welcome-simple .u-input-text input {
-    color: #fff;
-}
-
 .kiwi-startup-common-section-info {
     border-left: 5px solid #444;
 }
@@ -58,20 +54,6 @@
  .kiwi-welcome-simple .help a:hover {
      color: #a9d87a;
  }
-
-.kiwi-welcome-simple h2 {
-    color: #fff;
-}
-
-.kiwi-welcome-simple .u-input-text-label {
-    color: #fff;
-}
-
-.kiwi-welcome-simple .u-form label span {
-    color: #fff;
-}
-
-
 
 
 /* Custom server layout */
