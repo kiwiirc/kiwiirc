@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-17 15:21\n"
+"PO-Revision-Date: 2018-12-17 15:50\n"
 
 #: Start
 msgid "start_button"
@@ -63,7 +63,7 @@ msgstr "Όνομα χρήστη"
 
 #: Password
 msgid "password"
-msgstr "Κωδικός"
+msgstr "Συνθηματικό Κλειδί:"
 
 #: I have a password
 msgid "password_have"
@@ -379,7 +379,7 @@ msgstr "Κανένας δεν είναι προς το παρόν αποκλει
 
 #: Topic
 msgid "channel_topic"
-msgstr "Θέμα:"
+msgstr "Τίτλος Καναλιού:"
 
 #: Moderated chat
 msgid "channel_moderated"
@@ -559,7 +559,7 @@ msgstr "Εμφάνιση όταν εισέρχονται τα άτομα"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Εμφάνιση όταν αλλάζει το θέμα του καναλιού"
+msgstr "Εμφάνιση όταν αλλάζει ο τίτλος του καναλιού"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
@@ -583,7 +583,7 @@ msgstr "Δεν έχει οριστεί ρυθμιστής"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "Δεν υπάρχει θέμα για αυτό το κανάλι"
+msgstr "Δεν υπάρχει τίτλος για αυτό το κανάλι"
 
 #: About
 msgid "about"
@@ -815,7 +815,7 @@ msgstr "Προσκαλέστε κάποιον στο κανάλι"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Ορίστε το θέμα για αυτό το κανάλι"
+msgstr "Ορίστε τον τίτλο για αυτό το κανάλι"
 
 #: Send a notice
 msgid "command_notice"
