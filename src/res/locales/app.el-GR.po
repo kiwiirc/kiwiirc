@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-17 14:51\n"
+"PO-Revision-Date: 2018-12-17 15:11\n"
 
 #: Start
 msgid "start_button"
@@ -207,7 +207,7 @@ msgstr "Γενικά"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Θέμα"
+msgstr "Τρέχον Θέμα:"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -303,7 +303,7 @@ msgstr "Ενημέρωσε με όταν"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "Όλα τα μηνύματα"
+msgstr "Υπάρχουν νέα μηνύματα"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
