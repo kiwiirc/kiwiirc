@@ -15,19 +15,8 @@ export default {
 </script>
 
 <style>
-html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
 
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.kiwi-wrap {
+.kiwi-wrap-error {
     height: 100%;
     overflow: hidden;
     text-align: center;
