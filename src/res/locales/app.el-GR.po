@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-17 02:30\n"
+"PO-Revision-Date: 2018-12-17 04:30\n"
 
 #: Start
 msgid "start_button"
@@ -455,7 +455,7 @@ msgstr "Φόρτωση προηγούμενων μηνυμάτων"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Μη Αναγνωσμένα Μηνύματα"
+msgstr "Μη Διαβασμένα Μηνύματα"
 
 #: Server details
 msgid "settings_server_details"
@@ -683,7 +683,7 @@ msgstr "Πραγματικό όνομα: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Είναι ένα bot"
+msgstr "Είναι ένα ρομπότ"
 
 #: Is available for help
 msgid "user_help"
@@ -735,11 +735,11 @@ msgstr "{{nick}} δίνει χειρισή σε {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} παίρνει τον χειρισή από {{target}}"
+msgstr "{{nick}} παίρνει το op από {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} δίνει μισή χείριση σε {{target}}"
+msgstr "{{nick}} δίνει halfop σε {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
@@ -747,27 +747,27 @@ msgstr "{{nick}} παίρνει μισή χείριση από {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} δίνει φωνή σε {{target}}"
+msgstr "{{nick}} δίνει voice σε {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} παίρνει φωνή από {{target}}"
+msgstr "{{nick}} παίρνει το voice από {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} δίνει διαχείριση σε {{target}}"
+msgstr "{{nick}} δίνει admin σε {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} παίρνει τον διαχείριση από {{target}}"
+msgstr "{{nick}} παίρνει το admin από {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} δίνει ιδιόκτηση σε {{target}}"
+msgstr "{{nick}} δίνει owner σε {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} παίρνει ιδιόκτηση από {{target}}"
+msgstr "{{nick}} παίρνει το owner από {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
