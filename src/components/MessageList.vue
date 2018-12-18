@@ -29,6 +29,9 @@
                 <span>{{ $t('unread_messages') }}</span>
             </div>
 
+            <!-- message.template is checked first for a custom component, then each message layout
+                 checks for a message.bodyTemplate custom component to apply only to the body area
+            -->
             <div
                 v-rawElement="message.template.$el"
                 v-if="message.render() && message.template && message.template.$el"
