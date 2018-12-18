@@ -977,7 +977,7 @@ const state = new Vue({
                 }
             }
 
-            this.$emit('message.new', bufferMessage, buffer);
+            this.$emit('message.new', { message: bufferMessage, buffer: buffer });
         },
 
         getUser(networkid, nick, usersArr_) {
