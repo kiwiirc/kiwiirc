@@ -89,6 +89,7 @@ export default Vue.extend({
     methods: {
         section() {
             if (this.sidebarOpen === null) {
+                // Query has not been opened yet so copy the channel state (open/closed)
                 this.sidebarOpen = this.channelState.sidebarOpen;
             }
             if (this.isClosed) {
@@ -128,20 +129,22 @@ export default Vue.extend({
             this.activeComponent = null;
 
             // Only set sidebar section if its in the allowed list
-            if (this.sidebarState.allowedSections.includes(section)) {
-                if (section === 'user') {
-                    let user = this.getUserFromOpts(opts);
-                    if (user) {
-                        this.sidebarUser = user;
-                        this.sidebarSection = section;
-                        this.sidebarOpen = true;
-                    }
-                    // Could be invalid user for which we do nothing
-                    return;
-                }
-                this.sidebarSection = section;
-                this.sidebarOpen = true;
+            if (!this.sidebarState.allowedSections.includes(section)) {
+                return;
             }
+
+            if (section === 'user') {
+                let user = this.getUserFromOpts(opts);
+                if (user) {
+                    this.sidebarUser = user;
+                    this.sidebarSection = section;
+                    this.sidebarOpen = true;
+                }
+                // Could be invalid user for which we do nothing
+                return;
+            }
+            this.sidebarSection = section;
+            this.sidebarOpen = true;
         },
         toggleSidebar(section, opts) {
             if (!section && this.sidebarOpen) {
@@ -189,15 +192,20 @@ export default Vue.extend({
                 return null;
             }
 
+            // Opts can contain a nick or a user object
             let buffer = this.$state.getActiveBuffer();
+            // Check the active buffer contains the user
             if (opts.user && buffer.hasNick(opts.user.nick)) {
                 return opts.user;
             } else if (opts.nick) {
+                // Get the user from nick and check if they are in the active buffer
                 let user = this.$state.getUser(buffer.getNetwork().id, opts.nick);
                 if (user && buffer.hasNick(user.nick)) {
                     return user;
                 }
             }
+
+            // No valid user/nick or the user is not a member of the current buffer
             return null;
         },
     },
