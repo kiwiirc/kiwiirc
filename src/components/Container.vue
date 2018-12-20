@@ -11,12 +11,12 @@
                     :class="[
                         unreadMessages.highlight ?
                             'kiwi-container-toggledraw-statebrowser-messagecount--highlight' :
-                            '',
+                            'kiwi-container-toggledraw-statebrowser-messagecount',
                         unreadMessages.highlight ?
-                            'kiwi-arrow_box--highlight' :
+                            'kiwi-container-arrow_box--highlight' :
                             ''
                     ]"
-                    class="kiwi-container-toggledraw-statebrowser-messagecount kiwi-arrow_box"
+                    class="kiwi-container-arrow_box"
                 >{{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}</div>
             </div>
             <container-header :buffer="buffer" :sidebar-state="sidebarState"/>
@@ -256,7 +256,8 @@ export default {
     cursor: default;
 }
 
-.kiwi-container-toggledraw-statebrowser-messagecount {
+.kiwi-container-toggledraw-statebrowser-messagecount,
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
     position: relative;
     font-size: 0.6em;
     border-radius: 3px;
@@ -301,14 +302,14 @@ export default {
     }
 }
 
-.kiwi-arrow_box {
+.kiwi-container-arrow_box {
     position: relative;
     margin-left: 10px;
     margin-top: -2px;
 }
 
-.kiwi-arrow_box::after,
-.kiwi-arrow_box::before {
+.kiwi-container-arrow_box::after,
+.kiwi-container-arrow_box::before {
     right: 97%;
     top: 50%;
     border: solid transparent;
@@ -319,22 +320,16 @@ export default {
     pointer-events: none;
 }
 
-.kiwi-arrow_box::after {
+.kiwi-container-arrow_box::after {
     border-color: transparent;
     border-width: 0;
     margin-top: -999px;
 }
 
-.kiwi-arrow_box::before {
+.kiwi-container-arrow_box::before {
     border-color: transparent;
-    border-right-color: #42b983;
     border-width: 13.5px;
     margin-top: -14px;
-}
-
-.kiwi-arrow_box--highlight::before {
-    /* stylelint-disable-next-line declaration-no-important */
-    border-right-color: #d62323 !important;
 }
 
 @keyframes kiwi-wiggle {
@@ -344,8 +339,6 @@ export default {
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight {
-    /* stylelint-disable-next-line declaration-no-important */
-    background-color: #d62323 !important;
     animation: kiwi-wiggle 0.25s 4;
     animation-timing-function: ease-in, linear, ease-out;
 }

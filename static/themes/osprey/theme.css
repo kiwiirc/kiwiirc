@@ -221,6 +221,19 @@
     border-right-color: #ddd;
 }
 
+.kiwi-container-arrow_box::before {
+    border-right-color: #42b983;
+}
+
+.kiwi-container-arrow_box--highlight::before {
+    border-right-color: #d62323;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    background-color: #d62323;
+    color: #fff;
+}
+
 .kiwi-statebrowser-channel-label--highlight {
     background: #e45e5e;
 }
