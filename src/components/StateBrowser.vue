@@ -370,6 +370,10 @@ export default {
     opacity: 1;
 }
 
+.kiwi-statebrowser-channel::before {
+    line-height: 30px;
+}
+
 /* New Channel Button */
 .kiwi-statebrowser-newchannel {
     padding: 0;
@@ -589,6 +593,10 @@ export default {
             font-size: 1.2em;
             line-height: 45px;
         }
+    }
+
+    .kiwi-statebrowser-channel::before {
+        line-height: 40px;
     }
 
     .kiwi-statebrowser-usermenu {

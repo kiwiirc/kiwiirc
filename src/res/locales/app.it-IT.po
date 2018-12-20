@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-11-19 15:21\n"
+"PO-Revision-Date: 2018-12-11 10:26\n"
 
 #: Start
 msgid "start_button"
@@ -701,7 +701,7 @@ msgstr "Connesso a {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Connesso in modo protetto da SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "Anche nei canali {{channels}}"
 
@@ -724,6 +724,10 @@ msgstr "Blocca accesso al canale"
 #: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "Bandisci ed espelli dal canale"
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr "Specifica un canale a cui accedere. es /join #esempio"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -776,6 +780,94 @@ msgstr "{{nick}} ha rimosso il blocco su {{target}}"
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
 msgstr "{{nick}} imposta {{mode}} per {{target}}"
+
+#: Send a message
+msgid "command_msg"
+msgstr "Invia un messaggio"
+
+#: Do something physical
+msgid "command_action"
+msgstr "Fa qualcosa di fisico"
+
+#: Join a channel
+msgid "command_join"
+msgstr "Accedi ad un canale"
+
+#: Leave a channel
+msgid "command_part"
+msgstr "Esci da un canale"
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr "Esci e rientra da un canale"
+
+#: Change your nickname
+msgid "command_nick"
+msgstr "Cambia il tuo nickname"
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr "Avvia una conversazione privata con qualcuno"
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr "Invita qualcuno nel canale"
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr "Imposta il topic per questo canale"
+
+#: Send a notice
+msgid "command_notice"
+msgstr "Invia un notice"
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr "Invia un comando raw al server IRC"
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr "Espelli qualcuno dal canale"
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr "Svuota la finestra di chat dai messaggi"
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr "Invia un comando CTCP a qualcuno"
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr "Disconnettiti dal server IRC"
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr "Connettiti a un nuovo network IRC"
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr "Richiedi informazioni su qualcuno"
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr "Richiedi informazioni su qualcuno che si è disconnesso di recente"
+
+#: Mark yourself as away
+msgid "command_away"
+msgstr "Impostati come assente"
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr "Cambia l' encoding della tua connessione"
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr "Ignora i messaggi da qualcuno"
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr "Smetti di ignorare i messaggi di qualcuno"
 
 #: Your IRC client
 msgid "personal_client"

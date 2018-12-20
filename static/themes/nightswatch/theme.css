@@ -21,20 +21,20 @@
 
 /* Welcome Screen ( Welcome.vue ) */
 .kiwi-welcome-simple-form,
-.kiwi-customserver-form{
+.kiwi-customserver-form,
+.kiwi-welcome-znc-form,
+.kiwi-startbnc-form {
+    background-color: #fff;
+    color: #000;
     border: 1px solid #ececec;
 }
 .kiwi-welcome-simple-error {
     border: 1px dashed #d86f6f;
 }
 
-.kiwi-welcome-simple .input-text {
+.kiwi-welcome-simple .u-input-text {
     opacity: 1;
     background: none;
-}
-
-.kiwi-welcome-simple .input-text input {
-    color: #fff;
 }
 
 .kiwi-startup-common-section-info {
@@ -54,20 +54,6 @@
  .kiwi-welcome-simple .help a:hover {
      color: #a9d87a;
  }
-
-.kiwi-welcome-simple h2 {
-    color: #fff;
-}
-
-.kiwi-welcome-simple .input-text-label {
-    color: #fff;
-}
-
-.kiwi-welcome-simple .u-form label span {
-    color: #fff;
-}
-
-
 
 
 /* Custom server layout */
@@ -109,19 +95,19 @@
 }
 
 /*Style all inputs */
-.input-text {
+.u-input-text {
     background: #adadad;
 }
-.input-text-label {
+.u-input-text-label {
     color: gray;
 }
-.input-text--focus {
+.u-input-text--focus {
     border-color: #000000;
 }
-.input-text-underline {
+.u-input-text-underline {
     border-color: #a9a9a9;
 }
-.input-text-underline-active {
+.u-input-text-underline-active {
     background: #000000;
 }
 .u-form .u-input,
@@ -135,11 +121,11 @@
 .u-form label input[type='password'],
 .u-form label input[type='email'],
 .u-form textarea,
-.kiwi-networksettings .input-text input {
+.kiwi-networksettings .u-input-text input {
     border: 1px solid #000000;
 }
 
-.kiwi-networksettings .input-text input {
+.kiwi-networksettings .u-input-text input {
     border: none;
 }
 
@@ -825,12 +811,12 @@
 .kiwi-network-name-options {
     background-color: #000000;
 }
-.kiwi-network-name-options .option-button:hover,
-.kiwi-network-name-options .option-button.active {
+.kiwi-network-name-option:hover,
+.kiwi-network-name-option.active {
     background-color: #6a7b8e;
     color: #adadad;
 }
-.kiwi-network-name-options .kiwi--collapse {
+.kiwi-network-name-option-collapse {
     background: #d16c6c;
     color: #fff;
 }
@@ -911,7 +897,7 @@
 .kiwi-statebrowser-channels  .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name  .kiwi-statebrowser-channel-label {
     background: #d16c6c;
 }
-.kiwi-search-channels.active{
+.kiwi-network-name-option-chanfilter.active{
     background: #000000;
 }
 
@@ -1066,27 +1052,28 @@
 .kiwi-userbox-opaction-kick ,
 .kiwi-userbox-opaction-ban,
 .kiwi-userbox-opaction-kickban {
-    color: #adadad;
+    color: #f1f1f1;
+    border: 2px solid #f1f1f1;
 }
 .kiwi-userbox-opaction-kick {
-    background-color: #f6c358;
+    border-color: #f6c358;
 }
 .kiwi-userbox-opaction-kick:hover {
-    background-color: #fcce6e;
+    border-color: #fcce6e;
 }
 
 .kiwi-userbox-opaction-ban {
-    background-color: #fcb46e;
+    border-color: #fcb46e;
 }
 .kiwi-userbox-opaction-ban:hover{
-    background-color: #ffca97;
+    border-color: #ffca97;
 }
 
 .kiwi-userbox-opaction-kickban{
-    background-color: #fb846a;
+    border-color: #fb846a;
 }
 .kiwi-userbox-opaction-kickban:hover{
-    background-color: #ffaf9e;
+    border-color: #ffaf9e;
 }
 
 .kiwi-userbox-whois {
@@ -1121,15 +1108,15 @@
     border: 1px solid #adadad;
 }
 
-.kiwi-customserver-form .input-text {
+.kiwi-customserver-form .u-input-text {
     background-color: #000;
 }
 
-.kiwi-customserver .input-text input {
+.kiwi-customserver .u-input-text input {
     color: #fff;
 }
 
-.kiwi-customserver-form .input-text .input-text-label {
+.kiwi-customserver-form .u-input-text .u-input-text-label {
     color: #adadad;
 }
 
@@ -1174,10 +1161,10 @@
 }
 
 /* Nightwatch exclusive fix for network settings labels */
-.kiwi-networksettings .u-form .input-text .input-text-label {
+.kiwi-networksettings .u-form .u-input-text .u-input-text-label {
     margin-left: 0;
 }
-.kiwi-networksettings .u-form .input-text--reveal-value span {
+.kiwi-networksettings .u-form .u-input-text--reveal-value span {
     top: -22px;
     color: #fff;
 }

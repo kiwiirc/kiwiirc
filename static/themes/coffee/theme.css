@@ -72,19 +72,19 @@
 }
 
 /*Style all inputs */
-.input-text {
+.u-input-text {
     background: #fff;
 }
-.input-text-label {
+.u-input-text-label {
     color: gray;
 }
-.input-text--focus {
+.u-input-text--focus {
     border-color: #a2846e;
 }
-.input-text-underline {
+.u-input-text-underline {
     border-color: #a9a9a9;
 }
-.input-text-underline-active {
+.u-input-text-underline-active {
     background: #a2846e;
 }
 .u-form .u-input,
@@ -736,12 +736,12 @@
     background-color: #8e715c;
     color: #fff;
 }
-.kiwi-network-name-options .option-button:hover,
-.kiwi-network-name-options .option-button.active {
+.kiwi-network-name-option:hover,
+.kiwi-network-name-option.active {
     background-color: #a2846e;
     color: #fff;
 }
-.kiwi-network-name-options .kiwi--collapse {
+.kiwi-network-name-option-collapse {
     background: #d16c6c;
 }
 
@@ -819,7 +819,7 @@
 .kiwi-statebrowser-channels  .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name  .kiwi-statebrowser-channel-label {
     background: #d16c6c;
 }
-.kiwi-search-channels.active{
+.kiwi-network-name-option-chanfilter.active{
     background: #a2846e;
 }
 
@@ -1014,11 +1014,11 @@
     border: 1px solid #a2846e;
 }
 
-.kiwi-customserver-form .input-text {
+.kiwi-customserver-form .u-input-text {
     background-color: #fff;
 }
 
-.kiwi-customserver-form .input-text .input-text-label {
+.kiwi-customserver-form .u-input-text .u-input-text-label {
     color: #a2846e;
 }
 

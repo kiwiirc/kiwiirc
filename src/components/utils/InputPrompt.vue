@@ -1,9 +1,9 @@
 <template>
-    <div class="input-prompt">
+    <div class="u-input-prompt">
         <div v-if="state==='pre'" @click="prompt"><slot/></div>
 
         <form v-if="state==='prompt'" class="u-form" @submit.prevent="complete">
-            <span class="input-prompt-label">{{ label }}</span>
+            <span class="u-input-prompt-label">{{ label }}</span>
             <input v-model="value" class="u-input" @keyup.esc="cancel" >
             <a class="u-button u-button-primary" @click="complete">{{ $t('ok') }}</a>
             <a class="u-button u-button-warning" @click="cancel">{{ $t('cancel') }}</a>
@@ -44,7 +44,7 @@ export default Vue.component('input-prompt', {
 </script>
 
 <style>
-.input-prompt {
+.u-input-prompt {
     display: inline-block;
 }
 </style>

@@ -20,13 +20,14 @@
 /* Welcome Screen ( Welcome.vue ) */
 .kiwi-welcome-simple-form,
 .kiwi-customserver-form,
-.kiwi-welcome-znc-form {
+.kiwi-welcome-znc-form,
+.kiwi-startbnc-form {
     background-color: #fff;
     color: #000;
     border: 1px solid #ececec;
 }
 
-.kiwi-welcome-simple-form .input-text {
+.kiwi-welcome-simple-form .u-input-text {
     background: #fff;
 }
 
@@ -60,7 +61,7 @@
     color: #000;
 }
 
-.kiwi-welcome-znc .input-text {
+.kiwi-welcome-znc .u-input-text {
     background: #fff;
 }
 
@@ -94,23 +95,23 @@
 }
 
 /* Style all inputs */
-.input-text {
+.u-input-text {
     background: #dedede;
 }
 
-.input-text-label {
+.u-input-text-label {
     color: gray;
 }
 
-.input-text--focus {
+.u-input-text--focus {
     border-color: #42b992;
 }
 
-.input-text-underline {
+.u-input-text-underline {
     border-color: #a9a9a9;
 }
 
-.input-text-underline-active {
+.u-input-text-underline-active {
     background: #42b992;
 }
 
@@ -661,7 +662,7 @@
 .kiwi-networksettings input[type='password'],
 .kiwi-networksettings input[type='email'],
 .kiwi-networksettings textarea,
-.kiwi-networksettings .input-text input {
+.kiwi-networksettings .u-input-text input {
     background: rgb(62, 62, 62);
     color: #fff;
 }
@@ -676,7 +677,7 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.kiwi-networksettings .u-form .input-text {
+.kiwi-networksettings .u-form .u-input-text {
     background: none;
 }
 
@@ -881,7 +882,7 @@
 }
 
 .kiwi-network-name-hover-icon,
-.kiwi-network-name-options .option-button {
+.kiwi-network-name-option {
     color: #dedede;
 }
 
@@ -889,13 +890,13 @@
     background-color: #131312;
 }
 
-.kiwi-network-name-options .option-button:hover,
-.kiwi-network-name-options .option-button.active {
+.kiwi-network-name-option:hover,
+.kiwi-network-name-option.active {
     background-color: #42b992;
     color: #dedede;
 }
 
-.kiwi-network-name-options .kiwi--collapse {
+.kiwi-network-name-option-collapse {
     background: #d16c6c;
 }
 
@@ -986,7 +987,7 @@
     border-left: 3px solid #42b992;
 }
 
-.kiwi-search-channels.active{
+.kiwi-network-name-option-chanfilter.active{
     background: #42b992;
 }
 
@@ -1136,30 +1137,31 @@
 .kiwi-userbox-opaction-ban,
 .kiwi-userbox-opaction-kickban {
     color: #dedede;
+    border: 2px solid #dedede;
 }
 
 .kiwi-userbox-opaction-kick {
-    background-color: #f6c358;
+    border-color: #f6c358;
 }
 
 .kiwi-userbox-opaction-kick:hover {
-    background-color: #fcce6e;
+    border-color: #fcce6e;
 }
 
 .kiwi-userbox-opaction-ban {
-    background-color: #fcb46e;
+    border-color: #fcb46e;
 }
 
 .kiwi-userbox-opaction-ban:hover {
-    background-color: #ffca97;
+    border-color: #ffca97;
 }
 
 .kiwi-userbox-opaction-kickban {
-    background-color: #fb846a;
+    border-color: #fb846a;
 }
 
 .kiwi-userbox-opaction-kickban:hover {
-    background-color: #ffaf9e;
+    border-color: #ffaf9e;
 }
 
 .kiwi-userbox-whois {
@@ -1210,11 +1212,11 @@
     border: 1px solid #a2846e;
 }
 
-.kiwi-customserver-form .input-text {
+.kiwi-customserver-form .u-input-text {
     background-color: #fff;
 }
 
-.kiwi-customserver-form .input-text .input-text-label {
+.kiwi-customserver-form .u-input-text .u-input-text-label {
     color: #42b992;
 }
 

@@ -218,7 +218,7 @@ export default {
     box-sizing: border-box;
 }
 
-.kiwi-welcome-znc .input-text,
+.kiwi-welcome-znc .u-input-text,
 .kiwi-welcome-znc .kiwi-welcome-znc-have-password input {
     margin-bottom: 1.5em;
 }

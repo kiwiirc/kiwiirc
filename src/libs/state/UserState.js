@@ -14,6 +14,7 @@ export default class UserState {
         this.colour = user.colour || '';
         this.buffers = Object.create(null);
         this.account = '';
+        this.hasWhois = false;
 
         // Whois details are non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'actual_host', '', true);
@@ -35,6 +36,7 @@ export default class UserState {
         if (!this.colour) {
             this.colour = TextFormatting.createNickColour(this.nick);
         }
-        return this.colour;
+        // default will use the themes default text colour
+        return this.colour === 'default' ? '' : this.colour;
     }
 }
