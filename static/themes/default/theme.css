@@ -362,11 +362,9 @@
     background: #fff;
 }
 
-.kiwi-messagelist-message--info-open {
+.kiwi-messagelist-message--info-open,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open  {
     background: #f6f6f6;
-}
-.kiwi-messageinfo-urls {
-    border-top: 1px solid #ddd;
 }
 .kiwi-messagelist-message-action .kiwi-messagelist-body {
     color: #090;
@@ -663,10 +661,65 @@
     background: rgba(255, 255, 255, 0.3);
 }
 
-.kiwi-messageinfo {
-    background: #f6f6f6;
-    border-bottom: 2px #ddd solid;
-    border-top: 1px #ddd dashed;
+/* MessageInfo */
+.kiwi-messagelist-message--info-open {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* MessageInfo URLs */
+.kiwi-messageinfo-urls {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.kiwi-messageinfo-urls .kiwi-messageinfo-url:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Start button stying */
+.kiwi-messageinfo-actions{
+    width: 100%;
+    text-align: left;
+}
+
+.kiwi-messageinfo-opbuttons {
+    float: right;
+    width: auto;
+}
+
+.kiwi-messageinfo-actions .u-link {
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid #000;
+    color: #000;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.kiwi-messageinfo-actions .u-link.kick-user {
+    background: #f6c358;
+    color: #fff;
+}
+
+.kiwi-messageinfo-actions .u-link.ban-user {
+    background: #fcb46e;
+    color: #fff;
+}
+
+@media screen and (max-width: 850px) {
+  .kiwi-messageinfo-actions {
+    text-align: center;
+  }
+  .kiwi-messageinfo-opbuttons {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+}
+
+
+.kiwi-messageinfo{
+  padding: 0;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
