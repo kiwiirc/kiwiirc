@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-11-19 03:51\n"
+"PO-Revision-Date: 2018-12-11 10:26\n"
 
 #: Start
 msgid "start_button"
@@ -701,7 +701,7 @@ msgstr "Verbonden met {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Veilig verbonden via SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "Ook in kanalen {{channels}}"
 
@@ -724,6 +724,10 @@ msgstr "Uit het kanaal verbannen"
 #: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "Uit het kanaal zetten en verbannen"
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr "Geef een kanaal op om bij te wonen, bv. /join #voorbeeld"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -776,6 +780,94 @@ msgstr "{{nick}} heeft verbanning van {{target}} opgeheven"
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
 msgstr "{{nick}} stelt {{mode}} in op {{target}}"
+
+#: Send a message
+msgid "command_msg"
+msgstr "Een bericht sturen"
+
+#: Do something physical
+msgid "command_action"
+msgstr "Iets fysieks doen"
+
+#: Join a channel
+msgid "command_join"
+msgstr "Een kanaal binnengaan"
+
+#: Leave a channel
+msgid "command_part"
+msgstr "Een kanaal verlaten"
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr "Een kanaal verlaten en weer binnengaan"
+
+#: Change your nickname
+msgid "command_nick"
+msgstr "Je bijnaam wijzigen"
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr "Een privégesprek met iemand beginnen"
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr "Iemand in het kanaal uitnodigen"
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr "Het topic voor dit kanaal instellen"
+
+#: Send a notice
+msgid "command_notice"
+msgstr "Een kennisgeving sturen"
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr "Een directe opdracht naar de IRC-server sturen"
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr "Iemand uit het kanaal zetten"
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr "Alle berichten in dit venster wissen"
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr "Een CTCP-opdracht naar iemand sturen"
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr "Verbinding met de IRC-server verbreken"
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr "Verbinding met een nieuw IRC-netwerk maken"
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr "Informatie over iemand opvragen"
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr "Informatie over iemand opvragen die onlangs is weggegaan"
+
+#: Mark yourself as away
+msgid "command_away"
+msgstr "Jezelf als afwezig markeren"
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr "De codering van je verbinding wijzigen"
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr "Berichten van iemand negeren"
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr "Negeren van iemand stoppen"
 
 #: Your IRC client
 msgid "personal_client"

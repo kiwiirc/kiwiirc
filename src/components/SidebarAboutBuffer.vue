@@ -33,7 +33,7 @@
                 <i class="fa fa-angle-right"/> {{ $t('highlights') }}
             </h4>
             <div>
-                <ul v-if="highlights.length > 0" class="display:none;">
+                <ul v-if="highlights.length > 0">
                     <li v-for="msg in highlights" :key="msg.id">
                         {{ msg.nick }}: {{ msg.message }}
                     </li>

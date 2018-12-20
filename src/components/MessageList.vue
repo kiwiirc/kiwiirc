@@ -29,11 +29,12 @@
                 <span>{{ $t('unread_messages') }}</span>
             </div>
 
-            <component
-                v-if="message.render() && message.template"
-                :is="message.template"
-                :message="message"
-                :buffer="buffer"
+            <!-- message.template is checked first for a custom component, then each message layout
+                 checks for a message.bodyTemplate custom component to apply only to the body area
+            -->
+            <div
+                v-rawElement="message.template.$el"
+                v-if="message.render() && message.template && message.template.$el"
             />
             <message-list-message-modern
                 v-else-if="listType === 'modern'"

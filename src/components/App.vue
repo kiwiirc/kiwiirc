@@ -262,8 +262,12 @@ export default {
                 return;
             }
 
-            // bail if a sidebar is open
-            if (this.$data.sidebarState.sidebarOpen) {
+            // bail if the target is an input-like element
+            if (
+                event.target instanceof HTMLInputElement ||
+                event.target instanceof HTMLSelectElement ||
+                event.target instanceof HTMLTextAreaElement
+            ) {
                 return;
             }
 

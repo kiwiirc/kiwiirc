@@ -65,7 +65,11 @@
                         <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                             <i class="fa fa-adjust" aria-hidden="true"/>
                         </a>
-                        <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
+                        <a
+                            v-if="shouldShowEmojiPicker"
+                            class="kiwi-controlinput-tool"
+                            @click.prevent="onToolClickEmoji"
+                        >
                             <i class="fa fa-smile-o" aria-hidden="true"/>
                         </a>
                         <div
@@ -94,6 +98,7 @@
 'kiwi public';
 
 import _ from 'lodash';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import autocompleteCommands from '@/res/autocompleteCommands';
 import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
@@ -147,6 +152,9 @@ export default {
         shouldShowSendButton() {
             return this.$state.ui.is_touch || this.$state.setting('showSendButton');
         },
+        shouldShowEmojiPicker() {
+            return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
+        },
     },
     watch: {
         history_pos(newVal) {
@@ -199,6 +207,10 @@ export default {
             }
 
             this.$refs.input.insertText(val);
+        });
+
+        this.listen(this.$state, 'input.tool', (toolComponent) => {
+            this.toggleInputTool(toolComponent);
         });
     },
     mounted() {
@@ -486,9 +498,13 @@ export default {
             if (opts.commands) {
                 let commandList = [];
                 autocompleteCommands.forEach((command) => {
+                    // allow descriptions to be translation keys or static strings
+                    let desc = command.description.startsWith('locale_id_') ?
+                        TextFormatting.t(command.description.substr(10)) :
+                        command.description;
                     commandList.push({
                         text: '/' + command.command,
-                        description: command.description,
+                        description: desc,
                         type: 'command',
                     });
                 });
@@ -590,6 +606,7 @@ export default {
     position: absolute;
     bottom: 100%;
     right: 0;
+    width: 100%;
     z-index: 1;
 }
 

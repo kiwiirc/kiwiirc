@@ -76,6 +76,7 @@ const stateObj = {
         },
         noticeActiveBuffer: true,
         showAutocomplete: true,
+        showEmojiPicker: true,
         showSendButton: false,
         sidebarDefault: '',
         showRaw: false,
@@ -938,7 +939,9 @@ const state = new Vue({
                 isNewMessage &&
                 settingAlertOn !== 'never' &&
                 message.type !== 'nick' &&
+                message.type !== 'mode' &&
                 message.type !== 'traffic' &&
+                !buffer.isSpecial() &&
                 !bufferMessage.ignore &&
                 !isSelf
             ) {
