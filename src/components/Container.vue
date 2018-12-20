@@ -11,10 +11,12 @@
                     :class="[
                         unreadMessages.highlight ?
                             'kiwi-container-toggledraw-statebrowser-messagecount--highlight' :
+                            '',
+                        unreadMessages.highlight ?
+                            'kiwi-arrow_box--highlight' :
                             ''
                     ]"
-                    class="kiwi-container-toggledraw-statebrowser-messagecount
-                           kiwi-container-toggledraw-statebrowser-messagecount--highlight"
+                    class="kiwi-container-toggledraw-statebrowser-messagecount kiwi-arrow_box"
                 >{{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}</div>
             </div>
             <container-header :buffer="buffer" :sidebar-state="sidebarState"/>
@@ -299,4 +301,56 @@ export default {
     }
 }
 
+.kiwi-arrow_box {
+    position: relative;
+    margin-left: 10px;
+    margin-top: -2px;
+}
+
+.kiwi-arrow_box::after,
+.kiwi-arrow_box::before {
+    right: 97%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.kiwi-arrow_box::after {
+    border-color: transparent;
+    border-width: 0;
+    margin-top: -999px;
+}
+
+.kiwi-arrow_box::before {
+    border-color: transparent;
+    border-right-color: #42b983;
+    border-width: 13.5px;
+    margin-top: -14px;
+}
+
+.kiwi-arrow_box--highlight::before {
+    /* stylelint-disable-next-line declaration-no-important */
+    border-right-color: #d62323 !important;
+}
+
+@keyframes kiwi-wiggle {
+    0% { margin-left: 15px; }
+    50% { margin-left: 10px; }
+    100% { margin-left: 15px; }
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    /* stylelint-disable-next-line declaration-no-important */
+    background-color: #d62323 !important;
+    animation: kiwi-wiggle 0.25s 4;
+    animation-timing-function: ease-in, linear, ease-out;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight:hover {
+    animation: none;
+}
 </style>

@@ -6,7 +6,7 @@
         </div>
 
         <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">
-            <span>{{ $t('close') }}</span>
+            <span style="margin-left: 25px;">{{ $t('close') }}</span>
             <i class="fa fa-times" aria-hidden="true"/>
         </div>
 
