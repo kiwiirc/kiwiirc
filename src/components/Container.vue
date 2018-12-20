@@ -184,7 +184,7 @@ export default {
 .kiwi-sidebar {
     position: absolute;
     right: -443px;
-    top: -4px; /* Push the top over the top page border */
+    top: 45px; /* Push the top over the top page border */
     bottom: 0;
     width: 443px;
     max-width: 443px;
@@ -206,6 +206,7 @@ export default {
     border-left-style: solid;
     max-width: 430px;
     z-index: 1;
+    transition: right 0.2s, top 0s;
 }
 
 .kiwi-container-content {
@@ -296,6 +297,10 @@ export default {
     .kiwi-container-toggledraw-statebrowser,
     .kiwi-container-toggledraw-sidebar {
         display: block;
+    }
+
+    .kiwi-sidebar {
+        top: 0;
     }
 }
 
