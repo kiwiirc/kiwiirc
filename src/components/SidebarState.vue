@@ -3,6 +3,8 @@
 
 import Vue from 'vue';
 
+const SIDEBAR_UNSET = null;
+
 export default Vue.extend({
     data() {
         return {
@@ -16,7 +18,7 @@ export default Vue.extend({
             },
             queryState: {
                 allowedSections: ['user'],
-                sidebarOpen: null,
+                sidebarOpen: SIDEBAR_UNSET,
                 sidebarUser: null,
                 sidebarSection: 'user',
             },
@@ -88,7 +90,7 @@ export default Vue.extend({
     },
     methods: {
         section() {
-            if (this.sidebarOpen === null) {
+            if (this.sidebarOpen === SIDEBAR_UNSET) {
                 // Query has not been opened yet so copy the channel state (open/closed)
                 this.sidebarOpen = this.channelState.sidebarOpen;
             }
