@@ -436,6 +436,7 @@ export default {
 .kiwi-messagelist {
     overflow-y: auto;
     height: 100%;
+    font-family: monospace;
 }
 
 .kiwi-messagelist-item {
@@ -689,11 +690,6 @@ export default {
 
 .kiwi-messagelist-message-action.kiwi-messagelist-message-action .kiwi-messagelist-nick {
     display: none;
-}
-
-/* MOTD */
-.kiwi-messagelist-message-motd {
-    font-family: monospace;
 }
 
 /* Links */

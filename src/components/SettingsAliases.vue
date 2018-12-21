@@ -99,7 +99,6 @@ export default {
     height: 200px;
     font-size: 0.8em;
     line-height: 1.4em;
-    font-family: monospace;
 }
 
 .kiwi-settings-aliases-showhelp {
