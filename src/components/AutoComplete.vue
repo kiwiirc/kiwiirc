@@ -130,6 +130,10 @@ export default {
         },
     },
     mounted: function mounted() {
+        // We have nothing to show, so lets just close
+        if (!this.filteredAndLimitedItems) {
+            this.cancel();
+        }
         this.tempCurrentItem();
     },
     methods: {
