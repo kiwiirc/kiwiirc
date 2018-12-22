@@ -181,6 +181,18 @@ export default {
                 return;
             }
 
+            // shift key on its own, don't shift focus we handle this below
+            if (ev.keyCode === 16) {
+                return;
+            }
+
+            // If we are using shift and arrow keys, don't shift focus
+            // this allows users to adjust text selection
+            let arrowKeyCodes = [37, 38, 39, 40];
+            if (ev.shiftKey && arrowKeyCodes.indexOf(ev.keyCode) !== -1) {
+                return;
+            }
+
             // If we're typing into an input box somewhere, ignore
             let elements = ['input', 'select', 'textarea', 'button', 'datalist', 'keygen'];
             let doNotRefocus =
