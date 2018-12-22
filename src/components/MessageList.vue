@@ -400,7 +400,7 @@ export default {
                 return;
             }
 
-            if (this.$state.ui.is_touch) {
+            if (this.$state.ui.is_touch && this.$state.setting('buffers.show_message_info')) {
                 if (this.canShowInfoForMessage(message) && event.target.nodeName === 'A') {
                     // We show message info boxes on touch screen devices so that the user has an
                     // option to preview the links or do other stuff.
