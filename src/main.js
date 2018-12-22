@@ -101,6 +101,9 @@ function showError(err) {
     /* eslint-disable no-new */
     new Vue({
         el: '#app',
-        render: h => h(StartupError),
+        render: h => h(
+            StartupError,
+            { props: { error: err } },
+        ),
     });
 }

@@ -29,11 +29,12 @@
                 <span>{{ $t('unread_messages') }}</span>
             </div>
 
-            <component
-                v-if="message.render() && message.template"
-                :is="message.template"
-                :message="message"
-                :buffer="buffer"
+            <!-- message.template is checked first for a custom component, then each message layout
+                 checks for a message.bodyTemplate custom component to apply only to the body area
+            -->
+            <div
+                v-rawElement="message.template.$el"
+                v-if="message.render() && message.template && message.template.$el"
             />
             <message-list-message-modern
                 v-else-if="listType === 'modern'"
@@ -541,9 +542,9 @@ export default {
     cursor: default;
 }
 
-.kiwi-container--sidebar-open .kiwi-messagelist::after {
+.kiwi-container--sidebar-drawn .kiwi-messagelist::after {
     content: '';
-    z-index: 2;
+    z-index: 3;
     left: 0;
     top: 0;
     width: 100%;
@@ -553,7 +554,7 @@ export default {
     pointer-events: none;
 }
 
-.kiwi-container--sidebar-open.kiwi-container--no-sidebar .kiwi-messagelist::after {
+.kiwi-container--sidebar-drawn.kiwi-container--no-sidebar .kiwi-messagelist::after {
     width: 0;
     height: 0;
     display: none;
@@ -737,4 +738,5 @@ export default {
         margin: 0;
     }
 }
+
 </style>

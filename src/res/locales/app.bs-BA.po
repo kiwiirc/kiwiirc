@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-11-06 13:12\n"
+"PO-Revision-Date: 2018-12-11 10:26\n"
 
 #: Start
 msgid "start_button"
@@ -637,6 +637,18 @@ msgstr "Dodaj?"
 msgid "state_available"
 msgstr "Dostupne mreže"
 
+#: Add Network
+msgid "add_network"
+msgstr "Dodaj mrežu"
+
+#: New Network
+msgid "new_network"
+msgstr "Nova mreža"
+
+#: No Network
+msgid "no_network"
+msgstr "Nema mreže"
+
 #: Configure network
 msgid "state_configure"
 msgstr "Konfiguracija mreže"
@@ -689,7 +701,7 @@ msgstr "Povezani ste na {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Sigurno povezani preko SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "Također na kanalima {{channels}}"
 
@@ -712,6 +724,10 @@ msgstr "Banuj sa kanala"
 #: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "Banuj i izbaci sa kanala"
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr "Molimo naznačite na koji kanal se želite sojiti. npr /join #primjer"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -764,6 +780,94 @@ msgstr "{{nick}} je uklonio ban {{target}}"
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
 msgstr "{{nick}} postavlja {{mode}} za {{target}}"
+
+#: Send a message
+msgid "command_msg"
+msgstr "Pošalji poruku"
+
+#: Do something physical
+msgid "command_action"
+msgstr "Rekreirajte se"
+
+#: Join a channel
+msgid "command_join"
+msgstr "Pridružite se kanalu"
+
+#: Leave a channel
+msgid "command_part"
+msgstr "Napustite kanal"
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr "Napusti, pa ponovno pristupi kanalu"
+
+#: Change your nickname
+msgid "command_nick"
+msgstr "Promijeni nadimak"
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr "Započni privatni razgovor s nekim"
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr "Pozovi nekoga na kanal"
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr "Postavi temu za ovaj kanal"
+
+#: Send a notice
+msgid "command_notice"
+msgstr "Pošalji napomenu"
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr "Pošalji komandu na IRC server"
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr "Izbaci nekoga sa kanala"
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr "Očisti sve poruke sa prozora"
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr "Pošalji CTCP komandu nekome"
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr "Odspoji se sa IRC servera"
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr "Spoji se na novu IRC mrežu"
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr "Zatraži informacije o nekome"
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr "Zatraži informacije o nekome ko se nedavno odspojio"
+
+#: Mark yourself as away
+msgid "command_away"
+msgstr "Označi sebe odsutnim"
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr "Promijeni način kodiranja konektovanja"
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr "Ignoriši poruke od nekoga"
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr "Prestani ignorisati nekoga"
 
 #: Your IRC client
 msgid "personal_client"

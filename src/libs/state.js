@@ -76,8 +76,9 @@ const stateObj = {
         },
         noticeActiveBuffer: true,
         showAutocomplete: true,
+        showEmojiPicker: true,
         showSendButton: false,
-        sidebarPinned: false,
+        sidebarDefault: '',
         showRaw: false,
         aliases: `
 # General aliases
@@ -938,7 +939,9 @@ const state = new Vue({
                 isNewMessage &&
                 settingAlertOn !== 'never' &&
                 message.type !== 'nick' &&
+                message.type !== 'mode' &&
                 message.type !== 'traffic' &&
+                !buffer.isSpecial() &&
                 !bufferMessage.ignore &&
                 !isSelf
             ) {

@@ -26,7 +26,7 @@
                     <td v-if="setting.modified">
                         <a class="u-link" @click="resetValue($event, setting.key)">
                             {{ $t('settings_advanced_reset') }}
-                            <i class="fa fa-undo reset-icon" style="margin-left: 10px;"/>
+                            <i class="fa fa-undo" style="margin-left: 10px;"/>
                         </a>
                     </td>
                     <td v-else />

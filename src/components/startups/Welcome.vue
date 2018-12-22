@@ -29,7 +29,7 @@
                         v-if="show_password_box"
                         :label="$t('password')"
                         v-model="password"
-                        class="kiwi-welcome-simple-password input-text--reveal-value"
+                        class="kiwi-welcome-simple-password u-input-text--reveal-value"
                         type="password"
                     />
                     <input-text
@@ -42,7 +42,7 @@
                     <div
                         v-if="recaptchaSiteId"
                         :data-sitekey="recaptchaSiteId"
-                        class="g-recaptcha"
+                        class="kiwi-g-recaptcha"
                     />
 
                     <button
@@ -288,7 +288,7 @@ export default {
     padding: 0 0.5em;
 }
 
-.kiwi-welcome-simple-section-connection .input-text input[type="text"] {
+.kiwi-welcome-simple-section-connection .u-input-text input[type="text"] {
     margin-top: 5px;
     padding: 0.3em 1em;
     width: 100%;
@@ -296,7 +296,7 @@ export default {
     box-sizing: border-box;
 }
 
-.kiwi-welcome-simple .input-text {
+.kiwi-welcome-simple .u-input-text {
     font-weight: 600;
     opacity: 0.6;
     font-size: 1.2em;
@@ -313,7 +313,7 @@ export default {
     margin-top: 2px;
 }
 
-.kiwi-welcome-simple .g-recaptcha {
+.kiwi-welcome-simple .kiwi-g-recaptcha {
     margin-bottom: 10px;
 }
 

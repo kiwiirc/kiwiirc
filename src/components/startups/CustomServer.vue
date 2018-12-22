@@ -9,7 +9,7 @@
                 </a>
             </h2>
 
-            <transition name="connectingloader">
+            <transition name="kiwi-connectingloader">
                 <form
                     v-if="!is_connecting"
                     class="u-form kiwi-customserver-form"
@@ -394,19 +394,25 @@ export default {
     padding: 20px 1em;
 }
 
-.kiwi-customserver-form .input-text-label,
-.kiwi-customserver-form .input-text--reveal-value .input-text-label {
+.kiwi-customserver-form .u-input-text-label,
+.kiwi-customserver-form .u-input-text--reveal-value .u-input-text-label {
     left: 0;
     font-weight: 600;
     font-size: 1em;
 }
 
-.kiwi-customserver .input-text,
+.kiwi-customserver-form .u-input-text-c {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+}
+
+.kiwi-customserver .u-input-text,
 .kiwi-customserver .kiwi-customserver-have-password input {
     margin-bottom: 1.5em;
 }
 
-.kiwi-customserver .input-text input {
+.kiwi-customserver .u-input-text input {
     padding: 0.5em;
     font-size: 1.2em;
 }
@@ -497,13 +503,13 @@ export default {
     font-style: italic;
 }
 
-.connectingloader-enter-active,
-.connectingloader-leave-active {
+.kiwi-connectingloader-enter-active,
+.kiwi-connectingloader-leave-active {
     transition: max-height 0.5s;
 }
 
-.connectingloader-enter,
-.connectingloader-leave-to {
+.kiwi-connectingloader-enter,
+.kiwi-connectingloader-leave-to {
     max-height: 0;
 }
 
