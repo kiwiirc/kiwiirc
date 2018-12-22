@@ -453,6 +453,11 @@ export default {
     margin: 0;
 }
 
+.kiwi-wrap--monospace .kiwi-messagelist-message {
+    font-family: Consolas, monaco, monospace;
+    font-size: 80%;
+}
+
 .kiwi-messagelist-message-mode,
 .kiwi-messagelist-message-traffic {
     padding-left: 10px;
