@@ -34,7 +34,7 @@
                                 {{ channel.channel }}
                             </a>
                         </td>
-                        <td><div v-html="formatAndTrimTopic(channel.topic)"/></td>
+                        <td class="kiwi-channnellist-channel-desc"><div v-html="formatAndTrimTopic(channel.topic)"/></td>
                         <td class="kiwi-channellist-user-center">
                             <a class="u-button u-button-primary"
                                @click="joinChannel(channel.channel)"> {{ $t('container_join') }}
@@ -268,4 +268,34 @@ export default {
     }
 }
 
+@media screen and (max-width: 769px) {
+    .kiwi-channellist-padding-top {
+        padding-top: 50%;
+    }
+
+    .u-form.kiwi-channellist-search {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .kiwi-channellist-nav .u-form .u-input {
+        width: 80%;
+    }
+
+    .kiwi-channellist-nav .u-form .u-button-primary,
+    .kiwi-channellist-nav .u-form .u-button-secondary {
+        width: 20%;
+        box-sizing: border-box;
+        height: 100%;
+    }
+
+    .kiwi-channellist-pagination {
+        padding-top: 20px;
+    }
+
+    .kiwi-channnellist-channel-desc {
+        display: none;
+    }
+}
 </style>
