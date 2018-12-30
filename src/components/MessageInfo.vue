@@ -18,10 +18,10 @@
 
             <div class="kiwi-messageinfo-opbuttons">
                 <input-prompt label="Kick reason:" @submit="onKick">
-                    <a class="u-link kick-user">Kick {{ message.nick }}</a>
+                    <a class="u-link kiwi-messageinfo-kick-user">Kick {{ message.nick }}</a>
                 </input-prompt>
                 <input-prompt label="Ban reason:" @submit="onBan">
-                    <a class="u-link ban-user">Ban {{ message.nick }}</a>
+                    <a class="u-link kiwi-messageinfo-ban-user">Ban {{ message.nick }}</a>
                 </input-prompt>
             </div>
         </div>
