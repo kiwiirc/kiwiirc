@@ -569,11 +569,11 @@
     border-radius: 3px;
 }
 
-.kiwi-messageinfo-actions .u-link.kick-user {
+.kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
     color: #f6c358;
 }
 
-.kiwi-messageinfo-actions .u-link.ban-user {
+.kiwi-messageinfo-actions .kiwi-messageinfo-ban-user {
     color: #fcb46e;
 }
 
