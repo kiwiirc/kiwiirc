@@ -244,10 +244,10 @@ export default {
     line-height: 45px;
     cursor: pointer;
     font-weight: 500;
-    letter-spacing: 1px;
     transition: all 0.3s;
     border-radius: 0 0 6px 0;
     opacity: 0.8;
+    z-index: 20;
 }
 
 .kiwi-statebrowser-appsettings:hover {
@@ -579,6 +579,7 @@ export default {
         height: 45px;
         width: 45px;
         text-align: center;
+        z-index: 20;
 
         i {
             font-size: 1.2em;
@@ -592,6 +593,10 @@ export default {
 
     .kiwi-statebrowser-usermenu {
         position: relative;
+    }
+
+    .kiwi-statebrowser-usermenu-body .kiwi-close-icon {
+        display: none;
     }
 }
 
