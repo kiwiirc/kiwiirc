@@ -6,7 +6,6 @@
         </div>
 
         <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">
-            <span>{{ $t('close') }}</span>
             <i class="fa fa-times" aria-hidden="true"/>
         </div>
 
@@ -238,12 +237,11 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: auto;
-    text-align: left;
-    padding: 0 10px;
+    width: 45px;
+    text-align: center;
     font-size: 1em;
     box-sizing: border-box;
-    line-height: 35px;
+    line-height: 45px;
     cursor: pointer;
     font-weight: 500;
     letter-spacing: 1px;
@@ -261,7 +259,6 @@ export default {
 }
 
 .kiwi-statebrowser-appsettings i {
-    float: right;
     line-height: 35px;
     font-size: 1.2em;
 }
@@ -572,24 +569,18 @@ export default {
     }
 
     .kiwi-statebrowser-mobile-close {
-        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
         color: #fff;
         display: block;
-        padding: 0 10px;
         font-weight: 600;
-        background: #42b992;
-        box-sizing: border-box;
-        margin-bottom: 0;
-        text-transform: uppercase;
         line-height: 45px;
         height: 45px;
-
-        span {
-            float: left;
-        }
+        width: 45px;
+        text-align: center;
 
         i {
-            float: right;
             font-size: 1.2em;
             line-height: 45px;
         }

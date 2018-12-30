@@ -115,6 +115,11 @@
                 {{ $t('connecting') }}
             </div>
             <div class="kiwi-header-name">{{ buffer.getNetwork().name }}</div>
+            <div class="kiwi-header-option kiwi-header-option-leave">
+                <a @click="closeCurrentBuffer">
+                    <i class="fa fa-times" aria-hidden="true"/>
+                </a>
+            </div>
         </template>
 
         <template v-else-if="isQuery()">
