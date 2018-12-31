@@ -219,14 +219,11 @@
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
-    background-color: #d62323;
+    border-right-color: #d62323;
 }
 
 .kiwi-statebrowser-channel-label--highlight {
     background: #e45e5e;
-}
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
-    border-right-color: #d62323;
 }
 
 .kiwi-container-empty .u-button {
