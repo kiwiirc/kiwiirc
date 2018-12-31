@@ -1098,6 +1098,10 @@
     color: #dedede;
 }
 
+.kiwi-statebrowser-channel-label--highlight {
+    background: #d62323;
+}
+
 .kiwi-statebrowser-channel-label .kiwi-statebrowser-channel-label--highlight {
     background: #d62323;
 }
