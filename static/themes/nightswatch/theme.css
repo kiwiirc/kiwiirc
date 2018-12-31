@@ -232,14 +232,14 @@
     color: #b8babd;
 }
 
-/* These styles relate to the 'unread messages' and 'Mentioned' highlights that display to the user in the Statebrowser sidebar */
-.kiwi-container-toggledraw-statebrowser-messagecount {
-    background-color: #42b983;
+.kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
+    background: #d16c6c;
     color: #fff;
 }
 
-.kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
-    background: #d16c6c;
+/* These styles relate to the 'unread messages' and 'Mentioned' highlights that display to the user in the Statebrowser sidebar */
+.kiwi-container-toggledraw-statebrowser-messagecount {
+    background-color: #444;
     color: #fff;
 }
 
@@ -247,8 +247,14 @@
     border: 0.6em solid transparent;
     border-right-color: #444;
 }
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    background-color: #d62323;
+    color: #fff;
+}
+
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
-    border-right-color: #444;
+    border-right-color: #d62323;
 }
 
 .kiwi-container-empty .u-button {

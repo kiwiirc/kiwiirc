@@ -273,7 +273,16 @@
 
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
     border: 0.6em solid transparent;
-    border-right-color: #ddd;
+    border-right-color: #42b983;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    background-color: #d62323;
+    color: #fff;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
+    border-right-color: #d62323;
 }
 
 /* Sidebar uservue colouring */
@@ -1089,7 +1098,7 @@
     color: #dedede;
 }
 
-.kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
+.kiwi-statebrowser-channel-label .kiwi-statebrowser-channel-label--highlight {
     background: #d62323;
 }
 

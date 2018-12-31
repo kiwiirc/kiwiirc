@@ -11,10 +11,9 @@
                     :class="[
                         unreadMessages.highlight ?
                             'kiwi-container-toggledraw-statebrowser-messagecount--highlight' :
-                            ''
+                            '',
                     ]"
-                    class="kiwi-container-toggledraw-statebrowser-messagecount
-                           kiwi-container-toggledraw-statebrowser-messagecount--highlight"
+                    class="kiwi-container-toggledraw-statebrowser-messagecount"
                 >{{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}</div>
             </div>
             <container-header :buffer="buffer" :sidebar-state="sidebarState"/>
@@ -267,6 +266,33 @@ export default {
     left: 6px;
     width: 37px;
     padding: 0;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount::after {
+    right: 99%;
+    top: 20%;
+    border: 0.6em solid transparent;
+    border-right-color: #ddd;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+@keyframes kiwi-wiggle {
+    0% { margin-left: 5px; }
+    50% { margin-left: 0; }
+    100% { margin-left: 5px; }
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    animation: kiwi-wiggle 0.25s 4;
+    animation-timing-function: ease-in, linear, ease-out;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight:hover {
+    animation: none;
 }
 
 .kiwi-container-empty {
