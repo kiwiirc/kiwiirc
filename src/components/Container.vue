@@ -11,12 +11,9 @@
                     :class="[
                         unreadMessages.highlight ?
                             'kiwi-container-toggledraw-statebrowser-messagecount--highlight' :
-                            'kiwi-container-toggledraw-statebrowser-messagecount',
-                        unreadMessages.highlight ?
-                            'kiwi-container-arrow_box--highlight' :
-                            ''
+                            '',
                     ]"
-                    class="kiwi-container-arrow_box"
+                    class="kiwi-container-toggledraw-statebrowser-messagecount"
                 >{{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}</div>
             </div>
             <container-header :buffer="buffer" :sidebar-state="sidebarState"/>
@@ -256,8 +253,7 @@ export default {
     cursor: default;
 }
 
-.kiwi-container-toggledraw-statebrowser-messagecount,
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+.kiwi-container-toggledraw-statebrowser-messagecount {
     position: relative;
     font-size: 0.6em;
     border-radius: 3px;
@@ -269,6 +265,33 @@ export default {
     left: 6px;
     width: 37px;
     padding: 0;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount::after {
+    right: 99%;
+    top: 20%;
+    border: 0.6em solid transparent;
+    border-right-color: #ddd;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+@keyframes kiwi-wiggle {
+    0% { margin-left: 5px; }
+    50% { margin-left: 0; }
+    100% { margin-left: 5px; }
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    animation: kiwi-wiggle 0.25s 4;
+    animation-timing-function: ease-in, linear, ease-out;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight:hover {
+    animation: none;
 }
 
 .kiwi-container-empty {
@@ -302,48 +325,4 @@ export default {
     }
 }
 
-.kiwi-container-arrow_box {
-    position: relative;
-    margin-left: 10px;
-    margin-top: -2px;
-}
-
-.kiwi-container-arrow_box::after,
-.kiwi-container-arrow_box::before {
-    right: 97%;
-    top: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-}
-
-.kiwi-container-arrow_box::after {
-    border-color: transparent;
-    border-width: 0;
-    margin-top: -999px;
-}
-
-.kiwi-container-arrow_box::before {
-    border-color: transparent;
-    border-width: 13.5px;
-    margin-top: -14px;
-}
-
-@keyframes kiwi-wiggle {
-    0% { margin-left: 15px; }
-    50% { margin-left: 10px; }
-    100% { margin-left: 15px; }
-}
-
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
-    animation: kiwi-wiggle 0.25s 4;
-    animation-timing-function: ease-in, linear, ease-out;
-}
-
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight:hover {
-    animation: none;
-}
 </style>
