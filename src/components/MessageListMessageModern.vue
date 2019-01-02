@@ -201,7 +201,7 @@ export default {
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection {
     padding: 0;
     box-sizing: border-box;
-    margin: 10px auto;
+    margin: 0 auto;
     width: 100%;
     border: none;
     opacity: 1;
