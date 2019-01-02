@@ -217,14 +217,10 @@
     color: #adadad;
 }
 
-.kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-sidebar {
     background: #000000;
 }
 
-.kiwi-container-toggledraw-statebrowser {
-    border-right: 1px solid #444;
-}
 .kiwi-container-toggledraw-sidebar {
     border-left: 1px solid #444;
 }
@@ -260,7 +256,7 @@
 /* Style the statebrowser's ::after element on mobile devices */
 .kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
     border: 0.6em solid transparent;
-    border-left-color: #42b983;
+    border-left-color: #444;
 }
 
 .kiwi-container-empty .u-button {
