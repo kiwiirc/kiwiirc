@@ -255,15 +255,15 @@ export default {
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount {
-    position: relative;
+    position: absolute;
     font-size: 0.6em;
     border-radius: 3px;
     line-height: 2em;
     box-sizing: border-box;
     top: 10px;
-    z-index: 3;
+    z-index: 100;
     white-space: nowrap;
-    left: 6px;
+    left: 14px;
     width: 37px;
     padding: 0;
 }
@@ -278,6 +278,15 @@ export default {
     width: 0;
     position: absolute;
     pointer-events: none;
+}
+
+/* When the Statebrowser is visible, apply new styles to the messagecount */
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount {
+    left: -19px;
+}
+
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
+    left: 99%;
 }
 
 @keyframes kiwi-wiggle {

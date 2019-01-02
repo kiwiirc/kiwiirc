@@ -285,6 +285,12 @@
     border-right-color: #d62323;
 }
 
+/* Style the statebrowser's ::after element on mobile devices */
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
+    border: 0.6em solid transparent;
+    border-left-color: #42b983;
+}
+
 /* Sidebar uservue colouring */
 .kiwi-userbox,
 .kiwi-userbox-usermask {
