@@ -330,7 +330,6 @@
 /* Control Input - displayed at bottom of Kiwi ( ControlInput.vue ) */
 .kiwi-controlinput {
     background: #fff;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 .kiwi-controlinput .kiwi-controlinput-user,
 .kiwi-controlinput-inner .kiwi-controlinput-user {
@@ -421,7 +420,7 @@
     color: #fff;
 }
 .kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected {
-    background-color: #f16f74;
+    background-color: #c54040;
     color: #fff;
 }
 
@@ -443,8 +442,9 @@
 
 /* Errors */
 .kiwi-messagelist-message-error {
-    background: #f1d4d4;
-    border-left-color: #ab5252;
+    background: #c54040;
+    border-left-color: #a03535;
+    color: #f1f1f1;
 }
 
 /* Kiwi Modern Message list ( MessageListMessageModern.vue ) */
@@ -473,7 +473,8 @@
 .kiwi-messagelist-message--modern {
   border-top: 1px solid #f3f3f3;
 }
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat,
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-error {
   border-top: none;
 }
 
@@ -575,8 +576,13 @@
 /* Not connected message ( NotConnected.vue ) */
 .kiwi-warning-block {
     color: #fff;
-    background-color: #bf5155;
+    background-color: #c54040;
 }
+
+.kiwi-warning-block input {
+    border: 1px solid #fff;
+}
+
 .kiwi-notconnected-button {
     border: 2px solid #fff;
     color: #fff;
@@ -626,7 +632,7 @@
     background: #62d0ac;
 }
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
-    background: #d16c6c;
+    background: #c54040;
     color: #fff;
 }
 .kiwi-container--sidebar-open .kiwi-sidebar {
