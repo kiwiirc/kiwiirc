@@ -209,7 +209,7 @@ export default {
     cursor: default;
     box-sizing: border-box;
     height: 43px;
-    line-height: 39px;
+    line-height: 42px;
     width: 100%;
 }
 
@@ -222,7 +222,7 @@ export default {
     opacity: 0.3;
     cursor: pointer;
     font-size: 1.2em;
-    padding-top: 10px;
+    padding-top: 12px;
     align-self: flex-start;
     margin-right: 15px;
 }

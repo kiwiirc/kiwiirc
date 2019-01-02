@@ -234,9 +234,11 @@
 /* Container Header ( ContainerHeader.vue ) */
 .kiwi-header {
     background: #fff;
+    border-bottom: 1px solid #dddddd;
 }
 .kiwi-header-name {
     color: #22231f;
+    border: none;
 }
 
 /* The header option buttons */
@@ -547,7 +549,7 @@
 
 /* Nicklist ( Nicklist.vu ) */
 .kiwi-nicklist-usercount {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid #f7f7f7;
 }
 .kiwi-nicklist-user {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -636,7 +638,7 @@
     color: #fff;
 }
 .kiwi-container--sidebar-open .kiwi-sidebar {
-    border-color: #b2b2b2;
+    border-color: #dddddd;
 }
 
 .kiwi-aboutbuffer {
