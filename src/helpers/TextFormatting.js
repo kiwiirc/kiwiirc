@@ -122,7 +122,7 @@ export function addEmojis(wordCtx, emojiList, emojiLocation) {
         }
 
         let src = `${emojiLocation}${emoji}.png`;
-        return `<img class="${classes}" src="${src}" alt="${word}" />`;
+        return `<img class="${classes}" src="${src}" alt="${word}" title="${word}" />`;
     }
 
     return word;
