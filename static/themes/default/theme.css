@@ -550,6 +550,7 @@
 /* Nicklist ( Nicklist.vu ) */
 .kiwi-nicklist-usercount {
     border-bottom: 1px solid #f7f7f7;
+    background: #f7f7f7;
 }
 .kiwi-nicklist-user {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -581,7 +582,7 @@
     background-color: #c54040;
 }
 
-.kiwi-warning-block input {
+.kiwi-bufferkey input[type="password"] {
     border: 1px solid #fff;
 }
 
