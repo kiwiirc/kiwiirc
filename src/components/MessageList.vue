@@ -620,7 +620,6 @@ export default {
 .kiwi-messagelist-emoji {
     width: 1.3em;
     display: inline-block;
-    pointer-events: none;
     vertical-align: middle;
 }
 
