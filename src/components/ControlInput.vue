@@ -450,7 +450,6 @@ export default {
             this.history_pos = this.history.length;
 
             this.$refs.input.reset();
-            this.$refs.input.focus();
         },
         historyBack() {
             if (this.history_pos > 0) {
