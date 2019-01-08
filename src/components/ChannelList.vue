@@ -153,6 +153,13 @@ export default {
             return content.html;
         },
         joinChannel(channelName) {
+            // Switch buffer if its already exists
+            let buffer = this.$state.getBufferByName(this.network.id, channelName);
+            if (buffer) {
+                this.$state.setActiveBuffer(this.network.id, channelName);
+                return;
+            }
+
             this.$state.addBuffer(this.network.id, channelName);
             this.network.ircClient.join(channelName);
             if (this.$state.ui.app_width <= 769) {
