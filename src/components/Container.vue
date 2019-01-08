@@ -222,6 +222,7 @@ export default {
 }
 
 .kiwi-messagelist {
+    position: relative;
     flex: 1;
 }
 

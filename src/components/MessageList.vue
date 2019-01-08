@@ -240,7 +240,9 @@ export default {
                 newBuffer.flags.has_opened = true;
             }
 
-            this.scrollToBottom();
+            this.$nextTick(() => {
+                this.scrollToUnread();
+            });
         },
         'buffer.message_count'() {
             this.$nextTick(() => {
@@ -290,7 +292,7 @@ export default {
             }
 
             // If the last message has been read, and this message not read
-            if (previous && previous.time < lastRead && current.time > lastRead) {
+            if ((!previous || previous.time < lastRead) && current.time > lastRead) {
                 return true;
             }
 
@@ -422,6 +424,38 @@ export default {
         },
         scrollToBottom() {
             this.$el.scrollTop = this.$el.scrollHeight;
+        },
+        scrollToUnread() {
+            let messageId = this.buffer.last_read ? -1 : this.filteredMessages[0].id;
+
+            // Find the message id for unread marker
+            for (let i = 0; i < this.filteredMessages.length; i++) {
+                if (this.shouldShowUnreadMarker(i)) {
+                    let idx = (i - 1 >= 0) ? i - 1 : 0;
+                    messageId = this.filteredMessages[idx].id;
+                    break;
+                }
+            }
+
+            // No unread messages found scroll to bottom
+            let forceScroll = this.buffer.setting('force_scroll_to_bottom');
+            if (forceScroll || messageId < 0) {
+                this.scrollToBottom();
+                return;
+            }
+
+            // We have a message id, find its element and set scroll position
+            let msgs = this.$el.getElementsByClassName('kiwi-messagelist-message');
+            for (let i = 0; i < msgs.length; i++) {
+                if (messageId.toString() === msgs[i].dataset.messageId) {
+                    this.$el.scrollTop = msgs[i].offsetTop;
+                    this.auto_scroll = false;
+                    return;
+                }
+            }
+
+            // We could not find a element, scroll to bottom as last resort
+            this.scrollToBottom();
         },
         maybeScrollToBottom() {
             if (this.auto_scroll) {
