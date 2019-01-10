@@ -47,7 +47,10 @@
                 @click="ml.openUserBox(message.nick)"
                 @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                 @mouseout="ml.hover_nick='';"
-            >{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
+            >
+                <div v-if="showRealName">{{ message.user.realname }}</div>
+                <div>{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
+            </div>
             <div
                 v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
                 :title="ml.formatTimeFull(message.time)"
@@ -93,6 +96,12 @@ export default {
         };
     },
     computed: {
+        showRealName() {
+            let client = this.ml.buffer.getNetwork().ircClient;
+            let extJoin = client.network.cap.isEnabled('extended-join');
+            let enabled = this.ml.buffer.setting('realname_on_modern_layout');
+            return (enabled && extJoin && this.message.user && this.message.user.realname);
+        },
         userColour() {
             return this.ml.userColour(this.message.user);
         },
