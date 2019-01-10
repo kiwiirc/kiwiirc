@@ -997,7 +997,7 @@ function clientMiddleware(state, network) {
         }
 
         if (command === 'nick invalid') {
-            network.state_error = 432;
+            network.last_error_numeric = 432;
             network.last_error = event.reason;
             let messageBody = TextFormatting.formatText('general_error', {
                 text: event.reason,
@@ -1028,7 +1028,8 @@ function clientMiddleware(state, network) {
                 buffer.flags.channel_badkey = true;
             }
 
-            if (event.reason && network.state_error !== 432) {
+            // ignore error 432 (erroneous nickname) as it is handled above
+            if (event.reason && network.last_error_numeric !== 432) {
                 network.last_error = event.reason;
                 let messageBody = TextFormatting.formatText('general_error', {
                     text: event.reason || event.error,
