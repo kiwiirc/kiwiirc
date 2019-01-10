@@ -1034,7 +1034,7 @@ function clientMiddleware(state, network) {
             }
 
             // handle invalid nick error
-            if(network.state_error === 432) {
+            if (network.state_error === 432) {
                 network.last_error = 'Bad nick. Try again!';
             }
 
