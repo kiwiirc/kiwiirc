@@ -82,6 +82,7 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
+import { urlRegex } from '@/helpers/TextFormatting';
 import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
 
@@ -97,10 +98,28 @@ export default {
     },
     computed: {
         showRealName() {
+            // Showing realname is not enabled
+            if (!this.ml.buffer.setting('realname_on_modern_layout')) {
+                return false;
+            }
+
+            // Server does not support extended-join so realname would be inconsistent
             let client = this.ml.buffer.getNetwork().ircClient;
-            let extJoin = client.network.cap.isEnabled('extended-join');
-            let enabled = this.ml.buffer.setting('realname_on_modern_layout');
-            return (enabled && extJoin && this.message.user && this.message.user.realname);
+            if (!client.network.cap.isEnabled('extended-join')) {
+                return false;
+            }
+
+            // We dont have a user or users realname
+            if (!this.message.user || !this.message.user.realname) {
+                return false;
+            }
+
+            // RealName contains a url
+            if (urlRegex.test(this.message.user.realname)) {
+                return false;
+            }
+
+            return true;
         },
         userColour() {
             return this.ml.userColour(this.message.user);
