@@ -996,6 +996,13 @@ function clientMiddleware(state, network) {
             }
         }
 
+        if (command === 'nick invalid') {
+            network.state = 'disconnected';
+            network.state_error = 432;
+            client.quit();
+            network.last_error = 'Bad nick. Try again!';
+        }
+
         if (command === 'irc error') {
             let buffer;
             if (event.channel || event.nick) {
@@ -1024,6 +1031,11 @@ function clientMiddleware(state, network) {
                     message: messageBody,
                     type: 'error',
                 });
+            }
+
+            // handle invalid nick error
+            if(network.state_error === 432) {
+                network.last_error = 'Bad nick. Try again!';
             }
 
             // Getting an error about a channel while we are not joined means that we couldn't join
