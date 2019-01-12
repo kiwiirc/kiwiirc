@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2018-12-11 10:27\n"
+"PO-Revision-Date: 2019-01-12 16:11\n"
 
 #: Start
 msgid "start_button"
@@ -115,11 +115,11 @@ msgstr "Annuler"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Oui"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "Non"
 
 #: Not found.
 msgid "not_found"
@@ -731,7 +731,7 @@ msgstr ""
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "{{nick}} donne le statut d'ops à {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
