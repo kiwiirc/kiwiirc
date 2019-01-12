@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-01-12 20:40\n"
+"PO-Revision-Date: 2019-01-12 20:50\n"
 
 #: Start
 msgid "start_button"
@@ -527,51 +527,51 @@ msgstr "Переподключитесь, чтобы продолжить раз
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr ""
+msgstr "Вы в данный момент не подключены!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr ""
+msgstr "Настройки соединения"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr ""
+msgstr "Мы не смогли подключиться к этому серверу :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr ""
+msgstr "Подключиться к сети"
 
 #: Close options
 msgid "side_close"
-msgstr ""
+msgstr "Закрыть настройки"
 
 #: Channel options
 msgid "side_options"
-msgstr ""
+msgstr "Настройки канала"
 
 #: Your settings
 msgid "side_settings"
-msgstr ""
+msgstr "Ваши настройки"
 
 #: Show when people join
 msgid "side_joins"
-msgstr ""
+msgstr "Показывать, когда люди присоединяются"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Показать, когда тема канала меняется"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Показать, когда пользователи меняют псевдоним"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Показать, когда пользователи меняют режимы канала"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr ""
+msgstr "Дополнительное форматирование сообщения"
 
 #: Nick colours in the list"
 msgid "side_colours"
@@ -587,11 +587,11 @@ msgstr ""
 
 #: About
 msgid "about"
-msgstr ""
+msgstr "О нас"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "Создано {{when}}"
 
 #: Highlights
 msgid "highlights"
@@ -599,11 +599,11 @@ msgstr ""
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr ""
+msgstr "Никто еще не упомянул тебя..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr ""
+msgstr "Произошла ошибка при запуске Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
@@ -611,23 +611,23 @@ msgstr ""
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr ""
+msgstr "{{name}} отключился"
 
 #: Your account
 msgid "state_account"
-msgstr ""
+msgstr "Ваш аккаунт"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr ""
+msgstr "Ваши настройки и сети будут запомнены на этом компьютере."
 
 #: Forget me
 msgid "state_forget"
-msgstr ""
+msgstr "Забудь меня"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr ""
+msgstr "Здесь пока нет сетей."
 
 #: Add one?
 msgid "state_add"
