@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-12-11 10:26\n"
+"PO-Revision-Date: 2019-01-12 17:20\n"
 
 #: Start
 msgid "start_button"
@@ -639,15 +639,15 @@ msgstr "Налични мрежи"
 
 #: Add Network
 msgid "add_network"
-msgstr ""
+msgstr "Добави Мрежа"
 
 #: New Network
 msgid "new_network"
-msgstr ""
+msgstr "нова мрежа"
 
 #: No Network
 msgid "no_network"
-msgstr ""
+msgstr "Няма мрежа"
 
 #: Configure network
 msgid "state_configure"
