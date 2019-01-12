@@ -938,6 +938,10 @@ msgstr "Request information on somebody that disconnected recently"
 msgid "command_away"
 msgstr "Mark yourself as away"
 
+#: Remove your away status
+msgid "command_back"
+msgstr "Remove your away status"
+
 #: Change your connection encoding
 msgid "command_encoding"
 msgstr "Change your connection encoding"

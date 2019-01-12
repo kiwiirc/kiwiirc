@@ -660,6 +660,15 @@ function clientMiddleware(state, network) {
                 nick: event.nick,
                 away: event.message || '',
             });
+            let buffer = state.getActiveBuffer();
+            if (buffer && event.nick === network.nick) {
+                state.addMessage(buffer, {
+                    time: event.time || Date.now(),
+                    nick: '*',
+                    type: 'away',
+                    message: event.message,
+                });
+            }
         }
 
         if (command === 'back') {
@@ -667,6 +676,15 @@ function clientMiddleware(state, network) {
                 nick: event.nick,
                 away: '',
             });
+            let buffer = state.getActiveBuffer();
+            if (buffer && event.nick === network.nick) {
+                state.addMessage(buffer, {
+                    time: event.time || Date.now(),
+                    nick: '*',
+                    type: 'away',
+                    message: event.message,
+                });
+            }
         }
 
         if (command === 'wholist') {
