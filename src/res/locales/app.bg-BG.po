@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2019-01-12 17:40\n"
+"PO-Revision-Date: 2019-01-12 19:41\n"
 
 #: Start
 msgid "start_button"
@@ -853,9 +853,13 @@ msgstr "Искайте информация за някого"
 msgid "command_whowas"
 msgstr "Искайте информация за някой, който е прекъснал наскоро"
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
 msgstr "Маркирайте себе си като далеч от компютъра"
+
+#: Set youraelf as active
+msgid "command_back"
+msgstr ""
 
 #: Change your connection encoding
 msgid "command_encoding"
