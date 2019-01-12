@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Latin America\n"
 "Language: es_419\n"
-"PO-Revision-Date: 2019-01-12 19:41\n"
+"PO-Revision-Date: 2019-01-12 20:21\n"
 
 #: Start
 msgid "start_button"
@@ -857,7 +857,7 @@ msgstr "Solicita información sobre alguien que se ha desconectado recientemente
 msgid "command_away"
 msgstr "Marca como ausente"
 
-#: Set youraelf as active
+#: Set yourself as active
 msgid "command_back"
 msgstr ""
 
