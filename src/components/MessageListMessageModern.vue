@@ -109,7 +109,7 @@ export default {
     computed: {
         showRealName() {
             // Showing realname is not enabled
-            if (!this.ml.buffer.setting('realname_on_modern_layout')) {
+            if (!this.ml.buffer.setting('show_realnames')) {
                 return false;
             }
 

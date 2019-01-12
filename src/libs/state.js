@@ -60,7 +60,7 @@ const stateObj = {
             extra_formatting: true,
             mute_sound: false,
             hide_message_counts: false,
-            realname_on_modern_layout: true,
+            show_realnames: false,
             default_ban_mask: '*!%i@%h',
             default_kick_reason: 'Your behavior is not conducive to the desired environment.',
             shared_input: false,
