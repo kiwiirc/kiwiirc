@@ -934,9 +934,13 @@ msgstr "Request information on somebody"
 msgid "command_whowas"
 msgstr "Request information on somebody that disconnected recently"
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
-msgstr "Mark yourself as away"
+msgstr "Set yourself as away"
+
+#: Set youraelf as active
+msgid "command_back"
+msgstr "Set yourself as active"
 
 #: Change your connection encoding
 msgid "command_encoding"

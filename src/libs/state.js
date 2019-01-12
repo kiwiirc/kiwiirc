@@ -92,6 +92,7 @@ const stateObj = {
 /raw /quote $1+
 /connect /server $1+
 /cycle $channel? /lines /part $channel | /join $channel
+/active /back $1+
 
 # Op related aliases
 /op /quote mode $channel +o $1+
