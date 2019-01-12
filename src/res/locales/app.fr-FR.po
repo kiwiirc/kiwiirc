@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2019-01-12 15:51\n"
+"PO-Revision-Date: 2019-01-12 16:11\n"
 
 #: Start
 msgid "start_button"
@@ -115,11 +115,11 @@ msgstr "Annuler"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Oui"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "Non"
 
 #: Not found.
 msgid "not_found"
