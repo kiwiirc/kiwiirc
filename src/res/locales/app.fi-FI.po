@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Finnish\n"
 "Language: fi_FI\n"
-"PO-Revision-Date: 2019-01-12 19:41\n"
+"PO-Revision-Date: 2019-01-12 20:21\n"
 
 #: Start
 msgid "start_button"
@@ -857,7 +857,7 @@ msgstr ""
 msgid "command_away"
 msgstr ""
 
-#: Set youraelf as active
+#: Set yourself as active
 msgid "command_back"
 msgstr ""
 
