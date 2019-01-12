@@ -41,22 +41,32 @@
             />
         </div>
         <div class="kiwi-messagelist-modern-right">
-            <div
-                :style="{ 'color': userColour }"
-                class="kiwi-messagelist-nick"
-                @click="ml.openUserBox(message.nick)"
-                @mouseover="ml.hover_nick=message.nick.toLowerCase();"
-                @mouseout="ml.hover_nick='';"
-            >
-                <div v-if="showRealName">{{ message.user.realname }}</div>
-                <div>{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
-            </div>
-            <div
-                v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
-                :title="ml.formatTimeFull(message.time)"
-                class="kiwi-messagelist-time"
-            >
-                {{ ml.formatTime(message.time) }}
+            <div class="kiwi-messagelist-top">
+                <div
+                    :style="{ 'color': userColour }"
+                    class="kiwi-messagelist-nick"
+                    @click="ml.openUserBox(message.nick)"
+                    @mouseover="ml.hover_nick=message.nick.toLowerCase();"
+                    @mouseout="ml.hover_nick='';"
+                >
+                    {{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}
+                </div>
+                <div
+                    v-if="showRealName"
+                    class="kiwi-messagelist-realname"
+                    @click="ml.openUserBox(message.nick)"
+                    @mouseover="ml.hover_nick=message.nick.toLowerCase();"
+                    @mouseout="ml.hover_nick='';"
+                >
+                    {{ message.user.realname }}
+                </div>
+                <div
+                    v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
+                    :title="ml.formatTimeFull(message.time)"
+                    class="kiwi-messagelist-time"
+                >
+                    {{ ml.formatTime(message.time) }}
+                </div>
             </div>
             <div
                 v-rawElement="message.bodyTemplate.$el"
@@ -114,7 +124,12 @@ export default {
                 return false;
             }
 
-            // RealName contains a url
+            // No point showing the realname if it's the same as the nick
+            if (this.message.user.nick.toLowerCase() === this.message.user.realname.toLowerCase()) {
+                return false;
+            }
+
+            // If the realname contains a URL it's most likely a clients website
             if (urlRegex.test(this.message.user.realname)) {
                 return false;
             }
@@ -210,8 +225,7 @@ export default {
     display: none;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick,
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-time {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-top {
     display: none;
 }
 
@@ -285,23 +299,24 @@ export default {
     width: 100%;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-nick {
-    float: left;
-    width: auto;
-    text-align: left;
+.kiwi-messagelist-message--modern .kiwi-messagelist-top > div {
+    margin-right: 10px;
     padding: 0;
+    display: inline-block;
+}
+
+.kiwi-messagelist-message--modern .kiwi-messagelist-nick {
     font-size: 1.1em;
-    padding-right: 10px;
+}
+
+.kiwi-messagelist-message--modern .kiwi-messagelist-realname {
+    cursor: pointer;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-time {
-    margin: 0 10px 0 0;
-    display: inline-block;
     font-size: 0.8em;
     font-weight: 400;
-    padding: 0;
     opacity: 0.8;
-    cursor: default;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-item .kiwi-messagelist-body {

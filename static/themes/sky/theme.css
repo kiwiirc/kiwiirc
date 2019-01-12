@@ -392,7 +392,7 @@
 .kiwi-messagelist-nick {
     color: #000;
 }
-.kiwi-messagelist-time {
+.kiwi-messagelist-time, .kiwi-messagelist-realname {
     color: #a0a09f;
 }
 
@@ -467,10 +467,6 @@
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
     background-color: #f2f2f2;
-}
-
-.kiwi-messagelist-time {
-    color: #a0a09f;
 }
 
 .kiwi-messagelist-message--modern {
