@@ -665,7 +665,7 @@ function clientMiddleware(state, network) {
                 state.addMessage(buffer, {
                     time: event.time || Date.now(),
                     nick: '*',
-                    type: 'away',
+                    type: 'presence',
                     message: event.message,
                 });
             }
@@ -681,7 +681,7 @@ function clientMiddleware(state, network) {
                 state.addMessage(buffer, {
                     time: event.time || Date.now(),
                     nick: '*',
-                    type: 'away',
+                    type: 'presence',
                     message: event.message,
                 });
             }

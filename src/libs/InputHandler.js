@@ -470,7 +470,7 @@ inputCommands.away = function inputCommandAway(event, command, line) {
     event.handled = true;
 
     let network = this.state.getActiveNetwork();
-    network.ircClient.raw('AWAY', line);
+    network.ircClient.raw('AWAY', line || 'Currently away');
 };
 
 inputCommands.back = function inputCommandAway(event, command, line) {
