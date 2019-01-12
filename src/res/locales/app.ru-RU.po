@@ -11,15 +11,15 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-01-12 20:20\n"
+"PO-Revision-Date: 2019-01-12 20:30\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Начать"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Добро пожаловать в Kiwi IRC!"
 
 #: Close
 msgid "close"
@@ -35,15 +35,15 @@ msgstr "подключение"
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "Подключено"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "Настройки"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Настройки Kiwi"
 
 #: Channels
 msgid "channels"
@@ -51,83 +51,83 @@ msgstr "каналы"
 
 #: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "Заблокированные пользователи"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "Уведомления"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "Пароль"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "У меня есть пароль"
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "Сервер"
 
 #: Nick
 msgid "nick"
-msgstr ""
+msgstr "Псевдоним"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "Канал"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "Сообщения"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "Сеть"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "Вход в систему..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "Неправильное имя пользователя"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "Поиск..."
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "Ок"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "Отмена"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Да"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "Нет"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "Не найдено."
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "Предупреждение!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -911,7 +911,7 @@ msgstr ""
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "Подключено"
 
 #: Disconnected
 msgid "disconnected"
