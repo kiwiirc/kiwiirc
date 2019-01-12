@@ -260,9 +260,8 @@ export default {
             state.$emit('userbox.hide');
         },
         onChannelsClick(event) {
-            let isLink = event.target.tagName === 'A';
             let channelName = event.target.getAttribute('data-channel-name');
-            if (channelName && isLink) {
+            if (channelName) {
                 let network = this.buffer.getNetwork();
                 this.$state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
