@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2019-01-12 17:20\n"
+"PO-Revision-Date: 2019-01-12 17:30\n"
 
 #: Start
 msgid "start_button"
@@ -727,7 +727,7 @@ msgstr "Забрани и премахни от канала"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr ""
+msgstr "Моля, посочете канал, към който да се присъедините. напр. / join #example"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -783,55 +783,55 @@ msgstr "{{nick}} задава {{mode}} на {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Изпрати съобщение"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Направете нещо физическо"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Присъединете се към канал"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Напуснете канал"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Напуснете, след което отново се присъединете към канал"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Променете псевдонима си"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Започнете частен разговор с някого"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Поканете някого в канала"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Задайте темата за този канал"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Изпращане на известие"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "изпращане на сурова команда към IRC сървъра"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Изгонете някого от канала"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Изчистване на всички съобщения от този прозорец"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
