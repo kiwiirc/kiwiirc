@@ -518,7 +518,7 @@ export default {
                         description: desc,
                         type: 'command',
                         // Each alias needs the / command prefix adding
-                        alias: (command.alias || []).map((c) => '/' + c),
+                        alias: (command.alias || []).map(c => '/' + c),
                     });
                 });
 
