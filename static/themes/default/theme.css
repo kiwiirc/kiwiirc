@@ -398,7 +398,6 @@
 }
 .kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
     border-left: none;
-    background: none;
 }
 
 /* When hovering over a users messages */
