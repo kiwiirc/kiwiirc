@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-01-12 20:21\n"
+"PO-Revision-Date: 2019-01-13 12:20\n"
 
 #: Start
 msgid "start_button"
@@ -859,7 +859,7 @@ msgstr "Σημειώστε τον εαυτό σας ως μακριά"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Ορίστε τον εαυτό σας ως ενεργό"
 
 #: Change your connection encoding
 msgid "command_encoding"
