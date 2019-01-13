@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2019-01-13 14:50\n"
+"PO-Revision-Date: 2019-01-13 15:00\n"
 
 #: Start
 msgid "start_button"
@@ -583,23 +583,23 @@ msgstr "Nie ustawiono buforu"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr ""
+msgstr "Nie ma tematu dla tego pokoju"
 
 #: About
 msgid "about"
-msgstr ""
+msgstr "O nas"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "Utworzono w {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr ""
+msgstr "Podświetlenia"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr ""
+msgstr "Nikt cię jeszcze nie wspomniał ..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -787,7 +787,7 @@ msgstr "Wyślij wiadomość"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Zrób coś fizycznego"
 
 #: Join a channel
 msgid "command_join"
