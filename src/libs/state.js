@@ -83,6 +83,8 @@ const stateObj = {
         showSendButton: false,
         sidebarDefault: '',
         showRaw: false,
+        highlights: '',
+        teamHighlights: false,
         aliases: `
 # General aliases
 /p /part $1+
@@ -920,6 +922,22 @@ const state = new Vue({
                         isHighlight = true;
                     }
                 });
+            }
+
+            if (state.setting('teamHighlights')) {
+                let m = bufferMessage.message;
+                let patterns = {
+                    everyone: /(^|\s)@everybody($|\s|[,.;])/,
+                    channel: /(^|\s)@channel($|\s|[,.;])/,
+                    here: /(^|\s)@here($|\s|[,.;])/,
+                };
+                if (m.match(patterns.everyone) || m.match(patterns.channel)) {
+                    isHighlight = true;
+                }
+
+                if (m.match(patterns.here) && network && !network.ircClient.user.away) {
+                    isHighlight = true;
+                }
             }
 
             bufferMessage.isHighlight = isHighlight;
