@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2019-01-13 14:30\n"
+"PO-Revision-Date: 2019-01-13 14:40\n"
 
 #: Start
 msgid "start_button"
@@ -827,47 +827,47 @@ msgstr "Wyślij komendę na serwer IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Wyrzuć kogoś z pokoju"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Wyczyść wszystkie wiadomości z tego okna"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Wyślij komuś komendę CTCP"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Odłącz się od serwera IRC"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Połącz się z nową siecią IRC"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Poproś o informacje na temat kogoś"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Poproś o informacje na temat kogoś, kto niedawno się rozłączył"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Ustaw siebie jako nieobecny"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Ustaw siebie jako obecny"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Zmień kodowanie połączenia"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Ignoruj ​​wiadomości od kogoś"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
