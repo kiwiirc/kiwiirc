@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2019-01-13 15:00\n"
+"PO-Revision-Date: 2019-01-13 15:10\n"
 
 #: Start
 msgid "start_button"
@@ -47,7 +47,7 @@ msgstr "Ustawienia Kiwi"
 
 #: Channels
 msgid "channels"
-msgstr "Kanały"
+msgstr "Pokoje"
 
 #: Banned Users
 msgid "banned"
@@ -79,7 +79,7 @@ msgstr "Pseudonim"
 
 #: Channel
 msgid "channel"
-msgstr "Kanał"
+msgstr "Pokój"
 
 #: Messages
 msgid "messages"
@@ -159,47 +159,47 @@ msgstr "Ignoruj użytkownika"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Kanał"
+msgstr "Pokój"
 
 #: {{count}} week
 msgid "week"
-msgstr "tydzień"
+msgstr "{{count}} tydzień"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "tygodni(e)"
+msgstr "{{count}} tygodni(e)"
 
 #: {{count}} day
 msgid "day"
-msgstr "dzień"
+msgstr "{{count}} dzień"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dni"
+msgstr "{{count}} dni"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "godzina"
+msgstr "{{count}} godzina"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "godzin(y)"
+msgstr "{{count}} godzin(y)"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuta"
+msgstr "{{count}} minuta"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minut(y)"
+msgstr "{{count}} minut(y)"
 
 #: {{count}} second
 msgid "second"
-msgstr "sekunda"
+msgstr "{{count}} sekunda"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "sekund(y)"
+msgstr "{{count}} sekund(y)"
 
 #: General
 msgid "settings_general"
