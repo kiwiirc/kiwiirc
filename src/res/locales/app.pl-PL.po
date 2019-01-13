@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2019-01-13 14:20\n"
+"PO-Revision-Date: 2019-01-13 14:30\n"
 
 #: Start
 msgid "start_button"
@@ -727,7 +727,7 @@ msgstr "Zablokuj i wyrzuć z kanału"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Proszę podać kanał aby dołączyć. np. /join #kanał"
+msgstr "Proszę podać pokój aby dołączyć. np. /join #pokój"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -791,15 +791,15 @@ msgstr ""
 
 #: Join a channel
 msgid "command_join"
-msgstr "Dolącz do kanału"
+msgstr "Dolącz do pokoju"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Wyjdż z kanału"
+msgstr "Wyjdż z pokoju"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Wyjdż, następnie ponownie dołącz do kanału"
+msgstr "Wyjdż, następnie ponownie dołącz do pokoju"
 
 #: Change your nickname
 msgid "command_nick"
@@ -811,19 +811,19 @@ msgstr "Rozpocznij prywatną rozmowę z kimś"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Zaproś kogoś do pokoju"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Ustaw temat dla tego pokoju"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Wyślij powiadomienie"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Wyślij komendę na serwer IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
