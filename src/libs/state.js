@@ -75,6 +75,7 @@ const stateObj = {
             nick: 'kiwi_?',
             direct: false,
             state_key: 'kiwi-state',
+            nick_format: '',
         },
         noticeActiveBuffer: true,
         showAutocomplete: true,
