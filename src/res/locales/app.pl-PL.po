@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2019-01-13 14:40\n"
+"PO-Revision-Date: 2019-01-13 14:50\n"
 
 #: Start
 msgid "start_button"
@@ -83,7 +83,7 @@ msgstr "Kanał"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "Wiadomości"
 
 #: Network
 msgid "network"
@@ -123,11 +123,11 @@ msgstr "Nie"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "Nie znaleziono"
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "Ostrzeżenie!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -219,7 +219,7 @@ msgstr "URL motywu"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr ""
+msgstr "Układ wiadomości"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -335,27 +335,27 @@ msgstr "Domyślny powód wyrzucenia"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr ""
+msgstr "Zaawansowane ustawienia"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr ""
+msgstr "Potwory są tutaj, kliknij ten przycisk, jeśli wiesz, co robisz"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr ""
+msgstr "Włącz zaawansowane ustawienia"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Strefa zagrożenia: Zmiana niektórych z tych ustawień może spowodować problemy!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Zresetuj"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Filter"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -411,7 +411,7 @@ msgstr "Witamy w Kiwi IRC-u!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr ""
+msgstr "Pokaż przeglądarkę stanu"
 
 #: Hide Topic
 msgid "hide_topic"
@@ -527,7 +527,7 @@ msgstr "Podłącz się ponownie, żeby kontynuować rozmowę z {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr ""
+msgstr "Nie jesteś w tej chwili połączony!"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -535,11 +535,11 @@ msgstr "Ustawienia połączenia"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr ""
+msgstr "Nie mogliśmy połączyć się z tym serwerem :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr ""
+msgstr "Połącz z siecią"
 
 #: Close options
 msgid "side_close"
@@ -871,7 +871,7 @@ msgstr "Ignoruj ​​wiadomości od kogoś"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Przestań ignorować kogoś"
 
 #: Your IRC client
 msgid "personal_client"
