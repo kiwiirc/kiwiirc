@@ -20,9 +20,7 @@
         "tls": false,
         "direct": false,
         "channel": "#kiwiirc-default",
-        "nick": "kiwi-n?",
-        "nickname_check_rules": "^[a-z_\\\\[\\]{}^`|][a-z0-9_\\-\\\\[\\]{}^`|]*$",
-        "nickname_check_rules_mode": "i"
+        "nick": "kiwi-n?"
     },
     "embedly": {
         "key": ""
