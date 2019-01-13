@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2019-01-13 14:10\n"
+"PO-Revision-Date: 2019-01-13 14:20\n"
 
 #: Start
 msgid "start_button"
@@ -639,15 +639,15 @@ msgstr "Dostępne sieci"
 
 #: Add Network
 msgid "add_network"
-msgstr ""
+msgstr "Dodaj Sieć"
 
 #: New Network
 msgid "new_network"
-msgstr ""
+msgstr "Nowa Sieć"
 
 #: No Network
 msgid "no_network"
-msgstr ""
+msgstr "Brak Sieci"
 
 #: Configure network
 msgid "state_configure"
@@ -791,23 +791,23 @@ msgstr ""
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Dolącz do kanału"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Wyjdż z kanału"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Wyjdż, następnie ponownie dołącz do kanału"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Zmień swój nick"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Rozpocznij prywatną rozmowę z kimś"
 
 #: Invite somebody into the channel
 msgid "command_invite"
