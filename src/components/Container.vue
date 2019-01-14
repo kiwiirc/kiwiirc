@@ -342,6 +342,11 @@ export default {
         display: block;
     }
 
+    /* If the sidebar is open, make the messagecount z-index 0 - so it doesn't display over sidebar */
+    .kiwi-container--sidebar-drawn .kiwi-container-toggledraw-statebrowser {
+        z-index: 0;
+    }
+
     .kiwi-header {
         margin-left: 50px;
         margin-right: 50px;
