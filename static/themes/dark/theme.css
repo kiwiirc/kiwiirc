@@ -273,7 +273,16 @@
 
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
     border: 0.6em solid transparent;
-    border-right-color: #ddd;
+    border-right-color: #42b983;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    background-color: #d62323;
+    color: #fff;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
+    border-right-color: #d62323;
 }
 
 /* Sidebar uservue colouring */
@@ -412,10 +421,6 @@
     backround: #363636;
     color: #fff;
     border: #fff;
-}
-
-.kiwi-messagelist-message--info-open {
-    background: #f6f6f6;
 }
 
 .kiwi-messageinfo-urls {
@@ -589,7 +594,7 @@
     background-color: #333;
 }
 
-.kiwi-messagelist-time {
+.kiwi-messagelist-time, .kiwi-messagelist-realname {
     color: #a0a09f;
 }
 
@@ -618,6 +623,63 @@
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-notice:hover {
     cursor: pointer;
     border-left-color: #80ab52;
+}
+
+
+/* MessageInfo */
+.kiwi-messagelist-message--info-open,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open  {
+    background-color: rgb(6, 6, 6);
+    border-top: 1px solid #909090;
+    border-bottom: 1px solid #909090;
+}
+
+/* MessageInfo URLs */
+.kiwi-messageinfo-urls {
+    border-top: 1px solid #3a3a3a;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+.kiwi-messageinfo-url .u-button-secondary {
+    color: #f1f1f1;
+    border: 1px solid #3a3a3a;
+    background: none;
+    text-shadow: none;
+}
+
+.kiwi-messageinfo-urls .kiwi-messageinfo-url:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Start button stying */
+.kiwi-messageinfo-actions .u-link {
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid #3a3a3a;
+    color: #f1f1f1;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
+    background: #f6c358;
+    color: #fff;
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-ban-user {
+    background: #fcb46e;
+    color: #fff;
+}
+
+@media screen and (max-width: 850px) {
+  .kiwi-messageinfo-actions {
+    text-align: center;
+  }
+  .kiwi-messageinfo-opbuttons {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
 }
 
 /* Network Settings ( NetworkSettings.vue ) */
@@ -833,12 +895,6 @@
     background: rgba(255, 255, 255, 0.3);
 }
 
-.kiwi-messageinfo {
-    background: #f6f6f6;
-    border-bottom: 2px #ddd solid;
-    border-top: 1px #ddd dashed;
-}
-
 .kiwi-statebrowser-usermenu-avatar {
     background-color: #000;
     color: #dedede;
@@ -1042,10 +1098,9 @@
     color: #dedede;
 }
 
-.kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
+.kiwi-statebrowser-channel-label--highlight {
     background: #d62323;
 }
-
 
 .kiwi-statebrowser-channel-popup {
     background: #383838;
@@ -1132,30 +1187,31 @@
 .kiwi-userbox-opaction-ban,
 .kiwi-userbox-opaction-kickban {
     color: #dedede;
+    border: 2px solid #dedede;
 }
 
 .kiwi-userbox-opaction-kick {
-    background-color: #f6c358;
+    border-color: #f6c358;
 }
 
 .kiwi-userbox-opaction-kick:hover {
-    background-color: #fcce6e;
+    border-color: #fcce6e;
 }
 
 .kiwi-userbox-opaction-ban {
-    background-color: #fcb46e;
+    border-color: #fcb46e;
 }
 
 .kiwi-userbox-opaction-ban:hover {
-    background-color: #ffca97;
+    border-color: #ffca97;
 }
 
 .kiwi-userbox-opaction-kickban {
-    background-color: #fb846a;
+    border-color: #fb846a;
 }
 
 .kiwi-userbox-opaction-kickban:hover {
-    background-color: #ffaf9e;
+    border-color: #ffaf9e;
 }
 
 .kiwi-userbox-whois {

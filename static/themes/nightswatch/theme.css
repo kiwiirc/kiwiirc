@@ -37,10 +37,6 @@
     background: none;
 }
 
-.kiwi-welcome-simple .u-input-text input {
-    color: #fff;
-}
-
 .kiwi-startup-common-section-info {
     border-left: 5px solid #444;
 }
@@ -58,20 +54,6 @@
  .kiwi-welcome-simple .help a:hover {
      color: #a9d87a;
  }
-
-.kiwi-welcome-simple h2 {
-    color: #fff;
-}
-
-.kiwi-welcome-simple .u-input-text-label {
-    color: #fff;
-}
-
-.kiwi-welcome-simple .u-form label span {
-    color: #fff;
-}
-
-
 
 
 /* Custom server layout */
@@ -250,14 +232,14 @@
     color: #b8babd;
 }
 
-/* These styles relate to the 'unread messages' and 'Mentioned' highlights that display to the user in the Statebrowser sidebar */
-.kiwi-container-toggledraw-statebrowser-messagecount {
-    background-color: #42b983;
+.kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
+    background: #d16c6c;
     color: #fff;
 }
 
-.kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
-    background: #d16c6c;
+/* These styles relate to the 'unread messages' and 'Mentioned' highlights that display to the user in the Statebrowser sidebar */
+.kiwi-container-toggledraw-statebrowser-messagecount {
+    background-color: #444;
     color: #fff;
 }
 
@@ -265,8 +247,14 @@
     border: 0.6em solid transparent;
     border-right-color: #444;
 }
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    background-color: #d62323;
+    color: #fff;
+}
+
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
-    border-right-color: #444;
+    border-right-color: #d62323;
 }
 
 .kiwi-container-empty .u-button {
@@ -443,9 +431,7 @@
 .kiwi-messagelist .kiwi-messagelist-body {
     color: #adadad;
 }
-.kiwi-messagelist-message--info-open {
-    background: #f6f6f6;
-}
+
 .kiwi-messageinfo-urls {
     border-top: 1px solid #444;
 }
@@ -535,7 +521,7 @@
     background-color: #444;
 }
 
-.kiwi-messagelist-time {
+.kiwi-messagelist-time, .kiwi-messagelist-realname {
     color: #a0a09f;
 }
 
@@ -552,6 +538,51 @@
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-notice:hover, {
     border-left-color: #80ab52;
 }
+
+
+/* MessageInfo */
+.kiwi-messagelist-message--info-open,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open {
+    border-top: 1px solid #585858;
+    border-bottom: 1px solid #585858;
+    background: #131319;
+}
+
+/* MessageInfo URLs */
+.kiwi-messageinfo-urls {
+    border-top: 1px solid #3a3a3a;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+.kiwi-messageinfo-url .u-button-secondary {
+  color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  background: none;
+  text-shadow: none;
+}
+
+.kiwi-messageinfo-urls .kiwi-messageinfo-url:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Start button stying */
+.kiwi-messageinfo-actions .u-link {
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid #f1f1f1;
+    color: #f1f1f1;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
+    color: #f6c358;
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-ban-user {
+    color: #fcb46e;
+}
+
 
 /* Network Settings ( NetworkSettings.vue ) */
 .kiwi-networksettings-section {
@@ -774,12 +805,6 @@
 }
 .kiwi-statebrowser-divider {
     background: rgba(255, 255, 255, 0.3);
-}
-
-.kiwi-messageinfo {
-    background: #f6f6f6;
-    border-bottom: 2px #ddd solid;
-    border-top: 1px #ddd dashed;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
@@ -1066,27 +1091,28 @@
 .kiwi-userbox-opaction-kick ,
 .kiwi-userbox-opaction-ban,
 .kiwi-userbox-opaction-kickban {
-    color: #adadad;
+    color: #f1f1f1;
+    border: 2px solid #f1f1f1;
 }
 .kiwi-userbox-opaction-kick {
-    background-color: #f6c358;
+    border-color: #f6c358;
 }
 .kiwi-userbox-opaction-kick:hover {
-    background-color: #fcce6e;
+    border-color: #fcce6e;
 }
 
 .kiwi-userbox-opaction-ban {
-    background-color: #fcb46e;
+    border-color: #fcb46e;
 }
 .kiwi-userbox-opaction-ban:hover{
-    background-color: #ffca97;
+    border-color: #ffca97;
 }
 
 .kiwi-userbox-opaction-kickban{
-    background-color: #fb846a;
+    border-color: #fb846a;
 }
 .kiwi-userbox-opaction-kickban:hover{
-    background-color: #ffaf9e;
+    border-color: #ffaf9e;
 }
 
 .kiwi-userbox-whois {

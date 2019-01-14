@@ -181,6 +181,18 @@ export default {
                 return;
             }
 
+            // shift key on its own, don't shift focus we handle this below
+            if (ev.keyCode === 16) {
+                return;
+            }
+
+            // If we are using shift and arrow keys, don't shift focus
+            // this allows users to adjust text selection
+            let arrowKeyCodes = [37, 38, 39, 40];
+            if (ev.shiftKey && arrowKeyCodes.indexOf(ev.keyCode) !== -1) {
+                return;
+            }
+
             // If we're typing into an input box somewhere, ignore
             let elements = ['input', 'select', 'textarea', 'button', 'datalist', 'keygen'];
             let doNotRefocus =
@@ -207,6 +219,10 @@ export default {
             }
 
             this.$refs.input.insertText(val);
+        });
+
+        this.listen(this.$state, 'input.tool', (toolComponent) => {
+            this.toggleInputTool(toolComponent);
         });
     },
     mounted() {
@@ -434,7 +450,6 @@ export default {
             this.history_pos = this.history.length;
 
             this.$refs.input.reset();
-            this.$refs.input.focus();
         },
         historyBack() {
             if (this.history_pos > 0) {
@@ -502,6 +517,8 @@ export default {
                         text: '/' + command.command,
                         description: desc,
                         type: 'command',
+                        // Each alias needs the / command prefix adding
+                        alias: (command.alias || []).map(c => '/' + c),
                     });
                 });
 
@@ -602,6 +619,7 @@ export default {
     position: absolute;
     bottom: 100%;
     right: 0;
+    width: 100%;
     z-index: 1;
 }
 

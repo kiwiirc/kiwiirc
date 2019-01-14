@@ -24,7 +24,7 @@
                 'kiwi-messagelist-message--blur' :
                 '',
         ]"
-        :data-message="message"
+        :data-message-id="message.id"
         :data-nick="(message.nick||'').toLowerCase()"
         class="kiwi-messagelist-message kiwi-messagelist-message--text"
         @click="ml.onMessageClick($event, message, true)"
@@ -47,7 +47,12 @@
             >
                 {{ displayNick }}
             </span>
-            <div class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
+            <div
+                v-rawElement="message.bodyTemplate.$el"
+                v-if="message.bodyTemplate && message.bodyTemplate.$el"
+                class="kiwi-messagelist-body"
+            />
+            <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
         </div>
 
         <message-info

@@ -29,11 +29,12 @@
                 <span>{{ $t('unread_messages') }}</span>
             </div>
 
-            <component
-                v-if="message.render() && message.template"
-                :is="message.template"
-                :message="message"
-                :buffer="buffer"
+            <!-- message.template is checked first for a custom component, then each message layout
+                 checks for a message.bodyTemplate custom component to apply only to the body area
+            -->
+            <div
+                v-rawElement="message.template.$el"
+                v-if="message.render() && message.template && message.template.$el"
             />
             <message-list-message-modern
                 v-else-if="listType === 'modern'"
@@ -399,7 +400,7 @@ export default {
                 return;
             }
 
-            if (this.$state.ui.is_touch) {
+            if (this.$state.ui.is_touch && this.$state.setting('buffers.show_message_info')) {
                 if (this.canShowInfoForMessage(message) && event.target.nodeName === 'A') {
                     // We show message info boxes on touch screen devices so that the user has an
                     // option to preview the links or do other stuff.
@@ -452,6 +453,11 @@ export default {
     margin: 0;
 }
 
+.kiwi-wrap--monospace .kiwi-messagelist-message {
+    font-family: Consolas, monaco, monospace;
+    font-size: 80%;
+}
+
 .kiwi-messagelist-message-mode,
 .kiwi-messagelist-message-traffic {
     padding-left: 10px;
@@ -493,7 +499,6 @@ export default {
     padding: 0.1em 0.5em;
     min-height: 0;
     line-height: normal;
-    margin: 1em 0.5em;
     text-align: left;
 }
 
@@ -614,7 +619,6 @@ export default {
 .kiwi-messagelist-emoji {
     width: 1.3em;
     display: inline-block;
-    pointer-events: none;
     vertical-align: middle;
 }
 

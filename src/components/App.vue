@@ -356,11 +356,6 @@ body {
     overflow: hidden;
 }
 
-.kiwi-wrap--monospace {
-    font-family: Consolas, monaco, monospace;
-    font-size: 80%;
-}
-
 .kiwi-workspace {
     position: relative;
     margin-left: 220px;

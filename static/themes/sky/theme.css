@@ -204,14 +204,20 @@
 }
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
     border: 0.6em solid transparent;
-    border-right-color: #ddd;
+    border-right-color: #42b983;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    background-color: #d62323;
+    color: #fff;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
+    border-right-color: #d62323;
 }
 
 .kiwi-statebrowser-channel-label--highlight {
     background: #e45e5e;
-}
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
-    border-right-color: #d62323;
 }
 
 .kiwi-container-empty .u-button {
@@ -386,7 +392,7 @@
 .kiwi-messagelist-nick {
     color: #000;
 }
-.kiwi-messagelist-time {
+.kiwi-messagelist-time, .kiwi-messagelist-realname {
     color: #a0a09f;
 }
 
@@ -463,10 +469,6 @@
     background-color: #f2f2f2;
 }
 
-.kiwi-messagelist-time {
-    color: #a0a09f;
-}
-
 .kiwi-messagelist-message--modern {
   border-top: 1px solid #f3f3f3;
 }
@@ -479,6 +481,50 @@
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-action:hover,
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-notice:hover, {
     border-left-color: #80ab52;
+}
+
+/* MessageInfo */
+.kiwi-messagelist-message--info-open,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open  {
+    border-top: 1px solid #909090;
+    border-bottom: 1px solid #909090;
+}
+
+/* MessageInfo URLs */
+.kiwi-messageinfo-urls {
+    border-top: 1px solid #3a3a3a;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+.kiwi-messageinfo-url .u-button-secondary {
+    color: #010101;
+    border: 1px solid #010101;
+    background: none;
+    text-shadow: none;
+}
+
+.kiwi-messageinfo-urls .kiwi-messageinfo-url:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Start button stying */
+.kiwi-messageinfo-actions .u-link {
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid #010101;
+    color: #010101;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
+    background: #f6c358;
+    color: #fff;
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-ban-user {
+    background: #fcb46e;
+    color: #fff;
 }
 
 /* Network Settings ( NetworkSettings.vue ) */
@@ -673,7 +719,6 @@
 
 .kiwi-messageinfo {
     background: #f6f6f6;
-    border-bottom: 2px #ddd solid;
     border-top: 1px #ddd dashed;
 }
 
