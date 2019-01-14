@@ -512,6 +512,18 @@ msgstr "No channels found, try again later"
 
 
 
+#: IgnoreList $t('ignore_list_')
+
+#: Ignore List
+msgid "ignore_list"
+msgstr "Ignore List"
+
+#: No Ignored Users
+msgid "ignore_list_empty"
+msgstr "No Ignored Users"
+
+
+
 #: Container $t('container_')
 
 #: Welcome to Kiwi IRC! Select a channel on the left.

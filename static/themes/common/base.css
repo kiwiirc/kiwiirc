@@ -780,6 +780,20 @@
     border-top: 1px solid var(--brand-midtone);
 }
 
+/* ---- Ignore List ( IgnoreList.vue ) ---- */
+.kiwi-ignorelist-container {
+    background-color: rgba(128, 128, 128, 0.2);
+}
+
+.kiwi-ignorelist-container h3 {
+    background: var(--brand-primary);
+    color: var(--brand-default-fg);
+}
+
+.kiwi-ignorelist-container table tr td {
+    border-bottom: 1px solid var(--brand-midtone);
+}
+
 /* ---- Message list - ( MessageList.vue ) ---- */
 .kiwi-messagelist {
     scrollbar-color: #9e9e9e transparent;

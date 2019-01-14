@@ -204,6 +204,20 @@
     text-decoration: underline;
 }
 
+/* Ignore List (IgnoreList.vue) */
+.kiwi-ignorelist-container {
+    background-color: rgba(128, 128, 128, 0.2);
+}
+
+.kiwi-ignorelist-container h3 {
+    background: #1b2f24;
+    color: #fff;
+}
+
+.kiwi-ignorelist-container table tr td {
+    border-bottom: 1px solid #cfcfcf;
+}
+
 /* Container - Main ( Container.vue )  The majority of styling related to the messages and user input etc */
 @keyframes crt-glow {
   0% { opacity: 0.1; }
