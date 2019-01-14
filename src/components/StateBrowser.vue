@@ -233,15 +233,14 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: 45px;
+    width: 39px;
     text-align: center;
     font-size: 1em;
     box-sizing: border-box;
-    line-height: 45px;
+    line-height: 57px;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s;
-    border-radius: 0 0 6px 0;
     opacity: 0.8;
     z-index: 20;
 }
