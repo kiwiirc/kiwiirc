@@ -297,7 +297,7 @@ export default {
 }
 
 .kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
-    left: 99%;
+    right: -17px;
 }
 
 @keyframes kiwi-wiggle {
