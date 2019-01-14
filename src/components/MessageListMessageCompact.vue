@@ -176,7 +176,8 @@ export default {
 
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     display: inline-block;
-    margin-left: auto;
+    margin: 0;
+    padding: 10px 0;
 }
 
 //Channel topic
