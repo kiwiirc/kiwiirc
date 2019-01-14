@@ -287,9 +287,8 @@ export default {
             network.showServerBuffer('channels');
         },
         showBufferSettings(buffer) {
-            if ( window.innerWidth < 770 ) {
+            if (window.innerWidth < 770) {
                 state.$emit('statebrowser.hide');
-                console.log(window.innerWidth);
             }
             this.setActiveBuffer(buffer);
             this.sidebarState.showBufferSettings();
