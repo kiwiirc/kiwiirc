@@ -14,7 +14,14 @@
                             '',
                     ]"
                     class="kiwi-container-toggledraw-statebrowser-messagecount"
-                >{{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}</div>
+                >
+                    <span class="kiwi-container-statebrowser-messagecount-alert">
+                        {{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}
+                    </span>
+                    <span class="kiwi-container-statebrowser-messagecount-close">
+                        <i class="fa fa-times" aria-hidden="true"/>
+                    </span>
+                </div>
             </div>
             <container-header :buffer="buffer" :sidebar-state="sidebarState"/>
 
@@ -280,6 +287,10 @@ export default {
     pointer-events: none;
 }
 
+.kiwi-container-statebrowser-messagecount-close {
+    display: none;
+}
+
 /* When the Statebrowser is visible, apply new styles to the messagecount */
 .kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount {
     left: -19px;
@@ -323,6 +334,14 @@ export default {
 }
 
 @media screen and (max-width: 769px) {
+    .kiwi-wrap--statebrowser-drawopen .kiwi-container-statebrowser-messagecount-alert {
+        display: none;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-container-statebrowser-messagecount-close {
+        display: block;
+    }
+
     .kiwi-header {
         margin-left: 50px;
         margin-right: 50px;
