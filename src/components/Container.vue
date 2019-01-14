@@ -3,7 +3,7 @@
         /* 'kiwi-container-' + bufferType: true, */
         'kiwi-container--sidebar-drawn': sidebarState.isDrawn,
         'kiwi-container--sidebar-open': sidebarState.isOpen,
-        'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
+        'kiwi-container--no-sidebar': buffer && buffer.isSpecial,
     }" class="kiwi-container"
     >
         <template v-if="buffer">
@@ -41,7 +41,7 @@
                 <template v-else>
                     <message-list :buffer="buffer" />
                     <sidebar
-                        v-if="buffer.isChannel() /* There are no sidebars for queries yet */"
+                        v-if="!buffer.isSpecial()"
                         :network="network"
                         :buffer="buffer"
                         :sidebar-state="sidebarState"

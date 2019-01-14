@@ -15,13 +15,13 @@ export default Vue.extend({
     },
     computed: {
         isDrawn() {
-            return this.sidebarOpen && this.$state.ui.app_width <= 769;
+            return this.sidebarOpen && this.section() && this.$state.ui.app_width <= 769;
         },
         isClosed() {
-            return !this.sidebarOpen;
+            return !this.section();
         },
         isOpen() {
-            return this.sidebarOpen && this.$state.ui.app_width > 769;
+            return this.sidebarOpen && this.section() && this.$state.ui.app_width > 769;
         },
     },
     created() {
@@ -43,19 +43,37 @@ export default Vue.extend({
     },
     methods: {
         section() {
-            if (this.isClosed) {
+            if (!this.sidebarOpen) {
                 return '';
             }
 
             let section = this.sidebarSection;
-            let isChannel = this.$state.getActiveBuffer().isChannel();
+            let buffer = this.$state.getActiveBuffer();
 
-            if (section === 'settings' && isChannel) {
-                return 'settings';
-            } else if (section === 'user' && this.sidebarUser && isChannel) {
-                return 'user';
-            } else if (section === 'nicklist' && isChannel) {
+            if (buffer.isQuery()) {
+                let user = this.$state.getUser(buffer.getNetwork().id, buffer.name);
+                if (user) {
+                    this.sidebarUser = user;
+                    return 'user';
+                }
+                return '';
+            }
+
+            // The following code is for channels only
+            if (!buffer.isChannel()) {
+                return '';
+            }
+
+            if (section === 'user' && this.sidebarUser) {
+                if (buffer.hasNick(this.sidebarUser.nick)) {
+                    return 'user';
+                }
+                // show the nicklist if the selected user is not present in the buffer
                 return 'nicklist';
+            } else if (section === 'nicklist') {
+                return 'nicklist';
+            } else if (section === 'settings') {
+                return 'settings';
             } else if (section === 'about') {
                 return 'about';
             }
@@ -89,18 +107,23 @@ export default Vue.extend({
             this.sidebarOpen = true;
             this.sidebarSection = 'about';
         },
+        toggleUser(user) {
+            this.section() === 'user' ?
+                this.close() :
+                this.showUser(user);
+        },
         toggleNicklist() {
-            this.sidebarSection === 'nicklist' ?
+            this.section() === 'nicklist' ?
                 this.close() :
                 this.showNicklist();
         },
         toggleBufferSettings() {
-            this.sidebarSection === 'settings' ?
+            this.section() === 'settings' ?
                 this.close() :
                 this.showBufferSettings();
         },
         toggleAbout() {
-            this.sidebarSection === 'about' ?
+            this.section() === 'about' ?
                 this.close() :
                 this.showAbout();
         },
