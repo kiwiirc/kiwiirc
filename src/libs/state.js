@@ -316,6 +316,7 @@ const stateObj = {
         app_width: 0,
         app_height: 0,
         is_touch: false,
+        is_narrow: false,
         favicon_counter: 0,
         current_input: '',
         show_advanced_tab: false,
