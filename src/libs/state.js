@@ -936,7 +936,7 @@ const state = new Vue({
                     isHighlight = true;
                 }
 
-                if (m.match(patterns.here) && network && !network.ircClient.user.away) {
+                if (m.match(patterns.here) && network && !network.away) {
                     isHighlight = true;
                 }
             }

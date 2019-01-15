@@ -662,6 +662,7 @@ function clientMiddleware(state, network) {
             });
             let buffer = state.getActiveBuffer();
             if (buffer && event.nick === network.nick) {
+                network.away = 'away';
                 state.addMessage(buffer, {
                     time: event.time || Date.now(),
                     nick: '*',
@@ -678,6 +679,7 @@ function clientMiddleware(state, network) {
             });
             let buffer = state.getActiveBuffer();
             if (buffer && event.nick === network.nick) {
+                network.away = '';
                 state.addMessage(buffer, {
                     time: event.time || Date.now(),
                     nick: '*',
