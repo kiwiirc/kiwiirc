@@ -185,6 +185,10 @@ export default {
     display: none;
 }
 
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-top {
+    display: none;
+}
+
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorfirst.kiwi-messagelist-message-topic {
     padding: 10px 20px;
 }
