@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2019-01-16 21:35\n"
+"PO-Revision-Date: 2019-01-16 21:41\n"
 
 #: Start
 msgid "start_button"
@@ -943,11 +943,11 @@ msgstr "{{nick}} convidou-te para o canal {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Alcunha {{nick}} já em uso. Tentando com {{newnick}}..."
+msgstr "Nick {{nick}} já em uso. Tentando com {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} é agora conhecido como {{newnick}}"
+msgstr "{{nick}} mudou o nick para {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
