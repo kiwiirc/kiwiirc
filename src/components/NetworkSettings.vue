@@ -97,6 +97,9 @@
                                 rows="5"
                             />
                         </label>
+                        <div class="kiwi-networksettings-realname">
+                            <input-text v-model="network.gecos" :label="$t('whois_realname')" />
+                        </div>
                     </template>
                 </div>
 
@@ -365,7 +368,7 @@ export default {
 }
 
 //User nickname input, remove bottom margin
-.kiwi-networksettings form .kiwi-networksettings-user .u-input-text {
+.kiwi-networksettings form .kiwi-networksettings-user .kiwi-networksettings-realname .u-input-text {
     margin-bottom: 10px;
 }
 
