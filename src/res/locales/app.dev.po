@@ -686,6 +686,10 @@ msgstr "Your settings and networks will be remembered on this computer."
 msgid "state_forget"
 msgstr "Forget me"
 
+#: Clear notices
+msgid "state_clear_notices"
+msgstr "Clear All Unread"
+
 #: No networks here yet.
 msgid "state_network"
 msgstr "No networks here yet."
