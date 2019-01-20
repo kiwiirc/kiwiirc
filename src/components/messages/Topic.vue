@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-message-topic">
         <div class="kiwi-message-topic-content" v-html="formattedTopic"/>
-        <div class="kiwi-message-topic-setby">
+        <div class="kiwi-message-topic-more">
             <a class="fa fa-info-circle" @click="moreInfo()" />
         </div>
     </div>
@@ -68,7 +68,7 @@ export function listenForMessages(state) {
     margin: 0 20px;
 }
 
-.kiwi-message-topic-setby {
+.kiwi-message-topic-more {
     position: absolute;
     bottom: 0;
     right: 0;
