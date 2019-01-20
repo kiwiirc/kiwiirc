@@ -170,6 +170,15 @@ function clientMiddleware(state, network) {
     };
 
     function rawEventsHandler(command, event, rawLine, client, next) {
+        if (command === '002') {
+            // Your host is server.example.net, running version InspIRCd-2.0
+            let param = event.params[1] || '';
+            let m = param.match(/running version (.*)$/);
+            network.ircd = m ?
+                m[1] :
+                '';
+        }
+
         state.$emit('irc.raw', command, event, network);
         state.$emit('irc.raw.' + command, command, event, network);
         next();

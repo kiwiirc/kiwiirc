@@ -18,6 +18,8 @@ export default class NetworkState {
         this.is_znc = false;
         this.channel_list = [];
         this.channel_list_state = '';
+        // The IRCd type as mentioned in the 002 numeric
+        this.ircd = '';
         this.connection = {
             server: '',
             port: 6667,
