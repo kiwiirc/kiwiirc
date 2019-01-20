@@ -18,10 +18,12 @@
                 <p v-else>{{ $t('no_topic_set') }}</p>
 
                 <p v-if="b.topic && b.topic_by && b.topic_when">
-                    {{ $t('topic_setby', {
-                        who: b.topic_by,
-                        when: new Intl.DateTimeFormat().format(b.topic_when)
-                    }) }}
+                    {{
+                        $t('topic_setby', {
+                            who: b.topic_by,
+                            when: new Intl.DateTimeFormat().format(b.topic_when)
+                        })
+                    }}
                 </p>
 
                 <p class="kiwi-aboutbuffer-usercount">
