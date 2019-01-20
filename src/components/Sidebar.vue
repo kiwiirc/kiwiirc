@@ -249,33 +249,6 @@ export default {
     resize: vertical;
 }
 
-.kiwi-sidebar-options {
-    display: block;
-    cursor: pointer;
-    font-weight: 600;
-    width: 100%;
-    position: relative;
-    box-sizing: border-box;
-    text-transform: uppercase;
-    line-height: 50px;
-    vertical-align: top;
-}
-
-.kiwi-sidebar-options .kiwi-sidebar-close {
-    width: 100%;
-    display: inline-block;
-    padding: 0 20px 0 40px;
-    text-align: right;
-    box-sizing: border-box;
-    transition: background 0.3s;
-}
-
-.kiwi-sidebar-options .kiwi-sidebar-close i {
-    margin-left: 10px;
-    font-size: 1.5em;
-    line-height: 47px;
-}
-
 .kiwi-sidebar-buffersettings {
     overflow: hidden;
     height: 100%;
@@ -312,7 +285,38 @@ export default {
     margin-top: 10px;
 }
 
+.kiwi-sidebar-options {
+    display: none;
+}
+
 @media screen and (max-width: 769px) {
+    .kiwi-sidebar-options {
+        display: block;
+        cursor: pointer;
+        font-weight: 600;
+        width: 100%;
+        position: relative;
+        box-sizing: border-box;
+        text-transform: uppercase;
+        line-height: 47px;
+        vertical-align: top;
+    }
+
+    .kiwi-sidebar-options .kiwi-sidebar-close {
+        width: 100%;
+        display: inline-block;
+        padding: 0 20px 0 40px;
+        text-align: right;
+        box-sizing: border-box;
+        transition: background 0.3s;
+    }
+
+    .kiwi-sidebar-options .kiwi-sidebar-close i {
+        margin-left: 10px;
+        font-size: 1.5em;
+        line-height: 47px;
+    }
+
     .kiwi-sidebar .u-tabbed-view-tab {
         width: 100%;
     }
@@ -351,10 +355,6 @@ export default {
 
     .kiwi-channelbanlist .u-form {
         line-height: 10px;
-    }
-
-    .kiwi-sidebar-options {
-        line-height: 47px;
     }
 }
 

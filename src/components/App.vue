@@ -243,6 +243,7 @@ export default {
             let trackWindowDims = () => {
                 this.$state.ui.app_width = this.$el.clientWidth;
                 this.$state.ui.app_height = this.$el.clientHeight;
+                this.$state.ui.is_narrow = this.$el.clientWidth <= 769;
             };
             window.addEventListener('resize', trackWindowDims);
             trackWindowDims();
@@ -262,8 +263,12 @@ export default {
                 return;
             }
 
-            // bail if a sidebar is open
-            if (this.$data.sidebarState.sidebarOpen) {
+            // bail if the target is an input-like element
+            if (
+                event.target instanceof HTMLInputElement ||
+                event.target instanceof HTMLSelectElement ||
+                event.target instanceof HTMLTextAreaElement
+            ) {
                 return;
             }
 
@@ -350,11 +355,6 @@ body {
     -webkit-font-smoothing: antialiased;
     height: 100%;
     overflow: hidden;
-}
-
-.kiwi-wrap--monospace {
-    font-family: Consolas, monaco, monospace;
-    font-size: 80%;
 }
 
 .kiwi-workspace {

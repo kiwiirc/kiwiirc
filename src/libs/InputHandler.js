@@ -55,10 +55,11 @@ export default class InputHandler {
         this.validateContext(context);
         const { network, buffer } = context;
         let line = rawLine;
+        let stylesStrippedLine = line.replace(/(\x03[0-9]{0,2})?([\x02\x1d\x1f]+)?/g, '');
 
         // If no command specified, server buffers = send raw, channels/queries = send message
-        let escapedCommand = line.substr(0, 2) === '//';
-        if (line[0] !== '/' || escapedCommand) {
+        let escapedCommand = stylesStrippedLine.substr(0, 2) === '//';
+        if (stylesStrippedLine[0] !== '/' || escapedCommand) {
             if (escapedCommand) {
                 line = line.substr(1);
             }
@@ -68,6 +69,10 @@ export default class InputHandler {
             } else {
                 line = '/msg ' + buffer.name + ' ' + line;
             }
+        } else if (stylesStrippedLine[0] === '/' && line[0] !== '/') {
+            // If attempting to send a /command but it has a colour code in front, use the
+            // style stripped version of the line
+            line = stylesStrippedLine;
         }
 
         let aliasVars = {
@@ -465,7 +470,14 @@ inputCommands.away = function inputCommandAway(event, command, line) {
     event.handled = true;
 
     let network = this.state.getActiveNetwork();
-    network.ircClient.raw('AWAY', line);
+    network.ircClient.raw('AWAY', line || 'Currently away');
+};
+
+inputCommands.back = function inputCommandAway(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    network.ircClient.raw('AWAY');
 };
 
 inputCommands.quote = function inputCommandQuote(event, command, line) {

@@ -4,6 +4,9 @@ import i18next from 'i18next';
 import i18nextXHR from 'i18next-xhr-backend';
 import VueI18Next from '@panter/vue-i18next';
 
+// fetch polyfill
+import 'whatwg-fetch';
+
 import AvailableLocales from '@/res/locales/available.json';
 import FallbackLocale from '@/../static/locales/en-us.json';
 import App from '@/components/App';
@@ -262,7 +265,10 @@ function loadPlugins() {
 
                     // The browser won't execute any script elements so we need to extract them and
                     // place them into the DOM using our own script elements
-                    el.querySelectorAll('script').forEach((limitedScr) => {
+                    let scripts = [...el.querySelectorAll('script')];
+
+                    // IE11 does not support nodes.forEach()
+                    scripts.forEach((limitedScr) => {
                         limitedScr.parentElement.removeChild(limitedScr);
                         let scr = document.createElement('script');
                         scr.text = limitedScr.text;
@@ -424,6 +430,9 @@ function showError(err) {
     /* eslint-disable no-new */
     new Vue({
         el: '#app',
-        render: h => h(StartupError),
+        render: h => h(
+            StartupError,
+            { props: { error: err } },
+        ),
     });
 }

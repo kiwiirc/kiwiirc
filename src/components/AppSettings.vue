@@ -384,7 +384,6 @@ export default {
 
 .u-form .kiwi-appsettings-setting-scrollback input {
     box-sizing: border-box;
-    line-height: 30px;
     height: 40px;
     border: 1px solid;
     float: left;

@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2018-11-27 05:59\n"
+"PO-Revision-Date: 2019-01-12 20:21\n"
 
 #: Start
 msgid "start_button"
@@ -701,7 +701,7 @@ msgstr "已连接至 {{server}} {{info}}"
 msgid "user_secure"
 msgstr "通过 SSL/TLS 安全连接"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "也在 {{channels}} 频道"
 
@@ -853,8 +853,12 @@ msgstr ""
 msgid "command_whowas"
 msgstr ""
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
+msgstr ""
+
+#: Set yourself as active
+msgid "command_back"
 msgstr ""
 
 #: Change your connection encoding

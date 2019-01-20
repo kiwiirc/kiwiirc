@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2018-11-27 06:10\n"
+"PO-Revision-Date: 2019-01-12 20:21\n"
 
 #: Start
 msgid "start_button"
@@ -701,7 +701,7 @@ msgstr "Connected to {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Securely connected via SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "Also in channels {{channels}}"
 
@@ -853,9 +853,13 @@ msgstr "Request information on somebody"
 msgid "command_whowas"
 msgstr "Request information on somebody that disconnected recently"
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
 msgstr "Mark yourself as away"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr "Set yourself as active"
 
 #: Change your connection encoding
 msgid "command_encoding"

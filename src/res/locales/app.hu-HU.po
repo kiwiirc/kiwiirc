@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2018-11-27 05:59\n"
+"PO-Revision-Date: 2019-01-12 20:21\n"
 
 #: Start
 msgid "start_button"
@@ -701,7 +701,7 @@ msgstr ""
 msgid "user_secure"
 msgstr ""
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr ""
 
@@ -853,8 +853,12 @@ msgstr ""
 msgid "command_whowas"
 msgstr ""
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
+msgstr ""
+
+#: Set yourself as active
+msgid "command_back"
 msgstr ""
 
 #: Change your connection encoding

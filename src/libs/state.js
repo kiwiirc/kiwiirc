@@ -60,9 +60,11 @@ const stateObj = {
             extra_formatting: true,
             mute_sound: false,
             hide_message_counts: false,
+            show_realnames: false,
             default_ban_mask: '*!%i@%h',
             default_kick_reason: 'Your behavior is not conducive to the desired environment.',
             shared_input: false,
+            show_message_info: true,
         },
         // Startup screen default
         startupOptions: {
@@ -73,6 +75,7 @@ const stateObj = {
             nick: 'kiwi_?',
             direct: false,
             state_key: 'kiwi-state',
+            nick_format: '',
         },
         noticeActiveBuffer: true,
         showAutocomplete: true,
@@ -80,6 +83,8 @@ const stateObj = {
         showSendButton: false,
         sidebarDefault: '',
         showRaw: false,
+        highlights: '',
+        teamHighlights: false,
         aliases: `
 # General aliases
 /p /part $1+
@@ -90,6 +95,7 @@ const stateObj = {
 /raw /quote $1+
 /connect /server $1+
 /cycle $channel? /lines /part $channel | /join $channel
+/active /back $1+
 
 # Op related aliases
 /op /quote mode $channel +o $1+
@@ -310,6 +316,7 @@ const stateObj = {
         app_width: 0,
         app_height: 0,
         is_touch: false,
+        is_narrow: false,
         favicon_counter: 0,
         current_input: '',
         show_advanced_tab: false,
@@ -916,6 +923,22 @@ const state = new Vue({
                         isHighlight = true;
                     }
                 });
+            }
+
+            if (state.setting('teamHighlights')) {
+                let m = bufferMessage.message;
+                let patterns = {
+                    everyone: /(^|\s)@everybody($|\s|[,.;])/,
+                    channel: /(^|\s)@channel($|\s|[,.;])/,
+                    here: /(^|\s)@here($|\s|[,.;])/,
+                };
+                if (m.match(patterns.everyone) || m.match(patterns.channel)) {
+                    isHighlight = true;
+                }
+
+                if (m.match(patterns.here) && network && !network.away) {
+                    isHighlight = true;
+                }
             }
 
             bufferMessage.isHighlight = isHighlight;

@@ -29,7 +29,7 @@
                         v-if="show_password_box"
                         :label="$t('password')"
                         v-model="password"
-                        class="kiwi-welcome-simple-password input-text--reveal-value"
+                        class="kiwi-welcome-simple-password u-input-text--reveal-value"
                         type="password"
                     />
                     <input-text
@@ -42,7 +42,7 @@
                     <div
                         v-if="recaptchaSiteId"
                         :data-sitekey="recaptchaSiteId"
-                        class="g-recaptcha"
+                        class="kiwi-g-recaptcha"
                     />
 
                     <button
@@ -66,7 +66,10 @@
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import state from '@/libs/state';
+import Logger from '@/libs/Logger';
 import StartupLayout from './CommonLayout';
+
+let log = Logger.namespace('Welcome.vue');
 
 export default {
     components: {
@@ -107,10 +110,38 @@ export default {
                 ready = false;
             }
 
-            // Nicks cannot start with [0-9- ]
-            // ? is not a valid nick character but we allow it as it gets replaced
-            // with a number.
-            if (!this.nick.match(/^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i)) {
+            let nickPatternStr = this.$state.setting('startupOptions.nick_format');
+            let nickPattern = '';
+            if (!nickPatternStr) {
+                // Nicks cannot start with [0-9- ]
+                // ? is not a valid nick character but we allow it as it gets replaced
+                // with a number.
+                nickPattern = /^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i;
+            } else {
+                // Support custom pattern matches. Eg. only '@example.com' may be allowed
+                // on some IRCDs
+                let pattern = '';
+                let flags = '';
+                if (nickPatternStr[0] === '/') {
+                    // Custom regex
+                    let pos = nickPatternStr.lastIndexOf('/');
+                    pattern = nickPatternStr.substring(1, pos);
+                    flags = nickPatternStr.substr(pos + 1);
+                } else {
+                    // Basic contains rule
+                    pattern = _.escapeRegExp(nickPatternStr);
+                    flags = 'i';
+                }
+
+                try {
+                    nickPattern = new RegExp(pattern, flags);
+                } catch (error) {
+                    log.error('Nick format error: ' + error.message);
+                    return false;
+                }
+            }
+
+            if (!this.nick.match(nickPattern)) {
                 ready = false;
             }
 
@@ -122,7 +153,7 @@ export default {
 
         this.nick = this.processNickRandomNumber(Misc.queryStringVal('nick') || options.nick || '');
         this.password = options.password || '';
-        this.channel = decodeURI(window.location.hash) || options.channel || '';
+        this.channel = decodeURIComponent(window.location.hash) || options.channel || '';
         this.showChannel = typeof options.showChannel === 'boolean' ?
             options.showChannel :
             true;
@@ -288,7 +319,7 @@ export default {
     padding: 0 0.5em;
 }
 
-.kiwi-welcome-simple-section-connection .input-text input[type="text"] {
+.kiwi-welcome-simple-section-connection .u-input-text input[type="text"] {
     margin-top: 5px;
     padding: 0.3em 1em;
     width: 100%;
@@ -296,7 +327,7 @@ export default {
     box-sizing: border-box;
 }
 
-.kiwi-welcome-simple .input-text {
+.kiwi-welcome-simple .u-input-text {
     font-weight: 600;
     opacity: 0.6;
     font-size: 1.2em;
@@ -313,7 +344,7 @@ export default {
     margin-top: 2px;
 }
 
-.kiwi-welcome-simple .g-recaptcha {
+.kiwi-welcome-simple .kiwi-g-recaptcha {
     margin-bottom: 10px;
 }
 

@@ -23,6 +23,7 @@ export default [
     { command: 'whois', alias: [], description: 'locale_id_command_whois' },
     { command: 'whowas', alias: [], description: 'locale_id_command_whowas' },
     { command: 'away', alias: [], description: 'locale_id_command_away' },
+    { command: 'back', alias: ['active'], description: 'locale_id_command_back' },
     { command: 'encoding', alias: [], description: 'locale_id_command_encoding' },
     { command: 'ignore', alias: [], description: 'locale_id_command_ignore' },
     { command: 'unignore', alias: [], description: 'locale_id_command_unignore' },

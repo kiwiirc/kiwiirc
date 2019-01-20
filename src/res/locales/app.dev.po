@@ -798,9 +798,9 @@ msgstr "Connected to {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Securely connected via SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
-msgstr "Also in channels {{channels}}"
+msgstr "In channels {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -962,9 +962,13 @@ msgstr "Request information on somebody"
 msgid "command_whowas"
 msgstr "Request information on somebody that disconnected recently"
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
-msgstr "Mark yourself as away"
+msgstr "Set yourself as away"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr "Set yourself as active"
 
 #: Change your connection encoding
 msgid "command_encoding"

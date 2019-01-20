@@ -11,10 +11,9 @@
                     :class="[
                         unreadMessages.highlight ?
                             'kiwi-container-toggledraw-statebrowser-messagecount--highlight' :
-                            ''
+                            '',
                     ]"
-                    class="kiwi-container-toggledraw-statebrowser-messagecount
-                           kiwi-container-toggledraw-statebrowser-messagecount--highlight"
+                    class="kiwi-container-toggledraw-statebrowser-messagecount"
                 >{{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}</div>
             </div>
             <container-header :buffer="buffer" :sidebar-state="sidebarState"/>
@@ -184,7 +183,7 @@ export default {
 .kiwi-sidebar {
     position: absolute;
     right: -443px;
-    top: -4px; /* Push the top over the top page border */
+    top: 45px; /* Push the top over the top page border */
     bottom: 0;
     width: 443px;
     max-width: 443px;
@@ -206,6 +205,7 @@ export default {
     border-left-style: solid;
     max-width: 430px;
     z-index: 1;
+    transition: right 0.2s, top 0s;
 }
 
 .kiwi-container-content {
@@ -268,6 +268,33 @@ export default {
     padding: 0;
 }
 
+.kiwi-container-toggledraw-statebrowser-messagecount::after {
+    right: 99%;
+    top: 20%;
+    border: 0.6em solid transparent;
+    border-right-color: #ddd;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+@keyframes kiwi-wiggle {
+    0% { margin-left: 5px; }
+    50% { margin-left: 0; }
+    100% { margin-left: 5px; }
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    animation: kiwi-wiggle 0.25s 4;
+    animation-timing-function: ease-in, linear, ease-out;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight:hover {
+    animation: none;
+}
+
 .kiwi-container-empty {
     text-align: center;
     padding: 1em;
@@ -296,6 +323,10 @@ export default {
     .kiwi-container-toggledraw-statebrowser,
     .kiwi-container-toggledraw-sidebar {
         display: block;
+    }
+
+    .kiwi-sidebar {
+        top: 0;
     }
 }
 
