@@ -11,7 +11,6 @@
 'kiwi public';
 
 import Vue from 'vue';
-import _ from 'lodash';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import formatIrcMessage from '@/libs/MessageFormatter';
 
@@ -20,8 +19,6 @@ const component = {
     data() {
         return {
             topic: '',
-            topic_by: '',
-            topic_when: '',
         };
     },
     computed: {
@@ -49,21 +46,6 @@ export function listenForMessages(state) {
             message.template = new Ctor({ propsData: { message, buffer } });
             message.template.topic = message.message;
             message.template.$mount();
-        }
-    });
-
-    state.$on('irc.topicsetby', (event, network) => {
-        let buffer = network.bufferByName(event.channel);
-        if (!buffer) {
-            return;
-        }
-
-        // add setby to the most recent topic component if it exists
-        let topicMessage = _.findLast(buffer.getMessages(), m => m.type === 'topic' && m.template);
-
-        if (topicMessage) {
-            topicMessage.template.topic_by = event.nick;
-            topicMessage.template.topic_when = event.when * 1000;
         }
     });
 }

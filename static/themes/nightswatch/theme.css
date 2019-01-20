@@ -323,37 +323,18 @@
 
 
 /* baseline styling for the 'topic' of the channel, if it has one, these are shared between traditional and modern view, but can be made more specific if need be */
-.kiwi-messagelist-message.kiwi-messagelist-message-topic {
-    border-top: 1px solid #444;
-    border-bottom: 1px solid #444;
+.kiwi-message-topic {
+    border: 1px solid #444;
+    background-color: #252525;
     color: #adadad;
-    background: #252525;
-}
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic {
-    border-top: 2px solid #000000;
-}
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-    border: 2px solid #000000;
 }
 
-.kiwi-messagelist-seperator > span {
-    background: none;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic.kiwi-messagelist-message--unread {
-    border-left: 2px solid #000000;
-}
-
-.kiwi-sidebar-options {
-    border-left: 1px solid #444;
+.kiwi-messagelist--modern .kiwi-message-topic {
+    border: 2px solid #444;
 }
 
 .kiwi-header-buffersettings {
-    border-top: 1px solid #444;
-    border-left: 1px solid #444;
-}
-.kiwi-header-topic > div {
-    color: #adadad;
+    border-top: 1px solid #ddd;
 }
 
 /* When hovering over a channel, these options are displayed and coloured upon hover */

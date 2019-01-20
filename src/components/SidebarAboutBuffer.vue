@@ -11,7 +11,7 @@
             </h4>
             <div>
                 <p v-if="b.created_at">
-                    {{ $t('created_at', { when: new Intl.DateTimeFormat().format(b.created_at) }) }}
+                    {{ $t('created_on', { when: new Intl.DateTimeFormat().format(b.created_at) }) }}
                 </p>
 
                 <p v-if="b.topic" v-html="formattedTopic"/>

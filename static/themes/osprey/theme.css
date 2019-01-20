@@ -297,24 +297,19 @@
 
 
 /* baseline styling for the 'topic' of the channel, if it has one, these are shared between traditional and modern view, but can be made more specific if need be */
-.kiwi-messagelist-message.kiwi-messagelist-message-topic {
-    border-top: 1px solid #4d6075;
-    border-bottom: 1px solid #4d6075;
-    color: #5f5f5f;
+.kiwi-message-topic {
+    border: 1px solid #42b992;
     background: #f5f5f5;
 }
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic {
-    border-top: 2px solid #4d6075;
+
+.kiwi-messagelist--modern .kiwi-message-topic {
+    border: 2px solid #42b992;
 }
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-    border: 2px solid #4d6075;
-}
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic.kiwi-messagelist-message--unread {
-    border-left: 2px solid #4d6075;
-}
+
 .kiwi-header-buffersettings {
     border-top: 1px solid #ddd;
 }
+
 .kiwi-header-topic > div {
     color: #22231f;
 }

@@ -148,11 +148,6 @@ msgstr "Ignore user"
 msgid "connection_channel"
 msgstr "Channel"
 
-#: Topic set by {{who}} on {{when}}
-msgid "topic_setby"
-msgstr "Topic set by {{who}} on {{when}}"
-
-
 
 #: Durations
 
@@ -644,13 +639,17 @@ msgstr "No buffer set"
 msgid "no_topic_set"
 msgstr "There is no topic for this channel"
 
+#: Topic set by {{who}} on {{when}}
+msgid "topic_setby"
+msgstr "Set by {{who}} on {{when}}"
+
 #: About
 msgid "about"
 msgstr "About"
 
-#: Created at {{when}}
-msgid "created_at"
-msgstr "Created at {{when}}"
+#: Created on {{when}}
+msgid "created_on"
+msgstr "Created on {{when}}"
 
 #: Highlights
 msgid "highlights"
