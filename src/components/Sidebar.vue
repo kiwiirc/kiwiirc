@@ -232,11 +232,6 @@ export default {
     overflow: hidden;
 }
 
-.kiwi-sidebar.kiwi-sidebar-section-settings {
-    width: 500px;
-    max-width: 500px;
-}
-
 .kiwi-sidebar .u-form textarea {
     min-width: 100%;
     max-width: 100%;

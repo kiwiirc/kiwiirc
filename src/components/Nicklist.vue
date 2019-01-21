@@ -182,13 +182,6 @@ export default {
 </script>
 
 <style lang="less">
-
-/* Adjust the sidebars width when this nicklist is in view */
-.kiwi-sidebar.kiwi-sidebar-section-nicklist {
-    max-width: 250px;
-    width: 250px;
-}
-
 .kiwi-nicklist {
     overflow: hidden;
     box-sizing: border-box;

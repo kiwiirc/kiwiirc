@@ -182,11 +182,11 @@ export default {
 
 .kiwi-sidebar {
     position: absolute;
-    right: -443px;
+    right: -310px;
     top: 45px; /* Push the top over the top page border */
     bottom: 0;
-    width: 443px;
-    max-width: 443px;
+    max-width: 330px;
+    width: 22.5%;
     z-index: 3;
     transition: right 0.2s, width 0.2s;
     flex: 1;
@@ -203,7 +203,6 @@ export default {
     position: relative;
     border-left-width: 1px;
     border-left-style: solid;
-    max-width: 430px;
     z-index: 1;
     transition: right 0.2s, top 0s;
 }

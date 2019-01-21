@@ -11,7 +11,10 @@
         <div class="kiwi-selfuser-actions">
             <div v-if="error_message">{{ error_message }}</div>
             <input-prompt :label="$t('change_nick')+':'" @submit="changeNick">
-                <a class="u-link">{{ $t('change_nick') }}</a>
+                <a class="u-button-primary">{{ $t('change_nick') }}</a>
+            </input-prompt>
+            <input-prompt :label="$t('set_away')+':'" @submit="setAway">
+                <a class="u-button-primary">{{ $t('set_away') }}</a>
             </input-prompt>
         </div>
     </div>
@@ -88,4 +91,10 @@ export default {
 .kiwi-selfuser-actions .u-input {
     margin-bottom: 10px;
 }
+
+.kiwi-selfuser-actions .u-button-primary {
+    padding: 10px;
+    cursor: pointer;
+}
+
 </style>

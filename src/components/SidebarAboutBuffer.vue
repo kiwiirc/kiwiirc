@@ -81,7 +81,8 @@ export default {
             let showEmoticons = this.$state.setting('buffers.show_emoticons');
             let blocks = formatIrcMessage(this.b.topic || '', { extras: false });
             let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
-            return content.html;
+            //return content.html;
+            return this.b.topic;
         },
 
         highlights() {
