@@ -54,21 +54,22 @@
                 </table>
             </div>
 
-            <div v-if="supportsAccounts && inviteListNonAccounts.length > 0">
+            <div v-if="!supportsAccounts || inviteListNonAccounts.length > 0">
                 <h3>Invite matches</h3>
+                <div v-if="areWeAnOp" class="kiwi-invitelist-addmask">
+                    <input ref="addInviteText" type="text" class="u-input">
+                    <button @click="addInvite($refs.addInviteText.value)">Add invite</button>
+                </div>
+
                 <table class="kiwi-invitelist-table">
                     <tr>
                         <th>{{ $t('invites_user') }}</th>
-                        <th>{{ $t('invites_by') }}</th>
                         <th/>
                         <th/>
                     </tr>
                     <tr v-for="invite in inviteListNonAccounts" :key="invite.invited">
                         <td class="kiwi-invitelist-table-mask">
                             {{ invite.invited }}
-                        </td>
-                        <td class="kiwi-invitelist-table-invitedby">
-                            {{ invite.invited_by }}
                         </td>
                         <td class="kiwi-invitelist-table-invitedat">
                             {{ (new Date(invite.invited_at * 1000)).toDateString() }}
@@ -200,6 +201,11 @@ export default {
             network.ircClient.addInvite(this.buffer.name, `${this.extban}:${accountName}`);
             this.updateInvitelist();
         },
+        addInvite(mask) {
+            let network = this.buffer.getNetwork();
+            network.ircClient.addInvite(this.buffer.name, mask);
+            this.updateInvitelist();
+        },
         setInviteOnly() {
             this.buffer.getNetwork().ircClient.mode(this.buffer.name, '+i');
         },
@@ -225,5 +231,13 @@ export default {
     position: relative;
     transition: all 0.3s;
     z-index: 1;
+}
+
+.kiwi-invitelist-addmask {
+    display: flex;
+}
+
+.kiwi-invitelist-addmask > button {
+    flex-shrink: 0;
 }
 </style>
