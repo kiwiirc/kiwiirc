@@ -104,13 +104,6 @@ export default {
 </script>
 
 <style lang="less">
-
-/* Adjust the sidebars width when this component is in view */
-.kiwi-sidebar.kiwi-sidebar-section-about {
-    max-width: 300px;
-    width: 300px;
-}
-
 .kiwi-aboutbuffer {
     overflow-y: auto;
     box-sizing: border-box;
@@ -174,12 +167,5 @@ export default {
     max-height: 0;
     padding: 0;
     opacity: 0;
-}
-
-@media screen and (max-width: 769px) {
-    .kiwi-sidebar.kiwi-sidebar-section-about {
-        max-width: 100%;
-        width: 100%;
-    }
 }
 </style>
