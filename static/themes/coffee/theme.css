@@ -235,8 +235,13 @@
 .kiwi-header {
     background: #fff;
 }
-.kiwi-header-name {
+
+.kiwi-header-name-container {
     color: #22231f;
+}
+
+.kiwi-header-name {
+    background-color: #fff;
 }
 
 /* The header option buttons */

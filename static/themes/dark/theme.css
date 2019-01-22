@@ -331,8 +331,12 @@
     color: #dedede;
 }
 
-.kiwi-header-name {
+.kiwi-header-name-container {
     color: #dedede;
+}
+
+.kiwi-header-name {
+    background-color: #1e1e1e;;
 }
 
 .kiwi-header-option a:hover,
@@ -379,10 +383,6 @@
 
 .kiwi-header .kiwi-header-notjoined .u-link:hover {
     background-color: #5ec9a6;
-}
-
-.kiwi-header-name {
-    color: #dedede;
 }
 
 .kiwi-header-server-connection .u-button {

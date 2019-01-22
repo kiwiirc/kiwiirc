@@ -233,8 +233,12 @@
     border-bottom: 1px solid #6fffb0;
 }
 
-.kiwi-header-name {
+.kiwi-header-name-container {
     color: #6fffb0;
+}
+
+.kiwi-header-name {
+    background-color: #1b2f24;
 }
 
 /* The header option buttons */

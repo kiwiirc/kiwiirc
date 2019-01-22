@@ -8,7 +8,9 @@
     >
 
         <template v-if="isChannel()">
-            <div class="kiwi-header-name">{{ buffer.name }}</div>
+            <div class="kiwi-header-name-container">
+                <div class="kiwi-header-name">{{ buffer.name }}</div>
+            </div>
             <div
                 v-if="isJoined && isConnected"
                 :key="buffer.id"
@@ -114,11 +116,15 @@
             >
                 {{ $t('connecting') }}
             </div>
-            <div class="kiwi-header-name">{{ buffer.getNetwork().name }}</div>
+            <div class="kiwi-header-name-container">
+                <div class="kiwi-header-name">{{ buffer.getNetwork().name }}</div>
+            </div>
         </template>
 
         <template v-else-if="isQuery()">
-            <div class="kiwi-header-name">{{ buffer.name }}</div>
+            <div class="kiwi-header-name-container">
+                <div class="kiwi-header-name">{{ buffer.name }}</div>
+            </div>
             <div :key="buffer.id" class="kiwi-header-options">
                 <div
                     v-rawElement="plugin.el"
@@ -142,7 +148,9 @@
                     </a>
                 </div>
             </div>
-            <div class="kiwi-header-name">{{ buffer.name }}</div>
+            <div class="kiwi-header-name-container">
+                <div class="kiwi-header-name">{{ buffer.name }}</div>
+            </div>
         </template>
 
         <div
@@ -304,7 +312,7 @@ export default {
     max-height: none;
 }
 
-.kiwi-header-name {
+.kiwi-header-name-container {
     font-weight: bold;
     cursor: default;
     margin: 0;
@@ -316,6 +324,13 @@ export default {
     flex-grow: 1;
     text-align: left;
     overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.kiwi-header-name:hover {
+    position: absolute;
+    padding-right: 10px;
+    z-index: 1;
 }
 
 .kiwi-header-options {
@@ -478,7 +493,7 @@ export default {
         margin-left: 0;
     }
 
-    .kiwi-header-name {
+    .kiwi-header-name-container {
         padding-left: 60px;
     }
 
