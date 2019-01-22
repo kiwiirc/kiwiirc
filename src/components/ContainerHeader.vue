@@ -318,6 +318,11 @@ export default {
     overflow-x: hidden;
 }
 
+.kiwi-header-name:hover {
+    overflow-x: visible;
+    z-index: 1;
+}
+
 .kiwi-header-options {
     width: auto;
     display: inline-block;
