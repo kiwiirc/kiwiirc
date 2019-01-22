@@ -315,7 +315,7 @@ export default {
     line-height: normal;
     flex-grow: 1;
     text-align: left;
-    word-break: break-all;
+    overflow-x: hidden;
 }
 
 .kiwi-header-options {
