@@ -255,11 +255,4 @@ export default {
     line-height: 1.2em;
 }
 
-@media screen and (max-width: 759px) {
-    .kiwi-sidebar.kiwi-sidebar-section-nicklist {
-        width: 100%;
-        max-width: 380px;
-    }
-}
-
 </style>
