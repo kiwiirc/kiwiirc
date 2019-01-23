@@ -221,13 +221,6 @@ export default {
             // Check if we have this network already
             let net = this.network || state.getNetworkFromAddress(netAddress);
 
-            // If we retreived an existing network, update the nick+password with what
-            // the user has just put in place
-            if (net) {
-                net.nick = this.nick;
-                net.connection.password = this.password;
-            }
-
             // If the network doesn't already exist, add a new one
             net = net || state.addNetwork('Network', this.nick, {
                 server: netAddress,
@@ -239,6 +232,11 @@ export default {
                 path: options.direct_path || '',
                 gecos: options.gecos,
             });
+
+            // If we retreived an existing network, update the nick+password with what
+            // the user has just put in place
+            net.nick = this.nick;
+            net.password = this.password;
 
             if (!this.network && options.recaptchaSiteId) {
                 net.captchaResponse = this.captchaResponse();

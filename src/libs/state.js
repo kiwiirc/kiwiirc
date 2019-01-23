@@ -456,7 +456,7 @@ const state = new Vue({
                             port: network.connection.port,
                             tls: network.connection.tls,
                             path: network.connection.path,
-                            password: network.connection.password,
+                            password: network.password,
                             direct: network.connection.direct,
                             encoding: network.connection.encoding,
                         },
@@ -628,7 +628,7 @@ const state = new Vue({
             network.connection.port = serverInfo.port || 6667;
             network.connection.tls = serverInfo.tls || false;
             network.connection.path = serverInfo.path || '';
-            network.connection.password = serverInfo.password || '';
+            network.password = serverInfo.password || '';
             network.connection.direct = !!serverInfo.direct;
             network.connection.path = serverInfo.path || '';
             network.connection.encoding = serverInfo.encoding || 'utf8';

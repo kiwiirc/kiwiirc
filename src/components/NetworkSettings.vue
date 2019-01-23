@@ -7,6 +7,10 @@
                     {{ $t('network_noconnect') }}
                     <span>{{ readableStateError(network.state_error) }}</span>
                 </div>
+                <div v-else-if="network.last_error" class="kiwi-networksettings-error">
+                    {{ $t('network_noconnect') }}
+                    <span>{{ network.last_error }}</span>
+                </div>
 
                 <server-selector
                     :network="network"
@@ -17,7 +21,7 @@
                     <template v-if="server_type==='network'">
                         <input-text
                             :label="$t('password')"
-                            v-model="network.connection.password"
+                            v-model="network.password"
                             type="password"
                         />
                     </template>
@@ -181,12 +185,12 @@ export default {
         },
     },
     created() {
-        let isZnc = !!(this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
+        let isZnc = !!(this.network.password || '').match(/^(.*)\/(.*):(.*)$/);
         this.server_type = isZnc ?
             'znc' :
             'network';
         if (isZnc) {
-            let match = (this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
+            let match = (this.network.password || '').match(/^(.*)\/(.*):(.*)$/);
             this.znc_username = match[1] || '';
             this.znc_network = match[2] || '';
             this.znc_password = match[3] || '';
@@ -217,7 +221,7 @@ export default {
         },
         setZncPass() {
             let newPass = `${this.znc_username}/${this.znc_network}:${this.znc_password}`;
-            this.network.connection.password = newPass;
+            this.network.password = newPass;
         },
         toggleTls() {
             let connection = this.network.connection;
@@ -421,9 +425,10 @@ export default {
     padding: 0.3em;
 }
 
-.kiwi-networksettings-error span {
+.kiwi-networksettings .kiwi-networksettings-error span {
     display: block;
     font-style: italic;
+    text-align: center;
 }
 
 .kiwi-networksettings-server-types a {
