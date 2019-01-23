@@ -33,6 +33,7 @@ export default class NetworkState {
         this.username = '';
         this.gecos = '';
         this.password = '';
+        this.away = '';
 
         // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'appState', appState, false);

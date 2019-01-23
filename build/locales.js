@@ -28,7 +28,7 @@ exports.createJsonFiles = function() {
                 }
 
                 var locale = match[1];
-                var data = new Buffer([]);
+                var data = Buffer.alloc(0);
 
                 // Find all the other locale files for this locale and join them together into a
                 // single locale translation

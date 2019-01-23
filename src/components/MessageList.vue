@@ -499,7 +499,6 @@ export default {
     padding: 0.1em 0.5em;
     min-height: 0;
     line-height: normal;
-    margin: 1em 0.5em;
     text-align: left;
 }
 
@@ -620,7 +619,6 @@ export default {
 .kiwi-messagelist-emoji {
     width: 1.3em;
     display: inline-block;
-    pointer-events: none;
     vertical-align: middle;
 }
 

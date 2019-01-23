@@ -243,6 +243,7 @@ export default {
             let trackWindowDims = () => {
                 this.$state.ui.app_width = this.$el.clientWidth;
                 this.$state.ui.app_height = this.$el.clientHeight;
+                this.$state.ui.is_narrow = this.$el.clientWidth <= 769;
             };
             window.addEventListener('resize', trackWindowDims);
             trackWindowDims();

@@ -10,7 +10,7 @@ import * as ipRegex from 'ip-regex';
 import * as Colours from './Colours';
 import { md5 } from './Md5';
 
-const urlRegex = new RegExp(
+export const urlRegex = new RegExp(
     // Detect either a protocol or 'www.' to start a URL
     /(([A-Za-z][A-Za-z0-9-]*:\/\/)|(www\.))/.source +
     '(' +
@@ -122,7 +122,7 @@ export function addEmojis(wordCtx, emojiList, emojiLocation) {
         }
 
         let src = `${emojiLocation}${emoji}.png`;
-        return `<img class="${classes}" src="${src}" alt="${word}" />`;
+        return `<img class="${classes}" src="${src}" alt="${word}" title="${word}" />`;
     }
 
     return word;

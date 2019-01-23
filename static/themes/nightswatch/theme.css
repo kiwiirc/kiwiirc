@@ -232,14 +232,14 @@
     color: #b8babd;
 }
 
-/* These styles relate to the 'unread messages' and 'Mentioned' highlights that display to the user in the Statebrowser sidebar */
-.kiwi-container-toggledraw-statebrowser-messagecount {
-    background-color: #42b983;
+.kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
+    background: #d16c6c;
     color: #fff;
 }
 
-.kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
-    background: #d16c6c;
+/* These styles relate to the 'unread messages' and 'Mentioned' highlights that display to the user in the Statebrowser sidebar */
+.kiwi-container-toggledraw-statebrowser-messagecount {
+    background-color: #444;
     color: #fff;
 }
 
@@ -247,8 +247,14 @@
     border: 0.6em solid transparent;
     border-right-color: #444;
 }
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    background-color: #d62323;
+    color: #fff;
+}
+
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
-    border-right-color: #444;
+    border-right-color: #d62323;
 }
 
 .kiwi-container-empty .u-button {
@@ -515,7 +521,7 @@
     background-color: #444;
 }
 
-.kiwi-messagelist-time {
+.kiwi-messagelist-time, .kiwi-messagelist-realname {
     color: #a0a09f;
 }
 
@@ -569,11 +575,11 @@
     border-radius: 3px;
 }
 
-.kiwi-messageinfo-actions .u-link.kick-user {
+.kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
     color: #f6c358;
 }
 
-.kiwi-messageinfo-actions .u-link.ban-user {
+.kiwi-messageinfo-actions .kiwi-messageinfo-ban-user {
     color: #fcb46e;
 }
 

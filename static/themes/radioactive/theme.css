@@ -206,14 +206,20 @@
 }
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
     border: 0.6em solid transparent;
-    border-right-color: #ddd;
+    border-right-color: #42b983;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    background-color: #d62323;
+    color: #fff;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
+    border-right-color: #d62323;
 }
 
 .kiwi-statebrowser-channel-label--highlight {
     background: #e45e5e;
-}
-.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
-    border-right-color: #d62323;
 }
 
 .kiwi-container-empty .u-button {
@@ -481,7 +487,7 @@
     color: #6fffb0 !important;
 }
 
-.kiwi-messagelist-time {
+.kiwi-messagelist-time, .kiwi-messagelist-time {
     color: #6fffb0;
 }
 
@@ -533,11 +539,11 @@
     border-radius: 3px;
 }
 
-.kiwi-messageinfo-actions .u-link.kick-user {
+.kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
     color: #6fffb0;
 }
 
-.kiwi-messageinfo-actions .u-link.ban-user {
+.kiwi-messageinfo-actions .kiwi-messageinfo-ban-user {
     color: #6fffb0;
 }
 

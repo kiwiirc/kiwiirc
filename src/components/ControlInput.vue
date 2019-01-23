@@ -450,7 +450,6 @@ export default {
             this.history_pos = this.history.length;
 
             this.$refs.input.reset();
-            this.$refs.input.focus();
         },
         historyBack() {
             if (this.history_pos > 0) {
@@ -518,6 +517,8 @@ export default {
                         text: '/' + command.command,
                         description: desc,
                         type: 'command',
+                        // Each alias needs the / command prefix adding
+                        alias: (command.alias || []).map(c => '/' + c),
                     });
                 });
 
