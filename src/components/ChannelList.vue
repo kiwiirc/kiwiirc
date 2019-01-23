@@ -34,7 +34,9 @@
                                 {{ channel.channel }}
                             </a>
                         </td>
-                        <td class="kiwi-channnellist-channel-desc"><div v-html="formatAndTrimTopic(channel.topic)"/></td>
+                        <td class="kiwi-channnellist-channel-desc">
+                            <div v-html="formatAndTrimTopic(channel.topic)"/>
+                        </td>
                         <td class="kiwi-channellist-user-center">
                             <a class="u-button u-button-primary"
                                @click="joinChannel(channel.channel)"> {{ $t('container_join') }}
