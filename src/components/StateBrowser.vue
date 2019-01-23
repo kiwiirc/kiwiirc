@@ -212,6 +212,7 @@ export default {
     width: 220px;
     text-align: center;
     overflow: hidden;
+    transition: all 0.3s;
 }
 
 .kiwi-statebrowser h1 {
