@@ -23,19 +23,22 @@
             </div>
             <table v-if="!isLoading && list.length > 0" :key="last_updated" width="100%">
                 <tbody>
-                    <tr v-for="channel in paginated" :key="channel.channel">
+                    <tr v-for="(channel, key) in paginated">
                         <td class="kiwi-channellist-user-center">
                             <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
                                 <i class="fa fa-user" aria-hidden="true"/> {{ channel.num_users }}
                             </span>
                         </td>
-                        <td>
+                        <td class="kiwi-channnellist-channel-name">
                             <a class="u-link" @click="joinChannel(channel.channel)">
                                 {{ channel.channel }}
                             </a>
                         </td>
                         <td class="kiwi-channnellist-channel-desc">
-                            <div v-html="formatAndTrimTopic(channel.topic)"/>
+                            <span class="kiwi-channellist-channel-topic-show"
+                                  @click="showChannelTopic()">Show topic</span>
+                            <span class="kiwi-channellist-channel-topic-content"
+                                  v-html="formatAndTrimTopic(channel.topic)"/>
                         </td>
                         <td class="kiwi-channellist-user-center">
                             <a class="u-button u-button-primary"
@@ -154,6 +157,9 @@ export default {
             let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
             return content.html;
         },
+        showChannelTopic(channel, key) {
+            event.target.parentElement.className += ' kiwi-channellist-topic-visible';
+        },
         joinChannel(channelName) {
             this.$state.addBuffer(this.network.id, channelName);
             this.network.ircClient.join(channelName);
@@ -246,7 +252,7 @@ export default {
 }
 
 .kiwi-channellist table tbody td {
-    padding: 2px 1em;
+    padding: 2px 0.5em;
     text-align: left;
 }
 
@@ -296,8 +302,25 @@ export default {
         padding-top: 20px;
     }
 
-    .kiwi-channnellist-channel-desc {
+    .kiwi-channnellist-channel-name {
+        max-width: 60px;
+        overflow: hidden;
+    }
+
+    .kiwi-channellist-channel-topic-show {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    .kiwi-channellist-topic-visible .kiwi-channellist-channel-topic-show,
+    .kiwi-channellist-channel-topic-content {
         display: none;
+    }
+
+    .kiwi-channellist-topic-visible .kiwi-channellist-channel-topic-content {
+        display: inline-block;
     }
 }
 </style>
