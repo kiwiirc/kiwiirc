@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2019-01-12 20:21\n"
+"PO-Revision-Date: 2019-01-16 19:10\n"
 
 #: Start
 msgid "start_button"
@@ -859,7 +859,7 @@ msgstr "Označi sebe odsutnim"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Označi se aktivnim"
 
 #: Change your connection encoding
 msgid "command_encoding"
