@@ -21,10 +21,9 @@
                     <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true"/></a>
                 </div>
             </div>
-            {{ checkIfMobile() }} {{ open_topics }}
             <table v-if="!isLoading && list.length > 0" :key="last_updated" width="100%">
                 <tbody>
-                    <tr v-for="channel in paginated">
+                    <tr v-for="channel in paginated" :key="channel.channel">
                         <td class="kiwi-channellist-user-center">
                             <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
                                 <i class="fa fa-user" aria-hidden="true"/> {{ channel.num_users }}
@@ -46,7 +45,7 @@
                                     Hide topic
                                 </span>
                             </div>
-                            <div v-if="open_topics[channel.channel] && displayTopic(channel)"
+                            <div v-if="displayTopic(channel)"
                                  class="kiwi-channellist-channel-topic-content"
                                  v-html="formatAndTrimTopic(channel.topic)"/>
                         </td>
@@ -177,18 +176,17 @@ export default {
             }
         },
         checkIfMobile() {
-            console.log(this.$state.ui.is_narrow);
             return this.$state.ui.is_narrow;
         },
         displayTopic(item) {
-          // If on a mobile device
-          if ( this.checkIfMobile() ){
-              return true;
-          }
-          if (this.open_topics[item.channel] == true ){
-              return true;
-          }
-          return false;
+            // If on a mobile device
+            if (this.checkIfMobile()) {
+                if (this.open_topics[item.channel] === true) {
+                    return true;
+                }
+                return false;
+            }
+            return true;
         },
         joinChannel(channelName) {
             let buffer = this.$state.addBuffer(this.network.id, channelName);
@@ -345,13 +343,8 @@ export default {
         text-decoration: underline;
     }
 
-    .kiwi-channellist-topic-visible .kiwi-channellist-channel-topic-show,
-    .kiwi-channellist-channel-topic-content {
-        display: none;
-    }
-
-    .kiwi-channellist-topic-visible .kiwi-channellist-channel-topic-content {
-        display: inline-block;
+    .kiwi-channellist-user-center {
+        width: 120px;
     }
 }
 </style>
