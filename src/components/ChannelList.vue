@@ -21,9 +21,10 @@
                     <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true"/></a>
                 </div>
             </div>
+            {{ checkIfMobile() }} {{ open_topics }}
             <table v-if="!isLoading && list.length > 0" :key="last_updated" width="100%">
                 <tbody>
-                    <tr v-for="(channel, key) in paginated">
+                    <tr v-for="channel in paginated">
                         <td class="kiwi-channellist-user-center">
                             <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
                                 <i class="fa fa-user" aria-hidden="true"/> {{ channel.num_users }}
@@ -35,10 +36,19 @@
                             </a>
                         </td>
                         <td class="kiwi-channnellist-channel-desc">
-                            <span class="kiwi-channellist-channel-topic-show"
-                                  @click="showChannelTopic()">Show topic</span>
-                            <span class="kiwi-channellist-channel-topic-content"
-                                  v-html="formatAndTrimTopic(channel.topic)"/>
+                            <div v-if="checkIfMobile()"
+                                 class="kiwi-channellist-channel-topic-show"
+                                 @click="toggleChannelTopic(channel.channel)">
+                                <span v-if="!open_topics[channel.channel]">
+                                    Show topic
+                                </span>
+                                <span v-if="open_topics[channel.channel]">
+                                    Hide topic
+                                </span>
+                            </div>
+                            <div v-if="open_topics[channel.channel] && displayTopic(channel)"
+                                 class="kiwi-channellist-channel-topic-content"
+                                 v-html="formatAndTrimTopic(channel.topic)"/>
                         </td>
                         <td class="kiwi-channellist-user-center">
                             <a class="u-button u-button-primary"
@@ -60,11 +70,12 @@
 'kiwi public';
 
 import _ from 'lodash';
+import state from '@/libs/state';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import formatIrcMessage from '@/libs/MessageFormatter';
 
 export default {
-    props: ['network'],
+    props: ['network', 'buffer'],
     data: function data() {
         return {
             sidebarOpen: false,
@@ -72,6 +83,7 @@ export default {
             page_size: 200,
             search: '',
             last_updated: 0,
+            open_topics: {},
         };
     },
     computed: {
@@ -157,12 +169,31 @@ export default {
             let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
             return content.html;
         },
-        showChannelTopic(channel, key) {
-            event.target.parentElement.className += ' kiwi-channellist-topic-visible';
+        toggleChannelTopic(item) {
+            if (this.open_topics[item]) {
+                this.$set(this.open_topics, item, false);
+            } else {
+                this.$set(this.open_topics, item, true);
+            }
+        },
+        checkIfMobile() {
+            console.log(this.$state.ui.is_narrow);
+            return this.$state.ui.is_narrow;
+        },
+        displayTopic(item) {
+          // If on a mobile device
+          if ( this.checkIfMobile() ){
+              return true;
+          }
+          if (this.open_topics[item.channel] == true ){
+              return true;
+          }
+          return false;
         },
         joinChannel(channelName) {
-            this.$state.addBuffer(this.network.id, channelName);
-            this.network.ircClient.join(channelName);
+            let buffer = this.$state.addBuffer(this.network.id, channelName);
+            state.setActiveBuffer(buffer.networkid, buffer.name);
+            state.$emit('active.component', null);
         },
     },
 };
