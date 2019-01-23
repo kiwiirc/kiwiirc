@@ -171,7 +171,7 @@ export default {
 }
 
 .kiwi-channellist-padding-top {
-    padding-top: calc(40% - 80px);
+    padding-top: calc(40vh - 80px);
 }
 
 .kiwi-channellist-padding-top .kiwi-channellist-nav {
@@ -272,7 +272,7 @@ export default {
 
 @media screen and (max-width: 769px) {
     .kiwi-channellist-padding-top {
-        padding-top: 50%;
+        padding-top: 20vh;
     }
 
     .u-form.kiwi-channellist-search {
