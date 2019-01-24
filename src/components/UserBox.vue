@@ -3,6 +3,10 @@
 
         <div class="kiwi-userbox-header">
             <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"/>
+            <span
+                :style="{ 'background': userStatus }"
+                class="kiwi-user-availability"
+            />
             <h3>{{ user.nick }}</h3>
             <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
         </div>
@@ -189,6 +193,9 @@ export default {
 
             return true;
         },
+        userStatus: function userStatus() {
+            return this.user.getStatus();
+        },
         userMode: {
             get: function getUserMode() {
                 if (!this.buffer) {
@@ -329,6 +336,15 @@ export default {
         width: 100%;
         padding: 0;
         cursor: default;
+        display: inline-block;
+    }
+
+    .kiwi-user-availability {
+        height: 5px;
+        width: 5px;
+        background: green;
+        display: inline-block;
+        border-radius: 50%;
     }
 }
 

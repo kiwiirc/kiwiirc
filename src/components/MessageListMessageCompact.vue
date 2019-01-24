@@ -43,6 +43,11 @@
         >
             {{ ml.formatTime(message.time) }}
         </div>
+        <span
+            v-if="message.type === ('privmsg' || 'msg')"
+            :style="{ 'background': userStatus }"
+            class="kiwi-user-availability"
+        />
         <div
             :style="{ 'color': userColour }"
             class="kiwi-messagelist-nick"
@@ -88,6 +93,9 @@ export default {
         userColour() {
             return this.ml.userColour(this.message.user);
         },
+        userStatus() {
+            return this.ml.userStatus(this.message.user);
+        },
     },
     methods: {
         isHoveringOverMessage(message) {
@@ -120,9 +128,20 @@ export default {
     width: 110px;
     min-width: 110px;
     display: inline-block;
-    left: 0;
+    left: 8px;
     top: -1px;
     position: absolute;
+}
+
+.kiwi-messagelist-message--compact > .kiwi-user-availability {
+    height: 5px;
+    width: 5px;
+    background: green;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-radius: 50%;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
