@@ -9,9 +9,9 @@
         @click="nicklist.openUserbox(user)"
     >
         <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span>
-        <span 
-            class="kiwi-user-availability"
+        <span
             :style="{ 'background': userStatus }"
+            class="kiwi-user-availability"
         />
         <span :style="{ 'color': userColour }"
               class="kiwi-nicklist-user-nick"
@@ -38,7 +38,7 @@ export default {
         },
         userStatus() {
             return this.user.userStatus(this.user);
-        }
+        },
     },
 };
 </script>
