@@ -548,15 +548,10 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 .kiwi-nicklist-user {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #fff;
 }
 .kiwi-nicklist-user:hover {
-    background-color: #42b992;
-    cursor: pointer;
-    color: #fff;
-}
-.kiwi-nicklist-user:after {
-    color: #666764;
+    border-left: 4px solid #42b992;
 }
 .kiwi-nicklist-user:hover .kiwi-nicklist-user-nick i {
     color: #fff !important;
@@ -564,9 +559,7 @@
 .kiwi-nicklist-user:hover .kiwi-nicklist-user-nick:after {
     color: #fff;
 }
-.kiwi-nicklist-messageuser {
-    color: #666764;
-}
+
 .kiwi-nicklist-info i.fa-search {
     color: #cfcfcf;
 }
