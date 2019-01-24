@@ -194,7 +194,7 @@ export default {
             return true;
         },
         userStatus: function userStatus() {
-            return this.user.getStatus();
+            return this.user.userStatus();
         },
         userMode: {
             get: function getUserMode() {
@@ -342,7 +342,6 @@ export default {
     .kiwi-user-availability {
         height: 5px;
         width: 5px;
-        background: green;
         display: inline-block;
         border-radius: 50%;
     }

@@ -339,7 +339,7 @@ export default {
             return message.isHighlight;
         },
         userStatus(user) {
-            return user.getStatus();
+            return user.userStatus();
         },
         userColour(user) {
             if (user && this.bufferSetting('colour_nicknames_in_messages')) {

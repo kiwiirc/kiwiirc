@@ -136,7 +136,6 @@ export default {
 .kiwi-messagelist-message--compact > .kiwi-user-availability {
     height: 5px;
     width: 5px;
-    background: green;
     display: inline-block;
     position: absolute;
     top: 50%;
