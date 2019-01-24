@@ -8,16 +8,21 @@
     >
 
         <template v-if="isChannel()">
-            <div class="kiwi-header-name">{{ buffer.name }}</div>
-            <div class="kiwi-header-options kiwi-header-options-mobile-toggle">
-                <div class="kiwi-header-option">
-                    <span>
-                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                    </span>
-                </div>
+            <div :class="{
+                     'kiwi-header-name-mobile-display': topic_toggle_mobile
+                 }"
+                 class="kiwi-header-name" @click="onNameClick()"
+            >
+                {{ buffer.name }}
+                <span v-if="topic_toggle_mobile">
+                    <i class="fa fa-angle-up" aria-hidden="true" />
+                </span>
             </div>
             <div
                 v-if="isJoined && isConnected"
+                :class="{
+                    'kiwi-header-options-full-width': topic_toggle_mobile
+                }"
                 :key="buffer.id"
                 class="kiwi-header-options"
             >
@@ -203,6 +208,7 @@ export default {
             buffer_settings_open: false,
             pluginUiChannelElements: GlobalApi.singleton().channelHeaderPlugins,
             pluginUiQueryElements: GlobalApi.singleton().queryHeaderPlugins,
+            topic_toggle_mobile: false,
             prompts: {
                 closeChannel: false,
             },
@@ -285,6 +291,11 @@ export default {
                 network.ircClient.join(channelName);
             }
         },
+        onNameClick: function onNameClick() {
+            if (this.$state.ui.is_narrow) {
+                this.topic_toggle_mobile = !this.topic_toggle_mobile;
+            }
+        },
     },
 };
 </script>
@@ -330,15 +341,45 @@ export default {
     z-index: 1;
 }
 
+.kiwi-header-name-mobile-display {
+    position: fixed;
+    z-index: 0;
+    background: #fff;
+    top: 50px;
+    padding: 0.5em 1em;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #000;
+    padding-right: 45px;
+    transition: all 0.2s;
+}
+
+.kiwi-header-name-mobile-display span {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    top: 0;
+    height: 100%;
+    text-align: center;
+    line-height: 40px;
+}
+
 .kiwi-header-options {
     width: auto;
     display: inline-block;
     flex-shrink: 0;
 }
 
+.kiwi-header-options-full-width {
+    width: 100%;
+    text-align: right;
+    transition: all 0.2s;
+}
+
 .kiwi-header-option {
     border: none;
-    float: left;
+    display: inline-block;
     background: none;
     font-size: 0.8em;
     opacity: 0.9;
@@ -493,6 +534,10 @@ export default {
 
     .kiwi-header-name {
         padding-left: 60px;
+    }
+
+    .kiwi-header-name-mobile-display {
+        padding-left: 1em;
     }
 
     .kiwi-header-option span {
