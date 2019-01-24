@@ -5,11 +5,6 @@
             <i class="fa fa-cog" aria-hidden="true"/>
         </div>
 
-        <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">
-            <span>{{ $t('close') }}</span>
-            <i class="fa fa-times" aria-hidden="true"/>
-        </div>
-
         <div
             v-if="isPersistingState"
             :class="[is_usermenu_open?'kiwi-statebrowser-usermenu--open':'']"
@@ -217,6 +212,13 @@ export default {
     width: 220px;
     text-align: center;
     overflow: hidden;
+    transition: all 0.2s;
+    transition-delay: 0.05s;
+}
+
+.kiwi-statebrowser.kiwi-wrap--statebrowser-drawopen {
+    transition: all 0.2s;
+    transition-delay: 0.05s;
 }
 
 .kiwi-statebrowser h1 {
@@ -238,18 +240,16 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: auto;
-    text-align: left;
-    padding: 0 10px;
+    width: 39px;
+    text-align: center;
     font-size: 1em;
     box-sizing: border-box;
-    line-height: 35px;
+    line-height: 57px;
     cursor: pointer;
     font-weight: 500;
-    letter-spacing: 1px;
     transition: all 0.3s;
-    border-radius: 0 0 6px 0;
     opacity: 0.8;
+    z-index: 20;
 }
 
 .kiwi-statebrowser-appsettings:hover {
@@ -261,7 +261,6 @@ export default {
 }
 
 .kiwi-statebrowser-appsettings i {
-    float: right;
     line-height: 35px;
     font-size: 1.2em;
 }
@@ -514,10 +513,6 @@ export default {
     cursor: pointer;
 }
 
-.kiwi-statebrowser-mobile-close {
-    display: none;
-}
-
 .kiwi-statebrowser-availablenetworks-link {
     border-right: 15px solid red;
 }
@@ -571,36 +566,16 @@ export default {
         width: 95%;
     }
 
-    .kiwi-statebrowser-mobile-close {
-        width: 100%;
-        color: #fff;
-        display: block;
-        padding: 0 10px;
-        font-weight: 600;
-        background: #42b992;
-        box-sizing: border-box;
-        margin-bottom: 0;
-        text-transform: uppercase;
-        line-height: 45px;
-        height: 45px;
-
-        span {
-            float: left;
-        }
-
-        i {
-            float: right;
-            font-size: 1.2em;
-            line-height: 45px;
-        }
-    }
-
     .kiwi-statebrowser-channel::before {
         line-height: 40px;
     }
 
     .kiwi-statebrowser-usermenu {
         position: relative;
+    }
+
+    .kiwi-statebrowser-usermenu-body .kiwi-close-icon {
+        display: none;
     }
 }
 

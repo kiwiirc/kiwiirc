@@ -287,6 +287,9 @@ export default {
             network.showServerBuffer('channels');
         },
         showBufferSettings(buffer) {
+            if (this.$state.ui.is_narrow) {
+                state.$emit('statebrowser.hide');
+            }
             this.setActiveBuffer(buffer);
             this.sidebarState.showBufferSettings();
         },

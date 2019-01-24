@@ -188,13 +188,10 @@
     color: #fff;
 }
 
-.kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-sidebar {
     background: #fff;
 }
-.kiwi-container-toggledraw-statebrowser {
-    border-right: 1px solid #ddd;
-}
+
 .kiwi-container-toggledraw-sidebar {
     border-left: 1px solid #ddd;
 }
@@ -220,6 +217,12 @@
 
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
     border-right-color: #d62323;
+}
+
+/* Style the statebrowser's ::after element on mobile devices */
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
+    border: 0.6em solid transparent;
+    border-left-color: #42b983;
 }
 
 .kiwi-statebrowser-channel-label--highlight {
@@ -752,7 +755,6 @@
 
 /* User Settings */
 .kiwi-statebrowser-appsettings:hover {
-    background: #42b992;
     color: #fff;
     opacity: 1;
 }
