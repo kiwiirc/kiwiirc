@@ -27,6 +27,15 @@
 
                     <tabbed-view>
                         <tabbed-tab :header="$t('settings')" :focus="true">
+                          <h3>{{ $t('channel_settings') }}
+                              <span v-if="!areWeAnOp()"
+                                    class="kiwi-channelsettings-disabled">
+                                    {{ $t('mods_only') }}
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                              </span>
+                          </h3>
+                          <hr>
+                          <channel-info :buffer="buffer"/>
                             <div class="kiwi-sidebar-settings">
                                 <h3>{{ $t('side_settings') }}</h3>
                                 <hr>
@@ -57,14 +66,6 @@
                                     </label>
                                 </form>
                             </div>
-                            <h3>{{ $t('channel_settings') }}
-                                <span v-if="!areWeAnOp()"
-                                      class="kiwi-channelsettings-disabled">
-                                    Settings Disabled
-                                </span>
-                            </h3>
-                            <hr>
-                            <channel-info :buffer="buffer"/>
                         </tabbed-tab>
                         <tabbed-tab :header="$t('banned')">
                             <channel-banlist :buffer="buffer"/>
@@ -305,6 +306,10 @@ export default {
     font-size: 0.8em;
     padding: 0 16px;
     background: #afafaf;
+}
+
+.kiwi-channelsettings-disabled i {
+    margin-left: 5px;
 }
 
 @media screen and (max-width: 769px) {

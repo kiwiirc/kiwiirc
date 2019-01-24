@@ -447,6 +447,10 @@ msgstr "Display Topic"
 msgid "channel_settings"
 msgstr "Channel Settings"
 
+#: Mods Only
+msgid "mods_only"
+msgstr "Mods Only"
+
 #: Join Channel
 msgid "container_join"
 msgstr "Join Channel"

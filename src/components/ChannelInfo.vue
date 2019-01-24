@@ -134,6 +134,18 @@ export default {
 </script>
 
 <style>
+    .kiwi-channelinfo-disabled-alert {
+        width: 100%;
+        padding: 10px 5px;
+        cursor: default;
+        text-align: center;
+        margin: 5px 0;
+        display: inline-block;
+        box-sizing: border-box;
+        font-size: 1.2em;
+        background-color: #d16c6c;
+        color: #fff;
+    }
 
 .kiwi-channelinfo-previoustopics {
     margin: 0 10px 15px 10px;
