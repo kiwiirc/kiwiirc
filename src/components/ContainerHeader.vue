@@ -38,7 +38,7 @@
                 >
                     <a
                         :title="$t('person', {count: Object.keys(buffer.users).length})"
-                        @click="sidebarState.toggleNicklist()"
+                        @click="nicklistToggle()"
                     >
                         <i class="fa fa-users" aria-hidden="true"/>
                         <span>{{ Object.keys(buffer.users).length }}</span>
@@ -269,6 +269,14 @@ export default {
                 let network = this.buffer.getNetwork();
                 state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
+            }
+        },
+        nicklistToggle: function nicklistToggle() {
+            console.log(this.sidebarState.sidebarSection);
+            if (this.sidebarState.sidebarSection === 'user') {
+                this.sidebarState.close();
+            } else {
+                this.sidebarState.toggleNicklist();
             }
         },
     },
