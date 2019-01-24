@@ -463,7 +463,7 @@ function clientMiddleware(state, network) {
 
             // The case does not match, update buffer.name to the casing sent by the server
             if (buffer.name !== event.channel) {
-                buffer.name = event.channel;
+                buffer.rename(event.channel);
             }
 
             state.addUserToBuffer(buffer, {
