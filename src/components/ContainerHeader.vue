@@ -87,20 +87,20 @@
             </div>
 
             <div class="kiwi-header-connecting-state">
-              <div
-                  v-if="buffer.getNetwork().state === 'disconnected'"
-                  class="kiwi-header-server-connection"
-              >
-                  <a class="u-button u-button-primary" @click="onConnectButtonClick">
-                      {{ $t('connect') }}
-                  </a>
-              </div>
-              <div
-                  v-else-if="buffer.getNetwork().state === 'connecting'"
-                  class="kiwi-header-server-connection"
-              >
-                  {{ $t('connecting') }}
-              </div>
+                <div
+                    v-if="buffer.getNetwork().state === 'disconnected'"
+                    class="kiwi-header-server-connection"
+                >
+                    <a class="u-button u-button-primary" @click="onConnectButtonClick">
+                        {{ $t('connect') }}
+                    </a>
+                </div>
+                <div
+                    v-else-if="buffer.getNetwork().state === 'connecting'"
+                    class="kiwi-header-server-connection"
+                >
+                    {{ $t('connecting') }}
+                </div>
             </div>
 
             <transition name="kiwi-header-prompttrans">
@@ -119,20 +119,20 @@
         <template v-else-if="isServer()">
             <div class="kiwi-header-name">{{ buffer.getNetwork().name }}</div>
             <div class="kiwi-header-connecting-state">
-              <div
-                  v-if="buffer.getNetwork().state === 'disconnected'"
-                  class="kiwi-header-server-connection"
-              >
-                  <a class="u-button u-button-primary" @click="onConnectButtonClick">
-                      {{ $t('connect') }}
-                  </a>
-              </div>
-              <div
-                  v-else-if="buffer.getNetwork().state === 'connecting'"
-                  class="kiwi-header-server-connection"
-              >
-                  {{ $t('connecting') }}
-              </div>
+                <div
+                    v-if="buffer.getNetwork().state === 'disconnected'"
+                    class="kiwi-header-server-connection"
+                >
+                    <a class="u-button u-button-primary" @click="onConnectButtonClick">
+                        {{ $t('connect') }}
+                    </a>
+                </div>
+                <div
+                    v-else-if="buffer.getNetwork().state === 'connecting'"
+                    class="kiwi-header-server-connection"
+                >
+                    {{ $t('connecting') }}
+                </div>
             </div>
         </template>
 
