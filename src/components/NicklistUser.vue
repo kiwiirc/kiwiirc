@@ -40,7 +40,7 @@ export default {
 <style>
 
 .kiwi-nicklist-user {
-    line-height: 30px;
+    line-height: 26px;
     padding: 0 16px 0 12px;
     margin: 0;
     position: relative;
@@ -57,7 +57,7 @@ export default {
 .kiwi-nicklist-messageuser {
     position: absolute;
     content: '\f075';
-    right: 1em;
+    right: -1em;
     font-family: fontAwesome, sans-serif;
     line-height: 30px;
     opacity: 0;
@@ -66,6 +66,9 @@ export default {
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
     opacity: 1;
+    right: 1em;
+    transition: all 0.2s;
+    transition-delay: 0.1s;
 }
 
 </style>
