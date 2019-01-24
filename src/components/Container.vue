@@ -89,7 +89,6 @@ export default {
             } else if (this.buffer.isQuery()) {
                 type = 'query';
             }
-
             return type;
         },
         unreadMessages() {
@@ -273,6 +272,7 @@ export default {
     left: 14px;
     width: 37px;
     padding: 0;
+    transition: all 0s;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
