@@ -27,15 +27,15 @@
 
                     <tabbed-view>
                         <tabbed-tab :header="$t('settings')" :focus="true">
-                          <h3>{{ $t('channel_settings') }}
-                              <span v-if="!areWeAnOp()"
-                                    class="kiwi-channelsettings-disabled">
+                            <h3>{{ $t('channel_settings') }}
+                                <span v-if="!areWeAnOp()"
+                                      class="kiwi-channelsettings-disabled">
                                     {{ $t('mods_only') }}
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                              </span>
-                          </h3>
-                          <hr>
-                          <channel-info :buffer="buffer"/>
+                                    <i class="fa fa-lock" aria-hidden="true" />
+                                </span>
+                            </h3>
+                            <hr>
+                            <channel-info :buffer="buffer"/>
                             <div class="kiwi-sidebar-settings">
                                 <h3>{{ $t('side_settings') }}</h3>
                                 <hr>
