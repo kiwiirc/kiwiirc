@@ -9,6 +9,13 @@
 
         <template v-if="isChannel()">
             <div class="kiwi-header-name">{{ buffer.name }}</div>
+            <div class="kiwi-header-options kiwi-header-options-mobile-toggle">
+                <div class="kiwi-header-option">
+                    <span>
+                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </div>
             <div
                 v-if="isJoined && isConnected"
                 :key="buffer.id"
@@ -338,7 +345,8 @@ export default {
     font-weight: 900;
 }
 
-.kiwi-header-option a {
+.kiwi-header-option a,
+.kiwi-header-option span {
     float: left;
     padding: 0 15px;
     line-height: 45px;
