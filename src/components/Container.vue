@@ -272,7 +272,8 @@ export default {
     left: 14px;
     width: 37px;
     padding: 0;
-    transition: all 0s;
+    transition: all 0.4s, z-index 0s;
+    transition-delay: 0.1s;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
