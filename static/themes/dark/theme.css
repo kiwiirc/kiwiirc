@@ -785,50 +785,19 @@
     background: #42b992;
 }
 
-/* Nicklist ( Nicklist.vu ) */
+/* Nicklist ( Nicklist.vue ) */
 .kiwi-nicklist-usercount {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid #e4e4e44d;
 }
 .kiwi-nicklist-user {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #1e1e1e;
 }
-
-.kiwi-nicklist-info input {
-    background-color: #fff;
-    color: #000;
-    font-weight: normal;
-}
-
-.kiwi-nicklist-user {
-    border-top: 1px solid #858585;
-}
-
-.kiwi-nicklist-user:first-of-type {
-    border-top: none;
-}
-
-.kiwi-nicklist-user::after {
-    color: #666764;
-}
-
-.kiwi-nicklist-user:hover {
-    background-color: none;
-    cursor: pointer;
-    color: #fff;
-}
-
-.kiwi-nicklist-user:hover .kiwi-nicklist-user-nick {
-    color: #fff !important;
-}
-
-.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
-    color: #fff;
-}
-
 .kiwi-nicklist-messageuser {
-    color: #666764;
+    color: #5d5d5d;
 }
-
+.kiwi-nicklist-user:hover {
+    border-left: 4px solid #42b992;
+}
 .kiwi-nicklist-info i.fa-search {
     color: #cfcfcf;
 }
