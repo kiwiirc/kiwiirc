@@ -216,6 +216,11 @@ export default {
     transition-delay: 0.05s;
 }
 
+.kiwi-statebrowser.kiwi-wrap--statebrowser-drawopen {
+    transition: all 0.2s;
+    transition-delay: 0.05s;
+}
+
 .kiwi-statebrowser h1 {
     width: 100%;
     font-size: 1em;

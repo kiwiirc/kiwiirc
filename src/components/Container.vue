@@ -246,6 +246,8 @@ export default {
     text-align: center;
     font-size: 1.6em;
     line-height: 50px;
+    transition: left 2s;
+    transition-delay: 0.5s;
 }
 
 .kiwi-container-toggledraw-statebrowser {
