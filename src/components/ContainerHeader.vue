@@ -272,7 +272,6 @@ export default {
             }
         },
         nicklistToggle: function nicklistToggle() {
-            console.log(this.sidebarState.sidebarSection);
             if (this.sidebarState.sidebarSection === 'user') {
                 this.sidebarState.close();
             } else {
