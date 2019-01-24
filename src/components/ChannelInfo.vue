@@ -150,5 +150,11 @@ export default {
 .kiwi-channelinfo-disabled {
     opacity: 0.5;
 }
+
+    .kiwi-channelinfo-disabled {
+        position: relative;
+        opacity: 0.7;
+    }
+
 </style>
 
