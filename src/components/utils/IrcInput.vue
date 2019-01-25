@@ -24,6 +24,7 @@
 
 import _ from 'lodash';
 import htmlparser from 'htmlparser2';
+import * as Colours from '@/helpers/Colours';
 
 let Vue = require('vue');
 
@@ -169,7 +170,28 @@ export default Vue.component('irc-input', {
                             textValue += '\x1f';
                             addToggle('\x1f');
                         }
+
+                    // Welcome to the IE/Edge sucks section, time to do crazy things
+                    // all the following else if's are IE/Edge workarounds
+                    } else if (attribs.color) {
+                        // IE likes to remove spaces from rgb(1, 2, 3) it also likes converting rgb to hex
+                        let mappedCode = this.code_map[attribs.color] ||
+                            this.code_map[attribs.color.replace(/,/g, ', ')] ||
+                            this.code_map[Colours.hex2rgb(attribs.color)];
+
+                        textValue += '\x03' + mappedCode;
+                        addToggle('\x03' + mappedCode);
+                    } else if (name === 'strong') {
+                        textValue += '\x02';
+                        addToggle('\x02');
+                    } else if (name === 'em') {
+                        textValue += '\x1d';
+                        addToggle('\x1d');
+                    } else if (name === 'u') {
+                        textValue += '\x1f';
+                        addToggle('\x1f');
                     }
+
                     if (attribs.src && this.code_map[attribs.src]) {
                         textValue += this.code_map[attribs.src];
                     }
