@@ -13,8 +13,9 @@
             :style="{ 'background': userStatus }"
             class="kiwi-user-availability"
         />
-        <span :style="{ 'color': userColour }"
-              class="kiwi-nicklist-user-nick"
+        <span 
+            :style="{ 'color': userColour }"
+            class="kiwi-nicklist-user-nick"
         >{{ user.nick }}
         </span>
         <span class="kiwi-nicklist-messageuser" @click.stop="nicklist.openQuery(user)">
@@ -27,6 +28,8 @@
 
 'kiwi public';
 
+import state from '@/libs/state';
+
 export default {
     props: ['user', 'nicklist'],
     computed: {
@@ -37,7 +40,9 @@ export default {
             return '';
         },
         userStatus() {
-            return this.user.userStatus(this.user);
+            if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
+                return this.user.userStatus(this.user);
+            }
         },
     },
 };

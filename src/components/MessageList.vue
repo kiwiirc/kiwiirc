@@ -79,6 +79,7 @@
 <script>
 'kiwi public';
 
+import state from '@/libs/state';
 import strftime from 'strftime';
 import Logger from '@/libs/Logger';
 import BufferKey from './BufferKey';
@@ -339,7 +340,9 @@ export default {
             return message.isHighlight;
         },
         userStatus(user) {
-            return user.userStatus();
+            if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
+                return user.userStatus();
+            }
         },
         userColour(user) {
             if (user && this.bufferSetting('colour_nicknames_in_messages')) {

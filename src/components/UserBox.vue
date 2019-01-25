@@ -2,7 +2,7 @@
     <div class="kiwi-userbox">
 
         <div class="kiwi-userbox-header">
-            <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"/>
+            <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"/> 
             <span
                 :style="{ 'background': userStatus }"
                 class="kiwi-user-availability"
@@ -194,7 +194,9 @@ export default {
             return true;
         },
         userStatus: function userStatus() {
-            return this.user.userStatus();
+            if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
+                return this.user.userStatus();
+            }           
         },
         userMode: {
             get: function getUserMode() {

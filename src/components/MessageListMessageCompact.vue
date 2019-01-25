@@ -44,7 +44,7 @@
             {{ ml.formatTime(message.time) }}
         </div>
         <span
-            v-if="message.type === ('privmsg' || 'msg')"
+            v-if="message.type === 'privmsg'"
             :style="{ 'background': userStatus }"
             class="kiwi-user-availability"
         />
@@ -74,6 +74,8 @@
 <script>
 'kiwi public';
 
+import state from '@/libs/state';
+
 // eslint-plugin-vue's max-len rule reads the entire file, including the CSS. so we can't use this
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
@@ -94,7 +96,9 @@ export default {
             return this.ml.userColour(this.message.user);
         },
         userStatus() {
-            return this.ml.userStatus(this.message.user);
+            if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
+                return this.ml.userStatus(this.message.user);
+            }
         },
     },
     methods: {
