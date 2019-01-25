@@ -343,6 +343,7 @@ export default {
             if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
                 return user.userStatus();
             }
+            return '';
         },
         userColour(user) {
             if (user && this.bufferSetting('colour_nicknames_in_messages')) {

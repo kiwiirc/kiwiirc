@@ -99,6 +99,7 @@ export default {
             if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
                 return this.ml.userStatus(this.message.user);
             }
+            return '';
         },
     },
     methods: {

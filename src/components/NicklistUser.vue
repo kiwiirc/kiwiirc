@@ -13,7 +13,7 @@
             :style="{ 'background': userStatus }"
             class="kiwi-user-availability"
         />
-        <span 
+        <span
             :style="{ 'color': userColour }"
             class="kiwi-nicklist-user-nick"
         >{{ user.nick }}
@@ -43,6 +43,7 @@ export default {
             if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
                 return this.user.userStatus(this.user);
             }
+            return '';
         },
     },
 };

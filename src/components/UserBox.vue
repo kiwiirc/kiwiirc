@@ -1,6 +1,5 @@
 <template>
     <div class="kiwi-userbox">
-
         <div class="kiwi-userbox-header">
             <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"/> 
             <span
@@ -196,7 +195,8 @@ export default {
         userStatus: function userStatus() {
             if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
                 return this.user.userStatus();
-            }           
+            }
+            return '';
         },
         userMode: {
             get: function getUserMode() {
