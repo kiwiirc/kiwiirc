@@ -20,13 +20,16 @@
                         v-model="nick"
                         class="kiwi-welcome-simple-nick"
                     />
-                    <label v-if="showPass" class="kiwi-welcome-simple-have-password">
+                    <label
+                        v-if="showPass && toggablePass"
+                        class="kiwi-welcome-simple-have-password"
+                    >
                         <input v-model="show_password_box" type="checkbox" >
                         <span> {{ $t('password_have') }} </span>
                     </label>
                     <input-text
                         v-focus
-                        v-if="show_password_box"
+                        v-if="showPass && (show_password_box || !toggablePass)"
                         :label="$t('password')"
                         v-model="password"
                         class="kiwi-welcome-simple-password u-input-text--reveal-value"
@@ -83,6 +86,7 @@ export default {
             password: '',
             showChannel: true,
             showPass: true,
+            toggablePass: true,
             showNick: true,
             show_password_box: false,
             recaptchaSiteId: '',
@@ -162,6 +166,9 @@ export default {
             true;
         this.showPass = typeof options.showPassword === 'boolean' ?
             options.showPassword :
+            true;
+        this.toggablePass = typeof options.toggablePassword === 'boolean' ?
+            options.toggablePassword :
             true;
 
         if (options.autoConnect && this.nick && this.channel) {
