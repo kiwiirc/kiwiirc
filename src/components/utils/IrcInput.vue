@@ -172,7 +172,8 @@ export default Vue.component('irc-input', {
                         }
 
                     // Welcome to the IE/Edge sucks section, time to do crazy things
-                    // all the following else if's are IE/Edge workarounds
+                    // IE11 doesnt support document.execCommand('styleWithCSS')
+                    // so we have individual nodes instead, which are handled below
                     } else if (attribs.color) {
                         // IE likes to remove spaces from rgb(1, 2, 3) it also likes converting rgb to hex
                         let mappedCode = this.code_map[attribs.color] ||
