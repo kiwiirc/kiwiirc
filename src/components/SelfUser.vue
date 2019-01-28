@@ -13,6 +13,7 @@
             <input-prompt :label="$t('change_nick')+':'" @submit="changeNick">
                 <a class="u-link">{{ $t('change_nick') }}</a>
             </input-prompt>
+            <a href="#">Set Away</a>
         </div>
     </div>
 </template>
@@ -20,6 +21,8 @@
 <script>
 
 'kiwi public';
+
+import state from '@/libs/state';
 
 export default {
     props: ['network'],
@@ -59,6 +62,10 @@ export default {
             if (!nick.match(/(^[0-9])|(\s)/)) {
                 this.network.ircClient.changeNick(newNick);
             }
+        },
+        checkUserAway() {
+            let activeNetworkState = this.buffer.getNetwork();
+            return state.getUser(activeNetworkState.id, activeNetworkState.nick).away;
         },
     },
 };
