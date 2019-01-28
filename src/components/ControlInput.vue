@@ -13,7 +13,7 @@
 
         <div class="kiwi-controlinput-inner">
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
-                <span :class="{'kiwi-controlinput-user-status-away' : this.checkUserAway() }"
+                <span :class="{'kiwi-controlinput-user-status-away' : checkUserAway() }"
                       class="kiwi-controlinput-user-status" />
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i
@@ -560,7 +560,11 @@ export default {
     border: 1px solid #e1e1e1;
     border-radius: 50%;
     margin: 0 4px 0 0;
-    background-color: red;
+    background-color: green;
+}
+
+.kiwi-controlinput-user-status-away {
+    background: red;
 }
 
 .kiwi-controlinput-user {
