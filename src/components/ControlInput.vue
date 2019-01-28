@@ -13,6 +13,8 @@
 
         <div class="kiwi-controlinput-inner">
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
+                <span :class="{'kiwi-controlinput-user-status-away' : this.checkUserAway() }"
+                      class="kiwi-controlinput-user-status" />
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i
                     :class="[selfuser_open ? 'fa-caret-down' : 'fa-caret-up']"
@@ -527,6 +529,10 @@ export default {
 
             return list;
         },
+        checkUserAway() {
+            let activeNetworkState = this.buffer.getNetwork();
+            return state.getUser(activeNetworkState.id, activeNetworkState.nick).away;
+        },
     },
 };
 </script>
@@ -545,6 +551,16 @@ export default {
 
 .kiwi-controlinput-inner i {
     font-size: 120%;
+}
+
+.kiwi-controlinput-user-status {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border: 1px solid #e1e1e1;
+    border-radius: 50%;
+    margin: 0 4px 0 0;
+    background-color: red;
 }
 
 .kiwi-controlinput-user {
