@@ -469,6 +469,7 @@ inputCommands.nick = function inputCommandNick(event, command, line) {
 inputCommands.away = function inputCommandAway(event, command, line) {
     event.handled = true;
 
+    // TO DO : if user is away and sends '/away' with no command, fire the back command
     let network = this.state.getActiveNetwork();
     network.ircClient.raw('AWAY', line || 'Currently away');
 };
