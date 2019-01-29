@@ -21,6 +21,7 @@
 <script>
 'kiwi public';
 
+import * as TextFormatting from '@/helpers/TextFormatting';
 import state from '@/libs/state';
 
 let firstRun = true;
@@ -44,7 +45,7 @@ export default {
     methods: {
         addNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
-            let network = state.addNetwork('New Network', nick, {});
+            let network = state.addNetwork(TextFormatting.t('new_network'), nick, {});
             network.showServerBuffer('settings');
         },
         toggleStateBrowser() {

@@ -5,6 +5,7 @@ import Vue from 'vue';
 import _ from 'lodash';
 import NetworkState from './state/NetworkState';
 import BufferState from './state/BufferState';
+import UserState from './state/UserState';
 import Message from './Message';
 
 const stateObj = {
@@ -46,6 +47,7 @@ const stateObj = {
             timestamp_full_format: '',
             show_timestamps: true,
             scrollback_size: 250,
+            show_hostnames: false,
             show_joinparts: true,
             show_topics: true,
             show_nick_changes: true,
@@ -58,9 +60,11 @@ const stateObj = {
             extra_formatting: true,
             mute_sound: false,
             hide_message_counts: false,
+            show_realnames: false,
             default_ban_mask: '*!%i@%h',
             default_kick_reason: 'Your behavior is not conducive to the desired environment.',
             shared_input: false,
+            show_message_info: true,
         },
         // Startup screen default
         startupOptions: {
@@ -71,10 +75,16 @@ const stateObj = {
             nick: 'kiwi_?',
             direct: false,
             state_key: 'kiwi-state',
+            nick_format: '',
         },
+        noticeActiveBuffer: true,
         showAutocomplete: true,
+        showEmojiPicker: true,
         showSendButton: false,
-        sidebarPinned: false,
+        sidebarDefault: '',
+        showRaw: false,
+        highlights: '',
+        teamHighlights: false,
         aliases: `
 # General aliases
 /p /part $1+
@@ -85,6 +95,7 @@ const stateObj = {
 /raw /quote $1+
 /connect /server $1+
 /cycle $channel? /lines /part $channel | /join $channel
+/active /back $1+
 
 # Op related aliases
 /op /quote mode $channel +o $1+
@@ -305,6 +316,7 @@ const stateObj = {
         app_width: 0,
         app_height: 0,
         is_touch: false,
+        is_narrow: false,
         favicon_counter: 0,
         current_input: '',
         show_advanced_tab: false,
@@ -444,7 +456,7 @@ const state = new Vue({
                             port: network.connection.port,
                             tls: network.connection.tls,
                             path: network.connection.path,
-                            password: network.connection.password,
+                            password: network.password,
                             direct: network.connection.direct,
                             encoding: network.connection.encoding,
                         },
@@ -616,7 +628,7 @@ const state = new Vue({
             network.connection.port = serverInfo.port || 6667;
             network.connection.tls = serverInfo.tls || false;
             network.connection.path = serverInfo.path || '';
-            network.connection.password = serverInfo.password || '';
+            network.password = serverInfo.password || '';
             network.connection.direct = !!serverInfo.direct;
             network.connection.path = serverInfo.path || '';
             network.connection.encoding = serverInfo.encoding || 'utf8';
@@ -913,6 +925,22 @@ const state = new Vue({
                 });
             }
 
+            if (state.setting('teamHighlights')) {
+                let m = bufferMessage.message;
+                let patterns = {
+                    everyone: /(^|\s)@everybody($|\s|[,.;])/,
+                    channel: /(^|\s)@channel($|\s|[,.;])/,
+                    here: /(^|\s)@here($|\s|[,.;])/,
+                };
+                if (m.match(patterns.everyone) || m.match(patterns.channel)) {
+                    isHighlight = true;
+                }
+
+                if (m.match(patterns.here) && network && !network.away) {
+                    isHighlight = true;
+                }
+            }
+
             bufferMessage.isHighlight = isHighlight;
 
             if (isNewMessage && isActiveBuffer && state.ui.app_has_focus) {
@@ -934,7 +962,9 @@ const state = new Vue({
                 isNewMessage &&
                 settingAlertOn !== 'never' &&
                 message.type !== 'nick' &&
+                message.type !== 'mode' &&
                 message.type !== 'traffic' &&
+                !buffer.isSpecial() &&
                 !bufferMessage.ignore &&
                 !isSelf
             ) {
@@ -1022,15 +1052,7 @@ const state = new Vue({
             let userObj = null;
 
             if (!usersArr[user.nick.toLowerCase()]) {
-                userObj = usersArr[user.nick.toLowerCase()] = {
-                    nick: user.nick,
-                    host: user.host || '',
-                    username: user.username || '',
-                    realname: user.realname || '',
-                    modes: user.modes || '',
-                    away: user.away || '',
-                    buffers: Object.create(null),
-                };
+                userObj = usersArr[user.nick.toLowerCase()] = new UserState(user);
             } else {
                 // Update the existing user object with any new info we have
                 userObj = state.getUser(network.id, user.nick, usersArr);
@@ -1154,14 +1176,19 @@ const state = new Vue({
             let normalisedOld = oldNick.toLowerCase();
 
             user.nick = newNick;
-            state.$set(network.users, normalisedNew, network.users[normalisedOld]);
-            state.$delete(network.users, normalisedOld);
 
-            Object.keys(user.buffers).forEach((bufferId) => {
-                let buffer = user.buffers[bufferId].buffer;
-                state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
-                state.$delete(buffer.users, normalisedOld);
-            });
+            // If the nick has completely changed (ie. not just a case change) then update all
+            // associated buffers user lists
+            if (normalisedOld !== normalisedNew) {
+                state.$set(network.users, normalisedNew, network.users[normalisedOld]);
+                state.$delete(network.users, normalisedOld);
+
+                Object.keys(user.buffers).forEach((bufferId) => {
+                    let buffer = user.buffers[bufferId].buffer;
+                    state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
+                    state.$delete(buffer.users, normalisedOld);
+                });
+            }
 
             let buffer = this.getBufferByName(network.id, oldNick);
             if (buffer) {

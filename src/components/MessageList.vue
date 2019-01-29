@@ -29,11 +29,12 @@
                 <span>{{ $t('unread_messages') }}</span>
             </div>
 
-            <component
-                v-if="message.render() && message.template"
-                :is="message.template"
-                :message="message"
-                :buffer="buffer"
+            <!-- message.template is checked first for a custom component, then each message layout
+                 checks for a message.bodyTemplate custom component to apply only to the body area
+            -->
+            <div
+                v-rawElement="message.template.$el"
+                v-if="message.render() && message.template && message.template.$el"
             />
             <message-list-message-modern
                 v-else-if="listType === 'modern'"
@@ -41,8 +42,14 @@
                 :idx="idx"
                 :ml="thisMl"
             />
+            <message-list-message-inline
+                v-else-if="listType === 'inline'"
+                :message="message"
+                :idx="idx"
+                :ml="thisMl"
+            />
             <message-list-message-compact
-                v-else-if="listType !== 'modern'"
+                v-else-if="listType === 'compact'"
                 :message="message"
                 :idx="idx"
                 :ml="thisMl"
@@ -73,12 +80,12 @@
 'kiwi public';
 
 import strftime from 'strftime';
-import * as TextFormatting from '@/helpers/TextFormatting';
 import Logger from '@/libs/Logger';
 import BufferKey from './BufferKey';
 import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
+import MessageListMessageInline from './MessageListMessageInline';
 import LoadingAnimation from './LoadingAnimation.vue';
 
 let log = Logger.namespace('MessageList.vue');
@@ -93,6 +100,7 @@ export default {
         NotConnected,
         MessageListMessageModern,
         MessageListMessageCompact,
+        MessageListMessageInline,
         LoadingAnimation,
     },
     props: ['buffer'],
@@ -330,9 +338,9 @@ export default {
 
             return message.isHighlight;
         },
-        nickStyle(nick) {
-            if (this.bufferSetting('colour_nicknames_in_messages')) {
-                return 'color:' + TextFormatting.createNickColour(nick) + ';';
+        userColour(user) {
+            if (user && this.bufferSetting('colour_nicknames_in_messages')) {
+                return user.getColour();
             }
             return '';
         },
@@ -347,7 +355,23 @@ export default {
         onListClick(event) {
             this.toggleMessageInfo();
         },
-        onMessageClick(event, message) {
+        onMessageDblClick(event, message) {
+            clearTimeout(this.messageClickTmr);
+
+            let userNick = event.target.getAttribute('data-nick');
+            if (userNick) {
+                this.$state.$emit('input.insertnick', userNick);
+            }
+        },
+        onMessageClick(event, message, delay) {
+            // Delaying the click for 200ms allows us to check for a second click. ie. double click
+            // Quick hack as we only need double click for nicks, nothing else
+            if (delay && event.target.getAttribute('data-nick')) {
+                clearTimeout(this.messageClickTmr);
+                this.messageClickTmr = setTimeout(this.onMessageClick, 200, event, message, false);
+                return;
+            }
+
             let isLink = event.target.tagName === 'A';
 
             let channelName = event.target.getAttribute('data-channel-name');
@@ -376,7 +400,7 @@ export default {
                 return;
             }
 
-            if (this.$state.ui.is_touch) {
+            if (this.$state.ui.is_touch && this.$state.setting('buffers.show_message_info')) {
                 if (this.canShowInfoForMessage(message) && event.target.nodeName === 'A') {
                     // We show message info boxes on touch screen devices so that the user has an
                     // option to preview the links or do other stuff.
@@ -429,6 +453,11 @@ export default {
     margin: 0;
 }
 
+.kiwi-wrap--monospace .kiwi-messagelist-message {
+    font-family: Consolas, monaco, monospace;
+    font-size: 80%;
+}
+
 .kiwi-messagelist-message-mode,
 .kiwi-messagelist-message-traffic {
     padding-left: 10px;
@@ -470,7 +499,6 @@ export default {
     padding: 0.1em 0.5em;
     min-height: 0;
     line-height: normal;
-    margin: 1em 0.5em;
     text-align: left;
 }
 
@@ -518,9 +546,9 @@ export default {
     cursor: default;
 }
 
-.kiwi-container--sidebar-open .kiwi-messagelist::after {
+.kiwi-container--sidebar-drawn .kiwi-messagelist::after {
     content: '';
-    z-index: 2;
+    z-index: 5;
     left: 0;
     top: 0;
     width: 100%;
@@ -530,7 +558,7 @@ export default {
     pointer-events: none;
 }
 
-.kiwi-container--sidebar-open.kiwi-container--no-sidebar .kiwi-messagelist::after {
+.kiwi-container--sidebar-drawn.kiwi-container--no-sidebar .kiwi-messagelist::after {
     width: 0;
     height: 0;
     display: none;
@@ -560,6 +588,7 @@ export default {
     vertical-align: top;
     cursor: pointer;
     padding: 2px 4px;
+    word-break: break-all;
 }
 
 .kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
@@ -590,7 +619,6 @@ export default {
 .kiwi-messagelist-emoji {
     width: 1.3em;
     display: inline-block;
-    pointer-events: none;
     vertical-align: middle;
 }
 
@@ -713,4 +741,5 @@ export default {
         margin: 0;
     }
 }
+
 </style>

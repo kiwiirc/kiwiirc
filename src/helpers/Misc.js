@@ -3,6 +3,7 @@
 /** @module */
 
 import _ from 'lodash';
+import strftime from 'strftime';
 
 /**
  * Extract an array of buffers from a string, parsing multiple buffer names and channel keys
@@ -21,6 +22,10 @@ export function extractBuffers(str) {
 
     let buffers = [];
     bufferNames.forEach((bufferName, idx) => {
+        // return if bufferName is empty
+        if (!bufferName.trim()) {
+            return;
+        }
         buffers.push({
             name: bufferName,
             key: keys[idx] || '',
@@ -63,58 +68,6 @@ export function mentionsNick(input, nick) {
     let potentialNick = _.trim(segment, punc);
 
     return potentialNick.toLowerCase() === nick.toLowerCase();
-}
-
-/**
- * Get a users prefix symbol on a buffer from its modes
- * @param {Object} user The user object
- * @param {Object} buffer The buffer object
- */
-export function userModePrefix(user, buffer) {
-    // The user may not be on the buffer
-    if (!user.buffers[buffer.id]) {
-        return '';
-    }
-
-    let modes = user.buffers[buffer.id].modes;
-    if (modes.length === 0) {
-        return '';
-    }
-
-    let network = buffer.getNetwork();
-    let netPrefixes = network.ircClient.network.options.PREFIX;
-    // Find the first (highest) netPrefix in the users buffer modes
-    let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
-
-    return prefix ?
-        prefix.symbol :
-        '';
-}
-
-/**
- * Get a users mode on a buffer
- * @param user {Object} The user object
- * @param buffer {Object} The buffer object
- */
-export function userMode(user, buffer) {
-    // The user may not be on the buffer
-    if (!user.buffers[buffer.id]) {
-        return '';
-    }
-
-    let modes = user.buffers[buffer.id].modes;
-    if (modes.length === 0) {
-        return '';
-    }
-
-    let network = buffer.getNetwork();
-    let netPrefixes = network.ircClient.network.options.PREFIX;
-    // Find the first (highest) netPrefix in the users buffer modes
-    let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
-
-    return prefix ?
-        prefix.mode :
-        '';
 }
 
 /**
@@ -162,7 +115,7 @@ export function networkErrorMessage(err) {
  * @param {string} str The connection string URI
  */
 export function parseIrcUri(str) {
-    let reg = /(?:(ircs?):\/\/)?([a-z.0-9]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
+    let reg = /(?:(ircs?):\/\/)?([a-z.0-9-]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
     let connections = [];
     str.split(';').forEach((connectionString) => {
         if (!connectionString) {
@@ -248,4 +201,13 @@ export function dedotObject(confObj, _place) {
 export function replaceObjectProps(target, source) {
     Object.keys(target).forEach(prop => delete target[prop]);
     Object.keys(source).forEach((prop) => { target[prop] = source[prop]; });
+}
+
+/**
+ * Create an ISO8601 formatted date
+ * @param {Date} date The date object to create the time from. Defaults to the current time
+ */
+export function dateIso(date) {
+    let d = date || new Date();
+    return strftime('%FT%T.%L%:z', d);
 }

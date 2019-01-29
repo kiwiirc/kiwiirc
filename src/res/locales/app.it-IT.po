@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2018-09-02 17:10\n"
+"PO-Revision-Date: 2019-01-12 20:20\n"
 
 #: Start
 msgid "start_button"
@@ -216,6 +216,10 @@ msgstr "Aggiorna Tema"
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "URL del tema"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr "Layout Messaggi"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -577,6 +581,26 @@ msgstr "Colori nickname dell'elenco"
 msgid "side_buffer"
 msgstr "Nessun buffer impostato"
 
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr "Topic non impostato per questo canale"
+
+#: About
+msgid "about"
+msgstr "Info"
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr "Impostato il {{when}}"
+
+#: Highlights
+msgid "highlights"
+msgstr "Highlights"
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr "Nessuno ti ha ancora menzionato..."
+
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "Si è verificato un errore durante l'avvio di Kiwi IRC :("
@@ -612,6 +636,18 @@ msgstr "Aggiungerne una?"
 #: Available networks
 msgid "state_available"
 msgstr "Reti disponibili"
+
+#: Add Network
+msgid "add_network"
+msgstr "Aggiungi un Network"
+
+#: New Network
+msgid "new_network"
+msgstr "Nuovo Network"
+
+#: No Network
+msgid "no_network"
+msgstr "Nessun Network"
 
 #: Configure network
 msgid "state_configure"
@@ -665,7 +701,7 @@ msgstr "Connesso a {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Connesso in modo protetto da SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "Anche nei canali {{channels}}"
 
@@ -688,6 +724,10 @@ msgstr "Blocca accesso al canale"
 #: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "Bandisci ed espelli dal canale"
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr "Specifica un canale a cui accedere. es /join #esempio"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -740,6 +780,98 @@ msgstr "{{nick}} ha rimosso il blocco su {{target}}"
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
 msgstr "{{nick}} imposta {{mode}} per {{target}}"
+
+#: Send a message
+msgid "command_msg"
+msgstr "Invia un messaggio"
+
+#: Do something physical
+msgid "command_action"
+msgstr "Fa qualcosa di fisico"
+
+#: Join a channel
+msgid "command_join"
+msgstr "Accedi ad un canale"
+
+#: Leave a channel
+msgid "command_part"
+msgstr "Esci da un canale"
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr "Esci e rientra da un canale"
+
+#: Change your nickname
+msgid "command_nick"
+msgstr "Cambia il tuo nickname"
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr "Avvia una conversazione privata con qualcuno"
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr "Invita qualcuno nel canale"
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr "Imposta il topic per questo canale"
+
+#: Send a notice
+msgid "command_notice"
+msgstr "Invia un notice"
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr "Invia un comando raw al server IRC"
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr "Espelli qualcuno dal canale"
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr "Svuota la finestra di chat dai messaggi"
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr "Invia un comando CTCP a qualcuno"
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr "Disconnettiti dal server IRC"
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr "Connettiti a un nuovo network IRC"
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr "Richiedi informazioni su qualcuno"
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr "Richiedi informazioni su qualcuno che si è disconnesso di recente"
+
+#: Set yourself as away
+msgid "command_away"
+msgstr "Impostati come assente"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr ""
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr "Cambia l' encoding della tua connessione"
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr "Ignora i messaggi da qualcuno"
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr "Smetti di ignorare i messaggi di qualcuno"
 
 #: Your IRC client
 msgid "personal_client"
@@ -817,7 +949,7 @@ msgstr "Il nickname {{nick}} è già in uso. Provo {{newnick}}..."
 msgid "now_known_as"
 msgstr "{{nick}} ha cambiato il suo nick in {{newnick}}"
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
 msgstr "il topic è stato cambiato in: {{topic}}"
 

@@ -1,3 +1,6 @@
+const rulesDirPlugin = require('eslint-plugin-rulesdir');
+rulesDirPlugin.RULES_DIR = 'config/eslint/rules/';
+
 module.exports = {
     root: true,
     parserOptions: {
@@ -14,10 +17,12 @@ module.exports = {
     },
     // required to lint *.vue files
     plugins: [
+        'rulesdir',
         'vue',
     ],
     // add your custom rules here
     'rules': {
+        'rulesdir/class-name-prefix': 'warn',
         'class-methods-use-this': 0,
         'comma-dangle': ['error', {
             'arrays': 'always-multiline',

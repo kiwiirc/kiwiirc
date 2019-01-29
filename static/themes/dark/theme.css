@@ -20,13 +20,14 @@
 /* Welcome Screen ( Welcome.vue ) */
 .kiwi-welcome-simple-form,
 .kiwi-customserver-form,
-.kiwi-welcome-znc-form {
+.kiwi-welcome-znc-form,
+.kiwi-startbnc-form {
     background-color: #fff;
     color: #000;
     border: 1px solid #ececec;
 }
 
-.kiwi-welcome-simple-form .input-text {
+.kiwi-welcome-simple-form .u-input-text {
     background: #fff;
 }
 
@@ -60,7 +61,7 @@
     color: #000;
 }
 
-.kiwi-welcome-znc .input-text {
+.kiwi-welcome-znc .u-input-text {
     background: #fff;
 }
 
@@ -94,23 +95,23 @@
 }
 
 /* Style all inputs */
-.input-text {
+.u-input-text {
     background: #dedede;
 }
 
-.input-text-label {
+.u-input-text-label {
     color: gray;
 }
 
-.input-text--focus {
+.u-input-text--focus {
     border-color: #42b992;
 }
 
-.input-text-underline {
+.u-input-text-underline {
     border-color: #a9a9a9;
 }
 
-.input-text-underline-active {
+.u-input-text-underline-active {
     background: #42b992;
 }
 
@@ -252,10 +253,6 @@
     color: #dedede;
 }
 
-.kiwi-container-toggledraw-statebrowser {
-    background: #1e1e1e;
-    border-right: 1px solid #ddd;
-}
 
 .kiwi-container-toggledraw-sidebar {
     border-left: 1px solid #ddd;
@@ -272,7 +269,22 @@
 
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
     border: 0.6em solid transparent;
-    border-right-color: #ddd;
+    border-right-color: #42b983;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight {
+    background-color: #d62323;
+    color: #fff;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
+    border-right-color: #d62323;
+}
+
+/* Style the statebrowser's ::after element on mobile devices */
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
+    border: 0.6em solid transparent;
+    border-left-color: #42b983;
 }
 
 /* Sidebar uservue colouring */
@@ -323,10 +335,6 @@
 
 .kiwi-header-name {
     color: #dedede;
-}
-
-.kiwi-header-option {
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .kiwi-header-option a:hover,
@@ -395,6 +403,13 @@
     border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.kiwi-controlinput-send {
+    background: #3a3a3a;
+    color: inherit;
+}
+.kiwi-controlinput-tools {
+    background: #3a3a3a;
+}
 
 .kiwi-controlinput-active-tool {
     background: #f6f6f6;
@@ -408,10 +423,6 @@
     backround: #363636;
     color: #fff;
     border: #fff;
-}
-
-.kiwi-messagelist-message--info-open {
-    background: #f6f6f6;
 }
 
 .kiwi-messageinfo-urls {
@@ -479,16 +490,16 @@
     color: #dedede;
 }
 
-.kiwi-container--sidebar-open .kiwi-messagelist::after {
+.kiwi-container--sidebar-drawn .kiwi-messagelist::after {
     background-color: #000;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected {
     background-color: #42b992;
     color: #fff;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected .kiwi-messagelist-body {
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected {
     background-color: #f16f74;
     color: #fff;
 }
@@ -510,7 +521,7 @@
     background: #d16c6c;
 }
 
-.kiwi-container--sidebar-pinned .kiwi-sidebar {
+.kiwi-container--sidebar-open .kiwi-sidebar {
     border-color: #b2b2b2;
 }
 
@@ -573,15 +584,19 @@
     border: 2px solid #42b992;
 }
 
+.kiwi-messagelist-avatar {
+    background-color: #555;
+}
+
 .kiwi-messagelist-nick {
-    color: #000;
+    color: #999;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
     background-color: #333;
 }
 
-.kiwi-messagelist-time {
+.kiwi-messagelist-time, .kiwi-messagelist-realname {
     color: #a0a09f;
 }
 
@@ -612,6 +627,63 @@
     border-left-color: #80ab52;
 }
 
+
+/* MessageInfo */
+.kiwi-messagelist-message--info-open,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open  {
+    background-color: rgb(6, 6, 6);
+    border-top: 1px solid #909090;
+    border-bottom: 1px solid #909090;
+}
+
+/* MessageInfo URLs */
+.kiwi-messageinfo-urls {
+    border-top: 1px solid #3a3a3a;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+.kiwi-messageinfo-url .u-button-secondary {
+    color: #f1f1f1;
+    border: 1px solid #3a3a3a;
+    background: none;
+    text-shadow: none;
+}
+
+.kiwi-messageinfo-urls .kiwi-messageinfo-url:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Start button stying */
+.kiwi-messageinfo-actions .u-link {
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid #3a3a3a;
+    color: #f1f1f1;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
+    background: #f6c358;
+    color: #fff;
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-ban-user {
+    background: #fcb46e;
+    color: #fff;
+}
+
+@media screen and (max-width: 850px) {
+  .kiwi-messageinfo-actions {
+    text-align: center;
+  }
+  .kiwi-messageinfo-opbuttons {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+}
+
 /* Network Settings ( NetworkSettings.vue ) */
 .kiwi-networksettings .kiwi-title {
     background: #42b992;
@@ -627,6 +699,19 @@
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.kiwi-aboutbuffer {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.kiwi-aboutbuffer h3 {
+    color: rgba(255, 255, 255, 0.71);
+}
+
+.kiwi-aboutbuffer h4 {
+    background-color: #42b992;
+    color: #fff;
+}
+
 .kiwi-networksettings .kiwi-title span {
     color: #42b992;
     background: #dedede;
@@ -636,7 +721,7 @@
 .kiwi-networksettings input[type='password'],
 .kiwi-networksettings input[type='email'],
 .kiwi-networksettings textarea,
-.kiwi-networksettings .input-text input {
+.kiwi-networksettings .u-input-text input {
     background: rgb(62, 62, 62);
     color: #fff;
 }
@@ -651,7 +736,7 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.kiwi-networksettings .u-form .input-text {
+.kiwi-networksettings .u-form .u-input-text {
     background: none;
 }
 
@@ -700,50 +785,19 @@
     background: #42b992;
 }
 
-/* Nicklist ( Nicklist.vu ) */
+/* Nicklist ( Nicklist.vue ) */
 .kiwi-nicklist-usercount {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid #e4e4e44d;
 }
 .kiwi-nicklist-user {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #1e1e1e;
 }
-
-.kiwi-nicklist-info input {
-    background-color: #fff;
-    color: #000;
-    font-weight: normal;
-}
-
-.kiwi-nicklist-user {
-    border-top: 1px solid #858585;
-}
-
-.kiwi-nicklist-user:first-of-type {
-    border-top: none;
-}
-
-.kiwi-nicklist-user::after {
-    color: #666764;
-}
-
-.kiwi-nicklist-user:hover {
-    background-color: none;
-    cursor: pointer;
-    color: #fff;
-}
-
-.kiwi-nicklist-user:hover .kiwi-nicklist-user-nick {
-    color: #fff !important;
-}
-
-.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
-    color: #fff;
-}
-
 .kiwi-nicklist-messageuser {
-    color: #666764;
+    color: #5d5d5d;
 }
-
+.kiwi-nicklist-user:hover {
+    border-left: 4px solid #42b992;
+}
 .kiwi-nicklist-info i.fa-search {
     color: #cfcfcf;
 }
@@ -812,12 +866,6 @@
     background: rgba(255, 255, 255, 0.3);
 }
 
-.kiwi-messageinfo {
-    background: #f6f6f6;
-    border-bottom: 2px #ddd solid;
-    border-top: 1px #ddd dashed;
-}
-
 .kiwi-statebrowser-usermenu-avatar {
     background-color: #000;
     color: #dedede;
@@ -844,7 +892,6 @@
 
 /* User Settings */
 .kiwi-statebrowser-appsettings:hover {
-    background: #42b992;
     color: #fff;
     opacity: 1;
 }
@@ -856,7 +903,7 @@
 }
 
 .kiwi-network-name-hover-icon,
-.kiwi-network-name-options .option-button {
+.kiwi-network-name-option {
     color: #dedede;
 }
 
@@ -864,13 +911,13 @@
     background-color: #131312;
 }
 
-.kiwi-network-name-options .option-button:hover,
-.kiwi-network-name-options .option-button.active {
+.kiwi-network-name-option:hover,
+.kiwi-network-name-option.active {
     background-color: #42b992;
     color: #dedede;
 }
 
-.kiwi-network-name-options .kiwi--collapse {
+.kiwi-network-name-option-collapse {
     background: #d16c6c;
 }
 
@@ -961,7 +1008,7 @@
     border-left: 3px solid #42b992;
 }
 
-.kiwi-search-channels.active{
+.kiwi-network-name-option-chanfilter.active{
     background: #42b992;
 }
 
@@ -1021,10 +1068,9 @@
     color: #dedede;
 }
 
-.kiwi-statebrowser-channel-label.kiwi-statebrowser-channel-label--highlight {
+.kiwi-statebrowser-channel-label--highlight {
     background: #d62323;
 }
-
 
 .kiwi-statebrowser-channel-popup {
     background: #383838;
@@ -1111,30 +1157,31 @@
 .kiwi-userbox-opaction-ban,
 .kiwi-userbox-opaction-kickban {
     color: #dedede;
+    border: 2px solid #dedede;
 }
 
 .kiwi-userbox-opaction-kick {
-    background-color: #f6c358;
+    border-color: #f6c358;
 }
 
 .kiwi-userbox-opaction-kick:hover {
-    background-color: #fcce6e;
+    border-color: #fcce6e;
 }
 
 .kiwi-userbox-opaction-ban {
-    background-color: #fcb46e;
+    border-color: #fcb46e;
 }
 
 .kiwi-userbox-opaction-ban:hover {
-    background-color: #ffca97;
+    border-color: #ffca97;
 }
 
 .kiwi-userbox-opaction-kickban {
-    background-color: #fb846a;
+    border-color: #fb846a;
 }
 
 .kiwi-userbox-opaction-kickban:hover {
-    background-color: #ffaf9e;
+    border-color: #ffaf9e;
 }
 
 .kiwi-userbox-whois {
@@ -1185,11 +1232,11 @@
     border: 1px solid #a2846e;
 }
 
-.kiwi-customserver-form .input-text {
+.kiwi-customserver-form .u-input-text {
     background-color: #fff;
 }
 
-.kiwi-customserver-form .input-text .input-text-label {
+.kiwi-customserver-form .u-input-text .u-input-text-label {
     color: #42b992;
 }
 

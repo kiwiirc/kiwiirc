@@ -1,6 +1,6 @@
 <template>
     <div :class="{'kiwi-nicklist--filtering': filter_visible }" class="kiwi-nicklist">
-        <div class="kiwi-nicklist-usercount">
+        <div class="kiwi-nicklist-usercount" @click="toggleUserFilter">
             <span>
                 {{
                     filter_visible ?
@@ -15,7 +15,7 @@
                 v-model="user_filter"
                 @blur="onFilterBlur"
             >
-            <i class="fa fa-search" @click="toggleUserFilter"/>
+            <i class="fa fa-search"/>
         </div>
 
         <ul class="kiwi-nicklist-users">
@@ -33,10 +33,7 @@
 
 'kiwi public';
 
-import state from '@/libs/state';
 import Logger from '@/libs/Logger';
-import * as TextFormatting from '@/helpers/TextFormatting';
-import * as Misc from '@/helpers/Misc';
 import NicklistUser from './NicklistUser';
 
 let log = Logger.namespace('Nicklist');
@@ -65,7 +62,7 @@ export default {
         };
     },
     computed: {
-        sortedUsers: function sortedUsers() {
+        sortedUsers() {
             // Get a list of network prefixes and give them a rank number
             let netPrefixes = this.network.ircClient.network.options.PREFIX;
             let prefixOrders = Object.create(null);
@@ -146,31 +143,24 @@ export default {
                 return strCompare(nickMap[a.nick], nickMap[b.nick]);
             });
         },
-        useColouredNicks: function useColouredNicks() {
+        useColouredNicks() {
             return this.buffer.setting('coloured_nicklist');
         },
     },
     methods: {
-        nickStyle(nick) {
-            let styles = {};
-            if (this.useColouredNicks) {
-                styles.color = TextFormatting.createNickColour(nick);
-            }
-            return styles;
-        },
         userModePrefix(user) {
-            return Misc.userModePrefix(user, this.buffer);
+            return this.buffer.userModePrefix(user);
         },
         userMode(user) {
-            return Misc.userMode(user, this.buffer);
+            return this.buffer.userMode(user);
         },
         openQuery(user) {
-            let buffer = state.addBuffer(this.buffer.networkid, user.nick);
-            state.setActiveBuffer(buffer.networkid, buffer.name);
+            let buffer = this.$state.addBuffer(this.buffer.networkid, user.nick);
+            this.$state.setActiveBuffer(buffer.networkid, buffer.name);
             this.sidebarState.close();
         },
         openUserbox(user) {
-            state.$emit('userbox.show', user, {
+            this.$state.$emit('userbox.show', user, {
                 buffer: this.buffer,
             });
         },
@@ -219,7 +209,7 @@ export default {
     cursor: default;
     box-sizing: border-box;
     height: 43px;
-    line-height: 39px;
+    line-height: 40px;
     width: 100%;
 }
 
@@ -232,7 +222,7 @@ export default {
     opacity: 0.3;
     cursor: pointer;
     font-size: 1.2em;
-    padding-top: 10px;
+    line-height: 40px;
     align-self: flex-start;
     margin-right: 15px;
 }

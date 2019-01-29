@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish, United States\n"
 "Language: es_US\n"
-"PO-Revision-Date: 2018-08-29 15:11\n"
+"PO-Revision-Date: 2019-01-12 20:21\n"
 
 #: Start
 msgid "start_button"
@@ -83,7 +83,7 @@ msgstr "Canal"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "Mensajes"
 
 #: Network
 msgid "network"
@@ -216,6 +216,10 @@ msgstr "Refrescar Tema"
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "URL del tema"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr "Diseño del Mensaje"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -523,7 +527,7 @@ msgstr "Reconectar para continuar hablando con {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr ""
+msgstr "¡No estás conectado!"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -531,11 +535,11 @@ msgstr "Configuración de la conexión"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr ""
+msgstr "No se ha podido conectar al servidor :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr ""
+msgstr "Conectar a la Red"
 
 #: Close options
 msgid "side_close"
@@ -577,6 +581,26 @@ msgstr "Colorear apodos en la lista"
 msgid "side_buffer"
 msgstr "No hay buffer configurado"
 
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr "No hay ningún tópico para este canal"
+
+#: About
+msgid "about"
+msgstr "Acerca de"
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr "Creado el {{when}}"
+
+#: Highlights
+msgid "highlights"
+msgstr "Destacados"
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr "Nadie te ha mencionado aún..."
+
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "Ha habido un error iniciando Kiwi IRC :("
@@ -612,6 +636,18 @@ msgstr "¿Quieres añadir una?"
 #: Available networks
 msgid "state_available"
 msgstr "Redes disponibles"
+
+#: Add Network
+msgid "add_network"
+msgstr "Añadir Red"
+
+#: New Network
+msgid "new_network"
+msgstr "Nueva Red"
+
+#: No Network
+msgid "no_network"
+msgstr "Sin Red"
 
 #: Configure network
 msgid "state_configure"
@@ -665,7 +701,7 @@ msgstr "Conectado a {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Conectado de forma segura con SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "Está también en las salas {{channels}}"
 
@@ -689,6 +725,10 @@ msgstr "Banear de la sala"
 msgid "user_kickban"
 msgstr "Kick + Ban del canal"
 
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr "Por favor especifica la sala a entrar. Por ej. /join #ejemplo"
+
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
 msgstr "{{nick}} da ops a {{target}}"
@@ -707,11 +747,11 @@ msgstr "{{nick}} quita half-ops de {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} da voice a {{target}}"
+msgstr "{{nick}} da voz a {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} quita voice de {{target}}"
+msgstr "{{nick}} quita voz de {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -740,6 +780,98 @@ msgstr "{{nick}} ha desbaneado a {{target}}"
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
 msgstr "{{nick}} ajusta {{mode}} en {{target}}"
+
+#: Send a message
+msgid "command_msg"
+msgstr "Envía un mensaje"
+
+#: Do something physical
+msgid "command_action"
+msgstr "Para indicar lo que estás haciendo"
+
+#: Join a channel
+msgid "command_join"
+msgstr "Entrar a una sala"
+
+#: Leave a channel
+msgid "command_part"
+msgstr "Salir de una sala"
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr "Salir y reentrar a la sala"
+
+#: Change your nickname
+msgid "command_nick"
+msgstr "Cambia tu apodo"
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr "Inicia una conversación privada con alguien"
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr "Invita a alguien dentro de la sala"
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr "Ajusta el tópico para esta sala"
+
+#: Send a notice
+msgid "command_notice"
+msgstr "Envía una nota"
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr "Envía un comando raw al servidor IRC"
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr "Echa a alguien de la sala"
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr "Borra todos los mensajes desde esta ventana"
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr "Envía un comando CTCP a alguien"
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr "Desconecta del servidor IRC"
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr "Conecta a una nueva red de IRC"
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr "Solicita información sobre alguien"
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr "Solicita información sobre alguien que se ha desconectado recientemente"
+
+#: Set yourself as away
+msgid "command_away"
+msgstr "Marca como ausente"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr ""
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr "Cambia la codificación de tu conexión"
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr "Ignora los mensajes de alguien"
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr "Deja de ignorar a alguien"
 
 #: Your IRC client
 msgid "personal_client"
@@ -817,7 +949,7 @@ msgstr "El apodo {{nick}} está en uso. Probando {{newnick}}..."
 msgid "now_known_as"
 msgstr "{{nick}} es ahora como {{newnick}}"
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
 msgstr "{{nick}} changed the topic to: {{topic}}"
 

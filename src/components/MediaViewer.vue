@@ -50,7 +50,6 @@
             <div
                 style="width:100%; text-align: center; background: #eee; height: 30px;"
             />
-
             <div ref="kiwiMediaViewer" class="kiwi-mediaviewer" @mousedown="setDepth()">
                 <div :key="url">
                     <iframe
@@ -63,7 +62,7 @@
                         v-else
                         :href="url"
                         :data-card-key="embedlyKey"
-                        class="embedly-card"
+                        class="kiwi-embedly-card"
                         data-card-chrome="0"
                         data-card-controls="0"
                         data-card-recommend="0"
@@ -87,7 +86,7 @@ export default {
         VueDraggableResizable,
     },
     props: ['url', 'component', 'isIframe', 'id', 'viewerEmbedded', 'mediaviewers', 'viewerdragging'],
-    data: function data() {
+    data() {
         return {
             mediaviewerButtonText: '◢',
             viewerPopped: false,
@@ -126,23 +125,31 @@ export default {
             }
         },
     },
-    created: function created() {
+    created() {
         this.updateEmbed();
     },
-    mounted: function mounted() {
+    mounted() {
         this.$nextTick(() => {
             state.$emit('mediaviewer.opened');
         });
         // set initial viewer size/position
         this.resetPop();
+        state.$on('mediaviewer.popin', (e) => {
+            if (e === this.id) this.popViewer(true);
+        });
+        state.$on('mediaviewer.popout', (e) => {
+            if (e === this.id) {
+                this.popViewer(true);
+            }
+        });
     },
     methods: {
         setDepth() {
             this.$emit('viewermousedown', this.id);
         },
-        updateEmbed: function updateEmbed() {
+        updateEmbed() {
             let checkEmbedlyAndShowCard = () => {
-                if (!this.isIframe) {
+                if (this.isIframe) {
                     return;
                 }
 
@@ -152,7 +159,7 @@ export default {
                     setTimeout(checkEmbedlyAndShowCard, 100);
                     return;
                 }
-                window.embedly('card', { selector: '.embedly-card' });
+                window.embedly('card', { selector: '.kiwi-embedly-card' });
             };
 
             if (!embedlyTagIncluded) {
@@ -168,13 +175,13 @@ export default {
         closeViewer() {
             this.$emit('closeviewer', this.id);
         },
-        popViewer() {
+        popViewer(cornerPop) {
             this.viewerPopped = !this.viewerPopped;
             this.$emit('viewerpopped', this.id);
             this.mediaviewerButtonText = this.viewerPopped ? '◤' : '◢';
             this.popButtonToolTip = this.viewerPopped ? 'Pop In' : 'Pop Out';
             if (this.viewerPopped) {
-                this.popViewerOut();
+                this.popViewerOut(cornerPop);
             } else {
                 this.popViewerIn();
             }
@@ -187,7 +194,7 @@ export default {
             this.VueDraggableResizableTop = 0;
             this.VueDraggableResizableLeft = 0;
         },
-        popViewerOut() {
+        popViewerOut(cornerPop) {
             this.$nextTick(() => {
                 this.$refs.windowHandle.onmousedown = () => {
                     this.$emit('viewerdragging', 1);
@@ -196,10 +203,17 @@ export default {
                     this.$emit('viewerdragging', 0);
                 };
             });
-            this.VueDraggableResizableWidth = 600;
-            this.VueDraggableResizableHeight = 400;
-            this.VueDraggableResizableTop = 200;
-            this.VueDraggableResizableLeft = 300;
+            if (cornerPop) {
+                this.VueDraggableResizableWidth = 600;
+                this.VueDraggableResizableHeight = 400;
+                this.VueDraggableResizableTop = document.body.clientHeight - 400;
+                this.VueDraggableResizableLeft = document.body.clientWidth - 810;
+            } else {
+                this.VueDraggableResizableWidth = 600;
+                this.VueDraggableResizableHeight = 400;
+                this.VueDraggableResizableTop = 200;
+                this.VueDraggableResizableLeft = 300;
+            }
         },
         resetPop() {
             // popping the viewer in then out refreshes the

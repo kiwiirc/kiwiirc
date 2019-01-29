@@ -20,16 +20,19 @@
                         v-model="nick"
                         class="kiwi-welcome-simple-nick"
                     />
-                    <label v-if="showPass" class="kiwi-welcome-simple-have-password">
+                    <label
+                        v-if="showPass && toggablePass"
+                        class="kiwi-welcome-simple-have-password"
+                    >
                         <input v-model="show_password_box" type="checkbox" >
                         <span> {{ $t('password_have') }} </span>
                     </label>
                     <input-text
                         v-focus
-                        v-if="show_password_box"
+                        v-if="showPass && (show_password_box || !toggablePass)"
                         :label="$t('password')"
                         v-model="password"
-                        class="kiwi-welcome-simple-password input-text--reveal-value"
+                        class="kiwi-welcome-simple-password u-input-text--reveal-value"
                         type="password"
                     />
                     <input-text
@@ -42,7 +45,7 @@
                     <div
                         v-if="recaptchaSiteId"
                         :data-sitekey="recaptchaSiteId"
-                        class="g-recaptcha"
+                        class="kiwi-g-recaptcha"
                     />
 
                     <button
@@ -66,7 +69,10 @@
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import state from '@/libs/state';
+import Logger from '@/libs/Logger';
 import StartupLayout from './CommonLayout';
+
+let log = Logger.namespace('Welcome.vue');
 
 export default {
     components: {
@@ -80,6 +86,7 @@ export default {
             password: '',
             showChannel: true,
             showPass: true,
+            toggablePass: true,
             showNick: true,
             show_password_box: false,
             recaptchaSiteId: '',
@@ -107,10 +114,38 @@ export default {
                 ready = false;
             }
 
-            // Nicks cannot start with [0-9- ]
-            // ? is not a valid nick character but we allow it as it gets replaced
-            // with a number.
-            if (!this.nick.match(/^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i)) {
+            let nickPatternStr = this.$state.setting('startupOptions.nick_format');
+            let nickPattern = '';
+            if (!nickPatternStr) {
+                // Nicks cannot start with [0-9- ]
+                // ? is not a valid nick character but we allow it as it gets replaced
+                // with a number.
+                nickPattern = /^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i;
+            } else {
+                // Support custom pattern matches. Eg. only '@example.com' may be allowed
+                // on some IRCDs
+                let pattern = '';
+                let flags = '';
+                if (nickPatternStr[0] === '/') {
+                    // Custom regex
+                    let pos = nickPatternStr.lastIndexOf('/');
+                    pattern = nickPatternStr.substring(1, pos);
+                    flags = nickPatternStr.substr(pos + 1);
+                } else {
+                    // Basic contains rule
+                    pattern = _.escapeRegExp(nickPatternStr);
+                    flags = 'i';
+                }
+
+                try {
+                    nickPattern = new RegExp(pattern, flags);
+                } catch (error) {
+                    log.error('Nick format error: ' + error.message);
+                    return false;
+                }
+            }
+
+            if (!this.nick.match(nickPattern)) {
                 ready = false;
             }
 
@@ -122,7 +157,7 @@ export default {
 
         this.nick = this.processNickRandomNumber(Misc.queryStringVal('nick') || options.nick || '');
         this.password = options.password || '';
-        this.channel = decodeURI(window.location.hash) || options.channel || '';
+        this.channel = decodeURIComponent(window.location.hash) || options.channel || '';
         this.showChannel = typeof options.showChannel === 'boolean' ?
             options.showChannel :
             true;
@@ -131,6 +166,9 @@ export default {
             true;
         this.showPass = typeof options.showPassword === 'boolean' ?
             options.showPassword :
+            true;
+        this.toggablePass = typeof options.toggablePassword === 'boolean' ?
+            options.toggablePassword :
             true;
 
         if (options.autoConnect && this.nick && this.channel) {
@@ -185,39 +223,32 @@ export default {
                 return;
             }
 
-            let net;
-            if (!this.network) {
-                let netAddress = _.trim(options.server);
+            let netAddress = _.trim(options.server);
 
-                // Check if we have this network already
-                net = state.getNetworkFromAddress(netAddress);
+            // Check if we have this network already
+            let net = this.network || state.getNetworkFromAddress(netAddress);
 
-                // If we retreived an existing network, update the nick+password with what
-                // the user has just put in place
-                if (net) {
-                    net.nick = this.nick;
-                    net.connection.password = this.password;
-                }
+            // If the network doesn't already exist, add a new one
+            net = net || state.addNetwork('Network', this.nick, {
+                server: netAddress,
+                port: options.port,
+                tls: options.tls,
+                password: this.password,
+                encoding: _.trim(options.encoding),
+                direct: !!options.direct,
+                path: options.direct_path || '',
+                gecos: options.gecos,
+            });
 
-                // If the network doesn't already exist, add a new one
-                net = net || state.addNetwork('Network', this.nick, {
-                    server: netAddress,
-                    port: options.port,
-                    tls: options.tls,
-                    password: this.password,
-                    encoding: _.trim(options.encoding),
-                    direct: !!options.direct,
-                    path: options.direct_path || '',
-                    gecos: options.gecos,
-                });
+            // If we retreived an existing network, update the nick+password with what
+            // the user has just put in place
+            net.nick = this.nick;
+            net.password = this.password;
 
-                if (options.recaptchaSiteId) {
-                    net.captchaResponse = this.captchaResponse();
-                }
-                this.network = net;
-            } else {
-                net = this.network;
+            if (!this.network && options.recaptchaSiteId) {
+                net.captchaResponse = this.captchaResponse();
             }
+            this.network = net;
 
             // Only switch to the first channel we join if multiple are being joined
             let hasSwitchedActiveBuffer = false;
@@ -293,7 +324,7 @@ export default {
     padding: 0 0.5em;
 }
 
-.kiwi-welcome-simple-section-connection .input-text input[type="text"] {
+.kiwi-welcome-simple-section-connection .u-input-text input[type="text"] {
     margin-top: 5px;
     padding: 0.3em 1em;
     width: 100%;
@@ -301,7 +332,7 @@ export default {
     box-sizing: border-box;
 }
 
-.kiwi-welcome-simple .input-text {
+.kiwi-welcome-simple .u-input-text {
     font-weight: 600;
     opacity: 0.6;
     font-size: 1.2em;
@@ -318,7 +349,7 @@ export default {
     margin-top: 2px;
 }
 
-.kiwi-welcome-simple .g-recaptcha {
+.kiwi-welcome-simple .kiwi-g-recaptcha {
     margin-bottom: 10px;
 }
 

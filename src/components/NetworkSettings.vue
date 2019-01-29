@@ -7,6 +7,10 @@
                     {{ $t('network_noconnect') }}
                     <span>{{ readableStateError(network.state_error) }}</span>
                 </div>
+                <div v-else-if="network.last_error" class="kiwi-networksettings-error">
+                    {{ $t('network_noconnect') }}
+                    <span>{{ network.last_error }}</span>
+                </div>
 
                 <server-selector
                     :network="network"
@@ -17,7 +21,7 @@
                     <template v-if="server_type==='network'">
                         <input-text
                             :label="$t('password')"
-                            v-model="network.connection.password"
+                            v-model="network.password"
                             type="password"
                         />
                     </template>
@@ -181,12 +185,12 @@ export default {
         },
     },
     created() {
-        let isZnc = !!(this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
+        let isZnc = !!(this.network.password || '').match(/^(.*)\/(.*):(.*)$/);
         this.server_type = isZnc ?
             'znc' :
             'network';
         if (isZnc) {
-            let match = (this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
+            let match = (this.network.password || '').match(/^(.*)\/(.*):(.*)$/);
             this.znc_username = match[1] || '';
             this.znc_network = match[2] || '';
             this.znc_password = match[3] || '';
@@ -217,7 +221,7 @@ export default {
         },
         setZncPass() {
             let newPass = `${this.znc_username}/${this.znc_network}:${this.znc_password}`;
-            this.network.connection.password = newPass;
+            this.network.password = newPass;
         },
         toggleTls() {
             let connection = this.network.connection;
@@ -281,9 +285,8 @@ export default {
     top: 10px;
 }
 
-.kiwi-networksettings .u-form .input-text--reveal-value span {
+.kiwi-networksettings .u-form .u-input-text--reveal-value span {
     top: -14px;
-    font-size: 1em;
     font-size: 0.8em;
 }
 
@@ -291,7 +294,7 @@ export default {
     .kiwi-networksettings input[type='password'],
     .kiwi-networksettings input[type='email'],
     .kiwi-networksettings textarea,
-    .kiwi-networksettings .input-text input {
+    .kiwi-networksettings .u-input-text input {
     clear: both;
     width: 100%;
     height: 40px;
@@ -305,7 +308,7 @@ export default {
     max-width: none;
 }
 
-.kiwi-networksettings .input-text {
+.kiwi-networksettings .u-input-text {
     padding-top: 0;
     margin-bottom: 20px;
 }
@@ -318,7 +321,7 @@ export default {
 }
 
 //Style the 'secrue/unsecure' port icon
-.kiwi-networksettings .input-text-c {
+.kiwi-networksettings .u-input-text-c {
     bottom: auto;
     height: 40px;
     line-height: 40px;
@@ -366,7 +369,7 @@ export default {
 }
 
 //User nickname input, remove bottom margin
-.kiwi-networksettings form .kiwi-networksettings-user .input-text {
+.kiwi-networksettings form .kiwi-networksettings-user .u-input-text {
     margin-bottom: 10px;
 }
 
@@ -422,9 +425,10 @@ export default {
     padding: 0.3em;
 }
 
-.kiwi-networksettings-error span {
+.kiwi-networksettings .kiwi-networksettings-error span {
     display: block;
     font-style: italic;
+    text-align: center;
 }
 
 .kiwi-networksettings-server-types a {
@@ -446,8 +450,9 @@ export default {
     float: right;
 }
 
-.kiwi-networksettings-connection-port span.input-text-label {
-    top: -16px;
+.kiwi-networksettings .u-input-text-c span.kiwi-customserver-tls {
+    top: -14px;
+    font-size: 0.8em;
 }
 
 .kiwi-networksettings-danger h3 {

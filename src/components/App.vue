@@ -77,7 +77,6 @@ import ControlInput from '@/components/ControlInput';
 import MediaViewer from '@/components/MediaViewer';
 import { State as SidebarState } from '@/components/Sidebar';
 import * as Notifications from '@/libs/Notifications';
-import * as AudioBleep from '@/libs/AudioBleep';
 import * as bufferTools from '@/libs/bufferTools';
 import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
@@ -115,6 +114,7 @@ export default {
             viewerEmbeddedIndex: -1,
             viewerCount: 0,
             viewerDragging: false,
+            viewerTempPop: null,
         };
     },
     computed: {
@@ -139,10 +139,6 @@ export default {
         window.addEventListener('focus', event => this.onFocus(event), false);
         window.addEventListener('blur', event => this.onBlur(event), false);
         window.addEventListener('touchstart', event => this.onTouchStart(event));
-
-        if (this.sidebarState.canPin && this.$state.setting('sidebarPinned')) {
-            this.sidebarState.pin();
-        }
     },
     mounted() {
         // Decide which startup screen to use depending on the config
@@ -167,14 +163,28 @@ export default {
     },
     methods: {
         componentOpen() {
-            if (document.querySelectorAll('.kiwi-appsettings').length ||
-                document.querySelectorAll('.kiwi-serverview').length) {
-                for (let i = 0; i < this.mediaViewers.length; ++i) {
-                    if (this.mediaViewers[i].zIndex > 0) this.mediaViewers[i].zIndex -= 10000;
-                }
-            } else {
-                for (let i = 0; i < this.mediaViewers.length; ++i) {
-                    if (this.mediaViewers[i].zIndex < 0) this.mediaViewers[i].zIndex += 10000;
+            for (let i = 0; i < 2; ++i) {
+                if (document.querySelectorAll('.kiwi-appsettings').length ||
+                    document.querySelectorAll('.kiwi-serverview').length) {
+                    for (let j = 0; j < this.mediaViewers.length; ++j) {
+                        if (this.mediaViewers[j].zIndex > 0 &&
+                            this.mediaViewers[j].popped &&
+                            i !== this.viewerTempPop) {
+                            this.mediaViewers[j].zIndex -= 10000;
+                        }
+                        if (!this.mediaViewers[j].popped) {
+                            this.viewerTempPop = j;
+                            this.$state.$emit('mediaviewer.popout', j);
+                        }
+                    }
+                } else if (document.querySelectorAll('.kiwi-messagelist').length) {
+                    for (let j = 0; j < this.mediaViewers.length; ++j) {
+                        if (this.mediaViewers[j].zIndex < 0) this.mediaViewers[j].zIndex += 10000;
+                    }
+                    if (this.viewerTempPop !== null) {
+                        this.$state.$emit('mediaviewer.popin', this.viewerTempPop);
+                        this.viewerTempPop = null;
+                    }
                 }
             }
             return document.querySelectorAll('.kiwi-appsettings').length ||
@@ -236,7 +246,6 @@ export default {
                 this.warnOnPageClose();
                 Notifications.requestPermission();
                 Notifications.listenForNewMessages(this.$state);
-                AudioBleep.listenForHighlights(this.$state);
             }
 
             this.hasStarted = true;
@@ -341,6 +350,7 @@ export default {
                 if (this.mediaviewerOpen && this.viewerEmbedded) {
                     this.$refs['mediaViewer' + this.viewerEmbeddedIndex][0].resetPop();
                 }
+                this.$state.ui.is_narrow = this.$el.clientWidth <= 769;
             };
             window.addEventListener('resize', trackWindowDims);
             trackWindowDims();
@@ -351,7 +361,7 @@ export default {
                     return this.$t('window_unload');
                 }
 
-                return null;
+                return undefined;
             };
         },
         emitBufferPaste(event) {
@@ -360,8 +370,12 @@ export default {
                 return;
             }
 
-            // bail if a sidebar is open
-            if (this.$data.sidebarState.sidebarOpen) {
+            // bail if the target is an input-like element
+            if (
+                event.target instanceof HTMLInputElement ||
+                event.target instanceof HTMLSelectElement ||
+                event.target instanceof HTMLTextAreaElement
+            ) {
                 return;
             }
 
@@ -448,11 +462,6 @@ body {
     -webkit-font-smoothing: antialiased;
     height: 100%;
     overflow: hidden;
-}
-
-.kiwi-wrap--monospace {
-    font-family: Consolas, monaco, monospace;
-    font-size: 80%;
 }
 
 .kiwi-workspace {

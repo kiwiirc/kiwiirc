@@ -20,7 +20,11 @@
                     aria-hidden="true"
                 />
             </div>
-            <form class="kiwi-controlinput-form" @submit.prevent="submitForm">
+            <form
+                class="kiwi-controlinput-form"
+                @submit.prevent="submitForm"
+                @click="maybeHidePlugins"
+            >
                 <auto-complete
                     v-if="autocomplete_open"
                     ref="autocomplete"
@@ -54,14 +58,18 @@
                     class="kiwi-controlinput-tools-container-expand"
                     @click="showPlugins=!showPlugins"
                 >
-                    <i class="fa fa-angle-double-right" aria-hidden="true" />
+                    <i class="fa fa-bars" aria-hidden="true" />
                 </div>
                 <transition name="kiwi-plugin-ui-trans">
-                    <div v-if="shouldShowPlugins" class="kiwi-controlinput-tools-container">
+                    <div v-if="showPlugins" class="kiwi-controlinput-tools-container">
                         <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                             <i class="fa fa-adjust" aria-hidden="true"/>
                         </a>
-                        <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
+                        <a
+                            v-if="shouldShowEmojiPicker"
+                            class="kiwi-controlinput-tool"
+                            @click.prevent="onToolClickEmoji"
+                        >
                             <i class="fa fa-smile-o" aria-hidden="true"/>
                         </a>
                         <div
@@ -90,6 +98,7 @@
 'kiwi public';
 
 import _ from 'lodash';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import autocompleteCommands from '@/res/autocompleteCommands';
 import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
@@ -140,16 +149,11 @@ export default {
                 activeNetwork.state :
                 '';
         },
-        shouldShowPlugins() {
-            // Save some space if we're typing on a small screen
-            if (this.current_input_value.length > 0 && this.$state.ui.app_width < 500) {
-                return false;
-            }
-
-            return this.showPlugins;
-        },
         shouldShowSendButton() {
             return this.$state.ui.is_touch || this.$state.setting('showSendButton');
+        },
+        shouldShowEmojiPicker() {
+            return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
         },
     },
     watch: {
@@ -177,6 +181,18 @@ export default {
                 return;
             }
 
+            // shift key on its own, don't shift focus we handle this below
+            if (ev.keyCode === 16) {
+                return;
+            }
+
+            // If we are using shift and arrow keys, don't shift focus
+            // this allows users to adjust text selection
+            let arrowKeyCodes = [37, 38, 39, 40];
+            if (ev.shiftKey && arrowKeyCodes.indexOf(ev.keyCode) !== -1) {
+                return;
+            }
+
             // If we're typing into an input box somewhere, ignore
             let elements = ['input', 'select', 'textarea', 'button', 'datalist', 'keygen'];
             let doNotRefocus =
@@ -188,6 +204,25 @@ export default {
             }
 
             this.$refs.input.focus();
+        });
+
+        this.listen(this.$state, 'input.insertnick', (nick) => {
+            if (!this.$refs.input) {
+                return;
+            }
+
+            let val = nick;
+            if (this.current_input_value === '') {
+                val += ': ';
+            } else {
+                val += ' ';
+            }
+
+            this.$refs.input.insertText(val);
+        });
+
+        this.listen(this.$state, 'input.tool', (toolComponent) => {
+            this.toggleInputTool(toolComponent);
         });
     },
     mounted() {
@@ -202,6 +237,8 @@ export default {
             } else {
                 this.buffer.current_input = val;
             }
+
+            this.maybeHidePlugins();
         },
         inputRestore() {
             let currentInput = state.setting('buffers.shared_input') ?
@@ -214,6 +251,12 @@ export default {
         toggleSelfUser() {
             if (this.networkState === 'connected') {
                 this.selfuser_open = !this.selfuser_open;
+            }
+        },
+        maybeHidePlugins() {
+            // Save some space if we're typing on a small screen
+            if (this.$state.ui.app_width < 500) {
+                this.showPlugins = false;
             }
         },
         onToolClickTextStyle() {
@@ -407,7 +450,6 @@ export default {
             this.history_pos = this.history.length;
 
             this.$refs.input.reset();
-            this.$refs.input.focus();
         },
         historyBack() {
             if (this.history_pos > 0) {
@@ -467,10 +509,16 @@ export default {
             if (opts.commands) {
                 let commandList = [];
                 autocompleteCommands.forEach((command) => {
+                    // allow descriptions to be translation keys or static strings
+                    let desc = command.description.startsWith('locale_id_') ?
+                        TextFormatting.t(command.description.substr(10)) :
+                        command.description;
                     commandList.push({
                         text: '/' + command.command,
-                        description: command.description,
+                        description: desc,
                         type: 'command',
+                        // Each alias needs the / command prefix adding
+                        alias: (command.alias || []).map(c => '/' + c),
                     });
                 });
 
@@ -510,9 +558,11 @@ export default {
 }
 
 .kiwi-controlinput-tools {
-    line-height: 40px;
+    /* 38px = 40px controlinput height - margin top+botton */
+    line-height: 38px;
+    margin: 2px 0 2px 10px;
+    border-radius: 7px 0 0 7px;
     cursor: pointer;
-    margin-left: 10px;
 }
 
 .kiwi-controlinput-form {
@@ -523,7 +573,12 @@ export default {
 
 .kiwi-controlinput-send {
     border: none;
-    background: none;
+    border-radius: 7px;
+    margin: 2px 0;
+    padding: 0;
+    height: 35px;
+    text-align: center;
+    width: 35px;
     cursor: pointer;
     outline: none;
 }
@@ -564,6 +619,7 @@ export default {
     position: absolute;
     bottom: 100%;
     right: 0;
+    width: 100%;
     z-index: 1;
 }
 

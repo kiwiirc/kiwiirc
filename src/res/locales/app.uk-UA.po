@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-08-30 05:20\n"
+"PO-Revision-Date: 2019-01-12 20:21\n"
 
 #: Start
 msgid "start_button"
@@ -216,6 +216,10 @@ msgstr "Оновити тему"
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "URL-адреса теми"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr "Шаблон повідомлення"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -577,6 +581,26 @@ msgstr "Кольорові псевдоніми в списку"
 msgid "side_buffer"
 msgstr "Буфер не встановлено"
 
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr "Цей канал не має теми"
+
+#: About
+msgid "about"
+msgstr "Про"
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr "Створено {{when}}"
+
+#: Highlights
+msgid "highlights"
+msgstr "Основні характеристики"
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr "Досі ніхто вас не згадував..."
+
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "Виникла помилка при запуску Kiwi IRC :("
@@ -612,6 +636,18 @@ msgstr "Додати одну?"
 #: Available networks
 msgid "state_available"
 msgstr "Доступні мережі"
+
+#: Add Network
+msgid "add_network"
+msgstr "Додати мережу"
+
+#: New Network
+msgid "new_network"
+msgstr "Нова мережа"
+
+#: No Network
+msgid "no_network"
+msgstr "Немає мережі"
 
 #: Configure network
 msgid "state_configure"
@@ -665,7 +701,7 @@ msgstr "З'єднаний з {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Захищене з'єднання через SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr "Також на каналах {{channels}}"
 
@@ -688,6 +724,10 @@ msgstr "Заблокувати на каналі"
 #: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "Заблокувати й виштовхнути з каналу"
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr "Будь ласка, вкажіть канал для приєднання, наприклад, /join #example"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -740,6 +780,98 @@ msgstr "{{nick}} розблокував {{target}}"
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
 msgstr "{{nick}} встановив режим {{mode}} на {{target}}"
+
+#: Send a message
+msgid "command_msg"
+msgstr "Надіслати повідомлення"
+
+#: Do something physical
+msgid "command_action"
+msgstr "Зробіть щось фізично"
+
+#: Join a channel
+msgid "command_join"
+msgstr "Приєднатися до каналу"
+
+#: Leave a channel
+msgid "command_part"
+msgstr "Покинути канал"
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr "Покинути, потім повернутися на канал"
+
+#: Change your nickname
+msgid "command_nick"
+msgstr "Змініть свій псевдонім"
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr "Почніть приватну розмову з кимось"
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr "Запросіть когось на канал"
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr "Встановіть тему для каналу"
+
+#: Send a notice
+msgid "command_notice"
+msgstr "Надіслати сповіщення"
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr "Надіслати необроблену команду на сервер IRC"
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr "Вилучіть когось з каналу"
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr "Стерти всі повідомлення з цього вікна"
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr "Надішліть комусь команду CTCP"
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr "Від'єднатися від сервера IRC"
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr "Під'єднатися до нової мережі IRC"
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr "Запит інформації про когось"
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr "Запит інформації про когось, хто нещодавно від'єднався"
+
+#: Set yourself as away
+msgid "command_away"
+msgstr "Позначити себе як відійшов"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr ""
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr "Змінити кодування з'єднання"
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr "Ігнорувати повідомлення від когось"
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr "Припинити ігнорування"
 
 #: Your IRC client
 msgid "personal_client"
@@ -817,7 +949,7 @@ msgstr "Псевдонім {{nick}} вже зайнятий. Спроба {{newn
 msgid "now_known_as"
 msgstr "{{nick}} тепер відомий як {{newnick}}"
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
 msgstr "{{nick}} змінив тему на: {{topic}}"
 

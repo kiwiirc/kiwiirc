@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Afrikaans\n"
 "Language: af_ZA\n"
-"PO-Revision-Date: 2018-08-29 15:11\n"
+"PO-Revision-Date: 2019-01-12 20:21\n"
 
 #: Start
 msgid "start_button"
@@ -216,6 +216,10 @@ msgstr ""
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "tema skakel"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr ""
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -577,6 +581,26 @@ msgstr ""
 msgid "side_buffer"
 msgstr ""
 
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr ""
+
+#: About
+msgid "about"
+msgstr ""
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr ""
+
+#: Highlights
+msgid "highlights"
+msgstr ""
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr ""
+
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr ""
@@ -611,6 +635,18 @@ msgstr ""
 
 #: Available networks
 msgid "state_available"
+msgstr ""
+
+#: Add Network
+msgid "add_network"
+msgstr ""
+
+#: New Network
+msgid "new_network"
+msgstr ""
+
+#: No Network
+msgid "no_network"
 msgstr ""
 
 #: Configure network
@@ -665,7 +701,7 @@ msgstr ""
 msgid "user_secure"
 msgstr ""
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
 msgstr ""
 
@@ -687,6 +723,10 @@ msgstr ""
 
 #: Ban and kick from the channel
 msgid "user_kickban"
+msgstr ""
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
 msgstr ""
 
 #: {{nick}} gives ops to {{target}}
@@ -739,6 +779,98 @@ msgstr ""
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
+msgstr ""
+
+#: Send a message
+msgid "command_msg"
+msgstr ""
+
+#: Do something physical
+msgid "command_action"
+msgstr ""
+
+#: Join a channel
+msgid "command_join"
+msgstr ""
+
+#: Leave a channel
+msgid "command_part"
+msgstr ""
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr ""
+
+#: Change your nickname
+msgid "command_nick"
+msgstr ""
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr ""
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr ""
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr ""
+
+#: Send a notice
+msgid "command_notice"
+msgstr ""
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr ""
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr ""
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr ""
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr ""
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr ""
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr ""
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr ""
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr ""
+
+#: Set yourself as away
+msgid "command_away"
+msgstr ""
+
+#: Set yourself as active
+msgid "command_back"
+msgstr ""
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr ""
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr ""
+
+#: Stop ignoring somebody
+msgid "command_unignore"
 msgstr ""
 
 #: Your IRC client
@@ -817,7 +949,7 @@ msgstr ""
 msgid "now_known_as"
 msgstr ""
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
 msgstr ""
 

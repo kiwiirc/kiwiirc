@@ -72,9 +72,12 @@
                 <span v-if="user.secure" class="kiwi-userbox-whois-line">
                     {{ $t('user_secure') }}
                 </span>
-                <span v-if="user.channels" class="kiwi-userbox-whois-line">
-                    {{ $t('user_channels', {channels: user.channels}) }}
-                </span>
+                <span
+                    v-if="user.channels"
+                    class="kiwi-userbox-whois-line"
+                    @click="onChannelsClick($event)"
+                    v-html="$t('user_channels', {channels: userChannels})"
+                />
             </template>
         </div>
 
@@ -132,6 +135,7 @@
 'kiwi public';
 
 import state from '@/libs/state';
+import * as TextFormatting from '@/helpers/TextFormatting';
 
 export default {
     props: ['buffer', 'network', 'user'],
@@ -223,6 +227,13 @@ export default {
                 client.raw(params);
             },
         },
+        userChannels() {
+            let channels = this.user.channels.trim().split(' ');
+            for (let i = 0; i < channels.length; i++) {
+                channels[i] = TextFormatting.linkifyChannels(channels[i]);
+            }
+            return channels.join(' ');
+        },
     },
     watch: {
         user: function watchUser() {
@@ -247,6 +258,14 @@ export default {
             let buffer = state.addBuffer(this.network.id, this.user.nick);
             state.setActiveBuffer(this.network.id, buffer.name);
             state.$emit('userbox.hide');
+        },
+        onChannelsClick(event) {
+            let channelName = event.target.getAttribute('data-channel-name');
+            if (channelName) {
+                let network = this.buffer.getNetwork();
+                this.$state.addBuffer(this.buffer.networkid, channelName);
+                network.ircClient.join(channelName);
+            }
         },
         updateWhoisData: function updateWhoisData() {
             this.whoisRequested = true;
@@ -462,7 +481,7 @@ export default {
 }
 
 @media screen and (max-width: 769px) {
-    .kiwi-container--sidebar-open .kiwi-sidebar-userbox {
+    .kiwi-container--sidebar-drawn .kiwi-sidebar-userbox {
         width: 100%;
     }
 
