@@ -373,20 +373,19 @@
 
 /* AutoComplete - If the user has enabled autocomplete in their options, this will style the options (AutoComplete.vue) */
 .kiwi-autocomplete {
-    box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
-    border: 1px solid #ccc;
+    border-top: 2px solid #68ffae;
     background: #fff;
 }
 .kiwi-autocomplete-item {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #68ffae;
+    background: #1a2f24;
 }
-.kiwi-autocomplete-item--selected {
-    background: #1b2f24;
-    color: #fff;
-}
+.kiwi-autocomplete-item--selected,
 .kiwi-autocomplete-item--selected .u-link {
-    color: #fff;
+  background: #68ffae;
+  color: #182f24;
 }
+
 
 
 
@@ -620,7 +619,7 @@
     border-left: 4px solid #192e24;
 }
 .kiwi-nicklist-user .kiwi-nicklist-user-nick {
-    color: #6fffb0 !important;  
+    color: #6fffb0 !important;
 }
 .kiwi-nicklist-messageuser {
     color: #6fffb0;
