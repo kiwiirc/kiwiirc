@@ -1,11 +1,11 @@
 <template>
     <div class="kiwi-selfuser kiwi-theme-bg">
-        <div class="kiwi-selfuser-mask">
+        <div v-if="!selfUserSettingsOpen" class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">
                 <i class="fa fa-user-circle-o" aria-hidden="true" />
                 {{ network.nick }}
                 <span class="kiwi-selfuser-modes">( {{ modeString }} )</span>
-                <i class="fa fa-cog" aria-hidden="true" />
+                <i class="fa fa-cog" aria-hidden="true" @click="openSelfActions('Nick')" />
             </span>
             <span class="kiwi-selfuser-host">
                 <i class="fa fa-server" aria-hidden="true" />
@@ -14,15 +14,25 @@
             <span class="kiwi-selfuser-status">
                 <i class="fa fa-info-circle" aria-hidden="true" />
                 <span class="kiwi-selfuser-status-show">Availible</span>
-                <i class="fa fa-cog" aria-hidden="true" />
+                <i class="fa fa-cog" aria-hidden="true" @click="openSelfActions('Status')" />
             </span>
         </div>
         <div v-if="selfUserSettingsOpen" class="kiwi-selfuser-actions">
-            <div v-if="error_message">{{ error_message }}</div>
-            <input-prompt :label="$t('change_nick')+':'" @submit="changeNick">
-                <a class="u-link">{{ $t('change_nick') }}</a>
-            </input-prompt>
-            <a href="#">Set Away</a>
+            <div v-if="error_message" class="kiwi-selfuser-error-message">{{ error_message }}</div>
+            <form v-if="selfUserSettingsDisplay === 'Nick'" class="u-form">
+                <span class="u-input-prompt-label">{{ $t('change_nick') }}</span>
+                <input v-model="newNick"
+                       type="text" class="u-input" placeholder="Enter new nickname...">
+                <span class="u-input-button-container">
+                    <a class="u-button u-button-primary"
+                       @click="userNameUpdate(newNick)">{{ $t('ok') }}
+                    </a>
+                    <a class="u-button u-button-warning"
+                       @click="userNameCancel()">{{ $t('cancel') }}
+                    </a>
+                </span>
+            </form>
+            <a v-if="selfUserSettingsDisplay === 'Status'" href="#">Set Away</a>
         </div>
         <div class="kiwi-close-icon" @click="$emit('close')">
             <i class="fa fa-times" aria-hidden="true"/>
@@ -40,8 +50,10 @@ export default {
     props: ['network'],
     data: function data() {
         return {
+            newNick: '',
             error_message: '',
             selfUserSettingsOpen: false,
+            selfUserSettingsDisplay: false,
         };
     },
     computed: {
@@ -68,13 +80,25 @@ export default {
         });
     },
     methods: {
-        changeNick(newNick) {
-            this.error_message = '';
-
-            let nick = newNick.trim();
-            if (!nick.match(/(^[0-9])|(\s)/)) {
-                this.network.ircClient.changeNick(newNick);
+        openSelfActions(option) {
+            this.selfUserSettingsOpen = true;
+            this.selfUserSettingsDisplay = option;
+        },
+        userNameUpdate(newNick) {
+            if (newNick.length !== 0) {
+                this.error_message = '';
+                let nick = newNick.trim();
+                if (!nick.match(/(^[0-9])|(\s)/)) {
+                    this.network.ircClient.changeNick(nick);
+                    this.userNameCancel();
+                }
+            } else {
+                this.error_message = 'You must enter a new username';
             }
+        },
+        userNameCancel() {
+            this.selfUserSettingsOpen = false;
+            this.selfUserSettingsDisplay = false;
         },
         checkUserAway() {
             let activeNetworkState = this.buffer.getNetwork();
@@ -91,6 +115,8 @@ export default {
 
 .kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
     padding-right: 22px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .kiwi-selfuser-nick,
@@ -119,7 +145,7 @@ export default {
 
 .kiwi-selfuser-status .kiwi-selfuser-status-show {
     display: inline-block;
-    padding: 2px 6px;
+    padding: 2px 10px;
     background-color: green;
     color: #fff;
     border-radius: 4px;
@@ -148,7 +174,7 @@ export default {
 
 .kiwi-selfuser-nick i:last-of-type,
 .kiwi-selfuser-status i:last-of-type {
-    margin-left: 8px;
+    margin-left: 5px;
     opacity: 0.6;
     transition: all 0.2s;
     cursor: pointer;
@@ -160,9 +186,42 @@ export default {
     transition: all 0.2s;
 }
 
+.kiwi-selfuser-error-message {
+    width: 100%;
+    display: block;
+    padding: 0.5em 10px;
+    background: #d16c6c;
+    color: #fff;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+    text-align: center;
+    border-radius: 4px;
+}
+
 .kiwi-selfuser-actions {
-    margin-top: 1em;
-    padding-top: 1em;
+    padding: 1em 10px;
+}
+
+.kiwi-selfuser-actions form {
+    width: 100%;
+    position: relative;
+}
+
+.kiwi-selfuser-actions form .u-input-prompt-label {
+    display: block;
+    width: 100%;
+}
+
+.kiwi-selfuser-actions form .u-input {
+    width: 100%;
+    margin: 0;
+}
+
+.kiwi-selfuser-actions form .u-input-button-container {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    z-index: 1;
 }
 
 .kiwi-selfuser-actions .u-input {
