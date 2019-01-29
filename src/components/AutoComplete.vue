@@ -231,16 +231,21 @@ export default {
 }
 
 .kiwi-autocomplete-item {
-    padding: 5px 2em;
+    padding: 1px 0;
 }
 
 .kiwi-autocomplete-item-value {
     font-weight: bold;
+    display: inline-block;
+    min-width: 80px;
+    margin-right: 10px;
+    padding: 0 0 0 5px;
 }
 
 .kiwi-autocomplete-item-action {
-    float: right;
+    display: inline-block;
     font-size: 0.9em;
+    opacity: 0.9;
 }
 
 </style>
