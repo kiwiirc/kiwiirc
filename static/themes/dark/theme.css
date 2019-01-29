@@ -214,8 +214,7 @@
 
 /* AutoComplete - Shows when typging with a command (AutoComplete.vue) */
 .kiwi-autocomplete {
-    box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
-    border: 1px solid #ccc;
+    border-top: 2px solid #ccc;
     background: #201f1f;
     color: #fff;
 }
