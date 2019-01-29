@@ -406,13 +406,17 @@
 
 /* AutoComplete - If the user has enabled autocomplete in their options, this will style the options (AutoComplete.vue) */
 .kiwi-autocomplete {
-    box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
-    border: 1px solid #444;
+    border-top: 2px solid #444;
     background: #adadad;
 }
 .kiwi-autocomplete-item {
     border-bottom: 1px solid #ccc;
 }
+
+.kiwi-autocomplete-item .kiwi-autocomplete-item-description {
+    color: #000;
+}
+
 .kiwi-autocomplete-item--selected {
     background: #000000;
     color: #adadad;
