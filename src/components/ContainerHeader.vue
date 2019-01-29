@@ -38,7 +38,7 @@
                 >
                     <a
                         :title="$t('person', {count: Object.keys(buffer.users).length})"
-                        @click="nicklistToggle()"
+                        @click="toggleNicklist()"
                     >
                         <i class="fa fa-users" aria-hidden="true"/>
                         <span>{{ Object.keys(buffer.users).length }}</span>
@@ -229,19 +229,19 @@ export default {
         showPrompt(prompt) {
             this.prompts[prompt] = true;
         },
-        isChannel: function isChannel() {
+        isChannel() {
             return this.buffer.isChannel();
         },
-        isServer: function isServer() {
+        isServer() {
             return this.buffer.isServer();
         },
-        isQuery: function isQuery() {
+        isQuery() {
             return this.buffer.isQuery();
         },
-        isSpecial: function isSpecial() {
+        isSpecial() {
             return this.buffer.isSpecial();
         },
-        showNetworkSettings: function showNetworkSettings(network) {
+        showNetworkSettings(network) {
             network.showServerBuffer('settings');
         },
         onConnectButtonClick() {
@@ -255,15 +255,15 @@ export default {
         showSidebar() {
             state.$emit('sidebar.toggle');
         },
-        joinCurrentBuffer: function joinCurrentBuffer() {
+        joinCurrentBuffer() {
             let network = this.buffer.getNetwork();
             this.buffer.enabled = true;
             network.ircClient.join(this.buffer.name);
         },
-        closeCurrentBuffer: function closeCurrentBuffer() {
+        closeCurrentBuffer() {
             state.removeBuffer(this.buffer);
         },
-        onHeaderClick: function onHeaderClick(event) {
+        onHeaderClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
             if (channelName) {
                 let network = this.buffer.getNetwork();
@@ -271,12 +271,8 @@ export default {
                 network.ircClient.join(channelName);
             }
         },
-        nicklistToggle: function nicklistToggle() {
-            if (this.sidebarState.sidebarSection === 'user') {
-                this.sidebarState.close();
-            } else {
-                this.sidebarState.toggleNicklist();
-            }
+        toggleNicklist() {
+            this.sidebarState.toggleNicklist();
         },
     },
 };
