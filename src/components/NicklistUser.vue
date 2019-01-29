@@ -8,11 +8,11 @@
         class="kiwi-nicklist-user"
         @click="nicklist.openUserbox(user)"
     >
-        <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span>
         <span
             :style="{ 'background': userStatus }"
             class="kiwi-user-availability"
         />
+        <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span>
         <span
             :style="{ 'color': userColour }"
             class="kiwi-nicklist-user-nick"
@@ -76,10 +76,12 @@ export default {
 }
 
 .kiwi-user-availability {
-    height: 5px;
-    width: 5px;
+    height: 7px;
+    width: 7px;
     display: inline-block;
     border-radius: 50%;
+    border: 1px solid #e1e1e1;
+    margin: 0 2px 0 0;
 }
 
 .kiwi-nicklist-messageuser:hover {
