@@ -169,7 +169,8 @@ export default {
                     for (let j = 0; j < this.mediaViewers.length; ++j) {
                         if (this.mediaViewers[j].zIndex > 0 &&
                             this.mediaViewers[j].popped &&
-                            i !== this.viewerTempPop) {
+                            i !== this.viewerTempPop &&
+                            !this.mediaViewers[j].isIframe) {
                             this.mediaViewers[j].zIndex -= 10000;
                         }
                         if (!this.mediaViewers[j].popped) {
