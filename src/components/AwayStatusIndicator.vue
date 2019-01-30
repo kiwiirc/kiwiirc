@@ -1,6 +1,7 @@
 <template>
     <span
         v-if="checkCap()"
+        :user="user"
         :class="{ 'kiwi-awaystatusindicator-away': isUserAway(),
                   'kiwi-awaystatusindicator-not-away': !isUserAway() }"
     />
@@ -15,16 +16,16 @@ export default {
             return this.$state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
         },
     },
+    props: ['user'],
     methods: {
         checkCap() {
             return this.doesNetworkHaveAwayNotifyCap;
         },
         isUserAway() {
             if (this.doesNetworkHaveAwayNotifyCap) {
-                let nick = this.$state.getActiveNetwork().nick;
                 let networkId = this.$state.getActiveNetwork().id;
-                let user = this.$state.getUser(networkId, nick);
-                return user.getUserStatus();
+                let userToCheck = this.$state.getUser(networkId, this.user.nick);
+                return userToCheck.isUserAway();
             }
             return '';
         },

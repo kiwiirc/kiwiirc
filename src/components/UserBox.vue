@@ -2,7 +2,7 @@
     <div class="kiwi-userbox">
         <div class="kiwi-userbox-header">
             <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"/>
-            <AwayStatusIndicator/>
+            <away-status-indicator :user="user"/>
             <h3>{{ user.nick }}</h3>
             <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
         </div>

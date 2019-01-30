@@ -344,12 +344,6 @@ export default {
             }
             return '';
         },
-        userStatus(user) {
-            if (this.doesNetworkHaveAwayNotify) {
-                return user.getUserStatus();
-            }
-            return '';
-        },
         openUserBox(nick) {
             let user = this.$state.getUser(this.buffer.networkid, nick);
             if (user) {

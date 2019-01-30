@@ -12,8 +12,8 @@
         </div>
 
         <div class="kiwi-controlinput-inner">
+            <away-status-indicator :user="this.currentUser"/>
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
-                <AwayStatusIndicator/>
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i
                     :class="[selfuser_open ? 'fa-caret-down' : 'fa-caret-up']"
@@ -145,6 +145,10 @@ export default {
             return activeNetwork ?
                 activeNetwork.nick :
                 '';
+        },
+        currentUser() {
+            let activeNetworkState = this.$state.getActiveNetwork();
+            return this.$state.getUser(activeNetworkState.id, activeNetworkState.nick);
         },
         networkState() {
             let activeNetwork = state.getActiveNetwork();
@@ -551,20 +555,6 @@ export default {
 
 .kiwi-controlinput-inner i {
     font-size: 120%;
-}
-
-.kiwi-controlinput-user-status {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border: 1px solid #e1e1e1;
-    border-radius: 50%;
-    margin: 0 4px 0 0;
-    background-color: green;
-}
-
-.kiwi-controlinput-user-status-away {
-    background: red;
 }
 
 .kiwi-controlinput-user {

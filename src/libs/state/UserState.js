@@ -39,7 +39,7 @@ export default class UserState {
         // default will use the themes default text colour
         return this.colour === 'default' ? '' : this.colour;
     }
-    getUserStatus() {
+    isUserAway() {
         if (this.away.length) {
             return true;
         }

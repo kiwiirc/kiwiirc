@@ -43,7 +43,9 @@
         >
             {{ ml.formatTime(message.time) }}
         </div>
-        <AwayStatusIndicator/>
+        <span v-if="message.type === 'privmsg'">
+            <away-status-indicator :user="message.user"/>
+        </span>
         <div
             :style="{ 'color': userColour }"
             class="kiwi-messagelist-nick"
