@@ -2,16 +2,13 @@
     <li
         :class="[
             nicklist.userMode(user) ? 'kiwi-nicklist-user--mode-' + nicklist.userMode(user) : '',
-            user.away ? 'kiwi-nicklist-user--away' : '',
+            user.away ? 'kiwi-nicklist-user-status-away' : 'kiwi-nicklist-user-status-available',
             user.ignore ? 'kiwi-nicklist-user--ignore' : '',
         ]"
         class="kiwi-nicklist-user"
         @click="nicklist.openUserbox(user)"
     >
-        <span
-            :style="{ 'background': userStatus }"
-            class="kiwi-user-availability"
-        />
+        <span class="away-status-indicator"/>
         <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span>
         <span
             :style="{ 'color': userColour }"
@@ -28,8 +25,6 @@
 
 'kiwi public';
 
-import state from '@/libs/state';
-
 export default {
     props: ['user', 'nicklist'],
     computed: {
@@ -40,10 +35,10 @@ export default {
             return '';
         },
         userStatus() {
-            if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
-                return this.user.userStatus(this.user);
+            let activeNetworkState = this.$state.getActiveNetwork();
+            if (activeNetworkState.ircClient.network.cap.isEnabled('away-notify')) {
+                return this.user.getUserStatus();
             }
-            return '';
         },
     },
 };
@@ -75,13 +70,24 @@ export default {
     opacity: 0;
 }
 
-.kiwi-user-availability {
-    height: 7px;
-    width: 7px;
+.kiwi-nicklist-user-status-available > .away-status-indicator {
     display: inline-block;
-    border-radius: 50%;
+    width: 7px;
+    height: 7px;
     border: 1px solid #e1e1e1;
-    margin: 0 2px 0 0;
+    border-radius: 50%;
+    margin: 0 4px 0 0;
+    background-color: green;
+}
+
+.kiwi-nicklist-user-status-away > .away-status-indicator {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border: 1px solid #e1e1e1;
+    border-radius: 50%;
+    margin: 0 4px 0 0;
+    background: red;
 }
 
 .kiwi-nicklist-messageuser:hover {

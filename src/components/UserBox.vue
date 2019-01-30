@@ -2,9 +2,9 @@
     <div class="kiwi-userbox">
         <div class="kiwi-userbox-header">
             <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"/>
-            <span
-                :style="{ 'background': userStatus }"
-                class="kiwi-user-availability"
+            <span 
+                :class="{'kiwi-userbox-user-status-away' : userStatus }"
+                class="kiwi-userbox-user-status"
             />
             <h3>{{ user.nick }}</h3>
             <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
@@ -193,8 +193,8 @@ export default {
             return true;
         },
         userStatus: function userStatus() {
-            if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
-                return this.user.userStatus();
+            if (state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify')) {
+                return this.user.getUserStatus();
             }
             return '';
         },
@@ -341,11 +341,24 @@ export default {
         display: inline-block;
     }
 
-    .kiwi-user-availability {
-        height: 5px;
-        width: 5px;
+    .kiwi-userbox-user-status {
         display: inline-block;
+        width: 7px;
+        height: 7px;
+        border: 1px solid #e1e1e1;
         border-radius: 50%;
+        margin: 0 4px 0 0;
+        background-color: green;
+    }
+
+    .kiwi-userbox-user-status-away {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border: 1px solid #e1e1e1;
+        border-radius: 50%;
+        margin: 0 4px 0 0;
+        background: red;
     }
 }
 

@@ -79,7 +79,6 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
 import strftime from 'strftime';
 import Logger from '@/libs/Logger';
 import BufferKey from './BufferKey';
@@ -228,6 +227,9 @@ export default {
                 !this.buffer.joined &&
                 this.buffer.getNetwork().state === 'connected';
         },
+        doesNetworkHaveAwayNotify() {
+            return this.$state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
+        },
     },
     watch: {
         buffer(newBuffer) {
@@ -339,15 +341,15 @@ export default {
 
             return message.isHighlight;
         },
-        userStatus(user) {
-            if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
-                return user.userStatus();
-            }
-            return '';
-        },
         userColour(user) {
             if (user && this.bufferSetting('colour_nicknames_in_messages')) {
                 return user.getColour();
+            }
+            return '';
+        },
+        userStatus(user) {
+            if (this.doesNetworkHaveAwayNotify) {
+                return user.getUserStatus();
             }
             return '';
         },
@@ -645,6 +647,20 @@ export default {
 }
 
 /** Message structure */
+.kiwi-messagelist-user-status {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border: 1px solid #e1e1e1;
+    border-radius: 50%;
+    margin: 0 4px 0 0;
+    background-color: green;
+}
+
+.kiwi-messagelist-user-status-away {
+    background: red;
+}
+
 .kiwi-messagelist-body .kiwi-nick {
     cursor: pointer;
 }

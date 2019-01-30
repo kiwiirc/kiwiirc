@@ -45,8 +45,8 @@
         </div>
         <span
             v-if="message.type === 'privmsg'"
-            :style="{ 'background': userStatus }"
-            class="kiwi-user-availability"
+            :class="{'kiwi-messagelistcompact-user-status-away' : userStatus }"
+            class="kiwi-messagelistcompact-user-status"
         />
         <div
             :style="{ 'color': userColour }"
@@ -74,8 +74,6 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
-
 // eslint-plugin-vue's max-len rule reads the entire file, including the CSS. so we can't use this
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
@@ -96,10 +94,7 @@ export default {
             return this.ml.userColour(this.message.user);
         },
         userStatus() {
-            if (state.getActiveNetwork().ircClient.network.cap.isEnabled('account-notify')) {
-                return this.ml.userStatus(this.message.user);
-            }
-            return '';
+            return this.ml.userStatus(this.message.user);
         },
     },
     methods: {
@@ -288,6 +283,20 @@ export default {
 
 .kiwi-messagelist-item:last-of-type {
     margin-bottom: 5px;
+}
+
+.kiwi-messagelistcompact-user-status {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border: 1px solid #e1e1e1;
+    border-radius: 50%;
+    margin: 0 4px 0 0;
+    background-color: green;
+}
+
+.kiwi-messagelistcompact-user-status-away {
+    background: red;
 }
 
 </style>

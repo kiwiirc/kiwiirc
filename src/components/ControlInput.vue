@@ -13,8 +13,10 @@
 
         <div class="kiwi-controlinput-inner">
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
-                <span :class="{'kiwi-controlinput-user-status-away' : checkUserAway() }"
-                      class="kiwi-controlinput-user-status" />
+                <span 
+                    :class="{'kiwi-controlinput-user-status-away' : isUserAway }"
+                    class="kiwi-controlinput-user-status"
+                />
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i
                     :class="[selfuser_open ? 'fa-caret-down' : 'fa-caret-up']"
@@ -156,6 +158,13 @@ export default {
         },
         shouldShowEmojiPicker() {
             return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
+        },
+        isUserAway() {
+            let activeNetworkState = this.buffer.getNetwork();
+            if (this.$state.getUser(activeNetworkState.id, activeNetworkState.nick)) {
+                return this.$state.getUser(activeNetworkState.id, activeNetworkState.nick).away.length ? true : false;
+            }
+            return;
         },
     },
     watch: {
@@ -528,10 +537,6 @@ export default {
             }
 
             return list;
-        },
-        checkUserAway() {
-            let activeNetworkState = this.buffer.getNetwork();
-            return state.getUser(activeNetworkState.id, activeNetworkState.nick).away;
         },
     },
 };
