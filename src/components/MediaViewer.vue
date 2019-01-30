@@ -198,18 +198,20 @@ export default {
         },
         popViewerOut(cornerPop) {
             this.$nextTick(() => {
-                this.$refs.windowHandle.onmousedown = () => {
-                    this.$emit('viewerdragging', 1);
-                };
-                this.$refs.windowHandle.onmouseup = () => {
-                    this.$emit('viewerdragging', 0);
-                };
+                if (this.$refs.windowHandle) {
+                    this.$refs.windowHandle.onmousedown = () => {
+                        this.$emit('viewerdragging', 1);
+                    };
+                    this.$refs.windowHandle.onmouseup = () => {
+                        this.$emit('viewerdragging', 0);
+                    };
+                }
             });
             if (cornerPop) {
                 this.VueDraggableResizableWidth = 600;
                 this.VueDraggableResizableHeight = 400;
                 this.VueDraggableResizableTop = document.body.clientHeight - 400;
-                this.VueDraggableResizableLeft = document.body.clientWidth - 810;
+                this.VueDraggableResizableLeft = document.body.clientWidth - 832;
             } else {
                 this.VueDraggableResizableWidth = 600;
                 this.VueDraggableResizableHeight = 400;

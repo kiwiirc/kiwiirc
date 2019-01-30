@@ -80,6 +80,7 @@ import * as Notifications from '@/libs/Notifications';
 import * as bufferTools from '@/libs/bufferTools';
 import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
+import GlobalApi from '@/libs/GlobalApi';
 
 let log = Logger.namespace('App.vue');
 
@@ -115,6 +116,7 @@ export default {
             viewerCount: 0,
             viewerDragging: false,
             viewerTempPop: null,
+            activeBuffer: null,
         };
     },
     computed: {
@@ -160,12 +162,13 @@ export default {
             this.startupComponent = startup;
         }
         this.trackWindowDimensions();
+        GlobalApi.singleton().on('buffer.created', (val) => { this.activeBuffer = val; });
+        GlobalApi.singleton().on('buffer.destroyed', () => { this.activeBuffer = null; });
     },
     methods: {
         componentOpen() {
             for (let i = 0; i < 2; ++i) {
-                if (document.querySelectorAll('.kiwi-appsettings').length ||
-                    document.querySelectorAll('.kiwi-serverview').length) {
+                if (this.activeBuffer === null || this.activeBuffer.name === '*') {
                     for (let j = 0; j < this.mediaViewers.length; ++j) {
                         if (this.mediaViewers[j].zIndex > 0 &&
                             this.mediaViewers[j].popped &&
@@ -178,7 +181,7 @@ export default {
                             this.$state.$emit('mediaviewer.popout', j);
                         }
                     }
-                } else if (document.querySelectorAll('.kiwi-messagelist').length) {
+                } else {
                     for (let j = 0; j < this.mediaViewers.length; ++j) {
                         if (this.mediaViewers[j].zIndex < 0) this.mediaViewers[j].zIndex += 10000;
                     }
@@ -188,8 +191,7 @@ export default {
                     }
                 }
             }
-            return document.querySelectorAll('.kiwi-appsettings').length ||
-                document.querySelectorAll('.kiwi-serverview').length;
+            return this.activeBuffer === null || this.activeBuffer.name === '*';
         },
         // fixes window drag-halting when cursor moves over viewer content
         setViewerDragging(val) {
