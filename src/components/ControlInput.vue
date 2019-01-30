@@ -12,7 +12,7 @@
         </div>
 
         <div class="kiwi-controlinput-inner">
-            <away-status-indicator :user="this.currentUser"/>
+            <away-status-indicator :user="currentUser"/>
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i
