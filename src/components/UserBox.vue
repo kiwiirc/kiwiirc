@@ -2,10 +2,7 @@
     <div class="kiwi-userbox">
         <div class="kiwi-userbox-header">
             <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"/>
-            <span
-                :class="{'kiwi-userbox-user-status-away' : userStatus }"
-                class="kiwi-userbox-user-status"
-            />
+            <AwayStatusIndicator/>
             <h3>{{ user.nick }}</h3>
             <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
         </div>
@@ -139,8 +136,12 @@
 
 import state from '@/libs/state';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
+    components: {
+        AwayStatusIndicator,
+    },
     props: ['buffer', 'network', 'user'],
     data: function data() {
         return {
@@ -192,11 +193,8 @@ export default {
 
             return true;
         },
-        userStatus: function userStatus() {
-            if (state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify')) {
-                return this.user.getUserStatus();
-            }
-            return '';
+        doesNetworkHaveAwayNotify: function doesNetworkHaveAwayNotify() {
+            return this.$state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
         },
         userMode: {
             get: function getUserMode() {

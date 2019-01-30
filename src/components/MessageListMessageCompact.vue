@@ -43,11 +43,7 @@
         >
             {{ ml.formatTime(message.time) }}
         </div>
-        <span
-            v-if="message.type === 'privmsg'"
-            :class="{'kiwi-messagelistcompact-user-status-away' : userStatus }"
-            class="kiwi-messagelistcompact-user-status"
-        />
+        <AwayStatusIndicator/>
         <div
             :style="{ 'color': userColour }"
             class="kiwi-messagelist-nick"
@@ -78,10 +74,12 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
+import AwayStatusIndicator from './AwayStatusIndicator';
 import MessageInfo from './MessageInfo';
 
 export default {
     components: {
+        AwayStatusIndicator,
         MessageInfo,
     },
     props: ['ml', 'message', 'idx'],
@@ -92,9 +90,6 @@ export default {
     computed: {
         userColour() {
             return this.ml.userColour(this.message.user);
-        },
-        userStatus() {
-            return this.ml.userStatus(this.message.user);
         },
     },
     methods: {

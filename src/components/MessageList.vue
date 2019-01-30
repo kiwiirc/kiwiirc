@@ -227,9 +227,6 @@ export default {
                 !this.buffer.joined &&
                 this.buffer.getNetwork().state === 'connected';
         },
-        doesNetworkHaveAwayNotify() {
-            return this.$state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
-        },
     },
     watch: {
         buffer(newBuffer) {

@@ -8,7 +8,7 @@
         class="kiwi-nicklist-user"
         @click="nicklist.openUserbox(user)"
     >
-        <span class="kiwi-nicklist-away-status-indicator"/>
+        <AwayStatusIndicator/>
         <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span>
         <span
             :style="{ 'color': userColour }"
@@ -22,22 +22,19 @@
 </template>
 
 <script>
-
 'kiwi public';
 
+import AwayStatusIndicator from './AwayStatusIndicator';
+
 export default {
+    components: {
+        AwayStatusIndicator,
+    },
     props: ['user', 'nicklist'],
     computed: {
         userColour() {
             if (this.nicklist.useColouredNicks) {
                 return this.user.getColour();
-            }
-            return '';
-        },
-        userStatus() {
-            let activeNetworkState = this.$state.getActiveNetwork();
-            if (activeNetworkState.ircClient.network.cap.isEnabled('away-notify')) {
-                return this.user.getUserStatus();
             }
             return '';
         },
@@ -69,26 +66,6 @@ export default {
     font-family: fontAwesome, sans-serif;
     line-height: 30px;
     opacity: 0;
-}
-
-.kiwi-nicklist-user-status-available > .kiwi-nicklist-status-indicator {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border: 1px solid #e1e1e1;
-    border-radius: 50%;
-    margin: 0 4px 0 0;
-    background-color: green;
-}
-
-.kiwi-nicklist-user-status-away > .kiwi-nicklist-status-indicator {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border: 1px solid #e1e1e1;
-    border-radius: 50%;
-    margin: 0 4px 0 0;
-    background: red;
 }
 
 .kiwi-nicklist-messageuser:hover {

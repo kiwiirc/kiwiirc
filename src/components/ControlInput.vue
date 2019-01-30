@@ -13,10 +13,7 @@
 
         <div class="kiwi-controlinput-inner">
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
-                <span
-                    :class="{'kiwi-controlinput-user-status-away' : isUserAway }"
-                    class="kiwi-controlinput-user-status"
-                />
+                <AwayStatusIndicator/>
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i
                     :class="[selfuser_open ? 'fa-caret-down' : 'fa-caret-up']"
@@ -110,10 +107,12 @@ import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
 import SelfUser from './SelfUser';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         AutoComplete,
+        AwayStatusIndicator,
         SelfUser,
     },
     props: ['container', 'buffer'],
@@ -159,13 +158,8 @@ export default {
         shouldShowEmojiPicker() {
             return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
         },
-        isUserAway() {
-            let activeNetworkState = this.buffer.getNetwork();
-            if (this.$state.getUser(activeNetworkState.id, activeNetworkState.nick)) {
-                let user = this.$state.getUser(activeNetworkState.id, activeNetworkState.nick);
-                return user.away.length;
-            }
-            return '';
+        doesNetworkHaveAwayNotify() {
+            return this.$state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
         },
     },
     watch: {
