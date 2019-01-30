@@ -42,8 +42,7 @@ export default class UserState {
     getUserStatus() {
         if (this.away.length) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }

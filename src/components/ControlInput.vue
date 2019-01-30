@@ -162,7 +162,8 @@ export default {
         isUserAway() {
             let activeNetworkState = this.buffer.getNetwork();
             if (this.$state.getUser(activeNetworkState.id, activeNetworkState.nick)) {
-               return this.$state.getUser(activeNetworkState.id, activeNetworkState.nick).away.length 
+                let user = this.$state.getUser(activeNetworkState.id, activeNetworkState.nick);
+                return user.away.length;
             }
             return '';
         },
