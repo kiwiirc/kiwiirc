@@ -13,7 +13,7 @@
 
         <div class="kiwi-controlinput-inner">
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
-                <span 
+                <span
                     :class="{'kiwi-controlinput-user-status-away' : isUserAway }"
                     class="kiwi-controlinput-user-status"
                 />
@@ -162,9 +162,9 @@ export default {
         isUserAway() {
             let activeNetworkState = this.buffer.getNetwork();
             if (this.$state.getUser(activeNetworkState.id, activeNetworkState.nick)) {
-                return this.$state.getUser(activeNetworkState.id, activeNetworkState.nick).away.length ? true : false;
+               return this.$state.getUser(activeNetworkState.id, activeNetworkState.nick).away.length 
             }
-            return;
+            return '';
         },
     },
     watch: {

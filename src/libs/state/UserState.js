@@ -40,6 +40,10 @@ export default class UserState {
         return this.colour === 'default' ? '' : this.colour;
     }
     getUserStatus() {
-        return this.away.length ? true : false;
+        if (this.away.length) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

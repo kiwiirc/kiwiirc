@@ -2,7 +2,7 @@
     <div class="kiwi-userbox">
         <div class="kiwi-userbox-header">
             <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"/>
-            <span 
+            <span
                 :class="{'kiwi-userbox-user-status-away' : userStatus }"
                 class="kiwi-userbox-user-status"
             />

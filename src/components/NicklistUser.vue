@@ -8,7 +8,7 @@
         class="kiwi-nicklist-user"
         @click="nicklist.openUserbox(user)"
     >
-        <span class="away-status-indicator"/>
+        <span class="kiwi-nicklist-away-status-indicator"/>
         <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span>
         <span
             :style="{ 'color': userColour }"
@@ -39,6 +39,7 @@ export default {
             if (activeNetworkState.ircClient.network.cap.isEnabled('away-notify')) {
                 return this.user.getUserStatus();
             }
+            return '';
         },
     },
 };
@@ -70,7 +71,7 @@ export default {
     opacity: 0;
 }
 
-.kiwi-nicklist-user-status-available > .away-status-indicator {
+.kiwi-nicklist-user-status-available > .kiwi-nicklist-status-indicator {
     display: inline-block;
     width: 7px;
     height: 7px;
@@ -80,7 +81,7 @@ export default {
     background-color: green;
 }
 
-.kiwi-nicklist-user-status-away > .away-status-indicator {
+.kiwi-nicklist-user-status-away > .kiwi-nicklist-status-indicator {
     display: inline-block;
     width: 7px;
     height: 7px;
