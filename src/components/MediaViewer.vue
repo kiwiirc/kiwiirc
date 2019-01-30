@@ -187,10 +187,12 @@ export default {
             }
         },
         popViewerIn() {
-            this.VueDraggableResizableWidth =
-            this.$refs.VueDraggableResizableContainer.parentNode.clientWidth;
-            this.VueDraggableResizableHeight =
-            this.$refs.VueDraggableResizableContainer.parentNode.clientHeight * 0.4;
+            if (this.$refs.VueDraggableResizableContainer.parentNode) {
+                this.VueDraggableResizableWidth =
+                this.$refs.VueDraggableResizableContainer.parentNode.clientWidth;
+                this.VueDraggableResizableHeight =
+                this.$refs.VueDraggableResizableContainer.parentNode.clientHeight * 0.4;
+            }
             this.VueDraggableResizableTop = 0;
             this.VueDraggableResizableLeft = 0;
         },
