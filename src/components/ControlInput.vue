@@ -555,6 +555,13 @@ export default {
 
 .kiwi-controlinput-inner i {
     font-size: 120%;
+    margin-left: 5px;
+}
+
+.kiwi-controlinput-inner .kiwi-awaystatusindicator {
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: -5px;
 }
 
 .kiwi-controlinput-user {

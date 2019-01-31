@@ -7,14 +7,14 @@
                 <span class="kiwi-selfuser-modes">( {{ modeString }} )</span>
                 <i class="fa fa-cog" aria-hidden="true" @click="openSelfActions('Nick')" />
             </span>
-            <span class="kiwi-selfuser-host">
-                <i class="fa fa-server" aria-hidden="true" />
-                {{ netUser.username }}@{{ netUser.host }}
-            </span>
             <span class="kiwi-selfuser-status">
                 <i class="fa fa-info-circle" aria-hidden="true" />
                 <span class="kiwi-selfuser-status-show">Availible</span>
                 <i class="fa fa-cog" aria-hidden="true" @click="openSelfActions('Status')" />
+            </span>
+            <span class="kiwi-selfuser-host">
+                <i class="fa fa-server" aria-hidden="true" />
+                {{ netUser.username }}@{{ netUser.host }}
             </span>
         </div>
         <div v-if="selfUserSettingsOpen" class="kiwi-selfuser-actions">
@@ -33,9 +33,6 @@
                 </span>
             </form>
             <a v-if="selfUserSettingsDisplay === 'Status'" href="#">Set Away</a>
-        </div>
-        <div class="kiwi-close-icon" @click="$emit('close')">
-            <i class="fa fa-times" aria-hidden="true"/>
         </div>
     </div>
 </template>
@@ -114,7 +111,7 @@ export default {
 }
 
 .kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
-    width: 300px;
+    width: 324px;
     box-sizing: border-box;
 }
 
@@ -143,6 +140,9 @@ export default {
 
 .kiwi-selfuser-host {
     font-style: italic;
+    opacity: 0.8;
+    font-size: 0.8em;
+    word-break: break-all;
 }
 
 .kiwi-selfuser-status .kiwi-selfuser-status-show {
