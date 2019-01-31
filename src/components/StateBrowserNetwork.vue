@@ -135,14 +135,6 @@
                         </transition>
                     </div>
 
-                    <div
-                        v-if="buffer.isChannel()"
-                        class="kiwi-statebrowser-channel-settings"
-                        @click="showBufferSettings(buffer)"
-                    >
-                        <i class="fa fa-cog" aria-hidden="true"/>
-                    </div>
-
                     <div class="kiwi-statebrowser-channel-leave" @click="closeBuffer(buffer)">
                         <i class="fa fa-times" aria-hidden="true"/>
                     </div>
