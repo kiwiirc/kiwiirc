@@ -114,8 +114,7 @@ export default {
 }
 
 .kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
-    padding-right: 22px;
-    width: 100%;
+    width: 300px;
     box-sizing: border-box;
 }
 
@@ -126,6 +125,9 @@ export default {
     padding: 0.5em 10px;
     border-right: 1px solid #0003;
     cursor: default;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .kiwi-selfuser-nick {
@@ -174,6 +176,7 @@ export default {
 
 .kiwi-selfuser-nick i:last-of-type,
 .kiwi-selfuser-status i:last-of-type {
+    float: right;
     margin-left: 5px;
     opacity: 0.6;
     transition: all 0.2s;
