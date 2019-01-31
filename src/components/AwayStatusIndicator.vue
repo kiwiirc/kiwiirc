@@ -4,6 +4,7 @@
         :user="user"
         :class="{ 'kiwi-awaystatusindicator-away': isUserAway(),
                   'kiwi-awaystatusindicator-not-away': !isUserAway() }"
+        class="kiwi-awaystatusindicator"
     />
 </template>
 
@@ -36,23 +37,20 @@ export default {
 
 <style>
 
-.kiwi-awaystatusindicator-not-away {
+.kiwi-awaystatusindicator {
     display: inline-block;
     width: 7px;
     height: 7px;
     border: 1px solid #e1e1e1;
     border-radius: 50%;
     margin: 0 4px 0 0;
+}
+
+.kiwi-awaystatusindicator-not-away {
     background-color: green;
 }
 
 .kiwi-awaystatusindicator-away {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border: 1px solid #e1e1e1;
-    border-radius: 50%;
-    margin: 0 4px 0 0;
     background-color: red;
 }
 
