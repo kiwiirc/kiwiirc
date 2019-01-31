@@ -445,18 +445,6 @@ export default {
     opacity: 0;
 }
 
-.kiwi-statebrowser-channel-settings {
-    display: block;
-    height: 100%;
-    width: 35px;
-    opacity: 0;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-    z-index: 10;
-}
-
 .kiwi-statebrowser-channel-leave {
     float: right;
     opacity: 0;
