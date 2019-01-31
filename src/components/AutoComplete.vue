@@ -2,7 +2,7 @@
     <div class="kiwi-autocomplete kiwi-theme-bg">
         <span v-if="filteredAndLimitedItems.length === 0"
               class="kiwi-autocomplete-noresults">
-            No matching results
+            {{ $t('no_results_found') }}
         </span>
         <div
             v-for="item in filteredAndLimitedItems"

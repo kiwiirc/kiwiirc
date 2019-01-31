@@ -112,6 +112,10 @@ msgstr "No"
 msgid "not_found"
 msgstr "Not found."
 
+#: No results found
+msgid "no_results_found"
+msgstr "No results found."
+
 #: Warning!
 msgid "warning"
 msgstr "Warning!"
