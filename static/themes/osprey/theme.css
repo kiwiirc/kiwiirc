@@ -427,7 +427,10 @@
 
 /* When hovering over a users messages */
 .kiwi-messagelist-message--hover{
-    background-color: #f2f2f2;
+    background-color: #eae7e7;
+}
+.kiwi-messagelist-message--own {
+    background-color: #f1f0f0;
 }
 
 /* The shadow over the main text area that displays when the sidebar is open */

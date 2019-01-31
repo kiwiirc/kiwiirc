@@ -485,6 +485,9 @@
 .kiwi-messagelist-message--hover {
     background-color: #333;
 }
+.kiwi-messagelist-message--own {
+    background-color: #272727;
+}
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
     color: #dedede;

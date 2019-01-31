@@ -434,6 +434,9 @@
 .kiwi-messagelist-message--hover{
     background-color: #629477;
 }
+.kiwi-messagelist-message--own {
+    background-color: #385445;
+}
 
 /* The shadow over the main text area that displays when the sidebar is open */
 .kiwi-container--sidebar-drawn .kiwi-messagelist::after {
@@ -620,7 +623,7 @@
     border-left: 4px solid #192e24;
 }
 .kiwi-nicklist-user .kiwi-nicklist-user-nick {
-    color: #6fffb0 !important;  
+    color: #6fffb0 !important;
 }
 .kiwi-nicklist-messageuser {
     color: #6fffb0;

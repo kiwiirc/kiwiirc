@@ -459,7 +459,10 @@
 
 /* When hovering over a users messages */
 .kiwi-messagelist-message--hover{
-    background-color: #444;
+    background-color: #333;
+}
+.kiwi-messagelist-message--own {
+    background-color: #0e0e0e;
 }
 
 

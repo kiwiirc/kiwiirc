@@ -421,6 +421,9 @@
 .kiwi-messagelist-message--hover{
     background-color: #f2f2f2;
 }
+.kiwi-messagelist-message--own {
+    background-color: #f9f8f8;
+}
 
 /* The shadow over the main text area that displays when the sidebar is open */
 .kiwi-container--sidebar-drawn .kiwi-messagelist::after {
