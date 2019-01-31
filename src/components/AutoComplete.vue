@@ -1,6 +1,9 @@
 <template>
     <div class="kiwi-autocomplete kiwi-theme-bg">
-
+        <span v-if="filteredAndLimitedItems.length === 0"
+              class="kiwi-autocomplete-noresults">
+            No matching results
+        </span>
         <div
             v-for="item in filteredAndLimitedItems"
             :key="item.type+item.text"
@@ -228,6 +231,16 @@ export default {
     left: 0;
     z-index: 1;
     max-height: 300px;
+}
+
+.kiwi-autocomplete-noresults {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5em 0;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: default;
 }
 
 .kiwi-autocomplete-item {
