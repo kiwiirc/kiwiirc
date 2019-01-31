@@ -23,12 +23,9 @@ export default {
             return this.doesNetworkHaveAwayNotifyCap;
         },
         isUserAway() {
-            if (this.doesNetworkHaveAwayNotifyCap) {
-                let networkId = this.$state.getActiveNetwork().id;
-                let userToCheck = this.$state.getUser(networkId, this.user.nick);
-                return userToCheck.isUserAway();
-            }
-            return '';
+            let networkId = this.$state.getActiveNetwork().id;
+            let userToCheck = this.$state.getUser(networkId, this.user.nick);
+            return userToCheck.isUserAway();
         },
     },
 };
