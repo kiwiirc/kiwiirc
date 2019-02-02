@@ -22,6 +22,7 @@ import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 import { AudioManager } from '@/libs/AudioManager';
 import { SoundBleep } from '@/libs/SoundBleep';
+import { configTemplates } from '@/res/configTemplates';
 
 // Global utilities
 import '@/components/utils/TabbedView';
@@ -197,6 +198,10 @@ function loadApp() {
 
 function applyConfig(config) {
     Misc.dedotObject(config);
+    // if we have a config template apply that before other configs
+    if (configTemplates[config.template]) {
+        applyConfigObj(configTemplates[config.template], state.settings);
+    }
     applyConfigObj(config, state.settings);
 
     // Update the window title if we have one

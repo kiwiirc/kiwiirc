@@ -11,6 +11,7 @@ import Message from './Message';
 const stateObj = {
     // May be set by a StatePersistence instance
     persistence: null,
+    template: null,
 
     // Settings may be overridden via config.json
     settings: {
