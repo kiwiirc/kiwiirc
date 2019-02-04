@@ -400,6 +400,8 @@ function clientMiddleware(state, network) {
             }
 
             // If we need to manually check if this user is blocked..
+            // PM_BLOCK_REQUIRES_CHECK means we should whois the user to get their oper status. We
+            // allways allow messages from opers.
             if (blockNewPms && isPrivateMessage && !buffer && pmBlock === PM_BLOCK_REQUIRES_CHECK) {
                 // if the nick is in pendingPms it has already issued a whois request
                 let awaitingWhois = !!_.find(network.pendingPms, { nick: event.nick });
