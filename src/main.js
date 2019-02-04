@@ -399,7 +399,7 @@ function initSound() {
     let bleep = new AudioManager(sound);
 
     bleep.listen(state);
-    bleep.listenForHighlights(state);
+    bleep.listenForMessages(state);
 }
 
 function initInputCommands() {
