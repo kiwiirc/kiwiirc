@@ -404,7 +404,7 @@ function initSound() {
     let bleep = new AudioManager(sound);
 
     bleep.listen(state);
-    bleep.listenForHighlights(state);
+    bleep.watchForMessages(state);
 }
 
 function initInputCommands() {
