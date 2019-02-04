@@ -128,16 +128,17 @@ export function addEmojis(wordCtx, emojiList, emojiLocation) {
     return word;
 }
 
-const channelMatch = /(^|\s|[@+~&%}]+)([#&][^ .,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i;
+const channelMatch = /(^|\s)([@+~&%}]*)([#&][^ .,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i;
 export function linkifyChannels(word) {
     // "@#kiwiirc," = 3 parts. (prefix=@)(channel=#kiwiirc)(suffix=,)
-    return word.replace(channelMatch, (match, mPrefix, mChannel, mSuffix) => {
+    return word.replace(channelMatch, (match, mLead, mPrefix, mChannel, mSuffix) => {
         let chan = _.escape(mChannel.trim());
+        let lead = _.escape(mLead);
         let prefix = _.escape(mPrefix);
         let suffix = _.escape(mSuffix);
 
         let link = `<a class="u-link kiwi-channel" data-channel-name="${chan}">${chan}</a>`;
-        return `${prefix}${link}${suffix}`;
+        return `${lead}${prefix}${link}${suffix}`;
     });
 }
 
