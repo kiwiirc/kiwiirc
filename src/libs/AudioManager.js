@@ -27,7 +27,7 @@ export class AudioManager {
     }
 
     /** Watch the Kiwi state for any message highlights and play an alert */
-    listenForMessages(state) {
+    watchForMessages(state) {
         state.$on('message.new', (message, buffer) => {
             if (buffer.setting('mute_sound')) {
                 return;
@@ -47,11 +47,11 @@ export class AudioManager {
                 return;
             }
 
-            let isNotification = message.isHighlight || buffer.setting('alert_on') === 'message';
+            let shouldBleep = message.isHighlight || buffer.setting('alert_on') === 'message';
             let isActiveBuffer = state.getActiveBuffer() === buffer;
             let inFocus = isActiveBuffer && state.ui.app_has_focus;
 
-            if (isNotification || (buffer.isQuery() && !inFocus)) {
+            if (shouldBleep || (buffer.isQuery() && !inFocus)) {
                 this.play();
             }
         });
