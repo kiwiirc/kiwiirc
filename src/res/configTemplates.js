@@ -309,8 +309,8 @@ export const configTemplates = {
         buffers: {
             messageLayout: 'modern',
             show_joinparts: false,
-            show_nick_changes: false,
-            show_mode_changes: false,
+            show_nick_changes: true,
+            show_mode_changes: true,
             show_realnames: true,
         },
     },
