@@ -1,5 +1,8 @@
 <template>
     <div class="kiwi-userbox">
+        <span v-if="isUser" class="kiwi-userbox-selfprofile">
+            You are viewing informaiton about your own user.
+        </span>
         <div class="kiwi-userbox-header">
             <h3>
                 <away-status-indicator :user="user"/> {{ user.nick }}
@@ -11,10 +14,6 @@
         <div class="kiwi-userbox-basicinfo">
             <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_realname') }}:</span>
             <span class="kiwi-userbox-basicinfo-data">{{ user.realname }} </span>
-            <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_status') }}:</span>
-            <span class="kiwi-userbox-basicinfo-data">
-                {{ user.away ? user.away : $t('whois_status_available') }}
-            </span>
         </div>
 
         <p class="kiwi-userbox-actions">
@@ -341,6 +340,16 @@ export default {
     box-sizing: border-box;
     overflow-y: auto;
     height: 100%;
+}
+
+.kiwi-userbox-selfprofile {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
 }
 
 .kiwi-userbox-header {
