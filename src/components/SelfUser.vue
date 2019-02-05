@@ -2,18 +2,12 @@
     <div class="kiwi-selfuser kiwi-theme-bg">
         <div v-if="!selfUserSettingsOpen" class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">
-                <i class="fa fa-user-circle-o" aria-hidden="true" />
+                <away-status-indicator :user="currentUser"/>
                 {{ network.nick }}
                 <span class="kiwi-selfuser-modes">( {{ modeString }} )</span>
-                <i class="fa fa-cog" aria-hidden="true" @click="openSelfActions('Nick')" />
-            </span>
-            <span class="kiwi-selfuser-status">
-                <i class="fa fa-info-circle" aria-hidden="true" />
-                <span class="kiwi-selfuser-status-show">Availible</span>
-                <i class="fa fa-cog" aria-hidden="true" @click="openSelfActions('Status')" />
+                <i class="fa fa-pencil" aria-hidden="true" @click="openSelfActions('Nick')" />
             </span>
             <span class="kiwi-selfuser-host">
-                <i class="fa fa-server" aria-hidden="true" />
                 {{ netUser.username }}@{{ netUser.host }}
             </span>
         </div>
@@ -42,8 +36,12 @@
 'kiwi public';
 
 import state from '@/libs/state';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
+    components: {
+        AwayStatusIndicator,
+    },
     props: ['network'],
     data: function data() {
         return {
@@ -54,6 +52,10 @@ export default {
         };
     },
     computed: {
+        currentUser() {
+            let activeNetworkState = this.$state.getActiveNetwork();
+            return this.$state.getUser(activeNetworkState.id, activeNetworkState.nick);
+        },
         modeString() {
             let str = '';
             this.network.ircClient.user.modes.forEach((mode) => {
@@ -106,30 +108,21 @@ export default {
 </script>
 
 <style>
-.kiwi-selfuser {
-    box-sizing: border-box;
-}
-
-.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
-    width: 324px;
-    box-sizing: border-box;
-}
-
 .kiwi-selfuser-nick,
 .kiwi-selfuser-host,
 .kiwi-selfuser-status {
     display: inline-block;
-    padding: 0.5em 10px;
-    border-right: 1px solid #0003;
+    padding: 0 10px;
+    line-height: 34px;
     cursor: default;
     width: 100%;
     box-sizing: border-box;
-    border-bottom: 1px solid #f5f5f5;
 }
 
 .kiwi-selfuser-nick {
     min-width: 85px;
     font-weight: bold;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .kiwi-selfuser-modes {
@@ -141,6 +134,7 @@ export default {
 .kiwi-selfuser-host {
     font-style: italic;
     opacity: 0.8;
+    padding-left: 27px;
     font-size: 0.8em;
     word-break: break-all;
 }
@@ -160,31 +154,17 @@ export default {
 
 /* Style the icons in the SelfUser */
 
-.kiwi-selfuser-nick i,
-.kiwi-selfuser-host i,
-.kiwi-selfuser-status i {
+.kiwi-selfuser-nick i {
     font-weight: 400;
-    line-height: 22px;
-}
-
-.kiwi-selfuser-host i,
-.kiwi-selfuser-nick i:first-of-type,
-.kiwi-selfuser-status i:first-of-type {
-    margin-right: 6px;
-    cursor: default;
-}
-
-.kiwi-selfuser-nick i:last-of-type,
-.kiwi-selfuser-status i:last-of-type {
     float: right;
     margin-left: 5px;
     opacity: 0.6;
-    transition: all 0.2s;
     cursor: pointer;
+    line-height: 36px;
+    transition: all 0.3s;
 }
 
-.kiwi-selfuser-nick i:last-of-type:hover,
-.kiwi-selfuser-status i:last-of-type:hover {
+.kiwi-selfuser-nick i:hover {
     opacity: 1;
     transition: all 0.2s;
 }

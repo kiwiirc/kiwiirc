@@ -620,7 +620,7 @@
     border-left: 4px solid #192e24;
 }
 .kiwi-nicklist-user .kiwi-nicklist-user-nick {
-    color: #6fffb0 !important;  
+    color: #6fffb0 !important;
 }
 .kiwi-nicklist-messageuser {
     color: #6fffb0;
@@ -648,9 +648,9 @@
 /* Self User ( SelfUser.vue ) */
 .kiwi-controlinput-selfuser {
     background: #fff;
-}
-.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
     border: 1px solid #ddd;
+    border-left: none;
+    border-bottom: none;
 }
 .kiwi-selfuser-actions {
     border-top: 1px solid #ddd;

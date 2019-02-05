@@ -5,7 +5,7 @@
             class="kiwi-controlinput-selfuser"
         >
             <self-user
-                v-if="selfuser_open && networkState==='connected'"
+                v-if="networkState==='connected'"
                 :network="buffer.getNetwork()"
                 @close="selfuser_open=false"
             />
@@ -555,13 +555,14 @@ export default {
 
 .kiwi-controlinput-inner i {
     font-size: 120%;
-    margin-left: 5px;
+    margin-left: 8px;
+    margin-right: 2px;
 }
 
 .kiwi-controlinput-inner .kiwi-awaystatusindicator {
-    margin-top: 15px;
+    margin-top: 16px;
     margin-left: 10px;
-    margin-right: -5px;
+    margin-right: -2px;
 }
 
 .kiwi-controlinput-user {
@@ -645,12 +646,19 @@ export default {
     bottom: 100%;
     left: 0;
     max-height: 0;
-    transition: max-height 0.2s;
+    width: 324px;
+    box-sizing: border-box;
+    border-radius: 0 6px 0 0;
+    opacity: 0;
+    transition: max-height 0.2s, opacity 0.5s;
     overflow: hidden;
 }
 
-.kiwi-controlinput-selfuser--open {
+.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
+    width: 324px;
     max-height: 300px;
+    opacity: 1;
+    transition: max-height 0.5s, opacity 0.5s;
 }
 
 @media screen and (max-width: 769px) {

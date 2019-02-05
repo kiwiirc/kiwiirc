@@ -708,14 +708,14 @@
 }
 
 /* Self User ( SelfUser.vue ) */
+.kiwi-selfuser {
+    background: #1b1b1b;
+}
 .kiwi-controlinput-selfuser {
-    background: #adadad;
-}
-.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
+    background: #1b1b1b;
     border: 1px solid #ddd;
-}
-.kiwi-selfuser-actions {
-    border-top: 1px solid #ddd;
+    border-left: none;
+    border-bottom: none;
 }
 
 .kiwi-selfuser-actions .u-button-primary {

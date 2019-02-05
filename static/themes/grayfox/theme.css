@@ -641,12 +641,9 @@
 /* Self User ( SelfUser.vue ) */
 .kiwi-controlinput-selfuser {
     background: #fff;
-}
-.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
     border: 1px solid #ddd;
-}
-.kiwi-selfuser-actions {
-    border-top: 1px solid #ddd;
+    border-left: none;
+    border-bottom: none;
 }
 
 /* Settings Aliases ( SettingsAliases.vue ) */

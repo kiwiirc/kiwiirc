@@ -820,16 +820,11 @@
 
 /* Self User ( SelfUser.vue ) */
 .kiwi-controlinput-selfuser {
-    background: #201F1F;
+    background: #151515;
     color: #dedede;
-}
-
-.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
     border: 1px solid #ddd;
-}
-
-.kiwi-selfuser-actions {
-    border-top: 1px solid #ddd;
+    border-left: none;
+    border-bottom: none;
 }
 
 .kiwi-selfuser-actions .u-button-secondary {
