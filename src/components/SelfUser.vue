@@ -14,19 +14,24 @@
         <div v-if="selfUserSettingsOpen" class="kiwi-selfuser-actions">
             <div v-if="error_message" class="kiwi-selfuser-error-message">{{ error_message }}</div>
             <form v-if="selfUserSettingsDisplay === 'Nick'" class="u-form">
-                <span class="u-input-prompt-label">{{ $t('change_nick') }}</span>
+                <label>
+                    <input v-model="setUserAwayToggle" type="checkbox" >
+                    <span>Set status as away</span>
+                </label>
+                <hr>
                 <input v-model="newNick"
                        type="text" class="u-input" placeholder="Enter new nickname...">
                 <span class="u-input-button-container">
                     <a class="u-button u-button-primary"
-                       @click="userNameUpdate(newNick)">{{ $t('ok') }}
+                       @click="userNameUpdate(newNick)">
+                        <i class="fa fa-check" aria-hidden="true" />
                     </a>
                     <a class="u-button u-button-warning"
-                       @click="userNameCancel()">{{ $t('cancel') }}
+                       @click="userNameCancel()">
+                        <i class="fa fa-times" aria-hidden="true" />
                     </a>
                 </span>
             </form>
-            <a v-if="selfUserSettingsDisplay === 'Status'" href="#">Set Away</a>
         </div>
     </div>
 </template>
@@ -202,12 +207,18 @@ export default {
 
 .kiwi-selfuser-actions form .u-input-button-container {
     position: absolute;
-    bottom: 2px;
-    right: 2px;
+    bottom: 5px;
+    right: 5px;
     z-index: 1;
+}
+
+.kiwi-selfuser-actions form .u-input-button-container .u-button {
+    padding: 3px 0;
+    width: 30px;
 }
 
 .kiwi-selfuser-actions .u-input {
     margin-bottom: 10px;
 }
+
 </style>
