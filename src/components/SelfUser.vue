@@ -2,7 +2,7 @@
     <div class="kiwi-selfuser kiwi-theme-bg">
         <div v-if="!selfUserSettingsOpen" class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">
-                <away-status-indicator :user="currentUser"/>
+                <away-status-indicator :user="netUser"/>
                 {{ network.nick }}
                 <span class="kiwi-selfuser-modes">( {{ modeString }} )</span>
                 <i class="fa fa-pencil" aria-hidden="true" @click="openSelfActions('Nick')" />
@@ -13,12 +13,11 @@
         </div>
         <div v-if="selfUserSettingsOpen" class="kiwi-selfuser-actions">
             <div v-if="error_message" class="kiwi-selfuser-error-message">{{ error_message }}</div>
-            <form v-if="selfUserSettingsDisplay === 'Nick'" class="u-form">
+            <form class="u-form">
                 <label>
-                    <input v-model="setUserAwayToggle" type="checkbox" >
-                    <span>Set status as away</span>
+                    <input v-model="awayStatus" type="checkbox" >
+                    <span>Set self as away</span>
                 </label>
-                <hr>
                 <input v-model="newNick"
                        type="text" class="u-input" placeholder="Enter new nickname...">
                 <span class="u-input-button-container">
@@ -53,7 +52,6 @@ export default {
             newNick: '',
             error_message: '',
             selfUserSettingsOpen: false,
-            selfUserSettingsDisplay: false,
         };
     },
     computed: {
@@ -77,6 +75,14 @@ export default {
         netUser() {
             return this.network.ircClient.user;
         },
+        awayStatus: {
+            get() {
+                return !!state.getUser(this.network.id, this.network.nick).away;
+            },
+            set(val) {
+                this.network.ircClient.raw('AWAY', val ? 'Currently away' : '');
+            },
+        },
     },
     created() {
         this.listen(this.network.ircClient, 'nick in use', (event) => {
@@ -86,7 +92,6 @@ export default {
     methods: {
         openSelfActions(option) {
             this.selfUserSettingsOpen = true;
-            this.selfUserSettingsDisplay = option;
         },
         userNameUpdate(newNick) {
             if (newNick.length !== 0) {
@@ -102,11 +107,9 @@ export default {
         },
         userNameCancel() {
             this.selfUserSettingsOpen = false;
-            this.selfUserSettingsDisplay = false;
         },
         checkUserAway() {
-            let activeNetworkState = this.buffer.getNetwork();
-            return state.getUser(activeNetworkState.id, activeNetworkState.nick).away;
+            return !!state.getUser(this.network.id, this.network.nick).away;
         },
     },
 };
