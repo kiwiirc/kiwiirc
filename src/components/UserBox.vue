@@ -1,9 +1,10 @@
 <template>
     <div class="kiwi-userbox">
         <div class="kiwi-userbox-header">
-            <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"/>
-            <away-status-indicator :user="user"/>
-            <h3>{{ user.nick }}</h3>
+            <h3>
+                <away-status-indicator :user="user"/> {{ user.nick }}
+                <span class="kiwi-userbox-modeString">( {{ modeString }} )</span>
+            </h3>
             <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
         </div>
 
@@ -246,6 +247,16 @@ export default {
             }
             return false;
         },
+        modeString() {
+            let str = '';
+            this.network.ircClient.user.modes.forEach((mode) => {
+                str += mode;
+            });
+            if (str) {
+                str = '+' + str;
+            }
+            return str;
+        },
     },
     watch: {
         user: function watchUser() {
@@ -342,6 +353,11 @@ export default {
         padding: 0;
         cursor: default;
         display: inline-block;
+
+        .kiwi-userbox-modeString {
+            font-weight: normal;
+            font-size: 0.8em;
+        }
     }
 
     .kiwi-userbox-user-status {
