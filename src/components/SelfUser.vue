@@ -39,7 +39,6 @@
 
 'kiwi public';
 
-import state from '@/libs/state';
 import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
@@ -77,7 +76,7 @@ export default {
         },
         awayStatus: {
             get() {
-                return !!state.getUser(this.network.id, this.network.nick).away;
+                return !!this.$state.getUser(this.network.id, this.network.nick).away;
             },
             set(val) {
                 this.network.ircClient.raw('AWAY', val ? 'Currently away' : '');
@@ -109,7 +108,7 @@ export default {
             this.selfUserSettingsOpen = false;
         },
         checkUserAway() {
-            return !!state.getUser(this.network.id, this.network.nick).away;
+            return !!this.$state.getUser(this.network.id, this.network.nick).away;
         },
     },
 };

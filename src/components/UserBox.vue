@@ -134,7 +134,6 @@
 
 'kiwi public';
 
-import state from '@/libs/state';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import AwayStatusIndicator from './AwayStatusIndicator';
 
@@ -268,9 +267,9 @@ export default {
                 '';
         },
         openQuery: function openQuery() {
-            let buffer = state.addBuffer(this.network.id, this.user.nick);
-            state.setActiveBuffer(this.network.id, buffer.name);
-            state.$emit('userbox.hide');
+            let buffer = this.$state.addBuffer(this.network.id, this.user.nick);
+            this.$state.setActiveBuffer(this.network.id, buffer.name);
+            this.$state.$emit('userbox.hide');
         },
         onChannelsClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
@@ -288,11 +287,11 @@ export default {
             });
         },
         kickUser: function kickUser() {
-            let reason = state.setting('buffers.default_kick_reason');
+            let reason = this.$state.setting('buffers.default_kick_reason');
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
         },
         createBanMask: function banMask() {
-            let mask = state.setting('buffers.default_ban_mask');
+            let mask = this.$state.setting('buffers.default_ban_mask');
             mask = mask.replace('%n', this.user.nick);
             mask = mask.replace('%i', this.user.username);
             mask = mask.replace('%h', this.user.host);
@@ -313,7 +312,7 @@ export default {
             }
 
             let banMask = this.createBanMask();
-            let reason = state.setting('buffers.default_kick_reason');
+            let reason = this.$state.setting('buffers.default_kick_reason');
             this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
         },
