@@ -1,17 +1,21 @@
-# Kiwi IRC
+<div style="text-align:center;">
+<h1 style="margin-top:0;">Kiwi<span style="color:#42b992;">IRC</span><img style="margin-left: 5px;margin-top: -10px" src="https://kiwiirc.com/img/logo.png" />
+</h1>
+Kiwi IRC is a handcrafted, lightening fast, open source, web based IRC client.
+</div>
 
-> The next generation of the Kiwi IRC web based IRC client
+<br>
+### Getting Started:
+If you want to run Kiwi IRC ready to use packages/installers/archives can be found [here](https://kiwiirc.com/downloads/index.html).
 
-### Easy supported ways to install Kiwi IRC
-If you just want to run Kiwi IRC and not modify it then pre-built and ready to use packages/installers/archives can be found here: https://kiwiirc.com/downloads/index.html
+This repository only contains the Kiwi IRC client.
+------------
 
 
-### Dependencies
-Before you can build or start to develop on Kiwi IRC, make sure to have the following installed on your system:
-* [Nodejs](https://nodejs.org/)
-* [yarn](https://yarnpkg.com/)
+### Developing with Kiwi
+Before you can build or start to develop on Kiwi IRC locally, please make sure to have the following installed on your system:  [Nodejs](https://nodejs.org/) and [yarn](https://yarnpkg.com/).
 
-### Development environment
+Once installed you can install and start Kiwi locally with:
 
 ``` bash
 # install dependencies
@@ -20,36 +24,43 @@ yarn install
 # development web server with hot reload at http://localhost:8080/
 yarn run dev
 ```
+<span style="display:inline-block;text-align:center;width:100%;">
+All of our source files are linted automatically and will fail on any linting errors.
+</span>
 
-Source files are linted automatically and will fail on any linting errors.
+<span style="display:inline-block;text-align:center;width:100%;border:1px solid #42b992;line-height:40px;border-radius:4px;font-size:0.85em;"><b>Just looking to build a theme? </b> Try the online [theme builder](https://kiwiirc.com/nextclient-themebuilder)
+</span>
+
+------------
+
+### Configuration
+By default, the client will load the <b>/static/config.json</b> file on startup which
+contains any runtime configuration. By default it will connect to IRC networks via kiwiirc.com servers while you are developing locally.
+
+To use your own server you either need to be using a websocket capable IRC server (none yet support this) or need to be connecting to a Kiwi IRC server which can be found [here](https://github.com/kiwiirc/webircgateway).
+
+
+Many core settings can be modified from within the config file.
+
+<span style="display:inline-block;text-align:center;width:100%;border:1px solid #d16c6c;line-height:40px;border-radius:4px;font-size:0.8em;"><b> If contributing to Kiwi, please do not commit changes to the config file. </b>
+</span>
+
+------------
+
+
 
 ### Building for production
+If you have finished modifying Kiwi and wish to deploy it to a live server, please ensure you run the build command.
 
 ``` bash
-# install dependencies
-$ yarn install
-
 # build for production with minification
 $ yarn run build
 ```
+<span style="display:inline-block;text-align:center;width:100%;border:1px solid #42b992;line-height:18px;border-radius:4px;font-size:0.85em;padding:12px 10px;">The built files will be placed in <b>dist/ folder</b>.
+These files can be hosted anywhere - Apache, Nginx, the Kiwi IRC server, your CDN.
+</span>
 
-Built files that can be uploaded to your webserver will be placed in the dist/ folder.
-
-### Configuration
-
-By default, the client will load the /static/config.json file on startup which
-contains any runtime configuration. When in the development environment this can
-be found in [static/config.json](static/config.json)
-
-## Getting started
-
-If you just want to run Kiwi IRC and not modify it then pre-built and ready to use packages/installers/archives can be found here: https://kiwiirc.com/downloads/index.html
-
-**Just looking to build a theme? Try the online [theme builder](https://kiwiirc.com/nextclient-themebuilder)**
-
-This repository only contains the client side (the website). By default it will connect to IRC networks via kiwiirc.com servers while you are developing locally. To use your own server you either need to be using a websocket capable IRC server (none yet support this) or need to be connecting to a Kiwi IRC server which can be found [here](https://github.com/kiwiirc/webircgateway). 
-
-The client side files built from this repository may be hosted anywhere - Apache, Nginx, the Kiwi IRC server, your CDN.
+------------
 
 ## Browser support
 
@@ -63,6 +74,7 @@ Kiwi IRC is tested on the below browsers. Other browsers are not checked and may
 ## Thanks
 
 Providing sponsorship to the Kiwi IRC project helps keep kiwiirc.com free to use and makes the ongoing development possible.
+
 Without these [Sponsors](sponsors.md) development would be much slower so many thanks to these!
 
 ## License
