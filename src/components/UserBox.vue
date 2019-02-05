@@ -241,7 +241,7 @@ export default {
             return channels.join(' ');
         },
         isUser() {
-            if (this.user === state.getUser(this.network.id, this.network.nick)) {
+            if (this.user === this.$state.getUser(this.network.id, this.network.nick)) {
                 return true;
             }
             return false;
