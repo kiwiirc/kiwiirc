@@ -17,7 +17,7 @@
         </div>
 
         <p class="kiwi-userbox-actions">
-            <a class="kiwi-userbox-action" @click="openQuery">
+            <a v-if="!isUser" class="kiwi-userbox-action" @click="openQuery">
                 <i class="fa fa-comment-o" aria-hidden="true"/>
                 {{ $t('send_a_message') }}
             </a>
@@ -28,7 +28,7 @@
 
         </p>
 
-        <form class="u-form kiwi-userbox-ignoreuser">
+        <form v-if="!isUser" class="u-form kiwi-userbox-ignoreuser">
             <label>
                 <input v-model="user.ignore" type="checkbox" >
                 <span> {{ $t('ignore_user') }} </span>
@@ -81,7 +81,7 @@
             </template>
         </div>
 
-        <div v-if="buffer.isChannel() && areWeAnOp" class="kiwi-userbox-opactions">
+        <div v-if="buffer.isChannel() && areWeAnOp && !isUser" class="kiwi-userbox-opactions">
             <form class="u-form" @submit.prevent="">
                 <label v-if="isUserOnBuffer">
                     {{ $t('user_access') }} <select v-model="userMode">
@@ -241,6 +241,12 @@ export default {
             }
             return channels.join(' ');
         },
+        isUser() {
+            if (this.user === state.getUser(this.network.id, this.network.nick)) {
+                return true;
+            }
+            return false;
+        },
     },
     watch: {
         user: function watchUser() {
@@ -329,7 +335,7 @@ export default {
 
 .kiwi-userbox-header {
     position: relative;
-    padding: 0.5em 1em 0.5em 5em;
+    padding: 0.5em 1em;
     overflow: hidden;
 
     h3 {
@@ -361,10 +367,8 @@ export default {
 }
 
 .fa-user.kiwi-userbox-icon {
-    position: absolute;
-    left: 0.5em;
-    top: 0.25em;
-    font-size: 3em;
+    display: inline-block;
+    font-size: 2em;
 }
 
 .kiwi-userbox-usermask {
@@ -376,7 +380,7 @@ export default {
     width: 100%;
     margin: 0;
     display: block;
-    padding: 1em 1em 1em 1.4em;
+    padding: 0.5em 1em;
     box-sizing: border-box;
 }
 
@@ -417,7 +421,7 @@ export default {
         padding: 0.5em 1em;
         color: #000;
         cursor: pointer;
-        margin: 0 auto 20px auto;
+        margin: 0 2px;
         transition: all 0.3s;
         border-radius: 3px;
 
@@ -472,12 +476,13 @@ export default {
     padding: 0 1em;
     text-align: left;
     border: none;
-    line-height: 2.8em;
-    font-size: 1em;
+    line-height: 2.2em;
+    font-size: 0.8em;
 }
 
 .kiwi-userbox-opaction i {
-    margin-right: 0.3em;
+    margin-right: 0.2em;
+    font-size: 1.2em;
 }
 
 .kiwi-userbox-actions a {
@@ -545,6 +550,7 @@ export default {
         width: 200px;
         clear: both;
         display: block;
+        margin: 0 auto 20px auto;
     }
 }
 </style>
