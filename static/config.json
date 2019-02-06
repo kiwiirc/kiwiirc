@@ -15,8 +15,8 @@
         { "name": "Sky", "url": "static/themes/sky" }
     ],
     "startupOptions" : {
-        "server": "irc.snoonet.org",
-        "port": 6697,
+        "server": "irc.freenode.net",
+        "port": 6667,
         "tls": false,
         "direct": false,
         "channel": "#kiwiirc-default",
