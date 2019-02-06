@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-selfuser kiwi-theme-bg">
-        <div v-if="!selfUserSettingsOpen" class="kiwi-selfuser-mask">
+        <div v-if="!self_user_settings_open" class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">
                 <away-status-indicator :user="netUser"/>
                 {{ network.nick }}
@@ -11,7 +11,7 @@
                 {{ netUser.username }}@{{ netUser.host }}
             </span>
         </div>
-        <div v-if="selfUserSettingsOpen" class="kiwi-selfuser-actions">
+        <div v-if="self_user_settings_open" class="kiwi-selfuser-actions">
             <div v-if="error_message" class="kiwi-selfuser-error-message">{{ error_message }}</div>
             <form class="u-form">
                 <label>
@@ -45,12 +45,15 @@ export default {
     components: {
         AwayStatusIndicator,
     },
-    props: ['network'],
+    props: {
+        network: Object,
+        show_self_user_settings: Boolean,
+    },
     data: function data() {
         return {
             newNick: '',
             error_message: '',
-            selfUserSettingsOpen: false,
+            self_user_settings_open: this.show_self_user_settings,
         };
     },
     computed: {
@@ -83,6 +86,11 @@ export default {
             },
         },
     },
+    watch: {
+        show_self_user_settings: function() {
+            this.self_user_settings_open = false;
+        },
+    },
     created() {
         this.listen(this.network.ircClient, 'nick in use', (event) => {
             this.error_message = `The nickname '${event.nick}' is already in use!`;
@@ -90,7 +98,7 @@ export default {
     },
     methods: {
         openSelfActions(option) {
-            this.selfUserSettingsOpen = true;
+            this.self_user_settings_open = true;
         },
         userNameUpdate(newNick) {
             if (newNick.length !== 0) {
@@ -105,7 +113,7 @@ export default {
             }
         },
         userNameCancel() {
-            this.selfUserSettingsOpen = false;
+            this.self_user_settings_open = false;
         },
         checkUserAway() {
             return !!this.$state.getUser(this.network.id, this.network.nick).away;

@@ -7,6 +7,7 @@
             <self-user
                 v-if="networkState==='connected'"
                 :network="buffer.getNetwork()"
+                :show_self_user_settings="selfuser_open"
                 @close="selfuser_open=false"
             />
         </div>
