@@ -650,7 +650,7 @@ export default {
     box-sizing: border-box;
     border-radius: 0 6px 0 0;
     opacity: 0;
-    transition: max-height 0.2s, opacity 0.5s;
+    transition: max-height 0.2s, opacity 0.3s;
     overflow: hidden;
 }
 
@@ -658,7 +658,7 @@ export default {
     width: 324px;
     max-height: 300px;
     opacity: 1;
-    transition: max-height 0.5s, opacity 0.5s;
+    transition: max-height 0.3s, opacity 0.34s;
 }
 
 @media screen and (max-width: 769px) {
