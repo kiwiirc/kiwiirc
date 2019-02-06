@@ -122,8 +122,14 @@ export default {
             this.sidebarState.close();
         });
         this.listen(state, 'document.keydown', (ev) => {
-            // Return if not Page Up or Page Down keys
-            if (ev.keyCode !== 33 && ev.keyCode !== 34) {
+            // Return if not a wanted key code
+            let wantedCodes = [
+                33, // page up
+                34, // page down
+                35, // end
+                36, // home
+            ];
+            if (wantedCodes.indexOf(ev.keyCode) === -1) {
                 return;
             }
 
@@ -145,12 +151,18 @@ export default {
                 if (scrollTop < 0) {
                     scrollTop = 0;
                 }
-            } else {
+            } else if (ev.keyCode === 34) {
                 // down
                 scrollTop += scrollDistance;
                 if (scrollTop > scrollMax) {
                     scrollTop = scrollMax;
                 }
+            } else if (ev.keyCode === 35) {
+                // end
+                scrollTop = scrollMax;
+            } else {
+                // home
+                scrollTop = 0;
             }
 
             messageList.scrollTop = scrollTop;
