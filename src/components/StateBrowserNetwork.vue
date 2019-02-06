@@ -154,6 +154,7 @@
 
 <script>
 'kiwi public';
+
 import Vue from 'vue';
 import _ from 'lodash';
 import state from '@/libs/state';
