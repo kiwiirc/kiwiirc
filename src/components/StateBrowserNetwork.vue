@@ -154,16 +154,18 @@
 
 <script>
 'kiwi public';
-
+import Vue from 'vue';
 import _ from 'lodash';
 import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
 import * as bufferTools from '@/libs/bufferTools';
 import BufferSettings from './BufferSettings';
+import Salert from './Salert';
 
 export default {
     components: {
         BufferSettings,
+        Salert,
     },
     props: ['network', 'sidebarState'],
     data: function data() {
@@ -294,6 +296,9 @@ export default {
             this.sidebarState.showBufferSettings();
         },
         toggleAddChannel() {
+            let displaybox = new Vue(Salert);
+            displaybox.$mount();
+            this.$state.$emit('swal', 'test title', displaybox);
             this.channel_add_display = !this.channel_add_display;
             this.channel_filter_display = false;
         },
