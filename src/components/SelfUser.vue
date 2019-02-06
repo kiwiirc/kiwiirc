@@ -87,7 +87,7 @@ export default {
         },
     },
     watch: {
-        show_self_user_settings: function() {
+        show_self_user_settings: function watchSelfUserSettingsOpen() {
             this.self_user_settings_open = false;
         },
     },

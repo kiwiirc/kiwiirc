@@ -25,7 +25,6 @@
                 <i class="fa fa-question-circle" aria-hidden="true"/>
                 {{ $t('more_information') }}
             </a>
-
         </p>
 
         <form v-if="!isUser" class="u-form kiwi-userbox-ignoreuser">
