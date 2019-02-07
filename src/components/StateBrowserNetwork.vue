@@ -155,7 +155,6 @@
 <script>
 'kiwi public';
 
-import Vue from 'vue';
 import _ from 'lodash';
 import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
@@ -297,9 +296,6 @@ export default {
             this.sidebarState.showBufferSettings();
         },
         toggleAddChannel() {
-            let displaybox = new Vue(Salert);
-            displaybox.$mount();
-            this.$state.$emit('swal', '', displaybox.$el);
             this.channel_add_display = !this.channel_add_display;
             this.channel_filter_display = false;
         },

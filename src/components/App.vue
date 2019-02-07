@@ -178,14 +178,23 @@ export default {
             });
         },
         displaySweetAlert() {
-            this.listen(this.$state, 'swal', (arg1, arg2) => {
-                swal(arg1, {
-                    content: arg2,
-                    buttons: {
-                        cancel: true,
-                        confirm: true,
-                    },
-                });
+            this.listen(this.$state, 'swal', (type, titleString, component) => {
+                if (type === 'forgetMe') {
+                    swal(titleString, {
+                        content: component,
+                        dangerMode: true,
+                        buttons: {
+                            cancel: true,
+                            confirm: 'Confirm',
+                        },
+                    }).then((value) => {
+                        if (value) {
+                            // Delete locally stored user data
+                            this.$state.persistence.forgetState();
+                            window.location.reload();
+                        }
+                    });
+                }
             });
         },
         watchForThemes() {

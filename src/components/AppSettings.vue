@@ -51,8 +51,10 @@
                         <h3>Local Data</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-history">
                             <p>
-                               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                               incididunt ut labore et dolore magna aliqua.</p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                sed do eiusmod tempor incididunt ut labore et
+                                dolore magna aliqua.
+                            </p>
                             <span>
                                 <a class="u-button u-button-warning" @click="clickForget()">
                                     Delete all locally stored data
@@ -194,12 +196,14 @@
 <script>
 'kiwi public';
 
+import Vue from 'vue';
 import _ from 'lodash';
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import GlobalApi from '@/libs/GlobalApi';
 import SettingsAliases from './SettingsAliases';
 import SettingsAdvanced from './SettingsAdvanced';
+import AlertForgetMe from './alerts/alertForgetMe';
 
 /**
  * Returns an object for a vuejs computated property on a state settings value
@@ -346,15 +350,9 @@ export default {
             ];
         },
         clickForget: function clickForget() {
-            let msg = 'This will delete all stored networks and start fresh. Are you sure?';
-            /* eslint-disable no-restricted-globals, no-alert */
-            let confirmed = confirm(msg);
-            if (!confirmed) {
-                return;
-            }
-
-            state.persistence.forgetState();
-            window.location.reload();
+            let displaybox = new Vue(AlertForgetMe);
+            displaybox.$mount();
+            this.$state.$emit('swal', 'forgetMe', '', displaybox.$el);
         },
         enableAdvancedTab() {
             this.settingAdvancedEnable = true;
