@@ -1,8 +1,12 @@
 <template>
     <div class="kiwi-salert-content">
-        <h1>Delete local data?</h1>
-        <p>Are you sure you want to delete all locally stored data?.
-        This action cannot be undone.</p>
+        <div class="kiwi-salert-title">
+            <h1>Delete local data?</h1>
+        </div>
+        <div class="kiwi-salert-content-container">
+            <p>Are you sure you want to delete all locally stored data?. <br>
+                This action cannot be undone.</p>
+        </div>
     </div>
 </template>
 
@@ -23,13 +27,47 @@ export default {
         margin-bottom: -20px;
     }
 
-    .kiwi-salert-content h1 {
-        margin: 0 0 20px 0;
+    .kiwi-salert-title,
+    .kiwi-salert-content-container {
+        width: 100%;
+        text-align: left;
+        color: #22221f;
+        padding: 8px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        margin: 0;
+        box-sizing: border-box;
+
+        h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 1.4em;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .kiwi-salert-content-container {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+
+    .swal-content {
         padding: 0;
+        margin: 0;
+    }
+
+    .swal-footer {
+        display: inline-block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px 10px;
+        text-align: center;
     }
 
     .swal-overlay {
-        background-color: rgba(84, 84, 84, 0.6);
+        background-color: rgba(19, 19, 18, 0.7);
     }
 
     .swal-button-danger {

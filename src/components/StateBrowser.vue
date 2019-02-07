@@ -6,6 +6,35 @@
             <span>Edit settings</span>
         </div>
 
+        <div
+            v-if="isPersistingState"
+            :class="[is_usermenu_open?'kiwi-statebrowser-usermenu--open':'']"
+            class="kiwi-statebrowser-usermenu"
+        >
+            <div
+                :class="[isConnected ?
+                    'kiwi-statebrowser-usermenu-avatar--connected' :
+                    'kiwi-statebrowser-usermenu-avatar--disconnected'
+                ]"
+                class="kiwi-statebrowser-usermenu-avatar"
+                @click="is_usermenu_open=!is_usermenu_open"
+            >
+                {{ userInitial }}
+            </div>
+            <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
+                <p> {{ $t('state_remembered') }} </p>
+                <a class="u-button u-button-warning" @click="clickForget">
+                    {{ $t('state_forget') }}
+                </a>
+                <div class="kiwi-close-icon" @click="is_usermenu_open=false">
+                    <i class="fa fa-times" aria-hidden="true"/>
+                </div>
+            </div>
+            <div v-else class="kiwi-statebrowser-usermenu-network">
+                {{ networkName }}
+            </div>
+        </div>
+
         <div class="kiwi-statebrowser-tools">
             <div
                 v-rawElement="plugin.el"
@@ -74,6 +103,7 @@
 <script>
 'kiwi public';
 
+import Vue from 'vue';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import state from '@/libs/state';
 import NetworkProvider from '@/libs/NetworkProvider';
@@ -81,6 +111,7 @@ import GlobalApi from '@/libs/GlobalApi';
 import StateBrowserNetwork from './StateBrowserNetwork';
 import AppSettings from './AppSettings';
 import BufferSettings from './BufferSettings';
+import AlertForgetMe from './alerts/alertForgetMe';
 
 let netProv = new NetworkProvider();
 
@@ -149,6 +180,11 @@ export default {
         },
         hideStatebrowser: function hideStatebrowser() {
             state.$emit('statebrowser.hide');
+        },
+        clickForget: function clickForget() {
+            let displaybox = new Vue(AlertForgetMe);
+            displaybox.$mount();
+            this.$state.$emit('swal', 'forgetMe', '', displaybox.$el);
         },
         connectProvidedNetwork: function connectProvidedNetwork(pNet) {
             let net = state.addNetwork(pNet.name, pNet.nick, {
@@ -245,9 +281,7 @@ export default {
 
 .kiwi-statebrowser-usermenu {
     width: 100%;
-    padding-bottom: 0;
-    margin-bottom: 10px;
-    padding-top: 34px;
+    padding: 10px 0;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
@@ -271,8 +305,8 @@ export default {
     margin-bottom: 10px;
 }
 
-.kiwi-statebrowser-usermenu-body p {
-    margin-bottom: 0;
+.kiwi-statebrowser-usermenu-body .kiwi-close-icon {
+    top: 50px;
 }
 
 /* Add network button */

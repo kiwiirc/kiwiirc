@@ -12,28 +12,29 @@
             <div class="kiwi-network-name-hover-icon">
                 <i class="fa fa-ellipsis-h" aria-hidden="true"/>
             </div>
-            <div class="kiwi-network-name-options">
-                <div
-                    v-if="totalNetworkCount > 1"
-                    class="kiwi-network-name-option kiwi-network-name-option-collapse"
-                    @click="collapsed=!collapsed"
-                >
-                    <i :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" class="fa" />
-                </div>
-                <div
-                    :class="{ active: channel_add_display == true }"
-                    class="kiwi-network-name-option kiwi-network-name-option-channel"
-                    @click="toggleAddChannel()"
-                >
-                    <i class="fa fa-plus" aria-hidden="true"/>
-                </div>
-                <div
-                    :class="{ active: channel_filter_display == true }"
-                    class="kiwi-network-name-option kiwi-network-name-option-chanfilter"
-                    @click="toggleFilterChannel()"
-                >
-                    <i class="fa fa-search" aria-hidden="true"/>
-                </div>
+        </div>
+
+        <div class="kiwi-network-name-options">
+            <div
+                v-if="totalNetworkCount > 1"
+                class="kiwi-network-name-option kiwi-network-name-option-collapse"
+                @click="collapsed=!collapsed"
+            >
+                <i :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" class="fa" />
+            </div>
+            <div
+                :class="{ active: channel_add_display == true }"
+                class="kiwi-network-name-option kiwi-network-name-option-channel"
+                @click="toggleAddChannel()"
+            >
+                <i class="fa fa-plus" aria-hidden="true"/>
+            </div>
+            <div
+                :class="{ active: channel_filter_display == true }"
+                class="kiwi-network-name-option kiwi-network-name-option-chanfilter"
+                @click="toggleFilterChannel()"
+            >
+                <i class="fa fa-search" aria-hidden="true"/>
             </div>
         </div>
 
@@ -360,25 +361,19 @@ export default {
 }
 
 .kiwi-network-name-options {
-    position: absolute;
-    top: 0;
-    height: 45px;
-    z-index: 10;
-    right: -300px;
-    transition: all 0.15s;
-}
-
-.kiwi-statebrowser-network-header:hover .kiwi-network-name-options {
-    right: 0;
-    opacity: 1;
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    margin-bottom: -7px;
 }
 
 .kiwi-network-name-option {
     float: right;
-    width: 35px;
+    width: 30px;
+    line-height: 30px;
+    font-size: 0.8em;
     transition: all 0.15s;
     padding: 0;
-    line-height: 45px;
     text-align: center;
     cursor: pointer;
 }
