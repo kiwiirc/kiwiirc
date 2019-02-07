@@ -48,6 +48,20 @@
                     </div>
 
                     <div class="kiwi-appsettings-block">
+                        <h3>Local Data</h3>
+                        <div class="kiwi-appsettings-section kiwi-appsettings-history">
+                            <p>
+                               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                               incididunt ut labore et dolore magna aliqua.</p>
+                            <span>
+                                <a class="u-button u-button-warning" @click="clickForget()">
+                                    Delete all locally stored data
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="kiwi-appsettings-block">
                         <h3>{{ $t('settings_messages_title') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-messages">
                             <label class="kiwi-appsettings-messagelistDisplay">
@@ -331,6 +345,17 @@ export default {
                 this.$watch('customThemeUrl', watchCustomThemeUrl),
             ];
         },
+        clickForget: function clickForget() {
+            let msg = 'This will delete all stored networks and start fresh. Are you sure?';
+            /* eslint-disable no-restricted-globals, no-alert */
+            let confirmed = confirm(msg);
+            if (!confirmed) {
+                return;
+            }
+
+            state.persistence.forgetState();
+            window.location.reload();
+        },
         enableAdvancedTab() {
             this.settingAdvancedEnable = true;
             this.$nextTick(() => {
@@ -490,6 +515,12 @@ export default {
 
 .kiwi-appsettings-messagelistDisplay select {
     float: right;
+}
+
+.kiwi-appsettings-history span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
 }
 
 @media screen and (max-width: 769px) {

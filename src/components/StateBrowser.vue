@@ -2,7 +2,8 @@
     <div class="kiwi-statebrowser kiwi-theme-bg">
 
         <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
-            Kiwi IRC <i class="fa fa-cog" aria-hidden="true"/>
+            <i class="fa fa-cog" aria-hidden="true"/>
+            <span>Edit settings</span>
         </div>
 
         <div class="kiwi-statebrowser-tools">
@@ -149,17 +150,6 @@ export default {
         hideStatebrowser: function hideStatebrowser() {
             state.$emit('statebrowser.hide');
         },
-        clickForget: function clickForget() {
-            let msg = 'This will delete all stored networks and start fresh. Are you sure?';
-            /* eslint-disable no-restricted-globals, no-alert */
-            let confirmed = confirm(msg);
-            if (!confirmed) {
-                return;
-            }
-
-            state.persistence.forgetState();
-            window.location.reload();
-        },
         connectProvidedNetwork: function connectProvidedNetwork(pNet) {
             let net = state.addNetwork(pNet.name, pNet.nick, {
                 server: pNet.server,
@@ -222,6 +212,7 @@ export default {
     z-index: 20;
     border-bottom: 1px solid #989898;
     border-top: 3px solid #42b992;
+    position: relative;
 }
 
 .kiwi-statebrowser-appsettings i {
@@ -240,6 +231,16 @@ export default {
 
 .kiwi-statebrowser-appsettings span {
     font-weight: 600;
+    position: absolute;
+    left: 40px;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.kiwi-statebrowser-appsettings:hover span {
+    opacity: 1;
 }
 
 .kiwi-statebrowser-usermenu {
