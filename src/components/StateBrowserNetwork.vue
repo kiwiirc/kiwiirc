@@ -117,6 +117,7 @@
                     class="kiwi-statebrowser-channel"
                 >
                     <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">
+                        <i class="fa fa-user" aria-hidden="true" />
                         {{ buffer.name }}
                     </div>
                     <div class="kiwi-statebrowser-channel-labels">
@@ -265,6 +266,9 @@ export default {
         },
         closeBuffer(buffer) {
             state.removeBuffer(buffer);
+        },
+        doesNetworkHaveAwayNotify() {
+            return this.$state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
         },
         showMessageCounts: function showMessageCounts(buffer) {
             return !buffer.setting('hide_message_counts');

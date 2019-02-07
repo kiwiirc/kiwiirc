@@ -1026,22 +1026,12 @@
 }
 
 /* Icons in the Channel List */
-.kiwi-statebrowser-channel:not([data-name^="#"])::before {
-    content: '\f007';
-}
-
 .kiwi-statebrowser-channel[data-name^="*"]::before {
     content: '\f006';
 }
 
 .kiwi-statebrowser-channel[data-name="#help"]::before {
     content: '\f059';
-}
-
-.kiwi-statebrowser-channel::before {
-    font-family: fontAwesome;
-    margin-right: 5px;
-    font-weight: 100;
 }
 
 .kiwi-settings-advanced-notice {
