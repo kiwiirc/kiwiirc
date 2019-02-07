@@ -72,12 +72,12 @@ export default {
         ServerView,
     },
     props: ['network', 'buffer', 'sidebarState'],
-    data: function data() {
+    data() {
         return {
         };
     },
     computed: {
-        bufferType: function bufferType() {
+        bufferType() {
             let type = '';
 
             if (!this.buffer) {
@@ -105,7 +105,16 @@ export default {
             return { count, highlight };
         },
     },
-    created: function created() {
+    watch: {
+        buffer(newBuffer) {
+            this.$state.$emit('buffer.created', newBuffer);
+        },
+    },
+    destroyed() {
+        this.$state.$emit('buffer.destroyed', this.buffer);
+    },
+    created() {
+        this.$state.$emit('buffer.created', this.buffer);
         this.listen(state, 'sidebar.toggle', () => {
             state.$emit('sidebar.' + (this.sidebarState.isDrawn ? 'hide' : 'show'));
         });
@@ -157,10 +166,10 @@ export default {
         });
     },
     methods: {
-        toggleStateBrowser: function toggleStateBrowser() {
+        toggleStateBrowser() {
             state.$emit('statebrowser.toggle');
         },
-        toggleSidebar: function toggleSidebar() {
+        toggleSidebar() {
             if (this.buffer.isChannel()) {
                 state.$emit('sidebar.toggle');
             }

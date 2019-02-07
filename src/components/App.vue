@@ -19,20 +19,31 @@
             <state-browser :networks="networks" :sidebar-state="sidebarState"/>
             <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"/>
-
+                <component
+                    v-for="(mediaViewer, index) in mediaViewers"
+                    :ref="'mediaViewer' + index"
+                    :key="mediaViewer.index"
+                    :is="mediaViewer.type"
+                    :id="index"
+                    :url="mediaViewer.mediaviewerUrl"
+                    :component="mediaviewerComponent"
+                    :viewer-embedded="viewerEmbedded"
+                    :is-iframe="mediaViewer.isIframe"
+                    :style="'z-index: ' + mediaViewer.zIndex"
+                    :viewerdragging="viewerDragging"
+                    @viewerdragging="setViewerDragging"
+                    @viewermousedown="setViewerDepth"
+                    @viewerpopped="viewerPop"
+                    @closeviewer="closeViewer"
+                />
                 <template v-if="!activeComponent && network">
                     <container
                         :network="network"
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
                     >
-                        <media-viewer
-                            v-if="mediaviewerOpen"
-                            slot="before"
-                            :url="mediaviewerUrl"
-                            :component="mediaviewerComponent"
-                            :is-iframe="mediaviewerIframe"
-                        />
+                        <div v-if="!componentOpen() && mediaviewerOpen && viewerEmbedded"
+                             slot="before" style="height: calc(40% + 20px);"/>
                     </container>
                     <control-input :container="networks" :buffer="buffer"/>
                 </template>
@@ -69,6 +80,7 @@ import * as Notifications from '@/libs/Notifications';
 import * as bufferTools from '@/libs/bufferTools';
 import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
+import GlobalApi from '@/libs/GlobalApi';
 
 let log = Logger.namespace('App.vue');
 
@@ -92,12 +104,19 @@ export default {
             // and there is no active component set
             fallbackComponent: null,
             fallbackComponentProps: {},
-            mediaviewerOpen: false,
             mediaviewerUrl: '',
             mediaviewerComponent: null,
             mediaviewerIframe: false,
             themeUrl: '',
             sidebarState: new SidebarState(),
+            mediaViewers: [],
+            mediaviewerOpen: false,
+            viewerEmbedded: true,
+            viewerEmbeddedIndex: -1,
+            viewerCount: 0,
+            viewerDragging: false,
+            viewerTempPop: null,
+            activeBuffer: null,
         };
     },
     computed: {
@@ -143,8 +162,78 @@ export default {
             this.startupComponent = startup;
         }
         this.trackWindowDimensions();
+        GlobalApi.singleton().on('buffer.created', (val) => { this.activeBuffer = val; });
+        GlobalApi.singleton().on('buffer.destroyed', () => { this.activeBuffer = null; });
     },
     methods: {
+        componentOpen() {
+            for (let i = 0; i < 2; ++i) {
+                if (this.activeBuffer === null || this.activeBuffer.name === '*') {
+                    for (let j = 0; j < this.mediaViewers.length; ++j) {
+                        if (this.mediaViewers[j].zIndex > 0 &&
+                            this.mediaViewers[j].popped &&
+                            j !== this.viewerTempPop &&
+                            !this.mediaViewers[j].isIframe) {
+                            this.mediaViewers[j].zIndex -= 10000;
+                        }
+                        if (!this.mediaViewers[j].popped) {
+                            this.viewerTempPop = j;
+                            this.$state.$emit('mediaviewer.popout', j);
+                        }
+                    }
+                } else {
+                    for (let j = 0; j < this.mediaViewers.length; ++j) {
+                        if (this.mediaViewers[j].zIndex < 0) this.mediaViewers[j].zIndex += 10000;
+                    }
+                    if (this.viewerTempPop !== null) {
+                        this.$state.$emit('mediaviewer.popin', this.viewerTempPop);
+                        this.viewerTempPop = null;
+                    }
+                }
+            }
+            return this.activeBuffer === null || this.activeBuffer.name === '*';
+        },
+        // fixes window drag-halting when cursor moves over viewer content
+        setViewerDragging(val) {
+            this.viewerDragging = val;
+        },
+        // handle z-Index. (bring focused window to top)
+        setViewerDepth(index) {
+            if (this.mediaViewers[index].popped) {
+                let max = -1;
+                for (let i = 0; i < this.mediaViewers.length; ++i) {
+                    if (this.mediaViewers[index].popped && this.mediaViewers[i].zIndex > max) {
+                        max = this.mediaViewers[i].zIndex;
+                    }
+                }
+                this.mediaViewers[index].zIndex = max + 1;
+                let min = 1000000000;
+                for (let i = 0; i < this.mediaViewers.length; ++i) {
+                    if (this.mediaViewers[index].popped && this.mediaViewers[i].zIndex < min) {
+                        min = this.mediaViewers[i].zIndex;
+                    }
+                }
+                for (let i = 0; i < this.mediaViewers.length; ++i) {
+                    if (this.mediaViewers[index].popped) {
+                        this.mediaViewers[i].zIndex -= min - 1000;
+                    }
+                }
+            }
+        },
+        closeViewer(index) {
+            if (!this.mediaViewers[index].popped) {
+                this.viewerEmbedded = false;
+            }
+            this.mediaViewers.splice(index, 1);
+            if (this.mediaViewers.length === 0) this.mediaviewerOpen = false;
+        },
+        // viewer is popping in or out
+        viewerPop(index) {
+            this.viewerEmbedded = this.mediaViewers[index].popped;
+            this.mediaViewers[index].popped = !this.mediaViewers[index].popped;
+            this.mediaViewers[index].zIndex = this.mediaViewers[index].popped ? 1000 : 10;
+            this.setViewerDepth(index);
+        },
         // Triggered by a startup screen event
         startUp(opts) {
             log('startUp()');
@@ -171,6 +260,7 @@ export default {
                     this.activeComponentProps = props;
                     this.activeComponent = component;
                 }
+                this.$nextTick(() => this.$nextTick(this.componentOpen));
             });
         },
         watchForThemes() {
@@ -202,14 +292,31 @@ export default {
                     opts = url;
                 }
 
-                this.mediaviewerUrl = opts.url;
-                this.mediaviewerComponent = opts.component;
-                this.mediaviewerIframe = opts.iframe;
+                if (!this.viewerEmbedded || this.mediaViewers.length === 0) {
+                    this.mediaViewers.push({
+                        type: 'media-viewer',
+                        mediaviewerUrl: opts.url,
+                        index: this.viewerCount,
+                        zIndex: 10,
+                        popped: false,
+                        isIframe: opts.iframe,
+                    });
+                    this.viewerEmbeddedIndex = this.mediaViewers.length - 1;
+                } else {
+                    this.mediaViewers.splice(this.viewerEmbeddedIndex, 1);
+                    this.mediaViewers.push({
+                        type: 'media-viewer',
+                        mediaviewerUrl: opts.url,
+                        index: this.viewerCount,
+                        zIndex: 10,
+                        popped: false,
+                        isIframe: opts.iframe,
+                    });
+                    this.viewerEmbeddedIndex = this.mediaViewers.length - 1;
+                }
+                this.viewerCount++;
                 this.mediaviewerOpen = true;
-            });
-
-            this.listen(this.$state, 'mediaviewer.hide', () => {
-                this.mediaviewerOpen = false;
+                this.viewerEmbedded = true;
             });
         },
         configureFavicon() {
@@ -243,6 +350,9 @@ export default {
             let trackWindowDims = () => {
                 this.$state.ui.app_width = this.$el.clientWidth;
                 this.$state.ui.app_height = this.$el.clientHeight;
+                if (this.mediaviewerOpen && this.viewerEmbedded) {
+                    this.$refs['mediaViewer' + this.viewerEmbeddedIndex][0].resetPop();
+                }
                 this.$state.ui.is_narrow = this.$el.clientWidth <= 769;
             };
             window.addEventListener('resize', trackWindowDims);
@@ -415,8 +525,8 @@ body {
 }
 
 .kiwi-mediaviewer {
-    max-height: 70%;
     overflow: auto;
+    background: #fff;
 }
 
 .kiwi-controlinput {
