@@ -117,7 +117,8 @@
                     class="kiwi-statebrowser-channel"
                 >
                     <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">
-                        <i class="fa fa-user" aria-hidden="true" />
+                        <i v-if="!buffer.isChannel() && !doesNetworkHaveAwayNotify()" class="fa fa-user" aria-hidden="true" />
+                        <away-status-indicator v-if="!buffer.isChannel() && doesNetworkHaveAwayNotify()" :user="getUserFromString(buffer.name)"/>
                         {{ buffer.name }}
                     </div>
                     <div class="kiwi-statebrowser-channel-labels">
@@ -161,10 +162,12 @@ import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
 import * as bufferTools from '@/libs/bufferTools';
 import BufferSettings from './BufferSettings';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         BufferSettings,
+        AwayStatusIndicator,
     },
     props: ['network', 'sidebarState'],
     data: function data() {
@@ -268,7 +271,7 @@ export default {
             state.removeBuffer(buffer);
         },
         doesNetworkHaveAwayNotify() {
-            return this.$state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
+            return state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
         },
         showMessageCounts: function showMessageCounts(buffer) {
             return !buffer.setting('hide_message_counts');
@@ -309,6 +312,9 @@ export default {
             this.channel_filter = '';
             this.channel_filter_display = false;
         },
+        getUserFromString(name){
+            return state.getUser(this.network.id,name);
+        }
     },
 };
 </script>
@@ -413,6 +419,7 @@ export default {
 .kiwi-statebrowser-channel {
     position: relative;
     display: flex;
+    border-left: 3px solid transparent;
 }
 
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-name {
