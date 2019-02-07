@@ -2,34 +2,7 @@
     <div class="kiwi-statebrowser kiwi-theme-bg">
 
         <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
-            <i class="fa fa-cog" aria-hidden="true"/>
-        </div>
-
-        <div
-            v-if="isPersistingState"
-            :class="[is_usermenu_open?'kiwi-statebrowser-usermenu--open':'']"
-            class="kiwi-statebrowser-usermenu"
-        >
-            <div
-                :class="[isConnected ?
-                    'kiwi-statebrowser-usermenu-avatar--connected' :
-                    'kiwi-statebrowser-usermenu-avatar--disconnected'
-                ]"
-                class="kiwi-statebrowser-usermenu-avatar"
-                @click="is_usermenu_open=!is_usermenu_open"
-            >
-                {{ userInitial }}
-            </div>
-            <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
-                <p> {{ $t('state_remembered') }} </p>
-                <a class="u-link" @click="clickForget">{{ $t('state_forget') }}</a>
-                <div class="kiwi-close-icon" @click="is_usermenu_open=false">
-                    <i class="fa fa-times" aria-hidden="true"/>
-                </div>
-            </div>
-            <div v-else class="kiwi-statebrowser-usermenu-network">
-                {{ networkName }}
-            </div>
+            Kiwi IRC <i class="fa fa-cog" aria-hidden="true"/>
         </div>
 
         <div class="kiwi-statebrowser-tools">
@@ -237,19 +210,28 @@ export default {
 
 /* User Settings */
 .kiwi-statebrowser-appsettings {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 39px;
-    text-align: center;
+    width: 100%;
+    text-align: left;
     font-size: 1em;
     box-sizing: border-box;
-    line-height: 57px;
+    line-height: 46px;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s;
-    opacity: 0.8;
+    opacity: 1;
     z-index: 20;
+    border-bottom: 1px solid #989898;
+    border-top: 3px solid #42b992;
+}
+
+.kiwi-statebrowser-appsettings i {
+    float: left;
+    line-height: 46px;
+    font-size: 1.2em;
+    width: 35px;
+    margin-left: 3px;
+    text-align: center;
+    margin-right: 3px;
 }
 
 .kiwi-statebrowser-appsettings:hover {
@@ -258,11 +240,6 @@ export default {
 
 .kiwi-statebrowser-appsettings span {
     font-weight: 600;
-}
-
-.kiwi-statebrowser-appsettings i {
-    line-height: 35px;
-    font-size: 1.2em;
 }
 
 .kiwi-statebrowser-usermenu {

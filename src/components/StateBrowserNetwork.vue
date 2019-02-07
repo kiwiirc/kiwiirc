@@ -299,7 +299,7 @@ export default {
         toggleAddChannel() {
             let displaybox = new Vue(Salert);
             displaybox.$mount();
-            this.$state.$emit('swal', 'test title', displaybox);
+            this.$state.$emit('swal', '', displaybox.$el);
             this.channel_add_display = !this.channel_add_display;
             this.channel_filter_display = false;
         },

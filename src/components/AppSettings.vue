@@ -461,7 +461,7 @@ export default {
     position: relative;
     box-sizing: border-box;
     text-transform: uppercase;
-    line-height: 47px;
+    line-height: 50px;
     text-align: right;
     transition: background 0.3s;
 }

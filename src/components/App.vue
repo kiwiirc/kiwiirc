@@ -181,6 +181,10 @@ export default {
             this.listen(this.$state, 'swal', (arg1, arg2) => {
                 swal(arg1, {
                     content: arg2,
+                    buttons: {
+                        cancel: true,
+                        confirm: true,
+                    },
                 });
             });
         },
