@@ -23,11 +23,7 @@
                 <span class="u-input-button-container">
                     <a class="u-button u-button-primary"
                        @click="userNameUpdate(newNick)">
-                        <i class="fa fa-check" aria-hidden="true" />
-                    </a>
-                    <a class="u-button u-button-warning"
-                       @click="userNameCancel()">
-                        <i class="fa fa-times" aria-hidden="true" />
+                        Update
                     </a>
                 </span>
             </form>
@@ -223,8 +219,7 @@ export default {
 }
 
 .kiwi-selfuser-actions form .u-input-button-container .u-button {
-    padding: 3px 0;
-    width: 30px;
+    padding: 3px 10px;
 }
 
 .kiwi-selfuser-actions .u-input {

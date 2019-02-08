@@ -5,6 +5,7 @@
         :class="{ 'kiwi-awaystatusindicator-away': isUserAway(),
                   'kiwi-awaystatusindicator-not-away': !isUserAway() }"
         class="kiwi-awaystatusindicator"
+        @click="toggleSelfAway()"
     />
 </template>
 
@@ -29,6 +30,17 @@ export default {
                 return userToCheck.isUserAway();
             }
             return '';
+        },
+        toggleSelfAway() {
+            let activeNetwork = this.$state.getActiveNetwork();
+            if (this.user === this.$state.getUser(activeNetwork.id, activeNetwork.nick)) {
+                if (this.isUserAway()) {
+                    console.log('away');
+                    activeNetwork.ircClient.raw('AWAY');
+                } else {
+                    activeNetwork.ircClient.raw('AWAY', true ? 'Currently away' : '');
+                }
+            }
         },
     },
 };
