@@ -117,8 +117,11 @@
                     class="kiwi-statebrowser-channel"
                 >
                     <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">
-                        <i v-if="!buffer.isChannel() && !doesNetworkHaveAwayNotify()" class="fa fa-user" aria-hidden="true" />
-                        <away-status-indicator v-if="!buffer.isChannel() && doesNetworkHaveAwayNotify()" :user="getUserFromString(buffer.name)"/>
+                        <i v-if="!buffer.isChannel() && !doesNetworkHaveAwayNotify()"
+                           class="fa fa-user" aria-hidden="true" />
+                        <away-status-indicator
+                            v-if="!buffer.isChannel() && doesNetworkHaveAwayNotify()"
+                            :user="getUserFromString(buffer.name)"/>
                         {{ buffer.name }}
                     </div>
                     <div class="kiwi-statebrowser-channel-labels">
@@ -312,9 +315,9 @@ export default {
             this.channel_filter = '';
             this.channel_filter_display = false;
         },
-        getUserFromString(name){
-            return state.getUser(this.network.id,name);
-        }
+        getUserFromString(name) {
+            return state.getUser(this.network.id.name);
+        },
     },
 };
 </script>
