@@ -644,7 +644,8 @@ export default {
 
 .kiwi-controlinput-selfuser {
     position: absolute;
-    bottom: 100%;
+    bottom: 0;
+    z-index: 10;
     left: 0;
     max-height: 0;
     width: 324px;

@@ -4,19 +4,21 @@
             <span class="kiwi-selfuser-nick">
                 <away-status-indicator :user="netUser"/>
                 {{ network.nick }}
-                <span class="kiwi-selfuser-modes">( {{ modeString }} )</span>
+                <i class="fa fa-times" aria-hidden="true" @click="closeSelfUser()"/>
                 <i class="fa fa-pencil" aria-hidden="true" @click="openSelfActions('Nick')" />
             </span>
             <span class="kiwi-selfuser-host">
-                {{ netUser.username }}@{{ netUser.host }}
+                {{ netUser.username }}@{{ netUser.host }} ( {{ modeString }} )
             </span>
         </div>
         <div v-if="self_user_settings_open" class="kiwi-selfuser-actions">
-            <div v-if="error_message" class="kiwi-selfuser-error-message">{{ error_message }}</div>
+            <div class="kiwi-selfuser-away-return-icon" @click="self_user_settings_open = false">
+                <i class="fa fa-times" aria-hidden="true"/>
+            </div>
             <form class="u-form">
-                <label>
+                <label class="kiwi-selfuser-away-label">
+                    <span>Away</span>
                     <input v-model="awayStatus" type="checkbox" >
-                    <span>Set self as away</span>
                 </label>
                 <input v-model="newNick"
                        type="text" class="u-input" placeholder="Enter new nickname...">
@@ -27,6 +29,7 @@
                     </a>
                 </span>
             </form>
+            <div v-if="error_message" class="kiwi-selfuser-error-message">{{ error_message }}</div>
         </div>
     </div>
 </template>
@@ -96,6 +99,9 @@ export default {
         openSelfActions(option) {
             this.self_user_settings_open = true;
         },
+        closeSelfUser() {
+            this.$emit('close');
+        },
         userNameUpdate(newNick) {
             if (newNick.length !== 0) {
                 this.error_message = '';
@@ -145,7 +151,7 @@ export default {
 .kiwi-selfuser-host {
     font-style: italic;
     opacity: 0.8;
-    padding-left: 27px;
+    padding-left: 13px;
     font-size: 0.8em;
     word-break: break-all;
 }
@@ -168,7 +174,6 @@ export default {
 .kiwi-selfuser-nick i {
     font-weight: 400;
     float: right;
-    margin-left: 5px;
     opacity: 0.6;
     cursor: pointer;
     line-height: 36px;
@@ -180,6 +185,32 @@ export default {
     transition: all 0.2s;
 }
 
+.kiwi-selfuser-nick i:last-of-type {
+    margin-right: 10px;
+}
+
+.kiwi-selfuser-away-return-icon {
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.u-form .kiwi-selfuser-away-label {
+    float: right;
+    margin: 0 0 2px 0;
+}
+
+.u-form .kiwi-selfuser-away-label span {
+    margin-right: 5px;
+}
+
+.u-form .kiwi-selfuser-away-label input[type='checkbox'] {
+    float: right;
+}
+
 .kiwi-selfuser-error-message {
     width: 100%;
     display: block;
@@ -187,13 +218,13 @@ export default {
     background: #d16c6c;
     color: #fff;
     box-sizing: border-box;
-    margin: 0 0 10px 0;
+    margin: 5px 0 5px 0;
     text-align: center;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 .kiwi-selfuser-actions {
-    padding: 1em 10px;
+    padding: 5px 10px;
 }
 
 .kiwi-selfuser-actions form {
