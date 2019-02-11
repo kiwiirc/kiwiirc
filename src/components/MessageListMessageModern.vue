@@ -42,7 +42,7 @@
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">
-                <away-status-indicator :user="message.user"/>
+                <away-status-indicator v-if="message.user" :user="message.user"/>
                 <div
                     :style="{ 'color': userColour }"
                     class="kiwi-messagelist-nick"
