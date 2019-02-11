@@ -42,6 +42,7 @@
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">
+                <away-status-indicator :user="message.user"/>
                 <div
                     :style="{ 'color': userColour }"
                     class="kiwi-messagelist-nick"
@@ -95,11 +96,13 @@
 import { urlRegex } from '@/helpers/TextFormatting';
 import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         MessageAvatar: MessageListAvatar,
         MessageInfo,
+        AwayStatusIndicator,
     },
     props: ['ml', 'message', 'idx'],
     data: function data() {
@@ -162,6 +165,9 @@ export default {
         },
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
+        },
+        getUserFromString(name) {
+            return this.$state.getUser(this.$state.getActiveNetwork().id, name);
         },
     },
 };

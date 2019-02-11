@@ -316,7 +316,7 @@ export default {
             this.channel_filter_display = false;
         },
         getUserFromString(name) {
-            return state.getUser(this.network.id.name);
+            return state.getUser(this.network.id, name);
         },
     },
 };

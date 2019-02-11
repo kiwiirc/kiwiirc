@@ -118,7 +118,10 @@
         </template>
 
         <template v-else-if="isQuery()">
-            <div class="kiwi-header-name">{{ buffer.name }}</div>
+            <div class="kiwi-header-name">
+                <away-status-indicator :user="netUser"/>
+                {{ buffer.name }}
+            </div>
             <div :key="buffer.id" class="kiwi-header-options">
                 <div
                     v-rawElement="plugin.el"
@@ -183,12 +186,14 @@ import formatIrcMessage from '@/libs/MessageFormatter';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         BufferSettings,
         ChannelInfo,
         ChannelBanlist,
+        AwayStatusIndicator,
     },
     props: ['buffer', 'sidebarState'],
     data: function data() {
@@ -214,6 +219,9 @@ export default {
             let blocks = formatIrcMessage(this.buffer.topic, { extras: false });
             let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
             return content.html;
+        },
+        netUser() {
+            return this.$state.getActiveNetwork().ircClient.user;
         },
     },
     watch: {
@@ -291,6 +299,11 @@ export default {
     text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     display: flex;
+}
+
+.kiwi-header .kiwi-awaystatusindicator {
+    display: inline-block;
+    margin-bottom: 2px;
 }
 
 .kiwi-header--showall {

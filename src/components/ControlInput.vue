@@ -576,6 +576,10 @@ export default {
     line-height: 40px;
 }
 
+.kiwi-controlinput .kiwi-awaystatusindicator {
+    cursor: pointer;
+}
+
 .kiwi-controlinput-tools {
     /* 38px = 40px controlinput height - margin top+botton */
     line-height: 38px;
