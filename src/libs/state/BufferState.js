@@ -48,6 +48,7 @@ export default class BufferState {
         def(this, 'messagesObj', messagesObj, false);
 
         def(this, 'addMessageBatch', createMessageBatch(this), false);
+        def(this, 'updateWhoStatus', updateWhoStatus(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
     }
 
@@ -416,4 +417,18 @@ function createMessageBatch(bufferState) {
     };
 
     return batchedAdd(addSingleMessage, addMultipleMessages);
+}
+
+function updateWhoStatus(bufferState) {
+    setInterval(() => {
+        let statusUpdaterFallback = bufferState.setting('status_updater_fallback');
+        let networkConnected = bufferState.getNetwork().ircClient.connected;
+        let bufferJoined = bufferState.joined;
+        if (statusUpdaterFallback && networkConnected && bufferJoined) {
+            let network = bufferState.getNetwork();
+            let bufferStateName = bufferState.name;
+            network.ircClient.who(bufferStateName);
+        }
+    }, 30000);
+    return null;
 }
