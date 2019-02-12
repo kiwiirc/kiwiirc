@@ -550,12 +550,8 @@ export default {
 .kiwi-controlinput-inner {
     padding: 0;
     box-sizing: border-box;
-    transition: padding 0.2s;
+    transition: width 0.2s;
     transition-delay: 0.2s;
-}
-
-.kiwi-controlinput-selfuser--open .kiwi-controlinput-inner {
-    padding-left: 197px;
 }
 
 .kiwi-controlinput-inner i {
@@ -578,6 +574,14 @@ export default {
     cursor: pointer;
     margin-right: 10px;
     line-height: 40px;
+    transition: width 0.2s;
+    transition-delay: 0.1s;
+}
+
+.kiwi-controlinput-selfuser--open .kiwi-controlinput-user {
+    width: 286px;
+    transition: width 0.2s;
+    transition-delay: 0.1s;
 }
 
 .kiwi-controlinput .kiwi-awaystatusindicator {
