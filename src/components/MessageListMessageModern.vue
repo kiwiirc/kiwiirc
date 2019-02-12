@@ -39,10 +39,10 @@
                 :message="message"
                 :data-nick="message.nick"
             />
+            <away-status-indicator v-if="message.user" :user="message.user"/>
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">
-                <away-status-indicator v-if="message.user" :user="message.user"/>
                 <div
                     :style="{ 'color': userColour }"
                     class="kiwi-messagelist-nick"
@@ -182,6 +182,14 @@ export default {
 
 .kiwi-messagelist-modern-left {
     user-select: none;
+    position: relative;
+}
+
+.kiwi-messagelist-modern-left .kiwi-awaystatusindicator {
+    width: 10px;
+    top: 5px;
+    right: 0;
+    height: 10px;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left {
