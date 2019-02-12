@@ -108,7 +108,7 @@ export default {
                 let nick = newNick.trim();
                 if (!nick.match(/(^[0-9])|(\s)/)) {
                     this.network.ircClient.changeNick(nick);
-                    this.userNameCancel();
+                    //this.userNameCancel();
                 }
             } else {
                 this.error_message = 'You must enter a new username';
