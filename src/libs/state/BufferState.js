@@ -420,16 +420,19 @@ function createMessageBatch(bufferState) {
 }
 
 function updateWhoStatus(bufferState) {
+    setTimeout(updateWhoStatusLoop, 30000);
     function updateWhoStatusLoop() {
         let statusUpdaterFallback = bufferState.setting('status_updater_fallback');
-        let networkConnected = bufferState.getNetwork().ircClient.connected;
+        let ircClientConnected = bufferState.getNetwork().ircClient.connected;
         let bufferJoined = bufferState.joined;
-        if (statusUpdaterFallback && networkConnected && bufferJoined) {
+        let networkConnected = bufferState.getNetwork().state;
+        if (statusUpdaterFallback && ircClientConnected && bufferJoined) {
             let network = bufferState.getNetwork();
             let bufferStateName = bufferState.name;
             network.ircClient.who(bufferStateName);
         }
-        setTimeout(updateWhoStatusLoop, 30000);
+        if (networkConnected) {
+            setTimeout(updateWhoStatusLoop, 30000);
+        }
     }
-    setTimeout(updateWhoStatusLoop, 30000);
 }
