@@ -1,9 +1,7 @@
 <template>
-    <div class="kiwi-controlinput kiwi-theme-bg">
-        <div
-            :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
-            class="kiwi-controlinput-selfuser"
-        >
+    <div :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
+         class="kiwi-controlinput kiwi-theme-bg">
+        <div class="kiwi-controlinput-selfuser">
             <self-user
                 v-if="networkState==='connected'"
                 :network="buffer.getNetwork()"
@@ -552,6 +550,12 @@ export default {
 .kiwi-controlinput-inner {
     padding: 0;
     box-sizing: border-box;
+    transition: padding 0.2s;
+    transition-delay: 0.2s;
+}
+
+.kiwi-controlinput-selfuser--open .kiwi-controlinput-inner {
+    padding-left: 197px;
 }
 
 .kiwi-controlinput-inner i {
@@ -660,7 +664,7 @@ export default {
     overflow: hidden;
 }
 
-.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
+.kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
     width: 324px;
     max-height: 300px;
     opacity: 1;

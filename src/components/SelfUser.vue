@@ -10,16 +10,18 @@
             <span class="kiwi-selfuser-host">
                 {{ netUser.username }}@{{ netUser.host }} ( {{ modeString }} )
             </span>
+            <div class="u-form kiwi-away-checkbox-form">
+                <label class="kiwi-selfuser-away-label">
+                    <span>Away</span>
+                    <input v-model="awayStatus" type="checkbox" >
+                </label>
+            </div>
         </div>
         <div v-if="self_user_settings_open" class="kiwi-selfuser-actions">
             <div class="kiwi-selfuser-away-return-icon" @click="self_user_settings_open = false">
                 <i class="fa fa-times" aria-hidden="true"/>
             </div>
             <form class="u-form">
-                <label class="kiwi-selfuser-away-label">
-                    <span>Away</span>
-                    <input v-model="awayStatus" type="checkbox" >
-                </label>
                 <input v-model="newNick"
                        type="text" class="u-input" placeholder="Enter new nickname...">
                 <span class="u-input-button-container">
@@ -108,7 +110,6 @@ export default {
                 let nick = newNick.trim();
                 if (!nick.match(/(^[0-9])|(\s)/)) {
                     this.network.ircClient.changeNick(nick);
-                    //this.userNameCancel();
                 }
             } else {
                 this.error_message = 'You must enter a new username';
@@ -130,7 +131,6 @@ export default {
 .kiwi-selfuser-status {
     display: inline-block;
     padding: 0 10px;
-    line-height: 34px;
     cursor: default;
     width: 100%;
     box-sizing: border-box;
@@ -139,7 +139,7 @@ export default {
 .kiwi-selfuser-nick {
     min-width: 85px;
     font-weight: bold;
-    border-bottom: 1px solid #f5f5f5;
+    padding: 5px 10px 0 10px;
 }
 
 .kiwi-selfuser-modes {
@@ -151,7 +151,7 @@ export default {
 .kiwi-selfuser-host {
     font-style: italic;
     opacity: 0.8;
-    padding-left: 13px;
+    padding-left: 26px;
     font-size: 0.8em;
     word-break: break-all;
 }
@@ -176,7 +176,7 @@ export default {
     float: right;
     opacity: 0.6;
     cursor: pointer;
-    line-height: 36px;
+    margin-top: 3px;
     transition: all 0.3s;
 }
 
@@ -186,20 +186,29 @@ export default {
 }
 
 .kiwi-selfuser-nick i:last-of-type {
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .kiwi-selfuser-away-return-icon {
     position: absolute;
-    left: 10px;
-    top: 6px;
+    opacity: 0.6;
+    right: 15px;
+    top: 15px;
     font-size: 1em;
     cursor: pointer;
     z-index: 100;
+    transition: all 0.2s;
+}
+
+.kiwi-selfuser-away-return-icon:hover {
+    opacity: 1;
+}
+
+.u-form.kiwi-away-checkbox-form {
+    padding: 0 0 5px 24px;
 }
 
 .u-form .kiwi-selfuser-away-label {
-    float: right;
     margin: 0 0 2px 0;
 }
 
@@ -208,7 +217,11 @@ export default {
 }
 
 .u-form .kiwi-selfuser-away-label input[type='checkbox'] {
-    float: right;
+    border-radius: 50%;
+}
+
+.u-form .kiwi-selfuser-away-label input[type='checkbox']:checked::after {
+    border-radius: 50%;
 }
 
 .kiwi-selfuser-error-message {
@@ -228,7 +241,7 @@ export default {
 }
 
 .kiwi-selfuser-actions form {
-    width: 100%;
+    width: calc(100% - 30px);
     position: relative;
 }
 
