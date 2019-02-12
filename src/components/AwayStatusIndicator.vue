@@ -51,6 +51,7 @@ export default {
     border: 1px solid #e1e1e1;
     border-radius: 50%;
     margin: 0 4px 0 0;
+    cursor: pointer;
 }
 
 .kiwi-awaystatusindicator-not-away {
