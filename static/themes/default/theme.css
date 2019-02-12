@@ -757,9 +757,6 @@
 .kiwi-statebrowser-scrollarea h4 {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
-.kiwi-network-name-options {
-    background-color: #131312;
-}
 .kiwi-network-name-option:hover,
 .kiwi-network-name-option.active {
     background-color: #42b992;

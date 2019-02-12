@@ -353,13 +353,15 @@ export default {
     line-height: 45px;
     text-align: left;
     position: relative;
+    box-sizing: border-box;
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
     text-align: left;
-    padding: 0 0 0 10px;
+    padding: 10px 80px 10px 10px;
+    word-wrap: break-word;
     width: 100%;
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: 600;
 }
 
