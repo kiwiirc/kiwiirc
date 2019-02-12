@@ -1,65 +1,97 @@
 <template>
     <div class="kiwi-inputtools-textstyle">
         <div class="kiwi-inputtools-textstyle-picker" @mousedown.prevent @click.prevent>
-            <div class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-reset"
-                 @click="onResetClick"><i class="fa fa-ban" aria-hidden="true"/></div>
+            <div class="kiwi-inputtools-tool-container">
+                <div :class="{'kiwi-input-tools-active': isBold}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-bold"
+                     @click="toggleBold">
+                     <i class="fa fa-bold" aria-hidden="true" />
+                 </div>
+                 <div :class="{'kiwi-input-tools-active': isItalic}"
+                      class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-italic"
+                      @click="toggleItalic">
+                      <i class="fa fa-italic" aria-hidden="true" />
+                  </div>
+                 <div :class="{'kiwi-input-tools-active': isUnderline}"
+                      class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-underline"
+                      @click="toggleUnderline">
+                      <i class="fa fa-underline" aria-hidden="true" />
+                  </div>
+                  <div class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-reset"
+                       @click="onResetClick"><i class="fa fa-ban" aria-hidden="true"/></div>
             <div class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-bold"
                  @click="toggleBold">B</div>
             <div class="kiwi-inputtools-textstyle-item irc-bg-colour-white"
                  data-code="00" @click="onColourClick"
             />
             <div class="kiwi-inputtools-textstyle-item irc-bg-colour-black"
+            </div>
+            <div :class="{'kiwi-inputtools-colour-container--active': currentColourCode != ''}"
+                 class="kiwi-inputtools-colour-container">
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '01'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-black"
                  data-code="01" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-blue"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '02'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-blue"
                  data-code="02" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-green"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '03'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-green"
                  data-code="03" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-light-red"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '04'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-light-red"
                  data-code="04" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-brown"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '05'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-brown"
                  data-code="05" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-purple"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '06'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-purple"
                  data-code="06" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-orange"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '07'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-orange"
                  data-code="07" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-italic"
-                 @click="toggleItalic">I</div>
-            <div class="kiwi-inputtools-textstyle-item kiwi-inputtools-textstyle-underline"
-                 @click="toggleUnderline">U</div>
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-yellow"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '08'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-yellow"
                  data-code="08" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-light-green"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '09'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-light-green"
                  data-code="09" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-cyan"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '10'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-cyan"
                  data-code="10" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-light-cyan"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '11'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-light-cyan"
                  data-code="11" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-light-blue"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '12'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-light-blue"
                  data-code="12" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-pink"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '13'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-pink"
                  data-code="13" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-grey"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '14'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-grey"
                  data-code="14" @click="onColourClick"
             />
-            <div class="kiwi-inputtools-textstyle-item irc-bg-colour-light-grey"
+                <div :class="{'kiwi-inputtools-textstyle--active': currentColourCode === '15'}"
+                     class="kiwi-inputtools-textstyle-item kiwi-inputtools-colour irc-bg-colour-light-grey"
                  data-code="15" @click="onColourClick"
             />
             <div class="kiwi-inputtools-colours-colour kiwi-inputtools-colours-reset"
                  @click="onResetClick"
             ><i class="fa fa-ban" aria-hidden="true" /></div>
+            </div>
         </div>
     </div>
 </template>
@@ -73,16 +105,32 @@ export default {
     props: ['ircinput'],
     data() {
         return {
+            isBold: false,
+            isItalic: false,
+            isUnderline: false,
+            currentColourCode: '',
         };
     },
     methods: {
         toggleBold() {
+            this.isBold = !this.isBold;
+            this.isItalic = false;
+            this.isUnderline = false;
+            this.currentColourCode = '';
             this.ircinput.toggleBold();
         },
         toggleItalic() {
+            this.isBold = false;
+            this.isItalic = !this.isItalic;
+            this.isUnderline = false;
+            this.currentColourCode = '';
             this.ircinput.toggleItalic();
         },
         toggleUnderline() {
+            this.isBold = false;
+            this.isItalic = false;
+            this.isUnderline = !this.isUnderline;
+            this.currentColourCode = '';
             this.ircinput.toggleUnderline();
         },
         onColourClick(event) {
@@ -100,9 +148,17 @@ export default {
             }
 
             let code = event.target.dataset.code;
+            this.isBold = false;
+            this.isItalic = false;
+            this.isUnderline = false;
+            this.currentColourCode = code;
             this.ircinput.setColour(code, colour);
         },
         onResetClick() {
+            this.isBold = false;
+            this.isItalic = false;
+            this.isUnderline = false;
+            this.currentColourCode = '';
             this.ircinput.resetStyles();
         },
     },
@@ -110,25 +166,64 @@ export default {
 </script>
 
 <style lang="less">
+.kiwi-controlinput-active-tool {
+    border-radius: 6px 0 0 0;
+    overflow: hidden;
+}
 
 .kiwi-inputtools-textstyle {
     bottom: 100%;
-    width: 300px;
+    width: 200px;
     z-index: 1;
+}
+
+.kiwi-inputtools-tool-container,
+.kiwi-inputtools-colour-container {
+    width: 100%;
+}
+
+.kiwi-inputtools-colour-container {
+    border-top: 1px solid #000;
+    overflow: hidden;
 }
 
 .kiwi-inputtools-textstyle-item {
     float: left;
     height: 30px;
-    width: 30px;
+    width: 50px;
     cursor: pointer;
     box-sizing: border-box;
-    border: 1px solid gray;
-    margin: 0;
     text-align: center;
     font-size: 23px;
     line-height: 30px;
     user-select: none;
+    display: inline-block;
+}
+
+.kiwi-inputtools-tool-container .kiwi-inputtools-textstyle-item {
+    font-size: 1em;
+    transition: all 0.2s;
+}
+
+.kiwi-inputtools-tool-container .kiwi-inputtools-textstyle-item.kiwi-input-tools-active {
+    background: #42b992;
+    color: #fff;
+}
+
+.kiwi-inputtools-colour {
+    margin: 0;
+    float: left;
+    transition: all 0.3s;
+}
+
+.kiwi-inputtools-colour-container:hover .kiwi-inputtools-colour,
+.kiwi-inputtools-colour-container--active .kiwi-inputtools-colour {
+    opacity: 0.2;
+}
+
+.kiwi-inputtools-colour-container:hover .kiwi-inputtools-colour:hover,
+.kiwi-inputtools-colour-container--active .kiwi-inputtools-colour.kiwi-inputtools-textstyle--active {
+    opacity: 1;
 }
 
 .kiwi-inputtools-textstyle-bold {
