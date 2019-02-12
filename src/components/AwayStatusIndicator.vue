@@ -3,7 +3,8 @@
         v-if="checkCap()"
         :user="user"
         :class="{ 'kiwi-awaystatusindicator-away': isUserAway(),
-                  'kiwi-awaystatusindicator-not-away': !isUserAway() }"
+                  'kiwi-awaystatusindicator-not-away': !isUserAway(),
+                  'kiwi-awaystatusindicator-self': isUserSelf() }"
         class="kiwi-awaystatusindicator"
         @click="toggleSelfAway()"
     />
@@ -33,10 +34,17 @@ export default {
         },
         toggleSelfAway() {
             let activeNetwork = this.$state.getActiveNetwork();
-            if (this.user === this.$state.getUser(activeNetwork.id, activeNetwork.nick)) {
+            if (this.isUserSelf()) {
                 let val = this.isUserAway();
                 activeNetwork.ircClient.raw('AWAY', val ? '' : 'Currently away');
             }
+        },
+        isUserSelf() {
+            let activeNetwork = this.$state.getActiveNetwork();
+            if (this.user === this.$state.getUser(activeNetwork.id, activeNetwork.nick)) {
+                return true;
+            }
+            return false;
         },
     },
 };
@@ -51,7 +59,6 @@ export default {
     border: 1px solid #e1e1e1;
     border-radius: 50%;
     margin: 0 4px 0 0;
-    cursor: pointer;
 }
 
 .kiwi-awaystatusindicator-not-away {
@@ -60,6 +67,10 @@ export default {
 
 .kiwi-awaystatusindicator-away {
     background-color: red;
+}
+
+.kiwi-awaystatusindicator-self {
+    cursor: pointer;
 }
 
 </style>
