@@ -429,7 +429,7 @@ function updateWhoStatus(bufferState) {
             let bufferStateName = bufferState.name;
             network.ircClient.who(bufferStateName);
         }
-        setTimeout(updateWhoStatusLoop, 1000);
+        setTimeout(updateWhoStatusLoop, 30000);
     }
-    setTimeout(updateWhoStatusLoop, 1000);
+    setTimeout(updateWhoStatusLoop, 30000);
 }
