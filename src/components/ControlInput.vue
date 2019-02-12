@@ -551,7 +551,7 @@ export default {
     padding: 0;
     box-sizing: border-box;
     transition: padding 0.2s;
-    transition-delay: 0.2s;
+    transition-delay: 0.1s;
 }
 
 .kiwi-controlinput-selfuser--open .kiwi-controlinput-inner {
@@ -660,7 +660,7 @@ export default {
     box-sizing: border-box;
     border-radius: 0 6px 0 0;
     opacity: 0;
-    transition: max-height 0.2s, opacity 0.3s;
+    transition: max-height 0.2s, opacity 0.2s;
     overflow: hidden;
 }
 
@@ -668,7 +668,7 @@ export default {
     width: 324px;
     max-height: 300px;
     opacity: 1;
-    transition: max-height 0.3s, opacity 0.34s;
+    transition: max-height 0.2s, opacity 0.24s;
 }
 
 @media screen and (max-width: 769px) {
