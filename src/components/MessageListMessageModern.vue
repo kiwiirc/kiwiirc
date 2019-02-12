@@ -39,7 +39,8 @@
                 :message="message"
                 :data-nick="message.nick"
             />
-            <away-status-indicator v-if="message.user" :user="message.user"/>
+            <away-status-indicator v-if="message.user && isRepeat() === false"
+                                   :user="message.user"/>
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">
@@ -190,6 +191,7 @@ export default {
     top: 5px;
     right: 0;
     height: 10px;
+    position: absolute;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left {
