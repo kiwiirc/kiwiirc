@@ -55,6 +55,9 @@
 .kiwi-workspace::before {
     background: #42b992;
 }
+.kiwi-workspace.kiwi-wrap--disconnected::before {
+    background: #bf5155;
+}
 .kiwi-workspace::after{
     background-color: rgba(0, 0, 0, 0.4);
 }

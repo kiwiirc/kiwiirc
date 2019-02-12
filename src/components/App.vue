@@ -17,7 +17,8 @@
         </template>
         <template v-else>
             <state-browser :networks="networks" :sidebar-state="sidebarState"/>
-            <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
+            <div :class="{'kiwi-wrap--disconnected': buffer.getNetwork().state === 'disconnected'}"
+                 class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"/>
 
                 <template v-if="!activeComponent && network">
@@ -374,18 +375,7 @@ body {
     top: 0;
     height: 7px;
     z-index: 0;
-}
-
-/* When the statebrowser opens as a draw, darken the workspace */
-.kiwi-workspace::after {
-    position: fixed;
-    top: 0;
-    right: 0;
-    content: '';
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 0.5s;
-    will-change: opacity;
+    transition: all 0.3s;
 }
 
 .kiwi-workspace-background {
