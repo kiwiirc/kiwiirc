@@ -166,9 +166,6 @@ export default {
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
         },
-        getUserFromString(name) {
-            return this.$state.getUser(this.$state.getActiveNetwork().id, name);
-        },
     },
 };
 </script>
