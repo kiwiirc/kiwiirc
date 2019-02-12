@@ -2,12 +2,14 @@
     <div :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
          class="kiwi-controlinput kiwi-theme-bg">
         <div class="kiwi-controlinput-selfuser">
-            <self-user
-                v-if="networkState==='connected'"
-                :network="buffer.getNetwork()"
-                :show_self_user_settings="selfuser_open"
-                @close="selfuser_open=false"
-            />
+            <transition name="fade">
+                <self-user
+                    v-if="networkState==='connected'
+                    && selfuser_open === true"
+                    :network="buffer.getNetwork()"
+                    @close="selfuser_open=false"
+                />
+            </transition>
         </div>
 
         <div class="kiwi-controlinput-inner">
@@ -664,7 +666,6 @@ export default {
     box-sizing: border-box;
     border-radius: 0 6px 0 0;
     opacity: 0;
-    transition: max-height 0.2s, opacity 0.2s;
     overflow: hidden;
 }
 
@@ -672,7 +673,19 @@ export default {
     width: 324px;
     max-height: 300px;
     opacity: 1;
-    transition: max-height 0.2s, opacity 0.24s;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    height: auto;
+    transition: all 0.4s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+    height: 0;
+    transition: all 0.4s;
 }
 
 @media screen and (max-width: 769px) {
