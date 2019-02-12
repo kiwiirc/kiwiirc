@@ -367,15 +367,31 @@ body {
     transition: left 0.2s, margin-left 0.2s;
 }
 
-.kiwi-workspace::before {
+.kiwi-workspace::before,
+.kiwi-workspace::after {
     position: absolute;
     content: '';
-    right: 0;
     left: 0;
+    right: auto;
     top: 0;
+    width: 100%;
     height: 7px;
     z-index: 0;
-    transition: all 0.3s;
+    transition: width 0.3s;
+}
+
+.kiwi-workspace::after {
+    right: 0;
+    left: auto;
+    width: 0;
+}
+
+.kiwi-workspace.kiwi-wrap--disconnected::before {
+    width: 0;
+}
+
+.kiwi-workspace.kiwi-wrap--disconnected::after {
+    width: 100%;
 }
 
 .kiwi-workspace-background {
