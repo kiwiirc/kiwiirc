@@ -551,7 +551,7 @@ export default {
     padding: 0;
     box-sizing: border-box;
     transition: padding 0.2s;
-    transition-delay: 0.1s;
+    transition-delay: 0.2s;
 }
 
 .kiwi-controlinput-selfuser--open .kiwi-controlinput-inner {
