@@ -34,6 +34,7 @@ export default class BufferState {
         this.active_timeout = null;
         this.message_count = 0;
         this.current_input = '';
+        this.updateWhoStatus = updateWhoStatus(this);
 
         // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'state', state, false);
@@ -48,7 +49,6 @@ export default class BufferState {
         def(this, 'messagesObj', messagesObj, false);
 
         def(this, 'addMessageBatch', createMessageBatch(this), false);
-        def(this, 'updateWhoStatus', updateWhoStatus(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
     }
 
@@ -420,7 +420,7 @@ function createMessageBatch(bufferState) {
 }
 
 function updateWhoStatus(bufferState) {
-    setInterval(() => {
+    function updateWhoStatusLoop() {
         let statusUpdaterFallback = bufferState.setting('status_updater_fallback');
         let networkConnected = bufferState.getNetwork().ircClient.connected;
         let bufferJoined = bufferState.joined;
@@ -429,6 +429,7 @@ function updateWhoStatus(bufferState) {
             let bufferStateName = bufferState.name;
             network.ircClient.who(bufferStateName);
         }
-    }, 30000);
-    return null;
+        setTimeout(updateWhoStatusLoop, 1000);
+    }
+    setTimeout(updateWhoStatusLoop, 1000);
 }
