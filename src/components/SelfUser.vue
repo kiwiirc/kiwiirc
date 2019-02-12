@@ -219,14 +219,6 @@ export default {
     margin-right: 5px;
 }
 
-.u-form .kiwi-selfuser-away-label input[type='checkbox'] {
-    border-radius: 50%;
-}
-
-.u-form .kiwi-selfuser-away-label input[type='checkbox']:checked::after {
-    border-radius: 50%;
-}
-
 .kiwi-selfuser-error-message {
     width: 100%;
     display: block;
