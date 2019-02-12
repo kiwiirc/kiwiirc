@@ -213,7 +213,7 @@ export default {
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-    margin: 10px 20px 10px 20px;
+    margin: 0 20px 20px 66px;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
@@ -376,6 +376,10 @@ export default {
 
     .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic {
         padding-left: 10px;
+    }
+
+    .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
+        margin: 0 15px 20px 15px;
     }
 }
 </style>
