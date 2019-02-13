@@ -56,17 +56,9 @@ export default {
     display: inline-block;
     width: 7px;
     height: 7px;
-    border: 1px solid #e1e1e1;
     border-radius: 50%;
     margin: 0 4px 0 0;
-}
-
-.kiwi-awaystatusindicator-not-away {
-    background-color: green;
-}
-
-.kiwi-awaystatusindicator-away {
-    background-color: red;
+    transition: background 0.2s;
 }
 
 .kiwi-awaystatusindicator-self {

@@ -1061,3 +1061,15 @@
     color: #fff;
     background: #d16c6c;
 }
+
+.kiwi-awaystatusindicator {
+    border: 1px solid #e1e1e1;
+}
+
+.kiwi-awaystatusindicator-not-away {
+    background-color: #6199f1;
+}
+
+.kiwi-awaystatusindicator-away {
+    background-color: #7e8084;
+}

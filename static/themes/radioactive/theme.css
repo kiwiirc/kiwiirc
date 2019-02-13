@@ -1107,6 +1107,18 @@
     border: 1px solid #5dd895;
 }
 
+.kiwi-awaystatusindicator {
+    border: 1px solid #e1e1e1;
+}
+
+.kiwi-awaystatusindicator-not-away {
+    background-color: #5dd895;
+}
+
+.kiwi-awaystatusindicator-away {
+    background-color: #1b2f24;
+}
+
 @media screen and (max-width: 769px) {
     .kiwi-appsettings {
         background-color: #294234;
