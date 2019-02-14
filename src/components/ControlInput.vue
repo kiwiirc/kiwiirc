@@ -1,6 +1,7 @@
 <template>
     <div :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
-         class="kiwi-controlinput kiwi-theme-bg">
+         class="kiwi-controlinput kiwi-theme-bg"
+     >
         <div class="kiwi-controlinput-selfuser">
             <transition name="kiwi-selfuser-trans">
                 <self-user
@@ -13,8 +14,10 @@
         </div>
 
         <div class="kiwi-controlinput-inner">
-            <away-status-indicator :user="buffer.getNetwork().currentUser()"
-                                   :network="buffer.getNetwork()"/>
+            <away-status-indicator
+                :user="buffer.getNetwork().currentUser()"
+                :network="buffer.getNetwork()"
+            />
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i
@@ -578,10 +581,6 @@ export default {
     width: 286px;
     transition: width 0.2s;
     transition-delay: 0.1s;
-}
-
-.kiwi-controlinput .kiwi-awaystatusindicator {
-    cursor: pointer;
 }
 
 .kiwi-controlinput-tools {

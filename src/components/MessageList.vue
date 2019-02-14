@@ -638,20 +638,6 @@ export default {
 }
 
 /** Message structure */
-.kiwi-messagelist-user-status {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border: 1px solid #e1e1e1;
-    border-radius: 50%;
-    margin: 0 4px 0 0;
-    background-color: green;
-}
-
-.kiwi-messagelist-user-status-away {
-    background: red;
-}
-
 .kiwi-messagelist-body .kiwi-nick {
     cursor: pointer;
 }
