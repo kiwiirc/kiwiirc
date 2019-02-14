@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-userbox">
         <span v-if="isSelf" class="kiwi-userbox-selfprofile">
-            You are viewing informaiton about your own user.
+            This is you!
         </span>
         <div class="kiwi-userbox-header">
             <h3>
