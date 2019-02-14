@@ -43,16 +43,21 @@
         >
             {{ ml.formatTime(message.time) }}
         </div>
-        <span v-if="message.type === 'privmsg'">
-            <away-status-indicator :user="message.user"/>
-        </span>
         <div
             :style="{ 'color': userColour }"
             class="kiwi-messagelist-nick"
             @click="ml.openUserBox(message.nick)"
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
             @mouseout="ml.hover_nick='';"
-        >{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
+        >
+            <away-status-indicator
+                v-if="message.user"
+                :network="getNetwork()" :user="message.user"
+                :toggle="false"
+            />
+            {{ message.user ? userModePrefix(message.user) : '' }}
+            {{ message.nick }}
+        </div>
         <div
             v-rawElement="message.bodyTemplate.$el"
             v-if="message.bodyTemplate && message.bodyTemplate.$el"
@@ -95,6 +100,9 @@ export default {
         },
     },
     methods: {
+        getNetwork() {
+            return this.ml.buffer.getNetwork();
+        },
         isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
