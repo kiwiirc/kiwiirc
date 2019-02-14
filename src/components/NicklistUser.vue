@@ -8,7 +8,11 @@
         class="kiwi-nicklist-user"
         @click="nicklist.openUserbox(user)"
     >
-        <away-status-indicator :network="network" :user="user"/>
+        <away-status-indicator
+            :network="network"
+            :user="user"
+            :toggle="false"
+        />
         <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span>
         <span
             :style="{ 'color': userColour }"
