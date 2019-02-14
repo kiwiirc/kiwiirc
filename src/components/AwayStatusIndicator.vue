@@ -12,11 +12,15 @@
 'kiwi public';
 
 export default {
-    props: ['network', 'user'],
+    props: ['network', 'user', 'toggle'],
     computed: {
         isUserSelf() {
+            if ( this.toggle === false ){
+                return false;
+            }
             let user = this.$state.getUser(this.network.id, this.network.nick);
             return this.user === user;
+
         },
         awayNotifySupported() {
             return this.network.ircClient.network.cap.isEnabled('away-notify');

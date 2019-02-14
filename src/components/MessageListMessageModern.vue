@@ -42,6 +42,7 @@
             <away-status-indicator
                 v-if="message.user && !isRepeat()"
                 :network="getNetwork()" :user="message.user"
+                :toggle="false"
                 class="kiwi-messagelist-awaystatus"
             />
         </div>
