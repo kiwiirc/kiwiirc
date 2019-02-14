@@ -548,7 +548,7 @@ export default {
 
 .kiwi-container--sidebar-drawn .kiwi-messagelist::after {
     content: '';
-    z-index: 5;
+    z-index: 3;
     left: 0;
     top: 0;
     width: 100%;
