@@ -2,10 +2,10 @@
     <div class="kiwi-selfuser kiwi-theme-bg">
         <div v-if="!self_user_settings_open" class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">
-                <away-status-indicator :network="network" :user="getUserFromString(network.nick)"/>
+                <away-status-indicator :network="network" :user="network.currentUser()"/>
                 {{ network.nick }}
                 <i class="fa fa-times" aria-hidden="true" @click="closeSelfUser()"/>
-                <i class="fa fa-pencil" aria-hidden="true" @click="openSelfActions('Nick')" />
+                <i class="fa fa-pencil" aria-hidden="true" @click="openSelfActions()" />
             </span>
             <span class="kiwi-selfuser-host">
                 {{ netUser.username }}@{{ netUser.host }} ( {{ modeString }} )
@@ -17,16 +17,18 @@
                 </label>
             </div>
         </div>
-        <div v-if="self_user_settings_open" class="kiwi-selfuser-actions">
+        <div v-else class="kiwi-selfuser-actions">
             <div class="kiwi-selfuser-away-return-icon" @click="self_user_settings_open = false">
                 <i class="fa fa-times" aria-hidden="true"/>
             </div>
             <form class="u-form">
-                <input v-model="newNick"
-                       type="text" class="u-input" placeholder="Enter new nickname...">
+                <input v-model="new_nick"
+                       type="text" class="u-input"
+                       placeholder="Enter new nickname..."
+                >
                 <span class="u-input-button-container">
                     <a class="u-button u-button-primary"
-                       @click="userNameUpdate(newNick)">
+                       @click="userNameUpdate(new_nick)">
                         Update
                     </a>
                 </span>
@@ -48,19 +50,15 @@ export default {
     },
     props: {
         network: Object,
-        show_self_user_settings: Boolean,
     },
     data: function data() {
         return {
-            newNick: '',
+            new_nick: '',
             error_message: '',
-            self_user_settings_open: this.show_self_user_settings,
+            self_user_settings_open: false,
         };
     },
     computed: {
-        currentUser() {
-            return this.$state.getUser(this.network, this.network.nick);
-        },
         modeString() {
             let str = '';
             this.network.ircClient.user.modes.forEach((mode) => {
@@ -79,16 +77,11 @@ export default {
         },
         awayStatus: {
             get() {
-                return !!this.$state.getUser(this.network.id, this.network.nick).away;
+                return this.network.currentUser().away;
             },
             set(val) {
                 this.network.ircClient.raw('AWAY', val ? 'Currently away' : '');
             },
-        },
-    },
-    watch: {
-        show_self_user_settings: function watchSelfUserSettingsOpen() {
-            this.self_user_settings_open = false;
         },
     },
     created() {
@@ -97,25 +90,25 @@ export default {
         });
     },
     methods: {
-        openSelfActions(option) {
+        openSelfActions() {
             this.self_user_settings_open = true;
         },
         closeSelfUser() {
             this.$emit('close');
         },
         userNameUpdate(newNick) {
-            if (newNick.length !== 0) {
-                this.error_message = '';
-                let nick = newNick.trim();
-                if (!nick.match(/(^[0-9])|(\s)/)) {
-                    this.network.ircClient.changeNick(nick);
-                    this.userNameCancel();
-                } else {
-                    this.error_message = 'You must enter a new username';
-                }
-            } else {
+            let nick = newNick.trim();
+            if (nick.length === 0) {
                 this.error_message = 'You must enter a new username';
+                return;
             }
+            if (nick.match(/(^[0-9])|(\s)/)) {
+               this.error_message = 'Username must not start with a number';
+               return;
+            }
+            this.error_message = '';
+            this.network.ircClient.changeNick(nick);
+            this.userNameCancel();
         },
         userNameCancel() {
             this.self_user_settings_open = false;
@@ -124,7 +117,7 @@ export default {
             return this.network.ircClient.network.cap.isEnabled('away-notify');
         },
         checkUserAway() {
-            return !!this.$state.getUser(this.network.id, this.network.nick).away;
+            return !!this.network.currentUser().away;
         },
         getUserFromString(name) {
             return this.$state.getUser(this.network.id, name);
@@ -162,14 +155,6 @@ export default {
     padding-left: 26px;
     font-size: 0.8em;
     word-break: break-all;
-}
-
-.kiwi-selfuser-status .kiwi-selfuser-status-show {
-    display: inline-block;
-    padding: 2px 10px;
-    background-color: green;
-    color: #fff;
-    border-radius: 4px;
 }
 
 .kiwi-controlinput-selfuser .kiwi-close-icon {
@@ -228,8 +213,6 @@ export default {
     width: 100%;
     display: block;
     padding: 0.5em 10px;
-    background: #d16c6c;
-    color: #fff;
     box-sizing: border-box;
     margin: 5px 0 5px 0;
     text-align: center;

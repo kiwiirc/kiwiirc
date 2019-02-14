@@ -1116,6 +1116,11 @@
     background-color: #1b2f24;
 }
 
+.kiwi-selfuser-error-message {
+    background: #d16c6c;
+    color: #fff;
+}
+
 @media screen and (max-width: 769px) {
     .kiwi-appsettings {
         background-color: #294234;

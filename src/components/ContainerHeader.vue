@@ -305,7 +305,7 @@ export default {
     display: flex;
 }
 
-.kiwi-header-awaystatus {
+.kiwi-header-name .kiwi-header-awaystatus {
     display: inline-block;
     margin-bottom: 2px;
 }

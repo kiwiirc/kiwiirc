@@ -1055,3 +1055,8 @@
 .kiwi-awaystatusindicator--away {
     background-color: red;
 }
+
+.kiwi-selfuser-error-message {
+    background: #d16c6c;
+    color: #fff;
+}

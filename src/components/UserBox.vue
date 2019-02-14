@@ -1,12 +1,12 @@
 <template>
     <div class="kiwi-userbox">
-        <span v-if="isUser" class="kiwi-userbox-selfprofile">
+        <span v-if="isSelf" class="kiwi-userbox-selfprofile">
             You are viewing informaiton about your own user.
         </span>
         <div class="kiwi-userbox-header">
             <h3>
                 <away-status-indicator :network="network" :user="user"/> {{ user.nick }}
-                <span class="kiwi-userbox-modeString">( {{ modeString }} )</span>
+                <span class="kiwi-userbox-modestring">( {{ modeString }} )</span>
             </h3>
             <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
         </div>
@@ -17,7 +17,7 @@
         </div>
 
         <p class="kiwi-userbox-actions">
-            <a v-if="!isUser" class="kiwi-userbox-action" @click="openQuery">
+            <a v-if="!isSelf" class="kiwi-userbox-action" @click="openQuery">
                 <i class="fa fa-comment-o" aria-hidden="true"/>
                 {{ $t('send_a_message') }}
             </a>
@@ -27,7 +27,7 @@
             </a>
         </p>
 
-        <form v-if="!isUser" class="u-form kiwi-userbox-ignoreuser">
+        <form v-if="!isSelf" class="u-form kiwi-userbox-ignoreuser">
             <label>
                 <input v-model="user.ignore" type="checkbox" >
                 <span> {{ $t('ignore_user') }} </span>
@@ -80,7 +80,7 @@
             </template>
         </div>
 
-        <div v-if="buffer.isChannel() && areWeAnOp && !isUser" class="kiwi-userbox-opactions">
+        <div v-if="buffer.isChannel() && areWeAnOp && !isSelf" class="kiwi-userbox-opactions">
             <form class="u-form" @submit.prevent="">
                 <label v-if="isUserOnBuffer">
                     {{ $t('user_access') }} <select v-model="userMode">
@@ -191,9 +191,6 @@ export default {
 
             return true;
         },
-        doesNetworkHaveAwayNotify: function doesNetworkHaveAwayNotify() {
-            return this.$state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
-        },
         userMode: {
             get: function getUserMode() {
                 if (!this.buffer) {
@@ -239,11 +236,8 @@ export default {
             }
             return channels.join(' ');
         },
-        isUser() {
-            if (this.user === this.$state.getUser(this.network.id, this.network.nick)) {
-                return true;
-            }
-            return false;
+        isSelf() {
+            return this.user === this.network.currentUser();
         },
         modeString() {
             let str = '';
@@ -355,38 +349,18 @@ export default {
     position: relative;
     padding: 0.5em 1em;
     overflow: hidden;
+}
 
-    h3 {
-        width: 100%;
-        padding: 0;
-        cursor: default;
-        display: inline-block;
+.kiwi-userbox-header h3 {
+    width: 100%;
+    padding: 0;
+    cursor: default;
+    display: inline-block;
+}
 
-        .kiwi-userbox-modeString {
-            font-weight: normal;
-            font-size: 0.8em;
-        }
-    }
-
-    .kiwi-userbox-user-status {
-        display: inline-block;
-        width: 7px;
-        height: 7px;
-        border: 1px solid #e1e1e1;
-        border-radius: 50%;
-        margin: 0 4px 0 0;
-        background-color: green;
-    }
-
-    .kiwi-userbox-user-status-away {
-        display: inline-block;
-        width: 7px;
-        height: 7px;
-        border: 1px solid #e1e1e1;
-        border-radius: 50%;
-        margin: 0 4px 0 0;
-        background: red;
-    }
+.kiwi-userbox-modestring {
+    font-weight: normal;
+    font-size: 0.8em;
 }
 
 .fa-user.kiwi-userbox-icon {

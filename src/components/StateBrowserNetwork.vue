@@ -117,11 +117,11 @@
                     class="kiwi-statebrowser-channel"
                 >
                     <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">
-                        <i v-if="!buffer.isChannel() && !doesNetworkHaveAwayNotify()"
+                        <i v-if="buffer.isQuery() && !awayNotifySupported()"
                            class="fa fa-user" aria-hidden="true" />
                         <away-status-indicator
-                            v-if="!buffer.isChannel() && doesNetworkHaveAwayNotify()"
-                            :network="network" :user="getUserFromString(buffer.name)"/>
+                            v-if="buffer.isQuery() && awayNotifySupported()"
+                            :network="network" :user="network.userByName(buffer.name)"/>
                         {{ buffer.name }}
                     </div>
                     <div class="kiwi-statebrowser-channel-labels">
@@ -273,8 +273,8 @@ export default {
         closeBuffer(buffer) {
             state.removeBuffer(buffer);
         },
-        doesNetworkHaveAwayNotify() {
-            return state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
+        awayNotifySupported() {
+            return this.network.ircClient.network.cap.isEnabled('away-notify');
         },
         showMessageCounts: function showMessageCounts(buffer) {
             return !buffer.setting('hide_message_counts');
@@ -314,9 +314,6 @@ export default {
         closeFilterChannel() {
             this.channel_filter = '';
             this.channel_filter_display = false;
-        },
-        getUserFromString(name) {
-            return state.getUser(this.network.id, name);
         },
     },
 };
