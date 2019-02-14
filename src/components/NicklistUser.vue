@@ -2,7 +2,7 @@
     <li
         :class="[
             nicklist.userMode(user) ? 'kiwi-nicklist-user--mode-' + nicklist.userMode(user) : '',
-            user.away ? 'kiwi-nicklist-user-status-away' : 'kiwi-nicklist-user-status-available',
+            user.away ? 'kiwi-nicklist-user--away' : '',
             user.ignore ? 'kiwi-nicklist-user--ignore' : '',
         ]"
         class="kiwi-nicklist-user"

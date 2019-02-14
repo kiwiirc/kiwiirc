@@ -1,7 +1,7 @@
 <template>
     <div :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
          class="kiwi-controlinput kiwi-theme-bg"
-     >
+    >
         <div class="kiwi-controlinput-selfuser">
             <transition name="kiwi-selfuser-trans">
                 <self-user

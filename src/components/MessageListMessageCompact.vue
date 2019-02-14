@@ -282,18 +282,4 @@ export default {
     margin-bottom: 5px;
 }
 
-.kiwi-messagelistcompact-user-status {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border: 1px solid #e1e1e1;
-    border-radius: 50%;
-    margin: 0 4px 0 0;
-    background-color: green;
-}
-
-.kiwi-messagelistcompact-user-status-away {
-    background: red;
-}
-
 </style>
