@@ -22,10 +22,11 @@
                 <i class="fa fa-times" aria-hidden="true"/>
             </div>
             <form class="u-form">
-                <input v-model="new_nick"
-                       type="text" class="u-input"
+                <input v-focus
+                       v-model="new_nick"
+                       type="text"
+                       class="u-input"
                        placeholder="Enter new nickname..."
-                       v-focus
                 >
                 <span class="u-input-button-container">
                     <a class="u-button u-button-primary"
