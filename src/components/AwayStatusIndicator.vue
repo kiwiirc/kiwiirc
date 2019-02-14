@@ -1,7 +1,6 @@
 <template>
     <span
         v-if="doesNetworkHaveAwayNotifyCap()"
-        :user="user"
         :class="{ 'kiwi-awaystatusindicator-away': isUserAway(),
                   'kiwi-awaystatusindicator-not-away': !isUserAway(),
                   'kiwi-awaystatusindicator-self': isUserSelf() }"
@@ -14,34 +13,27 @@
 'kiwi public';
 
 export default {
-    props: ['user', 'network'],
+    props: ['network'],
     computed: {
     },
     methods: {
         doesNetworkHaveAwayNotifyCap() {
-            if (this.network) {
-                return this.network.ircClient.network.cap.isEnabled('away-notify');
-            }
-            return this.$state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
+            return this.network.ircClient.network.cap.isEnabled('away-notify');
         },
         isUserAway() {
-            if (this.doesNetworkHaveAwayNotifyCap) {
-                let networkId = this.$state.getActiveNetwork().id;
-                let userToCheck = this.$state.getUser(networkId, this.user.nick);
-                return userToCheck.isUserAway();
-            }
-            return '';
+          if ( this.network.currentUser().away ){
+             return true;
+          }
+          return false;
         },
         toggleSelfAway() {
-            let activeNetwork = this.$state.getActiveNetwork();
             if (this.isUserSelf()) {
                 let val = this.isUserAway();
-                activeNetwork.ircClient.raw('AWAY', val ? '' : 'Currently away');
+                this.network.ircClient.raw('AWAY', val ? '' : 'Currently away');
             }
         },
         isUserSelf() {
-            let activeNetwork = this.$state.getActiveNetwork();
-            if (this.user === this.$state.getUser(activeNetwork.id, activeNetwork.nick)) {
+            if (this.network.currentUser() === this.$state.getUser(this.network.id, this.network.nick)) {
                 return true;
             }
             return false;

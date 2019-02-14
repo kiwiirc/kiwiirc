@@ -24,6 +24,7 @@
                 :key="user.nick"
                 :user="user"
                 :nicklist="self"
+                :network="network"
             />
         </ul>
     </div>

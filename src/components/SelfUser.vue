@@ -2,7 +2,7 @@
     <div class="kiwi-selfuser kiwi-theme-bg">
         <div v-if="!self_user_settings_open" class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">
-                <away-status-indicator :user="netUser"/>
+                <away-status-indicator :network="network"/>
                 {{ network.nick }}
                 <i class="fa fa-times" aria-hidden="true" @click="closeSelfUser()"/>
                 <i class="fa fa-pencil" aria-hidden="true" @click="openSelfActions('Nick')" />
@@ -10,7 +10,7 @@
             <span class="kiwi-selfuser-host">
                 {{ netUser.username }}@{{ netUser.host }} ( {{ modeString }} )
             </span>
-            <div class="u-form kiwi-away-checkbox-form">
+            <div v-if="networkSupportsAway()" class="u-form kiwi-away-checkbox-form">
                 <label class="kiwi-selfuser-away-label">
                     <span>Away</span>
                     <input v-model="awayStatus" type="checkbox" >
@@ -59,8 +59,7 @@ export default {
     },
     computed: {
         currentUser() {
-            let activeNetworkState = this.$state.getActiveNetwork();
-            return this.$state.getUser(activeNetworkState.id, activeNetworkState.nick);
+            return this.$state.getUser(this.network, this.network.nick);
         },
         modeString() {
             let str = '';
@@ -120,6 +119,9 @@ export default {
         },
         userNameCancel() {
             this.self_user_settings_open = false;
+        },
+        networkSupportsAway() {
+            return this.network.ircClient.network.cap.isEnabled('away-notify');
         },
         checkUserAway() {
             return !!this.$state.getUser(this.network.id, this.network.nick).away;

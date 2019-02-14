@@ -40,7 +40,7 @@
                 :data-nick="message.nick"
             />
             <away-status-indicator v-if="message.user && isRepeat() === false"
-                                   :user="message.user"/>
+                                   :network="a"/>
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">

@@ -8,7 +8,7 @@
         class="kiwi-nicklist-user"
         @click="nicklist.openUserbox(user)"
     >
-        <away-status-indicator :user="user"/>
+        <away-status-indicator :network="network"/>
         <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span>
         <span
             :style="{ 'color': userColour }"
@@ -30,7 +30,7 @@ export default {
     components: {
         AwayStatusIndicator,
     },
-    props: ['user', 'nicklist'],
+    props: ['network', 'user', 'nicklist'],
     computed: {
         userColour() {
             if (this.nicklist.useColouredNicks) {
