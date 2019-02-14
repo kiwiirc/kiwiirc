@@ -103,8 +103,8 @@ export default {
                 return;
             }
             if (nick.match(/(^[0-9])|(\s)/)) {
-               this.error_message = 'Username must not start with a number';
-               return;
+                this.error_message = 'Username must not start with a number';
+                return;
             }
             this.error_message = '';
             this.network.ircClient.changeNick(nick);
