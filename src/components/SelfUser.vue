@@ -25,6 +25,7 @@
                 <input v-model="new_nick"
                        type="text" class="u-input"
                        placeholder="Enter new nickname..."
+                       v-focus
                 >
                 <span class="u-input-button-container">
                     <a class="u-button u-button-primary"

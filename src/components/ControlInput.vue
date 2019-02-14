@@ -729,4 +729,10 @@ export default {
     transition: right 0.2s;
 }
 
+@media screen and (max-width: 769px) {
+    .kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
+        width: 100%;
+    }
+}
+
 </style>
