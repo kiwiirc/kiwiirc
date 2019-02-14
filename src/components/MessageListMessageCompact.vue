@@ -138,16 +138,6 @@ export default {
     position: absolute;
 }
 
-.kiwi-messagelist-message--compact > .kiwi-user-availability {
-    height: 5px;
-    width: 5px;
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    border-radius: 50%;
-}
-
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
     width: auto;
 }
