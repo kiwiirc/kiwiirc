@@ -2,7 +2,7 @@
     <div :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
          class="kiwi-controlinput kiwi-theme-bg">
         <div class="kiwi-controlinput-selfuser">
-            <transition name="fade">
+            <transition name="kiwi-selfuser-trans">
                 <self-user
                     v-if="networkState==='connected'
                     && selfuser_open === true"
@@ -159,9 +159,6 @@ export default {
         },
         shouldShowEmojiPicker() {
             return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
-        },
-        doesNetworkHaveAwayNotify() {
-            return this.$state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
         },
     },
     watch: {
@@ -672,16 +669,19 @@ export default {
     opacity: 1;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-    height: auto;
-    transition: all 0.4s;
-}
-
-.fade-enter,
-.fade-leave-to {
+.kiwi-selfuser-trans-enter,
+.kiwi-selfuser-trans-leave-to {
     opacity: 0;
     height: 0;
+}
+
+.kiwi-selfuser-trans-enter-to,
+.kiwi-selfuser-trans-leave {
+    opacity: 1;
+}
+
+.kiwi-selfuser-trans-enter-active,
+.kiwi-selfuser-trans-leave-active {
     transition: all 0.4s;
 }
 
