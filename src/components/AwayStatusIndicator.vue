@@ -14,9 +14,12 @@
 'kiwi public';
 
 export default {
-    props: ['user'],
+    props: ['user', 'network'],
     computed: {
         doesNetworkHaveAwayNotifyCap() {
+            if (this.network) {
+                return this.network.ircClient.network.cap.isEnabled('away-notify');
+            }
             return this.$state.getActiveNetwork().ircClient.network.cap.isEnabled('away-notify');
         },
     },

@@ -121,7 +121,8 @@
                            class="fa fa-user" aria-hidden="true" />
                         <away-status-indicator
                             v-if="!buffer.isChannel() && doesNetworkHaveAwayNotify()"
-                            :user="getUserFromString(buffer.name)"/>
+                            :user="getUserFromString(buffer.name)"
+                            :network="network"/>
                         {{ buffer.name }}
                     </div>
                     <div class="kiwi-statebrowser-channel-labels">
