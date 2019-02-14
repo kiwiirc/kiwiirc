@@ -1211,11 +1211,6 @@
     color: #666;
 }
 
-/* Buffer Key */
-.kiwi-bufferkey-button {
-    border: 1px solid #fff;
-}
-
 /* Customer Server Styling */
 .kiwi-customserver {
     background-color: #1e1e1e;
@@ -1244,6 +1239,17 @@
 .kiwi-customserver .u-link {
     color: #42b992;
     text-decoration: underline;
+}
+
+/* Buffer Key */
+.kiwi-bufferkey input[type='password'] {
+    border: 1px solid #dedede;
+    color: #dedede;
+    border-radius: 4px;
+}
+
+.kiwi-bufferkey-button {
+    border: 1px solid #dedede;
 }
 
 /*Icon before the network in network list */

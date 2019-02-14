@@ -1012,6 +1012,12 @@
 }
 
 /* Buffer Key */
+.kiwi-bufferkey input[type='password'] {
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 4px;
+}
+
 .kiwi-bufferkey-button {
     border: 1px solid #fff;
 }
