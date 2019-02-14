@@ -1064,11 +1064,11 @@
 
 .kiwi-awaystatusindicator {
     border: 1px solid #e1e1e1;
-    background-color: #6199f1;
+    background-color: #42b992;
 }
 
-.kiwi-awaystatusindicator-away {
-    background-color: #7e8084;
+.kiwi-awaystatusindicator--away {
+    background-color: #d16c6c;
 }
 
 .kiwi-selfuser-error-message {
