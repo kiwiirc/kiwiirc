@@ -429,10 +429,11 @@ function updateWhoStatus(bufferState) {
         if (statusUpdaterFallback && ircClientConnected && bufferJoined) {
             let network = bufferState.getNetwork();
             let bufferStateName = bufferState.name;
+            let awayNotifyCap = network.ircClient.network.cap.isEnabled('away-notify');
             network.ircClient.who(bufferStateName);
-        }
-        if (networkConnected) {
-            setTimeout(updateWhoStatusLoop, 30000);
+            if (networkConnected && !awayNotifyCap) {
+                setTimeout(updateWhoStatusLoop, 30000);
+            }
         }
     }
 }
