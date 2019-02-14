@@ -1049,12 +1049,9 @@
 
 .kiwi-awaystatusindicator {
     border: 1px solid #e1e1e1;
-}
-
-.kiwi-awaystatusindicator-not-away {
     background-color: green;
 }
 
-.kiwi-awaystatusindicator-away {
+.kiwi-awaystatusindicator--away {
     background-color: red;
 }

@@ -1,9 +1,8 @@
 <template>
     <span
-        v-if="doesNetworkHaveAwayNotifyCap()"
-        :class="{ 'kiwi-awaystatusindicator-away': isUserAway(),
-                  'kiwi-awaystatusindicator-not-away': !isUserAway(),
-                  'kiwi-awaystatusindicator-self': isUserSelf() }"
+        v-if="awayNotifySupported"
+        :class="{ 'kiwi-awaystatusindicator--away': user.isAway(),
+                  'kiwi-awaystatusindicator--self': isUserSelf }"
         class="kiwi-awaystatusindicator"
         @click="toggleSelfAway()"
     />
@@ -15,29 +14,20 @@
 export default {
     props: ['network', 'user'],
     computed: {
-    },
-    methods: {
-        doesNetworkHaveAwayNotifyCap() {
+        isUserSelf() {
+            let user = this.$state.getUser(this.network.id, this.network.nick);
+            return this.user === user;
+        },
+        awayNotifySupported() {
             return this.network.ircClient.network.cap.isEnabled('away-notify');
         },
-        isUserAway() {
-            if (this.user.away) {
-                return true;
-            }
-            return false;
-        },
+    },
+    methods: {
         toggleSelfAway() {
-            if (this.isUserSelf()) {
-                let val = this.isUserAway();
+            if (this.isUserSelf) {
+                let val = this.user.isAway();
                 this.network.ircClient.raw('AWAY', val ? '' : 'Currently away');
             }
-        },
-        isUserSelf() {
-            if (this.user ===
-                this.$state.getUser(this.network.id, this.network.nick)) {
-                return true;
-            }
-            return false;
         },
     },
 };
@@ -54,7 +44,7 @@ export default {
     transition: background 0.2s;
 }
 
-.kiwi-awaystatusindicator-self {
+.kiwi-awaystatusindicator--self {
     cursor: pointer;
 }
 

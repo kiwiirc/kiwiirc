@@ -15,7 +15,7 @@
         { "name": "Sky", "url": "static/themes/sky" }
     ],
     "startupOptions" : {
-        "server": "irc.freenode.net",
+        "server": "irc.snoonet.org",
         "port": 6667,
         "tls": false,
         "direct": false,

@@ -39,7 +39,7 @@
                 :message="message"
                 :data-nick="message.nick"
             />
-            <away-status-indicator v-if="message.user && isRepeat() === false"
+            <away-status-indicator v-if="message.user && !isRepeat()"
                                    :network="getNetwork()" :user="message.user"/>
         </div>
         <div class="kiwi-messagelist-modern-right">
@@ -154,7 +154,7 @@ export default {
             let message = this.message;
             let prevMessage = ml.filteredMessages[idx - 1];
 
-            return prevMessage &&
+            return !!prevMessage &&
                 prevMessage.nick === message.nick &&
                 message.time - prevMessage.time < 60000 &&
                 prevMessage.type !== 'traffic' &&

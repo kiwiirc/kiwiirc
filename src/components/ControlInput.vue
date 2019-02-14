@@ -13,7 +13,8 @@
         </div>
 
         <div class="kiwi-controlinput-inner">
-            <away-status-indicator :user="currentUser()" :network="buffer.getNetwork()"/>
+            <away-status-indicator :user="buffer.getNetwork().currentUser()"
+                                   :network="buffer.getNetwork()"/>
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i
@@ -236,10 +237,6 @@ export default {
         this.inputRestore();
     },
     methods: {
-        currentUser() {
-            let activeNetworkState = this.$state.getActiveNetwork();
-            return this.$state.getUser(activeNetworkState.id, activeNetworkState.nick);
-        },
         inputUpdate(val) {
             this.current_input_value = val;
 

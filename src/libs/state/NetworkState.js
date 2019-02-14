@@ -134,4 +134,8 @@ export default class NetworkState {
     currentUser() {
         return this.appState.getUser(this.id, this.nick);
     }
+
+    userByName(nick) {
+        return this.appState.getUser(this.id, nick);
+    }
 }

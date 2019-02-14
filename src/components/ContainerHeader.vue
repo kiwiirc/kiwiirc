@@ -119,7 +119,8 @@
 
         <template v-else-if="isQuery()">
             <div class="kiwi-header-name">
-                <away-status-indicator :network="buffer.getNetwork()" :user="buffer.name"/>
+                <away-status-indicator :network="buffer.getNetwork()"
+                                       :user="network.userByName(buffer.name)"/>
                 {{ buffer.name }}
             </div>
             <div :key="buffer.id" class="kiwi-header-options">
@@ -223,6 +224,9 @@ export default {
         netUser() {
             return this.$state.getActiveNetwork().ircClient.user;
         },
+        network() {
+            return this.buffer.getNetwork();
+        },
     },
     watch: {
         buffer: function watchBuffer() {
@@ -285,9 +289,6 @@ export default {
                 state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
             }
-        },
-        getUserFromString(name) {
-            return state.getUser(this.network.id, name);
         },
     },
 };
