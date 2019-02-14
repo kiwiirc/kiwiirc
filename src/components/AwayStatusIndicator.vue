@@ -21,10 +21,10 @@ export default {
             return this.network.ircClient.network.cap.isEnabled('away-notify');
         },
         isUserAway() {
-          if ( this.network.currentUser().away ){
-             return true;
-          }
-          return false;
+            if (this.network.currentUser().away) {
+                return true;
+            }
+            return false;
         },
         toggleSelfAway() {
             if (this.isUserSelf()) {
@@ -33,7 +33,8 @@ export default {
             }
         },
         isUserSelf() {
-            if (this.network.currentUser() === this.$state.getUser(this.network.id, this.network.nick)) {
+            if (this.network.currentUser() ===
+                this.$state.getUser(this.network.id, this.network.nick)) {
                 return true;
             }
             return false;

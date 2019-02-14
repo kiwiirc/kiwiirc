@@ -130,8 +130,8 @@ export default class NetworkState {
         }
         return false;
     }
-    
+
     currentUser() {
-      return this.appState.getUser(this.id, this.nick);
+        return this.appState.getUser(this.id, this.nick);
     }
 }
