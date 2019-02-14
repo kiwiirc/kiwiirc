@@ -13,7 +13,7 @@
 'kiwi public';
 
 export default {
-    props: ['network'],
+    props: ['network', 'user'],
     computed: {
     },
     methods: {
@@ -21,7 +21,7 @@ export default {
             return this.network.ircClient.network.cap.isEnabled('away-notify');
         },
         isUserAway() {
-            if (this.network.currentUser().away) {
+            if (this.user.away) {
                 return true;
             }
             return false;
@@ -33,7 +33,7 @@ export default {
             }
         },
         isUserSelf() {
-            if (this.network.currentUser() ===
+            if (this.user ===
                 this.$state.getUser(this.network.id, this.network.nick)) {
                 return true;
             }

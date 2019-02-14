@@ -40,7 +40,7 @@
                 :data-nick="message.nick"
             />
             <away-status-indicator v-if="message.user && isRepeat() === false"
-                                   :network="a"/>
+                                   :network="getNetwork()" :user="message.user"/>
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">
@@ -145,6 +145,9 @@ export default {
         },
     },
     methods: {
+        getNetwork() {
+            return this.ml.buffer.getNetwork();
+        },
         isRepeat() {
             let ml = this.ml;
             let idx = this.idx;

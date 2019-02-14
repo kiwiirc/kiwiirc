@@ -2,7 +2,7 @@
     <div class="kiwi-selfuser kiwi-theme-bg">
         <div v-if="!self_user_settings_open" class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">
-                <away-status-indicator :network="network"/>
+                <away-status-indicator :network="network" :user="getUserFromString(network.nick)"/>
                 {{ network.nick }}
                 <i class="fa fa-times" aria-hidden="true" @click="closeSelfUser()"/>
                 <i class="fa fa-pencil" aria-hidden="true" @click="openSelfActions('Nick')" />
@@ -125,6 +125,9 @@ export default {
         },
         checkUserAway() {
             return !!this.$state.getUser(this.network.id, this.network.nick).away;
+        },
+        getUserFromString(name) {
+            return this.$state.getUser(this.network.id, name);
         },
     },
 };
