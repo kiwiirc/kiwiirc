@@ -286,6 +286,13 @@ inputCommands.part = function inputCommandPart(event, command, line) {
     });
 };
 
+inputCommands.quit = function inputCommandQuit(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    network.ircClient.quit(line);
+};
+
 inputCommands.topic = function inputCommandTopic(event, command, line) {
     event.handled = true;
 
