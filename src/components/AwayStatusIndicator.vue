@@ -25,10 +25,11 @@ export default {
             return this.network.ircClient.network.cap.isEnabled('away-notify');
         },
         networkConnected() {
-            if (this.network.state != 'disconnected'){
+            if (this.network.state === 'connected') {
                 return true;
             }
-        }
+            return false;
+        },
     },
     methods: {
         toggleSelfAway() {
