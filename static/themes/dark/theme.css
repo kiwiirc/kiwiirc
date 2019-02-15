@@ -1245,7 +1245,6 @@
 .kiwi-bufferkey input[type='password'] {
     border: 1px solid #dedede;
     color: #dedede;
-    border-radius: 4px;
 }
 
 .kiwi-bufferkey-button {
