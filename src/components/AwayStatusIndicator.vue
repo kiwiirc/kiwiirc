@@ -1,6 +1,6 @@
 <template>
     <span
-        v-if="awayNotifySupported"
+        v-if="awayNotifySupported && networkConnected"
         :class="{ 'kiwi-awaystatusindicator--away': user.isAway(),
                   'kiwi-awaystatusindicator--self': isUserSelf }"
         class="kiwi-awaystatusindicator"
@@ -24,6 +24,11 @@ export default {
         awayNotifySupported() {
             return this.network.ircClient.network.cap.isEnabled('away-notify');
         },
+        networkConnected() {
+            if (this.network.state != 'disconnected'){
+                return true;
+            }
+        }
     },
     methods: {
         toggleSelfAway() {
