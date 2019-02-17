@@ -6,7 +6,7 @@
         <div class="kiwi-userbox-header">
             <h3>
                 <away-status-indicator :network="network" :user="user"/> {{ user.nick }}
-                <span class="kiwi-userbox-modestring">( {{ modeString }} )</span>
+                <span v-if="userMode" class="kiwi-userbox-modestring">( {{ userMode }} )</span>
             </h3>
             <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
         </div>
@@ -238,16 +238,6 @@ export default {
         },
         isSelf() {
             return this.user === this.network.currentUser();
-        },
-        modeString() {
-            let str = '';
-            this.network.ircClient.user.modes.forEach((mode) => {
-                str += mode;
-            });
-            if (str) {
-                str = '+' + str;
-            }
-            return str;
         },
     },
     watch: {
