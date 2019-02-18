@@ -2,7 +2,7 @@
     "windowTitle": "Kiwi IRC - The web IRC client",
     "startupScreen": "welcome",
     "kiwiServer": "https://localdev.clients.kiwiirc.com/webirc/kiwiirc/",
-    "restricted": false,
+    "restricted": true,
     "theme": "Default",
     "themes": [
         { "name": "Default", "url": "static/themes/default" },
