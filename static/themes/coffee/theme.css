@@ -51,10 +51,10 @@
     background: #fff;
 }
 .kiwi-workspace::before {
-    background: #8e715c;
+    background: #42b992;
 }
-.kiwi-workspace::after{
-    background-color: rgba(0, 0, 0, 0.4);
+.kiwi-workspace::after {
+    background: #bf5155;
 }
 
 /* App - Tabs */

@@ -17,7 +17,7 @@
         </template>
         <template v-else>
             <state-browser :networks="networks" :sidebar-state="sidebarState"/>
-            <div :class="{'kiwi-wrap--disconnected': buffer.getNetwork().state === 'disconnected'}"
+            <div :class="{'kiwi-wrap--disconnected': buffer.getNetwork().state !== 'connected'}"
                  class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"/>
 
