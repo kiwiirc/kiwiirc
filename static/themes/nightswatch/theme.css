@@ -1150,6 +1150,15 @@
     text-decoration: underline;
 }
 
+/* Buffer Key */
+.kiwi-bufferkey input[type='password'] {
+    border: 1px solid #efefef;
+    color: #efefef;
+}
+
+.kiwi-bufferkey-button {
+    border: 1px solid #efefef;
+}
 
 /*Icon before the network in network list */
 .kiwi-statebrowser-network-name::before {

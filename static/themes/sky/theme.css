@@ -1024,6 +1024,15 @@
     color: #666;
 }
 
+/* Buffer Key */
+.kiwi-bufferkey input[type='password'] {
+    border: 1px solid #e8e8e8;
+}
+
+.kiwi-bufferkey-button {
+    border: 1px solid #e8e8e8;
+}
+
 /*Icon before the network in network list */
 .kiwi-statebrowser-network-name::before {
     content: '\f233';
