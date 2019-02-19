@@ -189,6 +189,7 @@ inputCommands.notice = function inputCommandMsg(event, command, line) {
     handleMessage.call(this, 'notice', event, command, line);
 };
 inputCommands.dice = function inputCommandDice(event, command, line) {
+    // /dice 100
     let buffer = this.state.getActiveBuffer();
     let network = this.state.getActiveNetwork();
     let msg = '';
