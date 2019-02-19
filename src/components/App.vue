@@ -390,11 +390,11 @@ body {
     width: 0;
 }
 
-.kiwi-workspace.kiwi-workspace--disconnected::before {
+.kiwi-workspace--disconnected::before {
     width: 0;
 }
 
-.kiwi-workspace.kiwi-workspace--disconnected::after {
+.kiwi-workspace--disconnected::after {
     width: 100%;
 }
 
