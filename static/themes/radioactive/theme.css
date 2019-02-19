@@ -1,5 +1,7 @@
 /* Radioactive is your very own pipboy theme for Kiwi */
 
+@import url(https://fonts.googleapis.com/css?family=VT323);
+
 .kiwi-wrap {
     background: #3a5646;
     --kiwi-nick-brightness: 80;
@@ -9,8 +11,8 @@
 
 /* Kiwi Theme Background is used to apply the same background colour accross components, rather than targeting them all specifically */
 .kiwi-theme-bg {
-    background-color: #1b2f24;
-    color: #5dd895;
+    background-color: #031e11;
+    color: #14fdce;
 }
 
 /* Welcome Screen ( Welcome.vue ) */
@@ -47,8 +49,12 @@
 .kiwi-workspace::before {
     background: #5dd895;
 }
-.kiwi-workspace::after{
-    background-color: rgba(0, 0, 0, 1);
+.kiwi-workspace::after {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 100;
 }
 
 /* App - Tabs */
@@ -57,7 +63,7 @@
 }
 
 .u-tabbed-view-tabs {
-    background: #294234;
+    padding-top: 0;
     border-bottom: 3px solid rgba(0, 0, 0, 0.1);
 }
 .u-tabbed-view-tabs .u-tabbed-view-tab {
@@ -78,7 +84,7 @@
     background: #fff;
 }
 .u-input-text-label {
-    color: #6fffb0;
+    color: #14fdce;
 }
 .u-input-text--focus {
     border-color: #1b2f24;
@@ -142,6 +148,11 @@
 }
 
 /* Application settings ( AppSettings.vue ) */
+.kiwi-appsettings-block {
+    position: relative;
+    z-index: 10;
+    background: #032c14;
+}
 .kiwi-appsettings-block h3 {
     background: none;
     border: 1px solid #5dd895;
@@ -157,7 +168,6 @@
 
 /* Title bar, at the top of the Application settings component */
 .kiwi-appsettings-title {
-    background-color: #1b2f24;
     color: #fff;
 }
 .kiwi-appsettings-title:hover{
@@ -174,14 +184,52 @@
 
 .kiwi-channellist table tbody tr .u-button-primary {
     background: none;
-    border: 1px solid #6fffb0;
-    color: #6fffb0;
+    border: 1px solid #14fdce;
+    color: #14fdce;
 }
 
 /* Container - Main ( Container.vue )  The majority of styling related to the messages and user input etc */
 .kiwi-container {
-    border-bottom: 1px solid #ddd;
+    position: relative;
 }
+@keyframes crt-glow {
+  0% { opacity: 0.1; }
+  50% { opacity: 0.2; }
+}
+.kiwi-workspace-background {
+  z-index: 0;
+  pointer-events: none;
+  border-bottom-color: #121212;
+  border-left-color: #080808;
+  border-right-color: #080808;
+  border-top-color: #020202;
+  box-shadow: inset 0 0 9rem #00000073, inset 0 0 3rem #000000ab, 0 0 12rem #9c3737;
+}
+.kiwi-workspace-background::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  animation: crt-glow 60s infinite;
+  background: radial-gradient(circle at center, #1bd459 0%, rgba(27, 212, 89, 0.88) 58%, rgba(21, 235, 92, 0.57) 80%, rgba(19, 94, 29, 0.27) 93%, rgba(10, 23, 12, 0) 100%);
+  opacity: 0.15;
+  pointer-events: none;
+  position: fixed;
+}
+.kiwi-workspace-background::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0.6));
+    background-size: 100% 0.3rem;
+    border-radius: 2rem;
+    position: absolute;
+}
+
 
 /* The join button is displayed in the header when the user has not connected to their currently selected network */
 .kiwi-header-join-channel-button {
@@ -232,22 +280,21 @@
 
 /* Container Header ( ContainerHeader.vue ) */
 .kiwi-header {
-    background: #1b2f24;
-    border-bottom: 1px solid #6fffb0;
+    border-bottom: 1px solid #14fdce;
 }
 
 .kiwi-header-name {
-    color: #6fffb0;
+    color: #14fdce;
 }
 
 /* The header option buttons */
 .kiwi-header-option {
-    color: #6fffb0;
+    color: #14fdce;
 }
 .kiwi-header-option a:hover,
 .kiwi-header-option--active,
 .kiwi-header-option--active:hover a{
-    color: #6fffb0;
+    color: #14fdce;
     opacity: 1;
 }
 
@@ -286,30 +333,33 @@
 }
 
 .kiwi-header-server-connection .u-button {
-    color: #6fffb0;
+    color: #14fdce;
     text-decoration: underline;
 }
 
+.kiwi-messagelist-message {
+    font-family: 'VT323', monospace;
+}
 
 /* baseline styling for the 'topic' of the channel, if it has one, these are shared between traditional and modern view, but can be made more specific if need be */
 .kiwi-messagelist-message.kiwi-messagelist-message-topic {
-    border-top: 1px solid #6fffb0;
-    border-bottom: 1px solid #6fffb0;
+    border-top: 1px solid #14fdce66;
+    border-bottom: 1px solid #14fdce66;
 }
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic {
-    border-top: 1px solid #6fffb0;
+    border-top: 1px solid #14fdce;
 }
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-    border: 2px solid #6fffb0;
+    border: 2px solid #14fdce;
 }
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic.kiwi-messagelist-message--unread {
-    border-left: 2px solid #6fffb0;
+    border-left: 2px solid #14fdce;
 }
 .kiwi-header-buffersettings {
-    border-top: 1px solid #6fffb0;
+    border-top: 1px solid #14fdce;
 }
 .kiwi-header-topic > div {
-    color: #6fffb0;
+    color: #14fdce;
 }
 
 
@@ -330,9 +380,9 @@
 
 /* Control Input - displayed at bottom of Kiwi ( ControlInput.vue ) */
 .kiwi-controlinput {
-    background: #1b2f24;
-    border-top: 1px solid #5dd895;
-    color: #5dd895;
+    background: #07311a;
+    border-top: 1px solid #00fecd;
+    color: #00fecd;
 }
 .kiwi-controlinput .kiwi-controlinput-user,
 .kiwi-controlinput-inner .kiwi-controlinput-user {
@@ -343,12 +393,10 @@
     background: #294835;
     color: inherit;
 }
-.kiwi-controlinput-tools {
-    background: #294835;
-}
 
 .kiwi-controlinput-active-tool {
-    background: #5dd895;
+    background: #053118;
+    border-top: 1px solid #00fecd;
 }
 
 .kiwi-selfuser,
@@ -388,13 +436,7 @@
     color: #fff;
 }
 
-
-
 /* Message list - Standard messages ( MessageList.vue ) */
-.kiwi-messagelist {
-    background: #1b2f24;
-}
-
 .kiwi-messagelist-seperator > span {
     background: none;
 }
@@ -480,6 +522,10 @@
     color: #5dd895 !important;
 }
 
+.kiwi-messagelist-message--compact .kiwi-messagelist-body {
+    font-size: 1.05em;
+}
+
 .kiwi-messagelist-message .kiwi-messagelist-body .kiwi-nick,
 .kiwi-messagelist-message .kiwi-messagelist-body a {
     color: #fff !important;
@@ -487,11 +533,11 @@
 }
 
 .kiwi-messagelist-nick {
-    color: #6fffb0 !important;
+    color: #14fdce !important;
 }
 
 .kiwi-messagelist-time, .kiwi-messagelist-time {
-    color: #6fffb0;
+    color: #14fdce;
 }
 
 .kiwi-messagelist-message--modern {
@@ -511,19 +557,19 @@
 /* MessageInfo */
 .kiwi-messagelist-message--info-open,
 .kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open {
-    border-top: 1px solid #6fffb0;
-    border-bottom: 1px solid #6fffb0;
+    border-top: 1px solid #14fdce;
+    border-bottom: 1px solid #14fdce;
 }
 
 /* MessageInfo URLs */
 .kiwi-messageinfo-urls {
-    border-top: 1px solid #6fffb0;
-    border-bottom: 1px solid #6fffb0;
+    border-top: 1px solid #14fdce;
+    border-bottom: 1px solid #14fdce;
 }
 
 .kiwi-messageinfo-url .u-button-secondary {
-    color: #6fffb0;
-    border: 1px solid #6fffb0;
+    color: #14fdce;
+    border: 1px solid #14fdce;
     background: none;
     text-shadow: none;
 }
@@ -536,18 +582,18 @@
 .kiwi-messageinfo-actions .u-link {
     padding: 5px 10px;
     text-align: center;
-    border: 1px solid #6fffb0;
-    color: #6fffb0;
+    border: 1px solid #14fdce;
+    color: #14fdce;
     display: inline-block;
     border-radius: 3px;
 }
 
 .kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
-    color: #6fffb0;
+    color: #14fdce;
 }
 
 .kiwi-messageinfo-actions .kiwi-messageinfo-ban-user {
-    color: #6fffb0;
+    color: #14fdce;
 }
 
 /* Network Settings ( NetworkSettings.vue ) */
@@ -576,7 +622,7 @@
     color: #bfbfbf;
 }
 .kiwi-networksettings .u-form{
-    border: 1px solid #6fffb0;
+    border: 1px solid #14fdce;
 }
 .kiwi-networksettings .kiwi-customserver-tls {
     color: #bfbfbf;
@@ -620,16 +666,16 @@
     border-left: 4px solid #192e24;
 }
 .kiwi-nicklist-user .kiwi-nicklist-user-nick {
-    color: #6fffb0 !important;
+    color: #14fdce !important;
 }
 .kiwi-nicklist-messageuser {
-    color: #6fffb0;
+    color: #14fdce;
 }
 .kiwi-nicklist-user:hover {
-    border-left: 4px solid #6fffb0;
+    border-left: 4px solid #14fdce;
 }
 .kiwi-nicklist-info i.fa-search {
-    color: #6fffb0;
+    color: #14fdce;
 }
 
 /* Not connected message ( NotConnected.vue ) */
@@ -716,15 +762,15 @@
 /* Statebrowser - Left sidebar ( StateBrowser.vue ) */
 .kiwi-statebrowser {
     color: #fff;
-    border-right: 1px solid #6fffb0;
+    border-right: 1px solid #14fdce;
 }
 .kiwi-statebrowser-divider {
     background: rgba(255, 255, 255, 0.3);
 }
 
 .kiwi-messageinfo {
-    border-bottom: 2px #6fffb0 solid;
-    border-top: 1px #6fffb0 solid;
+    border-bottom: 2px #14fdce solid;
+    border-top: 1px #14fdce solid;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
@@ -751,7 +797,7 @@
 
 /* User Settings */
 .kiwi-statebrowser-appsettings {
-    color: #6fffb0;
+    color: #14fdce;
 }
 .kiwi-statebrowser-appsettings:hover {
     color: #fff;
@@ -799,7 +845,7 @@
 }
 
 .kiwi-statebrowser-channelfilter p a {
-    color: #6fffb0;
+    color: #14fdce;
 }
 
 .kiwi-statebrowser-channelfilter::after {
@@ -822,15 +868,15 @@
 }
 
 .kiwi-statebrowser-newnetwork {
-    border-top: 1px solid #6fffb0;
+    border-top: 1px solid #14fdce;
 }
 
 .kiwi-statebrowser-newnetwork a {
-    color: #6fffb0;
+    color: #14fdce;
 }
 .kiwi-statebrowser-newnetwork a:hover {
     opacity: 1;
-    color: #6fffb0;
+    color: #14fdce;
     text-decoration: underline;
 }
 
@@ -1056,7 +1102,7 @@
 
 .kiwi-customserver-form {
     background-color: #151414;
-    border: 1px solid #6fffb0;
+    border: 1px solid #14fdce;
 }
 
 .kiwi-customserver-form .u-input-text {
@@ -1070,12 +1116,12 @@
 
 .kiwi-customserver .u-button {
     background-color: none;
-    border: 1px solid #6fffb0;
-    color: #6fffb0;
+    border: 1px solid #14fdce;
+    color: #14fdce;
 }
 
 .kiwi-customserver .u-link {
-    color: #6fffb0;
+    color: #14fdce;
     text-decoration: underline;
 }
 
