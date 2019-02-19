@@ -291,10 +291,10 @@ export default {
 }
 
 .kiwi-networksettings input[type='text'],
-.kiwi-networksettings input[type='password'],
-.kiwi-networksettings input[type='email'],
-.kiwi-networksettings textarea,
-.kiwi-networksettings .u-input-text input {
+    .kiwi-networksettings input[type='password'],
+    .kiwi-networksettings input[type='email'],
+    .kiwi-networksettings textarea,
+    .kiwi-networksettings .u-input-text input {
     clear: both;
     width: 100%;
     height: 40px;
