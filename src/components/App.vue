@@ -27,8 +27,8 @@
                         :sidebar-state="sidebarState"
                     >
                         <media-viewer
+                            v-slot:before
                             v-if="mediaviewerOpen"
-                            slot="before"
                             :url="mediaviewerUrl"
                             :component="mediaviewerComponent"
                             :is-iframe="mediaviewerIframe"
