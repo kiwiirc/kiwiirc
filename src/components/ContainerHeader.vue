@@ -100,12 +100,15 @@
         </template>
 
         <template v-else-if="isServer()">
-            <div class="kiwi-header-name kiwi-network-view-name">
+            <div class="kiwi-header-name">
                 {{ buffer.getNetwork().name }}
             </div>
             <div class="kiwi-header-server-connection" >
-                <a v-if="buffer.getNetwork().state === 'disconnected'"
-                   class="u-button u-button-primary" @click="onConnectButtonClick">
+                <a
+                    v-if="buffer.getNetwork().state === 'disconnected'"
+                    class="u-button u-button-primary"
+                    @click="onConnectButtonClick"
+                >
                     {{ $t('connect') }}
                 </a>
                 <span v-else-if="buffer.getNetwork().state === 'connecting'">

@@ -17,8 +17,12 @@
         </template>
         <template v-else>
             <state-browser :networks="networks" :sidebar-state="sidebarState"/>
-            <div :class="{'kiwi-wrap--disconnected': buffer.getNetwork().state !== 'connected'}"
-                 class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
+            <div
+                :class="{
+                    'kiwi-workspace--disconnected': buffer.getNetwork().state !== 'connected'
+                }"
+                class="kiwi-workspace"
+                @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"/>
 
                 <template v-if="!activeComponent && network">
@@ -386,11 +390,11 @@ body {
     width: 0;
 }
 
-.kiwi-workspace.kiwi-wrap--disconnected::before {
+.kiwi-workspace.kiwi-workspace--disconnected::before {
     width: 0;
 }
 
-.kiwi-workspace.kiwi-wrap--disconnected::after {
+.kiwi-workspace.kiwi-workspace--disconnected::after {
     width: 100%;
 }
 
