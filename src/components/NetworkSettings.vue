@@ -82,6 +82,9 @@
                             :label="$t('settings_encoding')"
                             v-model="network.connection.encoding"
                         />
+                        <div class="kiwi-networksettings-realname">
+                            <input-text v-model="network.gecos" :label="$t('whois_realname')" />
+                        </div>
                         <label>
                             <span class="kiwi-appsettings-showraw-label">
                                 {{ $t('settings_show_raw') }}
@@ -97,9 +100,6 @@
                                 rows="5"
                             />
                         </label>
-                        <div class="kiwi-networksettings-realname">
-                            <input-text v-model="network.gecos" :label="$t('whois_realname')" />
-                        </div>
                     </template>
                 </div>
 
