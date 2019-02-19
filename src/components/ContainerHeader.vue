@@ -112,6 +112,7 @@
                     {{ $t('connect') }}
                 </a>
                 <span v-else-if="buffer.getNetwork().state === 'connecting'">
+                    <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
                     {{ $t('connecting') }}
                 </span>
             </div>
