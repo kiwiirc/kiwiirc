@@ -958,14 +958,6 @@ msgstr "Stop ignoring somebody"
 msgid "command_dice"
 msgstr "Roll a Dice"
 
-#: Rolls a
-msgid "dice_roll"
-msgstr "Rolls a"
-
-#: Sided die and gets
-msgid "dice_sides"
-msgstr "Sided die and gets "
-
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
