@@ -4,6 +4,7 @@
 
 import _ from 'lodash';
 import strftime from 'strftime';
+import { urlRegex } from './TextFormatting';
 
 /**
  * Extract an array of buffers from a string, parsing multiple buffer names and channel keys
@@ -33,6 +34,11 @@ export function extractBuffers(str) {
     });
 
     return buffers;
+}
+
+export function extractURL(str) {
+    let matches = str.match(urlRegex);
+    return matches ? matches[0] : '';
 }
 
 export function splitHost(uri) {
