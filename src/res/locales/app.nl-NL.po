@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2019-02-19 20:21\n"
+"PO-Revision-Date: 2019-02-19 20:31\n"
 
 #: Start
 msgid "start_button"
@@ -163,43 +163,43 @@ msgstr "Kanaal"
 
 #: {{count}} week
 msgid "week"
-msgstr "week"
+msgstr "{{count}} week"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "weken"
+msgstr "{{count}} weken"
 
 #: {{count}} day
 msgid "day"
-msgstr "dag"
+msgstr "{{count}} dag"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dagen"
+msgstr "{{count}} dagen"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "uur"
+msgstr "{{count}} uur"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "uur"
+msgstr "{{count}} uur"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuut"
+msgstr "{{count}} minuut"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minuten"
+msgstr "{{count}} minuten"
 
 #: {{count}} second
 msgid "second"
-msgstr "seconde"
+msgstr "{{count}} seconde"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "seconden"
+msgstr "{{count}} seconden"
 
 #: General
 msgid "settings_general"
@@ -959,5 +959,5 @@ msgstr "{{nick}} is nu bekend als {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "heeft het topic gewijzigd naar {{topic}}"
+msgstr "{{nick}} heeft het topic gewijzigd naar {{topic}}"
 
