@@ -73,9 +73,8 @@
 .kiwi-workspace::before {
     background: #42b992;
 }
-
 .kiwi-workspace::after {
-    background-color: rgba(255, 255, 255, 0.4);
+    background: #bf5155;
 }
 
 .u-tabbed-view-tabs {
