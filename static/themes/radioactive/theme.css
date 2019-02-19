@@ -18,9 +18,13 @@
 /* Welcome Screen ( Welcome.vue ) */
 .kiwi-welcome-simple-form,
 .kiwi-customserver-form{
-    background-color: #fff;
-    border: 1px solid #ececec;
+    border: 1px solid #14fdce;
 }
+
+.kiwi-welcome-simple-form .u-input-text {
+  background: none;
+}
+
 .kiwi-welcome-simple-error {
     border: 1px dashed #d86f6f;
 }
@@ -36,6 +40,17 @@
 }
 .kiwi-welcome-simple .help a:hover {
     color: #a9d87a;
+}
+
+.kiwi-welcome-simple .u-submit {
+    border: 2px solid #00ffcb;
+    color: #00ffcb;
+    background: none;
+}
+
+.kiwi-welcome-simple .u-submit:hover {
+     text-decoration: underline;
+     cursor: pointer;
 }
 
 /* Custom server layout */
