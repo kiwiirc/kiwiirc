@@ -201,7 +201,10 @@ inputCommands.dice = function inputCommandDice(event, command, line) {
         sides = line.replace(/\D/g, '');
         rndNumber = Math.floor(Math.random() * sides) + 1;
     }
-    msg = TextFormatting.t('dice_roll') + ' ' + sides + ' ' + TextFormatting.t('dice_sides') + ' ' + rndNumber;
+    msg = TextFormatting.t('dice_roll', {
+        sides: TextFormatting.formatNumber(sides),
+        number: TextFormatting.formatNumber(rndNumber),
+    });
     network.ircClient.action(buffer.name, msg);
     this.state.addMessage(buffer, {
         nick: network.nick,

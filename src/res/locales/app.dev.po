@@ -966,6 +966,10 @@ msgstr "Rolls a"
 msgid "dice_sides"
 msgstr "Sided die and gets "
 
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
+
 
 #: Personal $t('personal_')
 
