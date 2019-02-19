@@ -188,6 +188,26 @@ inputCommands.action = function inputCommandMsg(event, command, line) {
 inputCommands.notice = function inputCommandMsg(event, command, line) {
     handleMessage.call(this, 'notice', event, command, line);
 };
+inputCommands.dice = function inputCommandDice(event, command, line) {
+    let buffer = this.state.getActiveBuffer();
+    let network = this.state.getActiveNetwork();
+    let msg = '';
+    let rndNumber = 0;
+    let sides = 6;
+    if (!line.trim()) {
+        rndNumber = Math.floor(Math.random() * sides) + 1;
+    } else {
+        sides = line.replace(/\D/g, '');
+        rndNumber = Math.floor(Math.random() * sides) + 1;
+    }
+    msg = TextFormatting.t('dice_roll') + ' ' + sides + ' ' + TextFormatting.t('dice_sides') + ' ' + rndNumber;
+    network.ircClient.action(buffer.name, msg);
+    this.state.addMessage(buffer, {
+        nick: network.nick,
+        message: msg,
+        type: 'action',
+    });
+};
 
 inputCommands.ctcp = function inputCommandCtcp(event, command, line) {
     event.handled = true;
