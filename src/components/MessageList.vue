@@ -73,6 +73,10 @@
             :buffer="buffer"
             :network="buffer.getNetwork()"
         />
+        <channelCreate
+            v-if="buffer.getNetwork().state === 'connected'"
+            :buffer="buffer"
+        />
     </div>
 </template>
 
@@ -87,6 +91,7 @@ import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
 import MessageListMessageInline from './MessageListMessageInline';
 import LoadingAnimation from './LoadingAnimation.vue';
+import ChannelCreate from './ChannelCreate.vue';
 
 let log = Logger.namespace('MessageList.vue');
 
@@ -102,6 +107,7 @@ export default {
         MessageListMessageCompact,
         MessageListMessageInline,
         LoadingAnimation,
+        ChannelCreate,
     },
     props: ['buffer'],
     data() {
