@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2019-02-19 17:32\n"
+"PO-Revision-Date: 2019-02-19 19:51\n"
 
 #: Start
 msgid "start_button"
@@ -875,11 +875,11 @@ msgstr "Negeren van iemand stoppen"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "Een dobbelsteen gooien"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "Gooit een dobbelsteen met {{sides}} vlakken en krijgt {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
