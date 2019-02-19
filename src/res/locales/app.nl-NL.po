@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2019-02-19 19:51\n"
+"PO-Revision-Date: 2019-02-19 20:21\n"
 
 #: Start
 msgid "start_button"
@@ -703,7 +703,7 @@ msgstr "Veilig verbonden via SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "Ook in kanalen {{channels}}"
+msgstr "In kanalen {{channels}}"
 
 #: Access level
 msgid "user_access"
