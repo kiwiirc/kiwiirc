@@ -22,7 +22,10 @@ export default {
             return this.user === user;
         },
         awayNotifySupported() {
-            return this.network.ircClient.network.cap.isEnabled('away-notify');
+            // Checking network.state forces this computed property to be updated
+            // when it connects
+            return this.network.state === 'connected' &&
+                this.network.ircClient.network.cap.isEnabled('away-notify');
         },
     },
     methods: {
