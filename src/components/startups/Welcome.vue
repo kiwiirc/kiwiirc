@@ -169,11 +169,11 @@ export default {
             options.toggablePassword :
             true;
 
-        if (options.autoConnect && this.nick && this.channel) {
+        this.connectWithoutChannel = !!options.allowNoChannel;
+
+        if (options.autoConnect && this.nick && (this.channel || this.connectWithoutChannel)) {
             this.startUp();
         }
-
-        this.connectWithoutChannel = !!options.allowNoChannel;
 
         this.recaptchaSiteId = options.recaptchaSiteId || '';
     },
