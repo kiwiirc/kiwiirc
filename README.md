@@ -17,7 +17,7 @@ Before you can build or start to develop on Kiwi IRC, make sure to have the foll
 # install dependencies
 yarn install
 
-# link git pre-commit linting hook
+# Optionally link git pre-commit linting hook
 ln -s $PWD/scripts/pre-commit .git/hooks/
 
 # development web server with hot reload at http://localhost:8080/
