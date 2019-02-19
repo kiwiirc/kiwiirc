@@ -118,6 +118,7 @@ export default {
     },
     created() {
         this.listenForActiveComponents();
+        this.listenForAppSettingsToggle();
         this.watchForThemes();
         this.initStateBrowser();
         this.initMediaviewer();
@@ -325,7 +326,7 @@ export default {
                 event.preventDefault();
             } else if (meta && event.keyCode === 79) {
                 // meta + o
-                this.$state.$emit('active.component', AppSettings);
+                this.$state.$emit('app.settings');
                 event.preventDefault();
             } else if (meta && event.keyCode === 83) {
                 // meta + s
@@ -335,6 +336,17 @@ export default {
                 }
                 event.preventDefault();
             }
+        },
+        listenForAppSettingsToggle() {
+            this.$state.$on('app.settings', () => {
+                if (this.appSettingsOpen) {
+                    this.$state.$emit('active.component');
+                    this.appSettingsOpen = false;
+                } else {
+                    this.$state.$emit('active.component', AppSettings);
+                    this.appSettingsOpen = true;
+                }
+            });
         },
     },
 };
