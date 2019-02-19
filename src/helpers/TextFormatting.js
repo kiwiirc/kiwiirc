@@ -444,6 +444,10 @@ export function formatDuration(timeSeconds) {
     return tmp.join(' ');
 }
 
+export function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+}
+
 export function t(key, options) {
     let val = i18next.t(key, options);
     if (!val) {
