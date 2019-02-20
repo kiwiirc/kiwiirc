@@ -348,7 +348,6 @@ export default {
     height: 100%;
     overflow-y: auto;
     padding: 8px 0 0 0;
-    margin-top: -7px;
 
     .u-form {
         width: 100%;
