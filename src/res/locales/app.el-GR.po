@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-02-20 13:52\n"
+"PO-Revision-Date: 2019-02-20 14:11\n"
 
 #: Start
 msgid "start_button"
@@ -879,7 +879,7 @@ msgstr "Ρίξτε ένα Zάρι"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "Pίξτε ένα {{sides}} στην πλεύρα του ζαριού και πέρνετε {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
