@@ -20,8 +20,10 @@
             >
                 {{ userInitial }}
                 <away-status-indicator
+                    v-if="getNetwork && getNetwork.state === 'connected'"
                     :network="getNetwork"
-                    :user="getNetwork.currentUser()"
+                    :user="getUser"
+                    :toggle="false"
                 />
             </div>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
@@ -141,6 +143,12 @@ export default {
         },
         getNetwork() {
             return state.getActiveNetwork();
+        },
+        getUser() {
+            let network = state.getActiveNetwork();
+            return network ?
+                network.currentUser() :
+                null;
         },
         networkName() {
             let network = state.getActiveNetwork();

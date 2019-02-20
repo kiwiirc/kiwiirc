@@ -19,7 +19,7 @@
             <state-browser :networks="networks" :sidebar-state="sidebarState"/>
             <div
                 :class="{
-                    'kiwi-workspace--disconnected': buffer.getNetwork().state !== 'connected'
+                    'kiwi-workspace--disconnected': network && network.state !== 'connected'
                 }"
                 class="kiwi-workspace"
                 @click="stateBrowserDrawOpen = false">

@@ -1,5 +1,6 @@
 /** @module */
 
+import Vue from 'vue';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import { def } from './common';
 
@@ -30,6 +31,8 @@ export default class UserState {
         def(this, 'registered_nick', '', true);
         def(this, 'secure', '', true);
         def(this, 'special', '', true);
+
+        Vue.observable(this);
     }
 
     getColour() {
