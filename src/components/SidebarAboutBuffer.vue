@@ -35,7 +35,7 @@
             <div>
                 <ul v-if="highlights.length > 0">
                     <li v-for="msg in highlights" :key="msg.id">
-                        {{ msg.nick }}: {{ msg.message }}
+                        {{ msg.nick }} {{ msg.message }}
                     </li>
                 </ul>
                 <p v-else>{{ $t('nobody_mentioned_you') }}</p>

@@ -4,8 +4,12 @@
             <label class="kiwi-channelinfo-topic">
                 <span>{{ $t('channel_topic') }}</span>
                 <textarea v-model.lazy="topic" rows="2"/>
+                <ul v-if="highlights.length > 0">
+                    <li v-for="msg in highlights" :key="msg.id">
+                        {{ msg.nick }} {{ msg.message }} {{ $t('at', { when: new Intl.DateTimeFormat().format(msg.time) }) }}
+                    </li>
+                </ul>
             </label>
-
             <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_moderated') }}</span>
                 <input v-model="modeM" type="checkbox" >
@@ -32,6 +36,9 @@
 
 <script>
 'kiwi public';
+
+import formatIrcMessage from '@/libs/MessageFormatter';
+import * as TextFormatting from '@/helpers/TextFormatting';
 
 // Helper to generate Vues computed methods for simple channel modes.
 // Eg. +i, +n, etc
@@ -86,6 +93,16 @@ export default {
                 let newTopic = newVal.replace('\n', ' ');
                 this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newTopic);
             },
+        },
+        highlights() {
+            // Tap into buffer.message_count to force vuejs to update this function when
+            // it changes
+            /* eslint-disable no-unused-vars */
+            let tmp = this.buffer.message_count;
+            return this.buffer.getMessages()
+                .filter(m => m.isHighlight)
+                .filter(m => m.type !== 'traffic')
+                .filter(m => m.type !== 'mode');
         },
     },
     methods: {
