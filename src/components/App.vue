@@ -118,6 +118,7 @@ export default {
     },
     created() {
         this.listenForActiveComponents();
+        this.listenForComponentsToToggle();
         this.watchForThemes();
         this.initStateBrowser();
         this.initMediaviewer();
@@ -170,6 +171,15 @@ export default {
             this.hasStarted = true;
         },
         listenForActiveComponents() {
+            this.listen(this.$state, 'active.component', (component, props) => {
+                this.activeComponent = null;
+                if (component) {
+                    this.activeComponentProps = props;
+                    this.activeComponent = component;
+                }
+            });
+        },
+        listenForComponentsToToggle() {
             this.listen(this.$state, 'active.component.toggle', (component, props) => {
                 if (component === this.activeComponent) {
                     this.activeComponent = null;
