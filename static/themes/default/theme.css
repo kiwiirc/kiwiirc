@@ -2,7 +2,7 @@
     Theme Name: Default
     Theme Desc: This is the default theme for Kiwi IRC.
     Author: @prawnSalad
-    Edited: @allanOcelot // 21/01/2019
+    Edited: @allanOcelot // 20/02/2019
 */
 
 :root {
@@ -13,6 +13,16 @@
     --brand-gray: #ddd;
     --brand-white: #fff;
     --brand-black: #000;
+
+  /* COMPOENNT TEXT */
+    --comp-text-header-option-active: #fff;
+
+  /* COMPONENT BACKGROUNDS */
+    --comp-bg-header-option-active: #42b992;
+    --comp-bg-statebrowser: #22231f;
+    --comp-bg-header: #fff;
+    --comp-bg-aboutbuffer: rgba(0, 0, 0, 0.03);
+    --comp-bg-aboutbuffer-h4: #42b992;
 }
 
 /* ---- Welcome Screens ----- */
@@ -146,7 +156,7 @@
 
 /* ---- Container Header ( containerHeader ) ---- */
 .kiwi-header {
-    background: var(--brand-white);
+    background: var(--comp-bg-header);
 }
 
 .kiwi-header-name {
@@ -156,8 +166,8 @@
 .kiwi-header-option a:hover,
 .kiwi-header-option--active,
 .kiwi-header-option--active:hover a {
-    background-color: var(--brand-primary);
-    color: var(--brand-white);
+    background-color: var(--comp-bg-header-option-active);
+    color: var(--comp-text-header-option-active);
     opacity: 1;
 }
 
@@ -277,16 +287,15 @@
 }
 
 .kiwi-aboutbuffer {
-    background: rgba(0, 0, 0, 0.03);
+    background: var(--comp-bg-aboutbuffer);
 }
 
 .kiwi-aboutbuffer h3 {
-    color: rgba(0, 0, 0, 0.71);
     background: var(--brand-white);
 }
 
 .kiwi-aboutbuffer h4 {
-    background-color: var(--brand-primary);
+    background-color: var(--comp-bg-aboutbuffer-h4);
     color: var(--brand-white);
 }
 
@@ -395,7 +404,7 @@
 
 /* Statebrowser - Left sidebar ( StateBrowser.vue ) */
 .kiwi-statebrowser {
-    background: #22231f;
+    background: var(--comp-bg-statebrowser);
     color: var(--brand-white);
 }
 
@@ -641,11 +650,6 @@
     opacity: 1;
 }
 
-.kiwi-statebrowser-scrollarea {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    background-color: #131312;
-}
-
 .kiwi-statebrowser-scrollarea h4 {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -825,10 +829,6 @@
 }
 
 /* ---- Message list - ( MessageList.vue ) ---- */
-.kiwi-messagelist {
-    background: var(--brand-white);
-}
-
 .kiwi-messagelist-message--info-open,
 .kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open {
     background: #f6f6f6;
