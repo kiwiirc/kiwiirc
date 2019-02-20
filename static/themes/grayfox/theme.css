@@ -332,7 +332,6 @@
 
 /* Control Input - displayed at bottom of Kiwi ( ControlInput.vue ) */
 .kiwi-controlinput {
-    background: #efefef;
     border-top: 1px solid #e8e8e8;
     color: #272727;
 }
@@ -736,7 +735,7 @@
     color: #fff;
 }
 .kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
-    border: 1px solid #414957;
+    border-color: #414957;
 }
 
 /* If the user clicks on their avatar we 'open' the settings */

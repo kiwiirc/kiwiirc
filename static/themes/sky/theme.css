@@ -719,7 +719,7 @@
     color: #fff;
 }
 .kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
-    border: 1px solid #94e5f7;
+    border-color: #94e5f7;
 }
 
 /* If the user clicks on their avatar we 'open' the settings */

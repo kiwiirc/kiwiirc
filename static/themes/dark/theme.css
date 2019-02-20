@@ -869,7 +869,7 @@
     color: #dedede;
 }
 .kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
-    border: 1px solid #22221f;
+    border-color: #22221f;
 }
 
 .kiwi-statebrowser-scrollarea {
@@ -1282,7 +1282,7 @@
 }
 
 .kiwi-awaystatusindicator {
-    border: 1px solid #e1e1e1;
+    border-color: #1e1e1e;
     background-color: #42b992;
 }
 
