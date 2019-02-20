@@ -6,29 +6,38 @@
 */
 
 :root {
+    /* Primary Variables */
     --brand-primary: #42b992;
     --brand-primary-hover: #5ec9a6;
-    --brand-red-light: #d86f6f;
-    --brand-red-dark: #5f1515;
-    --brand-gray: #ddd;
-    --brand-white: #fff;
-    --brand-black: #000;
+    --brand-error: #bf5155; 
+    --brand-bg-default: #fff;
+    --brand-fg-default: #22231f;
 
-  /* COMPOENNT TEXT */
-    --comp-text-header-option-active: #fff;
+    /* Connection Indicator top */
+    --comp-bg-workspace-before: var(--brand-primary);
+    --comp-bg-kiwi-workspace--disconnected-after: var(--brand-error);
 
-  /* COMPONENT BACKGROUNDS */
-    --comp-bg-header-option-active: #42b992;
-    --comp-bg-statebrowser: #22231f;
-    --comp-bg-header: #fff;
+    /* Container Header */
+    --comp-bg-header: var(--brand-bg-default);
+    --comp-fg-header-name: var(--brand-fg-default);
+    --comp-fg-header-option-active: var(--brand-bg-default);
+    --comp-bg-header-option-active: var(--brand-primary);
+
+    /* StateBrowser */
+    --comp-bg-statebrowser: var(--brand-fg-default);
+
+    /* Sidebars ( Right Side ) */
     --comp-bg-aboutbuffer: rgba(0, 0, 0, 0.03);
     --comp-bg-aboutbuffer-h4: #42b992;
+
+    /* Misc */
+
 }
 
 /* ---- Welcome Screens ----- */
 .kiwi-welcome-simple-form,
 .kiwi-customserver-form {
-    background-color: var(--brand-white);
+    background-color: var(--brand-bg-default);
     border: 1px solid var(--brand-gray);
 }
 
@@ -38,7 +47,7 @@
 
 .kiwi-welcome-simple-form .u-submit {
     background-color: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-welcome-simple .help {
@@ -55,11 +64,11 @@
 
 /* ---- Gloabl Styling ---- */
 .kiwi-theme-bg {
-    background-color: var(--brand-white);
+    background-color: var(--brand-bg-default);
 }
 
 .u-tabbed-content {
-    background-color: var(--brand-white);
+    background-color: var(--brand-bg-default);
 }
 
 .u-tabbed-view-tabs {
@@ -69,7 +78,7 @@
 
 .u-tabbed-view-tabs .u-tabbed-view-tab {
     border-bottom: 3px solid rgba(0, 0, 0, 0.1);
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
 }
 
 .u-tabbed-view-tabs .u-tabbed-view-tab:hover,
@@ -79,7 +88,7 @@
 
 /* ---- Global : User inputs ---- */
 .u-input-text {
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
 }
 
 .u-input-text-label {
@@ -117,7 +126,7 @@
 .u-form input[type='checkbox'],
 .u-form input[type='radio'] {
     border: 2px solid var(--brand-black);
-    background-color: var(--brand-white);
+    background-color: var(--brand-bg-default);
 }
 
 .u-form input[type='checkbox']::after,
@@ -135,7 +144,7 @@
     background-color: var(--brand-primary);
     border: none;
     border-bottom: 1px solid var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .u-button-secondary {
@@ -146,7 +155,7 @@
 .u-button-warning {
     background-color: var(--brand-red-light);
     border-bottom: 1px solid var(--brand-red-dark);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 /* ---- Global : Links / anchors etc ---- */
@@ -160,14 +169,14 @@
 }
 
 .kiwi-header-name {
-    color: #22231f;
+    color: var(--comp-fg-header-name);
 }
 
 .kiwi-header-option a:hover,
 .kiwi-header-option--active,
 .kiwi-header-option--active:hover a {
     background-color: var(--comp-bg-header-option-active);
-    color: var(--comp-text-header-option-active);
+    color: var(--comp-fg-header-option-active);
     opacity: 1;
 }
 
@@ -182,17 +191,17 @@
 .kiwi-header-option-leave a:hover,
 .kiwi-header-option-unpinsidebar a:hover {
     background-color: var(--brand-red-light);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-header-join-channel-button {
     background-color: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-header .kiwi-header-notjoined .u-link {
     background-color: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-header .kiwi-header-notjoined .u-link:hover {
@@ -201,14 +210,14 @@
 
 .kiwi-header-server-connection .u-button {
     background: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 /* End of Container Header ( containerHeader ) */
 
 /* ---- Control Input ( controlInput ) ---- */
 .kiwi-controlinput {
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -231,7 +240,7 @@
 
 /* ---- Self User ( SelfUser.vue ) ---- */
 .kiwi-controlinput-selfuser {
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
 }
 
 .kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
@@ -246,7 +255,7 @@
 .kiwi-autocomplete {
     box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
     border: 1px solid var(--brand-gray);
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
 }
 
 .kiwi-autocomplete-item {
@@ -255,21 +264,21 @@
 
 .kiwi-autocomplete-item--selected {
     background: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-autocomplete-item--selected .u-link {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 /* ---- Sidebar ( Sidebar ) ---- */
 .kiwi-sidebar-options {
     background-color: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-sidebar-pin {
-    border-right: 1px solid var(--brand-white);
+    border-right: 1px solid var(--brand-bg-default);
     background: var(--brand-primary);
 }
 
@@ -279,7 +288,7 @@
 
 .kiwi-sidebar-options .kiwi-sidebar-close:hover {
     background: var(--brand-red-light);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-container--sidebar-open .kiwi-sidebar {
@@ -291,12 +300,12 @@
 }
 
 .kiwi-aboutbuffer h3 {
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
 }
 
 .kiwi-aboutbuffer h4 {
     background-color: var(--comp-bg-aboutbuffer-h4);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 /* ---- Sidebar - Nicklist ---- */
@@ -311,7 +320,7 @@
 .kiwi-nicklist-user:hover {
     background-color: var(--brand-primary);
     cursor: pointer;
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-nicklist-user::after {
@@ -319,15 +328,15 @@
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-user-nick i {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-user-nick::after {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-nicklist-messageuser {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-nicklist-info i.fa-search {
@@ -354,7 +363,7 @@
 
 .kiwi-userbox .kiwi-userbox-actions .u-button:hover {
     background-color: var(--brand-black);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-userbox-opactions {
@@ -368,7 +377,7 @@
 .kiwi-userbox-opaction-kick,
 .kiwi-userbox-opaction-ban,
 .kiwi-userbox-opaction-kickban {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-userbox-opaction-kick {
@@ -405,7 +414,7 @@
 /* Statebrowser - Left sidebar ( StateBrowser.vue ) */
 .kiwi-statebrowser {
     background: var(--comp-bg-statebrowser);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-divider {
@@ -414,17 +423,17 @@
 
 /* Add channel input */
 .kiwi-statebrowser-newchannel-inputwrap {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-newchannel-inputwrap input[type='text'] {
     color: var(--brand-black);
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-newchannel-inputwrap--focus {
     opacity: 1;
-    background-color: var(--brand-white);
+    background-color: var(--brand-bg-default);
 }
 
 /* Channel search input */
@@ -439,7 +448,7 @@
 }
 
 .kiwi-statebrowser-channelfilter input {
-    background-color: var(--brand-white);
+    background-color: var(--brand-bg-default);
     color: var(--brand-black);
     outline: none;
 }
@@ -457,13 +466,13 @@
 }
 
 .kiwi-statebrowser-newnetwork a {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-newnetwork a:hover {
     background: var(--brand-primary);
     opacity: 1;
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header {
@@ -471,7 +480,7 @@
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 /* Active Network Styling */
@@ -482,11 +491,11 @@
 /* Channel Styling */
 .kiwi-statebrowser-channels .kiwi-statebrowser-channel {
     border-bottom: 1px solid #4a4b47;
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-channels .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-channels .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name .kiwi-statebrowser-channel-label {
@@ -522,7 +531,7 @@
 .kiwi-statebrowser-newchannel a:hover {
     background: var(--brand-primary);
     opacity: 1;
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-switcher a:first-of-type {
@@ -555,7 +564,7 @@
 
 .kiwi-statebrowser-channel-label {
     background: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-channel-popup {
@@ -622,12 +631,12 @@
 
 .kiwi-statebrowser-usermenu-avatar {
     background-color: var(--brand-black);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-usermenu-avatar:hover {
     background-color: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-usermenu--open {
@@ -636,7 +645,7 @@
 
 .kiwi-statebrowser-usermenu--open .kiwi-statebrowser-usermenu-avatars {
     background-color: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a.kiwi-statebrowser-network-toggle:hover {
@@ -646,7 +655,7 @@
 
 .kiwi-statebrowser-appsettings:hover {
     background: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
     opacity: 1;
 }
 
@@ -670,7 +679,7 @@
 }
 
 .kiwi-workspace {
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
 }
 
 .kiwi-workspace::before {
@@ -688,7 +697,7 @@
 
 .kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-sidebar {
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
 }
 
 .kiwi-container-toggledraw-statebrowser {
@@ -705,7 +714,7 @@
 
 .kiwi-container-toggledraw-statebrowser-messagecount {
     background-color: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
@@ -715,7 +724,7 @@
 
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight {
     background-color: var(--brand-red-dark);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
@@ -724,12 +733,12 @@
 
 .kiwi-container-empty .u-button {
     background-color: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 /* ---- Application settings ( AppSettings ) ---- */
 .kiwi-appsettings {
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
 }
 
 .kiwi-appsettings-block {
@@ -738,12 +747,12 @@
 
 .kiwi-appsettings-block h3 {
     background: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-appsettings-title {
     background-color: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-appsettings-title:hover {
@@ -753,7 +762,7 @@
 /* ---- Network Settings ( NetworkSettings ) ---- */
 .kiwi-networksettings .kiwi-title {
     background: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
     border-top: 1px solid var(--brand-primary);
 }
 
@@ -767,12 +776,12 @@
 
 .kiwi-networksettings .u-form {
     border: 1px solid rgba(0, 0, 0, 0.2);
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
 }
 
 .kiwi-networksettings .kiwi-title span {
     color: var(--brand-primary);
-    background: var(--brand-white);
+    background: var(--brand-bg-default);
 }
 
 .kiwi-networksettings-advanced h3:hover {
@@ -801,7 +810,7 @@
 
 .kiwi-networksettings .kiwi-connect-to-newnetwork {
     background: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
@@ -812,7 +821,7 @@
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button:hover,
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button.kiwi-networksettings-server-type-active {
     background: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .u-button.kiwi-channellist-refresh.u-button-secondary {
@@ -883,17 +892,17 @@
 
 /* Connection Styling */
 .kiwi-messagelist-message-connection {
-    background-color: var(--brand-white);
+    background-color: var(--brand-bg-default);
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message-connection-connected {
     background-color: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected {
     background-color: var(--brand-red-light);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 /* ---- Traffic Messages ---- */
@@ -1027,12 +1036,12 @@
 
 .kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
     background: #f6c358;
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-messageinfo-actions .kiwi-messageinfo-ban-user {
     background: #fcb46e;
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 @media screen and (max-width: 850px) {
@@ -1049,17 +1058,17 @@
 
 /* ---- Not connected message ( NotConnected ) ---- */
 .kiwi-warning-block {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
     background-color: var(--brand-red-light);
 }
 
 .kiwi-notconnected-button {
-    border: 2px solid var(--brand-white);
-    color: var(--brand-white);
+    border: 2px solid var(--brand-bg-default);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-notconnected-button:hover {
-    background-color: var(--brand-white);
+    background-color: var(--brand-bg-default);
     color: var(--brand-black);
 }
 
@@ -1083,7 +1092,7 @@
 }
 
 .kiwi-settings-advanced-notice {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
     background: var(--brand-red-light);
 }
 
@@ -1097,7 +1106,7 @@
 }
 
 .kiwi-channelbanlist-table-actions:hover i {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-network-name-options {
@@ -1107,18 +1116,18 @@
 .kiwi-network-name-option:hover,
 .kiwi-network-name-option.active {
     background-color: var(--brand-primary);
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-network-name-option {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 .kiwi-network-name-hover-icon {
-    color: var(--brand-white);
+    color: var(--brand-bg-default);
 }
 
 /* Buffer Key */
 .kiwi-bufferkey-button {
-    border: 1px solid var(--brand-white);
+    border: 1px solid var(--brand-bg-default);
 }
