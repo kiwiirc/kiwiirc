@@ -3,7 +3,6 @@
 
         <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
             <i class="fa fa-cog" aria-hidden="true"/>
-            <span>Edit settings</span>
         </div>
 
         <div
@@ -20,12 +19,14 @@
                 @click="is_usermenu_open=!is_usermenu_open"
             >
                 {{ userInitial }}
+                <away-status-indicator
+                    :network="getNetwork"
+                    :user="getNetwork.currentUser()"
+                />
             </div>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
                 <p> {{ $t('state_remembered') }} </p>
-                <a class="u-button u-button-warning" @click="clickForget">
-                    {{ $t('state_forget') }}
-                </a>
+                <a class="u-link" @click="clickForget">{{ $t('state_forget') }}</a>
                 <div class="kiwi-close-icon" @click="is_usermenu_open=false">
                     <i class="fa fa-times" aria-hidden="true"/>
                 </div>
@@ -103,7 +104,6 @@
 <script>
 'kiwi public';
 
-import Vue from 'vue';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import state from '@/libs/state';
 import NetworkProvider from '@/libs/NetworkProvider';
@@ -111,7 +111,7 @@ import GlobalApi from '@/libs/GlobalApi';
 import StateBrowserNetwork from './StateBrowserNetwork';
 import AppSettings from './AppSettings';
 import BufferSettings from './BufferSettings';
-import AlertForgetMe from './alerts/alertForgetMe';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 let netProv = new NetworkProvider();
 
@@ -119,6 +119,7 @@ export default {
     components: {
         BufferSettings,
         StateBrowserNetwork,
+        AwayStatusIndicator,
     },
     props: ['networks', 'sidebarState'],
     data: function data() {
@@ -137,6 +138,9 @@ export default {
                 initial = network.nick.charAt(0).toUpperCase();
             }
             return initial;
+        },
+        getNetwork() {
+            return state.getActiveNetwork();
         },
         networkName() {
             let network = state.getActiveNetwork();
@@ -182,9 +186,15 @@ export default {
             state.$emit('statebrowser.hide');
         },
         clickForget: function clickForget() {
-            let displaybox = new Vue(AlertForgetMe);
-            displaybox.$mount();
-            this.$state.$emit('swal', 'forgetMe', '', displaybox.$el);
+            let msg = 'This will delete all stored networks and start fresh. Are you sure?';
+            /* eslint-disable no-restricted-globals, no-alert */
+            let confirmed = confirm(msg);
+            if (!confirmed) {
+                return;
+            }
+
+            state.persistence.forgetState();
+            window.location.reload();
         },
         connectProvidedNetwork: function connectProvidedNetwork(pNet) {
             let net = state.addNetwork(pNet.name, pNet.nick, {
@@ -236,29 +246,19 @@ export default {
 
 /* User Settings */
 .kiwi-statebrowser-appsettings {
-    width: 100%;
-    text-align: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 39px;
+    text-align: center;
     font-size: 1em;
     box-sizing: border-box;
-    line-height: 46px;
+    line-height: 57px;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s;
-    opacity: 1;
+    opacity: 0.8;
     z-index: 20;
-    border-bottom: 1px solid #989898;
-    border-top: 3px solid #42b992;
-    position: relative;
-}
-
-.kiwi-statebrowser-appsettings i {
-    float: left;
-    line-height: 46px;
-    font-size: 1.2em;
-    width: 35px;
-    margin-left: 3px;
-    text-align: center;
-    margin-right: 3px;
 }
 
 .kiwi-statebrowser-appsettings:hover {
@@ -267,21 +267,18 @@ export default {
 
 .kiwi-statebrowser-appsettings span {
     font-weight: 600;
-    position: absolute;
-    left: 40px;
-    top: 0;
-    width: 100%;
-    opacity: 0;
-    transition: all 0.3s;
 }
 
-.kiwi-statebrowser-appsettings:hover span {
-    opacity: 1;
+.kiwi-statebrowser-appsettings i {
+    line-height: 35px;
+    font-size: 1.2em;
 }
 
 .kiwi-statebrowser-usermenu {
     width: 100%;
-    padding: 10px 0;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+    padding-top: 34px;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
@@ -292,9 +289,17 @@ export default {
     text-align: center;
     line-height: 50px;
     border-radius: 50%;
-    overflow: hidden;
     margin: 0 auto 10px auto;
     transition: all 0.3s;
+    position: relative;
+}
+
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    position: absolute;
+    top: 1px;
+    right: -5px;
+    width: 12px;
+    height: 12px;
 }
 
 .kiwi-statebrowser-usermenu-body {
@@ -305,8 +310,8 @@ export default {
     margin-bottom: 10px;
 }
 
-.kiwi-statebrowser-usermenu-body .kiwi-close-icon {
-    top: 50px;
+.kiwi-statebrowser-usermenu-body p {
+    margin-bottom: 0;
 }
 
 /* Add network button */
@@ -353,15 +358,13 @@ export default {
     line-height: 45px;
     text-align: left;
     position: relative;
-    box-sizing: border-box;
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
     text-align: left;
-    padding: 10px 80px 10px 10px;
-    word-wrap: break-word;
+    padding: 0 0 0 10px;
     width: 100%;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 600;
 }
 

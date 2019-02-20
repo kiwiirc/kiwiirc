@@ -17,7 +17,12 @@
         </template>
         <template v-else>
             <state-browser :networks="networks" :sidebar-state="sidebarState"/>
-            <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
+            <div
+                :class="{
+                    'kiwi-workspace--disconnected': buffer.getNetwork().state !== 'connected'
+                }"
+                class="kiwi-workspace"
+                @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"/>
 
                 <template v-if="!activeComponent && network">
@@ -27,8 +32,8 @@
                         :sidebar-state="sidebarState"
                     >
                         <media-viewer
+                            v-slot:before
                             v-if="mediaviewerOpen"
-                            slot="before"
                             :url="mediaviewerUrl"
                             :component="mediaviewerComponent"
                             :is-iframe="mediaviewerIframe"
@@ -390,26 +395,31 @@ body {
     transition: left 0.2s, margin-left 0.2s;
 }
 
-.kiwi-workspace::before {
+.kiwi-workspace::before,
+.kiwi-workspace::after {
     position: absolute;
     content: '';
-    right: 0;
     left: 0;
+    right: auto;
     top: 0;
+    width: 100%;
     height: 7px;
     z-index: 0;
+    transition: width 0.3s;
 }
 
-/* When the statebrowser opens as a draw, darken the workspace */
 .kiwi-workspace::after {
-    position: fixed;
-    top: 0;
     right: 0;
-    content: '';
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 0.5s;
-    will-change: opacity;
+    left: auto;
+    width: 0;
+}
+
+.kiwi-workspace--disconnected::before {
+    width: 0;
+}
+
+.kiwi-workspace--disconnected::after {
+    width: 100%;
 }
 
 .kiwi-workspace-background {

@@ -68,10 +68,10 @@
     background: #000;
 }
 .kiwi-workspace::before {
-    background: #000000;
+    background: #42b992;
 }
-.kiwi-workspace::after{
-    background-color: rgba(0, 0, 0, 0.4);
+.kiwi-workspace::after {
+    background: #bf5155;
 }
 
 /* App - Tabs */
@@ -708,14 +708,14 @@
 }
 
 /* Self User ( SelfUser.vue ) */
+.kiwi-selfuser {
+    background: #1b1b1b;
+}
 .kiwi-controlinput-selfuser {
-    background: #adadad;
-}
-.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
+    background: #1b1b1b;
     border: 1px solid #ddd;
-}
-.kiwi-selfuser-actions {
-    border-top: 1px solid #ddd;
+    border-left: none;
+    border-bottom: none;
 }
 
 .kiwi-selfuser-actions .u-button-primary {
@@ -1150,6 +1150,15 @@
     text-decoration: underline;
 }
 
+/* Buffer Key */
+.kiwi-bufferkey input[type='password'] {
+    border: 1px solid #efefef;
+    color: #efefef;
+}
+
+.kiwi-bufferkey-button {
+    border: 1px solid #efefef;
+}
 
 /*Icon before the network in network list */
 .kiwi-statebrowser-network-name::before {
@@ -1161,22 +1170,12 @@
 }
 
 /* Icons in the Channel List */
-.kiwi-statebrowser-channel:not([data-name^="#"])::before {
-    content: '\f007';
-}
-
 .kiwi-statebrowser-channel[data-name^="*"]::before {
     content: '\f006';
 }
 
 .kiwi-statebrowser-channel[data-name="#help"]::before {
     content: '\f059';
-}
-
-.kiwi-statebrowser-channel::before {
-    font-family: fontAwesome;
-    margin-right: 5px;
-    font-weight: 100;
 }
 
 /* Nightwatch exclusive fix for network settings labels */
@@ -1191,4 +1190,18 @@
 .kiwi-settings-advanced-notice {
     color: #000;
     background: #d16c6c;
+}
+
+.kiwi-awaystatusindicator {
+    border: 1px solid #e1e1e1;
+    background-color: #135f46;
+}
+
+.kiwi-awaystatusindicator--away {
+    background-color: #942626;
+}
+
+.kiwi-selfuser-error-message {
+    background: #d16c6c;
+    color: #fff;
 }

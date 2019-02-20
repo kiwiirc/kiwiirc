@@ -9,6 +9,9 @@
             >
                 {{ network.name }}
             </a>
+            <div class="kiwi-network-name-hover-icon">
+                <i class="fa fa-ellipsis-h" aria-hidden="true"/>
+            </div>
             <div class="kiwi-network-name-options">
                 <div
                     v-if="totalNetworkCount > 1"
@@ -114,6 +117,11 @@
                     class="kiwi-statebrowser-channel"
                 >
                     <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">
+                        <i v-if="buffer.isQuery() && !awayNotifySupported()"
+                           class="fa fa-user" aria-hidden="true" />
+                        <away-status-indicator
+                            v-if="buffer.isQuery() && awayNotifySupported()"
+                            :network="network" :user="network.userByName(buffer.name)"/>
                         {{ buffer.name }}
                     </div>
                     <div class="kiwi-statebrowser-channel-labels">
@@ -130,6 +138,14 @@
                                 {{ buffer.flags.unread }}
                             </div>
                         </transition>
+                    </div>
+
+                    <div
+                        v-if="buffer.isChannel()"
+                        class="kiwi-statebrowser-channel-settings"
+                        @click="showBufferSettings(buffer)"
+                    >
+                        <i class="fa fa-cog" aria-hidden="true"/>
                     </div>
 
                     <div class="kiwi-statebrowser-channel-leave" @click="closeBuffer(buffer)">
@@ -149,12 +165,12 @@ import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
 import * as bufferTools from '@/libs/bufferTools';
 import BufferSettings from './BufferSettings';
-import Salert from './Salert';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         BufferSettings,
-        Salert,
+        AwayStatusIndicator,
     },
     props: ['network', 'sidebarState'],
     data: function data() {
@@ -257,6 +273,9 @@ export default {
         closeBuffer(buffer) {
             state.removeBuffer(buffer);
         },
+        awayNotifySupported() {
+            return this.network.ircClient.network.cap.isEnabled('away-notify');
+        },
         showMessageCounts: function showMessageCounts(buffer) {
             return !buffer.setting('hide_message_counts');
         },
@@ -331,35 +350,45 @@ export default {
 .kiwi-statebrowser-network-name {
     flex: 1;
     font-size: 1.1em;
-    line-height: normal;
+    text-align: center;
     display: block;
     padding: 4px 0;
     box-sizing: border-box;
 }
 
+.kiwi-network-name-hover-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 45px;
+    z-index: 2;
+    width: 45px;
+    text-align: center;
+    line-height: 45px;
+}
+
 .kiwi-network-name-options {
-    z-index: 10;
     position: absolute;
     top: 0;
+    height: 45px;
+    z-index: 10;
+    right: -300px;
+    transition: all 0.15s;
+}
+
+.kiwi-statebrowser-network-header:hover .kiwi-network-name-options {
     right: 0;
+    opacity: 1;
 }
 
 .kiwi-network-name-option {
     float: right;
-    width: 30px;
-    line-height: 30px;
-    font-size: 0.8em;
+    width: 35px;
+    transition: all 0.15s;
     padding: 0;
-    margin: 4px 5px 0 0;
-    border-radius: 50%;
+    line-height: 45px;
     text-align: center;
     cursor: pointer;
-    opacity: 0.8;
-    transition: all 0.15s;
-}
-
-.kiwi-network-name-option:hover {
-    opacity: 1;
 }
 
 .kiwi-statebrowser-network-toggable-area--collapsed {
@@ -390,6 +419,7 @@ export default {
 .kiwi-statebrowser-channel {
     position: relative;
     display: flex;
+    border-left: 3px solid transparent;
 }
 
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-name {
@@ -434,6 +464,18 @@ export default {
     opacity: 0;
 }
 
+.kiwi-statebrowser-channel-settings {
+    display: block;
+    height: 100%;
+    width: 35px;
+    opacity: 0;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
 .kiwi-statebrowser-channel-leave {
     float: right;
     opacity: 0;
@@ -444,6 +486,7 @@ export default {
     z-index: 10;
 }
 
+.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings,
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave {
     opacity: 1;
 }
