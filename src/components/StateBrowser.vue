@@ -109,6 +109,7 @@ import state from '@/libs/state';
 import NetworkProvider from '@/libs/NetworkProvider';
 import GlobalApi from '@/libs/GlobalApi';
 import StateBrowserNetwork from './StateBrowserNetwork';
+import AppSettings from './AppSettings';
 import BufferSettings from './BufferSettings';
 import AwayStatusIndicator from './AwayStatusIndicator';
 
@@ -179,7 +180,7 @@ export default {
             network.showServerBuffer('settings');
         },
         clickAppSettings: function clickAppSettings() {
-            state.$emit('app.settings');
+            state.$emit('active.component.toggle', AppSettings);
         },
         hideStatebrowser: function hideStatebrowser() {
             state.$emit('statebrowser.hide');

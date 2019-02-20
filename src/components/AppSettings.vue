@@ -281,7 +281,7 @@ export default {
     },
     methods: {
         closeSettings: function closeSettings() {
-            state.$emit('app.settings');
+            state.$emit('app.settings.toggle');
         },
         refreshTheme: function refreshTheme() {
             ThemeManager.instance().reload();

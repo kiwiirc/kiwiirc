@@ -118,7 +118,6 @@ export default {
     },
     created() {
         this.listenForActiveComponents();
-        this.listenForAppSettingsToggle();
         this.watchForThemes();
         this.initStateBrowser();
         this.initMediaviewer();
@@ -171,9 +170,10 @@ export default {
             this.hasStarted = true;
         },
         listenForActiveComponents() {
-            this.listen(this.$state, 'active.component', (component, props) => {
-                this.activeComponent = null;
-                if (component) {
+            this.listen(this.$state, 'active.component.toggle', (component, props) => {
+                if (component === this.activeComponent) {
+                    this.activeComponent = null;
+                } else if (component) {
                     this.activeComponentProps = props;
                     this.activeComponent = component;
                 }
@@ -326,7 +326,7 @@ export default {
                 event.preventDefault();
             } else if (meta && event.keyCode === 79) {
                 // meta + o
-                this.$state.$emit('app.settings');
+                this.$state.$emit('active.component.toggle', AppSettings);
                 event.preventDefault();
             } else if (meta && event.keyCode === 83) {
                 // meta + s
@@ -336,17 +336,6 @@ export default {
                 }
                 event.preventDefault();
             }
-        },
-        listenForAppSettingsToggle() {
-            this.$state.$on('app.settings', () => {
-                if (this.appSettingsOpen) {
-                    this.$state.$emit('active.component');
-                    this.appSettingsOpen = false;
-                } else {
-                    this.$state.$emit('active.component', AppSettings);
-                    this.appSettingsOpen = true;
-                }
-            });
         },
     },
 };
