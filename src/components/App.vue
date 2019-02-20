@@ -118,7 +118,6 @@ export default {
     },
     created() {
         this.listenForActiveComponents();
-        this.listenForComponentsToToggle();
         this.watchForThemes();
         this.initStateBrowser();
         this.initMediaviewer();
@@ -178,8 +177,6 @@ export default {
                     this.activeComponent = component;
                 }
             });
-        },
-        listenForComponentsToToggle() {
             this.listen(this.$state, 'active.component.toggle', (component, props) => {
                 if (component === this.activeComponent) {
                     this.activeComponent = null;
