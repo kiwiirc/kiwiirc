@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-02-19 17:32\n"
+"PO-Revision-Date: 2019-02-20 13:52\n"
 
 #: Start
 msgid "start_button"
@@ -875,7 +875,7 @@ msgstr "Σταματήστε να αγνοείτε κάποιον"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "Ρίξτε ένα Zάρι"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
