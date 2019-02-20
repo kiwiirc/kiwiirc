@@ -13,6 +13,8 @@ describe('TextFormatting.js', function() {
             ['#chan[n]el,', '<a class="u-link kiwi-channel" data-channel-name="#chan[n]el">#chan[n]el</a>,'],
             ['@#channel:', '@<a class="u-link kiwi-channel" data-channel-name="#channel">#channel</a>:'],
             ['@&channel,', '@<a class="u-link kiwi-channel" data-channel-name="&amp;channel">&amp;channel</a>,'],
+            ['&@#channel,', '&amp;@<a class="u-link kiwi-channel" data-channel-name="#channel">#channel</a>,'],
+            ['&@&channel,', '&amp;@<a class="u-link kiwi-channel" data-channel-name="&amp;channel">&amp;channel</a>,'],
         ];
 
         tests.forEach((c) => {

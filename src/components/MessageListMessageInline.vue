@@ -24,7 +24,7 @@
                 'kiwi-messagelist-message--blur' :
                 '',
         ]"
-        :data-message="message"
+        :data-message-id="message.id"
         :data-nick="(message.nick||'').toLowerCase()"
         class="kiwi-messagelist-message kiwi-messagelist-message--text"
         @click="ml.onMessageClick($event, message, true)"

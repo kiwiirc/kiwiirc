@@ -31,7 +31,7 @@
                 'kiwi-messagelist-message--blur' :
                 '',
         ]"
-        :data-message="message"
+        :data-message-id="message.id"
         :data-nick="(message.nick||'').toLowerCase()"
         class="kiwi-messagelist-message kiwi-messagelist-message--compact"
         @click="ml.onMessageClick($event, message)"
@@ -49,7 +49,15 @@
             @click="ml.openUserBox(message.nick)"
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
             @mouseout="ml.hover_nick='';"
-        >{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
+        >
+            <away-status-indicator
+                v-if="message.user"
+                :network="getNetwork()" :user="message.user"
+                :toggle="false"
+            />
+            {{ message.user ? userModePrefix(message.user) : '' }}
+            {{ message.nick }}
+        </div>
         <div
             v-rawElement="message.bodyTemplate.$el"
             v-if="message.bodyTemplate && message.bodyTemplate.$el"
@@ -73,10 +81,12 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
+import AwayStatusIndicator from './AwayStatusIndicator';
 import MessageInfo from './MessageInfo';
 
 export default {
     components: {
+        AwayStatusIndicator,
         MessageInfo,
     },
     props: ['ml', 'message', 'idx'],
@@ -90,6 +100,9 @@ export default {
         },
     },
     methods: {
+        getNetwork() {
+            return this.ml.buffer.getNetwork();
+        },
         isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
@@ -120,7 +133,7 @@ export default {
     width: 110px;
     min-width: 110px;
     display: inline-block;
-    left: 0;
+    left: 8px;
     top: -1px;
     position: absolute;
 }
@@ -176,7 +189,8 @@ export default {
 
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     display: inline-block;
-    margin-left: auto;
+    margin: 0;
+    padding: 10px 0;
 }
 
 //Channel topic
