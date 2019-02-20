@@ -864,10 +864,12 @@
     background-color: #000;
     color: #dedede;
 }
-
 .kiwi-statebrowser-usermenu-avatar:hover {
     background-color: #42b992;
     color: #dedede;
+}
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    border: 1px solid #22221f;
 }
 
 .kiwi-statebrowser-scrollarea {
