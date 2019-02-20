@@ -73,7 +73,7 @@
 .kiwi-workspace::before {
     background: #42b992;
 }
-.kiwi-workspace::after {
+.kiwi-workspace--disconnected::after {
     background: #bf5155;
 }
 
