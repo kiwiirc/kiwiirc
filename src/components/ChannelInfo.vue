@@ -6,7 +6,10 @@
                 <textarea v-model.lazy="topic" rows="2"/>
                 <ul v-if="highlights.length > 0">
                     <li v-for="msg in highlights" :key="msg.id">
-                        {{ msg.nick }} {{ msg.message }} {{ $t('at', { when: new Intl.DateTimeFormat().format(msg.time) }) }}
+                        <span>{{ msg.nick }} {{ msg.message }}</span>
+                        <span>{{ $t('topic_set_at',
+                                    { when: new Intl.DateTimeFormat('en-GB').format(msg.time) }) }}
+                        </span>
                     </li>
                 </ul>
             </label>
@@ -36,9 +39,6 @@
 
 <script>
 'kiwi public';
-
-import formatIrcMessage from '@/libs/MessageFormatter';
-import * as TextFormatting from '@/helpers/TextFormatting';
 
 // Helper to generate Vues computed methods for simple channel modes.
 // Eg. +i, +n, etc
@@ -100,9 +100,7 @@ export default {
             /* eslint-disable no-unused-vars */
             let tmp = this.buffer.message_count;
             return this.buffer.getMessages()
-                .filter(m => m.isHighlight)
-                .filter(m => m.type !== 'traffic')
-                .filter(m => m.type !== 'mode');
+                .filter(m => m.type === 'topic');
         },
     },
     methods: {
