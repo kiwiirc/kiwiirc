@@ -300,6 +300,7 @@ export default {
 
 .kiwi-welcome-simple-form {
     width: 90%;
+    max-width: 250px;
     border-radius: 0.5em;
     padding: 1em;
 }
