@@ -99,6 +99,7 @@ select {
     cursor: pointer;
     margin-left: 0;
     margin-right: 5px;
+    border: 2px solid;
 }
 
 .u-form input[type='checkbox']::after,
