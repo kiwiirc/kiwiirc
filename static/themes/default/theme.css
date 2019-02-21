@@ -88,7 +88,7 @@
 
 .u-tabbed-view-tabs .u-tabbed-view-tab:hover,
 .u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active {
-    border-bottom: var(--brand-primary);
+    border-bottom-color: var(--brand-primary);
 }
 
 /* ---- Global : User inputs ---- */
@@ -97,7 +97,7 @@
 }
 
 .u-input-text-label {
-    color: var(--brand-midtone);
+    color: var(--fg-default);
 }
 
 .u-input-text--focus {
