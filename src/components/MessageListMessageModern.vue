@@ -279,10 +279,10 @@ export default {
 
 .kiwi-messagelist-message-connection .kiwi-messagelist-body {
     line-height: 30px;
-    font-weight: 100;
     margin: 0 auto;
     border-radius: 4px;
     display: inline-block;
+    font-weight: 900;
 }
 
 .kiwi-messagelist-message-connection .kiwi-messagelist-message {
@@ -332,7 +332,7 @@ export default {
 .kiwi-messagelist-time {
     font-size: 0.8em;
     font-weight: 400;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 .kiwi-messagelist-message-traffic .kiwi-messagelist-body {

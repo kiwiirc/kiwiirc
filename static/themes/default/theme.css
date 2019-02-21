@@ -824,12 +824,11 @@
 /* ---- Message list - ( MessageList.vue ) ---- */
 .kiwi-messagelist-message--info-open,
 .kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open {
-    background: #f6f6f6;
+    background: var(--brand-midtone);
 }
 
 .kiwi-messagelist-message-action .kiwi-messagelist-body {
     color: var(--brand-primary);
-    font-style: italic;
 }
 
 .kiwi-messagelist-message--highlight {
@@ -840,10 +839,6 @@
 /* Standard username and usertime styling */
 .kiwi-messagelist-nick {
     color: var(--brand-fg-default);
-}
-
-.kiwi-messagelist-time {
-    color: #a0a09f;
 }
 
 /* Unread user messages */
