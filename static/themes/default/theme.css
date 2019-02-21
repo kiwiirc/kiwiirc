@@ -635,9 +635,13 @@
     border-color: var(--brand-error);
 }
 
-.kiwi-statebrowser-usermenu--open .kiwi-statebrowser-usermenu-avatars {
+.kiwi-statebrowser-usermenu--open .kiwi-statebrowser-usermenu-avatar {
     background-color: var(--brand-primary);
     color: var(--brand-bg-default);
+}
+
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    border-color: var(--comp-bg-statebrowser);
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a.kiwi-statebrowser-network-toggle:hover {
@@ -1054,6 +1058,21 @@
 
 .kiwi-network-name-hover-icon {
     color: var(--brand-bg-default);
+}
+
+/* Global Close Icon */
+.kiwi-close-icon,
+.kiwi-close-icon:hover {
+    background: var(--brand-error);
+}
+
+/* Away Status Indicator */
+.kiwi-awaystatusindicator {
+    border-color: var(brand-bg-default);
+    background-color: var(--brand-primary);
+}
+.kiwi-awaystatusindicator--away {
+    background-color: var(--brand-error);
 }
 
 /* Buffer Key */
