@@ -188,7 +188,7 @@ export default {
             network.showServerBuffer('settings');
         },
         clickAppSettings: function clickAppSettings() {
-            state.$emit('active.component', AppSettings);
+            state.$emit('active.component.toggle', AppSettings);
         },
         hideStatebrowser: function hideStatebrowser() {
             state.$emit('statebrowser.hide');
