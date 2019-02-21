@@ -17,6 +17,8 @@ export default class UserState {
         this.account = '';
         this.hasWhois = false;
 
+        Vue.observable(this);
+
         // Whois details are non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'actual_host', '', true);
         def(this, 'helpop', '', true);
@@ -31,8 +33,6 @@ export default class UserState {
         def(this, 'registered_nick', '', true);
         def(this, 'secure', '', true);
         def(this, 'special', '', true);
-
-        Vue.observable(this);
     }
 
     getColour() {
