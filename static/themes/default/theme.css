@@ -1031,18 +1031,8 @@
     border-color: var(--brand-midtone);
 }
 
-.kiwi-settings-aliases-showhelp {
-    display: block;
-}
-
-.kiwi-settings-aliases-help {
-    background: transparent;
-    border: 1px dashed rgba(0, 0, 0, 0.4);
-}
-
 .kiwi-settings-aliases-help em {
     color: var(--brand-primary);
-    font-weight: 900;
 }
 
 .kiwi-settings-advanced-notice {
