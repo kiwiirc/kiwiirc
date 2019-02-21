@@ -14,7 +14,14 @@
                             '',
                     ]"
                     class="kiwi-container-toggledraw-statebrowser-messagecount"
-                >{{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}</div>
+                >
+                    <span class="kiwi-container-statebrowser-messagecount-alert">
+                        {{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}
+                    </span>
+                    <span class="kiwi-container-statebrowser-messagecount-close">
+                        <i class="fa fa-times" aria-hidden="true"/>
+                    </span>
+                </div>
             </div>
             <container-header :buffer="buffer" :sidebar-state="sidebarState"/>
 
@@ -82,7 +89,6 @@ export default {
             } else if (this.buffer.isQuery()) {
                 type = 'query';
             }
-
             return type;
         },
         unreadMessages() {
@@ -240,6 +246,8 @@ export default {
     text-align: center;
     font-size: 1.6em;
     line-height: 50px;
+    transition: left 2s;
+    transition-delay: 0.5s;
 }
 
 .kiwi-container-toggledraw-statebrowser {
@@ -255,21 +263,23 @@ export default {
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount {
-    position: relative;
+    position: absolute;
     font-size: 0.6em;
     border-radius: 3px;
     line-height: 2em;
     box-sizing: border-box;
     top: 10px;
-    z-index: 3;
+    z-index: 4;
     white-space: nowrap;
-    left: 6px;
+    left: 14px;
     width: 37px;
     padding: 0;
+    transition: all 0.4s, z-index 0s;
+    transition-delay: 0.1s;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
-    right: 99%;
+    left: -15px;
     top: 20%;
     border: 0.6em solid transparent;
     border-right-color: #ddd;
@@ -278,6 +288,21 @@ export default {
     width: 0;
     position: absolute;
     pointer-events: none;
+}
+
+.kiwi-container-statebrowser-messagecount-close {
+    display: none;
+}
+
+/* When the Statebrowser is visible, apply new styles to the messagecount */
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount {
+    left: -19px;
+    z-index: 100;
+}
+
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
+    right: -15px;
+    left: auto;
 }
 
 @keyframes kiwi-wiggle {
@@ -314,6 +339,14 @@ export default {
 }
 
 @media screen and (max-width: 769px) {
+    .kiwi-wrap--statebrowser-drawopen .kiwi-container-statebrowser-messagecount-alert {
+        display: none;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-container-statebrowser-messagecount-close {
+        display: block;
+    }
+
     .kiwi-header {
         margin-left: 50px;
         margin-right: 50px;

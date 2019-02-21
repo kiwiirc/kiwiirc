@@ -1,6 +1,6 @@
 <template>
     <startup-layout ref="layout" class="kiwi-startbnc">
-        <div slot="connection">
+        <template v-slot:connection>
             <form class="kiwi-startbnc-form" @submit.prevent="startUp">
                 <h2 v-html="greetingText"/>
 
@@ -24,7 +24,7 @@
                     <i v-else class="fa fa-spinner fa-spin" aria-hidden="true"/>
                 </button>
             </form>
-        </div>
+        </template>
     </startup-layout>
 </template>
 
@@ -197,7 +197,7 @@ export default {
                         host: network.connection.server,
                         port: network.connection.port,
                         tls: network.connection.tls,
-                        password: network.connection.password,
+                        password: network.password,
                         nick: network.nick,
                         username: network.username,
                     };
@@ -226,8 +226,8 @@ export default {
                     if (network.connection.tls !== current.tls) {
                         tags.tls = network.connection.tls;
                     }
-                    if (network.connection.password !== current.password) {
-                        tags.password = network.connection.password;
+                    if (network.password !== current.password) {
+                        tags.password = network.password;
                     }
                     if (network.nick !== current.nick) {
                         tags.nick = network.nick;

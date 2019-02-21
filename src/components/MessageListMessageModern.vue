@@ -39,6 +39,12 @@
                 :message="message"
                 :data-nick="message.nick"
             />
+            <away-status-indicator
+                v-if="message.user && !isRepeat()"
+                :network="getNetwork()" :user="message.user"
+                :toggle="false"
+                class="kiwi-messagelist-awaystatus"
+            />
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">
@@ -95,11 +101,13 @@
 import { urlRegex } from '@/helpers/TextFormatting';
 import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         MessageAvatar: MessageListAvatar,
         MessageInfo,
+        AwayStatusIndicator,
     },
     props: ['ml', 'message', 'idx'],
     data: function data() {
@@ -141,13 +149,16 @@ export default {
         },
     },
     methods: {
+        getNetwork() {
+            return this.ml.buffer.getNetwork();
+        },
         isRepeat() {
             let ml = this.ml;
             let idx = this.idx;
             let message = this.message;
             let prevMessage = ml.filteredMessages[idx - 1];
 
-            return prevMessage &&
+            return !!prevMessage &&
                 prevMessage.nick === message.nick &&
                 message.time - prevMessage.time < 60000 &&
                 prevMessage.type !== 'traffic' &&
@@ -179,9 +190,22 @@ export default {
 
 .kiwi-messagelist-modern-left {
     user-select: none;
+    position: relative;
+}
+
+.kiwi-messagelist-awaystatus {
+    width: 10px;
+    top: 4px;
+    right: 2px;
+    height: 10px;
+    position: absolute;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left {
+    display: none;
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-top {
     display: none;
 }
 
@@ -209,7 +233,7 @@ export default {
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-    margin: 10px 20px 10px 20px;
+    margin: 20px 20px 20px 66px;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
@@ -372,6 +396,10 @@ export default {
 
     .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic {
         padding-left: 10px;
+    }
+
+    .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
+        margin: 0 15px 20px 15px;
     }
 }
 </style>

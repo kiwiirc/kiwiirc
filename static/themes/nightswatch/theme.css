@@ -68,10 +68,10 @@
     background: #000;
 }
 .kiwi-workspace::before {
-    background: #000000;
+    background: #42b992;
 }
-.kiwi-workspace::after{
-    background-color: rgba(0, 0, 0, 0.4);
+.kiwi-workspace--disconnected::after {
+    background: #bf5155;
 }
 
 /* App - Tabs */
@@ -217,14 +217,10 @@
     color: #adadad;
 }
 
-.kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-sidebar {
     background: #000000;
 }
 
-.kiwi-container-toggledraw-statebrowser {
-    border-right: 1px solid #444;
-}
 .kiwi-container-toggledraw-sidebar {
     border-left: 1px solid #444;
 }
@@ -255,6 +251,12 @@
 
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
     border-right-color: #d62323;
+}
+
+/* Style the statebrowser's ::after element on mobile devices */
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
+    border: 0.6em solid transparent;
+    border-left-color: #444;
 }
 
 .kiwi-container-empty .u-button {
@@ -661,42 +663,21 @@
   background: #000000;
 }
 
-/* Nicklist ( Nicklist.vu ) */
+/* Nicklist ( Nicklist.vue ) */
 .kiwi-nicklist-usercount {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid #e4e4e44d;
 }
 .kiwi-nicklist-user {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-.kiwi-nicklist-info input {
-    color: #efefef;
-}
-
-.kiwi-nicklist-info .fa.fa-search{
-    color: #efefef;
-}
-.kiwi-nicklist-user {
-    border-top: 1px solid #858585;
-}
-.kiwi-nicklist-user:first-of-type {
-    border-top: none;
-}
-.kiwi-nicklist-user:hover {
-    background-color: #000000;
-    cursor: pointer;
-    color: #adadad;
-}
-.kiwi-nicklist-user:after {
-    color: #666764;
-}
-.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
-    color: #adadad !important;
+    border-left: 4px solid #1b1b1b;
 }
 .kiwi-nicklist-messageuser {
-    color: #e2e2e2;
+    color: #adadad;
+}
+.kiwi-nicklist-user:hover {
+    border-left: 4px solid #adadad;
 }
 .kiwi-nicklist-info i.fa-search {
-    color: #cfcfcf;
+    color: #adadad;
 }
 
 .kiwi-aboutbuffer {
@@ -727,14 +708,14 @@
 }
 
 /* Self User ( SelfUser.vue ) */
+.kiwi-selfuser {
+    background: #1b1b1b;
+}
 .kiwi-controlinput-selfuser {
-    background: #adadad;
-}
-.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
+    background: #1b1b1b;
     border: 1px solid #ddd;
-}
-.kiwi-selfuser-actions {
-    border-top: 1px solid #ddd;
+    border-left: none;
+    border-bottom: none;
 }
 
 .kiwi-selfuser-actions .u-button-primary {
@@ -808,12 +789,15 @@
 }
 
 .kiwi-statebrowser-usermenu-avatar {
-    background-color: #999;
+    background-color: #000;
     color: #d8d8d8;
 }
 .kiwi-statebrowser-usermenu-avatar:hover {
     background-color: #ddd;
     color: #fff;
+}
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    border-color: #000;
 }
 
 /* If the user clicks on their avatar we 'open' the settings */
@@ -834,7 +818,6 @@
 
 /* User Settings */
 .kiwi-statebrowser-appsettings:hover {
-    background: #000000;
     color: #adadad;
     opacity: 1;
 }
@@ -1170,6 +1153,15 @@
     text-decoration: underline;
 }
 
+/* Buffer Key */
+.kiwi-bufferkey input[type='password'] {
+    border: 1px solid #efefef;
+    color: #efefef;
+}
+
+.kiwi-bufferkey-button {
+    border: 1px solid #efefef;
+}
 
 /*Icon before the network in network list */
 .kiwi-statebrowser-network-name::before {
@@ -1181,22 +1173,12 @@
 }
 
 /* Icons in the Channel List */
-.kiwi-statebrowser-channel:not([data-name^="#"])::before {
-    content: '\f007';
-}
-
 .kiwi-statebrowser-channel[data-name^="*"]::before {
     content: '\f006';
 }
 
 .kiwi-statebrowser-channel[data-name="#help"]::before {
     content: '\f059';
-}
-
-.kiwi-statebrowser-channel::before {
-    font-family: fontAwesome;
-    margin-right: 5px;
-    font-weight: 100;
 }
 
 /* Nightwatch exclusive fix for network settings labels */
@@ -1211,4 +1193,18 @@
 .kiwi-settings-advanced-notice {
     color: #000;
     background: #d16c6c;
+}
+
+.kiwi-awaystatusindicator {
+    border-color: #000;
+    background-color: #3bba91;
+}
+
+.kiwi-awaystatusindicator--away {
+    background-color: #942626;
+}
+
+.kiwi-selfuser-error-message {
+    background: #d16c6c;
+    color: #fff;
 }

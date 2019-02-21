@@ -117,6 +117,11 @@
                     class="kiwi-statebrowser-channel"
                 >
                     <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">
+                        <i v-if="buffer.isQuery() && !awayNotifySupported()"
+                           class="fa fa-user" aria-hidden="true" />
+                        <away-status-indicator
+                            v-if="buffer.isQuery() && awayNotifySupported()"
+                            :network="network" :user="network.userByName(buffer.name)"/>
                         {{ buffer.name }}
                     </div>
                     <div class="kiwi-statebrowser-channel-labels">
@@ -133,14 +138,6 @@
                                 {{ buffer.flags.unread }}
                             </div>
                         </transition>
-                    </div>
-
-                    <div
-                        v-if="buffer.isChannel()"
-                        class="kiwi-statebrowser-channel-settings"
-                        @click="showBufferSettings(buffer)"
-                    >
-                        <i class="fa fa-cog" aria-hidden="true"/>
                     </div>
 
                     <div class="kiwi-statebrowser-channel-leave" @click="closeBuffer(buffer)">
@@ -160,10 +157,12 @@ import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
 import * as bufferTools from '@/libs/bufferTools';
 import BufferSettings from './BufferSettings';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         BufferSettings,
+        AwayStatusIndicator,
     },
     props: ['network', 'sidebarState'],
     data: function data() {
@@ -266,6 +265,9 @@ export default {
         closeBuffer(buffer) {
             state.removeBuffer(buffer);
         },
+        awayNotifySupported() {
+            return this.network.ircClient.network.cap.isEnabled('away-notify');
+        },
         showMessageCounts: function showMessageCounts(buffer) {
             return !buffer.setting('hide_message_counts');
         },
@@ -285,10 +287,6 @@ export default {
         },
         showNetworkChannels(network) {
             network.showServerBuffer('channels');
-        },
-        showBufferSettings(buffer) {
-            this.setActiveBuffer(buffer);
-            this.sidebarState.showBufferSettings();
         },
         toggleAddChannel() {
             this.channel_add_display = !this.channel_add_display;
@@ -406,6 +404,7 @@ export default {
 .kiwi-statebrowser-channel {
     position: relative;
     display: flex;
+    border-left: 3px solid transparent;
 }
 
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-name {
@@ -448,18 +447,6 @@ export default {
 .kiwi-statebrowser-channel-label-transition-enter,
 .kiwi-statebrowser-channel-label-transition-leave-active {
     opacity: 0;
-}
-
-.kiwi-statebrowser-channel-settings {
-    display: block;
-    height: 100%;
-    width: 35px;
-    opacity: 0;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-    z-index: 10;
 }
 
 .kiwi-statebrowser-channel-leave {

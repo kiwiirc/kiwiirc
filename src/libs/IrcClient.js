@@ -16,7 +16,7 @@ export function create(state, network) {
         port: network.connection.port,
         tls: network.connection.tls,
         path: network.connection.path,
-        password: network.connection.password,
+        password: network.password,
         nick: network.nick,
         username: network.username || network.nick,
         gecos: network.gecos || 'https://kiwiirc.com/',
@@ -70,7 +70,7 @@ export function create(state, network) {
             ircClient.options.host = network.connection.server;
             ircClient.options.port = network.connection.port;
             ircClient.options.tls = network.connection.tls;
-            ircClient.options.password = network.connection.password;
+            ircClient.options.password = network.password;
             ircClient.options.nick = network.nick;
             ircClient.options.username = network.username || network.nick;
             ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
@@ -172,6 +172,20 @@ function clientMiddleware(state, network) {
     function rawEventsHandler(command, event, rawLine, client, next) {
         state.$emit('irc.raw', command, event, network);
         state.$emit('irc.raw.' + command, command, event, network);
+
+        // SASL failed auth
+        if (command === '904') {
+            network.ircClient.connection.end();
+            network.last_error = 'Invalid login';
+
+            let serverBuffer = network.serverBuffer();
+            state.addMessage(serverBuffer, {
+                time: Date.now(),
+                nick: '*',
+                message: 'Invalid login',
+            });
+        }
+
         next();
     }
 
@@ -199,11 +213,6 @@ function clientMiddleware(state, network) {
         }
 
         if (command === 'registered') {
-            if (client.options.nickserv) {
-                let options = client.options.nickserv;
-                client.say('nickserv', 'identify ' + options.account + ' ' + options.password);
-            }
-
             network.nick = event.nick;
             state.addUser(networkid, { nick: event.nick, username: client.user.username });
 
@@ -391,6 +400,8 @@ function clientMiddleware(state, network) {
             }
 
             // If we need to manually check if this user is blocked..
+            // PM_BLOCK_REQUIRES_CHECK means we should whois the user to get their oper status. We
+            // allways allow messages from opers.
             if (blockNewPms && isPrivateMessage && !buffer && pmBlock === PM_BLOCK_REQUIRES_CHECK) {
                 // if the nick is in pendingPms it has already issued a whois request
                 let awaitingWhois = !!_.find(network.pendingPms, { nick: event.nick });
@@ -451,6 +462,11 @@ function clientMiddleware(state, network) {
             }
 
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
+
+            // The case does not match, update buffer.name to the casing sent by the server
+            if (buffer.name !== event.channel) {
+                buffer.rename(event.channel);
+            }
 
             state.addUserToBuffer(buffer, {
                 nick: event.nick,
@@ -662,6 +678,7 @@ function clientMiddleware(state, network) {
             });
             let buffer = state.getActiveBuffer();
             if (buffer && event.nick === network.nick) {
+                network.away = 'away';
                 state.addMessage(buffer, {
                     time: event.time || Date.now(),
                     nick: '*',
@@ -678,6 +695,7 @@ function clientMiddleware(state, network) {
             });
             let buffer = state.getActiveBuffer();
             if (buffer && event.nick === network.nick) {
+                network.away = '';
                 state.addMessage(buffer, {
                     time: event.time || Date.now(),
                     nick: '*',
