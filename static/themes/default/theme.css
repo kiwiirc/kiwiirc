@@ -9,7 +9,7 @@
     /* Primary Variables */
     --brand-primary: #42b992;
     --brand-primary-hover: #5ec9a6;
-    --brand-grey: #f1f1f1;
+    --brand-midtone: #f1f1f1;
     --brand-bg-default: #fff;
     --brand-fg-default: #22231f;
 
@@ -43,7 +43,7 @@
 .kiwi-welcome-simple-form,
 .kiwi-customserver-form {
     background-color: var(--brand-bg-default);
-    border: 1px solid var(--brand-grey);
+    border: 1px solid var(--brand-midtone);
 }
 
 .kiwi-welcome-simple-error {
@@ -74,12 +74,12 @@
 }
 
 .u-tabbed-view-tabs {
-    background: rgba(0, 0, 0, 0.1);
-    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+    background: var(--brand-midtone);
+    border-bottom: 3px solid var(--brand-midtone);
 }
 
 .u-tabbed-view-tabs .u-tabbed-view-tab {
-    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+    border-bottom-color: var(--brand-bg-default);
     background: var(--brand-bg-default);
 }
 
@@ -94,7 +94,7 @@
 }
 
 .u-input-text-label {
-    color: var(--brand-grey);
+    color: var(--brand-midtone);
 }
 
 .u-input-text--focus {
@@ -102,7 +102,7 @@
 }
 
 .u-input-text-underline {
-    border-color: var(--brand-grey);
+    border-color: var(--brand-midtone);
 }
 
 .u-input-text-underline-active {
@@ -111,7 +111,7 @@
 
 .u-form .u-input,
 .u-form textarea {
-    border: 1px solid var(--brand-grey);
+    border: 1px solid var(--brand-midtone);
     border-bottom: 2px solid var(--brand-primary);
     line-height: normal;
     outline-color: var(--brand-primary);
@@ -246,22 +246,22 @@
 }
 
 .kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
-    border: 1px solid var(--brand-grey);
+    border: 1px solid var(--brand-midtone);
 }
 
 .kiwi-selfuser-actions {
-    border-top: 1px solid var(--brand-grey);
+    border-top: 1px solid var(--brand-midtone);
 }
 
 /* ---- Auto complete ( autoComplete ) ---- */
 .kiwi-autocomplete {
     box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
-    border: 1px solid var(--brand-grey);
+    border: 1px solid var(--brand-midtone);
     background: var(--brand-bg-default);
 }
 
 .kiwi-autocomplete-item {
-    border-bottom: 1px solid var(--brand-grey);
+    border-bottom: 1px solid var(--brand-midtone);
 }
 
 .kiwi-autocomplete-item--selected {
@@ -294,7 +294,7 @@
 }
 
 .kiwi-container--sidebar-open .kiwi-sidebar {
-    border-color: var(--brand-grey);
+    border-color: var(--brand-midtone);
 }
 
 .kiwi-aboutbuffer {
@@ -326,7 +326,7 @@
 }
 
 .kiwi-nicklist-user::after {
-    color: var(--brand-grey);
+    color: var(--brand-midtone);
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-user-nick i {
@@ -342,20 +342,20 @@
 }
 
 .kiwi-nicklist-info i.fa-search {
-    color: var(--brand-grey);
+    color: var(--brand-midtone);
 }
 
 /* ---- Sidebar - userbox ---- */
 .kiwi-userbox-usermask {
-    color: var(--brand-grey);
+    color: var(--brand-fg-default);
 }
 
 .kiwi-userbox .main-title {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--brand-midtone);
 }
 
 .kiwi-userbox .kiwi-userbox-basicinfo {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--brand-midtone);
 }
 
 .kiwi-userbox .kiwi-userbox-actions .kiwi-userbox-action {
@@ -369,7 +369,7 @@
 }
 
 .kiwi-userbox-opactions {
-    border-top: 1px solid var(--brand-grey);
+    border-top: 1px solid var(--brand-midtone);
 }
 
 .kiwi-userbox-opactions label select {
@@ -398,7 +398,7 @@
 }
 
 .kiwi-userbox-whois {
-    border: 1px solid var(--brand-grey);
+    border: 1px solid var(--brand-midtone);
 }
 
 /* ---- State browser ( statebrowser) ---- */
@@ -535,7 +535,7 @@
 }
 
 .kiwi-statebrowser-options {
-    background: var(--brand-grey);
+    background: var(--brand-midtone);
 }
 
 .kiwi-statebrowser-availablenetworks-link {
@@ -561,7 +561,7 @@
 
 .kiwi-statebrowser-channel-popup {
     background: #383838;
-    border: 3px solid var(--brand-grey);
+    border: 3px solid var(--brand-midtone);
     border-left: none;
 }
 
@@ -682,7 +682,7 @@
 
 /* ---- Container ( Container.vue )  ---- */
 .kiwi-container {
-    border-bottom: 1px solid var(--brand-grey);
+    border-bottom: 1px solid var(--brand-midtone);
 }
 
 .kiwi-container-toggledraw-statebrowser,
@@ -691,11 +691,11 @@
 }
 
 .kiwi-container-toggledraw-statebrowser {
-    border-right: 1px solid var(--brand-grey);
+    border-right: 1px solid var(--brand-midtone);
 }
 
 .kiwi-container-toggledraw-sidebar {
-    border-left: 1px solid var(--brand-grey);
+    border-left: 1px solid var(--brand-midtone);
 }
 
 .kiwi-container-toggledraw-sidebar--disabled {
@@ -824,7 +824,7 @@
 }
 
 .kiwi-channellist table tbody tr {
-    border-top: 1px solid var(--brand-grey);
+    border-top: 1px solid var(--brand-midtone);
 }
 
 /* ---- Message list - ( MessageList.vue ) ---- */
@@ -854,13 +854,13 @@
 /* Unread user messages */
 .kiwi-messagelist-message.kiwi-messagelist-message--unread {
     border-left: 5px solid var(--brand-primary);
-    background: var(--brand-grey);
+    background: var(--brand-midtone);
     opacity: 1;
 }
 
 /* When hovering over a users messages */
 .kiwi-messagelist-message--hover {
-    background-color: var(--brand-grey);
+    background-color: var(--brand-midtone);
 }
 
 /* Traditional message styling hover */
@@ -920,7 +920,7 @@
 }
 
 .kiwi-messagelist-message--modern {
-    border-top: 1px solid var(--brand-grey);
+    border-top: 1px solid var(--brand-midtone);
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
@@ -929,14 +929,15 @@
 
 /* ---- Compact Layout Styling ---- */
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
-    background-color: var(--brand-grey);
+    background-color: var(--brand-midtone);
 }
 
 /* Errors */
-.kiwi-messagelist-message-error {
+.kiwi-messagelist-message-error,
+.kiwi-messagelist-message.kiwi-messagelist-message-error.kiwi-messagelist-message--highlight {
     background: var(--brand-error);
     border-left-color: var(--brand-error);
-    color: var(--brand-fg-default);
+    color: var(--brand-bg-default);
 }
 
 /* ---- Messagelist Topic Styling ---- */
@@ -961,7 +962,7 @@
 }
 
 .kiwi-header-buffersettings {
-    border-top: 1px solid var(--brand-grey);
+    border-top: 1px solid var(--brand-midtone);
 }
 
 .kiwi-header-topic > div {
@@ -969,7 +970,7 @@
 }
 
 .kiwi-messagelist-message-whois {
-    border-left-color: var(--brand-grey);
+    border-left-color: var(--brand-midtone);
 }
 
 .kiwi-messagelist-message.kiwi-messagelist-message--hover,
@@ -981,66 +982,32 @@
 }
 
 .kiwi-messagelist-message-motd {
-    color: var(--brand-grey);
+    color: var(--brand-fg-default);
 }
 
 /* ---- MessageInfo ---- */
-.kiwi-messageinfo {
-    padding: 0;
-}
-
 .kiwi-messagelist-message--info-open {
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: var(--brand-midtone);
 }
 
 .kiwi-messageinfo-urls {
-    border-top: 1px solid var(--brand-grey);
-    border-bottom: 1px solid var(--brand-grey);
-}
-
-.kiwi-messageinfo-urls .kiwi-messageinfo-url:last-of-type {
-    margin-bottom: 0;
-}
-
-.kiwi-messageinfo-actions {
-    width: 100%;
-    text-align: left;
-}
-
-.kiwi-messageinfo-opbuttons {
-    float: right;
-    width: auto;
+    border-top: 1px solid var(--brand-midtone);
+    border-bottom: 1px solid var(--brand-midtone);
 }
 
 .kiwi-messageinfo-actions .u-link {
-    padding: 5px 10px;
-    text-align: center;
-    border: 1px solid var(--brand-fg-default);
+    border-color: var(--brand-fg-default);
     color: var(--brand-fg-default);
-    display: inline-block;
-    border-radius: 3px;
 }
 
 .kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
-    background: #f6c358;
+    background: var(--brand-warning);
     color: var(--brand-bg-default);
 }
 
 .kiwi-messageinfo-actions .kiwi-messageinfo-ban-user {
-    background: #fcb46e;
+    background: var(--brand-error);
     color: var(--brand-bg-default);
-}
-
-@media screen and (max-width: 850px) {
-    .kiwi-messageinfo-actions {
-        text-align: center;
-    }
-
-    .kiwi-messageinfo-opbuttons {
-        margin-top: 15px;
-        margin-bottom: 5px;
-        width: 100%;
-    }
 }
 
 /* ---- Not connected message ( NotConnected ) ---- */
@@ -1061,7 +1028,7 @@
 
 /* ---- Settings Aliases ( SettingsAliases ) ---- */
 .kiwi-settings-aliases-input {
-    border-color: var(--brand-grey);
+    border-color: var(--brand-midtone);
 }
 
 .kiwi-settings-aliases-showhelp {
@@ -1085,7 +1052,7 @@
 
 /* ---- Channel Banlist ( Channelbanlist ) ---- */
 .kiwi-channelbanlist-table tr {
-    border-bottom: 1px solid var(--brand-grey);
+    border-bottom: 1px solid var(--brand-midtone);
 }
 
 .kiwi-channelbanlist-table-actions:hover {

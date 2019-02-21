@@ -360,6 +360,7 @@ export default {
 
 .kiwi-userbox-usermask {
     width: 100%;
+    opacity: 0.6;
     cursor: default;
 }
 
@@ -384,7 +385,6 @@ export default {
     line-height: 1em;
     padding: 0;
     text-align: left;
-    opacity: 0.5;
     font-weight: 900;
 }
 
