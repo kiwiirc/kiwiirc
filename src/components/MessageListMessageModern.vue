@@ -191,6 +191,8 @@ export default {
 .kiwi-messagelist-modern-left {
     user-select: none;
     position: relative;
+    display: flex;
+    width: 50px;
 }
 
 .kiwi-messagelist-awaystatus {
@@ -201,29 +203,21 @@ export default {
     position: absolute;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left {
-    display: none;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-top {
-    display: none;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorfirst.kiwi-messagelist-message-topic {
+.kiwi-messagelist-message--authorfirst.kiwi-messagelist-message-topic {
     padding: 10px 20px;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
+.kiwi-messagelist-message--authorrepeat {
     margin-top: 0;
     padding-top: 0;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-modern-right {
+.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-modern-right {
     padding-top: 0;
 }
 
-.kiwi-messagelist-message-modern.kiwi-messagelist-message-topic,
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic {
+.kiwi-messagelist-message-topic,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic {
     padding-top: 10px;
     padding-bottom: 10px;
     margin: 10px 2.5%;
@@ -232,39 +226,39 @@ export default {
     margin-bottom: 10px;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
+.kiwi-messagelist-message-topic {
     margin: 10px 20px 10px 20px;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
+.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
     display: none;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-message-topic .kiwi-messagelist-modern-left,
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
+.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left,
+.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
     display: none;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-avatar {
+.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-avatar {
     display: none;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-top {
+.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-top {
     display: none;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-message-traffic .kiwi-messagelist-modern-right,
-.kiwi-messagelist-message--modern .kiwi-messagelist-message-mode .kiwi-messagelist-modern-right {
+.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-right,
+.kiwi-messagelist-message-mode .kiwi-messagelist-modern-right {
     float: left;
     margin-left: 0;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-message-mode .kiwi-messagelist-nick {
+.kiwi-messagelist-message-mode .kiwi-messagelist-nick {
     display: none;
 }
 
 /* Connection styling */
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection {
+.kiwi-messagelist-message-connection {
     padding: 0;
     box-sizing: border-box;
     width: 100%;
@@ -272,14 +266,15 @@ export default {
     opacity: 1;
     border-left: none;
     text-align: center;
+    font-weight: 600;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-time,
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-nick {
+.kiwi-messagelist-message-connection .kiwi-messagelist-time,
+.kiwi-messagelist-message-connection .kiwi-messagelist-nick {
     display: none;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     line-height: 30px;
     font-weight: 100;
     margin: 0 auto;
@@ -287,68 +282,82 @@ export default {
     display: inline-block;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-message {
+.kiwi-messagelist-message-connection .kiwi-messagelist-message {
     margin-bottom: 0;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-modern-left {
+.kiwi-messagelist-message-connection .kiwi-messagelist-modern-left {
     display: none;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-modern-right {
+.kiwi-messagelist-message-connection .kiwi-messagelist-modern-right {
     margin-left: 0;
     padding: 0;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-body {
+.kiwi-messagelist-body {
     white-space: pre-wrap;
     word-wrap: break-word;
     display: block;
     margin-left: 0;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-body a {
+.kiwi-messagelist-body a {
     word-break: break-all;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-modern-left {
-    display: flex;
-    width: 50px;
-}
-
-.kiwi-messagelist-message--modern .kiwi-messagelist-modern-right {
+.kiwi-messagelist-modern-right {
     margin-left: 5px;
     padding-top: 0;
     width: 100%;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-top > div {
+.kiwi-messagelist-top > div {
     margin-right: 10px;
     padding: 0;
     display: inline-block;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-nick {
+.kiwi-messagelist-nick {
     font-size: 1.1em;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-realname {
+.kiwi-messagelist-realname {
     cursor: pointer;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-time {
+.kiwi-messagelist-time {
     font-size: 0.8em;
     font-weight: 400;
     opacity: 0.8;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-item .kiwi-messagelist-body {
-    margin-bottom: 10px;
+.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
+    margin-bottom: 0;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic {
+.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left,
+.kiwi-messagelist-message-traffic .kiwi-messagelist-top {
+    display: none;
+}
+
+.kiwi-messagelist-message-traffic {
     margin-right: 0;
     padding-left: 60px;
+}
+
+.kiwi-messagelist-message-error {
+    padding: 10px 0;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.kiwi-messagelist-message-error .kiwi-messagelist-top {
+    display: none;
+}
+
+.kiwi-messagelist-message-error .kiwi-messagelist-body {
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 769px) {

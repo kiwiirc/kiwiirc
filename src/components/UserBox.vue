@@ -404,18 +404,12 @@ export default {
 
     .kiwi-userbox-action {
         display: inline-block;
-        border: 1px solid #000;
+        border: 1px solid;
         padding: 0.5em 1em;
-        color: #000;
         cursor: pointer;
         margin: 0 2px;
         transition: all 0.3s;
         border-radius: 3px;
-
-        &:hover {
-            background-color: #000;
-            color: #fff;
-        }
     }
 
     label {
@@ -483,6 +477,7 @@ export default {
     margin: 0 5% 20px 5%;
     background: none;
     box-sizing: border-box;
+    border-radius: 2px;
 }
 
 .kiwi-userbox-whois-line {
