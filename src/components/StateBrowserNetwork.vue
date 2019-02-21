@@ -278,13 +278,6 @@ export default {
         showNetworkChannels(network) {
             network.showServerBuffer('channels');
         },
-        showBufferSettings(buffer) {
-            if (this.$state.ui.is_narrow) {
-                state.$emit('statebrowser.hide');
-            }
-            this.setActiveBuffer(buffer);
-            this.sidebarState.showBufferSettings();
-        },
         toggleAddChannel() {
             this.channel_add_display = !this.channel_add_display;
             this.channel_filter_display = false;
