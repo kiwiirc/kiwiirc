@@ -40,6 +40,7 @@
     --brand-link-normal: #0093ce;
     --brand-link--hover:  #3db0de;
     --brand-shadow: rgba(0, 0, 0, 0.1);
+    --comp-border: #b2b2b2;
 }
 
 /* ---- Welcome Screens ----- */
@@ -171,6 +172,7 @@
 /* ---- Container Header ( containerHeader ) ---- */
 .kiwi-header {
     background: var(--comp-bg-header);
+    border-bottom-color: var(--comp-border);
 }
 
 .kiwi-header-name {
@@ -220,12 +222,12 @@
 /* ---- Control Input ( controlInput ) ---- */
 .kiwi-controlinput {
     background: var(--brand-bg-default);
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-top-color: var(--comp-border);
 }
 
 .kiwi-controlinput .kiwi-controlinput-user,
 .kiwi-controlinput-inner .kiwi-controlinput-user {
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-right-color: var(--comp-border);
 }
 
 .kiwi-controlinput-send {
@@ -294,7 +296,7 @@
 }
 
 .kiwi-container--sidebar-open .kiwi-sidebar {
-    border-color: var(--brand-midtone);
+    border-color: var(--comp-border);
 }
 
 .kiwi-aboutbuffer {
@@ -312,29 +314,24 @@
 
 /* ---- Sidebar - Nicklist ---- */
 .kiwi-nicklist-usercount {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom-color: var(--brand-midtone);
 }
 
 .kiwi-nicklist-user {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--brand-bg-default);
 }
 
 .kiwi-nicklist-user:hover {
-    background-color: var(--brand-primary);
+    border-left-color: var(--brand-primary);
     cursor: pointer;
-    color: var(--brand-bg-default);
+}
+
+.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
+    color: var(--brand-primary);
 }
 
 .kiwi-nicklist-user::after {
     color: var(--brand-midtone);
-}
-
-.kiwi-nicklist-user:hover .kiwi-nicklist-user-nick i {
-    color: var(--brand-bg-default);
-}
-
-.kiwi-nicklist-user:hover .kiwi-nicklist-user-nick::after {
-    color: var(--brand-bg-default);
 }
 
 .kiwi-nicklist-messageuser {

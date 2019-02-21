@@ -544,6 +544,7 @@ export default {
 
 .kiwi-controlinput {
     z-index: 999;
+    border-top: 1px solid;
 }
 
 .kiwi-controlinput,
@@ -576,6 +577,7 @@ export default {
     line-height: 40px;
     transition: width 0.2s;
     transition-delay: 0.1s;
+    border-right: 1px solid;
 }
 
 .kiwi-controlinput-selfuser--open .kiwi-controlinput-user {

@@ -50,7 +50,8 @@ export default {
 
 .kiwi-nicklist-user {
     line-height: 26px;
-    padding: 0 16px 0 12px;
+    padding: 0 12px 0 12px;
+    border-left: 4px solid;
     margin: 0;
     position: relative;
     box-sizing: border-box;
@@ -68,7 +69,7 @@ export default {
     content: '\f075';
     right: -1em;
     font-family: fontAwesome, sans-serif;
-    line-height: 30px;
+    line-height: 26px;
     opacity: 0;
 }
 
