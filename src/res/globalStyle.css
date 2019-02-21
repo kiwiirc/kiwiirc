@@ -46,10 +46,16 @@ select {
     vertical-align: middle;
     text-align: center;
     outline: none;
+    opacity: 0.75;
+}
+
+.u-button-primary {
+    border: none;
+    border-bottom: 1px solid var(--brand-primary);
 }
 
 .u-button:hover {
-    opacity: 0.75;
+    opacity: 1;
 }
 
 .u-form {

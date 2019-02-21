@@ -184,8 +184,10 @@ export default {
     border-left: 7px solid transparent;
     display: flex;
     margin: 0 0 0 20px;
+    border-top: 1px solid;
     margin-left: 0;
     padding: 15px 10px;
+    transition: border-colour 0.2s, background-color 0.2s;
 }
 
 .kiwi-messagelist-modern-left {
@@ -210,6 +212,7 @@ export default {
 .kiwi-messagelist-message--authorrepeat {
     margin-top: 0;
     padding-top: 0;
+    border-top: none;
 }
 
 .kiwi-messagelist-message--authorrepeat .kiwi-messagelist-modern-right {
@@ -407,4 +410,5 @@ export default {
         padding-left: 10px;
     }
 }
+
 </style>

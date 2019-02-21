@@ -36,7 +36,8 @@
     --comp-bg-aboutbuffer-h4: #42b992;
 
     /* Misc */
-
+    --brand-link-normal: #0093ce;
+    --brand-link--hover:  #3db0de;
 }
 
 /* ---- Welcome Screens ----- */
@@ -137,15 +138,8 @@
 }
 
 /* ---- Global : Buttons ---- */
-.u-button {
-    color: #2c3e50;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-}
-
 .u-button-primary {
     background-color: var(--brand-primary);
-    border: none;
-    border-bottom: 1px solid var(--brand-primary);
     color: var(--brand-bg-default);
 }
 
@@ -839,7 +833,8 @@
 }
 
 .kiwi-messagelist-message--highlight {
-    background-color: #f2f2f2;
+    background-color: var(--brand-midtone);
+    border-color: var(--brand-primary);
 }
 
 /* Standard username and usertime styling */
@@ -912,19 +907,15 @@
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body a {
-    color: #0093ce;
+    color: var(--brand-link--normal);
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body a:hover {
-    color: #3db0de;
+    color: var(--brand-link--hover);
 }
 
 .kiwi-messagelist-message--modern {
-    border-top: 1px solid var(--brand-midtone);
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
-    border-top: none;
+    border-top-color: var(--brand-midtone);
 }
 
 /* ---- Compact Layout Styling ---- */
