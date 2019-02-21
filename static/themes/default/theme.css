@@ -30,6 +30,7 @@
 
     /* StateBrowser */
     --comp-bg-statebrowser: var(--brand-fg-default);
+    --comp-bg-networkname--active: #454545;
 
     /* Sidebars ( Right Side ) */
     --comp-bg-aboutbuffer: rgba(0, 0, 0, 0.03);
@@ -38,6 +39,7 @@
     /* Misc */
     --brand-link-normal: #0093ce;
     --brand-link--hover:  #3db0de;
+    --brand-shadow: rgba(0, 0, 0, 0.1);
 }
 
 /* ---- Welcome Screens ----- */
@@ -86,7 +88,7 @@
 
 .u-tabbed-view-tabs .u-tabbed-view-tab:hover,
 .u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active {
-    border-bottom: 3px solid var(--brand-primary);
+    border-bottom: var(--brand-primary);
 }
 
 /* ---- Global : User inputs ---- */
@@ -112,9 +114,8 @@
 
 .u-form .u-input,
 .u-form textarea {
-    border: 1px solid var(--brand-midtone);
-    border-bottom: 2px solid var(--brand-primary);
-    line-height: normal;
+    border: var(--brand-midtone);
+    border-bottom: var(--brand-primary);
     outline-color: var(--brand-primary);
 }
 
@@ -122,13 +123,20 @@
 .u-form label input[type='password'],
 .u-form label input[type='email'],
 .u-form textarea {
-    border: 1px solid var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+::-ms-placeholder,
+::placeholder {
+    color: black;
 }
 
 /* ---- Global : Checkbox input ---- */
 .u-form input[type='checkbox'],
 .u-form input[type='radio'] {
-    border: 2px solid var(--brand-fg-default);
+    border-color: var(--brand-fg-default);
     background-color: var(--brand-bg-default);
 }
 
@@ -176,10 +184,7 @@
     opacity: 1;
 }
 
-.kiwi-header-option--active {
-    opacity: 1;
-}
-
+.kiwi-header-option--active,
 .kiwi-header-option-active a {
     opacity: 1;
 }
@@ -462,7 +467,7 @@
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header {
-    background-color: #454545;
+    background-color: var(--comp-bg-networkname--active);
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
@@ -476,7 +481,7 @@
 
 /* Channel Styling */
 .kiwi-statebrowser-channels .kiwi-statebrowser-channel {
-    border-bottom: 1px solid #4a4b47;
+    border-bottom: 1px solid var(--brand-shadow);
     color: var(--brand-bg-default);
 }
 
@@ -616,6 +621,7 @@
 }
 
 .kiwi-statebrowser-usermenu-avatar {
+    border-color: var(--brand-primary);
     background-color: var(--brand-fg-default);
     color: var(--brand-bg-default);
 }
@@ -625,8 +631,8 @@
     color: var(--brand-bg-default);
 }
 
-.kiwi-statebrowser-usermenu--open {
-    background: rgba(255, 255, 255, 0.1);
+.kiwi-statebrowser-usermenu-avatar--disconnected {
+    border-color: var(--brand-error);
 }
 
 .kiwi-statebrowser-usermenu--open .kiwi-statebrowser-usermenu-avatars {
@@ -671,14 +677,10 @@
 }
 
 .kiwi-workspace::after {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--brand-error);
 }
 
 /* ---- Container ( Container.vue )  ---- */
-.kiwi-container {
-    border-bottom: 1px solid var(--brand-midtone);
-}
-
 .kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-sidebar {
     background: var(--brand-bg-default);
@@ -754,12 +756,8 @@
     color: rgb(128, 128, 128);
 }
 
-.kiwi-networksettings .kiwi-padded-form-element-container.kiwi-dangerzone {
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-}
-
 .kiwi-networksettings .u-form {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-color: var(--brand-midtone);
     background: var(--brand-bg-default);
 }
 
@@ -773,7 +771,7 @@
 }
 
 .kiwi-networksettings .kiwi-customserver-tls {
-    color: #bfbfbf;
+    color: var(--brand-midtone);
 }
 
 .kiwi-networksettings .kiwi-customserver-tls--enabled {
@@ -789,7 +787,7 @@
 }
 
 .kiwi-networksettings-error {
-    border: 1px dashed var(--brand-error);
+    border-color: var(--brand-error);
 }
 
 .kiwi-networksettings .kiwi-connect-to-newnetwork {
@@ -798,7 +796,7 @@
 }
 
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
-    border: 1px solid var(--brand-primary);
+    border-color: var(--brand-primary);
     color: var(--brand-primary);
 }
 
@@ -806,6 +804,10 @@
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button.kiwi-networksettings-server-type-active {
     background: var(--brand-primary);
     color: var(--brand-bg-default);
+}
+
+.kiwi-networksettings .u-form span {
+    color: var(--brand-fg-default);
 }
 
 .u-button.kiwi-channellist-refresh.u-button-secondary {
@@ -845,7 +847,6 @@
 .kiwi-messagelist-message.kiwi-messagelist-message--unread {
     border-left: 5px solid var(--brand-primary);
     background: var(--brand-midtone);
-    opacity: 1;
 }
 
 /* When hovering over a users messages */
@@ -898,7 +899,7 @@
 
 /* ---- Modern Layout Styling ---- */
 .kiwi-messagelist-modern-avatar {
-    border: 2px solid var(--brand-primary);
+    border-color: var(--brand-primary);
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body a {
@@ -962,9 +963,7 @@
 .kiwi-messagelist-message.kiwi-messagelist-message--hover,
 .kiwi-messagelist-message.kiwi-messagelist-message--highlight,
 .kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover {
-    position: relative;
     border-color: var(--brand-primary);
-    opacity: 1;
 }
 
 .kiwi-messagelist-message-motd {
@@ -977,8 +976,8 @@
 }
 
 .kiwi-messageinfo-urls {
-    border-top: 1px solid var(--brand-midtone);
-    border-bottom: 1px solid var(--brand-midtone);
+    border-top-color: var(--brand-midtone);
+    border-bottom-color: var(--brand-midtone);
 }
 
 .kiwi-messageinfo-actions .u-link {
@@ -1003,7 +1002,7 @@
 }
 
 .kiwi-notconnected-button {
-    border: 2px solid var(--brand-bg-default);
+    border-color: var(--brand-bg-default);
     color: var(--brand-bg-default);
 }
 
@@ -1028,7 +1027,7 @@
 
 /* ---- Channel Banlist ( Channelbanlist ) ---- */
 .kiwi-channelbanlist-table tr {
-    border-bottom: 1px solid var(--brand-midtone);
+    border-bottom-color: var(--brand-midtone);
 }
 
 .kiwi-channelbanlist-table-actions:hover {
@@ -1059,5 +1058,5 @@
 
 /* Buffer Key */
 .kiwi-bufferkey-button {
-    border: 1px solid var(--brand-bg-default);
+    border-color: var(--brand-bg-default);
 }

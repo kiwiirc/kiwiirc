@@ -700,6 +700,18 @@ export default {
     font-family: monospace;
 }
 
+/* Ensure unread messages are fully visible, even after themes applied */
+.kiwi-messagelist-message.kiwi-messagelist-message--unread {
+    opacity: 1;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--hover,
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight,
+.kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover {
+    opacity: 1;
+    position: relative;
+}
+
 /* Links */
 .kiwi-messagelist-message-linkhandle {
     margin-left: 4px;

@@ -277,8 +277,11 @@ export default {
 .kiwi-statebrowser-usermenu {
     width: 100%;
     padding-bottom: 0;
-    margin-bottom: 10px;
     padding-top: 34px;
+}
+
+.kiwi-statebrowser-usermenu-network {
+    padding: 0 0 10px 0;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
@@ -288,6 +291,7 @@ export default {
     font-size: 1.5em;
     text-align: center;
     line-height: 50px;
+    border: 2px solid;
     border-radius: 50%;
     margin: 0 auto 10px auto;
     transition: all 0.3s;

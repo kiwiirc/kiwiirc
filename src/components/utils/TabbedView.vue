@@ -120,17 +120,14 @@ export default Vue.component('tabbed-view', {
     transition: border 0.3s;
 }
 
-.u-tabbed-view-tab:hover {
+.u-tabbed-view-tab:hover,
+.u-tabbed-view-tab--active {
     border-bottom-width: 3px;
 }
 
 .u-tabbed-view-tab:last-of-type {
     z-index: 1;
     border-radius: 0 4px 0 0;
-}
-
-.u-tabbed-view-tab--active {
-    border-bottom-width: 3px;
 }
 
 .u-tabbed-content {

@@ -46,6 +46,7 @@ select {
     vertical-align: middle;
     text-align: center;
     outline: none;
+    font-weight: 600;
     opacity: 0.75;
 }
 
@@ -142,10 +143,18 @@ select {
     padding: 3px 5px;
     box-sizing: border-box;
     border-radius: 1px;
+    border: 1px solid;
     min-height: none;
     overflow-x: hidden;
     overflow-y: auto;
     max-width: none;
+}
+
+.u-form .u-input,
+.u-form textarea {
+    border: 1px solid;
+    line-height: normal;
+    border-bottom: 2px solid;
 }
 
 .u-checkbox-wrapper {
@@ -157,6 +166,7 @@ select {
 .u-checkbox-wrapper input[type="radio"] {
     position: absolute;
     margin: 0;
+    border: 2px solid;
     top: 2px;
     left: 0;
 }
