@@ -53,6 +53,7 @@ export default {
     height: 7px;
     border-radius: 50%;
     margin: 0 4px 0 0;
+    border: 1px solid #fff;
     transition: background 0.2s;
 }
 

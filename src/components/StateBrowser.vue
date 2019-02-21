@@ -308,6 +308,7 @@ export default {
     right: -5px;
     width: 12px;
     height: 12px;
+    border: 1px solid #000;
 }
 
 .kiwi-statebrowser-usermenu-body {
