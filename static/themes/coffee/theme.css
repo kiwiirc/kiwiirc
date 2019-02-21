@@ -53,7 +53,7 @@
 .kiwi-workspace::before {
     background: #42b992;
 }
-.kiwi-workspace::after {
+.kiwi-workspace--disconnected::after {
     background: #bf5155;
 }
 
@@ -331,7 +331,6 @@
 
 /* Control Input - displayed at bottom of Kiwi ( ControlInput.vue ) */
 .kiwi-controlinput {
-    background: #efefef;
     border-top: 1px solid #e8e8e8;
     color: #272727;
 }
@@ -706,12 +705,15 @@
 }
 
 .kiwi-statebrowser-usermenu-avatar {
-    background-color: #000;
+    background-color: #7d6859;
     color: #fff;
 }
 .kiwi-statebrowser-usermenu-avatar:hover {
     background-color: #8e715c;
     color: #fff;
+}
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    border-color: #8e715b;
 }
 
 .kiwi-aboutbuffer {
@@ -1100,7 +1102,7 @@
 }
 
 .kiwi-awaystatusindicator {
-    border: 1px solid #e1e1e1;
+    border-color: #fff;
     background-color: #42b992;
 }
 

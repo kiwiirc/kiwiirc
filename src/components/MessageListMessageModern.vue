@@ -195,8 +195,8 @@ export default {
 
 .kiwi-messagelist-awaystatus {
     width: 10px;
-    top: 5px;
-    right: 4px;
+    top: 4px;
+    right: 2px;
     height: 10px;
     position: absolute;
 }

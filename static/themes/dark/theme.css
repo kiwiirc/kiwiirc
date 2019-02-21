@@ -73,7 +73,7 @@
 .kiwi-workspace::before {
     background: #42b992;
 }
-.kiwi-workspace::after {
+.kiwi-workspace--disconnected::after {
     background: #bf5155;
 }
 
@@ -864,10 +864,12 @@
     background-color: #000;
     color: #dedede;
 }
-
 .kiwi-statebrowser-usermenu-avatar:hover {
     background-color: #42b992;
     color: #dedede;
+}
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    border-color: #22221f;
 }
 
 .kiwi-statebrowser-scrollarea {
@@ -1280,7 +1282,7 @@
 }
 
 .kiwi-awaystatusindicator {
-    border: 1px solid #e1e1e1;
+    border-color: #1e1e1e;
     background-color: #42b992;
 }
 
