@@ -114,15 +114,16 @@
 
 .u-form .u-input,
 .u-form textarea {
-    border: var(--brand-midtone);
-    border-bottom: var(--brand-primary);
+    border-color: var(--brand-midtone);
+    border-bottom-color: var(--brand-primary);
     outline-color: var(--brand-primary);
 }
 
 .u-form label input[type='text'],
 .u-form label input[type='password'],
 .u-form label input[type='email'],
-.u-form textarea {
+.u-form textarea,
+.kiwi-networksettings input[type='password'] {
     border-color: var(--brand-primary);
 }
 
