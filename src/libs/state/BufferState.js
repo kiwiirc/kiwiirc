@@ -1,5 +1,6 @@
 /** @module */
 
+import Vue from 'vue';
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import { def } from './common';
@@ -34,6 +35,8 @@ export default class BufferState {
         this.active_timeout = null;
         this.message_count = 0;
         this.current_input = '';
+
+        Vue.observable(this);
 
         // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'state', state, false);

@@ -1,5 +1,6 @@
 /** @module */
 
+import Vue from 'vue';
 import { def } from './common';
 import * as IrcClient from '../IrcClient';
 
@@ -34,6 +35,8 @@ export default class NetworkState {
         this.gecos = '';
         this.password = '';
         this.away = '';
+
+        Vue.observable(this);
 
         // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'appState', appState, false);

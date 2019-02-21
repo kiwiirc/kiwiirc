@@ -140,14 +140,6 @@
                         </transition>
                     </div>
 
-                    <div
-                        v-if="buffer.isChannel()"
-                        class="kiwi-statebrowser-channel-settings"
-                        @click="showBufferSettings(buffer)"
-                    >
-                        <i class="fa fa-cog" aria-hidden="true"/>
-                    </div>
-
                     <div class="kiwi-statebrowser-channel-leave" @click="closeBuffer(buffer)">
                         <i class="fa fa-times" aria-hidden="true"/>
                     </div>
@@ -295,13 +287,6 @@ export default {
         },
         showNetworkChannels(network) {
             network.showServerBuffer('channels');
-        },
-        showBufferSettings(buffer) {
-            if (this.$state.ui.is_narrow) {
-                state.$emit('statebrowser.hide');
-            }
-            this.setActiveBuffer(buffer);
-            this.sidebarState.showBufferSettings();
         },
         toggleAddChannel() {
             this.channel_add_display = !this.channel_add_display;
@@ -462,18 +447,6 @@ export default {
 .kiwi-statebrowser-channel-label-transition-enter,
 .kiwi-statebrowser-channel-label-transition-leave-active {
     opacity: 0;
-}
-
-.kiwi-statebrowser-channel-settings {
-    display: block;
-    height: 100%;
-    width: 35px;
-    opacity: 0;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-    z-index: 10;
 }
 
 .kiwi-statebrowser-channel-leave {

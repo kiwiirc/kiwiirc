@@ -52,7 +52,7 @@ select {
 
 .u-button-primary {
     border: none;
-    border-bottom: 1px solid var(--brand-primary);
+    border-bottom: 1px solid;
 }
 
 .u-button:hover {

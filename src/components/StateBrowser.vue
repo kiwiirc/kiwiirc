@@ -20,8 +20,10 @@
             >
                 {{ userInitial }}
                 <away-status-indicator
+                    v-if="getNetwork && getNetwork.state === 'connected'"
                     :network="getNetwork"
-                    :user="getNetwork.currentUser()"
+                    :user="getUser"
+                    :toggle="false"
                 />
             </div>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
@@ -142,6 +144,12 @@ export default {
         getNetwork() {
             return state.getActiveNetwork();
         },
+        getUser() {
+            let network = state.getActiveNetwork();
+            return network ?
+                network.currentUser() :
+                null;
+        },
         networkName() {
             let network = state.getActiveNetwork();
             let name = TextFormatting.t('no_network');
@@ -180,7 +188,7 @@ export default {
             network.showServerBuffer('settings');
         },
         clickAppSettings: function clickAppSettings() {
-            state.$emit('active.component', AppSettings);
+            state.$emit('active.component.toggle', AppSettings);
         },
         hideStatebrowser: function hideStatebrowser() {
             state.$emit('statebrowser.hide');
@@ -304,6 +312,7 @@ export default {
     right: -5px;
     width: 12px;
     height: 12px;
+    border: 1px solid #000;
 }
 
 .kiwi-statebrowser-usermenu-body {

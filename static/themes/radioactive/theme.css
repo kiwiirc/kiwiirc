@@ -50,7 +50,7 @@
 .kiwi-workspace::before {
     background: #42b992;
 }
-.kiwi-workspace::after {
+.kiwi-workspace--disconnected::after {
     background: #bf5155;
 }
 
@@ -738,6 +738,9 @@
     background-color: #5dd895;
     color: #fff;
 }
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    border-color: #1a2f24;
+}
 
 /* If the user clicks on their avatar we 'open' the settings */
 .kiwi-statebrowser-usermenu--open {
@@ -1121,7 +1124,7 @@
 }
 
 .kiwi-awaystatusindicator {
-    border: 1px solid #e1e1e1;
+    border: #1a2f24;
     background-color: #5dd895;
 }
 

@@ -31,6 +31,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
+    "compare-versions": "^3.4.0",
     "copy-webpack-plugin": "^4.3.1",
     "core-js": "^2.5.7",
     "cross-env": "^5.1.3",

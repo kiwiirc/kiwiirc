@@ -81,8 +81,8 @@ export default {
     margin-top: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-top: 1px solid var(--brand-midtone);
-    border-bottom: 1px solid var(--brand-midtone);
+    border-top: 1px solid;
+    border-bottom: 1px solid;
 }
 
 .kiwi-messageinfo-url {

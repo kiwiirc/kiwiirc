@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2019-01-13 00:10\n"
+"PO-Revision-Date: 2019-02-19 20:31\n"
 
 #: Start
 msgid "start_button"
@@ -163,43 +163,43 @@ msgstr "Kanaal"
 
 #: {{count}} week
 msgid "week"
-msgstr "week"
+msgstr "{{count}} week"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "weken"
+msgstr "{{count}} weken"
 
 #: {{count}} day
 msgid "day"
-msgstr "dag"
+msgstr "{{count}} dag"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dagen"
+msgstr "{{count}} dagen"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "uur"
+msgstr "{{count}} uur"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "uur"
+msgstr "{{count}} uur"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuut"
+msgstr "{{count}} minuut"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minuten"
+msgstr "{{count}} minuten"
 
 #: {{count}} second
 msgid "second"
-msgstr "seconde"
+msgstr "{{count}} seconde"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "seconden"
+msgstr "{{count}} seconden"
 
 #: General
 msgid "settings_general"
@@ -703,7 +703,7 @@ msgstr "Veilig verbonden via SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "Ook in kanalen {{channels}}"
+msgstr "In kanalen {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -873,6 +873,14 @@ msgstr "Berichten van iemand negeren"
 msgid "command_unignore"
 msgstr "Negeren van iemand stoppen"
 
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Een dobbelsteen gooien"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Gooit een dobbelsteen met {{sides}} vlakken en krijgt {{number}}"
+
 #: Your IRC client
 msgid "personal_client"
 msgstr "Je IRC-client"
@@ -951,5 +959,5 @@ msgstr "{{nick}} is nu bekend als {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "heeft het topic gewijzigd naar {{topic}}"
+msgstr "{{nick}} heeft het topic gewijzigd naar {{topic}}"
 

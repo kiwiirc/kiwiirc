@@ -19,7 +19,7 @@
             <state-browser :networks="networks" :sidebar-state="sidebarState"/>
             <div
                 :class="{
-                    'kiwi-workspace--disconnected': buffer.getNetwork().state !== 'connected'
+                    'kiwi-workspace--disconnected': network && network.state !== 'connected'
                 }"
                 class="kiwi-workspace"
                 @click="stateBrowserDrawOpen = false">
@@ -177,6 +177,14 @@ export default {
                     this.activeComponent = component;
                 }
             });
+            this.listen(this.$state, 'active.component.toggle', (component, props) => {
+                if (component === this.activeComponent) {
+                    this.activeComponent = null;
+                } else if (component) {
+                    this.activeComponentProps = props;
+                    this.activeComponent = component;
+                }
+            });
         },
         watchForThemes() {
             let themes = ThemeManager.instance();
@@ -325,7 +333,7 @@ export default {
                 event.preventDefault();
             } else if (meta && event.keyCode === 79) {
                 // meta + o
-                this.$state.$emit('active.component', AppSettings);
+                this.$state.$emit('active.component.toggle', AppSettings);
                 event.preventDefault();
             } else if (meta && event.keyCode === 83) {
                 // meta + s
