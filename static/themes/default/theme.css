@@ -32,6 +32,7 @@
     /* StateBrowser */
     --comp-bg-statebrowser: var(--brand-fg-default);
     --comp-bg-networkname--active: #454545;
+    --comp-bg-usermenu-open: #0e0e0e;
 
     /* Sidebars ( Right Side ) */
     --comp-bg-aboutbuffer: rgba(0, 0, 0, 0.03);
@@ -410,6 +411,10 @@
 .kiwi-statebrowser {
     background: var(--comp-bg-statebrowser);
     color: var(--brand-bg-default);
+}
+
+.kiwi-statebrowser-usermenu.kiwi-statebrowser-usermenu--open {
+    background-color: var(--comp-bg-usermenu-open);
 }
 
 .kiwi-statebrowser-divider {
