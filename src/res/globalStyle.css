@@ -47,16 +47,11 @@ select {
     text-align: center;
     outline: none;
     font-weight: 600;
-    opacity: 0.75;
 }
 
 .u-button-primary {
     border: none;
     border-bottom: 1px solid;
-}
-
-.u-button:hover {
-    opacity: 1;
 }
 
 .u-form {
@@ -144,8 +139,9 @@ select {
     padding: 3px 5px;
     box-sizing: border-box;
     border-radius: 1px;
-    border: 1px solid;
-    min-height: none;
+    border-radius: none;
+    border-bottom: 1px solid;
+    min-height: 0;
     overflow-x: hidden;
     overflow-y: auto;
     max-width: none;
