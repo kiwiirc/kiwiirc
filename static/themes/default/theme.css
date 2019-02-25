@@ -85,7 +85,7 @@
 }
 
 .u-tabbed-view-tabs .u-tabbed-view-tab {
-    border-bottom-color: var(--brand-bg-default);
+    border-bottom-color: var(--brand-midtone);
     background: var(--brand-bg-default);
 }
 
