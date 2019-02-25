@@ -166,7 +166,7 @@
 
 .u-button-warning {
     background-color: var(--brand-error);
-    border-bottom: 1px solid var(--brand-error);
+    border-bottom: 1px solid var(--brand-fg-default);
     color: var(--brand-bg-default);
 }
 
@@ -689,10 +689,6 @@
     background: var(--brand-primary);
 }
 
-.kiwi-workspace::after {
-    background-color: var(--brand-error);
-}
-
 /* ---- Container ( Container.vue )  ---- */
 .kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-sidebar {
@@ -728,6 +724,11 @@
 
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
     border-right-color: var(--brand-error);
+}
+
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
+    border: 0.6em solid transparent;
+    border-left-color: var(--brand-primary);
 }
 
 .kiwi-container-empty .u-button {
