@@ -685,12 +685,6 @@ export default {
     transition: all 0.4s;
 }
 
-@media screen and (max-width: 769px) {
-    .kiwi-controlinput {
-        z-index: 0;
-    }
-}
-
 @media screen and (max-width: 500px) {
     .kiwi-controlinput-user-nick {
         display: none;
