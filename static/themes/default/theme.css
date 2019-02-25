@@ -117,7 +117,6 @@
 
 .u-form .u-input,
 .u-form textarea {
-    border-color: var(--brand-midtone);
     border-bottom-color: var(--brand-primary);
     outline-color: var(--brand-primary);
 }
@@ -260,6 +259,10 @@
 
 .kiwi-selfuser-actions {
     border-top: 1px solid var(--brand-midtone);
+}
+
+.kiwi-selfuser-actions form .u-input {
+    border-bottom-color: var(--brand-primary);
 }
 
 /* ---- Auto complete ( autoComplete ) ---- */
