@@ -75,7 +75,7 @@ export default {
 
 .kiwi-nicklist-messageuser:hover {
     cursor: pointer;
-    transition: all 0.1s;
+    transition: all 0.2s;
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {

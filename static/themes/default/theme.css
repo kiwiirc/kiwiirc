@@ -333,7 +333,7 @@
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
-    color: var(--brand-primary);
+    color: var(--brand-darktone);
 }
 
 .kiwi-nicklist-user::after {
