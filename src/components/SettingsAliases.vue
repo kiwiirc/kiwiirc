@@ -112,6 +112,10 @@ export default {
     border: 1px dashed rgba(0, 0, 0, 0.4);
 }
 
+.kiwi-settings-aliases .u-form textarea {
+    min-height: 300px;
+}
+
 .kiwi-settings-aliases-help em {
     padding: 1px 2px;
     font-weight: 900;
