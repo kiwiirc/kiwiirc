@@ -250,6 +250,7 @@
 /* ---- Self User ( SelfUser.vue ) ---- */
 .kiwi-controlinput-selfuser {
     background: var(--brand-bg-default);
+    border-color: var(--brand-darktone);
 }
 
 .kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {

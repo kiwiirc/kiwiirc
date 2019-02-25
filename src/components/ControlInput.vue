@@ -662,6 +662,8 @@ export default {
     box-sizing: border-box;
     border-radius: 0 6px 0 0;
     opacity: 0;
+    border-top: 1px solid;
+    border-right: 1px solid;
     overflow: hidden;
 }
 
