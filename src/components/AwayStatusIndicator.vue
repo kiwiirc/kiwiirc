@@ -1,6 +1,6 @@
 <template>
     <span
-        v-if="awayNotifySupported && networkConnected"
+        v-if="shouldShowStatus"
         :class="{ 'kiwi-awaystatusindicator--away': user.isAway(),
                   'kiwi-awaystatusindicator--self': isUserSelf }"
         class="kiwi-awaystatusindicator"
@@ -21,17 +21,13 @@ export default {
             let user = this.$state.getUser(this.network.id, this.network.nick);
             return this.user === user;
         },
-        awayNotifySupported() {
-            // Checking network.state forces this computed property to be updated
-            // when it connects
-            return this.network.state === 'connected' &&
-                this.network.ircClient.network.cap.isEnabled('away-notify');
-        },
-        networkConnected() {
-            if (this.network.state === 'connected') {
-                return true;
+        shouldShowStatus() {
+            if (this.network.state !== 'connected') {
+                return false;
             }
-            return false;
+
+            let awayNotifyEnabled = this.network.ircClient.network.cap.isEnabled('away-notify');
+            return this.$state.setting('buffers.who_loop') || awayNotifyEnabled;
         },
     },
     methods: {
