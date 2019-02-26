@@ -45,8 +45,8 @@
     --comp-aboutbuffer-header-bg: #42b992;
 
     /* Misc */
-    --brand-link-normal: #0093ce;
-    --brand-link--hover:  #3db0de;
+    --brand-link-normal: var(--brand-primary);
+    --brand-link--hover: var(--brand-primary-hover);
     --brand-shadow: rgba(0, 0, 0, 0.1);
     --comp-border: #b2b2b2;
 }
@@ -924,7 +924,7 @@
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body a {
-    color: var(--brand-link--normal);
+    color: var(--brand-link-norma);
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body a:hover {
