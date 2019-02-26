@@ -1,6 +1,6 @@
 <template>
     <span
-        v-if="awayNotifySupported"
+        v-if="shouldShowStatus"
         :class="{ 'kiwi-awaystatusindicator--away': user.isAway(),
                   'kiwi-awaystatusindicator--self': isUserSelf }"
         class="kiwi-awaystatusindicator"
@@ -21,8 +21,9 @@ export default {
             let user = this.$state.getUser(this.network.id, this.network.nick);
             return this.user === user;
         },
-        awayNotifySupported() {
-            return this.network.ircClient.network.cap.isEnabled('away-notify');
+        shouldShowStatus() {
+            let awayNotifyEnabled = this.network.ircClient.network.cap.isEnabled('away-notify');
+            return this.$state.setting('buffers.who_loop') || awayNotifyEnabled;
         },
     },
     methods: {
