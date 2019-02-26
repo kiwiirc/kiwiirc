@@ -41,7 +41,7 @@
                 />
             </form>
         </template>
-        <template v-else-if="network.state !== 'connected'">
+        <template v-slot:connection v-else-if="network.state !== 'connected'">
             <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;"/>
         </template>
     </startup-layout>
