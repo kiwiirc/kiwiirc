@@ -22,6 +22,10 @@ export default {
             return this.user === user;
         },
         shouldShowStatus() {
+            if (this.network.state !== 'connected') {
+                return false;
+            }
+
             let awayNotifyEnabled = this.network.ircClient.network.cap.isEnabled('away-notify');
             return this.$state.setting('buffers.who_loop') || awayNotifyEnabled;
         },
@@ -45,6 +49,7 @@ export default {
     height: 7px;
     border-radius: 50%;
     margin: 0 4px 0 0;
+    border: 1px solid #fff;
     transition: background 0.2s;
 }
 

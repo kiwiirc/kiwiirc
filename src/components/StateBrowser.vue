@@ -19,6 +19,12 @@
                 @click="is_usermenu_open=!is_usermenu_open"
             >
                 {{ userInitial }}
+                <away-status-indicator
+                    v-if="getNetwork && getNetwork.state === 'connected'"
+                    :network="getNetwork"
+                    :user="getUser"
+                    :toggle="false"
+                />
             </div>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
                 <p> {{ $t('state_remembered') }} </p>
@@ -107,6 +113,7 @@ import GlobalApi from '@/libs/GlobalApi';
 import StateBrowserNetwork from './StateBrowserNetwork';
 import AppSettings from './AppSettings';
 import BufferSettings from './BufferSettings';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 let netProv = new NetworkProvider();
 
@@ -114,6 +121,7 @@ export default {
     components: {
         BufferSettings,
         StateBrowserNetwork,
+        AwayStatusIndicator,
     },
     props: ['networks', 'sidebarState'],
     data: function data() {
@@ -132,6 +140,15 @@ export default {
                 initial = network.nick.charAt(0).toUpperCase();
             }
             return initial;
+        },
+        getNetwork() {
+            return state.getActiveNetwork();
+        },
+        getUser() {
+            let network = state.getActiveNetwork();
+            return network ?
+                network.currentUser() :
+                null;
         },
         networkName() {
             let network = state.getActiveNetwork();
@@ -171,7 +188,7 @@ export default {
             network.showServerBuffer('settings');
         },
         clickAppSettings: function clickAppSettings() {
-            state.$emit('active.component', AppSettings);
+            state.$emit('active.component.toggle', AppSettings);
         },
         hideStatebrowser: function hideStatebrowser() {
             state.$emit('statebrowser.hide');
@@ -280,9 +297,18 @@ export default {
     text-align: center;
     line-height: 50px;
     border-radius: 50%;
-    overflow: hidden;
     margin: 0 auto 10px auto;
     transition: all 0.3s;
+    position: relative;
+}
+
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    position: absolute;
+    top: 1px;
+    right: -5px;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #000;
 }
 
 .kiwi-statebrowser-usermenu-body {

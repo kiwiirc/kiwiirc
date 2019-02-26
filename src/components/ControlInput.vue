@@ -15,8 +15,9 @@
 
         <div class="kiwi-controlinput-inner">
             <away-status-indicator
-                :user="buffer.getNetwork().currentUser()"
+                v-if="buffer.getNetwork() && buffer.getNetwork().state === 'connected'"
                 :network="buffer.getNetwork()"
+                :user="buffer.getNetwork().currentUser()"
             />
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
@@ -682,12 +683,6 @@ export default {
 .kiwi-selfuser-trans-enter-active,
 .kiwi-selfuser-trans-leave-active {
     transition: all 0.4s;
-}
-
-@media screen and (max-width: 769px) {
-    .kiwi-controlinput {
-        z-index: 0;
-    }
 }
 
 @media screen and (max-width: 500px) {

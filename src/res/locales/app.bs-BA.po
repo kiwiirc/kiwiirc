@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2019-01-16 19:10\n"
+"PO-Revision-Date: 2019-02-22 21:01\n"
 
 #: Start
 msgid "start_button"
@@ -872,6 +872,14 @@ msgstr "Ignoriši poruke od nekoga"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Prestani ignorisati nekoga"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Baci kocku"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Bačena je {{sides}} kockica a dobijeni broj je {{number}}"
 
 #: Your IRC client
 msgid "personal_client"

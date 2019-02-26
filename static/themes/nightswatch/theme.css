@@ -68,10 +68,10 @@
     background: #000;
 }
 .kiwi-workspace::before {
-    background: #000000;
+    background: #42b992;
 }
-.kiwi-workspace::after{
-    background-color: rgba(0, 0, 0, 0.4);
+.kiwi-workspace--disconnected::after {
+    background: #bf5155;
 }
 
 /* App - Tabs */
@@ -789,12 +789,15 @@
 }
 
 .kiwi-statebrowser-usermenu-avatar {
-    background-color: #999;
+    background-color: #000;
     color: #d8d8d8;
 }
 .kiwi-statebrowser-usermenu-avatar:hover {
     background-color: #ddd;
     color: #fff;
+}
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    border-color: #000;
 }
 
 /* If the user clicks on their avatar we 'open' the settings */
@@ -1150,6 +1153,15 @@
     text-decoration: underline;
 }
 
+/* Buffer Key */
+.kiwi-bufferkey input[type='password'] {
+    border: 1px solid #efefef;
+    color: #efefef;
+}
+
+.kiwi-bufferkey-button {
+    border: 1px solid #efefef;
+}
 
 /*Icon before the network in network list */
 .kiwi-statebrowser-network-name::before {
@@ -1184,8 +1196,8 @@
 }
 
 .kiwi-awaystatusindicator {
-    border: 1px solid #e1e1e1;
-    background-color: #135f46;
+    border-color: #000;
+    background-color: #3bba91;
 }
 
 .kiwi-awaystatusindicator--away {

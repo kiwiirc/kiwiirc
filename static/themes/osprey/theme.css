@@ -60,10 +60,10 @@
     background: #fff;
 }
 .kiwi-workspace::before {
-    background: #212d3a;
+    background: #42b992;
 }
-.kiwi-workspace::after{
-    background-color: rgba(0, 0, 0, 0.4);
+.kiwi-workspace--disconnected::after {
+    background: #bf5155;
 }
 
 /* App - Tabs */
@@ -340,7 +340,6 @@
 
 /* Control Input - displayed at bottom of Kiwi ( ControlInput.vue ) */
 .kiwi-controlinput {
-    background: #efefef;
     border-top: 1px solid #e8e8e8;
     color: #272727;
 }
@@ -737,6 +736,9 @@
     background-color: #4e5c6b;
     color: #fff;
 }
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    border-color: #212d3b;
+}
 
 /* If the user clicks on their avatar we 'open' the settings */
 .kiwi-statebrowser-usermenu--open {
@@ -1043,6 +1045,17 @@
     color: #666;
 }
 
+/* Buffer Key */
+.kiwi-bufferkey input[type='password'] {
+    border: 1px solid #ddd;
+    color: #201F1F;
+}
+
+.kiwi-bufferkey-button {
+    border: 1px solid #ddd;
+    color: #201F1F;
+}
+
 /*Icon before the network in network list */
 .kiwi-statebrowser-network-name::before {
     content: '\f233';
@@ -1067,7 +1080,7 @@
 }
 
 .kiwi-awaystatusindicator {
-    border: 1px solid #e1e1e1;
+    border: 1px solid #fff;
     background-color: #42b992;
 }
 

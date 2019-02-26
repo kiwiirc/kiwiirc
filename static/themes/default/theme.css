@@ -55,8 +55,8 @@
 .kiwi-workspace::before {
     background: #42b992;
 }
-.kiwi-workspace::after{
-    background-color: rgba(0, 0, 0, 0.4);
+.kiwi-workspace--disconnected::after {
+    background: #bf5155;
 }
 
 /* App - Tabs */
@@ -725,6 +725,9 @@
     background-color: #42b992;
     color: #fff;
 }
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    border-color: #22221f;
+}
 
 /* If the user clicks on their avatar we 'open' the settings */
 .kiwi-statebrowser-usermenu--open {
@@ -1012,6 +1015,11 @@
 }
 
 /* Buffer Key */
+.kiwi-bufferkey input[type='password'] {
+    border: 1px solid #fff;
+    color: #fff;
+}
+
 .kiwi-bufferkey-button {
     border: 1px solid #fff;
 }
@@ -1040,7 +1048,7 @@
 }
 
 .kiwi-awaystatusindicator {
-    border: 1px solid #e1e1e1;
+    border: 1px solid #fff;
     background-color: #42b992;
 }
 

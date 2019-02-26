@@ -30,16 +30,9 @@
                     </a>
                 </div>
                 <div
-                    v-if="sidebarState.sidebarSection === 'user'"
-                    class="kiwi-header-option kiwi-header-option-user kiwi-header-option--active"
-                >
-                    <a @click="sidebarState.close()">
-                        <i class="fa fa-user" aria-hidden="true"/>
-                    </a>
-                </div>
-                <div
                     :class="{
                         'kiwi-header-option--active': sidebarState.sidebarSection === 'nicklist'
+                            || sidebarState.sidebarSection === 'user'
                     }"
                     class="kiwi-header-option kiwi-header-option-nicklist"
                 >
@@ -100,21 +93,22 @@
         </template>
 
         <template v-else-if="isServer()">
-            <div
-                v-if="buffer.getNetwork().state === 'disconnected'"
-                class="kiwi-header-server-connection"
-            >
-                <a class="u-button u-button-primary" @click="onConnectButtonClick">
+            <div class="kiwi-header-name">
+                {{ buffer.getNetwork().name }}
+            </div>
+            <div class="kiwi-header-server-connection" >
+                <a
+                    v-if="buffer.getNetwork().state === 'disconnected'"
+                    class="u-button u-button-primary"
+                    @click="onConnectButtonClick"
+                >
                     {{ $t('connect') }}
                 </a>
+                <span v-else-if="buffer.getNetwork().state === 'connecting'">
+                    <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
+                    {{ $t('connecting') }}
+                </span>
             </div>
-            <div
-                v-else-if="buffer.getNetwork().state === 'connecting'"
-                class="kiwi-header-server-connection"
-            >
-                {{ $t('connecting') }}
-            </div>
-            <div class="kiwi-header-name">{{ buffer.getNetwork().name }}</div>
         </template>
 
         <template v-else-if="isQuery()">
@@ -248,19 +242,19 @@ export default {
         showPrompt(prompt) {
             this.prompts[prompt] = true;
         },
-        isChannel: function isChannel() {
+        isChannel() {
             return this.buffer.isChannel();
         },
-        isServer: function isServer() {
+        isServer() {
             return this.buffer.isServer();
         },
-        isQuery: function isQuery() {
+        isQuery() {
             return this.buffer.isQuery();
         },
-        isSpecial: function isSpecial() {
+        isSpecial() {
             return this.buffer.isSpecial();
         },
-        showNetworkSettings: function showNetworkSettings(network) {
+        showNetworkSettings(network) {
             network.showServerBuffer('settings');
         },
         onConnectButtonClick() {
@@ -274,15 +268,15 @@ export default {
         showSidebar() {
             state.$emit('sidebar.toggle');
         },
-        joinCurrentBuffer: function joinCurrentBuffer() {
+        joinCurrentBuffer() {
             let network = this.buffer.getNetwork();
             this.buffer.enabled = true;
             network.ircClient.join(this.buffer.name);
         },
-        closeCurrentBuffer: function closeCurrentBuffer() {
+        closeCurrentBuffer() {
             state.removeBuffer(this.buffer);
         },
-        onHeaderClick: function onHeaderClick(event) {
+        onHeaderClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
             if (channelName) {
                 let network = this.buffer.getNetwork();

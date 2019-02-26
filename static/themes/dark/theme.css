@@ -73,9 +73,8 @@
 .kiwi-workspace::before {
     background: #42b992;
 }
-
-.kiwi-workspace::after {
-    background-color: rgba(255, 255, 255, 0.4);
+.kiwi-workspace--disconnected::after {
+    background: #bf5155;
 }
 
 .u-tabbed-view-tabs {
@@ -865,10 +864,12 @@
     background-color: #000;
     color: #dedede;
 }
-
 .kiwi-statebrowser-usermenu-avatar:hover {
     background-color: #42b992;
     color: #dedede;
+}
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    border-color: #22221f;
 }
 
 .kiwi-statebrowser-scrollarea {
@@ -1211,11 +1212,6 @@
     color: #666;
 }
 
-/* Buffer Key */
-.kiwi-bufferkey-button {
-    border: 1px solid #fff;
-}
-
 /* Customer Server Styling */
 .kiwi-customserver {
     background-color: #1e1e1e;
@@ -1244,6 +1240,16 @@
 .kiwi-customserver .u-link {
     color: #42b992;
     text-decoration: underline;
+}
+
+/* Buffer Key */
+.kiwi-bufferkey input[type='password'] {
+    border: 1px solid #dedede;
+    color: #dedede;
+}
+
+.kiwi-bufferkey-button {
+    border: 1px solid #dedede;
 }
 
 /*Icon before the network in network list */
@@ -1276,7 +1282,7 @@
 }
 
 .kiwi-awaystatusindicator {
-    border: 1px solid #e1e1e1;
+    border-color: #1e1e1e;
     background-color: #42b992;
 }
 
