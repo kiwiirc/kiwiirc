@@ -14,9 +14,9 @@
         </div>
 
         <div class="kiwi-messageinfo-actions">
-            <a class="u-link" @click="openQuery">Reply in private</a>
+            <a class="u-link kiwi-messageinfo-reply" @click="openQuery">Reply in private</a>
 
-            <div class="kiwi-messageinfo-opbuttons">
+            <div v-if="areWeAnOp()" class="kiwi-messageinfo-opbuttons">
                 <input-prompt label="Kick reason:" @submit="onKick">
                     <a class="u-link kiwi-messageinfo-kick-user">Kick {{ message.nick }}</a>
                 </input-prompt>
@@ -115,6 +115,18 @@ export default {
     bottom: 5px;
     font-size: 1.3em;
     cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+    .kiwi-messageinfo-actions {
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+
+    .kiwi-messageinfo-reply {
+        display: inline-block;
+        float: left;
+    }
 }
 
 @media screen and (max-width: 410px) {

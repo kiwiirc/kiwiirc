@@ -676,11 +676,6 @@
   .kiwi-messageinfo-actions {
     text-align: center;
   }
-  .kiwi-messageinfo-opbuttons {
-    margin-top: 15px;
-    margin-bottom: 5px;
-    width: 100%;
-  }
 }
 
 /* Network Settings ( NetworkSettings.vue ) */
