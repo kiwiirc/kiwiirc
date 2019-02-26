@@ -36,7 +36,7 @@
 
     /* Sidebars ( Right Side ) */
     --comp-bg-aboutbuffer: rgba(0, 0, 0, 0.03);
-    --comp-bg-aboutbuffer-h4: #42b992;
+    --comp-bg-aboutbuffer-header: #42b992;
 
     /* Misc */
     --brand-link-normal: #0093ce;
@@ -318,7 +318,7 @@
 }
 
 .kiwi-aboutbuffer h4 {
-    background-color: var(--comp-bg-aboutbuffer-h4);
+    background-color: var(--comp-bg-aboutbuffer-header);
     color: var(--brand-bg-default);
 }
 
