@@ -195,7 +195,7 @@ inputCommands.dice = function inputCommandDice(event, command, line) {
 
     let sides = line.replace(/\D/g, '');
     sides = parseInt(sides, 10);
-    if (typeof sides !== 'number' || sides <= 0) {
+    if (sides <= 0) {
         sides = 6;
     }
     let rndNumber = Math.floor(Math.random() * sides) + 1;
