@@ -194,7 +194,10 @@ inputCommands.dice = function inputCommandDice(event, command, line) {
     let network = this.state.getActiveNetwork();
 
     let sides = line.replace(/\D/g, '');
-    sides = typeof sides === 'number' && sides > 0 ? sides : 6;
+    sides = parseInt(sides, 10);
+    if (typeof sides !== 'number' || sides <= 0) {
+        sides = 6;
+    }
     let rndNumber = Math.floor(Math.random() * sides) + 1;
 
     let msg = TextFormatting.t('dice_roll', {
