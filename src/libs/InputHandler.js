@@ -194,7 +194,7 @@ inputCommands.dice = function inputCommandDice(event, command, line) {
     let network = this.state.getActiveNetwork();
 
     let sides = line.replace(/\D/g, '');
-    sides = parseInt(sides, 10);
+    sides = parseInt(sides || '0', 10);
     if (sides <= 0) {
         sides = 6;
     }
