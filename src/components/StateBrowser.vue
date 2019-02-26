@@ -264,7 +264,7 @@ export default {
     line-height: 57px;
     cursor: pointer;
     font-weight: 500;
-    transition: all 0.3s;
+    transition: background 0.2s, opacity 0.2s;
     opacity: 0.8;
     z-index: 20;
 }
@@ -290,6 +290,7 @@ export default {
 
 .kiwi-statebrowser-usermenu-network {
     padding: 0 0 10px 0;
+    cursor: default;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
@@ -302,7 +303,7 @@ export default {
     border: 2px solid;
     border-radius: 50%;
     margin: 0 auto 10px auto;
-    transition: all 0.3s;
+    transition: background 0.2s;
     position: relative;
 }
 
@@ -394,8 +395,9 @@ export default {
     font-size: 1em;
 }
 
-.kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
+.kiwi-statebrowser-channel-active {
     font-weight: 600;
+    border-left: 3px solid;
     opacity: 1;
 }
 

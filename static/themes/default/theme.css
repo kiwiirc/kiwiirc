@@ -20,11 +20,11 @@
     --brand-error: #bf5155;
 
     /* Connection Indicator top */
-    --comp-bg-workspace-before: var(--brand-primary);
-    --comp-bg-kiwi-workspace--disconnected-after: var(--brand-error);
+    --comp-workspace-before-bg: var(--brand-primary);
+    --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
 
     /* Container Header */
-    --comp-bg-header: var(--brand-default-bg);
+    --comp-header-bg: var(--brand-default-bg);
     --comp-header-name-fg: var(--brand-default-fg);
     --comp-header-option-active-fg: var(--brand-default-bg);
     --comp-header-option-active-bg: var(--brand-primary);
@@ -33,7 +33,10 @@
     --comp-statebrowser-fg: #fff;
     --comp-statebrowser-bg: var(--brand-default-fg);
     --comp-statebrowser-bg-networkname: #454545;
+    --comp-statebrowser-channel-active-bg: #ffffff0d;
+    --comp-statebrowser-channel-active-fg: #fff;
     --comp-usermenu-open-bg: #0e0e0e;
+
 
     /* Sidebars ( Right Side ) */
     --comp-sidebar-bg: #fff;
@@ -179,7 +182,7 @@
 
 /* ---- Container Header ( containerHeader ) ---- */
 .kiwi-header {
-    background: var(--comp-bg-header);
+    background: var(--comp-header-bg);
     border-bottom-color: var(--comp-border);
 }
 
@@ -361,10 +364,6 @@
 }
 
 /* ---- Sidebar - userbox ---- */
-.kiwi-userbox-usermask {
-    color: var(--brand-default-fg);
-}
-
 .kiwi-userbox .main-title {
     border-bottom: 1px solid var(--brand-midtone);
 }
@@ -421,7 +420,7 @@
 /* Statebrowser - Left sidebar ( StateBrowser.vue ) */
 .kiwi-statebrowser {
     background: var(--comp-statebrowser-bg);
-    color: var(--brand-default-bg);
+    color: var(--comp-statebrowser-fg);
 }
 
 .kiwi-statebrowser-usermenu--open {
@@ -438,7 +437,7 @@
 }
 
 .kiwi-statebrowser-newchannel-inputwrap input[type='text'] {
-    color: var(--brand-default-fg);
+    color: var(--comp-statebrowser-fg);
     background: var(--brand-default-bg);
 }
 
@@ -451,16 +450,16 @@
 .kiwi-statebrowser-channelfilter {
     transition: all 0.3s;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    color: #131312;
+    color: var(--brand-default-bf);
 }
 
 .kiwi-statebrowser-channelfilter::after {
-    color: var(--brand-default-fg);
+    color: var(--comp-statebrowser-fg);
 }
 
 .kiwi-statebrowser-channelfilter input {
     background-color: var(--brand-default-bg);
-    color: var(--brand-default-fg);
+    color: var(--comp-statebrowser-fg);
     outline: none;
 }
 
@@ -473,7 +472,7 @@
 }
 
 .kiwi-statebrowser-channelfilter p:hover {
-    color: #6dcdad;
+    color: var(--brand-primary-hover);
 }
 
 .kiwi-statebrowser-newnetwork a {
@@ -483,7 +482,7 @@
 .kiwi-statebrowser-newnetwork a:hover {
     background: var(--brand-primary);
     opacity: 1;
-    color: var(--brand-default-bg);
+    color: var(--comp-statebrowser-fg);
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header {
@@ -491,7 +490,7 @@
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
-    color: var(--brand-default-bg);
+    color: var(--comp-statebrowser-fg);
 }
 
 /* Active Network Styling */
@@ -502,19 +501,24 @@
 /* Channel Styling */
 .kiwi-statebrowser-channels .kiwi-statebrowser-channel {
     border-bottom: 1px solid var(--brand-shadow);
-    color: var(--brand-default-bg);
+    color: var(--comp-statebrowser-fg);
 }
 
-.kiwi-statebrowser-channels .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name {
-    color: var(--brand-default-bg);
+.kiwi-statebrowser-channel .kiwi-statebrowser-channel-name {
+    color: var(--comp-statebrowser-fg);
 }
 
-.kiwi-statebrowser-channels .kiwi-statebrowser-channel .kiwi-statebrowser-channel-name .kiwi-statebrowser-channel-label {
+.kiwi-statebrowser-channel .kiwi-statebrowser-channel-name .kiwi-statebrowser-channel-label {
     background: var(--brand-error);
 }
 
-.kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
-    border-left: 3px solid var(--brand-primary);
+.kiwi-statebrowser-channel-active {
+    border-left-color: var(--brand-primary);
+    background: var(--comp-statebrowser-channel-active-bg);
+}
+
+.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
+    color: var(--comp-statebrowser-channel-active-fg);
 }
 
 .kiwi-network-name-option-chanfilter.active {
@@ -542,7 +546,7 @@
 .kiwi-statebrowser-newchannel a:hover {
     background: var(--brand-primary);
     opacity: 1;
-    color: var(--brand-default-bg);
+    color: var(--comp-statebrowser-fg);
 }
 
 .kiwi-statebrowser-switcher a:first-of-type {
@@ -567,10 +571,6 @@
 
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
     color: var(--brand-error);
-}
-
-.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
-    color: #df6b26;
 }
 
 .kiwi-statebrowser-channel-label {
@@ -602,10 +602,6 @@
 
 .kiwi-statebrowser-network-status {
     background: rgba(255, 255, 255, 0.1);
-}
-
-.kiwi-statebrowser-channel-active {
-    background: rgba(255, 255, 255, 0.05);
 }
 
 /* Icon before the network in network list */
