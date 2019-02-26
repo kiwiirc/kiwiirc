@@ -297,6 +297,7 @@ export default {
     line-height: 10px;
     box-sizing: border-box;
     text-align: center;
+    height: 44px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     display: flex;
 }
@@ -317,14 +318,19 @@ export default {
     cursor: default;
     margin: 0;
     margin-right: 0.5em;
-    padding: 0.5em 20px;
     opacity: 1;
     font-size: 20px;
-    line-height: normal;
+    line-height: 43px;
     flex-grow: 1;
     text-align: left;
     overflow-x: hidden;
     white-space: nowrap;
+}
+
+.kiwi-header-name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
 }
 
 .kiwi-header-name:hover {
@@ -397,11 +403,12 @@ export default {
     display: inline-block;
     margin: 0 auto;
     float: right;
+    white-space: nowrap;
 }
 
 .kiwi-header-notjoined .u-link {
     font-weight: 600;
-    line-height: 45px;
+    line-height: 43px;
     padding: 0 25px;
     border-radius: 0;
     transition: all 0.3;
@@ -487,7 +494,7 @@ export default {
     .kiwi-header {
         margin-right: 0;
         overflow: visible;
-        height: auto;
+        height: 44px;
         max-height: none;
         padding-left: 0;
         margin-left: 0;
@@ -511,6 +518,7 @@ export default {
     .kiwi-header-notjoined {
         height: 45px;
         margin: 0;
+        white-space: nowrap;
     }
 
     .kiwi-header-notjoined .kiwi-header-join-channel-button {
