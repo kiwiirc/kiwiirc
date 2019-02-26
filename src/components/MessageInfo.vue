@@ -12,16 +12,29 @@
                 </a>
             </div>
         </div>
+        <div :class="{'kiwi-messageinfo-actions--open': formOpen}" class="kiwi-messageinfo-actions">
+            <a v-if="formOpen === false" class="u-link kiwi-messageinfo-reply" @click="openQuery">
+                Reply in private
+            </a>
 
-        <div class="kiwi-messageinfo-actions">
-            <a class="u-link kiwi-messageinfo-reply" @click="openQuery">Reply in private</a>
-
-            <div v-if="areWeAnOp()" class="kiwi-messageinfo-opbuttons">
-                <input-prompt label="Kick reason:" @submit="onKick">
-                    <a class="u-link kiwi-messageinfo-kick-user">Kick {{ message.nick }}</a>
+            <div v-if="areWeAnOp() && !areWeSelf()" class="kiwi-messageinfo-opbuttons">
+                <input-prompt
+                    label="Kick reason:" @submit="onKick"
+                    @cancel="formOpen = false"
+                >
+                    <a v-if="formOpen === false"
+                       class="u-link kiwi-messageinfo-kick-user" @click="formOpen = true">
+                        Kick {{ message.nick }}
+                    </a>
                 </input-prompt>
-                <input-prompt label="Ban reason:" @submit="onBan">
-                    <a class="u-link kiwi-messageinfo-ban-user">Ban {{ message.nick }}</a>
+                <input-prompt
+                    label="Ban reason:" @submit="onBan"
+                    @cancel="formOpen = false"
+                >
+                    <a v-if="formOpen === false"
+                       class="u-link kiwi-messageinfo-ban-user" @click="formOpen = true">
+                        Ban {{ message.nick }}
+                    </a>
                 </input-prompt>
             </div>
         </div>
@@ -39,6 +52,7 @@ export default {
     props: ['buffer', 'message'],
     data: function data() {
         return {
+            formOpen: false,
         };
     },
     computed: {
@@ -50,6 +64,10 @@ export default {
         areWeAnOp: function areWeAnOp() {
             let ourNick = this.buffer.getNetwork().nick;
             return this.buffer.isUserAnOp(ourNick);
+        },
+        areWeSelf: function areWeSelf() {
+            let user = this.$state.getUser(this.buffer.getNetwork().id, this.message.nick);
+            return this.buffer.getNetwork().ircClient.user.nick === user.nick;
         },
         onBan: function onBan(reason) {
             let network = this.buffer.getNetwork();
@@ -96,7 +114,32 @@ export default {
 
 .kiwi-messageinfo-opbuttons {
     float: right;
-    width: auto;
+    transition: all 0.3s;
+}
+
+.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons {
+    width: 100%;
+}
+
+.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons .u-input-prompt,
+.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons .u-input-prompt .u-input-prompt-label {
+    display: block;
+    width: 100%;
+}
+
+.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons .u-input-prompt .u-button {
+    float: right;
+    margin-top: -37px;
+    z-index: 10;
+    position: relative;
+}
+
+.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons .u-input-prompt .u-button-primary {
+    margin-right: 72px;
+}
+
+.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons .u-input-prompt .u-button-warning {
+    margin-right: 3px;
 }
 
 .kiwi-messageinfo-url .u-link {
@@ -132,6 +175,10 @@ export default {
 @media screen and (max-width: 410px) {
     .kiwi-messageinfo-actions {
         text-align: center;
+    }
+
+    .u-link.kiwi-messageinfo-reply {
+        float: none;
     }
 
     .kiwi-messageinfo-opbuttons {
