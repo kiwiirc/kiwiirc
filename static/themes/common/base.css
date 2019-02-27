@@ -192,10 +192,6 @@
     background: #f1f1f1;
 }
 
-.kiwi-controlinput-tools {
-    background: #f1f1f1;
-}
-
 .kiwi-controlinput-active-tool {
     background: #f6f6f6;
 }
@@ -628,13 +624,12 @@
 
 /*  ---- Custom server layout ---- */
 .kiwi-customserver {
-    background-color: #fbfbfb;
+    background-color: var(--brand-default-fg);
 }
 
 /* ---- App ---- */
 .kiwi-wrap {
-    color: #201f1f;
-
+    color: var(--brand-default-fg);
     --kiwi-nick-brightness: 40;
     --kiwi-supports-monospace: 1;
 }
