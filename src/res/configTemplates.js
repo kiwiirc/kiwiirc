@@ -52,6 +52,7 @@ export const configTemplates = {
             default_kick_reason: 'Your behavior is not conducive to the desired environment.',
             shared_input: false,
             show_message_info: true,
+            who_loop: true,
         },
         // Startup screen default
         startupOptions: {

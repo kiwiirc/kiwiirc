@@ -52,6 +52,13 @@ export default class BufferState {
 
         def(this, 'addMessageBatch', createMessageBatch(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
+
+        // If we don't have away-notify then we need to manually update our nicklist
+        // to get the current away statuses
+        let awayNotifyEnabled = this.getNetwork().ircClient.network.cap.isEnabled('away-notify');
+        if (this.isChannel() && !awayNotifyEnabled) {
+            startWhoLoop(this);
+        }
     }
 
     getNetwork() {
@@ -419,4 +426,37 @@ function createMessageBatch(bufferState) {
     };
 
     return batchedAdd(addSingleMessage, addMultipleMessages);
+}
+
+// Update our user list status every 30seconds to get each users current away status
+function startWhoLoop(bufferState) {
+    nextLoop();
+
+    function nextLoop() {
+        setTimeout(updateWhoStatusLoop, 30000);
+    }
+
+    function updateWhoStatusLoop() {
+        // Make sure the network buffer still exists
+        let network = bufferState.state.getNetwork(bufferState.networkid);
+        if (!network) {
+            return;
+        }
+
+        if (!network.bufferByName(bufferState.name)) {
+            return;
+        }
+
+        let whoLoop = bufferState.setting('who_loop');
+        let isJoined = bufferState.joined;
+        let networkConnected = network.state === 'connected';
+
+        if (whoLoop && networkConnected && isJoined) {
+            network.ircClient.who(bufferState.name, () => {
+                nextLoop();
+            });
+        } else {
+            nextLoop();
+        }
+    }
 }
