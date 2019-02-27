@@ -56,6 +56,7 @@
 'kiwi public';
 
 import 'font-awesome-webpack';
+import cssVarsPonyfill from 'css-vars-ponyfill';
 import '@/res/globalStyle.css';
 import Tinycon from 'tinycon';
 
@@ -189,8 +190,10 @@ export default {
         watchForThemes() {
             let themes = ThemeManager.instance();
             this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
+            this.$nextTick(() => cssVarsPonyfill());
             this.listen(this.$state, 'theme.change', () => {
                 this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
+                this.$nextTick(() => cssVarsPonyfill());
             });
         },
         initStateBrowser() {
