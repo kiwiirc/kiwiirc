@@ -31,13 +31,13 @@
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
                     >
-                        <media-viewer
-                            v-slot:before
-                            v-if="mediaviewerOpen"
-                            :url="mediaviewerUrl"
-                            :component="mediaviewerComponent"
-                            :is-iframe="mediaviewerIframe"
-                        />
+                        <template v-slot:before v-if="mediaviewerOpen">
+                            <media-viewer
+                                :url="mediaviewerUrl"
+                                :component="mediaviewerComponent"
+                                :is-iframe="mediaviewerIframe"
+                            />
+                        </template>
                     </container>
                     <control-input :container="networks" :buffer="buffer"/>
                 </template>
