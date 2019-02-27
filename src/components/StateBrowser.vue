@@ -335,6 +335,7 @@ export default {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    border-top: 1px solid;
 }
 
 .kiwi-statebrowser-newnetwork a {
@@ -357,7 +358,7 @@ export default {
 
 .kiwi-statebrowser-newnetwork a i {
     position: absolute;
-    right: 10px;
+    right: 20px;
     line-height: 39px;
     font-size: 1.15em;
 }

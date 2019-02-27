@@ -328,6 +328,7 @@ export default {
     position: relative;
     overflow: hidden;
     height: auto;
+    box-sizing: border-box;
 }
 
 .kiwi-statebrowser-network-name {

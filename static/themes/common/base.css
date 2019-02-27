@@ -1,51 +1,3 @@
-:root {
-    /* Primary Variables */
-    --brand-primary: #42b992;
-    --brand-primary-hover: #5ec9a6;
-    --brand-midtone: #f1f1f1;
-    --brand-darktone: #969696;
-    --brand-default-bg: #fff;
-    --brand-default-fg: #22231f;
-
-    /* Warning colors */
-    --brand-notice: #f6c358;
-    --brand-warning: #fcb46e;
-    --brand-error: #bf5155;
-
-    /* Connection Indicator top */
-    --comp-workspace-before-bg: var(--brand-primary);
-    --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
-
-    /* Container Header */
-    --comp-header-bg: var(--brand-default-bg);
-    --comp-header-name-fg: var(--brand-default-fg);
-    --comp-header-option-active-fg: var(--brand-default-bg);
-    --comp-header-option-active-bg: var(--brand-primary);
-
-    /* StateBrowser */
-    --comp-statebrowser-fg: #fff;
-    --comp-statebrowser-bg: var(--brand-default-fg);
-    --comp-statebrowser-bg-networkname: #454545;
-    --comp-statebrowser-channel-active-bg: #ffffff0d;
-    --comp-statebrowser-channel-active-fg: #fff;
-    --comp-usermenu-open-bg: #0e0e0e;
-
-
-    /* Sidebars ( Right Side ) */
-    --comp-sidebar-bg: #fff;
-    --comp-sidebar-fg: #22231f;
-    --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
-    --comp-aboutbuffer-header-bg: #42b992;
-
-    /* Misc */
-    --brand-link-normal: var(--brand-primary);
-    --brand-link--hover: var(--brand-primary-hover);
-    --brand-shadow: rgba(0, 0, 0, 0.1);
-    --comp-border: #b2b2b2;
-}
-
-
-
 /* ---- Welcome Screens ----- */
 .kiwi-welcome-simple-form,
 .kiwi-customserver-form {
@@ -468,6 +420,10 @@
 
 .kiwi-statebrowser-channelfilter p:hover {
     color: var(--brand-primary-hover);
+}
+
+.kiwi-statebrowser-newnetwork {
+    border-top-color: var(--comp-statebrowser-network-border);
 }
 
 .kiwi-statebrowser-newnetwork a {
