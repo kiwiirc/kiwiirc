@@ -432,7 +432,7 @@
 }
 
 .kiwi-statebrowser-newchannel-inputwrap input[type='text'] {
-    color: var(--comp-statebrowser-fg);
+    color: var(--comp-statebrowser-bg);
     background: var(--brand-default-bg);
 }
 
