@@ -324,8 +324,12 @@
 	0% {opacity: 0.5;}
 	5% {opacity: 0.7;}
   7% {opacity: 0.3;}
+  9% {color: #fffef2;}
   10% {opacity: 0.8;}
-	1000% {opacity: 0.5;}
+  11% {color: #fff;}
+  40% {color: 0.7;}
+  70% {color: 0.6;}
+	100% {opacity: 0.5;}
 }
 
 /* The header option buttons */
