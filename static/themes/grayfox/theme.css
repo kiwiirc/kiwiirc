@@ -103,6 +103,10 @@
     background-color: #4b5160;
 }
 
+.kiwi-appsettings-section {
+    background: #f1f1f1;
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
