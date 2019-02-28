@@ -75,7 +75,9 @@
 .kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected,
 .kiwi-messagelist-message.kiwi-messagelist-message-connection-connected,
 .u-button-warning,
-.kiwi-settings-advanced-notice {
+.kiwi-settings-advanced-notice,
+.kiwi-networksettings .kiwi-title,
+.kiwi-welcome-simple-form .u-submit {
     color: var(--brand-default-fg);
 }
 
