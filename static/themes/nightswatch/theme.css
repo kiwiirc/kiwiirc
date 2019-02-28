@@ -107,6 +107,7 @@
 .u-tabbed-view-tabs .u-tabbed-view-tab:hover,
 .u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active {
     border-bottom-color: #444;
+    background-color: #313131;
 }
 
 .kiwi-statebrowser-newnetwork {
@@ -209,6 +210,11 @@
     color: var(--brand-default-fg);
 }
 
+.kiwi-messagelist .kiwi-messagelist-message--highlight,
+.kiwi-messagelist .kiwi-messagelist-message--hover {
+    border-left-color: var(--brand-midtone);
+}
+
 /* Aliases */
 .kiwi-settings-aliases-help {
     border-color: var(--brand-default-fg);
@@ -219,7 +225,42 @@
 }
 
 /* Misc */
-.u-button-primary {
+.kiwi-header-server-connection .u-button,
+.u-button-primary,
+.u-button-warning,
+.kiwi-networksettings .kiwi-title,
+.kiwi-notconnected,
+.kiwi-notconnected-button {
+    color: #f1f1f1;
+}
+
+.kiwi-notconnected-button {
+    border-color: #f1f1f1;
+}
+
+.kiwi-networksettings .kiwi-connect-to-newnetwork {
+    background: #444;
+    color: #fff;
+}
+
+.kiwi-networksettings .kiwi-networksettings-server-types,
+.kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
+    color: #fff;
+    border-color: #fff;
+}
+
+.kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button:hover,
+.kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button.kiwi-networksettings-server-type-active {
+    background: #444;
+    color: #fff;
+}
+
+.kiwi-channellist table tbody tr:nth-child(even) {
+    background-color: #272727;
+}
+
+.kiwi-messagelist-message-error,
+.kiwi-messagelist-message.kiwi-messagelist-message-error.kiwi-messagelist-message--highlight {
     color: #f1f1f1;
 }
 
