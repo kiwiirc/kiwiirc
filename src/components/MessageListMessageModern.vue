@@ -209,13 +209,13 @@ export default {
     padding: 10px 20px;
 }
 
-.kiwi-messagelist-message--authorrepeat {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
     margin-top: 0;
     padding-top: 0;
     border-top: none;
 }
 
-.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-modern-right {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-modern-right {
     padding-top: 0;
 }
 
