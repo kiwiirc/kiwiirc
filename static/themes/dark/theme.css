@@ -30,7 +30,16 @@
     --brand-link-normal: var(--brand-primary);
     --brand-link--hover: var(--brand-primary-hover);
     --brand-shadow: rgba(0, 0, 0, 0.1);
-    --comp-border: #b2b2b2;
+    --comp-border: #484848;
+}
+
+.kiwi-header {
+    border-bottom-color: #000;
+}
+
+.kiwi-statebrowser-channels .kiwi-statebrowser-channel {
+    border-bottom: 1px solid #4a4b47;
+    color: #dedede;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
@@ -54,17 +63,29 @@
     border-right: 0;
 }
 
-.kiwi-statebrowser-newchannel-inputwrap {
-    background: var(--brand-default-fg);
-}
-
+.kiwi-statebrowser-newchannel-inputwrap,
 .kiwi-statebrowser-newnetwork .u-button,
 .kiwi-header-option a:hover,
 .kiwi-header-option--active,
 .kiwi-network-name-hover-icon,
 .kiwi-statebrowser-newchannel-inputwrap input[type='text'],
-.kiwi-network-name-option {
+.kiwi-network-name-option,
+.kiwi-warning-block,
+.kiwi-notconnected-button,
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected,
+.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected,
+.u-button-warning,
+.kiwi-settings-advanced-notice {
     color: var(--brand-default-fg);
+}
+
+.kiwi-notconnected-button {
+    border-color: var(--brand-default-fg);
+}
+.kiwi-notconnected-button:hover {
+    background-color: var(--brand-default-fg);
+    color: var(--brand-default-bg);
+    border-color: var(--brand-default-fg);
 }
 
 .kiwi-statebrowser-channel-leave {
@@ -91,6 +112,18 @@
 .kiwi-statebrowser-channels-info .kiwi-statebrowser-newchannel-inputwrap input {
     background-color: var(--brand-default-fg);
     color: var(--brand-default-bg);
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--hover,
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight,
+.kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover,
+.kiwi-messagelist-message.kiwi-messagelist-message--unread,
+.kiwi-messafelist-message--hover {
+    background: #2d2d2d;
+}
+
+.kiwi-messagelist-message--modern {
+    border-top-color: #2d2d2d;
 }
 
 /* IRC Text Colours */
