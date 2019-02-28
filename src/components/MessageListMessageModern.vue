@@ -234,7 +234,7 @@ export default {
     width: auto;
 }
 
-.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
     display: none;
 }
 
@@ -257,7 +257,7 @@ export default {
     margin-left: 0;
 }
 
-.kiwi-messagelist-message-mode .kiwi-messagelist-nick {
+.kiwi-messagelist-message--modern .kiwi-messagelist-message-mode .kiwi-messagelist-nick {
     display: none;
 }
 
