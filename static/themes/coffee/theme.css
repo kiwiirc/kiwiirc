@@ -91,6 +91,14 @@
     background: var(--brand-error);
 }
 
+.kiwi-statebrowser-usermenu-avatar {
+    border-color: #fff;
+}
+
+.kiwi-statebrowser-usermenu-avatar:hover {
+    background-color: #967c68;
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
