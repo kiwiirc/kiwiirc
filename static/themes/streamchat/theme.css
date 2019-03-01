@@ -27,6 +27,7 @@ by changing this rule */
     color:#fff;
     /* Prevents 700px and less media query from changing styling */
     display: block!important;
+    float: none!important;
     white-space: pre-wrap!important;
     word-wrap: break-word!important;
     margin-left: 120px!important;
