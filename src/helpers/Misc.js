@@ -51,29 +51,10 @@ export function splitHost(uri) {
  * @param {string} nick The nick to search for
  */
 export function mentionsNick(input, nick) {
-    let punc = ',.!:;-+)]?¿\\/<>@';
-
-    let idx = input.toLowerCase().indexOf(nick.toLowerCase());
-    if (idx === -1) {
-        return false;
-    }
-
-    let startIdx = input.lastIndexOf(' ', idx);
-    if (startIdx === -1) {
-        startIdx = 0;
-    } else {
-        startIdx++;
-    }
-
-    let endIdx = input.indexOf(' ', idx);
-    if (endIdx === -1) {
-        endIdx = input.length;
-    }
-
-    let segment = input.substring(startIdx, endIdx);
-    let potentialNick = _.trim(segment, punc);
-
-    return potentialNick.toLowerCase() === nick.toLowerCase();
+    let punc = '\\s,.!:;+)\\]?¿\\/<>@-';
+    let escapedNick = _.escapeRegExp(nick);
+    let r = new RegExp(`(^|[${punc}])${escapedNick}([${punc}]|$)`);
+    return r.test(input);
 }
 
 /**
