@@ -704,6 +704,12 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
     if (parts[0]) {
         // parts[0] = the mode(s)
         // parts[1] = optional mode arguments
+
+        // If we're asking for a ban list, show the response in the active channel
+        if (parts[0] === '+b' && parts[1] == null) {
+            buffer.flags.requested_banlist = true;
+        }
+
         network.ircClient.mode(target, parts[0], parts[1]);
     } else {
         // No modes specified will request the modes for the target

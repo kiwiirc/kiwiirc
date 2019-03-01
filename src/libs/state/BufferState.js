@@ -29,6 +29,7 @@ export default class BufferState {
             channel_badkey: false,
             chathistory_available: true,
             requested_modes: false,
+            requested_banlist: false,
         };
         this.settings = { };
         this.last_read = 0;
