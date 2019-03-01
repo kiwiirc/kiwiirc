@@ -1,0 +1,35 @@
+/* The Streamchat theme puts a focus on a stripped down messagelist component */
+
+.kiwi-statebrowser,
+.kiwi-header,
+.kiwi-controlinput,
+.kiwi-messagelist-seperator,
+.kiwi-messagelist-time,
+.kiwi-startup-common-section-info,
+.kiwi-messagelist-message-traffic,
+.kiwi-awaystatusindicator,
+.kiwi-container-toggledraw-statebrowser-messagecount {
+    display: none!important;
+}
+
+.kiwi-container {
+    bottom: 0;
+}
+
+.kiwi-workspace {
+    margin: 0;
+}
+
+/* In Streamlabs OBS and OBS Studio you can change the font color
+by changing this rule */
+
+.kiwi-messagelist-body {
+    color:#fff;
+    /* Prevents 700px and less media query from changing styling */
+    display: block!important;
+    white-space: pre-wrap!important;
+    word-wrap: break-word!important;
+    margin-left: 120px!important;
+}
+
+
