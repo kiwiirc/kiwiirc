@@ -1,5 +1,10 @@
 /* The Streamchat theme puts a focus on a stripped down messagelist component */
 
+/* Makes the chat window opaque */
+body {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 .kiwi-statebrowser,
 .kiwi-header,
 .kiwi-controlinput,
@@ -14,14 +19,12 @@
 
 .kiwi-container {
     bottom: 0;
+
 }
 
 .kiwi-workspace {
     margin: 0;
 }
-
-/* In Streamlabs OBS and OBS Studio you can change the font color
-by changing this rule */
 
 .kiwi-messagelist-body {
     color:#fff;
@@ -31,12 +34,10 @@ by changing this rule */
     white-space: pre-wrap!important;
     word-wrap: break-word!important;
     padding-left: 5px!important;
-    max-width: 100%!important;
 }
 
 .kiwi-messagelist-message--compact {
     padding: 0!important;
-    max-width: 100%!important;
 }
 
 .kiwi-workspace::before {
