@@ -11,15 +11,28 @@ body {
 .kiwi-messagelist-seperator,
 .kiwi-messagelist-time,
 .kiwi-startup-common-section-info,
-.kiwi-messagelist-message-traffic,
 .kiwi-awaystatusindicator,
+.kiwi-messagelist-message-traffic,
 .kiwi-container-toggledraw-statebrowser-messagecount {
     display: none!important;
 }
 
+.kiwi-messagelist-message--compact.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick,
+.kiwi-messagelist-message--compact .kiwi-messagelist-nick {
+    display: inline-block;
+    opacity: 1!important;
+    color: #fff;
+    text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+    position: relative;
+    min-width: 110px!important;
+}
+
 .kiwi-container {
     bottom: 0;
+}
 
+.kiwi-workspace::before {
+    height: 0;
 }
 
 .kiwi-workspace {
@@ -28,23 +41,26 @@ body {
 
 .kiwi-messagelist-body {
     color:#fff;
-    /* Prevents 700px and less media query from changing styling */
-    display: block!important;
-    float: none!important;
-    white-space: pre-wrap!important;
-    word-wrap: break-word!important;
-    padding-left: 5px!important;
+    float: none;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding-left: 5px;
+    display: flex;
+    margin-left: 5px!important;
 }
 
 .kiwi-messagelist-message--compact {
-    padding: 0!important;
-}
-
-.kiwi-workspace::before {
-    height: 0!important;
+    padding: 0;
 }
 
 .kiwi-messagelist {
     overflow: hidden;
 }
 
+.kiwi-messagelist-message {
+    display: flex;
+}
+
+.kiwi-messagelist-emoji {
+    width: 0.8em!important;
+}
