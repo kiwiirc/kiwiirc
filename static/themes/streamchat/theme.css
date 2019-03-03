@@ -2,7 +2,7 @@
 
 /* Makes the chat window opaque */
 body {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0,0,0,0.3);
 }
 
 .kiwi-statebrowser,
@@ -21,13 +21,13 @@ body {
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
     display: inline-block;
     opacity: 1!important;
-    color: #fff;
     text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
     position: relative;
     min-width: 110px!important;
 }
 
 .kiwi-container {
+    top: 0;
     bottom: 0;
 }
 
@@ -42,10 +42,11 @@ body {
 .kiwi-messagelist-body {
     color:#fff;
     float: none;
+    width: 70%!important;
     white-space: pre-wrap;
     word-wrap: break-word;
     padding-left: 5px;
-    display: flex;
+    padding-right: 5px;
     margin-left: 5px!important;
 }
 
@@ -57,10 +58,11 @@ body {
     overflow: hidden;
 }
 
-.kiwi-messagelist-message {
-    display: flex;
-}
-
 .kiwi-messagelist-emoji {
     width: 0.8em!important;
+}
+
+.kiwi-messagelist-message {
+    display: flex;
+    flex-direction: row;
 }
