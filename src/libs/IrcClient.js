@@ -986,7 +986,7 @@ function clientMiddleware(state, network) {
 
         if (command === 'banlist') {
             let buffer = state.getBufferByName(networkid, event.channel);
-            if (buffer != null && buffer.flags.requested_banlist) {
+            if (buffer && buffer.flags.requested_banlist) {
                 if (event.bans == null || event.bans.length === 0) {
                     state.addMessage(buffer, {
                         time: event.time || Date.now(),
@@ -995,13 +995,17 @@ function clientMiddleware(state, network) {
                         type: 'banlist',
                     });
                 } else {
+                    let banText = '';
                     _.each(event.bans, (ban) => {
-                        state.addMessage(buffer, {
-                            time: event.time || Date.now(),
-                            nick: '',
-                            message: `${ban.banned} ${TextFormatting.t('bans_by')} ${ban.banned_by} on ${(new Date(ban.banned_at * 1000)).toDateString()}`,
-                            type: 'banlist',
-                        });
+                        let dateStr = (new Date(ban.banned_at * 1000)).toDateString();
+                        banText += `+b ${ban.banned} [by ${ban.banned_by}, ${dateStr}]\n`;
+                    });
+
+                    state.addMessage(buffer, {
+                        time: event.time || Date.now(),
+                        nick: '*',
+                        message: banText,
+                        type: 'banlist',
                     });
                 }
                 buffer.flags.requested_banlist = false;
