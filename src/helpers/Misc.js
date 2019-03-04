@@ -51,7 +51,7 @@ export function splitHost(uri) {
  * @param {string} nick The nick to search for
  */
 export function mentionsNick(input, nick) {
-    let punc = '\\s,.!:;+)\\]?¿\\/<>@-';
+    let punc = '\\s,.!:;+()\\[\\]?¿\\/<>@-';
     let escapedNick = _.escapeRegExp(nick);
     let r = new RegExp(`(^|[${punc}])${escapedNick}([${punc}]|$)`);
     return r.test(input);
