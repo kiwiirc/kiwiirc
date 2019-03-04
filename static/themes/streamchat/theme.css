@@ -72,5 +72,6 @@ body {
 }
 
 .kiwi-messagelist-emoji {
-    width: 0.8em!important;
+    width: 1.1em!important;
+    font-size: 1.1em!important;
 }
