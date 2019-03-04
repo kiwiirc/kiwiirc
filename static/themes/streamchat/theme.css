@@ -19,19 +19,24 @@ body {
     display: none!important;
 }
 
+.kiwi-messagelist-message--compact {
+    padding: 0!important;
+}
+
 .kiwi-messagelist-message--compact.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick,
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
     display: inline;
     opacity: 1;
     text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
     text-align: left;
-    line-height: 22px!important;
-    left: 0!important;
-    min-width: 110px!important;
     cursor: auto;
     float: none;
     word-break: initial;
-    position: relative;
+    position: relative;\
+    line-height: 22px!important;
+    left: 0!important;
+    min-width: 110px!important;
+    padding: 0!important;
 }
 
 .kiwi-container {
