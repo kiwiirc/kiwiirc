@@ -53,7 +53,7 @@ export function splitHost(uri) {
 export function mentionsNick(input, nick) {
     let punc = '\\s,.!:;+()\\[\\]?¿\\/<>@-';
     let escapedNick = _.escapeRegExp(nick);
-    let r = new RegExp(`(^|[${punc}])${escapedNick}([${punc}]|$)`);
+    let r = new RegExp(`(^|[${punc}])${escapedNick}([${punc}]|$)`, 'i');
     return r.test(input);
 }
 
