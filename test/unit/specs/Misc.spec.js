@@ -4,6 +4,7 @@ describe('Misc.js', function() {
     it('should find mentions of nickname in text', function() {
         let tests = [
             ['foo', 'foo', true], // on its own
+            ['Foo', 'foo', true], // different case
             ['foo bar baz', 'foo', true], // start of line
             ['baz foo bar', 'foo', true], // in middle of line
             ['bar baz foo', 'foo', true], // end of line
