@@ -63,8 +63,12 @@ body {
     padding-bottom: 0!important;
 }
 
-.kiwi-messagelist {
-    overflow: hidden;
+.kiwi-messagelist,
+.kiwi-startup-common, 
+.kiwi-startup-common-section,
+.kiwi-startup-common-section-connection {
+    overflow: hidden!important;
+    min-height: 0!important;
 }
 
 .kiwi-messagelist-emoji {
