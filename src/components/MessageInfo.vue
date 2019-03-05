@@ -1,18 +1,5 @@
 <template>
     <div class="kiwi-messageinfo" @click.stop>
-        <div class="kiwi-messageinfo-author">
-            <a class="u-link" @click="openQuery">Reply in private</a>
-        </div>
-
-        <div v-if="areWeAnOp()" class="kiwi-messageinfo-opactions">
-            <input-prompt label="Kick reason:" @submit="onKick">
-                <a class="u-link">Kick {{ message.nick }}</a>
-            </input-prompt> <br >
-            <input-prompt label="Ban reason:" @submit="onBan">
-                <a class="u-link">Ban {{ message.nick }}</a>
-            </input-prompt>
-        </div>
-
         <div v-if="message.mentioned_urls.length > 0" class="kiwi-messageinfo-urls">
             <div v-for="url in message.mentioned_urls" :key="url" class="kiwi-messageinfo-url">
                 <a class="u-button u-button-secondary" @click="urlPreview(url)">Preview</a>
@@ -26,7 +13,18 @@
             </div>
         </div>
 
-        <i class="fa fa-caret-up kiwi-messageinfo-close" @click="$emit('close')"/>
+        <div class="kiwi-messageinfo-actions">
+            <a class="u-link" @click="openQuery">Reply in private</a>
+
+            <div class="kiwi-messageinfo-opbuttons">
+                <input-prompt label="Kick reason:" @submit="onKick">
+                    <a class="u-link kiwi-messageinfo-kick-user">Kick {{ message.nick }}</a>
+                </input-prompt>
+                <input-prompt label="Ban reason:" @submit="onBan">
+                    <a class="u-link kiwi-messageinfo-ban-user">Ban {{ message.nick }}</a>
+                </input-prompt>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -75,19 +73,30 @@ export default {
 <style>
 .kiwi-messageinfo {
     display: block;
-    padding-top: 1em;
-    padding-bottom: 1em;
     position: relative;
 }
 
 .kiwi-messageinfo-urls {
-    margin-top: 5px;
-    padding-top: 5px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .kiwi-messageinfo-url {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: flex;
+}
+
+.kiwi-messageinfo-actions {
+    margin-top: 10px;
+    overflow: hidden;
+    width: 100%;
+    text-align: left;
+}
+
+.kiwi-messageinfo-opbuttons {
+    float: right;
+    width: auto;
 }
 
 .kiwi-messageinfo-url .u-link {
@@ -96,7 +105,8 @@ export default {
     display: inline-block;
     overflow: hidden;
     flex: 1;
-    margin: 0.4em 1em 0 1em;
+    line-height: 30px;
+    margin-left: 10px;
 }
 
 .kiwi-messageinfo-close {
@@ -105,5 +115,17 @@ export default {
     bottom: 5px;
     font-size: 1.3em;
     cursor: pointer;
+}
+
+@media screen and (max-width: 410px) {
+    .kiwi-messageinfo-actions {
+        text-align: center;
+    }
+
+    .kiwi-messageinfo-opbuttons {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 </style>

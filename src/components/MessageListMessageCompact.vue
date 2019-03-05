@@ -31,7 +31,7 @@
                 'kiwi-messagelist-message--blur' :
                 '',
         ]"
-        :data-message="message"
+        :data-message-id="message.id"
         :data-nick="(message.nick||'').toLowerCase()"
         class="kiwi-messagelist-message kiwi-messagelist-message--compact"
         @click="ml.onMessageClick($event, message)"
@@ -44,13 +44,26 @@
             {{ ml.formatTime(message.time) }}
         </div>
         <div
-            :style="ml.nickStyle(message.nick)"
+            :style="{ 'color': userColour }"
             class="kiwi-messagelist-nick"
             @click="ml.openUserBox(message.nick)"
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
             @mouseout="ml.hover_nick='';"
-        >{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
-        <div class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
+        >
+            <away-status-indicator
+                v-if="message.user"
+                :network="getNetwork()" :user="message.user"
+                :toggle="false"
+            />
+            {{ message.user ? userModePrefix(message.user) : '' }}
+            {{ message.nick }}
+        </div>
+        <div
+            v-rawElement="message.bodyTemplate.$el"
+            v-if="message.bodyTemplate && message.bodyTemplate.$el"
+            class="kiwi-messagelist-body"
+        />
+        <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
 
         <message-info
             v-if="ml.message_info_open===message"
@@ -68,11 +81,12 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
-import * as Misc from '@/helpers/Misc';
+import AwayStatusIndicator from './AwayStatusIndicator';
 import MessageInfo from './MessageInfo';
 
 export default {
     components: {
+        AwayStatusIndicator,
         MessageInfo,
     },
     props: ['ml', 'message', 'idx'],
@@ -81,13 +95,19 @@ export default {
         };
     },
     computed: {
+        userColour() {
+            return this.ml.userColour(this.message.user);
+        },
     },
     methods: {
-        isHoveringOverMessage: function isHoveringOverMessage(message) {
+        getNetwork() {
+            return this.ml.buffer.getNetwork();
+        },
+        isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
-        userModePrefix: function userModePrefix(user) {
-            return Misc.userModePrefix(user, this.ml.buffer);
+        userModePrefix(user) {
+            return this.ml.buffer.userModePrefix(user);
         },
     },
 };
@@ -113,7 +133,7 @@ export default {
     width: 110px;
     min-width: 110px;
     display: inline-block;
-    left: 0;
+    left: 8px;
     top: -1px;
     position: absolute;
 }
@@ -169,7 +189,8 @@ export default {
 
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     display: inline-block;
-    margin-left: auto;
+    margin: 0;
+    padding: 10px 0;
 }
 
 //Channel topic

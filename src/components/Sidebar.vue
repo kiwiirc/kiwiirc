@@ -3,28 +3,22 @@
         :class="['kiwi-sidebar-section-' + section]"
         class="kiwi-sidebar kiwi-theme-bg"
     >
+        <span v-if="!sidebarState.isOpen" class="kiwi-sidebar-options">
+            <div class="kiwi-sidebar-close" @click="sidebarState.close()">
+                {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
+            </div>
+        </span>
+
         <template v-if="sidebarState.activeComponent">
             <component
                 :is="sidebarState.activeComponent"
-                :bind="{ network, buffer, sidebarState }"
+                :network="network"
+                :buffer="buffer"
+                :sidebar-state="sidebarState"
             />
         </template>
         <template v-else-if="buffer">
             <template v-if="buffer.isChannel()">
-
-                <span v-if="sidebarState.isOpen" class="kiwi-sidebar-options">
-                    <div
-                        v-if="sidebarState.canPin"
-                        class="kiwi-sidebar-pin"
-                        @click="sidebarState.pin()"
-                    >
-                        <i class="fa fa-thumb-tack" aria-hidden="true"/>
-                    </div>
-                    <div class="kiwi-sidebar-close" @click="sidebarState.close()">
-                        {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
-                    </div>
-                </span>
-
                 <div
                     v-if="section === 'settings'"
                     class="kiwi-sidebar-buffersettings"
@@ -102,6 +96,13 @@
                     :buffer="buffer"
                     :sidebar-state="sidebarState"
                 />
+
+                <sidebar-about-buffer
+                    v-else-if="section === 'about'"
+                    :network="network"
+                    :buffer="buffer"
+                    :sidebar-state="sidebarState"
+                />
             </template>
             <template v-else-if="buffer.isQuery()">
                 <!-- TODO:
@@ -125,6 +126,7 @@ import GlobalApi from '@/libs/GlobalApi';
 import SidebarState from './SidebarState';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
+import SidebarAboutBuffer from './SidebarAboutBuffer';
 import ChannelBanlist from './ChannelBanlist';
 import Nicklist from './Nicklist';
 
@@ -133,6 +135,7 @@ export { SidebarState as State };
 export default {
     components: {
         BufferSettings,
+        SidebarAboutBuffer,
         ChannelInfo,
         ChannelBanlist,
         Nicklist,
@@ -227,6 +230,7 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    z-index: 100;
 }
 
 .kiwi-sidebar.kiwi-sidebar-section-settings {
@@ -239,42 +243,6 @@ export default {
     max-width: 100%;
     min-height: 80px;
     resize: vertical;
-}
-
-.kiwi-sidebar-options {
-    display: block;
-    cursor: pointer;
-    font-weight: 600;
-    width: 100%;
-    position: relative;
-    box-sizing: border-box;
-    text-transform: uppercase;
-    line-height: 50px;
-    vertical-align: top;
-}
-
-.kiwi-sidebar-options .kiwi-sidebar-pin {
-    position: absolute;
-    padding: 0 10px;
-    height: 100%;
-    line-height: 52px;
-    z-index: 1;
-    transition: background 0.3s;
-}
-
-.kiwi-sidebar-options .kiwi-sidebar-close {
-    width: 100%;
-    display: inline-block;
-    padding: 0 20px 0 40px;
-    text-align: right;
-    box-sizing: border-box;
-    transition: background 0.3s;
-}
-
-.kiwi-sidebar-options .kiwi-sidebar-close i {
-    margin-left: 10px;
-    font-size: 1.5em;
-    line-height: 47px;
 }
 
 .kiwi-sidebar-buffersettings {
@@ -313,7 +281,38 @@ export default {
     margin-top: 10px;
 }
 
+.kiwi-sidebar-options {
+    display: none;
+}
+
 @media screen and (max-width: 769px) {
+    .kiwi-sidebar-options {
+        display: block;
+        cursor: pointer;
+        font-weight: 600;
+        width: 100%;
+        position: relative;
+        box-sizing: border-box;
+        text-transform: uppercase;
+        line-height: 47px;
+        vertical-align: top;
+    }
+
+    .kiwi-sidebar-options .kiwi-sidebar-close {
+        width: 100%;
+        display: inline-block;
+        padding: 0 20px 0 40px;
+        text-align: right;
+        box-sizing: border-box;
+        transition: background 0.3s;
+    }
+
+    .kiwi-sidebar-options .kiwi-sidebar-close i {
+        margin-left: 10px;
+        font-size: 1.5em;
+        line-height: 47px;
+    }
+
     .kiwi-sidebar .u-tabbed-view-tab {
         width: 100%;
     }
@@ -332,7 +331,7 @@ export default {
         margin-left: 0;
     }
 
-    .kiwi-container--sidebar-open .kiwi-sidebar {
+    .kiwi-container--sidebar-drawn .kiwi-sidebar {
         width: 100%;
         max-width: 100%;
     }
@@ -352,10 +351,6 @@ export default {
 
     .kiwi-channelbanlist .u-form {
         line-height: 10px;
-    }
-
-    .kiwi-sidebar-options {
-        line-height: 47px;
     }
 }
 

@@ -1,7 +1,9 @@
 /** @module */
 
-import strftime from 'strftime';
+import Vue from 'vue';
 import _ from 'lodash';
+import * as Misc from '@/helpers/Misc';
+import { def } from './common';
 import batchedAdd from '../batchedAdd';
 
 let nextBufferId = 0;
@@ -13,10 +15,11 @@ export default class BufferState {
         this.id = nextBufferId++;
         this.networkid = networkid;
         this.name = name;
-        this.topic = '';
+        this.topics = [];
         this.key = '';
         this.joined = false;
         this.enabled = true;
+        this.created_at = null;
         this.users = Object.create(null);
         this.modes = Object.create(null);
         this.flags = {
@@ -26,12 +29,15 @@ export default class BufferState {
             channel_badkey: false,
             chathistory_available: true,
             requested_modes: false,
+            requested_banlist: false,
         };
         this.settings = { };
         this.last_read = 0;
         this.active_timeout = null;
         this.message_count = 0;
         this.current_input = '';
+
+        Vue.observable(this);
 
         // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'state', state, false);
@@ -47,6 +53,23 @@ export default class BufferState {
 
         def(this, 'addMessageBatch', createMessageBatch(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
+
+        // If we don't have away-notify then we need to manually update our nicklist
+        // to get the current away statuses
+        let awayNotifyEnabled = this.getNetwork().ircClient.network.cap.isEnabled('away-notify');
+        if (this.isChannel() && !awayNotifyEnabled) {
+            startWhoLoop(this);
+        }
+    }
+
+    get topic() {
+        return this.topics.length === 0 ?
+            '' :
+            this.topics[this.topics.length - 1];
+    }
+
+    set topic(newVal) {
+        this.topics.push(newVal);
     }
 
     getNetwork() {
@@ -113,6 +136,56 @@ export default class BufferState {
         let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
 
         return !!hasOp;
+    }
+
+    /**
+     * Get a users prefix symbol on a buffer from its modes
+     * @param {Object} user The user object
+     */
+    userModePrefix(user) {
+        // The user may not be on the buffer
+        if (!user.buffers[this.id]) {
+            return '';
+        }
+
+        let modes = user.buffers[this.id].modes;
+        if (modes.length === 0) {
+            return '';
+        }
+
+        let network = this.getNetwork();
+        let netPrefixes = network.ircClient.network.options.PREFIX;
+        // Find the first (highest) netPrefix in the users buffer modes
+        let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
+
+        return prefix ?
+            prefix.symbol :
+            '';
+    }
+
+    /**
+     * Get a users mode on a buffer
+     * @param user {Object} The user object
+     */
+    userMode(user) {
+        // The user may not be on the buffer
+        if (!user.buffers[this.id]) {
+            return '';
+        }
+
+        let modes = user.buffers[this.id].modes;
+        if (modes.length === 0) {
+            return '';
+        }
+
+        let network = this.getNetwork();
+        let netPrefixes = network.ircClient.network.options.PREFIX;
+        // Find the first (highest) netPrefix in the users buffer modes
+        let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
+
+        return prefix ?
+            prefix.mode :
+            '';
     }
 
     setting(name, val) {
@@ -194,7 +267,7 @@ export default class BufferState {
         }
 
         let irc = this.getNetwork().ircClient;
-        let timeStr = strftime('%FT%T.%L%:z', time);
+        let timeStr = Misc.dateIso(time);
         irc.raw(`CHATHISTORY ${this.name} timestamp=${timeStr} message_count=${numMessages}`);
         irc.once('batch end chathistory', (event) => {
             if (event.commands.length === 0) {
@@ -366,29 +439,35 @@ function createMessageBatch(bufferState) {
     return batchedAdd(addSingleMessage, addMultipleMessages);
 }
 
-// Define a non-enumerable property on an object with an optional setter callback
-function def(target, key, value, canSet) {
-    let val = value;
+// Update our user list status every 30seconds to get each users current away status
+function startWhoLoop(bufferState) {
+    nextLoop();
 
-    let definition = {
-        get() {
-            return val;
-        },
-    };
-
-    if (canSet) {
-        definition.set = function set(newVal) {
-            let oldVal = val;
-            val = newVal;
-            if (typeof canSet === 'function') {
-                canSet(newVal, oldVal);
-            }
-        };
+    function nextLoop() {
+        setTimeout(updateWhoStatusLoop, 30000);
     }
 
-    Object.defineProperty(target, key, definition);
+    function updateWhoStatusLoop() {
+        // Make sure the network buffer still exists
+        let network = bufferState.state.getNetwork(bufferState.networkid);
+        if (!network) {
+            return;
+        }
 
-    if (typeof canSet === 'function') {
-        canSet(val);
+        if (!network.bufferByName(bufferState.name)) {
+            return;
+        }
+
+        let whoLoop = bufferState.setting('who_loop');
+        let isJoined = bufferState.joined;
+        let networkConnected = network.state === 'connected';
+
+        if (whoLoop && networkConnected && isJoined) {
+            network.ircClient.who(bufferState.name, () => {
+                nextLoop();
+            });
+        } else {
+            nextLoop();
+        }
     }
 }

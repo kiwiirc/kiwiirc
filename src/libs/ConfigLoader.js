@@ -2,6 +2,7 @@
 
 import xhr from 'xhr';
 import _ from 'lodash';
+import JSON5 from 'json5';
 import Logger from './Logger';
 
 let log = Logger.namespace('ConfigLoader');
@@ -9,6 +10,12 @@ let log = Logger.namespace('ConfigLoader');
 export default class ConfigLoader {
     constructor() {
         this.config = Object.create(null);
+        this.valReplacements = Object.create(null);
+    }
+
+    addValueReplacement(key, value) {
+        this.valReplacements[key] = value;
+        return this;
     }
 
     loadFromUrl(configUrl) {
@@ -21,10 +28,16 @@ export default class ConfigLoader {
 
                 let configObj = null;
                 try {
-                    configObj = JSON.parse(response.body);
+                    configObj = JSON5.parse(response.body);
                 } catch (parseErr) {
                     log.error('Config ' + parseErr.message);
-                    reject();
+                    let errMsg = 'Config file error: ' + parseErr.message.replace('JSON5: ', '');
+                    // Convert "at 22:16" to "at line 22, position 16"
+                    /* eslint-disable arrow-body-style */
+                    errMsg = errMsg.replace(/at (\d+):(\d+)/g, (m, m1, m2) => {
+                        return `line ${m1}, position ${m2}`;
+                    });
+                    reject(errMsg);
                     return;
                 }
 
@@ -55,12 +68,9 @@ export default class ConfigLoader {
 
     insertReplacements(input) {
         let out = input;
-        out = out.replace('{{hostname}}', window.location.hostname);
-        out = out.replace('{{host}}', window.location.host);
-        out = out.replace('{{port}}', window.location.port || 80);
-        out = out.replace('{{hash}}', (window.location.hash || '').substr(1));
-        out = out.replace('{{query}}', (window.location.search || '').substr(1));
-        out = out.replace('{{referrer}}', window.document.referrer);
+        Object.keys(this.valReplacements).forEach((k) => {
+            out = out.replace('{{' + k + '}}', this.valReplacements[k]);
+        });
         return out;
     }
 }

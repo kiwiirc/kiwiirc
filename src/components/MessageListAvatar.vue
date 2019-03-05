@@ -1,7 +1,7 @@
 <template>
     <div
         :style="{
-            'background-color': $parent.nickColour(message.nick)
+            'background-color': colour
         }"
         :data-nick="message.nick"
         class="kiwi-messagelist-avatar"
@@ -16,6 +16,13 @@
 
 export default {
     props: ['message'],
+    computed: {
+        colour() {
+            return this.message.user ?
+                this.message.user.getColour() :
+                '';
+        },
+    },
 };
 
 </script>

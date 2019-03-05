@@ -7,7 +7,7 @@
         </div>
 
         <form class="u-form">
-            <tabbed-view :active-tab="activeTab" class="kiwi-appsettings-tab-container">
+            <tabbed-view ref="tabs" class="kiwi-appsettings-tab-container">
                 <tabbed-tab :header="$t('settings_general')" :focus="true" name="general">
 
                     <div class="kiwi-appsettings-block">
@@ -50,9 +50,13 @@
                     <div class="kiwi-appsettings-block">
                         <h3>{{ $t('settings_messages_title') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-messages">
-                            <label class="u-checkbox-wrapper">
-                                <span>{{ $t('settings_layout_compact') }} </span>
-                                <input v-model="settingMessageLayout" type="checkbox" >
+                            <label class="kiwi-appsettings-messagelistDisplay">
+                                <span>{{ $t('settings_messagelayout') }} </span>
+                                <select v-model="settingMessageLayout">
+                                    <option value="traditional">Traditional</option>
+                                    <option value="modern">Modern</option>
+                                    <option value="inline">Inline</option>
+                                </select>
                             </label>
                             <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_timestamps') }} </span>
@@ -176,6 +180,7 @@
 <script>
 'kiwi public';
 
+import _ from 'lodash';
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import GlobalApi from '@/libs/GlobalApi';
@@ -206,7 +211,6 @@ export default {
         return {
             state: state,
             theme: '',
-            activeTab: '',
             customThemeUrl: '',
             pluginUiElements: GlobalApi.singleton().appSettingsPlugins,
         };
@@ -253,16 +257,22 @@ export default {
                 state.ui.show_advanced_tab = newVal;
             },
         },
+        messageLayouts() {
+            return {
+                traditional: 'compact',
+                modern: 'modern',
+                inline: 'inline',
+            };
+        },
         settingMessageLayout: {
-            get: function getSettingMessageLayout() {
-                return state.setting('buffers.messageLayout') === 'compact';
-            },
             set: function setSettingMessageLayout(newVal) {
-                if (newVal) {
-                    state.setting('buffers.messageLayout', 'compact');
-                } else {
-                    state.setting('buffers.messageLayout', 'modern');
-                }
+                let l = this.messageLayouts;
+                state.setting('buffers.messageLayout', l[newVal] || l.modern);
+            },
+            get() {
+                let s = state.setting('buffers.messageLayout');
+                let l = _.invert(this.messageLayouts);
+                return l[s];
             },
         },
     },
@@ -324,7 +334,7 @@ export default {
         enableAdvancedTab() {
             this.settingAdvancedEnable = true;
             this.$nextTick(() => {
-                this.activeTab = 'advanced';
+                this.$refs.tabs.setActiveByName('advanced');
                 this.$el.scrollTop = 0;
             });
         },
@@ -373,7 +383,6 @@ export default {
 
 .u-form .kiwi-appsettings-setting-scrollback input {
     box-sizing: border-box;
-    line-height: 30px;
     height: 40px;
     border: 1px solid;
     float: left;
@@ -477,6 +486,10 @@ export default {
     font-size: 1.5em;
     float: right;
     line-height: 47px;
+}
+
+.kiwi-appsettings-messagelistDisplay select {
+    float: right;
 }
 
 @media screen and (max-width: 769px) {

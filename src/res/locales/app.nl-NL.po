@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2018-08-30 13:20\n"
+"PO-Revision-Date: 2019-02-19 20:31\n"
 
 #: Start
 msgid "start_button"
@@ -163,43 +163,43 @@ msgstr "Kanaal"
 
 #: {{count}} week
 msgid "week"
-msgstr "week"
+msgstr "{{count}} week"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "weken"
+msgstr "{{count}} weken"
 
 #: {{count}} day
 msgid "day"
-msgstr "dag"
+msgstr "{{count}} dag"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dagen"
+msgstr "{{count}} dagen"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "uur"
+msgstr "{{count}} uur"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "uur"
+msgstr "{{count}} uur"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuut"
+msgstr "{{count}} minuut"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minuten"
+msgstr "{{count}} minuten"
 
 #: {{count}} second
 msgid "second"
-msgstr "seconde"
+msgstr "{{count}} seconde"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "seconden"
+msgstr "{{count}} seconden"
 
 #: General
 msgid "settings_general"
@@ -216,6 +216,10 @@ msgstr "Thema vernieuwen"
 #: Theme URL
 msgid "settings_themeurl"
 msgstr "Thema-URL"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr "Berichtindeling"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -577,6 +581,26 @@ msgstr "Gekleurde bijnamen in de lijst"
 msgid "side_buffer"
 msgstr "Geen buffer ingesteld"
 
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr "Er is geen onderwerp voor dit kanaal"
+
+#: About
+msgid "about"
+msgstr "Over"
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr "Aangemaakt op {{when}}"
+
+#: Highlights
+msgid "highlights"
+msgstr "Markeringen"
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr "Niemand heeft je nog genoemd..."
+
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
 msgstr "Er is een fout opgetreden bij het starten van Kiwi IRC :("
@@ -612,6 +636,18 @@ msgstr "Netwerk toevoegen?"
 #: Available networks
 msgid "state_available"
 msgstr "Beschikbare netwerken"
+
+#: Add Network
+msgid "add_network"
+msgstr "Netwerk toevoegen"
+
+#: New Network
+msgid "new_network"
+msgstr "Nieuw netwerk"
+
+#: No Network
+msgid "no_network"
+msgstr "Geen netwerk"
 
 #: Configure network
 msgid "state_configure"
@@ -665,9 +701,9 @@ msgstr "Verbonden met {{server}} {{info}}"
 msgid "user_secure"
 msgstr "Veilig verbonden via SSL/TLS"
 
-#: Also in channels {{channels}}
+#: In channels {{channels}}
 msgid "user_channels"
-msgstr "Ook in kanalen {{channels}}"
+msgstr "In kanalen {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -688,6 +724,10 @@ msgstr "Uit het kanaal verbannen"
 #: Ban and kick from the channel
 msgid "user_kickban"
 msgstr "Uit het kanaal zetten en verbannen"
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr "Geef een kanaal op om bij te wonen, bv. /join #voorbeeld"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -740,6 +780,106 @@ msgstr "{{nick}} heeft verbanning van {{target}} opgeheven"
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
 msgstr "{{nick}} stelt {{mode}} in op {{target}}"
+
+#: Send a message
+msgid "command_msg"
+msgstr "Een bericht sturen"
+
+#: Do something physical
+msgid "command_action"
+msgstr "Iets fysieks doen"
+
+#: Join a channel
+msgid "command_join"
+msgstr "Een kanaal binnengaan"
+
+#: Leave a channel
+msgid "command_part"
+msgstr "Een kanaal verlaten"
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr "Een kanaal verlaten en weer binnengaan"
+
+#: Change your nickname
+msgid "command_nick"
+msgstr "Je bijnaam wijzigen"
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr "Een privégesprek met iemand beginnen"
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr "Iemand in het kanaal uitnodigen"
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr "Het topic voor dit kanaal instellen"
+
+#: Send a notice
+msgid "command_notice"
+msgstr "Een kennisgeving sturen"
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr "Een directe opdracht naar de IRC-server sturen"
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr "Iemand uit het kanaal zetten"
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr "Alle berichten in dit venster wissen"
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr "Een CTCP-opdracht naar iemand sturen"
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr "Verbinding met de IRC-server verbreken"
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr "Verbinding met een nieuw IRC-netwerk maken"
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr "Informatie over iemand opvragen"
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr "Informatie over iemand opvragen die onlangs is weggegaan"
+
+#: Set yourself as away
+msgid "command_away"
+msgstr "Jezelf als afwezig instellen"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr "Jezelf als actief instellen"
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr "De codering van je verbinding wijzigen"
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr "Berichten van iemand negeren"
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr "Negeren van iemand stoppen"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Een dobbelsteen gooien"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Gooit een dobbelsteen met {{sides}} vlakken en krijgt {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -817,7 +957,7 @@ msgstr "Bijnaam {{nick}} is al in gebruik. {{newnick}} proberen..."
 msgid "now_known_as"
 msgstr "{{nick}} is nu bekend als {{newnick}}"
 
-#: changed the topic to:
+#: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "heeft het topic gewijzigd naar {{topic}}"
+msgstr "{{nick}} heeft het topic gewijzigd naar {{topic}}"
 

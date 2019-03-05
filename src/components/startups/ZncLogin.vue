@@ -1,51 +1,49 @@
 <template>
     <startup-layout ref="layout" class="kiwi-welcome-znc">
-        <div slot="connection">
-            <template v-if="!network || network.state === 'disconnected'">
-                <form class="u-form kiwi-welcome-znc-form" @submit.prevent="formSubmit">
-                    <h2 v-html="greetingText"/>
+        <template v-slot:connection v-if="!network || network.state === 'disconnected'">
+            <form class="u-form kiwi-welcome-znc-form" @submit.prevent="formSubmit">
+                <h2 v-html="greetingText"/>
 
-                    <div
-                        v-if="network && (network.last_error || network.state_error)"
-                        class="kiwi-welcome-znc-error"
-                    >
-                        We couldn't connect to the server :(
-                        <span>
-                            {{ network.last_error || readableStateError(network.state_error) }}
-                        </span>
-                    </div>
+                <div
+                    v-if="network && (network.last_error || network.state_error)"
+                    class="kiwi-welcome-znc-error"
+                >
+                    We couldn't connect to the server :(
+                    <span>
+                        {{ network.last_error || readableStateError(network.state_error) }}
+                    </span>
+                </div>
 
-                    <input-text
-                        v-if="showUser"
-                        :label="$t('username')"
-                        v-model="username"
-                        class="kiwi-welcome-znc-nick"
-                    />
-                    <input-text
-                        v-if="showPass"
-                        :label="$t('password')"
-                        v-model="password"
-                        class="kiwi-welcome-znc-password"
-                        type="password"
-                    />
-                    <input-text
-                        v-if="showNetwork"
-                        :label="$t('network')"
-                        v-model="znc_network"
-                        class="kiwi-welcome-znc-channel"
-                    />
-                    <button
-                        :disabled="!readyToStart"
-                        class="u-button u-button-primary u-submit kiwi-welcome-znc-start"
-                        type="submit"
-                        v-html="buttonText"
-                    />
-                </form>
-            </template>
-            <template v-else-if="network.state !== 'connected'">
-                <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;"/>
-            </template>
-        </div>
+                <input-text
+                    v-if="showUser"
+                    :label="$t('username')"
+                    v-model="username"
+                    class="kiwi-welcome-znc-nick"
+                />
+                <input-text
+                    v-if="showPass"
+                    :label="$t('password')"
+                    v-model="password"
+                    class="kiwi-welcome-znc-password"
+                    type="password"
+                />
+                <input-text
+                    v-if="showNetwork"
+                    :label="$t('network')"
+                    v-model="znc_network"
+                    class="kiwi-welcome-znc-channel"
+                />
+                <button
+                    :disabled="!readyToStart"
+                    class="u-button u-button-primary u-submit kiwi-welcome-znc-start"
+                    type="submit"
+                    v-html="buttonText"
+                />
+            </form>
+        </template>
+        <template v-else-if="network.state !== 'connected'">
+            <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;"/>
+        </template>
     </startup-layout>
 </template>
 
@@ -218,7 +216,7 @@ export default {
     box-sizing: border-box;
 }
 
-.kiwi-welcome-znc .input-text,
+.kiwi-welcome-znc .u-input-text,
 .kiwi-welcome-znc .kiwi-welcome-znc-have-password input {
     margin-bottom: 1.5em;
 }

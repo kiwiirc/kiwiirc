@@ -1,6 +1,6 @@
 <template>
     <div class="u-tabbed-view">
-        <div :key="a" class="u-tabbed-view-tabs">
+        <div :key="prefixID + a" class="u-tabbed-view-tabs">
             <a
                 v-for="c in tabs"
                 :key="c.name || c.header"
@@ -39,6 +39,7 @@ export default Vue.component('tabbed-view', {
             // Vue doesn't pick up on the $children changes all the time so we handle
             // it ourselves.
             a: 1,
+            prefixID: Math.floor(Math.random() * 100000).toString(36),
         };
     },
     computed: {

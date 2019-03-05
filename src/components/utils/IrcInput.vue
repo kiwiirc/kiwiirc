@@ -14,6 +14,7 @@
             @mouseup="updateValueProps();"
             @click="$emit('click', $event)"
             @paste="onPaste"
+            @focus="onFocus()"
         />
     </div>
 </template>
@@ -23,6 +24,7 @@
 
 import _ from 'lodash';
 import htmlparser from 'htmlparser2';
+import * as Colours from '@/helpers/Colours';
 
 let Vue = require('vue');
 
@@ -81,6 +83,13 @@ export default Vue.component('irc-input', {
             setTimeout(() => {
                 this.updateValueProps();
             }, 0);
+        },
+        onFocus(event) {
+            // when the input is empty there are no children to remember the current colour
+            // so upon regaining focus we must set the current colour again
+            if (!this.getRawText() && this.default_colour) {
+                this.setColour(this.default_colour.code, this.default_colour.colour);
+            }
         },
         updateValueProps() {
             let selection = window.getSelection();
@@ -161,7 +170,29 @@ export default Vue.component('irc-input', {
                             textValue += '\x1f';
                             addToggle('\x1f');
                         }
+
+                    // Welcome to the IE/Edge sucks section, time to do crazy things
+                    // IE11 doesnt support document.execCommand('styleWithCSS')
+                    // so we have individual nodes instead, which are handled below
+                    } else if (attribs.color) {
+                        // IE likes to remove spaces from rgb(1, 2, 3) it also likes converting rgb to hex
+                        let mappedCode = this.code_map[attribs.color] ||
+                            this.code_map[attribs.color.replace(/,/g, ', ')] ||
+                            this.code_map[Colours.hex2rgb(attribs.color)];
+
+                        textValue += '\x03' + mappedCode;
+                        addToggle('\x03' + mappedCode);
+                    } else if (name === 'strong') {
+                        textValue += '\x02';
+                        addToggle('\x02');
+                    } else if (name === 'em') {
+                        textValue += '\x1d';
+                        addToggle('\x1d');
+                    } else if (name === 'u') {
+                        textValue += '\x1f';
+                        addToggle('\x1f');
                     }
+
                     if (attribs.src && this.code_map[attribs.src]) {
                         textValue += this.code_map[attribs.src];
                     }

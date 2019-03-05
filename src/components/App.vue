@@ -17,7 +17,12 @@
         </template>
         <template v-else>
             <state-browser :networks="networks" :sidebar-state="sidebarState"/>
-            <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
+            <div
+                :class="{
+                    'kiwi-workspace--disconnected': network && network.state !== 'connected'
+                }"
+                class="kiwi-workspace"
+                @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"/>
 
                 <template v-if="!activeComponent && network">
@@ -26,13 +31,13 @@
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
                     >
-                        <media-viewer
-                            v-if="mediaviewerOpen"
-                            slot="before"
-                            :url="mediaviewerUrl"
-                            :component="mediaviewerComponent"
-                            :is-iframe="mediaviewerIframe"
-                        />
+                        <template v-slot:before v-if="mediaviewerOpen">
+                            <media-viewer
+                                :url="mediaviewerUrl"
+                                :component="mediaviewerComponent"
+                                :is-iframe="mediaviewerIframe"
+                            />
+                        </template>
                     </container>
                     <control-input :container="networks" :buffer="buffer"/>
                 </template>
@@ -66,7 +71,6 @@ import ControlInput from '@/components/ControlInput';
 import MediaViewer from '@/components/MediaViewer';
 import { State as SidebarState } from '@/components/Sidebar';
 import * as Notifications from '@/libs/Notifications';
-import * as AudioBleep from '@/libs/AudioBleep';
 import * as bufferTools from '@/libs/bufferTools';
 import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
@@ -161,7 +165,6 @@ export default {
                 this.warnOnPageClose();
                 Notifications.requestPermission();
                 Notifications.listenForNewMessages(this.$state);
-                AudioBleep.listenForHighlights(this.$state);
             }
 
             this.hasStarted = true;
@@ -170,6 +173,14 @@ export default {
             this.listen(this.$state, 'active.component', (component, props) => {
                 this.activeComponent = null;
                 if (component) {
+                    this.activeComponentProps = props;
+                    this.activeComponent = component;
+                }
+            });
+            this.listen(this.$state, 'active.component.toggle', (component, props) => {
+                if (component === this.activeComponent) {
+                    this.activeComponent = null;
+                } else if (component) {
                     this.activeComponentProps = props;
                     this.activeComponent = component;
                 }
@@ -245,6 +256,7 @@ export default {
             let trackWindowDims = () => {
                 this.$state.ui.app_width = this.$el.clientWidth;
                 this.$state.ui.app_height = this.$el.clientHeight;
+                this.$state.ui.is_narrow = this.$el.clientWidth <= 769;
             };
             window.addEventListener('resize', trackWindowDims);
             trackWindowDims();
@@ -255,7 +267,7 @@ export default {
                     return this.$t('window_unload');
                 }
 
-                return null;
+                return undefined;
             };
         },
         emitBufferPaste(event) {
@@ -264,8 +276,12 @@ export default {
                 return;
             }
 
-            // bail if a sidebar is open
-            if (this.$data.sidebarState.sidebarOpen) {
+            // bail if the target is an input-like element
+            if (
+                event.target instanceof HTMLInputElement ||
+                event.target instanceof HTMLSelectElement ||
+                event.target instanceof HTMLTextAreaElement
+            ) {
                 return;
             }
 
@@ -317,7 +333,7 @@ export default {
                 event.preventDefault();
             } else if (meta && event.keyCode === 79) {
                 // meta + o
-                this.$state.$emit('active.component', AppSettings);
+                this.$state.$emit('active.component.toggle', AppSettings);
                 event.preventDefault();
             } else if (meta && event.keyCode === 83) {
                 // meta + s
@@ -354,11 +370,6 @@ body {
     overflow: hidden;
 }
 
-.kiwi-wrap--monospace {
-    font-family: Consolas, monaco, monospace;
-    font-size: 80%;
-}
-
 .kiwi-workspace {
     position: relative;
     margin-left: 220px;
@@ -368,26 +379,31 @@ body {
     transition: left 0.2s, margin-left 0.2s;
 }
 
-.kiwi-workspace::before {
+.kiwi-workspace::before,
+.kiwi-workspace::after {
     position: absolute;
     content: '';
-    right: 0;
     left: 0;
+    right: auto;
     top: 0;
+    width: 100%;
     height: 7px;
     z-index: 0;
+    transition: width 0.3s;
 }
 
-/* When the statebrowser opens as a draw, darken the workspace */
 .kiwi-workspace::after {
-    position: fixed;
-    top: 0;
     right: 0;
-    content: '';
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 0.5s;
-    will-change: opacity;
+    left: auto;
+    width: 0;
+}
+
+.kiwi-workspace--disconnected::before {
+    width: 0;
+}
+
+.kiwi-workspace--disconnected::after {
+    width: 100%;
 }
 
 .kiwi-workspace-background {

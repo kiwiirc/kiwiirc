@@ -27,7 +27,7 @@
                 'kiwi-messagelist-message--blur' :
                 '',
         ]"
-        :data-message="message"
+        :data-message-id="message.id"
         :data-nick="(message.nick||'').toLowerCase()"
         class="kiwi-messagelist-message kiwi-messagelist-message--modern"
         @click="ml.onMessageClick($event, message, true)"
@@ -39,23 +39,47 @@
                 :message="message"
                 :data-nick="message.nick"
             />
+            <away-status-indicator
+                v-if="message.user && !isRepeat()"
+                :network="getNetwork()" :user="message.user"
+                :toggle="false"
+                class="kiwi-messagelist-awaystatus"
+            />
         </div>
         <div class="kiwi-messagelist-modern-right">
-            <div
-                :style="ml.nickStyle(message.nick)"
-                class="kiwi-messagelist-nick"
-                @click="ml.openUserBox(message.nick)"
-                @mouseover="ml.hover_nick=message.nick.toLowerCase();"
-                @mouseout="ml.hover_nick='';"
-            >{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
-            <div
-                v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
-                :title="ml.formatTimeFull(message.time)"
-                class="kiwi-messagelist-time"
-            >
-                {{ ml.formatTime(message.time) }}
+            <div class="kiwi-messagelist-top">
+                <div
+                    :style="{ 'color': userColour }"
+                    class="kiwi-messagelist-nick"
+                    @click="ml.openUserBox(message.nick)"
+                    @mouseover="ml.hover_nick=message.nick.toLowerCase();"
+                    @mouseout="ml.hover_nick='';"
+                >
+                    {{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}
+                </div>
+                <div
+                    v-if="showRealName"
+                    class="kiwi-messagelist-realname"
+                    @click="ml.openUserBox(message.nick)"
+                    @mouseover="ml.hover_nick=message.nick.toLowerCase();"
+                    @mouseout="ml.hover_nick='';"
+                >
+                    {{ message.user.realname }}
+                </div>
+                <div
+                    v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
+                    :title="ml.formatTimeFull(message.time)"
+                    class="kiwi-messagelist-time"
+                >
+                    {{ ml.formatTime(message.time) }}
+                </div>
             </div>
-            <div class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
+            <div
+                v-rawElement="message.bodyTemplate.$el"
+                v-if="message.bodyTemplate && message.bodyTemplate.$el"
+                class="kiwi-messagelist-body"
+            />
+            <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
 
             <message-info
                 v-if="ml.message_info_open===message"
@@ -74,15 +98,16 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
-import * as TextFormatting from '@/helpers/TextFormatting';
-import * as Misc from '@/helpers/Misc';
+import { urlRegex } from '@/helpers/TextFormatting';
 import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         MessageAvatar: MessageListAvatar,
         MessageInfo,
+        AwayStatusIndicator,
     },
     props: ['ml', 'message', 'idx'],
     data: function data() {
@@ -90,35 +115,64 @@ export default {
         };
     },
     computed: {
+        showRealName() {
+            // Showing realname is not enabled
+            if (!this.ml.buffer.setting('show_realnames')) {
+                return false;
+            }
+
+            // Server does not support extended-join so realname would be inconsistent
+            let client = this.ml.buffer.getNetwork().ircClient;
+            if (!client.network.cap.isEnabled('extended-join')) {
+                return false;
+            }
+
+            // We dont have a user or users realname
+            if (!this.message.user || !this.message.user.realname) {
+                return false;
+            }
+
+            // No point showing the realname if it's the same as the nick
+            if (this.message.user.nick.toLowerCase() === this.message.user.realname.toLowerCase()) {
+                return false;
+            }
+
+            // If the realname contains a URL it's most likely a clients website
+            if (urlRegex.test(this.message.user.realname)) {
+                return false;
+            }
+
+            return true;
+        },
+        userColour() {
+            return this.ml.userColour(this.message.user);
+        },
     },
     methods: {
+        getNetwork() {
+            return this.ml.buffer.getNetwork();
+        },
         isRepeat() {
             let ml = this.ml;
             let idx = this.idx;
             let message = this.message;
             let prevMessage = ml.filteredMessages[idx - 1];
 
-            return prevMessage &&
+            return !!prevMessage &&
                 prevMessage.nick === message.nick &&
                 message.time - prevMessage.time < 60000 &&
                 prevMessage.type !== 'traffic' &&
                 message.type !== 'traffic';
         },
-        isHoveringOverMessage: function isHoveringOverMessage(message) {
+        isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
-        nickColour: function nickColour(nick) {
-            if (this.ml.bufferSetting('colour_nicknames_in_messages')) {
-                return TextFormatting.createNickColour(nick);
-            }
-            return '';
-        },
-        isMessage: function isMessage(message) {
+        isMessage(message) {
             let types = ['privmsg', 'action', 'notice', 'message'];
             return types.indexOf(message.type) > -1;
         },
-        userModePrefix: function userModePrefix(user) {
-            return Misc.userModePrefix(user, this.ml.buffer);
+        userModePrefix(user) {
+            return this.ml.buffer.userModePrefix(user);
         },
     },
 };
@@ -136,9 +190,22 @@ export default {
 
 .kiwi-messagelist-modern-left {
     user-select: none;
+    position: relative;
+}
+
+.kiwi-messagelist-awaystatus {
+    width: 10px;
+    top: 4px;
+    right: 2px;
+    height: 10px;
+    position: absolute;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left {
+    display: none;
+}
+
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-top {
     display: none;
 }
 
@@ -166,7 +233,7 @@ export default {
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-    margin: 10px 20px 10px 20px;
+    margin: 20px 20px 20px 66px;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
@@ -182,8 +249,7 @@ export default {
     display: none;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick,
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-time {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-top {
     display: none;
 }
 
@@ -201,7 +267,6 @@ export default {
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection {
     padding: 0;
     box-sizing: border-box;
-    margin: 10px auto;
     width: 100%;
     border: none;
     opacity: 1;
@@ -257,23 +322,24 @@ export default {
     width: 100%;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-nick {
-    float: left;
-    width: auto;
-    text-align: left;
+.kiwi-messagelist-message--modern .kiwi-messagelist-top > div {
+    margin-right: 10px;
     padding: 0;
+    display: inline-block;
+}
+
+.kiwi-messagelist-message--modern .kiwi-messagelist-nick {
     font-size: 1.1em;
-    padding-right: 10px;
+}
+
+.kiwi-messagelist-message--modern .kiwi-messagelist-realname {
+    cursor: pointer;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-time {
-    margin: 0 10px 0 0;
-    display: inline-block;
     font-size: 0.8em;
     font-weight: 400;
-    padding: 0;
     opacity: 0.8;
-    cursor: default;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-item .kiwi-messagelist-body {
@@ -330,6 +396,10 @@ export default {
 
     .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic {
         padding-left: 10px;
+    }
+
+    .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
+        margin: 0 15px 20px 15px;
     }
 }
 </style>

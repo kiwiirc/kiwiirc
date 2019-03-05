@@ -2,7 +2,7 @@
 
 /** @module */
 
-import strftime from 'strftime';
+import * as Misc from '@/helpers/Misc';
 
 /**
  * Adds the BOUNCER IRCv3 spec to irc-framework
@@ -108,7 +108,7 @@ function addFunctionsToClient(client) {
 
     bnc.bufferSeen = function bufferSeen(netName, bufferName, seenTime) {
         return new Promise((resolve, reject) => {
-            let timeStr = strftime('%FT%T.%L%:z', seenTime);
+            let timeStr = Misc.dateIso(seenTime);
             client.raw(`BOUNCER changebuffer ${netName} ${bufferName} seen=${timeStr}`);
         });
     };

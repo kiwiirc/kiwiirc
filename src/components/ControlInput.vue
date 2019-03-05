@@ -1,17 +1,24 @@
 <template>
-    <div class="kiwi-controlinput kiwi-theme-bg">
-        <div
-            :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
-            class="kiwi-controlinput-selfuser"
-        >
-            <self-user
-                v-if="selfuser_open && networkState==='connected'"
-                :network="buffer.getNetwork()"
-                @close="selfuser_open=false"
-            />
+    <div :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
+         class="kiwi-controlinput kiwi-theme-bg"
+    >
+        <div class="kiwi-controlinput-selfuser">
+            <transition name="kiwi-selfuser-trans">
+                <self-user
+                    v-if="networkState==='connected'
+                    && selfuser_open === true"
+                    :network="buffer.getNetwork()"
+                    @close="selfuser_open=false"
+                />
+            </transition>
         </div>
 
         <div class="kiwi-controlinput-inner">
+            <away-status-indicator
+                v-if="buffer.getNetwork() && buffer.getNetwork().state === 'connected'"
+                :network="buffer.getNetwork()"
+                :user="buffer.getNetwork().currentUser()"
+            />
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i
@@ -20,7 +27,11 @@
                     aria-hidden="true"
                 />
             </div>
-            <form class="kiwi-controlinput-form" @submit.prevent="submitForm">
+            <form
+                class="kiwi-controlinput-form"
+                @submit.prevent="submitForm"
+                @click="maybeHidePlugins"
+            >
                 <auto-complete
                     v-if="autocomplete_open"
                     ref="autocomplete"
@@ -54,14 +65,18 @@
                     class="kiwi-controlinput-tools-container-expand"
                     @click="showPlugins=!showPlugins"
                 >
-                    <i class="fa fa-angle-double-right" aria-hidden="true" />
+                    <i class="fa fa-bars" aria-hidden="true" />
                 </div>
                 <transition name="kiwi-plugin-ui-trans">
-                    <div v-if="shouldShowPlugins" class="kiwi-controlinput-tools-container">
+                    <div v-if="showPlugins" class="kiwi-controlinput-tools-container">
                         <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
                             <i class="fa fa-adjust" aria-hidden="true"/>
                         </a>
-                        <a class="kiwi-controlinput-tool" @click.prevent="onToolClickEmoji">
+                        <a
+                            v-if="shouldShowEmojiPicker"
+                            class="kiwi-controlinput-tool"
+                            @click.prevent="onToolClickEmoji"
+                        >
                             <i class="fa fa-smile-o" aria-hidden="true"/>
                         </a>
                         <div
@@ -90,6 +105,7 @@
 'kiwi public';
 
 import _ from 'lodash';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import autocompleteCommands from '@/res/autocompleteCommands';
 import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
@@ -97,10 +113,12 @@ import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
 import SelfUser from './SelfUser';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         AutoComplete,
+        AwayStatusIndicator,
         SelfUser,
     },
     props: ['container', 'buffer'],
@@ -140,16 +158,11 @@ export default {
                 activeNetwork.state :
                 '';
         },
-        shouldShowPlugins() {
-            // Save some space if we're typing on a small screen
-            if (this.current_input_value.length > 0 && this.$state.ui.app_width < 500) {
-                return false;
-            }
-
-            return this.showPlugins;
-        },
         shouldShowSendButton() {
             return this.$state.ui.is_touch || this.$state.setting('showSendButton');
+        },
+        shouldShowEmojiPicker() {
+            return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
         },
     },
     watch: {
@@ -174,6 +187,18 @@ export default {
 
             // If we're copying text, don't shift focus
             if (ev.ctrlKey || ev.altKey || ev.metaKey) {
+                return;
+            }
+
+            // shift key on its own, don't shift focus we handle this below
+            if (ev.keyCode === 16) {
+                return;
+            }
+
+            // If we are using shift and arrow keys, don't shift focus
+            // this allows users to adjust text selection
+            let arrowKeyCodes = [37, 38, 39, 40];
+            if (ev.shiftKey && arrowKeyCodes.indexOf(ev.keyCode) !== -1) {
                 return;
             }
 
@@ -204,6 +229,10 @@ export default {
 
             this.$refs.input.insertText(val);
         });
+
+        this.listen(this.$state, 'input.tool', (toolComponent) => {
+            this.toggleInputTool(toolComponent);
+        });
     },
     mounted() {
         this.inputRestore();
@@ -217,6 +246,8 @@ export default {
             } else {
                 this.buffer.current_input = val;
             }
+
+            this.maybeHidePlugins();
         },
         inputRestore() {
             let currentInput = state.setting('buffers.shared_input') ?
@@ -229,6 +260,12 @@ export default {
         toggleSelfUser() {
             if (this.networkState === 'connected') {
                 this.selfuser_open = !this.selfuser_open;
+            }
+        },
+        maybeHidePlugins() {
+            // Save some space if we're typing on a small screen
+            if (this.$state.ui.app_width < 500) {
+                this.showPlugins = false;
             }
         },
         onToolClickTextStyle() {
@@ -422,7 +459,6 @@ export default {
             this.history_pos = this.history.length;
 
             this.$refs.input.reset();
-            this.$refs.input.focus();
         },
         historyBack() {
             if (this.history_pos > 0) {
@@ -482,10 +518,16 @@ export default {
             if (opts.commands) {
                 let commandList = [];
                 autocompleteCommands.forEach((command) => {
+                    // allow descriptions to be translation keys or static strings
+                    let desc = command.description.startsWith('locale_id_') ?
+                        TextFormatting.t(command.description.substr(10)) :
+                        command.description;
                     commandList.push({
                         text: '/' + command.command,
-                        description: command.description,
+                        description: desc,
                         type: 'command',
+                        // Each alias needs the / command prefix adding
+                        alias: (command.alias || []).map(c => '/' + c),
                     });
                 });
 
@@ -508,10 +550,20 @@ export default {
 .kiwi-controlinput-inner {
     padding: 0;
     box-sizing: border-box;
+    transition: width 0.2s;
+    transition-delay: 0.2s;
 }
 
 .kiwi-controlinput-inner i {
     font-size: 120%;
+    margin-left: 8px;
+    margin-right: 2px;
+}
+
+.kiwi-controlinput-inner .kiwi-awaystatusindicator {
+    margin-top: 16px;
+    margin-left: 10px;
+    margin-right: -2px;
 }
 
 .kiwi-controlinput-user {
@@ -522,12 +574,22 @@ export default {
     cursor: pointer;
     margin-right: 10px;
     line-height: 40px;
+    transition: width 0.2s;
+    transition-delay: 0.1s;
+}
+
+.kiwi-controlinput-selfuser--open .kiwi-controlinput-user {
+    width: 286px;
+    transition: width 0.2s;
+    transition-delay: 0.1s;
 }
 
 .kiwi-controlinput-tools {
-    line-height: 40px;
+    /* 38px = 40px controlinput height - margin top+botton */
+    line-height: 38px;
+    margin: 2px 0 2px 10px;
+    border-radius: 7px 0 0 7px;
     cursor: pointer;
-    margin-left: 10px;
 }
 
 .kiwi-controlinput-form {
@@ -538,7 +600,12 @@ export default {
 
 .kiwi-controlinput-send {
     border: none;
-    background: none;
+    border-radius: 7px;
+    margin: 2px 0;
+    padding: 0;
+    height: 35px;
+    text-align: center;
+    width: 35px;
     cursor: pointer;
     outline: none;
 }
@@ -579,26 +646,43 @@ export default {
     position: absolute;
     bottom: 100%;
     right: 0;
+    width: 100%;
     z-index: 1;
 }
 
 .kiwi-controlinput-selfuser {
     position: absolute;
-    bottom: 100%;
+    bottom: 0;
+    z-index: 10;
     left: 0;
     max-height: 0;
-    transition: max-height 0.2s;
+    width: 324px;
+    box-sizing: border-box;
+    border-radius: 0 6px 0 0;
+    opacity: 0;
     overflow: hidden;
 }
 
-.kiwi-controlinput-selfuser--open {
+.kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
+    width: 324px;
     max-height: 300px;
+    opacity: 1;
 }
 
-@media screen and (max-width: 769px) {
-    .kiwi-controlinput {
-        z-index: 0;
-    }
+.kiwi-selfuser-trans-enter,
+.kiwi-selfuser-trans-leave-to {
+    opacity: 0;
+    height: 0;
+}
+
+.kiwi-selfuser-trans-enter-to,
+.kiwi-selfuser-trans-leave {
+    opacity: 1;
+}
+
+.kiwi-selfuser-trans-enter-active,
+.kiwi-selfuser-trans-leave-active {
+    transition: all 0.4s;
 }
 
 @media screen and (max-width: 500px) {
@@ -638,6 +722,12 @@ export default {
 .kiwi-plugin-ui-trans-enter-active,
 .kiwi-plugin-ui-trans-leave-active {
     transition: right 0.2s;
+}
+
+@media screen and (max-width: 769px) {
+    .kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
+        width: 100%;
+    }
 }
 
 </style>

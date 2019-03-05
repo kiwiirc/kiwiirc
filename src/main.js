@@ -4,6 +4,9 @@ import i18next from 'i18next';
 import i18nextXHR from 'i18next-xhr-backend';
 import VueI18Next from '@panter/vue-i18next';
 
+// fetch polyfill
+import 'whatwg-fetch';
+
 import AvailableLocales from '@/res/locales/available.json';
 import FallbackLocale from '@/../static/locales/en-us.json';
 import App from '@/components/App';
@@ -17,6 +20,9 @@ import StatePersistence from '@/libs/StatePersistence';
 import * as Storage from '@/libs/storage/Local';
 import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
+import { AudioManager } from '@/libs/AudioManager';
+import { SoundBleep } from '@/libs/SoundBleep';
+import { configTemplates } from '@/res/configTemplates';
 
 // Global utilities
 import '@/components/utils/TabbedView';
@@ -169,6 +175,15 @@ function loadApp() {
     }
 
     let configLoader = new ConfigLoader();
+    configLoader
+        .addValueReplacement('hostname', window.location.hostname)
+        .addValueReplacement('host', window.location.hostname)
+        .addValueReplacement('host', window.location.host)
+        .addValueReplacement('port', window.location.port || 80)
+        .addValueReplacement('hash', (window.location.hash || '').substr(1))
+        .addValueReplacement('query', (window.location.search || '').substr(1))
+        .addValueReplacement('referrer', window.document.referrer);
+
     (configObj ? configLoader.loadFromObj(configObj) : configLoader.loadFromUrl(configFile))
         .then(applyConfig)
         .then(initState)
@@ -176,12 +191,17 @@ function loadApp() {
         .then(initLocales)
         .then(initThemes)
         .then(loadPlugins)
+        .then(initSound)
         .then(startApp)
         .catch(showError);
 }
 
 function applyConfig(config) {
     Misc.dedotObject(config);
+    // if we have a config template apply that before other configs
+    if (configTemplates[config.template]) {
+        applyConfigObj(configTemplates[config.template], state.settings);
+    }
     applyConfigObj(config, state.settings);
 
     // Update the window title if we have one
@@ -250,7 +270,10 @@ function loadPlugins() {
 
                     // The browser won't execute any script elements so we need to extract them and
                     // place them into the DOM using our own script elements
-                    el.querySelectorAll('script').forEach((limitedScr) => {
+                    let scripts = [...el.querySelectorAll('script')];
+
+                    // IE11 does not support nodes.forEach()
+                    scripts.forEach((limitedScr) => {
                         limitedScr.parentElement.removeChild(limitedScr);
                         let scr = document.createElement('script');
                         scr.text = limitedScr.text;
@@ -376,6 +399,14 @@ function initThemes() {
     }
 }
 
+function initSound() {
+    let sound = new SoundBleep();
+    let bleep = new AudioManager(sound);
+
+    bleep.listen(state);
+    bleep.watchForMessages(state);
+}
+
 function initInputCommands() {
     /* eslint-disable no-new */
     new InputHandler(state);
@@ -404,6 +435,9 @@ function showError(err) {
     /* eslint-disable no-new */
     new Vue({
         el: '#app',
-        render: h => h(StartupError),
+        render: h => h(
+            StartupError,
+            { props: { error: err } },
+        ),
     });
 }
