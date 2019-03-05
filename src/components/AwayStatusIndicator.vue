@@ -1,7 +1,7 @@
 <template>
     <span
         v-if="shouldShowStatus"
-        :class="{ 'kiwi-awaystatusindicator--away': user&&user.isAway(),
+        :class="{ 'kiwi-awaystatusindicator--away': user && user.isAway(),
                   'kiwi-awaystatusindicator--self': isUserSelf }"
         class="kiwi-awaystatusindicator"
         @click="toggleSelfAway()"

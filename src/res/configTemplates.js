@@ -93,6 +93,7 @@ export const configTemplates = {
 /voice /quote mode $channel +v $1+
 /devoice /quote mode $channel -v $1+
 /k /kick $channel $1+
+/bans /mode $channel +b
 /ban /quote mode $channel +b $1+
 /unban /quote mode $channel -b $1+
 

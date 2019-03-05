@@ -706,7 +706,7 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
         // parts[1] = optional mode arguments
 
         // If we're asking for a ban list, show the response in the active channel
-        if (parts[0] === '+b' && parts[1] == null) {
+        if (parts[0] === '+b' && !parts[1]) {
             buffer.flags.requested_banlist = true;
             // An IRCd may fuck up and simply not reply to a MODE command. Give a few seconds
             // for it to reply and if not, ignore our request was sent

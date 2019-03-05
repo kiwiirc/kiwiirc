@@ -987,7 +987,7 @@ function clientMiddleware(state, network) {
         if (command === 'banlist') {
             let buffer = state.getBufferByName(networkid, event.channel);
             if (buffer && buffer.flags.requested_banlist) {
-                if (event.bans == null || event.bans.length === 0) {
+                if (!event.bans || event.bans.length === 0) {
                     state.addMessage(buffer, {
                         time: event.time || Date.now(),
                         nick: '',
