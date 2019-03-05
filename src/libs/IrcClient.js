@@ -734,7 +734,7 @@ function clientMiddleware(state, network) {
                         username: user.ident || undefined,
                         away: user.away ? 'Away' : '',
                         realname: user.real_name,
-                        account: user.account || '',
+                        account: user.account != null ? user.account : (users[user.nick.toLowerCase()] || {}).account || '',
                     };
                     state.addUser(networkid, userObj, users);
                 });
