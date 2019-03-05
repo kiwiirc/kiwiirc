@@ -864,6 +864,8 @@ function clientMiddleware(state, network) {
                 // target is not a channel buffer (user mode ?)
                 // if mode had param, show in a new line
                 let modeslines = {};
+
+                // Group each - or + modes to each of their own message lines
                 event.modes.forEach((mode) => {
                     if (mode.param) {
                         modeslines[mode.mode] = ' ' + mode.param;
