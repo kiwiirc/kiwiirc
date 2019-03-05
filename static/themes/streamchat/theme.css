@@ -63,7 +63,7 @@ body {
     padding-bottom: 0!important;
 }
 
-.kiwi-messagelist-message--unread .kiwi-messagelist-message--unread {
+.kiwi-messagelist-message--compact.kiwi-messagelist-message--unread .kiwi-messagelist-body {
     padding-left: 0!important;
 }
 
