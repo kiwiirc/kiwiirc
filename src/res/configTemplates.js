@@ -84,6 +84,7 @@ export const configTemplates = {
 /connect /server $1+
 /cycle $channel? /lines /part $channel | /join $channel
 /active /back $1+
+/umode /mode $nick $1+
 
 # Op related aliases
 /op /quote mode $channel +o $1+
