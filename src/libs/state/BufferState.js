@@ -14,7 +14,7 @@ export default class BufferState {
         this.id = nextBufferId++;
         this.networkid = networkid;
         this.name = name;
-        this.topic = '';
+        this.topics = [];
         this.key = '';
         this.joined = false;
         this.enabled = true;
@@ -49,6 +49,16 @@ export default class BufferState {
 
         def(this, 'addMessageBatch', createMessageBatch(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
+    }
+
+    get topic() {
+        return this.topics.length === 0 ?
+            '' :
+            this.topics[this.topics.length - 1];
+    }
+
+    set topic(newVal) {
+        this.topics.push(newVal);
     }
 
     getNetwork() {
