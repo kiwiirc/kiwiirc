@@ -1,5 +1,7 @@
 'kiwi public';
 
+import * as Storage from './storage/Local';
+
 /** @module */
 
 /**
@@ -9,8 +11,14 @@ export class AudioManager {
     constructor(audio) {
         this.lastPlayed = 0;
         this.audio = audio;
+        this.loadCustomNotification();
     }
-
+    async loadCustomNotification() {
+        let customAudio = await Storage.get('custom-notification');
+        if (customAudio) {
+            this.audio.audio.src = customAudio;
+        }
+    }
     /** Play the alert sound */
     play() {
         // Only play the bleep once every 2 seconds
@@ -23,6 +31,10 @@ export class AudioManager {
     listen(state) {
         state.$on('audio.bleep', () => {
             this.play();
+        });
+        state.$on('audio.update', (data) => {
+            this.audio.audio.src = data;
+            Storage.set('custom-notification', data);
         });
     }
 

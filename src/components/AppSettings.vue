@@ -110,6 +110,10 @@
                                 <span>{{ $t('settings_highlight') }} </span>
                                 <input v-model="settingHighlights" type="text" class="u-input" >
                             </label>
+                            <label class="kiwi-appsettings-full">
+                                <span>Custom sound</span>
+                                <input type="file" name="customNotification" @change="handleCustomNotification" />
+                            </label>
                         </div>
                     </div>
 
@@ -338,6 +342,20 @@ export default {
                 this.$el.scrollTop = 0;
             });
         },
+        handleCustomNotification(e) {
+            if (e.target.files && e.target.files.length>0) {
+                let file = e.target.files[0];
+                if (file.type.startsWith('audio/')) {
+                    let reader = new FileReader();
+                    reader.onload = (data) => {
+                        if(data.target.result && data.target.result.indexOf('data:audio/')) {
+                            this.$state.$emit('audio.update', data.target.result);
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
     },
 };
 </script>
