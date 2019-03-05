@@ -145,8 +145,7 @@ function handleMessage(type, event, command, line) {
 
     let bufferName = line.substr(0, spaceIdx);
     let message = line.substr(spaceIdx + 1);
-
-    let buffer = this.state.getOrAddBufferByName(network.id, bufferName);
+    let buffer = bufferName.length && this.state.getOrAddBufferByName(network.id, bufferName);
     if (buffer) {
         let textFormatType = 'privmsg';
         if (type === 'action') {
@@ -705,6 +704,17 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
     if (parts[0]) {
         // parts[0] = the mode(s)
         // parts[1] = optional mode arguments
+
+        // If we're asking for a ban list, show the response in the active channel
+        if (parts[0] === '+b' && !parts[1]) {
+            buffer.flags.requested_banlist = true;
+            // An IRCd may fuck up and simply not reply to a MODE command. Give a few seconds
+            // for it to reply and if not, ignore our request was sent
+            setTimeout(() => {
+                buffer.flags.requested_banlist = false;
+            }, 4000);
+        }
+
         network.ircClient.mode(target, parts[0], parts[1]);
     } else {
         // No modes specified will request the modes for the target

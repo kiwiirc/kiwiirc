@@ -984,6 +984,34 @@ function clientMiddleware(state, network) {
             }
         }
 
+        if (command === 'banlist') {
+            let buffer = state.getBufferByName(networkid, event.channel);
+            if (buffer && buffer.flags.requested_banlist) {
+                if (!event.bans || event.bans.length === 0) {
+                    state.addMessage(buffer, {
+                        time: event.time || Date.now(),
+                        nick: '',
+                        message: TextFormatting.t('bans_nobody'),
+                        type: 'banlist',
+                    });
+                } else {
+                    let banText = '';
+                    _.each(event.bans, (ban) => {
+                        let dateStr = (new Date(ban.banned_at * 1000)).toDateString();
+                        banText += `+b ${ban.banned} [by ${ban.banned_by}, ${dateStr}]\n`;
+                    });
+
+                    state.addMessage(buffer, {
+                        time: event.time || Date.now(),
+                        nick: '*',
+                        message: banText,
+                        type: 'banlist',
+                    });
+                }
+                buffer.flags.requested_banlist = false;
+            }
+        }
+
         if (command === 'topic') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             buffer.topic = event.topic || '';
