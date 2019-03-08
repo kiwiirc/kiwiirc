@@ -54,7 +54,7 @@ body {
 
 .kiwi-messagelist-body {
     color:#fff;
-    word-break: break-all;
+    white-space: pre-wrap;
     line-height: 22px!important;
     display: inline!important;
     float: none!important;
