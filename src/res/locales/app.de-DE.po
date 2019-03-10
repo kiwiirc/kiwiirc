@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2019-03-10 14:01\n"
+"PO-Revision-Date: 2019-03-10 14:10\n"
 
 #: Start
 msgid "start_button"
@@ -863,23 +863,23 @@ msgstr "Deinen Status auf aktiv ändern"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Ändere das Encoding deiner Verbindung"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Nachrichten einer Person ignorieren"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Hör auf, jemanden zu ignorieren"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "Einen Würfel werfen"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "Wirft einen  {{sides}}-seitigen Würfel und bekommt die Zahl {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
