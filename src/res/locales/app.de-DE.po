@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2019-02-19 17:32\n"
+"PO-Revision-Date: 2019-03-10 11:31\n"
 
 #: Start
 msgid "start_button"
@@ -587,7 +587,7 @@ msgstr ""
 
 #: About
 msgid "about"
-msgstr ""
+msgstr "Über"
 
 #: Created at {{when}}
 msgid "created_at"
