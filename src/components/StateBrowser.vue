@@ -1,7 +1,11 @@
 <template>
     <div class="kiwi-statebrowser kiwi-theme-bg">
 
-        <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
+        <div
+            :title="$t('kiwi_settings')"
+            class="kiwi-statebrowser-appsettings"
+            @click="clickAppSettings"
+        >
             <i class="fa fa-cog" aria-hidden="true"/>
         </div>
 
