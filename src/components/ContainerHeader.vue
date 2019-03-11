@@ -25,7 +25,7 @@
                     }"
                     class="kiwi-header-option kiwi-header-option-about"
                 >
-                    <a @click="sidebarState.toggleAbout()">
+                    <a :title="$t('more_information')" @click="sidebarState.toggleAbout()">
                         <i class="fa fa-info" aria-hidden="true"/>
                     </a>
                 </div>
@@ -68,7 +68,7 @@
                 <div
                     class="kiwi-header-option kiwi-header-option-leave"
                 >
-                    <a @click="showPrompt('closeChannel')">
+                    <a :title="$t('close')" @click="showPrompt('closeChannel')">
                         <i class="fa fa-times" aria-hidden="true"/>
                     </a>
                 </div>
