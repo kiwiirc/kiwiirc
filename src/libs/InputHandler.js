@@ -106,6 +106,13 @@ export default class InputHandler {
             params: params,
         };
 
+        // allow the default handlers to be preempted
+        const preInputEvent = { ...eventObj };
+        this.state.$emit('pre.input.command.' + command, preInputEvent, command, params);
+        if (preInputEvent.handled) {
+            return;
+        }
+
         // Include command and params as their own arguments just for ease of use
         this.state.$emit('input.command.' + command, eventObj, command, params);
 
