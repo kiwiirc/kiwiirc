@@ -21,6 +21,7 @@ export const configTemplates = {
             server: '',
             port: 6667,
             tls: false,
+            path: '',
             username: '',
             password: '',
         },

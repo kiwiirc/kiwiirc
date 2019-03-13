@@ -62,6 +62,7 @@ export function create(state, network) {
             ircClient.options.host = bnc.server;
             ircClient.options.port = bnc.port;
             ircClient.options.tls = bnc.tls;
+            ircClient.options.path = bnc.path;
             ircClient.options.password = password;
             ircClient.options.nick = network.nick;
             ircClient.options.username = bnc.username;
@@ -70,6 +71,7 @@ export function create(state, network) {
             ircClient.options.host = network.connection.server;
             ircClient.options.port = network.connection.port;
             ircClient.options.tls = network.connection.tls;
+            ircClient.options.path = network.connection.path;
             ircClient.options.password = network.password;
             ircClient.options.nick = network.nick;
             ircClient.options.username = network.username || network.nick;
