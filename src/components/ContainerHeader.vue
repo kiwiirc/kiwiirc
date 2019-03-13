@@ -136,6 +136,7 @@
         </template>
 
         <template v-else-if="isSpecial()">
+            <div class="kiwi-header-name">{{ buffer.name }}</div>
             <div class="kiwi-header-options">
                 <div class="kiwi-header-option kiwi-header-option-leave">
                     <a @click="closeCurrentBuffer">
@@ -143,7 +144,6 @@
                     </a>
                 </div>
             </div>
-            <div class="kiwi-header-name">{{ buffer.name }}</div>
         </template>
 
         <div
@@ -295,7 +295,7 @@ export default {
     line-height: 10px;
     box-sizing: border-box;
     text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid;
     display: flex;
 }
 

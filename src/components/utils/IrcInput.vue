@@ -224,7 +224,7 @@ export default Vue.component('irc-input', {
             // fucks up the placeholder :empty CSS selector we use. So just remove it.
             let br = this.$refs.editor.querySelector('br');
             if (br) {
-                br.remove();
+                br.parentNode.removeChild(br);
             }
 
             if (this.default_colour) {

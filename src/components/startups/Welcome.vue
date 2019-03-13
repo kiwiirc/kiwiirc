@@ -55,7 +55,7 @@
                 />
             </form>
         </template>
-        <template v-else-if="network.state !== 'connected'">
+        <template v-slot:connection v-else-if="network.state !== 'connected'">
             <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
         </template>
     </startup-layout>

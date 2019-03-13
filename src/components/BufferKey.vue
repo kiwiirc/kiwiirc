@@ -78,6 +78,7 @@ export default {
     border-radius: 4px;
     padding: 5px 20px;
     line-height: 40px;
+    border: 1px solid;
 
     &:hover {
         transition: all 0.2s;

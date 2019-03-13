@@ -225,7 +225,6 @@ export default {
 
 <style lang="less">
 .kiwi-sidebar {
-    background: #fff;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

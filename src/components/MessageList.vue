@@ -472,6 +472,7 @@ export default {
     font-weight: bold;
     border: none;
     margin: 0;
+    background: none;
 }
 
 .kiwi-messagelist-message-connection .kiwi-messagelist-body {
@@ -697,6 +698,18 @@ export default {
 /* MOTD */
 .kiwi-messagelist-message-motd {
     font-family: monospace;
+}
+
+/* Ensure unread messages are fully visible, even after themes applied */
+.kiwi-messagelist-message.kiwi-messagelist-message--unread {
+    opacity: 1;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--hover,
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight,
+.kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover {
+    opacity: 1;
+    position: relative;
 }
 
 /* Links */

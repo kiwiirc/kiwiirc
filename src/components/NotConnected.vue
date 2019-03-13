@@ -153,6 +153,7 @@ export default {
     border-radius: 0.4em;
     margin: 0 0.8em;
     cursor: pointer;
+    border: 2px solid;
     transition: all 0.3s;
 }
 

@@ -117,8 +117,6 @@
                     class="kiwi-statebrowser-channel"
                 >
                     <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">
-                        <i v-if="buffer.isQuery() && !awayNotifySupported()"
-                           class="fa fa-user" aria-hidden="true" />
                         <away-status-indicator
                             v-if="buffer.isQuery() && awayNotifySupported()"
                             :network="network" :user="network.userByName(buffer.name)"/>
@@ -330,6 +328,7 @@ export default {
     position: relative;
     overflow: hidden;
     height: auto;
+    box-sizing: border-box;
 }
 
 .kiwi-statebrowser-network-name {

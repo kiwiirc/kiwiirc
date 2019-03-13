@@ -144,6 +144,7 @@ export default {
 
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-nick .kiwi-messagelist-time {
     margin-right: 10px;
+    opacity: 0.8;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-time {
