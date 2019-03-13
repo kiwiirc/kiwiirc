@@ -30,7 +30,7 @@
     --comp-statebrowser-bg-networkname: #151515;
     --comp-statebrowser-channel-active-bg: #ffffff0d;
     --comp-statebrowser-channel-active-fg: #fff;
-    --comp-usermenu-open-bg: #303742;
+    --comp-usermenu-open-bg: #151515;
     --comp-statebrowser-network-border: #bda28e;
 
 
@@ -152,6 +152,10 @@
     background: #000;
     color: #f1f1f1;
     border-color: #4b4b4b;
+}
+
+.kiwi-statebrowser-usermenu--open .kiwi-statebrowser-usermenu-avatar {
+    color: #f1f1f1;
 }
 
 .kiwi-statebrowser-usermenu-avatar:hover {
