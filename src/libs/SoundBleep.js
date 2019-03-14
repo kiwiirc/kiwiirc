@@ -1,9 +1,10 @@
 export class SoundBleep {
-    constructor() {
+    constructor(src = null) {
         this.audio = document.createElement('audio');
         let source = document.createElement('source');
-
-        if (this.audio.canPlayType('audio/mpeg;')) {
+        if (src) {
+            source.src = src;
+        } else if (this.audio.canPlayType('audio/mpeg;')) {
             source.type = 'audio/mpeg';
             source.src = 'static/highlight.mp3';
         } else {
@@ -13,7 +14,12 @@ export class SoundBleep {
 
         this.audio.appendChild(source);
     }
-
+    destroy() {
+        this.audio = null;
+    }
+    setSource(src) {
+        this.audio.src = src;
+    }
     play() {
         this.audio.play();
     }

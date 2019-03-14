@@ -112,7 +112,19 @@
                             </label>
                             <label class="kiwi-appsettings-full">
                                 <span>Custom sound</span>
-                                <input type="file" name="customNotification" @change="handleCustomNotification" />
+                                <input
+                                    type="file"
+                                    name="customNotification"
+                                    @change="handleChangeAudio"
+                                >
+                                <button
+                                    type="button"
+                                    @click="$state.$emit('audio.bleep')"
+                                >▶</button>
+                                <button
+                                    type="button"
+                                    @click="$state.$emit('audio.set-source', {src: null})"
+                                >Reset</button>
                             </label>
                         </div>
                     </div>
@@ -342,20 +354,27 @@ export default {
                 this.$el.scrollTop = 0;
             });
         },
-        handleCustomNotification(e) {
-            if (e.target.files && e.target.files.length>0) {
+        handleChangeAudio(e) {
+            if (e.target.files && e.target.files.length > 0) {
                 let file = e.target.files[0];
-                if (file.type.startsWith('audio/')) {
+                if (file.type.indexOf('audio/') === 0) {
                     let reader = new FileReader();
                     reader.onload = (data) => {
-                        if(data.target.result && data.target.result.indexOf('data:audio/')) {
-                            this.$state.$emit('audio.update', data.target.result);
+                        if (data.target.result && data.target.result.indexOf('data:audio/') === 0) {
+                            this.$state.$emit('audio.set-source', { src: data.target.result });
                         }
                     };
+                    reader.onerror = (err) => {
+                        console.error("Error reading audio file", err);
+                        e.target.value = null;
+                    };
                     reader.readAsDataURL(file);
+                } else {
+                    console.error("Not an audio file");
+                    e.target.value = null;
                 }
             }
-        }
+        },
     },
 };
 </script>
