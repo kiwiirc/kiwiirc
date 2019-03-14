@@ -1,7 +1,10 @@
 <template>
-    <startup-layout ref="layout" class="kiwi-welcome-simple">
+    <startup-layout ref="layout" class="kiwi-welcome-simple" >
         <template v-slot:connection v-if="!network || network.state === 'disconnected'">
-            <form class="u-form kiwi-welcome-simple-form" @submit.prevent="formSubmit">
+            <form :class="{ 'kiwi-recaptcha-enabled': recaptchaSiteId }"
+                   class="u-form kiwi-welcome-simple-form"
+                   @submit.prevent="formSubmit"
+            >
                 <h2 v-html="greetingText"/>
                 <div
                     v-if="network && (network.last_error || network.state_error)"
@@ -44,7 +47,7 @@
                 <div
                     v-if="recaptchaSiteId"
                     :data-sitekey="recaptchaSiteId"
-                    class="kiwi-g-recaptcha"
+                    class="g-recaptcha"
                 />
 
                 <button
@@ -303,6 +306,15 @@ export default {
     max-width: 250px;
     border-radius: 0.5em;
     padding: 1em;
+}
+
+.kiwi-welcome-simple-form.kiwi-recaptcha-enabled {
+    width: 333px;
+    box-sizing: border-box;
+}
+
+.g-recaptcha {
+    margin-bottom: 10px;
 }
 
 .kiwi-welcome-simple-error {

@@ -19,6 +19,7 @@ module.exports = {
                     }
                     if (!c.startsWith('kiwi-') &&
                         !c.startsWith('u-') &&
+                        !c.startsWith('g-') &&
                         !c.startsWith('irc-fg-') &&
                         !c.startsWith('irc-bg-')
                     ) {
