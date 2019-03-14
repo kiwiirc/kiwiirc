@@ -310,6 +310,7 @@ export default {
 
 .kiwi-welcome-simple-form.kiwi-recaptcha-enabled {
     width: 333px;
+    max-width: 333px;
     box-sizing: border-box;
 }
 
