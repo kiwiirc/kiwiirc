@@ -2,8 +2,8 @@
     <startup-layout ref="layout" class="kiwi-welcome-simple" >
         <template v-slot:connection v-if="!network || network.state === 'disconnected'">
             <form :class="{ 'kiwi-recaptcha-enabled': recaptchaSiteId }"
-                   class="u-form kiwi-welcome-simple-form"
-                   @submit.prevent="formSubmit"
+                  class="u-form kiwi-welcome-simple-form"
+                  @submit.prevent="formSubmit"
             >
                 <h2 v-html="greetingText"/>
                 <div
