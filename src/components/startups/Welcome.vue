@@ -1,10 +1,7 @@
 <template>
-    <startup-layout ref="layout" class="kiwi-welcome-simple" >
+    <startup-layout ref="layout" :class="{ 'kiwi-recaptcha-enabled': recaptchaSiteId }" class="kiwi-welcome-simple" >
         <template v-slot:connection v-if="!network || network.state === 'disconnected'">
-            <form :class="{ 'kiwi-recaptcha-enabled': recaptchaSiteId }"
-                  class="u-form kiwi-welcome-simple-form"
-                  @submit.prevent="formSubmit"
-            >
+            <form class="u-form kiwi-welcome-simple-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText"/>
                 <div
                     v-if="network && (network.last_error || network.state_error)"
@@ -308,7 +305,7 @@ export default {
     padding: 1em;
 }
 
-.kiwi-welcome-simple-form.kiwi-recaptcha-enabled {
+.kiwi-recaptcha-enabled .kiwi-welcome-simple-form {
     width: 333px;
     max-width: 333px;
     box-sizing: border-box;
