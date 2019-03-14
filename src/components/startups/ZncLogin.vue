@@ -180,7 +180,7 @@ export default {
     font-size: 1.7em;
     text-align: center;
     padding: 0;
-    margin: 0.5em 0 1.5em 0;
+    margin: 0.5em auto;
 }
 
 .kiwi-welcome-znc-error {
@@ -237,6 +237,16 @@ export default {
 
 .kiwi-welcome-znc-start[disabled] {
     cursor: not-allowed;
+}
+
+button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
+    width: 100%;
+    margin: 1em auto 0.5em auto;
+    font-weight: normal;
+    border: none;
+    height: 36px;
+    line-height: 36px;
+    padding: 0;
 }
 
 </style>
