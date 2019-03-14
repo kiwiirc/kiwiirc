@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2019-02-19 17:31\n"
+"PO-Revision-Date: 2019-03-14 12:31\n"
 
 #: Start
 msgid "start_button"
@@ -859,7 +859,7 @@ msgstr "Позначити себе як відійшов"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Змінити статус на активний"
 
 #: Change your connection encoding
 msgid "command_encoding"
