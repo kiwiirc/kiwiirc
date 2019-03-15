@@ -197,7 +197,7 @@ export default {
         },
         isRestrictedServer: function isRestrictedServer() {
             return !!state.settings.restricted;
-        }
+        },
     },
     methods: {
         onNewChannelInputFocus() {
