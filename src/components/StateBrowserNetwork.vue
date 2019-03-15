@@ -2,7 +2,7 @@
     <div :class="[
         isActiveNetwork ? 'kiwi-statebrowser-network--active' : '',
     ]" class="kiwi-statebrowser-network">
-        <div class="kiwi-statebrowser-network-header">
+        <div v-if="!isRestrictedServer" class="kiwi-statebrowser-network-header">
             <a
                 class="kiwi-statebrowser-network-name u-link"
                 @click="setActiveBuffer(network.serverBuffer())"
@@ -195,6 +195,9 @@ export default {
 
             return bufferTools.orderBuffers(filtered);
         },
+        isRestrictedServer: function isRestrictedServer() {
+            return !!state.settings.restricted;
+        }
     },
     methods: {
         onNewChannelInputFocus() {
