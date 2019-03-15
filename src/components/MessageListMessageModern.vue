@@ -35,7 +35,7 @@
     >
         <div class="kiwi-messagelist-modern-left">
             <message-avatar
-                v-if="isMessage(message)"
+                v-if="isMessage(message) && displayAvatar(message)"
                 :message="message"
                 :data-nick="message.nick"
             />
@@ -170,6 +170,15 @@ export default {
         isMessage(message) {
             let types = ['privmsg', 'action', 'notice', 'message'];
             return types.indexOf(message.type) > -1;
+        },
+        displayAvatar(message) {
+            if (!this.ml.buffer.isChannel() && message.type === 'notice') {
+                return true;
+            }
+            if (message.type === 'notice') {
+                return false;
+            }
+            return true;
         },
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
