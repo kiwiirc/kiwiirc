@@ -268,6 +268,21 @@
     color: #f1f1f1;
 }
 
+button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
+.kiwi-statebrowser-channel-label {
+    color: var(--brand-default-fg);
+}
+
+.kiwi-welcome-znc h2,
+.kiwi-welcome-znc-form .u-input-text-label {
+    color: var(--brand-default-bg);
+}
+
+.kiwi-welcome-znc-form .u-input-text {
+    background: transparent;
+    color: var(--brand-default-bg);
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }

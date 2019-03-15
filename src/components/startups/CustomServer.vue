@@ -414,7 +414,7 @@ export default {
 
 .kiwi-customserver .u-input-text input {
     padding: 0.5em;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .kiwi-customserver .kiwi-customserver-have-password {
@@ -456,17 +456,14 @@ export default {
 
 .kiwi-customserver-form .u-submit {
     width: 100%;
-    height: 50px;
     padding: 0;
-    text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 400;
-    text-shadow: none;
     margin: 0 0 20px 0;
     transition: all 0.2s;
     border: none;
     font-size: 1.2em;
-    line-height: 51px;
+    line-height: 36px;
 }
 
 .kiwi-customserver-server-types {

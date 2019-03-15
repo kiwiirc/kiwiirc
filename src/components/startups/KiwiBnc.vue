@@ -314,12 +314,16 @@ export default {
     margin-bottom: 1.5em;
 }
 
-.kiwi-startbnc-form input {
+.kiwi-startbnc-form input,
+.kiwi-startbnc-form input:active {
     font-size: 1em;
-    margin-top: 5px;
-    padding: 0.3em 1em;
     width: 100%;
     box-sizing: border-box;
+    line-height: 30px;
+    padding: 0 10px;
+    border: none;
+    border-bottom: 2px solid #42b992;
+    outline: none;
 }
 
 .kiwi-startbnc-status {
@@ -345,6 +349,14 @@ export default {
     border-radius: 0.5em;
     padding: 1em;
     border: 1px solid #ececec;
+}
+
+.kiwi-startbnc-form button {
+    width: 100%;
+    line-height: 36px;
+    padding: 0;
+    font-size: 1.2em;
+    font-weight: normal;
 }
 
 </style>

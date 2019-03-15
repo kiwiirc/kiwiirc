@@ -180,7 +180,7 @@ export default {
     font-size: 1.7em;
     text-align: center;
     padding: 0;
-    margin: 0.5em 0 1.5em 0;
+    margin: 0.5em auto;
 }
 
 .kiwi-welcome-znc-error {
@@ -223,6 +223,7 @@ export default {
 
 .kiwi-welcome-znc input[type="password"] {
     height: 20px;
+    border-bottom: none;
 }
 
 .kiwi-welcome-znc-have-password input:checked {
@@ -233,6 +234,12 @@ export default {
     font-size: 1.1em;
     cursor: pointer;
     width: 100%;
+    margin: 1em auto 0.5em auto;
+    font-weight: normal;
+    border: none;
+    height: 36px;
+    line-height: 36px;
+    padding: 0;
 }
 
 .kiwi-welcome-znc-start[disabled] {
