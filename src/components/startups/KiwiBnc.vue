@@ -354,6 +354,9 @@ export default {
 .kiwi-startbnc-form button {
     width: 100%;
     line-height: 36px;
+    padding: 0;
+    font-size: 1.2em;
+    font-weight: normal;
 }
 
 </style>
