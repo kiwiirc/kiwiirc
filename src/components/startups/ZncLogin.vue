@@ -223,6 +223,7 @@ export default {
 
 .kiwi-welcome-znc input[type="password"] {
     height: 20px;
+    border-bottom: none;
 }
 
 .kiwi-welcome-znc-have-password input:checked {
@@ -233,20 +234,16 @@ export default {
     font-size: 1.1em;
     cursor: pointer;
     width: 100%;
-}
-
-.kiwi-welcome-znc-start[disabled] {
-    cursor: not-allowed;
-}
-
-button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
-    width: 100%;
     margin: 1em auto 0.5em auto;
     font-weight: normal;
     border: none;
     height: 36px;
     line-height: 36px;
     padding: 0;
+}
+
+.kiwi-welcome-znc-start[disabled] {
+    cursor: not-allowed;
 }
 
 </style>
