@@ -162,7 +162,7 @@ export default {
 
             this.$state.addBuffer(this.network.id, channelName);
             this.network.ircClient.join(channelName);
-            if (this.$state.ui.app_width <= 769) {
+            if (this.$state.ui.is_narrow) {
                 this.$state.setActiveBuffer(this.network.id, channelName);
             }
         },
