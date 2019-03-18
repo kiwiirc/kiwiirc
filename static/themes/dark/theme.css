@@ -128,6 +128,10 @@
     border-top-color: #2d2d2d;
 }
 
+.kiwi-channellist table tbody tr:nth-child(even) {
+    background-color: #333333;
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }

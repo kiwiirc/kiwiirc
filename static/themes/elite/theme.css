@@ -193,6 +193,34 @@
     background: var(--brand-primary);
 }
 
+.kiwi-channellist-nav .u-form .u-input {
+    color: #f1f1f1;
+    border-color: #ff9600;
+}
+
+.kiwi-channellist-nav .u-form .u-button-primary {
+    border-bottom-color: var(--brand-primary);
+}
+
+.kiwi-channellist-pagination,
+.kiwi-channellist-info,
+.kiwi-channellist table tbody tr {
+    color: #f1f1f1;
+}
+
+.kiwi-channellist table tbody tr:nth-child(even) {
+    background-color: #222c33;
+}
+
+.kiwi-channellist table tbody tr a {
+    color: #ff9600;
+}
+
+.kiwi-channellist table tbody tr a.u-button {
+    color: #f1f1f1;
+    border-bottom: none;
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }

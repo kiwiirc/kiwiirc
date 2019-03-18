@@ -180,6 +180,10 @@
     color: var(--brand-default-fg);
 }
 
+.kiwi-channellist-user-center a.u-button.u-button-primary {
+    border-bottom: none;
+}
+
 
 /* Inputs */
 .u-form .u-input,
