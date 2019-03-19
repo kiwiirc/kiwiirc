@@ -933,6 +933,10 @@
     color: var(--brand-default-fg);
 }
 
+.kiwi-messagelist-message--own {
+    background-color: #f7f7f7;
+}
+
 /* ---- MessageInfo ---- */
 .kiwi-messagelist-message--info-open {
     background-color: var(--brand-midtone);
