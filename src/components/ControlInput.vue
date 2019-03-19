@@ -28,6 +28,7 @@
                 />
             </div>
             <form
+                :class="{'kiwi-controlinput-form-mobile': $state.ui.is_narrow}"
                 class="kiwi-controlinput-form"
                 @submit.prevent="submitForm"
                 @click="maybeHidePlugins"
@@ -596,8 +597,12 @@ export default {
 
 .kiwi-controlinput-form {
     flex: 1;
-    overflow: hidden;
+    position: relative;
     display: flex;
+}
+
+.kiwi-controlinput-form-mobile {
+    position: static;
 }
 
 .kiwi-controlinput-send {

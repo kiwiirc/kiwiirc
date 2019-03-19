@@ -216,9 +216,15 @@
 
 /* ---- Auto complete ( autoComplete ) ---- */
 .kiwi-autocomplete {
-    border-top: 1px solid var(--brand-midtone);
-    border-bottom: 1px solid var(--brand-midtone);
+    border: 1px solid var(--comp-border);
+    border-bottom: none;
     background: var(--brand-default-bg);
+}
+
+.kiwi-autocomplete-mobile {
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid var(--comp-border);
 }
 
 .kiwi-autocomplete-item {
