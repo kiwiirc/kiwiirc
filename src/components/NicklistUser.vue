@@ -22,6 +22,8 @@
         <span class="kiwi-nicklist-messageuser" @click.stop="nicklist.openQuery(user)">
             <i class="fa fa-comment" aria-hidden="true"/>
         </span>
+        <span v-if="user.typingState==='active'"><em>typing...</em></span>
+        <span v-if="user.typingState==='paused'"><em>typing (paused)...</em></span>
     </li>
 </template>
 

@@ -16,6 +16,7 @@ export default class UserState {
         this.buffers = Object.create(null);
         this.account = '';
         this.hasWhois = false;
+        this.typingState = user.typingState || '';
 
         Vue.observable(this);
 

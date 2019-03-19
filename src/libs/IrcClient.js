@@ -96,6 +96,26 @@ export function create(state, network) {
         });
     });
 
+    state.$on('irc.raw.TAGMSG', (command, event) => {
+        let user = state.getUser(network.id, event.nick);
+        let buffer = state.getActiveBuffer();
+        if (event.tags && event.params[0] === buffer.name) {
+            if (user.typingTimer) {
+                clearTimeout(user.typingTimer);
+                user.typingTimer = null;
+            }
+            if (event.tags['+draft/typing'] === 'active') {
+                user.typingState = 'active';
+                user.typingTimer = setTimeout(() => { user.typingState = ''; }, 6000);
+            } else if (event.tags['+draft/typing'] === 'paused') {
+                user.typingState = 'paused';
+                user.typingTimer = setTimeout(() => { user.typingState = ''; }, 30000);
+            } else {
+                user.typingState = '';
+            }
+        }
+    });
+
     return ircClient;
 }
 
