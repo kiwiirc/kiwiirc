@@ -272,6 +272,7 @@ export default {
     overflow: hidden;
     clear: both;
     border-radius: 2px;
+    border: 1px solid;
 }
 
 .kiwi-networksettings .u-form span {
@@ -415,6 +416,10 @@ export default {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.kiwi-dangerzone i {
+    margin-right: 5px;
+}
+
 .kiwi-dangerzone h3 {
     padding-top: 0;
 }
@@ -423,6 +428,7 @@ export default {
     text-align: center;
     margin: 1em;
     padding: 0.3em;
+    border: 1px solid;
 }
 
 .kiwi-networksettings .kiwi-networksettings-error span {

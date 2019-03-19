@@ -7,7 +7,7 @@
         </div>
 
         <form class="u-form">
-            <tabbed-view :active-tab="activeTab" class="kiwi-appsettings-tab-container">
+            <tabbed-view ref="tabs" class="kiwi-appsettings-tab-container">
                 <tabbed-tab :header="$t('settings_general')" :focus="true" name="general">
 
                     <div class="kiwi-appsettings-block">
@@ -211,7 +211,6 @@ export default {
         return {
             state: state,
             theme: '',
-            activeTab: '',
             customThemeUrl: '',
             pluginUiElements: GlobalApi.singleton().appSettingsPlugins,
         };
@@ -335,7 +334,7 @@ export default {
         enableAdvancedTab() {
             this.settingAdvancedEnable = true;
             this.$nextTick(() => {
-                this.activeTab = 'advanced';
+                this.$refs.tabs.setActiveByName('advanced');
                 this.$el.scrollTop = 0;
             });
         },

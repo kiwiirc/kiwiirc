@@ -1,23 +1,23 @@
 <template>
     <div class="kiwi-userbox">
-
+        <span v-if="isSelf" class="kiwi-userbox-selfprofile">
+            This is you!
+        </span>
         <div class="kiwi-userbox-header">
-            <i class="fa fa-user kiwi-userbox-icon" aria-hidden="true"/>
-            <h3>{{ user.nick }}</h3>
+            <h3>
+                <away-status-indicator :network="network" :user="user"/> {{ user.nick }}
+                <span v-if="userMode" class="kiwi-userbox-modestring">+ {{ userMode }}</span>
+            </h3>
             <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
         </div>
 
         <div class="kiwi-userbox-basicinfo">
             <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_realname') }}:</span>
             <span class="kiwi-userbox-basicinfo-data">{{ user.realname }} </span>
-            <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_status') }}:</span>
-            <span class="kiwi-userbox-basicinfo-data">
-                {{ user.away ? user.away : $t('whois_status_available') }}
-            </span>
         </div>
 
         <p class="kiwi-userbox-actions">
-            <a class="kiwi-userbox-action" @click="openQuery">
+            <a v-if="!isSelf" class="kiwi-userbox-action" @click="openQuery">
                 <i class="fa fa-comment-o" aria-hidden="true"/>
                 {{ $t('send_a_message') }}
             </a>
@@ -25,10 +25,9 @@
                 <i class="fa fa-question-circle" aria-hidden="true"/>
                 {{ $t('more_information') }}
             </a>
-
         </p>
 
-        <form class="u-form kiwi-userbox-ignoreuser">
+        <form v-if="!isSelf" class="u-form kiwi-userbox-ignoreuser">
             <label>
                 <input v-model="user.ignore" type="checkbox" >
                 <span> {{ $t('ignore_user') }} </span>
@@ -81,7 +80,7 @@
             </template>
         </div>
 
-        <div v-if="buffer.isChannel() && areWeAnOp" class="kiwi-userbox-opactions">
+        <div v-if="buffer.isChannel() && areWeAnOp && !isSelf" class="kiwi-userbox-opactions">
             <form class="u-form" @submit.prevent="">
                 <label v-if="isUserOnBuffer">
                     {{ $t('user_access') }} <select v-model="userMode">
@@ -134,10 +133,13 @@
 
 'kiwi public';
 
-import state from '@/libs/state';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
+    components: {
+        AwayStatusIndicator,
+    },
     props: ['buffer', 'network', 'user'],
     data: function data() {
         return {
@@ -234,6 +236,9 @@ export default {
             }
             return channels.join(' ');
         },
+        isSelf() {
+            return this.user === this.network.currentUser();
+        },
     },
     watch: {
         user: function watchUser() {
@@ -255,9 +260,9 @@ export default {
                 '';
         },
         openQuery: function openQuery() {
-            let buffer = state.addBuffer(this.network.id, this.user.nick);
-            state.setActiveBuffer(this.network.id, buffer.name);
-            state.$emit('userbox.hide');
+            let buffer = this.$state.addBuffer(this.network.id, this.user.nick);
+            this.$state.setActiveBuffer(this.network.id, buffer.name);
+            this.$state.$emit('userbox.hide');
         },
         onChannelsClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
@@ -275,11 +280,11 @@ export default {
             });
         },
         kickUser: function kickUser() {
-            let reason = state.setting('buffers.default_kick_reason');
+            let reason = this.$state.setting('buffers.default_kick_reason');
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
         },
         createBanMask: function banMask() {
-            let mask = state.setting('buffers.default_ban_mask');
+            let mask = this.$state.setting('buffers.default_ban_mask');
             mask = mask.replace('%n', this.user.nick);
             mask = mask.replace('%i', this.user.username);
             mask = mask.replace('%h', this.user.host);
@@ -300,7 +305,7 @@ export default {
             }
 
             let banMask = this.createBanMask();
-            let reason = state.setting('buffers.default_kick_reason');
+            let reason = this.$state.setting('buffers.default_kick_reason');
             this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
         },
@@ -320,27 +325,42 @@ export default {
     height: 100%;
 }
 
+.kiwi-userbox-selfprofile {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
 .kiwi-userbox-header {
     position: relative;
-    padding: 0.5em 1em 0.5em 5em;
+    padding: 0.5em 1em;
     overflow: hidden;
+}
 
-    h3 {
-        width: 100%;
-        padding: 0;
-        cursor: default;
-    }
+.kiwi-userbox-header h3 {
+    width: 100%;
+    padding: 0;
+    cursor: default;
+    display: inline-block;
+}
+
+.kiwi-userbox-modestring {
+    font-weight: normal;
+    font-size: 0.8em;
 }
 
 .fa-user.kiwi-userbox-icon {
-    position: absolute;
-    left: 0.5em;
-    top: 0.25em;
-    font-size: 3em;
+    display: inline-block;
+    font-size: 2em;
 }
 
 .kiwi-userbox-usermask {
     width: 100%;
+    opacity: 0.6;
     cursor: default;
 }
 
@@ -348,7 +368,7 @@ export default {
     width: 100%;
     margin: 0;
     display: block;
-    padding: 1em 1em 1em 1.4em;
+    padding: 0.5em 1em;
     box-sizing: border-box;
 }
 
@@ -365,7 +385,6 @@ export default {
     line-height: 1em;
     padding: 0;
     text-align: left;
-    opacity: 0.5;
     font-weight: 900;
 }
 
@@ -385,18 +404,12 @@ export default {
 
     .kiwi-userbox-action {
         display: inline-block;
-        border: 1px solid #000;
+        border: 1px solid;
         padding: 0.5em 1em;
-        color: #000;
         cursor: pointer;
-        margin: 0 auto 20px auto;
+        margin: 0 2px;
         transition: all 0.3s;
         border-radius: 3px;
-
-        &:hover {
-            background-color: #000;
-            color: #fff;
-        }
     }
 
     label {
@@ -444,12 +457,13 @@ export default {
     padding: 0 1em;
     text-align: left;
     border: none;
-    line-height: 2.8em;
-    font-size: 1em;
+    line-height: 2.2em;
+    font-size: 0.8em;
 }
 
 .kiwi-userbox-opaction i {
-    margin-right: 0.3em;
+    margin-right: 0.2em;
+    font-size: 1.2em;
 }
 
 .kiwi-userbox-actions a {
@@ -463,6 +477,7 @@ export default {
     margin: 0 5% 20px 5%;
     background: none;
     box-sizing: border-box;
+    border-radius: 2px;
 }
 
 .kiwi-userbox-whois-line {
@@ -517,6 +532,7 @@ export default {
         width: 200px;
         clear: both;
         display: block;
+        margin: 0 auto 20px auto;
     }
 }
 </style>

@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish, United States\n"
 "Language: es_US\n"
-"PO-Revision-Date: 2019-01-12 20:21\n"
+"PO-Revision-Date: 2019-02-19 17:31\n"
 
 #: Start
 msgid "start_button"
@@ -859,7 +859,7 @@ msgstr "Marca como ausente"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Marca como activo"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -872,6 +872,14 @@ msgstr "Ignora los mensajes de alguien"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Deja de ignorar a alguien"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr ""
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr ""
 
 #: Your IRC client
 msgid "personal_client"
