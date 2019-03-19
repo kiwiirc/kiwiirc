@@ -19,14 +19,13 @@
             @click="selected_idx = item.idx; selectCurrentItem()"
         >
             <template v-if="item.type === 'user'">
+                <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
                 <span
                     class="u-link kiwi-autocomplete-item-action kiwi-autocomplete-item-message"
                     @click.stop="openQuery(item.text)"
                 >
-                    <i class="fa fa-comment" aria-hidden="true" />
+                    <i class="fa fa-comment" aria-hidden="true" /> {{ $t('send_message') }}
                 </span>
-                <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
-                <span class="kiwi-autocomplete-item-message">{{ $t('send_message') }}</span>
             </template>
             <template v-else-if="item.type === 'command'">
                 <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
@@ -280,6 +279,10 @@ export default {
     font-weight: bold;
     display: inline-block;
     margin-right: 4px;
+}
+
+.kiwi-autocomplete-item-message {
+    margin-left: 6px;
 }
 
 .kiwi-autocomplete-item-message i {
