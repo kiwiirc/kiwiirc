@@ -63,6 +63,21 @@
     border-right: 0;
 }
 
+button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
+.kiwi-statebrowser-channel-label {
+    color: var(--brand-default-fg);
+}
+
+.kiwi-welcome-znc h2,
+.kiwi-welcome-znc-form .u-input-text-label {
+    color: var(--brand-default-bg);
+}
+
+.kiwi-welcome-znc-form .u-input-text {
+    background: transparent;
+    color: var(--brand-default-bg);
+}
+
 .kiwi-statebrowser-newchannel-inputwrap,
 .kiwi-statebrowser-newnetwork .u-button,
 .kiwi-header-option a:hover,
@@ -126,6 +141,10 @@
 
 .kiwi-messagelist-message--modern {
     border-top-color: #2d2d2d;
+}
+
+.kiwi-messagelist-message--own {
+    background-color: #2d2d2d;
 }
 
 /* IRC Text Colours */

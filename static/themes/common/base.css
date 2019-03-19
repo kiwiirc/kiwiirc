@@ -561,10 +561,6 @@
 }
 
 /* Icons in the Channel List */
-.kiwi-statebrowser-channel:not([data-name^="#"])::before {
-    content: '\f007';
-}
-
 .kiwi-statebrowser-channel[data-name^="*"]::before {
     content: '\f006';
 }
@@ -935,6 +931,10 @@
 
 .kiwi-messagelist-message-motd {
     color: var(--brand-default-fg);
+}
+
+.kiwi-messagelist-message--own {
+    background-color: #f7f7f7;
 }
 
 /* ---- MessageInfo ---- */
