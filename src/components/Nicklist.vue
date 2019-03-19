@@ -24,6 +24,7 @@
                 :key="user.nick"
                 :user="user"
                 :nicklist="self"
+                :network="network"
             />
         </ul>
     </div>
@@ -211,6 +212,7 @@ export default {
     height: 43px;
     line-height: 40px;
     width: 100%;
+    border-bottom: 1px solid;
 }
 
 .kiwi-nicklist-usercount span {

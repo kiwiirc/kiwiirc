@@ -18,6 +18,7 @@
 
 import _ from 'lodash';
 import state from '@/libs/state';
+import * as Misc from '@/helpers/Misc';
 
 export default {
     props: ['ircinput'],
@@ -41,9 +42,7 @@ export default {
             let url = window.getComputedStyle(event.target, null)
                 .getPropertyValue('background-image');
 
-            // TODO: All this text replacing is ugly. Tidy it pls.
-            url = url.replace('url(', '').replace(')', '');
-            url = url.replace(' ', '').replace(/"/g, '');
+            url = Misc.extractURL(url);
             let code = event.target.dataset.code;
             this.ircinput.addImg(code, url);
         },

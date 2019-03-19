@@ -954,6 +954,13 @@ msgstr "Ignore messages from somebody"
 msgid "command_unignore"
 msgstr "Stop ignoring somebody"
 
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Roll a Dice"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
 
 
 #: Personal $t('personal_')

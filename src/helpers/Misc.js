@@ -4,6 +4,7 @@
 
 import _ from 'lodash';
 import strftime from 'strftime';
+import { urlRegex } from './TextFormatting';
 
 /**
  * Extract an array of buffers from a string, parsing multiple buffer names and channel keys
@@ -35,6 +36,11 @@ export function extractBuffers(str) {
     return buffers;
 }
 
+export function extractURL(str) {
+    let matches = str.match(urlRegex);
+    return matches ? matches[0] : '';
+}
+
 export function splitHost(uri) {
 
 }
@@ -45,29 +51,13 @@ export function splitHost(uri) {
  * @param {string} nick The nick to search for
  */
 export function mentionsNick(input, nick) {
-    let punc = ',.!:;-+)]?¿\\/<>@';
-
-    let idx = input.toLowerCase().indexOf(nick.toLowerCase());
-    if (idx === -1) {
+    if (input.toLowerCase().indexOf(nick.toLowerCase()) === -1) {
         return false;
     }
-
-    let startIdx = input.lastIndexOf(' ', idx);
-    if (startIdx === -1) {
-        startIdx = 0;
-    } else {
-        startIdx++;
-    }
-
-    let endIdx = input.indexOf(' ', idx);
-    if (endIdx === -1) {
-        endIdx = input.length;
-    }
-
-    let segment = input.substring(startIdx, endIdx);
-    let potentialNick = _.trim(segment, punc);
-
-    return potentialNick.toLowerCase() === nick.toLowerCase();
+    let punc = '\\s,.!:;+()\\[\\]?¿\\/<>@-';
+    let escapedNick = _.escapeRegExp(nick);
+    let r = new RegExp(`(^|[${punc}])${escapedNick}([${punc}]|$)`, 'i');
+    return r.test(input);
 }
 
 /**

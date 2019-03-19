@@ -1,65 +1,66 @@
 <template>
-    <startup-layout ref="layout" class="kiwi-welcome-simple">
-        <div slot="connection">
-            <template v-if="!network || network.state === 'disconnected'">
-                <form class="u-form kiwi-welcome-simple-form" @submit.prevent="formSubmit">
-                    <h2 v-html="greetingText"/>
-                    <div
-                        v-if="network && (network.last_error || network.state_error)"
-                        class="kiwi-welcome-simple-error"
-                    >
-                        We couldn't connect to the server :(
-                        <span>
-                            {{ network.last_error || readableStateError(network.state_error) }}
-                        </span>
-                    </div>
+    <startup-layout ref="layout"
+                    :class="{ 'kiwi-welcome-simple--recaptcha': recaptchaSiteId }"
+                    class="kiwi-welcome-simple"
+    >
+        <template v-slot:connection v-if="!network || network.state === 'disconnected'">
+            <form class="u-form kiwi-welcome-simple-form" @submit.prevent="formSubmit">
+                <h2 v-html="greetingText"/>
+                <div
+                    v-if="network && (network.last_error || network.state_error)"
+                    class="kiwi-welcome-simple-error"
+                >
+                    We couldn't connect to the server :(
+                    <span>
+                        {{ network.last_error || readableStateError(network.state_error) }}
+                    </span>
+                </div>
 
-                    <input-text
-                        v-if="showNick"
-                        :label="$t('nick')"
-                        v-model="nick"
-                        class="kiwi-welcome-simple-nick"
-                    />
-                    <label
-                        v-if="showPass && toggablePass"
-                        class="kiwi-welcome-simple-have-password"
-                    >
-                        <input v-model="show_password_box" type="checkbox" >
-                        <span> {{ $t('password_have') }} </span>
-                    </label>
-                    <input-text
-                        v-focus
-                        v-if="showPass && (show_password_box || !toggablePass)"
-                        :label="$t('password')"
-                        v-model="password"
-                        class="kiwi-welcome-simple-password u-input-text--reveal-value"
-                        type="password"
-                    />
-                    <input-text
-                        v-if="showChannel"
-                        :label="$t('channel')"
-                        v-model="channel"
-                        class="kiwi-welcome-simple-channel"
-                    />
+                <input-text
+                    v-if="showNick"
+                    :label="$t('nick')"
+                    v-model="nick"
+                    class="kiwi-welcome-simple-nick"
+                />
+                <label
+                    v-if="showPass && toggablePass"
+                    class="kiwi-welcome-simple-have-password"
+                >
+                    <input v-model="show_password_box" type="checkbox" >
+                    <span> {{ $t('password_have') }} </span>
+                </label>
+                <input-text
+                    v-focus
+                    v-if="showPass && (show_password_box || !toggablePass)"
+                    :label="$t('password')"
+                    v-model="password"
+                    class="kiwi-welcome-simple-password u-input-text--reveal-value"
+                    type="password"
+                />
+                <input-text
+                    v-if="showChannel"
+                    :label="$t('channel')"
+                    v-model="channel"
+                    class="kiwi-welcome-simple-channel"
+                />
 
-                    <div
-                        v-if="recaptchaSiteId"
-                        :data-sitekey="recaptchaSiteId"
-                        class="kiwi-g-recaptcha"
-                    />
+                <div
+                    v-if="recaptchaSiteId"
+                    :data-sitekey="recaptchaSiteId"
+                    class="g-recaptcha"
+                />
 
-                    <button
-                        :disabled="!readyToStart"
-                        class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
-                        type="submit"
-                        v-html="buttonText"
-                    />
-                </form>
-            </template>
-            <template v-else-if="network.state !== 'connected'">
-                <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
-            </template>
-        </div>
+                <button
+                    :disabled="!readyToStart"
+                    class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
+                    type="submit"
+                    v-html="buttonText"
+                />
+            </form>
+        </template>
+        <template v-slot:connection v-else-if="network.state !== 'connected'">
+            <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
+        </template>
     </startup-layout>
 </template>
 
@@ -171,11 +172,11 @@ export default {
             options.toggablePassword :
             true;
 
-        if (options.autoConnect && this.nick && this.channel) {
+        this.connectWithoutChannel = !!options.allowNoChannel;
+
+        if (options.autoConnect && this.nick && (this.channel || this.connectWithoutChannel)) {
             this.startUp();
         }
-
-        this.connectWithoutChannel = !!options.allowNoChannel;
 
         this.recaptchaSiteId = options.recaptchaSiteId || '';
     },
@@ -302,8 +303,19 @@ export default {
 
 .kiwi-welcome-simple-form {
     width: 90%;
+    max-width: 250px;
     border-radius: 0.5em;
     padding: 1em;
+}
+
+.kiwi-welcome-simple--recaptcha .kiwi-welcome-simple-form {
+    width: 333px;
+    max-width: 333px;
+    box-sizing: border-box;
+}
+
+.g-recaptcha {
+    margin-bottom: 10px;
 }
 
 .kiwi-welcome-simple-error {

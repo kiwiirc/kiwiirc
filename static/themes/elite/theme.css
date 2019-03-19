@@ -2,8 +2,8 @@
 
 :root {
     /* Primary Variables */
-    --brand-primary: #4d6075;
-    --brand-primary-hover: #73879c;
+    --brand-primary: #ff9600;
+    --brand-primary-hover: #ffbf00;
     --brand-midtone: #f1f1f1;
     --brand-darktone: #969696;
     --brand-default-bg: #fff;
@@ -25,12 +25,12 @@
     --comp-header-option-active-bg: var(--brand-primary);
 
     /* StateBrowser */
-    --comp-statebrowser-fg: #fff;
-    --comp-statebrowser-bg: #212d3a;
-    --comp-statebrowser-bg-networkname: #687282;
+    --comp-statebrowser-fg: var(--brand-primary);
+    --comp-statebrowser-bg: #28343d;
+    --comp-statebrowser-bg-networkname: #1d252b;
     --comp-statebrowser-channel-active-bg: #ffffff0d;
     --comp-statebrowser-channel-active-fg: #fff;
-    --comp-usermenu-open-bg: #161d25;
+    --comp-usermenu-open-bg: #0e0e0e;
     --comp-statebrowser-network-border: #656565;
 
 
@@ -38,7 +38,7 @@
     --comp-sidebar-bg: #fff;
     --comp-sidebar-fg: #22231f;
     --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
-    --comp-aboutbuffer-header-bg: var(--brand-primary);
+    --comp-aboutbuffer-header-bg: #ffa12c;
 
     /* Misc */
     --brand-link-normal: var(--brand-primary);
@@ -47,41 +47,99 @@
     --comp-border: #b2b2b2;
 }
 
-/* Welcome Screens */
-.kiwi-startup-common-section-info {
-    border-left-color: var(--brand-primary);
+.kiwi-appsettings,
+.kiwi-theme-bg,
+.u-tabbed-content {
+    background: #171d21;
 }
 
-/* StateBrowser */
-.kiwi-statebrowser-usermenu-avatar {
-    border-color: #fff;
+
+.kiwi-statebrowser.kiwi-theme-bg {
+    background: var(--comp-statebrowser-bg);
 }
-.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
-    background-color: #42b992;
+
+.kiwi-statebrowser-newnetwork {
+    opacity: 0.75;
 }
-.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
-    background-color: var(--brand-error);
-}
-.kiwi-network-name-options {
-    background-color: #4e5c6b;
-}
-.kiwi-statebrowser-channelfilter p a:hover {
+
+.kiwi-statebrowser-newnetwork a:hover {
     color: #fff;
+    opacity: 1;
 }
 
-/* Sidebar */
-.kiwi-userbox .kiwi-userbox-actions .kiwi-userbox-action {
-    border-color: var(--brand-primary);
+.kiwi-network-name-hover-icon {
+    color: var(--brand-default-bg);
+}
+
+.kiwi-network-name-options {
+    background-color: var(--comp-statebrowser-bg-networkname);
+}
+
+.kiwi-appsettings-block {
+    border-color: var(--brand-primary-hover);
     color: var(--brand-primary);
 }
 
-.kiwi-userbox .kiwi-userbox-actions .kiwi-userbox-action:hover {
-    color: var(--brand-default-bg);
-    background-color: var(--brand-primary);
+.u-tabbed-view-tabs {
+    background: #3b4850;
+    border-bottom: 3px solid #ffa320;
 }
 
-.kiwi-statebrowser-network-status a {
-    color: var(--brand-default-bg);
+.u-tabbed-view-tabs .u-tabbed-view-tab {
+    color: var(--brand-primary);
+    background: #171d21;
+    border-bottom-color: #ffa320;
+}
+
+.u-tabbed-view-tabs .u-tabbed-view-tab:hover,
+.u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active {
+    color: var(--brand-primary-hover);
+    border-bottom-color: var(--brand-primary-hover);
+}
+
+.u-form input[type='checkbox'],
+.u-form input[type='radio'] {
+    border-color: #0a0a0a;
+    background-color: #151a1d;
+}
+
+.kiwi-messagelist {
+    background: #3b4850;
+    color: var(--brand-primary);
+}
+
+.kiwi-messagelist-message--modern {
+    border-top-color: #ff820021;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message-topic {
+    background: #3c4c58;
+    color: #fff;
+}
+
+.kiwi-controlinput,
+.kiwi-header.kiwi-theme-bg {
+    background: #3b4850;
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
+.kiwi-controlinput .kiwi-controlinput-user,
+.kiwi-controlinput-inner .kiwi-controlinput-user {
+    border-right-color: var(--brand-primary);
+}
+
+.kiwi-aboutbuffer h3 {
+    background: #ffa12c;
+    color: #fff;
+}
+
+.kiwi-header-name {
+    color: var(--brand-primary);
+}
+
+.kiwi-statebrowser-network .kiwi-statebrowser-network-header {
+    background-color: var(--comp-statebrowser-bg-networkname);
 }
 
 /* IRC Text Colours */

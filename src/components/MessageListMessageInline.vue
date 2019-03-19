@@ -116,6 +116,7 @@ export default {
     right: 0;
     padding: 0 10px;
     display: none;
+    opacity: 0.8;
 }
 
 //display timestamp when hovering over the message

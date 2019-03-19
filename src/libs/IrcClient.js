@@ -62,6 +62,7 @@ export function create(state, network) {
             ircClient.options.host = bnc.server;
             ircClient.options.port = bnc.port;
             ircClient.options.tls = bnc.tls;
+            ircClient.options.path = bnc.path;
             ircClient.options.password = password;
             ircClient.options.nick = network.nick;
             ircClient.options.username = bnc.username;
@@ -70,6 +71,7 @@ export function create(state, network) {
             ircClient.options.host = network.connection.server;
             ircClient.options.port = network.connection.port;
             ircClient.options.tls = network.connection.tls;
+            ircClient.options.path = network.connection.path;
             ircClient.options.password = network.password;
             ircClient.options.nick = network.nick;
             ircClient.options.username = network.username || network.nick;
@@ -400,6 +402,8 @@ function clientMiddleware(state, network) {
             }
 
             // If we need to manually check if this user is blocked..
+            // PM_BLOCK_REQUIRES_CHECK means we should whois the user to get their oper status. We
+            // allways allow messages from opers.
             if (blockNewPms && isPrivateMessage && !buffer && pmBlock === PM_BLOCK_REQUIRES_CHECK) {
                 // if the nick is in pendingPms it has already issued a whois request
                 let awaitingWhois = !!_.find(network.pendingPms, { nick: event.nick });
@@ -979,6 +983,81 @@ function clientMiddleware(state, network) {
                         type: 'mode',
                     });
                 });
+            } else {
+                // target is not a channel buffer (user mode ?)
+                // if mode had param, show in a new line
+                let modeslines = {};
+
+                // Group each - or + modes to each of their own message lines
+                event.modes.forEach((mode) => {
+                    if (mode.param) {
+                        modeslines[mode.mode] = ' ' + mode.param;
+                    } else if (mode.mode[0] === '-') {
+                        if (!modeslines['-']) {
+                            modeslines['-'] = '';
+                        }
+                        modeslines['-'] += mode.mode.slice(1);
+                    } else {
+                        if (!modeslines['+']) {
+                            modeslines['+'] = '';
+                        }
+                        if (mode.mode[0] === '+') {
+                            modeslines['+'] += mode.mode.slice(1);
+                        } else {
+                            modeslines['+'] += mode.mode;
+                        }
+                    }
+                });
+
+                let serverBuffer = network.serverBuffer();
+                _.each(modeslines, (mode, value) => {
+                    let text = TextFormatting.t('modes_other', {
+                        nick: event.nick,
+                        target: event.target,
+                        mode: value + mode,
+                    });
+                    let messageBody = TextFormatting.formatText('mode', {
+                        nick: event.nick,
+                        username: event.ident,
+                        host: event.hostname,
+                        target: event.target,
+                        text,
+                    });
+                    state.addMessage(serverBuffer, {
+                        time: Date.now(),
+                        nick: '',
+                        message: messageBody,
+                        type: 'mode',
+                    });
+                });
+            }
+        }
+
+        if (command === 'banlist') {
+            let buffer = state.getBufferByName(networkid, event.channel);
+            if (buffer && buffer.flags.requested_banlist) {
+                if (!event.bans || event.bans.length === 0) {
+                    state.addMessage(buffer, {
+                        time: event.time || Date.now(),
+                        nick: '',
+                        message: TextFormatting.t('bans_nobody'),
+                        type: 'banlist',
+                    });
+                } else {
+                    let banText = '';
+                    _.each(event.bans, (ban) => {
+                        let dateStr = (new Date(ban.banned_at * 1000)).toDateString();
+                        banText += `+b ${ban.banned} [by ${ban.banned_by}, ${dateStr}]\n`;
+                    });
+
+                    state.addMessage(buffer, {
+                        time: event.time || Date.now(),
+                        nick: '*',
+                        message: banText,
+                        type: 'banlist',
+                    });
+                }
+                buffer.flags.requested_banlist = false;
             }
         }
 

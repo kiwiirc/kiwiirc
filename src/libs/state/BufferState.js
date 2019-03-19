@@ -1,5 +1,6 @@
 /** @module */
 
+import Vue from 'vue';
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import { def } from './common';
@@ -14,7 +15,7 @@ export default class BufferState {
         this.id = nextBufferId++;
         this.networkid = networkid;
         this.name = name;
-        this.topic = '';
+        this.topics = [];
         this.key = '';
         this.joined = false;
         this.enabled = true;
@@ -28,12 +29,15 @@ export default class BufferState {
             channel_badkey: false,
             chathistory_available: true,
             requested_modes: false,
+            requested_banlist: false,
         };
         this.settings = { };
         this.last_read = 0;
         this.active_timeout = null;
         this.message_count = 0;
         this.current_input = '';
+
+        Vue.observable(this);
 
         // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'state', state, false);
@@ -49,6 +53,23 @@ export default class BufferState {
 
         def(this, 'addMessageBatch', createMessageBatch(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
+
+        // If we don't have away-notify then we need to manually update our nicklist
+        // to get the current away statuses
+        let awayNotifyEnabled = this.getNetwork().ircClient.network.cap.isEnabled('away-notify');
+        if (this.isChannel() && !awayNotifyEnabled) {
+            startWhoLoop(this);
+        }
+    }
+
+    get topic() {
+        return this.topics.length === 0 ?
+            '' :
+            this.topics[this.topics.length - 1];
+    }
+
+    set topic(newVal) {
+        this.topics.push(newVal);
     }
 
     getNetwork() {
@@ -416,4 +437,37 @@ function createMessageBatch(bufferState) {
     };
 
     return batchedAdd(addSingleMessage, addMultipleMessages);
+}
+
+// Update our user list status every 30seconds to get each users current away status
+function startWhoLoop(bufferState) {
+    nextLoop();
+
+    function nextLoop() {
+        setTimeout(updateWhoStatusLoop, 30000);
+    }
+
+    function updateWhoStatusLoop() {
+        // Make sure the network buffer still exists
+        let network = bufferState.state.getNetwork(bufferState.networkid);
+        if (!network) {
+            return;
+        }
+
+        if (!network.bufferByName(bufferState.name)) {
+            return;
+        }
+
+        let whoLoop = bufferState.setting('who_loop');
+        let isJoined = bufferState.joined;
+        let networkConnected = network.state === 'connected';
+
+        if (whoLoop && networkConnected && isJoined) {
+            network.ircClient.who(bufferState.name, () => {
+                nextLoop();
+            });
+        } else {
+            nextLoop();
+        }
+    }
 }

@@ -8,9 +8,15 @@
         class="kiwi-nicklist-user"
         @click="nicklist.openUserbox(user)"
     >
+        <away-status-indicator
+            :network="network"
+            :user="user"
+            :toggle="false"
+        />
         <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span>
-        <span :style="{ 'color': userColour }"
-              class="kiwi-nicklist-user-nick"
+        <span
+            :style="{ 'color': userColour }"
+            class="kiwi-nicklist-user-nick"
         >{{ user.nick }}
         </span>
         <span class="kiwi-nicklist-messageuser" @click.stop="nicklist.openQuery(user)">
@@ -20,11 +26,15 @@
 </template>
 
 <script>
-
 'kiwi public';
 
+import AwayStatusIndicator from './AwayStatusIndicator';
+
 export default {
-    props: ['user', 'nicklist'],
+    components: {
+        AwayStatusIndicator,
+    },
+    props: ['network', 'user', 'nicklist'],
     computed: {
         userColour() {
             if (this.nicklist.useColouredNicks) {
@@ -32,7 +42,6 @@ export default {
             }
             return '';
         },
-
     },
 };
 </script>
@@ -41,7 +50,8 @@ export default {
 
 .kiwi-nicklist-user {
     line-height: 26px;
-    padding: 0 16px 0 12px;
+    padding: 0 12px 0 12px;
+    border-left: 4px solid;
     margin: 0;
     position: relative;
     box-sizing: border-box;
@@ -59,9 +69,13 @@ export default {
     content: '\f075';
     right: -1em;
     font-family: fontAwesome, sans-serif;
-    line-height: 30px;
+    line-height: 26px;
     opacity: 0;
-    transition: all 0.1s;
+}
+
+.kiwi-nicklist-messageuser:hover {
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
