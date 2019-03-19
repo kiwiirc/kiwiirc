@@ -225,13 +225,17 @@ export default {
 
 .kiwi-autocomplete {
     box-sizing: border-box;
-    overflow-y: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     position: absolute;
-    bottom: 100%;
+    bottom: 99%;
     right: 0;
     left: 0;
     z-index: 1;
-    max-height: 300px;
+    max-height: 75px;
+    padding: 15px 10px 15px 10px;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .kiwi-autocomplete-noresults {
@@ -245,23 +249,22 @@ export default {
 }
 
 .kiwi-autocomplete-item {
-    padding: 1px 0;
+    display: inline-block;
+    margin: 0 6px;
+    padding: 0 12px 0 12px;
+    border-radius: 12px;
 }
 
 .kiwi-autocomplete-item-value {
     font-weight: bold;
     display: inline-block;
-    min-width: 76px;
-    padding: 0 0 0 11px;
-}
-
-.kiwi-autocomplete-item-message {
-    padding: 0 0 0 10px;
+    margin-right: 4px;
 }
 
 .kiwi-autocomplete-item-message i {
-    font-size: 0.8em;
+    font-size: 0.9em;
     margin-right: 5px;
+    margin-left: 0;
 }
 
 .kiwi-autocomplete-item-description {

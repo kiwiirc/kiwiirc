@@ -143,6 +143,11 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     border-top-color: #2d2d2d;
 }
 
+.kiwi-autocomplete-item--selected {
+    background: #e2e2e2;
+    color: var(--brand-default-bg);
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }

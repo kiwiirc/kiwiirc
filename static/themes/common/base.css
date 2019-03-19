@@ -216,17 +216,26 @@
 
 /* ---- Auto complete ( autoComplete ) ---- */
 .kiwi-autocomplete {
-    box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
-    border: 1px solid var(--brand-midtone);
+    border-top: 1px solid var(--brand-midtone);
+    border-bottom: 1px solid var(--brand-midtone);
     background: var(--brand-default-bg);
 }
 
 .kiwi-autocomplete-item {
-    border-bottom: 1px solid var(--brand-midtone);
+    background: var(--brand-midtone);
+    color: var(--brand-default-fg);
+}
+
+.kiwi-autocomplete-item .kiwi-autocomplete-item-value {
+    color: var(--brand-primary);
 }
 
 .kiwi-autocomplete-item--selected {
     background: var(--brand-primary);
+    color: var(--brand-default-bg);
+}
+
+.kiwi-autocomplete-item--selected .kiwi-autocomplete-item-value {
     color: var(--brand-default-bg);
 }
 
