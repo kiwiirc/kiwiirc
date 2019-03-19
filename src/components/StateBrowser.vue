@@ -30,7 +30,7 @@
                     :toggle="false"
                 />
             </div>
-            <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
+            <div v-if="is_usermenu_open && !isRestrictedServer" class="kiwi-statebrowser-usermenu-body">
                 <p> {{ $t('state_remembered') }} </p>
                 <a class="u-link" @click="clickForget">{{ $t('state_forget') }}</a>
                 <div class="kiwi-close-icon" @click="is_usermenu_open=false">
