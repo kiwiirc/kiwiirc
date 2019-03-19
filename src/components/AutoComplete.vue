@@ -30,7 +30,7 @@
             <template v-else-if="item.type === 'command'">
                 <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
                 <span v-if="$state.setting('useMonospaceautoCompleteDesc')"
-                    class="u-link kiwi-autocomplete-item-description">
+                      class="u-link kiwi-autocomplete-item-description">
                     {{ item.description }}
                 </span>
             </template>
