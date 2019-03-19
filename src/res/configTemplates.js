@@ -68,6 +68,8 @@ export const configTemplates = {
         },
         noticeActiveBuffer: true,
         showAutocomplete: true,
+        autoCompleteDesc: true,
+        autoCompleteLayout: 'vertical',
         showEmojiPicker: true,
         showSendButton: false,
         sidebarDefault: '',
