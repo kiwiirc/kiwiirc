@@ -143,9 +143,23 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     border-top-color: #2d2d2d;
 }
 
-.kiwi-autocomplete-item--selected {
+.kiwi-autocomplete-item {
     background: #e2e2e2;
+}
+
+.kiwi-autocomplete-item span.kiwi-autocomplete-item-value,
+.kiwi-autocomplete-item-description {
     color: var(--brand-default-bg);
+}
+
+.kiwi-autocomplete-item--selected {
+    background: #3c3b3b;
+    color: var(--brand-default-fg);
+}
+
+.kiwi-autocomplete-item--selected span.kiwi-autocomplete-item-value,
+.kiwi-autocomplete-item--selected .kiwi-autocomplete-item-description {
+    color: var(--brand-default-fg);
 }
 
 /* IRC Text Colours */
