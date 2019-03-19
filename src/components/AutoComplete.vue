@@ -24,9 +24,9 @@
                     @click.stop="openQuery(item.text)"
                 >
                     <i class="fa fa-comment" aria-hidden="true" />
-                    {{ $t('send_message') }}
                 </span>
                 <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
+                <span class="kiwi-autocomplete-item-message">{{ $t('send_message') }}</span>
             </template>
             <template v-else-if="item.type === 'command'">
                 <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
@@ -252,7 +252,6 @@ export default {
 
 .kiwi-autocomplete-mobile {
     left: 0;
-    column-count: 2;
     word-break: normal;
     max-height: none;
 }
@@ -307,12 +306,6 @@ export default {
     display: block;
     margin: 0 0 5px 0;
     text-align: left;
-}
-
-@media screen and (max-width: 550px) {
-    .kiwi-autocomplete-mobile {
-        column-count: 1;
-    }
 }
 
 </style>

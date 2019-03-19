@@ -1,5 +1,6 @@
 <template>
-    <div :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
+    <div :class="{'kiwi-controlinput-selfuser--open': selfuser_open,
+                  'kiwi-controlinput-autocomplete--open': autocomplete_open}"
          class="kiwi-controlinput kiwi-theme-bg"
     >
         <div class="kiwi-controlinput-selfuser">
@@ -731,6 +732,22 @@ export default {
 .kiwi-plugin-ui-trans-enter-active,
 .kiwi-plugin-ui-trans-leave-active {
     transition: right 0.2s;
+}
+
+/* If Autocomplete is open, fade following items down */
+.kiwi-controlinput-tools,
+.kiwi-controlinput-user,
+.kiwi-awaystatusindicator,
+.kiwi-controlinput-send {
+    transition: opacity 0.2s;
+}
+
+.kiwi-controlinput-autocomplete--open .kiwi-controlinput-tools,
+.kiwi-controlinput-autocomplete--open .kiwi-controlinput-user,
+.kiwi-controlinput-autocomplete--open .kiwi-awaystatusindicator,
+.kiwi-controlinput-autocomplete--open .kiwi-controlinput-send {
+    opacity: 0.5;
+    transition: opacity 0.2s;
 }
 
 @media screen and (max-width: 769px) {
