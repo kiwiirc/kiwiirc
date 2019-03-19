@@ -44,20 +44,6 @@
                                 <span>{{ $t('settings_show_autocomplete') }} </span>
                                 <input v-model="settingShowAutoComplete" type="checkbox" >
                             </label>
-                            <label v-if="settingShowAutoComplete"
-                                   class="u-checkbox-wrapper">
-                                <span>Show AutoComplete descriptions</span>
-                                <input v-model="settingAutoCompleteDesc" type="checkbox" >
-                            </label>
-                            <label v-if="settingShowAutoComplete"
-                                   class="kiwi-appsettings-messagelistDisplay">
-                                <span>AutoComplete layout</span>
-                                <select v-model="settingAutoCompleteLayout">
-                                    <option value="" selected disabled hidden>Select layout</option>
-                                    <option value="horizontal">Horizontal</option>
-                                    <option value="vertical">Vertical</option>
-                                </select>
-                            </label>
                         </div>
                     </div>
 
