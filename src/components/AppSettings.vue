@@ -36,13 +36,13 @@
                                 <span>{{ $t('settings_themeurl') }} </span>
                                 <input v-model="customThemeUrl" class="u-input">
                             </label>
-                            <label class="u-checkbox-wrapper">
-                                <span>{{ $t('settings_show_autocomplete') }} </span>
-                                <input v-model="settingShowAutoComplete" type="checkbox" >
-                            </label>
                             <label v-if="themeSupportsMonospace" class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_use_monospace') }} </span>
                                 <input v-model="settingUseMonospace" type="checkbox" >
+                            </label>
+                            <label class="u-checkbox-wrapper">
+                                <span>{{ $t('settings_show_autocomplete') }} </span>
+                                <input v-model="settingShowAutoComplete" type="checkbox" >
                             </label>
                         </div>
                     </div>
@@ -237,6 +237,8 @@ export default {
             return state.settings;
         },
         settingShowAutoComplete: bindSetting('showAutocomplete'),
+        settingAutoCompleteDesc: bindSetting('autoCompleteDesc'),
+        settingAutoCompleteLayout: bindSetting('autoCompleteLayout'),
         settingUseMonospace: bindSetting('useMonospace'),
         settingHighlights: bindSetting('highlights'),
         settingBufferColourNicknames: bindSetting('buffers.colour_nicknames_in_messages'),

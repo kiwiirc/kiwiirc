@@ -1,6 +1,14 @@
 <template>
-    <div class="kiwi-autocomplete kiwi-theme-bg">
-
+    <div
+        :class="{
+            'kiwi-autocomplete-horizontal': $state.setting('autoCompleteLayout') === 'horizontal',
+            'kiwi-autocomplete-mobile': $state.ui.is_narrow
+        }"
+        class="kiwi-autocomplete kiwi-theme-bg">
+        <span v-if="filteredAndLimitedItems.length === 0"
+              class="kiwi-autocomplete-noresults">
+            {{ $t('no_results_found') }}
+        </span>
         <div
             v-for="item in filteredAndLimitedItems"
             :key="item.type+item.text"
@@ -13,15 +21,16 @@
             <template v-if="item.type === 'user'">
                 <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
                 <span
-                    class="u-link kiwi-autocomplete-item-action"
+                    class="u-link kiwi-autocomplete-item-action kiwi-autocomplete-item-message"
                     @click.stop="openQuery(item.text)"
                 >
-                    {{ $t('send_message') }}
+                    <i class="fa fa-comment" aria-hidden="true" /> {{ $t('send_message') }}
                 </span>
             </template>
             <template v-else-if="item.type === 'command'">
                 <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
-                <span class="u-link kiwi-autocomplete-item-description">
+                <span v-if="$state.setting('autoCompleteDesc')"
+                      class="u-link kiwi-autocomplete-item-description">
                     {{ item.description }}
                 </span>
             </template>
@@ -221,26 +230,85 @@ export default {
 
 .kiwi-autocomplete {
     box-sizing: border-box;
-    overflow-y: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     position: absolute;
-    bottom: 100%;
+    bottom: 39px;
     right: 0;
-    left: 0;
+    left: -11px;
+    max-height: 170px;
     z-index: 1;
-    max-height: 300px;
+    border-radius: 4px 4px 0 0;
+    padding: 10px 10px 0 10px;
+}
+
+.kiwi-autocomplete-horizontal {
+    max-height: 75px;
+    padding: 15px 10px 15px 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.kiwi-autocomplete-mobile {
+    left: 0;
+    word-break: normal;
+    max-height: none;
+}
+
+.kiwi-autocomplete-noresults {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5em 0;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: default;
 }
 
 .kiwi-autocomplete-item {
-    padding: 5px 2em;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0 0 5px 0;
+    padding: 4px 8px;
+    border-radius: 4px;
 }
 
 .kiwi-autocomplete-item-value {
     font-weight: bold;
+    display: inline-block;
+    margin-right: 4px;
 }
 
-.kiwi-autocomplete-item-action {
-    float: right;
+.kiwi-autocomplete-item-message {
+    margin-left: 6px;
+}
+
+.kiwi-autocomplete-item-message i {
     font-size: 0.9em;
+    margin-right: 5px;
+    margin-left: 0;
+}
+
+.kiwi-autocomplete-item-description {
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+.kiwi-autocomplete-horizontal .kiwi-autocomplete-item {
+    float: none;
+    width: auto;
+    display: inline-block;
+    margin: 0 6px;
+    padding: 0 12px 0 12px;
+    border-radius: 12px;
+}
+
+.kiwi-autocomplete-mobile .kiwi-autocomplete-item {
+    display: block;
+    margin: 0 0 5px 0;
+    text-align: left;
 }
 
 </style>
