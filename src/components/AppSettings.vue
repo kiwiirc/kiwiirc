@@ -36,13 +36,27 @@
                                 <span>{{ $t('settings_themeurl') }} </span>
                                 <input v-model="customThemeUrl" class="u-input">
                             </label>
+                            <label v-if="themeSupportsMonospace" class="u-checkbox-wrapper">
+                                <span>{{ $t('settings_use_monospace') }} </span>
+                                <input v-model="settingUseMonospace" type="checkbox" >
+                            </label>
                             <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_show_autocomplete') }} </span>
                                 <input v-model="settingShowAutoComplete" type="checkbox" >
                             </label>
-                            <label v-if="themeSupportsMonospace" class="u-checkbox-wrapper">
-                                <span>{{ $t('settings_use_monospace') }} </span>
-                                <input v-model="settingUseMonospace" type="checkbox" >
+                            <label v-if="settingShowAutoComplete"
+                                   class="u-checkbox-wrapper">
+                                <span>Show AutoComplete descriptions</span>
+                                <input v-model="settingAutoCompleteDesc" type="checkbox" >
+                            </label>
+                            <label v-if="settingShowAutoComplete"
+                                   class="kiwi-appsettings-messagelistDisplay">
+                                <span>AutoComplete layout</span>
+                                <select v-model="settingAutoCompleteLayout">
+                                    <option value="" selected disabled hidden>Select layout</option>
+                                    <option value="horizontal">Horizontal</option>
+                                    <option value="vertical">Vertical</option>
+                                </select>
                             </label>
                         </div>
                     </div>
@@ -237,6 +251,8 @@ export default {
             return state.settings;
         },
         settingShowAutoComplete: bindSetting('showAutocomplete'),
+        settingAutoCompleteDesc: bindSetting('autoCompleteDesc'),
+        settingAutoCompleteLayout: bindSetting('autoCompleteLayout'),
         settingUseMonospace: bindSetting('useMonospace'),
         settingHighlights: bindSetting('highlights'),
         settingBufferColourNicknames: bindSetting('buffers.colour_nicknames_in_messages'),

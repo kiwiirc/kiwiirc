@@ -1,5 +1,9 @@
 <template>
-    <div class="kiwi-autocomplete kiwi-theme-bg">
+    <div
+        :class="{
+            'kiwi-autocomplete-horizontal': $state.setting('autoCompleteLayout') === 'horizontal'
+        }"
+        class="kiwi-autocomplete kiwi-theme-bg">
         <span v-if="filteredAndLimitedItems.length === 0"
               class="kiwi-autocomplete-noresults">
             {{ $t('no_results_found') }}
@@ -25,7 +29,8 @@
             </template>
             <template v-else-if="item.type === 'command'">
                 <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
-                <span class="u-link kiwi-autocomplete-item-description">
+                <span v-if="$state.setting('useMonospaceautoCompleteDesc')"
+                    class="u-link kiwi-autocomplete-item-description">
                     {{ item.description }}
                 </span>
             </template>
@@ -232,6 +237,10 @@ export default {
     right: 0;
     left: 0;
     z-index: 1;
+    padding: 10px 10px 0 10px;
+}
+
+.kiwi-autocomplete-horizontal {
     max-height: 75px;
     padding: 15px 10px 15px 10px;
     text-align: center;
@@ -249,10 +258,13 @@ export default {
 }
 
 .kiwi-autocomplete-item {
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
     display: inline-block;
-    margin: 0 6px;
+    margin: 0 0 10px 0;
     padding: 0 12px 0 12px;
-    border-radius: 12px;
+    border-radius: 4px;
 }
 
 .kiwi-autocomplete-item-value {
@@ -270,6 +282,15 @@ export default {
 .kiwi-autocomplete-item-description {
     display: inline-block;
     font-size: 0.9em;
+}
+
+.kiwi-autocomplete-horizontal .kiwi-autocomplete-item {
+    float: none;
+    width: auto;
+    display: inline-block;
+    margin: 0 6px;
+    padding: 0 12px 0 12px;
+    border-radius: 12px;
 }
 
 </style>
