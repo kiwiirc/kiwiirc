@@ -638,6 +638,10 @@
     background: var(--brand-primary);
 }
 
+.kiwi-workspace::after {
+    background: var(--brand-error);
+}
+
 /* ---- Container ( Container.vue )  ---- */
 .kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-sidebar {
