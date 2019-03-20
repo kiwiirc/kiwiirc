@@ -180,8 +180,10 @@ export default Vue.component('irc-input', {
                             this.code_map[attribs.color.replace(/,/g, ', ')] ||
                             this.code_map[Colours.hex2rgb(attribs.color)];
 
-                        textValue += '\x03' + mappedCode;
-                        addToggle('\x03' + mappedCode);
+                        if (mappedCode) {
+                            textValue += '\x03' + mappedCode;
+                            addToggle('\x03' + mappedCode);
+                        }
                     } else if (name === 'strong') {
                         textValue += '\x02';
                         addToggle('\x02');
