@@ -551,6 +551,9 @@ export default {
             if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
                 return;
             }
+            if(!this.buffer.setting('share_typing')) {
+                return;
+            }
             let buffer = this.buffer;
             let network = buffer.getNetwork();
             if (!buffer || (!buffer.isChannel() && !buffer.isQuery())) {
@@ -562,7 +565,7 @@ export default {
             }
             this.typingTimer = setTimeout(this.stopTyping, 3000);
 
-            if (performance.now() < this.lastTypingTime + 3000) {
+            if (Date.now() < this.lastTypingTime + 3000) {
                 return;
             }
 
@@ -572,10 +575,13 @@ export default {
             };
             network.ircClient.raw(msg);
 
-            this.lastTypingTime = performance.now();
+            this.lastTypingTime = Date.now();
         },
         stopTyping() {
             if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
+                return;
+            }
+            if(!this.buffer.setting('share_typing')) {
                 return;
             }
             let buffer = this.buffer;

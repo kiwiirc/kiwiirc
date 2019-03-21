@@ -59,6 +59,10 @@
                                         <span>{{ $t('side_colours') }}</span>
                                         <input v-model="settingColouredNicklist" type="checkbox">
                                     </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{ $t('settings_share_typing') }}</span>
+                                        <input v-model="settingShareTyping" type="checkbox">
+                                    </label>
                                 </form>
                             </div>
                         </tabbed-tab>
@@ -202,6 +206,14 @@ export default {
             set(newVal) {
                 return this.buffer.setting('extra_formatting', newVal);
             },
+        },
+        settingShareTyping: {
+            get: function getSettingShareTyping() {
+                return this.buffer.setting('share_typing');
+            },
+            set: function setSettingShareTyping(newVal) {
+                return this.buffer.setting('share_typing', newVal);
+            }
         },
         bufferType() {
             let type = '';
