@@ -96,10 +96,10 @@ export function create(state, network) {
         });
     });
 
-    state.$on('irc.raw.TAGMSG', (command, event) => {
+    ircClient.on('tagmsg', (event) => {
         let user = state.getUser(network.id, event.nick);
         let buffer = state.getActiveBuffer();
-        if (event.tags && event.params[0] === buffer.name) {
+        if (event.tags && event.target === buffer.name) {
             if (user.typingTimer) {
                 clearTimeout(user.typingTimer);
                 user.typingTimer = null;

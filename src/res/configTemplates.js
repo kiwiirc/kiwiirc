@@ -54,6 +54,7 @@ export const configTemplates = {
             shared_input: false,
             show_message_info: true,
             who_loop: true,
+            share_typing: true,
         },
         // Startup screen default
         startupOptions: {
@@ -304,6 +305,7 @@ export const configTemplates = {
             colour_nicknames_in_messages: false,
             show_emoticons: false,
             show_message_info: false,
+            share_typing: false,
         },
     },
 

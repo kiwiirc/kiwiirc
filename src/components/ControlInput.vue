@@ -569,11 +569,9 @@ export default {
                 return;
             }
 
-            let msg = new network.ircClient.Message('TAGMSG', buffer.name);
-            msg.tags = {
+            network.ircClient.tagmsg(buffer.name, {
                 '+draft/typing': 'active',
-            };
-            network.ircClient.raw(msg);
+            })
 
             this.lastTypingTime = Date.now();
         },
@@ -597,11 +595,9 @@ export default {
                 this.lastTypingTime = 0;
             }
 
-            let msg = new network.ircClient.Message('TAGMSG', buffer.name);
-            msg.tags = {
+            network.ircClient.tagmsg(buffer.name, {
                 '+draft/typing': this.$refs.input.getValue() ? 'paused' : 'done',
-            };
-            network.ircClient.raw(msg);
+            })
         },
     },
 };
