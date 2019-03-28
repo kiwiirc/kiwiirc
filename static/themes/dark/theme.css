@@ -33,6 +33,10 @@
     --comp-border: #484848;
 }
 
+.kiwi-wrap {
+    --kiwi-nick-brightness: 60;
+}
+
 .kiwi-header {
     border-bottom-color: #000;
 }
