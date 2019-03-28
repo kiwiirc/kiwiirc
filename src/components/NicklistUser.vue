@@ -22,8 +22,7 @@
         <span class="kiwi-nicklist-messageuser" @click.stop="nicklist.openQuery(user)">
             <i class="fa fa-comment" aria-hidden="true"/>
         </span>
-        <span v-if="user.typingState==='active'"><em>typing...</em></span>
-        <span v-if="user.typingState==='paused'"><em>typing (paused)...</em></span>
+        <typing-status-indicator :user="user" />
     </li>
 </template>
 
@@ -31,10 +30,12 @@
 'kiwi public';
 
 import AwayStatusIndicator from './AwayStatusIndicator';
+import TypingStatusIndicator from './TypingStatusIndicator';
 
 export default {
     components: {
         AwayStatusIndicator,
+        TypingStatusIndicator
     },
     props: ['network', 'user', 'nicklist'],
     computed: {
