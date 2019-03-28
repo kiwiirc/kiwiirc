@@ -131,8 +131,12 @@
     border-bottom-color: var(--comp-border);
 }
 
-.kiwi-header-name {
+.kiwi-header-name-container {
     color: var(--comp-header-name-fg);
+}
+
+.kiwi-header-name {
+    background-color: var(--comp-header-bg);
 }
 
 .kiwi-header-option a:hover,
