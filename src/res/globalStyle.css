@@ -154,6 +154,15 @@ select {
     border-bottom: 2px solid;
 }
 
+.u-form input[type='checkbox']:disabled,
+.u-form input[type='radio']:disabled,
+.u-form input[type='text']:disabled,
+.u-form input[type='password']:disabled,
+.u-form input[type='email']:disabled,
+.u-form textarea:disabled {
+    cursor: not-allowed;
+}
+
 .u-checkbox-wrapper {
     position: relative;
     padding-left: 30px;
