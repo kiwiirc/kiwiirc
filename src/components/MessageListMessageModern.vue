@@ -293,17 +293,6 @@ export default {
     padding-top: 0;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-    margin: 20px 20px 20px 20px;
-    padding: 10px 20px;
-    width: auto;
-    box-sizing: border-box;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
-    display: none;
-}
-
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-avatar {
     display: none;
 }

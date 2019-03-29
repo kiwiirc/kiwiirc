@@ -1205,6 +1205,8 @@ function clientMiddleware(state, network) {
             let messageBody = '';
 
             if (event.nick) {
+                buffer.topic_by = event.nick;
+                buffer.topic_when = event.time || Date.now();
                 messageBody = TextFormatting.formatAndT(
                     'channel_topic',
                     null,
@@ -1222,10 +1224,19 @@ function clientMiddleware(state, network) {
                     nick: '',
                     message: messageBody,
                     type: 'topic',
+                    type_extra: event.nick ? 'changed' : '',
                 });
             }
         }
 
+        if (command === 'topicsetby') {
+            let buffer = network.bufferByName(event.channel);
+            if (!buffer) {
+                return;
+            }
+            buffer.topic_by = event.nick;
+            buffer.topic_when = event.when * 1000;
+        }
         if (command === 'help') {
             let buffer = state.getOrAddBufferByName(networkid, '*help');
             state.addMessage(buffer, {

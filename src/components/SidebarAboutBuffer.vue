@@ -10,11 +10,20 @@
                 <i class="fa fa-angle-right" /> {{ $t('about') }}
             </h4>
             <div>
+                <p v-if="b.created_at">
+                    {{ $t('created_on', { when: new Intl.DateTimeFormat().format(b.created_at) }) }}
+                </p>
+
                 <p v-if="b.topic" v-html="formattedTopic" />
                 <p v-else>{{ $t('no_topic_set') }}</p>
 
-                <p v-if="b.created_at">
-                    {{ $t('created_at', { when: new Intl.DateTimeFormat().format(b.created_at) }) }}
+                <p v-if="b.topic && b.topic_by && b.topic_when">
+                    {{
+                        $t('topic_setby', {
+                            who: b.topic_by,
+                            when: new Intl.DateTimeFormat().format(b.topic_when)
+                        })
+                    }}
                 </p>
 
                 <p class="kiwi-aboutbuffer-usercount">

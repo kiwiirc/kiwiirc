@@ -37,8 +37,10 @@ import '@/components/utils/IrcInput';
 import '@/components/utils/InputPrompt';
 import '@/components/utils/InputConfirm';
 
-Vue.use(VueVirtualScroller);
+// Message Components
+import * as MessageTopic from '@/components/messages/Topic';
 
+Vue.use(VueVirtualScroller);
 let logLevelMatch = window.location.href.match(/kiwi-loglevel=(\d)/);
 if (logLevelMatch && logLevelMatch[1]) {
     let newLevel = parseInt(logLevelMatch[1], 10);
@@ -47,6 +49,8 @@ if (logLevelMatch && logLevelMatch[1]) {
 }
 
 let log = Logger.namespace('main');
+
+MessageTopic.listenForMessages(state);
 
 // Add the global API as soon as possible so that things can start listening to it
 let api = window.kiwi = GlobalApi.singleton();

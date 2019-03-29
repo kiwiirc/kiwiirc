@@ -899,32 +899,15 @@
 }
 
 /* ---- Messagelist Topic Styling ---- */
-.kiwi-messagelist-message.kiwi-messagelist-message-topic {
-    border-top: 1px solid var(--brand-primary);
-    border-bottom: 1px solid var(--brand-primary);
+.kiwi-message-topic {
+    border: 2px solid var(--brand-primary);
     color: var(--brand-default-fg);
     background: var(--brand-default-bg);
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic {
-    border-top: 2px solid var(--brand-primary);
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic,
-.kiwi-messagelist-message--modern.kiwi-mesagelist-message-topic.kiwi-messagelist-message--highlight {
-    border: 2px solid var(--brand-primary);
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic.kiwi-messagelist-message--unread {
-    border-left: 2px solid var(--brand-primary);
-}
 
 .kiwi-header-buffersettings {
     border-top: 1px solid var(--brand-midtone);
-}
-
-.kiwi-header-topic > div {
-    color: var(--brand-default-fg);
 }
 
 .kiwi-messagelist-message-whois {

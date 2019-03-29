@@ -204,20 +204,6 @@ export default {
     cursor: pointer;
 }
 
-//Channel topic
-.kiwi-messagelist-message--text.kiwi-messagelist-message-topic {
-    border-radius: 0;
-    border-left: 0;
-    border-right: 0;
-    margin: 10px 0;
-}
-
-.kiwi-messagelist-message--text.kiwi-messagelist-message-topic .kiwi-messagelist-body {
-    padding-right: 0;
-    max-width: 95%;
-    margin-left: 20px;
-}
-
 .kiwi-messagelist-message--text.kiwi-messagelist-message--unread {
     opacity: 1;
 }
