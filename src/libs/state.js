@@ -35,40 +35,7 @@ const stateObj = {
         current_input: '',
         show_advanced_tab: false,
     },
-    networks: [
-        /* {
-            id: 1,
-            name: 'sumnetwork',
-            state: 'disconnected',
-            state_error: '',
-            connection: {
-                server: 'irc.freenode.net',
-                port: 6667,
-                tls: false,
-                password: ''
-            },
-            nick: 'prawnsalad',
-            username: 'prawn',
-            settings: { show_raw: false },
-            auto_commands: '',
-            is_znc: false,
-            channel_list: [],
-            channel_list_state: '',
-        },
-        {
-            id: 2,
-            name: 'snoonet',
-            state: 'disconnected',
-            connection: {
-                server: 'irc.freenode.net',
-                port: 6667,
-                tls: false,
-                password: ''
-            },
-            nick: 'prawnsalad',
-            username: 'prawn',
-        }, */
-    ],
+    networks: [],
 };
 
 const userDict = new Vue({
@@ -79,20 +46,8 @@ const userDict = new Vue({
     },
     /*
     (network id): {
-        prawnsalad: {
-            nick: 'prawnsalad',
-            host: 'isp.net',
-            username: 'prawn',
-            modes: '+ix',
-            buffers: {1: {modes: []}},
-        },
-        someone: {
-            nick: 'someone',
-            host: 'masked.com',
-            username: 'someirc',
-            modes: '+ix',
-            buffers: {1: {modes: []}},
-        },
+        (lowercase nick): UserState,
+        (lowercase nick): UserState,
     },
     */
 });
@@ -105,16 +60,8 @@ const bufferDict = new Vue({
     },
     /*
     (network id): [
-        {
-            id: 1
-            networkid: 2,
-            name: '#orangechat',
-            topic: '',
-            joined: false,
-            flags: { unread: 0 },
-            settings: { alert_on: 'all' },
-            users: [ref_to_user_obj],
-        },
+        BufferState,
+        BufferState,
     ]
     */
 });
@@ -125,34 +72,14 @@ const messages = [
         networkid: 1,
         buffer: '#kiwiirc',
         messages: [
-            {
-                time: Date.now(),
-                nick: 'prawnsalad',
-                message: 'hello',
-            },
-        ],
-    },
-    {
-        networkid: 2,
-        buffer: '#orangechat',
-        messages: [
-            {
-                time: Date.now(),
-                nick: 'prawnsalad',
-                message: 'boom boom boom',
-            },
-            {
-                time: Date.now() + 10000,
-                nick: 'someone',
-                message: '.. you want me in your room?',
-            },
+            Message,
+            Message
         ],
     }, */
 ];
 
 const availableStartups = Object.create(null);
 
-// TODO: Move these state changing methods into vuex or something
 const state = new Vue({
     data: stateObj,
     methods: {

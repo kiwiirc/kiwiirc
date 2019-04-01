@@ -1,3 +1,19 @@
+/**
+ * Configuration templates
+ *
+ * All the default values for config options throughout kiwi are set here, under
+ * the 'default' template object below.
+ * If a 'default.template' value is set in the user config, this is used to
+ * find the next template object below and is merged over the default config
+ * template.
+ * The user config (config.json by default) is then merged over the resulting
+ * config object.
+ *
+ * The advanced settings dialog also displays these settings by iterating
+ * through the keys. The values must not be null otherwise they will not be
+ * shown.
+ */
+
 export const configTemplates = {
 
     default: {
