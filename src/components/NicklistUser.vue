@@ -22,7 +22,7 @@
         <span class="kiwi-nicklist-messageuser" @click.stop="nicklist.openQuery(user)">
             <i class="fa fa-comment" aria-hidden="true"/>
         </span>
-        <typing-status-indicator :user="user" />
+        <typing-status-indicator :user="user" :buffer="nicklist.buffer" />
     </li>
 </template>
 

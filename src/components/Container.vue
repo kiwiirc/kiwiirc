@@ -39,6 +39,7 @@
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
                     />
+                    <typing-users-list :buffer="buffer" />
                 </template>
 
                 <slot name="after"/>
@@ -63,6 +64,7 @@ import ContainerHeader from './ContainerHeader';
 import Sidebar from './Sidebar';
 import MessageList from './MessageList';
 import ServerView from './ServerView';
+import TypingUsersList from './TypingUsersList';
 
 export default {
     components: {
@@ -70,6 +72,7 @@ export default {
         Sidebar,
         MessageList,
         ServerView,
+        TypingUsersList
     },
     props: ['network', 'buffer', 'sidebarState'],
     data: function data() {
@@ -227,6 +230,14 @@ export default {
 
 .kiwi-serverview {
     flex: 1;
+}
+
+.kiwi-typinguserslist {
+    position: absolute;
+    bottom: 0;
+    left: 1em;
+    right: 2em;
+    background: var(--brand-default-bg);
 }
 
 .kiwi-container--no-sidebar .kiwi-header,

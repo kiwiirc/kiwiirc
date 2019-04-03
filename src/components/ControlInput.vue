@@ -569,9 +569,7 @@ export default {
                 return;
             }
 
-            network.ircClient.tagmsg(buffer.name, {
-                '+draft/typing': 'active',
-            })
+            network.ircClient.typing.start(buffer.name);
 
             this.lastTypingTime = Date.now();
         },
@@ -595,9 +593,9 @@ export default {
                 this.lastTypingTime = 0;
             }
 
-            network.ircClient.tagmsg(buffer.name, {
-                '+draft/typing': this.$refs.input.getValue() ? 'paused' : 'done',
-            })
+            this.$refs.input.getValue() ?
+                network.ircClient.typing.pause(buffer.name) :
+                network.ircClient.typing.stop(buffer.name);
         },
     },
 };

@@ -55,7 +55,7 @@
                 :ml="thisMl"
             />
         </div>
-        <typing-users-list :buffer="buffer" />
+
         <transition name="kiwi-messagelist-joinloadertrans">
             <div v-if="shouldShowJoiningLoader" class="kiwi-messagelist-joinloader">
                 <LoadingAnimation />
@@ -87,7 +87,6 @@ import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
 import MessageListMessageInline from './MessageListMessageInline';
 import LoadingAnimation from './LoadingAnimation.vue';
-import TypingUsersList from './TypingUsersList';
 
 let log = Logger.namespace('MessageList.vue');
 
@@ -103,7 +102,6 @@ export default {
         MessageListMessageCompact,
         MessageListMessageInline,
         LoadingAnimation,
-        TypingUsersList
     },
     props: ['buffer'],
     data() {
@@ -438,6 +436,9 @@ export default {
 .kiwi-messagelist {
     overflow-y: auto;
     height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 1em;
+    position: relative;
 }
 
 .kiwi-messagelist-item {

@@ -6,6 +6,7 @@ import Irc from 'irc-framework/browser';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import bouncerMiddleware from './BouncerMiddleware';
+import typingMiddleware from './TypingMiddleware';
 import * as ServerConnection from './ServerConnection';
 
 export function create(state, network) {
@@ -39,8 +40,10 @@ export function create(state, network) {
 
     let ircClient = new Irc.Client(clientOpts);
     ircClient.requestCap('znc.in/self-message');
+    ircClient.requestCap('message-tags');
     ircClient.use(clientMiddleware(state, network));
     ircClient.use(bouncerMiddleware());
+    ircClient.use(typingMiddleware());
 
     // Overload the connect() function to make sure we are connecting with the
     // most recent connection details from the state
@@ -96,23 +99,10 @@ export function create(state, network) {
         });
     });
 
-    ircClient.on('tagmsg', (event) => {
+    ircClient.on('typing', (event) => {
         let user = state.getUser(network.id, event.nick);
-        let buffer = state.getActiveBuffer();
-        if (event.tags && event.target === buffer.name) {
-            if (user.typingTimer) {
-                clearTimeout(user.typingTimer);
-                user.typingTimer = null;
-            }
-            if (event.tags['+draft/typing'] === 'active') {
-                user.typingState = 'active';
-                user.typingTimer = setTimeout(() => { user.typingState = ''; }, 6000);
-            } else if (event.tags['+draft/typing'] === 'paused') {
-                user.typingState = 'paused';
-                user.typingTimer = setTimeout(() => { user.typingState = ''; }, 30000);
-            } else {
-                user.typingState = '';
-            }
+        if (user) {
+            user.typingStatus(event.target, event.status);
         }
     });
 
