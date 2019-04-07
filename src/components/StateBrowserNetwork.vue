@@ -273,6 +273,9 @@ export default {
             // Clear any active component to show the buffer again
             state.$emit('active.component', null);
             state.setActiveBuffer(buffer.networkid, buffer.name);
+            if (this.$state.ui.is_narrow) {
+                state.$emit('statebrowser.hide');
+            }
         },
         isActiveBuffer: function isActiveBuffer(buffer) {
             return (
