@@ -35,7 +35,7 @@ import TypingStatusIndicator from './TypingStatusIndicator';
 export default {
     components: {
         AwayStatusIndicator,
-        TypingStatusIndicator
+        TypingStatusIndicator,
     },
     props: ['network', 'user', 'nicklist'],
     computed: {

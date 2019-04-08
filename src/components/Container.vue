@@ -72,7 +72,7 @@ export default {
         Sidebar,
         MessageList,
         ServerView,
-        TypingUsersList
+        TypingUsersList,
     },
     props: ['network', 'buffer', 'sidebarState'],
     data: function data() {

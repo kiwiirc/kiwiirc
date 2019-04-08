@@ -213,7 +213,7 @@ export default {
             },
             set: function setSettingShareTyping(newVal) {
                 return this.buffer.setting('share_typing', newVal);
-            }
+            },
         },
         bufferType() {
             let type = '';

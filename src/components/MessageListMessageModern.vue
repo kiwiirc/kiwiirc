@@ -115,7 +115,7 @@ export default {
         MessageAvatar: MessageListAvatar,
         MessageInfo,
         AwayStatusIndicator,
-        TypingStatusIndicator
+        TypingStatusIndicator,
     },
     props: ['ml', 'message', 'idx'],
     data: function data() {

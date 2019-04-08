@@ -551,7 +551,7 @@ export default {
             if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
                 return;
             }
-            if(!this.buffer.setting('share_typing')) {
+            if (!this.buffer.setting('share_typing')) {
                 return;
             }
             let buffer = this.buffer;
@@ -577,7 +577,7 @@ export default {
             if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
                 return;
             }
-            if(!this.buffer.setting('share_typing')) {
+            if (!this.buffer.setting('share_typing')) {
                 return;
             }
             let buffer = this.buffer;
