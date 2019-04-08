@@ -5,7 +5,7 @@
             :key="user.nick"
             :style="{ color: userColour(user) }"
         >
-            {{ user.nick }}{{ idx < typingUsers.length - 1 ? ',' : '' }}
+            {{ user.nick }}{{ typingUsers.length - 1 > idx ? ',' : '' }}
         </span> {{ typingUsers.length > 0 ? '…' : '' }}
     </div>
 </template>
@@ -24,7 +24,10 @@ export default {
             return this.buffer.users;
         },
         typingUsers() {
-            return Object.values(this.users).filter(u => u.nick !== this.$state.getActiveNetwork().nick && u.typingStatus(this.buffer.name).status);
+            return Object.values(this.users).filter(
+                u => u.nick !== this.$state.getActiveNetwork().nick &&
+                u.typingStatus(this.buffer.name).status
+            );
         },
     },
     methods: {
