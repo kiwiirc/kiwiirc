@@ -24,7 +24,7 @@ export default {
             return this.buffer.users;
         },
         typingUsers() {
-            return Object.values(this.users).filter(u => u.typingStatus(this.buffer.name).status);
+            return Object.values(this.users).filter(u => u.nick !== this.$state.getActiveNetwork().nick && u.typingStatus(this.buffer.name).status);
         },
     },
     methods: {

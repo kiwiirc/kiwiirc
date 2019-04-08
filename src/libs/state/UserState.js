@@ -48,8 +48,19 @@ export default class UserState {
     }
 
     typingStatus(target, status) {
+        if (!this.typingState[target.toLowerCase()]) {
+            Vue.set(this.typingState, target.toLowerCase(), { started: 0, status: '' });
+        }
+
+        let typing = this.typingState[target.toLowerCase()];
+
         if (!status) {
             return this.typingState[target.toLowerCase()] || { status: '' };
+        }
+
+        if (typing.timeout) {
+            clearTimeout(typing.timeout);
+            typing.timeout = null;
         }
 
         if (status === 'done') {
@@ -57,18 +68,8 @@ export default class UserState {
             return null;
         }
 
-        if (!this.typingState[target.toLowerCase()]) {
-            Vue.set(this.typingState, target.toLowerCase(), { started: 0, status: '' });
-        }
-
-        let typing = this.typingState[target.toLowerCase()];
         typing.started = Date.now();
         typing.status = status;
-
-        if (typing.timeout) {
-            clearTimeout(typing.timeout);
-            typing.timeout = null;
-        }
 
         // Paused state gets a longer timeout as it's usually someone stopping typing
         // to think about their words
