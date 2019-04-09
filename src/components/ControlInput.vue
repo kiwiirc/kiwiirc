@@ -732,6 +732,10 @@ export default {
     .kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
         width: 100%;
     }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-controlinput {
+        z-index: 0;
+    }
 }
 
 </style>

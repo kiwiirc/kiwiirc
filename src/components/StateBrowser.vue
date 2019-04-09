@@ -583,6 +583,7 @@ export default {
         width: 75%;
         left: 0;
         z-index: 100;
+        overflow: visible;
     }
 
     .kiwi-header {
@@ -613,6 +614,18 @@ export default {
 
     .kiwi-statebrowser-usermenu-body .kiwi-close-icon {
         display: none;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser::after {
+        content: '';
+        position: absolute;
+        left: auto;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        right: -100%;
     }
 }
 
