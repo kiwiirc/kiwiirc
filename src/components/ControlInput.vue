@@ -42,6 +42,7 @@
                     @selected="onAutocompleteSelected"
                     @cancel="onAutocompleteCancel"
                 />
+                <typing-users-list :buffer="buffer" />
                 <div class="kiwi-controlinput-input-wrap">
                     <irc-input
                         ref="input"
@@ -114,12 +115,14 @@ import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
 import SelfUser from './SelfUser';
 import AwayStatusIndicator from './AwayStatusIndicator';
+import TypingUsersList from './TypingUsersList';
 
 export default {
     components: {
         AutoComplete,
         AwayStatusIndicator,
         SelfUser,
+        TypingUsersList,
     },
     props: ['container', 'buffer'],
     data() {
@@ -795,4 +798,9 @@ export default {
     }
 }
 
+.kiwi-typinguserslist {
+    position: absolute;
+    top: -24px;
+    background: var(--brand-default-bg);
+}
 </style>
