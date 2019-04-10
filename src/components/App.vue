@@ -424,7 +424,7 @@ body {
     left: 0;
     width: 200px;
     bottom: 0;
-    transition: all 0.1s;
+    transition: left 0.145s, margin-left 0.145s;
     z-index: 1;
 }
 
