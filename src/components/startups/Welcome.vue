@@ -418,6 +418,7 @@ export default {
     margin-top: -0.5em;
     left: 50%;
     margin-left: -40px;
+    color: black;
 }
 
 /** Smaller screen... **/
@@ -448,7 +449,6 @@ export default {
         left: 48%;
         top: 50%;
         margin-top: -50px;
-        color: #fff;
     }
 }
 
