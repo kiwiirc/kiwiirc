@@ -390,7 +390,6 @@ export default {
         background: #42b992;
         width: 100%;
         border-radius: 0;
-        opacity: 0.8;
     }
 
     .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
