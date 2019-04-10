@@ -424,7 +424,7 @@ body {
     left: 0;
     width: 200px;
     bottom: 0;
-    transition: left 0.2s;
+    transition: all 0.1s;
     z-index: 1;
 }
 
@@ -465,7 +465,7 @@ body {
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
         left: 75%;
-        width: 80%;
+        transition: all 0.2s;
     }
 }
 </style>
