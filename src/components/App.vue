@@ -467,11 +467,5 @@ body {
         left: 75%;
         width: 80%;
     }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
-        width: 100%;
-        opacity: 1;
-        z-index: 10;
-    }
 }
 </style>

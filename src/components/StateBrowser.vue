@@ -572,6 +572,19 @@ export default {
     opacity: 1;
 }
 
+.kiwi-wrap .kiwi-statebrowser::after {
+    content: '';
+    position: absolute;
+    left: auto;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    opacity: 0;
+    z-index: 1;
+    width: 0%;
+    right: -100%;
+}
+
 @media screen and (max-width: 769px) {
     .kiwi-statebrowser {
         left: -100%;
@@ -617,15 +630,10 @@ export default {
     }
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser::after {
-        content: '';
-        position: absolute;
-        left: auto;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.4);
-        top: 0;
-        z-index: 1;
+        opacity: 1;
         width: 100%;
         right: -100%;
+        transition: width 0.2s, opacity 0.2s;
     }
 }
 
