@@ -465,7 +465,8 @@ body {
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
         left: 75%;
-        transition: all 0.2s;
+        transition: left 0.1s;
+        transition-delay: 0s;
     }
 }
 </style>

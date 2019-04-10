@@ -233,7 +233,7 @@ export default {
     width: 220px;
     text-align: center;
     overflow: hidden;
-    transition: all 0.2s;
+    transition: all 0.145s;
 }
 
 .kiwi-statebrowser h1 {
@@ -577,7 +577,7 @@ export default {
         width: 75%;
         left: 0;
         z-index: 100;
-        transition: all 0.1s;
+        transition: left 0.07s, width 0.1s;
     }
 
     .kiwi-header {
