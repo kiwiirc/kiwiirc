@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2019-02-19 17:31\n"
+"PO-Revision-Date: 2019-04-10 13:31\n"
 
 #: Start
 msgid "start_button"
@@ -875,11 +875,11 @@ msgstr "Престани да игнорираш някого"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "Завърти заровете"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "Разгъва {{sides}} зарове и получавате {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
