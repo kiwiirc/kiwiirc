@@ -313,6 +313,10 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     color: #fdfdfd;
 }
 
+.kiwi-messagelist-message--compact .kiwi-messagelist-time {
+    color: #fff;
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
