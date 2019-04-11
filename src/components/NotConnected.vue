@@ -175,6 +175,7 @@ export default {
 
 .kiwi-notconnected-button-settings {
     opacity: 0.8;
+    border: 1px solid;
 }
 
 @media screen and (max-width: 1024px) {
