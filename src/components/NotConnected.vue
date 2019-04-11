@@ -136,6 +136,10 @@ export default {
 
 .kiwi-notconnected-caption i {
     font-weight: normal;
+    font-size: 1.5em;
+    position: relative;
+    right: -3px;
+    top: 3px;
 }
 
 .kiwi-notconnected-buttons {
@@ -176,21 +180,21 @@ export default {
 @media screen and (max-width: 1024px) {
     .kiwi-notconnected-caption {
         font-size: 1em;
+        width: 100%;
+        text-align: center;
+    }
+
+    .kiwi-notconnected-buttons {
+        width: 100%;
     }
 
     .kiwi-notconnected-button {
-        clear: both;
-        margin: 0 5% 1em;
+        margin: 0 1%;
         font-size: 1em;
-        display: block;
-        padding: 0.6em 0.8em 0.6em 0.4em;
-        width: 90%;
+        padding: 0 10px;
+        line-height: 32px;
+        width: 42%;
         box-sizing: border-box;
-    }
-
-    .kiwi-notconnected-button-settings {
-        font-size: 1em;
-        max-width: none;
     }
 
     .kiwi-notconnected-button i {
@@ -214,9 +218,9 @@ export default {
     }
 
     .kiwi-notconnected-button {
-        font-size: 1em;
+        font-size: 1.2em;
         width: 90%;
-        line-height: 21px;
+        line-height: 32px;
         display: inline-block;
         margin: 0 5%;
     }
