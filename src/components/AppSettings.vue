@@ -237,8 +237,6 @@ export default {
             return state.settings;
         },
         settingShowAutoComplete: bindSetting('showAutocomplete'),
-        settingAutoCompleteDesc: bindSetting('autoCompleteDesc'),
-        settingAutoCompleteLayout: bindSetting('autoCompleteLayout'),
         settingUseMonospace: bindSetting('useMonospace'),
         settingHighlights: bindSetting('highlights'),
         settingBufferColourNicknames: bindSetting('buffers.colour_nicknames_in_messages'),
