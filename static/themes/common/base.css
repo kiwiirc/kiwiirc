@@ -838,16 +838,6 @@
     background-color: var(--brand-default-bg);
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected {
-    background-color: var(--brand-primary);
-    color: var(--brand-default-bg);
-}
-
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected {
-    background-color: var(--brand-error);
-    color: var(--brand-default-bg);
-}
-
 /* ---- Traffic Messages ---- */
 .kiwi-messagelist-message-traffic-join {
     color: var(--brand-primary);
@@ -970,6 +960,10 @@
 .kiwi-warning-block {
     color: var(--brand-default-bg);
     background-color: var(--brand-error);
+}
+
+.kiwi-warning-block.connecting {
+    background-color: var(--brand-primary);
 }
 
 .kiwi-notconnected-button {
