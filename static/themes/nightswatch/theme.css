@@ -291,6 +291,32 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     background-color: #191919;
 }
 
+.kiwi-container-toggledraw-statebrowser-messagecount {
+    background-color: #4c4b4b;
+    color: var(--brand-default-fg);
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount::after {
+    border-right-color: #4c4b4b;
+}
+
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
+    border-left-color: #4c4b4b;
+}
+
+.kiwi-autocomplete-item--selected {
+    background: #3c3c3c;
+    color: #ffffff;
+}
+
+.kiwi-autocomplete-item--selected .u-link {
+    color: #fdfdfd;
+}
+
+.kiwi-messagelist-message--compact .kiwi-messagelist-time {
+    color: #fff;
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }

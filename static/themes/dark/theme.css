@@ -52,7 +52,7 @@
 }
 .kiwi-appsettings-title,
 .kiwi-appsettings-block h3 {
-    color: var(--brand-default-fg);
+    color: #fff;
 }
 .u-tabbed-view-tabs {
     background: #696969;
@@ -152,6 +152,15 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 }
 .kiwi-messagelist-message--own {
     background-color: #2d2d2d;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount  {
+    color: #f1f1f1;
+}
+
+.kiwi-sidebar-options,
+.kiwi-aboutbuffer h4 {
+    color: #fff;
 }
 
 /* IRC Text Colours */
