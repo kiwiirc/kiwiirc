@@ -4,7 +4,6 @@
             <div class="kiwi-notconnected-caption">
                 <span>{{ $t('not_connected') }}</span>
                 <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true"/>
-                <i v-else class="fa fa-refresh fa-spin kiwi-notconnected-bigicon" aria-hidden="true"/>
             </div>
             <div class="kiwi-notconnected-buttons">
                 <template v-if="isChannel()">
@@ -37,6 +36,9 @@
         </template>
         <div v-else class="kiwi-notconnected-caption">
             {{ $t('connecting') }}
+            <i class="fa fa-refresh fa-spin kiwi-notconnected-bigicon"
+               aria-hidden="true"
+            />
         </div>
     </div>
 </template>
