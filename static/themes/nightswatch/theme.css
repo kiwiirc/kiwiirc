@@ -291,6 +291,19 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     background-color: #191919;
 }
 
+.kiwi-container-toggledraw-statebrowser-messagecount {
+    background-color: #4c4b4b;
+    color: var(--brand-default-fg);
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount::after {
+    border-right-color: #4c4b4b;
+}
+
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
+    border-left-color: #4c4b4b;
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
