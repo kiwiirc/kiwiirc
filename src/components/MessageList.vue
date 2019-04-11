@@ -435,9 +435,8 @@ export default {
 <style lang="less">
 .kiwi-messagelist {
     overflow-y: auto;
-    height: 100%;
     box-sizing: border-box;
-    padding-bottom: 1em;
+    margin-bottom: 25px;
     position: relative;
 }
 
