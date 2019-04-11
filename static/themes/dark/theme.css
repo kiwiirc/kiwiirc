@@ -52,7 +52,7 @@
 }
 .kiwi-appsettings-title,
 .kiwi-appsettings-block h3 {
-    color: var(--brand-default-fg);
+    color: #fff;
 }
 .u-tabbed-view-tabs {
     background: #696969;
