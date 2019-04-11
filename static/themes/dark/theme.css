@@ -154,6 +154,15 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     background-color: #2d2d2d;
 }
 
+.kiwi-container-toggledraw-statebrowser-messagecount  {
+    color: #f1f1f1;
+}
+
+.kiwi-sidebar-options,
+.kiwi-aboutbuffer h4 {
+    color: #fff;
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
