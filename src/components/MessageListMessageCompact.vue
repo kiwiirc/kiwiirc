@@ -136,6 +136,8 @@ export default {
     left: 8px;
     top: -1px;
     position: absolute;
+    overflow: hidden;
+    height: 19px;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
