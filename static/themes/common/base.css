@@ -791,6 +791,14 @@
 }
 
 /* ---- Message list - ( MessageList.vue ) ---- */
+.kiwi-messagelist-seperator {
+    border-top: 1px solid var(--brand-shadow);
+}
+
+.kiwi-messagelist-seperator > span {
+    background: var(--brand-default-bg);
+}
+
 .kiwi-messagelist-message--info-open,
 .kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open {
     background: var(--brand-midtone);

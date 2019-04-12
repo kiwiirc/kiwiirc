@@ -124,6 +124,10 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     color: #fff;
 }
 
+.kiwi-messagelist-seperator {
+    border-top: 2px dashed #00b100;
+}
+
 .kiwi-messagelist-message.kiwi-messagelist-message--unread,
 .kiwi-messagelist-message--highlight {
     background-color: #404040;

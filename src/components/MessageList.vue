@@ -599,7 +599,7 @@ export default {
 .kiwi-messagelist-seperator {
     text-align: center;
     display: block;
-    margin: 1em 0;
+    margin: 1em 0 0.5em 0;
 }
 
 .kiwi-messagelist-seperator > span {
@@ -607,6 +607,7 @@ export default {
     position: relative;
     z-index: 1;
     padding: 0 1em;
+    top: -0.89em;
 }
 
 .kiwi-messagelist-seperator::after {
