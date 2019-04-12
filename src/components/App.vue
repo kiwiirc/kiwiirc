@@ -317,7 +317,9 @@ export default {
             if (navigator.appVersion.indexOf('Mac') !== -1) {
                 meta = event.metaKey;
             } else {
-                meta = event.ctrlKey;
+                // none english languages use ctrl + alt to access extended chars
+                // make sure we do not interfere with that by only acting on ctrl
+                meta = event.ctrlKey && !event.altKey;
             }
 
             if (meta && event.keyCode === 221) {
