@@ -791,6 +791,10 @@
 }
 
 /* ---- Message list - ( MessageList.vue ) ---- */
+.kiwi-messagelist::-webkit-scrollbar-thumb {
+    background-color: #9e9e9e;
+}
+
 .kiwi-messagelist-message--info-open,
 .kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open {
     background: var(--brand-midtone);

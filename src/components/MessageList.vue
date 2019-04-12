@@ -440,6 +440,20 @@ export default {
     position: relative;
 }
 
+.kiwi-messagelist::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: transparent;
+}
+
+.kiwi-messagelist::-webkit-scrollbar {
+    width: 10px;
+    background: transparent;
+}
+
+.kiwi-messagelist::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+}
+
 .kiwi-messagelist-item {
     /* Allow child elements to make use of margins+padding within messagelist items */
     overflow: hidden;
