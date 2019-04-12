@@ -791,6 +791,9 @@
 }
 
 /* ---- Message list - ( MessageList.vue ) ---- */
+.kiwi-messagelist {
+    scrollbar-color: #9e9e9e transparent;
+}
 .kiwi-messagelist::-webkit-scrollbar-thumb {
     background-color: #9e9e9e;
 }
