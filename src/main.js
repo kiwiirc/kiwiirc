@@ -22,6 +22,7 @@ import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 import { AudioManager } from '@/libs/AudioManager';
 import { SoundBleep } from '@/libs/SoundBleep';
+import WindowTitle from '@/libs/WindowTitle';
 import { configTemplates } from '@/res/configTemplates';
 
 // Global utilities
@@ -203,14 +204,6 @@ function applyConfig(config) {
         applyConfigObj(configTemplates[config.template], state.settings);
     }
     applyConfigObj(config, state.settings);
-
-    // Update the window title if we have one
-    if (state.settings.windowTitle) {
-        window.document.title = state.settings.windowTitle;
-    }
-    state.$watch('settings.windowTitle', (newVal) => {
-        window.document.title = newVal;
-    });
 }
 
 // Recursively merge an object onto another via Vue.$set
@@ -413,6 +406,8 @@ function initInputCommands() {
 }
 
 function startApp() {
+    new WindowTitle(state);
+
     api.emit('init');
 
     /* eslint-disable no-new */

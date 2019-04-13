@@ -641,6 +641,10 @@ const state = new Vue({
                 }
             }
 
+            if (isActiveBuffer && !state.ui.app_has_focus && message.type !== 'traffic') {
+                this.$emit('notification.title', true);
+            }
+
             this.$emit('message.new', bufferMessage, buffer);
         },
 
