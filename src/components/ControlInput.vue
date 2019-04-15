@@ -195,6 +195,11 @@ export default {
                 return;
             }
 
+            // ctrl key on its own, don't shift focus, ff on linux appears to send this
+            if (ev.keyCode === 17) {
+                return;
+            }
+
             // If we are using shift and arrow keys, don't shift focus
             // this allows users to adjust text selection
             let arrowKeyCodes = [37, 38, 39, 40];
