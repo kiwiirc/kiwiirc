@@ -641,7 +641,12 @@ const state = new Vue({
                 }
             }
 
-            if (isActiveBuffer && !state.ui.app_has_focus && message.type !== 'traffic') {
+            if (
+                isActiveBuffer &&
+                !state.ui.app_has_focus &&
+                message.type !== 'traffic' &&
+                buffer.setting('flash_title')
+            ) {
                 this.$emit('notification.title', true);
             }
 
