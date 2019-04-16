@@ -6,6 +6,18 @@
                 <textarea v-model.lazy="topic" rows="2"/>
             </label>
 
+            <div v-if="buffer.topics.length > 1" class="kiwi-channelinfo-previoustopics">
+                <a class="u-link" @click="showPrevTopics = !showPrevTopics">
+                    Previous topics
+                    <i :class="'fa fa-caret-' + (showPrevTopics ? 'up' : 'down')" />
+                </a>
+                <ul v-if="showPrevTopics">
+                    <li v-for="(topic, idx) in buffer.topics" :key="idx">
+                        <span>{{ topic }}</span>
+                    </li>
+                </ul>
+            </div>
+
             <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_moderated') }}</span>
                 <input v-model="modeM" type="checkbox" >
@@ -70,6 +82,7 @@ export default {
     props: ['buffer'],
     data: function data() {
         return {
+            showPrevTopics: false,
         };
     },
     computed: {
@@ -117,3 +130,15 @@ export default {
     },
 };
 </script>
+
+<style>
+
+.kiwi-channelinfo-previoustopics {
+    margin: 0 10px 15px 10px;
+}
+
+.kiwi-channelinfo-previoustopics ul {
+    margin-top: 0;
+}
+
+</style>

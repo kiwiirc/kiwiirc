@@ -1947,6 +1947,10 @@ css-selector-tokenizer@^0.7.0:
     fastparse "^1.1.1"
     regexpu-core "^1.0.0"
 
+css-vars-ponyfill@^1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-1.17.0.tgz#d0f952be19c1d612b9db1edd2d42fa4c26db9af7"
+
 css-what@2.1:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-2.1.0.tgz#9467d032c38cfaefb9f2d79501253062f87fa1bd"
@@ -3944,9 +3948,9 @@ ipaddr.js@1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.5.2.tgz#d4b505bde9946987ccf0fc58d9010ff9607e3fa0"
 
-irc-framework@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/irc-framework/-/irc-framework-4.0.0.tgz#1e4b852c2785b122cea3008a316d4c0280fae108"
+irc-framework@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/irc-framework/-/irc-framework-4.2.0.tgz#74d3ea9a93a90f74ef3e3da23cc2ca2834f3e96f"
   dependencies:
     eventemitter3 "^2.0.2"
     iconv-lite "^0.4.11"

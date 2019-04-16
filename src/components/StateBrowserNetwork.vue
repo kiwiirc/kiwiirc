@@ -117,8 +117,6 @@
                     class="kiwi-statebrowser-channel"
                 >
                     <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">
-                        <i v-if="buffer.isQuery() && !awayNotifySupported()"
-                           class="fa fa-user" aria-hidden="true" />
                         <away-status-indicator
                             v-if="buffer.isQuery() && awayNotifySupported()"
                             :network="network" :user="network.userByName(buffer.name)"/>
@@ -275,6 +273,9 @@ export default {
             // Clear any active component to show the buffer again
             state.$emit('active.component', null);
             state.setActiveBuffer(buffer.networkid, buffer.name);
+            if (this.$state.ui.is_narrow) {
+                state.$emit('statebrowser.hide');
+            }
         },
         isActiveBuffer: function isActiveBuffer(buffer) {
             return (
@@ -330,6 +331,7 @@ export default {
     position: relative;
     overflow: hidden;
     height: auto;
+    box-sizing: border-box;
 }
 
 .kiwi-statebrowser-network-name {

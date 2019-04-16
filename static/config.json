@@ -2,7 +2,7 @@
     "windowTitle": "Kiwi IRC - The web IRC client",
     "startupScreen": "welcome",
     "kiwiServer": "https://localdev.clients.kiwiirc.com/webirc/kiwiirc/",
-    "restricted": true,
+    "restricted": false,
     "theme": "Default",
     "themes": [
         { "name": "Default", "url": "static/themes/default" },
@@ -12,7 +12,8 @@
         { "name": "Nightswatch", "url": "static/themes/nightswatch" },
         { "name": "Osprey", "url": "static/themes/osprey" },
         { "name": "Radioactive", "url": "static/themes/radioactive" },
-        { "name": "Sky", "url": "static/themes/sky" }
+        { "name": "Sky", "url": "static/themes/sky" },
+        { "name": "Elite", "url": "static/themes/elite" }
     ],
     "startupOptions" : {
         "server": "irc.freenode.net",
@@ -26,5 +27,6 @@
         "key": ""
     },
     "plugins": [
+
     ]
 }

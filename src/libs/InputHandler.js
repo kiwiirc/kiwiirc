@@ -146,7 +146,12 @@ function handleMessage(type, event, command, line) {
     let bufferName = line.substr(0, spaceIdx);
     let message = line.substr(spaceIdx + 1);
 
-    let buffer = this.state.getOrAddBufferByName(network.id, bufferName);
+    // Mke sure we have some text to actually send
+    if (!message) {
+        return;
+    }
+
+    let buffer = bufferName.length && this.state.getOrAddBufferByName(network.id, bufferName);
     if (buffer) {
         let textFormatType = 'privmsg';
         if (type === 'action') {
@@ -192,16 +197,15 @@ inputCommands.dice = function inputCommandDice(event, command, line) {
     // /dice 100
     let buffer = this.state.getActiveBuffer();
     let network = this.state.getActiveNetwork();
-    let msg = '';
-    let rndNumber = 0;
-    let sides = 6;
-    if (!line.trim()) {
-        rndNumber = Math.floor(Math.random() * sides) + 1;
-    } else {
-        sides = line.replace(/\D/g, '');
-        rndNumber = Math.floor(Math.random() * sides) + 1;
+
+    let sides = line.replace(/\D/g, '');
+    sides = parseInt(sides || '0', 10);
+    if (sides <= 0) {
+        sides = 6;
     }
-    msg = TextFormatting.t('dice_roll', {
+    let rndNumber = Math.floor(Math.random() * sides) + 1;
+
+    let msg = TextFormatting.t('dice_roll', {
         sides: TextFormatting.formatNumber(sides),
         number: TextFormatting.formatNumber(rndNumber),
     });
@@ -706,6 +710,17 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
     if (parts[0]) {
         // parts[0] = the mode(s)
         // parts[1] = optional mode arguments
+
+        // If we're asking for a ban list, show the response in the active channel
+        if (parts[0] === '+b' && !parts[1]) {
+            buffer.flags.requested_banlist = true;
+            // An IRCd may fuck up and simply not reply to a MODE command. Give a few seconds
+            // for it to reply and if not, ignore our request was sent
+            setTimeout(() => {
+                buffer.flags.requested_banlist = false;
+            }, 4000);
+        }
+
         network.ircClient.mode(target, parts[0], parts[1]);
     } else {
         // No modes specified will request the modes for the target

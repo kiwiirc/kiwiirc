@@ -472,6 +472,7 @@ export default {
     font-weight: bold;
     border: none;
     margin: 0;
+    background: none;
 }
 
 .kiwi-messagelist-message-connection .kiwi-messagelist-body {
@@ -598,7 +599,7 @@ export default {
 .kiwi-messagelist-seperator {
     text-align: center;
     display: block;
-    margin: 1em 0;
+    margin: 1em 0 0.5em 0;
 }
 
 .kiwi-messagelist-seperator > span {
@@ -606,6 +607,7 @@ export default {
     position: relative;
     z-index: 1;
     padding: 0 1em;
+    top: -0.89em;
 }
 
 .kiwi-messagelist-seperator::after {
@@ -697,6 +699,18 @@ export default {
 /* MOTD */
 .kiwi-messagelist-message-motd {
     font-family: monospace;
+}
+
+/* Ensure unread messages are fully visible, even after themes applied */
+.kiwi-messagelist-message.kiwi-messagelist-message--unread {
+    opacity: 1;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--hover,
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight,
+.kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover {
+    opacity: 1;
+    position: relative;
 }
 
 /* Links */

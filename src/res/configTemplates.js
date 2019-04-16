@@ -1,3 +1,19 @@
+/**
+ * Configuration templates
+ *
+ * All the default values for config options throughout kiwi are set here, under
+ * the 'default' template object below.
+ * If a 'default.template' value is set in the user config, this is used to
+ * find the next template object below and is merged over the default config
+ * template.
+ * The user config (config.json by default) is then merged over the resulting
+ * config object.
+ *
+ * The advanced settings dialog also displays these settings by iterating
+ * through the keys. The values must not be null otherwise they will not be
+ * shown.
+ */
+
 export const configTemplates = {
 
     default: {
@@ -21,6 +37,7 @@ export const configTemplates = {
             server: '',
             port: 6667,
             tls: false,
+            path: '',
             username: '',
             password: '',
         },
@@ -52,6 +69,7 @@ export const configTemplates = {
             default_kick_reason: 'Your behavior is not conducive to the desired environment.',
             shared_input: false,
             show_message_info: true,
+            who_loop: true,
         },
         // Startup screen default
         startupOptions: {
@@ -83,6 +101,7 @@ export const configTemplates = {
 /connect /server $1+
 /cycle $channel? /lines /part $channel | /join $channel
 /active /back $1+
+/umode /mode $nick $1+
 
 # Op related aliases
 /op /quote mode $channel +o $1+
@@ -92,6 +111,7 @@ export const configTemplates = {
 /voice /quote mode $channel +v $1+
 /devoice /quote mode $channel -v $1+
 /k /kick $channel $1+
+/bans /mode $channel +b
 /ban /quote mode $channel +b $1+
 /unban /quote mode $channel -b $1+
 

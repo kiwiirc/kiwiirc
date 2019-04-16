@@ -269,7 +269,7 @@ export default {
     line-height: 2em;
     box-sizing: border-box;
     top: 10px;
-    z-index: 4;
+    z-index: 100;
     white-space: nowrap;
     left: 14px;
     width: 37px;
@@ -297,7 +297,6 @@ export default {
 /* When the Statebrowser is visible, apply new styles to the messagecount */
 .kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount {
     left: -19px;
-    z-index: 100;
 }
 
 .kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
@@ -332,6 +331,21 @@ export default {
     padding: 0 14px;
 }
 
+.kiwi-wrap .kiwi-container::after {
+    content: '';
+    position: absolute;
+    left: auto;
+    height: 120%;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    opacity: 0;
+    z-index: 99;
+    width: 0%;
+    right: -100%;
+    transition: opacity 0.1s;
+    transition-delay: opacity 0.1s;
+}
+
 @media screen and (max-width: 1500px) {
     .kiwi-container--sidebar-open .kiwi-sidebar {
         max-width: 350px;
@@ -345,6 +359,13 @@ export default {
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-container-statebrowser-messagecount-close {
         display: block;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-container::after {
+        top: 0;
+        opacity: 1;
+        width: 100%;
+        right: 0%;
     }
 
     .kiwi-header {

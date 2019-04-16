@@ -136,6 +136,7 @@ export default {
     left: 8px;
     top: -1px;
     position: absolute;
+    white-space: nowrap;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
@@ -144,6 +145,7 @@ export default {
 
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-nick .kiwi-messagelist-time {
     margin-right: 10px;
+    opacity: 0.8;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-time {

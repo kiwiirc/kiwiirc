@@ -184,13 +184,17 @@ export default {
     border-left: 7px solid transparent;
     display: flex;
     margin: 0 0 0 20px;
+    border-top: 1px solid;
     margin-left: 0;
     padding: 15px 10px;
+    transition: border-colour 0.2s, background-color 0.2s;
 }
 
 .kiwi-messagelist-modern-left {
     user-select: none;
     position: relative;
+    display: flex;
+    width: 50px;
 }
 
 .kiwi-messagelist-awaystatus {
@@ -201,14 +205,6 @@ export default {
     position: absolute;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left {
-    display: none;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-top {
-    display: none;
-}
-
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorfirst.kiwi-messagelist-message-topic {
     padding: 10px 20px;
 }
@@ -216,13 +212,14 @@ export default {
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
     margin-top: 0;
     padding-top: 0;
+    border-top: none;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-modern-right {
     padding-top: 0;
 }
 
-.kiwi-messagelist-message-modern.kiwi-messagelist-message-topic,
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic,
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -234,6 +231,7 @@ export default {
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
     margin: 20px 20px 20px 66px;
+    width: auto;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
@@ -241,7 +239,7 @@ export default {
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-message-topic .kiwi-messagelist-modern-left,
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
+.kiwi-messagelist-message--modern .kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
     display: none;
 }
 
@@ -272,6 +270,7 @@ export default {
     opacity: 1;
     border-left: none;
     text-align: center;
+    font-weight: 600;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-time,
@@ -281,10 +280,10 @@ export default {
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     line-height: 30px;
-    font-weight: 100;
     margin: 0 auto;
     border-radius: 4px;
     display: inline-block;
+    font-weight: 900;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-message {
@@ -311,11 +310,6 @@ export default {
     word-break: break-all;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-modern-left {
-    display: flex;
-    width: 50px;
-}
-
 .kiwi-messagelist-message--modern .kiwi-messagelist-modern-right {
     margin-left: 5px;
     padding-top: 0;
@@ -339,16 +333,35 @@ export default {
 .kiwi-messagelist-message--modern .kiwi-messagelist-time {
     font-size: 0.8em;
     font-weight: 400;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-item .kiwi-messagelist-body {
-    margin-bottom: 10px;
+.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
+    margin-bottom: 0;
+}
+
+.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left,
+.kiwi-messagelist-message-traffic .kiwi-messagelist-top {
+    display: none;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic {
     margin-right: 0;
     padding-left: 60px;
+}
+
+.kiwi-messagelist-message-error {
+    padding: 10px 0;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.kiwi-messagelist-message-error .kiwi-messagelist-top {
+    display: none;
+}
+
+.kiwi-messagelist-message-error .kiwi-messagelist-body {
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 769px) {
@@ -402,4 +415,5 @@ export default {
         margin: 0 15px 20px 15px;
     }
 }
+
 </style>

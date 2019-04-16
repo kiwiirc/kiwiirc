@@ -149,27 +149,35 @@ export function linkifyUsers(word, userlist) {
     let append = '';
     let punc = ',.!:;-+)]?¿\\/<>@';
     let validLastChar = punc.indexOf(word[word.length - 1]) > -1;
-    let normWord = word.toLowerCase();
     let hasProp = Object.prototype.hasOwnProperty;
 
+    let hasNick = nick => hasProp.call(userlist, nick.toLowerCase());
+    let getNick = (nick) => {
+        let obj = {
+            user: userlist[nick.toLowerCase()],
+            originalNick: nick,
+        };
+        return obj;
+    };
+
     // Checking for a user in order of processing cost
-    if (hasProp.call(userlist, normWord)) {
-        user = userlist[normWord];
-    } else if (hasProp.call(userlist, normWord.substr(0, normWord.length - 1)) && validLastChar) {
+    if (hasNick(word)) {
+        user = getNick(word);
+    } else if (hasNick(word.substr(0, word.length - 1)) && validLastChar) {
         // The last character is usually punctuation of some kind
-        user = userlist[normWord.substr(0, normWord.length - 1)];
+        user = getNick(word.substr(0, word.length - 1));
         append = word[word.length - 1];
-    } else if (hasProp.call(userlist, _.trim(normWord, punc))) {
-        user = userlist[_.trim(normWord, punc)];
-        let nickIdx = normWord.indexOf(user.nick.toLowerCase());
-        append = word.substr(nickIdx + user.nick.length);
+    } else if (hasNick(_.trim(word, punc))) {
+        user = getNick(_.trim(word, punc));
+        let nickIdx = word.indexOf(user.originalNick);
+        append = word.substr(nickIdx + user.originalNick.length);
         prepend = word.substr(0, nickIdx);
     } else {
         return word;
     }
 
-    let escaped = _.escape(user.nick);
-    let colour = user.colour;
+    let escaped = _.escape(user.originalNick);
+    let colour = user.user.colour;
 
     ret = `<a class="kiwi-nick" data-nick="${escaped}"`;
     if (colour) {

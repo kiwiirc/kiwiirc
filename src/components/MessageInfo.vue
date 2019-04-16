@@ -92,17 +92,24 @@ export default {
 .kiwi-messageinfo {
     display: block;
     position: relative;
+    padding: 0;
 }
 
 .kiwi-messageinfo-urls {
     margin-top: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
 }
 
 .kiwi-messageinfo-url {
     margin-bottom: 5px;
     display: flex;
+}
+
+.kiwi-messageinfo-urls .kiwi-messageinfo-url:last-of-type {
+    margin-bottom: 0;
 }
 
 .kiwi-messageinfo-actions {
@@ -150,6 +157,10 @@ export default {
     flex: 1;
     line-height: 30px;
     margin-left: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 3px;
 }
 
 .kiwi-messageinfo-close {
@@ -169,6 +180,13 @@ export default {
     .kiwi-messageinfo-reply {
         display: inline-block;
         float: left;
+        text-align: center;
+    }
+
+    .kiwi-messageinfo-opbuttons {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        width: 100%;
     }
 }
 
