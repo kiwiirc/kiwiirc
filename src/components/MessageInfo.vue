@@ -171,6 +171,14 @@ export default {
     cursor: pointer;
 }
 
+.kiwi-messageinfo-opbuttons .u-input-prompt a,
+.kiwi-messageinfo-reply {
+    padding: 5px 10px;
+    display: inline-block;
+    border-radius: 4px;
+    margin: 0 0 5px 0;
+}
+
 @media screen and (max-width: 850px) {
     .kiwi-messageinfo-actions {
         margin-top: 10px;
@@ -184,9 +192,7 @@ export default {
     }
 
     .kiwi-messageinfo-opbuttons {
-        margin-top: 15px;
         margin-bottom: 5px;
-        width: 100%;
     }
 }
 
