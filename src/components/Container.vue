@@ -43,6 +43,13 @@
 
                 <slot name="after"/>
             </div>
+
+            <not-connected
+                v-if="buffer.getNetwork().state !== 'connected' && !buffer.isServer()"
+                :buffer="buffer"
+                :network="buffer.getNetwork()"
+            />
+
         </template>
         <template v-else>
             <div class="kiwi-container-empty">
@@ -61,6 +68,7 @@
 import state from '@/libs/state';
 import ContainerHeader from './ContainerHeader';
 import Sidebar from './Sidebar';
+import NotConnected from './NotConnected';
 import MessageList from './MessageList';
 import ServerView from './ServerView';
 
@@ -68,6 +76,7 @@ export default {
     components: {
         ContainerHeader,
         Sidebar,
+        NotConnected,
         MessageList,
         ServerView,
     },
