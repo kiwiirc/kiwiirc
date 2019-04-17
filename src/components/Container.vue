@@ -29,7 +29,7 @@
 
             <div class="kiwi-container-content">
                 <template v-if="buffer.isServer()">
-                    <server-view :network="network" :buffer="buffer" :sidebar-state="sidebarState"/>
+                    <server-view :network="network"/>
                 </template>
                 <template v-else>
                     <message-list :buffer="buffer"/>
