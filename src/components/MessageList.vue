@@ -68,11 +68,6 @@
             :network="buffer.getNetwork()"
         />
 
-        <not-connected
-            v-if="buffer.getNetwork().state !== 'connected'"
-            :buffer="buffer"
-            :network="buffer.getNetwork()"
-        />
     </div>
 </template>
 
@@ -82,7 +77,6 @@
 import strftime from 'strftime';
 import Logger from '@/libs/Logger';
 import BufferKey from './BufferKey';
-import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
 import MessageListMessageInline from './MessageListMessageInline';
@@ -97,7 +91,6 @@ const BOTTOM_SCROLL_MARGIN = 30;
 export default {
     components: {
         BufferKey,
-        NotConnected,
         MessageListMessageModern,
         MessageListMessageCompact,
         MessageListMessageInline,
