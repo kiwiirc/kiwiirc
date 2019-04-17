@@ -70,6 +70,7 @@ export const configTemplates = {
             shared_input: false,
             show_message_info: true,
             who_loop: true,
+            flash_title: true,
         },
         // Startup screen default
         startupOptions: {
