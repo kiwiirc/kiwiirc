@@ -112,10 +112,6 @@ export default {
 
 <style lang="less">
 .kiwi-notconnected {
-    position: fixed;
-    left: 0;
-    top: 46px;
-    width: 100%;
     box-sizing: border-box;
     padding: 5px 20px;
     transition: background-color 0.3s;

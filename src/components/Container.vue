@@ -27,6 +27,12 @@
 
             <slot name="before"/>
 
+            <not-connected
+                v-if="buffer.getNetwork().state !== 'connected' && !buffer.isServer()"
+                :buffer="buffer"
+                :network="buffer.getNetwork()"
+            />
+
             <div class="kiwi-container-content">
                 <template v-if="buffer.isServer()">
                     <server-view :network="network" :buffer="buffer" :sidebar-state="sidebarState"/>
@@ -43,13 +49,6 @@
 
                 <slot name="after"/>
             </div>
-
-            <not-connected
-                v-if="buffer.getNetwork().state !== 'connected' && !buffer.isServer()"
-                :buffer="buffer"
-                :network="buffer.getNetwork()"
-            />
-
         </template>
         <template v-else>
             <div class="kiwi-container-empty">
