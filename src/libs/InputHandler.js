@@ -21,7 +21,6 @@ export default class InputHandler {
             this.aliasRewriter.importFromString(state.setting('aliases'));
         });
 
-        this.addInputCommands();
         this.listenForInput();
     }
 
@@ -106,25 +105,19 @@ export default class InputHandler {
             params: params,
         };
 
-        // allow the default handlers to be preempted
-        const preInputEvent = { ...eventObj };
-        this.state.$emit('pre.input.command.' + command, preInputEvent, command, params);
-        if (preInputEvent.handled) {
+        // Plugins may tap into this event to handle a command themselves
+        this.state.$emit('input.command.' + command, eventObj, command, params);
+        if (eventObj.handled) {
             return;
         }
 
-        // Include command and params as their own arguments just for ease of use
-        this.state.$emit('input.command.' + command, eventObj, command, params);
+        if (inputCommands[command.toLowerCase()]) {
+            inputCommands[command.toLowerCase()].call(this, eventObj, command, params);
+        }
 
         if (!eventObj.handled) {
             network.ircClient.raw(line);
         }
-    }
-
-    addInputCommands() {
-        _.each(inputCommands, (fn, event) => {
-            this.state.$on('input.command.' + event, fn.bind(this));
-        });
     }
 }
 
