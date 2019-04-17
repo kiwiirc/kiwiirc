@@ -114,11 +114,10 @@ export default {
 .kiwi-notconnected {
     position: fixed;
     left: 0;
-    top: 50px;
+    top: 46px;
     width: 100%;
     box-sizing: border-box;
     padding: 5px 20px;
-    padding-left: 240px;
     transition: background-color 0.3s;
 }
 
@@ -184,11 +183,6 @@ export default {
     margin-right: 0;
 }
 
-/* The server message list requires more height, due to the tabs */
-.u-tabbed-content .kiwi-notconnected {
-    top: 105px;
-}
-
 @media screen and (max-width: 1024px) {
     .kiwi-notconnected-caption {
         font-size: 1em;
@@ -233,10 +227,6 @@ export default {
     .kiwi-notconnected-button {
         font-size: 1.2em;
         display: inline-block;
-    }
-
-    .u-tabbed-content .kiwi-notconnected {
-        top: 96px;
     }
 }
 
