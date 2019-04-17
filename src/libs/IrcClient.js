@@ -39,6 +39,9 @@ export function create(state, network) {
 
     let ircClient = new Irc.Client(clientOpts);
     ircClient.requestCap('znc.in/self-message');
+    // Current version of irc-framework only support draft/message-tags-0.2
+    // TODO: Removee this once irc-framework has been updated
+    ircClient.requestCap('message-tags');
     ircClient.use(clientMiddleware(state, network));
     ircClient.use(bouncerMiddleware());
 
