@@ -976,6 +976,11 @@
     color: var(--brand-default-fg);
 }
 
+.kiwi-notconnected-button-settings:hover {
+    background-color: transparent;
+    color: var(--brand-default-bg);
+}
+
 /* ---- Settings Aliases ( SettingsAliases ) ---- */
 .kiwi-settings-aliases-input {
     border-color: var(--brand-midtone);

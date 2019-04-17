@@ -30,7 +30,7 @@
                     class="kiwi-notconnected-button kiwi-notconnected-button-settings"
                     @click="showNetworkSettings"
                 >
-                    <i class="fa fa-cogs" aria-hidden="true"/>{{ $t('reconnect_settings') }}
+                    <i class="fa fa-cogs" aria-hidden="true"/>
                 </a>
             </div>
         </template>
@@ -112,12 +112,13 @@ export default {
 
 <style lang="less">
 .kiwi-notconnected {
-    position: absolute;
+    position: fixed;
     left: 0;
-    top: 46px;
+    top: 50px;
     width: 100%;
     box-sizing: border-box;
     padding: 5px 20px;
+    padding-left: 240px;
     transition: background-color 0.3s;
 }
 
@@ -163,6 +164,7 @@ export default {
 }
 
 .kiwi-notconnected-button:hover {
+    opacity: 1;
     transition: all 0.2s;
 }
 
@@ -175,7 +177,16 @@ export default {
 
 .kiwi-notconnected-button-settings {
     opacity: 0.8;
-    border: 1px solid;
+    border: none;
+}
+
+.kiwi-notconnected-button-settings i {
+    margin-right: 0;
+}
+
+/* The server message list requires more height, due to the tabs */
+.u-tabbed-content .kiwi-notconnected {
+    top: 105px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -190,22 +201,23 @@ export default {
     }
 
     .kiwi-notconnected-button {
-        margin: 0 1%;
+        margin: 0;
         font-size: 1em;
         padding: 0 10px;
-        line-height: 32px;
-        width: 42%;
+        line-height: 33px;
+        width: auto;
         box-sizing: border-box;
     }
 
     .kiwi-notconnected-button i {
-        display: none;
+        line-height: 36px;
     }
 }
 
 @media screen and (max-width: 769px) {
     .kiwi-notconnected {
         font-size: 0.8em;
+        padding: 0 10px;
     }
 
     .kiwi-notconnected-caption {
@@ -220,10 +232,11 @@ export default {
 
     .kiwi-notconnected-button {
         font-size: 1.2em;
-        width: 90%;
-        line-height: 32px;
         display: inline-block;
-        margin: 0 5%;
+    }
+
+    .u-tabbed-content .kiwi-notconnected {
+        top: 96px;
     }
 }
 
