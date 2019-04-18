@@ -195,7 +195,9 @@ export default {
                 return;
             }
 
-            // ctrl key on its own, don't shift focus, ff on linux appears to send this
+            // Firefox 66.0.3 on linux isn't consistently setting ev.ctrlKey === true when only
+            // the control key is pressed so add a specific check for this
+            // TODO: Remove this check once ff 66.0.3 is no longer around
             if (ev.keyCode === 17) {
                 return;
             }
