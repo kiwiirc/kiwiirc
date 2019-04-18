@@ -1,62 +1,66 @@
 <template>
-    <startup-layout ref="layout" class="kiwi-welcome-simple">
-        <div slot="connection">
-            <template v-if="!network || network.state === 'disconnected'">
-                <form class="u-form kiwi-welcome-simple-form" @submit.prevent="formSubmit">
-                    <h2 v-html="greetingText"/>
-                    <div
-                        v-if="network && (network.last_error || network.state_error)"
-                        class="kiwi-welcome-simple-error"
-                    >
-                        We couldn't connect to the server :(
-                        <span>
-                            {{ network.last_error || readableStateError(network.state_error) }}
-                        </span>
-                    </div>
+    <startup-layout ref="layout"
+                    :class="{ 'kiwi-welcome-simple--recaptcha': recaptchaSiteId }"
+                    class="kiwi-welcome-simple"
+    >
+        <template v-slot:connection v-if="!network || network.state === 'disconnected'">
+            <form class="u-form kiwi-welcome-simple-form" @submit.prevent="formSubmit">
+                <h2 v-html="greetingText"/>
+                <div
+                    v-if="network && (network.last_error || network.state_error)"
+                    class="kiwi-welcome-simple-error"
+                >
+                    We couldn't connect to the server :(
+                    <span>
+                        {{ network.last_error || readableStateError(network.state_error) }}
+                    </span>
+                </div>
 
-                    <input-text
-                        v-if="showNick"
-                        :label="$t('nick')"
-                        v-model="nick"
-                        class="kiwi-welcome-simple-nick"
-                    />
-                    <label v-if="showPass" class="kiwi-welcome-simple-have-password">
-                        <input v-model="show_password_box" type="checkbox" >
-                        <span> {{ $t('password_have') }} </span>
-                    </label>
-                    <input-text
-                        v-focus
-                        v-if="show_password_box"
-                        :label="$t('password')"
-                        v-model="password"
-                        class="kiwi-welcome-simple-password u-input-text--reveal-value"
-                        type="password"
-                    />
-                    <input-text
-                        v-if="showChannel"
-                        :label="$t('channel')"
-                        v-model="channel"
-                        class="kiwi-welcome-simple-channel"
-                    />
+                <input-text
+                    v-if="showNick"
+                    :label="$t('nick')"
+                    v-model="nick"
+                    class="kiwi-welcome-simple-nick"
+                />
+                <label
+                    v-if="showPass && toggablePass"
+                    class="kiwi-welcome-simple-have-password"
+                >
+                    <input v-model="show_password_box" type="checkbox" >
+                    <span> {{ $t('password_have') }} </span>
+                </label>
+                <input-text
+                    v-focus
+                    v-if="showPass && (show_password_box || !toggablePass)"
+                    :label="$t('password')"
+                    v-model="password"
+                    class="kiwi-welcome-simple-password u-input-text--reveal-value"
+                    type="password"
+                />
+                <input-text
+                    v-if="showChannel"
+                    :label="$t('channel')"
+                    v-model="channel"
+                    class="kiwi-welcome-simple-channel"
+                />
 
-                    <div
-                        v-if="recaptchaSiteId"
-                        :data-sitekey="recaptchaSiteId"
-                        class="kiwi-g-recaptcha"
-                    />
+                <div
+                    v-if="recaptchaSiteId"
+                    :data-sitekey="recaptchaSiteId"
+                    class="g-recaptcha"
+                />
 
-                    <button
-                        :disabled="!readyToStart"
-                        class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
-                        type="submit"
-                        v-html="buttonText"
-                    />
-                </form>
-            </template>
-            <template v-else-if="network.state !== 'connected'">
-                <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
-            </template>
-        </div>
+                <button
+                    :disabled="!readyToStart"
+                    class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
+                    type="submit"
+                    v-html="buttonText"
+                />
+            </form>
+        </template>
+        <template v-slot:connection v-else-if="network.state !== 'connected'">
+            <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
+        </template>
     </startup-layout>
 </template>
 
@@ -66,7 +70,10 @@
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import state from '@/libs/state';
+import Logger from '@/libs/Logger';
 import StartupLayout from './CommonLayout';
+
+let log = Logger.namespace('Welcome.vue');
 
 export default {
     components: {
@@ -80,6 +87,7 @@ export default {
             password: '',
             showChannel: true,
             showPass: true,
+            toggablePass: true,
             showNick: true,
             show_password_box: false,
             recaptchaSiteId: '',
@@ -107,10 +115,38 @@ export default {
                 ready = false;
             }
 
-            // Nicks cannot start with [0-9- ]
-            // ? is not a valid nick character but we allow it as it gets replaced
-            // with a number.
-            if (!this.nick.match(/^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i)) {
+            let nickPatternStr = this.$state.setting('startupOptions.nick_format');
+            let nickPattern = '';
+            if (!nickPatternStr) {
+                // Nicks cannot start with [0-9- ]
+                // ? is not a valid nick character but we allow it as it gets replaced
+                // with a number.
+                nickPattern = /^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i;
+            } else {
+                // Support custom pattern matches. Eg. only '@example.com' may be allowed
+                // on some IRCDs
+                let pattern = '';
+                let flags = '';
+                if (nickPatternStr[0] === '/') {
+                    // Custom regex
+                    let pos = nickPatternStr.lastIndexOf('/');
+                    pattern = nickPatternStr.substring(1, pos);
+                    flags = nickPatternStr.substr(pos + 1);
+                } else {
+                    // Basic contains rule
+                    pattern = _.escapeRegExp(nickPatternStr);
+                    flags = 'i';
+                }
+
+                try {
+                    nickPattern = new RegExp(pattern, flags);
+                } catch (error) {
+                    log.error('Nick format error: ' + error.message);
+                    return false;
+                }
+            }
+
+            if (!this.nick.match(nickPattern)) {
                 ready = false;
             }
 
@@ -122,7 +158,7 @@ export default {
 
         this.nick = this.processNickRandomNumber(Misc.queryStringVal('nick') || options.nick || '');
         this.password = options.password || '';
-        this.channel = decodeURI(window.location.hash) || options.channel || '';
+        this.channel = decodeURIComponent(window.location.hash) || options.channel || '';
         this.showChannel = typeof options.showChannel === 'boolean' ?
             options.showChannel :
             true;
@@ -132,12 +168,15 @@ export default {
         this.showPass = typeof options.showPassword === 'boolean' ?
             options.showPassword :
             true;
-
-        if (options.autoConnect && this.nick && this.channel) {
-            this.startUp();
-        }
+        this.toggablePass = typeof options.toggablePassword === 'boolean' ?
+            options.toggablePassword :
+            true;
 
         this.connectWithoutChannel = !!options.allowNoChannel;
+
+        if (options.autoConnect && this.nick && (this.channel || this.connectWithoutChannel)) {
+            this.startUp();
+        }
 
         this.recaptchaSiteId = options.recaptchaSiteId || '';
     },
@@ -190,13 +229,6 @@ export default {
             // Check if we have this network already
             let net = this.network || state.getNetworkFromAddress(netAddress);
 
-            // If we retreived an existing network, update the nick+password with what
-            // the user has just put in place
-            if (net) {
-                net.nick = this.nick;
-                net.connection.password = this.password;
-            }
-
             // If the network doesn't already exist, add a new one
             net = net || state.addNetwork('Network', this.nick, {
                 server: netAddress,
@@ -208,6 +240,11 @@ export default {
                 path: options.direct_path || '',
                 gecos: options.gecos,
             });
+
+            // If we retreived an existing network, update the nick+password with what
+            // the user has just put in place
+            net.connection.nick = this.nick;
+            net.password = this.password;
 
             if (!this.network && options.recaptchaSiteId) {
                 net.captchaResponse = this.captchaResponse();
@@ -266,8 +303,19 @@ export default {
 
 .kiwi-welcome-simple-form {
     width: 90%;
+    max-width: 250px;
     border-radius: 0.5em;
     padding: 1em;
+}
+
+.kiwi-welcome-simple--recaptcha .kiwi-welcome-simple-form {
+    width: 333px;
+    max-width: 333px;
+    box-sizing: border-box;
+}
+
+.g-recaptcha {
+    margin-bottom: 10px;
 }
 
 .kiwi-welcome-simple-error {
@@ -370,6 +418,7 @@ export default {
     margin-top: -0.5em;
     left: 50%;
     margin-left: -40px;
+    color: black;
 }
 
 /** Smaller screen... **/
@@ -400,7 +449,6 @@ export default {
         left: 48%;
         top: 50%;
         margin-top: -50px;
-        color: #fff;
     }
 }
 

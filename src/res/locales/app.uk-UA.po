@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2018-12-12 11:13\n"
+"PO-Revision-Date: 2019-03-14 12:41\n"
 
 #: Start
 msgid "start_button"
@@ -853,9 +853,13 @@ msgstr "Запит інформації про когось"
 msgid "command_whowas"
 msgstr "Запит інформації про когось, хто нещодавно від'єднався"
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
 msgstr "Позначити себе як відійшов"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr "Змінити статус на активний"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -868,6 +872,14 @@ msgstr "Ігнорувати повідомлення від когось"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Припинити ігнорування"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Кинути кості"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Кидає {{sides}}-сторонні кості й отримує {{number}}"
 
 #: Your IRC client
 msgid "personal_client"

@@ -62,6 +62,12 @@ export default {
                     s = true;
                 }
 
+                (item.alias || []).forEach((alias) => {
+                    if (alias.toLowerCase().indexOf(filterVal) === 0) {
+                        s = true;
+                    }
+                });
+
                 return s;
             })
                 .sort((a, b) => a.text.localeCompare(b.text))

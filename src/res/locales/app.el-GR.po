@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2018-12-17 15:50\n"
+"PO-Revision-Date: 2019-02-21 17:21\n"
 
 #: Start
 msgid "start_button"
@@ -853,9 +853,13 @@ msgstr "Ζητήστε πληροφορίες για κάποιον"
 msgid "command_whowas"
 msgstr "Ζητήστε πληροφορίες σχετικά με κάποιον που αποσυνδέθηκε πρόσφατα"
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
 msgstr "Σημειώστε τον εαυτό σας ως μακριά"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr "Ορίστε τον εαυτό σας ως ενεργό"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -868,6 +872,14 @@ msgstr "Αγνοήστε τα μηνύματα από κάποιον"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Σταματήστε να αγνοείτε κάποιον"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Ρίξτε ένα Zάρι"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Ρίχνει ένα {{sides}} από την πλευρά του ζαριού και τυχαίνει {{number}}"
 
 #: Your IRC client
 msgid "personal_client"

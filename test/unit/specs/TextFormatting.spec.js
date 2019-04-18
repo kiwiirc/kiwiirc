@@ -13,6 +13,8 @@ describe('TextFormatting.js', function() {
             ['#chan[n]el,', '<a class="u-link kiwi-channel" data-channel-name="#chan[n]el">#chan[n]el</a>,'],
             ['@#channel:', '@<a class="u-link kiwi-channel" data-channel-name="#channel">#channel</a>:'],
             ['@&channel,', '@<a class="u-link kiwi-channel" data-channel-name="&amp;channel">&amp;channel</a>,'],
+            ['&@#channel,', '&amp;@<a class="u-link kiwi-channel" data-channel-name="#channel">#channel</a>,'],
+            ['&@&channel,', '&amp;@<a class="u-link kiwi-channel" data-channel-name="&amp;channel">&amp;channel</a>,'],
         ];
 
         tests.forEach((c) => {
@@ -63,12 +65,12 @@ describe('TextFormatting.js', function() {
         };
         let tests = [
             // word, nick, prefix, suffix
-            ['testnick1', 'TestNick1'],
+            ['testnick1', 'testnick1'],
             ['TestNick1'],
             ['TestNick2'],
-            ['Testnick3', 'TestNick3'],
-            ['testnick1:', 'TestNick1', '', ':'],
-            ['@testnick2', 'TestNick2', '@', ''],
+            ['Testnick3', 'Testnick3'],
+            ['testnick1:', 'testnick1', '', ':'],
+            ['@testnick2', 'testnick2', '@', ''],
             ['@TestNick2:', 'TestNick2', '@', ':'],
         ];
 

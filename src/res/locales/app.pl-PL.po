@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2018-12-11 10:26\n"
+"PO-Revision-Date: 2019-02-19 17:31\n"
 
 #: Start
 msgid "start_button"
@@ -47,7 +47,7 @@ msgstr "Ustawienia Kiwi"
 
 #: Channels
 msgid "channels"
-msgstr "Kanały"
+msgstr "Pokoje"
 
 #: Banned Users
 msgid "banned"
@@ -79,11 +79,11 @@ msgstr "Pseudonim"
 
 #: Channel
 msgid "channel"
-msgstr "Kanał"
+msgstr "Pokój"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "Wiadomości"
 
 #: Network
 msgid "network"
@@ -123,11 +123,11 @@ msgstr "Nie"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "Nie znaleziono"
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "Ostrzeżenie!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -159,47 +159,47 @@ msgstr "Ignoruj użytkownika"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Kanał"
+msgstr "Pokój"
 
 #: {{count}} week
 msgid "week"
-msgstr "tydzień"
+msgstr "{{count}} tydzień"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "tygodni(e)"
+msgstr "{{count}} tygodni(e)"
 
 #: {{count}} day
 msgid "day"
-msgstr "dzień"
+msgstr "{{count}} dzień"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dni"
+msgstr "{{count}} dni"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "godzina"
+msgstr "{{count}} godzina"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "godzin(y)"
+msgstr "{{count}} godzin(y)"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuta"
+msgstr "{{count}} minuta"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minut(y)"
+msgstr "{{count}} minut(y)"
 
 #: {{count}} second
 msgid "second"
-msgstr "sekunda"
+msgstr "{{count}} sekunda"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "sekund(y)"
+msgstr "{{count}} sekund(y)"
 
 #: General
 msgid "settings_general"
@@ -219,7 +219,7 @@ msgstr "URL motywu"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr ""
+msgstr "Układ wiadomości"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -335,27 +335,27 @@ msgstr "Domyślny powód wyrzucenia"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr ""
+msgstr "Zaawansowane ustawienia"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr ""
+msgstr "Potwory są tutaj, kliknij ten przycisk, jeśli wiesz, co robisz"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr ""
+msgstr "Włącz zaawansowane ustawienia"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Strefa zagrożenia: Zmiana niektórych z tych ustawień może spowodować problemy!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Zresetuj"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Filter"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -411,7 +411,7 @@ msgstr "Witamy w Kiwi IRC-u!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr ""
+msgstr "Pokaż przeglądarkę stanu"
 
 #: Hide Topic
 msgid "hide_topic"
@@ -527,7 +527,7 @@ msgstr "Podłącz się ponownie, żeby kontynuować rozmowę z {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr ""
+msgstr "Nie jesteś w tej chwili połączony!"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -535,11 +535,11 @@ msgstr "Ustawienia połączenia"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr ""
+msgstr "Nie mogliśmy połączyć się z tym serwerem :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr ""
+msgstr "Połącz z siecią"
 
 #: Close options
 msgid "side_close"
@@ -583,23 +583,23 @@ msgstr "Nie ustawiono buforu"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr ""
+msgstr "Nie ma tematu dla tego pokoju"
 
 #: About
 msgid "about"
-msgstr ""
+msgstr "O nas"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "Utworzono w {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr ""
+msgstr "Podświetlenia"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr ""
+msgstr "Nikt cię jeszcze nie wspomniał ..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -639,15 +639,15 @@ msgstr "Dostępne sieci"
 
 #: Add Network
 msgid "add_network"
-msgstr ""
+msgstr "Dodaj Sieć"
 
 #: New Network
 msgid "new_network"
-msgstr ""
+msgstr "Nowa Sieć"
 
 #: No Network
 msgid "no_network"
-msgstr ""
+msgstr "Brak Sieci"
 
 #: Configure network
 msgid "state_configure"
@@ -727,7 +727,7 @@ msgstr "Zablokuj i wyrzuć z kanału"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr ""
+msgstr "Proszę podać pokój aby dołączyć. np. /join #pokój"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -783,90 +783,102 @@ msgstr "{{nick}} ustawia tryb {{mode}} dla {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Wyślij wiadomość"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Zrób coś fizycznego"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Dolącz do pokoju"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Wyjdż z pokoju"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Wyjdż, następnie ponownie dołącz do pokoju"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Zmień swój nick"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Rozpocznij prywatną rozmowę z kimś"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Zaproś kogoś do pokoju"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Ustaw temat dla tego pokoju"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Wyślij powiadomienie"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Wyślij komendę na serwer IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Wyrzuć kogoś z pokoju"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Wyczyść wszystkie wiadomości z tego okna"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Wyślij komuś komendę CTCP"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Odłącz się od serwera IRC"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Połącz się z nową siecią IRC"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Poproś o informacje na temat kogoś"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Poproś o informacje na temat kogoś, kto niedawno się rozłączył"
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Ustaw siebie jako nieobecny"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr "Ustaw siebie jako obecny"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Zmień kodowanie połączenia"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Ignoruj ​​wiadomości od kogoś"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
+msgstr "Przestań ignorować kogoś"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr ""
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
 msgstr ""
 
 #: Your IRC client

@@ -25,21 +25,14 @@
                     }"
                     class="kiwi-header-option kiwi-header-option-about"
                 >
-                    <a @click="sidebarState.toggleAbout()">
+                    <a :title="$t('more_information')" @click="sidebarState.toggleAbout()">
                         <i class="fa fa-info" aria-hidden="true"/>
-                    </a>
-                </div>
-                <div
-                    v-if="sidebarState.sidebarSection === 'user'"
-                    class="kiwi-header-option kiwi-header-option-user kiwi-header-option--active"
-                >
-                    <a @click="sidebarState.close()">
-                        <i class="fa fa-user" aria-hidden="true"/>
                     </a>
                 </div>
                 <div
                     :class="{
                         'kiwi-header-option--active': sidebarState.sidebarSection === 'nicklist'
+                            || sidebarState.sidebarSection === 'user'
                     }"
                     class="kiwi-header-option kiwi-header-option-nicklist"
                 >
@@ -75,7 +68,7 @@
                 <div
                     class="kiwi-header-option kiwi-header-option-leave"
                 >
-                    <a @click="showPrompt('closeChannel')">
+                    <a :title="$t('close')" @click="showPrompt('closeChannel')">
                         <i class="fa fa-times" aria-hidden="true"/>
                     </a>
                 </div>
@@ -100,25 +93,33 @@
         </template>
 
         <template v-else-if="isServer()">
-            <div
-                v-if="buffer.getNetwork().state === 'disconnected'"
-                class="kiwi-header-server-connection"
-            >
-                <a class="u-button u-button-primary" @click="onConnectButtonClick">
+            <div class="kiwi-header-name">
+                {{ buffer.getNetwork().name }}
+            </div>
+            <div class="kiwi-header-server-connection" >
+                <a
+                    v-if="buffer.getNetwork().state === 'disconnected'"
+                    class="u-button u-button-primary"
+                    @click="onConnectButtonClick"
+                >
                     {{ $t('connect') }}
                 </a>
+                <span v-else-if="buffer.getNetwork().state === 'connecting'">
+                    <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
+                    {{ $t('connecting') }}
+                </span>
             </div>
-            <div
-                v-else-if="buffer.getNetwork().state === 'connecting'"
-                class="kiwi-header-server-connection"
-            >
-                {{ $t('connecting') }}
-            </div>
-            <div class="kiwi-header-name">{{ buffer.getNetwork().name }}</div>
         </template>
 
         <template v-else-if="isQuery()">
-            <div class="kiwi-header-name">{{ buffer.name }}</div>
+            <div class="kiwi-header-name">
+                <away-status-indicator
+                    :network="buffer.getNetwork()"
+                    :user="network.userByName(buffer.name)"
+                    class="kiwi-header-awaystatus"
+                />
+                {{ buffer.name }}
+            </div>
             <div :key="buffer.id" class="kiwi-header-options">
                 <div
                     v-rawElement="plugin.el"
@@ -135,6 +136,7 @@
         </template>
 
         <template v-else-if="isSpecial()">
+            <div class="kiwi-header-name">{{ buffer.name }}</div>
             <div class="kiwi-header-options">
                 <div class="kiwi-header-option kiwi-header-option-leave">
                     <a @click="closeCurrentBuffer">
@@ -142,7 +144,6 @@
                     </a>
                 </div>
             </div>
-            <div class="kiwi-header-name">{{ buffer.name }}</div>
         </template>
 
         <div
@@ -183,12 +184,14 @@ import formatIrcMessage from '@/libs/MessageFormatter';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         BufferSettings,
         ChannelInfo,
         ChannelBanlist,
+        AwayStatusIndicator,
     },
     props: ['buffer', 'sidebarState'],
     data: function data() {
@@ -215,6 +218,9 @@ export default {
             let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
             return content.html;
         },
+        network() {
+            return this.buffer.getNetwork();
+        },
     },
     watch: {
         buffer: function watchBuffer() {
@@ -236,19 +242,19 @@ export default {
         showPrompt(prompt) {
             this.prompts[prompt] = true;
         },
-        isChannel: function isChannel() {
+        isChannel() {
             return this.buffer.isChannel();
         },
-        isServer: function isServer() {
+        isServer() {
             return this.buffer.isServer();
         },
-        isQuery: function isQuery() {
+        isQuery() {
             return this.buffer.isQuery();
         },
-        isSpecial: function isSpecial() {
+        isSpecial() {
             return this.buffer.isSpecial();
         },
-        showNetworkSettings: function showNetworkSettings(network) {
+        showNetworkSettings(network) {
             network.showServerBuffer('settings');
         },
         onConnectButtonClick() {
@@ -262,15 +268,15 @@ export default {
         showSidebar() {
             state.$emit('sidebar.toggle');
         },
-        joinCurrentBuffer: function joinCurrentBuffer() {
+        joinCurrentBuffer() {
             let network = this.buffer.getNetwork();
             this.buffer.enabled = true;
             network.ircClient.join(this.buffer.name);
         },
-        closeCurrentBuffer: function closeCurrentBuffer() {
+        closeCurrentBuffer() {
             state.removeBuffer(this.buffer);
         },
-        onHeaderClick: function onHeaderClick(event) {
+        onHeaderClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
             if (channelName) {
                 let network = this.buffer.getNetwork();
@@ -289,8 +295,13 @@ export default {
     line-height: 10px;
     box-sizing: border-box;
     text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid;
     display: flex;
+}
+
+.kiwi-header-name .kiwi-header-awaystatus {
+    display: inline-block;
+    margin-bottom: 2px;
 }
 
 .kiwi-header--showall {

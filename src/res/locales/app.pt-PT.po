@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2018-12-11 10:26\n"
+"PO-Revision-Date: 2019-03-10 16:21\n"
 
 #: Start
 msgid "start_button"
@@ -63,11 +63,11 @@ msgstr "Nome de utilizador"
 
 #: Password
 msgid "password"
-msgstr "Palavra-passe"
+msgstr "Senha"
 
 #: I have a password
 msgid "password_have"
-msgstr "Eu tenho uma palavra-passe"
+msgstr "Eu tenho uma senha"
 
 #: Server
 msgid "server"
@@ -131,7 +131,7 @@ msgstr "Atenção!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "Isto irá fechar todas as janelas do KiwiIRC. Deseja continuar?"
+msgstr "Isto irá fechar todas as janelas do Kiwi IRC. Deseja continuar?"
 
 #: Real name
 msgid "whois_realname"
@@ -163,43 +163,43 @@ msgstr "Canal"
 
 #: {{count}} week
 msgid "week"
-msgstr "semana"
+msgstr "{{count}} semana"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "semanas"
+msgstr "{{count}} semanas"
 
 #: {{count}} day
 msgid "day"
-msgstr "dia"
+msgstr "{{count}} dia"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dias"
+msgstr "{{count}} dias"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "hora"
+msgstr "{{count}} hora"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "horas"
+msgstr "{{count}} horas"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuto"
+msgstr "{{count}} minuto"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minutos"
+msgstr "{{count}} minutos"
 
 #: {{count}} second
 msgid "second"
-msgstr "segundo"
+msgstr "{{count}} segundo"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "segundos"
+msgstr "{{count}} segundos"
 
 #: General
 msgid "settings_general"
@@ -371,7 +371,7 @@ msgstr "Banido por"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Actualizando lista de bans"
+msgstr "Actualizando lista de bans..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -395,11 +395,11 @@ msgstr "Apenas OPs podem alterar o tópico"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Bloquear mensagens externas"
+msgstr "Bloquear mensagens externas ao canal"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Clique no botão atualizar para atualizar a lista de canais"
+msgstr "Clique no botão actualizar para actualizar a lista de canais"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
@@ -407,7 +407,7 @@ msgstr "Nenhum canal encontrado, tente novamente mais tarde"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Bem vindos ao Kiwi IRC! Escolha um canal à esquerda."
+msgstr "Bem vindos ao Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -459,7 +459,7 @@ msgstr "Mensagens não lidas"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Definições de rede"
+msgstr "Detalhes do servidor"
 
 #: Port
 msgid "settings_port"
@@ -853,9 +853,13 @@ msgstr "Solicite informações sobre alguém"
 msgid "command_whowas"
 msgstr "Solicitar informações sobre alguém que se desconectou recentemente"
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
-msgstr "Marque-se como ausente"
+msgstr "Coloca-o como ausente"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr "Remove o estatuto de ausente (/away)"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -868,6 +872,14 @@ msgstr "Ignorar mensagens de alguém"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Pare de ignorar alguém"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Role um Dado"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Rola um dado de {{sides}} lados e obtém {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -939,11 +951,11 @@ msgstr "{{nick}} convidou-te para o canal {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Alcunha {{nick}} já em uso. Tentando com {{newnick}}..."
+msgstr "Nick {{nick}} já em uso. Tentando com {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} é agora conhecido como {{newnick}}"
+msgstr "{{nick}} mudou o nick para {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"

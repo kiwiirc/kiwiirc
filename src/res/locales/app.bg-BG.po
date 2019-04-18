@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2018-12-11 10:26\n"
+"PO-Revision-Date: 2019-04-10 13:31\n"
 
 #: Start
 msgid "start_button"
@@ -639,15 +639,15 @@ msgstr "Налични мрежи"
 
 #: Add Network
 msgid "add_network"
-msgstr ""
+msgstr "Добави Мрежа"
 
 #: New Network
 msgid "new_network"
-msgstr ""
+msgstr "нова мрежа"
 
 #: No Network
 msgid "no_network"
-msgstr ""
+msgstr "Няма мрежа"
 
 #: Configure network
 msgid "state_configure"
@@ -727,7 +727,7 @@ msgstr "Забрани и премахни от канала"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr ""
+msgstr "Моля, посочете канал, към който да се присъедините. напр. / join #example"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -783,91 +783,103 @@ msgstr "{{nick}} задава {{mode}} на {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Изпрати съобщение"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Направете нещо физическо"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Присъединете се към канал"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Напуснете канал"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Напуснете, след което отново се присъединете към канал"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Променете псевдонима си"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Започнете частен разговор с някого"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Поканете някого в канала"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Задайте темата за този канал"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Изпращане на известие"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "изпращане на сурова команда към IRC сървъра"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Изгонете някого от канала"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Изчистване на всички съобщения от този прозорец"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Изпратете команда на CTCP на някого"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Прекъснете връзката с IRC сървъра"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Свържете се с нова IRC мрежа"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Искайте информация за някого"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Искайте информация за някой, който е прекъснал наскоро"
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Маркирайте себе си като далеч от компютъра"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr "Задайте, че сте активен"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Променете кодирането на връзката"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Игнорирайте съобщенията от някого"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Престани да игнорираш някого"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Завърти заровете"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Разгъва {{sides}} зарове и получавате {{number}}"
 
 #: Your IRC client
 msgid "personal_client"

@@ -19,6 +19,8 @@ module.exports = {
                     }
                     if (!c.startsWith('kiwi-') &&
                         !c.startsWith('u-') &&
+                        // Special exception for google recaptcha -  welcome screen.
+                        !c.startsWith('g-') &&
                         !c.startsWith('irc-fg-') &&
                         !c.startsWith('irc-bg-')
                     ) {

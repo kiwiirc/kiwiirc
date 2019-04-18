@@ -1,13 +1,12 @@
 <template>
     <div class="kiwi-statebrowser kiwi-theme-bg">
 
-        <div class="kiwi-statebrowser-appsettings" @click="clickAppSettings">
+        <div
+            :title="$t('kiwi_settings')"
+            class="kiwi-statebrowser-appsettings"
+            @click="clickAppSettings"
+        >
             <i class="fa fa-cog" aria-hidden="true"/>
-        </div>
-
-        <div class="kiwi-statebrowser-mobile-close" @click="hideStatebrowser">
-            <span>{{ $t('close') }}</span>
-            <i class="fa fa-times" aria-hidden="true"/>
         </div>
 
         <div
@@ -24,6 +23,12 @@
                 @click="is_usermenu_open=!is_usermenu_open"
             >
                 {{ userInitial }}
+                <away-status-indicator
+                    v-if="getNetwork && getNetwork.state === 'connected'"
+                    :network="getNetwork"
+                    :user="getUser"
+                    :toggle="false"
+                />
             </div>
             <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
                 <p> {{ $t('state_remembered') }} </p>
@@ -112,6 +117,7 @@ import GlobalApi from '@/libs/GlobalApi';
 import StateBrowserNetwork from './StateBrowserNetwork';
 import AppSettings from './AppSettings';
 import BufferSettings from './BufferSettings';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 let netProv = new NetworkProvider();
 
@@ -119,6 +125,7 @@ export default {
     components: {
         BufferSettings,
         StateBrowserNetwork,
+        AwayStatusIndicator,
     },
     props: ['networks', 'sidebarState'],
     data: function data() {
@@ -137,6 +144,15 @@ export default {
                 initial = network.nick.charAt(0).toUpperCase();
             }
             return initial;
+        },
+        getNetwork() {
+            return state.getActiveNetwork();
+        },
+        getUser() {
+            let network = state.getActiveNetwork();
+            return network ?
+                network.currentUser() :
+                null;
         },
         networkName() {
             let network = state.getActiveNetwork();
@@ -176,7 +192,7 @@ export default {
             network.showServerBuffer('settings');
         },
         clickAppSettings: function clickAppSettings() {
-            state.$emit('active.component', AppSettings);
+            state.$emit('active.component.toggle', AppSettings);
         },
         hideStatebrowser: function hideStatebrowser() {
             state.$emit('statebrowser.hide');
@@ -217,6 +233,7 @@ export default {
     width: 220px;
     text-align: center;
     overflow: hidden;
+    transition: left 0.145s, margin-left 0.145s;
 }
 
 .kiwi-statebrowser h1 {
@@ -238,18 +255,16 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: auto;
-    text-align: left;
-    padding: 0 10px;
+    width: 39px;
+    text-align: center;
     font-size: 1em;
     box-sizing: border-box;
-    line-height: 35px;
+    line-height: 57px;
     cursor: pointer;
     font-weight: 500;
-    letter-spacing: 1px;
-    transition: all 0.3s;
-    border-radius: 0 0 6px 0;
+    transition: background 0.2s, opacity 0.2s;
     opacity: 0.8;
+    z-index: 20;
 }
 
 .kiwi-statebrowser-appsettings:hover {
@@ -261,7 +276,6 @@ export default {
 }
 
 .kiwi-statebrowser-appsettings i {
-    float: right;
     line-height: 35px;
     font-size: 1.2em;
 }
@@ -269,8 +283,12 @@ export default {
 .kiwi-statebrowser-usermenu {
     width: 100%;
     padding-bottom: 0;
-    margin-bottom: 10px;
     padding-top: 34px;
+}
+
+.kiwi-statebrowser-usermenu-network {
+    padding: 0 0 10px 0;
+    cursor: default;
 }
 
 .kiwi-statebrowser-usermenu-avatar {
@@ -280,10 +298,20 @@ export default {
     font-size: 1.5em;
     text-align: center;
     line-height: 50px;
+    border: 2px solid;
     border-radius: 50%;
-    overflow: hidden;
     margin: 0 auto 10px auto;
-    transition: all 0.3s;
+    transition: background 0.2s;
+    position: relative;
+}
+
+.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
+    position: absolute;
+    top: 1px;
+    right: -5px;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #000;
 }
 
 .kiwi-statebrowser-usermenu-body {
@@ -305,6 +333,7 @@ export default {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    border-top: 1px solid;
 }
 
 .kiwi-statebrowser-newnetwork a {
@@ -312,7 +341,7 @@ export default {
     padding: 0 10px;
     margin: 0;
     opacity: 1;
-    line-height: 40px;
+    line-height: 39px;
     cursor: pointer;
     display: block;
     box-sizing: border-box;
@@ -327,7 +356,7 @@ export default {
 
 .kiwi-statebrowser-newnetwork a i {
     position: absolute;
-    right: 10px;
+    right: 20px;
     line-height: 39px;
     font-size: 1.15em;
 }
@@ -365,8 +394,9 @@ export default {
     font-size: 1em;
 }
 
-.kiwi-statebrowser-channel.kiwi-statebrowser-channel-active {
+.kiwi-statebrowser-channel-active {
     font-weight: 600;
+    border-left: 3px solid;
     opacity: 1;
 }
 
@@ -514,10 +544,6 @@ export default {
     cursor: pointer;
 }
 
-.kiwi-statebrowser-mobile-close {
-    display: none;
-}
-
 .kiwi-statebrowser-availablenetworks-link {
     border-right: 15px solid red;
 }
@@ -551,6 +577,7 @@ export default {
         width: 75%;
         left: 0;
         z-index: 100;
+        transition: left 0.07s, width 0.1s;
     }
 
     .kiwi-header {
@@ -571,36 +598,23 @@ export default {
         width: 95%;
     }
 
-    .kiwi-statebrowser-mobile-close {
-        width: 100%;
-        color: #fff;
-        display: block;
-        padding: 0 10px;
-        font-weight: 600;
-        background: #42b992;
-        box-sizing: border-box;
-        margin-bottom: 0;
-        text-transform: uppercase;
-        line-height: 45px;
-        height: 45px;
-
-        span {
-            float: left;
-        }
-
-        i {
-            float: right;
-            font-size: 1.2em;
-            line-height: 45px;
-        }
-    }
-
     .kiwi-statebrowser-channel::before {
         line-height: 40px;
     }
 
     .kiwi-statebrowser-usermenu {
         position: relative;
+    }
+
+    .kiwi-statebrowser-usermenu-body .kiwi-close-icon {
+        display: none;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser::after {
+        opacity: 1;
+        width: 100%;
+        right: -100%;
+        transition: width 0.2s, opacity 0.2s;
     }
 }
 

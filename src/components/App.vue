@@ -17,7 +17,12 @@
         </template>
         <template v-else>
             <state-browser :networks="networks" :sidebar-state="sidebarState"/>
-            <div class="kiwi-workspace" @click="stateBrowserDrawOpen = false">
+            <div
+                :class="{
+                    'kiwi-workspace--disconnected': network && network.state !== 'connected'
+                }"
+                class="kiwi-workspace"
+                @click="stateBrowserDrawOpen = false">
                 <div class="kiwi-workspace-background"/>
 
                 <template v-if="!activeComponent && network">
@@ -26,13 +31,13 @@
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
                     >
-                        <media-viewer
-                            v-if="mediaviewerOpen"
-                            slot="before"
-                            :url="mediaviewerUrl"
-                            :component="mediaviewerComponent"
-                            :is-iframe="mediaviewerIframe"
-                        />
+                        <template v-slot:before v-if="mediaviewerOpen">
+                            <media-viewer
+                                :url="mediaviewerUrl"
+                                :component="mediaviewerComponent"
+                                :is-iframe="mediaviewerIframe"
+                            />
+                        </template>
                     </container>
                     <control-input :container="networks" :buffer="buffer"/>
                 </template>
@@ -51,6 +56,7 @@
 'kiwi public';
 
 import 'font-awesome-webpack';
+import cssVarsPonyfill from 'css-vars-ponyfill';
 import '@/res/globalStyle.css';
 import Tinycon from 'tinycon';
 
@@ -172,12 +178,22 @@ export default {
                     this.activeComponent = component;
                 }
             });
+            this.listen(this.$state, 'active.component.toggle', (component, props) => {
+                if (component === this.activeComponent) {
+                    this.activeComponent = null;
+                } else if (component) {
+                    this.activeComponentProps = props;
+                    this.activeComponent = component;
+                }
+            });
         },
         watchForThemes() {
             let themes = ThemeManager.instance();
             this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
+            this.$nextTick(() => cssVarsPonyfill());
             this.listen(this.$state, 'theme.change', () => {
                 this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
+                this.$nextTick(() => cssVarsPonyfill());
             });
         },
         initStateBrowser() {
@@ -243,6 +259,7 @@ export default {
             let trackWindowDims = () => {
                 this.$state.ui.app_width = this.$el.clientWidth;
                 this.$state.ui.app_height = this.$el.clientHeight;
+                this.$state.ui.is_narrow = this.$el.clientWidth <= 769;
             };
             window.addEventListener('resize', trackWindowDims);
             trackWindowDims();
@@ -300,7 +317,9 @@ export default {
             if (navigator.appVersion.indexOf('Mac') !== -1) {
                 meta = event.metaKey;
             } else {
-                meta = event.ctrlKey;
+                // none english languages use ctrl + alt to access extended chars
+                // make sure we do not interfere with that by only acting on ctrl
+                meta = event.ctrlKey && !event.altKey;
             }
 
             if (meta && event.keyCode === 221) {
@@ -319,7 +338,7 @@ export default {
                 event.preventDefault();
             } else if (meta && event.keyCode === 79) {
                 // meta + o
-                this.$state.$emit('active.component', AppSettings);
+                this.$state.$emit('active.component.toggle', AppSettings);
                 event.preventDefault();
             } else if (meta && event.keyCode === 83) {
                 // meta + s
@@ -356,11 +375,6 @@ body {
     overflow: hidden;
 }
 
-.kiwi-wrap--monospace {
-    font-family: Consolas, monaco, monospace;
-    font-size: 80%;
-}
-
 .kiwi-workspace {
     position: relative;
     margin-left: 220px;
@@ -370,26 +384,31 @@ body {
     transition: left 0.2s, margin-left 0.2s;
 }
 
-.kiwi-workspace::before {
+.kiwi-workspace::before,
+.kiwi-workspace::after {
     position: absolute;
     content: '';
-    right: 0;
     left: 0;
+    right: auto;
     top: 0;
+    width: 100%;
     height: 7px;
     z-index: 0;
+    transition: width 0.3s;
 }
 
-/* When the statebrowser opens as a draw, darken the workspace */
 .kiwi-workspace::after {
-    position: fixed;
-    top: 0;
     right: 0;
-    content: '';
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 0.5s;
-    will-change: opacity;
+    left: auto;
+    width: 0;
+}
+
+.kiwi-workspace--disconnected::before {
+    width: 0;
+}
+
+.kiwi-workspace--disconnected::after {
+    width: 100%;
 }
 
 .kiwi-workspace-background {
@@ -407,7 +426,7 @@ body {
     left: 0;
     width: 200px;
     bottom: 0;
-    transition: left 0.2s;
+    transition: left 0.145s, margin-left 0.145s;
     z-index: 1;
 }
 
@@ -448,14 +467,8 @@ body {
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
         left: 75%;
-        width: 80%;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-        z-index: 10;
+        transition: left 0.1s;
+        transition-delay: 0s;
     }
 }
 </style>
