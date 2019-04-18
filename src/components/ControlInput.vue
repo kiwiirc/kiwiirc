@@ -195,6 +195,13 @@ export default {
                 return;
             }
 
+            // Firefox 66.0.3 on linux isn't consistently setting ev.ctrlKey === true when only
+            // the control key is pressed so add a specific check for this
+            // TODO: Remove this check once ff 66.0.3 is no longer around
+            if (ev.keyCode === 17) {
+                return;
+            }
+
             // If we are using shift and arrow keys, don't shift focus
             // this allows users to adjust text selection
             let arrowKeyCodes = [37, 38, 39, 40];
