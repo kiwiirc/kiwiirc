@@ -107,6 +107,7 @@ function clientMiddleware(state, network) {
     let numConnects = 0;
     // Requested chathistory for this connection yet
     let requestedCh = false;
+    let isRegistered = false;
 
     return function middlewareFn(client, rawEvents, parsedEvents) {
         parsedEvents.use(parsedEventsHandler);
@@ -116,6 +117,7 @@ function clientMiddleware(state, network) {
             network.state_error = '';
             network.state = 'connecting';
             network.last_error = '';
+            network.last_error_numeric = 0;
         });
 
         client.on('connected', () => {
@@ -142,6 +144,7 @@ function clientMiddleware(state, network) {
         });
 
         client.on('socket close', (err) => {
+            isRegistered = false;
             network.state = 'disconnected';
             network.state_error = err || '';
 
@@ -218,6 +221,7 @@ function clientMiddleware(state, network) {
         }
 
         if (command === 'registered') {
+            isRegistered = true;
             network.nick = event.nick;
             state.addUser(networkid, { nick: event.nick, username: client.user.username });
 
@@ -1112,6 +1116,25 @@ function clientMiddleware(state, network) {
             }
         }
 
+        if (command === 'nick invalid') {
+            let messageBody = TextFormatting.formatText('general_error', {
+                text: event.reason,
+            });
+            let buffer = state.getActiveBuffer();
+            state.addMessage(buffer, {
+                time: event.time || Date.now(),
+                nick: '',
+                message: messageBody,
+                type: 'error',
+            });
+
+            if (!isRegistered) {
+                network.last_error_numeric = 432;
+                network.last_error = event.reason;
+                network.ircClient.quit();
+            }
+        }
+
         if (command === 'irc error') {
             let buffer;
             if (event.channel || event.nick) {
@@ -1128,9 +1151,9 @@ function clientMiddleware(state, network) {
                 buffer.flags.channel_badkey = true;
             }
 
-            if (event.reason) {
+            // ignore error 432 (erroneous nickname) as it is handled above
+            if (event.reason && network.last_error_numeric !== 432) {
                 network.last_error = event.reason;
-
                 let messageBody = TextFormatting.formatText('general_error', {
                     text: event.reason || event.error,
                 });
