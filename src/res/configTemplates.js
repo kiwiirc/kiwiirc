@@ -87,7 +87,7 @@ export const configTemplates = {
         showAutocomplete: true,
         showEmojiPicker: true,
         showSendButton: false,
-        sidebarDefault: '',
+        sidebarDefault: 'nicklist',
         showRaw: false,
         highlights: '',
         teamHighlights: false,
