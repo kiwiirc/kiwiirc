@@ -35,25 +35,44 @@
     >
         <div class="kiwi-messagelist-modern-left">
             <message-avatar
-                v-if="isMessage(message)"
+                v-if="isMessage(message) && displayAvatar(message)"
                 :message="message"
                 :data-nick="message.nick"
             />
+            <away-status-indicator
+                v-if="message.user && !isRepeat()"
+                :network="getNetwork()" :user="message.user"
+                :toggle="false"
+                class="kiwi-messagelist-awaystatus"
+            />
         </div>
         <div class="kiwi-messagelist-modern-right">
-            <div
-                :style="{ 'color': userColour }"
-                class="kiwi-messagelist-nick"
-                @click="ml.openUserBox(message.nick)"
-                @mouseover="ml.hover_nick=message.nick.toLowerCase();"
-                @mouseout="ml.hover_nick='';"
-            >{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
-            <div
-                v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
-                :title="ml.formatTimeFull(message.time)"
-                class="kiwi-messagelist-time"
-            >
-                {{ ml.formatTime(message.time) }}
+            <div class="kiwi-messagelist-top">
+                <div
+                    :style="{ 'color': userColour }"
+                    class="kiwi-messagelist-nick"
+                    @click="ml.openUserBox(message.nick)"
+                    @mouseover="ml.hover_nick=message.nick.toLowerCase();"
+                    @mouseout="ml.hover_nick='';"
+                >
+                    {{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}
+                </div>
+                <div
+                    v-if="showRealName"
+                    class="kiwi-messagelist-realname"
+                    @click="ml.openUserBox(message.nick)"
+                    @mouseover="ml.hover_nick=message.nick.toLowerCase();"
+                    @mouseout="ml.hover_nick='';"
+                >
+                    {{ message.user.realname }}
+                </div>
+                <div
+                    v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
+                    :title="ml.formatTimeFull(message.time)"
+                    class="kiwi-messagelist-time"
+                >
+                    {{ ml.formatTime(message.time) }}
+                </div>
             </div>
             <div
                 v-rawElement="message.bodyTemplate.$el"
@@ -79,13 +98,16 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
+import { urlRegex } from '@/helpers/TextFormatting';
 import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         MessageAvatar: MessageListAvatar,
         MessageInfo,
+        AwayStatusIndicator,
     },
     props: ['ml', 'message', 'idx'],
     data: function data() {
@@ -93,18 +115,50 @@ export default {
         };
     },
     computed: {
+        showRealName() {
+            // Showing realname is not enabled
+            if (!this.ml.buffer.setting('show_realnames')) {
+                return false;
+            }
+
+            // Server does not support extended-join so realname would be inconsistent
+            let client = this.ml.buffer.getNetwork().ircClient;
+            if (!client.network.cap.isEnabled('extended-join')) {
+                return false;
+            }
+
+            // We dont have a user or users realname
+            if (!this.message.user || !this.message.user.realname) {
+                return false;
+            }
+
+            // No point showing the realname if it's the same as the nick
+            if (this.message.user.nick.toLowerCase() === this.message.user.realname.toLowerCase()) {
+                return false;
+            }
+
+            // If the realname contains a URL it's most likely a clients website
+            if (urlRegex.test(this.message.user.realname)) {
+                return false;
+            }
+
+            return true;
+        },
         userColour() {
             return this.ml.userColour(this.message.user);
         },
     },
     methods: {
+        getNetwork() {
+            return this.ml.buffer.getNetwork();
+        },
         isRepeat() {
             let ml = this.ml;
             let idx = this.idx;
             let message = this.message;
             let prevMessage = ml.filteredMessages[idx - 1];
 
-            return prevMessage &&
+            return !!prevMessage &&
                 prevMessage.nick === message.nick &&
                 message.time - prevMessage.time < 60000 &&
                 prevMessage.type !== 'traffic' &&
@@ -116,6 +170,15 @@ export default {
         isMessage(message) {
             let types = ['privmsg', 'action', 'notice', 'message'];
             return types.indexOf(message.type) > -1;
+        },
+        displayAvatar(message) {
+            if (!this.ml.buffer.isChannel() && message.type === 'notice') {
+                return true;
+            }
+            if (message.type === 'notice') {
+                return false;
+            }
+            return true;
         },
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
@@ -130,16 +193,25 @@ export default {
     border-left: 7px solid transparent;
     display: flex;
     margin: 0 0 0 20px;
+    border-top: 1px solid;
     margin-left: 0;
     padding: 15px 10px;
+    transition: border-colour 0.2s, background-color 0.2s;
 }
 
 .kiwi-messagelist-modern-left {
     user-select: none;
+    position: relative;
+    display: flex;
+    width: 50px;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left {
-    display: none;
+.kiwi-messagelist-awaystatus {
+    width: 10px;
+    top: 4px;
+    right: 2px;
+    height: 10px;
+    position: absolute;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorfirst.kiwi-messagelist-message-topic {
@@ -149,13 +221,14 @@ export default {
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
     margin-top: 0;
     padding-top: 0;
+    border-top: none;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-modern-right {
     padding-top: 0;
 }
 
-.kiwi-messagelist-message-modern.kiwi-messagelist-message-topic,
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic,
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -166,7 +239,8 @@ export default {
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
-    margin: 10px 20px 10px 20px;
+    margin: 20px 20px 20px 66px;
+    width: auto;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
@@ -174,7 +248,7 @@ export default {
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-message-topic .kiwi-messagelist-modern-left,
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
+.kiwi-messagelist-message--modern .kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message-topic .kiwi-messagelist-modern-left {
     display: none;
 }
 
@@ -182,8 +256,7 @@ export default {
     display: none;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick,
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-time {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-top {
     display: none;
 }
 
@@ -199,14 +272,10 @@ export default {
 
 /* Connection styling */
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection {
-    padding: 0;
     box-sizing: border-box;
-    margin: 10px auto;
     width: 100%;
-    border: none;
-    opacity: 1;
-    border-left: none;
-    text-align: center;
+    padding: 10px 0;
+    opacity: 0.8;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-time,
@@ -215,24 +284,12 @@ export default {
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
-    line-height: 30px;
-    font-weight: 100;
+    padding: 0 20px;
     margin: 0 auto;
-    border-radius: 4px;
     display: inline-block;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-message {
-    margin-bottom: 0;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-modern-left {
-    display: none;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-modern-right {
-    margin-left: 0;
-    padding: 0;
+    font-weight: 600;
+    font-size: 0.8em;
+    opacity: 0.8;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
@@ -246,43 +303,58 @@ export default {
     word-break: break-all;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-modern-left {
-    display: flex;
-    width: 50px;
-}
-
 .kiwi-messagelist-message--modern .kiwi-messagelist-modern-right {
     margin-left: 5px;
     padding-top: 0;
     width: 100%;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-nick {
-    float: left;
-    width: auto;
-    text-align: left;
+.kiwi-messagelist-message--modern .kiwi-messagelist-top > div {
+    margin-right: 10px;
     padding: 0;
+    display: inline-block;
+}
+
+.kiwi-messagelist-message--modern .kiwi-messagelist-nick {
     font-size: 1.1em;
-    padding-right: 10px;
+}
+
+.kiwi-messagelist-message--modern .kiwi-messagelist-realname {
+    cursor: pointer;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-time {
-    margin: 0 10px 0 0;
-    display: inline-block;
     font-size: 0.8em;
     font-weight: 400;
-    padding: 0;
-    opacity: 0.8;
-    cursor: default;
+    opacity: 0.6;
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-item .kiwi-messagelist-body {
-    margin-bottom: 10px;
+.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
+    margin-bottom: 0;
+}
+
+.kiwi-messagelist-message-traffic .kiwi-messagelist-modern-left,
+.kiwi-messagelist-message-traffic .kiwi-messagelist-top {
+    display: none;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic {
     margin-right: 0;
     padding-left: 60px;
+}
+
+.kiwi-messagelist-message-error {
+    padding: 10px 0;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.kiwi-messagelist-message-error .kiwi-messagelist-top {
+    display: none;
+}
+
+.kiwi-messagelist-message-error .kiwi-messagelist-body {
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 769px) {
@@ -308,16 +380,14 @@ export default {
         box-sizing: border-box;
         margin: 0;
         border: none;
-        background: #42b992;
         width: 100%;
         border-radius: 0;
-        opacity: 0.8;
     }
 
     .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
         line-height: 50px;
         font-weight: 600;
-        padding: 0;
+        padding: 0 10px;
     }
 
     .kiwi-messagelist-message-action .kiwi-messagelist-modern-left {
@@ -331,5 +401,10 @@ export default {
     .kiwi-messagelist-message--modern.kiwi-messagelist-message-traffic {
         padding-left: 10px;
     }
+
+    .kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
+        margin: 0 15px 20px 15px;
+    }
 }
+
 </style>

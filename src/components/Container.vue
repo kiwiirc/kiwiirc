@@ -14,15 +14,28 @@
                             '',
                     ]"
                     class="kiwi-container-toggledraw-statebrowser-messagecount"
-                >{{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}</div>
+                >
+                    <span class="kiwi-container-statebrowser-messagecount-alert">
+                        {{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}
+                    </span>
+                    <span class="kiwi-container-statebrowser-messagecount-close">
+                        <i class="fa fa-times" aria-hidden="true"/>
+                    </span>
+                </div>
             </div>
             <container-header :buffer="buffer" :sidebar-state="sidebarState"/>
 
             <slot name="before"/>
 
+            <not-connected
+                v-if="buffer.getNetwork().state !== 'connected' && !buffer.isServer()"
+                :buffer="buffer"
+                :network="buffer.getNetwork()"
+            />
+
             <div class="kiwi-container-content">
                 <template v-if="buffer.isServer()">
-                    <server-view :network="network" :buffer="buffer" :sidebar-state="sidebarState"/>
+                    <server-view :network="network"/>
                 </template>
                 <template v-else>
                     <message-list :buffer="buffer"/>
@@ -54,6 +67,7 @@
 import state from '@/libs/state';
 import ContainerHeader from './ContainerHeader';
 import Sidebar from './Sidebar';
+import NotConnected from './NotConnected';
 import MessageList from './MessageList';
 import ServerView from './ServerView';
 
@@ -61,6 +75,7 @@ export default {
     components: {
         ContainerHeader,
         Sidebar,
+        NotConnected,
         MessageList,
         ServerView,
     },
@@ -82,7 +97,6 @@ export default {
             } else if (this.buffer.isQuery()) {
                 type = 'query';
             }
-
             return type;
         },
         unreadMessages() {
@@ -240,6 +254,8 @@ export default {
     text-align: center;
     font-size: 1.6em;
     line-height: 50px;
+    transition: left 2s;
+    transition-delay: 0.5s;
 }
 
 .kiwi-container-toggledraw-statebrowser {
@@ -255,21 +271,23 @@ export default {
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount {
-    position: relative;
+    position: absolute;
     font-size: 0.6em;
     border-radius: 3px;
     line-height: 2em;
     box-sizing: border-box;
     top: 10px;
-    z-index: 3;
+    z-index: 100;
     white-space: nowrap;
-    left: 6px;
+    left: 14px;
     width: 37px;
     padding: 0;
+    transition: all 0.4s, z-index 0s;
+    transition-delay: 0.1s;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount::after {
-    right: 99%;
+    left: -15px;
     top: 20%;
     border: 0.6em solid transparent;
     border-right-color: #ddd;
@@ -278,6 +296,20 @@ export default {
     width: 0;
     position: absolute;
     pointer-events: none;
+}
+
+.kiwi-container-statebrowser-messagecount-close {
+    display: none;
+}
+
+/* When the Statebrowser is visible, apply new styles to the messagecount */
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount {
+    left: -19px;
+}
+
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
+    right: -15px;
+    left: auto;
 }
 
 @keyframes kiwi-wiggle {
@@ -307,6 +339,21 @@ export default {
     padding: 0 14px;
 }
 
+.kiwi-wrap .kiwi-container::after {
+    content: '';
+    position: absolute;
+    left: auto;
+    height: 120%;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    opacity: 0;
+    z-index: 99;
+    width: 0%;
+    right: -100%;
+    transition: opacity 0.1s;
+    transition-delay: opacity 0.1s;
+}
+
 @media screen and (max-width: 1500px) {
     .kiwi-container--sidebar-open .kiwi-sidebar {
         max-width: 350px;
@@ -314,6 +361,21 @@ export default {
 }
 
 @media screen and (max-width: 769px) {
+    .kiwi-wrap--statebrowser-drawopen .kiwi-container-statebrowser-messagecount-alert {
+        display: none;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-container-statebrowser-messagecount-close {
+        display: block;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-container::after {
+        top: 0;
+        opacity: 1;
+        width: 100%;
+        right: 0%;
+    }
+
     .kiwi-header {
         margin-left: 50px;
         margin-right: 50px;

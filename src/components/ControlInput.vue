@@ -1,17 +1,24 @@
 <template>
-    <div class="kiwi-controlinput kiwi-theme-bg">
-        <div
-            :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
-            class="kiwi-controlinput-selfuser"
-        >
-            <self-user
-                v-if="selfuser_open && networkState==='connected'"
-                :network="buffer.getNetwork()"
-                @close="selfuser_open=false"
-            />
+    <div :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
+         class="kiwi-controlinput kiwi-theme-bg"
+    >
+        <div class="kiwi-controlinput-selfuser">
+            <transition name="kiwi-selfuser-trans">
+                <self-user
+                    v-if="networkState==='connected'
+                    && selfuser_open === true"
+                    :network="buffer.getNetwork()"
+                    @close="selfuser_open=false"
+                />
+            </transition>
         </div>
 
         <div class="kiwi-controlinput-inner">
+            <away-status-indicator
+                v-if="buffer.getNetwork() && buffer.getNetwork().state === 'connected'"
+                :network="buffer.getNetwork()"
+                :user="buffer.getNetwork().currentUser()"
+            />
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i
@@ -106,10 +113,12 @@ import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
 import SelfUser from './SelfUser';
+import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
         AutoComplete,
+        AwayStatusIndicator,
         SelfUser,
     },
     props: ['container', 'buffer'],
@@ -517,6 +526,8 @@ export default {
                         text: '/' + command.command,
                         description: desc,
                         type: 'command',
+                        // Each alias needs the / command prefix adding
+                        alias: (command.alias || []).map(c => '/' + c),
                     });
                 });
 
@@ -533,16 +544,27 @@ export default {
 
 .kiwi-controlinput {
     z-index: 999;
+    border-top: 1px solid;
 }
 
 .kiwi-controlinput,
 .kiwi-controlinput-inner {
     padding: 0;
     box-sizing: border-box;
+    transition: width 0.2s;
+    transition-delay: 0.2s;
 }
 
 .kiwi-controlinput-inner i {
     font-size: 120%;
+    margin-left: 8px;
+    margin-right: 2px;
+}
+
+.kiwi-controlinput-inner .kiwi-awaystatusindicator {
+    margin-top: 16px;
+    margin-left: 10px;
+    margin-right: -2px;
 }
 
 .kiwi-controlinput-user {
@@ -553,6 +575,15 @@ export default {
     cursor: pointer;
     margin-right: 10px;
     line-height: 40px;
+    transition: width 0.2s;
+    transition-delay: 0.1s;
+    border-right: 1px solid;
+}
+
+.kiwi-controlinput-selfuser--open .kiwi-controlinput-user {
+    width: 286px;
+    transition: width 0.2s;
+    transition-delay: 0.1s;
 }
 
 .kiwi-controlinput-tools {
@@ -623,21 +654,39 @@ export default {
 
 .kiwi-controlinput-selfuser {
     position: absolute;
-    bottom: 100%;
+    bottom: 0;
+    z-index: 10;
     left: 0;
     max-height: 0;
-    transition: max-height 0.2s;
+    width: 324px;
+    box-sizing: border-box;
+    border-radius: 0 6px 0 0;
+    opacity: 0;
+    border-top: 1px solid;
+    border-right: 1px solid;
     overflow: hidden;
 }
 
-.kiwi-controlinput-selfuser--open {
+.kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
+    width: 324px;
     max-height: 300px;
+    opacity: 1;
 }
 
-@media screen and (max-width: 769px) {
-    .kiwi-controlinput {
-        z-index: 0;
-    }
+.kiwi-selfuser-trans-enter,
+.kiwi-selfuser-trans-leave-to {
+    opacity: 0;
+    height: 0;
+}
+
+.kiwi-selfuser-trans-enter-to,
+.kiwi-selfuser-trans-leave {
+    opacity: 1;
+}
+
+.kiwi-selfuser-trans-enter-active,
+.kiwi-selfuser-trans-leave-active {
+    transition: all 0.4s;
 }
 
 @media screen and (max-width: 500px) {
@@ -677,6 +726,16 @@ export default {
 .kiwi-plugin-ui-trans-enter-active,
 .kiwi-plugin-ui-trans-leave-active {
     transition: right 0.2s;
+}
+
+@media screen and (max-width: 769px) {
+    .kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
+        width: 100%;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-controlinput {
+        z-index: 0;
+    }
 }
 
 </style>

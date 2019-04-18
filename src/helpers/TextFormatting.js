@@ -10,7 +10,7 @@ import * as ipRegex from 'ip-regex';
 import * as Colours from './Colours';
 import { md5 } from './Md5';
 
-const urlRegex = new RegExp(
+export const urlRegex = new RegExp(
     // Detect either a protocol or 'www.' to start a URL
     /(([A-Za-z][A-Za-z0-9-]*:\/\/)|(www\.))/.source +
     '(' +
@@ -128,16 +128,17 @@ export function addEmojis(wordCtx, emojiList, emojiLocation) {
     return word;
 }
 
-const channelMatch = /(^|\s|[@+~&%}]+)([#&][^ .,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i;
+const channelMatch = /(^|\s)([@+~&%}]*)([#&][^ .,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i;
 export function linkifyChannels(word) {
     // "@#kiwiirc," = 3 parts. (prefix=@)(channel=#kiwiirc)(suffix=,)
-    return word.replace(channelMatch, (match, mPrefix, mChannel, mSuffix) => {
+    return word.replace(channelMatch, (match, mLead, mPrefix, mChannel, mSuffix) => {
         let chan = _.escape(mChannel.trim());
+        let lead = _.escape(mLead);
         let prefix = _.escape(mPrefix);
         let suffix = _.escape(mSuffix);
 
         let link = `<a class="u-link kiwi-channel" data-channel-name="${chan}">${chan}</a>`;
-        return `${prefix}${link}${suffix}`;
+        return `${lead}${prefix}${link}${suffix}`;
     });
 }
 
@@ -148,27 +149,35 @@ export function linkifyUsers(word, userlist) {
     let append = '';
     let punc = ',.!:;-+)]?¿\\/<>@';
     let validLastChar = punc.indexOf(word[word.length - 1]) > -1;
-    let normWord = word.toLowerCase();
     let hasProp = Object.prototype.hasOwnProperty;
 
+    let hasNick = nick => hasProp.call(userlist, nick.toLowerCase());
+    let getNick = (nick) => {
+        let obj = {
+            user: userlist[nick.toLowerCase()],
+            originalNick: nick,
+        };
+        return obj;
+    };
+
     // Checking for a user in order of processing cost
-    if (hasProp.call(userlist, normWord)) {
-        user = userlist[normWord];
-    } else if (hasProp.call(userlist, normWord.substr(0, normWord.length - 1)) && validLastChar) {
+    if (hasNick(word)) {
+        user = getNick(word);
+    } else if (hasNick(word.substr(0, word.length - 1)) && validLastChar) {
         // The last character is usually punctuation of some kind
-        user = userlist[normWord.substr(0, normWord.length - 1)];
+        user = getNick(word.substr(0, word.length - 1));
         append = word[word.length - 1];
-    } else if (hasProp.call(userlist, _.trim(normWord, punc))) {
-        user = userlist[_.trim(normWord, punc)];
-        let nickIdx = normWord.indexOf(user.nick.toLowerCase());
-        append = word.substr(nickIdx + user.nick.length);
+    } else if (hasNick(_.trim(word, punc))) {
+        user = getNick(_.trim(word, punc));
+        let nickIdx = word.indexOf(user.originalNick);
+        append = word.substr(nickIdx + user.originalNick.length);
         prepend = word.substr(0, nickIdx);
     } else {
         return word;
     }
 
-    let escaped = _.escape(user.nick);
-    let colour = user.colour;
+    let escaped = _.escape(user.originalNick);
+    let colour = user.user.colour;
 
     ret = `<a class="kiwi-nick" data-nick="${escaped}"`;
     if (colour) {
@@ -441,6 +450,10 @@ export function formatDuration(timeSeconds) {
     tmp.push(t('second', { count: seconds }));
 
     return tmp.join(' ');
+}
+
+export function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 export function t(key, options) {

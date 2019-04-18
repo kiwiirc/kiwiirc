@@ -1,5 +1,6 @@
 /** @module */
 
+import Vue from 'vue';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import { def } from './common';
 
@@ -15,6 +16,8 @@ export default class UserState {
         this.buffers = Object.create(null);
         this.account = '';
         this.hasWhois = false;
+
+        Vue.observable(this);
 
         // Whois details are non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'actual_host', '', true);
@@ -38,5 +41,8 @@ export default class UserState {
         }
         // default will use the themes default text colour
         return this.colour === 'default' ? '' : this.colour;
+    }
+    isAway() {
+        return !!this.away;
     }
 }

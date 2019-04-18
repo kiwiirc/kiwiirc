@@ -22,6 +22,8 @@ import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 import { AudioManager } from '@/libs/AudioManager';
 import { SoundBleep } from '@/libs/SoundBleep';
+import WindowTitle from '@/libs/WindowTitle';
+import { configTemplates } from '@/res/configTemplates';
 
 // Global utilities
 import '@/components/utils/TabbedView';
@@ -197,15 +199,11 @@ function loadApp() {
 
 function applyConfig(config) {
     Misc.dedotObject(config);
-    applyConfigObj(config, state.settings);
-
-    // Update the window title if we have one
-    if (state.settings.windowTitle) {
-        window.document.title = state.settings.windowTitle;
+    // if we have a config template apply that before other configs
+    if (configTemplates[config.template]) {
+        applyConfigObj(configTemplates[config.template], state.settings);
     }
-    state.$watch('settings.windowTitle', (newVal) => {
-        window.document.title = newVal;
-    });
+    applyConfigObj(config, state.settings);
 }
 
 // Recursively merge an object onto another via Vue.$set
@@ -399,7 +397,7 @@ function initSound() {
     let bleep = new AudioManager(sound);
 
     bleep.listen(state);
-    bleep.listenForHighlights(state);
+    bleep.watchForMessages(state);
 }
 
 function initInputCommands() {
@@ -408,6 +406,8 @@ function initInputCommands() {
 }
 
 function startApp() {
+    new WindowTitle(state);
+
     api.emit('init');
 
     /* eslint-disable no-new */

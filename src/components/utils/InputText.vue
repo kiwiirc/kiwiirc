@@ -94,13 +94,15 @@ export default Vue.component('input-text', {
     position: absolute;
     left: 3px;
     top: 1.2em;
-    transition: top 0.2s, font-size 0.2s;
+    opacity: 0.9;
+    transition: top 0.2s, font-size 0.2s, opacity 0.2;
     pointer-events: none;
 }
 
 .u-input-text--reveal-value .u-input-text-label {
     top: -7px;
     font-size: 0.8em;
+    opacity: 0.5;
 }
 
 .u-input-text-c {

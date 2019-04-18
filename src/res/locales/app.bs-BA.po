@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2018-12-11 10:26\n"
+"PO-Revision-Date: 2019-02-22 21:01\n"
 
 #: Start
 msgid "start_button"
@@ -853,9 +853,13 @@ msgstr "Zatraži informacije o nekome"
 msgid "command_whowas"
 msgstr "Zatraži informacije o nekome ko se nedavno odspojio"
 
-#: Mark yourself as away
+#: Set yourself as away
 msgid "command_away"
 msgstr "Označi sebe odsutnim"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr "Označi se aktivnim"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -868,6 +872,14 @@ msgstr "Ignoriši poruke od nekoga"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Prestani ignorisati nekoga"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Baci kocku"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Bačena je {{sides}} kockica a dobijeni broj je {{number}}"
 
 #: Your IRC client
 msgid "personal_client"

@@ -225,11 +225,11 @@ export default {
 
 <style lang="less">
 .kiwi-sidebar {
-    background: #fff;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    z-index: 100;
 }
 
 .kiwi-sidebar.kiwi-sidebar-section-settings {

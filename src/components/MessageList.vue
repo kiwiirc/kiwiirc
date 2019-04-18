@@ -68,11 +68,6 @@
             :network="buffer.getNetwork()"
         />
 
-        <not-connected
-            v-if="buffer.getNetwork().state !== 'connected'"
-            :buffer="buffer"
-            :network="buffer.getNetwork()"
-        />
     </div>
 </template>
 
@@ -82,7 +77,6 @@
 import strftime from 'strftime';
 import Logger from '@/libs/Logger';
 import BufferKey from './BufferKey';
-import NotConnected from './NotConnected';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
 import MessageListMessageInline from './MessageListMessageInline';
@@ -97,7 +91,6 @@ const BOTTOM_SCROLL_MARGIN = 30;
 export default {
     components: {
         BufferKey,
-        NotConnected,
         MessageListMessageModern,
         MessageListMessageCompact,
         MessageListMessageInline,
@@ -472,6 +465,7 @@ export default {
     font-weight: bold;
     border: none;
     margin: 0;
+    background: none;
 }
 
 .kiwi-messagelist-message-connection .kiwi-messagelist-body {
@@ -499,7 +493,6 @@ export default {
     padding: 0.1em 0.5em;
     min-height: 0;
     line-height: normal;
-    margin: 1em 0.5em;
     text-align: left;
 }
 
@@ -599,7 +592,7 @@ export default {
 .kiwi-messagelist-seperator {
     text-align: center;
     display: block;
-    margin: 1em 0;
+    margin: 1em 0 0.5em 0;
 }
 
 .kiwi-messagelist-seperator > span {
@@ -607,6 +600,7 @@ export default {
     position: relative;
     z-index: 1;
     padding: 0 1em;
+    top: -0.89em;
 }
 
 .kiwi-messagelist-seperator::after {
@@ -698,6 +692,18 @@ export default {
 /* MOTD */
 .kiwi-messagelist-message-motd {
     font-family: monospace;
+}
+
+/* Ensure unread messages are fully visible, even after themes applied */
+.kiwi-messagelist-message.kiwi-messagelist-message--unread {
+    opacity: 1;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--hover,
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight,
+.kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover {
+    opacity: 1;
+    position: relative;
 }
 
 /* Links */

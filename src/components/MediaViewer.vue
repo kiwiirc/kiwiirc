@@ -65,7 +65,7 @@ export default {
     methods: {
         updateEmbed: function updateEmbed() {
             let checkEmbedlyAndShowCard = () => {
-                if (!this.isIframe) {
+                if (this.isIframe) {
                     return;
                 }
 
