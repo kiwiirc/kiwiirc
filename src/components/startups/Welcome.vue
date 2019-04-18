@@ -243,7 +243,7 @@ export default {
 
             // If we retreived an existing network, update the nick+password with what
             // the user has just put in place
-            net.nick = this.nick;
+            net.connection.nick = this.nick;
             net.password = this.password;
 
             if (!this.network && options.recaptchaSiteId) {
