@@ -144,6 +144,9 @@ const state = new Vue({
                     // First check importNetwork.nick as this was used in older versions
                     // TODO: Eventually remove this importNetwork.nick check
                     network.nick = importNetwork.nick || importNetwork.connection.nick;
+                    if (!network.connection.nick && importNetwork.nick) {
+                        network.connection.nick = importNetwork.nick;
+                    }
                     network.username = importNetwork.username;
                     network.gecos = importNetwork.gecos;
                     network.password = importNetwork.password;
