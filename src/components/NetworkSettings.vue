@@ -65,7 +65,10 @@
                 </div>
 
                 <div class="kiwi-networksettings-user">
-                    <input-text v-model="network.nick" :label="$t('settings_nickname')" />
+                    <input-text
+                        v-model="network.connection.nick"
+                        :label="$t('settings_nickname')"
+                    />
                 </div>
 
                 <h4

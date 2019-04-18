@@ -93,6 +93,7 @@ const state = new Vue({
                         id: network.id,
                         name: network.name,
                         connection: {
+                            nick: network.connection.nick,
                             server: network.connection.server,
                             port: network.connection.port,
                             tls: network.connection.tls,
@@ -103,7 +104,6 @@ const state = new Vue({
                         },
                         auto_commands: network.auto_commands,
                         settings: _.cloneDeep(network.settings),
-                        nick: network.nick,
                         username: network.username,
                         gecos: network.gecos,
                         password: network.password,
@@ -138,10 +138,12 @@ const state = new Vue({
                 importObj.networks.forEach((importNetwork) => {
                     let network = new NetworkState(importNetwork.id, state, userDict, bufferDict);
                     network.name = importNetwork.name;
-                    network.connection = importNetwork.connection;
+                    network.connection = { ...network.connection, ...importNetwork.connection };
                     network.auto_commands = importNetwork.auto_commands || '';
                     network.settings = importNetwork.settings;
-                    network.nick = importNetwork.nick;
+                    // First check importNetwork.nick as this was used in older versions
+                    // TODO: Eventually remove this importNetwork.nick check
+                    network.nick = importNetwork.nick || importNetwork.connection.nick;
                     network.username = importNetwork.username;
                     network.gecos = importNetwork.gecos;
                     network.password = importNetwork.password;
@@ -261,10 +263,10 @@ const state = new Vue({
 
             let network = new NetworkState(networkid, state, userDict, bufferDict);
             network.name = name;
-            network.nick = nick;
             network.username = serverInfo.username;
             network.gecos = serverInfo.gecos;
             network.password = serverInfo.password;
+            network.connection.nick = nick;
             network.connection.server = serverInfo.server || '';
             network.connection.port = serverInfo.port || 6667;
             network.connection.tls = serverInfo.tls || false;

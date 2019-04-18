@@ -67,7 +67,7 @@ export function create(state, network) {
             ircClient.options.tls = bnc.tls;
             ircClient.options.path = bnc.path;
             ircClient.options.password = password;
-            ircClient.options.nick = network.nick;
+            ircClient.options.nick = network.connection.nick;
             ircClient.options.username = bnc.username;
             ircClient.options.encoding = network.connection.encoding;
         } else {
@@ -76,7 +76,7 @@ export function create(state, network) {
             ircClient.options.tls = network.connection.tls;
             ircClient.options.path = network.connection.path;
             ircClient.options.password = network.password;
-            ircClient.options.nick = network.nick;
+            ircClient.options.nick = network.connection.nick;
             ircClient.options.username = network.username || network.nick;
             ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
             ircClient.options.encoding = network.connection.encoding;
