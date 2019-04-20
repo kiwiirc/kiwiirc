@@ -152,9 +152,24 @@ export default Vue.component('irc-input', {
                         let match = attribs.style.match(/color: ([^;]+)/);
                         if (match) {
                             codeLookup = match[1];
-                            if (this.code_map[codeLookup]) {
-                                textValue += '\x03' + this.code_map[codeLookup];
-                                addToggle('\x03' + this.code_map[codeLookup]);
+                            let mappedCode = this.code_map[codeLookup];
+                            if (!mappedCode) {
+                                // If we didn't have an IRC code for this colour, convert the
+                                // colour to its hex form and check if we have that instead
+                                let m = codeLookup.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+                                if (m) {
+                                    let hex = Colours.rgb2hex({
+                                        r: parseInt(m[1], 10),
+                                        g: parseInt(m[2], 10),
+                                        b: parseInt(m[3], 10),
+                                    });
+                                    mappedCode = this.code_map[hex];
+                                }
+                            }
+
+                            if (mappedCode) {
+                                textValue += '\x03' + mappedCode;
+                                addToggle('\x03' + mappedCode);
                             }
                         }
 
@@ -180,8 +195,10 @@ export default Vue.component('irc-input', {
                             this.code_map[attribs.color.replace(/,/g, ', ')] ||
                             this.code_map[Colours.hex2rgb(attribs.color)];
 
-                        textValue += '\x03' + mappedCode;
-                        addToggle('\x03' + mappedCode);
+                        if (mappedCode) {
+                            textValue += '\x03' + mappedCode;
+                            addToggle('\x03' + mappedCode);
+                        }
                     } else if (name === 'strong') {
                         textValue += '\x02';
                         addToggle('\x02');

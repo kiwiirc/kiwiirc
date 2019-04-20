@@ -33,6 +33,10 @@
     --comp-border: #484848;
 }
 
+.kiwi-wrap {
+    --kiwi-nick-brightness: 60;
+}
+
 .kiwi-header {
     border-bottom-color: #000;
 }
@@ -48,7 +52,7 @@
 }
 .kiwi-appsettings-title,
 .kiwi-appsettings-block h3 {
-    color: var(--brand-default-fg);
+    color: #fff;
 }
 .u-tabbed-view-tabs {
     background: #696969;
@@ -120,6 +124,10 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     color: #fff;
 }
 
+.kiwi-messagelist-seperator {
+    border-top: 2px dashed #00b100;
+}
+
 .kiwi-messagelist-message.kiwi-messagelist-message--unread,
 .kiwi-messagelist-message--highlight {
     background-color: #404040;
@@ -141,6 +149,22 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 
 .kiwi-messagelist-message--modern {
     border-top-color: #2d2d2d;
+}
+
+.kiwi-channellist table tbody tr:nth-child(even) {
+    background-color: #333333;
+}
+.kiwi-messagelist-message--own {
+    background-color: #2d2d2d;
+}
+
+.kiwi-container-toggledraw-statebrowser-messagecount  {
+    color: #f1f1f1;
+}
+
+.kiwi-sidebar-options,
+.kiwi-aboutbuffer h4 {
+    color: #fff;
 }
 
 /* IRC Text Colours */

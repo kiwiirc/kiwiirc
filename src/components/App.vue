@@ -317,7 +317,9 @@ export default {
             if (navigator.appVersion.indexOf('Mac') !== -1) {
                 meta = event.metaKey;
             } else {
-                meta = event.ctrlKey;
+                // none english languages use ctrl + alt to access extended chars
+                // make sure we do not interfere with that by only acting on ctrl
+                meta = event.ctrlKey && !event.altKey;
             }
 
             if (meta && event.keyCode === 221) {
@@ -424,7 +426,7 @@ body {
     left: 0;
     width: 200px;
     bottom: 0;
-    transition: left 0.2s;
+    transition: left 0.145s, margin-left 0.145s;
     z-index: 1;
 }
 
@@ -465,14 +467,8 @@ body {
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-workspace {
         left: 75%;
-        width: 80%;
-    }
-
-    .kiwi-wrap--statebrowser-drawopen .kiwi-workspace::after {
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-        z-index: 10;
+        transition: left 0.1s;
+        transition-delay: 0s;
     }
 }
 </style>

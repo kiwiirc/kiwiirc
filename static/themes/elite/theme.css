@@ -35,9 +35,9 @@
 
 
     /* Sidebars ( Right Side ) */
-    --comp-sidebar-bg: #fff;
-    --comp-sidebar-fg: #22231f;
-    --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
+    --comp-sidebar-bg: #28343c;
+    --comp-sidebar-fg: #f1f1f1;
+    --comp-aboutbuffer-bg: #28343c;
     --comp-aboutbuffer-header-bg: #ffa12c;
 
     /* Misc */
@@ -47,12 +47,19 @@
     --comp-border: #b2b2b2;
 }
 
+.kiwi-startup-common-section-info {
+    border-left-color: var(--brand-primary);
+}
+
+.kiwi-workspace {
+    background: #3b4850;
+}
+
 .kiwi-appsettings,
 .kiwi-theme-bg,
 .u-tabbed-content {
-    background: #171d21;
+    background: #26323a;
 }
-
 
 .kiwi-statebrowser.kiwi-theme-bg {
     background: var(--comp-statebrowser-bg);
@@ -117,6 +124,16 @@
     color: #fff;
 }
 
+.kiwi-messagelist-message-notice,
+.kiwi-messagelist-message-notice .kiwi-messagelist-nick {
+    color: deepskyblue;
+}
+
+.kiwi-messagelist-message--hover,
+.kiwi-messagelist-message.kiwi-messagelist-message--unread {
+    background: #505d65;
+}
+
 .kiwi-controlinput,
 .kiwi-header.kiwi-theme-bg {
     background: #3b4850;
@@ -140,6 +157,68 @@
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header {
     background-color: var(--comp-statebrowser-bg-networkname);
+}
+
+.kiwi-sidebar.kiwi-theme-bg {
+    background: #28343c;
+}
+
+.kiwi-container--sidebar-open .kiwi-sidebar {
+    border-color: var(--brand-primary);
+}
+
+.kiwi-nicklist-usercount {
+    border-bottom-color: #20292f;
+}
+
+.kiwi-nicklist-user {
+    border-left-color: var(--brand-primary);
+}
+.kiwi-nicklist-user:hover {
+    border-left-color: var(--brand-primary-hover);
+}
+
+.kiwi-nicklist-user .kiwi-nicklist-messageuser,
+.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
+    color: var(--brand-color-primary);
+}
+
+.kiwi-userbox .kiwi-userbox-actions .kiwi-userbox-action {
+    border-color: var(--brand-primary);
+    color: var(--brand-primary);
+}
+
+.kiwi-userbox .kiwi-userbox-actions .kiwi-userbox-action:hover {
+    color: #f1f1f1;
+    background: var(--brand-primary);
+}
+
+.kiwi-channellist-nav .u-form .u-input {
+    color: #f1f1f1;
+    border-color: #ff9600;
+}
+
+.kiwi-channellist-nav .u-form .u-button-primary {
+    border-bottom-color: var(--brand-primary);
+}
+
+.kiwi-channellist-pagination,
+.kiwi-channellist-info,
+.kiwi-channellist table tbody tr {
+    color: #f1f1f1;
+}
+
+.kiwi-channellist table tbody tr:nth-child(even) {
+    background-color: #222c33;
+}
+
+.kiwi-channellist table tbody tr a {
+    color: #ff9600;
+}
+
+.kiwi-channellist table tbody tr a.u-button {
+    color: #f1f1f1;
+    border-bottom: none;
 }
 
 /* IRC Text Colours */

@@ -35,7 +35,7 @@
     >
         <div class="kiwi-messagelist-modern-left">
             <message-avatar
-                v-if="isMessage(message)"
+                v-if="isMessage(message) && displayAvatar(message)"
                 :message="message"
                 :data-nick="message.nick"
             />
@@ -179,6 +179,15 @@ export default {
             let types = ['privmsg', 'action', 'notice', 'message'];
             return types.indexOf(message.type) > -1;
         },
+        displayAvatar(message) {
+            if (!this.ml.buffer.isChannel() && message.type === 'notice') {
+                return true;
+            }
+            if (message.type === 'notice') {
+                return false;
+            }
+            return true;
+        },
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
         },
@@ -271,14 +280,10 @@ export default {
 
 /* Connection styling */
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection {
-    padding: 0;
     box-sizing: border-box;
     width: 100%;
-    border: none;
-    opacity: 1;
-    border-left: none;
-    text-align: center;
-    font-weight: 600;
+    padding: 10px 0;
+    opacity: 0.8;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-time,
@@ -287,24 +292,12 @@ export default {
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
-    line-height: 30px;
+    padding: 0 20px;
     margin: 0 auto;
-    border-radius: 4px;
     display: inline-block;
-    font-weight: 900;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-message {
-    margin-bottom: 0;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-modern-left {
-    display: none;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-modern-right {
-    margin-left: 0;
-    padding: 0;
+    font-weight: 600;
+    font-size: 0.8em;
+    opacity: 0.8;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
@@ -395,16 +388,14 @@ export default {
         box-sizing: border-box;
         margin: 0;
         border: none;
-        background: #42b992;
         width: 100%;
         border-radius: 0;
-        opacity: 0.8;
     }
 
     .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
         line-height: 50px;
         font-weight: 600;
-        padding: 0;
+        padding: 0 10px;
     }
 
     .kiwi-messagelist-message-action .kiwi-messagelist-modern-left {

@@ -42,6 +42,8 @@
 <script>
 'kiwi public';
 
+import * as Colours from '@/helpers/Colours';
+
 export default {
     props: ['ircinput'],
     data: function data() {
@@ -53,6 +55,17 @@ export default {
         onColourClick: function onColourClick(event) {
             let colour = window.getComputedStyle(event.target, null)
                 .getPropertyValue('background-color');
+            // Convert rgb(x,x,x) to its hex form
+            let m = colour.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            if (m) {
+                let rgbObj = {
+                    r: parseInt(m[1], 10),
+                    g: parseInt(m[2], 10),
+                    b: parseInt(m[3], 10),
+                };
+                colour = Colours.rgb2hex(rgbObj);
+            }
+
             let code = event.target.dataset.code;
             this.ircinput.setColour(code, colour);
         },

@@ -1,3 +1,19 @@
+/**
+ * Configuration templates
+ *
+ * All the default values for config options throughout kiwi are set here, under
+ * the 'default' template object below.
+ * If a 'default.template' value is set in the user config, this is used to
+ * find the next template object below and is merged over the default config
+ * template.
+ * The user config (config.json by default) is then merged over the resulting
+ * config object.
+ *
+ * The advanced settings dialog also displays these settings by iterating
+ * through the keys. The values must not be null otherwise they will not be
+ * shown.
+ */
+
 export const configTemplates = {
 
     default: {
@@ -55,6 +71,7 @@ export const configTemplates = {
             show_message_info: true,
             who_loop: true,
             share_typing: true,
+            flash_title: true,
         },
         // Startup screen default
         startupOptions: {
@@ -71,7 +88,7 @@ export const configTemplates = {
         showAutocomplete: true,
         showEmojiPicker: true,
         showSendButton: false,
-        sidebarDefault: '',
+        sidebarDefault: 'nicklist',
         showRaw: false,
         highlights: '',
         teamHighlights: false,
@@ -248,8 +265,8 @@ export const configTemplates = {
             mode: 'ⓘ %text',
             selfmode: 'ⓘ %nick %text',
             nickname_alreadyinuse: '⚠ %text',
-            network_disconnected: '⚠ %text',
-            network_connected: '⚠ %text',
+            network_disconnected: '%text',
+            network_connected: '%text',
             whois_channels: '%text',
             whois_idle_and_signon: '%text',
             whois_away: '%text',

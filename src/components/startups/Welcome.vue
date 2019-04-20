@@ -243,7 +243,7 @@ export default {
 
             // If we retreived an existing network, update the nick+password with what
             // the user has just put in place
-            net.nick = this.nick;
+            net.connection.nick = this.nick;
             net.password = this.password;
 
             if (!this.network && options.recaptchaSiteId) {
@@ -418,6 +418,7 @@ export default {
     margin-top: -0.5em;
     left: 50%;
     margin-left: -40px;
+    color: black;
 }
 
 /** Smaller screen... **/
@@ -448,7 +449,6 @@ export default {
         left: 48%;
         top: 50%;
         margin-top: -50px;
-        color: #fff;
     }
 }
 

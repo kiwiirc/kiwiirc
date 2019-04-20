@@ -8,10 +8,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2019-03-10 14:10\n"
+"PO-Revision-Date: 2019-04-17 10:50\n"
 
 #: Start
 msgid "start_button"
@@ -955,7 +955,7 @@ msgstr "Der Nickname {{nick}}} wird bereits verwendet. Versuche {{newnick}}}....
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} ist jetzt als {{newnick}}} bekannt."
+msgstr "{{nick}} ist jetzt als {{newnick}} bekannt."
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"

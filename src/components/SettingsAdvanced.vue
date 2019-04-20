@@ -142,7 +142,7 @@ export default {
                             modified: modified,
                         };
                     }
-                } else if (typeof value === 'object') {
+                } else if (typeof value === 'object' && value !== null) {
                     this.buildTree(data, ourBase, value, modified);
                 }
             });

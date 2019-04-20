@@ -1247,6 +1247,10 @@
     color: #fff;
 }
 
+.kiwi-messagelist-message--own {
+    background-color: #3dc37829;
+}
+
 @media screen and (max-width: 769px) {
     .kiwi-appsettings {
         background-color: #294234;

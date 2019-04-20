@@ -233,13 +233,7 @@ export default {
     width: 220px;
     text-align: center;
     overflow: hidden;
-    transition: all 0.2s;
-    transition-delay: 0.05s;
-}
-
-.kiwi-statebrowser.kiwi-wrap--statebrowser-drawopen {
-    transition: all 0.2s;
-    transition-delay: 0.05s;
+    transition: left 0.145s, margin-left 0.145s;
 }
 
 .kiwi-statebrowser h1 {
@@ -583,6 +577,7 @@ export default {
         width: 75%;
         left: 0;
         z-index: 100;
+        transition: left 0.07s, width 0.1s;
     }
 
     .kiwi-header {
@@ -613,6 +608,13 @@ export default {
 
     .kiwi-statebrowser-usermenu-body .kiwi-close-icon {
         display: none;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-statebrowser::after {
+        opacity: 1;
+        width: 100%;
+        right: -100%;
+        transition: width 0.2s, opacity 0.2s;
     }
 }
 
