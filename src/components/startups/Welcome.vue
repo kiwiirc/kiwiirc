@@ -71,6 +71,7 @@ import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import state from '@/libs/state';
 import Logger from '@/libs/Logger';
+import BouncerProvider from '@/libs/BouncerProvider';
 import StartupLayout from './CommonLayout';
 
 let log = Logger.namespace('Welcome.vue');
@@ -179,6 +180,8 @@ export default {
         }
 
         this.recaptchaSiteId = options.recaptchaSiteId || '';
+
+        new BouncerProvider(this.$state);
     },
     mounted() {
         if (this.recaptchaSiteId) {

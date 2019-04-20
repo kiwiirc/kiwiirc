@@ -169,8 +169,7 @@ export default {
             return !!state.settings.restricted;
         },
         networksToShow: function networksToShow() {
-            let bncNet = state.setting('bnc').network;
-            return this.networks.filter(network => network !== bncNet);
+            return this.networks;
         },
         isConnected: function isConnected() {
             let network = state.getActiveNetwork();
