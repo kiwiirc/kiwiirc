@@ -110,6 +110,11 @@
     background-color: #151a1d;
 }
 
+.u-form select {
+    background-color: #26323a;
+}
+
+
 .kiwi-messagelist {
     background: #3b4850;
     color: var(--brand-primary);
