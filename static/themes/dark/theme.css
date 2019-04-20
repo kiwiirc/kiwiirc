@@ -67,6 +67,11 @@
     border-right: 0;
 }
 
+.u-form select {
+    background-color: var(--brand-primary);
+    color: #000000;
+}
+
 button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .kiwi-statebrowser-channel-label {
     color: var(--brand-default-fg);
@@ -165,6 +170,11 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .kiwi-sidebar-options,
 .kiwi-aboutbuffer h4 {
     color: #fff;
+}
+
+.kiwi-messagelist .kiwi-messagelist-body a,
+.kiwi-messagelist .kiwi-messagelist-body a:hover {
+    color: var(--brand-primary);
 }
 
 /* IRC Text Colours */

@@ -201,6 +201,10 @@
     background-color: #f1f1f1;
 }
 
+.u-form select {
+    background-color: var(--brand-primary);
+}
+
 .u-link {
     color: var(--brand-default-fg);
 }

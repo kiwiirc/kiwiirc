@@ -145,6 +145,10 @@
 }
 
 
+.u-form select {
+    background-color: #183123;
+}
+
 /*buttons */
 .u-button {
     color: #2c3e50;
