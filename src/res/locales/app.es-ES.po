@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2019-04-21 21:01\n"
+"PO-Revision-Date: 2019-04-21 21:41\n"
 
 #: Start
 msgid "start_button"
@@ -491,7 +491,7 @@ msgstr "Mostrar el original"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr ""
+msgstr "Websocket directo"
 
 #: Run commands when connected
 msgid "settings_autorun"
