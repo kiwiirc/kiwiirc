@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-04-21 21:02\n"
+"PO-Revision-Date: 2019-04-21 23:20\n"
 
 #: Start
 msgid "start_button"
@@ -491,7 +491,7 @@ msgstr "Εμφάνιση Ακατέργαστου"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr ""
+msgstr "Απευθείας websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
