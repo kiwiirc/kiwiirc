@@ -25,18 +25,6 @@ export function create(state, network) {
         encoding: network.connection.encoding,
     };
 
-    // A direct connection uses a websocket to connect (note: some browsers limit
-    // the number of connections to the same host!).
-    // A non-direct connection will connect via the configured kiwi server using
-    // with our own irc-framework compatible transport.
-    if (!network.connection.direct) {
-        clientOpts.transport = ServerConnection.createChannelConstructor(
-            state.settings.kiwiServer,
-            (window.location.hash || '').substr(1),
-            networkid
-        );
-    }
-
     let ircClient = new Irc.Client(clientOpts);
     ircClient.requestCap('znc.in/self-message');
     // Current version of irc-framework only support draft/message-tags-0.2
@@ -80,6 +68,20 @@ export function create(state, network) {
             ircClient.options.username = network.username || network.connection.nick;
             ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
             ircClient.options.encoding = network.connection.encoding;
+        }
+
+        // A direct connection uses a websocket to connect (note: some browsers limit
+        // the number of connections to the same host!).
+        // A non-direct connection will connect via the configured kiwi server using
+        // with our own irc-framework compatible transport.
+        if (!network.connection.direct) {
+            ircClient.options.transport = ServerConnection.createChannelConstructor(
+                state.settings.kiwiServer,
+                (window.location.hash || '').substr(1),
+                networkid
+            );
+        } else {
+            ircClient.options.transport = undefined;
         }
 
         state.$emit('network.connecting', { network });

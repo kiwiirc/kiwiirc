@@ -525,6 +525,10 @@ msgstr "Encoding"
 msgid "settings_show_raw"
 msgstr "Show Raw"
 
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Direct websocket"
+
 #: Run commands when connected
 msgid "settings_autorun"
 msgstr "Run commands when connected"
