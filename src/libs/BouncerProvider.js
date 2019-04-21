@@ -33,12 +33,6 @@ export default class BouncerProvider {
             }
         }
 
-        if (this.controllerNetwork) {
-            console.log('Switcheed controller network to', this.controllerNetwork.name);
-        } else {
-            console.log('No controller network available');
-        }
-
         return this.controllerNetwork;
     }
 
@@ -101,7 +95,6 @@ export default class BouncerProvider {
         //  "nick":"notprawn99829"
         //  },
         let net = this.state.getNetworkFromBncName(network.name);
-        console.log('network already in state?', !!net);
         if (!net) {
             net = this.state.addNetwork(network.name, network.nick, {
                 server: network.host,
@@ -117,6 +110,7 @@ export default class BouncerProvider {
             let newBuffer = this.state.addBuffer(net.id, buffer.name);
             if (buffer.joined) {
                 newBuffer.enabled = true;
+                newBuffer.joined = true;
             }
             if (buffer.seen) {
                 newBuffer.last_read = (new Date(buffer.seen)).getTime();
