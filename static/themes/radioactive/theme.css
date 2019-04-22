@@ -1260,3 +1260,21 @@
         background-color: #294234;
     }
 }
+
+/* IRC COLOURS */
+.irc-fg-colour-white { color: #fff; }
+.irc-fg-colour-black { color: #000; }
+.irc-fg-colour-blue { color: #2e2eff; }
+.irc-fg-colour-green { color: #02b302; }
+.irc-fg-colour-light-red { color: #ff5959; }
+.irc-fg-colour-brown { color: #743a00; }
+.irc-fg-colour-purple { color: #a500ff; }
+.irc-fg-colour-orange { color: #ff8c00; }
+.irc-fg-colour-yellow { color: #ff0; }
+.irc-fg-colour-light-green { color: #5bd25b; }
+.irc-fg-colour-cyan { color: #0cc; }
+.irc-fg-colour-light-cyan { color: #6dffff; }
+.irc-fg-colour-light-blue { color: #59b4ff; }
+.irc-fg-colour-pink { color: #f0f; }
+.irc-fg-colour-grey { color: #a6a6a6; }
+.irc-fg-colour-light-grey { color: #e2e2e2; }
