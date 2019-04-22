@@ -8,10 +8,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2019-03-10 16:21\n"
+"PO-Revision-Date: 2019-04-21 21:01\n"
 
 #: Start
 msgid "start_button"
@@ -488,6 +488,10 @@ msgstr "Codificação"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Mostrar raw"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr ""
 
 #: Run commands when connected
 msgid "settings_autorun"

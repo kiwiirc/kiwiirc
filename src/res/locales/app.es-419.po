@@ -8,10 +8,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Latin America\n"
 "Language: es_419\n"
-"PO-Revision-Date: 2019-02-19 17:32\n"
+"PO-Revision-Date: 2019-04-21 21:02\n"
 
 #: Start
 msgid "start_button"
@@ -489,6 +489,10 @@ msgstr "Codificación"
 msgid "settings_show_raw"
 msgstr "Mostrar sin procesar"
 
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr ""
+
 #: Run commands when connected
 msgid "settings_autorun"
 msgstr "Ejecutar comandos al conectar"
@@ -875,11 +879,11 @@ msgstr "Deja de ignorar a alguien"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "Tirar un Dado"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "Lanza un dado con {{sides}} lados y obtiene {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
