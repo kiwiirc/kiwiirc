@@ -5,8 +5,8 @@
             user.away ? 'kiwi-nicklist-user--away' : '',
             user.ignore ? 'kiwi-nicklist-user--ignore' : '',
         ]"
-        class="kiwi-nicklist-user"
         :data-nick="user.nick"
+        class="kiwi-nicklist-user"
         @click="nicklist.openUserbox(user)"
     >
         <away-status-indicator
