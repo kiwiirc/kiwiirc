@@ -18,7 +18,7 @@
         <span
             :style="{ 'color': userColour }"
             class="kiwi-nicklist-user-nick"
-        >{{ user.nick }}
+        >{{ (user.nick||'').toLowerCase() }}
         </span>
         <span class="kiwi-nicklist-messageuser" @click.stop="nicklist.openQuery(user)">
             <i class="fa fa-comment" aria-hidden="true"/>
