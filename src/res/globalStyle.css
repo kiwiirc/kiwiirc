@@ -138,8 +138,8 @@ select {
     height: 40px;
     padding: 3px 5px;
     box-sizing: border-box;
-    border-radius: 1px;
-    border-radius: none;
+    border-radius: 0;
+    border: none;
     border-bottom: 1px solid;
     min-height: 0;
     overflow-x: hidden;
@@ -149,7 +149,6 @@ select {
 
 .u-form .u-input,
 .u-form textarea {
-    border: 1px solid;
     line-height: normal;
     border-bottom: 2px solid;
 }

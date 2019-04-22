@@ -47,6 +47,10 @@
     --comp-border: #b2b2b2;
 }
 
+.kiwi-wrap {
+    color: #fff;
+}
+
 .kiwi-startup-common-section-info {
     border-left-color: var(--brand-primary);
 }
@@ -111,7 +115,7 @@
 }
 
 .u-form select {
-    background-color: #26323a;
+    background-color: #b5b5b5;
 }
 
 
@@ -196,6 +200,10 @@
 .kiwi-userbox .kiwi-userbox-actions .kiwi-userbox-action:hover {
     color: #f1f1f1;
     background: var(--brand-primary);
+}
+
+.u-form {
+    color: var(--brand-default-bg);
 }
 
 .kiwi-channellist-nav .u-form .u-input {

@@ -68,6 +68,10 @@
     background: var(--brand-primary);
 }
 
+.u-form {
+    color: var(--brand-default-fg);
+}
+
 .u-form .u-input,
 .u-form textarea {
     border-bottom-color: var(--brand-primary);
@@ -1068,8 +1072,8 @@
 .irc-fg-colour-yellow { color: #ff0; }
 .irc-fg-colour-light-green { color: #5bd25b; }
 .irc-fg-colour-cyan { color: #0cc; }
-.irc-fg-colour-light-cyan { color: #6dffff; }
+.irc-fg-colour-light-cyan { color: #10e8e8 }
 .irc-fg-colour-light-blue { color: #59b4ff; }
 .irc-fg-colour-pink { color: #f0f; }
-.irc-fg-colour-grey { color: #a6a6a6; }
-.irc-fg-colour-light-grey { color: #e2e2e2; }
+.irc-fg-colour-grey { color: #717171 }
+.irc-fg-colour-light-grey { color: #adadad; }

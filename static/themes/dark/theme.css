@@ -67,9 +67,9 @@
     border-right: 0;
 }
 
-.u-form select {
-    background-color: var(--brand-primary);
-    color: #000000;
+.u-form select option {
+    background: #f1f1f1;
+    color: #000;
 }
 
 button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
@@ -175,4 +175,28 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .kiwi-messagelist .kiwi-messagelist-body a,
 .kiwi-messagelist .kiwi-messagelist-body a:hover {
     color: var(--brand-primary);
+}
+
+.kiwi-controlinput-active-tool {
+    background-color: transparent;
+}
+
+/* IRS COLOURS */
+.irc-bg-colour-blue {
+    background-color: #0c0cb5bf;
+}
+.irc-bg-colour-green {
+    background-color: #26bd26;
+}
+.irc-bg-colour-light-red {
+    background-color: #e63232;
+}
+.irc-bg-colour-brown {
+    background-color: #985e23;
+}
+.irc-bg-colour-light-green {
+    background-color: #5de65d;
+}
+.irc-bg-colour-light-cyan {
+    background-color: #2ff3f3;
 }
