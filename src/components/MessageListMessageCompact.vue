@@ -284,4 +284,11 @@ export default {
     display: none;
 }
 
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-error .kiwi-messagelist-body,
+.kiwi-messagelist-message--compact.kiwi-messagelist-message--highlight .kiwi-messagelist-body,
+.kiwi-messagelist-message--compact.kiwi-messagelist-message-notice .kiwi-messagelist-body {
+    left: 0;
+    margin-right: 10px;
+}
+
 </style>
