@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2019-04-21 21:02\n"
+"PO-Revision-Date: 2019-04-23 15:56\n"
 
 #: Start
 msgid "start_button"
@@ -491,7 +491,7 @@ msgstr "Prikaži ravno"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr ""
+msgstr "Direktni websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
