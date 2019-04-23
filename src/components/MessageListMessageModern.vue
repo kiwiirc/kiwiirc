@@ -348,7 +348,7 @@ export default {
 }
 
 .kiwi-messagelist-message-error {
-    padding: 10px 0;
+    padding: 10px;
     font-weight: 600;
     line-height: normal;
 }
