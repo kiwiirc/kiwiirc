@@ -440,7 +440,7 @@ export default {
     padding: 0 10px;
 
     /* some message highlights add a left border so add a default invisble one in preperation */
-    border-left: 3px solid transparent;
+    border-left: 5px solid transparent;
     overflow: hidden;
     line-height: 1.5em;
     margin: 0;
