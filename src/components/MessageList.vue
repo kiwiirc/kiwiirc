@@ -756,7 +756,7 @@ export default {
 .kiwi-messagelist-message.kiwi-messagelist-message-notice .kiwi-messagelist-body {
     position: relative;
     padding: 5px;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 5px 5px 0;
     left: -10px;
     border-left: 4px solid transparent;
 }
