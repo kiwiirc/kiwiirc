@@ -308,7 +308,7 @@ export default {
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-modern-right {
-    margin-left: 5px;
+    margin-left: 10px;
     padding-top: 0;
     width: 100%;
 }

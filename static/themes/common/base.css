@@ -831,7 +831,7 @@
 
 .kiwi-messagelist-message.kiwi-messagelist-message-notice .kiwi-messagelist-body {
     border-left-color: var(--brand-warning);
-    background-color: #ffebd7;
+    background-color: #ffeded;
 }
 
 /* When hovering over a users messages */
