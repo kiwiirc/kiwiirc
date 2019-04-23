@@ -750,15 +750,20 @@ export default {
 }
 
 /* Style the notice / unread messages / traffic as 'bubbles' */
-.kiwi-messagelist-message-error .kiwi-messagelist-body,
-.kiwi-messagelist-body,
-.kiwi-messagelist-message--highlight .kiwi-messagelist-body,
+.kiwi-messagelist-message.kiwi-messagelist-message-error .kiwi-messagelist-body,
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight .kiwi-messagelist-body,
 .kiwi-messagelist-message.kiwi-messagelist-message-notice .kiwi-messagelist-body {
     position: relative;
     padding: 5px;
     border-radius: 0 5px 5px 0;
     left: -10px;
     border-left: 4px solid transparent;
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message-error .kiwi-messagelist-body,
+.kiwi-messagelist-message.kiwi-messagelist-message-notice .kiwi-messagelist-body {
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 </style>

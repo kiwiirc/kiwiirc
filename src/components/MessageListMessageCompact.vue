@@ -37,13 +37,6 @@
         @click="ml.onMessageClick($event, message)"
     >
         <div
-            v-if="ml.bufferSetting('show_timestamps')"
-            :title="ml.formatTimeFull(message.time)"
-            class="kiwi-messagelist-time"
-        >
-            {{ ml.formatTime(message.time) }}
-        </div>
-        <div
             :style="{ 'color': userColour }"
             class="kiwi-messagelist-nick"
             @click="ml.openUserBox(message.nick)"
@@ -64,7 +57,13 @@
             class="kiwi-messagelist-body"
         />
         <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
-
+        <div
+            v-if="ml.bufferSetting('show_timestamps')"
+            :title="ml.formatTimeFull(message.time)"
+            class="kiwi-messagelist-time"
+        >
+            {{ ml.formatTime(message.time) }}
+        </div>
         <message-info
             v-if="ml.message_info_open===message"
             :message="message"
@@ -117,6 +116,7 @@ export default {
 
 .kiwi-messagelist-message--compact {
     position: relative;
+    display: flex;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-privmsg:hover,
@@ -149,16 +149,15 @@ export default {
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-time {
-    display: inline-block;
-    float: right;
     font-size: 12px;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-body {
-    display: block;
     white-space: pre-wrap;
     word-wrap: break-word;
     margin-left: 120px;
+    flex-grow: 1;
+    padding: 0 0 2px 0;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-body a {
