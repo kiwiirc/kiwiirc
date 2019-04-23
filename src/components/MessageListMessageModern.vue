@@ -199,6 +199,10 @@ export default {
     transition: border-colour 0.2s, background-color 0.2s;
 }
 
+.kiwi-messagelist-message--modern:last-of-type {
+    margin-bottom: 0;
+}
+
 .kiwi-messagelist-modern-left {
     user-select: none;
     position: relative;

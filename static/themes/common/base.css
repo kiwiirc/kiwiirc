@@ -808,11 +808,6 @@
     color: var(--brand-primary);
 }
 
-.kiwi-messagelist-message--highlight {
-    background-color: var(--brand-midtone);
-    border-color: var(--brand-primary);
-}
-
 /* Standard username and usertime styling */
 .kiwi-messagelist-nick {
     color: var(--brand-default-fg);
@@ -821,7 +816,20 @@
 /* Unread user messages */
 .kiwi-messagelist-message.kiwi-messagelist-message--unread {
     border-left: 5px solid var(--brand-primary);
-    background: var(--brand-midtone);
+}
+
+.kiwi-messagelist-message--highlight .kiwi-messagelist-body,
+.kiwi-messagelist-message.kiwi-messagelist-message-notice .kiwi-messagelist-body {
+    background-color: #f9f9f9;
+    border-left-color: var(--brand-primary);
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message--unread {
+    border-left-color: var(--brand-primary);
+}
+
+.kiwi-messagelist-message.kiwi-messagelist-message-notice .kiwi-messagelist-body {
+    border-left-color: var(--brand-warning);
 }
 
 /* When hovering over a users messages */
@@ -885,11 +893,9 @@
 }
 
 /* Errors */
-.kiwi-messagelist-message-error,
-.kiwi-messagelist-message.kiwi-messagelist-message-error.kiwi-messagelist-message--highlight {
-    background: var(--brand-error);
+.kiwi-messagelist-message-error .kiwi-messagelist-body,
+.kiwi-messagelist-message.kiwi-messagelist-message-error.kiwi-messagelist-message--highlight .kiwi-messagelist-body {
     border-left-color: var(--brand-error);
-    color: var(--brand-default-bg);
 }
 
 /* ---- Messagelist Topic Styling ---- */
@@ -904,8 +910,7 @@
     border-top: 2px solid var(--brand-primary);
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic,
-.kiwi-messagelist-message--modern.kiwi-mesagelist-message-topic.kiwi-messagelist-message--highlight {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message-topic {
     border: 2px solid var(--brand-primary);
 }
 
@@ -925,19 +930,15 @@
     border-left-color: var(--brand-midtone);
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--hover,
-.kiwi-messagelist-message.kiwi-messagelist-message--highlight,
-.kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover {
-    border-color: var(--brand-primary);
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight .kiwi-messagelist-body,
+.kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover .kiwi-messagelist-body {
+    border-left-color: var(--brand-primary);
 }
 
 .kiwi-messagelist-message-motd {
     color: var(--brand-default-fg);
 }
 
-.kiwi-messagelist-message--own {
-    background-color: #f7f7f7;
-}
 
 /* ---- MessageInfo ---- */
 .kiwi-messagelist-message--info-open {
