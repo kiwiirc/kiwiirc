@@ -115,6 +115,17 @@
     color: #414957;
 }
 
+.kiwi-container-toggledraw-statebrowser-messagecount {
+    background-color: #626975;
+}
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
+    border-left-color: #626975;
+}
+.kiwi-container-toggledraw-statebrowser-messagecount::after {
+    border-right-color: #626975;
+}
+
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
