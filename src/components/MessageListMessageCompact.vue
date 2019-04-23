@@ -280,4 +280,9 @@ export default {
     margin-bottom: 5px;
 }
 
+/* Hide timestamp on error message */
+.kiwi-messagelist-message-error .kiwi-messagelist-time {
+    display: none;
+}
+
 </style>
