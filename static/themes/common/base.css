@@ -831,7 +831,7 @@
 
 .kiwi-messagelist-message.kiwi-messagelist-message-notice .kiwi-messagelist-body {
     border-left-color: var(--brand-warning);
-    background-color: #ffeded;
+    background-color: #fde0c4;
 }
 
 /* When hovering over a users messages */
@@ -895,9 +895,9 @@
 }
 
 /* Errors */
-.kiwi-messagelist-message-error .kiwi-messagelist-body,
-.kiwi-messagelist-message.kiwi-messagelist-message-error.kiwi-messagelist-message--highlight .kiwi-messagelist-body {
+.kiwi-messagelist-message-error .kiwi-messagelist-body {
     border-left-color: var(--brand-error);
+    background-color: #f7bebe;
 }
 
 /* ---- Messagelist Topic Styling ---- */
