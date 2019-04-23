@@ -177,6 +177,10 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     color: var(--brand-primary);
 }
 
+.kiwi-header-server-connection .u-button {
+    color: #fff;
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
