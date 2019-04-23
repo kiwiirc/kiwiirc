@@ -277,7 +277,7 @@ export default {
     line-height: 2em;
     box-sizing: border-box;
     top: 10px;
-    z-index: 100;
+    z-index: 3;
     white-space: nowrap;
     left: 14px;
     width: 37px;
@@ -305,6 +305,7 @@ export default {
 /* When the Statebrowser is visible, apply new styles to the messagecount */
 .kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount {
     left: -19px;
+    z-index: 100;
 }
 
 .kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
