@@ -2,7 +2,7 @@
 
 :root {
     /* Primary Variables */
-    --brand-primary: #78c9dc;
+    --brand-primary: #0f7890;
     --brand-primary-hover: #8fd9ea;
     --brand-midtone: #f1f1f1;
     --brand-darktone: #969696;
@@ -26,7 +26,7 @@
 
     /* StateBrowser */
     --comp-statebrowser-fg: #fff;
-    --comp-statebrowser-bg: #4dafc5;
+    --comp-statebrowser-bg: #096579;
     --comp-statebrowser-bg-networkname: #80c8d8;
     --comp-statebrowser-channel-active-bg: #ffffff0d;
     --comp-statebrowser-channel-active-fg: #fff;
@@ -68,7 +68,7 @@
 
 /* Sidebar */
 .kiwi-aboutbuffer h4 {
-    background-color: #74c9dd;
+    background-color: #0f7890;
 }
 
 /* IRC Text Colours */
