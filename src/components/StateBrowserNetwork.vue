@@ -119,8 +119,8 @@
                     <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">
                         <away-status-indicator
                             v-if="buffer.isQuery() && awayNotifySupported()"
-                            :network="network" :user="network.userByName(buffer.name)"/>
-                        {{ buffer.name }}
+                            :network="network" :user="network.userByName(buffer.name)"
+                        />{{ buffer.name }}
                     </div>
                     <div class="kiwi-statebrowser-channel-labels">
                         <transition name="kiwi-statebrowser-channel-label-transition">
