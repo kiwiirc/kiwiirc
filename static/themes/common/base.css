@@ -1053,3 +1053,10 @@
 .kiwi-bufferkey-button {
     border-color: var(--brand-default-bg);
 }
+
+.kiwi-container-toggledraw-statebrowser-messagecount {
+    z-index: 3;
+}
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount {
+    z-index: 100;
+}
