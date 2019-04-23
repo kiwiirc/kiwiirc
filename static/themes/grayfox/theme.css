@@ -111,6 +111,10 @@
     color: var(--brand-default-bg);
 }
 
+.kiwi-advanced-setting--modified .u-link {
+    color: #414957;
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
