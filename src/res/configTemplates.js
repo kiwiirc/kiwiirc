@@ -84,6 +84,7 @@ export const configTemplates = {
             nick_format: '',
         },
         noticeActiveBuffer: true,
+        showChanlistModes: false,
         showAutocomplete: true,
         showEmojiPicker: true,
         showSendButton: false,
