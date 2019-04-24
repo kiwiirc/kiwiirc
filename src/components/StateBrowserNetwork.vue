@@ -557,6 +557,11 @@ export default {
         opacity: 1;
         line-height: 40px;
     }
+
+    .kiwi-statebrowser-channel .kiwi-statebrowser-channel-labels {
+        right: 28px;
+        top: 5px;
+    }
 }
 
 </style>
