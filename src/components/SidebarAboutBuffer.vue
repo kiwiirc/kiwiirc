@@ -179,7 +179,7 @@ export default {
 
 @media screen and (max-width: 769px) {
     .kiwi-sidebar.kiwi-sidebar-section-about {
-        max-width: 100%;
+        max-width: 380px;
         width: 100%;
     }
 }

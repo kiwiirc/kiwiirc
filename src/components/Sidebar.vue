@@ -299,17 +299,22 @@ export default {
 
     .kiwi-sidebar-options .kiwi-sidebar-close {
         width: 100%;
-        display: inline-block;
-        padding: 0 20px 0 40px;
+        display: block;
+        padding: 0 15px;
+        height: 50px;
+        line-height: 50px;
         text-align: right;
         box-sizing: border-box;
+        letter-spacing: 2px;
         transition: background 0.3s;
     }
 
     .kiwi-sidebar-options .kiwi-sidebar-close i {
-        margin-left: 10px;
+        margin-left: 5px;
         font-size: 1.5em;
         line-height: 47px;
+        position: relative;
+        top: 2px;
     }
 
     .kiwi-sidebar .u-tabbed-view-tab {
@@ -332,7 +337,7 @@ export default {
 
     .kiwi-container--sidebar-drawn .kiwi-sidebar {
         width: 100%;
-        max-width: 100%;
+        max-width: 380px;
     }
 
     .kiwi-sidebar-buffersettings {
