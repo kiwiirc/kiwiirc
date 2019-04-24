@@ -608,10 +608,6 @@
     border-left-color: #80ab52;
 }
 
-.kiwi-messagelist-message-notice {
-    border-left-color: #4cff9a;
-}
-
 /* MessageInfo */
 .kiwi-messagelist-message--info-open,
 .kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open {
