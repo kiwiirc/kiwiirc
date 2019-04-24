@@ -14,9 +14,6 @@
     --brand-warning: #fcb46e;
     --brand-error: #bf5155;
 
-    /* Messagelist notices */
-    --brand-notice--standard: #ffb314;
-
     /* Connection Indicator top */
     --comp-workspace-before-bg: var(--brand-primary);
     --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);

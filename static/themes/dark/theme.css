@@ -10,8 +10,6 @@
     --brand-notice: #f6c358;
     --brand-warning: #fcb46e;
     --brand-error: #bf5155;
-    /* Messagelist notices */
-    --brand-notice--standard: #b78724;
     --comp-workspace-before-bg: var(--brand-primary);
     --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
     --comp-header-bg: var(--brand-default-bg);
