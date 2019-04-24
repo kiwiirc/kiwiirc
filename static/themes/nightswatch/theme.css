@@ -321,6 +321,21 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     color: #fff;
 }
 
+/* Style notice messages colours */
+.kiwi-messagelist-message.kiwi-messagelist-message-notice .kiwi-messagelist-body {
+    border-left-color: #e8790c;
+    background-color: #ffba78;
+    color: #000;
+}
+.kiwi-messagelist-message.kiwi-messagelist-message-error .kiwi-messagelist-body {
+    border-left-color: #903539;
+    background-color: #cc5656;
+}
+.kiwi-messagelist-message--highlight .kiwi-messagelist-body {
+   background-color: #171717;
+}
+/* End of notice styling */
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
