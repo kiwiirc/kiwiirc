@@ -133,7 +133,7 @@
                                 ]"
                                 class="kiwi-statebrowser-channel-label"
                             >
-                                {{ buffer.flags.unread }}
+                                {{ buffer.flags.unread > 999 ? "999+": buffer.flags.unread }}
                             </div>
                         </transition>
                     </div>
@@ -422,9 +422,11 @@ export default {
 .kiwi-statebrowser-channel-labels {
     position: absolute;
     right: 0;
+    width: 50px;
     text-align: center;
     z-index: 0;
     top: 0;
+    transition: right 0.2s, opacity 0.2s;
 }
 
 .kiwi-statebrowser-channel-label {
@@ -454,7 +456,7 @@ export default {
 .kiwi-statebrowser-channel-leave {
     float: right;
     opacity: 0;
-    width: 28px;
+    width: 50px;
     cursor: pointer;
     margin-right: 0;
     transition: all 0.3s;
@@ -552,14 +554,14 @@ export default {
         line-height: 40px;
     }
 
-    .kiwi-statebrowser-channel .kiwi-statebrowser-channel-settings,
     .kiwi-statebrowser-channel .kiwi-statebrowser-channel-leave {
         opacity: 1;
         line-height: 40px;
+        width: 35px;
     }
 
     .kiwi-statebrowser-channel .kiwi-statebrowser-channel-labels {
-        right: 28px;
+        right: 35px;
         top: 5px;
     }
 }
