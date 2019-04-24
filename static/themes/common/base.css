@@ -813,6 +813,12 @@
     border-color: var(--brand-primary);
 }
 
+/* Notice Message styling */
+.kiwi-messagelist-message-notice {
+    border-left-color: var(--brand-notice--standard);
+}
+
+
 /* Standard username and usertime styling */
 .kiwi-messagelist-nick {
     color: var(--brand-default-fg);
