@@ -49,7 +49,7 @@
                 :toggle="false"
             />
             {{ message.user ? userModePrefix(message.user) : '' }}
-            {{ message.nick }}
+            {{ ' ' + message.nick }}
         </div>
         <div
             v-rawElement="message.bodyTemplate.$el"
@@ -117,6 +117,7 @@ export default {
 .kiwi-messagelist-message--compact {
     position: relative;
     display: flex;
+    padding: 0 10px;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-privmsg:hover,
@@ -132,10 +133,6 @@ export default {
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
     width: 110px;
     min-width: 110px;
-    display: inline-block;
-    left: 8px;
-    top: -1px;
-    position: absolute;
     white-space: nowrap;
 }
 
@@ -155,9 +152,7 @@ export default {
 .kiwi-messagelist-message--compact .kiwi-messagelist-body {
     white-space: pre-wrap;
     word-wrap: break-word;
-    margin-left: 120px;
     flex-grow: 1;
-    padding: 0 0 2px 0;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-body a {
@@ -204,14 +199,6 @@ export default {
     padding-right: 0;
     max-width: 95%;
     margin-left: 20px;
-}
-
-//Repeat messages, remove the time and author name
-.kiwi-messagelist-message--compact.kiwi-messagelist-message--authorrepeat {
-    .kiwi-messagelist-time,
-    .kiwi-messagelist-nick {
-        display: none;
-    }
 }
 
 // Traffic messages have an opacity lower than 1, so we do a blanket statment to make sure all
@@ -281,7 +268,7 @@ export default {
 
 /* Hide timestamp on error message */
 .kiwi-messagelist-message-error .kiwi-messagelist-time {
-    display: none;
+    opacity: 0;
 }
 
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-error .kiwi-messagelist-body,

@@ -437,8 +437,6 @@ export default {
 }
 
 .kiwi-messagelist-message {
-    padding: 0 10px;
-
     /* some message highlights add a left border so add a default invisble one in preperation */
     border-left: 5px solid transparent;
     overflow: hidden;
@@ -750,9 +748,9 @@ export default {
 }
 
 /* Style the notice / unread messages / traffic as 'bubbles' */
-.kiwi-messagelist-message.kiwi-messagelist-message-error .kiwi-messagelist-body,
-.kiwi-messagelist-message.kiwi-messagelist-message--highlight .kiwi-messagelist-body,
-.kiwi-messagelist-message.kiwi-messagelist-message-notice .kiwi-messagelist-body {
+.kiwi-messagelist-message-error .kiwi-messagelist-body,
+.kiwi-messagelist-message--highlight .kiwi-messagelist-body,
+.kiwi-messagelist-message-notice .kiwi-messagelist-body {
     position: relative;
     padding: 5px;
     border-radius: 0 5px 5px 0;
