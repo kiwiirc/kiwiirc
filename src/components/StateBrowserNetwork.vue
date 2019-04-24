@@ -454,7 +454,7 @@ export default {
 .kiwi-statebrowser-channel-leave {
     float: right;
     opacity: 0;
-    width: 35px;
+    width: 28px;
     cursor: pointer;
     margin-right: 0;
     transition: all 0.3s;
@@ -464,6 +464,10 @@ export default {
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings,
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave {
     opacity: 1;
+}
+
+.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-labels {
+    opacity: 0;
 }
 
 /* Add channel input */
