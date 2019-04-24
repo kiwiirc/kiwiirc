@@ -426,7 +426,7 @@ export default {
     text-align: center;
     z-index: 0;
     top: 0;
-    transition: right 0.2s, opacity 0.2s;
+    transition: opacity 0.2s;
 }
 
 .kiwi-statebrowser-channel-label {
