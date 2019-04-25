@@ -44,6 +44,17 @@
                                 <span>{{ $t('settings_use_monospace') }} </span>
                                 <input v-model="settingUseMonospace" type="checkbox" >
                             </label>
+                            <div
+                                v-if="canRegisterProtocolHandler"
+                                style="margin-top: 10px; text-align: center;"
+                            >
+                                <a
+                                    class="u-button u-button-primary"
+                                    @click="makeDefaultProtocolHandler()"
+                                >
+                                    <i>{{ $t('settings_default_handler') }}</i>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -225,6 +236,9 @@ export default {
             let val = themeMgr.themeVar('supports-monospace');
             return val === '1';
         },
+        canRegisterProtocolHandler: function canRegisterProtocolHandler() {
+            return !!navigator.registerProtocolHandler && state.setting('startupScreen') === 'personal';
+        },
         timestamps_24h: {
             get: function get24Timestamps() {
                 // %H is 24 hour format
@@ -342,6 +356,10 @@ export default {
                 this.$refs.tabs.setActiveByName('advanced');
                 this.$el.scrollTop = 0;
             });
+        },
+        makeDefaultProtocolHandler() {
+            navigator.registerProtocolHandler('irc', document.location.origin + document.location.pathname + '#%s', 'Kiwi IRC');
+            navigator.registerProtocolHandler('ircs', document.location.origin + document.location.pathname + '#%s', 'Kiwi IRC');
         },
     },
 };
