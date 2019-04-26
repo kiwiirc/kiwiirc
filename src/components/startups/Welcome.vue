@@ -181,7 +181,8 @@ export default {
 
         this.recaptchaSiteId = options.recaptchaSiteId || '';
 
-        new BouncerProvider(this.$state);
+        let bnc = new BouncerProvider(this.$state);
+        bnc.enable(options.server, options.port, options.tls);
     },
     mounted() {
         if (this.recaptchaSiteId) {

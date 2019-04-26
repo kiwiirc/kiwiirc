@@ -49,38 +49,15 @@ export function create(state, network) {
     // most recent connection details from the state
     let originalIrcClientConnect = ircClient.connect;
     ircClient.connect = function connect(...args) {
-        let bnc = state.setting('bnc');
-        if (bnc.active) {
-            let netname = network.connection.bncname;
-            let password = '';
-
-            // bnccontrol is the control connection for BOUNCER commands, not a network
-            if (network.name === 'bnccontrol') {
-                // Some bouncers require a network to be set, so set a (hopefully) invalid one
-                password = `${bnc.username}/__kiwiauth:${bnc.password}`;
-            } else {
-                password = `${bnc.username}/${netname}:${bnc.password}`;
-            }
-
-            ircClient.options.host = bnc.server;
-            ircClient.options.port = bnc.port;
-            ircClient.options.tls = bnc.tls;
-            ircClient.options.path = bnc.path;
-            ircClient.options.password = password;
-            ircClient.options.nick = network.connection.nick;
-            ircClient.options.username = bnc.username;
-            ircClient.options.encoding = network.connection.encoding;
-        } else {
-            ircClient.options.host = network.connection.server;
-            ircClient.options.port = network.connection.port;
-            ircClient.options.tls = network.connection.tls;
-            ircClient.options.path = network.connection.path;
-            ircClient.options.password = network.password;
-            ircClient.options.nick = network.connection.nick;
-            ircClient.options.username = network.username || network.connection.nick;
-            ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
-            ircClient.options.encoding = network.connection.encoding;
-        }
+        ircClient.options.host = network.connection.server;
+        ircClient.options.port = network.connection.port;
+        ircClient.options.tls = network.connection.tls;
+        ircClient.options.path = network.connection.path;
+        ircClient.options.password = network.password;
+        ircClient.options.nick = network.connection.nick;
+        ircClient.options.username = network.username || network.connection.nick;
+        ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
+        ircClient.options.encoding = network.connection.encoding;
 
         state.$emit('network.connecting', { network });
         originalIrcClientConnect.apply(ircClient, args);
