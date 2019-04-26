@@ -58,7 +58,9 @@
                 :network="getNetwork()" :user="message.user"
                 :toggle="false"
             />
-            <span class="kiwi-messagelist-nick--prefix">{{ message.user ? userModePrefix(message.user) : '' }}</span>
+            <span class="kiwi-messagelist-nick--prefix">
+                {{ message.user ? userModePrefix(message.user) : '' }}
+            </span>
             {{ message.nick }}
         </div>
         <div
