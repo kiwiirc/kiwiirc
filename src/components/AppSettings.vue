@@ -13,6 +13,18 @@
                     <div class="kiwi-appsettings-block">
                         <h3>{{ $t('settings_general') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-general">
+                            <label class="kiwi-appsettings-setting-language">
+                                <span>{{ $t('settings_language') }} </span>
+                                <select v-model="settingLanguage">
+                                    <option
+                                        v-for="t in availableLocales"
+                                        :value="t"
+                                        :key="t"
+                                    >
+                                        {{ localeNames[t] || t }}
+                                    </option>
+                                </select>
+                            </label>
                             <label class="kiwi-appsettings-setting-theme">
                                 <span>{{ $t('settings_theme') }} </span>
                                 <a
@@ -188,6 +200,7 @@ import _ from 'lodash';
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import GlobalApi from '@/libs/GlobalApi';
+import AvailableLocales from '@/res/locales/available.json';
 import SettingsAliases from './SettingsAliases';
 import SettingsAdvanced from './SettingsAdvanced';
 
@@ -261,6 +274,22 @@ export default {
             set: function setSettingShowAdvancedTab(newVal) {
                 state.ui.show_advanced_tab = newVal;
             },
+        },
+        settingLanguage: {
+            get: function getSettingLanguage() {
+                return state.setting('language');
+            },
+            set: function setSettingLanguage(newVal) {
+                state.setting('language', newVal);
+                let i18n = GlobalApi.singleton().i18n;
+                i18n.changeLanguage(newVal);
+            },
+        },
+        availableLocales() {
+            return AvailableLocales.locales;
+        },
+        localeNames() {
+            return AvailableLocales.locale_names;
         },
         messageLayouts() {
             return {
@@ -359,6 +388,10 @@ export default {
         width: 100%;
         overflow: hidden;
     }
+}
+
+.kiwi-appsettings-setting-language select {
+    float: right;
 }
 
 .kiwi-appsettings-setting-theme span {
