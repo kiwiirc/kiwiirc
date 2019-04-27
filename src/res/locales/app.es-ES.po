@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2019-04-27 22:51\n"
+"PO-Revision-Date: 2019-04-27 23:20\n"
 
 #: Start
 msgid "start_button"
@@ -267,7 +267,7 @@ msgstr "Colorear apodos en los mensajes"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr ""
+msgstr "Comparte cuando estoy escribiendo un mensaje"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
