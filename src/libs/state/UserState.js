@@ -16,6 +16,7 @@ export default class UserState {
         this.buffers = Object.create(null);
         this.account = '';
         this.hasWhois = false;
+        this.typingState = Object.create(null);
 
         Vue.observable(this);
 
@@ -44,5 +45,40 @@ export default class UserState {
     }
     isAway() {
         return !!this.away;
+    }
+
+    typingStatus(target, status) {
+        if (!this.typingState[target.toLowerCase()]) {
+            Vue.set(this.typingState, target.toLowerCase(), { started: 0, status: '' });
+        }
+
+        let typing = this.typingState[target.toLowerCase()];
+
+        if (!status) {
+            return this.typingState[target.toLowerCase()] || { status: '' };
+        }
+
+        if (typing.timeout) {
+            clearTimeout(typing.timeout);
+            typing.timeout = null;
+        }
+
+        if (status === 'done') {
+            Vue.delete(this.typingState, target.toLowerCase());
+            return null;
+        }
+
+        typing.started = Date.now();
+        typing.status = status;
+
+        // Paused state gets a longer timeout as it's usually someone stopping typing
+        // to think about their words
+        let timeoutLen = status === 'paused' ?
+            30000 :
+            6000;
+
+        typing.timeout = setTimeout(() => this.typingStatus(target, 'done'), timeoutLen);
+
+        return typing;
     }
 }

@@ -1264,3 +1264,7 @@
         background-color: #294234;
     }
 }
+
+.kiwi-messagelist::-webkit-scrollbar-thumb {
+    background-color: #9e9e9e;
+}

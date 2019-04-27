@@ -70,6 +70,7 @@ export const configTemplates = {
             shared_input: false,
             show_message_info: true,
             who_loop: true,
+            share_typing: true,
             flash_title: true,
         },
         // Startup screen default
@@ -322,6 +323,7 @@ export const configTemplates = {
             colour_nicknames_in_messages: false,
             show_emoticons: false,
             show_message_info: false,
+            share_typing: false,
         },
     },
 
