@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Afrikaans\n"
 "Language: af_ZA\n"
-"PO-Revision-Date: 2019-04-21 21:02\n"
+"PO-Revision-Date: 2019-04-27 22:51\n"
 
 #: Start
 msgid "start_button"
@@ -264,6 +264,10 @@ msgstr "Ekstra formatering"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Verkleur byname in boodskappe"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr ""
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
