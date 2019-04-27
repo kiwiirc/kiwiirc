@@ -439,12 +439,12 @@ export default {
 }
 
 .kiwi-messagelist::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
     background: transparent;
 }
 
 .kiwi-messagelist::-webkit-scrollbar-thumb {
-    border-radius: 12px;
+    border-radius: 3px;
 }
 
 .kiwi-messagelist-item {
