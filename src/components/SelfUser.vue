@@ -21,7 +21,11 @@
             <div class="kiwi-selfuser-away-return-icon" @click="self_user_settings_open = false">
                 <i class="fa fa-times" aria-hidden="true"/>
             </div>
-            <form class="u-form">
+            <form
+                class="u-form"
+                @submit.prevent="changeNick"
+                @keyup.esc="self_user_settings_open = false"
+            >
                 <input v-focus
                        v-model="new_nick"
                        type="text"
@@ -29,8 +33,7 @@
                        placeholder="Enter new nickname..."
                 >
                 <span class="u-input-button-container">
-                    <a class="u-button u-button-primary"
-                       @click="userNameUpdate(new_nick)">
+                    <a class="u-button u-button-primary" @click="changeNick">
                         Update
                     </a>
                 </span>
@@ -98,8 +101,8 @@ export default {
         closeSelfUser() {
             this.$emit('close');
         },
-        userNameUpdate(newNick) {
-            let nick = newNick.trim();
+        changeNick() {
+            let nick = this.new_nick.trim();
             if (nick.length === 0) {
                 this.error_message = 'You must enter a new username';
                 return;

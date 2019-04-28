@@ -116,6 +116,7 @@ export default {
     right: 0;
     padding: 0 10px;
     display: none;
+    opacity: 0.8;
 }
 
 //display timestamp when hovering over the message
@@ -160,8 +161,10 @@ export default {
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     display: inline-block;
-    padding: 5px;
     margin: 0;
+    font-size: 0.8em;
+    opacity: 0.8;
+    padding: 0;
 }
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-time {

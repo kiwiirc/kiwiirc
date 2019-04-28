@@ -65,12 +65,12 @@ describe('TextFormatting.js', function() {
         };
         let tests = [
             // word, nick, prefix, suffix
-            ['testnick1', 'TestNick1'],
+            ['testnick1', 'testnick1'],
             ['TestNick1'],
             ['TestNick2'],
-            ['Testnick3', 'TestNick3'],
-            ['testnick1:', 'TestNick1', '', ':'],
-            ['@testnick2', 'TestNick2', '@', ''],
+            ['Testnick3', 'Testnick3'],
+            ['testnick1:', 'testnick1', '', ':'],
+            ['@testnick2', 'testnick2', '@', ''],
             ['@TestNick2:', 'TestNick2', '@', ':'],
         ];
 

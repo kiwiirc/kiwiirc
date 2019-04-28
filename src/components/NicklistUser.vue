@@ -5,6 +5,7 @@
             user.away ? 'kiwi-nicklist-user--away' : '',
             user.ignore ? 'kiwi-nicklist-user--ignore' : '',
         ]"
+        :data-nick="(user.nick||'').toLowerCase()"
         class="kiwi-nicklist-user"
         @click="nicklist.openUserbox(user)"
     >
@@ -22,6 +23,7 @@
         <span class="kiwi-nicklist-messageuser" @click.stop="nicklist.openQuery(user)">
             <i class="fa fa-comment" aria-hidden="true"/>
         </span>
+        <typing-status-indicator :user="user" :buffer="nicklist.buffer" />
     </li>
 </template>
 
@@ -29,10 +31,12 @@
 'kiwi public';
 
 import AwayStatusIndicator from './AwayStatusIndicator';
+import TypingStatusIndicator from './TypingStatusIndicator';
 
 export default {
     components: {
         AwayStatusIndicator,
+        TypingStatusIndicator,
     },
     props: ['network', 'user', 'nicklist'],
     computed: {
@@ -50,7 +54,8 @@ export default {
 
 .kiwi-nicklist-user {
     line-height: 26px;
-    padding: 0 16px 0 12px;
+    padding: 0 12px 0 12px;
+    border-left: 4px solid;
     margin: 0;
     position: relative;
     box-sizing: border-box;
@@ -68,13 +73,13 @@ export default {
     content: '\f075';
     right: -1em;
     font-family: fontAwesome, sans-serif;
-    line-height: 30px;
+    line-height: 26px;
     opacity: 0;
 }
 
 .kiwi-nicklist-messageuser:hover {
     cursor: pointer;
-    transition: all 0.1s;
+    transition: all 0.2s;
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {

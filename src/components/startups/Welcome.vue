@@ -1,5 +1,8 @@
 <template>
-    <startup-layout ref="layout" class="kiwi-welcome-simple">
+    <startup-layout ref="layout"
+                    :class="{ 'kiwi-welcome-simple--recaptcha': recaptchaSiteId }"
+                    class="kiwi-welcome-simple"
+    >
         <template v-slot:connection v-if="!network || network.state === 'disconnected'">
             <form class="u-form kiwi-welcome-simple-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText"/>
@@ -44,7 +47,7 @@
                 <div
                     v-if="recaptchaSiteId"
                     :data-sitekey="recaptchaSiteId"
-                    class="kiwi-g-recaptcha"
+                    class="g-recaptcha"
                 />
 
                 <button
@@ -55,7 +58,7 @@
                 />
             </form>
         </template>
-        <template v-else-if="network.state !== 'connected'">
+        <template v-slot:connection v-else-if="network.state !== 'connected'">
             <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
         </template>
     </startup-layout>
@@ -240,7 +243,7 @@ export default {
 
             // If we retreived an existing network, update the nick+password with what
             // the user has just put in place
-            net.nick = this.nick;
+            net.connection.nick = this.nick;
             net.password = this.password;
 
             if (!this.network && options.recaptchaSiteId) {
@@ -303,6 +306,16 @@ export default {
     max-width: 250px;
     border-radius: 0.5em;
     padding: 1em;
+}
+
+.kiwi-welcome-simple--recaptcha .kiwi-welcome-simple-form {
+    width: 333px;
+    max-width: 333px;
+    box-sizing: border-box;
+}
+
+.g-recaptcha {
+    margin-bottom: 10px;
 }
 
 .kiwi-welcome-simple-error {
@@ -405,6 +418,7 @@ export default {
     margin-top: -0.5em;
     left: 50%;
     margin-left: -40px;
+    color: black;
 }
 
 /** Smaller screen... **/
@@ -435,7 +449,6 @@ export default {
         left: 48%;
         top: 50%;
         margin-top: -50px;
-        color: #fff;
     }
 }
 

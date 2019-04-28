@@ -35,40 +35,7 @@ const stateObj = {
         current_input: '',
         show_advanced_tab: false,
     },
-    networks: [
-        /* {
-            id: 1,
-            name: 'sumnetwork',
-            state: 'disconnected',
-            state_error: '',
-            connection: {
-                server: 'irc.freenode.net',
-                port: 6667,
-                tls: false,
-                password: ''
-            },
-            nick: 'prawnsalad',
-            username: 'prawn',
-            settings: { show_raw: false },
-            auto_commands: '',
-            is_znc: false,
-            channel_list: [],
-            channel_list_state: '',
-        },
-        {
-            id: 2,
-            name: 'snoonet',
-            state: 'disconnected',
-            connection: {
-                server: 'irc.freenode.net',
-                port: 6667,
-                tls: false,
-                password: ''
-            },
-            nick: 'prawnsalad',
-            username: 'prawn',
-        }, */
-    ],
+    networks: [],
 };
 
 const userDict = new Vue({
@@ -79,20 +46,8 @@ const userDict = new Vue({
     },
     /*
     (network id): {
-        prawnsalad: {
-            nick: 'prawnsalad',
-            host: 'isp.net',
-            username: 'prawn',
-            modes: '+ix',
-            buffers: {1: {modes: []}},
-        },
-        someone: {
-            nick: 'someone',
-            host: 'masked.com',
-            username: 'someirc',
-            modes: '+ix',
-            buffers: {1: {modes: []}},
-        },
+        (lowercase nick): UserState,
+        (lowercase nick): UserState,
     },
     */
 });
@@ -105,16 +60,8 @@ const bufferDict = new Vue({
     },
     /*
     (network id): [
-        {
-            id: 1
-            networkid: 2,
-            name: '#orangechat',
-            topic: '',
-            joined: false,
-            flags: { unread: 0 },
-            settings: { alert_on: 'all' },
-            users: [ref_to_user_obj],
-        },
+        BufferState,
+        BufferState,
     ]
     */
 });
@@ -125,34 +72,14 @@ const messages = [
         networkid: 1,
         buffer: '#kiwiirc',
         messages: [
-            {
-                time: Date.now(),
-                nick: 'prawnsalad',
-                message: 'hello',
-            },
-        ],
-    },
-    {
-        networkid: 2,
-        buffer: '#orangechat',
-        messages: [
-            {
-                time: Date.now(),
-                nick: 'prawnsalad',
-                message: 'boom boom boom',
-            },
-            {
-                time: Date.now() + 10000,
-                nick: 'someone',
-                message: '.. you want me in your room?',
-            },
+            Message,
+            Message
         ],
     }, */
 ];
 
 const availableStartups = Object.create(null);
 
-// TODO: Move these state changing methods into vuex or something
 const state = new Vue({
     data: stateObj,
     methods: {
@@ -166,6 +93,7 @@ const state = new Vue({
                         id: network.id,
                         name: network.name,
                         connection: {
+                            nick: network.connection.nick,
                             server: network.connection.server,
                             port: network.connection.port,
                             tls: network.connection.tls,
@@ -176,7 +104,6 @@ const state = new Vue({
                         },
                         auto_commands: network.auto_commands,
                         settings: _.cloneDeep(network.settings),
-                        nick: network.nick,
                         username: network.username,
                         gecos: network.gecos,
                         password: network.password,
@@ -211,10 +138,15 @@ const state = new Vue({
                 importObj.networks.forEach((importNetwork) => {
                     let network = new NetworkState(importNetwork.id, state, userDict, bufferDict);
                     network.name = importNetwork.name;
-                    network.connection = importNetwork.connection;
+                    network.connection = { ...network.connection, ...importNetwork.connection };
                     network.auto_commands = importNetwork.auto_commands || '';
                     network.settings = importNetwork.settings;
-                    network.nick = importNetwork.nick;
+                    // First check importNetwork.nick as this was used in older versions
+                    // TODO: Eventually remove this importNetwork.nick check
+                    network.nick = importNetwork.nick || importNetwork.connection.nick;
+                    if (!network.connection.nick && importNetwork.nick) {
+                        network.connection.nick = importNetwork.nick;
+                    }
                     network.username = importNetwork.username;
                     network.gecos = importNetwork.gecos;
                     network.password = importNetwork.password;
@@ -334,10 +266,10 @@ const state = new Vue({
 
             let network = new NetworkState(networkid, state, userDict, bufferDict);
             network.name = name;
-            network.nick = nick;
             network.username = serverInfo.username;
             network.gecos = serverInfo.gecos;
             network.password = serverInfo.password;
+            network.connection.nick = nick;
             network.connection.server = serverInfo.server || '';
             network.connection.port = serverInfo.port || 6667;
             network.connection.tls = serverInfo.tls || false;
@@ -712,6 +644,15 @@ const state = new Vue({
                         },
                     });
                 }
+            }
+
+            if (
+                isActiveBuffer &&
+                !state.ui.app_has_focus &&
+                message.type !== 'traffic' &&
+                buffer.setting('flash_title')
+            ) {
+                this.$emit('notification.title', true);
             }
 
             this.$emit('message.new', bufferMessage, buffer);

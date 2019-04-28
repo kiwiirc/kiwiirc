@@ -47,7 +47,7 @@ export class AudioManager {
                 return;
             }
 
-            let shouldBleep = message.isHighlight || buffer.setting('alert_on') === 'message';
+            let shouldBleep = buffer.getNetwork().nick !== message.nick && ((message.isHighlight && buffer.setting('alert_on') === 'highlight') || buffer.setting('alert_on') === 'message');
             let isActiveBuffer = state.getActiveBuffer() === buffer;
             let inFocus = isActiveBuffer && state.ui.app_has_focus;
 

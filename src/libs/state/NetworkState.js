@@ -28,6 +28,7 @@ export default class NetworkState {
             direct: false,
             encoding: 'utf8',
             bncname: '',
+            nick: '',
         };
         this.settings = {};
         this.nick = '';

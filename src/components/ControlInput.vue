@@ -42,6 +42,7 @@
                     @selected="onAutocompleteSelected"
                     @cancel="onAutocompleteCancel"
                 />
+                <typing-users-list :buffer="buffer" />
                 <div class="kiwi-controlinput-input-wrap">
                     <irc-input
                         ref="input"
@@ -114,12 +115,14 @@ import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
 import SelfUser from './SelfUser';
 import AwayStatusIndicator from './AwayStatusIndicator';
+import TypingUsersList from './TypingUsersList';
 
 export default {
     components: {
         AutoComplete,
         AwayStatusIndicator,
         SelfUser,
+        TypingUsersList,
     },
     props: ['container', 'buffer'],
     data() {
@@ -179,6 +182,9 @@ export default {
         },
     },
     created() {
+        this.typingTimer = null;
+        this.lastTypingTime = 0;
+
         this.listen(state, 'document.keydown', (ev) => {
             // No input box currently? Nothing to shift focus to
             if (!this.$refs.input) {
@@ -192,6 +198,13 @@ export default {
 
             // shift key on its own, don't shift focus we handle this below
             if (ev.keyCode === 16) {
+                return;
+            }
+
+            // Firefox 66.0.3 on linux isn't consistently setting ev.ctrlKey === true when only
+            // the control key is pressed so add a specific check for this
+            // TODO: Remove this check once ff 66.0.3 is no longer around
+            if (ev.keyCode === 17) {
                 return;
             }
 
@@ -438,6 +451,12 @@ export default {
             ) {
                 // Tab and no other keys as tab+other is often a keyboard shortcut
                 event.preventDefault();
+            } else if (!event.key.match(/^(Shift|Control|Alt)/)) {
+                if (inputVal) {
+                    this.startTyping();
+                } else {
+                    this.stopTyping();
+                }
             }
 
             if (this.autocomplete_open && this.autocomplete_filtering) {
@@ -459,6 +478,8 @@ export default {
             this.history_pos = this.history.length;
 
             this.$refs.input.reset();
+
+            this.stopTyping();
         },
         historyBack() {
             if (this.history_pos > 0) {
@@ -536,6 +557,56 @@ export default {
 
             return list;
         },
+        startTyping() {
+            if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
+                return;
+            }
+            if (!this.buffer.setting('share_typing')) {
+                return;
+            }
+            let buffer = this.buffer;
+            let network = buffer.getNetwork();
+            if (!buffer || (!buffer.isChannel() && !buffer.isQuery())) {
+                return;
+            }
+            if (this.typingTimer) {
+                clearTimeout(this.typingTimer);
+                this.typingTimer = null;
+            }
+            this.typingTimer = setTimeout(this.stopTyping, 3000);
+
+            if (Date.now() < this.lastTypingTime + 3000) {
+                return;
+            }
+
+            network.ircClient.typing.start(buffer.name);
+
+            this.lastTypingTime = Date.now();
+        },
+        stopTyping() {
+            if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
+                return;
+            }
+            if (!this.buffer.setting('share_typing')) {
+                return;
+            }
+            let buffer = this.buffer;
+            let network = buffer.getNetwork();
+
+            if (!buffer || (!buffer.isChannel() && !buffer.isQuery())) {
+                return;
+            }
+
+            if (this.typingTimer) {
+                clearTimeout(this.typingTimer);
+                this.typingTimer = null;
+                this.lastTypingTime = 0;
+            }
+
+            this.$refs.input.getValue() ?
+                network.ircClient.typing.pause(buffer.name) :
+                network.ircClient.typing.stop(buffer.name);
+        },
     },
 };
 </script>
@@ -544,6 +615,7 @@ export default {
 
 .kiwi-controlinput {
     z-index: 999;
+    border-top: 1px solid;
 }
 
 .kiwi-controlinput,
@@ -576,6 +648,7 @@ export default {
     line-height: 40px;
     transition: width 0.2s;
     transition-delay: 0.1s;
+    border-right: 1px solid;
 }
 
 .kiwi-controlinput-selfuser--open .kiwi-controlinput-user {
@@ -660,6 +733,8 @@ export default {
     box-sizing: border-box;
     border-radius: 0 6px 0 0;
     opacity: 0;
+    border-top: 1px solid;
+    border-right: 1px solid;
     overflow: hidden;
 }
 
@@ -683,12 +758,6 @@ export default {
 .kiwi-selfuser-trans-enter-active,
 .kiwi-selfuser-trans-leave-active {
     transition: all 0.4s;
-}
-
-@media screen and (max-width: 769px) {
-    .kiwi-controlinput {
-        z-index: 0;
-    }
 }
 
 @media screen and (max-width: 500px) {
@@ -734,6 +803,15 @@ export default {
     .kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
         width: 100%;
     }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-controlinput {
+        z-index: 0;
+    }
 }
 
+.kiwi-typinguserslist {
+    position: absolute;
+    top: -24px;
+    background: var(--brand-default-bg);
+}
 </style>

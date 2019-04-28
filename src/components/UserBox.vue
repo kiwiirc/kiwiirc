@@ -6,7 +6,7 @@
         <div class="kiwi-userbox-header">
             <h3>
                 <away-status-indicator :network="network" :user="user"/> {{ user.nick }}
-                <span v-if="userMode" class="kiwi-userbox-modestring">( {{ userMode }} )</span>
+                <span v-if="userMode" class="kiwi-userbox-modestring">+ {{ userMode }}</span>
             </h3>
             <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
         </div>
@@ -262,7 +262,9 @@ export default {
         openQuery: function openQuery() {
             let buffer = this.$state.addBuffer(this.network.id, this.user.nick);
             this.$state.setActiveBuffer(this.network.id, buffer.name);
-            this.$state.$emit('userbox.hide');
+            if (this.$state.ui.is_narrow) {
+                this.$state.$emit('userbox.hide');
+            }
         },
         onChannelsClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
@@ -360,6 +362,7 @@ export default {
 
 .kiwi-userbox-usermask {
     width: 100%;
+    opacity: 0.6;
     cursor: default;
 }
 
@@ -384,7 +387,6 @@ export default {
     line-height: 1em;
     padding: 0;
     text-align: left;
-    opacity: 0.5;
     font-weight: 900;
 }
 
@@ -404,18 +406,12 @@ export default {
 
     .kiwi-userbox-action {
         display: inline-block;
-        border: 1px solid #000;
+        border: 1px solid;
         padding: 0.5em 1em;
-        color: #000;
         cursor: pointer;
         margin: 0 2px;
         transition: all 0.3s;
         border-radius: 3px;
-
-        &:hover {
-            background-color: #000;
-            color: #fff;
-        }
     }
 
     label {
@@ -483,6 +479,7 @@ export default {
     margin: 0 5% 20px 5%;
     background: none;
     box-sizing: border-box;
+    border-radius: 2px;
 }
 
 .kiwi-userbox-whois-line {
