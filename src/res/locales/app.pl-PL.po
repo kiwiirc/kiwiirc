@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2019-04-28 08:00\n"
+"PO-Revision-Date: 2019-04-28 08:10\n"
 
 #: Start
 msgid "start_button"
@@ -883,7 +883,7 @@ msgstr "Przestań ignorować kogoś"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "Rzuć kostką"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
