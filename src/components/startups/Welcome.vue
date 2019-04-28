@@ -116,6 +116,11 @@ export default {
                 ready = false;
             }
 
+            // If toggling the password is is disabled, assume it is required
+            if (!this.toggablePass && !this.password) {
+                ready = false;
+            }
+
             let nickPatternStr = this.$state.setting('startupOptions.nick_format');
             let nickPattern = '';
             if (!nickPatternStr) {
@@ -175,14 +180,20 @@ export default {
 
         this.connectWithoutChannel = !!options.allowNoChannel;
 
+        if (options.bouncer) {
+            this.toggablePass = false;
+            this.showPass = true;
+            this.showChannel = false;
+
+            let bouncer = new BouncerProvider(this.$state);
+            bouncer.enable(options.server, options.port, options.tls);
+        }
+
         if (options.autoConnect && this.nick && (this.channel || this.connectWithoutChannel)) {
             this.startUp();
         }
 
         this.recaptchaSiteId = options.recaptchaSiteId || '';
-
-        let bnc = new BouncerProvider(this.$state);
-        bnc.enable(options.server, options.port, options.tls);
     },
     mounted() {
         if (this.recaptchaSiteId) {
@@ -233,12 +244,17 @@ export default {
             // Check if we have this network already
             let net = this.network || state.getNetworkFromAddress(netAddress);
 
+            let password = this.password;
+            if (options.bouncer) {
+                password = `${this.nick}:${this.password}`;
+            }
+
             // If the network doesn't already exist, add a new one
             net = net || state.addNetwork('Network', this.nick, {
                 server: netAddress,
                 port: options.port,
                 tls: options.tls,
-                password: this.password,
+                password: password,
                 encoding: _.trim(options.encoding),
                 direct: !!options.direct,
                 path: options.direct_path || '',
@@ -248,7 +264,7 @@ export default {
             // If we retreived an existing network, update the nick+password with what
             // the user has just put in place
             net.connection.nick = this.nick;
-            net.password = this.password;
+            net.password = password;
 
             if (!this.network && options.recaptchaSiteId) {
                 net.captchaResponse = this.captchaResponse();
