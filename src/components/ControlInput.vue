@@ -451,7 +451,7 @@ export default {
             ) {
                 // Tab and no other keys as tab+other is often a keyboard shortcut
                 event.preventDefault();
-            } else if (!event.key.match(/^(Shift|Control|Alt)/)) {
+            } else if (!event.key.match(/^(Shift|Control|Alt|Enter)/)) {
                 if (inputVal) {
                     this.startTyping();
                 } else {
