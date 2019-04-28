@@ -44,7 +44,7 @@ export const configTemplates = {
         warnOnExit: true,
         // Default buffer settings
         buffers: {
-            messageLayout: 'compact',
+            messageLayout: 'modern',
             alert_on: 'highlight',
             timestamp_format: '%H:%M:%S',
             // If timestamp_full_format is falsy, the browsers locale date format will be used
@@ -70,6 +70,7 @@ export const configTemplates = {
             shared_input: false,
             show_message_info: true,
             who_loop: true,
+            share_typing: true,
             flash_title: true,
         },
         // Startup screen default
@@ -84,6 +85,7 @@ export const configTemplates = {
             nick_format: '',
         },
         noticeActiveBuffer: true,
+        showChanlistModes: false,
         showAutocomplete: true,
         showEmojiPicker: true,
         showSendButton: false,
@@ -321,6 +323,7 @@ export const configTemplates = {
             colour_nicknames_in_messages: false,
             show_emoticons: false,
             show_message_info: false,
+            share_typing: false,
         },
     },
 

@@ -8,10 +8,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2019-02-19 17:31\n"
+"PO-Revision-Date: 2019-04-27 22:51\n"
 
 #: Start
 msgid "start_button"
@@ -265,6 +265,10 @@ msgstr "额外格式"
 msgid "settings_nick_colouring"
 msgstr "聊天彩色昵称"
 
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr ""
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "令加入/部分信息变成活动"
@@ -488,6 +492,10 @@ msgstr "编码"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "显示原始信息"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr ""
 
 #: Run commands when connected
 msgid "settings_autorun"

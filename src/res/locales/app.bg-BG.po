@@ -8,10 +8,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2019-04-10 13:31\n"
+"PO-Revision-Date: 2019-04-28 08:50\n"
 
 #: Start
 msgid "start_button"
@@ -265,6 +265,10 @@ msgstr "Допълнително форматиране"
 msgid "settings_nick_colouring"
 msgstr "Цветни никове в съобщенията"
 
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Споделете, когато пишете съобщение "
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Добави влизания/излизаня съобщения като активност"
@@ -488,6 +492,10 @@ msgstr "Енкодинг"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Показване на raw "
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Директен УебСокет"
 
 #: Run commands when connected
 msgid "settings_autorun"

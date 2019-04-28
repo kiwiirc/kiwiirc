@@ -96,6 +96,13 @@
                             <input v-model="settingShowRaw" type="checkbox" >
                         </label>
 
+                        <label>
+                            <span class="kiwi-appsettings-showraw-label">
+                                {{ $t('settings_use_websocket') }}
+                            </span>
+                            <input v-model="network.connection.direct" type="checkbox" >
+                        </label>
+
                         <label class="u-form-block">
                             <span>{{ $t('settings_autorun') }}</span>
                             <textarea

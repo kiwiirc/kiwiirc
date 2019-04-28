@@ -8,10 +8,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-02-21 17:21\n"
+"PO-Revision-Date: 2019-04-28 00:21\n"
 
 #: Start
 msgid "start_button"
@@ -265,6 +265,10 @@ msgstr "Επιπλέον μορφοποίηση"
 msgid "settings_nick_colouring"
 msgstr "Χρωματισμός ψευδωνύμων στα μηνύματα"
 
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Μετάδωσε όταν πληκτρολογώ ένα μήνυμα"
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Συμπεριλάβετε μηνύματα δραστηριοτήτων Εισόδου / Αποχώρησης"
@@ -488,6 +492,10 @@ msgstr "Κωδικοποίηση"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Εμφάνιση Ακατέργαστου"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Απευθείας websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"

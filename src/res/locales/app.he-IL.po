@@ -8,10 +8,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2019-02-19 17:32\n"
+"PO-Revision-Date: 2019-04-27 22:52\n"
 
 #: Start
 msgid "start_button"
@@ -265,6 +265,10 @@ msgstr "עיצוב נוסף"
 msgid "settings_nick_colouring"
 msgstr "צבע את כינויי המשתמשים בהודעות"
 
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr ""
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "הצג הודעות כניסה ויציאה"
@@ -488,6 +492,10 @@ msgstr "קידוד"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "הצג מידע גולמי"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr ""
 
 #: Run commands when connected
 msgid "settings_autorun"
