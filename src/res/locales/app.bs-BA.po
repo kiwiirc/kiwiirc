@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2019-04-27 22:51\n"
+"PO-Revision-Date: 2019-04-28 02:50\n"
 
 #: Start
 msgid "start_button"
@@ -267,7 +267,7 @@ msgstr "Obojeni nadimci u porukama"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr ""
+msgstr "Podijeli kada tipkam poruku"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
