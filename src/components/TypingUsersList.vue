@@ -21,6 +21,12 @@ export default {
     props: ['buffer'],
     computed: {
         users() {
+            if (this.buffer.isQuery()) {
+                // if this is a query return the target as users
+                let network = this.$state.getActiveNetwork();
+                let user = this.$state.getUser(network.id, this.buffer.name);
+                return { [user.nick]: user };
+            }
             return this.buffer.users;
         },
         typingUsers() {

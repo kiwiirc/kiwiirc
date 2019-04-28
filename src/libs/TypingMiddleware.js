@@ -17,8 +17,13 @@ export default function typingMiddleware() {
             return;
         }
 
+        // if we are params[0] then the target is the sender (direct message)
+        let target = (message.params[0].toLowerCase() === client.user.nick.toLowerCase()) ?
+            message.nick :
+            message.params[0];
+
         client.emit('typing', {
-            target: message.params[0],
+            target: target,
             nick: message.nick,
             ident: message.ident,
             hostname: message.hostname,
