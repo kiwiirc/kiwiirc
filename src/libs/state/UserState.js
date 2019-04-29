@@ -13,8 +13,8 @@ export default class UserState {
         this.modes = user.modes || '';
         this.away = user.away || '';
         this.colour = user.colour || '';
+        this.account = user.account || '';
         this.buffers = Object.create(null);
-        this.account = '';
         this.hasWhois = false;
         this.typingState = Object.create(null);
 
