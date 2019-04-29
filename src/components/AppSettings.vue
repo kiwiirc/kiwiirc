@@ -286,7 +286,9 @@ export default {
             },
         },
         availableLocales() {
-            return AvailableLocales.locales;
+            return AvailableLocales.locales
+                .filter(l => this.localeNames[l])
+                .sort((a, b) => (this.localeNames[a] > this.localeNames[b] ? 1 : -1));
         },
         localeNames() {
             return AvailableLocales.locale_names;
