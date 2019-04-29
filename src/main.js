@@ -361,6 +361,11 @@ function initLocales() {
             break;
         }
     }
+
+    // Update the language if the setting changes.
+    state.$watch('user_settings.language', (lang) => {
+        i18next.changeLanguage(lang);
+    });
 }
 
 async function initState() {

@@ -275,16 +275,7 @@ export default {
                 state.ui.show_advanced_tab = newVal;
             },
         },
-        settingLanguage: {
-            get: function getSettingLanguage() {
-                return state.setting('language');
-            },
-            set: function setSettingLanguage(newVal) {
-                state.setting('language', newVal);
-                let i18n = GlobalApi.singleton().i18n;
-                i18n.changeLanguage(newVal);
-            },
-        },
+        settingLanguage: bindSetting('language'),
         availableLocales() {
             return AvailableLocales.locales
                 .filter(l => this.localeNames[l])
