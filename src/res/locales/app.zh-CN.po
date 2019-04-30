@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2019-04-21 21:02\n"
+"PO-Revision-Date: 2019-04-27 22:51\n"
 
 #: Start
 msgid "start_button"
@@ -264,6 +264,10 @@ msgstr "额外格式"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "聊天彩色昵称"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr ""
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"

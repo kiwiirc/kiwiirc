@@ -791,6 +791,14 @@
 }
 
 /* ---- Message list - ( MessageList.vue ) ---- */
+.kiwi-messagelist {
+    scrollbar-color: #9e9e9e transparent;
+}
+
+.kiwi-messagelist::-webkit-scrollbar-thumb {
+    background-color: #9e9e9e;
+}
+
 .kiwi-messagelist-seperator {
     border-top: 1px solid var(--brand-shadow);
 }
@@ -811,6 +819,11 @@
 .kiwi-messagelist-message--highlight {
     background-color: var(--brand-midtone);
     border-color: var(--brand-primary);
+}
+
+/* Notice Message styling */
+.kiwi-messagelist-message-notice {
+    border-left-color: #ffb314;
 }
 
 /* Standard username and usertime styling */

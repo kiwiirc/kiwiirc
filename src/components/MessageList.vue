@@ -428,7 +428,23 @@ export default {
 <style lang="less">
 .kiwi-messagelist {
     overflow-y: auto;
-    height: 100%;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.kiwi-messagelist::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: transparent;
+}
+
+.kiwi-messagelist::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+
+.kiwi-messagelist::-webkit-scrollbar-thumb {
+    border-radius: 3px;
 }
 
 .kiwi-messagelist-item {

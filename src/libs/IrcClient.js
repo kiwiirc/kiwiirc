@@ -6,6 +6,7 @@ import Irc from 'irc-framework/browser';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import bouncerMiddleware from './BouncerMiddleware';
+import typingMiddleware from './TypingMiddleware';
 import * as ServerConnection from './ServerConnection';
 
 export function create(state, network) {
@@ -32,6 +33,7 @@ export function create(state, network) {
     ircClient.requestCap('message-tags');
     ircClient.use(clientMiddleware(state, network));
     ircClient.use(bouncerMiddleware());
+    ircClient.use(typingMiddleware());
 
     // Overload the connect() function to make sure we are connecting with the
     // most recent connection details from the state
@@ -99,6 +101,13 @@ export function create(state, network) {
             nick: '',
             message: (event.from_server ? '[S] ' : '[C] ') + event.line,
         });
+    });
+
+    ircClient.on('typing', (event) => {
+        let user = state.getUser(network.id, event.nick);
+        if (user) {
+            user.typingStatus(event.target, event.status);
+        }
     });
 
     return ircClient;
@@ -725,7 +734,7 @@ function clientMiddleware(state, network) {
                         username: user.ident || undefined,
                         away: user.away ? 'Away' : '',
                         realname: user.real_name,
-                        account: user.account || '',
+                        account: user.account || undefined,
                     };
                     state.addUser(networkid, userObj, users);
                 });

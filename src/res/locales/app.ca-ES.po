@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2019-04-21 23:20\n"
+"PO-Revision-Date: 2019-04-27 23:20\n"
 
 #: Start
 msgid "start_button"
@@ -264,6 +264,10 @@ msgstr "Format extra"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Colorejar nicks en els missatges"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Comparteix quan estic escribint un missatge"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
