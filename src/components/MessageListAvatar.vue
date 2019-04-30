@@ -38,8 +38,8 @@ export default {
     text-align: center;
     line-height: 40px;
     font-weight: 600;
-    color: #fff;
     margin-top: 3px;
+    border: 2px solid;
 }
 
 </style>

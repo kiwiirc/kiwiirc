@@ -876,7 +876,8 @@
 }
 
 /* ---- Modern Layout Styling ---- */
-.kiwi-messagelist-modern-avatar {
+.kiwi-messagelist-avatar {
+    color: var(--brand-default-bg);
     border-color: var(--brand-primary);
 }
 
