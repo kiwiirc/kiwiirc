@@ -45,11 +45,6 @@ exports.createJsonFiles = function() {
                 i18next_conv.gettextToI18next(locale, data)
                     .then(save(dest_path + locale.toLowerCase() + '.json'))
                     .then(function() {
-                        //console.log(data.toString());
-                        let matches = data.toString().match(/^"Language-Team: (.+)\\n"/m);
-                        if(matches && matches[1]) {
-                            localeNames[locale.toLowerCase()] = matches[1];
-                        }
                         availableLangs.push(locale.toLowerCase());
                         complete++;
                         if (complete === total) {
@@ -63,7 +58,6 @@ exports.createJsonFiles = function() {
     function writeAvailableFile() {
         var content = JSON.stringify({
             locales: availableLangs,
-            locale_names: localeNames,
         });
         fs.writeFileSync(source_path + 'available.json', content);
     }

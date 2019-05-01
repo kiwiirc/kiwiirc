@@ -16,12 +16,81 @@
                             <label class="kiwi-appsettings-setting-language">
                                 <span>{{ $t('settings_language') }} </span>
                                 <select v-model="settingLanguage">
-                                    <option
-                                        v-for="t in availableLocales"
-                                        :value="t"
-                                        :key="t"
-                                    >
-                                        {{ localeNames[t] || t }}
+                                    <option value="af-za">
+                                        Afrikaans (Afrikaans)
+                                    </option>
+                                    <option value="sq-al">
+                                        Shqip (Albanian)
+                                    </option>
+                                    <option value="ar-sa">
+                                        العربية (Arabic)
+                                    </option>
+                                    <option value="eu-es">
+                                        Euskara (Basque)
+                                    </option>
+                                    <option value="bs-ba">
+                                        Bosanski (Bosnian)
+                                    </option>
+                                    <option value="bg-bg">
+                                        Български (Bulgarian)
+                                    </option>
+                                    <option value="ca-es">
+                                        Català (Catalan)
+                                    </option>
+                                    <option value="zh-cn">
+                                        中文 (Chinese Simplified)
+                                    </option>
+                                    <option value="nl-nl">
+                                        Nederlands (Dutch)
+                                    </option>
+                                    <option value="en-us">
+                                        English (English)
+                                    </option>
+                                    <option value="fr-fr">
+                                        Français (French)
+                                    </option>
+                                    <option value="gl-es">
+                                        Galego (Galician)
+                                    </option>
+                                    <option value="de-de">
+                                        Deutsch (German)
+                                    </option>
+                                    <option value="el-gr">
+                                        Ελληνικά (Greek)
+                                    </option>
+                                    <option value="he-il">
+                                        עברית (Hebrew)
+                                    </option>
+                                    <option value="id-id">
+                                        Bahasa Indonesia (Indonesian)
+                                    </option>
+                                    <option value="it-it">
+                                        Italiano (Italian)
+                                    </option>
+
+                                    <option value="pl-pl">
+                                        Polski (Polish)
+                                    </option>
+                                    <option value="pt-pt">
+                                        Português (Portuguese)
+                                    </option>
+                                    <option value="pt-br">
+                                        Português do Brasil (Portuguese, Brazilian)
+                                    </option>
+                                    <option value="ru-ru">
+                                        Русский (Russian)
+                                    </option>
+                                    <option value="es-es">
+                                        Español (Spanish)
+                                    </option>
+                                    <option value="es-ar">
+                                        Español argentino (Spanish, Argentina)
+                                    </option>
+                                    <option value="es-us">
+                                        Español mexicano (Spanish, Mexican)
+                                    </option>
+                                    <option value="uk-ua">
+                                        Українська (Ukrainian)
                                     </option>
                                 </select>
                             </label>
@@ -200,7 +269,6 @@ import _ from 'lodash';
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import GlobalApi from '@/libs/GlobalApi';
-import AvailableLocales from '@/res/locales/available.json';
 import SettingsAliases from './SettingsAliases';
 import SettingsAdvanced from './SettingsAdvanced';
 
@@ -276,14 +344,6 @@ export default {
             },
         },
         settingLanguage: bindSetting('language'),
-        availableLocales() {
-            return AvailableLocales.locales
-                .filter(l => this.localeNames[l])
-                .sort((a, b) => (this.localeNames[a] > this.localeNames[b] ? 1 : -1));
-        },
-        localeNames() {
-            return AvailableLocales.locale_names;
-        },
         messageLayouts() {
             return {
                 traditional: 'compact',
