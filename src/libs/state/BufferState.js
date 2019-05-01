@@ -446,9 +446,13 @@ function maybeStartWhoLoop(bufferState) {
         nextLoop();
     } else {
         // Network is not coonnected. Wait until it is
-        bufferState.state.$once('irc.raw.001', () => {
-            nextLoop();
-        });
+        let on001 = (command, event, eventNetwork) => {
+            if (eventNetwork === network) {
+                bufferState.state.$off('irc.raw.001', on001);
+                nextLoop();
+            }
+        };
+        bufferState.state.$on('irc.raw.001', on001);
     }
 
     function nextLoop() {
