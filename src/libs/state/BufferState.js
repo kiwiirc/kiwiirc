@@ -443,20 +443,12 @@ function maybeStartWhoLoop(bufferState) {
 
     if (network.state === 'connected') {
         // network is connected start the loop if its needed
-        maybeLoop();
-    } else {
-        // network is not conencted wait until it is
-        bufferState.state.$once('irc.raw.001', () => {
-            maybeLoop();
-        });
-    }
-
-    function maybeLoop() {
-        if (network.ircClient.network.cap.isEnabled('away-notify')) {
-            // network has away-notify so who loop is not needed
-            return;
-        }
         nextLoop();
+    } else {
+        // Network is not coonnected. Wait until it is
+        bufferState.state.$once('irc.raw.001', () => {
+            nextLoop();
+        });
     }
 
     function nextLoop() {
@@ -464,7 +456,9 @@ function maybeStartWhoLoop(bufferState) {
     }
 
     function updateWhoStatusLoop() {
-        // Make sure the network buffer still exists
+        network = bufferState.state.getNetwork(bufferState.networkid);
+
+        // Make sure the network still exists
         if (!network) {
             return;
         }
@@ -476,9 +470,10 @@ function maybeStartWhoLoop(bufferState) {
 
         let whoLoop = bufferState.setting('who_loop');
         let isJoined = bufferState.joined;
+        let hasAwayNotify = network.ircClient.network.cap.isEnabled('away-notify');
         let networkConnected = network.state === 'connected';
 
-        if (whoLoop && networkConnected && isJoined) {
+        if (whoLoop && networkConnected && isJoined && !hasAwayNotify) {
             network.ircClient.who(bufferState.name, () => {
                 nextLoop();
             });
