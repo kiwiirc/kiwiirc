@@ -445,6 +445,7 @@ export default {
 
 .kiwi-appsettings-setting-language select {
     float: right;
+    max-width: 200px;
 }
 
 .kiwi-appsettings-setting-theme span {
