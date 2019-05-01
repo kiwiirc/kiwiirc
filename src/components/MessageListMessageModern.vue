@@ -180,10 +180,12 @@ export default {
             return types.indexOf(message.type) > -1;
         },
         displayAvatar(message) {
-            if (!this.ml.buffer.isChannel() && message.type === 'notice') {
-                return true;
+            // if there is no user attached hide the avatar
+            if (!message.user) {
+                return false;
             }
-            if (message.type === 'notice') {
+            // dont show avatars in server or special buffers
+            if (this.ml.buffer.isServer() || this.ml.buffer.isSpecial()) {
                 return false;
             }
             return true;
