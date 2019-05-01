@@ -58,7 +58,7 @@
                     :style="{ 'color': userColour }"
                     :class="[
                         'kiwi-messagelist-nick',
-                        userMode(message.user) ?
+                        (message.user && userMode(message.user)) ?
                             'kiwi-messagelist-nick--mode-'+userMode(message.user) :
                             ''
                     ]"

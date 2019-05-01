@@ -42,7 +42,7 @@
                 :data-nick="message.nick"
                 :class="[
                     'kiwi-messagelist-nick',
-                    userMode(message.user) ?
+                    (message.user && userMode(message.user)) ?
                         'kiwi-messagelist-nick--mode-'+userMode(message.user) :
                         ''
                 ]"
@@ -51,7 +51,7 @@
                 @mouseout="ml.hover_nick='';"
             >
                 <span class="kiwi-messagelist-nick--prefix">
-                    {{ userModePrefix(message.user) }}
+                    {{ message.user ? userModePrefix(message.user) : '' }}
                 </span>
                 <span>{{ displayNick }}</span>
             </span>

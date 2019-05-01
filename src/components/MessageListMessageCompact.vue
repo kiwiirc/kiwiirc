@@ -47,7 +47,7 @@
             :style="{ 'color': userColour }"
             :class="[
                 'kiwi-messagelist-nick',
-                userMode(message.user) ? 'kiwi-messagelist-nick--mode-'+userMode(message.user) : ''
+                (message.user && userMode(message.user)) ? 'kiwi-messagelist-nick--mode-'+userMode(message.user) : ''
             ]"
             @click="ml.openUserBox(message.nick)"
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
