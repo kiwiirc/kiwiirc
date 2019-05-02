@@ -16,6 +16,9 @@
                             <label class="kiwi-appsettings-setting-language">
                                 <span>{{ $t('settings_language') }} </span>
                                 <select v-model="settingLanguage">
+                                    <option value="">
+                                        -
+                                    </option>
                                     <option value="af-za">
                                         Afrikaans (Afrikaans)
                                     </option>
@@ -343,7 +346,14 @@ export default {
                 state.ui.show_advanced_tab = newVal;
             },
         },
-        settingLanguage: bindSetting('language'),
+        settingLanguage: {
+            get: function getSettingLanguage() {
+                return state.setting('language') || '';
+            },
+            set: function setSettingLanguage(newVal) {
+                state.setting('language', newVal || null);
+            },
+        },
         messageLayouts() {
             return {
                 traditional: 'compact',

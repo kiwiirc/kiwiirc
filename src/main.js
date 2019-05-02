@@ -330,41 +330,48 @@ function initLocales() {
         },
     });
 
-    let defaultLang = state.setting('language');
-    let preferredLangs = _.clone(window.navigator && window.navigator.languages) || [];
+    const setDefaultLanguage = () => {
+        let defaultLang = state.setting('language');
+        let preferredLangs = _.clone(window.navigator && window.navigator.languages) || [];
 
-    // our configs default lang overrides all others
-    if (defaultLang) {
-        preferredLangs.unshift(defaultLang);
-    }
-
-    // set a default language
-    i18next.changeLanguage('en-us');
-
-    // Go through our browser languages until we find one that we support
-    for (let idx = 0; idx < preferredLangs.length; idx++) {
-        let lang = preferredLangs[idx];
-
-        // if this is a language such as 'fr', add a following one of 'fr-fr' to cover
-        // both cases
-        if (lang.length === 2) {
-            preferredLangs.splice(idx + 1, 0, lang + '-' + lang);
+        // our configs default lang overrides all others
+        if (defaultLang) {
+            preferredLangs.unshift(defaultLang);
         }
 
-        if (_.includes(AvailableLocales.locales, lang.toLowerCase())) {
-            i18next.changeLanguage(lang, (err, t) => {
-                if (err) {
-                    // setting the language failed so set default again
-                    i18next.changeLanguage('en-us');
-                }
-            });
-            break;
+        // set a default language
+        i18next.changeLanguage('en-us');
+
+        // Go through our browser languages until we find one that we support
+        for (let idx = 0; idx < preferredLangs.length; idx++) {
+            let lang = preferredLangs[idx];
+
+            // if this is a language such as 'fr', add a following one of 'fr-fr' to cover
+            // both cases
+            if (lang.length === 2) {
+                preferredLangs.splice(idx + 1, 0, lang + '-' + lang);
+            }
+
+            if (_.includes(AvailableLocales.locales, lang.toLowerCase())) {
+                i18next.changeLanguage(lang, (err, t) => {
+                    if (err) {
+                        // setting the language failed so set default again
+                        i18next.changeLanguage('en-us');
+                    }
+                });
+                break;
+            }
         }
-    }
+    };
+    setDefaultLanguage();
 
     // Update the language if the setting changes.
     state.$watch('user_settings.language', (lang) => {
-        i18next.changeLanguage(lang || state.setting('language') || 'en-us');
+        if (!lang && !state.setting('settings.language')) {
+            setDefaultLanguage();
+        } else {
+            i18next.changeLanguage(lang || state.setting('language') || 'en-us');
+        }
     });
 }
 
