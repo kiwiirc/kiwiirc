@@ -63,7 +63,7 @@
     "i18next-conv": "^3.0.3",
     "i18next-xhr-backend": "^1.4.1",
     "ip-regex": "2.1.0",
-    "irc-framework": "^4.2.0",
+    "irc-framework": "../irc-framework/irc-framework-4.2.0.tgz",
     "json-loader": "^0.5.4",
     "json5": "^2.1.0",
     "less": "^2.7.1",
@@ -116,6 +116,7 @@
     "sinon": "^4.1.4",
     "sinon-chai": "^2.8.0",
     "webpack-dev-middleware": "^1.8.3",
-    "webpack-hot-middleware": "^2.12.2"
+    "webpack-hot-middleware": "^2.12.2",
+    "webpack-visualizer-plugin": "^0.1.11"
   }
 }

@@ -4,6 +4,8 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const { escapeRegExp } = require('lodash');
+const Visualizer = require('webpack-visualizer-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -40,7 +42,8 @@ module.exports = {
     // https://github.com/vieron/stylelint-webpack-plugin
     new StyleLintPlugin({
       files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
-    })
+    }),
+    new Visualizer(),
   ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -67,7 +70,18 @@ module.exports = {
             resolve('src'),
             resolve('test'),
             resolve('node_modules/ip-regex'),
-            resolve('node_modules/webpack-dev-server/client')
+            resolve('node_modules/webpack-dev-server/client'),
+            // new RegExp(`(^|${escapeRegExp(path.sep)})${escapeRegExp(path.join('node_modules', 'runes'))}`),
+            // resolve('node_modules/irc-framework/node_modules/runes'),
+            // resolve('../irc-framework/node_modules/runes'),
+            function(wat) {
+                const re = new RegExp(`(^|${escapeRegExp(path.sep)})${escapeRegExp(path.join('node_modules', 'runes'))}`)
+                if (!re.test(wat)) {
+                    return false
+                }
+                console.log({ wat })
+                return true
+            }
         ]
       },
       {
