@@ -19,6 +19,8 @@ export default class BouncerProvider {
             server: '',
             port: 6667,
             tls: false,
+            direct: false,
+            path: '',
         };
 
         // A snapshot of the current networks. Compared against to detect changed networks
@@ -27,11 +29,15 @@ export default class BouncerProvider {
         state.$on('irc.server options', this.onNetworkOptions.bind(this));
     }
 
-    enable(server, port, tls) {
+    enable(server, port, tls, direct, path) {
         this.bnc.server = server;
         this.bnc.port = port || 6667;
         this.bnc.tls = !!tls;
+        this.bnc.direct = !!direct;
+        this.bnc.path = path || '';
         this.bnc.enabled = true;
+
+        this.monitorNetworkChanges();
     }
 
     // Try to get connected network that can be used to control the bouncer
@@ -90,6 +96,8 @@ export default class BouncerProvider {
         this.bnc.server = network.connection.server;
         this.bnc.port = network.connection.port;
         this.bnc.tls = network.connection.tls;
+        this.bnc.direct = network.connection.direct;
+        this.bnc.path = network.connection.path || '';
         this.bnc.enabled = true;
 
         network.connection.bncname = bouncerIsupport.network;
@@ -110,7 +118,7 @@ export default class BouncerProvider {
             this.addNetworkToState(bncNet);
         }
 
-        this.monitorNetworkChanges();
+        // this.monitorNetworkChanges();
     }
 
     addNetworkToState(network) {
@@ -239,6 +247,23 @@ export default class BouncerProvider {
         // Ie. Quickly creating a network and hitting connect before it's had time to
         //     save itself to the bouncer
         state.$on('network.connecting', (event) => {
+            // Redirect the connection towards the bouncer with the network specific password
+            let network = event.network;
+            if (this.bnc.enabled) {
+                let netname = network.connection.bncname;
+                let password = `${this.bnc.username}/${netname}:${this.bnc.password}`;
+
+                let ircClient = network.ircClient;
+                ircClient.options.host = this.bnc.server;
+                ircClient.options.port = this.bnc.port;
+                ircClient.options.tls = this.bnc.tls;
+                ircClient.options.password = password;
+
+                network.connection.direct = this.bnc.direct;
+                ircClient.options.path = this.bnc.path;
+            }
+        });
+        state.$on('network.connecting', (event) => {
             let controller = this.getController();
             if (!controller) {
                 log('No controller available to save network states');
@@ -251,18 +276,6 @@ export default class BouncerProvider {
 
             if (network.connection.bncname) {
                 controller.ircClient.raw('BOUNCER connect ' + network.connection.bncname);
-            }
-
-            // Redirect the connection towards the bouncer with the network specific password
-            if (this.bnc.enabled && network.connection.bncname) {
-                let netname = network.connection.bncname;
-                let password = `${this.bnc.username}/${netname}:${this.bnc.password}`;
-
-                let ircClient = network.ircClient;
-                ircClient.options.host = this.bnc.server;
-                ircClient.options.port = this.bnc.port;
-                ircClient.options.tls = this.bnc.tls;
-                ircClient.options.password = password;
             }
         });
 

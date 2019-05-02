@@ -49,6 +49,8 @@ export function create(state, network) {
         ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
         ircClient.options.encoding = network.connection.encoding;
 
+        state.$emit('network.connecting', { network });
+
         // A direct connection uses a websocket to connect (note: some browsers limit
         // the number of connections to the same host!).
         // A non-direct connection will connect via the configured kiwi server using
@@ -63,7 +65,6 @@ export function create(state, network) {
             ircClient.options.transport = undefined;
         }
 
-        state.$emit('network.connecting', { network });
         originalIrcClientConnect.apply(ircClient, args);
     };
 

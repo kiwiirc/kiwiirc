@@ -186,7 +186,7 @@ export default {
             this.showChannel = false;
 
             let bouncer = new BouncerProvider(this.$state);
-            bouncer.enable(options.server, options.port, options.tls);
+            bouncer.enable(options.server, options.port, options.tls, options.direct, options.path);
         }
 
         if (options.autoConnect && this.nick && (this.channel || this.connectWithoutChannel)) {
