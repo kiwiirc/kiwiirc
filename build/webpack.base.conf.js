@@ -3,6 +3,7 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const vueLoaderConfig = require('./vue-loader.conf')
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const { escapeRegExp } = require('lodash');
@@ -46,6 +47,7 @@ module.exports = {
     // new StyleLintPlugin({
     //   files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
     // }),
+    new VueLoaderPlugin(),
     new Visualizer(),
   ],
   resolve: {
