@@ -10,7 +10,10 @@ const loaders = utils.cssLoaders({
   sourceMap: sourceMapEnabled,
   extract: isProduction
 });
-loaders.js = [{loader: 'exports-loader'}, {loader: 'babel-loader'}];
+loaders.js = [
+    {loader: 'babel-loader'},
+    // {loader: 'exports-loader'},
+];
 
 module.exports = {
   loaders: loaders,
