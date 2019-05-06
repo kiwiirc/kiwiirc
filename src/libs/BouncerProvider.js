@@ -37,7 +37,8 @@ export default class BouncerProvider {
         this.bnc.path = path || '';
         this.bnc.enabled = true;
 
-        this.monitorNetworkChanges();
+        // this.monitorNetworkChanges();
+        this.listenToState();
     }
 
     // Try to get connected network that can be used to control the bouncer
@@ -118,7 +119,7 @@ export default class BouncerProvider {
             this.addNetworkToState(bncNet);
         }
 
-        // this.monitorNetworkChanges();
+        this.monitorNetworkChanges();
     }
 
     addNetworkToState(network) {
@@ -153,6 +154,11 @@ export default class BouncerProvider {
             }
             if (buffer.seen) {
                 newBuffer.last_read = (new Date(buffer.seen)).getTime();
+            }
+
+            if (net.state === 'connected' && newBuffer.isChannel() && newBuffer.joined) {
+                net.ircClient.raw('NAMES ' + newBuffer.name);
+                net.ircClient.raw('TOPIC ' + newBuffer.name);
             }
         });
     }
@@ -235,12 +241,14 @@ export default class BouncerProvider {
     }
 
     monitorNetworkChanges() {
-        let state = this.state;
-
         this.snapshotCurrentNetworks();
 
         let debouncedSaveState = _.debounce(this.saveState.bind(this), 2000);
-        state.$watch('networks', debouncedSaveState, { deep: true });
+        this.state.$watch('networks', debouncedSaveState, { deep: true });
+    }
+
+    listenToState() {
+        let state = this.state;
 
         // Just before we connect to a network, make sure the BNC is saved and connected to
         // it or at least trying to connect.
@@ -283,7 +291,7 @@ export default class BouncerProvider {
         });
         state.$on('irc.registered', (event, network) => {
             network.buffers.forEach((buffer) => {
-                if (buffer.enabled) {
+                if (buffer.isChannel() && buffer.enabled && buffer.joined) {
                     network.ircClient.raw('NAMES ' + buffer.name);
                     network.ircClient.raw('TOPIC ' + buffer.name);
                 }
