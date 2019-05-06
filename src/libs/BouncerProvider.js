@@ -251,13 +251,16 @@ export default class BouncerProvider {
             let network = event.network;
             if (this.bnc.enabled) {
                 let netname = network.connection.bncname;
-                let password = `${this.bnc.username}/${netname}:${this.bnc.password}`;
 
                 let ircClient = network.ircClient;
                 ircClient.options.host = this.bnc.server;
                 ircClient.options.port = this.bnc.port;
                 ircClient.options.tls = this.bnc.tls;
-                ircClient.options.password = password;
+
+                if (this.bnc.password) {
+                    let password = `${this.bnc.username}/${netname}:${this.bnc.password}`;
+                    ircClient.options.password = password;
+                }
 
                 network.connection.direct = this.bnc.direct;
                 ircClient.options.path = this.bnc.path;
@@ -277,6 +280,14 @@ export default class BouncerProvider {
             if (network.connection.bncname) {
                 controller.ircClient.raw('BOUNCER connect ' + network.connection.bncname);
             }
+        });
+        state.$on('irc.registered', (event, network) => {
+            network.buffers.forEach((buffer) => {
+                if (buffer.enabled) {
+                    network.ircClient.raw('NAMES ' + buffer.name);
+                    network.ircClient.raw('TOPIC ' + buffer.name);
+                }
+            });
         });
 
         // Very hacky until we have network name renaming on the bnc. When a new network
