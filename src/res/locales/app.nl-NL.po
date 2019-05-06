@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2019-04-27 22:52\n"
+"PO-Revision-Date: 2019-04-28 15:11\n"
 
 #: Start
 msgid "start_button"
@@ -267,7 +267,7 @@ msgstr "Gekleurde bijnamen in berichten"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr ""
+msgstr "Delen wanneer ik een bericht typ"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"

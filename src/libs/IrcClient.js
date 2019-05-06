@@ -712,7 +712,7 @@ function clientMiddleware(state, network) {
                         username: user.ident || undefined,
                         away: user.away ? 'Away' : '',
                         realname: user.real_name,
-                        account: user.account || '',
+                        account: user.account || undefined,
                     };
                     state.addUser(networkid, userObj, users);
                 });
@@ -1131,6 +1131,11 @@ function clientMiddleware(state, network) {
             }
             if (!buffer) {
                 buffer = network.serverBuffer();
+            }
+
+            if (!buffer) {
+                // we could not find a buffer, this is likely because the network was removed
+                return;
             }
 
             // TODO: Some of these errors contain a .error property whcih we can match against,
