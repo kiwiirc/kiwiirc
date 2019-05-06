@@ -72,7 +72,7 @@ export default class BouncerProvider {
         }
 
         let bouncerIsupport = client.network.supports('bouncer');
-        if (!bouncerIsupport) {
+        if (!bouncerIsupport || typeof bouncerIsupport !== 'string') {
             return;
         }
 
