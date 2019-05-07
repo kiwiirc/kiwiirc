@@ -133,6 +133,7 @@
 
 'kiwi public';
 
+import * as ipRegex from 'ip-regex';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import AwayStatusIndicator from './AwayStatusIndicator';
@@ -297,6 +298,30 @@ export default {
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
         },
         createBanMask: function banMask() {
+            // if the account name is in the host ban the host
+            let accTest = new RegExp('^(.*' + this.user.account + '.*)$');
+            if (this.user.account && accTest.test(this.user.host)) {
+                let match = this.user.host.match(accTest)[0];
+                return '*!*@' + match;
+            }
+
+            // if an ip address is in the host and not the whole host ban the ip
+            let ipTest = new RegExp('(' + ipRegex.v4().source + '|' + ipRegex.v6().source + ')');
+            if (ipTest.test(this.user.host)) {
+                let match = this.user.host.match(ipTest)[0];
+                if (match !== this.user.host) {
+                    return '*!*@*' + match + '*';
+                }
+            }
+
+            // if a 9 char hex is the username ban by username
+            let hexTest = new RegExp('^([a-f0-9]{9})$');
+            if (hexTest.test(this.user.username)) {
+                let match = this.user.username.match(hexTest)[0];
+                return '*!' + match + '@*';
+            }
+
+            // fallback to default_ban_mask from config
             let mask = this.$state.setting('buffers.default_ban_mask');
             mask = mask.replace('%n', this.user.nick);
             mask = mask.replace('%i', this.user.username);
