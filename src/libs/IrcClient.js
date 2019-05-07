@@ -2,7 +2,7 @@
 
 import _ from 'lodash';
 import strftime from 'strftime';
-import Irc from 'irc-framework/browser';
+import Irc from 'irc-framework';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import bouncerMiddleware from './BouncerMiddleware';

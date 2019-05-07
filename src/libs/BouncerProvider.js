@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import * as MessageTags from 'irc-framework/src/messagetags';
+import { MessageTags } from 'irc-framework';
 import Logger from '@/libs/Logger';
 
 let log = Logger.namespace('BouncerProvider.js');
