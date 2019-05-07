@@ -2826,6 +2826,7 @@ eventemitter3@1.x.x:
 eventemitter3@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-2.0.3.tgz#b5e1079b59fb5e1ba2771c0a993be060a58c99ba"
+  integrity sha1-teEHm1n7XhuidxwKmTvgYKWMmbo=
 
 events@^1.0.0:
   version "1.1.1"
@@ -3955,6 +3956,7 @@ ip@^1.1.0, ip@^1.1.5:
 ipaddr.js@0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-0.1.3.tgz#27a9ca37f148d2102b0ef191ccbf2c51a8f025c6"
+  integrity sha1-J6nKN/FI0hArDvGRzL8sUajwJcY=
 
 ipaddr.js@1.5.2:
   version "1.5.2"
@@ -5162,6 +5164,7 @@ micromatch@^3.1.4:
 middleware-handler@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/middleware-handler/-/middleware-handler-0.2.0.tgz#bf02af7e6b577c0230609b2ae58df0e446f3fd02"
+  integrity sha1-vwKvfmtXfAIwYJsq5Y3w5Ebz/QI=
 
 miller-rabin@^4.0.0:
   version "4.0.1"
@@ -6968,7 +6971,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
 
 "runes@github:kiwiirc/runes":
   version "0.4.3"
-  resolved "https://codeload.github.com/kiwiirc/runes/tar.gz/172b21bf5b103221bd6c4409f0371076edc0c7e4"
+  resolved "https://codeload.github.com/kiwiirc/runes/tar.gz/a8d7f76408f38749cfec9dec7c7a1430300f2645"
 
 rx-lite-aggregates@^4.0.8:
   version "4.0.8"
@@ -7290,6 +7293,7 @@ sockjs@0.3.19:
 socksjs@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/socksjs/-/socksjs-0.5.0.tgz#77b005e32d1bfc96e560fedd5d7eedcf120f87e3"
+  integrity sha1-d7AF4y0b/JblYP7dXX7tzxIPh+M=
   dependencies:
     ipaddr.js "0.1.3"
 
