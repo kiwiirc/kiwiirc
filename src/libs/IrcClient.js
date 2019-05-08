@@ -1155,6 +1155,11 @@ function clientMiddleware(state, network) {
                 buffer = network.serverBuffer();
             }
 
+            if (!buffer) {
+                // we could not find a buffer, this is likely because the network was removed
+                return;
+            }
+
             // TODO: Some of these errors contain a .error property whcih we can match against,
             // ie. password_mismatch.
 

@@ -54,11 +54,9 @@ export default class BufferState {
         def(this, 'addMessageBatch', createMessageBatch(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
 
-        // If we don't have away-notify then we need to manually update our nicklist
-        // to get the current away statuses
-        let awayNotifyEnabled = this.getNetwork().ircClient.network.cap.isEnabled('away-notify');
-        if (this.isChannel() && !awayNotifyEnabled) {
-            startWhoLoop(this);
+        // poll who to update away status if away-notify is not enabled
+        if (this.isChannel()) {
+            maybeStartWhoLoop(this);
         }
     }
 
@@ -440,29 +438,46 @@ function createMessageBatch(bufferState) {
 }
 
 // Update our user list status every 30seconds to get each users current away status
-function startWhoLoop(bufferState) {
-    nextLoop();
+function maybeStartWhoLoop(bufferState) {
+    let network = bufferState.state.getNetwork(bufferState.networkid);
+
+    if (network.state === 'connected') {
+        // network is connected start the loop if its needed
+        nextLoop();
+    } else {
+        // Network is not coonnected. Wait until it is
+        let on001 = (command, event, eventNetwork) => {
+            if (eventNetwork === network) {
+                bufferState.state.$off('irc.raw.001', on001);
+                nextLoop();
+            }
+        };
+        bufferState.state.$on('irc.raw.001', on001);
+    }
 
     function nextLoop() {
         setTimeout(updateWhoStatusLoop, 30000);
     }
 
     function updateWhoStatusLoop() {
-        // Make sure the network buffer still exists
-        let network = bufferState.state.getNetwork(bufferState.networkid);
+        network = bufferState.state.getNetwork(bufferState.networkid);
+
+        // Make sure the network still exists
         if (!network) {
             return;
         }
 
+        // Make sure the buffer still exists
         if (!network.bufferByName(bufferState.name)) {
             return;
         }
 
         let whoLoop = bufferState.setting('who_loop');
         let isJoined = bufferState.joined;
+        let hasAwayNotify = network.ircClient.network.cap.isEnabled('away-notify');
         let networkConnected = network.state === 'connected';
 
-        if (whoLoop && networkConnected && isJoined) {
+        if (whoLoop && networkConnected && isJoined && !hasAwayNotify) {
             network.ircClient.who(bufferState.name, () => {
                 nextLoop();
             });
