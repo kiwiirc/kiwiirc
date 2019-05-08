@@ -74,7 +74,7 @@
 
 .u-form .u-input,
 .u-form textarea {
-    border-bottom-color: var(--brand-primary);
+    border-color: var(--brand-primary);
     outline-color: var(--brand-primary);
 }
 
@@ -1060,7 +1060,6 @@
 
 
 /* IRC TEXT COLOURS */
-/* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
 .irc-fg-colour-blue { color: #2e2eff; }

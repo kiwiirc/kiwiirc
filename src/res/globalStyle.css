@@ -138,9 +138,7 @@ select {
     height: 40px;
     padding: 3px 5px;
     box-sizing: border-box;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid;
+    border: 1px solid;
     min-height: 0;
     overflow-x: hidden;
     overflow-y: auto;
@@ -150,7 +148,7 @@ select {
 .u-form .u-input,
 .u-form textarea {
     line-height: normal;
-    border-bottom: 2px solid;
+    border: 1px solid;
 }
 
 .u-checkbox-wrapper {
