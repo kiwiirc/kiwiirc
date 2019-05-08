@@ -227,6 +227,10 @@
     border-left-color: var(--brand-midtone);
 }
 
+.kiwi-messagelist-avatar {
+    color: var(--brand-default-fg);
+}
+
 /* Aliases */
 .kiwi-settings-aliases-help {
     border-color: var(--brand-default-fg);

@@ -42,6 +42,7 @@
                     @selected="onAutocompleteSelected"
                     @cancel="onAutocompleteCancel"
                 />
+                <typing-users-list :buffer="buffer" />
                 <div class="kiwi-controlinput-input-wrap">
                     <irc-input
                         ref="input"
@@ -114,12 +115,14 @@ import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
 import SelfUser from './SelfUser';
 import AwayStatusIndicator from './AwayStatusIndicator';
+import TypingUsersList from './TypingUsersList';
 
 export default {
     components: {
         AutoComplete,
         AwayStatusIndicator,
         SelfUser,
+        TypingUsersList,
     },
     props: ['container', 'buffer'],
     data() {
@@ -179,6 +182,9 @@ export default {
         },
     },
     created() {
+        this.typingTimer = null;
+        this.lastTypingTime = 0;
+
         this.listen(state, 'document.keydown', (ev) => {
             // No input box currently? Nothing to shift focus to
             if (!this.$refs.input) {
@@ -445,6 +451,12 @@ export default {
             ) {
                 // Tab and no other keys as tab+other is often a keyboard shortcut
                 event.preventDefault();
+            } else if (!event.key.match(/^(Shift|Control|Alt|Enter)/)) {
+                if (inputVal) {
+                    this.startTyping();
+                } else {
+                    this.stopTyping();
+                }
             }
 
             if (this.autocomplete_open && this.autocomplete_filtering) {
@@ -466,6 +478,8 @@ export default {
             this.history_pos = this.history.length;
 
             this.$refs.input.reset();
+
+            this.stopTyping();
         },
         historyBack() {
             if (this.history_pos > 0) {
@@ -542,6 +556,56 @@ export default {
             }
 
             return list;
+        },
+        startTyping() {
+            if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
+                return;
+            }
+            if (!this.buffer.setting('share_typing')) {
+                return;
+            }
+            let buffer = this.buffer;
+            let network = buffer.getNetwork();
+            if (!buffer || (!buffer.isChannel() && !buffer.isQuery())) {
+                return;
+            }
+            if (this.typingTimer) {
+                clearTimeout(this.typingTimer);
+                this.typingTimer = null;
+            }
+            this.typingTimer = setTimeout(this.stopTyping, 3000);
+
+            if (Date.now() < this.lastTypingTime + 3000) {
+                return;
+            }
+
+            network.ircClient.typing.start(buffer.name);
+
+            this.lastTypingTime = Date.now();
+        },
+        stopTyping() {
+            if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
+                return;
+            }
+            if (!this.buffer.setting('share_typing')) {
+                return;
+            }
+            let buffer = this.buffer;
+            let network = buffer.getNetwork();
+
+            if (!buffer || (!buffer.isChannel() && !buffer.isQuery())) {
+                return;
+            }
+
+            if (this.typingTimer) {
+                clearTimeout(this.typingTimer);
+                this.typingTimer = null;
+                this.lastTypingTime = 0;
+            }
+
+            this.$refs.input.getValue() ?
+                network.ircClient.typing.pause(buffer.name) :
+                network.ircClient.typing.stop(buffer.name);
         },
     },
 };
@@ -745,4 +809,9 @@ export default {
     }
 }
 
+.kiwi-typinguserslist {
+    position: absolute;
+    top: -24px;
+    background: var(--brand-default-bg);
+}
 </style>

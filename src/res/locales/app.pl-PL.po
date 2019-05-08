@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2019-04-21 21:01\n"
+"PO-Revision-Date: 2019-04-28 08:10\n"
 
 #: Start
 msgid "start_button"
@@ -265,6 +265,10 @@ msgstr "Dodatkowe formatowanie"
 msgid "settings_nick_colouring"
 msgstr "Koloruj pseudonimy w wiadomościach"
 
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Udostępnij, gdy piszę wiadomość"
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Uznawaj wejścia i wyjścia za aktywność"
@@ -491,7 +495,7 @@ msgstr "Pokaż nieprzetworzone"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr ""
+msgstr "Bezpośredni websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -879,7 +883,7 @@ msgstr "Przestań ignorować kogoś"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "Rzuć kostką"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"

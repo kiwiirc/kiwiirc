@@ -45,6 +45,12 @@
                 :toggle="false"
                 class="kiwi-messagelist-awaystatus"
             />
+            <typing-status-indicator
+                v-if="message.user"
+                :network="getNetwork()" :user="message.user"
+                class="kiwi-messagelist-typingstatus"
+            />
+
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">
@@ -102,12 +108,14 @@ import { urlRegex } from '@/helpers/TextFormatting';
 import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
 import AwayStatusIndicator from './AwayStatusIndicator';
+import TypingStatusIndicator from './TypingStatusIndicator';
 
 export default {
     components: {
         MessageAvatar: MessageListAvatar,
         MessageInfo,
         AwayStatusIndicator,
+        TypingStatusIndicator,
     },
     props: ['ml', 'message', 'idx'],
     data: function data() {
@@ -172,10 +180,12 @@ export default {
             return types.indexOf(message.type) > -1;
         },
         displayAvatar(message) {
-            if (!this.ml.buffer.isChannel() && message.type === 'notice') {
-                return true;
+            // if there is no user attached hide the avatar
+            if (!message.user) {
+                return false;
             }
-            if (message.type === 'notice') {
+            // dont show avatars in server or special buffers
+            if (this.ml.buffer.isServer() || this.ml.buffer.isSpecial()) {
                 return false;
             }
             return true;

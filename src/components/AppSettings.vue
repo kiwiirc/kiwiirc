@@ -92,6 +92,10 @@
                                 <span>{{ $t('settings_nick_colouring') }} </span>
                                 <input v-model="settingBufferColourNicknames" type="checkbox" >
                             </label>
+                            <label class="u-checkbox-wrapper">
+                                <span>{{ $t('settings_share_typing') }} </span>
+                                <input v-model="settingBufferShareTyping" type="checkbox">
+                            </label>
                         </div>
                     </div>
 
@@ -247,6 +251,7 @@ export default {
         settingBufferExtraFormatting: bindSetting('buffers.extra_formatting'),
         settingBufferTrafficAsActivity: bindSetting('buffers.traffic_as_activity'),
         settingBufferMuteSound: bindSetting('buffers.mute_sound'),
+        settingBufferShareTyping: bindSetting('buffers.share_typing'),
         settingDefaultBanMask: bindSetting('buffers.default_ban_mask'),
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
         settingAdvancedEnable: {

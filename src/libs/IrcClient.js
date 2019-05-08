@@ -2,10 +2,11 @@
 
 import _ from 'lodash';
 import strftime from 'strftime';
-import Irc from 'irc-framework/browser';
+import Irc from 'irc-framework';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import bouncerMiddleware from './BouncerMiddleware';
+import typingMiddleware from './TypingMiddleware';
 import * as ServerConnection from './ServerConnection';
 
 export function create(state, network) {
@@ -32,43 +33,23 @@ export function create(state, network) {
     ircClient.requestCap('message-tags');
     ircClient.use(clientMiddleware(state, network));
     ircClient.use(bouncerMiddleware());
+    ircClient.use(typingMiddleware());
 
     // Overload the connect() function to make sure we are connecting with the
     // most recent connection details from the state
     let originalIrcClientConnect = ircClient.connect;
     ircClient.connect = function connect(...args) {
-        let bnc = state.setting('bnc');
-        if (bnc.active) {
-            let netname = network.connection.bncname;
-            let password = '';
+        ircClient.options.host = network.connection.server;
+        ircClient.options.port = network.connection.port;
+        ircClient.options.tls = network.connection.tls;
+        ircClient.options.path = network.connection.path;
+        ircClient.options.password = network.password;
+        ircClient.options.nick = network.connection.nick;
+        ircClient.options.username = network.username || network.connection.nick;
+        ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
+        ircClient.options.encoding = network.connection.encoding;
 
-            // bnccontrol is the control connection for BOUNCER commands, not a network
-            if (network.name === 'bnccontrol') {
-                // Some bouncers require a network to be set, so set a (hopefully) invalid one
-                password = `${bnc.username}/__kiwiauth:${bnc.password}`;
-            } else {
-                password = `${bnc.username}/${netname}:${bnc.password}`;
-            }
-
-            ircClient.options.host = bnc.server;
-            ircClient.options.port = bnc.port;
-            ircClient.options.tls = bnc.tls;
-            ircClient.options.path = bnc.path;
-            ircClient.options.password = password;
-            ircClient.options.nick = network.connection.nick;
-            ircClient.options.username = bnc.username;
-            ircClient.options.encoding = network.connection.encoding;
-        } else {
-            ircClient.options.host = network.connection.server;
-            ircClient.options.port = network.connection.port;
-            ircClient.options.tls = network.connection.tls;
-            ircClient.options.path = network.connection.path;
-            ircClient.options.password = network.password;
-            ircClient.options.nick = network.connection.nick;
-            ircClient.options.username = network.username || network.connection.nick;
-            ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
-            ircClient.options.encoding = network.connection.encoding;
-        }
+        state.$emit('network.connecting', { network });
 
         // A direct connection uses a websocket to connect (note: some browsers limit
         // the number of connections to the same host!).
@@ -84,7 +65,6 @@ export function create(state, network) {
             ircClient.options.transport = undefined;
         }
 
-        state.$emit('network.connecting', { network });
         originalIrcClientConnect.apply(ircClient, args);
     };
 
@@ -99,6 +79,13 @@ export function create(state, network) {
             nick: '',
             message: (event.from_server ? '[S] ' : '[C] ') + event.line,
         });
+    });
+
+    ircClient.on('typing', (event) => {
+        let user = state.getUser(network.id, event.nick);
+        if (user) {
+            user.typingStatus(event.target, event.status);
+        }
     });
 
     return ircClient;
@@ -725,7 +712,7 @@ function clientMiddleware(state, network) {
                         username: user.ident || undefined,
                         away: user.away ? 'Away' : '',
                         realname: user.real_name,
-                        account: user.account || '',
+                        account: user.account || undefined,
                     };
                     state.addUser(networkid, userObj, users);
                 });
@@ -1144,6 +1131,11 @@ function clientMiddleware(state, network) {
             }
             if (!buffer) {
                 buffer = network.serverBuffer();
+            }
+
+            if (!buffer) {
+                // we could not find a buffer, this is likely because the network was removed
+                return;
             }
 
             // TODO: Some of these errors contain a .error property whcih we can match against,
