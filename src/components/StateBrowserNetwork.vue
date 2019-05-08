@@ -547,7 +547,7 @@ export default {
 }
 
 @media screen and (max-width: 769px) {
-    .kiwi-statebrowser-network-header .kiwi-network-name-options {
+    .kiwi-network-name-options {
         right: 0;
         opacity: 1;
     }
@@ -560,18 +560,18 @@ export default {
         width: 50px;
     }
 
-    .kiwi-statebrowser-channel .kiwi-statebrowser-channel-leave {
+    .kiwi-statebrowser-channel-leave {
         opacity: 1;
         line-height: 40px;
         width: 50px;
     }
 
-    .kiwi-statebrowser-channel .kiwi-statebrowser-channel-labels {
+    .kiwi-statebrowser-channel-labels {
         right: 50px;
         top: 0;
     }
 
-    .kiwi-statebrowser-channel .kiwi-statebrowser-channel-label {
+    .kiwi-statebrowser-channel-label {
         line-height: 41px;
         height: 40px;
     }
