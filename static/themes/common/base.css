@@ -566,6 +566,9 @@
     font-weight: 100;
 }
 
+.kiwi-statebrowser-channel-label {
+    background: var(--brand-primary);
+}
 .kiwi-statebrowser-channel-label--highlight {
     background: var(--brand-error);
 }
@@ -668,6 +671,10 @@
 
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
     border-right-color: var(--brand-error);
+}
+
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount {
+    background-color: var(--brand-primary);
 }
 
 .kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {

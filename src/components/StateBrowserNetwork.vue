@@ -422,8 +422,7 @@ export default {
 .kiwi-statebrowser-channel-labels {
     position: absolute;
     right: 0;
-    width: 50px;
-    text-align: center;
+    text-align: right;
     z-index: 0;
     top: 0;
     transition: opacity 0.2s;
@@ -435,8 +434,11 @@ export default {
     line-height: 30px;
     height: 30px;
     margin: 0;
-    border-radius: 5px 0 0 5px;
     font-weight: 600;
+    box-sizing: border-box;
+    text-align: center;
+    width: 50px;
+    border-radius: 0;
 }
 
 .kiwi-statebrowser-channel-label:hover {
@@ -554,15 +556,24 @@ export default {
         line-height: 40px;
     }
 
+    .kiwi-network-name-option {
+        width: 50px;
+    }
+
     .kiwi-statebrowser-channel .kiwi-statebrowser-channel-leave {
         opacity: 1;
         line-height: 40px;
-        width: 35px;
+        width: 50px;
     }
 
     .kiwi-statebrowser-channel .kiwi-statebrowser-channel-labels {
-        right: 35px;
-        top: 5px;
+        right: 50px;
+        top: 0;
+    }
+
+    .kiwi-statebrowser-channel .kiwi-statebrowser-channel-label {
+        line-height: 41px;
+        height: 40px;
     }
 }
 
