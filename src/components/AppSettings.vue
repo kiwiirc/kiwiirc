@@ -365,12 +365,12 @@ export default {
                         }
                     };
                     reader.onerror = (err) => {
-                        console.error("Error reading audio file", err);
+                        console.error('Error reading audio file', err); // eslint-disable-line no-console
                         e.target.value = null;
                     };
                     reader.readAsDataURL(file);
                 } else {
-                    console.error("Not an audio file");
+                    console.error('Not an audio file'); // eslint-disable-line no-console
                     e.target.value = null;
                 }
             }
