@@ -367,7 +367,7 @@ function initLocales() {
 
     // Update the language if the setting changes.
     state.$watch('user_settings.language', (lang) => {
-        if (!lang && !state.setting('settings.language')) {
+        if (!lang && !state.setting('language')) {
             setDefaultLanguage();
         } else {
             i18next.changeLanguage(lang || state.setting('language') || 'en-us');

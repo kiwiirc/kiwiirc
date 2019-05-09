@@ -2,7 +2,7 @@
     <div class="kiwi-statebrowser kiwi-theme-bg">
 
         <div
-            v-if="!$state.setting('hide_settings')"
+            v-if="!$state.setting('hideSettings')"
             :title="$t('kiwi_settings')"
             class="kiwi-statebrowser-appsettings"
             @click="clickAppSettings"
