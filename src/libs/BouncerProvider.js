@@ -205,6 +205,13 @@ export default class BouncerProvider {
         }
 
         this.state.networks.forEach((network) => {
+            // don't save an empty controller to the network.
+            // we can't use hasNetwork alone because that requires ircClient to be
+            //  connected, and we save new nets before they are connected
+            if (this.getController() === network && !network.ircClient.bnc.hasNetwork()) {
+                return;
+            }
+
             let bncName = network.connection.bncname;
             let snapshot = this.networksSnapshot[bncName] || {};
             let tags = {};
@@ -317,8 +324,9 @@ export default class BouncerProvider {
             let existingNet = true;
             while (existingNet) {
                 existingNet = _.find(state.networks, { name: 'Network' + currentNum });
-                if (!existingNet) {
+                if (!existingNet || event.network === existingNet) {
                     event.network.name = 'Network' + currentNum;
+                    existingNet = null;
                 }
 
                 currentNum++;
