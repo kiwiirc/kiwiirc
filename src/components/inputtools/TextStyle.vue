@@ -1,40 +1,36 @@
 <template>
     <div class="kiwi-inputtool-colours">
         <div class="kiwi-inputtool-colours-palette" @mousedown.prevent @click.prevent>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-white"
-                 data-code="00" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-black"
-                 data-code="01" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-blue"
-                 data-code="02" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-green"
-                 data-code="03" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-red"
-                 data-code="04" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-brown"
-                 data-code="05" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-purple"
-                 data-code="06" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-orange"
-                 data-code="07" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-yellow"
-                 data-code="08" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-green"
-                 data-code="09" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-cyan"
-                 data-code="10" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-cyan"
-                 data-code="11" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-blue"
-                 data-code="12" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-pink"
-                 data-code="13" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-grey"
-                 data-code="14" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-grey"
-                 data-code="15" @click="onColourClick"/>
-            <div class="kiwi-inputtools-colours-colour kiwi-inputtools-colours-reset"
-                 @click="onResetClick"><i class="fa fa-ban" aria-hidden="true"/></div>
+            <div :class="{active: !showModernPalette}"
+                 class="kiwi-inputtool-colour-button"
+                 @click="showModernPalette = !showModernPalette"
+            >
+                <i v-if="!showModernPalette"
+                   class="fa fa-plus-circle" aria-hidden="true" />
+                <i v-if="showModernPalette"
+                   class="fa fa-minus-circle" aria-hidden="true" />
+            </div>
+
+            <div v-if="!showModernPalette"
+                 class="kiwi-inputtools-colours">
+                <div v-for="n in 15"
+                     :key="n"
+                     :class="['irc-bg-colour-' + n]"
+                     :data-code="[n]"
+                     class="kiwi-inputtools-colours-colour"
+                     @click="onColourClick" />
+            </div>
+
+            <div v-else
+                 class="kiwi-inputtools-colours">
+                <div v-for="n in 96"
+                     v-if="n >= 15"
+                     :key="n"
+                     :class="['irc-bg-colour-' + n]"
+                     :data-code="[n]"
+                     class="kiwi-inputtools-colours-colour"
+                     @click="onColourClick" />
+            </div>
         </div>
     </div>
 </template>
@@ -48,6 +44,7 @@ export default {
     props: ['ircinput'],
     data: function data() {
         return {
+            showModernPalette: false,
         };
     },
 
@@ -76,33 +73,64 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scroped>
+.kiwi-inputtool-colours-palette {
+    padding-right: 50px;
+    position: relative;
+}
+
+.kiwi-inputtool-colours {
+    display: inline-block;
+    width: 575px;
+    margin: 0 auto;
+    position: relative;
+    bottom: -7px;
+    border: 3px solid;
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+}
 
 .kiwi-inputtools-colours {
-    bottom: 100%;
-    right: 0;
-    overflow: hidden;
-    position: absolute;
-    height: 30px;
+    box-sizing: border-box;
+    padding: 10px 5px 0 10px;
+    height: 90px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .kiwi-inputtools-colours-colour {
     display: block;
     float: left;
-    height: 30px;
-    width: 30px;
+    height: 34px;
+    width: 34px;
     cursor: pointer;
     box-sizing: border-box;
-    border: 1px solid gray;
-    margin: 0;
+    border: 1px solid;
+    margin: 0 5px 5px 2px;
+    border-radius: 4px;
 }
 
-.kiwi-inputtools-colours-reset {
-    font-size: 23px;
-    line-height: 30px;
+.kiwi-inputtool-colour-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
     text-align: center;
-    background: #000;
-    color: #cacaca;
+    line-height: 50px;
+    font-size: 2em;
+    height: 100%;
+    border-left: 3px solid;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 860px) {
+    .kiwi-inputtool-colours {
+        width: 100%;
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+    }
 }
 
 </style>

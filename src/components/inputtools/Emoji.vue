@@ -51,16 +51,36 @@ export default {
 </script>
 
 <style>
+.kiwi-inputtool-emoji-palette {
+    text-align: center;
+    border: 3px solid;
+    border-bottom: 0;
+    padding: 10px 5px 0 5px;
+    display: block;
+    overflow: hidden;
+    width: 89%;
+    margin: 0 auto;
+    border-radius: 10px 10px 0 0;
+    box-sizing: border-box;
+}
 
 .kiwi-inputtool-emoji-emoji {
-    display: block;
-    float: left;
+    display: inline-block;
     height: 30px;
     width: 30px;
     cursor: pointer;
     box-sizing: border-box;
-    margin: 2px;
+    margin: 0 4px;
     background-size: contain;
+}
+
+@media screen and (max-width: 769px) {
+    .kiwi-inputtool-emoji-palette {
+        width: 100%;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+    }
 }
 
 </style>
