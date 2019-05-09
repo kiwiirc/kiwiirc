@@ -24,6 +24,7 @@ export default class BouncerProvider {
             tls: false,
             direct: false,
             path: '',
+            registered: false,
         };
 
         // A snapshot of the current networks. Compared against to detect changed networks
@@ -74,55 +75,60 @@ export default class BouncerProvider {
             return;
         }
 
-        let bouncerIsupport = client.network.supports('bouncer');
-        if (!bouncerIsupport || typeof bouncerIsupport !== 'string') {
+        // first-run setup
+        if (this.getController() === network && !this.bnc.registered) {
+            this.bnc.registered = true;
+
+            // populate network list from the controller connection
+            let bncNetworks = await client.bnc.getNetworks();
+            for (let i = 0; i < bncNetworks.length; i++) {
+                let bncNet = bncNetworks[i];
+                bncNet.buffers = [];
+                try {
+                    /* eslint-disable no-await-in-loop */
+                    let buffers = await client.bnc.getBuffers(bncNet.name);
+                    bncNet.buffers = buffers;
+                } catch (err) {
+                    // Log the error here or something
+                    log.error(err);
+                }
+
+                this.addNetworkToState(bncNet);
+            }
+
+            // Use this initial network password for other network connections
+            let [username, password] = network.password.split(':');
+            username = username.split('/')[0];
+            this.bnc.username = username;
+            this.bnc.password = password;
+            this.bnc.server = network.connection.server;
+            this.bnc.port = network.connection.port;
+            this.bnc.tls = network.connection.tls;
+            this.bnc.direct = network.connection.direct;
+            this.bnc.path = network.connection.path || '';
+            this.bnc.enabled = true;
+
+            // start monitoring network changes
+            this.monitorNetworkChanges();
+        }
+
+        // only set the bncname if an upstream network exists
+        if (!network.ircClient.bnc.hasNetwork()) {
             return;
         }
 
-        // The first network being connected to won't have a bncname set yet
-        // as it's still waiting to get it from the bouncer ISUPPORT lines. Since
-        // we only want to list networks on the first connection... it is safe to
-        // assume that this network is the initial network.
+        // we only set the bncname on networks once
         if (network.connection.bncname) {
             return;
         }
 
+        let bouncerIsupport = client.network.supports('bouncer');
         bouncerIsupport = MessageTags.decode(bouncerIsupport);
         if (!bouncerIsupport.network) {
             return;
         }
 
-        // Use this initial network password for other network connections
-        let [username, password] = network.password.split(':');
-        username = username.split('/')[0];
-        this.bnc.username = username;
-        this.bnc.password = password;
-        this.bnc.server = network.connection.server;
-        this.bnc.port = network.connection.port;
-        this.bnc.tls = network.connection.tls;
-        this.bnc.direct = network.connection.direct;
-        this.bnc.path = network.connection.path || '';
-        this.bnc.enabled = true;
-
         network.connection.bncname = bouncerIsupport.network;
-
-        let bncNetworks = await client.bnc.getNetworks();
-        for (let i = 0; i < bncNetworks.length; i++) {
-            let bncNet = bncNetworks[i];
-            bncNet.buffers = [];
-            try {
-                /* eslint-disable no-await-in-loop */
-                let buffers = await client.bnc.getBuffers(bncNet.name);
-                bncNet.buffers = buffers;
-            } catch (err) {
-                // Log the error here or something
-                log.error(err);
-            }
-
-            this.addNetworkToState(bncNet);
-        }
-
-        this.monitorNetworkChanges();
     }
 
     addNetworkToState(network) {
