@@ -232,6 +232,10 @@ tokens['\x03'] = {
             15: 'light-grey',
         };
 
+        for (let i=16; i<=98; i++) {
+            colours[i] = i;
+        }
+
         let colourMatchRegexp = /^\x03(([0-9][0-9]?)(,([0-9][0-9]?))?)/;
         let match = colourMatchRegexp.exec(inp.substr(pos, 6));
         if (match) {

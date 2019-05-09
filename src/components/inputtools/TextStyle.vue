@@ -23,7 +23,7 @@
 
             <div v-else
                  class="kiwi-inputtools-colours">
-                <div v-for="n in 96"
+                <div v-for="n in 98"
                      v-if="n >= 15"
                      :key="n"
                      :class="['irc-bg-colour-' + n]"
