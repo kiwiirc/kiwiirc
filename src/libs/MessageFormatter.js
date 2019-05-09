@@ -232,7 +232,8 @@ tokens['\x03'] = {
             15: 'light-grey',
         };
 
-        for (let i=16; i<=98; i++) {
+        // Generate the numbers for 16-98 extended colours
+        for (let i = 16; i <= 98; i++) {
             colours[i] = i;
         }
 
