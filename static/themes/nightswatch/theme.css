@@ -285,6 +285,10 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     color: var(--brand-default-fg);
 }
 
+.kiwi-statebrowser-channel-label {
+    background: #383838;
+}
+
 .kiwi-welcome-znc h2,
 .kiwi-welcome-znc-form .u-input-text-label {
     color: var(--brand-default-bg);

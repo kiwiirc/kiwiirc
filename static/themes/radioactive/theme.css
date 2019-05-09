@@ -1034,10 +1034,6 @@
 .kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-name {
     color: #df6b26;
 }
-.kiwi-statebrowser-channel-label {
-    background: #1b2f24;
-    color: #fff;
-}
 .kiwi-statebrowser-channel-label--highlight {
     background: #d62323;
 }
@@ -1060,10 +1056,6 @@
     background: rgba(255, 255, 255, 0.15);
 }
 
-.kiwi-statebrowser-channel-label {
-    background: #1b2f24;
-    color: #dedede;
-}
 .kiwi-statebrowser-channel-label--highlight {
     background: #d62323;
 }
