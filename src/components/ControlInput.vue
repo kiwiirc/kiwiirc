@@ -451,8 +451,8 @@ export default {
             ) {
                 // Tab and no other keys as tab+other is often a keyboard shortcut
                 event.preventDefault();
-            } else if (!event.key.match(/^(Shift|Control|Alt)/)) {
-                if (inputVal) {
+            } else if (!event.key.match(/^(Shift|Control|Alt|Enter)/)) {
+                if (inputVal.trim()) {
                     this.startTyping();
                 } else {
                     this.stopTyping();
@@ -603,7 +603,7 @@ export default {
                 this.lastTypingTime = 0;
             }
 
-            this.$refs.input.getValue() ?
+            this.$refs.input.getRawText().trim() ?
                 network.ircClient.typing.pause(buffer.name) :
                 network.ircClient.typing.stop(buffer.name);
         },

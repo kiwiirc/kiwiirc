@@ -44,7 +44,7 @@ export const configTemplates = {
         warnOnExit: true,
         // Default buffer settings
         buffers: {
-            messageLayout: 'compact',
+            messageLayout: 'modern',
             alert_on: 'highlight',
             timestamp_format: '%H:%M:%S',
             // If timestamp_full_format is falsy, the browsers locale date format will be used

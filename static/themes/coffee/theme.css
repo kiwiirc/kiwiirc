@@ -107,6 +107,10 @@
     color: #fff;
 }
 
+.kiwi-statebrowser-channel-label {
+    background: #967f70;
+}
+
 
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }

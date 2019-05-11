@@ -22,9 +22,9 @@ export default class Message {
         this.mentioned_urls = [];
         this.html = '';
         // template should be null or a Vue component to render this message
-        this.template = null;
+        this.template = message.template || null;
         // bodyTemplate should be null or a Vue component to render in the body of the message
-        this.bodyTemplate = null;
+        this.bodyTemplate = message.bodyTemplate || null;
         this.isHighlight = false;
 
         // We don't want the user object to be enumerable
