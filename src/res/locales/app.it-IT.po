@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-04-29 06:32\n"
+"PO-Revision-Date: 2019-05-11 20:51\n"
 
 #: Start
 msgid "start_button"
@@ -147,11 +147,11 @@ msgstr "disponibile"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Invia un messaggio"
+msgstr "Messaggio"
 
 #: More information
 msgid "more_information"
-msgstr "Ulteriori informazioni"
+msgstr "Informazioni"
 
 #: Ignore user
 msgid "ignore_user"
