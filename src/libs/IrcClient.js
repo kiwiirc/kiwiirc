@@ -263,19 +263,6 @@ function clientMiddleware(state, network) {
                     }
                 });
             }
-
-            // The first time we connect, request the last 50 messages for every buffer we have
-            // if CHATHISTORY is supported
-            if (numConnects === 1 && !requestedCh && historySupport) {
-                requestedCh = true;
-                let time = Misc.dateIso();
-                network.buffers.forEach((buffer) => {
-                    if (buffer.isChannel() || buffer.isQuery()) {
-                        let line = `CHATHISTORY ${buffer.name} timestamp=${time} message_count=-50`;
-                        network.ircClient.raw(line);
-                    }
-                });
-            }
         }
 
         // Show unhandled data from the server in the servers tab
@@ -809,6 +796,7 @@ function clientMiddleware(state, network) {
 
         if (command === 'userlist') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
+            let hadExistingUsers = Object.keys(buffer.users).length > 0;
             let users = [];
             event.users.forEach((user) => {
                 users.push({
@@ -821,6 +809,18 @@ function clientMiddleware(state, network) {
                 });
             });
             state.addMultipleUsersToBuffer(buffer, users);
+
+            if (!hadExistingUsers && network.ircClient.network.supports('chathistory')) {
+                let time = Misc.dateIso();
+                let correctBuffer = buffer.isChannel() || buffer.isQuery();
+
+                if (correctBuffer && numConnects > 1) {
+                    buffer.requestScrollback('forward');
+                } else if (correctBuffer) {
+                    let line = `CHATHISTORY ${buffer.name} timestamp=${time} message_count=-50`;
+                    network.ircClient.raw(line);
+                }
+            }
         }
 
         if (command === 'channel info') {
