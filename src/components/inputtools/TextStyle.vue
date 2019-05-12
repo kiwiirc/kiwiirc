@@ -6,9 +6,9 @@
                  @click="showModernPalette = !showModernPalette"
             >
                 <i v-if="!showModernPalette"
-                   class="fa fa-plus-circle" aria-hidden="true" />
+                   class="fa fa-plus" aria-hidden="true" />
                 <i v-if="showModernPalette"
-                   class="fa fa-minus-circle" aria-hidden="true" />
+                   class="fa fa-minus" aria-hidden="true" />
             </div>
 
             <div v-if="!showModernPalette"
@@ -85,7 +85,7 @@ export default {
     margin: 0 auto;
     position: relative;
     bottom: -7px;
-    border: 3px solid;
+    border: 1px solid;
     border-bottom: 0;
     border-radius: 10px 10px 0 0;
 }
@@ -115,12 +115,20 @@ export default {
     right: 0;
     top: 0;
     width: 50px;
-    text-align: center;
-    line-height: 50px;
-    font-size: 2em;
     height: 100%;
-    border-left: 3px solid;
-    transition: color 0.2s;
+    border-left: 1px solid;
+}
+
+.kiwi-inputtool-colour-button i {
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 1.4em;
+    height: 40px;
+    margin: 10px 5px;
+    border: 1px solid;
+    border-radius: 50%;
+    transition: color 0.2s, background 0.2s;
     cursor: pointer;
 }
 

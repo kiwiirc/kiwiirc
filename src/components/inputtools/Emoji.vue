@@ -53,7 +53,7 @@ export default {
 <style>
 .kiwi-inputtool-emoji-palette {
     text-align: center;
-    border: 3px solid;
+    border: 1px solid;
     border-bottom: 0;
     padding: 10px 5px 0 5px;
     display: block;

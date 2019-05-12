@@ -1065,7 +1065,7 @@
 /* Styling for Colour picker and Emoji Picker */
 .kiwi-inputtool-colours,
 .kiwi-inputtool-emoji-palette {
-    border-color: var(--brand-midtone);
+    border-color: var(--comp-border);
     background: var(--brand-default-bg);
 }
 
@@ -1073,7 +1073,11 @@
     border-left-color: var(--brand-midtone);
 }
 
-.kiwi-inputtool-colour-button:hover {
+.kiwi-inputtool-colour-button i {  
+  border-color: var(--comp-border);
+}
+
+.kiwi-inputtool-colour-button i:hover {
     color: var(--brand-primary);
 }
 
