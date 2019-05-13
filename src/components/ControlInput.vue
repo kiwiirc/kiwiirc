@@ -42,7 +42,7 @@
                     @selected="onAutocompleteSelected"
                     @cancel="onAutocompleteCancel"
                 />
-                <typing-users-list :buffer="buffer" />
+                <typing-users-list v-if="buffer.setting('share_typing')" :buffer="buffer" />
                 <div class="kiwi-controlinput-input-wrap">
                     <irc-input
                         ref="input"
