@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { MessageTags } from 'irc-framework';
 import Logger from '@/libs/Logger';
+import bouncerMiddleware from '@/libs/BouncerMiddleware';
 
 let log = Logger.namespace('BouncerProvider.js');
 
@@ -301,6 +302,9 @@ export default class BouncerProvider {
         // Very hacky until we have network name renaming on the bnc. When a new network
         // is added, change the name to the next available network name.
         state.$on('network.new', (event) => {
+            // Enable BOUNCER on this connection
+            event.network.ircClient.use(bouncerMiddleware());
+
             let currentNum = 1;
             let existingNet = true;
             while (existingNet) {
