@@ -11,6 +11,7 @@
 
         <state-browser-usermenu
             v-if="isPersistingState"
+            :network="getNetwork"
         />
 
         <div class="kiwi-statebrowser-tools">

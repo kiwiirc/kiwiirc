@@ -13,8 +13,8 @@
         >
             {{ userInitial }}
             <away-status-indicator
-                v-if="getNetwork && getNetwork.state === 'connected'"
-                :network="getNetwork"
+                v-if="network && network.state === 'connected'"
+                :network="network"
                 :user="getUser"
                 :toggle="false"
             />
@@ -43,45 +43,38 @@ export default {
     components: {
         AwayStatusIndicator,
     },
-    props: [],
-    data: function data() {
+    props: ['network'],
+    data() {
         return {
             is_usermenu_open: false,
         };
     },
     computed: {
         userInitial() {
-            let network = state.getActiveNetwork();
             let initial = 'U';
-            if (network && network.nick) {
-                initial = network.nick.charAt(0).toUpperCase();
+            if (this.network && this.network.nick) {
+                initial = this.network.nick.charAt(0).toUpperCase();
             }
             return initial;
         },
-        getNetwork() {
-            return state.getActiveNetwork();
-        },
         networkName() {
-            let network = state.getActiveNetwork();
             let name = TextFormatting.t('no_network');
-            if (network) {
-                name = network.name;
+            if (this.network) {
+                name = this.network.name;
             }
             return name;
         },
         getUser() {
-            let network = state.getActiveNetwork();
-            return network ?
-                network.currentUser() :
+            return this.network ?
+                this.network.currentUser() :
                 null;
         },
-        isConnected: function isConnected() {
-            let network = state.getActiveNetwork();
-            return network && network.state === 'connected';
+        isConnected() {
+            return this.network && this.network.state === 'connected';
         },
     },
     methods: {
-        clickForget: function clickForget() {
+        clickForget() {
             let msg = 'This will delete all stored networks and start fresh. Are you sure?';
             /* eslint-disable no-restricted-globals, no-alert */
             let confirmed = confirm(msg);
