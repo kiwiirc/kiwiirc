@@ -675,7 +675,7 @@ export default {
 .kiwi-controlinput-tool {
     display: inline-block;
     line-height: 40px;
-    padding: 0 15px;
+    padding: 0 8px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
