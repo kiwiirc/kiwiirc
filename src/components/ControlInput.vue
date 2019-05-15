@@ -57,14 +57,6 @@
             </form>
 
             <div ref="plugins" class="kiwi-controlinput-tools">
-                <div
-                    :class="{'kiwi-controlinput-tools-container-expand--inverse': !showPlugins}"
-                    class="kiwi-controlinput-tools-container-expand"
-                    @click="showPlugins=!showPlugins"
-                >
-                    <i v-if="!showPlugins" class="fa fa-ellipsis-h" aria-hidden="true"/>
-                    <i v-else class="fa fa-times" aria-hidden="true" />
-                </div>
                 <transition name="kiwi-plugin-ui-trans">
                     <div v-if="showPlugins" class="kiwi-controlinput-tools-container">
                         <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
@@ -90,6 +82,14 @@
                         />
                     </div>
                 </transition>
+                <div
+                    :class="{'kiwi-controlinput-tools-container-expand--inverse': !showPlugins}"
+                    class="kiwi-controlinput-tools-container-expand"
+                    @click="showPlugins=!showPlugins"
+                >
+                    <i v-if="!showPlugins" class="fa fa-ellipsis-h" aria-hidden="true"/>
+                    <i v-else class="fa fa-times" aria-hidden="true" />
+                </div>
             </div>
 
             <button v-if="shouldShowSendButton"
@@ -148,7 +148,7 @@ export default {
             active_tool: null,
             active_tool_props: {},
             pluginUiElements: GlobalApi.singleton().controlInputPlugins,
-            showPlugins: false,
+            showPlugins: true,
             current_input_value: '',
         };
     },
@@ -676,10 +676,19 @@ export default {
     display: inline-block;
     line-height: 40px;
     padding: 0 15px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .kiwi-controlinput-tools-container-expand {
     line-height: 43px;
+    background-color: var(--brand-default-bg);
+    position: relative;
+    z-index: 1;
 }
 
 .kiwi-controlinput-tool a {
@@ -797,7 +806,7 @@ export default {
 
 .kiwi-selfuser-trans-enter-active,
 .kiwi-selfuser-trans-leave-active {
-    transition: all 0.4s;
+    transition: all 0.6s;
 }
 
 @media screen and (max-width: 500px) {
