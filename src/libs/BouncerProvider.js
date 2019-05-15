@@ -1,3 +1,5 @@
+'kiwi public';
+
 import _ from 'lodash';
 import { MessageTags } from 'irc-framework';
 import Logger from '@/libs/Logger';
