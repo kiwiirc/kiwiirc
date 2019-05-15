@@ -230,6 +230,20 @@
     color: var(--brand-default-bg);
 }
 
+/* Text colour picker */
+.kiwi-inputtool-colour-actions {
+    border-left-color: var(--brand-midtone);
+}
+
+.kiwi-inputtool-colour-actions .kiwi-inputtool-button {
+    border-color: var(--brand-darktone);
+}
+
+.kiwi-inputtool-colour-actions .kiwi-inputtool-button:hover {
+    background: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
 /* ---- Sidebar ( Sidebar ) ---- */
 .kiwi-sidebar {
     background-color: var(--comp-sidebar-bg);
@@ -1073,7 +1087,7 @@
     border-left-color: var(--brand-midtone);
 }
 
-.kiwi-inputtool-colour-button i {  
+.kiwi-inputtool-colour-button i {
   border-color: var(--comp-border);
 }
 

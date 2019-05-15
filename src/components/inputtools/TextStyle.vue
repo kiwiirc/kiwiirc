@@ -132,15 +132,14 @@ export default {
     padding: 29px 0;
     text-align: center;
     height: 100%;
-    border-left: 1px solid var(--brand-midtone);
+    border-left: 1px solid;
 }
 
 .kiwi-inputtool-colour-actions .kiwi-inputtool-button {
     display: inline-block;
     letter-spacing: 1px;
     cursor: pointer;
-    color: #21221e;
-    border: 1px solid var(--brand-darktone);
+    border: 1px solid;
     border-radius: 50%;
     transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
@@ -151,12 +150,6 @@ export default {
     height: 40px;
     text-align: center;
     line-height: 40px;
-}
-
-.kiwi-inputtool-colour-actions .kiwi-inputtool-button:hover {
-    color: #fff;
-    background: var(--brand-primary);
-    border-color: var(--brand-primary);
 }
 
 .kiwi-inputtool-colour-button i {
