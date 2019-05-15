@@ -1,35 +1,34 @@
 <template>
     <div class="kiwi-inputtool-colours">
         <div class="kiwi-inputtool-colours-palette" @mousedown.prevent @click.prevent>
-            <div :class="{active: !showModernPalette}"
-                 class="kiwi-inputtool-colour-button"
-                 @click="showModernPalette = !showModernPalette"
-            >
-                <i v-if="!showModernPalette"
-                   class="fa fa-plus" aria-hidden="true" />
-                <i v-if="showModernPalette"
-                   class="fa fa-minus" aria-hidden="true" />
+            <div class="kiwi-inputtool-colour-actions" >
+                <div class="kiwi-inputtool-button" @click="showModernPalette = !showModernPalette">
+                    <i v-if="!showModernPalette" class="fa fa-chevron-down" aria-hidden="true" />
+                    <i v-else class="fa fa-chevron-up" aria-hidden="true" />
+                </div>
             </div>
 
-            <div v-if="!showModernPalette"
-                 class="kiwi-inputtools-colours">
-                <div v-for="n in 15"
-                     :key="n"
-                     :class="['irc-bg-colour-' + n]"
-                     :data-code="[n]"
-                     class="kiwi-inputtools-colours-colour"
-                     @click="onColourClick" />
-            </div>
+            <div class="kiwi-inputtools-colour-container">
+                <div :class="{active: !showModernPalette}" class="kiwi-inputtools-colours">
+                    <div v-for="n in 15"
+                         :key="n"
+                         :class="['irc-bg-colour-' + n]"
+                         :data-code="[n]"
+                         class="kiwi-inputtools-colours-colour"
+                         @click="onColourClick"
+                    />
+                </div>
 
-            <div v-else
-                 class="kiwi-inputtools-colours">
-                <div v-for="n in 98"
-                     v-if="n >= 15"
-                     :key="n"
-                     :class="['irc-bg-colour-' + n]"
-                     :data-code="[n]"
-                     class="kiwi-inputtools-colours-colour"
-                     @click="onColourClick" />
+                <div :class="{active: showModernPalette}" class="kiwi-inputtools-colours">
+                    <div v-for="n in 98"
+                         v-if="n >= 15"
+                         :key="n"
+                         :class="['irc-bg-colour-' + n]"
+                         :data-code="[n]"
+                         class="kiwi-inputtools-colours-colour"
+                         @click="onColourClick"
+                    />
+                </div>
             </div>
         </div>
     </div>
@@ -49,7 +48,7 @@ export default {
     },
 
     methods: {
-        onColourClick: function onColourClick(event) {
+        onColourClick(event) {
             let colour = window.getComputedStyle(event.target, null)
                 .getPropertyValue('background-color');
             // Convert rgb(x,x,x) to its hex form
@@ -75,8 +74,10 @@ export default {
 
 <style lang="less" scroped>
 .kiwi-inputtool-colours-palette {
-    padding-right: 50px;
+    padding-right: 60px;
     position: relative;
+    height: 100px;
+    overflow: hidden;
 }
 
 .kiwi-inputtool-colours {
@@ -90,12 +91,24 @@ export default {
     border-radius: 10px 10px 0 0;
 }
 
+.kiwi-inputtools-colour-container {
+    display: block;
+    min-height: 90px;
+}
+
 .kiwi-inputtools-colours {
     box-sizing: border-box;
     padding: 10px 5px 0 10px;
-    height: 90px;
+    opacity: 0;
+    max-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
+    transition: all 0.3s;
+}
+
+.kiwi-inputtools-colours.active {
+    max-height: 90px;
+    opacity: 1;
 }
 
 .kiwi-inputtools-colours-colour {
@@ -110,13 +123,40 @@ export default {
     border-radius: 4px;
 }
 
-.kiwi-inputtool-colour-button {
+.kiwi-inputtool-colour-actions {
     position: absolute;
     right: 0;
     top: 0;
-    width: 50px;
+    width: 60px;
+    box-sizing: border-box;
+    padding: 29px 0;
+    text-align: center;
     height: 100%;
-    border-left: 1px solid;
+    border-left: 1px solid var(--brand-midtone);
+}
+
+.kiwi-inputtool-colour-actions .kiwi-inputtool-button {
+    display: inline-block;
+    letter-spacing: 1px;
+    cursor: pointer;
+    color: #21221e;
+    border: 1px solid var(--brand-darktone);
+    border-radius: 50%;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.kiwi-inputtool-colour-actions .kiwi-inputtool-button i {
+    display: block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.kiwi-inputtool-colour-actions .kiwi-inputtool-button:hover {
+    color: #fff;
+    background: var(--brand-primary);
+    border-color: var(--brand-primary);
 }
 
 .kiwi-inputtool-colour-button i {
