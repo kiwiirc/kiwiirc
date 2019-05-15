@@ -643,6 +643,10 @@ export default {
 }
 
 @media screen and (max-width: 500px) {
+    .kiwi-controlinput-user-nick {
+        display: none;
+    }
+
     .kiwi-controlinput-user {
         margin-right: 8px;
     }
@@ -820,12 +824,6 @@ export default {
 .kiwi-selfuser-trans-enter-active,
 .kiwi-selfuser-trans-leave-active {
     transition: all 0.6s;
-}
-
-@media screen and (max-width: 500px) {
-    .kiwi-controlinput-user-nick {
-        display: none;
-    }
 }
 
 .kiwi-controlinput-tools-container {
