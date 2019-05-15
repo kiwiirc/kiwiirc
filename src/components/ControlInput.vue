@@ -265,7 +265,6 @@ export default {
             }
 
             this.maybeHidePlugins();
-            this.maybeHideAwayStatus();
         },
         inputRestore() {
             let currentInput = state.setting('buffers.shared_input') ?
