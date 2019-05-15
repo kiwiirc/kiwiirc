@@ -88,7 +88,7 @@
                     @click="showPlugins=!showPlugins"
                 >
                     <i v-if="!showPlugins" class="fa fa-ellipsis-h" aria-hidden="true"/>
-                    <i v-else class="fa fa-times" aria-hidden="true" />
+                    <i v-else class="fa fa-caret-right" aria-hidden="true" />
                 </div>
             </div>
 
