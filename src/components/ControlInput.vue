@@ -265,6 +265,7 @@ export default {
             }
 
             this.maybeHidePlugins();
+            this.maybeHideAwayStatus();
         },
         inputRestore() {
             let currentInput = state.setting('buffers.shared_input') ?
@@ -640,6 +641,20 @@ export default {
     margin-top: 16px;
     margin-left: 10px;
     margin-right: -2px;
+}
+
+@media screen and (max-width: 500px) {
+    .kiwi-controlinput-user {
+        margin-right: 8px;
+    }
+
+    .kiwi-controlinput-inner .kiwi-awaystatusindicator {
+        display: none;
+    }
+
+    .kiwi-controlinput-user i {
+        margin-left: 0;
+    }
 }
 
 .kiwi-controlinput-user {
