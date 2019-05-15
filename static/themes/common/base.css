@@ -189,7 +189,8 @@
 }
 
 .kiwi-controlinput-send {
-    background: #f1f1f1;
+    background: var(--brand-primary);
+    color: var(--brand-default-bg);
 }
 
 .kiwi-controlinput-active-tool {

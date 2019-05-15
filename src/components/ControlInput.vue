@@ -54,10 +54,6 @@
                         @keyup="inputKeyUp($event)"
                         @click="closeInputTool"/>
                 </div>
-                <button
-                    v-if="shouldShowSendButton"
-                    type="submit"
-                    class="kiwi-controlinput-send fa fa-paper-plane" />
             </form>
 
             <div ref="plugins" class="kiwi-controlinput-tools">
@@ -66,7 +62,8 @@
                     class="kiwi-controlinput-tools-container-expand"
                     @click="showPlugins=!showPlugins"
                 >
-                    <i class="fa fa-bars" aria-hidden="true" />
+                    <i v-if="!showPlugins" class="fa fa-ellipsis-h" aria-hidden="true"/>
+                    <i v-else class="fa fa-times" aria-hidden="true" />
                 </div>
                 <transition name="kiwi-plugin-ui-trans">
                     <div v-if="showPlugins" class="kiwi-controlinput-tools-container">
@@ -94,6 +91,13 @@
                     </div>
                 </transition>
             </div>
+
+            <button v-if="shouldShowSendButton"
+                    class="kiwi-controlinput-send-button"
+                    type="submit"
+            >
+                <i class="fa fa-envelope-o" aria-hidden="true" />
+            </button>
         </div>
 
         <div class="kiwi-controlinput-active-tool">
@@ -144,7 +148,7 @@ export default {
             active_tool: null,
             active_tool_props: {},
             pluginUiElements: GlobalApi.singleton().controlInputPlugins,
-            showPlugins: true,
+            showPlugins: false,
             current_input_value: '',
         };
     },
@@ -658,11 +662,36 @@ export default {
 }
 
 .kiwi-controlinput-tools {
-    /* 38px = 40px controlinput height - margin top+botton */
-    line-height: 38px;
-    margin: 2px 0 2px 10px;
-    border-radius: 7px 0 0 7px;
+    margin-left: 10px;
     cursor: pointer;
+}
+
+.kiwi-controlinput-tools i {
+    margin: 0;
+    text-align: center;
+}
+
+.kiwi-controlinput-tools-container-expand,
+.kiwi-controlinput-tool {
+    display: inline-block;
+    line-height: 40px;
+    padding: 0 15px;
+}
+
+.kiwi-controlinput-tools-container-expand {
+    line-height: 43px;
+}
+
+.kiwi-controlinput-tool a {
+    cursor: pointer;
+}
+
+.kiwi-controlinput-active-tool {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .kiwi-controlinput-form {
@@ -671,16 +700,44 @@ export default {
     display: flex;
 }
 
-.kiwi-controlinput-send {
-    border: none;
-    border-radius: 7px;
-    margin: 2px 0;
+.kiwi-controlinput-send-button {
+    height: 40px;
+    width: 40px;
+    background: var(--brand-default-bg);
+    position: relative;
+    z-index: 1;
+    border: 0;
+    margin: 0;
     padding: 0;
-    height: 35px;
+}
+
+.kiwi-controlinput-send-button i {
     text-align: center;
-    width: 35px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    line-height: 30px;
+    font-size: 1.4em;
+    font-size: 1em;
+    font-weight: 900;
+    background: var(--brand-primary);
+    color: #fff;
+}
+
+.kiwi-controlinput-send {
+    border-radius: 50%;
+    height: 30px;
+    text-align: center;
+    width: 30px;
     cursor: pointer;
     outline: none;
+    margin: 4px 5px;
+    padding: 0 0 0 3px;
+}
+
+.kiwi-controlinput-send::before {
+    content: "\f0da";
 }
 
 .kiwi-controlinput-inner {
@@ -704,23 +761,6 @@ export default {
     box-sizing: border-box;
     overflow: visible;
     padding-top: 8px;
-}
-
-.kiwi-controlinput-tool {
-    display: inline-block;
-    padding: 0 1em;
-}
-
-.kiwi-controlinput-tool a {
-    cursor: pointer;
-}
-
-.kiwi-controlinput-active-tool {
-    position: absolute;
-    bottom: 100%;
-    right: 0;
-    width: 100%;
-    z-index: 1;
 }
 
 .kiwi-controlinput-selfuser {
@@ -766,19 +806,6 @@ export default {
     }
 }
 
-.kiwi-controlinput-tools-container-expand {
-    display: inline-block;
-    padding: 0 1em;
-}
-
-.kiwi-controlinput-tools-container-expand i {
-    transition: transform 0.2s;
-}
-
-.kiwi-controlinput-tools-container-expand--inverse i {
-    transform: rotateZ(180deg);
-}
-
 .kiwi-controlinput-tools-container {
     position: relative;
     display: inline-block;
@@ -796,7 +823,7 @@ export default {
 
 .kiwi-plugin-ui-trans-enter-active,
 .kiwi-plugin-ui-trans-leave-active {
-    transition: right 0.2s;
+    transition: right 0.1s;
 }
 
 @media screen and (max-width: 769px) {
