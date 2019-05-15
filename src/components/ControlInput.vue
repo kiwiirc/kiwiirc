@@ -662,7 +662,6 @@ export default {
 }
 
 .kiwi-controlinput-tools {
-    margin-left: 10px;
     cursor: pointer;
 }
 
