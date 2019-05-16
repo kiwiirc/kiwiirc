@@ -291,7 +291,7 @@
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
-    color: var(--brand-darktone);
+    color: var(--brand-default-fg);
 }
 
 .kiwi-nicklist-user::after {
