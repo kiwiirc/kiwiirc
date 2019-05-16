@@ -84,6 +84,7 @@ export const configTemplates = {
             state_key: 'kiwi-state',
             nick_format: '',
         },
+        disconnectSaslFail: true,
         noticeActiveBuffer: true,
         showChanlistModes: false,
         showAutocomplete: true,
