@@ -133,6 +133,7 @@
 
 'kiwi public';
 
+import _ from 'lodash';
 import * as ipRegex from 'ip-regex';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
@@ -299,7 +300,7 @@ export default {
         },
         createBanMask: function banMask() {
             // if the account name is in the host ban the host
-            let accTest = new RegExp('^(.*' + this.user.account + '.*)$');
+            let accTest = new RegExp('^(.*' + _.escapeRegExp(this.user.account) + '.*)$');
             if (this.user.account && accTest.test(this.user.host)) {
                 let match = this.user.host.match(accTest)[0];
                 return '*!*@' + match;
