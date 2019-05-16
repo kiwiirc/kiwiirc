@@ -9,9 +9,7 @@ let nextId = 0;
 
 export default class Message {
     constructor(message, user) {
-        this.id = message.tags && message.tags['draft/msgid'] ?
-            message.tags['draft/msgid'] :
-            nextId++;
+        this.id = extractMessageId(message) || nextId++;
         this.time = message.time || Date.now();
         this.nick = message.nick;
         this.message = message.message;
@@ -65,4 +63,12 @@ export default class Message {
         state.$emit('message.poststyle', { message: this, blocks: blocks });
         return this.html;
     }
+}
+
+function extractMessageId(message) {
+    if (!message.tags) {
+        return undefined;
+    }
+
+    return message.tags.msgid || message.tags['draft/msgid'] || undefined;
 }

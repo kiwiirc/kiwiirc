@@ -5,7 +5,6 @@ import strftime from 'strftime';
 import Irc from 'irc-framework';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
-import bouncerMiddleware from './BouncerMiddleware';
 import typingMiddleware from './TypingMiddleware';
 import * as ServerConnection from './ServerConnection';
 
@@ -32,7 +31,6 @@ export function create(state, network) {
     // TODO: Removee this once irc-framework has been updated
     ircClient.requestCap('message-tags');
     ircClient.use(clientMiddleware(state, network));
-    ircClient.use(bouncerMiddleware());
     ircClient.use(typingMiddleware());
 
     // Overload the connect() function to make sure we are connecting with the

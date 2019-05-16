@@ -184,6 +184,7 @@ export default {
             this.toggablePass = false;
             this.showPass = true;
             this.showChannel = false;
+            this.connectWithoutChannel = true;
 
             let bouncer = new BouncerProvider(this.$state);
             bouncer.enable(options.server, options.port, options.tls, options.direct, options.path);
