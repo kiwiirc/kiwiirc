@@ -966,6 +966,11 @@
     color: var(--brand-default-fg);
 }
 
+.kiwi-messageinfo-actions .kiwi-messageinfo-reply {
+    background: var(--brand-primary);
+    color: var(--brand-default-bg);
+}
+
 .kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
     background: var(--brand-warning);
     color: var(--brand-default-bg);
