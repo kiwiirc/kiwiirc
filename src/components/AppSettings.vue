@@ -17,7 +17,7 @@
                                 <div><i class="fa fa-globe" /></div>
                                 <select v-model="settingLanguage">
                                     <option value="">
-                                        -
+                                        Auto
                                     </option>
                                     <option v-for="l in localesList" :value="l[0]" :key="l[0]">
                                         {{ l[1] }}
