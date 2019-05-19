@@ -199,6 +199,10 @@ msgstr "{{count}} seconds"
 msgid "settings_general"
 msgstr "General"
 
+#: Language
+msgid "settings_language"
+msgstr "Language"
+
 #: Theme
 msgid "settings_theme"
 msgstr "Theme"
