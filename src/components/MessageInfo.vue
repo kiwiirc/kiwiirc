@@ -12,27 +12,30 @@
                 </a>
             </div>
         </div>
-        <div :class="{'kiwi-messageinfo-actions--open': formOpen}" class="kiwi-messageinfo-actions">
-            <a v-if="formOpen === false" class="u-link kiwi-messageinfo-reply" @click="openQuery">
+        <div
+            :class="{'kiwi-messageinfo-actions--open': requestingInput}"
+            class="kiwi-messageinfo-actions"
+        >
+            <a v-if="!requestingInput" class="u-link kiwi-messageinfo-reply" @click="openQuery">
                 Reply in private
             </a>
 
-            <div v-if="areWeAnOp() && !areWeSelf()" class="kiwi-messageinfo-opbuttons">
+            <div v-if="areWeAnOp() && !isSelf()" class="kiwi-messageinfo-opbuttons">
                 <input-prompt
                     label="Kick reason:" @submit="onKick"
-                    @cancel="formOpen = false"
+                    @cancel="requestingInput = false"
                 >
-                    <a v-if="formOpen === false"
-                       class="u-link kiwi-messageinfo-kick-user" @click="formOpen = true">
+                    <a v-if="!requestingInput"
+                       class="u-link kiwi-messageinfo-kick-user" @click="requestingInput = true">
                         Kick {{ message.nick }}
                     </a>
                 </input-prompt>
                 <input-prompt
                     label="Ban reason:" @submit="onBan"
-                    @cancel="formOpen = false"
+                    @cancel="requestingInput = false"
                 >
-                    <a v-if="formOpen === false"
-                       class="u-link kiwi-messageinfo-ban-user" @click="formOpen = true">
+                    <a v-if="!requestingInput"
+                       class="u-link kiwi-messageinfo-ban-user" @click="requestingInput = true">
                         Ban {{ message.nick }}
                     </a>
                 </input-prompt>
@@ -52,7 +55,7 @@ export default {
     props: ['buffer', 'message'],
     data: function data() {
         return {
-            formOpen: false,
+            requestingInput: false,
         };
     },
     computed: {
@@ -65,7 +68,7 @@ export default {
             let ourNick = this.buffer.getNetwork().nick;
             return this.buffer.isUserAnOp(ourNick);
         },
-        areWeSelf: function areWeSelf() {
+        isSelf: function isSelf() {
             let user = this.$state.getUser(this.buffer.getNetwork().id, this.message.nick);
             return this.buffer.getNetwork().ircClient.user.nick === user.nick;
         },
@@ -119,36 +122,6 @@ export default {
     text-align: left;
 }
 
-.kiwi-messageinfo-opbuttons {
-    float: right;
-    transition: all 0.3s;
-}
-
-.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons {
-    width: 100%;
-}
-
-.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons .u-input-prompt,
-.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons .u-input-prompt .u-input-prompt-label {
-    display: block;
-    width: 100%;
-}
-
-.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons .u-input-prompt .u-button {
-    float: right;
-    margin-top: -37px;
-    z-index: 10;
-    position: relative;
-}
-
-.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons .u-input-prompt .u-button-primary {
-    margin-right: 72px;
-}
-
-.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons .u-input-prompt .u-button-warning {
-    margin-right: 3px;
-}
-
 .kiwi-messageinfo-url .u-link {
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -171,44 +144,37 @@ export default {
     cursor: pointer;
 }
 
+.kiwi-messageinfo-opbuttons {
+    margin-left: 2em;
+    display: inline-block;
+}
+
+.kiwi-messageinfo-actions--open .kiwi-messageinfo-opbuttons {
+    margin-left: 0;
+}
+
 .kiwi-messageinfo-opbuttons .u-input-prompt a,
 .kiwi-messageinfo-reply {
     padding: 5px 10px;
     display: inline-block;
     border-radius: 4px;
-    margin: 0 0 5px 0;
 }
 
-@media screen and (max-width: 850px) {
-    .kiwi-messageinfo-actions {
-        margin-top: 10px;
-        margin-bottom: 0;
-    }
-
-    .kiwi-messageinfo-reply {
-        display: inline-block;
-        float: left;
-        text-align: center;
-    }
-
-    .kiwi-messageinfo-opbuttons {
-        margin-bottom: 5px;
-    }
+.kiwi-messageinfo-opbuttons .u-input-prompt input {
+    margin-bottom: 5px;
 }
 
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 490px) {
     .kiwi-messageinfo-actions {
         text-align: center;
     }
 
-    .u-link.kiwi-messageinfo-reply {
-        float: none;
+    .kiwi-messageinfo-opbuttons {
+        margin: 0;
     }
 
-    .kiwi-messageinfo-opbuttons {
-        width: 100%;
+    .kiwi-messageinfo-opbuttons .u-input-prompt a {
         margin-top: 10px;
-        margin-bottom: 10px;
     }
 }
 </style>
