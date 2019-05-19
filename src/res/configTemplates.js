@@ -44,7 +44,7 @@ export const configTemplates = {
         warnOnExit: true,
         // Default buffer settings
         buffers: {
-            messageLayout: 'compact',
+            messageLayout: 'modern',
             alert_on: 'highlight',
             timestamp_format: '%H:%M:%S',
             // If timestamp_full_format is falsy, the browsers locale date format will be used
@@ -70,6 +70,8 @@ export const configTemplates = {
             shared_input: false,
             show_message_info: true,
             who_loop: true,
+            share_typing: true,
+            flash_title: true,
         },
         // Startup screen default
         startupOptions: {
@@ -83,10 +85,11 @@ export const configTemplates = {
             nick_format: '',
         },
         noticeActiveBuffer: true,
+        showChanlistModes: false,
         showAutocomplete: true,
         showEmojiPicker: true,
         showSendButton: false,
-        sidebarDefault: '',
+        sidebarDefault: 'nicklist',
         showRaw: false,
         highlights: '',
         teamHighlights: false,
@@ -263,8 +266,8 @@ export const configTemplates = {
             mode: 'ⓘ %text',
             selfmode: 'ⓘ %nick %text',
             nickname_alreadyinuse: '⚠ %text',
-            network_disconnected: '⚠ %text',
-            network_connected: '⚠ %text',
+            network_disconnected: '%text',
+            network_connected: '%text',
             whois_channels: '%text',
             whois_idle_and_signon: '%text',
             whois_away: '%text',
@@ -320,6 +323,7 @@ export const configTemplates = {
             colour_nicknames_in_messages: false,
             show_emoticons: false,
             show_message_info: false,
+            share_typing: false,
         },
     },
 

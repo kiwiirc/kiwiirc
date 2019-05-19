@@ -13,9 +13,9 @@
                 </div>
 
                 <server-selector
-                    :network="network"
+                    :connection="network.connection"
                     :network-list="network_list"
-                    @input="onServerInput" />
+                />
 
                 <div class="kiwi-networksettings-connection-password">
                     <template v-if="server_type==='network'">
@@ -65,7 +65,10 @@
                 </div>
 
                 <div class="kiwi-networksettings-user">
-                    <input-text v-model="network.nick" :label="$t('settings_nickname')" />
+                    <input-text
+                        v-model="network.connection.nick"
+                        :label="$t('settings_nickname')"
+                    />
                 </div>
 
                 <h4
@@ -91,6 +94,18 @@
                                 {{ $t('settings_show_raw') }}
                             </span>
                             <input v-model="settingShowRaw" type="checkbox" >
+                        </label>
+
+                        <label>
+                            <span class="kiwi-appsettings-showraw-label">
+                                {{ $t('settings_use_websocket') }}
+                            </span>
+                            <input v-model="network.connection.direct" type="checkbox" >
+                            <input
+                                v-if="network.connection.direct"
+                                v-model="directWs"
+                                class="u-input"
+                            >
                         </label>
 
                         <label class="u-form-block">
@@ -158,6 +173,63 @@ export default {
             },
             set(val) {
                 return this.network.setting('show_raw', val);
+            },
+        },
+        directWs: {
+            get() {
+                if (!this.network.connection.direct) {
+                    return '';
+                }
+
+                let connection = this.network.connection;
+                let addr = '';
+                addr += connection.tls ?
+                    'wss://' :
+                    'ws://';
+                addr += connection.server;
+
+                let port = parseInt(connection.port, 10);
+                if (Number.isNaN(port)) {
+                    port = connection.tls ?
+                        443 :
+                        80;
+                }
+
+                // Only include the port if needed
+                if (
+                    (connection.tls && port !== 443) ||
+                    (!connection.tls && port !== 80)
+                ) {
+                    addr += ':' + connection.port;
+                }
+
+                addr += connection.path;
+
+                return addr;
+            },
+            set(newVal) {
+                let url = null;
+
+                try {
+                    url = new URL(newVal);
+                } catch (e) {
+                    return;
+                }
+
+                let connection = this.network.connection;
+                connection.tls = url.protocol.toLowerCase() === 'wss:';
+                connection.server = url.hostname;
+
+                let port = parseInt(url.port, 10);
+                if (Number.isNaN(port)) {
+                    port = url.protocol.toLowerCase() === 'wss:' ?
+                        433 :
+                        80;
+                }
+
+                connection.port = port;
+                let u = url.href.replace(url.protocol + '//', '');
+                connection.path = u.substr(u.indexOf('/'));
             },
         },
     },
@@ -233,11 +305,6 @@ export default {
             } else if (!connection.tls && connection.port === 6697) {
                 connection.port = 6667;
             }
-        },
-        onServerInput(server) {
-            this.network.connection.server = server.server;
-            this.network.connection.port = server.port;
-            this.network.connection.tls = server.tls;
         },
     },
 };

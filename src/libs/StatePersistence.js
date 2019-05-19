@@ -85,8 +85,8 @@ export default class StatePersistence {
         this.isPersisting = true;
     }
 
-    forgetState() {
+    async forgetState() {
         this.state.resetState();
-        this.storage.set(this.storageKey, null);
+        await this.storage.set(this.storageKey, null);
     }
 }

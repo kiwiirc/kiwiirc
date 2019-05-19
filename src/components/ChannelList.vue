@@ -146,8 +146,10 @@ export default {
             }
         },
         formatAndTrimTopic(rawTopic) {
-            let topic = rawTopic.replace(/^\[([^\]]+)\] ?/, '');
+            let showModes = this.$state.setting('showChanlistModes');
             let showEmoticons = this.$state.setting('buffers.show_emoticons');
+
+            let topic = showModes ? rawTopic : rawTopic.replace(/^\[([^\]]+)\] ?/, '');
             let blocks = formatIrcMessage(topic, { extras: false });
             let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
             return content.html;

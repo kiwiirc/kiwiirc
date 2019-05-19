@@ -179,12 +179,6 @@ export default {
     margin-left: 131px;
 }
 
-//Channel Connection's
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection {
-    text-align: center;
-}
-
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-nick,
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-time {
     display: none;
 }
@@ -193,6 +187,10 @@ export default {
     display: inline-block;
     margin: 0;
     padding: 10px 0;
+    margin-left: 131px;
+    font-size: 0.8em;
+    opacity: 0.8;
+    font-weight: 600;
 }
 
 //Channel topic

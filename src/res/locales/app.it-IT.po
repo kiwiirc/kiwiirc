@@ -8,10 +8,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-03-01 11:34\n"
+"PO-Revision-Date: 2019-05-11 20:51\n"
 
 #: Start
 msgid "start_button"
@@ -147,11 +147,11 @@ msgstr "disponibile"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Invia un messaggio"
+msgstr "Messaggio"
 
 #: More information
 msgid "more_information"
-msgstr "Ulteriori informazioni"
+msgstr "Informazioni"
 
 #: Ignore user
 msgid "ignore_user"
@@ -264,6 +264,10 @@ msgstr "Formattazione aggiuntiva"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Colora i nickname nel messaggi"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Condividi quando sto scrivendo un messaggio"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -488,6 +492,10 @@ msgstr "Codifica"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Mostra dati grezzi"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Websocket diretto"
 
 #: Run commands when connected
 msgid "settings_autorun"

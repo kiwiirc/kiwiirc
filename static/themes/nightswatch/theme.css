@@ -201,6 +201,10 @@
     background-color: #f1f1f1;
 }
 
+.u-form select {
+    background-color: var(--brand-primary);
+}
+
 .u-link {
     color: var(--brand-default-fg);
 }
@@ -221,6 +225,10 @@
 .kiwi-messagelist .kiwi-messagelist-message--highlight,
 .kiwi-messagelist .kiwi-messagelist-message--hover {
     border-left-color: var(--brand-midtone);
+}
+
+.kiwi-messagelist-avatar {
+    color: var(--brand-default-fg);
 }
 
 /* Aliases */
@@ -275,6 +283,10 @@
 button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .kiwi-statebrowser-channel-label {
     color: var(--brand-default-fg);
+}
+
+.kiwi-statebrowser-channel-label {
+    background: #383838;
 }
 
 .kiwi-welcome-znc h2,

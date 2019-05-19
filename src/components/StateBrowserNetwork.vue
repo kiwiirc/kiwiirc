@@ -119,8 +119,8 @@
                     <div class="kiwi-statebrowser-channel-name" @click="setActiveBuffer(buffer)">
                         <away-status-indicator
                             v-if="buffer.isQuery() && awayNotifySupported()"
-                            :network="network" :user="network.userByName(buffer.name)"/>
-                        {{ buffer.name }}
+                            :network="network" :user="network.userByName(buffer.name)"
+                        />{{ buffer.name }}
                     </div>
                     <div class="kiwi-statebrowser-channel-labels">
                         <transition name="kiwi-statebrowser-channel-label-transition">
@@ -133,7 +133,7 @@
                                 ]"
                                 class="kiwi-statebrowser-channel-label"
                             >
-                                {{ buffer.flags.unread }}
+                                {{ buffer.flags.unread > 999 ? "999+": buffer.flags.unread }}
                             </div>
                         </transition>
                     </div>
@@ -422,9 +422,10 @@ export default {
 .kiwi-statebrowser-channel-labels {
     position: absolute;
     right: 0;
-    text-align: center;
+    text-align: right;
     z-index: 0;
     top: 0;
+    transition: opacity 0.2s;
 }
 
 .kiwi-statebrowser-channel-label {
@@ -433,8 +434,11 @@ export default {
     line-height: 30px;
     height: 30px;
     margin: 0;
-    border-radius: 5px 0 0 5px;
     font-weight: 600;
+    box-sizing: border-box;
+    text-align: center;
+    width: 50px;
+    border-radius: 0;
 }
 
 .kiwi-statebrowser-channel-label:hover {
@@ -454,7 +458,7 @@ export default {
 .kiwi-statebrowser-channel-leave {
     float: right;
     opacity: 0;
-    width: 35px;
+    width: 50px;
     cursor: pointer;
     margin-right: 0;
     transition: all 0.3s;
@@ -464,6 +468,10 @@ export default {
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings,
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave {
     opacity: 1;
+}
+
+.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-labels {
+    opacity: 0;
 }
 
 /* Add channel input */
@@ -539,7 +547,7 @@ export default {
 }
 
 @media screen and (max-width: 769px) {
-    .kiwi-statebrowser-network-header .kiwi-network-name-options {
+    .kiwi-network-name-options {
         right: 0;
         opacity: 1;
     }
@@ -548,10 +556,29 @@ export default {
         line-height: 40px;
     }
 
-    .kiwi-statebrowser-channel .kiwi-statebrowser-channel-settings,
-    .kiwi-statebrowser-channel .kiwi-statebrowser-channel-leave {
+    .kiwi-network-name-option {
+        width: 50px;
+    }
+
+    .kiwi-statebrowser-channel-leave {
         opacity: 1;
         line-height: 40px;
+        width: 50px;
+    }
+
+    .kiwi-statebrowser-channel-labels {
+        right: 50px;
+        top: 0;
+    }
+
+    .kiwi-statebrowser-channel-label {
+        line-height: 41px;
+        height: 40px;
+    }
+
+    /* Ensure that on mobile devices, when hovering this is visible */
+    .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-labels {
+        opacity: 1;
     }
 }
 

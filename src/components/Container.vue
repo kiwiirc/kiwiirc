@@ -27,9 +27,15 @@
 
             <slot name="before"/>
 
+            <not-connected
+                v-if="buffer.getNetwork().state !== 'connected' && !buffer.isServer()"
+                :buffer="buffer"
+                :network="buffer.getNetwork()"
+            />
+
             <div class="kiwi-container-content">
                 <template v-if="buffer.isServer()">
-                    <server-view :network="network" :buffer="buffer" :sidebar-state="sidebarState"/>
+                    <server-view :network="network"/>
                 </template>
                 <template v-else>
                     <message-list :buffer="buffer"/>
@@ -61,6 +67,7 @@
 import state from '@/libs/state';
 import ContainerHeader from './ContainerHeader';
 import Sidebar from './Sidebar';
+import NotConnected from './NotConnected';
 import MessageList from './MessageList';
 import ServerView from './ServerView';
 
@@ -68,6 +75,7 @@ export default {
     components: {
         ContainerHeader,
         Sidebar,
+        NotConnected,
         MessageList,
         ServerView,
     },
@@ -269,7 +277,7 @@ export default {
     line-height: 2em;
     box-sizing: border-box;
     top: 10px;
-    z-index: 100;
+    z-index: 3;
     white-space: nowrap;
     left: 14px;
     width: 37px;
@@ -297,6 +305,7 @@ export default {
 /* When the Statebrowser is visible, apply new styles to the messagecount */
 .kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount {
     left: -19px;
+    z-index: 100;
 }
 
 .kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {

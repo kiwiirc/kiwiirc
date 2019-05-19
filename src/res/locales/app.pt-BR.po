@@ -8,10 +8,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-02-19 17:31\n"
+"PO-Revision-Date: 2019-04-27 22:51\n"
 
 #: Start
 msgid "start_button"
@@ -265,6 +265,10 @@ msgstr "Formatação extra"
 msgid "settings_nick_colouring"
 msgstr "Nicknames Coloridos"
 
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr ""
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Incluir mensagens de entrada e saída como atividade"
@@ -488,6 +492,10 @@ msgstr "Codificação"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Mostrar o original"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Websocket directo"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -875,11 +883,11 @@ msgstr "Pare de ignorar alguém"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "Role um Dado"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "Rola um dado de {{sides}} lados e obtém {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
