@@ -7006,6 +7006,11 @@ schema-utils@^0.3.0:
   dependencies:
     ajv "^5.0.0"
 
+scrollparent@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/scrollparent/-/scrollparent-2.0.1.tgz#715d5b9cc57760fb22bdccc3befb5bfe06b1a317"
+  integrity sha1-cV1bnMV3YPsivczDvvtb/gaxoxc=
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
@@ -8226,6 +8231,16 @@ vue-loader@^14.2.4:
     vue-style-loader "^4.0.1"
     vue-template-es2015-compiler "^1.6.0"
 
+vue-observe-visibility@^0.4.3:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/vue-observe-visibility/-/vue-observe-visibility-0.4.4.tgz#cf3e945bf80c1317a1c32bc516d6cfd4dda8f8fd"
+  integrity sha512-2eDYHgL2MJ2wkkNZnus56D0CG8m80BFLuvEcGnD7rQ9jxFogpXMsM9aM5Md+XT8AmYGYCqVfOVBaWFtVvwbpmw==
+
+vue-resize@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/vue-resize/-/vue-resize-0.4.5.tgz#4777a23042e3c05620d9cbda01c0b3cc5e32dcea"
+  integrity sha512-bhP7MlgJQ8TIkZJXAfDf78uJO+mEI3CaLABLjv0WNzr4CcGRGPIAItyWYnP6LsPA4Oq0WE+suidNs6dgpO4RHg==
+
 vue-style-loader@^4.0.1:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"
@@ -8244,6 +8259,15 @@ vue-template-compiler@^2.6.10:
 vue-template-es2015-compiler@^1.6.0:
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.8.2.tgz#dd73e80ba58bb65dd7a8aa2aeef6089cf6116f2a"
+
+vue-virtual-scroller@^1.0.0-rc.2:
+  version "1.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/vue-virtual-scroller/-/vue-virtual-scroller-1.0.0-rc.2.tgz#b03828496c87889641bdacc75510e5b1bf5bda7f"
+  integrity sha512-4YFx1a+QDP4f6HW/HBI/qHcmSTlh7BMH6IjEH8WC3ylt499cErl0LpvLLAx9yo3c6NtuK/XvjYXi0vvdxFB5dw==
+  dependencies:
+    scrollparent "^2.0.1"
+    vue-observe-visibility "^0.4.3"
+    vue-resize "^0.4.5"
 
 vue@^2.6.10:
   version "2.6.10"

@@ -13,6 +13,17 @@
                     <div class="kiwi-appsettings-block">
                         <h3>{{ $t('settings_general') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-general">
+                            <label class="kiwi-appsettings-setting-language">
+                                <div><i class="fa fa-globe" /></div>
+                                <select v-model="settingLanguage">
+                                    <option value="">
+                                        -
+                                    </option>
+                                    <option v-for="l in localesList" :value="l[0]" :key="l[0]">
+                                        {{ l[1] }}
+                                    </option>
+                                </select>
+                            </label>
                             <label class="kiwi-appsettings-setting-theme">
                                 <span>{{ $t('settings_theme') }} </span>
                                 <a
@@ -199,6 +210,7 @@ import _ from 'lodash';
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import GlobalApi from '@/libs/GlobalApi';
+import localesList from '@/res/localesList';
 import SettingsAliases from './SettingsAliases';
 import SettingsAdvanced from './SettingsAdvanced';
 
@@ -228,6 +240,7 @@ export default {
             theme: '',
             customThemeUrl: '',
             pluginUiElements: GlobalApi.singleton().appSettingsPlugins,
+            localesList,
         };
     },
     computed: {
@@ -274,6 +287,14 @@ export default {
             },
             set: function setSettingShowAdvancedTab(newVal) {
                 state.ui.show_advanced_tab = newVal;
+            },
+        },
+        settingLanguage: {
+            get: function getSettingLanguage() {
+                return state.setting('language') || '';
+            },
+            set: function setSettingLanguage(newVal) {
+                state.setting('language', newVal || null);
             },
         },
         messageLayouts() {
@@ -377,6 +398,22 @@ export default {
         width: 100%;
         overflow: hidden;
     }
+}
+
+.u-form label.kiwi-appsettings-setting-language.kiwi-appsettings-setting-language {
+    display: flex;
+    margin-bottom: 2em;
+}
+
+.kiwi-appsettings-setting-language select {
+    flex-grow: 0;
+    max-width: 200px;
+}
+
+.kiwi-appsettings-setting-language div {
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 1em;
 }
 
 .kiwi-appsettings-setting-theme span {

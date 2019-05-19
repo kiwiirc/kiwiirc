@@ -18,15 +18,28 @@
             <i class="fa fa-search"/>
         </div>
 
-        <ul class="kiwi-nicklist-users">
-            <nicklist-user
-                v-for="user in sortedUsers"
-                :key="user.nick"
-                :user="user"
-                :nicklist="self"
-                :network="network"
-            />
-        </ul>
+        <DynamicScroller
+            :items="sortedUsers"
+            :min-item-size="26"
+            :key-field="'nick'"
+            class="kiwi-nicklist-users"
+        >
+            <template v-slot="{ item, index, active }">
+                <DynamicScrollerItem
+                    :item="item"
+                    :active="active"
+                    :size-dependencies="[]"
+                    :data-index="index"
+                >
+                    <nicklist-user
+                        :key="item.nick"
+                        :user="item"
+                        :nicklist="self"
+                        :network="network"
+                    />
+                </DynamicScrollerItem>
+            </template>
+        </DynamicScroller>
     </div>
 </template>
 

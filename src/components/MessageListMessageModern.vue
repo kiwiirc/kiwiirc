@@ -56,12 +56,20 @@
             <div class="kiwi-messagelist-top">
                 <div
                     :style="{ 'color': userColour }"
-                    class="kiwi-messagelist-nick"
+                    :class="[
+                        'kiwi-messagelist-nick',
+                        (message.user && userMode(message.user)) ?
+                            'kiwi-messagelist-nick--mode-'+userMode(message.user) :
+                            ''
+                    ]"
                     @click="ml.openUserBox(message.nick)"
                     @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                     @mouseout="ml.hover_nick='';"
                 >
-                    {{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}
+                    <span class="kiwi-messagelist-nick-prefix">
+                        {{ message.user ? userModePrefix(message.user) : '' }}
+                    </span>
+                    {{ message.nick }}
                 </div>
                 <div
                     v-if="showRealName"
@@ -189,6 +197,9 @@ export default {
                 return false;
             }
             return true;
+        },
+        userMode(user) {
+            return this.ml.buffer.userMode(user);
         },
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);

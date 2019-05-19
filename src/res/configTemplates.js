@@ -20,6 +20,7 @@ export const configTemplates = {
         plugins: [],
         windowTitle: 'Kiwi IRC - The web IRC client',
         useMonospace: false,
+        language: '',
         theme: 'Default',
         themes: [
             { name: 'Default', url: 'static/themes/default' },
@@ -84,6 +85,7 @@ export const configTemplates = {
             state_key: 'kiwi-state',
             nick_format: '',
         },
+        disconnectOnSaslFail: true,
         noticeActiveBuffer: true,
         showChanlistModes: false,
         showAutocomplete: true,
@@ -91,6 +93,7 @@ export const configTemplates = {
         showSendButton: false,
         sidebarDefault: 'nicklist',
         showRaw: false,
+        hideSettings: null,
         highlights: '',
         teamHighlights: false,
         aliases: `
