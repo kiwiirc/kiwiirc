@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2019-05-19 11:02\n"
+"PO-Revision-Date: 2019-05-19 22:51\n"
 
 #: Start
 msgid "start_button"
@@ -206,7 +206,7 @@ msgstr "Općenito"
 
 #: Language
 msgid "settings_language"
-msgstr ""
+msgstr "Jezik"
 
 #: Theme
 msgid "settings_theme"
