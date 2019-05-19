@@ -170,7 +170,7 @@ function clientMiddleware(state, network) {
 
         // SASL failed auth
         if (command === '904') {
-            if (state.setting('disconnectSaslFail')) {
+            if (state.setting('disconnectOnSaslFail')) {
                 network.ircClient.connection.end();
                 network.last_error = 'Invalid login';
             }
