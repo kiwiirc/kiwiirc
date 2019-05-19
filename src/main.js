@@ -3,6 +3,8 @@ import Vue from 'vue';
 import i18next from 'i18next';
 import i18nextXHR from 'i18next-xhr-backend';
 import VueI18Next from '@panter/vue-i18next';
+import VueVirtualScroller from 'vue-virtual-scroller';
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css';
 
 // fetch polyfill
 import 'whatwg-fetch';
@@ -31,6 +33,8 @@ import '@/components/utils/InputText';
 import '@/components/utils/IrcInput';
 import '@/components/utils/InputPrompt';
 import '@/components/utils/InputConfirm';
+
+Vue.use(VueVirtualScroller);
 
 let logLevelMatch = window.location.href.match(/kiwi-loglevel=(\d)/);
 if (logLevelMatch && logLevelMatch[1]) {

@@ -253,6 +253,13 @@ const state = new Vue({
             });
         },
 
+        getNetworkFromBncName(bncname) {
+            return _.find(this.networks, (net) => {
+                let isMatch = bncname.toLowerCase() === net.connection.bncname.toLowerCase();
+                return isMatch;
+            });
+        },
+
         addNetwork(name, nick, serverInfo) {
             // Find the current largest ID and increment it by 1
             function networkidReduce(currentMax, network) {

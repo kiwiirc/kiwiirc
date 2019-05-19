@@ -291,7 +291,7 @@
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
-    color: var(--brand-darktone);
+    color: var(--brand-default-fg);
 }
 
 .kiwi-nicklist-user::after {
@@ -455,10 +455,6 @@
     color: var(--comp-statebrowser-fg);
 }
 
-.kiwi-statebrowser-channel .kiwi-statebrowser-channel-name .kiwi-statebrowser-channel-label {
-    background: var(--brand-error);
-}
-
 .kiwi-statebrowser-channel-active {
     border-left-color: var(--brand-primary);
     background: var(--comp-statebrowser-channel-active-bg);
@@ -520,11 +516,6 @@
     color: var(--brand-error);
 }
 
-.kiwi-statebrowser-channel-label {
-    background: var(--brand-primary);
-    color: var(--brand-default-bg);
-}
-
 .kiwi-statebrowser-channel-popup {
     background: #383838;
     border: 3px solid var(--brand-midtone);
@@ -575,6 +566,9 @@
     font-weight: 100;
 }
 
+.kiwi-statebrowser-channel-label {
+    background: var(--brand-primary);
+}
 .kiwi-statebrowser-channel-label--highlight {
     background: var(--brand-error);
 }
@@ -677,6 +671,10 @@
 
 .kiwi-container-toggledraw-statebrowser-messagecount--highlight::after {
     border-right-color: var(--brand-error);
+}
+
+.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount {
+    background-color: var(--brand-primary);
 }
 
 .kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
@@ -966,6 +964,11 @@
 .kiwi-messageinfo-actions .u-link {
     border-color: var(--brand-default-fg);
     color: var(--brand-default-fg);
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-reply {
+    background: var(--brand-primary);
+    color: var(--brand-default-bg);
 }
 
 .kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {

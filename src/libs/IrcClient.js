@@ -2,10 +2,9 @@
 
 import _ from 'lodash';
 import strftime from 'strftime';
-import Irc from 'irc-framework/browser';
+import Irc from 'irc-framework';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
-import bouncerMiddleware from './BouncerMiddleware';
 import typingMiddleware from './TypingMiddleware';
 import * as ServerConnection from './ServerConnection';
 
@@ -32,45 +31,23 @@ export function create(state, network) {
     // TODO: Removee this once irc-framework has been updated
     ircClient.requestCap('message-tags');
     ircClient.use(clientMiddleware(state, network));
-    ircClient.use(bouncerMiddleware());
     ircClient.use(typingMiddleware());
 
     // Overload the connect() function to make sure we are connecting with the
     // most recent connection details from the state
     let originalIrcClientConnect = ircClient.connect;
     ircClient.connect = function connect(...args) {
-        let bnc = state.setting('bnc');
-        if (bnc.active) {
-            let netname = network.connection.bncname;
-            let password = '';
+        ircClient.options.host = network.connection.server;
+        ircClient.options.port = network.connection.port;
+        ircClient.options.tls = network.connection.tls;
+        ircClient.options.path = network.connection.path;
+        ircClient.options.password = network.password;
+        ircClient.options.nick = network.connection.nick;
+        ircClient.options.username = network.username || network.connection.nick;
+        ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
+        ircClient.options.encoding = network.connection.encoding;
 
-            // bnccontrol is the control connection for BOUNCER commands, not a network
-            if (network.name === 'bnccontrol') {
-                // Some bouncers require a network to be set, so set a (hopefully) invalid one
-                password = `${bnc.username}/__kiwiauth:${bnc.password}`;
-            } else {
-                password = `${bnc.username}/${netname}:${bnc.password}`;
-            }
-
-            ircClient.options.host = bnc.server;
-            ircClient.options.port = bnc.port;
-            ircClient.options.tls = bnc.tls;
-            ircClient.options.path = bnc.path;
-            ircClient.options.password = password;
-            ircClient.options.nick = network.connection.nick;
-            ircClient.options.username = bnc.username;
-            ircClient.options.encoding = network.connection.encoding;
-        } else {
-            ircClient.options.host = network.connection.server;
-            ircClient.options.port = network.connection.port;
-            ircClient.options.tls = network.connection.tls;
-            ircClient.options.path = network.connection.path;
-            ircClient.options.password = network.password;
-            ircClient.options.nick = network.connection.nick;
-            ircClient.options.username = network.username || network.connection.nick;
-            ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
-            ircClient.options.encoding = network.connection.encoding;
-        }
+        state.$emit('network.connecting', { network });
 
         // A direct connection uses a websocket to connect (note: some browsers limit
         // the number of connections to the same host!).
@@ -86,7 +63,6 @@ export function create(state, network) {
             ircClient.options.transport = undefined;
         }
 
-        state.$emit('network.connecting', { network });
         originalIrcClientConnect.apply(ircClient, args);
     };
 
@@ -282,19 +258,6 @@ function clientMiddleware(state, network) {
                 network.buffers.forEach((buffer) => {
                     if (buffer.isChannel() || buffer.isQuery()) {
                         buffer.requestScrollback('forward');
-                    }
-                });
-            }
-
-            // The first time we connect, request the last 50 messages for every buffer we have
-            // if CHATHISTORY is supported
-            if (numConnects === 1 && !requestedCh && historySupport) {
-                requestedCh = true;
-                let time = Misc.dateIso();
-                network.buffers.forEach((buffer) => {
-                    if (buffer.isChannel() || buffer.isQuery()) {
-                        let line = `CHATHISTORY ${buffer.name} timestamp=${time} message_count=-50`;
-                        network.ircClient.raw(line);
                     }
                 });
             }
@@ -831,6 +794,7 @@ function clientMiddleware(state, network) {
 
         if (command === 'userlist') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
+            let hadExistingUsers = Object.keys(buffer.users).length > 0;
             let users = [];
             event.users.forEach((user) => {
                 users.push({
@@ -843,6 +807,18 @@ function clientMiddleware(state, network) {
                 });
             });
             state.addMultipleUsersToBuffer(buffer, users);
+
+            if (!hadExistingUsers && network.ircClient.network.supports('chathistory')) {
+                let time = Misc.dateIso();
+                let correctBuffer = buffer.isChannel() || buffer.isQuery();
+
+                if (correctBuffer && numConnects > 1) {
+                    buffer.requestScrollback('forward');
+                } else if (correctBuffer) {
+                    let line = `CHATHISTORY ${buffer.name} timestamp=${time} message_count=-50`;
+                    network.ircClient.raw(line);
+                }
+            }
         }
 
         if (command === 'channel info') {
