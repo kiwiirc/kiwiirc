@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-20 08:31\n"
+"PO-Revision-Date: 2019-05-20 08:43\n"
 
 #: Start
 msgid "start_button"
@@ -42,7 +42,7 @@ msgstr "ayarlar"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kapat"
+msgstr "Kiwi Ayarları"
 
 #: Channels
 msgid "channels"
@@ -82,7 +82,7 @@ msgstr "kanal"
 
 #: Messages
 msgid "messages"
-msgstr "Bağlan"
+msgstr "Mesajlar"
 
 #: Network
 msgid "network"
@@ -114,19 +114,19 @@ msgstr "iptal"
 
 #: Yes
 msgid "yes"
-msgstr "Bağlanıyor..."
+msgstr "Evet"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "Hayır"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "Bulunamadı"
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "Uyarı!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -138,7 +138,7 @@ msgstr "whois_realname"
 
 #: Status
 msgid "whois_status"
-msgstr ""
+msgstr "Durum"
 
 #: Is available
 msgid "whois_status_available"
