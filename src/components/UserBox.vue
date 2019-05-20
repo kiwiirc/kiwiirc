@@ -299,11 +299,20 @@ export default {
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
         },
         createBanMask: function banMask() {
-            // if the account name is in the host ban the host
-            let accTest = new RegExp('^(.*' + _.escapeRegExp(this.user.account) + '.*)$');
-            if (this.user.account && accTest.test(this.user.host)) {
-                let match = this.user.host.match(accTest)[0];
-                return '*!*@' + match;
+            // try to ban via user account first
+            if (this.user.account) {
+                // if EXTBAN is supported use that
+                let extban = IrcdDiffs.extbanAccount(this.network);
+                if (extban) {
+                    return extban + ':' + this.user.account;
+                }
+
+                // if the account name is in the host ban the host
+                let accTest = new RegExp('^(.*' + _.escapeRegExp(this.user.account) + '.*)$');
+                if (accTest.test(this.user.host)) {
+                    let match = this.user.host.match(accTest)[0];
+                    return '*!*@' + match;
+                }
             }
 
             // if an ip address is in the host and not the whole host ban the ip
