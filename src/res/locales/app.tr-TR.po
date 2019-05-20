@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-20 09:12\n"
+"PO-Revision-Date: 2019-05-20 09:23\n"
 
 #: Start
 msgid "start_button"
@@ -254,47 +254,47 @@ msgstr "İfadeleri göster"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr ""
+msgstr "Yeni özel mesajları engelle"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr ""
+msgstr "Geri kaydırmadaki mesajlar"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr ""
+msgstr "Ekstra biçimlendirme"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Mesajlardaki renkli takma adlar"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr ""
+msgstr "Mesaj yazarken başkaları ile paylaş"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr ""
+msgstr "Giriş/çıkış mesajlarını etkinlik olarak dahil et"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "Ses bildirimlerini kapat"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr ""
+msgstr "Kelimeleri vurgula (boşlukla ayır)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr ""
+msgstr "Aliaslar"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr ""
+msgstr "Aliasler nelerdir?"
 
 #: Send Message
 msgid "send_message"
-msgstr ""
+msgstr "Mesaj Gönder"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
