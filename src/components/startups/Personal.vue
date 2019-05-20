@@ -2,29 +2,30 @@
     <div class="kiwi-personal">
         <h1>{{ $t('personal_client') }}</h1>
 
-        <div v-if="hasFragment">
+        <div v-if="server && server.server && !readyToShowOptions" />
+        <div v-else-if="server && server.server">
             <div v-if="addedNetworkToExisting">
                 <p>
                     {{ $t('personal_added_to_existing') }}
                 </p>
             </div>
             <div v-else>
-                <p>
-                    {{ $t('personal_connect_to') }}
-                    <span v-if="server && server.server">
-                        <strong>{{ server.server }}</strong>
-                    </span>
-                </p>
+                <p v-html="$t('personal_connect_to', { network: `<b>${server.server}</b>` })" />
                 <button
                     v-if="hasOtherTab"
                     class="u-button u-button-primary"
                     @click="addNetworkToExistingTab"
                 >
                     {{ $t('personal_add_existing_tab') }}
-                </button> <br >
+                </button>
+                <button v-else class="u-button u-button-primary" @click="addNetwork()">
+                    Add network to Kiwi
+                </button>
+
+                <br >
                 <button
                     class="u-button u-button-primary"
-                    @click="addTemporaryNetwork"
+                    @click="addNetwork(true)"
                 >
                     {{ $t('personal_connect_temporary') }}
                 </button> <br >
@@ -33,17 +34,19 @@
         <div v-else>
             <p>{{ $t('personal_addjoin') }}</p>
             <p>{{ $t('personal_return') }}</p>
-            <button class="u-button u-button-primary" @click="addNetwork">
+
+            <button class="u-button u-button-primary" @click="addEmptyNetwork">
                 {{ $t('personal_add') }}
             </button> <br >
+
+            <a
+                v-if="networks.length>0"
+                class="u-link kiwi-personal-existing-networks"
+                @click.stop="toggleStateBrowser"
+            >
+                {{ $t('personal_saved') }}
+            </a>
         </div>
-        <a
-            v-if="networks.length>0"
-            class="u-link kiwi-personal-existing-networks"
-            @click.stop="toggleStateBrowser"
-        >
-            {{ $t('personal_saved') }}
-        </a>
     </div>
 </template>
 
@@ -63,6 +66,7 @@ export default {
             hasOtherTab: false,
             addedNetworkToExisting: false,
             server: null,
+            readyToShowOptions: false,
         };
     },
     computed: {
@@ -73,40 +77,46 @@ export default {
             return window.location.hash && window.location.hash.length > 1;
         },
     },
-    created: async function created() {
-        if (!firstRun) {
-            return;
+    created: function created() {
+        let server = null;
+        if (this.hasFragment) {
+            server = this.parseFragment();
+            this.server = server;
         }
 
-        let server = this.hasFragment && this.parseFragment();
-        this.server = server;
         if (server) {
-            let hasOtherTab = await this.findOtherTabs();
-            if (hasOtherTab) {
-                this.hasOtherTab = true;
-            } else {
-                this.init();
-            }
+            this.findOtherTabs().then((hasOtherTab) => {
+                if (hasOtherTab) {
+                    this.hasOtherTab = true;
+                    // Don't start the main kiwi app here as it's already open elsewhere
+                } else {
+                    this.listenForOtherTabs();
+                    this.init();
+                }
+
+                this.readyToShowOptions = true;
+            });
         } else {
+            this.listenForOtherTabs();
+            this.init();
+        }
+    },
+    methods: {
+        listenForOtherTabs() {
             IPC.on('message', (e) => { // respond to other tabs that are looking
                 let msg = e.data;
                 if (msg.type === 'ping' && this.networks.length > 0) {
                     IPC.send({ type: 'pong' });
-                } else if (msg.type === 'addNetwork' && !this.networks.find(n => n.name === msg.server)) {
-                    let network = state.addNetwork(msg.server, msg.nick || ('Guest' + Math.floor(Math.random() * 100)), msg);
+                } else if (msg.type === 'addNetwork') {
+                    let network = this.networks.find(n => n.name === msg.server);
+                    if (!network) {
+                        network = state.addNetwork(msg.server, msg.nick || ('Guest' + Math.floor(Math.random() * 100)), msg);
+                    }
                     network.showServerBuffer('settings');
                 }
             });
-            this.init();
-        }
-        firstRun = false;
-    },
-    methods: {
-        addNetwork() {
-            if (firstRun) {
-                this.init();
-                firstRun = false;
-            }
+        },
+        addEmptyNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
             let network = state.addNetwork(TextFormatting.t('new_network'), nick, {});
             network.showServerBuffer('settings');
@@ -132,7 +142,7 @@ export default {
         },
         addNetworkToExistingTab() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
-            let con = this.parseFragment();
+            let con = this.server;
 
             state.addNetwork(TextFormatting.t('new_network'), nick, {});
 
@@ -144,28 +154,38 @@ export default {
                 password: con.password || '',
                 type: 'addNetwork',
             });
+
+            window.location.hash = '';
+
             this.addedNetworkToExisting = true;
         },
-        addTemporaryNetwork() {
-            if (this.hasFragment) {
-                let con = this.parseFragment();
+        addNetwork(temporary = false) {
+            if (!this.server) {
+                return;
+            }
 
+            let con = this.server;
+
+            if (temporary) {
                 state.persistence.storageKey = null;
                 state.persistence.forgetState();
 
-                if (!state.getNetworkFromAddress(con.server)) {
-                    let network = state.addNetwork(con.server, con.nick || ('Guest' + Math.floor(Math.random() * 100)), {
-                        server: con.server,
-                        port: con.port,
-                        tls: con.tls,
-                        password: con.password || '',
-                    });
-                    network.showServerBuffer('settings');
-                }
-
-                window.location.hash = '';
-                window.close();
+                this.init();
             }
+
+            let network = state.getNetworkFromAddress(con.server);
+            if (!network) {
+                network = state.addNetwork(con.server, con.nick || ('Guest' + Math.floor(Math.random() * 100)), {
+                    server: con.server,
+                    port: con.port,
+                    tls: con.tls,
+                    password: con.password || '',
+                });
+            }
+
+            window.location.hash = '';
+            network.showServerBuffer('settings');
+
             this.$emit('start', {
                 fallbackComponent: this.constructor,
             });
@@ -191,6 +211,12 @@ export default {
             state.$emit('statebrowser.show');
         },
         async init() {
+            if (!firstRun) {
+                return;
+            }
+
+            firstRun = false;
+
             // persist the buffers in the state by default
             let persistSetting = state.settings.startupOptions.remember_buffers;
             if (typeof persistSetting === 'undefined') {

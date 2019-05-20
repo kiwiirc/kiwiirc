@@ -999,19 +999,19 @@ msgstr "Add a Network"
 
 #: You are trying to connect to 
 msgid "personal_connect_to"
-msgstr "You are trying to connect to"
+msgstr "You are trying to connect to {{network}}"
 
-#: Network has been added to your existing Kiwi instance.
+#: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Network has been added to your existing Kiwi instance.";
+msgstr "Network has been added to your existing Kiwi window.";
 
-#: Use existing Kiwi instance
+#: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Add network to existing Kiwi tab"
+msgstr "Add network to existing Kiwi window"
 
-#: Use a temporary session
+#: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Use temporary session"
+msgstr "Temporarily connect to this network"
 
 #: Saved networks
 msgid "personal_saved"
