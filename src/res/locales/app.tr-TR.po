@@ -10,15 +10,15 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-19 11:01\n"
+"PO-Revision-Date: 2019-05-20 08:31\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "Başla"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Kiwi IRC'ye Hoşgeldiniz!"
 
 #: Close
 msgid "close"
@@ -42,7 +42,7 @@ msgstr "ayarlar"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Kapat"
 
 #: Channels
 msgid "channels"
@@ -82,7 +82,7 @@ msgstr "kanal"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "Bağlan"
 
 #: Network
 msgid "network"
@@ -114,7 +114,7 @@ msgstr "iptal"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "Bağlanıyor..."
 
 #: No
 msgid "no"
