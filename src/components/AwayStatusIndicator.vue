@@ -1,6 +1,6 @@
 <template>
     <span
-        v-if="shouldShowStatus && displayIndicator"
+        v-if="shouldShowStatus && showAwayStatusIndicators"
         :class="{ 'kiwi-awaystatusindicator--away': user && user.isAway(),
                   'kiwi-awaystatusindicator--self': isUserSelf }"
         class="kiwi-awaystatusindicator"
@@ -14,7 +14,7 @@
 export default {
     props: ['network', 'user', 'toggle'],
     computed: {
-        displayIndicator() {
+        showAwayStatusIndicators() {
             return this.$state.setting('ShowAwayStatusIndicators');
         },
         isUserSelf() {
