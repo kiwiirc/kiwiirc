@@ -337,7 +337,6 @@ export default {
 
     .kiwi-container--sidebar-drawn .kiwi-sidebar {
         width: 100%;
-        max-width: 380px;
     }
 
     .kiwi-sidebar-buffersettings {
