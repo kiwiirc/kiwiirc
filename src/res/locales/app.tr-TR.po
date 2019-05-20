@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-20 09:03\n"
+"PO-Revision-Date: 2019-05-20 09:12\n"
 
 #: Start
 msgid "start_button"
@@ -146,111 +146,111 @@ msgstr "Müsait"
 
 #: Send a message
 msgid "send_a_message"
-msgstr ""
+msgstr "Mesaj Gönder"
 
 #: More information
 msgid "more_information"
-msgstr ""
+msgstr "Ayrıntılı Bilgi"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr ""
+msgstr "Engelle"
 
 #: Channel
 msgid "connection_channel"
-msgstr ""
+msgstr "Kanal"
 
 #: {{count}} week
 msgid "week"
-msgstr ""
+msgstr "{{count}} hafta"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr ""
+msgstr "{{count}} haftalar"
 
 #: {{count}} day
 msgid "day"
-msgstr ""
+msgstr "{{count}} gün"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr ""
+msgstr "{{count}} günler"
 
 #: {{count}} hour
 msgid "hour"
-msgstr ""
+msgstr "{{count}} saat"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr ""
+msgstr "{{count}} saatler"
 
 #: {{count}} minute
 msgid "minute"
-msgstr ""
+msgstr "{{count}} dakika"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "{{count}} dakikalar"
 
 #: {{count}} second
 msgid "second"
-msgstr ""
+msgstr "{{count}} saniye"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr ""
+msgstr "{{count}} saniyeler"
 
 #: General
 msgid "settings_general"
-msgstr ""
+msgstr "Genel"
 
 #: Language
 msgid "settings_language"
-msgstr ""
+msgstr "Dil"
 
 #: Theme
 msgid "settings_theme"
-msgstr ""
+msgstr "Tema"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "Temayı Yenile"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "Tema URL"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr ""
+msgstr "Mesaj Düzeni"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "Tek boşluk kullan"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "Geleneksel IRC düzeni"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "Otomatik tamamlama listesini göster"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "Sohbet Mesajları"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "Zaman damgalarını göster"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "24 saatlik zaman damgaları kullan"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "İfadeleri göster"
 
 #: Block new Private messages
 msgid "settings_block_private"
