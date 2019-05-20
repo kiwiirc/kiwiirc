@@ -1,6 +1,5 @@
 msgid ""
 msgstr ""
-"Start\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
@@ -11,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-05-11 20:51\n"
+"PO-Revision-Date: 2019-05-19 12:20\n"
 
 #: Start
 msgid "start_button"
@@ -204,6 +203,10 @@ msgstr "secondi"
 #: General
 msgid "settings_general"
 msgstr "Generali"
+
+#: Language
+msgid "settings_language"
+msgstr "Lingua"
 
 #: Theme
 msgid "settings_theme"

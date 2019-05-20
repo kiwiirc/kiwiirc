@@ -291,7 +291,7 @@
 }
 
 .kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
-    color: var(--brand-darktone);
+    color: var(--brand-default-fg);
 }
 
 .kiwi-nicklist-user::after {
@@ -964,6 +964,11 @@
 .kiwi-messageinfo-actions .u-link {
     border-color: var(--brand-default-fg);
     color: var(--brand-default-fg);
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-reply {
+    background: var(--brand-primary);
+    color: var(--brand-default-bg);
 }
 
 .kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {

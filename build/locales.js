@@ -13,7 +13,6 @@ function save(target) {
 
 exports.createJsonFiles = function() {
     var availableLangs = [];
-
     var convertLocales = new Promise(function(resolve, reject) {
         fs.readdir(source_path, function(err, files) {
             var complete = 0;
