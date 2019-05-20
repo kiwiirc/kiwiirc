@@ -78,6 +78,8 @@ export default {
         },
     },
     created: function created() {
+        this.$state.setting('allowRegisterProtocolHandler', true);
+
         let server = null;
         if (this.hasFragment) {
             server = this.parseFragment();

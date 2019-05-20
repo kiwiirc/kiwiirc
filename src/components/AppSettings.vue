@@ -250,7 +250,7 @@ export default {
             return val === '1';
         },
         canRegisterProtocolHandler: function canRegisterProtocolHandler() {
-            return !!navigator.registerProtocolHandler && state.setting('startupScreen') === 'personal';
+            return !!navigator.registerProtocolHandler && state.setting('allowRegisterProtocolHandler');
         },
         timestamps_24h: {
             get: function get24Timestamps() {
