@@ -125,6 +125,22 @@
                                 <span>{{ $t('settings_highlight') }} </span>
                                 <input v-model="settingHighlights" type="text" class="u-input" >
                             </label>
+                            <label class="kiwi-appsettings-full">
+                                <span>Custom sound</span>
+                                <input
+                                    type="file"
+                                    name="customNotification"
+                                    @change="handleChangeAudio"
+                                >
+                                <button
+                                    type="button"
+                                    @click="$state.$emit('audio.bleep')"
+                                >▶</button>
+                                <button
+                                    type="button"
+                                    @click="$state.$emit('audio.set-source', {src: null})"
+                                >Reset</button>
+                            </label>
                         </div>
                     </div>
 
@@ -363,6 +379,27 @@ export default {
                 this.$refs.tabs.setActiveByName('advanced');
                 this.$el.scrollTop = 0;
             });
+        },
+        handleChangeAudio(e) {
+            if (e.target.files && e.target.files.length > 0) {
+                let file = e.target.files[0];
+                if (file.type.indexOf('audio/') === 0) {
+                    let reader = new FileReader();
+                    reader.onload = (data) => {
+                        if (data.target.result && data.target.result.indexOf('data:audio/') === 0) {
+                            this.$state.$emit('audio.set-source', { src: data.target.result });
+                        }
+                    };
+                    reader.onerror = (err) => {
+                        console.error('Error reading audio file', err); // eslint-disable-line no-console
+                        e.target.value = null;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    console.error('Not an audio file'); // eslint-disable-line no-console
+                    e.target.value = null;
+                }
+            }
         },
     },
 };

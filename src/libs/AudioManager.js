@@ -1,5 +1,8 @@
 'kiwi public';
 
+import * as Storage from './storage/Local';
+import { SoundBleep } from './SoundBleep';
+
 /** @module */
 
 /**
@@ -8,21 +11,55 @@
 export class AudioManager {
     constructor(audio) {
         this.lastPlayed = 0;
-        this.audio = audio;
+        this.sounds = {
+            default: audio,
+        };
+        this.loadAudio();
     }
-
+    async loadAudio() {
+        let keys = await Storage.keys();
+        keys.forEach(async(key) => {
+            if (key.indexOf('audio.') === 0) {
+                let [, type] = key.split('.');
+                let src = await Storage.get(key);
+                if (this.sounds[type] && src) {
+                    this.sounds[type].setSource(src);
+                } else {
+                    this.sounds[type] = new SoundBleep(src);
+                }
+            }
+        });
+    }
     /** Play the alert sound */
-    play() {
+    play(type = 'default') {
         // Only play the bleep once every 2 seconds
         if (!this.lastPlayed || Date.now() - this.lastPlayed > 2000) {
-            this.audio.play();
+            if (this.sounds[type]) {
+                this.sounds[type].play();
+            } else {
+                this.sounds.default.play();
+            }
             this.lastPlayed = Date.now();
         }
     }
 
     listen(state) {
-        state.$on('audio.bleep', () => {
-            this.play();
+        state.$on('audio.bleep', (data = {}) => {
+            let type = data.type || 'default';
+            if (this.sounds[type]) {
+                this.sounds[type].play();
+            } else {
+                this.sounds.default.play();
+            }
+        });
+        state.$on('audio.set-source', (data = {}) => {
+            let type = data.type || 'default';
+            if (this.sounds[type] && data.src) {
+                this.sounds[type].setSource(data.src);
+            } else {
+                this.sounds[type] = new SoundBleep(data.src);
+            }
+            Storage.remove('audio.' + type);
         });
     }
 

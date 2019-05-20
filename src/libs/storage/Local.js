@@ -18,6 +18,28 @@ export function set(name, val) {
     });
 }
 
+export function keys() {
+    let allKeys = [];
+    if (!isSupported()) {
+        return Promise.resolve();
+    }
+    return new Promise((resolve) => {
+        for (let i = 0; i < window.localStorage.length; i++) {
+            allKeys.push(window.localStorage.key(i));
+        }
+        resolve(allKeys);
+    });
+}
+
+export function remove(name) {
+    if (!isSupported()) {
+        return Promise.resolve();
+    }
+    return new Promise((resolve) => {
+        resolve(window.localStorage.removeItem(name));
+    });
+}
+
 function isSupported() {
     if (supportedCached === null) {
         supportedCached = storageAvailable('localStorage');
