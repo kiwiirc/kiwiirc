@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-20 08:43\n"
+"PO-Revision-Date: 2019-05-20 09:03\n"
 
 #: Start
 msgid "start_button"
@@ -142,7 +142,7 @@ msgstr "Durum"
 
 #: Is available
 msgid "whois_status_available"
-msgstr ""
+msgstr "Müsait"
 
 #: Send a message
 msgid "send_a_message"
