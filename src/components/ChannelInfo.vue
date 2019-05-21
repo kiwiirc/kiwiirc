@@ -97,7 +97,7 @@ export default {
             },
             set: function computedTopicSet(newVal) {
                 let newTopic = newVal.replace('\n', ' ');
-                if ( newTopic.replace(/\s+/g, '').length > 1 ){
+                if (newTopic.replace(/\s+/g, '').length > 1) {
                     this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newTopic);
                 }
             },
