@@ -71,8 +71,6 @@ export default {
     },
     computed: {
         noResults() {
-            console.log(this.listState);
-            console.log(this.filteredList.length);
             return this.listState === 'updated' && this.filteredList.length === 0;
         },
         isLoading() {
