@@ -1071,6 +1071,10 @@ function clientMiddleware(state, network) {
                     { nick: event.nick, topic: event.topic },
                 );
             } else {
+                // if there is no topic after trimming dont add it to message list
+                if (!buffer.topic.trim()) {
+                    return;
+                }
                 messageBody = TextFormatting.formatText('channel_topic', event.topic);
             }
 
