@@ -60,17 +60,20 @@
                     class="kiwi-controlinput-send fa fa-paper-plane" />
             </form>
 
-            <div ref="plugins" class="kiwi-controlinput-tools">
-                <div
-                    :class="{'kiwi-controlinput-tools-container-expand--inverse': !showPlugins}"
-                    class="kiwi-controlinput-tools-container-expand"
-                    @click="showPlugins=!showPlugins"
+            <div v-if="pluginUiElements.length || shouldShowEmojiPicker || shouldShowColorPicker "
+                 ref="plugins"
+                 class="kiwi-controlinput-tools">
+                <div :class="{'kiwi-controlinput-tools-container-expand--inverse': !showPlugins}"
+                     class="kiwi-controlinput-tools-container-expand"
+                     @click="showPlugins=!showPlugins"
                 >
                     <i class="fa fa-bars" aria-hidden="true" />
                 </div>
                 <transition name="kiwi-plugin-ui-trans">
                     <div v-if="showPlugins" class="kiwi-controlinput-tools-container">
-                        <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
+                        <a v-if="shouldShowColorPicker"
+                           class="kiwi-controlinput-tool"
+                           @click.prevent="onToolClickTextStyle">
                             <i class="fa fa-adjust" aria-hidden="true"/>
                         </a>
                         <a
@@ -166,6 +169,9 @@ export default {
         },
         shouldShowEmojiPicker() {
             return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
+        },
+        shouldShowColorPicker() {
+            return this.$state.setting('showColorPicker') && !this.$state.ui.is_touch;
         },
     },
     watch: {
