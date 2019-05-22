@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-20 09:23\n"
+"PO-Revision-Date: 2019-05-22 11:57\n"
 
 #: Start
 msgid "start_button"
@@ -298,203 +298,203 @@ msgstr "Mesaj Gönder"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Kanal anahtarını girin:"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr ""
+msgstr "Yeniden gir {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr ""
+msgstr "Bana Bildir"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "Bütün mesajlarda"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "Bahsedildiğimde"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "Asla"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr ""
+msgstr "Sesleri kapat"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr ""
+msgstr "Okunmamış Mesajlar iletisini gizle"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr ""
+msgstr "Operatör Araçları"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Varsayılan yasak maskesi"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr ""
+msgstr "Varsayılan kick sebebi"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr ""
+msgstr "Gelişmiş Ayarlar"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr ""
+msgstr "Canavarlar burada, sadece ne yaptığını biliyorsan bu butona tıkla"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr ""
+msgstr "Gelişmiş Ayarları Etkinleştir"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Tehlike Bölgesi: Bu ayarların bazılarının değiştirilmesi işleri bozabilir!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Sıfırla"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Filtre"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr ""
+msgstr "Yasaklananlar listesini yenile"
 
 #: Banned user
 msgid "bans_user"
-msgstr ""
+msgstr "Yasaklanan kullanıcı"
 
 #: Banned by
 msgid "bans_by"
-msgstr ""
+msgstr "Tarafından yasaklanmış"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr ""
+msgstr "Yasaklananlar listesi yenileniyor..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr ""
+msgstr "Kimse yasaklanmadı!"
 
 #: Topic
 msgid "channel_topic"
-msgstr ""
+msgstr "Konu"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr ""
+msgstr "Moderatörlü sohbet"
 
 #: Invite only
 msgid "channel_invite"
-msgstr ""
+msgstr "Sadece davetsel"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr ""
+msgstr "Konuyu yalnızca moderatörler değiştirebilir"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr ""
+msgstr "Kanal dışından gönderilen mesajları engelle"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr ""
+msgstr "Kanal listesini güncellemek için yenile düğmesine tıklayın"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr ""
+msgstr "Kanal bulunamadı, daha sonra tekrar deneyin."
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr ""
+msgstr "Kiwi IRC'ye Hoşgeldiniz! Soldan bir kanal seçin."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr ""
+msgstr "Statebrowser'ı göster"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr ""
+msgstr "Konuyu Gizle"
 
 #: Display Topic
 msgid "display_topic"
-msgstr ""
+msgstr "Konuyu Görüntüle"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr ""
+msgstr "Kanal Ayarları"
 
 #: Join Channel
 msgid "container_join"
-msgstr ""
+msgstr "Kanala Gir"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr ""
+msgstr "Bağlı Değil"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr ""
+msgstr "{{user}} ile özel görüşme"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr ""
+msgstr "Kanaldan gerçekten ayrılmak istiyor musunuz?"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr ""
+msgstr "Bir mesaj gönder..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr ""
+msgstr "{{url}} yükleniyor..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr ""
+msgstr "Önceki mesajları yükle"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr ""
+msgstr "Okunmamış Mesajlar"
 
 #: Server details
 msgid "settings_server_details"
-msgstr ""
+msgstr "Sunucu detayları"
 
 #: Port
 msgid "settings_port"
-msgstr ""
+msgstr "Port"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr ""
+msgstr "Bu ZNC hesabındaki diğer ağlar ağ listesinde listelenecek"
 
 #: Your details
 msgid "settings_your_details"
-msgstr ""
+msgstr "Detayların"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr ""
+msgstr "Takma Ad"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr ""
+msgstr "Gelişmiş"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr ""
+msgstr "Kodlama"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr ""
+msgstr "Raw'ı Göster"
 
 #: Direct websocket
 msgid "settings_use_websocket"
@@ -698,47 +698,47 @@ msgstr ""
 
 #: Is available for help
 msgid "user_help"
-msgstr ""
+msgstr "Yardım için müsait"
 
 #: Is an operator
 msgid "user_op"
-msgstr ""
+msgstr "IRC operatör"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr ""
+msgstr "Bağlandığı sunucu: {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr ""
+msgstr "SSL/TLS ile güvenli bağlantı"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr ""
+msgstr "Bulunduğu kanallar: {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr ""
+msgstr "Erişim seviyesi"
 
 #: Normal
 msgid "user_normal"
-msgstr ""
+msgstr "Normal"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr ""
+msgstr "Kanaldan at"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr ""
+msgstr "Kanaldan yasakla"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "Yasakla ve kanaldan at"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr ""
+msgstr "Lütfen girmek için bir kanal belirtin. Örnek /join #örnek"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
