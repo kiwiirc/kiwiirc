@@ -61,22 +61,22 @@
             </form>
 
             <div
-                 v-if="pluginUiElements.length || shouldShowEmojiPicker || shouldShowColorPicker "
-                 ref="plugins"
-                 class="kiwi-controlinput-tools">
+                v-if="pluginUiElements.length || shouldShowEmojiPicker || shouldShowColorPicker "
+                ref="plugins"
+                class="kiwi-controlinput-tools">
                 <div
-                     :class="{'kiwi-controlinput-tools-container-expand--inverse': !showPlugins}"
-                     class="kiwi-controlinput-tools-container-expand"
-                     @click="showPlugins=!showPlugins"
+                    :class="{'kiwi-controlinput-tools-container-expand--inverse': !showPlugins}"
+                    class="kiwi-controlinput-tools-container-expand"
+                    @click="showPlugins=!showPlugins"
                 >
                     <i class="fa fa-bars" aria-hidden="true" />
                 </div>
                 <transition name="kiwi-plugin-ui-trans">
                     <div v-if="showPlugins" class="kiwi-controlinput-tools-container">
                         <a
-                           v-if="shouldShowColorPicker"
-                           class="kiwi-controlinput-tool"
-                           @click.prevent="onToolClickTextStyle">
+                            v-if="shouldShowColorPicker"
+                            class="kiwi-controlinput-tool"
+                            @click.prevent="onToolClickTextStyle">
                             <i class="fa fa-adjust" aria-hidden="true"/>
                         </a>
                         <a
