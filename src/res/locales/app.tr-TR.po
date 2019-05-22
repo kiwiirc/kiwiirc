@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-22 14:43\n"
+"PO-Revision-Date: 2019-05-22 15:33\n"
 
 #: Start
 msgid "start_button"
@@ -742,55 +742,55 @@ msgstr "Lütfen girmek için bir kanal belirtin. Örnek /join #örnek"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısına op verdi"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısından op aldı"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısına half-ops verdi"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısından half-ops aldı"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısına voice verdi"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısından voice aldı"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısına admin verdi"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısından admin aldı"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısına owner verdi"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısından owner aldı"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısını yasakladı"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr ""
+msgstr "{{nick}}, {{target}} kullanıcısının yasağını kaldırdı"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr ""
+msgstr "{{nick}}, {{mode}} modunu {{target}} üzerinde ayarladı"
 
 #: Send a message
 msgid "command_msg"
@@ -898,35 +898,35 @@ msgstr "IRC İstemciniz."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr ""
+msgstr "Ağlarınızı ekleyin. Kanallarınıza girin."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr ""
+msgstr "Geri döndüğünde burada olacaklar."
 
 #: Add a Network
 msgid "personal_add"
-msgstr ""
+msgstr "Ağ ekle"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr ""
+msgstr "Kayıtlı ağlar"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr ""
+msgstr "Kiwi IRC (gelecek nesil) - Rizon önizleme"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr ""
+msgstr "Doğrudan websockets. Hiçbir Kiwi sunucusu veya webirc dahil değil."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr ""
+msgstr "(Websocket sunucu desteği geliştirmesi için, Adam @Rizon'a teşekkürler!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr ""
+msgstr "Kiwi IRC'nin geliştirici sürümünü deneyin!"
 
 #: Connected
 msgid "connected"
@@ -934,41 +934,41 @@ msgstr "bağlandı"
 
 #: Disconnected
 msgid "disconnected"
-msgstr ""
+msgstr "Bağlantı kesildi"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr ""
+msgstr "{{network}}'e Bağlandı!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr ""
+msgstr "{{nick}} kanala girdi"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr ""
+msgstr "{{nick}} seni {{channel}} kanalından attı"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr ""
+msgstr "{{nick}}, {{channel}} kanalından {{chanop}} tarafından atıldı"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr ""
+msgstr "{{nick}} kanaldan ayrıldı"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr ""
+msgstr "{{nick}} seni {{channel}} kanalına davet etti"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr ""
+msgstr "Kullanıcı adı {{nick}} zaten kullanılıyor. {{newnick}} deneniyor..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr ""
+msgstr "{{nick}} takma adını {{newnick}} olarak değiştirdi"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr ""
+msgstr "{{nick}} konuyu şu şekilde değiştirdi: {{topic}}"
 
