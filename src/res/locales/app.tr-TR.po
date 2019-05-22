@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-22 12:23\n"
+"PO-Revision-Date: 2019-05-22 14:43\n"
 
 #: Start
 msgid "start_button"
@@ -498,203 +498,203 @@ msgstr "Raw'ı Göster"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr ""
+msgstr "Doğrudan websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr ""
+msgstr "Bağlandığında komutları çalıştır"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr ""
+msgstr "Tehlikeli Bölge"
 
 #: Remove network
 msgid "settings_remove"
-msgstr ""
+msgstr "Ağı kaldır"
 
 #: {{count}} person here
 msgid "person"
-msgstr ""
+msgstr "{{count}} kişi burada"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr ""
+msgstr "{{count}} kişi burada"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr ""
+msgstr "Kanaldaki kullanıcıları filtrele"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr ""
+msgstr "{{channel}} kanalına girmek için yeniden bağlan"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr ""
+msgstr "Konuşmaya başlamak için {{network}} adresine yeniden bağlan"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr ""
+msgstr "{{user}} ile konuşmaya devam etmek için yeniden bağlan"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr ""
+msgstr "Şu anda bağlı değilsin!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr ""
+msgstr "Bağlantı Ayarları"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr ""
+msgstr "Bu sunucuya bağlanamadık :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr ""
+msgstr "Ağa Bağlan"
 
 #: Close options
 msgid "side_close"
-msgstr ""
+msgstr "Seçenekleri kapat"
 
 #: Channel options
 msgid "side_options"
-msgstr ""
+msgstr "Kanal seçenekleri"
 
 #: Your settings
 msgid "side_settings"
-msgstr ""
+msgstr "Ayarlarınız"
 
 #: Show when people join
 msgid "side_joins"
-msgstr ""
+msgstr "Kullanıcılar kanala girdiklerinde göster"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr ""
+msgstr "Kanal konusu değiştiğinde göster"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr ""
+msgstr "Kullanıcılar takma adlarını değiştirdiğinde göster"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr ""
+msgstr "Kullanıcılar kanal modlarını değiştirdiğinde göster"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr ""
+msgstr "Ekstra mesaj biçimlendirme"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr ""
+msgstr "Listedeki renkli takma adlar"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr ""
+msgstr "Tampon seti yok"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr ""
+msgstr "Bu kanal için bir konu yok"
 
 #: About
 msgid "about"
-msgstr ""
+msgstr "Hakkında"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "{{when}} tarihinde düzenlendi."
 
 #: Highlights
 msgid "highlights"
-msgstr ""
+msgstr "Vurgulamalar"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr ""
+msgstr "Henüz kimse sizden bahsetmedi."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr ""
+msgstr "Kiwi IRC başlatılırken bir hata oluştu :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr ""
+msgstr "Kiwi IRC'i doğru kurduğunuzdan ve konfigürasyonun yüklenebildiğinden emin olun."
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr ""
+msgstr "Ayrıl {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr ""
+msgstr "Hesabınız"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr ""
+msgstr "Ayarlarınız ve ağlarınız bu bilgisayarda hatırlanacaktır."
 
 #: Forget me
 msgid "state_forget"
-msgstr ""
+msgstr "Beni unut"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr ""
+msgstr "Henüz ağ yok."
 
 #: Add one?
 msgid "state_add"
-msgstr ""
+msgstr "Bir tane ekle?"
 
 #: Available networks
 msgid "state_available"
-msgstr ""
+msgstr "Mevcut ağlar"
 
 #: Add Network
 msgid "add_network"
-msgstr ""
+msgstr "Ağ Ekle"
 
 #: New Network
 msgid "new_network"
-msgstr ""
+msgstr "Yeni Ağ"
 
 #: No Network
 msgid "no_network"
-msgstr ""
+msgstr "Ağ yok"
 
 #: Configure network
 msgid "state_configure"
-msgstr ""
+msgstr "Ağı yapılandır"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr ""
+msgstr "Bağlı değil."
 
 #: Join new #channel
 msgid "state_join"
-msgstr ""
+msgstr "Yeni kanal #kanal"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "Kanalları Filtrele"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "Daha fazla kanal bul"
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "Takma ad değiş"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr ""
+msgstr "Hesap adı: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr ""
+msgstr "Gerçek ad: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr ""
+msgstr "Bir bot"
 
 #: Is available for help
 msgid "user_help"
