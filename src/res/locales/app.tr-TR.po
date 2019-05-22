@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-22 11:57\n"
+"PO-Revision-Date: 2019-05-22 12:11\n"
 
 #: Start
 msgid "start_button"
@@ -794,107 +794,107 @@ msgstr ""
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Bir mesaj gönder"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Fiziksel bir şey yap"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Bir kanala gir"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Bir kanaldan ayrıl"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Ayrıl, sonra bir kanala tekrar gir"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Takma adınızı değiştirin"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Biriyle özel bir konuşma başlat"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Birini kanala davet et"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Bu kanal için konuyu ayarla"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Bir bildirim gönder"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "IRC sunucusuna bir raw komutu gönderin"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Kanaldan birini atın"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Bu penceredeki tüm mesajları temizle"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Birine bir CTCP komutu gönderin"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "IRC sunucusuyla olan bağlantıyı kes"
 
 #: Connect to a new IRC network
 msgid "command_connect"
-msgstr ""
+msgstr "Yeni bir IRC ağına bağlanın"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Biriyle ilgili bilgi isteyin"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Son bağlantısı kesilmiş birisiyle ilgili bilgi isteyin"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Kendinizi çevrimdışı olarak ayarlayın"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Kendinizi çevrimiçi olarak ayarlayın"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Bağlantı kodlamanızı değiştirin"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Birinden gelen mesajları yoksay"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Birini görmezden gelmeyi bırak"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "Bir zar at"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "{{sides}} taraflı bir zar atar ve {{number}} alır"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr ""
+msgstr "IRC İstemciniz."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
