@@ -60,10 +60,12 @@
                     class="kiwi-controlinput-send fa fa-paper-plane" />
             </form>
 
-            <div v-if="pluginUiElements.length || shouldShowEmojiPicker || shouldShowColorPicker "
+            <div
+                 v-if="pluginUiElements.length || shouldShowEmojiPicker || shouldShowColorPicker "
                  ref="plugins"
                  class="kiwi-controlinput-tools">
-                <div :class="{'kiwi-controlinput-tools-container-expand--inverse': !showPlugins}"
+                <div
+                     :class="{'kiwi-controlinput-tools-container-expand--inverse': !showPlugins}"
                      class="kiwi-controlinput-tools-container-expand"
                      @click="showPlugins=!showPlugins"
                 >
@@ -71,7 +73,8 @@
                 </div>
                 <transition name="kiwi-plugin-ui-trans">
                     <div v-if="showPlugins" class="kiwi-controlinput-tools-container">
-                        <a v-if="shouldShowColorPicker"
+                        <a
+                           v-if="shouldShowColorPicker"
                            class="kiwi-controlinput-tool"
                            @click.prevent="onToolClickTextStyle">
                             <i class="fa fa-adjust" aria-hidden="true"/>
