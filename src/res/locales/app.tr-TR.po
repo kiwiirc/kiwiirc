@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-22 12:11\n"
+"PO-Revision-Date: 2019-05-22 12:23\n"
 
 #: Start
 msgid "start_button"
@@ -90,7 +90,7 @@ msgstr "ağ"
 
 #: ZNC
 msgid "znc"
-msgstr "znC"
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
@@ -102,15 +102,15 @@ msgstr "invalid_login"
 
 #: Search...
 msgid "do_search"
-msgstr "do_search"
+msgstr "Arama..."
 
 #: OK
 msgid "ok"
-msgstr "tamam"
+msgstr "Tamam"
 
 #: Cancel
 msgid "cancel"
-msgstr "iptal"
+msgstr "İptal"
 
 #: Yes
 msgid "yes"
@@ -130,7 +130,7 @@ msgstr "Uyarı!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "window_unload"
+msgstr "Bu, tüm KiwiI RC konuşmalarını kapatır. Bu pencereyi kapatmak istediğinize emin misiniz?"
 
 #: Real name
 msgid "whois_realname"
