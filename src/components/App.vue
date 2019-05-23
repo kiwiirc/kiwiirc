@@ -39,7 +39,7 @@
                             />
                         </template>
                     </container>
-                    <control-input :container="networks" :buffer="buffer"/>
+                    <control-input v-if="buffer.show_input" :container="networks" :buffer="buffer"/>
                 </template>
                 <component
                     v-else-if="!activeComponent"
