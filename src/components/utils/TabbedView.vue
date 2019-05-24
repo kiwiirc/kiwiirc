@@ -71,6 +71,7 @@ export default Vue.component('tabbed-view', {
 
             // Without this, vue doesnt update itself with the new $children :(
             this.a++;
+            this.$emit('changed', c.name);
         },
         setActiveByName: function setActiveByName(name) {
             this.$children.forEach((child) => {
