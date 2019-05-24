@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-22 15:33\n"
+"PO-Revision-Date: 2019-05-24 16:10\n"
 
 #: Start
 msgid "start_button"
@@ -38,7 +38,7 @@ msgstr "bağlandı"
 
 #: Settings
 msgid "settings"
-msgstr "ayarlar"
+msgstr "Ayarlar"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
@@ -66,7 +66,7 @@ msgstr "şifre"
 
 #: I have a password
 msgid "password_have"
-msgstr "password_have"
+msgstr "şifrem var"
 
 #: Server
 msgid "server"
