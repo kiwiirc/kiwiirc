@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-24 16:10\n"
+"PO-Revision-Date: 2019-05-24 16:20\n"
 
 #: Start
 msgid "start_button"
@@ -22,19 +22,19 @@ msgstr "Kiwi IRC'ye Hoşgeldiniz!"
 
 #: Close
 msgid "close"
-msgstr "kapat"
+msgstr "Kapat"
 
 #: Connect
 msgid "connect"
-msgstr "bağlan"
+msgstr "Bağlan"
 
 #: Connecting...
 msgid "connecting"
-msgstr "bağlanıyor"
+msgstr "Bağlanıyor..."
 
 #: Connected
 msgid "connected"
-msgstr "bağlandı"
+msgstr "Bağlandı"
 
 #: Settings
 msgid "settings"
@@ -46,39 +46,39 @@ msgstr "Kiwi Ayarları"
 
 #: Channels
 msgid "channels"
-msgstr "kanallar"
+msgstr "Kanallar"
 
 #: Banned Users
 msgid "banned"
-msgstr "engellendi"
+msgstr "Yasaklı Kullanıcılar"
 
 #: Notifications
 msgid "notifications"
-msgstr "bildirimler"
+msgstr "Bildirimler"
 
 #: Username
 msgid "username"
-msgstr "kullanıcı adı"
+msgstr "Kullanıcı adı"
 
 #: Password
 msgid "password"
-msgstr "şifre"
+msgstr "Şifre"
 
 #: I have a password
 msgid "password_have"
-msgstr "şifrem var"
+msgstr "Şifrem var"
 
 #: Server
 msgid "server"
-msgstr "sunucu"
+msgstr "Sunucu"
 
 #: Nick
 msgid "nick"
-msgstr "takma ad"
+msgstr "Takma ad"
 
 #: Channel
 msgid "channel"
-msgstr "kanal"
+msgstr "Kanal"
 
 #: Messages
 msgid "messages"
@@ -86,7 +86,7 @@ msgstr "Mesajlar"
 
 #: Network
 msgid "network"
-msgstr "ağ"
+msgstr "Ağ"
 
 #: ZNC
 msgid "znc"
@@ -94,11 +94,11 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "logging_in"
+msgstr "Oturum açılıyor..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "invalid_login"
+msgstr "Geçersiz giriş"
 
 #: Search...
 msgid "do_search"
@@ -134,7 +134,7 @@ msgstr "Bu, tüm KiwiI RC konuşmalarını kapatır. Bu pencereyi kapatmak isted
 
 #: Real name
 msgid "whois_realname"
-msgstr "whois_realname"
+msgstr "Gerçek ad"
 
 #: Status
 msgid "whois_status"
@@ -290,7 +290,7 @@ msgstr "Aliaslar"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Aliasler nelerdir?"
+msgstr "Aliaslar nelerdir?"
 
 #: Send Message
 msgid "send_message"
@@ -930,7 +930,7 @@ msgstr "Kiwi IRC'nin geliştirici sürümünü deneyin!"
 
 #: Connected
 msgid "connected"
-msgstr "bağlandı"
+msgstr "Bağlandı"
 
 #: Disconnected
 msgid "disconnected"
