@@ -455,7 +455,7 @@ export default {
                 if (inputVal.trim()) {
                     this.startTyping();
                 } else {
-                    this.stopTyping();
+                    this.stopTyping(true);
                 }
             }
 
@@ -465,10 +465,7 @@ export default {
         },
         submitForm() {
             let rawInput = this.$refs.input.getValue();
-
-            // dont send just whitespace messages clear the input instead
-            if (!rawInput.trim()) {
-                this.$refs.input.reset();
+            if (!rawInput) {
                 return;
             }
 
@@ -482,7 +479,7 @@ export default {
 
             this.$refs.input.reset();
 
-            this.stopTyping(true);
+            this.stopTyping(false);
         },
         historyBack() {
             if (this.history_pos > 0) {
@@ -586,7 +583,7 @@ export default {
 
             this.lastTypingTime = Date.now();
         },
-        stopTyping(messageSent) {
+        stopTyping(sendStopPause) {
             if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
                 return;
             }
@@ -607,7 +604,7 @@ export default {
             }
 
             // dont send done if a message was sent
-            if (messageSent) {
+            if (!sendStopPause) {
                 return;
             }
 

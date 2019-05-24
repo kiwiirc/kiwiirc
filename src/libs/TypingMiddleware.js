@@ -26,9 +26,7 @@ export default function typingMiddleware() {
             message.params[0];
 
         // if its a privmsg without typing tag emit done
-        let status = (message.tags['+draft/typing']) ?
-            message.tags['+draft/typing'] :
-            'done';
+        let status = message.tags['+draft/typing'] || 'done';
 
         client.emit('typing', {
             target: target,
