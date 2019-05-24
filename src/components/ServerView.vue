@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-serverview">
         <div class="kiwi-serverview-inner">
-            <tabbed-view ref="tabs" :key="network.id">
+            <tabbed-view ref="tabs" :key="network.id" @changed="tabChanged">
                 <tabbed-tab :header="$t('messages')" :focus="hasMessages" name="messages">
                     <message-list :buffer="serverBuffer" />
                 </tabbed-tab>
@@ -79,6 +79,9 @@ export default {
     methods: {
         showTab(tabName) {
             this.$refs.tabs.setActiveByName(tabName);
+        },
+        tabChanged(tabName) {
+            this.serverBuffer.show_input = (tabName === 'messages');
         },
     },
 };

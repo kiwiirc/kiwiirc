@@ -615,6 +615,7 @@ export default {
 
 .kiwi-controlinput {
     z-index: 999;
+    position: relative;
     border-top: 1px solid;
 }
 
