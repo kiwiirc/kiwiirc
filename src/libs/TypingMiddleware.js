@@ -12,7 +12,10 @@ export default function typingMiddleware() {
     };
 
     function theMiddleware(command, message, rawLine, client, next) {
-        if (command !== 'TAGMSG' || !message.tags['+draft/typing']) {
+        if (
+            !(command === 'TAGMSG' && message.tags['+draft/typing']) &&
+            !(command === 'PRIVMSG' && message.nick)
+        ) {
             next();
             return;
         }
@@ -22,12 +25,17 @@ export default function typingMiddleware() {
             message.nick :
             message.params[0];
 
+        // if its a privmsg without typing tag emit done
+        let status = (message.tags['+draft/typing']) ?
+            message.tags['+draft/typing'] :
+            'done';
+
         client.emit('typing', {
             target: target,
             nick: message.nick,
             ident: message.ident,
             hostname: message.hostname,
-            status: message.tags['+draft/typing'],
+            status: status,
         });
 
         next();
