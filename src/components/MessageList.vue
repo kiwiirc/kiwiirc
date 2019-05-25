@@ -241,7 +241,12 @@ export default {
             }
 
             this.$nextTick(() => {
-                this.scrollToUnread();
+                let scrollToUnread = this.buffer.setting('scroll_to_unread');
+                if (scrollToUnread) {
+                    this.scrollToUnread();
+                    return;
+                }
+                this.scrollToBottom();
             });
         },
         'buffer.message_count'() {
@@ -426,11 +431,14 @@ export default {
             this.$el.scrollTop = this.$el.scrollHeight;
         },
         scrollToUnread() {
+            // if last_read is set use -1 to track if we found a valid unread message point
+            // without last_read we can assume that the first message is unread
             let messageId = this.buffer.last_read ? -1 : this.filteredMessages[0].id;
 
             // Find the message id for unread marker
             for (let i = 0; i < this.filteredMessages.length; i++) {
                 if (this.shouldShowUnreadMarker(i)) {
+                    // we want to scroll to the message above the mark
                     let idx = (i - 1 >= 0) ? i - 1 : 0;
                     messageId = this.filteredMessages[idx].id;
                     break;
@@ -438,8 +446,7 @@ export default {
             }
 
             // No unread messages found scroll to bottom
-            let forceScroll = this.buffer.setting('force_scroll_to_bottom');
-            if (forceScroll || messageId < 0) {
+            if (messageId < 0) {
                 this.scrollToBottom();
                 return;
             }
