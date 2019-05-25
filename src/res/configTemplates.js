@@ -70,6 +70,7 @@ export const configTemplates = {
             default_kick_reason: 'Your behavior is not conducive to the desired environment.',
             shared_input: false,
             show_message_info: true,
+            scroll_to_unread: false,
             who_loop: true,
             share_typing: true,
             flash_title: true,

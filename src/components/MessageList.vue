@@ -26,7 +26,7 @@
                 <span>{{ (new Date(message.time)).toDateString() }}</span>
             </div>
             <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator">
-                <span>{{ $t('unread_messages') }}</span>
+                <span id="kiwi-unread-marker">{{ $t('unread_messages') }}</span>
             </div>
 
             <!-- message.template is checked first for a custom component, then each message layout
@@ -233,7 +233,9 @@ export default {
                 newBuffer.flags.has_opened = true;
             }
 
-            this.scrollToBottom();
+            this.$nextTick(() => {
+                this.maybeScrollToUnread();
+            });
         },
         'buffer.message_count'() {
             this.$nextTick(() => {
@@ -243,7 +245,7 @@ export default {
     },
     mounted() {
         this.$nextTick(() => {
-            this.scrollToBottom();
+            this.maybeScrollToUnread();
         });
 
         this.listen(this.$state, 'mediaviewer.opened', () => {
@@ -283,7 +285,7 @@ export default {
             }
 
             // If the last message has been read, and this message not read
-            if (previous && previous.time < lastRead && current.time > lastRead) {
+            if ((!previous || previous.time < lastRead) && current.time > lastRead) {
                 return true;
             }
 
@@ -416,10 +418,34 @@ export default {
         scrollToBottom() {
             this.$el.scrollTop = this.$el.scrollHeight;
         },
+        scrollToUnread() {
+            // try to get our unread marker
+            let unreadElement = document.getElementById('kiwi-unread-marker');
+            if (unreadElement) {
+                let offset = unreadElement.offsetTop - unreadElement.paddingTop;
+                if (offset < 0) {
+                    offset = 0;
+                }
+                this.$el.scrollTop = offset;
+                this.auto_scroll = false;
+                return;
+            }
+
+            // We could not find a element, scroll to bottom as last resort
+            this.scrollToBottom();
+        },
         maybeScrollToBottom() {
             if (this.auto_scroll) {
                 this.$el.scrollTop = this.$el.scrollHeight;
             }
+        },
+        maybeScrollToUnread() {
+            let scrollToUnread = this.buffer.setting('scroll_to_unread');
+            if (scrollToUnread) {
+                this.scrollToUnread();
+                return;
+            }
+            this.scrollToBottom();
         },
     },
 };
