@@ -14,7 +14,7 @@
             ml.isHoveringOverMessage(message) ?
                 'kiwi-messagelist-message--hover' :
                 '',
-            ml.buffer.last_read && message.time > ml.buffer.last_read ?
+            ml.buffer.last_read && message.time >= ml.buffer.last_read ?
                 'kiwi-messagelist-message--unread' :
                 '',
             message.nick.toLowerCase() === ml.ourNick.toLowerCase() ?
