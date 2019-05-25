@@ -26,7 +26,7 @@
                 <span>{{ (new Date(message.time)).toDateString() }}</span>
             </div>
             <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator">
-                <span>{{ $t('unread_messages') }}</span>
+                <span id="kiwi-unread-marker">{{ $t('unread_messages') }}</span>
             </div>
 
             <!-- message.template is checked first for a custom component, then each message layout
@@ -426,34 +426,16 @@ export default {
             this.$el.scrollTop = this.$el.scrollHeight;
         },
         scrollToUnread() {
-            // if last_read is set use -1 to track if we found a valid unread message point
-            // without last_read we can assume that the first message is unread
-            let messageId = this.buffer.last_read ? -1 : this.filteredMessages[0].id;
-
-            // Find the message id for unread marker
-            for (let i = 0; i < this.filteredMessages.length; i++) {
-                if (this.shouldShowUnreadMarker(i)) {
-                    // we want to scroll to the message above the mark
-                    let idx = (i - 1 >= 0) ? i - 1 : 0;
-                    messageId = this.filteredMessages[idx].id;
-                    break;
+            // try to get our unread marker
+            let unreadElement = document.getElementById('kiwi-unread-marker');
+            if (unreadElement) {
+                let offset = unreadElement.offsetTop - unreadElement.paddingTop;
+                if (offset < 0) {
+                    offset = 0;
                 }
-            }
-
-            // No unread messages found scroll to bottom
-            if (messageId < 0) {
-                this.scrollToBottom();
+                this.$el.scrollTop = offset;
+                this.auto_scroll = false;
                 return;
-            }
-
-            // We have a message id, find its element and set scroll position
-            let msgs = this.$el.getElementsByClassName('kiwi-messagelist-message');
-            for (let i = 0; i < msgs.length; i++) {
-                if (messageId.toString() === msgs[i].dataset.messageId) {
-                    this.$el.scrollTop = msgs[i].offsetTop;
-                    this.auto_scroll = false;
-                    return;
-                }
             }
 
             // We could not find a element, scroll to bottom as last resort
@@ -471,7 +453,7 @@ export default {
                 return;
             }
             this.scrollToBottom();
-        }
+        },
     },
 };
 </script>
