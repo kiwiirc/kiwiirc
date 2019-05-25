@@ -1070,20 +1070,18 @@ function clientMiddleware(state, network) {
                     'changed_topic_to',
                     { nick: event.nick, topic: event.topic },
                 );
-            } else {
-                // if there is no topic after trimming dont add it to message list
-                if (!buffer.topic.trim()) {
-                    return;
-                }
-                messageBody = TextFormatting.formatText('channel_topic', event.topic);
+            } else if (buffer.topic.trim()) {
+                messageBody = TextFormatting.formatText('channel_topic', buffer.topic);
             }
 
-            state.addMessage(buffer, {
-                time: event.time || Date.now(),
-                nick: '',
-                message: messageBody,
-                type: 'topic',
-            });
+            if (messageBody) {
+                state.addMessage(buffer, {
+                    time: event.time || Date.now(),
+                    nick: '',
+                    message: messageBody,
+                    type: 'topic',
+                });
+            }
         }
 
         if (command === 'ctcp response' || command === 'ctcp request') {
