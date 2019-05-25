@@ -21,32 +21,40 @@
                     <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true"/></a>
                 </div>
             </div>
-            <table v-if="!isLoading && !noResults" :key="last_updated" width="100%">
-                <tbody>
-                    <tr v-for="channel in paginated" :key="channel.channel">
-                        <td class="kiwi-channellist-user-center">
-                            <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
-                                <i class="fa fa-user" aria-hidden="true"/> {{ channel.num_users }}
-                            </span>
-                        </td>
-                        <td>
-                            <a class="u-link" @click="joinChannel(channel.channel)">
-                                {{ channel.channel }}
-                            </a>
-                        </td>
-                        <td><div v-html="formatAndTrimTopic(channel.topic)"/></td>
-                        <td class="kiwi-channellist-user-center">
-                            <a class="u-button u-button-primary"
-                               @click="joinChannel(channel.channel)"> {{ $t('container_join') }}
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div v-else-if="noResults" class="kiwi-channellist-info">
-                <p> {{ $t('channel_list_nonefound') }} </p>
+            <div class="kiwi-channellist-table">
+                <table v-if="!isLoading && !noResults" :key="last_updated" width="100%">
+                    <tbody>
+                        <tr v-for="channel in paginated" :key="channel.channel">
+                            <td class="kiwi-channellist-user-center">
+                                <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
+                                    <i class="fa fa-user" aria-hidden="true"/>
+                                    {{ channel.num_users }}
+                                </span>
+                            </td>
+                            <td>
+                                <a class="u-link" @click="joinChannel(channel.channel)">
+                                    {{ channel.channel }}
+                                </a>
+                            </td>
+                            <td class="kiwi-channellist-table-topic">
+                                <div v-html="formatAndTrimTopic(channel.topic)"/>
+                            </td>
+                            <td class="kiwi-channellist-user-center">
+                                <a
+                                    class="u-button u-button-primary"
+                                    @click="joinChannel(channel.channel)"
+                                >
+                                    {{ $t('container_join') }}
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div v-else-if="noResults" class="kiwi-channellist-info">
+                    <p>{{ $t('channel_list_nonefound') }}</p>
+                </div>
+                <div v-else class="kiwi-channellist-info">{{ $t('channel_list_fetch') }}</div>
             </div>
-            <div v-else class="kiwi-channellist-info">{{ $t('channel_list_fetch') }}</div>
         </div>
     </div>
 </template>
@@ -233,6 +241,10 @@ export default {
 }
 
 /* Table Styling */
+.kiwi-channellist-table {
+    width: 100%;
+}
+
 .kiwi-channellist table {
     border: none;
     border-collapse: collapse;
@@ -256,6 +268,10 @@ export default {
 
 .kiwi-channellist tr td:first-child {
     white-space: nowrap;
+}
+
+.kiwi-channellist-table-topic {
+    word-break: break-word;
 }
 
 .kiwi-channellist-users {
