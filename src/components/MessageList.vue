@@ -241,12 +241,7 @@ export default {
             }
 
             this.$nextTick(() => {
-                let scrollToUnread = this.buffer.setting('scroll_to_unread');
-                if (scrollToUnread) {
-                    this.scrollToUnread();
-                    return;
-                }
-                this.scrollToBottom();
+                this.maybeScrollToUnread();
             });
         },
         'buffer.message_count'() {
@@ -257,7 +252,7 @@ export default {
     },
     mounted() {
         this.$nextTick(() => {
-            this.scrollToBottom();
+            this.maybeScrollToUnread();
         });
 
         this.listen(this.$state, 'mediaviewer.opened', () => {
@@ -469,6 +464,14 @@ export default {
                 this.$el.scrollTop = this.$el.scrollHeight;
             }
         },
+        maybeScrollToUnread() {
+            let scrollToUnread = this.buffer.setting('scroll_to_unread');
+            if (scrollToUnread) {
+                this.scrollToUnread();
+                return;
+            }
+            this.scrollToBottom();
+        }
     },
 };
 </script>
