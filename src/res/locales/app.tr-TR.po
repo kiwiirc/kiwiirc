@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-05-24 16:20\n"
+"PO-Revision-Date: 2019-05-28 03:00\n"
 
 #: Start
 msgid "start_button"
@@ -522,7 +522,7 @@ msgstr "{{count}} kişi burada"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Kanaldaki kullanıcıları filtrele"
+msgstr "Kullanıcıları filtrele"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
