@@ -82,17 +82,17 @@ export default {
             set(newVal) {
                 if (newVal === 'custom') {
                     this.name = '';
-                    this.conneection.server = '';
-                    this.conneection.port = 6667;
-                    this.conneection.tls = false;
+                    this.connection.server = '';
+                    this.connection.port = 6667;
+                    this.connection.tls = false;
 
                     this.showCustom = true;
                 } else {
                     let addr = this.parseFormatted(newVal);
                     this.name = addr.name;
-                    this.conneection.server = addr.server;
-                    this.conneection.port = addr.port;
-                    this.conneection.tls = addr.tls;
+                    this.connection.server = addr.server;
+                    this.connection.port = addr.port;
+                    this.connection.tls = addr.tls;
 
                     this.showCustom = false;
                 }

@@ -388,7 +388,7 @@ export default {
     }
 
     .kiwi-sidebar {
-        top: 0;
+        top: -4px;
     }
 }
 
