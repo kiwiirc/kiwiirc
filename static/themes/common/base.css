@@ -857,6 +857,11 @@
     background-color: var(--brand-default-bg);
 }
 
+/* Messagelayout inline */
+.kiwi-messagelist-message--text .kiwi-messagelist-time {
+    color: var(--brand-default-fg);
+}
+
 /* ---- Traffic Messages ---- */
 .kiwi-messagelist-message-traffic-join {
     color: var(--brand-primary);
