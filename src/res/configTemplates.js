@@ -91,6 +91,7 @@ export const configTemplates = {
         showChanlistModes: false,
         showAutocomplete: true,
         showEmojiPicker: true,
+        showColorPicker: false,
         showSendButton: false,
         sidebarDefault: 'nicklist',
         showRaw: false,
