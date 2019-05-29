@@ -61,7 +61,7 @@
             </form>
 
             <div
-                v-if="pluginUiElements.length || shouldShowEmojiPicker || shouldShowColorPicker "
+                v-if="shouldShowInputButtons"
                 ref="plugins"
                 class="kiwi-controlinput-tools">
                 <div
@@ -174,7 +174,17 @@ export default {
             return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
         },
         shouldShowColorPicker() {
-            return this.$state.setting('showColorPicker') && !this.$state.ui.is_touch;
+            return this.$state.setting('showColorPicker');
+        },
+        shouldShowInputButtons() {
+            if (
+                this.pluginUiElements.length ||
+                this.shouldShowEmojiPicker ||
+                this.shouldShowColorPicker
+            ) {
+                return true;
+            }
+            return false;
         },
     },
     watch: {
