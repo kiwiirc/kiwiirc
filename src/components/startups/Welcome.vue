@@ -162,7 +162,18 @@ export default {
     created: function created() {
         let options = state.settings.startupOptions;
 
-        this.nick = this.processNickRandomNumber(Misc.queryStringVal('nick') || options.nick || '');
+        // Check if we have this network already
+        let netAddress = _.trim(options.server);
+        let net = this.network || state.getNetworkFromAddress(netAddress);
+
+        // Existing Network. Return previously saved nick otherwise return client configuration.
+        if (net) {
+            this.nick = net.nick || options.nick;
+        } else {
+            this.nick = options.nick;
+        }
+
+        this.nick = this.processNickRandomNumber(Misc.queryStringVal('nick') || this.nick || '');
         this.password = options.password || '';
         this.channel = decodeURIComponent(window.location.hash) || options.channel || '';
         this.showChannel = typeof options.showChannel === 'boolean' ?
