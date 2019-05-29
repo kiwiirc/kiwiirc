@@ -300,11 +300,9 @@ export default class BouncerProvider {
                 controller.ircClient.raw('BOUNCER connect ' + network.connection.bncname);
             }
         });
-        state.$on('irc.registered', (event, network) => {
+        state.$on('irc.motd', (event, network) => {
             network.buffers.forEach((buffer) => {
                 if (buffer.isChannel() && buffer.enabled && buffer.joined) {
-                    network.ircClient.raw('NAMES ' + buffer.name);
-                    network.ircClient.raw('TOPIC ' + buffer.name);
                     network.ircClient.who(buffer.name);
                 }
             });
