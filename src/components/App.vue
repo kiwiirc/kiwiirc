@@ -39,7 +39,7 @@
                             />
                         </template>
                     </container>
-                    <control-input :container="networks" :buffer="buffer"/>
+                    <control-input v-if="buffer.show_input" :container="networks" :buffer="buffer"/>
                 </template>
                 <component
                     v-else-if="!activeComponent"
@@ -375,11 +375,14 @@ body {
     overflow: hidden;
 }
 
+/* .kiwi-workspace has ::before and ::after 4px above itself for the connection status */
 .kiwi-workspace {
     position: relative;
     margin-left: 220px;
     left: 0;
-    display: block;
+    top: 4px;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     transition: left 0.2s, margin-left 0.2s;
 }
@@ -390,7 +393,7 @@ body {
     content: '';
     left: 0;
     right: auto;
-    top: 0;
+    margin-top: -4px;
     width: 100%;
     height: 7px;
     z-index: 0;
@@ -431,10 +434,12 @@ body {
 }
 
 .kiwi-container {
-    position: absolute;
-    top: 0;
-    bottom: 40px;
-    width: 100%;
+    flex-grow: 1;
+
+    /* The nicklist scroller needs some type of height set on it's parent, but since we use flexbox
+       it starts conflicting on firefox. Luckily flexbox ignores this 5% and resizes it as we intend
+       anyway. */
+    height: 5%;
 }
 
 .kiwi-mediaviewer {
@@ -443,10 +448,6 @@ body {
 }
 
 .kiwi-controlinput {
-    position: absolute;
-    bottom: 0;
-    height: 40px;
-    width: 100%;
     z-index: 2;
 }
 

@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2019-05-19 11:02\n"
+"PO-Revision-Date: 2019-05-25 22:50\n"
 
 #: Start
 msgid "start_button"
@@ -206,7 +206,7 @@ msgstr "General"
 
 #: Language
 msgid "settings_language"
-msgstr ""
+msgstr "Language"
 
 #: Theme
 msgid "settings_theme"

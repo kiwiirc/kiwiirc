@@ -182,7 +182,6 @@ export default {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    top: 4px;
 }
 
 /* When the sidebar is open we will put a shadow over the text area */
@@ -389,7 +388,7 @@ export default {
     }
 
     .kiwi-sidebar {
-        top: 0;
+        top: -4px;
     }
 }
 
