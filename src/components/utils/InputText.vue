@@ -12,8 +12,8 @@
         <template v-if="type==='password'">
             <input
                 v-model="currentValue"
-                :type="plainTextEnabled ? 'text' : 'password'"
-                :class="{inputPlainText: showPlainText}"
+                :type="plainTextEnabled && !checkIfEdge() ? 'text' : 'password'"
+                :class="{'u-form-input-plaintext' : !checkIfEdge() && showPlainText}"
                 autocomplete="off"
                 autocorrect="off"
                 autocapitalize="off" spellcheck="false"
@@ -21,7 +21,7 @@
             >
 
             <i
-                v-if="showPlainText"
+                v-if="showPlainText && !checkIfEdge()"
                 :class="{active: plainTextEnabled}"
                 class="fa fa-eye kiwi-show-plaintext"
                 aria-hidden="true"
@@ -80,6 +80,9 @@ export default Vue.component('input-text', {
     methods: {
         updateValue: function updateValue(newValue) {
             this.$emit('input', newValue);
+        },
+        checkIfEdge() {
+            return navigator.appVersion.indexOf('Edge') > -1;
         },
     },
 });
@@ -158,17 +161,16 @@ export default Vue.component('input-text', {
     margin: 0;
 }
 
-input[type=text].inputPlainText,
-input[type=password].inputPlainText {
+input[type=text].u-form-input-plaintext,
+input[type=password].u-form-input-plaintext {
     display: inline-block;
-    width: calc(100% - 34px);
+    width: calc(100% - 35px);
     border-bottom: 0;
     padding-right: 0;
 }
 
 .kiwi-show-plaintext {
     display: inline-block;
-    height: 40px;
     line-height: 40px;
     width: 30px;
     text-align: center;
