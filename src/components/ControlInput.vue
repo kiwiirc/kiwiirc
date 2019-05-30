@@ -837,6 +837,10 @@ export default {
 .kiwi-typinguserslist {
     position: absolute;
     top: -24px;
-    background: var(--brand-default-bg);
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: left;
+    left: 0;
 }
 </style>
