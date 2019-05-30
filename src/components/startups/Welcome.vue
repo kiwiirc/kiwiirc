@@ -29,23 +29,16 @@
                     <input v-model="show_password_box" type="checkbox" >
                     <span> {{ $t('password_have') }} </span>
                 </label>
-                <div class="kiwi-password-input-container">
-                    <input-text
-                        v-focus
-                        v-if="showPass && (show_password_box || !toggablePass)"
-                        :label="$t('password')"
-                        :type="showPlainText ? 'text' : 'password'"
-                        v-model="password"
-                        class="kiwi-welcome-simple-password u-input-text--reveal-value"
-                    />
-                    <i
-                        v-if="showPass && (show_password_box || !toggablePass)"
-                        :class="{active: showPlainText}"
-                        class="fa fa-eye kiwi-show-plaintext"
-                        aria-hidden="true"
-                        @click="showPlainText = !showPlainText"
-                    />
-                </div>
+
+                <input-text
+                    v-focus
+                    v-if="showPass && (show_password_box || !toggablePass)"
+                    :label="$t('password')"
+                    :show-plain-text="true"
+                    v-model="password"
+                    type="password"
+                    class="kiwi-welcome-simple-password u-input-text--reveal-value"
+                />
 
                 <input-text
                     v-if="showChannel"
@@ -410,28 +403,6 @@ export default {
 .kiwi-welcome-simple-start[disabled] {
     cursor: not-allowed;
     opacity: 0.65;
-}
-
-.kiwi-password-input-container {
-    position: relative;
-}
-
-.kiwi-show-plaintext {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 40px;
-    line-height: 40px;
-    width: 40px;
-    text-align: center;
-    cursor: pointer;
-    opacity: 0.5;
-    transition: opacity 0.2s;
-}
-
-.kiwi-show-plaintext.active,
-.kiwi-show-plaintext:hover {
-    opacity: 1;
 }
 
 .kiwi-welcome-simple-channel {

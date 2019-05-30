@@ -9,14 +9,23 @@
 
         <span class="u-input-text-label">{{ label }}</span>
 
+        <i
+            v-if="showPlainText"
+            :class="{active: plainTextEnabled}"
+            class="fa fa-eye kiwi-show-plaintext"
+            aria-hidden="true"
+            @click="plainTextEnabled = !plainTextEnabled"
+        />
+
         <input
             v-if="type==='password'"
             v-model="currentValue"
-            type="password"
+            :type="plainTextEnabled ? 'text' : 'password'"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off" spellcheck="false" @focus="hasFocus=true" @blur="hasFocus=false"
         >
+
         <input
             v-else-if="type==='number'"
             v-model="currentValue"
@@ -48,9 +57,10 @@
 let Vue = require('vue');
 
 export default Vue.component('input-text', {
-    props: ['value', 'label', 'type'],
+    props: ['value', 'label', 'type', 'showPlainText'],
     data: function data() {
         return {
+            plainTextEnabled: false,
             hasFocus: false,
         };
     },
@@ -142,6 +152,24 @@ export default Vue.component('input-text', {
     /* For webkit browsers like Safari and Chrome */
     -webkit-appearance: none;
     margin: 0;
+}
+
+.kiwi-show-plaintext {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.kiwi-show-plaintext.active,
+.kiwi-show-plaintext:hover {
+    opacity: 1;
 }
 
 </style>
