@@ -416,6 +416,7 @@ export default {
 .kiwi-statebrowser-channel-name {
     cursor: pointer;
     flex: 1;
+    word-break: break-all;
     transition: padding 0.1s, border 0.1s;
 }
 
