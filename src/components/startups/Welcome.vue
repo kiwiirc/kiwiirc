@@ -33,10 +33,17 @@
                     v-focus
                     v-if="showPass && (show_password_box || !toggablePass)"
                     :label="$t('password')"
+                    :type="showPlainText ? 'text' : 'password'"
                     v-model="password"
                     class="kiwi-welcome-simple-password u-input-text--reveal-value"
-                    type="password"
                 />
+                <label
+                    v-if="showPass && (show_password_box || !toggablePass)"
+                    class="kiwi-welcome-simple-have-password"
+                >
+                    <input v-model="showPlainText" type="checkbox" >
+                    <span> Display password as plaintext? </span>
+                </label>
                 <input-text
                     v-if="showChannel"
                     :label="$t('channel')"
@@ -94,6 +101,7 @@ export default {
             recaptchaSiteId: '',
             recaptchaResponseCache: '',
             connectWithoutChannel: false,
+            showPlainText: false,
         };
     },
     computed: {
