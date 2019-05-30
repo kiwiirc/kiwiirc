@@ -9,23 +9,25 @@
 
         <span class="u-input-text-label">{{ label }}</span>
 
-        <i
-            v-if="showPlainText"
-            :class="{active: plainTextEnabled}"
-            class="fa fa-eye kiwi-show-plaintext"
-            aria-hidden="true"
-            @click="plainTextEnabled = !plainTextEnabled"
-        />
+        <template v-if="type==='password'">
+            <input
+                v-model="currentValue"
+                :type="plainTextEnabled ? 'text' : 'password'"
+                :class="{inputPlainText: showPlainText}"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off" spellcheck="false"
+                @focus="hasFocus=true" @blur="hasFocus=false"
+            >
 
-        <input
-            v-if="type==='password'"
-            v-model="currentValue"
-            :type="plainTextEnabled ? 'text' : 'password'"
-            :class="{inputPlainText: showPlainText}"
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off" spellcheck="false" @focus="hasFocus=true" @blur="hasFocus=false"
-        >
+            <i
+                v-if="showPlainText"
+                :class="{active: plainTextEnabled}"
+                class="fa fa-eye kiwi-show-plaintext"
+                aria-hidden="true"
+                @click="plainTextEnabled = !plainTextEnabled"
+            />
+        </template>
 
         <input
             v-else-if="type==='number'"
@@ -98,6 +100,7 @@ export default Vue.component('input-text', {
     border: none;
     outline: none;
     line-height: 1.6em;
+    border-bottom: none;
     font-size: 0.9em;
 }
 
@@ -157,16 +160,17 @@ export default Vue.component('input-text', {
 
 input[type=text].inputPlainText,
 input[type=password].inputPlainText {
-    padding-right: 40px;
+    display: inline-block;
+    width: calc(100% - 34px);
+    border-bottom: 0;
+    padding-right: 0;
 }
 
 .kiwi-show-plaintext {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    display: inline-block;
     height: 40px;
     line-height: 40px;
-    width: 40px;
+    width: 30px;
     text-align: center;
     cursor: pointer;
     opacity: 0.5;

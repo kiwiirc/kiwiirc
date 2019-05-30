@@ -20,6 +20,7 @@
                 <div class="kiwi-networksettings-connection-password">
                     <template v-if="server_type==='network'">
                         <input-text
+                            :show-plain-text="true"
                             :label="$t('password')"
                             v-model="network.password"
                             type="password"
