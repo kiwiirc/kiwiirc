@@ -90,6 +90,9 @@ export default class BouncerProvider {
 
         this.bnc.registered = true;
 
+        // hide the empty controller network
+        network.hidden = true;
+
         // populate network list from the controller connection
         let bncNetworks = await client.bnc.getNetworks();
         let preparedNetworks = [];
