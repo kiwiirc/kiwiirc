@@ -21,6 +21,7 @@
             v-if="type==='password'"
             v-model="currentValue"
             :type="plainTextEnabled ? 'text' : 'password'"
+            :class="{inputPlainText: showPlainText}"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off" spellcheck="false" @focus="hasFocus=true" @blur="hasFocus=false"
@@ -152,6 +153,11 @@ export default Vue.component('input-text', {
     /* For webkit browsers like Safari and Chrome */
     -webkit-appearance: none;
     margin: 0;
+}
+
+input[type=text].inputPlainText,
+input[type=password].inputPlainText {
+    padding-right: 40px;
 }
 
 .kiwi-show-plaintext {
