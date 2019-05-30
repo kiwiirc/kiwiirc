@@ -158,6 +158,9 @@ export default class BouncerProvider {
             if (buffer.joined) {
                 newBuffer.enabled = true;
                 newBuffer.joined = true;
+            } else {
+                newBuffer.enabled = false;
+                newBuffer.joined = false;
             }
             if (buffer.seen) {
                 newBuffer.last_read = (new Date(buffer.seen)).getTime();
