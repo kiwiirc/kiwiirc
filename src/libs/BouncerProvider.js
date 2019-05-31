@@ -81,7 +81,7 @@ export default class BouncerProvider {
 
         // Set the bncname if the network upstream exists and we havn't already set it
         if (network.ircClient.bnc.hasNetwork() && !network.connection.bncname) {
-            network.connection.bncname = client.tags().network;
+            network.connection.bncname = client.bnc.tags().network;
         }
     }
 
