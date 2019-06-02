@@ -11,8 +11,16 @@
                     @click="setInviteOnly"
                 >Only allow invited users</a>
             </div>
+            <div v-else>
+                Only invited users can join.
+                <a
+                    v-if="areWeAnOp"
+                    class="u-link"
+                    @click="removeInviteOnly"
+                >Allow anybody to join</a>
+            </div>
 
-            <span v-if="anyRegisteredUserCanJoin">Any registered user can join</span>
+            <span v-if="anyRegisteredUserCanJoin">Only registered users can join</span>
 
             <div v-if="supportsAccounts">
                 <h3>Invited users ({{ inviteListAccounts.length }})</h3>
@@ -45,6 +53,7 @@
                         </td>
                         <td class="kiwi-invitelist-table-actions">
                             <i
+                                v-if="areWeAnOp"
                                 class="fa fa-trash"
                                 aria-hidden="true"
                                 @click="removeInvite(invite.invited)"
@@ -213,6 +222,9 @@ export default {
         },
         setInviteOnly() {
             this.buffer.getNetwork().ircClient.mode(this.buffer.name, '+i');
+        },
+        removeInviteOnly() {
+            this.buffer.getNetwork().ircClient.mode(this.buffer.name, '-i');
         },
     },
 };
