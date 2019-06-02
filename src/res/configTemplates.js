@@ -91,7 +91,7 @@ export const configTemplates = {
         showAutocomplete: true,
         showEmojiPicker: true,
         showSendButton: false,
-        ShowAwayStatusIndicators: true,
+        showAwayStatusIndicators: true,
         sidebarDefault: 'nicklist',
         showRaw: false,
         hideSettings: null,
