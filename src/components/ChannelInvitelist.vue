@@ -22,9 +22,10 @@
 
             <span v-if="anyRegisteredUserCanJoin">Only registered users can join</span>
 
-            <div v-if="supportsAccounts">
+            <div>
                 <h3>Invited users ({{ inviteListAccounts.length }})</h3>
-                <div v-if="knownAccounts.length > 0 && areWeAnOp">
+
+                <div v-if="supportsAccounts && areWeAnOp">
                     <select ref="addInviteList">
                         <option
                             v-for="user in knownAccounts"
@@ -33,8 +34,12 @@
                     </select>
                     <button @click="addAccountInvite($refs.addInviteList.value)">Add invite</button>
                 </div>
+                <div v-if="!supportsAccounts && areWeAnOp" class="kiwi-invitelist-addmask">
+                    <input ref="addInviteText" type="text" class="u-input">
+                    <button @click="addInvite($refs.addInviteText.value)">Add invite</button>
+                </div>
 
-                <table v-if="inviteListAccounts.length > 0" class="kiwi-invitelist-table">
+                <table v-if="inviteList.length > 0" class="kiwi-invitelist-table">
                     <tr>
                         <th>{{ $t('invites_user') }}</th>
                         <th>{{ $t('invites_by') }}</th>
@@ -60,31 +65,19 @@
                             />
                         </td>
                     </tr>
-                </table>
-            </div>
-
-            <div v-if="!supportsAccounts || inviteListNonAccounts.length > 0">
-                <h3>Invite matches</h3>
-                <div v-if="areWeAnOp" class="kiwi-invitelist-addmask">
-                    <input ref="addInviteText" type="text" class="u-input">
-                    <button @click="addInvite($refs.addInviteText.value)">Add invite</button>
-                </div>
-
-                <table class="kiwi-invitelist-table">
-                    <tr>
-                        <th>{{ $t('invites_user') }}</th>
-                        <th/>
-                        <th/>
-                    </tr>
                     <tr v-for="invite in inviteListNonAccounts" :key="invite.invited">
                         <td class="kiwi-invitelist-table-mask">
-                            {{ invite.invited }}
+                            {{ displayMask(invite) }}
+                        </td>
+                        <td class="kiwi-invitelist-table-invitedby">
+                            {{ invite.invited_by }}
                         </td>
                         <td class="kiwi-invitelist-table-invitedat">
                             {{ (new Date(invite.invited_at * 1000)).toDateString() }}
                         </td>
                         <td class="kiwi-invitelist-table-actions">
                             <i
+                                v-if="areWeAnOp"
                                 class="fa fa-trash"
                                 aria-hidden="true"
                                 @click="removeInvite(invite.invited)"
@@ -105,6 +98,20 @@
 import _ from 'lodash';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 
+function inviteListSorter(a, b) {
+    let aMask = a.invited.toUpperCase();
+    let bMask = b.invited.toUpperCase();
+
+    if (aMask < bMask) {
+        return -1;
+    }
+    if (aMask > bMask) {
+        return 1;
+    }
+
+    return 0;
+}
+
 export default {
     props: ['buffer'],
     data() {
@@ -122,29 +129,21 @@ export default {
         },
         inviteListAccounts() {
             let accounts = this.inviteList.filter(i => i.invited.indexOf(this.extban) === 0);
-            accounts.sort((a, b) => {
-                let aMask = a.invited.toUpperCase();
-                let bMask = b.invited.toUpperCase();
-
-                if (aMask < bMask) {
-                    return -1;
-                }
-                if (aMask > bMask) {
-                    return 1;
-                }
-
-                return 0;
-            });
-
+            accounts.sort(inviteListSorter);
             return accounts;
         },
         inviteListNonAccounts() {
+            let invites = [];
+
             // If the ircd doesn't support accounts extban type, consider every invex non-account
             if (!this.supportsAccounts) {
-                return this.inviteList;
+                invites = this.inviteList;
+            } else {
+                invites = this.inviteList.filter(i => i.invited.indexOf(this.extban) !== 0);
             }
 
-            return this.inviteList.filter(i => i.invited.indexOf(this.extban) !== 0);
+            invites.sort(inviteListSorter);
+            return invites;
         },
         channelIsInviteOnly() {
             return typeof this.buffer.modes.i !== 'undefined';
@@ -211,6 +210,10 @@ export default {
             this.inviteList = this.inviteList.filter(invite => invite.invited !== mask);
         },
         addAccountInvite(accountName) {
+            if (!accountName) {
+                return;
+            }
+
             let network = this.buffer.getNetwork();
             network.ircClient.addInvite(this.buffer.name, `${this.extban}:${accountName}`);
             this.updateInvitelist();
