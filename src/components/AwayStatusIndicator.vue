@@ -22,6 +22,10 @@ export default {
             return this.user === user;
         },
         shouldShowStatus() {
+            if (!this.$state.setting('showAwayStatusIndicators')) {
+                return false;
+            }
+
             if (this.network.state !== 'connected') {
                 return false;
             }
