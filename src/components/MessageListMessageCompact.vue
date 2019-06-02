@@ -231,7 +231,8 @@ export default {
     opacity: 1;
 }
 
-@media screen and (max-width: 700px) {
+// Mobile layout (matches this.$state.ui.is_narrow)
+@media screen and (max-width: 769px) {
     .kiwi-messagelist-message--compact {
         padding: 5px;
     }
