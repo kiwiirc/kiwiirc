@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-06-02 19:22\n"
+"PO-Revision-Date: 2019-06-02 19:31\n"
 
 #: Start
 msgid "start_button"
@@ -414,7 +414,7 @@ msgstr "Kanal bulunamadı, daha sonra tekrar deneyin."
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Kiwi IRC'ye Hoşgeldiniz! Soldan bir kanal seçin."
+msgstr "Kiwi IRC'ye Hoşgeldiniz!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
