@@ -1,5 +1,6 @@
 /** @module */
 
+import Vue from 'vue';
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import { def } from './common';
@@ -14,7 +15,7 @@ export default class BufferState {
         this.id = nextBufferId++;
         this.networkid = networkid;
         this.name = name;
-        this.topic = '';
+        this.topics = [];
         this.key = '';
         this.joined = false;
         this.enabled = true;
@@ -28,12 +29,16 @@ export default class BufferState {
             channel_badkey: false,
             chathistory_available: true,
             requested_modes: false,
+            requested_banlist: false,
         };
         this.settings = { };
         this.last_read = 0;
         this.active_timeout = null;
         this.message_count = 0;
         this.current_input = '';
+        this.show_input = true;
+
+        Vue.observable(this);
 
         // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'state', state, false);
@@ -49,6 +54,21 @@ export default class BufferState {
 
         def(this, 'addMessageBatch', createMessageBatch(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
+
+        // poll who to update away status if away-notify is not enabled
+        if (this.isChannel()) {
+            maybeStartWhoLoop(this);
+        }
+    }
+
+    get topic() {
+        return this.topics.length === 0 ?
+            '' :
+            this.topics[this.topics.length - 1];
+    }
+
+    set topic(newVal) {
+        this.topics.push(newVal);
     }
 
     getNetwork() {
@@ -416,4 +436,54 @@ function createMessageBatch(bufferState) {
     };
 
     return batchedAdd(addSingleMessage, addMultipleMessages);
+}
+
+// Update our user list status every 30seconds to get each users current away status
+function maybeStartWhoLoop(bufferState) {
+    let network = bufferState.state.getNetwork(bufferState.networkid);
+
+    if (network.state === 'connected') {
+        // network is connected start the loop if its needed
+        nextLoop();
+    } else {
+        // Network is not coonnected. Wait until it is
+        let on001 = (command, event, eventNetwork) => {
+            if (eventNetwork === network) {
+                bufferState.state.$off('irc.raw.001', on001);
+                nextLoop();
+            }
+        };
+        bufferState.state.$on('irc.raw.001', on001);
+    }
+
+    function nextLoop() {
+        setTimeout(updateWhoStatusLoop, 30000);
+    }
+
+    function updateWhoStatusLoop() {
+        network = bufferState.state.getNetwork(bufferState.networkid);
+
+        // Make sure the network still exists
+        if (!network) {
+            return;
+        }
+
+        // Make sure the buffer still exists
+        if (!network.bufferByName(bufferState.name)) {
+            return;
+        }
+
+        let whoLoop = bufferState.setting('who_loop');
+        let isJoined = bufferState.joined;
+        let hasAwayNotify = network.ircClient.network.cap.isEnabled('away-notify');
+        let networkConnected = network.state === 'connected';
+
+        if (whoLoop && networkConnected && isJoined && !hasAwayNotify) {
+            network.ircClient.who(bufferState.name, () => {
+                nextLoop();
+            });
+        } else {
+            nextLoop();
+        }
+    }
 }

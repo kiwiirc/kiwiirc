@@ -1,6 +1,5 @@
 msgid ""
 msgstr ""
-"Start\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
@@ -8,10 +7,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-01-12 20:20\n"
+"PO-Revision-Date: 2019-05-19 12:20\n"
 
 #: Start
 msgid "start_button"
@@ -147,11 +146,11 @@ msgstr "disponibile"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Invia un messaggio"
+msgstr "Messaggio"
 
 #: More information
 msgid "more_information"
-msgstr "Ulteriori informazioni"
+msgstr "Informazioni"
 
 #: Ignore user
 msgid "ignore_user"
@@ -204,6 +203,10 @@ msgstr "secondi"
 #: General
 msgid "settings_general"
 msgstr "Generali"
+
+#: Language
+msgid "settings_language"
+msgstr "Lingua"
 
 #: Theme
 msgid "settings_theme"
@@ -264,6 +267,10 @@ msgstr "Formattazione aggiuntiva"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Colora i nickname nel messaggi"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Condividi quando sto scrivendo un messaggio"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -488,6 +495,10 @@ msgstr "Codifica"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Mostra dati grezzi"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Websocket diretto"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -859,7 +870,7 @@ msgstr "Impostati come assente"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Impostati come attivo"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -872,6 +883,14 @@ msgstr "Ignora i messaggi da qualcuno"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Smetti di ignorare i messaggi di qualcuno"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Lancia un dado"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Lancia un dado con {{sides}} lati e ottiene {{number}}"
 
 #: Your IRC client
 msgid "personal_client"

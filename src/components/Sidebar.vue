@@ -59,6 +59,10 @@
                                         <span>{{ $t('side_colours') }}</span>
                                         <input v-model="settingColouredNicklist" type="checkbox">
                                     </label>
+                                    <label class="u-checkbox-wrapper">
+                                        <span>{{ $t('settings_share_typing') }}</span>
+                                        <input v-model="settingShareTyping" type="checkbox">
+                                    </label>
                                 </form>
                             </div>
                         </tabbed-tab>
@@ -208,6 +212,14 @@ export default {
                 return this.buffer.setting('extra_formatting', newVal);
             },
         },
+        settingShareTyping: {
+            get: function getSettingShareTyping() {
+                return this.buffer.setting('share_typing');
+            },
+            set: function setSettingShareTyping(newVal) {
+                return this.buffer.setting('share_typing', newVal);
+            },
+        },
         bufferType() {
             let type = '';
 
@@ -230,11 +242,11 @@ export default {
 
 <style lang="less">
 .kiwi-sidebar {
-    background: #fff;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    z-index: 100;
 }
 
 .kiwi-sidebar.kiwi-sidebar-section-settings {
@@ -304,17 +316,22 @@ export default {
 
     .kiwi-sidebar-options .kiwi-sidebar-close {
         width: 100%;
-        display: inline-block;
-        padding: 0 20px 0 40px;
+        display: block;
+        padding: 0 15px;
+        height: 50px;
+        line-height: 50px;
         text-align: right;
         box-sizing: border-box;
+        letter-spacing: 2px;
         transition: background 0.3s;
     }
 
     .kiwi-sidebar-options .kiwi-sidebar-close i {
-        margin-left: 10px;
+        margin-left: 5px;
         font-size: 1.5em;
         line-height: 47px;
+        position: relative;
+        top: 2px;
     }
 
     .kiwi-sidebar .u-tabbed-view-tab {

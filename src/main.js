@@ -3,6 +3,8 @@ import Vue from 'vue';
 import i18next from 'i18next';
 import i18nextXHR from 'i18next-xhr-backend';
 import VueI18Next from '@panter/vue-i18next';
+import VueVirtualScroller from 'vue-virtual-scroller';
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css';
 
 // fetch polyfill
 import 'whatwg-fetch';
@@ -22,6 +24,8 @@ import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 import { AudioManager } from '@/libs/AudioManager';
 import { SoundBleep } from '@/libs/SoundBleep';
+import WindowTitle from '@/libs/WindowTitle';
+import { configTemplates } from '@/res/configTemplates';
 
 // Global utilities
 import '@/components/utils/TabbedView';
@@ -29,6 +33,8 @@ import '@/components/utils/InputText';
 import '@/components/utils/IrcInput';
 import '@/components/utils/InputPrompt';
 import '@/components/utils/InputConfirm';
+
+Vue.use(VueVirtualScroller);
 
 let logLevelMatch = window.location.href.match(/kiwi-loglevel=(\d)/);
 if (logLevelMatch && logLevelMatch[1]) {
@@ -197,15 +203,11 @@ function loadApp() {
 
 function applyConfig(config) {
     Misc.dedotObject(config);
-    applyConfigObj(config, state.settings);
-
-    // Update the window title if we have one
-    if (state.settings.windowTitle) {
-        window.document.title = state.settings.windowTitle;
+    // if we have a config template apply that before other configs
+    if (configTemplates[config.template]) {
+        applyConfigObj(configTemplates[config.template], state.settings);
     }
-    state.$watch('settings.windowTitle', (newVal) => {
-        window.document.title = newVal;
-    });
+    applyConfigObj(config, state.settings);
 }
 
 // Recursively merge an object onto another via Vue.$set
@@ -332,37 +334,49 @@ function initLocales() {
         },
     });
 
-    let defaultLang = state.setting('language');
-    let preferredLangs = _.clone(window.navigator && window.navigator.languages) || [];
+    const setDefaultLanguage = () => {
+        let defaultLang = state.setting('language');
+        let preferredLangs = _.clone(window.navigator && window.navigator.languages) || [];
 
-    // our configs default lang overrides all others
-    if (defaultLang) {
-        preferredLangs.unshift(defaultLang);
-    }
-
-    // set a default language
-    i18next.changeLanguage('en-us');
-
-    // Go through our browser languages until we find one that we support
-    for (let idx = 0; idx < preferredLangs.length; idx++) {
-        let lang = preferredLangs[idx];
-
-        // if this is a language such as 'fr', add a following one of 'fr-fr' to cover
-        // both cases
-        if (lang.length === 2) {
-            preferredLangs.splice(idx + 1, 0, lang + '-' + lang);
+        // our configs default lang overrides all others
+        if (defaultLang) {
+            preferredLangs.unshift(defaultLang);
         }
 
-        if (_.includes(AvailableLocales.locales, lang.toLowerCase())) {
-            i18next.changeLanguage(lang, (err, t) => {
-                if (err) {
-                    // setting the language failed so set default again
-                    i18next.changeLanguage('en-us');
-                }
-            });
-            break;
+        // set a default language
+        i18next.changeLanguage('en-us');
+
+        // Go through our browser languages until we find one that we support
+        for (let idx = 0; idx < preferredLangs.length; idx++) {
+            let lang = preferredLangs[idx];
+
+            // if this is a language such as 'fr', add a following one of 'fr-fr' to cover
+            // both cases
+            if (lang.length === 2) {
+                preferredLangs.splice(idx + 1, 0, lang + '-' + lang);
+            }
+
+            if (_.includes(AvailableLocales.locales, lang.toLowerCase())) {
+                i18next.changeLanguage(lang, (err, t) => {
+                    if (err) {
+                        // setting the language failed so set default again
+                        i18next.changeLanguage('en-us');
+                    }
+                });
+                break;
+            }
         }
-    }
+    };
+    setDefaultLanguage();
+
+    // Update the language if the setting changes.
+    state.$watch('user_settings.language', (lang) => {
+        if (!lang && !state.setting('language')) {
+            setDefaultLanguage();
+        } else {
+            i18next.changeLanguage(lang || state.setting('language') || 'en-us');
+        }
+    });
 }
 
 async function initState() {
@@ -399,7 +413,7 @@ function initSound() {
     let bleep = new AudioManager(sound);
 
     bleep.listen(state);
-    bleep.listenForHighlights(state);
+    bleep.watchForMessages(state);
 }
 
 function initInputCommands() {
@@ -408,6 +422,8 @@ function initInputCommands() {
 }
 
 function startApp() {
+    new WindowTitle(state);
+
     api.emit('init');
 
     /* eslint-disable no-new */

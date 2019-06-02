@@ -35,7 +35,7 @@
             <div>
                 <ul v-if="highlights.length > 0">
                     <li v-for="msg in highlights" :key="msg.id">
-                        {{ msg.nick }}: {{ msg.message }}
+                        {{ msg.nick ? msg.nick + ': ' : '' }}{{ msg.message }}
                     </li>
                 </ul>
                 <p v-else>{{ $t('nobody_mentioned_you') }}</p>
@@ -92,6 +92,7 @@ export default {
             return this.buffer.getMessages()
                 .filter(m => m.isHighlight)
                 .filter(m => m.type !== 'traffic')
+                .filter(m => m.type !== 'topic')
                 .filter(m => m.type !== 'mode');
         },
     },
@@ -178,8 +179,8 @@ export default {
 
 @media screen and (max-width: 769px) {
     .kiwi-sidebar.kiwi-sidebar-section-about {
-        max-width: 100%;
         width: 100%;
+        max-width: 100%;
     }
 }
 </style>

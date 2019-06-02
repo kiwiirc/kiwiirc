@@ -71,6 +71,7 @@ export default Vue.component('tabbed-view', {
 
             // Without this, vue doesnt update itself with the new $children :(
             this.a++;
+            this.$emit('changed', c.name);
         },
         setActiveByName: function setActiveByName(name) {
             this.$children.forEach((child) => {
@@ -116,20 +117,18 @@ export default Vue.component('tabbed-view', {
     text-align: left;
     box-sizing: border-box;
     padding: 0.5em 1em;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
     transition: border 0.3s;
 }
 
-.u-tabbed-view-tab:hover {
+.u-tabbed-view-tab:hover,
+.u-tabbed-view-tab--active {
     border-bottom-width: 3px;
 }
 
 .u-tabbed-view-tab:last-of-type {
     z-index: 1;
     border-radius: 0 4px 0 0;
-}
-
-.u-tabbed-view-tab--active {
-    border-bottom-width: 3px;
 }
 
 .u-tabbed-content {

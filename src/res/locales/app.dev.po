@@ -203,6 +203,10 @@ msgstr "{{count}} seconds"
 msgid "settings_general"
 msgstr "General"
 
+#: Language
+msgid "settings_language"
+msgstr "Language"
+
 #: Theme
 msgid "settings_theme"
 msgstr "Theme"
@@ -222,6 +226,10 @@ msgstr "Message Layout"
 #: Use monospace
 msgid "settings_use_monospace"
 msgstr "Use monospace"
+
+#: Use Kiwi as my default IRC client
+msgid "settings_default_handler"
+msgstr "Use Kiwi as my default IRC client"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -262,6 +270,10 @@ msgstr "Extra formatting"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Colour nicknames in messages"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Share when I'm typing a message"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -552,6 +564,10 @@ msgstr "Encoding"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Show Raw"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Direct websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -982,6 +998,13 @@ msgstr "Ignore messages from somebody"
 msgid "command_unignore"
 msgstr "Stop ignoring somebody"
 
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Roll a Dice"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
 
 
 #: Personal $t('personal_')
@@ -1001,6 +1024,22 @@ msgstr "They will be here when you come back."
 #: Add a Network
 msgid "personal_add"
 msgstr "Add a Network"
+
+#: You are trying to connect to 
+msgid "personal_connect_to"
+msgstr "You are trying to connect to {{network}}"
+
+#: Network has been added to your existing Kiwi window.
+msgid "personal_added_to_existing"
+msgstr "Network has been added to your existing Kiwi window.";
+
+#: Add network to existing Kiwi window
+msgid "personal_add_existing_tab"
+msgstr "Add network to existing Kiwi window"
+
+#: Temporarily connect to this network
+msgid "personal_connect_temporary"
+msgstr "Temporarily connect to this network"
 
 #: Saved networks
 msgid "personal_saved"

@@ -1,17 +1,24 @@
 <template>
-    <div class="kiwi-controlinput kiwi-theme-bg">
-        <div
-            :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
-            class="kiwi-controlinput-selfuser"
-        >
-            <self-user
-                v-if="selfuser_open && networkState==='connected'"
-                :network="buffer.getNetwork()"
-                @close="selfuser_open=false"
-            />
+    <div :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
+         class="kiwi-controlinput kiwi-theme-bg"
+    >
+        <div class="kiwi-controlinput-selfuser">
+            <transition name="kiwi-selfuser-trans">
+                <self-user
+                    v-if="networkState==='connected'
+                    && selfuser_open === true"
+                    :network="buffer.getNetwork()"
+                    @close="selfuser_open=false"
+                />
+            </transition>
         </div>
 
         <div class="kiwi-controlinput-inner">
+            <away-status-indicator
+                v-if="buffer.getNetwork() && buffer.getNetwork().state === 'connected'"
+                :network="buffer.getNetwork()"
+                :user="buffer.getNetwork().currentUser()"
+            />
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
                 <i
@@ -35,6 +42,7 @@
                     @selected="onAutocompleteSelected"
                     @cancel="onAutocompleteCancel"
                 />
+                <typing-users-list v-if="buffer.setting('share_typing')" :buffer="buffer" />
                 <div class="kiwi-controlinput-input-wrap">
                     <irc-input
                         ref="input"
@@ -52,7 +60,10 @@
                     class="kiwi-controlinput-send fa fa-paper-plane" />
             </form>
 
-            <div ref="plugins" class="kiwi-controlinput-tools">
+            <div
+                v-if="shouldShowInputButtons"
+                ref="plugins"
+                class="kiwi-controlinput-tools">
                 <div
                     :class="{'kiwi-controlinput-tools-container-expand--inverse': !showPlugins}"
                     class="kiwi-controlinput-tools-container-expand"
@@ -62,7 +73,10 @@
                 </div>
                 <transition name="kiwi-plugin-ui-trans">
                     <div v-if="showPlugins" class="kiwi-controlinput-tools-container">
-                        <a class="kiwi-controlinput-tool" @click.prevent="onToolClickTextStyle">
+                        <a
+                            v-if="shouldShowColorPicker"
+                            class="kiwi-controlinput-tool"
+                            @click.prevent="onToolClickTextStyle">
                             <i class="fa fa-adjust" aria-hidden="true"/>
                         </a>
                         <a
@@ -106,11 +120,15 @@ import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
 import SelfUser from './SelfUser';
+import AwayStatusIndicator from './AwayStatusIndicator';
+import TypingUsersList from './TypingUsersList';
 
 export default {
     components: {
         AutoComplete,
+        AwayStatusIndicator,
         SelfUser,
+        TypingUsersList,
     },
     props: ['container', 'buffer'],
     data() {
@@ -155,6 +173,19 @@ export default {
         shouldShowEmojiPicker() {
             return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
         },
+        shouldShowColorPicker() {
+            return this.$state.setting('showColorPicker');
+        },
+        shouldShowInputButtons() {
+            if (
+                this.pluginUiElements.length ||
+                this.shouldShowEmojiPicker ||
+                this.shouldShowColorPicker
+            ) {
+                return true;
+            }
+            return false;
+        },
     },
     watch: {
         history_pos(newVal) {
@@ -170,6 +201,9 @@ export default {
         },
     },
     created() {
+        this.typingTimer = null;
+        this.lastTypingTime = 0;
+
         this.listen(state, 'document.keydown', (ev) => {
             // No input box currently? Nothing to shift focus to
             if (!this.$refs.input) {
@@ -183,6 +217,13 @@ export default {
 
             // shift key on its own, don't shift focus we handle this below
             if (ev.keyCode === 16) {
+                return;
+            }
+
+            // Firefox 66.0.3 on linux isn't consistently setting ev.ctrlKey === true when only
+            // the control key is pressed so add a specific check for this
+            // TODO: Remove this check once ff 66.0.3 is no longer around
+            if (ev.keyCode === 17) {
                 return;
             }
 
@@ -429,6 +470,12 @@ export default {
             ) {
                 // Tab and no other keys as tab+other is often a keyboard shortcut
                 event.preventDefault();
+            } else if (!event.key.match(/^(Shift|Control|Alt|Enter)/)) {
+                if (inputVal.trim()) {
+                    this.startTyping();
+                } else {
+                    this.stopTyping(true);
+                }
             }
 
             if (this.autocomplete_open && this.autocomplete_filtering) {
@@ -450,6 +497,8 @@ export default {
             this.history_pos = this.history.length;
 
             this.$refs.input.reset();
+
+            this.stopTyping(false);
         },
         historyBack() {
             if (this.history_pos > 0) {
@@ -527,6 +576,61 @@ export default {
 
             return list;
         },
+        startTyping() {
+            if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
+                return;
+            }
+            if (!this.buffer.setting('share_typing')) {
+                return;
+            }
+            let buffer = this.buffer;
+            let network = buffer.getNetwork();
+            if (!buffer || (!buffer.isChannel() && !buffer.isQuery())) {
+                return;
+            }
+            if (this.typingTimer) {
+                clearTimeout(this.typingTimer);
+                this.typingTimer = null;
+            }
+            this.typingTimer = setTimeout(this.stopTyping, 3000);
+
+            if (Date.now() < this.lastTypingTime + 3000) {
+                return;
+            }
+
+            network.ircClient.typing.start(buffer.name);
+
+            this.lastTypingTime = Date.now();
+        },
+        stopTyping(sendStopPause) {
+            if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
+                return;
+            }
+            if (!this.buffer.setting('share_typing')) {
+                return;
+            }
+            let buffer = this.buffer;
+            let network = buffer.getNetwork();
+
+            if (!buffer || (!buffer.isChannel() && !buffer.isQuery())) {
+                return;
+            }
+
+            if (this.typingTimer) {
+                clearTimeout(this.typingTimer);
+                this.typingTimer = null;
+                this.lastTypingTime = 0;
+            }
+
+            // dont send done if a message was sent
+            if (!sendStopPause) {
+                return;
+            }
+
+            this.$refs.input.getRawText().trim() ?
+                network.ircClient.typing.pause(buffer.name) :
+                network.ircClient.typing.stop(buffer.name);
+        },
     },
 };
 </script>
@@ -535,16 +639,28 @@ export default {
 
 .kiwi-controlinput {
     z-index: 999;
+    position: relative;
+    border-top: 1px solid;
 }
 
 .kiwi-controlinput,
 .kiwi-controlinput-inner {
     padding: 0;
     box-sizing: border-box;
+    transition: width 0.2s;
+    transition-delay: 0.2s;
 }
 
 .kiwi-controlinput-inner i {
     font-size: 120%;
+    margin-left: 8px;
+    margin-right: 2px;
+}
+
+.kiwi-controlinput-inner .kiwi-awaystatusindicator {
+    margin-top: 16px;
+    margin-left: 10px;
+    margin-right: -2px;
 }
 
 .kiwi-controlinput-user {
@@ -555,6 +671,15 @@ export default {
     cursor: pointer;
     margin-right: 10px;
     line-height: 40px;
+    transition: width 0.2s;
+    transition-delay: 0.1s;
+    border-right: 1px solid;
+}
+
+.kiwi-controlinput-selfuser--open .kiwi-controlinput-user {
+    width: 286px;
+    transition: width 0.2s;
+    transition-delay: 0.1s;
 }
 
 .kiwi-controlinput-tools {
@@ -625,21 +750,39 @@ export default {
 
 .kiwi-controlinput-selfuser {
     position: absolute;
-    bottom: 100%;
+    bottom: 0;
+    z-index: 10;
     left: 0;
     max-height: 0;
-    transition: max-height 0.2s;
+    width: 324px;
+    box-sizing: border-box;
+    border-radius: 0 6px 0 0;
+    opacity: 0;
+    border-top: 1px solid;
+    border-right: 1px solid;
     overflow: hidden;
 }
 
-.kiwi-controlinput-selfuser--open {
+.kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
+    width: 324px;
     max-height: 300px;
+    opacity: 1;
 }
 
-@media screen and (max-width: 769px) {
-    .kiwi-controlinput {
-        z-index: 0;
-    }
+.kiwi-selfuser-trans-enter,
+.kiwi-selfuser-trans-leave-to {
+    opacity: 0;
+    height: 0;
+}
+
+.kiwi-selfuser-trans-enter-to,
+.kiwi-selfuser-trans-leave {
+    opacity: 1;
+}
+
+.kiwi-selfuser-trans-enter-active,
+.kiwi-selfuser-trans-leave-active {
+    transition: all 0.4s;
 }
 
 @media screen and (max-width: 500px) {
@@ -681,4 +824,19 @@ export default {
     transition: right 0.2s;
 }
 
+@media screen and (max-width: 769px) {
+    .kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
+        width: 100%;
+    }
+
+    .kiwi-wrap--statebrowser-drawopen .kiwi-controlinput {
+        z-index: 0;
+    }
+}
+
+.kiwi-typinguserslist {
+    position: absolute;
+    top: -24px;
+    background: var(--brand-default-bg);
+}
 </style>

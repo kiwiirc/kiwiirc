@@ -40,12 +40,20 @@
             <span
                 :style="{ 'color': userColour }"
                 :data-nick="message.nick"
-                class="kiwi-messagelist-nick"
+                :class="[
+                    'kiwi-messagelist-nick',
+                    (message.user && userMode(message.user)) ?
+                        'kiwi-messagelist-nick--mode-'+userMode(message.user) :
+                        ''
+                ]"
                 @click="ml.openUserBox(message.nick)"
                 @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                 @mouseout="ml.hover_nick='';"
             >
-                {{ displayNick }}
+                <span class="kiwi-messagelist-nick--prefix">
+                    {{ message.user ? userModePrefix(message.user) : '' }}
+                </span>
+                <span>{{ displayNick }}</span>
             </span>
             <div
                 v-rawElement="message.bodyTemplate.$el"
@@ -78,21 +86,20 @@ export default {
     },
     computed: {
         displayNick() {
-            let prefix = this.message.user ?
-                this.userModePrefix(this.message.user) :
-                '';
-
             let suffix = this.message.nick ?
                 ':' :
                 '';
 
-            return prefix + this.message.nick + suffix;
+            return this.message.nick + suffix;
         },
         userColour() {
             return this.ml.userColour(this.message.user);
         },
     },
     methods: {
+        userMode(user) {
+            return this.ml.buffer.userMode(user);
+        },
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
         },
@@ -116,12 +123,12 @@ export default {
     right: 0;
     padding: 0 10px;
     display: none;
+    opacity: 0.8;
 }
 
 //display timestamp when hovering over the message
 .kiwi-messagelist-message--text:hover .kiwi-messagelist-time {
     display: block;
-    background: #fff;
     border-radius: 5px 0 0 5px;
 }
 
@@ -160,8 +167,10 @@ export default {
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     display: inline-block;
-    padding: 5px;
     margin: 0;
+    font-size: 0.8em;
+    opacity: 0.8;
+    padding: 0;
 }
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-time {

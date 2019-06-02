@@ -1,6 +1,5 @@
 msgid ""
 msgstr ""
-"Start\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
@@ -8,10 +7,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2019-01-12 20:21\n"
+"PO-Revision-Date: 2019-05-19 22:51\n"
 
 #: Start
 msgid "start_button"
@@ -205,6 +204,10 @@ msgstr "sekundi"
 msgid "settings_general"
 msgstr "Općenito"
 
+#: Language
+msgid "settings_language"
+msgstr "Jezik"
+
 #: Theme
 msgid "settings_theme"
 msgstr "Izgled"
@@ -264,6 +267,10 @@ msgstr "Specijalno formatiranje"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Obojeni nadimci u porukama"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Podijeli kada tipkam poruku"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -488,6 +495,10 @@ msgstr "Šifriranje"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Prikaži ravno"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Direktni websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -859,7 +870,7 @@ msgstr "Označi sebe odsutnim"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Označi se aktivnim"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -872,6 +883,14 @@ msgstr "Ignoriši poruke od nekoga"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Prestani ignorisati nekoga"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Baci kocku"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Bačena je {{sides}} kockica a dobijeni broj je {{number}}"
 
 #: Your IRC client
 msgid "personal_client"

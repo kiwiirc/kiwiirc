@@ -5,6 +5,7 @@
 import EventEmitter from 'eventemitter3';
 import Vue from 'vue';
 import _ from 'lodash';
+import compareVersions from 'compare-versions';
 import * as Misc from '@/helpers/Misc';
 import Logger from './Logger';
 
@@ -16,6 +17,8 @@ let nextPluginId = 0;
 export default class GlobalApi extends EventEmitter {
     constructor() {
         super();
+
+        this.version = '1.3.0';
 
         /** A reference to the internal Vuejs instance */
         this.Vue = Vue;
@@ -45,6 +48,10 @@ export default class GlobalApi extends EventEmitter {
     static singleton() {
         singletonInstance = singletonInstance || new GlobalApi();
         return singletonInstance;
+    }
+
+    versionMatches(v) {
+        return compareVersions(this.version, v) >= 0;
     }
 
     /**

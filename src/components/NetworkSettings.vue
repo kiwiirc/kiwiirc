@@ -7,17 +7,21 @@
                     {{ $t('network_noconnect') }}
                     <span>{{ readableStateError(network.state_error) }}</span>
                 </div>
+                <div v-else-if="network.last_error" class="kiwi-networksettings-error">
+                    {{ $t('network_noconnect') }}
+                    <span>{{ network.last_error }}</span>
+                </div>
 
                 <server-selector
-                    :network="network"
+                    :connection="network.connection"
                     :network-list="network_list"
-                    @input="onServerInput" />
+                />
 
                 <div class="kiwi-networksettings-connection-password">
                     <template v-if="server_type==='network'">
                         <input-text
                             :label="$t('password')"
-                            v-model="network.connection.password"
+                            v-model="network.password"
                             type="password"
                         />
                     </template>
@@ -61,7 +65,10 @@
                 </div>
 
                 <div class="kiwi-networksettings-user">
-                    <input-text v-model="network.nick" :label="$t('settings_nickname')" />
+                    <input-text
+                        v-model="network.connection.nick"
+                        :label="$t('settings_nickname')"
+                    />
                 </div>
 
                 <h4
@@ -87,6 +94,18 @@
                                 {{ $t('settings_show_raw') }}
                             </span>
                             <input v-model="settingShowRaw" type="checkbox" >
+                        </label>
+
+                        <label>
+                            <span class="kiwi-appsettings-showraw-label">
+                                {{ $t('settings_use_websocket') }}
+                            </span>
+                            <input v-model="network.connection.direct" type="checkbox" >
+                            <input
+                                v-if="network.connection.direct"
+                                v-model="directWs"
+                                class="u-input"
+                            >
                         </label>
 
                         <label class="u-form-block">
@@ -156,6 +175,63 @@ export default {
                 return this.network.setting('show_raw', val);
             },
         },
+        directWs: {
+            get() {
+                if (!this.network.connection.direct) {
+                    return '';
+                }
+
+                let connection = this.network.connection;
+                let addr = '';
+                addr += connection.tls ?
+                    'wss://' :
+                    'ws://';
+                addr += connection.server;
+
+                let port = parseInt(connection.port, 10);
+                if (Number.isNaN(port)) {
+                    port = connection.tls ?
+                        443 :
+                        80;
+                }
+
+                // Only include the port if needed
+                if (
+                    (connection.tls && port !== 443) ||
+                    (!connection.tls && port !== 80)
+                ) {
+                    addr += ':' + connection.port;
+                }
+
+                addr += connection.path;
+
+                return addr;
+            },
+            set(newVal) {
+                let url = null;
+
+                try {
+                    url = new URL(newVal);
+                } catch (e) {
+                    return;
+                }
+
+                let connection = this.network.connection;
+                connection.tls = url.protocol.toLowerCase() === 'wss:';
+                connection.server = url.hostname;
+
+                let port = parseInt(url.port, 10);
+                if (Number.isNaN(port)) {
+                    port = url.protocol.toLowerCase() === 'wss:' ?
+                        433 :
+                        80;
+                }
+
+                connection.port = port;
+                let u = url.href.replace(url.protocol + '//', '');
+                connection.path = u.substr(u.indexOf('/'));
+            },
+        },
     },
     watch: {
         znc_username() {
@@ -181,12 +257,12 @@ export default {
         },
     },
     created() {
-        let isZnc = !!(this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
+        let isZnc = !!(this.network.password || '').match(/^(.*)\/(.*):(.*)$/);
         this.server_type = isZnc ?
             'znc' :
             'network';
         if (isZnc) {
-            let match = (this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
+            let match = (this.network.password || '').match(/^(.*)\/(.*):(.*)$/);
             this.znc_username = match[1] || '';
             this.znc_network = match[2] || '';
             this.znc_password = match[3] || '';
@@ -217,7 +293,7 @@ export default {
         },
         setZncPass() {
             let newPass = `${this.znc_username}/${this.znc_network}:${this.znc_password}`;
-            this.network.connection.password = newPass;
+            this.network.password = newPass;
         },
         toggleTls() {
             let connection = this.network.connection;
@@ -229,11 +305,6 @@ export default {
             } else if (!connection.tls && connection.port === 6697) {
                 connection.port = 6667;
             }
-        },
-        onServerInput(server) {
-            this.network.connection.server = server.server;
-            this.network.connection.port = server.port;
-            this.network.connection.tls = server.tls;
         },
     },
 };
@@ -268,6 +339,7 @@ export default {
     overflow: hidden;
     clear: both;
     border-radius: 2px;
+    border: 1px solid;
 }
 
 .kiwi-networksettings .u-form span {
@@ -411,6 +483,10 @@ export default {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.kiwi-dangerzone i {
+    margin-right: 5px;
+}
+
 .kiwi-dangerzone h3 {
     padding-top: 0;
 }
@@ -419,11 +495,13 @@ export default {
     text-align: center;
     margin: 1em;
     padding: 0.3em;
+    border: 1px solid;
 }
 
-.kiwi-networksettings-error span {
+.kiwi-networksettings .kiwi-networksettings-error span {
     display: block;
     font-style: italic;
+    text-align: center;
 }
 
 .kiwi-networksettings-server-types a {

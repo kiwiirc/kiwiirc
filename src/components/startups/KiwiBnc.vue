@@ -1,6 +1,6 @@
 <template>
     <startup-layout ref="layout" class="kiwi-startbnc">
-        <div slot="connection">
+        <template v-slot:connection>
             <form class="kiwi-startbnc-form" @submit.prevent="startUp">
                 <h2 v-html="greetingText"/>
 
@@ -24,7 +24,7 @@
                     <i v-else class="fa fa-spinner fa-spin" aria-hidden="true"/>
                 </button>
             </form>
-        </div>
+        </template>
     </startup-layout>
 </template>
 
@@ -197,7 +197,7 @@ export default {
                         host: network.connection.server,
                         port: network.connection.port,
                         tls: network.connection.tls,
-                        password: network.connection.password,
+                        password: network.password,
                         nick: network.nick,
                         username: network.username,
                     };
@@ -226,8 +226,8 @@ export default {
                     if (network.connection.tls !== current.tls) {
                         tags.tls = network.connection.tls;
                     }
-                    if (network.connection.password !== current.password) {
-                        tags.password = network.connection.password;
+                    if (network.password !== current.password) {
+                        tags.password = network.password;
                     }
                     if (network.nick !== current.nick) {
                         tags.nick = network.nick;
@@ -314,12 +314,16 @@ export default {
     margin-bottom: 1.5em;
 }
 
-.kiwi-startbnc-form input {
+.kiwi-startbnc-form input,
+.kiwi-startbnc-form input:active {
     font-size: 1em;
-    margin-top: 5px;
-    padding: 0.3em 1em;
     width: 100%;
     box-sizing: border-box;
+    line-height: 30px;
+    padding: 0 10px;
+    border: none;
+    border-bottom: 2px solid #42b992;
+    outline: none;
 }
 
 .kiwi-startbnc-status {
@@ -345,6 +349,14 @@ export default {
     border-radius: 0.5em;
     padding: 1em;
     border: 1px solid #ececec;
+}
+
+.kiwi-startbnc-form button {
+    width: 100%;
+    line-height: 36px;
+    padding: 0;
+    font-size: 1.2em;
+    font-weight: normal;
 }
 
 </style>

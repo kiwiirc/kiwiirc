@@ -24,6 +24,7 @@
 
 import _ from 'lodash';
 import htmlparser from 'htmlparser2';
+import * as Colours from '@/helpers/Colours';
 
 let Vue = require('vue');
 
@@ -151,9 +152,24 @@ export default Vue.component('irc-input', {
                         let match = attribs.style.match(/color: ([^;]+)/);
                         if (match) {
                             codeLookup = match[1];
-                            if (this.code_map[codeLookup]) {
-                                textValue += '\x03' + this.code_map[codeLookup];
-                                addToggle('\x03' + this.code_map[codeLookup]);
+                            let mappedCode = this.code_map[codeLookup];
+                            if (!mappedCode) {
+                                // If we didn't have an IRC code for this colour, convert the
+                                // colour to its hex form and check if we have that instead
+                                let m = codeLookup.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+                                if (m) {
+                                    let hex = Colours.rgb2hex({
+                                        r: parseInt(m[1], 10),
+                                        g: parseInt(m[2], 10),
+                                        b: parseInt(m[3], 10),
+                                    });
+                                    mappedCode = this.code_map[hex];
+                                }
+                            }
+
+                            if (mappedCode) {
+                                textValue += '\x03' + mappedCode;
+                                addToggle('\x03' + mappedCode);
                             }
                         }
 
@@ -169,7 +185,31 @@ export default Vue.component('irc-input', {
                             textValue += '\x1f';
                             addToggle('\x1f');
                         }
+
+                    // Welcome to the IE/Edge sucks section, time to do crazy things
+                    // IE11 doesnt support document.execCommand('styleWithCSS')
+                    // so we have individual nodes instead, which are handled below
+                    } else if (attribs.color) {
+                        // IE likes to remove spaces from rgb(1, 2, 3) it also likes converting rgb to hex
+                        let mappedCode = this.code_map[attribs.color] ||
+                            this.code_map[attribs.color.replace(/,/g, ', ')] ||
+                            this.code_map[Colours.hex2rgb(attribs.color)];
+
+                        if (mappedCode) {
+                            textValue += '\x03' + mappedCode;
+                            addToggle('\x03' + mappedCode);
+                        }
+                    } else if (name === 'strong') {
+                        textValue += '\x02';
+                        addToggle('\x02');
+                    } else if (name === 'em') {
+                        textValue += '\x1d';
+                        addToggle('\x1d');
+                    } else if (name === 'u') {
+                        textValue += '\x1f';
+                        addToggle('\x1f');
                     }
+
                     if (attribs.src && this.code_map[attribs.src]) {
                         textValue += this.code_map[attribs.src];
                     }
@@ -201,7 +241,7 @@ export default Vue.component('irc-input', {
             // fucks up the placeholder :empty CSS selector we use. So just remove it.
             let br = this.$refs.editor.querySelector('br');
             if (br) {
-                br.remove();
+                br.parentNode.removeChild(br);
             }
 
             if (this.default_colour) {

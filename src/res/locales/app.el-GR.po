@@ -1,6 +1,5 @@
 msgid ""
 msgstr ""
-"Start\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
@@ -8,10 +7,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-01-13 12:20\n"
+"PO-Revision-Date: 2019-05-19 11:31\n"
 
 #: Start
 msgid "start_button"
@@ -205,6 +204,10 @@ msgstr "{{count}} δευτερόλεπτα"
 msgid "settings_general"
 msgstr "Γενικά"
 
+#: Language
+msgid "settings_language"
+msgstr "Γλώσσα"
+
 #: Theme
 msgid "settings_theme"
 msgstr "Τρέχον Θέμα:"
@@ -264,6 +267,10 @@ msgstr "Επιπλέον μορφοποίηση"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Χρωματισμός ψευδωνύμων στα μηνύματα"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Μετάδωσε όταν πληκτρολογώ ένα μήνυμα"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -488,6 +495,10 @@ msgstr "Κωδικοποίηση"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Εμφάνιση Ακατέργαστου"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Απευθείας websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -731,7 +742,7 @@ msgstr "Προσδιορίστε ένα κανάλι για να εισέλθε�
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} δίνει χειρισή σε {{target}}"
+msgstr "{{nick}} δίνει op σε {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
@@ -743,7 +754,7 @@ msgstr "{{nick}} δίνει halfop σε {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} παίρνει μισή χείριση από {{target}}"
+msgstr "{{nick}} παίρνει το halfop από {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
@@ -872,6 +883,14 @@ msgstr "Αγνοήστε τα μηνύματα από κάποιον"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Σταματήστε να αγνοείτε κάποιον"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Ρίξτε ένα Zάρι"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Ρίχνει ένα {{sides}} από την πλευρά του ζαριού και τυχαίνει {{number}}"
 
 #: Your IRC client
 msgid "personal_client"

@@ -1,6 +1,5 @@
 msgid ""
 msgstr ""
-"Start\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
@@ -8,10 +7,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Afrikaans\n"
 "Language: af_ZA\n"
-"PO-Revision-Date: 2019-01-12 20:21\n"
+"PO-Revision-Date: 2019-05-19 11:01\n"
 
 #: Start
 msgid "start_button"
@@ -205,6 +204,10 @@ msgstr ""
 msgid "settings_general"
 msgstr "verstellings algemeen"
 
+#: Language
+msgid "settings_language"
+msgstr ""
+
 #: Theme
 msgid "settings_theme"
 msgstr "tema verstellings"
@@ -264,6 +267,10 @@ msgstr "Ekstra formatering"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Verkleur byname in boodskappe"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr ""
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -487,6 +494,10 @@ msgstr ""
 
 #: Show Raw
 msgid "settings_show_raw"
+msgstr ""
+
+#: Direct websocket
+msgid "settings_use_websocket"
 msgstr ""
 
 #: Run commands when connected
@@ -871,6 +882,14 @@ msgstr ""
 
 #: Stop ignoring somebody
 msgid "command_unignore"
+msgstr ""
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr ""
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
 msgstr ""
 
 #: Your IRC client

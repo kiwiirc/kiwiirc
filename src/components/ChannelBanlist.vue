@@ -75,6 +75,10 @@ export default {
     margin-top: 10px;
 }
 
+.kiwi-channelbanlist-table tr {
+    border-bottom: 1px solid;
+}
+
 .kiwi-channelbanlist-table-bannedat {
     min-width: 150px;
 }

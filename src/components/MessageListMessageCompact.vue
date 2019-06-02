@@ -45,11 +45,26 @@
         </div>
         <div
             :style="{ 'color': userColour }"
-            class="kiwi-messagelist-nick"
+            :class="[
+                'kiwi-messagelist-nick',
+                (message.user && userMode(message.user)) ?
+                    'kiwi-messagelist-nick--mode-'+userMode(message.user) :
+                    ''
+            ]"
             @click="ml.openUserBox(message.nick)"
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
             @mouseout="ml.hover_nick='';"
-        >{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
+        >
+            <away-status-indicator
+                v-if="message.user"
+                :network="getNetwork()" :user="message.user"
+                :toggle="false"
+            />
+            <span class="kiwi-messagelist-nick--prefix">
+                {{ message.user ? userModePrefix(message.user) : '' }}
+            </span>
+            {{ message.nick }}
+        </div>
         <div
             v-rawElement="message.bodyTemplate.$el"
             v-if="message.bodyTemplate && message.bodyTemplate.$el"
@@ -73,10 +88,12 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
+import AwayStatusIndicator from './AwayStatusIndicator';
 import MessageInfo from './MessageInfo';
 
 export default {
     components: {
+        AwayStatusIndicator,
         MessageInfo,
     },
     props: ['ml', 'message', 'idx'],
@@ -90,8 +107,14 @@ export default {
         },
     },
     methods: {
+        getNetwork() {
+            return this.ml.buffer.getNetwork();
+        },
         isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
+        },
+        userMode(user) {
+            return this.ml.buffer.userMode(user);
         },
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
@@ -120,9 +143,10 @@ export default {
     width: 110px;
     min-width: 110px;
     display: inline-block;
-    left: 0;
+    left: 8px;
     top: -1px;
     position: absolute;
+    white-space: nowrap;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
@@ -131,6 +155,7 @@ export default {
 
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-nick .kiwi-messagelist-time {
     margin-right: 10px;
+    opacity: 0.8;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-time {
@@ -164,12 +189,6 @@ export default {
     margin-left: 131px;
 }
 
-//Channel Connection's
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection {
-    text-align: center;
-}
-
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-nick,
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-time {
     display: none;
 }
@@ -178,6 +197,10 @@ export default {
     display: inline-block;
     margin: 0;
     padding: 10px 0;
+    margin-left: 131px;
+    font-size: 0.8em;
+    opacity: 0.8;
+    font-weight: 600;
 }
 
 //Channel topic

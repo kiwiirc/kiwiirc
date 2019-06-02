@@ -22,24 +22,24 @@
             <input-text
                 v-focus
                 :label="$t('server')"
-                v-model="server"
+                v-model="connection.server"
                 class="kiwi-networksettings-connection-address"
             />
 
             <input-text
                 :label="$t('settings_port')"
-                v-model="port"
+                v-model="connection.port"
                 type="number"
                 class="kiwi-networksettings-connection-port"
             >
                 <span
-                    :class="{ 'kiwi-customserver-tls--enabled' : tls }"
+                    :class="{ 'kiwi-customserver-tls--enabled' : connection.tls }"
                     class="fa-stack fa-lg kiwi-customserver-tls"
                     @click="toggleTls"
                 >
                     <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"/>
                     <i
-                        v-if="!tls"
+                        v-if="!connection.tls"
                         class="fa fa-unlock fa-stack-1x kiwi-customserver-tls-minus"
                     />
                 </span>
@@ -64,17 +64,14 @@ export default {
             type: Array,
             default: () => [],
         },
-        network: {
+        connection: {
             type: Object,
-            default: null,
+            default: () => {},
         },
     },
     data: function data() {
         return {
             name: '',
-            server: '',
-            port: 6667,
-            tls: false,
             presetNetworks: [],
             showCustom: true,
             willEmit: false,
@@ -85,17 +82,17 @@ export default {
             set(newVal) {
                 if (newVal === 'custom') {
                     this.name = '';
-                    this.server = '';
-                    this.port = 6667;
-                    this.tls = false;
+                    this.connection.server = '';
+                    this.connection.port = 6667;
+                    this.connection.tls = false;
 
                     this.showCustom = true;
                 } else {
                     let addr = this.parseFormatted(newVal);
                     this.name = addr.name;
-                    this.server = addr.server;
-                    this.port = addr.port;
-                    this.tls = addr.tls;
+                    this.connection.server = addr.server;
+                    this.connection.port = addr.port;
+                    this.connection.tls = addr.tls;
 
                     this.showCustom = false;
                 }
@@ -107,70 +104,32 @@ export default {
             },
         },
     },
-    watch: {
-        server() {
-            this.emitValue();
-        },
-        port() {
-            this.emitValue();
-        },
-        tls() {
-            this.emitValue();
-        },
-    },
     created() {
         if (this.networkList) {
             this.importUris(this.networkList);
         }
-        if (this.network) {
-            this.server = this.network.connection.server;
-            this.port = parseInt(this.network.connection.port, 10);
-            this.tls = this.network.connection.tls;
 
-            // If the given network is in the preset server list, select it
-            if (_.find(this.presetNetworks, (s) => {
-                let match = s.server === this.server && s.port === this.port && s.tls === this.tls;
-                return match;
-            })) {
-                this.showCustom = false;
-            }
+        // If the given network is in the preset server list, select it
+        let con = this.connection;
+        if (_.find(this.presetNetworks, (s) => {
+            let match = s.server === con.server && s.port === con.port && s.tls === con.tls;
+            return match;
+        })) {
+            this.showCustom = false;
         }
     },
     methods: {
         toUri(s) {
             return `${s.server}:${s.tls ? '+' : ''}${s.port}`;
         },
-        emitValue() {
-            if (this.willEmit) {
-                return;
-            }
-
-            this.willEmit = true;
-
-            this.$nextTick(() => {
-                this.willEmit = false;
-
-                this.$emit('input', {
-                    server: this.server,
-                    port: this.port,
-                    tls: this.tls,
-                });
-
-                if (this.network) {
-                    this.network.connection.server = this.server;
-                    this.network.connection.port = this.port;
-                    this.network.connection.tls = this.tls;
-                }
-            });
-        },
-        toggleTls: function toggleTls() {
-            this.tls = !this.tls;
+        toggleTls() {
+            this.connection.tls = !this.connection.tls;
 
             // Switching the port only if were currently using the most common TLS/plain text ports
-            if (this.tls && this.port === 6667) {
-                this.port = 6697;
-            } else if (!this.tls && this.port === 6697) {
-                this.port = 6667;
+            if (this.connection.tls && this.connection.port === 6667) {
+                this.connection.port = 6697;
+            } else if (!this.connection.tls && this.connection.port === 6697) {
+                this.connection.port = 6667;
             }
         },
         // parseFormatted - Parse freenode|irc.freenode.net:+6697 links

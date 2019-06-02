@@ -1,6 +1,5 @@
 msgid ""
 msgstr ""
-"Start\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
@@ -8,10 +7,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2019-01-13 00:30\n"
+"PO-Revision-Date: 2019-05-19 11:31\n"
 
 #: Start
 msgid "start_button"
@@ -63,11 +62,11 @@ msgstr "Nome de utilizador"
 
 #: Password
 msgid "password"
-msgstr "Palavra-passe"
+msgstr "Senha"
 
 #: I have a password
 msgid "password_have"
-msgstr "Eu tenho uma palavra-passe"
+msgstr "Eu tenho uma senha"
 
 #: Server
 msgid "server"
@@ -131,7 +130,7 @@ msgstr "Atenção!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "Isto irá fechar todas as janelas do KiwiIRC. Deseja continuar?"
+msgstr "Isto irá fechar todas as janelas do Kiwi IRC. Deseja continuar?"
 
 #: Real name
 msgid "whois_realname"
@@ -163,47 +162,51 @@ msgstr "Canal"
 
 #: {{count}} week
 msgid "week"
-msgstr "semana"
+msgstr "{{count}} semana"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "semanas"
+msgstr "{{count}} semanas"
 
 #: {{count}} day
 msgid "day"
-msgstr "dia"
+msgstr "{{count}} dia"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dias"
+msgstr "{{count}} dias"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "hora"
+msgstr "{{count}} hora"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "horas"
+msgstr "{{count}} horas"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuto"
+msgstr "{{count}} minuto"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minutos"
+msgstr "{{count}} minutos"
 
 #: {{count}} second
 msgid "second"
-msgstr "segundo"
+msgstr "{{count}} segundo"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "segundos"
+msgstr "{{count}} segundos"
 
 #: General
 msgid "settings_general"
 msgstr "Geral"
+
+#: Language
+msgid "settings_language"
+msgstr "Idioma"
 
 #: Theme
 msgid "settings_theme"
@@ -264,6 +267,10 @@ msgstr "Formatação extra"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Colorir os nicks nas mensagens"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Partilhar quando estou a escrever uma mensagem"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -371,7 +378,7 @@ msgstr "Banido por"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Actualizando lista de bans"
+msgstr "Actualizando lista de bans..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -395,11 +402,11 @@ msgstr "Apenas OPs podem alterar o tópico"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Bloquear mensagens externas"
+msgstr "Bloquear mensagens externas ao canal"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Clique no botão atualizar para atualizar a lista de canais"
+msgstr "Clique no botão actualizar para actualizar a lista de canais"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
@@ -407,7 +414,7 @@ msgstr "Nenhum canal encontrado, tente novamente mais tarde"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Bem vindos ao Kiwi IRC! Escolha um canal à esquerda."
+msgstr "Bem vindos ao Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -459,7 +466,7 @@ msgstr "Mensagens não lidas"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Definições de rede"
+msgstr "Detalhes do servidor"
 
 #: Port
 msgid "settings_port"
@@ -488,6 +495,10 @@ msgstr "Codificação"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Mostrar raw"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Websocket directo"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -873,6 +884,14 @@ msgstr "Ignorar mensagens de alguém"
 msgid "command_unignore"
 msgstr "Pare de ignorar alguém"
 
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Role um Dado"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Rola um dado de {{sides}} lados e obtém {{number}}"
+
 #: Your IRC client
 msgid "personal_client"
 msgstr "O seu cliente de IRC."
@@ -943,11 +962,11 @@ msgstr "{{nick}} convidou-te para o canal {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Alcunha {{nick}} já em uso. Tentando com {{newnick}}..."
+msgstr "Nick {{nick}} já em uso. Tentando com {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} é agora conhecido como {{newnick}}"
+msgstr "{{nick}} mudou o nick para {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"

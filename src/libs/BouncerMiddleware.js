@@ -2,6 +2,7 @@
 
 /** @module */
 
+import { MessageTags } from 'irc-framework';
 import * as Misc from '@/helpers/Misc';
 
 /**
@@ -81,6 +82,23 @@ export default function bouncerMiddleware() {
 
 function addFunctionsToClient(client) {
     let bnc = client.bnc = {};
+
+    bnc.tags = function tags() {
+        let token = client.network.supports('bouncer');
+        return !token || typeof token !== 'object' ?
+            {} :
+            MessageTags.decode(token) || {};
+    };
+
+    bnc.hasNetwork = function hasNetwork() {
+        let token = client.network.supports('bouncer');
+        if (!token || token === true) {
+            return false;
+        }
+
+        let tags = MessageTags.decode(token);
+        return tags && !!tags.network;
+    };
 
     bnc.getNetworks = function getNetworks() {
         return new Promise((resolve, reject) => {

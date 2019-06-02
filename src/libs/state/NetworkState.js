@@ -1,5 +1,6 @@
 /** @module */
 
+import Vue from 'vue';
 import { def } from './common';
 import * as IrcClient from '../IrcClient';
 
@@ -16,6 +17,7 @@ export default class NetworkState {
         this.last_error = '';
         this.auto_commands = '';
         this.is_znc = false;
+        this.hidden = false;
         this.channel_list = [];
         this.channel_list_state = '';
         // The IRCd type as mentioned in the 002 numeric
@@ -29,6 +31,7 @@ export default class NetworkState {
             direct: false,
             encoding: 'utf8',
             bncname: '',
+            nick: '',
         };
         this.settings = {};
         this.nick = '';
@@ -36,6 +39,8 @@ export default class NetworkState {
         this.gecos = '';
         this.password = '';
         this.away = '';
+
+        Vue.observable(this);
 
         // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'appState', appState, false);
@@ -131,5 +136,13 @@ export default class NetworkState {
             return true;
         }
         return false;
+    }
+
+    currentUser() {
+        return this.appState.getUser(this.id, this.nick);
+    }
+
+    userByName(nick) {
+        return this.appState.getUser(this.id, nick);
     }
 }

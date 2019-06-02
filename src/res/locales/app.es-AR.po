@@ -1,6 +1,5 @@
 msgid ""
 msgstr ""
-"Start\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
@@ -8,10 +7,10 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Spanish, Argentina\n"
 "Language: es_AR\n"
-"PO-Revision-Date: 2019-01-12 20:21\n"
+"PO-Revision-Date: 2019-05-25 18:51\n"
 
 #: Start
 msgid "start_button"
@@ -205,6 +204,10 @@ msgstr "segundos"
 msgid "settings_general"
 msgstr "General"
 
+#: Language
+msgid "settings_language"
+msgstr "Idioma"
+
 #: Theme
 msgid "settings_theme"
 msgstr "Tema"
@@ -264,6 +267,10 @@ msgstr "Formateado extra"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Colorear apodos en los mensajes"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Comparte cuando estoy escribiendo un mensaje"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -488,6 +495,10 @@ msgstr "Codificación"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Mostrar el original"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Websocket directo"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -859,7 +870,7 @@ msgstr "Marca como ausente"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Marca como activo"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -872,6 +883,14 @@ msgstr "Ignora los mensajes de alguien"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Deja de ignorar a alguien"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Tirar un Dado"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Lanza un dado con {{sides}} lados y obtiene {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
