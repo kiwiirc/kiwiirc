@@ -93,6 +93,7 @@
 </template>
 <script>
 
+import _ from 'lodash';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 
 export default {
@@ -144,6 +145,10 @@ export default {
                 return false;
             }
 
+            if (!this.channelIsInviteOnly) {
+                return false;
+            }
+
             let extban = this.extban;
             // Find any invite that only consists of the extban and nothing else. Eg. '~a:'
             return !!this.inviteListAccounts.find(invite => invite.invited === extban + ':');
@@ -163,12 +168,12 @@ export default {
 
             let accountUsers = [];
             Object.values(users).forEach((user) => {
-                if (users.account && inviteAccountNames.indexOf(users.account) === -1) {
-                    accountUsers.push(users);
+                if (user.account && inviteAccountNames.indexOf(user.account) === -1) {
+                    accountUsers.push(user);
                 }
             });
 
-            return accountUsers;
+            return _.orderBy(accountUsers, ['account', 'nick']);
         },
     },
     created() {
