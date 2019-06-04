@@ -370,6 +370,10 @@
     background-color: var(--comp-usermenu-open-bg);
 }
 
+.kiwi-statebrowser-usermenu-body .u-link {
+    color: var(--brand-error);
+}
+
 .kiwi-statebrowser-divider {
     background: rgba(255, 255, 255, 0.3);
 }
