@@ -54,7 +54,7 @@ export default class InputHandler {
         this.validateContext(context);
         const { network, buffer } = context;
         let line = rawLine;
-        let stylesStrippedLine = line.replace(/(\x03[0-9]{0,2})?([\x02\x1d\x1f]+)?/g, '');
+        let stylesStrippedLine = Misc.stripStyles(line);
 
         // If no command specified, server buffers = send raw, channels/queries = send message
         let escapedCommand = stylesStrippedLine.substr(0, 2) === '//';

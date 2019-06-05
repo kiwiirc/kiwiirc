@@ -46,6 +46,10 @@ export function splitHost(uri) {
 
 }
 
+export function stripStyles(str) {
+    return str.replace(/(\x03[0-9]{0,2})?([\x02\x16\x1d\x1f]+)?/g, '');
+}
+
 /**
  * Does a string mention a nickname?
  * @param {string} input The string to search within
@@ -57,8 +61,9 @@ export function mentionsNick(input, nick) {
     }
     let punc = '\\s,.!:;+()\\[\\]?¿\\/<>@-';
     let escapedNick = _.escapeRegExp(nick);
+    let stylesStrippedInput = stripStyles(input);
     let r = new RegExp(`(^|[${punc}])${escapedNick}([${punc}]|$)`, 'i');
-    return r.test(input);
+    return r.test(stylesStrippedInput);
 }
 
 /**
