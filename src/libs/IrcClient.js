@@ -1149,7 +1149,9 @@ function clientMiddleware(state, network) {
 
             // ignore error 432 (erroneous nickname) as it is handled above
             if (event.reason && network.last_error_numeric !== 432) {
-                network.last_error = event.reason;
+                if (!isRegistered) {
+                    network.last_error = event.reason;
+                }
                 let messageBody = TextFormatting.formatText('general_error', {
                     text: event.reason || event.error,
                 });
