@@ -116,13 +116,12 @@ export default {
     text-align: left;
 }
 
-//Hide the timestamp unless the user hovers over the message in question
+//Display the timestamps if "Show timestamps" is enabled
 .kiwi-messagelist-message--text .kiwi-messagelist-time {
     position: absolute;
     top: 0;
     right: 0;
     padding: 0 10px;
-    display: none;
     opacity: 0.8;
 }
 
