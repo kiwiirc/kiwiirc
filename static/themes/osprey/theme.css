@@ -33,7 +33,6 @@
     --comp-usermenu-open-bg: #161d25;
     --comp-statebrowser-network-border: #656565;
 
-
     /* Sidebars ( Right Side ) */
     --comp-sidebar-bg: #fff;
     --comp-sidebar-fg: #22231f;
@@ -56,15 +55,19 @@
 .kiwi-statebrowser-usermenu-avatar {
     border-color: #fff;
 }
+
 .kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
     background-color: #42b992;
 }
+
 .kiwi-statebrowser-usermenu .kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
     background-color: var(--brand-error);
 }
+
 .kiwi-network-name-options {
     background-color: #4e5c6b;
 }
+
 .kiwi-statebrowser-channelfilter p a:hover {
     color: #fff;
 }

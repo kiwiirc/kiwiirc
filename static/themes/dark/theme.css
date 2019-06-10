@@ -1,6 +1,6 @@
 @import '../common/base.css';
 
-:root{
+:root {
     --brand-primary: #42b992;
     --brand-primary-hover: #5ec9a6;
     --brand-midtone: #f1f1f1;
@@ -50,17 +50,21 @@
     background-color: #000;
     color: var(--brand-default-fg);
 }
+
 .kiwi-appsettings-title,
 .kiwi-appsettings-block h3 {
     color: #fff;
 }
+
 .u-tabbed-view-tabs {
     background: #696969;
     border-bottom-color: #ffffff1a;
 }
+
 .u-tabbed-view-tabs .u-tabbed-view-tab {
     border-bottom-color: #ffffff1a;
 }
+
 .u-form .u-input {
     border-top: 0;
     border-left: 0;
@@ -69,7 +73,7 @@
 
 .u-form select {
     background-color: var(--brand-primary);
-    color: #000000;
+    color: #000;
 }
 
 button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
@@ -108,6 +112,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .kiwi-notconnected-button {
     border-color: var(--brand-default-fg);
 }
+
 .kiwi-notconnected-button:hover {
     background-color: var(--brand-default-fg);
     color: var(--brand-default-bg);
@@ -123,6 +128,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     background-color: #000;
     color: var(--brand-default-fg);
 }
+
 .kiwi-network-name-option:hover,
 .kiwi-network-name-option.active {
     background-color: var(--brand-primary);
@@ -161,13 +167,14 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 }
 
 .kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #333333;
+    background-color: #333;
 }
+
 .kiwi-messagelist-message--own {
     background-color: #2d2d2d;
 }
 
-.kiwi-container-toggledraw-statebrowser-messagecount  {
+.kiwi-container-toggledraw-statebrowser-messagecount {
     color: #f1f1f1;
 }
 

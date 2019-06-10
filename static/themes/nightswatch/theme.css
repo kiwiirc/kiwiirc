@@ -33,7 +33,6 @@
     --comp-usermenu-open-bg: #151515;
     --comp-statebrowser-network-border: #bda28e;
 
-
     /* Sidebars ( Right Side ) */
     --comp-sidebar-bg: var(--brand-default-bg);
     --comp-sidebar-fg: #fff;
@@ -134,6 +133,7 @@
 .kiwi-awaystatusindicator {
     background: #41e8c9;
 }
+
 .kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
     background: var(--brand-error);
 }
@@ -141,7 +141,6 @@
 .kiwi-startup-common-section-info {
     border-left-color: var(--brand-primary);
 }
-
 
 /* Statebrowser */
 .kiwi-statebrowser {
@@ -184,20 +183,19 @@
     border-bottom: none;
 }
 
-
 /* Inputs */
 .u-form .u-input,
 .u-form label input[type='text'],
 .u-form label input[type='password'],
 .u-form label input[type='email'],
 .u-form textarea,
-.kiwi-networksettings input[type='password']  {
-  border: none;
-  border-bottom: 1px solid #f1f1f1;
+.kiwi-networksettings input[type='password'] {
+    border: none;
+    border-bottom: 1px solid #f1f1f1;
 }
 
-.u-form input[type='checkbox']:after,
-.u-form input[type='radio']:after {
+.u-form input[type='checkbox']::after,
+.u-form input[type='radio']::after {
     background-color: #f1f1f1;
 }
 
@@ -213,6 +211,7 @@
 .kiwi-messagelist {
     background: #000;
 }
+
 .kiwi-messagelist .kiwi-messagelist-body {
     color: #adadad;
 }
@@ -318,7 +317,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 
 .kiwi-autocomplete-item--selected {
     background: #3c3c3c;
-    color: #ffffff;
+    color: #fff;
 }
 
 .kiwi-autocomplete-item--selected .u-link {

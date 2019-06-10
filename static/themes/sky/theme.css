@@ -33,7 +33,6 @@
     --comp-usermenu-open-bg: #0e0e0e;
     --comp-statebrowser-network-border: #656565;
 
-
     /* Sidebars ( Right Side ) */
     --comp-sidebar-bg: #fff;
     --comp-sidebar-fg: #22231f;
@@ -56,12 +55,15 @@
 .kiwi-statebrowser-usermenu--open {
     background-color: #5d919c;
 }
+
 .kiwi-statebrowser-network-status .u-link {
     color: #fff;
 }
+
 .kiwi-network-name-options {
     background-color: #7dc8d9;
 }
+
 .kiwi-statebrowser-channel-leave {
     background: transparent;
 }

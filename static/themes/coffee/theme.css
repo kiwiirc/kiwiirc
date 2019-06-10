@@ -33,7 +33,6 @@
     --comp-usermenu-open-bg: #826958;
     --comp-statebrowser-network-border: #bda28e;
 
-
     /* Sidebars ( Right Side ) */
     --comp-sidebar-bg: #fff;
     --comp-sidebar-fg: #22231f;
@@ -50,7 +49,8 @@
 .kiwi-appsettings-title,
 .kiwi-appsettings-block h3,
 .kiwi-networksettings .kiwi-title,
-.u-form input[type='checkbox']:after, .u-form input[type='radio']:after {
+.u-form input[type='checkbox']::after,
+.u-form input[type='radio']::after {
     background-color: #8e715c;
 }
 
@@ -87,6 +87,7 @@
 .kiwi-awaystatusindicator {
     background: #78b17f;
 }
+
 .kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
     background: var(--brand-error);
 }
@@ -110,7 +111,6 @@
 .kiwi-statebrowser-channel-label {
     background: #967f70;
 }
-
 
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }

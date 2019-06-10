@@ -569,6 +569,7 @@
 .kiwi-statebrowser-channel-label {
     background: var(--brand-primary);
 }
+
 .kiwi-statebrowser-channel-label--highlight {
     background: var(--brand-error);
 }
@@ -620,6 +621,7 @@
 /* ---- App ---- */
 .kiwi-wrap {
     color: var(--brand-default-fg);
+
     --kiwi-nick-brightness: 40;
     --kiwi-supports-monospace: 1;
 }
@@ -790,6 +792,8 @@
 
 /* ---- Message list - ( MessageList.vue ) ---- */
 .kiwi-messagelist {
+    /* TODO working draft property supported by firefox 64+ */
+    /* stylelint-disable-next-line property-no-unknown */
     scrollbar-color: #9e9e9e transparent;
 }
 
@@ -1067,6 +1071,7 @@
     border-color: var(--brand-default-bg);
     background-color: var(--brand-primary);
 }
+
 .kiwi-awaystatusindicator--away {
     background-color: var(--brand-error);
 }
