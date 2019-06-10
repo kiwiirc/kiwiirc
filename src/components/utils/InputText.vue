@@ -12,8 +12,8 @@
         <template v-if="type==='password'">
             <input
                 v-model="currentValue"
-                :type="plainTextEnabled && !checkIfEdge() ? 'text' : 'password'"
-                :class="{'u-form-input-plaintext' : !checkIfEdge() && showPlainText}"
+                :type="plainTextEnabled && !isEdgeBrowser() ? 'text' : 'password'"
+                :class="{'u-form-input-plaintext' : !isEdgeBrowser() && showPlainText}"
                 autocomplete="off"
                 autocorrect="off"
                 autocapitalize="off" spellcheck="false"
@@ -21,9 +21,9 @@
             >
 
             <i
-                v-if="showPlainText && !checkIfEdge()"
+                v-if="showPlainText && !isEdgeBrowser()"
                 :class="{active: plainTextEnabled}"
-                class="fa fa-eye kiwi-show-plaintext"
+                class="fa fa-eye u-input-plaintext"
                 aria-hidden="true"
                 @click="plainTextEnabled = !plainTextEnabled"
             />
@@ -81,7 +81,7 @@ export default Vue.component('input-text', {
         updateValue: function updateValue(newValue) {
             this.$emit('input', newValue);
         },
-        checkIfEdge() {
+        isEdgeBrowser() {
             return navigator.appVersion.indexOf('Edge') > -1;
         },
     },
@@ -169,7 +169,7 @@ input[type=password].u-form-input-plaintext {
     padding-right: 0;
 }
 
-.kiwi-show-plaintext {
+.u-input-plaintext {
     display: inline-block;
     line-height: 40px;
     width: 30px;
@@ -179,8 +179,8 @@ input[type=password].u-form-input-plaintext {
     transition: opacity 0.2s;
 }
 
-.kiwi-show-plaintext.active,
-.kiwi-show-plaintext:hover {
+.u-input-plaintext.active,
+.u-input-plaintext:hover {
     opacity: 1;
 }
 

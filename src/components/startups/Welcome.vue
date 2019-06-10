@@ -97,7 +97,6 @@ export default {
             recaptchaSiteId: '',
             recaptchaResponseCache: '',
             connectWithoutChannel: false,
-            showPlainText: false,
         };
     },
     computed: {
