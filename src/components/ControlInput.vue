@@ -93,7 +93,7 @@
             </div>
 
             <button v-if="shouldShowSendButton"
-                    class="kiwi-controlinput-send-button"
+                    class="kiwi-controlinput-send"
                     type="submit"
             >
                 <i class="fa fa-envelope-o" aria-hidden="true" />
@@ -726,7 +726,7 @@ export default {
     display: flex;
 }
 
-.kiwi-controlinput-send-button {
+.kiwi-controlinput-send {
     height: 40px;
     width: 40px;
     background: var(--brand-default-bg);
@@ -737,7 +737,7 @@ export default {
     padding: 0;
 }
 
-.kiwi-controlinput-send-button i {
+.kiwi-controlinput-send i {
     text-align: center;
     border-radius: 50%;
     height: 30px;
@@ -749,21 +749,6 @@ export default {
     font-weight: 900;
     background: var(--brand-primary);
     color: #fff;
-}
-
-.kiwi-controlinput-send {
-    border-radius: 50%;
-    height: 30px;
-    text-align: center;
-    width: 30px;
-    cursor: pointer;
-    outline: none;
-    margin: 4px 5px;
-    padding: 0 0 0 3px;
-}
-
-.kiwi-controlinput-send::before {
-    content: "\f0da";
 }
 
 .kiwi-controlinput-inner {
