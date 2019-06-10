@@ -129,7 +129,6 @@ export default {
 //display timestamp when hovering over the message
 .kiwi-messagelist-message--text:hover .kiwi-messagelist-time {
     display: block;
-    background: #fff;
     border-radius: 5px 0 0 5px;
 }
 

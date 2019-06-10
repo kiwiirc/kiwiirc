@@ -852,6 +852,11 @@
     background-color: var(--brand-default-fg);
 }
 
+/* Messagelayout inline */
+.kiwi-messagelist-message--text .kiwi-messagelist-time {
+    color: var(--brand-default-fg);
+}
+
 /* Connection Styling */
 .kiwi-messagelist-message-connection {
     background-color: var(--brand-default-bg);

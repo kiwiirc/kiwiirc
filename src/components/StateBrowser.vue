@@ -118,7 +118,7 @@ export default {
             return !!state.settings.restricted;
         },
         networksToShow: function networksToShow() {
-            return this.networks;
+            return this.networks.filter(net => !net.hidden);
         },
     },
     created: function created() {

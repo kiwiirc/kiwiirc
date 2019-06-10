@@ -21,9 +21,8 @@
                     <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true"/></a>
                 </div>
             </div>
-
             <div class="kiwi-channellist-table">
-                <table v-if="!isLoading && list.length > 0" :key="last_updated" width="100%">
+                <table v-if="!isLoading && !noResults" :key="last_updated" width="100%">
                     <tbody>
                         <tr v-for="channel in paginated" :key="channel.channel">
                             <td class="kiwi-channellist-user-center">
@@ -52,7 +51,7 @@
                     </tbody>
                 </table>
                 <div v-else-if="noResults" class="kiwi-channellist-info">
-                    {{ $t('channel_list_nonefound') }}
+                    <p>{{ $t('channel_list_nonefound') }}</p>
                 </div>
                 <div v-else class="kiwi-channellist-info">{{ $t('channel_list_fetch') }}</div>
             </div>
@@ -80,7 +79,7 @@ export default {
     },
     computed: {
         noResults() {
-            return this.listState === 'updated' && this.list.length === 0;
+            return this.listState === 'updated' && this.filteredList.length === 0;
         },
         isLoading() {
             return this.listState === 'updating';
