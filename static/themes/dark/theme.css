@@ -181,6 +181,13 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     color: var(--brand-primary);
 }
 
+.kiwi-messagelist-message--info-open {
+    background-color: #2d2d2d;
+}
+.kiwi-messagelist-message--info-open .u-link {
+    color: #fff;
+}
+
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
