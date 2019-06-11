@@ -22,8 +22,8 @@
 
             <i
                 v-if="showPlainText && !isEdgeBrowser()"
-                :class="{active: plainTextEnabled}"
-                class="fa fa-eye u-input-plaintext"
+                :class="{'u-input-text-plaintext': !plainTextEnabled, 'u-input-text-plaintext--active': plainTextEnabled }"
+                class="fa fa-eye"
                 aria-hidden="true"
                 @click="plainTextEnabled = !plainTextEnabled"
             />
@@ -169,7 +169,7 @@ input[type=password].u-form-input-plaintext {
     padding-right: 0;
 }
 
-.u-input-plaintext {
+.u-input-text-plaintext {
     display: inline-block;
     line-height: 40px;
     width: 30px;
@@ -179,8 +179,8 @@ input[type=password].u-form-input-plaintext {
     transition: opacity 0.2s;
 }
 
-.u-input-plaintext.active,
-.u-input-plaintext:hover {
+.u-input-text-plaintext--active,
+.u-input-text-plaintext:hover {
     opacity: 1;
 }
 
