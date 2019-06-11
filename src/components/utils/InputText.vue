@@ -22,9 +22,8 @@
 
             <i
                 v-if="showPlainText && !isEdgeBrowser()"
-                :class="{'u-input-text-plaintext': !plainTextEnabled,
-                         'u-input-text-plaintext--active': plainTextEnabled }"
-                class="fa fa-eye"
+                :class="{'u-input-text-plaintext--active': plainTextEnabled}"
+                class="u-input-text-plaintext fa fa-eye"
                 aria-hidden="true"
                 @click="plainTextEnabled = !plainTextEnabled"
             />
