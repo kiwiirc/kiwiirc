@@ -93,6 +93,7 @@ export const configTemplates = {
         showEmojiPicker: true,
         showColorPicker: false,
         showSendButton: false,
+        showAwayStatusIndicators: true,
         sidebarDefault: 'nicklist',
         showRaw: false,
         hideSettings: null,

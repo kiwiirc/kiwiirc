@@ -81,7 +81,7 @@ export default class BouncerProvider {
 
         // Set the bncname if the network upstream exists and we havn't already set it
         if (network.ircClient.bnc.hasNetwork() && !network.connection.bncname) {
-            network.connection.bncname = client.tags().network;
+            network.connection.bncname = client.bnc.tags().network;
         }
     }
 
@@ -95,19 +95,20 @@ export default class BouncerProvider {
 
         // populate network list from the controller connection
         let bncNetworks = await client.bnc.getNetworks();
+        let bncBuffers = [];
+
+        try {
+            bncBuffers = await Promise.all(bncNetworks.map(bncNet => (
+                client.bnc.getBuffers(bncNet.name)
+            )));
+        } catch (err) {
+            log.error(err);
+        }
+
         let preparedNetworks = [];
         for (let i = 0; i < bncNetworks.length; i++) {
             let bncNet = bncNetworks[i];
-            bncNet.buffers = [];
-            try {
-                /* eslint-disable no-await-in-loop */
-                let buffers = await client.bnc.getBuffers(bncNet.name);
-                bncNet.buffers = buffers;
-            } catch (err) {
-                // Log the error here or something
-                log.error(err);
-            }
-
+            bncNet.buffers = bncBuffers[i];
             preparedNetworks.push(bncNet);
         }
 
@@ -158,6 +159,9 @@ export default class BouncerProvider {
             if (buffer.joined) {
                 newBuffer.enabled = true;
                 newBuffer.joined = true;
+            } else {
+                newBuffer.enabled = false;
+                newBuffer.joined = false;
             }
             if (buffer.seen) {
                 newBuffer.last_read = (new Date(buffer.seen)).getTime();

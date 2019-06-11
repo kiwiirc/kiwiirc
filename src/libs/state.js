@@ -759,10 +759,10 @@ const state = new Vue({
 
                     // Add the buffer to the users buffer list
                     if (!userObj.buffers[buffer.id]) {
-                        userObj.buffers[buffer.id] = {
+                        state.$set(userObj.buffers, buffer.id, {
                             modes: modes || [],
                             buffer: buffer,
-                        };
+                        });
                     } else {
                         userObj.buffers[buffer.id].modes = modes || [];
                     }
