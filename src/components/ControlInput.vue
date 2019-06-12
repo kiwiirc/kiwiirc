@@ -339,7 +339,10 @@ export default {
         },
         onAutocompleteSelected(selectedValue, selectedItem) {
             let word = selectedValue;
-            this.$refs.input.setCurrentWord(word);
+            if (word) {
+                // only replace the current word if we have a word to replace it with
+                this.$refs.input.setCurrentWord(word);
+            }
             this.autocomplete_open = false;
         },
         inputKeyDown(event) {
