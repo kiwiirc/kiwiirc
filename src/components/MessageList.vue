@@ -249,6 +249,12 @@ export default {
         this.listen(this.$state, 'mediaviewer.opened', () => {
             this.$nextTick(this.maybeScrollToBottom.apply(this));
         });
+
+        this.listen(this.$state, 'messagelist.scrollto', (opt) => {
+            if (opt.id) {
+                this.maybeScrollToId(opt.id);
+            }
+        });
     },
     methods: {
         isHoveringOverMessage(message) {
@@ -419,6 +425,16 @@ export default {
         maybeScrollToBottom() {
             if (this.auto_scroll) {
                 this.$el.scrollTop = this.$el.scrollHeight;
+            }
+        },
+        maybeScrollToId(id) {
+            let msgs = this.$el.getElementsByClassName('kiwi-messagelist-message');
+            for (let i = 0; i < msgs.length; i++) {
+                if (id.toString() === msgs[i].dataset.messageId) {
+                    this.$el.scrollTop = msgs[i].offsetTop;
+                    this.auto_scroll = false;
+                    return;
+                }
             }
         },
     },
