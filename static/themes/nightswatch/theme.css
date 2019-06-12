@@ -41,8 +41,8 @@
     --comp-aboutbuffer-header-bg: #42b992;
 
     /* Misc */
-    --brand-link-normal: var(--brand-primary);
-    --brand-link--hover: var(--brand-primary-hover);
+    --brand-link-normal: var(--brand-default-fg);
+    --brand-link--hover: var(--brand-default-fg);
     --brand-shadow: rgba(0, 0, 0, 0.1);
     --comp-border: #444;
 }
@@ -215,11 +215,6 @@
 }
 .kiwi-messagelist .kiwi-messagelist-body {
     color: #adadad;
-}
-
-.kiwi-messagelist .kiwi-messagelist-body a,
-.kiwi-messagelist .kiwi-messagelist-body a:hover {
-    color: var(--brand-default-fg);
 }
 
 .kiwi-messagelist .kiwi-messagelist-message--highlight,

@@ -581,7 +581,8 @@
 }
 
 .kiwi-messagelist-message .kiwi-messagelist-body .kiwi-nick,
-.kiwi-messagelist-message .kiwi-messagelist-body a {
+.kiwi-messagelist-message .kiwi-messagelist-body a,
+.kiwi-aboutbuffer a {
     color: #fff !important;
     text-decoration: underline;
 }

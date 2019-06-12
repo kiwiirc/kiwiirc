@@ -888,11 +888,15 @@
     border-color: var(--brand-primary);
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-body a {
+.kiwi-messagelist .kiwi-messagelist-body a,
+.kiwi-channellist-table-topic a,
+.kiwi-aboutbuffer a {
     color: var(--brand-link-normal);
 }
 
-.kiwi-messagelist-message--modern .kiwi-messagelist-body a:hover {
+.kiwi-messagelist .kiwi-messagelist-body a:hover,
+.kiwi-channellist-table-topic a:hover,
+.kiwi-aboutbuffer a:hover {
     color: var(--brand-link--hover);
 }
 
