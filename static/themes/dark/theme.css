@@ -163,6 +163,12 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .kiwi-channellist table tbody tr:nth-child(even) {
     background-color: #333333;
 }
+
+.kiwi-channellist-table-topic a,
+.kiwi-channellist-table-topic a:hover {
+    color: var(--brand-primary);
+}
+
 .kiwi-messagelist-message--own {
     background-color: #2d2d2d;
 }
@@ -174,6 +180,11 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .kiwi-sidebar-options,
 .kiwi-aboutbuffer h4 {
     color: #fff;
+}
+
+.kiwi-aboutbuffer a,
+.kiwi-aboutbuffer a:hover {
+    color: var(--brand-primary);
 }
 
 .kiwi-messagelist .kiwi-messagelist-body a,
