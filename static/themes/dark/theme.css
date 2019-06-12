@@ -163,6 +163,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .kiwi-channellist table tbody tr:nth-child(even) {
     background-color: #333333;
 }
+
 .kiwi-messagelist-message--own {
     background-color: #2d2d2d;
 }
@@ -174,11 +175,6 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .kiwi-sidebar-options,
 .kiwi-aboutbuffer h4 {
     color: #fff;
-}
-
-.kiwi-messagelist .kiwi-messagelist-body a,
-.kiwi-messagelist .kiwi-messagelist-body a:hover {
-    color: var(--brand-primary);
 }
 
 .kiwi-messagelist-message--info-open {
