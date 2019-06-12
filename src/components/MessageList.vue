@@ -428,13 +428,10 @@ export default {
             }
         },
         maybeScrollToId(id) {
-            let msgs = this.$el.getElementsByClassName('kiwi-messagelist-message');
-            for (let i = 0; i < msgs.length; i++) {
-                if (id.toString() === msgs[i].dataset.messageId) {
-                    this.$el.scrollTop = msgs[i].offsetTop;
-                    this.auto_scroll = false;
-                    return;
-                }
+            let messageElement = this.$el.querySelector('.kiwi-messagelist-message[data-message-id="' + id + '"]');
+            if (messageElement && messageElement.offsetTop) {
+                this.$el.scrollTop = messageElement.offsetTop;
+                this.auto_scroll = false;
             }
         },
     },
