@@ -38,6 +38,7 @@
                     :items="autocomplete_items"
                     :filter="autocomplete_filter"
                     :buffer="buffer"
+                    :close_empty="autocomplete_close_empty"
                     @temp="onAutocompleteTemp"
                     @selected="onAutocompleteSelected"
                     @cancel="onAutocompleteCancel"
@@ -147,6 +148,7 @@ export default {
             // autocomplete list filters its results to show us the relevant items, not replacing
             // the current word until we select an item.
             autocomplete_filtering: true,
+            autocomplete_close_empty: false,
             active_tool: null,
             active_tool_props: {},
             pluginUiElements: GlobalApi.singleton().controlInputPlugins,
@@ -411,7 +413,7 @@ export default {
                     users: true,
                     buffers: true,
                 });
-                this.openAutoComplete(items);
+                this.openAutoComplete(items, true);
                 this.autocomplete_filter = currentToken;
 
                 // Disable filtering so that tabbing cycles through words more like
@@ -515,8 +517,9 @@ export default {
                 this.history_pos++;
             }
         },
-        openAutoComplete(items) {
+        openAutoComplete(items, closeEmpty) {
             if (state.setting('showAutocomplete')) {
+                this.autocomplete_close_empty = !!closeEmpty;
                 this.autocomplete_items = items;
                 this.autocomplete_open = true;
             }

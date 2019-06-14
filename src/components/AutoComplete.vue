@@ -39,7 +39,7 @@ import _ from 'lodash';
 import state from '@/libs/state';
 
 export default {
-    props: ['filter', 'buffer', 'items'],
+    props: ['filter', 'buffer', 'items', 'close_empty'],
     data: function data() {
         return {
             items_: [
@@ -136,6 +136,9 @@ export default {
         },
     },
     mounted: function mounted() {
+        if (this.close_empty && !this.filteredItems.length) {
+            this.cancel();
+        }
         this.tempCurrentItem();
     },
     methods: {
