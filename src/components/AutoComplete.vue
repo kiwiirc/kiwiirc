@@ -36,11 +36,10 @@
 'kiwi public';
 
 import _ from 'lodash';
-import state from '@/libs/state';
 
 export default {
     props: ['filter', 'buffer', 'items', 'close_empty'],
-    data: function data() {
+    data() {
         return {
             items_: [
                 { text: 'anick1', type: 'user' },
@@ -53,7 +52,7 @@ export default {
         };
     },
     computed: {
-        filteredItems: function filteredItems() {
+        filteredItems() {
             let filterVal = (this.filter || '').toLowerCase();
 
             return _(this.items).filter((item) => {
@@ -73,7 +72,7 @@ export default {
                 .sort((a, b) => a.text.localeCompare(b.text))
                 .value();
         },
-        filteredAndLimitedItems: function filteredAndLimitedItems() {
+        filteredAndLimitedItems() {
             return this.filteredItems.filter((item, itemIdx, items) => {
                 let numItems = items.length - 1;
                 let idxFrom = this.selected_idx - 3;
@@ -109,13 +108,13 @@ export default {
                 return isInRange;
             });
         },
-        selectedItem: function selectedItem() {
+        selectedItem() {
             let item = this.filteredItems[this.selected_idx];
             return item || null;
         },
     },
     watch: {
-        selected_idx: function watchSelectedIdx() {
+        selected_idx() {
             // nextTick() as the DOM hasn't updated yet
             this.$nextTick(() => {
                 let el = this.$el.querySelector('.kiwi-autocomplete-item--selected');
@@ -128,21 +127,21 @@ export default {
 
             this.tempCurrentItem();
         },
-        filter: function watchFilter() {
+        filter() {
             let numItems = this.filteredAndLimitedItems.length - 1;
             if (this.selected_idx > numItems) {
                 this.selected_idx = numItems;
             }
         },
     },
-    mounted: function mounted() {
+    mounted() {
         if (this.close_empty && !this.filteredItems.length) {
             this.cancel();
         }
         this.tempCurrentItem();
     },
     methods: {
-        handleOnKeyDown: function handleOnKeyDown(event) {
+        handleOnKeyDown(event) {
             let handled = false;
 
             let cancelKeyCodes = [
@@ -191,19 +190,19 @@ export default {
 
             return handled;
         },
-        openQuery: function openQuery(nick) {
-            let buffer = state.addBuffer(this.buffer.networkid, nick);
-            state.setActiveBuffer(buffer.networkid, buffer.name);
+        openQuery(nick) {
+            let buffer = this.$state.addBuffer(this.buffer.networkid, nick);
+            this.$state.setActiveBuffer(buffer.networkid, buffer.name);
             this.cancel();
         },
-        tempCurrentItem: function tempCurrentItem() {
+        tempCurrentItem() {
             let item = this.selectedItem;
             if (!item) {
                 return;
             }
             this.$emit('temp', item.value || item.text, item);
         },
-        selectCurrentItem: function selectCurrentItem() {
+        selectCurrentItem() {
             let item = this.selectedItem;
             let value = '';
 
@@ -213,7 +212,7 @@ export default {
 
             this.$emit('selected', value, item);
         },
-        cancel: function cancel() {
+        cancel() {
             this.$emit('cancel');
         },
     },
