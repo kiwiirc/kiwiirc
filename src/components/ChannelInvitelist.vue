@@ -3,7 +3,7 @@
         <form class="u-form kiwi-invitelist" @submit.prevent="">
             <a class="u-link" @click="updateInvitelist">{{ $t('invites_refresh') }}</a>
 
-            <div v-if="!channelIsInviteOnly">
+            <div v-if="!channelIsInviteOnly" class="kiwi-invitelist-inviteonly-status">
                 This is a public channel.
                 <a
                     v-if="areWeAnOp"
@@ -11,7 +11,7 @@
                     @click="setInviteOnly"
                 >Only allow invited users</a>
             </div>
-            <div v-else>
+            <div v-else class="kiwi-invitelist-inviteonly-status">
                 Only invited users can join.
                 <a
                     v-if="areWeAnOp"
@@ -23,16 +23,18 @@
             <span v-if="anyRegisteredUserCanJoin">Only registered users can join</span>
 
             <div>
-                <h3>Invited users ({{ inviteListAccounts.length }})</h3>
-
                 <div v-if="supportsAccounts && areWeAnOp">
-                    <select ref="addInviteList">
-                        <option
-                            v-for="user in knownAccounts"
-                            :key="user.nick" :value="user.account"
-                        >{{ user.account }}</option>
-                    </select>
-                    <button @click="addAccountInvite($refs.addInviteList.value)">Add invite</button>
+                    <template v-if="knownAccounts.length > 0">
+                        <select ref="addInviteList">
+                            <option
+                                v-for="user in knownAccounts"
+                                :key="user.nick" :value="user.account"
+                            >{{ user.account }}</option>
+                        </select>
+                        <button @click="addAccountInvite($refs.addInviteList.value)">
+                            Add invite
+                        </button>
+                    </template>
                 </div>
                 <div v-if="!supportsAccounts && areWeAnOp" class="kiwi-invitelist-addmask">
                     <input ref="addInviteText" type="text" class="u-input">
@@ -233,6 +235,10 @@ export default {
 };
 </script>
 <style lang="less">
+.kiwi-invitelist-inviteonly-status {
+    margin-top: 10px;
+}
+
 .kiwi-invitelist-table {
     width: 100%;
     border-collapse: collapse;
