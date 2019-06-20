@@ -66,11 +66,15 @@
                                 </form>
                             </div>
                         </tabbed-tab>
-                        <tabbed-tab :header="$t('banned')">
-                            <channel-banlist :buffer="buffer"/>
-                        </tabbed-tab>
-                        <tabbed-tab :header="$t('invited')">
-                            <channel-invitelist :buffer="buffer"/>
+                        <tabbed-tab header="Access">
+                            <a class="u-link" @click="accessTab='banlist'">
+                                {{ $t('banned') }}
+                            </a>
+                            <a class="u-link" @click="accessTab='invitelist'">
+                                {{ $t('invited') }}
+                            </a>
+                            <channel-banlist v-if="accessTab==='banlist'" :buffer="buffer"/>
+                            <channel-invitelist v-if="accessTab==='invitelist'" :buffer="buffer"/>
                         </tabbed-tab>
                         <tabbed-tab :header="$t('notifications')">
                             <buffer-settings :buffer="buffer"/>
@@ -154,6 +158,7 @@ export default {
     data() {
         return {
             pluginUiElements: GlobalApi.singleton().sideBarPlugins,
+            accessTab: 'banlist',
         };
     },
     computed: {

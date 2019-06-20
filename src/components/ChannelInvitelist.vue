@@ -202,7 +202,12 @@ export default {
             let channelName = this.buffer.name;
             this.is_refreshing = true;
             this.buffer.getNetwork().ircClient.inviteList(channelName, (inviteEvent) => {
-                this.inviteList = inviteEvent.invites;
+                if (inviteEvent) {
+                    this.inviteList = inviteEvent.invites;
+                } else {
+                    this.inviteList = [];
+                }
+
                 this.is_refreshing = false;
             });
         },
