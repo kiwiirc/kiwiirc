@@ -3,10 +3,10 @@
 :root{
     --brand-primary: #42b992;
     --brand-primary-hover: #5ec9a6;
-    --brand-midtone: #f1f1f1;
+    --brand-midtone: #ababab;
     --brand-darktone: #969696;
     --brand-default-bg: #1e1e1e;
-    --brand-default-fg: #e2e2e2;
+    --brand-default-fg: #ababab;
     --brand-notice: #f6c358;
     --brand-warning: #fcb46e;
     --brand-error: #bf5155;
@@ -14,17 +14,17 @@
     --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
     --comp-header-bg: var(--brand-default-bg);
     --comp-header-name-fg: var(--brand-default-fg);
-    --comp-header-option-active-fg: var(--brand-default-bg);
+    --comp-header-option-active-fg: #f1f1f1;
     --comp-header-option-active-bg: var(--brand-primary);
-    --comp-statebrowser-fg: #fff;
+    --comp-statebrowser-fg: #ababab;
     --comp-statebrowser-bg: #1e1e1e;
     --comp-statebrowser-bg-networkname: #454545;
     --comp-statebrowser-channel-active-bg: #ffffff0d;
-    --comp-statebrowser-channel-active-fg: #fff;
+    --comp-statebrowser-channel-active-fg: #ababab;
     --comp-usermenu-open-bg: #0e0e0e;
     --comp-statebrowser-network-border: #656565;
     --comp-sidebar-bg: #1e1e1e;
-    --comp-sidebar-fg: #f1f1f1;
+    --comp-sidebar-fg: #ababab;
     --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
     --comp-aboutbuffer-header-bg: #42b992;
     --brand-link-normal: var(--brand-primary);
@@ -182,6 +182,14 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 }
 .kiwi-messagelist-message--info-open .u-link {
     color: #fff;
+}
+
+.kiwi-welcome-simple-start {
+    color: #fff !important;
+}
+
+.kiwi-header-option--active a {
+    color: #e4e4e4 !important;
 }
 
 /* IRC Text Colours */
