@@ -29,14 +29,17 @@
                     <input v-model="show_password_box" type="checkbox" >
                     <span> {{ $t('password_have') }} </span>
                 </label>
+
                 <input-text
                     v-focus
                     v-if="showPass && (show_password_box || !toggablePass)"
                     :label="$t('password')"
+                    :show-plain-text="true"
                     v-model="password"
-                    class="kiwi-welcome-simple-password u-input-text--reveal-value"
                     type="password"
+                    class="kiwi-welcome-simple-password u-input-text--reveal-value"
                 />
+
                 <input-text
                     v-if="showChannel"
                     :label="$t('channel')"

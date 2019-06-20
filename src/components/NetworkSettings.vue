@@ -20,6 +20,7 @@
                 <div class="kiwi-networksettings-connection-password">
                     <template v-if="server_type==='network'">
                         <input-text
+                            :show-plain-text="true"
                             :label="$t('password')"
                             v-model="network.password"
                             type="password"
@@ -363,8 +364,6 @@ export default {
     .kiwi-networksettings input[type='email'],
     .kiwi-networksettings textarea,
     .kiwi-networksettings .u-input-text input {
-    clear: both;
-    width: 100%;
     height: 40px;
     padding: 0 10px;
     line-height: 40px;
@@ -374,6 +373,13 @@ export default {
     overflow-x: hidden;
     overflow-y: auto;
     max-width: none;
+}
+
+.kiwi-networksettings input[type='text'],
+    .kiwi-networksettings input[type='email'],
+    .kiwi-networksettings textarea {
+    clear: both;
+    width: 100%;
 }
 
 .kiwi-networksettings .u-input-text {

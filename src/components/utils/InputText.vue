@@ -9,14 +9,26 @@
 
         <span class="u-input-text-label">{{ label }}</span>
 
-        <input
-            v-if="type==='password'"
-            v-model="currentValue"
-            type="password"
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off" spellcheck="false" @focus="hasFocus=true" @blur="hasFocus=false"
-        >
+        <template v-if="type==='password'">
+            <input
+                v-model="currentValue"
+                :type="plainTextEnabled && !isEdgeBrowser() ? 'text' : 'password'"
+                :class="{'u-form-input-plaintext' : !isEdgeBrowser() && showPlainText}"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off" spellcheck="false"
+                @focus="hasFocus=true" @blur="hasFocus=false"
+            >
+
+            <i
+                v-if="showPlainText && !isEdgeBrowser()"
+                :class="{'u-input-text-plaintext--active': plainTextEnabled}"
+                class="u-input-text-plaintext fa fa-eye"
+                aria-hidden="true"
+                @click="plainTextEnabled = !plainTextEnabled"
+            />
+        </template>
+
         <input
             v-else-if="type==='number'"
             v-model="currentValue"
@@ -48,9 +60,10 @@
 let Vue = require('vue');
 
 export default Vue.component('input-text', {
-    props: ['value', 'label', 'type'],
+    props: ['value', 'label', 'type', 'showPlainText'],
     data: function data() {
         return {
+            plainTextEnabled: false,
             hasFocus: false,
         };
     },
@@ -67,6 +80,9 @@ export default Vue.component('input-text', {
     methods: {
         updateValue: function updateValue(newValue) {
             this.$emit('input', newValue);
+        },
+        isEdgeBrowser() {
+            return navigator.appVersion.indexOf('Edge') > -1;
         },
     },
 });
@@ -87,6 +103,7 @@ export default Vue.component('input-text', {
     border: none;
     outline: none;
     line-height: 1.6em;
+    border-bottom: none;
     font-size: 0.9em;
 }
 
@@ -142,6 +159,29 @@ export default Vue.component('input-text', {
     /* For webkit browsers like Safari and Chrome */
     -webkit-appearance: none;
     margin: 0;
+}
+
+input[type=text].u-form-input-plaintext,
+input[type=password].u-form-input-plaintext {
+    display: inline-block;
+    width: calc(100% - 35px);
+    border-bottom: 0;
+    padding-right: 0;
+}
+
+.u-input-text-plaintext {
+    display: inline-block;
+    line-height: 40px;
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.u-input-text-plaintext--active,
+.u-input-text-plaintext:hover {
+    opacity: 1;
 }
 
 </style>
