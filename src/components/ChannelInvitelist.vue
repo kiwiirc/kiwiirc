@@ -4,23 +4,23 @@
             <a class="u-link" @click="updateInvitelist">{{ $t('invites_refresh') }}</a>
 
             <div v-if="!channelIsInviteOnly" class="kiwi-invitelist-inviteonly-status">
-                This is a public channel.
+                {{ $t('invite_public_channel') }}
                 <a
                     v-if="areWeAnOp"
                     class="u-link"
                     @click="setInviteOnly"
-                >Only allow invited users</a>
+                >{{ $t('invite_set_private') }}</a>
             </div>
             <div v-else class="kiwi-invitelist-inviteonly-status">
-                Only invited users can join.
+                {{ $t('invite_private_channel') }}
                 <a
                     v-if="areWeAnOp"
                     class="u-link"
                     @click="removeInviteOnly"
-                >Allow anybody to join</a>
+                >{{ $t('invite_set_public') }}</a>
             </div>
 
-            <span v-if="anyRegisteredUserCanJoin">Only registered users can join</span>
+            <span v-if="anyRegisteredUserCanJoin">{{ $('invite_registered_only') }}</span>
 
             <div>
                 <div v-if="supportsAccounts && areWeAnOp">
@@ -32,13 +32,15 @@
                             >{{ user.account }}</option>
                         </select>
                         <button @click="addAccountInvite($refs.addInviteList.value)">
-                            Add invite
+                            {{ $t('invite_add_invite') }}
                         </button>
                     </template>
                 </div>
                 <div v-if="!supportsAccounts && areWeAnOp" class="kiwi-invitelist-addmask">
                     <input ref="addInviteText" type="text" class="u-input">
-                    <button @click="addInvite($refs.addInviteText.value)">Add invite</button>
+                    <button @click="addInvite($refs.addInviteText.value)">
+                        {{ $t('invite_add_invite') }}
+                    </button>
                 </div>
 
                 <table v-if="inviteList.length > 0" class="kiwi-invitelist-table">
@@ -192,7 +194,7 @@ export default {
     methods: {
         displayMask(invite) {
             let display = invite.invited.replace(this.extban + ':', '');
-            display = display || '(Any registered user)';
+            display = display || this.$t('invite_any_registered');
             return display;
         },
         updateInvitelist() {

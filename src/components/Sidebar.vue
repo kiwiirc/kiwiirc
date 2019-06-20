@@ -66,11 +66,23 @@
                                 </form>
                             </div>
                         </tabbed-tab>
-                        <tabbed-tab header="Access">
-                            <a class="u-link" @click="accessTab='banlist'">
+                        <tabbed-tab :header="$t('access')">
+                            <a
+                                :class="{
+                                    'kiwi-sidebar-accesstab--active': accessTab === 'banlist'
+                                }"
+                                class="u-link kiwi-sidebar-accesstab"
+                                @click="accessTab='banlist'"
+                            >
                                 {{ $t('banned') }}
                             </a>
-                            <a class="u-link" @click="accessTab='invitelist'">
+                            <a
+                                :class="{
+                                    'kiwi-sidebar-accesstab--active': accessTab === 'invitelist'
+                                }"
+                                class="u-link kiwi-sidebar-accesstab"
+                                @click="accessTab='invitelist'"
+                            >
                                 {{ $t('invited') }}
                             </a>
                             <channel-banlist v-if="accessTab==='banlist'" :buffer="buffer"/>
@@ -296,6 +308,14 @@ export default {
 @keyframes nicklisttransition {
     from { height: 0; }
     to { height: 100%; }
+}
+
+.kiwi-sidebar-accesstab {
+    margin-right: 1em;
+}
+
+.kiwi-sidebar-accesstab--active {
+    font-weight: bold;
 }
 
 .kiwi-channelbanlist-empty {
