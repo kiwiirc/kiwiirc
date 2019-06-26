@@ -42,12 +42,19 @@ export function create(state, network) {
         ircClient.options.tls = network.connection.tls;
         ircClient.options.path = network.connection.path;
         ircClient.options.password = network.password;
+        ircClient.options.poll = network.connection.poll;
         ircClient.options.nick = network.connection.nick;
         ircClient.options.username = network.username || network.connection.nick;
         ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
         ircClient.options.encoding = network.connection.encoding;
 
         state.$emit('network.connecting', { network });
+
+        // Pass socksjs options so we can force polling mode
+        let socksOptions = {};
+        if (ircClient.options.poll) {
+            socksOptions.transports = ['xhr-polling', 'iframe-xhr-polling', 'jsonp-polling'];
+        }
 
         // A direct connection uses a websocket to connect (note: some browsers limit
         // the number of connections to the same host!).
@@ -57,7 +64,8 @@ export function create(state, network) {
             ircClient.options.transport = ServerConnection.createChannelConstructor(
                 state.settings.kiwiServer,
                 (window.location.hash || '').substr(1),
-                networkid
+                networkid,
+                socksOptions
             );
         } else {
             ircClient.options.transport = undefined;

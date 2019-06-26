@@ -89,6 +89,7 @@ export default {
             channel: '',
             nick: '',
             password: '',
+            poll: false,
             showChannel: true,
             showPass: true,
             toggablePass: true,
@@ -177,6 +178,12 @@ export default {
             this.nick = previousNet.nick;
         } else {
             this.nick = options.nick;
+        }
+
+        if (Misc.queryStringVal('poll')) {
+            this.poll = true;
+        } else {
+            this.poll = !!options.poll;
         }
 
         this.nick = this.processNickRandomNumber(this.nick || '');
@@ -273,6 +280,7 @@ export default {
                 port: options.port,
                 tls: options.tls,
                 password: password,
+                poll: this.poll,
                 encoding: _.trim(options.encoding),
                 direct: !!options.direct,
                 path: options.direct_path || '',

@@ -6,10 +6,12 @@ import * as ServerConnection from './ServerConnection';
 
 export default class ServerSession {
     constructor(sessionId) {
+        let socksOptions = {};
         let channelConstruct = ServerConnection.createChannelConstructor(
             state.settings.kiwiServer,
             sessionId || '',
-            '0'
+            '0',
+            socksOptions
         );
 
         this.bus = new EventEmitter();
