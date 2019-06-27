@@ -61,24 +61,37 @@ export default Vue.component('irc-input', {
         },
         onPaste(event) {
             event.preventDefault();
-
-            let clpData = (event.clipboardData || window.clipboardData);
-            let ignoreThisPaste = false;
-
-            clpData.types.forEach((type) => {
-                let ignoreTypes = ['Files', 'image'];
-                ignoreTypes.forEach((ig) => {
-                    if (type.indexOf(ig) > -1) {
-                        ignoreThisPaste = true;
-                    }
+            if (typeof event.clipboardData !== 'undefined') {
+                let ignoreThisPaste = false;
+                let clpData = event.clipboardData;
+                clpData.types.forEach((type) => {
+                    let ignoreTypes = ['Files', 'image'];
+                    ignoreTypes.forEach((ig) => {
+                        if (type.indexOf(ig) > -1) {
+                            ignoreThisPaste = true;
+                        }
+                    });
                 });
-            });
 
-            if (ignoreThisPaste) {
-                return;
+                if (ignoreThisPaste) {
+                    return;
+                }
+
+                document.execCommand('insertText', false, clpData.getData('text/plain'));
+            } else {
+                // IE11
+                let clpText = window.clipboardData.getData('Text');
+                if (!clpText) {
+                    return;
+                }
+
+                let selection = window.getSelection();
+                let range = selection.getRangeAt(0);
+                if (range) {
+                    range.deleteContents();
+                    range.insertNode(document.createTextNode(clpText));
+                }
             }
-
-            document.execCommand('insertText', false, clpData.getData('text/plain'));
 
             setTimeout(() => {
                 this.updateValueProps();
