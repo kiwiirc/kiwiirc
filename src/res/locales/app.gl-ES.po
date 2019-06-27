@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2019-05-21 06:07\n"
+"PO-Revision-Date: 2019-06-27 14:21\n"
 
 #: Start
 msgid "start_button"
@@ -227,6 +227,10 @@ msgstr "Deseño da Mensaxe"
 #: Use monospace
 msgid "settings_use_monospace"
 msgstr "Usar fonte Monospace"
+
+#: Use Kiwi as my default IRC client
+msgid "settings_default_handler"
+msgstr "Usar  Kiwi como o meu cliente  IRC  predeterminado"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -907,6 +911,22 @@ msgstr "Estarán aquí cando volvas."
 #: Add a Network
 msgid "personal_add"
 msgstr "Engade unha Rede"
+
+#: You are trying to connect to {{network}}
+msgid "personal_connect_to"
+msgstr "Estás a tentar conectarche a {{ network}}"
+
+#: Network has been added to your existing Kiwi window.
+msgid "personal_added_to_existing"
+msgstr "A rede agregouse á túa xanela existente de  Kiwi."
+
+#: Add network to existing Kiwi window
+msgid "personal_add_existing_tab"
+msgstr "Agregar rede á xanela existente de  Kiwi"
+
+#: Temporarily connect to this network
+msgid "personal_connect_temporary"
+msgstr "Conectarse temporalmente a esta rede"
 
 #: Saved networks
 msgid "personal_saved"

@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2019-05-19 11:01\n"
+"PO-Revision-Date: 2019-06-27 14:11\n"
 
 #: Start
 msgid "start_button"
@@ -226,6 +226,10 @@ msgstr ""
 
 #: Use monospace
 msgid "settings_use_monospace"
+msgstr ""
+
+#: Use Kiwi as my default IRC client
+msgid "settings_default_handler"
 msgstr ""
 
 #: Traditional IRC layout
@@ -906,6 +910,22 @@ msgstr ""
 
 #: Add a Network
 msgid "personal_add"
+msgstr ""
+
+#: You are trying to connect to {{network}}
+msgid "personal_connect_to"
+msgstr ""
+
+#: Network has been added to your existing Kiwi window.
+msgid "personal_added_to_existing"
+msgstr ""
+
+#: Add network to existing Kiwi window
+msgid "personal_add_existing_tab"
+msgstr ""
+
+#: Temporarily connect to this network
+msgid "personal_connect_temporary"
 msgstr ""
 
 #: Saved networks
