@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2019-06-27 15:59\n"
+"PO-Revision-Date: 2019-06-27 16:01\n"
 
 #: Start
 msgid "start_button"
@@ -922,11 +922,11 @@ msgstr "Мрежата е добавена към съществуващия в�
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr ""
+msgstr "Добавете мрежа към съществуващия прозорец на Kiwi"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr ""
+msgstr "Временно се свържете с тази мрежа"
 
 #: Saved networks
 msgid "personal_saved"
