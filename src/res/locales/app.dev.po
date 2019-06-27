@@ -997,13 +997,13 @@ msgstr "They will be here when you come back."
 msgid "personal_add"
 msgstr "Add a Network"
 
-#: You are trying to connect to 
+#: You are trying to connect to {{network}}
 msgid "personal_connect_to"
 msgstr "You are trying to connect to {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Network has been added to your existing Kiwi window.";
+msgstr "Network has been added to your existing Kiwi window."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
