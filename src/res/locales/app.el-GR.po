@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-06-27 14:12\n"
+"PO-Revision-Date: 2019-06-27 17:31\n"
 
 #: Start
 msgid "start_button"
@@ -914,19 +914,19 @@ msgstr "Προσθέστε ένα Δίκτυο"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr ""
+msgstr "Προσπαθείτε να συνδεθείτε {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr ""
+msgstr "Το δίκτυο έχει προστεθεί στο υπάρχον παράθυρο του Kiwi."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr ""
+msgstr "Προσθήκη δικτύου στο υπάρχον παράθυρο Kiwi"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr ""
+msgstr "Συνδεθείτε προσωρινά σε αυτό το δίκτυο"
 
 #: Saved networks
 msgid "personal_saved"
