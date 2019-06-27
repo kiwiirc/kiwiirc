@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2019-06-27 14:12\n"
+"PO-Revision-Date: 2019-06-27 15:59\n"
 
 #: Start
 msgid "start_button"
@@ -230,7 +230,7 @@ msgstr "Използвайте Monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Използвайте Kiwi като IRC клиент по подразбиране"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -914,11 +914,11 @@ msgstr "Добави IRC мрежа"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr ""
+msgstr "Опитвате се да се свържете с {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr ""
+msgstr "Мрежата е добавена към съществуващия ви прозорец."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
