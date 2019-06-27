@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2019-05-19 11:01\n"
+"PO-Revision-Date: 2019-06-27 14:12\n"
 
 #: Start
 msgid "start_button"
@@ -227,6 +227,10 @@ msgstr ""
 #: Use monospace
 msgid "settings_use_monospace"
 msgstr "Perdor monospace"
+
+#: Use Kiwi as my default IRC client
+msgid "settings_default_handler"
+msgstr ""
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -907,6 +911,22 @@ msgstr "Ato do jene ketu kur ti te vish serisht"
 #: Add a Network
 msgid "personal_add"
 msgstr "Shto rrjet"
+
+#: You are trying to connect to {{network}}
+msgid "personal_connect_to"
+msgstr ""
+
+#: Network has been added to your existing Kiwi window.
+msgid "personal_added_to_existing"
+msgstr ""
+
+#: Add network to existing Kiwi window
+msgid "personal_add_existing_tab"
+msgstr ""
+
+#: Temporarily connect to this network
+msgid "personal_connect_temporary"
+msgstr ""
 
 #: Saved networks
 msgid "personal_saved"
