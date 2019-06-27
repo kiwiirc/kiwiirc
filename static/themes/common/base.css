@@ -904,11 +904,6 @@
     border-top-color: var(--brand-midtone);
 }
 
-/* ---- Compact Layout Styling ---- */
-.kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
-    background-color: var(--brand-midtone);
-}
-
 /* Errors */
 .kiwi-messagelist-message-error,
 .kiwi-messagelist-message.kiwi-messagelist-message-error.kiwi-messagelist-message--highlight {
