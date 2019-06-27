@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-06-27 17:31\n"
+"PO-Revision-Date: 2019-06-27 17:41\n"
 
 #: Start
 msgid "start_button"
@@ -230,7 +230,7 @@ msgstr "Χρησιμοποιήστε τη μονοχρωματική διάτα�
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Χρησιμοποιήστε το Kiwi ως προεπιλεγμένο IRC πρόγραμμα-πελάτη."
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -914,7 +914,7 @@ msgstr "Προσθέστε ένα Δίκτυο"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "Προσπαθείτε να συνδεθείτε {{network}}"
+msgstr "Προσπαθείτε να συνδεθείτε στο {{network}} δίκτυο"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
