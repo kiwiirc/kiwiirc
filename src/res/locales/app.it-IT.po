@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-06-27 15:31\n"
+"PO-Revision-Date: 2019-06-27 15:43\n"
 
 #: Start
 msgid "start_button"
@@ -922,11 +922,11 @@ msgstr "La rete è stata aggiunta alla finestra di Kiwi esistente."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Aggiungi la rete alla finestra di Kiwi esistente"
+msgstr "Aggiungi il network alla finestra di Kiwi esistente"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Connessione temporanea a questa rete"
+msgstr "Connessione temporanea a questo network"
 
 #: Saved networks
 msgid "personal_saved"
