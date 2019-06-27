@@ -97,32 +97,6 @@ select {
     border: 2px solid;
 }
 
-.u-form input[type='checkbox']::after,
-.u-form input[type='radio']::after {
-    position: absolute;
-    content: '';
-    left: 1px;
-    top: 1px;
-    width: 14px;
-    height: 14px;
-    z-index: 10;
-    transition: all 0.3s;
-    opacity: 0;
-}
-
-.u-form input[type='checkbox']:checked::after,
-.u-form input[type='radio']:checked::after {
-    position: absolute;
-    content: '';
-    left: 1px;
-    top: 1px;
-    width: 14px;
-    height: 14px;
-    z-index: 10;
-    transition: all 0.3s;
-    opacity: 1;
-}
-
 .u-form input[type="radio"] {
     float: right;
 }

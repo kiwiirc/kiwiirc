@@ -139,8 +139,8 @@
     border: 2px solid #57da93;
     background-color: #183123;
 }
-.u-form input[type='checkbox']:after,
-.u-form input[type='radio']:after {
+.u-form input[type='checkbox']:checked,
+.u-form input[type='radio']:checked {
     background: #5dd895;
 }
 
