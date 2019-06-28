@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2019-06-27 14:12\n"
+"PO-Revision-Date: 2019-06-28 19:10\n"
 
 #: Start
 msgid "start_button"
@@ -230,7 +230,7 @@ msgstr "Fer servir la font Monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Usar el Kiwi com el meu cliente IRC predeterminat"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -914,19 +914,19 @@ msgstr "Afegeix una xarxa"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr ""
+msgstr "Estàs intentant connectar-te a {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr ""
+msgstr "La xarxa s'ha afegit a la teva finestra existent del Kiwi."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr ""
+msgstr "Afegir la xarxa a la finestra existent del Kiwi"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr ""
+msgstr "Connectar-se temporalment a aquesta xarxa"
 
 #: Saved networks
 msgid "personal_saved"
