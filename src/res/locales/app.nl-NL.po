@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2019-06-27 14:12\n"
+"PO-Revision-Date: 2019-06-28 13:56\n"
 
 #: Start
 msgid "start_button"
@@ -230,7 +230,7 @@ msgstr "Monospace gebruiken"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Kiwi als mijn standaard IRC-client gebruiken"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -914,19 +914,19 @@ msgstr "Een netwerk toevoegen"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr ""
+msgstr "Je probeert verbinding te maken met {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr ""
+msgstr "Netwerk is aan je bestaande Kiwi-venster toegevoegd."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr ""
+msgstr "Netwerk aan bestaande Kiwi-venster toevoegen"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr ""
+msgstr "Tijdelijk verbinding maken met dit netwerk"
 
 #: Saved networks
 msgid "personal_saved"
