@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-06-27 14:12\n"
+"PO-Revision-Date: 2019-06-27 19:14\n"
 
 #: Start
 msgid "start_button"
@@ -230,7 +230,7 @@ msgstr "Tek boşluk kullan"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Kiwi'yi varsayılan IRC istemcim olarak kullan"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -914,19 +914,19 @@ msgstr "Ağ ekle"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr ""
+msgstr "{{network}}'e bağlanmaya çalışıyorsunuz"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr ""
+msgstr "Mevcut Kiwi pencerenize ağ eklendi."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr ""
+msgstr "Mevcut Kiwi penceresine ağ ekle"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr ""
+msgstr "Bu ağa geçici olarak bağlan"
 
 #: Saved networks
 msgid "personal_saved"
