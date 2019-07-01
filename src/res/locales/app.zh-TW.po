@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2019-07-01 12:50\n"
+"PO-Revision-Date: 2019-07-01 13:01\n"
 
 #: Start
 msgid "start_button"
@@ -166,7 +166,7 @@ msgstr "{{count}} 週"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr ""
+msgstr "{{count}} 週"
 
 #: {{count}} day
 msgid "day"
@@ -174,7 +174,7 @@ msgstr "{{count}} 天"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr ""
+msgstr "{{count}} 天"
 
 #: {{count}} hour
 msgid "hour"
@@ -182,7 +182,7 @@ msgstr "{{count}} 小時"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr ""
+msgstr "{{count}} 小時"
 
 #: {{count}} minute
 msgid "minute"
@@ -190,7 +190,7 @@ msgstr "{{count}} 分鐘"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "{{count}} 分鐘"
 
 #: {{count}} second
 msgid "second"
@@ -206,27 +206,27 @@ msgstr "一般"
 
 #: Language
 msgid "settings_language"
-msgstr ""
+msgstr "語言"
 
 #: Theme
 msgid "settings_theme"
-msgstr ""
+msgstr "佈景主題"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "重新整理佈景主題"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr ""
+msgstr "佈景主題的網址"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr ""
+msgstr "佈景主題配置"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr ""
+msgstr "使用等寬字型"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
@@ -954,7 +954,7 @@ msgstr "已連線"
 
 #: Disconnected
 msgid "disconnected"
-msgstr ""
+msgstr "已中斷連線"
 
 #: Connected to {{network}}!
 msgid "connected_to"
