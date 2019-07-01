@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2019-07-01 12:41\n"
+"PO-Revision-Date: 2019-07-01 12:50\n"
 
 #: Start
 msgid "start_button"
@@ -94,35 +94,35 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "登入中..."
+msgstr "登入中…"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "無效的登入"
 
 #: Search...
 msgid "do_search"
-msgstr ""
+msgstr "搜尋…"
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "確定"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "取消"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "是"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "否"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "找不到"
 
 #: Warning!
 msgid "warning"
@@ -130,23 +130,23 @@ msgstr "警告"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr ""
+msgstr "這樣會關閉全部的 KiwiIRC 交談。您是否確定關閉本視窗？"
 
 #: Real name
 msgid "whois_realname"
-msgstr ""
+msgstr "真實名稱"
 
 #: Status
 msgid "whois_status"
-msgstr ""
+msgstr "狀態"
 
 #: Is available
 msgid "whois_status_available"
-msgstr ""
+msgstr "可用"
 
 #: Send a message
 msgid "send_a_message"
-msgstr ""
+msgstr "傳送訊息"
 
 #: More information
 msgid "more_information"
