@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2019-07-01 12:31\n"
+"PO-Revision-Date: 2019-07-01 12:41\n"
 
 #: Start
 msgid "start_button"
@@ -30,7 +30,7 @@ msgstr "連線"
 
 #: Connecting...
 msgid "connecting"
-msgstr "連線中"
+msgstr "連線中…"
 
 #: Connected
 msgid "connected"
@@ -50,11 +50,11 @@ msgstr "頻道"
 
 #: Banned Users
 msgid "banned"
-msgstr "已被封鎖"
+msgstr "已遭禁止"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "通知"
 
 #: Username
 msgid "username"
@@ -66,7 +66,7 @@ msgstr "密碼"
 
 #: I have a password
 msgid "password_have"
-msgstr ""
+msgstr "我有密碼"
 
 #: Server
 msgid "server"
@@ -74,7 +74,7 @@ msgstr "伺服器"
 
 #: Nick
 msgid "nick"
-msgstr ""
+msgstr "暱稱"
 
 #: Channel
 msgid "channel"
@@ -90,11 +90,11 @@ msgstr "網路"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "登入中..."
 
 #: Invalid login
 msgid "invalid_login"
@@ -162,7 +162,7 @@ msgstr "頻道"
 
 #: {{count}} week
 msgid "week"
-msgstr "週"
+msgstr "{{count}} 週"
 
 #: {{count}} weeks
 msgid "week_plural"
@@ -170,7 +170,7 @@ msgstr ""
 
 #: {{count}} day
 msgid "day"
-msgstr "天"
+msgstr "{{count}} 天"
 
 #: {{count}} days
 msgid "day_plural"
@@ -178,7 +178,7 @@ msgstr ""
 
 #: {{count}} hour
 msgid "hour"
-msgstr "小時"
+msgstr "{{count}} 小時"
 
 #: {{count}} hours
 msgid "hour_plural"
@@ -186,7 +186,7 @@ msgstr ""
 
 #: {{count}} minute
 msgid "minute"
-msgstr "分鐘"
+msgstr "{{count}} 分鐘"
 
 #: {{count}} minutes
 msgid "minute_plural"
@@ -194,15 +194,15 @@ msgstr ""
 
 #: {{count}} second
 msgid "second"
-msgstr "秒"
+msgstr "{{count}} 秒"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr ""
+msgstr "{{count}} 秒"
 
 #: General
 msgid "settings_general"
-msgstr ""
+msgstr "一般"
 
 #: Language
 msgid "settings_language"
