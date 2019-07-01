@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2019-06-27 14:12\n"
+"PO-Revision-Date: 2019-07-01 12:41\n"
 
 #: Start
 msgid "start_button"
@@ -42,7 +42,7 @@ msgstr "设置"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Kiwi 设置"
 
 #: Channels
 msgid "channels"
@@ -82,7 +82,7 @@ msgstr "频道"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "消息"
 
 #: Network
 msgid "network"
@@ -94,7 +94,7 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "正在登陆···"
+msgstr "正在登录···"
 
 #: Invalid login
 msgid "invalid_login"
@@ -114,11 +114,11 @@ msgstr "取消"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "是"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "否"
 
 #: Not found.
 msgid "not_found"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "警告"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -162,7 +162,7 @@ msgstr "频道"
 
 #: {{count}} week
 msgid "week"
-msgstr ""
+msgstr "{{count}} 个星期"
 
 #: {{count}} weeks
 msgid "week_plural"
