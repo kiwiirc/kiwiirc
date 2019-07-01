@@ -10,47 +10,47 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2019-06-27 14:12\n"
+"PO-Revision-Date: 2019-07-01 12:31\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "開始"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "歡迎造訪 Kiwi IRC！"
 
 #: Close
 msgid "close"
-msgstr ""
+msgstr "關閉"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "連線"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "連線中"
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "已連線"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "設定"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Kiwi 設定"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "頻道"
 
 #: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "已被封鎖"
 
 #: Notifications
 msgid "notifications"
@@ -58,11 +58,11 @@ msgstr ""
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "使用者名稱"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "密碼"
 
 #: I have a password
 msgid "password_have"
@@ -70,7 +70,7 @@ msgstr ""
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "伺服器"
 
 #: Nick
 msgid "nick"
@@ -78,15 +78,15 @@ msgstr ""
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "頻道"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "訊息"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "網路"
 
 #: ZNC
 msgid "znc"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "警告"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -150,19 +150,19 @@ msgstr ""
 
 #: More information
 msgid "more_information"
-msgstr ""
+msgstr "更多訊息"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr ""
+msgstr "忽略使用者"
 
 #: Channel
 msgid "connection_channel"
-msgstr ""
+msgstr "頻道"
 
 #: {{count}} week
 msgid "week"
-msgstr ""
+msgstr "週"
 
 #: {{count}} weeks
 msgid "week_plural"
@@ -170,7 +170,7 @@ msgstr ""
 
 #: {{count}} day
 msgid "day"
-msgstr ""
+msgstr "天"
 
 #: {{count}} days
 msgid "day_plural"
@@ -178,7 +178,7 @@ msgstr ""
 
 #: {{count}} hour
 msgid "hour"
-msgstr ""
+msgstr "小時"
 
 #: {{count}} hours
 msgid "hour_plural"
@@ -186,7 +186,7 @@ msgstr ""
 
 #: {{count}} minute
 msgid "minute"
-msgstr ""
+msgstr "分鐘"
 
 #: {{count}} minutes
 msgid "minute_plural"
@@ -194,7 +194,7 @@ msgstr ""
 
 #: {{count}} second
 msgid "second"
-msgstr ""
+msgstr "秒"
 
 #: {{count}} seconds
 msgid "second_plural"
@@ -950,7 +950,7 @@ msgstr ""
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "已連線"
 
 #: Disconnected
 msgid "disconnected"
