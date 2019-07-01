@@ -130,10 +130,19 @@ function clientMiddleware(state, network) {
             });
         });
 
-        client.on('socket close', (err) => {
+        client.on('socket close', (err, netName) => {
             isRegistered = false;
             network.state = 'disconnected';
             network.state_error = err || '';
+
+            // bnc-directed close, only continue if the names match
+            // // eslint-disable-next-line
+            // console.log('handling socket close:', network.name.toLowerCase(), netName);
+            if (netName !== null && network.name.toLowerCase() !== netName) {
+                // // eslint-disable-next-line
+                // console.log(' - not for me', network.name);
+                return;
+            }
 
             network.buffers.forEach((buffer) => {
                 if (!buffer) {

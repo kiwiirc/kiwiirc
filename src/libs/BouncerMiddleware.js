@@ -63,10 +63,9 @@ export default function bouncerMiddleware() {
 
         if (params[0] === 'state' && params[2] === 'disconnected') {
             let netName = (params[1] || '').toLowerCase();
-            let eventObj = {
-                network: netName,
-            };
-            client.emit('socket close');
+            // // eslint-disable-next-line
+            // console.log('emitting socket close for', netName);
+            client.emit('socket close', null, netName);
         }
 
         if (params[0] === 'addnetwork' && params[2].substr(0, 4) === 'ERR_') {
