@@ -8,6 +8,8 @@ import 'vue-virtual-scroller/dist/vue-virtual-scroller.css';
 
 // fetch polyfill
 import 'whatwg-fetch';
+// polyfill for vue-virtual-scroller & ie11
+import 'intersection-observer';
 
 import AvailableLocales from '@/res/locales/available.json';
 import FallbackLocale from '@/../static/locales/en-us.json';

@@ -62,6 +62,7 @@
     "i18next": "^8.4.0",
     "i18next-conv": "^3.0.3",
     "i18next-xhr-backend": "^1.4.1",
+    "intersection-observer": "^0.7.0",
     "ip-regex": "2.1.0",
     "irc-framework": "^4.3.0",
     "json-loader": "^0.5.4",
