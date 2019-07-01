@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2019-07-01 13:01\n"
+"PO-Revision-Date: 2019-07-01 13:58\n"
 
 #: Start
 msgid "start_button"
@@ -230,35 +230,35 @@ msgstr "使用等寬字型"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "使用 Kiwi 作為我的預設 IRC 用戶端"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr ""
+msgstr "傳統 IRC 配置"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr ""
+msgstr "顯示自動完成清單"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr ""
+msgstr "聊天訊息"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr ""
+msgstr "顯示時間戳記"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "使用 24 小時格式時間戳記"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "顯示表情符號"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr ""
+msgstr "封鎖新的私人訊息"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
