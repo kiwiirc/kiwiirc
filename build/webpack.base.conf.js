@@ -26,6 +26,7 @@ module.exports = {
     app: [
         'core-js/fn/promise', // required by the webpack runtime for async import(). babel polyfills don't help us here. ie11
         'core-js/fn/array/virtual/find-index', // required for vue-virtual-scroller & ie11
+        'core-js/fn/array/virtual/includes', // required for vue-virtual-scroller & ie11
         './src/main.js'
     ]
   },
