@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2019-07-01 13:58\n"
+"PO-Revision-Date: 2019-07-01 14:11\n"
 
 #: Start
 msgid "start_button"
@@ -266,7 +266,7 @@ msgstr ""
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr ""
+msgstr "額外格式"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
