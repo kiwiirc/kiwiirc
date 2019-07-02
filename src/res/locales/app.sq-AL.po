@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2019-07-02 11:20\n"
+"PO-Revision-Date: 2019-07-02 11:21\n"
 
 #: Start
 msgid "start_button"
@@ -934,7 +934,7 @@ msgstr "Rrjete të ruajtur"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (Gjenerata e re) - Parashikim Rizon"
+msgstr "Kiwi IRC (brezi pasues) - Version paraprak Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
