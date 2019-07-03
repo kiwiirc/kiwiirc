@@ -251,7 +251,7 @@ export default {
         });
 
         this.listen(this.$state, 'messagelist.scrollto', (opt) => {
-            if (opt.id) {
+            if (opt && opt.id) {
                 this.maybeScrollToId(opt.id);
             }
         });
