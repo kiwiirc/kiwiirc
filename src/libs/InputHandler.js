@@ -151,13 +151,7 @@ function handleMessage(type, event, command, line) {
         return;
     }
 
-    let localBuffer = bufferName;
-    let extractedTarget = network.ircClient.network.extractTargetGroup(bufferName);
-    if (extractedTarget) {
-        localBuffer = extractedTarget.target;
-    }
-
-    let buffer = localBuffer.length && this.state.getOrAddBufferByName(network.id, localBuffer);
+    let buffer = bufferName.length && this.state.getOrAddBufferByName(network.id, bufferName);
     if (buffer) {
         let textFormatType = 'privmsg';
         if (type === 'action') {
