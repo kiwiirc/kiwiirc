@@ -67,6 +67,7 @@ module.exports = {
             resolve('src'),
             resolve('test'),
             resolve('node_modules/ip-regex'),
+            resolve('node_modules/isomorphic-textencoder'),
             resolve('node_modules/webpack-dev-server/client')
         ]
       },
