@@ -29,7 +29,7 @@ export default class BouncerProvider {
         // A snapshot of the current networks. Compared against to detect changed networks
         this.networksSnapshot = Object.create(null);
 
-        state.$on('irc.server options', this.onNetworkOptions.bind(this));
+        state.$on('irc.motd', this.onNetworkMotd.bind(this));
     }
 
     enable(server, port, tls, direct, path) {
@@ -63,7 +63,7 @@ export default class BouncerProvider {
         return this.controllerNetwork;
     }
 
-    async onNetworkOptions(event, network) {
+    async onNetworkMotd(event, network) {
         let client = network.ircClient;
 
         if (!this.bnc.enabled) {
@@ -74,14 +74,14 @@ export default class BouncerProvider {
             return;
         }
 
+        // Set the bncname if the network upstream exists and we havn't already set it
+        if (client.bnc.hasNetwork() && !network.connection.bncname) {
+            network.connection.bncname = client.bnc.tags().network;
+        }
+
         // First-run setup. Only run on the first connection of the first network connected
         if (this.getController() === network && !this.bnc.registered) {
             await this.initAndAddNetworks(network);
-        }
-
-        // Set the bncname if the network upstream exists and we havn't already set it
-        if (network.ircClient.bnc.hasNetwork() && !network.connection.bncname) {
-            network.connection.bncname = client.bnc.tags().network;
         }
     }
 
@@ -90,8 +90,12 @@ export default class BouncerProvider {
 
         this.bnc.registered = true;
 
-        // hide the empty controller network
-        network.hidden = true;
+        // hide the empty (non-network) controller network
+        if (!network.ircClient.bnc.hasNetwork()) {
+            network.hidden = true;
+        } else {
+            network.hidden = false;
+        }
 
         // populate network list from the controller connection
         let bncNetworks = await client.bnc.getNetworks();
