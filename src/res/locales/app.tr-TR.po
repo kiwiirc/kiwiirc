@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-07-06 14:41\n"
+"PO-Revision-Date: 2019-07-06 15:01\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "Kanallar"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Erişim"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Yasaklı Kullanıcılar"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Davet Edilen Kullanıcılar"
 
 #: Notifications
 msgid "notifications"
@@ -398,35 +398,35 @@ msgstr "Kimse yasaklanmadı!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Davet listesini yenile"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Davet Edilen Kullanıcı"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Tarafından davet edildi"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Davet listesi yenileniyor..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Kimse davet edilmedi!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Bu halka açık bir kanal."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Yalnızca davet edilen kullanıcılar katılabilir."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Yalnızca davet edilen kullanıcılar katılabilir."
 
 #: Only allow invited users
 msgid "invite_set_private"
