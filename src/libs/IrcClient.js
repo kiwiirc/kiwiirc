@@ -5,6 +5,7 @@ import strftime from 'strftime';
 import Irc from 'irc-framework';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
+import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import typingMiddleware from './TypingMiddleware';
 import * as ServerConnection from './ServerConnection';
 
@@ -928,6 +929,7 @@ function clientMiddleware(state, network) {
                 });
 
                 // Mode -> locale ID mappings
+                // If a mode isn't found here, the local ID modes_other is used
                 let modeLocaleIds = {
                     '+o': 'modes_give_ops',
                     '-o': 'modes_take_ops',
@@ -942,6 +944,20 @@ function clientMiddleware(state, network) {
                     '+b': 'modes_gives_ban',
                     '-b': 'modes_takes_ban',
                 };
+
+                // Some IRCd differences
+                if (!IrcdDiffs.isQChannelModeOwner(network)) {
+                    delete modeLocaleIds['+q'];
+                    delete modeLocaleIds['-q'];
+                }
+                if (!IrcdDiffs.isAChannelModeAdmin(network)) {
+                    delete modeLocaleIds['+a'];
+                    delete modeLocaleIds['-a'];
+                }
+                if (!IrcdDiffs.supportsHalfOp(network)) {
+                    delete modeLocaleIds['+h'];
+                    delete modeLocaleIds['-h'];
+                }
 
                 // Some modes have specific data for its locale data while most
                 // use a default. The returned objects are passed to the translation

@@ -134,6 +134,7 @@
 'kiwi public';
 
 import * as TextFormatting from '@/helpers/TextFormatting';
+import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
@@ -152,7 +153,6 @@ export default {
         availableChannelModes: function availableChannelModes() {
             let availableModes = [];
             let prefixes = this.network.ircClient.network.options.PREFIX;
-            // TODO: Double check these modes mean the correct things
             let knownPrefix = {
                 q: 'Owner',
                 a: 'Admin',
@@ -160,6 +160,17 @@ export default {
                 h: 'Half-Operator',
                 v: 'Voice',
             };
+
+            if (!IrcdDiffs.isAChannelModeAdmin(this.network)) {
+                delete knownPrefix.a;
+            }
+            if (!IrcdDiffs.isQChannelModeOwner(this.network)) {
+                delete knownPrefix.q;
+            }
+            if (!IrcdDiffs.supportsHalfOp(this.network)) {
+                delete knownPrefix.h;
+            }
+
             prefixes.forEach((prefix) => {
                 let mode = prefix.mode;
                 if (knownPrefix[mode]) {
