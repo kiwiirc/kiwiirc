@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2019-07-06 15:31\n"
+"PO-Revision-Date: 2019-07-06 18:41\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "Kanali"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Pristup"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Banovani korisnici"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Pozvani"
 
 #: Notifications
 msgid "notifications"
@@ -398,51 +398,51 @@ msgstr "Niko nije banovan!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Osvježi popis pozvanih"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Pozvani korisnici"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Pozivnice od"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Popis pozvanih se osvježava..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Niko nije pozvan!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Ovo je javni kanal."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Samo pozvani korisnici se mogu pridružiti."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Dopusti samo pozvane korisnike"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Dopusti bilo kome da se pridruži"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Samo registrovani korisnici se mogu pridružiti"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Dodaj pozivnicu"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "Pozovi bilo kojeg registrovanog korisnika"
 
 #: Topic
 msgid "channel_topic"
