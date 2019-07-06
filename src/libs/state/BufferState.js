@@ -391,6 +391,10 @@ export default class BufferState {
         let network = this.getNetwork();
         network.ircClient.part(this.name, reason || '');
     }
+
+    scrollToMessage(id) {
+        this.state.$emit('messagelist.scrollto', { id: id });
+    }
 }
 
 /**

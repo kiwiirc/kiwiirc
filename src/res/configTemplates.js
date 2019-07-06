@@ -72,7 +72,8 @@ export const configTemplates = {
             show_message_info: true,
             who_loop: true,
             share_typing: true,
-            flash_title: true,
+            // flash_title: message/highlight/off
+            flash_title: 'message',
         },
         // Startup screen default
         startupOptions: {

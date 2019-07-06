@@ -34,8 +34,13 @@
             </h4>
             <div>
                 <ul v-if="highlights.length > 0">
-                    <li v-for="msg in highlights" :key="msg.id">
-                        {{ msg.nick ? msg.nick + ': ' : '' }}{{ msg.message }}
+                    <li
+                        v-for="msg in highlights"
+                        :key="msg.id"
+                        class="kiwi-aboutbuffer-highlight"
+                        @click="buffer.scrollToMessage(msg.id)"
+                    >
+                        {{ msg.nick ? msg.nick + ': ' : '' }}<span v-html="msg.html" />
                     </li>
                 </ul>
                 <p v-else>{{ $t('nobody_mentioned_you') }}</p>
@@ -93,7 +98,8 @@ export default {
                 .filter(m => m.isHighlight)
                 .filter(m => m.type !== 'traffic')
                 .filter(m => m.type !== 'topic')
-                .filter(m => m.type !== 'mode');
+                .filter(m => m.type !== 'mode')
+                .filter(m => m.html);
         },
     },
     methods: {
@@ -124,6 +130,10 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.kiwi-aboutbuffer-highlight {
+    cursor: pointer;
 }
 
 .kiwi-aboutbuffer h3 {

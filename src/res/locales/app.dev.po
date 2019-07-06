@@ -36,9 +36,17 @@ msgstr "Kiwi Settings"
 msgid "channels"
 msgstr "Channels"
 
+#: Access
+msgid "access"
+msgstr "Access"
+
 #: Banned Users
 msgid "banned"
 msgstr "Banned Users"
+
+#: Invited Users
+msgid "invited"
+msgstr "Invited Users"
 
 #: Notifications
 msgid "notifications"
@@ -395,6 +403,57 @@ msgstr "Refreshing banlist..."
 msgid "bans_nobody"
 msgstr "Nobody is banned!"
 
+
+
+#: ChannelInvitelist $t('invites_')
+
+#: Refresh invite list
+msgid "invites_refresh"
+msgstr "Refresh invite list"
+
+#: Invited user
+msgid "invites_user"
+msgstr "Invited user"
+
+#: Invited by
+msgid "invites_by"
+msgstr "Invited by"
+
+#: Refreshing invite list...
+msgid "invites_refreshing"
+msgstr "Refreshing invite list..."
+
+#: Nobody is invited!
+msgid "invites_nobody"
+msgstr "Nobody is invited!"
+
+#: This is a public channel.
+msgid "invite_public_channel"
+msgstr "This is a public channel."
+
+#: Only invited users can join.
+msgid "invite_private_channel"
+msgstr "Only invited users can join."
+
+#: Only allow invited users
+msgid "invite_set_private"
+msgstr "Only allow invited users"
+
+#: Allow anybody to join
+msgid "invite_set_public"
+msgstr "Allow anybody to join"
+
+#: Only registered users can join
+msgid "invite_registered_only"
+msgstr "Only registered users can join"
+
+#: Add invite
+msgid "invite_add_invite"
+msgstr "Add invite"
+
+#: (Any registered user)
+msgid "invite_any_registered"
+msgstr "(Any registered user)"
 
 
 #: ChannelInfo $t('channel_')
