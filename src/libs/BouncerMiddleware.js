@@ -85,7 +85,7 @@ function addFunctionsToClient(client) {
 
     bnc.tags = function tags() {
         let token = client.network.supports('bouncer');
-        return !token || typeof token !== 'object' ?
+        return !token || typeof token !== 'string' ?
             {} :
             MessageTags.decode(token) || {};
     };
