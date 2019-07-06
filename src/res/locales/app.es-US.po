@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Spanish, United States\n"
 "Language: es_US\n"
-"PO-Revision-Date: 2019-06-27 14:12\n"
+"PO-Revision-Date: 2019-07-06 14:41\n"
 
 #: Start
 msgid "start_button"
@@ -48,9 +48,17 @@ msgstr "Configuración del Kiwi"
 msgid "channels"
 msgstr "Canales"
 
+#: Access
+msgid "access"
+msgstr ""
+
 #: Banned Users
 msgid "banned"
 msgstr "Usuarios baneados"
+
+#: Invited Users
+msgid "invited"
+msgstr ""
 
 #: Notifications
 msgid "notifications"
@@ -230,7 +238,7 @@ msgstr "Usar fuente Monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Usar Kiwi como mi cliente IRC predeterminado"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -387,6 +395,58 @@ msgstr "Actualizando lista de baneos"
 #: Nobody is banned!
 msgid "bans_nobody"
 msgstr "Nadie está baneado"
+
+#: Refresh invite list
+msgid "invites_refresh"
+msgstr ""
+
+#: Invited user
+msgid "invites_user"
+msgstr ""
+
+#: Invited by
+msgid "invites_by"
+msgstr ""
+
+#: Refreshing invite list...
+msgid "invites_refreshing"
+msgstr ""
+
+#: Nobody is invited!
+msgid "invites_nobody"
+msgstr ""
+
+#: This is a public channel.
+msgid "invite_public_channel"
+msgstr ""
+
+#: Only invited users can join.
+msgid "invite_private_channel"
+msgstr ""
+
+#: Only invited users can join.
+msgid "invite_private_channel"
+msgstr ""
+
+#: Only allow invited users
+msgid "invite_set_private"
+msgstr ""
+
+#: Allow anybody to join
+msgid "invite_set_public"
+msgstr ""
+
+#: Only registered users can join
+msgid "invite_registered_only"
+msgstr ""
+
+#: Add invite
+msgid "invite_add_invite"
+msgstr ""
+
+#: (Any registered user)
+msgid "invite_any_registered"
+msgstr ""
 
 #: Topic
 msgid "channel_topic"
@@ -914,19 +974,19 @@ msgstr "Añade una Red"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr ""
+msgstr "Estás intentando conectarte a {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr ""
+msgstr "La red se ha agregado a tu ventana existente de Kiwi."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr ""
+msgstr "Agregar red a la ventana existente de Kiwi"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr ""
+msgstr "Conectarse temporalmente a esta red"
 
 #: Saved networks
 msgid "personal_saved"
