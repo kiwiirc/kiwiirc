@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-07-06 15:01\n"
+"PO-Revision-Date: 2019-07-06 15:31\n"
 
 #: Start
 msgid "start_button"
@@ -424,29 +424,25 @@ msgstr "Bu halka açık bir kanal."
 msgid "invite_private_channel"
 msgstr "Yalnızca davet edilen kullanıcılar katılabilir."
 
-#: Only invited users can join.
-msgid "invite_private_channel"
-msgstr "Yalnızca davet edilen kullanıcılar katılabilir."
-
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Yalnızca davet edilen kullanıcılara izin ver"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Herhangi birinin katılmasına izin ver"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Sadece kayıtlı kullanıcılar katılabilir"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Davet ekle"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Herhangi bir kayıtlı kullanıcı)"
 
 #: Topic
 msgid "channel_topic"

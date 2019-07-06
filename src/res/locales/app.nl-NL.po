@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2019-07-06 14:42\n"
+"PO-Revision-Date: 2019-07-06 15:31\n"
 
 #: Start
 msgid "start_button"
@@ -418,10 +418,6 @@ msgstr ""
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
-
-#: Only invited users can join.
-msgid "invite_private_channel"
 msgstr ""
 
 #: Only invited users can join.
