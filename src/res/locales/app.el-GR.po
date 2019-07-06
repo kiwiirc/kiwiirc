@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-07-06 14:42\n"
+"PO-Revision-Date: 2019-07-06 15:10\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "Κανάλια"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Πρόσβαση"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Αποκλεισμένοι Χρήστες"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Προσκεκλημένοι Χρήστες"
 
 #: Notifications
 msgid "notifications"
@@ -398,27 +398,27 @@ msgstr "Κανένας δεν είναι προς το παρόν αποκλει
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Ανανέωση Λίστας Προσκεκλημένων"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Προσκεκλημένος χρήστης"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Προσκληθεί από"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Γίνεται ανανέωση της λίστας προσκεκλημένων..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Κανένας δεν έχει προσκληθεί!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Αυτό είναι ένα δημόσιο κανάλι."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
