@@ -1,7 +1,7 @@
 // Do channels support half-op mode
 export function supportsHalfOp(network) {
     let ircdType = network.ircd.toLowerCase();
-    let notSupported = ['ircd-seven'];
+    let notSupported = ['ircd-seven', 'charybdis'];
 
     for (let i = 0; i < notSupported.length; i++) {
         if (ircdType.indexOf(notSupported[i]) > -1) {
