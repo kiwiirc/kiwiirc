@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-07-06 15:21\n"
+"PO-Revision-Date: 2019-07-06 15:32\n"
 
 #: Start
 msgid "start_button"
@@ -419,10 +419,6 @@ msgstr "Κανένας δεν έχει προσκληθεί!"
 #: This is a public channel.
 msgid "invite_public_channel"
 msgstr "Αυτό είναι ένα δημόσιο κανάλι."
-
-#: Only invited users can join.
-msgid "invite_private_channel"
-msgstr "Μόνο οι προσκεκλημένοι χρήστες μπορούν να εισέλθουν."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
