@@ -306,6 +306,11 @@ export default {
                 }
             });
 
+            // switch to server buffer if no channels are joined
+            if (!hasSwitchedActiveBuffer) {
+                state.setActiveBuffer(net.id, net.serverBuffer().name);
+            }
+
             net.ircClient.connect();
             let onRegistered = () => {
                 if (this.$refs.layout) {
