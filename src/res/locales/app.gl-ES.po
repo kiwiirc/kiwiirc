@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2019-07-06 15:31\n"
+"PO-Revision-Date: 2019-07-07 21:11\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "Canles"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Acceso"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Usuarios baneados"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Usuarios convidados"
 
 #: Notifications
 msgid "notifications"
@@ -398,35 +398,35 @@ msgstr "Ninguén está baneado"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Actualizar lista de convidados"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Usuario convidado"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Convidado por"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Actualizando a lista de convidados..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Ninguén foi convidado!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Isto é unha canle pública."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Só os usuarios convidados poden entrar."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Só se permite usuarios convidados"
 
 #: Allow anybody to join
 msgid "invite_set_public"

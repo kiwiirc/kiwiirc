@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2019-07-06 15:31\n"
+"PO-Revision-Date: 2019-07-07 21:11\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "Salas"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Acceso"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Usuarios baneados"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Usuarios invitados"
 
 #: Notifications
 msgid "notifications"
@@ -310,7 +310,7 @@ msgstr "Enviar mensaje"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Escribe la clave del canal:"
+msgstr "Escribe la clave de la sala:"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -398,51 +398,51 @@ msgstr "Nadie está baneado"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Actualizar lista de invitados"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Usuario invitado"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Invitado por"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Actualizando la lista de invitados..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "¡Nadie fue invitado!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Esto es una sala pública."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Sólo los usuarios invitados pueden entrar."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Sólo se permite usuarios invitados"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Se permite que cualquiera pueda entrar"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Sólo los usuarios registrados pueden entrar"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Añadir invitación"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Cualquier usuario registrado)"
 
 #: Topic
 msgid "channel_topic"
@@ -654,7 +654,7 @@ msgstr "No hay buffer configurado"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "No hay ningún tópico para este canal"
+msgstr "No hay ningún tópico para esta sala"
 
 #: About
 msgid "about"
