@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2019-07-06 15:31\n"
+"PO-Revision-Date: 2019-07-07 11:21\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "Kanalen"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Toegang"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Verbannen gebruikers"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Uitgenodigde gebruikers"
 
 #: Notifications
 msgid "notifications"
@@ -398,51 +398,51 @@ msgstr "Er is niemand verbannen!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Uitnodigingslijst vernieuwen"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Uitgenodigde gebruiker"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Uitgenodigd door"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Uitnodigingslijst..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Er is niemand uitgenodigd!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Dit is een openbaar kanaal."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Alleen uitgenodigde gebruikers kunnen toetreden."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Alleen uitgenodigde gebruikers toestaan"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Iedereen mag toetreden"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Alleen geregistreerde gebruikers kunnen toetreden"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Uitnodiging toevoegen"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Geregistreerde gebruikers)"
 
 #: Topic
 msgid "channel_topic"
