@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-07-07 19:41\n"
+"PO-Revision-Date: 2019-07-07 19:58\n"
 
 #: Start
 msgid "start_button"
@@ -410,11 +410,11 @@ msgstr "invitato da"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Ricarico lista inviti..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Nessuno è stato invitato!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
@@ -426,7 +426,7 @@ msgstr "Solo gli utenti invitati possono accedere."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Permetti accesso solo agli utenti invitati"
 
 #: Allow anybody to join
 msgid "invite_set_public"
