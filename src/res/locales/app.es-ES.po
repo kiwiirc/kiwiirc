@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2019-07-07 20:51\n"
+"PO-Revision-Date: 2019-07-07 21:11\n"
 
 #: Start
 msgid "start_button"
@@ -310,7 +310,7 @@ msgstr "Enviar mensaje"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Escribe la clave del canal:"
+msgstr "Escribe la clave de la sala:"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -434,15 +434,15 @@ msgstr "Se permite que cualquiera pueda entrar"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Sólo los usuarios registrados pueden entrar"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Añadir invitación"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Cualquier usuario registrado)"
 
 #: Topic
 msgid "channel_topic"
@@ -654,7 +654,7 @@ msgstr "No hay buffer configurado"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "No hay ningún tópico para este canal"
+msgstr "No hay ningún tópico para esta sala"
 
 #: About
 msgid "about"
