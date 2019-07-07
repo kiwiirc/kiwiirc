@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2019-07-07 21:11\n"
+"PO-Revision-Date: 2019-07-07 21:22\n"
 
 #: Start
 msgid "start_button"
@@ -430,19 +430,19 @@ msgstr "Só se permite usuarios convidados"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Permítese que calquera poida entrar"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Só os usuarios rexistrados poden entrar"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Engadir invitación"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Calquera usuario rexistrado)"
 
 #: Topic
 msgid "channel_topic"
