@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2019-07-06 15:31\n"
+"PO-Revision-Date: 2019-07-07 22:32\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "Canals"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Accés"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Usuaris banejats"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Usuaris convidats"
 
 #: Notifications
 msgid "notifications"
@@ -398,51 +398,51 @@ msgstr "Ningú està banejat"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Refrescar la llista de convidats"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Usuari convidat"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Convidat per"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Refrescant la llista de convidats..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "No hi ha ningú convidat!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Aquest és un canal públic."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Només els usuaris convidats poden entrar."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Permet entrar només als usuaris convidats"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Permet entrar a qualsevol"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Només els usuaris registrats poden entrar"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Convidar a un usuari"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Qualsevol usuari registrat)"
 
 #: Topic
 msgid "channel_topic"

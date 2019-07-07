@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-07-07 19:58\n"
+"PO-Revision-Date: 2019-07-07 22:32\n"
 
 #: Start
 msgid "start_button"
@@ -58,7 +58,7 @@ msgstr "Utenti bloccati"
 
 #: Invited Users
 msgid "invited"
-msgstr "invitati"
+msgstr "Utenti Invitati"
 
 #: Notifications
 msgid "notifications"
