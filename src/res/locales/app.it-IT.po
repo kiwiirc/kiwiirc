@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-07-06 15:32\n"
+"PO-Revision-Date: 2019-07-07 19:58\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "Canali"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "accesso"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Utenti bloccati"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "invitati"
 
 #: Notifications
 msgid "notifications"
@@ -398,51 +398,51 @@ msgstr "Nessuno è bloccato!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Ricarica lista inviti"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Utenti invitati"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "invitato da"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Ricarico lista inviti..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Nessuno è stato invitato!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Questo è un canale pubblico."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Solo gli utenti invitati possono accedere."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Permetti accesso solo agli utenti invitati"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Permessi l' accesso a tutti"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Solo gli utenti registrati possono accedere"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Aggiungi invito"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Tutti gli utenti registrati)"
 
 #: Topic
 msgid "channel_topic"
