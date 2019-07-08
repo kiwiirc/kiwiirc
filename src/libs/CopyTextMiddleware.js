@@ -5,9 +5,14 @@
 /**
  * Enables copying text from buffers with better formatting
  */
+
+let initialized = false;
 export default function copyTextMiddleware(state) {
     return function middleware(client, rawEvents, parsedEvents) {
-        addListeners(state);
+        if (!initialized) {
+            addListeners(state);
+            initialized = true;
+        }
     };
 }
 function LogFormatter(msg) {
