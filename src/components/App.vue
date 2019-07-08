@@ -430,6 +430,7 @@ body {
     width: 220px;
     bottom: 0;
     z-index: 11; /* Must be at least 1 higher than the workspace :after z-index; */
+    transition: left 0.145s, margin-left 0.145s;
 }
 
 .kiwi-container {
