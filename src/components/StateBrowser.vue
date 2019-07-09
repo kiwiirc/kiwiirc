@@ -159,11 +159,9 @@ export default {
 
 .kiwi-statebrowser {
     box-sizing: border-box;
-    z-index: 11; /* Must be at least 1 higher than the workspace :after z-index; */
     display: flex;
     flex-direction: column;
     border-right: none;
-    width: 220px;
     text-align: center;
     overflow: hidden;
     transition: left 0.145s, margin-left 0.145s;
