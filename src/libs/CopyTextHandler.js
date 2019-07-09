@@ -36,10 +36,16 @@ function LogFormatter(msg) {
 function addListeners(state) {
     // Better copy pasting
     let copyData = '';
+    
+    document.addEventListener('mouseup', () => {
+        document.querySelector('body').style.userSelect = 'auto';
+    });
     document.addEventListener('selectionchange', (e) => {
         copyData = [];
         let selection = document.getSelection();
-        if (!selection || !document.querySelector('.kiwi-messagelist')) {
+        if (!selection
+        || !selection.baseNode
+        || !selection.baseNode.parentElement.closest('.kiwi-messagelist')) {
             document.querySelector('body').style.userSelect = 'auto';
 
             let ml = document.querySelector('.kiwi-messagelist');
