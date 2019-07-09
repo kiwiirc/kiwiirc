@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2019-07-07 11:21\n"
+"PO-Revision-Date: 2019-07-08 16:11\n"
 
 #: Start
 msgid "start_button"
@@ -410,7 +410,7 @@ msgstr "Uitgenodigd door"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Uitnodigingslijst..."
+msgstr "Uitnodigingslijst vernieuwen..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
