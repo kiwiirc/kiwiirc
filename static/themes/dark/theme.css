@@ -72,8 +72,7 @@
     color: #000000;
 }
 
-button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
-.kiwi-statebrowser-channel-label {
+button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     color: var(--brand-default-fg);
 }
 
