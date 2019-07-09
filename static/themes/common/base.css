@@ -572,6 +572,7 @@
 
 .kiwi-statebrowser-channel-label {
     background: var(--brand-primary);
+    color: var(--brand-default-bg);
 }
 .kiwi-statebrowser-channel-label--highlight {
     background: var(--brand-error);
