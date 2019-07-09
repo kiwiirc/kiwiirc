@@ -27,6 +27,7 @@ import GlobalApi from '@/libs/GlobalApi';
 import { AudioManager } from '@/libs/AudioManager';
 import { SoundBleep } from '@/libs/SoundBleep';
 import WindowTitle from '@/libs/WindowTitle';
+import CopyTextHandler from '@/libs/CopyTextHandler';
 import { configTemplates } from '@/res/configTemplates';
 
 // Global utilities
@@ -425,6 +426,7 @@ function initInputCommands() {
 
 function startApp() {
     new WindowTitle(state);
+    new CopyTextHandler(state);
 
     api.emit('init');
 

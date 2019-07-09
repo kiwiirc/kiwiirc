@@ -6,15 +6,12 @@
  * Enables copying text from buffers with better formatting
  */
 
-let initialized = false;
-export default function copyTextMiddleware(state) {
-    return function middleware(client, rawEvents, parsedEvents) {
-        if (!initialized) {
-            addListeners(state);
-            initialized = true;
-        }
-    };
+export default class CopyTextHandler {
+    constructor(state) {
+        addListeners(state);
+    }
 }
+
 function LogFormatter(msg) {
     let text = '';
 

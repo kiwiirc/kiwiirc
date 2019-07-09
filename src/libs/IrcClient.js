@@ -7,7 +7,6 @@ import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import typingMiddleware from './TypingMiddleware';
-import copyTextMiddleware from './CopyTextMiddleware';
 import * as ServerConnection from './ServerConnection';
 
 export function create(state, network) {
@@ -34,7 +33,6 @@ export function create(state, network) {
     ircClient.requestCap('message-tags');
     ircClient.use(clientMiddleware(state, network));
     ircClient.use(typingMiddleware());
-    ircClient.use(copyTextMiddleware(state));
 
     // Overload the connect() function to make sure we are connecting with the
     // most recent connection details from the state
