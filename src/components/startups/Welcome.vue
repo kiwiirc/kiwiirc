@@ -444,7 +444,7 @@ form.kiwi-welcome-simple-form h2 {
     width: auto;
     font-size: 1.2em;
     font-weight: normal;
-    margin: 0 0 4px 0;
+    padding-left: 2px;
 }
 
 .kiwi-input-container .kiwi-toggle-visible {
@@ -481,6 +481,10 @@ form.kiwi-welcome-simple-form h2 {
 .kiwi-input-container input[type="password"]:focus {
     outline: none;
     border-color: #42b992;
+}
+
+.kiwi-input-container:last-of-type {
+    margin: 20px 0 40px 0;
 }
 
 .kiwi-welcome-simple-form .u-submit {
