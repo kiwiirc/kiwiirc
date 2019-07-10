@@ -473,7 +473,7 @@ form.kiwi-welcome-simple-form h2 {
     padding: 0 12px;
     border-radius: 5px;
     font-size: 1.2em;
-    color: #888;
+    color: #616161;
     transition: border-color 0.2s;
 }
 
