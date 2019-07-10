@@ -360,8 +360,6 @@ export default {
 .kiwi-welcome-simple .kiwi-startup-common-section-info {
     border: none;
     width: 60%;
-    background-size: 90% auto;
-    background-position: top right;
     justify-content: flex-end;
     align-items: flex-end;
     padding: 0;
