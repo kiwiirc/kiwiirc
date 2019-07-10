@@ -21,44 +21,43 @@
                     <input v-model="nick" type="text" name="username" value="">
                 </div>
 
-                <div class="kiwi-input-container" v-if="showPass && toggablePass">
-                  <label
-                      class="kiwi-welcome-simple-have-password"
-                  >
-                      <input v-model="show_password_box" type="checkbox" >
-                      <span> {{ $t('password_have') }} </span>
-                  </label>
+                <div v-if="showPass && toggablePass" class="kiwi-input-container">
+                    <label
+                        class="kiwi-welcome-simple-have-password"
+                    >
+                        <input v-model="show_password_box" type="checkbox" >
+                        <span> {{ $t('password_have') }} </span>
+                    </label>
                 </div>
 
-
-                <div class="kiwi-input-container"
-                     v-if="showPass && (show_password_box || !toggablePass)"
+                <div v-if="showPass && (show_password_box || !toggablePass)"
+                     class="kiwi-input-container"
                 >
                     <label for="password">Password</label>
-                    <input v-model="password"
-                           v-focus
-                           :label="$t('password')"
+                    <input v-focus
                            v-if="showPlainText"
+                           v-model="password"
+                           :label="$t('password')"
                            type="text"
                            name="password"
-                     >
-                     <input v-model="password"
-                            v-focus
-                            :label="$t('password')"
-                            v-if="!showPlainText"
-                            type="password"
-                            name="password"
-                      >
-                      <div class="kiwi-toggle-visible"
-                           @click="showPlainText = !showPlainText">
-                           <i v-if="!showPlainText" class="fa fa-eye"></i>
-                           <i v-if="showPlainText" class="fa fa-eye-slash"></i>
-                      </div>
+                    >
+                    <input v-focus
+                           v-if="!showPlainText"
+                           v-model="password"
+                           :label="$t('password')"
+                           type="password"
+                           name="password"
+                    >
+                    <div class="kiwi-toggle-visible"
+                         @click="showPlainText = !showPlainText">
+                        <i v-if="!showPlainText" class="fa fa-eye"/>
+                        <i v-if="showPlainText" class="fa fa-eye-slash"/>
+                    </div>
                 </div>
 
-                <div class="kiwi-input-container" v-if="showChannel">
+                <div v-if="showChannel" class="kiwi-input-container">
                     <label for="channel">{{ $t('channel') }}</label>
-                    <input type="text" name="channel" value="" v-model="channel">
+                    <input v-model="channel" type="text" name="channel" value="">
                 </div>
 
                 <div
@@ -368,7 +367,6 @@ export default {
     padding: 0;
     color: #fff;
 }
-
 
 form.kiwi-welcome-simple-form {
     width: 70%;
