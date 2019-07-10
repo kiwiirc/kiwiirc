@@ -61,7 +61,6 @@ import '@/res/globalStyle.css';
 import Tinycon from 'tinycon';
 
 import startupWelcome from '@/components/startups/Welcome';
-import startupLogin from '@/components/startups/Login';
 import startupZncLogin from '@/components/startups/ZncLogin';
 import startupCustomServer from '@/components/startups/CustomServer';
 import startupKiwiBnc from '@/components/startups/KiwiBnc';
@@ -134,7 +133,6 @@ export default {
         // Decide which startup screen to use depending on the config
         let startupScreens = {
             welcome: startupWelcome,
-            login: startupLogin,
             customServer: startupCustomServer,
             kiwiBnc: startupKiwiBnc,
             znc: startupZncLogin,
