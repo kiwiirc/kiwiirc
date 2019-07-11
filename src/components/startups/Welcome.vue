@@ -33,7 +33,7 @@
                 <div v-if="showPass && (show_password_box || !toggablePass)"
                      class="kiwi-input-container"
                 >
-                    <label for="password">Password</label>
+                    <label for="password">{{ $t('password') }}</label>
                     <input v-focus
                            v-if="showPlainText"
                            v-model="password"
@@ -408,7 +408,7 @@ form.kiwi-welcome-simple-form {
     }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 750px) {
     .kiwi-welcome-simple .kiwi-startup-common-section-connection {
         height: auto;
         padding: 50px 0;
@@ -456,6 +456,7 @@ form.kiwi-welcome-simple-form h2 {
     text-align: center;
     width: 50px;
     color: #888;
+    font-size: 1.4em;
     z-index: 1;
     cursor: pointer;
     transition: color 0.2s;
@@ -491,6 +492,11 @@ form.kiwi-welcome-simple-form h2 {
     width: 100%;
     height: 50px;
     font-size: 1.1em;
+}
+
+/* Make the preloader icon larger */
+.fa-spinner {
+    font-size: 6em;
 }
 
 </style>
