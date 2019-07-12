@@ -4,6 +4,7 @@
         class="kiwi-messagelist"
         @scroll.self="onThreadScroll"
         @click.self="onListClick"
+        ref="messageList"
     >
         <div
             v-if="shouldShowChathistoryTools"
@@ -241,6 +242,9 @@ export default {
             });
         },
     },
+    created() {
+        this.addCopyListeners(this.$state, this.$refs.messageList);
+    },
     mounted() {
         this.$nextTick(() => {
             this.scrollToBottom();
@@ -434,6 +438,166 @@ export default {
                 this.auto_scroll = false;
             }
         },
+        addCopyListeners(state) { // Better copy pasting
+            if(this.addedCopyListeners) {
+                return;
+            } else {
+                this.addedCopyListeners = true;
+
+                // From the Element.closest mdn page.
+                if (!Element.prototype.matches) {
+                    Element.prototype.matches = Element.prototype.msMatchesSelector || 
+                                                Element.prototype.webkitMatchesSelector;
+                }
+
+                if (!Element.prototype.closest) {
+                    Element.prototype.closest = function(s) {
+                        var el = this;
+                        do {
+                        if (el.matches(s)) return el;
+                        el = el.parentElement || el.parentNode;
+                        } while (el !== null && el.nodeType === 1);
+                        return null;
+                    };
+                }
+            }
+            const LogFormatter = (msg) => {
+                let text = '';
+
+                switch (msg.type) {
+                case 'privmsg':
+                    text = `<${msg.nick}> ${msg.message}`;
+                    break;
+                case 'nick':
+                case 'mode':
+                case 'action':
+                case 'traffic':
+                    text = `${msg.message}`;
+                    break;
+                default:
+                    text = msg.message;
+                }
+                if (text.length) {
+                    return `[${(new Date(msg.time)).toLocaleTimeString({ hour: '2-digit', minute: '2-digit', second: '2-digit' })}] ${text}`;
+                }
+                return null;
+            }
+            
+            let copyData = '';
+            let selecting = false;
+            document.addEventListener('mousedown', (e) => {
+                if(e.target.closest('[data-message-id]')) {
+                    selecting = true;
+                }
+            });
+            document.addEventListener('mouseup', (e) => {
+                if(!selecting) {
+                    document.querySelector('body').style.userSelect = 'auto';
+                }
+                selecting = false;
+            });
+            document.addEventListener('selectionchange', (e) => {
+                let ref = this.$refs.messageList;
+                let refClassName = '.'+ref.className;
+                copyData = [];
+                let selection = document.getSelection();
+                if (!selection
+                || !selection.baseNode
+                || !selection.baseNode.parentElement.closest(refClassName)) {
+                    document.querySelector('body').style.userSelect = 'auto';
+
+                    let ml = document.querySelector(refClassName);
+                    if (ml) {
+                        ml.style.userSelect = 'text';
+                    }
+
+                    return true;
+                }
+                // Prevent the selection escaping the message list
+                document.querySelector('body').style.userSelect = 'none';
+                ref.style.userSelect = 'text';
+                let mlsb = document.querySelector('.kiwi-messagelist-scrollback');
+                if (mlsb) {
+                    mlsb.style.userSelect = 'none';
+                }
+
+                if (selection.type === 'Range'
+                    && selection.rangeCount > 0) {
+                    let range = document.getSelection().getRangeAt(0);
+
+                    // Traverse the DOM to find messages in selection
+                    let startNode = range.startContainer.parentNode.closest('[data-message-id]');
+                    let endNode = range.endContainer.parentNode.closest('[data-message-id]')
+                        || range.startContainer // If endContainer isn't in messagelist then mouse has been dragged outside it
+                                .parentNode     // so grab the last item from message list
+                                .closest('.kiwi-messagelist')
+                                .querySelector('.kiwi-messagelist-item:last-child');
+
+                    if (!startNode || !endNode || startNode === endNode) {
+                        return true;
+                    }
+
+                    let node = startNode;
+                    let messages = [];
+                    let allMessages = state.getActiveBuffer().getMessages();
+                    const finder = m => m.id.toString() === node.attributes['data-message-id'].value;
+
+                    // This could be more efficent with an id->msg lookup
+                    let i = 0;
+                    while (node) {
+                        
+                        let msg = { ...allMessages.find(finder) };
+                        // Trim the start text if they've not highlighted the whole line
+                        if (node === startNode && msg.type === 'privmsg' && range.startContainer.parentNode.classList.contains('kiwi-messagelist-body')) {
+                            msg.message = msg.message.slice(Math.max(range.startOffset, 0));
+                        } else if(node === endNode && msg.type === 'privmsg') {
+                            msg.message = msg.message.slice(0, range.endOffset);
+                        }
+                        messages.push(msg);
+                        if (node === endNode) {
+                            node = null;
+                        } else {
+                            let nextNode = node.closest('[data-message-id]').parentNode.nextElementSibling;
+                            node = nextNode && nextNode.querySelector('[data-message-id]');
+                        }
+                        if (0 && node === endNode) {
+                            msg = { ...allMessages.find(finder) };
+                            if (msg.type === 'privmsg') {
+                                msg.message = msg.message.slice(0, range.endOffset);
+                            }
+                            messages.push(msg);
+                            node = null;
+                        }
+                    }
+
+                    copyData = messages
+                        .sort((a, b) => (a.time > b.time ? 1 : -1))
+                        .filter(m => m.message.trim().length)
+                        .map(LogFormatter)
+                        .join('\r\n');
+                }
+                return false;
+            });
+
+            document.addEventListener('copy', (e) => {
+                if (!copyData || !copyData.length) { // Just do a normal copy if no special data
+                    return true;
+                }
+
+                if (navigator.clipboard) { // Supports Clipboard API
+                    navigator.clipboard.writeText(copyData);
+                } else {
+                    let input = document.createElement('textarea');
+                    document.body.appendChild(input);
+                    input.innerHTML = copyData;
+                    input.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(input);
+                }
+                return true;
+            });
+        }
+
     },
 };
 </script>
