@@ -1,10 +1,10 @@
 <template>
     <div
+        ref="messageList"
         :key="buffer.name"
         class="kiwi-messagelist"
         @scroll.self="onThreadScroll"
         @click.self="onListClick"
-        ref="messageList"
     >
         <div
             v-if="shouldShowChathistoryTools"
@@ -439,27 +439,28 @@ export default {
             }
         },
         addCopyListeners(state) { // Better copy pasting
-            if(this.addedCopyListeners) {
+            if (this.addedCopyListeners) {
                 return;
-            } else {
-                this.addedCopyListeners = true;
+            }
+            this.addedCopyListeners = true;
 
-                // From the Element.closest mdn page.
-                if (!Element.prototype.matches) {
-                    Element.prototype.matches = Element.prototype.msMatchesSelector || 
-                                                Element.prototype.webkitMatchesSelector;
-                }
+            // From the Element.closest mdn page.
+            if (!Element.prototype.matches) {
+                Element.prototype.matches = Element.prototype.msMatchesSelector ||
+                                            Element.prototype.webkitMatchesSelector;
+            }
 
-                if (!Element.prototype.closest) {
-                    Element.prototype.closest = function(s) {
-                        var el = this;
-                        do {
-                        if (el.matches(s)) return el;
+            if (!Element.prototype.closest) {
+                Element.prototype.closest = function closest(s) {
+                    let el = this;
+                    do {
+                        if (el.matches(s)) {
+                            return el;
+                        }
                         el = el.parentElement || el.parentNode;
-                        } while (el !== null && el.nodeType === 1);
-                        return null;
-                    };
-                }
+                    } while (el !== null && el.nodeType === 1);
+                    return null;
+                };
             }
             const LogFormatter = (msg) => {
                 let text = '';
@@ -481,24 +482,24 @@ export default {
                     return `[${(new Date(msg.time)).toLocaleTimeString({ hour: '2-digit', minute: '2-digit', second: '2-digit' })}] ${text}`;
                 }
                 return null;
-            }
-            
+            };
+
             let copyData = '';
             let selecting = false;
             document.addEventListener('mousedown', (e) => {
-                if(e.target.closest('[data-message-id]')) {
+                if (e.target.closest('[data-message-id]')) {
                     selecting = true;
                 }
             });
             document.addEventListener('mouseup', (e) => {
-                if(!selecting) {
+                if (!selecting) {
                     document.querySelector('body').style.userSelect = 'auto';
                 }
                 selecting = false;
             });
             document.addEventListener('selectionchange', (e) => {
                 let ref = this.$refs.messageList;
-                let refClassName = '.'+ref.className;
+                let refClassName = '.' + ref.className;
                 copyData = [];
                 let selection = document.getSelection();
                 if (!selection
@@ -522,17 +523,21 @@ export default {
                 }
 
                 if (selection.type === 'Range'
-                    && selection.rangeCount > 0) {
+                && selection.rangeCount > 0) {
                     let range = document.getSelection().getRangeAt(0);
 
                     // Traverse the DOM to find messages in selection
                     let startNode = range.startContainer.parentNode.closest('[data-message-id]');
-                    let endNode = range.endContainer.parentNode.closest('[data-message-id]')
-                        || range.startContainer // If endContainer isn't in messagelist then mouse has been dragged outside it
-                                .parentNode     // so grab the last item from message list
-                                .closest('.kiwi-messagelist')
-                                .querySelector('.kiwi-messagelist-item:last-child');
-
+                    let endNode = range.endContainer.parentNode.closest('[data-message-id]');
+                    if (!endNode) {
+                        // If endContainer isn't in messagelist then mouse has been dragged outside
+                        // Set the end node to last in the message list
+                        endNode = range
+                            .startContainer
+                            .parentNode
+                            .closest('.kiwi-messagelist')
+                            .querySelector('.kiwi-messagelist-item:last-child');
+                    }
                     if (!startNode || !endNode || startNode === endNode) {
                         return true;
                     }
@@ -545,12 +550,13 @@ export default {
                     // This could be more efficent with an id->msg lookup
                     let i = 0;
                     while (node) {
-                        
                         let msg = { ...allMessages.find(finder) };
                         // Trim the start text if they've not highlighted the whole line
-                        if (node === startNode && msg.type === 'privmsg' && range.startContainer.parentNode.classList.contains('kiwi-messagelist-body')) {
+                        if (node === startNode
+                            && msg.type === 'privmsg'
+                            && range.startContainer.parentNode.classList.contains('kiwi-messagelist-body')) {
                             msg.message = msg.message.slice(Math.max(range.startOffset, 0));
-                        } else if(node === endNode && msg.type === 'privmsg') {
+                        } else if (node === endNode && msg.type === 'privmsg') {
                             msg.message = msg.message.slice(0, range.endOffset);
                         }
                         messages.push(msg);
@@ -559,14 +565,6 @@ export default {
                         } else {
                             let nextNode = node.closest('[data-message-id]').parentNode.nextElementSibling;
                             node = nextNode && nextNode.querySelector('[data-message-id]');
-                        }
-                        if (0 && node === endNode) {
-                            msg = { ...allMessages.find(finder) };
-                            if (msg.type === 'privmsg') {
-                                msg.message = msg.message.slice(0, range.endOffset);
-                            }
-                            messages.push(msg);
-                            node = null;
                         }
                     }
 
@@ -596,8 +594,7 @@ export default {
                 }
                 return true;
             });
-        }
-
+        },
     },
 };
 </script>
