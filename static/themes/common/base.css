@@ -56,29 +56,28 @@
     color: var(--brand-default-fg);
 }
 
-.u-input-text--focus {
+.u-input-text input:focus {
     border-color: var(--brand-primary);
-}
-
-.u-input-text-underline {
-    border-color: var(--brand-darktone);
-}
-
-.u-input-text-underline-active {
-    background: var(--brand-primary);
 }
 
 .u-form .u-input,
 .u-form textarea {
-    border-bottom-color: var(--brand-primary);
-    outline-color: var(--brand-primary);
+    outline: none;
+    border-color: var(--brand-input-border);
+    color: var(--brand-input-fg);
+    background: var(--brand-input-bg);
+    transition: border-color 0.1s;
+}
+
+.u-form .u-input:focus,
+.u-form textarea:focus {
+    border-color: var(--brand-primary);
 }
 
 .u-form label input[type='text'],
 .u-form label input[type='password'],
 .u-form label input[type='email'],
 .u-form textarea,
-.kiwi-networksettings input[type='password'] {
     border-color: var(--brand-primary);
 }
 

@@ -61,11 +61,6 @@
 .u-tabbed-view-tabs .u-tabbed-view-tab {
     border-bottom-color: #ffffff1a;
 }
-.u-form .u-input {
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-}
 
 .u-form select {
     background-color: var(--brand-primary);

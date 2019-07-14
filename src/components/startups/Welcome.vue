@@ -4,7 +4,7 @@
                     class="kiwi-welcome-simple"
     >
         <template v-slot:connection v-if="!network || network.state === 'disconnected'">
-            <form class="u-form kiwi-welcome-simple-form" @submit.prevent="formSubmit">
+            <form class="u-form u-form--big kiwi-welcome-simple-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText"/>
                 <div
                     v-if="network && (network.last_error || network.state_error)"
@@ -16,10 +16,7 @@
                     </span>
                 </div>
 
-                <div class="kiwi-input-container">
-                    <label for="username">{{ $t('nick') }}</label>
-                    <input v-model="nick" type="text" name="username" value="">
-                </div>
+                <input-text v-model="nick" :label="$t('nick')" type="text" />
 
                 <div v-if="showPass && toggablePass" class="kiwi-input-container">
                     <label
@@ -33,26 +30,13 @@
                 <div v-if="showPass && (show_password_box || !toggablePass)"
                      class="kiwi-input-container"
                 >
-                    <label for="password">{{ $t('password') }}</label>
-                    <input v-focus
-                           v-if="showPlainText"
-                           v-model="password"
-                           :label="$t('password')"
-                           type="text"
-                           name="password"
-                    >
-                    <input v-focus
-                           v-if="!showPlainText"
-                           v-model="password"
-                           :label="$t('password')"
-                           type="password"
-                           name="password"
-                    >
-                    <div class="kiwi-toggle-visible"
-                         @click="showPlainText = !showPlainText">
-                        <i v-if="!showPlainText" class="fa fa-eye"/>
-                        <i v-if="showPlainText" class="fa fa-eye-slash"/>
-                    </div>
+                    <input-text
+                        v-focus
+                        v-model="password"
+                        :show-plain-text="true"
+                        :label="$t('password')"
+                        type="password"
+                    />
                 </div>
 
                 <div v-if="showChannel" class="kiwi-input-container">
