@@ -36,6 +36,8 @@ export default class BufferState {
         this.active_timeout = null;
         this.message_count = 0;
         this.current_input = '';
+        this.input_history = [];
+        this.input_history_pos = 0;
         this.show_input = true;
 
         Vue.observable(this);

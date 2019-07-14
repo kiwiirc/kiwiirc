@@ -36,6 +36,8 @@ const stateObj = {
         is_narrow: false,
         favicon_counter: 0,
         current_input: '',
+        input_history: [],
+        input_history_pos: 0,
         show_advanced_tab: false,
     },
     networks: [],

@@ -135,8 +135,6 @@ export default {
         return {
             self: this,
             selfuser_open: false,
-            history: [],
-            history_pos: 0,
             autocomplete_open: false,
             autocomplete_items: [],
             autocomplete_filter: '',
@@ -185,6 +183,27 @@ export default {
                 return true;
             }
             return false;
+        },
+        history() {
+            if (state.setting('buffers.shared_input')) {
+                return this.$state.ui.input_history;
+            }
+            return this.buffer.input_history;
+        },
+        history_pos: {
+            get() {
+                if (state.setting('buffers.shared_input')) {
+                    return this.$state.ui.input_history_pos;
+                }
+                return this.buffer.input_history_pos;
+            },
+            set(newVal) {
+                if (state.setting('buffers.shared_input')) {
+                    this.$state.ui.input_history_pos = newVal;
+                } else {
+                    this.buffer.input_history_pos = newVal;
+                }
+            },
         },
     },
     watch: {
