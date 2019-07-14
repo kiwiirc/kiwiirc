@@ -54,12 +54,7 @@ let log = Logger.namespace('Nicklist');
 
 // Hot function, so it's here for easier caching
 function strCompare(a, b) {
-    if (a === b) {
-        return 0;
-    }
-    return a > b ?
-        1 :
-        -1;
+    return new Intl.Collator({}, { numeric: true }).compare(a, b);
 }
 
 export default {
