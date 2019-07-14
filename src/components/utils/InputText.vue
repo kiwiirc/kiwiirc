@@ -1,6 +1,6 @@
 <template>
     <div class="u-input-text">
-        <span class="u-input-text-label">{{ label }}</span>
+        <label :for="inputId" class="u-input-text-label">{{ label }}</label>
 
         <div class="u-input-text-inputs" style="display:flex;">
             <template v-if="type==='password'">
@@ -8,6 +8,7 @@
                     v-model="currentValue"
                     :type="plainTextEnabled && !isEdgeBrowser() ? 'text' : 'password'"
                     :class="{'u-form-input-plaintext' : !isEdgeBrowser() && showPlainText}"
+                    :id="inputId"
                     autocomplete="off"
                     autocorrect="off"
                     autocapitalize="off"
@@ -27,17 +28,20 @@
             <input
                 v-else-if="type==='number'"
                 v-model="currentValue"
+                :id="inputId"
                 type="number"
                 class="u-input"
             >
             <textarea
                 v-else-if="type==='textarea'"
                 v-model="currentValue"
+                :id="inputId"
                 class="u-input"
             />
             <input
                 v-else
                 v-model="currentValue"
+                :id="inputId"
                 autocomplete="off"
                 autocorrect="off"
                 autocapitalize="off"
@@ -62,9 +66,18 @@ export default Vue.component('input-text', {
     data: function data() {
         return {
             plainTextEnabled: false,
+            inputIdCache: '',
         };
     },
     computed: {
+        inputId() {
+            if (!this.inputIdCache) {
+                // eslint-disable-next-line
+                this.inputIdCache = 'inp_' + Math.floor(Math.random() * 1e17).toString(36);
+            }
+
+            return this.inputIdCache;
+        },
         currentValue: {
             get: function getCurrentValue() {
                 return this.value;
@@ -108,16 +121,15 @@ export default Vue.component('input-text', {
     outline: none;
 }
 
-.u-input-text-label {
+.u-form .u-input-text-label {
     width: auto;
     display: block;
     font-size: 1em;
     font-weight: normal;
     padding-left: 2px;
-    margin-bottom: 3px;
 }
 
-.u-form--big .u-input-text-label {
+.u-form .u-form--big .u-input-text-label {
     font-size: 1.2em;
     margin-bottom: 10px;
 }

@@ -61,6 +61,10 @@ select {
 .u-form label {
     display: block;
     line-height: 20px;
+    margin: 0 0 3px 0;
+}
+
+.u-form--big label {
     margin: 0 0 10px 0;
 }
 
