@@ -35,6 +35,7 @@ export default class BufferState {
         this.last_read = 0;
         this.active_timeout = null;
         this.message_count = 0;
+        this.nicklist_index = 0;
         this.current_input = '';
         this.input_history = [];
         this.input_history_pos = 0;

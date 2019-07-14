@@ -69,6 +69,7 @@ export const configTemplates = {
             default_ban_mask: '*!%i@%h',
             default_kick_reason: 'Your behaviour is not conducive to the desired environment.',
             shared_input: false,
+            store_nicklist_position: true,
             show_message_info: true,
             who_loop: true,
             share_typing: true,

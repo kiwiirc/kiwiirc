@@ -25,10 +25,14 @@
         </div>
 
         <DynamicScroller
+            ref="scroller"
             :items="sortedUsers"
             :min-item-size="34"
             :key-field="'nick'"
+            :emit-update="storeScrollIndex"
             class="kiwi-nicklist-users"
+            @visible="onScrollerVisible"
+            @update="onScrollerUpdate"
         >
             <template v-slot="{ item, index, active }">
                 <DynamicScrollerItem
@@ -89,6 +93,7 @@ export default {
             userbox_user: null,
             user_filter: '',
             filter_visible: false,
+            scroller_visible: false,
             self: this,
         };
     },
@@ -200,6 +205,12 @@ export default {
         useColouredNicks() {
             return this.buffer.setting('coloured_nicklist');
         },
+        storeScrollIndex() {
+            return this.buffer.setting('store_nicklist_position');
+        },
+    },
+    mounted() {
+        this.scroller_visible = false;
     },
     methods: {
         userModePrefix(user) {
@@ -232,6 +243,29 @@ export default {
             if (!this.user_filter) {
                 this.filter_visible = false;
             }
+        },
+        onScrollerVisible() {
+            this.scroller_visible = true;
+
+            if (!this.storeScrollIndex) {
+                // this feature has been disabled
+                return;
+            }
+
+            // scroller will error if we try to scroll to an item out of range
+            let targetIndex = this.buffer.nicklist_index;
+            if (targetIndex > this.$refs.scroller.items.length) {
+                this.$refs.scroller.scrollToBottom();
+            } else {
+                this.$refs.scroller.scrollToItem(this.buffer.nicklist_index);
+            }
+        },
+        onScrollerUpdate(startIndex, endIndex) {
+            // update fires while the list is being populated so lets wait till its ready
+            if (!this.storeScrollIndex || !this.scroller_visible) {
+                return;
+            }
+            this.buffer.nicklist_index = startIndex;
         },
     },
 };
