@@ -20,7 +20,7 @@
                 >{{ $t('invite_set_public') }}</a>
             </div>
 
-            <span v-if="anyRegisteredUserCanJoin">{{ $('invite_registered_only') }}</span>
+            <span v-if="anyRegisteredUserCanJoin">{{ $t('invite_registered_only') }}</span>
 
             <div>
                 <div v-if="supportsAccounts && areWeAnOp">
