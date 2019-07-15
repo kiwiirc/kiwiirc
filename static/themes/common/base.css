@@ -52,7 +52,7 @@
     background: var(--brand-default-bg);
 }
 
-.u-input-text-label {
+.u-form label {
     color: var(--brand-default-fg);
 }
 

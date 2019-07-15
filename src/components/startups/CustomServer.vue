@@ -394,13 +394,6 @@ export default {
     padding: 20px 1em;
 }
 
-.kiwi-customserver-form .u-input-text-label,
-.kiwi-customserver-form .u-input-text--reveal-value .u-input-text-label {
-    left: 0;
-    font-weight: 600;
-    font-size: 1em;
-}
-
 .kiwi-customserver-form .u-input-text-c {
     position: absolute;
     right: 15px;

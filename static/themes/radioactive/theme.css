@@ -100,7 +100,7 @@
 .u-input-text {
     background: transparent;
 }
-.u-input-text-label {
+.u-form label {
     color: #14fdce;
 }
 .u-input-text--focus {
@@ -115,7 +115,6 @@
 .u-form .u-input,
 .u-form textarea {
     border: 1px solid #57da93;
-    border-bottom: 2px solid #57da93;
     line-height: normal;
     outline-color: #1b2f24;
 }
@@ -123,7 +122,6 @@
 .u-form .u-input:focus,
 .u-form textarea:focus {
     border: 1px solid #57da93 !important;
-    border-bottom: 2px solid #57da93 !important;
 }
 
 .u-form label input[type='text'],

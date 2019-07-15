@@ -186,16 +186,6 @@
 
 
 /* Inputs */
-.u-form .u-input,
-.u-form label input[type='text'],
-.u-form label input[type='password'],
-.u-form label input[type='email'],
-.u-form textarea,
-.kiwi-networksettings input[type='password']  {
-  border: none;
-  border-bottom: 1px solid #f1f1f1;
-}
-
 .u-form input[type='checkbox']:checked,
 .u-form input[type='radio']:checked {
     background-color: #f1f1f1;
@@ -284,8 +274,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     background: #383838;
 }
 
-.kiwi-welcome-znc h2,
-.kiwi-welcome-znc-form .u-input-text-label {
+.kiwi-welcome-znc h2 {
     color: var(--brand-default-bg);
 }
 

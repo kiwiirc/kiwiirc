@@ -71,8 +71,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     color: var(--brand-default-fg);
 }
 
-.kiwi-welcome-znc h2,
-.kiwi-welcome-znc-form .u-input-text-label {
+.kiwi-welcome-znc h2 {
     color: var(--brand-default-bg);
 }
 

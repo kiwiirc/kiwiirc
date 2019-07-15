@@ -428,8 +428,8 @@ export default {
     max-width: none;
 }
 
-.kiwi-appsettings-full span {
-    margin: 0;
+.kiwi-appsettings-full span,
+.kiwi-appsettings-full input {
     width: 100%;
 }
 
@@ -437,15 +437,7 @@ export default {
     padding: 1em 20px 2em 20px;
 }
 
-.u-form .kiwi-appsettings-setting-scrollback {
-    line-height: 40px;
-}
-
-.u-form .kiwi-appsettings-setting-scrollback input {
-    box-sizing: border-box;
-    height: 40px;
-    border: 1px solid;
-    float: left;
+.kiwi-appsettings .kiwi-appsettings-setting-scrollback input {
     margin-right: 10px;
     width: 80px;
 }

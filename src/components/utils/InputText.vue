@@ -1,6 +1,6 @@
 <template>
     <div class="u-input-text">
-        <label v-if="label" :for="inputId" class="u-input-text-label">{{ label }}</label>
+        <label v-if="label" :for="inputId">{{ label }}</label>
 
         <div class="u-input-text-inputs" style="display:flex;">
             <template v-if="type==='password'">
@@ -119,11 +119,6 @@ export default Vue.component('input-text', {
 
 .u-input-text input:focus {
     outline: none;
-}
-
-.u-form .u-form--big .u-input-text-label {
-    font-size: 1.2em;
-    margin-bottom: 10px;
 }
 
 .u-input-text-c {
