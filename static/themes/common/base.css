@@ -205,14 +205,6 @@
     border: 1px solid var(--brand-midtone);
 }
 
-.kiwi-selfuser-actions {
-    border-top: 1px solid var(--brand-midtone);
-}
-
-.kiwi-selfuser-actions form .u-input {
-    border-bottom-color: var(--brand-primary);
-}
-
 /* ---- Auto complete ( autoComplete ) ---- */
 .kiwi-autocomplete {
     box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);

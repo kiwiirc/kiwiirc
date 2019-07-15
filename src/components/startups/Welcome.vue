@@ -40,8 +40,10 @@
                 </div>
 
                 <div v-if="showChannel" class="kiwi-input-container">
-                    <label for="channel">{{ $t('channel') }}</label>
-                    <input v-model="channel" type="text" name="channel" value="">
+                    <input-text
+                        v-model="channel"
+                        :label="$t('channel')"
+                    />
                 </div>
 
                 <div
@@ -422,50 +424,6 @@ form.kiwi-welcome-simple-form h2 {
     height: auto;
     position: relative;
     margin: 0 0 20px 0;
-}
-
-.kiwi-input-container label {
-    width: auto;
-    font-size: 1.2em;
-    font-weight: normal;
-    padding-left: 2px;
-}
-
-.kiwi-input-container .kiwi-toggle-visible {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    line-height: 50px;
-    height: 50px;
-    text-align: center;
-    width: 50px;
-    color: #888;
-    font-size: 1.4em;
-    z-index: 1;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.kiwi-input-container .kiwi-toggle-visible:hover {
-    color: #000;
-}
-
-.kiwi-input-container input[type="text"],
-.kiwi-input-container input[type="password"] {
-    width: 100%;
-    height: 50px;
-    border: 1px solid #e2e2e2;
-    padding: 0 12px;
-    border-radius: 5px;
-    font-size: 1.2em;
-    color: #616161;
-    transition: border-color 0.2s;
-}
-
-.kiwi-input-container input[type="text"]:focus,
-.kiwi-input-container input[type="password"]:focus {
-    outline: none;
-    border-color: #42b992;
 }
 
 .kiwi-input-container:last-of-type {

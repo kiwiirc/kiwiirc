@@ -61,11 +61,11 @@ select {
 .u-form label {
     display: block;
     line-height: 20px;
-    margin: 0 0 3px 0;
+    margin: 0 0 3px 2px;
 }
 
 .u-form--big label {
-    margin: 0 0 10px 0;
+    margin-bottom: 10px;
 }
 
 .u-form label span {
@@ -113,7 +113,6 @@ select {
     font-size: 0.9em;
     line-height: normal;
     clear: both;
-    width: 100%;
     padding: 7px 8px;
     box-sizing: border-box;
     min-height: 0;

@@ -356,9 +356,7 @@ export default {
 //Style the 'secrue/unsecure' port icon
 .kiwi-customserver-tls {
     font-size: 0.8em;
-    bottom: 0;
-    top: 7px;
-    line-height: 40px;
+    top: 4px;
     text-align: center;
     cursor: pointer;
 }

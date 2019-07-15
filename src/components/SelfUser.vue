@@ -18,25 +18,19 @@
             </div>
         </div>
         <div v-else class="kiwi-selfuser-actions">
-            <div class="kiwi-selfuser-away-return-icon" @click="self_user_settings_open = false">
-                <i class="fa fa-times" aria-hidden="true"/>
-            </div>
             <form
                 class="u-form"
                 @submit.prevent="changeNick"
                 @keyup.esc="self_user_settings_open = false"
             >
-                <input v-focus
-                       v-model="new_nick"
-                       type="text"
-                       class="u-input"
-                       placeholder="Enter new nickname..."
-                >
-                <span class="u-input-button-container">
-                    <a class="u-button u-button-primary" @click="changeNick">
-                        Update
-                    </a>
-                </span>
+                <input-prompt
+                    v-focus
+                    :label="'Enter new nickname...'"
+                    :noprompt="true"
+                    :block="true"
+                    @submit="onNewNickSubmit"
+                    @cancel="self_user_settings_open = false"
+                />
             </form>
             <div v-if="error_message" class="kiwi-selfuser-error-message">{{ error_message }}</div>
         </div>
@@ -100,6 +94,10 @@ export default {
         },
         closeSelfUser() {
             this.$emit('close');
+        },
+        onNewNickSubmit(newVal) {
+            this.new_nick = newVal;
+            this.changeNick();
         },
         changeNick() {
             let nick = this.new_nick.trim();
@@ -187,21 +185,6 @@ export default {
     margin-right: 15px;
 }
 
-.kiwi-selfuser-away-return-icon {
-    position: absolute;
-    opacity: 0.6;
-    right: 15px;
-    top: 15px;
-    font-size: 1em;
-    cursor: pointer;
-    z-index: 100;
-    transition: all 0.2s;
-}
-
-.kiwi-selfuser-away-return-icon:hover {
-    opacity: 1;
-}
-
 .u-form.kiwi-away-checkbox-form {
     padding: 0 0 5px 24px;
 }
@@ -226,10 +209,10 @@ export default {
 
 .kiwi-selfuser-actions {
     padding: 5px 10px;
+    margin-bottom: 10px;
 }
 
 .kiwi-selfuser-actions form {
-    width: calc(100% - 30px);
     position: relative;
 }
 
@@ -238,24 +221,11 @@ export default {
     width: 100%;
 }
 
-.kiwi-selfuser-actions form .u-input {
-    width: 100%;
-    margin: 0;
-}
-
-.kiwi-selfuser-actions form .u-input-button-container {
+.kiwi-selfuser-actions .u-input-button-container {
     position: absolute;
-    bottom: 5px;
-    right: 5px;
+    top: 2px;
+    right: 2px;
     z-index: 1;
-}
-
-.kiwi-selfuser-actions form .u-input-button-container .u-button {
-    padding: 3px 10px;
-}
-
-.kiwi-selfuser-actions .u-input {
-    margin-bottom: 10px;
 }
 
 </style>
