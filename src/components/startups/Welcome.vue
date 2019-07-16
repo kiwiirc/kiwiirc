@@ -18,7 +18,7 @@
 
                 <input-text v-model="nick" :label="$t('nick')" type="text" />
 
-                <div v-if="showPass && toggablePass" class="kiwi-input-container">
+                <div v-if="showPass && toggablePass" class="kiwi-welcome-simple-input-container">
                     <label
                         class="kiwi-welcome-simple-have-password"
                     >
@@ -28,7 +28,7 @@
                 </div>
 
                 <div v-if="showPass && (show_password_box || !toggablePass)"
-                     class="kiwi-input-container"
+                     class="kiwi-welcome-simple-input-container"
                 >
                     <input-text
                         v-focus
@@ -39,7 +39,7 @@
                     />
                 </div>
 
-                <div v-if="showChannel" class="kiwi-input-container">
+                <div v-if="showChannel" class="kiwi-welcome-simple-input-container">
                     <input-text
                         v-model="channel"
                         :label="$t('channel')"
@@ -338,73 +338,14 @@ export default {
 <style>
 
 /* Containers */
-.kiwi-welcome-simple .kiwi-startup-common-section-connection {
-    width: 40%;
-    padding: 0;
-}
-
-.kiwi-welcome-simple .kiwi-startup-common-section-info {
-    border: none;
-    width: 60%;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding: 0;
-    color: #fff;
-}
-
 form.kiwi-welcome-simple-form {
     width: 70%;
     padding: 0 20px;
     border: none;
 }
 
-@media (max-width: 1325px) {
-    .kiwi-welcome-simple .kiwi-startup-common-section {
-        width: 33.3%;
-    }
-
-    .kiwi-welcome-simple .kiwi-startup-common-section-info {
-        width: 66.6%;
-    }
-}
-
 @media (max-width: 1025px) {
     form.kiwi-welcome-simple-form {
-        width: 100%;
-    }
-}
-
-@media (max-width: 850px) {
-    .kiwi-welcome-simple .kiwi-startup-common-section-connection {
-        height: 100%;
-        padding: 20px 0;
-        background: #fff;
-        width: 50%;
-    }
-
-    .kiwi-startup-common-section.kiwi-startup-common-section-info {
-        position: absolute;
-        right: 0;
-        left: auto;
-        bottom: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-    }
-}
-
-@media (max-width: 750px) {
-    .kiwi-welcome-simple .kiwi-startup-common-section-connection {
-        height: auto;
-        padding: 50px 0;
-        background: #fff;
-        width: 100%;
-    }
-
-    .kiwi-startup-common-section.kiwi-startup-common-section-info {
-        position: relative;
-        display: block;
         width: 100%;
     }
 }
@@ -419,21 +360,21 @@ form.kiwi-welcome-simple-form h2 {
     color: #404158;
 }
 
-.kiwi-input-container {
+.kiwi-welcome-simple-input-container {
     width: 100%;
     height: auto;
     position: relative;
     margin: 0 0 20px 0;
 }
 
-.kiwi-input-container:last-of-type {
+.kiwi-welcome-simple-input-container:last-of-type {
     margin: 20px 0 40px 0;
 }
 
 .kiwi-welcome-simple-form .u-submit {
     width: 100%;
     height: 50px;
-    font-size: 1.1em;
+    font-size: 1.3em;
 }
 
 /* Make the preloader icon larger */
