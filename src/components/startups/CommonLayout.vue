@@ -77,6 +77,9 @@ export default {
     box-sizing: border-box;
     overflow-y: auto;
     min-height: 100%;
+
+    /* transition the 2 sections out when the page closes. right+left defaults */
+    transition: transform 0.4s;
 }
 
 .kiwi-startup-common-section-connection {
@@ -107,16 +110,12 @@ export default {
 
 @media (min-width: 850px) {
     /** Closing - the wiping away of the screen **/
-    .kiwi-startup-common-section {
-        transition: right 0.3s, left 0.3s;
-    }
-
     .kiwi-startup-common--closing .kiwi-startup-common-section-connection {
-        left: -50%;
+        transform: translateX(-100%);
     }
 
     .kiwi-startup-common--closing .kiwi-startup-common-section-info {
-        right: -50%;
+        transform: translateX(100%);
     }
 }
 
@@ -125,7 +124,6 @@ export default {
     .kiwi-startup-common {
         font-size: 0.9em;
         flex-direction: column;
-        transition: left 0.3s;
         min-height: none;
         align-items: center;
         justify-content: center;
@@ -139,7 +137,8 @@ export default {
 
     /** Closing - the wiping away of the screen **/
     .kiwi-startup-common--closing {
-        left: -100%;
+        transition: transform 0.3s;
+        transform: translateY(100%);
     }
 
     .kiwi-startup-common-section-connection > * {
