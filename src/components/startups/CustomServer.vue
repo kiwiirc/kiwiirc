@@ -118,7 +118,7 @@
 
                     <div v-if="show_type_switcher" class="kiwi-customserver-server-types">
                         <a class="u-link" @click="server_type = 'default'">{{ $t('Network') }}</a>
-                        <a class="u-link" @click="server_type = 'ZNC'">{{ $t('znc') }}</a>
+                        <a class="u-link" @click="server_type = 'znc'">{{ $t('ZNC') }}</a>
                     </div>
                 </form>
 

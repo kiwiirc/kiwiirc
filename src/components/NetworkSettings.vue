@@ -42,6 +42,7 @@
                         v-if="server_type==='znc'"
                         class="kiwi-networksettings-server-types-info"
                     >
+                        <!-- eslint-disable-next-line max-len -->
                         {{ $t('Other networks on this ZNC account will be listed in the network list') }}
                     </div>
                     <a

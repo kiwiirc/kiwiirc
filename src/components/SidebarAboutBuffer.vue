@@ -14,12 +14,21 @@
                 <p v-else>{{ $t('There is no topic for this channel') }}</p>
 
                 <p v-if="b.created_at">
-                    {{ $t('Created at \{\{when\}\}', { when: new Intl.DateTimeFormat().format(b.created_at) }) }}
+                    {{
+                        $t('Created at \{\{when\}\}',
+                           { when: new Intl.DateTimeFormat().format(b.created_at) }
+                        )
+                    }}
                 </p>
 
                 <p class="kiwi-aboutbuffer-usercount">
                     <a class="u-link " @click="sidebarState.showNicklist()">
-                        {{ $t('\{\{count\}\} person here', {count: Object.keys(b.users || {}).length}) }}
+                        {{
+                            $t('\{\{count\}\} person here', {
+                                count: Object.keys(b.users || {}).length,
+                                plural: '\{\{count\}\} persons here'
+                            })
+                        }}
                     </a>
                 </p>
             </div>

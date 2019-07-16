@@ -48,7 +48,9 @@
                                         <input v-model="settingShowNickChanges" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{ $t('Show when users change channel modes') }}</span>
+                                        <span>
+                                            {{ $t('Show when users change channel modes') }}
+                                        </span>
                                         <input v-model="settingShowModeChanges" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">

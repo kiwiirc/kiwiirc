@@ -37,7 +37,12 @@
                     class="kiwi-header-option kiwi-header-option-nicklist"
                 >
                     <a
-                        :title="$t('\{\{count\}\} person here', {count: Object.keys(buffer.users).length})"
+                        :title="
+                            $t('\{\{count\}\} person here', {
+                                count: Object.keys(buffer.users).length,
+                                plural: '\{\{count\}\} persons here'
+                            })
+                        "
                         @click="sidebarState.toggleNicklist()"
                     >
                         <i class="fa fa-users" aria-hidden="true"/>

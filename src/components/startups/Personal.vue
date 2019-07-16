@@ -10,7 +10,8 @@
                 </p>
             </div>
             <div v-else>
-                <p v-html="$t('You are trying to connect to \{\{network\}\}', { network: `<b>${server.server}</b>` })" />
+                <p v-html="$t('You are trying to connect to \{\{network\}\}',
+                              { network: `<b>${server.server}</b>` })" />
                 <button
                     v-if="hasOtherTab"
                     class="u-button u-button-primary"

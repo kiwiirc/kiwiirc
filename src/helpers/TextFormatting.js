@@ -443,11 +443,11 @@ export function formatDuration(timeSeconds) {
     seconds -= minutes * 60;
 
     const tmp = [];
-    (weeks) && tmp.push(t('{{count}} week', { count: weeks }));
-    (weeks || days) && tmp.push(t('{{count}} day', { count: days }));
-    (days || hours) && tmp.push(t('{{count}} hour', { count: hours }));
-    (days || hours || minutes) && tmp.push(t('{{count}} minute', { count: minutes }));
-    tmp.push(t('{{count}} second', { count: seconds }));
+    (weeks) && tmp.push(t('{{count}} week', { count: weeks, plural: '{{count}} weeks' }));
+    (weeks || days) && tmp.push(t('{{count}} day', { count: days, plural: '{{count}} days' }));
+    (days || hours) && tmp.push(t('{{count}} hour', { count: hours, plural: '{{count}} hours' }));
+    (days || hours || minutes) && tmp.push(t('{{count}} minute', { count: minutes, plural: '{{count}} minutes' }));
+    tmp.push(t('{{count}} second', { count: seconds, plural: '{{count}} seconds' }));
 
     return tmp.join(' ');
 }

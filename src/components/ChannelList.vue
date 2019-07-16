@@ -53,7 +53,9 @@
                 <div v-else-if="noResults" class="kiwi-channellist-info">
                     <p>{{ $t('No channels found, try again later') }}</p>
                 </div>
-                <div v-else class="kiwi-channellist-info">{{ $t('Click the refresh button to update the channel list') }}</div>
+                <div v-else class="kiwi-channellist-info">
+                    {{ $t('Click the refresh button to update the channel list') }}
+                </div>
             </div>
         </div>
     </div>

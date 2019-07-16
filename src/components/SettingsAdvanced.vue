@@ -1,6 +1,8 @@
 <template>
     <div class="kiwi-settings-advanced">
-        <div class="kiwi-settings-advanced-notice">{{ $t('Danger Zone: Changing some of these settings may break things!') }}</div>
+        <div class="kiwi-settings-advanced-notice">
+            {{ $t('Danger Zone: Changing some of these settings may break things!') }}
+        </div>
         <form class="u-form">
             <div class="kiwi-settings-advanced-filter-container">
                 <div class="kiwi-settings-advanced-filter-container">

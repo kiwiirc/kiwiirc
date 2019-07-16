@@ -15,13 +15,21 @@
                 <template v-else-if="isServer()">
                     <span class="kiwi-notconnected-button" @click="reconnect">
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
-                        {{ $t('Reconnect to \{\{network\}\} to start talking', {network: buffer.getNetwork().name}) }}
+                        {{
+                            $t('Reconnect to \{\{network\}\} to start talking',
+                               {network: buffer.getNetwork().name}
+                            )
+                        }}
                     </span>
                 </template>
                 <template v-else-if="isQuery()">
                     <span class="kiwi-notconnected-button" @click="reconnect">
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
-                        {{ $t('Reconnect to continue talking with \{\{user\}\}', {user: buffer.name}) }}
+                        {{
+                            $t('Reconnect to continue talking with \{\{user\}\}',
+                               {user: buffer.name}
+                            )
+                        }}
                     </span>
                 </template>
 

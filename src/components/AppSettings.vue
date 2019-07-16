@@ -160,6 +160,7 @@
                                 <span style="font-weight: 600;">
                                     {{ $t('Warning!') }}
                                 </span>
+                                <!-- eslint-disable-next-line max-len -->
                                 {{ $t('Monsters be here, only click this button if you know what you are doing') }}
                             </div>
                             <div style="margin-top: 10px; text-align: center;">

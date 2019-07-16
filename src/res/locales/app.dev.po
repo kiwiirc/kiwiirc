@@ -1,1049 +1,1022 @@
-#: Common Strings
+#: components/startups/Personal.vue
+#: thirdparty/kiwiirccom.vue
+msgid "Add a Network"
+msgstr "Add a Network"
 
-#: Start
-msgid "Start"
-msgstr "Start"
+#: components/startups/Personal.vue
+#: thirdparty/kiwiirccom.vue
+msgid "Add your networks. Join your channels."
+msgstr "Add your networks. Join your channels."
 
-#: Welcome to Kiwi IRC!
-msgid "Welcome to Kiwi IRC!"
-msgstr "Welcome to Kiwi IRC!"
+#: components/AppSettings.vue
+#: components/NetworkSettings.vue
+msgid "Advanced"
+msgstr "Advanced"
 
-#: Close
-msgid "Close"
-msgstr "Close"
-
-#: Connect
-msgid "Connect"
-msgstr "Connect"
-
-#: Connecting...
-msgid "Connecting..."
-msgstr "Connecting..."
-
-#: Connected
-msgid "Connected"
-msgstr "Connected"
-
-#: Settings
-msgid "Settings"
-msgstr "Settings"
-
-#: Kiwi Settings
-msgid "Kiwi Settings"
-msgstr "Kiwi Settings"
-
-#: Channels
-msgid "Channels"
-msgstr "Channels"
-
-#: Access
-msgid "Access"
-msgstr "Access"
-
-#: Banned Users
+#: components/ContainerHeader.vue
+#: components/Sidebar.vue
 msgid "Banned Users"
 msgstr "Banned Users"
 
-#: Invited Users
-msgid "Invited Users"
-msgstr "Invited Users"
-
-#: Notifications
-msgid "Notifications"
-msgstr "Notifications"
-
-#: Username
-msgid "Username"
-msgstr "Username"
-
-#: Password
-msgid "Password"
-msgstr "Password"
-
-#: I have a password
-msgid "I have a password"
-msgstr "I have a password"
-
-#: Server
-msgid "Server"
-msgstr "Server"
-
-#: Nick
-msgid "Nick"
-msgstr "Nick"
-
-#: Channel
+#: components/startups/CustomServer.vue
+#: components/startups/Welcome.vue
 msgid "Channel"
 msgstr "Channel"
 
-#: Messages
-msgid "Messages"
-msgstr "Messages"
+#: components/ContainerHeader.vue
+#: components/Sidebar.vue
+msgid "Channel Settings"
+msgstr "Channel Settings"
 
-#: Network
-msgid "Network"
-msgstr "Network"
+#: components/AppSettings.vue
+#: components/ContainerHeader.vue
+#: components/Sidebar.vue
+msgid "Close"
+msgstr "Close"
 
-#: ZNC
-msgid "ZNC"
-msgstr "ZNC"
+#: components/ContainerHeader.vue
+#: components/StateBrowserNetwork.vue
+#: components/startups/CustomServer.vue
+msgid "Connect"
+msgstr "Connect"
 
-#: Logging in...
-msgid "Logging in..."
-msgstr "Logging in..."
+#: components/ContainerHeader.vue
+#: components/NetworkSettings.vue
+#: components/NotConnected.vue
+#: components/StateBrowserNetwork.vue
+#: components/startups/CustomServer.vue
+msgid "Connecting..."
+msgstr "Connecting..."
 
-#: Invalid login
-msgid "Invalid login"
-msgstr "Invalid login"
+#: components/startups/CustomServer.vue
+#: components/startups/Welcome.vue
+msgid "I have a password"
+msgstr "I have a password"
 
-#: Search...
-msgid "Search..."
-msgstr "Search..."
+#: components/ChannelList.vue
+#: components/ContainerHeader.vue
+msgid "Join Channel"
+msgstr "Join Channel"
 
-#: OK
-msgid "OK"
-msgstr "OK"
-
-#: Cancel
-msgid "Cancel"
-msgstr "Cancel"
-
-#: Yes
-msgid "Yes"
-msgstr "Yes"
-
-#: No
-msgid "No"
-msgstr "No"
-
-#: Not found.
-msgid "Not found."
-msgstr "Not found."
-
-#: Warning!
-msgid "Warning!"
-msgstr "Warning!"
-
-#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
-msgid "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
-
-#: Real name
-msgid "Real name"
-msgstr "Real name"
-
-#: Status
-msgid "Status"
-msgstr "Status"
-
-#: Is available
-msgid "Is available"
-msgstr "Is available"
-
-#: Send a message
-msgid "Send a message"
-msgstr "Send a message"
-
-#: More information
+#: components/ContainerHeader.vue
+#: components/UserBox.vue
 msgid "More information"
 msgstr "More information"
 
-#: Ignore user
-msgid "Ignore user"
-msgstr "Ignore user"
+#: components/NetworkSettings.vue
+#: components/startups/CustomServer.vue
+#: components/startups/ZncLogin.vue
+msgid "Network"
+msgstr "Network"
 
+#: components/startups/Personal.vue
+#: thirdparty/kiwiirccom.vue
+msgid "New Network"
+msgstr "New Network"
 
-#: Durations
+#: components/startups/CustomServer.vue
+#: components/startups/Welcome.vue
+msgid "Nick"
+msgstr "Nick"
 
-#: {{count}} week
-msgid "{{count}} week"
-msgstr "{{count}} week"
+#: components/ChannelBanlist.vue
+#: libs/IrcClient.js
+msgid "Nobody is banned!"
+msgstr "Nobody is banned!"
 
-#: {{count}} weeks
-msgid "{{count}} week_plural"
-msgstr "{{count}} weeks"
+#: components/AppSettings.vue
+#: components/ContainerHeader.vue
+#: components/Sidebar.vue
+msgid "Notifications"
+msgstr "Notifications"
 
-#: {{count}} day
-msgid "{{count}} day"
-msgstr "{{count}} day"
+#: components/ChannelInfo.vue
+#: components/NetworkSettings.vue
+#: components/startups/CustomServer.vue
+#: components/startups/KiwiBnc.vue
+#: components/startups/Welcome.vue
+#: components/startups/ZncLogin.vue
+msgid "Password"
+msgstr "Password"
 
-#: {{count}} days
-msgid "{{count}} day_plural"
-msgstr "{{count}} days"
+#: components/startups/Personal.vue
+#: thirdparty/kiwiirccom.vue
+msgid "Saved networks"
+msgstr "Saved networks"
 
-#: {{count}} hour
-msgid "{{count}} hour"
-msgstr "{{count}} hour"
+#: components/UserBox.vue
+#: res/autocompleteCommands.js
+msgid "Send a message"
+msgstr "Send a message"
 
-#: {{count}} hours
-msgid "{{count}} hour_plural"
-msgstr "{{count}} hours"
+#: components/ServerSelector.vue
+#: components/startups/CustomServer.vue
+msgid "Server"
+msgstr "Server"
 
-#: {{count}} minute
-msgid "{{count}} minute"
-msgstr "{{count}} minute"
+#: components/BufferSettings.vue
+#: components/ContainerHeader.vue
+#: components/ServerView.vue
+#: components/Sidebar.vue
+msgid "Settings"
+msgstr "Settings"
 
-#: {{count}} minutes
-msgid "{{count}} minute_plural"
-msgstr "{{count}} minutes"
-
-#: {{count}} second
-msgid "{{count}} second"
-msgstr "{{count}} second"
-
-#: {{count}} seconds
-msgid "{{count}} second_plural"
-msgstr "{{count}} seconds"
-
-
-
-#: AppSettings $t('settings_')
-
-#: General
-msgid "General"
-msgstr "General"
-
-#: Theme
-msgid "Theme"
-msgstr "Theme"
-
-#: Refresh Theme
-msgid "Refresh Theme"
-msgstr "Refresh Theme"
-
-#: Theme URL
-msgid "Theme URL"
-msgstr "Theme URL"
-
-#: Message Layout
-msgid "Message Layout"
-msgstr "Message Layout"
-
-#: Use monospace
-msgid "Use monospace"
-msgstr "Use monospace"
-
-#: Use Kiwi as my default IRC client
-msgid "Use Kiwi as my default IRC client"
-msgstr "Use Kiwi as my default IRC client"
-
-#: Show autocomplete list
-msgid "Show autocomplete list"
-msgstr "Show autocomplete list"
-
-#: Chat Messages
-msgid "Chat Messages"
-msgstr "Chat Messages"
-
-#: Show timestamps
-msgid "Show timestamps"
-msgstr "Show timestamps"
-
-#: Use 24-hour timestamps
-msgid "Use 24-hour timestamps"
-msgstr "Use 24-hour timestamps"
-
-#: Show emoticons
-msgid "Show emoticons"
-msgstr "Show emoticons"
-
-#: Block new Private messages
-msgid "Block new private messages"
-msgstr "Block new private messages"
-
-#: Messages in scrollback
-msgid "Messages in scrollback"
-msgstr "Messages in scrollback"
-
-#: Extra formatting
-msgid "Extra formatting"
-msgstr "Extra formatting"
-
-#: Colour nicknames in messages
-msgid "Colour nicknames in messages"
-msgstr "Colour nicknames in messages"
-
-#: Share when I'm typing a message
+#: components/AppSettings.vue
+#: components/Sidebar.vue
 msgid "Share when I'm typing a message"
 msgstr "Share when I'm typing a message"
 
-#: Include join/part messages as activity
-msgid "Include join/part messages as activity"
-msgstr "Include join/part messages as activity"
+#: components/startups/KiwiBnc.vue
+#: components/startups/Welcome.vue
+#: components/startups/ZncLogin.vue
+msgid "Start"
+msgstr "Start"
 
-#: Mute sound notifications
-msgid "Mute sound notifications"
-msgstr "Mute sound notifications"
+#: components/startups/Personal.vue
+#: thirdparty/kiwiirccom.vue
+msgid "They will be here when you come back."
+msgstr "They will be here when you come back."
 
-#: Highlight on words (space seperated)
-msgid "Highlight on words (space seperated)"
-msgstr "Highlight on words (space seperated)"
+#: components/NetworkSettings.vue
+#: components/startups/CustomServer.vue
+#: components/startups/KiwiBnc.vue
+#: components/startups/ZncLogin.vue
+msgid "Username"
+msgstr "Username"
 
-#: Aliases
+#: components/startups/KiwiBnc.vue
+#: components/startups/Welcome.vue
+#: components/startups/ZncLogin.vue
+msgid "Welcome to Kiwi IRC!"
+msgstr "Welcome to Kiwi IRC!"
+
+#: components/startups/Personal.vue
+#: thirdparty/kiwiirccom.vue
+msgid "Your IRC Client."
+msgstr "Your IRC Client."
+
+#: components/NetworkSettings.vue
+#: components/startups/CustomServer.vue
+msgid "ZNC"
+msgstr "ZNC"
+
+#: components/ContainerHeader.vue
+#: components/Nicklist.vue
+#: components/SidebarAboutBuffer.vue
+msgid "{{count}} person here"
+msgstr "{{count}} person here"
+
+#: components/ContainerHeader.vue
+#: components/Nicklist.vue
+#: components/SidebarAboutBuffer.vue
+msgid "{{count}} person here_plural"
+msgstr "{{count}} persons here"
+
+
+#: components/App.vue
+msgid "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+
+
+#: components/AppSettings.vue
+msgid "Advanced Settings"
+msgstr "Advanced Settings"
+
+#: components/AppSettings.vue
 msgid "Aliases"
 msgstr "Aliases"
 
-#: What are Aliases
-msgid "What are aliases?"
-msgstr "What are aliases?"
+#: components/AppSettings.vue
+msgid "Block new private messages"
+msgstr "Block new private messages"
 
-#: AutoComplete
+#: components/AppSettings.vue
+msgid "Chat Messages"
+msgstr "Chat Messages"
 
-#: Send Message
+#: components/AppSettings.vue
+msgid "Colour nicknames in messages"
+msgstr "Colour nicknames in messages"
+
+#: components/AppSettings.vue
+msgid "Default ban mask"
+msgstr "Default ban mask"
+
+#: components/AppSettings.vue
+msgid "Default kick reason"
+msgstr "Default kick reason"
+
+#: components/AppSettings.vue
+msgid "Enable Advanced Settings"
+msgstr "Enable Advanced Settings"
+
+#: components/AppSettings.vue
+msgid "Extra formatting"
+msgstr "Extra formatting"
+
+#: components/AppSettings.vue
+msgid "General"
+msgstr "General"
+
+#: components/AppSettings.vue
+msgid "Highlight on words (space seperated)"
+msgstr "Highlight on words (space seperated)"
+
+#: components/AppSettings.vue
+msgid "Include join/part messages as activity"
+msgstr "Include join/part messages as activity"
+
+#: components/AppSettings.vue
+msgid "Message Layout"
+msgstr "Message Layout"
+
+#: components/AppSettings.vue
+msgid "Messages in scrollback"
+msgstr "Messages in scrollback"
+
+#: components/AppSettings.vue
+msgid "Monsters be here, only click this button if you know what you are doing"
+msgstr "Monsters be here, only click this button if you know what you are doing"
+
+#: components/AppSettings.vue
+msgid "Mute sound notifications"
+msgstr "Mute sound notifications"
+
+#: components/AppSettings.vue
+msgid "Operator tools"
+msgstr "Operator tools"
+
+#: components/AppSettings.vue
+msgid "Refresh Theme"
+msgstr "Refresh Theme"
+
+#: components/AppSettings.vue
+msgid "Show autocomplete list"
+msgstr "Show autocomplete list"
+
+#: components/AppSettings.vue
+msgid "Show emoticons"
+msgstr "Show emoticons"
+
+#: components/AppSettings.vue
+msgid "Show timestamps"
+msgstr "Show timestamps"
+
+#: components/AppSettings.vue
+msgid "Theme"
+msgstr "Theme"
+
+#: components/AppSettings.vue
+msgid "Theme URL"
+msgstr "Theme URL"
+
+#: components/AppSettings.vue
+msgid "Use 24-hour timestamps"
+msgstr "Use 24-hour timestamps"
+
+#: components/AppSettings.vue
+msgid "Use Kiwi as my default IRC client"
+msgstr "Use Kiwi as my default IRC client"
+
+#: components/AppSettings.vue
+msgid "Use monospace"
+msgstr "Use monospace"
+
+#: components/AppSettings.vue
+msgid "Warning!"
+msgstr "Warning!"
+
+
+#: components/AutoComplete.vue
 msgid "Send Message"
 msgstr "Send Message"
 
 
-#: BufferKey $t('bufferkey_')
-
-#: Enter Channel Key
+#: components/BufferKey.vue
 msgid "Enter Channel Key"
 msgstr "Enter Channel Key"
 
-#: Rejoin {{channel}}
+#: components/BufferKey.vue
 msgid "Rejoin {{channel}}"
 msgstr "Rejoin {{channel}}"
 
 
-#: BufferSettings $t('settings_')
-
-#: Notify me when
-msgid "Notify me when"
-msgstr "Notify me when"
-
-#: All messages
+#: components/BufferSettings.vue
 msgid "All messages"
 msgstr "All messages"
 
-#: I am mentioned
-msgid "I am mentioned"
-msgstr "I am mentioned"
-
-#: Never
-msgid "Never"
-msgstr "Never"
-
-#: Mute sounds
-msgid "Mute sounds"
-msgstr "Mute sounds"
-
-#: Hide unread message count
+#: components/BufferSettings.vue
 msgid "Hide count"
 msgstr "Hide count"
 
-#: Operator tools
-msgid "Operator tools"
-msgstr "Operator tools"
+#: components/BufferSettings.vue
+msgid "I am mentioned"
+msgstr "I am mentioned"
 
-#: Default ban mask
-msgid "Default ban mask"
-msgstr "Default ban mask"
+#: components/BufferSettings.vue
+msgid "Mute sounds"
+msgstr "Mute sounds"
 
-#: Default kick reason
-msgid "Default kick reason"
-msgstr "Default kick reason"
+#: components/BufferSettings.vue
+msgid "Never"
+msgstr "Never"
 
-#: Advanced Settings
-msgid "Advanced Settings"
-msgstr "Advanced Settings"
-
-#: Monsters be here, only click this button if you know what you are doing
-msgid "Monsters be here, only click this button if you know what you are doing"
-msgstr "Monsters be here, only click this button if you know what you are doing"
-
-#: Enable Advanced Settings
-msgid "Enable Advanced Settings"
-msgstr "Enable Advanced Settings"
-
-#: Danger Zone: Changing some of these settings may break things!
-msgid "Danger Zone: Changing some of these settings may break things!"
-msgstr "Danger Zone: Changing some of these settings may break things!"
-
-#: Reset
-msgid "Reset"
-msgstr "Reset"
-
-#: Filter
-msgid "Filter"
-msgstr "Filter"
+#: components/BufferSettings.vue
+msgid "Notify me when"
+msgstr "Notify me when"
 
 
-
-#: ChannelBanlist $t('bans_')
-
-#: Refresh banlist
-msgid "Refresh banlist"
-msgstr "Refresh banlist"
-
-#: Banned user
-msgid "Banned user"
-msgstr "Banned user"
-
-#: Banned by
+#: components/ChannelBanlist.vue
 msgid "Banned by"
 msgstr "Banned by"
 
-#: Refreshing banlist...
+#: components/ChannelBanlist.vue
+msgid "Banned user"
+msgstr "Banned user"
+
+#: components/ChannelBanlist.vue
+msgid "Refresh banlist"
+msgstr "Refresh banlist"
+
+#: components/ChannelBanlist.vue
 msgid "Refreshing banlist..."
 msgstr "Refreshing banlist..."
 
-#: Nobody is banned!
-msgid "Nobody is banned!"
-msgstr "Nobody is banned!"
 
-
-
-#: ChannelInvitelist $t('invites_')
-
-#: Refresh invite list
-msgid "Refresh invite list"
-msgstr "Refresh invite list"
-
-#: Invited user
-msgid "Invited user"
-msgstr "Invited user"
-
-#: Invited by
-msgid "Invited by"
-msgstr "Invited by"
-
-#: Refreshing invite list...
-msgid "Refreshing invite list..."
-msgstr "Refreshing invite list..."
-
-#: This is a public channel.
-msgid "This is a public channel."
-msgstr "This is a public channel."
-
-#: Only invited users can join.
-msgid "Only invited users can join."
-msgstr "Only invited users can join."
-
-#: Only allow invited users
-msgid "Only allow invited users"
-msgstr "Only allow invited users"
-
-#: Allow anybody to join
-msgid "Allow anybody to join"
-msgstr "Allow anybody to join"
-
-#: Only registered users can join
-msgid "Only registered users can join"
-msgstr "Only registered users can join"
-
-#: Add invite
-msgid "Add invite"
-msgstr "Add invite"
-
-#: (Any registered user)
-msgid "(Any registered user)"
-msgstr "(Any registered user)"
-
-
-#: ChannelInfo $t('channel_')
-
-#: Topic
-msgid "Topic"
-msgstr "Topic"
-
-#: Moderated chat
-msgid "Moderated chat"
-msgstr "Moderated chat"
-
-#: Invite only
-msgid "Invite only"
-msgstr "Invite only"
-
-#: Only moderators can change the topic
-msgid "Only moderators can change the topic"
-msgstr "Only moderators can change the topic"
-
-#: Block messages from outside this channel
+#: components/ChannelInfo.vue
 msgid "Block messages from outside this channel"
 msgstr "Block messages from outside this channel"
 
+#: components/ChannelInfo.vue
+msgid "Invite only"
+msgstr "Invite only"
+
+#: components/ChannelInfo.vue
+msgid "Moderated chat"
+msgstr "Moderated chat"
+
+#: components/ChannelInfo.vue
+msgid "Only moderators can change the topic"
+msgstr "Only moderators can change the topic"
+
+#: components/ChannelInfo.vue
+msgid "Topic"
+msgstr "Topic"
 
 
-#: ChannelList $t('channel_list_')
+#: components/ChannelInvitelist.vue
+msgid "(Any registered user)"
+msgstr "(Any registered user)"
 
-#: Click the refresh button to update the channel list
+#: components/ChannelInvitelist.vue
+msgid "Add invite"
+msgstr "Add invite"
+
+#: components/ChannelInvitelist.vue
+msgid "Allow anybody to join"
+msgstr "Allow anybody to join"
+
+#: components/ChannelInvitelist.vue
+msgid "Invited by"
+msgstr "Invited by"
+
+#: components/ChannelInvitelist.vue
+msgid "Invited user"
+msgstr "Invited user"
+
+#: components/ChannelInvitelist.vue
+msgid "Only allow invited users"
+msgstr "Only allow invited users"
+
+#: components/ChannelInvitelist.vue
+msgid "Only invited users can join."
+msgstr "Only invited users can join."
+
+#: components/ChannelInvitelist.vue
+msgid "Only registered users can join"
+msgstr "Only registered users can join"
+
+#: components/ChannelInvitelist.vue
+msgid "Refresh invite list"
+msgstr "Refresh invite list"
+
+#: components/ChannelInvitelist.vue
+msgid "Refreshing invite list..."
+msgstr "Refreshing invite list..."
+
+#: components/ChannelInvitelist.vue
+msgid "This is a public channel."
+msgstr "This is a public channel."
+
+
+#: components/ChannelList.vue
 msgid "Click the refresh button to update the channel list"
 msgstr "Click the refresh button to update the channel list"
 
-#: No channels found, try again later
+#: components/ChannelList.vue
 msgid "No channels found, try again later"
 msgstr "No channels found, try again later"
 
+#: components/ChannelList.vue
+msgid "Search..."
+msgstr "Search..."
 
 
-#: Container $t('container_')
-
-#: Welcome to Kiwi IRC!
-msgid "Welcome to Kiwi IRC! Select a channel on the left."
-msgstr "Welcome to Kiwi IRC! Select a channel on the left."
-
-#: Show statebrowser
+#: components/Container.vue
 msgid "Show statebrowser"
 msgstr "Show statebrowser"
 
+#: components/Container.vue
+msgid "Welcome to Kiwi IRC! Select a channel on the left."
+msgstr "Welcome to Kiwi IRC! Select a channel on the left."
 
 
-#: ContainerHeader $t('container_')
-
-#: Channel Settings
-msgid "Channel Settings"
-msgstr "Channel Settings"
-
-#: Join Channel
-msgid "Join Channel"
-msgstr "Join Channel"
-
-#: Really leave the channel?
+#: components/ContainerHeader.vue
 msgid "Really leave the channel?"
 msgstr "Really leave the channel?"
 
 
-
-#: ControlInput $t('input_')
-
-#: Send a message...
+#: components/ControlInput.vue
 msgid "Send a message..."
 msgstr "Send a message..."
 
 
-
-#: MediaViewer $t('media_')
-
-#: Loading {{url}}...
+#: components/MediaViewer.vue
 msgid "Loading {{url}}..."
 msgstr "Loading {{url}}..."
 
 
-
-#: MessageList $t('messages_')
-
-#: Load previous messages
+#: components/MessageList.vue
 msgid "Load previous messages"
 msgstr "Load previous messages"
 
-#: Unread Messages
+#: components/MessageList.vue
 msgid "Unread Messages"
 msgstr "Unread Messages"
 
 
+#: components/NetworkSettings.vue
+msgid "Connect To Network"
+msgstr "Connect To Network"
 
-#: Server details
-msgid "Server details"
-msgstr "Server details"
-
-#: Port
-msgid "Port"
-msgstr "Port"
-
-#: Other networks on this ZNC account will be listed in the network list
-msgid "Other networks on this ZNC account will be listed in the network list"
-msgstr "Other networks on this ZNC account will be listed in the network list"
-
-#: Nickname
-msgid "Nickname"
-msgstr "Nickname"
-
-#: Advanced
-msgid "Advanced"
-msgstr "Advanced"
-
-#: Encoding
-msgid "Encoding"
-msgstr "Encoding"
-
-#: Show Raw
-msgid "Show Raw"
-msgstr "Show Raw"
-
-#: Direct websocket
-msgid "Direct websocket"
-msgstr "Direct websocket"
-
-#: Run commands when connected
-msgid "Run commands when connected"
-msgstr "Run commands when connected"
-
-#: Danger Zone
+#: components/NetworkSettings.vue
 msgid "Danger Zone"
 msgstr "Danger Zone"
 
-#: Remove network
+#: components/NetworkSettings.vue
+msgid "Direct websocket"
+msgstr "Direct websocket"
+
+#: components/NetworkSettings.vue
+msgid "Encoding"
+msgstr "Encoding"
+
+#: components/NetworkSettings.vue
+msgid "Nickname"
+msgstr "Nickname"
+
+#: components/NetworkSettings.vue
+msgid "Other networks on this ZNC account will be listed in the network list"
+msgstr "Other networks on this ZNC account will be listed in the network list"
+
+#: components/NetworkSettings.vue
 msgid "Remove network"
 msgstr "Remove network"
 
+#: components/NetworkSettings.vue
+msgid "Run commands when connected"
+msgstr "Run commands when connected"
+
+#: components/NetworkSettings.vue
+msgid "Server details"
+msgstr "Server details"
+
+#: components/NetworkSettings.vue
+msgid "Show Raw"
+msgstr "Show Raw"
+
+#: components/NetworkSettings.vue
+msgid "We couldn't connect to that server :("
+msgstr "We couldn't connect to that server :("
 
 
-#: Nicklist
-
-#: {{count}} person here
-msgid "{{count}} person here"
-msgstr "{{count}} person here"
-
-#: {{count}} people here
-msgid "{{count}} person here_plural"
-msgstr "{{count}} people here"
-
-#: Filter users in channel
+#: components/Nicklist.vue
 msgid "filter users in channel"
 msgstr "filter users in channel"
 
 
-#: NotConnected $t('reconnect_')
-
-#: Reconnect to join {{channel}}
-msgid "Reconnect to join {{channel}}"
-msgstr "Reconnect to join {{channel}}"
-
-#: Reconnect to {{network}} to start talking
-msgid "Reconnect to {{network}} to start talking"
-msgstr "Reconnect to {{network}} to start talking"
-
-#: Reconnect to continue talking with {{user}}
+#: components/NotConnected.vue
 msgid "Reconnect to continue talking with {{user}}"
 msgstr "Reconnect to continue talking with {{user}}"
 
-#: You are not currently connected!
+#: components/NotConnected.vue
+msgid "Reconnect to join {{channel}}"
+msgstr "Reconnect to join {{channel}}"
+
+#: components/NotConnected.vue
+msgid "Reconnect to {{network}} to start talking"
+msgstr "Reconnect to {{network}} to start talking"
+
+#: components/NotConnected.vue
 msgid "You are not currently connected!"
 msgstr "You are not currently connected!"
 
 
-
-#: NetworkSettings $t('network_')
-
-#: We couldn't connect to that server :(
-msgid "We couldn't connect to that server :("
-msgstr "We couldn't connect to that server :("
-
-#: Connect To Network
-msgid "Connect To Network"
-msgstr "Connect To Network"
+#: components/ServerSelector.vue
+msgid "Port"
+msgstr "Port"
 
 
+#: components/ServerView.vue
+msgid "Channels"
+msgstr "Channels"
 
-#: Sidebar
+#: components/ServerView.vue
+msgid "Messages"
+msgstr "Messages"
 
-#: Your settings
-msgid "Your settings"
-msgstr "Your settings"
 
-#: Show when people join
-msgid "Show when people join"
-msgstr "Show when people join"
+#: components/SettingsAdvanced.vue
+msgid "Danger Zone: Changing some of these settings may break things!"
+msgstr "Danger Zone: Changing some of these settings may break things!"
 
-#: Show when channel topic changes
-msgid "Show when channel topic changes"
-msgstr "Show when channel topic changes"
+#: components/SettingsAdvanced.vue
+msgid "Filter"
+msgstr "Filter"
 
-#: Show when users change their nicks
-msgid "Show when users change their nicks"
-msgstr "Show when users change their nicks"
+#: components/SettingsAdvanced.vue
+msgid "Not found."
+msgstr "Not found."
 
-#: Show when users change channel modes
-msgid "Show when users change channel modes"
-msgstr "Show when users change channel modes"
+#: components/SettingsAdvanced.vue
+msgid "Reset"
+msgstr "Reset"
 
-#: Extra message formatting
+
+#: components/SettingsAliases.vue
+msgid "What are aliases?"
+msgstr "What are aliases?"
+
+
+#: components/Sidebar.vue
+msgid "Access"
+msgstr "Access"
+
+#: components/Sidebar.vue
 msgid "Extra message formatting"
 msgstr "Extra message formatting"
 
-#: Nick colours in the list"
+#: components/Sidebar.vue
+msgid "Invited Users"
+msgstr "Invited Users"
+
+#: components/Sidebar.vue
 msgid "Nick colours in the list"
 msgstr "Nick colours in the list"
 
-#: No buffer set
+#: components/Sidebar.vue
 msgid "No buffer set"
 msgstr "No buffer set"
 
+#: components/Sidebar.vue
+msgid "Show when channel topic changes"
+msgstr "Show when channel topic changes"
 
-#: Sidebar About Buffer
+#: components/Sidebar.vue
+msgid "Show when people join"
+msgstr "Show when people join"
 
-#: There is no topic for this channel
-msgid "There is no topic for this channel"
-msgstr "There is no topic for this channel"
+#: components/Sidebar.vue
+msgid "Show when users change channel modes"
+msgstr "Show when users change channel modes"
 
-#: About
+#: components/Sidebar.vue
+msgid "Show when users change their nicks"
+msgstr "Show when users change their nicks"
+
+#: components/Sidebar.vue
+msgid "Your settings"
+msgstr "Your settings"
+
+
+#: components/SidebarAboutBuffer.vue
 msgid "About"
 msgstr "About"
 
-#: Created at {{when}}
+#: components/SidebarAboutBuffer.vue
 msgid "Created at {{when}}"
 msgstr "Created at {{when}}"
 
-#: Highlights
+#: components/SidebarAboutBuffer.vue
 msgid "Highlights"
 msgstr "Highlights"
 
-#: Nobody has mentioned you yet...
+#: components/SidebarAboutBuffer.vue
 msgid "Nobody has mentioned you yet..."
 msgstr "Nobody has mentioned you yet..."
 
+#: components/SidebarAboutBuffer.vue
+msgid "There is no topic for this channel"
+msgstr "There is no topic for this channel"
 
-#: StartupError $t('error_')
 
-
-
-#: StateBrowser $t('state_')
-
-#: Your settings and networks will be remembered on this computer.
-msgid "Your settings and networks will be remembered on this computer."
-msgstr "Your settings and networks will be remembered on this computer."
-
-#: Forget me
-msgid "Forget me"
-msgstr "Forget me"
-
-#: Available networks
-msgid "Available networks"
-msgstr "Available networks"
-
-#: Add Network
+#: components/StateBrowser.vue
 msgid "Add Network"
 msgstr "Add Network"
 
-#: New Network
-msgid "New Network"
-msgstr "New Network"
+#: components/StateBrowser.vue
+msgid "Available networks"
+msgstr "Available networks"
 
-#: No Network
-msgid "No Network"
-msgstr "No Network"
+#: components/StateBrowser.vue
+msgid "Kiwi Settings"
+msgstr "Kiwi Settings"
 
 
-#: StateBrowserNetwork
-
-#: Configure network
+#: components/StateBrowserNetwork.vue
 msgid "Configure network"
 msgstr "Configure network"
 
-#: Not connected.
-msgid "Not connected."
-msgstr "Not connected."
-
-#: Join new #channel
-msgid "Join new #channel"
-msgstr "Join new #channel"
-
-#: Filter Channels
+#: components/StateBrowserNetwork.vue
 msgid "Filter channels"
 msgstr "Filter channels"
 
-#: Find More Channels
+#: components/StateBrowserNetwork.vue
 msgid "Find more channels"
 msgstr "Find more channels"
 
-#: SelfUser
+#: components/StateBrowserNetwork.vue
+msgid "Join new #channel"
+msgstr "Join new #channel"
+
+#: components/StateBrowserNetwork.vue
+msgid "Not connected."
+msgstr "Not connected."
 
 
-#: UserBox $t('user_')
+#: components/StateBrowserUsermenu.vue
+msgid "Forget me"
+msgstr "Forget me"
 
-#: Account name: {{user}}
-msgid "Account name: {{user}}"
-msgstr "Account name: {{user}}"
+#: components/StateBrowserUsermenu.vue
+msgid "No Network"
+msgstr "No Network"
 
-#: Real name: {{realname}}
-msgid "Real name: {{realname}}"
-msgstr "Real name: {{realname}}"
+#: components/StateBrowserUsermenu.vue
+msgid "Your settings and networks will be remembered on this computer."
+msgstr "Your settings and networks will be remembered on this computer."
 
-#: Is a bot
-msgid "Is a bot"
-msgstr "Is a bot"
 
-#: Is available for help
-msgid "Is avaiable for help"
-msgstr "Is avaiable for help"
-
-#: Is an operator
-msgid "Is an operator"
-msgstr "Is an operator"
-
-#: Connected to {{server}} {{info}}
-msgid "Connected to {{server}} {{info}}"
-msgstr "Connected to {{server}} {{info}}"
-
-#: Securely connected via SSL/TLS
-msgid "Securely connected via SSL/TLS"
-msgstr "Securely connected via SSL/TLS"
-
-#: In channels {{channels}}
-msgid "In channels {{channels}}"
-msgstr "In channels {{channels}}"
-
-#: Access level
+#: components/UserBox.vue
 msgid "Access level"
 msgstr "Access level"
 
-#: Normal
-msgid "Normal"
-msgstr "Normal"
+#: components/UserBox.vue
+msgid "Account name: {{user}}"
+msgstr "Account name: {{user}}"
 
-#: Kick from the channel
-msgid "Kick from the channel"
-msgstr "Kick from the channel"
-
-#: Ban from the channel
-msgid "Ban from the channel"
-msgstr "Ban from the channel"
-
-#: Ban and kick from the channel
+#: components/UserBox.vue
 msgid "Ban and kick from the channel"
 msgstr "Ban and kick from the channel"
 
+#: components/UserBox.vue
+msgid "Ban from the channel"
+msgstr "Ban from the channel"
+
+#: components/UserBox.vue
+msgid "Connected to {{server}} {{info}}"
+msgstr "Connected to {{server}} {{info}}"
+
+#: components/UserBox.vue
+msgid "Ignore user"
+msgstr "Ignore user"
+
+#: components/UserBox.vue
+msgid "In channels {{channels}}"
+msgstr "In channels {{channels}}"
+
+#: components/UserBox.vue
+msgid "Is a bot"
+msgstr "Is a bot"
+
+#: components/UserBox.vue
+msgid "Is an operator"
+msgstr "Is an operator"
+
+#: components/UserBox.vue
+msgid "Is avaiable for help"
+msgstr "Is avaiable for help"
+
+#: components/UserBox.vue
+msgid "Is available"
+msgstr "Is available"
+
+#: components/UserBox.vue
+msgid "Kick from the channel"
+msgstr "Kick from the channel"
+
+#: components/UserBox.vue
+msgid "Normal"
+msgstr "Normal"
+
+#: components/UserBox.vue
+msgid "Real name"
+msgstr "Real name"
+
+#: components/UserBox.vue
+msgid "Real name: {{realname}}"
+msgstr "Real name: {{realname}}"
+
+#: components/UserBox.vue
+msgid "Securely connected via SSL/TLS"
+msgstr "Securely connected via SSL/TLS"
+
+#: components/UserBox.vue
+msgid "Status"
+msgstr "Status"
 
 
-#: Errors
+#: components/startups/KiwiBnc.vue
+msgid "Invalid login"
+msgstr "Invalid login"
 
-#: Please specify a channel to join. eg /join #example
+#: components/startups/KiwiBnc.vue
+msgid "Logging in..."
+msgstr "Logging in..."
+
+
+#: components/startups/Personal.vue
+msgid "Add network to existing Kiwi window"
+msgstr "Add network to existing Kiwi window"
+
+#: components/startups/Personal.vue
+msgid "Network has been added to your existing Kiwi window."
+msgstr "Network has been added to your existing Kiwi window."
+
+#: components/startups/Personal.vue
+msgid "Temporarily connect to this network"
+msgstr "Temporarily connect to this network"
+
+#: components/startups/Personal.vue
+msgid "You are trying to connect to {{network}}"
+msgstr "You are trying to connect to {{network}}"
+
+
+#: components/utils/InputConfirm.vue
+msgid "No"
+msgstr "No"
+
+#: components/utils/InputConfirm.vue
+msgid "Yes"
+msgstr "Yes"
+
+
+#: components/utils/InputPrompt.vue
+msgid "Cancel"
+msgstr "Cancel"
+
+#: components/utils/InputPrompt.vue
+msgid "OK"
+msgstr "OK"
+
+
+#: helpers/TextFormatting.js
+msgid "{{count}} day"
+msgstr "{{count}} day"
+
+#: helpers/TextFormatting.js
+msgid "{{count}} day_plural"
+msgstr "{{count}} days"
+
+#: helpers/TextFormatting.js
+msgid "{{count}} hour"
+msgstr "{{count}} hour"
+
+#: helpers/TextFormatting.js
+msgid "{{count}} hour_plural"
+msgstr "{{count}} hours"
+
+#: helpers/TextFormatting.js
+msgid "{{count}} minute"
+msgstr "{{count}} minute"
+
+#: helpers/TextFormatting.js
+msgid "{{count}} minute_plural"
+msgstr "{{count}} minutes"
+
+#: helpers/TextFormatting.js
+msgid "{{count}} second"
+msgstr "{{count}} second"
+
+#: helpers/TextFormatting.js
+msgid "{{count}} second_plural"
+msgstr "{{count}} seconds"
+
+#: helpers/TextFormatting.js
+msgid "{{count}} week"
+msgstr "{{count}} week"
+
+#: helpers/TextFormatting.js
+msgid "{{count}} week_plural"
+msgstr "{{count}} weeks"
+
+
+#: libs/InputHandler.js
 msgid "Please specify a channel to join. eg /join #example"
 msgstr "Please specify a channel to join. eg /join #example"
 
-
-
-#: Mode Changes $t('modes_')
-
-#: {{nick}} gives ops to {{target}}
-msgid "{{nick}} gives ops to {{target}}"
-msgstr "{{nick}} gives ops to {{target}}"
-
-#: {{nick}} takes ops from {{target}}
-msgid "{{nick}} takes ops from {{target}}"
-msgstr "{{nick}} takes ops from {{target}}"
-
-#: {{nick}} gives half-ops to {{target}}
-msgid "{{nick}} gives half-ops to {{target}}"
-msgstr "{{nick}} gives half-ops to {{target}}"
-
-#: {{nick}} takes half-ops from {{target}}
-msgid "{{nick}} takes half-ops from {{target}}"
-msgstr "{{nick}} takes half-ops from {{target}}"
-
-#: {{nick}} gives voice to {{target}}
-msgid "{{nick}} gives voice to {{target}}"
-msgstr "{{nick}} gives voice to {{target}}"
-
-#: {{nick}} takes voice from {{target}}
-msgid "{{nick}} takes voice from {{target}}"
-msgstr "{{nick}} takes voice from {{target}}"
-
-#: {{nick}} gives admin to {{target}}
-msgid "{{nick}} gives admin to {{target}}"
-msgstr "{{nick}} gives admin to {{target}}"
-
-#: {{nick}} takes admin from {{target}}
-msgid "{{nick}} takes admin from {{target}}"
-msgstr "{{nick}} takes admin from {{target}}"
-
-#: {{nick}} gives owner to {{target}}
-msgid "{{nick}} gives owner to {{target}}"
-msgstr "{{nick}} gives owner to {{target}}"
-
-#: {{nick}} takes owner from {{target}}
-msgid "{{nick}} takes owner from {{target}}"
-msgstr "{{nick}} takes owner from {{target}}"
-
-#: {{nick}} has banned {{target}}
-msgid "{{nick}} has banned {{target}}"
-msgstr "{{nick}} has banned {{target}}"
-
-#: {{nick}} has unbanned {{target}}
-msgid "{{nick}} has unbanned {{target}}"
-msgstr "{{nick}} has unbanned {{target}}"
-
-#: {{nick}} sets {{mode}} on {{target}}
-msgid "{{nick}} sets {{mode}} on {{target}}"
-msgstr "{{nick}} sets {{mode}} on {{target}}"
-
-
-
-#: autocompleteCommands  $t('command_')
-
-#: Send a message
-msgid "Send a message"
-msgstr "Send a message"
-
-#: Do something physical
-msgid "Do something physical"
-msgstr "Do something physical"
-
-#: Join a channel
-msgid "Join a channel"
-msgstr "Join a channel"
-
-#: Leave a channel
-msgid "Leave a channel"
-msgstr "Leave a channel"
-
-#: Leave, then re-join a channel
-msgid "Leave, then re-join a channel"
-msgstr "Leave, then re-join a channel"
-
-#: Change your nickname
-msgid "Change your nickname"
-msgstr "Change your nickname"
-
-#: Start a private conversation with someone
-msgid "Start a private conversation with someone"
-msgstr "Start a private conversation with someone"
-
-#: Invite somebody into the channel
-msgid "Invite somebody into the channel"
-msgstr "Invite somebody into the channel"
-
-#: Set the topic for this channel
-msgid "Set the topic for this channel"
-msgstr "Set the topic for this channel"
-
-#: Send a notice
-msgid "Send a notice"
-msgstr "Send a notice"
-
-#: Send a raw command to the IRC server
-msgid "Send a raw command to the IRC server"
-msgstr "Send a raw command to the IRC server"
-
-#: Kick somebody from the channel
-msgid "Kick somebody from the channel"
-msgstr "Kick somebody from the channel"
-
-#: Clear all messages from this window
-msgid "Clear all messages from this window"
-msgstr "Clear all messages from this window"
-
-#: Send a CTCP command to somebody
-msgid "Send a CTCP command to somebody"
-msgstr "Send a CTCP command to somebody"
-
-#: Disconnect from the IRC server
-msgid "Disconnect from the IRC server"
-msgstr "Disconnect from the IRC server"
-
-#: Connect to a new IRC network
-msgid "Connect to a new IRC network"
-msgstr "Connect to a new IRC network"
-
-#: Request information on somebody
-msgid "Request information on somebody"
-msgstr "Request information on somebody"
-
-#: Request information on somebody that disconnected recently
-msgid "Request information on somebody that disconnected recently"
-msgstr "Request information on somebody that disconnected recently"
-
-#: Set yourself as away
-msgid "Set yourself as away"
-msgstr "Set yourself as away"
-
-#: Set yourself as active
-msgid "Set yourself as active"
-msgstr "Set yourself as active"
-
-#: Change your connection encoding
-msgid "Change your connection encoding"
-msgstr "Change your connection encoding"
-
-#: Ignore messages from somebody
-msgid "Ignore messages from somebody"
-msgstr "Ignore messages from somebody"
-
-#: Stop ignoring somebody
-msgid "Stop ignoring somebody"
-msgstr "Stop ignoring somebody"
-
-#: Roll a Dice
-msgid "Roll a Dice"
-msgstr "Roll a Dice"
-
-#: Rolls a {{sides}} sided dice and gets {{number}}
+#: libs/InputHandler.js
 msgid "Rolls a {{sides}} sided dice and gets {{number}}"
 msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
 
 
-#: Personal $t('personal_')
-
-#: Your IRC client
-msgid "Your IRC Client."
-msgstr "Your IRC Client."
-
-#: Add your networks. Join your channels.
-msgid "Add your networks. Join your channels."
-msgstr "Add your networks. Join your channels."
-
-#: They will be here when you come back.
-msgid "They will be here when you come back."
-msgstr "They will be here when you come back."
-
-#: Add a Network
-msgid "Add a Network"
-msgstr "Add a Network"
-
-#: You are trying to connect to {{network}}
-msgid "You are trying to connect to {{network}}"
-msgstr "You are trying to connect to {{network}}"
-
-#: Network has been added to your existing Kiwi window.
-msgid "Network has been added to your existing Kiwi window."
-msgstr "Network has been added to your existing Kiwi window."
-
-#: Add network to existing Kiwi window
-msgid "Add network to existing Kiwi window"
-msgstr "Add network to existing Kiwi window"
-
-#: Temporarily connect to this network
-msgid "Temporarily connect to this network"
-msgstr "Temporarily connect to this network"
-
-#: Saved networks
-msgid "Saved networks"
-msgstr "Saved networks"
-
-
-
-#: WelcomeRizon $t('rizon_')
-
-#: Connected
+#: libs/IrcClient.js
 msgid "Connected"
 msgstr "Connected"
 
-#: Disconnected
-msgid "Disconnected"
-msgstr "Disconnected"
-
-#: Connected to {{network}}!
+#: libs/IrcClient.js
 msgid "Connected to {{network}}!"
 msgstr "Connected to {{network}}!"
 
-#: {{nick}} has joined
-msgid "{{nick}} has joined"
-msgstr "{{nick}} has joined"
+#: libs/IrcClient.js
+msgid "Disconnected"
+msgstr "Disconnected"
 
-#: {{nick}} kicked you from {{channel}}
-msgid "{{nick}} kicked you from {{channel}}"
-msgstr "{{nick}} kicked you from {{channel}}"
-
-#: {{nick}} was kicked from {{channel}} by {{chanop}}
-msgid "{{nick}} was kicked from {{channel}} by {{chanop}}"
-msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
-
-#: {{nick}} has left
-msgid "{{nick}} has left"
-msgstr "{{nick}} has left"
-
-#: {{nick}} invited you to join {{channel}}
-msgid "{{nick}} invited you to join {{channel}}"
-msgstr "{{nick}} invited you to join {{channel}}"
-
-#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+#: libs/IrcClient.js
 msgid "Nickname {{nick}} is already in use. Trying {{newnick}}..."
 msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
 
-#: {{nick}} is now known as {{newnick}}
+#: libs/IrcClient.js
+msgid "{{nick}} changed the topic to: {{topic}}"
+msgstr "{{nick}} changed the topic to: {{topic}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} gives admin to {{target}}"
+msgstr "{{nick}} gives admin to {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} gives half-ops to {{target}}"
+msgstr "{{nick}} gives half-ops to {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} gives ops to {{target}}"
+msgstr "{{nick}} gives ops to {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} gives owner to {{target}}"
+msgstr "{{nick}} gives owner to {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} gives voice to {{target}}"
+msgstr "{{nick}} gives voice to {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} has banned {{target}}"
+msgstr "{{nick}} has banned {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} has joined"
+msgstr "{{nick}} has joined"
+
+#: libs/IrcClient.js
+msgid "{{nick}} has left"
+msgstr "{{nick}} has left"
+
+#: libs/IrcClient.js
+msgid "{{nick}} has unbanned {{target}}"
+msgstr "{{nick}} has unbanned {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} invited you to join {{channel}}"
+msgstr "{{nick}} invited you to join {{channel}}"
+
+#: libs/IrcClient.js
 msgid "{{nick}} is now known as {{newnick}}"
 msgstr "{{nick}} is now known as {{newnick}}"
 
-#: {{nick}} changed the topic to: {{topic}}
-msgid "{{nick}} changed the topic to: {{topic}}"
-msgstr "{{nick}} changed the topic to: {{topic}}"
+#: libs/IrcClient.js
+msgid "{{nick}} kicked you from {{channel}}"
+msgstr "{{nick}} kicked you from {{channel}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} sets {{mode}} on {{target}}"
+msgstr "{{nick}} sets {{mode}} on {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} takes admin from {{target}}"
+msgstr "{{nick}} takes admin from {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} takes half-ops from {{target}}"
+msgstr "{{nick}} takes half-ops from {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} takes ops from {{target}}"
+msgstr "{{nick}} takes ops from {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} takes owner from {{target}}"
+msgstr "{{nick}} takes owner from {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} takes voice from {{target}}"
+msgstr "{{nick}} takes voice from {{target}}"
+
+#: libs/IrcClient.js
+msgid "{{nick}} was kicked from {{channel}} by {{chanop}}"
+msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
+
+
+#: res/autocompleteCommands.js
+msgid "Change your connection encoding"
+msgstr "Change your connection encoding"
+
+#: res/autocompleteCommands.js
+msgid "Change your nickname"
+msgstr "Change your nickname"
+
+#: res/autocompleteCommands.js
+msgid "Clear all messages from this window"
+msgstr "Clear all messages from this window"
+
+#: res/autocompleteCommands.js
+msgid "Connect to a new IRC network"
+msgstr "Connect to a new IRC network"
+
+#: res/autocompleteCommands.js
+msgid "Disconnect from the IRC server"
+msgstr "Disconnect from the IRC server"
+
+#: res/autocompleteCommands.js
+msgid "Do something physical"
+msgstr "Do something physical"
+
+#: res/autocompleteCommands.js
+msgid "Ignore messages from somebody"
+msgstr "Ignore messages from somebody"
+
+#: res/autocompleteCommands.js
+msgid "Invite somebody into the channel"
+msgstr "Invite somebody into the channel"
+
+#: res/autocompleteCommands.js
+msgid "Join a channel"
+msgstr "Join a channel"
+
+#: res/autocompleteCommands.js
+msgid "Kick somebody from the channel"
+msgstr "Kick somebody from the channel"
+
+#: res/autocompleteCommands.js
+msgid "Leave a channel"
+msgstr "Leave a channel"
+
+#: res/autocompleteCommands.js
+msgid "Leave, then re-join a channel"
+msgstr "Leave, then re-join a channel"
+
+#: res/autocompleteCommands.js
+msgid "Request information on somebody"
+msgstr "Request information on somebody"
+
+#: res/autocompleteCommands.js
+msgid "Request information on somebody that disconnected recently"
+msgstr "Request information on somebody that disconnected recently"
+
+#: res/autocompleteCommands.js
+msgid "Roll a Dice"
+msgstr "Roll a Dice"
+
+#: res/autocompleteCommands.js
+msgid "Send a CTCP command to somebody"
+msgstr "Send a CTCP command to somebody"
+
+#: res/autocompleteCommands.js
+msgid "Send a notice"
+msgstr "Send a notice"
+
+#: res/autocompleteCommands.js
+msgid "Send a raw command to the IRC server"
+msgstr "Send a raw command to the IRC server"
+
+#: res/autocompleteCommands.js
+msgid "Set the topic for this channel"
+msgstr "Set the topic for this channel"
+
+#: res/autocompleteCommands.js
+msgid "Set yourself as active"
+msgstr "Set yourself as active"
+
+#: res/autocompleteCommands.js
+msgid "Set yourself as away"
+msgstr "Set yourself as away"
+
+#: res/autocompleteCommands.js
+msgid "Start a private conversation with someone"
+msgstr "Start a private conversation with someone"
+
+#: res/autocompleteCommands.js
+msgid "Stop ignoring somebody"
+msgstr "Stop ignoring somebody"
+
+
