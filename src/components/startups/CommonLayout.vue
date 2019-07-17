@@ -70,13 +70,13 @@ export default {
     height: 100%;
     text-align: center;
     display: flex;
+    overflow-y: auto;
 }
 
 .kiwi-startup-common-section {
     padding: 1em;
     box-sizing: border-box;
-    overflow-y: auto;
-    min-height: 100%;
+    height: 100%;
 
     /* transition the 2 sections out when the page closes. right+left defaults */
     transition: transform 0.4s;
@@ -124,9 +124,7 @@ export default {
     .kiwi-startup-common {
         font-size: 0.9em;
         flex-direction: column;
-        min-height: none;
         align-items: center;
-        justify-content: center;
         padding-top: 2em;
     }
 
