@@ -357,7 +357,17 @@ form.kiwi-welcome-simple-form h2 {
     font-weight: 600;
     font-size: 2.2em;
     text-align: center;
-    color: #404158;
+}
+
+.kiwi-welcome-simple-error {
+    text-align: center;
+    margin: 1em 0;
+    padding: 0.3em;
+}
+
+.kiwi-welcome-simple-error span {
+    display: block;
+    font-style: italic;
 }
 
 .kiwi-welcome-simple-input-container {
