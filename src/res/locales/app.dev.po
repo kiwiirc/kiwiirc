@@ -1096,10 +1096,6 @@ msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
 msgid "rizon_dev"
 msgstr "Give the developer version of Kiwi IRC a try!"
 
-#: Connected
-msgid "connected"
-msgstr "Connected"
-
 #: Disconnected
 msgid "disconnected"
 msgstr "Disconnected"
