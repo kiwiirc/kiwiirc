@@ -387,6 +387,16 @@ form.kiwi-welcome-simple-form h2 {
     font-size: 1.3em;
 }
 
+.kiwi-welcome-simple-start {
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.kiwi-welcome-simple-start[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
 /* Make the preloader icon larger */
 .kiwi-welcome-simple .fa-spinner {
     font-size: 6em;
