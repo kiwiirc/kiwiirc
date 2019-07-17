@@ -341,7 +341,6 @@ export default {
 form.kiwi-welcome-simple-form {
     width: 70%;
     padding: 0 20px;
-    border: none;
 }
 
 @media (max-width: 1025px) {
