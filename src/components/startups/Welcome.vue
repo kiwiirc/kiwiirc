@@ -378,7 +378,7 @@ form.kiwi-welcome-simple-form h2 {
 }
 
 /* Make the preloader icon larger */
-.fa-spinner {
+.kiwi-welcome-simple .fa-spinner {
     font-size: 6em;
 }
 
