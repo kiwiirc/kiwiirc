@@ -105,7 +105,7 @@ export default {
     color: #1b1b1b;
     font-size: 1.5em;
     padding: 2em;
-    line-height: 1.6em;
+    line-height: 2.3em;
 }
 
 @media (min-width: 850px) {
