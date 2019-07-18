@@ -14,6 +14,11 @@
     --brand-warning: #fcb46e;
     --brand-error: #bf5155;
 
+    /* Input elements */
+    --brand-input-border: #000000;
+    --brand-input-fg: #616161;
+    --brand-input-bg: transparent;
+
     /* Connection Indicator top */
     --comp-workspace-before-bg: var(--brand-primary);
     --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
@@ -189,6 +194,10 @@
 .u-form input[type='checkbox']:checked,
 .u-form input[type='radio']:checked {
     background-color: #f1f1f1;
+}
+
+.u-form .u-input:focus {
+    border-color: #6b6b6b;
 }
 
 .u-form select {
