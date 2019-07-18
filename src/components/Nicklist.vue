@@ -53,8 +53,9 @@ import NicklistUser from './NicklistUser';
 let log = Logger.namespace('Nicklist');
 
 // Hot function, so it's here for easier caching
+let strComparison = new Intl.Collator({}, { numeric: true });
 function strCompare(a, b) {
-    return new Intl.Collator({}, { numeric: true }).compare(a, b);
+    return strComparison.compare(a, b);
 }
 
 export default {
