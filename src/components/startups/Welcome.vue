@@ -356,6 +356,7 @@ form.kiwi-welcome-simple-form h2 {
     font-weight: 600;
     font-size: 2.2em;
     text-align: center;
+    line-height: 1.2em;
 }
 
 .kiwi-welcome-simple-error {
