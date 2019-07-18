@@ -12,7 +12,7 @@
             <transition name="kiwi-connectingloader">
                 <form
                     v-if="!is_connecting"
-                    class="u-form kiwi-customserver-form"
+                    class="u-form u-form--big kiwi-customserver-form"
                     @submit.prevent="startUp"
                 >
                     <div v-if="network && network.state_error" class="kiwi-customserver-error">
@@ -49,6 +49,7 @@
                             v-focus
                             v-if="show_password_box"
                             :label="$t('password')"
+                            :show-plain-text="true"
                             v-model="password"
                             type="password"
                         />
@@ -394,27 +395,9 @@ export default {
     padding: 20px 1em;
 }
 
-.kiwi-customserver-form .u-input-text-label,
-.kiwi-customserver-form .u-input-text--reveal-value .u-input-text-label {
-    left: 0;
-    font-weight: 600;
-    font-size: 1em;
-}
-
-.kiwi-customserver-form .u-input-text-c {
-    position: absolute;
-    right: 15px;
-    bottom: 10px;
-}
-
 .kiwi-customserver .u-input-text,
 .kiwi-customserver .kiwi-customserver-have-password input {
     margin-bottom: 1.5em;
-}
-
-.kiwi-customserver .u-input-text input {
-    padding: 0.5em;
-    font-size: 1em;
 }
 
 .kiwi-customserver .kiwi-customserver-have-password {
@@ -427,7 +410,6 @@ export default {
 
 .kiwi-customserver-tls {
     cursor: pointer;
-    top: 6px;
     color: #bfbfbf;
 }
 

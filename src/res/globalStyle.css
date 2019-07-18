@@ -61,7 +61,12 @@ select {
 .u-form label {
     display: block;
     line-height: 20px;
-    margin: 0 0 10px 0;
+    margin: 0 0 3px 2px;
+}
+
+.u-form--big label {
+    margin-bottom: 10px;
+    font-size: 1.2em;
 }
 
 .u-form label span {
@@ -107,25 +112,26 @@ select {
 .u-form input[type='email'],
 .u-form textarea {
     font-size: 0.9em;
+    line-height: normal;
     clear: both;
-    width: 100%;
-    height: 40px;
-    padding: 3px 5px;
+    padding: 7px 8px;
     box-sizing: border-box;
-    border-radius: 1px;
-    border-radius: none;
-    border-bottom: 1px solid;
     min-height: 0;
     overflow-x: hidden;
     overflow-y: auto;
     max-width: none;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
 }
 
-.u-form .u-input,
-.u-form textarea {
-    border: 1px solid;
-    line-height: normal;
-    border-bottom: 2px solid;
+.u-form--big .u-input,
+.u-form--big input[type='text'],
+.u-form--big input[type='password'],
+.u-form--big input[type='email'],
+.u-form--big textarea {
+    padding: 15px 12px;
+    font-size: 1em;
 }
 
 .u-checkbox-wrapper {

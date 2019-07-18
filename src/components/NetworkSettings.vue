@@ -102,19 +102,17 @@
                                 {{ $t('settings_use_websocket') }}
                             </span>
                             <input v-model="network.connection.direct" type="checkbox" >
-                            <input
+                            <input-text
                                 v-if="network.connection.direct"
                                 v-model="directWs"
-                                class="u-input"
-                            >
+                            />
                         </label>
 
                         <label class="u-form-block">
-                            <span>{{ $t('settings_autorun') }}</span>
-                            <textarea
+                            <input-text
+                                :label="$t('settings_autorun')"
                                 v-model="network.auto_commands"
-                                cols="40"
-                                rows="5"
+                                type="textarea"
                             />
                         </label>
                     </template>
@@ -343,45 +341,6 @@ export default {
     border: 1px solid;
 }
 
-.kiwi-networksettings .u-form span {
-    display: inline-block;
-    line-height: 25px;
-    width: auto;
-    font-weight: 500;
-    font-size: 1em;
-    text-align: left;
-    max-width: none;
-    top: 10px;
-}
-
-.kiwi-networksettings .u-form .u-input-text--reveal-value span {
-    top: -14px;
-    font-size: 0.8em;
-}
-
-.kiwi-networksettings input[type='text'],
-    .kiwi-networksettings input[type='password'],
-    .kiwi-networksettings input[type='email'],
-    .kiwi-networksettings textarea,
-    .kiwi-networksettings .u-input-text input {
-    height: 40px;
-    padding: 0 10px;
-    line-height: 40px;
-    box-sizing: border-box;
-    border-radius: 1px;
-    min-height: none;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-width: none;
-}
-
-.kiwi-networksettings input[type='text'],
-    .kiwi-networksettings input[type='email'],
-    .kiwi-networksettings textarea {
-    clear: both;
-    width: 100%;
-}
-
 .kiwi-networksettings .u-input-text {
     padding-top: 0;
     margin-bottom: 20px;
@@ -395,14 +354,11 @@ export default {
 }
 
 //Style the 'secrue/unsecure' port icon
-.kiwi-networksettings .u-input-text-c {
-    bottom: auto;
-    height: 40px;
-    line-height: 40px;
+.kiwi-customserver-tls {
+    font-size: 0.8em;
+    top: 4px;
     text-align: center;
-    top: 12px;
     cursor: pointer;
-    right: 24px;
 }
 
 .kiwi-networksettings .kiwi-customserver-tls-lock {
@@ -527,11 +483,6 @@ export default {
 .kiwi-networksettings-connection-port {
     width: 25%;
     float: right;
-}
-
-.kiwi-networksettings .u-input-text-c span.kiwi-customserver-tls {
-    top: -14px;
-    font-size: 0.8em;
 }
 
 .kiwi-networksettings-danger h3 {

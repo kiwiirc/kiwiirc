@@ -1,55 +1,57 @@
 <template>
-    <div
-        :class="[
-            'u-input-text',
-            hasFocus ? 'u-input-text--focus' : '',
-            hasFocus || currentValue ? 'u-input-text--reveal-value' : ''
-        ]"
-    >
+    <div class="u-input-text">
+        <label v-if="label" :for="inputId">{{ label }}</label>
 
-        <span class="u-input-text-label">{{ label }}</span>
+        <div class="u-input-text-inputs" style="display:flex;">
+            <template v-if="type==='password'">
+                <input
+                    v-model="currentValue"
+                    :type="plainTextEnabled && !isEdgeBrowser() ? 'text' : 'password'"
+                    :class="{'u-form-input-plaintext' : !isEdgeBrowser() && showPlainText}"
+                    :id="inputId"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    class="u-input"
+                >
 
-        <template v-if="type==='password'">
+                <i
+                    v-if="showPlainText && !isEdgeBrowser()"
+                    :class="{'u-input-text-plaintext--active': plainTextEnabled}"
+                    class="u-input-text-plaintext fa fa-eye"
+                    aria-hidden="true"
+                    @click="plainTextEnabled = !plainTextEnabled"
+                />
+            </template>
+
             <input
+                v-else-if="type==='number'"
                 v-model="currentValue"
-                :type="plainTextEnabled && !isEdgeBrowser() ? 'text' : 'password'"
-                :class="{'u-form-input-plaintext' : !isEdgeBrowser() && showPlainText}"
+                :id="inputId"
+                type="number"
+                class="u-input"
+            >
+            <textarea
+                v-else-if="type==='textarea'"
+                v-model="currentValue"
+                :id="inputId"
+                class="u-input"
+            />
+            <input
+                v-else
+                v-model="currentValue"
+                :id="inputId"
                 autocomplete="off"
                 autocorrect="off"
-                autocapitalize="off" spellcheck="false"
-                @focus="hasFocus=true" @blur="hasFocus=false"
+                autocapitalize="off"
+                spellcheck="false"
+                class="u-input"
             >
 
-            <i
-                v-if="showPlainText && !isEdgeBrowser()"
-                :class="{'u-input-text-plaintext--active': plainTextEnabled}"
-                class="u-input-text-plaintext fa fa-eye"
-                aria-hidden="true"
-                @click="plainTextEnabled = !plainTextEnabled"
-            />
-        </template>
-
-        <input
-            v-else-if="type==='number'"
-            v-model="currentValue"
-            type="number"
-            @focus="hasFocus=true"
-            @blur="hasFocus=false"
-        >
-        <input
-            v-else
-            v-model="currentValue"
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off" spellcheck="false" @focus="hasFocus=true" @blur="hasFocus=false"
-        >
-
-        <div v-if="$slots.default" class="u-input-text-c">
-            <slot/>
-        </div>
-
-        <div class="u-input-text-underline">
-            <div class="u-input-text-underline-active"/>
+            <div v-if="$slots.default" class="u-input-text-c">
+                <slot/>
+            </div>
         </div>
     </div>
 </template>
@@ -64,10 +66,18 @@ export default Vue.component('input-text', {
     data: function data() {
         return {
             plainTextEnabled: false,
-            hasFocus: false,
+            inputIdCache: '',
         };
     },
     computed: {
+        inputId() {
+            if (!this.inputIdCache) {
+                // eslint-disable-next-line
+                this.inputIdCache = 'inp_' + Math.floor(Math.random() * 1e17).toString(36);
+            }
+
+            return this.inputIdCache;
+        },
         currentValue: {
             get: function getCurrentValue() {
                 return this.value;
@@ -92,60 +102,27 @@ export default Vue.component('input-text', {
 
 .u-input-text {
     position: relative;
-    padding-top: 1.2em;
-}
-
-.u-input-text input {
-    display: block;
+    margin: 0 0 20px 0;
     box-sizing: border-box;
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    line-height: 1.6em;
-    border-bottom: none;
-    font-size: 0.9em;
 }
 
-.u-input-text-label {
-    position: absolute;
-    left: 3px;
-    top: 1.2em;
-    opacity: 0.9;
-    transition: top 0.2s, font-size 0.2s, opacity 0.2;
-    pointer-events: none;
-}
-
-.u-input-text--reveal-value .u-input-text-label {
-    top: -7px;
-    font-size: 0.8em;
-    opacity: 0.5;
-}
-
-.u-input-text-c {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
-.u-input-text-underline {
-    border-width: 0;
-    border-bottom: 1px solid #a9a9a9;
+.u-input-text-inputs {
+    display: flex;
     position: relative;
 }
 
-.u-input-text-underline-active {
-    background: #42b983;
-    transition: left 0.3s;
-    position: absolute;
-    height: 2px;
-    bottom: -1px;
-    right: 0;
-    left: 100%;
+.u-input-text input,
+.u-input-text textarea {
+    box-sizing: border-box;
+    flex: 1;
 }
 
-.u-input-text--focus .u-input-text-underline-active {
-    left: 0;
+.u-input-text input:focus {
+    outline: none;
+}
+
+.u-input-text-c {
+    position: relative;
 }
 
 /* Remove spinners from input numbers */
@@ -163,20 +140,24 @@ export default Vue.component('input-text', {
 
 input[type=text].u-form-input-plaintext,
 input[type=password].u-form-input-plaintext {
-    display: inline-block;
-    width: calc(100% - 35px);
-    border-bottom: 0;
-    padding-right: 0;
+    padding-right: 40px;
 }
 
 .u-input-text-plaintext {
-    display: inline-block;
-    line-height: 40px;
+    line-height: normal;
     width: 30px;
     text-align: center;
     cursor: pointer;
     opacity: 0.5;
     transition: opacity 0.2s;
+    position: absolute;
+    right: 7px;
+    top: 9px;
+}
+
+.u-form--big .u-input-text-plaintext {
+    line-height: 40px;
+    top: 6px;
 }
 
 .u-input-text-plaintext--active,

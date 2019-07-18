@@ -37,9 +37,12 @@
                     class="fa-stack fa-lg kiwi-customserver-tls"
                     @click="toggleTls"
                 >
-                    <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"/>
                     <i
-                        v-if="!connection.tls"
+                        v-if="connection.tls"
+                        class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"
+                    />
+                    <i
+                        v-else
                         class="fa fa-unlock fa-stack-1x kiwi-customserver-tls-minus"
                     />
                 </span>

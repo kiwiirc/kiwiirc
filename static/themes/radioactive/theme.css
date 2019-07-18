@@ -16,11 +16,6 @@
 }
 
 /* Welcome Screen ( Welcome.vue ) */
-.kiwi-welcome-simple-form,
-.kiwi-customserver-form{
-    border: 1px solid #14fdce;
-}
-
 .kiwi-welcome-simple-form .u-input-text {
   background: none;
 }
@@ -97,15 +92,6 @@
 }
 
 /*Style all inputs */
-.u-input-text {
-    background: transparent;
-}
-.u-input-text-label {
-    color: #14fdce;
-}
-.u-input-text--focus {
-    border-color: #1b2f24;
-}
 .u-input-text-underline {
     border-color: #a9a9a9;
 }
@@ -114,22 +100,15 @@
 }
 .u-form .u-input,
 .u-form textarea {
-    border: 1px solid #57da93;
-    border-bottom: 2px solid #57da93;
     line-height: normal;
     outline-color: #1b2f24;
 }
 
-.u-form .u-input:focus,
-.u-form textarea:focus {
-    border: 1px solid #57da93 !important;
-    border-bottom: 2px solid #57da93 !important;
+.u-input {
+    border: 1px solid #3e9465;
 }
 
-.u-form label input[type='text'],
-.u-form label input[type='password'],
-.u-form label input[type='email'],
-.u-form textarea {
+.u-input:focus {
     border: 1px solid #57da93;
 }
 

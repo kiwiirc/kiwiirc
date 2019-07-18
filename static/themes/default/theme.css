@@ -14,6 +14,11 @@
     --brand-warning: #fcb46e;
     --brand-error: #bf5155;
 
+    /* Input elements */
+    --brand-input-border: #e2e2e2;
+    --brand-input-fg: #616161;
+    --brand-input-bg: transparent;
+
     /* Connection Indicator top */
     --comp-workspace-before-bg: var(--brand-primary);
     --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);

@@ -61,11 +61,6 @@
 .u-tabbed-view-tabs .u-tabbed-view-tab {
     border-bottom-color: #ffffff1a;
 }
-.u-form .u-input {
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-}
 
 .u-form select {
     background-color: var(--brand-primary);
@@ -76,8 +71,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     color: var(--brand-default-fg);
 }
 
-.kiwi-welcome-znc h2,
-.kiwi-welcome-znc-form .u-input-text-label {
+.kiwi-welcome-znc h2 {
     color: var(--brand-default-bg);
 }
 

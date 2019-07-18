@@ -1,7 +1,7 @@
 <template>
     <startup-layout ref="layout" class="kiwi-welcome-znc">
         <template v-slot:connection v-if="!network || network.state === 'disconnected'">
-            <form class="u-form kiwi-welcome-znc-form" @submit.prevent="formSubmit">
+            <form class="u-form u-form--big kiwi-welcome-znc-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText"/>
 
                 <div
@@ -180,7 +180,7 @@ export default {
     font-size: 1.7em;
     text-align: center;
     padding: 0;
-    margin: 0.5em auto;
+    margin: 0.5em auto 1.5em auto;
 }
 
 .kiwi-welcome-znc-error {
@@ -202,28 +202,9 @@ export default {
     border: 1px solid #ececec;
 }
 
-.kiwi-welcome-znc-form label {
-    text-align: left;
-    display: inline-block;
-    margin-bottom: 1.5em;
-}
-
-.kiwi-welcome-znc-form input[type="text"] {
-    font-size: 1em;
-    margin-top: 5px;
-    padding: 0.3em 1em;
-    width: 100%;
-    box-sizing: border-box;
-}
-
 .kiwi-welcome-znc .u-input-text,
 .kiwi-welcome-znc .kiwi-welcome-znc-have-password input {
     margin-bottom: 1.5em;
-}
-
-.kiwi-welcome-znc input[type="password"] {
-    height: 20px;
-    border-bottom: none;
 }
 
 .kiwi-welcome-znc-have-password input:checked {
