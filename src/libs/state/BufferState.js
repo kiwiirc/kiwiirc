@@ -177,6 +177,11 @@ export default class BufferState {
             return '';
         }
 
+        // if there is only one mode just return it
+        if (modes.length === 1) {
+            return modes[0];
+        }
+
         let network = this.getNetwork();
         let netPrefixes = network.ircClient.network.options.PREFIX;
         // Find the first (highest) netPrefix in the users buffer modes
