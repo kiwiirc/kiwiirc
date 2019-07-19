@@ -3,7 +3,7 @@
 
         <div
             v-if="!$state.setting('hideSettings')"
-            :title="$t('kiwi_settings')"
+            :title="$t('Kiwi Settings')"
             class="kiwi-statebrowser-appsettings"
             @click="clickAppSettings"
         >
@@ -32,7 +32,7 @@
                 class="kiwi-statebrowser-availablenetworks-toggle"
                 @click="show_provided_networks=!show_provided_networks"
             >
-                &#8618; {{ $t('state_available') }}
+                &#8618; {{ $t('Available networks') }}
             </div>
             <div
                 :class="{
@@ -73,7 +73,7 @@
 
         <div v-if="!isRestrictedServer" class="kiwi-statebrowser-newnetwork">
             <a class="u-button u-button-primary" @click="clickAddNetwork">
-                {{ $t('add_network') }}
+                {{ $t('Add Network') }}
                 <i class="fa fa-plus" aria-hidden="true"/>
             </a>
         </div>

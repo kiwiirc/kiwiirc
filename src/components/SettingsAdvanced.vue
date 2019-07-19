@@ -1,11 +1,11 @@
 <template>
     <div class="kiwi-settings-advanced">
-        <div class="kiwi-settings-advanced-notice">{{ $t('settings_advanced_header') }}</div>
+        <div class="kiwi-settings-advanced-notice">{{ $t('Danger Zone: Changing some of these settings may break things!') }}</div>
         <form class="u-form">
             <div class="kiwi-settings-advanced-filter-container">
                 <div class="kiwi-settings-advanced-filter-container">
                     <input v-model="filterString"
-                           :placeholder="$t('settings_advanced_filter')"
+                           :placeholder="$t('Filter')"
                            class="u-input">
                     <i v-if="!filterString" class="fa fa-search" aria-hidden="true"/>
                     <i v-else class="fa fa-times" aria-hidden="true" @click="filterString = ''"/>
@@ -14,7 +14,7 @@
             <table class="u-table kiwi-settings-advanced-table" cellspacing="0">
                 <tr v-if="filteredSettings.length === 0">
                     <td class="kiwi-settings-advanced-noresult">
-                        {{ filterString }} - {{ $t('not_found') }}
+                        {{ filterString }} - {{ $t('Not found.') }}
                     </td>
                 </tr>
                 <tr v-for="setting in filteredSettings" v-else
@@ -25,7 +25,7 @@
                     <td><label :for="'setting-' + setting.key">{{ setting.key }}</label></td>
                     <td v-if="setting.modified">
                         <a class="u-link" @click="resetValue($event, setting.key)">
-                            {{ $t('settings_advanced_reset') }}
+                            {{ $t('Reset') }}
                             <i class="fa fa-undo" style="margin-left: 10px;"/>
                         </a>
                     </td>

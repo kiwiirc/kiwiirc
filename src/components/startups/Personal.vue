@@ -1,22 +1,22 @@
 <template>
     <div class="kiwi-personal">
-        <h1>{{ $t('personal_client') }}</h1>
+        <h1>{{ $t('Your IRC Client.') }}</h1>
 
         <div v-if="server && server.server && !readyToShowOptions" />
         <div v-else-if="server && server.server">
             <div v-if="addedNetworkToExisting">
                 <p>
-                    {{ $t('personal_added_to_existing') }}
+                    {{ $t('Network has been added to your existing Kiwi window.') }}
                 </p>
             </div>
             <div v-else>
-                <p v-html="$t('personal_connect_to', { network: `<b>${server.server}</b>` })" />
+                <p v-html="$t('You are trying to connect to \{\{network\}\}', { network: `<b>${server.server}</b>` })" />
                 <button
                     v-if="hasOtherTab"
                     class="u-button u-button-primary"
                     @click="addNetworkToExistingTab"
                 >
-                    {{ $t('personal_add_existing_tab') }}
+                    {{ $t('Add network to existing Kiwi window') }}
                 </button>
                 <button v-else class="u-button u-button-primary" @click="addNetwork()">
                     Add network to Kiwi
@@ -27,16 +27,16 @@
                     class="u-button u-button-primary"
                     @click="addNetwork(true)"
                 >
-                    {{ $t('personal_connect_temporary') }}
+                    {{ $t('Temporarily connect to this network') }}
                 </button> <br >
             </div>
         </div>
         <div v-else>
-            <p>{{ $t('personal_addjoin') }}</p>
-            <p>{{ $t('personal_return') }}</p>
+            <p>{{ $t('Add your networks. Join your channels.') }}</p>
+            <p>{{ $t('They will be here when you come back.') }}</p>
 
             <button class="u-button u-button-primary" @click="addEmptyNetwork">
-                {{ $t('personal_add') }}
+                {{ $t('Add a Network') }}
             </button> <br >
 
             <a
@@ -44,7 +44,7 @@
                 class="u-link kiwi-personal-existing-networks"
                 @click.stop="toggleStateBrowser"
             >
-                {{ $t('personal_saved') }}
+                {{ $t('Saved networks') }}
             </a>
         </div>
     </div>
@@ -120,7 +120,7 @@ export default {
         },
         addEmptyNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
-            let network = state.addNetwork(TextFormatting.t('new_network'), nick, {});
+            let network = state.addNetwork(TextFormatting.t('New Network'), nick, {});
             network.showServerBuffer('settings');
         },
         async findOtherTabs() { // ping other tabs to try find one with added networks
@@ -146,7 +146,7 @@ export default {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
             let con = this.server;
 
-            state.addNetwork(TextFormatting.t('new_network'), nick, {});
+            state.addNetwork(TextFormatting.t('New Network'), nick, {});
 
             IPC.send({
                 nick: nick,

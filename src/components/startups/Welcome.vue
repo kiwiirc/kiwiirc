@@ -16,14 +16,14 @@
                     </span>
                 </div>
 
-                <input-text v-model="nick" :label="$t('nick')" type="text" />
+                <input-text v-model="nick" :label="$t('Nick')" type="text" />
 
                 <div v-if="showPass && toggablePass" class="kiwi-welcome-simple-input-container">
                     <label
                         class="kiwi-welcome-simple-have-password"
                     >
                         <input v-model="show_password_box" type="checkbox" >
-                        <span> {{ $t('password_have') }} </span>
+                        <span> {{ $t('I have a password') }} </span>
                     </label>
                 </div>
 
@@ -34,7 +34,7 @@
                         v-focus
                         v-model="password"
                         :show-plain-text="true"
-                        :label="$t('password')"
+                        :label="$t('Password')"
                         type="password"
                     />
                 </div>
@@ -42,7 +42,7 @@
                 <div v-if="showChannel" class="kiwi-welcome-simple-input-container">
                     <input-text
                         v-model="channel"
-                        :label="$t('channel')"
+                        :label="$t('Channel')"
                     />
                 </div>
 
@@ -104,13 +104,13 @@ export default {
             let greeting = state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
-                this.$t('start_greeting');
+                this.$t('Welcome to Kiwi IRC!');
         },
         buttonText: function buttonText() {
             let greeting = state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
-                this.$t('start_button');
+                this.$t('Start');
         },
         readyToStart: function readyToStart() {
             let ready = !!this.nick;

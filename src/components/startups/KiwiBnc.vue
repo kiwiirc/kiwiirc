@@ -7,11 +7,11 @@
                 <div class="kiwi-startbnc-status">{{ statusMessage }}</div>
 
                 <label>
-                    <span>{{ $t('username') }}</span>
+                    <span>{{ $t('Username') }}</span>
                     <input v-model="username" :disabled="loading" type="text" >
                 </label>
                 <label>
-                    <span>{{ $t('password') }}</span>
+                    <span>{{ $t('Password') }}</span>
                     <input v-model="password" :disabled="loading" type="password" >
                 </label>
 
@@ -55,7 +55,7 @@ export default {
             let greeting = state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
-                this.$t('start_greeting');
+                this.$t('Welcome to Kiwi IRC!');
         },
         buttonText: function buttonText() {
             if (this.loading) {
@@ -65,12 +65,12 @@ export default {
             let greeting = state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
-                this.$t('start_button');
+                this.$t('Start');
         },
     },
     methods: {
         startUp: async function startUp() {
-            this.statusMessage = this.$t('logging_in');
+            this.statusMessage = this.$t('Logging in...');
             this.loading = true;
 
             let bncnet = this.getBncNetwork();
@@ -106,13 +106,13 @@ export default {
 
             let onError = (event) => {
                 cleanUpEvents();
-                this.statusMessage = this.$t('invalid_login');
+                this.statusMessage = this.$t('Invalid login');
                 this.loading = false;
             };
 
             let onClose = (event) => {
                 cleanUpEvents();
-                this.statusMessage = this.$t('invalid_login');
+                this.statusMessage = this.$t('Invalid login');
                 this.loading = false;
             };
 

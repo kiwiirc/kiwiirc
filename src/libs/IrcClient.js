@@ -118,7 +118,7 @@ function clientMiddleware(state, network) {
                 }
 
                 let messageBody = TextFormatting.formatText('network_connected', {
-                    text: TextFormatting.t('connected'),
+                    text: TextFormatting.t('Connected'),
                 });
 
                 state.addMessage(buffer, {
@@ -145,7 +145,7 @@ function clientMiddleware(state, network) {
                 buffer.clearUsers();
 
                 let messageBody = TextFormatting.formatText('network_disconnected', {
-                    text: TextFormatting.t('disconnected'),
+                    text: TextFormatting.t('Disconnected'),
                 });
 
                 state.addMessage(buffer, {
@@ -228,7 +228,7 @@ function clientMiddleware(state, network) {
             state.addMessage(serverBuffer, {
                 time: Date.now(),
                 nick: '',
-                message: TextFormatting.t('connected_to', { network: client.network.name }),
+                message: TextFormatting.t('Connected to {{network}}!', { network: client.network.name }),
             });
 
             // Get some extra info about ourselves
@@ -486,7 +486,7 @@ function clientMiddleware(state, network) {
             let messageBody = TextFormatting.formatAndT(
                 'channel_join',
                 null,
-                'has_joined',
+                '{{nick}} has joined',
                 { nick: nick }
             );
 
@@ -511,7 +511,7 @@ function clientMiddleware(state, network) {
                 messageBody = TextFormatting.formatAndT(
                     'channel_selfkick',
                     { reason: event.message },
-                    'kicked_you_from',
+                    '{{nick}} kicked you from {{channel}}',
                     {
                         nick: TextFormatting.formatUser(event),
                         channel: event.channel,
@@ -521,7 +521,7 @@ function clientMiddleware(state, network) {
                 messageBody = TextFormatting.formatAndT(
                     'channel_kicked',
                     { reason: event.message },
-                    'was_kicked_from',
+                    '{{nick}} was kicked from {{channel}} by {{chanop}}',
                     {
                         nick: event.kicked,
                         channel: event.channel,
@@ -566,7 +566,7 @@ function clientMiddleware(state, network) {
             let messageBody = TextFormatting.formatAndT(
                 'channel_part',
                 { reason: event.message },
-                'has_left',
+                '{{nick}} has left',
                 { nick: nick },
             );
 
@@ -598,7 +598,7 @@ function clientMiddleware(state, network) {
                 let messageBody = TextFormatting.formatAndT(
                     'channel_quit',
                     { reason: event.message },
-                    'has_left',
+                    '{{nick}} has left',
                     { nick: nick }
                 );
 
@@ -620,7 +620,7 @@ function clientMiddleware(state, network) {
             let buffer = network.serverBuffer();
             state.addMessage(buffer, {
                 nick: '*',
-                message: TextFormatting.t('invited_you', {
+                message: TextFormatting.t('{{nick}} invited you to join {{channel}}', {
                     nick: event.nick,
                     channel: event.channel,
                 }),
@@ -753,7 +753,7 @@ function clientMiddleware(state, network) {
             let messageBody = TextFormatting.formatAndT(
                 'nickname_alreadyinuse',
                 null,
-                'nick_in_use_retrying',
+                'Nickname {{nick}} is already in use. Trying {{newnick}}...',
                 { nick: client.user.nick, newnick: newNick },
             );
 
@@ -789,7 +789,7 @@ function clientMiddleware(state, network) {
             let messageBody = TextFormatting.formatAndT(
                 'nick_changed',
                 null,
-                'now_known_as',
+                '{{nick}} is now known as {{newnick}}',
                 { nick: event.nick, newnick: event.new_nick },
             );
 
@@ -931,18 +931,18 @@ function clientMiddleware(state, network) {
                 // Mode -> locale ID mappings
                 // If a mode isn't found here, the local ID modes_other is used
                 let modeLocaleIds = {
-                    '+o': 'modes_give_ops',
-                    '-o': 'modes_take_ops',
-                    '+h': 'modes_give_halfops',
-                    '-h': 'modes_take_halfops',
-                    '+v': 'modes_give_voice',
-                    '-v': 'modes_take_voice',
-                    '+a': 'modes_give_admin',
-                    '-a': 'modes_take_admin',
-                    '+q': 'modes_give_owner',
-                    '-q': 'modes_take_owner',
-                    '+b': 'modes_gives_ban',
-                    '-b': 'modes_takes_ban',
+                    '+o': '{{nick}} gives ops to {{target}}',
+                    '-o': '{{nick}} takes ops from {{target}}',
+                    '+h': '{{nick}} gives half-ops to {{target}}',
+                    '-h': '{{nick}} takes half-ops from {{target}}',
+                    '+v': '{{nick}} gives voice to {{target}}',
+                    '-v': '{{nick}} takes voice from {{target}}',
+                    '+a': '{{nick}} gives admin to {{target}}',
+                    '-a': '{{nick}} takes admin from {{target}}',
+                    '+q': '{{nick}} gives owner to {{target}}',
+                    '-q': '{{nick}} takes owner from {{target}}',
+                    '+b': '{{nick}} has banned {{target}}',
+                    '-b': '{{nick}} has unbanned {{target}}',
                 };
 
                 // Some IRCd differences
@@ -1032,7 +1032,7 @@ function clientMiddleware(state, network) {
 
                 let serverBuffer = network.serverBuffer();
                 _.each(modeslines, (mode, value) => {
-                    let text = TextFormatting.t('modes_other', {
+                    let text = TextFormatting.t('{{nick}} sets {{mode}} on {{target}}', {
                         nick: event.nick,
                         target: event.target,
                         mode: value + mode,
@@ -1061,7 +1061,7 @@ function clientMiddleware(state, network) {
                     state.addMessage(buffer, {
                         time: event.time || Date.now(),
                         nick: '',
-                        message: TextFormatting.t('bans_nobody'),
+                        message: TextFormatting.t('Nobody is banned!'),
                         type: 'banlist',
                     });
                 } else {
@@ -1090,9 +1090,9 @@ function clientMiddleware(state, network) {
 
             if (event.nick) {
                 messageBody = TextFormatting.formatAndT(
-                    'channel_topic',
+                    'Topic',
                     null,
-                    'changed_topic_to',
+                    '{{nick}} changed the topic to: {{topic}}',
                     { nick: event.nick, topic: event.topic },
                 );
             } else if (buffer.topic.trim()) {

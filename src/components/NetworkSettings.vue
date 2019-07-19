@@ -1,14 +1,14 @@
 <template>
     <div class="kiwi-networksettings">
         <form class="u-form">
-            <div class="kiwi-title">{{ $t('settings_server_details') }}</div>
+            <div class="kiwi-title">{{ $t('Server details') }}</div>
             <div class="kiwi-networksettings-section-block">
                 <div v-if="network.state_error" class="kiwi-networksettings-error">
-                    {{ $t('network_noconnect') }}
+                    {{ $t('We couldn\'t connect to that server :(') }}
                     <span>{{ readableStateError(network.state_error) }}</span>
                 </div>
                 <div v-else-if="network.last_error" class="kiwi-networksettings-error">
-                    {{ $t('network_noconnect') }}
+                    {{ $t('We couldn\'t connect to that server :(') }}
                     <span>{{ network.last_error }}</span>
                 </div>
 
@@ -21,16 +21,16 @@
                     <template v-if="server_type==='network'">
                         <input-text
                             :show-plain-text="true"
-                            :label="$t('password')"
+                            :label="$t('Password')"
                             v-model="network.password"
                             type="password"
                         />
                     </template>
                     <template v-else>
-                        <input-text :label="$t('username')" v-model="znc_username" />
-                        <input-text :label="$t('network')" v-model="znc_network" />
+                        <input-text :label="$t('Username')" v-model="znc_username" />
+                        <input-text :label="$t('Network')" v-model="znc_network" />
                         <input-text
-                            :label="$t('password')"
+                            :label="$t('Password')"
                             v-model="znc_password"
                             type="password"
                         />
@@ -42,7 +42,7 @@
                         v-if="server_type==='znc'"
                         class="kiwi-networksettings-server-types-info"
                     >
-                        {{ $t('settings_znc_other') }}
+                        {{ $t('Other networks on this ZNC account will be listed in the network list') }}
                     </div>
                     <a
                         :class="{
@@ -52,7 +52,7 @@
                         class="u-link kiwi-network-type-button"
                         @click="server_type='network'"
                     >
-                        {{ $t('network') }}
+                        {{ $t('Network') }}
                     </a>
                     <a
                         :class="{
@@ -61,14 +61,14 @@
                         class="u-link kiwi-network-type-button"
                         @click="server_type='znc'"
                     >
-                        {{ $t('znc') }}
+                        {{ $t('ZNC') }}
                     </a>
                 </div>
 
                 <div class="kiwi-networksettings-user">
                     <input-text
                         v-model="network.connection.nick"
-                        :label="$t('settings_nickname')"
+                        :label="$t('Nickname')"
                     />
                 </div>
 
@@ -76,7 +76,7 @@
                     class="kiwi-show-advanced-title"
                     @click="show_advanced=!show_advanced"
                 >
-                    {{ $t('settings_advanced') }}
+                    {{ $t('Advanced') }}
                     <i
                         :class="['fa-caret-'+(show_advanced?'up':'down')]"
                         class="fa"
@@ -87,19 +87,19 @@
                 <div v-if="show_advanced" class="kiwi-networksettings-advanced">
                     <template>
                         <input-text
-                            :label="$t('settings_encoding')"
+                            :label="$t('Encoding')"
                             v-model="network.connection.encoding"
                         />
                         <label>
                             <span class="kiwi-appsettings-showraw-label">
-                                {{ $t('settings_show_raw') }}
+                                {{ $t('Show Raw') }}
                             </span>
                             <input v-model="settingShowRaw" type="checkbox" >
                         </label>
 
                         <label>
                             <span class="kiwi-appsettings-showraw-label">
-                                {{ $t('settings_use_websocket') }}
+                                {{ $t('Direct websocket') }}
                             </span>
                             <input v-model="network.connection.direct" type="checkbox" >
                             <input-text
@@ -110,7 +110,7 @@
 
                         <label class="u-form-block">
                             <input-text
-                                :label="$t('settings_autorun')"
+                                :label="$t('Run commands when connected')"
                                 v-model="network.auto_commands"
                                 type="textarea"
                             />
@@ -123,20 +123,20 @@
                     class="u-button kiwi-connect-to-newnetwork"
                     @click="connect()"
                 >
-                    {{ $t('network_connect') }}
+                    {{ $t('Connect To Network') }}
                 </div>
                 <div
                     v-else-if="network.state === 'connecting'"
                     class="u-button kiwi-connect-to-newnetwork"
                 >
-                    {{ $t('connecting') }}
+                    {{ $t('Connecting...') }}
                 </div>
             </div>
 
             <div class="kiwi-dangerzone">
-                <h3>{{ $t('settings_danger') }}</h3>
+                <h3>{{ $t('Danger Zone') }}</h3>
                 <a class="u-button u-button-warning" @click="removeNetwork">
-                    <i class="fa fa-times" aria-hidden="true"/> {{ $t('settings_remove') }}
+                    <i class="fa fa-times" aria-hidden="true"/> {{ $t('Remove network') }}
                 </a>
             </div>
         </form>

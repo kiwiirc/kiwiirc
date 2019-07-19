@@ -12,25 +12,25 @@
         </div>
 
         <div class="kiwi-userbox-basicinfo">
-            <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_realname') }}:</span>
+            <span class="kiwi-userbox-basicinfo-title">{{ $t('Real name') }}:</span>
             <span class="kiwi-userbox-basicinfo-data">{{ user.realname }} </span>
         </div>
 
         <p class="kiwi-userbox-actions">
             <a v-if="!isSelf" class="kiwi-userbox-action" @click="openQuery">
                 <i class="fa fa-comment-o" aria-hidden="true"/>
-                {{ $t('send_a_message') }}
+                {{ $t('Send a message') }}
             </a>
             <a v-if="!whoisRequested" class="kiwi-userbox-action" @click="updateWhoisData">
                 <i class="fa fa-question-circle" aria-hidden="true"/>
-                {{ $t('more_information') }}
+                {{ $t('More information') }}
             </a>
         </p>
 
         <form v-if="!isSelf" class="u-form kiwi-userbox-ignoreuser">
             <label>
                 <input v-model="user.ignore" type="checkbox" >
-                <span> {{ $t('ignore_user') }} </span>
+                <span> {{ $t('Ignore user') }} </span>
             </label>
         </form>
 
@@ -45,37 +45,37 @@
             <template v-else>
                 <span class="kiwi-userbox-whois-line">
                     {{ user.away ?
-                        $t('whois_status') + ': ' + user.away :
-                        $t('whois_status_available')
+                        $t('Status') + ': ' + user.away :
+                        $t('Is available')
                     }}
                 </span>
                 <span v-if="user.account" class="kiwi-userbox-whois-line">
-                    {{ $t('user_account', {user: user.account}) }}
+                    {{ $t('Account name: \{\{user\}\}', {user: user.account}) }}
                 </span>
                 <span class="kiwi-userbox-whois-line">
-                    {{ $t('user_realname', {realname: user.realname}) }}
+                    {{ $t('Real name: \{\{realname\}\}', {realname: user.realname}) }}
                 </span>
-                <span v-if="user.bot" class="kiwi-userbox-whois-line">{{ $t('user_bot') }}</span>
+                <span v-if="user.bot" class="kiwi-userbox-whois-line">{{ $t('Is a bot') }}</span>
                 <span v-if="user.helpop" class="kiwi-userbox-whois-line">
-                    {{ $t('user_help') }}
+                    {{ $t('Is avaiable for help') }}
                 </span>
                 <span v-if="user.operator" class="kiwi-userbox-whois-line">
-                    {{ $t('user_op') }}
+                    {{ $t('Is an operator') }}
                 </span>
                 <span v-if="user.server" class="kiwi-userbox-whois-line">
-                    {{ $t('user_server', {
+                    {{ $t('Connected to \{\{server\}\} \{\{info\}\}', {
                         server: user.server,
                         info: (user.server_info ? `(${user.server_info})` : '')
                     }) }}
                 </span>
                 <span v-if="user.secure" class="kiwi-userbox-whois-line">
-                    {{ $t('user_secure') }}
+                    {{ $t('Securely connected via SSL/TLS') }}
                 </span>
                 <span
                     v-if="user.channels"
                     class="kiwi-userbox-whois-line"
                     @click="onChannelsClick($event)"
-                    v-html="$t('user_channels', {channels: userChannels})"
+                    v-html="$t('In channels \{\{channels\}\}', {channels: userChannels})"
                 />
             </template>
         </div>
@@ -83,7 +83,7 @@
         <div v-if="buffer.isChannel() && areWeAnOp && !isSelf" class="kiwi-userbox-opactions">
             <form class="u-form" @submit.prevent="">
                 <label v-if="isUserOnBuffer">
-                    {{ $t('user_access') }} <select v-model="userMode">
+                    {{ $t('Access level') }} <select v-model="userMode">
                         <option
                             v-for="mode in availableChannelModes"
                             :key="mode.mode"
@@ -91,7 +91,7 @@
                         >
                             {{ mode.description }}
                         </option>
-                        <option value="">{{ $t('user_normal') }}</option>
+                        <option value="">{{ $t('Normal') }}</option>
                     </select>
                 </label>
                 <label v-if="isUserOnBuffer">
@@ -101,7 +101,7 @@
                         @click="kickUser"
                     >
                         <i class="fa fa-sign-out" aria-hidden="true"/>
-                        {{ $t('user_kick') }}
+                        {{ $t('Kick from the channel') }}
                     </button>
                 </label>
                 <label>
@@ -111,7 +111,7 @@
                         @click="banUser"
                     >
                         <i class="fa fa-ban" aria-hidden="true"/>
-                        {{ $t('user_ban') }}
+                        {{ $t('Ban from the channel') }}
                     </button>
                 </label>
                 <label v-if="isUserOnBuffer">
@@ -121,7 +121,7 @@
                         @click="kickbanUser"
                     >
                         <i class="fa fa-exclamation-triangle" aria-hidden="true"/>
-                        {{ $t('user_kickban') }}
+                        {{ $t('Ban and kick from the channel') }}
                     </button>
                 </label>
             </form>

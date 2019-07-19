@@ -5,7 +5,7 @@
     >
         <div v-if="usePreset && presetNetworks.length > 0" class="kiwi-serverselector-presets">
             <label>
-                <span>{{ $t('server') }}</span>
+                <span>{{ $t('Server') }}</span>
                 <select v-model="presetServer">
                     <option value="custom">Custom Server</option>
                     <option disabled>-----------------</option>
@@ -21,13 +21,13 @@
         <template v-if="showCustom || presetNetworks.length === 0 || !usePreset">
             <input-text
                 v-focus
-                :label="$t('server')"
+                :label="$t('Server')"
                 v-model="connection.server"
                 class="kiwi-networksettings-connection-address"
             />
 
             <input-text
-                :label="$t('settings_port')"
+                :label="$t('Port')"
                 v-model="connection.port"
                 type="number"
                 class="kiwi-networksettings-connection-port"

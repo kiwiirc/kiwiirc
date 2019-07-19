@@ -1,15 +1,15 @@
 <template>
     <div class="kiwi-personal">
-        <h1>{{ $t('personal_client') }}</h1>
+        <h1>{{ $t('Your IRC Client.') }}</h1>
 
-        <p>{{ $t('personal_addjoin') }}</p>
-        <p>{{ $t('personal_return') }}</p>
+        <p>{{ $t('Add your networks. Join your channels.') }}</p>
+        <p>{{ $t('They will be here when you come back.') }}</p>
 
         <button
             class="u-button u-button-primary"
             @click="addNetwork"
         >
-            {{ $t('personal_add') }}
+            {{ $t('Add a Network') }}
         </button> <br >
 
         <a
@@ -17,7 +17,7 @@
             class="u-link kiwi-personal-existing-networks"
             @click.stop="toggleStateBrowser"
         >
-            {{ $t('personal_saved') }}
+            {{ $t('Saved networks') }}
         </a>
 
         <div
@@ -69,7 +69,7 @@ const ctor = {
     methods: {
         addNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
-            let network = state.addNetwork(TextFormatting.t('new_network'), nick, {});
+            let network = state.addNetwork(TextFormatting.t('New Network'), nick, {});
             network.showServerBuffer('settings');
         },
         toggleStateBrowser() {

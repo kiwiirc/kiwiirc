@@ -10,7 +10,7 @@
             class="kiwi-messagelist-scrollback"
         >
             <a class="u-link" @click="buffer.requestScrollback()">
-                {{ $t('messages_load') }}
+                {{ $t('Load previous messages') }}
             </a>
         </div>
 
@@ -26,7 +26,7 @@
                 <span>{{ (new Date(message.time)).toDateString() }}</span>
             </div>
             <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator">
-                <span>{{ $t('unread_messages') }}</span>
+                <span>{{ $t('Unread Messages') }}</span>
             </div>
 
             <!-- message.template is checked first for a custom component, then each message layout

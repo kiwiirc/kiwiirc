@@ -1,26 +1,26 @@
 <template>
     <div class="kiwi-invitelist">
         <form class="u-form kiwi-invitelist" @submit.prevent="">
-            <a class="u-link" @click="updateInvitelist">{{ $t('invites_refresh') }}</a>
+            <a class="u-link" @click="updateInvitelist">{{ $t('Refresh invite list') }}</a>
 
             <div v-if="!channelIsInviteOnly" class="kiwi-invitelist-inviteonly-status">
-                {{ $t('invite_public_channel') }}
+                {{ $t('This is a public channel.') }}
                 <a
                     v-if="areWeAnOp"
                     class="u-link"
                     @click="setInviteOnly"
-                >{{ $t('invite_set_private') }}</a>
+                >{{ $t('Only allow invited users') }}</a>
             </div>
             <div v-else class="kiwi-invitelist-inviteonly-status">
-                {{ $t('invite_private_channel') }}
+                {{ $t('Only invited users can join.') }}
                 <a
                     v-if="areWeAnOp"
                     class="u-link"
                     @click="removeInviteOnly"
-                >{{ $t('invite_set_public') }}</a>
+                >{{ $t('Allow anybody to join') }}</a>
             </div>
 
-            <span v-if="anyRegisteredUserCanJoin">{{ $t('invite_registered_only') }}</span>
+            <span v-if="anyRegisteredUserCanJoin">{{ $t('Only registered users can join') }}</span>
 
             <div>
                 <div v-if="supportsAccounts && areWeAnOp">
@@ -32,21 +32,21 @@
                             >{{ user.account }}</option>
                         </select>
                         <button @click="addAccountInvite($refs.addInviteList.value)">
-                            {{ $t('invite_add_invite') }}
+                            {{ $t('Add invite') }}
                         </button>
                     </template>
                 </div>
                 <div v-if="!supportsAccounts && areWeAnOp" class="kiwi-invitelist-addmask">
                     <input ref="addInviteText" type="text" class="u-input">
                     <button @click="addInvite($refs.addInviteText.value)">
-                        {{ $t('invite_add_invite') }}
+                        {{ $t('Add invite') }}
                     </button>
                 </div>
 
                 <table v-if="inviteList.length > 0" class="kiwi-invitelist-table">
                     <tr>
-                        <th>{{ $t('invites_user') }}</th>
-                        <th>{{ $t('invites_by') }}</th>
+                        <th>{{ $t('Invited user') }}</th>
+                        <th>{{ $t('Invited by') }}</th>
                         <th/>
                         <th/>
                     </tr>
@@ -92,7 +92,7 @@
             </div>
 
             <div v-if="is_refreshing">
-                {{ $t('invites_refreshing') }}
+                {{ $t('Refreshing invite list...') }}
             </div>
         </form>
     </div>
@@ -194,7 +194,7 @@ export default {
     methods: {
         displayMask(invite) {
             let display = invite.invited.replace(this.extban + ':', '');
-            display = display || this.$t('invite_any_registered');
+            display = display || this.$t('(Any registered user)');
             return display;
         },
         updateInvitelist() {

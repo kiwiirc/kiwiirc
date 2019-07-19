@@ -5,7 +5,7 @@
                 class="u-link kiwi-settings-aliases-showhelp"
                 @click="show_help=!show_help"
             >
-                {{ $t('what_are_aliases') }}
+                {{ $t('What are aliases?') }}
             </a>
 
             <div v-if="show_help" class="kiwi-settings-aliases-help">

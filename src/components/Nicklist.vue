@@ -5,13 +5,13 @@
                 {{
                     filter_visible ?
                         sortedUsers.length :
-                        $t('person', {count: sortedUsers.length})
+                        $t('\{\{count\}\} person here', {count: sortedUsers.length})
                 }}
             </span>
 
             <input
                 ref="user_filter"
-                :placeholder="$t('filter_users')"
+                :placeholder="$t('filter users in channel')"
                 v-model="user_filter"
                 @blur="onFilterBlur"
             >

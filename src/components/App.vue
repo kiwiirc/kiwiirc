@@ -267,7 +267,7 @@ export default {
         warnOnPageClose() {
             window.onbeforeunload = () => {
                 if (this.$state.setting('warnOnExit')) {
-                    return this.$t('window_unload');
+                    return this.$t('This will close all Kiwi IRC conversations. Are you sure you want to close this window?');
                 }
 
                 return undefined;

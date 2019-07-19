@@ -16,7 +16,7 @@
                     class="u-link kiwi-autocomplete-item-action"
                     @click.stop="openQuery(item.text)"
                 >
-                    {{ $t('send_message') }}
+                    {{ $t('Send Message') }}
                 </span>
             </template>
             <template v-else-if="item.type === 'command'">

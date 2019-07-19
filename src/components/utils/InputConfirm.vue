@@ -5,10 +5,10 @@
         <template v-if="state==='prompt'">
             <span class="u-input-confirm-label">{{ label }}</span>
             <a :class="['u-button-'+connoteCss.yes]" class="u-button" @click="complete(true)">
-                {{ $t('yes') }}
+                {{ $t('Yes') }}
             </a>
             <a :class="['u-button-'+connoteCss.no]" class="u-button" @click="complete(false)">
-                {{ $t('no') }}
+                {{ $t('No') }}
             </a>
         </template>
     </div>
