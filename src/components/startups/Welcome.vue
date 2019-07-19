@@ -173,8 +173,8 @@ export default {
 
         if (Misc.queryStringVal('nick')) {
             this.nick = Misc.queryStringVal('nick');
-        } else if (previousNet && previousNet.nick) {
-            this.nick = previousNet.nick;
+        } else if (previousNet && previousNet.connection.nick) {
+            this.nick = previousNet.connection.nick;
         } else {
             this.nick = options.nick;
         }
