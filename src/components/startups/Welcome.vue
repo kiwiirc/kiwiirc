@@ -251,7 +251,14 @@ export default {
             }
         },
         startUp: function startUp() {
-            let options = state.settings.startupOptions;
+            let options = Object.assign({}, state.settings.startupOptions);
+
+            // If a server isn't specified in the config, set some defaults
+            // The webircgateway will have a default network set and will connect
+            // there instead. This just removes the requirement of specifying the same
+            // irc network address in both the server-side and client side configs
+            options.server = options.server || 'default';
+            options.port = options.port || 6667;
 
             if (!this.captchaSuccess()) {
                 return;
