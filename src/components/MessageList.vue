@@ -83,11 +83,15 @@ import MessageListMessageModern from './MessageListMessageModern';
 import MessageListMessageInline from './MessageListMessageInline';
 import LoadingAnimation from './LoadingAnimation.vue';
 
+require('@/libs/polyfill/Element.closest');
+
 let log = Logger.namespace('MessageList.vue');
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
 const BOTTOM_SCROLL_MARGIN = 30;
+
+let addedCopyListeners = false;
 
 export default {
     components: {
@@ -242,10 +246,9 @@ export default {
             });
         },
     },
-    created() {
-        this.addCopyListeners(this.$state, this.$refs.messageList);
-    },
     mounted() {
+        this.addCopyListeners(this.$state, this.$refs.messageList);
+
         this.$nextTick(() => {
             this.scrollToBottom();
         });
@@ -438,30 +441,12 @@ export default {
                 this.auto_scroll = false;
             }
         },
-        addCopyListeners(state) { // Better copy pasting
-            if (this.addedCopyListeners) {
+        addCopyListeners(state, ref) { // Better copy pasting
+            if (addedCopyListeners) {
                 return;
             }
-            this.addedCopyListeners = true;
+            addedCopyListeners = true;
 
-            // From the Element.closest mdn page.
-            if (!Element.prototype.matches) {
-                Element.prototype.matches = Element.prototype.msMatchesSelector ||
-                                            Element.prototype.webkitMatchesSelector;
-            }
-
-            if (!Element.prototype.closest) {
-                Element.prototype.closest = function closest(s) {
-                    let el = this;
-                    do {
-                        if (el.matches(s)) {
-                            return el;
-                        }
-                        el = el.parentElement || el.parentNode;
-                    } while (el !== null && el.nodeType === 1);
-                    return null;
-                };
-            }
             const LogFormatter = (msg) => {
                 let text = '';
 
@@ -498,13 +483,16 @@ export default {
                 selecting = false;
             });
             document.addEventListener('selectionchange', (e) => {
-                let ref = this.$refs.messageList;
+                if (!ref) {
+                    return true;
+                }
                 let refClassName = '.' + ref.className;
                 copyData = [];
                 let selection = document.getSelection();
+
                 if (!selection
-                || !selection.baseNode
-                || !selection.baseNode.parentElement.closest(refClassName)) {
+                || !selection.anchorNode
+                || !selection.anchorNode.parentNode.closest(refClassName)) {
                     document.querySelector('body').style.userSelect = 'auto';
 
                     let ml = document.querySelector(refClassName);
@@ -522,8 +510,7 @@ export default {
                     mlsb.style.userSelect = 'none';
                 }
 
-                if (selection.type === 'Range'
-                && selection.rangeCount > 0) {
+                if (selection.rangeCount > 0) {
                     let range = document.getSelection().getRangeAt(0);
 
                     // Traverse the DOM to find messages in selection
