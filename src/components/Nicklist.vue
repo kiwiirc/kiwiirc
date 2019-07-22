@@ -52,10 +52,25 @@ import NicklistUser from './NicklistUser';
 
 let log = Logger.namespace('Nicklist');
 
+// This provides a better sort for numbered nicks but does not work on ios9
+let intlCollator = null;
+if (global.Intl) {
+    intlCollator = new Intl.Collator({}, { numeric: true });
+}
+
 // Hot function, so it's here for easier caching
-let strComparison = new Intl.Collator({}, { numeric: true });
 function strCompare(a, b) {
-    return strComparison.compare(a, b);
+    if (intlCollator) {
+        return intlCollator.compare(a, b);
+    }
+
+    if (a === b) {
+        return 0;
+    }
+
+    return a > b ?
+        1 :
+        -1;
 }
 
 export default {
