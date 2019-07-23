@@ -132,6 +132,14 @@ export default class BufferState {
             [];
     }
 
+    getLastMessage() {
+        let messages = this.getMessages();
+        if (messages.length === 0) {
+            return undefined;
+        }
+        return messages[messages.length - 1];
+    }
+
     clearMessages() {
         this.messagesObj.messages.splice(0, this.messagesObj.messages.length);
         this.messagesObj.messageIds = Object.create(null);
