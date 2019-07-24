@@ -32,7 +32,6 @@
                 <div
                     :class="{
                         'kiwi-header-option--active': sidebarState.sidebarSection === 'nicklist'
-                            || sidebarState.sidebarSection === 'user'
                     }"
                     class="kiwi-header-option kiwi-header-option-nicklist"
                 >
