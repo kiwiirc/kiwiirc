@@ -3,27 +3,32 @@ import ThemeManager from '@/libs/ThemeManager';
 import * as TextFormatting from '@/helpers/TextFormatting';
 
 describe('TextFormatting.js', function() {
-    it('should return valid channel links', function() {
+    it('should return valid channel blocks', function() {
         let tests = [
-            ['#channel', '<a class="u-link kiwi-channel" data-channel-name="#channel">#channel</a>'],
-            ['#channel;', '<a class="u-link kiwi-channel" data-channel-name="#channel">#channel</a>;'],
-            ['#chan;nel', '<a class="u-link kiwi-channel" data-channel-name="#chan;nel">#chan;nel</a>'],
-            ['#channel.', '<a class="u-link kiwi-channel" data-channel-name="#channel">#channel</a>.'],
-            ['#chan;el;', '<a class="u-link kiwi-channel" data-channel-name="#chan;el">#chan;el</a>;'],
-            ['#chan[n]el,', '<a class="u-link kiwi-channel" data-channel-name="#chan[n]el">#chan[n]el</a>,'],
-            ['@#channel:', '@<a class="u-link kiwi-channel" data-channel-name="#channel">#channel</a>:'],
-            ['@&channel,', '@<a class="u-link kiwi-channel" data-channel-name="&amp;channel">&amp;channel</a>,'],
-            ['&@#channel,', '&amp;@<a class="u-link kiwi-channel" data-channel-name="#channel">#channel</a>,'],
-            ['&@&channel,', '&amp;@<a class="u-link kiwi-channel" data-channel-name="&amp;channel">&amp;channel</a>,'],
+            ['#channel', '#channel'],
+            ['#channel;', '#channel'],
+            ['#chan;nel', '#chan;nel'],
+            ['#channel.', '#channel'],
+            ['#chan;el;', '#chan;el'],
+            ['#chan[n]el,', '#chan[n]el'],
+            ['@#channel:', '#channel'],
+            ['@&channel,', '&channel'],
+            ['&@#channel,', '#channel'],
+            ['&@&channel,', '&channel'],
         ];
 
         tests.forEach((c) => {
-            let formatted = TextFormatting.linkifyChannels(c[0]);
-            expect(formatted).to.equal(c[1]);
+            let contentBlock = { content: c[0] };
+            let blocks = TextFormatting.formatBlocks([contentBlock]);
+            let channelBlocks = blocks.filter(b => b.type === 'channel');
+
+
+            expect(channelBlocks.length).to.equal(1);
+            expect(channelBlocks[0].meta.channel).to.equal(c[1]);
         });
     });
 
-    it('should return valid url links', function() {
+    it('should return valid url blocks', function() {
         let tests = [
             ['www.example.com', 'http://www.example.com'],
             ['http://example.com'],
@@ -41,9 +46,13 @@ describe('TextFormatting.js', function() {
         ];
 
         tests.forEach((c) => {
-            let linkified = TextFormatting.linkifyUrls(c[0]);
+            let contentBlock = { content: c[0] };
+            let blocks = TextFormatting.formatBlocks([contentBlock]);
+            let urlBlocks = blocks.filter(b => b.type === 'url');
             let compare = c.length === 2 ? c[1] : c[0];
-            expect(linkified.urls[0]).to.equal(compare);
+
+            expect(urlBlocks.length).to.equal(1);
+            expect(urlBlocks[0].meta.url).to.equal(compare);
         });
     });
 
@@ -51,12 +60,14 @@ describe('TextFormatting.js', function() {
         let tests = ['test', 'example.com', 'test:8080', '127.0.0.1/test.html'];
 
         tests.forEach((c) => {
-            let linkified = TextFormatting.linkifyUrls(c);
-            expect(linkified.urls.length).to.equal(0);
+            let contentBlock = { content: c[0] };
+            let blocks = TextFormatting.formatBlocks([contentBlock]);
+            let urlBlocks = blocks.filter(b => b.type === 'url');
+            expect(urlBlocks.length).to.equal(0);
         });
     });
 
-    it('should return valid user links', function() {
+    it('should return valid user blocks', function() {
         // mock users list
         let users = {
             testnick1: { nick: 'TestNick1', username: 'testnick1', colour: '#a1fc5d' },
@@ -69,30 +80,23 @@ describe('TextFormatting.js', function() {
             ['TestNick1'],
             ['TestNick2'],
             ['Testnick3', 'Testnick3'],
-            ['testnick1:', 'testnick1', '', ':'],
-            ['@testnick2', 'testnick2', '@', ''],
-            ['@TestNick2:', 'TestNick2', '@', ':'],
+            ['testnick1:', 'testnick1'],
+            ['@testnick2', 'testnick2'],
+            ['@TestNick2:', 'TestNick2'],
         ];
 
         // mock ThemeManager
         sinon.stub(ThemeManager, 'instance').returns({ themeVar: () => 40 });
 
         tests.forEach((c) => {
-            let linkified = TextFormatting.linkifyUsers(c[0], users);
+            let contentBlock = { content: c[0] };
+            let blocks = TextFormatting.formatBlocks([contentBlock], users);
+            let userBlocks = blocks.filter(b => b.type === 'user');
+            let compare = c.length === 2 ? c[1] : c[0];
 
-            let user = c.length >= 2 ? users[c[1].toLowerCase()] : users[c[0].toLowerCase()];
-            let escaped = c.length >= 2 ? _.escape(c[1]) : _.escape(c[0]);
-            let prefix = c[2] || '';
-            let suffix = c[3] || '';
-
-            let regexString = '^' + _.escape(prefix) +
-                '<a class="kiwi-nick" data-nick="' + escaped + '"';
-            if (user.colour) {
-                regexString += ' style="color:#[0-9A-Fa-f]{3,6}"';
-            }
-            regexString += '>' + escaped + '</a>' + _.escape(suffix) + '$';
-            let regex = new RegExp(regexString);
-            expect(linkified).to.match(regex);
+            expect(userBlocks.length).to.equal(1);
+            expect(userBlocks[0].meta.user).to.equal(compare);
+            expect(userBlocks[0].meta.colour).to.equal(users[compare.toLowerCase()].colour);
         });
     });
 
@@ -105,8 +109,11 @@ describe('TextFormatting.js', function() {
         let tests = ['notauser', 'ttestnick', 'testnick11', 'ttestnick11'];
 
         tests.forEach((c) => {
-            let linkified = TextFormatting.linkifyUsers(c, users);
-            expect(linkified).to.equal(c);
+            let contentBlock = { content: c[0] };
+            let blocks = TextFormatting.formatBlocks([contentBlock], users);
+            let userBlocks = blocks.filter(b => b.type === 'user');
+
+            expect(userBlocks.length).to.equal(0);
         });
     });
 });
