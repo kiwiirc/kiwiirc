@@ -79,7 +79,7 @@ describe('TextFormatting.js', function() {
         ];
 
         tests.forEach((c) => {
-            let blocks = TextFormatting.formatMessage(c[0]);
+            let blocks = TextFormatting.formatMessage(c[0], {}, users);
             let userBlocks = blocks.filter(b => b.type === 'user');
             let compare = c.length === 2 ? c[1] : c[0];
 
@@ -98,7 +98,7 @@ describe('TextFormatting.js', function() {
         let tests = ['notauser', 'ttestnick', 'testnick11', 'ttestnick11'];
 
         tests.forEach((c) => {
-            let blocks = TextFormatting.formatMessage(c[0]);
+            let blocks = TextFormatting.formatMessage(c[0], {}, users);
             let userBlocks = blocks.filter(b => b.type === 'user');
 
             expect(userBlocks.length).to.equal(0);
