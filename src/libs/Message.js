@@ -1,8 +1,7 @@
 'kiwi public';
 
-import { formatBlocks } from '@/helpers/TextFormatting';
+import { formatMessage } from '@/helpers/TextFormatting';
 import toHtml from '@/helpers/HtmlRenderer';
-import formatIrcMessage from '@/libs/MessageFormatter';
 import GlobalApi from '@/libs/GlobalApi';
 import state from './state';
 
@@ -27,9 +26,7 @@ export default class Message {
         this.isHighlight = false;
 
         // We don't want the user object to be enumerable
-        Object.defineProperty(this, 'user', {
-            value: user,
-        });
+        Object.defineProperty(this, 'user', { value: user });
     }
 
     render() {
@@ -48,17 +45,13 @@ export default class Message {
         let useExtraFormatting =
             !messageList.buffer.isSpecial() && messageList.useExtraFormatting && this.type === 'privmsg';
 
-        let blocks = formatBlocks(formatIrcMessage(this.message, {
-            extras: useExtraFormatting,
-        }), userList);
+        let blocks = formatMessage(this.message, { extras: useExtraFormatting }, userList);
 
         state.$emit('message.prestyle', { message: this, blocks: blocks });
 
         let content = toHtml(blocks, showEmoticons);
 
-        this.mentioned_urls = blocks
-            .filter(block => block.type === 'url')
-            .map(block => block.meta.url);
+        this.mentioned_urls = blocks.filter(block => block.type === 'url').map(block => block.meta.url);
         this.html = content;
 
         state.$emit('message.poststyle', { message: this, blocks: blocks });

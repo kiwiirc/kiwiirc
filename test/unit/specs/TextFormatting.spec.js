@@ -1,5 +1,3 @@
-import _ from 'lodash';
-import ThemeManager from '@/libs/ThemeManager';
 import * as TextFormatting from '@/helpers/TextFormatting';
 
 describe('TextFormatting.js', function() {
@@ -18,10 +16,8 @@ describe('TextFormatting.js', function() {
         ];
 
         tests.forEach((c) => {
-            let contentBlock = { content: c[0] };
-            let blocks = TextFormatting.formatBlocks([contentBlock]);
+            let blocks = TextFormatting.formatMessage(c[0]);
             let channelBlocks = blocks.filter(b => b.type === 'channel');
-
 
             expect(channelBlocks.length).to.equal(1);
             expect(channelBlocks[0].meta.channel).to.equal(c[1]);
@@ -46,8 +42,7 @@ describe('TextFormatting.js', function() {
         ];
 
         tests.forEach((c) => {
-            let contentBlock = { content: c[0] };
-            let blocks = TextFormatting.formatBlocks([contentBlock]);
+            let blocks = TextFormatting.formatMessage(c[0]);
             let urlBlocks = blocks.filter(b => b.type === 'url');
             let compare = c.length === 2 ? c[1] : c[0];
 
@@ -60,8 +55,7 @@ describe('TextFormatting.js', function() {
         let tests = ['test', 'example.com', 'test:8080', '127.0.0.1/test.html'];
 
         tests.forEach((c) => {
-            let contentBlock = { content: c[0] };
-            let blocks = TextFormatting.formatBlocks([contentBlock]);
+            let blocks = TextFormatting.formatMessage(c[0]);
             let urlBlocks = blocks.filter(b => b.type === 'url');
             expect(urlBlocks.length).to.equal(0);
         });
@@ -75,7 +69,6 @@ describe('TextFormatting.js', function() {
             testnick3: { nick: 'TestNick3', username: 'testnick3' },
         };
         let tests = [
-            // word, nick, prefix, suffix
             ['testnick1', 'testnick1'],
             ['TestNick1'],
             ['TestNick2'],
@@ -85,12 +78,8 @@ describe('TextFormatting.js', function() {
             ['@TestNick2:', 'TestNick2'],
         ];
 
-        // mock ThemeManager
-        sinon.stub(ThemeManager, 'instance').returns({ themeVar: () => 40 });
-
         tests.forEach((c) => {
-            let contentBlock = { content: c[0] };
-            let blocks = TextFormatting.formatBlocks([contentBlock], users);
+            let blocks = TextFormatting.formatMessage(c[0]);
             let userBlocks = blocks.filter(b => b.type === 'user');
             let compare = c.length === 2 ? c[1] : c[0];
 
@@ -109,8 +98,7 @@ describe('TextFormatting.js', function() {
         let tests = ['notauser', 'ttestnick', 'testnick11', 'ttestnick11'];
 
         tests.forEach((c) => {
-            let contentBlock = { content: c[0] };
-            let blocks = TextFormatting.formatBlocks([contentBlock], users);
+            let blocks = TextFormatting.formatMessage(c[0]);
             let userBlocks = blocks.filter(b => b.type === 'user');
 
             expect(userBlocks.length).to.equal(0);

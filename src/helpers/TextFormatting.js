@@ -4,7 +4,7 @@
 
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
-import { createNewBlock } from '@/libs/MessageFormatter';
+import formatIrcMessage, { createNewBlock } from '@/libs/MessageFormatter';
 import _ from 'lodash';
 import i18next from 'i18next';
 import * as ipRegex from 'ip-regex';
@@ -25,8 +25,10 @@ import { md5 } from './Md5';
  * @param {Array} userList List of users to find within the message
  * @returns An array of blocks, where each special content will be extracted into a separate block.
  */
-export function formatBlocks(blocks, userList = null) {
+export function formatMessage(message, formatOpts = {}, userList = null) {
     const emojiList = state.setting('emojis');
+
+    const blocks = formatIrcMessage(message, formatOpts);
     let formatedBlocks = blocks.reduce(
         (acc, block, i) => acc.concat(processBlock(block, userList, emojiList)),
         []

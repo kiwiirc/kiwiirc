@@ -66,9 +66,8 @@
 'kiwi public';
 
 import GlobalApi from '@/libs/GlobalApi';
-import formatIrcMessage from '@/libs/MessageFormatter';
 import toHtml from '@/helpers/HtmlRenderer';
-import { formatBlocks } from '@/helpers/TextFormatting';
+import { formatMessage } from '@/helpers/TextFormatting';
 
 export default {
     props: ['network', 'buffer', 'sidebarState'],
@@ -84,7 +83,7 @@ export default {
         },
 
         formattedTopic() {
-            let blocks = formatBlocks(formatIrcMessage(this.b.topic || '', { extras: false }));
+            let blocks = formatMessage(this.b.topic || '', { extras: false });
             let content = toHtml(blocks);
             return content;
         },

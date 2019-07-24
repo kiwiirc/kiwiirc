@@ -64,8 +64,7 @@
 
 import _ from 'lodash';
 import toHtml from '@/helpers/HtmlRenderer';
-import { formatBlocks } from '@/helpers/TextFormatting';
-import formatIrcMessage from '@/libs/MessageFormatter';
+import { formatMessage } from '@/helpers/TextFormatting';
 
 export default {
     props: ['network'],
@@ -158,7 +157,7 @@ export default {
             let showModes = this.$state.setting('showChanlistModes');
 
             let topic = showModes ? rawTopic : rawTopic.replace(/^\[([^\]]+)\] ?/, '');
-            let blocks = formatBlocks(formatIrcMessage(topic, { extras: false }));
+            let blocks = formatMessage(topic, { extras: false });
             let content = toHtml(blocks);
             return content;
         },

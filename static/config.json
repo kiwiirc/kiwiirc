@@ -1,6 +1,6 @@
 {
     "windowTitle": "Kiwi IRC - The web IRC client",
-    "startupScreen": "welcome",
+    "startupScreen": "customServer",
     "kiwiServer": "https://localdev.clients.kiwiirc.com/webirc/kiwiirc/",
     "restricted": false,
     "theme": "Default",
@@ -16,8 +16,12 @@
         { "name": "Elite", "url": "static/themes/elite" }
     ],
     "startupOptions" : {
-        "channel": "#kiwiirc-default",
-        "nick": "kiwi-n?"
+        "channel": "#kiwiirc-test2",
+        "nick": "kiwi-n?",
+        "server":"irc.irc.com",
+        "port":6667,
+        "tls":false,
+        "direct":false
     },
     "embedly": {
         "key": ""
