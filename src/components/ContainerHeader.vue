@@ -179,7 +179,8 @@
 
 import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
-import * as TextFormatting from '@/helpers/TextFormatting';
+import toHtml from '@/helpers/HtmlRenderer';
+import { formatBlocks } from '@/helpers/TextFormatting';
 import formatIrcMessage from '@/libs/MessageFormatter';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
@@ -213,10 +214,9 @@ export default {
             return this.buffer.getNetwork().state === 'connected';
         },
         formattedTopic: function formattedTopic() {
-            let showEmoticons = state.setting('buffers.show_emoticons');
-            let blocks = formatIrcMessage(this.buffer.topic, { extras: false });
-            let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
-            return content.html;
+            let blocks = formatBlocks(formatIrcMessage(this.buffer.topic, { extras: false }));
+            let content = toHtml(blocks);
+            return content;
         },
         network() {
             return this.buffer.getNetwork();

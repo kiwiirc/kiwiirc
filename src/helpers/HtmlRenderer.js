@@ -109,8 +109,8 @@ function buildSpan(content, classes, style) {
 
     return (
         `<span` +
-        (style !== '' ? `style="${style}"` : '') +
-        (classes !== '' ? `class="${classes}"` : '') +
+        (style !== '' ? ` style="${style}"` : '') +
+        (classes !== '' ? ` class="${classes}"` : '') +
         `>${content}</span>`
     );
 }

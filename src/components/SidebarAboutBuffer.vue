@@ -67,7 +67,8 @@
 
 import GlobalApi from '@/libs/GlobalApi';
 import formatIrcMessage from '@/libs/MessageFormatter';
-import * as TextFormatting from '@/helpers/TextFormatting';
+import toHtml from '@/helpers/HtmlRenderer';
+import { formatBlocks } from '@/helpers/TextFormatting';
 
 export default {
     props: ['network', 'buffer', 'sidebarState'],
@@ -83,10 +84,9 @@ export default {
         },
 
         formattedTopic() {
-            let showEmoticons = this.$state.setting('buffers.show_emoticons');
-            let blocks = formatIrcMessage(this.b.topic || '', { extras: false });
-            let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
-            return content.html;
+            let blocks = formatBlocks(formatIrcMessage(this.b.topic || '', { extras: false }));
+            let content = toHtml(blocks);
+            return content;
         },
 
         highlights() {
