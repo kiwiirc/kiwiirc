@@ -12,11 +12,10 @@ import * as Colours from './Colours';
 import { md5 } from './Md5';
 
 /**
- * Receives an array of style blocks from MessageFormatter.formatIrcMessage() and parses each one to
- * find urls, users, channels and emoji. When one of these special content is found, the special
+ * Receives a message, parses its irc blocks, and then finds urls, users, channels and emoji. Each
  * content is extracted to a separate block.
- * E.g. the block:
- *   ["this is a message www.google.com and #kiwiirc"]
+ * E.g. the message:
+ *   "this is a message www.google.com and #kiwiirc"
  * will be split into the blocks:
  *   ["this is a message "]["www.google.com"][" and "]["#kiwiirc"]
  * The special content blocks will also contain additional info about their content according to
@@ -103,12 +102,6 @@ function matchChannel(word) {
     // matches the groups (spaces before)(prefix)(channel)(suffix punctuation)
 
     const channelMatch = channelRegex.exec(word);
-    // channelMatch[0]: the full match
-    // channelMatch[1]: group 1: spaces before)
-    // channelMatch[2]: group 2: prefix
-    // channelMatch[3]: group 3: channel
-    // channelMatch[4]: group 3: suffix
-    // channelMatch[index]: index of the match
 
     if (channelMatch === null) {
         return false;
@@ -129,8 +122,7 @@ export const urlRegex = new RegExp(
     /(([A-Za-z][A-Za-z0-9-]*:\/\/)|(www\.))/.source +
         '(' +
         // Hostname and tld
-        /([\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF.-]+\.[a-zA-Z]{2,63})/
-            .source +
+        /([\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF.-]+\.[a-zA-Z]{2,63})/.source +
         '|' +
         // IPv4 address
         ipRegex.v4().source +
@@ -143,8 +135,7 @@ export const urlRegex = new RegExp(
         // Optional port..
         /(:[0-9]+)?/.source +
         // Optional path..
-        /(\/[\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF!:.?$'()[\]*,;~+=&%@!\-/]*)?/
-            .source +
+        /(\/[\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF!:.?$'()[\]*,;~+=&%@!\-/]*)?/.source +
         // Optional fragment
         /(#.*)?/.source,
     'i'
