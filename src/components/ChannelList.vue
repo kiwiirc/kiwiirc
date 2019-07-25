@@ -63,8 +63,8 @@
 'kiwi public';
 
 import _ from 'lodash';
-import * as TextFormatting from '@/helpers/TextFormatting';
-import formatIrcMessage from '@/libs/MessageFormatter';
+import toHtml from '@/libs/renderers/Html';
+import parseMessage from '@/libs/MessageParser';
 
 export default {
     props: ['network'],
@@ -155,12 +155,11 @@ export default {
         },
         formatAndTrimTopic(rawTopic) {
             let showModes = this.$state.setting('showChanlistModes');
-            let showEmoticons = this.$state.setting('buffers.show_emoticons');
 
             let topic = showModes ? rawTopic : rawTopic.replace(/^\[([^\]]+)\] ?/, '');
-            let blocks = formatIrcMessage(topic, { extras: false });
-            let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
-            return content.html;
+            let blocks = parseMessage(topic, { extras: false });
+            let content = toHtml(blocks);
+            return content;
         },
         joinChannel(channelName) {
             this.$state.addBuffer(this.network.id, channelName);

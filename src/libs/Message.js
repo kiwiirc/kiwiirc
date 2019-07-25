@@ -1,7 +1,7 @@
 'kiwi public';
 
-import * as TextFormatting from '@/helpers/TextFormatting';
-import formatIrcMessage from '@/libs/MessageFormatter';
+import parseMessage from '@/libs/MessageParser';
+import toHtml from '@/libs/renderers/Html';
 import GlobalApi from '@/libs/GlobalApi';
 import state from './state';
 
@@ -26,9 +26,7 @@ export default class Message {
         this.isHighlight = false;
 
         // We don't want the user object to be enumerable
-        Object.defineProperty(this, 'user', {
-            value: user,
-        });
+        Object.defineProperty(this, 'user', { value: user });
     }
 
     render() {
@@ -42,23 +40,19 @@ export default class Message {
             return this.html;
         }
 
-        let showEmoticons = state.setting('buffers.show_emoticons') &&
-            !messageList.buffer.isSpecial();
+        let showEmoticons = state.setting('buffers.show_emoticons') && !messageList.buffer.isSpecial();
         let userList = messageList.buffer.users;
-        let useExtraFormatting = !messageList.buffer.isSpecial() &&
-            messageList.useExtraFormatting &&
-            this.type === 'privmsg';
+        let useExtraFormatting =
+            !messageList.buffer.isSpecial() && messageList.useExtraFormatting && this.type === 'privmsg';
 
-        let blocks = formatIrcMessage(this.message, {
-            extras: useExtraFormatting,
-        });
+        let blocks = parseMessage(this.message, { extras: useExtraFormatting }, userList);
 
         state.$emit('message.prestyle', { message: this, blocks: blocks });
 
-        let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, userList);
+        let content = toHtml(blocks, showEmoticons);
 
-        this.mentioned_urls = content.urls;
-        this.html = content.html;
+        this.mentioned_urls = blocks.filter(block => block.type === 'url').map(block => block.meta.url);
+        this.html = content;
 
         state.$emit('message.poststyle', { message: this, blocks: blocks });
         return this.html;

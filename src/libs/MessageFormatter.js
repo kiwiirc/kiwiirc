@@ -317,13 +317,20 @@ export default function parse(inp, _opts) {
         let tok = tokens[inp.substr(pos, 2)] || tokens[inp[pos]];
         return tok;
     }
+}
 
-    function createNewBlock() {
-        let newBlock = {
-            styles: {},
-            content: '',
-            containsContent: false,
-        };
-        return newBlock;
-    }
+export function createNewBlock(
+    content = '',
+    styles = {},
+    type = 'text',
+    meta = {}
+) {
+    const newBlock = {
+        styles: styles,
+        content: content,
+        containsContent: !!content,
+        type: type,
+        meta: meta,
+    };
+    return newBlock;
 }
