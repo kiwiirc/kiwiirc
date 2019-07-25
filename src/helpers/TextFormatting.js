@@ -276,7 +276,7 @@ function mergeMatches(block, specialMatches) {
     });
 
     // remaining content after the last special content.
-    if (lastProcessedIndex < block.content.length - 1) {
+    if (lastProcessedIndex < block.content.length) {
         resultBlocks.push({
             content: block.content.substr(lastProcessedIndex),
             styles: { ...block.styles },

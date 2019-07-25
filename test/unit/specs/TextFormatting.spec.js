@@ -39,15 +39,21 @@ describe('TextFormatting.js', function() {
             ['http://2001:0000:1234:0000:0000:C1C0:ABCD:0876/'],
             ['http://[2001:db8:1f70::999:de8:7648:6e8]:100/'],
             ['ldap://[2001:db8::7]/c=GB?objectClass?one'],
+            ['(http://example.com)', 'http://example.com', '(', ')'],
         ];
 
         tests.forEach((c) => {
             let blocks = TextFormatting.formatMessage(c[0]);
             let urlBlocks = blocks.filter(b => b.type === 'url');
-            let compare = c.length === 2 ? c[1] : c[0];
+            let compare = c.length >= 2 ? c[1] : c[0];
 
             expect(urlBlocks.length).to.equal(1);
             expect(urlBlocks[0].meta.url).to.equal(compare);
+            // check prefix and suffix
+            if (c.length === 4) {
+                expect(blocks[0].content).to.equal(c[2]);
+                expect(blocks[2].content).to.equal(c[3]);
+            }
         });
     });
 
