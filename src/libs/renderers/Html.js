@@ -1,9 +1,9 @@
 import { escape } from 'lodash';
 import state from '@/libs/state';
 
-export default toHtml;
+export default render;
 
-function toHtml(blocks) {
+function render(blocks) {
     const emojiLocation = state.setting('emojiLocation');
     const showEmoticons = state.setting('buffers.show_emoticons');
 

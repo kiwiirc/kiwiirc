@@ -66,8 +66,8 @@
 'kiwi public';
 
 import GlobalApi from '@/libs/GlobalApi';
-import toHtml from '@/helpers/HtmlRenderer';
-import { formatMessage } from '@/helpers/TextFormatting';
+import toHtml from '@/libs/renderers/Html';
+import parseMessage from '@/libs/MessageParser';
 
 export default {
     props: ['network', 'buffer', 'sidebarState'],
@@ -83,7 +83,7 @@ export default {
         },
 
         formattedTopic() {
-            let blocks = formatMessage(this.b.topic || '', { extras: false });
+            let blocks = parseMessage(this.b.topic || '', { extras: false });
             let content = toHtml(blocks);
             return content;
         },

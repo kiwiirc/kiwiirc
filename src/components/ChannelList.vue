@@ -63,8 +63,8 @@
 'kiwi public';
 
 import _ from 'lodash';
-import toHtml from '@/helpers/HtmlRenderer';
-import { formatMessage } from '@/helpers/TextFormatting';
+import toHtml from '@/libs/renderers/Html';
+import parseMessage from '@/libs/MessageParser';
 
 export default {
     props: ['network'],
@@ -157,7 +157,7 @@ export default {
             let showModes = this.$state.setting('showChanlistModes');
 
             let topic = showModes ? rawTopic : rawTopic.replace(/^\[([^\]]+)\] ?/, '');
-            let blocks = formatMessage(topic, { extras: false });
+            let blocks = parseMessage(topic, { extras: false });
             let content = toHtml(blocks);
             return content;
         },

@@ -179,8 +179,8 @@
 
 import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
-import toHtml from '@/helpers/HtmlRenderer';
-import { formatMessage } from '@/helpers/TextFormatting';
+import toHtml from '@/libs/renderers/Html';
+import parseMessage from '@/libs/MessageParser';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
@@ -213,7 +213,7 @@ export default {
             return this.buffer.getNetwork().state === 'connected';
         },
         formattedTopic: function formattedTopic() {
-            let blocks = formatMessage(this.buffer.topic, { extras: false });
+            let blocks = parseMessage(this.buffer.topic, { extras: false });
             let content = toHtml(blocks);
             return content;
         },

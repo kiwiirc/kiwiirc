@@ -1,6 +1,6 @@
-import * as TextFormatting from '@/helpers/TextFormatting';
+import parseMessage from '@/libs/MessageParser';
 
-describe('TextFormatting.js', function() {
+describe('MessageParser.js', function() {
     it('should return valid channel blocks', function() {
         let tests = [
             ['#channel', '#channel'],
@@ -16,7 +16,7 @@ describe('TextFormatting.js', function() {
         ];
 
         tests.forEach((c) => {
-            let blocks = TextFormatting.formatMessage(c[0]);
+            let blocks = parseMessage(c[0]);
             let channelBlocks = blocks.filter(b => b.type === 'channel');
 
             expect(channelBlocks.length).to.equal(1);
@@ -43,7 +43,7 @@ describe('TextFormatting.js', function() {
         ];
 
         tests.forEach((c) => {
-            let blocks = TextFormatting.formatMessage(c[0]);
+            let blocks = parseMessage(c[0]);
             let urlBlocks = blocks.filter(b => b.type === 'url');
             let compare = c.length >= 2 ? c[1] : c[0];
 
@@ -61,7 +61,7 @@ describe('TextFormatting.js', function() {
         let tests = ['test', 'example.com', 'test:8080', '127.0.0.1/test.html'];
 
         tests.forEach((c) => {
-            let blocks = TextFormatting.formatMessage(c[0]);
+            let blocks = parseMessage(c[0]);
             let urlBlocks = blocks.filter(b => b.type === 'url');
             expect(urlBlocks.length).to.equal(0);
         });
@@ -85,7 +85,7 @@ describe('TextFormatting.js', function() {
         ];
 
         tests.forEach((c) => {
-            let blocks = TextFormatting.formatMessage(c[0], {}, users);
+            let blocks = parseMessage(c[0], {}, users);
             let userBlocks = blocks.filter(b => b.type === 'user');
             let compare = c.length === 2 ? c[1] : c[0];
 
@@ -104,7 +104,7 @@ describe('TextFormatting.js', function() {
         let tests = ['notauser', 'ttestnick', 'testnick11', 'ttestnick11'];
 
         tests.forEach((c) => {
-            let blocks = TextFormatting.formatMessage(c[0], {}, users);
+            let blocks = parseMessage(c[0], {}, users);
             let userBlocks = blocks.filter(b => b.type === 'user');
 
             expect(userBlocks.length).to.equal(0);

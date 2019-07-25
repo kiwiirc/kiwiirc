@@ -1,7 +1,7 @@
 'kiwi public';
 
-import { formatMessage } from '@/helpers/TextFormatting';
-import toHtml from '@/helpers/HtmlRenderer';
+import parseMessage from '@/libs/MessageParser';
+import toHtml from '@/libs/renderers/Html';
 import GlobalApi from '@/libs/GlobalApi';
 import state from './state';
 
@@ -45,7 +45,7 @@ export default class Message {
         let useExtraFormatting =
             !messageList.buffer.isSpecial() && messageList.useExtraFormatting && this.type === 'privmsg';
 
-        let blocks = formatMessage(this.message, { extras: useExtraFormatting }, userList);
+        let blocks = parseMessage(this.message, { extras: useExtraFormatting }, userList);
 
         state.$emit('message.prestyle', { message: this, blocks: blocks });
 
