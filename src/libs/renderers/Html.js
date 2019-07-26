@@ -48,7 +48,7 @@ function render(blocks) {
             content = addEmoji(block, blocks.length === 1, emojiLocation, showEmoticons);
             break;
         default:
-            content = block.content;
+            content = escape(block.content);
         }
 
         return html + buildSpan(content, classes, style);
@@ -90,7 +90,7 @@ function linkifyUser(block) {
 }
 
 function linkifyChannel(block) {
-    return `<a class="u-link kiwi-channel" data-channel-name="${block.meta.channel}">${block.content}</a>`;
+    return `<a class="u-link kiwi-channel" data-channel-name="${escape(block.meta.channel)}">${escape(block.content)}</a>`;
 }
 
 function addEmoji(block, isSingle, emojiLocation, showEmoticons) {
@@ -101,7 +101,7 @@ function addEmoji(block, isSingle, emojiLocation, showEmoticons) {
     const classes = 'kiwi-messagelist-emoji' + (isSingle ? ' kiwi-messagelist-emoji--single' : '');
     const src = `${emojiLocation}${emoji}.png`;
 
-    return `<img class="${classes}" src="${src}" alt="${block.content}" title="${block.content}" />`;
+    return `<img class="${classes}" src="${src}" alt="${escape(block.content)}" title="${escape(block.content)}" />`;
 }
 
 function buildSpan(content, classes, style) {
