@@ -59,11 +59,13 @@ function render(blocks) {
 
 function linkifyUrl(block, _opts) {
     let opts = _opts || {};
-    let nice = escape(block.content);
+    let nice = '';
 
     // Shorten the displayed URL if it's going to be too long
-    if (nice.length > 100) {
-        nice = nice.substr(0, 100) + '...';
+    if (block.content.length > 100) {
+        nice = escape(block.content.substr(0, 100)) + '...';
+    } else {
+        nice = escape(block.content);
     }
 
     // Make the link clickable
