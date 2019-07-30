@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-07-30 14:42\n"
+"PO-Revision-Date: 2019-07-30 14:52\n"
 
 #: Start
 msgid "start_button"
@@ -838,7 +838,7 @@ msgstr "{{nick}} deu status de owner de {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} tirou estatuto de owner a {{target}}"
+msgstr "{{nick}} tirou status de owner de {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -862,7 +862,7 @@ msgstr "Faça algo físico"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Entrar num canal"
+msgstr "Entrar em um canal"
 
 #: Leave a channel
 msgid "command_part"
@@ -926,11 +926,11 @@ msgstr "Solicitar informações sobre alguém que se desconectou recentemente"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Coloca-o como ausente"
+msgstr "Marque-se como ausente"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Remove o estatuto de ausente (/away)"
+msgstr "Remove o status de ausente (/away)"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -942,7 +942,7 @@ msgstr "Ignorar mensagens de alguém"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Pare de ignorar alguém"
+msgstr "Parar de ignorar alguém"
 
 #: Roll a Dice
 msgid "command_dice"
@@ -970,7 +970,7 @@ msgstr "Adicionar uma rede"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "Está a tentar ligar à rede {{network}}"
+msgstr "Está tentando conectar na rede {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
