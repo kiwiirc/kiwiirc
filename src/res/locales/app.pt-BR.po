@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-07-30 14:32\n"
+"PO-Revision-Date: 2019-07-30 14:42\n"
 
 #: Start
 msgid "start_button"
@@ -426,23 +426,23 @@ msgstr "Apenas usuários convidados podem entrar."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Permitir apenas usuários convidados"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Permitir que qualquer usuário participe"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Apenas usuários registrados podem participar"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Adicionar convite"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "Qualquer usuário registrado"
 
 #: Topic
 msgid "channel_topic"
@@ -558,7 +558,7 @@ msgstr "Mostrar o original"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Websocket directo"
+msgstr "Websocket direto"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -582,7 +582,7 @@ msgstr "{{count}} usuários aqui"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtrar utilizadores no canal"
+msgstr "Filtrar usuários no canal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -658,7 +658,7 @@ msgstr "Não existe nenhum tópico neste canal"
 
 #: About
 msgid "about"
-msgstr "Acerca"
+msgstr "Sobre"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -666,11 +666,11 @@ msgstr "Criado em {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Menções"
+msgstr "Destaques"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Ninguém o mencionou ainda..."
+msgstr "Ninguém mencionou você ainda ..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -802,39 +802,39 @@ msgstr "Por favor especifique um canal para entrar, por exemplo, /join #exemplo"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} deu estatuto de op a {{target}}"
+msgstr "{{nick}} deu status de op de {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} tirou estatuto de op a {{target}}"
+msgstr "{{nick}} tirou status de op de {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} deu estatuto de half-op a {{target}}"
+msgstr "{{nick}} deu status de half-op de {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} tirou estatuto de half-op a {{target}}"
+msgstr "{{nick}} tirou status de half-op de {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} deu estatuto de voice a {{target}}"
+msgstr "{{nick}} deu status de voice de {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} tirou estatuto de voice a {{target}}"
+msgstr "{{nick}} tirou status de voice de {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} deu estatuto de admin a {{target}}"
+msgstr "{{nick}} deu status de admin de {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} tirou estatuto de admin a {{target}}"
+msgstr "{{nick}} tirou status de admin de {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} deu estatuto de owner a {{target}}"
+msgstr "{{nick}} deu status de owner de {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
