@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-07-30 14:03\n"
+"PO-Revision-Date: 2019-07-30 14:22\n"
 
 #: Start
 msgid "start_button"
@@ -170,7 +170,7 @@ msgstr "Canal"
 
 #: {{count}} week
 msgid "week"
-msgstr "semana"
+msgstr "{{count}} semana"
 
 #: {{count}} weeks
 msgid "week_plural"
@@ -178,31 +178,31 @@ msgstr "semanas"
 
 #: {{count}} day
 msgid "day"
-msgstr "dia"
+msgstr "{{count}} dia"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dias"
+msgstr "{{count}} dias"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "hora"
+msgstr "{{count}} hora"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "horas"
+msgstr "{{count}} horas"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuto"
+msgstr "{{count}} minuto"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minutos"
+msgstr "{{count}} minutos"
 
 #: {{count}} second
 msgid "second"
-msgstr "segundo"
+msgstr "{{count}} segundo"
 
 #: {{count}} seconds
 msgid "second_plural"
@@ -214,7 +214,7 @@ msgstr "Geral"
 
 #: Language
 msgid "settings_language"
-msgstr "configurações_de_idioma "
+msgstr "Idioma"
 
 #: Theme
 msgid "settings_theme"
@@ -282,7 +282,7 @@ msgstr "Nicknames Coloridos"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Partilhar quando estou a escrever uma mensagem"
+msgstr "Compartilhar quando estou escrevendo uma mensagem"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -370,7 +370,7 @@ msgstr "Zona de perigo: Alterar algumas dessas configurações pode quebrar as c
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Restabelecer"
+msgstr "configurações avançadas redefinir"
 
 #: Filter
 msgid "settings_advanced_filter"
