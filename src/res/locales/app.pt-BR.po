@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-07-30 16:02\n"
+"PO-Revision-Date: 2019-07-30 16:11\n"
 
 #: Start
 msgid "start_button"
@@ -58,7 +58,7 @@ msgstr "Usuários banidos"
 
 #: Invited Users
 msgid "invited"
-msgstr "convidado"
+msgstr "Usuários convidados"
 
 #: Notifications
 msgid "notifications"
@@ -370,7 +370,7 @@ msgstr "Zona de perigo: Alterar algumas dessas configurações pode quebrar as c
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "redefinir"
+msgstr "Redefinir"
 
 #: Filter
 msgid "settings_advanced_filter"
