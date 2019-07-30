@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-07-30 15:01\n"
+"PO-Revision-Date: 2019-07-30 15:12\n"
 
 #: Start
 msgid "start_button"
@@ -174,7 +174,7 @@ msgstr "{{count}} semana"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "semanas"
+msgstr "{{count}} semanas"
 
 #: {{count}} day
 msgid "day"
@@ -206,7 +206,7 @@ msgstr "{{count}} segundo"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "segundos"
+msgstr "{{count}} segundos"
 
 #: General
 msgid "settings_general"
