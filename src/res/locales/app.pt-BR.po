@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-07-30 14:22\n"
+"PO-Revision-Date: 2019-07-30 14:32\n"
 
 #: Start
 msgid "start_button"
@@ -58,7 +58,7 @@ msgstr "Usuários banidos"
 
 #: Invited Users
 msgid "invited"
-msgstr "Utilizadores convidados"
+msgstr "convidado"
 
 #: Notifications
 msgid "notifications"
@@ -370,11 +370,11 @@ msgstr "Zona de perigo: Alterar algumas dessas configurações pode quebrar as c
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "configurações avançadas redefinir"
+msgstr "redefinir"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filtro"
+msgstr "Configurações avançada de filtro "
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -398,11 +398,11 @@ msgstr "Ninguém está banido"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Actualizar a lista de convites"
+msgstr "Atualizar a lista de convites"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Utilizador convidado"
+msgstr "Usuário convidado"
 
 #: Invited by
 msgid "invites_by"
@@ -410,7 +410,7 @@ msgstr "Convidado por"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Actualizando a lista de convites..."
+msgstr "Atualizando a lista de convites..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
@@ -422,7 +422,7 @@ msgstr "Este é um canal público."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Apenas utilizadores convidados podem entrar."
+msgstr "Apenas usuários convidados podem entrar."
 
 #: Only allow invited users
 msgid "invite_set_private"
@@ -466,7 +466,7 @@ msgstr "Bloquear mensagens externas"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Clique no botão actualizar para actualizar a lista de canais"
+msgstr "Clique no botão atualizar para atualizar a lista de canais"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
