@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-07-30 15:12\n"
+"PO-Revision-Date: 2019-07-30 15:32\n"
 
 #: Start
 msgid "start_button"
@@ -374,7 +374,7 @@ msgstr "redefinir"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Configurações avançada de filtro "
+msgstr "Filtro"
 
 #: Refresh banlist
 msgid "bans_refresh"
