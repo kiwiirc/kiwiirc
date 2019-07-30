@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-07-30 14:52\n"
+"PO-Revision-Date: 2019-07-30 15:01\n"
 
 #: Start
 msgid "start_button"
@@ -974,7 +974,7 @@ msgstr "Está tentando conectar na rede {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "A rede foi adicionada à janela existente do KiwiIRC"
+msgstr "A rede foi adicionada à uma janela existente do KiwiIRC"
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
@@ -982,7 +982,7 @@ msgstr "Adicionar rede à janela existente do KiwiIRC"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Ligar temporariamente a esta rede"
+msgstr "Conecte-se temporariamente a esta rede"
 
 #: Saved networks
 msgid "personal_saved"
@@ -1010,11 +1010,11 @@ msgstr "Conectado"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Desligado"
+msgstr "Desconectado"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Ligado a rede {{network}}"
+msgstr "Conectado a {{network}}"
 
 #: {{nick}} has joined
 msgid "has_joined"
@@ -1022,7 +1022,7 @@ msgstr "{{nick}} entrou"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "Foste kickado do {{channel}} por {{nick}}"
+msgstr "Você foi kickado do {{channel}} por {{nick}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
@@ -1034,7 +1034,7 @@ msgstr "{{nick}} saiu"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} convidou-te para o canal {{channel}}"
+msgstr "{{nick}} convidou você para o canal {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
