@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-07-30 13:47\n"
+"PO-Revision-Date: 2019-07-30 14:03\n"
 
 #: Start
 msgid "start_button"
@@ -194,19 +194,19 @@ msgstr "horas"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minuto"
+msgstr "minuto"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutos"
+msgstr "minutos"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} segundo"
+msgstr "segundo"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} segundos"
+msgstr "segundos"
 
 #: General
 msgid "settings_general"
@@ -214,7 +214,7 @@ msgstr "Geral"
 
 #: Language
 msgid "settings_language"
-msgstr "Idioma"
+msgstr "configurações_de_idioma "
 
 #: Theme
 msgid "settings_theme"
