@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-07-06 15:32\n"
+"PO-Revision-Date: 2019-07-30 16:11\n"
 
 #: Start
 msgid "start_button"
@@ -58,7 +58,7 @@ msgstr "Usuários banidos"
 
 #: Invited Users
 msgid "invited"
-msgstr "Utilizadores convidados"
+msgstr "Usuários convidados"
 
 #: Notifications
 msgid "notifications"
@@ -282,7 +282,7 @@ msgstr "Nicknames Coloridos"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Partilhar quando estou a escrever uma mensagem"
+msgstr "Compartilhar quando estou escrevendo uma mensagem"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -370,7 +370,7 @@ msgstr "Zona de perigo: Alterar algumas dessas configurações pode quebrar as c
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Restabelecer"
+msgstr "Redefinir"
 
 #: Filter
 msgid "settings_advanced_filter"
@@ -398,11 +398,11 @@ msgstr "Ninguém está banido"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Actualizar a lista de convites"
+msgstr "Atualizar a lista de convites"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Utilizador convidado"
+msgstr "Usuário convidado"
 
 #: Invited by
 msgid "invites_by"
@@ -410,7 +410,7 @@ msgstr "Convidado por"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Actualizando a lista de convites..."
+msgstr "Atualizando a lista de convites..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
@@ -422,27 +422,27 @@ msgstr "Este é um canal público."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Apenas utilizadores convidados podem entrar."
+msgstr "Apenas usuários convidados podem entrar."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Permitir apenas usuários convidados"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Permitir que qualquer usuário participe"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Apenas usuários registrados podem participar"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Adicionar convite"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "Qualquer usuário registrado"
 
 #: Topic
 msgid "channel_topic"
@@ -466,7 +466,7 @@ msgstr "Bloquear mensagens externas"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Clique no botão actualizar para actualizar a lista de canais"
+msgstr "Clique no botão atualizar para atualizar a lista de canais"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
@@ -558,7 +558,7 @@ msgstr "Mostrar o original"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Websocket directo"
+msgstr "Websocket direto"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -582,7 +582,7 @@ msgstr "{{count}} usuários aqui"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtrar utilizadores no canal"
+msgstr "Filtrar usuários no canal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -658,7 +658,7 @@ msgstr "Não existe nenhum tópico neste canal"
 
 #: About
 msgid "about"
-msgstr "Acerca"
+msgstr "Sobre"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -666,11 +666,11 @@ msgstr "Criado em {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Menções"
+msgstr "Destaques"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Ninguém o mencionou ainda..."
+msgstr "Ninguém mencionou você ainda ..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -802,43 +802,43 @@ msgstr "Por favor especifique um canal para entrar, por exemplo, /join #exemplo"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} deu estatuto de op a {{target}}"
+msgstr "{{nick}} deu status de op a {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} tirou estatuto de op a {{target}}"
+msgstr "{{nick}} tirou status de op a {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} deu estatuto de half-op a {{target}}"
+msgstr "{{nick}} deu status de half-op a {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} tirou estatuto de half-op a {{target}}"
+msgstr "{{nick}} tirou status de half-op a {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} deu estatuto de voice a {{target}}"
+msgstr "{{nick}} deu status de voice a {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} tirou estatuto de voice a {{target}}"
+msgstr "{{nick}} tirou status de voice a {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} deu estatuto de admin a {{target}}"
+msgstr "{{nick}} deu status de admin a {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} tirou estatuto de admin a {{target}}"
+msgstr "{{nick}} tirou status de admin a {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} deu estatuto de owner a {{target}}"
+msgstr "{{nick}} deu status de owner a {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} tirou estatuto de owner a {{target}}"
+msgstr "{{nick}} tirou status de owner a {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -862,7 +862,7 @@ msgstr "Faça algo físico"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Entrar num canal"
+msgstr "Entrar em um canal"
 
 #: Leave a channel
 msgid "command_part"
@@ -926,11 +926,11 @@ msgstr "Solicitar informações sobre alguém que se desconectou recentemente"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Coloca-o como ausente"
+msgstr "Marque-se como ausente"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Remove o estatuto de ausente (/away)"
+msgstr "Remove o status de ausente (/away)"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -942,7 +942,7 @@ msgstr "Ignorar mensagens de alguém"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Pare de ignorar alguém"
+msgstr "Parar de ignorar alguém"
 
 #: Roll a Dice
 msgid "command_dice"
@@ -970,11 +970,11 @@ msgstr "Adicionar uma rede"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "Está a tentar ligar à rede {{network}}"
+msgstr "Está tentando conectar na rede {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "A rede foi adicionada à janela existente do KiwiIRC"
+msgstr "A rede foi adicionada à uma janela existente do KiwiIRC"
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
@@ -982,7 +982,7 @@ msgstr "Adicionar rede à janela existente do KiwiIRC"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Ligar temporariamente a esta rede"
+msgstr "Conecte-se temporariamente a esta rede"
 
 #: Saved networks
 msgid "personal_saved"
@@ -1010,11 +1010,11 @@ msgstr "Conectado"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Desligado"
+msgstr "Desconectado"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Ligado a rede {{network}}"
+msgstr "Conectado a {{network}}"
 
 #: {{nick}} has joined
 msgid "has_joined"
@@ -1022,7 +1022,7 @@ msgstr "{{nick}} entrou"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "Foste kickado do {{channel}} por {{nick}}"
+msgstr "Você foi kickado do {{channel}} por {{nick}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
@@ -1034,7 +1034,7 @@ msgstr "{{nick}} saiu"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} convidou-te para o canal {{channel}}"
+msgstr "{{nick}} convidou você para o canal {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
