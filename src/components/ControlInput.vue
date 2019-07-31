@@ -747,7 +747,7 @@ export default {
     height: 100%;
     box-sizing: border-box;
     overflow: visible;
-    padding-top: 8px;
+    padding: 7px 0 12px 0;
 }
 
 .kiwi-controlinput-tool {
