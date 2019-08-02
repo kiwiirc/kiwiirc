@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-08-02 12:45\n"
+"PO-Revision-Date: 2019-08-02 12:52\n"
 
 #: Start
 msgid "start_button"
@@ -170,7 +170,7 @@ msgstr "Κανάλι"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "Μακριά"
 
 #: {{count}} week
 msgid "week"
@@ -750,7 +750,7 @@ msgstr "Αλλαγή ψευδώνυμου"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Εισαγάγετε νέο ψευδώνυμο"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -810,15 +810,15 @@ msgstr "Προσδιορίστε ένα κανάλι για να εισέλθε�
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "Το ψευδώνυμο {{nick}} είναι ήδη σε χρήση!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Πρέπει να εισαγάγετε ένα νέο ψευδώνυμο"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "Το ψευδώνυμο δεν πρέπει να ξεκινά με έναν αριθμό"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
