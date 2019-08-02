@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2019-07-07 21:22\n"
+"PO-Revision-Date: 2019-08-02 13:02\n"
 
 #: Start
 msgid "start_button"
@@ -167,6 +167,10 @@ msgstr "Ignorar usuario"
 #: Channel
 msgid "connection_channel"
 msgstr "Sala"
+
+#: Away
+msgid "away"
+msgstr "Está ausente"
 
 #: {{count}} week
 msgid "week"
@@ -744,6 +748,10 @@ msgstr "Find máis canles."
 msgid "change_nick"
 msgstr "Cambiar o alcume"
 
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "Escribe o novo alcume..."
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "Nome da conta: {{user}}"
@@ -799,6 +807,18 @@ msgstr "Kick + Ban do canle"
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Por favor especifica a canle para entrar. Por ex. /join #exemplo"
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr "O alcume {{nick}} está actualmente en uso!"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr "Debes escribir un novo alcume"
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr "O alcume non pode empezar por un número"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"

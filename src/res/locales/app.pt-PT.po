@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2019-07-06 15:32\n"
+"PO-Revision-Date: 2019-08-02 14:28\n"
 
 #: Start
 msgid "start_button"
@@ -167,6 +167,10 @@ msgstr "Ignorar utilizador"
 #: Channel
 msgid "connection_channel"
 msgstr "Canal"
+
+#: Away
+msgid "away"
+msgstr "Ausente"
 
 #: {{count}} week
 msgid "week"
@@ -426,23 +430,23 @@ msgstr "Apenas utilizadores convidados podem entrar."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Apenas utilizadores convidados podem entrar"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Permite a entrada de qualquer utilizador"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Apenas utilizadores registrados podem entrar"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Adicionar convite"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Qualquer utilizador registado)"
 
 #: Topic
 msgid "channel_topic"
@@ -744,6 +748,10 @@ msgstr "Descobrir Mais Canais"
 msgid "change_nick"
 msgstr "Mudar de nick"
 
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "Introduza o novo nick..."
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "Nome de conta: {{user}}"
@@ -799,6 +807,18 @@ msgstr "Kickar + Banir do canal"
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Por favor especifique um canal para entrar, por exemplo, /join #exemplo"
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr "O nick {{nick}} já se econtra em uso!"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr "Deve inserir um novo nick"
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr "O nick não pode começar com um número"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"

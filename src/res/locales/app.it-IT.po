@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-07-08 09:51\n"
+"PO-Revision-Date: 2019-08-02 14:15\n"
 
 #: Start
 msgid "start_button"
@@ -167,6 +167,10 @@ msgstr "Ignora utente"
 #: Channel
 msgid "connection_channel"
 msgstr "Canale"
+
+#: Away
+msgid "away"
+msgstr "Assente"
 
 #: {{count}} week
 msgid "week"
@@ -744,6 +748,10 @@ msgstr "Trova altri Canali"
 msgid "change_nick"
 msgstr "Cambia nickname"
 
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "Inserire il nuovo nickname..."
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "Nome account: {{user}}"
@@ -799,6 +807,18 @@ msgstr "Bandisci ed espelli dal canale"
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Specifica un canale a cui accedere. es /join #esempio"
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr "Il nickname {{nick}} è già in uso!"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr "È necessario inserire un nuovo nickname"
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr "Il nickname non può iniziare con un numero"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"

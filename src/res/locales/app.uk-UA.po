@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2019-07-06 15:31\n"
+"PO-Revision-Date: 2019-08-02 12:45\n"
 
 #: Start
 msgid "start_button"
@@ -167,6 +167,10 @@ msgstr "Ігнорувати користувача"
 #: Channel
 msgid "connection_channel"
 msgstr "Канал"
+
+#: Away
+msgid "away"
+msgstr ""
 
 #: {{count}} week
 msgid "week"
@@ -744,6 +748,10 @@ msgstr "Знайти більше каналів"
 msgid "change_nick"
 msgstr "Змінити псевдонім"
 
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr ""
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "Назва облікового запису: {{user}}"
@@ -799,6 +807,18 @@ msgstr "Заблокувати й виштовхнути з каналу"
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Будь ласка, вкажіть канал для приєднання, наприклад, /join #example"
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr ""
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr ""
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr ""
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
