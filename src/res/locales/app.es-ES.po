@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2019-08-02 12:44\n"
+"PO-Revision-Date: 2019-08-02 12:52\n"
 
 #: Start
 msgid "start_button"
@@ -170,7 +170,7 @@ msgstr "Sala"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "Está ausente"
 
 #: {{count}} week
 msgid "week"
@@ -750,7 +750,7 @@ msgstr "Cambiar apodo"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Escribe el alias nuevo..."
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -810,15 +810,15 @@ msgstr "Por favor especifica la sala a entrar. Por ej. /join #ejemplo"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "¡El apodo {{nick}} está actualmente en uso!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Debes escribir un nuevo alias"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "El apodo no puede empezar por un número"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
