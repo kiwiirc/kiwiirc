@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2019-08-02 12:45\n"
+"PO-Revision-Date: 2019-08-02 14:31\n"
 
 #: Start
 msgid "start_button"
@@ -170,7 +170,7 @@ msgstr "Canal"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "Està absent"
 
 #: {{count}} week
 msgid "week"
@@ -750,7 +750,7 @@ msgstr "Canviar el nick"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Escriu el nou àlies..."
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -810,15 +810,15 @@ msgstr "Si us plau, especifica la sala a entrar. Per ex. /join #exemple"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "L'àlies {{nick}} està actualment en ús!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Has d'escriure un nou àlies"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "L'àlies no pot començar amb un número"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
