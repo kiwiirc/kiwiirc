@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-08-02 16:11\n"
+"PO-Revision-Date: 2019-08-02 22:40\n"
 
 #: Start
 msgid "start_button"
@@ -170,7 +170,7 @@ msgstr "Κανάλι"
 
 #: Away
 msgid "away"
-msgstr "Μη διαθέσιμος"
+msgstr "Απών"
 
 #: {{count}} week
 msgid "week"
@@ -946,7 +946,7 @@ msgstr "Ζητήστε πληροφορίες σχετικά με κάποιον
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Σημειώστε τον εαυτό σας ως μακριά"
+msgstr "Σημειώστε τον εαυτό σας ως απών"
 
 #: Set yourself as active
 msgid "command_back"
