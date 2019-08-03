@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2019-08-02 12:45\n"
+"PO-Revision-Date: 2019-08-03 12:00\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "Канали"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Достъп"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Изгонени"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Поканени потребители"
 
 #: Notifications
 msgid "notifications"
@@ -170,7 +170,7 @@ msgstr "Автоматично влизане в канали"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "Далеч"
 
 #: {{count}} week
 msgid "week"
@@ -402,31 +402,31 @@ msgstr "Все още няма баннати потребители"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Презареди листа с поканите"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Поканени потребители"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Поканен от"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Обновяване на листа с покани"
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Никой не е поканен!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Това е публичен канал."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Само поканени потребители могат да влязат."
 
 #: Only allow invited users
 msgid "invite_set_private"
