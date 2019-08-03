@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2019-08-03 12:00\n"
+"PO-Revision-Date: 2019-08-03 13:51\n"
 
 #: Start
 msgid "start_button"
@@ -430,23 +430,23 @@ msgstr "Само поканени потребители могат да вля�
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Разрешено само за поканени потребители"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Позволи на всеки да влиза "
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Само регистрирани потребители могат да влизат"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Добави покана"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Всеки регистриран потребител)"
 
 #: Topic
 msgid "channel_topic"
@@ -750,7 +750,7 @@ msgstr "Промяна на ник"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Въведете нов прякор..."
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -810,15 +810,15 @@ msgstr "Моля, посочете канал, към който да се пр�
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "Този прякор {{nick}} вече се ползва!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Трябва да въведете нов прякор"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "Прякорът не трябва да почва с цифри"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
