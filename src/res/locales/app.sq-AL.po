@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2019-08-02 12:45\n"
+"PO-Revision-Date: 2019-08-04 12:01\n"
 
 #: Start
 msgid "start_button"
@@ -58,7 +58,7 @@ msgstr "Përdorues të Dëbuar"
 
 #: Invited Users
 msgid "invited"
-msgstr "ftoi"
+msgstr "të ftuar"
 
 #: Notifications
 msgid "notifications"
@@ -170,7 +170,7 @@ msgstr "Kanal"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "i larguar"
 
 #: {{count}} week
 msgid "week"
