@@ -702,16 +702,28 @@ function clientMiddleware(state, network) {
 
         if (command === 'wholist') {
             state.usersTransaction(networkid, (users) => {
-                event.users.forEach((user) => {
+                event.users.forEach((eventUser) => {
                     let userObj = {
-                        nick: user.nick,
-                        host: user.hostname || undefined,
-                        username: user.ident || undefined,
-                        away: user.away ? 'Away' : '',
-                        realname: user.real_name,
-                        account: user.account || undefined,
+                        nick: eventUser.nick,
+                        host: eventUser.hostname || undefined,
+                        username: eventUser.ident || undefined,
+                        away: eventUser.away ? 'Away' : '',
+                        realname: eventUser.real_name,
+                        account: eventUser.account || undefined,
                     };
                     state.addUser(networkid, userObj, users);
+
+                    let buffer = network.bufferByName(eventUser.channel);
+                    let user = state.getUser(networkid, eventUser.nick);
+                    if (!user || !user.buffers[buffer.id]) {
+                        return;
+                    }
+                    let modes = user.buffers[buffer.id].modes;
+                    eventUser.channel_modes.forEach((mode) => {
+                        if (modes.indexOf(mode) === -1) {
+                            modes.push(mode);
+                        }
+                    });
                 });
             });
         }
