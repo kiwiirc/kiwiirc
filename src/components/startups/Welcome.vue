@@ -291,6 +291,10 @@ export default {
             net.connection.nick = this.nick;
             net.password = password;
 
+            if (_.trim(options.encoding || '')) {
+                net.connection.encoding = _.trim(options.encoding);
+            }
+
             if (!this.network && options.recaptchaSiteId) {
                 net.captchaResponse = this.captchaResponse();
             }
