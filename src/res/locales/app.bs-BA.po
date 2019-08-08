@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2019-08-02 12:45\n"
+"PO-Revision-Date: 2019-08-08 16:22\n"
 
 #: Start
 msgid "start_button"
@@ -170,7 +170,7 @@ msgstr "Kanal"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "Odsutan"
 
 #: {{count}} week
 msgid "week"
@@ -750,7 +750,7 @@ msgstr "Promijeni nadimak"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Upiši novi nadimak..."
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -810,15 +810,15 @@ msgstr "Molimo naznačite na koji kanal se želite sojiti. npr /join #primjer"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "Nadimak {{nick}} je već u upotrebi!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Morate upisati novi nadimak"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "Nadimci ne smiju počinjati sa brojem"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
