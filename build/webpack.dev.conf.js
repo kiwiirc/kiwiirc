@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
 const path = require('path')
+const fs = require("fs")
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -65,7 +66,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       {
         from: path.resolve(__dirname, '../static'),
         to: config.dev.assetsSubDirectory,
-        ignore: ['.*']
+        ignore: ['.*', 'config.local.json']
       }
     ])
   ]
@@ -81,6 +82,20 @@ module.exports = new Promise((resolve, reject) => {
       process.env.PORT = port
       // add port to devServer config
       devWebpackConfig.devServer.port = port
+
+      // override config.json with config.local.json if it exists
+      let localConfig = path.resolve(__dirname, '../static/config.local.json');
+      if (fs.existsSync(localConfig)) {
+        devWebpackConfig.plugins.push(
+          new CopyWebpackPlugin([
+            {
+              from: localConfig,
+              to: config.dev.assetsSubDirectory + '/config.json',
+              force: true
+            }
+          ])
+        )
+      }
 
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
