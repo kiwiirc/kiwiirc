@@ -231,7 +231,8 @@ export default {
     opacity: 1;
 }
 
-@media screen and (max-width: 700px) {
+// Mobile layout (matches this.$state.ui.is_narrow)
+@media screen and (max-width: 769px) {
     .kiwi-messagelist-message--compact {
         padding: 5px;
     }
@@ -288,6 +289,68 @@ export default {
 
 .kiwi-messagelist-item:last-of-type {
     margin-bottom: 5px;
+}
+
+// Moderate screen size
+// Give more space to the nickname column on larger screens
+@media screen and (min-width: 1000px) {
+    // Nicknames
+    .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
+        width: 160px;
+        min-width: 160px;
+    }
+
+    .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
+        width: auto;
+    }
+
+    // Messages
+    .kiwi-messagelist-message--compact .kiwi-messagelist-body {
+        margin-left: 170px;
+    }
+
+    .kiwi-messagelist-message--compact .kiwi-messageinfo {
+        padding-left: 180px;
+    }
+
+    .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
+        margin-left: 181px;
+    }
+
+    .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+        margin-left: 181px;
+    }
+}
+
+// Widescreen
+// Give the most space to the nickname column on even wider screens
+@media screen and (min-width: 1300px) {
+    // Nicknames
+    .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
+        width: 210px;
+        min-width: 210px;
+    }
+
+    .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
+        width: auto;
+    }
+
+    // Messages
+    .kiwi-messagelist-message--compact .kiwi-messagelist-body {
+        margin-left: 220px;
+    }
+
+    .kiwi-messagelist-message--compact .kiwi-messageinfo {
+        padding-left: 230px;
+    }
+
+    .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
+        margin-left: 231px;
+    }
+
+    .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+        margin-left: 231px;
+    }
 }
 
 </style>
