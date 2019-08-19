@@ -378,6 +378,7 @@ export default {
                 let network = this.buffer.getNetwork();
                 this.$state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
+                this.$state.setActiveBuffer(this.buffer.networkid, channelName);
                 return;
             }
 
