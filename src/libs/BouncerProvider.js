@@ -26,6 +26,9 @@ export default class BouncerProvider {
             registered: false,
         };
 
+        // If enabled, new IRC connections will be re-routed through the bouncer
+        this.rewriteConnections = true;
+
         // A snapshot of the current networks. Compared against to detect changed networks
         this.networksSnapshot = Object.create(null);
 
@@ -79,10 +82,7 @@ export default class BouncerProvider {
             network.connection.bncname = client.bnc.tags().network;
         }
 
-        // First-run setup. Only run on the first connection of the first network connected
-        if (this.getController() === network && !this.bnc.registered) {
-            await this.initAndAddNetworks(network);
-        }
+        await this.initAndAddNetworks(network);
     }
 
     async initAndAddNetworks(network) {
@@ -174,6 +174,21 @@ export default class BouncerProvider {
             if (net.state === 'connected' && newBuffer.isChannel() && newBuffer.joined) {
                 net.ircClient.raw('NAMES ' + newBuffer.name);
                 net.ircClient.raw('TOPIC ' + newBuffer.name);
+            }
+        });
+
+        // Remove any existing buffers that we no longer have on the bouncer
+        net.buffers.forEach((clientBuffer) => {
+            if (!clientBuffer.isChannel() && !clientBuffer.isQuery()) {
+                return;
+            }
+
+            let existingBuffers = network.buffers.filter(bncBuffer => (
+                bncBuffer.name.toLowerCase() === clientBuffer.name.toLowerCase()
+            ));
+
+            if (existingBuffers.length === 0) {
+                this.state.removeBuffer(clientBuffer);
             }
         });
     }
@@ -279,7 +294,7 @@ export default class BouncerProvider {
         state.$on('network.connecting', (event) => {
             // Redirect the connection towards the bouncer with the network specific password
             let network = event.network;
-            if (this.bnc.enabled) {
+            if (this.bnc.enabled && this.rewriteConnections) {
                 let netname = network.connection.bncname;
 
                 let ircClient = network.ircClient;
