@@ -445,8 +445,7 @@ export default Vue.component('irc-input', {
     outline: none;
 
     /* When the contenteditable div is empty firefox makes its height 0px */
-    min-height: 1.6em;
-    max-height: 4.8em;
+    height: 100%;
 }
 
 .kiwi-ircinput-editor:empty:not(:focus)::before {
