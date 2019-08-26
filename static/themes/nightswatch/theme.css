@@ -222,6 +222,7 @@
 }
 
 .kiwi-messagelist-avatar {
+    background-color: var(--brand-default-bg);
     color: var(--brand-default-fg);
 }
 

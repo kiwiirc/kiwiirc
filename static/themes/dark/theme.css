@@ -123,6 +123,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
 }
 
 .kiwi-messagelist-avatar {
+    background-color: var(--brand-default-bg);
     color: var(--brand-default-fg);
 }
 

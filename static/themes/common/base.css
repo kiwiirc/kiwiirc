@@ -875,6 +875,7 @@
 
 /* ---- Modern Layout Styling ---- */
 .kiwi-messagelist-avatar {
+    background-color: var(--brand-default-fg);
     color: var(--brand-default-bg);
     border-color: var(--brand-primary);
 }
