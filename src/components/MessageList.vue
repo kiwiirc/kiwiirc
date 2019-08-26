@@ -1,6 +1,5 @@
 <template>
     <div
-        ref="messageList"
         :key="buffer.name"
         class="kiwi-messagelist"
         @scroll.self="onThreadScroll"
@@ -90,8 +89,6 @@ let log = Logger.namespace('MessageList.vue');
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
 const BOTTOM_SCROLL_MARGIN = 30;
-
-let addedCopyListeners = false;
 
 export default {
     components: {
@@ -247,7 +244,7 @@ export default {
         },
     },
     mounted() {
-        this.addCopyListeners(this.$state, this.$refs.messageList);
+        this.addCopyListeners();
 
         this.$nextTick(() => {
             this.scrollToBottom();
@@ -441,12 +438,7 @@ export default {
                 this.auto_scroll = false;
             }
         },
-        addCopyListeners(state, ref) { // Better copy pasting
-            if (addedCopyListeners) {
-                return;
-            }
-            addedCopyListeners = true;
-
+        addCopyListeners() { // Better copy pasting
             const LogFormatter = (msg) => {
                 let text = '';
 
@@ -471,22 +463,26 @@ export default {
 
             let copyData = '';
             let selecting = false;
-            document.addEventListener('mousedown', (e) => {
+
+            this.listen(document, 'mousedown', (e) => {
                 if (e.target.closest('[data-message-id]')) {
                     selecting = true;
                 }
             });
-            document.addEventListener('mouseup', (e) => {
+
+            this.listen(document, 'mouseup', (e) => {
                 if (!selecting) {
                     document.querySelector('body').style.userSelect = 'auto';
                 }
                 selecting = false;
             });
-            document.addEventListener('selectionchange', (e) => {
-                if (!ref) {
+
+            this.listen(document, 'selectionchange', (e) => {
+                if (!this.$el) {
                     return true;
                 }
-                let refClassName = '.' + ref.className;
+
+                let refClassName = '.' + this.$el.className;
                 copyData = [];
                 let selection = document.getSelection();
 
@@ -504,7 +500,7 @@ export default {
                 }
                 // Prevent the selection escaping the message list
                 document.querySelector('body').style.userSelect = 'none';
-                ref.style.userSelect = 'text';
+                this.$el.style.userSelect = 'text';
                 let mlsb = document.querySelector('.kiwi-messagelist-scrollback');
                 if (mlsb) {
                     mlsb.style.userSelect = 'none';
@@ -531,7 +527,7 @@ export default {
 
                     let node = startNode;
                     let messages = [];
-                    let allMessages = state.getActiveBuffer().getMessages();
+                    let allMessages = this.$state.getActiveBuffer().getMessages();
                     const finder = m => m.id.toString() === node.attributes['data-message-id'].value;
 
                     // This could be more efficent with an id->msg lookup
@@ -564,7 +560,7 @@ export default {
                 return false;
             });
 
-            document.addEventListener('copy', (e) => {
+            this.listen(document, 'copy', (e) => {
                 if (!copyData || !copyData.length) { // Just do a normal copy if no special data
                     return true;
                 }
