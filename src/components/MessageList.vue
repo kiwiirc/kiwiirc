@@ -529,11 +529,12 @@ export default {
 
                     const finder = m => m.id.toString() === node.attributes['data-message-id'].value;
 
-                    // This could be more efficent with an id->msg lookup
                     let i = 0;
                     while (node) {
                         // Add a class to show the line has been selected
                         node.classList.add('kiwi-messagelist-message--selected');
+
+                        // This could be more efficent with an id->msg lookup
                         let msg = allMessages.find(finder);
                         if (msg) {
                             messages.push(msg);
