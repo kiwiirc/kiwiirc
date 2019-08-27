@@ -1074,3 +1074,8 @@
 .kiwi-bufferkey-button {
     border-color: var(--brand-default-bg);
 }
+
+/* Selected text */
+:root {
+    --brand-selected: rgba(0, 0, 255, 0.3);
+}
