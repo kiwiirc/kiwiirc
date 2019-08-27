@@ -447,9 +447,10 @@ export default {
             this.$el.style.userSelect = 'auto';
         },
         removeSelections() {
-            for(let el of document.querySelectorAll('.kiwi-messagelist-message--selected')) {
+            let selected = document.querySelectorAll('.kiwi-messagelist-message--selected');
+            Array.from(selected).forEach((el) => {
                 el.classList.remove('kiwi-messagelist-message--selected');
-            }
+            });
             document.querySelector('body').classList.remove('kiwi-unselectable');
         },
         addCopyListeners() { // Better copy pasting
@@ -492,28 +493,27 @@ export default {
                 }
 
                 copyData = ''; // Store the text data to be copied in this.
-                
+
                 let selection = document.getSelection();
 
                 if (!selection
                 || !selection.anchorNode
-                || !selection.anchorNode.parentNode.closest('.'+this.$el.className)) {
+                || !selection.anchorNode.parentNode.closest('.' + this.$el.className)) {
                     this.unrestrictTextSelection();
                     this.removeSelections();
                     return true;
                 }
+
+                this.removeSelections();
                 // Prevent the selection escaping the message list
                 this.restrictTextSelection();
-                for(let el of document.querySelectorAll('.kiwi-messagelist-message--selected')) {
-                    el.classList.remove('kiwi-messagelist-message--selected');
-                }
                 if (selection.rangeCount > 0) {
                     selecting = true;
-                    let range = document.getSelection().getRangeAt(0);
-
+                    let firstRange = selection.getRangeAt(0);
+                    let lastRange = selection.getRangeAt(selection.rangeCount - 1);
                     // Traverse the DOM to find messages in selection
-                    let startNode = range.startContainer.parentNode.closest('[data-message-id]');
-                    let endNode = range.endContainer.parentNode.closest('[data-message-id]');
+                    let startNode = firstRange.startContainer.parentNode.closest('[data-message-id]');
+                    let endNode = lastRange.endContainer.parentNode.closest('[data-message-id]');
                     if (!endNode) {
                         // If endContainer isn't in messagelist then mouse has been dragged outside
                         // Set the end node to last in the message list
@@ -535,7 +535,7 @@ export default {
                         // Add a class to show the line has been selected
                         node.classList.add('kiwi-messagelist-message--selected');
                         let msg = allMessages.find(finder);
-                        if(msg) {
+                        if (msg) {
                             messages.push(msg);
                         }
                         if (node === endNode) {
@@ -574,6 +574,7 @@ export default {
                     document.execCommand('copy');
                     document.body.removeChild(input);
                 }
+                this.removeSelections();
                 return true;
             });
         },
