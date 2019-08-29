@@ -97,7 +97,14 @@ export default {
             },
             set: function computedTopicSet(newVal) {
                 let newTopic = newVal.replace('\n', ' ');
-                this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newTopic);
+                // TODO: Update irc-framework to insert a trailing : if the last argument is an
+                //       empty string. The trailing : makes a difference between things like
+                //       requesting a topic and changing to an empty topic
+                if (!newTopic.trim()) {
+                    this.buffer.getNetwork().ircClient.raw(`TOPIC ${this.buffer.name} :`);
+                } else {
+                    this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newTopic);
+                }
             },
         },
     },
