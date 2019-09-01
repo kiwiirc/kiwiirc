@@ -30,6 +30,9 @@
             ml.message_info_open && ml.message_info_open !== message ?
                 'kiwi-messagelist-message--blur' :
                 '',
+            (message.user && userMode(message.user)) ?
+                'kiwi-messagelist-message--user-mode-'+userMode(message.user) :
+                ''
         ]"
         :data-message-id="message.id"
         :data-nick="(message.nick||'').toLowerCase()"
