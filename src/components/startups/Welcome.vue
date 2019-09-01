@@ -58,6 +58,8 @@
                     type="submit"
                     v-html="buttonText"
                 />
+
+                <div v-html="footerText"/>
             </form>
         </template>
         <template v-slot:connection v-else>
@@ -105,6 +107,12 @@ export default {
             return typeof greeting === 'string' ?
                 greeting :
                 this.$t('start_greeting');
+        },
+        footerText: function footerText() {
+            let footer = state.settings.startupOptions.footerText;
+            return typeof footer === 'string' ?
+                footer :
+                '';
         },
         buttonText: function buttonText() {
             let greeting = state.settings.startupOptions.buttonText;
