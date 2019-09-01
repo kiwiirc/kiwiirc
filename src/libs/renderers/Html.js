@@ -3,9 +3,11 @@ import state from '@/libs/state';
 
 export default render;
 
-function render(blocks) {
+function render(blocks, renderEmoticons) {
     const emojiLocation = state.setting('emojiLocation');
-    const showEmoticons = state.setting('buffers.show_emoticons');
+    const showEmoticons = typeof renderEmoticons === 'undefined' ?
+        state.setting('buffers.show_emoticons') :
+        !!renderEmoticons;
 
     const retHtml = blocks.reduce((html, block, i) => {
         // a
