@@ -131,6 +131,8 @@ export default {
     .kiwi-startup-common-section {
         width: 100%;
         min-height: auto;
+        height: auto;
+        align-items: flex-start;
     }
 
     /** Closing - the wiping away of the screen **/
