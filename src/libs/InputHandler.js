@@ -836,7 +836,7 @@ inputCommands.list = function inputCommandList(event, command, line) {
     let network = this.state.getActiveNetwork();
     if (!network.channel_list.length && network.channel_list_state !== 'updating') {
         network.channel_list_state = 'updating';
-        network.ircClient.raw('LIST');
+        network.ircClient.raw('LIST ' + line);
     }
 
     network.showServerBuffer('channels');
