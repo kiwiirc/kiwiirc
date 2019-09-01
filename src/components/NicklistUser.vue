@@ -61,6 +61,7 @@ export default {
     box-sizing: border-box;
     transition: all 0.1s;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .kiwi-nicklist-user-nick {
