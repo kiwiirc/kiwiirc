@@ -15,6 +15,7 @@
             @click="$emit('click', $event)"
             @paste="onPaste"
             @focus="onFocus()"
+            @blur="$emit('blur', $event)"
         />
     </div>
 </template>
@@ -103,6 +104,8 @@ export default Vue.component('irc-input', {
             if (!this.getRawText() && this.default_colour) {
                 this.setColour(this.default_colour.code, this.default_colour.colour);
             }
+
+            this.$emit('focus', event);
         },
         updateValueProps() {
             let selection = window.getSelection();
