@@ -7,70 +7,70 @@ msgstr ""
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
+"Last-Translator: Kristoffer Grundström (hamnisdude@gmail.com)\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
 "PO-Revision-Date: 2019-08-02 12:45\n"
 
 #: Start
 msgid "start_button"
-msgstr ""
+msgstr "start-knapp"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "hälsning vid start"
 
 #: Close
 msgid "close"
-msgstr ""
+msgstr "stäng"
 
 #: Connect
 msgid "connect"
-msgstr ""
+msgstr "anslut"
 
 #: Connecting...
 msgid "connecting"
-msgstr ""
+msgstr "ansluter..."
 
 #: Connected
 msgid "connected"
-msgstr ""
+msgstr "ansluten"
 
 #: Settings
 msgid "settings"
-msgstr ""
+msgstr "inställningar"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "inställningar för kiwi"
 
 #: Channels
 msgid "channels"
-msgstr ""
+msgstr "kanaler"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "åtkomst"
 
 #: Banned Users
 msgid "banned"
-msgstr ""
+msgstr "bannlysta"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "inbjudna"
 
 #: Notifications
 msgid "notifications"
-msgstr ""
+msgstr "aviseringar"
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "användarnamn"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "lösenord"
 
 #: I have a password
 msgid "password_have"
@@ -78,35 +78,35 @@ msgstr ""
 
 #: Server
 msgid "server"
-msgstr ""
+msgstr "server"
 
 #: Nick
 msgid "nick"
-msgstr ""
+msgstr "smeknamn"
 
 #: Channel
 msgid "channel"
-msgstr ""
+msgstr "kanal"
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "meddelanden"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "nätverk"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "znc"
 
 #: Logging in...
 msgid "logging_in"
-msgstr ""
+msgstr "loggar in"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr ""
+msgstr "ogiltig inloggning"
 
 #: Search...
 msgid "do_search"
@@ -114,27 +114,27 @@ msgstr ""
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "ok"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "avbryt"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "ja"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "nej"
 
 #: Not found.
 msgid "not_found"
-msgstr ""
+msgstr "hittades_inte"
 
 #: Warning!
 msgid "warning"
-msgstr ""
+msgstr "varning"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -170,11 +170,11 @@ msgstr ""
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "borta"
 
 #: {{count}} week
 msgid "week"
-msgstr ""
+msgstr "vecka"
 
 #: {{count}} weeks
 msgid "week_plural"
@@ -182,7 +182,7 @@ msgstr ""
 
 #: {{count}} day
 msgid "day"
-msgstr ""
+msgstr "dag"
 
 #: {{count}} days
 msgid "day_plural"
@@ -190,7 +190,7 @@ msgstr ""
 
 #: {{count}} hour
 msgid "hour"
-msgstr ""
+msgstr "timme"
 
 #: {{count}} hours
 msgid "hour_plural"
@@ -198,7 +198,7 @@ msgstr ""
 
 #: {{count}} minute
 msgid "minute"
-msgstr ""
+msgstr "minut"
 
 #: {{count}} minutes
 msgid "minute_plural"
@@ -206,7 +206,7 @@ msgstr ""
 
 #: {{count}} second
 msgid "second"
-msgstr ""
+msgstr "sekund"
 
 #: {{count}} seconds
 msgid "second_plural"
@@ -662,19 +662,19 @@ msgstr ""
 
 #: About
 msgid "about"
-msgstr ""
+msgstr "om"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "skapades den"
 
 #: Highlights
 msgid "highlights"
-msgstr ""
+msgstr "höjdpunkter"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr ""
+msgstr "ingen nämnde dig"
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -714,15 +714,15 @@ msgstr ""
 
 #: Add Network
 msgid "add_network"
-msgstr ""
+msgstr "lägg till nätverk"
 
 #: New Network
 msgid "new_network"
-msgstr ""
+msgstr "nytt nätverk"
 
 #: No Network
 msgid "no_network"
-msgstr ""
+msgstr "inget nätverk"
 
 #: Configure network
 msgid "state_configure"
@@ -738,23 +738,23 @@ msgstr ""
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr ""
+msgstr "filtrera kanaler"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr ""
+msgstr "hitta fler kanaler"
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "byt smeknamn"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "ange nytt smeknamn"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr ""
+msgstr "användarkonto"
 
 #: Real name: {{realname}}
 msgid "user_realname"
