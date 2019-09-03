@@ -13,7 +13,7 @@
             </transition>
         </div>
 
-        <div class="kiwi-controlinput-inner">
+        <div class="kiwi-controlinput-inner" dir="rtl">
             <away-status-indicator
                 v-if="buffer.getNetwork() && buffer.getNetwork().state === 'connected'"
                 :network="buffer.getNetwork()"
@@ -43,7 +43,7 @@
                     @cancel="onAutocompleteCancel"
                 />
                 <typing-users-list v-if="buffer.setting('share_typing')" :buffer="buffer" />
-                <div class="kiwi-controlinput-input-wrap">
+                <div class="kiwi-controlinput-input-wrap" dir="rtl">
                     <irc-input
                         ref="input"
                         :placeholder="$t('input_placeholder')"
@@ -668,6 +668,7 @@ export default {
     box-sizing: border-box;
     transition: width 0.2s;
     transition-delay: 0.2s;
+    text-align: right;
 }
 
 .kiwi-controlinput-inner i {

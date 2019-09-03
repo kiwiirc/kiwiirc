@@ -1,7 +1,7 @@
 {
-    "windowTitle": "Kiwi IRC - The web IRC client",
+    "windowTitle": "kiwiirc-master/static/config.json",
     "startupScreen": "welcome",
-    "kiwiServer": "https://localdev.clients.kiwiirc.com/webirc/kiwiirc/",
+    "kiwiServer": "http://localhost:6969/webirc/kiwiirc",
     "restricted": false,
     "theme": "Default",
     "themes": [
@@ -16,8 +16,8 @@
         { "name": "Elite", "url": "static/themes/elite" }
     ],
     "startupOptions" : {
-        "channel": "#kiwiirc-default",
-        "nick": "kiwi-n?"
+        "channel": "#לובי",
+        "nick": "שמעון?"
     },
     "embedly": {
         "key": ""

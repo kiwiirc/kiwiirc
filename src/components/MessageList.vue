@@ -474,6 +474,7 @@ export default {
     overflow: hidden;
     line-height: 1.5em;
     margin: 0;
+    text-align: right;
 }
 
 .kiwi-wrap--monospace .kiwi-messagelist-message {
@@ -502,7 +503,7 @@ export default {
     font-size: 1.2em;
     height: auto;
     line-height: normal;
-    text-align: center;
+    text-align: left;
     cursor: default;
     display: inline-block;
     padding: 0.5em 1em;
@@ -529,11 +530,12 @@ export default {
 /* Remove the min height from the message, as again, makes the page look bloated */
 .kiwi-messagelist-body {
     min-height: 0;
-    text-align: left;
+    text-align: right;
     line-height: 1.5em;
     font-size: 1.05em;
     margin: 0;
     padding: 0;
+    direction: rtl;
 }
 
 /* Channel messages - e.g 'server on #testing22 ' message and such */

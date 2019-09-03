@@ -218,6 +218,7 @@ export default {
     margin-left: 0;
     padding: 15px 10px;
     transition: border-colour 0.2s, background-color 0.2s;
+    text-align: right;
 }
 
 .kiwi-messagelist-modern-left {
