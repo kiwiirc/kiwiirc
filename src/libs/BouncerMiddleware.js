@@ -30,7 +30,7 @@ export default function bouncerMiddleware() {
             client.emit('bouncer networks', networks);
             networks = [];
         } else if (params[0] === 'listnetworks') {
-            let tags = parseTags(params[1]);
+            let tags = MessageTags.decode(params[1]);
             networks.push({
                 name: tags.network,
                 host: tags.host,
@@ -50,7 +50,7 @@ export default function bouncerMiddleware() {
             client.emit('bouncer buffers ' + netName, detectedBuffers);
         } else if (params[0] === 'listbuffers') {
             let netName = (params[1] || '').toLowerCase();
-            let tags = parseTags(params[2]);
+            let tags = MessageTags.decode(params[2]);
             buffers[netName] = buffers[netName] || [];
             buffers[netName].push({
                 network: tags.network,
@@ -201,19 +201,6 @@ function addFunctionsToClient(client) {
             }
         });
     };
-}
-
-function parseTags(tagString) {
-    let tags = Object.create(null);
-    (tagString || '').split(';').forEach((tag) => {
-        let parts = tag.replace('\\s', ' ')
-            .replace('\\:', ';')
-            .split('=');
-
-        tags[parts[0]] = parts[1] || null;
-    });
-
-    return tags;
 }
 
 function createTagString(tags) {

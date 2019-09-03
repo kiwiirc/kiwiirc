@@ -171,9 +171,10 @@ export default class BouncerProvider {
                 newBuffer.last_read = (new Date(buffer.seen)).getTime();
             }
 
+            newBuffer.topic = buffer.topic || '';
+
             if (net.state === 'connected' && newBuffer.isChannel() && newBuffer.joined) {
                 net.ircClient.raw('NAMES ' + newBuffer.name);
-                net.ircClient.raw('TOPIC ' + newBuffer.name);
             }
         });
 
