@@ -453,8 +453,8 @@ export default {
             this.$el.style.userSelect = 'auto';
         },
         removeSelections(removeNative = false) {
-            this.selectedMessages.clear();
-            this.buffer.message_count++;
+            this.selectedMessages = new Set();
+
             let selection = document.getSelection();
             if (removeNative && selection) {
                 // stops the native browser selection being left behind after ctrl+c
@@ -554,7 +554,8 @@ export default {
                             node = nextNode && nextNode.querySelector('[data-message-id]');
                         }
                     }
-                    this.buffer.message_count++; // force messagelist to update
+                    // Replace the set so the MessageList updates.
+                    this.selectedMessages = new Set(this.selectedMessages);
 
                     // Iterate through the selected messages, format and store as a
                     // string to be used in the copy handler
