@@ -300,21 +300,10 @@ export default class BufferState {
             let network = this.getNetwork();
             let allowedUpdate = !network ? false : this.isChannel() || this.isQuery();
             if (allowedUpdate && network.connection.bncname) {
-                let lastMessage = this.getMessages().reduce((latest, current) => {
-                    if (latest.time && latest.time > current.time) {
-                        return latest;
-                    }
-                    return current;
-                }, this.getMessages()[0]);
-
-                if (!lastMessage) {
-                    return;
-                }
-
                 network.ircClient.bnc.bufferSeen(
                     network.connection.bncname,
                     this.name,
-                    new Date(lastMessage.time),
+                    new Date(),
                 );
             }
         }
