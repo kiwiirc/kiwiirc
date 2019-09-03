@@ -1,0 +1,1070 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Language: ro\n"
+"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"Project-Id-Version: kiwiirc\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
+"Language-Team: Romanian\n"
+"Language: ro_RO\n"
+"PO-Revision-Date: 2019-08-02 12:44\n"
+
+#: Start
+msgid "start_button"
+msgstr ""
+
+#: Welcome to Kiwi IRC!
+msgid "start_greeting"
+msgstr ""
+
+#: Close
+msgid "close"
+msgstr ""
+
+#: Connect
+msgid "connect"
+msgstr ""
+
+#: Connecting...
+msgid "connecting"
+msgstr ""
+
+#: Connected
+msgid "connected"
+msgstr ""
+
+#: Settings
+msgid "settings"
+msgstr ""
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr ""
+
+#: Channels
+msgid "channels"
+msgstr ""
+
+#: Access
+msgid "access"
+msgstr ""
+
+#: Banned Users
+msgid "banned"
+msgstr ""
+
+#: Invited Users
+msgid "invited"
+msgstr ""
+
+#: Notifications
+msgid "notifications"
+msgstr ""
+
+#: Username
+msgid "username"
+msgstr ""
+
+#: Password
+msgid "password"
+msgstr ""
+
+#: I have a password
+msgid "password_have"
+msgstr ""
+
+#: Server
+msgid "server"
+msgstr ""
+
+#: Nick
+msgid "nick"
+msgstr ""
+
+#: Channel
+msgid "channel"
+msgstr ""
+
+#: Messages
+msgid "messages"
+msgstr ""
+
+#: Network
+msgid "network"
+msgstr ""
+
+#: ZNC
+msgid "znc"
+msgstr ""
+
+#: Logging in...
+msgid "logging_in"
+msgstr ""
+
+#: Invalid login
+msgid "invalid_login"
+msgstr ""
+
+#: Search...
+msgid "do_search"
+msgstr ""
+
+#: OK
+msgid "ok"
+msgstr ""
+
+#: Cancel
+msgid "cancel"
+msgstr ""
+
+#: Yes
+msgid "yes"
+msgstr ""
+
+#: No
+msgid "no"
+msgstr ""
+
+#: Not found.
+msgid "not_found"
+msgstr ""
+
+#: Warning!
+msgid "warning"
+msgstr ""
+
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
+msgid "window_unload"
+msgstr ""
+
+#: Real name
+msgid "whois_realname"
+msgstr ""
+
+#: Status
+msgid "whois_status"
+msgstr ""
+
+#: Is available
+msgid "whois_status_available"
+msgstr ""
+
+#: Send a message
+msgid "send_a_message"
+msgstr ""
+
+#: More information
+msgid "more_information"
+msgstr ""
+
+#: Ignore user
+msgid "ignore_user"
+msgstr ""
+
+#: Channel
+msgid "connection_channel"
+msgstr ""
+
+#: Away
+msgid "away"
+msgstr ""
+
+#: {{count}} week
+msgid "week"
+msgstr ""
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr ""
+
+#: {{count}} day
+msgid "day"
+msgstr ""
+
+#: {{count}} days
+msgid "day_plural"
+msgstr ""
+
+#: {{count}} hour
+msgid "hour"
+msgstr ""
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr ""
+
+#: {{count}} minute
+msgid "minute"
+msgstr ""
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr ""
+
+#: {{count}} second
+msgid "second"
+msgstr ""
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr ""
+
+#: General
+msgid "settings_general"
+msgstr ""
+
+#: Language
+msgid "settings_language"
+msgstr ""
+
+#: Theme
+msgid "settings_theme"
+msgstr ""
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr ""
+
+#: Theme URL
+msgid "settings_themeurl"
+msgstr ""
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr ""
+
+#: Use monospace
+msgid "settings_use_monospace"
+msgstr ""
+
+#: Use Kiwi as my default IRC client
+msgid "settings_default_handler"
+msgstr ""
+
+#: Traditional IRC layout
+msgid "settings_layout_compact"
+msgstr ""
+
+#: Show autocomplete list
+msgid "settings_show_autocomplete"
+msgstr ""
+
+#: Chat Messages
+msgid "settings_messages_title"
+msgstr ""
+
+#: Show timestamps
+msgid "settings_timestamps"
+msgstr ""
+
+#: Use 24-hour timestamps
+msgid "settings_24hour_timestamps"
+msgstr ""
+
+#: Show emoticons
+msgid "settings_emoticons"
+msgstr ""
+
+#: Block new Private messages
+msgid "settings_block_private"
+msgstr ""
+
+#: Messages in scrollback
+msgid "settings_scrollback"
+msgstr ""
+
+#: Extra formatting
+msgid "settings_formatting"
+msgstr ""
+
+#: Colour nicknames in messages
+msgid "settings_nick_colouring"
+msgstr ""
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr ""
+
+#: Include join/part messages as activity
+msgid "settings_show_joinpart"
+msgstr ""
+
+#: Mute sound notifications
+msgid "settings_mute_sound"
+msgstr ""
+
+#: Highlight on words (space seperated)
+msgid "settings_highlight"
+msgstr ""
+
+#: Aliases
+msgid "settings_aliases"
+msgstr ""
+
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr ""
+
+#: Send Message
+msgid "send_message"
+msgstr ""
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr ""
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr ""
+
+#: Notify me when
+msgid "settings_notify"
+msgstr ""
+
+#: All messages
+msgid "settings_notify_all"
+msgstr ""
+
+#: I am mentioned
+msgid "settings_notify_mentioned"
+msgstr ""
+
+#: Never
+msgid "settings_notify_never"
+msgstr ""
+
+#: Mute sounds
+msgid "settings_notify_mute"
+msgstr ""
+
+#: Hide unread message count
+msgid "settings_show_message_counts"
+msgstr ""
+
+#: Operator tools
+msgid "operator_tools"
+msgstr ""
+
+#: Default ban mask
+msgid "settings_default_ban_mask"
+msgstr ""
+
+#: Default kick reason
+msgid "settings_default_kick_reason"
+msgstr ""
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr ""
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr ""
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr ""
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr ""
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr ""
+
+#: Filter
+msgid "settings_advanced_filter"
+msgstr ""
+
+#: Refresh banlist
+msgid "bans_refresh"
+msgstr ""
+
+#: Banned user
+msgid "bans_user"
+msgstr ""
+
+#: Banned by
+msgid "bans_by"
+msgstr ""
+
+#: Refreshing banlist...
+msgid "bans_refreshing"
+msgstr ""
+
+#: Nobody is banned!
+msgid "bans_nobody"
+msgstr ""
+
+#: Refresh invite list
+msgid "invites_refresh"
+msgstr ""
+
+#: Invited user
+msgid "invites_user"
+msgstr ""
+
+#: Invited by
+msgid "invites_by"
+msgstr ""
+
+#: Refreshing invite list...
+msgid "invites_refreshing"
+msgstr ""
+
+#: Nobody is invited!
+msgid "invites_nobody"
+msgstr ""
+
+#: This is a public channel.
+msgid "invite_public_channel"
+msgstr ""
+
+#: Only invited users can join.
+msgid "invite_private_channel"
+msgstr ""
+
+#: Only allow invited users
+msgid "invite_set_private"
+msgstr ""
+
+#: Allow anybody to join
+msgid "invite_set_public"
+msgstr ""
+
+#: Only registered users can join
+msgid "invite_registered_only"
+msgstr ""
+
+#: Add invite
+msgid "invite_add_invite"
+msgstr ""
+
+#: (Any registered user)
+msgid "invite_any_registered"
+msgstr ""
+
+#: Topic
+msgid "channel_topic"
+msgstr ""
+
+#: Moderated chat
+msgid "channel_moderated"
+msgstr ""
+
+#: Invite only
+msgid "channel_invite"
+msgstr ""
+
+#: Only moderators can change the topic
+msgid "channel_moderated_topic"
+msgstr ""
+
+#: Block messages from outside this channel
+msgid "channel_external"
+msgstr ""
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr ""
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr ""
+
+#: Welcome to Kiwi IRC!
+msgid "container_welcome"
+msgstr ""
+
+#: Show statebrowser
+msgid "container_statebrowser"
+msgstr ""
+
+#: Hide Topic
+msgid "hide_topic"
+msgstr ""
+
+#: Display Topic
+msgid "display_topic"
+msgstr ""
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr ""
+
+#: Join Channel
+msgid "container_join"
+msgstr ""
+
+#: Not Connected
+msgid "container_notconnected"
+msgstr ""
+
+#: Private conversation with {{user}}
+msgid "container_privmsg"
+msgstr ""
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr ""
+
+#: Send a message...
+msgid "input_placeholder"
+msgstr ""
+
+#: Loading {{url}}...
+msgid "media_loading"
+msgstr ""
+
+#: Load previous messages
+msgid "messages_load"
+msgstr ""
+
+#: Unread Messages
+msgid "unread_messages"
+msgstr ""
+
+#: Server details
+msgid "settings_server_details"
+msgstr ""
+
+#: Port
+msgid "settings_port"
+msgstr ""
+
+#: Other networks on this ZNC account will be listed in the network list
+msgid "settings_znc_other"
+msgstr ""
+
+#: Your details
+msgid "settings_your_details"
+msgstr ""
+
+#: Nickname
+msgid "settings_nickname"
+msgstr ""
+
+#: Advanced
+msgid "settings_advanced"
+msgstr ""
+
+#: Encoding
+msgid "settings_encoding"
+msgstr ""
+
+#: Show Raw
+msgid "settings_show_raw"
+msgstr ""
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr ""
+
+#: Run commands when connected
+msgid "settings_autorun"
+msgstr ""
+
+#: Danger Zone
+msgid "settings_danger"
+msgstr ""
+
+#: Remove network
+msgid "settings_remove"
+msgstr ""
+
+#: {{count}} person here
+msgid "person"
+msgstr ""
+
+#: {{count}} people here
+msgid "person_plural"
+msgstr ""
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr ""
+
+#: Reconnect to join {{channel}}
+msgid "reconnect_channel"
+msgstr ""
+
+#: Reconnect to {{network}} to start talking
+msgid "reconnect_network"
+msgstr ""
+
+#: Reconnect to continue talking with {{user}}
+msgid "reconnect_query"
+msgstr ""
+
+#: You are not currently connected!
+msgid "not_connected"
+msgstr ""
+
+#: Connection settings
+msgid "reconnect_settings"
+msgstr ""
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr ""
+
+#: Connect To Network
+msgid "network_connect"
+msgstr ""
+
+#: Close options
+msgid "side_close"
+msgstr ""
+
+#: Channel options
+msgid "side_options"
+msgstr ""
+
+#: Your settings
+msgid "side_settings"
+msgstr ""
+
+#: Show when people join
+msgid "side_joins"
+msgstr ""
+
+#: Show when channel topic changes
+msgid "side_topics"
+msgstr ""
+
+#: Show when users change their nicks
+msgid "side_nick_changes"
+msgstr ""
+
+#: Show when users change channel modes
+msgid "side_mode_changes"
+msgstr ""
+
+#: Extra message formatting
+msgid "side_formatting"
+msgstr ""
+
+#: Nick colours in the list"
+msgid "side_colours"
+msgstr ""
+
+#: No buffer set
+msgid "side_buffer"
+msgstr ""
+
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr ""
+
+#: About
+msgid "about"
+msgstr ""
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr ""
+
+#: Highlights
+msgid "highlights"
+msgstr ""
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr ""
+
+#: There was an error starting Kiwi IRC :(
+msgid "error_starting"
+msgstr ""
+
+#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+msgid "error_installed"
+msgstr ""
+
+#: Leave {{name}}
+msgid "state_leave"
+msgstr ""
+
+#: Your account
+msgid "state_account"
+msgstr ""
+
+#: Your settings and networks will be remembered on this computer.
+msgid "state_remembered"
+msgstr ""
+
+#: Forget me
+msgid "state_forget"
+msgstr ""
+
+#: No networks here yet.
+msgid "state_network"
+msgstr ""
+
+#: Add one?
+msgid "state_add"
+msgstr ""
+
+#: Available networks
+msgid "state_available"
+msgstr ""
+
+#: Add Network
+msgid "add_network"
+msgstr ""
+
+#: New Network
+msgid "new_network"
+msgstr ""
+
+#: No Network
+msgid "no_network"
+msgstr ""
+
+#: Configure network
+msgid "state_configure"
+msgstr ""
+
+#: Not connected.
+msgid "state_disconnected"
+msgstr ""
+
+#: Join new #channel
+msgid "state_join"
+msgstr ""
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr ""
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr ""
+
+#: Change nick
+msgid "change_nick"
+msgstr ""
+
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr ""
+
+#: Account name: {{user}}
+msgid "user_account"
+msgstr ""
+
+#: Real name: {{realname}}
+msgid "user_realname"
+msgstr ""
+
+#: Is a bot
+msgid "user_bot"
+msgstr ""
+
+#: Is available for help
+msgid "user_help"
+msgstr ""
+
+#: Is an operator
+msgid "user_op"
+msgstr ""
+
+#: Connected to {{server}} {{info}}
+msgid "user_server"
+msgstr ""
+
+#: Securely connected via SSL/TLS
+msgid "user_secure"
+msgstr ""
+
+#: In channels {{channels}}
+msgid "user_channels"
+msgstr ""
+
+#: Access level
+msgid "user_access"
+msgstr ""
+
+#: Normal
+msgid "user_normal"
+msgstr ""
+
+#: Kick from the channel
+msgid "user_kick"
+msgstr ""
+
+#: Ban from the channel
+msgid "user_ban"
+msgstr ""
+
+#: Ban and kick from the channel
+msgid "user_kickban"
+msgstr ""
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr ""
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr ""
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr ""
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr ""
+
+#: {{nick}} gives ops to {{target}}
+msgid "modes_give_ops"
+msgstr ""
+
+#: {{nick}} takes ops from {{target}}
+msgid "modes_take_ops"
+msgstr ""
+
+#: {{nick}} gives half-ops to {{target}}
+msgid "modes_give_halfops"
+msgstr ""
+
+#: {{nick}} takes half-ops from {{target}}
+msgid "modes_take_halfops"
+msgstr ""
+
+#: {{nick}} gives voice to {{target}}
+msgid "modes_give_voice"
+msgstr ""
+
+#: {{nick}} takes voice from {{target}}
+msgid "modes_take_voice"
+msgstr ""
+
+#: {{nick}} gives admin to {{target}}
+msgid "modes_give_admin"
+msgstr ""
+
+#: {{nick}} takes admin from {{target}}
+msgid "modes_take_admin"
+msgstr ""
+
+#: {{nick}} gives owner to {{target}}
+msgid "modes_give_owner"
+msgstr ""
+
+#: {{nick}} takes owner from {{target}}
+msgid "modes_take_owner"
+msgstr ""
+
+#: {{nick}} has banned {{target}}
+msgid "modes_gives_ban"
+msgstr ""
+
+#: {{nick}} has unbanned {{target}}
+msgid "modes_takes_ban"
+msgstr ""
+
+#: {{nick}} sets {{mode}} on {{target}}
+msgid "modes_other"
+msgstr ""
+
+#: Send a message
+msgid "command_msg"
+msgstr ""
+
+#: Do something physical
+msgid "command_action"
+msgstr ""
+
+#: Join a channel
+msgid "command_join"
+msgstr ""
+
+#: Leave a channel
+msgid "command_part"
+msgstr ""
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr ""
+
+#: Change your nickname
+msgid "command_nick"
+msgstr ""
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr ""
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr ""
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr ""
+
+#: Send a notice
+msgid "command_notice"
+msgstr ""
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr ""
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr ""
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr ""
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr ""
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr ""
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr ""
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr ""
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr ""
+
+#: Set yourself as away
+msgid "command_away"
+msgstr ""
+
+#: Set yourself as active
+msgid "command_back"
+msgstr ""
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr ""
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr ""
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr ""
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr ""
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr ""
+
+#: Your IRC client
+msgid "personal_client"
+msgstr ""
+
+#: Add your networks. Join your channels.
+msgid "personal_addjoin"
+msgstr ""
+
+#: They will be here when you come back.
+msgid "personal_return"
+msgstr ""
+
+#: Add a Network
+msgid "personal_add"
+msgstr ""
+
+#: You are trying to connect to {{network}}
+msgid "personal_connect_to"
+msgstr ""
+
+#: Network has been added to your existing Kiwi window.
+msgid "personal_added_to_existing"
+msgstr ""
+
+#: Add network to existing Kiwi window
+msgid "personal_add_existing_tab"
+msgstr ""
+
+#: Temporarily connect to this network
+msgid "personal_connect_temporary"
+msgstr ""
+
+#: Saved networks
+msgid "personal_saved"
+msgstr ""
+
+#: Kiwi IRC (next gen) - Rizon preview
+msgid "rizon_title"
+msgstr ""
+
+#: Direct websockets. No Kiwi server or webirc involved.
+msgid "rizon_websockets"
+msgstr ""
+
+#: (Thanks to Adam @Rizon for the development websocket server support!)
+msgid "rizon_thanks"
+msgstr ""
+
+#: Give the developer version of Kiwi IRC a try!
+msgid "rizon_dev"
+msgstr ""
+
+#: Connected
+msgid "connected"
+msgstr ""
+
+#: Disconnected
+msgid "disconnected"
+msgstr ""
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr ""
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr ""
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr ""
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr ""
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr ""
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr ""
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr ""
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr ""
+
+#: {{nick}} changed the topic to: {{topic}}
+msgid "changed_topic_to"
+msgstr ""
+

@@ -1,0 +1,1070 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"Project-Id-Version: kiwiirc\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: Darren Whitlen (kiwiirc)\n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
+"PO-Revision-Date: 2019-08-02 14:40\n"
+
+#: Start
+msgid "start_button"
+msgstr "Başla"
+
+#: Welcome to Kiwi IRC!
+msgid "start_greeting"
+msgstr "Kiwi IRC'ye Hoşgeldiniz!"
+
+#: Close
+msgid "close"
+msgstr "Kapat"
+
+#: Connect
+msgid "connect"
+msgstr "Bağlan"
+
+#: Connecting...
+msgid "connecting"
+msgstr "Bağlanıyor..."
+
+#: Connected
+msgid "connected"
+msgstr "Bağlandı"
+
+#: Settings
+msgid "settings"
+msgstr "Ayarlar"
+
+#: Kiwi Settings
+msgid "kiwi_settings"
+msgstr "Kiwi Ayarları"
+
+#: Channels
+msgid "channels"
+msgstr "Kanallar"
+
+#: Access
+msgid "access"
+msgstr "Erişim"
+
+#: Banned Users
+msgid "banned"
+msgstr "Yasaklı Kullanıcılar"
+
+#: Invited Users
+msgid "invited"
+msgstr "Davet Edilen Kullanıcılar"
+
+#: Notifications
+msgid "notifications"
+msgstr "Bildirimler"
+
+#: Username
+msgid "username"
+msgstr "Kullanıcı adı"
+
+#: Password
+msgid "password"
+msgstr "Şifre"
+
+#: I have a password
+msgid "password_have"
+msgstr "Bir şifrem var"
+
+#: Server
+msgid "server"
+msgstr "Sunucu"
+
+#: Nick
+msgid "nick"
+msgstr "Takma ad"
+
+#: Channel
+msgid "channel"
+msgstr "Kanal"
+
+#: Messages
+msgid "messages"
+msgstr "Mesajlar"
+
+#: Network
+msgid "network"
+msgstr "Ağ"
+
+#: ZNC
+msgid "znc"
+msgstr "ZNC"
+
+#: Logging in...
+msgid "logging_in"
+msgstr "Oturum açılıyor..."
+
+#: Invalid login
+msgid "invalid_login"
+msgstr "Geçersiz giriş"
+
+#: Search...
+msgid "do_search"
+msgstr "Arama..."
+
+#: OK
+msgid "ok"
+msgstr "Tamam"
+
+#: Cancel
+msgid "cancel"
+msgstr "İptal"
+
+#: Yes
+msgid "yes"
+msgstr "Evet"
+
+#: No
+msgid "no"
+msgstr "Hayır"
+
+#: Not found.
+msgid "not_found"
+msgstr "Bulunamadı."
+
+#: Warning!
+msgid "warning"
+msgstr "Uyarı!"
+
+#: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
+msgid "window_unload"
+msgstr "Bu, tüm Kiwi IRC konuşmalarını kapatır. Bu pencereyi kapatmak istediğinize emin misiniz?"
+
+#: Real name
+msgid "whois_realname"
+msgstr "Gerçek ad"
+
+#: Status
+msgid "whois_status"
+msgstr "Durum"
+
+#: Is available
+msgid "whois_status_available"
+msgstr "Müsait"
+
+#: Send a message
+msgid "send_a_message"
+msgstr "Mesaj Gönder"
+
+#: More information
+msgid "more_information"
+msgstr "Ayrıntılı Bilgi"
+
+#: Ignore user
+msgid "ignore_user"
+msgstr "Engelle"
+
+#: Channel
+msgid "connection_channel"
+msgstr "Kanal"
+
+#: Away
+msgid "away"
+msgstr "Uzakta"
+
+#: {{count}} week
+msgid "week"
+msgstr "{{count}} hafta"
+
+#: {{count}} weeks
+msgid "week_plural"
+msgstr "{{count}} haftalar"
+
+#: {{count}} day
+msgid "day"
+msgstr "{{count}} gün"
+
+#: {{count}} days
+msgid "day_plural"
+msgstr "{{count}} günler"
+
+#: {{count}} hour
+msgid "hour"
+msgstr "{{count}} saat"
+
+#: {{count}} hours
+msgid "hour_plural"
+msgstr "{{count}} saatler"
+
+#: {{count}} minute
+msgid "minute"
+msgstr "{{count}} dakika"
+
+#: {{count}} minutes
+msgid "minute_plural"
+msgstr "{{count}} dakikalar"
+
+#: {{count}} second
+msgid "second"
+msgstr "{{count}} saniye"
+
+#: {{count}} seconds
+msgid "second_plural"
+msgstr "{{count}} saniyeler"
+
+#: General
+msgid "settings_general"
+msgstr "Genel"
+
+#: Language
+msgid "settings_language"
+msgstr "Dil"
+
+#: Theme
+msgid "settings_theme"
+msgstr "Tema"
+
+#: Refresh Theme
+msgid "refresh_theme"
+msgstr "Temayı Yenile"
+
+#: Theme URL
+msgid "settings_themeurl"
+msgstr "Tema URL"
+
+#: Message Layout
+msgid "settings_messagelayout"
+msgstr "Mesaj Düzeni"
+
+#: Use monospace
+msgid "settings_use_monospace"
+msgstr "Tek boşluk kullan"
+
+#: Use Kiwi as my default IRC client
+msgid "settings_default_handler"
+msgstr "Kiwi'yi varsayılan IRC istemcim olarak kullan"
+
+#: Traditional IRC layout
+msgid "settings_layout_compact"
+msgstr "Geleneksel IRC düzeni"
+
+#: Show autocomplete list
+msgid "settings_show_autocomplete"
+msgstr "Otomatik tamamlama listesini göster"
+
+#: Chat Messages
+msgid "settings_messages_title"
+msgstr "Sohbet Mesajları"
+
+#: Show timestamps
+msgid "settings_timestamps"
+msgstr "Zaman damgalarını göster"
+
+#: Use 24-hour timestamps
+msgid "settings_24hour_timestamps"
+msgstr "24 saatlik zaman damgaları kullan"
+
+#: Show emoticons
+msgid "settings_emoticons"
+msgstr "İfadeleri göster"
+
+#: Block new Private messages
+msgid "settings_block_private"
+msgstr "Yeni özel mesajları engelle"
+
+#: Messages in scrollback
+msgid "settings_scrollback"
+msgstr "Geri kaydırmadaki mesajlar"
+
+#: Extra formatting
+msgid "settings_formatting"
+msgstr "Ekstra biçimlendirme"
+
+#: Colour nicknames in messages
+msgid "settings_nick_colouring"
+msgstr "Mesajlardaki renkli takma adlar"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Mesaj yazarken başkaları ile paylaş"
+
+#: Include join/part messages as activity
+msgid "settings_show_joinpart"
+msgstr "Giriş/çıkış mesajlarını etkinlik olarak dahil et"
+
+#: Mute sound notifications
+msgid "settings_mute_sound"
+msgstr "Ses bildirimlerini kapat"
+
+#: Highlight on words (space seperated)
+msgid "settings_highlight"
+msgstr "Kelimeleri vurgula (boşlukla ayır)"
+
+#: Aliases
+msgid "settings_aliases"
+msgstr "Aliaslar"
+
+#: What are Aliases
+msgid "what_are_aliases"
+msgstr "Aliaslar nelerdir?"
+
+#: Send Message
+msgid "send_message"
+msgstr "Mesaj Gönder"
+
+#: Enter Channel Key
+msgid "bufferkey_input"
+msgstr "Kanal anahtarını girin:"
+
+#: Rejoin {{channel}}
+msgid "bufferkey_rejoin"
+msgstr "Yeniden gir {{channel}}"
+
+#: Notify me when
+msgid "settings_notify"
+msgstr "Bana Bildir"
+
+#: All messages
+msgid "settings_notify_all"
+msgstr "Bütün mesajlarda"
+
+#: I am mentioned
+msgid "settings_notify_mentioned"
+msgstr "Bahsedildiğimde"
+
+#: Never
+msgid "settings_notify_never"
+msgstr "Asla"
+
+#: Mute sounds
+msgid "settings_notify_mute"
+msgstr "Sesleri kapat"
+
+#: Hide unread message count
+msgid "settings_show_message_counts"
+msgstr "Okunmamış Mesajlar iletisini gizle"
+
+#: Operator tools
+msgid "operator_tools"
+msgstr "Operatör Araçları"
+
+#: Default ban mask
+msgid "settings_default_ban_mask"
+msgstr "Varsayılan yasak maskesi"
+
+#: Default kick reason
+msgid "settings_default_kick_reason"
+msgstr "Varsayılan kick sebebi"
+
+#: Advanced Settings
+msgid "settings_advanced_title"
+msgstr "Gelişmiş Ayarlar"
+
+#: Monsters be here, only click this button if you know what you are doing
+msgid "settings_advanced_warning"
+msgstr "Canavarlar burada, sadece ne yaptığını biliyorsan bu butona tıkla"
+
+#: Enable Advanced Settings
+msgid "settings_advanced_button"
+msgstr "Gelişmiş Ayarları Etkinleştir"
+
+#: Danger Zone: Changing some of these settings may break things!
+msgid "settings_advanced_header"
+msgstr "Tehlike Bölgesi: Bu ayarların bazılarının değiştirilmesi işleri bozabilir!"
+
+#: Reset
+msgid "settings_advanced_reset"
+msgstr "Sıfırla"
+
+#: Filter
+msgid "settings_advanced_filter"
+msgstr "Filtre"
+
+#: Refresh banlist
+msgid "bans_refresh"
+msgstr "Yasaklananlar listesini yenile"
+
+#: Banned user
+msgid "bans_user"
+msgstr "Yasaklanan kullanıcı"
+
+#: Banned by
+msgid "bans_by"
+msgstr "Tarafından yasaklanmış"
+
+#: Refreshing banlist...
+msgid "bans_refreshing"
+msgstr "Yasaklananlar listesi yenileniyor..."
+
+#: Nobody is banned!
+msgid "bans_nobody"
+msgstr "Kimse yasaklanmadı!"
+
+#: Refresh invite list
+msgid "invites_refresh"
+msgstr "Davet listesini yenile"
+
+#: Invited user
+msgid "invites_user"
+msgstr "Davet Edilen Kullanıcı"
+
+#: Invited by
+msgid "invites_by"
+msgstr "Tarafından davet edildi"
+
+#: Refreshing invite list...
+msgid "invites_refreshing"
+msgstr "Davet listesi yenileniyor..."
+
+#: Nobody is invited!
+msgid "invites_nobody"
+msgstr "Kimse davet edilmedi!"
+
+#: This is a public channel.
+msgid "invite_public_channel"
+msgstr "Bu halka açık bir kanal."
+
+#: Only invited users can join.
+msgid "invite_private_channel"
+msgstr "Yalnızca davet edilen kullanıcılar katılabilir."
+
+#: Only allow invited users
+msgid "invite_set_private"
+msgstr "Yalnızca davet edilen kullanıcılara izin ver"
+
+#: Allow anybody to join
+msgid "invite_set_public"
+msgstr "Herhangi birinin katılmasına izin ver"
+
+#: Only registered users can join
+msgid "invite_registered_only"
+msgstr "Sadece kayıtlı kullanıcılar katılabilir"
+
+#: Add invite
+msgid "invite_add_invite"
+msgstr "Davet ekle"
+
+#: (Any registered user)
+msgid "invite_any_registered"
+msgstr "(Herhangi bir kayıtlı kullanıcı)"
+
+#: Topic
+msgid "channel_topic"
+msgstr "Konu"
+
+#: Moderated chat
+msgid "channel_moderated"
+msgstr "Moderatörlü sohbet"
+
+#: Invite only
+msgid "channel_invite"
+msgstr "Sadece davetsel"
+
+#: Only moderators can change the topic
+msgid "channel_moderated_topic"
+msgstr "Konuyu yalnızca moderatörler değiştirebilir"
+
+#: Block messages from outside this channel
+msgid "channel_external"
+msgstr "Kanal dışından gönderilen mesajları engelle"
+
+#: Click the refresh button to update the channel list
+msgid "channel_list_fetch"
+msgstr "Kanal listesini güncellemek için yenile düğmesine tıklayın"
+
+#: No channels found, try again later
+msgid "channel_list_nonefound"
+msgstr "Kanal bulunamadı, daha sonra tekrar deneyin."
+
+#: Welcome to Kiwi IRC!
+msgid "container_welcome"
+msgstr "Kiwi IRC'ye Hoşgeldiniz!"
+
+#: Show statebrowser
+msgid "container_statebrowser"
+msgstr "Statebrowser'ı göster"
+
+#: Hide Topic
+msgid "hide_topic"
+msgstr "Konuyu Gizle"
+
+#: Display Topic
+msgid "display_topic"
+msgstr "Konuyu Görüntüle"
+
+#: Channel Settings
+msgid "channel_settings"
+msgstr "Kanal Ayarları"
+
+#: Join Channel
+msgid "container_join"
+msgstr "Kanala Gir"
+
+#: Not Connected
+msgid "container_notconnected"
+msgstr "Bağlı Değil"
+
+#: Private conversation with {{user}}
+msgid "container_privmsg"
+msgstr "{{user}} ile özel görüşme"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Kanaldan gerçekten ayrılmak istiyor musunuz?"
+
+#: Send a message...
+msgid "input_placeholder"
+msgstr "Bir mesaj gönder..."
+
+#: Loading {{url}}...
+msgid "media_loading"
+msgstr "{{url}} yükleniyor..."
+
+#: Load previous messages
+msgid "messages_load"
+msgstr "Önceki mesajları yükle"
+
+#: Unread Messages
+msgid "unread_messages"
+msgstr "Okunmamış Mesajlar"
+
+#: Server details
+msgid "settings_server_details"
+msgstr "Sunucu detayları"
+
+#: Port
+msgid "settings_port"
+msgstr "Port"
+
+#: Other networks on this ZNC account will be listed in the network list
+msgid "settings_znc_other"
+msgstr "Bu ZNC hesabındaki diğer ağlar ağ listesinde listelenecek"
+
+#: Your details
+msgid "settings_your_details"
+msgstr "Detayların"
+
+#: Nickname
+msgid "settings_nickname"
+msgstr "Takma Ad"
+
+#: Advanced
+msgid "settings_advanced"
+msgstr "Gelişmiş"
+
+#: Encoding
+msgid "settings_encoding"
+msgstr "Kodlama"
+
+#: Show Raw
+msgid "settings_show_raw"
+msgstr "Raw'ı Göster"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Doğrudan websocket"
+
+#: Run commands when connected
+msgid "settings_autorun"
+msgstr "Bağlandığında komutları çalıştır"
+
+#: Danger Zone
+msgid "settings_danger"
+msgstr "Tehlikeli Bölge"
+
+#: Remove network
+msgid "settings_remove"
+msgstr "Ağı kaldır"
+
+#: {{count}} person here
+msgid "person"
+msgstr "{{count}} kişi burada"
+
+#: {{count}} people here
+msgid "person_plural"
+msgstr "{{count}} kişi burada"
+
+#: Filter users in channel
+msgid "filter_users"
+msgstr "Kullanıcıları filtrele"
+
+#: Reconnect to join {{channel}}
+msgid "reconnect_channel"
+msgstr "{{channel}} kanalına girmek için yeniden bağlan"
+
+#: Reconnect to {{network}} to start talking
+msgid "reconnect_network"
+msgstr "Konuşmaya başlamak için {{network}} adresine yeniden bağlan"
+
+#: Reconnect to continue talking with {{user}}
+msgid "reconnect_query"
+msgstr "{{user}} ile konuşmaya devam etmek için yeniden bağlan"
+
+#: You are not currently connected!
+msgid "not_connected"
+msgstr "Şu anda bağlı değilsin!"
+
+#: Connection settings
+msgid "reconnect_settings"
+msgstr "Bağlantı Ayarları"
+
+#: We couldn't connect to that server :(
+msgid "network_noconnect"
+msgstr "Bu sunucuya bağlanamadık :("
+
+#: Connect To Network
+msgid "network_connect"
+msgstr "Ağa Bağlan"
+
+#: Close options
+msgid "side_close"
+msgstr "Seçenekleri kapat"
+
+#: Channel options
+msgid "side_options"
+msgstr "Kanal seçenekleri"
+
+#: Your settings
+msgid "side_settings"
+msgstr "Ayarlarınız"
+
+#: Show when people join
+msgid "side_joins"
+msgstr "Kullanıcılar kanala girdiklerinde göster"
+
+#: Show when channel topic changes
+msgid "side_topics"
+msgstr "Kanal konusu değiştiğinde göster"
+
+#: Show when users change their nicks
+msgid "side_nick_changes"
+msgstr "Kullanıcılar takma adlarını değiştirdiğinde göster"
+
+#: Show when users change channel modes
+msgid "side_mode_changes"
+msgstr "Kullanıcılar kanal modlarını değiştirdiğinde göster"
+
+#: Extra message formatting
+msgid "side_formatting"
+msgstr "Ekstra mesaj biçimlendirme"
+
+#: Nick colours in the list"
+msgid "side_colours"
+msgstr "Listedeki renkli takma adlar"
+
+#: No buffer set
+msgid "side_buffer"
+msgstr "Tampon seti yok"
+
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr "Bu kanal için bir konu yok"
+
+#: About
+msgid "about"
+msgstr "Hakkında"
+
+#: Created at {{when}}
+msgid "created_at"
+msgstr "{{when}} tarihinde düzenlendi."
+
+#: Highlights
+msgid "highlights"
+msgstr "Vurgulamalar"
+
+#: Nobody has mentioned you yet...
+msgid "nobody_mentioned_you"
+msgstr "Henüz kimse sizden bahsetmedi."
+
+#: There was an error starting Kiwi IRC :(
+msgid "error_starting"
+msgstr "Kiwi IRC başlatılırken bir hata oluştu :("
+
+#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+msgid "error_installed"
+msgstr "Kiwi IRC'i doğru kurduğunuzdan ve konfigürasyonun yüklenebildiğinden emin olun."
+
+#: Leave {{name}}
+msgid "state_leave"
+msgstr "Ayrıl {{name}}"
+
+#: Your account
+msgid "state_account"
+msgstr "Hesabınız"
+
+#: Your settings and networks will be remembered on this computer.
+msgid "state_remembered"
+msgstr "Ayarlarınız ve ağlarınız bu bilgisayarda hatırlanacaktır."
+
+#: Forget me
+msgid "state_forget"
+msgstr "Beni unut"
+
+#: No networks here yet.
+msgid "state_network"
+msgstr "Henüz ağ yok."
+
+#: Add one?
+msgid "state_add"
+msgstr "Bir tane ekle?"
+
+#: Available networks
+msgid "state_available"
+msgstr "Mevcut ağlar"
+
+#: Add Network
+msgid "add_network"
+msgstr "Ağ Ekle"
+
+#: New Network
+msgid "new_network"
+msgstr "Yeni Ağ"
+
+#: No Network
+msgid "no_network"
+msgstr "Ağ yok"
+
+#: Configure network
+msgid "state_configure"
+msgstr "Ağı yapılandır"
+
+#: Not connected.
+msgid "state_disconnected"
+msgstr "Bağlı değil."
+
+#: Join new #channel
+msgid "state_join"
+msgstr "Yeni kanal #kanal"
+
+#: Filter Channels
+msgid "filter_channels"
+msgstr "Kanalları Filtrele"
+
+#: Find More Channels
+msgid "find_more_channels"
+msgstr "Daha fazla kanal bul"
+
+#: Change nick
+msgid "change_nick"
+msgstr "Takma ad değiş"
+
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "Yeni bir takma ad girin..."
+
+#: Account name: {{user}}
+msgid "user_account"
+msgstr "Hesap adı: {{user}}"
+
+#: Real name: {{realname}}
+msgid "user_realname"
+msgstr "Gerçek ad: {{realname}}"
+
+#: Is a bot
+msgid "user_bot"
+msgstr "Bir bot"
+
+#: Is available for help
+msgid "user_help"
+msgstr "Yardım için müsait"
+
+#: Is an operator
+msgid "user_op"
+msgstr "IRC operatör"
+
+#: Connected to {{server}} {{info}}
+msgid "user_server"
+msgstr "Bağlandığı sunucu: {{server}} {{info}}"
+
+#: Securely connected via SSL/TLS
+msgid "user_secure"
+msgstr "SSL/TLS ile güvenli bağlantı"
+
+#: In channels {{channels}}
+msgid "user_channels"
+msgstr "Bulunduğu kanallar: {{channels}}"
+
+#: Access level
+msgid "user_access"
+msgstr "Erişim seviyesi"
+
+#: Normal
+msgid "user_normal"
+msgstr "Normal"
+
+#: Kick from the channel
+msgid "user_kick"
+msgstr "Kanaldan at"
+
+#: Ban from the channel
+msgid "user_ban"
+msgstr "Kanaldan yasakla"
+
+#: Ban and kick from the channel
+msgid "user_kickban"
+msgstr "Yasakla ve kanaldan at"
+
+#: Please specify a channel to join. eg /join #example
+msgid "error_no_channel_join"
+msgstr "Lütfen girmek için bir kanal belirtin. Örnek /join #örnek"
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr "Kullanıcı adı {{nick}} zaten kullanılıyor!"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr "Yeni bir takma ad girmelisin"
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr "Takma ad bir numara ile başlamamalıdır"
+
+#: {{nick}} gives ops to {{target}}
+msgid "modes_give_ops"
+msgstr "{{nick}}, {{target}} kullanıcısına op verdi"
+
+#: {{nick}} takes ops from {{target}}
+msgid "modes_take_ops"
+msgstr "{{nick}}, {{target}} kullanıcısından op aldı"
+
+#: {{nick}} gives half-ops to {{target}}
+msgid "modes_give_halfops"
+msgstr "{{nick}}, {{target}} kullanıcısına half-ops verdi"
+
+#: {{nick}} takes half-ops from {{target}}
+msgid "modes_take_halfops"
+msgstr "{{nick}}, {{target}} kullanıcısından half-ops aldı"
+
+#: {{nick}} gives voice to {{target}}
+msgid "modes_give_voice"
+msgstr "{{nick}}, {{target}} kullanıcısına voice verdi"
+
+#: {{nick}} takes voice from {{target}}
+msgid "modes_take_voice"
+msgstr "{{nick}}, {{target}} kullanıcısından voice aldı"
+
+#: {{nick}} gives admin to {{target}}
+msgid "modes_give_admin"
+msgstr "{{nick}}, {{target}} kullanıcısına admin verdi"
+
+#: {{nick}} takes admin from {{target}}
+msgid "modes_take_admin"
+msgstr "{{nick}}, {{target}} kullanıcısından admin aldı"
+
+#: {{nick}} gives owner to {{target}}
+msgid "modes_give_owner"
+msgstr "{{nick}}, {{target}} kullanıcısına owner verdi"
+
+#: {{nick}} takes owner from {{target}}
+msgid "modes_take_owner"
+msgstr "{{nick}}, {{target}} kullanıcısından owner aldı"
+
+#: {{nick}} has banned {{target}}
+msgid "modes_gives_ban"
+msgstr "{{nick}}, {{target}} kullanıcısını yasakladı"
+
+#: {{nick}} has unbanned {{target}}
+msgid "modes_takes_ban"
+msgstr "{{nick}}, {{target}} kullanıcısının yasağını kaldırdı"
+
+#: {{nick}} sets {{mode}} on {{target}}
+msgid "modes_other"
+msgstr "{{nick}}, {{mode}} modunu {{target}} üzerinde ayarladı"
+
+#: Send a message
+msgid "command_msg"
+msgstr "Bir mesaj gönder"
+
+#: Do something physical
+msgid "command_action"
+msgstr "Fiziksel bir şey yap"
+
+#: Join a channel
+msgid "command_join"
+msgstr "Bir kanala gir"
+
+#: Leave a channel
+msgid "command_part"
+msgstr "Bir kanaldan ayrıl"
+
+#: Leave, then re-join a channel
+msgid "command_cycle"
+msgstr "Ayrıl, sonra bir kanala tekrar gir"
+
+#: Change your nickname
+msgid "command_nick"
+msgstr "Takma adınızı değiştirin"
+
+#: Start a private conversation with someone
+msgid "command_query"
+msgstr "Biriyle özel bir konuşma başlat"
+
+#: Invite somebody into the channel
+msgid "command_invite"
+msgstr "Birini kanala davet et"
+
+#: Set the topic for this channel
+msgid "command_topic"
+msgstr "Bu kanal için konuyu ayarla"
+
+#: Send a notice
+msgid "command_notice"
+msgstr "Bir bildirim gönder"
+
+#: Send a raw command to the IRC server
+msgid "command_quote"
+msgstr "IRC sunucusuna bir raw komutu gönderin"
+
+#: Kick somebody from the channel
+msgid "command_kick"
+msgstr "Kanaldan birini atın"
+
+#: Clear all messages from this window
+msgid "command_clear"
+msgstr "Bu penceredeki tüm mesajları temizle"
+
+#: Send a CTCP command to somebody
+msgid "command_ctcp"
+msgstr "Birine bir CTCP komutu gönderin"
+
+#: Disconnect from the IRC server
+msgid "command_quit"
+msgstr "IRC sunucusuyla olan bağlantıyı kes"
+
+#: Connect to a new IRC network
+msgid "command_connect"
+msgstr "Yeni bir IRC ağına bağlanın"
+
+#: Request information on somebody
+msgid "command_whois"
+msgstr "Biriyle ilgili bilgi isteyin"
+
+#: Request information on somebody that disconnected recently
+msgid "command_whowas"
+msgstr "Son bağlantısı kesilmiş birisiyle ilgili bilgi isteyin"
+
+#: Set yourself as away
+msgid "command_away"
+msgstr "Kendinizi uzakta olarak ayarlayın"
+
+#: Set yourself as active
+msgid "command_back"
+msgstr "Kendinizi aktif olarak ayarlayın"
+
+#: Change your connection encoding
+msgid "command_encoding"
+msgstr "Bağlantı kodlamanızı değiştirin"
+
+#: Ignore messages from somebody
+msgid "command_ignore"
+msgstr "Birinden gelen mesajları yoksay"
+
+#: Stop ignoring somebody
+msgid "command_unignore"
+msgstr "Birini görmezden gelmeyi bırak"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Bir zar at"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "{{sides}} taraflı bir zar atar ve {{number}} alır"
+
+#: Your IRC client
+msgid "personal_client"
+msgstr "IRC İstemciniz."
+
+#: Add your networks. Join your channels.
+msgid "personal_addjoin"
+msgstr "Ağlarınızı ekleyin. Kanallarınıza girin."
+
+#: They will be here when you come back.
+msgid "personal_return"
+msgstr "Geri döndüğünde burada olacaklar."
+
+#: Add a Network
+msgid "personal_add"
+msgstr "Ağ ekle"
+
+#: You are trying to connect to {{network}}
+msgid "personal_connect_to"
+msgstr "{{network}}'e bağlanmaya çalışıyorsunuz"
+
+#: Network has been added to your existing Kiwi window.
+msgid "personal_added_to_existing"
+msgstr "Mevcut Kiwi pencerenize ağ eklendi."
+
+#: Add network to existing Kiwi window
+msgid "personal_add_existing_tab"
+msgstr "Mevcut Kiwi penceresine ağ ekle"
+
+#: Temporarily connect to this network
+msgid "personal_connect_temporary"
+msgstr "Bu ağa geçici olarak bağlan"
+
+#: Saved networks
+msgid "personal_saved"
+msgstr "Kayıtlı ağlar"
+
+#: Kiwi IRC (next gen) - Rizon preview
+msgid "rizon_title"
+msgstr "Kiwi IRC (gelecek nesil) - Rizon önizleme"
+
+#: Direct websockets. No Kiwi server or webirc involved.
+msgid "rizon_websockets"
+msgstr "Doğrudan websockets. Hiçbir Kiwi sunucusu veya webirc dahil değil."
+
+#: (Thanks to Adam @Rizon for the development websocket server support!)
+msgid "rizon_thanks"
+msgstr "(Websocket sunucu desteği geliştirmesi için, Adam @Rizon'a teşekkürler!)"
+
+#: Give the developer version of Kiwi IRC a try!
+msgid "rizon_dev"
+msgstr "Kiwi IRC'nin geliştirici sürümünü deneyin!"
+
+#: Connected
+msgid "connected"
+msgstr "Bağlandı"
+
+#: Disconnected
+msgid "disconnected"
+msgstr "Bağlantı kesildi"
+
+#: Connected to {{network}}!
+msgid "connected_to"
+msgstr "{{network}}'e Bağlandı!"
+
+#: {{nick}} has joined
+msgid "has_joined"
+msgstr "{{nick}} kanala girdi"
+
+#: {{nick}} kicked you from {{channel}}
+msgid "kicked_you_from"
+msgstr "{{nick}} seni {{channel}} kanalından attı"
+
+#: {{nick}} was kicked from {{channel}} by {{chanop}}
+msgid "was_kicked_from"
+msgstr "{{nick}}, {{channel}} kanalından {{chanop}} tarafından atıldı"
+
+#: {{nick}} has left
+msgid "has_left"
+msgstr "{{nick}} kanaldan ayrıldı"
+
+#: {{nick}} invited you to join {{channel}}
+msgid "invited_you"
+msgstr "{{nick}} seni {{channel}} kanalına davet etti"
+
+#: Nickname {{nick}} is already in use. Trying {{newnick}}...
+msgid "nick_in_use_retrying"
+msgstr "Kullanıcı adı {{nick}} zaten kullanılıyor. {{newnick}} deneniyor..."
+
+#: {{nick}} is now known as {{newnick}}
+msgid "now_known_as"
+msgstr "{{nick}} takma adını {{newnick}} olarak değiştirdi"
+
+#: {{nick}} changed the topic to: {{topic}}
+msgid "changed_topic_to"
+msgstr "{{nick}} konuyu şu şekilde değiştirdi: {{topic}}"
+
