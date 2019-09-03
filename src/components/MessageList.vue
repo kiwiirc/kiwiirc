@@ -446,12 +446,16 @@ export default {
             document.querySelector('body').classList.remove('kiwi-unselectable');
             this.$el.style.userSelect = 'auto';
         },
-        removeSelections() {
+        removeSelections(removeNative = false) {
             let selected = document.querySelectorAll('.kiwi-messagelist-message--selected');
             Array.from(selected).forEach((el) => {
                 el.classList.remove('kiwi-messagelist-message--selected');
             });
-            document.querySelector('body').classList.remove('kiwi-unselectable');
+            let selection = document.getSelection();
+            if (removeNative && selection) {
+                // stops the native browser selection being left behind after ctrl+c
+                selection.removeAllRanges();
+            }
         },
         addCopyListeners() { // Better copy pasting
             const LogFormatter = (msg) => {
@@ -575,7 +579,7 @@ export default {
                     document.execCommand('copy');
                     document.body.removeChild(input);
                 }
-                this.removeSelections();
+                this.removeSelections(true);
                 return true;
             });
         },
