@@ -17,7 +17,12 @@
         <div
             v-for="(message, idx) in filteredMessages"
             :key="message.id"
-            class="kiwi-messagelist-item"
+            :class="[
+                'kiwi-messagelist-item',
+                selectedMessages.has(message.id) ?
+                    'kiwi-messagelist-item--selected' :
+                    ''
+            ]"
         >
             <div
                 v-if="shouldShowDateChangeMarker(idx)"
@@ -107,6 +112,7 @@ export default {
             message_info_open: null,
             timeToClose: false,
             startClosing: false,
+            selectedMessages: new Set(),
         };
     },
     computed: {
@@ -447,10 +453,8 @@ export default {
             this.$el.style.userSelect = 'auto';
         },
         removeSelections(removeNative = false) {
-            let selected = document.querySelectorAll('.kiwi-messagelist-message--selected');
-            Array.from(selected).forEach((el) => {
-                el.classList.remove('kiwi-messagelist-message--selected');
-            });
+            this.selectedMessages.clear();
+            this.buffer.message_count++;
             let selection = document.getSelection();
             if (removeNative && selection) {
                 // stops the native browser selection being left behind after ctrl+c
@@ -535,11 +539,11 @@ export default {
 
                     let i = 0;
                     while (node) {
-                        // Add a class to show the line has been selected
-                        node.classList.add('kiwi-messagelist-message--selected');
-
                         // This could be more efficent with an id->msg lookup
                         let msg = allMessages.find(finder);
+
+                        // Add to a list of selected messages
+                        this.selectedMessages.add(msg.id);
                         if (msg) {
                             messages.push(msg);
                         }
@@ -550,6 +554,7 @@ export default {
                             node = nextNode && nextNode.querySelector('[data-message-id]');
                         }
                     }
+                    this.buffer.message_count++; // force messagelist to update
 
                     // Iterate through the selected messages, format and store as a
                     // string to be used in the copy handler
@@ -597,11 +602,15 @@ export default {
     user-select: none;
 }
 
-.kiwi-messagelist-item .kiwi-messagelist-message.kiwi-messagelist-message--selected {
+div.kiwi-messagelist-item.kiwi-messagelist-item--selected/* .kiwi-messagelist-message*/ {
     background-color: var(--brand-selected);
 }
 
-.kiwi-messagelist-item .kiwi-messagelist-message.kiwi-messagelist-message--selected *::selection {
+div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-message {
+    background-color: unset;
+}
+
+.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-message *::selection {
     background-color: unset;
     color: unset;
 }
