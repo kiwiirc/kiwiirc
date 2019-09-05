@@ -76,7 +76,7 @@
 .u-form label input[type='text'],
 .u-form label input[type='password'],
 .u-form label input[type='email'],
-.u-form textarea,
+.u-form textarea {
     border-color: var(--brand-primary);
 }
 
@@ -90,7 +90,7 @@
 /* ---- Global : Checkbox input ---- */
 .u-form input[type='checkbox'],
 .u-form input[type='radio'] {
-    border-color: var(--brand-default-fg);
+    border-color: var(--brand-input-border);
     background-color: var(--brand-default-bg);
 }
 
