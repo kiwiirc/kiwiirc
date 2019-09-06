@@ -69,10 +69,11 @@
                     @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                     @mouseout="ml.hover_nick='';"
                 >
-                    <span class="kiwi-messagelist-nick-prefix">
-                        {{ message.user ? userModePrefix(message.user) : '' }}
-                    </span>
-                    {{ message.nick }}
+                    <span class="kiwi-messagelist-nick-prefix">{{
+                        message.user ?
+                            userModePrefix(message.user) :
+                            ''
+                    }}</span>{{ message.nick }}
                 </div>
                 <div
                     v-if="showRealName"
