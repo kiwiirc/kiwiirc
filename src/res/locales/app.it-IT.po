@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-08-02 14:15\n"
+"PO-Revision-Date: 2019-09-11 13:06\n"
 
 #: Start
 msgid "start_button"
@@ -174,11 +174,11 @@ msgstr "Assente"
 
 #: {{count}} week
 msgid "week"
-msgstr "settimana"
+msgstr "{{count}} settimana"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "settimane"
+msgstr "{{count}} settimane"
 
 #: {{count}} day
 msgid "day"
@@ -190,27 +190,27 @@ msgstr "giorni"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "ora"
+msgstr "{{count}} ora"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "ore"
+msgstr "{{count}} ore"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuto"
+msgstr "{{count}} minuto"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minuti"
+msgstr "{{count}} minuti"
 
 #: {{count}} second
 msgid "second"
-msgstr "secondo"
+msgstr "{{count}} secondo"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "secondi"
+msgstr "{{count}} secondi"
 
 #: General
 msgid "settings_general"
