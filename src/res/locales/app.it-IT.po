@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-09-11 13:06\n"
+"PO-Revision-Date: 2019-09-11 13:15\n"
 
 #: Start
 msgid "start_button"
@@ -182,11 +182,11 @@ msgstr "{{count}} settimane"
 
 #: {{count}} day
 msgid "day"
-msgstr "giorno"
+msgstr "{{count}} giorno"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "giorni"
+msgstr "{{count}} giorni"
 
 #: {{count}} hour
 msgid "hour"
