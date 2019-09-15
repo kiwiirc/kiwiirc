@@ -71,7 +71,8 @@ function linkifyUrl(block, _opts) {
     }
 
     // Make the link clickable
-    let out = `<a target="_blank" href="${block.meta.url.replace(/"/g, '%22')}">${nice}</a>`;
+    let href = block.meta.url.replace(/"/g, '%22');
+    let out = `<a target="_blank" href="${href}" rel="noopener noreferrer">${nice}</a>`;
 
     if (opts.addHandle) {
         let cssClass = opts.handleClass || '';
