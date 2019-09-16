@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-09-11 13:15\n"
+"PO-Revision-Date: 2019-09-16 21:31\n"
 
 #: Start
 msgid "start_button"
@@ -826,7 +826,7 @@ msgstr "{{nick}} da lo stato di ops a {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} riceve lo stato di ops da {{target}}"
+msgstr "{{nick}} rimuove lo stato di ops a {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
@@ -834,7 +834,7 @@ msgstr "{{nick}} da lo stato di half-ops a {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} riceve lo stato di half-ops da {{target}}"
+msgstr "{{nick}} rimuove lo stato di half-ops a {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
@@ -842,7 +842,7 @@ msgstr "{{nick}} da lo stato di voice a {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} riceve lo stato di voice da {{target}}"
+msgstr "{{nick}} rimuove lo stato di voice a {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -850,7 +850,7 @@ msgstr "{{nick}} da lo stato di admin a {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} riceve lo stato di admin da {{target}}"
+msgstr "{{nick}} rimuove lo stato di admin a {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
@@ -858,7 +858,7 @@ msgstr "{{nick}} da lo stato di proprietario a {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} riceve lo stato di proprietario da {{target}}"
+msgstr "{{nick}} rimuove lo stato di proprietario a {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
