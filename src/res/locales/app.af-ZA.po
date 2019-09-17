@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Afrikaans\n"
 "Language: af_ZA\n"
-"PO-Revision-Date: 2019-08-02 12:45\n"
+"PO-Revision-Date: 2019-09-17 19:32\n"
 
 #: Start
 msgid "start_button"
@@ -933,7 +933,7 @@ msgid "command_quit"
 msgstr ""
 
 #: Connect to a new IRC network
-msgid "command_connect"
+msgid "command_server"
 msgstr ""
 
 #: Request information on somebody
@@ -1023,10 +1023,6 @@ msgstr ""
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr ""
-
-#: Connected
-msgid "connected"
-msgstr "aangesluit"
 
 #: Disconnected
 msgid "disconnected"
