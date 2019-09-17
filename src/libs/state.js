@@ -8,9 +8,6 @@ import NetworkState from './state/NetworkState';
 import BufferState from './state/BufferState';
 import UserState from './state/UserState';
 import Message from './Message';
-import Logger from './Logger';
-
-const log = Logger.namespace('state.js');
 
 const stateObj = {
     // May be set by a StatePersistence instance
@@ -260,8 +257,8 @@ const state = new Vue({
 
         getNetworkFromBncName(bncname) {
             return _.find(this.networks, (net) => {
-                log.assert(!!net.connection.bncname, 'getNetworkFromBncName() comparing against falsey', net.name);
-                let isMatch = bncname.toLowerCase() === net.connection.bncname.toLowerCase();
+                let isMatch = net.connection.bncname &&
+                    bncname.toLowerCase() === net.connection.bncname.toLowerCase();
                 return isMatch;
             });
         },

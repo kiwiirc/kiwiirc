@@ -4,9 +4,9 @@ import _ from 'lodash';
 import strftime from 'strftime';
 import Irc from 'irc-framework';
 import * as TextFormatting from '@/helpers/TextFormatting';
-import * as Misc from '@/helpers/Misc';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import typingMiddleware from './TypingMiddleware';
+import chathistoryMiddleware from './ChathistoryMiddleware';
 import * as ServerConnection from './ServerConnection';
 
 export function create(state, network) {
@@ -31,6 +31,7 @@ export function create(state, network) {
     // Current version of irc-framework only support draft/message-tags-0.2
     // TODO: Removee this once irc-framework has been updated
     ircClient.requestCap('message-tags');
+    ircClient.use(chathistoryMiddleware());
     ircClient.use(clientMiddleware(state, network));
     ircClient.use(typingMiddleware());
 
@@ -730,7 +731,7 @@ function clientMiddleware(state, network) {
                 type: 'motd',
             });
 
-            let historySupport = !!network.ircClient.network.supports('chathistory');
+            let historySupport = !!network.ircClient.chathistory.isSupported();
 
             // If this is a reconnect then request chathistory from our last position onwards
             // to get any missed messages
@@ -815,15 +816,13 @@ function clientMiddleware(state, network) {
             });
             state.addMultipleUsersToBuffer(buffer, users);
 
-            if (!hadExistingUsers && network.ircClient.network.supports('chathistory')) {
-                let time = Misc.dateIso();
+            if (!hadExistingUsers && network.ircClient.chathistory.isSupported()) {
                 let correctBuffer = buffer.isChannel() || buffer.isQuery();
 
                 if (correctBuffer && numConnects > 1) {
                     buffer.requestScrollback('forward');
                 } else if (correctBuffer) {
-                    let line = `CHATHISTORY ${buffer.name} timestamp=${time} message_count=-50`;
-                    network.ircClient.raw(line);
+                    network.ircClient.chathistory.before(buffer.name, '*');
                 }
             }
         }

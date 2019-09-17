@@ -2,7 +2,6 @@
 
 import Vue from 'vue';
 import _ from 'lodash';
-import * as Misc from '@/helpers/Misc';
 import { def } from './common';
 import batchedAdd from '../batchedAdd';
 
@@ -230,8 +229,7 @@ export default class BufferState {
     requestScrollback(_direction) {
         let direction = _direction || 'backward';
         let time = '';
-        // Negative number gets messages before the timestamps, positive gets messages after
-        let numMessages = -50;
+        let chathistoryFuncName = 'before';
 
         // Going backwards takes the earliest message we already have and requests messages
         // before it. Going forward takes the last message we have and requests messages after
@@ -247,7 +245,7 @@ export default class BufferState {
                 return current;
             }, this.getMessages()[0]);
 
-            numMessages = -50;
+            chathistoryFuncName = 'before';
             time = lastMessage ?
                 new Date(lastMessage.time) :
                 new Date();
@@ -261,7 +259,7 @@ export default class BufferState {
                 return current;
             }, this.getMessages()[0]);
 
-            numMessages = 50;
+            chathistoryFuncName = 'after';
             time = firstMessage ?
                 new Date(firstMessage.time) :
                 new Date();
@@ -269,11 +267,9 @@ export default class BufferState {
             throw new Error('Invalid direction for requestScrollback(): ' + _direction);
         }
 
-        let irc = this.getNetwork().ircClient;
-        let timeStr = Misc.dateIso(time);
-        irc.raw(`CHATHISTORY ${this.name} timestamp=${timeStr} message_count=${numMessages}`);
-        irc.once('batch end chathistory', (event) => {
-            if (event.commands.length === 0) {
+        let ircClient = this.getNetwork().ircClient;
+        ircClient.chathistory[chathistoryFuncName](this.name, time).then((event) => {
+            if (!event || event.commands.length === 0) {
                 this.flags.chathistory_available = false;
             } else {
                 this.flags.chathistory_available = true;
