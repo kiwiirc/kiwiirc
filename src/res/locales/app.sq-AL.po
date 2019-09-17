@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2019-08-04 12:01\n"
+"PO-Revision-Date: 2019-09-17 19:32\n"
 
 #: Start
 msgid "start_button"
@@ -933,8 +933,8 @@ msgid "command_quit"
 msgstr "Shkëputuni prej shërbyesit IRC"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Lidhuni te një rrjet IRC i ri"
+msgid "command_server"
+msgstr ""
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1023,10 +1023,6 @@ msgstr "(Falënderime për Adam @Rizon, për përkrahjen në zhvillimin shërbye
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Provoni një herë versionin Kiwi IRC të zhvilluesve!"
-
-#: Connected
-msgid "connected"
-msgstr "I lidhur"
 
 #: Disconnected
 msgid "disconnected"
