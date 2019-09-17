@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2019-09-17 20:52\n"
 
 #: Start
 msgid "start_button"
@@ -934,7 +934,7 @@ msgstr "Αποσυνδεθείτε από τον διακομιστή IRC"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr ""
+msgstr "Συνδεθείτε σε ένα νέο IRC δίκτυο"
 
 #: Request information on somebody
 msgid "command_whois"
