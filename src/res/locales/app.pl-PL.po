@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2019-08-02 12:44\n"
+"PO-Revision-Date: 2019-09-17 19:32\n"
 
 #: Start
 msgid "start_button"
@@ -933,8 +933,8 @@ msgid "command_quit"
 msgstr "Odłącz się od serwera IRC"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Połącz się z nową siecią IRC"
+msgid "command_server"
+msgstr ""
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1023,10 +1023,6 @@ msgstr "(Podziękowania dla Adama@Rizon za rozwijanie obsługi serwera gniazd!)"
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Wypróbuj deweloperską wersję Kiwi IRC-a!"
-
-#: Connected
-msgid "connected"
-msgstr "Podłączono"
 
 #: Disconnected
 msgid "disconnected"
