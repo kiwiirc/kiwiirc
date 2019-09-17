@@ -128,7 +128,7 @@ export default {
             }
 
             let isCorrectBufferType = (this.buffer.isChannel() || this.buffer.isQuery());
-            let isSupported = !!this.buffer.getNetwork().ircClient.network.supports('chathistory');
+            let isSupported = !!this.buffer.getNetwork().ircClient.chathistory.isSupported();
             return isCorrectBufferType && isSupported && this.buffer.flags.chathistory_available;
         },
         shouldRequestChannelKey() {
