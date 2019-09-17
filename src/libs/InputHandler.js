@@ -451,23 +451,22 @@ inputCommands.close = function inputCommandClose(event, command, line) {
 inputCommands.query = function inputCommandQuery(event, command, line) {
     event.handled = true;
 
-    let nicks = line.split(' ');
+    let pos = line.indexOf(' ');
+    if (pos === -1) {
+        pos = line.length;
+    }
+
+    let nick = line.substr(0, pos);
+    let message = line.substr(pos + 1);
+
     let network = this.state.getActiveNetwork();
+    let buffer = this.state.getOrAddBufferByName(network.id, nick);
 
-    // Only switch to the first buffer we open if multiple are being opened
-    let hasSwitchedActiveBuffer = false;
-    nicks.forEach((bufferName, idx) => {
-        if (!bufferName) {
-            return;
-        }
+    this.state.setActiveBuffer(network.id, buffer.name);
 
-        let newBuffer = this.state.addBuffer(network.id, bufferName);
-
-        if (newBuffer && !hasSwitchedActiveBuffer) {
-            this.state.setActiveBuffer(network.id, newBuffer.name);
-            hasSwitchedActiveBuffer = true;
-        }
-    });
+    if (message) {
+        this.state.$emit('input.raw', '/msg ' + buffer.name + ' ' + message);
+    }
 };
 
 inputCommands.invite = function inputCommandInvite(event, command, line) {
