@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2019-09-18 17:28\n"
 
 #: Start
 msgid "start_button"
@@ -934,7 +934,7 @@ msgstr "Verbinding met de IRC-server verbreken"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr ""
+msgstr "Verbinden met een nieuw IRC-netwerk"
 
 #: Request information on somebody
 msgid "command_whois"
