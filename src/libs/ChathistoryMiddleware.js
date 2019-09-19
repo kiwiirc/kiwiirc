@@ -20,20 +20,15 @@ export default function chathistoryMiddleware() {
             client.chathistory.batchCallbacks.resolve(target, event);
         }
 
-        let paramsLower = lowerCaseAll(event.params || []);
-        if (command.toLowerCase() === 'fail' && [0] === 'chathistory') {
+        if (command.toLowerCase() === 'fail' && event.params[0].toLowerCase() === 'chathistory') {
             // FAIL CHATHISTORY MESSAGE_ERROR the_given_command #target :Messages could not be ...
-            if (paramsLower[1] === 'message_error') {
+            if (event.params[1].toLowerCase() === 'message_error') {
                 client.chathistory.batchCallbacks.resolve(event.params[3]);
             }
         }
 
         next();
     }
-}
-
-function lowerCaseAll(stringArr) {
-    return stringArr.map(s => s.toLowerCase());
 }
 
 function addFunctionsToClient(client) {
