@@ -72,7 +72,7 @@ function generateComputedModeWithParam(mode) {
             if (newVal) {
                 this.setMode('+' + mode, newVal);
             } else {
-                this.setMode('-' + mode);
+                this.setMode('-' + mode, this.modeVal(mode));
             }
         },
     };
