@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2019-09-24 16:31\n"
 
 #: Start
 msgid "start_button"
@@ -934,7 +934,7 @@ msgstr "Прекъснете връзката с IRC сървъра"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr ""
+msgstr "Свържете се с нова IRC мрежа "
 
 #: Request information on somebody
 msgid "command_whois"
