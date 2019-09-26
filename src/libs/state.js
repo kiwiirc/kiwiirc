@@ -869,7 +869,11 @@ const state = new Vue({
         },
 
         onceWithTimeout(event, eventCallback, timeoutCallback, timeout = 10000) {
-            const timeoutID = setTimeout(timeoutCallback, timeout);
+            const timeoutID = setTimeout(() => {
+                if (typeof timeoutCallback === 'function') {
+                    timeoutCallback();
+                }
+            }, timeout);
 
             this.$once(event, (...args) => {
                 clearTimeout(timeoutID);
