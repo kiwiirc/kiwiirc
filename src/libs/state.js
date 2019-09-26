@@ -867,6 +867,15 @@ const state = new Vue({
         getStartups() {
             return availableStartups;
         },
+
+        onceWithTimeout(event, eventCallback, timeoutCallback, timeout = 10000) {
+            const timeoutID = setTimeout(timeoutCallback, timeout);
+
+            this.$once(event, (...args) => {
+                clearTimeout(timeoutID);
+                eventCallback(...args);
+            });
+        },
     },
 });
 
