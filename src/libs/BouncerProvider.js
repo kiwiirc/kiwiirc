@@ -82,6 +82,13 @@ export default class BouncerProvider {
             network.connection.bncname = client.bnc.tags().network;
         }
 
+        // If this is a BNC network, sync it before anything else so that we get all it's info
+        // and buffer states as soon as possible
+        if (client.bnc.hasNetwork()) {
+            await this.syncBncNetwork(network);
+        }
+
+        // Now sync all other networks from the bouncer
         await this.initAndAddNetworks(network);
     }
 
@@ -99,24 +106,7 @@ export default class BouncerProvider {
 
         // populate network list from the controller connection
         let bncNetworks = await client.bnc.getNetworks();
-        let bncBuffers = [];
-
-        try {
-            bncBuffers = await Promise.all(bncNetworks.map(bncNet => (
-                client.bnc.getBuffers(bncNet.name)
-            )));
-        } catch (err) {
-            log.error(err);
-        }
-
-        let preparedNetworks = [];
-        for (let i = 0; i < bncNetworks.length; i++) {
-            let bncNet = bncNetworks[i];
-            bncNet.buffers = bncBuffers[i];
-            preparedNetworks.push(bncNet);
-        }
-
-        preparedNetworks.forEach(bncNet => this.addNetworkToState(bncNet));
+        bncNetworks.forEach(bncNet => this.addNetworkToState(bncNet));
 
         // Use this initial network password for other network connections
         let [username, password] = network.password.split(':');
@@ -134,10 +124,49 @@ export default class BouncerProvider {
         this.monitorNetworkChanges();
     }
 
-    addNetworkToState(network) {
+    async syncBncNetwork(bncNetwork) {
+        let client = bncNetwork.ircClient;
+
+        let buffers = await client.bnc.getBuffers(bncNetwork.connection.bncname);
+        buffers.forEach((buffer) => {
+            let newBuffer = this.state.addBuffer(bncNetwork.id, buffer.name);
+            if (buffer.joined) {
+                newBuffer.enabled = true;
+                newBuffer.joined = true;
+            } else {
+                newBuffer.enabled = false;
+                newBuffer.joined = false;
+            }
+            if (buffer.seen) {
+                newBuffer.last_read = (new Date(buffer.seen)).getTime();
+            }
+
+            newBuffer.topic = buffer.topic || '';
+
+            if (bncNetwork.state === 'connected' && newBuffer.isChannel() && newBuffer.joined) {
+                client.raw('NAMES ' + newBuffer.name);
+            }
+        });
+
+        // Remove any existing buffers that we no longer have on the bouncer
+        bncNetwork.buffers.forEach((clientBuffer) => {
+            if (!clientBuffer.isChannel() && !clientBuffer.isQuery()) {
+                return;
+            }
+
+            let existingBuffers = buffers.filter(bncBuffer => (
+                bncBuffer.name.toLowerCase() === clientBuffer.name.toLowerCase()
+            ));
+
+            if (existingBuffers.length === 0) {
+                this.state.removeBuffer(clientBuffer);
+            }
+        });
+    }
+
+    async addNetworkToState(network) {
         // Expects network to be in the format of:
         //  {
-        //  "buffers":[{"channel":"1","name":"#prawnsalad","joined":"1"}],
         //  "name":"freenode",
         //  "channel":"1",
         //  "connected":"1",
@@ -158,40 +187,7 @@ export default class BouncerProvider {
             });
         }
 
-        network.buffers.forEach((buffer) => {
-            let newBuffer = this.state.addBuffer(net.id, buffer.name);
-            if (buffer.joined) {
-                newBuffer.enabled = true;
-                newBuffer.joined = true;
-            } else {
-                newBuffer.enabled = false;
-                newBuffer.joined = false;
-            }
-            if (buffer.seen) {
-                newBuffer.last_read = (new Date(buffer.seen)).getTime();
-            }
-
-            newBuffer.topic = buffer.topic || '';
-
-            if (net.state === 'connected' && newBuffer.isChannel() && newBuffer.joined) {
-                net.ircClient.raw('NAMES ' + newBuffer.name);
-            }
-        });
-
-        // Remove any existing buffers that we no longer have on the bouncer
-        net.buffers.forEach((clientBuffer) => {
-            if (!clientBuffer.isChannel() && !clientBuffer.isQuery()) {
-                return;
-            }
-
-            let existingBuffers = network.buffers.filter(bncBuffer => (
-                bncBuffer.name.toLowerCase() === clientBuffer.name.toLowerCase()
-            ));
-
-            if (existingBuffers.length === 0) {
-                this.state.removeBuffer(clientBuffer);
-            }
-        });
+        await this.syncBncNetwork(net);
     }
 
     // Keep a snapshot of what the current networks are. They will be periodically
