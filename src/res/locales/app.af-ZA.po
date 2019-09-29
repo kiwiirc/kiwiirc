@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Afrikaans\n"
 "Language: af_ZA\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2019-09-29 15:40\n"
 
 #: Start
 msgid "start_button"
@@ -42,7 +42,7 @@ msgstr "Verstellings "
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr ""
+msgstr "Hej"
 
 #: Channels
 msgid "channels"
