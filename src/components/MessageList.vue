@@ -603,12 +603,13 @@ export default {
     user-select: none;
 }
 
-div.kiwi-messagelist-item.kiwi-messagelist-item--selected/* .kiwi-messagelist-message*/ {
-    background-color: var(--brand-selected);
+div.kiwi-messagelist-item.kiwi-messagelist-item--selected {
+    border-left: 7px solid var(--brand-primary);
+    background-color: var(--brand-shadow);
 }
 
 div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-message {
-    background-color: unset;
+    border-left-width: 0;
 }
 
 .kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-message *::selection {
