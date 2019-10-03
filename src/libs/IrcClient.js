@@ -822,7 +822,7 @@ function clientMiddleware(state, network) {
                 if (correctBuffer && numConnects > 1) {
                     buffer.requestScrollback('forward');
                 } else if (correctBuffer) {
-                    network.ircClient.chathistory.before(buffer.name, '*');
+                    buffer.requestLatestScrollback();
                 }
             }
         }
