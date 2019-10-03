@@ -39,6 +39,7 @@ export default class BufferState {
         this.input_history = [];
         this.input_history_pos = 0;
         this.show_input = true;
+        this.chathistory_request_count = 0;
 
         Vue.observable(this);
 
@@ -61,6 +62,9 @@ export default class BufferState {
         if (this.isChannel()) {
             maybeStartWhoLoop(this);
         }
+
+        state.$on('network.connecting', this.onNetworkConnecting.bind(this));
+        state.$on('buffer.close', this.onBufferClose.bind(this));
     }
 
     get topic() {
@@ -270,20 +274,24 @@ export default class BufferState {
 
         let ircClient = this.getNetwork().ircClient;
         this.flag('is_requesting_chathistory', true);
-        ircClient.chathistory[chathistoryFuncName](this.name, time).then((event) => {
-            if (!event || event.commands.length === 0) {
-                this.flag('chathistory_available', false);
-            } else {
-                this.flag('chathistory_available', true);
-            }
-        }).finally(() => {
-            this.flag('is_requesting_chathistory', false);
-        });
+        this.chathistory_request_count += 1;
+        ircClient.chathistory[chathistoryFuncName](this.name, time)
+            .then((event) => {
+                if (!event || event.commands.length === 0) {
+                    this.flag('chathistory_available', false);
+                } else {
+                    this.flag('chathistory_available', true);
+                }
+            })
+            .finally(() => {
+                this.flag('is_requesting_chathistory', false);
+            });
     }
 
     requestLatestScrollback() {
         let ircClient = this.getNetwork().ircClient;
         this.flag('is_requesting_chathistory', true);
+        this.chathistory_request_count += 1;
         ircClient.chathistory.before(this.name, '*').finally(() => {
             this.flag('is_requesting_chathistory', false);
         });
@@ -395,6 +403,46 @@ export default class BufferState {
 
     scrollToMessage(id) {
         this.state.$emit('messagelist.scrollto', { id: id });
+    }
+
+    getLoadingState() {
+        const networkState = this.getNetwork().state;
+
+        if (networkState === 'disconnected') {
+            return 'disconnected';
+        } else if (networkState === 'connecting') {
+            return 'connecting';
+        } else if (networkState === 'connected') {
+            if (
+                this.flags.is_requesting_chathistory ||
+                (this.chathistory_request_count === 0 &&
+                    this.joined &&
+                    this.enabled)
+            ) {
+                return 'loadingMessages';
+            }
+
+            return 'done';
+        }
+
+        return 'unknown';
+    }
+
+    isReady() {
+        return this.getLoadingState() === 'done';
+    }
+
+    onNetworkConnecting(event) {
+        if (event.network === this.getNetwork()) {
+            this.chathistory_request_count = 0;
+        }
+    }
+
+    onBufferClose(event) {
+        if (event.buffer === this) {
+            this.state.$off('network.connecting', this.onNetworkConnecting);
+            this.state.$off('buffer.close', this.onBufferClose);
+        }
     }
 }
 
