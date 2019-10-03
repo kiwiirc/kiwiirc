@@ -419,7 +419,7 @@ export default class BufferState {
                     this.joined &&
                     this.enabled)
             ) {
-                return 'loadingMessages';
+                return 'loading';
             }
 
             return 'done';
