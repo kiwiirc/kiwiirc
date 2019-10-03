@@ -269,23 +269,23 @@ export default class BufferState {
         }
 
         let ircClient = this.getNetwork().ircClient;
-        this.flags.is_requesting_chathistory = true;
+        this.flag('is_requesting_chathistory', true);
         ircClient.chathistory[chathistoryFuncName](this.name, time).then((event) => {
             if (!event || event.commands.length === 0) {
-                this.flags.chathistory_available = false;
+                this.flag('chathistory_available', false);
             } else {
-                this.flags.chathistory_available = true;
+                this.flag('chathistory_available', true);
             }
         }).finally(() => {
-            this.flags.is_requesting_chathistory = false;
+            this.flag('is_requesting_chathistory', false);
         });
     }
 
     requestLatestScrollback() {
         let ircClient = this.getNetwork().ircClient;
-        this.flags.is_requesting_chathistory = true;
+        this.flag('is_requesting_chathistory', true);
         ircClient.chathistory.before(this.name, '*').finally(() => {
-            this.flags.is_requesting_chathistory = false;
+            this.flag('is_requesting_chathistory', false);
         });
     }
 
