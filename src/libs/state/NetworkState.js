@@ -33,7 +33,9 @@ export default class NetworkState {
             bncname: '',
             nick: '',
         };
-        this.settings = {};
+        this.settings = {
+            show_raw_caps: false,
+        };
         this.nick = '';
         this.username = '';
         this.gecos = '';
