@@ -39,6 +39,9 @@ export default class BufferState {
         this.input_history = [];
         this.input_history_pos = 0;
         this.show_input = true;
+
+        // Counter for chathistory requests. While this value is 0, it means that this buffer is
+        // still loading messages
         this.chathistory_request_count = 0;
 
         Vue.observable(this);
@@ -63,12 +66,15 @@ export default class BufferState {
             maybeStartWhoLoop(this);
         }
 
+        // When the network re-connects, we reset the chathistory request counter.
+        // This will make the `getLoadingState()` stay as 'loading' while the chathistory reloads.
         function onNetworkConnecting(event) {
             if (event.network === this.getNetwork()) {
                 this.chathistory_request_count = 0;
             }
         }
 
+        // Clean up the previous event and itself when the buffer is closed.
         function onBufferClose(event) {
             if (event.buffer === this) {
                 this.state.$off('network.connecting', onNetworkConnectingBound);
