@@ -730,18 +730,6 @@ function clientMiddleware(state, network) {
                 message: messageBody,
                 type: 'motd',
             });
-
-            let historySupport = !!network.ircClient.chathistory.isSupported();
-
-            // If this is a reconnect then request chathistory from our last position onwards
-            // to get any missed messages
-            if (numConnects > 1 && historySupport) {
-                network.buffers.forEach((b) => {
-                    if (b.isChannel() || b.isQuery()) {
-                        b.requestScrollback('forward');
-                    }
-                });
-            }
         }
 
         if (command === 'nick in use' && !client.connection.registered) {
