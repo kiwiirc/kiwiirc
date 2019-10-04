@@ -298,7 +298,7 @@ export default class BufferState {
         this.flag('is_requesting_chathistory', true);
         this.chathistory_request_count += 1;
         ircClient.chathistory[chathistoryFuncName](this.name, time)
-            .then(event => {
+            .then((event) => {
                 if (!event || event.commands.length === 0) {
                     this.flag('chathistory_available', false);
                 } else {
@@ -429,23 +429,23 @@ export default class BufferState {
 
     getLoadingState() {
         const networkState = this.getNetwork().state;
+        const historySupport = !!this.getNetwork().ircClient.chathistory.isSupported();
 
         if (networkState === 'disconnected') {
             return 'disconnected';
         } else if (networkState === 'connecting') {
             return 'connecting';
-        } else if (networkState === 'connected') {
-            if (
-                this.flags.is_requesting_chathistory ||
-                (this.chathistory_request_count === 0 &&
-                    this.joined &&
-                    this.enabled)
-            ) {
-                return 'loading';
-            } else {
-                return 'done';
-            }
+        } else if (
+            networkState === 'connected' &&
+            historySupport &&
+            this.joined &&
+            this.enabled &&
+            (this.flags.is_requesting_chathistory ||
+                this.chathistory_request_count === 0)
+        ) {
+            return 'loading';
         }
+        return 'done';
     }
 
     isReady() {
