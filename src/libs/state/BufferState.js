@@ -63,8 +63,24 @@ export default class BufferState {
             maybeStartWhoLoop(this);
         }
 
-        state.$on('network.connecting', this.onNetworkConnecting.bind(this));
-        state.$on('buffer.close', this.onBufferClose.bind(this));
+        function onNetworkConnecting(event) {
+            if (event.network === this.getNetwork()) {
+                this.chathistory_request_count = 0;
+            }
+        }
+
+        function onBufferClose(event) {
+            if (event.buffer === this) {
+                this.state.$off('network.connecting', onNetworkConnectingBound);
+                this.state.$off('buffer.close', onBufferCloseBound);
+            }
+        }
+
+        const onNetworkConnectingBound = onNetworkConnecting.bind(this);
+        const onBufferCloseBound = onBufferClose.bind(this);
+
+        state.$on('network.connecting', onNetworkConnectingBound);
+        state.$on('buffer.close', onBufferCloseBound);
     }
 
     get topic() {
@@ -276,7 +292,7 @@ export default class BufferState {
         this.flag('is_requesting_chathistory', true);
         this.chathistory_request_count += 1;
         ircClient.chathistory[chathistoryFuncName](this.name, time)
-            .then((event) => {
+            .then(event => {
                 if (!event || event.commands.length === 0) {
                     this.flag('chathistory_available', false);
                 } else {
@@ -420,29 +436,14 @@ export default class BufferState {
                     this.enabled)
             ) {
                 return 'loading';
+            } else {
+                return 'done';
             }
-
-            return 'done';
         }
-
-        return 'unknown';
     }
 
     isReady() {
         return this.getLoadingState() === 'done';
-    }
-
-    onNetworkConnecting(event) {
-        if (event.network === this.getNetwork()) {
-            this.chathistory_request_count = 0;
-        }
-    }
-
-    onBufferClose(event) {
-        if (event.buffer === this) {
-            this.state.$off('network.connecting', this.onNetworkConnecting);
-            this.state.$off('buffer.close', this.onBufferClose);
-        }
     }
 }
 
