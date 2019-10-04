@@ -90,7 +90,7 @@
     "vue-virtual-scroller": "^1.0.0-rc.2",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.11.1",
+    "webpack-dev-server": "^3.1.11",
     "webpack-merge": "^0.14.1",
     "whatwg-fetch": "^3.0.0",
     "xhr": "^2.3.2"
