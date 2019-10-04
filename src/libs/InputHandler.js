@@ -726,7 +726,7 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
             }, 4000);
         }
 
-        network.ircClient.mode(target, parts[0], parts[1]);
+        network.ircClient.mode(target, parts[0], parts.splice(1));
     } else {
         // No modes specified will request the modes for the target
         network.ircClient.mode(target);
