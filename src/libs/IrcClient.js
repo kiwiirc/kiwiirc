@@ -230,6 +230,12 @@ function clientMiddleware(state, network) {
                 message: TextFormatting.t('connected_to', { network: client.network.name }),
             });
 
+            // we need to ping early so we are ready to adjust incoming
+            // message times to localtime
+            if (network.ircClient.network.cap.isEnabled('server-time')) {
+                network.ircClient.ping(Date.now().toString());
+            }
+
             // Get some extra info about ourselves
             client.raw('WHO ' + event.nick);
 
@@ -366,7 +372,7 @@ function clientMiddleware(state, network) {
             });
 
             let message = {
-                time: event.time || Date.now(),
+                time: network.localiseTime(event.time),
                 nick: event.nick,
                 message: messageBody,
                 type: event.type,
@@ -421,7 +427,7 @@ function clientMiddleware(state, network) {
             });
 
             state.addMessage(buffer, {
-                time: event.time || Date.now(),
+                time: network.localiseTime(event.time),
                 nick: event.nick,
                 message: messageBody,
                 type: 'wallops',
@@ -659,7 +665,7 @@ function clientMiddleware(state, network) {
             if (buffer && event.nick === network.nick) {
                 network.away = 'away';
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: network.localiseTime(event.time),
                     nick: '*',
                     type: 'presence',
                     message: event.message,
@@ -676,7 +682,7 @@ function clientMiddleware(state, network) {
             if (buffer && event.nick === network.nick) {
                 network.away = '';
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: network.localiseTime(event.time),
                     nick: '*',
                     type: 'presence',
                     message: event.message,
@@ -725,7 +731,7 @@ function clientMiddleware(state, network) {
                 text: event.motd,
             });
             state.addMessage(buffer, {
-                time: event.time || Date.now(),
+                time: network.localiseTime(event.time),
                 nick: '',
                 message: messageBody,
                 type: 'motd',
@@ -792,7 +798,7 @@ function clientMiddleware(state, network) {
             let buffers = state.getBuffersWithUser(networkid, event.new_nick);
             buffers.forEach((buffer) => {
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: network.localiseTime(event.time),
                     nick: '',
                     message: messageBody,
                     type: 'nick',
@@ -851,7 +857,7 @@ function clientMiddleware(state, network) {
 
                 if (buffer.flags.requested_modes) {
                     state.addMessage(buffer, {
-                        time: event.time || Date.now(),
+                        time: network.localiseTime(event.time),
                         nick: '*',
                         message: buffer.name + ' ' + modeStrs.join(', '),
                     });
@@ -869,7 +875,7 @@ function clientMiddleware(state, network) {
                     (new Date(event.created_at * 1000)).toLocaleString();
 
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: network.localiseTime(event.time),
                     nick: '*',
                     message: buffer.name + ' ' + timeCreated,
                 });
@@ -992,7 +998,7 @@ function clientMiddleware(state, network) {
                         text,
                     });
                     state.addMessage(buffer, {
-                        time: event.time || Date.now(),
+                        time: network.localiseTime(event.time),
                         nick: '',
                         message: messageBody,
                         type: 'mode',
@@ -1053,7 +1059,7 @@ function clientMiddleware(state, network) {
             if (buffer && buffer.flags.requested_banlist) {
                 if (!event.bans || event.bans.length === 0) {
                     state.addMessage(buffer, {
-                        time: event.time || Date.now(),
+                        time: network.localiseTime(event.time),
                         nick: '',
                         message: TextFormatting.t('bans_nobody'),
                         type: 'banlist',
@@ -1066,7 +1072,7 @@ function clientMiddleware(state, network) {
                     });
 
                     state.addMessage(buffer, {
-                        time: event.time || Date.now(),
+                        time: network.localiseTime(event.time),
                         nick: '*',
                         message: banText,
                         type: 'banlist',
@@ -1095,11 +1101,20 @@ function clientMiddleware(state, network) {
 
             if (messageBody) {
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: network.localiseTime(event.time),
                     nick: '',
                     message: messageBody,
                     type: 'topic',
                 });
+            }
+        }
+
+        if (command === 'pong') {
+            if (event.time) {
+                let now = Date.now();
+                let lag = Math.floor((event.message - now) / 2);
+                network.time_offset = now - event.time - lag;
+                console.log('offset', network.time_offset);
             }
         }
 
@@ -1115,7 +1130,7 @@ function clientMiddleware(state, network) {
             });
 
             state.addMessage(buffer, {
-                time: event.time || Date.now(),
+                time: network.localiseTime(event.time),
                 nick: '',
                 message: messageBody,
                 type: 'error',
@@ -1132,7 +1147,7 @@ function clientMiddleware(state, network) {
             });
             let buffer = state.getActiveBuffer();
             state.addMessage(buffer, {
-                time: event.time || Date.now(),
+                time: network.localiseTime(event.time),
                 nick: '',
                 message: messageBody,
                 type: 'error',
@@ -1175,7 +1190,7 @@ function clientMiddleware(state, network) {
                     text: event.reason || event.error,
                 });
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: network.localiseTime(event.time),
                     nick: '',
                     message: messageBody,
                     type: 'error',

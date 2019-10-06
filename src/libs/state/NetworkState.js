@@ -39,6 +39,7 @@ export default class NetworkState {
         this.gecos = '';
         this.password = '';
         this.away = '';
+        this.time_offset = 0;
 
         Vue.observable(this);
 
@@ -136,6 +137,13 @@ export default class NetworkState {
             return true;
         }
         return false;
+    }
+
+    localiseTime(time) {
+        if (time) {
+            return time + this.time_offset;
+        }
+        return Date.now();
     }
 
     currentUser() {
