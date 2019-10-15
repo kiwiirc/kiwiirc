@@ -524,6 +524,21 @@ inputCommands.quote = function inputCommandQuote(event, command, line) {
     event.handled = true;
 
     let network = this.state.getActiveNetwork();
+
+    // Sending a manual CAP command triggers raw CAPs to be shown in the server tab
+    if (line.split(' ')[0].toLowerCase() === 'cap') {
+        network.setting('show_raw_caps', true);
+    }
+
+    let buffer = this.state.getActiveBuffer();
+    if (buffer.isServer()) {
+        this.state.addMessage(buffer, {
+            time: Date.now(),
+            nick: '',
+            message: line,
+        });
+    }
+
     network.ircClient.raw(line);
 };
 

@@ -192,6 +192,20 @@ function clientMiddleware(state, network) {
             });
         }
 
+        if (command === 'CAP' && network.setting('show_raw_caps')) {
+            let params = [...event.params];
+            if (params[params.length - 1].indexOf(' ') > -1) {
+                params[params.length - 1] = ':' + params[params.length - 1];
+            }
+
+            let buffer = network.serverBuffer();
+            state.addMessage(buffer, {
+                time: Date.now(),
+                nick: '',
+                message: event.command + ' ' + params.join(' '),
+            });
+        }
+
         next();
     }
 
