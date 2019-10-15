@@ -744,18 +744,6 @@ function clientMiddleware(state, network) {
                 message: messageBody,
                 type: 'motd',
             });
-
-            let historySupport = !!network.ircClient.chathistory.isSupported();
-
-            // If this is a reconnect then request chathistory from our last position onwards
-            // to get any missed messages
-            if (numConnects > 1 && historySupport) {
-                network.buffers.forEach((b) => {
-                    if (b.isChannel() || b.isQuery()) {
-                        b.requestScrollback('forward');
-                    }
-                });
-            }
         }
 
         if (command === 'nick in use' && !client.connection.registered) {
@@ -816,7 +804,9 @@ function clientMiddleware(state, network) {
 
         if (command === 'userlist') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
-            let hadExistingUsers = Object.keys(buffer.users).length > 0;
+            let hadExistingUsers = Object.keys(buffer.users)
+                .filter(u => u !== network.ircClient.user.nick)
+                .length > 0;
             let users = [];
             event.users.forEach((user) => {
                 users.push({

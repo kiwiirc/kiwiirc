@@ -40,6 +40,10 @@ export default class BufferState {
         this.input_history_pos = 0;
         this.show_input = true;
 
+        // Counter for chathistory requests. While this value is 0, it means that this buffer is
+        // still loading messages
+        this.chathistory_request_count = 0;
+
         Vue.observable(this);
 
         // Some non-enumerable properties (vues $watch won't cover these properties)
@@ -61,6 +65,28 @@ export default class BufferState {
         if (this.isChannel()) {
             maybeStartWhoLoop(this);
         }
+
+        // When the network re-connects, we reset the chathistory request counter.
+        // This will make the `getLoadingState()` stay as 'loading' while the chathistory reloads.
+        function onNetworkConnecting(event) {
+            if (event.network === this.getNetwork()) {
+                this.chathistory_request_count = 0;
+            }
+        }
+
+        // Clean up the previous event and itself when the buffer is closed.
+        function onBufferClose(event) {
+            if (event.buffer === this) {
+                this.state.$off('network.connecting', onNetworkConnectingBound);
+                this.state.$off('buffer.close', onBufferCloseBound);
+            }
+        }
+
+        const onNetworkConnectingBound = onNetworkConnecting.bind(this);
+        const onBufferCloseBound = onBufferClose.bind(this);
+
+        state.$on('network.connecting', onNetworkConnectingBound);
+        state.$on('buffer.close', onBufferCloseBound);
     }
 
     get topic() {
@@ -270,20 +296,24 @@ export default class BufferState {
 
         let ircClient = this.getNetwork().ircClient;
         this.flag('is_requesting_chathistory', true);
-        ircClient.chathistory[chathistoryFuncName](this.name, time).then((event) => {
-            if (!event || event.commands.length === 0) {
-                this.flag('chathistory_available', false);
-            } else {
-                this.flag('chathistory_available', true);
-            }
-        }).finally(() => {
-            this.flag('is_requesting_chathistory', false);
-        });
+        this.chathistory_request_count += 1;
+        ircClient.chathistory[chathistoryFuncName](this.name, time)
+            .then((event) => {
+                if (!event || event.commands.length === 0) {
+                    this.flag('chathistory_available', false);
+                } else {
+                    this.flag('chathistory_available', true);
+                }
+            })
+            .finally(() => {
+                this.flag('is_requesting_chathistory', false);
+            });
     }
 
     requestLatestScrollback() {
         let ircClient = this.getNetwork().ircClient;
         this.flag('is_requesting_chathistory', true);
+        this.chathistory_request_count += 1;
         ircClient.chathistory.before(this.name, '*').finally(() => {
             this.flag('is_requesting_chathistory', false);
         });
@@ -395,6 +425,35 @@ export default class BufferState {
 
     scrollToMessage(id) {
         this.state.$emit('messagelist.scrollto', { id: id });
+    }
+
+    getLoadingState() {
+        const networkState = this.getNetwork().state;
+        const historySupport = !!this.getNetwork().ircClient.chathistory.isSupported();
+
+        if (networkState === 'disconnected') {
+            return 'disconnected';
+        } else if (networkState === 'connecting') {
+            return 'connecting';
+        } else if (
+            networkState === 'connected' &&
+            this.joined &&
+            this.enabled &&
+            (
+                historySupport &&
+                (this.flags.is_requesting_chathistory ||
+                // If chathistory is supported then a request will always be made when first joining
+                // a channel. If request_count===0 then we're still waiting for it to happen.
+                this.chathistory_request_count === 0)
+            )
+        ) {
+            return 'loading';
+        }
+        return 'done';
+    }
+
+    isReady() {
+        return this.getLoadingState() === 'done';
     }
 }
 
