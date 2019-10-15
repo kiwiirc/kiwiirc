@@ -437,11 +437,15 @@ export default class BufferState {
             return 'connecting';
         } else if (
             networkState === 'connected' &&
-            historySupport &&
             this.joined &&
             this.enabled &&
-            (this.flags.is_requesting_chathistory ||
+            (
+                historySupport &&
+                (this.flags.is_requesting_chathistory ||
+                // If chathistory is supported then a request will always be made when first joining
+                // a channel. If request_count===0 then we're still waiting for it to happen.
                 this.chathistory_request_count === 0)
+            )
         ) {
             return 'loading';
         }
