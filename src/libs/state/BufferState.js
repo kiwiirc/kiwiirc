@@ -54,6 +54,7 @@ export default class BufferState {
             networkid: this.networkid,
             buffer: this.name,
             messages: [],
+            messageIds: Object.create(null),
         };
         this.messageDict.push(messagesObj);
         def(this, 'messagesObj', messagesObj, false);
@@ -112,6 +113,11 @@ export default class BufferState {
         return bufMessages ?
             bufMessages.messages :
             [];
+    }
+
+    clearMessages() {
+        this.messagesObj.messages.splice(0, this.messagesObj.messages.length);
+        this.messagesObj.messageIds = Object.create(null);
     }
 
     isServer() {
@@ -481,21 +487,32 @@ function createUserBatch(bufferState) {
  */
 function createMessageBatch(bufferState) {
     let addSingleMessage = (newMessage) => {
+        if (bufferState.messagesObj.messageIds[newMessage.id]) {
+            return;
+        }
         bufferState.messagesObj.messages.push(newMessage);
+        bufferState.messagesObj.messageIds[newMessage.id] = newMessage;
         trimMessages();
         bufferState.message_count++;
     };
     let addMultipleMessages = (newMessages) => {
-        bufferState.messagesObj.messages = bufferState.messagesObj.messages.concat(newMessages);
-        trimMessages();
-        bufferState.message_count++;
+        let toAdd = newMessages.filter(msg => !bufferState.messagesObj.messageIds[msg.id]);
+        if (toAdd.length > 0) {
+            bufferState.messagesObj.messages = bufferState.messagesObj.messages.concat(toAdd);
+            toAdd.forEach((msg) => {
+                bufferState.messagesObj.messageIds[msg.id] = msg;
+            });
+            trimMessages();
+            bufferState.message_count++;
+        }
     };
     let trimMessages = () => {
         let scrollbackSize = bufferState.setting('scrollback_size');
         let length = bufferState.messagesObj.messages.length;
 
         if (bufferState.messagesObj.messages.length > scrollbackSize) {
-            bufferState.messagesObj.messages.splice(0, length - scrollbackSize);
+            let removed = bufferState.messagesObj.messages.splice(0, length - scrollbackSize);
+            removed.forEach(msg => delete bufferState.messagesObj.messageIds[msg.id]);
         }
     };
 

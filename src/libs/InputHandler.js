@@ -777,8 +777,7 @@ inputCommands.clear = function inputCommandClear(event, command, line) {
     event.handled = true;
 
     let buffer = this.state.getActiveBuffer();
-    let messages = buffer.getMessages();
-    messages.splice(0, messages.length);
+    buffer.clearMessages();
 
     this.state.addMessage(buffer, {
         nick: '*',
