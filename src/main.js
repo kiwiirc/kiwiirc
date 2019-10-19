@@ -194,6 +194,7 @@ function loadApp() {
 
     let configLoader = new ConfigLoader();
     configLoader
+        .addValueReplacement('protocol', window.location.protocol)
         .addValueReplacement('hostname', window.location.hostname)
         .addValueReplacement('host', window.location.hostname)
         .addValueReplacement('host', window.location.host)
