@@ -55,15 +55,21 @@ export default class ConfigLoader {
     }
 
     setConfig(confObj) {
-        this.config = Object.create(null);
-        _.each(confObj, (_val, key) => {
-            let val = _val;
-            if (typeof val === 'string') {
-                val = this.insertReplacements(val);
-            }
+        let walkObject = (obj, target) => {
+            _.each(obj, (_val, key) => {
+                let val = _val;
+                if (typeof val === 'string') {
+                    val = this.insertReplacements(val);
+                    target[key] = val;
+                } else if (typeof val === 'object') {
+                    target[key] = Object.create(null);
+                    walkObject(val, target[key]);
+                }
+            });
+        };
 
-            this.config[key] = val;
-        });
+        this.config = Object.create(null);
+        walkObject(confObj, this.config);
     }
 
     insertReplacements(input) {
