@@ -62,8 +62,12 @@ export default class ConfigLoader {
                     val = this.insertReplacements(val);
                     target[key] = val;
                 } else if (typeof val === 'object') {
-                    target[key] = Object.create(null);
+                    target[key] = _.isArray(val) ?
+                        [] :
+                        {};
                     walkObject(val, target[key]);
+                } else {
+                    target[key] = val;
                 }
             });
         };
