@@ -93,6 +93,7 @@ export function create(state, network) {
 
 function clientMiddleware(state, network) {
     let networkid = network.id;
+    // eslint-disable-next-line
     let numConnects = 0;
     let isRegistered = false;
 
@@ -380,7 +381,9 @@ function clientMiddleware(state, network) {
             });
 
             let message = {
-                time: event.time || Date.now(),
+                time: event.time ?
+                    network.ircClient.network.timeToLocal(event.time) :
+                    Date.now(),
                 nick: event.nick,
                 message: messageBody,
                 type: event.type,
@@ -823,9 +826,13 @@ function clientMiddleware(state, network) {
             if (!hadExistingUsers && network.ircClient.chathistory.isSupported()) {
                 let correctBuffer = buffer.isChannel() || buffer.isQuery();
 
-                if (correctBuffer && numConnects > 1) {
-                    buffer.requestScrollback('forward');
-                } else if (correctBuffer) {
+                // TODO: If this is a reconnect (numConnects > 1) then paginate backwards
+                //       until we reach our last message.
+                //       OR
+                //       Add a marker at the gap between this new chathistory block starts and when
+                //       the existing messages end so that we can add a "load missing messages"
+                //       button there or have it auto request them when it scrolls into view
+                if (correctBuffer) {
                     buffer.requestLatestScrollback();
                 }
             }
