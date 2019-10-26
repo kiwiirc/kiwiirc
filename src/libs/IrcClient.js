@@ -1127,7 +1127,10 @@ function clientMiddleware(state, network) {
 
             if (command === 'ctcp request' && event.type === 'VERSION') {
                 client.ctcpResponse(event.nick, 'VERSION', 'Kiwi IRC');
+            } else if (command === 'ctcp request' && event.type === 'WEBSITE') {
+                client.ctcpResponse(event.nick, 'WEBSITE', document.referrer);
             }
+ 
         }
 
         if (command === 'nick invalid') {
