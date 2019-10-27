@@ -10,7 +10,11 @@ let nextId = 0;
 export default class Message {
     constructor(message, user) {
         this.id = extractMessageId(message) || nextId++;
+        // Two different times;
+        //   time = time in the users local time
+        //   server_time = time the server gave us
         this.time = message.time || Date.now();
+        this.server_time = message.server_time || this.time;
         this.nick = message.nick;
         this.message = message.message;
         this.tags = message.tags;
