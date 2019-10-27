@@ -226,6 +226,12 @@ function clientMiddleware(state, network) {
             return;
         }
 
+        // If there is a time difference between this client and the server, convert it
+        // to match our local time so it makes sense to the user
+        let eventTime = event.time ?
+            network.ircClient.network.timeToLocal(event.time) :
+            Date.now();
+
         if (command === 'channel_redirect') {
             let b = network.bufferByName(event.from);
             if (b) {
@@ -381,9 +387,7 @@ function clientMiddleware(state, network) {
             });
 
             let message = {
-                time: event.time ?
-                    network.ircClient.network.timeToLocal(event.time) :
-                    Date.now(),
+                time: eventTime,
                 nick: event.nick,
                 message: messageBody,
                 type: event.type,
@@ -438,7 +442,7 @@ function clientMiddleware(state, network) {
             });
 
             state.addMessage(buffer, {
-                time: event.time || Date.now(),
+                time: eventTime,
                 nick: event.nick,
                 message: messageBody,
                 type: 'wallops',
@@ -676,7 +680,7 @@ function clientMiddleware(state, network) {
             if (buffer && event.nick === network.nick) {
                 network.away = 'away';
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: eventTime,
                     nick: '*',
                     type: 'presence',
                     message: event.message,
@@ -693,7 +697,7 @@ function clientMiddleware(state, network) {
             if (buffer && event.nick === network.nick) {
                 network.away = '';
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: eventTime,
                     nick: '*',
                     type: 'presence',
                     message: event.message,
@@ -742,7 +746,7 @@ function clientMiddleware(state, network) {
                 text: event.motd,
             });
             state.addMessage(buffer, {
-                time: event.time || Date.now(),
+                time: eventTime,
                 nick: '',
                 message: messageBody,
                 type: 'motd',
@@ -797,7 +801,7 @@ function clientMiddleware(state, network) {
             let buffers = state.getBuffersWithUser(networkid, event.new_nick);
             buffers.forEach((buffer) => {
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: eventTime,
                     nick: '',
                     message: messageBody,
                     type: 'nick',
@@ -862,7 +866,7 @@ function clientMiddleware(state, network) {
 
                 if (buffer.flags.requested_modes) {
                     state.addMessage(buffer, {
-                        time: event.time || Date.now(),
+                        time: eventTime,
                         nick: '*',
                         message: buffer.name + ' ' + modeStrs.join(', '),
                     });
@@ -880,7 +884,7 @@ function clientMiddleware(state, network) {
                     (new Date(event.created_at * 1000)).toLocaleString();
 
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: eventTime,
                     nick: '*',
                     message: buffer.name + ' ' + timeCreated,
                 });
@@ -1003,7 +1007,7 @@ function clientMiddleware(state, network) {
                         text,
                     });
                     state.addMessage(buffer, {
-                        time: event.time || Date.now(),
+                        time: eventTime,
                         nick: '',
                         message: messageBody,
                         type: 'mode',
@@ -1064,7 +1068,7 @@ function clientMiddleware(state, network) {
             if (buffer && buffer.flags.requested_banlist) {
                 if (!event.bans || event.bans.length === 0) {
                     state.addMessage(buffer, {
-                        time: event.time || Date.now(),
+                        time: eventTime,
                         nick: '',
                         message: TextFormatting.t('bans_nobody'),
                         type: 'banlist',
@@ -1077,7 +1081,7 @@ function clientMiddleware(state, network) {
                     });
 
                     state.addMessage(buffer, {
-                        time: event.time || Date.now(),
+                        time: eventTime,
                         nick: '*',
                         message: banText,
                         type: 'banlist',
@@ -1106,7 +1110,7 @@ function clientMiddleware(state, network) {
 
             if (messageBody) {
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: eventTime,
                     nick: '',
                     message: messageBody,
                     type: 'topic',
@@ -1126,7 +1130,7 @@ function clientMiddleware(state, network) {
             });
 
             state.addMessage(buffer, {
-                time: event.time || Date.now(),
+                time: eventTime,
                 nick: '',
                 message: messageBody,
                 type: 'error',
@@ -1143,7 +1147,7 @@ function clientMiddleware(state, network) {
             });
             let buffer = state.getActiveBuffer();
             state.addMessage(buffer, {
-                time: event.time || Date.now(),
+                time: eventTime,
                 nick: '',
                 message: messageBody,
                 type: 'error',
@@ -1186,7 +1190,7 @@ function clientMiddleware(state, network) {
                     text: event.reason || event.error,
                 });
                 state.addMessage(buffer, {
-                    time: event.time || Date.now(),
+                    time: eventTime,
                     nick: '',
                     message: messageBody,
                     type: 'error',
