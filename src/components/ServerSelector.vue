@@ -103,7 +103,7 @@ export default {
             get() {
                 return this.showCustom ?
                     'custom' :
-                    this.toUri(this);
+                    this.toUri(this.connection);
             },
         },
     },
