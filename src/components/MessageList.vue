@@ -595,6 +595,18 @@ export default {
                 return true;
             });
         },
+        openEmbedInPreview(message) {
+            let embed = message.embed;
+            if (embed.type === 'url') {
+                this.$state.$emit('mediaviewer.show', embed.payload);
+            } else if (embed.type === 'component') {
+                this.$state.$emit('mediaviewer.show', {
+                    component: embed.payload,
+                });
+            }
+
+            embed.payload = null;
+        },
     },
 };
 </script>

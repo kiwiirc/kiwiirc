@@ -111,7 +111,7 @@
                     :url="message.embed.payload"
                     :show-pin="true"
                     @close="message.embed.payload = ''"
-                    @pin="openEmbedInPreview"
+                    @pin="ml.openEmbedInPreview(message)"
                 />
             </div>
         </div>
@@ -218,18 +218,6 @@ export default {
         },
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
-        },
-        openEmbedInPreview() {
-            let embed = this.message.embed;
-            if (embed.type === 'url') {
-                this.$state.$emit('mediaviewer.show', embed.payload);
-            } else if (embed.type === 'component') {
-                this.$state.$emit('mediaviewer.show', {
-                    component: embed.payload,
-                });
-            }
-
-            embed.payload = null;
         },
     },
 };
