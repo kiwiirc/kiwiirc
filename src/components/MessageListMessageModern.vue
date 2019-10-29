@@ -107,10 +107,11 @@
             />
 
             <div v-if="message.embed.payload">
-                <a class="u-link" @click="openEmbedInPreview"><i class="fa fa-map-pin" /></a>
                 <media-viewer
                     :url="message.embed.payload"
+                    :show-pin="true"
                     @close="message.embed.payload = ''"
+                    @pin="openEmbedInPreview"
                 />
             </div>
         </div>
