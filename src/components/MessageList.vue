@@ -808,7 +808,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 }
 
 .kiwi-messagelist-message--blur {
-    opacity: 0.5;
+    opacity: 0.3;
 }
 
 .kiwi-messagelist-nick {
@@ -931,15 +931,9 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     font-family: monospace;
 }
 
-/* Ensure unread messages are fully visible, even after themes applied */
-.kiwi-messagelist-message.kiwi-messagelist-message--unread {
-    opacity: 1;
-}
-
 .kiwi-messagelist-message.kiwi-messagelist-message--hover,
 .kiwi-messagelist-message.kiwi-messagelist-message--highlight,
 .kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover {
-    opacity: 1;
     position: relative;
 }
 
