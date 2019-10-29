@@ -36,6 +36,8 @@
                                 :url="mediaviewerUrl"
                                 :component="mediaviewerComponent"
                                 :is-iframe="mediaviewerIframe"
+                                class="kiwi-main-mediaviewer"
+                                @close="$state.$emit('mediaviewer.hide', { source: 'user' });"
                             />
                         </template>
                     </container>
@@ -442,7 +444,7 @@ body {
     height: 5%;
 }
 
-.kiwi-mediaviewer {
+.kiwi-main-mediaviewer {
     max-height: 70%;
     overflow: auto;
 }

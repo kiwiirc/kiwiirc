@@ -105,6 +105,14 @@
                 :buffer="ml.buffer"
                 @close="ml.toggleMessageInfo()"
             />
+
+            <div v-if="message.embed.payload">
+                <a class="u-link" @click="openEmbedInPreview"><i class="fa fa-map-pin" /></a>
+                <media-viewer
+                    :url="message.embed.payload"
+                    @close="message.embed.payload = ''"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -121,6 +129,7 @@ import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
 import AwayStatusIndicator from './AwayStatusIndicator';
 import TypingStatusIndicator from './TypingStatusIndicator';
+import MediaViewer from './MediaViewer';
 
 export default {
     components: {
@@ -128,6 +137,7 @@ export default {
         MessageInfo,
         AwayStatusIndicator,
         TypingStatusIndicator,
+        MediaViewer,
     },
     props: ['ml', 'message', 'idx'],
     data: function data() {
@@ -207,6 +217,18 @@ export default {
         },
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
+        },
+        openEmbedInPreview() {
+            let embed = this.message.embed;
+            if (embed.type === 'url') {
+                this.$state.$emit('mediaviewer.show', embed.payload);
+            } else if (embed.type === 'component') {
+                this.$state.$emit('mediaviewer.show', {
+                    component: embed.payload,
+                });
+            }
+
+            embed.payload = null;
         },
     },
 };

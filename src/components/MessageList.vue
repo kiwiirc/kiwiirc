@@ -400,7 +400,12 @@ export default {
 
             let url = event.target.getAttribute('data-url');
             if (url && isLink) {
-                this.$state.$emit('mediaviewer.show', url);
+                if (this.$state.setting('buffers.inline_link_previews')) {
+                    message.embed.type = 'url';
+                    message.embed.payload = url;
+                } else {
+                    this.$state.$emit('mediaviewer.show', url);
+                }
             }
 
             if (this.message_info_open && this.message_info_open !== message) {

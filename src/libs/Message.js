@@ -1,5 +1,6 @@
 'kiwi public';
 
+import Vue from 'vue';
 import parseMessage from '@/libs/MessageParser';
 import toHtml from '@/libs/renderers/Html';
 import GlobalApi from '@/libs/GlobalApi';
@@ -18,6 +19,7 @@ export default class Message {
         this.type_extra = message.type_extra;
         this.ignore = false;
         this.mentioned_urls = [];
+        this.embed = { type: 'url', payload: null };
         this.html = '';
         // template should be null or a Vue component to render this message
         this.template = message.template || null;
@@ -27,6 +29,8 @@ export default class Message {
 
         // We don't want the user object to be enumerable
         Object.defineProperty(this, 'user', { value: user });
+
+        Vue.observable(this);
     }
 
     render() {
