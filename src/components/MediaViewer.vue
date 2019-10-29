@@ -112,10 +112,11 @@ export default {
     right: 0;
     z-index: 1;
     background: var(--brand-default-bg);
-    border-radius: 0 0 0 5px;
+    border-radius: 5px;
     padding: 3px;
     opacity: 0;
     transition: opacity 0.1s;
+    box-shadow: 0 1px var(--brand-input-border);
 }
 
 .kiwi-mediaviewer:hover .kiwi-mediaviewer-controls {
