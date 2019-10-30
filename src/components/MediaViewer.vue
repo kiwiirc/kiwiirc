@@ -133,4 +133,9 @@ export default {
     top: 0;
     border: none;
 }
+
+.embedly-card-hug {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: #fff;
+}
 </style>
