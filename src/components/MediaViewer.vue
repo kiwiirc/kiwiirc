@@ -135,7 +135,7 @@ export default {
 }
 
 .embedly-card-hug {
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     background: #fff;
 }
 </style>
