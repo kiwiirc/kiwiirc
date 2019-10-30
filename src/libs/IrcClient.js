@@ -228,10 +228,10 @@ function clientMiddleware(state, network) {
 
         // If there is a time difference between this client and the server, convert it
         // to match our local time so it makes sense to the user
-        let eventTime = event.time ?
+        let eventTime = (event && event.time) ?
             network.ircClient.network.timeToLocal(event.time) :
             Date.now();
-        let serverTime = event.time || 0;
+        let serverTime = (event && event.time) || 0;
 
         if (command === 'channel_redirect') {
             let b = network.bufferByName(event.from);
