@@ -447,6 +447,7 @@ body {
 .kiwi-main-mediaviewer {
     max-height: 70%;
     overflow: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .kiwi-controlinput {
