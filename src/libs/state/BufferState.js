@@ -280,7 +280,7 @@ export default class BufferState {
 
             chathistoryFuncName = 'before';
             time = lastMessage ?
-                new Date(lastMessage.time) :
+                new Date(lastMessage.server_time) :
                 new Date();
         } else if (direction === 'forward') {
             let firstMessage = this.getMessages().reduce((latest, current) => {
@@ -294,7 +294,7 @@ export default class BufferState {
 
             chathistoryFuncName = 'after';
             time = firstMessage ?
-                new Date(firstMessage.time) :
+                new Date(firstMessage.server_time) :
                 new Date();
         } else {
             throw new Error('Invalid direction for requestScrollback(): ' + _direction);
