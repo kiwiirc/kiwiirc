@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2019-11-09 21:20\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "каналы"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "доступ"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Заблокированные пользователи"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "приглашённый"
 
 #: Notifications
 msgid "notifications"
@@ -218,7 +218,7 @@ msgstr "Основные"
 
 #: Language
 msgid "settings_language"
-msgstr ""
+msgstr "Язык"
 
 #: Theme
 msgid "settings_theme"
