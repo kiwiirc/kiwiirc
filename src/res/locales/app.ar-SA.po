@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2019-11-12 17:31\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "كل الغرف"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "الدخول"
 
 #: Banned Users
 msgid "banned"
