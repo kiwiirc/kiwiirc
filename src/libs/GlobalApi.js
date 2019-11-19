@@ -93,9 +93,14 @@ export default class GlobalApi extends EventEmitter {
      * E.g. require('helpers/TextFormatting');
      * @param {String} mod The module path
      */
-    require(mod) {
-        let path = mod.replace(/\//g, '.');
-        return _.get(this.exports, path);
+    require(modPath) {
+        let path = modPath.replace(/\//g, '.');
+        let mod = _.get(this.exports, path);
+        if (typeof mod === 'undefined') {
+            Logger.error('Module does not exist: ' + modPath);
+        }
+
+        return mod;
     }
 
     setState(state) {
