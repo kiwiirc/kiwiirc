@@ -1,3 +1,5 @@
+'kiwi public';
+
 // Do channels support half-op mode
 export function supportsHalfOp(network) {
     let ircdType = network.ircd.toLowerCase();
