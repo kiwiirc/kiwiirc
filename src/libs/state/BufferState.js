@@ -436,6 +436,10 @@ export default class BufferState {
     getLoadingState() {
         const networkState = this.getNetwork().state;
         const historySupport = !!this.getNetwork().ircClient.chathistory.isSupported();
+        const messagesInBatchQueue = this.addMessageBatch.queue().length;
+        // triggers reactivity to update the state
+        // eslint-disable-next-line no-unused-vars
+        const messageCount = this.message_count;
 
         if (networkState === 'disconnected') {
             return 'disconnected';
@@ -448,9 +452,12 @@ export default class BufferState {
             (
                 historySupport &&
                 (this.flags.is_requesting_chathistory ||
-                // If chathistory is supported then a request will always be made when first joining
-                // a channel. If request_count===0 then we're still waiting for it to happen.
-                this.chathistory_request_count === 0)
+                    // If chathistory is supported then a request will always be made when first joining
+                    // a channel. If request_count===0 then we're still waiting for it to happen.
+                    this.chathistory_request_count === 0 ||
+                    // keep in loading state while the batch is being processed
+                    messagesInBatchQueue > 0
+                )
             )
         ) {
             return 'loading';
