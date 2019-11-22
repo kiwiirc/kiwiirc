@@ -437,7 +437,8 @@ export default class BufferState {
         const networkState = this.getNetwork().state;
         const historySupport = !!this.getNetwork().ircClient.chathistory.isSupported();
         const messagesInBatchQueue = this.addMessageBatch.queue().length;
-        // triggers reactivity to update the state
+        // Hack; We need to make vue aware that we depend on message_count in order to
+        // update the loading state.
         // eslint-disable-next-line no-unused-vars
         const messageCount = this.message_count;
 
