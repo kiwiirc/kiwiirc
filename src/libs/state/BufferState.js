@@ -436,6 +436,11 @@ export default class BufferState {
     getLoadingState() {
         const networkState = this.getNetwork().state;
         const historySupport = !!this.getNetwork().ircClient.chathistory.isSupported();
+        const messagesInBatchQueue = this.addMessageBatch.queue().length;
+        // Hack; We need to make vue aware that we depend on message_count in order to
+        // update the loading state.
+        // eslint-disable-next-line no-unused-vars
+        const messageCount = this.message_count;
 
         if (networkState === 'disconnected') {
             return 'disconnected';
@@ -448,9 +453,13 @@ export default class BufferState {
             (
                 historySupport &&
                 (this.flags.is_requesting_chathistory ||
-                // If chathistory is supported then a request will always be made when first joining
-                // a channel. If request_count===0 then we're still waiting for it to happen.
-                this.chathistory_request_count === 0)
+                    // If chathistory is supported then a request will always be made when first
+                    // joining a channel. If request_count===0 then we're still waiting for it
+                    // to happen.
+                    this.chathistory_request_count === 0 ||
+                    // keep in loading state while the batch is being processed
+                    messagesInBatchQueue > 0
+                )
             )
         ) {
             return 'loading';
@@ -503,8 +512,10 @@ function createMessageBatch(bufferState) {
                 bufferState.messagesObj.messageIds[msg.id] = msg;
             });
             trimMessages();
-            bufferState.message_count++;
         }
+        // Trigger Vue's reactivity on the buffer whether messages were added or not, just in case
+        // anything was depending on the batch queue which has now been emptied.
+        bufferState.message_count++;
     };
     let trimMessages = () => {
         let scrollbackSize = bufferState.setting('scrollback_size');
