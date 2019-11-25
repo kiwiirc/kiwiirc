@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-11-09 21:20\n"
+"PO-Revision-Date: 2019-11-25 12:00\n"
 
 #: Start
 msgid "start_button"
@@ -242,7 +242,7 @@ msgstr "Шрифт monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Использовать Kiwi в качестве IRC-клиента по умолчанию"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -262,11 +262,11 @@ msgstr ""
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "Использовать 24-х часовой пояс"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "Показать смайлики"
 
 #: Block new Private messages
 msgid "settings_block_private"
@@ -282,11 +282,11 @@ msgstr ""
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Цветные имена в сообщениях"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr ""
+msgstr "Показывать когда я печатаю сообщение"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -294,7 +294,7 @@ msgstr ""
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "Отключить звуковые уведомления"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
@@ -1034,7 +1034,7 @@ msgstr ""
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr ""
+msgstr "{{nick}} присоединился"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
@@ -1054,11 +1054,11 @@ msgstr ""
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr ""
+msgstr "Имя {{nick}} уже используется. Попробуйте {{newnick}}"
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr ""
+msgstr "{{nick}} теперь известен как {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
