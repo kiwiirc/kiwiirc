@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-11-25 12:22\n"
+"PO-Revision-Date: 2019-11-25 12:41\n"
 
 #: Start
 msgid "start_button"
@@ -874,7 +874,7 @@ msgstr ""
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Отправить сообщение"
 
 #: Do something physical
 msgid "command_action"
@@ -882,47 +882,47 @@ msgstr ""
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Присоединиться к каналу"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Покинуть канал"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Покинуть, затем переподключиться к каналу"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Изменить своё имя"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Начать приватный диалог с кем-то"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Пригласить кого-нибудь в канал"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Изменить название канала"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Отправить уведомление"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Отправить необработанную команду на IRC-сервер"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Выгнать кого-нибудь с канала"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Очистить все сообщения в этом окне"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
@@ -930,11 +930,11 @@ msgstr ""
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Отключиться от IRC-сервера"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr ""
+msgstr "Подключиться к новой сети IRC"
 
 #: Request information on somebody
 msgid "command_whois"
