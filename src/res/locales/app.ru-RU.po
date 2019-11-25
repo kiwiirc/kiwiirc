@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-11-25 12:00\n"
+"PO-Revision-Date: 2019-11-25 12:22\n"
 
 #: Start
 msgid "start_button"
@@ -314,7 +314,7 @@ msgstr ""
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Введите ключ канала"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -326,15 +326,15 @@ msgstr ""
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "Все сообщения"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "При упоминании меня"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "Никогда"
 
 #: Mute sounds
 msgid "settings_notify_mute"
@@ -342,7 +342,7 @@ msgstr ""
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr ""
+msgstr "Скрыть кол-во непрочитанных сообщений"
 
 #: Operator tools
 msgid "operator_tools"
@@ -358,87 +358,87 @@ msgstr ""
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr ""
+msgstr "Расширенные настройки"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr ""
+msgstr "Монстры здесь, нажмите эту кнопку, только если вы знаете, что делаете"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr ""
+msgstr "Включить расширенные настройки"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Опасная зона: Изменение некоторых из этих настроек может привести к поломке!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Сброс"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Фильтр"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr ""
+msgstr "Обновить бан-лист"
 
 #: Banned user
 msgid "bans_user"
-msgstr ""
+msgstr "Заблокированный пользователь"
 
 #: Banned by
 msgid "bans_by"
-msgstr ""
+msgstr "Заблокирован"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr ""
+msgstr "Обновление бан-листа..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr ""
+msgstr "Никто не заблокирован!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Обновить список приглашений"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Приглашённый пользователь"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Пригласил"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Обновление списка приглашенных..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Никто не приглашен!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Это публичный канал. "
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Только приглашённые пользователи могут подключиться. "
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Разрешить только приглашенным пользователям"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Разрешить подключаться всем"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Только зарегистрированные пользователи могут подключиться"
 
 #: Add invite
 msgid "invite_add_invite"
@@ -746,19 +746,19 @@ msgstr ""
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "Изменить имя"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Введите новое имя..."
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr ""
+msgstr "Имя учетной записи: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr ""
+msgstr "Настоящее имя: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
@@ -774,11 +774,11 @@ msgstr ""
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr ""
+msgstr "Подключен к {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr ""
+msgstr "Надежное подключение через SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
@@ -786,23 +786,23 @@ msgstr ""
 
 #: Access level
 msgid "user_access"
-msgstr ""
+msgstr "Уровень доступа"
 
 #: Normal
 msgid "user_normal"
-msgstr ""
+msgstr "Обычный"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr ""
+msgstr "Выгнать с канала"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr ""
+msgstr "Заблокировать на канале"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "Заблокировать и выгнать с канала"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -810,15 +810,15 @@ msgstr ""
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "Имя {{nick}} уже используется!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Вы должны ввести новое имя"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "Имя не может начинаться с цифр"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
