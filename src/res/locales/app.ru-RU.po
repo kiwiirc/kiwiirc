@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-11-25 12:41\n"
+"PO-Revision-Date: 2019-11-25 12:52\n"
 
 #: Start
 msgid "start_button"
@@ -746,11 +746,11 @@ msgstr ""
 
 #: Change nick
 msgid "change_nick"
-msgstr "Изменить имя"
+msgstr "Изменить псевдоним"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Введите новое имя..."
+msgstr "Введите новый псевдоним..."
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -810,7 +810,7 @@ msgstr ""
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "Имя {{nick}} уже используется!"
+msgstr "Псевдоним {{nick}} уже используется!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -894,7 +894,7 @@ msgstr "Покинуть, затем переподключиться к кан�
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Изменить своё имя"
+msgstr "Изменить псевдоним"
 
 #: Start a private conversation with someone
 msgid "command_query"
@@ -1006,7 +1006,7 @@ msgstr ""
 
 #: Saved networks
 msgid "personal_saved"
-msgstr ""
+msgstr "Сохраненные сети"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
@@ -1030,7 +1030,7 @@ msgstr ""
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr ""
+msgstr "Подключено к {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
@@ -1050,11 +1050,11 @@ msgstr ""
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr ""
+msgstr "{{nick}} приглашает Вас присоединиться к {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Имя {{nick}} уже используется. Попробуйте {{newnick}}"
+msgstr "Псевдоним {{nick}} уже используется. Попробуйте {{newnick}}"
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
@@ -1062,5 +1062,5 @@ msgstr "{{nick}} теперь известен как {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr ""
+msgstr "{{nick}} изменил тему на: {{topic}}"
 
