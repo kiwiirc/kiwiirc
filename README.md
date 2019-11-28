@@ -11,7 +11,7 @@
 - Multiple layouts for small areas or full page layouts
 - Light and dark modes
 - Desktop notifications 
-- Themable and rich plugin support such as [file uploading](https://github.com/kiwiirc/plugin-fileuploader/) and [video calling](https://github.com/kiwiirc/plugin-conference)
+- Themable and rich [plugin support](https://github.com/kiwiirc/kiwiirc/wiki/Plugins) such as [file uploading](https://github.com/kiwiirc/plugin-fileuploader/) and [video calling](https://github.com/kiwiirc/plugin-conference)
 - Team mode for workplaces
 
 ## Installing Kiwi IRC
