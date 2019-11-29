@@ -70,13 +70,14 @@ export default {
     height: 100%;
     text-align: center;
     display: flex;
-    overflow-y: auto;
 }
 
 .kiwi-startup-common-section {
     padding: 1em;
     box-sizing: border-box;
     height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     /* transition the 2 sections out when the page closes. right+left defaults */
     transition: transform 0.4s;
@@ -123,14 +124,14 @@ export default {
 @media (max-width: 850px) {
     .kiwi-startup-common {
         font-size: 0.9em;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 2em;
+        display: block;
+        overflow-y: auto;
     }
 
     .kiwi-startup-common-section {
         width: 100%;
         min-height: auto;
+        max-width: none;
         height: auto;
         align-items: flex-start;
     }
@@ -139,6 +140,10 @@ export default {
     .kiwi-startup-common--closing {
         transition: transform 0.3s;
         transform: translateY(100%);
+    }
+
+    .kiei-startup-common-section-connection {
+        padding-top: 2em;
     }
 
     .kiwi-startup-common-section-connection > * {
