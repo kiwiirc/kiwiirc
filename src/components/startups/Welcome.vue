@@ -3,7 +3,10 @@
                     :class="{ 'kiwi-welcome-simple--recaptcha': recaptchaSiteId }"
                     class="kiwi-welcome-simple"
     >
-        <template v-slot:connection v-if="!network || network.state === 'disconnected'">
+        <template v-slot:connection v-if="$state.settings.startupOptions.altComponent">
+            <component :is="$state.settings.startupOptions.altComponent" />
+        </template>
+        <template v-slot:connection v-else-if="!network || network.state === 'disconnected'">
             <form class="u-form u-form--big kiwi-welcome-simple-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText"/>
                 <div
