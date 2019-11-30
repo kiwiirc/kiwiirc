@@ -142,7 +142,7 @@ export default {
         transform: translateY(100%);
     }
 
-    .kiei-startup-common-section-connection {
+    .kiwi-startup-common-section-connection {
         padding-top: 2em;
     }
 
