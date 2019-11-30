@@ -3,8 +3,8 @@
                     :class="{ 'kiwi-welcome-simple--recaptcha': recaptchaSiteId }"
                     class="kiwi-welcome-simple"
     >
-        <template v-slot:connection v-if="$state.settings.startupOptions.altComponent">
-            <component :is="$state.settings.startupOptions.altComponent" />
+        <template v-slot:connection v-if="startupOptions.altComponent">
+            <component :is="startupOptions.altComponent" @close="onAltClose" />
         </template>
         <template v-slot:connection v-else-if="!network || network.state === 'disconnected'">
             <form class="u-form u-form--big kiwi-welcome-simple-form" @submit.prevent="formSubmit">
@@ -105,6 +105,9 @@ export default {
         };
     },
     computed: {
+        startupOptions() {
+            return this.$state.settings.startupOptions;
+        },
         greetingText: function greetingText() {
             let greeting = state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
@@ -174,7 +177,7 @@ export default {
         },
     },
     created: function created() {
-        let options = state.settings.startupOptions;
+        let options = this.startupOptions;
 
         // Take some settings from a previous network if available
         let previousNet = null;
@@ -232,6 +235,19 @@ export default {
         }
     },
     methods: {
+        onAltClose(event) {
+            if (event.channel) {
+                this.channel = event.channel;
+            }
+            if (event.nick) {
+                this.nick = event.nick;
+            }
+            if (event.password) {
+                this.password = event.password;
+            }
+
+            this.$state.settings.startupOptions.altComponent = null;
+        },
         captchaSuccess() {
             if (!this.recaptchaSiteId) {
                 return true;
