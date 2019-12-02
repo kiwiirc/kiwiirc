@@ -183,7 +183,7 @@
 
 .kiwi-controlinput .kiwi-controlinput-user,
 .kiwi-controlinput-inner .kiwi-controlinput-user {
-    border-right-color: var(--comp-border);
+    border-right-color: var(--brand-midtone);
 }
 
 .kiwi-controlinput-send {
