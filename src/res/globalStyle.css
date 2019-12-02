@@ -47,6 +47,8 @@ select {
     text-align: center;
     outline: none;
     font-weight: 600;
+    font-size: 1em;
+    font-family: inherit;
 }
 
 .u-button-primary {
