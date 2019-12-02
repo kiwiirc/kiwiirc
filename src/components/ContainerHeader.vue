@@ -417,6 +417,8 @@ export default {
 
 .kiwi-header-notjoined .u-link {
     font-weight: 600;
+
+    /* .kiwi-header height -1px */
     line-height: 43px;
     padding: 0 25px;
     border-radius: 0;
@@ -503,7 +505,6 @@ export default {
     .kiwi-header {
         margin-right: 0;
         overflow: visible;
-        height: 44px;
         max-height: none;
         padding-left: 0;
         margin-left: 0;
