@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2019-12-03 16:52\n"
 
 #: Start
 msgid "start_button"
@@ -658,7 +658,7 @@ msgstr "无缓冲区"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr ""
+msgstr "这个频道没有主题"
 
 #: About
 msgid "about"
@@ -666,7 +666,7 @@ msgstr ""
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "创建于 {{when}}"
 
 #: Highlights
 msgid "highlights"
