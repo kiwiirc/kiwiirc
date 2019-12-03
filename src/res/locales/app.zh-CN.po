@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2019-12-03 16:52\n"
+"PO-Revision-Date: 2019-12-03 17:02\n"
 
 #: Start
 msgid "start_button"
@@ -750,7 +750,7 @@ msgstr "修改昵称"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "输入新昵称……"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -810,7 +810,7 @@ msgstr ""
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "用户名{{nick}} 已被使用"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -966,11 +966,11 @@ msgstr ""
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "掷骰子"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "掷出{{sides}}面骰子，结果为{{number}}点"
 
 #: Your IRC client
 msgid "personal_client"
