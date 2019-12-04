@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2019-12-04 03:30\n"
+"PO-Revision-Date: 2019-12-04 03:41\n"
 
 #: Start
 msgid "start_button"
@@ -750,7 +750,7 @@ msgstr "修改昵称"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "输入新昵称……"
+msgstr "请输入新昵称……"
 
 #: Account name: {{user}}
 msgid "user_account"
