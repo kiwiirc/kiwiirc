@@ -9,8 +9,9 @@
         <template v-slot:connection v-else-if="!network || network.state === 'disconnected'">
             <form class="u-form u-form--big kiwi-welcome-simple-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText"/>
+                <div v-if="errorMessage" class="kiwi-welcome-simple-error">{{ errorMessage }}</div>
                 <div
-                    v-if="network && (network.last_error || network.state_error)"
+                    v-else-if="network && (network.last_error || network.state_error)"
                     class="kiwi-welcome-simple-error"
                 >
                     We couldn't connect to the server :(
@@ -89,6 +90,7 @@ export default {
     },
     data: function data() {
         return {
+            errorMessage: '',
             network: null,
             channel: '',
             nick: '',
@@ -245,6 +247,9 @@ export default {
             if (event.password) {
                 this.password = event.password;
             }
+            if (event.error) {
+                this.errorMessage = event.error;
+            }
 
             this.$state.settings.startupOptions.altComponent = null;
         },
@@ -278,6 +283,8 @@ export default {
             }
         },
         startUp: function startUp() {
+            this.errorMessage = '';
+
             let options = Object.assign({}, state.settings.startupOptions);
 
             // If a server isn't specified in the config, set some defaults
