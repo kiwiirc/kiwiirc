@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2019-12-03 17:22\n"
+"PO-Revision-Date: 2019-12-04 03:30\n"
 
 #: Start
 msgid "start_button"
@@ -906,7 +906,7 @@ msgstr ""
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "为当前频道设置主题"
 
 #: Send a notice
 msgid "command_notice"
