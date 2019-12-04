@@ -352,7 +352,7 @@ export default {
             });
 
             // switch to server buffer if no channels are joined
-            if (!hasSwitchedActiveBuffer) {
+            if (!options.bouncer && !hasSwitchedActiveBuffer) {
                 state.setActiveBuffer(net.id, net.serverBuffer().name);
             }
 
