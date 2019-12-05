@@ -226,6 +226,11 @@ export default class BouncerProvider {
                 return;
             }
 
+            // Don't save any hidden networks. This includes the BNC controller network
+            if (network.hidden) {
+                return;
+            }
+
             let bncName = network.connection.bncname;
             let snapshot = this.networksSnapshot[bncName] || {};
             let tags = {};
