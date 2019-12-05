@@ -255,12 +255,8 @@ const state = new Vue({
             });
         },
 
-        getNetworkFromBncName(bncname) {
-            return _.find(this.networks, (net) => {
-                let isMatch = net.connection.bncname &&
-                    bncname.toLowerCase() === net.connection.bncname.toLowerCase();
-                return isMatch;
-            });
+        getNetworkFromBncNetId(bncnetid) {
+            return _.find(this.networks, net => bncnetid === net.connection.bncnetid);
         },
 
         addNetwork(name, nick, serverInfo) {
@@ -288,7 +284,7 @@ const state = new Vue({
             network.connection.direct = !!serverInfo.direct;
             network.connection.path = serverInfo.path || '';
             network.connection.encoding = serverInfo.encoding || 'utf8';
-            network.connection.bncname = serverInfo.bncname || '';
+            network.connection.bncnetid = serverInfo.bncnetid || '';
 
             if (serverInfo.services) {
                 network.services = serverInfo.services;

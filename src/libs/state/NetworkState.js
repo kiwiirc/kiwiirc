@@ -30,7 +30,7 @@ export default class NetworkState {
             password: '',
             direct: false,
             encoding: 'utf8',
-            bncname: '',
+            bncnetid: '',
             nick: '',
         };
         this.settings = {

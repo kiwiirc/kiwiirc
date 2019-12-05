@@ -263,7 +263,7 @@ function clientMiddleware(state, network) {
 
             // Join our channels
             // If under bouncer mode, the bouncer will send the channels were joined to instead.
-            if (!network.connection.bncname) {
+            if (!network.connection.bncnetid) {
                 network.buffers.forEach((buffer) => {
                     if (buffer.isChannel() && buffer.enabled) {
                         client.join(buffer.name, buffer.key);
