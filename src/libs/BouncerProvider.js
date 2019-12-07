@@ -36,6 +36,7 @@ export default class BouncerProvider {
         this.monitoringChanges = false;
 
         state.$on('irc.motd', this.onNetworkMotd.bind(this));
+        state.$on('irc.bouncer state', this.onNetworkState.bind(this));
     }
 
     enable(server, port, tls, direct, path) {
@@ -50,7 +51,7 @@ export default class BouncerProvider {
         this.listenToState();
     }
 
-    // Try to get connected network that can be used to control the bouncer
+    // Try to get a connected network that can be used to control the bouncer
     getController() {
         if (this.controllerNetwork && this.controllerNetwork.state === 'connected') {
             return this.controllerNetwork;
@@ -101,6 +102,19 @@ export default class BouncerProvider {
 
         // Now sync all other networks from the bouncer
         await this.initAndAddNetworks(network);
+    }
+
+    onNetworkState(event, network) {
+        let isController = this.getController() === network;
+        // We get connection state changes advertised on all bouncer connections, so only handle
+        // the ones that come from the controller network since we only need to deal with it once.
+        if (isController && event.state === 'disconnected') {
+            // Mimick any network disconnections by closing this connection too
+            let effectedNetwork = this.state.getNetworkFromBncNetId(event.networkId);
+            if (effectedNetwork) {
+                effectedNetwork.ircClient.connection.transport.close();
+            }
+        }
     }
 
     async initAndAddNetworks(network) {

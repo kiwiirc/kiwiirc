@@ -27,7 +27,7 @@ export default function bouncerMiddleware() {
         let params = message.params;
 
         if (params[0] === 'listnetworks' && ['end', 'RPL_OK'].indexOf(params[1]) > -1) {
-            client.emit('bouncer networks', networks);
+            client.command_handler.emit('bouncer networks', networks);
             networks = [];
         } else if (params[0] === 'listnetworks') {
             let tags = MessageTags.decode(params[2]);
@@ -47,8 +47,8 @@ export default function bouncerMiddleware() {
             let detectedBuffers = buffers[netId] || [];
             delete buffers[netId];
 
-            client.emit('bouncer buffers', detectedBuffers);
-            client.emit('bouncer buffers ' + netId, detectedBuffers);
+            client.command_handler.emit('bouncer buffers', detectedBuffers);
+            client.command_handler.emit('bouncer buffers ' + netId, detectedBuffers);
         } else if (params[0] === 'listbuffers') {
             let netId = (params[1] || '');
             let tags = MessageTags.decode(params[2]);
@@ -61,6 +61,12 @@ export default function bouncerMiddleware() {
                 joined: tags.joined === '1',
                 seen: tags.seen,
             });
+        } else if (params[0] === 'state') {
+            client.command_handler.emit('bouncer state', {
+                networkId: params[1],
+                network: params[2],
+                state: params[3],
+            });
         }
 
         if (params[0] === 'addnetwork' && params[2].substr(0, 4) === 'ERR_') {
@@ -69,8 +75,8 @@ export default function bouncerMiddleware() {
                 error: params[2],
                 reason: params[3] || '',
             };
-            client.emit('bouncer addnetwork error', eventObj);
-            client.emit('bouncer addnetwork error ' + netName, eventObj);
+            client.command_handler.emit('bouncer addnetwork error', eventObj);
+            client.command_handler.emit('bouncer addnetwork error ' + netName, eventObj);
         } else if (params[0] === 'addnetwork' && ['end', 'RPL_OK'].indexOf(params[2]) > -1) {
             let netId = (params[1] || '');
             let netName = (params[2] || '').toLowerCase();
@@ -78,8 +84,8 @@ export default function bouncerMiddleware() {
                 networkId: netId,
                 network: netName,
             };
-            client.emit('bouncer addnetwork ok', eventObj);
-            client.emit('bouncer addnetwork ok ' + netName, eventObj);
+            client.command_handler.emit('bouncer addnetwork ok', eventObj);
+            client.command_handler.emit('bouncer addnetwork ok ' + netName, eventObj);
         }
     }
 }
