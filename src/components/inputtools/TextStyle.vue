@@ -13,7 +13,7 @@
                     <div v-for="n in 15"
                          :key="n"
                          :class="['irc-bg-colour-' + n]"
-                         :data-code="[n.padStart(2, '0')]"
+                         :data-code="[n.toString().padStart(2, '0')]"
                          class="kiwi-inputtools-colours-colour"
                          @click="onColourClick"
                     />
