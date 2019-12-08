@@ -75,6 +75,12 @@ export default class BufferState {
             }
         }
 
+        function onNetworkMotd(event, network) {
+            if (network === this.getNetwork() && this.isQuery()) {
+                this.requestLatestScrollback();
+            }
+        }
+
         // Clean up the previous event and itself when the buffer is closed.
         function onBufferClose(event) {
             if (event.buffer === this) {
@@ -85,9 +91,17 @@ export default class BufferState {
 
         const onNetworkConnectingBound = onNetworkConnecting.bind(this);
         const onBufferCloseBound = onBufferClose.bind(this);
+        const onNetworkMotdBound = onNetworkMotd.bind(this);
 
         state.$on('network.connecting', onNetworkConnectingBound);
         state.$on('buffer.close', onBufferCloseBound);
+        state.$on('irc.motd', onNetworkMotdBound);
+
+        if (this.isQuery() && this.getNetwork().ircClient.chathistory.isSupported()) {
+            // Get PM message histories, while channel buffers request it after their nicklist
+            // has been received
+            this.requestLatestScrollback();
+        }
     }
 
     get topic() {
