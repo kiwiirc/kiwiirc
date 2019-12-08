@@ -1,6 +1,12 @@
 <template>
     <div class="kiwi-aboutbuffer">
-        <h3>{{ b.name }}</h3>
+        <h3>
+            {{ b.name }}
+            <a :title="$t('channel_settings')"
+               @click="sidebarState.showBufferSettings()">
+                <i class="fa fa-cog" />
+            </a>
+        </h3>
 
         <div
             :class="{'kiwi-aboutbuffer-section--closed': closedSections.about}"
@@ -140,6 +146,15 @@ export default {
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.kiwi-aboutbuffer h3 a {
+    cursor: pointer;
+}
+
+.kiwi-aboutbuffer h3 i.fa {
+    float: right;
+    padding: 4px;
 }
 
 .kiwi-aboutbuffer-section {
