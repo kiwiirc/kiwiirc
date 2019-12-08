@@ -63,7 +63,7 @@ export default {
             }
 
             let code = event.target.dataset.code;
-            this.ircinput.setColour(code, colour);
+            this.ircinput.setColour(code.padStart(2, '0'), colour);
         },
         onResetClick: function onResetClick() {
             this.ircinput.resetStyles();
