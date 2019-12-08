@@ -13,7 +13,7 @@
                     <div v-for="n in 15"
                          :key="n"
                          :class="['irc-bg-colour-' + n]"
-                         :data-code="[n]"
+                         :data-code="[n.padStart(2, '0')]"
                          class="kiwi-inputtools-colours-colour"
                          @click="onColourClick"
                     />
@@ -24,7 +24,7 @@
                          v-if="n >= 15"
                          :key="n"
                          :class="['irc-bg-colour-' + n]"
-                         :data-code="[n]"
+                         :data-code="[n.padStart(2, '0')]]"
                          class="kiwi-inputtools-colours-colour"
                          @click="onColourClick"
                     />
@@ -63,7 +63,7 @@ export default {
             }
 
             let code = event.target.dataset.code;
-            this.ircinput.setColour(code.padStart(2, '0'), colour);
+            this.ircinput.setColour(code, colour);
         },
         onResetClick: function onResetClick() {
             this.ircinput.resetStyles();
