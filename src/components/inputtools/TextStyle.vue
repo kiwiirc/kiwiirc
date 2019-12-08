@@ -24,7 +24,7 @@
                          v-if="n >= 15"
                          :key="n"
                          :class="['irc-bg-colour-' + n]"
-                         :data-code="[n.padStart(2, '0')]]"
+                         :data-code="[n.padStart(2, '0')]"
                          class="kiwi-inputtools-colours-colour"
                          @click="onColourClick"
                     />
