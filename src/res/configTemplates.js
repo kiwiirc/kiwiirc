@@ -74,6 +74,7 @@ export const configTemplates = {
             share_typing: true,
             // flash_title: message/highlight/off
             flash_title: 'message',
+            inline_link_previews: true,
         },
         // Startup screen default
         startupOptions: {

@@ -37,7 +37,7 @@ function render(blocks, renderEmoticons) {
         case 'url':
             content = linkifyUrl(block, {
                 addHandle: true,
-                handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
+                handleClass: 'fa fa-share-square u-link kiwi-messagelist-message-linkhandle',
             });
             break;
         case 'user':
