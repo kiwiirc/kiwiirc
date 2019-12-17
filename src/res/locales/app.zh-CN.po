@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2019-12-04 03:41\n"
 
 #: Start
 msgid "start_button"
@@ -226,7 +226,7 @@ msgstr "主题"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "刷新主题"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -374,7 +374,7 @@ msgstr ""
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "重置"
 
 #: Filter
 msgid "settings_advanced_filter"
@@ -658,7 +658,7 @@ msgstr "无缓冲区"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr ""
+msgstr "这个频道没有主题"
 
 #: About
 msgid "about"
@@ -666,7 +666,7 @@ msgstr ""
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "创建于 {{when}}"
 
 #: Highlights
 msgid "highlights"
@@ -750,7 +750,7 @@ msgstr "修改昵称"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "请输入新昵称……"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -810,7 +810,7 @@ msgstr ""
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "用户名{{nick}} 已被使用"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -906,7 +906,7 @@ msgstr ""
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "为当前频道设置主题"
 
 #: Send a notice
 msgid "command_notice"
@@ -966,11 +966,11 @@ msgstr ""
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "掷骰子"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "掷出{{sides}}面骰子，结果为{{number}}点"
 
 #: Your IRC client
 msgid "personal_client"
