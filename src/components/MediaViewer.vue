@@ -24,6 +24,7 @@
             <component v-else-if="component" :is="component"/>
             <a
                 v-else
+                ref="embedlyLink"
                 :href="url"
                 :data-card-key="embedlyKey"
                 class="kiwi-embedly-card"
@@ -82,7 +83,9 @@ export default {
                     setTimeout(checkEmbedlyAndShowCard, 100);
                     return;
                 }
-                window.embedly('card', { selector: '.kiwi-embedly-card' });
+                this.$nextTick(() => {
+                    window.embedly('card', this.$refs.embedlyLink);
+                });
             };
 
             if (!embedlyTagIncluded) {

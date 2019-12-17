@@ -595,7 +595,9 @@ export default {
                 return true;
             });
         },
+        // Move a messages embeded content to the main media preview
         openEmbedInPreview(message) {
+            // First open the embed in the main media preview
             let embed = message.embed;
             if (embed.type === 'url') {
                 this.$state.$emit('mediaviewer.show', embed.payload);
@@ -605,6 +607,7 @@ export default {
                 });
             }
 
+            // Remove the embed from the message
             embed.payload = null;
         },
     },

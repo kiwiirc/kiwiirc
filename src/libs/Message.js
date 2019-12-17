@@ -19,6 +19,7 @@ export default class Message {
         this.type_extra = message.type_extra;
         this.ignore = false;
         this.mentioned_urls = [];
+        // If embed.payload is truthy, it will be embedded within the message
         this.embed = { type: 'url', payload: null };
         this.html = '';
         // template should be null or a Vue component to render this message
