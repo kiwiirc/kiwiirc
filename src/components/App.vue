@@ -248,7 +248,8 @@ export default {
                 }
             });
 
-            this.listen(this.$state, 'message.new', (message) => {
+            this.listen(this.$state, 'message.new', (event) => {
+                let message = event.message;
                 if (!message.isHighlight || message.ignore || this.$state.ui.app_has_focus) {
                     return;
                 }

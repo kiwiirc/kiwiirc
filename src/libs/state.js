@@ -664,7 +664,7 @@ const state = new Vue({
                 this.$emit('notification.title', true);
             }
 
-            this.$emit('message.new', bufferMessage, buffer);
+            this.$emit('message.new', { message: bufferMessage, buffer });
         },
 
         getUser(networkid, nick, usersArr_) {
