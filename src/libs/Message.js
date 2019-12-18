@@ -62,9 +62,38 @@ export default class Message {
 
         this.mentioned_urls = blocks.filter(block => block.type === 'url').map(block => block.meta.url);
         this.html = content;
+        this.maybeAutoEmbed();
 
         state.$emit('message.poststyle', { message: this, blocks: blocks });
         return this.html;
+    }
+
+    maybeAutoEmbed() {
+        if (!this.mentioned_urls || this.mentioned_urls.length === 0) {
+            return;
+        }
+
+        // Only auto preview links on user messages. Traffic, topics, notices, etc would get
+        // annoying as they usually contain links of some sort
+        if (this.type !== 'privmsg') {
+            return;
+        }
+
+        let url = this.mentioned_urls[0];
+
+        let whitelistRegex = state.setting('buffers.inline_link_auto_preview_whitelist');
+        whitelistRegex = (whitelistRegex || '').trim();
+        try {
+            if (!whitelistRegex || !(new RegExp(whitelistRegex, 'i')).test(url)) {
+                return;
+            }
+        } catch (err) {
+            // A bad regex pattern will throw an error
+            return;
+        }
+
+        this.embed.payload = url;
+        this.embed.type = 'url';
     }
 }
 
