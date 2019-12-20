@@ -41,6 +41,7 @@
                 v-if="isMessage(message) && displayAvatar(message)"
                 :message="message"
                 :data-nick="message.nick"
+                :user="message.user"
             />
             <away-status-indicator
                 v-if="message.user && !isRepeat()"

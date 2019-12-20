@@ -9,11 +9,17 @@
         class="kiwi-nicklist-user"
         @click="nicklist.openUserbox(user)"
     >
-        <away-status-indicator
-            :network="network"
-            :user="user"
-            :toggle="false"
-        />
+        <div class="kiwi-avatar-container">
+            <Message-List-Avatar
+                v-if="user"
+                :user="user"
+            />
+            <away-status-indicator
+                :network="network"
+                :user="user"
+                :toggle="false"
+            />
+        </div>
         <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span><span
             :style="{ 'color': userColour }"
             class="kiwi-nicklist-user-nick"
@@ -31,11 +37,13 @@
 
 import AwayStatusIndicator from './AwayStatusIndicator';
 import TypingStatusIndicator from './TypingStatusIndicator';
+import MessageListAvatar from './MessageListAvatar';
 
 export default {
     components: {
         AwayStatusIndicator,
         TypingStatusIndicator,
+        MessageListAvatar,
     },
     props: ['network', 'user', 'nicklist'],
     computed: {
@@ -87,6 +95,34 @@ export default {
     right: 1em;
     transition: all 0.2s;
     transition-delay: 0.1s;
+}
+
+.kiwi-avatar-container {
+    position: relative;
+    display: inline-block;
+
+    /* Unless this element is floated left, the nick lineheight is broken */
+    float: left;
+    margin-right: 10px;
+}
+
+.kiwi-avatar-container .kiwi-messagelist-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0;
+}
+
+.kiwi-avatar-container .kiwi-messagelist-avatar > span {
+    position: relative;
+    top: -4px;
+}
+
+.kiwi-avatar-container .kiwi-awaystatusindicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
 }
 
 </style>
