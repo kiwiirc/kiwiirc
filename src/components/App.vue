@@ -166,8 +166,13 @@ export default {
             // Make sure a startup screen can't trigger these more than once
             if (!this.hasStarted) {
                 this.warnOnPageClose();
-                Notifications.requestPermission();
-                Notifications.listenForNewMessages(this.$state);
+
+                // Wait for a click before asking for notification permission. Not doing this
+                // on a click event will get it blocked by some browsers.
+                this.$state.once('document.click', event => {
+                    Notifications.requestPermission();
+                    Notifications.listenForNewMessages(this.$state);
+                });
             }
 
             this.hasStarted = true;
