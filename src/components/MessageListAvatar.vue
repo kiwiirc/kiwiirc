@@ -10,7 +10,7 @@ import Avatar from './Avatar';
 
 export default {
     components: { Avatar },
-    props: ['message', 'user', 'small'],
+    props: ['message', 'user'],
 };
 
 </script>
