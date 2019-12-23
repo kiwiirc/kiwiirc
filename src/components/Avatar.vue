@@ -13,7 +13,7 @@
 'kiwi public';
 
 export default {
-    props: ['message', 'user', 'small'],
+    props: ['message', 'user'],
     computed: {
         avatar() {
             return (this.message && this.message.avatar) || (this.user && this.user.avatar);
@@ -23,12 +23,8 @@ export default {
         },
         avatarStyle() {
             let style = '';
-            let avatar = this.avatar;
-            if (avatar) {
-                let url = avatar;
-                if (this.small) {
-                    url = url.replace(/\.jpg$/, '_small.jpg');
-                }
+            if (this.avatar && this.avatar.small) {
+                let url = this.avatar.small;
                 style = `background-image: url("${url}")`;
             } else {
                 style = `background-color: ${this.colour};`;
