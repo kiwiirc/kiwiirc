@@ -10,7 +10,7 @@
         @click="nicklist.openUserbox(user)"
     >
         <div class="kiwi-avatar-container">
-            <Message-List-Avatar
+            <Avatar
                 v-if="user"
                 :user="user"
             />
@@ -37,13 +37,13 @@
 
 import AwayStatusIndicator from './AwayStatusIndicator';
 import TypingStatusIndicator from './TypingStatusIndicator';
-import MessageListAvatar from './MessageListAvatar';
+import Avatar from './Avatar';
 
 export default {
     components: {
         AwayStatusIndicator,
         TypingStatusIndicator,
-        MessageListAvatar,
+        Avatar,
     },
     props: ['network', 'user', 'nicklist'],
     computed: {
@@ -112,14 +112,14 @@ li.kiwi-nicklist {
     margin-right: 10px;
 }
 
-.kiwi-avatar-container .kiwi-messagelist-avatar {
+.kiwi-avatar-container .kiwi-avatar {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     margin: 0;
 }
 
-.kiwi-avatar-container .kiwi-messagelist-avatar > span {
+.kiwi-avatar-container .kiwi-avatar > span {
     position: relative;
     top: -4px;
 }
