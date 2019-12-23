@@ -60,10 +60,10 @@ export default {
 <style>
 
 .kiwi-nicklist-user {
-    line-height: 26px;
-    padding: 0 12px 0 12px;
+    line-height: 32px;
+    padding: 0 12px 6px 12px;
     border-left: 4px solid;
-    margin: 0;
+    margin: 0 0 0 0;
     position: relative;
     box-sizing: border-box;
     transition: all 0.1s;
@@ -95,6 +95,12 @@ export default {
     right: 1em;
     transition: all 0.2s;
     transition-delay: 0.1s;
+}
+
+li.kiwi-nicklist {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4px;
 }
 
 .kiwi-avatar-container {

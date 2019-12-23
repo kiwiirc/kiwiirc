@@ -12,10 +12,8 @@
 
 'kiwi public';
 
-import state from '@/libs/state';
-
 export default {
-    props: ['message', 'user'],
+    props: ['message', 'user', 'small'],
     computed: {
         avatar() {
             return (this.message && this.message.avatar) || (this.user && this.user.avatar);
@@ -28,6 +26,9 @@ export default {
             let avatar = this.avatar;
             if (avatar) {
                 let url = avatar;
+                if (this.small) {
+                    url = url.replace(/\.jpg$/, '_small.jpg');
+                }
                 style = `background-image: url("${url}")`;
             } else {
                 style = `background-color: ${this.colour};`;
