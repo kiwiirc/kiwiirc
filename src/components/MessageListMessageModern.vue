@@ -240,6 +240,11 @@ export default {
     position: absolute;
 }
 
+.kiwi-messagelist-message--modern .kiwi-avatar {
+    height: 40px;
+    width: 40px;
+}
+
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorfirst.kiwi-messagelist-message-topic {
     padding: 10px 20px;
 }
@@ -278,7 +283,7 @@ export default {
     display: none;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-avatar {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-avatar {
     display: none;
 }
 
@@ -420,7 +425,7 @@ export default {
         display: none;
     }
 
-    .kiwi-messagelist-message--modern .kiwi-messagelist-avatar {
+    .kiwi-messagelist-message--modern .kiwi-avatar {
         display: none;
     }
 

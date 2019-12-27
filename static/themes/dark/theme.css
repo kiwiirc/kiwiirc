@@ -122,7 +122,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     color: #fff;
 }
 
-.kiwi-avatar {
+.kiwi-avatar > span {
     background-color: var(--brand-default-bg);
     color: var(--brand-default-fg);
 }

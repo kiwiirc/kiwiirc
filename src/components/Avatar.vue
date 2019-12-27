@@ -1,10 +1,10 @@
 <template>
     <div
-        :style="avatarStyle"
         :data-nick="message&&message.nick"
+        :class="[hasAvatar ? 'kiwi-avatar--image' : '']"
         class="kiwi-avatar"
     >
-        <span>{{ !avatar&&firstNickLetter || '' }}</span>
+        <span :style="avatarStyle">{{ hasAvatar ?'' : firstNickLetter }}</span>
     </div>
 </template>
 
@@ -19,16 +19,21 @@ export default {
             return (this.message && this.message.avatar) || (this.user && this.user.avatar);
         },
         firstNickLetter() {
-            return ((this.message && this.message.nick) || (this.user && this.user.nick))[0];
+            return ((this.message && this.message.nick) || (this.user && this.user.nick) || '')[0];
+        },
+        hasAvatar() {
+            return !!(this.avatar && this.avatar.small);
         },
         avatarStyle() {
-            let style = '';
-            if (this.avatar && this.avatar.small) {
+            let style = {};
+
+            if (this.hasAvatar) {
                 let url = this.avatar.small;
-                style = `background-image: url("${url}")`;
+                style['background-image'] = `url("${url}")`;
             } else {
-                style = `background-color: ${this.colour};`;
+                style['background-color'] = `${this.colour}`;
             }
+
             return style;
         },
         colour() {
@@ -42,20 +47,28 @@ export default {
 
 <style>
 
-.kiwi-avatar {
+.kiwi-avatar > span {
     text-transform: uppercase;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
     font-weight: 600;
     margin-top: 3px;
     border: 2px solid;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.kiwi-avatar--image > span {
+    border: none;
+
+    /* box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.5); */
 }
 
 </style>

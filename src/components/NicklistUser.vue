@@ -69,11 +69,14 @@ export default {
     transition: all 0.1s;
     cursor: pointer;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
 }
 
 .kiwi-nicklist-user-nick {
     font-weight: bold;
     cursor: pointer;
+    flex: 1;
 }
 
 .kiwi-nicklist-messageuser {
@@ -97,31 +100,15 @@ export default {
     transition-delay: 0.1s;
 }
 
-li.kiwi-nicklist {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 4px;
-}
-
 .kiwi-avatar-container {
     position: relative;
-    display: inline-block;
-
-    /* Unless this element is floated left, the nick lineheight is broken */
-    float: left;
     margin-right: 10px;
+    flex: 0;
 }
 
 .kiwi-avatar-container .kiwi-avatar {
     width: 30px;
     height: 30px;
-    border-radius: 50%;
-    margin: 0;
-}
-
-.kiwi-avatar-container .kiwi-avatar > span {
-    position: relative;
-    top: -4px;
 }
 
 .kiwi-avatar-container .kiwi-awaystatusindicator {
@@ -129,6 +116,10 @@ li.kiwi-nicklist {
     top: 0;
     right: 0;
     margin: 0;
+}
+
+.kiwi-avatar-container-user-prefix {
+    flex: 0;
 }
 
 </style>
