@@ -1,0 +1,75 @@
+on:
+  push:
+    tags:
+      - 'v*'
+
+name: Create Release
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: 'master'
+          fetch-depth: 0
+
+      - name: Collect repository tags
+        run: git fetch origin +refs/tags/*:refs/tags/*
+
+      - name: Set Node.js version 12.14.0
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.14.0'
+
+      - name: Collect some variables
+        id: naming
+        run: |
+          echo ::set-output name=version::${GITHUB_REF/refs\/tags\//}
+          echo ::set-output name=yarncache::$(yarn cache dir)
+          echo ::set-output name=lasttag::$(git tag --sort=taggerdate | tail -2 | head -1)
+
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.naming.outputs.yarncache }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies and build
+        run: |
+          yarn
+          yarn build
+          mv dist kiwiirc_${{ steps.naming.outputs.version }}
+          zip -r kiwiirc_${{ steps.naming.outputs.version }}.zip kiwiirc_${{ steps.naming.outputs.version }}/*
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.naming.outputs.version }}
+          release_name: Release ${{ steps.naming.outputs.version }}
+          body: |
+            ## KiwiIRC ${{ steps.naming.outputs.version }}
+            #### Overview
+            - Main change 1
+            - Main change 2
+
+            Changes: https://github.com/${{ github.repository }}/compare/${{ steps.naming.outputs.lasttag }}...${{ steps.naming.outputs.version }}
+          draft: true
+          prerelease: false
+
+      - name: Upload Release
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: kiwiirc_${{ steps.naming.outputs.version }}.zip
+          asset_name: kiwiirc_${{ steps.naming.outputs.version }}.zip
+          asset_content_type: application/zip
