@@ -9,11 +9,18 @@
         class="kiwi-nicklist-user"
         @click="nicklist.openUserbox(user)"
     >
-        <div class="kiwi-avatar-container">
+        <div v-if="shouldShowAvatars" class="kiwi-avatar-container">
             <Avatar
                 v-if="user"
                 :user="user"
             />
+            <away-status-indicator
+                :network="network"
+                :user="user"
+                :toggle="false"
+            />
+        </div>
+        <div v-else>
             <away-status-indicator
                 :network="network"
                 :user="user"
@@ -52,6 +59,9 @@ export default {
                 return this.user.getColour();
             }
             return '';
+        },
+        shouldShowAvatars() {
+            return this.$state.setting('buffers.nicklist_avatars');
         },
     },
 };

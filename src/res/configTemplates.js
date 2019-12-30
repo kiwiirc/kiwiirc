@@ -74,6 +74,7 @@ export const configTemplates = {
             share_typing: true,
             // flash_title: message/highlight/off
             flash_title: 'message',
+            nicklist_avatars: false,
         },
         // Startup screen default
         startupOptions: {
