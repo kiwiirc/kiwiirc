@@ -61,7 +61,7 @@ export default {
             return '';
         },
         shouldShowAvatars() {
-            return this.$state.setting('buffers.nicklist_avatars');
+            return this.nicklist.buffer.setting('nicklist_avatars');
         },
     },
 };
