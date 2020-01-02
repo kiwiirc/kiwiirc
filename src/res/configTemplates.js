@@ -75,6 +75,8 @@ export const configTemplates = {
             // flash_title: message/highlight/off
             flash_title: 'message',
             nicklist_avatars: false,
+            inline_link_previews: true,
+            inline_link_auto_preview_whitelist: '',
         },
         // Startup screen default
         startupOptions: {

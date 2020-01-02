@@ -106,6 +106,15 @@
                 :buffer="ml.buffer"
                 @close="ml.toggleMessageInfo()"
             />
+
+            <div v-if="message.embed.payload">
+                <media-viewer
+                    :url="message.embed.payload"
+                    :show-pin="true"
+                    @close="message.embed.payload = ''"
+                    @pin="ml.openEmbedInPreview(message)"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -122,6 +131,7 @@ import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
 import AwayStatusIndicator from './AwayStatusIndicator';
 import TypingStatusIndicator from './TypingStatusIndicator';
+import MediaViewer from './MediaViewer';
 
 export default {
     components: {
@@ -129,6 +139,7 @@ export default {
         MessageInfo,
         AwayStatusIndicator,
         TypingStatusIndicator,
+        MediaViewer,
     },
     props: ['ml', 'message', 'idx'],
     data: function data() {

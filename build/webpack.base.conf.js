@@ -1,8 +1,10 @@
 'use strict'
 const path = require('path')
+const webpack = require('webpack')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const pkg = require('../package.json');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 function resolve (dir) {
@@ -39,6 +41,9 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __VERSION__: JSON.stringify(pkg.version),
+    }),
     // Stylelint for all imports
     // https://github.com/vieron/stylelint-webpack-plugin
     new StyleLintPlugin({

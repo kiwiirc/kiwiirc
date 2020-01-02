@@ -18,7 +18,8 @@ export default class GlobalApi extends EventEmitter {
     constructor() {
         super();
 
-        this.version = '1.3.0';
+        // eslint-disable-next-line no-undef
+        this.version = __VERSION__;
 
         /** A reference to the internal Vuejs instance */
         this.Vue = Vue;

@@ -400,7 +400,12 @@ export default {
 
             let url = event.target.getAttribute('data-url');
             if (url && isLink) {
-                this.$state.$emit('mediaviewer.show', url);
+                if (this.$state.setting('buffers.inline_link_previews')) {
+                    message.embed.type = 'url';
+                    message.embed.payload = url;
+                } else {
+                    this.$state.$emit('mediaviewer.show', url);
+                }
             }
 
             if (this.message_info_open && this.message_info_open !== message) {
@@ -589,6 +594,21 @@ export default {
                 this.removeSelections(true);
                 return true;
             });
+        },
+        // Move a messages embeded content to the main media preview
+        openEmbedInPreview(message) {
+            // First open the embed in the main media preview
+            let embed = message.embed;
+            if (embed.type === 'url') {
+                this.$state.$emit('mediaviewer.show', embed.payload);
+            } else if (embed.type === 'component') {
+                this.$state.$emit('mediaviewer.show', {
+                    component: embed.payload,
+                });
+            }
+
+            // Remove the embed from the message
+            embed.payload = null;
         },
     },
 };
@@ -791,7 +811,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 }
 
 .kiwi-messagelist-message--blur {
-    opacity: 0.5;
+    opacity: 0.3;
 }
 
 .kiwi-messagelist-nick {
@@ -914,15 +934,9 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     font-family: monospace;
 }
 
-/* Ensure unread messages are fully visible, even after themes applied */
-.kiwi-messagelist-message.kiwi-messagelist-message--unread {
-    opacity: 1;
-}
-
 .kiwi-messagelist-message.kiwi-messagelist-message--hover,
 .kiwi-messagelist-message.kiwi-messagelist-message--highlight,
 .kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover {
-    opacity: 1;
     position: relative;
 }
 
