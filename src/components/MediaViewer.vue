@@ -137,8 +137,14 @@ export default {
     border: none;
 }
 
+.embedly-card {
+    margin: 10px 0;
+    display: inline-block;
+}
+
 .embedly-card-hug {
     border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
     background: #fff;
 }
 </style>

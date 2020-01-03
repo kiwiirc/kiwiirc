@@ -456,6 +456,10 @@ body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
+.kiwi-main-mediaviewer .embedly-card {
+    display: block;
+}
+
 .kiwi-controlinput {
     z-index: 2;
 }
