@@ -86,3 +86,7 @@
 .irc-bg-colour-pink { background-color: #f0f; }
 .irc-bg-colour-grey { background-color: #a6a6a6; }
 .irc-bg-colour-light-grey { background-color: #e2e2e2; }
+
+.kiwi-statebrowser {
+    box-shadow: 0px 0 2px #101010;
+}
