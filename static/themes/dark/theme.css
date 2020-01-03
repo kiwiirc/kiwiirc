@@ -126,13 +126,12 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     border-top: 2px dashed #00b100;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--unread,
 .kiwi-messagelist-message--highlight {
     background-color: #404040;
 }
 
 .kiwi-messagelist-message-notice {
-    border-left-color: #b37e0e;
+    background: #3c3729;
 }
 
 .kiwi-statebrowser {
@@ -145,11 +144,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     color: var(--brand-default-bg);
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--hover,
-.kiwi-messagelist-message.kiwi-messagelist-message--highlight,
-.kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover,
-.kiwi-messagelist-message.kiwi-messagelist-message--unread,
-.kiwi-messafelist-message--hover {
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight {
     background: #2d2d2d;
 }
 
@@ -159,10 +154,6 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
 
 .kiwi-channellist table tbody tr:nth-child(even) {
     background-color: #333333;
-}
-
-.kiwi-messagelist-message--own {
-    background-color: #2d2d2d;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount  {

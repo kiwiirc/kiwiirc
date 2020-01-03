@@ -218,7 +218,11 @@
 
 .kiwi-messagelist .kiwi-messagelist-message--highlight,
 .kiwi-messagelist .kiwi-messagelist-message--hover {
-    border-left-color: var(--brand-midtone);
+    border-left-color: #3c3c3c;
+}
+
+.kiwi-messagelist-message-notice {
+    background: #3c3c3c;
 }
 
 .kiwi-avatar > span {
@@ -291,10 +295,6 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .kiwi-welcome-znc-form .u-input-text {
     background: transparent;
     color: var(--brand-default-bg);
-}
-
-.kiwi-messagelist-message--own {
-    background-color: #191919;
 }
 
 .kiwi-container-toggledraw-statebrowser-messagecount {

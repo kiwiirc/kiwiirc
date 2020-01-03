@@ -626,7 +626,6 @@ export default {
 
 div.kiwi-messagelist-item.kiwi-messagelist-item--selected {
     border-left: 7px solid var(--brand-primary);
-    background-color: var(--brand-shadow);
 }
 
 div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-message {
