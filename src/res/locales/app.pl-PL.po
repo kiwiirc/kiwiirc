@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2019-07-06 15:32\n"
+"PO-Revision-Date: 2019-09-17 19:32\n"
 
 #: Start
 msgid "start_button"
@@ -167,6 +167,10 @@ msgstr "Ignoruj użytkownika"
 #: Channel
 msgid "connection_channel"
 msgstr "Pokój"
+
+#: Away
+msgid "away"
+msgstr ""
 
 #: {{count}} week
 msgid "week"
@@ -744,6 +748,10 @@ msgstr "Znajdź więcej kanałów"
 msgid "change_nick"
 msgstr "Zmień pseudonim"
 
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr ""
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "Konto użytkownika: {{user}}"
@@ -799,6 +807,18 @@ msgstr "Zablokuj i wyrzuć z kanału"
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Proszę podać pokój aby dołączyć. np. /join #pokój"
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr ""
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr ""
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr ""
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -913,8 +933,8 @@ msgid "command_quit"
 msgstr "Odłącz się od serwera IRC"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Połącz się z nową siecią IRC"
+msgid "command_server"
+msgstr ""
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1003,10 +1023,6 @@ msgstr "(Podziękowania dla Adama@Rizon za rozwijanie obsługi serwera gniazd!)"
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Wypróbuj deweloperską wersję Kiwi IRC-a!"
-
-#: Connected
-msgid "connected"
-msgstr "Podłączono"
 
 #: Disconnected
 msgid "disconnected"

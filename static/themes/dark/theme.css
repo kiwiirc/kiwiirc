@@ -1,15 +1,15 @@
 @import '../common/base.css';
 
 :root{
-    --brand-primary: #42b992;
+    --brand-primary: #256d55;
     --brand-primary-hover: #5ec9a6;
-    --brand-midtone: #ababab;
+    --brand-midtone: #2b2b2b;
     --brand-darktone: #969696;
     --brand-default-bg: #1e1e1e;
     --brand-default-fg: #ababab;
     --brand-notice: #f6c358;
     --brand-warning: #fcb46e;
-    --brand-error: #bf5155;
+    --brand-error: #712c2f;
     --comp-workspace-before-bg: var(--brand-primary);
     --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
     --comp-header-bg: var(--brand-default-bg);
@@ -26,7 +26,7 @@
     --comp-sidebar-bg: #1e1e1e;
     --comp-sidebar-fg: #ababab;
     --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
-    --comp-aboutbuffer-header-bg: #42b992;
+    --comp-aboutbuffer-header-bg: var(--brand-primary);
     --brand-link-normal: var(--brand-primary);
     --brand-link--hover: var(--brand-primary-hover);
     --brand-shadow: rgba(0, 0, 0, 0.1);
@@ -42,7 +42,6 @@
 }
 
 .kiwi-statebrowser-channels .kiwi-statebrowser-channel {
-    border-bottom: 1px solid #4a4b47;
     color: #dedede;
 }
 
@@ -50,12 +49,8 @@
     background-color: #000;
     color: var(--brand-default-fg);
 }
-.kiwi-appsettings-title,
-.kiwi-appsettings-block h3 {
-    color: #fff;
-}
 .u-tabbed-view-tabs {
-    background: #696969;
+    background: #2f2f2f;
     border-bottom-color: #ffffff1a;
 }
 .u-tabbed-view-tabs .u-tabbed-view-tab {
@@ -122,7 +117,8 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     color: #fff;
 }
 
-.kiwi-messagelist-avatar {
+.kiwi-avatar > span {
+    background-color: var(--brand-default-bg);
     color: var(--brand-default-fg);
 }
 
@@ -130,9 +126,16 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     border-top: 2px dashed #00b100;
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--unread,
 .kiwi-messagelist-message--highlight {
     background-color: #404040;
+}
+
+.kiwi-messagelist-message-notice {
+    background: #3c3729;
+}
+
+.kiwi-statebrowser {
+    box-shadow: 0px 0 4px #ffffff2b;
 }
 
 .kiwi-statebrowser-channelfilter input,
@@ -141,11 +144,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     color: var(--brand-default-bg);
 }
 
-.kiwi-messagelist-message.kiwi-messagelist-message--hover,
-.kiwi-messagelist-message.kiwi-messagelist-message--highlight,
-.kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover,
-.kiwi-messagelist-message.kiwi-messagelist-message--unread,
-.kiwi-messafelist-message--hover {
+.kiwi-messagelist-message.kiwi-messagelist-message--highlight {
     background: #2d2d2d;
 }
 
@@ -157,17 +156,8 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     background-color: #333333;
 }
 
-.kiwi-messagelist-message--own {
-    background-color: #2d2d2d;
-}
-
 .kiwi-container-toggledraw-statebrowser-messagecount  {
     color: #f1f1f1;
-}
-
-.kiwi-sidebar-options,
-.kiwi-aboutbuffer h4 {
-    color: #fff;
 }
 
 .kiwi-messagelist-message--info-open {

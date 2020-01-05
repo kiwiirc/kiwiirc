@@ -66,8 +66,8 @@
 'kiwi public';
 
 import GlobalApi from '@/libs/GlobalApi';
-import formatIrcMessage from '@/libs/MessageFormatter';
-import * as TextFormatting from '@/helpers/TextFormatting';
+import toHtml from '@/libs/renderers/Html';
+import parseMessage from '@/libs/MessageParser';
 
 export default {
     props: ['network', 'buffer', 'sidebarState'],
@@ -83,10 +83,9 @@ export default {
         },
 
         formattedTopic() {
-            let showEmoticons = this.$state.setting('buffers.show_emoticons');
-            let blocks = formatIrcMessage(this.b.topic || '', { extras: false });
-            let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
-            return content.html;
+            let blocks = parseMessage(this.b.topic || '', { extras: false });
+            let content = toHtml(blocks);
+            return content;
         },
 
         highlights() {
@@ -99,7 +98,8 @@ export default {
                 .filter(m => m.type !== 'traffic')
                 .filter(m => m.type !== 'topic')
                 .filter(m => m.type !== 'mode')
-                .filter(m => m.html);
+                .filter(m => m.html)
+                .sort((a, b) => b.time - a.time);
         },
     },
     methods: {
@@ -166,7 +166,6 @@ export default {
     padding: 1em;
     transition: max-height 0.2s, padding 0.2s, opacity 0.2s;
     overflow: hidden;
-    max-height: 500px;
 }
 
 .kiwi-aboutbuffer-section .kiwi-aboutbuffer-usercount {

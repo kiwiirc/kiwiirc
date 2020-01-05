@@ -17,7 +17,12 @@
         <div
             v-for="(message, idx) in filteredMessages"
             :key="message.id"
-            class="kiwi-messagelist-item"
+            :class="[
+                'kiwi-messagelist-item',
+                selectedMessages.has(message.id) ?
+                    'kiwi-messagelist-item--selected' :
+                    ''
+            ]"
         >
             <div
                 v-if="shouldShowDateChangeMarker(idx)"
@@ -82,6 +87,8 @@ import MessageListMessageModern from './MessageListMessageModern';
 import MessageListMessageInline from './MessageListMessageInline';
 import LoadingAnimation from './LoadingAnimation.vue';
 
+require('@/libs/polyfill/Element.closest');
+
 let log = Logger.namespace('MessageList.vue');
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
@@ -105,6 +112,7 @@ export default {
             message_info_open: null,
             timeToClose: false,
             startClosing: false,
+            selectedMessages: new Set(),
         };
     },
     computed: {
@@ -128,7 +136,7 @@ export default {
             }
 
             let isCorrectBufferType = (this.buffer.isChannel() || this.buffer.isQuery());
-            let isSupported = !!this.buffer.getNetwork().ircClient.network.supports('chathistory');
+            let isSupported = !!this.buffer.getNetwork().ircClient.chathistory.isSupported();
             return isCorrectBufferType && isSupported && this.buffer.flags.chathistory_available;
         },
         shouldRequestChannelKey() {
@@ -242,6 +250,8 @@ export default {
         },
     },
     mounted() {
+        this.addCopyListeners();
+
         this.$nextTick(() => {
             this.scrollToBottom();
         });
@@ -378,6 +388,7 @@ export default {
                 let network = this.buffer.getNetwork();
                 this.$state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
+                this.$state.setActiveBuffer(this.buffer.networkid, channelName);
                 return;
             }
 
@@ -389,7 +400,12 @@ export default {
 
             let url = event.target.getAttribute('data-url');
             if (url && isLink) {
-                this.$state.$emit('mediaviewer.show', url);
+                if (this.$state.setting('buffers.inline_link_previews')) {
+                    message.embed.type = 'url';
+                    message.embed.payload = url;
+                } else {
+                    this.$state.$emit('mediaviewer.show', url);
+                }
             }
 
             if (this.message_info_open && this.message_info_open !== message) {
@@ -434,16 +450,210 @@ export default {
                 this.auto_scroll = false;
             }
         },
+        restrictTextSelection() { // Prevents the selection cursor escaping the message list.
+            document.querySelector('body').classList.add('kiwi-unselectable');
+            this.$el.style.userSelect = 'text';
+        },
+        unrestrictTextSelection() { // Allows all page elements to be selected again.
+            document.querySelector('body').classList.remove('kiwi-unselectable');
+            this.$el.style.userSelect = 'auto';
+        },
+        removeSelections(removeNative = false) {
+            this.selectedMessages = new Set();
+
+            let selection = document.getSelection();
+            if (removeNative && selection) {
+                // stops the native browser selection being left behind after ctrl+c
+                selection.removeAllRanges();
+            }
+        },
+        addCopyListeners() { // Better copy pasting
+            const LogFormatter = (msg) => {
+                let text = '';
+
+                switch (msg.type) {
+                case 'privmsg':
+                    text = `<${msg.nick}> ${msg.message}`;
+                    break;
+                case 'nick':
+                case 'mode':
+                case 'action':
+                case 'traffic':
+                    text = `${msg.message}`;
+                    break;
+                default:
+                    text = msg.message;
+                }
+                if (text.length) {
+                    return `[${(new Date(msg.time)).toLocaleTimeString({ hour: '2-digit', minute: '2-digit', second: '2-digit' })}] ${text}`;
+                }
+                return null;
+            };
+
+            let copyData = '';
+            let selecting = false;
+
+            this.listen(document, 'mouseup', (e) => {
+                this.unrestrictTextSelection();
+                if (selecting) {
+                    e.preventDefault();
+                }
+                selecting = false;
+            });
+
+            this.listen(document, 'selectionchange', (e) => {
+                if (!this.$el) {
+                    return true;
+                }
+
+                copyData = ''; // Store the text data to be copied in this.
+
+                let selection = document.getSelection();
+
+                if (!selection
+                || !selection.anchorNode
+                || !selection.anchorNode.parentNode.closest('.' + this.$el.className)) {
+                    this.unrestrictTextSelection();
+                    this.removeSelections();
+                    return true;
+                }
+
+                this.removeSelections();
+                // Prevent the selection escaping the message list
+                this.restrictTextSelection();
+                if (selection.rangeCount > 0) {
+                    selecting = true;
+                    let firstRange = selection.getRangeAt(0);
+                    let lastRange = selection.getRangeAt(selection.rangeCount - 1);
+                    // Traverse the DOM to find messages in selection
+                    let startNode = firstRange.startContainer.parentNode.closest('[data-message-id]');
+                    let endNode = lastRange.endContainer.parentNode.closest('[data-message-id]');
+                    if (!endNode) {
+                        // If endContainer isn't in messagelist then mouse has been dragged outside
+                        // Set the end node to last in the message list
+                        endNode = this.$el.querySelector('.kiwi-messagelist-item:last-child');
+                    }
+                    if (!startNode || !endNode || startNode === endNode) {
+                        return true;
+                    }
+
+                    let node = startNode;
+                    let messages = [];
+                    let allMessages = this.buffer.getMessages();
+
+                    const finder = m => m.id.toString() === node.attributes['data-message-id'].value;
+
+                    let i = 0;
+                    while (node) {
+                        // This could be more efficent with an id->msg lookup
+                        let msg = allMessages.find(finder);
+
+                        // Add to a list of selected messages
+                        this.selectedMessages.add(msg.id);
+                        if (msg) {
+                            messages.push(msg);
+                        }
+                        if (node === endNode) {
+                            node = null;
+                        } else {
+                            let nextNode = node.closest('[data-message-id]').parentNode.nextElementSibling;
+                            node = nextNode && nextNode.querySelector('[data-message-id]');
+                        }
+                    }
+                    // Replace the set so the MessageList updates.
+                    this.selectedMessages = new Set(this.selectedMessages);
+
+                    // Iterate through the selected messages, format and store as a
+                    // string to be used in the copy handler
+                    copyData = messages
+                        .sort((a, b) => (a.time > b.time ? 1 : -1))
+                        .filter(m => m.message.trim().length)
+                        .map(LogFormatter)
+                        .join('\r\n');
+                } else {
+                    this.unrestrictTextSelection();
+                }
+                return false;
+            });
+
+            this.listen(document, 'copy', (e) => {
+                if (!copyData || !copyData.length) { // Just do a normal copy if no special data
+                    return true;
+                }
+
+                if (navigator.clipboard) { // Supports Clipboard API
+                    navigator.clipboard.writeText(copyData);
+                } else {
+                    let input = document.createElement('textarea');
+                    document.body.appendChild(input);
+                    input.innerHTML = copyData;
+                    input.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(input);
+                }
+                this.removeSelections(true);
+                return true;
+            });
+        },
+        // Move a messages embeded content to the main media preview
+        openEmbedInPreview(message) {
+            // First open the embed in the main media preview
+            let embed = message.embed;
+            if (embed.type === 'url') {
+                this.$state.$emit('mediaviewer.show', embed.payload);
+            } else if (embed.type === 'component') {
+                this.$state.$emit('mediaviewer.show', {
+                    component: embed.payload,
+                });
+            }
+
+            // Remove the embed from the message
+            embed.payload = null;
+        },
     },
 };
 </script>
 
 <style lang="less">
+
+.kiwi-unselectable * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+div.kiwi-messagelist-item.kiwi-messagelist-item--selected {
+    border-left: 7px solid var(--brand-primary);
+}
+
+div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-message {
+    border-left-width: 0;
+}
+
+.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-message *::selection {
+    background-color: unset;
+    color: unset;
+}
+
+.kiwi-unselectable .kiwi-messagelist-scrollback {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .kiwi-messagelist {
     overflow-y: auto;
     box-sizing: border-box;
     margin-bottom: 25px;
     position: relative;
+}
+
+.kiwi-messagelist * {
+    user-select: text;
 }
 
 .kiwi-messagelist::-webkit-scrollbar-track {
@@ -600,7 +810,7 @@ export default {
 }
 
 .kiwi-messagelist-message--blur {
-    opacity: 0.5;
+    opacity: 0.3;
 }
 
 .kiwi-messagelist-nick {
@@ -723,15 +933,9 @@ export default {
     font-family: monospace;
 }
 
-/* Ensure unread messages are fully visible, even after themes applied */
-.kiwi-messagelist-message.kiwi-messagelist-message--unread {
-    opacity: 1;
-}
-
 .kiwi-messagelist-message.kiwi-messagelist-message--hover,
 .kiwi-messagelist-message.kiwi-messagelist-message--highlight,
 .kiwi-messagelist-message.kiwi-messagelist-message-traffic--hover {
-    opacity: 1;
     position: relative;
 }
 

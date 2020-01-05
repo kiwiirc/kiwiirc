@@ -28,7 +28,8 @@ export class AudioManager {
 
     /** Watch the Kiwi state for any message highlights and play an alert */
     watchForMessages(state) {
-        state.$on('message.new', (message, buffer) => {
+        state.$on('message.new', (event) => {
+            let { message, buffer } = event;
             if (buffer.setting('mute_sound')) {
                 return;
             }

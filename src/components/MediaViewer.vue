@@ -2,8 +2,15 @@
     <div class="kiwi-mediaviewer">
         <div class="kiwi-mediaviewer-controls">
             <a
+                v-if="showPin"
+                class="u-button u-link kiwi-mediaviewer-controls-pin"
+                @click="$emit('pin')"
+            >
+                <i class="fa fa-map-pin" aria-hidden="true"/>
+            </a>
+            <a
                 class="u-button u-button-warning kiwi-mediaviewer-controls-close"
-                @click="closeViewer"
+                @click="$emit('close');"
             >
                 <i class="fa fa-window-close" aria-hidden="true"/>
             </a>
@@ -17,6 +24,7 @@
             <component v-else-if="component" :is="component"/>
             <a
                 v-else
+                ref="embedlyLink"
                 :href="url"
                 :data-card-key="embedlyKey"
                 class="kiwi-embedly-card"
@@ -36,7 +44,7 @@ import state from '@/libs/state';
 let embedlyTagIncluded = false;
 
 export default {
-    props: ['url', 'component', 'isIframe'],
+    props: ['url', 'component', 'isIframe', 'showPin'],
     data: function data() {
         return {
         };
@@ -75,7 +83,9 @@ export default {
                     setTimeout(checkEmbedlyAndShowCard, 100);
                     return;
                 }
-                window.embedly('card', { selector: '.kiwi-embedly-card' });
+                this.$nextTick(() => {
+                    window.embedly('card', this.$refs.embedlyLink);
+                });
             };
 
             if (!embedlyTagIncluded) {
@@ -88,9 +98,6 @@ export default {
             }
             checkEmbedlyAndShowCard();
         },
-        closeViewer: function closeViewer() {
-            state.$emit('mediaviewer.hide', { source: 'user' });
-        },
     },
 };
 </script>
@@ -98,7 +105,6 @@ export default {
 <style>
 .kiwi-mediaviewer {
     box-sizing: border-box;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     position: relative;
 }
 
@@ -107,6 +113,16 @@ export default {
     top: 0;
     right: 0;
     z-index: 1;
+    background: var(--brand-default-bg);
+    border-radius: 5px;
+    padding: 3px;
+    opacity: 0;
+    transition: opacity 0.1s;
+    box-shadow: 0 1px var(--brand-input-border);
+}
+
+.kiwi-mediaviewer:hover .kiwi-mediaviewer-controls {
+    opacity: 1;
 }
 
 .kiwi-mediaviewer-controls-close {
@@ -119,5 +135,16 @@ export default {
     position: absolute;
     top: 0;
     border: none;
+}
+
+.embedly-card {
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.embedly-card-hug {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background: #fff;
 }
 </style>

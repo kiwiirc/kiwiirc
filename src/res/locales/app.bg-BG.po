@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2019-07-06 15:31\n"
+"PO-Revision-Date: 2019-09-24 16:31\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "Канали"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Достъп"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Изгонени"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Поканени потребители"
 
 #: Notifications
 msgid "notifications"
@@ -167,6 +167,10 @@ msgstr "Добави в игнора"
 #: Channel
 msgid "connection_channel"
 msgstr "Автоматично влизане в канали"
+
+#: Away
+msgid "away"
+msgstr "Далеч"
 
 #: {{count}} week
 msgid "week"
@@ -398,51 +402,51 @@ msgstr "Все още няма баннати потребители"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Презареди листа с поканите"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Поканени потребители"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Поканен от"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Обновяване на листа с покани"
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Никой не е поканен!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Това е публичен канал."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Само поканени потребители могат да влязат."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Разрешено само за поканени потребители"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Позволи на всеки да влиза "
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Само регистрирани потребители могат да влизат"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Добави покана"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Всеки регистриран потребител)"
 
 #: Topic
 msgid "channel_topic"
@@ -744,6 +748,10 @@ msgstr "Намери повече канали"
 msgid "change_nick"
 msgstr "Промяна на ник"
 
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "Въведете нов прякор..."
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "Потребителско име: {{user}}"
@@ -799,6 +807,18 @@ msgstr "Забрани и премахни от канала"
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Моля, посочете канал, към който да се присъедините. напр. / join #example"
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr "Този прякор {{nick}} вече се ползва!"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr "Трябва да въведете нов прякор"
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr "Прякорът не трябва да почва с цифри"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -913,8 +933,8 @@ msgid "command_quit"
 msgstr "Прекъснете връзката с IRC сървъра"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Свържете се с нова IRC мрежа"
+msgid "command_server"
+msgstr "Свържете се с нова IRC мрежа "
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1003,10 +1023,6 @@ msgstr " (Благодарности на Adam @Rizon за помощта отн
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Give the developer version of Kiwi IRC a try!"
-
-#: Connected
-msgid "connected"
-msgstr "Свързан"
 
 #: Disconnected
 msgid "disconnected"

@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2019-07-06 15:31\n"
+"PO-Revision-Date: 2019-12-04 03:41\n"
 
 #: Start
 msgid "start_button"
@@ -168,6 +168,10 @@ msgstr "忽略用户"
 msgid "connection_channel"
 msgstr "频道"
 
+#: Away
+msgid "away"
+msgstr ""
+
 #: {{count}} week
 msgid "week"
 msgstr "{{count}} 个星期"
@@ -222,7 +226,7 @@ msgstr "主题"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr ""
+msgstr "刷新主题"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -370,7 +374,7 @@ msgstr ""
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "重置"
 
 #: Filter
 msgid "settings_advanced_filter"
@@ -654,7 +658,7 @@ msgstr "无缓冲区"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr ""
+msgstr "这个频道没有主题"
 
 #: About
 msgid "about"
@@ -662,7 +666,7 @@ msgstr ""
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr ""
+msgstr "创建于 {{when}}"
 
 #: Highlights
 msgid "highlights"
@@ -744,6 +748,10 @@ msgstr ""
 msgid "change_nick"
 msgstr "修改昵称"
 
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "请输入新昵称……"
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "账户名：{{user}}"
@@ -798,6 +806,18 @@ msgstr "从频道中踢出并封禁"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
+msgstr ""
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr "用户名{{nick}} 已被使用"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr ""
+
+#: Nickname must not start with a number
+msgid "error_no_number"
 msgstr ""
 
 #: {{nick}} gives ops to {{target}}
@@ -886,7 +906,7 @@ msgstr ""
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "为当前频道设置主题"
 
 #: Send a notice
 msgid "command_notice"
@@ -913,7 +933,7 @@ msgid "command_quit"
 msgstr ""
 
 #: Connect to a new IRC network
-msgid "command_connect"
+msgid "command_server"
 msgstr ""
 
 #: Request information on somebody
@@ -946,11 +966,11 @@ msgstr ""
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "掷骰子"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "掷出{{sides}}面骰子，结果为{{number}}点"
 
 #: Your IRC client
 msgid "personal_client"
@@ -1003,10 +1023,6 @@ msgstr "（感谢 Adam @Rizon 开发网页套接字服务器的支持！）"
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "试试开发者版本的 Kiwi IRC！"
-
-#: Connected
-msgid "connected"
-msgstr "已连接"
 
 #: Disconnected
 msgid "disconnected"

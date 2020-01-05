@@ -260,7 +260,7 @@ export default {
             set: function set24Timestamps(newVal) {
                 let newFormat = newVal ?
                     '%H:%M:%S' :
-                    '%l:%M:%S';
+                    '%l:%M:%S %p';
                 state.setting('buffers.timestamp_format', newFormat);
             },
         },

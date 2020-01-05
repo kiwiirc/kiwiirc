@@ -8,7 +8,9 @@
     >
 
         <template v-if="isChannel()">
-            <div class="kiwi-header-name">{{ buffer.name }}</div>
+            <div class="kiwi-header-name-container">
+                <div class="kiwi-header-name">{{ buffer.name }}</div>
+            </div>
             <div
                 v-if="isJoined && isConnected"
                 :key="buffer.id"
@@ -93,8 +95,10 @@
         </template>
 
         <template v-else-if="isServer()">
-            <div class="kiwi-header-name">
-                {{ buffer.getNetwork().name }}
+            <div class="kiwi-header-name-container">
+                <div class="kiwi-header-name">
+                    {{ buffer.getNetwork().name }}
+                </div>
             </div>
             <div class="kiwi-header-server-connection" >
                 <a
@@ -112,13 +116,15 @@
         </template>
 
         <template v-else-if="isQuery()">
-            <div class="kiwi-header-name">
-                <away-status-indicator
-                    :network="buffer.getNetwork()"
-                    :user="network.userByName(buffer.name)"
-                    class="kiwi-header-awaystatus"
-                />
-                {{ buffer.name }}
+            <div class="kiwi-header-name-container">
+                <div class="kiwi-header-name">
+                    <away-status-indicator
+                        :network="buffer.getNetwork()"
+                        :user="network.userByName(buffer.name)"
+                        class="kiwi-header-awaystatus"
+                    />
+                    {{ buffer.name }}
+                </div>
             </div>
             <div :key="buffer.id" class="kiwi-header-options">
                 <div
@@ -136,7 +142,9 @@
         </template>
 
         <template v-else-if="isSpecial()">
-            <div class="kiwi-header-name">{{ buffer.name }}</div>
+            <div class="kiwi-header-name-container">
+                <div class="kiwi-header-name">{{ buffer.name }}</div>
+            </div>
             <div class="kiwi-header-options">
                 <div class="kiwi-header-option kiwi-header-option-leave">
                     <a @click="closeCurrentBuffer">
@@ -179,8 +187,8 @@
 
 import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
-import * as TextFormatting from '@/helpers/TextFormatting';
-import formatIrcMessage from '@/libs/MessageFormatter';
+import toHtml from '@/libs/renderers/Html';
+import parseMessage from '@/libs/MessageParser';
 import BufferSettings from './BufferSettings';
 import ChannelInfo from './ChannelInfo';
 import ChannelBanlist from './ChannelBanlist';
@@ -213,10 +221,9 @@ export default {
             return this.buffer.getNetwork().state === 'connected';
         },
         formattedTopic: function formattedTopic() {
-            let showEmoticons = state.setting('buffers.show_emoticons');
-            let blocks = formatIrcMessage(this.buffer.topic, { extras: false });
-            let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
-            return content.html;
+            let blocks = parseMessage(this.buffer.topic, { extras: false });
+            let content = toHtml(blocks);
+            return content;
         },
         network() {
             return this.buffer.getNetwork();
@@ -293,6 +300,7 @@ export default {
     padding: 0;
     transition: all 0.3s;
     line-height: 10px;
+    height: 44px;
     box-sizing: border-box;
     text-align: center;
     border-bottom: 1px solid;
@@ -315,18 +323,30 @@ export default {
     max-height: none;
 }
 
-.kiwi-header-name {
+.kiwi-header-name-container {
     font-weight: bold;
     cursor: default;
     margin: 0;
     margin-right: 0.5em;
-    padding: 0.5em 20px;
     opacity: 1;
     font-size: 20px;
-    line-height: normal;
+    line-height: 43px;
     flex-grow: 1;
     text-align: left;
-    word-break: break-all;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.kiwi-header-name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+.kiwi-header-name:hover {
+    position: absolute;
+    padding-right: 10px;
+    z-index: 1;
 }
 
 .kiwi-header-options {
@@ -397,7 +417,9 @@ export default {
 
 .kiwi-header-notjoined .u-link {
     font-weight: 600;
-    line-height: 45px;
+
+    /* .kiwi-header height -1px */
+    line-height: 43px;
     padding: 0 25px;
     border-radius: 0;
     transition: all 0.3;
@@ -483,14 +505,17 @@ export default {
     .kiwi-header {
         margin-right: 0;
         overflow: visible;
-        height: auto;
         max-height: none;
         padding-left: 0;
         margin-left: 0;
     }
 
-    .kiwi-header-name {
+    .kiwi-header-name-container {
         padding-left: 60px;
+    }
+
+    .kiwi-header-name {
+        padding: 0;
     }
 
     .kiwi-header-option span {
@@ -507,6 +532,7 @@ export default {
     .kiwi-header-notjoined {
         height: 45px;
         margin: 0;
+        white-space: nowrap;
     }
 
     .kiwi-header-notjoined .kiwi-header-join-channel-button {

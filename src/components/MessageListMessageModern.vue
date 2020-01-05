@@ -26,6 +26,9 @@
             ml.message_info_open && ml.message_info_open !== message ?
                 'kiwi-messagelist-message--blur' :
                 '',
+            (message.user && userMode(message.user)) ?
+                'kiwi-messagelist-message--user-mode-'+userMode(message.user) :
+                ''
         ]"
         :data-message-id="message.id"
         :data-nick="(message.nick||'').toLowerCase()"
@@ -38,6 +41,7 @@
                 v-if="isMessage(message) && displayAvatar(message)"
                 :message="message"
                 :data-nick="message.nick"
+                :user="message.user"
             />
             <away-status-indicator
                 v-if="message.user && !isRepeat()"
@@ -66,10 +70,11 @@
                     @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                     @mouseout="ml.hover_nick='';"
                 >
-                    <span class="kiwi-messagelist-nick-prefix">
-                        {{ message.user ? userModePrefix(message.user) : '' }}
-                    </span>
-                    {{ message.nick }}
+                    <span class="kiwi-messagelist-nick-prefix">{{
+                        message.user ?
+                            userModePrefix(message.user) :
+                            ''
+                    }}</span>{{ message.nick }}
                 </div>
                 <div
                     v-if="showRealName"
@@ -101,6 +106,15 @@
                 :buffer="ml.buffer"
                 @close="ml.toggleMessageInfo()"
             />
+
+            <div v-if="message.embed.payload">
+                <media-viewer
+                    :url="message.embed.payload"
+                    :show-pin="true"
+                    @close="message.embed.payload = ''"
+                    @pin="ml.openEmbedInPreview(message)"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -117,6 +131,7 @@ import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
 import AwayStatusIndicator from './AwayStatusIndicator';
 import TypingStatusIndicator from './TypingStatusIndicator';
+import MediaViewer from './MediaViewer';
 
 export default {
     components: {
@@ -124,6 +139,7 @@ export default {
         MessageInfo,
         AwayStatusIndicator,
         TypingStatusIndicator,
+        MediaViewer,
     },
     props: ['ml', 'message', 'idx'],
     data: function data() {
@@ -178,7 +194,8 @@ export default {
                 prevMessage.nick === message.nick &&
                 message.time - prevMessage.time < 60000 &&
                 prevMessage.type !== 'traffic' &&
-                message.type !== 'traffic';
+                message.type !== 'traffic' &&
+                message.type === prevMessage.type;
         },
         isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
@@ -235,6 +252,11 @@ export default {
     position: absolute;
 }
 
+.kiwi-messagelist-message--modern .kiwi-avatar {
+    height: 40px;
+    width: 40px;
+}
+
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorfirst.kiwi-messagelist-message-topic {
     padding: 10px 20px;
 }
@@ -273,7 +295,7 @@ export default {
     display: none;
 }
 
-.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-avatar {
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat .kiwi-avatar {
     display: none;
 }
 
@@ -415,7 +437,7 @@ export default {
         display: none;
     }
 
-    .kiwi-messagelist-message--modern .kiwi-messagelist-avatar {
+    .kiwi-messagelist-message--modern .kiwi-avatar {
         display: none;
     }
 

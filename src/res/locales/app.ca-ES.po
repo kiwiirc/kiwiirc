@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2019-07-07 22:32\n"
+"PO-Revision-Date: 2019-09-23 04:30\n"
 
 #: Start
 msgid "start_button"
@@ -167,6 +167,10 @@ msgstr "Ignorar a un usuari"
 #: Channel
 msgid "connection_channel"
 msgstr "Canal"
+
+#: Away
+msgid "away"
+msgstr "Està absent"
 
 #: {{count}} week
 msgid "week"
@@ -744,6 +748,10 @@ msgstr "Buscar més sales"
 msgid "change_nick"
 msgstr "Canviar el nick"
 
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "Escriu el nou àlies..."
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "Nom de la compta: {{user}}"
@@ -799,6 +807,18 @@ msgstr "Kick + Ban del canal"
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Si us plau, especifica la sala a entrar. Per ex. /join #exemple"
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr "L'àlies {{nick}} està actualment en ús!"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr "Has d'escriure un nou àlies"
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr "L'àlies no pot començar amb un número"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -913,8 +933,8 @@ msgid "command_quit"
 msgstr "Desconnecta del servidor IRC"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Connecta a una nova xarxa IRC"
+msgid "command_server"
+msgstr "Connecta a una nova xarxa d'IRC"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1003,10 +1023,6 @@ msgstr "(Gràcies a Adam @Rizon per el desenvolupament del suport del servidor d
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Prova la versió en desenvolupament del Kiwi IRC!"
-
-#: Connected
-msgid "connected"
-msgstr "Connectat"
 
 #: Disconnected
 msgid "disconnected"

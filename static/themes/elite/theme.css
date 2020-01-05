@@ -4,10 +4,10 @@
     /* Primary Variables */
     --brand-primary: #ff9600;
     --brand-primary-hover: #ffbf00;
-    --brand-midtone: #f1f1f1;
+    --brand-midtone: #20292e;
     --brand-darktone: #969696;
-    --brand-default-bg: #fff;
-    --brand-default-fg: #22231f;
+    --brand-default-bg: #263139;
+    --brand-default-fg: #c3cdd4;
 
     /* Warning colors */
     --brand-notice: #f6c358;
@@ -129,14 +129,8 @@
     color: #fff;
 }
 
-.kiwi-messagelist-message-notice,
-.kiwi-messagelist-message-notice .kiwi-messagelist-nick {
-    color: deepskyblue;
-}
-
-.kiwi-messagelist-message--hover,
-.kiwi-messagelist-message.kiwi-messagelist-message--unread {
-    background: #505d65;
+.kiwi-messagelist-message-notice {
+    background: #28333b;
 }
 
 .kiwi-controlinput,

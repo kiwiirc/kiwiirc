@@ -1,3 +1,5 @@
+'kiwi public';
+
 // Do channels support half-op mode
 export function supportsHalfOp(network) {
     let ircdType = network.ircd.toLowerCase();
@@ -57,7 +59,7 @@ export function extbanAccount(network) {
     let prefix = extban.split(',')[0];
     let type = 'a';
 
-    // https://wiki.inspircd.org/2.0/Extbans
+    // https://docs.inspircd.org/3/modules/services_account/#extended-bans
     if (ircdType.indexOf('inspircd') > -1) {
         type = 'R';
     }

@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2019-07-06 15:32\n"
+"PO-Revision-Date: 2019-09-17 19:32\n"
 
 #: Start
 msgid "start_button"
@@ -166,6 +166,10 @@ msgstr ""
 
 #: Channel
 msgid "connection_channel"
+msgstr ""
+
+#: Away
+msgid "away"
 msgstr ""
 
 #: {{count}} week
@@ -744,6 +748,10 @@ msgstr ""
 msgid "change_nick"
 msgstr ""
 
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr ""
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr ""
@@ -798,6 +806,18 @@ msgstr ""
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
+msgstr ""
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr ""
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr ""
+
+#: Nickname must not start with a number
+msgid "error_no_number"
 msgstr ""
 
 #: {{nick}} gives ops to {{target}}
@@ -913,7 +933,7 @@ msgid "command_quit"
 msgstr ""
 
 #: Connect to a new IRC network
-msgid "command_connect"
+msgid "command_server"
 msgstr ""
 
 #: Request information on somebody
@@ -1003,10 +1023,6 @@ msgstr ""
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr ""
-
-#: Connected
-msgid "connected"
-msgstr "kapcsolódva"
 
 #: Disconnected
 msgid "disconnected"
