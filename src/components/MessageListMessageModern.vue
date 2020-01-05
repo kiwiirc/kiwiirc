@@ -195,8 +195,7 @@ export default {
                 message.time - prevMessage.time < 60000 &&
                 prevMessage.type !== 'traffic' &&
                 message.type !== 'traffic' &&
-                message.type !== 'notice' &&
-                prevMessage.type !== 'notice';
+                message.type === prevMessage.type;
         },
         isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
