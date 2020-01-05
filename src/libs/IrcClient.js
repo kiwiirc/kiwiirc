@@ -721,13 +721,18 @@ function clientMiddleware(state, network) {
                         realname: eventUser.real_name,
                         account: eventUser.account || undefined,
                     };
-                    state.addUser(networkid, userObj, users);
-
-                    let buffer = network.bufferByName(eventUser.channel);
-                    let user = state.getUser(networkid, eventUser.nick);
-                    if (!user || !user.buffers[buffer.id]) {
+                    let user = state.addUser(networkid, userObj, users);
+                    if (!user) {
+                        // Should never happen as this network should always exist
                         return;
                     }
+
+                    let buffer = network.bufferByName(eventUser.channel);
+                    if (!user.buffers[buffer.id]) {
+                        return;
+                    }
+
+                    // Add all the user channel modes
                     let modes = user.buffers[buffer.id].modes;
                     eventUser.channel_modes.forEach((mode) => {
                         if (modes.indexOf(mode) === -1) {
