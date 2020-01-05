@@ -133,7 +133,6 @@
 
 'kiwi public';
 
-import _ from 'lodash';
 import * as ipRegex from 'ip-regex';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
