@@ -1,6 +1,10 @@
 <template>
-    <div :class="{'kiwi-controlinput-selfuser--open': selfuser_open}"
-         class="kiwi-controlinput kiwi-theme-bg"
+    <div
+        :class="{
+            'kiwi-controlinput-selfuser--open': selfuser_open,
+            'kiwi-controlinput--focus': has_focus,
+        }"
+        class="kiwi-controlinput kiwi-theme-bg"
     >
         <div class="kiwi-controlinput-selfuser">
             <transition name="kiwi-selfuser-trans">
@@ -52,7 +56,10 @@
                         @input="inputUpdate"
                         @keydown="inputKeyDown($event)"
                         @keyup="inputKeyUp($event)"
-                        @click="closeInputTool"/>
+                        @click="closeInputTool"
+                        @focus="has_focus = true"
+                        @blur="has_focus = false"
+                    />
                 </div>
                 <button
                     v-if="shouldShowSendButton"
@@ -150,6 +157,7 @@ export default {
             pluginUiElements: GlobalApi.singleton().controlInputPlugins,
             showPlugins: true,
             current_input_value: '',
+            has_focus: false,
         };
     },
     computed: {
@@ -747,7 +755,7 @@ export default {
     height: 100%;
     box-sizing: border-box;
     overflow: visible;
-    padding-top: 8px;
+    padding: 7px 0 12px 0;
 }
 
 .kiwi-controlinput-tool {

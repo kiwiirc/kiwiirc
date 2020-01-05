@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-networksettings">
-        <form class="u-form">
+        <form class="u-form" @submit.prevent="connect">
             <div class="kiwi-title">{{ $t('settings_server_details') }}</div>
             <div class="kiwi-networksettings-section-block">
                 <div v-if="network.state_error" class="kiwi-networksettings-error">
@@ -118,19 +118,20 @@
                     </template>
                 </div>
 
-                <div
+                <button
                     v-if="network.state === 'disconnected'"
                     class="u-button kiwi-connect-to-newnetwork"
                     @click="connect()"
                 >
                     {{ $t('network_connect') }}
-                </div>
-                <div
+                </button>
+                <button
                     v-else-if="network.state === 'connecting'"
                     class="u-button kiwi-connect-to-newnetwork"
+                    disabled
                 >
                     {{ $t('connecting') }}
-                </div>
+                </button>
             </div>
 
             <div class="kiwi-dangerzone">

@@ -12,7 +12,7 @@
                     <i :class="'fa fa-caret-' + (showPrevTopics ? 'up' : 'down')" />
                 </a>
                 <ul v-if="showPrevTopics">
-                    <li v-for="(topic, idx) in buffer.topics" :key="idx">
+                    <li v-for="(topic, idx) in buffer.topics" v-if="topic.trim()" :key="idx">
                         <span>{{ topic }}</span>
                     </li>
                 </ul>
@@ -72,7 +72,7 @@ function generateComputedModeWithParam(mode) {
             if (newVal) {
                 this.setMode('+' + mode, newVal);
             } else {
-                this.setMode('-' + mode);
+                this.setMode('-' + mode, this.modeVal(mode));
             }
         },
     };
@@ -97,7 +97,14 @@ export default {
             },
             set: function computedTopicSet(newVal) {
                 let newTopic = newVal.replace('\n', ' ');
-                this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newTopic);
+                // TODO: Update irc-framework to insert a trailing : if the last argument is an
+                //       empty string. The trailing : makes a difference between things like
+                //       requesting a topic and changing to an empty topic
+                if (!newTopic.trim()) {
+                    this.buffer.getNetwork().ircClient.raw(`TOPIC ${this.buffer.name} :`);
+                } else {
+                    this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newTopic);
+                }
             },
         },
     },

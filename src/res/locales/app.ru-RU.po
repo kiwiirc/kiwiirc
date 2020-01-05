@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-08-02 12:44\n"
+"PO-Revision-Date: 2019-11-25 12:52\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +50,7 @@ msgstr "каналы"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "доступ"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +58,7 @@ msgstr "Заблокированные пользователи"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "приглашённый"
 
 #: Notifications
 msgid "notifications"
@@ -218,7 +218,7 @@ msgstr "Основные"
 
 #: Language
 msgid "settings_language"
-msgstr ""
+msgstr "Язык"
 
 #: Theme
 msgid "settings_theme"
@@ -242,7 +242,7 @@ msgstr "Шрифт monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Использовать Kiwi в качестве IRC-клиента по умолчанию"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -262,11 +262,11 @@ msgstr ""
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr ""
+msgstr "Использовать 24-х часовой пояс"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr ""
+msgstr "Показать смайлики"
 
 #: Block new Private messages
 msgid "settings_block_private"
@@ -282,11 +282,11 @@ msgstr ""
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr ""
+msgstr "Цветные имена в сообщениях"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr ""
+msgstr "Показывать когда я печатаю сообщение"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -294,7 +294,7 @@ msgstr ""
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr ""
+msgstr "Отключить звуковые уведомления"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
@@ -314,7 +314,7 @@ msgstr ""
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr ""
+msgstr "Введите ключ канала"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -326,15 +326,15 @@ msgstr ""
 
 #: All messages
 msgid "settings_notify_all"
-msgstr ""
+msgstr "Все сообщения"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr ""
+msgstr "При упоминании меня"
 
 #: Never
 msgid "settings_notify_never"
-msgstr ""
+msgstr "Никогда"
 
 #: Mute sounds
 msgid "settings_notify_mute"
@@ -342,7 +342,7 @@ msgstr ""
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr ""
+msgstr "Скрыть кол-во непрочитанных сообщений"
 
 #: Operator tools
 msgid "operator_tools"
@@ -358,87 +358,87 @@ msgstr ""
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr ""
+msgstr "Расширенные настройки"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr ""
+msgstr "Монстры здесь, нажмите эту кнопку, только если вы знаете, что делаете"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr ""
+msgstr "Включить расширенные настройки"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr ""
+msgstr "Опасная зона: Изменение некоторых из этих настроек может привести к поломке!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr ""
+msgstr "Сброс"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Фильтр"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr ""
+msgstr "Обновить бан-лист"
 
 #: Banned user
 msgid "bans_user"
-msgstr ""
+msgstr "Заблокированный пользователь"
 
 #: Banned by
 msgid "bans_by"
-msgstr ""
+msgstr "Заблокирован"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr ""
+msgstr "Обновление бан-листа..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr ""
+msgstr "Никто не заблокирован!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Обновить список приглашений"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Приглашённый пользователь"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Пригласил"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Обновление списка приглашенных..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Никто не приглашен!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Это публичный канал. "
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Только приглашённые пользователи могут подключиться. "
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Разрешить только приглашенным пользователям"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Разрешить подключаться всем"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Только зарегистрированные пользователи могут подключиться"
 
 #: Add invite
 msgid "invite_add_invite"
@@ -746,19 +746,19 @@ msgstr ""
 
 #: Change nick
 msgid "change_nick"
-msgstr ""
+msgstr "Изменить псевдоним"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Введите новый псевдоним..."
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr ""
+msgstr "Имя учетной записи: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr ""
+msgstr "Настоящее имя: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
@@ -774,11 +774,11 @@ msgstr ""
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr ""
+msgstr "Подключен к {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr ""
+msgstr "Надежное подключение через SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
@@ -786,23 +786,23 @@ msgstr ""
 
 #: Access level
 msgid "user_access"
-msgstr ""
+msgstr "Уровень доступа"
 
 #: Normal
 msgid "user_normal"
-msgstr ""
+msgstr "Обычный"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr ""
+msgstr "Выгнать с канала"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr ""
+msgstr "Заблокировать на канале"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr ""
+msgstr "Заблокировать и выгнать с канала"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -810,15 +810,15 @@ msgstr ""
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "Псевдоним {{nick}} уже используется!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Вы должны ввести новое имя"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "Имя не может начинаться с цифр"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -874,7 +874,7 @@ msgstr ""
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Отправить сообщение"
 
 #: Do something physical
 msgid "command_action"
@@ -882,47 +882,47 @@ msgstr ""
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Присоединиться к каналу"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Покинуть канал"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Покинуть, затем переподключиться к каналу"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Изменить псевдоним"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Начать приватный диалог с кем-то"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Пригласить кого-нибудь в канал"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Изменить название канала"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Отправить уведомление"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Отправить необработанную команду на IRC-сервер"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Выгнать кого-нибудь с канала"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Очистить все сообщения в этом окне"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
@@ -930,11 +930,11 @@ msgstr ""
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "Отключиться от IRC-сервера"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr ""
+msgid "command_server"
+msgstr "Подключиться к новой сети IRC"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1006,7 +1006,7 @@ msgstr ""
 
 #: Saved networks
 msgid "personal_saved"
-msgstr ""
+msgstr "Сохраненные сети"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
@@ -1024,21 +1024,17 @@ msgstr ""
 msgid "rizon_dev"
 msgstr ""
 
-#: Connected
-msgid "connected"
-msgstr "Подключено"
-
 #: Disconnected
 msgid "disconnected"
 msgstr ""
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr ""
+msgstr "Подключено к {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr ""
+msgstr "{{nick}} присоединился"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
@@ -1054,17 +1050,17 @@ msgstr ""
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr ""
+msgstr "{{nick}} приглашает Вас присоединиться к {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr ""
+msgstr "Псевдоним {{nick}} уже используется. Попробуйте {{newnick}}"
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr ""
+msgstr "{{nick}} теперь известен как {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr ""
+msgstr "{{nick}} изменил тему на: {{topic}}"
 

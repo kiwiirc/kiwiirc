@@ -13,8 +13,11 @@ export default function batchedAdd(singleFn, batchedFn) {
     function queueLoop() {
         numInLastSec = 0;
         if (queue.length) {
-            batchedFn(queue);
+            // emptying queue before calling batchedFn in case that function triggers
+            // code that needs to see that the queue has been processed.
+            let q = queue;
             queue = [];
+            batchedFn(q);
             numInLastSec = 0;
             setTimeout(queueLoop, loopInterval);
         } else {

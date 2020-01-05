@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2019-08-02 12:45\n"
+"PO-Revision-Date: 2019-09-18 17:28\n"
 
 #: Start
 msgid "start_button"
@@ -170,7 +170,7 @@ msgstr "Kanaal"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "Afwezig"
 
 #: {{count}} week
 msgid "week"
@@ -750,7 +750,7 @@ msgstr "Bijnaam wijzigen"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Voer nieuwe bijnaam in..."
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -810,15 +810,15 @@ msgstr "Geef een kanaal op om bij te wonen, bv. /join #voorbeeld"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "De bijnaam {{nick}} is al in gebruik!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Je moet een nieuwe bijnaam invoeren"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "Bijnaam mag niet met een cijfer beginnen"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -933,8 +933,8 @@ msgid "command_quit"
 msgstr "Verbinding met de IRC-server verbreken"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Verbinding met een nieuw IRC-netwerk maken"
+msgid "command_server"
+msgstr "Verbinden met een nieuw IRC-netwerk"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1023,10 +1023,6 @@ msgstr "(Dank aan Adam @Rizon voor de ontwikkeling van de websocket-serveronders
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Probeer de ontwikkelaarsversie van Kiwi IRC!"
-
-#: Connected
-msgid "connected"
-msgstr "Verbonden"
 
 #: Disconnected
 msgid "disconnected"

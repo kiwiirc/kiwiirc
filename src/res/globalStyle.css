@@ -47,6 +47,8 @@ select {
     text-align: center;
     outline: none;
     font-weight: 600;
+    font-size: 1em;
+    font-family: inherit;
 }
 
 .u-button-primary {
@@ -95,11 +97,11 @@ select {
     height: 20px;
     display: inline-block;
     position: relative;
-    border-radius: 1px;
+    border-radius: 5px;
     cursor: pointer;
     margin-left: 0;
     margin-right: 5px;
-    border: 2px solid;
+    border: 1px solid;
 }
 
 .u-form input[type="radio"] {
@@ -143,7 +145,6 @@ select {
 .u-checkbox-wrapper input[type="radio"] {
     position: absolute;
     margin: 0;
-    border: 2px solid;
     top: 2px;
     left: 0;
 }

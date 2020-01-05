@@ -1,16 +1,14 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: eu\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2019-08-02 12:45\n"
+"PO-Revision-Date: 2019-12-30 20:51\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +48,7 @@ msgstr "Kanalak"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Sarbidea"
 
 #: Banned Users
 msgid "banned"
@@ -933,7 +931,7 @@ msgid "command_quit"
 msgstr ""
 
 #: Connect to a new IRC network
-msgid "command_connect"
+msgid "command_server"
 msgstr ""
 
 #: Request information on somebody
@@ -1023,10 +1021,6 @@ msgstr "(@Rizon Adam-i esker websockets-zerbitzariaren euskarriaren garapenagati
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Bertsioa probatzen du Kiwi IRC-aren garapenean!"
-
-#: Connected
-msgid "connected"
-msgstr "Konektatuta"
 
 #: Disconnected
 msgid "disconnected"

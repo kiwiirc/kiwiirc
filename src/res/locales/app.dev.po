@@ -1017,7 +1017,7 @@ msgid "command_quit"
 msgstr "Disconnect from the IRC server"
 
 #: Connect to a new IRC network
-msgid "command_connect"
+msgid "command_server"
 msgstr "Connect to a new IRC network"
 
 #: Request information on somebody
@@ -1114,10 +1114,6 @@ msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Give the developer version of Kiwi IRC a try!"
-
-#: Connected
-msgid "connected"
-msgstr "Connected"
 
 #: Disconnected
 msgid "disconnected"

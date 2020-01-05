@@ -1,5 +1,6 @@
 'kiwi public';
 
+import Vue from 'vue';
 import parseMessage from '@/libs/MessageParser';
 import toHtml from '@/libs/renderers/Html';
 import GlobalApi from '@/libs/GlobalApi';
@@ -10,7 +11,11 @@ let nextId = 0;
 export default class Message {
     constructor(message, user) {
         this.id = extractMessageId(message) || nextId++;
+        // Two different times;
+        //   time = time in the users local time
+        //   server_time = time the server gave us
         this.time = message.time || Date.now();
+        this.server_time = message.server_time || this.time;
         this.nick = message.nick;
         this.message = message.message;
         this.tags = message.tags;
@@ -18,6 +23,8 @@ export default class Message {
         this.type_extra = message.type_extra;
         this.ignore = false;
         this.mentioned_urls = [];
+        // If embed.payload is truthy, it will be embedded within the message
+        this.embed = { type: 'url', payload: null };
         this.html = '';
         // template should be null or a Vue component to render this message
         this.template = message.template || null;
@@ -27,6 +34,8 @@ export default class Message {
 
         // We don't want the user object to be enumerable
         Object.defineProperty(this, 'user', { value: user });
+
+        Vue.observable(this);
     }
 
     render() {
@@ -53,9 +62,38 @@ export default class Message {
 
         this.mentioned_urls = blocks.filter(block => block.type === 'url').map(block => block.meta.url);
         this.html = content;
+        this.maybeAutoEmbed();
 
         state.$emit('message.poststyle', { message: this, blocks: blocks });
         return this.html;
+    }
+
+    maybeAutoEmbed() {
+        if (!this.mentioned_urls || this.mentioned_urls.length === 0) {
+            return;
+        }
+
+        // Only auto preview links on user messages. Traffic, topics, notices, etc would get
+        // annoying as they usually contain links of some sort
+        if (this.type !== 'privmsg') {
+            return;
+        }
+
+        let url = this.mentioned_urls[0];
+
+        let whitelistRegex = state.setting('buffers.inline_link_auto_preview_whitelist');
+        whitelistRegex = (whitelistRegex || '').trim();
+        try {
+            if (!whitelistRegex || !(new RegExp(whitelistRegex, 'i')).test(url)) {
+                return;
+            }
+        } catch (err) {
+            // A bad regex pattern will throw an error
+            return;
+        }
+
+        this.embed.payload = url;
+        this.embed.type = 'url';
     }
 }
 

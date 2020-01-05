@@ -8,9 +8,6 @@ import NetworkState from './state/NetworkState';
 import BufferState from './state/BufferState';
 import UserState from './state/UserState';
 import Message from './Message';
-import Logger from './Logger';
-
-const log = Logger.namespace('state.js');
 
 const stateObj = {
     // May be set by a StatePersistence instance
@@ -258,12 +255,8 @@ const state = new Vue({
             });
         },
 
-        getNetworkFromBncName(bncname) {
-            return _.find(this.networks, (net) => {
-                log.assert(!!net.connection.bncname, 'getNetworkFromBncName() comparing against falsey', net.name);
-                let isMatch = bncname.toLowerCase() === net.connection.bncname.toLowerCase();
-                return isMatch;
-            });
+        getNetworkFromBncNetId(bncnetid) {
+            return _.find(this.networks, net => bncnetid === net.connection.bncnetid);
         },
 
         addNetwork(name, nick, serverInfo) {
@@ -291,7 +284,7 @@ const state = new Vue({
             network.connection.direct = !!serverInfo.direct;
             network.connection.path = serverInfo.path || '';
             network.connection.encoding = serverInfo.encoding || 'utf8';
-            network.connection.bncname = serverInfo.bncname || '';
+            network.connection.bncnetid = serverInfo.bncnetid || '';
 
             if (serverInfo.services) {
                 network.services = serverInfo.services;
@@ -671,7 +664,7 @@ const state = new Vue({
                 this.$emit('notification.title', true);
             }
 
-            this.$emit('message.new', bufferMessage, buffer);
+            this.$emit('message.new', { message: bufferMessage, buffer });
         },
 
         getUser(networkid, nick, usersArr_) {

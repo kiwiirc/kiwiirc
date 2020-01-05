@@ -1,16 +1,14 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: sq\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2019-08-02 12:45\n"
+"PO-Revision-Date: 2019-12-23 12:12\n"
 
 #: Start
 msgid "start_button"
@@ -50,7 +48,7 @@ msgstr "Kanale"
 
 #: Access
 msgid "access"
-msgstr "hyrje"
+msgstr "Hyrje"
 
 #: Banned Users
 msgid "banned"
@@ -58,7 +56,7 @@ msgstr "Përdorues të Dëbuar"
 
 #: Invited Users
 msgid "invited"
-msgstr "ftoi"
+msgstr "Përdorues të Ftuar"
 
 #: Notifications
 msgid "notifications"
@@ -130,7 +128,7 @@ msgstr "Jo"
 
 #: Not found.
 msgid "not_found"
-msgstr "S’u gjet"
+msgstr "S’u gjet."
 
 #: Warning!
 msgid "warning"
@@ -170,7 +168,7 @@ msgstr "Kanal"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "I larguar"
 
 #: {{count}} week
 msgid "week"
@@ -234,7 +232,7 @@ msgstr "URL Teme"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Skemë Mesazhi"
+msgstr "Skemë Mesazhesh"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -274,7 +272,7 @@ msgstr "Blloko mesazhe të rinj privatë"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Shfleto"
+msgstr "Mesazhe në rrëshqitje së prapthi"
 
 #: Extra formatting
 msgid "settings_formatting"
@@ -286,7 +284,7 @@ msgstr "Ngjyrosi nofkat në mesazhe"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Nda me të tjerët kur shtyp një mesazh"
+msgstr "Ndaje me të tjerë, kur shtyp një mesazh"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -306,7 +304,7 @@ msgstr "Aliase"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Ç’janë Aliaset?"
+msgstr "Ç’janë aliaset?"
 
 #: Send Message
 msgid "send_message"
@@ -314,7 +312,7 @@ msgstr "Dërgo Mesazh"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Jepni kyç kanali:"
+msgstr "Jepni Kyç Kanali:"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -342,15 +340,15 @@ msgstr "Heshtoji tingujt"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Fshihe numrin e mesazheve të palexuar"
+msgstr "Fshihe numrin"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Mjete Operatori"
+msgstr "Mjete operatori"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr ""
+msgstr "Maskë parazgjedhje dëbimesh"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
@@ -378,7 +376,7 @@ msgstr "Riktheji te parazgjedhjet"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr ""
+msgstr "Filtër"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -402,51 +400,51 @@ msgstr "S’ka të dëbuar!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Rifresko listë ftimesh"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Përdorues i ftuar"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Ftuar nga"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Po rifreskohet listë ftimesh…"
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "S’është ftuar ndonjë!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Ky është një kanal publik."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Mund të marrin pjesë vetëm përdorues të ftuar."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Lejo vetëm përdorues të ftuar"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Lejo këdo të marrë pjesë"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Mund të marrin pjesë vetëm përdorues të regjistruar"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Shtoni ftesë"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Cilido përdorues i regjistruar)"
 
 #: Topic
 msgid "channel_topic"
@@ -482,7 +480,7 @@ msgstr "Mirë se vini te Kiwi IRC! Përzgjidhni majtas një kanal."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Shiko statusin e browserit"
+msgstr "Shihni gjendjen e shfletuesit"
 
 #: Hide Topic
 msgid "hide_topic"
@@ -566,7 +564,7 @@ msgstr "Websocket i drejtpërdrejtë"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Xhiro urdhra kur është lidhur"
+msgstr "Xhiro urdhra, kur të jetë lidhur"
 
 #: Danger Zone
 msgid "settings_danger"
@@ -586,7 +584,7 @@ msgstr "{{count}} vetë këtu"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtro përdorues në kanal"
+msgstr "filtro përdorues në kanal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -610,7 +608,7 @@ msgstr "Rregullime lidhjeje"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "S’i lidhëm dot me atë shërbyes :("
+msgstr "S’u lidhëm dot me atë shërbyes :("
 
 #: Connect To Network
 msgid "network_connect"
@@ -630,19 +628,19 @@ msgstr "Rregullimet tuaja"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Shfaqe kur vijnë persona"
+msgstr "Shfaqe, kur vijnë persona"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Shfaqe kur ndryshon tema e kanalit"
+msgstr "Shfaqe, kur ndryshon tema e kanalit"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Shfaqe kur përdoruesit ndryshojnë nofkat e tyre"
+msgstr "Shfaqe, kur përdoruesit ndryshojnë nofkat e tyre"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Shfaqe kur përdoruesit ndryshojnë mënyrë kanali"
+msgstr "Shfaqe, kur përdoruesit ndryshojnë mënyrë kanali"
 
 #: Extra message formatting
 msgid "side_formatting"
@@ -654,7 +652,7 @@ msgstr "Ngjyra nofkash në listë"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "Asnje Amortizim i vendosur"
+msgstr "S’është ujdisur shtytëz"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
@@ -670,7 +668,7 @@ msgstr "Krijuar më {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr ""
+msgstr "Në pah"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
@@ -722,7 +720,7 @@ msgstr "Rrjeti i Ri"
 
 #: No Network
 msgid "no_network"
-msgstr "S’ka Rrejt"
+msgstr "S’ka Rrjet"
 
 #: Configure network
 msgid "state_configure"
@@ -738,11 +736,11 @@ msgstr "Hyni në #kanal të ri"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filtroni Kanale"
+msgstr "Filtroni kanale"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Gjeni Më Tepër Kanale"
+msgstr "Gjeni më tepër kanale"
 
 #: Change nick
 msgid "change_nick"
@@ -750,7 +748,7 @@ msgstr "Ndryshoni nofkën"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Jepni nofkë të re…"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -762,7 +760,7 @@ msgstr "Emër i njëmendtë: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Është një robot"
+msgstr "Është robot"
 
 #: Is available for help
 msgid "user_help"
@@ -810,15 +808,15 @@ msgstr "Ju lutemi, specifikoni një kanal ku të hyhet. p.sh., /join #shembull"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "Nofka {{nick}} është e përdorur tashmë!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Duhet të jepni një nofkë të re"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "Nofka s’duhet të fillojë me një emër"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -933,8 +931,8 @@ msgid "command_quit"
 msgstr "Shkëputuni prej shërbyesit IRC"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Lidhuni te një rrjet IRC i ri"
+msgid "command_server"
+msgstr "Lidhuni me një rrjet IRC të ri"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -966,7 +964,7 @@ msgstr "Reshtni së shpërfilluri dikë"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Hidhni Zaret"
+msgstr "Hidhni Zarin"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
@@ -982,7 +980,7 @@ msgstr "Shtoni rrjetet tuaj. Hyni në kanalet tuaj."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "Do të jenë këtu kur të riktheheni. "
+msgstr "Do të jenë këtu, kur të riktheheni. "
 
 #: Add a Network
 msgid "personal_add"
@@ -1024,10 +1022,6 @@ msgstr "(Falënderime për Adam @Rizon, për përkrahjen në zhvillimin shërbye
 msgid "rizon_dev"
 msgstr "Provoni një herë versionin Kiwi IRC të zhvilluesve!"
 
-#: Connected
-msgid "connected"
-msgstr "I lidhur"
-
 #: Disconnected
 msgid "disconnected"
 msgstr "I shkëputur"
@@ -1058,7 +1052,7 @@ msgstr "{{nick}} ju ftoi të vini te {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Nofka {{nick}} është tashmë në përdorim. Po rpovohet {{newnick}}…"
+msgstr "Nofka {{nick}} është tashmë në përdorim. Po provohet {{newnick}}…"
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
