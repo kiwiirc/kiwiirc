@@ -196,10 +196,10 @@ export default {
 
 .kiwi-welcome-znc-form {
     width: 300px;
-    background-color: #fff;
+    background-color: var(--k-neutral5);
     border-radius: 0.5em;
     padding: 1em;
-    border: 1px solid #ececec;
+    border: 1px solid var(--k-neutral4);
 }
 
 .kiwi-welcome-znc .u-input-text,

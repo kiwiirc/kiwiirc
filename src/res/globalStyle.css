@@ -214,7 +214,7 @@ select {
 
 /* Globally style the close icon */
 .kiwi-close-icon {
-    color: #fff;
+    color: var(--k-neutral5);
     border-radius: 0 0 0 4px;
     position: absolute;
     right: 0;
@@ -229,13 +229,14 @@ select {
 }
 
 .kiwi-statebrowser-usermenu-avatar--connected {
-    border: 2px solid #42b992;
+    border: 2px solid var(--k-primary3);
 }
 
 .kiwi-statebrowser-usermenu-avatar--disconnected {
-    border: 2px solid #bf5155;
+    border: 2px solid var(--k-error3);
 }
 
+/* These colours should ideally be overridden by the theme to better suit the colour scheme */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
 .irc-fg-colour-blue { color: #00f; }

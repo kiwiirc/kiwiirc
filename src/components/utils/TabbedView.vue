@@ -107,7 +107,6 @@ export default Vue.component('tabbed-view', {
     cursor: pointer;
     border-width: 0;
     border-style: solid;
-    background: #fff;
     font-weight: 600;
     opacity: 1;
     z-index: 1;

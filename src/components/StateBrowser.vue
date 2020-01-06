@@ -471,7 +471,6 @@ export default {
 
     .kiwi-container-toggledraw-statebrowser-messagecount {
         width: 30px;
-        color: #000;
         font-weight: 600;
         max-height: 49.5px;
     }
