@@ -864,6 +864,6 @@ export default {
 .kiwi-typinguserslist {
     position: absolute;
     top: -24px;
-    background: var(--brand-default-bg);
+    background: var(--k-neutral5);
 }
 </style>

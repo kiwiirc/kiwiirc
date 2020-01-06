@@ -1,55 +1,65 @@
 @import '../common/base.css';
 
 :root {
-    /* Primary Variables */
-    --brand-primary: #42b992;
-    --brand-primary-hover: #5ec9a6;
-    --brand-midtone: #00000012;
-    --brand-darktone: #969696;
-    --brand-default-bg: #fff;
-    --brand-default-fg: #22231f;
-
-    /* Warning colors */
-    --brand-notice: #f6c358;
-    --brand-warning: #fcb46e;
-    --brand-error: #bf5155;
-
-    /* Input elements */
-    --brand-input-border: #e2e2e2;
-    --brand-input-fg: #616161;
-    --brand-input-bg: transparent;
-
-    /* Connection Indicator top */
-    --comp-workspace-before-bg: var(--brand-primary);
-    --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
-
-    /* Container Header */
-    --comp-header-bg: var(--brand-default-bg);
-    --comp-header-name-fg: var(--brand-default-fg);
-    --comp-header-option-active-fg: var(--brand-default-bg);
-    --comp-header-option-active-bg: var(--brand-primary);
-
-    /* StateBrowser */
-    --comp-statebrowser-fg: #fff;
-    --comp-statebrowser-bg: var(--brand-default-fg);
-    --comp-statebrowser-bg-networkname: #454545;
-    --comp-statebrowser-channel-active-bg: #ffffff0d;
-    --comp-statebrowser-channel-active-fg: #fff;
-    --comp-usermenu-open-bg: #0e0e0e;
-    --comp-statebrowser-network-border: #656565;
-
-
-    /* Sidebars ( Right Side ) */
-    --comp-sidebar-bg: #fff;
-    --comp-sidebar-fg: #22231f;
-    --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
-    --comp-aboutbuffer-header-bg: #42b992;
-
-    /* Misc */
-    --brand-link-normal: var(--brand-primary);
-    --brand-link--hover: var(--brand-primary-hover);
-    --brand-shadow: rgba(0, 0, 0, 0.1);
-    --comp-border: #b2b2b2;
+    --k-primary5: #5090BA;
+    --k-primary4: #2E78A8;
+    --k-primary3: #0B68A2;
+    --k-primary2: #074F7E;
+    --k-primary1: #043E63;
+    
+    --k-neutral5: #f8fafb;
+    --k-neutral4: #d9e4ec;
+    --k-neutral3: #9db1c7;
+    --k-neutral2: #5f748c;
+    --k-neutral1: #34383a;
+    
+    --k-accent5: #ACE4FB;
+    --k-accent4: #45C8FE;
+    --k-accent3: #00B3FC;
+    --k-accent2: #008BC3;
+    --k-accent1: #005375;
+    
+    --k-accentstrong5: #F5D494;
+    --k-accentstrong4: #E8B44E;
+    --k-accentstrong3: #E09F20;
+    --k-accentstrong2: #BC8721;
+    --k-accentstrong1: #8D6821;
+    
+    --k-success5: #A8DCCE;
+    --k-success4: #65d6ad;
+    --k-success3: #199473;
+    --k-success2: #188669;
+    --k-success1: #16755B;
+    
+    --k-info5: #A8DCCE;
+    --k-info4: #65d6ad;
+    --k-info3: #199473;
+    --k-info2: #188669;
+    --k-info1: #16755B;
+    
+    --k-warning5: #FFFDF3;
+    --k-warning4: #FCF7D7;
+    --k-warning3: #F3D460;
+    --k-warning2: #C9AE37;
+    --k-warning1: #5C4C0F;
+    
+    --k-error5: #FF8C65;
+    --k-error4: #F78D8D;
+    --k-error3: #FD4202;
+    --k-error2: #C53200;
+    --k-error1: #9B2800;
+    
+    --k-actiondanger5: #FF8C65;
+    --k-actiondanger4: #F78D8D;
+    --k-actiondanger3: #FD4202;
+    --k-actiondanger2: #C53200;
+    --k-actiondanger1: #9B2800;
+    
+    --k-actiongo5: #A8DCCE;
+    --k-actiongo4: #65d6ad;
+    --k-actiongo3: #199473;
+    --k-actiongo2: #188669;
+    --k-actiongo1: #16755B;
 }
 
 /* IRC Text Colours */
