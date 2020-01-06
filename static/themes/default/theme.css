@@ -1,65 +1,56 @@
 @import '../common/base.css';
 
 :root {
-    --k-primary5: #5090BA;
-    --k-primary4: #2E78A8;
-    --k-primary3: #0B68A2;
-    --k-primary2: #074F7E;
-    --k-primary1: #043E63;
-    
-    --k-neutral5: #f8fafb;
-    --k-neutral4: #d9e4ec;
-    --k-neutral3: #9db1c7;
-    --k-neutral2: #5f748c;
-    --k-neutral1: #34383a;
-    
-    --k-accent5: #ACE4FB;
-    --k-accent4: #45C8FE;
-    --k-accent3: #00B3FC;
-    --k-accent2: #008BC3;
+    --k-primary1: #42b992;
+    --k-primary2: #42b992;
+    --k-primary3: #42b992;
+    --k-primary4: #42b992;
+    --k-primary5: #42b992;
+    --k-neutral1: #1f2321;
+    --k-neutral2: #616563;
+    --k-neutral3: #969696;
+    --k-neutral4: #e6e6e6;
+    --k-neutral5: #f9fbfa;
     --k-accent1: #005375;
-    
-    --k-accentstrong5: #F5D494;
-    --k-accentstrong4: #E8B44E;
-    --k-accentstrong3: #E09F20;
-    --k-accentstrong2: #BC8721;
+    --k-accent2: #008BC3;
+    --k-accent3: #00B3FC;
+    --k-accent4: #45C8FE;
+    --k-accent5: #ACE4FB;
     --k-accentstrong1: #8D6821;
-    
-    --k-success5: #A8DCCE;
-    --k-success4: #65d6ad;
-    --k-success3: #199473;
-    --k-success2: #188669;
+    --k-accentstrong2: #BC8721;
+    --k-accentstrong3: #E09F20;
+    --k-accentstrong4: #E8B44E;
+    --k-accentstrong5: #F5D494;
     --k-success1: #16755B;
-    
-    --k-info5: #A8DCCE;
-    --k-info4: #65d6ad;
-    --k-info3: #199473;
-    --k-info2: #188669;
-    --k-info1: #16755B;
-    
-    --k-warning5: #FFFDF3;
-    --k-warning4: #FCF7D7;
-    --k-warning3: #F3D460;
-    --k-warning2: #C9AE37;
+    --k-success2: #188669;
+    --k-success3: #199473;
+    --k-success4: #65d6ad;
+    --k-success5: #A8DCCE;
+    --k-info1: #7e6f2a;
+    --k-info2: #998633;
+    --k-info3: #c3ad4a;
+    --k-info4: #e9d786;
+    --k-info5: #f2e8ba;
     --k-warning1: #5C4C0F;
-    
-    --k-error5: #FF8C65;
-    --k-error4: #F78D8D;
-    --k-error3: #FD4202;
-    --k-error2: #C53200;
-    --k-error1: #9B2800;
-    
-    --k-actiondanger5: #FF8C65;
-    --k-actiondanger4: #F78D8D;
-    --k-actiondanger3: #FD4202;
-    --k-actiondanger2: #C53200;
+    --k-warning2: #C9AE37;
+    --k-warning3: #F3D460;
+    --k-warning4: #FCF7D7;
+    --k-warning5: #FFFDF3;
+    --k-error1: #6b2124;
+    --k-error2: #96373b;
+    --k-error3: #bf5155;
+    --k-error4: #cc8c8e;
+    --k-error5: #e4c0c1;
     --k-actiondanger1: #9B2800;
-    
-    --k-actiongo5: #A8DCCE;
-    --k-actiongo4: #65d6ad;
-    --k-actiongo3: #199473;
-    --k-actiongo2: #188669;
+    --k-actiondanger2: #C53200;
+    --k-actiondanger3: #FD4202;
+    --k-actiondanger4: #F78D8D;
+    --k-actiondanger5: #FF8C65;
     --k-actiongo1: #16755B;
+    --k-actiongo2: #188669;
+    --k-actiongo3: #199473;
+    --k-actiongo4: #65d6ad;
+    --k-actiongo5: #A8DCCE;
 }
 
 /* IRC Text Colours */

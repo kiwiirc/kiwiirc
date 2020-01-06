@@ -62,21 +62,28 @@
 .u-form .u-input,
 .u-form textarea {
     outline: none;
-    border-color: var(--k-neutral2);
     color: var(--k-neutral1);
     background: var(--k-neutral5);
     transition: border-color 0.1s;
 }
 
-.u-form .u-input:focus,
-.u-form textarea:focus {
-    border-color: var(--k-primary3);
-}
-
+.u-form .u-input,
 .u-form label input[type='text'],
 .u-form label input[type='password'],
 .u-form label input[type='email'],
+.u-form label input[type='checkbox'],
+.u-form label input[type='radio'],
 .u-form textarea {
+    border-color: var(--k-neutral3);
+}
+
+.u-form .u-input:focus,
+.u-form label input[type='text']:focus,
+.u-form label input[type='password']:focus,
+.u-form label input[type='email']:focus,
+.u-form label input[type='checkbox']:focus,
+.u-form label input[type='radio']:focus,
+.u-form textarea:focus {
     border-color: var(--k-primary3);
 }
 
