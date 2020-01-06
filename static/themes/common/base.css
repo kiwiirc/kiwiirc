@@ -821,7 +821,7 @@
 }
 
 .kiwi-messagelist-message--highlight {
-    background-color: var(--k-info5);
+    background-color: var(--k-neutral4);
 }
 
 /* Notice Message styling */
