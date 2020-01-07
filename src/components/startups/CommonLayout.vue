@@ -162,7 +162,7 @@ export default {
 .kiwi-startup-common-section-info {
     background-size: cover;
     background-position: bottom;
-    border-left: 5px solid var(--k-primary3);
+    border-left: 5px solid var(--k-primary4);
 }
 
 .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
@@ -185,7 +185,7 @@ export default {
     }
 
     .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
-        border-top: 5px solid var(--k-primary3);
+        border-top: 5px solid var(--k-primary4);
     }
 }
 

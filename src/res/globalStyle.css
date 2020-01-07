@@ -214,7 +214,7 @@ select {
 
 /* Globally style the close icon */
 .kiwi-close-icon {
-    color: var(--k-neutral5);
+    color: var(--k-neutral7);
     border-radius: 0 0 0 4px;
     position: absolute;
     right: 0;
@@ -229,11 +229,11 @@ select {
 }
 
 .kiwi-statebrowser-usermenu-avatar--connected {
-    border: 2px solid var(--k-primary3);
+    border: 2px solid var(--k-primary4);
 }
 
 .kiwi-statebrowser-usermenu-avatar--disconnected {
-    border: 2px solid var(--k-error3);
+    border: 2px solid var(--k-error4);
 }
 
 /* These colours should ideally be overridden by the theme to better suit the colour scheme */

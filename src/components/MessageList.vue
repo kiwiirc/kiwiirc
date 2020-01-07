@@ -625,7 +625,7 @@ export default {
 }
 
 div.kiwi-messagelist-item.kiwi-messagelist-item--selected {
-    border-left: 7px solid var(--k-primary3);
+    border-left: 7px solid var(--k-primary4);
 }
 
 div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-message {

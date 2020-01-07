@@ -6,51 +6,80 @@
     --k-primary3: #42b992;
     --k-primary4: #42b992;
     --k-primary5: #42b992;
+    --k-primary6: #42b992;
+    --k-primary7: #42b992;
+
     --k-neutral1: #1f2321;
-    --k-neutral2: #616563;
-    --k-neutral3: #969696;
-    --k-neutral4: #e6e6e6;
-    --k-neutral5: #f9fbfa;
+    --k-neutral2: #272d2a;
+    --k-neutral3: #555857;
+    --k-neutral4: #969696;
+    --k-neutral5: #c3c3c3;
+    --k-neutral6: #e4e4e4;
+    --k-neutral7: #f3f5f4;
+
     --k-accent1: #005375;
-    --k-accent2: #008BC3;
-    --k-accent3: #00B3FC;
-    --k-accent4: #45C8FE;
-    --k-accent5: #ACE4FB;
+    --k-accent2: #005375;
+    --k-accent3: #008BC3;
+    --k-accent4: #00B3FC;
+    --k-accent5: #45C8FE;
+    --k-accent6: #ACE4FB;
+    --k-accent7: #ACE4FB;
+
     --k-accentstrong1: #8D6821;
-    --k-accentstrong2: #BC8721;
-    --k-accentstrong3: #E09F20;
-    --k-accentstrong4: #E8B44E;
-    --k-accentstrong5: #F5D494;
+    --k-accentstrong2: #8D6821;
+    --k-accentstrong3: #BC8721;
+    --k-accentstrong4: #E09F20;
+    --k-accentstrong5: #E8B44E;
+    --k-accentstrong6: #F5D494;
+    --k-accentstrong7: #F5D494;
+
     --k-success1: #16755B;
-    --k-success2: #188669;
-    --k-success3: #199473;
-    --k-success4: #65d6ad;
-    --k-success5: #A8DCCE;
+    --k-success2: #16755B;
+    --k-success3: #188669;
+    --k-success4: #199473;
+    --k-success5: #65d6ad;
+    --k-success6: #A8DCCE;
+    --k-success7: #A8DCCE;
+
     --k-info1: #7e6f2a;
-    --k-info2: #998633;
-    --k-info3: #c3ad4a;
-    --k-info4: #e9d786;
-    --k-info5: #f2e8ba;
+    --k-info2: #7e6f2a;
+    --k-info3: #998633;
+    --k-info4: #c3ad4a;
+    --k-info5: #e9d786;
+    --k-info6: #f2e8ba;
+    --k-info7: #f2e8ba;
+
     --k-warning1: #5C4C0F;
-    --k-warning2: #C9AE37;
-    --k-warning3: #F3D460;
-    --k-warning4: #FCF7D7;
-    --k-warning5: #FFFDF3;
+    --k-warning2: #5C4C0F;
+    --k-warning3: #C9AE37;
+    --k-warning4: #F3D460;
+    --k-warning5: #FCF7D7;
+    --k-warning6: #FFFDF3;
+    --k-warning7: #FFFDF3;
+
     --k-error1: #6b2124;
-    --k-error2: #96373b;
-    --k-error3: #bf5155;
-    --k-error4: #cc8c8e;
-    --k-error5: #e4c0c1;
+    --k-error2: #6b2124;
+    --k-error3: #96373b;
+    --k-error4: #bf5155;
+    --k-error5: #cc8c8e;
+    --k-error6: #e4c0c1;
+    --k-error7: #e4c0c1;
+
     --k-actiondanger1: #9B2800;
-    --k-actiondanger2: #C53200;
-    --k-actiondanger3: #FD4202;
-    --k-actiondanger4: #F78D8D;
-    --k-actiondanger5: #FF8C65;
+    --k-actiondanger2: #9B2800;
+    --k-actiondanger3: #C53200;
+    --k-actiondanger4: #FD4202;
+    --k-actiondanger5: #F78D8D;
+    --k-actiondanger6: #FF8C65;
+    --k-actiondanger7: #FF8C65;
+
     --k-actiongo1: #16755B;
-    --k-actiongo2: #188669;
-    --k-actiongo3: #199473;
-    --k-actiongo4: #65d6ad;
-    --k-actiongo5: #A8DCCE;
+    --k-actiongo2: #16755B;
+    --k-actiongo3: #188669;
+    --k-actiongo4: #199473;
+    --k-actiongo5: #65d6ad;
+    --k-actiongo6: #A8DCCE;
+    --k-actiongo7: #A8DCCE;
 }
 
 /* IRC Text Colours */
