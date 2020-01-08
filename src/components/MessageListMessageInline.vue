@@ -152,7 +152,7 @@ export default {
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-nick {
-    display: inline;
+    display: inline-flex;
     text-align: left;
     margin-right: 2px;
     padding: 0;
@@ -175,7 +175,7 @@ export default {
 
 .kiwi-messagelist-message--text .kiwi-messagelist-message-privmsg:hover,
 .kiwi-messagelist-message--text .kiwi-messagelist-message-action:hover,
-.kiwi-messagelist-message--text .kiwi-messagelist-message-notice:hover, {
+.kiwi-messagelist-message--text .kiwi-messagelist-message-notice:hover {
     cursor: pointer;
 }
 

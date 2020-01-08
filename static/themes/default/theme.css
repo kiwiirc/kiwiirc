@@ -8,7 +8,6 @@
     --k-primary5: #42b992;
     --k-primary6: #42b992;
     --k-primary7: #42b992;
-
     --k-neutral1: #1f2321;
     --k-neutral2: #272d2a;
     --k-neutral3: #555857;
@@ -16,55 +15,49 @@
     --k-neutral5: #c3c3c3;
     --k-neutral6: #e4e4e4;
     --k-neutral7: #f3f5f4;
-
     --k-accent1: #005375;
-    --k-accent2: #005375;
+    --k-accent2: #026790;
     --k-accent3: #008BC3;
     --k-accent4: #00B3FC;
     --k-accent5: #45C8FE;
-    --k-accent6: #ACE4FB;
+    --k-accent6: #83d8fb;
     --k-accent7: #ACE4FB;
-
     --k-accentstrong1: #8D6821;
-    --k-accentstrong2: #8D6821;
+    --k-accentstrong2: #9e7627;
     --k-accentstrong3: #BC8721;
     --k-accentstrong4: #E09F20;
     --k-accentstrong5: #E8B44E;
-    --k-accentstrong6: #F5D494;
+    --k-accentstrong6: #e8c279;
     --k-accentstrong7: #F5D494;
-
     --k-success1: #16755B;
-    --k-success2: #16755B;
+    --k-success2: #188063;
     --k-success3: #188669;
-    --k-success4: #199473;
-    --k-success5: #65d6ad;
-    --k-success6: #A8DCCE;
-    --k-success7: #A8DCCE;
+    --k-success4: #299c7d;
+    --k-success5: #60bd9b;
+    --k-success6: #7ddcc3;
+    --k-success7: #b3f1e0;
 
     --k-info1: #7e6f2a;
-    --k-info2: #7e6f2a;
+    --k-info2: #86762e;
     --k-info3: #998633;
     --k-info4: #c3ad4a;
-    --k-info5: #e9d786;
-    --k-info6: #f2e8ba;
-    --k-info7: #f2e8ba;
-
+    --k-info5: #dccc83;
+    --k-info6: #eadfa9;
+    --k-info7: #f7efcc;
     --k-warning1: #5C4C0F;
-    --k-warning2: #5C4C0F;
+    --k-warning2: #8c7926;
     --k-warning3: #C9AE37;
     --k-warning4: #F3D460;
-    --k-warning5: #FCF7D7;
-    --k-warning6: #FFFDF3;
+    --k-warning5: #fbe591;
+    --k-warning6: #f9f4d4;
     --k-warning7: #FFFDF3;
-
     --k-error1: #6b2124;
-    --k-error2: #6b2124;
+    --k-error2: #792b2e;
     --k-error3: #96373b;
     --k-error4: #bf5155;
-    --k-error5: #cc8c8e;
-    --k-error6: #e4c0c1;
+    --k-error5: #e0797d;
+    --k-error6: #d8a6a7;
     --k-error7: #e4c0c1;
-
     --k-actiondanger1: #9B2800;
     --k-actiondanger2: #9B2800;
     --k-actiondanger3: #C53200;
@@ -72,7 +65,6 @@
     --k-actiondanger5: #F78D8D;
     --k-actiondanger6: #FF8C65;
     --k-actiondanger7: #FF8C65;
-
     --k-actiongo1: #16755B;
     --k-actiongo2: #16755B;
     --k-actiongo3: #188669;
