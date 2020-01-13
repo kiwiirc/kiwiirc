@@ -157,7 +157,6 @@ function clientMiddleware(state, network) {
                 });
             });
         });
-
     };
 
     function rawEventsHandler(command, event, rawLine, client, next) {

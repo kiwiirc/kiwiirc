@@ -12,8 +12,8 @@
                 />
                 <template v-if="isChannel()">
                     <span
-                        class="kiwi-notconnected-button"
                         :disabled="!readyToStart"
+                        class="kiwi-notconnected-button"
                         @click="reconnect"
                     >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
@@ -22,8 +22,8 @@
                 </template>
                 <template v-else-if="isServer()">
                     <span
-                        class="kiwi-notconnected-button"
                         :disabled="!readyToStart"
+                        class="kiwi-notconnected-button"
                         @click="reconnect"
                     >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
@@ -32,8 +32,8 @@
                 </template>
                 <template v-else-if="isQuery()">
                     <span
-                        class="kiwi-notconnected-button"
                         :disabled="!readyToStart"
+                        class="kiwi-notconnected-button"
                         @click="reconnect"
                     >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
