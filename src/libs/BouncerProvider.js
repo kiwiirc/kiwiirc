@@ -158,6 +158,7 @@ export default class BouncerProvider {
 
             if (bncNetwork.state === 'connected' && newBuffer.isChannel() && newBuffer.joined) {
                 client.raw('NAMES ' + newBuffer.name);
+                client.who(newBuffer.name);
             }
         });
 
