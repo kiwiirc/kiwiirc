@@ -129,14 +129,30 @@ tokens['`'] = {
             return null;
         }
 
-        // No styling should appear in this codeblock. Add all the content we can
-        // before jumping the position forward in the input
+        // Backticks may be part of a word or NICK so only consider it a codeblock if
+        // it's at the start of a scentence or comes after a space
+        if (pos > 0 && inp[pos - 1] !== ' ') {
+            return -1;
+        }
+
+        // Find the closing backtick
         let str = inp.substr(pos + 1);
         let endPos = str.indexOf(this.token);
+
+        // If we don't have a closing backtick further on, don't take this as an opening backtick
         if (endPos === -1) {
             return -1;
         }
 
+        // Only consider the found closing backtick as closing if it comes before a space or is at
+        // the end of the text. If it's in the middle of text then it's highly lickely part of that
+        // text and not actually closing. eg. `hello and wel`come
+        if (str[endPos + 1] && str[endPos + 1] !== ' ') {
+            return -1;
+        }
+
+        // No styling should appear in this codeblock. Add all the content we can
+        // before jumping the position forward in the input
         openToks[this.token] = true;
         block.styles.quote = true;
         block.content += this.token + str.substr(0, endPos);

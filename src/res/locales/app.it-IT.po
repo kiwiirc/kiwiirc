@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2019-08-02 14:15\n"
+"PO-Revision-Date: 2019-09-24 14:14\n"
 
 #: Start
 msgid "start_button"
@@ -174,43 +174,43 @@ msgstr "Assente"
 
 #: {{count}} week
 msgid "week"
-msgstr "settimana"
+msgstr "{{count}} settimana"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "settimane"
+msgstr "{{count}} settimane"
 
 #: {{count}} day
 msgid "day"
-msgstr "giorno"
+msgstr "{{count}} giorno"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "giorni"
+msgstr "{{count}} giorni"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "ora"
+msgstr "{{count}} ora"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "ore"
+msgstr "{{count}} ore"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuto"
+msgstr "{{count}} minuto"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minuti"
+msgstr "{{count}} minuti"
 
 #: {{count}} second
 msgid "second"
-msgstr "secondo"
+msgstr "{{count}} secondo"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "secondi"
+msgstr "{{count}} secondi"
 
 #: General
 msgid "settings_general"
@@ -826,7 +826,7 @@ msgstr "{{nick}} da lo stato di ops a {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} riceve lo stato di ops da {{target}}"
+msgstr "{{nick}} rimuove lo stato di ops a {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
@@ -834,7 +834,7 @@ msgstr "{{nick}} da lo stato di half-ops a {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} riceve lo stato di half-ops da {{target}}"
+msgstr "{{nick}} rimuove lo stato di half-ops a {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
@@ -842,7 +842,7 @@ msgstr "{{nick}} da lo stato di voice a {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} riceve lo stato di voice da {{target}}"
+msgstr "{{nick}} rimuove lo stato di voice a {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -850,7 +850,7 @@ msgstr "{{nick}} da lo stato di admin a {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} riceve lo stato di admin da {{target}}"
+msgstr "{{nick}} rimuove lo stato di admin a {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
@@ -858,7 +858,7 @@ msgstr "{{nick}} da lo stato di proprietario a {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} riceve lo stato di proprietario da {{target}}"
+msgstr "{{nick}} rimuove lo stato di proprietario a {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -933,8 +933,8 @@ msgid "command_quit"
 msgstr "Disconnettiti dal server IRC"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Connettiti a un nuovo network IRC"
+msgid "command_server"
+msgstr "Connessione a una nuova rete IRC"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1023,10 +1023,6 @@ msgstr "(Grazie ad Adam di Rizon per il supporto nello sviluppo del server WebSo
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Prova la versione di sviluppo di Kiwi IRC!"
-
-#: Connected
-msgid "connected"
-msgstr "Connesso"
 
 #: Disconnected
 msgid "disconnected"

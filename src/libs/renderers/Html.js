@@ -3,9 +3,11 @@ import state from '@/libs/state';
 
 export default render;
 
-function render(blocks) {
+function render(blocks, renderEmoticons) {
     const emojiLocation = state.setting('emojiLocation');
-    const showEmoticons = state.setting('buffers.show_emoticons');
+    const showEmoticons = typeof renderEmoticons === 'undefined' ?
+        state.setting('buffers.show_emoticons') :
+        !!renderEmoticons;
 
     const retHtml = blocks.reduce((html, block, i) => {
         // a
@@ -35,7 +37,7 @@ function render(blocks) {
         case 'url':
             content = linkifyUrl(block, {
                 addHandle: true,
-                handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
+                handleClass: 'fa fa-share-square u-link kiwi-messagelist-message-linkhandle',
             });
             break;
         case 'user':
@@ -69,7 +71,8 @@ function linkifyUrl(block, _opts) {
     }
 
     // Make the link clickable
-    let out = `<a target="_blank" href="${block.meta.url.replace(/"/g, '%22')}">${nice}</a>`;
+    let href = block.meta.url.replace(/"/g, '%22');
+    let out = `<a target="_blank" href="${href}" rel="noopener noreferrer">${nice}</a>`;
 
     if (opts.addHandle) {
         let cssClass = opts.handleClass || '';

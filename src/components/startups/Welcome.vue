@@ -3,11 +3,15 @@
                     :class="{ 'kiwi-welcome-simple--recaptcha': recaptchaSiteId }"
                     class="kiwi-welcome-simple"
     >
-        <template v-slot:connection v-if="!network || network.state === 'disconnected'">
+        <template v-slot:connection v-if="startupOptions.altComponent">
+            <component :is="startupOptions.altComponent" @close="onAltClose" />
+        </template>
+        <template v-slot:connection v-else-if="!network || network.state === 'disconnected'">
             <form class="u-form u-form--big kiwi-welcome-simple-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText"/>
+                <div v-if="errorMessage" class="kiwi-welcome-simple-error">{{ errorMessage }}</div>
                 <div
-                    v-if="network && (network.last_error || network.state_error)"
+                    v-else-if="network && (network.last_error || network.state_error)"
                     class="kiwi-welcome-simple-error"
                 >
                     We couldn't connect to the server :(
@@ -58,6 +62,8 @@
                     type="submit"
                     v-html="buttonText"
                 />
+
+                <div v-html="footerText"/>
             </form>
         </template>
         <template v-slot:connection v-else>
@@ -84,6 +90,7 @@ export default {
     },
     data: function data() {
         return {
+            errorMessage: '',
             network: null,
             channel: '',
             nick: '',
@@ -100,11 +107,20 @@ export default {
         };
     },
     computed: {
+        startupOptions() {
+            return this.$state.settings.startupOptions;
+        },
         greetingText: function greetingText() {
             let greeting = state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
                 this.$t('start_greeting');
+        },
+        footerText: function footerText() {
+            let footer = state.settings.startupOptions.footerText;
+            return typeof footer === 'string' ?
+                footer :
+                '';
         },
         buttonText: function buttonText() {
             let greeting = state.settings.startupOptions.buttonText;
@@ -130,7 +146,7 @@ export default {
                 // Nicks cannot start with [0-9- ]
                 // ? is not a valid nick character but we allow it as it gets replaced
                 // with a number.
-                nickPattern = /^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i;
+                nickPattern = /^[a-zא-ת_\\[\]{}^`|][a-z0-9א-ת_\-\\[\]{}^`|]*$/i;
             } else {
                 // Support custom pattern matches. Eg. only '@example.com' may be allowed
                 // on some IRCDs
@@ -163,7 +179,7 @@ export default {
         },
     },
     created: function created() {
-        let options = state.settings.startupOptions;
+        let options = this.startupOptions;
 
         // Take some settings from a previous network if available
         let previousNet = null;
@@ -221,6 +237,22 @@ export default {
         }
     },
     methods: {
+        onAltClose(event) {
+            if (event.channel) {
+                this.channel = event.channel;
+            }
+            if (event.nick) {
+                this.nick = event.nick;
+            }
+            if (event.password) {
+                this.password = event.password;
+            }
+            if (event.error) {
+                this.errorMessage = event.error;
+            }
+
+            this.$state.settings.startupOptions.altComponent = null;
+        },
         captchaSuccess() {
             if (!this.recaptchaSiteId) {
                 return true;
@@ -251,6 +283,8 @@ export default {
             }
         },
         startUp: function startUp() {
+            this.errorMessage = '';
+
             let options = Object.assign({}, state.settings.startupOptions);
 
             // If a server isn't specified in the config, set some defaults
@@ -318,7 +352,7 @@ export default {
             });
 
             // switch to server buffer if no channels are joined
-            if (!hasSwitchedActiveBuffer) {
+            if (!options.bouncer && !hasSwitchedActiveBuffer) {
                 state.setActiveBuffer(net.id, net.serverBuffer().name);
             }
 

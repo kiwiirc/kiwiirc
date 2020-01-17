@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-08-02 14:40\n"
+"PO-Revision-Date: 2019-09-17 19:40\n"
 
 #: Start
 msgid "start_button"
@@ -933,7 +933,7 @@ msgid "command_quit"
 msgstr "IRC sunucusuyla olan bağlantıyı kes"
 
 #: Connect to a new IRC network
-msgid "command_connect"
+msgid "command_server"
 msgstr "Yeni bir IRC ağına bağlanın"
 
 #: Request information on somebody
@@ -1023,10 +1023,6 @@ msgstr "(Websocket sunucu desteği geliştirmesi için, Adam @Rizon'a teşekkür
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Kiwi IRC'nin geliştirici sürümünü deneyin!"
-
-#: Connected
-msgid "connected"
-msgstr "Bağlandı"
 
 #: Disconnected
 msgid "disconnected"

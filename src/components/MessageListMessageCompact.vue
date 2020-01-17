@@ -30,6 +30,9 @@
             ml.message_info_open && ml.message_info_open !== message ?
                 'kiwi-messagelist-message--blur' :
                 '',
+            (message.user && userMode(message.user)) ?
+                'kiwi-messagelist-message--user-mode-'+userMode(message.user) :
+                ''
         ]"
         :data-message-id="message.id"
         :data-nick="(message.nick||'').toLowerCase()"
@@ -78,6 +81,15 @@
             :buffer="ml.buffer"
             @close="ml.toggleMessageInfo()"
         />
+
+        <div v-if="message.embed.payload">
+            <media-viewer
+                :url="message.embed.payload"
+                :show-pin="true"
+                @close="message.embed.payload = ''"
+                @pin="ml.openEmbedInPreview(message)"
+            />
+        </div>
     </div>
 </template>
 
@@ -88,6 +100,7 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
+import MediaViewer from './MediaViewer';
 import AwayStatusIndicator from './AwayStatusIndicator';
 import MessageInfo from './MessageInfo';
 
@@ -95,6 +108,7 @@ export default {
     components: {
         AwayStatusIndicator,
         MessageInfo,
+        MediaViewer,
     },
     props: ['ml', 'message', 'idx'],
     data: function data() {

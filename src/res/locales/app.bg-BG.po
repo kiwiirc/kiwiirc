@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2019-08-03 13:51\n"
+"PO-Revision-Date: 2019-09-24 16:31\n"
 
 #: Start
 msgid "start_button"
@@ -933,8 +933,8 @@ msgid "command_quit"
 msgstr "Прекъснете връзката с IRC сървъра"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Свържете се с нова IRC мрежа"
+msgid "command_server"
+msgstr "Свържете се с нова IRC мрежа "
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1023,10 +1023,6 @@ msgstr " (Благодарности на Adam @Rizon за помощта отн
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Give the developer version of Kiwi IRC a try!"
-
-#: Connected
-msgid "connected"
-msgstr "Свързан"
 
 #: Disconnected
 msgid "disconnected"

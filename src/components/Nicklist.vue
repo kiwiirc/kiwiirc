@@ -1,7 +1,6 @@
 <template>
     <div :class="{'kiwi-nicklist--filtering': filter_visible }" class="kiwi-nicklist" dir="rtl">
         <div class="kiwi-nicklist-usercount" dir="rtl" @click="toggleUserFilter">
-
             <span>
                 {{
                     filter_visible ?
@@ -21,7 +20,7 @@
 
         <DynamicScroller
             :items="sortedUsers"
-            :min-item-size="26"
+            :min-item-size="34"
             :key-field="'nick'"
             class="kiwi-nicklist-users"
         >
@@ -157,8 +156,8 @@ export default {
                 }
 
                 // Both users have a prefix so find the highest ranking one
-                let aP = prefixOrders[modesA[0]];
-                let bP = prefixOrders[modesB[0]];
+                let aP = prefixOrders[this.buffer.userMode(a)];
+                let bP = prefixOrders[this.buffer.userMode(b)];
                 if (aP > bP) {
                     return 1;
                 } else if (aP < bP) {
@@ -297,6 +296,7 @@ export default {
     flex: 1 auto;
     list-style: none;
     line-height: 1.2em;
+    margin-top: 6px;
     text-align: right;
 }
 

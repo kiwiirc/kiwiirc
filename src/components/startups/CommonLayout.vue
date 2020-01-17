@@ -68,15 +68,19 @@ export default {
 
 .kiwi-startup-common {
     height: 100%;
-    text-align: center;
+    text-align: right;
     display: flex;
-    overflow-y: auto;
+    direction: rtl;
 }
 
 .kiwi-startup-common-section {
     padding: 1em;
     box-sizing: border-box;
     height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    direction: rtl;
+    text-align: right;
 
     /* transition the 2 sections out when the page closes. right+left defaults */
     transition: transform 0.4s;
@@ -88,6 +92,8 @@ export default {
     justify-content: center;
     width: 40%;
     max-width: 500px;
+    direction: rtl;
+    text-align: right;
 }
 
 /** Right side */
@@ -97,6 +103,8 @@ export default {
     flex: 1;
     align-items: center;
     justify-content: center;
+    direction: rtl;
+    text-align: right;
 }
 
 .kiwi-startup-common-section-info-content {
@@ -106,16 +114,22 @@ export default {
     font-size: 1.5em;
     padding: 2em;
     line-height: 1.6em;
+    direction: rtl;
+    text-align: right;
 }
 
 @media (min-width: 850px) {
     /** Closing - the wiping away of the screen **/
     .kiwi-startup-common--closing .kiwi-startup-common-section-connection {
         transform: translateX(-100%);
+        direction: rtl;
+        text-align: right;
     }
 
     .kiwi-startup-common--closing .kiwi-startup-common-section-info {
         transform: translateX(100%);
+        direction: rtl;
+        text-align: right;
     }
 }
 
@@ -123,24 +137,38 @@ export default {
 @media (max-width: 850px) {
     .kiwi-startup-common {
         font-size: 0.9em;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 2em;
+        display: block;
+        overflow-y: auto;
+        direction: rtl;
+        text-align: right;
     }
 
     .kiwi-startup-common-section {
         width: 100%;
         min-height: auto;
+        max-width: none;
+        height: auto;
+        align-items: flex-start;
+        direction: rtl;
+        text-align: right;
     }
 
     /** Closing - the wiping away of the screen **/
     .kiwi-startup-common--closing {
         transition: transform 0.3s;
         transform: translateY(100%);
+        direction: rtl;
+        text-align: right;
+    }
+
+    .kiwi-startup-common-section-connection {
+        padding-top: 2em;
     }
 
     .kiwi-startup-common-section-connection > * {
         max-width: 450px;
+        direction: rtl;
+        text-align: right;
     }
 }
 
@@ -149,16 +177,22 @@ export default {
 .kiwi-startup-common {
     background-size: 0;
     background-position: bottom;
+    direction: rtl;
+    text-align: right;
 }
 
 .kiwi-startup-common-section-info {
     background-size: cover;
     background-position: bottom;
     border-left: 5px solid #42b992;
+    direction: rtl;
+    text-align: right;
 }
 
 .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
     background-color: rgb(51, 51, 51);
+    direction: rtl;
+    text-align: right;
 }
 
 /* stylint-enable */
@@ -174,16 +208,22 @@ export default {
         border-left: none;
         flex: 1 0;
         display: block;
+        direction: rtl;
+        text-align: right;
     }
 
     .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
         border-top: 5px solid #42b992;
+        direction: rtl;
+        text-align: right;
     }
 }
 
 @media (max-width: 500px) {
     .kiwi-startup-common-section-info-content {
         margin: 1em;
+        direction: rtl;
+        text-align: right;
     }
 }
 </style>

@@ -205,6 +205,8 @@ export default {
 .kiwi-welcome-znc .u-input-text,
 .kiwi-welcome-znc .kiwi-welcome-znc-have-password input {
     margin-bottom: 1.5em;
+    direction: rtl;
+    text-align: right;
 }
 
 .kiwi-welcome-znc-have-password input:checked {

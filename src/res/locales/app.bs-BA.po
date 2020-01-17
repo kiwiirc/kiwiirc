@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2019-08-08 16:22\n"
+"PO-Revision-Date: 2019-09-21 00:00\n"
 
 #: Start
 msgid "start_button"
@@ -933,8 +933,8 @@ msgid "command_quit"
 msgstr "Odspoji se sa IRC servera"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Spoji se na novu IRC mrežu"
+msgid "command_server"
+msgstr "Poveži se na IRC mrežu"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1023,10 +1023,6 @@ msgstr "(Hvala Adamu @Rizon za programersku podršku serverskom web socketu!)"
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Prikaži programersku verziju Kiwi IRC-a i isprobaj!"
-
-#: Connected
-msgid "connected"
-msgstr "Povezano"
 
 #: Disconnected
 msgid "disconnected"

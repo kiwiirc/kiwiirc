@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Spanish, United States\n"
 "Language: es_US\n"
-"PO-Revision-Date: 2019-08-02 12:45\n"
+"PO-Revision-Date: 2019-09-17 19:32\n"
 
 #: Start
 msgid "start_button"
@@ -170,7 +170,7 @@ msgstr "Canal"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "Está ausente"
 
 #: {{count}} week
 msgid "week"
@@ -750,7 +750,7 @@ msgstr "Cambiar apodo"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Escribe el nuevo apodo..."
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -810,15 +810,15 @@ msgstr "Por favor especifica la sala a entrar. Por ej. /join #ejemplo"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "¡El apodo {{nick}} está actualmente en uso!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Debes escribir un nuevo apodo"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "El apodo no puede empezar por un número"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -933,8 +933,8 @@ msgid "command_quit"
 msgstr "Desconecta del servidor IRC"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Conecta a una nueva red de IRC"
+msgid "command_server"
+msgstr ""
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1023,10 +1023,6 @@ msgstr "(Gracias a Adam @Rizon por el desarrollo del soporte del servidor de web
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "¡Prueba la versión en desarrollo del Kiwi IRC!"
-
-#: Connected
-msgid "connected"
-msgstr "Conectado"
 
 #: Disconnected
 msgid "disconnected"

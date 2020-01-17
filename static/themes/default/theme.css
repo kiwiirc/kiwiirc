@@ -4,7 +4,7 @@
     /* Primary Variables */
     --brand-primary: #42b992;
     --brand-primary-hover: #5ec9a6;
-    --brand-midtone: #f1f1f1;
+    --brand-midtone: #00000012;
     --brand-darktone: #969696;
     --brand-default-bg: #fff;
     --brand-default-fg: #22231f;
@@ -61,7 +61,7 @@
 .irc-fg-colour-brown { color: #743a00; }
 .irc-fg-colour-purple { color: #a500ff; }
 .irc-fg-colour-orange { color: #ff8c00; }
-.irc-fg-colour-yellow { color: #ff0; }
+.irc-fg-colour-yellow { color: #d6d63d; }
 .irc-fg-colour-light-green { color: #6fff6f; }
 .irc-fg-colour-cyan { color: #0cc; }
 .irc-fg-colour-light-cyan { color: #6dffff; }
@@ -78,7 +78,7 @@
 .irc-bg-colour-brown { background-color: #743a00; }
 .irc-bg-colour-purple { background-color: #a500ff; }
 .irc-bg-colour-orange { background-color: #ff8c00; }
-.irc-bg-colour-yellow { background-color: #ff0; }
+.irc-bg-colour-yellow { background-color: #d6d63d; }
 .irc-bg-colour-light-green { background-color: #6fff6f; }
 .irc-bg-colour-cyan { background-color: #0cc; }
 .irc-bg-colour-light-cyan { background-color: #6dffff; }
@@ -86,3 +86,7 @@
 .irc-bg-colour-pink { background-color: #f0f; }
 .irc-bg-colour-grey { background-color: #a6a6a6; }
 .irc-bg-colour-light-grey { background-color: #e2e2e2; }
+
+.kiwi-statebrowser {
+    box-shadow: 0px 0 2px #101010;
+}

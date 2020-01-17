@@ -98,7 +98,8 @@ export default {
                 .filter(m => m.type !== 'traffic')
                 .filter(m => m.type !== 'topic')
                 .filter(m => m.type !== 'mode')
-                .filter(m => m.html);
+                .filter(m => m.html)
+                .sort((a, b) => b.time - a.time);
         },
     },
     methods: {
@@ -165,7 +166,6 @@ export default {
     padding: 1em;
     transition: max-height 0.2s, padding 0.2s, opacity 0.2s;
     overflow: hidden;
-    max-height: 500px;
 }
 
 .kiwi-aboutbuffer-section .kiwi-aboutbuffer-usercount {

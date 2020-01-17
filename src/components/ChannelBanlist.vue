@@ -6,13 +6,11 @@
             <table v-if="banlist.length > 0" class="kiwi-channelbanlist-table">
                 <tr>
                     <th>{{ $t('bans_user') }}</th>
-                    <th>{{ $t('bans_by') }}</th>
                     <th/>
                     <th/>
                 </tr>
-                <tr v-for="ban in banlist" :key="ban.banned">
+                <tr v-for="ban in banlist" :key="ban.banned" :title="'By ' + ban.banned_by">
                     <td class="kiwi-channelbanlist-table-mask">{{ ban.banned }}</td>
-                    <td class="kiwi-channelbanlist-table-bannedby">{{ ban.banned_by }}</td>
                     <td class="kiwi-channelbanlist-table-bannedat">
                         {{ (new Date(ban.banned_at * 1000)).toDateString() }}
                     </td>
@@ -77,6 +75,10 @@ export default {
 
 .kiwi-channelbanlist-table tr {
     border-bottom: 1px solid;
+}
+
+.kiwi-channelbanlist-table-mask {
+    word-break: break-all;
 }
 
 .kiwi-channelbanlist-table-bannedat {

@@ -18,7 +18,8 @@ export default class GlobalApi extends EventEmitter {
     constructor() {
         super();
 
-        this.version = '1.3.0';
+        // eslint-disable-next-line no-undef
+        this.version = __VERSION__;
 
         /** A reference to the internal Vuejs instance */
         this.Vue = Vue;
@@ -93,9 +94,14 @@ export default class GlobalApi extends EventEmitter {
      * E.g. require('helpers/TextFormatting');
      * @param {String} mod The module path
      */
-    require(mod) {
-        let path = mod.replace(/\//g, '.');
-        return _.get(this.exports, path);
+    require(modPath) {
+        let path = modPath.replace(/\//g, '.');
+        let mod = _.get(this.exports, path);
+        if (typeof mod === 'undefined') {
+            Logger.error('Module does not exist: ' + modPath);
+        }
+
+        return mod;
     }
 
     setState(state) {

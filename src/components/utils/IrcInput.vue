@@ -15,6 +15,7 @@
             @click="$emit('click', $event)"
             @paste="onPaste"
             @focus="onFocus()"
+            @blur="$emit('blur', $event)"
         />
     </div>
 </template>
@@ -103,6 +104,8 @@ export default Vue.component('irc-input', {
             if (!this.getRawText() && this.default_colour) {
                 this.setColour(this.default_colour.code, this.default_colour.colour);
             }
+
+            this.$emit('focus', event);
         },
         updateValueProps() {
             let selection = window.getSelection();
@@ -437,12 +440,14 @@ export default Vue.component('irc-input', {
     position: relative;
     overflow: visible;
     z-index: 1;
+    text-align: right;
 }
 
 .kiwi-ircinput-editor {
     white-space: pre;
     overflow-x: hidden;
     outline: none;
+    text-align: right;
 
     /* When the contenteditable div is empty firefox makes its height 0px */
     height: 100%;
@@ -456,6 +461,7 @@ export default Vue.component('irc-input', {
 .kiwi-ircinput-editor img {
     height: 1em;
     vertical-align: -0.1em;
+    text-align: right;
 }
 
 </style>

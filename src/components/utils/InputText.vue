@@ -1,8 +1,8 @@
 <template>
-    <div class="u-input-text">
+    <div class="u-input-text" dir="rtl" type="text-align: right">
         <label v-if="label" :for="inputId">{{ label }}</label>
 
-        <div class="u-input-text-inputs" style="display:flex;">
+        <div class="u-input-text-inputs" style="display:flex;" dir="rtl" type="text-align: right">
             <template v-if="type==='password'">
                 <input
                     v-model="currentValue"
@@ -14,6 +14,7 @@
                     autocapitalize="off"
                     spellcheck="false"
                     class="u-input"
+                    dir="rtl"
                 >
 
                 <i
@@ -104,6 +105,8 @@ export default Vue.component('input-text', {
     position: relative;
     margin: 0 0 20px 0;
     box-sizing: border-box;
+    direction: rtl;
+    text-align: right;
 }
 
 .u-input-text-inputs {
@@ -115,10 +118,14 @@ export default Vue.component('input-text', {
 .u-input-text textarea {
     box-sizing: border-box;
     flex: 1;
+    direction: rtl;
+    text-align: right;
 }
 
 .u-input-text input:focus {
     outline: none;
+    direction: rtl;
+    text-align: right;
 }
 
 .u-input-text-c {
@@ -129,6 +136,8 @@ export default Vue.component('input-text', {
 .u-input-text input[type='number'] {
     /* For Firefox */
     -moz-appearance: textfield;
+    direction: rtl;
+    text-align: right;
 }
 
 .u-input-text input[type=number]::-webkit-inner-spin-button,
@@ -136,6 +145,8 @@ export default Vue.component('input-text', {
     /* For webkit browsers like Safari and Chrome */
     -webkit-appearance: none;
     margin: 0;
+    direction: rtl;
+    text-align: right;
 }
 
 input[type=text].u-form-input-plaintext,
@@ -153,16 +164,21 @@ input[type=password].u-form-input-plaintext {
     position: absolute;
     right: 7px;
     top: 9px;
+    direction: rtl;
 }
 
 .u-form--big .u-input-text-plaintext {
     line-height: 40px;
     top: 6px;
+    direction: rtl;
+    text-align: right;
 }
 
 .u-input-text-plaintext--active,
 .u-input-text-plaintext:hover {
     opacity: 1;
+    direction: rtl;
+    text-align: right;
 }
 
 </style>

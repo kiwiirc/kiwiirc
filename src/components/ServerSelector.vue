@@ -86,8 +86,8 @@ export default {
                 if (newVal === 'custom') {
                     this.name = '';
                     this.connection.server = '';
-                    this.connection.port = 6667;
-                    this.connection.tls = false;
+                    this.connection.port = 6697;
+                    this.connection.tls = true;
 
                     this.showCustom = true;
                 } else {
@@ -103,7 +103,7 @@ export default {
             get() {
                 return this.showCustom ?
                     'custom' :
-                    this.toUri(this);
+                    this.toUri(this.connection);
             },
         },
     },

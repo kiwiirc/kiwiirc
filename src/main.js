@@ -75,16 +75,27 @@ Vue.mixin({
         listen: function listen(source, event, fn) {
             this.listeningEvents = this.listeningEvents || [];
             this.listeningEvents.push(() => {
-                (source.$off || source.off).call(source, event, fn);
+                (source.removeEventListener || source.$off || source.off).call(source, event, fn);
             });
-            (source.$on || source.on).call(source, event, fn);
+            (source.addEventListener || source.$on || source.on).call(source, event, fn);
         },
         listenOnce: function listenOnce(source, event, fn) {
             this.listeningEvents = this.listeningEvents || [];
             this.listeningEvents.push(() => {
-                (source.$off || source.off).call(source, event, fn);
+                (source.removeEventListener || source.$off || source.off).call(source, event, fn);
             });
-            (source.$once || source.once).call(source, event, fn);
+
+            if (source.addEventListener) {
+                // Create our own once handler as the DOM doesn't support this itself
+                let onceFn = function onceFn(...args) {
+                    source.removeEventListener(event, onceFn);
+                    fn(...args);
+                };
+
+                source.addEventListener(event, onceFn);
+            } else {
+                (source.$once || source.once).call(source, event, fn);
+            }
         },
     },
 });
@@ -183,6 +194,7 @@ function loadApp() {
 
     let configLoader = new ConfigLoader();
     configLoader
+        .addValueReplacement('protocol', window.location.protocol)
         .addValueReplacement('hostname', window.location.hostname)
         .addValueReplacement('host', window.location.hostname)
         .addValueReplacement('host', window.location.host)
