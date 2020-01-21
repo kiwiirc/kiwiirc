@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2020-01-21 14:23\n"
+"PO-Revision-Date: 2020-01-21 14:33\n"
 
 #: Start
 msgid "start_button"
@@ -736,11 +736,11 @@ msgstr "Hyni në #kanal të ri"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filtroni kanale"
+msgstr "Filtroni Kanale"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Gjeni më tepër kanale"
+msgstr "Gjeni Më Tepër Kanale"
 
 #: Change nick
 msgid "change_nick"
@@ -888,7 +888,7 @@ msgstr "Dilni nga një kanal"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Dilni, dhe mandej rihyni në kanal"
+msgstr "Dilni, mandej rihyni në kanal"
 
 #: Change your nickname
 msgid "command_nick"
@@ -920,7 +920,7 @@ msgstr "Përzini dikë nga kanali"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Pastroni krejt mesazhet nga kjo dritare"
+msgstr "Spastro krejt mesazhet nga kjo dritare"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
