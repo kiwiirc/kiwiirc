@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2020-01-21 14:02\n"
+"PO-Revision-Date: 2020-01-21 14:17\n"
 
 #: Start
 msgid "start_button"
@@ -24,39 +24,39 @@ msgstr "mbylle"
 
 #: Connect
 msgid "connect"
-msgstr "lidhu"
+msgstr "Lidhu"
 
 #: Connecting...
 msgid "connecting"
-msgstr "po lidhet…"
+msgstr "Po lidhet…"
 
 #: Connected
 msgid "connected"
-msgstr "i lidhur"
+msgstr "I lidhur"
 
 #: Settings
 msgid "settings"
-msgstr "rregullime"
+msgstr "Rregullime"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "rregullime të Kiwi-t"
+msgstr "Rregullime të Kiwi-t"
 
 #: Channels
 msgid "channels"
-msgstr "kanale"
+msgstr "Kanale"
 
 #: Access
 msgid "access"
-msgstr "hyrje"
+msgstr "Hyrje"
 
 #: Banned Users
 msgid "banned"
-msgstr "të dëbuar"
+msgstr "Përdorues të Dëbuar"
 
 #: Invited Users
 msgid "invited"
-msgstr "të ftuar"
+msgstr "Përdorues të Ftuar"
 
 #: Notifications
 msgid "notifications"
@@ -148,7 +148,7 @@ msgstr "Gjendje"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Mund të kihet"
+msgstr "Është i lirë"
 
 #: Send a message
 msgid "send_a_message"
@@ -236,7 +236,7 @@ msgstr "Skemë Mesazhesh"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Përdor monospace"
+msgstr "Përdor shkronja monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
@@ -288,7 +288,7 @@ msgstr "Ndaje me të tjerë, kur shtyp një mesazh"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Përfshiji mesazhet e ardhjes/largimit si veprimtari"
+msgstr "Mesazhet e ardhjes/largimit përfshiji si veprimtari"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
@@ -296,7 +296,7 @@ msgstr "Heshto njoftime zanore"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Theksim në fjalë (ndarë me hapësirë)"
+msgstr "Fjalë për t’u theksuar (ndarë me hapësirë)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -304,7 +304,7 @@ msgstr "Aliase"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Ç’janë aliaset?"
+msgstr "Ç’janë Aliaset?"
 
 #: Send Message
 msgid "send_message"
@@ -364,7 +364,7 @@ msgstr "Këtu ka përbindësha, klikoni mbi këtë buton vetëm nëse e dini se 
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Aktivizo Rregullime të Mëtejshëm"
+msgstr "Aktivizo Rregullime të Mëtejshme"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
@@ -372,7 +372,7 @@ msgstr "Zonë Rreziku: Ndryshimi i disa prej këtyre rregullimeve mund të prish
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Riktheji te parazgjedhjet"
+msgstr "Riktheje te parazgjedhja"
 
 #: Filter
 msgid "settings_advanced_filter"
