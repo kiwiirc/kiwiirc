@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2020-01-21 14:17\n"
+"PO-Revision-Date: 2020-01-21 14:23\n"
 
 #: Start
 msgid "start_button"
@@ -468,7 +468,7 @@ msgstr "Blloko mesazhe prej nga jashtë këtij kanali"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Që të përditësohet lista e kanaleve klikoni mbi butonin e rifreskimit"
+msgstr "Që të përditësohet lista e kanaleve, klikoni mbi butonin e rifreskimit"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
@@ -476,7 +476,7 @@ msgstr "S’u gjetën kanale, riprovoni më vonë"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Mirë se vini te Kiwi IRC! Përzgjidhni majtas një kanal."
+msgstr "Mirë se vini te Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -584,7 +584,7 @@ msgstr "{{count}} vetë këtu"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "filtro përdorues në kanal"
+msgstr "Filtro përdorues në kanal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -592,11 +592,11 @@ msgstr "Rilidhuni, që të hyni te {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Rilidhuni te {{network}} që të filloni të bisedoni"
+msgstr "Që të filloni të bisedoni, rilidhuni te {{network}} "
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Rilidhuni që të vazhdoni të bisedoni me {{user}}"
+msgstr "Që të vazhdoni të bisedoni me {{user}}, rilidhuni"
 
 #: You are not currently connected!
 msgid "not_connected"
