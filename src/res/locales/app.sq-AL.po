@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2019-12-23 12:12\n"
+"PO-Revision-Date: 2020-01-21 14:02\n"
 
 #: Start
 msgid "start_button"
@@ -20,43 +20,43 @@ msgstr "Mirë se vini te Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr "Mbylle"
+msgstr "mbylle"
 
 #: Connect
 msgid "connect"
-msgstr "Lidhu"
+msgstr "lidhu"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Po lidhet…"
+msgstr "po lidhet…"
 
 #: Connected
 msgid "connected"
-msgstr "I lidhur"
+msgstr "i lidhur"
 
 #: Settings
 msgid "settings"
-msgstr "Rregullime"
+msgstr "rregullime"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Rregullime të Kiwi-t"
+msgstr "rregullime të Kiwi-t"
 
 #: Channels
 msgid "channels"
-msgstr "Kanale"
+msgstr "kanale"
 
 #: Access
 msgid "access"
-msgstr "Hyrje"
+msgstr "hyrje"
 
 #: Banned Users
 msgid "banned"
-msgstr "Përdorues të Dëbuar"
+msgstr "të dëbuar"
 
 #: Invited Users
 msgid "invited"
-msgstr "Përdorues të Ftuar"
+msgstr "të ftuar"
 
 #: Notifications
 msgid "notifications"
