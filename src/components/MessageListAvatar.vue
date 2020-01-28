@@ -1,5 +1,5 @@
 <template>
-    <Avatar :user="user" :message="message" />
+    <Avatar :user="user" :message="message" size="small" />
 </template>
 
 <script>

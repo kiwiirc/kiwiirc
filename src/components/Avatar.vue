@@ -4,7 +4,7 @@
         :class="[hasAvatar ? 'kiwi-avatar--image' : '']"
         class="kiwi-avatar"
     >
-        <span :style="avatarStyle">{{ hasAvatar ?'' : firstNickLetter }}</span>
+        <span :style="avatarStyle">{{ hasAvatar ? '' : firstNickLetter }}</span>
     </div>
 </template>
 
@@ -13,7 +13,7 @@
 'kiwi public';
 
 export default {
-    props: ['message', 'user'],
+    props: ['message', 'user', 'size'],
     computed: {
         avatar() {
             return (this.message && this.message.avatar) || (this.user && this.user.avatar);
@@ -22,13 +22,14 @@ export default {
             return ((this.message && this.message.nick) || (this.user && this.user.nick) || '')[0];
         },
         hasAvatar() {
-            return !!(this.avatar && this.avatar.small);
+            return !!(this.avatar && (this.avatar.small || this.avatar.large));
         },
         avatarStyle() {
             let style = {};
-
             if (this.hasAvatar) {
-                let url = this.avatar.small;
+                let url = (this.size === 'small' && this.avatar.small) ?
+                    this.avatar.small :
+                    this.avatar.large;
                 style['background-image'] = `url("${url}")`;
             } else {
                 style['background-color'] = `${this.colour}`;
