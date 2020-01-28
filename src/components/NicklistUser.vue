@@ -13,6 +13,7 @@
             <Avatar
                 v-if="user"
                 :user="user"
+                size="small"
             />
             <away-status-indicator
                 :network="network"
