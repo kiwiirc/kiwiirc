@@ -27,7 +27,9 @@ export default {
         avatarStyle() {
             let style = {};
             if (this.hasAvatar) {
-                let url = (this.size === 'small' && this.avatar.small) ? this.avatar.small : this.avatar.large;
+                let url = (this.size === 'small' && this.avatar.small) ?
+                    this.avatar.small :
+                    this.avatar.large;
                 style['background-image'] = `url("${url}")`;
             } else {
                 style['background-color'] = `${this.colour}`;
