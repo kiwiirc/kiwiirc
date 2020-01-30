@@ -23,6 +23,6 @@
         "key": ""
     },
     "plugins": [
-
+        { "name": "customise", "url": "static/plugins/customise.html" }
     ]
 }
