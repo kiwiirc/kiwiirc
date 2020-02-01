@@ -692,7 +692,6 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 
 .kiwi-messagelist-message-mode,
 .kiwi-messagelist-message-traffic {
-    padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -729,7 +728,6 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 .kiwi-messagelist-message-mode,
 .kiwi-messagelist-message-traffic,
 .kiwi-messagelist-message-connection {
-    padding: 0.1em 0.5em;
     min-height: 0;
     line-height: normal;
     text-align: left;
@@ -749,7 +747,6 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 .kiwi-messagelist-message-mode,
 .kiwi-messagelist-message-traffic,
 .kiwi-messagelist-message-nick {
-    padding: 5px  0 5px 0;
     margin: 10px 0;
     opacity: 0.85;
     text-align: center;

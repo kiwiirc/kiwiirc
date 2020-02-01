@@ -222,7 +222,7 @@ export default {
     border-radius: 0;
     border-left: 0;
     border-right: 0;
-    margin: 5px 0;
+    margin: 1em 0;
 }
 
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-topic .kiwi-messagelist-body {
