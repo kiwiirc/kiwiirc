@@ -167,12 +167,18 @@ export default {
             if (!this.hasStarted) {
                 this.warnOnPageClose();
 
-                // Wait for a click before asking for notification permission. Not doing this
-                // on a click event will get it blocked by some browsers.
-                this.$state.$once('document.clicked', (event) => {
+                // Wait for a click or sending a message before asking for notification permission.
+                // Not doing this on an input event will get it blocked by some browsers.
+                let requestNotificationPermission = () => {
+                    this.$state.$off('document.clicked', requestNotificationPermission);
+                    this.$state.$off('input.raw', requestNotificationPermission);
+
                     Notifications.requestPermission();
                     Notifications.listenForNewMessages(this.$state);
-                });
+                };
+
+                this.$state.$once('document.clicked', requestNotificationPermission);
+                this.$state.$once('input.raw', requestNotificationPermission);
             }
 
             this.hasStarted = true;
