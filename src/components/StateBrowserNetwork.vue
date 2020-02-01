@@ -462,8 +462,12 @@ export default {
     width: 50px;
     cursor: pointer;
     margin-right: 0;
-    transition: all 0.3s;
+    transition: opacity 0.2s;
     z-index: 10;
+}
+
+.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-leave {
+    opacity: 1;
 }
 
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings,

@@ -67,13 +67,6 @@
                         <i class="fa fa-thumb-tack" aria-hidden="true"/>
                     </a>
                 </div>
-                <div
-                    class="kiwi-header-option kiwi-header-option-leave"
-                >
-                    <a :title="$t('close')" @click="showPrompt('closeChannel')">
-                        <i class="fa fa-times" aria-hidden="true"/>
-                    </a>
-                </div>
             </div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a class="u-link kiwi-header-join-channel-button" @click="joinCurrentBuffer">
