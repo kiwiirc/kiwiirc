@@ -157,12 +157,6 @@ function clientMiddleware(state, network) {
                 });
             });
         });
-
-        client.on('socket connected', () => {
-            if (network.captchaResponse) {
-                client.raw('CAPTCHA', network.captchaResponse);
-            }
-        });
     };
 
     function rawEventsHandler(command, event, rawLine, client, next) {

@@ -6,20 +6,36 @@
                 <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true"/>
             </div>
             <div class="kiwi-notconnected-buttons">
+                <captcha
+                    class="kiwi-notconnected-captcha"
+                    @ready="handleCaptcha"
+                />
                 <template v-if="isChannel()">
-                    <span class="kiwi-notconnected-button" @click="reconnect">
+                    <span
+                        :disabled="!readyToStart"
+                        class="kiwi-notconnected-button"
+                        @click="reconnect"
+                    >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
                         {{ $t('reconnect_channel', {channel: buffer.name}) }}
                     </span>
                 </template>
                 <template v-else-if="isServer()">
-                    <span class="kiwi-notconnected-button" @click="reconnect">
+                    <span
+                        :disabled="!readyToStart"
+                        class="kiwi-notconnected-button"
+                        @click="reconnect"
+                    >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
                         {{ $t('reconnect_network', {network: buffer.getNetwork().name}) }}
                     </span>
                 </template>
                 <template v-else-if="isQuery()">
-                    <span class="kiwi-notconnected-button" @click="reconnect">
+                    <span
+                        :disabled="!readyToStart"
+                        class="kiwi-notconnected-button"
+                        @click="reconnect"
+                    >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
                         {{ $t('reconnect_query', {user: buffer.name}) }}
                     </span>
@@ -47,11 +63,17 @@
 
 'kiwi public';
 
+import Captcha from '@/components/Captcha';
+
 export default {
+    components: {
+        Captcha,
+    },
     props: ['buffer', 'network'],
     data() {
         return {
             forceLoader: false,
+            captchaReady: false,
         };
     },
     computed: {
@@ -69,6 +91,9 @@ export default {
         },
         restrictedServer() {
             return this.$state.setting('restricted');
+        },
+        readyToStart() {
+            return this.captchaReady;
         },
     },
     methods: {
@@ -97,6 +122,9 @@ export default {
             return this.buffer.isQuery();
         },
         reconnect() {
+            if (!this.readyToStart) {
+                return;
+            }
             if (this.buffer.isChannel()) {
                 this.buffer.enabled = true;
             }
@@ -105,6 +133,9 @@ export default {
         showNetworkSettings() {
             let network = this.buffer.getNetwork();
             network.showServerBuffer('settings');
+        },
+        handleCaptcha(isReady) {
+            this.captchaReady = isReady;
         },
     },
 };
@@ -138,6 +169,10 @@ export default {
     top: 3px;
 }
 
+.kiwi-notconnected-captcha {
+    display: inline-block;
+}
+
 .kiwi-notconnected-buttons {
     float: right;
     width: auto;
@@ -156,6 +191,11 @@ export default {
     overflow: hidden;
     box-sizing: border-box;
     transition: opacity 0.3s, color 0.3s, background-color 0.3s;
+}
+
+.kiwi-notconnected-button:hover[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
 }
 
 .kiwi-notconnected-button:hover {
