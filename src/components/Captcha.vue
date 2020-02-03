@@ -1,9 +1,6 @@
 <template>
-    <div>
-        <div
-            v-if="recaptchaSiteId"
-            id="kiwi-captcha"
-        />
+    <div v-if="recaptchaSiteId">
+        <div ref="captchacontainer" />
     </div>
 </template>
 
@@ -27,9 +24,13 @@ export default {
         let options = this.$state.settings.startupOptions;
         this.recaptchaSiteId = options.recaptchaSiteId || '';
 
-        this.$state.$on('network.connecting', (event) => {
+        this.listen(this.$state, 'network.connecting', (event) => {
             event.network.ircClient.once('socket connected', () => {
-                event.network.ircClient.raw('CAPTCHA', this.recaptchaResponse);
+                // There should always be a captcha response at this point but just in case
+                // there isn't...
+                if (this.recaptchaResponse) {
+                    event.network.ircClient.raw('CAPTCHA', this.recaptchaResponse);
+                }
             });
         });
     },
@@ -38,8 +39,10 @@ export default {
             this.$emit('ready', true);
             return;
         }
+
+        // Recaptcha calls this callback once it's loaded and ready to be used
         window.recaptchaLoaded = () => {
-            window.grecaptcha.render('kiwi-captcha', {
+            window.grecaptcha.render(this.$refs.captchacontainer, {
                 sitekey: this.recaptchaSiteId,
                 callback: this.recaptchaSuccess,
                 'expired-callback': this.recaptchaExpired,
