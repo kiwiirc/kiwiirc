@@ -14,6 +14,7 @@
                     autocapitalize="off"
                     spellcheck="false"
                     class="u-input"
+                    @keypress="$emit('keypress', $event)"
                 >
 
                 <i
@@ -31,12 +32,14 @@
                 :id="inputId"
                 type="number"
                 class="u-input"
+                @keypress="$emit('keypress', $event)"
             >
             <textarea
                 v-else-if="type==='textarea'"
                 v-model="currentValue"
                 :id="inputId"
                 class="u-input"
+                @keypress="$emit('keypress', $event)"
             />
             <input
                 v-else
@@ -47,6 +50,7 @@
                 autocapitalize="off"
                 spellcheck="false"
                 class="u-input"
+                @keypress="$emit('keypress', $event)"
             >
 
             <div v-if="$slots.default" class="u-input-text-c">
