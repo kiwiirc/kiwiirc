@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2019-12-23 12:12\n"
+"PO-Revision-Date: 2020-01-21 14:33\n"
 
 #: Start
 msgid "start_button"
@@ -20,7 +20,7 @@ msgstr "Mirë se vini te Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr "Mbylle"
+msgstr "mbylle"
 
 #: Connect
 msgid "connect"
@@ -148,7 +148,7 @@ msgstr "Gjendje"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Mund të kihet"
+msgstr "Është i lirë"
 
 #: Send a message
 msgid "send_a_message"
@@ -236,7 +236,7 @@ msgstr "Skemë Mesazhesh"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Përdor monospace"
+msgstr "Përdor shkronja monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
@@ -288,7 +288,7 @@ msgstr "Ndaje me të tjerë, kur shtyp një mesazh"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Përfshiji mesazhet e ardhjes/largimit si veprimtari"
+msgstr "Mesazhet e ardhjes/largimit përfshiji si veprimtari"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
@@ -296,7 +296,7 @@ msgstr "Heshto njoftime zanore"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Theksim në fjalë (ndarë me hapësirë)"
+msgstr "Fjalë për t’u theksuar (ndarë me hapësirë)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -304,7 +304,7 @@ msgstr "Aliase"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Ç’janë aliaset?"
+msgstr "Ç’janë Aliaset?"
 
 #: Send Message
 msgid "send_message"
@@ -364,7 +364,7 @@ msgstr "Këtu ka përbindësha, klikoni mbi këtë buton vetëm nëse e dini se 
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Aktivizo Rregullime të Mëtejshëm"
+msgstr "Aktivizo Rregullime të Mëtejshme"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
@@ -372,7 +372,7 @@ msgstr "Zonë Rreziku: Ndryshimi i disa prej këtyre rregullimeve mund të prish
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Riktheji te parazgjedhjet"
+msgstr "Riktheje te parazgjedhja"
 
 #: Filter
 msgid "settings_advanced_filter"
@@ -468,7 +468,7 @@ msgstr "Blloko mesazhe prej nga jashtë këtij kanali"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Që të përditësohet lista e kanaleve klikoni mbi butonin e rifreskimit"
+msgstr "Që të përditësohet lista e kanaleve, klikoni mbi butonin e rifreskimit"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
@@ -476,7 +476,7 @@ msgstr "S’u gjetën kanale, riprovoni më vonë"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Mirë se vini te Kiwi IRC! Përzgjidhni majtas një kanal."
+msgstr "Mirë se vini te Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -584,7 +584,7 @@ msgstr "{{count}} vetë këtu"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "filtro përdorues në kanal"
+msgstr "Filtro përdorues në kanal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -592,11 +592,11 @@ msgstr "Rilidhuni, që të hyni te {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Rilidhuni te {{network}} që të filloni të bisedoni"
+msgstr "Që të filloni të bisedoni, rilidhuni te {{network}} "
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Rilidhuni që të vazhdoni të bisedoni me {{user}}"
+msgstr "Që të vazhdoni të bisedoni me {{user}}, rilidhuni"
 
 #: You are not currently connected!
 msgid "not_connected"
@@ -736,11 +736,11 @@ msgstr "Hyni në #kanal të ri"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filtroni kanale"
+msgstr "Filtroni Kanale"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Gjeni më tepër kanale"
+msgstr "Gjeni Më Tepër Kanale"
 
 #: Change nick
 msgid "change_nick"
@@ -888,7 +888,7 @@ msgstr "Dilni nga një kanal"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Dilni, dhe mandej rihyni në kanal"
+msgstr "Dilni, mandej rihyni në kanal"
 
 #: Change your nickname
 msgid "command_nick"
@@ -920,7 +920,7 @@ msgstr "Përzini dikë nga kanali"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Pastroni krejt mesazhet nga kjo dritare"
+msgstr "Spastro krejt mesazhet nga kjo dritare"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
