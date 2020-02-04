@@ -324,11 +324,19 @@ export default class BufferState {
         this.chathistory_request_count += 1;
         ircClient.chathistory[chathistoryFuncName](this.name, time)
             .then((event) => {
-                if (!event || event.commands.length === 0) {
+                if (!event) {
                     this.flag('chathistory_available', false);
-                } else {
-                    this.flag('chathistory_available', true);
+                    return;
                 }
+
+                // The BNC server may reply with messages that are already in the buffer.
+                // This var stores whether there are new messages in the chathistory response.
+                let hasNewMessages = event.commands.some(msg =>
+                    msg.tags.msgid && !this.messagesObj.messageIds[msg.tags.msgid]);
+
+                // If there are new messages, then there could be more in the backlog.
+                // If there are no new messages, then the chat history is empty.
+                this.flag('chathistory_available', hasNewMessages);
             })
             .finally(() => {
                 this.flag('is_requesting_chathistory', false);
