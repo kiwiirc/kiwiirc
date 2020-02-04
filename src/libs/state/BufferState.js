@@ -324,11 +324,15 @@ export default class BufferState {
         this.chathistory_request_count += 1;
         ircClient.chathistory[chathistoryFuncName](this.name, time)
             .then((event) => {
-                if (!event || event.commands.length === 0) {
+                if (!event) {
                     this.flag('chathistory_available', false);
-                } else {
-                    this.flag('chathistory_available', true);
+                    return;
                 }
+
+                let hasNewMessages = event.commands.some(msg =>
+                    msg.tags.msgid && !this.messagesObj.messageIds[msg.tags.msgid]);
+
+                this.flag('chathistory_available', hasNewMessages);
             })
             .finally(() => {
                 this.flag('is_requesting_chathistory', false);
