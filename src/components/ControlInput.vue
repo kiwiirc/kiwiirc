@@ -24,7 +24,9 @@
                 :user="buffer.getNetwork().currentUser()"
             />
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
-                <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
+                <span :style="{ 'color': userColour }" class="kiwi-controlinput-user-nick">
+                    {{ currentNick }}
+                </span>
                 <i
                     :class="[selfuser_open ? 'fa-caret-down' : 'fa-caret-up']"
                     class="fa"
@@ -172,6 +174,12 @@ export default {
             return activeNetwork ?
                 activeNetwork.state :
                 '';
+        },
+        userColour() {
+            if (this.buffer.setting('coloured_nicklist')) {
+                return this.$state.getActiveNetwork().currentUser().getColour();
+            }
+            return '';
         },
         shouldShowSendButton() {
             return this.$state.ui.is_touch || this.$state.setting('showSendButton');
