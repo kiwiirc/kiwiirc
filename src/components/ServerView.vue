@@ -97,6 +97,8 @@ export default {
 
 .kiwi-serverview .kiwi-messagelist {
     padding-top: 0;
+    height: 100%;
+    margin: 0;
 }
 
 .kiwi-serverview-inner {
