@@ -29,7 +29,7 @@ Vue.component('tabbed-tab', {
     data: function data() {
         return { active: false };
     },
-    template: '<div v-if="active" class="u-tabbed-content"><slot></slot></div>',
+    template: '<div v-if="active" :data-tabname="name" class="u-tabbed-content"><slot></slot></div>',
 });
 
 export default Vue.component('tabbed-view', {

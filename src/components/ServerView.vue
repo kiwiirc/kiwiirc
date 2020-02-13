@@ -108,6 +108,20 @@ export default {
     right: 0;
 }
 
+.kiwi-serverview-inner .u-tabbed-content[data-tabname="messages"] {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    overflow: hidden;
+}
+
 .kiwi-serverview-alerts {
     margin-bottom: 1em;
 }
