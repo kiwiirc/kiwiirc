@@ -195,7 +195,7 @@ export default {
         },
         formattedRealname() {
             let blocks = parseMessage(this.user.realname || '', { extras: false });
-            let content = toHtml(blocks);
+            let content = toHtml(blocks, false);
             return content;
         },
         isUserOnBuffer: function isUserOnBuffer() {
