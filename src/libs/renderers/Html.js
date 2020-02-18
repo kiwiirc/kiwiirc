@@ -1,3 +1,5 @@
+'kiwi public';
+
 import { escape } from 'lodash';
 import state from '@/libs/state';
 
