@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2020-01-21 14:33\n"
+"PO-Revision-Date: 2020-02-21 16:01\n"
 
 #: Start
 msgid "start_button"
@@ -749,6 +749,10 @@ msgstr "Ndryshoni nofkën"
 #: Enter new nickname...
 msgid "enter_new_nick"
 msgstr "Jepni nofkë të re…"
+
+#: This is you!
+msgid "user_you"
+msgstr ""
 
 #: Account name: {{user}}
 msgid "user_account"
