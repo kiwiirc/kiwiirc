@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2019-12-30 20:51\n"
+"PO-Revision-Date: 2020-02-21 16:01\n"
 
 #: Start
 msgid "start_button"
@@ -748,6 +748,10 @@ msgstr "Ezizena aldatu"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
+msgstr ""
+
+#: This is you!
+msgid "user_you"
 msgstr ""
 
 #: Account name: {{user}}
