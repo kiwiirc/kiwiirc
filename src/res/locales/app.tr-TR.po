@@ -1,16 +1,14 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: tr\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-09-17 19:40\n"
+"PO-Revision-Date: 2020-02-21 16:01\n"
 
 #: Start
 msgid "start_button"
@@ -18,7 +16,7 @@ msgstr "Başla"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Kiwi IRC'ye Hoşgeldiniz!"
+msgstr "Kiwi IRC'ye Hoş geldiniz!"
 
 #: Close
 msgid "close"
@@ -751,6 +749,10 @@ msgstr "Takma ad değiş"
 #: Enter new nickname...
 msgid "enter_new_nick"
 msgstr "Yeni bir takma ad girin..."
+
+#: This is you!
+msgid "user_you"
+msgstr ""
 
 #: Account name: {{user}}
 msgid "user_account"
