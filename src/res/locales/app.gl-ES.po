@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2020-02-21 16:02\n"
+"PO-Revision-Date: 2020-02-21 16:40\n"
 
 #: Start
 msgid "start_button"
@@ -752,7 +752,7 @@ msgstr "Escribe o novo alcume..."
 
 #: This is you!
 msgid "user_you"
-msgstr ""
+msgstr "Este é o teu!"
 
 #: Account name: {{user}}
 msgid "user_account"
