@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-userbox">
         <span v-if="isSelf" class="kiwi-userbox-selfprofile">
-            This is you!
+            {{ $t('user_you') }}
         </span>
         <div class="kiwi-userbox-header">
             <h3>
