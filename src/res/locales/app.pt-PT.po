@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2020-02-21 16:01\n"
+"PO-Revision-Date: 2020-02-21 18:52\n"
 
 #: Start
 msgid "start_button"
@@ -752,7 +752,7 @@ msgstr "Introduza o novo nick..."
 
 #: This is you!
 msgid "user_you"
-msgstr ""
+msgstr "Este/a é você!"
 
 #: Account name: {{user}}
 msgid "user_account"
