@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2020-02-21 16:02\n"
+"PO-Revision-Date: 2020-02-21 17:11\n"
 
 #: Start
 msgid "start_button"
@@ -752,7 +752,7 @@ msgstr "Εισάγεται νέο ψευδώνυμο..."
 
 #: This is you!
 msgid "user_you"
-msgstr ""
+msgstr "Αυτός είσαι εσύ!"
 
 #: Account name: {{user}}
 msgid "user_account"
