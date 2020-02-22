@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-02-21 16:01\n"
+"PO-Revision-Date: 2020-02-22 13:31\n"
 
 #: Start
 msgid "start_button"
@@ -108,7 +108,7 @@ msgstr "Geçersiz giriş"
 
 #: Search...
 msgid "do_search"
-msgstr "Arama..."
+msgstr "Ara..."
 
 #: OK
 msgid "ok"
@@ -136,7 +136,7 @@ msgstr "Uyarı!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "Bu, tüm Kiwi IRC konuşmalarını kapatır. Bu pencereyi kapatmak istediğinize emin misiniz?"
+msgstr "Bu tüm Kiwi IRC konuşmalarını kapatır. Bu pencereyi kapatmak istediğinize emin misiniz?"
 
 #: Real name
 msgid "whois_realname"
@@ -152,15 +152,15 @@ msgstr "Müsait"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Mesaj Gönder"
+msgstr "Mesaj gönder"
 
 #: More information
 msgid "more_information"
-msgstr "Ayrıntılı Bilgi"
+msgstr "Daha fazla bilgi"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Engelle"
+msgstr "Kullanıcıyı yoksay"
 
 #: Channel
 msgid "connection_channel"
@@ -176,7 +176,7 @@ msgstr "{{count}} hafta"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} haftalar"
+msgstr "{{count}} hafta"
 
 #: {{count}} day
 msgid "day"
@@ -184,7 +184,7 @@ msgstr "{{count}} gün"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} günler"
+msgstr "{{count}} gün"
 
 #: {{count}} hour
 msgid "hour"
@@ -192,7 +192,7 @@ msgstr "{{count}} saat"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} saatler"
+msgstr "{{count}} saat"
 
 #: {{count}} minute
 msgid "minute"
@@ -200,7 +200,7 @@ msgstr "{{count}} dakika"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} dakikalar"
+msgstr "{{count}} dakika"
 
 #: {{count}} second
 msgid "second"
@@ -300,11 +300,11 @@ msgstr "Kelimeleri vurgula (boşlukla ayır)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Aliaslar"
+msgstr "Takma adlar"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Aliaslar nelerdir?"
+msgstr "Takma adlar nelerdir?"
 
 #: Send Message
 msgid "send_message"
@@ -312,15 +312,15 @@ msgstr "Mesaj Gönder"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Kanal anahtarını girin:"
+msgstr "Kanal Anahtarını Girin"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Yeniden gir {{channel}}"
+msgstr "{{channel}} kanalına yeniden girin"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Bana Bildir"
+msgstr "Bana bildir"
 
 #: All messages
 msgid "settings_notify_all"
@@ -340,11 +340,11 @@ msgstr "Sesleri kapat"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Okunmamış Mesajlar iletisini gizle"
+msgstr "Okunmamış mesajları sayısını gizle"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Operatör Araçları"
+msgstr "Operatör araçları"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
@@ -352,7 +352,7 @@ msgstr "Varsayılan yasak maskesi"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Varsayılan kick sebebi"
+msgstr "Varsayılan atılma sebebi"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
@@ -388,11 +388,11 @@ msgstr "Yasaklanan kullanıcı"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Tarafından yasaklanmış"
+msgstr "Yasaklayan:"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Yasaklananlar listesi yenileniyor..."
+msgstr "Yasaklama listesi yenileniyor..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -404,11 +404,11 @@ msgstr "Davet listesini yenile"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Davet Edilen Kullanıcı"
+msgstr "Davet edilen kullanıcı"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Tarafından davet edildi"
+msgstr "Davet eden:"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
@@ -456,7 +456,7 @@ msgstr "Moderatörlü sohbet"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Sadece davetsel"
+msgstr "Sadece davetiye"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -496,7 +496,7 @@ msgstr "Kanal Ayarları"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Kanala Gir"
+msgstr "Kanala Katıl"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -556,7 +556,7 @@ msgstr "Kodlama"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Raw'ı Göster"
+msgstr "Hamı Göster"
 
 #: Direct websocket
 msgid "settings_use_websocket"
@@ -584,7 +584,7 @@ msgstr "{{count}} kişi burada"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Kullanıcıları filtrele"
+msgstr "Kanaldaki kullanıcıları filtrele"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -752,7 +752,7 @@ msgstr "Yeni bir takma ad girin..."
 
 #: This is you!
 msgid "user_you"
-msgstr ""
+msgstr "Bu sizsiniz!"
 
 #: Account name: {{user}}
 msgid "user_account"
