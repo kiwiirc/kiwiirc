@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2020-02-21 16:02\n"
+"PO-Revision-Date: 2020-02-22 01:00\n"
 
 #: Start
 msgid "start_button"
@@ -752,7 +752,7 @@ msgstr "Voer nieuwe bijnaam in..."
 
 #: This is you!
 msgid "user_you"
-msgstr ""
+msgstr "Dit ben jij!"
 
 #: Account name: {{user}}
 msgid "user_account"
