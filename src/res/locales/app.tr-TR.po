@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-02-22 13:31\n"
+"PO-Revision-Date: 2020-02-22 13:41\n"
 
 #: Start
 msgid "start_button"
@@ -604,7 +604,7 @@ msgstr "Şu anda bağlı değilsin!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Bağlantı Ayarları"
+msgstr "Bağlantı ayarları"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
@@ -672,7 +672,7 @@ msgstr "Vurgulamalar"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Henüz kimse sizden bahsetmedi."
+msgstr "Henüz kimse sizden bahsetmedi..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -680,11 +680,11 @@ msgstr "Kiwi IRC başlatılırken bir hata oluştu :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Kiwi IRC'i doğru kurduğunuzdan ve konfigürasyonun yüklenebildiğinden emin olun."
+msgstr "Kiwi IRC'i doğru kurduğunuzdan ve yapılandırmanın yüklenebildiğinden emin olun."
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Ayrıl {{name}}"
+msgstr "{{name}} ayrıl"
 
 #: Your account
 msgid "state_account"
@@ -704,7 +704,7 @@ msgstr "Henüz ağ yok."
 
 #: Add one?
 msgid "state_add"
-msgstr "Bir tane ekle?"
+msgstr "Bir tane eklensin mi?"
 
 #: Available networks
 msgid "state_available"
@@ -720,7 +720,7 @@ msgstr "Yeni Ağ"
 
 #: No Network
 msgid "no_network"
-msgstr "Ağ yok"
+msgstr "Ağ Yok"
 
 #: Configure network
 msgid "state_configure"
@@ -732,7 +732,7 @@ msgstr "Bağlı değil."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Yeni kanal #kanal"
+msgstr "Yeni #kanal katılın"
 
 #: Filter Channels
 msgid "filter_channels"
@@ -740,11 +740,11 @@ msgstr "Kanalları Filtrele"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Daha fazla kanal bul"
+msgstr "Daha Fazla Kanal Bul"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Takma ad değiş"
+msgstr "Takma ad değiştir"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
@@ -772,7 +772,7 @@ msgstr "Yardım için müsait"
 
 #: Is an operator
 msgid "user_op"
-msgstr "IRC operatör"
+msgstr "Bir operatör"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
@@ -968,7 +968,7 @@ msgstr "Birini görmezden gelmeyi bırak"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Bir zar at"
+msgstr "Bir Zar At"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
@@ -976,7 +976,7 @@ msgstr "{{sides}} taraflı bir zar atar ve {{number}} alır"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "IRC İstemciniz."
+msgstr "IRC istemciniz"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
@@ -988,11 +988,11 @@ msgstr "Geri döndüğünde burada olacaklar."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Ağ ekle"
+msgstr "Bir Ağ Ekle"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "{{network}}'e bağlanmaya çalışıyorsunuz"
+msgstr "{{network}} ağına bağlanmaya çalışıyorsunuz"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
@@ -1032,7 +1032,7 @@ msgstr "Bağlantı kesildi"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "{{network}}'e Bağlandı!"
+msgstr "{{network}} ağına bağlandı!"
 
 #: {{nick}} has joined
 msgid "has_joined"
