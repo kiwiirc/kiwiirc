@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-02-23 06:21\n"
+"PO-Revision-Date: 2020-02-23 09:30\n"
 
 #: Start
 msgid "start_button"
@@ -444,7 +444,7 @@ msgstr "Gonbidapena gehitu"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "Edozein erabiltzaile erregistratua "
+msgstr "(Edozein erabiltzaile erregistratua)"
 
 #: Topic
 msgid "channel_topic"
