@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-02-23 05:51\n"
+"PO-Revision-Date: 2020-02-23 06:01\n"
 
 #: Start
 msgid "start_button"
@@ -436,15 +436,15 @@ msgstr "Guztiak sartzea onartuak daude"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Bakarrik erabiltzaile erregistratuak sar daitezke"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Gonbidapena gehitu"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "Edozein erabiltzaile erregistratua "
 
 #: Topic
 msgid "channel_topic"
@@ -560,7 +560,7 @@ msgstr "Jatorrizkoa erakustea"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr ""
+msgstr "Websocket zuzena"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -748,11 +748,11 @@ msgstr "Ezizena aldatu"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Sartu ezizen berria..."
 
 #: This is you!
 msgid "user_you"
-msgstr ""
+msgstr "Hau zu zara!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -808,19 +808,19 @@ msgstr "Kanaleko Botatzea + Blokeatzea"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr ""
+msgstr "Mesedez zehaztu kanal bat sartzeko. ad. /join #example"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "{{nick}} ezizena dagoeneko erabiltzen ari da!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Ezizen bat sartu behar duzu"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "Ezizena ezin da zenbaki batekin hasi"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -876,47 +876,47 @@ msgstr "{{nick}} doitu du {{mode}} {{target}}-en"
 
 #: Send a message
 msgid "command_msg"
-msgstr ""
+msgstr "Bidali mezu bat"
 
 #: Do something physical
 msgid "command_action"
-msgstr ""
+msgstr "Egizu zerbait fisikoa"
 
 #: Join a channel
 msgid "command_join"
-msgstr ""
+msgstr "Sartu kanal batean"
 
 #: Leave a channel
 msgid "command_part"
-msgstr ""
+msgstr "Irten kanal batetik"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr ""
+msgstr "Irten, ondoren kanal batean berriro sartu"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr ""
+msgstr "Zure ezizena aldatu"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr ""
+msgstr "Hasi elkarrizketa pribatu bat norbaitekin"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr ""
+msgstr "Kanalera norbait gonbidatu"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr ""
+msgstr "Kanalari gai bat ipini"
 
 #: Send a notice
 msgid "command_notice"
-msgstr ""
+msgstr "Abisu bat bidali"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr ""
+msgstr "Bidali komando berri bat IRC zerbitzarira"
 
 #: Kick somebody from the channel
 msgid "command_kick"
