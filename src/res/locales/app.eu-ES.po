@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-02-23 06:01\n"
+"PO-Revision-Date: 2020-02-23 06:11\n"
 
 #: Start
 msgid "start_button"
@@ -920,55 +920,55 @@ msgstr "Bidali komando berri bat IRC zerbitzarira"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr ""
+msgstr "Kanporatu norbait kanaletik"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr ""
+msgstr "Ezabatu leiho honetako mezu guztiak"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr ""
+msgstr "Norbaiti CTCP komando bat bidali"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr ""
+msgstr "IRC zerbitzariatik deskonektatu"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr ""
+msgstr "IRC sare berri batera konektatuta "
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr ""
+msgstr "Norbaiti buruzko informazioa eskatu"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr ""
+msgstr "Berriki deskonektatu den norbaiti buruzko informazioa eskatu"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr ""
+msgstr "Kanpoan zaudela ipini"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Aktiboa bezala ipini"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr ""
+msgstr "Zure kodifikazio konexioa aldatu"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr ""
+msgstr "Norbaiten mezuei kasurik ez egin"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr ""
+msgstr "Norbaiti kasurik ez egiteari utzi"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr ""
+msgstr "Dadoa bota"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
