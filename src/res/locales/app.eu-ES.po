@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-02-23 06:11\n"
+"PO-Revision-Date: 2020-02-23 06:21\n"
 
 #: Start
 msgid "start_button"
@@ -56,7 +56,7 @@ msgstr "Erabiltzaile kanporatuak"
 
 #: Invited Users
 msgid "invited"
-msgstr "gonbidatua"
+msgstr "Gonbidatua"
 
 #: Notifications
 msgid "notifications"
@@ -972,7 +972,7 @@ msgstr "Dadoa bota"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "dadoa {{sides}} bota eta {{number}} atera duzu"
 
 #: Your IRC client
 msgid "personal_client"
@@ -992,19 +992,19 @@ msgstr "Sare bat gehitzen du"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr ""
+msgstr "{{network}} sarera konektatzen ari zara"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr ""
+msgstr "Sarea gehitu da Kiwi existitzen duen leiho batera"
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr ""
+msgstr "Gehitu sarea existitzen duen Kiwi leiho batera"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr ""
+msgstr "Konektatu aldi baterako sare honetara"
 
 #: Saved networks
 msgid "personal_saved"
