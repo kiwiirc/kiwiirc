@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-02-23 05:41\n"
+"PO-Revision-Date: 2020-02-23 05:51\n"
 
 #: Start
 msgid "start_button"
@@ -168,7 +168,7 @@ msgstr "Kanala"
 
 #: Away
 msgid "away"
-msgstr "kanpoan"
+msgstr "Kanpoan"
 
 #: {{count}} week
 msgid "week"
@@ -216,7 +216,7 @@ msgstr "Orokorra"
 
 #: Language
 msgid "settings_language"
-msgstr ""
+msgstr "Hizkuntza"
 
 #: Theme
 msgid "settings_theme"
@@ -240,7 +240,7 @@ msgstr "Monospace iturria erabiltzea"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Erabili Kiwi lehenetsitako IRC bezero gisa "
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -284,7 +284,7 @@ msgstr "Ezizena mezuetan koloratzea"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr ""
+msgstr "Partekatu mezu bat idazten dudanean"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -400,39 +400,39 @@ msgstr "Ez dago inor kanporatuta"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Berretsi gonbidatuen zerrenda"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Erabiltzaile gonbidatua"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Gonbidatua"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Berretsi gonbidatuen zerrenda..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Inor ez da gonbidatu!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Hau kanal publikoa da."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Bakarrik erabiltzaile gonbidatuak sartu daitezke"
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Bakarrik erabiltzaile gonbidatuak onartuak daude"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Guztiak sartzea onartuak daude"
 
 #: Only registered users can join
 msgid "invite_registered_only"
@@ -712,15 +712,15 @@ msgstr "Sare libreak"
 
 #: Add Network
 msgid "add_network"
-msgstr ""
+msgstr "Gehitu sarea"
 
 #: New Network
 msgid "new_network"
-msgstr ""
+msgstr "Sare berria"
 
 #: No Network
 msgid "no_network"
-msgstr ""
+msgstr "Sarerik ez"
 
 #: Configure network
 msgid "state_configure"
