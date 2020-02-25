@@ -1,16 +1,14 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: hu\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2020-02-21 16:02\n"
 
 #: Start
 msgid "start_button"
@@ -750,6 +748,10 @@ msgstr ""
 
 #: Enter new nickname...
 msgid "enter_new_nick"
+msgstr ""
+
+#: This is you!
+msgid "user_you"
 msgstr ""
 
 #: Account name: {{user}}

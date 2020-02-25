@@ -1,16 +1,14 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: bs\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2019-09-21 00:00\n"
+"PO-Revision-Date: 2020-02-24 21:21\n"
 
 #: Start
 msgid "start_button"
@@ -751,6 +749,10 @@ msgstr "Promijeni nadimak"
 #: Enter new nickname...
 msgid "enter_new_nick"
 msgstr "Upiši novi nadimak..."
+
+#: This is you!
+msgid "user_you"
+msgstr "To ste vi!"
 
 #: Account name: {{user}}
 msgid "user_account"

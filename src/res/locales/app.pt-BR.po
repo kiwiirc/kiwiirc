@@ -1,16 +1,14 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: pt-BR\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2020-02-21 16:01\n"
 
 #: Start
 msgid "start_button"
@@ -752,6 +750,10 @@ msgstr "Mudar de nick"
 msgid "enter_new_nick"
 msgstr "Introduza o novo nick..."
 
+#: This is you!
+msgid "user_you"
+msgstr ""
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "Nome de conta: {{user}}"
@@ -934,7 +936,7 @@ msgstr "Desconectar do servidor de IRC"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr ""
+msgstr "Ligar a uma nova rede de IRC"
 
 #: Request information on somebody
 msgid "command_whois"
