@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-userbox">
         <span v-if="isSelf" class="kiwi-userbox-selfprofile">
-            This is you!
+            {{ $t('user_you') }}
         </span>
         <div class="kiwi-userbox-header">
             <h3>
@@ -13,7 +13,7 @@
 
         <div class="kiwi-userbox-basicinfo">
             <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_realname') }}:</span>
-            <span class="kiwi-userbox-basicinfo-data">{{ user.realname }} </span>
+            <span class="kiwi-userbox-basicinfo-data" v-html="formattedRealname"/>
         </div>
 
         <p class="kiwi-userbox-actions">
@@ -136,6 +136,8 @@
 import * as ipRegex from 'ip-regex';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
+import toHtml from '@/libs/renderers/Html';
+import parseMessage from '@/libs/MessageParser';
 import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
@@ -190,6 +192,11 @@ export default {
             }
 
             return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
+        },
+        formattedRealname() {
+            let blocks = parseMessage(this.user.realname || '', { extras: false });
+            let content = toHtml(blocks, false);
+            return content;
         },
         isUserOnBuffer: function isUserOnBuffer() {
             if (!this.buffer) {

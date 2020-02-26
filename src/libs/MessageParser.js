@@ -1,3 +1,5 @@
+'kiwi public';
+
 import { trim } from 'lodash';
 
 import state from '@/libs/state';

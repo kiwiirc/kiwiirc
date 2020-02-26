@@ -825,6 +825,10 @@ msgstr "Enter new nickname..."
 
 #: UserBox $t('user_')
 
+#: This is you!
+msgid "user_you"
+msgstr "This is you!"
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "Account name: {{user}}"

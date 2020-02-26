@@ -1,16 +1,14 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: gl\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2019-09-17 21:21\n"
+"PO-Revision-Date: 2020-02-21 16:40\n"
 
 #: Start
 msgid "start_button"
@@ -751,6 +749,10 @@ msgstr "Cambiar o alcume"
 #: Enter new nickname...
 msgid "enter_new_nick"
 msgstr "Escribe o novo alcume..."
+
+#: This is you!
+msgid "user_you"
+msgstr "Este é o teu!"
 
 #: Account name: {{user}}
 msgid "user_account"

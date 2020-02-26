@@ -1,16 +1,14 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: ja\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2020-02-21 16:01\n"
 
 #: Start
 msgid "start_button"
@@ -18,7 +16,7 @@ msgstr ""
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr ""
+msgstr "Kiwi IRCへようこそ"
 
 #: Close
 msgid "close"
@@ -66,11 +64,11 @@ msgstr ""
 
 #: Username
 msgid "username"
-msgstr ""
+msgstr "ユーザー名"
 
 #: Password
 msgid "password"
-msgstr ""
+msgstr "パスワード"
 
 #: I have a password
 msgid "password_have"
@@ -90,15 +88,15 @@ msgstr ""
 
 #: Messages
 msgid "messages"
-msgstr ""
+msgstr "メッセージ"
 
 #: Network
 msgid "network"
-msgstr ""
+msgstr "ネットワーク"
 
 #: ZNC
 msgid "znc"
-msgstr ""
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
@@ -114,19 +112,19 @@ msgstr ""
 
 #: OK
 msgid "ok"
-msgstr ""
+msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: Yes
 msgid "yes"
-msgstr ""
+msgstr "はい"
 
 #: No
 msgid "no"
-msgstr ""
+msgstr "いいえ"
 
 #: Not found.
 msgid "not_found"
@@ -190,19 +188,19 @@ msgstr ""
 
 #: {{count}} hour
 msgid "hour"
-msgstr ""
+msgstr "時"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr ""
+msgstr "時"
 
 #: {{count}} minute
 msgid "minute"
-msgstr ""
+msgstr "分"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr ""
+msgstr "分"
 
 #: {{count}} second
 msgid "second"
@@ -750,6 +748,10 @@ msgstr ""
 
 #: Enter new nickname...
 msgid "enter_new_nick"
+msgstr ""
+
+#: This is you!
+msgid "user_you"
 msgstr ""
 
 #: Account name: {{user}}
