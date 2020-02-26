@@ -71,8 +71,8 @@ export default {
 <style>
 
 .kiwi-nicklist-user {
-    line-height: 32px;
-    padding: 0 12px 6px 12px;
+    line-height: 26px;
+    padding: 0 12px 0 12px;
     border-left: 4px solid;
     margin: 0 0 0 0;
     position: relative;
@@ -82,6 +82,11 @@ export default {
     white-space: nowrap;
     display: flex;
     align-items: center;
+}
+
+.kiwi-nicklist--avatars .kiwi-nicklist-user {
+    line-height: 32px;
+    padding-bottom: 6px;
 }
 
 .kiwi-nicklist-user-nick {

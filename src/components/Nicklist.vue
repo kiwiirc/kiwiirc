@@ -1,5 +1,11 @@
 <template>
-    <div :class="{'kiwi-nicklist--filtering': filter_visible }" class="kiwi-nicklist">
+    <div
+        :class="{
+            'kiwi-nicklist--filtering': filter_visible,
+            'kiwi-nicklist--avatars': shouldShowAvatars,
+        }"
+        class="kiwi-nicklist"
+    >
         <div class="kiwi-nicklist-usercount" @click="toggleUserFilter">
             <span>
                 {{
@@ -87,6 +93,9 @@ export default {
         };
     },
     computed: {
+        shouldShowAvatars() {
+            return this.buffer.setting('nicklist_avatars');
+        },
         sortedUsers() {
             // Get a list of network prefixes and give them a rank number
             let netPrefixes = this.network.ircClient.network.options.PREFIX;
