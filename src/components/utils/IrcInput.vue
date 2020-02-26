@@ -224,6 +224,13 @@ export default Vue.component('irc-input', {
                     } else if (name === 'u') {
                         textValue += '\x1f';
                         addToggle('\x1f');
+                    } else if (name === 'div' || name === 'br') {
+                        // divs and breaks are both considered newlines. For each line we need to
+                        // close all current toggles and then reopen them for the next so that the
+                        // styles continue .
+                        textValue += getToggles();
+                        textValue += '\n';
+                        textValue += getToggles();
                     }
 
                     if (attribs.src && this.code_map[attribs.src]) {
