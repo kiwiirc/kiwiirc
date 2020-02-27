@@ -1,3 +1,9 @@
+# KiwiIRC translations
+msgid ""
+msgstr ""
+"X-Crowdin-SourceKey: msgstr\n"
+
+
 #: Common Strings
 
 #: Start
