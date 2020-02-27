@@ -11,91 +11,91 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-02-27 18:45\n"
+"PO-Revision-Date: 2020-02-27 20:28\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "Начало"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "Добре дошли в Kiwi IRC! "
 
 #: Close
 msgid "close"
-msgstr "Close"
+msgstr "Затвори"
 
 #: Connect
 msgid "connect"
-msgstr "Connect"
+msgstr "Свързване"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Connecting..."
+msgstr "Свързване..."
 
 #: Connected
 msgid "connected"
-msgstr "Connected"
+msgstr "Свързан"
 
 #: Settings
 msgid "settings"
-msgstr "Settings"
+msgstr "Настройки"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Kiwi Настройки"
 
 #: Channels
 msgid "channels"
-msgstr "Channels"
+msgstr "Канали"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Достъп"
 
 #: Banned Users
 msgid "banned"
-msgstr "Banned Users"
+msgstr "Изгонени"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "Поканени потребители"
 
 #: Notifications
 msgid "notifications"
-msgstr "Notifications"
+msgstr "Известия"
 
 #: Username
 msgid "username"
-msgstr "Username"
+msgstr "Потребителско име"
 
 #: Password
 msgid "password"
-msgstr "Password"
+msgstr "Парола"
 
 #: I have a password
 msgid "password_have"
-msgstr "I have a password"
+msgstr "Имам парола."
 
 #: Server
 msgid "server"
-msgstr "Server"
+msgstr "Сървър"
 
 #: Nick
 msgid "nick"
-msgstr "Nick"
+msgstr "Потребителско име"
 
 #: Channel
 msgid "channel"
-msgstr "Channel"
+msgstr "Канал"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "Съобщения"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "IRC Мрежа"
 
 #: ZNC
 msgid "znc"
@@ -103,655 +103,655 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logging in..."
+msgstr "Влизане..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Invalid login"
+msgstr "Неправилно вписване"
 
 #: Search...
 msgid "do_search"
-msgstr "Search..."
+msgstr "Търси..."
 
 #: OK
 msgid "ok"
-msgstr "OK"
+msgstr "ОК"
 
 #: Cancel
 msgid "cancel"
-msgstr "Cancel"
+msgstr "Откажи"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "Да"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "Не"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "Не е намерен."
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "Внимание!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "Това ще затвори всички разговори в Уебчата. Наистина ли искате да затворите този прозорец?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "Истинско име"
 
 #: Status
 msgid "whois_status"
-msgstr "Status"
+msgstr "Статус"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Is available"
+msgstr "на линия"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Send a message"
+msgstr "Изпрати съобщение"
 
 #: More information
 msgid "more_information"
-msgstr "More information"
+msgstr "Повече инфомация"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignore user"
+msgstr "Добави в игнора"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Channel"
+msgstr "Автоматично влизане в канали"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "Далеч"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "седмица"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "седмици"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "ден"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} days"
+msgstr "дни"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "час"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "часа"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "минута"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutes"
+msgstr "минути"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "секунда"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "секунди"
 
 #: General
 msgid "settings_general"
-msgstr "General"
+msgstr "Главни настройки"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "Език"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "Настройки на темата"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "Oпресняване на темите"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "Адрес на темата"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "Разпределение на съобщенията"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Use monospace"
+msgstr "Използвайте Monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "Използвайте Kiwi като IRC клиент по подразбиране"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Traditional IRC layout"
+msgstr "Традиционно IRC оформление"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Show autocomplete list"
+msgstr "Показване на списъка за автоматично довършване"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Chat Messages"
+msgstr "Настойки за Съобщенията"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Show timestamps"
+msgstr "Покажи времето"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Use 24-hour timestamps"
+msgstr "Показване на 24h време"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Show emoticons"
+msgstr "Покажи емотикони"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Block new private messages"
+msgstr "Блокирай нови лични съобщения"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Messages in scrollback"
+msgstr "съобщения в историята"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Extra formatting"
+msgstr "Допълнително форматиране"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Colour nicknames in messages"
+msgstr "Цветни никове в съобщенията"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "Споделете, когато пишете съобщение "
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Include join/part messages as activity"
+msgstr "Добави влизания/излизаня съобщения като активност"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Mute sound notifications"
+msgstr "Заглушаване на звуковите известия"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space seperated)"
+msgstr "Персонализирано осветяване (разделяйте с интервал)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Aliases"
+msgstr "Алиасес"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "Какво представляват псевдонимите"
 
 #: Send Message
 msgid "send_message"
-msgstr "Send Message"
+msgstr "Изпрати съобщение"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Enter Channel Key"
+msgstr "Въведете ключа на канала"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "се присъедини отново {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Notify me when"
+msgstr "Кога да ме известява"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "All messages"
+msgstr "При всяко съобщение"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "I am mentioned"
+msgstr "Само когато ме споменат."
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Never"
+msgstr "Никога"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Mute sounds"
+msgstr "Забрани всички звукови известия"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide count"
+msgstr "Скриване на броя на непрочетените съобщения"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Operator tools"
+msgstr "Оп Инструменти"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Default ban mask"
+msgstr "Бан маска по подразбиране"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Default kick reason"
+msgstr "Причита по подразбиране за KICK"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "Разширени настройки"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Monsters be here, only click this button if you know what you are doing"
+msgstr "Чудовищата са тук, кликнете само върху този бутон, ако знаете какво правите"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "Активирайте Разширени настройки"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Danger Zone: Changing some of these settings may break things!"
+msgstr "Опасна зона: Промяната на някои от тези настройки може да наруши нещата!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "Рестартиране"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "Филтриране"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Refresh banlist"
+msgstr "Опресняване на Бан листата"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Banned user"
+msgstr "Списък с банове"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Banned by"
+msgstr "Изгонен от"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Refreshing banlist..."
+msgstr "Опресняване на Бан листата"
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Nobody is banned!"
+msgstr "Все още няма баннати потребители"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "Презареди листа с поканите"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Invited user"
+msgstr "Поканени потребители"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Invited by"
+msgstr "Поканен от"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
+msgstr "Обновяване на листа с покани"
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Nobody is invited!"
+msgstr "Никой не е поканен!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "Това е публичен канал."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Only invited users can join."
+msgstr "Само поканени потребители могат да влязат."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Only allow invited users"
+msgstr "Разрешено само за поканени потребители"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "Позволи на всеки да влиза "
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "Само регистрирани потребители могат да влизат"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "Добави покана"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "(Всеки регистриран потребител)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topic"
+msgstr "Темата на деня"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Moderated chat"
+msgstr "Заключване на канала за изпращане на съобщения."
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Invite only"
+msgstr "Само с покана"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Only moderators can change the topic"
+msgstr "Забрана за смяна на Topic"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Block messages from outside this channel"
+msgstr "Блокиране на външни съобщения"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to update the channel list"
+msgstr "Кликнете върху бутона за опресняване, за да актуализирате списъка с канали"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, try again later"
+msgstr "Няма намерени канали, опитайте отново по-късно"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Welcome to Kiwi IRC! Select a channel on the left."
+msgstr "Добре дошли в Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Show statebrowser"
+msgstr "Покажи statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "Скриване на топика"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "Покажи топика"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "Настройки на канала"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Join Channel"
+msgstr "Влез в #канал"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Not Connected"
+msgstr "Не сте свързан"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Private conversation with {{user}}"
+msgstr "Частен разговор с {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "Наистина ли искате  да напуснете канала?"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Send a message..."
+msgstr "Изпрати съобщение.... "
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Loading {{url}}..."
+msgstr "Зареждане на  {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Load previous messages"
+msgstr "Зареждане на предишни"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Unread Messages"
+msgstr "Непрочетени съобщения"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Server details"
+msgstr "Мрежови настройки"
 
 #: Port
 msgid "settings_port"
-msgstr "Port"
+msgstr "Порт"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Other networks on this ZNC account will be listed in the network list"
+msgstr "Други мрежи за този ZNC акаунт"
 
 #: Your details
 msgid "settings_your_details"
-msgstr "Your details"
+msgstr "Лична информация"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Прякор"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Advanced"
+msgstr "Разширени настройки"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Encoding"
+msgstr "Енкодинг"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Show Raw"
+msgstr "Показване на raw "
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "Директен УебСокет"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Run commands when connected"
+msgstr "Изпълняване на команда при свързване"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Danger Zone"
+msgstr "Опасна зона"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Remove network"
+msgstr "Премахни тази мрежа"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} person here"
+msgstr "{{count}} Потребителя"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "{{count}} people here"
+msgstr "{{count}} Потребителя"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "filter users in channel"
+msgstr "Филтриране на юзъри в канала"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Reconnect to join {{channel}}"
+msgstr "влезте отново за да чатите в {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Reconnect to {{network}} to start talking"
+msgstr "Влезте отново в  {{network}} за да  общувате отново"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Reconnect to continue talking with {{user}}"
+msgstr "Влезте отново за продължите разговора си с {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "You are not currently connected!"
+msgstr "Понастоящем не сте свързани!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Connection settings"
+msgstr "Настройки за свързване"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "We couldn't connect to that server :("
+msgstr "Не можaхме да се свържем с този сървър :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "Свържете се към мрежата"
 
 #: Close options
 msgid "side_close"
-msgstr "Close options"
+msgstr "Затвори настройките"
 
 #: Channel options
 msgid "side_options"
-msgstr "Channel options"
+msgstr "Опции на канала"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Your settings"
+msgstr "Твойте настройки"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Show when people join"
+msgstr "Показва кога влизат потребители в канала"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Show when channel topic changes"
+msgstr "Показва кога се променя темата на канала"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Show when users change their nicks"
+msgstr "Показва кога портебителя си сменя ник-а."
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Show when users change channel modes"
+msgstr "Показва кога потребителя променя каналните модове"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Extra message formatting"
+msgstr "Допълнтите настройки за съобщения"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Nick colours in the list"
+msgstr "Цветни  никове в списъка с потребители"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "No buffer set"
+msgstr "Няма зададен буфер"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "There is no topic for this channel"
+msgstr "Няма тема за този канал"
 
 #: About
 msgid "about"
-msgstr "About"
+msgstr "Относно"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Created at {{when}}"
+msgstr "Създаден на {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Акценти"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nobody has mentioned you yet..."
+msgstr "Никой все още не ви споменал ..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "There was an error starting Kiwi IRC :("
+msgstr "Грешка при стартирането"
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded"
+msgstr "Този текст няма информация за контекста. Текстът се използва в application.po. Позиция в файл на ред: 87"
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Leave {{name}}"
+msgstr "Премахни {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr "Your account"
+msgstr "Твоят Акаунт"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr "Your settings and networks will be remembered on this computer."
+msgstr "Вашите настройки и мрежи ще бъдат запаметени на този компютър"
 
 #: Forget me
 msgid "state_forget"
-msgstr "Forget me"
+msgstr "Забрани"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "No networks here yet."
+msgstr "Все още няма добавени мрежи тук."
 
 #: Add one?
 msgid "state_add"
-msgstr "Add one?"
+msgstr "Добави"
 
 #: Available networks
 msgid "state_available"
-msgstr "Available networks"
+msgstr "Налични мрежи"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "Добави Мрежа"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "нова мрежа"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "Няма мрежа"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Configure network"
+msgstr "Настройване на IRC мрежа"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Not connected."
+msgstr "Не сте свързан"
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Join new #channel"
+msgstr "Влез в нов #канал"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "Филтър на канал"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find more channels"
+msgstr "Намери повече канали"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Change nick"
+msgstr "Промяна на ник"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "Въведете нов прякор..."
 
 #: This is you!
 msgid "user_you"
@@ -759,259 +759,259 @@ msgstr "This is you!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Account name: {{user}}"
+msgstr "Потребителско име: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Real name: {{realname}}"
+msgstr "Истинско име: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Is a bot"
+msgstr "Е бот"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is avaiable for help"
+msgstr "Е на линия за да ви помогне"
 
 #: Is an operator
 msgid "user_op"
-msgstr "Is an operator"
+msgstr "Оператор"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Connected to {{server}} {{info}}"
+msgstr "Свързан към сървър: {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Securely connected via SSL/TLS"
+msgstr "Използва защитена връзка: SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "In channels {{channels}}"
+msgstr "Канали в които е: {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr "Access level"
+msgstr "Ниво на достъп"
 
 #: Normal
 msgid "user_normal"
-msgstr "Normal"
+msgstr "Нормален Потребител"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Kick from the channel"
+msgstr "Ритни от канала"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Ban from the channel"
+msgstr "Бан от канал"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Ban and kick from the channel"
+msgstr "Забрани и премахни от канала"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Please specify a channel to join. eg /join #example"
+msgstr "Моля, посочете канал, към който да се присъедините. напр. / join #example"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "Този прякор {{nick}} вече се ползва!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "Трябва да въведете нов прякор"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "Прякорът не трябва да почва с цифри"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} gives ops to {{target}}"
+msgstr "{{nick}} дава оп на {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} takes ops from {{target}}"
+msgstr "{{nick}} премахна оп от {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} gives half-ops to {{target}}"
+msgstr "{{nick}} дава халфоп на {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} takes half-ops from {{target}}"
+msgstr "{{nick}} премахна халфоп от {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} gives voice to {{target}}"
+msgstr "{{nick}} дава войс на {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} takes voice from {{target}}"
+msgstr "{{nick}} премахва войс от {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} gives admin to {{target}}"
+msgstr "{{nick}} дава админ на {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} takes admin from {{target}}"
+msgstr "{{nick}} премахва админ от {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} gives owner to {{target}}"
+msgstr "{{nick}} дава оунър на {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} takes owner from {{target}}"
+msgstr "{{nick}} премахва оунър на {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} has banned {{target}}"
+msgstr "{{nick}} има забрана от {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} has unbanned {{target}}"
+msgstr "{{nick}} премахва забраната в/у {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr "{{nick}} sets {{mode}} on {{target}}"
+msgstr "{{nick}} задава {{mode}} на {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Send a message"
+msgstr "Изпрати съобщение"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Do something physical"
+msgstr "Направете нещо физическо"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Join a channel"
+msgstr "Присъединете се към канал"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Leave a channel"
+msgstr "Напуснете канал"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Leave, then re-join a channel"
+msgstr "Напуснете, след което отново се присъединете към канал"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Change your nickname"
+msgstr "Променете псевдонима си"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr "Start a private conversation with someone"
+msgstr "Започнете частен разговор с някого"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Invite somebody into the channel"
+msgstr "Поканете някого в канала"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Set the topic for this channel"
+msgstr "Задайте темата за този канал"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Send a notice"
+msgstr "Изпращане на известие"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "Send a raw command to the IRC server"
+msgstr "изпращане на сурова команда към IRC сървъра"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Kick somebody from the channel"
+msgstr "Изгонете някого от канала"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Clear all messages from this window"
+msgstr "Изчистване на всички съобщения от този прозорец"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr "Send a CTCP command to somebody"
+msgstr "Изпратете команда на CTCP на някого"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Disconnect from the IRC server"
+msgstr "Прекъснете връзката с IRC сървъра"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Connect to a new IRC network"
+msgstr "Свържете се с нова IRC мрежа "
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Request information on somebody"
+msgstr "Искайте информация за някого"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr "Request information on somebody that disconnected recently"
+msgstr "Искайте информация за някой, който е прекъснал наскоро"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "Маркирайте себе си като далеч от компютъра"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "Задайте, че сте активен"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Change your connection encoding"
+msgstr "Променете кодирането на връзката"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr "Ignore messages from somebody"
+msgstr "Игнорирайте съобщенията от някого"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Stop ignoring somebody"
+msgstr "Престани да игнорираш някого"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Roll a Dice"
+msgstr "Завърти заровете"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
+msgstr "Разгъва {{sides}} зарове и получавате {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Your IRC Client."
+msgstr "Твоят IRC клиент"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Add your networks. Join your channels."
+msgstr "Добави своя мрежа. Влез в твоите канали."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "They will be here when you come back."
+msgstr "Те ще бъдат тук, когато се върнете."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Add a Network"
+msgstr "Добави IRC мрежа"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "You are trying to connect to {{network}}"
+msgstr "Опитвате се да се свържете с {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Network has been added to your existing Kiwi window."
+msgstr "Мрежата е добавена към съществуващия ви прозорец."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Add network to existing Kiwi window"
+msgstr "Добавете мрежа към съществуващия прозорец на Kiwi"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Temporarily connect to this network"
+msgstr "Временно се свържете с тази мрежа"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Saved networks"
+msgstr "Запази IRC мрежа"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
@@ -1023,7 +1023,7 @@ msgstr "Direct websockets. No Kiwi server or webirc involved."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
+msgstr " (Благодарности на Adam @Rizon за помощта относно websocket server!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
@@ -1031,41 +1031,41 @@ msgstr "Give the developer version of Kiwi IRC a try!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "Изключен"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Connected to {{network}}!"
+msgstr "Свързан с"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} has joined"
+msgstr " {{nick}} се присъедини"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} kicked you from {{channel}}"
+msgstr " {{nick}} те ритна от {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
+msgstr " {{nick}}  беше изхвърлен от  {{channel}} от {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} has left"
+msgstr "{{nick}} напусна "
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} invited you to join {{channel}}"
+msgstr "{{nick}} ви покани да се присъедините към {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
+msgstr "Прякор {{nick}} вече се използва. Опитайте нов {{newnick}} ..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} is now known as {{newnick}}"
+msgstr "{{nick}} сега е известен като {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} changed the topic to: {{topic}}"
+msgstr "промени темата на: {{topic}}"
 
