@@ -1122,7 +1122,7 @@ function clientMiddleware(state, network) {
 
             if (event.nick) {
                 messageBody = TextFormatting.formatAndT(
-                    'Topic',
+                    'channel_topic',
                     null,
                     '{{nick}} changed the topic to: {{topic}}',
                     { nick: event.nick, topic: event.topic },
