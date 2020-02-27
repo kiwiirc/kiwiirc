@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2020-02-27 18:45\n"
+"PO-Revision-Date: 2020-02-27 19:01\n"
 
 #: Start
 msgid "start_button"
@@ -131,7 +131,7 @@ msgstr "No"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "Not found"
 
 #: Warning!
 msgid "warning"
@@ -139,7 +139,7 @@ msgstr "Warning!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "This will close all KiwiIRC conversations. Are you sure you want to close this window?"
 
 #: Real name
 msgid "whois_realname"
@@ -299,7 +299,7 @@ msgstr "Mute sound notifications"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space seperated)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -307,7 +307,7 @@ msgstr "Aliases"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "What are Aliases?"
 
 #: Send Message
 msgid "send_message"
@@ -315,7 +315,7 @@ msgstr "Send Message"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Enter Channel Key"
+msgstr "Enter the channel key:"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -343,11 +343,11 @@ msgstr "Mute sounds"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide count"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Operator tools"
+msgstr "Operator Tools"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
@@ -587,7 +587,7 @@ msgstr "{{count}} people here"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "filter users in channel"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -739,11 +739,11 @@ msgstr "Join new #channel"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "Filter Channels"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find more channels"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"
@@ -771,7 +771,7 @@ msgstr "Is a bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is avaiable for help"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"
@@ -787,7 +787,7 @@ msgstr "Securely connected via SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "In channels {{channels}}"
+msgstr "Also in channels {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -951,7 +951,7 @@ msgstr "Request information on somebody that disconnected recently"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "Mark yourself as away"
 
 #: Set yourself as active
 msgid "command_back"
