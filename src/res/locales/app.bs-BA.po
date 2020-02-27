@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2020-02-27 18:45\n"
+"PO-Revision-Date: 2020-02-27 20:28\n"
 
 #: Start
 msgid "start_button"
@@ -19,63 +19,63 @@ msgstr "Start"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "Dobrodošli na Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr "Close"
+msgstr "Zatvori"
 
 #: Connect
 msgid "connect"
-msgstr "Connect"
+msgstr "Poveži se"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Connecting..."
+msgstr "Povezivanje..."
 
 #: Connected
 msgid "connected"
-msgstr "Connected"
+msgstr "Povezano"
 
 #: Settings
 msgid "settings"
-msgstr "Settings"
+msgstr "Podešavanja"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Kiwi Podešavanja"
 
 #: Channels
 msgid "channels"
-msgstr "Channels"
+msgstr "Kanali"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Pristup"
 
 #: Banned Users
 msgid "banned"
-msgstr "Banned Users"
+msgstr "Banovani korisnici"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "Pozvani"
 
 #: Notifications
 msgid "notifications"
-msgstr "Notifications"
+msgstr "Obavještenja"
 
 #: Username
 msgid "username"
-msgstr "Username"
+msgstr "Korisničko ime"
 
 #: Password
 msgid "password"
-msgstr "Password"
+msgstr "Šifra"
 
 #: I have a password
 msgid "password_have"
-msgstr "I have a password"
+msgstr "Imam šifru"
 
 #: Server
 msgid "server"
@@ -83,19 +83,19 @@ msgstr "Server"
 
 #: Nick
 msgid "nick"
-msgstr "Nick"
+msgstr "Nadimak"
 
 #: Channel
 msgid "channel"
-msgstr "Channel"
+msgstr "Kanal"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "Poruke"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "Mreža"
 
 #: ZNC
 msgid "znc"
@@ -103,15 +103,15 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logging in..."
+msgstr "Prijavljujemo vas..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Invalid login"
+msgstr "Neispravna prijava"
 
 #: Search...
 msgid "do_search"
-msgstr "Search..."
+msgstr "Traži..."
 
 #: OK
 msgid "ok"
@@ -119,31 +119,31 @@ msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr "Cancel"
+msgstr "Zatvori"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "da"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "ne"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "Nije pronađeno."
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "Upozorenje!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "Svi vaši razgovori će biti zatvoreni. Da li ste sigurni da želite zatvoriti ovaj prozor?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "Pravo ime"
 
 #: Status
 msgid "whois_status"
@@ -151,387 +151,387 @@ msgstr "Status"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Is available"
+msgstr "je dostupan/na"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Send a message"
+msgstr "Pošalji poruku"
 
 #: More information
 msgid "more_information"
-msgstr "More information"
+msgstr "Više informacija"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignore user"
+msgstr "Ignoriši korisnika"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Channel"
+msgstr "Kanal"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "Odsutan"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "sedmica"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "sedmica"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "dan"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} days"
+msgstr "dana"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "sat"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "sati"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "minuta"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutes"
+msgstr "minuta"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "sekunda"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "sekundi"
 
 #: General
 msgid "settings_general"
-msgstr "General"
+msgstr "Općenito"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "Jezik"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "Izgled"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "Osvježi temu"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "Link izgleda"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "Izgled poruke"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Use monospace"
+msgstr "Koristi monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "Koristi Kiwi kao moj zadani IRC klijent"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Traditional IRC layout"
+msgstr "Izvorni IRC izgled"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Show autocomplete list"
+msgstr "Prikaži automatski generisani popis"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Chat Messages"
+msgstr "Chat poruke"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Show timestamps"
+msgstr "Prikaži vrijeme"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Use 24-hour timestamps"
+msgstr "Koristi 24-satno vrijeme"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Show emoticons"
+msgstr "Prikaži smajliće"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Block new private messages"
+msgstr "Blokiraj nove privatne poruke"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Messages in scrollback"
+msgstr "Poruke u scrollbacku"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Extra formatting"
+msgstr "Specijalno formatiranje"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Colour nicknames in messages"
+msgstr "Obojeni nadimci u porukama"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "Podijeli kada tipkam poruku"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Include join/part messages as activity"
+msgstr "Prikaži pristupio/napustio kao aktivnost"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Mute sound notifications"
+msgstr "Utišaj zvučne obavijesti"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space seperated)"
+msgstr "Istaknite na riječima (razmaknite)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Aliases"
+msgstr "Pseudonimi"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "Koji su pseudonimi"
 
 #: Send Message
 msgid "send_message"
-msgstr "Send Message"
+msgstr "Pošalji poruku"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Enter Channel Key"
+msgstr "Unesite ključ kanala"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "Ponovo pristupite {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Notify me when"
+msgstr "Obavijesti me"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "All messages"
+msgstr "Na sve poruke"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "I am mentioned"
+msgstr "Kada sam spomenut"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Never"
+msgstr "Nikad"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Mute sounds"
+msgstr "Utišaj zvukove"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide count"
+msgstr "Sakrij broj nepročitanih poruka"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Operator tools"
+msgstr "Alati operatora"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Default ban mask"
+msgstr "Zadana ban maska"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Default kick reason"
+msgstr "Zadani razlog izbacivanja"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "Napredna podešavanja"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Monsters be here, only click this button if you know what you are doing"
+msgstr "Kliknite ovo dugme samo ukoliko ste znate šta radite"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "Omogući napredna podešavanja"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Danger Zone: Changing some of these settings may break things!"
+msgstr "Opasna zona: Izmjena nekih od ovih podešavanja može prouzrokovati problem!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "Osvježi"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "Filtriraj"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Refresh banlist"
+msgstr "Osvježi popis banovanih"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Banned user"
+msgstr "Banovani korisnici"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Banned by"
+msgstr "Banovan od"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Refreshing banlist..."
+msgstr "Osvježavamo popis banovanih..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Nobody is banned!"
+msgstr "Niko nije banovan!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "Osvježi popis pozvanih"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Invited user"
+msgstr "Pozvani korisnici"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Invited by"
+msgstr "Pozivnice od"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
+msgstr "Popis pozvanih se osvježava..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Nobody is invited!"
+msgstr "Niko nije pozvan!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "Ovo je javni kanal."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Only invited users can join."
+msgstr "Samo pozvani korisnici se mogu pridružiti."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Only allow invited users"
+msgstr "Dopusti samo pozvane korisnike"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "Dopusti bilo kome da se pridruži"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "Samo registrovani korisnici se mogu pridružiti"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "Dodaj pozivnicu"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "Pozovi bilo kojeg registrovanog korisnika"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topic"
+msgstr "Tema"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Moderated chat"
+msgstr "Moderirani chat"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Invite only"
+msgstr "Samo na poziv"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Only moderators can change the topic"
+msgstr "Samo moderatori mogu mijenjati temu"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Block messages from outside this channel"
+msgstr "Blokirajte vanjske poruke"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to update the channel list"
+msgstr "Klikni na osvježi da ponovo učitaš listu kanala"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, try again later"
+msgstr "Nema pronađenih kanala, molimo pokušajte kasnije"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Welcome to Kiwi IRC! Select a channel on the left."
+msgstr "Dobrodošli na Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Show statebrowser"
+msgstr "Prikaži statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "Sakrij temu"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "Prikaži temu"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "Podešavanja kanala"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Join Channel"
+msgstr "Pristupi kanalu"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Not Connected"
+msgstr "Niste povezani"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Private conversation with {{user}}"
+msgstr "Privatni razgovor sa {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "Da li ćete sigurno napustiti kanal?"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Send a message..."
+msgstr "Pošalji poruku..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Loading {{url}}..."
+msgstr "Učitavanje {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Load previous messages"
+msgstr "Učitaj prethodne poruke"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Unread Messages"
+msgstr "Nepročitane poruke"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Server details"
+msgstr "Informacije servera"
 
 #: Port
 msgid "settings_port"
@@ -539,533 +539,533 @@ msgstr "Port"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Other networks on this ZNC account will be listed in the network list"
+msgstr "Ostale mreže na ovom ZNC računu prikazati će se u popisu mreža"
 
 #: Your details
 msgid "settings_your_details"
-msgstr "Your details"
+msgstr "Vaše informacije"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Nadimak"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Advanced"
+msgstr "Napredno"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Encoding"
+msgstr "Šifriranje"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Show Raw"
+msgstr "Prikaži ravno"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "Direktni websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Run commands when connected"
+msgstr "Automatske komande za pokrenuti nakon povezivanja"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Danger Zone"
+msgstr "Opasna zona"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Remove network"
+msgstr "Ukloni mrežu"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} person here"
+msgstr "{{count}} dostupna osoba"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "{{count}} people here"
+msgstr "{{count}} dostupnih osoba"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "filter users in channel"
+msgstr "Filtriraj korisnike"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Reconnect to join {{channel}}"
+msgstr "ponovo se poveži na kanal {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Reconnect to {{network}} to start talking"
+msgstr "Ponovo se poveži na {{network}} za razgovor"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Reconnect to continue talking with {{user}}"
+msgstr "Ponovo se poveži da nastaviš razgovor sa {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "You are not currently connected!"
+msgstr "Niste konektovani!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Connection settings"
+msgstr "Podešavanja povezivanja"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "We couldn't connect to that server :("
+msgstr "Ne možemo se povezati na server :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "Poveži se na mrežu"
 
 #: Close options
 msgid "side_close"
-msgstr "Close options"
+msgstr "Zatvori opcije"
 
 #: Channel options
 msgid "side_options"
-msgstr "Channel options"
+msgstr "Opcije kanala"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Your settings"
+msgstr "Vaša podešavanja"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Show when people join"
+msgstr "Prikaži kada se neko prijavi"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Show when channel topic changes"
+msgstr "Prikaži kada se tema kanala promijeni"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Show when users change their nicks"
+msgstr "Prikaži kada korisnici promijene svoj nadimak"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Show when users change channel modes"
+msgstr "Prikaži kada korisnici mijenjaju modove kanale"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Extra message formatting"
+msgstr "Specijalno formatiranje poruka"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Nick colours in the list"
+msgstr "Boje nadimaka na popisu"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "No buffer set"
+msgstr "Nema podešenog prozora razgovora ili kanala"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "There is no topic for this channel"
+msgstr "Nema postavljene teme za ovaj kanal"
 
 #: About
 msgid "about"
-msgstr "About"
+msgstr "O"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Created at {{when}}"
+msgstr "Kreirano na"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Naznake"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nobody has mentioned you yet..."
+msgstr "Niko vas još nije spomenuo..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "There was an error starting Kiwi IRC :("
+msgstr "Greška prilikom pokretanja Kiwi IRC klijenta :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded"
+msgstr "Provjerite da li ste instalirali Kiwi IRC ispravno i da li se konfiguracija može učitati"
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Leave {{name}}"
+msgstr "Izašao {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr "Your account"
+msgstr "Vaš profil"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr "Your settings and networks will be remembered on this computer."
+msgstr "Vaša podešavanja i mreže će biti zapamćeni na ovom računaru."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Forget me"
+msgstr "Zaboravi me"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "No networks here yet."
+msgstr "Još nema dodanih mreža."
 
 #: Add one?
 msgid "state_add"
-msgstr "Add one?"
+msgstr "Dodaj?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Available networks"
+msgstr "Dostupne mreže"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "Dodaj mrežu"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "Nova mreža"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "Nema mreže"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Configure network"
+msgstr "Konfiguracija mreže"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Not connected."
+msgstr "Niste povezani."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Join new #channel"
+msgstr "Priključi se na kanal"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "Filtriraj kanale"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find more channels"
+msgstr "Nađi više kanala"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Change nick"
+msgstr "Promijeni nadimak"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "Upiši novi nadimak..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "To ste vi!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Account name: {{user}}"
+msgstr "Korisničko ime: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Real name: {{realname}}"
+msgstr "Pravo ime: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Is a bot"
+msgstr "je bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is avaiable for help"
+msgstr "je dostupan za pomoć"
 
 #: Is an operator
 msgid "user_op"
-msgstr "Is an operator"
+msgstr "je operator"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Connected to {{server}} {{info}}"
+msgstr "Povezani ste na {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Securely connected via SSL/TLS"
+msgstr "Sigurno povezani preko SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "In channels {{channels}}"
+msgstr "Također na kanalima {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr "Access level"
+msgstr "Pristupni level"
 
 #: Normal
 msgid "user_normal"
-msgstr "Normal"
+msgstr "Normalan"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Kick from the channel"
+msgstr "Izbaci sa kanala"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Ban from the channel"
+msgstr "Banuj sa kanala"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Ban and kick from the channel"
+msgstr "Banuj i izbaci sa kanala"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Please specify a channel to join. eg /join #example"
+msgstr "Molimo naznačite na koji kanal se želite sojiti. npr /join #primjer"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "Nadimak {{nick}} je već u upotrebi!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "Morate upisati novi nadimak"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "Nadimci ne smiju počinjati sa brojem"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} gives ops to {{target}}"
+msgstr "{{nick}} je postavio za operatora {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} takes ops from {{target}}"
+msgstr "{{nick}} je oduzeo operatora od {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} gives half-ops to {{target}}"
+msgstr "{{nick}} je postavio poluoperatora za {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} takes half-ops from {{target}}"
+msgstr "{{nick}} je oduzeo poluoperatora od {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} gives voice to {{target}}"
+msgstr "{{nick}} je dao pravo glasa {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} takes voice from {{target}}"
+msgstr "{{nick}} je oduzeo pravo glasa od {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} gives admin to {{target}}"
+msgstr "{{nick}} je postavio za administratora {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} takes admin from {{target}}"
+msgstr "{{nick}} je oduzeo administratora {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} gives owner to {{target}}"
+msgstr "{{nick}} je postavio za vlasnika {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} takes owner from {{target}}"
+msgstr "{{nick}} je oduzeo vlasnika {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} has banned {{target}}"
+msgstr "{{nick}} je trajno izbacio {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} has unbanned {{target}}"
+msgstr "{{nick}} je uklonio ban {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr "{{nick}} sets {{mode}} on {{target}}"
+msgstr "{{nick}} postavlja {{mode}} za {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Send a message"
+msgstr "Pošalji poruku"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Do something physical"
+msgstr "Rekreirajte se"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Join a channel"
+msgstr "Pridružite se kanalu"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Leave a channel"
+msgstr "Napustite kanal"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Leave, then re-join a channel"
+msgstr "Napusti, pa ponovno pristupi kanalu"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Change your nickname"
+msgstr "Promijeni nadimak"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr "Start a private conversation with someone"
+msgstr "Započni privatni razgovor s nekim"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Invite somebody into the channel"
+msgstr "Pozovi nekoga na kanal"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Set the topic for this channel"
+msgstr "Postavi temu za ovaj kanal"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Send a notice"
+msgstr "Pošalji napomenu"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "Send a raw command to the IRC server"
+msgstr "Pošalji komandu na IRC server"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Kick somebody from the channel"
+msgstr "Izbaci nekoga sa kanala"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Clear all messages from this window"
+msgstr "Očisti sve poruke sa prozora"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr "Send a CTCP command to somebody"
+msgstr "Pošalji CTCP komandu nekome"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Disconnect from the IRC server"
+msgstr "Odspoji se sa IRC servera"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Connect to a new IRC network"
+msgstr "Poveži se na IRC mrežu"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Request information on somebody"
+msgstr "Zatraži informacije o nekome"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr "Request information on somebody that disconnected recently"
+msgstr "Zatraži informacije o nekome ko se nedavno odspojio"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "Označi sebe odsutnim"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "Označi se aktivnim"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Change your connection encoding"
+msgstr "Promijeni način kodiranja konektovanja"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr "Ignore messages from somebody"
+msgstr "Ignoriši poruke od nekoga"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Stop ignoring somebody"
+msgstr "Prestani ignorisati nekoga"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Roll a Dice"
+msgstr "Baci kocku"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
+msgstr "Bačena je {{sides}} kockica a dobijeni broj je {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Your IRC Client."
+msgstr "Vaš IRC klijent"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Add your networks. Join your channels."
+msgstr "Dodajte vaše mreže. Priključite se vašim kanalima."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "They will be here when you come back."
+msgstr "Ostaje ovdje kada se vratite."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Add a Network"
+msgstr "Dodaj mrežu"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "You are trying to connect to {{network}}"
+msgstr "Pokušavate se ponovno konektovati na {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Network has been added to your existing Kiwi window."
+msgstr "Mreža je dodana na vaš postojeći Kiwi prozor."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Add network to existing Kiwi window"
+msgstr "Dodaj mrežu na postojeći Kiwi prozor"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Temporarily connect to this network"
+msgstr "Odmah se poveži na ovu mrežu"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Saved networks"
+msgstr "Sačuvane mreže"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (next gen) - Rizon preview"
+msgstr "Kiwi IRC (next gen) - Rizon prikaz"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Direct websockets. No Kiwi server or webirc involved."
+msgstr "Direktni web socketi. Nema Kiwi servera ili webirc-a povezanog."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
+msgstr "(Hvala Adamu @Rizon za programersku podršku serverskom web socketu!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Give the developer version of Kiwi IRC a try!"
+msgstr "Prikaži programersku verziju Kiwi IRC-a i isprobaj!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "Isključen"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Connected to {{network}}!"
+msgstr "Konektovan na {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} has joined"
+msgstr "{{nick}} se priključio"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} kicked you from {{channel}}"
+msgstr "{{nick}} vas je izbacio sa {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
+msgstr "{{nick}} je izbačen sa {{channel}} od {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} has left"
+msgstr "{{nick}} je napustio"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} invited you to join {{channel}}"
+msgstr "{{nick}} vas je pozvao da se priključite {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
+msgstr "Nadimak {{nick}} je u upotrebi. Pokušajte {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} is now known as {{newnick}}"
+msgstr "{{nick}} je promijenio nadimak u {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} changed the topic to: {{topic}}"
+msgstr "je promijenio temu u: {{topic}}"
 
