@@ -773,6 +773,12 @@ inputCommands.names = function inputCommandNames(event, command, line) {
     network.ircClient.raw('NAMES ' + args);
 };
 
+inputCommands.inject = function inputCommandInject(event, command, line) {
+    let network = this.state.getActiveNetwork();
+    let connection = network.ircClient.connection;
+    connection.addReadBuffer(line);
+};
+
 inputCommands.clear = function inputCommandClear(event, command, line) {
     event.handled = true;
 
