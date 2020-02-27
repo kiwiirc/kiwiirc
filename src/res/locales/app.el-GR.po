@@ -1,100 +1,101 @@
-# KiwiIRC translations
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: el\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2020-02-27 18:02\n"
+"PO-Revision-Date: 2020-02-27 18:46\n"
 
 #: Start
 msgid "start_button"
-msgstr "Εκκίνηση"
+msgstr "Start"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Καλώς ήλθατε στο Kiwi IRC!"
+msgstr "Welcome to Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr "Κλείσιμο"
+msgstr "Close"
 
 #: Connect
 msgid "connect"
-msgstr "Σύνδεση"
+msgstr "Connect"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Γίνεται σύνδεση..."
+msgstr "Connecting..."
 
 #: Connected
 msgid "connected"
-msgstr "Συνδέθηκε"
+msgstr "Connected"
 
 #: Settings
 msgid "settings"
-msgstr "Ρυθμίσεις"
+msgstr "Settings"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Ρυθμίσεις Kiwi"
+msgstr "Kiwi Settings"
 
 #: Channels
 msgid "channels"
-msgstr "Κανάλια"
+msgstr "Channels"
 
 #: Access
 msgid "access"
-msgstr "Πρόσβαση"
+msgstr "Access"
 
 #: Banned Users
 msgid "banned"
-msgstr "Αποκλεισμένοι Χρήστες"
+msgstr "Banned Users"
 
 #: Invited Users
 msgid "invited"
-msgstr "Προσκεκλημένοι Χρήστες"
+msgstr "Invited Users"
 
 #: Notifications
 msgid "notifications"
-msgstr "Ειδοποιήσεις"
+msgstr "Notifications"
 
 #: Username
 msgid "username"
-msgstr "Όνομα χρήστη"
+msgstr "Username"
 
 #: Password
 msgid "password"
-msgstr "Συνθηματικό Κλειδί:"
+msgstr "Password"
 
 #: I have a password
 msgid "password_have"
-msgstr "Έχω κωδικό πρόσβασης"
+msgstr "I have a password"
 
 #: Server
 msgid "server"
-msgstr "Διακομιστής"
+msgstr "Server"
 
 #: Nick
 msgid "nick"
-msgstr "Ψευδώνυμο"
+msgstr "Nick"
 
 #: Channel
 msgid "channel"
-msgstr "Κανάλι"
+msgstr "Channel"
 
 #: Messages
 msgid "messages"
-msgstr "Μηνύματα"
+msgstr "Messages"
 
 #: Network
 msgid "network"
-msgstr "Δίκτυο"
+msgstr "Network"
 
 #: ZNC
 msgid "znc"
@@ -102,969 +103,969 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Γίνεται σύνδεση..."
+msgstr "Logging in..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Εσφαλμένη σύνδεση"
+msgstr "Invalid login"
 
 #: Search...
 msgid "do_search"
-msgstr "Αναζήτηση..."
+msgstr "Search..."
 
 #: OK
 msgid "ok"
-msgstr "Εντάξει"
+msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr "Ακύρωση"
+msgstr "Cancel"
 
 #: Yes
 msgid "yes"
-msgstr "Ναι"
+msgstr "Yes"
 
 #: No
 msgid "no"
-msgstr "Όχι"
+msgstr "No"
 
 #: Not found.
 msgid "not_found"
-msgstr "Δεν βρέθηκε."
+msgstr "Not found."
 
 #: Warning!
 msgid "warning"
-msgstr "Προσοχή!"
+msgstr "Warning!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "Αυτό θα κλείσει όλες σας τις συνομιλίες στο Kiwi IRC. Είστε βέβαιοι ότι θέλετε να κλείσετε αυτό το παράθυρο;"
+msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Πραγματικό όνομα"
+msgstr "Real name"
 
 #: Status
 msgid "whois_status"
-msgstr "Κατάσταση"
+msgstr "Status"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Είναι τώρα εντός"
+msgstr "Is available"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Στείλτε μήνυμα"
+msgstr "Send a message"
 
 #: More information
 msgid "more_information"
-msgstr "Περισσότερες πληροφορίες"
+msgstr "More information"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Αγνοήστε τον χρήστη"
+msgstr "Ignore user"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Κανάλι"
+msgstr "Channel"
 
 #: Away
 msgid "away"
-msgstr "Απών"
+msgstr "Away"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} εβδομάδα"
+msgstr "{{count}} week"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} εβδομάδες"
+msgstr "{{count}} weeks"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} ημέρα"
+msgstr "{{count}} day"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} ημέρες"
+msgstr "{{count}} days"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} ώρα"
+msgstr "{{count}} hour"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} ώρες"
+msgstr "{{count}} hours"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} λεπτό"
+msgstr "{{count}} minute"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} λεπτά"
+msgstr "{{count}} minutes"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} δευτερόλεπτο"
+msgstr "{{count}} second"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} δευτερόλεπτα"
+msgstr "{{count}} seconds"
 
 #: General
 msgid "settings_general"
-msgstr "Γενικά"
+msgstr "General"
 
 #: Language
 msgid "settings_language"
-msgstr "Γλώσσα"
+msgstr "Language"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Τρέχον Θέμα:"
+msgstr "Theme"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Ανανέωση του Θέματος"
+msgstr "Refresh Theme"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "URL του Θέματος"
+msgstr "Theme URL"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Διάταξη Μηνυμάτων:"
+msgstr "Message Layout"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Χρησιμοποιήστε τη μονοχρωματική διάταξη"
+msgstr "Use monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Χρησιμοποιήστε το Kiwi ως προεπιλεγμένο IRC πρόγραμμα-πελάτη."
+msgstr "Use Kiwi as my default IRC client"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Παραδοσιακή διάταξη IRC"
+msgstr "Traditional IRC layout"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Εμφάνιση της λίστας αυτόματων συμπληρώσεων"
+msgstr "Show autocomplete list"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Μηνύματα Συνομιλίας"
+msgstr "Chat Messages"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Εμφάνιση χρονικών σημείων"
+msgstr "Show timestamps"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Χρησιμοποιήστε 24-ωρες χρονικές σημάνσεις των σημείων"
+msgstr "Use 24-hour timestamps"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Εμφάνιση εικονιδίων"
+msgstr "Show emoticons"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Αποκλεισμός νέων προσωπικών μηνυμάτων"
+msgstr "Block new private messages"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Μηνύματα κατά την μετακίνηση προς τα επάνω"
+msgstr "Messages in scrollback"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Επιπλέον μορφοποίηση"
+msgstr "Extra formatting"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Χρωματισμός ψευδωνύμων στα μηνύματα"
+msgstr "Colour nicknames in messages"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Μετάδωσε όταν πληκτρολογώ ένα μήνυμα"
+msgstr "Share when I'm typing a message"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Συμπεριλάβετε μηνύματα δραστηριοτήτων Εισόδου / Αποχώρησης"
+msgstr "Include join/part messages as activity"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Σίγαση ήχων ειδοποιήσεων"
+msgstr "Mute sound notifications"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Επισήμανση στις παρακάτω λέξεις (εισάγετε κενό για διαχωρισμό):"
+msgstr "Highlight on words (space seperated)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Ψευδώνυμα"
+msgstr "Aliases"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Τι είναι τα ψευδώνυμα"
+msgstr "What are aliases?"
 
 #: Send Message
 msgid "send_message"
-msgstr "Στείλτε Μήνυμα"
+msgstr "Send Message"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Εισαγάγετε το Συνθηματικό Κλειδί Καναλιού"
+msgstr "Enter Channel Key"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Επανασύνδεση στο {{channel}} κανάλι"
+msgstr "Rejoin {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Ενημέρωσε με όταν"
+msgstr "Notify me when"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "Υπάρχουν νέα μηνύματα"
+msgstr "All messages"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "Με αναφέρουν"
+msgstr "I am mentioned"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Ποτέ"
+msgstr "Never"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Σίγαση των ήχων"
+msgstr "Mute sounds"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Απόκρυψη αριθμού των μη διαβασμένων μηνυμάτων"
+msgstr "Hide count"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Εργαλεία Διαχειριστή"
+msgstr "Operator tools"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Προκαθορισμένη αποκλεισμένη μάσκα"
+msgstr "Default ban mask"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Προκαθορισμένος λόγος απομάκρυνσης"
+msgstr "Default kick reason"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Προηγμένες Ρυθμίσεις"
+msgstr "Advanced Settings"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Όλα τα τέρατα των ρυθμίσεων είναι εδώ, κάντε κλικ σε αυτό το κουμπί μόνο αν ξέρετε τι πραγματικά πρέπει να κάνετε..."
+msgstr "Monsters be here, only click this button if you know what you are doing"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Ενεργοποίηση Προχωρημένων Ρυθμίσεων"
+msgstr "Enable Advanced Settings"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Ζώνη Κινδύνου: Ενημερώνουμε ότι η αλλαγή ορισμένων από αυτών των ρυθμίσεων ενδέχεται να χαλάσει τα τωρινά δεδομένα στο πρόγραμμά σας!"
+msgstr "Danger Zone: Changing some of these settings may break things!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Επαναφορά"
+msgstr "Reset"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Φίλτρο"
+msgstr "Filter"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Ανανέωση λίστας αποκλεισμένων"
+msgstr "Refresh banlist"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Αποκλεισμένος χρήστης"
+msgstr "Banned user"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Αποκλείστηκε από"
+msgstr "Banned by"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Γίνεται ανανέωση λίστας αποκλεισμένων..."
+msgstr "Refreshing banlist..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Κανένας δεν είναι προς το παρόν αποκλεισμένος!"
+msgstr "Nobody is banned!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Ανανέωση Λίστας Προσκεκλημένων"
+msgstr "Refresh invite list"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Προσκεκλημένος χρήστης"
+msgstr "Invited user"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Προσκληθεί από"
+msgstr "Invited by"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Γίνεται ανανέωση της λίστας προσκεκλημένων..."
+msgstr "Refreshing invite list..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Κανένας δεν έχει προσκληθεί!"
+msgstr "Nobody is invited!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "Αυτό είναι ένα δημόσιο κανάλι."
+msgstr "This is a public channel."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Μόνο οι προσκεκλημένοι χρήστες μπορούν να εισέλθουν."
+msgstr "Only invited users can join."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Επιτρέψτε μόνο προσκεκλημένους χρήστες"
+msgstr "Only allow invited users"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Επιτρέψτε την είσοδο για όλους"
+msgstr "Allow anybody to join"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Μόνο οι εγγεγραμμένοι χρήστες μπορούν να εισέλθουν"
+msgstr "Only registered users can join"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Προσθήκη πρόσκλησης"
+msgstr "Add invite"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Οποιοσδήποτε εγγεγραμμένος χρήστης)"
+msgstr "(Any registered user)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Τίτλος Καναλιού:"
+msgstr "Topic"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Περιορισμένη συνομιλία"
+msgstr "Moderated chat"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Είσοδος με πρόσκληση μόνο"
+msgstr "Invite only"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Μόνο οι συντονιστές θα μπορούν να αλλάζουν το θέμα"
+msgstr "Only moderators can change the topic"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Αποκλείστε τα μηνύματα εκτός του καναλιού"
+msgstr "Block messages from outside this channel"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Κάντε κλικ στο κουμπί ανανέωσης για να ενημερώσετε τη λίστα καναλιών"
+msgstr "Click the refresh button to update the channel list"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "Δεν βρέθηκαν κανάλια, δοκιμάστε ξανά αργότερα"
+msgstr "No channels found, try again later"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Καλώς ήλθατε στο Kiwi IRC!"
+msgstr "Welcome to Kiwi IRC! Select a channel on the left."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Εμφάνιση κατάστασης περιήγησης"
+msgstr "Show statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Απόκρυψη Θέματος"
+msgstr "Hide Topic"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Προβολή Θέματος"
+msgstr "Display Topic"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Ρυθμίσεις Καναλιού"
+msgstr "Channel Settings"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Είσοδος στο Κανάλι"
+msgstr "Join Channel"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Μη Συνδεδεμένο"
+msgstr "Not Connected"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Προσωπική συνομιλία με {{user}}"
+msgstr "Private conversation with {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Θέλετε να αποχωρήσετε πραγματικά από το κανάλι;"
+msgstr "Really leave the channel?"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Στείλτε ένα μήνυμα..."
+msgstr "Send a message..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Γίνεται Φόρτωση {{url}}..."
+msgstr "Loading {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Φόρτωση προηγούμενων μηνυμάτων"
+msgstr "Load previous messages"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Μη Διαβασμένα Μηνύματα"
+msgstr "Unread Messages"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Λεπτομέρειες διακομιστή"
+msgstr "Server details"
 
 #: Port
 msgid "settings_port"
-msgstr "Θύρα"
+msgstr "Port"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Άλλα δίκτυα σε αυτόν τον λογαριασμό ZNC θα εμφανίζονται στη λίστα δικτύου"
+msgstr "Other networks on this ZNC account will be listed in the network list"
 
 #: Your details
 msgid "settings_your_details"
-msgstr "Τα στοιχεία σας"
+msgstr "Your details"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Ψευδώνυμο"
+msgstr "Nickname"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Προηγμένες"
+msgstr "Advanced"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Κωδικοποίηση"
+msgstr "Encoding"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Εμφάνιση Ακατέργαστου"
+msgstr "Show Raw"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Απευθείας websocket"
+msgstr "Direct websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Εκτελέστε εντολές όταν συνδεθείτε"
+msgstr "Run commands when connected"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Επικίνδυνη Ζώνη"
+msgstr "Danger Zone"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Κατάργηση δικτύου"
+msgstr "Remove network"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} άτομο εδώ"
+msgstr "{{count}} person here"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "{{count}} άτομα εδώ"
+msgstr "{{count}} people here"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Φιλτράρισμα χρηστών στο κανάλι"
+msgstr "filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Επανασυνδεθείτε για να εισέλθετε στο {{channel}}"
+msgstr "Reconnect to join {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Επανασυνδεθείτε στο {{network}} για να αρχίσετε να μιλάτε"
+msgstr "Reconnect to {{network}} to start talking"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Επανασυνδεθείτε για να συνεχίσετε να μιλάτε με {{user}}"
+msgstr "Reconnect to continue talking with {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "Δεν είστε συνδεδεμένοι αυτήν τη στιγμή!"
+msgstr "You are not currently connected!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Ρυθμίσεις σύνδεσης"
+msgstr "Connection settings"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "Δεν ήταν δυνατή η σύνδεση με αυτόν τον διακομιστή :("
+msgstr "We couldn't connect to that server :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Σύνδεση στο Δίκτυο"
+msgstr "Connect To Network"
 
 #: Close options
 msgid "side_close"
-msgstr "Κλείσιμο επιλογών"
+msgstr "Close options"
 
 #: Channel options
 msgid "side_options"
-msgstr "Επιλογές καναλιού"
+msgstr "Channel options"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Προσωπικές Ρυθμίσεις"
+msgstr "Your settings"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Εμφάνιση όταν εισέρχονται τα άτομα"
+msgstr "Show when people join"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Εμφάνιση όταν αλλάζει ο τίτλος του καναλιού"
+msgstr "Show when channel topic changes"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Εμφάνιση όταν οι χρήστες αλλάζουν το ψευδώνυμό τους"
+msgstr "Show when users change their nicks"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Εμφάνιση όταν οι χρήστες αλλάζουν τις λειτουργίες στα κανάλια"
+msgstr "Show when users change channel modes"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Επιπλέον μορφοποίηση μηνυμάτων"
+msgstr "Extra message formatting"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Χρωματισμός ψευδώνυμων στη λίστα"
+msgstr "Nick colours in the list"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "Δεν έχει οριστεί ρυθμιστής"
+msgstr "No buffer set"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "Δεν υπάρχει τίτλος για αυτό το κανάλι"
+msgstr "There is no topic for this channel"
 
 #: About
 msgid "about"
-msgstr "Σχετικά"
+msgstr "About"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Δημιουργήθηκε στις {{when}}"
+msgstr "Created at {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Επισημάνσεις"
+msgstr "Highlights"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Κανείς δεν σας έχει αναφέρει ακόμα..."
+msgstr "Nobody has mentioned you yet..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "Παρουσιάστηκε κάποιο σφάλμα κατά την εκκίνηση του Kiwi IRC :("
+msgstr "There was an error starting Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Βεβαιωθείτε ότι έχετε εγκαταστήσει σωστά το Kiwi IRC και ότι όλες σας οι ρυθμίσεις μπορούν να φορτωθούν"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Αποχώρησε {{name}}"
+msgstr "Leave {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr "Ο λογαριασμός σας"
+msgstr "Your account"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr "Οι ρυθμίσεις και τα δίκτυά σας θα αποθηκευτούν σε αυτόν τον υπολογιστή."
+msgstr "Your settings and networks will be remembered on this computer."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Ξέχασε με"
+msgstr "Forget me"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "Δεν υπάρχουν δίκτυα εδώ ακόμη."
+msgstr "No networks here yet."
 
 #: Add one?
 msgid "state_add"
-msgstr "Προσθέστε ένα;"
+msgstr "Add one?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Διαθέσιμα δίκτυα"
+msgstr "Available networks"
 
 #: Add Network
 msgid "add_network"
-msgstr "Προσθήκη Δικτύου"
+msgstr "Add Network"
 
 #: New Network
 msgid "new_network"
-msgstr "Νέο Δίκτυο"
+msgstr "New Network"
 
 #: No Network
 msgid "no_network"
-msgstr "Δεν υπάρχει δίκτυο"
+msgstr "No Network"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Ρύθμιση δικτύου"
+msgstr "Configure network"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Μη συνδεδεμένο."
+msgstr "Not connected."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Είσοδος σε νέο #κανάλι"
+msgstr "Join new #channel"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Φιλτράρετε τα Κανάλια"
+msgstr "Filter channels"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Βρείτε Περισσότερα Κανάλια"
+msgstr "Find more channels"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Αλλαγή ψευδώνυμου"
+msgstr "Change nick"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Εισάγεται νέο ψευδώνυμο..."
+msgstr "Enter new nickname..."
 
 #: This is you!
 msgid "user_you"
-msgstr "Αυτός είσαι εσύ!"
+msgstr "This is you!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Ονομα λογαριασμού: {{user}}"
+msgstr "Account name: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Πραγματικό όνομα: {{realname}}"
+msgstr "Real name: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Είναι ένα ρομπότ"
+msgstr "Is a bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Διατίθεται για περαιτέρω βοήθεια"
+msgstr "Is avaiable for help"
 
 #: Is an operator
 msgid "user_op"
-msgstr "Είναι ένας διαχειριστής"
+msgstr "Is an operator"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Συνδέθηκε σε {{server}} {{info}}"
+msgstr "Connected to {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Ασφαλής σύνδεση μέσω SSL/TLS"
+msgstr "Securely connected via SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "Επίσης στα κανάλια {{channels}}"
+msgstr "In channels {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr "Επίπεδο πρόσβασης"
+msgstr "Access level"
 
 #: Normal
 msgid "user_normal"
-msgstr "Κανονικό"
+msgstr "Normal"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Απομάκρυνση από το κανάλι"
+msgstr "Kick from the channel"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Αποκλεισμός από το κανάλι"
+msgstr "Ban from the channel"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Αποκλεισμό και απομάκρυνση από το κανάλι"
+msgstr "Ban and kick from the channel"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Προσδιορίστε ένα κανάλι για να εισέλθετε. πχ /join #παράδειγμα"
+msgstr "Please specify a channel to join. eg /join #example"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "Το ψευδώνυμο {{nick}} είναι ήδη σε χρήση!"
+msgstr "The nickname {{nick}} is already in use!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "Πρέπει να εισάγεται ένα νέο ψευδώνυμο"
+msgstr "You must enter a new nickname"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Το ψευδώνυμο δεν πρέπει να ξεκινά με έναν αριθμό"
+msgstr "Nickname must not start with a number"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} δίνει op σε {{target}}"
+msgstr "{{nick}} gives ops to {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} παίρνει το op από {{target}}"
+msgstr "{{nick}} takes ops from {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} δίνει halfop σε {{target}}"
+msgstr "{{nick}} gives half-ops to {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} παίρνει το halfop από {{target}}"
+msgstr "{{nick}} takes half-ops from {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} δίνει voice σε {{target}}"
+msgstr "{{nick}} gives voice to {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} παίρνει το voice από {{target}}"
+msgstr "{{nick}} takes voice from {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} δίνει admin σε {{target}}"
+msgstr "{{nick}} gives admin to {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} παίρνει το admin από {{target}}"
+msgstr "{{nick}} takes admin from {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} δίνει owner σε {{target}}"
+msgstr "{{nick}} gives owner to {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} παίρνει το owner από {{target}}"
+msgstr "{{nick}} takes owner from {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} δίνει ban σε {{target}}"
+msgstr "{{nick}} has banned {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} παίρνει το ban από {{target}}"
+msgstr "{{nick}} has unbanned {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr "{{nick}} όρισε {{mode}} σε {{target}}"
+msgstr "{{nick}} sets {{mode}} on {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Στείλτε ένα μήνυμα"
+msgstr "Send a message"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Στείλτε ένα ιδιαίτερο μήνυμα"
+msgstr "Do something physical"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Είσοδος σε ένα κανάλι"
+msgstr "Join a channel"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Αποχωρήστε από το κανάλι"
+msgstr "Leave a channel"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Αποχωρήστε, και στη συνέχεια, επανέλθετε πίσω στο κανάλι"
+msgstr "Leave, then re-join a channel"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Αλλάξτε το ψευδώνυμό σας"
+msgstr "Change your nickname"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr "Ξεκινήστε μια ιδιωτική συνομιλία με κάποιον"
+msgstr "Start a private conversation with someone"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Προσκαλέστε κάποιον στο κανάλι"
+msgstr "Invite somebody into the channel"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Ορίστε τον τίτλο για αυτό το κανάλι"
+msgstr "Set the topic for this channel"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Στείλτε μια ειδοποίηση"
+msgstr "Send a notice"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "Στείλτε μια ακατέργαστη εντολή στο διακομιστή IRC"
+msgstr "Send a raw command to the IRC server"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Απομακρύνετε κάποιον από το κανάλι"
+msgstr "Kick somebody from the channel"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Διαγράψτε όλα τα μηνύματα από αυτό το παράθυρο"
+msgstr "Clear all messages from this window"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr "Στείλτε μια εντολή CTCP σε κάποιον"
+msgstr "Send a CTCP command to somebody"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Αποσυνδεθείτε από τον διακομιστή IRC"
+msgstr "Disconnect from the IRC server"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Συνδεθείτε σε ένα νέο IRC δίκτυο"
+msgstr "Connect to a new IRC network"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Ζητήστε πληροφορίες για κάποιον"
+msgstr "Request information on somebody"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr "Ζητήστε πληροφορίες σχετικά με κάποιον που αποσυνδέθηκε πρόσφατα"
+msgstr "Request information on somebody that disconnected recently"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Σημειώστε τον εαυτό σας ως απών"
+msgstr "Set yourself as away"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Ορίστε τον εαυτό σας ως ενεργό"
+msgstr "Set yourself as active"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Αλλάξτε την κωδικοποίηση της σύνδεσή σας"
+msgstr "Change your connection encoding"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr "Αγνοήστε τα μηνύματα από κάποιον"
+msgstr "Ignore messages from somebody"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Σταματήστε να αγνοείτε κάποιον"
+msgstr "Stop ignoring somebody"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Ρίξτε ένα Zάρι"
+msgstr "Roll a Dice"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr "Ρίχνει ένα {{sides}} από την πλευρά του ζαριού και τυχαίνει {{number}}"
+msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Το IRC πρόγραμμά σας"
+msgstr "Your IRC Client."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Προσθέστε τα δίκτυά σας. Κάντε είσοδο στα κανάλια σας."
+msgstr "Add your networks. Join your channels."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "Θα είναι εδώ όταν επιστρέψετε."
+msgstr "They will be here when you come back."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Προσθέστε ένα Δίκτυο"
+msgstr "Add a Network"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "Προσπαθείτε να συνδεθείτε στο {{network}} δίκτυο"
+msgstr "You are trying to connect to {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Το δίκτυο έχει προστεθεί στο υπάρχον παράθυρο του Kiwi."
+msgstr "Network has been added to your existing Kiwi window."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Προσθήκη δικτύου στο υπάρχον παράθυρο Kiwi"
+msgstr "Add network to existing Kiwi window"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Συνδεθείτε προσωρινά σε αυτό το δίκτυο"
+msgstr "Temporarily connect to this network"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Αποθηκευμένα δίκτυα"
+msgstr "Saved networks"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (επόμενης γενιάς) - Προ επισκόπηση σε Rizon"
+msgstr "Kiwi IRC (next gen) - Rizon preview"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Άμεσες υποδοχές ιστού. Δεν εμπλέκεται κανένας διακομιστής Kiwi ή webirc."
+msgstr "Direct websockets. No Kiwi server or webirc involved."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Ευχαριστούμε τον Adam @Rizon για την υποστήριξη στην ανάπτυξη διακομιστή υποδοχής ιστού!)"
+msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Δοκιμάστε την έκδοση προγραμματιστή του προγράμματος ανάπτυξης Kiwi IRC!"
+msgstr "Give the developer version of Kiwi IRC a try!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Αποσυνδέθηκε"
+msgstr "Disconnected"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Σύνδεθηκε με {{network}}!"
+msgstr "Connected to {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} μόλις εισήλθε στο κανάλι"
+msgstr "{{nick}} has joined"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} σας απομάκρυνε από το {{channel}}"
+msgstr "{{nick}} kicked you from {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} απομακρύνθηκε από το {{channel}} κανάλι από {{chanop}}"
+msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} αποχώρισε από το κανάλι"
+msgstr "{{nick}} has left"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} σας προσκάλεσε να εισέλθετε στο {{channel}}"
+msgstr "{{nick}} invited you to join {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Το ψευδώνυμο {{nick}} είναι ήδη σε χρηση. Δοκιμάζουμε το {{newnick}}..."
+msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} άλλαξε ψευδώνυμο σε {{newnick}}"
+msgstr "{{nick}} is now known as {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} άλλαξε το θέμα του καναλιού σε: {{topic}}"
+msgstr "{{nick}} changed the topic to: {{topic}}"
 
