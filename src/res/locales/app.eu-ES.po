@@ -11,91 +11,91 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-02-27 18:45\n"
+"PO-Revision-Date: 2020-02-27 20:28\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "Hasi"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "Ongi etorri Kiwi IRC-ra!"
 
 #: Close
 msgid "close"
-msgstr "Close"
+msgstr "Itxi"
 
 #: Connect
 msgid "connect"
-msgstr "Connect"
+msgstr "Konektatu"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Connecting..."
+msgstr "Konektatzen,..."
 
 #: Connected
 msgid "connected"
-msgstr "Connected"
+msgstr "Konektatuta"
 
 #: Settings
 msgid "settings"
-msgstr "Settings"
+msgstr "Konfigurazioa"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Kiwi Ezarpenak"
 
 #: Channels
 msgid "channels"
-msgstr "Channels"
+msgstr "Kanalak"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Sarbidea"
 
 #: Banned Users
 msgid "banned"
-msgstr "Banned Users"
+msgstr "Erabiltzaile kanporatuak"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "Gonbidatua"
 
 #: Notifications
 msgid "notifications"
-msgstr "Notifications"
+msgstr "Jakinarazpenak"
 
 #: Username
 msgid "username"
-msgstr "Username"
+msgstr "Erabiltzailea"
 
 #: Password
 msgid "password"
-msgstr "Password"
+msgstr "Pasahitza"
 
 #: I have a password
 msgid "password_have"
-msgstr "I have a password"
+msgstr "Pasahitza dut"
 
 #: Server
 msgid "server"
-msgstr "Server"
+msgstr "Zerbitzaria"
 
 #: Nick
 msgid "nick"
-msgstr "Nick"
+msgstr "Ezizena"
 
 #: Channel
 msgid "channel"
-msgstr "Channel"
+msgstr "Kanala"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "Mezuak"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "Sarea"
 
 #: ZNC
 msgid "znc"
@@ -103,969 +103,969 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logging in..."
+msgstr "Sartzen..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Invalid login"
+msgstr "Egiaztagiri baliogabeak"
 
 #: Search...
 msgid "do_search"
-msgstr "Search..."
+msgstr "Bilatzea..."
 
 #: OK
 msgid "ok"
-msgstr "OK"
+msgstr "Ados"
 
 #: Cancel
 msgid "cancel"
-msgstr "Cancel"
+msgstr "Ezeztatzea"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "Bai"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "Ez"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "Ez da aurkitu"
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "Errorea!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "KiwiIRC-elkarrizketa guztiak itxiko dira. Segurua leiho hau itxi nahi duzula?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "Izen erreala"
 
 #: Status
 msgid "whois_status"
-msgstr "Status"
+msgstr "Estatua"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Is available"
+msgstr "Libre dago"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Send a message"
+msgstr "Mezua bidaltzen du"
 
 #: More information
 msgid "more_information"
-msgstr "More information"
+msgstr "Informazio gehiago"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignore user"
+msgstr "Erabiltzaileari ezikusiarena egitea"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Channel"
+msgstr "Kanala"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "Kanpoan"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "aste"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "asteak"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "eguna"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} days"
+msgstr "egunak"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "ordu"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "orduak"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "minutu"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutes"
+msgstr "minutuak"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "segundo"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "segundoak"
 
 #: General
 msgid "settings_general"
-msgstr "General"
+msgstr "Orokorra"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "Hizkuntza"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "Gaia"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "Gaia Berritu"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "Gaiko URL-a"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "Mezuen diseinua"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Use monospace"
+msgstr "Monospace iturria erabiltzea"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "Erabili Kiwi lehenetsitako IRC bezero gisa "
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Traditional IRC layout"
+msgstr "IRC-a diseinu tradizionala"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Show autocomplete list"
+msgstr "Zerrenda autoosatuta erakustea"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Chat Messages"
+msgstr "Mezuak"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Show timestamps"
+msgstr "Ordua erakutsi"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Use 24-hour timestamps"
+msgstr "Formatuko ordua 24 ordu erakustea"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Show emoticons"
+msgstr "Begitarteak erakustea"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Block new private messages"
+msgstr "Mezu pribatu berriak blokeatzea"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Messages in scrollback"
+msgstr "Historikoko mezuak"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Extra formatting"
+msgstr "Formateatze estra"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Colour nicknames in messages"
+msgstr "Ezizena mezuetan koloratzea"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "Partekatu mezu bat idazten dudanean"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Include join/part messages as activity"
+msgstr "Sarrerako eta jarduera bezala irteerako mezuak sartzea"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Mute sound notifications"
+msgstr "Jakinarazpenak isiltzea"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space seperated)"
+msgstr "Nabarmentzeko hitzak (banan itzazu espazioarekin) "
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Aliases"
+msgstr "Ezizena"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "Zer dira Aliasak"
 
 #: Send Message
 msgid "send_message"
-msgstr "Send Message"
+msgstr "Mezua bidaltzea"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Enter Channel Key"
+msgstr "Sartu kanalaren gakoa"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "Itzuli {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Notify me when"
+msgstr "Ni jakinaraztea noiz"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "All messages"
+msgstr "Mezu guztiak"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "I am mentioned"
+msgstr "Aipatua izan naiz"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Never"
+msgstr "Inoiz"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Mute sounds"
+msgstr "Soinuak kendu"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide count"
+msgstr "Irakurri gabeko mezuen kopurua ezabatu"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Operator tools"
+msgstr "Operatzailearen tresnak"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Default ban mask"
+msgstr "Ban-maskara lehenetsia"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Default kick reason"
+msgstr "Kanporatze mezu lehenetsia"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "Ezarpen aurreratuak"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Monsters be here, only click this button if you know what you are doing"
+msgstr "Mounstroak hemen daude, klikatu botoi hau zer egiten ari zaren baldin badakizu"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "Gaitu ezarpen aurreratuak"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Danger Zone: Changing some of these settings may break things!"
+msgstr "Arrisku-eremua: Ezarpen horietako batzuk aldatzeak gauzak apurtu ditzake!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "Berrezarri"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "Iragazkia"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Refresh banlist"
+msgstr "Kanporatuen zerrenda eguneratu"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Banned user"
+msgstr "Kanporatutako erabiltzaileak"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Banned by"
+msgstr "Nork kanporatu"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Refreshing banlist..."
+msgstr "Kanporatze zerrenda eguneratu"
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Nobody is banned!"
+msgstr "Ez dago inor kanporatuta"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "Berretsi gonbidatuen zerrenda"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Invited user"
+msgstr "Erabiltzaile gonbidatua"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Invited by"
+msgstr "Gonbidatua"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
+msgstr "Berretsi gonbidatuen zerrenda..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Nobody is invited!"
+msgstr "Inor ez da gonbidatu!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "Hau kanal publikoa da."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Only invited users can join."
+msgstr "Bakarrik erabiltzaile gonbidatuak sartu daitezke"
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Only allow invited users"
+msgstr "Bakarrik erabiltzaile gonbidatuak onartuak daude"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "Guztiak sartzea onartuak daude"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "Bakarrik erabiltzaile erregistratuak sar daitezke"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "Gonbidapena gehitu"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "(Edozein erabiltzaile erregistratua)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topic"
+msgstr "Gaia"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Moderated chat"
+msgstr "Kanal moderatua"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Invite only"
+msgstr "Sartzeko gonbidapena behar da"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Only moderators can change the topic"
+msgstr "Moderatzaileek soilik gaia alda dezakete"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Block messages from outside this channel"
+msgstr "Kanpoko mezuak bloketu"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to update the channel list"
+msgstr "Egin klik Berrezi botoian kanalen zerrenda eguneratzeko"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, try again later"
+msgstr "Ez da kanalarik aurkitu, saiatu berriro geroago"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Welcome to Kiwi IRC! Select a channel on the left."
+msgstr "Ongi Etorria Kiwi IRC-ra! Ezkerreko kanal bat aukeratu."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Show statebrowser"
+msgstr "Nabigatzailearen barra estatu erakustea"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "Ezkutatu gaia"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "Erakutsi gaia"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "Kanalaren ezarpenak"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Join Channel"
+msgstr "Kanal batean sartzea"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Not Connected"
+msgstr "Deskonektatuta"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Private conversation with {{user}}"
+msgstr "Elkarrizketa pribatua {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "Kanala utzi nahi duzu?"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Send a message..."
+msgstr "Mezua bidaltzea..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Loading {{url}}..."
+msgstr "Kargatuz {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Load previous messages"
+msgstr "Aurreko mezuak kargatzea"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Unread Messages"
+msgstr "Mezuak irakurri gabe"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Server details"
+msgstr "Zerbitzariaren xehetasunak"
 
 #: Port
 msgid "settings_port"
-msgstr "Port"
+msgstr "Portua"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Other networks on this ZNC account will be listed in the network list"
+msgstr "Sare-zerrendan ZNC-a kontu honetako beste sare batzuk zerrendatuko dira"
 
 #: Your details
 msgid "settings_your_details"
-msgstr "Your details"
+msgstr "Zure xehetasunak"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Ezizena"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Advanced"
+msgstr "Aurreratua"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Encoding"
+msgstr "Kodifikazioa"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Show Raw"
+msgstr "Jatorrizkoa erakustea"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "Websocket zuzena"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Run commands when connected"
+msgstr "Komandoak exekutatzen ditu konektatzerakoan"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Danger Zone"
+msgstr "Arrisku-zona"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Remove network"
+msgstr "Sarea ezabatzea"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} person here"
+msgstr "Hemen {{count}} erabiltzaile"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "{{count}} people here"
+msgstr "Hemen {{count}} erabiltzaile"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "filter users in channel"
+msgstr "Ragazi erabiltzaileak kanalean"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Reconnect to join {{channel}}"
+msgstr "Sartzeko birkonektatzea {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Reconnect to {{network}} to start talking"
+msgstr "Txateatzen hasteko {{network}} birkonektatzea"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Reconnect to continue talking with {{user}}"
+msgstr "Hitz egiten jarraitzeko birkonektatzea  {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "You are not currently connected!"
+msgstr "Ez daude konktatuta"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Connection settings"
+msgstr "Konexioaren konfigurazioa"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "We couldn't connect to that server :("
+msgstr "Ezin gara konektatu zerbitzarira :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "Sarera konektatuta"
 
 #: Close options
 msgid "side_close"
-msgstr "Close options"
+msgstr "Aukerak ixtea"
 
 #: Channel options
 msgid "side_options"
-msgstr "Channel options"
+msgstr "Kanalaren aukerak"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Your settings"
+msgstr "Zure konfigurazioa"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Show when people join"
+msgstr "Jendea sartzen denean kanala erakustea"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Show when channel topic changes"
+msgstr "Erakutsi gelaren gaia aldatzerakoan"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Show when users change their nicks"
+msgstr "Erakutsi erabiltzaileek izena aldatzerakoan"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Show when users change channel modes"
+msgstr "Erakutsi erabiltzaileek kanalaren aukerak aldatzerakoan"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Extra message formatting"
+msgstr "Mezuen formatua emate estra"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Nick colours in the list"
+msgstr "Ezizena zerrendan koloratzea"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "No buffer set"
+msgstr "Itxuratutako bufferrik ez dago"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "There is no topic for this channel"
+msgstr "Kanal honetako gairik ez dago"
 
 #: About
 msgid "about"
-msgstr "About"
+msgstr "Honi buruz"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Created at {{when}}"
+msgstr "{{when}} sortua"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Nabarmenduak"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nobody has mentioned you yet..."
+msgstr "Inork ez zaitu oraindik aipatu ..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "There was an error starting Kiwi IRC :("
+msgstr "Akatsa Kiwi IRC-i irakatsiz egon da :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded"
+msgstr "Egiaztatu Kiwi IRC-a zuzen instalatu duzula eta konfigurazioa karga daitekeela."
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Leave {{name}}"
+msgstr "Irten {{name}}-tik"
 
 #: Your account
 msgid "state_account"
-msgstr "Your account"
+msgstr "Zure kontua"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr "Your settings and networks will be remembered on this computer."
+msgstr "Zure konfigurazioa eta sareak ordenagailu honetan gogoratuko dira."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Forget me"
+msgstr "Konfigurazioa ezabatu"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "No networks here yet."
+msgstr "Oraindik ez duzu sarerik konfiguratu"
 
 #: Add one?
 msgid "state_add"
-msgstr "Add one?"
+msgstr "Bat gehitu nahi duzu?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Available networks"
+msgstr "Sare libreak"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "Gehitu sarea"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "Sare berria"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "Sarerik ez"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Configure network"
+msgstr "Sarea konfiguratu"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Not connected."
+msgstr "Deskonektatuta."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Join new #channel"
+msgstr "#Kanal berrian sartu"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "Iragazi kanalak"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find more channels"
+msgstr "Bilatu kanal gehiago"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Change nick"
+msgstr "Ezizena aldatu"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "Sartu ezizen berria..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "Hau zu zara!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Account name: {{user}}"
+msgstr "Erabiltzaileren izena: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Real name: {{realname}}"
+msgstr "Benetako izena: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Is a bot"
+msgstr "Robot bat da"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is avaiable for help"
+msgstr "Laguntzeko prest"
 
 #: Is an operator
 msgid "user_op"
-msgstr "Is an operator"
+msgstr "Operatzaile bat da"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Connected to {{server}} {{info}}"
+msgstr "{{server}}ra Konektatuta {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Securely connected via SSL/TLS"
+msgstr "Era seguruan SSL/TLS-arekin konektatuta"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "In channels {{channels}}"
+msgstr "Aretoetan ere dago {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr "Access level"
+msgstr "Sarbide-maila"
 
 #: Normal
 msgid "user_normal"
-msgstr "Normal"
+msgstr "Normala"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Kick from the channel"
+msgstr "Kanaletik botatzea"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Ban from the channel"
+msgstr "Kanaleko blokeatzea"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Ban and kick from the channel"
+msgstr "Kanaleko Botatzea + Blokeatzea"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Please specify a channel to join. eg /join #example"
+msgstr "Mesedez zehaztu kanal bat sartzeko. ad. /join #example"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "{{nick}} ezizena dagoeneko erabiltzen ari da!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "Ezizen bat sartu behar duzu"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "Ezizena ezin da zenbaki batekin hasi"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} gives ops to {{target}}"
+msgstr "{{nick}} ops ematen dio {{target}}-ri"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} takes ops from {{target}}"
+msgstr "{{nick}} ops kentzen dio {{target}}-ri "
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} gives half-ops to {{target}}"
+msgstr "{{nick}} half-ops ematen dio {{target}}-ri "
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} takes half-ops from {{target}}"
+msgstr "{{nick}} half-ops kentzen dio  {{target}}-ri "
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} gives voice to {{target}}"
+msgstr "{{nick}} voice ematen dio {{target}}-ri "
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} takes voice from {{target}}"
+msgstr "{{nick}} half-ops kentzen dio {{target}}-ri "
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} gives admin to {{target}}"
+msgstr "{{nick}} admin ematen dio {{target}}-ri "
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} takes admin from {{target}}"
+msgstr "{{nick}} admin kentzen dio {{target}}-ri "
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} gives owner to {{target}}"
+msgstr "{{nick}} owner ematen dio {{target}}-ri "
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} takes owner from {{target}}"
+msgstr "{{nick}} owner kentzen dio {{target}}-ri "
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} has banned {{target}}"
+msgstr "{{nick}}-k {{target}} kanporatu du"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} has unbanned {{target}}"
+msgstr "{{nick}}-k {{target}} desbaneatu du"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr "{{nick}} sets {{mode}} on {{target}}"
+msgstr "{{nick}} doitu du {{mode}} {{target}}-en"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Send a message"
+msgstr "Bidali mezu bat"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Do something physical"
+msgstr "Egizu zerbait fisikoa"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Join a channel"
+msgstr "Sartu kanal batean"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Leave a channel"
+msgstr "Irten kanal batetik"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Leave, then re-join a channel"
+msgstr "Irten, ondoren kanal batean berriro sartu"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Change your nickname"
+msgstr "Zure ezizena aldatu"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr "Start a private conversation with someone"
+msgstr "Hasi elkarrizketa pribatu bat norbaitekin"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Invite somebody into the channel"
+msgstr "Kanalera norbait gonbidatu"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Set the topic for this channel"
+msgstr "Kanalari gai bat ipini"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Send a notice"
+msgstr "Abisu bat bidali"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "Send a raw command to the IRC server"
+msgstr "Bidali komando berri bat IRC zerbitzarira"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Kick somebody from the channel"
+msgstr "Kanporatu norbait kanaletik"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Clear all messages from this window"
+msgstr "Ezabatu leiho honetako mezu guztiak"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr "Send a CTCP command to somebody"
+msgstr "Norbaiti CTCP komando bat bidali"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Disconnect from the IRC server"
+msgstr "IRC zerbitzariatik deskonektatu"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Connect to a new IRC network"
+msgstr "IRC sare berri batera konektatuta "
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Request information on somebody"
+msgstr "Norbaiti buruzko informazioa eskatu"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr "Request information on somebody that disconnected recently"
+msgstr "Berriki deskonektatu den norbaiti buruzko informazioa eskatu"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "Kanpoan zaudela ipini"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "Aktiboa bezala ipini"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Change your connection encoding"
+msgstr "Zure kodifikazio konexioa aldatu"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr "Ignore messages from somebody"
+msgstr "Norbaiten mezuei kasurik ez egin"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Stop ignoring somebody"
+msgstr "Norbaiti kasurik ez egiteari utzi"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Roll a Dice"
+msgstr "Dadoa bota"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
+msgstr "dadoa {{sides}} bota eta {{number}} atera duzu"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Your IRC Client."
+msgstr "Zure IRC-bezeroa"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Add your networks. Join your channels."
+msgstr "Zure sareak gehitzen ditu. Zure kanaletan sartzen da."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "They will be here when you come back."
+msgstr "Hemen egongo dira itzultzen zarenean."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Add a Network"
+msgstr "Sare bat gehitzen du"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "You are trying to connect to {{network}}"
+msgstr "{{network}} sarera konektatzen ari zara"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Network has been added to your existing Kiwi window."
+msgstr "Sarea gehitu da Kiwi existitzen duen leiho batera"
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Add network to existing Kiwi window"
+msgstr "Gehitu sarea existitzen duen Kiwi leiho batera"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Temporarily connect to this network"
+msgstr "Konektatu aldi baterako sare honetara"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Saved networks"
+msgstr "Gordetako sareak"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (next gen) - Rizon preview"
+msgstr "Kiwi IRC (sorkuntza berria) - Rizon Aurrebista"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Direct websockets. No Kiwi server or webirc involved."
+msgstr "Zuzeneko Websocket. Kiwi zerbitzaririk ez webirc-ik gabe."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
+msgstr "(@Rizon Adam-i esker websockets-zerbitzariaren euskarriaren garapenagatiko!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Give the developer version of Kiwi IRC a try!"
+msgstr "Bertsioa probatzen du Kiwi IRC-aren garapenean!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "Deskonektatuta"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Connected to {{network}}!"
+msgstr "{{network}}-ra konektatua"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} has joined"
+msgstr "{{nick}} sartu da"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} kicked you from {{channel}}"
+msgstr "{{nick}} {{channel}} kanaletik bota zaitu"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
+msgstr "{{chanop}}-k {{nick}} {{channel}} kanaletik  bota du "
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} has left"
+msgstr "{{nick}} irten da"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} invited you to join {{channel}}"
+msgstr "{{nick}} gonbidatu zaitu {{channel}}-ra sartzera"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
+msgstr "{{nick}} erabiltzailea okupatuta dago. Saiatu {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} is now known as {{newnick}}"
+msgstr "{{nick}} orain {{newnick}} da"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} changed the topic to: {{topic}}"
+msgstr "Gaia aldatu da, gai berria {{topic}} da"
 
