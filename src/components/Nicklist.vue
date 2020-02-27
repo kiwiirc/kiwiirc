@@ -295,7 +295,6 @@ export default {
     box-sizing: border-box;
     max-height: 100%;
     flex: 1 auto;
-    list-style: none;
     line-height: 1.2em;
     margin-top: 6px;
 }

@@ -1,5 +1,5 @@
 <template>
-    <li
+    <div
         :class="[
             nicklist.userMode(user) ? 'kiwi-nicklist-user--mode-' + nicklist.userMode(user) : '',
             user.away ? 'kiwi-nicklist-user--away' : '',
@@ -37,7 +37,7 @@
             <i class="fa fa-comment" aria-hidden="true"/>
         </span>
         <typing-status-indicator :user="user" :buffer="nicklist.buffer" />
-    </li>
+    </div>
 </template>
 
 <script>
