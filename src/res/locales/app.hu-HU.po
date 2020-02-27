@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2020-02-27 18:45\n"
+"PO-Revision-Date: 2020-02-27 20:27\n"
 
 #: Start
 msgid "start_button"
@@ -23,23 +23,23 @@ msgstr "Welcome to Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr "Close"
+msgstr "bezár"
 
 #: Connect
 msgid "connect"
-msgstr "Connect"
+msgstr "Kapcsolódás"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Connecting..."
+msgstr "Kapcsolódás..."
 
 #: Connected
 msgid "connected"
-msgstr "Connected"
+msgstr "kapcsolódva"
 
 #: Settings
 msgid "settings"
-msgstr "Settings"
+msgstr "Beállítások"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
@@ -47,7 +47,7 @@ msgstr "Kiwi Settings"
 
 #: Channels
 msgid "channels"
-msgstr "Channels"
+msgstr "csatornák"
 
 #: Access
 msgid "access"
@@ -63,15 +63,15 @@ msgstr "Invited Users"
 
 #: Notifications
 msgid "notifications"
-msgstr "Notifications"
+msgstr "Értesítések"
 
 #: Username
 msgid "username"
-msgstr "Username"
+msgstr "felhasználónév"
 
 #: Password
 msgid "password"
-msgstr "Password"
+msgstr "jelszó"
 
 #: I have a password
 msgid "password_have"
@@ -79,7 +79,7 @@ msgstr "I have a password"
 
 #: Server
 msgid "server"
-msgstr "Server"
+msgstr "szerver"
 
 #: Nick
 msgid "nick"
@@ -87,7 +87,7 @@ msgstr "Nick"
 
 #: Channel
 msgid "channel"
-msgstr "Channel"
+msgstr "csatorna"
 
 #: Messages
 msgid "messages"
@@ -99,7 +99,7 @@ msgstr "Network"
 
 #: ZNC
 msgid "znc"
-msgstr "ZNC"
+msgstr "znc"
 
 #: Logging in...
 msgid "logging_in"
@@ -119,19 +119,19 @@ msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr "Cancel"
+msgstr "mégsem"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "igen"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "nem"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "nem található"
 
 #: Warning!
 msgid "warning"
@@ -167,7 +167,7 @@ msgstr "Ignore user"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Channel"
+msgstr "csatorna"
 
 #: Away
 msgid "away"
@@ -175,7 +175,7 @@ msgstr "Away"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "hét"
 
 #: {{count}} weeks
 msgid "week_plural"
@@ -183,7 +183,7 @@ msgstr "{{count}} weeks"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "nap"
 
 #: {{count}} days
 msgid "day_plural"
@@ -191,7 +191,7 @@ msgstr "{{count}} days"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "óra"
 
 #: {{count}} hours
 msgid "hour_plural"
@@ -199,7 +199,7 @@ msgstr "{{count}} hours"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "perc"
 
 #: {{count}} minutes
 msgid "minute_plural"
@@ -207,7 +207,7 @@ msgstr "{{count}} minutes"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "másodperc"
 
 #: {{count}} seconds
 msgid "second_plural"
@@ -579,7 +579,7 @@ msgstr "Remove network"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} person here"
+msgstr "személy"
 
 #: {{count}} people here
 msgid "person_plural"
