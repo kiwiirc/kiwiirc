@@ -25,7 +25,10 @@
                     <a class="u-link " @click="sidebarState.showNicklist()">
                         {{
                             $t('\{\{count\}\} person here',
-                               { count: Object.keys(b.users || {}).length }
+                               {
+                                   count: Object.keys(b.users || {}).length,
+                                   plural: '\{\{count\}\} persons here'
+                               }
                             )
                         }}
                     </a>

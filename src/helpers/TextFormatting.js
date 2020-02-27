@@ -225,6 +225,7 @@ export function formatNumber(num) {
 export function t(key, options) {
     let val = i18next.t(key, options);
     if (!val) {
+        console.log('missing key:', key);
         let opts = options || {};
         opts.lng = 'en-us';
         val = i18next.t(key, opts);

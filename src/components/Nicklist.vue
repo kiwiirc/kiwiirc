@@ -11,7 +11,9 @@
                 {{
                     filter_visible ?
                         sortedUsers.length :
-                        $t('\{\{count\}\} person here', {count: sortedUsers.length})
+                        $t('\{\{count\}\} person here',
+                           {count: sortedUsers.length, plural: '\{\{count\}\} persons here'}
+                        )
                 }}
             </span>
 

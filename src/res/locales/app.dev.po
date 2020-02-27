@@ -165,6 +165,12 @@ msgstr "ZNC"
 msgid "{{count}} person here"
 msgstr "{{count}} person here"
 
+#: components/ContainerHeader.vue
+#: components/Nicklist.vue
+#: components/SidebarAboutBuffer.vue
+msgid "{{count}} person here_plural"
+msgstr "{{count}} persons here"
+
 
 #: components/App.vue
 msgid "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
@@ -423,10 +429,6 @@ msgstr "Welcome to Kiwi IRC! Select a channel on the left."
 #: components/ContainerHeader.vue
 msgid "Really leave the channel?"
 msgstr "Really leave the channel?"
-
-#: components/ContainerHeader.vue
-msgid "{{count}} person here_plural"
-msgstr "{{count}} persons here"
 
 
 #: components/ControlInput.vue
