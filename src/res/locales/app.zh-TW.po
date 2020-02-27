@@ -11,43 +11,43 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2020-02-27 18:45\n"
+"PO-Revision-Date: 2020-02-27 20:28\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "開始"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "歡迎造訪 Kiwi IRC！"
 
 #: Close
 msgid "close"
-msgstr "Close"
+msgstr "關閉"
 
 #: Connect
 msgid "connect"
-msgstr "Connect"
+msgstr "連線"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Connecting..."
+msgstr "連線中…"
 
 #: Connected
 msgid "connected"
-msgstr "Connected"
+msgstr "已連線"
 
 #: Settings
 msgid "settings"
-msgstr "Settings"
+msgstr "設定"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Kiwi 設定"
 
 #: Channels
 msgid "channels"
-msgstr "Channels"
+msgstr "頻道"
 
 #: Access
 msgid "access"
@@ -55,7 +55,7 @@ msgstr "Access"
 
 #: Banned Users
 msgid "banned"
-msgstr "Banned Users"
+msgstr "已遭禁止"
 
 #: Invited Users
 msgid "invited"
@@ -63,39 +63,39 @@ msgstr "Invited Users"
 
 #: Notifications
 msgid "notifications"
-msgstr "Notifications"
+msgstr "通知"
 
 #: Username
 msgid "username"
-msgstr "Username"
+msgstr "使用者名稱"
 
 #: Password
 msgid "password"
-msgstr "Password"
+msgstr "密碼"
 
 #: I have a password
 msgid "password_have"
-msgstr "I have a password"
+msgstr "我有密碼"
 
 #: Server
 msgid "server"
-msgstr "Server"
+msgstr "伺服器"
 
 #: Nick
 msgid "nick"
-msgstr "Nick"
+msgstr "暱稱"
 
 #: Channel
 msgid "channel"
-msgstr "Channel"
+msgstr "頻道"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "訊息"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "網路"
 
 #: ZNC
 msgid "znc"
@@ -103,71 +103,71 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logging in..."
+msgstr "登入中…"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Invalid login"
+msgstr "無效的登入"
 
 #: Search...
 msgid "do_search"
-msgstr "Search..."
+msgstr "搜尋…"
 
 #: OK
 msgid "ok"
-msgstr "OK"
+msgstr "確定"
 
 #: Cancel
 msgid "cancel"
-msgstr "Cancel"
+msgstr "取消"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "是"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "否"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "找不到"
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "警告"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "這樣會關閉全部的 KiwiIRC 交談。您是否確定關閉本視窗？"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "真實名稱"
 
 #: Status
 msgid "whois_status"
-msgstr "Status"
+msgstr "狀態"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Is available"
+msgstr "可用"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Send a message"
+msgstr "傳送訊息"
 
 #: More information
 msgid "more_information"
-msgstr "More information"
+msgstr "更多訊息"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignore user"
+msgstr "忽略使用者"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Channel"
+msgstr "頻道"
 
 #: Away
 msgid "away"
@@ -175,103 +175,103 @@ msgstr "Away"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "{{count}} 週"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "{{count}} 週"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "{{count}} 天"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} days"
+msgstr "{{count}} 天"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "{{count}} 小時"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "{{count}} 小時"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "{{count}} 分鐘"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutes"
+msgstr "{{count}} 分鐘"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "{{count}} 秒"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "{{count}} 秒"
 
 #: General
 msgid "settings_general"
-msgstr "General"
+msgstr "一般"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "語言"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "佈景主題"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "重新整理佈景主題"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "佈景主題的網址"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "佈景主題配置"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Use monospace"
+msgstr "使用等寬字型"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "使用 Kiwi 作為我的預設 IRC 用戶端"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Traditional IRC layout"
+msgstr "傳統 IRC 配置"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Show autocomplete list"
+msgstr "顯示自動完成清單"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Chat Messages"
+msgstr "聊天訊息"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Show timestamps"
+msgstr "顯示時間戳記"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Use 24-hour timestamps"
+msgstr "使用 24 小時格式時間戳記"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Show emoticons"
+msgstr "顯示表情符號"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Block new private messages"
+msgstr "封鎖新的私人訊息"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -279,7 +279,7 @@ msgstr "Messages in scrollback"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Extra formatting"
+msgstr "額外格式"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
@@ -879,7 +879,7 @@ msgstr "{{nick}} sets {{mode}} on {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Send a message"
+msgstr "傳送訊息"
 
 #: Do something physical
 msgid "command_action"
@@ -1031,7 +1031,7 @@ msgstr "Give the developer version of Kiwi IRC a try!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "已中斷連線"
 
 #: Connected to {{network}}!
 msgid "connected_to"
