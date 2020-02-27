@@ -3,7 +3,7 @@
         <div class="kiwi-channellist-content-container">
             <div class="kiwi-channellist-nav">
                 <form class="u-form kiwi-channellist-search" @submit.prevent>
-                    <input v-model="search" :placeholder="$t('do_search')" class="u-input" >
+                    <input v-model="search" :placeholder="$t('Search...')" class="u-input" >
                     <a
                         :class="{
                             'u-button-primary': !isLoading,
@@ -44,16 +44,16 @@
                                     class="u-button u-button-primary"
                                     @click="joinChannel(channel.channel)"
                                 >
-                                    {{ $t('container_join') }}
+                                    {{ $t('Join Channel') }}
                                 </a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <div v-else-if="noResults" class="kiwi-channellist-info">
-                    <p>{{ $t('channel_list_nonefound') }}</p>
+                    <p>{{ $t('No channels found, try again later') }}</p>
                 </div>
-                <div v-else class="kiwi-channellist-info">{{ $t('channel_list_fetch') }}</div>
+                <div v-else class="kiwi-channellist-info">{{ $t('Click the refresh button to update the channel list') }}</div>
             </div>
         </div>
     </div>

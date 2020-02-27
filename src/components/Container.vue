@@ -52,9 +52,9 @@
         </template>
         <template v-else>
             <div class="kiwi-container-empty">
-                <h4>{{ $t('container_welcome') }}</h4>
+                <h4>{{ $t('Welcome to Kiwi IRC! Select a channel on the left.') }}</h4>
                 <a class="u-button" @click.stop="toggleStateBrowser">
-                    {{ $t('container_statebrowser') }}
+                    {{ $t('Show statebrowser') }}
                 </a>
             </div>
         </template>

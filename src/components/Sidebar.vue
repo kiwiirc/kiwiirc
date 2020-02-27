@@ -5,7 +5,7 @@
     >
         <span v-if="!sidebarState.isOpen" class="kiwi-sidebar-options">
             <div class="kiwi-sidebar-close" @click="sidebarState.close()">
-                {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
+                {{ $t('Close') }}<i class="fa fa-times" aria-hidden="true"/>
             </div>
         </span>
 
@@ -26,47 +26,47 @@
                 >
 
                     <tabbed-view>
-                        <tabbed-tab :header="$t('settings')" :focus="true">
-                            <h3>{{ $t('channel_settings') }}</h3>
+                        <tabbed-tab :header="$t('Settings')" :focus="true">
+                            <h3>{{ $t('Channel Settings') }}</h3>
                             <hr>
                             <channel-info :buffer="buffer"/>
 
                             <div class="kiwi-sidebar-settings">
-                                <h3>{{ $t('side_settings') }}</h3>
+                                <h3>{{ $t('Your settings') }}</h3>
                                 <hr>
                                 <form class="u-form">
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{ $t('side_joins') }}</span>
+                                        <span>{{ $t('Show when people join') }}</span>
                                         <input v-model="settingShowJoinParts" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{ $t('side_topics') }}</span>
+                                        <span>{{ $t('Show when channel topic changes') }}</span>
                                         <input v-model="settingShowTopics" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{ $t('side_nick_changes') }}</span>
+                                        <span>{{ $t('Show when users change their nicks') }}</span>
                                         <input v-model="settingShowNickChanges" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{ $t('side_mode_changes') }}</span>
+                                        <span>{{ $t('Show when users change channel modes') }}</span>
                                         <input v-model="settingShowModeChanges" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{ $t('side_formatting') }}</span>
+                                        <span>{{ $t('Extra message formatting') }}</span>
                                         <input v-model="settingExtraFormatting" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{ $t('side_colours') }}</span>
+                                        <span>{{ $t('Nick colours in the list') }}</span>
                                         <input v-model="settingColouredNicklist" type="checkbox">
                                     </label>
                                     <label class="u-checkbox-wrapper">
-                                        <span>{{ $t('settings_share_typing') }}</span>
+                                        <span>{{ $t('Share when I\'m typing a message') }}</span>
                                         <input v-model="settingShareTyping" type="checkbox">
                                     </label>
                                 </form>
                             </div>
                         </tabbed-tab>
-                        <tabbed-tab :header="$t('access')">
+                        <tabbed-tab :header="$t('Access')">
                             <a
                                 :class="{
                                     'kiwi-sidebar-accesstab--active': accessTab === 'banlist'
@@ -74,7 +74,7 @@
                                 class="u-link kiwi-sidebar-accesstab"
                                 @click="accessTab='banlist'"
                             >
-                                {{ $t('banned') }}
+                                {{ $t('Banned Users') }}
                             </a>
                             <a
                                 :class="{
@@ -83,12 +83,12 @@
                                 class="u-link kiwi-sidebar-accesstab"
                                 @click="accessTab='invitelist'"
                             >
-                                {{ $t('invited') }}
+                                {{ $t('Invited Users') }}
                             </a>
                             <channel-banlist v-if="accessTab==='banlist'" :buffer="buffer"/>
                             <channel-invitelist v-if="accessTab==='invitelist'" :buffer="buffer"/>
                         </tabbed-tab>
-                        <tabbed-tab :header="$t('notifications')">
+                        <tabbed-tab :header="$t('Notifications')">
                             <buffer-settings :buffer="buffer"/>
                         </tabbed-tab>
                         <tabbed-tab
@@ -136,7 +136,7 @@
             </template>
         </template>
         <template v-else>
-            {{ $t('side_buffer') }}
+            {{ $t('No buffer set') }}
         </template>
     </div>
 </template>

@@ -3,7 +3,7 @@
         <div class="kiwi-customserver-container">
             <h2 v-if="!is_connecting" v-html="title"/>
             <h2 v-else>
-                {{ $t('connecting') }}
+                {{ $t('Connecting...') }}
                 <a class="u-link" @click="infoClick">
                     <i class="fa fa-info-circle" aria-hidden="true"/>
                 </a>
@@ -21,7 +21,7 @@
                     </div>
 
                     <template v-if="server_type === 'default'">
-                        <input-text :label="$t('server')" v-model="server">
+                        <input-text :label="$t('Server')" v-model="server">
                             <span
                                 :class="[tls ? 'kiwi-customserver-tls--enabled' : '']"
                                 class="fa-stack fa-lg kiwi-customserver-tls"
@@ -36,55 +36,55 @@
                         </input-text>
 
                         <input-text
-                            :label="$t('nick')"
+                            :label="$t('Nick')"
                             v-model="nick"
                             class="kiwi-customserver-nick"
                         />
 
                         <label class="kiwi-customserver-have-password">
                             <input v-model="show_password_box" type="checkbox">
-                            <span> {{ $t('password_have') }} </span>
+                            <span> {{ $t('I have a password') }} </span>
                         </label>
                         <input-text
                             v-focus
                             v-if="show_password_box"
-                            :label="$t('password')"
+                            :label="$t('Password')"
                             :show-plain-text="true"
                             v-model="password"
                             type="password"
                         />
 
-                        <input-text :label="$t('channel')" v-model="channel" />
+                        <input-text :label="$t('Channel')" v-model="channel" />
                     </template>
 
                     <template v-if="server_type === 'default_simple'">
                         <input-text
-                            :label="$t('nick')"
+                            :label="$t('Nick')"
                             v-model="nick"
                             class="kiwi-customserver-nick"
                         />
 
                         <label class="kiwi-customserver-have-password">
                             <input v-model="show_password_box" type="checkbox">
-                            <span>{{ $t('password_have') }}</span>
+                            <span>{{ $t('I have a password') }}</span>
                         </label>
                         <input-text
                             v-focus
                             v-if="show_password_box"
-                            :label="$t('password')"
+                            :label="$t('Password')"
                             v-model="password"
                             type="password"
                         />
 
                         <input-text
-                            :label="$t('channel')"
+                            :label="$t('Channel')"
                             v-model="channel"
                             class="kiwi-customserver-channel"
                         />
                     </template>
 
                     <template v-if="server_type === 'znc'">
-                        <input-text :label="$t('server')" v-model="server">
+                        <input-text :label="$t('Server')" v-model="server">
                             <span
                                 :class="[tls ? 'kiwi-customserver-tls--enabled' : '']"
                                 class="fa-stack fa-lg kiwi-customserver-tls"
@@ -99,17 +99,17 @@
                         </input-text>
 
                         <input-text
-                            :label="$t('username')"
+                            :label="$t('Username')"
                             v-model="nick"
                             class="kiwi-customserver-nick"
                         />
 
                         <input-text
                             v-if="znc_network_support"
-                            :label="$t('network')"
+                            :label="$t('Network')"
                             v-model="znc_network"
                         />
-                        <input-text :label="$t('password')" v-model="password" type="password" />
+                        <input-text :label="$t('Password')" v-model="password" type="password" />
                     </template>
 
                     <button type="submit" class="u-button u-button-primary u-submit">
@@ -117,8 +117,8 @@
                     </button>
 
                     <div v-if="show_type_switcher" class="kiwi-customserver-server-types">
-                        <a class="u-link" @click="server_type = 'default'">{{ $t('network') }}</a>
-                        <a class="u-link" @click="server_type = 'znc'">{{ $t('znc') }}</a>
+                        <a class="u-link" @click="server_type = 'default'">{{ $t('Network') }}</a>
+                        <a class="u-link" @click="server_type = 'ZNC'">{{ $t('znc') }}</a>
                     </div>
                 </form>
 
@@ -247,7 +247,7 @@ export default {
         if (state.settings.startupOptions.buttonText) {
             this.buttonText = state.settings.startupOptions.buttonText;
         } else {
-            this.buttonText = this.$t('connect');
+            this.buttonText = this.$t('Connect');
         }
 
         if (saveThisSessionsState) {

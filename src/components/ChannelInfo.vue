@@ -2,7 +2,7 @@
     <div class="kiwi-channelinfo">
         <form class="u-form kiwi-channelinfo-basicmodes" @submit.prevent="">
             <label class="kiwi-channelinfo-topic">
-                <span>{{ $t('channel_topic') }}</span>
+                <span>{{ $t('Topic') }}</span>
                 <textarea v-model.lazy="topic" rows="2"/>
             </label>
 
@@ -19,23 +19,23 @@
             </div>
 
             <label class="u-checkbox-wrapper">
-                <span>{{ $t('channel_moderated') }}</span>
+                <span>{{ $t('Moderated chat') }}</span>
                 <input v-model="modeM" type="checkbox" >
             </label>
             <label class="u-checkbox-wrapper">
-                <span>{{ $t('channel_invite') }}</span>
+                <span>{{ $t('Invite only') }}</span>
                 <input v-model="modeI" type="checkbox" >
             </label>
             <label class="u-checkbox-wrapper">
-                <span>{{ $t('channel_moderated_topic') }}</span>
+                <span>{{ $t('Only moderators can change the topic') }}</span>
                 <input v-model="modeT" type="checkbox" >
             </label>
             <label class="u-checkbox-wrapper">
-                <span>{{ $t('channel_external') }}</span>
+                <span>{{ $t('Block messages from outside this channel') }}</span>
                 <input v-model="modeN" type="checkbox" >
             </label>
             <label>
-                <span>{{ $t('password') }}</span>
+                <span>{{ $t('Password') }}</span>
                 <input v-model.lazy="modeK" type="text" class="u-input" >
             </label>
         </form>

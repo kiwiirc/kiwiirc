@@ -50,7 +50,7 @@
                 <div class="kiwi-controlinput-input-wrap">
                     <irc-input
                         ref="input"
-                        :placeholder="$t('input_placeholder')"
+                        :placeholder="$t('Send a message...')"
                         class="kiwi-controlinput-input"
                         wrap="off"
                         @input="inputUpdate"

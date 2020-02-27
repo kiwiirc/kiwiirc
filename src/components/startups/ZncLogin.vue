@@ -16,20 +16,20 @@
 
                 <input-text
                     v-if="showUser"
-                    :label="$t('username')"
+                    :label="$t('Username')"
                     v-model="username"
                     class="kiwi-welcome-znc-nick"
                 />
                 <input-text
                     v-if="showPass"
-                    :label="$t('password')"
+                    :label="$t('Password')"
                     v-model="password"
                     class="kiwi-welcome-znc-password"
                     type="password"
                 />
                 <input-text
                     v-if="showNetwork"
-                    :label="$t('network')"
+                    :label="$t('Network')"
                     v-model="znc_network"
                     class="kiwi-welcome-znc-channel"
                 />
@@ -77,13 +77,13 @@ export default {
             let greeting = state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
-                this.$t('start_greeting');
+                this.$t('Welcome to Kiwi IRC!');
         },
         buttonText: function buttonText() {
             let greeting = state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
-                this.$t('start_button');
+                this.$t('Start');
         },
         readyToStart: function readyToStart() {
             return this.username && (this.password || this.showPass === false);

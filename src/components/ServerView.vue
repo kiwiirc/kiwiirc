@@ -2,12 +2,12 @@
     <div class="kiwi-serverview">
         <div class="kiwi-serverview-inner">
             <tabbed-view ref="tabs" :key="network.id" @changed="tabChanged">
-                <tabbed-tab :header="$t('messages')" :focus="hasMessages" name="messages">
+                <tabbed-tab :header="$t('Messages')" :focus="hasMessages" name="messages">
                     <message-list :buffer="serverBuffer" />
                 </tabbed-tab>
                 <tabbed-tab
                     v-if="!restrictedServer"
-                    :header="$t('settings')"
+                    :header="$t('Settings')"
                     :focus="!hasMessages"
                     name="settings"
                 >
@@ -15,7 +15,7 @@
                 </tabbed-tab>
                 <tabbed-tab
                     v-if="networkConnected"
-                    :header="$t('channels')"
+                    :header="$t('Channels')"
                     name="channels"
                 >
                     <channel-list :network="network"/>

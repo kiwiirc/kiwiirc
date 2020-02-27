@@ -27,7 +27,7 @@
                     }"
                     class="kiwi-header-option kiwi-header-option-about"
                 >
-                    <a :title="$t('more_information')" @click="sidebarState.toggleAbout()">
+                    <a :title="$t('More information')" @click="sidebarState.toggleAbout()">
                         <i class="fa fa-info" aria-hidden="true"/>
                     </a>
                 </div>
@@ -39,7 +39,7 @@
                     class="kiwi-header-option kiwi-header-option-nicklist"
                 >
                     <a
-                        :title="$t('person', {count: Object.keys(buffer.users).length})"
+                        :title="$t('\{\{count\}\} person here', {count: Object.keys(buffer.users).length})"
                         @click="sidebarState.toggleNicklist()"
                     >
                         <i class="fa fa-users" aria-hidden="true"/>
@@ -53,7 +53,7 @@
                     class="kiwi-header-option kiwi-header-option-settings"
                 >
                     <a
-                        :title="$t('channel_settings')"
+                        :title="$t('Channel Settings')"
                         @click="sidebarState.toggleBufferSettings()"
                     >
                         <i class="fa fa-cog" aria-hidden="true"/>
@@ -70,14 +70,14 @@
             </div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a class="u-link kiwi-header-join-channel-button" @click="joinCurrentBuffer">
-                    {{ $t('container_join') }}
+                    {{ $t('Join Channel') }}
                 </a>
             </div>
 
             <transition name="kiwi-header-prompttrans">
                 <input-confirm
                     v-if="prompts.closeChannel"
-                    :label="$t('prompt_leave_channel')"
+                    :label="$t('Really leave the channel?')"
                     :flip_connotation="true"
                     class="kiwi-header-prompt"
                     @ok="closeCurrentBuffer"
@@ -99,11 +99,11 @@
                     class="u-button u-button-primary"
                     @click="onConnectButtonClick"
                 >
-                    {{ $t('connect') }}
+                    {{ $t('Connect') }}
                 </a>
                 <span v-else-if="buffer.getNetwork().state === 'connecting'">
                     <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
-                    {{ $t('connecting') }}
+                    {{ $t('Connecting...') }}
                 </span>
             </div>
         </template>
@@ -154,13 +154,13 @@
         >
 
             <tabbed-view>
-                <tabbed-tab :header="$t('settings')" :focus="true">
+                <tabbed-tab :header="$t('Settings')" :focus="true">
                     <channel-info :buffer="buffer"/>
                 </tabbed-tab>
-                <tabbed-tab :header="$t('banned')">
+                <tabbed-tab :header="$t('Banned Users')">
                     <channel-banlist :buffer="buffer"/>
                 </tabbed-tab>
-                <tabbed-tab :header="$t('notifications')">
+                <tabbed-tab :header="$t('Notifications')">
                     <buffer-settings :buffer="buffer"/>
                 </tabbed-tab>
             </tabbed-view>

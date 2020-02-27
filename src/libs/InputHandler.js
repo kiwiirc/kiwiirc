@@ -211,7 +211,7 @@ inputCommands.dice = function inputCommandDice(event, command, line) {
     }
     let rndNumber = Math.floor(Math.random() * sides) + 1;
 
-    let msg = TextFormatting.t('dice_roll', {
+    let msg = TextFormatting.t('Rolls a {{sides}} sided dice and gets {{number}}', {
         sides: TextFormatting.formatNumber(sides),
         number: TextFormatting.formatNumber(rndNumber),
     });
@@ -257,7 +257,7 @@ inputCommands.join = function inputCommandJoin(event, command, line) {
         // report an error if the user tries to join without specifying the channel
         this.state.addMessage(buffer, {
             nick: '*',
-            message: TextFormatting.t('error_no_channel_join'),
+            message: TextFormatting.t('Please specify a channel to join. eg /join #example'),
             type: 'error',
         });
         return;

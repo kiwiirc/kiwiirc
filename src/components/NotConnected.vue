@@ -2,7 +2,7 @@
     <div :class="{ connecting: shouldShowLoading }" class="kiwi-notconnected kiwi-warning-block">
         <template v-if="!shouldShowLoading">
             <div class="kiwi-notconnected-caption">
-                <span>{{ $t('not_connected') }}</span>
+                <span>{{ $t('You are not currently connected!') }}</span>
                 <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true"/>
             </div>
             <div class="kiwi-notconnected-buttons">
@@ -17,7 +17,7 @@
                         @click="reconnect"
                     >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
-                        {{ $t('reconnect_channel', {channel: buffer.name}) }}
+                        {{ $t('Reconnect to join \{\{channel\}\}', {channel: buffer.name}) }}
                     </span>
                 </template>
                 <template v-else-if="isServer()">
@@ -27,7 +27,7 @@
                         @click="reconnect"
                     >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
-                        {{ $t('reconnect_network', {network: buffer.getNetwork().name}) }}
+                        {{ $t('Reconnect to \{\{network\}\} to start talking', {network: buffer.getNetwork().name}) }}
                     </span>
                 </template>
                 <template v-else-if="isQuery()">
@@ -37,7 +37,7 @@
                         @click="reconnect"
                     >
                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
-                        {{ $t('reconnect_query', {user: buffer.name}) }}
+                        {{ $t('Reconnect to continue talking with \{\{user\}\}', {user: buffer.name}) }}
                     </span>
                 </template>
 
@@ -51,7 +51,7 @@
             </div>
         </template>
         <div v-else class="kiwi-notconnected-caption">
-            {{ $t('connecting') }}
+            {{ $t('Connecting...') }}
             <i class="fa fa-refresh fa-spin kiwi-notconnected-bigicon"
                aria-hidden="true"
             />

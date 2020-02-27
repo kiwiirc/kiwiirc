@@ -20,8 +20,8 @@
             />
         </div>
         <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
-            <p> {{ $t('state_remembered') }} </p>
-            <a class="u-link" @click="clickForget">{{ $t('state_forget') }}</a>
+            <p> {{ $t('Your settings and networks will be remembered on this computer.') }} </p>
+            <a class="u-link" @click="clickForget">{{ $t('Forget me') }}</a>
             <div class="kiwi-close-icon" @click="is_usermenu_open=false">
                 <i class="fa fa-times" aria-hidden="true"/>
             </div>
@@ -58,7 +58,7 @@ export default {
             return initial;
         },
         networkName() {
-            let name = TextFormatting.t('no_network');
+            let name = TextFormatting.t('No Network');
             if (this.network) {
                 name = this.network.name;
             }

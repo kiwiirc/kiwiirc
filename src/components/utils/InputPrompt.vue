@@ -6,13 +6,13 @@
             <span class="u-input-prompt-label">{{ label }}</span>
             <div class="u-input-prompt-inputs">
                 <input v-model="value" class="u-input" @keyup.esc="cancel" >
-                <a class="u-button u-button-primary" @click="complete">{{ $t('ok') }}</a>
+                <a class="u-button u-button-primary" @click="complete">{{ $t('OK') }}</a>
                 <a
                     v-if="!hideCancel"
                     class="u-button u-button-warning"
                     @click="cancel"
                 >
-                    {{ $t('cancel') }}
+                    {{ $t('Cancel') }}
                 </a>
             </div>
         </form>

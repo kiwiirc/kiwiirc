@@ -12,7 +12,7 @@
             </span>
             <div v-if="networkSupportsAway()" class="u-form kiwi-away-checkbox-form">
                 <label class="kiwi-selfuser-away-label">
-                    <span>{{ $t('away') }}</span>
+                    <span>{{ $t('Away') }}</span>
                     <input v-model="awayStatus" type="checkbox" >
                 </label>
             </div>
@@ -25,7 +25,7 @@
             >
                 <input-prompt
                     v-focus
-                    :label="$t('enter_new_nick')"
+                    :label="$t('Enter new nickname...')"
                     :noprompt="true"
                     :block="true"
                     @submit="onNewNickSubmit"
@@ -86,7 +86,7 @@ export default {
     },
     created() {
         this.listen(this.network.ircClient, 'nick in use', (event) => {
-            this.error_message = TextFormatting.t('error_nick_in_use', { nick: event.nick });
+            this.error_message = TextFormatting.t('The nickname {{nick}} is already in use!', { nick: event.nick });
         });
     },
     methods: {
@@ -103,11 +103,11 @@ export default {
         changeNick() {
             let nick = this.new_nick.trim();
             if (nick.length === 0) {
-                this.error_message = TextFormatting.t('error_empty_nick');
+                this.error_message = TextFormatting.t('You must enter a new nickname');
                 return;
             }
             if (nick.match(/(^[0-9])|(\s)/)) {
-                this.error_message = TextFormatting.t('error_no_number');
+                this.error_message = TextFormatting.t('Nickname must not start with a number');
                 return;
             }
             this.error_message = '';

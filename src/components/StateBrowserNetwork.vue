@@ -41,13 +41,13 @@
             <input
                 v-focus
                 v-model="channel_filter"
-                :placeholder="$t('filter_channels')"
+                :placeholder="$t('Filter channels')"
                 type="text"
                 @blur="onChannelFilterInputBlur"
             >
             <p>
                 <a @click="closeFilterChannel(); showNetworkChannels(network)">
-                    {{ $t('find_more_channels') }}
+                    {{ $t('Find more channels') }}
                 </a>
             </p>
         </div>
@@ -67,7 +67,7 @@
                     class="kiwi-statebrowser-newchannel-inputwrap"
                 >
                     <input
-                        :placeholder="$t('state_join')"
+                        :placeholder="$t('Join new #channel')"
                         v-model="channel_add_input"
                         type="text"
                         @focus="onNewChannelInputFocus"
@@ -85,22 +85,22 @@
                     <template v-if="network.state_error">
                         <i class="fa fa-exclamation-triangle" aria-hidden="true"/>
                         <a class="u-link" @click="showNetworkSettings(network)">
-                            {{ $t('state_configure') }}
+                            {{ $t('Configure network') }}
                         </a>
                     </template>
                     <template v-else-if="!network.connection.server">
                         <a class="u-link" @click="showNetworkSettings(network)">
-                            {{ $t('state_configure') }}
+                            {{ $t('Configure network') }}
                         </a>
                     </template>
                     <template v-else-if="network.state === 'disconnected'">
-                        {{ $t('state_disconnected') }}
+                        {{ $t('Not connected.') }}
                         <a class="u-link" @click="network.ircClient.connect()">
-                            {{ $t('connect') }}
+                            {{ $t('Connect') }}
                         </a>
                     </template>
                     <template v-else-if="network.state === 'connecting'">
-                        {{ $t('connecting') }}
+                        {{ $t('Connecting...') }}
                     </template>
                 </div>
             </transition>
