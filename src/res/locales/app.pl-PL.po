@@ -1,16 +1,17 @@
-# KiwiIRC translations
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: pl\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2020-02-27 18:01\n"
+"PO-Revision-Date: 2020-02-27 18:44\n"
 
 #: Start
 msgid "start_button"
@@ -18,83 +19,83 @@ msgstr "Start"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Kiwi IRC wita!"
+msgstr "Welcome to Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr "Zamknij"
+msgstr "Close"
 
 #: Connect
 msgid "connect"
-msgstr "Podłącz"
+msgstr "Connect"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Łączenie…"
+msgstr "Connecting..."
 
 #: Connected
 msgid "connected"
-msgstr "Podłączono"
+msgstr "Connected"
 
 #: Settings
 msgid "settings"
-msgstr "Ustawienia"
+msgstr "Settings"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Ustawienia Kiwi"
+msgstr "Kiwi Settings"
 
 #: Channels
 msgid "channels"
-msgstr "Pokoje"
+msgstr "Channels"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Access"
 
 #: Banned Users
 msgid "banned"
-msgstr "Zablokowani"
+msgstr "Banned Users"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Invited Users"
 
 #: Notifications
 msgid "notifications"
-msgstr "Powiadomienia"
+msgstr "Notifications"
 
 #: Username
 msgid "username"
-msgstr "Nazwa użytkownika"
+msgstr "Username"
 
 #: Password
 msgid "password"
-msgstr "Hasło"
+msgstr "Password"
 
 #: I have a password
 msgid "password_have"
-msgstr "Używam hasła"
+msgstr "I have a password"
 
 #: Server
 msgid "server"
-msgstr "Serwer"
+msgstr "Server"
 
 #: Nick
 msgid "nick"
-msgstr "Pseudonim"
+msgstr "Nick"
 
 #: Channel
 msgid "channel"
-msgstr "Pokój"
+msgstr "Channel"
 
 #: Messages
 msgid "messages"
-msgstr "Wiadomości"
+msgstr "Messages"
 
 #: Network
 msgid "network"
-msgstr "Sieć"
+msgstr "Network"
 
 #: ZNC
 msgid "znc"
@@ -102,15 +103,15 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logowanie…"
+msgstr "Logging in..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Błąd logowania"
+msgstr "Invalid login"
 
 #: Search...
 msgid "do_search"
-msgstr "Szukaj"
+msgstr "Search..."
 
 #: OK
 msgid "ok"
@@ -118,31 +119,31 @@ msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr "Anuluj"
+msgstr "Cancel"
 
 #: Yes
 msgid "yes"
-msgstr "Tak"
+msgstr "Yes"
 
 #: No
 msgid "no"
-msgstr "Nie"
+msgstr "No"
 
 #: Not found.
 msgid "not_found"
-msgstr "Nie znaleziono"
+msgstr "Not found."
 
 #: Warning!
 msgid "warning"
-msgstr "Ostrzeżenie!"
+msgstr "Warning!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "To zakończy wszystkie rozmowy. Czy na pewno chcesz zamknąć to okno?"
+msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Prawdziwe imię"
+msgstr "Real name"
 
 #: Status
 msgid "whois_status"
@@ -150,231 +151,231 @@ msgstr "Status"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Jest dostępny"
+msgstr "Is available"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Wyślij wiadomość"
+msgstr "Send a message"
 
 #: More information
 msgid "more_information"
-msgstr "Więcej informacji"
+msgstr "More information"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignoruj użytkownika"
+msgstr "Ignore user"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Pokój"
+msgstr "Channel"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "Away"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} tydzień"
+msgstr "{{count}} week"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} tygodni(e)"
+msgstr "{{count}} weeks"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} dzień"
+msgstr "{{count}} day"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} dni"
+msgstr "{{count}} days"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} godzina"
+msgstr "{{count}} hour"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} godzin(y)"
+msgstr "{{count}} hours"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minuta"
+msgstr "{{count}} minute"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minut(y)"
+msgstr "{{count}} minutes"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} sekunda"
+msgstr "{{count}} second"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} sekund(y)"
+msgstr "{{count}} seconds"
 
 #: General
 msgid "settings_general"
-msgstr "Ogólne"
+msgstr "General"
 
 #: Language
 msgid "settings_language"
-msgstr ""
+msgstr "Language"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Motyw"
+msgstr "Theme"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Odśwież motyw"
+msgstr "Refresh Theme"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "URL motywu"
+msgstr "Theme URL"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Układ wiadomości"
+msgstr "Message Layout"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Używaj czcionki o stałej szerokości"
+msgstr "Use monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Use Kiwi as my default IRC client"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Tradycyjny układ IRC"
+msgstr "Traditional IRC layout"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Pokazuj listę autouzupełniania"
+msgstr "Show autocomplete list"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Wiadomości czatu"
+msgstr "Chat Messages"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Pokazuj znaczniki czasu"
+msgstr "Show timestamps"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "24-godzinny format czasu"
+msgstr "Use 24-hour timestamps"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Pokazuj emotikony"
+msgstr "Show emoticons"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Blokuj nowe wiadomości prywatne"
+msgstr "Block new private messages"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Wiadomości w przewijaniu"
+msgstr "Messages in scrollback"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Dodatkowe formatowanie"
+msgstr "Extra formatting"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Koloruj pseudonimy w wiadomościach"
+msgstr "Colour nicknames in messages"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Udostępnij, gdy piszę wiadomość"
+msgstr "Share when I'm typing a message"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Uznawaj wejścia i wyjścia za aktywność"
+msgstr "Include join/part messages as activity"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Wycisz powiadomienia dźwiękowe"
+msgstr "Mute sound notifications"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Reaguj na słowa (oddzielone spacją)"
+msgstr "Highlight on words (space seperated)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Aliasy"
+msgstr "Aliases"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Co to są aliasy?"
+msgstr "What are aliases?"
 
 #: Send Message
 msgid "send_message"
-msgstr "Wyślij wiadomość"
+msgstr "Send Message"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Podaj hasło kanału"
+msgstr "Enter Channel Key"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Dołącz ponownie do {{channel}}"
+msgstr "Rejoin {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Powiadom mnie, gdy"
+msgstr "Notify me when"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "Wszystkie powiadomienia"
+msgstr "All messages"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "Wspomniano mnie"
+msgstr "I am mentioned"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Nigdy"
+msgstr "Never"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Wycisz dźwięki"
+msgstr "Mute sounds"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Ukryj licznik nieprzeczytanych wiadomości"
+msgstr "Hide count"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Narzędzia operatora"
+msgstr "Operator tools"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Domyślna maska blokady"
+msgstr "Default ban mask"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Domyślny powód wyrzucenia"
+msgstr "Default kick reason"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Zaawansowane ustawienia"
+msgstr "Advanced Settings"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Potwory są tutaj, kliknij ten przycisk, jeśli wiesz, co robisz"
+msgstr "Monsters be here, only click this button if you know what you are doing"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Włącz zaawansowane ustawienia"
+msgstr "Enable Advanced Settings"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Strefa zagrożenia: Zmiana niektórych z tych ustawień może spowodować problemy!"
+msgstr "Danger Zone: Changing some of these settings may break things!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Zresetuj"
+msgstr "Reset"
 
 #: Filter
 msgid "settings_advanced_filter"
@@ -382,155 +383,155 @@ msgstr "Filter"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Odśwież listę blokad"
+msgstr "Refresh banlist"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Użytkownik zablokowany"
+msgstr "Banned user"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Zablokowany przez"
+msgstr "Banned by"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Odświeżanie listy blokad…"
+msgstr "Refreshing banlist..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Nikt nie jest zablokowany!"
+msgstr "Nobody is banned!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Refresh invite list"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Invited user"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Invited by"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Refreshing invite list..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Nobody is invited!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "This is a public channel."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Only invited users can join."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Only allow invited users"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Allow anybody to join"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Only registered users can join"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Add invite"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Any registered user)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Temat"
+msgstr "Topic"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Rozmowa moderowana"
+msgstr "Moderated chat"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Wymaga zaproszenia"
+msgstr "Invite only"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Tylko moderatorzy mogą zmienić temat"
+msgstr "Only moderators can change the topic"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Blokuj wiadomości spoza kanału"
+msgstr "Block messages from outside this channel"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Naciśnij przycisk odświeżenia, aby zaktualizować listę kanałów"
+msgstr "Click the refresh button to update the channel list"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "Nie znaleziono żadnych kanałów, spróbuj później"
+msgstr "No channels found, try again later"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Witamy w Kiwi IRC-u!"
+msgstr "Welcome to Kiwi IRC! Select a channel on the left."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Pokaż przeglądarkę stanu"
+msgstr "Show statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Ukryj temat"
+msgstr "Hide Topic"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Pokaż temat"
+msgstr "Display Topic"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Ustawienia kanału"
+msgstr "Channel Settings"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Dołącz do kanału"
+msgstr "Join Channel"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Nie podłączono"
+msgstr "Not Connected"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Prywatna rozmowa z {{user}}"
+msgstr "Private conversation with {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Czy naprawdę opuścić kanał?"
+msgstr "Really leave the channel?"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Wyślij wiadomość…"
+msgstr "Send a message..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Ładowanie {{url}}…"
+msgstr "Loading {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Załaduj poprzednie wiadomości"
+msgstr "Load previous messages"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Nieprzeczytane wiadomości"
+msgstr "Unread Messages"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Szczegóły serwera"
+msgstr "Server details"
 
 #: Port
 msgid "settings_port"
@@ -538,533 +539,533 @@ msgstr "Port"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Inne sieci z tego konta ZNC będą umieszczone na liście sieci"
+msgstr "Other networks on this ZNC account will be listed in the network list"
 
 #: Your details
 msgid "settings_your_details"
-msgstr "Twoje szczegóły"
+msgstr "Your details"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Pseudonim"
+msgstr "Nickname"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Zaawansowane"
+msgstr "Advanced"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Kodowanie"
+msgstr "Encoding"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Pokaż nieprzetworzone"
+msgstr "Show Raw"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Bezpośredni websocket"
+msgstr "Direct websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Wykonaj polecenia po podłączeniu"
+msgstr "Run commands when connected"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Strefa niebezpieczeństwa"
+msgstr "Danger Zone"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Usuń sieć"
+msgstr "Remove network"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} osoba tutaj"
+msgstr "{{count}} person here"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "{{count}} osoby/osób tutaj"
+msgstr "{{count}} people here"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtruj użytkowników na kanale"
+msgstr "filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Podłącz się ponownie, aby dołączyć do {{channel}}"
+msgstr "Reconnect to join {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Podłącz się ponownie do sieci {{network}}, aby zacząć rozmawiać"
+msgstr "Reconnect to {{network}} to start talking"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Podłącz się ponownie, żeby kontynuować rozmowę z {{user}}"
+msgstr "Reconnect to continue talking with {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "Nie jesteś w tej chwili połączony!"
+msgstr "You are not currently connected!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Ustawienia połączenia"
+msgstr "Connection settings"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "Nie mogliśmy połączyć się z tym serwerem :("
+msgstr "We couldn't connect to that server :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Połącz z siecią"
+msgstr "Connect To Network"
 
 #: Close options
 msgid "side_close"
-msgstr "Zamknij opcje"
+msgstr "Close options"
 
 #: Channel options
 msgid "side_options"
-msgstr "Opcje kanału"
+msgstr "Channel options"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Twoje ustawienia"
+msgstr "Your settings"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Pokazuj, gdy ludzie wchodzą"
+msgstr "Show when people join"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Pokazuj zmiany tematu kanału"
+msgstr "Show when channel topic changes"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Pokazuj zmiany nicków użytkowników"
+msgstr "Show when users change their nicks"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Pokazuj zmiany trybów kanału"
+msgstr "Show when users change channel modes"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Dodatkowe formatowanie wiadomości"
+msgstr "Extra message formatting"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Kolory pseudonimów na liście"
+msgstr "Nick colours in the list"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "Nie ustawiono buforu"
+msgstr "No buffer set"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "Nie ma tematu dla tego pokoju"
+msgstr "There is no topic for this channel"
 
 #: About
 msgid "about"
-msgstr "O nas"
+msgstr "About"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Utworzono w {{when}}"
+msgstr "Created at {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Podświetlenia"
+msgstr "Highlights"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nikt cię jeszcze nie wspomniał ..."
+msgstr "Nobody has mentioned you yet..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "Pojawił się problem przy uruchamianiu Kiwi IRC-a :("
+msgstr "There was an error starting Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Upewnij się, że Kiwi IRC został zainstalowany poprawnie i że konfiguracja może być wczytana"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Opuść {{name}}"
+msgstr "Leave {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr "Twoje konto"
+msgstr "Your account"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr "Twoje ustawienia i sieci zostaną zapamiętane na tym komputerze"
+msgstr "Your settings and networks will be remembered on this computer."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Zapomnij o mnie"
+msgstr "Forget me"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "Na razie nie ma tu żadnych sieci."
+msgstr "No networks here yet."
 
 #: Add one?
 msgid "state_add"
-msgstr "Dodać jedną?"
+msgstr "Add one?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Dostępne sieci"
+msgstr "Available networks"
 
 #: Add Network
 msgid "add_network"
-msgstr "Dodaj Sieć"
+msgstr "Add Network"
 
 #: New Network
 msgid "new_network"
-msgstr "Nowa Sieć"
+msgstr "New Network"
 
 #: No Network
 msgid "no_network"
-msgstr "Brak Sieci"
+msgstr "No Network"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Skonfiguruj sieć"
+msgstr "Configure network"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Nie podłączono."
+msgstr "Not connected."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Dołącz do #kanału"
+msgstr "Join new #channel"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filtruj kanały"
+msgstr "Filter channels"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Znajdź więcej kanałów"
+msgstr "Find more channels"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Zmień pseudonim"
+msgstr "Change nick"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Enter new nickname..."
 
 #: This is you!
 msgid "user_you"
-msgstr ""
+msgstr "This is you!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Konto użytkownika: {{user}}"
+msgstr "Account name: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Prawdziwe imię: {{realname}}"
+msgstr "Real name: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Jest botem"
+msgstr "Is a bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Może pomóc"
+msgstr "Is avaiable for help"
 
 #: Is an operator
 msgid "user_op"
-msgstr "Jest operatorem"
+msgstr "Is an operator"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Jest podłączony do {{server}} {{info}}"
+msgstr "Connected to {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Bezpiecznie podłączony przez SSL/TLS"
+msgstr "Securely connected via SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "Również na kanałach {{channels}}"
+msgstr "In channels {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr "Poziom dostępu"
+msgstr "Access level"
 
 #: Normal
 msgid "user_normal"
-msgstr "Normalny"
+msgstr "Normal"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Wyrzuć z kanału"
+msgstr "Kick from the channel"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Zablokuj na kanale"
+msgstr "Ban from the channel"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Zablokuj i wyrzuć z kanału"
+msgstr "Ban and kick from the channel"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Proszę podać pokój aby dołączyć. np. /join #pokój"
+msgstr "Please specify a channel to join. eg /join #example"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "The nickname {{nick}} is already in use!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "You must enter a new nickname"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "Nickname must not start with a number"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} nadaje prawa operatora {{target}}"
+msgstr "{{nick}} gives ops to {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} zabiera prawa operatora {{target}}"
+msgstr "{{nick}} takes ops from {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} nadaje prawa półoperatora {{target}}"
+msgstr "{{nick}} gives half-ops to {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} zabiera prawa półoperatora {{target}}"
+msgstr "{{nick}} takes half-ops from {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} nadaje głos {{target}}"
+msgstr "{{nick}} gives voice to {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} zabiera głos {{target}}"
+msgstr "{{nick}} takes voice from {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} nadaje prawa administratora {{target}}"
+msgstr "{{nick}} gives admin to {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} zabiera prawa administratora {{target}}"
+msgstr "{{nick}} takes admin from {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} nadaje prawa właściciela {{target}}"
+msgstr "{{nick}} gives owner to {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} odbiera prawa właściciela {{target}}"
+msgstr "{{nick}} takes owner from {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} blokuje {{target}}"
+msgstr "{{nick}} has banned {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} odblokowuje {{target}}"
+msgstr "{{nick}} has unbanned {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr "{{nick}} ustawia tryb {{mode}} dla {{target}}"
+msgstr "{{nick}} sets {{mode}} on {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Wyślij wiadomość"
+msgstr "Send a message"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Zrób coś fizycznego"
+msgstr "Do something physical"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Dolącz do pokoju"
+msgstr "Join a channel"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Wyjdż z pokoju"
+msgstr "Leave a channel"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Wyjdż, następnie ponownie dołącz do pokoju"
+msgstr "Leave, then re-join a channel"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Zmień swój nick"
+msgstr "Change your nickname"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr "Rozpocznij prywatną rozmowę z kimś"
+msgstr "Start a private conversation with someone"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Zaproś kogoś do pokoju"
+msgstr "Invite somebody into the channel"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Ustaw temat dla tego pokoju"
+msgstr "Set the topic for this channel"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Wyślij powiadomienie"
+msgstr "Send a notice"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "Wyślij komendę na serwer IRC"
+msgstr "Send a raw command to the IRC server"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Wyrzuć kogoś z pokoju"
+msgstr "Kick somebody from the channel"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Wyczyść wszystkie wiadomości z tego okna"
+msgstr "Clear all messages from this window"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr "Wyślij komuś komendę CTCP"
+msgstr "Send a CTCP command to somebody"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Odłącz się od serwera IRC"
+msgstr "Disconnect from the IRC server"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr ""
+msgstr "Connect to a new IRC network"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Poproś o informacje na temat kogoś"
+msgstr "Request information on somebody"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr "Poproś o informacje na temat kogoś, kto niedawno się rozłączył"
+msgstr "Request information on somebody that disconnected recently"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Ustaw siebie jako nieobecny"
+msgstr "Set yourself as away"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Ustaw siebie jako obecny"
+msgstr "Set yourself as active"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Zmień kodowanie połączenia"
+msgstr "Change your connection encoding"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr "Ignoruj ​​wiadomości od kogoś"
+msgstr "Ignore messages from somebody"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Przestań ignorować kogoś"
+msgstr "Stop ignoring somebody"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Rzuć kostką"
+msgstr "Roll a Dice"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr ""
+msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Twój klient IRC."
+msgstr "Your IRC Client."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Dodaj swoje sieci. Dołącz do swoich kanałów."
+msgstr "Add your networks. Join your channels."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "Będą tutaj, gdy wrócisz."
+msgstr "They will be here when you come back."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Dodaj sieć"
+msgstr "Add a Network"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr ""
+msgstr "You are trying to connect to {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr ""
+msgstr "Network has been added to your existing Kiwi window."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr ""
+msgstr "Add network to existing Kiwi window"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr ""
+msgstr "Temporarily connect to this network"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Zapisane sieci"
+msgstr "Saved networks"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (nowa generacja) – Podgląd dla Rizona"
+msgstr "Kiwi IRC (next gen) - Rizon preview"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Bezpośrednie połączenia. Nie używa serwerów Kiwi ani webirc-a."
+msgstr "Direct websockets. No Kiwi server or webirc involved."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Podziękowania dla Adama@Rizon za rozwijanie obsługi serwera gniazd!)"
+msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Wypróbuj deweloperską wersję Kiwi IRC-a!"
+msgstr "Give the developer version of Kiwi IRC a try!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Odłączono"
+msgstr "Disconnected"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Podłączono do sieci {{network}}!"
+msgstr "Connected to {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} wchodzi"
+msgstr "{{nick}} has joined"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} wyrzuca cię z {{channel}}"
+msgstr "{{nick}} kicked you from {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} zostaje wyrzucony z {{channel}} przez {{chanop}}"
+msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} wychodzi"
+msgstr "{{nick}} has left"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} zaprasza cię na {{channel}}"
+msgstr "{{nick}} invited you to join {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Pseudonim {{nick}} jest już w użyciu. Próbuję użyć {{newnick}}…"
+msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} jest teraz znany jako {{newnick}}"
+msgstr "{{nick}} is now known as {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "zmienia temat kanału na: {{topic}}"
+msgstr "{{nick}} changed the topic to: {{topic}}"
 
