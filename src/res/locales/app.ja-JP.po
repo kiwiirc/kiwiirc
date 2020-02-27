@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-02-27 18:45\n"
+"PO-Revision-Date: 2020-02-27 20:27\n"
 
 #: Start
 msgid "start_button"
@@ -19,7 +19,7 @@ msgstr "Start"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "Kiwi IRCへようこそ"
 
 #: Close
 msgid "close"
@@ -67,11 +67,11 @@ msgstr "Notifications"
 
 #: Username
 msgid "username"
-msgstr "Username"
+msgstr "ユーザー名"
 
 #: Password
 msgid "password"
-msgstr "Password"
+msgstr "パスワード"
 
 #: I have a password
 msgid "password_have"
@@ -91,11 +91,11 @@ msgstr "Channel"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "メッセージ"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "ネットワーク"
 
 #: ZNC
 msgid "znc"
@@ -119,15 +119,15 @@ msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr "Cancel"
+msgstr "キャンセル"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "はい"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "いいえ"
 
 #: Not found.
 msgid "not_found"
@@ -191,19 +191,19 @@ msgstr "{{count}} days"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "時"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "時"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "分"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutes"
+msgstr "分"
 
 #: {{count}} second
 msgid "second"
