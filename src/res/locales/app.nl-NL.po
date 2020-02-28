@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2020-02-27 20:28\n"
+"PO-Revision-Date: 2020-02-28 07:11\n"
 
 #: Start
 msgid "start_button"
@@ -1015,7 +1015,7 @@ msgstr "Opgeslagen netwerken"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (next gen) - Rizon preview"
+msgstr "Kiwi IRC (nieuwe generatie) - Rizon-voorbeeld"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
