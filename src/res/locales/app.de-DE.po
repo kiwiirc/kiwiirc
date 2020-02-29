@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-02-29 11:51\n"
+"PO-Revision-Date: 2020-02-29 12:01\n"
 
 #: Start
 msgid "start_button"
@@ -403,55 +403,55 @@ msgstr "Niemand ist gebannt"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "Einladungsliste aktualisieren"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Invited user"
+msgstr "Eingeladener Benutzer"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Invited by"
+msgstr "Eingeladen von"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
+msgstr "Aktualisierende Einladungsliste ..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Nobody is invited!"
+msgstr "Niemand ist eingeladen!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "Dies ist ein öffentlicher Kanal."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Only invited users can join."
+msgstr "Nur eingeladene Benutzer können teilnehmen."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Only allow invited users"
+msgstr "Nur eingeladene Benutzer zulassen"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "Erlaube jedem mitzumachen"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "Nur registrierte Benutzer können beitreten"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "Einladung hinzufügen"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "(Jeder registrierte Benutzer)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topic"
+msgstr "Thematik"
 
 #: Moderated chat
 msgid "channel_moderated"
@@ -547,7 +547,7 @@ msgstr "Deine Details"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Spitzname"
 
 #: Advanced
 msgid "settings_advanced"
@@ -563,7 +563,7 @@ msgstr "Zeige Raw"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "Direkter websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -671,7 +671,7 @@ msgstr "Erstellt am {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Höhepunkte"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
@@ -751,15 +751,15 @@ msgstr "Ändere Nickname"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "Neuen Spitznamen eingeben ..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "Das bist du!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Account name: {{user}}"
+msgstr "Kontobezeichnung: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
@@ -815,15 +815,15 @@ msgstr "Bitte gebe einen Channel an, welchen du betreten möchstest: z.B.  /join
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "Der Spitzname {{nick}} wird bereits verwendet!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "Sie müssen einen neuen Spitznamen eingeben"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "Der Spitzname darf nicht mit einer Nummer beginnen"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
