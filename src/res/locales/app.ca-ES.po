@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2020-02-27 20:28\n"
+"PO-Revision-Date: 2020-02-29 11:51\n"
 
 #: Start
 msgid "start_button"
@@ -143,7 +143,7 @@ msgstr "Això tancarà totes les converses de KiwiIRC. Segur que vols tancar aqu
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "Nom real"
 
 #: Status
 msgid "whois_status"
@@ -755,7 +755,7 @@ msgstr "Escriu el nou àlies..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "Es tracta de vostè!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -763,7 +763,7 @@ msgstr "Nom de la compta: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Real name: {{realname}}"
+msgstr "Nom real: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
