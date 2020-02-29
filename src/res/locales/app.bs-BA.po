@@ -11,11 +11,11 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2020-02-27 20:28\n"
+"PO-Revision-Date: 2020-02-29 12:01\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "Početak"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
@@ -115,7 +115,7 @@ msgstr "Traži..."
 
 #: OK
 msgid "ok"
-msgstr "OK"
+msgstr "Uredu"
 
 #: Cancel
 msgid "cancel"
@@ -147,7 +147,7 @@ msgstr "Pravo ime"
 
 #: Status
 msgid "whois_status"
-msgstr "Status"
+msgstr "ugled"
 
 #: Is available
 msgid "whois_status_available"
@@ -535,7 +535,7 @@ msgstr "Informacije servera"
 
 #: Port
 msgid "settings_port"
-msgstr "Port"
+msgstr "Luka"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
