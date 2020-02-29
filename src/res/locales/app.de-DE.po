@@ -11,11 +11,11 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-02-27 20:28\n"
+"PO-Revision-Date: 2020-02-29 11:51\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "Starten"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
@@ -51,7 +51,7 @@ msgstr "Chaträume"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Zugriff"
 
 #: Banned Users
 msgid "banned"
@@ -59,7 +59,7 @@ msgstr "gebannt"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "Eingeladene Benutzer"
 
 #: Notifications
 msgid "notifications"
@@ -87,7 +87,7 @@ msgstr "Nickname"
 
 #: Channel
 msgid "channel"
-msgstr "Channel"
+msgstr "Kanal"
 
 #: Messages
 msgid "messages"
@@ -167,11 +167,11 @@ msgstr "Ignoriere User"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Channel"
+msgstr "Kanal"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "Weg"
 
 #: {{count}} week
 msgid "week"
@@ -219,11 +219,11 @@ msgstr "Allgemein"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "Sprache"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "Thema"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -231,7 +231,7 @@ msgstr "Theme aktualisieren"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "Thema URL"
 
 #: Message Layout
 msgid "settings_messagelayout"
@@ -243,7 +243,7 @@ msgstr "Verwende Monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "Verwenden Sie Kiwi als meinen Standard-IRC-Client"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -287,7 +287,7 @@ msgstr "Nicknamen einfärben"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "Teilen, wenn ich eine Nachricht schreibe"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -939,7 +939,7 @@ msgstr "Vom IRC Server trennen"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Connect to a new IRC network"
+msgstr "Stellen Sie eine Verbindung zu einem neuen IRC-Netzwerk her"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -995,19 +995,19 @@ msgstr "Füge Netzwerk hinzu"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "You are trying to connect to {{network}}"
+msgstr "Sie versuchen, eine Verbindung zum {{network}} herzustellen"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Network has been added to your existing Kiwi window."
+msgstr "Das Netzwerk wurde Ihrem vorhandenen Kiwi-Fenster hinzugefügt."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Add network to existing Kiwi window"
+msgstr "Netzwerk zum vorhandenen Kiwi-Fenster hinzufügen"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Temporarily connect to this network"
+msgstr "Stellen Sie vorübergehend eine Verbindung zu diesem Netzwerk her"
 
 #: Saved networks
 msgid "personal_saved"
@@ -1015,7 +1015,7 @@ msgstr "Gespeicherte Netzwerke"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (next gen) - Rizon preview"
+msgstr "Kiwi IRC (nächste Generation) - Rizon Vorschau"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
