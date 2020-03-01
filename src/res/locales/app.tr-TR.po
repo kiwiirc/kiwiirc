@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-02-27 20:27\n"
+"PO-Revision-Date: 2020-03-01 16:51\n"
 
 #: Start
 msgid "start_button"
@@ -479,7 +479,7 @@ msgstr "Kanal bulunamadı, daha sonra tekrar deneyin."
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Kiwi IRC'ye Hoşgeldiniz!"
+msgstr "Kiwi IRC'ye Hoşgeldiniz! Soldan bir kanal seçin."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -559,7 +559,7 @@ msgstr "Kodlama"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Hamı Göster"
+msgstr "Raw'ı Göster"
 
 #: Direct websocket
 msgid "settings_use_websocket"
