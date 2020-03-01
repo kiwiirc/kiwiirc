@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-03-01 16:51\n"
+"PO-Revision-Date: 2020-03-01 17:00\n"
 
 #: Start
 msgid "start_button"
@@ -667,7 +667,7 @@ msgstr "Hakkında"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "{{when}} tarihinde düzenlendi."
+msgstr "{{when}} tarihinde oluşturuldu."
 
 #: Highlights
 msgid "highlights"
@@ -971,7 +971,7 @@ msgstr "Birini görmezden gelmeyi bırak"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Bir Zar At"
+msgstr "Bir zar at"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
