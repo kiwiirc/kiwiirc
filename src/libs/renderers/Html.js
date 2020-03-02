@@ -38,7 +38,7 @@ function render(blocks, renderEmoticons) {
         switch (block.type) {
         case 'url':
             content = linkifyUrl(block, {
-                addHandle: true,
+                addHandle: state.setting('buffers.show_link_previews'),
                 handleClass: 'fa fa-share-square u-link kiwi-messagelist-message-linkhandle',
             });
             break;
