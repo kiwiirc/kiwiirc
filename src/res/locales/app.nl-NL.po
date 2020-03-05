@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2020-02-28 07:11\n"
+"PO-Revision-Date: 2020-03-05 13:01\n"
 
 #: Start
 msgid "start_button"
@@ -251,7 +251,7 @@ msgstr "Traditionele IRC-indeling"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Auto-aanvullenlijst tonen"
+msgstr "Lijst voor automatisch aanvullen tonen"
 
 #: Chat Messages
 msgid "settings_messages_title"
