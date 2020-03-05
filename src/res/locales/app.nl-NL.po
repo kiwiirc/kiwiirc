@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2020-03-05 13:52\n"
+"PO-Revision-Date: 2020-03-05 14:22\n"
 
 #: Start
 msgid "start_button"
@@ -379,7 +379,7 @@ msgstr "Herinitialiseren"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "Filteren"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -979,7 +979,7 @@ msgstr "Gooit een dobbelsteen met {{sides}} vlakken en krijgt {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Je IRC-client"
+msgstr "Jouw IRC-client."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
