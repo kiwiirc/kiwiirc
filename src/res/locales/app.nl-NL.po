@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2020-03-05 13:01\n"
+"PO-Revision-Date: 2020-03-05 13:52\n"
 
 #: Start
 msgid "start_button"
@@ -479,7 +479,7 @@ msgstr "Geen kanalen gevonden, probeer het later opnieuw"
 
 #: Welcome to Kiwi IRC!
 msgid "container_welcome"
-msgstr "Welkom bij Kiwi IRC!"
+msgstr "Welkom bij Kiwi IRC! Selecteer een kanaal aan de linkerkant."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -659,7 +659,7 @@ msgstr "Geen buffer ingesteld"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "Er is geen onderwerp voor dit kanaal"
+msgstr "Er is geen topic voor dit kanaal"
 
 #: About
 msgid "about"
