@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2020-03-05 14:22\n"
+"PO-Revision-Date: 2020-03-05 14:37\n"
 
 #: Start
 msgid "start_button"
@@ -871,7 +871,7 @@ msgstr "{{nick}} heeft {{target}} verbannen"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} heeft verbanning van {{target}} opgeheven"
+msgstr "{{nick}} heeft de verbanning van {{target}} opgeheven"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
