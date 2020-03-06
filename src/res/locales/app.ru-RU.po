@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-02-27 20:27\n"
+"PO-Revision-Date: 2020-03-06 18:40\n"
 
 #: Start
 msgid "start_button"
@@ -255,11 +255,11 @@ msgstr "Show autocomplete list"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Chat Messages"
+msgstr "Сообщения чата"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Show timestamps"
+msgstr "Показывать время"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
@@ -303,7 +303,7 @@ msgstr "Highlight on words (space seperated)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Aliases"
+msgstr "Псевдонимы"
 
 #: What are Aliases
 msgid "what_are_aliases"
@@ -311,7 +311,7 @@ msgstr "What are aliases?"
 
 #: Send Message
 msgid "send_message"
-msgstr "Send Message"
+msgstr "Отправить сообщение"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
@@ -339,7 +339,7 @@ msgstr "Никогда"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Mute sounds"
+msgstr "Выключить звук"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
@@ -459,7 +459,7 @@ msgstr "Moderated chat"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Invite only"
+msgstr "Только по приглашению"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -739,7 +739,7 @@ msgstr "Join new #channel"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "Фильтр каналов"
 
 #: Find More Channels
 msgid "find_more_channels"
