@@ -47,19 +47,6 @@
                     </a>
                 </div>
                 <div
-                    :class="{
-                        'kiwi-header-option--active': sidebarState.sidebarSection === 'settings'
-                    }"
-                    class="kiwi-header-option kiwi-header-option-settings"
-                >
-                    <a
-                        :title="$t('channel_settings')"
-                        @click="sidebarState.toggleBufferSettings()"
-                    >
-                        <i class="fa fa-cog" aria-hidden="true"/>
-                    </a>
-                </div>
-                <div
                     v-if="sidebarState.isPinned"
                     class="kiwi-header-option kiwi-header-option-unpinsidebar"
                 >
