@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2020-02-29 11:51\n"
+"PO-Revision-Date: 2020-03-09 00:31\n"
 
 #: Start
 msgid "start_button"
@@ -1067,5 +1067,5 @@ msgstr "{{nick}} és ara {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "ha canviat el tòpic a: {{topic}}"
+msgstr "{{nick}} ha canviat el tòpic a: {{topic}}"
 
