@@ -5,12 +5,24 @@
         <div class="kiwi-statebrowser-network-header">
             <a
                 class="kiwi-statebrowser-network-name u-link"
-                @click="setActiveBuffer(network.serverBuffer())"
+                @click="setActiveBuffer(serverBuffer)"
             >
                 {{ network.name }}
             </a>
-            <div class="kiwi-network-name-hover-icon">
-                <i class="fa fa-ellipsis-h" aria-hidden="true"/>
+            <div class="kiwi-statebrowser-buffer-actions">
+                <div class="kiwi-statebrowser-channel-labels">
+                    <div
+                        v-if="serverBuffer.flags.unread && showMessageCounts(serverBuffer)"
+                        :class="[
+                            serverBuffer.flags.highlight ?
+                                'kiwi-statebrowser-channel-label--highlight' :
+                                ''
+                        ]"
+                        class="kiwi-statebrowser-channel-label"
+                    >
+                        {{ serverBuffer.flags.unread > 999 ? "999+": serverBuffer.flags.unread }}
+                    </div>
+                </div>
             </div>
             <div class="kiwi-network-name-options">
                 <div
@@ -19,20 +31,6 @@
                     @click="collapsed=!collapsed"
                 >
                     <i :class="[collapsed?'fa-plus-square-o':'fa-minus-square-o']" class="fa" />
-                </div>
-                <div
-                    :class="{ active: channel_add_display == true }"
-                    class="kiwi-network-name-option kiwi-network-name-option-channel"
-                    @click="toggleAddChannel()"
-                >
-                    <i class="fa fa-plus" aria-hidden="true"/>
-                </div>
-                <div
-                    :class="{ active: channel_filter_display == true }"
-                    class="kiwi-network-name-option kiwi-network-name-option-chanfilter"
-                    @click="toggleFilterChannel()"
-                >
-                    <i class="fa fa-search" aria-hidden="true"/>
                 </div>
             </div>
         </div>
@@ -44,6 +42,7 @@
                 :placeholder="$t('filter_channels')"
                 type="text"
                 @blur="onChannelFilterInputBlur"
+                @keyup.esc="closeFilterChannel"
             >
             <p>
                 <a @click="closeFilterChannel(); showNetworkChannels(network)">
@@ -107,6 +106,26 @@
 
             <div class="kiwi-statebrowser-channels">
                 <div
+                    v-if="network.state === 'connected'"
+                    class="kiwi-statebrowser-channels-options"
+                >
+                    <div
+                        :class="{ active: channel_add_display == true }"
+                        class="kiwi-statebrowser-channels-option"
+                        @click="toggleAddChannel()"
+                    >
+                        <i class="fa fa-plus" aria-hidden="true"/>
+                    </div>
+                    <div
+                        :class="{ active: channel_filter_display == true }"
+                        class="kiwi-statebrowser-channels-option"
+                        @click="onSearchChannelClick"
+                    >
+                        <i class="fa fa-search" aria-hidden="true"/>
+                    </div>
+                </div>
+
+                <div
                     v-for="buffer in filteredBuffers"
                     :key="buffer.name"
                     :data-name="buffer.name.toLowerCase()"
@@ -122,8 +141,8 @@
                             :network="network" :user="network.userByName(buffer.name)"
                         />{{ buffer.name }}
                     </div>
-                    <div class="kiwi-statebrowser-channel-labels">
-                        <transition name="kiwi-statebrowser-channel-label-transition">
+                    <div class="kiwi-statebrowser-buffer-actions">
+                        <div class="kiwi-statebrowser-channel-labels">
                             <div
                                 v-if="buffer.flags.unread && showMessageCounts(buffer)"
                                 :class="[
@@ -135,11 +154,11 @@
                             >
                                 {{ buffer.flags.unread > 999 ? "999+": buffer.flags.unread }}
                             </div>
-                        </transition>
-                    </div>
+                        </div>
 
-                    <div class="kiwi-statebrowser-channel-leave" @click="closeBuffer(buffer)">
-                        <i class="fa fa-times" aria-hidden="true"/>
+                        <div class="kiwi-statebrowser-channel-leave" @click="closeBuffer(buffer)">
+                            <i class="fa fa-times" aria-hidden="true"/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -174,6 +193,9 @@ export default {
         };
     },
     computed: {
+        serverBuffer() {
+            return this.network.serverBuffer();
+        },
         isActiveNetwork: function isActiveNetwork() {
             return state.getActiveNetwork() === this.network;
         },
@@ -250,15 +272,12 @@ export default {
             });
         },
         onChannelFilterInputBlur() {
-            // If nothing was entered into the input box, hide it just to clean up the UI
-            if (!this.channel_filter) {
-                // Hacky, but if we remove the channel filter UI at this blur event and the user
-                // clicked a link in this filter UI, then the click event will not hit the target
-                // link as it has been removed before the event reaches it.
-                setTimeout(() => {
-                    this.closeFilterChannel();
-                }, 200);
-            }
+            // Hacky, but if we remove the channel filter UI at this blur event and the user
+            // clicked a link in this filter UI, then the click event will not hit the target
+            // link as it has been removed before the event reaches it.
+            setTimeout(() => {
+                this.closeFilterChannel();
+            }, 200);
         },
         closeBuffer(buffer) {
             state.removeBuffer(buffer);
@@ -288,6 +307,15 @@ export default {
         },
         showNetworkChannels(network) {
             network.showServerBuffer('channels');
+        },
+        onSearchChannelClick() {
+            // If we have no other buffers than the server buffer, take them straight
+            // to the channel list for searching
+            if (this.network.buffers.length > 1) {
+                this.toggleFilterChannel();
+            } else {
+                this.network.showServerBuffer('channels');
+            }
         },
         toggleAddChannel() {
             this.channel_add_display = !this.channel_add_display;
@@ -343,17 +371,6 @@ export default {
     box-sizing: border-box;
 }
 
-.kiwi-network-name-hover-icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 45px;
-    z-index: 2;
-    width: 45px;
-    text-align: center;
-    line-height: 45px;
-}
-
 .kiwi-network-name-options {
     position: absolute;
     top: 0;
@@ -391,6 +408,24 @@ export default {
     font-size: 0.9em;
 }
 
+.kiwi-statebrowser-channels-options {
+    text-align: left;
+}
+
+.kiwi-statebrowser-channels-option {
+    display: inline-block;
+    width: 35px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.kiwi-statebrowser-channels-option:hover {
+    opacity: 1;
+}
+
 /* During DOM entering and leaving */
 .kiwi-statebrowser-network-status-transition-enter-active,
 .kiwi-statebrowser-network-status-transition-leave-active {
@@ -420,71 +455,68 @@ export default {
     transition: padding 0.1s, border 0.1s;
 }
 
+/* Contains the labels and close icons */
+.kiwi-statebrowser-buffer-actions {
+    flex: 0;
+}
+
 .kiwi-statebrowser-channel-labels {
-    position: absolute;
-    right: 0;
-    text-align: right;
-    z-index: 0;
-    top: 0;
-    transition: opacity 0.2s;
+    height: 100%;
+    line-height: 1em;
+    display: flex;
+    box-sizing: border-box;
 }
 
 .kiwi-statebrowser-channel-label {
-    display: inline-block;
     padding: 0 10px;
-    line-height: 30px;
-    height: 30px;
-    margin: 0;
+    margin: 5px;
     font-weight: 600;
-    box-sizing: border-box;
+    border-radius: 4px;
+
+    /* Vertical+horizontaly center align text */
+    display: flex;
     text-align: center;
-    width: 50px;
-    border-radius: 0;
+    align-items: center;
 }
 
-.kiwi-statebrowser-channel-label:hover {
-    opacity: 1;
-}
-
-.kiwi-statebrowser-channel-label-transition-enter-active,
-.kiwi-statebrowser-channel-label-transition-leave-active {
-    transition: opacity 0.1s;
-}
-
-.kiwi-statebrowser-channel-label-transition-enter,
-.kiwi-statebrowser-channel-label-transition-leave-active {
-    opacity: 0;
+.kiwi-statebrowser-network-header .kiwi-statebrowser-channel-label {
+    margin: 10px;
 }
 
 .kiwi-statebrowser-channel-leave {
-    float: right;
-    opacity: 0;
-    width: 50px;
+    width: 38px; /* Visualy the same width as a single digit label */
     cursor: pointer;
     margin-right: 0;
-    transition: opacity 0.2s;
     z-index: 10;
+    display: none;
 }
 
-.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-leave {
-    opacity: 1;
-}
-
-.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-settings,
+/* Hovering over the buffer name should show the close icon, but hide labels */
+.kiwi-statebrowser-channel .kiwi-statebrowser-channel-labels,
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave {
-    opacity: 1;
+    /* display: inline-block; */
+}
+
+.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave {
+    display: block;
 }
 
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-labels {
-    opacity: 0;
+    display: none;
+}
+
+/* An active buffer should always show the close icon */
+.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-leave {
+    display: block;
+}
+
+.kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-labels {
+    display: none;
 }
 
 /* Add channel input */
 .kiwi-statebrowser-newchannel-inputwrap {
-    float: left;
-    width: 100%;
     position: relative;
-    border-radius: 3px;
     opacity: 1;
     transition: opacity 0.3s;
     background: none;

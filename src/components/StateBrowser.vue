@@ -251,17 +251,15 @@ export default {
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header {
-    float: left;
-    width: 100%;
     line-height: 45px;
     text-align: left;
     position: relative;
+    display: flex;
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
     text-align: left;
     padding: 0 0 0 10px;
-    width: 100%;
     font-size: 1em;
     font-weight: 600;
 }
@@ -296,7 +294,6 @@ export default {
     width: 100%;
     border-top: none;
     box-sizing: border-box;
-    margin: 1em 0;
 }
 
 .kiwi-statebrowser-newchannel a {
@@ -435,16 +432,6 @@ export default {
 
 .kiwi-statebrowser-availablenetworks-link--connected {
     border-color: green;
-}
-
-.kiwi-statebrowser-channel-label-transition-enter-active,
-.kiwi-statebrowser-channel-label-transition-leave-active {
-    transition: opacity 0.1s;
-}
-
-.kiwi-statebrowser-channel-label-transition-enter,
-.kiwi-statebrowser-channel-label-transition-leave-active {
-    opacity: 0;
 }
 
 .kiwi-statebrowser-newchannel-inputwrap--focus {

@@ -543,7 +543,7 @@ const state = new Vue({
 
             // Increment the unread counter if this buffer is not active
             let includeAsActivity = false;
-            let typesForActivty = ['privmsg', 'action', 'notice'];
+            let typesForActivty = ['privmsg', 'action', 'notice', 'wallops'];
             if (buffer.setting('traffic_as_activity') && message.type === 'traffic') {
                 typesForActivty.push('traffic');
             }
