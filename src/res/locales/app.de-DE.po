@@ -1,18 +1,21 @@
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: de\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-02-21 16:02\n"
+"PO-Revision-Date: 2020-02-29 12:01\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "Starten"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
@@ -48,7 +51,7 @@ msgstr "Chaträume"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Zugriff"
 
 #: Banned Users
 msgid "banned"
@@ -56,7 +59,7 @@ msgstr "gebannt"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Eingeladene Benutzer"
 
 #: Notifications
 msgid "notifications"
@@ -84,7 +87,7 @@ msgstr "Nickname"
 
 #: Channel
 msgid "channel"
-msgstr "Channel"
+msgstr "Kanal"
 
 #: Messages
 msgid "messages"
@@ -164,11 +167,11 @@ msgstr "Ignoriere User"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Channel"
+msgstr "Kanal"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "Weg"
 
 #: {{count}} week
 msgid "week"
@@ -216,11 +219,11 @@ msgstr "Allgemein"
 
 #: Language
 msgid "settings_language"
-msgstr ""
+msgstr "Sprache"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "Thema"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -228,7 +231,7 @@ msgstr "Theme aktualisieren"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "Thema URL"
 
 #: Message Layout
 msgid "settings_messagelayout"
@@ -240,7 +243,7 @@ msgstr "Verwende Monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Verwenden Sie Kiwi als meinen Standard-IRC-Client"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -284,7 +287,7 @@ msgstr "Nicknamen einfärben"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr ""
+msgstr "Teilen, wenn ich eine Nachricht schreibe"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -400,55 +403,55 @@ msgstr "Niemand ist gebannt"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Einladungsliste aktualisieren"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Eingeladener Benutzer"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Eingeladen von"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Aktualisierende Einladungsliste ..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Niemand ist eingeladen!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "Dies ist ein öffentlicher Kanal."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Nur eingeladene Benutzer können teilnehmen."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Nur eingeladene Benutzer zulassen"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Erlaube jedem mitzumachen"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Nur registrierte Benutzer können beitreten"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Einladung hinzufügen"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Jeder registrierte Benutzer)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topic"
+msgstr "Thematik"
 
 #: Moderated chat
 msgid "channel_moderated"
@@ -544,7 +547,7 @@ msgstr "Deine Details"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Spitzname"
 
 #: Advanced
 msgid "settings_advanced"
@@ -560,7 +563,7 @@ msgstr "Zeige Raw"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr ""
+msgstr "Direkter websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -668,7 +671,7 @@ msgstr "Erstellt am {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Höhepunkte"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
@@ -748,15 +751,15 @@ msgstr "Ändere Nickname"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Neuen Spitznamen eingeben ..."
 
 #: This is you!
 msgid "user_you"
-msgstr ""
+msgstr "Das bist du!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Account name: {{user}}"
+msgstr "Kontobezeichnung: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
@@ -812,15 +815,15 @@ msgstr "Bitte gebe einen Channel an, welchen du betreten möchstest: z.B.  /join
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "Der Spitzname {{nick}} wird bereits verwendet!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "Sie müssen einen neuen Spitznamen eingeben"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "Der Spitzname darf nicht mit einer Nummer beginnen"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -936,7 +939,7 @@ msgstr "Vom IRC Server trennen"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr ""
+msgstr "Stellen Sie eine Verbindung zu einem neuen IRC-Netzwerk her"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -992,19 +995,19 @@ msgstr "Füge Netzwerk hinzu"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr ""
+msgstr "Sie versuchen, eine Verbindung zum {{network}} herzustellen"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr ""
+msgstr "Das Netzwerk wurde Ihrem vorhandenen Kiwi-Fenster hinzugefügt."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr ""
+msgstr "Netzwerk zum vorhandenen Kiwi-Fenster hinzufügen"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr ""
+msgstr "Stellen Sie vorübergehend eine Verbindung zu diesem Netzwerk her"
 
 #: Saved networks
 msgid "personal_saved"
@@ -1012,7 +1015,7 @@ msgstr "Gespeicherte Netzwerke"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (next gen) - Rizon preview"
+msgstr "Kiwi IRC (nächste Generation) - Rizon Vorschau"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"

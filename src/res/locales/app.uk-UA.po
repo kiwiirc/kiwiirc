@@ -1,14 +1,17 @@
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: uk\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2020-02-21 16:01\n"
+"PO-Revision-Date: 2020-02-27 20:27\n"
 
 #: Start
 msgid "start_button"
@@ -48,7 +51,7 @@ msgstr "Канали"
 
 #: Access
 msgid "access"
-msgstr ""
+msgstr "Access"
 
 #: Banned Users
 msgid "banned"
@@ -56,7 +59,7 @@ msgstr "Заблоковані користувачі"
 
 #: Invited Users
 msgid "invited"
-msgstr ""
+msgstr "Invited Users"
 
 #: Notifications
 msgid "notifications"
@@ -168,7 +171,7 @@ msgstr "Канал"
 
 #: Away
 msgid "away"
-msgstr ""
+msgstr "Away"
 
 #: {{count}} week
 msgid "week"
@@ -216,7 +219,7 @@ msgstr "Основні"
 
 #: Language
 msgid "settings_language"
-msgstr ""
+msgstr "Language"
 
 #: Theme
 msgid "settings_theme"
@@ -240,7 +243,7 @@ msgstr "Шрифт monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr ""
+msgstr "Use Kiwi as my default IRC client"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -284,7 +287,7 @@ msgstr "кольорові псевдоніми в повідомленнях"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr ""
+msgstr "Share when I'm typing a message"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -400,51 +403,51 @@ msgstr "Нікого не заблоковано!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr ""
+msgstr "Refresh invite list"
 
 #: Invited user
 msgid "invites_user"
-msgstr ""
+msgstr "Invited user"
 
 #: Invited by
 msgid "invites_by"
-msgstr ""
+msgstr "Invited by"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr ""
+msgstr "Refreshing invite list..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr ""
+msgstr "Nobody is invited!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr ""
+msgstr "This is a public channel."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr ""
+msgstr "Only invited users can join."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr ""
+msgstr "Only allow invited users"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr ""
+msgstr "Allow anybody to join"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr ""
+msgstr "Only registered users can join"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr ""
+msgstr "Add invite"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr ""
+msgstr "(Any registered user)"
 
 #: Topic
 msgid "channel_topic"
@@ -560,7 +563,7 @@ msgstr "Необроблений вигляд"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr ""
+msgstr "Direct websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -748,11 +751,11 @@ msgstr "Змінити псевдонім"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr ""
+msgstr "Enter new nickname..."
 
 #: This is you!
 msgid "user_you"
-msgstr ""
+msgstr "This is you!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -812,15 +815,15 @@ msgstr "Будь ласка, вкажіть канал для приєднанн
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr ""
+msgstr "The nickname {{nick}} is already in use!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr ""
+msgstr "You must enter a new nickname"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr ""
+msgstr "Nickname must not start with a number"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -936,7 +939,7 @@ msgstr "Від'єднатися від сервера IRC"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr ""
+msgstr "Connect to a new IRC network"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -992,19 +995,19 @@ msgstr "Додати мережу"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr ""
+msgstr "You are trying to connect to {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr ""
+msgstr "Network has been added to your existing Kiwi window."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr ""
+msgstr "Add network to existing Kiwi window"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr ""
+msgstr "Temporarily connect to this network"
 
 #: Saved networks
 msgid "personal_saved"

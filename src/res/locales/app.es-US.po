@@ -1,14 +1,17 @@
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: es-US\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Spanish, United States\n"
 "Language: es_US\n"
-"PO-Revision-Date: 2020-02-21 16:01\n"
+"PO-Revision-Date: 2020-02-27 20:27\n"
 
 #: Start
 msgid "start_button"
@@ -752,7 +755,7 @@ msgstr "Escribe el nuevo apodo..."
 
 #: This is you!
 msgid "user_you"
-msgstr ""
+msgstr "¡Este eres tú!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -1064,5 +1067,5 @@ msgstr "{{nick}} es ahora como {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} changed the topic to: {{topic}}"
+msgstr "ha cambiado el tópico a: {{topic}}"
 

@@ -1,14 +1,17 @@
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: bg\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-02-21 16:01\n"
+"PO-Revision-Date: 2020-02-29 12:01\n"
 
 #: Start
 msgid "start_button"
@@ -752,7 +755,7 @@ msgstr "Въведете нов прякор..."
 
 #: This is you!
 msgid "user_you"
-msgstr ""
+msgstr "Това си ти!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -1012,11 +1015,11 @@ msgstr "Запази IRC мрежа"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (next gen) - Rizon preview"
+msgstr "Кiwi IRC (следващ ген) - преглед на Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Direct websockets. No Kiwi server or webirc involved."
+msgstr "Директни уебсайтове. Не участва Kiwi сървър или webirc."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
@@ -1024,7 +1027,7 @@ msgstr " (Благодарности на Adam @Rizon за помощта отн
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Give the developer version of Kiwi IRC a try!"
+msgstr "Опитайте разработчика на Kiwi IRC!"
 
 #: Disconnected
 msgid "disconnected"
