@@ -466,12 +466,6 @@
     background: var(--brand-primary);
 }
 
-/* When hovering over a channel, these options are displayed and coloured upon hover */
-.kiwi-statebrowser-channel-settings,
-.kiwi-statebrowser-channel-leave {
-    background-color: var(--brand-default-fg);
-}
-
 .kiwi-statebrowser-channel-settings:hover {
     background-color: var(--brand-primary);
 }
@@ -1035,10 +1029,6 @@
 }
 
 .kiwi-network-name-option {
-    color: var(--brand-default-bg);
-}
-
-.kiwi-network-name-hover-icon {
     color: var(--brand-default-bg);
 }
 

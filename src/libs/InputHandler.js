@@ -201,6 +201,8 @@ inputCommands.notice = function inputCommandMsg(event, command, line) {
 };
 inputCommands.dice = function inputCommandDice(event, command, line) {
     // /dice 100
+
+    event.handled = true;
     let buffer = this.state.getActiveBuffer();
     let network = this.state.getActiveNetwork();
 
@@ -774,6 +776,8 @@ inputCommands.names = function inputCommandNames(event, command, line) {
 };
 
 inputCommands.inject = function inputCommandInject(event, command, line) {
+    event.handled = true;
+
     let network = this.state.getActiveNetwork();
     let connection = network.ircClient.connection;
     connection.addReadBuffer(line);
@@ -888,9 +892,11 @@ inputCommands.server = function inputCommandServer(event, command, line) {
 };
 
 inputCommands.beep = function inputCommandBeep(event, command, line) {
+    event.handled = true;
     this.state.$emit('audio.bleep');
 };
 
 inputCommands.notify = function inputCommandNotify(event, command, line) {
+    event.handled = true;
     this.state.$emit('notification.show', line);
 };

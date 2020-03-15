@@ -74,10 +74,6 @@
     opacity: 1;
 }
 
-.kiwi-network-name-hover-icon {
-    color: var(--brand-default-bg);
-}
-
 .kiwi-network-name-options {
     background-color: var(--comp-statebrowser-bg-networkname);
 }
