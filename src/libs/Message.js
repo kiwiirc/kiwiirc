@@ -26,6 +26,7 @@ export default class Message {
         // If embed.payload is truthy, it will be embedded within the message
         this.embed = { type: 'url', payload: null };
         this.html = '';
+        this.hasRendered = false;
         // template should be null or a Vue component to render this message
         this.template = message.template || null;
         // bodyTemplate should be null or a Vue component to render in the body of the message
@@ -45,9 +46,11 @@ export default class Message {
     }
 
     toHtml(messageList) {
-        if (this.html) {
+        if (this.hasRendered) {
             return this.html;
         }
+
+        this.hasRendered = true;
 
         let showEmoticons = state.setting('buffers.show_emoticons') && !messageList.buffer.isSpecial();
         let userList = messageList.buffer.users;
