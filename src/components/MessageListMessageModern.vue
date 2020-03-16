@@ -59,6 +59,7 @@
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">
                 <div
+                    v-if="message.nick"
                     :style="{ 'color': userColour }"
                     :class="[
                         'kiwi-messagelist-nick',
@@ -231,9 +232,7 @@ export default {
     border-left: 7px solid transparent;
     display: flex;
     margin: 0 0 0 20px;
-    border-top: 1px solid;
     margin-left: 0;
-    padding: 15px 10px;
     transition: border-colour 0.2s, background-color 0.2s;
 }
 
@@ -257,9 +256,11 @@ export default {
     width: 40px;
 }
 
+.kiwi-messagelist-message--modern.kiwi-messagelist-message--authorfirst {
+    padding-top: 10px;
+}
+
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorrepeat {
-    margin-top: 0;
-    padding-top: 0;
     border-top: none;
 }
 
@@ -313,6 +314,7 @@ export default {
     word-wrap: break-word;
     display: block;
     margin-left: 0;
+    margin-bottom: 10px;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-body a {
@@ -329,10 +331,6 @@ export default {
     margin-right: 10px;
     padding: 0;
     display: inline-block;
-}
-
-.kiwi-messagelist-message--modern .kiwi-messagelist-nick {
-    font-size: 1.1em;
 }
 
 .kiwi-messagelist-message--modern .kiwi-messagelist-realname {

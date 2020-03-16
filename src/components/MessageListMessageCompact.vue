@@ -336,35 +336,4 @@ export default {
     }
 }
 
-// Widescreen
-// Give the most space to the nickname column on even wider screens
-@media screen and (min-width: 1300px) {
-    // Nicknames
-    .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
-        width: 210px;
-        min-width: 210px;
-    }
-
-    .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
-        width: auto;
-    }
-
-    // Messages
-    .kiwi-messagelist-message--compact .kiwi-messagelist-body {
-        margin-left: 220px;
-    }
-
-    .kiwi-messagelist-message--compact .kiwi-messageinfo {
-        padding-left: 230px;
-    }
-
-    .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
-        margin-left: 231px;
-    }
-
-    .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
-        margin-left: 231px;
-    }
-}
-
 </style>
