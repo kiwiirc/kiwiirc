@@ -12,15 +12,15 @@
             <div class="kiwi-statebrowser-buffer-actions">
                 <div class="kiwi-statebrowser-channel-labels">
                     <div
-                        v-if="serverBuffer.flags.unread && showMessageCounts(serverBuffer)"
+                        v-if="serverUnread && showMessageCounts(serverBuffer)"
                         :class="[
-                            serverBuffer.flags.highlight ?
+                            serverHighlight ?
                                 'kiwi-statebrowser-channel-label--highlight' :
                                 ''
                         ]"
                         class="kiwi-statebrowser-channel-label"
                     >
-                        {{ serverBuffer.flags.unread > 999 ? "999+": serverBuffer.flags.unread }}
+                        {{ serverUnread > 999 ? "999+": serverUnread }}
                     </div>
                 </div>
             </div>
@@ -201,6 +201,34 @@ export default {
         },
         totalNetworkCount() {
             return state.networks.length;
+        },
+        serverUnread() {
+            if (!this.collapsed) {
+                return this.serverBuffer.flags.unread;
+            }
+            let totalUnread = 0;
+            this.network.buffers.forEach((buffer) => {
+                if (buffer.name === '*raw') {
+                    return;
+                }
+                totalUnread += buffer.flags.unread;
+            });
+            return totalUnread;
+        },
+        serverHighlight() {
+            if (!this.collapsed) {
+                return this.serverBuffer.flags.highlight;
+            }
+            let highlight = false;
+            this.network.buffers.forEach((buffer) => {
+                if (buffer.name === '*raw') {
+                    return;
+                }
+                if (buffer.flags.highlight) {
+                    highlight = true;
+                }
+            });
+            return highlight;
         },
         filteredBuffers() {
             let filter = this.channel_filter;
