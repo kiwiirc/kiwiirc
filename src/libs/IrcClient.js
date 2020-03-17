@@ -39,6 +39,11 @@ export function create(state, network) {
     // most recent connection details from the state
     let originalIrcClientConnect = ircClient.connect;
     ircClient.connect = function connect(...args) {
+        // Set some defaults if we don't have eveything
+        if (!network.connection.nick) {
+            network.connection.nick = 'Guest' + Math.floor(Math.random() * 100);
+        }
+
         ircClient.options.host = network.connection.server;
         ircClient.options.port = network.connection.port;
         ircClient.options.tls = network.connection.tls;
