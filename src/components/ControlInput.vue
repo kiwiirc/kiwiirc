@@ -433,11 +433,16 @@ export default {
                 let currentToken = currentWord.word.substr(0, currentWord.position);
                 let inputText = this.$refs.input.getRawText();
 
-                let items = this.buildAutoCompleteItems({
-                    users: true,
-                    buffers: true,
-                    settings: inputText.indexOf('/set') === 0,
-                });
+                let items = [];
+                if (inputText.indexOf('/set') === 0) {
+                    items = this.buildAutoCompleteItems({ settings: true });
+                } else {
+                    items = this.buildAutoCompleteItems({
+                        users: true,
+                        buffers: true,
+                    });
+                }
+
                 this.openAutoComplete(items);
                 this.autocomplete_filter = currentToken;
 
