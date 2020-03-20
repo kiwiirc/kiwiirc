@@ -1,8 +1,11 @@
 'kiwi public';
 
+// What settings keys to ignore when building period delimited settings object
 let ignoreKeys = ['emojis', 'themes', 'bnc', 'aliases', 'restricted', 'kiwiServer',
     'hide_advanced', 'windowTitle', 'startupOptions', 'plugins', 'presetNetworks'];
 
+// Converts settings object to period delimited key based object
+// eg { buffers.alert_on: false }
 export function buildTree(data, base, object, modified) {
     Object.keys(object).forEach((key) => {
         let value = object[key];
