@@ -120,6 +120,7 @@
 
 import _ from 'lodash';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import * as settingTools from '@/libs/settingTools';
 import autocompleteCommands from '@/res/autocompleteCommands';
 import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
@@ -430,11 +431,18 @@ export default {
                 // Tab key was just pressed, start general auto completion
                 let currentWord = this.$refs.input.getCurrentWord();
                 let currentToken = currentWord.word.substr(0, currentWord.position);
+                let inputText = this.$refs.input.getRawText();
 
-                let items = this.buildAutoCompleteItems({
-                    users: true,
-                    buffers: true,
-                });
+                let items = [];
+                if (inputText.indexOf('/set') === 0) {
+                    items = this.buildAutoCompleteItems({ settings: true });
+                } else {
+                    items = this.buildAutoCompleteItems({
+                        users: true,
+                        buffers: true,
+                    });
+                }
+
                 this.openAutoComplete(items);
                 this.autocomplete_filter = currentToken;
 
@@ -599,6 +607,23 @@ export default {
                 });
 
                 list = list.concat(commandList);
+            }
+
+            if (opts.settings) {
+                let out = {};
+                let base = [];
+                settingTools.buildTree(out, base, state.getSetting('settings'), false);
+                settingTools.buildTree(out, base, state.getSetting('user_settings'), true);
+
+                let settingList = [];
+                Object.keys(out).forEach((setting) => {
+                    settingList.push({
+                        text: setting,
+                        type: 'setting',
+                    });
+                });
+
+                list = list.concat(settingList);
             }
 
             return list;
