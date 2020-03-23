@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2020-03-23 07:43\n"
+"PO-Revision-Date: 2020-03-23 08:30\n"
 
 #: Start
 msgid "start_button"
@@ -307,7 +307,7 @@ msgstr "Aliase"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Ç’janë Aliaset?"
+msgstr "Ç’janë aliaset?"
 
 #: Send Message
 msgid "send_message"
@@ -355,7 +355,7 @@ msgstr "Maskë parazgjedhje dëbimesh"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Arsye parazgjedhje përzënieje"
+msgstr "Arsye parazgjedhje përzëniesh"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
@@ -587,7 +587,7 @@ msgstr "{{count}} vetë këtu"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtro përdorues në kanal"
+msgstr "filtro përdorues në kanal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -719,7 +719,7 @@ msgstr "Shtoni Rrjet"
 
 #: New Network
 msgid "new_network"
-msgstr "Rrjeti i Ri"
+msgstr "Rrjet i Ri"
 
 #: No Network
 msgid "no_network"
@@ -739,11 +739,11 @@ msgstr "Hyni në #kanal të ri"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filtroni Kanale"
+msgstr "Filtroni kanale"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Gjeni Më Tepër Kanale"
+msgstr "Gjeni më tepër kanale"
 
 #: Change nick
 msgid "change_nick"
@@ -755,7 +755,7 @@ msgstr "Jepni nofkë të re…"
 
 #: This is you!
 msgid "user_you"
-msgstr "përdoruesi_ju"
+msgstr "Ky jeni ju"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -787,7 +787,7 @@ msgstr "I lidhur në mënyrë të sigurt përmes SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "I pranishëm edhe në kanalet {{channels}}"
+msgstr "Në kanalet {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -875,7 +875,7 @@ msgstr "{{nick}} ka hequr dëbimin për {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr "{{nick}} cakton {{mode}} te {{target}}"
+msgstr "{{nick}} cakton {{mode}} për {{target}}"
 
 #: Send a message
 msgid "command_msg"
