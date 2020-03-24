@@ -539,8 +539,6 @@ const state = new Vue({
                 bufferMessage.ignore = true;
             }
 
-            buffer.addMessage(bufferMessage);
-
             // Increment the unread counter if this buffer is not active
             let includeAsActivity = false;
             let typesForActivty = ['privmsg', 'action', 'notice', 'wallops'];
@@ -550,6 +548,10 @@ const state = new Vue({
 
             if (typesForActivty.indexOf(message.type) > -1) {
                 includeAsActivity = true;
+            }
+
+            if (includeAsActivity) {
+                buffer.addMessage(bufferMessage);
             }
 
             let isActiveBuffer = (
