@@ -287,6 +287,10 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
     background: #383838;
 }
 
+.kiwi-statebrowser-channel-label--highlight {
+    background: var(--brand-error);
+}
+
 .kiwi-welcome-znc h2 {
     color: var(--brand-default-bg);
 }
