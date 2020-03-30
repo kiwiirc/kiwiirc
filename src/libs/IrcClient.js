@@ -280,7 +280,8 @@ function clientMiddleware(state, network) {
 
         if (command === 'server options') {
             // If the network name has changed from the irc-framework default, update ours
-            if (client.network.name !== 'Network') {
+            // Also if it isn't a BNC network as the name is then derived from the BNC info instead
+            if (client.network.name !== 'Network' && !network.connection.bncnetid) {
                 network.name = client.network.name;
             }
         }
