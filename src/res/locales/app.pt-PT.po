@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2020-02-27 20:27\n"
+"PO-Revision-Date: 2020-03-31 00:19\n"
 
 #: Start
 msgid "start_button"
@@ -547,7 +547,7 @@ msgstr "Os seus detalhes"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Apelido"
 
 #: Advanced
 msgid "settings_advanced"
