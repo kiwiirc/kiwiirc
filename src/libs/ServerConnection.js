@@ -247,6 +247,10 @@ function createChannelOnConnection(connection, channelId) {
             return true;
         };
 
+        channel.disposeSocket = function disposeSocket() {
+            // noop
+        };
+
         channel.initChannel = function initChannel() {
             connection.ws.send(':' + channelId);
         };

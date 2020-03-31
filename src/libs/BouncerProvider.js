@@ -196,10 +196,13 @@ export default class BouncerProvider {
                 server: network.host,
                 port: network.port,
                 tls: network.tls,
-                password: network.password,
+                password: network.password || '',
                 bncnetid: network.networkId,
                 username: network.user,
+                account_password: network.account_password,
             });
+        } else {
+            // TODO: Update our existing network
         }
 
         await this.syncBncNetwork(net);
@@ -222,7 +225,8 @@ export default class BouncerProvider {
                 host: network.connection.server,
                 port: network.connection.port,
                 tls: network.connection.tls,
-                password: network.password,
+                account_password: network.password,
+                server_password: network.connection.password,
                 nick: network.connection.nick,
                 username: network.username,
             };
@@ -267,8 +271,11 @@ export default class BouncerProvider {
             if (network.connection.tls !== snapshot.tls) {
                 tags.tls = network.connection.tls;
             }
-            if (network.password !== snapshot.password) {
-                tags.password = network.password;
+            if (network.password !== snapshot.account_password) {
+                tags.account_password = network.password;
+            }
+            if (network.connection.password !== snapshot.server_password) {
+                tags.password = network.connection.password;
             }
             if (network.connection.nick !== snapshot.nick) {
                 tags.nick = network.connection.nick;
@@ -335,6 +342,9 @@ export default class BouncerProvider {
                     let password = `${this.bnc.username}/${netname}:${this.bnc.password}`;
                     ircClient.options.password = password;
                 }
+
+                // The SASL auth already happens on the BNC, we only use it for UI purposes in kiwi
+                ircClient.options.account = {};
 
                 network.connection.direct = this.bnc.direct;
                 ircClient.options.path = this.bnc.path;

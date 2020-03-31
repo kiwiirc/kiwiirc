@@ -27,6 +27,7 @@ export default class NetworkState {
             port: 6667,
             tls: false,
             path: '',
+            // Server password
             password: '',
             direct: false,
             encoding: 'utf8',
@@ -39,6 +40,7 @@ export default class NetworkState {
         this.nick = '';
         this.username = '';
         this.gecos = '';
+        // SASL password
         this.password = '';
         this.away = '';
 

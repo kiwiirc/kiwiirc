@@ -17,7 +17,11 @@ export function create(state, network) {
         port: network.connection.port,
         tls: network.connection.tls,
         path: network.connection.path,
-        password: network.password,
+        password: network.connection.password,
+        account: {
+            account: network.nick,
+            password: network.password,
+        },
         nick: network.nick,
         username: network.username || network.nick,
         gecos: network.gecos || 'https://kiwiirc.com/',
@@ -733,7 +737,7 @@ function clientMiddleware(state, network) {
                     }
 
                     let buffer = network.bufferByName(eventUser.channel);
-                    if (!user.buffers[buffer.id]) {
+                    if (!buffer || !user.buffers[buffer.id]) {
                         return;
                     }
 
