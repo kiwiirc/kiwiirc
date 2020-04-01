@@ -20,6 +20,10 @@
                 <div class="kiwi-networksettings-connection-password">
                     <template v-if="server_type==='network'">
                         <input-text
+                            v-model="network.connection.nick"
+                            :label="$t('settings_nickname')"
+                        />
+                        <input-text
                             :show-plain-text="true"
                             :label="$t('password')"
                             v-model="network.password"
@@ -65,13 +69,6 @@
                     </a>
                 </div>
 
-                <div class="kiwi-networksettings-user">
-                    <input-text
-                        v-model="network.connection.nick"
-                        :label="$t('settings_nickname')"
-                    />
-                </div>
-
                 <h4
                     class="kiwi-show-advanced-title"
                     @click="show_advanced=!show_advanced"
@@ -90,6 +87,14 @@
                             :label="$t('settings_encoding')"
                             v-model="network.connection.encoding"
                         />
+
+                        <input-text
+                            :show-plain-text="true"
+                            :label="$t('server_password')"
+                            v-model="network.connection.password"
+                            type="password"
+                        />
+
                         <label>
                             <span class="kiwi-appsettings-showraw-label">
                                 {{ $t('settings_show_raw') }}
@@ -257,12 +262,12 @@ export default {
         },
     },
     created() {
-        let isZnc = !!(this.network.password || '').match(/^(.*)\/(.*):(.*)$/);
+        let isZnc = !!(this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
         this.server_type = isZnc ?
             'znc' :
             'network';
         if (isZnc) {
-            let match = (this.network.password || '').match(/^(.*)\/(.*):(.*)$/);
+            let match = (this.network.connection.password || '').match(/^(.*)\/(.*):(.*)$/);
             this.znc_username = match[1] || '';
             this.znc_network = match[2] || '';
             this.znc_password = match[3] || '';
@@ -293,7 +298,8 @@ export default {
         },
         setZncPass() {
             let newPass = `${this.znc_username}/${this.znc_network}:${this.znc_password}`;
-            this.network.password = newPass;
+            this.network.connection.password = newPass;
+            this.network.connection.nick = this.znc_username;
         },
         toggleTls() {
             let connection = this.network.connection;
@@ -355,27 +361,16 @@ export default {
 }
 
 //Style the 'secrue/unsecure' port icon
-.kiwi-customserver-tls {
-    font-size: 0.8em;
-    top: 4px;
+.kiwi-networksettings .kiwi-customserver-tls {
     text-align: center;
     cursor: pointer;
+    font-size: 1em;
 }
 
-.kiwi-networksettings .kiwi-customserver-tls-lock {
-    font-size: 1.4em;
-    opacity: 0;
+.kiwi-networksettings .kiwi-customserver-tls i {
     left: 3px;
-}
-
-.kiwi-networksettings .kiwi-customserver-tls--enabled .kiwi-customserver-tls-lock {
-    opacity: 1;
-}
-
-.kiwi-networksettings .kiwi-customserver-tls-minus {
-    font-size: 1.4em;
-    top: 0;
-    left: 3px;
+    top: 2px;
+    font-size: 1.3em;
 }
 
 //Style the network types section
@@ -399,16 +394,11 @@ export default {
     border-radius: 4px;
 }
 
-//User nickname input, remove bottom margin
-.kiwi-networksettings form .kiwi-networksettings-user .u-input-text {
-    margin-bottom: 10px;
-}
-
 .kiwi-networksettings .kiwi-show-advanced-title {
     text-align: center;
     cursor: pointer;
     padding-top: 0;
-    margin: 0 0 20px 0;
+    margin: 40px 0 20px 0;
 }
 
 //Apply spacing to the advanced options checkbox label
@@ -429,10 +419,6 @@ export default {
 
 .kiwi-networksettings .kiwi-connect-to-newnetwork:hover {
     opacity: 1;
-}
-
-.kiwi-networksettings-user {
-    margin-top: 15px;
 }
 
 .kiwi-networksettings-advanced {
