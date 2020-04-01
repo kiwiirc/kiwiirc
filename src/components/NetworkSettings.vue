@@ -361,7 +361,7 @@ export default {
 }
 
 //Style the 'secrue/unsecure' port icon
-.kiwi-customserver-tls {
+.kiwi-networksettings .kiwi-customserver-tls {
     text-align: center;
     cursor: pointer;
     font-size: 1em;
