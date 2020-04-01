@@ -68,6 +68,10 @@ msgstr "Username"
 msgid "password"
 msgstr "Password"
 
+#: Server Password
+msgid "server_password"
+msgstr "Server Password"
+
 #: I have a password
 msgid "password_have"
 msgstr "I have a password"
