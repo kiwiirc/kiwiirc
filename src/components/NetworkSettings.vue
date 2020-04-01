@@ -362,26 +362,15 @@ export default {
 
 //Style the 'secrue/unsecure' port icon
 .kiwi-customserver-tls {
-    font-size: 0.8em;
-    top: 4px;
     text-align: center;
     cursor: pointer;
+    font-size: 1em;
 }
 
-.kiwi-networksettings .kiwi-customserver-tls-lock {
-    font-size: 1.4em;
-    opacity: 0;
+.kiwi-networksettings .kiwi-customserver-tls i {
     left: 3px;
-}
-
-.kiwi-networksettings .kiwi-customserver-tls--enabled .kiwi-customserver-tls-lock {
-    opacity: 1;
-}
-
-.kiwi-networksettings .kiwi-customserver-tls-minus {
-    font-size: 1.4em;
-    top: 0;
-    left: 3px;
+    top: 2px;
+    font-size: 1.3em;
 }
 
 //Style the network types section
