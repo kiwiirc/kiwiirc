@@ -52,7 +52,11 @@ export function create(state, network) {
         ircClient.options.port = network.connection.port;
         ircClient.options.tls = network.connection.tls;
         ircClient.options.path = network.connection.path;
-        ircClient.options.password = network.password;
+        ircClient.options.password = network.connection.password;
+        ircClient.options.account = {
+            account: network.connection.nick,
+            password: network.password,
+        };
         ircClient.options.nick = network.connection.nick;
         ircClient.options.username = network.username || network.connection.nick;
         ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
