@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2020-02-27 20:27\n"
+"PO-Revision-Date: 2020-04-02 00:10\n"
 
 #: Start
 msgid "start_button"
@@ -73,6 +73,10 @@ msgstr "Nome de utilizador"
 msgid "password"
 msgstr "Senha"
 
+#: Server Password
+msgid "server_password"
+msgstr "Palavra-passe do Servidor"
+
 #: I have a password
 msgid "password_have"
 msgstr "Eu tenho uma senha"
@@ -83,7 +87,7 @@ msgstr "Servidor"
 
 #: Nick
 msgid "nick"
-msgstr "Utilizador"
+msgstr "Nick"
 
 #: Channel
 msgid "channel"
@@ -315,7 +319,7 @@ msgstr "Enviar mensagem"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Insira a senha do canal"
+msgstr "Insira a  senha do canal"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -547,7 +551,7 @@ msgstr "Os seus detalhes"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Nick"
 
 #: Advanced
 msgid "settings_advanced"
@@ -831,7 +835,7 @@ msgstr "{{nick}} deu estatuto de op a {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} tirou estatuto de op a {{target}}"
+msgstr "{{nick}} removeu o estatuto de op a {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
@@ -839,7 +843,7 @@ msgstr "{{nick}} deu estatuto de half-op a {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} tirou estatuto de half-op a {{target}}"
+msgstr "{{nick}} removeu o estatuto de half-op a {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
@@ -847,7 +851,7 @@ msgstr "{{nick}} deu estatuto de voice a {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} tirou estatuto de voice a {{target}}"
+msgstr "{{nick}} removeu o estatuto de voice a {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -855,7 +859,7 @@ msgstr "{{nick}} deu estatuto de admin a {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} tirou estatuto de admin a {{target}}"
+msgstr "{{nick}} removeu o estatuto de admin a {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
@@ -863,7 +867,7 @@ msgstr "{{nick}} deu estatuto de owner a {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} tirou estatuto de owner a {{target}}"
+msgstr "{{nick}} removeu o estatuto de owner a {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -899,7 +903,7 @@ msgstr "Sair, e depois reentrar num canal"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Mudar o seu nickname"
+msgstr "Mudar o seu nick"
 
 #: Start a private conversation with someone
 msgid "command_query"
@@ -1063,9 +1067,9 @@ msgstr "Nick {{nick}} já em uso. Tentando com {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} mudou o nick para {{newnick}}"
+msgstr "{{nick}} é agora conhecido como {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "alterou o tópico para: {{topic}}"
+msgstr "{{nick}} alterou o tópico para: {{topic}}"
 

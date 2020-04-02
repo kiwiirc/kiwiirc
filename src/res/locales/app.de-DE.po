@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-02-29 12:01\n"
+"PO-Revision-Date: 2020-04-01 21:42\n"
 
 #: Start
 msgid "start_button"
@@ -72,6 +72,10 @@ msgstr "Benutzername"
 #: Password
 msgid "password"
 msgstr "Passwort"
+
+#: Server Password
+msgid "server_password"
+msgstr "Server Password"
 
 #: I have a password
 msgid "password_have"
