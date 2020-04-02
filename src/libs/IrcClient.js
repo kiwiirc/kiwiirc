@@ -53,10 +53,16 @@ export function create(state, network) {
         ircClient.options.tls = network.connection.tls;
         ircClient.options.path = network.connection.path;
         ircClient.options.password = network.connection.password;
-        ircClient.options.account = {
-            account: network.connection.nick,
-            password: network.password,
-        };
+        if (network.password) {
+            ircClient.options.account = {
+                account: network.connection.nick,
+                password: network.password,
+            };
+        } else {
+            // No password so give an empty account config. This forces irc-framework to keep
+            // the server password (options.password) separate from SASL
+            ircClient.options.account = { };
+        }
         ircClient.options.nick = network.connection.nick;
         ircClient.options.username = network.username || network.connection.nick;
         ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
