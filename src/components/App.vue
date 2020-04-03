@@ -57,7 +57,7 @@
 <script>
 'kiwi public';
 
-import 'font-awesome-webpack';
+import 'font-awesome-webpack-4';
 import cssVarsPonyfill from 'css-vars-ponyfill';
 import '@/res/globalStyle.css';
 import Tinycon from 'tinycon';

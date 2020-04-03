@@ -1,11 +1,26 @@
 .DS_Store
-.idea/
-.vscode
-yarn-error.log
-node_modules/
-dist/
 srcdocs/
-npm-debug.log
-test/unit/coverage
+dist/
+node_modules/
 src/res/locales/available.json
 static/config.local.json
+tests/unit/coverage
+
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
