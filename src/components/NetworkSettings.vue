@@ -8,7 +8,6 @@
                     <span>{{ readableStateError(network.state_error) }}</span>
                 </div>
                 <div v-else-if="network.last_error" class="kiwi-networksettings-error">
-                    {{ $t('network_noconnect') }}
                     <span>{{ network.last_error }}</span>
                 </div>
 
@@ -442,9 +441,9 @@ export default {
 
 .kiwi-networksettings-error {
     text-align: center;
-    margin: 1em;
-    padding: 0.3em;
-    border: 1px solid;
+    margin: 1em 0 2em 0;
+    padding: 1em;
+    border: 1px dashed;
 }
 
 .kiwi-networksettings .kiwi-networksettings-error span {
