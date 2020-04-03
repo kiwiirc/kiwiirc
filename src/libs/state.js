@@ -100,7 +100,7 @@ const state = new Vue({
                             port: network.connection.port,
                             tls: network.connection.tls,
                             path: network.connection.path,
-                            password: network.password,
+                            password: network.connection.password,
                             direct: network.connection.direct,
                             encoding: network.connection.encoding,
                         },
