@@ -6,7 +6,6 @@
 - 100% static files. Host with your favourite web server or a CDN
 - For single networks, bouncer hosts, or a personal generic IRC client that remembers your networks
 - Works out of the box with a default IRC network - or use your own
-- Connect to websocket IRC servers or use the [webircgateway](https://github.com/kiwiirc/webircgateway) websocket proxy to connect to normal IRC servers
 - Single or multiple IRC network connections
 - Multiple layouts for small areas or full page layouts
 - Light and dark modes
@@ -14,6 +13,12 @@
 - Extremely versatile via a [single JSON config file at runtime](https://github.com/kiwiirc/kiwiirc/wiki/Configuration)
 - Themable and rich [plugin support](https://github.com/kiwiirc/kiwiirc/wiki/Plugins) such as [file uploading](https://github.com/kiwiirc/plugin-fileuploader/) and [video calling](https://github.com/kiwiirc/plugin-conference)
 - Team mode for workplaces
+
+Connection modes:
+
+- Directly to a websocket IRC server
+- Connect via the [webircgateway](https://github.com/kiwiirc/webircgateway) websocket proxy for normal IRC servers
+- Stay connected with [KiwiBNC](https://github.com/kiwiirc/kiwibnc)
 
 ## Installing Kiwi IRC
 If you just want to embed an IRC client on your website, you can generate a custom client hosted by kiwiirc.com using the simple client builder, https://kiwiirc.com/clientbuilder/
