@@ -13,7 +13,9 @@
                     v-else-if="network && (network.last_error || network.state_error)"
                     class="kiwi-welcome-simple-error"
                 >
-                    We couldn't connect to the server :(
+                    <span v-if="!network.last_error && network.state_error">
+                        {{ $t('network_noconnect') }}
+                    </span>
                     <span>
                         {{ network.last_error || readableStateError(network.state_error) }}
                     </span>
@@ -272,9 +274,6 @@ export default {
             let net = this.network || state.getNetworkFromAddress(netAddress);
 
             let password = this.password;
-            if (options.bouncer) {
-                password = `${this.nick}:${this.password}`;
-            }
 
             // If the network doesn't already exist, add a new one
             net = net || state.addNetwork('Network', this.nick, {
@@ -288,10 +287,22 @@ export default {
                 gecos: options.gecos,
             });
 
+            // Clear the server buffer in case it already existed and contains messages relating to
+            // the previous connection, such as errors. They are now redundant since this is a
+            // new connection.
+            net.serverBuffer().clearMessages();
+
             // If we retreived an existing network, update the nick+password with what
             // the user has just put in place
             net.connection.nick = this.nick;
-            net.password = password;
+            if (options.bouncer) {
+                // Bouncer mode uses server PASS
+                net.connection.password = password;
+                net.password = '';
+            } else {
+                net.connection.password = '';
+                net.password = password;
+            }
 
             if (_.trim(options.encoding || '')) {
                 net.connection.encoding = _.trim(options.encoding);
@@ -375,7 +386,7 @@ form.kiwi-welcome-simple-form h2 {
 .kiwi-welcome-simple-error {
     text-align: center;
     margin: 1em 0;
-    padding: 0.3em;
+    padding: 1em;
 }
 
 .kiwi-welcome-simple-error span {
