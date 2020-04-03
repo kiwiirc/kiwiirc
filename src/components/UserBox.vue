@@ -3,6 +3,13 @@
         <span v-if="isSelf" class="kiwi-userbox-selfprofile">
             {{ $t('user_you') }}
         </span>
+
+        <div
+            v-if="hasAvatar"
+            :style="{'background-image': `url('${user.avatar.large}')`}"
+            class="kiwi-userbox-avatar"
+        />
+
         <div class="kiwi-userbox-header">
             <h3>
                 <away-status-indicator :network="network" :user="user"/> {{ user.nick }}
@@ -258,6 +265,9 @@ export default {
         isSelf() {
             return this.user === this.network.currentUser();
         },
+        hasAvatar() {
+            return this.user.avatar && this.user.avatar.large;
+        },
     },
     watch: {
         user: function watchUser() {
@@ -388,6 +398,15 @@ export default {
     text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
+}
+
+.kiwi-userbox-avatar {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .kiwi-userbox-header {
