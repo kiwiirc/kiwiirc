@@ -88,10 +88,8 @@ export default class BouncerProvider {
 
         // Use this initial network password for other network connections
         if (!this.bnc.username) {
-            let [username, password] = network.password.split(':');
-            username = username.split('/')[0];
-            this.bnc.username = username;
-            this.bnc.password = password;
+            this.bnc.username = network.connection.nick;
+            this.bnc.password = network.connection.password;
         }
 
         // If this is a BNC network, sync it before anything else so that we get all it's info
