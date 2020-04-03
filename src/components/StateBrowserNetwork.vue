@@ -208,7 +208,7 @@ export default {
             }
             let totalUnread = 0;
             this.network.buffers.forEach((buffer) => {
-                if (buffer.name === '*raw') {
+                if (buffer.isSpecial()) {
                     return;
                 }
                 totalUnread += buffer.flags.unread;
@@ -221,7 +221,7 @@ export default {
             }
             let highlight = false;
             this.network.buffers.forEach((buffer) => {
-                if (buffer.name === '*raw') {
+                if (buffer.isSpecial()) {
                     return;
                 }
                 if (buffer.flags.highlight) {
