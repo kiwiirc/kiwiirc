@@ -67,6 +67,7 @@ export function create(state, network) {
         ircClient.options.username = network.username || network.connection.nick;
         ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
         ircClient.options.encoding = network.connection.encoding;
+        ircClient.options.auto_reconnect = !!state.setting('autoReconnect');
 
         let eventObj = { network, transport: null };
         state.$emit('network.connecting', eventObj);

@@ -90,6 +90,7 @@ export const configTemplates = {
             state_key: 'kiwi-state',
             nick_format: '',
         },
+        autoReconnect: false,
         disconnectOnSaslFail: true,
         allowRegisterProtocolHandler: false,
         noticeActiveBuffer: true,
