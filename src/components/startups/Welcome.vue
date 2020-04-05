@@ -297,7 +297,7 @@ export default {
             net.connection.nick = this.nick;
             if (options.bouncer) {
                 // Bouncer mode uses server PASS
-                net.connection.password = password;
+                net.connection.password = `${this.nick}:${password}`;
                 net.password = '';
             } else {
                 net.connection.password = '';
