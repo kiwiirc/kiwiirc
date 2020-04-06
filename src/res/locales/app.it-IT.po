@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2020-04-01 21:41\n"
+"PO-Revision-Date: 2020-04-06 06:11\n"
 
 #: Start
 msgid "start_button"
@@ -75,7 +75,7 @@ msgstr "Password"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Password Server"
 
 #: I have a password
 msgid "password_have"
@@ -675,7 +675,7 @@ msgstr "Impostato il {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "In evidenza"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
