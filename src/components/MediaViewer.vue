@@ -38,39 +38,37 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
-
 let embedlyTagIncluded = false;
 
 export default {
     props: ['url', 'component', 'componentProps', 'isIframe', 'showPin'],
-    data: function data() {
+    data() {
         return {
         };
     },
     computed: {
-        embedlyKey: function embedlyKey() {
-            return state.settings.embedly.key;
+        embedlyKey() {
+            return this.$state.settings.embedly.key;
         },
     },
     watch: {
-        url: function watchUrl() {
+        url() {
             this.updateEmbed();
         },
-        isIframe: function watchUrl() {
+        isIframe() {
             this.updateEmbed();
         },
     },
-    created: function created() {
+    created() {
         this.updateEmbed();
     },
-    mounted: function mounted() {
+    mounted() {
         this.$nextTick(() => {
-            state.$emit('mediaviewer.opened');
+            this.$state.$emit('mediaviewer.opened');
         });
     },
     methods: {
-        updateEmbed: function updateEmbed() {
+        updateEmbed() {
             if (!this.url || this.isIframe || this.component) {
                 // return if embedly script is not needed
                 return;
