@@ -15,15 +15,14 @@
                 <i class="fa fa-window-close" aria-hidden="true" />
             </a>
         </div>
-        <div :key="url">
-            <iframe
-                v-if="isIframe"
-                :src="url"
-                class="kiwi-mediaviewer-iframe"
-            />
-            <component :is="component" v-else-if="component" />
+        <iframe
+            v-if="isIframe"
+            :src="url"
+            class="kiwi-mediaviewer-iframe"
+        />
+        <component v-else-if="component" :is="component" :component-props="componentProps"/>
+        <div v-else :key="url" class="kiwi-mediaviewer-embedly">
             <a
-                v-else
                 ref="embedlyLink"
                 :href="url"
                 :data-card-key="embedlyKey"
@@ -44,7 +43,7 @@ import state from '@/libs/state';
 let embedlyTagIncluded = false;
 
 export default {
-    props: ['url', 'component', 'isIframe', 'showPin'],
+    props: ['url', 'component', 'componentProps', 'isIframe', 'showPin'],
     data: function data() {
         return {
         };
@@ -72,11 +71,12 @@ export default {
     },
     methods: {
         updateEmbed: function updateEmbed() {
-            let checkEmbedlyAndShowCard = () => {
-                if (this.isIframe) {
-                    return;
-                }
+            if (!this.url || this.isIframe || this.component) {
+                // return if embedly script is not needed
+                return;
+            }
 
+            let checkEmbedlyAndShowCard = () => {
                 // If the embedly function doesn't exist it's probably still loading
                 // the embedly script
                 if (typeof window.embedly !== 'function') {
