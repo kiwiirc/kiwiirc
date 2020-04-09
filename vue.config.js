@@ -3,13 +3,18 @@ const fs = require('fs');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const pkg = require('./package.json');
 
+const makeSourceMap = process.argv.indexOf('--nomap') === -1;
+
 module.exports = {
     publicPath: '',
     assetsDir: 'static/',
     lintOnSave: false,
     runtimeCompiler: true,
     transpileDependencies: ['irc-framework', 'ip-regex', 'isomorphic-textencoder'],
-    productionSourceMap: process.argv.indexOf('--nomap') === -1,
+    productionSourceMap: makeSourceMap,
+    css: {
+        sourceMap: makeSourceMap,
+    },
     configureWebpack: {
         resolve: {
             extensions: ['.js', '.vue', '.json'],
@@ -24,6 +29,14 @@ module.exports = {
         optimization: {
             usedExports: false,
             concatenateModules: false,
+            splitChunks: {
+                cacheGroups: {
+                    vendors: {
+                        name: 'vendor',
+                        test: (m) => /[\\/]node_modules[\\/]/.test(m.context) && m.constructor.name !== 'CssModule',
+                    },
+                },
+            },
         },
         plugins: [
             new CopyWebpackPlugin([
