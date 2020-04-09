@@ -27,8 +27,6 @@ module.exports = {
             maxAssetSize: 1000000,
         },
         optimization: {
-            usedExports: false,
-            concatenateModules: false,
             splitChunks: {
                 cacheGroups: {
                     vendors: {
