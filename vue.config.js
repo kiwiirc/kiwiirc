@@ -65,7 +65,7 @@ module.exports = {
         });
 
         // add build/ to resolveLoader for exports-loader
-        config.resolveLoader.modules.add(path.resolve(__dirname, 'build/'));
+        config.resolveLoader.modules.add(path.resolve(__dirname, 'build/webpack/'));
 
         // add exports-loader for GobalApi
         const vueRule = config.module.rule('vue');

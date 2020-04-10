@@ -11,7 +11,7 @@
     "lint:stylelint": "stylelint \"src/**/*.{vue,htm,html,css,sss,less,scss}\"",
     "dev": "npm run translate && vue-cli-service serve",
     "test": "vue-cli-service test:unit",
-    "translate": "node build/locales.js",
+    "translate": "node build/webpack/locales.js",
     "gendocs": "rm -rf srcdocs/ && jsdoc -c jsdoc.json"
   },
   "dependencies": {
