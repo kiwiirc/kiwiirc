@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const pkg = require('./package.json');
 
 const makeSourceMap = process.argv.indexOf('--nomap') === -1;
@@ -38,6 +39,9 @@ module.exports = {
             },
         },
         plugins: [
+            new StyleLintPlugin({
+                files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
+            }),
             new CopyWebpackPlugin([
                 {
                     from: path.join(__dirname, 'static/'),

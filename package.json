@@ -6,7 +6,9 @@
   "scripts": {
     "build": "npm run translate && vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint --no-fix",
+    "lint:stylelint": "stylelint \"src/**/*.{vue,htm,html,css,sss,less,scss}\"",
+    "lint": "npm run lint:eslint && npm run lint:stylelint",
+    "lint:eslint": "vue-cli-service lint --no-fix",
     "dev": "npm run translate && vue-cli-service serve",
     "test": "vue-cli-service test:unit",
     "translate": "node build/locales.js"
@@ -55,6 +57,9 @@
     "less-loader": "^5.0.0",
     "postcss-import": "^12.0.1",
     "postcss-url": "^8.0.0",
+    "stylelint": "^13.3.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-webpack-plugin": "^1.2.3",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.42.1"
   }
