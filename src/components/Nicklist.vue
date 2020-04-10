@@ -220,7 +220,7 @@ export default {
 <style lang="less">
 
 /* Adjust the sidebars width when this nicklist is in view */
-.kiwi-sidebar.kiwi-sidebar-section-nicklist {
+.kiwi-container .kiwi-sidebar.kiwi-sidebar-section-nicklist {
     max-width: 250px;
     width: 250px;
 }
@@ -300,7 +300,7 @@ export default {
 }
 
 @media screen and (max-width: 759px) {
-    .kiwi-sidebar.kiwi-sidebar-section-nicklist {
+    .kiwi-container .kiwi-sidebar.kiwi-sidebar-section-nicklist {
         width: 100%;
         max-width: 380px;
     }
