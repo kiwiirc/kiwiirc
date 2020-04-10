@@ -180,7 +180,7 @@ export default class BufferState {
 
         let modes = userBufferInfo.modes;
         let opModes = ['Y', 'y', 'q', 'a', 'o', 'h'];
-        let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
+        let hasOp = _.find(modes, (mode) => opModes.indexOf(mode.toLowerCase()) > -1);
 
         return !!hasOp;
     }
@@ -203,7 +203,7 @@ export default class BufferState {
         let network = this.getNetwork();
         let netPrefixes = network.ircClient.network.options.PREFIX;
         // Find the first (highest) netPrefix in the users buffer modes
-        let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
+        let prefix = _.find(netPrefixes, (p) => modes.indexOf(p.mode) > -1);
 
         return prefix ?
             prefix.symbol :
@@ -233,7 +233,7 @@ export default class BufferState {
         let network = this.getNetwork();
         let netPrefixes = network.ircClient.network.options.PREFIX;
         // Find the first (highest) netPrefix in the users buffer modes
-        let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
+        let prefix = _.find(netPrefixes, (p) => modes.indexOf(p.mode) > -1);
 
         return prefix ?
             prefix.mode :
@@ -533,7 +533,7 @@ function createMessageBatch(bufferState) {
         bufferState.message_count++;
     };
     let addMultipleMessages = (newMessages) => {
-        let toAdd = newMessages.filter(msg => !bufferState.messagesObj.messageIds[msg.id]);
+        let toAdd = newMessages.filter((msg) => !bufferState.messagesObj.messageIds[msg.id]);
         if (toAdd.length > 0) {
             bufferState.messagesObj.messages = bufferState.messagesObj.messages.concat(toAdd);
             toAdd.forEach((msg) => {
@@ -551,7 +551,7 @@ function createMessageBatch(bufferState) {
 
         if (bufferState.messagesObj.messages.length > scrollbackSize) {
             let removed = bufferState.messagesObj.messages.splice(0, length - scrollbackSize);
-            removed.forEach(msg => delete bufferState.messagesObj.messageIds[msg.id]);
+            removed.forEach((msg) => delete bufferState.messagesObj.messageIds[msg.id]);
         }
     };
 

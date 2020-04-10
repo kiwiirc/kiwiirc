@@ -26,7 +26,8 @@
                     @cancel="requestingInput = false"
                 >
                     <a v-if="!requestingInput"
-                       class="u-link kiwi-messageinfo-kick-user" @click="requestingInput = true">
+                       class="u-link kiwi-messageinfo-kick-user" @click="requestingInput = true"
+                    >
                         Kick {{ message.nick }}
                     </a>
                 </input-prompt>
@@ -35,7 +36,8 @@
                     @cancel="requestingInput = false"
                 >
                     <a v-if="!requestingInput"
-                       class="u-link kiwi-messageinfo-ban-user" @click="requestingInput = true">
+                       class="u-link kiwi-messageinfo-ban-user" @click="requestingInput = true"
+                    >
                         Ban {{ message.nick }}
                     </a>
                 </input-prompt>

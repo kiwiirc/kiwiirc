@@ -6,9 +6,9 @@ import state from '@/libs/state';
 export function orderBuffers(buffers) {
     // Since vuejs will sort in-place and update views when .sort is called
     // on an array, clone it first so that we have a plain array to sort
-    let list = buffers.map(b => b);
+    let list = buffers.map((b) => b);
 
-    list = _.filter(list, buffer => !buffer.isServer());
+    list = _.filter(list, (buffer) => !buffer.isServer());
     list = list.sort((a, b) => {
         let order = 0;
         if (a.isChannel() && b.isQuery()) {

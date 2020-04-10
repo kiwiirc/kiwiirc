@@ -38,8 +38,8 @@
                  checks for a message.bodyTemplate custom component to apply only to the body area
             -->
             <div
-                v-rawElement="message.template.$el"
                 v-if="message.render() && message.template && message.template.$el"
+                v-rawElement="message.template.$el"
             />
             <message-list-message-modern
                 v-else-if="listType === 'modern'"
@@ -541,7 +541,7 @@ export default {
                     let messages = [];
                     let allMessages = this.buffer.getMessages();
 
-                    const finder = m => m.id.toString() === node.attributes['data-message-id'].value;
+                    const finder = (m) => m.id.toString() === node.attributes['data-message-id'].value;
 
                     let i = 0;
                     while (node) {
@@ -567,7 +567,7 @@ export default {
                     // string to be used in the copy handler
                     copyData = messages
                         .sort((a, b) => (a.time > b.time ? 1 : -1))
-                        .filter(m => m.message.trim().length)
+                        .filter((m) => m.message.trim().length)
                         .map(LogFormatter)
                         .join('\r\n');
                 } else {

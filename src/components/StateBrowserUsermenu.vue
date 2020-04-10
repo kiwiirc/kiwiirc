@@ -23,7 +23,7 @@
             <p> {{ $t('state_remembered') }} </p>
             <a class="u-link" @click="clickForget">{{ $t('state_forget') }}</a>
             <div class="kiwi-close-icon" @click="is_usermenu_open=false">
-                <i class="fa fa-times" aria-hidden="true"/>
+                <i class="fa fa-times" aria-hidden="true" />
             </div>
         </div>
         <div v-else class="kiwi-statebrowser-usermenu-network">

@@ -22,13 +22,13 @@
                     Add network to Kiwi
                 </button>
 
-                <br >
+                <br>
                 <button
                     class="u-button u-button-primary"
                     @click="addNetwork(true)"
                 >
                     {{ $t('personal_connect_temporary') }}
-                </button> <br >
+                </button> <br>
             </div>
         </div>
         <div v-else>
@@ -37,7 +37,7 @@
 
             <button class="u-button u-button-primary" @click="addEmptyNetwork">
                 {{ $t('personal_add') }}
-            </button> <br >
+            </button> <br>
 
             <a
                 v-if="networks.length>0"
@@ -110,7 +110,7 @@ export default {
                 if (msg.type === 'ping' && this.networks.length > 0) {
                     IPC.send({ type: 'pong' });
                 } else if (msg.type === 'addNetwork') {
-                    let network = this.networks.find(n => n.name === msg.server);
+                    let network = this.networks.find((n) => n.name === msg.server);
                     if (!network) {
                         network = state.addNetwork(msg.server, msg.nick || ('Guest' + Math.floor(Math.random() * 100)), msg);
                     }

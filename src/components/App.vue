@@ -13,17 +13,18 @@
         <link :href="themeUrl" rel="stylesheet" type="text/css">
 
         <template v-if="!hasStarted || (!fallbackComponent && networks.length === 0)">
-            <component :is="startupComponent" @start="startUp"/>
+            <component :is="startupComponent" @start="startUp" />
         </template>
         <template v-else>
-            <state-browser :networks="networks" :sidebar-state="sidebarState"/>
+            <state-browser :networks="networks" :sidebar-state="sidebarState" />
             <div
                 :class="{
                     'kiwi-workspace--disconnected': network && network.state !== 'connected'
                 }"
                 class="kiwi-workspace"
-                @click="stateBrowserDrawOpen = false">
-                <div class="kiwi-workspace-background"/>
+                @click="stateBrowserDrawOpen = false"
+            >
+                <div class="kiwi-workspace-background" />
 
                 <template v-if="!activeComponent && network">
                     <container
@@ -31,7 +32,7 @@
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
                     >
-                        <template v-slot:before v-if="mediaviewerOpen">
+                        <template v-if="mediaviewerOpen" v-slot:before>
                             <media-viewer
                                 :url="mediaviewerUrl"
                                 :component="mediaviewerComponent"
@@ -48,11 +49,11 @@
                     />
                 </template>
                 <component
-                    v-else-if="!activeComponent"
                     :is="fallbackComponent"
+                    v-else-if="!activeComponent"
                     v-bind="fallbackComponentProps"
                 />
-                <component v-else :is="activeComponent" v-bind="activeComponentProps"/>
+                <component :is="activeComponent" v-else v-bind="activeComponentProps" />
             </div>
         </template>
     </div>
@@ -130,10 +131,10 @@ export default {
         this.initMediaviewer();
         this.configureFavicon();
 
-        document.addEventListener('keydown', event => this.onKeyDown(event), false);
-        window.addEventListener('focus', event => this.onFocus(event), false);
-        window.addEventListener('blur', event => this.onBlur(event), false);
-        window.addEventListener('touchstart', event => this.onTouchStart(event));
+        document.addEventListener('keydown', (event) => this.onKeyDown(event), false);
+        window.addEventListener('focus', (event) => this.onFocus(event), false);
+        window.addEventListener('blur', (event) => this.onBlur(event), false);
+        window.addEventListener('touchstart', (event) => this.onTouchStart(event));
     },
     mounted() {
         // Decide which startup screen to use depending on the config

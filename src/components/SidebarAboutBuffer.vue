@@ -7,10 +7,10 @@
             class="kiwi-aboutbuffer-section"
         >
             <h4 @click="toggleSection('about')">
-                <i class="fa fa-angle-right"/> {{ $t('about') }}
+                <i class="fa fa-angle-right" /> {{ $t('about') }}
             </h4>
             <div>
-                <p v-if="b.topic" v-html="formattedTopic"/>
+                <p v-if="b.topic" v-html="formattedTopic" />
                 <p v-else>{{ $t('no_topic_set') }}</p>
 
                 <p v-if="b.created_at">
@@ -30,7 +30,7 @@
             class="kiwi-aboutbuffer-section"
         >
             <h4 @click="toggleSection('highlights')">
-                <i class="fa fa-angle-right"/> {{ $t('highlights') }}
+                <i class="fa fa-angle-right" /> {{ $t('highlights') }}
             </h4>
             <div>
                 <ul v-if="highlights.length > 0">
@@ -54,7 +54,7 @@
             class="kiwi-aboutbuffer-section"
         >
             <h4 @click="toggleSection(plugin.id)">
-                <i class="fa fa-angle-right"/> {{ plugin.args.title }}
+                <i class="fa fa-angle-right" /> {{ plugin.args.title }}
             </h4>
             <div v-rawElement="plugin.el" />
         </div>
@@ -94,11 +94,11 @@ export default {
             /* eslint-disable no-unused-vars */
             let tmp = this.buffer.message_count;
             return this.buffer.getMessages()
-                .filter(m => m.isHighlight)
-                .filter(m => m.type !== 'traffic')
-                .filter(m => m.type !== 'topic')
-                .filter(m => m.type !== 'mode')
-                .filter(m => m.html)
+                .filter((m) => m.isHighlight)
+                .filter((m) => m.type !== 'traffic')
+                .filter((m) => m.type !== 'topic')
+                .filter((m) => m.type !== 'mode')
+                .filter((m) => m.html)
                 .sort((a, b) => b.time - a.time);
         },
     },

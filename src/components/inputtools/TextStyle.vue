@@ -2,39 +2,56 @@
     <div class="kiwi-inputtool-colours">
         <div class="kiwi-inputtool-colours-palette" @mousedown.prevent @click.prevent>
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-white"
-                 data-code="00" @click="onColourClick"/>
+                 data-code="00" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-black"
-                 data-code="01" @click="onColourClick"/>
+                 data-code="01" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-blue"
-                 data-code="02" @click="onColourClick"/>
+                 data-code="02" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-green"
-                 data-code="03" @click="onColourClick"/>
+                 data-code="03" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-red"
-                 data-code="04" @click="onColourClick"/>
+                 data-code="04" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-brown"
-                 data-code="05" @click="onColourClick"/>
+                 data-code="05" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-purple"
-                 data-code="06" @click="onColourClick"/>
+                 data-code="06" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-orange"
-                 data-code="07" @click="onColourClick"/>
+                 data-code="07" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-yellow"
-                 data-code="08" @click="onColourClick"/>
+                 data-code="08" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-green"
-                 data-code="09" @click="onColourClick"/>
+                 data-code="09" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-cyan"
-                 data-code="10" @click="onColourClick"/>
+                 data-code="10" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-cyan"
-                 data-code="11" @click="onColourClick"/>
+                 data-code="11" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-blue"
-                 data-code="12" @click="onColourClick"/>
+                 data-code="12" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-pink"
-                 data-code="13" @click="onColourClick"/>
+                 data-code="13" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-grey"
-                 data-code="14" @click="onColourClick"/>
+                 data-code="14" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour irc-bg-colour-light-grey"
-                 data-code="15" @click="onColourClick"/>
+                 data-code="15" @click="onColourClick"
+            />
             <div class="kiwi-inputtools-colours-colour kiwi-inputtools-colours-reset"
-                 @click="onResetClick"><i class="fa fa-ban" aria-hidden="true"/></div>
+                 @click="onResetClick"
+            ><i class="fa fa-ban" aria-hidden="true" /></div>
         </div>
     </div>
 </template>

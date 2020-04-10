@@ -10,7 +10,7 @@
             @click="addNetwork"
         >
             {{ $t('personal_add') }}
-        </button> <br >
+        </button> <br>
 
         <a
             v-if="networks.length>0"
@@ -26,7 +26,7 @@
             v-html="aboutContent"
         />
         <div class="kiwi-aboutnew">
-            <div class="kiwi-aboutnew-sep"/>
+            <div class="kiwi-aboutnew-sep" />
             <a
                 class="u-link"
                 @click="about_open=!about_open"
@@ -36,7 +36,7 @@
 
             <div class="kiwi-aboutnew-help">
                 <a @click="about_open=!about_open">
-                    <i class="fa fa-question-circle" aria-hidden="true"/>
+                    <i class="fa fa-question-circle" aria-hidden="true" />
                 </a>
             </div>
         </div>

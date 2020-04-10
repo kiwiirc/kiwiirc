@@ -3,7 +3,7 @@
         <template v-if="!shouldShowLoading">
             <div class="kiwi-notconnected-caption">
                 <span>{{ $t('not_connected') }}</span>
-                <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true"/>
+                <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true" />
             </div>
             <div class="kiwi-notconnected-buttons">
                 <captcha
@@ -16,7 +16,7 @@
                         class="kiwi-notconnected-button"
                         @click="reconnect"
                     >
-                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true" />
                         {{ $t('reconnect_channel', {channel: buffer.name}) }}
                     </span>
                 </template>
@@ -26,7 +26,7 @@
                         class="kiwi-notconnected-button"
                         @click="reconnect"
                     >
-                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true" />
                         {{ $t('reconnect_network', {network: buffer.getNetwork().name}) }}
                     </span>
                 </template>
@@ -36,7 +36,7 @@
                         class="kiwi-notconnected-button"
                         @click="reconnect"
                     >
-                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true" />
                         {{ $t('reconnect_query', {user: buffer.name}) }}
                     </span>
                 </template>
@@ -46,7 +46,7 @@
                     class="kiwi-notconnected-button kiwi-notconnected-button-settings"
                     @click="showNetworkSettings"
                 >
-                    <i class="fa fa-cogs" aria-hidden="true"/>
+                    <i class="fa fa-cogs" aria-hidden="true" />
                 </a>
             </div>
         </template>

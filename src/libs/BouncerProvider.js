@@ -131,7 +131,7 @@ export default class BouncerProvider {
 
         // populate network list from the controller connection
         let bncNetworks = await client.bnc.getNetworks();
-        bncNetworks.forEach(bncNet => this.addNetworkToState(bncNet));
+        bncNetworks.forEach((bncNet) => this.addNetworkToState(bncNet));
 
         // start monitoring network changes
         this.monitorNetworkChanges();
@@ -168,7 +168,7 @@ export default class BouncerProvider {
                 return;
             }
 
-            let existingBuffers = buffers.filter(bncBuffer => (
+            let existingBuffers = buffers.filter((bncBuffer) => (
                 bncBuffer.name.toLowerCase() === clientBuffer.name.toLowerCase()
             ));
 

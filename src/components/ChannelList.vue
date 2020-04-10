@@ -3,22 +3,23 @@
         <div class="kiwi-channellist-content-container">
             <div class="kiwi-channellist-nav">
                 <form class="u-form kiwi-channellist-search" @submit.prevent>
-                    <input v-model="search" :placeholder="$t('do_search')" class="u-input" >
+                    <input v-model="search" :placeholder="$t('do_search')" class="u-input">
                     <a
                         :class="{
                             'u-button-primary': !isLoading,
                             'u-button-secondary': isLoading,
                         }"
                         class="u-button kiwi-channellist-refresh"
-                        @click="maybeUpdateList">
-                        <i v-if="!isLoading" class="fa fa-refresh" aria-hidden="true"/>
-                        <i v-else class="fa fa-refresh fa-spin" aria-hidden="true"/>
+                        @click="maybeUpdateList"
+                    >
+                        <i v-if="!isLoading" class="fa fa-refresh" aria-hidden="true" />
+                        <i v-else class="fa fa-refresh fa-spin" aria-hidden="true" />
                     </a>
                 </form>
                 <div v-if="list.length" class="kiwi-channellist-pagination">
-                    <a @click="prevPage"><i class="fa fa-step-backward" aria-hidden="true"/></a>
+                    <a @click="prevPage"><i class="fa fa-step-backward" aria-hidden="true" /></a>
                     {{ page + 1 }} / {{ maxPages + 1 }}
-                    <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true"/></a>
+                    <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true" /></a>
                 </div>
             </div>
             <div class="kiwi-channellist-table">
@@ -27,7 +28,7 @@
                         <tr v-for="channel in paginated" :key="channel.channel">
                             <td class="kiwi-channellist-user-center">
                                 <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
-                                    <i class="fa fa-user" aria-hidden="true"/>
+                                    <i class="fa fa-user" aria-hidden="true" />
                                     {{ channel.num_users }}
                                 </span>
                             </td>
@@ -37,7 +38,7 @@
                                 </a>
                             </td>
                             <td class="kiwi-channellist-table-topic">
-                                <div v-html="formatAndTrimTopic(channel.topic)"/>
+                                <div v-html="formatAndTrimTopic(channel.topic)" />
                             </td>
                             <td class="kiwi-channellist-user-center">
                                 <a

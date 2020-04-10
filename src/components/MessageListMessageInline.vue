@@ -59,11 +59,11 @@
                 <span>{{ displayNick }}</span>
             </span>
             <div
-                v-rawElement="message.bodyTemplate.$el"
                 v-if="message.bodyTemplate && message.bodyTemplate.$el"
+                v-rawElement="message.bodyTemplate.$el"
                 class="kiwi-messagelist-body"
             />
-            <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
+            <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)" />
         </div>
 
         <message-info

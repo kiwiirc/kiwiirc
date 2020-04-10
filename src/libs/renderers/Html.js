@@ -115,7 +115,7 @@ function buildSpan(content, classes, style) {
     }
 
     return (
-        `<span` +
+        '<span' +
         (style !== '' ? ` style="${style}"` : '') +
         (classes !== '' ? ` class="${classes}"` : '') +
         `>${content}</span>`

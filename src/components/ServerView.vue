@@ -11,17 +11,17 @@
                     :focus="!hasMessages"
                     name="settings"
                 >
-                    <network-settings :network="network"/>
+                    <network-settings :network="network" />
                 </tabbed-tab>
                 <tabbed-tab
                     v-if="networkConnected"
                     :header="$t('channels')"
                     name="channels"
                 >
-                    <channel-list :network="network"/>
+                    <channel-list :network="network" />
                 </tabbed-tab>
                 <tabbed-tab v-for="item in pluginUiElements" :key="item.id" :header="item.title">
-                    <div :is="item.component" v-bind="item.props"/>
+                    <div :is="item.component" v-bind="item.props" />
                 </tabbed-tab>
             </tabbed-view>
         </div>

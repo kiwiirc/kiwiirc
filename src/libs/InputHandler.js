@@ -46,7 +46,7 @@ export default class InputHandler {
     listenForInput() {
         this.state.$on('input.raw', (input, context = this.defaultContext()) => {
             let lines = input.split('\n');
-            lines.forEach(line => this.processLine(line, context));
+            lines.forEach((line) => this.processLine(line, context));
         });
     }
 
@@ -653,7 +653,7 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             if (typeof formats[key] === 'undefined') {
                 // Some keys such as `special` are arrays of values
                 if (_.isArray(val)) {
-                    val.forEach(v => display(`${key}: ${v}`));
+                    val.forEach((v) => display(`${key}: ${v}`));
                 } else {
                     display(`${key}: ${val}`);
                 }
