@@ -24,7 +24,7 @@
 'kiwi public';
 
 import _ from 'lodash';
-import htmlparser from 'htmlparser2';
+import * as htmlparser from 'htmlparser2';
 import * as Colours from '@/helpers/Colours';
 
 let Vue = require('vue');
