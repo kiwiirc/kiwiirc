@@ -12,8 +12,8 @@
                     <i :class="'fa fa-caret-' + (showPrevTopics ? 'up' : 'down')" />
                 </a>
                 <ul v-if="showPrevTopics">
-                    <li v-for="(topic, idx) in buffer.topics" v-if="topic.trim()" :key="idx">
-                        <span>{{ topic }}</span>
+                    <li v-for="(topicText, idx) in prevTopics" :key="idx">
+                        <span>{{ topicText.trim() }}</span>
                     </li>
                 </ul>
             </div>
@@ -106,6 +106,9 @@ export default {
                     this.buffer.getNetwork().ircClient.setTopic(this.buffer.name, newTopic);
                 }
             },
+        },
+        prevTopics() {
+            return this.buffer.topics.filter(topic => topic.trim());
         },
     },
     methods: {
