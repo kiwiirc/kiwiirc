@@ -2,7 +2,7 @@
     <div class="u-input-text">
         <label v-if="label" :for="inputId">{{ label }}</label>
 
-        <div class="u-input-text-inputs" style="display:flex;">
+        <div class="u-input-text-inputs" style="display: flex;">
             <template v-if="type==='password'">
                 <input
                     :id="inputId"

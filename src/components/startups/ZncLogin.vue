@@ -42,7 +42,7 @@
             </form>
         </template>
         <template v-else-if="network.state !== 'connected'" v-slot:connection>
-            <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;" />
+            <i class="fa fa-spin fa-spinner" style="font-size: 2em; margin-top: 1em;" />
         </template>
     </startup-layout>
 </template>
