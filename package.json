@@ -6,12 +6,13 @@
   "scripts": {
     "build": "npm run translate && vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint:stylelint": "stylelint \"src/**/*.{vue,htm,html,css,sss,less,scss}\"",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "vue-cli-service lint --no-fix",
+    "lint:stylelint": "stylelint \"src/**/*.{vue,htm,html,css,sss,less,scss}\"",
     "dev": "npm run translate && vue-cli-service serve",
     "test": "vue-cli-service test:unit",
-    "translate": "node build/locales.js"
+    "translate": "node build/locales.js",
+    "gendocs": "rm -rf srcdocs/ && jsdoc -c jsdoc.json"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.9.2",
@@ -53,6 +54,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.1.2",
     "html-loader": "^1.1.0",
+    "jsdoc": "^3.6.4",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "postcss-import": "^12.0.1",
