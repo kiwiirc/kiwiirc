@@ -4,5 +4,5 @@ module.exports = {
         indentation: 4,
         'no-descending-specificity': null,
         'declaration-no-important': true,
-    }
+    },
 };

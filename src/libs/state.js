@@ -256,7 +256,7 @@ const state = new Vue({
         },
 
         getNetworkFromBncNetId(bncnetid) {
-            return _.find(this.networks, net => bncnetid === net.connection.bncnetid);
+            return _.find(this.networks, (net) => bncnetid === net.connection.bncnetid);
         },
 
         addNetwork(name, nick, serverInfo) {
@@ -429,7 +429,7 @@ const state = new Vue({
             }
 
             let toMatch = bufferName.toLowerCase();
-            let buffer = _.find(network.buffers, b => b.name.toLowerCase() === toMatch);
+            let buffer = _.find(network.buffers, (b) => b.name.toLowerCase() === toMatch);
 
             if (!buffer) {
                 buffer = this.addBuffer(networkid, bufferName);
@@ -449,7 +449,7 @@ const state = new Vue({
             }
 
             let toMatch = bufferName.toLowerCase();
-            let buffer = _.find(network.buffers, b => b.name.toLowerCase() === toMatch);
+            let buffer = _.find(network.buffers, (b) => b.name.toLowerCase() === toMatch);
 
             return buffer;
         },

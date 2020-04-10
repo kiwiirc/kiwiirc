@@ -2,12 +2,12 @@
     <startup-layout ref="layout"
                     class="kiwi-welcome-simple"
     >
-        <template v-slot:connection v-if="startupOptions.altComponent">
+        <template v-if="startupOptions.altComponent" v-slot:connection>
             <component :is="startupOptions.altComponent" @close="onAltClose" />
         </template>
-        <template v-slot:connection v-else-if="!network || network.state === 'disconnected'">
+        <template v-else-if="!network || network.state === 'disconnected'" v-slot:connection>
             <form class="u-form u-form--big kiwi-welcome-simple-form" @submit.prevent="formSubmit">
-                <h2 v-html="greetingText"/>
+                <h2 v-html="greetingText" />
                 <div v-if="errorMessage" class="kiwi-welcome-simple-error">{{ errorMessage }}</div>
                 <div
                     v-else-if="network && (network.last_error || network.state_error)"
@@ -27,7 +27,7 @@
                     <label
                         class="kiwi-welcome-simple-have-password"
                     >
-                        <input v-model="show_password_box" type="checkbox" >
+                        <input v-model="show_password_box" type="checkbox">
                         <span> {{ $t('password_have') }} </span>
                     </label>
                 </div>
@@ -36,8 +36,8 @@
                      class="kiwi-welcome-simple-input-container"
                 >
                     <input-text
-                        v-focus
                         v-model="password"
+                        v-focus
                         :show-plain-text="true"
                         :label="$t('password')"
                         type="password"
@@ -62,11 +62,11 @@
                     v-html="buttonText"
                 />
 
-                <div v-html="footerText"/>
+                <div v-html="footerText" />
             </form>
         </template>
-        <template v-slot:connection v-else>
-            <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
+        <template v-else v-slot:connection>
+            <i class="fa fa-spin fa-spinner" aria-hidden="true" />
         </template>
     </startup-layout>
 </template>

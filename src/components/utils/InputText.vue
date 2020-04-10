@@ -2,13 +2,13 @@
     <div class="u-input-text">
         <label v-if="label" :for="inputId">{{ label }}</label>
 
-        <div class="u-input-text-inputs" style="display:flex;">
+        <div class="u-input-text-inputs" style="display: flex;">
             <template v-if="type==='password'">
                 <input
+                    :id="inputId"
                     v-model="currentValue"
                     :type="plainTextEnabled && !isEdgeBrowser() ? 'text' : 'password'"
                     :class="{'u-form-input-plaintext' : !isEdgeBrowser() && showPlainText}"
-                    :id="inputId"
                     autocomplete="off"
                     autocorrect="off"
                     autocapitalize="off"
@@ -28,23 +28,23 @@
 
             <input
                 v-else-if="type==='number'"
-                v-model="currentValue"
                 :id="inputId"
+                v-model="currentValue"
                 type="number"
                 class="u-input"
                 @keypress="$emit('keypress', $event)"
             >
             <textarea
                 v-else-if="type==='textarea'"
-                v-model="currentValue"
                 :id="inputId"
+                v-model="currentValue"
                 class="u-input"
                 @keypress="$emit('keypress', $event)"
             />
             <input
                 v-else
-                v-model="currentValue"
                 :id="inputId"
+                v-model="currentValue"
                 autocomplete="off"
                 autocorrect="off"
                 autocapitalize="off"
@@ -54,7 +54,7 @@
             >
 
             <div v-if="$slots.default" class="u-input-text-c">
-                <slot/>
+                <slot />
             </div>
         </div>
     </div>

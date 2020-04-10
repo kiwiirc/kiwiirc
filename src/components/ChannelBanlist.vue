@@ -6,8 +6,8 @@
             <table v-if="banlist.length > 0" class="kiwi-channelbanlist-table">
                 <tr>
                     <th>{{ $t('bans_user') }}</th>
-                    <th/>
-                    <th/>
+                    <th />
+                    <th />
                 </tr>
                 <tr v-for="ban in banlist" :key="ban.banned" :title="'By ' + ban.banned_by">
                     <td class="kiwi-channelbanlist-table-mask">{{ ban.banned }}</td>
@@ -15,7 +15,7 @@
                         {{ (new Date(ban.banned_at * 1000)).toDateString() }}
                     </td>
                     <td class="kiwi-channelbanlist-table-actions">
-                        <i class="fa fa-trash" aria-hidden="true" @click="removeBan(ban.banned)"/>
+                        <i class="fa fa-trash" aria-hidden="true" @click="removeBan(ban.banned)" />
                     </td>
                 </tr>
             </table>
@@ -59,7 +59,7 @@ export default {
         removeBan: function removeBan(mask) {
             let channelName = this.buffer.name;
             this.buffer.getNetwork().ircClient.unban(channelName, mask);
-            this.banlist = this.banlist.filter(ban => ban.banned !== mask);
+            this.banlist = this.banlist.filter((ban) => ban.banned !== mask);
         },
     },
 };

@@ -19,7 +19,7 @@ export default {
             t: 0,
             fontSize: 72,
             font: 'bold ' + 72 + 'px verdana',
-            text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu arcu ipsum. `,
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu arcu ipsum. ',
             animationFrame: null,
         };
     },

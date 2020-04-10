@@ -74,7 +74,7 @@ export default class GlobalApi extends EventEmitter {
 
     // Init any plugins that were added before we were ready
     initPlugins() {
-        pluginsToInit.forEach(plugin => this.initPlugin(plugin));
+        pluginsToInit.forEach((plugin) => this.initPlugin(plugin));
         pluginsToInit = [];
     }
 

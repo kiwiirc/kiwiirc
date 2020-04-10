@@ -2,17 +2,17 @@
     <startup-layout ref="layout" class="kiwi-startbnc">
         <template v-slot:connection>
             <form class="kiwi-startbnc-form" @submit.prevent="startUp">
-                <h2 v-html="greetingText"/>
+                <h2 v-html="greetingText" />
 
                 <div class="kiwi-startbnc-status">{{ statusMessage }}</div>
 
                 <label>
                     <span>{{ $t('username') }}</span>
-                    <input v-model="username" :disabled="loading" type="text" >
+                    <input v-model="username" :disabled="loading" type="text">
                 </label>
                 <label>
                     <span>{{ $t('password') }}</span>
-                    <input v-model="password" :disabled="loading" type="password" >
+                    <input v-model="password" :disabled="loading" type="password">
                 </label>
 
                 <button
@@ -20,8 +20,8 @@
                     type="submit"
                     class="u-button u-button-primary u-submit"
                 >
-                    <span v-if="!loading" v-html="buttonText"/>
-                    <i v-else class="fa fa-spinner fa-spin" aria-hidden="true"/>
+                    <span v-if="!loading" v-html="buttonText" />
+                    <i v-else class="fa fa-spinner fa-spin" aria-hidden="true" />
                 </button>
             </form>
         </template>

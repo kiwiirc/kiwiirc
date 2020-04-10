@@ -769,7 +769,7 @@ function clientMiddleware(state, network) {
         if (command === 'channel list') {
             network.channel_list_state = 'updating';
             // Filter private channels from the channel list
-            let filteredEvent = _.filter(event, o => o.channel !== '*');
+            let filteredEvent = _.filter(event, (o) => o.channel !== '*');
             // Store the channels in channel_list_cache before moving it all to
             // channel_list at the end. This gives a huge performance boost since
             // it doesn't need to be all reactive for every update
@@ -855,7 +855,7 @@ function clientMiddleware(state, network) {
         if (command === 'userlist') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             let hadExistingUsers = Object.keys(buffer.users)
-                .filter(u => u !== network.ircClient.user.nick)
+                .filter((u) => u !== network.ircClient.user.nick)
                 .length > 0;
             let users = [];
             event.users.forEach((user) => {
@@ -1020,7 +1020,7 @@ function clientMiddleware(state, network) {
                     default(targets, mode) {
                         return {
                             mode: mode + (targets[0].param ? ' ' + targets[0].param : ''),
-                            target: targets.map(t => t.target).join(', '),
+                            target: targets.map((t) => t.target).join(', '),
                             nick: event.nick,
                         };
                     },
@@ -1048,7 +1048,7 @@ function clientMiddleware(state, network) {
                         nick: event.nick,
                         username: event.ident,
                         host: event.hostname,
-                        target: targets.map(t => t.target).join(', '),
+                        target: targets.map((t) => t.target).join(', '),
                         text,
                     });
                     state.addMessage(buffer, {

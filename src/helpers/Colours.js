@@ -29,7 +29,7 @@ export function hex2rgb(_hex) {
  */
 export function rgb2hex(rgb) {
     return '#' + ['r', 'g', 'b']
-        .map(key => ('0' + rgb[key].toString(16)).slice(-2))
+        .map((key) => ('0' + rgb[key].toString(16)).slice(-2))
         .join('');
 }
 

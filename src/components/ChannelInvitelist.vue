@@ -47,8 +47,8 @@
                     <tr>
                         <th>{{ $t('invites_user') }}</th>
                         <th>{{ $t('invites_by') }}</th>
-                        <th/>
-                        <th/>
+                        <th />
+                        <th />
                     </tr>
                     <tr v-for="invite in inviteListAccounts" :key="invite.invited">
                         <td class="kiwi-invitelist-table-mask">
@@ -132,7 +132,7 @@ export default {
             return IrcdDiffs.extbanAccount(this.buffer.getNetwork());
         },
         inviteListAccounts() {
-            let accounts = this.inviteList.filter(i => i.invited.indexOf(this.extban) === 0);
+            let accounts = this.inviteList.filter((i) => i.invited.indexOf(this.extban) === 0);
             accounts.sort(inviteListSorter);
             return accounts;
         },
@@ -143,7 +143,7 @@ export default {
             if (!this.supportsAccounts) {
                 invites = this.inviteList;
             } else {
-                invites = this.inviteList.filter(i => i.invited.indexOf(this.extban) !== 0);
+                invites = this.inviteList.filter((i) => i.invited.indexOf(this.extban) !== 0);
             }
 
             invites.sort(inviteListSorter);
@@ -163,7 +163,7 @@ export default {
 
             let extban = this.extban;
             // Find any invite that only consists of the extban and nothing else. Eg. '~a:'
-            return !!this.inviteListAccounts.find(invite => invite.invited === extban + ':');
+            return !!this.inviteListAccounts.find((invite) => invite.invited === extban + ':');
         },
         areWeAnOp() {
             return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
@@ -216,7 +216,7 @@ export default {
         removeInvite(mask) {
             let channelName = this.buffer.name;
             this.buffer.getNetwork().ircClient.removeInvite(channelName, mask);
-            this.inviteList = this.inviteList.filter(invite => invite.invited !== mask);
+            this.inviteList = this.inviteList.filter((invite) => invite.invited !== mask);
         },
         addAccountInvite(accountName) {
             if (!accountName) {

@@ -4,7 +4,8 @@
         'kiwi-container--sidebar-drawn': sidebarState.isDrawn,
         'kiwi-container--sidebar-open': sidebarState.isOpen,
         'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
-    }" class="kiwi-container">
+    }" class="kiwi-container"
+    >
         <template v-if="buffer">
             <div class="kiwi-container-toggledraw-statebrowser" @click.stop="toggleStateBrowser">
                 <div
@@ -19,13 +20,13 @@
                         {{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}
                     </span>
                     <span class="kiwi-container-statebrowser-messagecount-close">
-                        <i class="fa fa-times" aria-hidden="true"/>
+                        <i class="fa fa-times" aria-hidden="true" />
                     </span>
                 </div>
             </div>
-            <container-header :buffer="buffer" :sidebar-state="sidebarState"/>
+            <container-header :buffer="buffer" :sidebar-state="sidebarState" />
 
-            <slot name="before"/>
+            <slot name="before" />
 
             <not-connected
                 v-if="buffer.getNetwork().state !== 'connected' && !buffer.isServer()"
@@ -35,10 +36,10 @@
 
             <div class="kiwi-container-content">
                 <template v-if="buffer.isServer()">
-                    <server-view :network="network"/>
+                    <server-view :network="network" />
                 </template>
                 <template v-else>
-                    <message-list :buffer="buffer"/>
+                    <message-list :buffer="buffer" />
                     <sidebar
                         v-if="buffer.isChannel() /* There are no sidebars for queries yet */"
                         :network="network"
@@ -47,7 +48,7 @@
                     />
                 </template>
 
-                <slot name="after"/>
+                <slot name="after" />
             </div>
         </template>
         <template v-else>

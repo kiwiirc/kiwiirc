@@ -17,8 +17,8 @@
                 class="kiwi-header-options"
             >
                 <div
-                    v-rawElement="plugin.el" v-for="plugin in pluginUiChannelElements"
-                    :key="plugin.id"
+                    v-for="plugin in pluginUiChannelElements" :key="plugin.id"
+                    v-rawElement="plugin.el"
                     class="kiwi-header-option"
                 />
                 <div
@@ -28,7 +28,7 @@
                     class="kiwi-header-option kiwi-header-option-about"
                 >
                     <a :title="$t('more_information')" @click="sidebarState.toggleAbout()">
-                        <i class="fa fa-info" aria-hidden="true"/>
+                        <i class="fa fa-info" aria-hidden="true" />
                     </a>
                 </div>
                 <div
@@ -42,7 +42,7 @@
                         :title="$t('person', {count: Object.keys(buffer.users).length})"
                         @click="sidebarState.toggleNicklist()"
                     >
-                        <i class="fa fa-users" aria-hidden="true"/>
+                        <i class="fa fa-users" aria-hidden="true" />
                         <span>{{ Object.keys(buffer.users).length }}</span>
                     </a>
                 </div>
@@ -56,7 +56,7 @@
                         :title="$t('channel_settings')"
                         @click="sidebarState.toggleBufferSettings()"
                     >
-                        <i class="fa fa-cog" aria-hidden="true"/>
+                        <i class="fa fa-cog" aria-hidden="true" />
                     </a>
                 </div>
                 <div
@@ -64,7 +64,7 @@
                     class="kiwi-header-option kiwi-header-option-unpinsidebar"
                 >
                     <a @click="sidebarState.unpin()">
-                        <i class="fa fa-thumb-tack" aria-hidden="true"/>
+                        <i class="fa fa-thumb-tack" aria-hidden="true" />
                     </a>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 <input-confirm
                     v-if="prompts.closeChannel"
                     :label="$t('prompt_leave_channel')"
-                    :flip_connotation="true"
+                    :flip-connotation="true"
                     class="kiwi-header-prompt"
                     @ok="closeCurrentBuffer"
                     @submit="prompts.closeChannel=false"
@@ -93,7 +93,7 @@
                     {{ buffer.getNetwork().name }}
                 </div>
             </div>
-            <div class="kiwi-header-server-connection" >
+            <div class="kiwi-header-server-connection">
                 <a
                     v-if="buffer.getNetwork().state === 'disconnected'"
                     class="u-button u-button-primary"
@@ -102,7 +102,7 @@
                     {{ $t('connect') }}
                 </a>
                 <span v-else-if="buffer.getNetwork().state === 'connecting'">
-                    <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
+                    <i class="fa fa-spin fa-spinner" aria-hidden="true" />
                     {{ $t('connecting') }}
                 </span>
             </div>
@@ -121,14 +121,14 @@
             </div>
             <div :key="buffer.id" class="kiwi-header-options">
                 <div
-                    v-rawElement="plugin.el"
                     v-for="plugin in pluginUiQueryElements"
                     :key="plugin.id"
+                    v-rawElement="plugin.el"
                     class="kiwi-header-option"
                 />
                 <div class="kiwi-header-option kiwi-header-option-leave">
                     <a @click="closeCurrentBuffer">
-                        <i class="fa fa-times" aria-hidden="true"/>
+                        <i class="fa fa-times" aria-hidden="true" />
                     </a>
                 </div>
             </div>
@@ -141,7 +141,7 @@
             <div class="kiwi-header-options">
                 <div class="kiwi-header-option kiwi-header-option-leave">
                     <a @click="closeCurrentBuffer">
-                        <i class="fa fa-times" aria-hidden="true"/>
+                        <i class="fa fa-times" aria-hidden="true" />
                     </a>
                 </div>
             </div>
@@ -155,13 +155,13 @@
 
             <tabbed-view>
                 <tabbed-tab :header="$t('settings')" :focus="true">
-                    <channel-info :buffer="buffer"/>
+                    <channel-info :buffer="buffer" />
                 </tabbed-tab>
                 <tabbed-tab :header="$t('banned')">
-                    <channel-banlist :buffer="buffer"/>
+                    <channel-banlist :buffer="buffer" />
                 </tabbed-tab>
                 <tabbed-tab :header="$t('notifications')">
-                    <buffer-settings :buffer="buffer"/>
+                    <buffer-settings :buffer="buffer" />
                 </tabbed-tab>
             </tabbed-view>
 
@@ -169,7 +169,7 @@
                 class="u-button u-button-secondary kiwi-header-close-buffersettings"
                 @click="buffer_settings_open=false"
             >
-                <i class="fa fa-caret-up" aria-hidden="true"/>
+                <i class="fa fa-caret-up" aria-hidden="true" />
             </a>
         </div>
     </div>
@@ -495,7 +495,7 @@ export default {
         border-bottom: none;
     }
 
-    .kiwi-header {
+    .kiwi-container .kiwi-header {
         margin-right: 0;
         overflow: visible;
         max-height: none;

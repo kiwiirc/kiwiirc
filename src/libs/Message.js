@@ -63,7 +63,7 @@ export default class Message {
 
         let content = toHtml(blocks, showEmoticons);
 
-        this.mentioned_urls = blocks.filter(block => block.type === 'url').map(block => block.meta.url);
+        this.mentioned_urls = blocks.filter((block) => block.type === 'url').map((block) => block.meta.url);
         this.html = content;
         this.maybeAutoEmbed();
 

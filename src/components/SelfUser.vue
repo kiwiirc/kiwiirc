@@ -2,9 +2,9 @@
     <div class="kiwi-selfuser kiwi-theme-bg">
         <div v-if="!self_user_settings_open" class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">
-                <away-status-indicator :network="network" :user="network.currentUser()"/>
+                <away-status-indicator :network="network" :user="network.currentUser()" />
                 {{ network.nick }}
-                <i class="fa fa-times" aria-hidden="true" @click="closeSelfUser()"/>
+                <i class="fa fa-times" aria-hidden="true" @click="closeSelfUser()" />
                 <i class="fa fa-pencil" aria-hidden="true" @click="openSelfActions()" />
             </span>
             <span class="kiwi-selfuser-host">
@@ -13,7 +13,7 @@
             <div v-if="networkSupportsAway()" class="u-form kiwi-away-checkbox-form">
                 <label class="kiwi-selfuser-away-label">
                     <span>{{ $t('away') }}</span>
-                    <input v-model="awayStatus" type="checkbox" >
+                    <input v-model="awayStatus" type="checkbox">
                 </label>
             </div>
         </div>

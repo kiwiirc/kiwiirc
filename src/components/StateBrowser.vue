@@ -7,7 +7,7 @@
             class="kiwi-statebrowser-appsettings"
             @click="clickAppSettings"
         >
-            <i class="fa fa-cog" aria-hidden="true"/>
+            <i class="fa fa-cog" aria-hidden="true" />
         </div>
 
         <state-browser-usermenu
@@ -17,9 +17,9 @@
 
         <div class="kiwi-statebrowser-tools">
             <div
-                v-rawElement="plugin.el"
                 v-for="plugin in pluginUiElements"
                 :key="plugin.id"
+                v-rawElement="plugin.el"
                 class="kiwi-statebrowser-tool"
             />
         </div>
@@ -74,7 +74,7 @@
         <div v-if="!isRestrictedServer" class="kiwi-statebrowser-newnetwork">
             <a class="u-button u-button-primary" @click="clickAddNetwork">
                 {{ $t('add_network') }}
-                <i class="fa fa-plus" aria-hidden="true"/>
+                <i class="fa fa-plus" aria-hidden="true" />
             </a>
         </div>
     </div>
@@ -118,7 +118,7 @@ export default {
             return !!state.settings.restricted;
         },
         networksToShow: function networksToShow() {
-            return this.networks.filter(net => !net.hidden);
+            return this.networks.filter((net) => !net.hidden);
         },
     },
     created: function created() {

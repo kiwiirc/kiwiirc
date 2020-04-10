@@ -195,7 +195,7 @@ export function dedotObject(confObj, _place) {
  * @param {Object} source The source object from which all properties will be copied from
  */
 export function replaceObjectProps(target, source) {
-    Object.keys(target).forEach(prop => delete target[prop]);
+    Object.keys(target).forEach((prop) => delete target[prop]);
     Object.keys(source).forEach((prop) => { target[prop] = source[prop]; });
 }
 

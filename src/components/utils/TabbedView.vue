@@ -11,7 +11,7 @@
                 @click="setActive(c)"
             >{{ c.header }}</a>
         </div>
-        <slot/>
+        <slot />
     </div>
 </template>
 

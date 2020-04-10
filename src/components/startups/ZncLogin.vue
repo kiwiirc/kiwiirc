@@ -1,8 +1,8 @@
 <template>
     <startup-layout ref="layout" class="kiwi-welcome-znc">
-        <template v-slot:connection v-if="!network || network.state === 'disconnected'">
+        <template v-if="!network || network.state === 'disconnected'" v-slot:connection>
             <form class="u-form u-form--big kiwi-welcome-znc-form" @submit.prevent="formSubmit">
-                <h2 v-html="greetingText"/>
+                <h2 v-html="greetingText" />
 
                 <div
                     v-if="network && (network.last_error || network.state_error)"
@@ -16,21 +16,21 @@
 
                 <input-text
                     v-if="showUser"
-                    :label="$t('username')"
                     v-model="username"
+                    :label="$t('username')"
                     class="kiwi-welcome-znc-nick"
                 />
                 <input-text
                     v-if="showPass"
-                    :label="$t('password')"
                     v-model="password"
+                    :label="$t('password')"
                     class="kiwi-welcome-znc-password"
                     type="password"
                 />
                 <input-text
                     v-if="showNetwork"
-                    :label="$t('network')"
                     v-model="znc_network"
+                    :label="$t('network')"
                     class="kiwi-welcome-znc-channel"
                 />
                 <button
@@ -41,8 +41,8 @@
                 />
             </form>
         </template>
-        <template v-slot:connection v-else-if="network.state !== 'connected'">
-            <i class="fa fa-spin fa-spinner" style="font-size:2em; margin-top:1em;"/>
+        <template v-else-if="network.state !== 'connected'" v-slot:connection>
+            <i class="fa fa-spin fa-spinner" style="font-size: 2em; margin-top: 1em;" />
         </template>
     </startup-layout>
 </template>

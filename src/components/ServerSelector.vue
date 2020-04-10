@@ -20,15 +20,15 @@
 
         <template v-if="showCustom || presetNetworks.length === 0 || !usePreset">
             <input-text
+                v-model="connection.server"
                 v-focus
                 :label="$t('server')"
-                v-model="connection.server"
                 class="kiwi-networksettings-connection-address"
             />
 
             <input-text
-                :label="$t('settings_port')"
                 v-model="connection.port"
+                :label="$t('settings_port')"
                 type="number"
                 class="kiwi-networksettings-connection-port"
             >
@@ -179,7 +179,7 @@ export default {
         },
         importUris(serverList) {
             // [ 'freenode|irc.freenode.net:+6697', 'irc.snoonet.org:6667' ]
-            let servers = serverList.map(s => this.parseFormatted(s));
+            let servers = serverList.map((s) => this.parseFormatted(s));
             this.$set(this, 'presetNetworks', servers);
         },
     },

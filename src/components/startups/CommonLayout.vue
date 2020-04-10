@@ -2,9 +2,10 @@
     <div :class="[
         closing ? 'kiwi-startup-common--closing' : '',
         backgroundImage ? '' : 'kiwi-startup-common--no-bg',
-    ]" :style="backgroundStyle" class="kiwi-startup-common">
+    ]" :style="backgroundStyle" class="kiwi-startup-common"
+    >
         <div class="kiwi-startup-common-section kiwi-startup-common-section-connection">
-            <slot name="connection"/>
+            <slot name="connection" />
         </div>
         <div
             :style="backgroundStyle"

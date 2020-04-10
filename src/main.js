@@ -69,7 +69,7 @@ function getQueryVariable(variable) {
 // and then manually remove them all the time.
 Vue.mixin({
     beforeDestroy: function beforeDestroy() {
-        (this.listeningEvents || []).forEach(fn => fn());
+        (this.listeningEvents || []).forEach((fn) => fn());
     },
     methods: {
         listen: function listen(source, event, fn) {
@@ -273,7 +273,7 @@ function loadPlugins() {
                 scr.src = plugin.url;
             } else {
                 // Treat the plugin as a HTML document and just inject it into the document
-                fetch(plugin.url).then(response => response.text()).then((pluginRaw) => {
+                fetch(plugin.url).then((response) => response.text()).then((pluginRaw) => {
                     let el = document.createElement('div');
                     el.id = 'kiwi_plugin_' + plugin.name.replace(/[ "']/g, '');
                     el.style.display = 'none';
@@ -443,7 +443,7 @@ function startApp() {
     /* eslint-disable no-new */
     new Vue({
         el: '#app',
-        render: h => h(App),
+        render: (h) => h(App),
         i18n: new VueI18Next(i18next),
     });
 
@@ -460,7 +460,7 @@ function showError(err) {
     /* eslint-disable no-new */
     new Vue({
         el: '#app',
-        render: h => h(
+        render: (h) => h(
             StartupError,
             { props: { error: err } },
         ),

@@ -1,9 +1,10 @@
 var path = require('path');
 var fs = require('fs');
+var ora = require('ora')
 var i18next_conv = require('i18next-conv');
 
-var source_path = path.join(__dirname, '../src/res/locales/');
-var dest_path = path.join(__dirname, '../static/locales/');
+var source_path = path.join(__dirname, '../../src/res/locales/');
+var dest_path = path.join(__dirname, '../../static/locales/');
 
 function save(target) {
     return function(result) {
@@ -65,5 +66,8 @@ exports.createJsonFiles = function() {
 };
 
 if (require.main === module) {
+    let spinner = ora('translating languages...')
+    spinner.start()
     exports.createJsonFiles();
+    spinner.succeed();
 }
