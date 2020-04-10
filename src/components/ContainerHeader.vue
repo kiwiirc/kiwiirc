@@ -78,7 +78,7 @@
                 <input-confirm
                     v-if="prompts.closeChannel"
                     :label="$t('prompt_leave_channel')"
-                    :flip_connotation="true"
+                    :flip-connotation="true"
                     class="kiwi-header-prompt"
                     @ok="closeCurrentBuffer"
                     @submit="prompts.closeChannel=false"
