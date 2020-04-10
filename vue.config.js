@@ -29,6 +29,7 @@ module.exports = {
         optimization: {
             splitChunks: {
                 cacheGroups: {
+                    // replace the vendors test so it does not chunk css files
                     vendors: {
                         name: 'vendor',
                         test: (m) => /[\\/]node_modules[\\/]/.test(m.context) && m.constructor.name !== 'CssModule',
@@ -49,6 +50,7 @@ module.exports = {
     },
     chainWebpack: (config) => {
         config.plugin('define').tap((args) => {
+            // eslint-disable-next-line no-underscore-dangle
             args[0].__VERSION__ = JSON.stringify(pkg.version);
             return args;
         });
