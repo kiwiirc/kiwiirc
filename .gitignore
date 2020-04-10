@@ -4,7 +4,7 @@ dist/
 node_modules/
 src/res/locales/available.json
 static/config.local.json
-tests/unit/coverage
+tests/coverage
 
 
 # local env files
