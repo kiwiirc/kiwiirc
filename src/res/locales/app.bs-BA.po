@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2020-04-13 16:36\n"
+"PO-Revision-Date: 2020-04-13 23:21\n"
 
 #: Start
 msgid "start_button"
@@ -75,7 +75,7 @@ msgstr "Šifra"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Server šifra"
 
 #: I have a password
 msgid "password_have"
@@ -151,7 +151,7 @@ msgstr "Pravo ime"
 
 #: Status
 msgid "whois_status"
-msgstr "ugled"
+msgstr "Status"
 
 #: Is available
 msgid "whois_status_available"
@@ -347,7 +347,7 @@ msgstr "Utišaj zvukove"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Sakrij broj nepročitanih poruka"
 
 #: Operator tools
 msgid "operator_tools"
@@ -591,7 +591,7 @@ msgstr "{{count}} dostupnih osoba"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Filtriraj korisnike na kanalu"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Filtriraj kanale"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Nađi više kanala"
 
 #: Change nick
 msgid "change_nick"
