@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2020-04-02 08:48\n"
+"PO-Revision-Date: 2020-04-13 16:36\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Heshtoji tingujt"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Fshihe numrin"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -481,7 +481,7 @@ msgstr "Që të përditësohet lista e kanaleve, klikoni mbi butonin e rifreskim
 msgid "channel_list_nonefound"
 msgstr "S’u gjetën kanale, riprovoni më vonë"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Mirë se vini te Kiwi IRC!"
 
@@ -591,7 +591,7 @@ msgstr "{{count}} vetë këtu"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "filtro përdorues në kanal"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Filtroni kanale"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Gjeni më tepër kanale"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"
