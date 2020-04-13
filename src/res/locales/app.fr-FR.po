@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-04-01 21:42\n"
+"PO-Revision-Date: 2020-04-13 04:49\n"
 
 #: Start
 msgid "start_button"
@@ -387,7 +387,7 @@ msgstr "Filter"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Rafraichir la liste des banis"
+msgstr "Rafraichir la liste des bannis"
 
 #: Banned user
 msgid "bans_user"
@@ -543,7 +543,7 @@ msgstr "Port"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Les autres réseaux  de ce compte ZNC seront affichés dans la liste des réseaux"
+msgstr "Les autres réseaux de ce compte ZNC seront affichés dans la liste des réseaux"
 
 #: Your details
 msgid "settings_your_details"
