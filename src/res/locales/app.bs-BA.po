@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2020-04-13 23:21\n"
+"PO-Revision-Date: 2020-04-13 23:32\n"
 
 #: Start
 msgid "start_button"
@@ -483,7 +483,7 @@ msgstr "Nema pronađenih kanala, molimo pokušajte kasnije"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Dobrodošli na Kiwi IRC!"
+msgstr "Dobrodošli na Kiwi IRC! Izaberite kanal na lijevoj strani."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -539,7 +539,7 @@ msgstr "Informacije servera"
 
 #: Port
 msgid "settings_port"
-msgstr "Luka"
+msgstr "Port"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
