@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-04-13 16:35\n"
+"PO-Revision-Date: 2020-04-13 17:55\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Sesleri kapat"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Okunmamış mesaj sayısını gizle"
 
 #: Operator tools
 msgid "operator_tools"
@@ -591,7 +591,7 @@ msgstr "{{count}} kişi burada"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Kanaldaki kullanıcıları filtrele"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Kanalları Filtrele"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Daha Fazla Kanal Bul"
 
 #: Change nick
 msgid "change_nick"
