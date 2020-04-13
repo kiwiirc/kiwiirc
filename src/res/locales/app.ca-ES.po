@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2020-04-13 17:05\n"
+"PO-Revision-Date: 2020-04-13 17:15\n"
 
 #: Start
 msgid "start_button"
@@ -591,7 +591,7 @@ msgstr "{{count}} usuaris aquí"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Filtrar els usuaris de la sala"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Filtrar sales"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Buscar més sales"
 
 #: Change nick
 msgid "change_nick"
