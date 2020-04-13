@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2020-04-13 23:32\n"
+"PO-Revision-Date: 2020-04-13 23:40\n"
 
 #: Start
 msgid "start_button"
@@ -667,7 +667,7 @@ msgstr "Nema postavljene teme za ovaj kanal"
 
 #: About
 msgid "about"
-msgstr "O"
+msgstr "Više o"
 
 #: Created at {{when}}
 msgid "created_at"
