@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-04-13 05:18\n"
+"PO-Revision-Date: 2020-04-13 05:32\n"
 
 #: Start
 msgid "start_button"
@@ -231,7 +231,7 @@ msgstr "Thème"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "Rafraichir le thème"
 
 #: Theme URL
 msgid "settings_themeurl"
