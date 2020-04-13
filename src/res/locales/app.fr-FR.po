@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-04-01 21:42\n"
+"PO-Revision-Date: 2020-04-13 05:32\n"
 
 #: Start
 msgid "start_button"
@@ -51,7 +51,7 @@ msgstr "Salons"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Accès"
 
 #: Banned Users
 msgid "banned"
@@ -59,7 +59,7 @@ msgstr "Banni(s)"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "Utilisateurs invités"
 
 #: Notifications
 msgid "notifications"
@@ -75,7 +75,7 @@ msgstr "Mot de passe"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Mot de passe serveur"
 
 #: I have a password
 msgid "password_have"
@@ -135,11 +135,11 @@ msgstr "Non"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "Non trouvé."
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "Attention !"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -175,31 +175,31 @@ msgstr "Salon"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "Absent"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "{{count}} semaine"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "{{count}} semaines"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "{{count}} jour"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} days"
+msgstr "{{count}} jours"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "{{count}} heure"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "{{count}} heures"
 
 #: {{count}} minute
 msgid "minute"
@@ -211,11 +211,11 @@ msgstr "{{count}} minutes"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "{{count}} seconde"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "{{count}} secondes"
 
 #: General
 msgid "settings_general"
@@ -223,7 +223,7 @@ msgstr "Paramètres"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "Langue"
 
 #: Theme
 msgid "settings_theme"
@@ -231,7 +231,7 @@ msgstr "Thème"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "Rafraichir le thème"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -387,7 +387,7 @@ msgstr "Filter"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Rafraichir la liste des banis"
+msgstr "Rafraichir la liste des bannis"
 
 #: Banned user
 msgid "bans_user"
@@ -543,7 +543,7 @@ msgstr "Port"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Les autres réseaux  de ce compte ZNC seront affichés dans la liste des réseaux"
+msgstr "Les autres réseaux de ce compte ZNC seront affichés dans la liste des réseaux"
 
 #: Your details
 msgid "settings_your_details"
@@ -651,7 +651,7 @@ msgstr "Afficher les changements de mode"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Formattage enrichi des messages"
+msgstr "Formatage enrichi des messages"
 
 #: Nick colours in the list"
 msgid "side_colours"
@@ -783,7 +783,7 @@ msgstr "Est un opérateur (IRCop)"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Connecté au serveur {{server}} {{info}"
+msgstr "Connecté au serveur {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
