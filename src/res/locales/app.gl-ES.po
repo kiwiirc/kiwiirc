@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2020-04-13 16:36\n"
+"PO-Revision-Date: 2020-04-13 18:30\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Deshabilitar sons"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Ocultar o contador de mensaxes non lidas"
 
 #: Operator tools
 msgid "operator_tools"
@@ -591,7 +591,7 @@ msgstr "{{count}} usuarios aquí"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Filtrar usuarios na canle"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Filtrar canles"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Buscar máis canles"
 
 #: Change nick
 msgid "change_nick"
