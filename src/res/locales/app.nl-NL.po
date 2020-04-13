@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2020-04-02 06:11\n"
+"PO-Revision-Date: 2020-04-13 16:36\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Geluiden dempen"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Aantal ongelezen berichten verbergen"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -481,7 +481,7 @@ msgstr "Klik op de knop voor vernieuwen om de kanaallijst bij te werken"
 msgid "channel_list_nonefound"
 msgstr "Geen kanalen gevonden, probeer het later opnieuw"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Welkom bij Kiwi IRC! Selecteer een kanaal aan de linkerkant."
 
@@ -591,7 +591,7 @@ msgstr "{{count}} personen aanwezig"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Gebruikers in kanaal filteren"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Kanalen filteren"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Meer kanalen zoeken"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"

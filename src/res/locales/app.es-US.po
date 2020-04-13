@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Spanish, United States\n"
 "Language: es_US\n"
-"PO-Revision-Date: 2020-04-02 06:36\n"
+"PO-Revision-Date: 2020-04-13 17:05\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Deshabilitar sonidos"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Ocultar contador de mensajes no leídos"
+msgstr "Ocultar el contador de mensajes no leídos"
 
 #: Operator tools
 msgid "operator_tools"
@@ -481,7 +481,7 @@ msgstr "Clicar el botón Actualizar para actualizar la lista de salas"
 msgid "channel_list_nonefound"
 msgstr "No se encontraron salas, inténtalo de nuevo más tarde"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "¡Bienvenido a Kiwi IRC! Selecciona una sala de la izquierda."
 
@@ -747,7 +747,7 @@ msgstr "Filtrar salas"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Buscar más Salas"
+msgstr "Buscar más salas"
 
 #: Change nick
 msgid "change_nick"

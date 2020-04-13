@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-04-01 21:42\n"
+"PO-Revision-Date: 2020-04-13 16:36\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Soinuak kendu"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Irakurri gabeko mezuen kopurua ezabatu"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -481,7 +481,7 @@ msgstr "Egin klik Berrezi botoian kanalen zerrenda eguneratzeko"
 msgid "channel_list_nonefound"
 msgstr "Ez da kanalarik aurkitu, saiatu berriro geroago"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Ongi Etorria Kiwi IRC-ra! Ezkerreko kanal bat aukeratu."
 
@@ -591,7 +591,7 @@ msgstr "Hemen {{count}} erabiltzaile"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Ragazi erabiltzaileak kanalean"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Iragazi kanalak"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Bilatu kanal gehiago"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"

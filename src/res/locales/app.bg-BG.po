@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-04-01 21:42\n"
+"PO-Revision-Date: 2020-04-13 16:36\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Забрани всички звукови известия"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Скриване на броя на непрочетените съобщения"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -481,7 +481,7 @@ msgstr "Кликнете върху бутона за опресняване, з
 msgid "channel_list_nonefound"
 msgstr "Няма намерени канали, опитайте отново по-късно"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Добре дошли в Kiwi IRC!"
 
@@ -591,7 +591,7 @@ msgstr "{{count}} Потребителя"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Филтриране на юзъри в канала"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Филтър на канал"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Намери повече канали"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"

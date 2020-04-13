@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-04-01 21:42\n"
+"PO-Revision-Date: 2020-04-13 16:36\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Ton aus"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Zähler für neue Nachrichten ausblenden"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -481,7 +481,7 @@ msgstr "Bestätige den Refresh-Button, um die Raumliste zu aktualisieren"
 msgid "channel_list_nonefound"
 msgstr "Keine Räume gefunden, versuche es später noch einmal"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Willkommen bei Kiwi IRC!"
 
@@ -591,7 +591,7 @@ msgstr "{{count}} user hier"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Nutzer im Raum filtern"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Räume filtern"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Finde weitere Räume"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"

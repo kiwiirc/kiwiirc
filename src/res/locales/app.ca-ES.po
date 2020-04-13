@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2020-04-02 06:35\n"
+"PO-Revision-Date: 2020-04-13 17:15\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Deshabilitar el so"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Amagar comptador de missatges no llegits"
+msgstr "Amagar el comptador de missatges no llegits"
 
 #: Operator tools
 msgid "operator_tools"
@@ -481,7 +481,7 @@ msgstr "Fes click al botó Actualitzar per refrescar el llistat de sales"
 msgid "channel_list_nonefound"
 msgstr "No s'han trobat sales, intenta-ho de nou més tard"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Benvingut a Kiwi IRC! Selecciona un canal."
 
@@ -591,7 +591,7 @@ msgstr "{{count}} usuaris aquí"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtrar els usuarios de la sala"
+msgstr "Filtrar els usuaris de la sala"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"

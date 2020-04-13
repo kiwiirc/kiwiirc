@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2020-04-01 21:41\n"
+"PO-Revision-Date: 2020-04-13 16:36\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Utišaj zvukove"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Sakrij broj nepročitanih poruka"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -481,7 +481,7 @@ msgstr "Klikni na osvježi da ponovo učitaš listu kanala"
 msgid "channel_list_nonefound"
 msgstr "Nema pronađenih kanala, molimo pokušajte kasnije"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Dobrodošli na Kiwi IRC!"
 
@@ -591,7 +591,7 @@ msgstr "{{count}} dostupnih osoba"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtriraj korisnike"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Filtriraj kanale"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Nađi više kanala"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"

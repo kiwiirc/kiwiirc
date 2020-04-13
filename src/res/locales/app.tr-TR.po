@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-04-02 06:45\n"
+"PO-Revision-Date: 2020-04-13 17:55\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Sesleri kapat"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Okunmamış mesajları sayısını gizle"
+msgstr "Okunmamış mesaj sayısını gizle"
 
 #: Operator tools
 msgid "operator_tools"
@@ -481,7 +481,7 @@ msgstr "Kanal listesini güncellemek için yenile düğmesine tıklayın"
 msgid "channel_list_nonefound"
 msgstr "Kanal bulunamadı, daha sonra tekrar deneyin."
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Kiwi IRC'ye Hoşgeldiniz! Soldan bir kanal seçin."
 

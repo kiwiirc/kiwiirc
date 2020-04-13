@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2020-04-01 21:41\n"
+"PO-Revision-Date: 2020-04-13 16:35\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Вимкнути звуки"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Приховати лічильних нечитаних повідомлень"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -481,7 +481,7 @@ msgstr "Натисніть кнопку для оновлення списку �
 msgid "channel_list_nonefound"
 msgstr "Каналів не знайдено. Спробуйте знову згодом"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Ласкаво просимо до Kiwi IRC! Оберіть канал зліва."
 
@@ -591,7 +591,7 @@ msgstr "Тут {{count}} людей"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Фільтр користувачів на каналі"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Фільтр каналів"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Знайти більше каналів"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"
