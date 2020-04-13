@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-04-13 05:32\n"
+"PO-Revision-Date: 2020-04-13 16:18\n"
 
 #: Start
 msgid "start_button"
@@ -323,7 +323,7 @@ msgstr "Enter Channel Key"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "Rejoindre {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -367,7 +367,7 @@ msgstr "Advanced Settings"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Monsters be here, only click this button if you know what you are doing"
+msgstr "Des monstres se cachent ici, cliquez sur ce bouton uniquement si vous savez ce que vous faite"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
@@ -375,15 +375,15 @@ msgstr "Enable Advanced Settings"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Danger Zone: Changing some of these settings may break things!"
+msgstr "Zone dangereuse : Changer certains de ces paramètres peut casser des choses !"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "Réinitialiser "
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "Filtre"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -407,51 +407,51 @@ msgstr "Personne n'est banni !"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "Rafraichir la liste des invités"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Invited user"
+msgstr "Utilisateurs invités"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Invited by"
+msgstr "Invité par"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
+msgstr "Rafraichissement de la liste des invités..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Nobody is invited!"
+msgstr "Personne n'est invité !"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "C'est un salon public."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Only invited users can join."
+msgstr "Seuls les utilisateurs invités peuvent joindre ce salon."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Only allow invited users"
+msgstr "Autoriser uniquement les utilisateurs invités"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "Autoriser tout le monde à joindre le salon"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "Seul les utilisateurs enregistrés peuvent joindre le salon"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "Ajouter une invitation"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "(Tout utilisateur enregistré)"
 
 #: Topic
 msgid "channel_topic"
