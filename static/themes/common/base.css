@@ -474,6 +474,10 @@
     background: var(--brand-error);
 }
 
+.kiwi-statebrowser-channel .kiwi-statebrowser-prompt {
+    background-color: var(--comp-statebrowser-bg);
+}
+
 .kiwi-statebrowser-newchannel a {
     border: 1px solid rgba(255, 255, 255, 0.5);
 }

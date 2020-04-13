@@ -157,11 +157,30 @@
                                 {{ buffer.flags.unread > 999 ? "999+": buffer.flags.unread }}
                             </div>
                         </div>
-
-                        <div class="kiwi-statebrowser-channel-leave" @click="closeBuffer(buffer)">
+                        <div
+                            v-if="prompts.closeChannel !== buffer"
+                            class="kiwi-statebrowser-channel-leave"
+                            @click.stop.prevent="showPrompt('closeChannel', buffer)"
+                        >
                             <i class="fa fa-times" aria-hidden="true" />
                         </div>
                     </div>
+                    <div
+                        v-if="prompts.closeChannel === buffer"
+                        class="kiwi-statebrowser-channel-prompt"
+                    >
+                        <i class="fa fa-arrow-right" aria-hidden="true" />
+                    </div>
+                    <transition name="kiwi-statebrowser-prompttrans">
+                        <input-confirm
+                            v-if="prompts.closeChannel === buffer"
+                            :label="$t('prompt_leave_channel')"
+                            :flip-connotation="true"
+                            class="kiwi-statebrowser-prompt"
+                            @ok="closeBuffer(prompts.closeChannel)"
+                            @submit="prompts.closeChannel=null"
+                        />
+                    </transition>
                 </div>
             </div>
         </div>
@@ -192,6 +211,9 @@ export default {
             channel_add_display: false,
             channel_add_input_has_focus: false,
             channel_add_input: '',
+            prompts: {
+                closeChannel: null,
+            },
         };
     },
     computed: {
@@ -247,6 +269,16 @@ export default {
 
             return bufferTools.orderBuffers(filtered);
         },
+    },
+    created() {
+        this.listen(state, 'document.clicked', (e) => {
+            // If clicking anywhere else on the page, close all our prompts
+            if (!this.$el.contains(e.target)) {
+                Object.keys(this.prompts).forEach((prompt) => {
+                    this.prompts[prompt] = null;
+                });
+            }
+        });
     },
     methods: {
         onNewChannelInputFocus() {
@@ -308,6 +340,9 @@ export default {
             setTimeout(() => {
                 this.closeFilterChannel();
             }, 200);
+        },
+        showPrompt(prompt, buffer) {
+            this.prompts[prompt] = buffer;
         },
         closeBuffer(buffer) {
             state.removeBuffer(buffer);
@@ -519,6 +554,49 @@ export default {
     margin-right: 0;
     z-index: 10;
     display: none;
+}
+
+.kiwi-statebrowser-channel-prompt {
+    width: 38px; /* Visualy the same width as a single digit label */
+    margin-right: 0;
+    z-index: 10;
+}
+
+.kiwi-statebrowser-prompt {
+    position: fixed;
+    left: 220px;
+    overflow: hidden;
+    font-weight: 400;
+
+    /* z-index 1 lower than the statebrowser */
+    z-index: 10;
+}
+
+.kiwi-statebrowser-prompt > * {
+    margin-right: 10px;
+}
+
+.kiwi-statebrowser-prompt > *:last-child {
+    margin-right: 0;
+}
+
+.kiwi-statebrowser-prompttrans-enter,
+.kiwi-statebrowser-prompttrans-leave-to {
+    left: -30px; /* hides the creation of the div */
+    height: 0;
+    width: 0;
+}
+
+.kiwi-statebrowser-prompttrans-enter-to,
+.kiwi-statebrowser-prompttrans-leave {
+    left: 220px;
+    height: auto;
+    width: auto;
+}
+
+.kiwi-statebrowser-prompttrans-enter-active,
+.kiwi-statebrowser-prompttrans-leave-active {
+    transition: height 0.5s, width 0.5s;
 }
 
 /* Hovering over the buffer name should show the close icon, but hide labels */
