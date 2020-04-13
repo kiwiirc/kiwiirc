@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-04-13 05:32\n"
+"PO-Revision-Date: 2020-04-13 15:51\n"
 
 #: Start
 msgid "start_button"
@@ -323,7 +323,7 @@ msgstr "Enter Channel Key"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "Rejoindre {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
