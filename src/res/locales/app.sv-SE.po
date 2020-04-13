@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2020-04-01 21:41\n"
+"PO-Revision-Date: 2020-04-13 16:35\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Mute sounds"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide count"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -481,7 +481,7 @@ msgstr "Click the refresh button to update the channel list"
 msgid "channel_list_nonefound"
 msgstr "No channels found, try again later"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Welcome to Kiwi IRC! Select a channel on the left."
 
@@ -591,7 +591,7 @@ msgstr "{{count}} people here"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "filter users in channel"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Filter channels"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find more channels"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"
