@@ -236,6 +236,10 @@ function applyConfigObj(obj, target) {
 
                 Vue.set(target, key, newVal);
             }
+            if (target === state.settings && key === 'emojis') {
+                // dont merge emojis overwrite them
+                Vue.set(target, key, {});
+            }
             applyConfigObj(val, target[key]);
         } else {
             Vue.set(target, key, val);
