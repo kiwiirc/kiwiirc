@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2020-04-13 16:36\n"
+"PO-Revision-Date: 2020-04-14 04:08\n"
 
 #: Start
 msgid "start_button"
@@ -347,7 +347,7 @@ msgstr "Σίγαση των ήχων"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Απόκρυψη αριθμού μη αναγνωσμένων μηνυμάτων"
 
 #: Operator tools
 msgid "operator_tools"
@@ -591,7 +591,7 @@ msgstr "{{count}} άτομα εδώ"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Φιλτράρισμα χρηστών στο κανάλι"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Φιλτράρετε τα Κανάλια"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Βρείτε Περισσότερα Κανάλια"
 
 #: Change nick
 msgid "change_nick"
