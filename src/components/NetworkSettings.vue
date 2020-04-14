@@ -227,7 +227,7 @@ export default {
                 let port = parseInt(url.port, 10);
                 if (Number.isNaN(port)) {
                     port = url.protocol.toLowerCase() === 'wss:' ?
-                        433 :
+                        443 :
                         80;
                 }
 
