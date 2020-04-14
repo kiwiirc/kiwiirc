@@ -371,7 +371,7 @@ export default class BufferState {
             // If running under a bouncer, set it on the server-side too
             let network = this.getNetwork();
             let allowedUpdate = !network ? false : this.isChannel() || this.isQuery();
-            if (allowedUpdate && network.connection.bncbncnetidname) {
+            if (allowedUpdate && network.connection.bncnetid) {
                 network.ircClient.bnc.bufferSeen(
                     network.connection.bncnetid,
                     this.name,
