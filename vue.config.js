@@ -9,7 +9,6 @@ const makeSourceMap = process.argv.indexOf('--nomap') === -1;
 module.exports = {
     publicPath: '',
     assetsDir: 'static/',
-    lintOnSave: false,
     runtimeCompiler: true,
     transpileDependencies: ['irc-framework', 'ip-regex', 'isomorphic-textencoder'],
     productionSourceMap: makeSourceMap,
