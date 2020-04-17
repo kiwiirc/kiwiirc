@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-04-17 09:34\n"
+"PO-Revision-Date: 2020-04-17 09:41\n"
 
 #: Start
 msgid "start_button"
@@ -267,7 +267,7 @@ msgstr "Покажи времето"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Показване на 24h време"
+msgstr "Показване на 24 часов формат"
 
 #: Show emoticons
 msgid "settings_emoticons"
@@ -351,7 +351,7 @@ msgstr "Скриване на броенето на непрочетени съ�
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Оп Инструменти"
+msgstr "Инструменти за оператор"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
@@ -995,7 +995,7 @@ msgstr "Те ще бъдат тук, когато се върнете."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Добави IRC мрежа"
+msgstr "Добавяне на мрежа"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
@@ -1015,7 +1015,7 @@ msgstr "Временно се свържете с тази мрежа"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Запази IRC мрежа"
+msgstr "Запазени мрежи"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
@@ -1047,11 +1047,11 @@ msgstr " {{nick}} се присъедини"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr " {{nick}} те ритна от {{channel}}"
+msgstr " {{nick}} ви изрита от {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr " {{nick}}  беше изхвърлен от  {{channel}} от {{chanop}}"
+msgstr "Изритаха {{nick}} от {{channel}} от {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
@@ -1071,5 +1071,5 @@ msgstr "{{nick}} сега е известен като {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "промени темата на: {{topic}}"
+msgstr "{{nick}} промени темата на: {{topic}}"
 
