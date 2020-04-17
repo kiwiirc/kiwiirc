@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-04-17 09:41\n"
+"PO-Revision-Date: 2020-04-17 09:52\n"
 
 #: Start
 msgid "start_button"
@@ -355,11 +355,11 @@ msgstr "Инструменти за оператор"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Бан маска по подразбиране"
+msgstr "Стандартна маска за забрана"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Причита по подразбиране за KICK"
+msgstr "Стандартна причина за изритване"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
@@ -371,7 +371,7 @@ msgstr "Чудовищата са тук, кликнете само върху �
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Активирайте Разширени настройки"
+msgstr "Включване на разширените настройки"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
@@ -443,7 +443,7 @@ msgstr "Позволяване на всеки да се присъедини"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Само регистрирани потребители могат да влизат"
+msgstr "Само регистрирани потребители могат да се присъединяват"
 
 #: Add invite
 msgid "invite_add_invite"
@@ -459,7 +459,7 @@ msgstr "Тема"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Заключване на канала за изпращане на съобщения."
+msgstr "Модериран чат"
 
 #: Invite only
 msgid "channel_invite"
@@ -467,7 +467,7 @@ msgstr "Само с покана"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Забрана за смяна на Topic"
+msgstr "Само модераторите могат да променят темата"
 
 #: Block messages from outside this channel
 msgid "channel_external"
