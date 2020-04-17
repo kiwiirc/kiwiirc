@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-04-17 09:52\n"
+"PO-Revision-Date: 2020-04-17 09:54\n"
 
 #: Start
 msgid "start_button"
@@ -475,7 +475,7 @@ msgstr "Блокиране на външни съобщения"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Кликнете върху бутона за опресняване, за да актуализирате списъка с канали"
+msgstr "Щракнете върху бутона опресняване, за да се обнови списъка с канали"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
