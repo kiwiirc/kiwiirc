@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-04-17 09:54\n"
+"PO-Revision-Date: 2020-04-17 10:12\n"
 
 #: Start
 msgid "start_button"
@@ -487,15 +487,15 @@ msgstr "Добре дошли в Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Покажи statebrowser"
+msgstr "Показване на statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Скриване на топика"
+msgstr "Скриване на темата"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Покажи топика"
+msgstr "Показване на темата"
 
 #: Channel Settings
 msgid "channel_settings"
@@ -503,11 +503,11 @@ msgstr "Настройки на канала"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Влез в #канал"
+msgstr "Присъединяване към канала"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Не сте свързан"
+msgstr "Не сте свързани"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
@@ -543,7 +543,7 @@ msgstr "Порт"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Други мрежи за този ZNC акаунт"
+msgstr "Други мрежи в този ZNC акаунт ще бъдат вписани в мрежовия списък"
 
 #: Your details
 msgid "settings_your_details"
@@ -563,11 +563,11 @@ msgstr "Енкодинг"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Показване на raw "
+msgstr "Показване необработено"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Директен УебСокет"
+msgstr "Директен уеб сокет"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -615,7 +615,7 @@ msgstr "Настройки за свързване"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "Не можaхме да се свържем с този сървър :("
+msgstr "Не успяхме да се свържем с този сървър :("
 
 #: Connect To Network
 msgid "network_connect"
@@ -651,7 +651,7 @@ msgstr "Показва кога потребителя променя канал
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Допълнтите настройки за съобщения"
+msgstr "Допълнително форматиране на съобщението"
 
 #: Nick colours in the list"
 msgid "side_colours"
@@ -679,19 +679,19 @@ msgstr "Изтъквания"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Никой все още не ви споменал ..."
+msgstr "Още не сте споменати от никого..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "Грешка при стартирането"
+msgstr "Възникна грешка, стартирайки Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Този текст няма информация за контекста. Текстът се използва в application.po. Позиция в файл на ред: 87"
+msgstr "Уверете се, че сте инсталирали правилно Kiwi IRC и конфигурацията може да бъде заредена"
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Премахни {{name}}"
+msgstr "Напускам {{name}}"
 
 #: Your account
 msgid "state_account"
@@ -815,7 +815,7 @@ msgstr "Забрана и изритване от канала"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Моля, посочете канал, към който да се присъедините. напр. / join #example"
+msgstr "Моля, определете канал, към който да се присъедините. напр. /join #example"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
@@ -895,7 +895,7 @@ msgstr "Присъединете се към канал"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Напуснете канал"
+msgstr "Напускам канала"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
