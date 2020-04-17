@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-04-17 09:03\n"
+"PO-Revision-Date: 2020-04-17 09:12\n"
 
 #: Start
 msgid "start_button"
@@ -259,7 +259,7 @@ msgstr "Показване на списъка за автоматично до�
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Настойки за Съобщенията"
+msgstr "Съобщения в чата"
 
 #: Show timestamps
 msgid "settings_timestamps"
@@ -271,11 +271,11 @@ msgstr "Показване на 24h време"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Покажи емотикони"
+msgstr "Показване на емотикони"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Блокирай нови лични съобщения"
+msgstr "Блокиране на нови лични съобщения"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -331,7 +331,7 @@ msgstr "Кога да ме известява"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "При всяко съобщение"
+msgstr "Всички съобщения"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
@@ -379,7 +379,7 @@ msgstr "Опасна зона: Промяната на някои от тези 
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Рестартиране"
+msgstr "Първоначалност"
 
 #: Filter
 msgid "settings_advanced_filter"
@@ -387,35 +387,35 @@ msgstr "Филтриране"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Опресняване на Бан листата"
+msgstr "Опресняване на списъка със забранени"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Списък с банове"
+msgstr "Забранен потребител"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Изгонен от"
+msgstr "Има забрана от"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Опресняване на Бан листата"
+msgstr "Опресняване на списъка със забранени..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Все още няма баннати потребители"
+msgstr "Няма потребители със забрана!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Презареди листа с поканите"
+msgstr "Опресняване на списъка с поканите"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Поканени потребители"
+msgstr "Поканен потребител"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Поканен от"
+msgstr "Има покана от"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
@@ -423,7 +423,7 @@ msgstr "Обновяване на листа с покани"
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Никой не е поканен!"
+msgstr "Няма поканени!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
