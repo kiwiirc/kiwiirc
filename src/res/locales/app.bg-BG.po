@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-04-17 08:54\n"
+"PO-Revision-Date: 2020-04-17 09:03\n"
 
 #: Start
 msgid "start_button"
@@ -111,19 +111,19 @@ msgstr "Влизане..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Неправилно вписване"
+msgstr "Невалидно вписване"
 
 #: Search...
 msgid "do_search"
-msgstr "Търси..."
+msgstr "Търсене..."
 
 #: OK
 msgid "ok"
-msgstr "ОК"
+msgstr "Окей"
 
 #: Cancel
 msgid "cancel"
-msgstr "Откажи"
+msgstr "Отказ"
 
 #: Yes
 msgid "yes"
@@ -143,7 +143,7 @@ msgstr "Внимание!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "Това ще затвори всички разговори в Уебчата. Наистина ли искате да затворите този прозорец?"
+msgstr "Това ще затвори всички разговори в Kiwi IRC. Наистина ли искате да затворите този прозорец?"
 
 #: Real name
 msgid "whois_realname"
@@ -159,19 +159,19 @@ msgstr "на линия"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Изпрати съобщение"
+msgstr "Изпращане на съобщение"
 
 #: More information
 msgid "more_information"
-msgstr "Повече инфомация"
+msgstr "Още информация"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Добави в игнора"
+msgstr "Игнориране на потребителя"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Автоматично влизане в канали"
+msgstr "Канал"
 
 #: Away
 msgid "away"
@@ -179,27 +179,27 @@ msgstr "Далеч"
 
 #: {{count}} week
 msgid "week"
-msgstr "седмица"
+msgstr "{{count}} седмица"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "седмици"
+msgstr "{{count}} седмици"
 
 #: {{count}} day
 msgid "day"
-msgstr "ден"
+msgstr "{{count}} ден"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "дни"
+msgstr "{{count}} дни"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "час"
+msgstr "{{count}} час"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "часа"
+msgstr "{{count}} часа"
 
 #: {{count}} minute
 msgid "minute"
