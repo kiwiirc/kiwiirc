@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-04-17 09:12\n"
+"PO-Revision-Date: 2020-04-17 09:15\n"
 
 #: Start
 msgid "start_button"
@@ -431,15 +431,15 @@ msgstr "Това е публичен канал."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Само поканени потребители могат да влязат."
+msgstr "Само поканени потребители могат да се присъединят."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Разрешено само за поканени потребители"
+msgstr "Позволено само за поканени потребители"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Позволи на всеки да влиза "
+msgstr "Позволяване на всеки да се присъедини"
 
 #: Only registered users can join
 msgid "invite_registered_only"
@@ -447,7 +447,7 @@ msgstr "Само регистрирани потребители могат да
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Добави покана"
+msgstr "Добавяне на покана"
 
 #: (Any registered user)
 msgid "invite_any_registered"
@@ -455,7 +455,7 @@ msgstr "(Всеки регистриран потребител)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Темата на деня"
+msgstr "Тема"
 
 #: Moderated chat
 msgid "channel_moderated"
@@ -519,7 +519,7 @@ msgstr "Наистина ли искате  да напуснете канала
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Изпрати съобщение.... "
+msgstr "Изпращане на съобщение..."
 
 #: Loading {{url}}...
 msgid "media_loading"
