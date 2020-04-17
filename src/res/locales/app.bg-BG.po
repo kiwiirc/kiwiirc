@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-04-17 10:12\n"
+"PO-Revision-Date: 2020-04-17 10:28\n"
 
 #: Start
 msgid "start_button"
@@ -927,7 +927,7 @@ msgstr "изпращане на сурова команда към IRC сърв�
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Изгонете някого от канала"
+msgstr "Изритайте някого от канала"
 
 #: Clear all messages from this window
 msgid "command_clear"
@@ -943,7 +943,7 @@ msgstr "Прекъснете връзката с IRC сървъра"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Свържете се с нова IRC мрежа "
+msgstr "Свърване към нова IRC мрежа "
 
 #: Request information on somebody
 msgid "command_whois"
