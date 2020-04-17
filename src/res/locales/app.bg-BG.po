@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-04-13 16:36\n"
+"PO-Revision-Date: 2020-04-17 08:54\n"
 
 #: Start
 msgid "start_button"
@@ -23,7 +23,7 @@ msgstr "Добре дошли в Kiwi IRC! "
 
 #: Close
 msgid "close"
-msgstr "Затвори"
+msgstr "Затваряне"
 
 #: Connect
 msgid "connect"
@@ -31,7 +31,7 @@ msgstr "Свързване"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Свързване..."
+msgstr "Свързва се..."
 
 #: Connected
 msgid "connected"
@@ -43,7 +43,7 @@ msgstr "Настройки"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Настройки"
+msgstr "Настройки на Kiwi"
 
 #: Channels
 msgid "channels"
@@ -55,7 +55,7 @@ msgstr "Достъп"
 
 #: Banned Users
 msgid "banned"
-msgstr "Изгонени"
+msgstr "Потребители със забрана"
 
 #: Invited Users
 msgid "invited"
@@ -75,7 +75,7 @@ msgstr "Парола"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Парола на сървъра"
 
 #: I have a password
 msgid "password_have"
@@ -347,7 +347,7 @@ msgstr "Забрани всички звукови известия"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Скриване на броенето на непрочетени съобщения"
 
 #: Operator tools
 msgid "operator_tools"
@@ -591,7 +591,7 @@ msgstr "{{count}} Потребителя"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Филтриране на потребителите в канала"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +747,7 @@ msgstr "Филтър на канал"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Намиране на още канали"
 
 #: Change nick
 msgid "change_nick"
