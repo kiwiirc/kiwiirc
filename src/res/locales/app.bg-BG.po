@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-04-17 09:15\n"
+"PO-Revision-Date: 2020-04-17 09:34\n"
 
 #: Start
 msgid "start_button"
@@ -527,7 +527,7 @@ msgstr "Зареждане на  {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Зареждане на предишни"
+msgstr "Зареждане на предишните съобщения"
 
 #: Unread Messages
 msgid "unread_messages"
@@ -535,7 +535,7 @@ msgstr "Непрочетени съобщения"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Мрежови настройки"
+msgstr "Подробности за сървъра"
 
 #: Port
 msgid "settings_port"
@@ -547,7 +547,7 @@ msgstr "Други мрежи за този ZNC акаунт"
 
 #: Your details
 msgid "settings_your_details"
-msgstr "Лична информация"
+msgstr "Вашите данни"
 
 #: Nickname
 msgid "settings_nickname"
@@ -579,15 +579,15 @@ msgstr "Опасна зона"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Премахни тази мрежа"
+msgstr "Премахване на мрежата"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} Потребителя"
+msgstr "{{count}} човек тук"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "{{count}} Потребителя"
+msgstr "{{count}} души тук"
 
 #: Filter users in channel
 msgid "filter_users"
@@ -595,11 +595,11 @@ msgstr "Филтриране на потребителите в канала"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "влезте отново за да чатите в {{channel}}"
+msgstr "Свържете се пак, за да се присъедините към {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Влезте отново в  {{network}} за да  общувате отново"
+msgstr "Свържете се пак в {{network}}, за да започнете да говорите"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
@@ -619,11 +619,11 @@ msgstr "Не можaхме да се свържем с този сървър :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Свържете се към мрежата"
+msgstr "Свързване към мрежата"
 
 #: Close options
 msgid "side_close"
-msgstr "Затвори настройките"
+msgstr "Затваряне на опциите"
 
 #: Channel options
 msgid "side_options"
@@ -631,11 +631,11 @@ msgstr "Опции на канала"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Твойте настройки"
+msgstr "Вашите настройки"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Показва кога влизат потребители в канала"
+msgstr "Показва кога хората се присъединяват"
 
 #: Show when channel topic changes
 msgid "side_topics"
@@ -675,7 +675,7 @@ msgstr "Създаден на {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Акценти"
+msgstr "Изтъквания"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
@@ -707,7 +707,7 @@ msgstr "Забрани"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "Все още няма добавени мрежи тук."
+msgstr "Тук още няма мрежи."
 
 #: Add one?
 msgid "state_add"
@@ -731,15 +731,15 @@ msgstr "Няма мрежа"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Настройване на IRC мрежа"
+msgstr "Конфигуриране на мрежата"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Не сте свързан"
+msgstr "Няма свързване."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Влез в нов #канал"
+msgstr "Влезте в новия #канал"
 
 #: Filter Channels
 msgid "filter_channels"
@@ -759,7 +759,7 @@ msgstr "Въведете нов прякор..."
 
 #: This is you!
 msgid "user_you"
-msgstr "Това си ти!"
+msgstr "Това сте вие!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -779,7 +779,7 @@ msgstr "Е на линия за да ви помогне"
 
 #: Is an operator
 msgid "user_op"
-msgstr "Оператор"
+msgstr "Е оператор"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
@@ -791,7 +791,7 @@ msgstr "Използва защитена връзка: SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "Канали в които е: {{channels}}"
+msgstr "В каналите: {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -803,15 +803,15 @@ msgstr "Нормален Потребител"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Ритни от канала"
+msgstr "Изритване от канала"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Бан от канал"
+msgstr "Забрана от канала"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Забрани и премахни от канала"
+msgstr "Забрана и изритване от канала"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -899,7 +899,7 @@ msgstr "Напуснете канал"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Напуснете, след което отново се присъединете към канал"
+msgstr "Напуснете и пак се включете към канала"
 
 #: Change your nickname
 msgid "command_nick"
@@ -975,7 +975,7 @@ msgstr "Престани да игнорираш някого"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Завърти заровете"
+msgstr "Врътнете заровете"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
@@ -983,11 +983,11 @@ msgstr "Разгъва {{sides}} зарове и получавате {{number}}
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Твоят IRC клиент"
+msgstr "Вашият IRC клиент."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Добави своя мрежа. Влез в твоите канали."
+msgstr "Добавете мрежите си. Присъединете се към каналите си."
 
 #: They will be here when you come back.
 msgid "personal_return"
