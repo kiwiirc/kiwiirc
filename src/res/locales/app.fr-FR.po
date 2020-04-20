@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-04-20 00:22\n"
+"PO-Revision-Date: 2020-04-20 00:51\n"
 
 #: Start
 msgid "start_button"
@@ -371,7 +371,7 @@ msgstr "Des monstres se cachent ici, cliquez sur ce bouton uniquement si vous sa
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "Activer les paramètres avancés"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
@@ -475,11 +475,11 @@ msgstr "Bloquer les messages envoyés depuis l'extérieur"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to update the channel list"
+msgstr "Cliquez sur le bouton rafraichir pour mettre à jour la liste des salons"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, try again later"
+msgstr "Aucun salon trouvé, réessayez plus tard"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
@@ -491,15 +491,15 @@ msgstr "Afficher le navigateur de statut"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "Cacher le thème"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "Montrer le thème"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "Paramètres du salon"
 
 #: Join Channel
 msgid "container_join"
