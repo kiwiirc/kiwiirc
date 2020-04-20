@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-04-20 00:51\n"
+"PO-Revision-Date: 2020-04-20 01:02\n"
 
 #: Start
 msgid "start_button"
@@ -515,7 +515,7 @@ msgstr "Discussion privée avec {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "Quitter le salon ?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -567,7 +567,7 @@ msgstr "Messages de débug"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "WebSocket direct"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -591,7 +591,7 @@ msgstr "{{count}} membres ici"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Filtrer les utilisateurs du salon"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -607,7 +607,7 @@ msgstr "Reconnectez-vous pour parler à {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "You are not currently connected!"
+msgstr "Vous n'êtes pas connecté actuellement !"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -615,11 +615,11 @@ msgstr "Paramètres de connexion"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "We couldn't connect to that server :("
+msgstr "Nous ne pouvons pas nous connecter à ce serveur :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "Connexion au réseau"
 
 #: Close options
 msgid "side_close"
@@ -663,15 +663,15 @@ msgstr "Pas de messages"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "There is no topic for this channel"
+msgstr "Il n'y a pas de thème pour ce salon"
 
 #: About
 msgid "about"
-msgstr "About"
+msgstr "À propos"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Created at {{when}}"
+msgstr "Créé le {{when}}"
 
 #: Highlights
 msgid "highlights"
@@ -679,7 +679,7 @@ msgstr "Highlights"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nobody has mentioned you yet..."
+msgstr "Personne ne vous a mentionné pour le moment ..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -719,15 +719,15 @@ msgstr "Réseaux disponibles"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "Ajouter un réseau"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "Nouveau réseau"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "Aucun réseau"
 
 #: Configure network
 msgid "state_configure"
@@ -743,11 +743,11 @@ msgstr "Rejoindre #salon"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "Filtrer les salons"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Trouver plus de salons"
 
 #: Change nick
 msgid "change_nick"
@@ -755,11 +755,11 @@ msgstr "Changer de pseudo"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "Entrer votre nouveau pseudo..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "C'est vous !"
 
 #: Account name: {{user}}
 msgid "user_account"
