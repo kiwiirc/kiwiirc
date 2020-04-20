@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-04-13 16:36\n"
+"PO-Revision-Date: 2020-04-20 01:12\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Paramètres"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Paramètres Kiwi"
 
 #: Channels
 msgid "channels"
@@ -239,7 +239,7 @@ msgstr "URL du thème"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "Disposition des messages"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -247,7 +247,7 @@ msgstr "Caractères monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "Utiliser Kiwi comme client IRC par défaut"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -319,7 +319,7 @@ msgstr "Envoyer message"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Enter Channel Key"
+msgstr "Entrer le mot de passe du salon"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -347,7 +347,7 @@ msgstr "Désactiver son"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Cacher le compteur de messages non lus"
 
 #: Operator tools
 msgid "operator_tools"
@@ -363,7 +363,7 @@ msgstr "Motif d'éjection par défaut"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "Paramètres avancés"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
@@ -371,7 +371,7 @@ msgstr "Des monstres se cachent ici, cliquez sur ce bouton uniquement si vous sa
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "Activer les paramètres avancés"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
@@ -475,11 +475,11 @@ msgstr "Bloquer les messages envoyés depuis l'extérieur"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to update the channel list"
+msgstr "Cliquez sur le bouton rafraichir pour mettre à jour la liste des salons"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, try again later"
+msgstr "Aucun salon trouvé, réessayez plus tard"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
@@ -491,15 +491,15 @@ msgstr "Afficher le navigateur de statut"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "Cacher le thème"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "Montrer le thème"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "Paramètres du salon"
 
 #: Join Channel
 msgid "container_join"
@@ -515,7 +515,7 @@ msgstr "Discussion privée avec {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "Quitter le salon ?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -567,7 +567,7 @@ msgstr "Messages de débug"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "WebSocket direct"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -591,7 +591,7 @@ msgstr "{{count}} membres ici"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Filtrer les utilisateurs du salon"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -607,7 +607,7 @@ msgstr "Reconnectez-vous pour parler à {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "You are not currently connected!"
+msgstr "Vous n'êtes pas connecté actuellement !"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -615,11 +615,11 @@ msgstr "Paramètres de connexion"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "We couldn't connect to that server :("
+msgstr "Nous ne pouvons pas nous connecter à ce serveur :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "Connexion au réseau"
 
 #: Close options
 msgid "side_close"
@@ -663,15 +663,15 @@ msgstr "Pas de messages"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "There is no topic for this channel"
+msgstr "Il n'y a pas de thème pour ce salon"
 
 #: About
 msgid "about"
-msgstr "About"
+msgstr "À propos"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Created at {{when}}"
+msgstr "Créé le {{when}}"
 
 #: Highlights
 msgid "highlights"
@@ -679,7 +679,7 @@ msgstr "Highlights"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nobody has mentioned you yet..."
+msgstr "Personne ne vous a mentionné pour le moment ..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -719,15 +719,15 @@ msgstr "Réseaux disponibles"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "Ajouter un réseau"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "Nouveau réseau"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "Aucun réseau"
 
 #: Configure network
 msgid "state_configure"
@@ -743,11 +743,11 @@ msgstr "Rejoindre #salon"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "Filtrer les salons"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Trouver plus de salons"
 
 #: Change nick
 msgid "change_nick"
@@ -755,11 +755,11 @@ msgstr "Changer de pseudo"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "Entrer votre nouveau pseudo..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "C'est vous !"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -815,19 +815,19 @@ msgstr "Bannir et éjecter du salon"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Please specify a channel to join. eg /join #example"
+msgstr "Merci de spécifier un salon à joindre. ex. /join #exemple"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "Le pseudo {{nick}} est déjà utilisé !"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "Vous devez entrer un nouveau pseudo"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "Le pseudo ne doit pas commencer par un chiffre"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
