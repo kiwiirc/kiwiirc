@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-04-13 16:36\n"
+"PO-Revision-Date: 2020-04-20 00:22\n"
 
 #: Start
 msgid "start_button"
@@ -43,7 +43,7 @@ msgstr "Paramètres"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Paramètres Kiwi"
 
 #: Channels
 msgid "channels"
@@ -239,7 +239,7 @@ msgstr "URL du thème"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "Disposition des messages"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -247,7 +247,7 @@ msgstr "Caractères monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "Utiliser Kiwi comme client IRC par défaut"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -319,7 +319,7 @@ msgstr "Envoyer message"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Enter Channel Key"
+msgstr "Entrer le mot de passe du salon"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -347,7 +347,7 @@ msgstr "Désactiver son"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Cacher le compteur de messages non lus"
 
 #: Operator tools
 msgid "operator_tools"
@@ -363,7 +363,7 @@ msgstr "Motif d'éjection par défaut"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "Paramètres avancés"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
