@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-04-20 05:20\n"
+"PO-Revision-Date: 2020-04-20 07:52\n"
 
 #: Start
 msgid "start_button"
@@ -147,7 +147,7 @@ msgstr "KiwiIRC-elkarrizketa guztiak itxiko dira. Segurua leiho hau itxi nahi du
 
 #: Real name
 msgid "whois_realname"
-msgstr "Izen erreala"
+msgstr "Benetako izena"
 
 #: Status
 msgid "whois_status"
@@ -315,7 +315,7 @@ msgstr "Zer dira Aliasak"
 
 #: Send Message
 msgid "send_message"
-msgstr "Mezua bidaltzea"
+msgstr "Mezua bidali"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
@@ -519,7 +519,7 @@ msgstr "Kanala utzi nahi duzu?"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Mezua bidaltzea..."
+msgstr "Mezua bidali..."
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -587,7 +587,7 @@ msgstr "Hemen {{count}} erabiltzaile"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "Hemen {{count}} erabiltzaile"
+msgstr " {{count}} erabiltzaile"
 
 #: Filter users in channel
 msgid "filter_users"
