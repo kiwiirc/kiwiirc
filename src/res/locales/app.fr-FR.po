@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-04-20 01:02\n"
+"PO-Revision-Date: 2020-04-20 01:12\n"
 
 #: Start
 msgid "start_button"
@@ -815,19 +815,19 @@ msgstr "Bannir et éjecter du salon"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Please specify a channel to join. eg /join #example"
+msgstr "Merci de spécifier un salon à joindre. ex. /join #exemple"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "Le pseudo {{nick}} est déjà utilisé !"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "Vous devez entrer un nouveau pseudo"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "Le pseudo ne doit pas commencer par un chiffre"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
