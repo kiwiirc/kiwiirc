@@ -236,7 +236,18 @@ function applyConfigObj(obj, target) {
 
                 Vue.set(target, key, newVal);
             }
-            applyConfigObj(val, target[key]);
+            let overwrite = '_overwrite';
+            if (typeof key === 'string' && key.endsWith(overwrite)) {
+                // overwrite objects when the key ends in _overwrite
+                let newKey = key.substr(0, key.length - overwrite.length);
+                let newVal = _.isArray(val) ?
+                    [] :
+                    {};
+                Vue.set(target, newKey, newVal);
+                applyConfigObj(val, target[newKey]);
+            } else {
+                applyConfigObj(val, target[key]);
+            }
         } else {
             Vue.set(target, key, val);
         }
