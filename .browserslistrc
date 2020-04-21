@@ -1,3 +1,8 @@
 > 1%
-last 2 versions
-not ie <= 8
+last 5 years
+ie 11
+iOS >= 9
+Safari >= 9
+firefox >= 38
+chrome >= 40
+edge >= 12
