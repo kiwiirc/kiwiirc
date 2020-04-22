@@ -36,6 +36,7 @@
                             <media-viewer
                                 :url="mediaviewerUrl"
                                 :component="mediaviewerComponent"
+                                :component-props="mediaviewerComponentProps"
                                 :is-iframe="mediaviewerIframe"
                                 class="kiwi-main-mediaviewer"
                                 @close="$state.$emit('mediaviewer.hide', { source: 'user' });"
@@ -108,6 +109,7 @@ export default {
             mediaviewerOpen: false,
             mediaviewerUrl: '',
             mediaviewerComponent: null,
+            mediaviewerComponentProps: {},
             mediaviewerIframe: false,
             themeUrl: '',
             sidebarState: new SidebarState(),
@@ -238,6 +240,7 @@ export default {
 
                 this.mediaviewerUrl = opts.url;
                 this.mediaviewerComponent = opts.component;
+                this.mediaviewerComponentProps = opts.componentProps;
                 this.mediaviewerIframe = opts.iframe;
                 this.mediaviewerOpen = true;
             });
