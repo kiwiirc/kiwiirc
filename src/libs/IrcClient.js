@@ -28,6 +28,7 @@ export function create(state, network) {
         version: null,
         auto_reconnect: false,
         encoding: network.connection.encoding,
+        message_max_length: 350,
     };
 
     let ircClient = new Irc.Client(clientOpts);
