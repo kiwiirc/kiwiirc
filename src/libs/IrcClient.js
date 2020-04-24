@@ -203,6 +203,18 @@ function clientMiddleware(state, network) {
     };
 
     function rawEventsHandler(command, event, rawLine, client, next) {
+        // Allow plugins to override raw IRC events
+        let eventObj = { ...event, raw: rawLine, handled: false };
+        state.$emit('irc.raw', command, eventObj, network);
+        if (eventObj.handled) {
+            return;
+        }
+
+        state.$emit('irc.raw.' + command, command, eventObj, network);
+        if (eventObj.handled) {
+            return;
+        }
+
         if (command === '002') {
             // Your host is server.example.net, running version InspIRCd-2.0
             let param = event.params[1] || '';
@@ -211,9 +223,6 @@ function clientMiddleware(state, network) {
                 m[1] :
                 '';
         }
-
-        state.$emit('irc.raw', command, event, network);
-        state.$emit('irc.raw.' + command, command, event, network);
 
         // SASL failed auth
         if (command === '904') {
