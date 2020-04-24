@@ -92,6 +92,25 @@ export function create(state, network) {
         originalIrcClientConnect.apply(ircClient, args);
     };
 
+    // Overload the raw() function so that we can emit outgoing IRC messages to plugins
+    let originalIrcClientRaw = ircClient.raw;
+    ircClient.raw = function raw(...args) {
+        let message = null;
+
+        if (args[0] instanceof Irc.Message) {
+            message = args[0];
+        } else {
+            let rawString = ircClient.rawString(...args);
+            message = Irc.ircLineParser(rawString);
+        }
+
+        let eventObj = { network, message, handled: false };
+        state.$emit('ircout', eventObj);
+        if (!eventObj.handled) {
+            originalIrcClientRaw.apply(ircClient, [message]);
+        }
+    };
+
     ircClient.on('raw', (event) => {
         if (!network.setting('show_raw') && !state.setting('showRaw')) {
             return;
