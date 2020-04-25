@@ -20,7 +20,7 @@
             :src="url"
             class="kiwi-mediaviewer-iframe"
         />
-        <component v-else-if="component" :is="component" :component-props="componentProps"/>
+        <component :is="component" v-else-if="component" :component-props="componentProps" />
         <div v-else :key="url" class="kiwi-mediaviewer-embedly">
             <a
                 ref="embedlyLink"
