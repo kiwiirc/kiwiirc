@@ -1,7 +1,7 @@
 /** @module */
 
+import Vue from 'vue';
 import _ from 'lodash';
-import * as Misc from '@/helpers/Misc';
 import { def } from './common';
 import batchedAdd from '../batchedAdd';
 
@@ -14,7 +14,7 @@ export default class BufferState {
         this.id = nextBufferId++;
         this.networkid = networkid;
         this.name = name;
-        this.topic = '';
+        this.topics = [];
         this.key = '';
         this.joined = false;
         this.enabled = true;
@@ -28,12 +28,23 @@ export default class BufferState {
             channel_badkey: false,
             chathistory_available: true,
             requested_modes: false,
+            requested_banlist: false,
+            is_requesting_chathistory: false,
         };
         this.settings = { };
         this.last_read = 0;
         this.active_timeout = null;
         this.message_count = 0;
         this.current_input = '';
+        this.input_history = [];
+        this.input_history_pos = 0;
+        this.show_input = true;
+
+        // Counter for chathistory requests. While this value is 0, it means that this buffer is
+        // still loading messages
+        this.chathistory_request_count = 0;
+
+        Vue.observable(this);
 
         // Some non-enumerable properties (vues $watch won't cover these properties)
         def(this, 'state', state, false);
@@ -43,12 +54,64 @@ export default class BufferState {
             networkid: this.networkid,
             buffer: this.name,
             messages: [],
+            messageIds: Object.create(null),
         };
         this.messageDict.push(messagesObj);
         def(this, 'messagesObj', messagesObj, false);
 
         def(this, 'addMessageBatch', createMessageBatch(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
+
+        // poll who to update away status if away-notify is not enabled
+        if (this.isChannel()) {
+            maybeStartWhoLoop(this);
+        }
+
+        // When the network re-connects, we reset the chathistory request counter.
+        // This will make the `getLoadingState()` stay as 'loading' while the chathistory reloads.
+        function onNetworkConnecting(event) {
+            if (event.network === this.getNetwork()) {
+                this.chathistory_request_count = 0;
+            }
+        }
+
+        function onNetworkMotd(event, network) {
+            if (network === this.getNetwork() && this.isQuery()) {
+                this.requestLatestScrollback();
+            }
+        }
+
+        // Clean up the previous event and itself when the buffer is closed.
+        function onBufferClose(event) {
+            if (event.buffer === this) {
+                this.state.$off('network.connecting', onNetworkConnectingBound);
+                this.state.$off('buffer.close', onBufferCloseBound);
+            }
+        }
+
+        const onNetworkConnectingBound = onNetworkConnecting.bind(this);
+        const onBufferCloseBound = onBufferClose.bind(this);
+        const onNetworkMotdBound = onNetworkMotd.bind(this);
+
+        state.$on('network.connecting', onNetworkConnectingBound);
+        state.$on('buffer.close', onBufferCloseBound);
+        state.$on('irc.motd', onNetworkMotdBound);
+
+        if (this.isQuery() && this.getNetwork().ircClient.chathistory.isSupported()) {
+            // Get PM message histories, while channel buffers request it after their nicklist
+            // has been received
+            this.requestLatestScrollback();
+        }
+    }
+
+    get topic() {
+        return this.topics.length === 0 ?
+            '' :
+            this.topics[this.topics.length - 1];
+    }
+
+    set topic(newVal) {
+        this.topics.push(newVal);
     }
 
     getNetwork() {
@@ -64,6 +127,11 @@ export default class BufferState {
         return bufMessages ?
             bufMessages.messages :
             [];
+    }
+
+    clearMessages() {
+        this.messagesObj.messages.splice(0, this.messagesObj.messages.length);
+        this.messagesObj.messageIds = Object.create(null);
     }
 
     isServer() {
@@ -112,7 +180,7 @@ export default class BufferState {
 
         let modes = userBufferInfo.modes;
         let opModes = ['Y', 'y', 'q', 'a', 'o', 'h'];
-        let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
+        let hasOp = _.find(modes, (mode) => opModes.indexOf(mode.toLowerCase()) > -1);
 
         return !!hasOp;
     }
@@ -135,7 +203,7 @@ export default class BufferState {
         let network = this.getNetwork();
         let netPrefixes = network.ircClient.network.options.PREFIX;
         // Find the first (highest) netPrefix in the users buffer modes
-        let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
+        let prefix = _.find(netPrefixes, (p) => modes.indexOf(p.mode) > -1);
 
         return prefix ?
             prefix.symbol :
@@ -157,10 +225,15 @@ export default class BufferState {
             return '';
         }
 
+        // if there is only one mode just return it
+        if (modes.length === 1) {
+            return modes[0];
+        }
+
         let network = this.getNetwork();
         let netPrefixes = network.ircClient.network.options.PREFIX;
         // Find the first (highest) netPrefix in the users buffer modes
-        let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
+        let prefix = _.find(netPrefixes, (p) => modes.indexOf(p.mode) > -1);
 
         return prefix ?
             prefix.mode :
@@ -208,8 +281,7 @@ export default class BufferState {
     requestScrollback(_direction) {
         let direction = _direction || 'backward';
         let time = '';
-        // Negative number gets messages before the timestamps, positive gets messages after
-        let numMessages = -50;
+        let chathistoryFuncName = 'before';
 
         // Going backwards takes the earliest message we already have and requests messages
         // before it. Going forward takes the last message we have and requests messages after
@@ -217,43 +289,67 @@ export default class BufferState {
 
         if (direction === 'backward') {
             let lastMessage = this.getMessages().reduce((earliest, current) => {
-                let validType = earliest.type !== 'traffic';
+                let ignoreTypes = ['traffic', 'topic', 'connection', 'presence'];
+                let validType = ignoreTypes.indexOf(earliest.type) === -1;
                 if (validType && earliest.time && earliest.time < current.time) {
                     return earliest;
                 }
                 return current;
             }, this.getMessages()[0]);
 
-            numMessages = -50;
+            chathistoryFuncName = 'before';
             time = lastMessage ?
-                new Date(lastMessage.time) :
+                new Date(lastMessage.server_time) :
                 new Date();
         } else if (direction === 'forward') {
             let firstMessage = this.getMessages().reduce((latest, current) => {
-                let validType = latest.type !== 'traffic';
+                let ignoreTypes = ['traffic', 'topic', 'connection', 'presence'];
+                let validType = ignoreTypes.indexOf(latest.type) === -1;
                 if (validType && latest.time && latest.time > current.time) {
                     return latest;
                 }
                 return current;
             }, this.getMessages()[0]);
 
-            numMessages = 50;
+            chathistoryFuncName = 'after';
             time = firstMessage ?
-                new Date(firstMessage.time) :
+                new Date(firstMessage.server_time) :
                 new Date();
         } else {
             throw new Error('Invalid direction for requestScrollback(): ' + _direction);
         }
 
-        let irc = this.getNetwork().ircClient;
-        let timeStr = Misc.dateIso(time);
-        irc.raw(`CHATHISTORY ${this.name} timestamp=${timeStr} message_count=${numMessages}`);
-        irc.once('batch end chathistory', (event) => {
-            if (event.commands.length === 0) {
-                this.flags.chathistory_available = false;
-            } else {
-                this.flags.chathistory_available = true;
-            }
+        let ircClient = this.getNetwork().ircClient;
+        this.flag('is_requesting_chathistory', true);
+        this.chathistory_request_count += 1;
+        ircClient.chathistory[chathistoryFuncName](this.name, time)
+            .then((event) => {
+                if (!event) {
+                    this.flag('chathistory_available', false);
+                    return;
+                }
+
+                // The BNC server may reply with messages that are already in the buffer.
+                // This var stores whether there are new messages in the chathistory response.
+                let hasNewMessages = event.commands.some(
+                    (msg) => msg.tags.msgid && !this.messagesObj.messageIds[msg.tags.msgid]
+                );
+
+                // If there are new messages, then there could be more in the backlog.
+                // If there are no new messages, then the chat history is empty.
+                this.flag('chathistory_available', hasNewMessages);
+            })
+            .finally(() => {
+                this.flag('is_requesting_chathistory', false);
+            });
+    }
+
+    requestLatestScrollback() {
+        let ircClient = this.getNetwork().ircClient;
+        this.flag('is_requesting_chathistory', true);
+        this.chathistory_request_count += 1;
+        ircClient.chathistory.before(this.name, '*').finally(() => {
+            this.flag('is_requesting_chathistory', false);
         });
     }
 
@@ -275,22 +371,11 @@ export default class BufferState {
             // If running under a bouncer, set it on the server-side too
             let network = this.getNetwork();
             let allowedUpdate = !network ? false : this.isChannel() || this.isQuery();
-            if (allowedUpdate && network.connection.bncname) {
-                let lastMessage = this.getMessages().reduce((latest, current) => {
-                    if (latest.time && latest.time > current.time) {
-                        return latest;
-                    }
-                    return current;
-                }, this.getMessages()[0]);
-
-                if (!lastMessage) {
-                    return;
-                }
-
+            if (allowedUpdate && network.connection.bncnetid) {
                 network.ircClient.bnc.bufferSeen(
-                    network.connection.bncname,
+                    network.connection.bncnetid,
                     this.name,
-                    new Date(lastMessage.time),
+                    new Date(),
                 );
             }
         }
@@ -371,6 +456,48 @@ export default class BufferState {
         let network = this.getNetwork();
         network.ircClient.part(this.name, reason || '');
     }
+
+    scrollToMessage(id) {
+        this.state.$emit('messagelist.scrollto', { id: id });
+    }
+
+    getLoadingState() {
+        const networkState = this.getNetwork().state;
+        const historySupport = !!this.getNetwork().ircClient.chathistory.isSupported();
+        const messagesInBatchQueue = this.addMessageBatch.queue().length;
+        // Hack; We need to make vue aware that we depend on message_count in order to
+        // update the loading state.
+        // eslint-disable-next-line no-unused-vars
+        const messageCount = this.message_count;
+
+        if (networkState === 'disconnected') {
+            return 'disconnected';
+        } else if (networkState === 'connecting') {
+            return 'connecting';
+        } else if (
+            networkState === 'connected' &&
+            this.joined &&
+            this.enabled &&
+            (
+                historySupport &&
+                (this.flags.is_requesting_chathistory ||
+                    // If chathistory is supported then a request will always be made when first
+                    // joining a channel. If request_count===0 then we're still waiting for it
+                    // to happen.
+                    this.chathistory_request_count === 0 ||
+                    // keep in loading state while the batch is being processed
+                    messagesInBatchQueue > 0
+                )
+            )
+        ) {
+            return 'loading';
+        }
+        return 'done';
+    }
+
+    isReady() {
+        return this.getLoadingState() === 'done';
+    }
 }
 
 /**
@@ -397,13 +524,25 @@ function createUserBatch(bufferState) {
  */
 function createMessageBatch(bufferState) {
     let addSingleMessage = (newMessage) => {
+        if (bufferState.messagesObj.messageIds[newMessage.id]) {
+            return;
+        }
         bufferState.messagesObj.messages.push(newMessage);
+        bufferState.messagesObj.messageIds[newMessage.id] = newMessage;
         trimMessages();
         bufferState.message_count++;
     };
     let addMultipleMessages = (newMessages) => {
-        bufferState.messagesObj.messages = bufferState.messagesObj.messages.concat(newMessages);
-        trimMessages();
+        let toAdd = newMessages.filter((msg) => !bufferState.messagesObj.messageIds[msg.id]);
+        if (toAdd.length > 0) {
+            bufferState.messagesObj.messages = bufferState.messagesObj.messages.concat(toAdd);
+            toAdd.forEach((msg) => {
+                bufferState.messagesObj.messageIds[msg.id] = msg;
+            });
+            trimMessages();
+        }
+        // Trigger Vue's reactivity on the buffer whether messages were added or not, just in case
+        // anything was depending on the batch queue which has now been emptied.
         bufferState.message_count++;
     };
     let trimMessages = () => {
@@ -411,9 +550,60 @@ function createMessageBatch(bufferState) {
         let length = bufferState.messagesObj.messages.length;
 
         if (bufferState.messagesObj.messages.length > scrollbackSize) {
-            bufferState.messagesObj.messages.splice(0, length - scrollbackSize);
+            let removed = bufferState.messagesObj.messages.splice(0, length - scrollbackSize);
+            removed.forEach((msg) => delete bufferState.messagesObj.messageIds[msg.id]);
         }
     };
 
     return batchedAdd(addSingleMessage, addMultipleMessages);
+}
+
+// Update our user list status every 30seconds to get each users current away status
+function maybeStartWhoLoop(bufferState) {
+    let network = bufferState.state.getNetwork(bufferState.networkid);
+
+    if (network.state === 'connected') {
+        // network is connected start the loop if its needed
+        nextLoop();
+    } else {
+        // Network is not coonnected. Wait until it is
+        let on001 = (command, event, eventNetwork) => {
+            if (eventNetwork === network) {
+                bufferState.state.$off('irc.raw.001', on001);
+                nextLoop();
+            }
+        };
+        bufferState.state.$on('irc.raw.001', on001);
+    }
+
+    function nextLoop() {
+        setTimeout(updateWhoStatusLoop, 30000);
+    }
+
+    function updateWhoStatusLoop() {
+        network = bufferState.state.getNetwork(bufferState.networkid);
+
+        // Make sure the network still exists
+        if (!network) {
+            return;
+        }
+
+        // Make sure the buffer still exists
+        if (!network.bufferByName(bufferState.name)) {
+            return;
+        }
+
+        let whoLoop = bufferState.setting('who_loop');
+        let isJoined = bufferState.joined;
+        let hasAwayNotify = network.ircClient.network.cap.isEnabled('away-notify');
+        let networkConnected = network.state === 'connected';
+
+        if (whoLoop && networkConnected && isJoined && !hasAwayNotify) {
+            network.ircClient.who(bufferState.name, () => {
+                nextLoop();
+            });
+        } else {
+            nextLoop();
+        }
+    }
 }

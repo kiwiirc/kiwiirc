@@ -27,6 +27,8 @@ export default Vue.extend({
     created() {
         this.listen(this.$state, 'sidebar.component', (component) => {
             this.activeComponent = component;
+            this.sidebarOpen = !!component;
+            this.sidebarSection = '';
         });
 
         // Allow forcing the sidebar open at startup
@@ -61,6 +63,7 @@ export default Vue.extend({
             return '';
         },
         close() {
+            this.activeComponent = null;
             this.sidebarOpen = false;
             this.sidebarSection = '';
             this.sidebarUser = null;

@@ -2,21 +2,28 @@
     <div class="kiwi-mediaviewer">
         <div class="kiwi-mediaviewer-controls">
             <a
-                class="u-button u-button-warning kiwi-mediaviewer-controls-close"
-                @click="closeViewer"
+                v-if="showPin"
+                class="u-button u-link kiwi-mediaviewer-controls-pin"
+                @click="$emit('pin')"
             >
-                <i class="fa fa-window-close" aria-hidden="true"/>
+                <i class="fa fa-map-pin" aria-hidden="true" />
+            </a>
+            <a
+                class="u-button u-button-warning kiwi-mediaviewer-controls-close"
+                @click="$emit('close');"
+            >
+                <i class="fa fa-window-close" aria-hidden="true" />
             </a>
         </div>
-        <div :key="url">
-            <iframe
-                v-if="isIframe"
-                :src="url"
-                class="kiwi-mediaviewer-iframe"
-            />
-            <component v-else-if="component" :is="component"/>
+        <iframe
+            v-if="isIframe"
+            :src="url"
+            class="kiwi-mediaviewer-iframe"
+        />
+        <component v-else-if="component" :is="component" :component-props="componentProps"/>
+        <div v-else :key="url" class="kiwi-mediaviewer-embedly">
             <a
-                v-else
+                ref="embedlyLink"
                 :href="url"
                 :data-card-key="embedlyKey"
                 class="kiwi-embedly-card"
@@ -31,51 +38,52 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
-
 let embedlyTagIncluded = false;
 
 export default {
-    props: ['url', 'component', 'isIframe'],
-    data: function data() {
+    props: ['url', 'component', 'componentProps', 'isIframe', 'showPin'],
+    data() {
         return {
         };
     },
     computed: {
-        embedlyKey: function embedlyKey() {
-            return state.settings.embedly.key;
+        embedlyKey() {
+            return this.$state.settings.embedly.key;
         },
     },
     watch: {
-        url: function watchUrl() {
+        url() {
             this.updateEmbed();
         },
-        isIframe: function watchUrl() {
+        isIframe() {
             this.updateEmbed();
         },
     },
-    created: function created() {
+    created() {
         this.updateEmbed();
     },
-    mounted: function mounted() {
+    mounted() {
         this.$nextTick(() => {
-            state.$emit('mediaviewer.opened');
+            this.$state.$emit('mediaviewer.opened');
         });
     },
     methods: {
-        updateEmbed: function updateEmbed() {
-            let checkEmbedlyAndShowCard = () => {
-                if (!this.isIframe) {
-                    return;
-                }
+        updateEmbed() {
+            if (!this.url || this.isIframe || this.component) {
+                // return if embedly script is not needed
+                return;
+            }
 
+            let checkEmbedlyAndShowCard = () => {
                 // If the embedly function doesn't exist it's probably still loading
                 // the embedly script
                 if (typeof window.embedly !== 'function') {
                     setTimeout(checkEmbedlyAndShowCard, 100);
                     return;
                 }
-                window.embedly('card', { selector: '.kiwi-embedly-card' });
+                this.$nextTick(() => {
+                    window.embedly('card', this.$refs.embedlyLink);
+                });
             };
 
             if (!embedlyTagIncluded) {
@@ -88,9 +96,6 @@ export default {
             }
             checkEmbedlyAndShowCard();
         },
-        closeViewer: function closeViewer() {
-            state.$emit('mediaviewer.hide', { source: 'user' });
-        },
     },
 };
 </script>
@@ -98,7 +103,6 @@ export default {
 <style>
 .kiwi-mediaviewer {
     box-sizing: border-box;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     position: relative;
 }
 
@@ -107,6 +111,16 @@ export default {
     top: 0;
     right: 0;
     z-index: 1;
+    background: var(--brand-default-bg);
+    border-radius: 5px;
+    padding: 3px;
+    opacity: 0;
+    transition: opacity 0.1s;
+    box-shadow: 0 1px var(--brand-input-border);
+}
+
+.kiwi-mediaviewer:hover .kiwi-mediaviewer-controls {
+    opacity: 1;
 }
 
 .kiwi-mediaviewer-controls-close {
@@ -119,5 +133,16 @@ export default {
     position: absolute;
     top: 0;
     border: none;
+}
+
+.embedly-card {
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.embedly-card-hug {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background: #fff;
 }
 </style>

@@ -21,7 +21,6 @@ export default class InputHandler {
             this.aliasRewriter.importFromString(state.setting('aliases'));
         });
 
-        this.addInputCommands();
         this.listenForInput();
     }
 
@@ -47,7 +46,7 @@ export default class InputHandler {
     listenForInput() {
         this.state.$on('input.raw', (input, context = this.defaultContext()) => {
             let lines = input.split('\n');
-            lines.forEach(line => this.processLine(line, context));
+            lines.forEach((line) => this.processLine(line, context));
         });
     }
 
@@ -55,7 +54,7 @@ export default class InputHandler {
         this.validateContext(context);
         const { network, buffer } = context;
         let line = rawLine;
-        let stylesStrippedLine = line.replace(/(\x03[0-9]{0,2})?([\x02\x1d\x1f]+)?/g, '');
+        let stylesStrippedLine = Misc.stripStyles(line);
 
         // If no command specified, server buffers = send raw, channels/queries = send message
         let escapedCommand = stylesStrippedLine.substr(0, 2) === '//';
@@ -106,18 +105,19 @@ export default class InputHandler {
             params: params,
         };
 
-        // Include command and params as their own arguments just for ease of use
+        // Plugins may tap into this event to handle a command themselves
         this.state.$emit('input.command.' + command, eventObj, command, params);
+        if (eventObj.handled) {
+            return;
+        }
+
+        if (inputCommands[command.toLowerCase()]) {
+            inputCommands[command.toLowerCase()].call(this, eventObj, command, params);
+        }
 
         if (!eventObj.handled) {
             network.ircClient.raw(line);
         }
-    }
-
-    addInputCommands() {
-        _.each(inputCommands, (fn, event) => {
-            this.state.$on('input.command.' + event, fn.bind(this));
-        });
     }
 }
 
@@ -146,7 +146,18 @@ function handleMessage(type, event, command, line) {
     let bufferName = line.substr(0, spaceIdx);
     let message = line.substr(spaceIdx + 1);
 
-    let buffer = this.state.getOrAddBufferByName(network.id, bufferName);
+    // Mke sure we have some text to actually send
+    if (!message) {
+        return;
+    }
+
+    let localBuffer = bufferName;
+    let extractedTarget = network.ircClient.network.extractTargetGroup(bufferName);
+    if (extractedTarget) {
+        localBuffer = extractedTarget.target;
+    }
+
+    let buffer = localBuffer.length && this.state.getOrAddBufferByName(network.id, localBuffer);
     if (buffer) {
         let textFormatType = 'privmsg';
         if (type === 'action') {
@@ -187,6 +198,31 @@ inputCommands.action = function inputCommandMsg(event, command, line) {
 };
 inputCommands.notice = function inputCommandMsg(event, command, line) {
     handleMessage.call(this, 'notice', event, command, line);
+};
+inputCommands.dice = function inputCommandDice(event, command, line) {
+    // /dice 100
+
+    event.handled = true;
+    let buffer = this.state.getActiveBuffer();
+    let network = this.state.getActiveNetwork();
+
+    let sides = line.replace(/\D/g, '');
+    sides = parseInt(sides || '0', 10);
+    if (sides <= 0) {
+        sides = 6;
+    }
+    let rndNumber = Math.floor(Math.random() * sides) + 1;
+
+    let msg = TextFormatting.t('dice_roll', {
+        sides: TextFormatting.formatNumber(sides),
+        number: TextFormatting.formatNumber(rndNumber),
+    });
+    network.ircClient.action(buffer.name, msg);
+    this.state.addMessage(buffer, {
+        nick: network.nick,
+        message: msg,
+        type: 'action',
+    });
 };
 
 inputCommands.ctcp = function inputCommandCtcp(event, command, line) {
@@ -284,6 +320,13 @@ inputCommands.part = function inputCommandPart(event, command, line) {
     bufferNames.forEach((bufferName) => {
         network.ircClient.part(bufferName, message);
     });
+};
+
+inputCommands.quit = function inputCommandQuit(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    network.ircClient.quit(line);
 };
 
 inputCommands.topic = function inputCommandTopic(event, command, line) {
@@ -410,23 +453,22 @@ inputCommands.close = function inputCommandClose(event, command, line) {
 inputCommands.query = function inputCommandQuery(event, command, line) {
     event.handled = true;
 
-    let nicks = line.split(' ');
+    let pos = line.indexOf(' ');
+    if (pos === -1) {
+        pos = line.length;
+    }
+
+    let nick = line.substr(0, pos);
+    let message = line.substr(pos + 1);
+
     let network = this.state.getActiveNetwork();
+    let buffer = this.state.getOrAddBufferByName(network.id, nick);
 
-    // Only switch to the first buffer we open if multiple are being opened
-    let hasSwitchedActiveBuffer = false;
-    nicks.forEach((bufferName, idx) => {
-        if (!bufferName) {
-            return;
-        }
+    this.state.setActiveBuffer(network.id, buffer.name);
 
-        let newBuffer = this.state.addBuffer(network.id, bufferName);
-
-        if (newBuffer && !hasSwitchedActiveBuffer) {
-            this.state.setActiveBuffer(network.id, newBuffer.name);
-            hasSwitchedActiveBuffer = true;
-        }
-    });
+    if (message) {
+        this.state.$emit('input.raw', '/msg ' + buffer.name + ' ' + message);
+    }
 };
 
 inputCommands.invite = function inputCommandInvite(event, command, line) {
@@ -484,6 +526,21 @@ inputCommands.quote = function inputCommandQuote(event, command, line) {
     event.handled = true;
 
     let network = this.state.getActiveNetwork();
+
+    // Sending a manual CAP command triggers raw CAPs to be shown in the server tab
+    if (line.split(' ')[0].toLowerCase() === 'cap') {
+        network.setting('show_raw_caps', true);
+    }
+
+    let buffer = this.state.getActiveBuffer();
+    if (buffer.isServer()) {
+        this.state.addMessage(buffer, {
+            time: Date.now(),
+            nick: '',
+            message: line,
+        });
+    }
+
     network.ircClient.raw(line);
 };
 
@@ -596,7 +653,7 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             if (typeof formats[key] === 'undefined') {
                 // Some keys such as `special` are arrays of values
                 if (_.isArray(val)) {
-                    val.forEach(v => display(`${key}: ${v}`));
+                    val.forEach((v) => display(`${key}: ${v}`));
                 } else {
                     display(`${key}: ${val}`);
                 }
@@ -675,7 +732,18 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
     if (parts[0]) {
         // parts[0] = the mode(s)
         // parts[1] = optional mode arguments
-        network.ircClient.mode(target, parts[0], parts[1]);
+
+        // If we're asking for a ban list, show the response in the active channel
+        if (parts[0] === '+b' && !parts[1]) {
+            buffer.flags.requested_banlist = true;
+            // An IRCd may fuck up and simply not reply to a MODE command. Give a few seconds
+            // for it to reply and if not, ignore our request was sent
+            setTimeout(() => {
+                buffer.flags.requested_banlist = false;
+            }, 4000);
+        }
+
+        network.ircClient.mode(target, parts[0], parts.splice(1));
     } else {
         // No modes specified will request the modes for the target
         network.ircClient.mode(target);
@@ -707,12 +775,19 @@ inputCommands.names = function inputCommandNames(event, command, line) {
     network.ircClient.raw('NAMES ' + args);
 };
 
+inputCommands.inject = function inputCommandInject(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    let connection = network.ircClient.connection;
+    connection.addReadBuffer(line);
+};
+
 inputCommands.clear = function inputCommandClear(event, command, line) {
     event.handled = true;
 
     let buffer = this.state.getActiveBuffer();
-    let messages = buffer.getMessages();
-    messages.splice(0, messages.length);
+    buffer.clearMessages();
 
     this.state.addMessage(buffer, {
         nick: '*',
@@ -784,7 +859,7 @@ inputCommands.list = function inputCommandList(event, command, line) {
     let network = this.state.getActiveNetwork();
     if (!network.channel_list.length && network.channel_list_state !== 'updating') {
         network.channel_list_state = 'updating';
-        network.ircClient.raw('LIST');
+        network.ircClient.raw('LIST ' + line);
     }
 
     network.showServerBuffer('channels');
@@ -817,9 +892,11 @@ inputCommands.server = function inputCommandServer(event, command, line) {
 };
 
 inputCommands.beep = function inputCommandBeep(event, command, line) {
+    event.handled = true;
     this.state.$emit('audio.bleep');
 };
 
 inputCommands.notify = function inputCommandNotify(event, command, line) {
+    event.handled = true;
     this.state.$emit('notification.show', line);
 };

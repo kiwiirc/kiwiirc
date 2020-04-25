@@ -1,18 +1,18 @@
 <template>
     <div :class="[is_connecting ? 'kiwi-customserver--connecting' : '']" class="kiwi-customserver">
         <div class="kiwi-customserver-container">
-            <h2 v-if="!is_connecting" v-html="title"/>
+            <h2 v-if="!is_connecting" v-html="title" />
             <h2 v-else>
                 {{ $t('connecting') }}
                 <a class="u-link" @click="infoClick">
-                    <i class="fa fa-info-circle" aria-hidden="true"/>
+                    <i class="fa fa-info-circle" aria-hidden="true" />
                 </a>
             </h2>
 
             <transition name="kiwi-connectingloader">
                 <form
                     v-if="!is_connecting"
-                    class="u-form kiwi-customserver-form"
+                    class="u-form u-form--big kiwi-customserver-form"
                     @submit.prevent="startUp"
                 >
                     <div v-if="network && network.state_error" class="kiwi-customserver-error">
@@ -21,13 +21,13 @@
                     </div>
 
                     <template v-if="server_type === 'default'">
-                        <input-text :label="$t('server')" v-model="server">
+                        <input-text v-model="server" :label="$t('server')">
                             <span
                                 :class="[tls ? 'kiwi-customserver-tls--enabled' : '']"
                                 class="fa-stack fa-lg kiwi-customserver-tls"
                                 @click="tls=!tls"
                             >
-                                <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"/>
+                                <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock" />
                                 <i
                                     v-if="!tls"
                                     class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"
@@ -36,8 +36,8 @@
                         </input-text>
 
                         <input-text
-                            :label="$t('nick')"
                             v-model="nick"
+                            :label="$t('nick')"
                             class="kiwi-customserver-nick"
                         />
 
@@ -46,20 +46,21 @@
                             <span> {{ $t('password_have') }} </span>
                         </label>
                         <input-text
-                            v-focus
                             v-if="show_password_box"
-                            :label="$t('password')"
                             v-model="password"
+                            v-focus
+                            :label="$t('password')"
+                            :show-plain-text="true"
                             type="password"
                         />
 
-                        <input-text :label="$t('channel')" v-model="channel" />
+                        <input-text v-model="channel" :label="$t('channel')" />
                     </template>
 
                     <template v-if="server_type === 'default_simple'">
                         <input-text
-                            :label="$t('nick')"
                             v-model="nick"
+                            :label="$t('nick')"
                             class="kiwi-customserver-nick"
                         />
 
@@ -68,28 +69,28 @@
                             <span>{{ $t('password_have') }}</span>
                         </label>
                         <input-text
-                            v-focus
                             v-if="show_password_box"
-                            :label="$t('password')"
                             v-model="password"
+                            v-focus
+                            :label="$t('password')"
                             type="password"
                         />
 
                         <input-text
-                            :label="$t('channel')"
                             v-model="channel"
+                            :label="$t('channel')"
                             class="kiwi-customserver-channel"
                         />
                     </template>
 
                     <template v-if="server_type === 'znc'">
-                        <input-text :label="$t('server')" v-model="server">
+                        <input-text v-model="server" :label="$t('server')">
                             <span
                                 :class="[tls ? 'kiwi-customserver-tls--enabled' : '']"
                                 class="fa-stack fa-lg kiwi-customserver-tls"
                                 @click="tls=!tls"
                             >
-                                <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"/>
+                                <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock" />
                                 <i
                                     v-if="!tls"
                                     class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"
@@ -98,17 +99,17 @@
                         </input-text>
 
                         <input-text
-                            :label="$t('username')"
                             v-model="nick"
+                            :label="$t('username')"
                             class="kiwi-customserver-nick"
                         />
 
                         <input-text
                             v-if="znc_network_support"
-                            :label="$t('network')"
                             v-model="znc_network"
+                            :label="$t('network')"
                         />
-                        <input-text :label="$t('password')" v-model="password" type="password" />
+                        <input-text v-model="password" :label="$t('password')" type="password" />
                     </template>
 
                     <button type="submit" class="u-button u-button-primary u-submit">
@@ -122,7 +123,7 @@
                 </form>
 
                 <div v-else class="kiwi-customserver-loader">
-                    <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
+                    <i class="fa fa-spin fa-spinner" aria-hidden="true" />
                 </div>
             </transition>
         </div>
@@ -394,27 +395,9 @@ export default {
     padding: 20px 1em;
 }
 
-.kiwi-customserver-form .u-input-text-label,
-.kiwi-customserver-form .u-input-text--reveal-value .u-input-text-label {
-    left: 0;
-    font-weight: 600;
-    font-size: 1em;
-}
-
-.kiwi-customserver-form .u-input-text-c {
-    position: absolute;
-    right: 15px;
-    bottom: 10px;
-}
-
 .kiwi-customserver .u-input-text,
 .kiwi-customserver .kiwi-customserver-have-password input {
     margin-bottom: 1.5em;
-}
-
-.kiwi-customserver .u-input-text input {
-    padding: 0.5em;
-    font-size: 1.2em;
 }
 
 .kiwi-customserver .kiwi-customserver-have-password {
@@ -427,7 +410,6 @@ export default {
 
 .kiwi-customserver-tls {
     cursor: pointer;
-    top: 6px;
     color: #bfbfbf;
 }
 
@@ -456,17 +438,14 @@ export default {
 
 .kiwi-customserver-form .u-submit {
     width: 100%;
-    height: 50px;
     padding: 0;
-    text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 400;
-    text-shadow: none;
     margin: 0 0 20px 0;
     transition: all 0.2s;
     border: none;
     font-size: 1.2em;
-    line-height: 51px;
+    line-height: 36px;
 }
 
 .kiwi-customserver-server-types {

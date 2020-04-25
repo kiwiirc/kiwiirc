@@ -15,6 +15,7 @@
             @click="$emit('click', $event)"
             @paste="onPaste"
             @focus="onFocus()"
+            @blur="$emit('blur', $event)"
         />
     </div>
 </template>
@@ -23,7 +24,8 @@
 'kiwi public';
 
 import _ from 'lodash';
-import htmlparser from 'htmlparser2';
+import * as htmlparser from 'htmlparser2';
+import * as Colours from '@/helpers/Colours';
 
 let Vue = require('vue');
 
@@ -60,24 +62,37 @@ export default Vue.component('irc-input', {
         },
         onPaste(event) {
             event.preventDefault();
-
-            let clpData = (event.clipboardData || window.clipboardData);
-            let ignoreThisPaste = false;
-
-            clpData.types.forEach((type) => {
-                let ignoreTypes = ['Files', 'image'];
-                ignoreTypes.forEach((ig) => {
-                    if (type.indexOf(ig) > -1) {
-                        ignoreThisPaste = true;
-                    }
+            if (typeof event.clipboardData !== 'undefined') {
+                let ignoreThisPaste = false;
+                let clpData = event.clipboardData;
+                clpData.types.forEach((type) => {
+                    let ignoreTypes = ['Files', 'image'];
+                    ignoreTypes.forEach((ig) => {
+                        if (type.indexOf(ig) > -1) {
+                            ignoreThisPaste = true;
+                        }
+                    });
                 });
-            });
 
-            if (ignoreThisPaste) {
-                return;
+                if (ignoreThisPaste) {
+                    return;
+                }
+
+                document.execCommand('insertText', false, clpData.getData('text/plain'));
+            } else {
+                // IE11
+                let clpText = window.clipboardData.getData('Text');
+                if (!clpText) {
+                    return;
+                }
+
+                let selection = window.getSelection();
+                let range = selection.getRangeAt(0);
+                if (range) {
+                    range.deleteContents();
+                    range.insertNode(document.createTextNode(clpText));
+                }
             }
-
-            document.execCommand('insertText', false, clpData.getData('text/plain'));
 
             setTimeout(() => {
                 this.updateValueProps();
@@ -89,6 +104,8 @@ export default Vue.component('irc-input', {
             if (!this.getRawText() && this.default_colour) {
                 this.setColour(this.default_colour.code, this.default_colour.colour);
             }
+
+            this.$emit('focus', event);
         },
         updateValueProps() {
             let selection = window.getSelection();
@@ -151,9 +168,24 @@ export default Vue.component('irc-input', {
                         let match = attribs.style.match(/color: ([^;]+)/);
                         if (match) {
                             codeLookup = match[1];
-                            if (this.code_map[codeLookup]) {
-                                textValue += '\x03' + this.code_map[codeLookup];
-                                addToggle('\x03' + this.code_map[codeLookup]);
+                            let mappedCode = this.code_map[codeLookup];
+                            if (!mappedCode) {
+                                // If we didn't have an IRC code for this colour, convert the
+                                // colour to its hex form and check if we have that instead
+                                let m = codeLookup.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+                                if (m) {
+                                    let hex = Colours.rgb2hex({
+                                        r: parseInt(m[1], 10),
+                                        g: parseInt(m[2], 10),
+                                        b: parseInt(m[3], 10),
+                                    });
+                                    mappedCode = this.code_map[hex];
+                                }
+                            }
+
+                            if (mappedCode) {
+                                textValue += '\x03' + mappedCode;
+                                addToggle('\x03' + mappedCode);
                             }
                         }
 
@@ -169,7 +201,38 @@ export default Vue.component('irc-input', {
                             textValue += '\x1f';
                             addToggle('\x1f');
                         }
+
+                    // Welcome to the IE/Edge sucks section, time to do crazy things
+                    // IE11 doesnt support document.execCommand('styleWithCSS')
+                    // so we have individual nodes instead, which are handled below
+                    } else if (attribs.color) {
+                        // IE likes to remove spaces from rgb(1, 2, 3) it also likes converting rgb to hex
+                        let mappedCode = this.code_map[attribs.color] ||
+                            this.code_map[attribs.color.replace(/,/g, ', ')] ||
+                            this.code_map[Colours.hex2rgb(attribs.color)];
+
+                        if (mappedCode) {
+                            textValue += '\x03' + mappedCode;
+                            addToggle('\x03' + mappedCode);
+                        }
+                    } else if (name === 'strong') {
+                        textValue += '\x02';
+                        addToggle('\x02');
+                    } else if (name === 'em') {
+                        textValue += '\x1d';
+                        addToggle('\x1d');
+                    } else if (name === 'u') {
+                        textValue += '\x1f';
+                        addToggle('\x1f');
+                    } else if (name === 'div' || name === 'br') {
+                        // divs and breaks are both considered newlines. For each line we need to
+                        // close all current toggles and then reopen them for the next so that the
+                        // styles continue .
+                        textValue += getToggles();
+                        textValue += '\n';
+                        textValue += getToggles();
                     }
+
                     if (attribs.src && this.code_map[attribs.src]) {
                         textValue += this.code_map[attribs.src];
                     }
@@ -201,7 +264,7 @@ export default Vue.component('irc-input', {
             // fucks up the placeholder :empty CSS selector we use. So just remove it.
             let br = this.$refs.editor.querySelector('br');
             if (br) {
-                br.remove();
+                br.parentNode.removeChild(br);
             }
 
             if (this.default_colour) {
@@ -390,6 +453,9 @@ export default Vue.component('irc-input', {
     white-space: pre;
     overflow-x: hidden;
     outline: none;
+
+    /* When the contenteditable div is empty firefox makes its height 0px */
+    height: 100%;
 }
 
 .kiwi-ircinput-editor:empty:not(:focus)::before {
@@ -399,6 +465,7 @@ export default Vue.component('irc-input', {
 
 .kiwi-ircinput-editor img {
     height: 1em;
+    vertical-align: -0.1em;
 }
 
 </style>

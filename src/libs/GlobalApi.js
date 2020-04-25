@@ -5,6 +5,7 @@
 import EventEmitter from 'eventemitter3';
 import Vue from 'vue';
 import _ from 'lodash';
+import compareVersions from 'compare-versions';
 import * as Misc from '@/helpers/Misc';
 import Logger from './Logger';
 
@@ -16,6 +17,9 @@ let nextPluginId = 0;
 export default class GlobalApi extends EventEmitter {
     constructor() {
         super();
+
+        // eslint-disable-next-line no-undef
+        this.version = __VERSION__;
 
         /** A reference to the internal Vuejs instance */
         this.Vue = Vue;
@@ -47,6 +51,10 @@ export default class GlobalApi extends EventEmitter {
         return singletonInstance;
     }
 
+    versionMatches(v) {
+        return compareVersions(this.version, v) >= 0;
+    }
+
     /**
      * Register a plugin with kiwi
      *
@@ -66,7 +74,7 @@ export default class GlobalApi extends EventEmitter {
 
     // Init any plugins that were added before we were ready
     initPlugins() {
-        pluginsToInit.forEach(plugin => this.initPlugin(plugin));
+        pluginsToInit.forEach((plugin) => this.initPlugin(plugin));
         pluginsToInit = [];
     }
 
@@ -86,9 +94,14 @@ export default class GlobalApi extends EventEmitter {
      * E.g. require('helpers/TextFormatting');
      * @param {String} mod The module path
      */
-    require(mod) {
-        let path = mod.replace(/\//g, '.');
-        return _.get(this.exports, path);
+    require(modPath) {
+        let path = modPath.replace(/\//g, '.');
+        let mod = _.get(this.exports, path);
+        if (typeof mod === 'undefined') {
+            Logger.error('Module does not exist: ' + modPath);
+        }
+
+        return mod;
     }
 
     setState(state) {

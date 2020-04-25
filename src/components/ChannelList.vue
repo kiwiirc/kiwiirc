@@ -3,50 +3,59 @@
         <div class="kiwi-channellist-content-container">
             <div class="kiwi-channellist-nav">
                 <form class="u-form kiwi-channellist-search" @submit.prevent>
-                    <input v-model="search" :placeholder="$t('do_search')" class="u-input" >
+                    <input v-model="search" :placeholder="$t('do_search')" class="u-input">
                     <a
                         :class="{
                             'u-button-primary': !isLoading,
                             'u-button-secondary': isLoading,
                         }"
                         class="u-button kiwi-channellist-refresh"
-                        @click="maybeUpdateList">
-                        <i v-if="!isLoading" class="fa fa-refresh" aria-hidden="true"/>
-                        <i v-else class="fa fa-refresh fa-spin" aria-hidden="true"/>
+                        @click="maybeUpdateList"
+                    >
+                        <i v-if="!isLoading" class="fa fa-refresh" aria-hidden="true" />
+                        <i v-else class="fa fa-refresh fa-spin" aria-hidden="true" />
                     </a>
                 </form>
                 <div v-if="list.length" class="kiwi-channellist-pagination">
-                    <a @click="prevPage"><i class="fa fa-step-backward" aria-hidden="true"/></a>
+                    <a @click="prevPage"><i class="fa fa-step-backward" aria-hidden="true" /></a>
                     {{ page + 1 }} / {{ maxPages + 1 }}
-                    <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true"/></a>
+                    <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true" /></a>
                 </div>
             </div>
-            <table v-if="!isLoading && list.length > 0" :key="last_updated" width="100%">
-                <tbody>
-                    <tr v-for="channel in paginated" :key="channel.channel">
-                        <td class="kiwi-channellist-user-center">
-                            <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
-                                <i class="fa fa-user" aria-hidden="true"/> {{ channel.num_users }}
-                            </span>
-                        </td>
-                        <td>
-                            <a class="u-link" @click="joinChannel(channel.channel)">
-                                {{ channel.channel }}
-                            </a>
-                        </td>
-                        <td><div v-html="formatAndTrimTopic(channel.topic)"/></td>
-                        <td class="kiwi-channellist-user-center">
-                            <a class="u-button u-button-primary"
-                               @click="joinChannel(channel.channel)"> {{ $t('container_join') }}
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div v-else-if="noResults" class="kiwi-channellist-info">
-                {{ $t('channel_list_nonefound') }}
+            <div class="kiwi-channellist-table">
+                <table v-if="!isLoading && !noResults" :key="last_updated" width="100%">
+                    <tbody>
+                        <tr v-for="channel in paginated" :key="channel.channel">
+                            <td class="kiwi-channellist-user-center">
+                                <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
+                                    <i class="fa fa-user" aria-hidden="true" />
+                                    {{ channel.num_users }}
+                                </span>
+                            </td>
+                            <td>
+                                <a class="u-link" @click="joinChannel(channel.channel)">
+                                    {{ channel.channel }}
+                                </a>
+                            </td>
+                            <td class="kiwi-channellist-table-topic">
+                                <div v-html="formatAndTrimTopic(channel.topic)" />
+                            </td>
+                            <td class="kiwi-channellist-user-center">
+                                <a
+                                    class="u-button u-button-primary"
+                                    @click="joinChannel(channel.channel)"
+                                >
+                                    {{ $t('container_join') }}
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div v-else-if="noResults" class="kiwi-channellist-info">
+                    <p>{{ $t('channel_list_nonefound') }}</p>
+                </div>
+                <div v-else class="kiwi-channellist-info">{{ $t('channel_list_fetch') }}</div>
             </div>
-            <div v-else class="kiwi-channellist-info">{{ $t('channel_list_fetch') }}</div>
         </div>
     </div>
 </template>
@@ -55,8 +64,8 @@
 'kiwi public';
 
 import _ from 'lodash';
-import * as TextFormatting from '@/helpers/TextFormatting';
-import formatIrcMessage from '@/libs/MessageFormatter';
+import toHtml from '@/libs/renderers/Html';
+import parseMessage from '@/libs/MessageParser';
 
 export default {
     props: ['network'],
@@ -71,7 +80,7 @@ export default {
     },
     computed: {
         noResults() {
-            return this.listState === 'updated' && this.list.length === 0;
+            return this.listState === 'updated' && this.filteredList.length === 0;
         },
         isLoading() {
             return this.listState === 'updating';
@@ -146,11 +155,12 @@ export default {
             }
         },
         formatAndTrimTopic(rawTopic) {
-            let topic = rawTopic.replace(/^\[([^\]]+)\] ?/, '');
-            let showEmoticons = this.$state.setting('buffers.show_emoticons');
-            let blocks = formatIrcMessage(topic, { extras: false });
-            let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
-            return content.html;
+            let showModes = this.$state.setting('showChanlistModes');
+
+            let topic = showModes ? rawTopic : rawTopic.replace(/^\[([^\]]+)\] ?/, '');
+            let blocks = parseMessage(topic, { extras: false });
+            let content = toHtml(blocks);
+            return content;
         },
         joinChannel(channelName) {
             this.$state.addBuffer(this.network.id, channelName);
@@ -231,6 +241,10 @@ export default {
 }
 
 /* Table Styling */
+.kiwi-channellist-table {
+    width: 100%;
+}
+
 .kiwi-channellist table {
     border: none;
     border-collapse: collapse;
@@ -254,6 +268,10 @@ export default {
 
 .kiwi-channellist tr td:first-child {
     white-space: nowrap;
+}
+
+.kiwi-channellist-table-topic {
+    word-break: break-word;
 }
 
 .kiwi-channellist-users {

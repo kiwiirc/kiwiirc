@@ -46,10 +46,14 @@ select {
     vertical-align: middle;
     text-align: center;
     outline: none;
+    font-weight: 600;
+    font-size: 1em;
+    font-family: inherit;
 }
 
-.u-button:hover {
-    opacity: 0.75;
+.u-button-primary {
+    border: none;
+    border-bottom: 1px solid;
 }
 
 .u-form {
@@ -59,7 +63,12 @@ select {
 .u-form label {
     display: block;
     line-height: 20px;
-    margin: 0 0 10px 0;
+    margin: 0 0 3px 2px;
+}
+
+.u-form--big label {
+    margin-bottom: 10px;
+    font-size: 1.2em;
 }
 
 .u-form label span {
@@ -88,36 +97,11 @@ select {
     height: 20px;
     display: inline-block;
     position: relative;
-    border-radius: 1px;
+    border-radius: 5px;
     cursor: pointer;
     margin-left: 0;
     margin-right: 5px;
-}
-
-.u-form input[type='checkbox']::after,
-.u-form input[type='radio']::after {
-    position: absolute;
-    content: '';
-    left: 1px;
-    top: 1px;
-    width: 14px;
-    height: 14px;
-    z-index: 10;
-    transition: all 0.3s;
-    opacity: 0;
-}
-
-.u-form input[type='checkbox']:checked::after,
-.u-form input[type='radio']:checked::after {
-    position: absolute;
-    content: '';
-    left: 1px;
-    top: 1px;
-    width: 14px;
-    height: 14px;
-    z-index: 10;
-    transition: all 0.3s;
-    opacity: 1;
+    border: 1px solid;
 }
 
 .u-form input[type="radio"] {
@@ -130,16 +114,26 @@ select {
 .u-form input[type='email'],
 .u-form textarea {
     font-size: 0.9em;
+    line-height: normal;
     clear: both;
-    width: 100%;
-    height: 40px;
-    padding: 3px 5px;
+    padding: 7px 8px;
     box-sizing: border-box;
-    border-radius: 1px;
-    min-height: none;
+    min-height: 0;
     overflow-x: hidden;
     overflow-y: auto;
     max-width: none;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.u-form--big .u-input,
+.u-form--big input[type='text'],
+.u-form--big input[type='password'],
+.u-form--big input[type='email'],
+.u-form--big textarea {
+    padding: 15px 12px;
+    font-size: 1em;
 }
 
 .u-checkbox-wrapper {
@@ -220,7 +214,6 @@ select {
 
 /* Globally style the close icon */
 .kiwi-close-icon {
-    background-color: #fc6262;
     color: #fff;
     border-radius: 0 0 0 4px;
     position: absolute;
@@ -228,10 +221,7 @@ select {
     top: 0;
     cursor: pointer;
     padding: 0.2em 0.4em;
-}
-
-.kiwi-close-icon:hover {
-    background-color: #fe7575;
+    transition: background 0.2s;
 }
 
 .kiwi-settings-advanced-table tr:hover {

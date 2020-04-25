@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
-"Start\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: el\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-01-13 12:20\n"
+"PO-Revision-Date: 2020-04-14 04:08\n"
 
 #: Start
 msgid "start_button"
@@ -49,9 +49,17 @@ msgstr "Ρυθμίσεις Kiwi"
 msgid "channels"
 msgstr "Κανάλια"
 
+#: Access
+msgid "access"
+msgstr "Πρόσβαση"
+
 #: Banned Users
 msgid "banned"
 msgstr "Αποκλεισμένοι Χρήστες"
+
+#: Invited Users
+msgid "invited"
+msgstr "Προσκεκλημένοι Χρήστες"
 
 #: Notifications
 msgid "notifications"
@@ -64,6 +72,10 @@ msgstr "Όνομα χρήστη"
 #: Password
 msgid "password"
 msgstr "Συνθηματικό Κλειδί:"
+
+#: Server Password
+msgid "server_password"
+msgstr "Κωδικός Διακομιστή"
 
 #: I have a password
 msgid "password_have"
@@ -161,6 +173,10 @@ msgstr "Αγνοήστε τον χρήστη"
 msgid "connection_channel"
 msgstr "Κανάλι"
 
+#: Away
+msgid "away"
+msgstr "Απών"
+
 #: {{count}} week
 msgid "week"
 msgstr "{{count}} εβδομάδα"
@@ -205,6 +221,10 @@ msgstr "{{count}} δευτερόλεπτα"
 msgid "settings_general"
 msgstr "Γενικά"
 
+#: Language
+msgid "settings_language"
+msgstr "Γλώσσα"
+
 #: Theme
 msgid "settings_theme"
 msgstr "Τρέχον Θέμα:"
@@ -224,6 +244,10 @@ msgstr "Διάταξη Μηνυμάτων:"
 #: Use monospace
 msgid "settings_use_monospace"
 msgstr "Χρησιμοποιήστε τη μονοχρωματική διάταξη"
+
+#: Use Kiwi as my default IRC client
+msgid "settings_default_handler"
+msgstr "Χρησιμοποιήστε το Kiwi ως προεπιλεγμένο IRC πρόγραμμα-πελάτη."
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -264,6 +288,10 @@ msgstr "Επιπλέον μορφοποίηση"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Χρωματισμός ψευδωνύμων στα μηνύματα"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Μετάδωσε όταν πληκτρολογώ ένα μήνυμα"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -319,7 +347,7 @@ msgstr "Σίγαση των ήχων"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Απόκρυψη αριθμού των μη διαβασμένων μηνυμάτων"
+msgstr "Απόκρυψη αριθμού μη αναγνωσμένων μηνυμάτων"
 
 #: Operator tools
 msgid "operator_tools"
@@ -377,6 +405,54 @@ msgstr "Γίνεται ανανέωση λίστας αποκλεισμένων.
 msgid "bans_nobody"
 msgstr "Κανένας δεν είναι προς το παρόν αποκλεισμένος!"
 
+#: Refresh invite list
+msgid "invites_refresh"
+msgstr "Ανανέωση Λίστας Προσκεκλημένων"
+
+#: Invited user
+msgid "invites_user"
+msgstr "Προσκεκλημένος χρήστης"
+
+#: Invited by
+msgid "invites_by"
+msgstr "Προσκληθεί από"
+
+#: Refreshing invite list...
+msgid "invites_refreshing"
+msgstr "Γίνεται ανανέωση της λίστας προσκεκλημένων..."
+
+#: Nobody is invited!
+msgid "invites_nobody"
+msgstr "Κανένας δεν έχει προσκληθεί!"
+
+#: This is a public channel.
+msgid "invite_public_channel"
+msgstr "Αυτό είναι ένα δημόσιο κανάλι."
+
+#: Only invited users can join.
+msgid "invite_private_channel"
+msgstr "Μόνο οι προσκεκλημένοι χρήστες μπορούν να εισέλθουν."
+
+#: Only allow invited users
+msgid "invite_set_private"
+msgstr "Επιτρέψτε μόνο προσκεκλημένους χρήστες"
+
+#: Allow anybody to join
+msgid "invite_set_public"
+msgstr "Επιτρέψτε την είσοδο για όλους"
+
+#: Only registered users can join
+msgid "invite_registered_only"
+msgstr "Μόνο οι εγγεγραμμένοι χρήστες μπορούν να εισέλθουν"
+
+#: Add invite
+msgid "invite_add_invite"
+msgstr "Προσθήκη πρόσκλησης"
+
+#: (Any registered user)
+msgid "invite_any_registered"
+msgstr "(Οποιοσδήποτε εγγεγραμμένος χρήστης)"
+
 #: Topic
 msgid "channel_topic"
 msgstr "Τίτλος Καναλιού:"
@@ -405,7 +481,7 @@ msgstr "Κάντε κλικ στο κουμπί ανανέωσης για να �
 msgid "channel_list_nonefound"
 msgstr "Δεν βρέθηκαν κανάλια, δοκιμάστε ξανά αργότερα"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Καλώς ήλθατε στο Kiwi IRC!"
 
@@ -488,6 +564,10 @@ msgstr "Κωδικοποίηση"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Εμφάνιση Ακατέργαστου"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Απευθείας websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -673,6 +753,14 @@ msgstr "Βρείτε Περισσότερα Κανάλια"
 msgid "change_nick"
 msgstr "Αλλαγή ψευδώνυμου"
 
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "Εισάγεται νέο ψευδώνυμο..."
+
+#: This is you!
+msgid "user_you"
+msgstr "Αυτός είσαι εσύ!"
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "Ονομα λογαριασμού: {{user}}"
@@ -729,9 +817,21 @@ msgstr "Αποκλεισμό και απομάκρυνση από το κανά�
 msgid "error_no_channel_join"
 msgstr "Προσδιορίστε ένα κανάλι για να εισέλθετε. πχ /join #παράδειγμα"
 
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr "Το ψευδώνυμο {{nick}} είναι ήδη σε χρήση!"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr "Πρέπει να εισάγεται ένα νέο ψευδώνυμο"
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr "Το ψευδώνυμο δεν πρέπει να ξεκινά με έναν αριθμό"
+
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} δίνει χειρισή σε {{target}}"
+msgstr "{{nick}} δίνει op σε {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
@@ -743,7 +843,7 @@ msgstr "{{nick}} δίνει halfop σε {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} παίρνει μισή χείριση από {{target}}"
+msgstr "{{nick}} παίρνει το halfop από {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
@@ -842,8 +942,8 @@ msgid "command_quit"
 msgstr "Αποσυνδεθείτε από τον διακομιστή IRC"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Συνδεθείτε σε ένα νέο δίκτυο IRC"
+msgid "command_server"
+msgstr "Συνδεθείτε σε ένα νέο IRC δίκτυο"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -855,7 +955,7 @@ msgstr "Ζητήστε πληροφορίες σχετικά με κάποιον
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Σημειώστε τον εαυτό σας ως μακριά"
+msgstr "Σημειώστε τον εαυτό σας ως απών"
 
 #: Set yourself as active
 msgid "command_back"
@@ -873,6 +973,14 @@ msgstr "Αγνοήστε τα μηνύματα από κάποιον"
 msgid "command_unignore"
 msgstr "Σταματήστε να αγνοείτε κάποιον"
 
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Ρίξτε ένα Zάρι"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Ρίχνει ένα {{sides}} από την πλευρά του ζαριού και τυχαίνει {{number}}"
+
 #: Your IRC client
 msgid "personal_client"
 msgstr "Το IRC πρόγραμμά σας"
@@ -888,6 +996,22 @@ msgstr "Θα είναι εδώ όταν επιστρέψετε."
 #: Add a Network
 msgid "personal_add"
 msgstr "Προσθέστε ένα Δίκτυο"
+
+#: You are trying to connect to {{network}}
+msgid "personal_connect_to"
+msgstr "Προσπαθείτε να συνδεθείτε στο {{network}} δίκτυο"
+
+#: Network has been added to your existing Kiwi window.
+msgid "personal_added_to_existing"
+msgstr "Το δίκτυο έχει προστεθεί στο υπάρχον παράθυρο του Kiwi."
+
+#: Add network to existing Kiwi window
+msgid "personal_add_existing_tab"
+msgstr "Προσθήκη δικτύου στο υπάρχον παράθυρο Kiwi"
+
+#: Temporarily connect to this network
+msgid "personal_connect_temporary"
+msgstr "Συνδεθείτε προσωρινά σε αυτό το δίκτυο"
 
 #: Saved networks
 msgid "personal_saved"
@@ -908,10 +1032,6 @@ msgstr "(Ευχαριστούμε τον Adam @Rizon για την υποστή�
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Δοκιμάστε την έκδοση προγραμματιστή του προγράμματος ανάπτυξης Kiwi IRC!"
-
-#: Connected
-msgid "connected"
-msgstr "Συνδέθηκε"
 
 #: Disconnected
 msgid "disconnected"

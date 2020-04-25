@@ -27,4 +27,5 @@ export default [
     { command: 'encoding', alias: [], description: 'locale_id_command_encoding' },
     { command: 'ignore', alias: [], description: 'locale_id_command_ignore' },
     { command: 'unignore', alias: [], description: 'locale_id_command_unignore' },
+    { command: 'dice', alias: [], description: 'locale_id_command_dice' },
 ];

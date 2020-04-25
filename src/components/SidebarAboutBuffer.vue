@@ -7,10 +7,10 @@
             class="kiwi-aboutbuffer-section"
         >
             <h4 @click="toggleSection('about')">
-                <i class="fa fa-angle-right"/> {{ $t('about') }}
+                <i class="fa fa-angle-right" /> {{ $t('about') }}
             </h4>
             <div>
-                <p v-if="b.topic" v-html="formattedTopic"/>
+                <p v-if="b.topic" v-html="formattedTopic" />
                 <p v-else>{{ $t('no_topic_set') }}</p>
 
                 <p v-if="b.created_at">
@@ -30,12 +30,17 @@
             class="kiwi-aboutbuffer-section"
         >
             <h4 @click="toggleSection('highlights')">
-                <i class="fa fa-angle-right"/> {{ $t('highlights') }}
+                <i class="fa fa-angle-right" /> {{ $t('highlights') }}
             </h4>
             <div>
                 <ul v-if="highlights.length > 0">
-                    <li v-for="msg in highlights" :key="msg.id">
-                        {{ msg.nick }}: {{ msg.message }}
+                    <li
+                        v-for="msg in highlights"
+                        :key="msg.id"
+                        class="kiwi-aboutbuffer-highlight"
+                        @click="buffer.scrollToMessage(msg.id)"
+                    >
+                        {{ msg.nick ? msg.nick + ': ' : '' }}<span v-html="msg.html" />
                     </li>
                 </ul>
                 <p v-else>{{ $t('nobody_mentioned_you') }}</p>
@@ -49,7 +54,7 @@
             class="kiwi-aboutbuffer-section"
         >
             <h4 @click="toggleSection(plugin.id)">
-                <i class="fa fa-angle-right"/> {{ plugin.args.title }}
+                <i class="fa fa-angle-right" /> {{ plugin.args.title }}
             </h4>
             <div v-rawElement="plugin.el" />
         </div>
@@ -61,8 +66,8 @@
 'kiwi public';
 
 import GlobalApi from '@/libs/GlobalApi';
-import formatIrcMessage from '@/libs/MessageFormatter';
-import * as TextFormatting from '@/helpers/TextFormatting';
+import toHtml from '@/libs/renderers/Html';
+import parseMessage from '@/libs/MessageParser';
 
 export default {
     props: ['network', 'buffer', 'sidebarState'],
@@ -78,10 +83,9 @@ export default {
         },
 
         formattedTopic() {
-            let showEmoticons = this.$state.setting('buffers.show_emoticons');
-            let blocks = formatIrcMessage(this.b.topic || '', { extras: false });
-            let content = TextFormatting.styleBlocksToHtml(blocks, showEmoticons, null);
-            return content.html;
+            let blocks = parseMessage(this.b.topic || '', { extras: false });
+            let content = toHtml(blocks);
+            return content;
         },
 
         highlights() {
@@ -90,9 +94,12 @@ export default {
             /* eslint-disable no-unused-vars */
             let tmp = this.buffer.message_count;
             return this.buffer.getMessages()
-                .filter(m => m.isHighlight)
-                .filter(m => m.type !== 'traffic')
-                .filter(m => m.type !== 'mode');
+                .filter((m) => m.isHighlight)
+                .filter((m) => m.type !== 'traffic')
+                .filter((m) => m.type !== 'topic')
+                .filter((m) => m.type !== 'mode')
+                .filter((m) => m.html)
+                .sort((a, b) => b.time - a.time);
         },
     },
     methods: {
@@ -125,6 +132,10 @@ export default {
     align-items: flex-start;
 }
 
+.kiwi-aboutbuffer-highlight {
+    cursor: pointer;
+}
+
 .kiwi-aboutbuffer h3 {
     padding: 10px;
     width: 100%;
@@ -155,7 +166,6 @@ export default {
     padding: 1em;
     transition: max-height 0.2s, padding 0.2s, opacity 0.2s;
     overflow: hidden;
-    max-height: 500px;
 }
 
 .kiwi-aboutbuffer-section .kiwi-aboutbuffer-usercount {
@@ -178,8 +188,8 @@ export default {
 
 @media screen and (max-width: 769px) {
     .kiwi-sidebar.kiwi-sidebar-section-about {
-        max-width: 100%;
         width: 100%;
+        max-width: 100%;
     }
 }
 </style>

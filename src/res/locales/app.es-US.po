@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
-"Start\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: es-US\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Spanish, United States\n"
 "Language: es_US\n"
-"PO-Revision-Date: 2019-01-12 20:21\n"
+"PO-Revision-Date: 2020-04-13 17:05\n"
 
 #: Start
 msgid "start_button"
@@ -49,9 +49,17 @@ msgstr "Configuración del Kiwi"
 msgid "channels"
 msgstr "Canales"
 
+#: Access
+msgid "access"
+msgstr "Acceso"
+
 #: Banned Users
 msgid "banned"
 msgstr "Usuarios baneados"
+
+#: Invited Users
+msgid "invited"
+msgstr "Usuarios invitados"
 
 #: Notifications
 msgid "notifications"
@@ -64,6 +72,10 @@ msgstr "Nombre de usuario"
 #: Password
 msgid "password"
 msgstr "Contraseña"
+
+#: Server Password
+msgid "server_password"
+msgstr "Contraseña del servidor"
 
 #: I have a password
 msgid "password_have"
@@ -161,6 +173,10 @@ msgstr "Ignorar usuario"
 msgid "connection_channel"
 msgstr "Canal"
 
+#: Away
+msgid "away"
+msgstr "Está ausente"
+
 #: {{count}} week
 msgid "week"
 msgstr "semana"
@@ -205,6 +221,10 @@ msgstr "segundos"
 msgid "settings_general"
 msgstr "General"
 
+#: Language
+msgid "settings_language"
+msgstr "Idioma"
+
 #: Theme
 msgid "settings_theme"
 msgstr "Tema"
@@ -224,6 +244,10 @@ msgstr "Diseño del Mensaje"
 #: Use monospace
 msgid "settings_use_monospace"
 msgstr "Usar fuente Monospace"
+
+#: Use Kiwi as my default IRC client
+msgid "settings_default_handler"
+msgstr "Usar Kiwi como mi cliente IRC predeterminado"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -265,6 +289,10 @@ msgstr "Formateado extra"
 msgid "settings_nick_colouring"
 msgstr "Colorear apodos en los mensajes"
 
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Comparte cuando estoy escribiendo un mensaje"
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Incluir mensajes de entrada y salida como actividad"
@@ -291,7 +319,7 @@ msgstr "Enviar mensaje"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Escribe la clave del canal:"
+msgstr "Escribe la clave de la sala:"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -319,7 +347,7 @@ msgstr "Deshabilitar sonidos"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Ocultar contador de mensajes no leídos"
+msgstr "Ocultar el contador de mensajes no leídos"
 
 #: Operator tools
 msgid "operator_tools"
@@ -377,6 +405,54 @@ msgstr "Actualizando lista de baneos"
 msgid "bans_nobody"
 msgstr "Nadie está baneado"
 
+#: Refresh invite list
+msgid "invites_refresh"
+msgstr "Actualizar lista de invitados"
+
+#: Invited user
+msgid "invites_user"
+msgstr "Usuario invitado"
+
+#: Invited by
+msgid "invites_by"
+msgstr "Invitado por"
+
+#: Refreshing invite list...
+msgid "invites_refreshing"
+msgstr "Actualizando la lista de invitados..."
+
+#: Nobody is invited!
+msgid "invites_nobody"
+msgstr "¡Nadie fue invitado!"
+
+#: This is a public channel.
+msgid "invite_public_channel"
+msgstr "Esto es una sala pública."
+
+#: Only invited users can join.
+msgid "invite_private_channel"
+msgstr "Sólo los usuarios invitados pueden entrar."
+
+#: Only allow invited users
+msgid "invite_set_private"
+msgstr "Sólo se permite usuarios invitados"
+
+#: Allow anybody to join
+msgid "invite_set_public"
+msgstr "Se permite que cualquiera pueda entrar"
+
+#: Only registered users can join
+msgid "invite_registered_only"
+msgstr "Sólo los usuarios registrados pueden entrar"
+
+#: Add invite
+msgid "invite_add_invite"
+msgstr "Añadir invitación"
+
+#: (Any registered user)
+msgid "invite_any_registered"
+msgstr "(Cualquier usuario registrado)"
+
 #: Topic
 msgid "channel_topic"
 msgstr "Tópico"
@@ -405,7 +481,7 @@ msgstr "Clicar el botón Actualizar para actualizar la lista de salas"
 msgid "channel_list_nonefound"
 msgstr "No se encontraron salas, inténtalo de nuevo más tarde"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "¡Bienvenido a Kiwi IRC! Selecciona una sala de la izquierda."
 
@@ -488,6 +564,10 @@ msgstr "Codificación"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Mostrar el original"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Websocket directo"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -583,7 +663,7 @@ msgstr "No hay buffer configurado"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "No hay ningún tópico para este canal"
+msgstr "No hay ningún tópico para esta sala"
 
 #: About
 msgid "about"
@@ -667,11 +747,19 @@ msgstr "Filtrar salas"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Buscar más Salas"
+msgstr "Buscar más salas"
 
 #: Change nick
 msgid "change_nick"
 msgstr "Cambiar apodo"
+
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "Escribe el nuevo apodo..."
+
+#: This is you!
+msgid "user_you"
+msgstr "¡Este eres tú!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -728,6 +816,18 @@ msgstr "Kick + Ban del canal"
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Por favor especifica la sala a entrar. Por ej. /join #ejemplo"
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr "¡El apodo {{nick}} está actualmente en uso!"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr "Debes escribir un nuevo apodo"
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr "El apodo no puede empezar por un número"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -842,8 +942,8 @@ msgid "command_quit"
 msgstr "Desconecta del servidor IRC"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Conecta a una nueva red de IRC"
+msgid "command_server"
+msgstr "Conectar a una red IRC nueva"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -859,7 +959,7 @@ msgstr "Marca como ausente"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Marca como activo"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -872,6 +972,14 @@ msgstr "Ignora los mensajes de alguien"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Deja de ignorar a alguien"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Tirar un Dado"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Lanza un dado con {{sides}} lados y obtiene {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -888,6 +996,22 @@ msgstr "Estarán aquí cuando vuelvas."
 #: Add a Network
 msgid "personal_add"
 msgstr "Añade una Red"
+
+#: You are trying to connect to {{network}}
+msgid "personal_connect_to"
+msgstr "Estás intentando conectarte a {{network}}"
+
+#: Network has been added to your existing Kiwi window.
+msgid "personal_added_to_existing"
+msgstr "La red se ha agregado a tu ventana existente de Kiwi."
+
+#: Add network to existing Kiwi window
+msgid "personal_add_existing_tab"
+msgstr "Agregar red a la ventana existente de Kiwi"
+
+#: Temporarily connect to this network
+msgid "personal_connect_temporary"
+msgstr "Conectarse temporalmente a esta red"
 
 #: Saved networks
 msgid "personal_saved"
@@ -908,10 +1032,6 @@ msgstr "(Gracias a Adam @Rizon por el desarrollo del soporte del servidor de web
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "¡Prueba la versión en desarrollo del Kiwi IRC!"
-
-#: Connected
-msgid "connected"
-msgstr "Conectado"
 
 #: Disconnected
 msgid "disconnected"
@@ -951,5 +1071,5 @@ msgstr "{{nick}} es ahora como {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} changed the topic to: {{topic}}"
+msgstr "ha cambiado el tópico a: {{topic}}"
 

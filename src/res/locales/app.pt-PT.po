@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
-"Start\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: pt-PT\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2019-01-13 00:30\n"
+"PO-Revision-Date: 2020-04-13 16:36\n"
 
 #: Start
 msgid "start_button"
@@ -49,9 +49,17 @@ msgstr "Definições do Kiwi "
 msgid "channels"
 msgstr "Canais"
 
+#: Access
+msgid "access"
+msgstr "Acesso"
+
 #: Banned Users
 msgid "banned"
 msgstr "Utilizadores banidos"
+
+#: Invited Users
+msgid "invited"
+msgstr "Utilizadores convidados"
 
 #: Notifications
 msgid "notifications"
@@ -63,11 +71,15 @@ msgstr "Nome de utilizador"
 
 #: Password
 msgid "password"
-msgstr "Palavra-passe"
+msgstr "Senha"
+
+#: Server Password
+msgid "server_password"
+msgstr "Palavra-passe do Servidor"
 
 #: I have a password
 msgid "password_have"
-msgstr "Eu tenho uma palavra-passe"
+msgstr "Eu tenho uma senha"
 
 #: Server
 msgid "server"
@@ -75,7 +87,7 @@ msgstr "Servidor"
 
 #: Nick
 msgid "nick"
-msgstr "Utilizador"
+msgstr "Nick"
 
 #: Channel
 msgid "channel"
@@ -131,7 +143,7 @@ msgstr "Atenção!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "Isto irá fechar todas as janelas do KiwiIRC. Deseja continuar?"
+msgstr "Isto irá fechar todas as janelas do Kiwi IRC. Deseja continuar?"
 
 #: Real name
 msgid "whois_realname"
@@ -161,49 +173,57 @@ msgstr "Ignorar utilizador"
 msgid "connection_channel"
 msgstr "Canal"
 
+#: Away
+msgid "away"
+msgstr "Ausente"
+
 #: {{count}} week
 msgid "week"
-msgstr "semana"
+msgstr "{{count}} semana"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "semanas"
+msgstr "{{count}} semanas"
 
 #: {{count}} day
 msgid "day"
-msgstr "dia"
+msgstr "{{count}} dia"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dias"
+msgstr "{{count}} dias"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "hora"
+msgstr "{{count}} hora"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "horas"
+msgstr "{{count}} horas"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuto"
+msgstr "{{count}} minuto"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minutos"
+msgstr "{{count}} minutos"
 
 #: {{count}} second
 msgid "second"
-msgstr "segundo"
+msgstr "{{count}} segundo"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "segundos"
+msgstr "{{count}} segundos"
 
 #: General
 msgid "settings_general"
 msgstr "Geral"
+
+#: Language
+msgid "settings_language"
+msgstr "Idioma"
 
 #: Theme
 msgid "settings_theme"
@@ -224,6 +244,10 @@ msgstr "Esquema de Mensagens"
 #: Use monospace
 msgid "settings_use_monospace"
 msgstr "Usar fonte Monospace"
+
+#: Use Kiwi as my default IRC client
+msgid "settings_default_handler"
+msgstr "Utilizar KiwiIRC como o meu cliente de IRC predefinido"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -265,6 +289,10 @@ msgstr "Formatação extra"
 msgid "settings_nick_colouring"
 msgstr "Colorir os nicks nas mensagens"
 
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Partilhar quando estou a escrever uma mensagem"
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Incluir mensagens de entrada/saída como actividade"
@@ -291,7 +319,7 @@ msgstr "Enviar mensagem"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Insira a senha do canal"
+msgstr "Insira a  senha do canal"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -319,7 +347,7 @@ msgstr "Desactivar sons"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Esconder numero de mensagens não lidas"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -371,11 +399,59 @@ msgstr "Banido por"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Actualizando lista de bans"
+msgstr "Actualizando lista de bans..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
 msgstr "Não existem utilizadores banidos"
+
+#: Refresh invite list
+msgid "invites_refresh"
+msgstr "Actualizar a lista de convites"
+
+#: Invited user
+msgid "invites_user"
+msgstr "Utilizador convidado"
+
+#: Invited by
+msgid "invites_by"
+msgstr "Convidado por"
+
+#: Refreshing invite list...
+msgid "invites_refreshing"
+msgstr "Actualizando a lista de convites..."
+
+#: Nobody is invited!
+msgid "invites_nobody"
+msgstr "Ninguém foi convidado!"
+
+#: This is a public channel.
+msgid "invite_public_channel"
+msgstr "Este é um canal público."
+
+#: Only invited users can join.
+msgid "invite_private_channel"
+msgstr "Apenas utilizadores convidados podem entrar."
+
+#: Only allow invited users
+msgid "invite_set_private"
+msgstr "Apenas utilizadores convidados podem entrar"
+
+#: Allow anybody to join
+msgid "invite_set_public"
+msgstr "Permite a entrada de qualquer utilizador"
+
+#: Only registered users can join
+msgid "invite_registered_only"
+msgstr "Apenas utilizadores registrados podem entrar"
+
+#: Add invite
+msgid "invite_add_invite"
+msgstr "Adicionar convite"
+
+#: (Any registered user)
+msgid "invite_any_registered"
+msgstr "(Qualquer utilizador registado)"
 
 #: Topic
 msgid "channel_topic"
@@ -395,19 +471,19 @@ msgstr "Apenas OPs podem alterar o tópico"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Bloquear mensagens externas"
+msgstr "Bloquear mensagens externas ao canal"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Clique no botão atualizar para atualizar a lista de canais"
+msgstr "Clique no botão actualizar para actualizar a lista de canais"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
 msgstr "Nenhum canal encontrado, tente novamente mais tarde"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Bem vindos ao Kiwi IRC! Escolha um canal à esquerda."
+msgstr "Bem vindos ao Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -459,7 +535,7 @@ msgstr "Mensagens não lidas"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Definições de rede"
+msgstr "Detalhes do servidor"
 
 #: Port
 msgid "settings_port"
@@ -475,7 +551,7 @@ msgstr "Os seus detalhes"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Nick"
 
 #: Advanced
 msgid "settings_advanced"
@@ -488,6 +564,10 @@ msgstr "Codificação"
 #: Show Raw
 msgid "settings_show_raw"
 msgstr "Mostrar raw"
+
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Websocket directo"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -511,7 +591,7 @@ msgstr "{{count}} pessoas aqui"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtrar utilizadores no canal"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -667,11 +747,19 @@ msgstr "Filtrar Canais"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Descobrir Mais Canais"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"
 msgstr "Mudar de nick"
+
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "Introduza o novo nick..."
+
+#: This is you!
+msgid "user_you"
+msgstr "Este/a é você!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -729,13 +817,25 @@ msgstr "Kickar + Banir do canal"
 msgid "error_no_channel_join"
 msgstr "Por favor especifique um canal para entrar, por exemplo, /join #exemplo"
 
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr "O nick {{nick}} já se econtra em uso!"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr "Deve inserir um novo nick"
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr "O nick não pode começar com um número"
+
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
 msgstr "{{nick}} deu estatuto de op a {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} tirou estatuto de op a {{target}}"
+msgstr "{{nick}} removeu o estatuto de op a {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
@@ -743,7 +843,7 @@ msgstr "{{nick}} deu estatuto de half-op a {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} tirou estatuto de half-op a {{target}}"
+msgstr "{{nick}} removeu o estatuto de half-op a {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
@@ -751,7 +851,7 @@ msgstr "{{nick}} deu estatuto de voice a {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} tirou estatuto de voice a {{target}}"
+msgstr "{{nick}} removeu o estatuto de voice a {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -759,7 +859,7 @@ msgstr "{{nick}} deu estatuto de admin a {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} tirou estatuto de admin a {{target}}"
+msgstr "{{nick}} removeu o estatuto de admin a {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
@@ -767,7 +867,7 @@ msgstr "{{nick}} deu estatuto de owner a {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} tirou estatuto de owner a {{target}}"
+msgstr "{{nick}} removeu o estatuto de owner a {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -803,7 +903,7 @@ msgstr "Sair, e depois reentrar num canal"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Mudar o seu nickname"
+msgstr "Mudar o seu nick"
 
 #: Start a private conversation with someone
 msgid "command_query"
@@ -842,8 +942,8 @@ msgid "command_quit"
 msgstr "Desconectar do servidor de IRC"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Conecte-se a uma nova rede de IRC"
+msgid "command_server"
+msgstr "Ligar a uma nova rede de IRC"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -873,6 +973,14 @@ msgstr "Ignorar mensagens de alguém"
 msgid "command_unignore"
 msgstr "Pare de ignorar alguém"
 
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Role um Dado"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Rola um dado de {{sides}} lados e obtém {{number}}"
+
 #: Your IRC client
 msgid "personal_client"
 msgstr "O seu cliente de IRC."
@@ -888,6 +996,22 @@ msgstr "Eles estarão aqui quando voltar."
 #: Add a Network
 msgid "personal_add"
 msgstr "Adicionar uma rede"
+
+#: You are trying to connect to {{network}}
+msgid "personal_connect_to"
+msgstr "Está a tentar ligar à rede {{network}}"
+
+#: Network has been added to your existing Kiwi window.
+msgid "personal_added_to_existing"
+msgstr "A rede foi adicionada à janela existente do KiwiIRC"
+
+#: Add network to existing Kiwi window
+msgid "personal_add_existing_tab"
+msgstr "Adicionar rede à janela existente do KiwiIRC"
+
+#: Temporarily connect to this network
+msgid "personal_connect_temporary"
+msgstr "Ligar temporariamente a esta rede"
 
 #: Saved networks
 msgid "personal_saved"
@@ -908,10 +1032,6 @@ msgstr "(Obrigado a Adam @Rizon pelo desenvolvimento do suporte a servidor webso
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Dê à versão de desenvolvimento do Kiwi IRC uma tentativa!"
-
-#: Connected
-msgid "connected"
-msgstr "Ligado"
 
 #: Disconnected
 msgid "disconnected"
@@ -943,7 +1063,7 @@ msgstr "{{nick}} convidou-te para o canal {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Alcunha {{nick}} já em uso. Tentando com {{newnick}}..."
+msgstr "Nick {{nick}} já em uso. Tentando com {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
@@ -951,5 +1071,5 @@ msgstr "{{nick}} é agora conhecido como {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "alterou o tópico para: {{topic}}"
+msgstr "{{nick}} alterou o tópico para: {{topic}}"
 

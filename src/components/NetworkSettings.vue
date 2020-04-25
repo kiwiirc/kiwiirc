@@ -1,32 +1,40 @@
 <template>
     <div class="kiwi-networksettings">
-        <form class="u-form">
+        <form class="u-form" @submit.prevent="connect">
             <div class="kiwi-title">{{ $t('settings_server_details') }}</div>
             <div class="kiwi-networksettings-section-block">
                 <div v-if="network.state_error" class="kiwi-networksettings-error">
                     {{ $t('network_noconnect') }}
                     <span>{{ readableStateError(network.state_error) }}</span>
                 </div>
+                <div v-else-if="network.last_error" class="kiwi-networksettings-error">
+                    <span>{{ network.last_error }}</span>
+                </div>
 
                 <server-selector
-                    :network="network"
+                    :connection="network.connection"
                     :network-list="network_list"
-                    @input="onServerInput" />
+                />
 
                 <div class="kiwi-networksettings-connection-password">
                     <template v-if="server_type==='network'">
                         <input-text
+                            v-model="network.connection.nick"
+                            :label="$t('settings_nickname')"
+                        />
+                        <input-text
+                            v-model="network.password"
+                            :show-plain-text="true"
                             :label="$t('password')"
-                            v-model="network.connection.password"
                             type="password"
                         />
                     </template>
                     <template v-else>
-                        <input-text :label="$t('username')" v-model="znc_username" />
-                        <input-text :label="$t('network')" v-model="znc_network" />
+                        <input-text v-model="znc_username" :label="$t('username')" />
+                        <input-text v-model="znc_network" :label="$t('network')" />
                         <input-text
-                            :label="$t('password')"
                             v-model="znc_password"
+                            :label="$t('password')"
                             type="password"
                         />
                     </template>
@@ -60,10 +68,6 @@
                     </a>
                 </div>
 
-                <div class="kiwi-networksettings-user">
-                    <input-text v-model="network.nick" :label="$t('settings_nickname')" />
-                </div>
-
                 <h4
                     class="kiwi-show-advanced-title"
                     @click="show_advanced=!show_advanced"
@@ -79,49 +83,70 @@
                 <div v-if="show_advanced" class="kiwi-networksettings-advanced">
                     <template>
                         <input-text
-                            :label="$t('settings_encoding')"
                             v-model="network.connection.encoding"
+                            :label="$t('settings_encoding')"
                         />
-                        <div class="kiwi-networksettings-realname">
-                            <input-text v-model="network.gecos" :label="$t('whois_realname')" />
-                        </div>
+
+                        <input-text
+                            v-model="network.connection.password"
+                            :show-plain-text="true"
+                            :label="$t('server_password')"
+                            type="password"
+                        />
+
+                        <input-text
+                            v-model="network.gecos"
+                            :label="$t('whois_realname')"
+                        />
+
                         <label>
                             <span class="kiwi-appsettings-showraw-label">
                                 {{ $t('settings_show_raw') }}
                             </span>
-                            <input v-model="settingShowRaw" type="checkbox" >
+                            <input v-model="settingShowRaw" type="checkbox">
+                        </label>
+
+                        <label>
+                            <span class="kiwi-appsettings-showraw-label">
+                                {{ $t('settings_use_websocket') }}
+                            </span>
+                            <input v-model="network.connection.direct" type="checkbox">
+                            <input-text
+                                v-if="network.connection.direct"
+                                v-model="directWs"
+                            />
                         </label>
 
                         <label class="u-form-block">
-                            <span>{{ $t('settings_autorun') }}</span>
-                            <textarea
+                            <input-text
                                 v-model="network.auto_commands"
-                                cols="40"
-                                rows="5"
+                                :label="$t('settings_autorun')"
+                                type="textarea"
                             />
                         </label>
                     </template>
                 </div>
 
-                <div
+                <button
                     v-if="network.state === 'disconnected'"
                     class="u-button kiwi-connect-to-newnetwork"
                     @click="connect()"
                 >
                     {{ $t('network_connect') }}
-                </div>
-                <div
+                </button>
+                <button
                     v-else-if="network.state === 'connecting'"
                     class="u-button kiwi-connect-to-newnetwork"
+                    disabled
                 >
                     {{ $t('connecting') }}
-                </div>
+                </button>
             </div>
 
             <div class="kiwi-dangerzone">
                 <h3>{{ $t('settings_danger') }}</h3>
                 <a class="u-button u-button-warning" @click="removeNetwork">
-                    <i class="fa fa-times" aria-hidden="true"/> {{ $t('settings_remove') }}
+                    <i class="fa fa-times" aria-hidden="true" /> {{ $t('settings_remove') }}
                 </a>
             </div>
         </form>
@@ -157,6 +182,63 @@ export default {
             },
             set(val) {
                 return this.network.setting('show_raw', val);
+            },
+        },
+        directWs: {
+            get() {
+                if (!this.network.connection.direct) {
+                    return '';
+                }
+
+                let connection = this.network.connection;
+                let addr = '';
+                addr += connection.tls ?
+                    'wss://' :
+                    'ws://';
+                addr += connection.server;
+
+                let port = parseInt(connection.port, 10);
+                if (Number.isNaN(port)) {
+                    port = connection.tls ?
+                        443 :
+                        80;
+                }
+
+                // Only include the port if needed
+                if (
+                    (connection.tls && port !== 443) ||
+                    (!connection.tls && port !== 80)
+                ) {
+                    addr += ':' + connection.port;
+                }
+
+                addr += connection.path;
+
+                return addr;
+            },
+            set(newVal) {
+                let url = null;
+
+                try {
+                    url = new URL(newVal);
+                } catch (e) {
+                    return;
+                }
+
+                let connection = this.network.connection;
+                connection.tls = url.protocol.toLowerCase() === 'wss:';
+                connection.server = url.hostname;
+
+                let port = parseInt(url.port, 10);
+                if (Number.isNaN(port)) {
+                    port = url.protocol.toLowerCase() === 'wss:' ?
+                        443 :
+                        80;
+                }
+
+                connection.port = port;
+                let u = url.href.replace(url.protocol + '//', '');
+                connection.path = u.substr(u.indexOf('/'));
             },
         },
     },
@@ -221,6 +303,7 @@ export default {
         setZncPass() {
             let newPass = `${this.znc_username}/${this.znc_network}:${this.znc_password}`;
             this.network.connection.password = newPass;
+            this.network.connection.nick = this.znc_username;
         },
         toggleTls() {
             let connection = this.network.connection;
@@ -232,11 +315,6 @@ export default {
             } else if (!connection.tls && connection.port === 6697) {
                 connection.port = 6667;
             }
-        },
-        onServerInput(server) {
-            this.network.connection.server = server.server;
-            this.network.connection.port = server.port;
-            this.network.connection.tls = server.tls;
         },
     },
 };
@@ -271,40 +349,7 @@ export default {
     overflow: hidden;
     clear: both;
     border-radius: 2px;
-}
-
-.kiwi-networksettings .u-form span {
-    display: inline-block;
-    line-height: 25px;
-    width: auto;
-    font-weight: 500;
-    font-size: 1em;
-    text-align: left;
-    max-width: none;
-    top: 10px;
-}
-
-.kiwi-networksettings .u-form .u-input-text--reveal-value span {
-    top: -14px;
-    font-size: 0.8em;
-}
-
-.kiwi-networksettings input[type='text'],
-    .kiwi-networksettings input[type='password'],
-    .kiwi-networksettings input[type='email'],
-    .kiwi-networksettings textarea,
-    .kiwi-networksettings .u-input-text input {
-    clear: both;
-    width: 100%;
-    height: 40px;
-    padding: 0 10px;
-    line-height: 40px;
-    box-sizing: border-box;
-    border-radius: 1px;
-    min-height: none;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-width: none;
+    border: 1px solid;
 }
 
 .kiwi-networksettings .u-input-text {
@@ -320,30 +365,16 @@ export default {
 }
 
 //Style the 'secrue/unsecure' port icon
-.kiwi-networksettings .u-input-text-c {
-    bottom: auto;
-    height: 40px;
-    line-height: 40px;
+.kiwi-networksettings .kiwi-customserver-tls {
     text-align: center;
-    top: 12px;
     cursor: pointer;
-    right: 24px;
+    font-size: 1em;
 }
 
-.kiwi-networksettings .kiwi-customserver-tls-lock {
-    font-size: 1.4em;
-    opacity: 0;
+.kiwi-networksettings .kiwi-customserver-tls i {
     left: 3px;
-}
-
-.kiwi-networksettings .kiwi-customserver-tls--enabled .kiwi-customserver-tls-lock {
-    opacity: 1;
-}
-
-.kiwi-networksettings .kiwi-customserver-tls-minus {
-    font-size: 1.4em;
-    top: 0;
-    left: 3px;
+    top: 2px;
+    font-size: 1.3em;
 }
 
 //Style the network types section
@@ -367,16 +398,11 @@ export default {
     border-radius: 4px;
 }
 
-//User nickname input, remove bottom margin
-.kiwi-networksettings form .kiwi-networksettings-user .kiwi-networksettings-realname .u-input-text {
-    margin-bottom: 10px;
-}
-
 .kiwi-networksettings .kiwi-show-advanced-title {
     text-align: center;
     cursor: pointer;
     padding-top: 0;
-    margin: 0 0 20px 0;
+    margin: 40px 0 20px 0;
 }
 
 //Apply spacing to the advanced options checkbox label
@@ -399,10 +425,6 @@ export default {
     opacity: 1;
 }
 
-.kiwi-networksettings-user {
-    margin-top: 15px;
-}
-
 .kiwi-networksettings-advanced {
     margin-bottom: 20px;
 }
@@ -414,19 +436,25 @@ export default {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.kiwi-dangerzone i {
+    margin-right: 5px;
+}
+
 .kiwi-dangerzone h3 {
     padding-top: 0;
 }
 
 .kiwi-networksettings-error {
     text-align: center;
-    margin: 1em;
-    padding: 0.3em;
+    margin: 1em 0 2em 0;
+    padding: 1em;
+    border: 1px dashed;
 }
 
-.kiwi-networksettings-error span {
+.kiwi-networksettings .kiwi-networksettings-error span {
     display: block;
     font-style: italic;
+    text-align: center;
 }
 
 .kiwi-networksettings-server-types a {
@@ -446,11 +474,6 @@ export default {
 .kiwi-networksettings-connection-port {
     width: 25%;
     float: right;
-}
-
-.kiwi-networksettings .u-input-text-c span.kiwi-customserver-tls {
-    top: -14px;
-    font-size: 0.8em;
 }
 
 .kiwi-networksettings-danger h3 {

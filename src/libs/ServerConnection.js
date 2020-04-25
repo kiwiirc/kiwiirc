@@ -232,6 +232,12 @@ function createChannelOnConnection(connection, channelId) {
             channel.sendControl('HOST ' + host + ':' + (tls ? '+' : '') + port);
         };
 
+        channel.close = function close() {
+            if (channel.remoteState >= 1) {
+                connection.ws.send(':' + channelId);
+            }
+        };
+
         // This is not supported but irc-framework transports need it, so just noop it
         channel.setEncoding = function setEncoding(newEncoding) {
             encoding = newEncoding;
@@ -239,6 +245,10 @@ function createChannelOnConnection(connection, channelId) {
                 connection.ws.send(':' + channelId + ' ENCODING ' + newEncoding);
             }
             return true;
+        };
+
+        channel.disposeSocket = function disposeSocket() {
+            // noop
         };
 
         channel.initChannel = function initChannel() {

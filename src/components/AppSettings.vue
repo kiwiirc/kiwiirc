@@ -3,16 +3,27 @@
 
         <div class="kiwi-appsettings-title" @click="closeSettings">
             <span>{{ $t('close') }}</span>
-            <i class="fa fa-times" aria-hidden="true"/>
+            <i class="fa fa-times" aria-hidden="true" />
         </div>
 
         <form class="u-form">
-            <tabbed-view :active-tab="activeTab" class="kiwi-appsettings-tab-container">
+            <tabbed-view ref="tabs" class="kiwi-appsettings-tab-container">
                 <tabbed-tab :header="$t('settings_general')" :focus="true" name="general">
 
                     <div class="kiwi-appsettings-block">
                         <h3>{{ $t('settings_general') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-general">
+                            <label class="kiwi-appsettings-setting-language">
+                                <div><i class="fa fa-globe" /></div>
+                                <select v-model="settingLanguage">
+                                    <option value="">
+                                        Auto
+                                    </option>
+                                    <option v-for="l in localesList" :key="l[0]" :value="l[0]">
+                                        {{ l[1] }}
+                                    </option>
+                                </select>
+                            </label>
                             <label class="kiwi-appsettings-setting-theme">
                                 <span>{{ $t('settings_theme') }} </span>
                                 <a
@@ -20,13 +31,13 @@
                                     class="kiwi-appsettings-theme-reload"
                                     @click="refreshTheme"
                                 >
-                                    <i class="fa fa-refresh" aria-hidden="true"/>
+                                    <i class="fa fa-refresh" aria-hidden="true" />
                                 </a>
                                 <select v-model="theme">
                                     <option
                                         v-for="t in settings.themes"
-                                        :value="t.name"
                                         :key="t.name"
+                                        :value="t.name"
                                     >
                                         {{ t.name }}
                                     </option>
@@ -38,12 +49,23 @@
                             </label>
                             <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_show_autocomplete') }} </span>
-                                <input v-model="settingShowAutoComplete" type="checkbox" >
+                                <input v-model="settingShowAutoComplete" type="checkbox">
                             </label>
                             <label v-if="themeSupportsMonospace" class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_use_monospace') }} </span>
-                                <input v-model="settingUseMonospace" type="checkbox" >
+                                <input v-model="settingUseMonospace" type="checkbox">
                             </label>
+                            <div
+                                v-if="canRegisterProtocolHandler"
+                                style="margin-top: 10px; text-align: center;"
+                            >
+                                <a
+                                    class="u-button u-button-primary"
+                                    @click="makeDefaultProtocolHandler()"
+                                >
+                                    <i>{{ $t('settings_default_handler') }}</i>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -60,19 +82,19 @@
                             </label>
                             <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_timestamps') }} </span>
-                                <input v-model="settingBufferShowTimestamps" type="checkbox" >
+                                <input v-model="settingBufferShowTimestamps" type="checkbox">
                             </label>
                             <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_24hour_timestamps') }} </span>
-                                <input v-model="timestamps_24h" type="checkbox" >
+                                <input v-model="timestamps_24h" type="checkbox">
                             </label>
                             <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_emoticons') }} </span>
-                                <input v-model="settingBufferShowEmoticons" type="checkbox" >
+                                <input v-model="settingBufferShowEmoticons" type="checkbox">
                             </label>
                             <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_block_private') }} </span>
-                                <input v-model="settingBufferBlockPms" type="checkbox" >
+                                <input v-model="settingBufferBlockPms" type="checkbox">
                             </label>
                             <label
                                 class="kiwi-appsettings-full kiwi-appsettings-setting-scrollback"
@@ -86,11 +108,15 @@
                             </label>
                             <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_formatting') }} </span>
-                                <input v-model="settingBufferExtraFormatting" type="checkbox" >
+                                <input v-model="settingBufferExtraFormatting" type="checkbox">
                             </label>
                             <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_nick_colouring') }} </span>
-                                <input v-model="settingBufferColourNicknames" type="checkbox" >
+                                <input v-model="settingBufferColourNicknames" type="checkbox">
+                            </label>
+                            <label class="u-checkbox-wrapper">
+                                <span>{{ $t('settings_share_typing') }} </span>
+                                <input v-model="settingBufferShareTyping" type="checkbox">
                             </label>
                         </div>
                     </div>
@@ -100,15 +126,15 @@
                         <div class="kiwi-appsettings-section kiwi-appsettings-notifications">
                             <label class="kiwi-appsettings-setting-showjoinpart u-checkbox-wrapper">
                                 <span>{{ $t('settings_show_joinpart') }} </span>
-                                <input v-model="settingBufferTrafficAsActivity" type="checkbox" >
+                                <input v-model="settingBufferTrafficAsActivity" type="checkbox">
                             </label>
                             <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_mute_sound') }} </span>
-                                <input v-model="settingBufferMuteSound" type="checkbox" >
+                                <input v-model="settingBufferMuteSound" type="checkbox">
                             </label>
                             <label class="kiwi-appsettings-full">
                                 <span>{{ $t('settings_highlight') }} </span>
-                                <input v-model="settingHighlights" type="text" class="u-input" >
+                                <input v-model="settingHighlights" type="text" class="u-input">
                             </label>
                         </div>
                     </div>
@@ -118,7 +144,7 @@
                         <div class="kiwi-appsettings-section kiwi-appsettings-operator-tools">
                             <label>
                                 <span>{{ $t('settings_default_ban_mask') }} </span>
-                                <input v-model="settingDefaultBanMask" class="u-input" >
+                                <input v-model="settingDefaultBanMask" class="u-input">
                             </label>
                             <label>
                                 <span>{{ $t('settings_default_kick_reason') }}</span>
@@ -127,7 +153,8 @@
                         </div>
                     </div>
                     <div v-if="!state.setting('hide_advanced') && !settingAdvancedEnable"
-                         class="kiwi-appsettings-block">
+                         class="kiwi-appsettings-block"
+                    >
                         <h3>{{ $t('settings_advanced_title') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-advanced-enable">
                             <div>
@@ -149,7 +176,7 @@
                     <div class="kiwi-appsettings-block kiwi-appsettings-block-aliases">
                         <h3>{{ $t('settings_aliases') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-aliases">
-                            <settings-aliases/>
+                            <settings-aliases />
                         </div>
                     </div>
                 </tabbed-tab>
@@ -157,10 +184,11 @@
                 <tabbed-tab
                     v-if="settingAdvancedEnable"
                     :header="$t('settings_advanced')"
-                    name="advanced">
+                    name="advanced"
+                >
                     <div class="kiwi-appsettings-block kiwi-appsettings-block-advanced">
                         <div class="kiwi-appsettings-section kiwi-appsettings-advanced">
-                            <settings-advanced/>
+                            <settings-advanced />
                         </div>
                     </div>
                 </tabbed-tab>
@@ -169,8 +197,9 @@
                     v-for="item in pluginUiElements"
                     :key="item.id"
                     :header="item.title"
-                    :name="item.title">
-                    <div :is="item.component" v-bind="item.props"/>
+                    :name="item.title"
+                >
+                    <div :is="item.component" v-bind="item.props" />
                 </tabbed-tab>
             </tabbed-view>
         </form>
@@ -184,6 +213,7 @@ import _ from 'lodash';
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import GlobalApi from '@/libs/GlobalApi';
+import localesList from '@/res/localesList';
 import SettingsAliases from './SettingsAliases';
 import SettingsAdvanced from './SettingsAdvanced';
 
@@ -211,9 +241,9 @@ export default {
         return {
             state: state,
             theme: '',
-            activeTab: '',
             customThemeUrl: '',
             pluginUiElements: GlobalApi.singleton().appSettingsPlugins,
+            localesList,
         };
     },
     computed: {
@@ -221,6 +251,9 @@ export default {
             let themeMgr = ThemeManager.instance();
             let val = themeMgr.themeVar('supports-monospace');
             return val === '1';
+        },
+        canRegisterProtocolHandler: function canRegisterProtocolHandler() {
+            return !!navigator.registerProtocolHandler && state.setting('allowRegisterProtocolHandler');
         },
         timestamps_24h: {
             get: function get24Timestamps() {
@@ -230,7 +263,7 @@ export default {
             set: function set24Timestamps(newVal) {
                 let newFormat = newVal ?
                     '%H:%M:%S' :
-                    '%l:%M:%S';
+                    '%l:%M:%S %p';
                 state.setting('buffers.timestamp_format', newFormat);
             },
         },
@@ -248,6 +281,7 @@ export default {
         settingBufferExtraFormatting: bindSetting('buffers.extra_formatting'),
         settingBufferTrafficAsActivity: bindSetting('buffers.traffic_as_activity'),
         settingBufferMuteSound: bindSetting('buffers.mute_sound'),
+        settingBufferShareTyping: bindSetting('buffers.share_typing'),
         settingDefaultBanMask: bindSetting('buffers.default_ban_mask'),
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
         settingAdvancedEnable: {
@@ -256,6 +290,14 @@ export default {
             },
             set: function setSettingShowAdvancedTab(newVal) {
                 state.ui.show_advanced_tab = newVal;
+            },
+        },
+        settingLanguage: {
+            get: function getSettingLanguage() {
+                return state.setting('language') || '';
+            },
+            set: function setSettingLanguage(newVal) {
+                state.setting('language', newVal || null);
             },
         },
         messageLayouts() {
@@ -313,7 +355,7 @@ export default {
             // Remove all our attached events to cleanup
             let teardownFn = () => {
                 this.state.$off('theme.change', updateFn);
-                watches.forEach(unwatchFn => unwatchFn());
+                watches.forEach((unwatchFn) => unwatchFn());
                 this.$off('hook:destroy', teardownFn);
             };
 
@@ -335,9 +377,13 @@ export default {
         enableAdvancedTab() {
             this.settingAdvancedEnable = true;
             this.$nextTick(() => {
-                this.activeTab = 'advanced';
+                this.$refs.tabs.setActiveByName('advanced');
                 this.$el.scrollTop = 0;
             });
+        },
+        makeDefaultProtocolHandler() {
+            navigator.registerProtocolHandler('irc', document.location.origin + document.location.pathname + '#%s', 'Kiwi IRC');
+            navigator.registerProtocolHandler('ircs', document.location.origin + document.location.pathname + '#%s', 'Kiwi IRC');
         },
     },
 };
@@ -357,6 +403,22 @@ export default {
     }
 }
 
+.u-form label.kiwi-appsettings-setting-language.kiwi-appsettings-setting-language {
+    display: flex;
+    margin-bottom: 2em;
+}
+
+.kiwi-appsettings-setting-language select {
+    flex-grow: 0;
+    max-width: 200px;
+}
+
+.kiwi-appsettings-setting-language div {
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 1em;
+}
+
 .kiwi-appsettings-setting-theme span {
     margin-left: 0;
 }
@@ -369,8 +431,8 @@ export default {
     max-width: none;
 }
 
-.kiwi-appsettings-full span {
-    margin: 0;
+.kiwi-appsettings-full span,
+.kiwi-appsettings-full input {
     width: 100%;
 }
 
@@ -378,15 +440,7 @@ export default {
     padding: 1em 20px 2em 20px;
 }
 
-.u-form .kiwi-appsettings-setting-scrollback {
-    line-height: 40px;
-}
-
-.u-form .kiwi-appsettings-setting-scrollback input {
-    box-sizing: border-box;
-    height: 40px;
-    border: 1px solid;
-    float: left;
+.kiwi-appsettings .kiwi-appsettings-setting-scrollback input {
     margin-right: 10px;
     width: 80px;
 }

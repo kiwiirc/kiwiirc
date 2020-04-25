@@ -1,5 +1,11 @@
 <template>
-    <div :class="{'kiwi-nicklist--filtering': filter_visible }" class="kiwi-nicklist">
+    <div
+        :class="{
+            'kiwi-nicklist--filtering': filter_visible,
+            'kiwi-nicklist--avatars': shouldShowAvatars,
+        }"
+        class="kiwi-nicklist"
+    >
         <div class="kiwi-nicklist-usercount" @click="toggleUserFilter">
             <span>
                 {{
@@ -11,21 +17,35 @@
 
             <input
                 ref="user_filter"
-                :placeholder="$t('filter_users')"
                 v-model="user_filter"
+                :placeholder="$t('filter_users')"
                 @blur="onFilterBlur"
             >
-            <i class="fa fa-search"/>
+            <i class="fa fa-search" />
         </div>
 
-        <ul class="kiwi-nicklist-users">
-            <nicklist-user
-                v-for="user in sortedUsers"
-                :key="user.nick"
-                :user="user"
-                :nicklist="self"
-            />
-        </ul>
+        <DynamicScroller
+            :items="sortedUsers"
+            :min-item-size="34"
+            :key-field="'nick'"
+            class="kiwi-nicklist-users"
+        >
+            <template v-slot="{ item, index, active }">
+                <DynamicScrollerItem
+                    :item="item"
+                    :active="active"
+                    :size-dependencies="[]"
+                    :data-index="index"
+                >
+                    <nicklist-user
+                        :key="item.nick"
+                        :user="item"
+                        :nicklist="self"
+                        :network="network"
+                    />
+                </DynamicScrollerItem>
+            </template>
+        </DynamicScroller>
     </div>
 </template>
 
@@ -38,11 +58,22 @@ import NicklistUser from './NicklistUser';
 
 let log = Logger.namespace('Nicklist');
 
+// This provides a better sort for numbered nicks but does not work on ios9
+let intlCollator = null;
+if (global.Intl) {
+    intlCollator = new Intl.Collator({}, { numeric: true });
+}
+
 // Hot function, so it's here for easier caching
 function strCompare(a, b) {
+    if (intlCollator) {
+        return intlCollator.compare(a, b);
+    }
+
     if (a === b) {
         return 0;
     }
+
     return a > b ?
         1 :
         -1;
@@ -62,6 +93,9 @@ export default {
         };
     },
     computed: {
+        shouldShowAvatars() {
+            return this.buffer.setting('nicklist_avatars');
+        },
         sortedUsers() {
             // Get a list of network prefixes and give them a rank number
             let netPrefixes = this.network.ircClient.network.options.PREFIX;
@@ -131,8 +165,8 @@ export default {
                 }
 
                 // Both users have a prefix so find the highest ranking one
-                let aP = prefixOrders[modesA[0]];
-                let bP = prefixOrders[modesB[0]];
+                let aP = prefixOrders[this.buffer.userMode(a)];
+                let bP = prefixOrders[this.buffer.userMode(b)];
                 if (aP > bP) {
                     return 1;
                 } else if (aP < bP) {
@@ -157,7 +191,9 @@ export default {
         openQuery(user) {
             let buffer = this.$state.addBuffer(this.buffer.networkid, user.nick);
             this.$state.setActiveBuffer(buffer.networkid, buffer.name);
-            this.sidebarState.close();
+            if (this.$state.ui.is_narrow) {
+                this.sidebarState.close();
+            }
         },
         openUserbox(user) {
             this.$state.$emit('userbox.show', user, {
@@ -184,7 +220,7 @@ export default {
 <style lang="less">
 
 /* Adjust the sidebars width when this nicklist is in view */
-.kiwi-sidebar.kiwi-sidebar-section-nicklist {
+.kiwi-container .kiwi-sidebar.kiwi-sidebar-section-nicklist {
     max-width: 250px;
     width: 250px;
 }
@@ -209,8 +245,9 @@ export default {
     cursor: default;
     box-sizing: border-box;
     height: 43px;
-    line-height: 39px;
+    line-height: 40px;
     width: 100%;
+    border-bottom: 1px solid;
 }
 
 .kiwi-nicklist-usercount span {
@@ -222,7 +259,7 @@ export default {
     opacity: 0.3;
     cursor: pointer;
     font-size: 1.2em;
-    padding-top: 10px;
+    line-height: 40px;
     align-self: flex-start;
     margin-right: 15px;
 }
@@ -258,12 +295,12 @@ export default {
     box-sizing: border-box;
     max-height: 100%;
     flex: 1 auto;
-    list-style: none;
     line-height: 1.2em;
+    margin-top: 6px;
 }
 
 @media screen and (max-width: 759px) {
-    .kiwi-sidebar.kiwi-sidebar-section-nicklist {
+    .kiwi-container .kiwi-sidebar.kiwi-sidebar-section-nicklist {
         width: 100%;
         max-width: 380px;
     }

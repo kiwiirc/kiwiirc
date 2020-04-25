@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
-"Start\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: ca\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: kiwiirc <darren@kiwiirc.com>\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2019-01-12 20:21\n"
+"PO-Revision-Date: 2020-04-13 17:15\n"
 
 #: Start
 msgid "start_button"
@@ -49,9 +49,17 @@ msgstr "Configuració del Kiwi"
 msgid "channels"
 msgstr "Canals"
 
+#: Access
+msgid "access"
+msgstr "Accés"
+
 #: Banned Users
 msgid "banned"
 msgstr "Usuaris banejats"
+
+#: Invited Users
+msgid "invited"
+msgstr "Usuaris convidats"
 
 #: Notifications
 msgid "notifications"
@@ -64,6 +72,10 @@ msgstr "Nom d'usuari"
 #: Password
 msgid "password"
 msgstr "Contrasenya"
+
+#: Server Password
+msgid "server_password"
+msgstr "Contrasenya del servidor"
 
 #: I have a password
 msgid "password_have"
@@ -135,7 +147,7 @@ msgstr "Això tancarà totes les converses de KiwiIRC. Segur que vols tancar aqu
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "Nom real"
 
 #: Status
 msgid "whois_status"
@@ -160,6 +172,10 @@ msgstr "Ignorar a un usuari"
 #: Channel
 msgid "connection_channel"
 msgstr "Canal"
+
+#: Away
+msgid "away"
+msgstr "Està absent"
 
 #: {{count}} week
 msgid "week"
@@ -205,6 +221,10 @@ msgstr "segons"
 msgid "settings_general"
 msgstr "General"
 
+#: Language
+msgid "settings_language"
+msgstr "Idioma"
+
 #: Theme
 msgid "settings_theme"
 msgstr "Tema"
@@ -224,6 +244,10 @@ msgstr "Disseny dels missatges"
 #: Use monospace
 msgid "settings_use_monospace"
 msgstr "Fer servir la font Monospace"
+
+#: Use Kiwi as my default IRC client
+msgid "settings_default_handler"
+msgstr "Usar el Kiwi com el meu cliente IRC predeterminat"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -264,6 +288,10 @@ msgstr "Format extra"
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
 msgstr "Colorejar nicks en els missatges"
+
+#: Share when I'm typing a message
+msgid "settings_share_typing"
+msgstr "Comparteix quan estic escribint un missatge"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -319,7 +347,7 @@ msgstr "Deshabilitar el so"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Amagar comptador de missatges no llegits"
+msgstr "Amagar el comptador de missatges no llegits"
 
 #: Operator tools
 msgid "operator_tools"
@@ -377,6 +405,54 @@ msgstr "Actualitzant la llista de bans"
 msgid "bans_nobody"
 msgstr "Ningú està banejat"
 
+#: Refresh invite list
+msgid "invites_refresh"
+msgstr "Refrescar la llista de convidats"
+
+#: Invited user
+msgid "invites_user"
+msgstr "Usuari convidat"
+
+#: Invited by
+msgid "invites_by"
+msgstr "Convidat per"
+
+#: Refreshing invite list...
+msgid "invites_refreshing"
+msgstr "Refrescant la llista de convidats..."
+
+#: Nobody is invited!
+msgid "invites_nobody"
+msgstr "No hi ha ningú convidat!"
+
+#: This is a public channel.
+msgid "invite_public_channel"
+msgstr "Aquest és un canal públic."
+
+#: Only invited users can join.
+msgid "invite_private_channel"
+msgstr "Només els usuaris convidats poden entrar."
+
+#: Only allow invited users
+msgid "invite_set_private"
+msgstr "Permet entrar només als usuaris convidats"
+
+#: Allow anybody to join
+msgid "invite_set_public"
+msgstr "Permet entrar a qualsevol"
+
+#: Only registered users can join
+msgid "invite_registered_only"
+msgstr "Només els usuaris registrats poden entrar"
+
+#: Add invite
+msgid "invite_add_invite"
+msgstr "Convidar a un usuari"
+
+#: (Any registered user)
+msgid "invite_any_registered"
+msgstr "(Qualsevol usuari registrat)"
+
 #: Topic
 msgid "channel_topic"
 msgstr "Tòpic"
@@ -405,7 +481,7 @@ msgstr "Fes click al botó Actualitzar per refrescar el llistat de sales"
 msgid "channel_list_nonefound"
 msgstr "No s'han trobat sales, intenta-ho de nou més tard"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Benvingut a Kiwi IRC! Selecciona un canal."
 
@@ -489,6 +565,10 @@ msgstr "Codificació"
 msgid "settings_show_raw"
 msgstr "Mostrar l'original"
 
+#: Direct websocket
+msgid "settings_use_websocket"
+msgstr "Websocket directo"
+
 #: Run commands when connected
 msgid "settings_autorun"
 msgstr "Executa comandes al connectar"
@@ -511,7 +591,7 @@ msgstr "{{count}} usuaris aquí"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtrar els usuarios de la sala"
+msgstr "Filtrar els usuaris de la sala"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -673,13 +753,21 @@ msgstr "Buscar més sales"
 msgid "change_nick"
 msgstr "Canviar el nick"
 
+#: Enter new nickname...
+msgid "enter_new_nick"
+msgstr "Escriu el nou àlies..."
+
+#: This is you!
+msgid "user_you"
+msgstr "Es tracta de vostè!"
+
 #: Account name: {{user}}
 msgid "user_account"
 msgstr "Nom de la compta: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Real name: {{realname}}"
+msgstr "Nom real: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
@@ -728,6 +816,18 @@ msgstr "Kick + Ban del canal"
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Si us plau, especifica la sala a entrar. Per ex. /join #exemple"
+
+#: The nickname {{nick}} is already in use!
+msgid "error_nick_in_use"
+msgstr "L'àlies {{nick}} està actualment en ús!"
+
+#: You must enter a new nickname
+msgid "error_empty_nick"
+msgstr "Has d'escriure un nou àlies"
+
+#: Nickname must not start with a number
+msgid "error_no_number"
+msgstr "L'àlies no pot començar amb un número"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -842,8 +942,8 @@ msgid "command_quit"
 msgstr "Desconnecta del servidor IRC"
 
 #: Connect to a new IRC network
-msgid "command_connect"
-msgstr "Connecta a una nova xarxa IRC"
+msgid "command_server"
+msgstr "Connecta a una nova xarxa d'IRC"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -859,7 +959,7 @@ msgstr "Marca com a absent"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr ""
+msgstr "Marca com a actiu"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -872,6 +972,14 @@ msgstr "Ignora els missatges d'algú"
 #: Stop ignoring somebody
 msgid "command_unignore"
 msgstr "Deixa d'ignorar a algú"
+
+#: Roll a Dice
+msgid "command_dice"
+msgstr "Tira un dau"
+
+#: Rolls a {{sides}} sided dice and gets {{number}}
+msgid "dice_roll"
+msgstr "Llença un dau amb {{sides}} costats i obté {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -888,6 +996,22 @@ msgstr "Estaran aquí quan tornis."
 #: Add a Network
 msgid "personal_add"
 msgstr "Afegeix una xarxa"
+
+#: You are trying to connect to {{network}}
+msgid "personal_connect_to"
+msgstr "Estàs intentant connectar-te a {{network}}"
+
+#: Network has been added to your existing Kiwi window.
+msgid "personal_added_to_existing"
+msgstr "La xarxa s'ha afegit a la teva finestra existent del Kiwi."
+
+#: Add network to existing Kiwi window
+msgid "personal_add_existing_tab"
+msgstr "Afegir la xarxa a la finestra existent del Kiwi"
+
+#: Temporarily connect to this network
+msgid "personal_connect_temporary"
+msgstr "Connectar-se temporalment a aquesta xarxa"
 
 #: Saved networks
 msgid "personal_saved"
@@ -908,10 +1032,6 @@ msgstr "(Gràcies a Adam @Rizon per el desenvolupament del suport del servidor d
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
 msgstr "Prova la versió en desenvolupament del Kiwi IRC!"
-
-#: Connected
-msgid "connected"
-msgstr "Connectat"
 
 #: Disconnected
 msgid "disconnected"
@@ -951,5 +1071,5 @@ msgstr "{{nick}} és ara {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "ha canviat el tòpic a: {{topic}}"
+msgstr "{{nick}} ha canviat el tòpic a: {{topic}}"
 

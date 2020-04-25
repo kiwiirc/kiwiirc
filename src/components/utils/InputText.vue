@@ -1,43 +1,61 @@
 <template>
-    <div
-        :class="[
-            'u-input-text',
-            hasFocus ? 'u-input-text--focus' : '',
-            hasFocus || currentValue ? 'u-input-text--reveal-value' : ''
-        ]"
-    >
+    <div class="u-input-text">
+        <label v-if="label" :for="inputId">{{ label }}</label>
 
-        <span class="u-input-text-label">{{ label }}</span>
+        <div class="u-input-text-inputs" style="display: flex;">
+            <template v-if="type==='password'">
+                <input
+                    :id="inputId"
+                    v-model="currentValue"
+                    :type="plainTextEnabled && !isEdgeBrowser() ? 'text' : 'password'"
+                    :class="{'u-form-input-plaintext' : !isEdgeBrowser() && showPlainText}"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    class="u-input"
+                    @keypress="$emit('keypress', $event)"
+                >
 
-        <input
-            v-if="type==='password'"
-            v-model="currentValue"
-            type="password"
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off" spellcheck="false" @focus="hasFocus=true" @blur="hasFocus=false"
-        >
-        <input
-            v-else-if="type==='number'"
-            v-model="currentValue"
-            type="number"
-            @focus="hasFocus=true"
-            @blur="hasFocus=false"
-        >
-        <input
-            v-else
-            v-model="currentValue"
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off" spellcheck="false" @focus="hasFocus=true" @blur="hasFocus=false"
-        >
+                <i
+                    v-if="showPlainText && !isEdgeBrowser()"
+                    :class="{'u-input-text-plaintext--active': plainTextEnabled}"
+                    class="u-input-text-plaintext fa fa-eye"
+                    aria-hidden="true"
+                    @click="plainTextEnabled = !plainTextEnabled"
+                />
+            </template>
 
-        <div v-if="$slots.default" class="u-input-text-c">
-            <slot/>
-        </div>
+            <input
+                v-else-if="type==='number'"
+                :id="inputId"
+                v-model="currentValue"
+                type="number"
+                class="u-input"
+                @keypress="$emit('keypress', $event)"
+            >
+            <textarea
+                v-else-if="type==='textarea'"
+                :id="inputId"
+                v-model="currentValue"
+                class="u-input"
+                @keypress="$emit('keypress', $event)"
+            />
+            <input
+                v-else
+                :id="inputId"
+                v-model="currentValue"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
+                class="u-input"
+                @keypress="$emit('keypress', $event)"
+            >
 
-        <div class="u-input-text-underline">
-            <div class="u-input-text-underline-active"/>
+            <div v-if="$slots.default" class="u-input-text-c">
+                <slot />
+            </div>
         </div>
     </div>
 </template>
@@ -48,13 +66,22 @@
 let Vue = require('vue');
 
 export default Vue.component('input-text', {
-    props: ['value', 'label', 'type'],
+    props: ['value', 'label', 'type', 'showPlainText'],
     data: function data() {
         return {
-            hasFocus: false,
+            plainTextEnabled: false,
+            inputIdCache: '',
         };
     },
     computed: {
+        inputId() {
+            if (!this.inputIdCache) {
+                // eslint-disable-next-line
+                this.inputIdCache = 'inp_' + Math.floor(Math.random() * 1e17).toString(36);
+            }
+
+            return this.inputIdCache;
+        },
         currentValue: {
             get: function getCurrentValue() {
                 return this.value;
@@ -68,6 +95,9 @@ export default Vue.component('input-text', {
         updateValue: function updateValue(newValue) {
             this.$emit('input', newValue);
         },
+        isEdgeBrowser() {
+            return navigator.appVersion.indexOf('Edge') > -1;
+        },
     },
 });
 </script>
@@ -76,57 +106,27 @@ export default Vue.component('input-text', {
 
 .u-input-text {
     position: relative;
-    padding-top: 1.2em;
-}
-
-.u-input-text input {
-    display: block;
+    margin: 0 0 20px 0;
     box-sizing: border-box;
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    line-height: 1.6em;
-    font-size: 0.9em;
 }
 
-.u-input-text-label {
-    position: absolute;
-    left: 3px;
-    top: 1.2em;
-    transition: top 0.2s, font-size 0.2s;
-    pointer-events: none;
-}
-
-.u-input-text--reveal-value .u-input-text-label {
-    top: -7px;
-    font-size: 0.8em;
-}
-
-.u-input-text-c {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
-.u-input-text-underline {
-    border-width: 0;
-    border-bottom: 1px solid #a9a9a9;
+.u-input-text-inputs {
+    display: flex;
     position: relative;
 }
 
-.u-input-text-underline-active {
-    background: #42b983;
-    transition: left 0.3s;
-    position: absolute;
-    height: 2px;
-    bottom: -1px;
-    right: 0;
-    left: 100%;
+.u-input-text input,
+.u-input-text textarea {
+    box-sizing: border-box;
+    flex: 1;
 }
 
-.u-input-text--focus .u-input-text-underline-active {
-    left: 0;
+.u-input-text input:focus {
+    outline: none;
+}
+
+.u-input-text-c {
+    position: relative;
 }
 
 /* Remove spinners from input numbers */
@@ -140,6 +140,33 @@ export default Vue.component('input-text', {
     /* For webkit browsers like Safari and Chrome */
     -webkit-appearance: none;
     margin: 0;
+}
+
+input[type=text].u-form-input-plaintext,
+input[type=password].u-form-input-plaintext {
+    padding-right: 40px;
+}
+
+.u-input-text-plaintext {
+    line-height: normal;
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    position: absolute;
+    right: 7px;
+    top: 9px;
+}
+
+.u-form--big .u-input-text-plaintext {
+    line-height: 40px;
+    top: 6px;
+}
+
+.u-input-text-plaintext--active,
+.u-input-text-plaintext:hover {
+    opacity: 1;
 }
 
 </style>

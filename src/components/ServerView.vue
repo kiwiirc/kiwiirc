@@ -1,9 +1,9 @@
 <template>
     <div class="kiwi-serverview">
         <div class="kiwi-serverview-inner">
-            <tabbed-view ref="tabs" :key="network.id">
+            <tabbed-view ref="tabs" :key="network.id" @changed="tabChanged">
                 <tabbed-tab :header="$t('messages')" :focus="hasMessages" name="messages">
-                    <message-list :buffer="serverBuffer" :messages="serverBuffer.getMessages()"/>
+                    <message-list :buffer="serverBuffer" />
                 </tabbed-tab>
                 <tabbed-tab
                     v-if="!restrictedServer"
@@ -11,17 +11,17 @@
                     :focus="!hasMessages"
                     name="settings"
                 >
-                    <network-settings :network="network"/>
+                    <network-settings :network="network" />
                 </tabbed-tab>
                 <tabbed-tab
                     v-if="networkConnected"
                     :header="$t('channels')"
                     name="channels"
                 >
-                    <channel-list :network="network"/>
+                    <channel-list :network="network" />
                 </tabbed-tab>
                 <tabbed-tab v-for="item in pluginUiElements" :key="item.id" :header="item.title">
-                    <div :is="item.component" v-bind="item.props"/>
+                    <div :is="item.component" v-bind="item.props" />
                 </tabbed-tab>
             </tabbed-view>
         </div>
@@ -80,6 +80,9 @@ export default {
         showTab(tabName) {
             this.$refs.tabs.setActiveByName(tabName);
         },
+        tabChanged(tabName) {
+            this.serverBuffer.show_input = (tabName === 'messages');
+        },
     },
 };
 </script>
@@ -94,6 +97,8 @@ export default {
 
 .kiwi-serverview .kiwi-messagelist {
     padding-top: 0;
+    height: 100%;
+    margin: 0;
 }
 
 .kiwi-serverview-inner {

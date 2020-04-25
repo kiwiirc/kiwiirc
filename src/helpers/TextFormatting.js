@@ -5,185 +5,48 @@
 import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import _ from 'lodash';
-import i18next from 'i18next';
 import * as ipRegex from 'ip-regex';
+import i18next from 'i18next';
 import * as Colours from './Colours';
 import { md5 } from './Md5';
 
 export const urlRegex = new RegExp(
     // Detect either a protocol or 'www.' to start a URL
     /(([A-Za-z][A-Za-z0-9-]*:\/\/)|(www\.))/.source +
-    '(' +
+        '(' +
         // Hostname and tld
-        /([\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF.-]+\.[a-zA-Z]{2,63})/.source + '|' +
+        /([\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF.-]+\.[a-zA-Z]{2,63})/.source +
+        '|' +
         // IPv4 address
-        ipRegex.v4().source + '|' +
+        ipRegex.v4().source +
+        '|' +
         // IPv6 address
-        '(\\[?' + ipRegex.v6().source + '\\]?)' +
-    ')' +
-    // Optional port..
-    /(:[0-9]+)?/.source +
-    // Optional path..
-    /(\/[\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF!:.?$'()[\]*,;~+=&%@!\-/]*)?/.source +
-    // Optional fragment
-    /(#.*)?/.source,
+        '(\\[?' +
+        ipRegex.v6().source +
+        '\\]?)' +
+        ')' +
+        // Optional port..
+        /(:[0-9]+)?/.source +
+        // Optional path..
+        /(\/[\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF!:.?$'()[\]*,;~+=&%@!\-/]*)?/.source +
+        // Optional fragment
+        /(#.*)?/.source,
     'i'
 );
 
-export function linkifyUrls(input, _opts) {
-    let opts = _opts || {};
-    let foundUrls = [];
-    let urls = Object.create(null);
-    let result = input.replace(urlRegex, (_url) => {
-        let url = _url;
-        let nice = '';
-        let suffix = '';
+export const channelRegex = /(^|\s)([@+~&%}]*)([#&][^ .,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i;
 
-        // Don't allow javascript execution
-        if (url.match(/^javascript:/i)) {
-            return url;
-        }
-
-        // Add the http if no protoocol was found
-        if (url.match(/^www\./i)) {
-            url = 'http://' + url;
-        }
-
-        // Links almost always contain an opening bracket if the last character is a closing
-        // bracket and should be part of the URL.
-        // If there isn't an opening bracket but the URL ends in a closing bracket, consider the
-        // closing bracket as punctuation outside of the URL.
-        if (url.indexOf('(') === -1 && url[url.length - 1] === ')') {
-            suffix += ')';
-            url = url.substr(0, url.length - 1);
-        }
-
-        nice = url;
-
-        // Shorten the displayed URL if it's going to be too long
-        if (nice.length > 100) {
-            nice = nice.substr(0, 100) + '...';
-        }
-
-        // Make the link clickable
-        let out = `<a target="_blank" href="${url.replace(/"/g, '%22')}">${_.escape(nice)}</a>`;
-
-        if (opts.addHandle) {
-            let cssClass = opts.handleClass || '';
-            let content = opts.handleContent || '';
-            out += `<a data-url="${_.escape(url)}" class="${cssClass}">${content}</a>`;
-        }
-
-        // Pretty hacky, but replace all URLs with random keys that won't get caught up in the HTML
-        // escaping. Once escaped, replace the random keys back with the URL links.
-        let urlId = '---url' + (Math.random() * 1e+17) + '---';
-        urls[urlId] = out;
-        out = urlId;
-
-        foundUrls.push(url);
-        return out + suffix;
-    });
-
-    // Replace the random URL keys back with their URL links
-    result = _.escape(result);
-    Object.keys(urls).forEach((urlId) => {
-        result = result.replace(urlId, urls[urlId]);
-    });
-
-    return {
-        urls: foundUrls,
-        html: result,
-    };
-}
-
-export function addEmojis(wordCtx, emojiList, emojiLocation) {
-    let word = '';
-    let words = [word];
-
-    // wordCtx may be an object with extra context about the word
-    if (typeof wordCtx === 'object') {
-        word = wordCtx.word;
-        words = wordCtx.words;
-    } else {
-        word = wordCtx;
-    }
-
-    // If emojiList.hasOwnProperty exists then use it to check that the word
-    // is actually part of the object
-    if (emojiList.hasOwnProperty && !emojiList.hasOwnProperty(word)) {
-        return word;
-    }
-
-    let emoji = emojiList[word];
-    if (emoji) {
-        let classes = 'kiwi-messagelist-emoji';
-        if (_.compact(words).length === 1) {
-            classes += ' kiwi-messagelist-emoji--single';
-        }
-
-        let src = `${emojiLocation}${emoji}.png`;
-        return `<img class="${classes}" src="${src}" alt="${word}" title="${word}" />`;
-    }
-
-    return word;
-}
-
-const channelMatch = /(^|\s|[@+~&%}]+)([#&][^ .,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i;
 export function linkifyChannels(word) {
     // "@#kiwiirc," = 3 parts. (prefix=@)(channel=#kiwiirc)(suffix=,)
-    return word.replace(channelMatch, (match, mPrefix, mChannel, mSuffix) => {
+    return word.replace(channelRegex, (match, mLead, mPrefix, mChannel, mSuffix) => {
         let chan = _.escape(mChannel.trim());
+        let lead = _.escape(mLead);
         let prefix = _.escape(mPrefix);
         let suffix = _.escape(mSuffix);
 
         let link = `<a class="u-link kiwi-channel" data-channel-name="${chan}">${chan}</a>`;
-        return `${prefix}${link}${suffix}`;
+        return `${lead}${prefix}${link}${suffix}`;
     });
-}
-
-export function linkifyUsers(word, userlist) {
-    let ret = '';
-    let user = null;
-    let prepend = '';
-    let append = '';
-    let punc = ',.!:;-+)]?¿\\/<>@';
-    let validLastChar = punc.indexOf(word[word.length - 1]) > -1;
-    let normWord = word.toLowerCase();
-    let hasProp = Object.prototype.hasOwnProperty;
-
-    // Checking for a user in order of processing cost
-    if (hasProp.call(userlist, normWord)) {
-        user = userlist[normWord];
-    } else if (hasProp.call(userlist, normWord.substr(0, normWord.length - 1)) && validLastChar) {
-        // The last character is usually punctuation of some kind
-        user = userlist[normWord.substr(0, normWord.length - 1)];
-        append = word[word.length - 1];
-    } else if (hasProp.call(userlist, _.trim(normWord, punc))) {
-        user = userlist[_.trim(normWord, punc)];
-        let nickIdx = normWord.indexOf(user.nick.toLowerCase());
-        append = word.substr(nickIdx + user.nick.length);
-        prepend = word.substr(0, nickIdx);
-    } else {
-        return word;
-    }
-
-    let escaped = _.escape(user.nick);
-    let colour = user.colour;
-
-    ret = `<a class="kiwi-nick" data-nick="${escaped}"`;
-    if (colour) {
-        ret += ` style="color:${colour}"`;
-    }
-    ret += `>${escaped}</a>`;
-
-    if (prepend) {
-        ret = _.escape(prepend) + ret;
-    }
-    if (append) {
-        ret += _.escape(append);
-    }
-
-    return ret;
 }
 
 /**
@@ -328,94 +191,6 @@ export function formatText(formatId, formatParams) {
     return result;
 }
 
-export function enrichText(text, showEmoticons, emojiList, emojiLocation, userList) {
-    let urls = [];
-    let words = text.split(' ');
-    words = words.map((word, wordIdx) => {
-        let parsed;
-
-        let linkified = this.linkifyUrls(word, {
-            addHandle: true,
-            handleClass: 'fa fa-chevron-right kiwi-messagelist-message-linkhandle',
-        });
-        if (linkified.urls.length > 0) {
-            urls = urls.concat(linkified.urls);
-            return linkified.html;
-        }
-
-        parsed = this.linkifyChannels(word);
-        if (parsed !== word) return parsed;
-
-        if (userList) {
-            parsed = this.linkifyUsers(word, userList);
-            if (parsed !== word) return parsed;
-        }
-
-        if (showEmoticons) {
-            parsed = this.addEmojis(
-                { word, words, wordIdx },
-                emojiList,
-                emojiLocation
-            );
-            if (parsed !== word) return parsed;
-        }
-
-        return _.escape(word);
-    });
-
-    return { html: words.join(' '), urls: urls };
-}
-
-export function styleBlocksToHtml(blocks, showEmoticons, userList) {
-    let urls = [];
-    let html = '';
-    let emojiList = state.setting('emojis');
-    let emojiLocation = state.setting('emojiLocation');
-
-    blocks.forEach((bl, idx) => {
-        let style = '';
-        let classes = '';
-
-        Object.keys(bl.styles).forEach((s) => {
-            if (s === 'underline') {
-                style += 'text-decoration:underline;';
-            } else if (s === 'bold') {
-                style += 'font-weight:bold;';
-            } else if (s === 'italic') {
-                style += 'font-style:italic;';
-            } else if (s === 'quote') {
-                classes += 'kiwi-formatting-extras-quote ';
-            } else if (s === 'block') {
-                classes += 'kiwi-formatting-extras-block ';
-            } else if (s === 'color') {
-                classes += `irc-fg-colour-${bl.styles[s]} `;
-            } else if (s === 'background') {
-                classes += `irc-bg-colour-${bl.styles[s]} `;
-            }
-        });
-
-        let content = this.enrichText(
-            bl.content,
-            showEmoticons,
-            emojiList,
-            emojiLocation,
-            userList
-        );
-        urls = urls.concat(content.urls);
-
-        if (style === '' && classes === '') {
-            html += content.html;
-        } else if (style !== '' && classes !== '') {
-            html += `<span style="${style}" class="${classes}">${content.html}</span>`;
-        } else if (style !== '') {
-            html += `<span style="${style}">${content.html}</span>`;
-        } else if (classes !== '') {
-            html += `<span class="${classes}">${content.html}</span>`;
-        }
-    });
-    return { html: html, urls: urls };
-}
-
 // Convert a given duration in seconds to human readable weeks,days,hours,minutes,seconds
 // only showing the duration parts that are used eg 3666 --> 1 hour, 1 minute, 6 seconds
 export function formatDuration(timeSeconds) {
@@ -441,6 +216,10 @@ export function formatDuration(timeSeconds) {
     tmp.push(t('second', { count: seconds }));
 
     return tmp.join(' ');
+}
+
+export function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 export function t(key, options) {

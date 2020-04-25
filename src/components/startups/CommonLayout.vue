@@ -2,9 +2,10 @@
     <div :class="[
         closing ? 'kiwi-startup-common--closing' : '',
         backgroundImage ? '' : 'kiwi-startup-common--no-bg',
-    ]" :style="backgroundStyle" class="kiwi-startup-common">
+    ]" :style="backgroundStyle" class="kiwi-startup-common"
+    >
         <div class="kiwi-startup-common-section kiwi-startup-common-section-connection">
-            <slot name="connection"/>
+            <slot name="connection" />
         </div>
         <div
             :style="backgroundStyle"
@@ -69,35 +70,35 @@ export default {
 .kiwi-startup-common {
     height: 100%;
     text-align: center;
+    display: flex;
 }
 
 .kiwi-startup-common-section {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 25%;
     padding: 1em;
     box-sizing: border-box;
+    height: 100%;
+    overflow-x: hidden;
     overflow-y: auto;
+
+    /* transition the 2 sections out when the page closes. right+left defaults */
+    transition: transform 0.4s;
 }
 
 .kiwi-startup-common-section-connection {
-    left: 0;
-    min-height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 40%;
+    max-width: 500px;
 }
 
 /** Right side */
 .kiwi-startup-common-section-info {
-    right: 0;
     color: #fff;
     display: flex;
-    width: 75%;
+    flex: 1;
     align-items: center;
     justify-content: center;
-    min-height: 100%;
 }
 
 .kiwi-startup-common-section-info-content {
@@ -109,28 +110,14 @@ export default {
     line-height: 1.6em;
 }
 
-@media (max-width: 1325px) {
-    .kiwi-startup-common-section {
-        width: 40%;
-    }
-
-    .kiwi-startup-common-section-info {
-        width: 60%;
-    }
-}
-
 @media (min-width: 850px) {
     /** Closing - the wiping away of the screen **/
-    .kiwi-startup-common-section {
-        transition: right 0.3s, left 0.3s;
-    }
-
     .kiwi-startup-common--closing .kiwi-startup-common-section-connection {
-        left: -50%;
+        transform: translateX(-100%);
     }
 
     .kiwi-startup-common--closing .kiwi-startup-common-section-info {
-        right: -50%;
+        transform: translateX(100%);
     }
 }
 
@@ -138,47 +125,34 @@ export default {
 @media (max-width: 850px) {
     .kiwi-startup-common {
         font-size: 0.9em;
-        position: relative;
-        min-height: 100%;
-        transition: left 0.3s;
-        left: 0;
+        display: block;
+        overflow-y: auto;
     }
 
-    .kiwi-startup-common-section-connection {
-        min-height: 400px;
+    .kiwi-startup-common-section {
         width: 100%;
-        position: static;
-    }
-
-    .kiwi-startup-common-section-info {
-        min-height: 0;
-        width: 100%;
-        position: static;
-    }
-
-    .kiwi-startup-common-section-info-content {
-        margin: 1em;
+        min-height: auto;
+        max-width: none;
+        height: auto;
+        align-items: flex-start;
     }
 
     /** Closing - the wiping away of the screen **/
     .kiwi-startup-common--closing {
-        left: -100%;
+        transition: transform 0.3s;
+        transform: translateY(100%);
+    }
+
+    .kiwi-startup-common-section-connection {
+        padding-top: 2em;
+    }
+
+    .kiwi-startup-common-section-connection > * {
+        max-width: 450px;
     }
 }
 
-/** Even smaller screen.. probably phones **/
-@media (max-width: 750px) {
-    .kiwi-startup-common {
-        font-size: 0.9em;
-        overflow-y: auto;
-    }
-
-    .kiwi-startup-common-section-info-content {
-        margin: 0.5em;
-    }
-}
-
-/** Background /border switching between screen sizes **/
+/** Background / border switching between screen sizes **/
 /* stylelint-disable  no-duplicate-selectors */
 .kiwi-startup-common {
     background-size: 0;
@@ -201,12 +175,6 @@ export default {
     /* Apply some flex so that the info panel fills the rest of the bottom screen */
     .kiwi-startup-common {
         background-size: cover;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .kiwi-startup-common-section {
-        overflow-y: visible;
     }
 
     .kiwi-startup-common-section-info {
@@ -221,4 +189,9 @@ export default {
     }
 }
 
+@media (max-width: 500px) {
+    .kiwi-startup-common-section-info-content {
+        margin: 1em;
+    }
+}
 </style>

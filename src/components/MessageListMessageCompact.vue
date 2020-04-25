@@ -30,6 +30,9 @@
             ml.message_info_open && ml.message_info_open !== message ?
                 'kiwi-messagelist-message--blur' :
                 '',
+            (message.user && userMode(message.user)) ?
+                'kiwi-messagelist-message--user-mode-'+userMode(message.user) :
+                ''
         ]"
         :data-message-id="message.id"
         :data-nick="(message.nick||'').toLowerCase()"
@@ -45,17 +48,32 @@
         </div>
         <div
             :style="{ 'color': userColour }"
-            class="kiwi-messagelist-nick"
+            :class="[
+                'kiwi-messagelist-nick',
+                (message.user && userMode(message.user)) ?
+                    'kiwi-messagelist-nick--mode-'+userMode(message.user) :
+                    ''
+            ]"
             @click="ml.openUserBox(message.nick)"
             @mouseover="ml.hover_nick=message.nick.toLowerCase();"
             @mouseout="ml.hover_nick='';"
-        >{{ message.user ? userModePrefix(message.user) : '' }}{{ message.nick }}</div>
+        >
+            <away-status-indicator
+                v-if="message.user"
+                :network="getNetwork()" :user="message.user"
+                :toggle="false"
+            />
+            <span class="kiwi-messagelist-nick--prefix">
+                {{ message.user ? userModePrefix(message.user) : '' }}
+            </span>
+            {{ message.nick }}
+        </div>
         <div
-            v-rawElement="message.bodyTemplate.$el"
             v-if="message.bodyTemplate && message.bodyTemplate.$el"
+            v-rawElement="message.bodyTemplate.$el"
             class="kiwi-messagelist-body"
         />
-        <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
+        <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)" />
 
         <message-info
             v-if="ml.message_info_open===message"
@@ -63,6 +81,15 @@
             :buffer="ml.buffer"
             @close="ml.toggleMessageInfo()"
         />
+
+        <div v-if="message.embed.payload">
+            <media-viewer
+                :url="message.embed.payload"
+                :show-pin="true"
+                @close="message.embed.payload = ''"
+                @pin="ml.openEmbedInPreview(message)"
+            />
+        </div>
     </div>
 </template>
 
@@ -73,11 +100,15 @@
 // here as some of the rules cannot be broken up any smaller
 /* eslint-disable max-len */
 
+import MediaViewer from './MediaViewer';
+import AwayStatusIndicator from './AwayStatusIndicator';
 import MessageInfo from './MessageInfo';
 
 export default {
     components: {
+        AwayStatusIndicator,
         MessageInfo,
+        MediaViewer,
     },
     props: ['ml', 'message', 'idx'],
     data: function data() {
@@ -90,8 +121,14 @@ export default {
         },
     },
     methods: {
+        getNetwork() {
+            return this.ml.buffer.getNetwork();
+        },
         isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
+        },
+        userMode(user) {
+            return this.ml.buffer.userMode(user);
         },
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
@@ -120,9 +157,10 @@ export default {
     width: 110px;
     min-width: 110px;
     display: inline-block;
-    left: 0;
+    left: 8px;
     top: -1px;
     position: absolute;
+    white-space: nowrap;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
@@ -131,6 +169,7 @@ export default {
 
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-nick .kiwi-messagelist-time {
     margin-right: 10px;
+    opacity: 0.8;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-time {
@@ -164,12 +203,6 @@ export default {
     margin-left: 131px;
 }
 
-//Channel Connection's
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection {
-    text-align: center;
-}
-
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-nick,
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-time {
     display: none;
 }
@@ -178,6 +211,10 @@ export default {
     display: inline-block;
     margin: 0;
     padding: 10px 0;
+    margin-left: 131px;
+    font-size: 0.8em;
+    opacity: 0.8;
+    font-weight: 600;
 }
 
 //Channel topic
@@ -185,7 +222,7 @@ export default {
     border-radius: 0;
     border-left: 0;
     border-right: 0;
-    margin: 5px 0;
+    margin: 1em 0;
 }
 
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-topic .kiwi-messagelist-body {
@@ -208,7 +245,8 @@ export default {
     opacity: 1;
 }
 
-@media screen and (max-width: 700px) {
+// Mobile layout (matches this.$state.ui.is_narrow)
+@media screen and (max-width: 769px) {
     .kiwi-messagelist-message--compact {
         padding: 5px;
     }
@@ -265,6 +303,37 @@ export default {
 
 .kiwi-messagelist-item:last-of-type {
     margin-bottom: 5px;
+}
+
+// Moderate screen size
+// Give more space to the nickname column on larger screens
+@media screen and (min-width: 1000px) {
+    // Nicknames
+    .kiwi-messagelist-message--compact .kiwi-messagelist-nick {
+        width: 160px;
+        min-width: 160px;
+    }
+
+    .kiwi-messagelist-message--compact .kiwi-messagelist-nick:hover {
+        width: auto;
+    }
+
+    // Messages
+    .kiwi-messagelist-message--compact .kiwi-messagelist-body {
+        margin-left: 170px;
+    }
+
+    .kiwi-messagelist-message--compact .kiwi-messageinfo {
+        padding-left: 180px;
+    }
+
+    .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
+        margin-left: 181px;
+    }
+
+    .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+        margin-left: 181px;
+    }
 }
 
 </style>

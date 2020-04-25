@@ -11,6 +11,11 @@
     	/* disable the 'pull down to refresh' on mobiles */
     	overflow: hidden;
     }
+    .kiwi-noscript-warn {
+        text-align: center;
+        font-weight: bold;
+        padding: 1em;
+    }
     </style>
     <style class="embedly-css">
         .card .hdr {
@@ -19,6 +24,11 @@
     </style>
   </head>
   <body>
+    <noscript>
+      <div class="kiwi-noscript-warn">
+        Please enable JavaScript and refresh the page to use this website.
+      </div>
+    </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>

@@ -23,6 +23,9 @@
             ml.message_info_open && ml.message_info_open !== message ?
                 'kiwi-messagelist-message--blur' :
                 '',
+            (message.user && userMode(message.user)) ?
+                'kiwi-messagelist-message--user-mode-'+userMode(message.user) :
+                ''
         ]"
         :data-message-id="message.id"
         :data-nick="(message.nick||'').toLowerCase()"
@@ -40,19 +43,27 @@
             <span
                 :style="{ 'color': userColour }"
                 :data-nick="message.nick"
-                class="kiwi-messagelist-nick"
+                :class="[
+                    'kiwi-messagelist-nick',
+                    (message.user && userMode(message.user)) ?
+                        'kiwi-messagelist-nick--mode-'+userMode(message.user) :
+                        ''
+                ]"
                 @click="ml.openUserBox(message.nick)"
                 @mouseover="ml.hover_nick=message.nick.toLowerCase();"
                 @mouseout="ml.hover_nick='';"
             >
-                {{ displayNick }}
+                <span class="kiwi-messagelist-nick--prefix">
+                    {{ message.user ? userModePrefix(message.user) : '' }}
+                </span>
+                <span>{{ displayNick }}</span>
             </span>
             <div
-                v-rawElement="message.bodyTemplate.$el"
                 v-if="message.bodyTemplate && message.bodyTemplate.$el"
+                v-rawElement="message.bodyTemplate.$el"
                 class="kiwi-messagelist-body"
             />
-            <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)"/>
+            <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)" />
         </div>
 
         <message-info
@@ -61,16 +72,27 @@
             :buffer="ml.buffer"
             @close="ml.toggleMessageInfo()"
         />
+
+        <div v-if="message.embed.payload">
+            <media-viewer
+                :url="message.embed.payload"
+                :show-pin="true"
+                @close="message.embed.payload = ''"
+                @pin="ml.openEmbedInPreview(message)"
+            />
+        </div>
     </div>
 </template>
 
 <script>
 
+import MediaViewer from './MediaViewer';
 import MessageInfo from './MessageInfo';
 
 export default {
     components: {
         MessageInfo,
+        MediaViewer,
     },
     props: ['ml', 'message', 'idx'],
     data() {
@@ -78,21 +100,20 @@ export default {
     },
     computed: {
         displayNick() {
-            let prefix = this.message.user ?
-                this.userModePrefix(this.message.user) :
-                '';
-
             let suffix = this.message.nick ?
                 ':' :
                 '';
 
-            return prefix + this.message.nick + suffix;
+            return this.message.nick + suffix;
         },
         userColour() {
             return this.ml.userColour(this.message.user);
         },
     },
     methods: {
+        userMode(user) {
+            return this.ml.buffer.userMode(user);
+        },
         userModePrefix(user) {
             return this.ml.buffer.userModePrefix(user);
         },
@@ -116,12 +137,12 @@ export default {
     right: 0;
     padding: 0 10px;
     display: none;
+    opacity: 0.8;
 }
 
 //display timestamp when hovering over the message
 .kiwi-messagelist-message--text:hover .kiwi-messagelist-time {
     display: block;
-    background: #fff;
     border-radius: 5px 0 0 5px;
 }
 
@@ -160,8 +181,10 @@ export default {
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     display: inline-block;
-    padding: 5px;
     margin: 0;
+    font-size: 0.8em;
+    opacity: 0.8;
+    padding: 0;
 }
 
 .kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-time {
