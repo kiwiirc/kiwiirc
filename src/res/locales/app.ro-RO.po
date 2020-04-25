@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2020-04-13 16:35\n"
+"PO-Revision-Date: 2020-04-24 12:10\n"
 
 #: Start
 msgid "start_button"
@@ -19,39 +19,39 @@ msgstr "Start"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "Bine ai venit la Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr "Close"
+msgstr "Închide"
 
 #: Connect
 msgid "connect"
-msgstr "Connect"
+msgstr "Conectare"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Connecting..."
+msgstr "În curs de conectare..."
 
 #: Connected
 msgid "connected"
-msgstr "Connected"
+msgstr "Conectat"
 
 #: Settings
 msgid "settings"
-msgstr "Settings"
+msgstr "Configurări"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Configurări Kiwi"
 
 #: Channels
 msgid "channels"
-msgstr "Channels"
+msgstr "Canale"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Acces"
 
 #: Banned Users
 msgid "banned"
@@ -59,27 +59,27 @@ msgstr "Banned Users"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "Utilizatori invitați"
 
 #: Notifications
 msgid "notifications"
-msgstr "Notifications"
+msgstr "Notificări"
 
 #: Username
 msgid "username"
-msgstr "Username"
+msgstr "Nume de utilizator"
 
 #: Password
 msgid "password"
-msgstr "Password"
+msgstr "Parolă"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Parola serverului"
 
 #: I have a password
 msgid "password_have"
-msgstr "I have a password"
+msgstr "Dețin o parolă"
 
 #: Server
 msgid "server"
@@ -87,19 +87,19 @@ msgstr "Server"
 
 #: Nick
 msgid "nick"
-msgstr "Nick"
+msgstr "Pseudonim"
 
 #: Channel
 msgid "channel"
-msgstr "Channel"
+msgstr "Canal"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "Mesaje"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "Rețea"
 
 #: ZNC
 msgid "znc"
@@ -107,7 +107,7 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logging in..."
+msgstr "Autentificare..."
 
 #: Invalid login
 msgid "invalid_login"
@@ -115,31 +115,31 @@ msgstr "Invalid login"
 
 #: Search...
 msgid "do_search"
-msgstr "Search..."
+msgstr "Caută..."
 
 #: OK
 msgid "ok"
-msgstr "OK"
+msgstr "Ok"
 
 #: Cancel
 msgid "cancel"
-msgstr "Cancel"
+msgstr "Anulează"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "Da"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "Nu"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "De negăsit."
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "Avertisment!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -147,7 +147,7 @@ msgstr "This will close all Kiwi IRC conversations. Are you sure you want to clo
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "Nume real"
 
 #: Status
 msgid "whois_status"
@@ -155,23 +155,23 @@ msgstr "Status"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Is available"
+msgstr "Disponibil"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Send a message"
+msgstr "Trimite un mesaj"
 
 #: More information
 msgid "more_information"
-msgstr "More information"
+msgstr "Informații suplimentare"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignore user"
+msgstr "Ignoră utilizatorul"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Channel"
+msgstr "Canal"
 
 #: Away
 msgid "away"
@@ -179,43 +179,43 @@ msgstr "Away"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "{{count}} săptămână"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "{{count}} săptămâni"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "{{count}} zi"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} days"
+msgstr "{{count}} zile"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "{{count}} oră"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "{{count}} ore"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "{{count}} minut"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutes"
+msgstr "{{count}} minute"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "{{count}} secunde"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "{{count}} secunde"
 
 #: General
 msgid "settings_general"
@@ -223,11 +223,11 @@ msgstr "General"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "Limbă"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "Stiluri tematice"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -271,7 +271,7 @@ msgstr "Use 24-hour timestamps"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Show emoticons"
+msgstr "Afișează emoticoanele"
 
 #: Block new Private messages
 msgid "settings_block_private"
@@ -299,7 +299,7 @@ msgstr "Include join/part messages as activity"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Mute sound notifications"
+msgstr "Dezactivează notificările audio"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
@@ -315,7 +315,7 @@ msgstr "What are aliases?"
 
 #: Send Message
 msgid "send_message"
-msgstr "Send Message"
+msgstr "Trimite mesajul"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
@@ -327,23 +327,23 @@ msgstr "Rejoin {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Notify me when"
+msgstr "Anunță-mă când"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "All messages"
+msgstr "Toate mesajele"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "I am mentioned"
+msgstr "Cineva m-a menționat"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Never"
+msgstr "Niciodată"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Mute sounds"
+msgstr "Dezactivează sunetele"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
@@ -363,7 +363,7 @@ msgstr "Default kick reason"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "Setări avansate"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
@@ -379,11 +379,11 @@ msgstr "Danger Zone: Changing some of these settings may break things!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "Resetare"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "Filtru"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -415,7 +415,7 @@ msgstr "Invited user"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Invited by"
+msgstr "Invitat de către"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
@@ -467,7 +467,7 @@ msgstr "Invite only"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Only moderators can change the topic"
+msgstr "Doar moderatorii pot modifica topicul"
 
 #: Block messages from outside this channel
 msgid "channel_external"
@@ -491,19 +491,19 @@ msgstr "Show statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "Ascunde topicul"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "Afișează topicul"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "Setările canalului"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Join Channel"
+msgstr "Alătură-te unui canal"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -515,7 +515,7 @@ msgstr "Private conversation with {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "Chiar vrei să părăsești canalul?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -523,7 +523,7 @@ msgstr "Send a message..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Loading {{url}}..."
+msgstr "Se încarcă {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
@@ -535,7 +535,7 @@ msgstr "Unread Messages"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Server details"
+msgstr "Detalii despre server"
 
 #: Port
 msgid "settings_port"
@@ -551,11 +551,11 @@ msgstr "Your details"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Pseudonim"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Advanced"
+msgstr "Avansate"
 
 #: Encoding
 msgid "settings_encoding"
@@ -579,7 +579,7 @@ msgstr "Danger Zone"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Remove network"
+msgstr "Înlătură rețeaua"
 
 #: {{count}} person here
 msgid "person"
@@ -611,7 +611,7 @@ msgstr "You are not currently connected!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Connection settings"
+msgstr "Setările conexiunii"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
@@ -623,15 +623,15 @@ msgstr "Connect To Network"
 
 #: Close options
 msgid "side_close"
-msgstr "Close options"
+msgstr "Închide opțiuni"
 
 #: Channel options
 msgid "side_options"
-msgstr "Channel options"
+msgstr "Opțiunile canalului"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Your settings"
+msgstr "Setările tale"
 
 #: Show when people join
 msgid "side_joins"
@@ -655,7 +655,7 @@ msgstr "Extra message formatting"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Nick colours in the list"
+msgstr "Colorează pseudonimele din listă"
 
 #: No buffer set
 msgid "side_buffer"
@@ -667,15 +667,15 @@ msgstr "There is no topic for this channel"
 
 #: About
 msgid "about"
-msgstr "About"
+msgstr "Despre"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Created at {{when}}"
+msgstr "Data creării {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Menționări"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
@@ -695,7 +695,7 @@ msgstr "Leave {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr "Your account"
+msgstr "Contul tău"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
@@ -703,7 +703,7 @@ msgstr "Your settings and networks will be remembered on this computer."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Forget me"
+msgstr "Uită-mă"
 
 #: No networks here yet.
 msgid "state_network"
@@ -711,27 +711,27 @@ msgstr "No networks here yet."
 
 #: Add one?
 msgid "state_add"
-msgstr "Add one?"
+msgstr "Adaugi una?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Available networks"
+msgstr "Rețele disponibile"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "Adaugă o rețea"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "Rețea nouă"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "Nici o rețea"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Configure network"
+msgstr "Configurează rețeaua"
 
 #: Not connected.
 msgid "state_disconnected"
@@ -743,19 +743,19 @@ msgstr "Join new #channel"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "Filtrează canalele"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Găsește mai multe canale"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Change nick"
+msgstr "Schimbă pseudonim"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "Introdu un pseudonim nou..."
 
 #: This is you!
 msgid "user_you"
@@ -763,15 +763,15 @@ msgstr "This is you!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Account name: {{user}}"
+msgstr "Cont: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Real name: {{realname}}"
+msgstr "Nume real: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Is a bot"
+msgstr "Este un robot"
 
 #: Is available for help
 msgid "user_help"
@@ -779,7 +779,7 @@ msgstr "Is avaiable for help"
 
 #: Is an operator
 msgid "user_op"
-msgstr "Is an operator"
+msgstr "Este un operator"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
@@ -787,15 +787,15 @@ msgstr "Connected to {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Securely connected via SSL/TLS"
+msgstr "S-a conectat via SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "In channels {{channels}}"
+msgstr "În canalele"
 
 #: Access level
 msgid "user_access"
-msgstr "Access level"
+msgstr "Nivelul accesului"
 
 #: Normal
 msgid "user_normal"
@@ -823,7 +823,7 @@ msgstr "The nickname {{nick}} is already in use!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "Trebuie să introduci un pseudonim nou"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
@@ -883,7 +883,7 @@ msgstr "{{nick}} sets {{mode}} on {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Send a message"
+msgstr "Trimite un mesaj"
 
 #: Do something physical
 msgid "command_action"
@@ -995,7 +995,7 @@ msgstr "They will be here when you come back."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Add a Network"
+msgstr "Adaugă o rețea"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
@@ -1011,11 +1011,11 @@ msgstr "Add network to existing Kiwi window"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Temporarily connect to this network"
+msgstr "Conectare temporară la această rețea"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Saved networks"
+msgstr "Rețele salvate"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
@@ -1035,41 +1035,41 @@ msgstr "Give the developer version of Kiwi IRC a try!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "Te-ai deconectat"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Connected to {{network}}!"
+msgstr "Te-ai conectat la {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} has joined"
+msgstr "{{nick}} a intrat"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} kicked you from {{channel}}"
+msgstr "{{nick}} te-a dat afară de pe canalul {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
+msgstr "{{nick}} a primit kick pe {{channel}} de la {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} has left"
+msgstr "{{nick}} a plecat"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} invited you to join {{channel}}"
+msgstr "{{nick}} te-a invitat pe canalul {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
+msgstr "Pseudonimul {{nick}} este folosit de către altcineva. Încerc cu {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} is now known as {{newnick}}"
+msgstr "{{nick}} și-a modificat pseudonimul în {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} changed the topic to: {{topic}}"
+msgstr "{{nick}} a modificat topicul în: {{topic}}"
 
