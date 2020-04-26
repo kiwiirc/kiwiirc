@@ -146,6 +146,16 @@ export default {
                     modesA.length === 0 &&
                     modesB.length === 0
                 ) {
+                    // Compare away status
+                    if (this.$state.setting('nicklistGroupAway')) {
+                        if (a.away && !b.away) {
+                            return 1;
+                        }
+                        if (!a.away && b.away) {
+                            return -1;
+                        }
+                    }
+
                     return strCompare(nickMap[a.nick], nickMap[b.nick]);
                 }
 
@@ -171,6 +181,16 @@ export default {
                     return 1;
                 } else if (aP < bP) {
                     return -1;
+                }
+
+                // Prefixes are the same, compare away status
+                if (this.$state.setting('nicklistGroupAway')) {
+                    if (a.away && !b.away) {
+                        return 1;
+                    }
+                    if (!a.away && b.away) {
+                        return -1;
+                    }
                 }
 
                 // Prefixes are the same, resort to comparing text
