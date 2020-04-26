@@ -127,7 +127,7 @@ export default {
                     modesB.length === 0
                 ) {
                     // Compare away status
-                    if (this.$state.setting('nicklistSortByState')) {
+                    if (this.$state.setting('nicklistGroupAway')) {
                         if (a.away && !b.away) {
                             return 1;
                         }
@@ -164,7 +164,7 @@ export default {
                 }
 
                 // Prefixes are the same, compare away status
-                if (this.$state.setting('nicklistSortByState')) {
+                if (this.$state.setting('nicklistGroupAway')) {
                     if (a.away && !b.away) {
                         return 1;
                     }

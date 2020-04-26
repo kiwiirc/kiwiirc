@@ -88,7 +88,7 @@ export const configTemplates = {
         disconnectOnSaslFail: true,
         allowRegisterProtocolHandler: false,
         noticeActiveBuffer: true,
-        nicklistSortByState: true,
+        nicklistGroupAway: false,
         showChanlistModes: false,
         showAutocomplete: true,
         showEmojiPicker: true,
