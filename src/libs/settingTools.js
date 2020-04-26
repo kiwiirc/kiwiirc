@@ -2,7 +2,7 @@
 
 // What settings keys to ignore when building period delimited settings object
 let ignoreKeys = ['emojis', 'themes', 'bnc', 'aliases', 'restricted', 'kiwiServer',
-    'hide_advanced', 'windowTitle', 'startupOptions', 'plugins', 'presetNetworks'];
+    'hide_advanced', 'windowTitle', 'startupOptions', 'plugins', 'presetNetworks', 'ircFramework'];
 
 // Converts settings object to period delimited key based object
 // eg { buffers.alert_on: false }
