@@ -17,11 +17,6 @@ export default {
             showCaptcha: false,
         };
     },
-    computed: {
-        isReady() {
-            return !this.recaptchaSiteId || this.recaptchaResponse;
-        },
-    },
     created() {
         let options = this.$state.settings.startupOptions;
         this.recaptchaSiteId = options.recaptchaSiteId || '';
@@ -44,13 +39,6 @@ export default {
             }
         });
     },
-    mounted() {
-        if (!this.recaptchaSiteId) {
-            this.$emit('ready', true);
-        }
-
-        // this.loadRecaptcha();
-    },
     methods: {
         loadRecaptcha() {
             this.showCaptcha = true;
@@ -71,7 +59,6 @@ export default {
         },
         recaptchaSuccess(response) {
             this.recaptchaResponse = response;
-            this.$emit('ready', true);
 
             // If we have a network instance already, send the captcha response
             if (this.network && this.network.state === 'connecting') {
@@ -81,7 +68,6 @@ export default {
         },
         recaptchaExpired() {
             this.recaptchaResponse = '';
-            this.$emit('ready', false);
         },
     },
 };
