@@ -119,40 +119,42 @@
                         v-if="network.state === 'connected'"
                         class="kiwi-statebrowser-channels-options"
                     >
-                        <i v-if="(section_display_channels === true && type === 'channels') ||
-                               (section_display_queries === true && type === 'queries')"
-                           class="fa fa-caret-down kiwi-statebrowser-channels-toggle"
-                        />
-                        <i v-else class="fa fa-caret-right kiwi-statebrowser-channels-toggle" />
                         <div
-                            v-if="type === 'channels'"
                             class="kiwi-statebrowser-channels-header-label"
                             @click="toggleSection(type)"
-                        >{{ $t('channels') }}</div>
-                        <div
-                            v-if="type === 'queries'"
-                            class="kiwi-statebrowser-queries-header-label"
-                            @click="toggleSection(type)"
-                        >{{ $t('messages') }}</div>
-                        <div
-                            v-if="type === 'channels'"
-                            :class="{ active: channel_add_display == true }"
-                            class="kiwi-statebrowser-channels-option"
-                            @click="toggleAddChannel()"
                         >
-                            <i class="fa fa-plus" aria-hidden="true" />
-                        </div>
-                        <div
-                            v-if="type === 'channels'"
-                            :class="{ active: channel_filter_display == true }"
-                            class="kiwi-statebrowser-channels-option"
-                            @click="onSearchChannelClick"
-                        >
-                            <i v-if="type === 'channels'" class="fa fa-search" aria-hidden="true" />
+                            <i v-if="(section_display_channels === true && type === 'channels') ||
+                                   (section_display_queries === true && type === 'queries')"
+                               class="fa fa-caret-down kiwi-statebrowser-channels-toggle"
+                               @click="toggleSection(type)"
+                            />
+                            <i v-else class="fa fa-caret-right kiwi-statebrowser-channels-toggle"
+                               @click="toggleSection(type)"
+                            />
+                            {{ type === 'channels' ? $t('channels') : $t('messages') }}
+                            <div
+                                v-if="type === 'channels'"
+                                :class="{ active: channel_add_display == true }"
+                                class="kiwi-statebrowser-channels-option"
+                                @click="toggleAddChannel()"
+                            >
+                                <i class="fa fa-plus" aria-hidden="true" />
+                            </div>
+                            <div
+                                v-if="type === 'channels'"
+                                :class="{ active: channel_filter_display == true }"
+                                class="kiwi-statebrowser-channels-option"
+                                @click="onSearchChannelClick"
+                            >
+                                <i v-if="type === 'channels'"
+                                   class="fa fa-search" aria-hidden="true"
+                                />
+                            </div>
                         </div>
                     </div>
                     <div v-if="(section_display_channels === true && type === 'channels') ||
-                        (section_display_queries === true && type === 'queries')">
+                        (section_display_queries === true && type === 'queries')"
+                    >
                         <div
                             v-for="buffer in itemBuffers"
                             :key="buffer.name"
@@ -504,12 +506,13 @@ export default {
     margin-left: 5px;
 }
 
-.kiwi-statebrowser-channels-header-label,
-.kiwi-statebrowser-queries-header-label {
+.kiwi-statebrowser-channels-header-label {
+    width: 100%;
     display: inline-block;
     font-size: 0.8em;
     text-transform: uppercase;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .kiwi-statebrowser-channels-toggle {
