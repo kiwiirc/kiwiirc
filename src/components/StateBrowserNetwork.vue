@@ -52,7 +52,7 @@
             </p>
         </div>
 
-        <div v-if="channel_add_display" class="kiwi-statebrowser-buffers-info">
+        <div v-if="channel_add_display" class="kiwi-statebrowser-channels-info">
             <form
                 class="kiwi-statebrowser-newchannel"
                 @submit.prevent="submitNewChannelForm"
@@ -117,13 +117,13 @@
                 >
                     <div
                         v-if="network.state === 'connected'"
-                        class="kiwi-statebrowser-buffers-options"
+                        class="kiwi-statebrowser-channels-options"
                     >
                         <i v-if="(section_display_channels === true && type === 'channels') ||
                                (section_display_queries === true && type === 'queries')"
-                           class="fa fa-caret-down kiwi-statebrowser-buffers-toggle"
+                           class="fa fa-caret-down kiwi-statebrowser-channels-toggle"
                         />
-                        <i v-else class="fa fa-caret-right kiwi-statebrowser-buffers-toggle" />
+                        <i v-else class="fa fa-caret-right kiwi-statebrowser-channels-toggle" />
                         <div
                             v-if="type === 'channels'"
                             class="kiwi-statebrowser-channels-header-label"
@@ -137,7 +137,7 @@
                         <div
                             v-if="type === 'channels'"
                             :class="{ active: channel_add_display == true }"
-                            class="kiwi-statebrowser-buffers-option"
+                            class="kiwi-statebrowser-channels-option"
                             @click="toggleAddChannel()"
                         >
                             <i class="fa fa-plus" aria-hidden="true" />
@@ -145,7 +145,7 @@
                         <div
                             v-if="type === 'channels'"
                             :class="{ active: channel_filter_display == true }"
-                            class="kiwi-statebrowser-buffers-option"
+                            class="kiwi-statebrowser-channels-option"
                             @click="onSearchChannelClick"
                         >
                             <i v-if="type === 'channels'" class="fa fa-search" aria-hidden="true" />
@@ -412,13 +412,9 @@ export default {
         },
         toggleSection(type) {
             if (type === 'channels') {
-                this.section_display_channels ?
-                    this.section_display_channels = false :
-                    this.section_display_channels = true;
+                this.section_display_channels = !this.section_display_channels;
             } else if (type === 'queries') {
-                this.section_display_queries ?
-                    this.section_display_queries = false :
-                    this.section_display_queries = true;
+                this.section_display_queries = !this.section_display_queries;
             }
         },
         closeFilterChannel() {
@@ -503,7 +499,7 @@ export default {
     font-size: 0.9em;
 }
 
-.kiwi-statebrowser-buffers-options {
+.kiwi-statebrowser-channels-options {
     text-align: left;
     margin-left: 5px;
 }
@@ -516,11 +512,11 @@ export default {
     margin-left: 5px;
 }
 
-.kiwi-statebrowser-buffers-toggle {
+.kiwi-statebrowser-channels-toggle {
     width: 10px;
 }
 
-.kiwi-statebrowser-buffers-option {
+.kiwi-statebrowser-channels-option {
     display: inline-block;
     width: 35px;
     line-height: 35px;
@@ -530,7 +526,7 @@ export default {
     transition: opacity 0.2s;
 }
 
-.kiwi-statebrowser-buffers-option:hover {
+.kiwi-statebrowser-channels-option:hover {
     opacity: 1;
 }
 
