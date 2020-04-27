@@ -126,11 +126,8 @@
                             <i v-if="(section_display_channels === true && type === 'channels') ||
                                    (section_display_queries === true && type === 'queries')"
                                class="fa fa-caret-down kiwi-statebrowser-channels-toggle"
-                               @click="toggleSection(type)"
                             />
-                            <i v-else class="fa fa-caret-right kiwi-statebrowser-channels-toggle"
-                               @click="toggleSection(type)"
-                            />
+                            <i v-else class="fa fa-caret-right kiwi-statebrowser-channels-toggle" />
                             {{ type === 'channels' ? $t('channels') : $t('messages') }}
                             <div
                                 v-if="type === 'channels'"
