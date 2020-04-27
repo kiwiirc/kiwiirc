@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-04-26 21:31\n"
+"PO-Revision-Date: 2020-04-27 15:31\n"
 
 #: Start
 msgid "start_button"
@@ -675,7 +675,7 @@ msgstr "Créé le {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Signalements"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
@@ -887,7 +887,7 @@ msgstr "Envoyer un message"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Do something physical"
+msgstr "Faites quelque chose de physique"
 
 #: Join a channel
 msgid "command_join"
