@@ -5,7 +5,7 @@
         <template v-if="startupOptions.altComponent" v-slot:connection>
             <component :is="startupOptions.altComponent" @close="onAltClose" />
         </template>
-        <template v-else-if="!network || network.state === 'disconnected'" v-slot:connection>
+        <template v-else v-slot:connection>
             <form class="u-form u-form--big kiwi-welcome-simple-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText" />
                 <div v-if="errorMessage" class="kiwi-welcome-simple-error">{{ errorMessage }}</div>
@@ -52,21 +52,26 @@
                 </div>
 
                 <captcha
-                    @ready="handleCaptcha"
+                    :network="network"
                 />
 
                 <button
+                    v-if="!network || network.state === 'disconnected'"
                     :disabled="!readyToStart"
                     class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
                     type="submit"
                     v-html="buttonText"
                 />
+                <button
+                    v-else
+                    class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
+                    disabled
+                >
+                    <i class="fa fa-spin fa-spinner" aria-hidden="true" />
+                </button>
 
                 <div v-html="footerText" />
             </form>
-        </template>
-        <template v-else v-slot:connection>
-            <i class="fa fa-spin fa-spinner" aria-hidden="true" />
         </template>
     </startup-layout>
 </template>
@@ -137,10 +142,6 @@ export default {
 
             // If toggling the password is is disabled, assume it is required
             if (!this.toggablePass && !this.password) {
-                ready = false;
-            }
-
-            if (!this.captchaReady) {
                 ready = false;
             }
 
@@ -419,11 +420,6 @@ form.kiwi-welcome-simple-form h2 {
 .kiwi-welcome-simple-start[disabled] {
     cursor: not-allowed;
     opacity: 0.65;
-}
-
-/* Make the preloader icon larger */
-.kiwi-welcome-simple .fa-spinner {
-    font-size: 6em;
 }
 
 </style>
