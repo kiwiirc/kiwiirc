@@ -1,7 +1,7 @@
 <template functional>
     <div
         :class="[
-            $options.methods.isRepeat(props) ?
+            props.m().isRepeat() ?
                 'kiwi-messagelist-message--authorrepeat' :
                 'kiwi-messagelist-message--authorfirst',
             'kiwi-messagelist-message-' + props.message.type,
@@ -26,8 +26,8 @@
             props.ml.message_info_open && props.ml.message_info_open !== props.message ?
                 'kiwi-messagelist-message--blur' :
                 '',
-            (props.message.user && userMode(props, props.message.user)) ?
-                'kiwi-messagelist-message--user-mode-'+userMode(props, props.message.user) :
+            (props.message.user && props.m().userMode(props.message.user)) ?
+                'kiwi-messagelist-message--user-mode-' + props.m().userMode(props.message.user) :
                 ''
         ]"
         :data-message-id="props.message.id"
@@ -37,22 +37,25 @@
         @dblclick="props.ml.onMessageDblClick($event, props.message)"
     >
         <div class="kiwi-messagelist-modern-left">
-            <message-avatar
-                v-if="$options.methods.isMessage(props.message) &&
-                    $options.methods.displayAvatar(props, props.message)"
+            <component
+                :is="injections.components.MessageAvatar"
+                v-if="props.m().isMessage(props.message) && props.m().displayAvatar(props.message)"
                 :message="props.message"
                 :data-nick="props.message.nick"
                 :user="props.message.user"
             />
-            <away-status-indicator
-                v-if="props.message.user && !$options.methods.isRepeat(props)"
-                :network="$options.methods.getNetwork(props)" :user="props.message.user"
+            <component
+                :is="injections.components.AwayStatusIndicator"
+                v-if="props.message.user && !props.m().isRepeat()"
+                :network="props.m().getNetwork()" :user="props.message.user"
                 :toggle="false"
                 class="kiwi-messagelist-awaystatus"
             />
-            <typing-status-indicator
+            <component
+                :is="injections.components.TypingStatusIndicator"
                 v-if="props.message.user"
-                :network="$options.methods.getNetwork(props)" :user="props.message.user"
+                :network="props.m().getNetwork()"
+                :user="props.message.user"
                 class="kiwi-messagelist-typingstatus"
             />
 
@@ -64,12 +67,8 @@
                     :style="{ 'color': props.ml.userColour(props.message.user) }"
                     :class="[
                         'kiwi-messagelist-nick',
-                        (
-                            props.message.user &&
-                            $options.methods.userMode(props, props.message.user)
-                        ) ?
-                            'kiwi-messagelist-nick--mode-' +
-                            $options.methods.userMode(props, props.message.user) :
+                        props.message.user && props.m().userMode(props.message.user) ?
+                            'kiwi-messagelist-nick--mode-'+props.m().userMode(props.message.user) :
                             ''
                     ]"
                     @click="props.ml.openUserBox(props.message.nick)"
@@ -78,12 +77,12 @@
                 >
                     <span class="kiwi-messagelist-nick-prefix">{{
                         props.message.user ?
-                            $options.methods.userModePrefix(message.user) :
+                            props.m().userModePrefix(props.message.user) :
                             ''
                     }}</span>{{ props.message.nick }}
                 </div>
                 <div
-                    v-if="$options.methods.showRealName(props)"
+                    v-if="props.m().showRealName()"
                     class="kiwi-messagelist-realname"
                     @click="props.ml.openUserBox(message.nick)"
                     @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
@@ -92,7 +91,7 @@
                     {{ props.message.user.realname }}
                 </div>
                 <div
-                    v-if="$options.methods.isMessage(props.message) &&
+                    v-if="props.m().isMessage(props.message) &&
                         props.ml.bufferSetting('show_timestamps')"
                     :title="props.ml.formatTimeFull(props.message.time)"
                     class="kiwi-messagelist-time"
@@ -111,7 +110,8 @@
                 v-html="props.ml.formatMessage(props.message)"
             />
 
-            <message-info
+            <component
+                :is="injections.components.MessageInfo"
                 v-if="props.ml.message_info_open===props.message"
                 :message="props.message"
                 :buffer="props.ml.buffer"
@@ -119,7 +119,8 @@
             />
 
             <div v-if="props.message.embed.payload">
-                <media-viewer
+                <component
+                    :is="injections.components.MediaViewer"
                     :url="props.message.embed.payload"
                     :show-pin="true"
                     @close="props.message.embed.payload = ''"
@@ -144,84 +145,113 @@ import AwayStatusIndicator from './AwayStatusIndicator';
 import TypingStatusIndicator from './TypingStatusIndicator';
 import MediaViewer from './MediaViewer';
 
-export default {
-    components: {
-        MessageAvatar: MessageListAvatar,
-        MessageInfo,
-        AwayStatusIndicator,
-        TypingStatusIndicator,
-        MediaViewer,
+const methods = {
+    props: {},
+    showRealName() {
+        let props = this.props;
+
+        // Showing realname is not enabled
+        if (!props.ml.buffer.setting('show_realnames')) {
+            return false;
+        }
+
+        // Server does not support extended-join so realname would be inconsistent
+        let client = props.ml.buffer.getNetwork().ircClient;
+        if (!client.network.cap.isEnabled('extended-join')) {
+            return false;
+        }
+
+        // We dont have a user or users realname
+        if (!props.message.user || !props.message.user.realname) {
+            return false;
+        }
+
+        // No point showing the realname if it's the same as the nick
+        if (props.message.user.nick.toLowerCase() === props.message.user.realname.toLowerCase()) {
+            return false;
+        }
+
+        // If the realname contains a URL it's most likely a clients website
+        if (urlRegex.test(props.message.user.realname)) {
+            return false;
+        }
+
+        return true;
     },
-    props: ['ml', 'message', 'idx'],
-    methods: {
-        showRealName(props) {
-            // Showing realname is not enabled
-            if (!props.ml.buffer.setting('show_realnames')) {
-                return false;
-            }
+    getNetwork() {
+        let props = this.props;
+        return props.ml.buffer.getNetwork();
+    },
+    isRepeat() {
+        let props = this.props;
+        let ml = props.ml;
+        let idx = props.idx;
+        let message = props.message;
+        let prevMessage = ml.filteredMessages[idx - 1];
 
-            // Server does not support extended-join so realname would be inconsistent
-            let client = props.ml.buffer.getNetwork().ircClient;
-            if (!client.network.cap.isEnabled('extended-join')) {
-                return false;
-            }
+        return !!prevMessage &&
+            prevMessage.nick === message.nick &&
+            message.time - prevMessage.time < 60000 &&
+            prevMessage.type !== 'traffic' &&
+            message.type !== 'traffic' &&
+            message.type === prevMessage.type;
+    },
+    isHoveringOverMessage(message) {
+        return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
+    },
+    isMessage(message) {
+        let types = ['privmsg', 'action', 'notice', 'message'];
+        return types.indexOf(message.type) > -1;
+    },
+    displayAvatar(message) {
+        let props = this.props;
+        // if there is no user attached hide the avatar
+        if (!message.user) {
+            return false;
+        }
+        // dont show avatars in server or special buffers
+        if (props.ml.buffer.isServer() || props.ml.buffer.isSpecial()) {
+            return false;
+        }
+        return true;
+    },
+    userMode(user) {
+        let props = this.props;
+        return props.ml.buffer.userMode(user);
+    },
+    userModePrefix(user) {
+        let props = this.props;
+        return props.ml.buffer.userModePrefix(user);
+    },
+};
 
-            // We dont have a user or users realname
-            if (!props.message.user || !props.message.user.realname) {
-                return false;
-            }
-
-            // No point showing the realname if it's the same as the nick
-            if (props.message.user.nick.toLowerCase() === props.message.user.realname.toLowerCase()) {
-                return false;
-            }
-
-            // If the realname contains a URL it's most likely a clients website
-            if (urlRegex.test(props.message.user.realname)) {
-                return false;
-            }
-
-            return true;
+export default {
+    inject: {
+        components: {
+            default: {
+                MessageAvatar: MessageListAvatar,
+                MessageInfo,
+                AwayStatusIndicator,
+                TypingStatusIndicator,
+                MediaViewer,
+            },
         },
-        getNetwork(props) {
-            return props.ml.buffer.getNetwork();
-        },
-        isRepeat(props) {
-            let ml = props.ml;
-            let idx = props.idx;
-            let message = props.message;
-            let prevMessage = ml.filteredMessages[idx - 1];
-
-            return !!prevMessage &&
-                prevMessage.nick === message.nick &&
-                message.time - prevMessage.time < 60000 &&
-                prevMessage.type !== 'traffic' &&
-                message.type !== 'traffic' &&
-                message.type === prevMessage.type;
-        },
-        isHoveringOverMessage(message) {
-            return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
-        },
-        isMessage(message) {
-            let types = ['privmsg', 'action', 'notice', 'message'];
-            return types.indexOf(message.type) > -1;
-        },
-        displayAvatar(props, message) {
-            // if there is no user attached hide the avatar
-            if (!message.user) {
-                return false;
-            }
-            // dont show avatars in server or special buffers
-            if (props.ml.buffer.isServer() || props.ml.buffer.isSpecial()) {
-                return false;
-            }
-            return true;
-        },
-        userMode(props, user) {
-            return props.ml.buffer.userMode(user);
-        },
-        userModePrefix(props, user) {
-            return props.ml.buffer.userModePrefix(user);
+    },
+    props: {
+        ml: Object,
+        message: Object,
+        idx: Number,
+        m: {
+            default: function m() {
+                // vue uses this function to generate the prop. `this`==null Return our own function
+                return function n() {
+                    // Give our methods some props context before its function is called.
+                    // This is only safe because the function on the methods object is called on
+                    // the same js tick
+                    methods.props = this;
+                    return methods;
+                };
+            },
         },
     },
 };
