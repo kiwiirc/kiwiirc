@@ -106,7 +106,8 @@ import MessageInfo from './MessageInfo';
 const methods = {
     props: {},
     getNetwork() {
-        return this.ml.buffer.getNetwork();
+        let props = this.props;
+        return props.ml.buffer.getNetwork();
     },
     isRepeat() {
         let props = this.props;
