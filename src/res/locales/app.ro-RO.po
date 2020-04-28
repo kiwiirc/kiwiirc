@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2020-04-26 21:31\n"
+"PO-Revision-Date: 2020-04-28 20:30\n"
 
 #: Start
 msgid "start_button"
@@ -235,7 +235,7 @@ msgstr "Reîmprospătează tematica"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "URL-ul tematicii"
 
 #: Message Layout
 msgid "settings_messagelayout"
@@ -259,7 +259,7 @@ msgstr "Show autocomplete list"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Chat Messages"
+msgstr "Mesaje conversație"
 
 #: Show timestamps
 msgid "settings_timestamps"
@@ -295,7 +295,7 @@ msgstr "Share when I'm typing a message"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Include join/part messages as activity"
+msgstr "Include mesajele de intrare/ieșire ca activitate"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
@@ -403,7 +403,7 @@ msgstr "Reîmprospătez lista de ban-uri..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Nobody is banned!"
+msgstr "Nimeni nu are ban!"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -599,7 +599,7 @@ msgstr "Reconnect to join {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Reconnect to {{network}} to start talking"
+msgstr "Reconectează-te la {{network}} pentru a putea vorbi"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
@@ -835,7 +835,7 @@ msgstr "{{target}} a primit privilegii de operator de la {{nick}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} takes ops from {{target}}"
+msgstr "{{nick}} a înlăturat privilegiile de operator pentru {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
@@ -923,7 +923,7 @@ msgstr "Trimite o notificare"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "Send a raw command to the IRC server"
+msgstr "Trimite o comandă brută către serverul IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
@@ -1019,7 +1019,7 @@ msgstr "Rețele salvate"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (next gen) - Rizon preview"
+msgstr "Kiwi IRC (generația următoare) - Previzualizare Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
@@ -1027,7 +1027,7 @@ msgstr "Direct websockets. No Kiwi server or webirc involved."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
+msgstr "(Mulțumiri lui Adam @Rizon pentru dezvoltarea suportului de server websocket!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
