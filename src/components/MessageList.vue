@@ -1,6 +1,6 @@
 <template>
     <div
-        :key="buffer.name"
+        :key="'messagelist-' + buffer.name"
         class="kiwi-messagelist"
         @scroll.self="onThreadScroll"
         @click.self="onListClick"
