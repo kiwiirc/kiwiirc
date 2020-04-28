@@ -197,7 +197,8 @@ const methods = {
             message.type === prevMessage.type;
     },
     isHoveringOverMessage(message) {
-        return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
+        let props = this.props;
+        return message.nick && message.nick.toLowerCase() === props.ml.hover_nick.toLowerCase();
     },
     isMessage(message) {
         let types = ['privmsg', 'action', 'notice', 'message'];
