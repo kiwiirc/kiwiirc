@@ -1,57 +1,58 @@
-<template>
+<template functional>
     <div
         :class="[
-            isRepeat() ?
+            $options.methods.isRepeat(props) ?
                 'kiwi-messagelist-message--authorrepeat' :
                 'kiwi-messagelist-message--authorfirst',
-            'kiwi-messagelist-message-' + message.type,
-            message.type_extra ?
-                'kiwi-messagelist-message-' + message.type + '-' + message.type_extra :
+            'kiwi-messagelist-message-' + props.message.type,
+            props.message.type_extra ?
+                'kiwi-messagelist-message-' + props.message.type + '-' + props.message.type_extra :
                 '',
-            ml.isMessageHighlight(message) ?
+            props.ml.isMessageHighlight(props.message) ?
                 'kiwi-messagelist-message--highlight' :
                 '',
-            ml.isHoveringOverMessage(message) ?
+            props.ml.isHoveringOverMessage(props.message) ?
                 'kiwi-messagelist-message--hover' :
                 '',
-            ml.buffer.last_read && message.time > ml.buffer.last_read ?
+            props.ml.buffer.last_read && props.message.time > props.ml.buffer.last_read ?
                 'kiwi-messagelist-message--unread' :
                 '',
-            message.nick.toLowerCase() === ml.ourNick.toLowerCase() ?
+            props.message.nick.toLowerCase() === props.ml.ourNick.toLowerCase() ?
                 'kiwi-messagelist-message--own' :
                 '',
-            ml.message_info_open === message ?
+            props.ml.message_info_open === props.message ?
                 'kiwi-messagelist-message--info-open' :
                 '',
-            ml.message_info_open && ml.message_info_open !== message ?
+            props.ml.message_info_open && props.ml.message_info_open !== props.message ?
                 'kiwi-messagelist-message--blur' :
                 '',
-            (message.user && userMode(message.user)) ?
-                'kiwi-messagelist-message--user-mode-'+userMode(message.user) :
+            (props.message.user && userMode(props, props.message.user)) ?
+                'kiwi-messagelist-message--user-mode-'+userMode(props, props.message.user) :
                 ''
         ]"
-        :data-message-id="message.id"
-        :data-nick="(message.nick||'').toLowerCase()"
+        :data-message-id="props.message.id"
+        :data-nick="(props.message.nick||'').toLowerCase()"
         class="kiwi-messagelist-message kiwi-messagelist-message--modern"
-        @click="ml.onMessageClick($event, message, true)"
-        @dblclick="ml.onMessageDblClick($event, message)"
+        @click="props.ml.onMessageClick($event, props.message, true)"
+        @dblclick="props.ml.onMessageDblClick($event, props.message)"
     >
         <div class="kiwi-messagelist-modern-left">
             <message-avatar
-                v-if="isMessage(message) && displayAvatar(message)"
-                :message="message"
-                :data-nick="message.nick"
-                :user="message.user"
+                v-if="$options.methods.isMessage(props.message) &&
+                    $options.methods.displayAvatar(props, props.message)"
+                :message="props.message"
+                :data-nick="props.message.nick"
+                :user="props.message.user"
             />
             <away-status-indicator
-                v-if="message.user && !isRepeat()"
-                :network="getNetwork()" :user="message.user"
+                v-if="props.message.user && !$options.methods.isRepeat(props)"
+                :network="$options.methods.getNetwork(props)" :user="props.message.user"
                 :toggle="false"
                 class="kiwi-messagelist-awaystatus"
             />
             <typing-status-indicator
-                v-if="message.user"
-                :network="getNetwork()" :user="message.user"
+                v-if="props.message.user"
+                :network="$options.methods.getNetwork(props)" :user="props.message.user"
                 class="kiwi-messagelist-typingstatus"
             />
 
@@ -59,61 +60,70 @@
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">
                 <div
-                    v-if="message.nick"
-                    :style="{ 'color': userColour }"
+                    v-if="props.message.nick"
+                    :style="{ 'color': props.ml.userColour(props.message.user) }"
                     :class="[
                         'kiwi-messagelist-nick',
-                        (message.user && userMode(message.user)) ?
-                            'kiwi-messagelist-nick--mode-'+userMode(message.user) :
+                        (
+                            props.message.user &&
+                            $options.methods.userMode(props, props.message.user)
+                        ) ?
+                            'kiwi-messagelist-nick--mode-' +
+                            $options.methods.userMode(props, props.message.user) :
                             ''
                     ]"
-                    @click="ml.openUserBox(message.nick)"
-                    @mouseover="ml.hover_nick=message.nick.toLowerCase();"
-                    @mouseout="ml.hover_nick='';"
+                    @click="props.ml.openUserBox(props.message.nick)"
+                    @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
+                    @mouseout="props.ml.hover_nick='';"
                 >
                     <span class="kiwi-messagelist-nick-prefix">{{
-                        message.user ?
-                            userModePrefix(message.user) :
+                        props.message.user ?
+                            $options.methods.userModePrefix(message.user) :
                             ''
-                    }}</span>{{ message.nick }}
+                    }}</span>{{ props.message.nick }}
                 </div>
                 <div
-                    v-if="showRealName"
+                    v-if="$options.methods.showRealName(props)"
                     class="kiwi-messagelist-realname"
-                    @click="ml.openUserBox(message.nick)"
-                    @mouseover="ml.hover_nick=message.nick.toLowerCase();"
-                    @mouseout="ml.hover_nick='';"
+                    @click="props.ml.openUserBox(message.nick)"
+                    @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
+                    @mouseout="props.ml.hover_nick='';"
                 >
-                    {{ message.user.realname }}
+                    {{ props.message.user.realname }}
                 </div>
                 <div
-                    v-if="isMessage(message) && ml.bufferSetting('show_timestamps')"
-                    :title="ml.formatTimeFull(message.time)"
+                    v-if="$options.methods.isMessage(props.message) &&
+                        props.ml.bufferSetting('show_timestamps')"
+                    :title="props.ml.formatTimeFull(props.message.time)"
                     class="kiwi-messagelist-time"
                 >
-                    {{ ml.formatTime(message.time) }}
+                    {{ props.ml.formatTime(props.message.time) }}
                 </div>
             </div>
             <div
-                v-if="message.bodyTemplate && message.bodyTemplate.$el"
-                v-rawElement="message.bodyTemplate.$el"
+                v-if="props.message.bodyTemplate && props.message.bodyTemplate.$el"
+                v-rawElement="props.message.bodyTemplate.$el"
                 class="kiwi-messagelist-body"
             />
-            <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)" />
-
-            <message-info
-                v-if="ml.message_info_open===message"
-                :message="message"
-                :buffer="ml.buffer"
-                @close="ml.toggleMessageInfo()"
+            <div
+                v-else
+                class="kiwi-messagelist-body"
+                v-html="props.ml.formatMessage(props.message)"
             />
 
-            <div v-if="message.embed.payload">
+            <message-info
+                v-if="props.ml.message_info_open===props.message"
+                :message="props.message"
+                :buffer="props.ml.buffer"
+                @close="props.ml.toggleMessageInfo()"
+            />
+
+            <div v-if="props.message.embed.payload">
                 <media-viewer
-                    :url="message.embed.payload"
+                    :url="props.message.embed.payload"
                     :show-pin="true"
-                    @close="message.embed.payload = ''"
-                    @pin="ml.openEmbedInPreview(message)"
+                    @close="props.message.embed.payload = ''"
+                    @pin="props.ml.openEmbedInPreview(props.message)"
                 />
             </div>
         </div>
@@ -143,52 +153,43 @@ export default {
         MediaViewer,
     },
     props: ['ml', 'message', 'idx'],
-    data: function data() {
-        return {
-        };
-    },
-    computed: {
-        showRealName() {
+    methods: {
+        showRealName(props) {
             // Showing realname is not enabled
-            if (!this.ml.buffer.setting('show_realnames')) {
+            if (!props.ml.buffer.setting('show_realnames')) {
                 return false;
             }
 
             // Server does not support extended-join so realname would be inconsistent
-            let client = this.ml.buffer.getNetwork().ircClient;
+            let client = props.ml.buffer.getNetwork().ircClient;
             if (!client.network.cap.isEnabled('extended-join')) {
                 return false;
             }
 
             // We dont have a user or users realname
-            if (!this.message.user || !this.message.user.realname) {
+            if (!props.message.user || !props.message.user.realname) {
                 return false;
             }
 
             // No point showing the realname if it's the same as the nick
-            if (this.message.user.nick.toLowerCase() === this.message.user.realname.toLowerCase()) {
+            if (props.message.user.nick.toLowerCase() === props.message.user.realname.toLowerCase()) {
                 return false;
             }
 
             // If the realname contains a URL it's most likely a clients website
-            if (urlRegex.test(this.message.user.realname)) {
+            if (urlRegex.test(props.message.user.realname)) {
                 return false;
             }
 
             return true;
         },
-        userColour() {
-            return this.ml.userColour(this.message.user);
+        getNetwork(props) {
+            return props.ml.buffer.getNetwork();
         },
-    },
-    methods: {
-        getNetwork() {
-            return this.ml.buffer.getNetwork();
-        },
-        isRepeat() {
-            let ml = this.ml;
-            let idx = this.idx;
-            let message = this.message;
+        isRepeat(props) {
+            let ml = props.ml;
+            let idx = props.idx;
+            let message = props.message;
             let prevMessage = ml.filteredMessages[idx - 1];
 
             return !!prevMessage &&
@@ -205,22 +206,22 @@ export default {
             let types = ['privmsg', 'action', 'notice', 'message'];
             return types.indexOf(message.type) > -1;
         },
-        displayAvatar(message) {
+        displayAvatar(props, message) {
             // if there is no user attached hide the avatar
             if (!message.user) {
                 return false;
             }
             // dont show avatars in server or special buffers
-            if (this.ml.buffer.isServer() || this.ml.buffer.isSpecial()) {
+            if (props.ml.buffer.isServer() || props.ml.buffer.isSpecial()) {
                 return false;
             }
             return true;
         },
-        userMode(user) {
-            return this.ml.buffer.userMode(user);
+        userMode(props, user) {
+            return props.ml.buffer.userMode(user);
         },
-        userModePrefix(user) {
-            return this.ml.buffer.userModePrefix(user);
+        userModePrefix(props, user) {
+            return props.ml.buffer.userModePrefix(user);
         },
     },
 };
