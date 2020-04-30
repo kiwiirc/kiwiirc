@@ -1,8 +1,5 @@
 <template>
     <div
-        :class="{
-            'kiwi-header--showall': buffer_settings_open,
-        }"
         class="kiwi-header kiwi-theme-bg"
         @click="onHeaderClick"
     >
@@ -146,32 +143,6 @@
                 </div>
             </div>
         </template>
-
-        <div
-            v-if="buffer_settings_open"
-            class="kiwi-header-buffersettings"
-            @click.stop=""
-        >
-
-            <tabbed-view>
-                <tabbed-tab :header="$t('settings')" :focus="true">
-                    <channel-info :buffer="buffer" />
-                </tabbed-tab>
-                <tabbed-tab :header="$t('banned')">
-                    <channel-banlist :buffer="buffer" />
-                </tabbed-tab>
-                <tabbed-tab :header="$t('notifications')">
-                    <buffer-settings :buffer="buffer" />
-                </tabbed-tab>
-            </tabbed-view>
-
-            <a
-                class="u-button u-button-secondary kiwi-header-close-buffersettings"
-                @click="buffer_settings_open=false"
-            >
-                <i class="fa fa-caret-up" aria-hidden="true" />
-            </a>
-        </div>
     </div>
 </template>
 
@@ -197,7 +168,6 @@ export default {
     props: ['buffer', 'sidebarState'],
     data: function data() {
         return {
-            buffer_settings_open: false,
             pluginUiChannelElements: GlobalApi.singleton().channelHeaderPlugins,
             pluginUiQueryElements: GlobalApi.singleton().queryHeaderPlugins,
             prompts: {
@@ -220,12 +190,6 @@ export default {
         },
         network() {
             return this.buffer.getNetwork();
-        },
-    },
-    watch: {
-        buffer: function watchBuffer() {
-            // When ever the buffer changes, close the settings dropdown
-            this.buffer_settings_open = false;
         },
     },
     created() {
