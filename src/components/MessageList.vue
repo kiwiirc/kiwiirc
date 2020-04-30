@@ -104,6 +104,10 @@ export default {
         LoadingAnimation,
     },
     props: ['buffer'],
+    beforeUpdate(...args) {
+        console.log('MessageList beforeUpdate()', ...args);
+        // debugger;
+    },
     data() {
         return {
             auto_scroll: true,
@@ -247,6 +251,9 @@ export default {
             this.$nextTick(() => {
                 this.maybeScrollToBottom();
             });
+        },
+        selectedMessages() {
+            console.log('selectedMessages changed');
         },
     },
     mounted() {
@@ -459,7 +466,9 @@ export default {
             this.$el.style.userSelect = 'auto';
         },
         removeSelections(removeNative = false) {
-            this.selectedMessages = new Set();
+            if (this.selectedMessages.size > 0) {
+                this.selectedMessages = new Set();
+            }
 
             let selection = document.getSelection();
             if (removeNative && selection) {
@@ -492,8 +501,22 @@ export default {
 
             let copyData = '';
             let selecting = false;
+            let selectionChangeOff = null;
+
+            this.listen(document, 'selectstart', (e) => {
+                if (!this.$el.contains(e.target)) {
+                    // Selected elsewhere on the page
+                    copyData = '';
+                    this.removeSelections();
+                    return;
+                }
+
+                this.removeSelections();
+                selectionChangeOff = this.listen(document, 'selectionchange', onSelectionChange);
+            });
 
             this.listen(document, 'mouseup', (e) => {
+                selectionChangeOff && selectionChangeOff();
                 this.unrestrictTextSelection();
                 if (selecting) {
                     e.preventDefault();
@@ -501,7 +524,7 @@ export default {
                 selecting = false;
             });
 
-            this.listen(document, 'selectionchange', (e) => {
+            let onSelectionChange = (e) => {
                 if (!this.$el) {
                     return true;
                 }
@@ -540,6 +563,7 @@ export default {
                     let node = startNode;
                     let messages = [];
                     let allMessages = this.buffer.getMessages();
+                    let selectedMessagesSize = this.selectedMessages.size;
 
                     const finder = (m) => m.id.toString() === node.attributes['data-message-id'].value;
 
@@ -548,9 +572,9 @@ export default {
                         // This could be more efficent with an id->msg lookup
                         let msg = allMessages.find(finder);
 
-                        // Add to a list of selected messages
-                        this.selectedMessages.add(msg.id);
                         if (msg) {
+                            // Add to a list of selected messages
+                            this.selectedMessages.add(msg.id);
                             messages.push(msg);
                         }
                         if (node === endNode) {
@@ -560,8 +584,10 @@ export default {
                             node = nextNode && nextNode.querySelector('[data-message-id]');
                         }
                     }
-                    // Replace the set so the MessageList updates.
-                    this.selectedMessages = new Set(this.selectedMessages);
+                    // Replace the set so the MessageList updates, but only if it's changed.
+                    if (selectedMessagesSize !== this.selectedMessages.size) {
+                        this.selectedMessages = new Set(this.selectedMessages);
+                    }
 
                     // Iterate through the selected messages, format and store as a
                     // string to be used in the copy handler
@@ -574,7 +600,7 @@ export default {
                     this.unrestrictTextSelection();
                 }
                 return false;
-            });
+            };
 
             this.listen(document, 'copy', (e) => {
                 if (!copyData || !copyData.length) { // Just do a normal copy if no special data
@@ -591,7 +617,7 @@ export default {
                     document.execCommand('copy');
                     document.body.removeChild(input);
                 }
-                this.removeSelections(true);
+
                 return true;
             });
         },
