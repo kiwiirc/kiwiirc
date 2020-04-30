@@ -21,6 +21,7 @@ export default {
             font: 'bold ' + 72 + 'px verdana',
             text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu arcu ipsum. ',
             animationFrame: null,
+            destroying: false,
         };
     },
     mounted() {
@@ -36,10 +37,15 @@ export default {
             this.Y.push(i * this.fontSize - 1600);
         }
         this.logo.onload = () => {
+            if (this.destroying) {
+                // the component has already been destroyed, we nolonger need the animation
+                return;
+            }
             this.draw();
         };
     },
-    destroyed() {
+    beforeDestroy() {
+        this.destroying = true;
         cancelAnimationFrame(this.animationFrame);
     },
     methods: {
