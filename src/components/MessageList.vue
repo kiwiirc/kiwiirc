@@ -104,10 +104,6 @@ export default {
         LoadingAnimation,
     },
     props: ['buffer'],
-    beforeUpdate(...args) {
-        console.log('MessageList beforeUpdate()', ...args);
-        // debugger;
-    },
     data() {
         return {
             auto_scroll: true,
@@ -251,9 +247,6 @@ export default {
             this.$nextTick(() => {
                 this.maybeScrollToBottom();
             });
-        },
-        selectedMessages() {
-            console.log('selectedMessages changed');
         },
     },
     mounted() {
