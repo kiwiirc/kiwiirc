@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-04-20 07:52\n"
+"PO-Revision-Date: 2020-04-30 15:05\n"
 
 #: Start
 msgid "start_button"
@@ -31,7 +31,7 @@ msgstr "Konektatu"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Konektatzen,..."
+msgstr "Konektatzen..."
 
 #: Connected
 msgid "connected"
@@ -39,11 +39,11 @@ msgstr "Konektatuta"
 
 #: Settings
 msgid "settings"
-msgstr "Konfigurazioa"
+msgstr "Ezarpenak"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Ezarpenak"
+msgstr "Kiwi ezarpenak"
 
 #: Channels
 msgid "channels"
@@ -51,15 +51,15 @@ msgstr "Kanalak"
 
 #: Access
 msgid "access"
-msgstr "Sarbidea"
+msgstr "Sartu"
 
 #: Banned Users
 msgid "banned"
-msgstr "Erabiltzaile kanporatuak"
+msgstr "Kanporatutako erabiltzaileak"
 
 #: Invited Users
 msgid "invited"
-msgstr "Gonbidatua"
+msgstr "Erabiltzaile gonbidatuak"
 
 #: Notifications
 msgid "notifications"
@@ -67,7 +67,7 @@ msgstr "Jakinarazpenak"
 
 #: Username
 msgid "username"
-msgstr "Erabiltzailea"
+msgstr "Erabiltzaile izena"
 
 #: Password
 msgid "password"
@@ -75,7 +75,7 @@ msgstr "Pasahitza"
 
 #: Server Password
 msgid "server_password"
-msgstr "Zerbitzariaren pasahitza"
+msgstr "Zerbitzariko pasahitza"
 
 #: I have a password
 msgid "password_have"
@@ -107,15 +107,15 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Sartzen..."
+msgstr "Saioa hasten..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Egiaztagiri baliogabeak"
+msgstr "Identifikazio baliogabea"
 
 #: Search...
 msgid "do_search"
-msgstr "Bilatzea..."
+msgstr "Bilatu..."
 
 #: OK
 msgid "ok"
@@ -123,7 +123,7 @@ msgstr "Ados"
 
 #: Cancel
 msgid "cancel"
-msgstr "Ezeztatzea"
+msgstr "Ezeztatu"
 
 #: Yes
 msgid "yes"
@@ -139,11 +139,11 @@ msgstr "Ez da aurkitu"
 
 #: Warning!
 msgid "warning"
-msgstr "Errorea!"
+msgstr "Kontuz!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "KiwiIRC-elkarrizketa guztiak itxiko dira. Segurua leiho hau itxi nahi duzula?"
+msgstr "KiwiIRCko elkarrizketa guztiak itxiko dira. Seguru zaude leiho hau itxi nahi duzula?"
 
 #: Real name
 msgid "whois_realname"
@@ -151,7 +151,7 @@ msgstr "Benetako izena"
 
 #: Status
 msgid "whois_status"
-msgstr "Estatua"
+msgstr "Egoera"
 
 #: Is available
 msgid "whois_status_available"
@@ -159,7 +159,7 @@ msgstr "Libre dago"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Mezua bidaltzen du"
+msgstr "Mezu bat bidali"
 
 #: More information
 msgid "more_information"
@@ -167,7 +167,7 @@ msgstr "Informazio gehiago"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Erabiltzaileari ezikusiarena egitea"
+msgstr "Erabiltzaileari ezikusiarena egin"
 
 #: Channel
 msgid "connection_channel"
@@ -179,43 +179,43 @@ msgstr "Kanpoan"
 
 #: {{count}} week
 msgid "week"
-msgstr "aste"
+msgstr "aste {{count}} "
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "asteak"
+msgstr "{{count}} aste"
 
 #: {{count}} day
 msgid "day"
-msgstr "eguna"
+msgstr "egun {{count}}"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "egunak"
+msgstr "{{count}} egun"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "ordu"
+msgstr "ordu {{count}}"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "orduak"
+msgstr "{{count}} ordu"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minutu"
+msgstr "minutu {{count}}"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minutuak"
+msgstr "{{count}} minutu"
 
 #: {{count}} second
 msgid "second"
-msgstr "segundo"
+msgstr "segundo {{count}}"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "segundoak"
+msgstr "{{count}} ssegundoak"
 
 #: General
 msgid "settings_general"
@@ -235,7 +235,7 @@ msgstr "Gaia Berritu"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Gaiko URL-a"
+msgstr "Gairen URL-a"
 
 #: Message Layout
 msgid "settings_messagelayout"
@@ -243,7 +243,7 @@ msgstr "Mezuen diseinua"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Monospace iturria erabiltzea"
+msgstr "Monospace iturria erabili"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
@@ -251,15 +251,15 @@ msgstr "Erabili Kiwi lehenetsitako IRC bezero gisa "
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "IRC-a diseinu tradizionala"
+msgstr "IRC diseinu tradizionala"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Zerrenda autoosatuta erakustea"
+msgstr "Autoosatu zerrenda erakutsi"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Mezuak"
+msgstr "Txataren mezuak"
 
 #: Show timestamps
 msgid "settings_timestamps"
@@ -267,39 +267,39 @@ msgstr "Ordua erakutsi"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Formatuko ordua 24 ordu erakustea"
+msgstr "Orduaren formatua 24 ordukoa"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Begitarteak erakustea"
+msgstr "Emotikonoak erakutsi"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Mezu pribatu berriak blokeatzea"
+msgstr "Mezu pribatu berriak blokeatu"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Historikoko mezuak"
+msgstr "Mezu historikoak"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Formateatze estra"
+msgstr "Formateatze gehigarria"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Ezizena mezuetan koloratzea"
+msgstr "Erabiltzaileen kolorea mezuetan"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Partekatu mezu bat idazten dudanean"
+msgstr "Partekatu mezu bat idazten nagoenean"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Sarrerako eta jarduera bezala irteerako mezuak sartzea"
+msgstr "join/part mezuak ikusi"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Jakinarazpenak isiltzea"
+msgstr "Jakinarazpenak isildu"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
@@ -307,11 +307,11 @@ msgstr "Nabarmentzeko hitzak (banan itzazu espazioarekin) "
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Ezizena"
+msgstr "Aliasak"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Zer dira Aliasak"
+msgstr "Zer dira aliasak?"
 
 #: Send Message
 msgid "send_message"
@@ -323,11 +323,11 @@ msgstr "Sartu kanalaren gakoa"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Itzuli {{channel}}"
+msgstr "Sartu berriro {{channel}}(e)n"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Ni jakinaraztea noiz"
+msgstr "Jakinarazidazu"
 
 #: All messages
 msgid "settings_notify_all"
@@ -335,11 +335,11 @@ msgstr "Mezu guztiak"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "Aipatua izan naiz"
+msgstr "Aipatua izan naizenean"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Inoiz"
+msgstr "Inoiz ez"
 
 #: Mute sounds
 msgid "settings_notify_mute"
@@ -347,7 +347,7 @@ msgstr "Soinuak kendu"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Ezkutatu irakurri gabeko mezuen kontua"
+msgstr "Ezkutatu irakurri gabeko mezuen kopurua"
 
 #: Operator tools
 msgid "operator_tools"
@@ -391,7 +391,7 @@ msgstr "Kanporatuen zerrenda eguneratu"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Kanporatutako erabiltzaileak"
+msgstr "Kanporatutako erabiltzailea"
 
 #: Banned by
 msgid "bans_by"
@@ -399,11 +399,11 @@ msgstr "Nork kanporatu"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Kanporatze zerrenda eguneratu"
+msgstr "Kanporatuen zerrenda eguneratzen..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Ez dago inor kanporatuta"
+msgstr "Inor ez da kanporatu!"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -423,35 +423,35 @@ msgstr "Berretsi gonbidatuen zerrenda..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Inor ez da gonbidatu!"
+msgstr "Ez dago inor gonbidatua!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "Hau kanal publikoa da."
+msgstr "Kanal hau publikoa da."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Bakarrik erabiltzaile gonbidatuak sartu daitezke"
+msgstr "Erabiltzaile gonbidatuak bakarrik sar daitezke"
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Bakarrik erabiltzaile gonbidatuak onartuak daude"
+msgstr "Erabiltzaile gonbidatuak bakarrik onartuak daude"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Guztiak sartzea onartuak daude"
+msgstr "Edonor sar daiteke"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Bakarrik erabiltzaile erregistratuak sar daitezke"
+msgstr "Erregistratutako erabiltzaileak bakarrik sar daitezke"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Gonbidapena gehitu"
+msgstr "Gonbidapena luzatu"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Edozein erabiltzaile erregistratua)"
+msgstr "(Erregistratutako edozein erabiltzaile)"
 
 #: Topic
 msgid "channel_topic"
@@ -463,11 +463,11 @@ msgstr "Kanal moderatua"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Sartzeko gonbidapena behar da"
+msgstr "Gonbidatuak bakarrik"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Moderatzaileek soilik gaia alda dezakete"
+msgstr "Moderatzaileek bakarrik alda dezakete gaia"
 
 #: Block messages from outside this channel
 msgid "channel_external"
@@ -475,11 +475,11 @@ msgstr "Kanpoko mezuak bloketu"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Egin klik Berrezi botoian kanalen zerrenda eguneratzeko"
+msgstr "Egin klik berritu botoian zerrenda eguneratzeko"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "Ez da kanalarik aurkitu, saiatu berriro geroago"
+msgstr "Ez da kanalik aurkitu, saiatu beranduago"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
@@ -487,7 +487,7 @@ msgstr "Ongi Etorria Kiwi IRC-ra! Ezkerreko kanal bat aukeratu."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Nabigatzailearen barra estatu erakustea"
+msgstr "Erakutsi goera-barra"
 
 #: Hide Topic
 msgid "hide_topic"
@@ -503,15 +503,15 @@ msgstr "Kanalaren ezarpenak"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Kanal batean sartzea"
+msgstr "Kanalean sartu"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Deskonektatuta"
+msgstr "Konektatu gabe"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Elkarrizketa pribatua {{user}}"
+msgstr "{{user}}(r)ekin elkarrizketa pribatua"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
@@ -523,15 +523,15 @@ msgstr "Mezua bidali..."
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Kargatuz {{url}}..."
+msgstr "{{url}} kargatzen..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Aurreko mezuak kargatzea"
+msgstr "Aurreko mezuak kargatu"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Mezuak irakurri gabe"
+msgstr "Irakurri gabeko mezuak"
 
 #: Server details
 msgid "settings_server_details"
@@ -539,7 +539,7 @@ msgstr "Zerbitzariaren xehetasunak"
 
 #: Port
 msgid "settings_port"
-msgstr "Portua"
+msgstr "Ataka"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
