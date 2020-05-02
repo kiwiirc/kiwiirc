@@ -1,10 +1,12 @@
-<template>
+<template functional>
     <div
-        :data-nick="message&&message.nick"
-        :class="[hasAvatar ? 'kiwi-avatar--image' : '']"
+        :data-nick="props.message&&props.message.nick"
+        :class="[$options.m.hasAvatar(props) ? 'kiwi-avatar--image' : '', data.staticClass]"
         class="kiwi-avatar"
     >
-        <span :style="avatarStyle">{{ hasAvatar ? '' : firstNickLetter }}</span>
+        <span :style="$options.m.avatarStyle(props)">
+            {{ $options.m.hasAvatar(props) ? '' : $options.m.firstNickLetter(props) }}
+        </span>
     </div>
 </template>
 
@@ -12,36 +14,48 @@
 
 'kiwi public';
 
-export default {
-    props: ['message', 'user', 'size'],
-    computed: {
-        avatar() {
-            return (this.message && this.message.avatar) || (this.user && this.user.avatar);
-        },
-        firstNickLetter() {
-            return ((this.message && this.message.nick) || (this.user && this.user.nick) || '')[0];
-        },
-        hasAvatar() {
-            return !!(this.avatar && (this.avatar.small || this.avatar.large));
-        },
-        avatarStyle() {
-            let style = {};
-            if (this.hasAvatar) {
-                let url = (this.size === 'small' && this.avatar.small) ?
-                    this.avatar.small :
-                    this.avatar.large;
-                style['background-image'] = `url("${url}")`;
-            } else {
-                style['background-color'] = `${this.colour}`;
-            }
-
-            return style;
-        },
-        colour() {
-            let user = (this.message && this.message.user) || this.user;
-            return user.getColour();
-        },
+const methods = {
+    props: {},
+    avatar(props) {
+        // let props = this.props;
+        return (props.message && props.message.avatar) || (props.user && props.user.avatar);
     },
+    firstNickLetter(props) {
+        // let props = this.props;
+        return ((props.message && props.message.nick) || (props.user && props.user.nick) || '')[0];
+    },
+    hasAvatar(props) {
+        // let props = this.props;
+        return !!(props.avatar && (props.avatar.small || props.avatar.large));
+    },
+    avatarStyle(props) {
+        // let props = this.props;
+        let style = {};
+        if (this.hasAvatar(props)) {
+            let url = (props.size === 'small' && this.avatar(props).small) ?
+                this.avatar(props).small :
+                this.avatar(props).large;
+            style['background-image'] = `url("${url}")`;
+        } else {
+            style['background-color'] = `${this.colour(props)}`;
+        }
+
+        return style;
+    },
+    colour(props) {
+        // let props = this.props;
+        let user = (props.message && props.message.user) || props.user;
+        return user.getColour();
+    },
+};
+
+export default {
+    props: {
+        message: Object,
+        user: Object,
+        size: String,
+    },
+    m: methods,
 };
 
 </script>

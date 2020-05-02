@@ -1,47 +1,60 @@
-<template>
+<template functional>
     <span
-        v-if="shouldShowStatus"
-        :class="{ 'kiwi-awaystatusindicator--away': user && user.isAway(),
-                  'kiwi-awaystatusindicator--self': isUserSelf }"
+        v-if="$options.m.shouldShowStatus(props)"
+        :class="{
+            'kiwi-awaystatusindicator--away': props.user && props.user.isAway(),
+            'kiwi-awaystatusindicator--self': $options.m.isUserSelf(props),
+            [data.staticClass]: true,
+        }"
         class="kiwi-awaystatusindicator"
-        @click="toggleSelfAway()"
+        @click="$options.m.toggleSelfAway(props)"
     />
 </template>
 
 <script>
 'kiwi public';
 
+import state from '@/libs/state';
+
+const methods = {
+    props: {},
+    toggleSelfAway(props) {
+        // let props = this.props;
+        if (props.isUserSelf) {
+            let val = props.user.isAway();
+            props.network.ircClient.raw('AWAY', val ? '' : 'Currently away');
+        }
+    },
+    isUserSelf(props) {
+        // let props = this.props;
+        if (props.toggle === false) {
+            return false;
+        }
+        let user = state.getUser(props.network.id, props.network.nick);
+        return props.user === user;
+    },
+    shouldShowStatus(props) {
+        // let props = this.props;
+        if (!state.setting('showAwayStatusIndicators')) {
+            return false;
+        }
+
+        if (props.network.state !== 'connected') {
+            return false;
+        }
+
+        let awayNotifyEnabled = props.network.ircClient.network.cap.isEnabled('away-notify');
+        return state.setting('buffers.who_loop') || awayNotifyEnabled;
+    },
+};
+
 export default {
-    props: ['network', 'user', 'toggle'],
-    computed: {
-        isUserSelf() {
-            if (this.toggle === false) {
-                return false;
-            }
-            let user = this.$state.getUser(this.network.id, this.network.nick);
-            return this.user === user;
-        },
-        shouldShowStatus() {
-            if (!this.$state.setting('showAwayStatusIndicators')) {
-                return false;
-            }
-
-            if (this.network.state !== 'connected') {
-                return false;
-            }
-
-            let awayNotifyEnabled = this.network.ircClient.network.cap.isEnabled('away-notify');
-            return this.$state.setting('buffers.who_loop') || awayNotifyEnabled;
-        },
+    props: {
+        network: Object,
+        user: Object,
+        toggle: Boolean,
     },
-    methods: {
-        toggleSelfAway() {
-            if (this.isUserSelf) {
-                let val = this.user.isAway();
-                this.network.ircClient.raw('AWAY', val ? '' : 'Currently away');
-            }
-        },
-    },
+    m: methods,
 };
 </script>
 

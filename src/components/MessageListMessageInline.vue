@@ -25,7 +25,8 @@
                 '',
             (props.message.user && props.m().userMode(props.message.user)) ?
                 'kiwi-messagelist-message--user-mode-'+props.m().userMode(props.message.user) :
-                ''
+                '',
+            data.staticClass,
         ]"
         :data-message-id="props.message.id"
         :data-nick="(props.message.nick||'').toLowerCase()"
