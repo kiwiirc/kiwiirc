@@ -201,8 +201,9 @@ function loadApp() {
     let configLoader = new ConfigLoader();
     configLoader
         .addValueReplacement('protocol', window.location.protocol)
+        .addValueReplacement('wsprotocol', window.location.protocol === 'https:' ? 'wss:' : 'ws:')
+        .addValueReplacement('tls', window.location.protocol === 'https:')
         .addValueReplacement('hostname', window.location.hostname)
-        .addValueReplacement('host', window.location.hostname)
         .addValueReplacement('host', window.location.host)
         .addValueReplacement('port', window.location.port || 80)
         .addValueReplacement('hash', (window.location.hash || '').substr(1))
