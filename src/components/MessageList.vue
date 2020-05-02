@@ -73,6 +73,7 @@
             :network="buffer.getNetwork()"
         />
 
+        <div ref="ender" />
     </div>
 </template>
 
@@ -437,13 +438,13 @@ export default {
             }
         },
         scrollToBottom() {
-            this.$el.scrollTop = this.$el.scrollHeight;
+            this.$refs.ender.scrollIntoView(false);
         },
         maybeScrollToBottom() {
             if (!this.maybeScrollToBottom_throttled) {
                 this.maybeScrollToBottom_throttled = _.throttle(() => {
                     if (this.auto_scroll) {
-                        this.$el.scrollTop = this.$el.scrollHeight;
+                        this.$refs.ender.scrollIntoView(false);
                     }
                 }, 500, { leading: true });
             }
