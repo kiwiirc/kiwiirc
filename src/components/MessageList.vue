@@ -95,7 +95,7 @@ let log = Logger.namespace('MessageList.vue');
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
-const BOTTOM_SCROLL_MARGIN = 30;
+const BOTTOM_SCROLL_MARGIN = 50;
 
 export default {
     components: {
