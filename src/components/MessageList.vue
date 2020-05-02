@@ -243,7 +243,9 @@ export default {
                 newBuffer.flags.has_opened = true;
             }
 
-            this.scrollToBottom();
+            this.$nextTick(() => {
+                this.scrollToBottom();
+            });
         },
         'buffer.message_count'() {
             this.$nextTick(() => {
