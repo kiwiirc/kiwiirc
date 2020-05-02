@@ -6,6 +6,7 @@
                 '',
             props.user.away ? 'kiwi-nicklist-user--away' : '',
             props.user.ignore ? 'kiwi-nicklist-user--ignore' : '',
+            data.staticClass,
         ]"
         :data-nick="(props.user.nick||'').toLowerCase()"
         class="kiwi-nicklist-user"
