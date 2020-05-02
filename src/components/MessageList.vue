@@ -79,6 +79,7 @@
 <script>
 'kiwi public';
 
+import _ from 'lodash';
 import strftime from 'strftime';
 import Logger from '@/libs/Logger';
 import BufferKey from './BufferKey';
@@ -439,9 +440,15 @@ export default {
             this.$el.scrollTop = this.$el.scrollHeight;
         },
         maybeScrollToBottom() {
-            if (this.auto_scroll) {
-                this.$el.scrollTop = this.$el.scrollHeight;
+            if (!this.maybeScrollToBottom_throttled) {
+                this.maybeScrollToBottom_throttled = _.throttle(() => {
+                    if (this.auto_scroll) {
+                        this.$el.scrollTop = this.$el.scrollHeight;
+                    }
+                }, 500, { leading: true });
             }
+
+            this.maybeScrollToBottom_throttled();
         },
         maybeScrollToId(id) {
             let messageElement = this.$el.querySelector('.kiwi-messagelist-message[data-message-id="' + id + '"]');
