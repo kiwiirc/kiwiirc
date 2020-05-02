@@ -516,7 +516,7 @@ function createUserBatch(bufferState) {
         bufferState.users = o;
     };
 
-    return batchedAdd(addSingleUser, addMultipleUsers, 3);
+    return batchedAdd(addSingleUser, addMultipleUsers, 2);
 }
 
 /**
