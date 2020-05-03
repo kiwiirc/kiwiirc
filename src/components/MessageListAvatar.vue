@@ -1,5 +1,5 @@
-<template>
-    <Avatar :user="user" :message="message" size="small" />
+<template functional>
+    <component :is="$options.c.Avatar" :user="props.user" :message="props.message" size="small" />
 </template>
 
 <script>
@@ -11,7 +11,9 @@ import Avatar from './Avatar';
 // This component simply wraps the Avatar component so that plugins may override this messagelist
 // avatar separately than the nicklist avatar
 export default {
-    components: { Avatar },
+    c: {
+        Avatar,
+    },
     props: ['message', 'user'],
 };
 

@@ -1,84 +1,91 @@
-<template>
+<template functional>
     <div
         :class="[
-            'kiwi-messagelist-message-' + message.type,
-            message.type_extra ?
-                'kiwi-messagelist-message-' + message.type + '-' + message.type_extra :
+            'kiwi-messagelist-message-' + props.message.type,
+            props.message.type_extra ?
+                'kiwi-messagelist-message-' + props.message.type + '-' + props.message.type_extra :
                 '',
-            ml.isMessageHighlight(message) ?
+            props.ml.isMessageHighlight(props.message) ?
                 'kiwi-messagelist-message--highlight' :
                 '',
-            ml.isHoveringOverMessage(message) ?
+            props.ml.isHoveringOverMessage(props.message) ?
                 'kiwi-messagelist-message--hover' :
                 '',
-            ml.buffer.last_read && message.time > ml.buffer.last_read ?
+            props.ml.buffer.last_read && props.message.time > props.ml.buffer.last_read ?
                 'kiwi-messagelist-message--unread' :
                 '',
-            message.nick.toLowerCase() === ml.ourNick.toLowerCase() ?
+            props.message.nick.toLowerCase() === props.ml.ourNick.toLowerCase() ?
                 'kiwi-messagelist-message--own' :
                 '',
-            ml.message_info_open === message ?
+            props.ml.message_info_open === props.message ?
                 'kiwi-messagelist-message--info-open' :
                 '',
-            ml.message_info_open && ml.message_info_open !== message ?
+            props.ml.message_info_open && props.ml.message_info_open !== props.message ?
                 'kiwi-messagelist-message--blur' :
                 '',
-            (message.user && userMode(message.user)) ?
-                'kiwi-messagelist-message--user-mode-'+userMode(message.user) :
-                ''
+            (props.message.user && props.m().userMode(props.message.user)) ?
+                'kiwi-messagelist-message--user-mode-'+props.m().userMode(props.message.user) :
+                '',
+            data.staticClass,
         ]"
-        :data-message-id="message.id"
-        :data-nick="(message.nick||'').toLowerCase()"
+        :data-message-id="props.message.id"
+        :data-nick="(props.message.nick||'').toLowerCase()"
         class="kiwi-messagelist-message kiwi-messagelist-message--text"
-        @click="ml.onMessageClick($event, message, true)"
-        @dblclick="ml.onMessageDblClick($event, message)"
+        @click="props.ml.onMessageClick($event, props.message, true)"
+        @dblclick="props.ml.onMessageDblClick($event, props.message)"
     >
         <div>
             <span
-                v-if="ml.bufferSetting('show_timestamps')"
+                v-if="props.ml.bufferSetting('show_timestamps')"
                 class="kiwi-messagelist-time"
             >
-                {{ ml.formatTime(message.time) }}
+                {{ props.ml.formatTime(props.message.time) }}
             </span>
             <span
-                :style="{ 'color': userColour }"
-                :data-nick="message.nick"
+                :style="{ 'color': props.ml.userColour(props.message.user) }"
+                :data-nick="props.message.nick"
                 :class="[
                     'kiwi-messagelist-nick',
-                    (message.user && userMode(message.user)) ?
-                        'kiwi-messagelist-nick--mode-'+userMode(message.user) :
+                    (props.message.user && props.m().userMode(props.message.user)) ?
+                        'kiwi-messagelist-nick--mode-'+props.m().userMode(props.message.user) :
                         ''
                 ]"
-                @click="ml.openUserBox(message.nick)"
-                @mouseover="ml.hover_nick=message.nick.toLowerCase();"
-                @mouseout="ml.hover_nick='';"
+                @click="props.ml.openUserBox(props.message.nick)"
+                @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
+                @mouseout="props.ml.hover_nick='';"
             >
                 <span class="kiwi-messagelist-nick--prefix">
-                    {{ message.user ? userModePrefix(message.user) : '' }}
+                    {{ props.message.user ? props.m().userModePrefix(props.message.user) : '' }}
                 </span>
-                <span>{{ displayNick }}</span>
+                <span>{{ props.m().displayNick() }}</span>
             </span>
             <div
-                v-if="message.bodyTemplate && message.bodyTemplate.$el"
-                v-rawElement="message.bodyTemplate.$el"
+                v-if="props.message.bodyTemplate && props.message.bodyTemplate.$el"
+                v-rawElement="props.message.bodyTemplate.$el"
                 class="kiwi-messagelist-body"
             />
-            <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)" />
+            <div
+                v-else
+                class="kiwi-messagelist-body"
+                v-html="props.ml.formatMessage(props.message)"
+            />
         </div>
 
-        <message-info
-            v-if="ml.message_info_open===message"
-            :message="message"
-            :buffer="ml.buffer"
-            @close="ml.toggleMessageInfo()"
+        <component
+            :is="injections.components.MessageInfo"
+            v-if="props.ml.message_info_open===props.message"
+            :message="props.message"
+            :buffer="props.ml.buffer"
+            @close="props.ml.toggleMessageInfo()"
         />
 
-        <div v-if="message.embed.payload">
-            <media-viewer
-                :url="message.embed.payload"
+        <div v-if="props.message.embed.payload">
+            <component
+                :is="injections.components.MediaViewer"
+                :url="props.message.embed.payload"
                 :show-pin="true"
-                @close="message.embed.payload = ''"
-                @pin="ml.openEmbedInPreview(message)"
+                @close="props.message.embed.payload = ''"
+                @pin="props.ml.openEmbedInPreview(props.message)"
             />
         </div>
     </div>
@@ -89,33 +96,50 @@
 import MediaViewer from './MediaViewer';
 import MessageInfo from './MessageInfo';
 
-export default {
-    components: {
-        MessageInfo,
-        MediaViewer,
-    },
-    props: ['ml', 'message', 'idx'],
-    data() {
-        return { };
-    },
-    computed: {
-        displayNick() {
-            let suffix = this.message.nick ?
-                ':' :
-                '';
+const methods = {
+    props: {},
+    displayNick() {
+        let props = this.props;
+        let suffix = props.message.nick ?
+            ':' :
+            '';
 
-            return this.message.nick + suffix;
-        },
-        userColour() {
-            return this.ml.userColour(this.message.user);
+        return props.message.nick + suffix;
+    },
+    userMode(user) {
+        let props = this.props;
+        return props.ml.buffer.userMode(user);
+    },
+    userModePrefix(user) {
+        let props = this.props;
+        return props.ml.buffer.userModePrefix(user);
+    },
+};
+
+export default {
+    inject: {
+        components: {
+            default: {
+                MessageInfo,
+                MediaViewer,
+            },
         },
     },
-    methods: {
-        userMode(user) {
-            return this.ml.buffer.userMode(user);
-        },
-        userModePrefix(user) {
-            return this.ml.buffer.userModePrefix(user);
+    props: {
+        ml: Object,
+        message: Object,
+        idx: Number,
+        m: {
+            default: function m() {
+                // vue uses this function to generate the prop. `this`==null Return our own function
+                return function n() {
+                    // Give our methods some props context before its function is called.
+                    // This is only safe because the function on the methods object is called on
+                    // the same js tick
+                    methods.props = this;
+                    return methods;
+                };
+            },
         },
     },
 };

@@ -516,7 +516,7 @@ function createUserBatch(bufferState) {
         bufferState.users = o;
     };
 
-    return batchedAdd(addSingleUser, addMultipleUsers);
+    return batchedAdd(addSingleUser, addMultipleUsers, 2);
 }
 
 /**
@@ -555,7 +555,7 @@ function createMessageBatch(bufferState) {
         }
     };
 
-    return batchedAdd(addSingleMessage, addMultipleMessages);
+    return batchedAdd(addSingleMessage, addMultipleMessages, 2);
 }
 
 // Update our user list status every 30seconds to get each users current away status

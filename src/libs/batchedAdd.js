@@ -4,7 +4,7 @@
  * batchedAdd prevents a flood of new inserts into state. After X inserts/sec, batch
  * each second worth of new items at the same time.
  */
-export default function batchedAdd(singleFn, batchedFn) {
+export default function batchedAdd(singleFn, batchedFn, numInsertsSec = 3) {
     let queue = [];
     let numInLastSec = 0;
     let isLooping = false;
@@ -47,7 +47,7 @@ export default function batchedAdd(singleFn, batchedFn) {
         numInLastSec++;
 
         // Under 1 second, queue them
-        if (queue.length || numInLastSec > 3) {
+        if (queue.length || numInLastSec > numInsertsSec) {
             queue.push(item);
             maybeStartLoop();
         } else {

@@ -1,93 +1,93 @@
-<template>
+<template functional>
     <div
         :class="[
-            ml.filteredMessages[idx-1] &&
-                ml.filteredMessages[idx-1].nick === message.nick &&
-                message.time - ml.filteredMessages[idx-1].time < 60000 &&
-                ml.filteredMessages[idx-1].type !== 'traffic' &&
-                message.type !== 'traffic' ?
-                    'kiwi-messagelist-message--authorrepeat' :
-                    '',
-            'kiwi-messagelist-message-' + message.type,
-            message.type_extra ?
-                'kiwi-messagelist-message-' + message.type + '-' + message.type_extra :
+            props.m().isRepeat() ?
+                'kiwi-messagelist-message--authorrepeat' :
+                'kiwi-messagelist-message--authorfirst',
+            'kiwi-messagelist-message-' + props.message.type,
+            props.message.type_extra ?
+                'kiwi-messagelist-message-' + props.message.type + '-' + props.message.type_extra :
                 '',
-            ml.isMessageHighlight(message) ?
+            props.ml.isMessageHighlight(props.message) ?
                 'kiwi-messagelist-message--highlight' :
                 '',
-            ml.isHoveringOverMessage(message) ?
+            props.ml.isHoveringOverMessage(props.message) ?
                 'kiwi-messagelist-message--hover' :
                 '',
-            ml.buffer.last_read && message.time > ml.buffer.last_read ?
+            props.ml.buffer.last_read && props.message.time > props.ml.buffer.last_read ?
                 'kiwi-messagelist-message--unread' :
                 '',
-            message.nick.toLowerCase() === ml.ourNick.toLowerCase() ?
+            props.message.nick.toLowerCase() === props.ml.ourNick.toLowerCase() ?
                 'kiwi-messagelist-message--own' :
                 '',
-            ml.message_info_open === message ?
+            props.ml.message_info_open === props.message ?
                 'kiwi-messagelist-message--info-open' :
                 '',
-            ml.message_info_open && ml.message_info_open !== message ?
+            props.ml.message_info_open && props.ml.message_info_open !== props.message ?
                 'kiwi-messagelist-message--blur' :
                 '',
-            (message.user && userMode(message.user)) ?
-                'kiwi-messagelist-message--user-mode-'+userMode(message.user) :
-                ''
+            (props.message.user && props.m().userMode(props.message.user)) ?
+                'kiwi-messagelist-message--user-mode-'+props.m().userMode(props.message.user) :
+                '',
+            data.staticClass,
         ]"
-        :data-message-id="message.id"
-        :data-nick="(message.nick||'').toLowerCase()"
+        :data-message-id="props.message.id"
+        :data-nick="(props.message.nick||'').toLowerCase()"
         class="kiwi-messagelist-message kiwi-messagelist-message--compact"
-        @click="ml.onMessageClick($event, message)"
+        @click="props.ml.onMessageClick($event, props.message)"
     >
         <div
-            v-if="ml.bufferSetting('show_timestamps')"
-            :title="ml.formatTimeFull(message.time)"
+            v-if="props.ml.bufferSetting('show_timestamps')"
+            :title="props.ml.formatTimeFull(props.message.time)"
             class="kiwi-messagelist-time"
         >
-            {{ ml.formatTime(message.time) }}
+            {{ props.ml.formatTime(props.message.time) }}
         </div>
         <div
-            :style="{ 'color': userColour }"
+            :style="{ 'color': props.ml.userColour(props.message.user) }"
             :class="[
                 'kiwi-messagelist-nick',
-                (message.user && userMode(message.user)) ?
-                    'kiwi-messagelist-nick--mode-'+userMode(message.user) :
+                (props.message.user && props.m().userMode(props.message.user)) ?
+                    'kiwi-messagelist-nick--mode-'+props.m().userMode(props.message.user) :
                     ''
             ]"
-            @click="ml.openUserBox(message.nick)"
-            @mouseover="ml.hover_nick=message.nick.toLowerCase();"
-            @mouseout="ml.hover_nick='';"
+            @click="props.ml.openUserBox(props.message.nick)"
+            @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
+            @mouseout="props.ml.hover_nick='';"
         >
-            <away-status-indicator
-                v-if="message.user"
-                :network="getNetwork()" :user="message.user"
+            <component
+                :is="injections.components.AwayStatusIndicator"
+                v-if="props.message.user"
+                :network="props.m().getNetwork()" :user="props.message.user"
                 :toggle="false"
             />
             <span class="kiwi-messagelist-nick--prefix">
-                {{ message.user ? userModePrefix(message.user) : '' }}
+                {{ props.message.user ? props.m().userModePrefix(props.message.user) : '' }}
             </span>
-            {{ message.nick }}
+            {{ props.message.nick }}
         </div>
         <div
-            v-if="message.bodyTemplate && message.bodyTemplate.$el"
-            v-rawElement="message.bodyTemplate.$el"
+            v-if="props.message.bodyTemplate && props.message.bodyTemplate.$el"
+            v-rawElement="props.message.bodyTemplate.$el"
             class="kiwi-messagelist-body"
         />
-        <div v-else class="kiwi-messagelist-body" v-html="ml.formatMessage(message)" />
+        <div v-else class="kiwi-messagelist-body" v-html="props.ml.formatMessage(props.message)" />
 
-        <message-info
-            v-if="ml.message_info_open===message"
-            :message="message"
-            :buffer="ml.buffer"
-            @close="ml.toggleMessageInfo()"
+        <component
+            :is="injections.components.MessageInfo"
+            v-if="props.ml.message_info_open===props.message"
+            :message="props.message"
+            :buffer="props.ml.buffer"
+            @close="props.ml.toggleMessageInfo()"
         />
 
-        <div v-if="message.embed.payload">
-            <media-viewer
-                :url="message.embed.payload"
+        <div v-if="props.message.embed.payload">
+            <component
+                :is="injections.components.MediaViewer"
+                :url="props.message.embed.payload"
                 :show-pin="true"
-                @close="message.embed.payload = ''"
-                @pin="ml.openEmbedInPreview(message)"
+                @close="props.message.embed.payload = ''"
+                @pin="props.ml.openEmbedInPreview(props.message)"
             />
         </div>
     </div>
@@ -104,34 +104,65 @@ import MediaViewer from './MediaViewer';
 import AwayStatusIndicator from './AwayStatusIndicator';
 import MessageInfo from './MessageInfo';
 
+const methods = {
+    props: {},
+    getNetwork() {
+        let props = this.props;
+        return props.ml.buffer.getNetwork();
+    },
+    isRepeat() {
+        let props = this.props;
+        let ml = props.ml;
+        let idx = props.idx;
+        let message = props.message;
+        let prevMessage = ml.filteredMessages[idx - 1];
+
+        return !!prevMessage &&
+            prevMessage.nick === message.nick &&
+            message.time - prevMessage.time < 60000 &&
+            prevMessage.type !== 'traffic' &&
+            message.type !== 'traffic' &&
+            message.type === prevMessage.type;
+    },
+    isHoveringOverMessage(message) {
+        let props = this.props;
+        return message.nick && message.nick.toLowerCase() === props.hover_nick.toLowerCase();
+    },
+    userMode(user) {
+        let props = this.props;
+        return props.ml.buffer.userMode(user);
+    },
+    userModePrefix(user) {
+        let props = this.props;
+        return props.ml.buffer.userModePrefix(user);
+    },
+};
+
 export default {
-    components: {
-        AwayStatusIndicator,
-        MessageInfo,
-        MediaViewer,
-    },
-    props: ['ml', 'message', 'idx'],
-    data: function data() {
-        return {
-        };
-    },
-    computed: {
-        userColour() {
-            return this.ml.userColour(this.message.user);
+    inject: {
+        components: {
+            default: {
+                AwayStatusIndicator,
+                MessageInfo,
+                MediaViewer,
+            },
         },
     },
-    methods: {
-        getNetwork() {
-            return this.ml.buffer.getNetwork();
-        },
-        isHoveringOverMessage(message) {
-            return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
-        },
-        userMode(user) {
-            return this.ml.buffer.userMode(user);
-        },
-        userModePrefix(user) {
-            return this.ml.buffer.userModePrefix(user);
+    props: {
+        ml: Object,
+        message: Object,
+        idx: Number,
+        m: {
+            default: function m() {
+                // vue uses this function to generate the prop. `this`==null Return our own function
+                return function n() {
+                    // Give our methods some props context before its function is called.
+                    // This is only safe because the function on the methods object is called on
+                    // the same js tick
+                    methods.props = this;
+                    return methods;
+                };
+            },
         },
     },
 };

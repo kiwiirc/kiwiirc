@@ -73,12 +73,14 @@
             :network="buffer.getNetwork()"
         />
 
+        <div ref="ender" />
     </div>
 </template>
 
 <script>
 'kiwi public';
 
+import _ from 'lodash';
 import strftime from 'strftime';
 import Logger from '@/libs/Logger';
 import BufferKey from './BufferKey';
@@ -93,7 +95,7 @@ let log = Logger.namespace('MessageList.vue');
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
-const BOTTOM_SCROLL_MARGIN = 30;
+const BOTTOM_SCROLL_MARGIN = 50;
 
 export default {
     components: {
@@ -241,7 +243,9 @@ export default {
                 newBuffer.flags.has_opened = true;
             }
 
-            this.scrollToBottom();
+            this.$nextTick(() => {
+                this.scrollToBottom();
+            });
         },
         'buffer.message_count'() {
             this.$nextTick(() => {
@@ -436,12 +440,18 @@ export default {
             }
         },
         scrollToBottom() {
-            this.$el.scrollTop = this.$el.scrollHeight;
+            this.$refs.ender.scrollIntoView(false);
         },
         maybeScrollToBottom() {
-            if (this.auto_scroll) {
-                this.$el.scrollTop = this.$el.scrollHeight;
+            if (!this.maybeScrollToBottom_throttled) {
+                this.maybeScrollToBottom_throttled = _.throttle(() => {
+                    if (this.auto_scroll) {
+                        this.$refs.ender.scrollIntoView(false);
+                    }
+                }, 500, { leading: true });
             }
+
+            this.maybeScrollToBottom_throttled();
         },
         maybeScrollToId(id) {
             let messageElement = this.$el.querySelector('.kiwi-messagelist-message[data-message-id="' + id + '"]');
@@ -459,7 +469,9 @@ export default {
             this.$el.style.userSelect = 'auto';
         },
         removeSelections(removeNative = false) {
-            this.selectedMessages = new Set();
+            if (this.selectedMessages.size > 0) {
+                this.selectedMessages = new Set();
+            }
 
             let selection = document.getSelection();
             if (removeNative && selection) {
@@ -492,8 +504,22 @@ export default {
 
             let copyData = '';
             let selecting = false;
+            let selectionChangeOff = null;
+
+            this.listen(document, 'selectstart', (e) => {
+                if (!this.$el.contains(e.target)) {
+                    // Selected elsewhere on the page
+                    copyData = '';
+                    this.removeSelections();
+                    return;
+                }
+
+                this.removeSelections();
+                selectionChangeOff = this.listen(document, 'selectionchange', onSelectionChange);
+            });
 
             this.listen(document, 'mouseup', (e) => {
+                selectionChangeOff && selectionChangeOff();
                 this.unrestrictTextSelection();
                 if (selecting) {
                     e.preventDefault();
@@ -501,7 +527,7 @@ export default {
                 selecting = false;
             });
 
-            this.listen(document, 'selectionchange', (e) => {
+            let onSelectionChange = (e) => {
                 if (!this.$el) {
                     return true;
                 }
@@ -540,6 +566,7 @@ export default {
                     let node = startNode;
                     let messages = [];
                     let allMessages = this.buffer.getMessages();
+                    let selectedMessagesSize = this.selectedMessages.size;
 
                     const finder = (m) => m.id.toString() === node.attributes['data-message-id'].value;
 
@@ -548,9 +575,9 @@ export default {
                         // This could be more efficent with an id->msg lookup
                         let msg = allMessages.find(finder);
 
-                        // Add to a list of selected messages
-                        this.selectedMessages.add(msg.id);
                         if (msg) {
+                            // Add to a list of selected messages
+                            this.selectedMessages.add(msg.id);
                             messages.push(msg);
                         }
                         if (node === endNode) {
@@ -560,8 +587,10 @@ export default {
                             node = nextNode && nextNode.querySelector('[data-message-id]');
                         }
                     }
-                    // Replace the set so the MessageList updates.
-                    this.selectedMessages = new Set(this.selectedMessages);
+                    // Replace the set so the MessageList updates, but only if it's changed.
+                    if (selectedMessagesSize !== this.selectedMessages.size) {
+                        this.selectedMessages = new Set(this.selectedMessages);
+                    }
 
                     // Iterate through the selected messages, format and store as a
                     // string to be used in the copy handler
@@ -574,7 +603,7 @@ export default {
                     this.unrestrictTextSelection();
                 }
                 return false;
-            });
+            };
 
             this.listen(document, 'copy', (e) => {
                 if (!copyData || !copyData.length) { // Just do a normal copy if no special data
@@ -591,7 +620,7 @@ export default {
                     document.execCommand('copy');
                     document.body.removeChild(input);
                 }
-                this.removeSelections(true);
+
                 return true;
             });
         },

@@ -8,30 +8,37 @@ import state from './state';
 
 let nextId = 0;
 
+function def(target, key, value) {
+    Object.defineProperty(target, key, {
+        writable: true,
+        value,
+    });
+}
+
 export default class Message {
     constructor(message, user) {
-        this.id = extractMessageId(message) || nextId++;
+        def(this, 'id', extractMessageId(message) || nextId++);
         // Two different times;
         //   time = time in the users local time
         //   server_time = time the server gave us
-        this.time = message.time || Date.now();
-        this.server_time = message.server_time || this.time;
-        this.nick = message.nick;
-        this.message = message.message;
-        this.tags = message.tags;
-        this.type = message.type || 'message';
-        this.type_extra = message.type_extra;
-        this.ignore = false;
-        this.mentioned_urls = [];
+        def(this, 'time', message.time || Date.now());
+        def(this, 'server_time', message.server_time || this.time);
+        def(this, 'nick', message.nick);
+        def(this, 'message', message.message);
+        def(this, 'tags', message.tags);
+        def(this, 'type', message.type || 'message');
+        def(this, 'type_extra', message.type_extra);
+        def(this, 'ignore', false);
+        def(this, 'mentioned_urls', []);
         // If embed.payload is truthy, it will be embedded within the message
         this.embed = { type: 'url', payload: null };
         this.html = '';
-        this.hasRendered = false;
+        def(this, 'hasRendered', false);
         // template should be null or a Vue component to render this message
-        this.template = message.template || null;
+        def(this, 'template', message.template || null);
         // bodyTemplate should be null or a Vue component to render in the body of the message
-        this.bodyTemplate = message.bodyTemplate || null;
-        this.isHighlight = false;
+        def(this, 'bodyTemplate', message.bodyTemplate || null);
+        def(this, 'isHighlight', false);
 
         // We don't want the user object to be enumerable
         Object.defineProperty(this, 'user', { value: user });
