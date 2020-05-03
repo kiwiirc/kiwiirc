@@ -155,12 +155,27 @@
                                 <div class="kiwi-statebrowser-channel-labels">
                                     <div
                                         v-if="(!section_display_channels === true &&
-                                            type === 'channels') ||
-                                            (!section_display_queries === true &&
-                                                type === 'queries')"
+                                            type === 'channels' && channelActivity.unread !== 0)"
+                                        :class="[
+                                            channelActivity.highlights ?
+                                                'kiwi-statebrowser-channel-label--highlight' :
+                                                ''
+                                        ]"
                                         class="kiwi-statebrowser-channel-label"
                                     >
-                                        {{ buffersUnread(itemBuffers) }}
+                                        {{ channelActivity.unread }}
+                                    </div>
+                                    <div
+                                        v-else-if="(!section_display_queries === true &&
+                                            type === 'queries' && queryActivity.unread !== 0)"
+                                        :class="[
+                                            queryActivity.highlights ?
+                                                'kiwi-statebrowser-channel-label--highlight' :
+                                                ''
+                                        ]"
+                                        class="kiwi-statebrowser-channel-label"
+                                    >
+                                        {{ queryActivity.unread }}
                                     </div>
                                 </div>
                             </div>
@@ -318,6 +333,36 @@ export default {
                 queries: bufferTools.orderBuffers(filteredQueries),
             };
         },
+        channelActivity() {
+            let totalUnread = 0;
+            let highlight = false;
+            this.filteredBuffers.channels.forEach((buffer) => {
+                if (buffer.isSpecial()) {
+                    return;
+                }
+                totalUnread += buffer.flags.unread;
+                if (!highlight) {
+                    if (buffer.flags.highlight) {
+                        highlight = true;
+                    }
+                }
+            });
+            return { highlights: highlight, unread: totalUnread > 999 ? '999+' : totalUnread };
+        },
+        queryActivity() {
+            let totalUnread = 0;
+            let highlight = false;
+            this.filteredBuffers.queries.forEach((buffer) => {
+                if (buffer.isSpecial()) {
+                    return;
+                }
+                totalUnread += buffer.flags.unread;
+                if (!highlight && buffer.flags.highlight) {
+                    highlight = true;
+                }
+            });
+            return { highlights: highlight, unread: totalUnread > 999 ? '999+' : totalUnread };
+        },
     },
     methods: {
         onNewChannelInputFocus() {
@@ -432,16 +477,6 @@ export default {
             } else if (type === 'queries') {
                 this.section_display_queries = !this.section_display_queries;
             }
-        },
-        buffersUnread(buffers) {
-            let totalUnread = 0;
-            buffers.forEach((buffer) => {
-                if (buffer.isSpecial()) {
-                    return;
-                }
-                totalUnread += buffer.flags.unread;
-            });
-            return totalUnread > 999 ? '999+' : totalUnread;
         },
         closeFilterChannel() {
             this.channel_filter = '';
