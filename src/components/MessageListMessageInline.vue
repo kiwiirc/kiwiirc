@@ -147,7 +147,7 @@ export default {
 
 <style lang="less">
 
-.kiwi-messagelist-message--text {
+.kiwi-messagelist-message--inline {
     position: relative;
     padding: 4px 10px;
     margin: 0;
@@ -155,7 +155,7 @@ export default {
 }
 
 //Hide the timestamp unless the user hovers over the message in question
-.kiwi-messagelist-message--text .kiwi-messagelist-time {
+.kiwi-messagelist-message--inline .kiwi-messagelist-time {
     position: absolute;
     top: 0;
     right: 0;
@@ -165,45 +165,45 @@ export default {
 }
 
 //display timestamp when hovering over the message
-.kiwi-messagelist-message--text:hover .kiwi-messagelist-time {
+.kiwi-messagelist-message--inline:hover .kiwi-messagelist-time {
     display: block;
     border-radius: 5px 0 0 5px;
 }
 
 // Hide the unread message seperator
-.kiwi-messagelist-message--text .kiwi-messagelist-seperator {
+.kiwi-messagelist-message--inline .kiwi-messagelist-seperator {
     display: none;
 }
 
-.kiwi-messagelist-message--text .kiwi-messagelist-nick {
+.kiwi-messagelist-message--inline .kiwi-messagelist-nick {
     display: inline;
     text-align: left;
     margin-right: 2px;
     padding: 0;
 }
 
-.kiwi-messagelist-message--text .kiwi-messagelist-nick:hover {
+.kiwi-messagelist-message--inline .kiwi-messagelist-nick:hover {
     max-width: none;
     width: auto;
 }
 
-.kiwi-messagelist-message--text .kiwi-messagelist-body {
+.kiwi-messagelist-message--inline .kiwi-messagelist-body {
     display: inline;
     padding: 0;
     white-space: pre-wrap;
 }
 
-.kiwi-messagelist-message--text .kiwi-messagelist-body a {
+.kiwi-messagelist-message--inline .kiwi-messagelist-body a {
     word-break: break-all;
 }
 
-.kiwi-messagelist-message--text .kiwi-messagelist-message-privmsg:hover,
-.kiwi-messagelist-message--text .kiwi-messagelist-message-action:hover,
-.kiwi-messagelist-message--text .kiwi-messagelist-message-notice:hover, {
+.kiwi-messagelist-message--inline .kiwi-messagelist-message-privmsg:hover,
+.kiwi-messagelist-message--inline .kiwi-messagelist-message-action:hover,
+.kiwi-messagelist-message--inline .kiwi-messagelist-message-notice:hover, {
     cursor: pointer;
 }
 
-.kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-body {
+.kiwi-messagelist-message--inline.kiwi-messagelist-message-connection .kiwi-messagelist-body {
     display: inline-block;
     margin: 0;
     font-size: 0.8em;
@@ -211,29 +211,29 @@ export default {
     padding: 0;
 }
 
-.kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-time {
+.kiwi-messagelist-message--inline.kiwi-messagelist-message-connection .kiwi-messagelist-time {
     display: none;
 }
 
 //Channel topic
-.kiwi-messagelist-message--text.kiwi-messagelist-message-topic {
+.kiwi-messagelist-message--inline.kiwi-messagelist-message-topic {
     border-radius: 0;
     border-left: 0;
     border-right: 0;
     margin: 10px 0;
 }
 
-.kiwi-messagelist-message--text.kiwi-messagelist-message-topic .kiwi-messagelist-body {
+.kiwi-messagelist-message--inline.kiwi-messagelist-message-topic .kiwi-messagelist-body {
     padding-right: 0;
     max-width: 95%;
     margin-left: 20px;
 }
 
-.kiwi-messagelist-message--text.kiwi-messagelist-message--unread {
+.kiwi-messagelist-message--inline.kiwi-messagelist-message--unread {
     opacity: 1;
 }
 
-.kiwi-messagelist-message--text .kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
+.kiwi-messagelist-message--inline .kiwi-messagelist-message-traffic .kiwi-messagelist-nick {
     display: none;
 }
 
@@ -241,14 +241,14 @@ export default {
     margin-bottom: 5px;
 }
 
-.kiwi-messagelist-message--text.kiwi-messagelist-message-nick .kiwi-messagelist-nick {
+.kiwi-messagelist-message--inline.kiwi-messagelist-message-nick .kiwi-messagelist-nick {
     display: none;
 }
 
 @media screen and (max-width: 700px) {
-    .kiwi-messagelist-message--text.kiwi-messagelist-message-traffic,
-    .kiwi-messagelist-message--text.kiwi-messagelist-message-nick .kiwi-messagelist-body,
-    .kiwi-messagelist-message--text .kiwi-messagelist-body {
+    .kiwi-messagelist-message--inline.kiwi-messagelist-message-traffic,
+    .kiwi-messagelist-message--inline.kiwi-messagelist-message-nick .kiwi-messagelist-body,
+    .kiwi-messagelist-message--inline .kiwi-messagelist-body {
         padding-right: 0;
     }
 }
