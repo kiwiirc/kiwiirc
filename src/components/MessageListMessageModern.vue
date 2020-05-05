@@ -48,16 +48,10 @@
             <component
                 :is="injections.components.AwayStatusIndicator"
                 v-if="props.message.user && !props.m().isRepeat()"
-                :network="props.m().getNetwork()" :user="props.message.user"
-                :toggle="false"
-                class="kiwi-messagelist-awaystatus"
-            />
-            <component
-                :is="injections.components.TypingStatusIndicator"
-                v-if="props.message.user"
                 :network="props.m().getNetwork()"
                 :user="props.message.user"
-                class="kiwi-messagelist-typingstatus"
+                :toggle="false"
+                class="kiwi-messagelist-awaystatus"
             />
 
         </div>
@@ -143,7 +137,6 @@ import { urlRegex } from '@/helpers/TextFormatting';
 import MessageInfo from './MessageInfo';
 import MessageListAvatar from './MessageListAvatar';
 import AwayStatusIndicator from './AwayStatusIndicator';
-import TypingStatusIndicator from './TypingStatusIndicator';
 import MediaViewer from './MediaViewer';
 
 const methods = {
@@ -234,7 +227,6 @@ export default {
                 MessageAvatar: MessageListAvatar,
                 MessageInfo,
                 AwayStatusIndicator,
-                TypingStatusIndicator,
                 MediaViewer,
             },
         },
