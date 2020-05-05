@@ -52,11 +52,6 @@ export default class UserState {
 
     typingStatus(_target, status) {
         let target = _target.toLowerCase();
-        if (!this.typingState[target]) {
-            return { status: '' };
-            // Vue.set(this.typingState, target.toLowerCase(), { started: 0, status: '' });
-        }
-
         if (!status) {
             return this.typingState[target] || { status: '' };
         }
