@@ -251,7 +251,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 
 .kiwi-messagelist-message--modern {
     border-left: 7px solid transparent;
