@@ -130,6 +130,12 @@ function matchUrl(word) {
         return false;
     }
 
+    // Trim common punctuation from the end of a link. End of scentences etc.
+    let punctuation = '.,;:';
+    while (punctuation.indexOf(url[url.length - 1]) > -1) {
+        url = url.substr(0, url.length - 1);
+    }
+
     // Links almost always contain an opening bracket if the last character is a closing
     // bracket and should be part of the URL.
     // If there isn't an opening bracket but the URL ends in a closing bracket, consider the
