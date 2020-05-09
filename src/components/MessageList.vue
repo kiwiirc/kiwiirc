@@ -230,6 +230,9 @@ export default {
                 !this.buffer.joined &&
                 this.buffer.getNetwork().state === 'connected';
         },
+        isIos() {
+            return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+        },
     },
     watch: {
         buffer(newBuffer) {
@@ -440,13 +443,19 @@ export default {
             }
         },
         scrollToBottom() {
+            if (this.isIos) {
+                // On iOS using scrollIntoView causes issues with the keyboard pushing
+                // the view upwards resulting in the input box being behind the keyboard
+                this.$el.scrollTop = this.$el.scrollHeight;
+                return;
+            }
             this.$refs.ender.scrollIntoView(false);
         },
         maybeScrollToBottom() {
             if (!this.maybeScrollToBottom_throttled) {
                 this.maybeScrollToBottom_throttled = _.throttle(() => {
                     if (this.auto_scroll) {
-                        this.$refs.ender.scrollIntoView(false);
+                        this.scrollToBottom();
                     }
                 }, 500, { leading: true });
             }
