@@ -185,11 +185,6 @@
     border-top-color: var(--comp-border);
 }
 
-.kiwi-controlinput .kiwi-controlinput-user,
-.kiwi-controlinput-inner .kiwi-controlinput-user {
-    border-right-color: var(--brand-midtone);
-}
-
 .kiwi-controlinput-send {
     background: #f1f1f1;
 }
