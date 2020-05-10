@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-04-13 17:55\n"
+"PO-Revision-Date: 2020-05-10 18:11\n"
 
 #: Start
 msgid "start_button"
@@ -47,7 +47,7 @@ msgstr "Kiwi Ayarları"
 
 #: Channels
 msgid "channels"
-msgstr "Kanallar"
+msgstr "Odalar"
 
 #: Access
 msgid "access"
@@ -59,7 +59,7 @@ msgstr "Yasaklı Kullanıcılar"
 
 #: Invited Users
 msgid "invited"
-msgstr "Davet Edilen Kullanıcılar"
+msgstr "Davet Edilenler"
 
 #: Notifications
 msgid "notifications"
@@ -79,7 +79,7 @@ msgstr "Sunucu Şifresi"
 
 #: I have a password
 msgid "password_have"
-msgstr "Bir şifrem var"
+msgstr "şifrem var"
 
 #: Server
 msgid "server"
@@ -87,11 +87,11 @@ msgstr "Sunucu"
 
 #: Nick
 msgid "nick"
-msgstr "Takma ad"
+msgstr "Rumuz"
 
 #: Channel
 msgid "channel"
-msgstr "Kanal"
+msgstr "Oda"
 
 #: Messages
 msgid "messages"
