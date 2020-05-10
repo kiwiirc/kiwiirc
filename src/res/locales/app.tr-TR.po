@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-05-10 20:01\n"
+"PO-Revision-Date: 2020-05-10 20:30\n"
 
 #: Start
 msgid "start_button"
@@ -59,7 +59,7 @@ msgstr "Yasaklı Kullanıcılar"
 
 #: Invited Users
 msgid "invited"
-msgstr "Davet Edilenler"
+msgstr "Davet Edilen Kullanıcılar"
 
 #: Notifications
 msgid "notifications"
@@ -91,7 +91,7 @@ msgstr "Takma ad"
 
 #: Channel
 msgid "channel"
-msgstr "Oda"
+msgstr "Kanal"
 
 #: Messages
 msgid "messages"
@@ -167,7 +167,7 @@ msgstr "Daha fazla bilgi"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Engelle"
+msgstr "Kullanıcıyı engelle"
 
 #: Channel
 msgid "connection_channel"
@@ -175,7 +175,7 @@ msgstr "Kanal"
 
 #: Away
 msgid "away"
-msgstr "Meşgul"
+msgstr "Uzakta"
 
 #: {{count}} week
 msgid "week"
@@ -287,7 +287,7 @@ msgstr "Ekstra biçimlendirme"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Mesajlardaki renkli Rumuzlar"
+msgstr "Mesajlardaki renkli takma adlar"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
