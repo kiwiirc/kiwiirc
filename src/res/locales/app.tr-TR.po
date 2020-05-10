@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-05-10 19:32\n"
+"PO-Revision-Date: 2020-05-10 20:01\n"
 
 #: Start
 msgid "start_button"
@@ -167,7 +167,7 @@ msgstr "Daha fazla bilgi"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Kullanıcıyı engelle"
+msgstr "Engelle"
 
 #: Channel
 msgid "connection_channel"
