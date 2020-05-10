@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-05-10 20:30\n"
+"PO-Revision-Date: 2020-05-10 20:40\n"
 
 #: Start
 msgid "start_button"
@@ -863,11 +863,11 @@ msgstr "{{nick}}, {{target}} kullanıcısından admin aldı"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}}, {{target}} kullanıcısına owner verdi"
+msgstr "{{nick}}, {{target}} kullanıcısına oda sahipliği verdi"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}}, {{target}} kullanıcısından owner aldı"
+msgstr "{{nick}}, {{target}} kullanıcısından oda sahipliğini aldı"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -895,7 +895,7 @@ msgstr "Bir kanala gir"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Bir kanaldan ayrıl"
+msgstr "kanaldan ayrıl"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
