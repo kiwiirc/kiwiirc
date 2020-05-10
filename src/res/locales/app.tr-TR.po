@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-05-10 18:31\n"
+"PO-Revision-Date: 2020-05-10 19:32\n"
 
 #: Start
 msgid "start_button"
@@ -47,7 +47,7 @@ msgstr "Kiwi Ayarları"
 
 #: Channels
 msgid "channels"
-msgstr "Odalar"
+msgstr "Kanallar"
 
 #: Access
 msgid "access"
@@ -79,7 +79,7 @@ msgstr "Sunucu Şifresi"
 
 #: I have a password
 msgid "password_have"
-msgstr "şifrem var"
+msgstr "Bir şifrem var"
 
 #: Server
 msgid "server"
@@ -87,7 +87,7 @@ msgstr "Sunucu"
 
 #: Nick
 msgid "nick"
-msgstr "Rumuz"
+msgstr "Takma ad"
 
 #: Channel
 msgid "channel"
@@ -287,7 +287,7 @@ msgstr "Ekstra biçimlendirme"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Mesajlardaki renkli takma adlar"
+msgstr "Mesajlardaki renkli Rumuzlar"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
@@ -307,11 +307,11 @@ msgstr "Kelimeleri vurgula (boşlukla ayır)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Takma adlar"
+msgstr "Kısa komutlar"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Takma adlar nelerdir?"
+msgstr "Kısa komutlar nelerdir?"
 
 #: Send Message
 msgid "send_message"
