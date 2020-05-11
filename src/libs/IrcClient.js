@@ -1226,7 +1226,10 @@ function clientMiddleware(state, network) {
             });
 
             if (command === 'ctcp request' && event.type === 'VERSION') {
-                client.ctcpResponse(event.nick, 'VERSION', 'Kiwi IRC');
+                let target = event.from_server ?
+                    event.hostname :
+                    event.nick;
+                client.ctcpResponse(target, 'VERSION', 'Kiwi IRC');
             }
         }
 
