@@ -234,7 +234,7 @@ export default {
             return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
         },
         isIframe() {
-            return !(window.parent === window) && this.$state.setting('disable_parent_scroll');
+            return window !== window.parent;
         },
     },
     watch: {
