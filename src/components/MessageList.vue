@@ -450,7 +450,7 @@ export default {
                 return;
             }
             if (this.$state.setting('enable_parent_scroll')) {
-                    this.$refs.ender.scrollIntoView(false);
+                this.$refs.ender.scrollIntoView(false);
             }
         },
         maybeScrollToBottom() {
