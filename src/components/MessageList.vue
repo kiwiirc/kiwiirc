@@ -449,7 +449,9 @@ export default {
                 this.$el.scrollTop = this.$el.scrollHeight;
                 return;
             }
-            this.$refs.ender.scrollIntoView(false);
+            if (this.$state.setting('enable_parent_scroll')) {
+                    this.$refs.ender.scrollIntoView(false);
+            }
         },
         maybeScrollToBottom() {
             if (!this.maybeScrollToBottom_throttled) {
