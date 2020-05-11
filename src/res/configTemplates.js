@@ -323,7 +323,7 @@ export const configTemplates = {
             general_error: '%text',
         },
         presetNetworks: [],
-        enable_parent_scroll: true,
+        disable_parent_scroll: false,
     },
 
     // Config template for those hardcore irc veterans

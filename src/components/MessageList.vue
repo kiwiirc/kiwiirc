@@ -233,6 +233,9 @@ export default {
         isIos() {
             return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
         },
+        isIframe() {
+            return !(window.parent === window) && this.$state.setting('disable_parent_scroll');
+        },
     },
     watch: {
         buffer(newBuffer) {
@@ -443,15 +446,16 @@ export default {
             }
         },
         scrollToBottom() {
-            if (this.isIos) {
+            if (this.isIos || this.isIframe) {
                 // On iOS using scrollIntoView causes issues with the keyboard pushing
                 // the view upwards resulting in the input box being behind the keyboard
+                //
+                // when inside iframe, scrollIntoView() also scrolls parent window
+
                 this.$el.scrollTop = this.$el.scrollHeight;
                 return;
             }
-            if (this.$state.setting('enable_parent_scroll')) {
-                this.$refs.ender.scrollIntoView(false);
-            }
+            this.$refs.ender.scrollIntoView(false);
         },
         maybeScrollToBottom() {
             if (!this.maybeScrollToBottom_throttled) {
