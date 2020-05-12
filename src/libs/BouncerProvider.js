@@ -100,8 +100,10 @@ export default class BouncerProvider {
             await this.syncBncNetwork(network);
         }
 
-        // Now sync all other networks from the bouncer
-        await this.initAndAddNetworks(network);
+        // If this is the controller network, add all other networks from the bouncer
+        if (!network.connection.bncnetid) {
+            await this.initAndAddNetworks(network);
+        }
     }
 
     onNetworkState(event, network) {
@@ -205,7 +207,7 @@ export default class BouncerProvider {
             // TODO: Update our existing network
         }
 
-        await this.syncBncNetwork(net);
+        return net;
     }
 
     // Keep a snapshot of what the current networks are. They will be periodically
