@@ -374,9 +374,15 @@ export default {
         onMessageDblClick(event, message) {
             clearTimeout(this.messageClickTmr);
 
-            let userNick = event.target.getAttribute('data-nick');
-            if (userNick) {
-                this.$state.$emit('input.insertnick', userNick);
+            let dataNick = event.target.getAttribute('data-nick');
+            if (!dataNick) {
+                return;
+            }
+
+            let network = this.buffer.getNetwork();
+            let user = network.userByName(dataNick);
+            if (user && user.nick) {
+                this.$state.$emit('input.insertnick', user.nick);
             }
         },
         onMessageClick(event, message, delay) {

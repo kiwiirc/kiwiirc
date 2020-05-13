@@ -43,21 +43,22 @@
             </span>
             <span
                 :style="{ 'color': props.ml.userColour(props.message.user) }"
-                :data-nick="props.message.nick"
                 :class="[
                     'kiwi-messagelist-nick',
                     (props.message.user && props.m().userMode(props.message.user)) ?
                         'kiwi-messagelist-nick--mode-'+props.m().userMode(props.message.user) :
                         ''
                 ]"
-                @click="props.ml.openUserBox(props.message.nick)"
+                :data-nick="(props.message.nick||'').toLowerCase()"
                 @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
                 @mouseout="props.ml.hover_nick='';"
             >
                 <span class="kiwi-messagelist-nick--prefix">
                     {{ props.message.user ? props.m().userModePrefix(props.message.user) : '' }}
                 </span>
-                <span>{{ props.m().displayNick() }}</span>
+                <a :data-nick="(props.message.nick||'').toLowerCase()">
+                    {{ props.m().displayNick() }}
+                </a>
             </span>
             <div
                 v-if="props.message.bodyTemplate && props.message.bodyTemplate.$el"
