@@ -161,9 +161,9 @@ const methods = {
         }
 
         // No point showing the realname if it's the same as the nick
-        // if (props.message.user.nick.toLowerCase() === props.message.user.realname.toLowerCase()) {
-        //     return false;
-        // }
+        if (props.message.user.nick.toLowerCase() === props.message.user.realname.toLowerCase()) {
+            return false;
+        }
 
         // If the realname contains a URL it's most likely a clients website
         if (urlRegex.test(props.message.user.realname)) {

@@ -381,9 +381,11 @@ export default {
 
             let network = this.buffer.getNetwork();
             let user = network.userByName(dataNick);
-            if (user && user.nick) {
-                this.$state.$emit('input.insertnick', user.nick);
-            }
+            // The user might have left use dataNick as fallback
+            let nick = (user && user.nick) ?
+                user.nick :
+                dataNick;
+            this.$state.$emit('input.insertnick', nick);
         },
         onMessageClick(event, message, delay) {
             // Delaying the click for 200ms allows us to check for a second click. ie. double click
