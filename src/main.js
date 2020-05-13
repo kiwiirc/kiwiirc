@@ -205,7 +205,11 @@ function loadApp() {
         .addValueReplacement('tls', window.location.protocol === 'https:')
         .addValueReplacement('hostname', window.location.hostname)
         .addValueReplacement('host', window.location.host)
-        .addValueReplacement('port', window.location.port || 80)
+        .addValueReplacement('port', window.location.port || (
+            window.location.protocol === 'https:' ?
+                443 :
+                80
+        ))
         .addValueReplacement('hash', (window.location.hash || '').substr(1))
         .addValueReplacement('query', (window.location.search || '').substr(1))
         .addValueReplacement('referrer', window.document.referrer);
