@@ -152,7 +152,7 @@
                             </label>
                         </div>
                     </div>
-                    <div v-if="!state.setting('hide_advanced') && !settingAdvancedEnable"
+                    <div v-if="!$state.setting('hide_advanced') && !settingAdvancedEnable"
                          class="kiwi-appsettings-block"
                     >
                         <h3>{{ $t('settings_advanced_title') }}</h3>
@@ -352,7 +352,7 @@ export default {
 
             // Remove all our attached events to cleanup
             let teardownFn = () => {
-                this.state.$off('theme.change', updateFn);
+                this.$state.$off('theme.change', updateFn);
                 watches.forEach((unwatchFn) => unwatchFn());
                 this.$off('hook:destroy', teardownFn);
             };
@@ -361,7 +361,7 @@ export default {
             // listening for changes
             updateFn();
 
-            this.state.$on('theme.change', updateFn);
+            this.$state.$on('theme.change', updateFn);
             this.$once('hook:destroyed', teardownFn);
 
             // $watch returns a function to stop watching the data field. Add them into

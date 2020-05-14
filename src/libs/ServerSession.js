@@ -1,13 +1,13 @@
 'kiwi public';
 
 import EventEmitter from 'eventemitter3';
-import state from './state';
+import getState from './state';
 import * as ServerConnection from './ServerConnection';
 
 export default class ServerSession {
     constructor(sessionId) {
         let channelConstruct = ServerConnection.createChannelConstructor(
-            state.settings.kiwiServer,
+            getState().settings.kiwiServer,
             sessionId || '',
             '0'
         );
