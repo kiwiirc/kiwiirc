@@ -866,4 +866,6 @@ const state = new Vue({
     },
 });
 
-export default state;
+export default function getState() {
+    return state;
+}

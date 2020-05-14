@@ -81,7 +81,6 @@
 
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
-import state from '@/libs/state';
 import Logger from '@/libs/Logger';
 import BouncerProvider from '@/libs/BouncerProvider';
 import Captcha from '@/components/Captcha';
@@ -116,19 +115,19 @@ export default {
             return this.$state.settings.startupOptions;
         },
         greetingText: function greetingText() {
-            let greeting = state.settings.startupOptions.greetingText;
+            let greeting = this.$state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
                 this.$t('start_greeting');
         },
         footerText: function footerText() {
-            let footer = state.settings.startupOptions.footerText;
+            let footer = this.$state.settings.startupOptions.footerText;
             return typeof footer === 'string' ?
                 footer :
                 '';
         },
         buttonText: function buttonText() {
-            let greeting = state.settings.startupOptions.buttonText;
+            let greeting = this.$state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
                 this.$t('start_button');
@@ -189,7 +188,7 @@ export default {
         // Take some settings from a previous network if available
         let previousNet = null;
         if (options.server.trim()) {
-            previousNet = state.getNetworkFromAddress(options.server.trim());
+            previousNet = this.$state.getNetworkFromAddress(options.server.trim());
         }
 
         if (Misc.queryStringVal('nick')) {
@@ -260,7 +259,7 @@ export default {
         startUp: function startUp() {
             this.errorMessage = '';
 
-            let options = Object.assign({}, state.settings.startupOptions);
+            let options = Object.assign({}, this.$state.settings.startupOptions);
 
             // If a server isn't specified in the config, set some defaults
             // The webircgateway will have a default network set and will connect
@@ -272,12 +271,12 @@ export default {
             let netAddress = _.trim(options.server);
 
             // Check if we have this network already
-            let net = this.network || state.getNetworkFromAddress(netAddress);
+            let net = this.network || this.$state.getNetworkFromAddress(netAddress);
 
             let password = this.password;
 
             // If the network doesn't already exist, add a new one
-            net = net || state.addNetwork('Network', this.nick, {
+            net = net || this.$state.addNetwork('Network', this.nick, {
                 server: netAddress,
                 port: options.port,
                 tls: options.tls,
@@ -315,11 +314,11 @@ export default {
             let hasSwitchedActiveBuffer = false;
             let bufferObjs = Misc.extractBuffers(this.channel);
             bufferObjs.forEach((bufferObj) => {
-                let newBuffer = state.addBuffer(net.id, bufferObj.name);
+                let newBuffer = this.$state.addBuffer(net.id, bufferObj.name);
                 newBuffer.enabled = true;
 
                 if (newBuffer && !hasSwitchedActiveBuffer) {
-                    state.setActiveBuffer(net.id, newBuffer.name);
+                    this.$state.setActiveBuffer(net.id, newBuffer.name);
                     hasSwitchedActiveBuffer = true;
                 }
 
@@ -330,7 +329,7 @@ export default {
 
             // switch to server buffer if no channels are joined
             if (!options.bouncer && !hasSwitchedActiveBuffer) {
-                state.setActiveBuffer(net.id, net.serverBuffer().name);
+                this.$state.setActiveBuffer(net.id, net.serverBuffer().name);
             }
 
             net.ircClient.connect();

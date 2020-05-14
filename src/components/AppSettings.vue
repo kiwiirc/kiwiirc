@@ -210,7 +210,6 @@
 'kiwi public';
 
 import _ from 'lodash';
-import state from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import GlobalApi from '@/libs/GlobalApi';
 import localesList from '@/res/localesList';
@@ -224,10 +223,10 @@ import SettingsAdvanced from './SettingsAdvanced';
 function bindSetting(settingName) {
     return {
         get: function settingGetter() {
-            return this.state.setting(settingName);
+            return this.$state.setting(settingName);
         },
         set: function settingSetter(newVal) {
-            this.state.setting(settingName, newVal);
+            this.$state.setting(settingName, newVal);
         },
     };
 }
@@ -239,7 +238,6 @@ export default {
     },
     data: function data() {
         return {
-            state: state,
             theme: '',
             customThemeUrl: '',
             pluginUiElements: GlobalApi.singleton().appSettingsPlugins,
@@ -253,22 +251,22 @@ export default {
             return val === '1';
         },
         canRegisterProtocolHandler: function canRegisterProtocolHandler() {
-            return !!navigator.registerProtocolHandler && state.setting('allowRegisterProtocolHandler');
+            return !!navigator.registerProtocolHandler && this.$state.setting('allowRegisterProtocolHandler');
         },
         timestamps_24h: {
             get: function get24Timestamps() {
                 // %H is 24 hour format
-                return state.setting('buffers.timestamp_format').substr(0, 2) === '%H';
+                return this.$state.setting('buffers.timestamp_format').substr(0, 2) === '%H';
             },
             set: function set24Timestamps(newVal) {
                 let newFormat = newVal ?
                     '%H:%M:%S' :
                     '%l:%M:%S %p';
-                state.setting('buffers.timestamp_format', newFormat);
+                this.$state.setting('buffers.timestamp_format', newFormat);
             },
         },
         settings: function getSettings() {
-            return state.settings;
+            return this.$state.settings;
         },
         settingShowAutoComplete: bindSetting('showAutocomplete'),
         settingUseMonospace: bindSetting('useMonospace'),
@@ -286,18 +284,18 @@ export default {
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
         settingAdvancedEnable: {
             get: function getSettingShowAdvancedTab() {
-                return state.ui.show_advanced_tab;
+                return this.$state.ui.show_advanced_tab;
             },
             set: function setSettingShowAdvancedTab(newVal) {
-                state.ui.show_advanced_tab = newVal;
+                this.$state.ui.show_advanced_tab = newVal;
             },
         },
         settingLanguage: {
             get: function getSettingLanguage() {
-                return state.setting('language') || '';
+                return this.$state.setting('language') || '';
             },
             set: function setSettingLanguage(newVal) {
-                state.setting('language', newVal || null);
+                this.$state.setting('language', newVal || null);
             },
         },
         messageLayouts() {
@@ -310,10 +308,10 @@ export default {
         settingMessageLayout: {
             set: function setSettingMessageLayout(newVal) {
                 let l = this.messageLayouts;
-                state.setting('buffers.messageLayout', l[newVal] || l.modern);
+                this.$state.setting('buffers.messageLayout', l[newVal] || l.modern);
             },
             get() {
-                let s = state.setting('buffers.messageLayout');
+                let s = this.$state.setting('buffers.messageLayout');
                 let l = _.invert(this.messageLayouts);
                 return l[s];
             },
@@ -324,7 +322,7 @@ export default {
     },
     methods: {
         closeSettings: function closeSettings() {
-            state.$emit('active.component');
+            this.$state.$emit('active.component');
         },
         refreshTheme: function refreshTheme() {
             ThemeManager.instance().reload();

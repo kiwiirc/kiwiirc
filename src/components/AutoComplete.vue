@@ -36,7 +36,6 @@
 'kiwi public';
 
 import _ from 'lodash';
-import state from '@/libs/state';
 
 export default {
     props: ['filter', 'buffer', 'items'],
@@ -189,8 +188,8 @@ export default {
             return handled;
         },
         openQuery: function openQuery(nick) {
-            let buffer = state.addBuffer(this.buffer.networkid, nick);
-            state.setActiveBuffer(buffer.networkid, buffer.name);
+            let buffer = this.$state.addBuffer(this.buffer.networkid, nick);
+            this.$state.setActiveBuffer(buffer.networkid, buffer.name);
             this.cancel();
         },
         tempCurrentItem: function tempCurrentItem() {

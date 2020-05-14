@@ -17,7 +17,7 @@ import App from '@/components/App';
 import StartupError from '@/components/StartupError';
 import Logger from '@/libs/Logger';
 import ConfigLoader from '@/libs/ConfigLoader';
-import state from '@/libs/state';
+import getState from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import InputHandler from '@/libs/InputHandler';
 import StatePersistence from '@/libs/StatePersistence';
@@ -110,7 +110,7 @@ Vue.mixin({
 Vue.mixin({
     computed: {
         $state() {
-            return state;
+            return getState();
         },
     },
 });
@@ -230,9 +230,9 @@ function applyConfig(config) {
     Misc.dedotObject(config);
     // if we have a config template apply that before other configs
     if (configTemplates[config.template]) {
-        applyConfigObj(configTemplates[config.template], state.settings);
+        applyConfigObj(configTemplates[config.template], getState().settings);
     }
-    applyConfigObj(config, state.settings);
+    applyConfigObj(config, getState().settings);
 }
 
 // Recursively merge an object onto another via Vue.$set
@@ -256,7 +256,7 @@ function applyConfigObj(obj, target) {
 
 function loadPlugins() {
     return new Promise((resolve, reject) => {
-        let plugins = state.settings.plugins || [];
+        let plugins = getState().settings.plugins || [];
         let pluginIdx = -1;
 
         loadNextScript();
@@ -360,7 +360,7 @@ function initLocales() {
     });
 
     const setDefaultLanguage = () => {
-        let defaultLang = state.setting('language');
+        let defaultLang = getState().setting('language');
         let preferredLangs = _.clone(window.navigator && window.navigator.languages) || [];
 
         // our configs default lang overrides all others
@@ -395,17 +395,17 @@ function initLocales() {
     setDefaultLanguage();
 
     // Update the language if the setting changes.
-    state.$watch('user_settings.language', (lang) => {
-        if (!lang && !state.setting('language')) {
+    getState().$watch('user_settings.language', (lang) => {
+        if (!lang && !getState().setting('language')) {
             setDefaultLanguage();
         } else {
-            i18next.changeLanguage(lang || state.setting('language') || 'en-us');
+            i18next.changeLanguage(lang || getState().setting('language') || 'en-us');
         }
     });
 }
 
 async function initState() {
-    let stateKey = state.settings.startupOptions.state_key;
+    let stateKey = getState().settings.startupOptions.state_key;
 
     // Default to a preset key if it wasn't set
     if (typeof stateKey === 'undefined') {
@@ -413,18 +413,18 @@ async function initState() {
     }
 
     let persistLog = Logger.namespace('StatePersistence');
-    let persist = new StatePersistence(stateKey || '', state, Storage, persistLog);
-    persist.includeBuffers = !!state.settings.startupOptions.remember_buffers;
+    let persist = new StatePersistence(stateKey || '', getState(), Storage, persistLog);
+    persist.includeBuffers = !!getState().settings.startupOptions.remember_buffers;
 
     if (stateKey) {
         await persist.loadStateIfExists();
     }
 
-    api.setState(state);
+    api.setState(getState());
 }
 
 function initThemes() {
-    let themeMgr = ThemeManager.instance(state);
+    let themeMgr = ThemeManager.instance(getState());
     api.setThemeManager(themeMgr);
 
     let argTheme = getQueryVariable('theme');
@@ -437,17 +437,17 @@ function initSound() {
     let sound = new SoundBleep();
     let bleep = new AudioManager(sound);
 
-    bleep.listen(state);
-    bleep.watchForMessages(state);
+    bleep.listen(getState());
+    bleep.watchForMessages(getState());
 }
 
 function initInputCommands() {
     /* eslint-disable no-new */
-    new InputHandler(state);
+    new InputHandler(getState());
 }
 
 function startApp() {
-    new WindowTitle(state);
+    new WindowTitle(getState());
 
     api.emit('init');
 
