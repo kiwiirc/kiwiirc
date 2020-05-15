@@ -51,11 +51,8 @@ describe('batchedAdd.vue', () => {
     });
 
     it('should process 3 items in a batch', (done) => {
-        let singleItem = (item) => {
-            console.log('singleItem:', item);
-        };
+        let singleItem = (item) => {};
         let batchItems = (items) => {
-            console.log('batchItems:', items);
             if (items.length !== 3) {
                 done(new Error(`Expected 3 items in a batch, found ${items.length}`));
             } else {
