@@ -133,10 +133,10 @@ export default {
         this.initMediaviewer();
         this.configureFavicon();
 
-        document.addEventListener('keydown', (event) => this.onKeyDown(event), false);
-        window.addEventListener('focus', (event) => this.onFocus(event), false);
-        window.addEventListener('blur', (event) => this.onBlur(event), false);
-        window.addEventListener('touchstart', (event) => this.onTouchStart(event));
+        this.listen(document, 'keydown', (event) => this.onKeyDown(event));
+        this.listen(window, 'focus', (event) => this.onFocus(event));
+        this.listen(window, 'blur', (event) => this.onBlur(event));
+        this.listen(window, 'touchstart', (event) => this.onTouchStart(event));
     },
     mounted() {
         // Decide which startup screen to use depending on the config
@@ -283,7 +283,7 @@ export default {
                 this.$state.ui.app_height = this.$el.clientHeight;
                 this.$state.ui.is_narrow = this.$el.clientWidth <= 769;
             };
-            window.addEventListener('resize', trackWindowDims);
+            this.listen(window, 'resize', trackWindowDims);
             trackWindowDims();
         },
         warnOnPageClose() {
