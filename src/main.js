@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import Vue from 'vue';
+import JSON5 from 'json5';
 import i18next from 'i18next';
 import i18nextXHR from 'i18next-xhr-backend';
 import VueI18Next from '@panter/vue-i18next';
@@ -191,7 +192,7 @@ function loadApp() {
         let configContents = document.querySelector('script[name="kiwiconfig"]').innerHTML;
 
         try {
-            configObj = JSON.parse(configContents);
+            configObj = JSON5.parse(configContents);
         } catch (parseErr) {
             log.error('Config file: ' + parseErr.stack);
             showError();
