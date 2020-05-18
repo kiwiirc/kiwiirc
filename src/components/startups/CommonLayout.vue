@@ -105,6 +105,7 @@ export default {
     color: #1b1b1b;
     font-size: 1.5em;
     padding: 2em;
+    border-radius: 5px;
     line-height: 1.6em;
 }
 
