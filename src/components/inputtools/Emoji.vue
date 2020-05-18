@@ -21,11 +21,6 @@ import * as Misc from '@/helpers/Misc';
 
 export default {
     props: ['ircinput'],
-    data: function data() {
-        return {
-            location: this.$state.setting('emojiLocation'),
-        };
-    },
     computed: {
         emojis() {
             let list = {};
@@ -34,6 +29,9 @@ export default {
                 list[code] = ascii;
             });
             return list;
+        },
+        location() {
+            return this.$state.setting('emojiLocation');
         },
     },
     methods: {
