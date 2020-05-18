@@ -17,20 +17,19 @@
 'kiwi public';
 
 import _ from 'lodash';
-import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
 
 export default {
     props: ['ircinput'],
     data: function data() {
         return {
-            location: state.setting('emojiLocation'),
+            location: this.$state.setting('emojiLocation'),
         };
     },
     computed: {
         emojis() {
             let list = {};
-            let available = state.setting('emojis');
+            let available = this.$state.setting('emojis');
             _.each(available, (code, ascii) => {
                 list[code] = ascii;
             });

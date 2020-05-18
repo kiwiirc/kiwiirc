@@ -172,7 +172,6 @@
 'kiwi public';
 
 import _ from 'lodash';
-import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
 import * as bufferTools from '@/libs/bufferTools';
 import BufferSettings from './BufferSettings';
@@ -199,10 +198,10 @@ export default {
             return this.network.serverBuffer();
         },
         isActiveNetwork: function isActiveNetwork() {
-            return state.getActiveNetwork() === this.network;
+            return this.$state.getActiveNetwork() === this.network;
         },
         totalNetworkCount() {
-            return state.networks.length;
+            return this.$state.networks.length;
         },
         serverUnread() {
             if (!this.collapsed) {
@@ -286,9 +285,9 @@ export default {
                     return;
                 }
 
-                let newBuffer = state.addBuffer(network.id, chanName);
+                let newBuffer = this.$state.addBuffer(network.id, chanName);
                 if (newBuffer && !hasSwitchedActiveBuffer) {
-                    state.setActiveBuffer(network.id, newBuffer.name);
+                    this.$state.setActiveBuffer(network.id, newBuffer.name);
                     hasSwitchedActiveBuffer = true;
                 }
 
@@ -310,7 +309,7 @@ export default {
             }, 200);
         },
         closeBuffer(buffer) {
-            state.removeBuffer(buffer);
+            this.$state.removeBuffer(buffer);
         },
         awayNotifySupported() {
             return this.network.ircClient.network.cap.isEnabled('away-notify');
@@ -320,16 +319,16 @@ export default {
         },
         setActiveBuffer: function switchContainer(buffer) {
             // Clear any active component to show the buffer again
-            state.$emit('active.component', null);
-            state.setActiveBuffer(buffer.networkid, buffer.name);
+            this.$state.$emit('active.component', null);
+            this.$state.setActiveBuffer(buffer.networkid, buffer.name);
             if (this.$state.ui.is_narrow) {
-                state.$emit('statebrowser.hide');
+                this.$state.$emit('statebrowser.hide');
             }
         },
         isActiveBuffer: function isActiveBuffer(buffer) {
             return (
-                buffer.networkid === state.ui.active_network &&
-                buffer.name === state.ui.active_buffer
+                buffer.networkid === this.$state.ui.active_network &&
+                buffer.name === this.$state.ui.active_buffer
             );
         },
         showNetworkSettings(network) {

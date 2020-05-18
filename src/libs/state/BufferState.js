@@ -555,7 +555,7 @@ function createMessageBatch(bufferState) {
         }
     };
 
-    return batchedAdd(addSingleMessage, addMultipleMessages, 2);
+    return batchedAdd(addSingleMessage, addMultipleMessages, 4);
 }
 
 // Update our user list status every 30seconds to get each users current away status

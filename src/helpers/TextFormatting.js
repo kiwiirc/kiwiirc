@@ -2,7 +2,7 @@
 
 /** @module */
 
-import state from '@/libs/state';
+import getState from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import _ from 'lodash';
 import * as ipRegex from 'ip-regex';
@@ -161,7 +161,7 @@ export function formatUserFull(fNick, fUsername, fHost) {
  * Format a string according to the configured textFormats
  */
 export function formatText(formatId, formatParams) {
-    let format = state.setting('textFormats.' + formatId);
+    let format = getState().setting('textFormats.' + formatId);
     let params = formatParams;
 
     // Most texts only have a 'text' variable so allow passing of a string for this

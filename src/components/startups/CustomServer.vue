@@ -134,7 +134,6 @@
 'kiwi public';
 
 import _ from 'lodash';
-import state from '@/libs/state';
 import * as Misc from '@/helpers/Misc';
 
 export default {
@@ -163,9 +162,9 @@ export default {
         let saveThisSessionsState = false;
 
         // If we have networks from a previous state, launch directly into it
-        if (state.networks.length > 0) {
-            let network = state.networks[0];
-            state.setActiveBuffer(network.id, network.serverBuffer().name);
+        if (this.$state.networks.length > 0) {
+            let network = this.$state.networks[0];
+            this.$state.setActiveBuffer(network.id, network.serverBuffer().name);
             saveThisSessionsState = true;
             this.$emit('start');
         } else if (window.location.hash.substr(1)) {
@@ -216,7 +215,7 @@ export default {
                 saveThisSessionsState = false;
 
                 connections.forEach((con, idx) => {
-                    let net = state.addNetwork(con.server, con.nick, {
+                    let net = this.$state.addNetwork(con.server, con.nick, {
                         server: con.server,
                         port: con.port,
                         tls: con.tls,
@@ -224,13 +223,13 @@ export default {
                     });
 
                     con.channels.forEach((channelName) => {
-                        let buffer = state.addBuffer(net.id, channelName);
+                        let buffer = this.$state.addBuffer(net.id, channelName);
                         buffer.enabled = true;
                     });
 
                     // Set the first server buffer active
                     if (idx === 0) {
-                        state.setActiveBuffer(net.id, net.serverBuffer().name);
+                        this.$state.setActiveBuffer(net.id, net.serverBuffer().name);
                     }
                 });
 
@@ -241,17 +240,17 @@ export default {
             this.applyDefaults();
         }
 
-        if (state.settings.startupOptions.greetingText) {
-            this.title = state.settings.startupOptions.greetingText;
+        if (this.$state.settings.startupOptions.greetingText) {
+            this.title = this.$state.settings.startupOptions.greetingText;
         }
-        if (state.settings.startupOptions.buttonText) {
-            this.buttonText = state.settings.startupOptions.buttonText;
+        if (this.$state.settings.startupOptions.buttonText) {
+            this.buttonText = this.$state.settings.startupOptions.buttonText;
         } else {
             this.buttonText = this.$t('connect');
         }
 
         if (saveThisSessionsState) {
-            state.persistence.watchStateForChanges();
+            this.$state.persistence.watchStateForChanges();
         }
     },
     methods: {
@@ -276,14 +275,14 @@ export default {
                 }
                 password += ':' + this.password;
 
-                net = state.addNetwork('ZNC', 'ZNC', {
+                net = this.$state.addNetwork('ZNC', 'ZNC', {
                     server: this.server.split(':')[0],
                     port: parseInt(this.server.split(':')[1] || 6667, 10),
                     tls: this.tls,
                     password: password,
                 });
             } else {
-                net = state.addNetwork('Network', nick, {
+                net = this.$state.addNetwork('Network', nick, {
                     server: this.server.split(':')[0],
                     port: parseInt(this.server.split(':')[1] || 6667, 10),
                     tls: this.tls,
@@ -299,7 +298,7 @@ export default {
 
                 let bufferObjs = Misc.extractBuffers(this.channel);
                 bufferObjs.forEach((bufferObj, idx) => {
-                    let buffer = state.addBuffer(net.id, bufferObj.name);
+                    let buffer = this.$state.addBuffer(net.id, bufferObj.name);
                     buffer.enabled = true;
 
                     if (bufferObj.key) {
@@ -307,13 +306,13 @@ export default {
                     }
 
                     if (idx === 0) {
-                        state.setActiveBuffer(net.id, buffer.name);
+                        this.$state.setActiveBuffer(net.id, buffer.name);
                         hasSetActiveBuffer = true;
                     }
                 });
 
                 if (!hasSetActiveBuffer) {
-                    state.setActiveBuffer(net.id, net.serverBuffer().name);
+                    this.$state.setActiveBuffer(net.id, net.serverBuffer().name);
                 }
 
                 this.is_connecting = true;
@@ -343,22 +342,22 @@ export default {
         infoClick: function infoClick() {
             if (this.network) {
                 let net = this.network;
-                state.setActiveBuffer(net.id, net.serverBuffer().name);
+                this.$state.setActiveBuffer(net.id, net.serverBuffer().name);
             }
             this.$emit('start');
         },
         applyDefaults: function applyDefaults() {
-            this.server = state.settings.startupOptions.server;
-            this.tls = state.settings.startupOptions.tls;
-            this.nick = this.processNickRandomNumber(state.settings.startupOptions.nick);
-            this.channel = state.settings.startupOptions.channel;
-            this.direct = state.settings.startupOptions.direct;
-            this.direct_path = state.settings.startupOptions.direct_path;
-            this.encoding = state.settings.startupOptions.encoding;
+            this.server = this.$state.settings.startupOptions.server;
+            this.tls = this.$state.settings.startupOptions.tls;
+            this.nick = this.processNickRandomNumber(this.$state.settings.startupOptions.nick);
+            this.channel = this.$state.settings.startupOptions.channel;
+            this.direct = this.$state.settings.startupOptions.direct;
+            this.direct_path = this.$state.settings.startupOptions.direct_path;
+            this.encoding = this.$state.settings.startupOptions.encoding;
 
             // Only include the port in the server box if it's not the default
-            if (state.settings.startupOptions.port.toString() !== '6667') {
-                this.server += ':' + state.settings.startupOptions.port.toString();
+            if (this.$state.settings.startupOptions.port.toString() !== '6667') {
+                this.server += ':' + this.$state.settings.startupOptions.port.toString();
             }
 
             this.title = 'Where are you connecting today?';

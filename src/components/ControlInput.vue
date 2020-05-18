@@ -125,7 +125,6 @@ import _ from 'lodash';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as settingTools from '@/libs/settingTools';
 import autocompleteCommands from '@/res/autocompleteCommands';
-import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
 import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
@@ -166,13 +165,13 @@ export default {
     },
     computed: {
         currentNick() {
-            let activeNetwork = state.getActiveNetwork();
+            let activeNetwork = this.$state.getActiveNetwork();
             return activeNetwork ?
                 activeNetwork.nick :
                 '';
         },
         networkState() {
-            let activeNetwork = state.getActiveNetwork();
+            let activeNetwork = this.$state.getActiveNetwork();
             return activeNetwork ?
                 activeNetwork.state :
                 '';
@@ -197,20 +196,20 @@ export default {
             return false;
         },
         history() {
-            if (state.setting('buffers.shared_input')) {
+            if (this.$state.setting('buffers.shared_input')) {
                 return this.$state.ui.input_history;
             }
             return this.buffer.input_history;
         },
         history_pos: {
             get() {
-                if (state.setting('buffers.shared_input')) {
+                if (this.$state.setting('buffers.shared_input')) {
                     return this.$state.ui.input_history_pos;
                 }
                 return this.buffer.input_history_pos;
             },
             set(newVal) {
-                if (state.setting('buffers.shared_input')) {
+                if (this.$state.setting('buffers.shared_input')) {
                     this.$state.ui.input_history_pos = newVal;
                 } else {
                     this.buffer.input_history_pos = newVal;
@@ -224,7 +223,7 @@ export default {
             this.$refs.input.setValue(val || '');
         },
         buffer() {
-            if (!state.setting('buffers.shared_input')) {
+            if (!this.$state.setting('buffers.shared_input')) {
                 this.inputRestore();
             }
 
@@ -235,7 +234,7 @@ export default {
         this.typingTimer = null;
         this.lastTypingTime = 0;
 
-        this.listen(state, 'document.keydown', (ev) => {
+        this.listen(this.$state, 'document.keydown', (ev) => {
             // No input box currently? Nothing to shift focus to
             if (!this.$refs.input) {
                 return;
@@ -304,8 +303,8 @@ export default {
         inputUpdate(val) {
             this.current_input_value = val;
 
-            if (state.setting('buffers.shared_input')) {
-                state.ui.current_input = val;
+            if (this.$state.setting('buffers.shared_input')) {
+                this.$state.ui.current_input = val;
             } else {
                 this.buffer.current_input = val;
             }
@@ -313,8 +312,8 @@ export default {
             this.maybeHidePlugins();
         },
         inputRestore() {
-            let currentInput = state.setting('buffers.shared_input') ?
-                state.ui.current_input :
+            let currentInput = this.$state.setting('buffers.shared_input') ?
+                this.$state.ui.current_input :
                 this.buffer.current_input;
 
             this.$refs.input.reset(currentInput);
@@ -399,12 +398,12 @@ export default {
             } else if (event.keyCode === 32) {
                 // Hitting space after just typing an ascii emoji will get it replaced with
                 // its image
-                if (state.setting('buffers.show_emoticons')) {
+                if (this.$state.setting('buffers.show_emoticons')) {
                     let currentWord = this.$refs.input.getCurrentWord();
-                    let emojiList = state.setting('emojis');
+                    let emojiList = this.$state.setting('emojis');
                     if (emojiList.hasOwnProperty(currentWord.word)) {
                         let emoji = emojiList[currentWord.word];
-                        let url = state.setting('emojiLocation') + emoji + '.png';
+                        let url = this.$state.setting('emojiLocation') + emoji + '.png';
                         this.$refs.input.setCurrentWord('');
                         this.$refs.input.addImg(currentWord.word + ' ', url);
                     }
@@ -527,7 +526,7 @@ export default {
             }
 
             let ircText = this.$refs.input.buildIrcText();
-            state.$emit('input.raw', ircText);
+            this.$state.$emit('input.raw', ircText);
 
             // Add to history, keeping the history trimmed to the last 50 entries
             this.history.push(rawInput);
@@ -551,7 +550,7 @@ export default {
             }
         },
         openAutoComplete(items) {
-            if (state.setting('showAutocomplete')) {
+            if (this.$state.setting('showAutocomplete')) {
                 this.autocomplete_items = items;
                 this.autocomplete_open = true;
             }
@@ -615,8 +614,8 @@ export default {
             if (opts.settings) {
                 let out = {};
                 let base = [];
-                settingTools.buildTree(out, base, state.getSetting('settings'), false);
-                settingTools.buildTree(out, base, state.getSetting('user_settings'), true);
+                settingTools.buildTree(out, base, this.$state.getSetting('settings'), false);
+                settingTools.buildTree(out, base, this.$state.getSetting('user_settings'), true);
 
                 let settingList = [];
                 Object.keys(out).forEach((setting) => {

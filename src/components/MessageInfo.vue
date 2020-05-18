@@ -49,8 +49,6 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
-
 export default {
     components: {
     },
@@ -64,7 +62,7 @@ export default {
     },
     methods: {
         urlPreview: function urlPreview(url) {
-            state.$emit('mediaviewer.show', url);
+            this.$state.$emit('mediaviewer.show', url);
         },
         areWeAnOp: function areWeAnOp() {
             let ourNick = this.buffer.getNetwork().nick;
@@ -80,14 +78,14 @@ export default {
         },
         onKick: function onKick(promptedReason) {
             let network = this.buffer.getNetwork();
-            let defaultReason = state.setting('buffers.default_kick_reason');
+            let defaultReason = this.$state.setting('buffers.default_kick_reason');
             let reason = promptedReason || defaultReason;
             network.ircClient.raw('KICK', this.buffer.name, this.message.nick, reason);
         },
         openQuery: function openQuery() {
             let network = this.buffer.getNetwork();
-            let buffer = state.addBuffer(network.id, this.message.nick);
-            state.setActiveBuffer(network.id, buffer.name);
+            let buffer = this.$state.addBuffer(network.id, this.message.nick);
+            this.$state.setActiveBuffer(network.id, buffer.name);
         },
     },
 };

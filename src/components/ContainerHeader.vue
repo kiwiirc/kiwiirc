@@ -149,7 +149,6 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
 import toHtml from '@/libs/renderers/Html';
 import parseMessage from '@/libs/MessageParser';
@@ -193,7 +192,7 @@ export default {
         },
     },
     created() {
-        this.listen(state, 'document.clicked', (e) => {
+        this.listen(this.$state, 'document.clicked', (e) => {
             // If clicking anywhere else on the page, close all our prompts
             if (!this.$el.contains(e.target)) {
                 Object.keys(this.prompts).forEach((prompt) => {
@@ -230,7 +229,7 @@ export default {
             }
         },
         showSidebar() {
-            state.$emit('sidebar.toggle');
+            this.$state.$emit('sidebar.toggle');
         },
         joinCurrentBuffer() {
             let network = this.buffer.getNetwork();
@@ -238,13 +237,13 @@ export default {
             network.ircClient.join(this.buffer.name);
         },
         closeCurrentBuffer() {
-            state.removeBuffer(this.buffer);
+            this.$state.removeBuffer(this.buffer);
         },
         onHeaderClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
             if (channelName) {
                 let network = this.buffer.getNetwork();
-                state.addBuffer(this.buffer.networkid, channelName);
+                this.$state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
             }
         },

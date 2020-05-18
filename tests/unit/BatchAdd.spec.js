@@ -25,9 +25,9 @@ describe('batchedAdd.vue', () => {
         };
 
         let batch = batchedAdd(singleItem, batchItems);
-        batch('item');
-        batch('item');
-        batch('item');
+        batch('item1');
+        batch('item2');
+        batch('item3');
     });
 
     it('should process a batched item after three single items', (done) => {
@@ -37,36 +37,36 @@ describe('batchedAdd.vue', () => {
         };
         let batchItems = () => {
             if (singleCount !== 3) {
-                done(new Error('Expected 3 single items before a batch'));
+                done(new Error('Expected 3 single items before a batch, found ' + singleCount));
             } else {
                 done();
             }
         };
 
         let batch = batchedAdd(singleItem, batchItems);
-        batch('item');
-        batch('item');
-        batch('item');
-        batch('item');
+        batch('item1');
+        batch('item2');
+        batch('item3');
+        batch('item4');
     });
 
     it('should process 3 items in a batch', (done) => {
-        let singleItem = () => {};
+        let singleItem = (item) => {};
         let batchItems = (items) => {
             if (items.length !== 3) {
-                done(new Error('Expected 3 items in a batch'));
+                done(new Error(`Expected 3 items in a batch, found ${items.length}`));
             } else {
                 done();
             }
         };
 
         let batch = batchedAdd(singleItem, batchItems);
-        batch('item');
-        batch('item');
-        batch('item');
-        batch('item');
-        batch('item');
-        batch('item');
+        batch('item1');
+        batch('item2');
+        batch('item3');
+        batch('item4');
+        batch('item5');
+        batch('item6');
     });
 
     it('should process a single item after a batch has finished', (done) => {
@@ -86,16 +86,16 @@ describe('batchedAdd.vue', () => {
         };
 
         let batch = batchedAdd(singleItem, batchItems);
-        batch('item');
-        batch('item');
-        batch('item');
-        // Batch kicks in ehre
-        batch('item');
-        batch('item');
-        batch('item');
+        batch('item1');
+        batch('item2');
+        batch('item3');
+        // Batch kicks in here
+        batch('item4');
+        batch('item5');
+        batch('item6');
         setTimeout(() => {
             // Should revert back to being a single item
-            batch('item');
+            batch('item7');
         }, 1200);
     });
 
@@ -112,11 +112,11 @@ describe('batchedAdd.vue', () => {
         };
 
         let batch = batchedAdd(singleItem, batchItems);
-        batch('item');
-        batch('item');
-        batch('item');
+        batch('item1');
+        batch('item2');
+        batch('item3');
         setTimeout(() => {
-            batch('item');
+            batch('item4');
         }, 1200);
     }, 3000);
 });

@@ -14,7 +14,7 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
+import getState from '@/libs/state';
 
 const methods = {
     props: {},
@@ -30,12 +30,12 @@ const methods = {
         if (props.toggle === false) {
             return false;
         }
-        let user = state.getUser(props.network.id, props.network.nick);
+        let user = getState().getUser(props.network.id, props.network.nick);
         return props.user === user;
     },
     shouldShowStatus(props) {
         // let props = this.props;
-        if (!state.setting('showAwayStatusIndicators')) {
+        if (!getState().setting('showAwayStatusIndicators')) {
             return false;
         }
 
@@ -44,7 +44,7 @@ const methods = {
         }
 
         let awayNotifyEnabled = props.network.ircClient.network.cap.isEnabled('away-notify');
-        return state.setting('buffers.who_loop') || awayNotifyEnabled;
+        return getState().setting('buffers.who_loop') || awayNotifyEnabled;
     },
 };
 

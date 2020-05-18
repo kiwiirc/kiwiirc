@@ -55,7 +55,6 @@
 
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
-import state from '@/libs/state';
 import IPC from '@/libs/IPC';
 
 let firstRun = true;
@@ -71,7 +70,7 @@ export default {
     },
     computed: {
         networks() {
-            return state.networks;
+            return this.$state.networks;
         },
         hasFragment() {
             return window.location.hash && window.location.hash.length > 1;
@@ -112,7 +111,7 @@ export default {
                 } else if (msg.type === 'addNetwork') {
                     let network = this.networks.find((n) => n.name === msg.server);
                     if (!network) {
-                        network = state.addNetwork(msg.server, msg.nick || ('Guest' + Math.floor(Math.random() * 100)), msg);
+                        network = this.$state.addNetwork(msg.server, msg.nick || ('Guest' + Math.floor(Math.random() * 100)), msg);
                     }
                     network.showServerBuffer('settings');
                 }
@@ -120,7 +119,7 @@ export default {
         },
         addEmptyNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
-            let network = state.addNetwork(TextFormatting.t('new_network'), nick, {});
+            let network = this.$state.addNetwork(TextFormatting.t('new_network'), nick, {});
             network.showServerBuffer('settings');
         },
         async findOtherTabs() { // ping other tabs to try find one with added networks
@@ -146,7 +145,7 @@ export default {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
             let con = this.server;
 
-            state.addNetwork(TextFormatting.t('new_network'), nick, {});
+            this.$state.addNetwork(TextFormatting.t('new_network'), nick, {});
 
             IPC.send({
                 nick: nick,
@@ -169,15 +168,15 @@ export default {
             let con = this.server;
 
             if (temporary) {
-                state.persistence.storageKey = null;
-                state.persistence.forgetState();
+                this.$state.persistence.storageKey = null;
+                this.$state.persistence.forgetState();
 
                 this.init();
             }
 
-            let network = state.getNetworkFromAddress(con.server);
+            let network = this.$state.getNetworkFromAddress(con.server);
             if (!network) {
-                network = state.addNetwork(con.server, con.nick || ('Guest' + Math.floor(Math.random() * 100)), {
+                network = this.$state.addNetwork(con.server, con.nick || ('Guest' + Math.floor(Math.random() * 100)), {
                     server: con.server,
                     port: con.port,
                     tls: con.tls,
@@ -210,7 +209,7 @@ export default {
             return null;
         },
         toggleStateBrowser() {
-            state.$emit('statebrowser.show');
+            this.$state.$emit('statebrowser.show');
         },
         async init() {
             if (!firstRun) {
@@ -220,18 +219,18 @@ export default {
             firstRun = false;
 
             // persist the buffers in the state by default
-            let persistSetting = state.settings.startupOptions.remember_buffers;
+            let persistSetting = this.$state.settings.startupOptions.remember_buffers;
             if (typeof persistSetting === 'undefined') {
-                state.persistence.includeBuffers = true;
+                this.$state.persistence.includeBuffers = true;
             } else {
-                state.persistence.includeBuffers = !!persistSetting;
+                this.$state.persistence.includeBuffers = !!persistSetting;
             }
 
-            state.persistence.watchStateForChanges();
+            this.$state.persistence.watchStateForChanges();
 
             // force restricted: false as users need access
             // to network settings to add a network
-            state.setSetting('settings.restricted', false);
+            this.$state.setSetting('settings.restricted', false);
 
             this.$emit('start', {
                 fallbackComponent: this.constructor,

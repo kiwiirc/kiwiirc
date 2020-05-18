@@ -10,6 +10,7 @@ export default class StatePersistence {
         this.logger = logger;
         this.isPersisting = false;
         this.includeBuffers = true;
+        this.watcher = null;
 
         this.state.persistence = this;
     }
@@ -30,6 +31,13 @@ export default class StatePersistence {
         }
     }
 
+    stopWatchingState() {
+        if (this.watcher) {
+            this.watcher();
+            this.watcher = null;
+        }
+    }
+
     watchStateForChanges() {
         if (!this.storageKey) {
             return;
@@ -47,40 +55,30 @@ export default class StatePersistence {
         this.state.$watch('networks', debouncedSaveState, { deep: true });
         this.state.$watch('user_settings', debouncedSaveState, { deep: true });
 
-        let bufferWatchers = [];
-        let watchBuffers = () => {
-            // Clear any previous watchers
-            bufferWatchers.forEach((w) => w());
-            bufferWatchers = [];
+        // We need to touch each property of each buffer for that we want to save our state on.
+        // If any of the properties change then the $watch()er will call debouncedSaveState()
+        this.watcher = this.state.$watch(() => {
+            let watchVals = [];
 
-            // For each buffer in a network, select all the properties we want to watch for
-            // changes so that vue can compare it to the previous check. If any of them has changed
-            // then the $watch()er will call debouncedSaveState().
             this.state.networks.forEach((network) => {
-                let bufferNames = network.buffers.map((b) => b.name).join(',');
+                let buffersVals = [];
+                buffersVals.push(network.buffers.map((b) => b.name).join(','));
 
                 network.buffers.forEach((buffer) => {
-                    let unwatch = this.state.$watch(() => {
-                        let val = JSON.stringify([
-                            bufferNames,
-                            buffer.name,
-                            buffer.settings,
-                            buffer.joined,
-                            buffer.enabled,
-                            buffer.last_read,
-                        ]);
-
-                        return val;
-                    }, debouncedSaveState);
-
-                    bufferWatchers.push(unwatch);
+                    buffersVals.push([
+                        buffer.name,
+                        buffer.settings,
+                        buffer.joined,
+                        buffer.enabled,
+                        buffer.last_read,
+                    ]);
                 });
+
+                watchVals.push(buffersVals);
             });
 
-            setTimeout(watchBuffers, 2000);
-        };
-
-        setTimeout(watchBuffers, 2000);
+            return JSON.stringify(watchVals);
+        }, debouncedSaveState);
 
         this.isPersisting = true;
     }
