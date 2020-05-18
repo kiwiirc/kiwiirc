@@ -12,6 +12,7 @@ export default {
     props: ['network'],
     data() {
         return {
+            recaptchaUrl: '',
             recaptchaSiteId: '',
             recaptchaResponse: '',
             showCaptcha: false,
@@ -20,6 +21,7 @@ export default {
     created() {
         let options = this.$state.settings.startupOptions;
         this.recaptchaSiteId = options.recaptchaSiteId || '';
+        this.recaptchaUrl = options.recaptchaUrl || 'https://www.google.com/recaptcha/api.js';
 
         this.listen(this.$state, 'network.connecting', (event) => {
             event.network.ircClient.once('socket connected', () => {
@@ -53,7 +55,7 @@ export default {
             };
 
             let scr = document.createElement('script');
-            scr.src = 'https://www.google.com/recaptcha/api.js?onload=recaptchaLoaded&render=explicit';
+            scr.src = this.recaptchaUrl + '?onload=recaptchaLoaded&render=explicit';
             scr.defer = true;
             this.$el.appendChild(scr);
         },
