@@ -32,12 +32,12 @@
 }
 
 .u-tabbed-view-tabs {
-    background: var(--k-neutral5);
-    border-bottom: 3px solid var(--k-neutral5);
+    background: var(--k-neutral6);
+    border-bottom: 3px solid var(--k-neutral6);
 }
 
 .u-tabbed-view-tabs .u-tabbed-view-tab {
-    border-bottom-color: var(--k-neutral5);
+    border-bottom-color: var(--k-neutral6);
     background: var(--k-neutral7);
 }
 
@@ -137,7 +137,6 @@
 .kiwi-header {
     background: var(--k-neutral7);
     border-bottom-color: var(--k-neutral5);
-    box-shadow: 0 1px 5px var(--k-neutral5);
 }
 
 .kiwi-header-name-container {
