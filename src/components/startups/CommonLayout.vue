@@ -93,7 +93,7 @@ export default {
 /** Right side */
 .kiwi-startup-common-section-info {
     /* A background image will apear over this so start with a plain white bg */
-    color: #fff;
+    color: var(--k-neutral7);
     display: flex;
     flex: 1;
     align-items: center;
