@@ -87,10 +87,10 @@ function createNewConnection(wsAddr, sessionId) {
             connection.connected = true;
             connection.emit('open');
         };
-        connection.ws.onclose = () => {
+        connection.ws.onclose = (err) => {
             connection.connected = false;
             connection.ws = null;
-            connection.emit('close');
+            connection.emit('close', err);
         };
         connection.ws.onmessage = (event) => {
             connection.emit('message', event);
@@ -174,11 +174,11 @@ function createChannelOnConnection(connection, channelId) {
             channel.remoteState = 1;
             channel.emit('open');
         });
-        connection.on('close', () => {
+        connection.on('close', (err) => {
             channel.state = 3;
             channel.remoteState = 0;
             channel.isOpen = false;
-            channel.emit('close');
+            channel.emit('close', err);
         });
         connection.on('message.' + channelId, (event) => {
             if (event.data.indexOf('control ') === 0) {
