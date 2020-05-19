@@ -43,7 +43,7 @@ function addFunctionsToClient(client) {
         resolve(target, value) {
             let cbs = this.callbacks[target.toLowerCase()] || [];
             delete this.callbacks[target.toLowerCase()];
-            cbs.forEach(cb => cb(value));
+            cbs.forEach((cb) => cb(value));
         },
         targetCallbacks(target) {
             return this.callbacks[target.toLowerCase()];

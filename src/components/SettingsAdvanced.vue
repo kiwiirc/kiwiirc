@@ -6,9 +6,10 @@
                 <div class="kiwi-settings-advanced-filter-container">
                     <input v-model="filterString"
                            :placeholder="$t('settings_advanced_filter')"
-                           class="u-input">
-                    <i v-if="!filterString" class="fa fa-search" aria-hidden="true"/>
-                    <i v-else class="fa fa-times" aria-hidden="true" @click="filterString = ''"/>
+                           class="u-input"
+                    >
+                    <i v-if="!filterString" class="fa fa-search" aria-hidden="true" />
+                    <i v-else class="fa fa-times" aria-hidden="true" @click="filterString = ''" />
                 </div>
             </div>
             <table class="u-table kiwi-settings-advanced-table" cellspacing="0">
@@ -21,35 +22,39 @@
                     :key="setting.key"
                     :class="{'kiwi-advanced-setting': !setting.modified,
                              'kiwi-advanced-setting--modified': setting.modified,
-                }">
+                    }"
+                >
                     <td><label :for="'setting-' + setting.key">{{ setting.key }}</label></td>
                     <td v-if="setting.modified">
                         <a class="u-link" @click="resetValue($event, setting.key)">
                             {{ $t('settings_advanced_reset') }}
-                            <i class="fa fa-undo" style="margin-left: 10px;"/>
+                            <i class="fa fa-undo" style="margin-left: 10px;" />
                         </a>
                     </td>
                     <td v-else />
                     <td>
                         <input v-if="setting.type === 'boolean'"
+                               :id="'setting-' + setting.key"
                                :checked="setting.val"
-                               :id="'setting-' + setting.key"
                                type="checkbox"
-                               @change="updateSetting($event, setting.key)">
+                               @change="updateSetting($event, setting.key)"
+                        >
                         <input v-else-if="setting.type === 'number'"
-                               :value="setting.val"
                                :id="'setting-' + setting.key"
+                               :value="setting.val"
                                class="u-input"
                                type="number"
                                @keydown.13="$event.target.blur()"
                                @change="updateSetting($event, setting.key)"
-                               @blur="updateSetting($event, setting.key)">
+                               @blur="updateSetting($event, setting.key)"
+                        >
                         <input v-else
-                               :value="setting.val"
                                :id="'setting-' + setting.key"
+                               :value="setting.val"
                                class="u-input"
                                @keydown.13="$event.target.blur()"
-                               @blur="updateSetting($event, setting.key)">
+                               @blur="updateSetting($event, setting.key)"
+                        >
                     </td>
                 </tr>
             </table>
@@ -60,15 +65,13 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
+import * as settingTools from '@/libs/settingTools';
 import _ from 'lodash';
 
 export default {
     data: function data() {
         return {
             filterString: '',
-            ignoreKeys: ['emojis', 'themes', 'bnc', 'aliases', 'restricted', 'kiwiServer',
-                'hide_advanced', 'windowTitle', 'startupOptions', 'plugins', 'presetNetworks'],
         };
     },
     computed: {
@@ -87,22 +90,22 @@ export default {
         settings() {
             let out = {};
             let base = [];
-            this.buildTree(out, base, state.getSetting('settings'), false);
-            this.buildTree(out, base, state.getSetting('user_settings'), true);
+            settingTools.buildTree(out, base, this.$state.getSetting('settings'), false);
+            settingTools.buildTree(out, base, this.$state.getSetting('user_settings'), true);
 
-            return _.orderBy(Object.keys(out).map(key => out[key]), [
-                o => o.key.split('.').length - 1,
+            return _.orderBy(Object.keys(out).map((key) => out[key]), [
+                (o) => o.key.split('.').length - 1,
                 'key',
             ], ['asc']);
         },
     },
     methods: {
         resetValue(event, settingKey) {
-            let newVal = state.getSetting('settings.' + settingKey);
+            let newVal = this.$state.getSetting('settings.' + settingKey);
             if (!newVal) {
                 newVal = null;
             }
-            state.setting(settingKey, newVal);
+            this.$state.setting(settingKey, newVal);
         },
         updateSetting(event, settingKey) {
             let target = event.target;
@@ -118,34 +121,11 @@ export default {
                 val = target.value;
                 break;
             }
-            if (state.setting(settingKey) === val) {
+            if (this.$state.setting(settingKey) === val) {
                 return;
             }
 
-            state.setting(settingKey, val);
-        },
-        buildTree(data, base, object, modified) {
-            Object.keys(object).forEach((key) => {
-                let value = object[key];
-                let ourBase = base.concat([key]);
-                if (['string', 'boolean', 'number'].indexOf(typeof value) !== -1) {
-                    if (this.ignoreKeys.indexOf(key) !== -1 ||
-                     (ourBase[0] && this.ignoreKeys.indexOf(ourBase[0])) !== -1) {
-                        return;
-                    }
-
-                    if (!data[ourBase.join('.')] || data[ourBase.join('.')].val !== value) {
-                        data[ourBase.join('.')] = {
-                            key: ourBase.join('.'),
-                            val: value,
-                            type: typeof value,
-                            modified: modified,
-                        };
-                    }
-                } else if (typeof value === 'object' && value !== null) {
-                    this.buildTree(data, ourBase, value, modified);
-                }
-            });
+            this.$state.setting(settingKey, val);
         },
     },
 };

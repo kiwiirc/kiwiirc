@@ -1,16 +1,17 @@
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: es-ES\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2019-09-17 21:02\n"
+"PO-Revision-Date: 2020-04-13 17:05\n"
 
 #: Start
 msgid "start_button"
@@ -71,6 +72,10 @@ msgstr "Nombre de usuario"
 #: Password
 msgid "password"
 msgstr "Contraseña"
+
+#: Server Password
+msgid "server_password"
+msgstr "Contraseña del servidor"
 
 #: I have a password
 msgid "password_have"
@@ -342,7 +347,7 @@ msgstr "Deshabilitar sonidos"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Ocultar contador de mensajes no leídos"
+msgstr "Ocultar el contador de mensajes no leídos"
 
 #: Operator tools
 msgid "operator_tools"
@@ -476,7 +481,7 @@ msgstr "Clicar el botón Actualizar para actualizar la lista de salas"
 msgid "channel_list_nonefound"
 msgstr "No se encontraron salas, inténtalo de nuevo más tarde"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "¡Bienvenido a Kiwi IRC! Selecciona una sala de la izquierda."
 
@@ -742,7 +747,7 @@ msgstr "Filtrar salas"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Buscar más Salas"
+msgstr "Buscar más salas"
 
 #: Change nick
 msgid "change_nick"
@@ -751,6 +756,10 @@ msgstr "Cambiar apodo"
 #: Enter new nickname...
 msgid "enter_new_nick"
 msgstr "Escribe el nuevo apodo..."
+
+#: This is you!
+msgid "user_you"
+msgstr "¡Este eres tú!"
 
 #: Account name: {{user}}
 msgid "user_account"

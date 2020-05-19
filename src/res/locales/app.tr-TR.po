@@ -1,16 +1,17 @@
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: tr\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2019-09-17 19:40\n"
+"PO-Revision-Date: 2020-05-10 18:31\n"
 
 #: Start
 msgid "start_button"
@@ -18,7 +19,7 @@ msgstr "Başla"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Kiwi IRC'ye Hoşgeldiniz!"
+msgstr "Kiwi IRC'ye Hoş geldiniz!"
 
 #: Close
 msgid "close"
@@ -46,7 +47,7 @@ msgstr "Kiwi Ayarları"
 
 #: Channels
 msgid "channels"
-msgstr "Kanallar"
+msgstr "Odalar"
 
 #: Access
 msgid "access"
@@ -58,7 +59,7 @@ msgstr "Yasaklı Kullanıcılar"
 
 #: Invited Users
 msgid "invited"
-msgstr "Davet Edilen Kullanıcılar"
+msgstr "Davet Edilenler"
 
 #: Notifications
 msgid "notifications"
@@ -72,9 +73,13 @@ msgstr "Kullanıcı adı"
 msgid "password"
 msgstr "Şifre"
 
+#: Server Password
+msgid "server_password"
+msgstr "Sunucu Şifresi"
+
 #: I have a password
 msgid "password_have"
-msgstr "Bir şifrem var"
+msgstr "şifrem var"
 
 #: Server
 msgid "server"
@@ -82,11 +87,11 @@ msgstr "Sunucu"
 
 #: Nick
 msgid "nick"
-msgstr "Takma ad"
+msgstr "Rumuz"
 
 #: Channel
 msgid "channel"
-msgstr "Kanal"
+msgstr "Oda"
 
 #: Messages
 msgid "messages"
@@ -110,7 +115,7 @@ msgstr "Geçersiz giriş"
 
 #: Search...
 msgid "do_search"
-msgstr "Arama..."
+msgstr "Ara..."
 
 #: OK
 msgid "ok"
@@ -138,7 +143,7 @@ msgstr "Uyarı!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "Bu, tüm Kiwi IRC konuşmalarını kapatır. Bu pencereyi kapatmak istediğinize emin misiniz?"
+msgstr "Bu tüm Kiwi IRC konuşmalarını kapatır. Bu pencereyi kapatmak istediğinize emin misiniz?"
 
 #: Real name
 msgid "whois_realname"
@@ -154,15 +159,15 @@ msgstr "Müsait"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Mesaj Gönder"
+msgstr "Mesaj gönder"
 
 #: More information
 msgid "more_information"
-msgstr "Ayrıntılı Bilgi"
+msgstr "Daha fazla bilgi"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Engelle"
+msgstr "Kullanıcıyı engelle"
 
 #: Channel
 msgid "connection_channel"
@@ -170,7 +175,7 @@ msgstr "Kanal"
 
 #: Away
 msgid "away"
-msgstr "Uzakta"
+msgstr "Meşgul"
 
 #: {{count}} week
 msgid "week"
@@ -178,7 +183,7 @@ msgstr "{{count}} hafta"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} haftalar"
+msgstr "{{count}} hafta"
 
 #: {{count}} day
 msgid "day"
@@ -186,7 +191,7 @@ msgstr "{{count}} gün"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} günler"
+msgstr "{{count}} gün"
 
 #: {{count}} hour
 msgid "hour"
@@ -194,7 +199,7 @@ msgstr "{{count}} saat"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} saatler"
+msgstr "{{count}} saat"
 
 #: {{count}} minute
 msgid "minute"
@@ -202,7 +207,7 @@ msgstr "{{count}} dakika"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} dakikalar"
+msgstr "{{count}} dakika"
 
 #: {{count}} second
 msgid "second"
@@ -302,11 +307,11 @@ msgstr "Kelimeleri vurgula (boşlukla ayır)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Aliaslar"
+msgstr "Takma adlar"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Aliaslar nelerdir?"
+msgstr "Takma adlar nelerdir?"
 
 #: Send Message
 msgid "send_message"
@@ -314,15 +319,15 @@ msgstr "Mesaj Gönder"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Kanal anahtarını girin:"
+msgstr "Kanal Anahtarını Girin"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Yeniden gir {{channel}}"
+msgstr "{{channel}} kanalına yeniden girin"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Bana Bildir"
+msgstr "Bana bildir"
 
 #: All messages
 msgid "settings_notify_all"
@@ -342,11 +347,11 @@ msgstr "Sesleri kapat"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Okunmamış Mesajlar iletisini gizle"
+msgstr "Okunmamış mesaj sayısını gizle"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Operatör Araçları"
+msgstr "Operatör araçları"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
@@ -354,7 +359,7 @@ msgstr "Varsayılan yasak maskesi"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Varsayılan kick sebebi"
+msgstr "Varsayılan atılma sebebi"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
@@ -390,11 +395,11 @@ msgstr "Yasaklanan kullanıcı"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Tarafından yasaklanmış"
+msgstr "Yasaklayan:"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Yasaklananlar listesi yenileniyor..."
+msgstr "Yasaklama listesi yenileniyor..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -406,11 +411,11 @@ msgstr "Davet listesini yenile"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Davet Edilen Kullanıcı"
+msgstr "Davet edilen kullanıcı"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Tarafından davet edildi"
+msgstr "Davet eden:"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
@@ -458,7 +463,7 @@ msgstr "Moderatörlü sohbet"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Sadece davetsel"
+msgstr "Sadece davetiye"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -476,9 +481,9 @@ msgstr "Kanal listesini güncellemek için yenile düğmesine tıklayın"
 msgid "channel_list_nonefound"
 msgstr "Kanal bulunamadı, daha sonra tekrar deneyin."
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Kiwi IRC'ye Hoşgeldiniz!"
+msgstr "Kiwi IRC'ye Hoşgeldiniz! Soldan bir kanal seçin."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -498,7 +503,7 @@ msgstr "Kanal Ayarları"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Kanala Gir"
+msgstr "Kanala Katıl"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -586,7 +591,7 @@ msgstr "{{count}} kişi burada"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Kullanıcıları filtrele"
+msgstr "Kanaldaki kullanıcıları filtrele"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -606,7 +611,7 @@ msgstr "Şu anda bağlı değilsin!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Bağlantı Ayarları"
+msgstr "Bağlantı ayarları"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
@@ -666,7 +671,7 @@ msgstr "Hakkında"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "{{when}} tarihinde düzenlendi."
+msgstr "{{when}} tarihinde oluşturuldu."
 
 #: Highlights
 msgid "highlights"
@@ -674,7 +679,7 @@ msgstr "Vurgulamalar"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Henüz kimse sizden bahsetmedi."
+msgstr "Henüz kimse sizden bahsetmedi..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -682,11 +687,11 @@ msgstr "Kiwi IRC başlatılırken bir hata oluştu :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Kiwi IRC'i doğru kurduğunuzdan ve konfigürasyonun yüklenebildiğinden emin olun."
+msgstr "Kiwi IRC'i doğru kurduğunuzdan ve yapılandırmanın yüklenebildiğinden emin olun."
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Ayrıl {{name}}"
+msgstr "{{name}} ayrıl"
 
 #: Your account
 msgid "state_account"
@@ -706,7 +711,7 @@ msgstr "Henüz ağ yok."
 
 #: Add one?
 msgid "state_add"
-msgstr "Bir tane ekle?"
+msgstr "Bir tane eklensin mi?"
 
 #: Available networks
 msgid "state_available"
@@ -722,7 +727,7 @@ msgstr "Yeni Ağ"
 
 #: No Network
 msgid "no_network"
-msgstr "Ağ yok"
+msgstr "Ağ Yok"
 
 #: Configure network
 msgid "state_configure"
@@ -734,7 +739,7 @@ msgstr "Bağlı değil."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Yeni kanal #kanal"
+msgstr "Yeni #kanal katılın"
 
 #: Filter Channels
 msgid "filter_channels"
@@ -742,15 +747,19 @@ msgstr "Kanalları Filtrele"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Daha fazla kanal bul"
+msgstr "Daha Fazla Kanal Bul"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Takma ad değiş"
+msgstr "Takma ad değiştir"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
 msgstr "Yeni bir takma ad girin..."
+
+#: This is you!
+msgid "user_you"
+msgstr "Bu sizsiniz!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -770,7 +779,7 @@ msgstr "Yardım için müsait"
 
 #: Is an operator
 msgid "user_op"
-msgstr "IRC operatör"
+msgstr "Bir operatör"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
@@ -974,7 +983,7 @@ msgstr "{{sides}} taraflı bir zar atar ve {{number}} alır"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "IRC İstemciniz."
+msgstr "IRC istemciniz"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
@@ -986,11 +995,11 @@ msgstr "Geri döndüğünde burada olacaklar."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Ağ ekle"
+msgstr "Bir Ağ Ekle"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "{{network}}'e bağlanmaya çalışıyorsunuz"
+msgstr "{{network}} ağına bağlanmaya çalışıyorsunuz"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
@@ -1030,7 +1039,7 @@ msgstr "Bağlantı kesildi"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "{{network}}'e Bağlandı!"
+msgstr "{{network}} ağına bağlandı!"
 
 #: {{nick}} has joined
 msgid "has_joined"

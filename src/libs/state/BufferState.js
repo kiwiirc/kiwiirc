@@ -180,7 +180,7 @@ export default class BufferState {
 
         let modes = userBufferInfo.modes;
         let opModes = ['Y', 'y', 'q', 'a', 'o', 'h'];
-        let hasOp = _.find(modes, mode => opModes.indexOf(mode.toLowerCase()) > -1);
+        let hasOp = _.find(modes, (mode) => opModes.indexOf(mode.toLowerCase()) > -1);
 
         return !!hasOp;
     }
@@ -203,7 +203,7 @@ export default class BufferState {
         let network = this.getNetwork();
         let netPrefixes = network.ircClient.network.options.PREFIX;
         // Find the first (highest) netPrefix in the users buffer modes
-        let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
+        let prefix = _.find(netPrefixes, (p) => modes.indexOf(p.mode) > -1);
 
         return prefix ?
             prefix.symbol :
@@ -233,7 +233,7 @@ export default class BufferState {
         let network = this.getNetwork();
         let netPrefixes = network.ircClient.network.options.PREFIX;
         // Find the first (highest) netPrefix in the users buffer modes
-        let prefix = _.find(netPrefixes, p => modes.indexOf(p.mode) > -1);
+        let prefix = _.find(netPrefixes, (p) => modes.indexOf(p.mode) > -1);
 
         return prefix ?
             prefix.mode :
@@ -324,11 +324,20 @@ export default class BufferState {
         this.chathistory_request_count += 1;
         ircClient.chathistory[chathistoryFuncName](this.name, time)
             .then((event) => {
-                if (!event || event.commands.length === 0) {
+                if (!event) {
                     this.flag('chathistory_available', false);
-                } else {
-                    this.flag('chathistory_available', true);
+                    return;
                 }
+
+                // The BNC server may reply with messages that are already in the buffer.
+                // This var stores whether there are new messages in the chathistory response.
+                let hasNewMessages = event.commands.some(
+                    (msg) => msg.tags.msgid && !this.messagesObj.messageIds[msg.tags.msgid]
+                );
+
+                // If there are new messages, then there could be more in the backlog.
+                // If there are no new messages, then the chat history is empty.
+                this.flag('chathistory_available', hasNewMessages);
             })
             .finally(() => {
                 this.flag('is_requesting_chathistory', false);
@@ -362,7 +371,7 @@ export default class BufferState {
             // If running under a bouncer, set it on the server-side too
             let network = this.getNetwork();
             let allowedUpdate = !network ? false : this.isChannel() || this.isQuery();
-            if (allowedUpdate && network.connection.bncbncnetidname) {
+            if (allowedUpdate && network.connection.bncnetid) {
                 network.ircClient.bnc.bufferSeen(
                     network.connection.bncnetid,
                     this.name,
@@ -507,7 +516,7 @@ function createUserBatch(bufferState) {
         bufferState.users = o;
     };
 
-    return batchedAdd(addSingleUser, addMultipleUsers);
+    return batchedAdd(addSingleUser, addMultipleUsers, 2);
 }
 
 /**
@@ -524,7 +533,7 @@ function createMessageBatch(bufferState) {
         bufferState.message_count++;
     };
     let addMultipleMessages = (newMessages) => {
-        let toAdd = newMessages.filter(msg => !bufferState.messagesObj.messageIds[msg.id]);
+        let toAdd = newMessages.filter((msg) => !bufferState.messagesObj.messageIds[msg.id]);
         if (toAdd.length > 0) {
             bufferState.messagesObj.messages = bufferState.messagesObj.messages.concat(toAdd);
             toAdd.forEach((msg) => {
@@ -542,11 +551,11 @@ function createMessageBatch(bufferState) {
 
         if (bufferState.messagesObj.messages.length > scrollbackSize) {
             let removed = bufferState.messagesObj.messages.splice(0, length - scrollbackSize);
-            removed.forEach(msg => delete bufferState.messagesObj.messageIds[msg.id]);
+            removed.forEach((msg) => delete bufferState.messagesObj.messageIds[msg.id]);
         }
     };
 
-    return batchedAdd(addSingleMessage, addMultipleMessages);
+    return batchedAdd(addSingleMessage, addMultipleMessages, 4);
 }
 
 // Update our user list status every 30seconds to get each users current away status

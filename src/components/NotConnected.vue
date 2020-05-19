@@ -3,24 +3,36 @@
         <template v-if="!shouldShowLoading">
             <div class="kiwi-notconnected-caption">
                 <span>{{ $t('not_connected') }}</span>
-                <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true"/>
+                <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true" />
             </div>
             <div class="kiwi-notconnected-buttons">
                 <template v-if="isChannel()">
-                    <span class="kiwi-notconnected-button" @click="reconnect">
-                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
+                    <span
+                        :disabled="!readyToStart"
+                        class="kiwi-notconnected-button"
+                        @click="reconnect"
+                    >
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true" />
                         {{ $t('reconnect_channel', {channel: buffer.name}) }}
                     </span>
                 </template>
                 <template v-else-if="isServer()">
-                    <span class="kiwi-notconnected-button" @click="reconnect">
-                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
+                    <span
+                        :disabled="!readyToStart"
+                        class="kiwi-notconnected-button"
+                        @click="reconnect"
+                    >
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true" />
                         {{ $t('reconnect_network', {network: buffer.getNetwork().name}) }}
                     </span>
                 </template>
                 <template v-else-if="isQuery()">
-                    <span class="kiwi-notconnected-button" @click="reconnect">
-                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
+                    <span
+                        :disabled="!readyToStart"
+                        class="kiwi-notconnected-button"
+                        @click="reconnect"
+                    >
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true" />
                         {{ $t('reconnect_query', {user: buffer.name}) }}
                     </span>
                 </template>
@@ -30,7 +42,7 @@
                     class="kiwi-notconnected-button kiwi-notconnected-button-settings"
                     @click="showNetworkSettings"
                 >
-                    <i class="fa fa-cogs" aria-hidden="true"/>
+                    <i class="fa fa-cogs" aria-hidden="true" />
                 </a>
             </div>
         </template>
@@ -40,6 +52,11 @@
                aria-hidden="true"
             />
         </div>
+
+        <captcha
+            class="kiwi-notconnected-captcha"
+            :network="network"
+        />
     </div>
 </template>
 
@@ -47,7 +64,12 @@
 
 'kiwi public';
 
+import Captcha from '@/components/Captcha';
+
 export default {
+    components: {
+        Captcha,
+    },
     props: ['buffer', 'network'],
     data() {
         return {
@@ -69,6 +91,9 @@ export default {
         },
         restrictedServer() {
             return this.$state.setting('restricted');
+        },
+        readyToStart() {
+            return true;
         },
     },
     methods: {
@@ -97,6 +122,9 @@ export default {
             return this.buffer.isQuery();
         },
         reconnect() {
+            if (!this.readyToStart) {
+                return;
+            }
             if (this.buffer.isChannel()) {
                 this.buffer.enabled = true;
             }
@@ -115,6 +143,9 @@ export default {
     box-sizing: border-box;
     padding: 5px 20px;
     transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .kiwi-notconnected.connecting {
@@ -138,6 +169,11 @@ export default {
     top: 3px;
 }
 
+.kiwi-notconnected-captcha {
+    display: inline-block;
+    margin-left: 3em;
+}
+
 .kiwi-notconnected-buttons {
     float: right;
     width: auto;
@@ -156,6 +192,11 @@ export default {
     overflow: hidden;
     box-sizing: border-box;
     transition: opacity 0.3s, color 0.3s, background-color 0.3s;
+}
+
+.kiwi-notconnected-button:hover[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
 }
 
 .kiwi-notconnected-button:hover {

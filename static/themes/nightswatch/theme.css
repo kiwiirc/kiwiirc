@@ -172,7 +172,6 @@
     border-color: #4b4b4b;
 }
 
-.kiwi-network-name-hover-icon,
 .kiwi-network-name-options .kiwi-network-name-option {
     color: var(--brand-default-fg);
 }
@@ -286,6 +285,10 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 
 .kiwi-statebrowser-channel-label {
     background: #383838;
+}
+
+.kiwi-statebrowser-channel-label--highlight {
+    background: var(--brand-error);
 }
 
 .kiwi-welcome-znc h2 {

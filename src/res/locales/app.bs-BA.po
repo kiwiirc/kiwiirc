@@ -1,20 +1,21 @@
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: bs\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2019-09-21 00:00\n"
+"PO-Revision-Date: 2020-04-13 23:40\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "Početak"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
@@ -72,6 +73,10 @@ msgstr "Korisničko ime"
 msgid "password"
 msgstr "Šifra"
 
+#: Server Password
+msgid "server_password"
+msgstr "Server šifra"
+
 #: I have a password
 msgid "password_have"
 msgstr "Imam šifru"
@@ -114,7 +119,7 @@ msgstr "Traži..."
 
 #: OK
 msgid "ok"
-msgstr "OK"
+msgstr "Uredu"
 
 #: Cancel
 msgid "cancel"
@@ -476,9 +481,9 @@ msgstr "Klikni na osvježi da ponovo učitaš listu kanala"
 msgid "channel_list_nonefound"
 msgstr "Nema pronađenih kanala, molimo pokušajte kasnije"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Dobrodošli na Kiwi IRC!"
+msgstr "Dobrodošli na Kiwi IRC! Izaberite kanal na lijevoj strani."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -586,7 +591,7 @@ msgstr "{{count}} dostupnih osoba"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtriraj korisnike"
+msgstr "Filtriraj korisnike na kanalu"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -662,7 +667,7 @@ msgstr "Nema postavljene teme za ovaj kanal"
 
 #: About
 msgid "about"
-msgstr "O"
+msgstr "Više o"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -751,6 +756,10 @@ msgstr "Promijeni nadimak"
 #: Enter new nickname...
 msgid "enter_new_nick"
 msgstr "Upiši novi nadimak..."
+
+#: This is you!
+msgid "user_you"
+msgstr "To ste vi!"
 
 #: Account name: {{user}}
 msgid "user_account"

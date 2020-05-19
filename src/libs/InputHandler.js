@@ -46,7 +46,7 @@ export default class InputHandler {
     listenForInput() {
         this.state.$on('input.raw', (input, context = this.defaultContext()) => {
             let lines = input.split('\n');
-            lines.forEach(line => this.processLine(line, context));
+            lines.forEach((line) => this.processLine(line, context));
         });
     }
 
@@ -201,6 +201,8 @@ inputCommands.notice = function inputCommandMsg(event, command, line) {
 };
 inputCommands.dice = function inputCommandDice(event, command, line) {
     // /dice 100
+
+    event.handled = true;
     let buffer = this.state.getActiveBuffer();
     let network = this.state.getActiveNetwork();
 
@@ -651,7 +653,7 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             if (typeof formats[key] === 'undefined') {
                 // Some keys such as `special` are arrays of values
                 if (_.isArray(val)) {
-                    val.forEach(v => display(`${key}: ${v}`));
+                    val.forEach((v) => display(`${key}: ${v}`));
                 } else {
                     display(`${key}: ${val}`);
                 }
@@ -773,6 +775,14 @@ inputCommands.names = function inputCommandNames(event, command, line) {
     network.ircClient.raw('NAMES ' + args);
 };
 
+inputCommands.inject = function inputCommandInject(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    let connection = network.ircClient.connection;
+    connection.addReadBuffer(line);
+};
+
 inputCommands.clear = function inputCommandClear(event, command, line) {
     event.handled = true;
 
@@ -882,9 +892,11 @@ inputCommands.server = function inputCommandServer(event, command, line) {
 };
 
 inputCommands.beep = function inputCommandBeep(event, command, line) {
+    event.handled = true;
     this.state.$emit('audio.bleep');
 };
 
 inputCommands.notify = function inputCommandNotify(event, command, line) {
+    event.handled = true;
     this.state.$emit('notification.show', line);
 };

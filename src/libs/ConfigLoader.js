@@ -78,9 +78,17 @@ export default class ConfigLoader {
 
     insertReplacements(input) {
         let out = input;
-        Object.keys(this.valReplacements).forEach((k) => {
+        let keys = Object.keys(this.valReplacements);
+        for (let i = 0; i < keys.length; i++) {
+            let k = keys[i];
+            if (input === '{{' + k + '}}') {
+                // If we have an exact match, return the exact replacement value we have as
+                // it may not be a string
+                return this.valReplacements[k];
+            }
+
             out = out.replace('{{' + k + '}}', this.valReplacements[k]);
-        });
+        }
         return out;
     }
 }

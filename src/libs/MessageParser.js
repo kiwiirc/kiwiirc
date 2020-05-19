@@ -1,6 +1,8 @@
+'kiwi public';
+
 import { trim } from 'lodash';
 
-import state from '@/libs/state';
+import getState from '@/libs/state';
 import formatIrcMessage, { createNewBlock } from '@/libs/MessageFormatter';
 import { urlRegex, channelRegex } from '@/helpers/TextFormatting';
 
@@ -18,7 +20,7 @@ import { urlRegex, channelRegex } from '@/helpers/TextFormatting';
  * @returns An array of blocks, where each special content will be extracted into a separate block.
  */
 export default function parseMessage(message, formatOpts = {}, userList = null) {
-    const emojiList = state.setting('emojis');
+    const emojiList = getState().setting('emojis');
 
     const blocks = formatIrcMessage(message, formatOpts);
     let formatedBlocks = blocks.reduce(
@@ -126,6 +128,12 @@ function matchUrl(word) {
     // Don't allow javascript execution
     if (url.match(/^javascript:/i)) {
         return false;
+    }
+
+    // Trim common punctuation from the end of a link. End of scentences etc.
+    let punctuation = '.,;:';
+    while (punctuation.indexOf(url[url.length - 1]) > -1) {
+        url = url.substr(0, url.length - 1);
     }
 
     // Links almost always contain an opening bracket if the last character is a closing

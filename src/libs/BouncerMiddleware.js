@@ -41,6 +41,8 @@ export default function bouncerMiddleware() {
                 nick: tags.nick,
                 currentNick: tags.currentNick,
                 password: tags.password || '',
+                account: tags.account || '',
+                account_password: tags.account_password || '',
             });
         } else if (params[0] === 'listbuffers' && ['end', 'RPL_OK'].indexOf(params[2]) > -1) {
             let netId = (params[1] || '');
@@ -69,6 +71,7 @@ export default function bouncerMiddleware() {
             });
         }
 
+        // BOUNCER addnetwork Network1 ERR_NAMEINUSE
         if (params[0] === 'addnetwork' && params[2].substr(0, 4) === 'ERR_') {
             let netName = (params[1] || '').toLowerCase();
             let eventObj = {
@@ -77,7 +80,8 @@ export default function bouncerMiddleware() {
             };
             client.command_handler.emit('bouncer addnetwork error', eventObj);
             client.command_handler.emit('bouncer addnetwork error ' + netName, eventObj);
-        } else if (params[0] === 'addnetwork' && ['end', 'RPL_OK'].indexOf(params[2]) > -1) {
+        } else if (params[0] === 'addnetwork' && ['end', 'RPL_OK'].indexOf(params[3]) > -1) {
+            // BOUNCER addnetwork 5 Network1 RPL_OK
             let netId = (params[1] || '');
             let netName = (params[2] || '').toLowerCase();
             let eventObj = {
@@ -203,6 +207,12 @@ function addFunctionsToClient(client) {
         }
         if (typeof opts.password !== 'undefined') {
             tags.password = opts.password;
+        }
+        if (typeof opts.account_password !== 'undefined') {
+            tags.account_password = opts.account_password;
+        }
+        if (typeof opts.account !== 'undefined') {
+            tags.account = opts.account;
         }
 
         let tagString = createTagString(tags);

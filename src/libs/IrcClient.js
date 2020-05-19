@@ -17,13 +17,18 @@ export function create(state, network) {
         port: network.connection.port,
         tls: network.connection.tls,
         path: network.connection.path,
-        password: network.password,
-        nick: network.nick,
-        username: network.username || network.nick,
+        password: network.connection.password,
+        account: {
+            account: network.connection.nick,
+            password: network.password,
+        },
+        nick: network.connection.nick,
+        username: network.username || network.connection.nick,
         gecos: network.gecos || 'https://kiwiirc.com/',
         version: null,
         auto_reconnect: false,
         encoding: network.connection.encoding,
+        message_max_length: 350,
     };
 
     let ircClient = new Irc.Client(clientOpts);
@@ -39,33 +44,79 @@ export function create(state, network) {
     // most recent connection details from the state
     let originalIrcClientConnect = ircClient.connect;
     ircClient.connect = function connect(...args) {
+        // Set some defaults if we don't have eveything
+        if (!network.connection.nick) {
+            network.connection.nick = 'Guest' + Math.floor(Math.random() * 100);
+        }
+
         ircClient.options.host = network.connection.server;
         ircClient.options.port = network.connection.port;
         ircClient.options.tls = network.connection.tls;
         ircClient.options.path = network.connection.path;
-        ircClient.options.password = network.password;
+        ircClient.options.password = network.connection.password;
+        if (network.password) {
+            ircClient.options.account = {
+                account: network.connection.nick,
+                password: network.password,
+            };
+        } else {
+            // No password so give an empty account config. This forces irc-framework to keep
+            // the server password (options.password) separate from SASL
+            ircClient.options.account = { };
+        }
         ircClient.options.nick = network.connection.nick;
         ircClient.options.username = network.username || network.connection.nick;
         ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
         ircClient.options.encoding = network.connection.encoding;
+        ircClient.options.auto_reconnect = !!state.setting('autoReconnect');
 
-        state.$emit('network.connecting', { network });
+        // Apply any irc-fw options specified in kiwiirc config
+        let configOptions = state.setting('ircFramework');
+        if (configOptions) {
+            Object.assign(ircClient.options, configOptions);
+        }
 
-        // A direct connection uses a websocket to connect (note: some browsers limit
-        // the number of connections to the same host!).
-        // A non-direct connection will connect via the configured kiwi server using
-        // with our own irc-framework compatible transport.
-        if (!network.connection.direct) {
+        let eventObj = { network, transport: null };
+        state.$emit('network.connecting', eventObj);
+
+        if (eventObj.transport) {
+            // A plugin might use its own transport of some kind
+            ircClient.options.transport = eventObj.transport;
+        } else if (!network.connection.direct) {
+            // A direct connection uses a websocket to connect (note: some browsers limit
+            // the number of connections to the same host!).
+            // A non-direct connection will connect via the configured kiwi server using
+            // with our own irc-framework compatible transport.
             ircClient.options.transport = ServerConnection.createChannelConstructor(
                 state.settings.kiwiServer,
                 (window.location.hash || '').substr(1),
                 networkid
             );
         } else {
+            // Use the irc-framework default transport
             ircClient.options.transport = undefined;
         }
 
         originalIrcClientConnect.apply(ircClient, args);
+    };
+
+    // Overload the raw() function so that we can emit outgoing IRC messages to plugins
+    let originalIrcClientRaw = ircClient.raw;
+    ircClient.raw = function raw(...args) {
+        let message = null;
+
+        if (args[0] instanceof Irc.Message) {
+            message = args[0];
+        } else {
+            let rawString = ircClient.rawString(...args);
+            message = Irc.ircLineParser(rawString);
+        }
+
+        let eventObj = { network, message, handled: false };
+        state.$emit('ircout', eventObj);
+        if (!eventObj.handled) {
+            originalIrcClientRaw.apply(ircClient, [message]);
+        }
     };
 
     ircClient.on('raw', (event) => {
@@ -157,15 +208,21 @@ function clientMiddleware(state, network) {
                 });
             });
         });
-
-        client.on('socket connected', () => {
-            if (network.captchaResponse) {
-                client.raw('CAPTCHA', network.captchaResponse);
-            }
-        });
     };
 
     function rawEventsHandler(command, event, rawLine, client, next) {
+        // Allow plugins to override raw IRC events
+        let eventObj = { ...event, raw: rawLine, handled: false };
+        state.$emit('irc.raw', command, eventObj, network);
+        if (eventObj.handled) {
+            return;
+        }
+
+        state.$emit('irc.raw.' + command, command, eventObj, network);
+        if (eventObj.handled) {
+            return;
+        }
+
         if (command === '002') {
             // Your host is server.example.net, running version InspIRCd-2.0
             let param = event.params[1] || '';
@@ -175,14 +232,14 @@ function clientMiddleware(state, network) {
                 '';
         }
 
-        state.$emit('irc.raw', command, event, network);
-        state.$emit('irc.raw.' + command, command, event, network);
-
         // SASL failed auth
         if (command === '904') {
-            if (state.setting('disconnectOnSaslFail')) {
-                network.ircClient.connection.end();
+            if (!network.state !== 'connected') {
                 network.last_error = 'Invalid login';
+
+                if (state.setting('disconnectOnSaslFail')) {
+                    network.ircClient.connection.end();
+                }
             }
 
             let serverBuffer = network.serverBuffer();
@@ -276,7 +333,8 @@ function clientMiddleware(state, network) {
 
         if (command === 'server options') {
             // If the network name has changed from the irc-framework default, update ours
-            if (client.network.name !== 'Network') {
+            // Also if it isn't a BNC network as the name is then derived from the BNC info instead
+            if (client.network.name !== 'Network' && !network.connection.bncnetid) {
                 network.name = client.network.name;
             }
         }
@@ -728,7 +786,7 @@ function clientMiddleware(state, network) {
                     }
 
                     let buffer = network.bufferByName(eventUser.channel);
-                    if (!user.buffers[buffer.id]) {
+                    if (!buffer || !user.buffers[buffer.id]) {
                         return;
                     }
 
@@ -750,7 +808,7 @@ function clientMiddleware(state, network) {
         if (command === 'channel list') {
             network.channel_list_state = 'updating';
             // Filter private channels from the channel list
-            let filteredEvent = _.filter(event, o => o.channel !== '*');
+            let filteredEvent = _.filter(event, (o) => o.channel !== '*');
             // Store the channels in channel_list_cache before moving it all to
             // channel_list at the end. This gives a huge performance boost since
             // it doesn't need to be all reactive for every update
@@ -836,7 +894,7 @@ function clientMiddleware(state, network) {
         if (command === 'userlist') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             let hadExistingUsers = Object.keys(buffer.users)
-                .filter(u => u !== network.ircClient.user.nick)
+                .filter((u) => u !== network.ircClient.user.nick)
                 .length > 0;
             let users = [];
             event.users.forEach((user) => {
@@ -1001,7 +1059,7 @@ function clientMiddleware(state, network) {
                     default(targets, mode) {
                         return {
                             mode: mode + (targets[0].param ? ' ' + targets[0].param : ''),
-                            target: targets.map(t => t.target).join(', '),
+                            target: targets.map((t) => t.target).join(', '),
                             nick: event.nick,
                         };
                     },
@@ -1029,7 +1087,7 @@ function clientMiddleware(state, network) {
                         nick: event.nick,
                         username: event.ident,
                         host: event.hostname,
-                        target: targets.map(t => t.target).join(', '),
+                        target: targets.map((t) => t.target).join(', '),
                         text,
                     });
                     state.addMessage(buffer, {

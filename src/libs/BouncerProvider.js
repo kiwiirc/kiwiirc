@@ -88,7 +88,7 @@ export default class BouncerProvider {
 
         // Use this initial network password for other network connections
         if (!this.bnc.username) {
-            let [username, password] = network.password.split(':');
+            let [username, password] = network.connection.password.split(':');
             username = username.split('/')[0];
             this.bnc.username = username;
             this.bnc.password = password;
@@ -100,8 +100,10 @@ export default class BouncerProvider {
             await this.syncBncNetwork(network);
         }
 
-        // Now sync all other networks from the bouncer
-        await this.initAndAddNetworks(network);
+        // If this is the controller network, add all other networks from the bouncer
+        if (!network.connection.bncnetid) {
+            await this.initAndAddNetworks(network);
+        }
     }
 
     onNetworkState(event, network) {
@@ -131,7 +133,7 @@ export default class BouncerProvider {
 
         // populate network list from the controller connection
         let bncNetworks = await client.bnc.getNetworks();
-        bncNetworks.forEach(bncNet => this.addNetworkToState(bncNet));
+        bncNetworks.forEach((bncNet) => this.addNetworkToState(bncNet));
 
         // start monitoring network changes
         this.monitorNetworkChanges();
@@ -158,6 +160,7 @@ export default class BouncerProvider {
 
             if (bncNetwork.state === 'connected' && newBuffer.isChannel() && newBuffer.joined) {
                 client.raw('NAMES ' + newBuffer.name);
+                client.who(newBuffer.name);
             }
         });
 
@@ -167,7 +170,7 @@ export default class BouncerProvider {
                 return;
             }
 
-            let existingBuffers = buffers.filter(bncBuffer => (
+            let existingBuffers = buffers.filter((bncBuffer) => (
                 bncBuffer.name.toLowerCase() === clientBuffer.name.toLowerCase()
             ));
 
@@ -195,13 +198,16 @@ export default class BouncerProvider {
                 server: network.host,
                 port: network.port,
                 tls: network.tls,
-                password: network.password,
+                password: network.password || '',
                 bncnetid: network.networkId,
                 username: network.user,
+                account_password: network.account_password,
             });
+        } else {
+            // TODO: Update our existing network
         }
 
-        await this.syncBncNetwork(net);
+        return net;
     }
 
     // Keep a snapshot of what the current networks are. They will be periodically
@@ -221,7 +227,8 @@ export default class BouncerProvider {
                 host: network.connection.server,
                 port: network.connection.port,
                 tls: network.connection.tls,
-                password: network.password,
+                account_password: network.password,
+                server_password: network.connection.password,
                 nick: network.connection.nick,
                 username: network.username,
             };
@@ -266,8 +273,11 @@ export default class BouncerProvider {
             if (network.connection.tls !== snapshot.tls) {
                 tags.tls = network.connection.tls;
             }
-            if (network.password !== snapshot.password) {
-                tags.password = network.password;
+            if (network.password !== snapshot.account_password) {
+                tags.account_password = network.password;
+            }
+            if (network.connection.password !== snapshot.server_password) {
+                tags.password = network.connection.password;
             }
             if (network.connection.nick !== snapshot.nick) {
                 tags.nick = network.connection.nick;
@@ -334,6 +344,9 @@ export default class BouncerProvider {
                     let password = `${this.bnc.username}/${netname}:${this.bnc.password}`;
                     ircClient.options.password = password;
                 }
+
+                // The SASL auth already happens on the BNC, we only use it for UI purposes in kiwi
+                ircClient.options.account = {};
 
                 network.connection.direct = this.bnc.direct;
                 ircClient.options.path = this.bnc.path;

@@ -1,3 +1,11 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
+
+
 #: Common Strings
 
 #: Start
@@ -59,6 +67,10 @@ msgstr "Username"
 #: Password
 msgid "password"
 msgstr "Password"
+
+#: Server Password
+msgid "server_password"
+msgstr "Server Password"
 
 #: I have a password
 msgid "password_have"
@@ -345,7 +357,7 @@ msgstr "Mute sounds"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide count"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -498,7 +510,7 @@ msgstr "No channels found, try again later"
 
 #: Container $t('container_')
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Welcome to Kiwi IRC! Select a channel on the left."
 
@@ -630,7 +642,7 @@ msgstr "{{count}} people here"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "filter users in channel"
+msgstr "Filter users in channel"
 
 
 #: NotConnected $t('reconnect_')
@@ -810,7 +822,7 @@ msgstr "Filter channels"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find more channels"
+msgstr "Find More Channels"
 
 #: SelfUser
 
@@ -824,6 +836,10 @@ msgstr "Enter new nickname..."
 
 
 #: UserBox $t('user_')
+
+#: This is you!
+msgid "user_you"
+msgstr "This is you!"
 
 #: Account name: {{user}}
 msgid "user_account"

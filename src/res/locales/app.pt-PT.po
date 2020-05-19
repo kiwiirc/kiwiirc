@@ -1,16 +1,17 @@
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: pt-PT\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2019-09-29 13:01\n"
+"PO-Revision-Date: 2020-04-13 16:36\n"
 
 #: Start
 msgid "start_button"
@@ -72,6 +73,10 @@ msgstr "Nome de utilizador"
 msgid "password"
 msgstr "Senha"
 
+#: Server Password
+msgid "server_password"
+msgstr "Palavra-passe do Servidor"
+
 #: I have a password
 msgid "password_have"
 msgstr "Eu tenho uma senha"
@@ -82,7 +87,7 @@ msgstr "Servidor"
 
 #: Nick
 msgid "nick"
-msgstr "Utilizador"
+msgstr "Nick"
 
 #: Channel
 msgid "channel"
@@ -314,7 +319,7 @@ msgstr "Enviar mensagem"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Insira a senha do canal"
+msgstr "Insira a  senha do canal"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
@@ -342,7 +347,7 @@ msgstr "Desactivar sons"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Esconder numero de mensagens não lidas"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -476,7 +481,7 @@ msgstr "Clique no botão actualizar para actualizar a lista de canais"
 msgid "channel_list_nonefound"
 msgstr "Nenhum canal encontrado, tente novamente mais tarde"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Bem vindos ao Kiwi IRC!"
 
@@ -546,7 +551,7 @@ msgstr "Os seus detalhes"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Nick"
 
 #: Advanced
 msgid "settings_advanced"
@@ -586,7 +591,7 @@ msgstr "{{count}} pessoas aqui"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtrar utilizadores no canal"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -742,7 +747,7 @@ msgstr "Filtrar Canais"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Descobrir Mais Canais"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"
@@ -751,6 +756,10 @@ msgstr "Mudar de nick"
 #: Enter new nickname...
 msgid "enter_new_nick"
 msgstr "Introduza o novo nick..."
+
+#: This is you!
+msgid "user_you"
+msgstr "Este/a é você!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -826,7 +835,7 @@ msgstr "{{nick}} deu estatuto de op a {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} tirou estatuto de op a {{target}}"
+msgstr "{{nick}} removeu o estatuto de op a {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
@@ -834,7 +843,7 @@ msgstr "{{nick}} deu estatuto de half-op a {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} tirou estatuto de half-op a {{target}}"
+msgstr "{{nick}} removeu o estatuto de half-op a {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
@@ -842,7 +851,7 @@ msgstr "{{nick}} deu estatuto de voice a {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} tirou estatuto de voice a {{target}}"
+msgstr "{{nick}} removeu o estatuto de voice a {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -850,7 +859,7 @@ msgstr "{{nick}} deu estatuto de admin a {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} tirou estatuto de admin a {{target}}"
+msgstr "{{nick}} removeu o estatuto de admin a {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
@@ -858,7 +867,7 @@ msgstr "{{nick}} deu estatuto de owner a {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} tirou estatuto de owner a {{target}}"
+msgstr "{{nick}} removeu o estatuto de owner a {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -894,7 +903,7 @@ msgstr "Sair, e depois reentrar num canal"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Mudar o seu nickname"
+msgstr "Mudar o seu nick"
 
 #: Start a private conversation with someone
 msgid "command_query"
@@ -1058,9 +1067,9 @@ msgstr "Nick {{nick}} já em uso. Tentando com {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} mudou o nick para {{newnick}}"
+msgstr "{{nick}} é agora conhecido como {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "alterou o tópico para: {{topic}}"
+msgstr "{{nick}} alterou o tópico para: {{topic}}"
 

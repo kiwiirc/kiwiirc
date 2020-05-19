@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import Vue from 'vue';
+import JSON5 from 'json5';
 import i18next from 'i18next';
 import i18nextXHR from 'i18next-xhr-backend';
 import VueI18Next from '@panter/vue-i18next';
@@ -17,7 +18,7 @@ import App from '@/components/App';
 import StartupError from '@/components/StartupError';
 import Logger from '@/libs/Logger';
 import ConfigLoader from '@/libs/ConfigLoader';
-import state from '@/libs/state';
+import getState from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import InputHandler from '@/libs/InputHandler';
 import StatePersistence from '@/libs/StatePersistence';
@@ -69,33 +70,39 @@ function getQueryVariable(variable) {
 // and then manually remove them all the time.
 Vue.mixin({
     beforeDestroy: function beforeDestroy() {
-        (this.listeningEvents || []).forEach(fn => fn());
+        (this.listeningEvents || []).forEach((fn) => fn());
     },
     methods: {
         listen: function listen(source, event, fn) {
             this.listeningEvents = this.listeningEvents || [];
-            this.listeningEvents.push(() => {
+            let off = () => {
                 (source.removeEventListener || source.$off || source.off).call(source, event, fn);
-            });
+            };
+            this.listeningEvents.push(off);
             (source.addEventListener || source.$on || source.on).call(source, event, fn);
+            return off;
         },
-        listenOnce: function listenOnce(source, event, fn) {
+        listenOnce: function listenOnce(source, event, _fn) {
+            let fn = _fn;
             this.listeningEvents = this.listeningEvents || [];
-            this.listeningEvents.push(() => {
+            let off = () => {
                 (source.removeEventListener || source.$off || source.off).call(source, event, fn);
-            });
+            };
+            this.listeningEvents.push(off);
 
             if (source.addEventListener) {
                 // Create our own once handler as the DOM doesn't support this itself
-                let onceFn = function onceFn(...args) {
+                fn = function onceFn(...args) {
                     source.removeEventListener(event, onceFn);
                     fn(...args);
                 };
 
-                source.addEventListener(event, onceFn);
+                source.addEventListener(event, fn);
             } else {
                 (source.$once || source.once).call(source, event, fn);
             }
+
+            return off;
         },
     },
 });
@@ -104,7 +111,7 @@ Vue.mixin({
 Vue.mixin({
     computed: {
         $state() {
-            return state;
+            return getState();
         },
     },
 });
@@ -185,7 +192,7 @@ function loadApp() {
         let configContents = document.querySelector('script[name="kiwiconfig"]').innerHTML;
 
         try {
-            configObj = JSON.parse(configContents);
+            configObj = JSON5.parse(configContents);
         } catch (parseErr) {
             log.error('Config file: ' + parseErr.stack);
             showError();
@@ -195,10 +202,15 @@ function loadApp() {
     let configLoader = new ConfigLoader();
     configLoader
         .addValueReplacement('protocol', window.location.protocol)
+        .addValueReplacement('wsprotocol', window.location.protocol === 'https:' ? 'wss:' : 'ws:')
+        .addValueReplacement('tls', window.location.protocol === 'https:')
         .addValueReplacement('hostname', window.location.hostname)
-        .addValueReplacement('host', window.location.hostname)
         .addValueReplacement('host', window.location.host)
-        .addValueReplacement('port', window.location.port || 80)
+        .addValueReplacement('port', window.location.port || (
+            window.location.protocol === 'https:' ?
+                443 :
+                80
+        ))
         .addValueReplacement('hash', (window.location.hash || '').substr(1))
         .addValueReplacement('query', (window.location.search || '').substr(1))
         .addValueReplacement('referrer', window.document.referrer);
@@ -219,9 +231,9 @@ function applyConfig(config) {
     Misc.dedotObject(config);
     // if we have a config template apply that before other configs
     if (configTemplates[config.template]) {
-        applyConfigObj(configTemplates[config.template], state.settings);
+        applyConfigObj(configTemplates[config.template], getState().settings);
     }
-    applyConfigObj(config, state.settings);
+    applyConfigObj(config, getState().settings);
 }
 
 // Recursively merge an object onto another via Vue.$set
@@ -245,7 +257,7 @@ function applyConfigObj(obj, target) {
 
 function loadPlugins() {
     return new Promise((resolve, reject) => {
-        let plugins = state.settings.plugins || [];
+        let plugins = getState().settings.plugins || [];
         let pluginIdx = -1;
 
         loadNextScript();
@@ -273,7 +285,7 @@ function loadPlugins() {
                 scr.src = plugin.url;
             } else {
                 // Treat the plugin as a HTML document and just inject it into the document
-                fetch(plugin.url).then(response => response.text()).then((pluginRaw) => {
+                fetch(plugin.url).then((response) => response.text()).then((pluginRaw) => {
                     let el = document.createElement('div');
                     el.id = 'kiwi_plugin_' + plugin.name.replace(/[ "']/g, '');
                     el.style.display = 'none';
@@ -349,7 +361,7 @@ function initLocales() {
     });
 
     const setDefaultLanguage = () => {
-        let defaultLang = state.setting('language');
+        let defaultLang = getState().setting('language');
         let preferredLangs = _.clone(window.navigator && window.navigator.languages) || [];
 
         // our configs default lang overrides all others
@@ -384,17 +396,17 @@ function initLocales() {
     setDefaultLanguage();
 
     // Update the language if the setting changes.
-    state.$watch('user_settings.language', (lang) => {
-        if (!lang && !state.setting('language')) {
+    getState().$watch('user_settings.language', (lang) => {
+        if (!lang && !getState().setting('language')) {
             setDefaultLanguage();
         } else {
-            i18next.changeLanguage(lang || state.setting('language') || 'en-us');
+            i18next.changeLanguage(lang || getState().setting('language') || 'en-us');
         }
     });
 }
 
 async function initState() {
-    let stateKey = state.settings.startupOptions.state_key;
+    let stateKey = getState().settings.startupOptions.state_key;
 
     // Default to a preset key if it wasn't set
     if (typeof stateKey === 'undefined') {
@@ -402,18 +414,18 @@ async function initState() {
     }
 
     let persistLog = Logger.namespace('StatePersistence');
-    let persist = new StatePersistence(stateKey || '', state, Storage, persistLog);
-    persist.includeBuffers = !!state.settings.startupOptions.remember_buffers;
+    let persist = new StatePersistence(stateKey || '', getState(), Storage, persistLog);
+    persist.includeBuffers = !!getState().settings.startupOptions.remember_buffers;
 
     if (stateKey) {
         await persist.loadStateIfExists();
     }
 
-    api.setState(state);
+    api.setState(getState());
 }
 
 function initThemes() {
-    let themeMgr = ThemeManager.instance(state);
+    let themeMgr = ThemeManager.instance(getState());
     api.setThemeManager(themeMgr);
 
     let argTheme = getQueryVariable('theme');
@@ -426,24 +438,24 @@ function initSound() {
     let sound = new SoundBleep();
     let bleep = new AudioManager(sound);
 
-    bleep.listen(state);
-    bleep.watchForMessages(state);
+    bleep.listen(getState());
+    bleep.watchForMessages(getState());
 }
 
 function initInputCommands() {
     /* eslint-disable no-new */
-    new InputHandler(state);
+    new InputHandler(getState());
 }
 
 function startApp() {
-    new WindowTitle(state);
+    new WindowTitle(getState());
 
     api.emit('init');
 
     /* eslint-disable no-new */
     new Vue({
         el: '#app',
-        render: h => h(App),
+        render: (h) => h(App),
         i18n: new VueI18Next(i18next),
     });
 
@@ -460,7 +472,7 @@ function showError(err) {
     /* eslint-disable no-new */
     new Vue({
         el: '#app',
-        render: h => h(
+        render: (h) => h(
             StartupError,
             { props: { error: err } },
         ),

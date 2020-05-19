@@ -1,14 +1,17 @@
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: sq\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2019-12-23 12:12\n"
+"PO-Revision-Date: 2020-04-13 19:34\n"
 
 #: Start
 msgid "start_button"
@@ -69,6 +72,10 @@ msgstr "Emër përdoruesi"
 #: Password
 msgid "password"
 msgstr "Fjalëkalim"
+
+#: Server Password
+msgid "server_password"
+msgstr "Fjalëkalim Shërbyesi "
 
 #: I have a password
 msgid "password_have"
@@ -148,7 +155,7 @@ msgstr "Gjendje"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Mund të kihet"
+msgstr "Është i lirë"
 
 #: Send a message
 msgid "send_a_message"
@@ -236,7 +243,7 @@ msgstr "Skemë Mesazhesh"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Përdor monospace"
+msgstr "Përdor shkronja monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
@@ -288,7 +295,7 @@ msgstr "Ndaje me të tjerë, kur shtyp një mesazh"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Përfshiji mesazhet e ardhjes/largimit si veprimtari"
+msgstr "Mesazhet e ardhjes/largimit përfshiji si veprimtari"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
@@ -296,7 +303,7 @@ msgstr "Heshto njoftime zanore"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Theksim në fjalë (ndarë me hapësirë)"
+msgstr "Fjalë për t’u theksuar (ndarë me hapësirë)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -340,7 +347,7 @@ msgstr "Heshtoji tingujt"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Fshihe numrin"
+msgstr "Fshihe numrin e mesazheve të palexuar"
 
 #: Operator tools
 msgid "operator_tools"
@@ -352,7 +359,7 @@ msgstr "Maskë parazgjedhje dëbimesh"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Arsye parazgjedhje përzënieje"
+msgstr "Arsye parazgjedhje përzëniesh"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
@@ -364,7 +371,7 @@ msgstr "Këtu ka përbindësha, klikoni mbi këtë buton vetëm nëse e dini se 
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Aktivizo Rregullime të Mëtejshëm"
+msgstr "Aktivizo Rregullime të Mëtejshme"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
@@ -372,7 +379,7 @@ msgstr "Zonë Rreziku: Ndryshimi i disa prej këtyre rregullimeve mund të prish
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Riktheji te parazgjedhjet"
+msgstr "Riktheje te parazgjedhja"
 
 #: Filter
 msgid "settings_advanced_filter"
@@ -468,15 +475,15 @@ msgstr "Blloko mesazhe prej nga jashtë këtij kanali"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Që të përditësohet lista e kanaleve klikoni mbi butonin e rifreskimit"
+msgstr "Që të përditësohet lista e kanaleve, klikoni mbi butonin e rifreskimit"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
 msgstr "S’u gjetën kanale, riprovoni më vonë"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Mirë se vini te Kiwi IRC! Përzgjidhni majtas një kanal."
+msgstr "Mirë se vini te Kiwi IRC!"
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -584,7 +591,7 @@ msgstr "{{count}} vetë këtu"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "filtro përdorues në kanal"
+msgstr "Filtro përdorues në kanal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -592,11 +599,11 @@ msgstr "Rilidhuni, që të hyni te {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Rilidhuni te {{network}} që të filloni të bisedoni"
+msgstr "Që të filloni të bisedoni, rilidhuni te {{network}} "
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Rilidhuni që të vazhdoni të bisedoni me {{user}}"
+msgstr "Që të vazhdoni të bisedoni me {{user}}, rilidhuni"
 
 #: You are not currently connected!
 msgid "not_connected"
@@ -716,7 +723,7 @@ msgstr "Shtoni Rrjet"
 
 #: New Network
 msgid "new_network"
-msgstr "Rrjeti i Ri"
+msgstr "Rrjet i Ri"
 
 #: No Network
 msgid "no_network"
@@ -740,7 +747,7 @@ msgstr "Filtroni kanale"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Gjeni më tepër kanale"
+msgstr "Gjeni Më Tepër Kanale"
 
 #: Change nick
 msgid "change_nick"
@@ -749,6 +756,10 @@ msgstr "Ndryshoni nofkën"
 #: Enter new nickname...
 msgid "enter_new_nick"
 msgstr "Jepni nofkë të re…"
+
+#: This is you!
+msgid "user_you"
+msgstr "Ky jeni ju"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -780,7 +791,7 @@ msgstr "I lidhur në mënyrë të sigurt përmes SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "I pranishëm edhe në kanalet {{channels}}"
+msgstr "Në kanalet {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -868,7 +879,7 @@ msgstr "{{nick}} ka hequr dëbimin për {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr "{{nick}} cakton {{mode}} te {{target}}"
+msgstr "{{nick}} cakton {{mode}} për {{target}}"
 
 #: Send a message
 msgid "command_msg"
@@ -888,7 +899,7 @@ msgstr "Dilni nga një kanal"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Dilni, dhe mandej rihyni në kanal"
+msgstr "Dilni, mandej rihyni në kanal"
 
 #: Change your nickname
 msgid "command_nick"
@@ -920,7 +931,7 @@ msgstr "Përzini dikë nga kanali"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Pastroni krejt mesazhet nga kjo dritare"
+msgstr "Spastro krejt mesazhet nga kjo dritare"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"

@@ -10,7 +10,7 @@
             @click="addNetwork"
         >
             {{ $t('personal_add') }}
-        </button> <br >
+        </button> <br>
 
         <a
             v-if="networks.length>0"
@@ -26,7 +26,7 @@
             v-html="aboutContent"
         />
         <div class="kiwi-aboutnew">
-            <div class="kiwi-aboutnew-sep"/>
+            <div class="kiwi-aboutnew-sep" />
             <a
                 class="u-link"
                 @click="about_open=!about_open"
@@ -36,7 +36,7 @@
 
             <div class="kiwi-aboutnew-help">
                 <a @click="about_open=!about_open">
-                    <i class="fa fa-question-circle" aria-hidden="true"/>
+                    <i class="fa fa-question-circle" aria-hidden="true" />
                 </a>
             </div>
         </div>
@@ -47,7 +47,7 @@
 'kiwi public';
 
 import * as TextFormatting from '@/helpers/TextFormatting';
-import state from '@/libs/state';
+import getState from '@/libs/state';
 import aboutContent from './about.html';
 
 let firstRun = true;
@@ -60,7 +60,7 @@ const ctor = {
     },
     computed: {
         networks() {
-            return state.networks;
+            return this.$state.networks;
         },
         aboutContent() {
             return aboutContent;
@@ -69,14 +69,14 @@ const ctor = {
     methods: {
         addNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
-            let network = state.addNetwork(TextFormatting.t('new_network'), nick, {});
+            let network = this.$state.addNetwork(TextFormatting.t('new_network'), nick, {});
             network.showServerBuffer('settings');
         },
         toggleStateBrowser() {
-            state.$emit('statebrowser.show');
+            this.$state.$emit('statebrowser.show');
         },
         async init() {
-            state.persistence.watchStateForChanges();
+            this.$state.persistence.watchStateForChanges();
             this.$emit('start', {
                 fallbackComponent: this.constructor,
             });
@@ -91,7 +91,7 @@ const ctor = {
 };
 
 export default ctor;
-state.getStartups().kiwiirccom = ctor;
+getState().getStartups().kiwiirccom = ctor;
 </script>
 
 <style>

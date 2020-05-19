@@ -1,16 +1,17 @@
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: pt-BR\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2019-09-17 19:32\n"
+"PO-Revision-Date: 2020-04-13 16:35\n"
 
 #: Start
 msgid "start_button"
@@ -71,6 +72,10 @@ msgstr "Nome de usuário"
 #: Password
 msgid "password"
 msgstr "Senha"
+
+#: Server Password
+msgid "server_password"
+msgstr "Palavra-passe do Servidor"
 
 #: I have a password
 msgid "password_have"
@@ -146,7 +151,7 @@ msgstr "Nome real"
 
 #: Status
 msgid "whois_status"
-msgstr "Status"
+msgstr "Estado"
 
 #: Is available
 msgid "whois_status_available"
@@ -342,7 +347,7 @@ msgstr "Desativar sons"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Esconder numero de mensagens não lidas"
+msgstr "Hide unread message count"
 
 #: Operator tools
 msgid "operator_tools"
@@ -476,7 +481,7 @@ msgstr "Clique no botão atualizar para atualizar a lista de canais"
 msgid "channel_list_nonefound"
 msgstr "Nenhum canal encontrado, tente novamente mais tarde"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Bem-vindos ao Kiwi IRC! Escolha um canal à esquerda."
 
@@ -586,7 +591,7 @@ msgstr "{{count}} usuários aqui"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtrar usuários no canal"
+msgstr "Filter users in channel"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -742,7 +747,7 @@ msgstr "Filtrar Canais"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Descobrir Mais Canais"
+msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"
@@ -751,6 +756,10 @@ msgstr "Mudar de nick"
 #: Enter new nickname...
 msgid "enter_new_nick"
 msgstr "Introduza o novo nick..."
+
+#: This is you!
+msgid "user_you"
+msgstr "Este/a é você!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -934,7 +943,7 @@ msgstr "Desconectar do servidor de IRC"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr ""
+msgstr "Ligar a uma nova rede de IRC"
 
 #: Request information on somebody
 msgid "command_whois"

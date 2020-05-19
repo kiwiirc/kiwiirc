@@ -5,7 +5,7 @@
     >
         <span v-if="!sidebarState.isOpen" class="kiwi-sidebar-options">
             <div class="kiwi-sidebar-close" @click="sidebarState.close()">
-                {{ $t('close') }}<i class="fa fa-times" aria-hidden="true"/>
+                {{ $t('close') }}<i class="fa fa-times" aria-hidden="true" />
             </div>
         </span>
 
@@ -29,7 +29,7 @@
                         <tabbed-tab :header="$t('settings')" :focus="true">
                             <h3>{{ $t('channel_settings') }}</h3>
                             <hr>
-                            <channel-info :buffer="buffer"/>
+                            <channel-info :buffer="buffer" />
 
                             <div class="kiwi-sidebar-settings">
                                 <h3>{{ $t('side_settings') }}</h3>
@@ -85,18 +85,18 @@
                             >
                                 {{ $t('invited') }}
                             </a>
-                            <channel-banlist v-if="accessTab==='banlist'" :buffer="buffer"/>
-                            <channel-invitelist v-if="accessTab==='invitelist'" :buffer="buffer"/>
+                            <channel-banlist v-if="accessTab==='banlist'" :buffer="buffer" />
+                            <channel-invitelist v-if="accessTab==='invitelist'" :buffer="buffer" />
                         </tabbed-tab>
                         <tabbed-tab :header="$t('notifications')">
-                            <buffer-settings :buffer="buffer"/>
+                            <buffer-settings :buffer="buffer" />
                         </tabbed-tab>
                         <tabbed-tab
                             v-for="item in pluginUiElements"
                             :key="item.id"
                             :header="item.title"
                         >
-                            <div :is="item.component" v-bind="item.props"/>
+                            <div :is="item.component" v-bind="item.props" />
                         </tabbed-tab>
                     </tabbed-view>
                 </div>

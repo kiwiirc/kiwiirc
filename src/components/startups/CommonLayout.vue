@@ -2,9 +2,10 @@
     <div :class="[
         closing ? 'kiwi-startup-common--closing' : '',
         backgroundImage ? '' : 'kiwi-startup-common--no-bg',
-    ]" :style="backgroundStyle" class="kiwi-startup-common">
+    ]" :style="backgroundStyle" class="kiwi-startup-common"
+    >
         <div class="kiwi-startup-common-section kiwi-startup-common-section-connection">
-            <slot name="connection"/>
+            <slot name="connection" />
         </div>
         <div
             :style="backgroundStyle"
@@ -22,8 +23,6 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
-
 export default {
     data() {
         return {
@@ -33,7 +32,7 @@ export default {
     computed: {
         backgroundStyle() {
             let style = {};
-            let options = state.settings.startupOptions;
+            let options = this.$state.settings.startupOptions;
 
             if (options.infoBackground) {
                 style['background-image'] = `url(${options.infoBackground})`;
@@ -41,10 +40,10 @@ export default {
             return style;
         },
         backgroundImage() {
-            return state.settings.startupOptions.infoBackground || '';
+            return this.$state.settings.startupOptions.infoBackground || '';
         },
         infoContent() {
-            return state.settings.startupOptions.infoContent || '';
+            return this.$state.settings.startupOptions.infoContent || '';
         },
     },
     methods: {
@@ -52,7 +51,7 @@ export default {
             this.closing = true;
             let startApp = (event) => {
                 this.$el.removeEventListener('transitionend', startApp);
-                state.persistence.watchStateForChanges();
+                this.$state.persistence.watchStateForChanges();
                 // Hacky to be using $parent but this component should only be used in a sepcific
                 // scope within startup screens
                 this.$parent.$emit('start');
@@ -107,6 +106,7 @@ export default {
     color: var(--k-neutral1);
     font-size: 1.5em;
     padding: 2em;
+    border-radius: 5px;
     line-height: 1.6em;
 }
 

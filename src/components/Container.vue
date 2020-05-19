@@ -4,7 +4,8 @@
         'kiwi-container--sidebar-drawn': sidebarState.isDrawn,
         'kiwi-container--sidebar-open': sidebarState.isOpen,
         'kiwi-container--no-sidebar': buffer && !buffer.isChannel,
-    }" class="kiwi-container">
+    }" class="kiwi-container"
+    >
         <template v-if="buffer">
             <div class="kiwi-container-toggledraw-statebrowser" @click.stop="toggleStateBrowser">
                 <div
@@ -19,13 +20,13 @@
                         {{ unreadMessages.count > 999 ? '999+' : unreadMessages.count }}
                     </span>
                     <span class="kiwi-container-statebrowser-messagecount-close">
-                        <i class="fa fa-times" aria-hidden="true"/>
+                        <i class="fa fa-times" aria-hidden="true" />
                     </span>
                 </div>
             </div>
-            <container-header :buffer="buffer" :sidebar-state="sidebarState"/>
+            <container-header :buffer="buffer" :sidebar-state="sidebarState" />
 
-            <slot name="before"/>
+            <slot name="before" />
 
             <not-connected
                 v-if="buffer.getNetwork().state !== 'connected' && !buffer.isServer()"
@@ -35,10 +36,10 @@
 
             <div class="kiwi-container-content">
                 <template v-if="buffer.isServer()">
-                    <server-view :network="network"/>
+                    <server-view :network="network" />
                 </template>
                 <template v-else>
-                    <message-list :buffer="buffer"/>
+                    <message-list :buffer="buffer" />
                     <sidebar
                         v-if="buffer.isChannel() /* There are no sidebars for queries yet */"
                         :network="network"
@@ -47,7 +48,7 @@
                     />
                 </template>
 
-                <slot name="after"/>
+                <slot name="after" />
             </div>
         </template>
         <template v-else>
@@ -64,7 +65,6 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
 import ContainerHeader from './ContainerHeader';
 import Sidebar from './Sidebar';
 import NotConnected from './NotConnected';
@@ -102,7 +102,7 @@ export default {
         unreadMessages() {
             let count = 0;
             let highlight = false;
-            state.networks.forEach((network) => {
+            this.$state.networks.forEach((network) => {
                 network.buffers.forEach((buffer) => {
                     count += (buffer.flags.unread || 0);
                     if (buffer.flags.highlight) {
@@ -114,22 +114,22 @@ export default {
         },
     },
     created: function created() {
-        this.listen(state, 'sidebar.toggle', () => {
-            state.$emit('sidebar.' + (this.sidebarState.isDrawn ? 'hide' : 'show'));
+        this.listen(this.$state, 'sidebar.toggle', () => {
+            this.$state.$emit('sidebar.' + (this.sidebarState.isDrawn ? 'hide' : 'show'));
         });
-        this.listen(state, 'sidebar.show', () => {
+        this.listen(this.$state, 'sidebar.show', () => {
             this.sidebarState.showNicklist();
         });
-        this.listen(state, 'sidebar.hide', () => {
+        this.listen(this.$state, 'sidebar.hide', () => {
             this.sidebarState.close();
         });
-        this.listen(state, 'userbox.show', (user, opts) => {
+        this.listen(this.$state, 'userbox.show', (user, opts) => {
             this.sidebarState.showUser(user);
         });
-        this.listen(state, 'userbox.hide', () => {
+        this.listen(this.$state, 'userbox.hide', () => {
             this.sidebarState.close();
         });
-        this.listen(state, 'document.keydown', (ev) => {
+        this.listen(this.$state, 'document.keydown', (ev) => {
             // Return if not Page Up or Page Down keys
             if (ev.keyCode !== 33 && ev.keyCode !== 34) {
                 return;
@@ -166,11 +166,11 @@ export default {
     },
     methods: {
         toggleStateBrowser: function toggleStateBrowser() {
-            state.$emit('statebrowser.toggle');
+            this.$state.$emit('statebrowser.toggle');
         },
         toggleSidebar: function toggleSidebar() {
             if (this.buffer.isChannel()) {
-                state.$emit('sidebar.toggle');
+                this.$state.$emit('sidebar.toggle');
             }
         },
     },

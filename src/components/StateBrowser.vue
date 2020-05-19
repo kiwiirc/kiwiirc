@@ -7,7 +7,7 @@
             class="kiwi-statebrowser-appsettings"
             @click="clickAppSettings"
         >
-            <i class="fa fa-cog" aria-hidden="true"/>
+            <i class="fa fa-cog" aria-hidden="true" />
         </div>
 
         <state-browser-usermenu
@@ -17,9 +17,9 @@
 
         <div class="kiwi-statebrowser-tools">
             <div
-                v-rawElement="plugin.el"
                 v-for="plugin in pluginUiElements"
                 :key="plugin.id"
+                v-rawElement="plugin.el"
                 class="kiwi-statebrowser-tool"
             />
         </div>
@@ -74,7 +74,7 @@
         <div v-if="!isRestrictedServer" class="kiwi-statebrowser-newnetwork">
             <a class="u-button u-button-primary" @click="clickAddNetwork">
                 {{ $t('add_network') }}
-                <i class="fa fa-plus" aria-hidden="true"/>
+                <i class="fa fa-plus" aria-hidden="true" />
             </a>
         </div>
     </div>
@@ -83,7 +83,6 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
 import NetworkProvider from '@/libs/NetworkProvider';
 import GlobalApi from '@/libs/GlobalApi';
 import StateBrowserNetwork from './StateBrowserNetwork';
@@ -109,16 +108,16 @@ export default {
     },
     computed: {
         getNetwork() {
-            return state.getActiveNetwork();
+            return this.$state.getActiveNetwork();
         },
         isPersistingState: function isPersistingState() {
-            return !!state.persistence;
+            return !!this.$state.persistence;
         },
         isRestrictedServer: function isRestrictedServer() {
-            return !!state.settings.restricted;
+            return !!this.$state.settings.restricted;
         },
         networksToShow: function networksToShow() {
-            return this.networks.filter(net => !net.hidden);
+            return this.networks.filter((net) => !net.hidden);
         },
     },
     created: function created() {
@@ -129,20 +128,20 @@ export default {
     methods: {
         clickAddNetwork: function clickAddNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
-            let network = state.getNetworkFromAddress('');
+            let network = this.$state.getNetworkFromAddress('');
             if (typeof network === 'undefined') {
-                network = state.addNetwork('Network', nick, {});
+                network = this.$state.addNetwork('Network', nick, {});
             }
             network.showServerBuffer('settings');
         },
         clickAppSettings: function clickAppSettings() {
-            state.$emit('active.component.toggle', AppSettings);
+            this.$state.$emit('active.component.toggle', AppSettings);
         },
         hideStatebrowser: function hideStatebrowser() {
-            state.$emit('statebrowser.hide');
+            this.$state.$emit('statebrowser.hide');
         },
         connectProvidedNetwork: function connectProvidedNetwork(pNet) {
-            let net = state.addNetwork(pNet.name, pNet.nick, {
+            let net = this.$state.addNetwork(pNet.name, pNet.nick, {
                 server: pNet.server,
                 port: pNet.port,
                 tls: pNet.tls,
@@ -251,17 +250,15 @@ export default {
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header {
-    float: left;
-    width: 100%;
     line-height: 45px;
     text-align: left;
     position: relative;
+    display: flex;
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header a {
     text-align: left;
     padding: 0 0 0 10px;
-    width: 100%;
     font-size: 1em;
     font-weight: 600;
 }
@@ -296,7 +293,6 @@ export default {
     width: 100%;
     border-top: none;
     box-sizing: border-box;
-    margin: 1em 0;
 }
 
 .kiwi-statebrowser-newchannel a {
@@ -435,16 +431,6 @@ export default {
 
 .kiwi-statebrowser-availablenetworks-link--connected {
     border-color: green;
-}
-
-.kiwi-statebrowser-channel-label-transition-enter-active,
-.kiwi-statebrowser-channel-label-transition-leave-active {
-    transition: opacity 0.1s;
-}
-
-.kiwi-statebrowser-channel-label-transition-enter,
-.kiwi-statebrowser-channel-label-transition-leave-active {
-    opacity: 0;
 }
 
 .kiwi-statebrowser-newchannel-inputwrap--focus {

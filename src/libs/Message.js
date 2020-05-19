@@ -4,33 +4,41 @@ import Vue from 'vue';
 import parseMessage from '@/libs/MessageParser';
 import toHtml from '@/libs/renderers/Html';
 import GlobalApi from '@/libs/GlobalApi';
-import state from './state';
+import getState from './state';
 
 let nextId = 0;
 
+function def(target, key, value) {
+    Object.defineProperty(target, key, {
+        writable: true,
+        value,
+    });
+}
+
 export default class Message {
     constructor(message, user) {
-        this.id = extractMessageId(message) || nextId++;
+        def(this, 'id', extractMessageId(message) || nextId++);
         // Two different times;
         //   time = time in the users local time
         //   server_time = time the server gave us
-        this.time = message.time || Date.now();
-        this.server_time = message.server_time || this.time;
-        this.nick = message.nick;
-        this.message = message.message;
-        this.tags = message.tags;
-        this.type = message.type || 'message';
-        this.type_extra = message.type_extra;
-        this.ignore = false;
-        this.mentioned_urls = [];
+        def(this, 'time', message.time || Date.now());
+        def(this, 'server_time', message.server_time || this.time);
+        def(this, 'nick', message.nick);
+        def(this, 'message', message.message);
+        def(this, 'tags', message.tags);
+        def(this, 'type', message.type || 'message');
+        def(this, 'type_extra', message.type_extra);
+        def(this, 'ignore', false);
+        def(this, 'mentioned_urls', []);
         // If embed.payload is truthy, it will be embedded within the message
         this.embed = { type: 'url', payload: null };
         this.html = '';
+        def(this, 'hasRendered', false);
         // template should be null or a Vue component to render this message
-        this.template = message.template || null;
+        def(this, 'template', message.template || null);
         // bodyTemplate should be null or a Vue component to render in the body of the message
-        this.bodyTemplate = message.bodyTemplate || null;
-        this.isHighlight = false;
+        def(this, 'bodyTemplate', message.bodyTemplate || null);
+        def(this, 'isHighlight', false);
 
         // We don't want the user object to be enumerable
         Object.defineProperty(this, 'user', { value: user });
@@ -45,10 +53,13 @@ export default class Message {
     }
 
     toHtml(messageList) {
-        if (this.html) {
+        if (this.hasRendered) {
             return this.html;
         }
 
+        this.hasRendered = true;
+
+        let state = getState();
         let showEmoticons = state.setting('buffers.show_emoticons') && !messageList.buffer.isSpecial();
         let userList = messageList.buffer.users;
         let useExtraFormatting =
@@ -60,7 +71,7 @@ export default class Message {
 
         let content = toHtml(blocks, showEmoticons);
 
-        this.mentioned_urls = blocks.filter(block => block.type === 'url').map(block => block.meta.url);
+        this.mentioned_urls = blocks.filter((block) => block.type === 'url').map((block) => block.meta.url);
         this.html = content;
         this.maybeAutoEmbed();
 
@@ -81,7 +92,7 @@ export default class Message {
 
         let url = this.mentioned_urls[0];
 
-        let whitelistRegex = state.setting('buffers.inline_link_auto_preview_whitelist');
+        let whitelistRegex = getState().setting('buffers.inline_link_auto_preview_whitelist');
         whitelistRegex = (whitelistRegex || '').trim();
         try {
             if (!whitelistRegex || !(new RegExp(whitelistRegex, 'i')).test(url)) {

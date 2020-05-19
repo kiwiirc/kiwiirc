@@ -31,7 +31,7 @@ export default {
         },
         typingUsers() {
             let myNick = this.$state.getActiveNetwork().nick;
-            return Object.values(this.users).filter(u => u.nick !== myNick
+            return Object.values(this.users).filter((u) => u.nick !== myNick
                 && u.typingStatus(this.buffer.name).status);
         },
     },

@@ -1,20 +1,21 @@
 <template>
     <startup-layout ref="layout"
-                    :class="{ 'kiwi-welcome-simple--recaptcha': recaptchaSiteId }"
                     class="kiwi-welcome-simple"
     >
-        <template v-slot:connection v-if="startupOptions.altComponent">
+        <template v-if="startupOptions.altComponent" v-slot:connection>
             <component :is="startupOptions.altComponent" @close="onAltClose" />
         </template>
-        <template v-slot:connection v-else-if="!network || network.state === 'disconnected'">
+        <template v-else v-slot:connection>
             <form class="u-form u-form--big kiwi-welcome-simple-form" @submit.prevent="formSubmit">
-                <h2 v-html="greetingText"/>
+                <h2 v-html="greetingText" />
                 <div v-if="errorMessage" class="kiwi-welcome-simple-error">{{ errorMessage }}</div>
                 <div
                     v-else-if="network && (network.last_error || network.state_error)"
                     class="kiwi-welcome-simple-error"
                 >
-                    We couldn't connect to the server :(
+                    <span v-if="!network.last_error && network.state_error">
+                        {{ $t('network_noconnect') }}
+                    </span>
                     <span>
                         {{ network.last_error || readableStateError(network.state_error) }}
                     </span>
@@ -26,7 +27,7 @@
                     <label
                         class="kiwi-welcome-simple-have-password"
                     >
-                        <input v-model="show_password_box" type="checkbox" >
+                        <input v-model="show_password_box" type="checkbox">
                         <span> {{ $t('password_have') }} </span>
                     </label>
                 </div>
@@ -35,8 +36,8 @@
                      class="kiwi-welcome-simple-input-container"
                 >
                     <input-text
-                        v-focus
                         v-model="password"
+                        v-focus
                         :show-plain-text="true"
                         :label="$t('password')"
                         type="password"
@@ -50,24 +51,27 @@
                     />
                 </div>
 
-                <div
-                    v-if="recaptchaSiteId"
-                    :data-sitekey="recaptchaSiteId"
-                    class="g-recaptcha"
+                <captcha
+                    :network="network"
                 />
 
                 <button
+                    v-if="!network || network.state === 'disconnected'"
                     :disabled="!readyToStart"
                     class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
                     type="submit"
                     v-html="buttonText"
                 />
+                <button
+                    v-else
+                    class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
+                    disabled
+                >
+                    <i class="fa fa-spin fa-spinner" aria-hidden="true" />
+                </button>
 
-                <div v-html="footerText"/>
+                <div v-html="footerText" />
             </form>
-        </template>
-        <template v-slot:connection v-else>
-            <i class="fa fa-spin fa-spinner" aria-hidden="true"/>
         </template>
     </startup-layout>
 </template>
@@ -77,15 +81,16 @@
 
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
-import state from '@/libs/state';
 import Logger from '@/libs/Logger';
 import BouncerProvider from '@/libs/BouncerProvider';
+import Captcha from '@/components/Captcha';
 import StartupLayout from './CommonLayout';
 
 let log = Logger.namespace('Welcome.vue');
 
 export default {
     components: {
+        Captcha,
         StartupLayout,
     },
     data: function data() {
@@ -100,10 +105,9 @@ export default {
             toggablePass: true,
             showNick: true,
             show_password_box: false,
-            recaptchaSiteId: '',
-            recaptchaResponseCache: '',
             connectWithoutChannel: false,
             showPlainText: false,
+            captchaReady: false,
         };
     },
     computed: {
@@ -111,19 +115,19 @@ export default {
             return this.$state.settings.startupOptions;
         },
         greetingText: function greetingText() {
-            let greeting = state.settings.startupOptions.greetingText;
+            let greeting = this.$state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
                 this.$t('start_greeting');
         },
         footerText: function footerText() {
-            let footer = state.settings.startupOptions.footerText;
+            let footer = this.$state.settings.startupOptions.footerText;
             return typeof footer === 'string' ?
                 footer :
                 '';
         },
         buttonText: function buttonText() {
-            let greeting = state.settings.startupOptions.buttonText;
+            let greeting = this.$state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
                 this.$t('start_button');
@@ -184,7 +188,7 @@ export default {
         // Take some settings from a previous network if available
         let previousNet = null;
         if (options.server.trim()) {
-            previousNet = state.getNetworkFromAddress(options.server.trim());
+            previousNet = this.$state.getNetworkFromAddress(options.server.trim());
         }
 
         if (Misc.queryStringVal('nick')) {
@@ -226,15 +230,6 @@ export default {
         if (options.autoConnect && this.nick && (this.channel || this.connectWithoutChannel)) {
             this.startUp();
         }
-
-        this.recaptchaSiteId = options.recaptchaSiteId || '';
-    },
-    mounted() {
-        if (this.recaptchaSiteId) {
-            let scr = document.createElement('script');
-            scr.src = 'https://www.google.com/recaptcha/api.js';
-            this.$el.appendChild(scr);
-        }
     },
     methods: {
         onAltClose(event) {
@@ -253,27 +248,6 @@ export default {
 
             this.$state.settings.startupOptions.altComponent = null;
         },
-        captchaSuccess() {
-            if (!this.recaptchaSiteId) {
-                return true;
-            }
-
-            return !!this.captchaResponse();
-        },
-        captchaResponse() {
-            // Cache the response code since the recaptcha UI may not be here if we come back to
-            // this screen after an IRC connection fail
-            if (this.recaptchaResponseCache) {
-                return this.recaptchaResponseCache;
-            }
-
-            let gEl = this.$el.querySelector('#g-recaptcha-response');
-            this.recaptchaResponseCache = gEl ?
-                gEl.value :
-                '';
-
-            return this.recaptchaResponseCache;
-        },
         readableStateError(err) {
             return Misc.networkErrorMessage(err);
         },
@@ -285,7 +259,7 @@ export default {
         startUp: function startUp() {
             this.errorMessage = '';
 
-            let options = Object.assign({}, state.settings.startupOptions);
+            let options = Object.assign({}, this.$state.settings.startupOptions);
 
             // If a server isn't specified in the config, set some defaults
             // The webircgateway will have a default network set and will connect
@@ -294,22 +268,15 @@ export default {
             options.server = options.server || 'default';
             options.port = options.port || 6667;
 
-            if (!this.captchaSuccess()) {
-                return;
-            }
-
             let netAddress = _.trim(options.server);
 
             // Check if we have this network already
-            let net = this.network || state.getNetworkFromAddress(netAddress);
+            let net = this.network || this.$state.getNetworkFromAddress(netAddress);
 
             let password = this.password;
-            if (options.bouncer) {
-                password = `${this.nick}:${this.password}`;
-            }
 
             // If the network doesn't already exist, add a new one
-            net = net || state.addNetwork('Network', this.nick, {
+            net = net || this.$state.addNetwork('Network', this.nick, {
                 server: netAddress,
                 port: options.port,
                 tls: options.tls,
@@ -320,29 +287,38 @@ export default {
                 gecos: options.gecos,
             });
 
+            // Clear the server buffer in case it already existed and contains messages relating to
+            // the previous connection, such as errors. They are now redundant since this is a
+            // new connection.
+            net.serverBuffer().clearMessages();
+
             // If we retreived an existing network, update the nick+password with what
             // the user has just put in place
             net.connection.nick = this.nick;
-            net.password = password;
+            if (options.bouncer) {
+                // Bouncer mode uses server PASS
+                net.connection.password = `${this.nick}:${password}`;
+                net.password = '';
+            } else {
+                net.connection.password = '';
+                net.password = password;
+            }
 
             if (_.trim(options.encoding || '')) {
                 net.connection.encoding = _.trim(options.encoding);
             }
 
-            if (!this.network && options.recaptchaSiteId) {
-                net.captchaResponse = this.captchaResponse();
-            }
             this.network = net;
 
             // Only switch to the first channel we join if multiple are being joined
             let hasSwitchedActiveBuffer = false;
             let bufferObjs = Misc.extractBuffers(this.channel);
             bufferObjs.forEach((bufferObj) => {
-                let newBuffer = state.addBuffer(net.id, bufferObj.name);
+                let newBuffer = this.$state.addBuffer(net.id, bufferObj.name);
                 newBuffer.enabled = true;
 
                 if (newBuffer && !hasSwitchedActiveBuffer) {
-                    state.setActiveBuffer(net.id, newBuffer.name);
+                    this.$state.setActiveBuffer(net.id, newBuffer.name);
                     hasSwitchedActiveBuffer = true;
                 }
 
@@ -353,7 +329,7 @@ export default {
 
             // switch to server buffer if no channels are joined
             if (!options.bouncer && !hasSwitchedActiveBuffer) {
-                state.setActiveBuffer(net.id, net.serverBuffer().name);
+                this.$state.setActiveBuffer(net.id, net.serverBuffer().name);
             }
 
             net.ircClient.connect();
@@ -376,6 +352,9 @@ export default {
             let tmp = (nick || '').replace(/\?/g, () => Math.floor(Math.random() * 100).toString());
             return _.trim(tmp);
         },
+        handleCaptcha(isReady) {
+            this.captchaReady = isReady;
+        },
     },
 };
 </script>
@@ -385,12 +364,26 @@ export default {
 /* Containers */
 form.kiwi-welcome-simple-form {
     width: 70%;
-    padding: 0 20px;
+    padding: 20px;
 }
 
 @media (max-width: 1025px) {
     form.kiwi-welcome-simple-form {
         width: 100%;
+    }
+}
+
+@media (max-width: 850px) {
+    form.kiwi-welcome-simple-form {
+        background: var(--brand-default-bg);
+        border-radius: 5px;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media (max-width: 600px) {
+    form.kiwi-welcome-simple-form {
+        max-width: 350px;
     }
 }
 
@@ -407,7 +400,7 @@ form.kiwi-welcome-simple-form h2 {
 .kiwi-welcome-simple-error {
     text-align: center;
     margin: 1em 0;
-    padding: 0.3em;
+    padding: 1em;
 }
 
 .kiwi-welcome-simple-error span {
@@ -440,11 +433,6 @@ form.kiwi-welcome-simple-form h2 {
 .kiwi-welcome-simple-start[disabled] {
     cursor: not-allowed;
     opacity: 0.65;
-}
-
-/* Make the preloader icon larger */
-.kiwi-welcome-simple .fa-spinner {
-    font-size: 6em;
 }
 
 </style>

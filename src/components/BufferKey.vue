@@ -2,10 +2,10 @@
     <div class="kiwi-bufferkey kiwi-warning-block">
         <form @submit.prevent="joinChannel">
             <label>{{ $t('bufferkey_input') }}</label>
-            <input v-focus v-model="buffer.key" type="password">
+            <input v-model="buffer.key" v-focus type="password">
             <div class="kiwi-bufferkey-buttons">
                 <span class="kiwi-bufferkey-button" @click="joinChannel">
-                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"/>
+                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true" />
                     {{ $t('bufferkey_rejoin', {channel: buffer.name}) }}
                 </span>
             </div>

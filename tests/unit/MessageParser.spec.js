@@ -1,7 +1,7 @@
 import parseMessage from '@/libs/MessageParser';
 
-describe('MessageParser.js', function() {
-    it('should return valid channel blocks', function() {
+describe('MessageParser.js', () => {
+    it('should return valid channel blocks', () => {
         let tests = [
             ['#channel', '#channel'],
             ['#channel;', '#channel'],
@@ -17,14 +17,14 @@ describe('MessageParser.js', function() {
 
         tests.forEach((c) => {
             let blocks = parseMessage(c[0]);
-            let channelBlocks = blocks.filter(b => b.type === 'channel');
+            let channelBlocks = blocks.filter((b) => b.type === 'channel');
 
-            expect(channelBlocks.length).to.equal(1);
-            expect(channelBlocks[0].meta.channel).to.equal(c[1]);
+            expect(channelBlocks.length).toEqual(1);
+            expect(channelBlocks[0].meta.channel).toEqual(c[1]);
         });
     });
 
-    it('should return valid url blocks', function() {
+    it('should return valid url blocks', () => {
         let tests = [
             ['www.example.com', 'http://www.example.com'],
             ['http://example.com'],
@@ -44,30 +44,30 @@ describe('MessageParser.js', function() {
 
         tests.forEach((c) => {
             let blocks = parseMessage(c[0]);
-            let urlBlocks = blocks.filter(b => b.type === 'url');
+            let urlBlocks = blocks.filter((b) => b.type === 'url');
             let compare = c.length >= 2 ? c[1] : c[0];
 
-            expect(urlBlocks.length).to.equal(1);
-            expect(urlBlocks[0].meta.url).to.equal(compare);
+            expect(urlBlocks.length).toEqual(1);
+            expect(urlBlocks[0].meta.url).toEqual(compare);
             // check prefix and suffix
             if (c.length === 4) {
-                expect(blocks[0].content).to.equal(c[2]);
-                expect(blocks[2].content).to.equal(c[3]);
+                expect(blocks[0].content).toEqual(c[2]);
+                expect(blocks[2].content).toEqual(c[3]);
             }
         });
     });
 
-    it('should reject invalid urls', function() {
+    it('should reject invalid urls', () => {
         let tests = ['test', 'example.com', 'test:8080', '127.0.0.1/test.html'];
 
         tests.forEach((c) => {
             let blocks = parseMessage(c[0]);
-            let urlBlocks = blocks.filter(b => b.type === 'url');
-            expect(urlBlocks.length).to.equal(0);
+            let urlBlocks = blocks.filter((b) => b.type === 'url');
+            expect(urlBlocks.length).toEqual(0);
         });
     });
 
-    it('should return valid user blocks', function() {
+    it('should return valid user blocks', () => {
         // mock users list
         let users = {
             testnick1: { nick: 'TestNick1', username: 'testnick1', colour: '#a1fc5d' },
@@ -86,16 +86,16 @@ describe('MessageParser.js', function() {
 
         tests.forEach((c) => {
             let blocks = parseMessage(c[0], {}, users);
-            let userBlocks = blocks.filter(b => b.type === 'user');
+            let userBlocks = blocks.filter((b) => b.type === 'user');
             let compare = c.length === 2 ? c[1] : c[0];
 
-            expect(userBlocks.length).to.equal(1);
-            expect(userBlocks[0].meta.user).to.equal(compare);
-            expect(userBlocks[0].meta.colour).to.equal(users[compare.toLowerCase()].colour);
+            expect(userBlocks.length).toEqual(1);
+            expect(userBlocks[0].meta.user).toEqual(compare);
+            expect(userBlocks[0].meta.colour).toEqual(users[compare.toLowerCase()].colour);
         });
     });
 
-    it('should reject invalid users', function() {
+    it('should reject invalid users', () => {
         // mock users list
         let users = {
             testnick1: { nick: 'TestNick1', username: 'testnick1' },
@@ -105,9 +105,9 @@ describe('MessageParser.js', function() {
 
         tests.forEach((c) => {
             let blocks = parseMessage(c[0], {}, users);
-            let userBlocks = blocks.filter(b => b.type === 'user');
+            let userBlocks = blocks.filter((b) => b.type === 'user');
 
-            expect(userBlocks.length).to.equal(0);
+            expect(userBlocks.length).toEqual(0);
         });
     });
 });

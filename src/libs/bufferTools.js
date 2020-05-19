@@ -1,14 +1,14 @@
 'kiwi public';
 
 import _ from 'lodash';
-import state from '@/libs/state';
+import getState from '@/libs/state';
 
 export function orderBuffers(buffers) {
     // Since vuejs will sort in-place and update views when .sort is called
     // on an array, clone it first so that we have a plain array to sort
-    let list = buffers.map(b => b);
+    let list = buffers.map((b) => b);
 
-    list = _.filter(list, buffer => !buffer.isServer());
+    list = _.filter(list, (buffer) => !buffer.isServer());
     list = list.sort((a, b) => {
         let order = 0;
         if (a.isChannel() && b.isQuery()) {
@@ -34,6 +34,7 @@ export function getPreviousBuffer() {
 }
 
 function getBufferFromDirection(direction) {
+    let state = getState();
     let network = state.getActiveNetwork();
     let buffer = state.getActiveBuffer();
 
@@ -55,6 +56,7 @@ function getBufferFromDirection(direction) {
 }
 
 function getNetworkFromDirection(direction) {
+    let state = getState();
     let network = state.getActiveNetwork();
     for (let i = 0; i < state.networks.length; i++) {
         let index = _.findIndex(state.networks, ['id', network.id]) + direction;

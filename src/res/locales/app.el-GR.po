@@ -1,16 +1,17 @@
 msgid ""
 msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Language: el\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "Project-Id-Version: kiwiirc\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Darren Whitlen (kiwiirc)\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2019-09-17 20:52\n"
+"PO-Revision-Date: 2020-04-14 04:08\n"
 
 #: Start
 msgid "start_button"
@@ -71,6 +72,10 @@ msgstr "Όνομα χρήστη"
 #: Password
 msgid "password"
 msgstr "Συνθηματικό Κλειδί:"
+
+#: Server Password
+msgid "server_password"
+msgstr "Κωδικός Διακομιστή"
 
 #: I have a password
 msgid "password_have"
@@ -342,7 +347,7 @@ msgstr "Σίγαση των ήχων"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Απόκρυψη αριθμού των μη διαβασμένων μηνυμάτων"
+msgstr "Απόκρυψη αριθμού μη αναγνωσμένων μηνυμάτων"
 
 #: Operator tools
 msgid "operator_tools"
@@ -476,7 +481,7 @@ msgstr "Κάντε κλικ στο κουμπί ανανέωσης για να �
 msgid "channel_list_nonefound"
 msgstr "Δεν βρέθηκαν κανάλια, δοκιμάστε ξανά αργότερα"
 
-#: Welcome to Kiwi IRC!
+#: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
 msgstr "Καλώς ήλθατε στο Kiwi IRC!"
 
@@ -751,6 +756,10 @@ msgstr "Αλλαγή ψευδώνυμου"
 #: Enter new nickname...
 msgid "enter_new_nick"
 msgstr "Εισάγεται νέο ψευδώνυμο..."
+
+#: This is you!
+msgid "user_you"
+msgstr "Αυτός είσαι εσύ!"
 
 #: Account name: {{user}}
 msgid "user_account"
