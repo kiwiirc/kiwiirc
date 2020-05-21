@@ -88,6 +88,7 @@ export const configTemplates = {
             nick: 'kiwi_?',
             direct: false,
             state_key: 'kiwi-state',
+            remember_buffers: true,
             nick_format: '',
         },
         autoReconnect: false,
@@ -337,6 +338,7 @@ export const configTemplates = {
             show_emoticons: false,
             show_message_info: false,
             share_typing: false,
+            inline_link_previews: false,
         },
     },
 
