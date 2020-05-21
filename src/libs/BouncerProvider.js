@@ -50,9 +50,7 @@ export default class BouncerProvider {
         const bncNetwork = this.state.networks.find((network) => network.is_bnc);
 
         if (bncNetwork?.connection?.password) {
-            let [username, password] = bncNetwork.connection.password.split(':');
-            username = username.split('/')[0];
-
+            let [username, password] = this.parseBncCredentials(bncNetwork.connection.password);
             this.bnc.username = username;
             this.bnc.password = password;
         }
@@ -98,8 +96,7 @@ export default class BouncerProvider {
 
         // Use this initial network password for other network connections
         if (!this.bnc.username) {
-            let [username, password] = network.connection.password.split(':');
-            username = username.split('/')[0];
+            let [username, password] = this.parseBncCredentials(network.connection.password);
             this.bnc.username = username;
             this.bnc.password = password;
         }
@@ -137,8 +134,10 @@ export default class BouncerProvider {
         // hide the empty (non-network) controller network
         if (!network.ircClient.bnc.hasNetwork()) {
             network.hidden = true;
+            network.is_bnc = true;
         } else {
             network.hidden = false;
+            network.is_bnc = false;
         }
 
         // populate network list from the controller connection
@@ -437,5 +436,12 @@ export default class BouncerProvider {
                 controller.ircClient.bnc.closeBuffer(bncnetid, buffer.name);
             }
         });
+    }
+
+    parseBncCredentials(bncNetworkPassword) {
+        let [username, password] = bncNetworkPassword.split(':');
+        username = username.split('/')[0];
+
+        return [username, password];
     }
 }
