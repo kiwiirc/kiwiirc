@@ -17,6 +17,7 @@ export default class NetworkState {
         this.last_error = '';
         this.auto_commands = '';
         this.is_znc = false;
+        this.is_bnc = false;
         this.hidden = false;
         this.channel_list = [];
         this.channel_list_state = '';
