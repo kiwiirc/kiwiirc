@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-05-10 18:31\n"
+"PO-Revision-Date: 2020-05-21 00:11\n"
 
 #: Start
 msgid "start_button"
@@ -47,7 +47,7 @@ msgstr "Kiwi Ayarları"
 
 #: Channels
 msgid "channels"
-msgstr "Odalar"
+msgstr "Kanallar"
 
 #: Access
 msgid "access"
@@ -59,7 +59,7 @@ msgstr "Yasaklı Kullanıcılar"
 
 #: Invited Users
 msgid "invited"
-msgstr "Davet Edilenler"
+msgstr "Davet Edilen Kullanıcılar"
 
 #: Notifications
 msgid "notifications"
@@ -87,11 +87,11 @@ msgstr "Sunucu"
 
 #: Nick
 msgid "nick"
-msgstr "Rumuz"
+msgstr "Takma ad"
 
 #: Channel
 msgid "channel"
-msgstr "Oda"
+msgstr "Kanal"
 
 #: Messages
 msgid "messages"
@@ -175,7 +175,7 @@ msgstr "Kanal"
 
 #: Away
 msgid "away"
-msgstr "Meşgul"
+msgstr "Uzakta"
 
 #: {{count}} week
 msgid "week"
@@ -293,6 +293,10 @@ msgstr "Mesajlardaki renkli takma adlar"
 msgid "settings_share_typing"
 msgstr "Mesaj yazarken başkaları ile paylaş"
 
+#: Show inline image previews
+msgid "settings_show_inline_previews"
+msgstr "Show inline image previews"
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Giriş/çıkış mesajlarını etkinlik olarak dahil et"
@@ -307,11 +311,11 @@ msgstr "Kelimeleri vurgula (boşlukla ayır)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Takma adlar"
+msgstr "Kısa komutlar"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Takma adlar nelerdir?"
+msgstr "Kısa komutlar nelerdir?"
 
 #: Send Message
 msgid "send_message"
@@ -863,11 +867,11 @@ msgstr "{{nick}}, {{target}} kullanıcısından admin aldı"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}}, {{target}} kullanıcısına owner verdi"
+msgstr "{{nick}}, {{target}} kullanıcısına oda sahipliği verdi"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}}, {{target}} kullanıcısından owner aldı"
+msgstr "{{nick}}, {{target}} kullanıcısından oda sahipliğini aldı"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -895,7 +899,7 @@ msgstr "Bir kanala gir"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Bir kanaldan ayrıl"
+msgstr "kanaldan ayrıl"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
