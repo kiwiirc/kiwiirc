@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2020-04-13 18:30\n"
+"PO-Revision-Date: 2020-05-21 07:50\n"
 
 #: Start
 msgid "start_button"
@@ -292,6 +292,10 @@ msgstr "Colorear alcumes nas mensaxes"
 #: Share when I'm typing a message
 msgid "settings_share_typing"
 msgstr "Comparte cando estou a escribir unha mensaxe"
+
+#: Show inline image previews
+msgid "settings_show_inline_previews"
+msgstr "Mostra as  previsualizacións de imaxes"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"

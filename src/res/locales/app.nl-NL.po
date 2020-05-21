@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2020-04-14 15:34\n"
+"PO-Revision-Date: 2020-05-21 07:39\n"
 
 #: Start
 msgid "start_button"
@@ -292,6 +292,10 @@ msgstr "Gekleurde bijnamen in berichten"
 #: Share when I'm typing a message
 msgid "settings_share_typing"
 msgstr "Delen wanneer ik een bericht typ"
+
+#: Show inline image previews
+msgid "settings_show_inline_previews"
+msgstr "Voorbeelden van inline-afbeelding tonen"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
