@@ -77,7 +77,7 @@ export const configTemplates = {
             nicklist_avatars: false,
             show_link_previews: true,
             inline_link_previews: true,
-            inline_link_auto_preview_whitelist: '',
+            inline_link_auto_preview_whitelist: '.*',
         },
         // Startup screen default
         startupOptions: {

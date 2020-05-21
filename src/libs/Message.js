@@ -84,6 +84,11 @@ export default class Message {
             return;
         }
 
+        let showLinkPreviews = getState().setting('buffers.inline_link_previews');
+        if (!showLinkPreviews) {
+            return;
+        }
+
         // Only auto preview links on user messages. Traffic, topics, notices, etc would get
         // annoying as they usually contain links of some sort
         if (this.type !== 'privmsg') {
