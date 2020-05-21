@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2020-05-21 13:42\n"
+"PO-Revision-Date: 2020-05-21 13:52\n"
 
 #: Start
 msgid "start_button"
@@ -595,7 +595,7 @@ msgstr "{{count}} usuários aqui"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filtrar utilizadores no canal"
+msgstr "Filtrar usuários no canal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -763,7 +763,7 @@ msgstr "Introduza o novo nick..."
 
 #: This is you!
 msgid "user_you"
-msgstr "Este/a é você!"
+msgstr "Este é você!"
 
 #: Account name: {{user}}
 msgid "user_account"
