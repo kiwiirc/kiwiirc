@@ -47,8 +47,12 @@ export default class BouncerProvider {
         this.bnc.path = path || '';
         this.bnc.enabled = true;
 
+        // get the bnc controller network
         const bncNetwork = this.state.networks.find((network) => network.is_bnc);
 
+        // the bnc controller network password is saved in the format <username>:<password>.
+        // if there is a bnc controller network with a password, use these credentials
+        // for the bnc connection.
         if (bncNetwork?.connection?.password) {
             let [username, password] = this.parseBncCredentials(bncNetwork.connection.password);
             this.bnc.username = username;
