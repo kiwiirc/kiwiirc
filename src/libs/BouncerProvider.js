@@ -47,6 +47,16 @@ export default class BouncerProvider {
         this.bnc.path = path || '';
         this.bnc.enabled = true;
 
+        const bncNetwork = this.state.networks.find((network) => network.is_bnc);
+
+        if (bncNetwork?.connection?.password) {
+            let [username, password] = bncNetwork.connection.password.split(':');
+            username = username.split('/')[0];
+
+            this.bnc.username = username;
+            this.bnc.password = password;
+        }
+
         // this.monitorNetworkChanges();
         this.listenToState();
     }
