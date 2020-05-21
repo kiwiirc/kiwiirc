@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-05-21 00:11\n"
+"PO-Revision-Date: 2020-05-21 16:41\n"
 
 #: Start
 msgid "start_button"
@@ -295,7 +295,7 @@ msgstr "Mesaj yazarken başkaları ile paylaş"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "Satır içi resim önizlemelerini göster"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
