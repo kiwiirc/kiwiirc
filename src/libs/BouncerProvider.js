@@ -47,6 +47,18 @@ export default class BouncerProvider {
         this.bnc.path = path || '';
         this.bnc.enabled = true;
 
+        // get the bnc controller network
+        const bncNetwork = this.state.networks.find((network) => network.is_bnc);
+
+        // the bnc controller network password is saved in the format <username>:<password>.
+        // if there is a bnc controller network with a password, use these credentials
+        // for the bnc connection.
+        if (bncNetwork?.connection?.password) {
+            let [username, password] = this.parseBncCredentials(bncNetwork.connection.password);
+            this.bnc.username = username;
+            this.bnc.password = password;
+        }
+
         // this.monitorNetworkChanges();
         this.listenToState();
     }
@@ -88,8 +100,7 @@ export default class BouncerProvider {
 
         // Use this initial network password for other network connections
         if (!this.bnc.username) {
-            let [username, password] = network.connection.password.split(':');
-            username = username.split('/')[0];
+            let [username, password] = this.parseBncCredentials(network.connection.password);
             this.bnc.username = username;
             this.bnc.password = password;
         }
@@ -127,8 +138,10 @@ export default class BouncerProvider {
         // hide the empty (non-network) controller network
         if (!network.ircClient.bnc.hasNetwork()) {
             network.hidden = true;
+            network.is_bnc = true;
         } else {
             network.hidden = false;
+            network.is_bnc = false;
         }
 
         // populate network list from the controller connection
@@ -427,5 +440,12 @@ export default class BouncerProvider {
                 controller.ircClient.bnc.closeBuffer(bncnetid, buffer.name);
             }
         });
+    }
+
+    parseBncCredentials(bncNetworkPassword) {
+        let [username, password] = bncNetworkPassword.split(':');
+        username = username.split('/')[0];
+
+        return [username, password];
     }
 }

@@ -110,6 +110,8 @@ function createNewState() {
                             username: network.username,
                             gecos: network.gecos,
                             password: network.password,
+                            hidden: network.hidden,
+                            is_bnc: network.is_bnc,
                             buffers: [],
                         };
 
@@ -158,6 +160,8 @@ function createNewState() {
                         network.username = importNetwork.username;
                         network.gecos = importNetwork.gecos;
                         network.password = importNetwork.password;
+                        network.hidden = importNetwork.hidden;
+                        network.is_bnc = importNetwork.is_bnc;
 
                         this.networks.push(network);
 
