@@ -76,7 +76,7 @@ export const configTemplates = {
             flash_title: 'message',
             nicklist_avatars: false,
             show_link_previews: true,
-            inline_link_previews: true,
+            inline_link_auto_previews: true,
             inline_link_auto_preview_whitelist: '.*',
         },
         // Startup screen default
@@ -338,7 +338,7 @@ export const configTemplates = {
             show_emoticons: false,
             show_message_info: false,
             share_typing: false,
-            inline_link_previews: false,
+            inline_link_auto_previews: false,
         },
     },
 

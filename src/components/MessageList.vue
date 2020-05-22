@@ -407,7 +407,7 @@ export default {
 
             let url = event.target.getAttribute('data-url');
             if (url && isLink) {
-                if (this.$state.setting('buffers.inline_link_previews')) {
+                if (this.$state.setting('buffers.inline_link_auto_previews')) {
                     message.embed.type = 'url';
                     message.embed.payload = url;
                 } else {

@@ -284,7 +284,7 @@ export default {
         settingBufferTrafficAsActivity: bindSetting('buffers.traffic_as_activity'),
         settingBufferMuteSound: bindSetting('buffers.mute_sound'),
         settingBufferShareTyping: bindSetting('buffers.share_typing'),
-        settingBufferInlineLinkPreviews: bindSetting('buffers.inline_link_previews'),
+        settingBufferInlineLinkPreviews: bindSetting('buffers.inline_link_auto_previews'),
         settingDefaultBanMask: bindSetting('buffers.default_ban_mask'),
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
         settingAdvancedEnable: {

@@ -84,7 +84,7 @@ export default class Message {
             return;
         }
 
-        let showLinkPreviews = getState().setting('buffers.inline_link_previews');
+        let showLinkPreviews = getState().setting('buffers.inline_link_auto_previews');
         if (!showLinkPreviews) {
             return;
         }
