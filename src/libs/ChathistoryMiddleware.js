@@ -9,7 +9,7 @@ import * as Misc from '@/helpers/Misc';
  */
 export default function chathistoryMiddleware() {
     return function middleware(client, rawEvents, parsedEvents) {
-        client.requestCap('CHATHISTORY');
+        client.requestCap('draft/chathistory');
         addFunctionsToClient(client);
         parsedEvents.use(theMiddleware);
     };
@@ -50,7 +50,7 @@ function addFunctionsToClient(client) {
         },
     };
 
-    history.isSupported = () => !!client.network.supports('chathistory');
+    history.isSupported = () => !!client.network.supports('draft/chathistory');
 
     history.before = (target, dateOrTime) => new Promise((resolve) => {
         if (!history.isSupported()) {
