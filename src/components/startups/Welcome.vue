@@ -260,15 +260,24 @@ export default {
             this.errorMessage = '';
 
             let options = Object.assign({}, this.$state.settings.startupOptions);
+            let connectOptions = Misc.connectionInfoFromConfig(options);
 
             // If a server isn't specified in the config, set some defaults
             // The webircgateway will have a default network set and will connect
             // there instead. This just removes the requirement of specifying the same
             // irc network address in both the server-side and client side configs
-            options.server = options.server || 'default';
-            options.port = options.port || 6667;
+            connectOptions.hostname = connectOptions.hostname || 'default';
+            if (!connectOptions.port && connectOptions.direct) {
+                connectOptions.port = connectOptions.tls ?
+                    443 :
+                    80;
+            } else if (!connectOptions.port && !connectOptions.direct) {
+                connectOptions.port = connectOptions.tls ?
+                    6697 :
+                    6667;
+            }
 
-            let netAddress = _.trim(options.server);
+            let netAddress = _.trim(connectOptions.hostname);
 
             // Check if we have this network already
             let net = this.network || this.$state.getNetworkFromAddress(netAddress);
@@ -278,12 +287,12 @@ export default {
             // If the network doesn't already exist, add a new one
             net = net || this.$state.addNetwork('Network', this.nick, {
                 server: netAddress,
-                port: options.port,
-                tls: options.tls,
+                port: connectOptions.port,
+                tls: connectOptions.tls,
                 password: password,
                 encoding: _.trim(options.encoding),
-                direct: !!options.direct,
-                path: options.direct_path || '',
+                direct: connectOptions.direct,
+                path: connectOptions.direct_path || '',
                 gecos: options.gecos,
             });
 
