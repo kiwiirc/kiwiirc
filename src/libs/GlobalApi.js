@@ -4,6 +4,7 @@
 
 import EventEmitter from 'eventemitter3';
 import Vue from 'vue';
+import JSON5 from 'json5';
 import _ from 'lodash';
 import compareVersions from 'compare-versions';
 import * as Misc from '@/helpers/Misc';
@@ -23,6 +24,8 @@ export default class GlobalApi extends EventEmitter {
 
         /** A reference to the internal Vuejs instance */
         this.Vue = Vue;
+        /** Expose JSON5 so that plugins can use the same config format */
+        this.JSON5 = JSON5;
         /** The applications internal state */
         this.state = null;
         /** The applications ThemeManager */
