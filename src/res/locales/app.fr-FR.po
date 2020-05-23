@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-05-21 00:11\n"
+"PO-Revision-Date: 2020-05-23 19:12\n"
 
 #: Start
 msgid "start_button"
@@ -295,7 +295,7 @@ msgstr "Indiquer quand je tape un message"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "Montrer l'aperçu des images en ligne"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
