@@ -159,7 +159,7 @@ export function matchUri(uri) {
         protocol: (m[1] || '').toLowerCase(),
         hostname: m[2] || '',
         port: parseIntZero(m[4] || ''),
-        path: m[5] || '',
+        path: '/' + (m[5] || ''),
         search: m[6] || '',
     };
 }
