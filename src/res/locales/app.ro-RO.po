@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2020-05-24 13:11\n"
+"PO-Revision-Date: 2020-05-24 13:21\n"
 
 #: Start
 msgid "start_button"
@@ -175,7 +175,7 @@ msgstr "Canal"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "Plecat(ă) de la tastatură"
 
 #: {{count}} week
 msgid "week"
@@ -239,7 +239,7 @@ msgstr "URL-ul tematicii"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "Aranjament mesaje"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -251,7 +251,7 @@ msgstr "Folosește Kiwi ca și clientul implicit de IRC"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Traditional IRC layout"
+msgstr "Aranjament tradițional IRC"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -359,7 +359,7 @@ msgstr "Instrumente de operator"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Default ban mask"
+msgstr "Mască implicită de ban"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
@@ -371,7 +371,7 @@ msgstr "Setări avansate"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Monsters be here, only click this button if you know what you are doing"
+msgstr "Atenție la monștri, nu da clic pe buton, dacă nu ști ce faci"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
@@ -379,7 +379,7 @@ msgstr "Activează setările avansate"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Danger Zone: Changing some of these settings may break things!"
+msgstr "Zonă periculoasă: Unele modificări ale acestor setări pot defecta lucrurile!"
 
 #: Reset
 msgid "settings_advanced_reset"
@@ -395,7 +395,7 @@ msgstr "Reîmprospătează lista de ban-uri"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Banned user"
+msgstr "Utilizatori ce au primit ban"
 
 #: Banned by
 msgid "bans_by"
@@ -563,11 +563,11 @@ msgstr "Avansate"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Encoding"
+msgstr "Codare"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Show Raw"
+msgstr "Afișează în modul brut"
 
 #: Direct websocket
 msgid "settings_use_websocket"
@@ -651,11 +651,11 @@ msgstr "Afișează modificările de pseudonime ale utilizatorilor"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Show when users change channel modes"
+msgstr "Afișează atunci când utilizatorii modifică fanioanele canalelor"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Extra message formatting"
+msgstr "Formatare suplimentară a mesajelor"
 
 #: Nick colours in the list"
 msgid "side_colours"
@@ -867,7 +867,7 @@ msgstr "{{nick}} takes admin from {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} gives owner to {{target}}"
+msgstr "{{target}} a primit privilegii de deținător de canal, de la {{nick}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
@@ -903,7 +903,7 @@ msgstr "Părăsește un canal"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Leave, then re-join a channel"
+msgstr "Părăsește, apoi alătură-te, din nou, unui canal"
 
 #: Change your nickname
 msgid "command_nick"
@@ -967,7 +967,7 @@ msgstr "Setează-te ca fiind activ(ă)"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Change your connection encoding"
+msgstr "Modifică codarea conexiunii proprii"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
@@ -1027,7 +1027,7 @@ msgstr "Kiwi IRC (generația următoare) - Previzualizare Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Direct websockets. No Kiwi server or webirc involved."
+msgstr "Conexiune directă prin websockets. Nici un server Kiwi sau webirc implicat."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
