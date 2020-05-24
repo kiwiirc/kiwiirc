@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2020-05-24 13:21\n"
+"PO-Revision-Date: 2020-05-24 15:51\n"
 
 #: Start
 msgid "start_button"
@@ -371,7 +371,7 @@ msgstr "Setări avansate"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Atenție la monștri, nu da clic pe buton, dacă nu ști ce faci"
+msgstr "Atenție la monștri, nu da clic pe buton, dacă nu știi ce faci"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
