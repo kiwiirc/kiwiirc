@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2020-05-21 00:11\n"
+"PO-Revision-Date: 2020-05-24 13:11\n"
 
 #: Start
 msgid "start_button"
@@ -55,7 +55,7 @@ msgstr "Acces"
 
 #: Banned Users
 msgid "banned"
-msgstr "Banned Users"
+msgstr "Utilizatori ce au ban"
 
 #: Invited Users
 msgid "invited"
@@ -255,7 +255,7 @@ msgstr "Traditional IRC layout"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Show autocomplete list"
+msgstr "Afișează lista de autocompletare"
 
 #: Chat Messages
 msgid "settings_messages_title"
@@ -279,7 +279,7 @@ msgstr "Blochează mesajele private noi"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Messages in scrollback"
+msgstr "Mesaje în derulare"
 
 #: Extra formatting
 msgid "settings_formatting"
@@ -291,7 +291,7 @@ msgstr "Colorează pseudonimele în mesaje"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "Afișează atunci când tastez un mesaj"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
@@ -511,7 +511,7 @@ msgstr "Alătură-te unui canal"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Not Connected"
+msgstr "Nu te-ai conectat"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
@@ -599,7 +599,7 @@ msgstr "Filtrează utilizatorii din canal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Reconnect to join {{channel}}"
+msgstr "Reconectează-te pentru a intra pe {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
@@ -959,11 +959,11 @@ msgstr "Solicită informații despre cineva care s-a deconectat recent"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "Setează-te ca fiind inactiv(ă)"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "Setează-te ca fiind activ(ă)"
 
 #: Change your connection encoding
 msgid "command_encoding"
