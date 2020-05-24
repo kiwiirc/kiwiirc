@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2020-05-24 15:51\n"
+"PO-Revision-Date: 2020-05-24 16:01\n"
 
 #: Start
 msgid "start_button"
@@ -307,7 +307,7 @@ msgstr "Dezactivează notificările audio"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space seperated)"
+msgstr "Avertizare pentru cuvinte (separate prin spațiu)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -351,7 +351,7 @@ msgstr "Dezactivează sunetele"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Ascunde numerotarea mesajelor necitite"
 
 #: Operator tools
 msgid "operator_tools"
@@ -547,7 +547,7 @@ msgstr "Port"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Other networks on this ZNC account will be listed in the network list"
+msgstr "Alte rețele pentru acest cont ZNC vor fi afișate în lista de rețele"
 
 #: Your details
 msgid "settings_your_details"
@@ -607,7 +607,7 @@ msgstr "Reconectează-te la {{network}} pentru a putea vorbi"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Reconnect to continue talking with {{user}}"
+msgstr "Reconectează-te, pentru a continua să conversezi cu {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
@@ -815,7 +815,7 @@ msgstr "Interzice accesul pe canal"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Ban and kick from the channel"
+msgstr "Dă ban și kick din canal"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -847,7 +847,7 @@ msgstr "{{target}} a primit privilegii de semi-operator de la {{nick}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} takes half-ops from {{target}}"
+msgstr "{{nick}} a înlăturat privilegiile de semi-operator, pentru {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
@@ -855,7 +855,7 @@ msgstr "{{target}} a primit voce de la {{nick}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} takes voice from {{target}}"
+msgstr "{{nick}} a înlăturat privilegiile de voce, pentru {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -863,7 +863,7 @@ msgstr "{{target}} a primit privilegii de administrator de canal de la {{nick}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} takes admin from {{target}}"
+msgstr "{{nick}} a înlăturat privilegiile de administrator, pentru {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
@@ -879,7 +879,7 @@ msgstr "{{target}} a primit ban de la {{nick}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} has unbanned {{target}}"
+msgstr "{{nick}} a înlăturat un ban existent, pentru {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
@@ -895,7 +895,7 @@ msgstr "Fă ceva fizic"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Alătură-te unui canal"
+msgstr "Alătură-te canalului"
 
 #: Leave a channel
 msgid "command_part"
