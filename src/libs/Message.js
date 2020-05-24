@@ -17,6 +17,9 @@ function def(target, key, value) {
 
 export default class Message {
     constructor(message, user) {
+        // instance_num is a running number for all messages created within Kiwi. Used to order
+        // messages if the message time is the same.
+        def(this, 'instance_num', nextId++);
         def(this, 'id', extractMessageId(message) || nextId++);
         // Two different times;
         //   time = time in the users local time

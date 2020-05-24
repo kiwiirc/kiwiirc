@@ -171,7 +171,9 @@ export default {
                     return -1;
                 }
 
-                return 0;
+                return a.instance_num > b.instance_num ?
+                    1 :
+                    -1;
             });
 
             let list = [];
