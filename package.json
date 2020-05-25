@@ -1,6 +1,6 @@
 {
   "name": "kiwiirc",
-  "version": "1.4.0",
+  "version": "1.5.1",
   "description": "Web based IRC client",
   "author": "Darren <darren@darrenwhitlen.com>",
   "scripts": {

@@ -76,8 +76,8 @@ export const configTemplates = {
             flash_title: 'message',
             nicklist_avatars: false,
             show_link_previews: true,
-            inline_link_previews: true,
-            inline_link_auto_preview_whitelist: '',
+            inline_link_auto_previews: true,
+            inline_link_auto_preview_whitelist: '.*',
         },
         // Startup screen default
         startupOptions: {
@@ -88,6 +88,7 @@ export const configTemplates = {
             nick: 'kiwi_?',
             direct: false,
             state_key: 'kiwi-state',
+            remember_buffers: true,
             nick_format: '',
         },
         autoReconnect: false,
@@ -337,6 +338,7 @@ export const configTemplates = {
             show_emoticons: false,
             show_message_info: false,
             share_typing: false,
+            inline_link_auto_previews: false,
         },
     },
 

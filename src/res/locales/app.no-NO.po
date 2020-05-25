@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Norwegian\n"
 "Language: no_NO\n"
-"PO-Revision-Date: 2020-04-13 16:35\n"
+"PO-Revision-Date: 2020-05-21 00:11\n"
 
 #: Start
 msgid "start_button"
@@ -292,6 +292,10 @@ msgstr "Colour nicknames in messages"
 #: Share when I'm typing a message
 msgid "settings_share_typing"
 msgstr "Share when I'm typing a message"
+
+#: Show inline image previews
+msgid "settings_show_inline_previews"
+msgstr "Show inline image previews"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"

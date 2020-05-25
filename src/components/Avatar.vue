@@ -26,7 +26,7 @@ const methods = {
     },
     hasAvatar(props) {
         // let props = this.props;
-        return !!(props.avatar && (props.avatar.small || props.avatar.large));
+        return !!(props.user.avatar && (props.user.avatar.small || props.user.avatar.large));
     },
     avatarStyle(props) {
         // let props = this.props;

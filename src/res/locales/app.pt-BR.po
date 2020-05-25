@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2020-04-13 16:35\n"
+"PO-Revision-Date: 2020-05-21 13:52\n"
 
 #: Start
 msgid "start_button"
@@ -75,7 +75,7 @@ msgstr "Senha"
 
 #: Server Password
 msgid "server_password"
-msgstr "Palavra-passe do Servidor"
+msgstr "Senha do Servidor"
 
 #: I have a password
 msgid "password_have"
@@ -151,7 +151,7 @@ msgstr "Nome real"
 
 #: Status
 msgid "whois_status"
-msgstr "Estado"
+msgstr "Status"
 
 #: Is available
 msgid "whois_status_available"
@@ -293,6 +293,10 @@ msgstr "Nicknames Coloridos"
 msgid "settings_share_typing"
 msgstr "Compartilhar quando estou escrevendo uma mensagem"
 
+#: Show inline image previews
+msgid "settings_show_inline_previews"
+msgstr "Pré-visualização de imagens incorporadas"
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Incluir mensagens de entrada e saída como atividade"
@@ -347,7 +351,7 @@ msgstr "Desativar sons"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Esconder contador de mensagens não lidas"
 
 #: Operator tools
 msgid "operator_tools"
@@ -591,7 +595,7 @@ msgstr "{{count}} usuários aqui"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Filtrar usuários no canal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -747,7 +751,7 @@ msgstr "Filtrar Canais"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Encontrar Mais Canais"
 
 #: Change nick
 msgid "change_nick"
@@ -759,7 +763,7 @@ msgstr "Introduza o novo nick..."
 
 #: This is you!
 msgid "user_you"
-msgstr "Este/a é você!"
+msgstr "Este é você!"
 
 #: Account name: {{user}}
 msgid "user_account"

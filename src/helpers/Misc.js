@@ -42,10 +42,6 @@ export function extractURL(str) {
     return matches ? matches[0] : '';
 }
 
-export function splitHost(uri) {
-
-}
-
 export function stripStyles(str) {
     return str.replace(/(\x03[0-9]{0,2})?([\x02\x16\x1d\x1f]+)?/g, '');
 }
@@ -102,6 +98,70 @@ export function networkErrorMessage(err) {
     };
 
     return errs[err] || 'Unknown error';
+}
+
+/**
+ * Take a users connection object (usually from startupOptions) and normalise a connection
+ * settings object. Parses websocket/direct/kiwiServer/etc options and creates a single
+ * object that Kiwi can consistently read from.
+ * @param {Object} config User provided connection config object
+ */
+export function connectionInfoFromConfig(config) {
+    let connection = {
+        tls: false,
+        port: 0,
+        hostname: '',
+        direct: false,
+        direct_path: '',
+    };
+
+    let wsUri = config.websocket ?
+        matchUri(config.websocket) :
+        null;
+
+    if (wsUri) {
+        connection.direct = true;
+        connection.tls = ['wss', 'https', 'ircs'].indexOf(wsUri.protocol) > -1;
+        connection.port = wsUri.port;
+        connection.hostname = wsUri.hostname;
+        connection.direct_path = wsUri.path;
+        if (wsUri.search) {
+            connection.direct_path += '?' + wsUri.search;
+        }
+    } else {
+        connection.tls = config.tls;
+        connection.port = config.port;
+        connection.hostname = config.server;
+        connection.direct = !!config.direct;
+        connection.direct_path = config.direct_path || '';
+    }
+
+    return connection;
+}
+
+export function matchUri(uri) {
+    let reg = /(?:([a-z]+):\/\/)?([a-z.0-9-]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
+    /*
+    0: "ws://hostname.com:6676/erferf?foo=val"
+    1: "ws"
+    2: "hostname.com"
+    3: undefined
+    4: "6676"
+    5: "erferf"
+    6: "foo=var"
+    */
+    let m = uri.match(reg);
+    if (!m) {
+        return null;
+    }
+
+    return {
+        protocol: (m[1] || '').toLowerCase(),
+        hostname: m[2] || '',
+        port: parseIntZero(m[4] || ''),
+        path: '/' + (m[5] || ''),
+        search: m[6] || '',
+    };
 }
 
 /**
@@ -206,4 +266,15 @@ export function replaceObjectProps(target, source) {
 export function dateIso(date) {
     let d = date || new Date();
     return strftimeUTC('%Y-%m-%dT%H:%M:%S.%LZ', d);
+}
+
+/**
+ * Cast a string to an int, returning 0 if it fails
+ * @param {String} inp The number as a string to convert to an int
+ */
+export function parseIntZero(inp) {
+    let int = parseInt(inp, 10);
+    return Number.isNaN(int) ?
+        0 :
+        int;
 }
