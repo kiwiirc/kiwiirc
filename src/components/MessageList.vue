@@ -235,6 +235,9 @@ export default {
         isIos() {
             return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
         },
+        isIframe() {
+            return window !== window.parent;
+        },
     },
     watch: {
         buffer(newBuffer) {
@@ -445,9 +448,12 @@ export default {
             }
         },
         scrollToBottom() {
-            if (this.isIos) {
+            if (this.isIos || this.isIframe) {
                 // On iOS using scrollIntoView causes issues with the keyboard pushing
                 // the view upwards resulting in the input box being behind the keyboard
+                //
+                // when inside iframe, scrollIntoView() also scrolls parent window
+
                 this.$el.scrollTop = this.$el.scrollHeight;
                 return;
             }
