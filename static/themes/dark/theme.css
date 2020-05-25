@@ -1,178 +1,162 @@
 @import '../common/base.css';
 
-:root{
-    --brand-primary: #256d55;
-    --brand-primary-hover: #5ec9a6;
-    --brand-midtone: #2b2b2b;
-    --brand-darktone: #969696;
-    --brand-default-bg: #1e1e1e;
-    --brand-default-fg: #ababab;
-    --brand-notice: #f6c358;
-    --brand-warning: #fcb46e;
-    --brand-error: #712c2f;
-    --comp-workspace-before-bg: var(--brand-primary);
-    --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
-    --comp-header-bg: var(--brand-default-bg);
-    --comp-header-name-fg: var(--brand-default-fg);
-    --comp-header-option-active-fg: #f1f1f1;
-    --comp-header-option-active-bg: var(--brand-primary);
-    --comp-statebrowser-fg: #ababab;
-    --comp-statebrowser-bg: #1e1e1e;
-    --comp-statebrowser-bg-networkname: #454545;
-    --comp-statebrowser-channel-active-bg: #ffffff0d;
-    --comp-statebrowser-channel-active-fg: #ababab;
-    --comp-usermenu-open-bg: #0e0e0e;
-    --comp-statebrowser-network-border: #656565;
-    --comp-sidebar-bg: #1e1e1e;
-    --comp-sidebar-fg: #ababab;
-    --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
-    --comp-aboutbuffer-header-bg: var(--brand-primary);
-    --brand-link-normal: var(--brand-primary);
-    --brand-link--hover: var(--brand-primary-hover);
-    --brand-shadow: rgba(0, 0, 0, 0.1);
-    --comp-border: #484848;
+:root {
+    --k-primary1: #42b992;
+    --k-primary2: #42b992;
+    --k-primary3: #42b992;
+    --k-primary4: #42b992;
+    --k-primary5: #42b992;
+    --k-primary6: #42b992;
+    --k-primary7: #42b992;
+
+    --k-neutral1: #f3f5f4;
+    --k-neutral2: #e4e4e4;
+    --k-neutral3: #c3c3c3;
+    --k-neutral4: #969696;
+    --k-neutral5: #555857;
+    --k-neutral6: #272d2a;
+    --k-neutral7: #1f2321;
+
+    --k-accent1: #ACE4FB;
+    --k-accent2: #83d8fb;
+    --k-accent3: #45C8FE;
+    --k-accent4: #00B3FC;
+    --k-accent5: #008BC3;
+    --k-accent6: #026790;
+    --k-accent7: #005375;
+
+    --k-accentstrong1: #F5D494;
+    --k-accentstrong2: #e8c279;
+    --k-accentstrong3: #E8B44E;
+    --k-accentstrong4: #E09F20;
+    --k-accentstrong5: #BC8721;
+    --k-accentstrong6: #9e7627;
+    --k-accentstrong7: #8D6821;
+
+    --k-success1: #b3f1e0;
+    --k-success2: #7ddcc3;
+    --k-success3: #60bd9b;
+    --k-success4: #299c7d;
+    --k-success5: #188669;
+    --k-success6: #188063;
+    --k-success7: #16755B;
+
+    --k-info1: #f7efcc;
+    --k-info2: #eadfa9;
+    --k-info3: #dccc83;
+    --k-info4: #c3ad4a;
+    --k-info5: #998633;
+    --k-info6: #86762e;
+    --k-info7: #7e6f2a;
+
+    --k-warning1: #FFFDF3;
+    --k-warning2: #f9f4d4;
+    --k-warning3: #fbe591;
+    --k-warning4: #F3D460;
+    --k-warning5: #C9AE37;
+    --k-warning6: #8c7926;
+    --k-warning7: #5C4C0F;
+
+    --k-error1: #e8c2c4;
+    --k-error2: #de9194;
+    --k-error3: #d26b6f;
+    --k-error4: #bf5155;
+    --k-error5: #9c4245;
+    --k-error6: #793437;
+    --k-error7: #582426;
+
+    --k-actiondanger1: #e8c2c4;
+    --k-actiondanger2: #de9194;
+    --k-actiondanger3: #d26b6f;
+    --k-actiondanger4: #bf5155;
+    --k-actiondanger5: #9c4245;
+    --k-actiondanger6: #793437;
+    --k-actiondanger7: #582426;
+
+    --k-actiongo1: #A8DCCE;
+    --k-actiongo2: #A8DCCE;
+    --k-actiongo3: #65d6ad;
+    --k-actiongo4: #199473;
+    --k-actiongo5: #188669;
+    --k-actiongo6: #16755B;
+    --k-actiongo7: #16755B;
 }
 
-.kiwi-wrap {
-    --kiwi-nick-brightness: 60;
-}
-
-.kiwi-header {
-    border-bottom-color: #000;
-}
-
-.kiwi-statebrowser-channels .kiwi-statebrowser-channel {
-    color: #dedede;
-}
-
-.kiwi-statebrowser-usermenu-avatar {
-    background-color: #000;
-    color: var(--brand-default-fg);
-}
-.u-tabbed-view-tabs {
-    background: #2f2f2f;
-    border-bottom-color: #ffffff1a;
-}
-.u-tabbed-view-tabs .u-tabbed-view-tab {
-    border-bottom-color: #ffffff1a;
-}
-
-.u-form select {
-    background-color: var(--brand-primary);
-    color: #000000;
-}
-
-button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
-    color: var(--brand-default-fg);
-}
-
-.kiwi-welcome-znc h2 {
-    color: var(--brand-default-bg);
-}
-
-.kiwi-welcome-znc-form .u-input-text {
-    background: transparent;
-    color: var(--brand-default-bg);
-}
-
-.kiwi-statebrowser-newchannel-inputwrap,
-.kiwi-statebrowser-newnetwork .u-button,
-.kiwi-header-option a:hover,
-.kiwi-header-option--active,
-.kiwi-network-name-hover-icon,
-.kiwi-statebrowser-newchannel-inputwrap input[type='text'],
-.kiwi-network-name-option,
-.kiwi-warning-block,
-.kiwi-notconnected-button,
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected,
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected,
-.u-button-warning,
-.kiwi-settings-advanced-notice,
-.kiwi-networksettings .kiwi-title,
-.kiwi-welcome-simple-form .u-submit {
-    color: var(--brand-default-fg);
-}
-
-.kiwi-notconnected-button {
-    border-color: var(--brand-default-fg);
-}
-.kiwi-notconnected-button:hover {
-    background-color: var(--brand-default-fg);
-    color: var(--brand-default-bg);
-    border-color: var(--brand-default-fg);
-}
-
-.kiwi-statebrowser-channel-leave {
-    background: transparent;
-    color: var(--brand-default-fg);
-}
-
-.kiwi-network-name-options {
-    background-color: #000;
-    color: var(--brand-default-fg);
-}
-.kiwi-network-name-option:hover,
-.kiwi-network-name-option.active {
-    background-color: var(--brand-primary);
-    color: #fff;
-}
-
-.kiwi-avatar > span {
-    background-color: var(--brand-default-bg);
-    color: var(--brand-default-fg);
-}
-
-.kiwi-messagelist-seperator {
-    border-top: 2px dashed #00b100;
-}
-
-.kiwi-messagelist-message--highlight {
-    background-color: #404040;
-}
-
-.kiwi-messagelist-message-notice {
-    background: #3c3729;
-}
-
+/**
+ * For a dark theme the statebrowser needs to also be dark. By default the statebrowser and the
+ * rest of the app are dark+light, so we reverse the pallete for the statebrowser.
+ */
 .kiwi-statebrowser {
-    box-shadow: 0px 0 4px #ffffff2b;
-}
-
-.kiwi-statebrowser-channelfilter input,
-.kiwi-statebrowser-channels-info .kiwi-statebrowser-newchannel-inputwrap input {
-    background-color: var(--brand-default-fg);
-    color: var(--brand-default-bg);
-}
-
-.kiwi-messagelist-message.kiwi-messagelist-message--highlight {
-    background: #2d2d2d;
-}
-
-.kiwi-messagelist-message--modern {
-    border-top-color: #2d2d2d;
-}
-
-.kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #333333;
-}
-
-.kiwi-container-toggledraw-statebrowser-messagecount  {
-    color: #f1f1f1;
-}
-
-.kiwi-messagelist-message--info-open {
-    background-color: #2d2d2d;
-}
-.kiwi-messagelist-message--info-open .u-link {
-    color: #fff;
-}
-
-.kiwi-welcome-simple-start {
-    color: #fff !important;
-}
-
-.kiwi-header-option--active a {
-    color: #e4e4e4 !important;
+    --k-primary1: #42b992;
+    --k-primary2: #42b992;
+    --k-primary3: #42b992;
+    --k-primary4: #42b992;
+    --k-primary5: #42b992;
+    --k-primary6: #42b992;
+    --k-primary7: #42b992;
+    --k-neutral1: #1f2321;
+    --k-neutral2: #272d2a;
+    --k-neutral3: #555857;
+    --k-neutral4: #969696;
+    --k-neutral5: #c3c3c3;
+    --k-neutral6: #e4e4e4;
+    --k-neutral7: #f3f5f4;
+    --k-accent1: #005375;
+    --k-accent2: #026790;
+    --k-accent3: #008BC3;
+    --k-accent4: #00B3FC;
+    --k-accent5: #45C8FE;
+    --k-accent6: #83d8fb;
+    --k-accent7: #ACE4FB;
+    --k-accentstrong1: #8D6821;
+    --k-accentstrong2: #9e7627;
+    --k-accentstrong3: #BC8721;
+    --k-accentstrong4: #E09F20;
+    --k-accentstrong5: #E8B44E;
+    --k-accentstrong6: #e8c279;
+    --k-accentstrong7: #F5D494;
+    --k-success1: #16755B;
+    --k-success2: #188063;
+    --k-success3: #188669;
+    --k-success4: #299c7d;
+    --k-success5: #60bd9b;
+    --k-success6: #7ddcc3;
+    --k-success7: #b3f1e0;
+    --k-info1: #7e6f2a;
+    --k-info2: #86762e;
+    --k-info3: #998633;
+    --k-info4: #c3ad4a;
+    --k-info5: #dccc83;
+    --k-info6: #eadfa9;
+    --k-info7: #f7efcc;
+    --k-warning1: #5C4C0F;
+    --k-warning2: #8c7926;
+    --k-warning3: #C9AE37;
+    --k-warning4: #F3D460;
+    --k-warning5: #fbe591;
+    --k-warning6: #f9f4d4;
+    --k-warning7: #FFFDF3;
+    --k-error1: #582426;
+    --k-error2: #793437;
+    --k-error3: #9c4245;
+    --k-error4: #bf5155;
+    --k-error5: #d26b6f;
+    --k-error6: #de9194;
+    --k-error7: #e8c2c4;
+    --k-actiondanger1: #582426;
+    --k-actiondanger2: #793437;
+    --k-actiondanger3: #9c4245;
+    --k-actiondanger4: #bf5155;
+    --k-actiondanger5: #d26b6f;
+    --k-actiondanger6: #de9194;
+    --k-actiondanger7: #e8c2c4;
+    --k-actiongo1: #16755B;
+    --k-actiongo2: #16755B;
+    --k-actiongo3: #188669;
+    --k-actiongo4: #199473;
+    --k-actiongo5: #65d6ad;
+    --k-actiongo6: #A8DCCE;
+    --k-actiongo7: #A8DCCE;
 }
 
 /* IRC Text Colours */
@@ -184,7 +168,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
 .irc-fg-colour-brown { color: #743a00; }
 .irc-fg-colour-purple { color: #a500ff; }
 .irc-fg-colour-orange { color: #ff8c00; }
-.irc-fg-colour-yellow { color: #ff0; }
+.irc-fg-colour-yellow { color: #d6d63d; }
 .irc-fg-colour-light-green { color: #6fff6f; }
 .irc-fg-colour-cyan { color: #0cc; }
 .irc-fg-colour-light-cyan { color: #6dffff; }
@@ -201,7 +185,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
 .irc-bg-colour-brown { background-color: #743a00; }
 .irc-bg-colour-purple { background-color: #a500ff; }
 .irc-bg-colour-orange { background-color: #ff8c00; }
-.irc-bg-colour-yellow { background-color: #ff0; }
+.irc-bg-colour-yellow { background-color: #d6d63d; }
 .irc-bg-colour-light-green { background-color: #6fff6f; }
 .irc-bg-colour-cyan { background-color: #0cc; }
 .irc-bg-colour-light-cyan { background-color: #6dffff; }
@@ -209,3 +193,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
 .irc-bg-colour-pink { background-color: #f0f; }
 .irc-bg-colour-grey { background-color: #a6a6a6; }
 .irc-bg-colour-light-grey { background-color: #e2e2e2; }
+
+.kiwi-statebrowser {
+    box-shadow: 0px 0 2px #101010;
+}
