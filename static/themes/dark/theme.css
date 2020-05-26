@@ -1,5 +1,9 @@
 @import '../common/base.css';
 
+.kiwi-wrap {
+    --kiwi-nick-brightness: 50;
+}
+
 :root {
     --k-primary1: #42b992;
     --k-primary2: #42b992;
@@ -9,13 +13,13 @@
     --k-primary6: #42b992;
     --k-primary7: #42b992;
 
-    --k-neutral1: #f3f5f4;
-    --k-neutral2: #e4e4e4;
-    --k-neutral3: #c3c3c3;
+    --k-neutral1: #c5c5c5;
+    --k-neutral2: #c1c1c1;
+    --k-neutral3: #bbbbbb;
     --k-neutral4: #969696;
     --k-neutral5: #555857;
-    --k-neutral6: #272d2a;
-    --k-neutral7: #1f2321;
+    --k-neutral6: #343c38;
+    --k-neutral7: #262b29;
 
     --k-accent1: #ACE4FB;
     --k-accent2: #83d8fb;
@@ -94,13 +98,15 @@
     --k-primary5: #42b992;
     --k-primary6: #42b992;
     --k-primary7: #42b992;
-    --k-neutral1: #1f2321;
-    --k-neutral2: #272d2a;
+
+    --k-neutral1: #262b29;
+    --k-neutral2: #343c38;
     --k-neutral3: #555857;
     --k-neutral4: #969696;
-    --k-neutral5: #c3c3c3;
-    --k-neutral6: #e4e4e4;
-    --k-neutral7: #f3f5f4;
+    --k-neutral5: #bbbbbb;
+    --k-neutral6: #c1c1c1;
+    --k-neutral7: #c5c5c5;
+
     --k-accent1: #005375;
     --k-accent2: #026790;
     --k-accent3: #008BC3;
@@ -108,6 +114,7 @@
     --k-accent5: #45C8FE;
     --k-accent6: #83d8fb;
     --k-accent7: #ACE4FB;
+
     --k-accentstrong1: #8D6821;
     --k-accentstrong2: #9e7627;
     --k-accentstrong3: #BC8721;
@@ -115,6 +122,7 @@
     --k-accentstrong5: #E8B44E;
     --k-accentstrong6: #e8c279;
     --k-accentstrong7: #F5D494;
+
     --k-success1: #16755B;
     --k-success2: #188063;
     --k-success3: #188669;
@@ -122,6 +130,7 @@
     --k-success5: #60bd9b;
     --k-success6: #7ddcc3;
     --k-success7: #b3f1e0;
+
     --k-info1: #7e6f2a;
     --k-info2: #86762e;
     --k-info3: #998633;
@@ -129,6 +138,7 @@
     --k-info5: #dccc83;
     --k-info6: #eadfa9;
     --k-info7: #f7efcc;
+
     --k-warning1: #5C4C0F;
     --k-warning2: #8c7926;
     --k-warning3: #C9AE37;
@@ -136,6 +146,7 @@
     --k-warning5: #fbe591;
     --k-warning6: #f9f4d4;
     --k-warning7: #FFFDF3;
+
     --k-error1: #582426;
     --k-error2: #793437;
     --k-error3: #9c4245;
@@ -143,6 +154,7 @@
     --k-error5: #d26b6f;
     --k-error6: #de9194;
     --k-error7: #e8c2c4;
+
     --k-actiondanger1: #582426;
     --k-actiondanger2: #793437;
     --k-actiondanger3: #9c4245;
@@ -150,6 +162,7 @@
     --k-actiondanger5: #d26b6f;
     --k-actiondanger6: #de9194;
     --k-actiondanger7: #e8c2c4;
+
     --k-actiongo1: #16755B;
     --k-actiongo2: #16755B;
     --k-actiongo3: #188669;
