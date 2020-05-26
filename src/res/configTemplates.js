@@ -116,6 +116,7 @@ export const configTemplates = {
 /w /whois $1+
 /raw /quote $1+
 /connect /server $1+
+/disconnect /quit $1+
 /cycle $channel? /lines /part $channel | /join $channel
 /active /back $1+
 /umode /mode $nick $1+
