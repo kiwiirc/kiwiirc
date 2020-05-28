@@ -21,7 +21,12 @@
                     </span>
                 </div>
 
-                <input-text v-model="nick" :label="$t('nick')" type="text" />
+                <input-text
+                    v-model="nick"
+                    v-focus="!nick || !show_password_box"
+                    :label="$t('nick')"
+                    type="text"
+                />
 
                 <div v-if="showPass && toggablePass" class="kiwi-welcome-simple-input-container">
                     <label
@@ -37,7 +42,7 @@
                 >
                     <input-text
                         v-model="password"
-                        v-focus
+                        v-focus="nick || show_password_box"
                         :show-plain-text="true"
                         :label="$t('password')"
                         type="password"
