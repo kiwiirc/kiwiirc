@@ -146,8 +146,16 @@ Vue.directive('rawElement', {
 
 // Register a global custom directive called `v-focus`
 Vue.directive('focus', {
+    // Support conditional eg. v-focus="false"
+    bind(el, bindings) {
+        el.dataset.focus = bindings.value === undefined || !!bindings.value;
+    },
     // When the bound element is inserted into the DOM...
     inserted(el) {
+        // dataset properties are strings
+        if (el.dataset.focus !== 'true') {
+            return;
+        }
         // Element is input so focus it
         if (el.tagName === 'INPUT') {
             el.focus();
