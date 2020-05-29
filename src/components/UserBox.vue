@@ -6,7 +6,7 @@
         <div class="kiwi-userbox-header">
             <div class="kiwi-userbox-header-nick">
                 <div class="kiwi-avatar-container kiwi-avatar-userbox">
-                    <avatar :network="network" :user="user" size="small"/>
+                    <avatar :network="network" :user="user" size="small" />
                     <away-status-indicator :network="network" :user="user" />                
                 </div>
                 <h3>
