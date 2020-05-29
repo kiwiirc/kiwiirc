@@ -416,7 +416,7 @@ export default {
 .kiwi-avatar-userbox .kiwi-awaystatusindicator {
     width: 10px;
     top: 4px;
-    height: 10px;   
+    height: 10px;
 }
 
 .kiwi-userbox-header h3 {
