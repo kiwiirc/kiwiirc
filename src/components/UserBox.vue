@@ -405,12 +405,12 @@ export default {
 }
 
 .kiwi-userbox-header-nick {
-    display:flex;
+    display: flex;
 }
 
-.kiwi-avatar-userbox .kiwi-avatar{
-    width:40px;
-    height:40px;
+.kiwi-avatar-userbox .kiwi-avatar {
+    width: 40px;
+    height: 40px;
 }
 
 .kiwi-avatar-userbox .kiwi-awaystatusindicator {
@@ -424,7 +424,7 @@ export default {
     padding: 0;
     cursor: default;
     display: inline-block;
-    line-height:44px;
+    line-height: 44px;
 }
 
 .kiwi-userbox-modestring {
