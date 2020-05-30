@@ -287,11 +287,19 @@ export default {
         },
         onChannelsClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
-            if (channelName) {
-                let network = this.buffer.getNetwork();
-                this.$state.addBuffer(this.buffer.networkid, channelName);
-                network.ircClient.join(channelName);
+            if (!channelName) {
+                return;
             }
+
+            let buffer = this.network.bufferByName(channelName);
+            if (buffer) {
+                this.$state.$emit('buffer.flash', buffer);
+                return;
+            }
+
+            let network = this.buffer.getNetwork();
+            this.$state.addBuffer(this.buffer.networkid, channelName);
+            network.ircClient.join(channelName);
         },
         updateWhoisData: function updateWhoisData() {
             this.whoisRequested = true;

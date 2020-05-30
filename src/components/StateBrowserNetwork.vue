@@ -133,7 +133,8 @@
                     :data-name="buffer.name.toLowerCase()"
                     :class="{
                         'kiwi-statebrowser-channel-active': isActiveBuffer(buffer),
-                        'kiwi-statebrowser-channel-notjoined': buffer.isChannel() && !buffer.joined
+                        'kiwi-statebrowser-channel-notjoined': buffer.isChannel() && !buffer.joined,
+                        'kiwi-statebrowser-channel-flash' : flash_buffer === buffer
                     }"
                     class="kiwi-statebrowser-channel"
                 >
@@ -191,6 +192,8 @@ export default {
             channel_add_display: false,
             channel_add_input_has_focus: false,
             channel_add_input: '',
+            flash_buffer: null,
+            flash_buffer_timeout: 0,
         };
     },
     computed: {
@@ -246,6 +249,18 @@ export default {
 
             return bufferTools.orderBuffers(filtered);
         },
+    },
+    created() {
+        this.$state.$on('buffer.flash', (buffer) => {
+            if (buffer.getNetwork() === this.network) {
+                this.showFlashBuffer(buffer);
+            }
+        });
+    },
+    beforeDestroy() {
+        if (this.flash_buffer_timeout) {
+            clearTimeout(this.flash_buffer_timeout);
+        }
     },
     methods: {
         onNewChannelInputFocus() {
@@ -336,6 +351,24 @@ export default {
         },
         showNetworkChannels(network) {
             network.showServerBuffer('channels');
+        },
+        showFlashBuffer(buffer) {
+            let bufferEl = this.$el.querySelector(`.kiwi-statebrowser-channel[data-name="${buffer.name.toLowerCase()}"]`);
+            if (!bufferEl) {
+                return;
+            }
+
+            bufferEl.scrollIntoView();
+
+            if (this.flash_buffer_timeout) {
+                clearTimeout(this.flash_buffer_timeout);
+            }
+
+            this.flash_buffer = buffer;
+            this.flash_buffer_timeout = setTimeout(() => {
+                this.flash_buffer = null;
+                this.flash_buffer_timeout = 0;
+            }, 4800);
         },
         onSearchChannelClick() {
             // If we have no other buffers than the server buffer, take them straight
@@ -471,6 +504,10 @@ export default {
     position: relative;
     display: flex;
     border-left: 3px solid transparent;
+}
+
+.kiwi-statebrowser-channel-flash {
+    animation: kiwi-statebrowser-channel-flash 800ms infinite;
 }
 
 .kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-name {

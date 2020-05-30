@@ -598,6 +598,12 @@
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+@keyframes kiwi-statebrowser-channel-flash {
+    0% { background-color: #fff0; }
+    50% { background-color: #fff3; }
+    100% { background-color: #fff0; }
+}
+
 /* ---- End of statebrowser ---- */
 
 /*  ---- Custom server layout ---- */
