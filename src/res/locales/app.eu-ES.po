@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-05-31 17:31\n"
+"PO-Revision-Date: 2020-05-31 21:21\n"
 
 #: Start
 msgid "start_button"
@@ -135,7 +135,7 @@ msgstr "Ez"
 
 #: Not found.
 msgid "not_found"
-msgstr "Ez da aurkitu"
+msgstr "Ez da aurkitu."
 
 #: Warning!
 msgid "warning"
@@ -271,7 +271,7 @@ msgstr "Orduaren formatua 24 ordukoa"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Emotikonoak erakutsi"
+msgstr "Erakutsi emotikonoan"
 
 #: Block new Private messages
 msgid "settings_block_private"
@@ -491,7 +491,7 @@ msgstr "Ongi Etorria Kiwi IRC-ra! Ezkerreko kanal bat aukeratu."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Erakutsi goera-barra"
+msgstr "Erakutsi egoera-barra"
 
 #: Hide Topic
 msgid "hide_topic"
