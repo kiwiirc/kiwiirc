@@ -21,6 +21,8 @@ module.exports = {
             alias: {
                 vue$: 'vue/dist/vue.common.js',
             },
+            // This prevents yarn link modules from getting linted
+            symlinks: false,
         },
         performance: {
             maxEntrypointSize: 1500000,
