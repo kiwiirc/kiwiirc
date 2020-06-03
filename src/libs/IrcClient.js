@@ -707,6 +707,7 @@ function clientMiddleware(state, network) {
                 'registered_nick',
                 'account',
                 'secure',
+                'certfp',
                 'special',
             ].forEach((prop) => {
                 if (typeof event[prop] !== 'undefined') {
