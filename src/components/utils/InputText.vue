@@ -15,6 +15,8 @@
                     spellcheck="false"
                     class="u-input"
                     @keypress="$emit('keypress', $event)"
+                    @keydown="$emit('keydown', $event)"
+                    @blur="$emit('blur', $event)"
                 >
 
                 <i
@@ -33,6 +35,8 @@
                 type="number"
                 class="u-input"
                 @keypress="$emit('keypress', $event)"
+                @keydown="$emit('keydown', $event)"
+                @blur="$emit('blur', $event)"
             >
             <textarea
                 v-else-if="type==='textarea'"
@@ -40,6 +44,8 @@
                 v-model="currentValue"
                 class="u-input"
                 @keypress="$emit('keypress', $event)"
+                @keydown="$emit('keydown', $event)"
+                @blur="$emit('blur', $event)"
             />
             <input
                 v-else
@@ -51,6 +57,8 @@
                 spellcheck="false"
                 class="u-input"
                 @keypress="$emit('keypress', $event)"
+                @keydown="$emit('keydown', $event)"
+                @blur="$emit('blur', $event)"
             >
 
             <div v-if="$slots.default" class="u-input-text-c">

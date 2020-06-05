@@ -26,6 +26,8 @@
                     v-focus="!nick || !show_password_box"
                     :label="$t('nick')"
                     type="text"
+                    @keydown="onNickKeyDown($event)"
+                    @blur="onNickBlur($event)"
                 />
 
                 <div v-if="showPass && toggablePass" class="kiwi-welcome-simple-input-container">
@@ -104,6 +106,7 @@ export default {
             network: null,
             channel: '',
             nick: '',
+            defaultNick: '',
             password: '',
             showChannel: true,
             showPass: true,
@@ -206,6 +209,7 @@ export default {
         }
 
         this.nick = this.processNickRandomNumber(this.nick || '');
+        this.defaultNick = this.nick;
         this.password = options.password || '';
         this.channel = decodeURIComponent(window.location.hash) || options.channel || '';
         this.showChannel = typeof options.showChannel === 'boolean' ?
@@ -359,6 +363,29 @@ export default {
         },
         handleCaptcha(isReady) {
             this.captchaReady = isReady;
+        },
+        onNickBlur(event) {
+            if (this.nick) {
+                return;
+            }
+            this.nick = this.defaultNick;
+        },
+        onNickKeyDown(event) {
+            if (event.target.selectionStart !== this.nick.length) {
+                return;
+            }
+            if (event.key === 'Escape' && !this.nick) {
+                this.nick = this.defaultNick;
+                return;
+            }
+            let ignoredKeys = ['Enter', 'Tab', 'Escape', 'ArrowLeft', 'ArrowRight'];
+            if (ignoredKeys.indexOf(event.key) !== -1) {
+                return;
+            }
+            if (this.nick !== this.defaultNick) {
+                return;
+            }
+            this.nick = '';
         },
         connectOptions() {
             let options = Object.assign({}, this.$state.settings.startupOptions);
