@@ -354,7 +354,9 @@ export default class BouncerProvider {
                 ircClient.options.tls = this.bnc.tls;
 
                 if (this.bnc.password) {
-                    let password = `${this.bnc.username}/${netname}:${this.bnc.password}`;
+                    let password = netname === 'bnc' ?
+                        `${this.bnc.username}:${this.bnc.password}` :
+                        `${this.bnc.username}/${netname}:${this.bnc.password}`;
                     ircClient.options.password = password;
                 }
 
@@ -390,6 +392,11 @@ export default class BouncerProvider {
 
         state.$on('network.new', (event) => {
             let network = event.network;
+
+            let controller = this.getController();
+            if (!controller) {
+                this.attemptControllerReconnect();
+            }
 
             // Enable BOUNCER on this connection
             network.ircClient.use(bouncerMiddleware());
@@ -447,5 +454,16 @@ export default class BouncerProvider {
         username = username.split('/')[0];
 
         return [username, password];
+    }
+
+    attemptControllerReconnect() {
+        // Find the controller network and try to connect it if disconnected
+        for (let i = 0; i < this.state.networks.length; i++) {
+            let network = this.state.networks[i];
+            if (network.name === 'bnc' && network.state === 'disconnected') {
+                network.connect();
+                break;
+            }
+        }
     }
 }
