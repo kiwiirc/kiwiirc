@@ -73,23 +73,23 @@ export default function bouncerMiddleware() {
 
         // BOUNCER addnetwork Network1 ERR_NAMEINUSE
         if (params[0] === 'addnetwork' && params[2].substr(0, 4) === 'ERR_') {
-            let netName = (params[1] || '').toLowerCase();
+            let netName = (params[1] || '');
             let eventObj = {
                 error: params[2],
                 reason: params[3] || '',
             };
             client.command_handler.emit('bouncer addnetwork error', eventObj);
-            client.command_handler.emit('bouncer addnetwork error ' + netName, eventObj);
+            client.command_handler.emit('bouncer addnetwork error ' + netName.toLowerCase(), eventObj);
         } else if (params[0] === 'addnetwork' && ['end', 'RPL_OK'].indexOf(params[3]) > -1) {
             // BOUNCER addnetwork 5 Network1 RPL_OK
             let netId = (params[1] || '');
-            let netName = (params[2] || '').toLowerCase();
+            let netName = (params[2] || '');
             let eventObj = {
                 networkId: netId,
                 network: netName,
             };
             client.command_handler.emit('bouncer addnetwork ok', eventObj);
-            client.command_handler.emit('bouncer addnetwork ok ' + netName, eventObj);
+            client.command_handler.emit('bouncer addnetwork ok ' + netName.toLowerCase(), eventObj);
         }
     }
 }

@@ -301,7 +301,7 @@ export default class BouncerProvider {
 
             // A newly added network would not have a snapshot name (bncnetid) property set yet.
             // Only save the network if we've entered connection info.
-            if (!snapshot.bncnetid && tags.host && tags.port && tags.nick) {
+            if (!bncnetid && tags.host && tags.port && tags.nick) {
                 // ?? network.connection.bncname = network.name;
                 controller.ircClient.bnc.addNetwork(
                     network.name,
@@ -315,7 +315,7 @@ export default class BouncerProvider {
                     network.connection.bncnetid = networkInfo.networkId;
                     network.name = networkInfo.network;
                 });
-            } else if (snapshot.bncnetid && Object.keys(tags).length > 0) {
+            } else if (bncnetid && Object.keys(tags).length > 0) {
                 controller.ircClient.bnc.saveNetwork(bncnetid, tags);
             }
         });
