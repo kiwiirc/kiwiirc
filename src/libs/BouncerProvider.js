@@ -437,6 +437,8 @@ export default class BouncerProvider {
             }
 
             if (bncnetid) {
+                // The bnc will send the PART so prevent kiwi from doing it
+                event.preventPart = true;
                 controller.ircClient.bnc.closeBuffer(bncnetid, buffer.name);
             }
         });

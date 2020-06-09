@@ -499,7 +499,7 @@ function createNewState() {
                     return;
                 }
 
-                let eventObj = { buffer };
+                let eventObj = { buffer, preventPart: false };
                 state.$emit('buffer.close', eventObj);
 
                 let bufferIdx = network.buffers.indexOf(buffer);
@@ -515,7 +515,7 @@ function createNewState() {
                     messages.splice(messageIdx, 1);
                 }
 
-                if (buffer.isChannel() && buffer.joined) {
+                if (buffer.isChannel() && buffer.joined && !eventObj.preventPart) {
                     network.ircClient.part(buffer.name);
                 }
 
