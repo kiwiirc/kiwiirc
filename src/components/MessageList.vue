@@ -167,6 +167,9 @@ export default {
         },
     },
     watch: {
+        smooth_scroll(n) {
+            console.log('smooth_scroll changed to', n);
+        },
         buffer(newBuffer) {
             console.log('watch.buffer()');
             if (!newBuffer) {
@@ -183,12 +186,7 @@ export default {
             this.smooth_scroll = false;
             this.$nextTick(() => {
                 this.scrollToBottom();
-                this.smooth_scroll = true;
-            });
-        },
-        'buffer.message_count'() {
-            this.$nextTick(() => {
-                this.maybeScrollToBottom();
+                // this.smooth_scroll = true;
             });
         },
     },
@@ -197,8 +195,8 @@ export default {
         this.addCopyListeners();
 
         this.$nextTick(() => {
-            this.smooth_scroll = true;
             this.scrollToBottom();
+            // this.smooth_scroll = true;
         });
 
         this.listen(this.$state, 'mediaviewer.opened', () => {
@@ -377,13 +375,22 @@ export default {
             }
         },
         onThreadScroll(e) {
-            if (Date.now() - this.last_resized < 1000) {
-                console.log('onThreadScroll() return');
-                return;
-            }
-            console.log('onThreadScroll()');
             let el = this.$el;
             let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
+
+            // If we're scrolled to the very bottom then enable smooth_scroll. Otherwise keep it
+            // off so that scrolling to the very bottom is instant when it happens
+            if (scrolledUpByPx === 0) {
+                this.smooth_scroll = true;
+            } else {
+                this.smooth_scroll = false;
+            }
+
+            if (Date.now() - this.last_resized < 1000) {
+                console.log('onThreadScroll() return', el.scrollHeight - (el.offsetHeight + el.scrollTop));
+                return;
+            }
+            console.log('onThreadScroll()', scrolledUpByPx);
 
             if (scrolledUpByPx > BOTTOM_SCROLL_MARGIN) {
                 this.auto_scroll = false;
