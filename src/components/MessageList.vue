@@ -6,73 +6,76 @@
         @scroll.self="onThreadScroll"
         @click.self="onListClick"
     >
-        <div
-            v-if="shouldShowChathistoryTools"
-            class="kiwi-messagelist-scrollback"
-        >
-            <a class="u-link" @click="buffer.requestScrollback()">
-                {{ $t('messages_load') }}
-            </a>
-        </div>
-
-        <div
-            v-for="(message, idx) in filteredMessages"
-            :key="message.id"
-            :class="[
-                'kiwi-messagelist-item',
-                selectedMessages.has(message.id) ?
-                    'kiwi-messagelist-item--selected' :
-                    ''
-            ]"
-        >
+        <div v-resizeobserver="ro">
             <div
-                v-if="shouldShowDateChangeMarker(idx)"
-                class="kiwi-messagelist-seperator"
+                v-if="shouldShowChathistoryTools"
+                class="kiwi-messagelist-scrollback"
             >
-                <span>{{ (new Date(message.time)).toDateString() }}</span>
-            </div>
-            <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator">
-                <span>{{ $t('unread_messages') }}</span>
+                <a class="u-link" @click="buffer.requestScrollback()">
+                    {{ $t('messages_load') }}
+                </a>
             </div>
 
-            <!-- message.template is checked first for a custom component, then each message layout
-                 checks for a message.bodyTemplate custom component to apply only to the body area
-            -->
             <div
-                v-if="message.render() && message.template && message.template.$el"
-                v-rawElement="message.template.$el"
-            />
-            <message-list-message-modern
-                v-else-if="listType === 'modern'"
-                :message="message"
-                :idx="idx"
-                :ml="thisMl"
-            />
-            <message-list-message-inline
-                v-else-if="listType === 'inline'"
-                :message="message"
-                :idx="idx"
-                :ml="thisMl"
-            />
-            <message-list-message-compact
-                v-else-if="listType === 'compact'"
-                :message="message"
-                :idx="idx"
-                :ml="thisMl"
+                v-for="(message, idx) in filteredMessages"
+                :key="message.id"
+                :class="[
+                    'kiwi-messagelist-item',
+                    selectedMessages.has(message.id) ?
+                        'kiwi-messagelist-item--selected' :
+                        ''
+                ]"
+            >
+                <div
+                    v-if="shouldShowDateChangeMarker(idx)"
+                    class="kiwi-messagelist-seperator"
+                >
+                    <span>{{ (new Date(message.time)).toDateString() }}</span>
+                </div>
+                <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator">
+                    <span>{{ $t('unread_messages') }}</span>
+                </div>
+
+                <!-- message.template is checked first for a custom component, then each message
+                    layout checks for a message.bodyTemplate custom component to apply only to the
+                    body area
+                -->
+                <div
+                    v-if="message.render() && message.template && message.template.$el"
+                    v-rawElement="message.template.$el"
+                />
+                <message-list-message-modern
+                    v-else-if="listType === 'modern'"
+                    :message="message"
+                    :idx="idx"
+                    :ml="thisMl"
+                />
+                <message-list-message-inline
+                    v-else-if="listType === 'inline'"
+                    :message="message"
+                    :idx="idx"
+                    :ml="thisMl"
+                />
+                <message-list-message-compact
+                    v-else-if="listType === 'compact'"
+                    :message="message"
+                    :idx="idx"
+                    :ml="thisMl"
+                />
+            </div>
+
+            <transition name="kiwi-messagelist-joinloadertrans">
+                <div v-if="shouldShowJoiningLoader" class="kiwi-messagelist-joinloader">
+                    <LoadingAnimation />
+                </div>
+            </transition>
+
+            <buffer-key
+                v-if="shouldRequestChannelKey"
+                :buffer="buffer"
+                :network="buffer.getNetwork()"
             />
         </div>
-
-        <transition name="kiwi-messagelist-joinloadertrans">
-            <div v-if="shouldShowJoiningLoader" class="kiwi-messagelist-joinloader">
-                <LoadingAnimation />
-            </div>
-        </transition>
-
-        <buffer-key
-            v-if="shouldRequestChannelKey"
-            :buffer="buffer"
-            :network="buffer.getNetwork()"
-        />
     </div>
 </template>
 
@@ -190,6 +193,7 @@ export default {
         this.addCopyListeners();
 
         this.$nextTick(() => {
+            this.smooth_scroll = true;
             this.scrollToBottom();
         });
 
@@ -202,12 +206,11 @@ export default {
                 this.maybeScrollToId(opt.id);
             }
         });
-
-        this.setInterval(() => {
-            this.maybeScrollToBottom();
-        }, 100);
     },
     methods: {
+        ro(e) {
+            this.maybeScrollToBottom();
+        },
         isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
@@ -367,7 +370,6 @@ export default {
             }
         },
         onThreadScroll(e) {
-            console.log('onThreadScroll()', e);
             let el = this.$el;
             let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
 
