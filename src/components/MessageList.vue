@@ -2,6 +2,7 @@
     <div
         :key="'messagelist-' + buffer.name"
         class="kiwi-messagelist"
+        :class="{'kiwi-messagelist--smoothscroll': smooth_scroll}"
         @scroll.self="onThreadScroll"
         @click.self="onListClick"
     >
@@ -72,8 +73,6 @@
             :buffer="buffer"
             :network="buffer.getNetwork()"
         />
-
-        <div ref="ender" />
     </div>
 </template>
 
@@ -109,6 +108,7 @@ export default {
     props: ['buffer'],
     data() {
         return {
+            smooth_scroll: false,
             auto_scroll: true,
             chathistoryAvailable: true,
             hover_nick: '',
@@ -161,12 +161,6 @@ export default {
                 !this.buffer.joined &&
                 this.buffer.getNetwork().state === 'connected';
         },
-        isIos() {
-            return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-        },
-        isIframe() {
-            return window !== window.parent;
-        },
     },
     watch: {
         buffer(newBuffer) {
@@ -180,8 +174,10 @@ export default {
                 newBuffer.flags.has_opened = true;
             }
 
+            this.smooth_scroll = false;
             this.$nextTick(() => {
                 this.scrollToBottom();
+                this.smooth_scroll = true;
             });
         },
         'buffer.message_count'() {
@@ -206,6 +202,10 @@ export default {
                 this.maybeScrollToId(opt.id);
             }
         });
+
+        this.setInterval(() => {
+            this.maybeScrollToBottom();
+        }, 100);
     },
     methods: {
         isHoveringOverMessage(message) {
@@ -366,7 +366,8 @@ export default {
                 this.toggleMessageInfo(message);
             }
         },
-        onThreadScroll() {
+        onThreadScroll(e) {
+            console.log('onThreadScroll()', e);
             let el = this.$el;
             let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
 
@@ -377,16 +378,7 @@ export default {
             }
         },
         scrollToBottom() {
-            if (this.isIos || this.isIframe) {
-                // On iOS using scrollIntoView causes issues with the keyboard pushing
-                // the view upwards resulting in the input box being behind the keyboard
-                //
-                // when inside iframe, scrollIntoView() also scrolls parent window
-
-                this.$el.scrollTop = this.$el.scrollHeight;
-                return;
-            }
-            this.$refs.ender.scrollIntoView(false);
+            this.$el.scrollTop = this.$el.scrollHeight;
         },
         maybeScrollToBottom() {
             if (!this.maybeScrollToBottom_throttled) {
@@ -624,6 +616,10 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     box-sizing: border-box;
     margin-bottom: 25px;
     position: relative;
+}
+
+.kiwi-messagelist--smoothscroll {
+    scroll-behavior: smooth;
 }
 
 .kiwi-messagelist * {

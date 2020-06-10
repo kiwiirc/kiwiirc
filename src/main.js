@@ -107,6 +107,27 @@ Vue.mixin({
     },
 });
 
+// Timer functions that are auto cleaned up when a component is destroyed
+Vue.mixin({
+    beforeDestroy: function beforeDestroy() {
+        (this.timerEvents || []).forEach((tmr) => clearTimeout(tmr));
+    },
+    methods: {
+        setInterval(...args) {
+            this.timerEvents = this.timerEvents || [];
+            let v = setInterval(...args);
+            this.timerEvents.push(v);
+            return v;
+        },
+        setTimeout(...args) {
+            this.timerEvents = this.timerEvents || [];
+            let v = setTimeout(...args);
+            this.timerEvents.push(v);
+            return v;
+        },
+    },
+});
+
 // Make the state available to all components by default
 Vue.mixin({
     computed: {
