@@ -119,6 +119,7 @@ export default {
             timeToClose: false,
             startClosing: false,
             selectedMessages: new Set(),
+            last_resized: 0,
         };
     },
     computed: {
@@ -167,6 +168,7 @@ export default {
     },
     watch: {
         buffer(newBuffer) {
+            console.log('watch.buffer()');
             if (!newBuffer) {
                 return;
             }
@@ -177,6 +179,7 @@ export default {
                 newBuffer.flags.has_opened = true;
             }
 
+            this.auto_scroll = true;
             this.smooth_scroll = false;
             this.$nextTick(() => {
                 this.scrollToBottom();
@@ -190,6 +193,7 @@ export default {
         },
     },
     mounted() {
+        console.log('mounted()');
         this.addCopyListeners();
 
         this.$nextTick(() => {
@@ -209,7 +213,10 @@ export default {
     },
     methods: {
         ro(e) {
+            this.last_resized = Date.now();
+            console.log(e);
             this.maybeScrollToBottom();
+            // this.scrollToBottom();
         },
         isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
@@ -370,6 +377,11 @@ export default {
             }
         },
         onThreadScroll(e) {
+            if (Date.now() - this.last_resized < 1000) {
+                console.log('onThreadScroll() return');
+                return;
+            }
+            console.log('onThreadScroll()');
             let el = this.$el;
             let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
 
