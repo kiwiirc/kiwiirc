@@ -62,7 +62,7 @@ describe('batchedAdd.vue', () => {
                 return done(new Error('Expected 3 batched items, found ' + items.length));
             }
 
-            done();
+            return done();
         };
 
         let batch = batchedAdd(singleItem, batchItems);
