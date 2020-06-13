@@ -290,6 +290,7 @@ export default {
                 direct: connectOptions.direct,
                 path: connectOptions.direct_path || '',
                 gecos: options.gecos,
+                username: options.username,
             });
 
             // Clear the server buffer in case it already existed and contains messages relating to
