@@ -163,6 +163,13 @@ export default class BouncerProvider {
         let buffers = await client.bnc.getBuffers(bncNetwork.connection.bncnetid);
         buffers.forEach((buffer) => {
             let newBuffer = this.state.addBuffer(bncNetwork.id, buffer.name);
+            if (!newBuffer) {
+                // The BNC might be giving up bad buffer names or something, so just make sure
+                // that it's handled if it ever coccurs
+                log.error(`Couldn't add BNC network, '${buffer.name}'`, buffer);
+                return;
+            }
+
             if (buffer.joined) {
                 newBuffer.enabled = true;
                 newBuffer.joined = true;
