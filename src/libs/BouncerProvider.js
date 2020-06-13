@@ -59,6 +59,11 @@ export default class BouncerProvider {
             this.bnc.password = password;
         }
 
+        // Enable BOUNCER on existing connections
+        this.state.networks.forEach((network) => {
+            network.ircClient.use(bouncerMiddleware());
+        });
+
         // this.monitorNetworkChanges();
         this.listenToState();
     }
@@ -353,7 +358,8 @@ export default class BouncerProvider {
                 ircClient.options.port = this.bnc.port;
                 ircClient.options.tls = this.bnc.tls;
 
-                if (this.bnc.password) {
+                // Only re-write the server password for non-bnc controller networks
+                if (this.bnc.password && !event.network.is_bnc) {
                     let password = `${this.bnc.username}/${netname}:${this.bnc.password}`;
                     ircClient.options.password = password;
                 }

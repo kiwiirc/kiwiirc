@@ -104,6 +104,7 @@ function createNewState() {
                                 password: network.connection.password,
                                 direct: network.connection.direct,
                                 encoding: network.connection.encoding,
+                                bncnetid: network.connection.bncnetid,
                             },
                             auto_commands: network.auto_commands,
                             settings: _.cloneDeep(network.settings),
