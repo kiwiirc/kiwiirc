@@ -55,7 +55,7 @@ describe('batchedAdd.vue', () => {
         };
         let batchItems = (items) => {
             if (singleCount !== 102) {
-                return done(new Error('Expected 100 single items, found ' + singleCount));
+                return done(new Error('Expected 102 single items, found ' + singleCount));
             }
 
             if (items.length === 1) {
@@ -72,6 +72,7 @@ describe('batchedAdd.vue', () => {
 
         setTimeout(() => batch('item1'), 10);
         setTimeout(() => batch('item2'), 20);
+        // The above loop + 2 timeouts = 3 ticks, the below are further ticks to be batched
         setTimeout(() => batch('item3'), 30);
         setTimeout(() => batch('item4'), 40);
         setTimeout(() => batch('item5'), 50);
