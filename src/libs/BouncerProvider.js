@@ -159,12 +159,12 @@ export default class BouncerProvider {
 
         // Remove any networks we have locally but no longer exist on the BNC
         this.state.networks.forEach((existingNet) => {
-            let isNetworkInBncList = !bncNetworks.find((n) => (
+            let isNetworkInBncList = !!bncNetworks.find((n) => (
                 n.networkId === existingNet.connection.bncnetid
             ));
 
             if (existingNet !== network && !isNetworkInBncList) {
-                log(`Network '${existingNet.name}' (${existingNet.id}) was not in the BNC, removing locally`);
+                log.debug(`Network '${existingNet.name}' (${existingNet.id}) was not in the BNC, removing locally`);
                 this.state.removeNetwork(existingNet.id);
             }
         });
@@ -176,10 +176,17 @@ export default class BouncerProvider {
     async syncBncNetwork(bncNetwork) {
         let client = bncNetwork.ircClient;
 
-        log(`Syncing network ${bncNetwork.name} from the BNC`);
+        log.debug(`Syncing network ${bncNetwork.name} from the BNC`);
 
         let buffers = await client.bnc.getBuffers(bncNetwork.connection.bncnetid);
         buffers.forEach((buffer) => {
+            // The list of buffers also include the network name. Make use of it and make sure our
+            // network name is up to date while we can. It may have changed elsewhere
+            if (bncNetwork.name !== buffer.network) {
+                log(`Detected network name change while syncing buffers. ${bncNetwork.name} > ${buffer.network}`);
+                bncNetwork.name = buffer.network;
+            }
+
             let newBuffer = this.state.addBuffer(bncNetwork.id, buffer.name);
             if (!newBuffer) {
                 // The BNC might be giving up bad buffer names or something, so just make sure
@@ -252,9 +259,9 @@ export default class BouncerProvider {
             net.connection.server = network.host;
             net.connection.port = parseInt(network.port, 10);
             net.connection.tls = network.tls;
-            net.connection.nick = network.nick;
+            net.connection.nick = network.account || network.nick;
             net.connection.password = network.password || '';
-            net.nick = network.nick;
+            net.nick = network.currentNick || network.nick || '';
             net.password = network.account_password;
         }
 
@@ -278,6 +285,7 @@ export default class BouncerProvider {
                 host: network.connection.server,
                 port: network.connection.port,
                 tls: network.connection.tls,
+                account: network.connection.nick,
                 account_password: network.password,
                 server_password: network.connection.password,
                 nick: network.connection.nick,
@@ -291,7 +299,7 @@ export default class BouncerProvider {
     saveState() {
         let controller = this.getController();
         if (!controller) {
-            log('No controller available to save networks');
+            log.debug('No controller available to save networks');
             return;
         }
 
@@ -327,6 +335,9 @@ export default class BouncerProvider {
             if (network.password !== snapshot.account_password) {
                 tags.account_password = network.password;
             }
+            if (network.connection.nick !== snapshot.account) {
+                tags.account = network.connection.nick;
+            }
             if (network.connection.password !== snapshot.server_password) {
                 tags.password = network.connection.password;
             }
@@ -340,6 +351,7 @@ export default class BouncerProvider {
             // A newly added network would not have a snapshot name (bncnetid) property set yet.
             // Only save the network if we've entered connection info.
             if (!snapshot.bncnetid && tags.host && tags.port && tags.nick) {
+                log(`Saving new network ${network.name} to the BNC`);
                 // ?? network.connection.bncname = network.name;
                 controller.ircClient.bnc.addNetwork(
                     network.name,
@@ -354,6 +366,7 @@ export default class BouncerProvider {
                     network.name = networkInfo.network;
                 });
             } else if (snapshot.bncnetid && Object.keys(tags).length > 0) {
+                log(`Updating network ${network.name} on the BNC`);
                 controller.ircClient.bnc.saveNetwork(bncnetid, tags);
             }
         });
@@ -407,7 +420,7 @@ export default class BouncerProvider {
         state.$on('network.connecting', (event) => {
             let controller = this.getController();
             if (!controller) {
-                log('No controller available to save network states');
+                log.debug('No controller available to save network states');
                 return;
             }
 
@@ -455,13 +468,12 @@ export default class BouncerProvider {
         state.$on('network.removed', (event) => {
             let controller = this.getController();
             if (!controller) {
-                log('No controller available to save network states');
+                log.debug('No controller available to save network states');
                 return;
             }
 
             if (event.network.connection.bncnetid) {
-                log('Skipping removal of BNC network while in dev');
-                // controller.ircClient.bnc.removeNetwork(event.network.connection.bncnetid);
+                controller.ircClient.bnc.removeNetwork(event.network.connection.bncnetid);
             }
         });
 
@@ -472,7 +484,7 @@ export default class BouncerProvider {
 
             let controller = this.getController();
             if (!controller) {
-                log('No controller available to save buffer states');
+                log.debug('No controller available to save buffer states');
                 return;
             }
 
