@@ -296,7 +296,7 @@ export default {
 			window.onunload = () => {
 				this.$state.networks.forEach((net) => {
 					if (net.connection.direct && net.state === 'connected') {
-						net.ircClient.raw('QUIT', this.$state.setting('quitMessage') || 'client closed');
+						net.ircClient.raw('QUIT', this.$state.setting('quitMessage') || 'Client Closed Connection');
 					}
 				});
 			};
