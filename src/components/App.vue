@@ -291,7 +291,6 @@ export default {
                 if (this.$state.setting('warnOnExit')) {
                     return this.$t('window_unload');
                 }
-				
                 return undefined;
             };
 			window.onunload = () => {
