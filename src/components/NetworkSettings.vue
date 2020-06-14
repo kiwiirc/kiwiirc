@@ -16,6 +16,13 @@
                     :network="network"
                 />
 
+                <div v-if="network.editable_name" class="kiwi-networksettings-networkname">
+                    <input-text
+                        v-model="network.name"
+                        :label="$t('network_name')"
+                    />
+                </div>
+
                 <server-selector
                     :connection="network.connection"
                     :network-list="network_list"

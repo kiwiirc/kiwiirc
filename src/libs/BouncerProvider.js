@@ -265,6 +265,7 @@ export default class BouncerProvider {
             net.password = network.account_password;
         }
 
+        net.editable_name = true;
         return net;
     }
 
@@ -313,6 +314,12 @@ export default class BouncerProvider {
 
             // Don't save any hidden networks. This includes the BNC controller network
             if (network.hidden) {
+                return;
+            }
+
+            // Every network needs a valid name
+            if (!network.name.match(/^[a-zA-Z_0-9.]+$/)) {
+                log.debug(`Network ${network.id} has an invalid name. Not saving to the BNC`);
                 return;
             }
 
@@ -445,6 +452,8 @@ export default class BouncerProvider {
 
             // Enable BOUNCER on this connection
             network.ircClient.use(bouncerMiddleware());
+
+            network.editable_name = true;
 
             // Update the network name to NetworkN if hasn't got once from the bouncer yet
             if (!network.connection.bncnetid) {
