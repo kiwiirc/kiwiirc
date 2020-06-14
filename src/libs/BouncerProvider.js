@@ -40,6 +40,8 @@ export default class BouncerProvider {
     }
 
     enable(server, port, tls, direct, path) {
+        log(`Using a Bouncer Provider with server ${server}:${port}`);
+
         this.bnc.server = server;
         this.bnc.port = port || 6667;
         this.bnc.tls = !!tls;
@@ -95,6 +97,7 @@ export default class BouncerProvider {
         }
 
         if (!client.network.cap.isEnabled('bouncer')) {
+            log.debug(`BOUNCER cap not available on network ${network.name}, not using for BNC`);
             return;
         }
 
@@ -110,7 +113,7 @@ export default class BouncerProvider {
             this.bnc.password = password;
         }
 
-        // If this is a BNC network, sync it before anything else so that we get all it's info
+        // If this is a BNC network, sync it before anything else so that we get all its info
         // and buffer states as soon as possible
         if (client.bnc.hasNetwork()) {
             await this.syncBncNetwork(network);
@@ -151,7 +154,20 @@ export default class BouncerProvider {
 
         // populate network list from the controller connection
         let bncNetworks = await client.bnc.getNetworks();
+        log.debug(`Got ${bncNetworks.length} networks from the BNC`, bncNetworks);
         bncNetworks.forEach((bncNet) => this.addNetworkToState(bncNet));
+
+        // Remove any networks we have locally but no longer exist on the BNC
+        this.state.networks.forEach((existingNet) => {
+            let isNetworkInBncList = !bncNetworks.find((n) => (
+                n.networkId === existingNet.connection.bncnetid
+            ));
+
+            if (existingNet !== network && !isNetworkInBncList) {
+                log(`Network '${existingNet.name}' (${existingNet.id}) was not in the BNC, removing locally`);
+                this.state.removeNetwork(existingNet.id);
+            }
+        });
 
         // start monitoring network changes
         this.monitorNetworkChanges();
@@ -159,6 +175,8 @@ export default class BouncerProvider {
 
     async syncBncNetwork(bncNetwork) {
         let client = bncNetwork.ircClient;
+
+        log(`Syncing network ${bncNetwork.name} from the BNC`);
 
         let buffers = await client.bnc.getBuffers(bncNetwork.connection.bncnetid);
         buffers.forEach((buffer) => {
@@ -229,7 +247,15 @@ export default class BouncerProvider {
                 account_password: network.account_password,
             });
         } else {
-            // TODO: Update our existing network
+            // Make sure our existing network is all up to date
+            net.name = network.name;
+            net.connection.server = network.host;
+            net.connection.port = parseInt(network.port, 10);
+            net.connection.tls = network.tls;
+            net.connection.nick = network.nick;
+            net.connection.password = network.password || '';
+            net.nick = network.nick;
+            net.password = network.account_password;
         }
 
         return net;
@@ -434,7 +460,8 @@ export default class BouncerProvider {
             }
 
             if (event.network.connection.bncnetid) {
-                controller.ircClient.bnc.removeNetwork(event.network.connection.bncnetid);
+                log('Skipping removal of BNC network while in dev');
+                // controller.ircClient.bnc.removeNetwork(event.network.connection.bncnetid);
             }
         });
 

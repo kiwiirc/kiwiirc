@@ -55,7 +55,7 @@ function makeLogger(label, rootLogger) {
     };
 
     logger.setLevel = function setLevel(newLevel) {
-        logger.elvel = newLevel;
+        logger.level = newLevel;
     };
 
     logger.namespace = function namespace(newLabel) {
