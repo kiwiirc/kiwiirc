@@ -195,7 +195,7 @@ export default class BouncerProvider {
             if (!newBuffer) {
                 // The BNC might be giving up bad buffer names or something, so just make sure
                 // that it's handled if it ever coccurs
-                log.error(`Couldn't add BNC network, '${buffer.name}'`, buffer);
+                log.error(`Couldn't add BNC buffer, '${buffer.name}'`, buffer);
                 return;
             }
 
