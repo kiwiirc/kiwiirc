@@ -37,6 +37,7 @@ export default class BouncerProvider {
 
         state.$on('irc.motd', this.onNetworkMotd.bind(this));
         state.$on('irc.bouncer state', this.onNetworkState.bind(this));
+        state.$on('irc.bouncer networks', this.onBouncerNetworks.bind(this));
     }
 
     enable(server, port, tls, direct, path) {
@@ -152,8 +153,11 @@ export default class BouncerProvider {
             network.is_bnc = false;
         }
 
-        // populate network list from the controller connection
-        let bncNetworks = await client.bnc.getNetworks();
+        // onBouncerNetworks will pick up the event handler for this
+        client.bnc.getNetworks();
+    }
+
+    onBouncerNetworks(bncNetworks) {
         log.debug(`Got ${bncNetworks.length} networks from the BNC`, bncNetworks);
         bncNetworks.forEach((bncNet) => this.addNetworkToState(bncNet));
 
@@ -163,7 +167,7 @@ export default class BouncerProvider {
                 n.networkId === existingNet.connection.bncnetid
             ));
 
-            if (existingNet !== network && !isNetworkInBncList) {
+            if (!existingNet.is_bnc && !isNetworkInBncList) {
                 log.debug(`Network '${existingNet.name}' (${existingNet.id}) was not in the BNC, removing locally`);
                 this.state.removeNetwork(existingNet.id);
             }
