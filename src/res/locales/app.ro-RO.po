@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2020-06-15 20:22\n"
+"PO-Revision-Date: 2020-06-15 20:31\n"
 
 #: Start
 msgid "start_button"
@@ -801,7 +801,7 @@ msgstr "S-a conectat via SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "În canalele"
+msgstr "În canalele {{channels}}"
 
 #: Access level
 msgid "user_access"
