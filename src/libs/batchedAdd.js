@@ -59,7 +59,7 @@ export default function batchedAdd(singleFn, batchedFn, numInsertsSec = 3) {
             maybeStartLoop();
         } else {
             inTick = true;
-            setInterval(() => {
+            setTimeout(() => {
                 inTick = false;
             });
             singleFn(item);
