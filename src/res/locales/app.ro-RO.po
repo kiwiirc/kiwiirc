@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2020-06-15 19:51\n"
+"PO-Revision-Date: 2020-06-15 20:22\n"
 
 #: Start
 msgid "start_button"
@@ -509,7 +509,7 @@ msgstr "Setările canalului"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Alătură-te unui canal"
+msgstr "Alătură-te canalului"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -793,7 +793,7 @@ msgstr "Este un operator"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Te-ai conectat la {{server}} {{info}}"
+msgstr "S-a conectat la serverul {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
