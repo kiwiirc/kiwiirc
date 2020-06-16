@@ -104,6 +104,7 @@ function createNewState() {
                                 password: network.connection.password,
                                 direct: network.connection.direct,
                                 encoding: network.connection.encoding,
+                                bncnetid: network.connection.bncnetid,
                             },
                             auto_commands: network.auto_commands,
                             settings: _.cloneDeep(network.settings),
@@ -470,6 +471,10 @@ function createNewState() {
             },
 
             addBuffer(networkid, bufferName) {
+                if (!bufferName) {
+                    return false;
+                }
+
                 // If we already have this buffer, don't re-add it
                 let buffer = this.getBufferByName(networkid, bufferName);
                 if (buffer) {

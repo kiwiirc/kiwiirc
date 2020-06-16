@@ -1,10 +1,13 @@
 'kiwi public';
 
 /**
- * batchedAdd prevents a flood of new inserts into state. After X inserts/sec, batch
- * each second worth of new items at the same time.
+ * batchedAdd prevents a flood of new inserts into state. Based on JS ticks, inserts /sec are
+ * counted by each JS tick that inserts an item. Eg. 10 inserts in 1 tick = 1 count. 10 inserts
+ * on different JS ticks = 10 counts.
+ * After X counts/sec, batch each second worth of new items at the same time.
  */
 export default function batchedAdd(singleFn, batchedFn, numInsertsSec = 3) {
+    let inTick = false;
     let queue = [];
     let numInLastSec = 0;
     let queueLoopTmr = null;
@@ -46,13 +49,19 @@ export default function batchedAdd(singleFn, batchedFn, numInsertsSec = 3) {
     }
 
     function batchFn(item) {
-        numInLastSec++;
+        if (!inTick) {
+            numInLastSec++;
+        }
 
         // If already queuing or we reached our limit on items/sec, queue the item
         if (queue.length || numInLastSec > numInsertsSec) {
             queue.push(item);
             maybeStartLoop();
         } else {
+            inTick = true;
+            setTimeout(() => {
+                inTick = false;
+            });
             singleFn(item);
             resetAddCounter();
         }

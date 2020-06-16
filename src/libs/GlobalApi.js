@@ -145,6 +145,10 @@ export default class GlobalApi extends EventEmitter {
         Logger.setLevel(newLevel);
     }
 
+    get log() {
+        return Logger;
+    }
+
     /**
      * Add a DOM element to different parts of the Kiwi UI
      * - addUi('input', domElement)

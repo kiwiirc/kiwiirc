@@ -6,12 +6,14 @@ msgstr ""
 "X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: el\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 11\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2020-05-21 00:21\n"
+"PO-Revision-Date: 2020-06-14 13:10\n"
 
 #: Start
 msgid "start_button"
@@ -624,6 +626,10 @@ msgstr "Δεν ήταν δυνατή η σύνδεση με αυτόν τον δ
 #: Connect To Network
 msgid "network_connect"
 msgstr "Σύνδεση στο Δίκτυο"
+
+#: Network Name
+msgid "network_name"
+msgstr "Όνομα Δικτύου"
 
 #: Close options
 msgid "side_close"
