@@ -193,7 +193,7 @@ export default {
 
         // Take some settings from a previous network if available
         let previousNet = null;
-        if (options.server.trim()) {
+        if (connectOptions.hostname.trim()) {
             previousNet = this.$state.getNetworkFromAddress(connectOptions.hostname.trim());
         }
 
