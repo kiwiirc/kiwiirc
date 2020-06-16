@@ -194,7 +194,7 @@ export default {
             return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
         },
         formattedRealname() {
-            let blocks = parseMessage(this.user.realname || '', { extras: false });
+            let blocks = parseMessage(this.network, this.user.realname || '', { extras: false });
             let content = toHtml(blocks, false);
             return content;
         },
@@ -251,7 +251,7 @@ export default {
         userChannels() {
             let channels = this.user.channels.trim().split(' ');
             for (let i = 0; i < channels.length; i++) {
-                channels[i] = TextFormatting.linkifyChannels(channels[i]);
+                channels[i] = TextFormatting.linkifyChannels(this.network, channels[i]);
             }
             return channels.join(' ');
         },
