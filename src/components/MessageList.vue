@@ -98,7 +98,7 @@ let log = Logger.namespace('MessageList.vue');
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
-const BOTTOM_SCROLL_MARGIN = 50;
+const BOTTOM_SCROLL_MARGIN = 60;
 
 export default {
     components: {
@@ -113,13 +113,14 @@ export default {
         return {
             smooth_scroll: false,
             auto_scroll: true,
+            force_smooth_scroll: null,
+            lastScrolledUpByPx: 0,
             chathistoryAvailable: true,
             hover_nick: '',
             message_info_open: null,
             timeToClose: false,
             startClosing: false,
             selectedMessages: new Set(),
-            last_resized: 0,
         };
     },
     computed: {
@@ -167,6 +168,9 @@ export default {
         },
     },
     watch: {
+        auto_scroll(n) {
+            console.log('auto_scroll changed to', n);
+        },
         smooth_scroll(n) {
             console.log('smooth_scroll changed to', n);
         },
@@ -183,10 +187,9 @@ export default {
             }
 
             this.auto_scroll = true;
-            this.smooth_scroll = false;
+            this.force_smooth_scroll = false;
             this.$nextTick(() => {
                 this.scrollToBottom();
-                // this.smooth_scroll = true;
             });
         },
     },
@@ -209,13 +212,10 @@ export default {
             }
         });
     },
+    beforeUpdate() {
+        this.checkScrollingState();
+    },
     methods: {
-        ro(e) {
-            this.last_resized = Date.now();
-            console.log(e);
-            this.maybeScrollToBottom();
-            // this.scrollToBottom();
-        },
         isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },
@@ -374,29 +374,57 @@ export default {
                 this.toggleMessageInfo(message);
             }
         },
-        onThreadScroll(e) {
+        checkScrollingState() {
             let el = this.$el;
             let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
+            this.lastScrolledUpByPx = scrolledUpByPx;
+            console.log('beforeUpdate()', scrolledUpByPx);
 
-            // If we're scrolled to the very bottom then enable smooth_scroll. Otherwise keep it
-            // off so that scrolling to the very bottom is instant when it happens
-            if (scrolledUpByPx === 0) {
-                this.smooth_scroll = true;
-            } else {
-                this.smooth_scroll = false;
-            }
-
-            if (Date.now() - this.last_resized < 1000) {
-                console.log('onThreadScroll() return', el.scrollHeight - (el.offsetHeight + el.scrollTop));
-                return;
-            }
-            console.log('onThreadScroll()', scrolledUpByPx);
-
+            // We need to know at this point (before the DOM has updated with new messages) if we
+            // are at the bottom of the messagelist or not, otherwise once the DOM has updated then
+            // it is too late to determine if we should auto scroll down
             if (scrolledUpByPx > BOTTOM_SCROLL_MARGIN) {
                 this.auto_scroll = false;
             } else {
                 this.auto_scroll = true;
             }
+
+            if (this.force_smooth_scroll !== null) {
+                this.smooth_scroll = this.force_smooth_scroll;
+                this.force_smooth_scroll = null;
+            } else if (scrolledUpByPx < BOTTOM_SCROLL_MARGIN) {
+                this.smooth_scroll = true;
+            } else {
+                this.smooth_scroll = false;
+            }
+        },
+        ro(e) {
+            // The messagelist has resized so check if we should auto scroll down
+            console.log('ro()', this.lastScrolledUpByPx);
+            this.maybeScrollToBottom();
+        },
+        onThreadScroll(e) {
+            let el = this.$el;
+            let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
+            // let lastScrolledUpByPx = this.lastScrolledUpByPx;
+            // this.lastScrolledUpByPx = scrolledUpByPx;
+
+            // If we're scrolled to the very bottom then enable smooth_scroll. Otherwise keep it
+            // off so that scrolling to the very bottom is instant when needed
+            if (scrolledUpByPx === 0) {
+                // this.smooth_scroll = true;
+            } else {
+                // this.smooth_scroll = false;
+            }
+
+            console.log('onThreadScroll()', scrolledUpByPx);
+            /*
+            if (scrolledUpByPx > BOTTOM_SCROLL_MARGIN) {
+                this.auto_scroll = false;
+            } else {
+                this.auto_scroll = true;
+            }
+            */
         },
         scrollToBottom() {
             this.$el.scrollTop = this.$el.scrollHeight;
