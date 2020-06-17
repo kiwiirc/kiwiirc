@@ -9,9 +9,14 @@
             v-if="shouldShowChathistoryTools"
             class="kiwi-messagelist-scrollback"
         >
-            <a class="u-link" @click="buffer.requestScrollback()">
+            <a
+                v-if="!buffer.flag('is_requesting_chathistory')"
+                class="u-link"
+                @click="buffer.requestScrollback()"
+            >
                 {{ $t('messages_load') }}
             </a>
+            <a v-else class="u-link">...</a>
         </div>
 
         <div
