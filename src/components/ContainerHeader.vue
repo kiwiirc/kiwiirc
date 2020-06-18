@@ -183,7 +183,8 @@ export default {
             return this.buffer.getNetwork().state === 'connected';
         },
         formattedTopic: function formattedTopic() {
-            let blocks = parseMessage(this.buffer.topic, { extras: false });
+            let network = this.buffer.getNetwork();
+            let blocks = parseMessage(network, this.buffer.topic, { extras: false });
             let content = toHtml(blocks);
             return content;
         },

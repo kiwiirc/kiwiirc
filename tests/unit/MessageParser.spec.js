@@ -1,6 +1,9 @@
+import getState from '@/libs/state';
 import parseMessage from '@/libs/MessageParser';
 
 describe('MessageParser.js', () => {
+    let state = getState();
+    let network = state.addNetwork('test', 'nick', {});
     it('should return valid channel blocks', () => {
         let tests = [
             ['#channel', '#channel'],
@@ -16,7 +19,7 @@ describe('MessageParser.js', () => {
         ];
 
         tests.forEach((c) => {
-            let blocks = parseMessage(c[0]);
+            let blocks = parseMessage(network, c[0]);
             let channelBlocks = blocks.filter((b) => b.type === 'channel');
 
             expect(channelBlocks.length).toEqual(1);
@@ -43,7 +46,7 @@ describe('MessageParser.js', () => {
         ];
 
         tests.forEach((c) => {
-            let blocks = parseMessage(c[0]);
+            let blocks = parseMessage(network, c[0]);
             let urlBlocks = blocks.filter((b) => b.type === 'url');
             let compare = c.length >= 2 ? c[1] : c[0];
 
@@ -61,7 +64,7 @@ describe('MessageParser.js', () => {
         let tests = ['test', 'example.com', 'test:8080', '127.0.0.1/test.html'];
 
         tests.forEach((c) => {
-            let blocks = parseMessage(c[0]);
+            let blocks = parseMessage(network, c[0]);
             let urlBlocks = blocks.filter((b) => b.type === 'url');
             expect(urlBlocks.length).toEqual(0);
         });
@@ -85,7 +88,7 @@ describe('MessageParser.js', () => {
         ];
 
         tests.forEach((c) => {
-            let blocks = parseMessage(c[0], {}, users);
+            let blocks = parseMessage(network, c[0], {}, users);
             let userBlocks = blocks.filter((b) => b.type === 'user');
             let compare = c.length === 2 ? c[1] : c[0];
 
@@ -104,7 +107,7 @@ describe('MessageParser.js', () => {
         let tests = ['notauser', 'ttestnick', 'testnick11', 'ttestnick11'];
 
         tests.forEach((c) => {
-            let blocks = parseMessage(c[0], {}, users);
+            let blocks = parseMessage(network, c[0], {}, users);
             let userBlocks = blocks.filter((b) => b.type === 'user');
 
             expect(userBlocks.length).toEqual(0);

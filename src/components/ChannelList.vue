@@ -158,7 +158,7 @@ export default {
             let showModes = this.$state.setting('showChanlistModes');
 
             let topic = showModes ? rawTopic : rawTopic.replace(/^\[([^\]]+)\] ?/, '');
-            let blocks = parseMessage(topic, { extras: false });
+            let blocks = parseMessage(this.network, topic, { extras: false });
             let content = toHtml(blocks);
             return content;
         },

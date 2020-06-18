@@ -1,6 +1,7 @@
 /** @module */
 
 import Vue from 'vue';
+import _ from 'lodash';
 import { def } from './common';
 import * as IrcClient from '../IrcClient';
 
@@ -53,6 +54,7 @@ export default class NetworkState {
         def(this, 'userDict', userDict, false);
         def(this, 'bufferDict', bufferDict, false);
         def(this, 'frameworkClient', null, true);
+        def(this, 'channelRegex', null, true);
 
         def(this, 'users', Object.create(null), (newVal) => {
             appState.$set(userDict.networks, this.id, newVal);
@@ -62,6 +64,12 @@ export default class NetworkState {
         def(this, 'pendingPms', [], false);
 
         bufferDict.$set(bufferDict.networks, this.id, []);
+
+        // Set a default channelRegex
+        this.updateChannelRegex();
+
+        // Listen for the end of ISupport to update channelRegex
+        this.listenForIsupport();
     }
 
     get ircClient() {
@@ -150,5 +158,24 @@ export default class NetworkState {
 
     userByName(nick) {
         return this.appState.getUser(this.id, nick);
+    }
+
+    listenForIsupport() {
+        const updateChannelRegex = _.debounce(this.updateChannelRegex.bind(this), 200);
+        this.appState.$on('irc.server options', updateChannelRegex);
+    }
+
+    updateChannelRegex() {
+        const netOpts = this.ircClient.network.options;
+        let channelPrefixes = netOpts.CHANTYPES && netOpts.CHANTYPES.length > 0 ?
+            netOpts.CHANTYPES.join('') :
+            '#&';
+
+        let userPrefixes = netOpts.PREFIX && netOpts.PREFIX.length > 0 ?
+            netOpts.PREFIX.map((p) => p.symbol).join('') :
+            '@+~&%}';
+
+        // Regex: /(^|\s)([@+~&%}]*)([#&][^ .,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i
+        this.channelRegex = new RegExp('(^|\\s)([' + userPrefixes + ']*)([' + channelPrefixes + '][^ .,\\007<>\\n\\r]+?)([:;.,<>\\n\\r]+)?$', 'i');
     }
 }
