@@ -383,6 +383,33 @@ function clientMiddleware(state, network) {
             }
         }
 
+        if (command.toLowerCase() === 'batch start chathistory' && client.chathistory) {
+            // We have a new batch of messages. To prevent duplicate messages being shown, we remove
+            // all messages we have locally in the range of these new messages so that the new block
+            // of messages we recieved are displayed accurately. Each message in the block will
+            // trigger a 'message' event after this.
+            let startTime = 0;
+            let endTime = 0;
+            event.commands.forEach((message) => {
+                if (message.time && message.time > endTime) {
+                    endTime = message.time;
+                }
+
+                if (message.time && message.time < startTime) {
+                    startTime = message.time;
+                }
+            });
+
+            if (!startTime || !endTime) {
+                return;
+            }
+
+            let buffer = state.getBufferByName(networkid, event.params[0]);
+            if (buffer) {
+                buffer.clearMessageRange(startTime, endTime);
+            }
+        }
+
         if (command === 'message') {
             let isPrivateMessage = false;
             let bufferName = event.from_server ? '*' : event.target;

@@ -134,6 +134,22 @@ export default class BufferState {
         this.messagesObj.messageIds = Object.create(null);
     }
 
+    // Remove a block of messages between a time (server-time) range. Inclusive.
+    clearMessageRange(startTime, endTime) {
+        this.messagesObj.messages = this.messagesObj.messages.filter((message) => {
+            if (message.server_time < startTime || message.server_time > endTime) {
+                return true;
+            }
+
+            // This message will be removed
+            delete this.messagesObj.messageIds[message.id];
+            return false;
+        });
+
+        // Mark that something changed
+        this.message_count++;
+    }
+
     isServer() {
         return this.name === '*';
     }
