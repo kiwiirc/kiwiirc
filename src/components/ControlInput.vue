@@ -631,17 +631,14 @@ export default {
             return list;
         },
         startTyping() {
-            if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
+            let network = this.buffer.getNetwork();
+            if (!network.ircClient.network.cap.isEnabled('message-tags')) {
                 return;
             }
-            if (!this.buffer.setting('share_typing')) {
+            if (!this.buffer || !this.buffer.shouldShareTyping()) {
                 return;
             }
-            let buffer = this.buffer;
-            let network = buffer.getNetwork();
-            if (!buffer || (!buffer.isChannel() && !buffer.isQuery())) {
-                return;
-            }
+
             if (this.typingTimer) {
                 clearTimeout(this.typingTimer);
                 this.typingTimer = null;
@@ -652,21 +649,16 @@ export default {
                 return;
             }
 
-            network.ircClient.typing.start(buffer.name);
+            network.ircClient.typing.start(this.buffer.name);
 
             this.lastTypingTime = Date.now();
         },
         stopTyping(sendStopPause) {
-            if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
+            let network = this.buffer.getNetwork();
+            if (!network.ircClient.network.cap.isEnabled('message-tags')) {
                 return;
             }
-            if (!this.buffer.setting('share_typing')) {
-                return;
-            }
-            let buffer = this.buffer;
-            let network = buffer.getNetwork();
-
-            if (!buffer || (!buffer.isChannel() && !buffer.isQuery())) {
+            if (!this.buffer || !this.buffer.shouldShareTyping()) {
                 return;
             }
 
@@ -682,8 +674,8 @@ export default {
             }
 
             this.$refs.input.getRawText().trim() ?
-                network.ircClient.typing.pause(buffer.name) :
-                network.ircClient.typing.stop(buffer.name);
+                network.ircClient.typing.pause(this.buffer.name) :
+                network.ircClient.typing.stop(this.buffer.name);
         },
     },
 };
