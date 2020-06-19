@@ -86,6 +86,7 @@ export default class BufferState {
             if (event.buffer === this) {
                 this.state.$off('network.connecting', onNetworkConnectingBound);
                 this.state.$off('buffer.close', onBufferCloseBound);
+                this.state.$off('irc.motd', onNetworkMotdBound);
             }
         }
 
