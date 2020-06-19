@@ -20,7 +20,7 @@
                 />
                 <div
                     :class="{
-                        'kiwi-header-option--active': sidebarState.sidebarSection === 'about'
+                        'kiwi-header-option--active': sidebarSection === 'about'
                     }"
                     class="kiwi-header-option kiwi-header-option-about"
                 >
@@ -30,8 +30,8 @@
                 </div>
                 <div
                     :class="{
-                        'kiwi-header-option--active': sidebarState.sidebarSection === 'nicklist'
-                            || sidebarState.sidebarSection === 'user'
+                        'kiwi-header-option--active': sidebarSection === 'nicklist'
+                            || sidebarSection === 'user'
                     }"
                     class="kiwi-header-option kiwi-header-option-nicklist"
                 >
@@ -45,7 +45,7 @@
                 </div>
                 <div
                     :class="{
-                        'kiwi-header-option--active': sidebarState.sidebarSection === 'settings'
+                        'kiwi-header-option--active': sidebarSection === 'settings'
                     }"
                     class="kiwi-header-option kiwi-header-option-settings"
                 >
@@ -118,6 +118,17 @@
             </div>
             <div :key="buffer.id" class="kiwi-header-options">
                 <div
+                    v-if="userOnline"
+                    :class="{
+                        'kiwi-header-option--active': sidebarSection === 'user'
+                    }"
+                    class="kiwi-header-option kiwi-header-option-user"
+                >
+                    <a @click="toggleUser()">
+                        <i class="fa fa-user" aria-hidden="true" />
+                    </a>
+                </div>
+                <div
                     v-for="plugin in pluginUiQueryElements"
                     :key="plugin.id"
                     v-rawElement="plugin.el"
@@ -165,7 +176,7 @@ export default {
         AwayStatusIndicator,
     },
     props: ['buffer', 'sidebarState'],
-    data: function data() {
+    data() {
         return {
             pluginUiChannelElements: GlobalApi.singleton().channelHeaderPlugins,
             pluginUiQueryElements: GlobalApi.singleton().queryHeaderPlugins,
@@ -175,20 +186,27 @@ export default {
         };
     },
     computed: {
-        isJoined: function isJoined() {
+        isJoined() {
             let buffer = this.buffer;
             return buffer.getNetwork().state === 'connected' && buffer.joined;
         },
-        isConnected: function isConnected() {
+        isConnected() {
             return this.buffer.getNetwork().state === 'connected';
         },
-        formattedTopic: function formattedTopic() {
+        formattedTopic() {
             let blocks = parseMessage(this.buffer.topic, { extras: false });
             let content = toHtml(blocks);
             return content;
         },
         network() {
             return this.buffer.getNetwork();
+        },
+        sidebarSection() {
+            return this.sidebarState.section();
+        },
+        userOnline() {
+            let user = this.$state.getUser(this.buffer.getNetwork().id, this.buffer.name);
+            return !!user;
         },
     },
     created() {
@@ -228,8 +246,9 @@ export default {
                 network.ircClient.connect();
             }
         },
-        showSidebar() {
-            this.$state.$emit('sidebar.toggle');
+        toggleUser() {
+            let user = this.$state.getUser(this.buffer.getNetwork().id, this.buffer.name);
+            this.sidebarState.toggleUser(user);
         },
         joinCurrentBuffer() {
             let network = this.buffer.getNetwork();

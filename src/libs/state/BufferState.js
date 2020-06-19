@@ -404,6 +404,14 @@ export default class BufferState {
         this.addUserBatch(user);
     }
 
+    hasNick(nick) {
+        let nickLower = nick.toLowerCase();
+        return (
+            nickLower in this.users ||
+            (this.isQuery() && this.name.toLowerCase() === nickLower)
+        );
+    }
+
     removeUser(nick) {
         let userObj = this.state.getUser(this.networkid, nick);
 
