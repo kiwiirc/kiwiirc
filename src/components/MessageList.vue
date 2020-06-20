@@ -19,7 +19,7 @@
             <a v-else class="u-link">...</a>
         </div>
 
-        <div v-for="(day, dayIdx) in filteredMessagesGroupedDay" :key="day.dayNum">
+        <div v-for="day in filteredMessagesGroupedDay" :key="day.dayNum">
             <div
                 v-if="filteredMessagesGroupedDay.length > 1 && day.messages.length > 0"
                 :key="'msgdatemarker' + day.dayNum"
@@ -28,7 +28,7 @@
                 <span>{{ (new Date(day.messages[0].time)).toDateString() }}</span>
             </div>
 
-            <template v-for="(message, idx) in day.messages">
+            <template v-for="message in day.messages">
                 <div
                     v-if="shouldShowUnreadMarker(message)"
                     :key="'msgunreadmarker' + message.id"
@@ -57,19 +57,19 @@
                     <message-list-message-modern
                         v-else-if="listType === 'modern'"
                         :message="message"
-                        :idx="(dayIdx*filteredMessagesGroupedDay)+idx"
+                        :idx="filteredMessages.indexOf(message)"
                         :ml="thisMl"
                     />
                     <message-list-message-inline
                         v-else-if="listType === 'inline'"
                         :message="message"
-                        :idx="(dayIdx*filteredMessagesGroupedDay)+idx"
+                        :idx="filteredMessages.indexOf(message)"
                         :ml="thisMl"
                     />
                     <message-list-message-compact
                         v-else-if="listType === 'compact'"
                         :message="message"
-                        :idx="(dayIdx*filteredMessagesGroupedDay)+idx"
+                        :idx="filteredMessages.indexOf(message)"
                         :ml="thisMl"
                     />
                 </div>
