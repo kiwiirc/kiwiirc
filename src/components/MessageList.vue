@@ -255,7 +255,11 @@ export default {
             let previous = this.filteredMessages[idx - 1];
             let current = this.filteredMessages[idx];
 
-            if (!previous) {
+            if (!previous && (new Date(current.time)).getDay() !== (new Date()).getDay()) {
+                // The first message of the lsit and it's not today
+                return true;
+            } else if (!previous) {
+                // The first message of the lsit but it's today
                 return false;
             }
 
