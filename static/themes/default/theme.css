@@ -30,20 +30,20 @@
     --comp-header-option-active-bg: var(--brand-primary);
 
     /* StateBrowser */
-    --comp-statebrowser-fg: #fff;
+    --comp-statebrowser-fg: var(--brand-default-bg);
     --comp-statebrowser-bg: var(--brand-default-fg);
     --comp-statebrowser-bg-networkname: #454545;
     --comp-statebrowser-channel-active-bg: #ffffff0d;
-    --comp-statebrowser-channel-active-fg: #fff;
+    --comp-statebrowser-channel-active-fg: var(--brand-default-bg);
     --comp-usermenu-open-bg: #0e0e0e;
     --comp-statebrowser-network-border: #656565;
 
 
     /* Sidebars ( Right Side ) */
-    --comp-sidebar-bg: #fff;
-    --comp-sidebar-fg: #22231f;
+    --comp-sidebar-bg: var(--brand-default-bg);
+    --comp-sidebar-fg: var(--brand-default-fg);
     --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
-    --comp-aboutbuffer-header-bg: #42b992;
+    --comp-aboutbuffer-header-bg: var(--brand-primary);
 
     /* Misc */
     --brand-link-normal: var(--brand-primary);
