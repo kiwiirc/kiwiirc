@@ -30,7 +30,7 @@
 
             <template v-for="(message, idx) in day.messages">
                 <div
-                    v-if="shouldShowUnreadMarker((dayIdx*filteredMessagesGroupedDay)+idx)"
+                    v-if="shouldShowUnreadMarker(message)"
                     :key="'msgunreadmarker' + message.id"
                     class="kiwi-messagelist-seperator"
                 >
@@ -261,12 +261,17 @@ export default {
                 this.$nextTick(this.maybeScrollToBottom.bind(this));
             }
         },
-        shouldShowUnreadMarker(idx) {
+        shouldShowUnreadMarker(message) {
+            let idx = this.filteredMessages.indexOf(message);
             let previous = this.filteredMessages[idx - 1];
             let current = this.filteredMessages[idx];
             let lastRead = this.buffer.last_read;
 
             if (!lastRead) {
+                return false;
+            }
+
+            if (!current) {
                 return false;
             }
 
