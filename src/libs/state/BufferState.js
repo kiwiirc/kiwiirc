@@ -4,6 +4,7 @@ import Vue from 'vue';
 import _ from 'lodash';
 import { def } from './common';
 import batchedAdd from '../batchedAdd';
+import * as bufferTools from '../bufferTools';
 
 let nextBufferId = 0;
 
@@ -59,6 +60,7 @@ export default class BufferState {
         this.messageDict.push(messagesObj);
         def(this, 'messagesObj', messagesObj, false);
 
+        def(this, 'isMessageTrimming', true, true);
         def(this, 'addMessageBatch', createMessageBatch(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
 
@@ -552,7 +554,10 @@ function createMessageBatch(bufferState) {
         }
         bufferState.messagesObj.messages.push(newMessage);
         bufferState.messagesObj.messageIds[newMessage.id] = newMessage;
-        trimMessages();
+        if (bufferState.isMessageTrimming) {
+            trimMessages();
+        }
+        bufferTools.orderedMessages(bufferState, { inPlace: true, noFilter: true });
         bufferState.message_count++;
     };
     let addMultipleMessages = (newMessages) => {
@@ -562,7 +567,10 @@ function createMessageBatch(bufferState) {
             toAdd.forEach((msg) => {
                 bufferState.messagesObj.messageIds[msg.id] = msg;
             });
-            trimMessages();
+            if (bufferState.isMessageTrimming) {
+                trimMessages();
+            }
+            bufferTools.orderedMessages(bufferState, { inPlace: true, noFilter: true });
         }
         // Trigger Vue's reactivity on the buffer whether messages were added or not, just in case
         // anything was depending on the batch queue which has now been emptied.
@@ -571,7 +579,6 @@ function createMessageBatch(bufferState) {
     let trimMessages = () => {
         let scrollbackSize = bufferState.setting('scrollback_size');
         let length = bufferState.messagesObj.messages.length;
-
         if (bufferState.messagesObj.messages.length > scrollbackSize) {
             let removed = bufferState.messagesObj.messages.splice(0, length - scrollbackSize);
             removed.forEach((msg) => delete bufferState.messagesObj.messageIds[msg.id]);

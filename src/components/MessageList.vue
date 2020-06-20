@@ -38,7 +38,7 @@
                 </div>
 
                 <div
-                    :key="message.id"
+                    :key="'msg' + message.id"
                     :class="[
                         'kiwi-messagelist-item',
                         selectedMessages.has(message.id) ?
@@ -200,7 +200,11 @@ export default {
         },
     },
     watch: {
-        buffer(newBuffer) {
+        buffer(newBuffer, oldBuffer) {
+            if (oldBuffer) {
+                oldBuffer.isMessageTrimming = true;
+            }
+
             if (!newBuffer) {
                 return;
             }
@@ -412,8 +416,10 @@ export default {
 
             if (scrolledUpByPx > BOTTOM_SCROLL_MARGIN) {
                 this.auto_scroll = false;
+                this.buffer.isMessageTrimming = false;
             } else {
                 this.auto_scroll = true;
+                this.buffer.isMessageTrimming = true;
             }
         },
         scrollToBottom() {
