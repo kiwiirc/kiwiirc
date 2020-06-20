@@ -786,7 +786,9 @@
 }
 
 .kiwi-messagelist-seperator {
-    border-top: 1px solid var(--brand-shadow);
+    color: var(--brand-darktone);
+    background: var(--brand-default-bg);
+    font-size: 0.9em;
 }
 
 .kiwi-messagelist-seperator > span {

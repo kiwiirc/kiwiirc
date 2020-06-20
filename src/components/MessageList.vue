@@ -19,51 +19,61 @@
             <a v-else class="u-link">...</a>
         </div>
 
-        <div
-            v-for="(message, idx) in filteredMessages"
-            :key="message.id"
-            :class="[
-                'kiwi-messagelist-item',
-                selectedMessages.has(message.id) ?
-                    'kiwi-messagelist-item--selected' :
-                    ''
-            ]"
-        >
+        <div v-for="(day, dayIdx) in filteredMessagesGroupedDay" :key="day.dayNum">
             <div
-                v-if="shouldShowDateChangeMarker(idx)"
+                v-if="filteredMessagesGroupedDay.length > 1 && day.messages.length > 0"
+                :key="'msgdatemarker' + day.dayNum"
                 class="kiwi-messagelist-seperator"
             >
-                <span>{{ (new Date(message.time)).toDateString() }}</span>
-            </div>
-            <div v-if="shouldShowUnreadMarker(idx)" class="kiwi-messagelist-seperator">
-                <span>{{ $t('unread_messages') }}</span>
+                <span>{{ (new Date(day.messages[0].time)).toDateString() }}</span>
             </div>
 
-            <!-- message.template is checked first for a custom component, then each message layout
-                 checks for a message.bodyTemplate custom component to apply only to the body area
-            -->
-            <div
-                v-if="message.render() && message.template && message.template.$el"
-                v-rawElement="message.template.$el"
-            />
-            <message-list-message-modern
-                v-else-if="listType === 'modern'"
-                :message="message"
-                :idx="idx"
-                :ml="thisMl"
-            />
-            <message-list-message-inline
-                v-else-if="listType === 'inline'"
-                :message="message"
-                :idx="idx"
-                :ml="thisMl"
-            />
-            <message-list-message-compact
-                v-else-if="listType === 'compact'"
-                :message="message"
-                :idx="idx"
-                :ml="thisMl"
-            />
+            <template v-for="(message, idx) in day.messages">
+                <div
+                    v-if="shouldShowUnreadMarker((dayIdx*filteredMessagesGroupedDay)+idx)"
+                    :key="'msgunreadmarker' + message.id"
+                    class="kiwi-messagelist-seperator"
+                >
+                    <span>{{ $t('unread_messages') }}</span>
+                </div>
+
+                <div
+                    :key="message.id"
+                    :class="[
+                        'kiwi-messagelist-item',
+                        selectedMessages.has(message.id) ?
+                            'kiwi-messagelist-item--selected' :
+                            ''
+                    ]"
+                >
+                    <!-- message.template is checked first for a custom component, then each message
+                        layout checks for a message.bodyTemplate custom component to apply only to
+                        the body area
+                    -->
+                    <div
+                        v-if="message.render() && message.template && message.template.$el"
+                        v-rawElement="message.template.$el"
+                    />
+                    <message-list-message-modern
+                        v-else-if="listType === 'modern'"
+                        :message="message"
+                        :idx="(dayIdx*filteredMessagesGroupedDay)+idx"
+                        :ml="thisMl"
+                    />
+                    <message-list-message-inline
+                        v-else-if="listType === 'inline'"
+                        :message="message"
+                        :idx="(dayIdx*filteredMessagesGroupedDay)+idx"
+                        :ml="thisMl"
+                    />
+                    <message-list-message-compact
+                        v-else-if="listType === 'compact'"
+                        :message="message"
+                        :idx="(dayIdx*filteredMessagesGroupedDay)+idx"
+                        :ml="thisMl"
+                    />
+                </div>
+            </template>
         </div>
 
         <transition name="kiwi-messagelist-joinloadertrans">
@@ -156,6 +166,22 @@ export default {
             return this.buffer ?
                 this.buffer.getNetwork().nick :
                 '';
+        },
+        filteredMessagesGroupedDay() {
+            // Group messages by day
+            let days = [];
+            let lastDay = null;
+            this.filteredMessages.forEach((message) => {
+                let day = Math.floor(message.time / 1000 / 86400);
+                if (!lastDay || day !== lastDay) {
+                    days.push({ dayNum: day, messages: [] });
+                    lastDay = day;
+                }
+
+                days[days.length - 1].messages.push(message);
+            });
+
+            return days;
         },
         filteredMessages() {
             return bufferTools.orderedMessages(this.buffer);
@@ -811,7 +837,10 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 .kiwi-messagelist-seperator {
     text-align: center;
     display: block;
-    margin: 1em 0 0.5em 0;
+    margin: 1em auto;
+    position: sticky;
+    top: -1px;
+    z-index: 1;
 }
 
 .kiwi-messagelist-seperator > span {
@@ -819,14 +848,6 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     position: relative;
     z-index: 1;
     padding: 0 1em;
-    top: -0.89em;
-}
-
-.kiwi-messagelist-seperator::after {
-    content: "";
-    display: block;
-    position: relative;
-    top: -0.8em;
 }
 
 /** Displaying an emoji in a message */
