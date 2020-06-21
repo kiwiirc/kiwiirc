@@ -448,7 +448,6 @@ export default Vue.component('irc-input', {
 }
 
 .kiwi-ircinput-editor {
-    white-space: pre;
     overflow-x: hidden;
     outline: none;
 
