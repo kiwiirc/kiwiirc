@@ -41,7 +41,7 @@
                     :key="'msg' + message.id"
                     :class="[
                         'kiwi-messagelist-item',
-                        selectedMessages.has(message.id) ?
+                        selectedMessages[message.id] ?
                             'kiwi-messagelist-item--selected' :
                             ''
                     ]"
@@ -130,7 +130,7 @@ export default {
             message_info_open: null,
             timeToClose: false,
             startClosing: false,
-            selectedMessages: new Set(),
+            selectedMessages: Object.create(null),
         };
     },
     computed: {
@@ -452,6 +452,13 @@ export default {
                 this.auto_scroll = false;
             }
         },
+        getSelectedMessages() {
+            let sel = document.getSelection();
+            let r = sel.getRangeAt(0);
+            let messageEls = [...this.$el.querySelectorAll('.kiwi-messagelist-message')];
+            let selectedMessageEls = messageEls.filter((el) => r.intersectsNode(el));
+            return selectedMessageEls;
+        },
         restrictTextSelection() { // Prevents the selection cursor escaping the message list.
             document.querySelector('body').classList.add('kiwi-unselectable');
             this.$el.style.userSelect = 'text';
@@ -461,9 +468,7 @@ export default {
             this.$el.style.userSelect = 'auto';
         },
         removeSelections(removeNative = false) {
-            if (this.selectedMessages.size > 0) {
-                this.selectedMessages = new Set();
-            }
+            this.selectedMessages = Object.create(null);
 
             let selection = document.getSelection();
             if (removeNative && selection) {
@@ -541,51 +546,30 @@ export default {
                 this.restrictTextSelection();
                 if (selection.rangeCount > 0) {
                     selecting = true;
-                    let firstRange = selection.getRangeAt(0);
-                    let lastRange = selection.getRangeAt(selection.rangeCount - 1);
-                    // Traverse the DOM to find messages in selection
-                    let startNode = firstRange.startContainer.parentNode.closest('[data-message-id]');
-                    let endNode = lastRange.endContainer.parentNode.closest('[data-message-id]');
-                    if (!endNode) {
-                        // If endContainer isn't in messagelist then mouse has been dragged outside
-                        // Set the end node to last in the message list
-                        endNode = this.$el.querySelector('.kiwi-messagelist-item:last-child');
-                    }
-                    if (!startNode || !endNode || startNode === endNode) {
-                        return true;
-                    }
 
-                    let node = startNode;
-                    let messages = [];
-                    let allMessages = this.buffer.getMessages();
-                    let selectedMessagesSize = this.selectedMessages.size;
-
-                    const finder = (m) => m.id.toString() === node.attributes['data-message-id'].value;
-
-                    while (node) {
-                        // This could be more efficent with an id->msg lookup
-                        let msg = allMessages.find(finder);
-
-                        if (msg) {
-                            // Add to a list of selected messages
-                            this.selectedMessages.add(msg.id);
-                            messages.push(msg);
+                    let selectedMesssageEls = this.getSelectedMessages();
+                    let selectedMessages = [];
+                    selectedMesssageEls.forEach((el) => {
+                        let m = this.buffer.messagesObj.messageIds[el.dataset.messageId];
+                        if (m) {
+                            selectedMessages.push(m);
                         }
-                        if (node === endNode) {
-                            node = null;
-                        } else {
-                            let nextNode = node.closest('[data-message-id]').parentNode.nextElementSibling;
-                            node = nextNode && nextNode.querySelector('[data-message-id]');
-                        }
+                    });
+
+                    // If only 1 message is selected then treat the selection as native text
+                    // selection. Most likely copying part of a message only.
+                    if (selectedMessages.length === 1) {
+                        selectedMessages = [];
                     }
-                    // Replace the set so the MessageList updates, but only if it's changed.
-                    if (selectedMessagesSize !== this.selectedMessages.size) {
-                        this.selectedMessages = new Set(this.selectedMessages);
-                    }
+
+                    this.selectedMessages = Object.create(null);
+                    selectedMessages.forEach((m) => {
+                        this.selectedMessages[m.id] = m;
+                    });
 
                     // Iterate through the selected messages, format and store as a
                     // string to be used in the copy handler
-                    copyData = messages
+                    copyData = selectedMessages
                         .sort((a, b) => (a.time > b.time ? 1 : -1))
                         .filter((m) => m.message.trim().length)
                         .map(LogFormatter)
@@ -646,6 +630,8 @@ export default {
 
 div.kiwi-messagelist-item.kiwi-messagelist-item--selected {
     border-left: 7px solid var(--brand-primary);
+    transform: translateX(20px);
+    transition: transform 0.1s;
 }
 
 div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-message {
@@ -667,6 +653,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 
 .kiwi-messagelist {
     overflow-y: auto;
+    overflow-x: hidden;
     box-sizing: border-box;
     margin-bottom: 25px;
     position: relative;
@@ -859,6 +846,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     position: relative;
     z-index: 1;
     padding: 0 1em;
+    user-select: none;
 }
 
 /** Displaying an emoji in a message */
