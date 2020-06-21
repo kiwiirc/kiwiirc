@@ -145,12 +145,13 @@ export default {
             }
 
             // Make sure the channel name starts with a common channel prefix
-            if (!this.connectWithoutChannel && this.channel && this.channel[0] !== '#') {
-                ready = false;
-            }
-
-            if (this.channel && '#&'.indexOf(this.channel[0]) > -1) {
-                ready = false;
+            if (!this.connectWithoutChannel) {
+                let bufferObjs = Misc.extractBuffers(this.channel);
+                bufferObjs.forEach((bufferObj) => {
+                    if ('#&'.indexOf(bufferObj.name[0]) === -1) {
+                        ready = false;
+                    }
+                });
             }
 
             // If toggling the password is is disabled, assume it is required
