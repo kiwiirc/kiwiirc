@@ -144,8 +144,12 @@ export default {
                 ready = false;
             }
             
-            // Checking if in #channel the first character is #
-            if (!this.connectWithoutChannel && this.channel && this.channel[0] !== "#") {
+            // Make sure the channel name starts with a common channel prefix
+            if (!this.connectWithoutChannel && this.channel && this.channel[0] !== '#') {
+                ready = false;
+            }
+            
+            if (this.channel && '#&'.indexOf(this.channel[0]) > -1) {
                 ready = false;
             }
 
