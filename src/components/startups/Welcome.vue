@@ -143,12 +143,12 @@ export default {
             if (!this.connectWithoutChannel && !this.channel) {
                 ready = false;
             }
-            
+
             // Make sure the channel name starts with a common channel prefix
             if (!this.connectWithoutChannel && this.channel && this.channel[0] !== '#') {
                 ready = false;
             }
-            
+
             if (this.channel && '#&'.indexOf(this.channel[0]) > -1) {
                 ready = false;
             }
