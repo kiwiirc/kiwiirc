@@ -145,7 +145,7 @@ export default {
             }
             
             // Checking if in #channel the first character is #
-            if (!this.connectWithoutChannel && this.channel && this.channel[0] !== "#" {
+            if (!this.connectWithoutChannel && this.channel && this.channel[0] !== "#") {
                 ready = false;
             }
 
