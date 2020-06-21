@@ -143,6 +143,11 @@ export default {
             if (!this.connectWithoutChannel && !this.channel) {
                 ready = false;
             }
+            
+            // Checking if in #channel the first character is #
+            if (!this.connectWithoutChannel && this.channel && this.channel[0] !== "#" {
+                ready = false;
+            }
 
             // If toggling the password is is disabled, assume it is required
             if (!this.toggablePass && !this.password) {
