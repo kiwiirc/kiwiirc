@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2020-06-14 12:32\n"
+"PO-Revision-Date: 2020-06-15 20:31\n"
 
 #: Start
 msgid "start_button"
@@ -297,7 +297,7 @@ msgstr "Afișează atunci când tastez un mesaj"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "Afișează previzualizarea imaginilor intercalate"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -493,7 +493,7 @@ msgstr "Bine ai venit la Kiwi IRC! Selectează un canal din stânga."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Show statebrowser"
+msgstr "Afișează bara de stare"
 
 #: Hide Topic
 msgid "hide_topic"
@@ -509,7 +509,7 @@ msgstr "Setările canalului"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Alătură-te unui canal"
+msgstr "Alătură-te canalului"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -573,7 +573,7 @@ msgstr "Afișează în modul brut"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "Websocket direct"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -629,7 +629,7 @@ msgstr "Conectează-te la rețea"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "Numele rețelei"
 
 #: Close options
 msgid "side_close"
@@ -793,7 +793,7 @@ msgstr "Este un operator"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Te-ai conectat la {{server}} {{info}}"
+msgstr "S-a conectat la serverul {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
@@ -801,7 +801,7 @@ msgstr "S-a conectat via SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "În canalele"
+msgstr "În canalele {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -877,7 +877,7 @@ msgstr "{{target}} a primit privilegii de deținător de canal, de la {{nick}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} takes owner from {{target}}"
+msgstr "{{nick}} a înlăturat privilegiile de deținător de canal, pentru {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-06-14 14:01\n"
+"PO-Revision-Date: 2020-06-17 09:55\n"
 
 #: Start
 msgid "start_button"
@@ -81,7 +81,7 @@ msgstr "Sunucu Şifresi"
 
 #: I have a password
 msgid "password_have"
-msgstr "şifrem var"
+msgstr "Bir şifrem var"
 
 #: Server
 msgid "server"
@@ -217,7 +217,7 @@ msgstr "{{count}} saniye"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} saniyeler"
+msgstr "{{count}} saniye"
 
 #: General
 msgid "settings_general"
@@ -905,7 +905,7 @@ msgstr "Bir kanala gir"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "kanaldan ayrıl"
+msgstr "Bir kanaldan ayrıl"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
