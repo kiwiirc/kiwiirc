@@ -348,9 +348,12 @@ export default class BufferState {
                     return;
                 }
 
-                // If we have messages in this response, assume there will be more. When we get 0
-                // messages in response, that's how we know we are at the end
-                let hasNewMessages = event.commands.length > 0;
+                // The BNC server may reply with messages that are already in the buffer.
+                // If we get no new messages that we didn't already have, assume that we have
+                // all the available history
+                let hasNewMessages = event.commands.some(
+                    (msg) => msg.tags.msgid && !this.messagesObj.messageIds[msg.tags.msgid]
+                );
 
                 // If there are new messages, then there could be more in the backlog.
                 // If there are no new messages, then the chat history is empty.
