@@ -24,7 +24,9 @@
 
             <div>
                 <div v-if="areWeAnOp" class="kiwi-invitelist-addmask">
-                    <input list="inviteList" ref="addInviteText" type="text" class="u-input">
+                    <div>
+                        <input ref="addInviteText" list="inviteList" type="text" class="u-input">
+                    </div>
                     <datalist v-if="supportsAccounts && knownAccounts.length > 0" id="inviteList">
                         <option
                             v-for="user in knownAccounts"
@@ -262,4 +264,22 @@ export default {
 .kiwi-invitelist-addmask > button {
     flex-shrink: 0;
 }
+
+.kiwi-invitelist-addmask > div {
+    position: relative;
+    display: inline-block;
+}
+
+/* TODO remove once firefox improves <input list="">
+   https://bugzilla.mozilla.org/show_bug.cgi?id=1575444 */
+@supports (-moz-appearance:none) {
+    .kiwi-invitelist-addmask > div::after {
+        font-family: fontAwesome, sans-serif;
+        position: absolute;
+        content: '\f0d7';
+        top: 5px;
+        right: 6px;
+    }
+}
+
 </style>
