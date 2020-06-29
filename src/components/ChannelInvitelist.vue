@@ -23,21 +23,15 @@
             <span v-if="anyRegisteredUserCanJoin">{{ $t('invite_registered_only') }}</span>
 
             <div>
-                <div v-if="supportsAccounts && areWeAnOp">
-                    <template v-if="knownAccounts.length > 0">
-                        <select ref="addInviteList">
-                            <option
-                                v-for="user in knownAccounts"
-                                :key="user.nick" :value="user.account"
-                            >{{ user.account }}</option>
-                        </select>
-                        <button @click="addAccountInvite($refs.addInviteList.value)">
-                            {{ $t('invite_add_invite') }}
-                        </button>
-                    </template>
-                </div>
-                <div v-if="!supportsAccounts && areWeAnOp" class="kiwi-invitelist-addmask">
-                    <input ref="addInviteText" type="text" class="u-input">
+                <div v-if="areWeAnOp" class="kiwi-invitelist-addmask">
+                    <input list="inviteList" ref="addInviteText" type="text" class="u-input">
+                    <datalist v-if="supportsAccounts && knownAccounts.length > 0" id="inviteList">
+                        <option
+                            v-for="user in knownAccounts"
+                            :key="'invite-' + user.account"
+                            :value="user.account"
+                        >{{ user.nick }}</option>
+                    </datalist>
                     <button @click="addInvite($refs.addInviteText.value)">
                         {{ $t('invite_add_invite') }}
                     </button>
@@ -218,18 +212,13 @@ export default {
             this.buffer.getNetwork().ircClient.removeInvite(channelName, mask);
             this.inviteList = this.inviteList.filter((invite) => invite.invited !== mask);
         },
-        addAccountInvite(accountName) {
-            if (!accountName) {
-                return;
-            }
-
-            let network = this.buffer.getNetwork();
-            network.ircClient.addInvite(this.buffer.name, `${this.extban}:${accountName}`);
-            this.updateInvitelist();
-        },
         addInvite(mask) {
             let network = this.buffer.getNetwork();
-            network.ircClient.addInvite(this.buffer.name, mask);
+            let invite = this.supportsAccounts && mask.indexOf('@') === -1 ?
+                `${this.extban}:${mask}` :
+                mask;
+
+            network.ircClient.addInvite(this.buffer.name, invite);
             this.updateInvitelist();
         },
         setInviteOnly() {
