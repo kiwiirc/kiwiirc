@@ -697,44 +697,11 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     font-size: 80%;
 }
 
+/* Remove the styling for none user messages, as they make the page look bloated */
 .kiwi-messagelist-message-mode,
 .kiwi-messagelist-message-traffic {
     padding-top: 5px;
     padding-bottom: 5px;
-}
-
-/* Start of the not connected message styling */
-.kiwi-messagelist-message-connection {
-    padding: 0;
-    text-align: center;
-    font-weight: bold;
-    border: none;
-    margin: 0;
-    background: none;
-}
-
-.kiwi-messagelist-message-connection .kiwi-messagelist-body {
-    font-size: 1.2em;
-    height: auto;
-    line-height: normal;
-    text-align: center;
-    cursor: default;
-    display: inline-block;
-    padding: 0.5em 1em;
-    margin: 1em auto 1em auto;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.kiwi-messagelist-message-connection .kiwi-messagelist-time,
-.kiwi-messagelist-message-connection .kiwi-messagelist-nick {
-    display: none;
-}
-
-/* Remove the styling for none user messages, as they make the page look bloated */
-.kiwi-messagelist-message-mode,
-.kiwi-messagelist-message-traffic,
-.kiwi-messagelist-message-connection {
     min-height: 0;
     line-height: normal;
     text-align: left;

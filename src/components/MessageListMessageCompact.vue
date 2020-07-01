@@ -234,20 +234,6 @@ export default {
     margin-left: 131px;
 }
 
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-time {
-    display: none;
-}
-
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
-    display: inline-block;
-    margin: 0;
-    padding: 10px 0;
-    margin-left: 131px;
-    font-size: 0.8em;
-    opacity: 0.8;
-    font-weight: 600;
-}
-
 //Channel topic
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-topic {
     border-radius: 0;
@@ -359,10 +345,6 @@ export default {
     }
 
     .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
-        margin-left: 181px;
-    }
-
-    .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
         margin-left: 181px;
     }
 }
