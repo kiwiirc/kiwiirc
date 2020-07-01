@@ -199,20 +199,8 @@ export default {
 
 .kiwi-messagelist-message--text .kiwi-messagelist-message-privmsg:hover,
 .kiwi-messagelist-message--text .kiwi-messagelist-message-action:hover,
-.kiwi-messagelist-message--text .kiwi-messagelist-message-notice:hover, {
+.kiwi-messagelist-message--text .kiwi-messagelist-message-notice:hover {
     cursor: pointer;
-}
-
-.kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-body {
-    display: inline-block;
-    margin: 0;
-    font-size: 0.8em;
-    opacity: 0.8;
-    padding: 0;
-}
-
-.kiwi-messagelist-message--text.kiwi-messagelist-message-connection .kiwi-messagelist-time {
-    display: none;
 }
 
 //Channel topic

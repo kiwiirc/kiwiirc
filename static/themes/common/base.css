@@ -845,11 +845,6 @@
     color: var(--brand-default-fg);
 }
 
-/* Connection Styling */
-.kiwi-messagelist-message-connection {
-    background-color: var(--brand-default-bg);
-}
-
 /* ---- Traffic Messages ---- */
 .kiwi-messagelist-message-traffic-join {
     color: var(--brand-primary);

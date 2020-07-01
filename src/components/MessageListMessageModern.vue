@@ -312,28 +312,6 @@ export default {
     display: none;
 }
 
-/* Connection styling */
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 10px 0;
-    opacity: 0.8;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-time,
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-nick {
-    display: none;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
-    padding: 0 20px;
-    margin: 0 auto;
-    display: inline-block;
-    font-weight: 600;
-    font-size: 0.8em;
-    opacity: 0.8;
-}
-
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -412,21 +390,6 @@ export default {
 
     .kiwi-messagelist-message--modern {
         margin: 0;
-    }
-
-    .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection {
-        padding: 0;
-        box-sizing: border-box;
-        margin: 0;
-        border: none;
-        width: 100%;
-        border-radius: 0;
-    }
-
-    .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
-        line-height: 50px;
-        font-weight: 600;
-        padding: 0 10px;
     }
 
     .kiwi-messagelist-message-action .kiwi-messagelist-modern-left {
