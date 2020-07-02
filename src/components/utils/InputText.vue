@@ -44,8 +44,8 @@
             <input
                 v-else
                 :id="inputId"
-                :list="list"
                 v-model="currentValue"
+                :list="list"
                 autocomplete="off"
                 autocorrect="off"
                 autocapitalize="off"
