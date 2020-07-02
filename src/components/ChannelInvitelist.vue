@@ -24,9 +24,7 @@
 
             <div>
                 <div v-if="areWeAnOp" class="kiwi-invitelist-addmask">
-                    <div>
-                        <input ref="addInviteText" list="inviteList" type="text" class="u-input">
-                    </div>
+                    <input-text v-model="addMask" list="inviteList" type="text" />
                     <datalist v-if="supportsAccounts && knownAccounts.length > 0" id="inviteList">
                         <option
                             v-for="user in knownAccounts"
@@ -34,9 +32,9 @@
                             :value="user.account"
                         >{{ user.nick }}</option>
                     </datalist>
-                    <button @click="addInvite($refs.addInviteText.value)">
+                    <a class="u-button u-button-secondary" @click="addInvite()">
                         {{ $t('invite_add_invite') }}
-                    </button>
+                    </a>
                 </div>
 
                 <table v-if="inviteList.length > 0" class="kiwi-invitelist-table">
@@ -116,6 +114,7 @@ export default {
     props: ['buffer'],
     data() {
         return {
+            addMask: '',
             inviteList: [],
             is_refreshing: false,
         };
@@ -214,13 +213,14 @@ export default {
             this.buffer.getNetwork().ircClient.removeInvite(channelName, mask);
             this.inviteList = this.inviteList.filter((invite) => invite.invited !== mask);
         },
-        addInvite(mask) {
+        addInvite() {
             let network = this.buffer.getNetwork();
-            let invite = this.supportsAccounts && mask.indexOf('@') === -1 ?
-                `${this.extban}:${mask}` :
-                mask;
+            let invite = this.supportsAccounts && this.addMask.indexOf('@') === -1 ?
+                `${this.extban}:${this.addMask}` :
+                this.addMask;
 
             network.ircClient.addInvite(this.buffer.name, invite);
+            this.addMask = '';
             this.updateInvitelist();
         },
         setInviteOnly() {
@@ -257,17 +257,13 @@ export default {
     z-index: 1;
 }
 
-.kiwi-invitelist-addmask {
-    display: flex;
-}
-
-.kiwi-invitelist-addmask > button {
-    flex-shrink: 0;
-}
-
-.kiwi-invitelist-addmask > div {
-    position: relative;
+.kiwi-invitelist-addmask .u-input-text {
     display: inline-block;
+    margin: 0;
+}
+
+.kiwi-invitelist-addmask .u-button {
+    padding: 0.26em 0.9em;
 }
 
 /* TODO remove once firefox improves <input list="">
