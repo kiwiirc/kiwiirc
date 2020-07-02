@@ -3,14 +3,12 @@
         <div class="kiwi-settings-advanced-notice">{{ $t('settings_advanced_header') }}</div>
         <form class="u-form">
             <div class="kiwi-settings-advanced-filter-container">
-                <div class="kiwi-settings-advanced-filter-container">
-                    <input v-model="filterString"
-                           :placeholder="$t('settings_advanced_filter')"
-                           class="u-input"
-                    >
-                    <i v-if="!filterString" class="fa fa-search" aria-hidden="true" />
-                    <i v-else class="fa fa-times" aria-hidden="true" @click="filterString = ''" />
-                </div>
+                <input v-model="filterString"
+                       :placeholder="$t('settings_advanced_filter')"
+                       class="u-input"
+                >
+                <i v-if="!filterString" class="fa fa-search" aria-hidden="true" />
+                <i v-else class="fa fa-times" aria-hidden="true" @click="filterString = ''" />
             </div>
             <table class="u-table kiwi-settings-advanced-table" cellspacing="0">
                 <tr v-if="filteredSettings.length === 0">
@@ -140,6 +138,7 @@ export default {
 .kiwi-settings-advanced-table .u-input {
     border-bottom: 2px solid red;
     height: auto;
+    margin-top: 10px;
 }
 
 .kiwi-settings-advanced-table label {
@@ -173,7 +172,7 @@ export default {
 
 .kiwi-settings-advanced-filter-container {
     position: relative;
-    max-width: 224px;
+    display: inline-block;
 }
 
 .kiwi-settings-advanced-filter-container input::-ms-clear {
@@ -183,7 +182,7 @@ export default {
 .kiwi-settings-advanced-filter-container .fa-search,
 .kiwi-settings-advanced-filter-container .fa-times {
     position: absolute;
-    top: 12px;
+    top: 8px;
     right: 10px;
     z-index: 10;
     cursor: default;
