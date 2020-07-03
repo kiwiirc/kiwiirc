@@ -207,10 +207,10 @@ export default {
             previousNet = this.$state.getNetworkFromAddress(connectOptions.hostname.trim());
         }
 
-        if (Misc.queryStringVal('nick')) {
-            this.nick = Misc.queryStringVal('nick');
-        } else if (previousNet && previousNet.connection.nick) {
+        if (previousNet && previousNet.connection.nick) {
             this.nick = previousNet.connection.nick;
+        } else if (Misc.queryStringVal('nick')) {
+            this.nick = Misc.queryStringVal('nick');
         } else {
             this.nick = options.nick;
         }
