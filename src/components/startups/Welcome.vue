@@ -218,9 +218,13 @@ export default {
         this.nick = this.processNickRandomNumber(this.nick || '');
         this.password = options.password || '';
         this.channel = decodeURIComponent(window.location.hash) || options.channel || '';
-        this.showChannel = typeof options.showChannel === 'boolean' ?
-            options.showChannel :
-            true;
+        if (this.channel && Misc.queryStringVal('showChannel')) {
+            this.showChannel = Misc.queryStringVal('showChannel') !== 'false';
+        } else {
+            this.showChannel = typeof options.showChannel === 'boolean' ?
+                options.showChannel :
+                true;
+        }
         this.showNick = typeof options.showNick === 'boolean' ?
             options.showNick :
             true;
