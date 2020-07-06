@@ -162,24 +162,6 @@ function clientMiddleware(state, network) {
         client.on('connected', () => {
             network.state_error = '';
             network.state = 'connected';
-
-            network.buffers.forEach((buffer) => {
-                if (!buffer) {
-                    return;
-                }
-
-                let messageBody = TextFormatting.formatText('network_connected', {
-                    text: TextFormatting.t('connected'),
-                });
-
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: messageBody,
-                    type: 'connection',
-                    type_extra: 'connected',
-                });
-            });
         });
 
         client.on('socket close', (err) => {
@@ -194,18 +176,6 @@ function clientMiddleware(state, network) {
 
                 buffer.joined = false;
                 buffer.clearUsers();
-
-                let messageBody = TextFormatting.formatText('network_disconnected', {
-                    text: TextFormatting.t('disconnected'),
-                });
-
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: messageBody,
-                    type: 'connection',
-                    type_extra: 'disconnected',
-                });
             });
         });
     };

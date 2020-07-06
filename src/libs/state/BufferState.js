@@ -341,6 +341,7 @@ export default class BufferState {
         let ircClient = this.getNetwork().ircClient;
         this.flag('is_requesting_chathistory', true);
         this.chathistory_request_count += 1;
+        let existingMessageIds = Object.assign({}, this.messagesObj.messageIds);
         ircClient.chathistory[chathistoryFuncName](this.name, time)
             .then((event) => {
                 if (!event) {
@@ -352,7 +353,7 @@ export default class BufferState {
                 // If we get no new messages that we didn't already have, assume that we have
                 // all the available history
                 let hasNewMessages = event.commands.some(
-                    (msg) => msg.tags.msgid && !this.messagesObj.messageIds[msg.tags.msgid]
+                    (msg) => msg.tags.msgid && !existingMessageIds[msg.tags.msgid]
                 );
 
                 // If there are new messages, then there could be more in the backlog.
