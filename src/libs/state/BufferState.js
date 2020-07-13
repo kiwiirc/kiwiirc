@@ -419,15 +419,19 @@ export default class BufferState {
     shouldShareTyping() {
         let network = this.getNetwork();
         if (!this.setting('share_typing')) {
+            // Feature disabled
             return false;
         }
         if (!this.isChannel() && !this.isQuery()) {
+            // Qnly share tying with channels and queries
             return false;
         }
         if (this.isChannel() && !this.joined) {
+            // Channel is in an unjoined state
             return false;
         }
         if (this.hasMode('m') && !this.userMode(network.currentUser())) {
+            // Channel is moderated (+m) and we do not have a user mode +v or above
             return false;
         }
         return true;
