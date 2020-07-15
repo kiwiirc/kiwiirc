@@ -1,4 +1,7 @@
-# Kiwi IRC
+### #TurkDevOps KiwiIRC
+# Bize IRC'de Ulaşın
+[![Visit our IRC channel](https://kiwiirc.com/buttons/irc.kiwiirc.com/TurkDevOps.png)](https://kiwiirc.com/client/irc.kiwiirc.com/?nick=DevTurks|?#TurkDevOps)
+---
 
 ***A versatile web based messenger using IRC***
 
@@ -73,4 +76,7 @@ Kiwi IRC is tested on all modern browsers and IE11. Other browsers are not activ
 * Firefox
 * IE11
 * Safari 9+
-
+### #TurkDevOps 
+# Bize IRC'de Ulaşın
+[![Visit our IRC channel](https://kiwiirc.com/buttons/irc.kiwiirc.com/TurkDevOps.png)](https://kiwiirc.com/client/irc.kiwiirc.com/?nick=DevTurks|?#TurkDevOps)
+---
