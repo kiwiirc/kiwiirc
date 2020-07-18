@@ -62,6 +62,7 @@ export default function bouncerMiddleware() {
                 topic: tags.topic,
                 joined: tags.joined === '1',
                 seen: tags.seen,
+                notify: tags.notify || 'highlight',
             });
         } else if (params[0] === 'state') {
             client.command_handler.emit('bouncer state', {

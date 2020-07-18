@@ -51,6 +51,16 @@ export default {
                 return this.buffer.setting('alert_on');
             },
             set: function setSettingAlertOn(val) {
+                let network = this.buffer.getNetwork();
+                let netId = network.connection.bncnetid;
+                if (netId) {
+                    // If this buffer is on a BOUNCER account, update the setting there too
+                    // TODO: Move this to BouncerProvider snapshots
+                    network.ircClient.raw(
+                        `BOUNCER changebuffer ${netId} ${this.buffer.name} notify=${val}`
+                    );
+                }
+
                 return this.buffer.setting('alert_on', val);
             },
         },
