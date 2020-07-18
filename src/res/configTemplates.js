@@ -43,6 +43,7 @@ export const configTemplates = {
             password: '',
         },
         warnOnExit: true,
+        quitMessage: 'Page closed',
         // Default buffer settings
         buffers: {
             messageLayout: 'modern',
