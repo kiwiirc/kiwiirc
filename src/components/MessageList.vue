@@ -352,10 +352,18 @@ export default {
         onMessageDblClick(event, message) {
             clearTimeout(this.messageClickTmr);
 
-            let userNick = event.target.getAttribute('data-nick');
-            if (userNick) {
-                this.$state.$emit('input.insertnick', userNick);
+            let dataNick = event.target.getAttribute('data-nick');
+            if (!dataNick) {
+                return;
             }
+
+            let network = this.buffer.getNetwork();
+            let user = network.userByName(dataNick);
+            // The user might have left use dataNick as fallback
+            let nick = (user && user.nick) ?
+                user.nick :
+                dataNick;
+            this.$state.$emit('input.insertnick', nick);
         },
         onMessageClick(event, message, delay) {
             // Delaying the click for 200ms allows us to check for a second click. ie. double click

@@ -57,7 +57,7 @@
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">
-                <div
+                <a
                     v-if="props.message.nick"
                     :style="{ 'color': props.ml.userColour(props.message.user) }"
                     :class="[
@@ -66,7 +66,7 @@
                             'kiwi-messagelist-nick--mode-'+props.m().userMode(props.message.user) :
                             ''
                     ]"
-                    @click="props.ml.openUserBox(props.message.nick)"
+                    :data-nick="(props.message.nick).toLowerCase()"
                     @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
                     @mouseout="props.ml.hover_nick='';"
                 >
@@ -75,11 +75,11 @@
                             props.m().userModePrefix(props.message.user) :
                             ''
                     }}</span>{{ props.message.nick }}
-                </div>
+                </a>
                 <div
                     v-if="props.m().showRealName()"
                     class="kiwi-messagelist-realname"
-                    @click="props.ml.openUserBox(message.nick)"
+                    @click="props.ml.openUserBox(props.message.nick)"
                     @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
                     @mouseout="props.ml.hover_nick='';"
                 >
@@ -344,6 +344,11 @@ export default {
     font-size: 0.8em;
     font-weight: 400;
     opacity: 0.6;
+}
+
+.kiwi-messagelist-message--modern .kiwi-messagelist-nick {
+    padding: 0;
+    margin-right: 10px;
 }
 
 .kiwi-messagelist-message-traffic .kiwi-messagelist-body {
