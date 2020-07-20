@@ -5,7 +5,7 @@
                 v-for="(text, eCode) in emojis"
                 :key="eCode"
                 :style="{'background-image':`url(${location}${eCode}.png)`}"
-                :data-code="text + ' '"
+                :data-code="text"
                 class="kiwi-inputtool-emoji-emoji"
                 @click="onImgClick"
             />

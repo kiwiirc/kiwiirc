@@ -2,12 +2,13 @@
 
 import { escape } from 'lodash';
 import getState from '@/libs/state';
+import EmojiProvider from '@/libs/EmojiProvider';
 
 export default render;
 
 function render(blocks, renderEmoticons) {
     const state = getState();
-    const emojiLocation = state.setting('emojiLocation');
+    const emojiProvider = new EmojiProvider();
     const showEmoticons = typeof renderEmoticons === 'undefined' ?
         state.setting('buffers.show_emoticons') :
         !!renderEmoticons;
@@ -50,7 +51,7 @@ function render(blocks, renderEmoticons) {
             content = linkifyChannel(block);
             break;
         case 'emoji':
-            content = addEmoji(block, blocks.length === 1, emojiLocation, showEmoticons);
+            content = emojiProvider.blockToHtml(block, blocks.length === 1, showEmoticons);
             break;
         default:
             content = escape(block.content);
@@ -97,17 +98,6 @@ function linkifyUser(block) {
 
 function linkifyChannel(block) {
     return `<a class="u-link kiwi-channel" data-channel-name="${escape(block.meta.channel)}">${escape(block.content)}</a>`;
-}
-
-function addEmoji(block, isSingle, emojiLocation, showEmoticons) {
-    if (!showEmoticons) {
-        return block.content;
-    }
-    const emoji = block.meta.emoji;
-    const classes = 'kiwi-messagelist-emoji' + (isSingle ? ' kiwi-messagelist-emoji--single' : '');
-    const src = `${emojiLocation}${emoji}.png`;
-
-    return `<img class="${classes}" src="${src}" alt="${escape(block.content)}" title="${escape(block.content)}" />`;
 }
 
 function buildSpan(content, classes, style) {

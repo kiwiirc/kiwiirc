@@ -129,6 +129,7 @@ import * as TextFormatting from '@/helpers/TextFormatting';
 import * as settingTools from '@/libs/settingTools';
 import autocompleteCommands from '@/res/autocompleteCommands';
 import GlobalApi from '@/libs/GlobalApi';
+import EmojiProvider from '@/libs/EmojiProvider';
 import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
@@ -410,13 +411,17 @@ export default {
                 // Hitting space after just typing an ascii emoji will get it replaced with
                 // its image
                 if (this.$state.setting('buffers.show_emoticons')) {
-                    let currentWord = this.$refs.input.getCurrentWord();
-                    let emojiList = this.$state.setting('emojis');
-                    if (emojiList.hasOwnProperty(currentWord.word)) {
-                        let emoji = emojiList[currentWord.word];
-                        let url = this.$state.setting('emojiLocation') + emoji + '.png';
-                        this.$refs.input.setCurrentWord('');
-                        this.$refs.input.addImg(currentWord.word + ' ', url);
+                    let emojiProvider = new EmojiProvider();
+                    let currentWord = this.$refs.input.getCurrentWord(true);
+                    let emoji = emojiProvider.getEmoji(currentWord.word);
+                    if (emoji) {
+                        event.preventDefault();
+                        this.$refs.input.setCurrentWord('', false, true);
+                        this.$refs.input.addImg(
+                            emoji.ascii,
+                            emoji.url,
+                            emoji.imgProps,
+                        );
                     }
                 }
             } else if (event.keyCode === 38) {
