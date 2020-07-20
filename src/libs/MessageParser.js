@@ -2,7 +2,7 @@
 
 import { trim } from 'lodash';
 
-import getState from '@/libs/state';
+import EmojiProvider from '@/libs/EmojiProvider';
 import formatIrcMessage, { createNewBlock } from '@/libs/MessageFormatter';
 import { urlRegex, channelRegex } from '@/helpers/TextFormatting';
 
@@ -20,11 +20,11 @@ import { urlRegex, channelRegex } from '@/helpers/TextFormatting';
  * @returns An array of blocks, where each special content will be extracted into a separate block.
  */
 export default function parseMessage(message, formatOpts = {}, userList = null) {
-    const emojiList = getState().setting('emojis');
+    const emojiProvider = new EmojiProvider();
 
     const blocks = formatIrcMessage(message, formatOpts);
     let formatedBlocks = blocks.reduce(
-        (acc, block, i) => acc.concat(processBlock(block, userList, emojiList)),
+        (acc, block, i) => acc.concat(processBlock(block, userList, emojiProvider)),
         []
     );
 
@@ -35,10 +35,10 @@ export default function parseMessage(message, formatOpts = {}, userList = null) 
  * Receives a block, splits it into words and tries finding channels, urls, nicks, and emoji.
  * @param {Object} block A block that came from MessageFormatter.formatIrcMessage()
  * @param {Object} userList List of users to find within the message
- * @param {Object} emojiList List of emoji to find within the message
+ * @param {Object} emojiProvider Instance of EmojiProvider
  * @returns An array of blocks, where each special content will be extracted into a separate block.
  */
-function processBlock(block, userList, emojiList) {
+function processBlock(block, userList, emojiProvider) {
     const wordsRegex = /\S+/g;
 
     let wordMatch;
@@ -62,7 +62,7 @@ function processBlock(block, userList, emojiList) {
             matchChannel(word) ||
             matchUrl(word) ||
             matchUser(word, userList) ||
-            matchEmoji(word, emojiList);
+            emojiProvider.matchEmoji(word);
 
         if (match) {
             specialMatches.push({
@@ -200,27 +200,6 @@ function matchUser(word, userList) {
         meta: {
             user: trimWord,
             colour: user.colour,
-        },
-    };
-}
-
-/**
- * Finds an emoji in the word match.
- * @param {String} word Word to be searched for emoji.
- * @returns {Object} Object with the index of the emoji match in the block content, the
- * emoji match itself, and the emoji code.
- */
-function matchEmoji(word, emojiList) {
-    if (emojiList.hasOwnProperty && !emojiList.hasOwnProperty(word)) {
-        return false;
-    }
-
-    return {
-        index: 0,
-        match: word,
-        type: 'emoji',
-        meta: {
-            emoji: emojiList[word],
         },
     };
 }
