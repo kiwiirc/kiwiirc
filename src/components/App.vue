@@ -180,7 +180,7 @@ export default {
                     this.$state.$off('document.clicked', requestNotificationPermission);
                     this.$state.$off('input.raw', requestNotificationPermission);
 
-                    Notifications.requestPermission();
+                    Notifications.requestPermission(this.$state);
                     Notifications.listenForNewMessages(this.$state);
                 };
 
