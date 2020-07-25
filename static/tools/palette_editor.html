@@ -1,0 +1,234 @@
+<html>
+<head>
+<title>Kiwi IRC theme palette editor</title>
+<style>
+body {
+  color: #fff;
+  background: #20262E;
+  padding: 20px;
+  font-family: Helvetica;
+}
+
+.toolbar {
+    text-align: right;
+    margin: 0 1em 1em 0;
+}
+
+.palette {
+  display: flex;
+  margin-bottom: 20px;
+  background: #2f323a;
+}
+
+.colour {
+  flex: 1;
+  flex-basis: 225px; /* width of the picker */
+}
+
+.colour-title {
+    display: block;
+    padding: 1em;
+    border-right: 1px solid #3b4048;
+    box-sizing: border-box;
+}
+
+.preview {
+  height: 100px;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 2em;
+  box-sizing: border-box;
+}
+
+.textmodal {
+    position: fixed;
+    top: 1em;
+    bottom: 1em;
+    left: 1em;
+    right: 1em;
+    background: #54616d;
+    padding: 1em;
+    box-sizing: content-box;
+}
+
+.textmodal textarea {
+    display: block;
+    width: 100%;
+    height: 80%;
+    margin: 1em 0;
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+    <h2>Kiwi IRC theme palette editor</h2>
+    <div class="toolbar">
+        <button @click="showPasteCss">Paste CSS</button>
+        <button @click="exportCss">Export palette to CSS</button>
+    </div>
+    <palette v-for="p in palettes" :palette="p"></palette>
+    <div class="textmodal" v-if="showTextModal">
+        <span>{{textmodalTitle}}</span>
+        <button @click="showTextModal=false">OK</button>
+        <button v-if="textmodalOpts.copy" @click="navigator.clipboard.writeText(textmodalContent)">Copy</button>
+        <button v-if="textmodalOpts.cancel" @click="textmodalContent=null;showTextModal=false">Cancel</button>
+        <textarea v-model="textmodalContent"></textarea>
+    </div>
+</div>
+
+<template id="palette">
+    <div class="palette">
+        <div v-for="(c, idx) in p.cols" class="colour">
+            <span class="colour-title">{{p.name + (idx+1)}}</span>
+    
+            <div class="preview" :style="{background: c}" @click="editing = !editing">
+              {{ c ? c : '' }}
+            </div>
+            
+            <picker
+            v-if="editing"
+            @input="updateColour(p, idx, $event)"
+            :value="c"
+            ></picker>
+        </div>
+    </div>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-color/2.7.1/vue-color.min.js"></script>
+<script>
+function makePalette(name) {
+	return {name, cols:[0,0,0,0,0,0,0]};
+}
+
+Vue.component('textmodal', {
+    template: '#textmodal',
+    props: ['text'],
+});
+
+Vue.component('palette', {
+    template: '#palette',
+    components: {
+        Picker: VueColor.Chrome,
+    },
+  data: () => ({
+	  editing: false,
+  }),
+  props: ['palette'],
+  computed: {
+  	p() { return this.palette; }
+  },
+  methods: {
+  	updateColour(palette, colIdx, newVal) {
+      this.$set(palette.cols, colIdx, newVal.hex);
+    },
+  },
+});
+
+new Vue({
+  el: "#app",
+  data: {
+    palettes: [
+        makePalette('primary'),
+        makePalette('neutral'),
+        makePalette('accent'),
+        makePalette('accentstrong'),
+        makePalette('success'),
+        makePalette('info'),
+        makePalette('warning'),
+        makePalette('error'),
+        makePalette('actiondanger'),
+        makePalette('actiongo'),
+    ],
+    showTextModal: false,
+    textmodalTitle: '',
+    textmodalContent: '',
+    textmodalOpts: {
+        cancel: false,
+        copy: false,
+    },
+  },
+  created() {
+      window.app = this;
+  },
+  methods: {
+      clear() {
+          this.palettes = [];
+      },
+      showText(title, initialText, opts={}) {
+        return new Promise((resolve) => {
+            this.textmodalTitle = title || '';
+            this.textmodalContent = initialText || '';
+            this.textmodalOpts.cancel = !!opts.cancel;
+            this.textmodalOpts.copy = !!opts.copy;
+            this.showTextModal = true;
+            let unwatch = this.$watch('showTextModal', () => {
+                unwatch();
+                resolve(this.textmodalContent);
+                this.textmodalContent = '';
+            });
+        });
+      },
+      exportCss() {
+        let out = ':root {\n';
+        this.palettes.forEach(p => {
+            p.cols.forEach((c, idx) => {
+                out += `\t--k-${p.name}${idx+1}: ${c};\n`;
+            });
+        });
+
+        out += '}\n';
+
+        out += '\n';
+        out += 'Some themes may require the palette in reverse for some sections, such as the sidebar\n'
+        out += '.palette-reverse {\n';
+        this.palettes.forEach(p => {
+            let len = p.cols.length;
+            for (let idx=len; idx>0; idx--) {
+                out += `\t--k-${p.name}${len - idx + 1}: ${p.cols[idx-1]};\n`;
+            }
+        });
+        out += '}\n';
+
+        this.showText('Theme palette CSS export', out, {copy:true});
+      },
+      async showPasteCss() {
+          let css = await this.showText('Paste your theme palette CSS', '', {cancel:true});
+          if (css) this.importFromCss(css);
+      },
+      importFromCss(input) {
+        this.clear();
+
+        let relevantLines = [];
+        input.split('\n').forEach(line => {
+            let m = line.match(/--k-([a-z0-9]+)([0-9]):\W([^ ;]+);/);
+            // ["--k-primary2: #fff;", "primary", "2", "#fff", index: 0, input: "--k-primary2: #fff;", groups: undefined]
+            if (m) {
+                relevantLines.push(m);
+            }
+        });
+
+        let palettes = Object.create(null);
+        relevantLines.forEach(line => {
+            let paletteName = line[1];
+            let colourIdx = parseInt(line[2], 10);
+            let value = line[3];
+
+            if (!paletteName || Number.isNaN(colourIdx)) {
+                return;
+            }
+
+            palettes[paletteName] = palettes[paletteName] || makePalette(paletteName);
+            //  The colourIdx in CSS starts at 1, so -1 it to use in our array
+            palettes[paletteName].cols[colourIdx - 1] = value;
+        });
+
+        this.palettes = Object.values(palettes);
+      },
+  }
+});
+
+</script>
+</body>
+</html>
