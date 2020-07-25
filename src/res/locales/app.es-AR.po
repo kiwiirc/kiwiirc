@@ -6,12 +6,14 @@ msgstr ""
 "X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: es-AR\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 11\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Spanish, Argentina\n"
 "Language: es_AR\n"
-"PO-Revision-Date: 2020-05-21 00:12\n"
+"PO-Revision-Date: 2020-06-14 12:32\n"
 
 #: Start
 msgid "start_button"
@@ -295,7 +297,7 @@ msgstr "Comparte cuando estoy escribiendo un mensaje"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "Mostrar las previsualizaciones de imágenes en cola"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -625,6 +627,10 @@ msgstr "No se ha podido conectar al servidor :("
 msgid "network_connect"
 msgstr "Conectar a la Red"
 
+#: Network Name
+msgid "network_name"
+msgstr "Network Name"
+
 #: Close options
 msgid "side_close"
 msgstr "Cerrar opciones"
@@ -751,7 +757,7 @@ msgstr "Filtrar salas"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Buscar más salas"
+msgstr "Explorar más salas"
 
 #: Change nick
 msgid "change_nick"
@@ -763,7 +769,7 @@ msgstr "Escribe el nuevo apodo..."
 
 #: This is you!
 msgid "user_you"
-msgstr "¡Este eres tú!"
+msgstr "¡Este es tu usuario!"
 
 #: Account name: {{user}}
 msgid "user_account"

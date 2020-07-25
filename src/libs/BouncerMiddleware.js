@@ -37,7 +37,7 @@ export default function bouncerMiddleware() {
                 host: tags.host,
                 port: parseInt(tags.port, 10),
                 tls: tags.tls === '1',
-                connect: tags.state === 'connected',
+                connected: tags.state === 'connected',
                 nick: tags.nick,
                 currentNick: tags.currentNick,
                 password: tags.password || '',
@@ -62,6 +62,7 @@ export default function bouncerMiddleware() {
                 topic: tags.topic,
                 joined: tags.joined === '1',
                 seen: tags.seen,
+                notify: tags.notify || 'highlight',
             });
         } else if (params[0] === 'state') {
             client.command_handler.emit('bouncer state', {

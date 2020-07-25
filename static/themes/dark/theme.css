@@ -88,7 +88,7 @@
 
 /**
  * For a dark theme the statebrowser needs to also be dark. By default the statebrowser and the
- * rest of the app are dark+light, so we reverse the pallete for the statebrowser.
+ * rest of the app are dark light respectively, so we reverse the pallete for the statebrowser.
  */
 .kiwi-statebrowser {
     --k-primary1: #42b992;

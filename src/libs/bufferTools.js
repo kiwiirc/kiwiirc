@@ -25,7 +25,7 @@ export function orderBuffers(buffers) {
     return list;
 }
 
-export function orderedMessages(buffer) {
+export function orderedMessages(buffer, opts = {}) {
     let network = buffer.getNetwork();
     let currentNick = network.nick;
     let bufferMessages = buffer.getMessages();
@@ -37,7 +37,13 @@ export function orderedMessages(buffer) {
     /* eslint-disable no-unused-vars */
     let ignoredVar = buffer.message_count;
 
-    let messages = bufferMessages.slice(0, bufferMessages.length);
+    let messages = [];
+    if (opts.inPlace) {
+        messages = bufferMessages;
+    } else {
+        messages = bufferMessages.slice(0, bufferMessages.length);
+    }
+
     messages.sort((a, b) => {
         if (a.time > b.time) {
             return 1;
@@ -50,13 +56,16 @@ export function orderedMessages(buffer) {
             -1;
     });
 
+    if (opts.noFilter) {
+        return messages;
+    }
+
     let list = [];
-    let maxSize = buffer.setting('scrollback_size');
     let showJoinParts = buffer.setting('show_joinparts');
     let showTopics = buffer.setting('show_topics');
     let showNickChanges = buffer.setting('show_nick_changes');
     let showModeChanges = buffer.setting('show_mode_changes');
-    for (let i = messages.length - 1; i >= 0 && list.length < maxSize; i--) {
+    for (let i = messages.length - 1; i >= 0; i--) {
         if (!showJoinParts && messages[i].type === 'traffic') {
             continue;
         }

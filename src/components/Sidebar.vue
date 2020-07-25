@@ -128,11 +128,17 @@
                 />
             </template>
             <template v-else-if="buffer.isQuery()">
-                <!-- TODO:
-                invite to an open channel<br />
-                ignore this user<br />
-                something else
-                -->
+                <div
+                    v-if="section === 'user'"
+                    class="kiwi-sidebar-userbox"
+                    @click.stop=""
+                >
+                    <user-box
+                        :user="sidebarState.sidebarUser"
+                        :buffer="buffer"
+                        :network="network"
+                    />
+                </div>
             </template>
         </template>
         <template v-else>
@@ -179,7 +185,7 @@ export default {
                 return 'component';
             }
 
-            return this.sidebarState.section() || 'nicklist';
+            return this.sidebarState.section();
         },
         settingShowJoinParts: {
             get() {

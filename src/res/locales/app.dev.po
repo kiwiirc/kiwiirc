@@ -683,6 +683,10 @@ msgstr "We couldn't connect to that server :("
 msgid "network_connect"
 msgstr "Connect To Network"
 
+#: Network Name
+msgid "network_name"
+msgstr "Network Name"
+
 
 
 #: Sidebar

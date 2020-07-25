@@ -6,12 +6,14 @@ msgstr ""
 "X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: eu\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 11\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-05-21 00:11\n"
+"PO-Revision-Date: 2020-06-14 14:01\n"
 
 #: Start
 msgid "start_button"
@@ -135,7 +137,7 @@ msgstr "Ez"
 
 #: Not found.
 msgid "not_found"
-msgstr "Ez da aurkitu"
+msgstr "Ez da aurkitu."
 
 #: Warning!
 msgid "warning"
@@ -271,7 +273,7 @@ msgstr "Orduaren formatua 24 ordukoa"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Emotikonoak erakutsi"
+msgstr "Erakutsi emotikonoan"
 
 #: Block new Private messages
 msgid "settings_block_private"
@@ -295,7 +297,7 @@ msgstr "Partekatu mezu bat idazten nagoenean"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "Erakutsi irudien aurreikuspenak linean"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -491,7 +493,7 @@ msgstr "Ongi Etorria Kiwi IRC-ra! Ezkerreko kanal bat aukeratu."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Erakutsi goera-barra"
+msgstr "Erakutsi egoera-barra"
 
 #: Hide Topic
 msgid "hide_topic"
@@ -624,6 +626,10 @@ msgstr "Ezin gara konektatu zerbitzarira :("
 #: Connect To Network
 msgid "network_connect"
 msgstr "Sarera konektatuta"
+
+#: Network Name
+msgid "network_name"
+msgstr "Sarearen izena"
 
 #: Close options
 msgid "side_close"

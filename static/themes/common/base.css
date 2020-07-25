@@ -800,7 +800,9 @@
 }
 
 .kiwi-messagelist-seperator {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--k-neutral4);
+    background: var(--k-neutral7);
+    font-size: 0.9em;
 }
 
 .kiwi-messagelist-seperator > span {
@@ -855,11 +857,6 @@
 /* Messagelayout inline */
 .kiwi-messagelist-message--text .kiwi-messagelist-time {
     color: var(--k-neutral1);
-}
-
-/* Connection Styling */
-.kiwi-messagelist-message-connection {
-    background-color: var(--k-neutral7);
 }
 
 /* ---- Traffic Messages ---- */

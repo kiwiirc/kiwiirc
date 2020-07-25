@@ -41,7 +41,9 @@ Vue.use(VueVirtualScroller);
 
 let logLevelMatch = window.location.href.match(/kiwi-loglevel=(\d)/);
 if (logLevelMatch && logLevelMatch[1]) {
-    Logger.setLevel(parseInt(logLevelMatch[1], 10));
+    let newLevel = parseInt(logLevelMatch[1], 10);
+    Logger.setLevel(newLevel);
+    Logger('Logging level set to', newLevel);
 }
 
 let log = Logger.namespace('main');

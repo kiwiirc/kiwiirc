@@ -6,12 +6,14 @@ msgstr ""
 "X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: tr\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 11\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-05-21 16:41\n"
+"PO-Revision-Date: 2020-07-15 10:32\n"
 
 #: Start
 msgid "start_button"
@@ -79,7 +81,7 @@ msgstr "Sunucu Şifresi"
 
 #: I have a password
 msgid "password_have"
-msgstr "şifrem var"
+msgstr "Bir şifrem var"
 
 #: Server
 msgid "server"
@@ -215,7 +217,7 @@ msgstr "{{count}} saniye"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} saniyeler"
+msgstr "{{count}} saniye"
 
 #: General
 msgid "settings_general"
@@ -595,7 +597,7 @@ msgstr "{{count}} kişi burada"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Kanaldaki kullanıcıları filtrele"
+msgstr "Kullanıcıları filtrele"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -624,6 +626,10 @@ msgstr "Bu sunucuya bağlanamadık :("
 #: Connect To Network
 msgid "network_connect"
 msgstr "Ağa Bağlan"
+
+#: Network Name
+msgid "network_name"
+msgstr "Ağ Adı"
 
 #: Close options
 msgid "side_close"
@@ -899,7 +905,7 @@ msgstr "Bir kanala gir"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "kanaldan ayrıl"
+msgstr "Bir kanaldan ayrıl"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"

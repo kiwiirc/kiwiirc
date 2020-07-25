@@ -4,6 +4,7 @@ import Vue from 'vue';
 import _ from 'lodash';
 import { def } from './common';
 import batchedAdd from '../batchedAdd';
+import * as bufferTools from '../bufferTools';
 
 let nextBufferId = 0;
 
@@ -23,7 +24,6 @@ export default class BufferState {
         this.modes = Object.create(null);
         this.flags = {
             unread: 0,
-            alert_on: 'default',
             has_opened: false,
             channel_badkey: false,
             chathistory_available: true,
@@ -59,6 +59,7 @@ export default class BufferState {
         this.messageDict.push(messagesObj);
         def(this, 'messagesObj', messagesObj, false);
 
+        def(this, 'isMessageTrimming', true, true);
         def(this, 'addMessageBatch', createMessageBatch(this), false);
         def(this, 'addUserBatch', createUserBatch(this), false);
 
@@ -86,6 +87,7 @@ export default class BufferState {
             if (event.buffer === this) {
                 this.state.$off('network.connecting', onNetworkConnectingBound);
                 this.state.$off('buffer.close', onBufferCloseBound);
+                this.state.$off('irc.motd', onNetworkMotdBound);
             }
         }
 
@@ -132,6 +134,22 @@ export default class BufferState {
     clearMessages() {
         this.messagesObj.messages.splice(0, this.messagesObj.messages.length);
         this.messagesObj.messageIds = Object.create(null);
+    }
+
+    // Remove a block of messages between a time (server-time) range. Inclusive.
+    clearMessageRange(startTime, endTime) {
+        this.messagesObj.messages = this.messagesObj.messages.filter((message) => {
+            if (message.server_time < startTime || message.server_time > endTime) {
+                return true;
+            }
+
+            // This message will be removed
+            delete this.messagesObj.messageIds[message.id];
+            return false;
+        });
+
+        // Mark that something changed
+        this.message_count++;
     }
 
     isServer() {
@@ -322,6 +340,7 @@ export default class BufferState {
         let ircClient = this.getNetwork().ircClient;
         this.flag('is_requesting_chathistory', true);
         this.chathistory_request_count += 1;
+        let existingMessageIds = Object.assign({}, this.messagesObj.messageIds);
         ircClient.chathistory[chathistoryFuncName](this.name, time)
             .then((event) => {
                 if (!event) {
@@ -330,9 +349,10 @@ export default class BufferState {
                 }
 
                 // The BNC server may reply with messages that are already in the buffer.
-                // This var stores whether there are new messages in the chathistory response.
+                // If we get no new messages that we didn't already have, assume that we have
+                // all the available history
                 let hasNewMessages = event.commands.some(
-                    (msg) => msg.tags.msgid && !this.messagesObj.messageIds[msg.tags.msgid]
+                    (msg) => msg.tags.msgid && !existingMessageIds[msg.tags.msgid]
                 );
 
                 // If there are new messages, then there could be more in the backlog.
@@ -387,6 +407,14 @@ export default class BufferState {
 
     addUser(user) {
         this.addUserBatch(user);
+    }
+
+    hasNick(nick) {
+        let nickLower = nick.toLowerCase();
+        return (
+            nickLower in this.users ||
+            (this.isQuery() && this.name.toLowerCase() === nickLower)
+        );
     }
 
     removeUser(nick) {
@@ -529,7 +557,10 @@ function createMessageBatch(bufferState) {
         }
         bufferState.messagesObj.messages.push(newMessage);
         bufferState.messagesObj.messageIds[newMessage.id] = newMessage;
-        trimMessages();
+        if (bufferState.isMessageTrimming) {
+            trimMessages();
+        }
+        bufferTools.orderedMessages(bufferState, { inPlace: true, noFilter: true });
         bufferState.message_count++;
     };
     let addMultipleMessages = (newMessages) => {
@@ -539,7 +570,10 @@ function createMessageBatch(bufferState) {
             toAdd.forEach((msg) => {
                 bufferState.messagesObj.messageIds[msg.id] = msg;
             });
-            trimMessages();
+            if (bufferState.isMessageTrimming) {
+                trimMessages();
+            }
+            bufferTools.orderedMessages(bufferState, { inPlace: true, noFilter: true });
         }
         // Trigger Vue's reactivity on the buffer whether messages were added or not, just in case
         // anything was depending on the batch queue which has now been emptied.
@@ -548,7 +582,6 @@ function createMessageBatch(bufferState) {
     let trimMessages = () => {
         let scrollbackSize = bufferState.setting('scrollback_size');
         let length = bufferState.messagesObj.messages.length;
-
         if (bufferState.messagesObj.messages.length > scrollbackSize) {
             let removed = bufferState.messagesObj.messages.splice(0, length - scrollbackSize);
             removed.forEach((msg) => delete bufferState.messagesObj.messageIds[msg.id]);

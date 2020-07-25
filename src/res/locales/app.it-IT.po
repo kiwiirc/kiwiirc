@@ -6,12 +6,14 @@ msgstr ""
 "X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: it\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 11\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2020-05-21 09:42\n"
+"PO-Revision-Date: 2020-07-14 20:31\n"
 
 #: Start
 msgid "start_button"
@@ -625,6 +627,10 @@ msgstr "Non è stato possibile connettersi a quel server :("
 msgid "network_connect"
 msgstr "Connessione alla rete"
 
+#: Network Name
+msgid "network_name"
+msgstr "Nome rete"
+
 #: Close options
 msgid "side_close"
 msgstr "Opzioni di chiusura"
@@ -639,7 +645,7 @@ msgstr "Impostazioni personali"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Mostra quando le persone si collegato"
+msgstr "Mostra quando le persone si collegano"
 
 #: Show when channel topic changes
 msgid "side_topics"

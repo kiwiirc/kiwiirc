@@ -7,8 +7,7 @@ import ThemeManager from '@/libs/ThemeManager';
 import _ from 'lodash';
 import * as ipRegex from 'ip-regex';
 import i18next from 'i18next';
-import * as Colours from './Colours';
-import { md5 } from './Md5';
+import * as murmurhash3 from 'murmurhash3js';
 
 export const urlRegex = new RegExp(
     // Detect either a protocol or 'www.' to start a URL
@@ -51,35 +50,38 @@ export function linkifyChannels(word) {
 
 /**
  * Convert a nickname string to a colour code
+ * Uses these properties from the CSS theme file:
+ * --kiwi-nickcolour-count: 200;  - number of available nick colours
+ * --kiwi-nickcolour-hueoffset: 0;  - moves the hue value by hueoffset amounts
+ * --kiwi-nickcolour-saturation: 70;  - the nick saturation in HSL value
+ * --kiwi-nickcolour-lightness: 40;  - the nick lightness in HSL value
  */
 export function createNickColour(nick) {
-    let nickLower = nick.toLowerCase();
-
-    // The HSL properties are based on this specific colour
-    let startingColour = '#36809B'; // '#449fc1';
-
-    let hash = md5(nickLower);
-    let hueOffset = mapRange(hexVal(hash, 14, 3), 0, 4095, 0, 359);
-    let satOffset = hexVal(hash, 17);
-    let baseColour = Colours.rgb2hsl(Colours.hex2rgb(startingColour));
-    baseColour.h = (((baseColour.h * 360 - hueOffset) + 360) % 360) / 360;
-
-    if (satOffset % 2 === 0) {
-        baseColour.s = Math.min(1, ((baseColour.s * 100) + satOffset) / 100);
-    } else {
-        baseColour.s = Math.max(0, ((baseColour.s * 100) - satOffset) / 100);
-    }
-
     let themeMngr = ThemeManager.instance();
-    let brightness = themeMngr.themeVar('nick-brightness');
-    if (brightness) {
-        baseColour.l = parseInt(brightness, 10) / 100;
+    let nickLower = (nick || '').toLowerCase();
+    let nickNum = murmurhash3.x86.hash32(nickLower);
+
+    let bucketSize = toInt(themeMngr.themeVar('nickcolour-count')) || 200;
+    let hueOffset = toInt(themeMngr.themeVar('nickcolour-hueoffset'));
+    let hsl = {
+        h: mapRange(Math.abs(nickNum) % bucketSize, 0, bucketSize, 0, 360) + hueOffset,
+        s: toInt(themeMngr.themeVar('nickcolour-saturation')) || 70,
+        l: toInt(themeMngr.themeVar('nickcolour-lightness')) || 40,
+    };
+    return `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+}
+
+/**
+ * Parse a string to an int, where NaN is 0
+ * @param {string} inp
+ */
+export function toInt(inp) {
+    let int = parseInt(inp, 10);
+    if (Number.isNaN(int)) {
+        int = 0;
     }
 
-    let rgb = Colours.hsl2rgb(baseColour);
-    let nickColour = Colours.rgb2hex(rgb);
-
-    return nickColour;
+    return int;
 }
 
 /**
