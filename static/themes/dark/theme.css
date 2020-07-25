@@ -1,7 +1,8 @@
 @import '../common/base.css';
 
 .kiwi-wrap {
-    --kiwi-nick-brightness: 50;
+    --kiwi-nickcolour-saturation: 75;
+    --kiwi-nickcolour-lightness: 50;
 }
 
 :root {
@@ -209,4 +210,8 @@
 
 .kiwi-statebrowser {
     box-shadow: 0px 0 2px #101010;
+}
+
+.kiwi-statebrowser-channel-label {
+    color: var(--k-neutral3);
 }
