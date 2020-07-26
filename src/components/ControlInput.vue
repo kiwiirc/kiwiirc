@@ -392,7 +392,15 @@ export default {
                 this.$refs.autocomplete.selectCurrentItem();
             }
 
-            if (event.keyCode === 13) {
+            if (event.keyCode === 13 && (
+                (event.altKey && !event.shiftKey && !event.metaKey && !event.ctrlKey) ||
+                (event.shiftKey && !event.altKey && !event.metaKey && !event.ctrlKey)
+            )) {
+                // Add new line when shift+enter or alt+enter is pressed
+                event.preventDefault();
+                this.$refs.input.insertText('\n');
+            } else if (event.keyCode === 13) {
+                // Send message when enter is pressed
                 event.preventDefault();
                 this.submitForm();
             } else if (event.keyCode === 32) {

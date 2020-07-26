@@ -150,9 +150,12 @@ function handleMessage(type, event, command, line) {
     // pure whitespace messages which we don't want to interfere with
     if (message.replace(/\s+/g, '') !== '') {
         message = message.trimEnd();
+    } else {
+        // Windows uses \r\n for new lines as we split on \n trim \r from the end
+        message = message.replace(/[\r]+$/, '');
     }
 
-    // Mke sure we have some text to actually send
+    // Make sure we have some text to actually send
     if (!message) {
         return;
     }
