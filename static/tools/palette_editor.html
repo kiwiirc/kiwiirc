@@ -64,6 +64,7 @@ body {
 <div id="app">
     <h2>Kiwi IRC theme palette editor</h2>
     <div class="toolbar">
+        <button v-if="kiwiInstance" @click="sendToKiwi">Update Kiwi</button>
         <button @click="showPasteCss">Paste CSS</button>
         <button @click="exportCss">Export palette to CSS</button>
     </div>
@@ -129,18 +130,7 @@ Vue.component('palette', {
 new Vue({
   el: "#app",
   data: {
-    palettes: [
-        makePalette('primary'),
-        makePalette('neutral'),
-        makePalette('accent'),
-        makePalette('accentstrong'),
-        makePalette('success'),
-        makePalette('info'),
-        makePalette('warning'),
-        makePalette('error'),
-        makePalette('actiondanger'),
-        makePalette('actiongo'),
-    ],
+    palettes: [],
     showTextModal: false,
     textmodalTitle: '',
     textmodalContent: '',
@@ -149,8 +139,38 @@ new Vue({
         copy: false,
     },
   },
+  computed: {
+    kiwiInstance() {
+        return window.opener;
+    }
+  },
   created() {
-      window.app = this;
+      if (this.kiwiInstance) {
+        this.loadPaletteFromKiwiInstance();
+      } else {
+        [
+            'primary',
+            'neutral',
+            'accent',
+            'accentstrong',
+            'success',
+            'info',
+            'warning',
+            'error',
+            'actiondanger',
+            'actiongo',
+        ].forEach(name => {
+            this.palettes.push(makePalette(name));
+        });
+      }
+  },
+  watch: {
+      palettes: {
+          deep: true,
+          handler() {
+              this.sendToKiwi();
+          },
+      }
   },
   methods: {
       clear() {
@@ -170,7 +190,34 @@ new Vue({
             });
         });
       },
-      exportCss() {
+      loadPaletteFromKiwiInstance() {
+        let sheets = Array.from(this.kiwiInstance.document.styleSheets)
+            .filter(sheet => sheet.href === null || sheet.href.startsWith(window.location.origin));
+
+        let css = '';
+        sheets.forEach(sheet => {
+            Array.from(sheet.cssRules).forEach(rule => {
+                if (rule.selectorText === ':root') {
+                    css += rule.cssText + '\n';
+                }
+            })
+        });
+
+        this.importFromCss(css);
+      },
+      sendToKiwi() {
+          if (!this.kiwiInstance) {
+              return;
+          }
+
+        let docEl = this.kiwiInstance.document.documentElement;
+        this.palettes.forEach(p => {
+            p.cols.forEach((c, idx) => {
+                docEl.style.setProperty(`--k-${p.name}${idx+1}`, c);
+            });
+        });
+      },
+      buildCss() {
         let out = ':root {\n';
         this.palettes.forEach(p => {
             p.cols.forEach((c, idx) => {
@@ -191,7 +238,11 @@ new Vue({
         });
         out += '}\n';
 
-        this.showText('Theme palette CSS export', out, {copy:true});
+        return out;
+      },
+      exportCss() {
+        let css = this.buildCss();
+        this.showText('Theme palette CSS export', css, {copy:true});
       },
       async showPasteCss() {
           let css = await this.showText('Paste your theme palette CSS', '', {cancel:true});
@@ -201,8 +252,8 @@ new Vue({
         this.clear();
 
         let relevantLines = [];
-        input.split('\n').forEach(line => {
-            let m = line.match(/--k-([a-z0-9]+)([0-9]):\W([^ ;]+);/);
+        input.split(';').forEach(line => {
+            let m = line.match(/--k-([a-z0-9]+)([0-9]):\W?([^ ;]+)/);
             // ["--k-primary2: #fff;", "primary", "2", "#fff", index: 0, input: "--k-primary2: #fff;", groups: undefined]
             if (m) {
                 relevantLines.push(m);
