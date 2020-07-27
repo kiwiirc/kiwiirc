@@ -576,7 +576,7 @@
 }
 
 .kiwi-statebrowser-usermenu-avatar {
-    border-color: var(--k-primary4);
+    border-color: var(--k-success4);
     background-color: var(--k-neutral1);
     color: var(--k-neutral7);
 }
@@ -1051,7 +1051,7 @@
 /* Away Status Indicator */
 .kiwi-awaystatusindicator {
     border-color: var(--k-neutral7);
-    background-color: var(--k-primary4);
+    background-color: var(--k-success4);
 }
 .kiwi-awaystatusindicator--away {
     background-color: var(--k-error4);

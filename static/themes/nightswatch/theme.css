@@ -1,329 +1,149 @@
 @import '../common/base.css';
 
 :root {
-    /* Primary Variables */
-    --brand-primary: #000;
-    --brand-primary-hover: #2d2d2d;
-    --brand-midtone: #1b1b1b;
-    --brand-darktone: #000;
-    --brand-default-bg: #1b1b1b;
-    --brand-default-fg: #f1f1f1;
-
-    /* Warning colors */
-    --brand-notice: #f6c358;
-    --brand-warning: #fcb46e;
-    --brand-error: #bf5155;
-
-    /* Input elements */
-    --brand-input-border: #000000;
-    --brand-input-fg: #616161;
-    --brand-input-bg: transparent;
-
-    /* Connection Indicator top */
-    --comp-workspace-before-bg: var(--brand-primary);
-    --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
-
-    /* Container Header */
-    --comp-header-bg: var(--brand-default-bg);
-    --comp-header-name-fg: var(--brand-default-fg);
-    --comp-header-option-active-fg: var(--brand-default-bg);
-    --comp-header-option-active-bg: var(--brand-primary);
-
-    /* StateBrowser */
-    --comp-statebrowser-fg: #fff;
-    --comp-statebrowser-bg: #000;
-    --comp-statebrowser-bg-networkname: #151515;
-    --comp-statebrowser-channel-active-bg: #ffffff0d;
-    --comp-statebrowser-channel-active-fg: #fff;
-    --comp-usermenu-open-bg: #151515;
-    --comp-statebrowser-network-border: #bda28e;
-
-
-    /* Sidebars ( Right Side ) */
-    --comp-sidebar-bg: var(--brand-default-bg);
-    --comp-sidebar-fg: #fff;
-    --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
-    --comp-aboutbuffer-header-bg: #42b992;
-
-    /* Misc */
-    --brand-link-normal: var(--brand-default-fg);
-    --brand-link--hover: var(--brand-default-fg);
-    --brand-shadow: rgba(0, 0, 0, 0.1);
-    --comp-border: #444;
+	--k-primary1: #000000;
+	--k-primary2: #000000;
+	--k-primary3: #000000;
+	--k-primary4: #000000;
+	--k-primary5: #000000;
+	--k-primary6: #000000;
+	--k-primary7: #000000;
+	--k-neutral1: #f3f5f4;
+	--k-neutral2: #e4e4e4;
+	--k-neutral3: #c3c3c3;
+	--k-neutral4: #969696;
+	--k-neutral5: #555857;
+	--k-neutral6: #272d2a;
+	--k-neutral7: #1f2321;
+	--k-accent1: #005375;
+	--k-accent2: #026790;
+	--k-accent3: #008BC3;
+	--k-accent4: #00B3FC;
+	--k-accent5: #45C8FE;
+	--k-accent6: #83d8fb;
+	--k-accent7: #ACE4FB;
+	--k-accentstrong1: #8D6821;
+	--k-accentstrong2: #9e7627;
+	--k-accentstrong3: #BC8721;
+	--k-accentstrong4: #E09F20;
+	--k-accentstrong5: #E8B44E;
+	--k-accentstrong6: #e8c279;
+	--k-accentstrong7: #F5D494;
+	--k-success1: #16755B;
+	--k-success2: #188063;
+	--k-success3: #188669;
+	--k-success4: #28AA78;
+	--k-success5: #60bd9b;
+	--k-success6: #7ddcc3;
+	--k-success7: #b3f1e0;
+	--k-info1: #7e6f2a;
+	--k-info2: #86762e;
+	--k-info3: #998633;
+	--k-info4: #c3ad4a;
+	--k-info5: #dccc83;
+	--k-info6: #eadfa9;
+	--k-info7: #f7efcc;
+	--k-warning1: #5C4C0F;
+	--k-warning2: #8c7926;
+	--k-warning3: #C9AE37;
+	--k-warning4: #F3D460;
+	--k-warning5: #fbe591;
+	--k-warning6: #f9f4d4;
+	--k-warning7: #FFFDF3;
+	--k-error1: #582426;
+	--k-error2: #793437;
+	--k-error3: #8F3A3E;
+	--k-error4: #903C3C;
+	--k-error5: #A65054;
+	--k-error6: #D18689;
+	--k-error7: #e8c2c4;
+	--k-actiondanger1: #582426;
+	--k-actiondanger2: #793437;
+	--k-actiondanger3: #9c4245;
+	--k-actiondanger4: #bf5155;
+	--k-actiondanger5: #d26b6f;
+	--k-actiondanger6: #de9194;
+	--k-actiondanger7: #e8c2c4;
+	--k-actiongo1: #16755B;
+	--k-actiongo2: #16755B;
+	--k-actiongo3: #188669;
+	--k-actiongo4: #199473;
+	--k-actiongo5: #65d6ad;
+	--k-actiongo6: #A8DCCE;
+	--k-actiongo7: #A8DCCE;
 }
 
-/* Welcome */
-.kiwi-welcome-simple-form .u-submit {
-    color: #fff;
-}
-
-/* Container Header */
-.kiwi-workspace::before {
-    background: #4e4e4e;
-}
-
-.kiwi-header-option--active a,
-.kiwi-header-option:hover a {
-    color: var(--brand-default-fg);
-}
-
-/* Sidebar */
-.kiwi-aboutbuffer h4 {
-    color: var(--brand-default-fg);
-    background-color: #000;
-}
-
-.kiwi-appsettings-title,
-.kiwi-appsettings-block h3,
-.kiwi-networksettings .kiwi-title {
-    background-color: var(--brand-primary);
-}
-
-.kiwi-appsettings-block h3,
-.kiwi-appsettings-title {
-    color: var(--brand-default-fg);
-}
-
-.kiwi-appsettings-section {
-    border-left: 1px solid #444;
-    border-right: 1px solid #444;
-    border-bottom: 1px solid #444;
-}
-
-.kiwi-appsettings-block h3 {
-    border-top: 1px solid #444;
-    border-left: 1px solid #444;
-    border-right: 1px solid #444;
-}
-
-.kiwi-networksettings .kiwi-title {
-    border-top-color: var(--brand-primary-hover);
-}
-
-.kiwi-statebrowser-network.kiwi-statebrowser-network--active .kiwi-statebrowser-network-header {
-    border-left: 3px solid var(--brand-primary-hover);
-}
-
-.u-tabbed-view-tabs {
-    background-color: #000;
-    border-bottom: 3px solid #444;
-}
-
-.u-tabbed-view-tabs .u-tabbed-view-tab:hover,
-.u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active {
-    border-bottom-color: #444;
-    background-color: #313131;
-}
-
-.kiwi-statebrowser-newnetwork {
-    border-top-color: var(--brand-primary-hover);
-}
-
-.kiwi-statebrowser-newnetwork a:hover {
-    background: var(--brand-primary-hover);
-}
-
-.kiwi-network-name-options {
-    background-color: var(--comp-statebrowser-bg);
-}
-
-.kiwi-statebrowser-channel-leave {
-    background: transparent;
-}
-
-.kiwi-statebrowser-channelfilter a,
-.kiwi-statebrowser-channelfilter a:hover {
-    color: #fff;
-}
-
-.kiwi-awaystatusindicator {
-    background: #41e8c9;
-}
-.kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
-    background: var(--brand-error);
-}
-
-.kiwi-startup-common-section-info {
-    border-left-color: var(--brand-primary);
-}
-
-
-/* Statebrowser */
 .kiwi-statebrowser {
-    border-right: 2px solid #444;
-}
-
-.kiwi-statebrowser-usermenu-avatar {
-    background: #000;
-    color: #f1f1f1;
-    border-color: #4b4b4b;
-}
-
-.kiwi-statebrowser-usermenu--open .kiwi-statebrowser-usermenu-avatar {
-    color: #f1f1f1;
-}
-
-.kiwi-statebrowser-usermenu-avatar:hover {
-    color: #f1f1f1;
-    background: #666;
-}
-
-.kiwi-statebrowser-usermenu-avatar .kiwi-awaystatusindicator {
-    border-color: #4b4b4b;
-}
-
-.kiwi-network-name-options .kiwi-network-name-option {
-    color: var(--brand-default-fg);
-}
-
-.kiwi-statebrowser-newchannel-inputwrap input[type='text'] {
-    color: #f1f1f1;
-}
-
-.kiwi-statebrowser-newnetwork a {
-    color: var(--brand-default-fg);
-}
-
-.kiwi-channellist-user-center a.u-button.u-button-primary {
-    border-bottom: none;
-}
-
-
-/* Inputs */
-.u-form input[type='checkbox']:checked,
-.u-form input[type='radio']:checked {
-    background-color: #f1f1f1;
-}
-
-.u-form .u-input:focus {
-    border-color: #6b6b6b;
-}
-
-.u-form select {
-    background-color: var(--brand-primary);
-}
-
-.u-link {
-    color: var(--brand-default-fg);
-}
-
-/* Message list */
-.kiwi-messagelist {
-    background: #000;
-}
-.kiwi-messagelist .kiwi-messagelist-body {
-    color: #adadad;
-}
-
-.kiwi-messagelist .kiwi-messagelist-message--highlight,
-.kiwi-messagelist .kiwi-messagelist-message--hover {
-    border-left-color: #3c3c3c;
-}
-
-.kiwi-messagelist-message-notice {
-    background: #3c3c3c;
-}
-
-.kiwi-avatar > span {
-    background-color: var(--brand-default-bg);
-    color: var(--brand-default-fg);
-}
-
-/* Aliases */
-.kiwi-settings-aliases-help {
-    border-color: var(--brand-default-fg);
-}
-
-.kiwi-settings-aliases-help em {
-    color: var(--brand-default-fg);
-}
-
-/* Misc */
-.kiwi-header-server-connection .u-button,
-.u-button-primary,
-.u-button-warning,
-.kiwi-networksettings .kiwi-title,
-.kiwi-notconnected,
-.kiwi-notconnected-button {
-    color: #f1f1f1;
-}
-
-.kiwi-notconnected-button {
-    border-color: #f1f1f1;
-}
-
-.kiwi-networksettings .kiwi-connect-to-newnetwork {
-    background: #444;
-    color: #fff;
-}
-
-.kiwi-networksettings .kiwi-networksettings-server-types,
-.kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
-    color: #fff;
-    border-color: #fff;
-}
-
-.kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button:hover,
-.kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button.kiwi-networksettings-server-type-active {
-    background: #444;
-    color: #fff;
-}
-
-.kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #272727;
-}
-
-.kiwi-messagelist-message-error,
-.kiwi-messagelist-message.kiwi-messagelist-message-error.kiwi-messagelist-message--highlight {
-    color: #f1f1f1;
-}
-
-button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
-.kiwi-statebrowser-channel-label {
-    color: var(--brand-default-fg);
-}
-
-.kiwi-statebrowser-channel-label {
-    background: #383838;
-}
-
-.kiwi-statebrowser-channel-label--highlight {
-    background: var(--brand-error);
-}
-
-.kiwi-welcome-znc h2 {
-    color: var(--brand-default-bg);
-}
-
-.kiwi-welcome-znc-form .u-input-text {
-    background: transparent;
-    color: var(--brand-default-bg);
-}
-
-.kiwi-container-toggledraw-statebrowser-messagecount {
-    background-color: #4c4b4b;
-    color: var(--brand-default-fg);
-}
-
-.kiwi-container-toggledraw-statebrowser-messagecount::after {
-    border-right-color: #4c4b4b;
-}
-
-.kiwi-wrap--statebrowser-drawopen .kiwi-container-toggledraw-statebrowser-messagecount::after {
-    border-left-color: #4c4b4b;
-}
-
-.kiwi-autocomplete-item--selected {
-    background: #3c3c3c;
-    color: #ffffff;
-}
-
-.kiwi-autocomplete-item--selected .u-link {
-    color: #fdfdfd;
-}
-
-.kiwi-messagelist-message--compact .kiwi-messagelist-time {
-    color: #fff;
+	--k-primary1: #000000;
+	--k-primary2: #000000;
+	--k-primary3: #000000;
+	--k-primary4: #000000;
+	--k-primary5: #000000;
+	--k-primary6: #000000;
+	--k-primary7: #000000;
+	--k-neutral1: #000000;
+	--k-neutral2: #292929;
+	--k-neutral3: #4E4E4E;
+	--k-neutral4: #606060;
+	--k-neutral5: #929292;
+	--k-neutral6: #A6A6A6;
+	--k-neutral7: #F5F3F1;
+	--k-accent1: #005375;
+	--k-accent2: #026790;
+	--k-accent3: #008BC3;
+	--k-accent4: #00B3FC;
+	--k-accent5: #45C8FE;
+	--k-accent6: #83d8fb;
+	--k-accent7: #ACE4FB;
+	--k-accentstrong1: #8D6821;
+	--k-accentstrong2: #9e7627;
+	--k-accentstrong3: #BC8721;
+	--k-accentstrong4: #E09F20;
+	--k-accentstrong5: #E8B44E;
+	--k-accentstrong6: #e8c279;
+	--k-accentstrong7: #F5D494;
+	--k-success1: #16755B;
+	--k-success2: #188063;
+	--k-success3: #188669;
+	--k-success4: #28AA78;
+	--k-success5: #60bd9b;
+	--k-success6: #7ddcc3;
+	--k-success7: #b3f1e0;
+	--k-info1: #7e6f2a;
+	--k-info2: #86762e;
+	--k-info3: #998633;
+	--k-info4: #c3ad4a;
+	--k-info5: #dccc83;
+	--k-info6: #eadfa9;
+	--k-info7: #f7efcc;
+	--k-warning1: #5C4C0F;
+	--k-warning2: #8c7926;
+	--k-warning3: #C9AE37;
+	--k-warning4: #F3D460;
+	--k-warning5: #fbe591;
+	--k-warning6: #f9f4d4;
+	--k-warning7: #FFFDF3;
+	--k-error1: #582426;
+	--k-error2: #793437;
+	--k-error3: #8F3A3E;
+	--k-error4: #903C3C;
+	--k-error5: #A65054;
+	--k-error6: #D18689;
+	--k-error7: #e8c2c4;
+	--k-actiondanger1: #582426;
+	--k-actiondanger2: #793437;
+	--k-actiondanger3: #9c4245;
+	--k-actiondanger4: #bf5155;
+	--k-actiondanger5: #d26b6f;
+	--k-actiondanger6: #de9194;
+	--k-actiondanger7: #e8c2c4;
+	--k-actiongo1: #16755B;
+	--k-actiongo2: #16755B;
+	--k-actiongo3: #188669;
+	--k-actiongo4: #199473;
+	--k-actiongo5: #65d6ad;
+	--k-actiongo6: #A8DCCE;
+	--k-actiongo7: #A8DCCE;
 }
 
 /* IRC Text Colours */
@@ -335,7 +155,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .irc-fg-colour-brown { color: #743a00; }
 .irc-fg-colour-purple { color: #a500ff; }
 .irc-fg-colour-orange { color: #ff8c00; }
-.irc-fg-colour-yellow { color: #ff0; }
+.irc-fg-colour-yellow { color: #d6d63d; }
 .irc-fg-colour-light-green { color: #6fff6f; }
 .irc-fg-colour-cyan { color: #0cc; }
 .irc-fg-colour-light-cyan { color: #6dffff; }
@@ -352,7 +172,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .irc-bg-colour-brown { background-color: #743a00; }
 .irc-bg-colour-purple { background-color: #a500ff; }
 .irc-bg-colour-orange { background-color: #ff8c00; }
-.irc-bg-colour-yellow { background-color: #ff0; }
+.irc-bg-colour-yellow { background-color: #d6d63d; }
 .irc-bg-colour-light-green { background-color: #6fff6f; }
 .irc-bg-colour-cyan { background-color: #0cc; }
 .irc-bg-colour-light-cyan { background-color: #6dffff; }
@@ -360,3 +180,29 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .irc-bg-colour-pink { background-color: #f0f; }
 .irc-bg-colour-grey { background-color: #a6a6a6; }
 .irc-bg-colour-light-grey { background-color: #e2e2e2; }
+
+.kiwi-statebrowser-usermenu-container {
+    background: var(--k-neutral2);
+    border-radius: 5px;
+}
+
+.u-tabbed-view-tabs {
+
+}
+
+.u-button {
+    color: #eaeaea;
+}
+
+.kiwi-statebrowser {
+    border-right: 2px solid #444;
+}
+
+.u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active {
+    border-bottom-color: var(--k-neutral7);
+}
+
+/* .kiwi-appsettings-block h3 { */
+.kiwi-wrap h1, .kiwi-wrap h2, .kiwi-wrap h3, .kiwi-wrap h4 {
+    color: #eaeaea;
+}

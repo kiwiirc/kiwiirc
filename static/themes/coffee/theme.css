@@ -1,10 +1,5 @@
 @import '../common/base.css';
 
-.kiwi-wrap {
-    --kiwi-nickcolour-saturation: 75;
-    --kiwi-nickcolour-lightness: 50;
-}
-
 :root {
 	--k-primary1: #8E715B;
 	--k-primary2: #8E715B;
@@ -110,7 +105,7 @@
 	--k-success1: #16755B;
 	--k-success2: #188063;
 	--k-success3: #188669;
-	--k-success4: #299c7d;
+	--k-success4: #28AA78;
 	--k-success5: #60bd9b;
 	--k-success6: #7ddcc3;
 	--k-success7: #b3f1e0;
