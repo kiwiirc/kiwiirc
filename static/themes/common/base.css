@@ -568,7 +568,7 @@
 }
 
 .kiwi-statebrowser-channel-label {
-    background: var(--k-primary4);
+    background: var(--k-neutral3);
     color: var(--k-neutral7);
 }
 .kiwi-statebrowser-channel-label--highlight {
