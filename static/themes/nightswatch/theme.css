@@ -206,3 +206,7 @@
 .kiwi-wrap h1, .kiwi-wrap h2, .kiwi-wrap h3, .kiwi-wrap h4 {
     color: #eaeaea;
 }
+
+.kiwi-statebrowser-network-header {
+	background: none;
+}

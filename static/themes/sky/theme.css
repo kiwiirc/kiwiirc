@@ -182,6 +182,9 @@
 .irc-bg-colour-light-grey { background-color: #e2e2e2; }
 
 .kiwi-statebrowser-usermenu-container {
-    background: var(--k-neutral2);
-    border-radius: 5px;
+    margin-top: -10px;
+}
+
+.kiwi-statebrowser-usermenu-avatar {
+	background: #1b1b1b;
 }

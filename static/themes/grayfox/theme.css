@@ -1,10 +1,5 @@
 @import '../common/base.css';
 
-.kiwi-wrap {
-    --kiwi-nickcolour-saturation: 75;
-    --kiwi-nickcolour-lightness: 50;
-}
-
 :root {
 	--k-primary1: #2C3035;
 	--k-primary2: #444950;
@@ -186,119 +181,6 @@
 .irc-bg-colour-grey { background-color: #a6a6a6; }
 .irc-bg-colour-light-grey { background-color: #e2e2e2; }
 
-.kiwi-statebrowser-usermenu-container {
-    background: var(--k-neutral3);
-    border-radius: 5px;
-}
-
-
-:root {
-    /* Primary Variables */
-    --brand-primary: #747c88;
-    --brand-primary-hover: #9098a2;
-    --brand-midtone: #f1f1f1;
-    --brand-darktone: #969696;
-    --brand-default-bg: #fff;
-    --brand-default-fg: #22231f;
-
-    /* Warning colors */
-    --brand-notice: #f6c358;
-    --brand-warning: #fcb46e;
-    --brand-error: #bf5155;
-
-    /* Connection Indicator top */
-    --comp-workspace-before-bg: var(--brand-primary);
-    --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
-
-    /* Container Header */
-    --comp-header-bg: var(--brand-default-bg);
-    --comp-header-name-fg: var(--brand-default-fg);
-    --comp-header-option-active-fg: var(--brand-default-bg);
-    --comp-header-option-active-bg: var(--brand-primary);
-
-    /* StateBrowser */
-    --comp-statebrowser-fg: #fff;
-    --comp-statebrowser-bg: #414956;
-    --comp-statebrowser-bg-networkname: #626975;
-    --comp-statebrowser-channel-active-bg: #ffffff0d;
-    --comp-statebrowser-channel-active-fg: #fff;
-    --comp-usermenu-open-bg: #303742;
-    --comp-statebrowser-network-border: #bda28e;
-
-
-    /* Sidebars ( Right Side ) */
-    --comp-sidebar-bg: #fff;
-    --comp-sidebar-fg: #22231f;
-    --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
-    --comp-aboutbuffer-header-bg: #42b992;
-
-    /* Misc */
-    --brand-link-normal: var(--brand-primary);
-    --brand-link--hover: var(--brand-primary-hover);
-    --brand-shadow: rgba(0, 0, 0, 0.1);
-    --comp-border: #b2b2b2;
-}
-
-.kiwi-appsettings-title,
-.kiwi-appsettings-block h3,
-.kiwi-networksettings .kiwi-title,
-.u-form input[type='checkbox']:after, .u-form input[type='radio']:after {
-    background-color: var(--brand-primary);
-}
-
-.kiwi-networksettings .kiwi-title {
-    border-top-color: var(--brand-primary-hover);
-}
-
-.kiwi-statebrowser-network.kiwi-statebrowser-network--active .kiwi-statebrowser-network-header {
-    border-left: 3px solid var(--brand-primary-hover);
-}
-
-.u-tabbed-view-tabs .u-tabbed-view-tab:hover,
-.u-tabbed-view-tabs .u-tabbed-view-tab.u-tabbed-view-tab--active {
-    border-bottom-color: var(--brand-primary);
-}
-
-.kiwi-statebrowser-newnetwork {
-    border-top-color: var(--brand-primary-hover);
-}
-
-.kiwi-statebrowser-newnetwork a:hover {
-    background: var(--brand-primary-hover);
-}
-
-.kiwi-network-name-options {
-    background-color: var(--comp-statebrowser-bg);
-}
-
-.kiwi-statebrowser-channel-leave {
-    background: transparent;
-}
-
-.kiwi-statebrowser-channelfilter a,
-.kiwi-statebrowser-channelfilter a:hover {
-    color: #fff;
-}
-
-.kiwi-awaystatusindicator {
-    background: #41e8c9;
-}
-.kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
-    background: var(--brand-error);
-}
-
-.kiwi-startup-common-section-info {
-    border-left-color: var(--brand-primary);
-}
-
-.kiwi-aboutbuffer h4 {
-    background-color: #4b5160;
-}
-
-.kiwi-appsettings-section {
-    background: #f1f1f1;
-}
-
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
@@ -333,3 +215,8 @@
 .irc-bg-colour-pink { background-color: #f0f; }
 .irc-bg-colour-grey { background-color: #a6a6a6; }
 .irc-bg-colour-light-grey { background-color: #e2e2e2; }
+
+
+.kiwi-statebrowser-usermenu-container {
+    margin-top: -10px;
+}

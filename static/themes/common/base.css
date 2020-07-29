@@ -535,12 +535,8 @@
     background: rgba(255, 255, 255, 0.15);
 }
 
-.kiwi-statebrowser-network-header {
-    background: rgba(255, 255, 255, 0.15);
-}
-
 .kiwi-statebrowser-network-status {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--k-neutral2);
 }
 
 /* Icon before the network in network list */
