@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-07-15 10:32\n"
+"PO-Revision-Date: 2020-08-01 14:51\n"
 
 #: Start
 msgid "start_button"
@@ -489,7 +489,7 @@ msgstr "Kanal bulunamadı, daha sonra tekrar deneyin."
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Kiwi IRC'ye Hoşgeldiniz! Soldan bir kanal seçin."
+msgstr "Kiwi IRC'ye Hoş geldiniz! Soldan bir kanal seçin."
 
 #: Show statebrowser
 msgid "container_statebrowser"
