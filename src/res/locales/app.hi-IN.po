@@ -13,11 +13,11 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-03 18:01\n"
+"PO-Revision-Date: 2020-08-03 18:11\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "badtameez"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
