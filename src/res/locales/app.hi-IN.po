@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-03 18:31\n"
+"PO-Revision-Date: 2020-08-04 05:32\n"
 
 #: Start
 msgid "start_button"
@@ -29,15 +29,15 @@ msgstr "बन्द करें"
 
 #: Connect
 msgid "connect"
-msgstr "Connect"
+msgstr "Judiye"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Connecting..."
+msgstr "Joda jaa raha"
 
 #: Connected
 msgid "connected"
-msgstr "Connected"
+msgstr "Jude huye"
 
 #: Settings
 msgid "settings"
