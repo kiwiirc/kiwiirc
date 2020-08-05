@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-05 21:52\n"
+"PO-Revision-Date: 2020-08-05 22:31\n"
 
 #: Start
 msgid "start_button"
@@ -61,19 +61,19 @@ msgstr "upayogakarta par pratibandh laga diya"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "upayogakarta ko aamantrit karen"
 
 #: Notifications
 msgid "notifications"
-msgstr "Notifications"
+msgstr "adhisoochana"
 
 #: Username
 msgid "username"
-msgstr "Username"
+msgstr "upayogakarta naam"
 
 #: Password
 msgid "password"
-msgstr "Password"
+msgstr "password"
 
 #: Server Password
 msgid "server_password"
@@ -81,11 +81,11 @@ msgstr "Server Password"
 
 #: I have a password
 msgid "password_have"
-msgstr "I have a password"
+msgstr "Mera/Meri pass ek password hai"
 
 #: Server
 msgid "server"
-msgstr "Server"
+msgstr "server"
 
 #: Nick
 msgid "nick"
@@ -97,7 +97,7 @@ msgstr "Channel"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "sandesh"
 
 #: Network
 msgid "network"
@@ -117,7 +117,7 @@ msgstr "Invalid login"
 
 #: Search...
 msgid "do_search"
-msgstr "Search..."
+msgstr "khoj"
 
 #: OK
 msgid "ok"
