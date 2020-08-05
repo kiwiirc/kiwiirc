@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-04 05:32\n"
+"PO-Revision-Date: 2020-08-05 21:31\n"
 
 #: Start
 msgid "start_button"
@@ -57,7 +57,7 @@ msgstr "Access"
 
 #: Banned Users
 msgid "banned"
-msgstr "Banned Users"
+msgstr "pahunch"
 
 #: Invited Users
 msgid "invited"
