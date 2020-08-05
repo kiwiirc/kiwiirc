@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-05 22:51\n"
+"PO-Revision-Date: 2020-08-05 23:01\n"
 
 #: Start
 msgid "start_button"
@@ -141,7 +141,7 @@ msgstr "nahi mila"
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "Chetaavanee!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
