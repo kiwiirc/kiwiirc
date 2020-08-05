@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-05 21:41\n"
+"PO-Revision-Date: 2020-08-05 21:52\n"
 
 #: Start
 msgid "start_button"
@@ -121,7 +121,7 @@ msgstr "Search..."
 
 #: OK
 msgid "ok"
-msgstr "OK"
+msgstr "Theekhai"
 
 #: Cancel
 msgid "cancel"
@@ -129,11 +129,11 @@ msgstr "Cancel"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "Haan"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "Na"
 
 #: Not found.
 msgid "not_found"
@@ -149,7 +149,7 @@ msgstr "This will close all Kiwi IRC conversations. Are you sure you want to clo
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "Asli Naam"
 
 #: Status
 msgid "whois_status"
