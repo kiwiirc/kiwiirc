@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-05 21:31\n"
+"PO-Revision-Date: 2020-08-05 21:41\n"
 
 #: Start
 msgid "start_button"
@@ -53,11 +53,11 @@ msgstr "Channels"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Pravesh"
 
 #: Banned Users
 msgid "banned"
-msgstr "pahunch"
+msgstr "upayogakarta par pratibandh laga diya"
 
 #: Invited Users
 msgid "invited"
