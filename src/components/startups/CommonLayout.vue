@@ -77,6 +77,7 @@ export default {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+    background-color: var(--k-neutral7);
 
     /* transition the 2 sections out when the page closes. right+left defaults */
     transition: transform 0.4s;

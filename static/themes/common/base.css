@@ -47,10 +47,6 @@
 }
 
 /* ---- Global : User inputs ---- */
-.u-input-text {
-    background: var(--k-neutral7);
-}
-
 .u-form label {
     color: var(--k-neutral1);
 }
