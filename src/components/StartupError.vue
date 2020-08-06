@@ -16,6 +16,8 @@ export default {
 
 <style>
 
+/* No themes are loaded at this point, so everything must be specific */
+
 .kiwi-wrap-error {
     height: 100%;
     overflow: hidden;

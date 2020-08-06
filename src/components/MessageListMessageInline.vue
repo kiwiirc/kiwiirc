@@ -177,7 +177,7 @@ export default {
 }
 
 .kiwi-messagelist-message--text .kiwi-messagelist-nick {
-    display: inline;
+    display: inline-flex;
     text-align: left;
     margin-right: 2px;
     padding: 0;

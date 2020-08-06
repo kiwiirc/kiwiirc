@@ -289,7 +289,6 @@ export default {
     left: -15px;
     top: 20%;
     border: 0.6em solid transparent;
-    border-right-color: #ddd;
     content: " ";
     height: 0;
     width: 0;

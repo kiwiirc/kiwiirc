@@ -118,8 +118,8 @@ export default {
     font-size: 23px;
     line-height: 30px;
     text-align: center;
-    background: #000;
-    color: #cacaca;
+    background: var(--k-neutral1);
+    color: var(--k-neutral6);
 }
 
 </style>

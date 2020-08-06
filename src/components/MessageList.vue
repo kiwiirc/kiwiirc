@@ -637,7 +637,7 @@ export default {
 }
 
 div.kiwi-messagelist-item.kiwi-messagelist-item--selected {
-    border-left: 7px solid var(--brand-primary);
+    border-left: 7px solid var(--k-primary4);
     transform: translateX(20px);
     transition: transform 0.1s;
 }

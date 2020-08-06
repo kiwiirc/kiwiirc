@@ -321,7 +321,7 @@ export default {
     line-height: 30px;
     padding: 0 10px;
     border: none;
-    border-bottom: 2px solid #42b992;
+    border-bottom: 2px solid var(--k-primary4);
     outline: none;
 }
 
@@ -344,10 +344,10 @@ export default {
 
 .kiwi-startbnc-form {
     width: 300px;
-    background-color: #fff;
+    background-color: var(--k-neutral7);
     border-radius: 0.5em;
     padding: 1em;
-    border: 1px solid #ececec;
+    border: 1px solid var(--k-neutral5);
 }
 
 .kiwi-startbnc-form button {

@@ -1,87 +1,149 @@
 @import '../common/base.css';
 
 :root {
-    /* Primary Variables */
-    --brand-primary: #4d6075;
-    --brand-primary-hover: #73879c;
-    --brand-midtone: #f1f1f1;
-    --brand-darktone: #969696;
-    --brand-default-bg: #fff;
-    --brand-default-fg: #22231f;
-
-    /* Warning colors */
-    --brand-notice: #f6c358;
-    --brand-warning: #fcb46e;
-    --brand-error: #bf5155;
-
-    /* Connection Indicator top */
-    --comp-workspace-before-bg: var(--brand-primary);
-    --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
-
-    /* Container Header */
-    --comp-header-bg: var(--brand-default-bg);
-    --comp-header-name-fg: var(--brand-default-fg);
-    --comp-header-option-active-fg: var(--brand-default-bg);
-    --comp-header-option-active-bg: var(--brand-primary);
-
-    /* StateBrowser */
-    --comp-statebrowser-fg: #fff;
-    --comp-statebrowser-bg: #212d3a;
-    --comp-statebrowser-bg-networkname: #687282;
-    --comp-statebrowser-channel-active-bg: #ffffff0d;
-    --comp-statebrowser-channel-active-fg: #fff;
-    --comp-usermenu-open-bg: #161d25;
-    --comp-statebrowser-network-border: #656565;
-
-
-    /* Sidebars ( Right Side ) */
-    --comp-sidebar-bg: #fff;
-    --comp-sidebar-fg: #22231f;
-    --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
-    --comp-aboutbuffer-header-bg: var(--brand-primary);
-
-    /* Misc */
-    --brand-link-normal: var(--brand-primary);
-    --brand-link--hover: var(--brand-primary-hover);
-    --brand-shadow: rgba(0, 0, 0, 0.1);
-    --comp-border: #b2b2b2;
+	--k-primary1: #4d6075;
+	--k-primary2: #4d6075;
+	--k-primary3: #4d6075;
+	--k-primary4: #4d6075;
+	--k-primary5: #4d6075;
+	--k-primary6: #4d6075;
+	--k-primary7: #4d6075;
+	--k-neutral1: #1f2321;
+	--k-neutral2: #272d2a;
+	--k-neutral3: #555857;
+	--k-neutral4: #969696;
+	--k-neutral5: #c3c3c3;
+	--k-neutral6: #e4e4e4;
+	--k-neutral7: #f3f5f4;
+	--k-accent1: #005375;
+	--k-accent2: #026790;
+	--k-accent3: #008BC3;
+	--k-accent4: #00B3FC;
+	--k-accent5: #45C8FE;
+	--k-accent6: #83d8fb;
+	--k-accent7: #ACE4FB;
+	--k-accentstrong1: #8D6821;
+	--k-accentstrong2: #9e7627;
+	--k-accentstrong3: #BC8721;
+	--k-accentstrong4: #E09F20;
+	--k-accentstrong5: #E8B44E;
+	--k-accentstrong6: #e8c279;
+	--k-accentstrong7: #F5D494;
+	--k-success1: #16755B;
+	--k-success2: #188063;
+	--k-success3: #188669;
+	--k-success4: #299c7d;
+	--k-success5: #60bd9b;
+	--k-success6: #7ddcc3;
+	--k-success7: #b3f1e0;
+	--k-info1: #7e6f2a;
+	--k-info2: #86762e;
+	--k-info3: #998633;
+	--k-info4: #c3ad4a;
+	--k-info5: #dccc83;
+	--k-info6: #eadfa9;
+	--k-info7: #f7efcc;
+	--k-warning1: #5C4C0F;
+	--k-warning2: #8c7926;
+	--k-warning3: #C9AE37;
+	--k-warning4: #F3D460;
+	--k-warning5: #fbe591;
+	--k-warning6: #f9f4d4;
+	--k-warning7: #FFFDF3;
+	--k-error1: #582426;
+	--k-error2: #793437;
+	--k-error3: #9c4245;
+	--k-error4: #bf5155;
+	--k-error5: #d26b6f;
+	--k-error6: #de9194;
+	--k-error7: #e8c2c4;
+	--k-actiondanger1: #582426;
+	--k-actiondanger2: #793437;
+	--k-actiondanger3: #9c4245;
+	--k-actiondanger4: #bf5155;
+	--k-actiondanger5: #d26b6f;
+	--k-actiondanger6: #de9194;
+	--k-actiondanger7: #e8c2c4;
+	--k-actiongo1: #16755B;
+	--k-actiongo2: #16755B;
+	--k-actiongo3: #188669;
+	--k-actiongo4: #199473;
+	--k-actiongo5: #65d6ad;
+	--k-actiongo6: #A8DCCE;
+	--k-actiongo7: #A8DCCE;
 }
 
-/* Welcome Screens */
-.kiwi-startup-common-section-info {
-    border-left-color: var(--brand-primary);
-}
-
-/* StateBrowser */
-.kiwi-statebrowser-usermenu-avatar {
-    border-color: #fff;
-}
-.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
-    background-color: #42b992;
-}
-.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
-    background-color: var(--brand-error);
-}
-.kiwi-network-name-options {
-    background-color: #4e5c6b;
-}
-.kiwi-statebrowser-channelfilter p a:hover {
-    color: #fff;
-}
-
-/* Sidebar */
-.kiwi-userbox .kiwi-userbox-actions .kiwi-userbox-action {
-    border-color: var(--brand-primary);
-    color: var(--brand-primary);
-}
-
-.kiwi-userbox .kiwi-userbox-actions .kiwi-userbox-action:hover {
-    color: var(--brand-default-bg);
-    background-color: var(--brand-primary);
-}
-
-.kiwi-statebrowser-network-status a {
-    color: var(--brand-default-bg);
+.kiwi-statebrowser {
+	--k-primary1: #4d6075;
+	--k-primary2: #4d6075;
+	--k-primary3: #4d6075;
+	--k-primary4: #4d6075;
+	--k-primary5: #4d6075;
+	--k-primary6: #4d6075;
+	--k-primary7: #4d6075;
+	--k-neutral1: #3B4856;
+	--k-neutral2: #3B4C5C;
+	--k-neutral3: #415265;
+	--k-neutral4: #4d6075;
+	--k-neutral5: #607795;
+	--k-neutral6: #9BABBF;
+	--k-neutral7: #DAE0E7;
+	--k-accent1: #005375;
+	--k-accent2: #026790;
+	--k-accent3: #008BC3;
+	--k-accent4: #00B3FC;
+	--k-accent5: #45C8FE;
+	--k-accent6: #83d8fb;
+	--k-accent7: #ACE4FB;
+	--k-accentstrong1: #8D6821;
+	--k-accentstrong2: #9e7627;
+	--k-accentstrong3: #BC8721;
+	--k-accentstrong4: #E09F20;
+	--k-accentstrong5: #E8B44E;
+	--k-accentstrong6: #e8c279;
+	--k-accentstrong7: #F5D494;
+	--k-success1: #16755B;
+	--k-success2: #188063;
+	--k-success3: #188669;
+	--k-success4: #28AA78;
+	--k-success5: #60bd9b;
+	--k-success6: #7ddcc3;
+	--k-success7: #b3f1e0;
+	--k-info1: #7e6f2a;
+	--k-info2: #86762e;
+	--k-info3: #998633;
+	--k-info4: #c3ad4a;
+	--k-info5: #dccc83;
+	--k-info6: #eadfa9;
+	--k-info7: #f7efcc;
+	--k-warning1: #5C4C0F;
+	--k-warning2: #8c7926;
+	--k-warning3: #C9AE37;
+	--k-warning4: #F3D460;
+	--k-warning5: #fbe591;
+	--k-warning6: #f9f4d4;
+	--k-warning7: #FFFDF3;
+	--k-error1: #3D0B0B;
+	--k-error2: #681212;
+	--k-error3: #931A1A;
+	--k-error4: #BA2424;
+	--k-error5: #DC3838;
+	--k-error6: #EB8E8E;
+	--k-error7: #F3BABA;
+	--k-actiondanger1: #582426;
+	--k-actiondanger2: #793437;
+	--k-actiondanger3: #9c4245;
+	--k-actiondanger4: #bf5155;
+	--k-actiondanger5: #d26b6f;
+	--k-actiondanger6: #de9194;
+	--k-actiondanger7: #e8c2c4;
+	--k-actiongo1: #16755B;
+	--k-actiongo2: #16755B;
+	--k-actiongo3: #188669;
+	--k-actiongo4: #199473;
+	--k-actiongo5: #65d6ad;
+	--k-actiongo6: #A8DCCE;
+	--k-actiongo7: #A8DCCE;
 }
 
 /* IRC Text Colours */
@@ -93,7 +155,7 @@
 .irc-fg-colour-brown { color: #743a00; }
 .irc-fg-colour-purple { color: #a500ff; }
 .irc-fg-colour-orange { color: #ff8c00; }
-.irc-fg-colour-yellow { color: #ff0; }
+.irc-fg-colour-yellow { color: #d6d63d; }
 .irc-fg-colour-light-green { color: #6fff6f; }
 .irc-fg-colour-cyan { color: #0cc; }
 .irc-fg-colour-light-cyan { color: #6dffff; }
@@ -110,7 +172,7 @@
 .irc-bg-colour-brown { background-color: #743a00; }
 .irc-bg-colour-purple { background-color: #a500ff; }
 .irc-bg-colour-orange { background-color: #ff8c00; }
-.irc-bg-colour-yellow { background-color: #ff0; }
+.irc-bg-colour-yellow { background-color: #d6d63d; }
 .irc-bg-colour-light-green { background-color: #6fff6f; }
 .irc-bg-colour-cyan { background-color: #0cc; }
 .irc-bg-colour-light-cyan { background-color: #6dffff; }
@@ -118,3 +180,7 @@
 .irc-bg-colour-pink { background-color: #f0f; }
 .irc-bg-colour-grey { background-color: #a6a6a6; }
 .irc-bg-colour-light-grey { background-color: #e2e2e2; }
+
+.kiwi-statebrowser-usermenu-container {
+	margin-top: -10px;
+}

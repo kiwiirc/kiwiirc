@@ -77,6 +77,7 @@ export default {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+    background-color: var(--k-neutral7);
 
     /* transition the 2 sections out when the page closes. right+left defaults */
     transition: transform 0.4s;
@@ -92,7 +93,8 @@ export default {
 
 /** Right side */
 .kiwi-startup-common-section-info {
-    color: #fff;
+    /* A background image will apear over this so start with a plain white bg */
+    color: var(--k-neutral7);
     display: flex;
     flex: 1;
     align-items: center;
@@ -102,7 +104,7 @@ export default {
 .kiwi-startup-common-section-info-content {
     background: rgba(255, 255, 255, 0.74);
     margin: 2em;
-    color: #1b1b1b;
+    color: var(--k-neutral1);
     font-size: 1.5em;
     padding: 2em;
     border-radius: 5px;
@@ -161,11 +163,11 @@ export default {
 .kiwi-startup-common-section-info {
     background-size: cover;
     background-position: bottom;
-    border-left: 5px solid #42b992;
+    border-left: 5px solid var(--k-primary4);
 }
 
 .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
-    background-color: rgb(51, 51, 51);
+    background-color: var(--k-neutral1);
 }
 
 /* stylint-enable */
@@ -184,7 +186,7 @@ export default {
     }
 
     .kiwi-startup-common--no-bg .kiwi-startup-common-section-info {
-        border-top: 5px solid #42b992;
+        border-top: 5px solid var(--k-primary4);
     }
 }
 

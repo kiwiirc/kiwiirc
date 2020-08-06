@@ -370,7 +370,6 @@ export default {
     }
 
     .kiwi-sidebar .u-tabbed-view-tab.u-tabbed-view-tab--active {
-        border-bottom: 3px solid #42b992;
         margin-bottom: 0;
     }
 
