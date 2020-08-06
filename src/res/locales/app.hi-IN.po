@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-05 23:01\n"
+"PO-Revision-Date: 2020-08-06 20:51\n"
 
 #: Start
 msgid "start_button"
@@ -153,11 +153,11 @@ msgstr "Asli Naam"
 
 #: Status
 msgid "whois_status"
-msgstr "Status"
+msgstr "pratishta"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Is available"
+msgstr "upalabdh hai"
 
 #: Send a message
 msgid "send_a_message"
