@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-07 02:01\n"
+"PO-Revision-Date: 2020-08-07 02:11\n"
 
 #: Start
 msgid "start_button"
@@ -145,7 +145,7 @@ msgstr "Chetaavanee!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "Yeh karne se, sabhi KIWI IRC vaarthalaap, bhand ho jaaye ge. Kya aap vaake isse window ko bhaand karre na chahte hai?"
 
 #: Real name
 msgid "whois_realname"
@@ -161,7 +161,7 @@ msgstr "upalabdh hai"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Send a message"
+msgstr "Ek sandesh bhejen"
 
 #: More information
 msgid "more_information"
@@ -221,15 +221,15 @@ msgstr "{{count}} seconds"
 
 #: General
 msgid "settings_general"
-msgstr "General"
+msgstr "samaany"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "bhaasha"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "vishay"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -253,7 +253,7 @@ msgstr "Use Kiwi as my default IRC client"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Traditional IRC layout"
+msgstr "Paaramparik IRC layout"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -293,7 +293,7 @@ msgstr "Colour nicknames in messages"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "Jab main ek sandesh type kar raha hoon to share karen"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
@@ -321,7 +321,7 @@ msgstr "What are aliases?"
 
 #: Send Message
 msgid "send_message"
-msgstr "Send Message"
+msgstr "message bhejen"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
@@ -409,7 +409,7 @@ msgstr "Refreshing banlist..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Nobody is banned!"
+msgstr "Koi bhi pratibandhit nahin hai"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -429,7 +429,7 @@ msgstr "Refreshing invite list..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Nobody is invited!"
+msgstr "Koi bhi aamantrit nahin hai!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
@@ -893,7 +893,7 @@ msgstr "{{nick}} sets {{mode}} on {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Send a message"
+msgstr "Ek sandesh bhejen"
 
 #: Do something physical
 msgid "command_action"
