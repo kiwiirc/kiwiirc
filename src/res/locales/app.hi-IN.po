@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-06 20:51\n"
+"PO-Revision-Date: 2020-08-07 02:01\n"
 
 #: Start
 msgid "start_button"
@@ -165,11 +165,11 @@ msgstr "Send a message"
 
 #: More information
 msgid "more_information"
-msgstr "More information"
+msgstr "adhik jaankaaree"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignore user"
+msgstr "prayoghe karre ne wala ko nazar undaaz karre"
 
 #: Channel
 msgid "connection_channel"
@@ -177,7 +177,7 @@ msgstr "Channel"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "niranthar"
 
 #: {{count}} week
 msgid "week"
