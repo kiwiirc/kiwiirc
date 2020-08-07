@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-07 02:11\n"
+"PO-Revision-Date: 2020-08-07 02:21\n"
 
 #: Start
 msgid "start_button"
@@ -809,19 +809,19 @@ msgstr "Access level"
 
 #: Normal
 msgid "user_normal"
-msgstr "Normal"
+msgstr "Saadhaaran"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Kick from the channel"
+msgstr "Channel se bahar nikhal gaya hai"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Ban from the channel"
+msgstr "channel se pratibandh"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Ban and kick from the channel"
+msgstr "Channel se pratibandh aur bahaar nikhal gaya hai"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -829,15 +829,15 @@ msgstr "Please specify a channel to join. eg /join #example"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "Isse upayogakarta ka naam {{upnaam}} pahale se he prayog mei hai"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "Aapko ek naya upanaam darjh karna hoga"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "Upnaam ek sankhya se shuru nahi hona chaiye"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
