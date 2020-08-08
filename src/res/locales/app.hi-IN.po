@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-08 19:31\n"
+"PO-Revision-Date: 2020-08-08 19:41\n"
 
 #: Start
 msgid "start_button"
@@ -341,35 +341,35 @@ msgstr "#: Sabhi sandesh"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "I am mentioned"
+msgstr "#: Mujhe Varnit kiya gaya"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Never"
+msgstr "Kabhi Nahi"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Mute sounds"
+msgstr "#: Aawaz band kare"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "#: Apathit sandesho ki ginti chupaye"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Operator tools"
+msgstr "#: Operator k Upkaran"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Default ban mask"
+msgstr "#: default pratibandhit mukhauta"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Default kick reason"
+msgstr "#: default bahar karne ke karan"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "#: Unnat Setings"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
@@ -577,27 +577,27 @@ msgstr "Direct websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Run commands when connected"
+msgstr "#: Jud jane ke baad Aadesh chalaye"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Danger Zone"
+msgstr "#: Khatre ka Kshetra"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Remove network"
+msgstr "#: Network Hataye"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} person here"
+msgstr "#: {{count}} Yaha ke Log"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "{{count}} people here"
+msgstr "#: {{count}} yaha ke log"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "#: channel Upyogkartao ko chaante"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
