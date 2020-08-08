@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-08 20:12\n"
+"PO-Revision-Date: 2020-08-08 20:21\n"
 
 #: Start
 msgid "start_button"
@@ -421,11 +421,11 @@ msgstr "#: Amantrit Upyogkarta"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Invited by"
+msgstr "#: ke dwara Amantrit"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
+msgstr "#: Aamantran ki Soochi taza kare"
 
 #: Nobody is invited!
 msgid "invites_nobody"
@@ -433,55 +433,55 @@ msgstr "Koi bhi aamantrit nahin hai!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "#: Ye janta ka channel hai"
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Only invited users can join."
+msgstr "#: Kewal amantrit upyogkarta hi jud sakte hai"
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Only allow invited users"
+msgstr "#: Kewal amantrit upyogkartao ko anumati de"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "#: Kisi ko bhi Judne ki anumati de"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "#: Kewal Panjikrit upyogkarta hi jud sakte"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "#: Amantran Jode"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "#: (koi bhi panjikrit upyogkarta)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topic"
+msgstr "#: Vishay"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Moderated chat"
+msgstr "#: Sanyamit Chat"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Invite only"
+msgstr "#: Kewal Amantrit"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Only moderators can change the topic"
+msgstr "#: Kewal moderator hi vishay badal sakte hai"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Block messages from outside this channel"
+msgstr "#: Channel se bahar ke sandesho ko roke"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to update the channel list"
+msgstr "#: Refresh button ko daba kar channel ki taza soochi paaye"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
