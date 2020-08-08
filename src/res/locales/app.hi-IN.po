@@ -13,19 +13,19 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-08 20:31\n"
+"PO-Revision-Date: 2020-08-08 20:41\n"
 
 #: Start
 msgid "start_button"
-msgstr "प्रारम्भ"
+msgstr "Shuru Kare"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Kiwi IRC! में आपका स्वागत है ।"
+msgstr "Kiwi IRC! Mai aapka swagat hai"
 
 #: Close
 msgid "close"
-msgstr "बन्द करें"
+msgstr "#: Band Kare"
 
 #: Connect
 msgid "connect"
@@ -33,7 +33,7 @@ msgstr "Judiye"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Joda jaa raha"
+msgstr "Jud raha hai"
 
 #: Connected
 msgid "connected"
@@ -53,15 +53,15 @@ msgstr "Channels"
 
 #: Access
 msgid "access"
-msgstr "Pravesh"
+msgstr "#: access"
 
 #: Banned Users
 msgid "banned"
-msgstr "upayogakarta par pratibandh laga diya"
+msgstr "#: Pratibandhit Upyogkarta"
 
 #: Invited Users
 msgid "invited"
-msgstr "upayogakarta ko aamantrit karen"
+msgstr "#: Amantrit Upyogkarta"
 
 #: Notifications
 msgid "notifications"
@@ -125,7 +125,7 @@ msgstr "Theekhai"
 
 #: Cancel
 msgid "cancel"
-msgstr "nerust karre na"
+msgstr "Radh Kare"
 
 #: Yes
 msgid "yes"
@@ -133,7 +133,7 @@ msgstr "Haan"
 
 #: No
 msgid "no"
-msgstr "Na"
+msgstr "Nahi"
 
 #: Not found.
 msgid "not_found"
