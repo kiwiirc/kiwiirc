@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-08 19:02\n"
+"PO-Revision-Date: 2020-08-08 19:13\n"
 
 #: Start
 msgid "start_button"
@@ -217,7 +217,7 @@ msgstr "#:{{count}} second"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "#:{{count}} seconds"
 
 #: General
 msgid "settings_general"
@@ -233,23 +233,23 @@ msgstr "vishay"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "#: vishay ko taza kijiye"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "#: Vishay URL"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "#: sandesh khaaka"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Use monospace"
+msgstr "#: monospace ka upyog kare"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "#: kiwi ko mera default IRC client banaye"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -257,19 +257,19 @@ msgstr "Paaramparik IRC layout"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Show autocomplete list"
+msgstr "#: autocomplete ki soochi dikhaye"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Chat Messages"
+msgstr "#: chat sandesh"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Show timestamps"
+msgstr "#: samay mohar dikhaye"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Use 24-hour timestamps"
+msgstr "# 24 ghante ki samay mohar ka upyog kare"
 
 #: Show emoticons
 msgid "settings_emoticons"
