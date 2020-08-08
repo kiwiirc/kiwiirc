@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-08 20:21\n"
+"PO-Revision-Date: 2020-08-08 20:31\n"
 
 #: Start
 msgid "start_button"
@@ -81,7 +81,7 @@ msgstr "Server Password"
 
 #: I have a password
 msgid "password_have"
-msgstr "Mera/Meri pass ek password hai"
+msgstr "Mere pass ek password hai"
 
 #: Server
 msgid "server"
@@ -89,7 +89,7 @@ msgstr "server"
 
 #: Nick
 msgid "nick"
-msgstr "Upnaam"
+msgstr "Naam"
 
 #: Channel
 msgid "channel"
@@ -485,63 +485,63 @@ msgstr "#: Refresh button ko daba kar channel ki taza soochi paaye"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, try again later"
+msgstr "#: Channel nahi mila , kuch der baad Dubara koshish kare"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Welcome to Kiwi IRC! Select a channel on the left."
+msgstr "#: Kiwi IRC mai apka Swagat hai , Apne baayein taraf channel ka chayan kare"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Show statebrowser"
+msgstr "#: statebrowser dikhaye"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "#: Vishay Chupaye"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "#: Vishay Dikhaye"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "#: channel settings"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Join Channel"
+msgstr "#: Channel se jude"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Not Connected"
+msgstr "#: Juda Nahi"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Private conversation with {{user}}"
+msgstr "#: {{user}} ke sath niji baat chit"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "#: Kya aap sach mai channel chodna chahte hai ?"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Send a message..."
+msgstr "#: Sandesh Bheje"
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Loading {{url}}..."
+msgstr "#: load ho raha raha {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Load previous messages"
+msgstr "#: Pichle sandesh dikhaye"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Unread Messages"
+msgstr "#: Apathit Sandesh"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Server details"
+msgstr "#: server ka byora"
 
 #: Port
 msgid "settings_port"
