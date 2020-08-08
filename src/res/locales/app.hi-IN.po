@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-08 19:41\n"
+"PO-Revision-Date: 2020-08-08 19:51\n"
 
 #: Start
 msgid "start_button"
@@ -601,43 +601,43 @@ msgstr "#: channel Upyogkartao ko chaante"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Reconnect to join {{channel}}"
+msgstr "#: Judne ke liye dubara punah connect kare {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Reconnect to {{network}} to start talking"
+msgstr "Baat karne ke liye {{network}} punah connect kare"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Reconnect to continue talking with {{user}}"
+msgstr "#: {{upyogkartao}} se baat karne ke liye punah connect kare"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "You are not currently connected!"
+msgstr "#: Aap abhi Jude hue nahi hai"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Connection settings"
+msgstr "#: Judne ki Settings"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "We couldn't connect to that server :("
+msgstr "#: Server se juda nahi ja saka :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "#: Network se Judiye"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "#: Network ka Naam"
 
 #: Close options
 msgid "side_close"
-msgstr "Close options"
+msgstr "#: Band karne ka Vikalp"
 
 #: Channel options
 msgid "side_options"
-msgstr "Channel options"
+msgstr "#: channel Vikalp"
 
 #: Your settings
 msgid "side_settings"
