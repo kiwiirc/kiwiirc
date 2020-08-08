@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-08 19:51\n"
+"PO-Revision-Date: 2020-08-08 20:01\n"
 
 #: Start
 msgid "start_button"
@@ -641,51 +641,51 @@ msgstr "#: channel Vikalp"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Your settings"
+msgstr "#: Aapki Settings"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Show when people join"
+msgstr "#: Logo ke Judne par dikhaye"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Show when channel topic changes"
+msgstr "#: channel vishay badalne par dikhaye"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Show when users change their nicks"
+msgstr "#: Upyogkartao ke naam badalne par dikhaye"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Show when users change channel modes"
+msgstr "#: Upyogkartao dwara channel modes badalne par dikhaye"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Extra message formatting"
+msgstr "#: Atirikt sandesh swaroopan"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Nick colours in the list"
+msgstr "#: Soochi mai naam ke Rang"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "No buffer set"
+msgstr "#: buffer set nahi hua"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "There is no topic for this channel"
+msgstr "#: Is channel ka koi Vishay nahi hai"
 
 #: About
 msgid "about"
-msgstr "About"
+msgstr "#: Ke baare mai"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Created at {{when}}"
+msgstr "#: banaya gaya {{kab}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Prakashit Kare"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
