@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-07 02:41\n"
+"PO-Revision-Date: 2020-08-08 18:51\n"
 
 #: Start
 msgid "start_button"
@@ -89,7 +89,7 @@ msgstr "server"
 
 #: Nick
 msgid "nick"
-msgstr "Nick"
+msgstr "Upnaam"
 
 #: Channel
 msgid "channel"
@@ -101,7 +101,7 @@ msgstr "sandesh"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "Sanzal"
 
 #: ZNC
 msgid "znc"
@@ -109,11 +109,11 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logging in..."
+msgstr "Log in ho raha hai"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Invalid login"
+msgstr "Log in sahi nahi hai"
 
 #: Search...
 msgid "do_search"
@@ -145,7 +145,7 @@ msgstr "Chetaavanee!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "Yeh karne se, sabhi KIWI IRC vaarthalaap, bhand ho jaaye ge. Kya aap vaake isse window ko bhaand karre na chahte hai?"
+msgstr "Yeh karne se, sabhi Kiwi IRC vaarthalaap, bhand ho jaaye ge. Kya aap vaake isse window ko bhaand karre na chahte hai?"
 
 #: Real name
 msgid "whois_realname"
@@ -181,7 +181,7 @@ msgstr "niranthar"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "{{Ginti}} Kamzor"
 
 #: {{count}} weeks
 msgid "week_plural"
@@ -189,7 +189,7 @@ msgstr "{{count}} weeks"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "Din"
 
 #: {{count}} days
 msgid "day_plural"
@@ -829,7 +829,7 @@ msgstr "Please specify a channel to join. eg /join #example"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "Isse upayogakarta ka naam {{upnaam}} pahale se he prayog mei hai"
+msgstr "Isse upayogakarta ka naam {{nick}} pahale se he prayog mei hai"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
