@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-08 20:01\n"
+"PO-Revision-Date: 2020-08-08 20:12\n"
 
 #: Start
 msgid "start_button"
@@ -185,7 +185,7 @@ msgstr "{{Ginti}} Kamzor"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "#: {{count}} saptah"
 
 #: {{count}} day
 msgid "day"
@@ -381,31 +381,31 @@ msgstr "Enable Advanced Settings"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Danger Zone: Changing some of these settings may break things!"
+msgstr "#: Khatre wala Shetra : Yaha ki kuch settings badlne par chize tut sakti hai"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "#: Punah Set Kare"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr ":# Chaane"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Refresh banlist"
+msgstr "#: Pratibandhit Upyogkartao ki soochi taza kare"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Banned user"
+msgstr "#: Pratibandhit Upyogkarta"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Banned by"
+msgstr "#: Ke dwara Pratinbandhit"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Refreshing banlist..."
+msgstr "#: Pratibandhit Upyogkartao ki soochi taza kare"
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -413,11 +413,11 @@ msgstr "Koi bhi pratibandhit nahin hai"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "#: Aamantran ki Soochi taza kare"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Invited user"
+msgstr "#: Amantrit Upyogkarta"
 
 #: Invited by
 msgid "invites_by"
