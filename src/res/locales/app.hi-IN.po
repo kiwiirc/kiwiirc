@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-08 19:13\n"
+"PO-Revision-Date: 2020-08-08 19:21\n"
 
 #: Start
 msgid "start_button"
@@ -273,23 +273,23 @@ msgstr "# 24 ghante ki samay mohar ka upyog kare"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Show emoticons"
+msgstr "Emoticon dikhaye"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Block new private messages"
+msgstr "#: naye niji sandesh ko pratibandhit kare"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Messages in scrollback"
+msgstr "#: pichle sandesho ko dubara dekhe"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Extra formatting"
+msgstr "#: atirikt svaroopan"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Colour nicknames in messages"
+msgstr "#: sandesh mai upnaamo ka rang istemal kare"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
