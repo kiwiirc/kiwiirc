@@ -24,7 +24,7 @@
     "font-awesome-webpack-4": "^1.0.0",
     "htmlparser2": "^4.1.0",
     "i18next": "^19.4.0",
-    "i18next-conv": "^9.2.1",
+    "i18next-conv": "^10.0.2",
     "i18next-xhr-backend": "^3.2.2",
     "intersection-observer": "^0.11.0",
     "ip-regex": "^4.1.0",
