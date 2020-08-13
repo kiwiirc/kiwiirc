@@ -56,7 +56,7 @@
     "html-loader": "^1.1.0",
     "jsdoc": "^3.6.4",
     "less": "^3.11.1",
-    "less-loader": "^5.0.0",
+    "less-loader": "^6.2.0",
     "postcss-import": "^12.0.1",
     "postcss-url": "^8.0.0",
     "stylelint": "^13.3.1",
