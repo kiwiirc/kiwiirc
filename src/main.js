@@ -21,8 +21,6 @@ import ConfigLoader from '@/libs/ConfigLoader';
 import getState from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import InputHandler from '@/libs/InputHandler';
-import StatePersistence from '@/libs/StatePersistence';
-import * as Storage from '@/libs/storage/Local';
 import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 import { AudioManager } from '@/libs/AudioManager';
@@ -416,21 +414,6 @@ function initLocales() {
 }
 
 async function initState() {
-    let stateKey = getState().settings.startupOptions.state_key;
-
-    // Default to a preset key if it wasn't set
-    if (typeof stateKey === 'undefined') {
-        stateKey = 'kiwi-state';
-    }
-
-    let persistLog = Logger.namespace('StatePersistence');
-    let persist = new StatePersistence(stateKey || '', getState(), Storage, persistLog);
-    persist.includeBuffers = !!getState().settings.startupOptions.remember_buffers;
-
-    if (stateKey) {
-        await persist.loadStateIfExists();
-    }
-
     api.setState(getState());
 }
 

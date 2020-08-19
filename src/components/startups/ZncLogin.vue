@@ -112,6 +112,10 @@ export default {
         }
     },
     methods: {
+        init() {
+            let options = this.$state.settings.startupOptions;
+            options.remember_buffers = false;
+        },
         readableStateError(err) {
             return Misc.networkErrorMessage(err);
         },

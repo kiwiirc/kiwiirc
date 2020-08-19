@@ -138,7 +138,7 @@ export default {
         this.listen(window, 'blur', (event) => this.onBlur(event));
         this.listen(window, 'touchstart', (event) => this.onTouchStart(event));
     },
-    mounted() {
+    async mounted() {
         // Decide which startup screen to use depending on the config
         let startupScreens = {
             welcome: startupWelcome,
@@ -154,9 +154,14 @@ export default {
 
         if (!startup) {
             Logger.error(`Startup screen "${startupName}" does not exist`);
-        } else {
-            this.startupComponent = startup;
+            return;
         }
+
+        if (typeof startup.methods.init === 'function') {
+            startup.methods.init.bind(this)();
+        }
+        await this.$state.initStatePersistance();
+        this.startupComponent = startup;
         this.trackWindowDimensions();
     },
     methods: {
