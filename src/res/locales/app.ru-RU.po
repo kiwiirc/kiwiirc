@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-06-14 12:32\n"
+"PO-Revision-Date: 2020-08-24 05:51\n"
 
 #: Start
 msgid "start_button"
@@ -29,7 +29,7 @@ msgstr "закрыть"
 
 #: Connect
 msgid "connect"
-msgstr "подключится"
+msgstr "подключиться"
 
 #: Connecting...
 msgid "connecting"
