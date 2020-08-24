@@ -529,7 +529,6 @@ export default class BufferState {
             return 'connecting';
         } else if (
             networkState === 'connected' &&
-            this.joined &&
             this.enabled &&
             (
                 historySupport &&
