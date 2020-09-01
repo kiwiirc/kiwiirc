@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-07-15 10:32\n"
+"PO-Revision-Date: 2020-08-03 20:11\n"
 
 #: Start
 msgid "start_button"
@@ -469,7 +469,7 @@ msgstr "Moderatörlü sohbet"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Sadece davetiye"
+msgstr "Sadece davet edilenler"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -489,7 +489,7 @@ msgstr "Kanal bulunamadı, daha sonra tekrar deneyin."
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Kiwi IRC'ye Hoşgeldiniz! Soldan bir kanal seçin."
+msgstr "Kiwi IRC'ye Hoş geldiniz! Soldan bir kanal seçin."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -873,11 +873,11 @@ msgstr "{{nick}}, {{target}} kullanıcısından admin aldı"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}}, {{target}} kullanıcısına oda sahipliği verdi"
+msgstr "{{nick}}, {{target}} kullanıcısına owner verdi"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}}, {{target}} kullanıcısından oda sahipliğini aldı"
+msgstr "{{nick}}, {{target}} kullanıcısından owner aldı"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
