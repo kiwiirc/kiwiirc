@@ -6,6 +6,11 @@
                 {{ network.nick }}
                 <i class="fa fa-times" aria-hidden="true" @click="closeSelfUser()" />
                 <i class="fa fa-pencil" aria-hidden="true" @click="openSelfActions()" />
+                <i
+                    class="fa fa-user"
+                    aria-hidden="true"
+                    @click="openProfile()"
+                />
             </span>
             <span class="kiwi-selfuser-host">
                 {{ netUser.username }}@{{ netUser.host }} ( {{ modeString }} )
@@ -93,6 +98,9 @@ export default {
         openSelfActions() {
             this.self_user_settings_open = true;
         },
+        openProfile() {
+            this.$state.$emit('userbox.show', this.network.currentUser());
+        },
         closeSelfUser() {
             this.$emit('close');
         },
@@ -175,6 +183,7 @@ export default {
     cursor: pointer;
     margin-top: 3px;
     transition: all 0.3s;
+    margin-right: 15px;
 }
 
 .kiwi-selfuser-nick i:hover {
@@ -182,8 +191,8 @@ export default {
     transition: all 0.2s;
 }
 
-.kiwi-selfuser-nick i:last-of-type {
-    margin-right: 15px;
+.kiwi-selfuser-nick i:first-of-type {
+    margin-right: 0;
 }
 
 .u-form.kiwi-away-checkbox-form {
