@@ -57,7 +57,7 @@
         </div>
         <div class="kiwi-messagelist-modern-right">
             <div class="kiwi-messagelist-top">
-                <div
+                <a
                     v-if="props.message.nick"
                     :style="{ 'color': props.ml.userColour(props.message.user) }"
                     :class="[
@@ -66,7 +66,7 @@
                             'kiwi-messagelist-nick--mode-'+props.m().userMode(props.message.user) :
                             ''
                     ]"
-                    @click="props.ml.openUserBox(props.message.nick)"
+                    :data-nick="(props.message.nick).toLowerCase()"
                     @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
                     @mouseout="props.ml.hover_nick='';"
                 >
@@ -75,11 +75,11 @@
                             props.m().userModePrefix(props.message.user) :
                             ''
                     }}</span>{{ props.message.nick }}
-                </div>
+                </a>
                 <div
                     v-if="props.m().showRealName()"
                     class="kiwi-messagelist-realname"
-                    @click="props.ml.openUserBox(message.nick)"
+                    @click="props.ml.openUserBox(props.message.nick)"
                     @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
                     @mouseout="props.ml.hover_nick='';"
                 >
@@ -312,28 +312,6 @@ export default {
     display: none;
 }
 
-/* Connection styling */
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 10px 0;
-    opacity: 0.8;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-time,
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-nick {
-    display: none;
-}
-
-.kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
-    padding: 0 20px;
-    margin: 0 auto;
-    display: inline-block;
-    font-weight: 600;
-    font-size: 0.8em;
-    opacity: 0.8;
-}
-
 .kiwi-messagelist-message--modern .kiwi-messagelist-body {
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -366,6 +344,11 @@ export default {
     font-size: 0.8em;
     font-weight: 400;
     opacity: 0.6;
+}
+
+.kiwi-messagelist-message--modern .kiwi-messagelist-nick {
+    padding: 0;
+    margin-right: 10px;
 }
 
 .kiwi-messagelist-message-traffic .kiwi-messagelist-body {
@@ -412,21 +395,6 @@ export default {
 
     .kiwi-messagelist-message--modern {
         margin: 0;
-    }
-
-    .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection {
-        padding: 0;
-        box-sizing: border-box;
-        margin: 0;
-        border: none;
-        width: 100%;
-        border-radius: 0;
-    }
-
-    .kiwi-messagelist-message--modern.kiwi-messagelist-message-connection .kiwi-messagelist-body {
-        line-height: 50px;
-        font-weight: 600;
-        padding: 0 10px;
     }
 
     .kiwi-messagelist-message-action .kiwi-messagelist-modern-left {

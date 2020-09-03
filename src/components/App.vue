@@ -180,7 +180,7 @@ export default {
                     this.$state.$off('document.clicked', requestNotificationPermission);
                     this.$state.$off('input.raw', requestNotificationPermission);
 
-                    Notifications.requestPermission();
+                    Notifications.requestPermission(this.$state);
                     Notifications.listenForNewMessages(this.$state);
                 };
 
@@ -291,8 +291,14 @@ export default {
                 if (this.$state.setting('warnOnExit')) {
                     return this.$t('window_unload');
                 }
-
                 return undefined;
+            };
+            window.onunload = () => {
+                this.$state.networks.forEach((net) => {
+                    if (net.connection.direct && net.state === 'connected') {
+                        net.ircClient.raw('QUIT', this.$state.setting('quitMessage') || 'Client Closed Connection');
+                    }
+                });
             };
         },
         emitBufferPaste(event) {

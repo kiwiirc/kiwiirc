@@ -549,7 +549,7 @@ function createNewState() {
             addMessage(buffer, message) {
                 // Some messages try to be added after a network has been removed, meaning no buffer
                 // will be available
-                if (!buffer) {
+                if (!buffer || !buffer.getNetwork()) {
                     return;
                 }
 

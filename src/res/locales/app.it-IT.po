@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2020-06-14 17:10\n"
+"PO-Revision-Date: 2020-07-14 20:31\n"
 
 #: Start
 msgid "start_button"
@@ -645,7 +645,7 @@ msgstr "Impostazioni personali"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Mostra quando le persone si collegato"
+msgstr "Mostra quando le persone si collegano"
 
 #: Show when channel topic changes
 msgid "side_topics"

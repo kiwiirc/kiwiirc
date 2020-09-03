@@ -4,76 +4,76 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Crowdin-SourceKey: msgstr\n"
-"Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
-"X-Crowdin-Language: ru\n"
+"X-Crowdin-Language: hi\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
 "X-Crowdin-File-ID: 11\n"
 "Project-Id-Version: kiwiirc\n"
-"Language-Team: Russian\n"
-"Language: ru_RU\n"
-"PO-Revision-Date: 2020-08-24 05:51\n"
+"Language-Team: Hindi\n"
+"Language: hi_IN\n"
+"PO-Revision-Date: 2020-08-08 20:41\n"
 
 #: Start
 msgid "start_button"
-msgstr "Начать"
+msgstr "Shuru Kare"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Добро пожаловать в Kiwi IRC!"
+msgstr "Kiwi IRC! Mai aapka swagat hai"
 
 #: Close
 msgid "close"
-msgstr "закрыть"
+msgstr "#: Band Kare"
 
 #: Connect
 msgid "connect"
-msgstr "подключиться"
+msgstr "Judiye"
 
 #: Connecting...
 msgid "connecting"
-msgstr "подключение"
+msgstr "Jud raha hai"
 
 #: Connected
 msgid "connected"
-msgstr "Подключено"
+msgstr "Jude huye"
 
 #: Settings
 msgid "settings"
-msgstr "Настройки"
+msgstr "Settings"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Настройки Kiwi"
+msgstr "Kiwi Settings"
 
 #: Channels
 msgid "channels"
-msgstr "каналы"
+msgstr "Channels"
 
 #: Access
 msgid "access"
-msgstr "доступ"
+msgstr "#: access"
 
 #: Banned Users
 msgid "banned"
-msgstr "Заблокированные пользователи"
+msgstr "#: Pratibandhit Upyogkarta"
 
 #: Invited Users
 msgid "invited"
-msgstr "приглашённый"
+msgstr "#: Amantrit Upyogkarta"
 
 #: Notifications
 msgid "notifications"
-msgstr "Уведомления"
+msgstr "adhisoochana"
 
 #: Username
 msgid "username"
-msgstr "Имя пользователя"
+msgstr "upayogakarta naam"
 
 #: Password
 msgid "password"
-msgstr "Пароль"
+msgstr "password"
 
 #: Server Password
 msgid "server_password"
@@ -81,27 +81,27 @@ msgstr "Server Password"
 
 #: I have a password
 msgid "password_have"
-msgstr "У меня есть пароль"
+msgstr "Mere pass ek password hai"
 
 #: Server
 msgid "server"
-msgstr "Сервер"
+msgstr "server"
 
 #: Nick
 msgid "nick"
-msgstr "Псевдоним"
+msgstr "Naam"
 
 #: Channel
 msgid "channel"
-msgstr "Канал"
+msgstr "Channel"
 
 #: Messages
 msgid "messages"
-msgstr "Сообщения"
+msgstr "sandesh"
 
 #: Network
 msgid "network"
-msgstr "Сеть"
+msgstr "Sanzal"
 
 #: ZNC
 msgid "znc"
@@ -109,463 +109,463 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Вход в систему..."
+msgstr "Log in ho raha hai"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Неправильное имя пользователя"
+msgstr "Log in sahi nahi hai"
 
 #: Search...
 msgid "do_search"
-msgstr "Поиск..."
+msgstr "khoj"
 
 #: OK
 msgid "ok"
-msgstr "Ок"
+msgstr "Theekhai"
 
 #: Cancel
 msgid "cancel"
-msgstr "Отмена"
+msgstr "Radh Kare"
 
 #: Yes
 msgid "yes"
-msgstr "Да"
+msgstr "Haan"
 
 #: No
 msgid "no"
-msgstr "Нет"
+msgstr "Nahi"
 
 #: Not found.
 msgid "not_found"
-msgstr "Не найдено."
+msgstr "nahi mila"
 
 #: Warning!
 msgid "warning"
-msgstr "Предупреждение!"
+msgstr "Chetaavanee!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "Это закроет все разговоры KiwiIRC. Вы действительно хотите закрыть это окно?"
+msgstr "Yeh karne se, sabhi Kiwi IRC vaarthalaap, bhand ho jaaye ge. Kya aap vaake isse window ko bhaand karre na chahte hai?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Настоящее имя"
+msgstr "Asli Naam"
 
 #: Status
 msgid "whois_status"
-msgstr "Статус"
+msgstr "pratishta"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Доступен"
+msgstr "upalabdh hai"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Отправить сообщение"
+msgstr "Ek sandesh bhejen"
 
 #: More information
 msgid "more_information"
-msgstr "Дополнительная информация"
+msgstr "adhik jaankaaree"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Игнорировать пользователя"
+msgstr "prayoghe karre ne wala ko nazar undaaz karre"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Канал"
+msgstr "Channel"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "niranthar"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} неделя"
+msgstr "{{Ginti}} Kamzor"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} недели"
+msgstr "#: {{count}} saptah"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} день"
+msgstr "Din"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} дней"
+msgstr "#:{{count}} Dino"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} час"
+msgstr "#:{{count}} ghanta"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} часов"
+msgstr "#: {{count}} ghante"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} минута"
+msgstr "#:{{count}} minute"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} минут"
+msgstr "#:{{count}} minto"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} секунд"
+msgstr "#:{{count}} second"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} секунды"
+msgstr "#:{{count}} seconds"
 
 #: General
 msgid "settings_general"
-msgstr "Основные"
+msgstr "samaany"
 
 #: Language
 msgid "settings_language"
-msgstr "Язык"
+msgstr "bhaasha"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Темы"
+msgstr "vishay"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Обновить тему"
+msgstr "#: vishay ko taza kijiye"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "URL-адрес на тему"
+msgstr "#: Vishay URL"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Шаблон сообщения"
+msgstr "#: sandesh khaaka"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Шрифт monospace"
+msgstr "#: monospace ka upyog kare"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Использовать Kiwi в качестве IRC-клиента по умолчанию"
+msgstr "#: kiwi ko mera default IRC client banaye"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Традиционный формат IRC"
+msgstr "Paaramparik IRC layout"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Show autocomplete list"
+msgstr "#: autocomplete ki soochi dikhaye"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Сообщения чата"
+msgstr "#: chat sandesh"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Показывать время"
+msgstr "#: samay mohar dikhaye"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Использовать 24-х часовой пояс"
+msgstr "# 24 ghante ki samay mohar ka upyog kare"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Показать смайлики"
+msgstr "Emoticon dikhaye"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Block new private messages"
+msgstr "#: naye niji sandesh ko pratibandhit kare"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Messages in scrollback"
+msgstr "#: pichle sandesho ko dubara dekhe"
 
 #: Extra formatting
 msgid "settings_formatting"
-msgstr "Extra formatting"
+msgstr "#: atirikt svaroopan"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Цветные имена в сообщениях"
+msgstr "#: sandesh mai upnaamo ka rang istemal kare"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Показывать когда я печатаю сообщение"
+msgstr "Jab main ek sandesh type kar raha hoon to share karen"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "#: Panktiyon mai chitra purvavlokan dikhaye"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Include join/part messages as activity"
+msgstr "#: Judne / alag hone ke sandesh ko gatividhi main shamil kare"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Отключить звуковые уведомления"
+msgstr "#: Maun Adhisoochnayein"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space seperated)"
+msgstr "#: shabdo ko pramukhta se pradarshit kare"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Псевдонимы"
+msgstr "#: Upnaam"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "#: upnaam kya hai ?"
 
 #: Send Message
 msgid "send_message"
-msgstr "Отправить сообщение"
+msgstr "message bhejen"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Введите ключ канала"
+msgstr "#: channel token darj kare"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "#: dubara Jude {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Notify me when"
+msgstr "#: mujhe soochit kare"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "Все сообщения"
+msgstr "#: Sabhi sandesh"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "При упоминании меня"
+msgstr "#: Mujhe Varnit kiya gaya"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Никогда"
+msgstr "Kabhi Nahi"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Выключить звук"
+msgstr "#: Aawaz band kare"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "#: Apathit sandesho ki ginti chupaye"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Operator tools"
+msgstr "#: Operator k Upkaran"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Default ban mask"
+msgstr "#: default pratibandhit mukhauta"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Default kick reason"
+msgstr "#: default bahar karne ke karan"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Расширенные настройки"
+msgstr "#: Unnat Setings"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Монстры здесь, нажмите эту кнопку, только если вы знаете, что делаете"
+msgstr "Monsters be here, only click this button if you know what you are doing"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Включить расширенные настройки"
+msgstr "Enable Advanced Settings"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Опасная зона: Изменение некоторых из этих настроек может привести к поломке!"
+msgstr "#: Khatre wala Shetra : Yaha ki kuch settings badlne par chize tut sakti hai"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Сброс"
+msgstr "#: Punah Set Kare"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Фильтр"
+msgstr ":# Chaane"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Обновить бан-лист"
+msgstr "#: Pratibandhit Upyogkartao ki soochi taza kare"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Заблокированный пользователь"
+msgstr "#: Pratibandhit Upyogkarta"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Заблокирован"
+msgstr "#: Ke dwara Pratinbandhit"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Обновление бан-листа..."
+msgstr "#: Pratibandhit Upyogkartao ki soochi taza kare"
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Никто не заблокирован!"
+msgstr "Koi bhi pratibandhit nahin hai"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Обновить список приглашений"
+msgstr "#: Aamantran ki Soochi taza kare"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Приглашённый пользователь"
+msgstr "#: Amantrit Upyogkarta"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Пригласил"
+msgstr "#: ke dwara Amantrit"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Обновление списка приглашенных..."
+msgstr "#: Aamantran ki Soochi taza kare"
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Никто не приглашен!"
+msgstr "Koi bhi aamantrit nahin hai!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "Это публичный канал. "
+msgstr "#: Ye janta ka channel hai"
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Только приглашённые пользователи могут подключиться. "
+msgstr "#: Kewal amantrit upyogkarta hi jud sakte hai"
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Разрешить только приглашенным пользователям"
+msgstr "#: Kewal amantrit upyogkartao ko anumati de"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Разрешить подключаться всем"
+msgstr "#: Kisi ko bhi Judne ki anumati de"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Только зарегистрированные пользователи могут подключиться"
+msgstr "#: Kewal Panjikrit upyogkarta hi jud sakte"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "#: Amantran Jode"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "#: (koi bhi panjikrit upyogkarta)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topic"
+msgstr "#: Vishay"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Moderated chat"
+msgstr "#: Sanyamit Chat"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Только по приглашению"
+msgstr "#: Kewal Amantrit"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Only moderators can change the topic"
+msgstr "#: Kewal moderator hi vishay badal sakte hai"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Block messages from outside this channel"
+msgstr "#: Channel se bahar ke sandesho ko roke"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to update the channel list"
+msgstr "#: Refresh button ko daba kar channel ki taza soochi paaye"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, try again later"
+msgstr "#: Channel nahi mila , kuch der baad Dubara koshish kare"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Welcome to Kiwi IRC! Select a channel on the left."
+msgstr "#: Kiwi IRC mai apka Swagat hai , Apne baayein taraf channel ka chayan kare"
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Show statebrowser"
+msgstr "#: statebrowser dikhaye"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "#: Vishay Chupaye"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "#: Vishay Dikhaye"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "#: channel settings"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Join Channel"
+msgstr "#: Channel se jude"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Нет соединения"
+msgstr "#: Juda Nahi"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
-msgstr "Приватный разговор с {{user}}"
+msgstr "#: {{user}} ke sath niji baat chit"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Действительно покинуть канал?"
+msgstr "#: Kya aap sach mai channel chodna chahte hai ?"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Отправить сообщение..."
+msgstr "#: Sandesh Bheje"
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Загрузка {{url}}..."
+msgstr "#: load ho raha raha {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
-msgstr "Загрузить предыдущие сообщения"
+msgstr "#: Pichle sandesh dikhaye"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Непрочитанные сообщения"
+msgstr "#: Apathit Sandesh"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Детали сервера"
+msgstr "#: server ka byora"
 
 #: Port
 msgid "settings_port"
-msgstr "Порт"
+msgstr "Port"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Другие сети в этой учетной записи ZNC будут перечислены в списке сетей."
+msgstr "Other networks on this ZNC account will be listed in the network list"
 
 #: Your details
 msgid "settings_your_details"
-msgstr "Ваши данные"
+msgstr "Your details"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Псевдоним"
+msgstr "Nickname"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Дополнительно"
+msgstr "Advanced"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Кодировка"
+msgstr "Encoding"
 
 #: Show Raw
 msgid "settings_show_raw"
@@ -577,123 +577,123 @@ msgstr "Direct websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Запускать команды при подключении"
+msgstr "#: Jud jane ke baad Aadesh chalaye"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Опасная зона"
+msgstr "#: Khatre ka Kshetra"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Удалить сеть"
+msgstr "#: Network Hataye"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} человек здесь"
+msgstr "#: {{count}} Yaha ke Log"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "{{count}} человек здесь"
+msgstr "#: {{count}} yaha ke log"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "#: channel Upyogkartao ko chaante"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Переподключитесь, чтобы присоединиться к {{channel}}"
+msgstr "#: Judne ke liye dubara punah connect kare {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Подключитесь к {{network}}, чтобы начать разговор"
+msgstr "Baat karne ke liye {{network}} punah connect kare"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Переподключитесь, чтобы продолжить разговор с {{user}}"
+msgstr "#: {{upyogkartao}} se baat karne ke liye punah connect kare"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "Вы в данный момент не подключены!"
+msgstr "#: Aap abhi Jude hue nahi hai"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Настройки соединения"
+msgstr "#: Judne ki Settings"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "Мы не смогли подключиться к этому серверу :("
+msgstr "#: Server se juda nahi ja saka :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Подключиться к сети"
+msgstr "#: Network se Judiye"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "#: Network ka Naam"
 
 #: Close options
 msgid "side_close"
-msgstr "Закрыть настройки"
+msgstr "#: Band karne ka Vikalp"
 
 #: Channel options
 msgid "side_options"
-msgstr "Настройки канала"
+msgstr "#: channel Vikalp"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Ваши настройки"
+msgstr "#: Aapki Settings"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Показывать, когда люди присоединяются"
+msgstr "#: Logo ke Judne par dikhaye"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Показать, когда тема канала меняется"
+msgstr "#: channel vishay badalne par dikhaye"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Показать, когда пользователи меняют псевдоним"
+msgstr "#: Upyogkartao ke naam badalne par dikhaye"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Показать, когда пользователи меняют режимы канала"
+msgstr "#: Upyogkartao dwara channel modes badalne par dikhaye"
 
 #: Extra message formatting
 msgid "side_formatting"
-msgstr "Дополнительное форматирование сообщения"
+msgstr "#: Atirikt sandesh swaroopan"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Nick colours in the list"
+msgstr "#: Soochi mai naam ke Rang"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "No buffer set"
+msgstr "#: buffer set nahi hua"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "There is no topic for this channel"
+msgstr "#: Is channel ka koi Vishay nahi hai"
 
 #: About
 msgid "about"
-msgstr "О нас"
+msgstr "#: Ke baare mai"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Создано {{when}}"
+msgstr "#: banaya gaya {{kab}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Prakashit Kare"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Никто еще не упомянул тебя..."
+msgstr "Nobody has mentioned you yet..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "Произошла ошибка при запуске Kiwi IRC :("
+msgstr "There was an error starting Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
@@ -701,23 +701,23 @@ msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion c
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "{{name}} отключился"
+msgstr "Leave {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr "Ваш аккаунт"
+msgstr "Your account"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr "Ваши настройки и сети будут запомнены на этом компьютере."
+msgstr "Your settings and networks will be remembered on this computer."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Забудь меня"
+msgstr "Forget me"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "Здесь пока нет сетей."
+msgstr "No networks here yet."
 
 #: Add one?
 msgid "state_add"
@@ -753,7 +753,7 @@ msgstr "Join new #channel"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Фильтр каналов"
+msgstr "Filter channels"
 
 #: Find More Channels
 msgid "find_more_channels"
@@ -761,11 +761,11 @@ msgstr "Find More Channels"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Изменить псевдоним"
+msgstr "Change nick"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Введите новый псевдоним..."
+msgstr "Enter new nickname..."
 
 #: This is you!
 msgid "user_you"
@@ -773,11 +773,11 @@ msgstr "This is you!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Имя учетной записи: {{user}}"
+msgstr "Account name: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
-msgstr "Настоящее имя: {{realname}}"
+msgstr "Real name: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
@@ -793,11 +793,11 @@ msgstr "Is an operator"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Подключен к {{server}} {{info}}"
+msgstr "Connected to {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Надежное подключение через SSL/TLS"
+msgstr "Securely connected via SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
@@ -805,23 +805,23 @@ msgstr "In channels {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr "Уровень доступа"
+msgstr "Access level"
 
 #: Normal
 msgid "user_normal"
-msgstr "Обычный"
+msgstr "Saadhaaran"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Выгнать с канала"
+msgstr "Channel se bahar nikhal gaya hai"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Заблокировать на канале"
+msgstr "channel se pratibandh"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Заблокировать и выгнать с канала"
+msgstr "Channel se pratibandh aur bahaar nikhal gaya hai"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -829,15 +829,15 @@ msgstr "Please specify a channel to join. eg /join #example"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "Псевдоним {{nick}} уже используется!"
+msgstr "Isse upayogakarta ka naam {{nick}} pahale se he prayog mei hai"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "Вы должны ввести новое имя"
+msgstr "Aapko ek naya upanaam darjh karna hoga"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Имя не может начинаться с цифр"
+msgstr "Upnaam ek sankhya se shuru nahi hona chaiye"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -893,7 +893,7 @@ msgstr "{{nick}} sets {{mode}} on {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Отправить сообщение"
+msgstr "Ek sandesh bhejen"
 
 #: Do something physical
 msgid "command_action"
@@ -901,47 +901,47 @@ msgstr "Do something physical"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Присоединиться к каналу"
+msgstr "Join a channel"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Покинуть канал"
+msgstr "Leave a channel"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Покинуть, затем переподключиться к каналу"
+msgstr "Leave, then re-join a channel"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Изменить псевдоним"
+msgstr "Change your nickname"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr "Начать приватный диалог с кем-то"
+msgstr "Start a private conversation with someone"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Пригласить кого-нибудь в канал"
+msgstr "Invite somebody into the channel"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Изменить название канала"
+msgstr "Set the topic for this channel"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Отправить уведомление"
+msgstr "Send a notice"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "Отправить необработанную команду на IRC-сервер"
+msgstr "Send a raw command to the IRC server"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Выгнать кого-нибудь с канала"
+msgstr "Kick somebody from the channel"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Очистить все сообщения в этом окне"
+msgstr "Clear all messages from this window"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
@@ -949,11 +949,11 @@ msgstr "Send a CTCP command to somebody"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Отключиться от IRC-сервера"
+msgstr "Disconnect from the IRC server"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Подключиться к новой сети IRC"
+msgstr "Connect to a new IRC network"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -1021,11 +1021,11 @@ msgstr "Add network to existing Kiwi window"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Temporarily connect to this network"
+msgstr "Kuch samaye ke liye network se jhooda hai"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Сохраненные сети"
+msgstr "Saved networks"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
@@ -1037,7 +1037,7 @@ msgstr "Direct websockets. No Kiwi server or webirc involved."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
+msgstr "(Vikaas websocket server sahayog ke liye Adam @Rizon ko dhanyavaad!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
@@ -1049,11 +1049,11 @@ msgstr "Disconnected"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Подключено к {{network}}!"
+msgstr "Connected to {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} присоединился"
+msgstr "{{nick}} has joined"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
@@ -1069,17 +1069,17 @@ msgstr "{{nick}} has left"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} приглашает Вас присоединиться к {{channel}}"
+msgstr "{{nick}} invited you to join {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Псевдоним {{nick}} уже используется. Попробуйте {{newnick}}"
+msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} теперь известен как {{newnick}}"
+msgstr "{{nick}} is now known as {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} изменил тему на: {{topic}}"
+msgstr "{{nick}} changed the topic to: {{topic}}"
 

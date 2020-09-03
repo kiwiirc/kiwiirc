@@ -209,6 +209,9 @@ export default class BouncerProvider {
             if (buffer.seen) {
                 newBuffer.last_read = (new Date(buffer.seen)).getTime();
             }
+            if (buffer.notify) {
+                newBuffer.setting('alert_on', buffer.notify);
+            }
 
             newBuffer.topic = buffer.topic || '';
 

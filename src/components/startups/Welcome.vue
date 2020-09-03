@@ -144,6 +144,16 @@ export default {
                 ready = false;
             }
 
+            // Make sure the channel name starts with a common channel prefix
+            if (!this.connectWithoutChannel) {
+                let bufferObjs = Misc.extractBuffers(this.channel);
+                bufferObjs.forEach((bufferObj) => {
+                    if ('#&'.indexOf(bufferObj.name[0]) === -1) {
+                        ready = false;
+                    }
+                });
+            }
+
             // If toggling the password is is disabled, assume it is required
             if (!this.toggablePass && !this.password) {
                 ready = false;
@@ -193,7 +203,7 @@ export default {
 
         // Take some settings from a previous network if available
         let previousNet = null;
-        if (options.server.trim()) {
+        if (connectOptions.hostname.trim()) {
             previousNet = this.$state.getNetworkFromAddress(connectOptions.hostname.trim());
         }
 

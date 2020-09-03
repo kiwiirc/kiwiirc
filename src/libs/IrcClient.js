@@ -12,36 +12,18 @@ import * as ServerConnection from './ServerConnection';
 export function create(state, network) {
     let networkid = network.id;
 
-    let clientOpts = {
-        host: network.connection.server,
-        port: network.connection.port,
-        tls: network.connection.tls,
-        path: network.connection.path,
-        password: network.connection.password,
-        account: {
-            account: network.connection.nick,
-            password: network.password,
-        },
-        nick: network.connection.nick,
-        username: network.username || network.connection.nick,
-        gecos: network.gecos || 'https://kiwiirc.com/',
+    let ircClient = new Irc.Client({
+        // Most options are set under the overloaded .connect()
         version: null,
-        auto_reconnect: false,
-        encoding: network.connection.encoding,
         message_max_length: 350,
-    };
-
-    let ircClient = new Irc.Client(clientOpts);
+    });
     ircClient.requestCap('znc.in/self-message');
-    // Current version of irc-framework only support draft/message-tags-0.2
-    // TODO: Removee this once irc-framework has been updated
-    ircClient.requestCap('message-tags');
     ircClient.use(chathistoryMiddleware());
     ircClient.use(clientMiddleware(state, network));
     ircClient.use(typingMiddleware());
 
     // Overload the connect() function to make sure we are connecting with the
-    // most recent connection details from the state
+    // most recent connection details from the network state
     let originalIrcClientConnect = ircClient.connect;
     ircClient.connect = function connect(...args) {
         // Set some defaults if we don't have eveything
@@ -162,24 +144,6 @@ function clientMiddleware(state, network) {
         client.on('connected', () => {
             network.state_error = '';
             network.state = 'connected';
-
-            network.buffers.forEach((buffer) => {
-                if (!buffer) {
-                    return;
-                }
-
-                let messageBody = TextFormatting.formatText('network_connected', {
-                    text: TextFormatting.t('connected'),
-                });
-
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: messageBody,
-                    type: 'connection',
-                    type_extra: 'connected',
-                });
-            });
         });
 
         client.on('socket close', (err) => {
@@ -194,18 +158,6 @@ function clientMiddleware(state, network) {
 
                 buffer.joined = false;
                 buffer.clearUsers();
-
-                let messageBody = TextFormatting.formatText('network_disconnected', {
-                    text: TextFormatting.t('disconnected'),
-                });
-
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: messageBody,
-                    type: 'connection',
-                    type_extra: 'disconnected',
-                });
             });
         });
     };
@@ -380,6 +332,33 @@ function clientMiddleware(state, network) {
                     nick: '',
                     message: message,
                 });
+            }
+        }
+
+        if (command.toLowerCase() === 'batch start chathistory' && client.chathistory) {
+            // We have a new batch of messages. To prevent duplicate messages being shown, we remove
+            // all messages we have locally in the range of these new messages so that the new block
+            // of messages we recieved are displayed accurately. Each message in the block will
+            // trigger a 'message' event after this.
+            let startTime = 0;
+            let endTime = 0;
+            event.commands.forEach((message) => {
+                if (message.time && message.time > endTime) {
+                    endTime = message.time;
+                }
+
+                if (message.time && message.time < startTime) {
+                    startTime = message.time;
+                }
+            });
+
+            if (!startTime || !endTime) {
+                return;
+            }
+
+            let buffer = state.getBufferByName(networkid, event.params[0]);
+            if (buffer) {
+                buffer.clearMessageRange(startTime, endTime);
             }
         }
 

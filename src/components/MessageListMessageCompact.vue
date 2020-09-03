@@ -34,7 +34,8 @@
         :data-message-id="props.message.id"
         :data-nick="(props.message.nick||'').toLowerCase()"
         class="kiwi-messagelist-message kiwi-messagelist-message--compact"
-        @click="props.ml.onMessageClick($event, props.message)"
+        @click="props.ml.onMessageClick($event, props.message, true)"
+        @dblclick="props.ml.onMessageDblClick($event, props.message)"
     >
         <div
             v-if="props.ml.bufferSetting('show_timestamps')"
@@ -43,7 +44,7 @@
         >
             {{ props.ml.formatTime(props.message.time) }}
         </div>
-        <div
+        <a
             :style="{ 'color': props.ml.userColour(props.message.user) }"
             :class="[
                 'kiwi-messagelist-nick',
@@ -51,7 +52,7 @@
                     'kiwi-messagelist-nick--mode-'+props.m().userMode(props.message.user) :
                     ''
             ]"
-            @click="props.ml.openUserBox(props.message.nick)"
+            :data-nick="(props.message.nick||'').toLowerCase()"
             @mouseover="props.ml.hover_nick=props.message.nick.toLowerCase();"
             @mouseout="props.ml.hover_nick='';"
         >
@@ -65,7 +66,7 @@
                 {{ props.message.user ? props.m().userModePrefix(props.message.user) : '' }}
             </span>
             {{ props.message.nick }}
-        </div>
+        </a>
         <div
             v-if="props.message.bodyTemplate && props.message.bodyTemplate.$el"
             v-rawElement="props.message.bodyTemplate.$el"
@@ -234,20 +235,6 @@ export default {
     margin-left: 131px;
 }
 
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-time {
-    display: none;
-}
-
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
-    display: inline-block;
-    margin: 0;
-    padding: 10px 0;
-    margin-left: 131px;
-    font-size: 0.8em;
-    opacity: 0.8;
-    font-weight: 600;
-}
-
 //Channel topic
 .kiwi-messagelist-message--compact.kiwi-messagelist-message-topic {
     border-radius: 0;
@@ -359,10 +346,6 @@ export default {
     }
 
     .kiwi-messagelist-message--compact.kiwi-messagelist-message-traffic .kiwi-messagelist-body {
-        margin-left: 181px;
-    }
-
-    .kiwi-messagelist-message--compact.kiwi-messagelist-message-connection .kiwi-messagelist-body {
         margin-left: 181px;
     }
 }

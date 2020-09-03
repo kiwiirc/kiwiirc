@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2020-06-14 12:32\n"
+"PO-Revision-Date: 2020-06-15 10:22\n"
 
 #: Start
 msgid "start_button"
@@ -629,7 +629,7 @@ msgstr "Lidhu Te Rrjeti"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "Emër Rrjeti"
 
 #: Close options
 msgid "side_close"

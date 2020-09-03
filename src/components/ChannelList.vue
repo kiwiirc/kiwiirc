@@ -2,7 +2,7 @@
     <div :class="{'kiwi-channellist-padding-top': !list.length}" class="kiwi-channellist">
         <div class="kiwi-channellist-content-container">
             <div class="kiwi-channellist-nav">
-                <form class="u-form kiwi-channellist-search" @submit.prevent>
+                <form class="u-form u-form--big kiwi-channellist-search" @submit.prevent>
                     <input v-model="search" :placeholder="$t('do_search')" class="u-input">
                     <a
                         :class="{
@@ -194,25 +194,23 @@ export default {
 
 /* Input form styling */
 .kiwi-channellist-nav .u-form {
-    padding-right: 46px;
-    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .kiwi-channellist-nav .u-form .u-input {
     width: 324px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .kiwi-channellist-nav .u-form .u-button-primary,
 .kiwi-channellist-nav .u-form .u-button-secondary {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 24px;
-    width: 12px;
-    text-align: center;
-    line-height: 26px;
     font-size: 1.3em;
-    border-radius: 0;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    display: flex;
+    align-items: center;
 }
 
 .kiwi-channellist-nav .u-form .u-button-primary i,
@@ -222,7 +220,7 @@ export default {
 
 .kiwi-channellist-pagination {
     display: inline-block;
-    margin: 0 2em;
+    margin: 20px auto 10px auto;
     font-size: 1.2em;
 }
 
