@@ -198,11 +198,9 @@ Vue.directive('resizeobserver', {
         let cb = bindings.value || function noop() {};
         el[ROSymbol] = new ResizeObserver(cb);
         el[ROSymbol].observe(el);
-        console.log('observed');
     },
     unbind(el) {
         el[ROSymbol].unobserve(el);
-        console.log('unobserved');
     },
 });
 
