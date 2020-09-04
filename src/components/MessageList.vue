@@ -3,10 +3,9 @@
         :key="'messagelist-' + buffer.name"
         class="kiwi-messagelist"
         :class="{'kiwi-messagelist--smoothscroll': smooth_scroll}"
-        @scroll.self="onThreadScroll"
         @click.self="onListClick"
     >
-        <div v-resizeobserver="ro">
+        <div v-resizeobserver="onListResize">
             <div
                 v-if="shouldShowChathistoryTools"
                 class="kiwi-messagelist-scrollback"
@@ -198,18 +197,11 @@ export default {
         },
     },
     watch: {
-        auto_scroll(n) {
-            console.log('auto_scroll changed to', n);
-        },
-        smooth_scroll(n) {
-            console.log('smooth_scroll changed to', n);
-        },
         buffer(newBuffer, oldBuffer) {
             if (oldBuffer) {
                 oldBuffer.isMessageTrimming = true;
             }
 
-            console.log('watch.buffer()');
             if (!newBuffer) {
                 return;
             }
@@ -228,7 +220,6 @@ export default {
         },
     },
     mounted() {
-        console.log('mounted()');
         this.addCopyListeners();
 
         this.$nextTick(() => {
@@ -247,6 +238,9 @@ export default {
         });
     },
     beforeUpdate() {
+        // Data has changed and now preparing to update the DOM.
+        // Check our scrolling state before the DOM updates so that we know if we're scrolled
+        // at the bottom before new messages are added
         this.checkScrollingState();
     },
     methods: {
@@ -429,7 +423,6 @@ export default {
             let el = this.$el;
             let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
             this.lastScrolledUpByPx = scrolledUpByPx;
-            console.log('beforeUpdate()', scrolledUpByPx);
 
             // We need to know at this point (before the DOM has updated with new messages) if we
             // are at the bottom of the messagelist or not, otherwise once the DOM has updated then
@@ -445,39 +438,20 @@ export default {
             if (this.force_smooth_scroll !== null) {
                 this.smooth_scroll = this.force_smooth_scroll;
                 this.force_smooth_scroll = null;
-            } else if (scrolledUpByPx < BOTTOM_SCROLL_MARGIN) {
-                this.smooth_scroll = true;
+            // TODO: Enabling smooth_scroll breaks the auto-scroll-to-bottom on fast buffers as
+            //       it takes time to scroll down and it looks like we're scrolled too far up when
+            //       detecting if were scrolled up or not. Look into ways around this so that we
+            //       can enable it as it does look a lot better.
+            // } else if (scrolledUpByPx < BOTTOM_SCROLL_MARGIN) {
+            //    this.smooth_scroll = true;
             } else {
                 this.smooth_scroll = false;
             }
         },
-        ro(e) {
-            // The messagelist has resized so check if we should auto scroll down
-            console.log('ro()', this.lastScrolledUpByPx);
+        onListResize(e) {
+            // The messagelist has resized or had new content added so check if we should auto
+            // scroll down to the bottom
             this.maybeScrollToBottom();
-        },
-        onThreadScroll(e) {
-            let el = this.$el;
-            let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
-            // let lastScrolledUpByPx = this.lastScrolledUpByPx;
-            // this.lastScrolledUpByPx = scrolledUpByPx;
-
-            // If we're scrolled to the very bottom then enable smooth_scroll. Otherwise keep it
-            // off so that scrolling to the very bottom is instant when needed
-            if (scrolledUpByPx === 0) {
-                // this.smooth_scroll = true;
-            } else {
-                // this.smooth_scroll = false;
-            }
-
-            console.log('onThreadScroll()', scrolledUpByPx);
-            /*
-            if (scrolledUpByPx > BOTTOM_SCROLL_MARGIN) {
-                this.auto_scroll = false;
-            } else {
-                this.auto_scroll = true;
-            }
-            */
         },
         scrollToBottom() {
             this.$el.scrollTop = this.$el.scrollHeight;
