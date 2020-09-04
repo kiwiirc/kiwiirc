@@ -95,7 +95,6 @@
 <script>
 'kiwi public';
 
-import _ from 'lodash';
 import strftime from 'strftime';
 import Logger from '@/libs/Logger';
 import * as bufferTools from '@/libs/bufferTools';
@@ -127,7 +126,6 @@ export default {
             smooth_scroll: false,
             auto_scroll: true,
             force_smooth_scroll: null,
-            lastScrolledUpByPx: 0,
             chathistoryAvailable: true,
             hover_nick: '',
             message_info_open: null,
@@ -422,7 +420,6 @@ export default {
         checkScrollingState() {
             let el = this.$el;
             let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
-            this.lastScrolledUpByPx = scrolledUpByPx;
 
             // We need to know at this point (before the DOM has updated with new messages) if we
             // are at the bottom of the messagelist or not, otherwise once the DOM has updated then
@@ -457,15 +454,9 @@ export default {
             this.$el.scrollTop = this.$el.scrollHeight;
         },
         maybeScrollToBottom() {
-            if (!this.maybeScrollToBottom_throttled) {
-                this.maybeScrollToBottom_throttled = _.throttle(() => {
-                    if (this.auto_scroll) {
-                        this.scrollToBottom();
-                    }
-                }, 500, { leading: true });
+            if (this.auto_scroll) {
+                this.scrollToBottom();
             }
-
-            this.maybeScrollToBottom_throttled();
         },
         maybeScrollToId(id) {
             let messageElement = this.$el.querySelector('.kiwi-messagelist-message[data-message-id="' + id + '"]');
