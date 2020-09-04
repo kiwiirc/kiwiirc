@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Latin America\n"
 "Language: es_419\n"
-"PO-Revision-Date: 2020-06-14 12:33\n"
+"PO-Revision-Date: 2020-09-04 17:22\n"
 
 #: Start
 msgid "start_button"
@@ -629,7 +629,7 @@ msgstr "Conectar a la Red"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "Nombre de la Red"
 
 #: Close options
 msgid "side_close"
