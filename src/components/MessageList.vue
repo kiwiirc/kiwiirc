@@ -2,93 +2,93 @@
     <div
         :key="'messagelist-' + buffer.name"
         class="kiwi-messagelist"
-        @scroll.self="onThreadScroll"
+        :class="{'kiwi-messagelist--smoothscroll': smooth_scroll}"
         @click.self="onListClick"
     >
-        <div
-            v-if="shouldShowChathistoryTools"
-            class="kiwi-messagelist-scrollback"
-        >
-            <a
-                v-if="!buffer.flag('is_requesting_chathistory')"
-                class="u-link"
-                @click="buffer.requestScrollback()"
-            >
-                {{ $t('messages_load') }}
-            </a>
-            <a v-else class="u-link">...</a>
-        </div>
-
-        <div v-for="day in filteredMessagesGroupedDay" :key="day.dayNum">
+        <div v-resizeobserver="onListResize">
             <div
-                v-if="filteredMessagesGroupedDay.length > 1 && day.messages.length > 0"
-                :key="'msgdatemarker' + day.dayNum"
-                class="kiwi-messagelist-seperator"
+                v-if="shouldShowChathistoryTools"
+                class="kiwi-messagelist-scrollback"
             >
-                <span>{{ (new Date(day.messages[0].time)).toDateString() }}</span>
+                <a
+                    v-if="!buffer.flag('is_requesting_chathistory')"
+                    class="u-link"
+                    @click="buffer.requestScrollback()"
+                >
+                    {{ $t('messages_load') }}
+                </a>
+                <a v-else class="u-link">...</a>
             </div>
 
-            <template v-for="message in day.messages">
+            <div v-for="day in filteredMessagesGroupedDay" :key="day.dayNum">
                 <div
-                    v-if="shouldShowUnreadMarker(message)"
-                    :key="'msgunreadmarker' + message.id"
+                    v-if="filteredMessagesGroupedDay.length > 1 && day.messages.length > 0"
+                    :key="'msgdatemarker' + day.dayNum"
                     class="kiwi-messagelist-seperator"
                 >
-                    <span>{{ $t('unread_messages') }}</span>
+                    <span>{{ (new Date(day.messages[0].time)).toDateString() }}</span>
                 </div>
 
-                <div
-                    :key="'msg' + message.id"
-                    :class="[
-                        'kiwi-messagelist-item',
-                        selectedMessages[message.id] ?
-                            'kiwi-messagelist-item--selected' :
-                            ''
-                    ]"
-                >
-                    <!-- message.template is checked first for a custom component, then each message
-                        layout checks for a message.bodyTemplate custom component to apply only to
-                        the body area
-                    -->
+                <template v-for="message in day.messages">
                     <div
-                        v-if="message.render() && message.template && message.template.$el"
-                        v-rawElement="message.template.$el"
-                    />
-                    <message-list-message-modern
-                        v-else-if="listType === 'modern'"
-                        :message="message"
-                        :idx="filteredMessages.indexOf(message)"
-                        :ml="thisMl"
-                    />
-                    <message-list-message-inline
-                        v-else-if="listType === 'inline'"
-                        :message="message"
-                        :idx="filteredMessages.indexOf(message)"
-                        :ml="thisMl"
-                    />
-                    <message-list-message-compact
-                        v-else-if="listType === 'compact'"
-                        :message="message"
-                        :idx="filteredMessages.indexOf(message)"
-                        :ml="thisMl"
-                    />
-                </div>
-            </template>
-        </div>
+                        v-if="shouldShowUnreadMarker(message)"
+                        :key="'msgunreadmarker' + message.id"
+                        class="kiwi-messagelist-seperator"
+                    >
+                        <span>{{ $t('unread_messages') }}</span>
+                    </div>
 
-        <transition name="kiwi-messagelist-joinloadertrans">
-            <div v-if="shouldShowJoiningLoader" class="kiwi-messagelist-joinloader">
-                <LoadingAnimation />
+                    <div
+                        :key="'msg' + message.id"
+                        :class="[
+                            'kiwi-messagelist-item',
+                            selectedMessages[message.id] ?
+                                'kiwi-messagelist-item--selected' :
+                                ''
+                        ]"
+                    >
+                        <!-- message.template is checked first for a custom component, then each
+                            message layout checks for a message.bodyTemplate custom component to
+                            apply only to the body area
+                        -->
+                        <div
+                            v-if="message.render() && message.template && message.template.$el"
+                            v-rawElement="message.template.$el"
+                        />
+                        <message-list-message-modern
+                            v-else-if="listType === 'modern'"
+                            :message="message"
+                            :idx="filteredMessages.indexOf(message)"
+                            :ml="thisMl"
+                        />
+                        <message-list-message-inline
+                            v-else-if="listType === 'inline'"
+                            :message="message"
+                            :idx="filteredMessages.indexOf(message)"
+                            :ml="thisMl"
+                        />
+                        <message-list-message-compact
+                            v-else-if="listType === 'compact'"
+                            :message="message"
+                            :idx="filteredMessages.indexOf(message)"
+                            :ml="thisMl"
+                        />
+                    </div>
+                </template>
             </div>
-        </transition>
 
-        <buffer-key
-            v-if="shouldRequestChannelKey"
-            :buffer="buffer"
-            :network="buffer.getNetwork()"
-        />
+            <transition name="kiwi-messagelist-joinloadertrans">
+                <div v-if="shouldShowJoiningLoader" class="kiwi-messagelist-joinloader">
+                    <LoadingAnimation />
+                </div>
+            </transition>
 
-        <div ref="ender" />
+            <buffer-key
+                v-if="shouldRequestChannelKey"
+                :buffer="buffer"
+                :network="buffer.getNetwork()"
+            />
+        </div>
     </div>
 </template>
 
@@ -111,7 +111,7 @@ let log = Logger.namespace('MessageList.vue');
 
 // If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
 // of the message list
-const BOTTOM_SCROLL_MARGIN = 50;
+const BOTTOM_SCROLL_MARGIN = 60;
 
 export default {
     components: {
@@ -124,7 +124,10 @@ export default {
     props: ['buffer'],
     data() {
         return {
+            smooth_scroll: false,
             auto_scroll: true,
+            force_smooth_scroll: null,
+            lastScrolledUpByPx: 0,
             chathistoryAvailable: true,
             hover_nick: '',
             message_info_open: null,
@@ -192,12 +195,6 @@ export default {
                 !this.buffer.joined &&
                 this.buffer.getNetwork().state === 'connected';
         },
-        isIos() {
-            return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-        },
-        isIframe() {
-            return window !== window.parent;
-        },
     },
     watch: {
         buffer(newBuffer, oldBuffer) {
@@ -215,13 +212,10 @@ export default {
                 newBuffer.flags.has_opened = true;
             }
 
+            this.auto_scroll = true;
+            this.force_smooth_scroll = false;
             this.$nextTick(() => {
                 this.scrollToBottom();
-            });
-        },
-        'buffer.message_count'() {
-            this.$nextTick(() => {
-                this.maybeScrollToBottom();
             });
         },
     },
@@ -230,6 +224,7 @@ export default {
 
         this.$nextTick(() => {
             this.scrollToBottom();
+            // this.smooth_scroll = true;
         });
 
         this.listen(this.$state, 'mediaviewer.opened', () => {
@@ -241,6 +236,12 @@ export default {
                 this.maybeScrollToId(opt.id);
             }
         });
+    },
+    beforeUpdate() {
+        // Data has changed and now preparing to update the DOM.
+        // Check our scrolling state before the DOM updates so that we know if we're scrolled
+        // at the bottom before new messages are added
+        this.checkScrollingState();
     },
     methods: {
         isHoveringOverMessage(message) {
@@ -418,10 +419,14 @@ export default {
                 this.toggleMessageInfo(message);
             }
         },
-        onThreadScroll() {
+        checkScrollingState() {
             let el = this.$el;
             let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
+            this.lastScrolledUpByPx = scrolledUpByPx;
 
+            // We need to know at this point (before the DOM has updated with new messages) if we
+            // are at the bottom of the messagelist or not, otherwise once the DOM has updated then
+            // it is too late to determine if we should auto scroll down
             if (scrolledUpByPx > BOTTOM_SCROLL_MARGIN) {
                 this.auto_scroll = false;
                 this.buffer.isMessageTrimming = false;
@@ -429,18 +434,27 @@ export default {
                 this.auto_scroll = true;
                 this.buffer.isMessageTrimming = true;
             }
+
+            if (this.force_smooth_scroll !== null) {
+                this.smooth_scroll = this.force_smooth_scroll;
+                this.force_smooth_scroll = null;
+            // TODO: Enabling smooth_scroll breaks the auto-scroll-to-bottom on fast buffers as
+            //       it takes time to scroll down and it looks like we're scrolled too far up when
+            //       detecting if were scrolled up or not. Look into ways around this so that we
+            //       can enable it as it does look a lot better.
+            // } else if (scrolledUpByPx < BOTTOM_SCROLL_MARGIN) {
+            //    this.smooth_scroll = true;
+            } else {
+                this.smooth_scroll = false;
+            }
+        },
+        onListResize(e) {
+            // The messagelist has resized or had new content added so check if we should auto
+            // scroll down to the bottom
+            this.maybeScrollToBottom();
         },
         scrollToBottom() {
-            if (this.isIos || this.isIframe) {
-                // On iOS using scrollIntoView causes issues with the keyboard pushing
-                // the view upwards resulting in the input box being behind the keyboard
-                //
-                // when inside iframe, scrollIntoView() also scrolls parent window
-
-                this.$el.scrollTop = this.$el.scrollHeight;
-                return;
-            }
-            this.$refs.ender.scrollIntoView(false);
+            this.$el.scrollTop = this.$el.scrollHeight;
         },
         maybeScrollToBottom() {
             if (!this.maybeScrollToBottom_throttled) {
@@ -665,6 +679,10 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     box-sizing: border-box;
     margin-bottom: 25px;
     position: relative;
+}
+
+.kiwi-messagelist--smoothscroll {
+    scroll-behavior: smooth;
 }
 
 .kiwi-messagelist * {

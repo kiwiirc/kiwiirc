@@ -109,6 +109,27 @@ Vue.mixin({
     },
 });
 
+// Timer functions that are auto cleaned up when a component is destroyed
+Vue.mixin({
+    beforeDestroy: function beforeDestroy() {
+        (this.timerEvents || []).forEach((tmr) => clearTimeout(tmr));
+    },
+    methods: {
+        setInterval(...args) {
+            this.timerEvents = this.timerEvents || [];
+            let v = setInterval(...args);
+            this.timerEvents.push(v);
+            return v;
+        },
+        setTimeout(...args) {
+            this.timerEvents = this.timerEvents || [];
+            let v = setTimeout(...args);
+            this.timerEvents.push(v);
+            return v;
+        },
+    },
+});
+
 // Make the state available to all components by default
 Vue.mixin({
     computed: {
@@ -168,6 +189,20 @@ Vue.directive('focus', {
         if (input) {
             input.focus();
         }
+    },
+});
+
+let ROSymbol = Symbol('resizeobserver');
+Vue.directive('resizeobserver', {
+    bind(el, bindings) {
+        let cb = bindings.value || function noop() {};
+        el[ROSymbol] = new ResizeObserver(cb);
+        el[ROSymbol].observe(el);
+        console.log('observed');
+    },
+    unbind(el) {
+        el[ROSymbol].unobserve(el);
+        console.log('unobserved');
     },
 });
 
