@@ -195,6 +195,18 @@ export default {
         },
     },
     watch: {
+        filteredMessages() {
+            // Data has changed and now preparing to update the DOM.
+            // Check our scrolling state before the DOM updates so that we know if we're scrolled
+            // at the bottom before new messages are added
+            this.checkScrollingState();
+
+            // Wait until after the DOM has updated before possibly scrolling down based on the
+            // previous check
+            this.$nextTick(() => {
+                this.maybeScrollToBottom();
+            });
+        },
         buffer(newBuffer, oldBuffer) {
             if (oldBuffer) {
                 oldBuffer.isMessageTrimming = true;
@@ -234,12 +246,6 @@ export default {
                 this.maybeScrollToId(opt.id);
             }
         });
-    },
-    beforeUpdate() {
-        // Data has changed and now preparing to update the DOM.
-        // Check our scrolling state before the DOM updates so that we know if we're scrolled
-        // at the bottom before new messages are added
-        this.checkScrollingState();
     },
     methods: {
         isHoveringOverMessage(message) {
