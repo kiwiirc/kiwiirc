@@ -1,6 +1,6 @@
 ### #TurkDevOps KiwiIRC
 # Bize IRC'de Ulaşın
-[![Visit our IRC channel](https://kiwiirc.com/buttons/irc.kiwiirc.com/TurkDevOps.png)](https://kiwiirc.com/client/irc.kiwiirc.com/?nick=DevTurks|?#TurkDevOps)
+[![Visit our IRC channel](https://kiwiirc.com/buttons/irc.kiwiirc.com/TurkDevOps.png)](https://kiwiirc.com/client/irc.kiwiirc.com/#TurkDevOps)
 ---
 
 ***A versatile web based messenger using IRC***
