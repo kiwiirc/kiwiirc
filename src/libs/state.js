@@ -1,11 +1,8 @@
 'kiwi public';
 
 import * as Misc from '@/helpers/Misc';
-import * as Storage from '@/libs/storage/Local';
 import Vue from 'vue';
 import _ from 'lodash';
-import Logger from '@/libs/Logger';
-import StatePersistence from '@/libs/StatePersistence';
 import { configTemplates } from '@/res/configTemplates';
 import NetworkState from './state/NetworkState';
 import BufferState from './state/BufferState';
@@ -14,7 +11,7 @@ import Message from './Message';
 
 function createNewState() {
     const stateObj = {
-        // May be set by a StatePersistence instance
+        // May be set to a StatePersistence instance
         persistence: null,
 
         // Settings may be overridden via config.json
@@ -89,24 +86,6 @@ function createNewState() {
     const state = new Vue({
         data: stateObj,
         methods: {
-            initStatePersistance() {
-                console.log('initStatePersistance');
-                let stateKey = this.settings.startupOptions.state_key;
-
-                // Default to a preset key if it wasn't set
-                if (typeof stateKey === 'undefined') {
-                    stateKey = 'kiwi-state';
-                }
-
-                let persistLog = Logger.namespace('StatePersistence');
-                let persist = new StatePersistence(stateKey || '', this, Storage, persistLog);
-                persist.includeBuffers = !!this.settings.startupOptions.remember_buffers;
-
-                if (stateKey) {
-                    persist.loadStateIfExists();
-                }
-            },
-
             // Export enough state so that it can be imported in future to resume
             exportState(includeBuffers) {
                 let toExport = {};

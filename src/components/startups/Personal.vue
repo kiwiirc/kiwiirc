@@ -53,12 +53,11 @@
 <script>
 'kiwi public';
 
+import _ from 'lodash';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import BouncerProvider from '@/libs/BouncerProvider';
 import IPC from '@/libs/IPC';
-
-let firstRun = true;
 
 export default {
     data: function data() {
@@ -78,8 +77,6 @@ export default {
         },
     },
     created: function created() {
-        this.$state.setting('allowRegisterProtocolHandler', true);
-
         let server = null;
         if (this.hasFragment) {
             server = this.parseFragment();
@@ -93,17 +90,22 @@ export default {
                     // Don't start the main kiwi app here as it's already open elsewhere
                 } else {
                     this.listenForOtherTabs();
-                    this.init();
+                    this.start();
                 }
 
                 this.readyToShowOptions = true;
             });
         } else {
             this.listenForOtherTabs();
-            this.init();
+            this.start();
         }
     },
     methods: {
+        start() {
+            this.$emit('start', {
+                fallbackComponent: this.constructor,
+            });
+        },
         listenForOtherTabs() {
             IPC.on('message', (e) => { // respond to other tabs that are looking
                 let msg = e.data;
@@ -171,8 +173,6 @@ export default {
             if (temporary) {
                 this.$state.persistence.storageKey = null;
                 this.$state.persistence.forgetState();
-
-                this.init();
             }
 
             let network = this.$state.getNetworkFromAddress(con.server);
@@ -188,9 +188,7 @@ export default {
             window.location.hash = '';
             network.showServerBuffer('settings');
 
-            this.$emit('start', {
-                fallbackComponent: this.constructor,
-            });
+            this.start();
         },
         parseFragment() {
             if (window.location.hash.substr(1)) {
@@ -212,27 +210,25 @@ export default {
         toggleStateBrowser() {
             this.$state.$emit('statebrowser.show');
         },
-        async init() {
-            if (!firstRun) {
-                return;
-            }
+        async initKiwi(state) {
+            state.setting('allowRegisterProtocolHandler', true);
 
-            firstRun = false;
+            // Some default config specific for this startup
+            _.defaultsDeep(state.settings, {
+                startupOptions: {
+                    state_key: 'kiwi-client-state',
+                    remember_buffers: true,
+                },
+            });
 
-            // persist the buffers in the state by default
-            let persistSetting = this.$state.settings.startupOptions.remember_buffers;
-            if (typeof persistSetting === 'undefined') {
-                this.$state.persistence.includeBuffers = true;
-            } else {
-                this.$state.persistence.includeBuffers = !!persistSetting;
-            }
+            // Set restricted:false as users need access
+            // to network settings to add a network
+            state.setSetting('settings.restricted', false);
 
-            this.$state.persistence.watchStateForChanges();
-
-            if (this.$state.settings.startupOptions.bouncer) {
-                let controllerNet = this.$state.networks.find((n) => n.is_bnc);
+            if (state.settings.startupOptions.bouncer) {
+                let controllerNet = state.networks.find((n) => n.is_bnc);
                 if (controllerNet) {
-                    let bouncer = new BouncerProvider(this.$state);
+                    let bouncer = new BouncerProvider(state);
                     bouncer.enable(
                         controllerNet.connection.server,
                         controllerNet.connection.port,
@@ -242,16 +238,10 @@ export default {
                     );
                 }
             }
-            // force restricted: false as users need access
-            // to network settings to add a network
-            this.$state.setSetting('settings.restricted', false);
-
-            this.$emit('start', {
-                fallbackComponent: this.constructor,
-            });
         },
     },
 };
+
 </script>
 
 <style>

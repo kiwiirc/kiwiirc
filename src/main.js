@@ -15,12 +15,15 @@ import 'intersection-observer';
 import AvailableLocales from '@/res/locales/available.json';
 import FallbackLocale from '@/../static/locales/en-us.json';
 import App from '@/components/App';
+import startupScreens from '@/components/startups/';
 import StartupError from '@/components/StartupError';
 import Logger from '@/libs/Logger';
 import ConfigLoader from '@/libs/ConfigLoader';
 import getState from '@/libs/state';
 import ThemeManager from '@/libs/ThemeManager';
 import InputHandler from '@/libs/InputHandler';
+import StatePersistence from '@/libs/StatePersistence';
+import * as Storage from '@/libs/storage/Local';
 import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 import { AudioManager } from '@/libs/AudioManager';
@@ -48,6 +51,9 @@ let log = Logger.namespace('main');
 
 // Add the global API as soon as possible so that things can start listening to it
 let api = window.kiwi = GlobalApi.singleton();
+
+// Will be set by selectStartupScreen()
+let startupScreen = null;
 
 // Third party imports now have access to the state and api
 /* eslint-disable import/first */
@@ -226,10 +232,12 @@ function loadApp() {
     (configObj ? configLoader.loadFromObj(configObj) : configLoader.loadFromUrl(configFile))
         .then(applyConfig)
         .then(initState)
+        .then(loadPlugins)
+        .then(selectStartupScreen)
+        .then(initStatePersistence)
         .then(initInputCommands)
         .then(initLocales)
         .then(initThemes)
-        .then(loadPlugins)
         .then(initSound)
         .then(startApp)
         .catch(showError);
@@ -274,6 +282,9 @@ function loadPlugins() {
             let plugin = plugins[++pluginIdx];
 
             if (!plugin) {
+                // All plugins loaded, let them init themselves
+                api.emit('init');
+
                 resolve();
                 return;
             }
@@ -320,6 +331,24 @@ function loadPlugins() {
             }
         }
     });
+}
+
+async function selectStartupScreen() {
+    let state = getState();
+    let extraStartupScreens = state.getStartups();
+    let startupName = state.settings.startupScreen || 'personal';
+    let startup = extraStartupScreens[startupName] || startupScreens[startupName];
+
+    if (!startup) {
+        Logger.error(`Startup screen "${startupName}" does not exist`);
+        return;
+    }
+
+    if (typeof startup.methods.initKiwi === 'function') {
+        await startup.methods.initKiwi(state);
+    }
+
+    startupScreen = startup;
 }
 
 function initLocales() {
@@ -414,7 +443,26 @@ function initLocales() {
 }
 
 async function initState() {
-    api.setState(getState());
+    let state = getState();
+    api.setState(state);
+}
+
+async function initStatePersistence() {
+    let state = getState();
+    let stateKey = state.settings.startupOptions.state_key;
+
+    // Default to a preset key if it wasn't set
+    if (typeof stateKey === 'undefined') {
+        stateKey = 'kiwi-state';
+    }
+
+    let persistLog = Logger.namespace('StatePersistence');
+    let persist = new StatePersistence(stateKey || '', state, Storage, persistLog);
+    persist.includeBuffers = !!state.settings.startupOptions.remember_buffers;
+
+    if (stateKey) {
+        persist.loadStateIfExists();
+    }
 }
 
 function initThemes() {
@@ -443,14 +491,14 @@ function initInputCommands() {
 function startApp() {
     new WindowTitle(getState());
 
-    api.emit('init');
-
-    /* eslint-disable no-new */
-    new Vue({
-        el: '#app',
-        render: (h) => h(App),
+    let AppComp = Vue.extend(App);
+    let app = new AppComp({
+        propsData: {
+            startupComponent: startupScreen,
+        },
         i18n: new VueI18Next(i18next),
     });
+    app.$mount('#app');
 
     api.emit('ready');
 }
