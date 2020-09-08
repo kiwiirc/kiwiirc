@@ -392,11 +392,7 @@ export default class BufferState {
             let network = this.getNetwork();
             let allowedUpdate = !network ? false : this.isChannel() || this.isQuery();
             if (allowedUpdate && network.connection.bncnetid) {
-                network.ircClient.bnc.bufferSeen(
-                    network.connection.bncnetid,
-                    this.name,
-                    new Date(),
-                );
+                network.ircClient.bnc.bufferSeen(network.connection.bncnetid, this.name);
             }
         }
     }
