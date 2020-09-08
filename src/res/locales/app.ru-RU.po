@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-09-08 09:42\n"
+"PO-Revision-Date: 2020-09-08 09:51\n"
 
 #: Start
 msgid "start_button"
@@ -77,7 +77,7 @@ msgstr "Пароль"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Пароль сервера"
 
 #: I have a password
 msgid "password_have"
@@ -177,7 +177,7 @@ msgstr "Канал"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "Отошел"
 
 #: {{count}} week
 msgid "week"
@@ -485,11 +485,11 @@ msgstr "Click the refresh button to update the channel list"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, try again later"
+msgstr "Каналы не найдены, попробуйте позднее"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Welcome to Kiwi IRC! Select a channel on the left."
+msgstr "Добро пожаловать в Kiwi IRC! Выберите канал в списке слева."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -497,11 +497,11 @@ msgstr "Show statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "Скрыть тему"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "Показать тему"
 
 #: Channel Settings
 msgid "channel_settings"
@@ -509,7 +509,7 @@ msgstr "Настройки канала"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Join Channel"
+msgstr "Присоединиться к каналу"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -629,7 +629,7 @@ msgstr "Подключиться к сети"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "Имя сети"
 
 #: Close options
 msgid "side_close"
@@ -673,7 +673,7 @@ msgstr "No buffer set"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "There is no topic for this channel"
+msgstr "У этого канала нет темы"
 
 #: About
 msgid "about"
@@ -721,19 +721,19 @@ msgstr "Здесь пока нет сетей."
 
 #: Add one?
 msgid "state_add"
-msgstr "Add one?"
+msgstr "Добавить?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Available networks"
+msgstr "Доступные сети"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "Добавить сеть"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "Новая сеть"
 
 #: No Network
 msgid "no_network"
@@ -741,11 +741,11 @@ msgstr "No Network"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Configure network"
+msgstr "Настройка сети"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Not connected."
+msgstr "Нет соединения."
 
 #: Join new #channel
 msgid "state_join"
@@ -873,11 +873,11 @@ msgstr "{{nick}} takes admin from {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} gives owner to {{target}}"
+msgstr "{{nick}} дает владельца {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} takes owner from {{target}}"
+msgstr "{{nick}} забирает владельца у {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -889,7 +889,7 @@ msgstr "{{nick}} разблокировал {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr "{{nick}} sets {{mode}} on {{target}}"
+msgstr "{{nick}} установил режим {{mode}} для {{target}}"
 
 #: Send a message
 msgid "command_msg"
@@ -945,7 +945,7 @@ msgstr "Очистить все сообщения в этом окне"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr "Send a CTCP command to somebody"
+msgstr "Послать кому-либо команду CTCP"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
@@ -1057,15 +1057,15 @@ msgstr "{{nick}} присоединился"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} kicked you from {{channel}}"
+msgstr "{{nick}} выкинул вас из чата {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
+msgstr "{{nick}} выкинут(а) из чата {{channel}} пользователем {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} has left"
+msgstr "{{nick}} покинул чат"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
