@@ -21,6 +21,9 @@
             class="kiwi-mediaviewer-iframe"
         />
         <component :is="component" v-else-if="component" :component-props="componentProps" />
+        <div v-else-if="embedProvider" :key="url" class="kiwi-mediaviewer-noembed">
+            <div v-if="embedHtml" v-html="embedHtml" />
+        </div>
         <div v-else :key="url" class="kiwi-mediaviewer-embedly">
             <a
                 ref="embedlyLink"
@@ -39,16 +42,21 @@
 'kiwi public';
 
 let embedlyTagIncluded = false;
+const isImage = /\.(png|jpg|gif)$/;
 
 export default {
     props: ['url', 'component', 'componentProps', 'isIframe', 'showPin'],
     data() {
         return {
+            embedHtml: '',
         };
     },
     computed: {
         embedlyKey() {
             return this.$state.settings.embedly.key;
+        },
+        embedProvider() {
+            return this.$state.setting('embedProvider');
         },
     },
     watch: {
@@ -59,17 +67,48 @@ export default {
             this.updateEmbed();
         },
     },
-    created() {
-        this.updateEmbed();
+    async created() {
+        if (!this.embedProvider) {
+            // No provider use embedly
+            this.updateEmbed();
+            return;
+        }
+
+        if (isImage.test(this.url)) {
+            // This will be handled by mounted()
+            return;
+        }
+
+        let embedUrl = this.embedProvider.replace('{url}', this.url);
+        const resp = await fetch(embedUrl);
+        const json = await resp.json();
+        this.embedHtml = json.html;
+        if (!this.embedHtml) {
+            this.$emit('close');
+        }
     },
     mounted() {
         this.$nextTick(() => {
             this.$state.$emit('mediaviewer.opened');
         });
+
+        if (isImage.test(this.url)) {
+            const parent = this.$el.querySelector('.kiwi-mediaviewer-noembed');
+            const img = document.createElement('img');
+            img.src = this.url;
+            img.style.display = 'none';
+            img.onload = () => {
+                img.style.display = 'block';
+            };
+            img.onerror = () => {
+                this.$emit('close');
+            };
+            parent.appendChild(img);
+        }
     },
     methods: {
         updateEmbed() {
-            if (!this.url || this.isIframe || this.component) {
+            if (this.embedProvider || !this.url || this.isIframe || this.component) {
                 // return if embedly script is not needed
                 return;
             }
@@ -133,6 +172,19 @@ export default {
     position: absolute;
     top: 0;
     border: none;
+}
+
+.kiwi-container > .kiwi-mediaviewer > .kiwi-mediaviewer-noembed {
+    text-align: center;
+}
+
+.kiwi-mediaviewer-noembed > img {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.kiwi-container > .kiwi-mediaviewer > .kiwi-mediaviewer-noembed > img {
+    margin: 0 auto;
 }
 
 .embedly-card {
