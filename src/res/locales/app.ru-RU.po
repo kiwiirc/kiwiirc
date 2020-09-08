@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-09-08 09:51\n"
+"PO-Revision-Date: 2020-09-08 10:04\n"
 
 #: Start
 msgid "start_button"
@@ -257,7 +257,7 @@ msgstr "Традиционный формат IRC"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Show autocomplete list"
+msgstr "Показывать список автодополнения"
 
 #: Chat Messages
 msgid "settings_messages_title"
@@ -269,7 +269,7 @@ msgstr "Показывать время"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Использовать 24-х часовой пояс"
+msgstr "24-часовой формат времени"
 
 #: Show emoticons
 msgid "settings_emoticons"
@@ -277,11 +277,11 @@ msgstr "Показать смайлики"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Block new private messages"
+msgstr "Блокировать новые личные сообщения"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
-msgstr "Messages in scrollback"
+msgstr "Сообщений в буфере"
 
 #: Extra formatting
 msgid "settings_formatting"
@@ -297,7 +297,7 @@ msgstr "Показывать когда я печатаю сообщение"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "Просмотр изображений в текстах сообщений"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -309,7 +309,7 @@ msgstr "Отключить звуковые уведомления"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space seperated)"
+msgstr "Подсвечивать слова (разделяйте пробелами)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -453,7 +453,7 @@ msgstr "Только зарегистрированные пользовател
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "Добавить приглашение"
 
 #: (Any registered user)
 msgid "invite_any_registered"
@@ -477,7 +477,7 @@ msgstr "Только модераторы могут менять тему"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Block messages from outside this channel"
+msgstr "Блокировать сообщения не из этого канала"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
@@ -569,7 +569,7 @@ msgstr "Кодировка"
 
 #: Show Raw
 msgid "settings_show_raw"
-msgstr "Show Raw"
+msgstr "Показывать исходный текст"
 
 #: Direct websocket
 msgid "settings_use_websocket"
@@ -597,7 +597,7 @@ msgstr "{{count}} человек здесь"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Фильтрация пользователей в канале"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -665,7 +665,7 @@ msgstr "Дополнительное форматирование сообщен
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Nick colours in the list"
+msgstr "Цветные псевдонимы в списке"
 
 #: No buffer set
 msgid "side_buffer"
@@ -685,7 +685,7 @@ msgstr "Создано {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Подсветка"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
@@ -737,7 +737,7 @@ msgstr "Новая сеть"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "Нет сети"
 
 #: Configure network
 msgid "state_configure"
@@ -749,7 +749,7 @@ msgstr "Нет соединения."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Join new #channel"
+msgstr "Присоединиться к #каналу"
 
 #: Filter Channels
 msgid "filter_channels"
@@ -757,7 +757,7 @@ msgstr "Фильтр каналов"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Найти другие каналы"
 
 #: Change nick
 msgid "change_nick"
@@ -769,7 +769,7 @@ msgstr "Введите новый псевдоним..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "Это вы!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -781,15 +781,15 @@ msgstr "Настоящее имя: {{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "Is a bot"
+msgstr "Это бот"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is avaiable for help"
+msgstr "Предлагает помощь"
 
 #: Is an operator
 msgid "user_op"
-msgstr "Is an operator"
+msgstr "Оператор"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
@@ -801,7 +801,7 @@ msgstr "Надежное подключение через SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "In channels {{channels}}"
+msgstr "На каналах: {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -825,7 +825,7 @@ msgstr "Заблокировать и выгнать с канала"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Please specify a channel to join. eg /join #example"
+msgstr "Укажите, к какому каналу присоединиться, напр. /join #primer"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
@@ -865,11 +865,11 @@ msgstr "{{nick}} takes voice from {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} gives admin to {{target}}"
+msgstr "{{nick}} дает администратора {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} takes admin from {{target}}"
+msgstr "{{nick}} забирает администратора у {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
@@ -973,7 +973,7 @@ msgstr "Set yourself as active"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Change your connection encoding"
+msgstr "Изменить кодировку соединения"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
@@ -997,7 +997,7 @@ msgstr "Ваш IRC-клиент."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Add your networks. Join your channels."
+msgstr "Добавьте свои сети. Присоединитесь к своим каналам."
 
 #: They will be here when you come back.
 msgid "personal_return"
@@ -1013,7 +1013,7 @@ msgstr "Вы пытаетесь присоединиться к {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Network has been added to your existing Kiwi window."
+msgstr "Сеть была добавлена в существующее окно Kiwi."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
