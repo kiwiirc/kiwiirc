@@ -147,6 +147,10 @@
     border-left-color: var(--brand-primary);
 }
 
+.kiwi-sidebar-options {
+    color: var(--brand-default-fg);
+}
+
 
 /* Statebrowser */
 .kiwi-statebrowser {
