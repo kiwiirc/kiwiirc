@@ -97,7 +97,6 @@
 
 import strftime from 'strftime';
 import Logger from '@/libs/Logger';
-import * as bufferTools from '@/libs/bufferTools';
 import BufferKey from './BufferKey';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
@@ -185,7 +184,7 @@ export default {
             return days;
         },
         filteredMessages() {
-            return bufferTools.orderedMessages(this.buffer);
+            return this.buffer.orderedMessages();
         },
         shouldShowJoiningLoader() {
             return this.buffer.isChannel() &&

@@ -181,7 +181,6 @@ function handleMessage(type, event, command, line) {
         });
 
         let newMessage = {
-            time: Date.now(),
             nick: network.nick,
             message: messageBody,
             type: type,
@@ -544,7 +543,6 @@ inputCommands.quote = function inputCommandQuote(event, command, line) {
     let buffer = this.state.getActiveBuffer();
     if (buffer.isServer()) {
         this.state.addMessage(buffer, {
-            time: Date.now(),
             nick: '',
             message: line,
         });
@@ -567,7 +565,6 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
                 text: whoisData.error,
             });
             this.state.addMessage(buffer, {
-                time: Date.now(),
                 nick: '',
                 message: messageBody,
                 type: 'error',
@@ -693,7 +690,6 @@ inputCommands.whowas = function inputCommandWhowas(event, command, line) {
                 text: whowasData.error,
             });
             this.state.addMessage(buffer, {
-                time: Date.now(),
                 nick: '',
                 message: messageBody,
                 type: 'whowas',
@@ -712,7 +708,6 @@ inputCommands.whowas = function inputCommandWhowas(event, command, line) {
             });
 
             this.state.addMessage(buffer, {
-                time: Date.now(),
                 nick: whowasData.nick,
                 message: messageBody,
                 type: 'whowas',

@@ -553,6 +553,17 @@ function createNewState() {
                     return;
                 }
 
+                // If we don't have a server time then try to guess what it should have been based
+                // on previous messages we already have
+                if (!message.server_time) {
+                    let msgs = buffer.orderedMessages();
+                    let m = msgs[msgs.length - 1];
+                    if (m) {
+                        let offset = m.local_time - m.server_time;
+                        message.time = Date.now() - offset;
+                    }
+                }
+
                 let user = this.getUser(buffer.networkid, message.nick);
                 let bufferMessage = new Message(message, user);
                 if (user && user.ignore) {

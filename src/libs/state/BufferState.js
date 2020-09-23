@@ -203,6 +203,10 @@ export default class BufferState {
         return !!hasOp;
     }
 
+    orderedMessages(opts = {}) {
+        return bufferTools.orderedMessages(this, opts);
+    }
+
     /**
      * Get a users prefix symbol on a buffer from its modes
      * @param {Object} user The user object
@@ -471,7 +475,6 @@ export default class BufferState {
     say(message, opts = {}) {
         let network = this.getNetwork();
         let newMessage = {
-            time: Date.now(),
             nick: network.nick,
             message: message,
             type: opts.type || 'privmsg',
@@ -580,7 +583,7 @@ function createMessageBatch(bufferState) {
         if (bufferState.isMessageTrimming) {
             trimMessages();
         }
-        bufferTools.orderedMessages(bufferState, { inPlace: true, noFilter: true });
+        bufferState.orderedMessages({ inPlace: true, noFilter: true });
         bufferState.message_count++;
     };
     let addMultipleMessages = (newMessages) => {
@@ -593,7 +596,7 @@ function createMessageBatch(bufferState) {
             if (bufferState.isMessageTrimming) {
                 trimMessages();
             }
-            bufferTools.orderedMessages(bufferState, { inPlace: true, noFilter: true });
+            bufferState.orderedMessages({ inPlace: true, noFilter: true });
         }
         // Trigger Vue's reactivity on the buffer whether messages were added or not, just in case
         // anything was depending on the batch queue which has now been emptied.

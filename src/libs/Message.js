@@ -21,11 +21,13 @@ export default class Message {
         // messages if the message time is the same.
         def(this, 'instance_num', nextId++);
         def(this, 'id', extractMessageId(message) || nextId++);
-        // Two different times;
-        //   time = time in the users local time
+        // The different times;
+        //   time = time that we show the user
+        //   local_time = the time we received the message
         //   server_time = time the server gave us
-        def(this, 'time', message.time || Date.now());
-        def(this, 'server_time', message.server_time || this.time);
+        def(this, 'time', message.server_time || message.time || Date.now());
+        def(this, 'local_time', Date.now());
+        def(this, 'server_time', message.server_time || 0);
         def(this, 'nick', message.nick);
         def(this, 'message', message.message);
         def(this, 'tags', message.tags);

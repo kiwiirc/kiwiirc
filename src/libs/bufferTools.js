@@ -44,17 +44,19 @@ export function orderedMessages(buffer, opts = {}) {
         messages = bufferMessages.slice(0, bufferMessages.length);
     }
 
-    messages.sort((a, b) => {
-        if (a.time > b.time) {
-            return 1;
-        } else if (b.time > a.time) {
-            return -1;
-        }
+    if (opts.noTimeOrder !== false) {
+        messages.sort((a, b) => {
+            if (a.time > b.time) {
+                return 1;
+            } else if (b.time > a.time) {
+                return -1;
+            }
 
-        return a.instance_num > b.instance_num ?
-            1 :
-            -1;
-    });
+            return a.instance_num > b.instance_num ?
+                1 :
+                -1;
+        });
+    }
 
     if (opts.noFilter) {
         return messages;
