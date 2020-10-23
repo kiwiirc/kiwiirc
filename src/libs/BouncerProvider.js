@@ -462,7 +462,7 @@ export default class BouncerProvider {
 
             network.editable_name = true;
 
-            // If network is attached to a bouncer do nothing 
+            // If network is attached to a bouncer do nothing
             // (use the name provided by the bouncer)
             if (network.connection.bncnetid) {
                 return;
