@@ -462,22 +462,36 @@ export default class BouncerProvider {
 
             network.editable_name = true;
 
-            // Update the network name to NetworkN if hasn't got once from the bouncer yet
-            if (!network.connection.bncnetid) {
-                let currentNum = 1;
-                let existingNet = true;
-                while (existingNet) {
-                    existingNet = _.find(state.networks, {
-                        name: 'Network' + currentNum,
-                    });
+            // If network is attached to a bouncer do nothing
+            // (use the name provided by the bouncer)
+            if (network.connection.bncnetid) {
+                return;
+            }
 
-                    if (!existingNet || network === existingNet) {
-                        network.name = 'Network' + currentNum;
-                        existingNet = null;
-                    }
+            let existingNet = true;
 
-                    currentNum++;
+            // append a number to the network name. E.g. "Network, Network2,..."
+            // while there is a network with that name
+            let currentNum = 1;
+            let tryNetworkName;
+            while (existingNet) {
+                if (network.name && currentNum === 1) {
+                    // don't append the number 1 if there is a custom name
+                    tryNetworkName = network.name;
+                } else {
+                    tryNetworkName = (network.name || 'Network') + currentNum;
                 }
+
+                existingNet = _.find(state.networks, {
+                    name: tryNetworkName,
+                });
+
+                if (!existingNet || existingNet === network) {
+                    network.name = tryNetworkName;
+                    break;
+                }
+
+                currentNum++;
             }
         });
 
