@@ -139,6 +139,11 @@
                     </template>
                 </div>
 
+                <captcha
+                    class="kiwi-notconnected-captcha"
+                    :network="network"
+                />
+
                 <button
                     v-if="network.state === 'disconnected'"
                     class="u-button kiwi-connect-to-newnetwork"
