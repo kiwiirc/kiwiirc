@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2020-11-11 18:41\n"
+"PO-Revision-Date: 2020-11-11 18:53\n"
 
 #: Start
 msgid "start_button"
@@ -289,15 +289,15 @@ msgstr "تنسيق إضافي"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Colour nicknames in messages"
+msgstr "تلوين الأسماء المستعارة في الرسائل"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "شارك عندما أكتب رسالة"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "أظهر معاينات الصور المضمنة"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -317,7 +317,7 @@ msgstr "اوامر"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "ما هي الأسماء الرمزية؟"
 
 #: Send Message
 msgid "send_message"
@@ -325,11 +325,11 @@ msgstr "إرسال رسالة"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Enter Channel Key"
+msgstr "أدخل مفتاح القناة"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "أعد الإنضمام الى {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -353,7 +353,7 @@ msgstr "كتم الأصوات"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "أخفِ عدد الرسائل غير المقروءة"
 
 #: Operator tools
 msgid "operator_tools"
@@ -369,27 +369,27 @@ msgstr "سبب الطرد الافتراضى"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "إعدادات متقدمة"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Monsters be here, only click this button if you know what you are doing"
+msgstr "تتواجد الوحوش هنا، انقر هذا الزر فقط إذا كنت تعرف ما تفعله"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "تمكين الإعدادات المتقدمة"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Danger Zone: Changing some of these settings may break things!"
+msgstr "منطقة خطر: تغيير بعض هذه الإعدادات قد يعطب الأمور!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "إعادة تعيين"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "تصفية"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -413,11 +413,11 @@ msgstr "لا يوجد اى شخص ممنوع!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "تحديث قائمة الدعوة"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Invited user"
+msgstr "المستخدم المدعو"
 
 #: Invited by
 msgid "invites_by"
