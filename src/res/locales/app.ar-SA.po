@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2020-11-11 19:13\n"
+"PO-Revision-Date: 2020-11-11 19:14\n"
 
 #: Start
 msgid "start_button"
@@ -1045,11 +1045,11 @@ msgstr "تجربة نسخة المطور من الكيوي اى ار سى!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "مقطوع الاتصال"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Connected to {{network}}!"
+msgstr "متصل الى {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
