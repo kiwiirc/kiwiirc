@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2020-11-11 18:33\n"
+"PO-Revision-Date: 2020-11-11 18:41\n"
 
 #: Start
 msgid "start_button"
@@ -197,27 +197,27 @@ msgstr "{{count}} يوم"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "{{count}} ساعة"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "{{count}} ساعة"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "{{count}} دقيقة"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutes"
+msgstr "{{count}} دقيقة"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "{{count}} ثانية"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "{{count}} ثانية"
 
 #: General
 msgid "settings_general"
@@ -225,7 +225,7 @@ msgstr "عام"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "اللغة"
 
 #: Theme
 msgid "settings_theme"
@@ -233,7 +233,7 @@ msgstr "الثيم"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "أعد تحميل القالب"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -241,7 +241,7 @@ msgstr "رابط الثيم"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "مخطط الرسالة"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -249,7 +249,7 @@ msgstr "اعدادات المساحه"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "استخدم كيوي كبرنامج مبدئي لدردشة IRC"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
