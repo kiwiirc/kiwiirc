@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2020-11-11 19:23\n"
+"PO-Revision-Date: 2020-11-11 19:32\n"
 
 #: Start
 msgid "start_button"
@@ -237,7 +237,7 @@ msgstr "أعد تحميل القالب"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "رابط الثيم"
+msgstr "رابط القالب"
 
 #: Message Layout
 msgid "settings_messagelayout"
@@ -245,7 +245,7 @@ msgstr "مخطط الرسالة"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "اعدادات المساحه"
+msgstr "استخدم مسافة أحادية"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
@@ -253,7 +253,7 @@ msgstr "استخدم كيوي كبرنامج مبدئي لدردشة IRC"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "صورة الاسم"
+msgstr "مخطط دردشة IRC تقليدي"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -269,15 +269,15 @@ msgstr "إظهار الطوابع الزمنيه"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "إستخدام 24 ساعة فى الطوابع الزمنيه"
+msgstr "استخدم طوابع زمنيه ذات 24 ساعة"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "إظهار الايموشنات"
+msgstr "إظهار الرموز التعبيرية"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "حظر الرسائل الخاضة الجديدة"
+msgstr "حظر الرسائل الخاصة الجديدة"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -301,15 +301,15 @@ msgstr "أظهر معاينات الصور المضمنة"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "تضمين رسائل الانضمام / المغادرة كنشاط"
+msgstr "تضمين رسائل الانضمام/المغادرة كنشاط"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "كتم الصوت الإخطارات"
+msgstr "كتم صوت التنبيهات"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "تسليط الضوء على الكلمات (مساحة منفصلة)"
+msgstr "تمييز الكلمات (مفصولة بفراغات)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -317,7 +317,7 @@ msgstr "اوامر"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "ما هي الأسماء الرمزية؟"
+msgstr "ما هي الأسماء الردائف؟"
 
 #: Send Message
 msgid "send_message"
