@@ -105,6 +105,7 @@ export const configTemplates = {
         showAwayStatusIndicators: true,
         sidebarDefault: 'nicklist',
         showRaw: false,
+        useBufferHistory: true,
         hideSettings: null,
         highlights: '',
         teamHighlights: false,
