@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2020-11-11 19:14\n"
+"PO-Revision-Date: 2020-11-11 19:23\n"
 
 #: Start
 msgid "start_button"
@@ -25,7 +25,7 @@ msgstr "Welcome to Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr "اغلاق"
+msgstr "إغلاق"
 
 #: Connect
 msgid "connect"
@@ -37,7 +37,7 @@ msgstr "جارى الاتصال..."
 
 #: Connected
 msgid "connected"
-msgstr "تم الاتصال"
+msgstr "متصل"
 
 #: Settings
 msgid "settings"
@@ -49,7 +49,7 @@ msgstr "إعدادات كيوي"
 
 #: Channels
 msgid "channels"
-msgstr "كل الغرف"
+msgstr "القنوات"
 
 #: Access
 msgid "access"
@@ -57,7 +57,7 @@ msgstr "الدخول"
 
 #: Banned Users
 msgid "banned"
-msgstr "قائمة المنع"
+msgstr "المستخدمون المحظورون"
 
 #: Invited Users
 msgid "invited"
@@ -65,7 +65,7 @@ msgstr "المستخدمون المدعوون"
 
 #: Notifications
 msgid "notifications"
-msgstr "الاشعارات"
+msgstr "التنبيهات"
 
 #: Username
 msgid "username"
@@ -73,7 +73,7 @@ msgstr "اسم المستخدم"
 
 #: Password
 msgid "password"
-msgstr "الرقم السرى"
+msgstr "كلمة المرور"
 
 #: Server Password
 msgid "server_password"
@@ -81,7 +81,7 @@ msgstr "كلمة سر الخادوم"
 
 #: I have a password
 msgid "password_have"
-msgstr "هل لديك كلمة سر"
+msgstr "لدي كلمة مرور"
 
 #: Server
 msgid "server"
@@ -229,7 +229,7 @@ msgstr "اللغة"
 
 #: Theme
 msgid "settings_theme"
-msgstr "الثيم"
+msgstr "القالب"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -1053,33 +1053,33 @@ msgstr "متصل الى {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} has joined"
+msgstr "{{nick}} قد انضمّ"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} kicked you from {{channel}}"
+msgstr "{{nick}} طردك من {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
+msgstr "{{nick}} طُرد من {{channel}} من قبَل {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} has left"
+msgstr "{{nick}} غادر"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} invited you to join {{channel}}"
+msgstr "{{nick}} دعاك للإنضمام الى {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
+msgstr "الاسم المستعار {{nick}} مستخدَم مسبقاً. تجريب {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} is now known as {{newnick}}"
+msgstr "{{nick}} اصبح يُعرَف بـ {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} changed the topic to: {{topic}}"
+msgstr "{{nick}} غيّر الموضوع الى: {{topic}}"
 
