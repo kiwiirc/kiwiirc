@@ -356,7 +356,7 @@ function createNewState() {
                     this.ui.active_network = 0;
                     this.ui.active_buffer = '';
                 } else {
-                    if (this.ui.active_network) {
+                    if (this.settings.useBufferHistory && this.ui.active_network) {
                         // Keep track of last 20 viewed buffers. When closing buffers we can go back
                         // to one of the previous ones
                         this.ui.last_active_buffers.push({
@@ -385,6 +385,12 @@ function createNewState() {
             },
 
             openLastActiveBuffer: function openLastActiveBuffer() {
+                // if not using buffer history, just unset the active buffer
+                if (!this.settings.useBufferHistory) {
+                    this.setActiveBuffer();
+                    return;
+                }
+
                 let targetNetwork;
                 let targetBuffer;
                 let lastActive = this.ui.last_active_buffers;
