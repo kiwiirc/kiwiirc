@@ -13,11 +13,11 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2020-06-14 12:33\n"
+"PO-Revision-Date: 2020-11-11 18:23\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "إبدأ"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
@@ -45,7 +45,7 @@ msgstr "الاعدادات"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "إعدادات كيوي"
 
 #: Channels
 msgid "channels"
@@ -61,7 +61,7 @@ msgstr "قائمة المنع"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "المستخدمون المدعوون"
 
 #: Notifications
 msgid "notifications"
@@ -77,7 +77,7 @@ msgstr "الرقم السرى"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "كلمة سر الخادوم"
 
 #: I have a password
 msgid "password_have"
@@ -97,7 +97,7 @@ msgstr "الغرفة"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "الرسائل"
 
 #: Network
 msgid "network"
@@ -129,19 +129,19 @@ msgstr "الغاء"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "نعم"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "لا"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "غير موجود."
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "تحذير!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
