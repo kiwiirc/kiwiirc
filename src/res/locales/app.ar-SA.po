@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2020-11-11 19:32\n"
+"PO-Revision-Date: 2020-11-11 19:42\n"
 
 #: Start
 msgid "start_button"
@@ -21,7 +21,7 @@ msgstr "إبدأ"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "مرحباً إلى دردشة كيوي IRC!"
 
 #: Close
 msgid "close"
@@ -313,11 +313,11 @@ msgstr "تمييز الكلمات (مفصولة بفراغات)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "اوامر"
+msgstr "الردائف"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "ما هي الأسماء الردائف؟"
+msgstr "ما هي الردائف؟"
 
 #: Send Message
 msgid "send_message"
@@ -341,11 +341,11 @@ msgstr "جميع الرسائل"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "تم ذكرى"
+msgstr "يذكرني أحد"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "أبدا"
+msgstr "أبداً"
 
 #: Mute sounds
 msgid "settings_notify_mute"
@@ -457,7 +457,7 @@ msgstr "أضف دعوة"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "(أي مستخدم مسجل)"
 
 #: Topic
 msgid "channel_topic"
@@ -481,11 +481,11 @@ msgstr "منع الرسائل من خارج هذه الغرفة"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to update the channel list"
+msgstr "انقر زر إعادة التحميل لتحديث قائمة القنوات"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, try again later"
+msgstr "لا توجد أية قناة، حاول مرة أخرى لاحقاً"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
@@ -497,15 +497,15 @@ msgstr "اظهار متصفح الشات"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "إخفاء الموضوع"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "عَرض الموضوع"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "اعدادات القناة"
 
 #: Join Channel
 msgid "container_join"
@@ -521,7 +521,7 @@ msgstr "محادثة خاصة مع {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "حقاً تغادر القناة؟"
 
 #: Send a message...
 msgid "input_placeholder"
