@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2020-11-11 18:23\n"
+"PO-Revision-Date: 2020-11-11 18:33\n"
 
 #: Start
 msgid "start_button"
@@ -145,7 +145,7 @@ msgstr "تحذير!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "هذا سيغلق كل محادثات دردشة كيوي. أأنت متأكد أنك تريد إغلاق هذه النافذة؟"
 
 #: Real name
 msgid "whois_realname"
@@ -177,23 +177,23 @@ msgstr "غرفة"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "مبتعد"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "{{count}} أسبوع"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "{{count}} أسبوع"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "{{count}} يوم"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} days"
+msgstr "{{count}} يوم"
 
 #: {{count}} hour
 msgid "hour"
