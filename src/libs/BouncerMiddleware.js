@@ -92,6 +92,44 @@ export default function bouncerMiddleware() {
             client.command_handler.emit('bouncer addnetwork ok', eventObj);
             client.command_handler.emit('bouncer addnetwork ok ' + netName, eventObj);
         }
+
+        // BOUNCER changenetwork NetID ERR_INVALIDARGS
+        if (params[0] === 'changenetwork' && params[2].substr(0, 4) === 'ERR_') {
+            let netId = (params[1] || '');
+            let eventObj = {
+                error: params[2],
+                reason: params[3] || '',
+            };
+            client.command_handler.emit('bouncer changenetwork error', eventObj);
+            client.command_handler.emit('bouncer changenetwork error ' + netId, eventObj);
+        } else if (params[0] === 'changenetwork' && ['end', 'RPL_OK'].indexOf(params[2]) > -1) {
+            // BOUNCER changenetwork NetID RPL_OK
+            let netId = (params[1] || '');
+            let eventObj = {
+                networkId: netId,
+            };
+            client.command_handler.emit('bouncer changenetwork ok', eventObj);
+            client.command_handler.emit('bouncer changenetwork ok ' + netId, eventObj);
+        }
+
+        // BOUNCER delnetwork NetID ERR_NETNOTFOUND
+        if (params[0] === 'delnetwork' && params[2].substr(0, 4) === 'ERR_') {
+            let netId = (params[1] || '');
+            let eventObj = {
+                error: params[2],
+                reason: params[3] || '',
+            };
+            client.command_handler.emit('bouncer delnetwork error', eventObj);
+            client.command_handler.emit('bouncer delnetwork error ' + netId, eventObj);
+        } else if (params[0] === 'delnetwork' && ['end', 'RPL_OK'].indexOf(params[2]) > -1) {
+            // BOUNCER delnetwork NetID RPL_OK
+            let netId = (params[1] || '');
+            let eventObj = {
+                networkId: netId,
+            };
+            client.command_handler.emit('bouncer delnetwork ok', eventObj);
+            client.command_handler.emit('bouncer delnetwork ok ' + netId, eventObj);
+        }
     }
 }
 
@@ -183,6 +221,20 @@ function addFunctionsToClient(client) {
     bnc.removeNetwork = function removeNetwork(netId, bufferName) {
         return new Promise((resolve, reject) => {
             client.raw(`BOUNCER delnetwork ${netId}`);
+            client.once('bouncer delnetwork ok ' + netId, onOk);
+            client.once('bouncer delnetwork error', onError);
+
+            function onOk(event) {
+                client.off('bouncer delnetwork error', onError);
+                resolve(event);
+            }
+            function onError(event) {
+                client.off('bouncer delnetwork ok ' + netId, onOk);
+                reject({
+                    error: event.error,
+                    reason: event.reason,
+                });
+            }
         });
     };
 
@@ -223,6 +275,19 @@ function addFunctionsToClient(client) {
                 resolve();
             } else {
                 client.raw(`BOUNCER changenetwork ${netId} ${tagString}`);
+                client.once('bouncer changenetwork ok ' + netId, onOk);
+                client.once('bouncer changenetwork error', onError);
+            }
+            function onOk(event) {
+                client.off('bouncer changenetwork error', onError);
+                resolve(event);
+            }
+            function onError(event) {
+                client.off('bouncer changenetwork ok ' + netId, onOk);
+                reject({
+                    error: event.error,
+                    reason: event.reason,
+                });
             }
         });
     };
