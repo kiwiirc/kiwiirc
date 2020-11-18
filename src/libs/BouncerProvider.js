@@ -588,11 +588,12 @@ export default class BouncerProvider {
     }
 
     waitForController() {
-        const controller = this.getController();
-        if (controller) {
-            return controller;
-        }
         return new Promise((resolve, reject) => {
+            const controller = this.getController();
+            if (controller) {
+                resolve(controller);
+                return;
+            }
             const net = this.state.networks.find(
                 (n) => n.is_bnc && !n.connection.bncnetid && n.hidden
             );
