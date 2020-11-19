@@ -60,24 +60,25 @@ export function orderedMessages(buffer, opts = {}) {
         return messages;
     }
 
+    let messageTypesToShowSetting = {
+        // message.type: 'settings_name'
+        traffic: 'show_joinparts',
+        topic: 'show_topics',
+        nick: 'show_nick_changes',
+        mode: 'show_mode_changes',
+        presence: 'show_presence_changes',
+    };
+
+    let hiddenMessageTypes = Object.keys(messageTypesToShowSetting)
+        .filter((type) => !buffer.setting(messageTypesToShowSetting[type]));
+
     let list = [];
-    let showJoinParts = buffer.setting('show_joinparts');
-    let showTopics = buffer.setting('show_topics');
-    let showNickChanges = buffer.setting('show_nick_changes');
-    let showModeChanges = buffer.setting('show_mode_changes');
     for (let i = messages.length - 1; i >= 0; i--) {
-        if (!showJoinParts && messages[i].type === 'traffic') {
+        // don't include hidden message types
+        if (hiddenMessageTypes.includes(messages[i].type)) {
             continue;
         }
-        if (!showTopics && messages[i].type === 'topic') {
-            continue;
-        }
-        if (!showNickChanges && messages[i].type === 'nick') {
-            continue;
-        }
-        if (!showModeChanges && messages[i].type === 'mode') {
-            continue;
-        }
+
         // Ignored users have the ignore flag set
         if (messages[i].ignore) {
             continue;

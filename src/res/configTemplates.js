@@ -58,6 +58,7 @@ export const configTemplates = {
             show_topics: true,
             show_nick_changes: true,
             show_mode_changes: true,
+            show_presence_changes: true,
             traffic_as_activity: false,
             coloured_nicklist: true,
             colour_nicknames_in_messages: true,
