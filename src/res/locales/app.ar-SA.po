@@ -13,19 +13,19 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2020-06-14 12:33\n"
+"PO-Revision-Date: 2020-11-11 19:42\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "إبدأ"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "مرحباً إلى دردشة كيوي IRC!"
 
 #: Close
 msgid "close"
-msgstr "اغلاق"
+msgstr "إغلاق"
 
 #: Connect
 msgid "connect"
@@ -37,7 +37,7 @@ msgstr "جارى الاتصال..."
 
 #: Connected
 msgid "connected"
-msgstr "تم الاتصال"
+msgstr "متصل"
 
 #: Settings
 msgid "settings"
@@ -45,11 +45,11 @@ msgstr "الاعدادات"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "إعدادات كيوي"
 
 #: Channels
 msgid "channels"
-msgstr "كل الغرف"
+msgstr "القنوات"
 
 #: Access
 msgid "access"
@@ -57,15 +57,15 @@ msgstr "الدخول"
 
 #: Banned Users
 msgid "banned"
-msgstr "قائمة المنع"
+msgstr "المستخدمون المحظورون"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "المستخدمون المدعوون"
 
 #: Notifications
 msgid "notifications"
-msgstr "الاشعارات"
+msgstr "التنبيهات"
 
 #: Username
 msgid "username"
@@ -73,15 +73,15 @@ msgstr "اسم المستخدم"
 
 #: Password
 msgid "password"
-msgstr "الرقم السرى"
+msgstr "كلمة المرور"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "كلمة سر الخادوم"
 
 #: I have a password
 msgid "password_have"
-msgstr "هل لديك كلمة سر"
+msgstr "لدي كلمة مرور"
 
 #: Server
 msgid "server"
@@ -97,7 +97,7 @@ msgstr "الغرفة"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "الرسائل"
 
 #: Network
 msgid "network"
@@ -129,23 +129,23 @@ msgstr "الغاء"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "نعم"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "لا"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "غير موجود."
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "تحذير!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "هذا سيغلق كل محادثات دردشة كيوي. أأنت متأكد أنك تريد إغلاق هذه النافذة؟"
 
 #: Real name
 msgid "whois_realname"
@@ -177,47 +177,47 @@ msgstr "غرفة"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "مبتعد"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "{{count}} أسبوع"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "{{count}} أسبوع"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "{{count}} يوم"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} days"
+msgstr "{{count}} يوم"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "{{count}} ساعة"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "{{count}} ساعة"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "{{count}} دقيقة"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutes"
+msgstr "{{count}} دقيقة"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "{{count}} ثانية"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "{{count}} ثانية"
 
 #: General
 msgid "settings_general"
@@ -225,35 +225,35 @@ msgstr "عام"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "اللغة"
 
 #: Theme
 msgid "settings_theme"
-msgstr "الثيم"
+msgstr "القالب"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "أعد تحميل القالب"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "رابط الثيم"
+msgstr "رابط القالب"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "مخطط الرسالة"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "اعدادات المساحه"
+msgstr "استخدم مسافة أحادية"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "استخدم كيوي كبرنامج مبدئي لدردشة IRC"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "صورة الاسم"
+msgstr "مخطط دردشة IRC تقليدي"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -269,15 +269,15 @@ msgstr "إظهار الطوابع الزمنيه"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "إستخدام 24 ساعة فى الطوابع الزمنيه"
+msgstr "استخدم طوابع زمنيه ذات 24 ساعة"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "إظهار الايموشنات"
+msgstr "إظهار الرموز التعبيرية"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "حظر الرسائل الخاضة الجديدة"
+msgstr "حظر الرسائل الخاصة الجديدة"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -289,35 +289,35 @@ msgstr "تنسيق إضافي"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Colour nicknames in messages"
+msgstr "تلوين الأسماء المستعارة في الرسائل"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "شارك عندما أكتب رسالة"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "أظهر معاينات الصور المضمنة"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "تضمين رسائل الانضمام / المغادرة كنشاط"
+msgstr "تضمين رسائل الانضمام/المغادرة كنشاط"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "كتم الصوت الإخطارات"
+msgstr "كتم صوت التنبيهات"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "تسليط الضوء على الكلمات (مساحة منفصلة)"
+msgstr "تمييز الكلمات (مفصولة بفراغات)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "اوامر"
+msgstr "الردائف"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "ما هي الردائف؟"
 
 #: Send Message
 msgid "send_message"
@@ -325,11 +325,11 @@ msgstr "إرسال رسالة"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Enter Channel Key"
+msgstr "أدخل مفتاح القناة"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "أعد الإنضمام الى {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -341,11 +341,11 @@ msgstr "جميع الرسائل"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "تم ذكرى"
+msgstr "يذكرني أحد"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "أبدا"
+msgstr "أبداً"
 
 #: Mute sounds
 msgid "settings_notify_mute"
@@ -353,7 +353,7 @@ msgstr "كتم الأصوات"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "أخفِ عدد الرسائل غير المقروءة"
 
 #: Operator tools
 msgid "operator_tools"
@@ -369,27 +369,27 @@ msgstr "سبب الطرد الافتراضى"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "إعدادات متقدمة"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Monsters be here, only click this button if you know what you are doing"
+msgstr "تتواجد الوحوش هنا، انقر هذا الزر فقط إذا كنت تعرف ما تفعله"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "تمكين الإعدادات المتقدمة"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Danger Zone: Changing some of these settings may break things!"
+msgstr "منطقة خطر: تغيير بعض هذه الإعدادات قد يعطب الأمور!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "إعادة تعيين"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "تصفية"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -413,51 +413,51 @@ msgstr "لا يوجد اى شخص ممنوع!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "تحديث قائمة الدعوة"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Invited user"
+msgstr "المستخدم المدعو"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Invited by"
+msgstr "دعاه"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
+msgstr "يجري تحديث قائمة الدعوة..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Nobody is invited!"
+msgstr "لم يُدعَ أي شخص!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "هذه قناة عامة."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Only invited users can join."
+msgstr "فقط المستخدمون المدعوون يمكنهم الانضمام."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Only allow invited users"
+msgstr "اسمح فقط للمستخدمين المدعووين"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "اسمح لكل شخص أن ينضمّ"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "فقط المستخدمون المسجلون يمكنهم الانضمام"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "أضف دعوة"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "(أي مستخدم مسجل)"
 
 #: Topic
 msgid "channel_topic"
@@ -481,11 +481,11 @@ msgstr "منع الرسائل من خارج هذه الغرفة"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to update the channel list"
+msgstr "انقر زر إعادة التحميل لتحديث قائمة القنوات"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, try again later"
+msgstr "لا توجد أية قناة، حاول مرة أخرى لاحقاً"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
@@ -497,15 +497,15 @@ msgstr "اظهار متصفح الشات"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "إخفاء الموضوع"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "عَرض الموضوع"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "اعدادات القناة"
 
 #: Join Channel
 msgid "container_join"
@@ -521,7 +521,7 @@ msgstr "محادثة خاصة مع {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "حقاً تغادر القناة؟"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -913,83 +913,83 @@ msgstr "Leave, then re-join a channel"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Change your nickname"
+msgstr "غيّر اسمك المستعار"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr "Start a private conversation with someone"
+msgstr "ابدأ محادثة خاصة مع أحدٍ ما"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Invite somebody into the channel"
+msgstr "ادعُ شخصاً ما الى القناة"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Set the topic for this channel"
+msgstr "عيّن موضوعاً لهذه القناة"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Send a notice"
+msgstr "أرسل إشعاراً"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "Send a raw command to the IRC server"
+msgstr "أرسل أمراً جديداً الى خادوم دردشة IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Kick somebody from the channel"
+msgstr "اطرد شخصاً ما من القناة"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Clear all messages from this window"
+msgstr "مسح جميع الرسائل من هذه النافذة"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr "Send a CTCP command to somebody"
+msgstr "أرسل أمر CTCP الى شخص ما"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Disconnect from the IRC server"
+msgstr "اقطع الاتصال بخادوم دردشة IRC"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Connect to a new IRC network"
+msgstr "اتصل بشبكة دردشة IRC جديدة"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Request information on somebody"
+msgstr "اطلب معلومات عن شخص ما"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr "Request information on somebody that disconnected recently"
+msgstr "اطلب معلومات عن شخص ما قطع الاتصال للتو"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "عيّن نفسك على أنّك مبتعد"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "عيّن نفسك على أنّك نشط"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Change your connection encoding"
+msgstr "غيّر تشفير اتصالك"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr "Ignore messages from somebody"
+msgstr "تجاهل الرسائل من شخص ما"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Stop ignoring somebody"
+msgstr "أوقف تجاهل شخص ما"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Roll a Dice"
+msgstr "إرمِ حجر نرد"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
+msgstr "يرمي نرداً ذا {{sides}} جانب ويحصل على {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -1009,19 +1009,19 @@ msgstr "إضافة شبكة"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "You are trying to connect to {{network}}"
+msgstr "أنت تحاول الاتصال بـ {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Network has been added to your existing Kiwi window."
+msgstr "أضيفت الشبكة الى نافذة كيوي الحالية."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Add network to existing Kiwi window"
+msgstr "أضف شبكة الى نافذة كيوي الحالية"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Temporarily connect to this network"
+msgstr "مؤقتاً اتصل بهذه الشبكة"
 
 #: Saved networks
 msgid "personal_saved"
@@ -1045,41 +1045,41 @@ msgstr "تجربة نسخة المطور من الكيوي اى ار سى!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "مقطوع الاتصال"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Connected to {{network}}!"
+msgstr "متصل الى {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} has joined"
+msgstr "{{nick}} قد انضمّ"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} kicked you from {{channel}}"
+msgstr "{{nick}} طردك من {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
+msgstr "{{nick}} طُرد من {{channel}} من قبَل {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} has left"
+msgstr "{{nick}} غادر"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} invited you to join {{channel}}"
+msgstr "{{nick}} دعاك للإنضمام الى {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
+msgstr "الاسم المستعار {{nick}} مستخدَم مسبقاً. تجريب {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} is now known as {{newnick}}"
+msgstr "{{nick}} اصبح يُعرَف بـ {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} changed the topic to: {{topic}}"
+msgstr "{{nick}} غيّر الموضوع الى: {{topic}}"
 
