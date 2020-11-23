@@ -44,6 +44,8 @@ export const configTemplates = {
         },
         warnOnExit: true,
         quitMessage: 'Page closed',
+        // Default embed provider
+        embedProvider: '//noembed.com/embed?url={url}',
         // Default buffer settings
         buffers: {
             messageLayout: 'modern',
