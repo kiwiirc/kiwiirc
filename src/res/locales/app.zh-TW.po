@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2020-06-14 12:32\n"
+"PO-Revision-Date: 2020-11-25 13:14\n"
 
 #: Start
 msgid "start_button"
@@ -369,7 +369,7 @@ msgstr "Default kick reason"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "進階設定"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
@@ -377,7 +377,7 @@ msgstr "Monsters be here, only click this button if you know what you are doing"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "啟用進階設定"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
@@ -385,11 +385,11 @@ msgstr "Danger Zone: Changing some of these settings may break things!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "重設"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "篩選器"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -561,7 +561,7 @@ msgstr "Nickname"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Advanced"
+msgstr "進階"
 
 #: Encoding
 msgid "settings_encoding"
@@ -733,7 +733,7 @@ msgstr "Add Network"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "新網路"
 
 #: No Network
 msgid "no_network"
