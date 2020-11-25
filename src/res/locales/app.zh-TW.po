@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2020-11-25 13:43\n"
+"PO-Revision-Date: 2020-11-25 13:57\n"
 
 #: Start
 msgid "start_button"
@@ -177,7 +177,7 @@ msgstr "頻道"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "暫時離開"
 
 #: {{count}} week
 msgid "week"
@@ -733,7 +733,7 @@ msgstr "新增網路"
 
 #: New Network
 msgid "new_network"
-msgstr "新網路"
+msgstr "新的網路"
 
 #: No Network
 msgid "no_network"
@@ -749,7 +749,7 @@ msgstr "未連線。"
 
 #: Join new #channel
 msgid "state_join"
-msgstr "加入新 #頻道"
+msgstr "加入新的 #頻道"
 
 #: Filter Channels
 msgid "filter_channels"
@@ -765,7 +765,7 @@ msgstr "變更暱稱"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "輸入新暱稱…"
+msgstr "輸入新的暱稱…"
 
 #: This is you!
 msgid "user_you"
@@ -809,7 +809,7 @@ msgstr "Access level"
 
 #: Normal
 msgid "user_normal"
-msgstr "一般"
+msgstr "標準"
 
 #: Kick from the channel
 msgid "user_kick"
@@ -833,7 +833,7 @@ msgstr "The nickname {{nick}} is already in use!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "你必須輸入新的暱稱"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
