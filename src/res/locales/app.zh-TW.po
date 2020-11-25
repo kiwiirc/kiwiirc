@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2020-11-25 13:57\n"
+"PO-Revision-Date: 2020-11-25 14:04\n"
 
 #: Start
 msgid "start_button"
@@ -341,7 +341,7 @@ msgstr "所有訊息"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "I am mentioned"
+msgstr "我被提及"
 
 #: Never
 msgid "settings_notify_never"
