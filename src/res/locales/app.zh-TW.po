@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2020-11-25 13:23\n"
+"PO-Revision-Date: 2020-11-25 13:33\n"
 
 #: Start
 msgid "start_button"
@@ -329,7 +329,7 @@ msgstr "Enter Channel Key"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "重新加入 {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -349,7 +349,7 @@ msgstr "Never"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Mute sounds"
+msgstr "靜音"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
@@ -505,15 +505,15 @@ msgstr "Display Topic"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "頻道設定"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Join Channel"
+msgstr "加入頻道"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Not Connected"
+msgstr "未連線"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
@@ -525,11 +525,11 @@ msgstr "Really leave the channel?"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Send a message..."
+msgstr "傳送訊息"
 
 #: Loading {{url}}...
 msgid "media_loading"
-msgstr "Loading {{url}}..."
+msgstr "正在載入 {{url}}…"
 
 #: Load previous messages
 msgid "messages_load"
@@ -537,7 +537,7 @@ msgstr "Load previous messages"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Unread Messages"
+msgstr "未讀訊息"
 
 #: Server details
 msgid "settings_server_details"
@@ -557,7 +557,7 @@ msgstr "Your details"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "暱稱"
 
 #: Advanced
 msgid "settings_advanced"
@@ -617,7 +617,7 @@ msgstr "You are not currently connected!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Connection settings"
+msgstr "連線設定"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
@@ -749,7 +749,7 @@ msgstr "未連線。"
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Join new #channel"
+msgstr "加入新 #頻道"
 
 #: Filter Channels
 msgid "filter_channels"
@@ -761,15 +761,15 @@ msgstr "尋找更多頻道"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Change nick"
+msgstr "變更暱稱"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "輸入新暱稱…"
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "這是你啦！"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -809,7 +809,7 @@ msgstr "Access level"
 
 #: Normal
 msgid "user_normal"
-msgstr "Normal"
+msgstr "一般"
 
 #: Kick from the channel
 msgid "user_kick"
@@ -929,7 +929,7 @@ msgstr "Set the topic for this channel"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Send a notice"
+msgstr "傳送通知"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
