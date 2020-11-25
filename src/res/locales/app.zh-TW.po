@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2020-11-25 13:33\n"
+"PO-Revision-Date: 2020-11-25 13:43\n"
 
 #: Start
 msgid "start_button"
@@ -117,7 +117,7 @@ msgstr "無效的登入"
 
 #: Search...
 msgid "do_search"
-msgstr "搜尋…"
+msgstr "搜尋中…"
 
 #: OK
 msgid "ok"
@@ -141,11 +141,11 @@ msgstr "找不到"
 
 #: Warning!
 msgid "warning"
-msgstr "警告"
+msgstr "警告！"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "這樣會關閉全部的 KiwiIRC 交談。您是否確定關閉本視窗？"
+msgstr "這樣會關閉全部的 KiwiIRC 交談。你是否確定關閉本視窗？"
 
 #: Real name
 msgid "whois_realname"
@@ -165,7 +165,7 @@ msgstr "傳送訊息"
 
 #: More information
 msgid "more_information"
-msgstr "更多訊息"
+msgstr "更多資訊"
 
 #: Ignore user
 msgid "ignore_user"
@@ -321,7 +321,7 @@ msgstr "What are aliases?"
 
 #: Send Message
 msgid "send_message"
-msgstr "Send Message"
+msgstr "傳送訊息"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
@@ -501,7 +501,7 @@ msgstr "隱藏主題"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "顯示主題"
 
 #: Channel Settings
 msgid "channel_settings"
@@ -713,7 +713,7 @@ msgstr "Your settings and networks will be remembered on this computer."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Forget me"
+msgstr "不要記住我的登入資訊"
 
 #: No networks here yet.
 msgid "state_network"
@@ -725,7 +725,7 @@ msgstr "Add one?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Available networks"
+msgstr "可用網路"
 
 #: Add Network
 msgid "add_network"
@@ -741,7 +741,7 @@ msgstr "No Network"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Configure network"
+msgstr "設定網路"
 
 #: Not connected.
 msgid "state_disconnected"
@@ -901,11 +901,11 @@ msgstr "Do something physical"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Join a channel"
+msgstr "加入頻道"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Leave a channel"
+msgstr "離開頻道"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
@@ -913,7 +913,7 @@ msgstr "Leave, then re-join a channel"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Change your nickname"
+msgstr "變更你的暱稱"
 
 #: Start a private conversation with someone
 msgid "command_query"
