@@ -44,6 +44,12 @@ export const configTemplates = {
         },
         warnOnExit: true,
         quitMessage: 'Page closed',
+        embedding: {
+            // The url should return an html document
+            url: 'http://localhost:8088/embed?url={url}&center={center}&width={width}&height={height}',
+            maxWidth: 1000,
+            maxHeight: 400,
+        },
         // Default buffer settings
         buffers: {
             messageLayout: 'modern',

@@ -1,5 +1,5 @@
 <template>
-    <div class="kiwi-mediaviewer">
+    <div ref="mediaviewer" class="kiwi-mediaviewer">
         <div class="kiwi-mediaviewer-controls">
             <a
                 v-if="showPin"
@@ -21,6 +21,14 @@
             class="kiwi-mediaviewer-iframe"
         />
         <component :is="component" v-else-if="component" :component-props="componentProps" />
+        <iframe
+            v-else-if="!embedlyKey"
+            ref="embedFrame"
+            frameborder="0"
+            height="0"
+            width="100%"
+            class="kiwi-mediaviewer-embed"
+        />
         <div v-else :key="url" class="kiwi-mediaviewer-embedly">
             <a
                 ref="embedlyLink"
@@ -44,11 +52,15 @@ export default {
     props: ['url', 'component', 'componentProps', 'isIframe', 'showPin'],
     data() {
         return {
+            addedEventListener: false,
         };
     },
     computed: {
         embedlyKey() {
             return this.$state.settings.embedly.key;
+        },
+        embedding() {
+            return this.$state.setting('embedding');
         },
     },
     watch: {
@@ -59,18 +71,49 @@ export default {
             this.updateEmbed();
         },
     },
-    created() {
-        this.updateEmbed();
-    },
     mounted() {
+        this.updateEmbed();
         this.$nextTick(() => {
             this.$state.$emit('mediaviewer.opened');
         });
     },
+    beforeDestroy() {
+        if (this.eventListener) {
+            // Cleanup message event listener
+            window.removeEventListener('message', this.messageEventHandler);
+            this.addedEventListener = false;
+        }
+    },
     methods: {
         updateEmbed() {
             if (!this.url || this.isIframe || this.component) {
-                // return if embedly script is not needed
+                // This is not going to be handled by our embedding or embedly
+                // Stop hiding the media viewer as we are not controlling its height
+                this.$refs.mediaviewer.style.height = 'auto';
+                return;
+            }
+
+            if (!this.embedlyKey) {
+                const iframe = this.$refs.embedFrame;
+                if (!iframe) {
+                    // No iframe to work with so nothing to update
+                    return;
+                }
+
+                let newUrl = this.embedding.url
+                    .replace('{url}', this.url)
+                    .replace('{center}', !this.showPin)
+                    .replace('{width}', this.embedding.maxWidth || 1000)
+                    .replace('{height}', this.embedding.maxHeight || 400);
+
+                // Set the iframe url
+                iframe.src = newUrl;
+
+                // Add message event listener if it does not exist
+                if (!this.eventListener) {
+                    window.addEventListener('message', this.messageEventHandler);
+                    this.addedEventListener = true;
+                }
                 return;
             }
 
@@ -82,6 +125,7 @@ export default {
                     return;
                 }
                 this.$nextTick(() => {
+                    this.$refs.mediaviewer.style.height = 'auto';
                     window.embedly('card', this.$refs.embedlyLink);
                 });
             };
@@ -96,6 +140,27 @@ export default {
             }
             checkEmbedlyAndShowCard();
         },
+        messageEventHandler(event) {
+            const iframe = this.$refs.embedFrame;
+            if (!iframe || event.source !== iframe.contentWindow) {
+                // The message event did not come from our iframe ignore it
+                return;
+            }
+
+            const data = event.data;
+            if (data.error) {
+                // Error message indicates the url cannot be embedded
+                this.$emit('close');
+            } else if (data.dimensions) {
+                // Dimensions message contains updated dimensions for the iframe content
+                const height = Math.min(data.dimensions.height, this.embedding.maxHeight || 400);
+                iframe.height = height + 'px';
+
+                // Now we have dimensions stop hiding the media viewer
+                // This is to stop the message list jumping when opened with invalid url
+                this.$refs.mediaviewer.style.height = 'auto';
+            }
+        },
     },
 };
 </script>
@@ -104,6 +169,7 @@ export default {
 .kiwi-mediaviewer {
     box-sizing: border-box;
     position: relative;
+    height: 0;
 }
 
 .kiwi-mediaviewer-controls {
