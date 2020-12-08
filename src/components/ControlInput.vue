@@ -895,6 +895,11 @@ export default {
     .kiwi-controlinput-portrait-hide {
         display: none;
     }
+    
+    .kiwi-controlinput-selfuser {
+        border-radius: 0px;
+        border-right: 0px;
+    }
 }
 
 .kiwi-typinguserslist {
