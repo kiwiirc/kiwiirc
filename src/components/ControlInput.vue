@@ -886,6 +886,8 @@ export default {
 @media screen and (max-width: 769px) {
     .kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
         width: 100%;
+        border-radius: 0;
+        border-right: 0;
     }
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-controlinput {
@@ -894,11 +896,6 @@ export default {
 
     .kiwi-controlinput-portrait-hide {
         display: none;
-    }
-    
-    .kiwi-controlinput-selfuser {
-        border-radius: 0px;
-        border-right: 0px;
     }
 }
 
