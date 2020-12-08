@@ -17,7 +17,9 @@
             </transition>
         </div>
 
-        <div class="kiwi-controlinput-inner">
+        <div class="kiwi-controlinput-inner"
+             :class="[selfuser_open ? 'kiwi-controlinput-portrait-hide' : '']"
+        >
             <away-status-indicator
                 v-if="buffer.getNetwork() && buffer.getNetwork().state === 'connected'"
                 :network="buffer.getNetwork()"
@@ -717,6 +719,10 @@ export default {
     margin-right: -2px;
 }
 
+.kiwi-controlinput-portrait-hide {
+    display: block;
+}
+
 .kiwi-controlinput-user {
     height: 100%;
     padding: 0 10px;
@@ -884,6 +890,10 @@ export default {
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-controlinput {
         z-index: 0;
+    }
+
+    .kiwi-controlinput-portrait-hide {
+        display: none;
     }
 }
 
