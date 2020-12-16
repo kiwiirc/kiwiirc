@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2016 - 2020, Darren Whitlen <darren@kiwiirc.com>
+SPDX-License-Identifier: Apache-2.0
+-->
+
+
 # Kiwi IRC
 
 ***A versatile web based messenger using IRC***
@@ -73,4 +79,8 @@ Kiwi IRC is tested on all modern browsers and IE11. Other browsers are not activ
 * Firefox
 * IE11
 * Safari 9+
+
+## Copyright and Licensing information
+ 
+This program is available as open source under the terms of the Apache 2.0 license. Copyright 2016 - 2020, Darren Whitlen <darren@kiwiirc.com>
 
