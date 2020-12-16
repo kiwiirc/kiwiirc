@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2016 - 2020, Darren Whitlen <darren@kiwiirc.com>
+SPDX-License-Identifier: Apache-2.0
+-->
+
 <template>
     <div class="kiwi-inputtool-emoji">
         <div class="kiwi-inputtool-emoji-palette" @mousedown.prevent @click.prevent>

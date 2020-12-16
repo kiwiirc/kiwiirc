@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2016 - 2020, Darren Whitlen <darren@kiwiirc.com>
+SPDX-License-Identifier: Apache-2.0
+-->
+
+
 <template functional>
     <div
         :data-nick="props.message&&props.message.nick"

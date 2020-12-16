@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2016 - 2020, Darren Whitlen <darren@kiwiirc.com>
+SPDX-License-Identifier: Apache-2.0
+-->
+
 <template functional>
     <component :is="$options.c.Avatar" :user="props.user" :message="props.message" size="small" />
 </template>

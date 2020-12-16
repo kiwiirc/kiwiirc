@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2016 - 2020, Darren Whitlen <darren@kiwiirc.com>
+SPDX-License-Identifier: Apache-2.0
+-->
+
 <template>
     <div class="kiwi-settings-advanced">
         <div class="kiwi-settings-advanced-notice">{{ $t('settings_advanced_header') }}</div>

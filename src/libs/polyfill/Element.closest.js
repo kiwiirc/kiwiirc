@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2016- 2020, Darren Whitlen <darren@kiwiirc.com>
+// SPDX-License-Identifier: Apache-2.0
+
+
 // From the Element.closest mdn page.
 if (!Element.prototype.matches) {
     Element.prototype.matches = Element.prototype.msMatchesSelector ||

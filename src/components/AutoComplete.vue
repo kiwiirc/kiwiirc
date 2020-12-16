@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2016 - 2020, Darren Whitlen <darren@kiwiirc.com>
+SPDX-License-Identifier: Apache-2.0
+-->
+
+
+
 <template>
     <div class="kiwi-autocomplete kiwi-theme-bg">
 

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2016- 2020, Darren Whitlen <darren@kiwiirc.com>
+// SPDX-License-Identifier: Apache-2.0
+
+
 import _ from 'lodash';
 import Vue from 'vue';
 import JSON5 from 'json5';

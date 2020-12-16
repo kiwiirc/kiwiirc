@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2016- 2020, Darren Whitlen <darren@kiwiirc.com>
+// SPDX-License-Identifier: Apache-2.0
+
 var path = require('path');
 var fs = require('fs');
 var ora = require('ora')

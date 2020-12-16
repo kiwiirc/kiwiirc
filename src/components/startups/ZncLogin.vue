@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2016 - 2020, Darren Whitlen <darren@kiwiirc.com>
+SPDX-License-Identifier: Apache-2.0
+-->
+
+
 <template>
     <startup-layout ref="layout" class="kiwi-welcome-znc">
         <template v-if="!network || network.state === 'disconnected'" v-slot:connection>

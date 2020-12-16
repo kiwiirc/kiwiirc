@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2016- 2020, Darren Whitlen <darren@kiwiirc.com>
+# SPDX-License-Identifier: Apache-2.0
+
 files:
   - source: /src/res/locales/app.dev.po
     translation: /src/res/locales/app.%locale%.po

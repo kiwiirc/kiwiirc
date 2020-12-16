@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2016 - 2020, Darren Whitlen <darren@kiwiirc.com>
+SPDX-License-Identifier: Apache-2.0
+-->
+
 ---
 name: Feature request
 about: Suggest an idea for this project
