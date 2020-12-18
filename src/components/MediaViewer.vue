@@ -1,5 +1,5 @@
 <template>
-    <div ref="mediaviewer" class="kiwi-mediaviewer">
+    <div class="kiwi-mediaviewer">
         <div class="kiwi-mediaviewer-controls">
             <a
                 v-if="showPin"
@@ -18,12 +18,14 @@
         <iframe
             v-if="isIframe"
             :src="url"
+            :sandbox="iframeSandboxOptions"
             class="kiwi-mediaviewer-iframe"
         />
         <component :is="component" v-else-if="component" :component-props="componentProps" />
         <iframe
             v-else-if="!embedlyKey"
             ref="embedFrame"
+            :sandbox="iframeSandboxOptions"
             frameborder="0"
             height="0"
             width="100%"
@@ -46,6 +48,8 @@
 <script>
 'kiwi public';
 
+import _ from 'lodash';
+
 let embedlyTagIncluded = false;
 
 export default {
@@ -53,6 +57,7 @@ export default {
     data() {
         return {
             addedEventListener: false,
+            debouncedUpdateEmbed: null,
         };
     },
     computed: {
@@ -62,14 +67,40 @@ export default {
         embedding() {
             return this.$state.setting('embedding');
         },
+        iframeSandboxOptions() {
+            // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox
+            // Mostly all permissions other than allow-top-navigation so that embedded content
+            // cannot redirect the page away from kiwi
+            let options = [
+                'allow-downloads',
+                'allow-forms',
+                'allow-modals',
+                'allow-orientation-lock',
+                'allow-pointer-lock',
+                'allow-popups',
+                'allow-popups-to-escape-sandbox',
+                'allow-presentation',
+                'allow-same-origin',
+                'allow-scripts',
+            ];
+
+            return options.join(' ');
+        },
     },
     watch: {
         url() {
-            this.updateEmbed();
+            this.debouncedUpdateEmbed();
         },
         isIframe() {
-            this.updateEmbed();
+            this.debouncedUpdateEmbed();
         },
+    },
+    created() {
+        // Debounce as both watchers may call it in the same tick
+        // also causes the method to be called next tick to give dom time to update
+        this.debouncedUpdateEmbed = _.debounce(() => {
+            this.updateEmbed();
+        }, 0);
     },
     mounted() {
         this.updateEmbed();
@@ -78,18 +109,21 @@ export default {
         });
     },
     beforeDestroy() {
-        if (this.eventListener) {
-            // Cleanup message event listener
-            window.removeEventListener('message', this.messageEventHandler);
-            this.addedEventListener = false;
-        }
+        // Cleanup message event listener
+        this.maybeAddOrRemoveEventListener(false);
     },
     methods: {
         updateEmbed() {
             if (!this.url || this.isIframe || this.component) {
                 // This is not going to be handled by our embedding or embedly
-                // Stop hiding the media viewer as we are not controlling its height
-                this.$refs.mediaviewer.style.height = 'auto';
+
+                // Iframes do not automatically resize the mediaviewer
+                // set a fixed height so the iframe content is visable
+                // set auto for components as they can controll their own height
+                this.$el.style.height = (this.isIframe) ? '40%' : 'auto';
+
+                // Remove the event listener if its active as its nolonger needed
+                this.maybeAddOrRemoveEventListener(false);
                 return;
             }
 
@@ -110,10 +144,7 @@ export default {
                 iframe.src = newUrl;
 
                 // Add message event listener if it does not exist
-                if (!this.eventListener) {
-                    window.addEventListener('message', this.messageEventHandler);
-                    this.addedEventListener = true;
-                }
+                this.maybeAddOrRemoveEventListener(true);
                 return;
             }
 
@@ -125,7 +156,7 @@ export default {
                     return;
                 }
                 this.$nextTick(() => {
-                    this.$refs.mediaviewer.style.height = 'auto';
+                    this.$el.style.height = 'auto';
                     window.embedly('card', this.$refs.embedlyLink);
                 });
             };
@@ -158,7 +189,16 @@ export default {
 
                 // Now we have dimensions stop hiding the media viewer
                 // This is to stop the message list jumping when opened with invalid url
-                this.$refs.mediaviewer.style.height = 'auto';
+                this.$el.style.height = 'auto';
+            }
+        },
+        maybeAddOrRemoveEventListener(add) {
+            if (add && !this.eventListener) {
+                window.addEventListener('message', this.messageEventHandler);
+                this.addedEventListener = true;
+            } else if (!add && this.eventListener) {
+                window.removeEventListener('message', this.messageEventHandler);
+                this.addedEventListener = false;
             }
         },
     },
@@ -169,7 +209,7 @@ export default {
 .kiwi-mediaviewer {
     box-sizing: border-box;
     position: relative;
-    height: 0;
+    height: auto;
 }
 
 .kiwi-mediaviewer-controls {
