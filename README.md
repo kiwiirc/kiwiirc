@@ -82,5 +82,5 @@ Kiwi IRC is tested on all modern browsers and IE11. Other browsers are not activ
 
 ## Copyright and Licensing information
  
-This program is available as open source under the terms of the Apache 2.0 license. Copyright 2016 - 2020, Darren Whitlen <darren@kiwiirc.com>
+This program is available as open source under the terms of the Apache 2.0 license. Copyright 2016 - 2020, Darren Whitlen <darren@kiwiirc.com> For accurate information, please check individual files.
 
