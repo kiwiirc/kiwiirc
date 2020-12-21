@@ -570,6 +570,10 @@ msgstr "Send a message..."
 msgid "media_loading"
 msgstr "Loading {{url}}..."
 
+#: Preview Not Supported
+msgid "preview_not_supported"
+msgstr "Preview Not Supported"
+
 
 
 #: MessageList $t('messages_')
@@ -920,6 +924,7 @@ msgstr "You must enter a new nickname"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Nickname must not start with a number"
+
 
 
 #: Mode Changes $t('modes_')

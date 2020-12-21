@@ -15,8 +15,11 @@
                 <i class="fa fa-window-close" aria-hidden="true" />
             </a>
         </div>
+        <div v-if="error" class="kiwi-mediaviewer-error">
+            {{ error }}
+        </div>
         <iframe
-            v-if="isIframe"
+            v-else-if="isIframe"
             :src="url"
             :sandbox="iframeSandboxOptions"
             class="kiwi-mediaviewer-iframe"
@@ -56,6 +59,7 @@ export default {
     props: ['url', 'component', 'componentProps', 'isIframe', 'showPin'],
     data() {
         return {
+            error: '',
             addedEventListener: false,
             debouncedUpdateEmbed: null,
         };
@@ -181,7 +185,9 @@ export default {
             const data = event.data;
             if (data.error) {
                 // Error message indicates the url cannot be embedded
-                this.$emit('close');
+                this.error = (data.error === 'not_supported') ?
+                    this.$t('preview_not_supported') :
+                    data.error;
             } else if (data.dimensions) {
                 // Dimensions message contains updated dimensions for the iframe content
                 const height = Math.min(data.dimensions.height, this.embedding.maxHeight || 400);
@@ -239,6 +245,12 @@ export default {
     position: absolute;
     top: 0;
     border: none;
+}
+
+.kiwi-mediaviewer-error {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 10px;
 }
 
 .embedly-card {

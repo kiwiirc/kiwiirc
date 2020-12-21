@@ -698,6 +698,11 @@
     background: var(--brand-error);
 }
 
+/* ---- MediaViewer ---- */
+.kiwi-mediaviewer-error {
+    border: 1px solid var(--brand-midtone);
+}
+
 /* ---- Network Settings ( NetworkSettings ) ---- */
 .kiwi-networksettings .kiwi-title {
     background: var(--brand-primary);
