@@ -15,6 +15,8 @@ export function create(state, network) {
     let ircClient = new Irc.Client({
         // Most options are set under the overloaded .connect()
         version: null,
+        enable_chghost: true,
+        enable_setname: true,
         message_max_length: 350,
     });
     ircClient.requestCap('znc.in/self-message');
@@ -900,6 +902,31 @@ function clientMiddleware(state, network) {
                 if (correctBuffer) {
                     buffer.requestLatestScrollback();
                 }
+            }
+        }
+
+        if (command === 'user updated') {
+            const user = network.userByName(event.nick);
+            if (user) {
+                Object.entries(event).forEach(([key, val]) => {
+                    if (key.indexOf('new_') !== 0) {
+                        return;
+                    }
+
+                    const paramName = key.substr(4);
+                    switch (paramName) {
+                    case 'gecos':
+                        user.realname = val;
+                        break;
+                    case 'ident':
+                        user.username = val;
+                        break;
+                    case 'hostname':
+                        user.host = val;
+                        break;
+                    default:
+                    }
+                });
             }
         }
 
