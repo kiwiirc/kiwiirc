@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2020-11-25 14:04\n"
+"PO-Revision-Date: 2020-12-25 10:41\n"
 
 #: Start
 msgid "start_button"
@@ -313,11 +313,11 @@ msgstr "Highlight on words (space seperated)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Aliases"
+msgstr "別名"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "何為別名？"
 
 #: Send Message
 msgid "send_message"
