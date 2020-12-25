@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2020-11-25 14:04\n"
+"PO-Revision-Date: 2020-12-25 11:01\n"
 
 #: Start
 msgid "start_button"
@@ -313,11 +313,11 @@ msgstr "Highlight on words (space seperated)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Aliases"
+msgstr "別名"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "何為別名？"
 
 #: Send Message
 msgid "send_message"
@@ -393,7 +393,7 @@ msgstr "篩選器"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Refresh banlist"
+msgstr "重新整理停權名單"
 
 #: Banned user
 msgid "bans_user"
@@ -405,7 +405,7 @@ msgstr "Banned by"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Refreshing banlist..."
+msgstr "正在重新整理停權名單…"
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -581,7 +581,7 @@ msgstr "Run commands when connected"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Danger Zone"
+msgstr "危險區域"
 
 #: Remove network
 msgid "settings_remove"
@@ -633,11 +633,11 @@ msgstr "網路名稱"
 
 #: Close options
 msgid "side_close"
-msgstr "Close options"
+msgstr "關閉選項"
 
 #: Channel options
 msgid "side_options"
-msgstr "Channel options"
+msgstr "頻道選項"
 
 #: Your settings
 msgid "side_settings"
@@ -737,7 +737,7 @@ msgstr "新的網路"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "沒有網路"
 
 #: Configure network
 msgid "state_configure"
@@ -805,7 +805,7 @@ msgstr "In channels {{channels}}"
 
 #: Access level
 msgid "user_access"
-msgstr "Access level"
+msgstr "存取等級"
 
 #: Normal
 msgid "user_normal"
@@ -985,7 +985,7 @@ msgstr "Stop ignoring somebody"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Roll a Dice"
+msgstr "擲骰子"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
@@ -993,7 +993,7 @@ msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Your IRC Client."
+msgstr "你的 IRC 客户端。"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
@@ -1053,7 +1053,7 @@ msgstr "已連線至 {{network}}！"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} has joined"
+msgstr "{{nick}} 已加入"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
@@ -1065,7 +1065,7 @@ msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} has left"
+msgstr "{{nick}} 已離開"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
