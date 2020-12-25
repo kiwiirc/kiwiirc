@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2020-12-25 10:41\n"
+"PO-Revision-Date: 2020-12-25 10:51\n"
 
 #: Start
 msgid "start_button"
@@ -393,7 +393,7 @@ msgstr "篩選器"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Refresh banlist"
+msgstr "重新整理停權名單"
 
 #: Banned user
 msgid "bans_user"
@@ -405,7 +405,7 @@ msgstr "Banned by"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Refreshing banlist..."
+msgstr "正在重新整理停權名單…"
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -581,7 +581,7 @@ msgstr "Run commands when connected"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Danger Zone"
+msgstr "危險區域"
 
 #: Remove network
 msgid "settings_remove"
@@ -737,7 +737,7 @@ msgstr "新的網路"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "沒有網路"
 
 #: Configure network
 msgid "state_configure"
