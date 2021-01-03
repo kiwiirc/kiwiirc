@@ -175,6 +175,24 @@ export default class BouncerProvider {
 
         // start monitoring network changes
         this.monitorNetworkChanges();
+
+        if (this.state.getActiveBuffer()) {
+            return;
+        }
+        if (!bncNetworks.length) {
+            // BNC has no network, lets add one to help the user
+            const net = this.state.addNetwork('Network', '', {});
+            net.showServerBuffer('settings');
+        } else {
+            for (let i = 0; i < this.state.networks.length; i++) {
+                const net = this.state.networks[i];
+                if (!net.is_bnc) {
+                    // The first network that is not the BNC control network
+                    net.showServerBuffer('settings');
+                    break;
+                }
+            }
+        }
     }
 
     async syncBncNetwork(bncNetwork) {
