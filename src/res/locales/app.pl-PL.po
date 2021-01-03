@@ -13,11 +13,11 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2021-01-03 06:01\n"
+"PO-Revision-Date: 2021-01-03 06:11\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "Rozpocznij"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
@@ -177,7 +177,7 @@ msgstr "Pokój"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "Nieobecny"
 
 #: {{count}} week
 msgid "week"
@@ -249,7 +249,7 @@ msgstr "Używaj czcionki o stałej szerokości"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "Użyj Kiwi jako mojego domyślnego klienta IRC"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -297,7 +297,7 @@ msgstr "Udostępnij, gdy piszę wiadomość"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "Pokaż podgląd obrazów w tekście"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -353,7 +353,7 @@ msgstr "Wycisz dźwięki"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Ukryj liczbę nieprzeczytanych wiadomości"
 
 #: Operator tools
 msgid "operator_tools"
@@ -413,51 +413,51 @@ msgstr "Nikt nie jest zablokowany!"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "Odśwież listę zaproszonych"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Invited user"
+msgstr "Zaproszony użytkownik"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Invited by"
+msgstr "Zaproszony przez"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
+msgstr "Odświeżanie listy zaproszonych..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Nobody is invited!"
+msgstr "Nikt nie jest zaproszony!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "To jest kanał publiczny."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Only invited users can join."
+msgstr "Dołączać mogą tylko zaproszeni użytkownicy."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Only allow invited users"
+msgstr "Zezwalaj tylko na zaproszonych użytkowników"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "Zezwól każdemu na dołączenie"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "Tylko zarejestrowani użytkownicy mogą dołączyć"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "Dodaj zaproszenie"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "(Każdy zarejestrowany użytkownik)"
 
 #: Topic
 msgid "channel_topic"
@@ -1013,7 +1013,7 @@ msgstr "Próbujesz się połączyć z {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Sieć została dodana do twojego istniejącego okna Kiwi."
+msgstr "Sieć została dodana do istniejącego okna Kiwi."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
@@ -1081,5 +1081,5 @@ msgstr "{{nick}} jest teraz znany jako {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "zmienia temat kanału na: {{topic}}"
+msgstr "{{nick}} zmienia temat kanału na: {{topic}}"
 
