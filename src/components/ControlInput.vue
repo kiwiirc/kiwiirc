@@ -17,7 +17,7 @@
             </transition>
         </div>
 
-        <div 
+        <div
             class="kiwi-controlinput-inner"
             :class="[selfuser_open ? 'kiwi-controlinput-portrait-hide' : '']"
         >
