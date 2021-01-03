@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2021-01-03 06:41\n"
+"PO-Revision-Date: 2021-01-03 06:51\n"
 
 #: Start
 msgid "start_button"
@@ -1033,11 +1033,11 @@ msgstr "Kiwi IRC (nowa generacja) – Podgląd dla Rizona"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Bezpośrednie połączenia. Nie używa serwerów Kiwi ani webirc-a."
+msgstr "Bezpośredni websocket. Nie używa serwerów Kiwi ani webirc."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Podziękowania dla Adama@Rizon za rozwijanie obsługi serwera gniazd!)"
+msgstr "(Podziękowania dla Adama@Rizon za rozwijanie obsługi serwera websocket!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
