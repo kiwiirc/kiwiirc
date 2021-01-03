@@ -368,8 +368,12 @@ function clientMiddleware(state, network) {
             let isPrivateMessage = false;
             let bufferName = event.from_server ? '*' : event.target;
 
-            // PMs should go to a buffer with the name of the other user
-            if (!event.from_server && event.target === client.user.nick) {
+            // If the message came from a batch then params[0] is the bufferName
+            if (event.batch && event.batch.type === 'chathistory' && event.batch.params[0]) {
+                bufferName = event.batch.params[0];
+                isPrivateMessage = !network.isChannelName(bufferName);
+            } else if (!event.from_server && event.target === client.user.nick) {
+                // PMs should go to a buffer with the name of the other user
                 isPrivateMessage = true;
                 bufferName = event.nick;
             }
