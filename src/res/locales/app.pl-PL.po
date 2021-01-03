@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2021-01-03 06:11\n"
+"PO-Revision-Date: 2021-01-03 06:21\n"
 
 #: Start
 msgid "start_button"
@@ -489,7 +489,7 @@ msgstr "Nie znaleziono żadnych kanałów, spróbuj później"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Witamy w Kiwi IRC-u!"
+msgstr "Witamy w Kiwi IRC-u! Wybierz kanał po lewej stronie."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -653,7 +653,7 @@ msgstr "Pokazuj zmiany tematu kanału"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Pokazuj zmiany nicków użytkowników"
+msgstr "Pokazuj zmiany pseudonimów użytkowników"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
@@ -689,7 +689,7 @@ msgstr "Podświetlenia"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nikt cię jeszcze nie wspomniał ..."
+msgstr "Nikt jeszcze o Tobie nie wspomniał..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -729,15 +729,15 @@ msgstr "Dostępne sieci"
 
 #: Add Network
 msgid "add_network"
-msgstr "Dodaj Sieć"
+msgstr "Dodaj sieć"
 
 #: New Network
 msgid "new_network"
-msgstr "Nowa Sieć"
+msgstr "Nowa sieć"
 
 #: No Network
 msgid "no_network"
-msgstr "Brak Sieci"
+msgstr "Brak sieci"
 
 #: Configure network
 msgid "state_configure"
@@ -825,7 +825,7 @@ msgstr "Zablokuj i wyrzuć z kanału"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Proszę podać pokój aby dołączyć. np. /join #pokój"
+msgstr "Określ kanał, do którego chcesz dołączyć, np. /join #pokój"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
@@ -913,7 +913,7 @@ msgstr "Wyjdż, następnie ponownie dołącz do pokoju"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Zmień swój nick"
+msgstr "Zmień swój pseudonim"
 
 #: Start a private conversation with someone
 msgid "command_query"
@@ -989,7 +989,7 @@ msgstr "Rzuć kostką"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr "Rzuca {{sides}} kośćmi i otrzymuje {{number}}"
+msgstr "Rzuca {{sides}} kostką i otrzymuje {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -1001,7 +1001,7 @@ msgstr "Dodaj swoje sieci. Dołącz do swoich kanałów."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "Będą tutaj, gdy wrócisz."
+msgstr "Będą tutaj, kiedy wrócisz."
 
 #: Add a Network
 msgid "personal_add"
