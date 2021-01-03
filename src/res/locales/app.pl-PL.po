@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2021-01-03 06:31\n"
+"PO-Revision-Date: 2021-01-03 06:41\n"
 
 #: Start
 msgid "start_button"
@@ -29,7 +29,7 @@ msgstr "Zamknij"
 
 #: Connect
 msgid "connect"
-msgstr "Podłącz"
+msgstr "Połącz"
 
 #: Connecting...
 msgid "connecting"
@@ -37,7 +37,7 @@ msgstr "Łączenie…"
 
 #: Connected
 msgid "connected"
-msgstr "Podłączono"
+msgstr "Połączono"
 
 #: Settings
 msgid "settings"
@@ -513,7 +513,7 @@ msgstr "Dołącz do kanału"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Nie podłączono"
+msgstr "Nie połączono"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
@@ -577,11 +577,11 @@ msgstr "Bezpośredni websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Wykonaj polecenia po podłączeniu"
+msgstr "Wykonaj polecenia po połączeniu"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Strefa niebezpieczeństwa"
+msgstr "Strefa zagrożenia"
 
 #: Remove network
 msgid "settings_remove"
@@ -601,15 +601,15 @@ msgstr "Filtruj użytkowników na kanale"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "Podłącz się ponownie, aby dołączyć do {{channel}}"
+msgstr "Połącz się ponownie, aby dołączyć do {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
-msgstr "Podłącz się ponownie do sieci {{network}}, aby zacząć rozmawiać"
+msgstr "Połącz się ponownie z siecią {{network}}, aby zacząć rozmawiać"
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Podłącz się ponownie, żeby kontynuować rozmowę z {{user}}"
+msgstr "Połącz się ponownie, żeby kontynuować rozmowę z {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
@@ -745,7 +745,7 @@ msgstr "Skonfiguruj sieć"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Nie podłączono."
+msgstr "Nie połączono."
 
 #: Join new #channel
 msgid "state_join"
@@ -793,11 +793,11 @@ msgstr "Jest operatorem"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Jest podłączony do {{server}} {{info}}"
+msgstr "Jest połączony z {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Bezpiecznie podłączony przez SSL/TLS"
+msgstr "Bezpieczne połączono przez SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
@@ -949,7 +949,7 @@ msgstr "Wyślij komuś komendę CTCP"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Odłącz się od serwera IRC"
+msgstr "Rozłącz się z serwerem IRC"
 
 #: Connect to a new IRC network
 msgid "command_server"
@@ -1045,11 +1045,11 @@ msgstr "Wypróbuj deweloperską wersję Kiwi IRC-a!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Odłączono"
+msgstr "Rozłączono"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Podłączono do sieci {{network}}!"
+msgstr "Połączono z {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
