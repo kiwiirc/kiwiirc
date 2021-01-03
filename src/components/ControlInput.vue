@@ -17,7 +17,10 @@
             </transition>
         </div>
 
-        <div class="kiwi-controlinput-inner">
+        <div
+            class="kiwi-controlinput-inner"
+            :class="[selfuser_open ? 'kiwi-controlinput-portrait-hide' : '']"
+        >
             <away-status-indicator
                 v-if="buffer.getNetwork() && buffer.getNetwork().state === 'connected'"
                 :network="buffer.getNetwork()"
@@ -880,10 +883,16 @@ export default {
 @media screen and (max-width: 769px) {
     .kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
         width: 100%;
+        border-radius: 0;
+        border-right: 0;
     }
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-controlinput {
         z-index: 0;
+    }
+    // hide the control input on narrow screens when the self user box is open
+    .kiwi-controlinput-portrait-hide {
+        display: none;
     }
 }
 
