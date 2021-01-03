@@ -720,10 +720,6 @@ export default {
     margin-right: -2px;
 }
 
-.kiwi-controlinput-portrait-hide {
-    display: block;
-}
-
 .kiwi-controlinput-user {
     height: 100%;
     padding: 0 10px;
