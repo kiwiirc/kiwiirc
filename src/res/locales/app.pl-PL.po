@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2021-01-03 06:51\n"
+"PO-Revision-Date: 2021-01-03 07:21\n"
 
 #: Start
 msgid "start_button"
@@ -489,7 +489,7 @@ msgstr "Nie znaleziono żadnych kanałów, spróbuj później"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Witamy w Kiwi IRC-u! Wybierz kanał po lewej stronie."
+msgstr "Witamy w Kiwi IRC! Wybierz kanał po lewej stronie."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -693,11 +693,11 @@ msgstr "Nikt jeszcze o Tobie nie wspomniał..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "Pojawił się problem przy uruchamianiu Kiwi IRC-a :("
+msgstr "Pojawił się problem przy uruchamianiu Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Upewnij się, że Kiwi IRC został zainstalowany poprawnie i że konfiguracja może być wczytana"
+msgstr "Upewnij się, że poprawnie zainstalowano Kiwi IRC i można wczytać konfigurację"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -1041,7 +1041,7 @@ msgstr "(Podziękowania dla Adama@Rizon za rozwijanie obsługi serwera websocket
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Wypróbuj deweloperską wersję Kiwi IRC-a!"
+msgstr "Wypróbuj deweloperską wersję Kiwi IRC!"
 
 #: Disconnected
 msgid "disconnected"
