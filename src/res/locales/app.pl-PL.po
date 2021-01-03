@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2020-06-14 12:32\n"
+"PO-Revision-Date: 2021-01-03 06:01\n"
 
 #: Start
 msgid "start_button"
@@ -53,7 +53,7 @@ msgstr "Pokoje"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Dostęp"
 
 #: Banned Users
 msgid "banned"
@@ -61,7 +61,7 @@ msgstr "Zablokowani"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "Zaproszeni użytkownicy"
 
 #: Notifications
 msgid "notifications"
@@ -77,7 +77,7 @@ msgstr "Hasło"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Hasło serwera"
 
 #: I have a password
 msgid "password_have"
@@ -225,7 +225,7 @@ msgstr "Ogólne"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "Język"
 
 #: Theme
 msgid "settings_theme"
@@ -389,7 +389,7 @@ msgstr "Zresetuj"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "Filtr"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -597,7 +597,7 @@ msgstr "{{count}} osoby/osób tutaj"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Filtruj użytkowników na kanale"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -629,7 +629,7 @@ msgstr "Połącz z siecią"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "Nazwa sieci"
 
 #: Close options
 msgid "side_close"
@@ -757,7 +757,7 @@ msgstr "Filtruj kanały"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Znajdź więcej kanałów"
 
 #: Change nick
 msgid "change_nick"
@@ -765,11 +765,11 @@ msgstr "Zmień pseudonim"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "Podaj nowy pseudonim..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "To jesteś Ty!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -829,15 +829,15 @@ msgstr "Proszę podać pokój aby dołączyć. np. /join #pokój"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "Pseudonim {{nick}} jest już używany!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "Musisz podać nowy pseudonim"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "Pseudonim nie może zaczynać się od cyfry"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -953,7 +953,7 @@ msgstr "Odłącz się od serwera IRC"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Connect to a new IRC network"
+msgstr "Połącz się z nową siecią IRC"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -989,7 +989,7 @@ msgstr "Rzuć kostką"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
+msgstr "Rzuca {{sides}} kośćmi i otrzymuje {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -1009,19 +1009,19 @@ msgstr "Dodaj sieć"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "You are trying to connect to {{network}}"
+msgstr "Próbujesz się połączyć z {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Network has been added to your existing Kiwi window."
+msgstr "Sieć została dodana do twojego istniejącego okna Kiwi."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Add network to existing Kiwi window"
+msgstr "Dodaj sieć do istniejącego okna Kiwi"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Temporarily connect to this network"
+msgstr "Tymczasowo połącz się z tą siecią"
 
 #: Saved networks
 msgid "personal_saved"
