@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2021-01-03 06:21\n"
+"PO-Revision-Date: 2021-01-03 06:31\n"
 
 #: Start
 msgid "start_button"
@@ -49,7 +49,7 @@ msgstr "Ustawienia Kiwi"
 
 #: Channels
 msgid "channels"
-msgstr "Pokoje"
+msgstr "Kanały"
 
 #: Access
 msgid "access"
@@ -57,7 +57,7 @@ msgstr "Dostęp"
 
 #: Banned Users
 msgid "banned"
-msgstr "Zablokowani"
+msgstr "Zablokowani użytkownicy"
 
 #: Invited Users
 msgid "invited"
@@ -93,7 +93,7 @@ msgstr "Pseudonim"
 
 #: Channel
 msgid "channel"
-msgstr "Pokój"
+msgstr "Kanał"
 
 #: Messages
 msgid "messages"
@@ -137,7 +137,7 @@ msgstr "Nie"
 
 #: Not found.
 msgid "not_found"
-msgstr "Nie znaleziono"
+msgstr "Nie znaleziono."
 
 #: Warning!
 msgid "warning"
@@ -173,7 +173,7 @@ msgstr "Ignoruj użytkownika"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Pokój"
+msgstr "Kanał"
 
 #: Away
 msgid "away"
@@ -297,7 +297,7 @@ msgstr "Udostępnij, gdy piszę wiadomość"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Pokaż podgląd obrazów w tekście"
+msgstr "Pokazuj podgląd obrazów w tekście"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -389,7 +389,7 @@ msgstr "Zresetuj"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filtr"
+msgstr "Filtruj"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -497,11 +497,11 @@ msgstr "Pokaż przeglądarkę stanu"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Ukryj temat"
+msgstr "Ukrywaj temat"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Pokaż temat"
+msgstr "Wyświetlaj temat"
 
 #: Channel Settings
 msgid "channel_settings"
@@ -673,7 +673,7 @@ msgstr "Nie ustawiono buforu"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "Nie ma tematu dla tego pokoju"
+msgstr "Nie ma tematu dla tego kanału"
 
 #: About
 msgid "about"
@@ -901,15 +901,15 @@ msgstr "Zrób coś fizycznego"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Dolącz do pokoju"
+msgstr "Dolącz do kanału"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Wyjdż z pokoju"
+msgstr "Wyjdż z kanału"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Wyjdż, następnie ponownie dołącz do pokoju"
+msgstr "Wyjdż, następnie ponownie dołącz do kanału"
 
 #: Change your nickname
 msgid "command_nick"
@@ -921,11 +921,11 @@ msgstr "Rozpocznij prywatną rozmowę z kimś"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Zaproś kogoś do pokoju"
+msgstr "Zaproś kogoś do kanału"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Ustaw temat dla tego pokoju"
+msgstr "Ustaw temat dla tego kanału"
 
 #: Send a notice
 msgid "command_notice"
