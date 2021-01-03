@@ -720,7 +720,6 @@ export default {
     margin-right: -2px;
 }
 
-// hide the control input on narrow screens when the self user box is open
 .kiwi-controlinput-portrait-hide {
     display: block;
 }
@@ -895,7 +894,7 @@ export default {
     .kiwi-wrap--statebrowser-drawopen .kiwi-controlinput {
         z-index: 0;
     }
-
+    // hide the control input on narrow screens when the self user box is open
     .kiwi-controlinput-portrait-hide {
         display: none;
     }
