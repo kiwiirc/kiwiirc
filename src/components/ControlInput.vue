@@ -17,8 +17,9 @@
             </transition>
         </div>
 
-        <div class="kiwi-controlinput-inner"
-             :class="[selfuser_open ? 'kiwi-controlinput-portrait-hide' : '']"
+        <div 
+            class="kiwi-controlinput-inner"
+            :class="[selfuser_open ? 'kiwi-controlinput-portrait-hide' : '']"
         >
             <away-status-indicator
                 v-if="buffer.getNetwork() && buffer.getNetwork().state === 'connected'"
@@ -719,6 +720,7 @@ export default {
     margin-right: -2px;
 }
 
+// hide the control input on narrow screens when the self user box is open
 .kiwi-controlinput-portrait-hide {
     display: block;
 }
