@@ -139,7 +139,7 @@ export default {
                 }
 
                 let newUrl = this.embedding.url
-                    .replace('{url}', this.url)
+                    .replace('{url}', encodeURIComponent(this.url))
                     .replace('{center}', !this.showPin)
                     .replace('{width}', this.embedding.maxWidth || 1000)
                     .replace('{height}', this.embedding.maxHeight || 400);
