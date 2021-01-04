@@ -1,16 +1,19 @@
 const rulesDirPlugin = require('eslint-plugin-rulesdir');
+
 rulesDirPlugin.RULES_DIR = 'build/eslint/rules/';
+
+/* eslint-disable quote-props */
 
 module.exports = {
     root: true,
     parserOptions: {
         parser: 'babel-eslint',
-        sourceType: 'module'
+        sourceType: 'module',
     },
     extends: [
         'plugin:vue/recommended',
         '@vue/airbnb',
-        'standard'
+        'standard',
     ],
     env: {
         'browser': true,
@@ -31,7 +34,7 @@ module.exports = {
             'objects': 'always-multiline',
             'imports': 'never',
             'exports': 'never',
-            'functions': 'ignore'
+            'functions': 'ignore',
         }],
         'import/extensions': 0,
         'import/no-cycle': 0,
@@ -56,9 +59,11 @@ module.exports = {
         'prefer-template': 0,
         'semi': ['error', 'always'],
         'space-before-function-paren': ['error', 'never'],
+        'vue/component-definition-name-casing': 0,
         'vue/html-indent': ['error', 4],
         'vue/max-attributes-per-line': 0,
         'vue/multiline-html-element-content-newline': 0,
+        'vue/no-mutating-props': 0,
         'vue/no-unused-components': 0,
         'vue/no-v-html': 0,
         'vue/require-prop-types': 0,

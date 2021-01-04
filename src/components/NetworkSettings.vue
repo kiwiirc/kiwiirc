@@ -93,50 +93,48 @@
                 </h4>
 
                 <div v-if="show_advanced" class="kiwi-networksettings-advanced">
-                    <template>
+                    <input-text
+                        v-model="network.connection.encoding"
+                        :label="$t('settings_encoding')"
+                    />
+
+                    <input-text
+                        v-model="network.connection.password"
+                        :show-plain-text="true"
+                        :label="$t('server_password')"
+                        type="password"
+                    />
+
+                    <input-text
+                        v-model="network.gecos"
+                        :label="$t('whois_realname')"
+                    />
+
+                    <label>
+                        <span class="kiwi-appsettings-showraw-label">
+                            {{ $t('settings_show_raw') }}
+                        </span>
+                        <input v-model="settingShowRaw" type="checkbox">
+                    </label>
+
+                    <label>
+                        <span class="kiwi-appsettings-showraw-label">
+                            {{ $t('settings_use_websocket') }}
+                        </span>
+                        <input v-model="network.connection.direct" type="checkbox">
                         <input-text
-                            v-model="network.connection.encoding"
-                            :label="$t('settings_encoding')"
+                            v-if="network.connection.direct"
+                            v-model="directWs"
                         />
+                    </label>
 
+                    <label class="u-form-block">
                         <input-text
-                            v-model="network.connection.password"
-                            :show-plain-text="true"
-                            :label="$t('server_password')"
-                            type="password"
+                            v-model="network.auto_commands"
+                            :label="$t('settings_autorun')"
+                            type="textarea"
                         />
-
-                        <input-text
-                            v-model="network.gecos"
-                            :label="$t('whois_realname')"
-                        />
-
-                        <label>
-                            <span class="kiwi-appsettings-showraw-label">
-                                {{ $t('settings_show_raw') }}
-                            </span>
-                            <input v-model="settingShowRaw" type="checkbox">
-                        </label>
-
-                        <label>
-                            <span class="kiwi-appsettings-showraw-label">
-                                {{ $t('settings_use_websocket') }}
-                            </span>
-                            <input v-model="network.connection.direct" type="checkbox">
-                            <input-text
-                                v-if="network.connection.direct"
-                                v-model="directWs"
-                            />
-                        </label>
-
-                        <label class="u-form-block">
-                            <input-text
-                                v-model="network.auto_commands"
-                                :label="$t('settings_autorun')"
-                                type="textarea"
-                            />
-                        </label>
-                    </template>
+                    </label>
                 </div>
 
                 <captcha

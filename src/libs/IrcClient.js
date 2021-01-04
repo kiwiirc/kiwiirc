@@ -282,7 +282,8 @@ function clientMiddleware(state, network) {
                 });
             }
 
-            numConnects++;
+            // TODO not yet used
+            numConnects++; // eslint-disable-line no-unused-vars
         }
 
         if (command === 'server options') {

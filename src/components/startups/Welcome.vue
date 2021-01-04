@@ -2,10 +2,10 @@
     <startup-layout ref="layout"
                     class="kiwi-welcome-simple"
     >
-        <template v-if="startupOptions.altComponent" v-slot:connection>
+        <template v-if="startupOptions.altComponent" #connection>
             <component :is="startupOptions.altComponent" @close="onAltClose" />
         </template>
-        <template v-else v-slot:connection>
+        <template v-else #connection>
             <form class="u-form u-form--big kiwi-welcome-simple-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText" />
                 <div v-if="errorMessage" class="kiwi-welcome-simple-error">{{ errorMessage }}</div>

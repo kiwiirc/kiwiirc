@@ -20,6 +20,8 @@
 
 let Vue = require('vue');
 
+/* eslint-disable vue/one-component-per-file */
+
 Vue.component('tabbed-tab', {
     props: {
         header: { status: String },

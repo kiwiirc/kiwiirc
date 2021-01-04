@@ -1,6 +1,6 @@
 <template>
     <startup-layout ref="layout" class="kiwi-startbnc">
-        <template v-slot:connection>
+        <template #connection>
             <form class="kiwi-startbnc-form" @submit.prevent="startUp">
                 <h2 v-html="greetingText" />
 

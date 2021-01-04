@@ -32,7 +32,7 @@
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
                     >
-                        <template v-if="mediaviewerOpen" v-slot:before>
+                        <template v-if="mediaviewerOpen" #before>
                             <media-viewer
                                 :url="mediaviewerUrl"
                                 :component="mediaviewerComponent"
@@ -51,10 +51,10 @@
                 </template>
                 <component
                     :is="fallbackComponent"
-                    v-else-if="!activeComponent"
                     v-bind="fallbackComponentProps"
+                    v-else-if="!activeComponent"
                 />
-                <component :is="activeComponent" v-else v-bind="activeComponentProps" />
+                <component :is="activeComponent" v-bind="activeComponentProps" v-else />
             </div>
         </template>
     </div>
