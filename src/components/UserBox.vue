@@ -189,7 +189,7 @@
             v-if="buffer.isQuery() && invitableBuffers.length > 0"
             class="kiwi-userbox-query-invite kiwi-userbox-actions u-form"
         >
-            <select v-model="inviteChan">
+            <select v-model="inviteChan" class="u-input">
                 <option value="">{{ $t('select_channel') }}</option>
                 <option
                     v-for="chan in invitableBuffers"
@@ -197,7 +197,7 @@
                     :value="chan"
                 >{{ chan }}</option>
             </select>
-            <a class="kiwi-userbox-action" @click="inviteUser()">
+            <a class="u-button u-button-secondary" @click="inviteUser()">
                 {{ $t('invite_user') }}
             </a>
         </div>

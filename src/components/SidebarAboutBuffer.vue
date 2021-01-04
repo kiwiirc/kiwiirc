@@ -48,6 +48,37 @@
         </div>
 
         <div
+            v-if="areWeAnOp"
+            :class="{'kiwi-aboutbuffer-section--closed': closedSections.invite}"
+            class="kiwi-aboutbuffer-section"
+        >
+            <h4 @click="toggleSection('invite')">
+                <i class="fa fa-angle-right" /> {{ $t('invite_user') }}
+            </h4>
+            <div>
+                <div class="kiwi-aboutbuffer-invite u-form">
+                    <input
+                        v-model="inviteNick"
+                        type="text"
+                        class="u-input"
+                        @keydown="inviteKeyDown"
+                    >
+                    <a class="u-button u-button-secondary" @click="inviteUser">
+                        {{ $t('invite_user') }}
+                    </a>
+                </div>
+                <auto-complete
+                    v-if="inviteableUsers.length > 0"
+                    ref="autocomplete"
+                    class="kiwi-aboutbuffer-invite-auto-complete"
+                    :items="inviteableUsers"
+                    :filter="inviteNick"
+                    @selected="inviteSelected"
+                />
+            </div>
+        </div>
+
+        <div
             v-for="plugin in pluginUiSections"
             :key="plugin.id"
             :class="{'kiwi-aboutbuffer-section--closed': closedSections[plugin.id]}"
@@ -78,14 +109,19 @@
 import GlobalApi from '@/libs/GlobalApi';
 import toHtml from '@/libs/renderers/Html';
 import parseMessage from '@/libs/MessageParser';
+import AutoComplete from './AutoComplete';
 
 export default {
+    components: {
+        AutoComplete,
+    },
     props: ['network', 'buffer', 'sidebarState'],
     data() {
         return {
             self: this,
             pluginUiSections: GlobalApi.singleton().aboutBufferPlugins,
             closedSections: {},
+            inviteNick: '',
         };
     },
     computed: {
@@ -112,10 +148,39 @@ export default {
                 .filter((m) => m.html)
                 .sort((a, b) => b.time - a.time);
         },
+
+        areWeAnOp() {
+            return this.buffer.isUserAnOp(this.network.nick);
+        },
+
+        inviteableUsers() {
+            const wantedBuffer = (userBuffer) => userBuffer.buffer.name === this.buffer.name;
+            return Object.values(this.network.users)
+                .filter((user) => !Object.values(user.buffers).find(wantedBuffer))
+                .map((user) => ({ text: user.nick }));
+        },
     },
     methods: {
         toggleSection(section) {
             this.$set(this.closedSections, section, !this.closedSections[section]);
+        },
+        inviteUser() {
+            if (!this.inviteNick) {
+                return;
+            }
+            // TODO switch these back once irc-framework is updated
+            // this.network.ircClient.invite(this.buffer.name, this.inviteNick);
+            this.network.ircClient.raw(['INVITE', this.inviteNick, this.buffer.name]);
+        },
+        inviteSelected(value, item) {
+            this.inviteNick = value;
+        },
+        inviteKeyDown(event) {
+            if (event.key === 'Tab') {
+                this.$refs.autocomplete.selectCurrentItem();
+                return;
+            }
+            this.$refs.autocomplete.handleOnKeyDown(event);
         },
     },
 };
@@ -141,6 +206,27 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.kiwi-aboutbuffer-invite {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.kiwi-aboutbuffer-invite > input {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.kiwi-aboutbuffer-invite-auto-complete {
+    position: relative;
+    margin-top: 1em;
+    bottom: 0;
+}
+
+.kiwi-aboutbuffer-invite-auto-complete .kiwi-autocomplete-item {
+    cursor: pointer;
 }
 
 .kiwi-aboutbuffer-highlight {
