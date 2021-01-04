@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2020-07-14 20:31\n"
+"PO-Revision-Date: 2021-01-03 23:51\n"
 
 #: Start
 msgid "start_button"
@@ -525,7 +525,7 @@ msgstr "Vuoi veramente uscire dal canale?"
 
 #: Send a message...
 msgid "input_placeholder"
-msgstr "Invia un messaggio..."
+msgstr "Scrivi..."
 
 #: Loading {{url}}...
 msgid "media_loading"
