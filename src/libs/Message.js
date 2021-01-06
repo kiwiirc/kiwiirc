@@ -114,6 +114,19 @@ export default class Message {
         this.embed.payload = url;
         this.embed.type = 'url';
     }
+
+    serialise() {
+        return {
+            id: this.id,
+            time: this.time,
+            server_time: this.server_time,
+            nick: this.nick,
+            message: this.message,
+            tags: this.tags,
+            type: this.type,
+            type_extra: this.type_extra,
+        };
+    }
 }
 
 function extractMessageId(message) {
