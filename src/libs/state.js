@@ -122,7 +122,12 @@ function createNewState() {
                                 key: buffer.key,
                                 enabled: !!buffer.enabled,
                                 settings: _.cloneDeep(buffer.settings),
+                                latest_messages: [],
                             };
+
+                            buffer.latest_messages.forEach((msg) => {
+                                bufferObj.latest_messages.push(msg.serialise());
+                            });
 
                             return bufferObj;
                         });
@@ -176,6 +181,10 @@ function createNewState() {
                             buffer.key = impBuffer.key;
                             buffer.enabled = !!impBuffer.enabled;
                             buffer.settings = impBuffer.settings;
+
+                            impBuffer.latest_messages.forEach((msg) => {
+                                buffer.latest_messages.push(new Message(msg));
+                            });
 
                             network.buffers.push(buffer);
                         });

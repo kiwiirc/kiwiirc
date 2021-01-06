@@ -39,6 +39,7 @@ export default class BufferState {
         this.input_history = [];
         this.input_history_pos = 0;
         this.show_input = true;
+        this.latest_messages = [];
 
         // Counter for chathistory requests. While this value is 0, it means that this buffer is
         // still loading messages
@@ -468,6 +469,28 @@ export default class BufferState {
         this.addMessageBatch(message);
     }
 
+    updateLatestMessages(message) {
+        if (!['privmsg', 'notice'].includes(message.type)) {
+            return;
+        }
+
+        const isNewer = (msg) => this.latest_messages[0].time <= msg.time &&
+            this.latest_messages[0].instance_num < msg.instance_num;
+
+        if (!this.latest_messages[0] || isNewer(message)) {
+            this.latest_messages.unshift(message);
+        }
+
+        if (this.latest_messages.length > 5) {
+            // restrict array to 5 elements
+            this.latest_messages.length = 5;
+        }
+    }
+
+    getLatestMessage() {
+        return this.latest_messages[0];
+    }
+
     say(message, opts = {}) {
         let network = this.getNetwork();
         let newMessage = {
@@ -575,6 +598,7 @@ function createMessageBatch(bufferState) {
         if (bufferState.messagesObj.messageIds[newMessage.id]) {
             return;
         }
+        bufferState.updateLatestMessages(newMessage);
         bufferState.messagesObj.messages.push(newMessage);
         bufferState.messagesObj.messageIds[newMessage.id] = newMessage;
         if (bufferState.isMessageTrimming) {
@@ -588,6 +612,7 @@ function createMessageBatch(bufferState) {
         if (toAdd.length > 0) {
             bufferState.messagesObj.messages = bufferState.messagesObj.messages.concat(toAdd);
             toAdd.forEach((msg) => {
+                bufferState.updateLatestMessages(msg);
                 bufferState.messagesObj.messageIds[msg.id] = msg;
             });
             if (bufferState.isMessageTrimming) {
