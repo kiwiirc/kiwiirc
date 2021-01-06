@@ -570,9 +570,13 @@ msgstr "Send a message..."
 msgid "media_loading"
 msgstr "Loading {{url}}..."
 
-#: Preview Not Supported
+#: Preview url not supported
 msgid "preview_not_supported"
-msgstr "Preview Not Supported"
+msgstr "Preview url not supported"
+
+#: Preview failed to load
+msgid "preview_failed"
+msgstr "Preview failed to load"
 
 
 

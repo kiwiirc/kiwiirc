@@ -146,6 +146,7 @@ export const configTemplates = {
 /slap /me slaps $1 around a bit with a large trout
 /tick /msg $channel ✔`,
         embedly: {
+            enabled: false,
             Key: '',
         },
         /* eslint-disable quote-props */

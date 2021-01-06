@@ -15,9 +15,11 @@
                 <i class="fa fa-window-close" aria-hidden="true" />
             </a>
         </div>
-        <div v-if="error" class="kiwi-mediaviewer-error">
-            {{ error }}
-        </div>
+        <div
+            v-if="error"
+            class="kiwi-mediaviewer-error"
+            :class="{'kiwi-mediaviewer-center': !showPin}"
+        >{{ error }}</div>
         <iframe
             v-else-if="isIframe"
             :src="url"
@@ -26,7 +28,7 @@
         />
         <component :is="component" v-else-if="component" :component-props="componentProps" />
         <iframe
-            v-else-if="!embedlyKey"
+            v-else-if="!embedly.enabled"
             ref="embedFrame"
             :sandbox="iframeSandboxOptions"
             frameborder="0"
@@ -38,7 +40,7 @@
             <a
                 ref="embedlyLink"
                 :href="url"
-                :data-card-key="embedlyKey"
+                :data-card-key="embedly.key"
                 class="kiwi-embedly-card"
                 data-card-chrome="0"
                 data-card-controls="0"
@@ -60,13 +62,14 @@ export default {
     data() {
         return {
             error: '',
+            iframeTimeout: 0,
             addedEventListener: false,
             debouncedUpdateEmbed: null,
         };
     },
     computed: {
-        embedlyKey() {
-            return this.$state.settings.embedly.key;
+        embedly() {
+            return this.$state.setting('embedly');
         },
         embedding() {
             return this.$state.setting('embedding');
@@ -131,7 +134,7 @@ export default {
                 return;
             }
 
-            if (!this.embedlyKey) {
+            if (!this.embedly.enabled) {
                 const iframe = this.$refs.embedFrame;
                 if (!iframe) {
                     // No iframe to work with so nothing to update
@@ -146,6 +149,15 @@ export default {
 
                 // Set the iframe url
                 iframe.src = newUrl;
+
+                if (this.iframeTimeout) {
+                    clearTimeout(this.iframeTimeout);
+                }
+
+                this.iframeTimeout = setTimeout(() => {
+                    this.$el.style.height = 'auto';
+                    this.error = this.$t('preview_failed');
+                }, 2000);
 
                 // Add message event listener if it does not exist
                 this.maybeAddOrRemoveEventListener(true);
@@ -188,6 +200,9 @@ export default {
                 this.error = (data.error === 'not_supported') ?
                     this.$t('preview_not_supported') :
                     data.error;
+
+                // stop hiding the media viewer to show the error
+                this.$el.style.height = 'auto';
             } else if (data.dimensions) {
                 // Dimensions message contains updated dimensions for the iframe content
                 const height = Math.min(data.dimensions.height, this.embedding.maxHeight || 400);
@@ -196,6 +211,10 @@ export default {
                 // Now we have dimensions stop hiding the media viewer
                 // This is to stop the message list jumping when opened with invalid url
                 this.$el.style.height = 'auto';
+            }
+
+            if (this.iframeTimeout && (data.error || data.dimensions)) {
+                clearTimeout(this.iframeTimeout);
             }
         },
         maybeAddOrRemoveEventListener(add) {
@@ -207,6 +226,9 @@ export default {
                 this.addedEventListener = false;
             }
         },
+        embedError(event) {
+            console.log('embedError', event);
+        },
     },
 };
 </script>
@@ -215,7 +237,7 @@ export default {
 .kiwi-mediaviewer {
     box-sizing: border-box;
     position: relative;
-    height: auto;
+    height: 0;
 }
 
 .kiwi-mediaviewer-controls {
@@ -251,6 +273,13 @@ export default {
     display: inline-block;
     padding: 10px 15px;
     border-radius: 10px;
+}
+
+.kiwi-mediaviewer-center {
+    margin: 10px 0;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 .embedly-card {
