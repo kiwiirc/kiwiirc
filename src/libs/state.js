@@ -182,7 +182,8 @@ function createNewState() {
                             buffer.enabled = !!impBuffer.enabled;
                             buffer.settings = impBuffer.settings;
 
-                            impBuffer.latest_messages.forEach((msg) => {
+                            let latestMessages = impBuffer.latest_messages || [];
+                            latestMessages.forEach((msg) => {
                                 buffer.latest_messages.push(new Message(msg));
                             });
 
