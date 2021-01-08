@@ -23,11 +23,12 @@
                 class="kiwi-mediaviewer-iframe"
             />
             <component :is="component" v-else-if="component" :component-props="componentProps" />
-            <preview-provider
+            <url-embed
                 v-else
                 :url="url"
                 :show-pin="showPin"
                 :iframe-sandbox-options="iframeSandboxOptions"
+                @close="$emit('close')"
                 @setHeight="setHeight"
                 @setMaxHeight="setMaxHeight"
             />
@@ -39,11 +40,11 @@
 'kiwi public';
 
 import _ from 'lodash';
-import PreviewProvider from './PreviewProvider.vue';
+import UrlEmbed from './UrlEmbed.vue';
 
 export default {
     components: {
-        PreviewProvider,
+        UrlEmbed,
     },
     props: ['url', 'component', 'componentProps', 'isIframe', 'showPin'],
     data() {
