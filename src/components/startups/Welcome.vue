@@ -56,10 +56,6 @@
                     />
                 </div>
 
-                <captcha
-                    :network="network"
-                />
-
                 <button
                     v-if="!network || network.state === 'disconnected'"
                     :disabled="!readyToStart"
@@ -88,14 +84,12 @@ import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import Logger from '@/libs/Logger';
 import BouncerProvider from '@/libs/BouncerProvider';
-import Captcha from '@/components/Captcha';
 import StartupLayout from './CommonLayout';
 
 let log = Logger.namespace('Welcome.vue');
 
 export default {
     components: {
-        Captcha,
         StartupLayout,
     },
     data: function data() {
@@ -112,7 +106,6 @@ export default {
             show_password_box: false,
             connectWithoutChannel: false,
             showPlainText: false,
-            captchaReady: false,
         };
     },
     computed: {
@@ -375,9 +368,6 @@ export default {
             // Replace ? with a random number
             let tmp = (nick || '').replace(/\?/g, () => Math.floor(Math.random() * 100).toString());
             return _.trim(tmp);
-        },
-        handleCaptcha(isReady) {
-            this.captchaReady = isReady;
         },
         connectOptions() {
             let options = Object.assign({}, this.$state.settings.startupOptions);

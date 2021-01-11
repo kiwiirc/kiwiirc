@@ -11,11 +11,6 @@
                     <span>{{ network.last_error }}</span>
                 </div>
 
-                <captcha
-                    class="kiwi-networksettings-captcha"
-                    :network="network"
-                />
-
                 <div v-if="network.editable_name" class="kiwi-networksettings-networkname">
                     <input-text
                         v-model="network.name"
@@ -139,11 +134,6 @@
                     </template>
                 </div>
 
-                <captcha
-                    class="kiwi-notconnected-captcha"
-                    :network="network"
-                />
-
                 <button
                     v-if="network.state === 'disconnected'"
                     class="u-button kiwi-connect-to-newnetwork"
@@ -174,13 +164,11 @@
 'kiwi public';
 
 import * as Misc from '@/helpers/Misc';
-import Captcha from '@/components/Captcha';
 import ServerSelector from './ServerSelector';
 
 export default {
     components: {
         ServerSelector,
-        Captcha,
     },
     props: ['network'],
     data() {
@@ -381,10 +369,6 @@ export default {
     box-sizing: border-box;
     width: 100%;
     padding: 20px;
-}
-
-.kiwi-networksettings-captcha {
-    margin-bottom: 1em;
 }
 
 //Style the 'secrue/unsecure' port icon

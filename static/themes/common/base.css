@@ -624,6 +624,14 @@
     background: var(--brand-error);
 }
 
+.kiwi-captcha-outer {
+    background-color: #000c;
+}
+
+.kiwi-captcha-container {
+    background-color: #fff;
+}
+
 /* ---- Container ( Container.vue )  ---- */
 .kiwi-container-toggledraw-statebrowser,
 .kiwi-container-toggledraw-sidebar {
