@@ -222,6 +222,55 @@ export function parseIrcUri(str) {
 }
 
 /**
+ * Parse preset server string to an object
+ * format: freenode|irc.freenode.net:+6697
+ * @param {string} input Preset server string
+ */
+export function parsePresetServer(input) {
+    let ret = {
+        name: '',
+        server: '',
+        port: 6667,
+        tls: false,
+    };
+
+    ret.toUri = () => `${ret.server}:${ret.tls ? '+' : ''}${ret.port}`;
+
+    let val = input;
+
+    let pipePos = val.indexOf('|');
+    if (pipePos > -1) {
+        ret.name = val.substr(0, pipePos);
+        val = val.substr(pipePos + 1);
+    }
+
+    let colonPos = val.indexOf(':');
+    if (colonPos === -1) {
+        ret.server = val;
+        val = '';
+    } else {
+        ret.server = val.substr(0, colonPos);
+        val = val.substr(colonPos + 1);
+    }
+
+    if (val[0] === '+') {
+        ret.tls = true;
+        val = val.substr(1);
+    }
+
+    if (val.length > 0) {
+        ret.port = parseInt(val, 10);
+        val = '';
+    }
+
+    if (!ret.name) {
+        ret.name = ret.server;
+    }
+
+    return ret;
+}
+
+/**
  * Scan though an object and extend any dot notated keys
  * @param {Object} confObj Source object to traverse
  */
