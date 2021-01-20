@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 18:51\n"
+"PO-Revision-Date: 2021-01-20 19:11\n"
 
 #: Start
 msgid "start_button"
@@ -489,11 +489,11 @@ msgstr "Няма намерени канали, опитайте отново п
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Добре дошли в Kiwi IRC!"
+msgstr "Добре дошли в Kiwi IRC! Изберете канал вляво."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Показване на statebrowser"
+msgstr "Показване на състоянието на браузъра"
 
 #: Hide Topic
 msgid "hide_topic"
