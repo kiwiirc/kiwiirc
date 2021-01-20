@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 21:51\n"
+"PO-Revision-Date: 2021-01-20 22:11\n"
 
 #: Start
 msgid "start_button"
@@ -909,11 +909,11 @@ msgstr "Напускам канала"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Напуснете и пак се включете към канала"
+msgstr "Напуснете и пак се присъединете към канала"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Променете псевдонима си"
+msgstr "Променете прякора си"
 
 #: Start a private conversation with someone
 msgid "command_query"
@@ -953,7 +953,7 @@ msgstr "Прекъснете връзката с IRC сървъра"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Свърване към нова IRC мрежа "
+msgstr "Свърване към нова IRC мрежа"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -969,7 +969,7 @@ msgstr "Маркирайте себе си като далеч от компют
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Задайте, че сте активен"
+msgstr "Задайте се като дейни"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -981,7 +981,7 @@ msgstr "Игнорирайте съобщенията от някого"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Престани да игнорираш някого"
+msgstr "Спиране на игнорирането на някого"
 
 #: Roll a Dice
 msgid "command_dice"
@@ -1013,7 +1013,7 @@ msgstr "Опитвате се да се свържете с {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Мрежата е добавена към съществуващия ви прозорец."
+msgstr "Мрежата е добавена към съществуващия ви прозорец Kiwi."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
