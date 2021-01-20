@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 18:41\n"
+"PO-Revision-Date: 2021-01-20 18:51\n"
 
 #: Start
 msgid "start_button"
@@ -373,7 +373,7 @@ msgstr "Разширени настройки"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Чудовищата са тук, кликнете само върху този бутон, ако знаете какво правите"
+msgstr "Чудовищата са тук, щракнете само върху този бутон, ако знаете какво вършите"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
