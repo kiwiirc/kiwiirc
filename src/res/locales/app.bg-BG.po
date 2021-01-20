@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 18:21\n"
+"PO-Revision-Date: 2021-01-20 18:31\n"
 
 #: Start
 msgid "start_button"
@@ -841,43 +841,43 @@ msgstr "Прякорът не трябва да почва с цифри"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} дава оп на {{target}}"
+msgstr "{{nick}} дава права оператор на {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} премахна оп от {{target}}"
+msgstr "{{nick}} премахна права оператор от {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} дава халфоп на {{target}}"
+msgstr "{{nick}} дава права полуоператор на {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} премахна халфоп от {{target}}"
+msgstr "{{nick}} премахна права полуоператор от {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} дава войс на {{target}}"
+msgstr "{{nick}} дава права глас на {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} премахва войс от {{target}}"
+msgstr "{{nick}} премахва права глас от {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} дава админ на {{target}}"
+msgstr "{{nick}} дава права администратор на {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} премахва админ от {{target}}"
+msgstr "{{nick}} премахва права администратор от {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} дава оунър на {{target}}"
+msgstr "{{nick}} дава права собственик на {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} премахва оунър на {{target}}"
+msgstr "{{nick}} премахва права собственик от {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -885,7 +885,7 @@ msgstr "{{nick}} има забрана от {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} премахва забраната в/у {{target}}"
+msgstr "{{nick}} премахна забраната на {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
@@ -893,7 +893,7 @@ msgstr "{{nick}} задава {{mode}} на {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Изпрати съобщение"
+msgstr "Изпращане на съобщение"
 
 #: Do something physical
 msgid "command_action"
@@ -1049,7 +1049,7 @@ msgstr "Изключен"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Свързан с"
+msgstr "Свързано към {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
