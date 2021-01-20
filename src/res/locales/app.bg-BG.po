@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 21:31\n"
+"PO-Revision-Date: 2021-01-20 21:41\n"
 
 #: Start
 msgid "start_button"
@@ -301,7 +301,7 @@ msgstr "Show inline image previews"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Добави влизания/излизаня съобщения като активност"
+msgstr "Включване на съобщения за влизане/излизане като дейност"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
