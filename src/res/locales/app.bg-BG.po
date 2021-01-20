@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 14:32\n"
+"PO-Revision-Date: 2021-01-20 17:57\n"
 
 #: Start
 msgid "start_button"
@@ -101,7 +101,7 @@ msgstr "Съобщения"
 
 #: Network
 msgid "network"
-msgstr "IRC Мрежа"
+msgstr "Мрежа"
 
 #: ZNC
 msgid "znc"
@@ -153,7 +153,7 @@ msgstr "Истинско име"
 
 #: Status
 msgid "whois_status"
-msgstr "Статус"
+msgstr "Състояние"
 
 #: Is available
 msgid "whois_status_available"
@@ -221,7 +221,7 @@ msgstr "секунди"
 
 #: General
 msgid "settings_general"
-msgstr "Главни настройки"
+msgstr "Общи"
 
 #: Language
 msgid "settings_language"
@@ -229,11 +229,11 @@ msgstr "Език"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Настройки на темата"
+msgstr "Тема"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Oпресняване на темите"
+msgstr "Опресняване на темите"
 
 #: Theme URL
 msgid "settings_themeurl"
