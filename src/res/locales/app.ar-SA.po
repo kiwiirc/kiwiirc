@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2021-01-20 12:51\n"
+"PO-Revision-Date: 2021-01-20 13:02\n"
 
 #: Start
 msgid "start_button"
@@ -653,7 +653,7 @@ msgstr "أظهر عند تغير موضوع القناة"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "أظهر عندما يغيّر المستخدمون ألقابهم"
+msgstr "أظهر عندما يغيّر المستخدمون أسمائهم المستعارة"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
@@ -689,7 +689,7 @@ msgstr "Highlights"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nobody has mentioned you yet..."
+msgstr "لم يذكرك أحد بعد..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -729,15 +729,15 @@ msgstr "الشبكات المتاحة"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "أضف شبكة"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "شبكة جديدة"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "لا شبكة"
 
 #: Configure network
 msgid "state_configure"
@@ -753,11 +753,11 @@ msgstr "انضم إلى غرفة جديدة"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "تصفية القنوات"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "جد المزيد من القنوات"
 
 #: Change nick
 msgid "change_nick"
@@ -765,11 +765,11 @@ msgstr "تغيير الاسم"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "أدخِل اسماً مستعاراً جديداً..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "هذا أنت!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -825,19 +825,19 @@ msgstr "منع وطرد من الغرفة"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Please specify a channel to join. eg /join #example"
+msgstr "لطفاً حدد قناة للإنضمام إليها. مثلا ‎/join #example"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "الإسم المستعار {{nick}} قيد الاستخدام مسبقاً!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "يجب أن تُدخل إسماً مستعاراً جديداً"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "يجب أن لا يبدأ الإسم المستعار برقم"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
