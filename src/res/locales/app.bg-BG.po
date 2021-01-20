@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 22:11\n"
+"PO-Revision-Date: 2021-01-20 22:21\n"
 
 #: Start
 msgid "start_button"
@@ -265,7 +265,7 @@ msgstr "Съобщения в чата"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Покажи времето"
+msgstr "Показване на печат с часа"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
@@ -1073,7 +1073,7 @@ msgstr "{{nick}} ви покани да се присъедините към {{c
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Прякор {{nick}} вече се използва. Опитайте нов {{newnick}} ..."
+msgstr "Прякорът {{nick}} вече се употребява. Опитайте {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
