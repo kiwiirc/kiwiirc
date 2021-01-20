@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 22:21\n"
+"PO-Revision-Date: 2021-01-20 22:32\n"
 
 #: Start
 msgid "start_button"
@@ -313,11 +313,11 @@ msgstr "Персонализирано осветяване (разделяйт�
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Алиасес"
+msgstr "Псевдоними"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Какво представляват псевдонимите"
+msgstr "Какво представляват псевдонимите?"
 
 #: Send Message
 msgid "send_message"
@@ -653,7 +653,7 @@ msgstr "Показва кога се променя темата на канал
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Показва кога портебителя си сменя ник-а."
+msgstr "Показва кога потребителите променят прякорите си"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
