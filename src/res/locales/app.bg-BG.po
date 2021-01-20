@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 19:22\n"
+"PO-Revision-Date: 2021-01-20 21:21\n"
 
 #: Start
 msgid "start_button"
@@ -289,7 +289,7 @@ msgstr "Допълнително форматиране"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Цветни никове в съобщенията"
+msgstr "Цветни прякори в съобщенията"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
