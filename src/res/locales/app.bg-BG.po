@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 21:21\n"
+"PO-Revision-Date: 2021-01-20 21:31\n"
 
 #: Start
 msgid "start_button"
@@ -205,19 +205,19 @@ msgstr "{{count}} часа"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "минута"
+msgstr "{{count}} минута"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "минути"
+msgstr "{{count}} минути"
 
 #: {{count}} second
 msgid "second"
-msgstr "секунда"
+msgstr "{{count}} секунда"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "секунди"
+msgstr "{{count}} секунди"
 
 #: General
 msgid "settings_general"
@@ -933,7 +933,7 @@ msgstr "Изпращане на известие"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "изпращане на сурова команда към IRC сървъра"
+msgstr "Изпращане на необработена команда към IRC сървъра"
 
 #: Kick somebody from the channel
 msgid "command_kick"
