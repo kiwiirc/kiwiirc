@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 19:11\n"
+"PO-Revision-Date: 2021-01-20 19:22\n"
 
 #: Start
 msgid "start_button"
@@ -37,7 +37,7 @@ msgstr "Свързва се..."
 
 #: Connected
 msgid "connected"
-msgstr "Свързан"
+msgstr "Свързани"
 
 #: Settings
 msgid "settings"
@@ -89,7 +89,7 @@ msgstr "Сървър"
 
 #: Nick
 msgid "nick"
-msgstr "Потребителско име"
+msgstr "Прякор"
 
 #: Channel
 msgid "channel"
@@ -329,11 +329,11 @@ msgstr "Въведете ключа на канала"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "се присъедини отново {{channel}}"
+msgstr "Повторно свързване към {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Кога да ме известява"
+msgstr "Известете ме при"
 
 #: All messages
 msgid "settings_notify_all"
@@ -773,7 +773,7 @@ msgstr "Това сте вие!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Потребителско име: {{user}}"
+msgstr "Име на акаунта: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
@@ -797,7 +797,7 @@ msgstr "Свързан към сървър: {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Използва защитена връзка: SSL/TLS"
+msgstr "Защитено свързано чрез SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
