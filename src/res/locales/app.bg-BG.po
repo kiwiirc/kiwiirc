@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 21:41\n"
+"PO-Revision-Date: 2021-01-20 21:51\n"
 
 #: Start
 msgid "start_button"
@@ -761,7 +761,7 @@ msgstr "Намиране на още канали"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Промяна на ник"
+msgstr "Промяна на прякора"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
