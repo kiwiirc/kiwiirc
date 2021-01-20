@@ -225,7 +225,8 @@ export default {
             this.password = '';
         }
 
-        this.channel = decodeURIComponent(window.location.hash) || options.channel || '';
+        const params = new URLSearchParams(window.location.search);
+        this.channel = decodeURIComponent(window.location.hash) || params.get('channel') || options.channel || '';
         this.showChannel = typeof options.showChannel === 'boolean' ?
             options.showChannel :
             true;
