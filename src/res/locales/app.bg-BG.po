@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 17:57\n"
+"PO-Revision-Date: 2021-01-20 18:11\n"
 
 #: Start
 msgid "start_button"
@@ -245,11 +245,11 @@ msgstr "Разпределение на съобщенията"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Използвайте Monospace"
+msgstr "Употреба на моноширинен шрифт"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Използвайте Kiwi като IRC клиент по подразбиране"
+msgstr "Употреба на Kiwi като мой стандартен IRC клиент"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -341,7 +341,7 @@ msgstr "Всички съобщения"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "Само когато ме споменат."
+msgstr "Споменаването ми"
 
 #: Never
 msgid "settings_notify_never"
@@ -349,7 +349,7 @@ msgstr "Никога"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Забрани всички звукови известия"
+msgstr "Обеззвучаване"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
@@ -425,7 +425,7 @@ msgstr "Има покана от"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Обновяване на листа с покани"
+msgstr "Опресняване на списъка с покани..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
@@ -565,7 +565,7 @@ msgstr "Разширени настройки"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Енкодинг"
+msgstr "Кодиране"
 
 #: Show Raw
 msgid "settings_show_raw"
