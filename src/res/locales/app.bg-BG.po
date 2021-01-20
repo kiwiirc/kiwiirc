@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-01-20 18:31\n"
+"PO-Revision-Date: 2021-01-20 18:41\n"
 
 #: Start
 msgid "start_button"
@@ -409,7 +409,7 @@ msgstr "Опресняване на списъка със забранени..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Няма потребители със забрана!"
+msgstr "Никого не е със забрана!"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -809,7 +809,7 @@ msgstr "Ниво на достъп"
 
 #: Normal
 msgid "user_normal"
-msgstr "Нормален Потребител"
+msgstr "Обичаен"
 
 #: Kick from the channel
 msgid "user_kick"
@@ -825,7 +825,7 @@ msgstr "Забрана и изритване от канала"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Моля, определете канал, към който да се присъедините. напр. /join #example"
+msgstr "Моля, определете канал, към който да се присъедините. напр. /join #primer"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
@@ -1045,7 +1045,7 @@ msgstr "Опитайте разработчика на Kiwi IRC!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Изключен"
+msgstr "Спряно е свързването"
 
 #: Connected to {{network}}!
 msgid "connected_to"
