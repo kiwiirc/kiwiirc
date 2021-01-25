@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2020-11-11 19:42\n"
+"PO-Revision-Date: 2021-01-20 13:22\n"
 
 #: Start
 msgid "start_button"
@@ -573,7 +573,7 @@ msgstr "إظهار الخام"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "مقبس شبكة مباشر"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -597,7 +597,7 @@ msgstr "{{count}} أشخاص هنا"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "تصفية المستخدمين في القناة"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -613,7 +613,7 @@ msgstr "إعادة الاتصال لمتابعة الحديث مع {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "You are not currently connected!"
+msgstr "لستَ متصلاً حالياً!"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -621,15 +621,15 @@ msgstr "إعدادات الإتصال"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "We couldn't connect to that server :("
+msgstr "لم يمكننا الإتصال بذلك الخادم :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "اتصل بشبكة"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "اسم الشبكة"
 
 #: Close options
 msgid "side_close"
@@ -649,15 +649,15 @@ msgstr "عرض عندما ينضم الأشخاص"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Show when channel topic changes"
+msgstr "أظهر عند تغير موضوع القناة"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Show when users change their nicks"
+msgstr "أظهر عندما يغيّر المستخدمون أسمائهم المستعارة"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Show when users change channel modes"
+msgstr "أظهر عندما يغيّر المستخدمون أنماط القناة"
 
 #: Extra message formatting
 msgid "side_formatting"
@@ -673,23 +673,23 @@ msgstr "لا مجموعة عازلة"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "There is no topic for this channel"
+msgstr "لا موضوع لهذه القناة"
 
 #: About
 msgid "about"
-msgstr "About"
+msgstr "حول"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Created at {{when}}"
+msgstr "أُنشيء في {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "ميزات"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nobody has mentioned you yet..."
+msgstr "لم يذكرك أحد بعد..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -729,15 +729,15 @@ msgstr "الشبكات المتاحة"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "أضف شبكة"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "شبكة جديدة"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "لا شبكة"
 
 #: Configure network
 msgid "state_configure"
@@ -753,11 +753,11 @@ msgstr "انضم إلى غرفة جديدة"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "تصفية القنوات"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "جد المزيد من القنوات"
 
 #: Change nick
 msgid "change_nick"
@@ -765,11 +765,11 @@ msgstr "تغيير الاسم"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "أدخِل اسماً مستعاراً جديداً..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "هذا أنت!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -825,71 +825,71 @@ msgstr "منع وطرد من الغرفة"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Please specify a channel to join. eg /join #example"
+msgstr "لطفاً حدد قناة للإنضمام إليها. مثلا ‎/join #example"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "الإسم المستعار {{nick}} قيد الاستخدام مسبقاً!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "يجب أن تُدخل إسماً مستعاراً جديداً"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "يجب أن لا يبدأ الإسم المستعار برقم"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} gives ops to {{target}}"
+msgstr "{{nick}} يعطي صلاحية المشغّل إلى {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} takes ops from {{target}}"
+msgstr "{{nick}} يأخذ صلاحية المشغّل من {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} gives half-ops to {{target}}"
+msgstr "{{nick}} يعطي صلاحية شبه-المشغّل إلى {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} takes half-ops from {{target}}"
+msgstr "{{nick}} يأخذ صلاحية شبه-المشغّل من {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} gives voice to {{target}}"
+msgstr "{{nick}} يعطي الصوت إلى {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} takes voice from {{target}}"
+msgstr "{{nick}} يأخذ الصوت من {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} gives admin to {{target}}"
+msgstr "{{nick}} يعطي صلاحية المدير إلى {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} takes admin from {{target}}"
+msgstr "{{nick}} يأخذ صلاحية المدير من {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} gives owner to {{target}}"
+msgstr "{{nick}} يعطي صلاحية المالك إلى {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} takes owner from {{target}}"
+msgstr "{{nick}} يأخذ صلاحية المالك من {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} has banned {{target}}"
+msgstr "{{nick}} حظرَ {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} has unbanned {{target}}"
+msgstr "{{nick}} أزال حظْر {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
-msgstr "{{nick}} sets {{mode}} on {{target}}"
+msgstr "{{nick}} عيّن {{mode}} إلى {{target}}"
 
 #: Send a message
 msgid "command_msg"
@@ -897,19 +897,19 @@ msgstr "إرسال رسالة"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Do something physical"
+msgstr "إفعل شيئاً ملموساً"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Join a channel"
+msgstr "إنضمّ إلى قناة"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Leave a channel"
+msgstr "غادِر قناة"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Leave, then re-join a channel"
+msgstr "غادر، ثم أعد الإنضمام إلى قناة"
 
 #: Change your nickname
 msgid "command_nick"

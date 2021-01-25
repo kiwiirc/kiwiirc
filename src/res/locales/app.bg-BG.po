@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2020-06-14 12:33\n"
+"PO-Revision-Date: 2021-01-21 00:11\n"
 
 #: Start
 msgid "start_button"
@@ -37,7 +37,7 @@ msgstr "Свързва се..."
 
 #: Connected
 msgid "connected"
-msgstr "Свързан"
+msgstr "Свързани"
 
 #: Settings
 msgid "settings"
@@ -89,7 +89,7 @@ msgstr "Сървър"
 
 #: Nick
 msgid "nick"
-msgstr "Потребителско име"
+msgstr "Прякор"
 
 #: Channel
 msgid "channel"
@@ -101,7 +101,7 @@ msgstr "Съобщения"
 
 #: Network
 msgid "network"
-msgstr "IRC Мрежа"
+msgstr "Мрежа"
 
 #: ZNC
 msgid "znc"
@@ -153,7 +153,7 @@ msgstr "Истинско име"
 
 #: Status
 msgid "whois_status"
-msgstr "Статус"
+msgstr "Състояние"
 
 #: Is available
 msgid "whois_status_available"
@@ -205,23 +205,23 @@ msgstr "{{count}} часа"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "минута"
+msgstr "{{count}} минута"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "минути"
+msgstr "{{count}} минути"
 
 #: {{count}} second
 msgid "second"
-msgstr "секунда"
+msgstr "{{count}} секунда"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "секунди"
+msgstr "{{count}} секунди"
 
 #: General
 msgid "settings_general"
-msgstr "Главни настройки"
+msgstr "Общи"
 
 #: Language
 msgid "settings_language"
@@ -229,11 +229,11 @@ msgstr "Език"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Настройки на темата"
+msgstr "Тема"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Oпресняване на темите"
+msgstr "Опресняване на темите"
 
 #: Theme URL
 msgid "settings_themeurl"
@@ -245,11 +245,11 @@ msgstr "Разпределение на съобщенията"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Използвайте Monospace"
+msgstr "Употреба на моноширинен шрифт"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Използвайте Kiwi като IRC клиент по подразбиране"
+msgstr "Употреба на Kiwi като мой стандартен IRC клиент"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -265,7 +265,7 @@ msgstr "Съобщения в чата"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Покажи времето"
+msgstr "Показване на печат с часа"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
@@ -289,7 +289,7 @@ msgstr "Допълнително форматиране"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Цветни никове в съобщенията"
+msgstr "Цветни прякори в съобщенията"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
@@ -297,11 +297,11 @@ msgstr "Споделете, когато пишете съобщение "
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "Показване на вграден предв. преглед на изображение"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Добави влизания/излизаня съобщения като активност"
+msgstr "Включване на съобщения за влизане/излизане като дейност"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
@@ -313,11 +313,11 @@ msgstr "Персонализирано осветяване (разделяйт�
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Алиасес"
+msgstr "Псевдоними"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Какво представляват псевдонимите"
+msgstr "Какво представляват псевдонимите?"
 
 #: Send Message
 msgid "send_message"
@@ -329,11 +329,11 @@ msgstr "Въведете ключа на канала"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "се присъедини отново {{channel}}"
+msgstr "Повторно свързване към {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Кога да ме известява"
+msgstr "Известете ме при"
 
 #: All messages
 msgid "settings_notify_all"
@@ -341,7 +341,7 @@ msgstr "Всички съобщения"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "Само когато ме споменат."
+msgstr "Споменаването ми"
 
 #: Never
 msgid "settings_notify_never"
@@ -349,7 +349,7 @@ msgstr "Никога"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Забрани всички звукови известия"
+msgstr "Обеззвучаване"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
@@ -373,7 +373,7 @@ msgstr "Разширени настройки"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
-msgstr "Чудовищата са тук, кликнете само върху този бутон, ако знаете какво правите"
+msgstr "Чудовищата са тук, щракнете само върху този бутон, ако знаете какво вършите"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
@@ -409,7 +409,7 @@ msgstr "Опресняване на списъка със забранени..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Няма потребители със забрана!"
+msgstr "Никого не е със забрана!"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -425,7 +425,7 @@ msgstr "Има покана от"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Обновяване на листа с покани"
+msgstr "Опресняване на списъка с покани..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
@@ -489,11 +489,11 @@ msgstr "Няма намерени канали, опитайте отново п
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Добре дошли в Kiwi IRC!"
+msgstr "Добре дошли в Kiwi IRC! Изберете канал вляво."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Показване на statebrowser"
+msgstr "Показване на състоянието на браузъра"
 
 #: Hide Topic
 msgid "hide_topic"
@@ -565,7 +565,7 @@ msgstr "Разширени настройки"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Енкодинг"
+msgstr "Кодиране"
 
 #: Show Raw
 msgid "settings_show_raw"
@@ -577,7 +577,7 @@ msgstr "Директен уеб сокет"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Изпълняване на команда при свързване"
+msgstr "Пускане на команди при свързване"
 
 #: Danger Zone
 msgid "settings_danger"
@@ -609,11 +609,11 @@ msgstr "Свържете се пак в {{network}}, за да започнет�
 
 #: Reconnect to continue talking with {{user}}
 msgid "reconnect_query"
-msgstr "Влезте отново за продължите разговора си с {{user}}"
+msgstr "Свържете се пак, за да продължите разговора си с {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "Понастоящем не сте свързани!"
+msgstr "В момента не сте свързани!"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -629,7 +629,7 @@ msgstr "Свързване към мрежата"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "Име на мрежата"
 
 #: Close options
 msgid "side_close"
@@ -653,11 +653,11 @@ msgstr "Показва кога се променя темата на канал
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Показва кога портебителя си сменя ник-а."
+msgstr "Показва кога потребителите променят прякорите си"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Показва кога потребителя променя каналните модове"
+msgstr "Показва кога потребителите променят модовете на канала"
 
 #: Extra message formatting
 msgid "side_formatting"
@@ -665,7 +665,7 @@ msgstr "Допълнително форматиране на съобщение�
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Цветни  никове в списъка с потребители"
+msgstr "Цветни прякори в списъка"
 
 #: No buffer set
 msgid "side_buffer"
@@ -705,7 +705,7 @@ msgstr "Напускам {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr "Твоят Акаунт"
+msgstr "Вашият акаунт"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
@@ -713,7 +713,7 @@ msgstr "Вашите настройки и мрежи ще бъдат запам
 
 #: Forget me
 msgid "state_forget"
-msgstr "Забрани"
+msgstr "Забравете ме"
 
 #: No networks here yet.
 msgid "state_network"
@@ -721,7 +721,7 @@ msgstr "Тук още няма мрежи."
 
 #: Add one?
 msgid "state_add"
-msgstr "Добави"
+msgstr "Добавяте ли един?"
 
 #: Available networks
 msgid "state_available"
@@ -729,11 +729,11 @@ msgstr "Налични мрежи"
 
 #: Add Network
 msgid "add_network"
-msgstr "Добави Мрежа"
+msgstr "Добавяне на мрежа"
 
 #: New Network
 msgid "new_network"
-msgstr "нова мрежа"
+msgstr "Нова мрежа"
 
 #: No Network
 msgid "no_network"
@@ -761,7 +761,7 @@ msgstr "Намиране на още канали"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Промяна на ник"
+msgstr "Промяна на прякора"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
@@ -773,7 +773,7 @@ msgstr "Това сте вие!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Потребителско име: {{user}}"
+msgstr "Име на акаунта: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
@@ -797,7 +797,7 @@ msgstr "Свързан към сървър: {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Използва защитена връзка: SSL/TLS"
+msgstr "Защитено свързано чрез SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
@@ -809,7 +809,7 @@ msgstr "Ниво на достъп"
 
 #: Normal
 msgid "user_normal"
-msgstr "Нормален Потребител"
+msgstr "Обичаен"
 
 #: Kick from the channel
 msgid "user_kick"
@@ -825,11 +825,11 @@ msgstr "Забрана и изритване от канала"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Моля, определете канал, към който да се присъедините. напр. /join #example"
+msgstr "Моля, определете канал, към който да се присъедините. напр. /join #primer"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "Този прякор {{nick}} вече се ползва!"
+msgstr "Прякорът {{nick}} вече се ползва!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -841,43 +841,43 @@ msgstr "Прякорът не трябва да почва с цифри"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} дава оп на {{target}}"
+msgstr "{{nick}} дава права оператор на {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} премахна оп от {{target}}"
+msgstr "{{nick}} премахна права оператор от {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} дава халфоп на {{target}}"
+msgstr "{{nick}} дава права полуоператор на {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} премахна халфоп от {{target}}"
+msgstr "{{nick}} премахна права полуоператор от {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} дава войс на {{target}}"
+msgstr "{{nick}} дава права глас на {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} премахва войс от {{target}}"
+msgstr "{{nick}} премахва права глас от {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} дава админ на {{target}}"
+msgstr "{{nick}} дава права администратор на {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} премахва админ от {{target}}"
+msgstr "{{nick}} премахва права администратор от {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} дава оунър на {{target}}"
+msgstr "{{nick}} дава права собственик на {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} премахва оунър на {{target}}"
+msgstr "{{nick}} премахва права собственик от {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -885,7 +885,7 @@ msgstr "{{nick}} има забрана от {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} премахва забраната в/у {{target}}"
+msgstr "{{nick}} премахна забраната на {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
@@ -893,7 +893,7 @@ msgstr "{{nick}} задава {{mode}} на {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Изпрати съобщение"
+msgstr "Изпращане на съобщение"
 
 #: Do something physical
 msgid "command_action"
@@ -909,11 +909,11 @@ msgstr "Напускам канала"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Напуснете и пак се включете към канала"
+msgstr "Напуснете и пак се присъединете към канала"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Променете псевдонима си"
+msgstr "Променете прякора си"
 
 #: Start a private conversation with someone
 msgid "command_query"
@@ -933,7 +933,7 @@ msgstr "Изпращане на известие"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "изпращане на сурова команда към IRC сървъра"
+msgstr "Изпращане на необработена команда към IRC сървъра"
 
 #: Kick somebody from the channel
 msgid "command_kick"
@@ -953,7 +953,7 @@ msgstr "Прекъснете връзката с IRC сървъра"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Свърване към нова IRC мрежа "
+msgstr "Свърване към нова IRC мрежа"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -969,7 +969,7 @@ msgstr "Маркирайте себе си като далеч от компют
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Задайте, че сте активен"
+msgstr "Задайте се като дейни"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -981,7 +981,7 @@ msgstr "Игнорирайте съобщенията от някого"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Престани да игнорираш някого"
+msgstr "Спиране на игнорирането на някого"
 
 #: Roll a Dice
 msgid "command_dice"
@@ -1013,7 +1013,7 @@ msgstr "Опитвате се да се свържете с {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "Мрежата е добавена към съществуващия ви прозорец."
+msgstr "Мрежата е добавена към съществуващия ви прозорец Kiwi."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
@@ -1045,11 +1045,11 @@ msgstr "Опитайте разработчика на Kiwi IRC!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Изключен"
+msgstr "Спряно е свързването"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Свързан с"
+msgstr "Свързано към {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
@@ -1073,7 +1073,7 @@ msgstr "{{nick}} ви покани да се присъедините към {{c
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Прякор {{nick}} вече се използва. Опитайте нов {{newnick}} ..."
+msgstr "Прякорът {{nick}} вече се употребява. Опитайте {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
