@@ -58,7 +58,7 @@ export default {
                         this.$el.style.maxHeight = (this.settings.maxHeight || 400) + 'px';
                     } else {
                         // This is main media view set a relative max height
-                        this.$emit('setMaxHeight', '40%');
+                        this.$emit('setMaxHeight', '54%');
                     }
                 });
             };
@@ -82,7 +82,7 @@ export default {
 
     .embedly-card {
         display: block;
-        margin: 10px 0;
+        margin: 4px 0;
     }
 
     .embedly-card-hug {
