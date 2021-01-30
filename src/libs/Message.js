@@ -36,6 +36,7 @@ export default class Message {
         // If embed.payload is truthy, it will be embedded within the message
         this.embed = { type: 'url', payload: null };
         this.html = '';
+        this.blocks = [];
         def(this, 'hasRendered', false);
         // template should be null or a Vue component to render this message
         def(this, 'template', message.template || null);
@@ -64,22 +65,36 @@ export default class Message {
 
         let state = getState();
         let showEmoticons = state.setting('buffers.show_emoticons') && !messageList.buffer.isSpecial();
-        let userList = messageList.buffer.users;
-        let useExtraFormatting =
-            !messageList.buffer.isSpecial() && messageList.useExtraFormatting && this.type === 'privmsg';
 
-        let blocks = parseMessage(this.message, { extras: useExtraFormatting }, userList);
+        this.toBlocks(messageList.buffer, messageList.useExtraFormatting);
 
-        state.$emit('message.prestyle', { message: this, blocks: blocks });
+        state.$emit('message.prestyle', { message: this, blocks: this.blocks });
 
-        let content = toHtml(blocks, showEmoticons);
+        let content = toHtml(this.blocks, showEmoticons);
+        this.html = content;
+
+        state.$emit('message.poststyle', { message: this, blocks: this.blocks });
+        return this.html;
+    }
+
+    toBlocks(buffer, useExtraFormatting) {
+        let state = getState();
+        let userList = buffer.users;
+
+        let blocks = parseMessage(
+            this.message,
+            {
+                extras: !buffer.isSpecial() && useExtraFormatting && this.type === 'privmsg',
+            },
+            userList
+        );
 
         this.mentioned_urls = blocks.filter((block) => block.type === 'url').map((block) => block.meta.url);
-        this.html = content;
         this.maybeAutoEmbed();
 
-        state.$emit('message.poststyle', { message: this, blocks: blocks });
-        return this.html;
+        state.$emit('message.blocks', { message: this, blocks: blocks });
+        this.blocks = blocks;
+        return blocks;
     }
 
     maybeAutoEmbed() {
