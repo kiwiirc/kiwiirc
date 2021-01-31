@@ -342,7 +342,7 @@ export default {
 .kiwi-header-option a {
     float: left;
     padding: 0 15px;
-    line-height: 45px;
+    line-height: 43px;
     display: block;
     font-weight: 600;
     opacity: 0.8;
@@ -357,7 +357,7 @@ export default {
 .kiwi-header-option i {
     font-size: 1.2em;
     float: left;
-    line-height: 45px;
+    line-height: 43px;
 }
 
 .kiwi-header-options i + span {
