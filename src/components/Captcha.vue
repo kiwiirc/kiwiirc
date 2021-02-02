@@ -14,6 +14,7 @@ export default {
             url: '',
             siteId: '',
             response: '',
+            responseTimeout: 0,
             visible: false,
             loaded: false,
             networks: [],
@@ -67,17 +68,42 @@ export default {
         },
         captchaSuccess(response) {
             this.response = response;
+            if (this.responseTimeout) {
+                clearTimeout(this.responseTimeout);
+                this.responseTimeout = 0;
+            }
 
-            this.networks.forEach((network) => {
-                if (network.state === 'connecting') {
-                    this.sendResponse(network);
-                }
-            });
-            this.networks.length = 0;
+            // Control our own timeout
+            this.setTimeout(this.captchaExpired, 60000);
+
+            const network = this.networks.pop();
+
+            const remainingNetworks = () => {
+                // First network connected response will be cached,
+                // send response to remaining networks
+                network.ircClient.off('close', remainingNetworks);
+                network.ircClient.off('registered', remainingNetworks);
+                this.networks.forEach((net) => {
+                    if (net.state === 'connecting') {
+                        this.sendResponse(net);
+                    }
+                });
+                this.networks.length = 0;
+            };
+
+            network.ircClient.once('close', remainingNetworks);
+            network.ircClient.once('registered', remainingNetworks);
+
+            this.sendResponse(network);
             this.visible = false;
         },
         captchaExpired() {
             this.response = '';
+            if (this.responseTimeout) {
+                clearTimeout(this.responseTimeout);
+                this.responseTimeout = 0;
+            }
+            window.grecaptcha.reset();
         },
         addNetwork(network) {
             if (this.networks.includes(network)) {
