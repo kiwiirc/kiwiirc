@@ -67,7 +67,9 @@ export default {
                 let head = document.getElementsByTagName('head')[0];
                 let script = document.createElement('script');
                 script.type = 'text/javascript';
-                script.src = '//cdn.embedly.com/widgets/platform.js';
+                let embedlyUrl = this.$state.getSetting('settings.embedly.script') ||
+                    '//cdn.embedly.com/widgets/platform.js';
+                script.src = embedlyUrl;
                 head.appendChild(script);
                 embedlyTagIncluded = true;
             }
