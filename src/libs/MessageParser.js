@@ -119,9 +119,10 @@ function matchChannel(word) {
 function matchUrl(word) {
     // this check avoids running the urlRegex, which would return the same result
     // but take much more time to process
-    if (!word.startsWith('http') && !word.startsWith('www')) {
+    if (!(word.includes('://') || word.startsWith('www'))) {
         return false;
     }
+
     const urlMatch = urlRegex.exec(word);
 
     if (urlMatch === null) {
