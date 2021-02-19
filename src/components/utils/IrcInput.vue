@@ -26,6 +26,7 @@
 import _ from 'lodash';
 import * as htmlparser from 'htmlparser2';
 import * as Colours from '@/helpers/Colours';
+import * as Misc from '@/helpers/Misc';
 
 let Vue = require('vue');
 
@@ -204,7 +205,8 @@ export default Vue.component('irc-input', {
                     // IE11 doesnt support document.execCommand('styleWithCSS')
                     // so we have individual nodes instead, which are handled below
                     } else if (attribs.color) {
-                        // IE likes to remove spaces from rgb(1, 2, 3) it also likes converting rgb to hex
+                        // IE likes to remove spaces from rgb(1, 2, 3)
+                        // it also likes converting rgb to hex
                         let mappedCode = this.code_map[attribs.color] ||
                             this.code_map[attribs.color.replace(/,/g, ', ')] ||
                             this.code_map[Colours.hex2rgb(attribs.color)];
@@ -246,11 +248,12 @@ export default Vue.component('irc-input', {
                 decodeEntities: true,
             });
 
-            /* eslint max-len: off */
             parser.write(source);
             parser.end();
 
-            return textValue;
+            // Firefox likes to add <br/> at the end (some times inside the span)
+            // fix by filtering out any lines that contain no content
+            return textValue.split(/\r?\n/).filter((line) => !!Misc.stripStyles(line)).join('\n');
         },
         reset(rawHtml) {
             this.$refs.editor.innerHTML = rawHtml || '';
