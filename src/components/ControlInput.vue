@@ -539,16 +539,25 @@ export default {
             let ircText = this.$refs.input.buildIrcText();
             this.$state.$emit('input.raw', ircText);
 
-            // Add to history, keeping the history trimmed to the last 50 entries
-            this.history.push(rawInput);
-            this.history.splice(0, this.history.length - 50);
-            this.history_pos = this.history.length;
+            this.historyAdd(rawInput);
 
             this.$refs.input.reset();
 
             this.stopTyping(false);
         },
+        historyAdd(rawInput) {
+            // Add to history, keeping the history trimmed to the last 50 entries
+            this.history.push(rawInput);
+            this.history.splice(0, this.history.length - 50);
+            this.history_pos = this.history.length;
+        },
         historyBack() {
+            let rawText = this.$refs.input.getRawText();
+            let rawInput = this.$refs.input.getValue();
+            if (rawText.trim() && this.history_pos === this.history.length) {
+                this.historyAdd(rawInput);
+                this.history_pos--;
+            }
             if (this.history_pos > 0) {
                 this.history_pos--;
             }
