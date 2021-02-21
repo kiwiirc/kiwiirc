@@ -123,11 +123,6 @@ export const configTemplates = {
 /cycle $channel? /lines /part $channel | /join $channel
 /active /back $1+
 /umode /mode $nick $1+
-/cs /msg chanserv $1+
-/ns /msg nickserv $1+
-/bs /msg botserv $1+
-/hs /msg hostserv $1+
-/os /msg operserv $1+
 
 # Op related aliases
 /op /quote mode $channel +o $1+
