@@ -22,6 +22,10 @@
     color: var(--brand-primary-hover);
 }
 
+.kiwi-welcome-invalid-nick.u-input-text input.u-input {
+    border-color: var(--brand-error);
+}
+
 /* ---- Gloabl Styling ---- */
 .kiwi-theme-bg {
     background-color: var(--brand-default-bg);

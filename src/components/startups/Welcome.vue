@@ -26,6 +26,7 @@
                     v-focus="!nick || !show_password_box"
                     :label="$t('nick')"
                     type="text"
+                    :class="{'kiwi-welcome-invalid-nick': !isNickValid}"
                 />
 
                 <div v-if="showPass && toggablePass" class="kiwi-welcome-simple-input-container">
@@ -137,28 +138,7 @@ export default {
                 greeting :
                 this.$t('start_button');
         },
-        readyToStart: function readyToStart() {
-            let ready = !!this.nick;
-
-            if (!this.connectWithoutChannel && !this.channel) {
-                ready = false;
-            }
-
-            // Make sure the channel name starts with a common channel prefix
-            if (!this.connectWithoutChannel) {
-                let bufferObjs = Misc.extractBuffers(this.channel);
-                bufferObjs.forEach((bufferObj) => {
-                    if ('#&'.indexOf(bufferObj.name[0]) === -1) {
-                        ready = false;
-                    }
-                });
-            }
-
-            // If toggling the password is is disabled, assume it is required
-            if (!this.toggablePass && !this.password) {
-                ready = false;
-            }
-
+        isNickValid() {
             let nickPatternStr = this.$state.setting('startupOptions.nick_format');
             let nickPattern = '';
             if (!nickPatternStr) {
@@ -190,7 +170,31 @@ export default {
                 }
             }
 
-            if (!this.nick.match(nickPattern)) {
+            return this.nick.match(nickPattern);
+        },
+        readyToStart: function readyToStart() {
+            let ready = !!this.nick;
+
+            if (!this.connectWithoutChannel && !this.channel) {
+                ready = false;
+            }
+
+            // Make sure the channel name starts with a common channel prefix
+            if (!this.connectWithoutChannel) {
+                let bufferObjs = Misc.extractBuffers(this.channel);
+                bufferObjs.forEach((bufferObj) => {
+                    if ('#&'.indexOf(bufferObj.name[0]) === -1) {
+                        ready = false;
+                    }
+                });
+            }
+
+            // If toggling the password is is disabled, assume it is required
+            if (!this.toggablePass && !this.password) {
+                ready = false;
+            }
+
+            if (!this.isNickValid) {
                 ready = false;
             }
 
