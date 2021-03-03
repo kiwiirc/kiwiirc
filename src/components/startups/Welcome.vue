@@ -201,6 +201,14 @@ export default {
             return ready;
         },
     },
+    watch: {
+        show_password_box(newVal) {
+            if (newVal === false) {
+                // clear the password when show password is unchecked
+                this.password = '';
+            }
+        },
+    },
     created: function created() {
         let options = this.startupOptions;
         let connectOptions = this.connectOptions();
