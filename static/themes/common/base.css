@@ -169,7 +169,7 @@
 
 .kiwi-header .kiwi-header-notjoined .u-link {
     background-color: var(--brand-primary);
-    color: var(--brand-default-bg);
+    color: var(--brand-default-fg);
 }
 
 .kiwi-header .kiwi-header-notjoined .u-link:hover {
