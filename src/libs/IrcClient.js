@@ -1216,6 +1216,18 @@ function clientMiddleware(state, network) {
             }
         }
 
+        if (command === 'help') {
+            let buffer = state.getOrAddBufferByName(networkid, '*help');
+            state.addMessage(buffer, {
+                time: eventTime,
+                server_time: serverTime,
+                nick: '',
+                message: event.help,
+                type: 'help',
+                tags: event.tags || {},
+            });
+        }
+
         if (command === 'ctcp response' || command === 'ctcp request') {
             let buffer = network.bufferByName(event.target) || network.serverBuffer();
             let textFormatId = command === 'ctcp response' ?
