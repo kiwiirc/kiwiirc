@@ -715,7 +715,8 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     margin: 0;
 }
 
-.kiwi-wrap--monospace .kiwi-messagelist-message {
+.kiwi-wrap--monospace .kiwi-messagelist-message,
+.kiwi-messagelist-message.kiwi-messagelist-message-help {
     font-family: Consolas, monaco, monospace;
     font-size: 80%;
 }
