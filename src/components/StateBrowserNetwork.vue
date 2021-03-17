@@ -106,129 +106,89 @@
                 </div>
             </transition>
             <div
-                v-for="(itemBuffers, type) in filteredBuffers"
+                v-for="(itemBuffers, type) in filteredBuffersByType"
                 :key="type"
                 :data-name="type"
                 class="kiwi-statebrowser-buffers"
             >
-                <div
-                    v-if="itemBuffers.length > 0"
-                    class="kiwi-statebrowser-buffers"
-                >
+                <div class="kiwi-statebrowser-channels-header">
                     <div
-                        v-if="network.state === 'connected'"
-                        class="kiwi-statebrowser-channels-options"
+                        class="kiwi-statebrowser-buffertype"
+                        @click="toggleSection(type)"
                     >
-                        <div
-                            class="kiwi-statebrowser-channels-header"
-                            @click="toggleSection(type)"
-                        >
-                            <div class="kiwi-statebrowser-channel-name">
-                                <i v-if="(section_display_channels === true &&
-                                       type === 'channels') ||
-                                       (section_display_queries === true && type === 'queries')"
-                                   class="fa fa-caret-down kiwi-statebrowser-channels-toggle"
-                                />
-                                <i v-else
-                                   class="fa fa-caret-right kiwi-statebrowser-channels-toggle" />
-                                {{ type === 'channels' ? $t('channels') : $t('messages') }}
-                            </div>
-                            <div
-                                v-if="type === 'channels'"
-                                :class="{ active: channel_add_display == true }"
-                                class="kiwi-statebrowser-channels-option"
-                                @click="toggleAddChannel()"
-                            >
-                                <i class="fa fa-plus" aria-hidden="true" />
-                            </div>
-                            <div
-                                v-if="type === 'channels'"
-                                :class="{ active: channel_filter_display == true }"
-                                class="kiwi-statebrowser-channels-option"
-                                @click="onSearchChannelClick"
-                            >
-                                <i v-if="type === 'channels'"
-                                   class="fa fa-search" aria-hidden="true"
-                                />
-                            </div>
-                            <div class="kiwi-statebrowser-buffer-actions">
-                                <div class="kiwi-statebrowser-channel-labels">
-                                    <div
-                                        v-if="(!section_display_channels === true &&
-                                            type === 'channels' && channelActivity.unread !== 0)"
-                                        :class="[
-                                            channelActivity.highlights ?
-                                                'kiwi-statebrowser-channel-label--highlight' :
-                                                ''
-                                        ]"
-                                        class="kiwi-statebrowser-channel-label"
-                                    >
-                                        {{ channelActivity.unread }}
-                                    </div>
-                                    <div
-                                        v-else-if="(!section_display_queries === true &&
-                                            type === 'queries' && queryActivity.unread !== 0)"
-                                        :class="[
-                                            queryActivity.highlights ?
-                                                'kiwi-statebrowser-channel-label--highlight' :
-                                                ''
-                                        ]"
-                                        class="kiwi-statebrowser-channel-label"
-                                    >
-                                        {{ queryActivity.unread }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <i
+                            class="fa kiwi-statebrowser-channels-toggle"
+                            :class="[
+                                (show_channels && type === 'channels') ||
+                                    (show_queries && type === 'queries') ?
+                                        'fa-caret-down' :
+                                        'fa-caret-right'
+                            ]"
+                        />
+                        {{ type === 'channels' ? $t('channels') : $t('messages') }}
                     </div>
-                    <div v-if="(section_display_channels === true && type === 'channels') ||
-                        (section_display_queries === true && type === 'queries')"
-                    >
-                        <div
-                            v-for="buffer in itemBuffers"
-                            :key="buffer.name"
-                            :data-name="buffer.name.toLowerCase()"
-                            :class="{
-                                'kiwi-statebrowser-channel-active': isActiveBuffer(buffer),
-                                'kiwi-statebrowser-channel-notjoined': buffer.isChannel() &&
-                                    !buffer.joined
-                            }"
-                            class="kiwi-statebrowser-channel"
-                        >
-                            <div
-                                class="kiwi-statebrowser-channel-name"
-                                @click="setActiveBuffer(buffer)"
-                            >
-                                <away-status-indicator
-                                    v-if="buffer.isQuery() && awayNotifySupported()"
-                                    :network="network" :user="network.userByName(buffer.name)"
-                                />{{ buffer.name }}
-                            </div>
-                            <div class="kiwi-statebrowser-buffer-actions">
-                                <div class="kiwi-statebrowser-channel-labels">
-                                    <div
-                                        v-if="buffer.flags.unread && showMessageCounts(buffer)"
-                                        :class="[
-                                            buffer.flags.highlight ?
-                                                'kiwi-statebrowser-channel-label--highlight' :
-                                                ''
-                                        ]"
-                                        class="kiwi-statebrowser-channel-label"
-                                    >
-                                        {{ buffer.flags.unread > 999 ?
-                                            "999+": buffer.flags.unread }}
-                                    </div>
-                                </div>
 
-                                <div
-                                    class="kiwi-statebrowser-channel-leave"
-                                    @click="closeBuffer(buffer)"
-                                >
-                                    <i class="fa fa-times" aria-hidden="true" />
-                                </div>
+                    <div v-if="type === 'channels'" class="kiwi-statebrowser-channels-options">
+                        <div
+                            :class="{ active: channel_add_display == true }"
+                            class="kiwi-statebrowser-channels-option"
+                            @click="toggleAddChannel()"
+                        >
+                            <i class="fa fa-plus" aria-hidden="true" />
+                        </div>
+                        <div
+                            :class="{ active: channel_filter_display == true }"
+                            class="kiwi-statebrowser-channels-option"
+                            @click="onSearchChannelClick"
+                        >
+                            <i
+                                v-if="type === 'channels'"
+                                class="fa fa-search" aria-hidden="true"
+                            />
+                        </div>
+                    </div>
+                    <div class="kiwi-statebrowser-buffer-actions">
+                        <div class="kiwi-statebrowser-channel-labels">
+                            <div
+                                v-if="!show_channels &&
+                                    type === 'channels' &&
+                                    channelActivity.unread !== 0
+                                "
+                                :class="[
+                                    channelActivity.highlights ?
+                                        'kiwi-statebrowser-channel-label--highlight' :
+                                        ''
+                                ]"
+                                class="kiwi-statebrowser-channel-label"
+                            >
+                                {{ channelActivity.unread > 999 ?
+                                    '999+' : channelActivity.unread }}
+                            </div>
+                            <div
+                                v-else-if="(!show_queries === true &&
+                                    type === 'queries' && queryActivity.unread !== 0)"
+                                :class="[
+                                    queryActivity.highlights ?
+                                        'kiwi-statebrowser-channel-label--highlight' :
+                                        ''
+                                ]"
+                                class="kiwi-statebrowser-channel-label"
+                            >
+                                {{ queryActivity.unread > 999 ?
+                                    '999+' : queryActivity.unread }}
                             </div>
                         </div>
                     </div>
+                </div>
+                <div v-if="(show_channels && type === 'channels') ||
+                    (show_queries && type === 'queries')"
+                >
+                    <buffer
+                        v-for="buffer in itemBuffers"
+                        :key="buffer.name"
+                        :buffer="buffer"
+                        @selected="setActiveBuffer(buffer)"
+                    />
                 </div>
             </div>
         </div>
@@ -242,12 +202,12 @@ import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import * as bufferTools from '@/libs/bufferTools';
 import BufferSettings from './BufferSettings';
-import AwayStatusIndicator from './AwayStatusIndicator';
+import StateBrowserBuffer from './StateBrowserBuffer';
 
 export default {
     components: {
         BufferSettings,
-        AwayStatusIndicator,
+        Buffer: StateBrowserBuffer,
     },
     props: ['network', 'sidebarState'],
     data: function data() {
@@ -258,8 +218,8 @@ export default {
             channel_add_display: false,
             channel_add_input_has_focus: false,
             channel_add_input: '',
-            section_display_channels: true,
-            section_display_queries: true,
+            show_channels: true,
+            show_queries: true,
         };
     },
     computed: {
@@ -303,55 +263,46 @@ export default {
         filteredBuffers() {
             let filter = this.channel_filter;
             let filtered = [];
-            let filteredChannels = [];
-            let filteredQueries = [];
 
             if (!filter) {
                 filtered = this.network.buffers;
             } else {
                 filtered = _.filter(this.network.buffers, (buffer) => {
                     let name = buffer.name.toLowerCase();
-                    if (buffer.isChannel()) {
-                        return name.indexOf(filter) > -1;
-                    } else {
-                        return this.network.buffers;
-                    }
+                    return name.indexOf(filter) > -1;
                 });
             }
 
-            filtered.forEach((bufferObj) => {
+            return bufferTools.orderBuffers(filtered);
+        },
+        filteredBuffersByType() {
+            let ret = {
+                channels: [],
+                queries: [],
+            };
+
+            this.filteredBuffers.forEach((bufferObj) => {
                 if (bufferObj.isChannel()) {
-                    filteredChannels.push(bufferObj);
+                    ret.channels.push(bufferObj);
                 } else if (bufferObj.isQuery()) {
-                    filteredQueries.push((bufferObj));
+                    ret.queries.push((bufferObj));
                 }
             });
 
-            return {
-                channels: bufferTools.orderBuffers(filteredChannels),
-                queries: bufferTools.orderBuffers(filteredQueries),
-            };
+            return ret;
         },
         channelActivity() {
-            let totalUnread = 0;
-            let highlight = false;
-            this.filteredBuffers.channels.forEach((buffer) => {
-                if (buffer.isSpecial()) {
-                    return;
-                }
-                totalUnread += buffer.flags.unread;
-                if (!highlight) {
-                    if (buffer.flags.highlight) {
-                        highlight = true;
-                    }
-                }
-            });
-            return { highlights: highlight, unread: totalUnread > 999 ? '999+' : totalUnread };
+            return this.activityFromBuffers(this.filteredBuffersByType.channels);
         },
         queryActivity() {
+            return this.activityFromBuffers(this.filteredBuffersByType.queries);
+        },
+    },
+    methods: {
+        activityFromBuffers(buffers) {
             let totalUnread = 0;
             let highlight = false;
-            this.filteredBuffers.queries.forEach((buffer) => {
+            buffers.forEach((buffer) => {
                 if (buffer.isSpecial()) {
                     return;
                 }
@@ -360,10 +311,11 @@ export default {
                     highlight = true;
                 }
             });
-            return { highlights: highlight, unread: totalUnread > 999 ? '999+' : totalUnread };
+            return {
+                highlights: highlight,
+                unread: totalUnread,
+            };
         },
-    },
-    methods: {
         onNewChannelInputFocus() {
             // Auto insert the # if no value is already in. Easier for mobile users
             if (!this.channel_add_input) {
@@ -424,12 +376,6 @@ export default {
                 this.closeFilterChannel();
             }, 200);
         },
-        closeBuffer(buffer) {
-            this.$state.removeBuffer(buffer);
-        },
-        awayNotifySupported() {
-            return this.network.ircClient.network.cap.isEnabled('away-notify');
-        },
         showMessageCounts: function showMessageCounts(buffer) {
             return !buffer.setting('hide_message_counts');
         },
@@ -440,12 +386,6 @@ export default {
             if (this.$state.ui.is_narrow) {
                 this.$state.$emit('statebrowser.hide');
             }
-        },
-        isActiveBuffer: function isActiveBuffer(buffer) {
-            return (
-                buffer.networkid === this.$state.ui.active_network &&
-                buffer.name === this.$state.ui.active_buffer
-            );
         },
         showNetworkSettings(network) {
             network.showServerBuffer('settings');
@@ -472,9 +412,9 @@ export default {
         },
         toggleSection(type) {
             if (type === 'channels') {
-                this.section_display_channels = !this.section_display_channels;
+                this.show_channels = !this.show_channels;
             } else if (type === 'queries') {
-                this.section_display_queries = !this.section_display_queries;
+                this.show_queries = !this.show_queries;
             }
         },
         closeFilterChannel() {
@@ -559,13 +499,7 @@ export default {
     font-size: 0.9em;
 }
 
-.kiwi-statebrowser-channels-options {
-    text-align: left;
-    margin-left: 5px;
-}
-
 .kiwi-statebrowser-channels-header {
-    width: 100%;
     line-height: 35px;
     display: flex;
     font-size: 0.8em;
@@ -614,10 +548,14 @@ export default {
     text-decoration: underline;
 }
 
-.kiwi-statebrowser-channel-name {
+.kiwi-statebrowser-channel-name,
+.kiwi-statebrowser-buffertype {
     cursor: pointer;
     flex: 1;
     word-break: break-all;
+    text-align: left;
+    margin-left: 5px;
+    user-select: none;
     transition: padding 0.1s, border 0.1s;
 }
 
