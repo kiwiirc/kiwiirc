@@ -3,7 +3,7 @@
 /** @module */
 
 /**
- * Adds the +draft/typing IRCv3 spec to irc-framework
+ * Adds the +typing IRCv3 spec to irc-framework
  */
 export default function typingMiddleware() {
     return function middleware(client, rawEvents, parsedEvents) {
@@ -13,7 +13,7 @@ export default function typingMiddleware() {
 
     function theMiddleware(command, message, rawLine, client, next) {
         if (
-            !(command === 'TAGMSG' && message.tags['+draft/typing']) &&
+            !(command === 'TAGMSG' && message.tags['+typing']) &&
             !(command === 'PRIVMSG' && message.nick)
         ) {
             next();
@@ -26,7 +26,7 @@ export default function typingMiddleware() {
             message.params[0];
 
         // if its a privmsg without typing tag emit done
-        let status = message.tags['+draft/typing'] || 'done';
+        let status = message.tags['+typing'] || 'done';
 
         client.emit('typing', {
             target: target,
@@ -61,7 +61,7 @@ function addFunctionsToClient(client) {
         activeTyping[target.toLowerCase()] = Date.now();
 
         let message = new client.Message('TAGMSG', target);
-        message.tags['+draft/typing'] = 'active';
+        message.tags['+typing'] = 'active';
         client.raw(message);
     };
 
@@ -71,7 +71,7 @@ function addFunctionsToClient(client) {
         }
 
         let message = new client.Message('TAGMSG', target);
-        message.tags['+draft/typing'] = 'paused';
+        message.tags['+typing'] = 'paused';
         client.raw(message);
     };
 
@@ -81,7 +81,7 @@ function addFunctionsToClient(client) {
         }
 
         let message = new client.Message('TAGMSG', target);
-        message.tags['+draft/typing'] = 'done';
+        message.tags['+typing'] = 'done';
         client.raw(message);
 
         delete activeTyping[target.toLowerCase()];

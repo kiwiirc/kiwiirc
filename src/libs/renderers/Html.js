@@ -1,11 +1,12 @@
 'kiwi public';
 
 import { escape } from 'lodash';
-import state from '@/libs/state';
+import getState from '@/libs/state';
 
 export default render;
 
 function render(blocks, renderEmoticons) {
+    const state = getState();
     const emojiLocation = state.setting('emojiLocation');
     const showEmoticons = typeof renderEmoticons === 'undefined' ?
         state.setting('buffers.show_emoticons') :

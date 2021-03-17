@@ -17,7 +17,10 @@
             </transition>
         </div>
 
-        <div class="kiwi-controlinput-inner">
+        <div
+            class="kiwi-controlinput-inner"
+            :class="[selfuser_open ? 'kiwi-controlinput-portrait-hide' : '']"
+        >
             <away-status-indicator
                 v-if="buffer.getNetwork() && buffer.getNetwork().state === 'connected'"
                 :network="buffer.getNetwork()"
@@ -125,7 +128,6 @@ import _ from 'lodash';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as settingTools from '@/libs/settingTools';
 import autocompleteCommands from '@/res/autocompleteCommands';
-import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
 import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
@@ -166,13 +168,13 @@ export default {
     },
     computed: {
         currentNick() {
-            let activeNetwork = state.getActiveNetwork();
+            let activeNetwork = this.$state.getActiveNetwork();
             return activeNetwork ?
                 activeNetwork.nick :
                 '';
         },
         networkState() {
-            let activeNetwork = state.getActiveNetwork();
+            let activeNetwork = this.$state.getActiveNetwork();
             return activeNetwork ?
                 activeNetwork.state :
                 '';
@@ -197,20 +199,20 @@ export default {
             return false;
         },
         history() {
-            if (state.setting('buffers.shared_input')) {
+            if (this.$state.setting('buffers.shared_input')) {
                 return this.$state.ui.input_history;
             }
             return this.buffer.input_history;
         },
         history_pos: {
             get() {
-                if (state.setting('buffers.shared_input')) {
+                if (this.$state.setting('buffers.shared_input')) {
                     return this.$state.ui.input_history_pos;
                 }
                 return this.buffer.input_history_pos;
             },
             set(newVal) {
-                if (state.setting('buffers.shared_input')) {
+                if (this.$state.setting('buffers.shared_input')) {
                     this.$state.ui.input_history_pos = newVal;
                 } else {
                     this.buffer.input_history_pos = newVal;
@@ -224,7 +226,7 @@ export default {
             this.$refs.input.setValue(val || '');
         },
         buffer() {
-            if (!state.setting('buffers.shared_input')) {
+            if (!this.$state.setting('buffers.shared_input')) {
                 this.inputRestore();
             }
 
@@ -235,7 +237,7 @@ export default {
         this.typingTimer = null;
         this.lastTypingTime = 0;
 
-        this.listen(state, 'document.keydown', (ev) => {
+        this.listen(this.$state, 'document.keydown', (ev) => {
             // No input box currently? Nothing to shift focus to
             if (!this.$refs.input) {
                 return;
@@ -304,8 +306,8 @@ export default {
         inputUpdate(val) {
             this.current_input_value = val;
 
-            if (state.setting('buffers.shared_input')) {
-                state.ui.current_input = val;
+            if (this.$state.setting('buffers.shared_input')) {
+                this.$state.ui.current_input = val;
             } else {
                 this.buffer.current_input = val;
             }
@@ -313,8 +315,8 @@ export default {
             this.maybeHidePlugins();
         },
         inputRestore() {
-            let currentInput = state.setting('buffers.shared_input') ?
-                state.ui.current_input :
+            let currentInput = this.$state.setting('buffers.shared_input') ?
+                this.$state.ui.current_input :
                 this.buffer.current_input;
 
             this.$refs.input.reset(currentInput);
@@ -393,18 +395,26 @@ export default {
                 this.$refs.autocomplete.selectCurrentItem();
             }
 
-            if (event.keyCode === 13) {
+            if (event.keyCode === 13 && (
+                (event.altKey && !event.shiftKey && !event.metaKey && !event.ctrlKey) ||
+                (event.shiftKey && !event.altKey && !event.metaKey && !event.ctrlKey)
+            )) {
+                // Add new line when shift+enter or alt+enter is pressed
+                event.preventDefault();
+                this.$refs.input.insertText('\n');
+            } else if (event.keyCode === 13) {
+                // Send message when enter is pressed
                 event.preventDefault();
                 this.submitForm();
             } else if (event.keyCode === 32) {
                 // Hitting space after just typing an ascii emoji will get it replaced with
                 // its image
-                if (state.setting('buffers.show_emoticons')) {
+                if (this.$state.setting('buffers.show_emoticons')) {
                     let currentWord = this.$refs.input.getCurrentWord();
-                    let emojiList = state.setting('emojis');
+                    let emojiList = this.$state.setting('emojis');
                     if (emojiList.hasOwnProperty(currentWord.word)) {
                         let emoji = emojiList[currentWord.word];
-                        let url = state.setting('emojiLocation') + emoji + '.png';
+                        let url = this.$state.setting('emojiLocation') + emoji + '.png';
                         this.$refs.input.setCurrentWord('');
                         this.$refs.input.addImg(currentWord.word + ' ', url);
                     }
@@ -527,7 +537,7 @@ export default {
             }
 
             let ircText = this.$refs.input.buildIrcText();
-            state.$emit('input.raw', ircText);
+            this.$state.$emit('input.raw', ircText);
 
             // Add to history, keeping the history trimmed to the last 50 entries
             this.history.push(rawInput);
@@ -551,7 +561,7 @@ export default {
             }
         },
         openAutoComplete(items) {
-            if (state.setting('showAutocomplete')) {
+            if (this.$state.setting('showAutocomplete')) {
                 this.autocomplete_items = items;
                 this.autocomplete_open = true;
             }
@@ -615,8 +625,8 @@ export default {
             if (opts.settings) {
                 let out = {};
                 let base = [];
-                settingTools.buildTree(out, base, state.getSetting('settings'), false);
-                settingTools.buildTree(out, base, state.getSetting('user_settings'), true);
+                settingTools.buildTree(out, base, this.$state.getSetting('settings'), false);
+                settingTools.buildTree(out, base, this.$state.getSetting('user_settings'), true);
 
                 let settingList = [];
                 Object.keys(out).forEach((setting) => {
@@ -632,17 +642,14 @@ export default {
             return list;
         },
         startTyping() {
-            if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
+            let network = this.buffer.getNetwork();
+            if (!network.ircClient.network.cap.isEnabled('message-tags')) {
                 return;
             }
-            if (!this.buffer.setting('share_typing')) {
+            if (!this.buffer || !this.buffer.shouldShareTyping()) {
                 return;
             }
-            let buffer = this.buffer;
-            let network = buffer.getNetwork();
-            if (!buffer || (!buffer.isChannel() && !buffer.isQuery())) {
-                return;
-            }
+
             if (this.typingTimer) {
                 clearTimeout(this.typingTimer);
                 this.typingTimer = null;
@@ -653,21 +660,16 @@ export default {
                 return;
             }
 
-            network.ircClient.typing.start(buffer.name);
+            network.ircClient.typing.start(this.buffer.name);
 
             this.lastTypingTime = Date.now();
         },
         stopTyping(sendStopPause) {
-            if (!this.buffer.getNetwork().ircClient.network.cap.isEnabled('message-tags')) {
+            let network = this.buffer.getNetwork();
+            if (!network.ircClient.network.cap.isEnabled('message-tags')) {
                 return;
             }
-            if (!this.buffer.setting('share_typing')) {
-                return;
-            }
-            let buffer = this.buffer;
-            let network = buffer.getNetwork();
-
-            if (!buffer || (!buffer.isChannel() && !buffer.isQuery())) {
+            if (!this.buffer || !this.buffer.shouldShareTyping()) {
                 return;
             }
 
@@ -683,8 +685,8 @@ export default {
             }
 
             this.$refs.input.getRawText().trim() ?
-                network.ircClient.typing.pause(buffer.name) :
-                network.ircClient.typing.stop(buffer.name);
+                network.ircClient.typing.pause(this.buffer.name) :
+                network.ircClient.typing.stop(this.buffer.name);
         },
     },
 };
@@ -728,7 +730,6 @@ export default {
     line-height: 40px;
     transition: width 0.2s;
     transition-delay: 0.1s;
-    border-right: 1px solid;
 }
 
 .kiwi-controlinput-selfuser--open .kiwi-controlinput-user {
@@ -882,10 +883,16 @@ export default {
 @media screen and (max-width: 769px) {
     .kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
         width: 100%;
+        border-radius: 0;
+        border-right: 0;
     }
 
     .kiwi-wrap--statebrowser-drawopen .kiwi-controlinput {
         z-index: 0;
+    }
+    // hide the control input on narrow screens when the self user box is open
+    .kiwi-controlinput-portrait-hide {
+        display: none;
     }
 }
 

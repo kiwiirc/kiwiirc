@@ -52,7 +52,6 @@
 
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
-import state from '@/libs/state';
 import StartupLayout from './CommonLayout';
 
 export default {
@@ -74,13 +73,13 @@ export default {
     },
     computed: {
         greetingText: function greetingText() {
-            let greeting = state.settings.startupOptions.greetingText;
+            let greeting = this.$state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
                 this.$t('start_greeting');
         },
         buttonText: function buttonText() {
-            let greeting = state.settings.startupOptions.buttonText;
+            let greeting = this.$state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
                 this.$t('start_button');
@@ -89,11 +88,11 @@ export default {
             return this.username && (this.password || this.showPass === false);
         },
         infoContent: function infoContent() {
-            return state.settings.startupOptions.infoContent || '';
+            return this.$state.settings.startupOptions.infoContent || '';
         },
     },
     created: function created() {
-        let options = state.settings.startupOptions;
+        let options = this.$state.settings.startupOptions;
 
         this.username = options.username || '';
         this.password = options.password || '';
@@ -122,14 +121,14 @@ export default {
             }
         },
         addNetwork: function addNetwork(netName) {
-            let options = state.settings.startupOptions;
+            let options = this.$state.settings.startupOptions;
             let password = this.username;
             if (netName) {
                 password += '/' + netName;
             }
             password += ':' + this.password;
 
-            let net = state.addNetwork(netName, 'ZNC', {
+            let net = this.$state.addNetwork(netName, 'ZNC', {
                 server: _.trim(options.server),
                 port: options.port,
                 tls: options.tls,
@@ -139,7 +138,7 @@ export default {
         },
         startUp: function startUp() {
             if (this.network) {
-                state.removeNetwork(this.network.id);
+                this.$state.removeNetwork(this.network.id);
             }
 
             let netList = _.compact(this.znc_network.split(','));
@@ -153,7 +152,7 @@ export default {
             this.network_extras = netList;
 
             let onRegistered = () => {
-                state.setActiveBuffer(net.id, net.serverBuffer().name);
+                this.$state.setActiveBuffer(net.id, net.serverBuffer().name);
                 net.ircClient.off('registered', onRegistered);
                 net.ircClient.off('close', onClosed);
                 this.network_extras.forEach((netName, idx) => {

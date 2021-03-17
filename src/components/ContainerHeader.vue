@@ -1,8 +1,5 @@
 <template>
     <div
-        :class="{
-            'kiwi-header--showall': buffer_settings_open,
-        }"
         class="kiwi-header kiwi-theme-bg"
         @click="onHeaderClick"
     >
@@ -23,7 +20,7 @@
                 />
                 <div
                     :class="{
-                        'kiwi-header-option--active': sidebarState.sidebarSection === 'about'
+                        'kiwi-header-option--active': sidebarSection === 'about'
                     }"
                     class="kiwi-header-option kiwi-header-option-about"
                 >
@@ -33,8 +30,8 @@
                 </div>
                 <div
                     :class="{
-                        'kiwi-header-option--active': sidebarState.sidebarSection === 'nicklist'
-                            || sidebarState.sidebarSection === 'user'
+                        'kiwi-header-option--active': sidebarSection === 'nicklist'
+                            || sidebarSection === 'user'
                     }"
                     class="kiwi-header-option kiwi-header-option-nicklist"
                 >
@@ -48,7 +45,7 @@
                 </div>
                 <div
                     :class="{
-                        'kiwi-header-option--active': sidebarState.sidebarSection === 'settings'
+                        'kiwi-header-option--active': sidebarSection === 'settings'
                     }"
                     class="kiwi-header-option kiwi-header-option-settings"
                 >
@@ -121,6 +118,17 @@
             </div>
             <div :key="buffer.id" class="kiwi-header-options">
                 <div
+                    v-if="userOnline"
+                    :class="{
+                        'kiwi-header-option--active': sidebarSection === 'user'
+                    }"
+                    class="kiwi-header-option kiwi-header-option-user"
+                >
+                    <a @click="toggleUser()">
+                        <i class="fa fa-user" aria-hidden="true" />
+                    </a>
+                </div>
+                <div
                     v-for="plugin in pluginUiQueryElements"
                     :key="plugin.id"
                     v-rawElement="plugin.el"
@@ -146,39 +154,12 @@
                 </div>
             </div>
         </template>
-
-        <div
-            v-if="buffer_settings_open"
-            class="kiwi-header-buffersettings"
-            @click.stop=""
-        >
-
-            <tabbed-view>
-                <tabbed-tab :header="$t('settings')" :focus="true">
-                    <channel-info :buffer="buffer" />
-                </tabbed-tab>
-                <tabbed-tab :header="$t('banned')">
-                    <channel-banlist :buffer="buffer" />
-                </tabbed-tab>
-                <tabbed-tab :header="$t('notifications')">
-                    <buffer-settings :buffer="buffer" />
-                </tabbed-tab>
-            </tabbed-view>
-
-            <a
-                class="u-button u-button-secondary kiwi-header-close-buffersettings"
-                @click="buffer_settings_open=false"
-            >
-                <i class="fa fa-caret-up" aria-hidden="true" />
-            </a>
-        </div>
     </div>
 </template>
 
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
 import GlobalApi from '@/libs/GlobalApi';
 import toHtml from '@/libs/renderers/Html';
 import parseMessage from '@/libs/MessageParser';
@@ -195,9 +176,8 @@ export default {
         AwayStatusIndicator,
     },
     props: ['buffer', 'sidebarState'],
-    data: function data() {
+    data() {
         return {
-            buffer_settings_open: false,
             pluginUiChannelElements: GlobalApi.singleton().channelHeaderPlugins,
             pluginUiQueryElements: GlobalApi.singleton().queryHeaderPlugins,
             prompts: {
@@ -206,14 +186,14 @@ export default {
         };
     },
     computed: {
-        isJoined: function isJoined() {
+        isJoined() {
             let buffer = this.buffer;
             return buffer.getNetwork().state === 'connected' && buffer.joined;
         },
-        isConnected: function isConnected() {
+        isConnected() {
             return this.buffer.getNetwork().state === 'connected';
         },
-        formattedTopic: function formattedTopic() {
+        formattedTopic() {
             let blocks = parseMessage(this.buffer.topic, { extras: false });
             let content = toHtml(blocks);
             return content;
@@ -221,15 +201,16 @@ export default {
         network() {
             return this.buffer.getNetwork();
         },
-    },
-    watch: {
-        buffer: function watchBuffer() {
-            // When ever the buffer changes, close the settings dropdown
-            this.buffer_settings_open = false;
+        sidebarSection() {
+            return this.sidebarState.section();
+        },
+        userOnline() {
+            let user = this.$state.getUser(this.buffer.getNetwork().id, this.buffer.name);
+            return !!user;
         },
     },
     created() {
-        this.listen(state, 'document.clicked', (e) => {
+        this.listen(this.$state, 'document.clicked', (e) => {
             // If clicking anywhere else on the page, close all our prompts
             if (!this.$el.contains(e.target)) {
                 Object.keys(this.prompts).forEach((prompt) => {
@@ -265,8 +246,9 @@ export default {
                 network.ircClient.connect();
             }
         },
-        showSidebar() {
-            state.$emit('sidebar.toggle');
+        toggleUser() {
+            let user = this.$state.getUser(this.buffer.getNetwork().id, this.buffer.name);
+            this.sidebarState.toggleUser(user);
         },
         joinCurrentBuffer() {
             let network = this.buffer.getNetwork();
@@ -274,13 +256,13 @@ export default {
             network.ircClient.join(this.buffer.name);
         },
         closeCurrentBuffer() {
-            state.removeBuffer(this.buffer);
+            this.$state.removeBuffer(this.buffer);
         },
         onHeaderClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
             if (channelName) {
                 let network = this.buffer.getNetwork();
-                state.addBuffer(this.buffer.networkid, channelName);
+                this.$state.addBuffer(this.buffer.networkid, channelName);
                 network.ircClient.join(channelName);
             }
         },
@@ -360,7 +342,7 @@ export default {
 .kiwi-header-option a {
     float: left;
     padding: 0 15px;
-    line-height: 45px;
+    line-height: 43px;
     display: block;
     font-weight: 600;
     opacity: 0.8;
@@ -375,7 +357,7 @@ export default {
 .kiwi-header-option i {
     font-size: 1.2em;
     float: left;
-    line-height: 45px;
+    line-height: 43px;
 }
 
 .kiwi-header-options i + span {

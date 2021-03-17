@@ -37,15 +37,35 @@ export default class BouncerProvider {
 
         state.$on('irc.motd', this.onNetworkMotd.bind(this));
         state.$on('irc.bouncer state', this.onNetworkState.bind(this));
+        state.$on('irc.bouncer networks', this.onBouncerNetworks.bind(this));
     }
 
     enable(server, port, tls, direct, path) {
+        log(`Using a Bouncer Provider with server ${server}:${port}`);
+
         this.bnc.server = server;
         this.bnc.port = port || 6667;
         this.bnc.tls = !!tls;
         this.bnc.direct = !!direct;
         this.bnc.path = path || '';
         this.bnc.enabled = true;
+
+        // get the bnc controller network
+        const bncNetwork = this.state.networks.find((network) => network.is_bnc);
+
+        // the bnc controller network password is saved in the format <username>:<password>.
+        // if there is a bnc controller network with a password, use these credentials
+        // for the bnc connection.
+        if (bncNetwork?.connection?.password) {
+            let [username, password] = this.parseBncCredentials(bncNetwork.connection.password);
+            this.bnc.username = username;
+            this.bnc.password = password;
+        }
+
+        // Enable BOUNCER on existing connections
+        this.state.networks.forEach((network) => {
+            network.ircClient.use(bouncerMiddleware());
+        });
 
         // this.monitorNetworkChanges();
         this.listenToState();
@@ -78,6 +98,7 @@ export default class BouncerProvider {
         }
 
         if (!client.network.cap.isEnabled('bouncer')) {
+            log.debug(`BOUNCER cap not available on network ${network.name}, not using for BNC`);
             return;
         }
 
@@ -88,20 +109,21 @@ export default class BouncerProvider {
 
         // Use this initial network password for other network connections
         if (!this.bnc.username) {
-            let [username, password] = network.connection.password.split(':');
-            username = username.split('/')[0];
+            let [username, password] = this.parseBncCredentials(network.connection.password);
             this.bnc.username = username;
             this.bnc.password = password;
         }
 
-        // If this is a BNC network, sync it before anything else so that we get all it's info
+        // If this is a BNC network, sync it before anything else so that we get all its info
         // and buffer states as soon as possible
         if (client.bnc.hasNetwork()) {
             await this.syncBncNetwork(network);
         }
 
-        // Now sync all other networks from the bouncer
-        await this.initAndAddNetworks(network);
+        // If this is the controller network, add all other networks from the bouncer
+        if (!network.connection.bncnetid) {
+            await this.initAndAddNetworks(network);
+        }
     }
 
     onNetworkState(event, network) {
@@ -125,24 +147,76 @@ export default class BouncerProvider {
         // hide the empty (non-network) controller network
         if (!network.ircClient.bnc.hasNetwork()) {
             network.hidden = true;
+            network.is_bnc = true;
         } else {
             network.hidden = false;
+            network.is_bnc = false;
         }
 
-        // populate network list from the controller connection
-        let bncNetworks = await client.bnc.getNetworks();
+        // onBouncerNetworks will pick up the event handler for this
+        client.bnc.getNetworks();
+    }
+
+    onBouncerNetworks(bncNetworks) {
+        log.debug(`Got ${bncNetworks.length} networks from the BNC`, bncNetworks);
         bncNetworks.forEach((bncNet) => this.addNetworkToState(bncNet));
+
+        // Remove any networks we have locally but no longer exist on the BNC
+        this.state.networks.forEach((existingNet) => {
+            let isNetworkInBncList = !!bncNetworks.find((n) => (
+                n.networkId === existingNet.connection.bncnetid
+            ));
+
+            if (!existingNet.is_bnc && !isNetworkInBncList) {
+                log.debug(`Network '${existingNet.name}' (${existingNet.id}) was not in the BNC, removing locally`);
+                this.state.removeNetwork(existingNet.id);
+            }
+        });
 
         // start monitoring network changes
         this.monitorNetworkChanges();
+
+        if (this.state.getActiveBuffer()) {
+            return;
+        }
+        if (!bncNetworks.length) {
+            // BNC has no network, lets add one to help the user
+            const net = this.state.addNetwork('Network', '', {});
+            net.showServerBuffer('settings');
+        } else {
+            for (let i = 0; i < this.state.networks.length; i++) {
+                const net = this.state.networks[i];
+                if (!net.is_bnc) {
+                    // The first network that is not the BNC control network
+                    net.showServerBuffer('settings');
+                    break;
+                }
+            }
+        }
     }
 
     async syncBncNetwork(bncNetwork) {
         let client = bncNetwork.ircClient;
 
+        log.debug(`Syncing network ${bncNetwork.name} from the BNC`);
+
         let buffers = await client.bnc.getBuffers(bncNetwork.connection.bncnetid);
         buffers.forEach((buffer) => {
+            // The list of buffers also include the network name. Make use of it and make sure our
+            // network name is up to date while we can. It may have changed elsewhere
+            if (bncNetwork.name !== buffer.network) {
+                log(`Detected network name change while syncing buffers. ${bncNetwork.name} > ${buffer.network}`);
+                bncNetwork.name = buffer.network;
+            }
+
             let newBuffer = this.state.addBuffer(bncNetwork.id, buffer.name);
+            if (!newBuffer) {
+                // The BNC might be giving up bad buffer names or something, so just make sure
+                // that it's handled if it ever coccurs
+                log.error(`Couldn't add BNC buffer, '${buffer.name}'`, buffer);
+                return;
+            }
+
             if (buffer.joined) {
                 newBuffer.enabled = true;
                 newBuffer.joined = true;
@@ -152,6 +226,9 @@ export default class BouncerProvider {
             }
             if (buffer.seen) {
                 newBuffer.last_read = (new Date(buffer.seen)).getTime();
+            }
+            if (buffer.notify) {
+                newBuffer.setting('alert_on', buffer.notify);
             }
 
             newBuffer.topic = buffer.topic || '';
@@ -202,10 +279,19 @@ export default class BouncerProvider {
                 account_password: network.account_password,
             });
         } else {
-            // TODO: Update our existing network
+            // Make sure our existing network is all up to date
+            net.name = network.name;
+            net.connection.server = network.host;
+            net.connection.port = parseInt(network.port, 10);
+            net.connection.tls = network.tls;
+            net.connection.nick = network.account || network.nick;
+            net.connection.password = network.password || '';
+            net.nick = network.currentNick || network.nick || '';
+            net.password = network.account_password;
         }
 
-        await this.syncBncNetwork(net);
+        net.editable_name = true;
+        return net;
     }
 
     // Keep a snapshot of what the current networks are. They will be periodically
@@ -225,6 +311,7 @@ export default class BouncerProvider {
                 host: network.connection.server,
                 port: network.connection.port,
                 tls: network.connection.tls,
+                account: network.connection.nick,
                 account_password: network.password,
                 server_password: network.connection.password,
                 nick: network.connection.nick,
@@ -238,7 +325,7 @@ export default class BouncerProvider {
     saveState() {
         let controller = this.getController();
         if (!controller) {
-            log('No controller available to save networks');
+            log.debug('No controller available to save networks');
             return;
         }
 
@@ -252,6 +339,12 @@ export default class BouncerProvider {
 
             // Don't save any hidden networks. This includes the BNC controller network
             if (network.hidden) {
+                return;
+            }
+
+            // Every network needs a valid name
+            if (!network.name.match(/^[a-zA-Z_0-9.]+$/)) {
+                log.debug(`Network ${network.id} has an invalid name. Not saving to the BNC`);
                 return;
             }
 
@@ -274,6 +367,9 @@ export default class BouncerProvider {
             if (network.password !== snapshot.account_password) {
                 tags.account_password = network.password;
             }
+            if (network.connection.nick !== snapshot.account) {
+                tags.account = network.connection.nick;
+            }
             if (network.connection.password !== snapshot.server_password) {
                 tags.password = network.connection.password;
             }
@@ -287,6 +383,7 @@ export default class BouncerProvider {
             // A newly added network would not have a snapshot name (bncnetid) property set yet.
             // Only save the network if we've entered connection info.
             if (!snapshot.bncnetid && tags.host && tags.port && tags.nick) {
+                log(`Saving new network ${network.name} to the BNC`);
                 // ?? network.connection.bncname = network.name;
                 controller.ircClient.bnc.addNetwork(
                     network.name,
@@ -301,6 +398,7 @@ export default class BouncerProvider {
                     network.name = networkInfo.network;
                 });
             } else if (snapshot.bncnetid && Object.keys(tags).length > 0) {
+                log(`Updating network ${network.name} on the BNC`);
                 controller.ircClient.bnc.saveNetwork(bncnetid, tags);
             }
         });
@@ -338,7 +436,8 @@ export default class BouncerProvider {
                 ircClient.options.port = this.bnc.port;
                 ircClient.options.tls = this.bnc.tls;
 
-                if (this.bnc.password) {
+                // Only re-write the server password for non-bnc controller networks
+                if (this.bnc.password && !event.network.is_bnc) {
                     let password = `${this.bnc.username}/${netname}:${this.bnc.password}`;
                     ircClient.options.password = password;
                 }
@@ -353,7 +452,7 @@ export default class BouncerProvider {
         state.$on('network.connecting', (event) => {
             let controller = this.getController();
             if (!controller) {
-                log('No controller available to save network states');
+                log.debug('No controller available to save network states');
                 return;
             }
 
@@ -379,29 +478,45 @@ export default class BouncerProvider {
             // Enable BOUNCER on this connection
             network.ircClient.use(bouncerMiddleware());
 
-            // Update the network name to NetworkN if hasn't got once from the bouncer yet
-            if (!network.connection.bncnetid) {
-                let currentNum = 1;
-                let existingNet = true;
-                while (existingNet) {
-                    existingNet = _.find(state.networks, {
-                        name: 'Network' + currentNum,
-                    });
+            network.editable_name = true;
 
-                    if (!existingNet || network === existingNet) {
-                        network.name = 'Network' + currentNum;
-                        existingNet = null;
-                    }
+            // If network is attached to a bouncer do nothing
+            // (use the name provided by the bouncer)
+            if (network.connection.bncnetid) {
+                return;
+            }
 
-                    currentNum++;
+            let existingNet = true;
+
+            // append a number to the network name. E.g. "Network, Network2,..."
+            // while there is a network with that name
+            let currentNum = 1;
+            let tryNetworkName;
+            while (existingNet) {
+                if (network.name && currentNum === 1) {
+                    // don't append the number 1 if there is a custom name
+                    tryNetworkName = network.name;
+                } else {
+                    tryNetworkName = (network.name || 'Network') + currentNum;
                 }
+
+                existingNet = _.find(state.networks, {
+                    name: tryNetworkName,
+                });
+
+                if (!existingNet || existingNet === network) {
+                    network.name = tryNetworkName;
+                    break;
+                }
+
+                currentNum++;
             }
         });
 
         state.$on('network.removed', (event) => {
             let controller = this.getController();
             if (!controller) {
-                log('No controller available to save network states');
+                log.debug('No controller available to save network states');
                 return;
             }
 
@@ -417,7 +532,7 @@ export default class BouncerProvider {
 
             let controller = this.getController();
             if (!controller) {
-                log('No controller available to save buffer states');
+                log.debug('No controller available to save buffer states');
                 return;
             }
 
@@ -425,5 +540,12 @@ export default class BouncerProvider {
                 controller.ircClient.bnc.closeBuffer(bncnetid, buffer.name);
             }
         });
+    }
+
+    parseBncCredentials(bncNetworkPassword) {
+        let [username, password] = bncNetworkPassword.split(':');
+        username = username.split('/')[0];
+
+        return [username, password];
     }
 }

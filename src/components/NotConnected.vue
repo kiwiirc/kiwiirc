@@ -6,10 +6,6 @@
                 <i v-if="!shouldShowLoading" class="fa fa-frown-o" aria-hidden="true" />
             </div>
             <div class="kiwi-notconnected-buttons">
-                <captcha
-                    class="kiwi-notconnected-captcha"
-                    @ready="handleCaptcha"
-                />
                 <template v-if="isChannel()">
                     <span
                         :disabled="!readyToStart"
@@ -56,6 +52,11 @@
                aria-hidden="true"
             />
         </div>
+
+        <captcha
+            class="kiwi-notconnected-captcha"
+            :network="network"
+        />
     </div>
 </template>
 
@@ -73,7 +74,6 @@ export default {
     data() {
         return {
             forceLoader: false,
-            captchaReady: false,
         };
     },
     computed: {
@@ -93,7 +93,7 @@ export default {
             return this.$state.setting('restricted');
         },
         readyToStart() {
-            return this.captchaReady;
+            return true;
         },
     },
     methods: {
@@ -134,9 +134,6 @@ export default {
             let network = this.buffer.getNetwork();
             network.showServerBuffer('settings');
         },
-        handleCaptcha(isReady) {
-            this.captchaReady = isReady;
-        },
     },
 };
 </script>
@@ -146,6 +143,9 @@ export default {
     box-sizing: border-box;
     padding: 5px 20px;
     transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .kiwi-notconnected.connecting {
@@ -171,6 +171,7 @@ export default {
 
 .kiwi-notconnected-captcha {
     display: inline-block;
+    margin-left: 3em;
 }
 
 .kiwi-notconnected-buttons {

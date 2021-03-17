@@ -23,8 +23,6 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
-
 export default {
     data() {
         return {
@@ -34,7 +32,7 @@ export default {
     computed: {
         backgroundStyle() {
             let style = {};
-            let options = state.settings.startupOptions;
+            let options = this.$state.settings.startupOptions;
 
             if (options.infoBackground) {
                 style['background-image'] = `url(${options.infoBackground})`;
@@ -42,10 +40,10 @@ export default {
             return style;
         },
         backgroundImage() {
-            return state.settings.startupOptions.infoBackground || '';
+            return this.$state.settings.startupOptions.infoBackground || '';
         },
         infoContent() {
-            return state.settings.startupOptions.infoContent || '';
+            return this.$state.settings.startupOptions.infoContent || '';
         },
     },
     methods: {
@@ -53,7 +51,7 @@ export default {
             this.closing = true;
             let startApp = (event) => {
                 this.$el.removeEventListener('transitionend', startApp);
-                state.persistence.watchStateForChanges();
+                this.$state.persistence.watchStateForChanges();
                 // Hacky to be using $parent but this component should only be used in a sepcific
                 // scope within startup screens
                 this.$parent.$emit('start');
@@ -107,6 +105,7 @@ export default {
     color: #1b1b1b;
     font-size: 1.5em;
     padding: 2em;
+    border-radius: 5px;
     line-height: 1.6em;
 }
 

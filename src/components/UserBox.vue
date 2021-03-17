@@ -17,7 +17,7 @@
         </div>
 
         <p class="kiwi-userbox-actions">
-            <a v-if="!isSelf" class="kiwi-userbox-action" @click="openQuery">
+            <a v-if="!isSelf && !buffer.isQuery()" class="kiwi-userbox-action" @click="openQuery">
                 <i class="fa fa-comment-o" aria-hidden="true" />
                 {{ $t('send_a_message') }}
             </a>

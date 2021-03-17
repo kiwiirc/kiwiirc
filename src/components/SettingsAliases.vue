@@ -71,8 +71,6 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
-
 export default {
     data: function data() {
         return {
@@ -82,10 +80,10 @@ export default {
     computed: {
         aliasText: {
             get: function getAliasText() {
-                return state.setting('aliases').trim();
+                return this.$state.setting('aliases').trim();
             },
             set: function setAliasText(newVal) {
-                state.setting('aliases', newVal.trim());
+                this.$state.setting('aliases', newVal.trim());
             },
         },
     },

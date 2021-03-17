@@ -1,42 +1,54 @@
-<template>
+<template functional>
     <div
         :class="[
-            nicklist.userMode(user) ? 'kiwi-nicklist-user--mode-' + nicklist.userMode(user) : '',
-            user.away ? 'kiwi-nicklist-user--away' : '',
-            user.ignore ? 'kiwi-nicklist-user--ignore' : '',
+            props.nicklist.userMode(props.user) ?
+                'kiwi-nicklist-user--mode-' + props.nicklist.userMode(props.user) :
+                '',
+            props.user.away ? 'kiwi-nicklist-user--away' : '',
+            props.user.ignore ? 'kiwi-nicklist-user--ignore' : '',
+            data.staticClass,
         ]"
-        :data-nick="(user.nick||'').toLowerCase()"
+        :data-nick="(props.user.nick||'').toLowerCase()"
         class="kiwi-nicklist-user"
-        @click="nicklist.openUserbox(user)"
+        @click="props.nicklist.openUserbox(props.user)"
     >
-        <div v-if="shouldShowAvatars" class="kiwi-avatar-container">
-            <Avatar
-                v-if="user"
-                :user="user"
+        <div v-if="props.m().shouldShowAvatars()" class="kiwi-avatar-container">
+            <component
+                :is="injections.components.Avatar"
+                v-if="props.user"
+                :user="props.user"
                 size="small"
             />
-            <away-status-indicator
-                :network="network"
-                :user="user"
+            <component
+                :is="injections.components.AwayStatusIndicator"
+                :network="props.network"
+                :user="props.user"
                 :toggle="false"
             />
         </div>
         <div v-else>
-            <away-status-indicator
-                :network="network"
-                :user="user"
+            <component
+                :is="injections.components.AwayStatusIndicator"
+                :network="props.network"
+                :user="props.user"
                 :toggle="false"
             />
         </div>
-        <span class="kiwi-nicklist-user-prefix">{{ nicklist.userModePrefix(user) }}</span><span
-            :style="{ 'color': userColour }"
+        <span class="kiwi-nicklist-user-prefix">
+            {{ props.nicklist.userModePrefix(props.user) }}
+        </span><span
+            :style="{ 'color': props.m().userColour() }"
             class="kiwi-nicklist-user-nick"
-        >{{ user.nick }}
+        >{{ props.user.nick }}
         </span>
-        <span class="kiwi-nicklist-messageuser" @click.stop="nicklist.openQuery(user)">
+        <span class="kiwi-nicklist-messageuser" @click.stop="props.nicklist.openQuery(props.user)">
             <i class="fa fa-comment" aria-hidden="true" />
         </span>
-        <typing-status-indicator :user="user" :buffer="nicklist.buffer" />
+        <component
+            :is="injections.components.TypingStatusIndicator"
+            :user="props.user"
+            :buffer="props.nicklist.buffer"
+        />
     </div>
 </template>
 
@@ -47,22 +59,46 @@ import AwayStatusIndicator from './AwayStatusIndicator';
 import TypingStatusIndicator from './TypingStatusIndicator';
 import Avatar from './Avatar';
 
-export default {
-    components: {
-        AwayStatusIndicator,
-        TypingStatusIndicator,
-        Avatar,
+const methods = {
+    props: {},
+    userColour() {
+        let props = this.props;
+        if (props.nicklist.useColouredNicks) {
+            return props.user.getColour();
+        }
+        return '';
     },
-    props: ['network', 'user', 'nicklist'],
-    computed: {
-        userColour() {
-            if (this.nicklist.useColouredNicks) {
-                return this.user.getColour();
-            }
-            return '';
+    shouldShowAvatars() {
+        let props = this.props;
+        return props.nicklist.buffer.setting('nicklist_avatars');
+    },
+};
+
+export default {
+    inject: {
+        components: {
+            default: {
+                AwayStatusIndicator,
+                TypingStatusIndicator,
+                Avatar,
+            },
         },
-        shouldShowAvatars() {
-            return this.nicklist.buffer.setting('nicklist_avatars');
+    },
+    props: {
+        network: Object,
+        user: Object,
+        nicklist: Object,
+        m: {
+            default: function m() {
+                // vue uses this function to generate the prop. `this`==null Return our own function
+                return function n() {
+                    // Give our methods some props context before its function is called.
+                    // This is only safe because the function on the methods object is called on
+                    // the same js tick
+                    methods.props = this;
+                    return methods;
+                };
+            },
         },
     },
 };

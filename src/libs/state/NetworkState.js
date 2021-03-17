@@ -10,6 +10,7 @@ export default class NetworkState {
         // Enumerable properties that become reactive under Vue
         this.id = id;
         this.name = '';
+        this.editable_name = false;
         // State of the transport
         this.state = 'disconnected';
         this.state_error = '';
@@ -17,6 +18,7 @@ export default class NetworkState {
         this.last_error = '';
         this.auto_commands = '';
         this.is_znc = false;
+        this.is_bnc = false;
         this.hidden = false;
         this.channel_list = [];
         this.channel_list_state = '';

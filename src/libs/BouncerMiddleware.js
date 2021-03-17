@@ -37,7 +37,7 @@ export default function bouncerMiddleware() {
                 host: tags.host,
                 port: parseInt(tags.port, 10),
                 tls: tags.tls === '1',
-                connect: tags.state === 'connected',
+                connected: tags.state === 'connected',
                 nick: tags.nick,
                 currentNick: tags.currentNick,
                 password: tags.password || '',
@@ -62,6 +62,7 @@ export default function bouncerMiddleware() {
                 topic: tags.topic,
                 joined: tags.joined === '1',
                 seen: tags.seen,
+                notify: tags.notify || 'highlight',
             });
         } else if (params[0] === 'state') {
             client.command_handler.emit('bouncer state', {
@@ -71,12 +72,12 @@ export default function bouncerMiddleware() {
             });
         }
 
-        // BOUNCER addnetwork Network1 ERR_NAMEINUSE
-        if (params[0] === 'addnetwork' && params[2].substr(0, 4) === 'ERR_') {
-            let netName = (params[1] || '').toLowerCase();
+        // BOUNCER addnetwork NetID Network1 ERR_NAMEINUSE
+        if (params[0] === 'addnetwork' && params[3].substr(0, 4) === 'ERR_') {
+            let netName = (params[2] || '').toLowerCase();
             let eventObj = {
-                error: params[2],
-                reason: params[3] || '',
+                error: params[3],
+                reason: params[4] || '',
             };
             client.command_handler.emit('bouncer addnetwork error', eventObj);
             client.command_handler.emit('bouncer addnetwork error ' + netName, eventObj);
@@ -140,7 +141,8 @@ function addFunctionsToClient(client) {
 
     bnc.bufferSeen = function bufferSeen(netId, bufferName, seenTime) {
         return new Promise((resolve, reject) => {
-            let timeStr = Misc.dateIso(seenTime);
+            // 1 tells the bouncer to use the current time
+            let timeStr = seenTime ? Misc.dateIso(seenTime) : '1';
             client.raw(`BOUNCER changebuffer ${netId} ${bufferName} seen=${timeStr}`);
         });
     };

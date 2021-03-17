@@ -1,7 +1,10 @@
-<template>
+<template functional>
     <span
-        v-if="user && status !== ''"
-        :class="{ 'kiwi-typingstatusindicator--paused': status === 'paused' }"
+        v-if="props.user && $options.m.status(props) !== ''"
+        :class="{
+            'kiwi-typingstatusindicator--paused': $options.m.status(props) === 'paused',
+            [data.staticClass]: true,
+        }"
         class="kiwi-typingstatusindicator"
     >…</span>
 </template>
@@ -9,16 +12,23 @@
 <script>
 'kiwi public';
 
-export default {
-    props: ['user', 'buffer'],
-    computed: {
-        status() {
-            if (!this.user || !this.buffer) {
-                return '';
-            }
+const methods = {
+    props: {},
+    status(props) {
+        // let props = this.props;
+        if (!props.user || !props.buffer) {
+            return '';
+        }
 
-            return this.user.typingStatus(this.buffer.name).status;
-        },
+        return props.user.typingStatus(props.buffer.name).status;
     },
+};
+
+export default {
+    props: {
+        user: Object,
+        buffer: Object,
+    },
+    m: methods,
 };
 </script>

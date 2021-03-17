@@ -6,12 +6,14 @@ msgstr ""
 "X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: es-US\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 11\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Spanish, United States\n"
 "Language: es_US\n"
-"PO-Revision-Date: 2020-04-13 17:05\n"
+"PO-Revision-Date: 2020-09-04 17:21\n"
 
 #: Start
 msgid "start_button"
@@ -292,6 +294,10 @@ msgstr "Colorear apodos en los mensajes"
 #: Share when I'm typing a message
 msgid "settings_share_typing"
 msgstr "Comparte cuando estoy escribiendo un mensaje"
+
+#: Show inline image previews
+msgid "settings_show_inline_previews"
+msgstr "Muestra las previsualizaciones de imágenes"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -620,6 +626,10 @@ msgstr "No se ha podido conectar al servidor :("
 #: Connect To Network
 msgid "network_connect"
 msgstr "Conectar a la Red"
+
+#: Network Name
+msgid "network_name"
+msgstr "Nombre de la Red"
 
 #: Close options
 msgid "side_close"

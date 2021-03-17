@@ -36,7 +36,6 @@
 'kiwi public';
 
 import * as TextFormatting from '@/helpers/TextFormatting';
-import state from '@/libs/state';
 import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
@@ -82,7 +81,7 @@ export default {
                 return;
             }
 
-            state.persistence.forgetState();
+            this.$state.persistence.forgetState();
             window.location.reload();
         },
     },

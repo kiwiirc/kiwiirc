@@ -164,6 +164,7 @@ tokens['`'] = {
     },
 };
 
+// Bold
 tokens['\x02'] = {
     token: '\x02',
     extra: false,
@@ -180,6 +181,7 @@ tokens['\x02'] = {
     },
 };
 
+// Italic
 tokens['\x1D'] = {
     token: '\x1D',
     extra: false,
@@ -196,6 +198,7 @@ tokens['\x1D'] = {
     },
 };
 
+// Underline
 tokens['\x1F'] = {
     token: '\x1F',
     extra: false,
@@ -268,6 +271,15 @@ tokens['\x03'] = {
         delete block.styles.color;
         delete block.styles.background;
 
+        return null;
+    },
+};
+
+// Reverse (unimplemented)
+tokens['\x16'] = {
+    token: '\x16',
+    extra: false,
+    fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         return null;
     },
 };

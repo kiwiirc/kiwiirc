@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 let isEnabled = false;
 
-export function requestPermission() {
+export function requestPermission(state) {
     // Do we support notifications?
     if (!('Notification' in window)) {
         isEnabled = false;
@@ -13,12 +13,15 @@ export function requestPermission() {
 
     // Permissions already been granted?
     if (Notification.permission === 'granted') {
+        state.$emit('notification.enabled');
         isEnabled = true;
+        return;
     }
 
     if (Notification.permission !== 'denied') {
         Notification.requestPermission((permission) => {
             if (permission === 'granted') {
+                state.$emit('notification.enabled');
                 isEnabled = true;
             } else {
                 isEnabled = false;

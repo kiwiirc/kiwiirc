@@ -12,36 +12,20 @@ import * as ServerConnection from './ServerConnection';
 export function create(state, network) {
     let networkid = network.id;
 
-    let clientOpts = {
-        host: network.connection.server,
-        port: network.connection.port,
-        tls: network.connection.tls,
-        path: network.connection.path,
-        password: network.connection.password,
-        account: {
-            account: network.connection.nick,
-            password: network.password,
-        },
-        nick: network.connection.nick,
-        username: network.username || network.connection.nick,
-        gecos: network.gecos || 'https://kiwiirc.com/',
+    let ircClient = new Irc.Client({
+        // Most options are set under the overloaded .connect()
         version: null,
-        auto_reconnect: false,
-        encoding: network.connection.encoding,
+        enable_chghost: true,
+        enable_setname: true,
         message_max_length: 350,
-    };
-
-    let ircClient = new Irc.Client(clientOpts);
+    });
     ircClient.requestCap('znc.in/self-message');
-    // Current version of irc-framework only support draft/message-tags-0.2
-    // TODO: Removee this once irc-framework has been updated
-    ircClient.requestCap('message-tags');
     ircClient.use(chathistoryMiddleware());
     ircClient.use(clientMiddleware(state, network));
     ircClient.use(typingMiddleware());
 
     // Overload the connect() function to make sure we are connecting with the
-    // most recent connection details from the state
+    // most recent connection details from the network state
     let originalIrcClientConnect = ircClient.connect;
     ircClient.connect = function connect(...args) {
         // Set some defaults if we don't have eveything
@@ -162,24 +146,6 @@ function clientMiddleware(state, network) {
         client.on('connected', () => {
             network.state_error = '';
             network.state = 'connected';
-
-            network.buffers.forEach((buffer) => {
-                if (!buffer) {
-                    return;
-                }
-
-                let messageBody = TextFormatting.formatText('network_connected', {
-                    text: TextFormatting.t('connected'),
-                });
-
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: messageBody,
-                    type: 'connection',
-                    type_extra: 'connected',
-                });
-            });
         });
 
         client.on('socket close', (err) => {
@@ -194,18 +160,6 @@ function clientMiddleware(state, network) {
 
                 buffer.joined = false;
                 buffer.clearUsers();
-
-                let messageBody = TextFormatting.formatText('network_disconnected', {
-                    text: TextFormatting.t('disconnected'),
-                });
-
-                state.addMessage(buffer, {
-                    time: Date.now(),
-                    nick: '',
-                    message: messageBody,
-                    type: 'connection',
-                    type_extra: 'disconnected',
-                });
             });
         });
     };
@@ -234,9 +188,12 @@ function clientMiddleware(state, network) {
 
         // SASL failed auth
         if (command === '904') {
-            if (state.setting('disconnectOnSaslFail')) {
-                network.ircClient.connection.end();
+            if (!network.state !== 'connected') {
                 network.last_error = 'Invalid login';
+
+                if (state.setting('disconnectOnSaslFail')) {
+                    network.ircClient.connection.end();
+                }
             }
 
             let serverBuffer = network.serverBuffer();
@@ -380,12 +337,43 @@ function clientMiddleware(state, network) {
             }
         }
 
+        if (command.toLowerCase() === 'batch start chathistory' && client.chathistory) {
+            // We have a new batch of messages. To prevent duplicate messages being shown, we remove
+            // all messages we have locally in the range of these new messages so that the new block
+            // of messages we recieved are displayed accurately. Each message in the block will
+            // trigger a 'message' event after this.
+            let startTime = 0;
+            let endTime = 0;
+            event.commands.forEach((message) => {
+                if (message.time && message.time > endTime) {
+                    endTime = message.time;
+                }
+
+                if (message.time && message.time < startTime) {
+                    startTime = message.time;
+                }
+            });
+
+            if (!startTime || !endTime) {
+                return;
+            }
+
+            let buffer = state.getBufferByName(networkid, event.params[0]);
+            if (buffer) {
+                buffer.clearMessageRange(startTime, endTime);
+            }
+        }
+
         if (command === 'message') {
             let isPrivateMessage = false;
             let bufferName = event.from_server ? '*' : event.target;
 
-            // PMs should go to a buffer with the name of the other user
-            if (!event.from_server && event.target === client.user.nick) {
+            // If the message came from a batch then params[0] is the bufferName
+            if (event.batch && event.batch.type === 'chathistory' && event.batch.params[0]) {
+                bufferName = event.batch.params[0];
+                isPrivateMessage = !network.isChannelName(bufferName);
+            } else if (!event.from_server && event.target === client.user.nick) {
+                // PMs should go to a buffer with the name of the other user
                 isPrivateMessage = true;
                 bufferName = event.nick;
             }
@@ -921,6 +909,31 @@ function clientMiddleware(state, network) {
             }
         }
 
+        if (command === 'user updated') {
+            const user = network.userByName(event.nick);
+            if (user) {
+                Object.entries(event).forEach(([key, val]) => {
+                    if (key.indexOf('new_') !== 0) {
+                        return;
+                    }
+
+                    const paramName = key.substr(4);
+                    switch (paramName) {
+                    case 'gecos':
+                        user.realname = val;
+                        break;
+                    case 'ident':
+                        user.username = val;
+                        break;
+                    case 'hostname':
+                        user.host = val;
+                        break;
+                    default:
+                    }
+                });
+            }
+        }
+
         if (command === 'channel info') {
             let buffer = network.bufferByName(event.channel);
             if (!buffer) {
@@ -1201,6 +1214,18 @@ function clientMiddleware(state, network) {
                     type: 'topic',
                 });
             }
+        }
+
+        if (command === 'help') {
+            let buffer = state.getOrAddBufferByName(networkid, '*help');
+            state.addMessage(buffer, {
+                time: eventTime,
+                server_time: serverTime,
+                nick: '',
+                message: event.help,
+                type: 'help',
+                tags: event.tags || {},
+            });
         }
 
         if (command === 'ctcp response' || command === 'ctcp request') {

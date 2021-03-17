@@ -6,12 +6,14 @@ msgstr ""
 "X-Crowdin-SourceKey: msgstr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: kiwiirc\n"
+"X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: pt-PT\n"
 "X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 11\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2020-04-13 16:36\n"
+"PO-Revision-Date: 2020-06-17 17:10\n"
 
 #: Start
 msgid "start_button"
@@ -293,6 +295,10 @@ msgstr "Colorir os nicks nas mensagens"
 msgid "settings_share_typing"
 msgstr "Partilhar quando estou a escrever uma mensagem"
 
+#: Show inline image previews
+msgid "settings_show_inline_previews"
+msgstr "Pré-visualização de imagens incorporadas"
+
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
 msgstr "Incluir mensagens de entrada/saída como actividade"
@@ -347,7 +353,7 @@ msgstr "Desactivar sons"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Esconder contador de mensagens não lidas"
 
 #: Operator tools
 msgid "operator_tools"
@@ -591,7 +597,7 @@ msgstr "{{count}} pessoas aqui"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Filtrar utilizadores no canal"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -620,6 +626,10 @@ msgstr "Nós não conseguimos nos conectar a esse servidor :("
 #: Connect To Network
 msgid "network_connect"
 msgstr "Conecte-se à rede"
+
+#: Network Name
+msgid "network_name"
+msgstr "Nome da Rede"
 
 #: Close options
 msgid "side_close"
@@ -747,7 +757,7 @@ msgstr "Filtrar Canais"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Encontrar Mais Canais"
 
 #: Change nick
 msgid "change_nick"

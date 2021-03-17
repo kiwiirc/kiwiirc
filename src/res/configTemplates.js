@@ -43,6 +43,7 @@ export const configTemplates = {
             password: '',
         },
         warnOnExit: true,
+        quitMessage: 'Page closed',
         // Default buffer settings
         buffers: {
             messageLayout: 'modern',
@@ -57,6 +58,7 @@ export const configTemplates = {
             show_topics: true,
             show_nick_changes: true,
             show_mode_changes: true,
+            show_presence_changes: true,
             traffic_as_activity: false,
             coloured_nicklist: true,
             colour_nicknames_in_messages: true,
@@ -76,8 +78,8 @@ export const configTemplates = {
             flash_title: 'message',
             nicklist_avatars: false,
             show_link_previews: true,
-            inline_link_previews: true,
-            inline_link_auto_preview_whitelist: '',
+            inline_link_auto_previews: true,
+            inline_link_auto_preview_whitelist: '.*',
         },
         // Startup screen default
         startupOptions: {
@@ -88,12 +90,14 @@ export const configTemplates = {
             nick: 'kiwi_?',
             direct: false,
             state_key: 'kiwi-state',
+            remember_buffers: true,
             nick_format: '',
         },
         autoReconnect: false,
         disconnectOnSaslFail: true,
         allowRegisterProtocolHandler: false,
         noticeActiveBuffer: true,
+        nicklistGroupAway: false,
         showChanlistModes: false,
         showAutocomplete: true,
         showEmojiPicker: true,
@@ -102,6 +106,7 @@ export const configTemplates = {
         showAwayStatusIndicators: true,
         sidebarDefault: 'nicklist',
         showRaw: false,
+        useBufferHistory: true,
         hideSettings: null,
         highlights: '',
         teamHighlights: false,
@@ -114,6 +119,7 @@ export const configTemplates = {
 /w /whois $1+
 /raw /quote $1+
 /connect /server $1+
+/disconnect /quit $1+
 /cycle $channel? /lines /part $channel | /join $channel
 /active /back $1+
 /umode /mode $nick $1+
@@ -303,7 +309,7 @@ export const configTemplates = {
             ctcp_response: '[CTCP %nick reply] %message',
             ctcp_request: '[CTCP %nick] %message',
             privmsg: '%text',
-            notice: '%text',
+            notice: '[NOTICE] %text',
             action: '* %nick %text',
             whois_ident: '%nick [%nick!%ident@%host] * %text',
             whois_error: '[%nick] %text',
@@ -336,6 +342,7 @@ export const configTemplates = {
             show_emoticons: false,
             show_message_info: false,
             share_typing: false,
+            inline_link_auto_previews: false,
         },
     },
 

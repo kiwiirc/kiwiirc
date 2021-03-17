@@ -21,6 +21,8 @@ module.exports = {
             alias: {
                 vue$: 'vue/dist/vue.common.js',
             },
+            // This prevents yarn link modules from getting linted
+            symlinks: false,
         },
         performance: {
             maxEntrypointSize: 1500000,
@@ -60,6 +62,7 @@ module.exports = {
 
         config.plugin('html').tap((args) => {
             args[0].template = path.join(__dirname, 'index.html');
+            args[0].minify = false;
             return args;
         });
 
@@ -85,6 +88,7 @@ module.exports = {
         config.module
             .rule('html')
             .test(/\.html$/)
+            .exclude.add(path.join(__dirname, 'index.html')).end()
             .use('html-loader')
             .loader('html-loader');
 

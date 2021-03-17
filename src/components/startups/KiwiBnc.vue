@@ -32,7 +32,6 @@
 'kiwi public';
 
 import _ from 'lodash';
-import state from '@/libs/state';
 import Logger from '@/libs/Logger';
 import StartupLayout from './CommonLayout';
 
@@ -52,7 +51,7 @@ export default {
     },
     computed: {
         greetingText: function greetingText() {
-            let greeting = state.settings.startupOptions.greetingText;
+            let greeting = this.$state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
                 this.$t('start_greeting');
@@ -62,7 +61,7 @@ export default {
                 return '';
             }
 
-            let greeting = state.settings.startupOptions.buttonText;
+            let greeting = this.$state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
                 this.$t('start_button');
@@ -123,7 +122,7 @@ export default {
         },
 
         getBncNetwork: function getBncNetwork() {
-            let bnc = state.setting('bnc');
+            let bnc = this.$state.setting('bnc');
 
             if (bnc.network) {
                 bnc.username = this.username;
@@ -131,7 +130,7 @@ export default {
                 return bnc.network;
             }
 
-            let options = state.settings.startupOptions;
+            let options = this.$state.settings.startupOptions;
 
             // Indicate that all our connections will be going through a BNC
             bnc.active = true;
@@ -141,7 +140,7 @@ export default {
             bnc.username = this.username;
             bnc.password = this.password;
 
-            let bncnet = state.addNetwork('bnccontrol', this.username, {
+            let bncnet = this.$state.addNetwork('bnccontrol', this.username, {
                 server: bnc.server,
                 port: bnc.port,
                 tls: bnc.tls,
@@ -164,7 +163,7 @@ export default {
             //  "tls":"0",
             //  "nick":"notprawn99829"
             //  },
-            let net = state.addNetwork(network.name, network.nick, {
+            let net = this.$state.addNetwork(network.name, network.nick, {
                 server: network.host,
                 port: network.port,
                 tls: network.tls,
@@ -174,7 +173,7 @@ export default {
             });
 
             network.buffers.forEach((buffer) => {
-                let newBuffer = state.addBuffer(net.id, buffer.name);
+                let newBuffer = this.$state.addBuffer(net.id, buffer.name);
                 if (buffer.joined) {
                     newBuffer.enabled = true;
                 }
@@ -187,7 +186,7 @@ export default {
         monitorNetworkChanges: function monitorNetworkChanges(bncNet, bncNetworks) {
             let existingNets = Object.create(null);
             function rememberNetworks() {
-                state.networks.forEach((network) => {
+                this.$state.networks.forEach((network) => {
                     if (!network.connection.bncname) {
                         return;
                     }
@@ -207,7 +206,7 @@ export default {
             rememberNetworks();
 
             let saveState = (newVal) => {
-                state.networks.forEach((network) => {
+                this.$state.networks.forEach((network) => {
                     // Only deal with BNC networks
                     if (network.name === 'bnccontrol') {
                         return;
@@ -259,11 +258,11 @@ export default {
 
             let debouncedSaveState = _.debounce(saveState, 2000);
 
-            state.$watch('networks', debouncedSaveState, { deep: true });
+            this.$state.$watch('networks', debouncedSaveState, { deep: true });
 
             // Just before we connect to a network, make sure the BNC is sabed and connected to
             // it or at least trying to connect.
-            state.$on('network.connecting', (event) => {
+            this.$state.$on('network.connecting', (event) => {
                 saveState();
 
                 let netName = event.network.connection.bncname;
@@ -275,11 +274,11 @@ export default {
 
             // Very hacky until we have network name renaming on the bnc. When a new network
             // is added, change the name to the next available network name.
-            state.$on('network.new', (event) => {
+            this.$state.$on('network.new', (event) => {
                 let currentNum = 1;
                 let existingNet = true;
                 while (existingNet) {
-                    existingNet = _.find(state.networks, { name: 'Network' + currentNum });
+                    existingNet = _.find(this.$state.networks, { name: 'Network' + currentNum });
                     if (!existingNet) {
                         event.network.name = 'Network' + currentNum;
                     }
@@ -288,11 +287,11 @@ export default {
                 }
             });
 
-            state.$on('network.removed', (event) => {
+            this.$state.$on('network.removed', (event) => {
                 bncNet.ircClient.bnc.removeNetwork(event.network.connection.bncname);
             });
 
-            state.$on('buffer.close', (event) => {
+            this.$state.$on('buffer.close', (event) => {
                 let buffer = event.buffer;
                 let network = event.buffer.getNetwork();
                 let bncName = network.connection.bncname;

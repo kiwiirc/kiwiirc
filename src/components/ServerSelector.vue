@@ -56,6 +56,7 @@
 'kiwi public';
 
 import _ from 'lodash';
+import * as Misc from '@/helpers/Misc';
 
 export default {
     props: {
@@ -91,7 +92,7 @@ export default {
 
                     this.showCustom = true;
                 } else {
-                    let addr = this.parseFormatted(newVal);
+                    let addr = Misc.parsePresetServer(newVal);
                     this.name = addr.name;
                     this.connection.server = addr.server;
                     this.connection.port = addr.port;
@@ -135,51 +136,9 @@ export default {
                 this.connection.port = 6667;
             }
         },
-        // parseFormatted - Parse freenode|irc.freenode.net:+6697 links
-        parseFormatted(input) {
-            let ret = {
-                name: '',
-                server: '',
-                port: 6667,
-                tls: false,
-            };
-
-            let val = input;
-
-            let pipePos = val.indexOf('|');
-            if (pipePos > -1) {
-                ret.name = val.substr(0, pipePos);
-                val = val.substr(pipePos + 1);
-            }
-
-            let colonPos = val.indexOf(':');
-            if (colonPos === -1) {
-                ret.server = val;
-                val = '';
-            } else {
-                ret.server = val.substr(0, colonPos);
-                val = val.substr(colonPos + 1);
-            }
-
-            if (val[0] === '+') {
-                ret.tls = true;
-                val = val.substr(1);
-            }
-
-            if (val.length > 0) {
-                ret.port = parseInt(val, 10);
-                val = '';
-            }
-
-            if (!ret.name) {
-                ret.name = ret.server;
-            }
-
-            return ret;
-        },
         importUris(serverList) {
             // [ 'freenode|irc.freenode.net:+6697', 'irc.snoonet.org:6667' ]
-            let servers = serverList.map((s) => this.parseFormatted(s));
+            let servers = serverList.map((s) => Misc.parsePresetServer(s));
             this.$set(this, 'presetNetworks', servers);
         },
     },

@@ -494,10 +494,6 @@
   background: #406550;
   opacity: 1;
 }
-.kiwi-messagelist-message.kiwi-messagelist-message--unread.kiwi-messagelist-message-connection {
-    border-left: none;
-    background: none;
-}
 
 /* When hovering over a users messages */
 .kiwi-messagelist-message--hover{
@@ -507,14 +503,6 @@
 /* The shadow over the main text area that displays when the sidebar is open */
 .kiwi-container--sidebar-drawn .kiwi-messagelist::after {
     background-color: #000;
-}
-
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-connected {
-    background-color: #1b2f24;
-    color: #fff;
-}
-.kiwi-messagelist-message.kiwi-messagelist-message-connection-disconnected {
-    color: #fff;
 }
 
 /* Traffic Messages - User join , User Quit etc*/

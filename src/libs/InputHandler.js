@@ -146,7 +146,16 @@ function handleMessage(type, event, command, line) {
     let bufferName = line.substr(0, spaceIdx);
     let message = line.substr(spaceIdx + 1);
 
-    // Mke sure we have some text to actually send
+    // Only trim whitespace from the end if we have existing content. Some people enjoy sending
+    // pure whitespace messages which we don't want to interfere with
+    if (message.replace(/\s+/g, '') !== '') {
+        message = message.trimEnd();
+    } else {
+        // Windows uses \r\n for new lines as we split on \n trim \r from the end
+        message = message.replace(/[\r]+$/, '');
+    }
+
+    // Make sure we have some text to actually send
     if (!message) {
         return;
     }

@@ -83,7 +83,6 @@
 <script>
 'kiwi public';
 
-import state from '@/libs/state';
 import NetworkProvider from '@/libs/NetworkProvider';
 import GlobalApi from '@/libs/GlobalApi';
 import StateBrowserNetwork from './StateBrowserNetwork';
@@ -109,13 +108,13 @@ export default {
     },
     computed: {
         getNetwork() {
-            return state.getActiveNetwork();
+            return this.$state.getActiveNetwork();
         },
         isPersistingState: function isPersistingState() {
-            return !!state.persistence;
+            return !!this.$state.persistence;
         },
         isRestrictedServer: function isRestrictedServer() {
-            return !!state.settings.restricted;
+            return !!this.$state.settings.restricted;
         },
         networksToShow: function networksToShow() {
             return this.networks.filter((net) => !net.hidden);
@@ -129,20 +128,20 @@ export default {
     methods: {
         clickAddNetwork: function clickAddNetwork() {
             let nick = 'Guest' + Math.floor(Math.random() * 100);
-            let network = state.getNetworkFromAddress('');
+            let network = this.$state.getNetworkFromAddress('');
             if (typeof network === 'undefined') {
-                network = state.addNetwork('Network', nick, {});
+                network = this.$state.addNetwork('Network', nick, {});
             }
             network.showServerBuffer('settings');
         },
         clickAppSettings: function clickAppSettings() {
-            state.$emit('active.component.toggle', AppSettings);
+            this.$state.$emit('active.component.toggle', AppSettings);
         },
         hideStatebrowser: function hideStatebrowser() {
-            state.$emit('statebrowser.hide');
+            this.$state.$emit('statebrowser.hide');
         },
         connectProvidedNetwork: function connectProvidedNetwork(pNet) {
-            let net = state.addNetwork(pNet.name, pNet.nick, {
+            let net = this.$state.addNetwork(pNet.name, pNet.nick, {
                 server: pNet.server,
                 port: pNet.port,
                 tls: pNet.tls,
