@@ -38,7 +38,7 @@
         "xhr": "^2.5.0"
     },
     "devDependencies": {
-        "@vue/cli-plugin-babel": "~4.4.6",
+        "@vue/cli-plugin-babel": "~4.5.12",
         "@vue/cli-plugin-eslint": "~4.5.9",
         "@vue/cli-plugin-unit-jest": "~4.5.3",
         "@vue/cli-service": "~4.3.1",
