@@ -111,7 +111,7 @@
                 :data-name="type"
                 class="kiwi-statebrowser-buffers"
             >
-                <div class="kiwi-statebrowser-channels-header">
+                <div v-if="!channel_filter_display" class="kiwi-statebrowser-channels-header">
                     <div
                         class="kiwi-statebrowser-buffertype"
                         @click="toggleSection(type)"
