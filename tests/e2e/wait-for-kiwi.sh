@@ -13,3 +13,4 @@ wait-for-url() {
     curl -I $1
 }
 wait-for-url http://${HOST}
+
