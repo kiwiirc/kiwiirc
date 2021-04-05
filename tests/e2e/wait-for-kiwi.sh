@@ -5,7 +5,7 @@ declare -r HOST="localhost:8081"
 
 wait-for-url() {
     echo "Testing $1"
-    timeout -s TERM 100 bash -c \
+    timeout -s TERM 120 bash -c \
     'while [[ "$(curl -s -o /dev/null -L -w ''%{http_code}'' ${0})" != "200" ]];\
     do echo "Waiting for ${0}" && sleep 2;\
     done' ${1}
