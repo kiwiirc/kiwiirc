@@ -1,0 +1,47 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: e2e Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: kiwiirc/webircgateway
+        path: ./webircgateway-root
+    - uses: actions/checkout@v2
+      with:
+        repository: kiwiirc/kiwiirc
+        path: ./kiwiirc-root
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: pwd && ls -la
+    - run: sudo apt-get update
+    - run: sudo apt-get install golang-go git libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+    - run: cd webircgateway-root && go build # build Web IRC Gateway
+    - run: cp kiwiirc-root/tests/e2e/webiirc-config/config.conf webircgateway-root/config.conf # copy over Web IRC Gateway config
+    - run: cp kiwiirc-root/tests/e2e/kiwi-irc-config/config.json kiwiirc-root/static/config.json # copy over Kiwi IRC config
+    - run: cd webircgateway-root && ./webircgateway --config=config.conf & # run Web IRC Gateway
+    - run: cd kiwiirc-root && npm i && npm run dev & # run Kiwi IRC
+    - run: ./kiwiirc-root/tests/e2e/wait-for-kiwi.sh
+    - run: pwd && ls -la && curl -I http://localhost:8081/
+    - run: cd kiwiirc-root/tests/e2e && npm ci
+    - run: cd kiwiirc-root/tests/e2e && npm run test-single --spec cypress/integration/userOne.js &  # run the first  functional test
+    - run: cd kiwiirc-root/tests/e2e && npm run test-single --spec cypress/integration/userTwo.js # run the second functional test

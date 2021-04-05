@@ -1,0 +1,11 @@
+{
+  "reporterEnabled": "mocha-junit-reporter, mochawesome",
+  "reporterOptions": {
+    "mochaFile": "artifacts/junit/report-part-[hash].xml",
+    "reportDir": "artifacts/mochawesome-sources",
+    "quiet": true,
+    "overwrite": false,
+    "html": false,
+    "json": true
+  }
+}
