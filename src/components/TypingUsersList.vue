@@ -4,9 +4,10 @@
             v-for="(user, idx) in typingUsers"
             :key="user.nick"
             :style="{ color: userColour(user) }"
+            class="kiwi-typing"
         >
             {{ user.nick }}{{ typingUsers.length - 1 > idx ? ',' : '' }}
-        </span> {{ typingUsers.length > 0 ? '…' : '' }}
+        </span> {{ typingUsers.length > 0 ? '' : '' }}
     </div>
 </template>
 <script>
@@ -46,6 +47,20 @@ export default {
 
 .kiwi-typinguserslist {
     font-size: 0.9em;
+}
+
+.kiwi-typing::after {
+    display: inline-block;
+    animation: dotty steps(1, end) 1s infinite;
+    content: '';
+}
+
+@keyframes dotty {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+    100% { content: ''; }
 }
 
 </style>
