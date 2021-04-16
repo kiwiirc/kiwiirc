@@ -13,11 +13,11 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2021-04-16 12:11\n"
+"PO-Revision-Date: 2021-04-16 12:21\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "indítás"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
@@ -241,19 +241,19 @@ msgstr "Téma URL"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "Üzenet megjelenés"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Use monospace"
+msgstr "Fix szélességű betűk használata"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "Használja a Kiwi-t alapértelmezett IRC kliensként."
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Traditional IRC layout"
+msgstr "Hagyományos IRC megjelenés"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -261,23 +261,23 @@ msgstr "Show autocomplete list"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Chat Messages"
+msgstr "Csevegő Üzenetek"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Show timestamps"
+msgstr "Időbélyegző megjelenítése"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Use 24-hour timestamps"
+msgstr "24 órás időbélyegző használata"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Show emoticons"
+msgstr "Hangulatjelek megjelenítése"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Block new private messages"
+msgstr "Új privát üzenetek letiltása"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
