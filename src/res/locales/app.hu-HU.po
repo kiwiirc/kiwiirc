@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2021-04-16 12:21\n"
+"PO-Revision-Date: 2021-04-16 12:32\n"
 
 #: Start
 msgid "start_button"
@@ -461,7 +461,7 @@ msgstr "(Any registered user)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topic"
+msgstr "Témakör"
 
 #: Moderated chat
 msgid "channel_moderated"
@@ -469,7 +469,7 @@ msgstr "Moderated chat"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Invite only"
+msgstr "Csak meghívással"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -537,7 +537,7 @@ msgstr "Load previous messages"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Unread Messages"
+msgstr "Olvasatlan üzenetek"
 
 #: Server details
 msgid "settings_server_details"
@@ -557,15 +557,15 @@ msgstr "Your details"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Becenév"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Advanced"
+msgstr "Speciális"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Encoding"
+msgstr "Kódolás"
 
 #: Show Raw
 msgid "settings_show_raw"
@@ -581,11 +581,11 @@ msgstr "Run commands when connected"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Danger Zone"
+msgstr "Veszélyes terület"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Remove network"
+msgstr "Hálózat eltávolítása"
 
 #: {{count}} person here
 msgid "person"
@@ -617,7 +617,7 @@ msgstr "You are not currently connected!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Connection settings"
+msgstr "Kapcsolati beállítások"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
