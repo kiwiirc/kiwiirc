@@ -112,7 +112,7 @@
                 class="kiwi-statebrowser-buffers"
             >
                 <div
-                    v-if="!channel_filter_display && type !== 'other'"
+                    v-if="!channel_filter_display && showBufferGroups && type !== 'other'"
                     class="kiwi-statebrowser-channels-header"
                 >
                     <div
@@ -304,6 +304,9 @@ export default {
         },
         queryActivity() {
             return this.activityFromBuffers(this.filteredBuffersByType.queries);
+        },
+        showBufferGroups() {
+            return this.$state.setting('buffers.show_buffer_groups');
         },
     },
     methods: {
