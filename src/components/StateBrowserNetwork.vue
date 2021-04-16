@@ -116,6 +116,7 @@
                     class="kiwi-statebrowser-channels-header"
                 >
                     <div
+                        v-if="(type === 'queries' && itemBuffers.length) || type !== 'queries'"
                         class="kiwi-statebrowser-buffertype"
                         @click="toggleSection(type)"
                     >
