@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2020-06-14 12:33\n"
+"PO-Revision-Date: 2021-04-16 12:02\n"
 
 #: Start
 msgid "start_button"
@@ -21,7 +21,7 @@ msgstr "Start"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "Üdvözöljük a Kiwi IRC-n!"
 
 #: Close
 msgid "close"
@@ -45,7 +45,7 @@ msgstr "Beállítások"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Kiwi Beállítások"
 
 #: Channels
 msgid "channels"
@@ -57,7 +57,7 @@ msgstr "Access"
 
 #: Banned Users
 msgid "banned"
-msgstr "Banned Users"
+msgstr "Kitiltott Felhasználók"
 
 #: Invited Users
 msgid "invited"
@@ -77,7 +77,7 @@ msgstr "jelszó"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Szerver Jelszó"
 
 #: I have a password
 msgid "password_have"
@@ -89,7 +89,7 @@ msgstr "szerver"
 
 #: Nick
 msgid "nick"
-msgstr "Nick"
+msgstr "Becenév"
 
 #: Channel
 msgid "channel"
@@ -97,11 +97,11 @@ msgstr "csatorna"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "Üzenetek"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "Hálózat"
 
 #: ZNC
 msgid "znc"
@@ -109,7 +109,7 @@ msgstr "znc"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logging in..."
+msgstr "Bejelentkezés..."
 
 #: Invalid login
 msgid "invalid_login"
@@ -117,7 +117,7 @@ msgstr "Invalid login"
 
 #: Search...
 msgid "do_search"
-msgstr "Search..."
+msgstr "Keresés..."
 
 #: OK
 msgid "ok"
@@ -141,7 +141,7 @@ msgstr "nem található"
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "Figyelem!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
