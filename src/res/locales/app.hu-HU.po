@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2021-04-16 12:02\n"
+"PO-Revision-Date: 2021-04-16 12:11\n"
 
 #: Start
 msgid "start_button"
@@ -53,7 +53,7 @@ msgstr "csatornák"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Hozzáférés"
 
 #: Banned Users
 msgid "banned"
@@ -61,7 +61,7 @@ msgstr "Kitiltott Felhasználók"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "Meghívott felhasználók"
 
 #: Notifications
 msgid "notifications"
@@ -81,7 +81,7 @@ msgstr "Szerver Jelszó"
 
 #: I have a password
 msgid "password_have"
-msgstr "I have a password"
+msgstr "Van jelszavam"
 
 #: Server
 msgid "server"
@@ -113,7 +113,7 @@ msgstr "Bejelentkezés..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Invalid login"
+msgstr "Érvénytelen bejelentkezés"
 
 #: Search...
 msgid "do_search"
@@ -121,7 +121,7 @@ msgstr "Keresés..."
 
 #: OK
 msgid "ok"
-msgstr "OK"
+msgstr "Rendben"
 
 #: Cancel
 msgid "cancel"
@@ -145,31 +145,31 @@ msgstr "Figyelem!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "Ezzel minden Kiwi IRC beszélgetést bezár. Biztosan bezárja ezt az ablakot?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "Valódi név"
 
 #: Status
 msgid "whois_status"
-msgstr "Status"
+msgstr "Állapot"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Is available"
+msgstr "elérhető"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Send a message"
+msgstr "Üzenet küldése"
 
 #: More information
 msgid "more_information"
-msgstr "More information"
+msgstr "További információk"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignore user"
+msgstr "Felhasználó mellőzése"
 
 #: Channel
 msgid "connection_channel"
@@ -177,7 +177,7 @@ msgstr "csatorna"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "Távol"
 
 #: {{count}} week
 msgid "week"
@@ -221,23 +221,23 @@ msgstr "{{count}} seconds"
 
 #: General
 msgid "settings_general"
-msgstr "General"
+msgstr "Általános"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "Nyelv"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "Téma"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "Téma frissítése"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "Téma URL"
 
 #: Message Layout
 msgid "settings_messagelayout"
@@ -893,7 +893,7 @@ msgstr "{{nick}} sets {{mode}} on {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Send a message"
+msgstr "Üzenet küldése"
 
 #: Do something physical
 msgid "command_action"
