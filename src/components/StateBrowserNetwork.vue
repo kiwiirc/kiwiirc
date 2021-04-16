@@ -111,7 +111,10 @@
                 :data-name="type"
                 class="kiwi-statebrowser-buffers"
             >
-                <div v-if="!channel_filter_display" class="kiwi-statebrowser-channels-header">
+                <div
+                    v-if="!channel_filter_display && type !== 'other'"
+                    class="kiwi-statebrowser-channels-header"
+                >
                     <div
                         class="kiwi-statebrowser-buffertype"
                         @click="toggleSection(type)"
@@ -181,7 +184,8 @@
                     </div>
                 </div>
                 <div v-if="(show_channels && type === 'channels') ||
-                    (show_queries && type === 'queries')"
+                    (show_queries && type === 'queries') ||
+                    type === 'other'"
                 >
                     <buffer
                         v-for="buffer in itemBuffers"
@@ -277,6 +281,7 @@ export default {
         },
         filteredBuffersByType() {
             let ret = {
+                other: [],
                 channels: [],
                 queries: [],
             };
@@ -285,7 +290,9 @@ export default {
                 if (bufferObj.isChannel()) {
                     ret.channels.push(bufferObj);
                 } else if (bufferObj.isQuery()) {
-                    ret.queries.push((bufferObj));
+                    ret.queries.push(bufferObj);
+                } else {
+                    ret.other.push(bufferObj);
                 }
             });
 
