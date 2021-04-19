@@ -23,7 +23,10 @@
                 </div>
             </div>
             <div class="kiwi-channellist-table">
-                <table v-if="!isLoading && !noResults" :key="last_updated" width="100%">
+                <table v-if="!isLoading && !noResults"
+                       :key="last_updated"
+                       style="overflow-x: hidden; table-layout: auto;"
+                >
                     <tbody>
                         <tr v-for="channel in paginated" :key="channel.channel">
                             <td class="kiwi-channellist-user-center">
@@ -32,7 +35,7 @@
                                     {{ channel.num_users }}
                                 </span>
                             </td>
-                            <td>
+                            <td class="kiwi-channellist-channel-name">
                                 <a class="u-link" @click="joinChannel(channel.channel)">
                                     {{ channel.channel }}
                                 </a>
@@ -40,7 +43,7 @@
                             <td class="kiwi-channellist-table-topic">
                                 <div v-html="formatAndTrimTopic(channel.topic)" />
                             </td>
-                            <td class="kiwi-channellist-user-center">
+                            <td class="kiwi-channellist-user-center hide-narrow">
                                 <a
                                     class="u-button u-button-primary"
                                     @click="joinChannel(channel.channel)"
@@ -256,7 +259,7 @@ export default {
 }
 
 .kiwi-channellist table tbody td {
-    padding: 2px 1em;
+    padding: 2px 5px;
     text-align: left;
 }
 
@@ -291,6 +294,15 @@ export default {
 
     .kiwi-channellist-nav .u-form .u-input {
         width: 100%;
+    }
+
+    .kiwi-channellist table .kiwi-channellist-channel-name {
+        overflow: hidden;
+        max-width: 120px;
+    }
+
+    .hide-narrow {
+        display: none;
     }
 }
 
