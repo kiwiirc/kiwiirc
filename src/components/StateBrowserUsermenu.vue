@@ -11,7 +11,11 @@
             class="kiwi-statebrowser-usermenu-avatar"
             @click="is_usermenu_open=!is_usermenu_open"
         >
-            {{ userInitial }}
+            <avatar
+                v-if="getUser"
+                :user="getUser"
+                size="large"
+            />
             <away-status-indicator
                 v-if="network && network.state === 'connected'"
                 :network="network"
@@ -37,10 +41,12 @@
 
 import * as TextFormatting from '@/helpers/TextFormatting';
 import AwayStatusIndicator from './AwayStatusIndicator';
+import Avatar from './Avatar';
 
 export default {
     components: {
         AwayStatusIndicator,
+        Avatar,
     },
     props: ['network'],
     data() {
@@ -49,13 +55,6 @@ export default {
         };
     },
     computed: {
-        userInitial() {
-            let initial = 'U';
-            if (this.network && this.network.nick) {
-                initial = this.network.nick.charAt(0).toUpperCase();
-            }
-            return initial;
-        },
         networkName() {
             let name = TextFormatting.t('no_network');
             if (this.network) {
@@ -64,7 +63,7 @@ export default {
             return name;
         },
         getUser() {
-            return this.network ?
+            return this.network && this.network.currentUser() ?
                 this.network.currentUser() :
                 null;
         },
@@ -114,6 +113,16 @@ export default {
     margin: 0 auto 10px auto;
     transition: background 0.2s;
     position: relative;
+}
+
+.kiwi-statebrowser-usermenu-avatar .kiwi-avatar {
+    width: 50px;
+    height: 50px;
+}
+
+.kiwi-statebrowser-usermenu-avatar .kiwi-avatar > span {
+    margin-top: 0;
+    border: 0;
 }
 
 .kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
