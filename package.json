@@ -4,7 +4,7 @@
   "description": "Web based IRC client",
   "author": "Darren <darren@darrenwhitlen.com>",
   "scripts": {
-    "build": "npm-run-all translate && vue-cli-service build && npm install vue-google-adsense vue-script2 htmlparser2 json5",
+    "build": "npm-run-all translate && vue-cli-service build && npm install --save vue-google-adsense vue-script2 htmlparser2 json5",
     "test:unit": "vue-cli-service test:unit",
     "lint": "npm-run-all lint:*",
     "lint:eslint": "vue-cli-service lint --no-fix",
