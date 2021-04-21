@@ -6,7 +6,7 @@
             :style="{ color: userColour(user) }"
         >
             {{ user.nick }}{{ typingUsers.length - 1 > idx ? ',' : '' }}
-        </span><span v-if="typingUsers.length > 0" class="kiwi-typing" />
+        </span> {{ typingUsers.length > 0 ? '…' : '' }}
     </div>
 </template>
 <script>

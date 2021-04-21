@@ -69,6 +69,17 @@
                     :sidebar-state="sidebarState"
                 />
             </div>
+            <br />
+            <div class="kiwi-ad-container" style="width: 215px; height: 400px;">
+                <Adsense
+                    v-if="shouldShowAd"
+                    style="display: block;"
+                    data-ad-client="ca-pub-9106844814451489"
+                    data-ad-slot="7202727008"
+                    data-ad-format="auto"
+                    :data-full-width-responsive="true"
+                />
+            </div>
         </div>
 
         <div v-if="!isRestrictedServer" class="kiwi-statebrowser-newnetwork">
@@ -104,9 +115,13 @@ export default {
             show_provided_networks: false,
             provided_networks: Object.create(null),
             pluginUiElements: GlobalApi.singleton().stateBrowserPlugins,
+            showAd: true,
         };
     },
     computed: {
+        startupAd() {
+            return this.$state.settings;
+        },
         getNetwork() {
             return this.$state.getActiveNetwork();
         },
@@ -119,8 +134,15 @@ export default {
         networksToShow: function networksToShow() {
             return this.networks.filter((net) => !net.hidden);
         },
+        shouldShowAd() {
+            return this.$state.setting('showAd');
+        },
     },
     created: function created() {
+        let options = this.startupAd;
+        this.shouldShowAd = typeof options.showAd === 'boolean' ?
+            options.showAd :
+            true;
         netProv.on('networks', (networks) => {
             this.provided_networks = networks;
         });

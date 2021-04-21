@@ -36,7 +36,11 @@ import '@/components/utils/InputText';
 import '@/components/utils/IrcInput';
 import '@/components/utils/InputPrompt';
 import '@/components/utils/InputConfirm';
+import Ads from 'vue-google-adsense';
 
+Vue.use(require('vue-script2'));
+
+Vue.use(Ads.Adsense);
 Vue.use(VueVirtualScroller);
 
 let logLevelMatch = window.location.href.match(/kiwi-loglevel=(\d)/);
