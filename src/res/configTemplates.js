@@ -80,6 +80,7 @@ export const configTemplates = {
             show_link_previews: true,
             inline_link_auto_previews: true,
             inline_link_auto_preview_whitelist: '.*',
+            show_buffer_groups: true,
         },
         // Startup screen default
         startupOptions: {
@@ -106,6 +107,7 @@ export const configTemplates = {
         showAwayStatusIndicators: true,
         sidebarDefault: 'nicklist',
         showRaw: false,
+        showAd: true,
         useBufferHistory: true,
         hideSettings: null,
         highlights: '',
