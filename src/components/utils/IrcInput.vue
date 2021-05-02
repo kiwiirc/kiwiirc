@@ -16,6 +16,7 @@
             @paste="onPaste"
             @focus="onFocus()"
             @blur="$emit('blur', $event)"
+            @onload="focus()"
         />
     </div>
 </template>
@@ -130,6 +131,8 @@ export default Vue.component('irc-input', {
             } else {
                 this.current_el_pos = 0;
             }
+
+            this.focus();
         },
         setValue(newVal) {
             this.value = newVal;
@@ -458,7 +461,7 @@ export default Vue.component('irc-input', {
     height: 100%;
 }
 
-.kiwi-ircinput-editor:empty:not(:focus)::before {
+.kiwi-ircinput-editor:empty::before {
     content: attr(placeholder);
     cursor: text;
 }
