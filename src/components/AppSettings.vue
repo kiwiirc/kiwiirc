@@ -14,6 +14,7 @@
                         <h3>{{ $t('settings_general') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-general">
                             <label class="kiwi-appsettings-setting-language">
+                                <span>{{ $t('settings_language') }} </span>
                                 <div><i class="fa fa-globe" /></div>
                                 <select v-model="settingLanguage">
                                     <option value="">
