@@ -174,11 +174,11 @@
 }
 
 /* Title bar, at the top of the Application settings component */
-.kiwi-appsettings-title {
+.kiwi-appsettings-close {
     color: #fff;
     background: #031e11;
 }
-.kiwi-appsettings-title:hover{
+.kiwi-appsettings-close:hover{
     background: #5cd894;
 }
 
