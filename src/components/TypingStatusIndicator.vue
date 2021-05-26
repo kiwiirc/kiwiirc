@@ -5,8 +5,8 @@
             'kiwi-typingstatusindicator--paused': $options.m.status(props) === 'paused',
             [data.staticClass]: true,
         }"
-        class="kiwi-typingstatusindicator"
-    >…</span>
+        class="kiwi-typingstatusindicator kiwi-typing"
+    />
 </template>
 
 <script>
