@@ -293,6 +293,7 @@ export default {
                 } else if (bufferObj.isQuery()) {
                     ret.queries.push(bufferObj);
                 } else {
+                    // This is buffers like *raw, *bnc, *status etc
                     ret.other.push(bufferObj);
                 }
             });
