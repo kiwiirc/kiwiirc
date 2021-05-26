@@ -14,7 +14,7 @@
                         <h3>{{ $t('settings_general') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-general">
                             <label class="kiwi-appsettings-setting-language">
-                                <span>{{ $t('settings_language') }} </span>
+                                <span>{{ $t('settings_language') }}</span>
                                 <div><i class="fa fa-globe" /></div>
                                 <select v-model="settingLanguage">
                                     <option value="">
@@ -421,6 +421,11 @@ export default {
     flex-grow: 1;
     text-align: right;
     margin-right: 1em;
+}
+
+.kiwi-appsettings-setting-language .fa-globe {
+    vertical-align: middle;
+    font-size: 1.8em;
 }
 
 .kiwi-appsettings-setting-theme span {
