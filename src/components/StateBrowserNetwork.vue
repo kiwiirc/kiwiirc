@@ -111,8 +111,12 @@
                 :data-name="type"
                 class="kiwi-statebrowser-buffers"
             >
-                <div v-if="!channel_filter_display" class="kiwi-statebrowser-channels-header">
+                <div
+                    v-if="!channel_filter_display && showBufferGroups && type !== 'other'"
+                    class="kiwi-statebrowser-channels-header"
+                >
                     <div
+                        v-if="(type === 'queries' && itemBuffers.length) || type !== 'queries'"
                         class="kiwi-statebrowser-buffertype"
                         @click="toggleSection(type)"
                     >
@@ -181,7 +185,8 @@
                     </div>
                 </div>
                 <div v-if="(show_channels && type === 'channels') ||
-                    (show_queries && type === 'queries')"
+                    (show_queries && type === 'queries') ||
+                    type === 'other'"
                 >
                     <buffer
                         v-for="buffer in itemBuffers"
@@ -277,6 +282,7 @@ export default {
         },
         filteredBuffersByType() {
             let ret = {
+                other: [],
                 channels: [],
                 queries: [],
             };
@@ -285,7 +291,10 @@ export default {
                 if (bufferObj.isChannel()) {
                     ret.channels.push(bufferObj);
                 } else if (bufferObj.isQuery()) {
-                    ret.queries.push((bufferObj));
+                    ret.queries.push(bufferObj);
+                } else {
+                    // This is buffers like *raw, *bnc, *status etc
+                    ret.other.push(bufferObj);
                 }
             });
 
@@ -296,6 +305,9 @@ export default {
         },
         queryActivity() {
             return this.activityFromBuffers(this.filteredBuffersByType.queries);
+        },
+        showBufferGroups() {
+            return this.$state.setting('buffers.show_buffer_groups');
         },
     },
     methods: {
