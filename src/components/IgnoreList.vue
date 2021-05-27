@@ -22,7 +22,7 @@ export default {
     props: ['network'],
     computed: {
         ignoredUsers() {
-            return _.filter(this.network.users, u => u.ignore);
+            return _.filter(this.network.users, (u) => u.ignore);
         },
     },
 };
