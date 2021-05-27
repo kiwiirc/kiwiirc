@@ -100,6 +100,10 @@ export default Vue.component('irc-input', {
             }, 0);
         },
         onFocus(event) {
+            // Chrome sometimes focus' the element but does not add the cursor
+            // https://bugs.chromium.org/p/chromium/issues/detail?id=1125078
+            this.focus();
+
             // when the input is empty there are no children to remember the current colour
             // so upon regaining focus we must set the current colour again
             if (!this.getRawText() && this.default_colour) {
