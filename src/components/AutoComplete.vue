@@ -143,6 +143,8 @@ export default {
 
             let cancelKeyCodes = [
                 13, // return
+                32, // space
+                186, // semi-colon
                 188, // comma
                 190, // period
             ];
