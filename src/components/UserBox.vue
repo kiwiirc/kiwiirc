@@ -3,9 +3,15 @@
         <span v-if="isSelf" class="kiwi-userbox-selfprofile">
             {{ $t('user_you') }}
         </span>
+        <div class="kiwi-userbox-avatar-container">
+            <div class="kiwi-userbox-avatar">
+                <avatar :user="user" size="large" />
+                <away-status-indicator :network="network" :user="user" />
+            </div>
+        </div>
         <div class="kiwi-userbox-header">
             <h3>
-                <away-status-indicator :network="network" :user="user" /> {{ user.nick }}
+                <span :style="{ 'color': user.getColour() }">{{ user.nick }}</span>
                 <span v-if="userMode" class="kiwi-userbox-modestring">+{{ userMode }}</span>
             </h3>
             <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
@@ -138,10 +144,12 @@ import * as TextFormatting from '@/helpers/TextFormatting';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import toHtml from '@/libs/renderers/Html';
 import parseMessage from '@/libs/MessageParser';
+import Avatar from './Avatar';
 import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
+        Avatar,
         AwayStatusIndicator,
     },
     props: ['buffer', 'network', 'user'],
@@ -401,6 +409,31 @@ export default {
     padding: 0;
     cursor: default;
     display: inline-block;
+}
+
+.kiwi-userbox-avatar {
+    position: relative;
+    margin: 20px auto;
+    width: 100px;
+    height: 100px;
+}
+
+.kiwi-userbox-avatar .kiwi-avatar {
+    width: 100%;
+    height: 100%;
+    font-size: 3em;
+}
+
+.kiwi-userbox-avatar .kiwi-avatar > span {
+    border-width: 3px;
+}
+
+.kiwi-userbox-avatar .kiwi-awaystatusindicator {
+    width: 16px;
+    height: 16px;
+    top: 4px;
+    right: 2px;
+    position: absolute;
 }
 
 .kiwi-userbox-modestring {
