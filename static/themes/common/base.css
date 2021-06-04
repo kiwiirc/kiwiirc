@@ -871,6 +871,10 @@
     border-color: var(--brand-primary);
 }
 
+.kiwi-avatar--default {
+    background-color: var(--brand-default-fg);
+}
+
 .kiwi-messagelist .kiwi-messagelist-body a,
 .kiwi-channellist-table-topic a,
 .kiwi-aboutbuffer a {

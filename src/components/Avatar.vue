@@ -4,7 +4,10 @@
         :class="[$options.m.hasAvatar(props) ? 'kiwi-avatar--image' : '', data.staticClass]"
         class="kiwi-avatar"
     >
-        <span :style="$options.m.avatarStyle(props)">
+        <span
+            :style="$options.m.avatarStyle(props)"
+            :class="{'kiwi-avatar--default': $options.m.isDefault(props)}"
+        >
             {{ $options.m.hasAvatar(props) ? '' : $options.m.firstNickLetter(props) }}
         </span>
     </div>
@@ -28,13 +31,17 @@ const methods = {
         // let props = this.props;
         return !!(props.user.avatar && (props.user.avatar.small || props.user.avatar.large));
     },
+    isDefault(props) {
+        return !this.colour(props) && !this.hasAvatar(props);
+    },
     avatarStyle(props) {
         // let props = this.props;
         let style = {};
         if (this.hasAvatar(props)) {
             let url = (props.size === 'small' && this.avatar(props).small) ?
                 this.avatar(props).small :
-                this.avatar(props).large;
+                // If large was requested but does not exist fallback to small
+                this.avatar(props).large || this.avatar(props).small;
             style['background-image'] = `url("${url}")`;
         } else {
             style['background-color'] = `${this.colour(props)}`;
