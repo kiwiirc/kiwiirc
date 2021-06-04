@@ -372,7 +372,9 @@ export default {
         },
         onAutocompleteSelected(selectedValue, selectedItem) {
             let word = selectedValue;
-            this.$refs.input.setCurrentWord(word);
+            if (word.length > 0) {
+                this.$refs.input.setCurrentWord(word);
+            }
             this.autocomplete_open = false;
         },
         inputKeyDown(event) {
@@ -784,7 +786,6 @@ export default {
     height: 100%;
     box-sizing: border-box;
     overflow: visible;
-    padding: 7px 0 12px 0;
 }
 
 .kiwi-controlinput-tool {

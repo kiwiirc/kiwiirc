@@ -13,15 +13,15 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2020-06-14 12:33\n"
+"PO-Revision-Date: 2021-04-16 12:32\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "indítás"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "Üdvözöljük a Kiwi IRC-n!"
 
 #: Close
 msgid "close"
@@ -45,7 +45,7 @@ msgstr "Beállítások"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Kiwi Beállítások"
 
 #: Channels
 msgid "channels"
@@ -53,15 +53,15 @@ msgstr "csatornák"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Hozzáférés"
 
 #: Banned Users
 msgid "banned"
-msgstr "Banned Users"
+msgstr "Kitiltott Felhasználók"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "Meghívott felhasználók"
 
 #: Notifications
 msgid "notifications"
@@ -77,11 +77,11 @@ msgstr "jelszó"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Szerver Jelszó"
 
 #: I have a password
 msgid "password_have"
-msgstr "I have a password"
+msgstr "Van jelszavam"
 
 #: Server
 msgid "server"
@@ -89,7 +89,7 @@ msgstr "szerver"
 
 #: Nick
 msgid "nick"
-msgstr "Nick"
+msgstr "Becenév"
 
 #: Channel
 msgid "channel"
@@ -97,11 +97,11 @@ msgstr "csatorna"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "Üzenetek"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "Hálózat"
 
 #: ZNC
 msgid "znc"
@@ -109,19 +109,19 @@ msgstr "znc"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logging in..."
+msgstr "Bejelentkezés..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Invalid login"
+msgstr "Érvénytelen bejelentkezés"
 
 #: Search...
 msgid "do_search"
-msgstr "Search..."
+msgstr "Keresés..."
 
 #: OK
 msgid "ok"
-msgstr "OK"
+msgstr "Rendben"
 
 #: Cancel
 msgid "cancel"
@@ -141,35 +141,35 @@ msgstr "nem található"
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "Figyelem!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "Ezzel minden Kiwi IRC beszélgetést bezár. Biztosan bezárja ezt az ablakot?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "Valódi név"
 
 #: Status
 msgid "whois_status"
-msgstr "Status"
+msgstr "Állapot"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Is available"
+msgstr "elérhető"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Send a message"
+msgstr "Üzenet küldése"
 
 #: More information
 msgid "more_information"
-msgstr "More information"
+msgstr "További információk"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignore user"
+msgstr "Felhasználó mellőzése"
 
 #: Channel
 msgid "connection_channel"
@@ -177,7 +177,7 @@ msgstr "csatorna"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "Távol"
 
 #: {{count}} week
 msgid "week"
@@ -221,39 +221,39 @@ msgstr "{{count}} seconds"
 
 #: General
 msgid "settings_general"
-msgstr "General"
+msgstr "Általános"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "Nyelv"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "Téma"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "Téma frissítése"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "Téma URL"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "Üzenet megjelenés"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Use monospace"
+msgstr "Fix szélességű betűk használata"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "Használja a Kiwi-t alapértelmezett IRC kliensként."
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Traditional IRC layout"
+msgstr "Hagyományos IRC megjelenés"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
@@ -261,23 +261,23 @@ msgstr "Show autocomplete list"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Chat Messages"
+msgstr "Csevegő Üzenetek"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Show timestamps"
+msgstr "Időbélyegző megjelenítése"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Use 24-hour timestamps"
+msgstr "24 órás időbélyegző használata"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Show emoticons"
+msgstr "Hangulatjelek megjelenítése"
 
 #: Block new Private messages
 msgid "settings_block_private"
-msgstr "Block new private messages"
+msgstr "Új privát üzenetek letiltása"
 
 #: Messages in scrollback
 msgid "settings_scrollback"
@@ -461,7 +461,7 @@ msgstr "(Any registered user)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topic"
+msgstr "Témakör"
 
 #: Moderated chat
 msgid "channel_moderated"
@@ -469,7 +469,7 @@ msgstr "Moderated chat"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Invite only"
+msgstr "Csak meghívással"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -537,7 +537,7 @@ msgstr "Load previous messages"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Unread Messages"
+msgstr "Olvasatlan üzenetek"
 
 #: Server details
 msgid "settings_server_details"
@@ -557,15 +557,15 @@ msgstr "Your details"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Becenév"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Advanced"
+msgstr "Speciális"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Encoding"
+msgstr "Kódolás"
 
 #: Show Raw
 msgid "settings_show_raw"
@@ -581,11 +581,11 @@ msgstr "Run commands when connected"
 
 #: Danger Zone
 msgid "settings_danger"
-msgstr "Danger Zone"
+msgstr "Veszélyes terület"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Remove network"
+msgstr "Hálózat eltávolítása"
 
 #: {{count}} person here
 msgid "person"
@@ -617,7 +617,7 @@ msgstr "You are not currently connected!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Connection settings"
+msgstr "Kapcsolati beállítások"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
@@ -893,7 +893,7 @@ msgstr "{{nick}} sets {{mode}} on {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Send a message"
+msgstr "Üzenet küldése"
 
 #: Do something physical
 msgid "command_action"

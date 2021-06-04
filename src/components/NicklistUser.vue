@@ -128,7 +128,11 @@ export default {
 .kiwi-nicklist-user-nick {
     font-weight: bold;
     cursor: pointer;
-    flex: 1;
+    display: block;
+    width: 100%;
+    padding-right: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .kiwi-nicklist-messageuser {
