@@ -105,7 +105,7 @@ export default {
     width: 60px;
     height: 60px;
     cursor: pointer;
-    font-size: 1.5em;
+    font-size: 1.8em;
     border-radius: 50%;
     margin: 0 auto 10px auto;
     transition: background 0.2s;
