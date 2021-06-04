@@ -3,18 +3,24 @@
         <span v-if="isSelf" class="kiwi-userbox-selfprofile">
             {{ $t('user_you') }}
         </span>
-        <div class="kiwi-userbox-header">
-            <h3>
-                <away-status-indicator :network="network" :user="user" /> {{ user.nick }}
-                <span v-if="userMode" class="kiwi-userbox-modestring">+{{ userMode }}</span>
-            </h3>
-            <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
-        </div>
+        <div class="kiwi-userbox-avatar-container">
+            <div class="kiwi-userbox-avatar">
+                <avatar :user="user" size="large" />
+                <away-status-indicator :network="network" :user="user" />
+            </div>
+        </div><center>
+            <div class="kiwi-userbox-header">
+                <h3>
+                    <span :style="{ 'color': user.getColour() }">{{ user.nick }}</span>
+                    <span v-if="userMode" class="kiwi-userbox-modestring">+{{ userMode }}</span>
+                </h3>
+                <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
+            </div>
 
-        <div class="kiwi-userbox-basicinfo">
-            <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_realname') }}:</span>
-            <span class="kiwi-userbox-basicinfo-data" v-html="formattedRealname" />
-        </div>
+            <div class="kiwi-userbox-basicinfo">
+                <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_realname') }}:</span>
+                <span class="kiwi-userbox-basicinfo-data" v-html="formattedRealname" />
+            </div></center>
 
         <p class="kiwi-userbox-actions">
             <a v-if="!isSelf && !buffer.isQuery()" class="kiwi-userbox-action" @click="openQuery">
@@ -138,10 +144,12 @@ import * as TextFormatting from '@/helpers/TextFormatting';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import toHtml from '@/libs/renderers/Html';
 import parseMessage from '@/libs/MessageParser';
+import Avatar from './Avatar';
 import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
+        Avatar,
         AwayStatusIndicator,
     },
     props: ['buffer', 'network', 'user'],
@@ -403,6 +411,26 @@ export default {
     display: inline-block;
 }
 
+.kiwi-userbox-avatar {
+    position: relative;
+    margin: 20px auto;
+    width: 100px;
+    height: 100px;
+}
+
+.kiwi-userbox-avatar .kiwi-avatar-inner {
+    font-size: 3em;
+    border-width: 3px;
+}
+
+.kiwi-userbox-avatar .kiwi-awaystatusindicator {
+    width: 16px;
+    height: 16px;
+    top: 4px;
+    right: 2px;
+    position: absolute;
+}
+
 .kiwi-userbox-modestring {
     font-weight: normal;
     font-size: 0.8em;
@@ -439,7 +467,7 @@ export default {
     font-size: 1em;
     line-height: 1em;
     padding: 0;
-    text-align: left;
+    text-align: center;
     font-weight: 900;
 }
 

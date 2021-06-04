@@ -45,10 +45,6 @@
     color: #dedede;
 }
 
-.kiwi-statebrowser-usermenu-avatar {
-    background-color: #000;
-    color: var(--brand-default-fg);
-}
 .u-tabbed-view-tabs {
     background: #2f2f2f;
     border-bottom-color: #ffffff1a;
@@ -113,11 +109,6 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
 .kiwi-network-name-option.active {
     background-color: var(--brand-primary);
     color: #fff;
-}
-
-.kiwi-avatar > span {
-    background-color: var(--brand-default-bg);
-    color: var(--brand-default-fg);
 }
 
 .kiwi-messagelist-seperator {

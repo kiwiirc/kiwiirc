@@ -91,12 +91,9 @@
     background: var(--brand-error);
 }
 
-.kiwi-statebrowser-usermenu-avatar {
-    border-color: #fff;
-}
-
-.kiwi-statebrowser-usermenu-avatar:hover {
-    background-color: #967c68;
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-inner,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-inner {
+    background-color: #967c68 !important;
 }
 
 .kiwi-startup-common-section-info {

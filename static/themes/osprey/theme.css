@@ -53,15 +53,10 @@
 }
 
 /* StateBrowser */
-.kiwi-statebrowser-usermenu-avatar {
-    border-color: #fff;
-}
 .kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
     background-color: #42b992;
 }
-.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
-    background-color: var(--brand-error);
-}
+
 .kiwi-network-name-options {
     background-color: #4e5c6b;
 }

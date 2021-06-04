@@ -228,14 +228,6 @@ select {
     background-color: rgba(128, 128, 128, 0.1);
 }
 
-.kiwi-statebrowser-usermenu-avatar--connected {
-    border: 2px solid #42b992;
-}
-
-.kiwi-statebrowser-usermenu-avatar--disconnected {
-    border: 2px solid #bf5155;
-}
-
 .kiwi-typing::after {
     display: inline-block;
     animation: dotty steps(1, end) 1s infinite;
