@@ -157,19 +157,10 @@
     border-right: 2px solid #444;
 }
 
-.kiwi-statebrowser-usermenu-avatar {
-    background: #000;
-    color: #f1f1f1;
-    border-color: #4b4b4b;
-}
-
-.kiwi-statebrowser-usermenu--open .kiwi-statebrowser-usermenu-avatar {
-    color: #f1f1f1;
-}
-
-.kiwi-statebrowser-usermenu-avatar:hover {
-    color: #f1f1f1;
-    background: #666;
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-inner,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-inner {
+    background-color: #000 !important;
+    color: #f1f1f1 !important;
 }
 
 .kiwi-statebrowser-usermenu-avatar .kiwi-awaystatusindicator {

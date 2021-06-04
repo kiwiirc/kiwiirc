@@ -83,7 +83,6 @@ export default {
     border: 2px solid;
     border-radius: 50%;
     font-weight: 600;
-    margin-top: 3px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -91,6 +90,7 @@ export default {
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    user-select: none;
 }
 
 .kiwi-avatar--image > .kiwi-avatar-inner {
