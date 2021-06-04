@@ -258,7 +258,8 @@ function clientMiddleware(state, network) {
 
             let serverBuffer = network.serverBuffer();
             state.addMessage(serverBuffer, {
-                time: Date.now(),
+                time: eventTime,
+                server_time: serverTime,
                 nick: '',
                 message: TextFormatting.t('connected_to', { network: client.network.name }),
             });
@@ -300,7 +301,8 @@ function clientMiddleware(state, network) {
                 let targetNick = event.params[1];
                 let buffer = state.getOrAddBufferByName(network.id, targetNick);
                 state.addMessage(buffer, {
-                    time: Date.now(),
+                    time: eventTime,
+                    server_time: serverTime,
                     nick: '*',
                     message: event.params[2],
                     type: 'error',
@@ -542,7 +544,8 @@ function clientMiddleware(state, network) {
             );
 
             state.addMessage(buffer, {
-                time: Date.now(),
+                time: eventTime,
+                server_time: serverTime,
                 nick: event.nick,
                 message: messageBody,
                 type: 'traffic',
@@ -582,7 +585,8 @@ function clientMiddleware(state, network) {
             }
 
             state.addMessage(buffer, {
-                time: Date.now(),
+                time: eventTime,
+                server_time: serverTime,
                 nick: event.nick,
                 message: messageBody,
                 type: 'traffic',
@@ -622,7 +626,8 @@ function clientMiddleware(state, network) {
             );
 
             state.addMessage(buffer, {
-                time: Date.now(),
+                time: eventTime,
+                server_time: serverTime,
                 nick: event.nick,
                 message: messageBody,
                 type: 'traffic',
@@ -654,7 +659,8 @@ function clientMiddleware(state, network) {
                 );
 
                 state.addMessage(buffer, {
-                    time: Date.now(),
+                    time: eventTime,
+                    server_time: serverTime,
                     nick: event.nick,
                     message: messageBody,
                     type: 'traffic',
@@ -831,7 +837,8 @@ function clientMiddleware(state, network) {
 
             network.buffers.forEach((b) => {
                 state.addMessage(b, {
-                    time: Date.now(),
+                    time: eventTime,
+                    server_time: serverTime,
                     nick: '',
                     message: messageBody,
                     type: 'error',
@@ -844,7 +851,8 @@ function clientMiddleware(state, network) {
         if (command === 'nick in use' && client.connection.registered) {
             let buffer = state.getActiveBuffer();
             buffer && state.addMessage(buffer, {
-                time: Date.now(),
+                time: eventTime,
+                server_time: serverTime,
                 nick: '',
                 type: 'error',
                 message: `The nickname '${event.nick}' is already in use!`,
@@ -1150,7 +1158,8 @@ function clientMiddleware(state, network) {
                         text,
                     });
                     state.addMessage(serverBuffer, {
-                        time: Date.now(),
+                        time: eventTime,
+                        server_time: serverTime,
                         nick: '',
                         message: messageBody,
                         type: 'mode',
