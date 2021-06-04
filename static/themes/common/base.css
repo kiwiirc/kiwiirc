@@ -866,7 +866,7 @@
 }
 
 /* ---- Modern Layout Styling ---- */
-.kiwi-avatar > span {
+.kiwi-avatar-inner {
     color: var(--brand-default-bg);
     border-color: var(--brand-primary);
 }

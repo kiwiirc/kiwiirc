@@ -7,6 +7,7 @@
         <span
             :style="$options.m.avatarStyle(props)"
             :class="{'kiwi-avatar--default': $options.m.isDefault(props)}"
+            class="kiwi-avatar-inner"
         >
             {{ $options.m.hasAvatar(props) ? '' : $options.m.firstNickLetter(props) }}
         </span>
@@ -69,15 +70,20 @@ export default {
 
 <style>
 
-.kiwi-avatar > span {
+.kiwi-avatar {
+    width: 100%;
+    height: 100%;
+}
+
+.kiwi-avatar-inner {
     text-transform: uppercase;
     cursor: pointer;
     width: 100%;
     height: 100%;
+    border: 2px solid;
     border-radius: 50%;
     font-weight: 600;
     margin-top: 3px;
-    border: 2px solid;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -87,7 +93,7 @@ export default {
     box-sizing: border-box;
 }
 
-.kiwi-avatar--image > span {
+.kiwi-avatar--image > .kiwi-avatar-inner {
     border: none;
 
     /* box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.5); */

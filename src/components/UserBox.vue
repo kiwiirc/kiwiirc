@@ -418,13 +418,8 @@ export default {
     height: 100px;
 }
 
-.kiwi-userbox-avatar .kiwi-avatar {
-    width: 100%;
-    height: 100%;
+.kiwi-userbox-avatar .kiwi-avatar-inner {
     font-size: 3em;
-}
-
-.kiwi-userbox-avatar .kiwi-avatar > span {
     border-width: 3px;
 }
 

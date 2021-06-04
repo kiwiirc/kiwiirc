@@ -228,7 +228,7 @@
     background: #3c3c3c;
 }
 
-.kiwi-avatar > span {
+.kiwi-avatar-inner {
     background-color: var(--brand-default-bg);
     color: var(--brand-default-fg);
 }

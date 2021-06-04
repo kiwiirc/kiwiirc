@@ -115,11 +115,6 @@ export default {
     position: relative;
 }
 
-.kiwi-statebrowser-usermenu-avatar .kiwi-avatar {
-    width: 50px;
-    height: 50px;
-}
-
 .kiwi-statebrowser-usermenu-avatar .kiwi-avatar > span {
     margin-top: 0;
     border: 0;
