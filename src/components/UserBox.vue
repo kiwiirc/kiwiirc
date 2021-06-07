@@ -402,6 +402,7 @@ export default {
     position: relative;
     padding: 0.5em 1em;
     overflow: hidden;
+    text-align: center;
 }
 
 .kiwi-userbox-header h3 {
@@ -434,6 +435,8 @@ export default {
 .kiwi-userbox-modestring {
     font-weight: normal;
     font-size: 0.8em;
+    position: absolute;
+    margin-left: 6px;
 }
 
 .fa-user.kiwi-userbox-icon {
@@ -453,6 +456,7 @@ export default {
     display: block;
     padding: 0.5em 1em;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .kiwi-userbox-basicinfo-title,
@@ -467,7 +471,6 @@ export default {
     font-size: 1em;
     line-height: 1em;
     padding: 0;
-    text-align: left;
     font-weight: 900;
 }
 
