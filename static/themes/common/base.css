@@ -304,8 +304,8 @@
     border-bottom: 1px solid var(--brand-midtone);
 }
 
-.kiwi-userbox .kiwi-userbox-basicinfo {
-    border-bottom: 1px solid var(--brand-midtone);
+.kiwi-userbox .kiwi-userbox-actions {
+    border-top: 1px solid var(--brand-midtone);
 }
 
 .kiwi-userbox .kiwi-userbox-actions .kiwi-userbox-action {
