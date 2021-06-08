@@ -50,7 +50,7 @@ if (logLevelMatch && logLevelMatch[1]) {
 
 let log = Logger.namespace('main');
 
-MessageTopic.listenForMessages(state);
+MessageTopic.listenForMessages(getState());
 
 // Add the global API as soon as possible so that things can start listening to it
 let api = window.kiwi = GlobalApi.singleton();

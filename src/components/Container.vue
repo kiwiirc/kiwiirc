@@ -114,13 +114,13 @@ export default {
         },
     },
     created: function created() {
-        this.listen(state, 'sidebar.toggle', (what) => {
+        this.listen(this.$state, 'sidebar.toggle', (what) => {
             let isDrawn = this.sidebarState.isDrawn;
             let section = this.sidebarState.sidebarSection;
             let action = (isDrawn && (!what || what === section) ? 'hide' : 'show');
-            state.$emit('sidebar.' + action, what || 'nicklist');
+            this.$state.$emit('sidebar.' + action, what || 'nicklist');
         });
-        this.listen(state, 'sidebar.show', (what) => {
+        this.listen(this.$state, 'sidebar.show', (what) => {
             switch (what) {
             case 'about':
                 this.sidebarState.showAbout();

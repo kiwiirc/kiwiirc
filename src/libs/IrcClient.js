@@ -1237,6 +1237,7 @@ function clientMiddleware(state, network) {
             buffer.topic_by = event.nick;
             buffer.topic_when = event.when * 1000;
         }
+
         if (command === 'help') {
             let buffer = state.getOrAddBufferByName(networkid, '*help');
             state.addMessage(buffer, {

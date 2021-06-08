@@ -1,9 +1,11 @@
 <template>
     <div
         :key="'messagelist-' + buffer.name"
-        :class="['kiwi-messagelist--' + listType]"
         class="kiwi-messagelist"
-        :class="{'kiwi-messagelist--smoothscroll': smooth_scroll}"
+        :class="{
+            ['kiwi-messagelist--' + listType]: true,
+            'kiwi-messagelist--smoothscroll': smooth_scroll
+        }"
         @click.self="onListClick"
     >
         <div v-resizeobserver="onListResize">
