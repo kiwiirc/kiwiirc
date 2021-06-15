@@ -63,6 +63,6 @@
         "stylelint-config-standard": "^21.0.0",
         "stylelint-webpack-plugin": "^1.2.3",
         "vue-template-compiler": "^2.6.11",
-        "webpack": "^4.42.1"
+        "webpack": "^5.35.1"
     }
 }
