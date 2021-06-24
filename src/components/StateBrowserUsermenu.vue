@@ -102,33 +102,24 @@ export default {
 }
 
 .kiwi-statebrowser-usermenu-avatar {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     cursor: pointer;
-    font-size: 1.5em;
-    text-align: center;
-    line-height: 50px;
-    border: 2px solid;
+    font-size: 1.8em;
     border-radius: 50%;
     margin: 0 auto 10px auto;
     transition: background 0.2s;
     position: relative;
 }
 
-.kiwi-statebrowser-usermenu-avatar .kiwi-avatar {
-    width: 50px;
-    height: 50px;
-}
-
-.kiwi-statebrowser-usermenu-avatar .kiwi-avatar > span {
-    margin-top: 0;
-    border: 0;
+.kiwi-statebrowser-usermenu-avatar .kiwi-avatar-inner {
+    border-width: 3px;
 }
 
 .kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
     position: absolute;
-    top: 1px;
-    right: -5px;
+    top: 3px;
+    right: -4px;
     width: 12px;
     height: 12px;
     border: 1px solid #000;

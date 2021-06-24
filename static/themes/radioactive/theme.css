@@ -816,14 +816,22 @@
     border-top: 1px #14fdce solid;
 }
 
-.kiwi-statebrowser-usermenu-avatar {
-    background-color: #000;
-    color: #fff;
-    border-color: #012c13;
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-inner,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-inner {
+    background-color: #5dd895 !important;
+    color: var(--brand-default-bg) !important;
 }
-.kiwi-statebrowser-usermenu-avatar:hover {
-    background-color: #5dd895;
-    color: #fff;
+
+.kiwi-statebrowser-usermenu-avatar--connected .kiwi-avatar-inner {
+    border-color: #42b992;
+}
+
+.kiwi-statebrowser-usermenu-avatar--disconnected .kiwi-avatar-inner {
+    border-color: #d86f6f;
+}
+
+.kiwi-statebrowser-usermenu-body .u-link {
+    color: #d86f6f;
 }
 
 /* If the user clicks on their avatar we 'open' the settings */
