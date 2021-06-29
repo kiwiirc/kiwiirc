@@ -268,8 +268,10 @@ export default Vue.component('irc-input', {
                 br.parentNode.removeChild(br);
             }
 
+            // Always refocus the input on reset to keep the keyboard active on mobile
+            this.focus();
+
             if (this.default_colour) {
-                this.focus();
                 this.setColour(this.default_colour.code, this.default_colour.colour);
             }
 
