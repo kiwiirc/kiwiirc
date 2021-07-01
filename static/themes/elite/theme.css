@@ -203,15 +203,11 @@
     color: #f1f1f1;
 }
 
-.kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #222c33;
-}
-
-.kiwi-channellist table tbody tr a {
+.kiwi-channellist-grid a {
     color: #ff9600;
 }
 
-.kiwi-channellist table tbody tr a.u-button {
+.kiwi-channellist-grid a.u-button {
     color: #f1f1f1;
     border-bottom: none;
 }

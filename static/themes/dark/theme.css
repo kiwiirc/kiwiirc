@@ -141,10 +141,6 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     border-top-color: #2d2d2d;
 }
 
-.kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #333333;
-}
-
 .kiwi-container-toggledraw-statebrowser-messagecount  {
     color: #f1f1f1;
 }
