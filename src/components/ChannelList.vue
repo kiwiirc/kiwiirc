@@ -158,8 +158,20 @@ export default {
             return content;
         },
         joinChannel(channelName) {
+            let buffer = this.$state.getBufferByName(this.network.id, channelName);
+            if (buffer) {
+                // Switch buffer if its already exists
+                this.$state.setActiveBuffer(this.network.id, channelName);
+                return;
+            }
+
             this.$state.addBuffer(this.network.id, channelName);
             this.network.ircClient.join(channelName);
+            if (this.$state.ui.is_narrow) {
+                // This is a mobile device
+                // Switch to the channel so the user can see something happend
+                this.$state.setActiveBuffer(this.network.id, channelName);
+            }
         },
     },
 };
