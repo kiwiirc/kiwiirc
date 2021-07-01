@@ -1060,10 +1060,10 @@
     border-top: 1px solid #9e9e9e;
 }
 .kiwi-userbox .main-title {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #9e9e9e;
 }
 .kiwi-userbox .kiwi-userbox-basicinfo {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #9e9e9e;
 }
 .kiwi-userbox .kiwi-userbox-actions .u-button {
     border: 1px solid #000;
@@ -1072,9 +1072,6 @@
 .kiwi-userbox .kiwi-userbox-actions .u-button:hover {
     background-color: #000;
     color: #fff;
-}
-.kiwi-userbox-opactions {
-    border-top: 1px solid #9e9e9e;
 }
 .kiwi-userbox-opactions label select {
     border: 1px solid rgba(0, 0, 0, 0.2);

@@ -19,7 +19,14 @@
             <div
                 v-for="plugin in pluginUiElements"
                 :key="plugin.id"
-                v-rawElement="plugin.el"
+                v-rawElement="{
+                    el: plugin.el,
+                    props: {
+                        kiwi: {
+                            statebrowser: self,
+                        }
+                    }
+                }"
                 class="kiwi-statebrowser-tool"
             />
         </div>
@@ -101,6 +108,7 @@ export default {
     props: ['networks', 'sidebarState'],
     data: function data() {
         return {
+            self: this,
             show_provided_networks: false,
             provided_networks: Object.create(null),
             pluginUiElements: GlobalApi.singleton().stateBrowserPlugins,

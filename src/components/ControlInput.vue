@@ -105,7 +105,10 @@
                             v-rawElement="{
                                 el: plugin.el,
                                 props: {
-                                    controlinput: self,
+                                    kiwi: {
+                                        buffer: buffer,
+                                        controlinput: self,
+                                    }
                                 }
                             }"
                             class="kiwi-controlinput-tool"

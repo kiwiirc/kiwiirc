@@ -14,8 +14,17 @@
                 class="kiwi-header-options"
             >
                 <div
-                    v-for="plugin in pluginUiChannelElements" :key="plugin.id"
-                    v-rawElement="plugin.el"
+                    v-for="plugin in pluginUiChannelElements"
+                    :key="plugin.id"
+                    v-rawElement="{
+                        el: plugin.el,
+                        props: {
+                            kiwi: {
+                                buffer: buffer,
+                                containerheader: self,
+                            }
+                        }
+                    }"
                     class="kiwi-header-option"
                 />
                 <div
@@ -131,7 +140,15 @@
                 <div
                     v-for="plugin in pluginUiQueryElements"
                     :key="plugin.id"
-                    v-rawElement="plugin.el"
+                    v-rawElement="{
+                        el: plugin.el,
+                        props: {
+                            kiwi: {
+                                buffer: buffer,
+                                containerheader: self,
+                            }
+                        }
+                    }"
                     class="kiwi-header-option"
                 />
                 <div class="kiwi-header-option kiwi-header-option-leave">
@@ -178,6 +195,7 @@ export default {
     props: ['buffer', 'sidebarState'],
     data() {
         return {
+            self: this,
             pluginUiChannelElements: GlobalApi.singleton().channelHeaderPlugins,
             pluginUiQueryElements: GlobalApi.singleton().queryHeaderPlugins,
             prompts: {

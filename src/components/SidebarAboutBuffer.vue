@@ -56,7 +56,17 @@
             <h4 @click="toggleSection(plugin.id)">
                 <i class="fa fa-angle-right" /> {{ plugin.args.title }}
             </h4>
-            <div v-rawElement="plugin.el" />
+            <div
+                v-rawElement="{
+                    el: plugin.el,
+                    props: {
+                        kiwi: {
+                            buffer: buffer,
+                            aboutbuffer: self,
+                        }
+                    }
+                }"
+            />
         </div>
     </div>
 </template>
@@ -73,6 +83,7 @@ export default {
     props: ['network', 'buffer', 'sidebarState'],
     data() {
         return {
+            self: this,
             pluginUiSections: GlobalApi.singleton().aboutBufferPlugins,
             closedSections: {},
         };
