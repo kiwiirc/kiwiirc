@@ -334,7 +334,7 @@ export default {
     .kiwi-channellist-topic {
         grid-column: 1 / span 3;
         grid-row: 2;
-        overflow-wrap: anywhere;
+        word-break: break-word;
     }
 
     .kiwi-channellist-join {
