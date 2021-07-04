@@ -44,7 +44,7 @@ module.exports = {
         plugins: [
             new DefinePlugin({
                 __VERSION__: JSON.stringify(pkg.version),
-                __COMMITHASH__: getCommitHash(),
+                __COMMITHASH__: JSON.stringify(getCommitHash()),
             }),
             new StyleLintPlugin({
                 files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
@@ -134,5 +134,5 @@ function getCommitHash() {
     } catch {
         console.error('Failed to get commit hash');
     }
-    return JSON.stringify(commitHash);
+    return commitHash;
 }
