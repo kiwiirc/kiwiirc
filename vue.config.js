@@ -1,5 +1,7 @@
 const path = require('path');
 const fs = require('fs');
+const execSync = require('child_process').execSync;
+const DefinePlugin = require('webpack').DefinePlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const pkg = require('./package.json');
@@ -40,6 +42,10 @@ module.exports = {
             },
         },
         plugins: [
+            new DefinePlugin({
+                __VERSION__: JSON.stringify(pkg.version),
+                __COMMITHASH__: getCommitHash(),
+            }),
             new StyleLintPlugin({
                 files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
             }),
@@ -54,12 +60,6 @@ module.exports = {
         ],
     },
     chainWebpack: (config) => {
-        config.plugin('define').tap((args) => {
-            // eslint-disable-next-line no-underscore-dangle
-            args[0].__VERSION__ = JSON.stringify(pkg.version);
-            return args;
-        });
-
         config.plugin('html').tap((args) => {
             args[0].template = path.join(__dirname, 'index.html');
             args[0].minify = false;
@@ -121,4 +121,18 @@ if (process.env.NODE_ENV === 'development') {
             },
         ]));
     }
+}
+
+function getCommitHash() {
+    let commitHash = 'unknown';
+    try {
+        commitHash = execSync('git rev-parse --short HEAD').toString().trim();
+        const modified = execSync('git diff-index --quiet HEAD -- || echo true').toString();
+        if (modified.trim() === 'true') {
+            commitHash += '-modified';
+        }
+    } catch {
+        console.error('Failed to get commit hash');
+    }
+    return JSON.stringify(commitHash);
 }
