@@ -115,11 +115,7 @@
                     v-if="!channel_filter_display && showBufferGroups && type !== 'other'"
                     class="kiwi-statebrowser-channels-header"
                 >
-                    <div
-                        v-if="(type === 'queries' && itemBuffers.length) || type !== 'queries'"
-                        class="kiwi-statebrowser-buffertype"
-                        @click="toggleSection(type)"
-                    >
+                    <div class="kiwi-statebrowser-buffertype" @click="toggleSection(type)">
                         <i
                             class="fa kiwi-statebrowser-channels-toggle"
                             :class="[
@@ -134,21 +130,18 @@
 
                     <div v-if="type === 'channels'" class="kiwi-statebrowser-channels-options">
                         <div
-                            :class="{ active: channel_add_display == true }"
+                            :class="{ active: !!channel_add_display }"
                             class="kiwi-statebrowser-channels-option"
                             @click="toggleAddChannel()"
                         >
                             <i class="fa fa-plus" aria-hidden="true" />
                         </div>
                         <div
-                            :class="{ active: channel_filter_display == true }"
+                            :class="{ active: !!channel_filter_display }"
                             class="kiwi-statebrowser-channels-option"
-                            @click="onSearchChannelClick"
+                            @click="onSearchChannelClick()"
                         >
-                            <i
-                                v-if="type === 'channels'"
-                                class="fa fa-search" aria-hidden="true"
-                            />
+                            <i class="fa fa-search" aria-hidden="true" />
                         </div>
                     </div>
                     <div class="kiwi-statebrowser-buffer-actions">
@@ -156,8 +149,8 @@
                             <div
                                 v-if="!show_channels &&
                                     type === 'channels' &&
-                                    channelActivity.unread !== 0
-                                "
+                                    channelActivity.unread > 0"
+
                                 :class="[
                                     channelActivity.highlights ?
                                         'kiwi-statebrowser-channel-label--highlight' :
@@ -169,8 +162,10 @@
                                     '999+' : channelActivity.unread }}
                             </div>
                             <div
-                                v-else-if="(!show_queries === true &&
-                                    type === 'queries' && queryActivity.unread !== 0)"
+                                v-else-if="!show_queries &&
+                                    type === 'queries' &&
+                                    queryActivity.unread > 0"
+
                                 :class="[
                                     queryActivity.highlights ?
                                         'kiwi-statebrowser-channel-label--highlight' :
@@ -184,9 +179,13 @@
                         </div>
                     </div>
                 </div>
-                <div v-if="(show_channels && type === 'channels') ||
-                    (show_queries && type === 'queries') ||
-                    type === 'other'"
+                <div
+                    v-if="itemBuffers.length && (
+                        (show_channels && type === 'channels') ||
+                        (show_queries && type === 'queries') ||
+                        type === 'other'
+                    )"
+                    class="kiwi-statebrowser-buffers-container"
                 >
                     <buffer
                         v-for="buffer in itemBuffers"
@@ -281,7 +280,7 @@ export default {
             return bufferTools.orderBuffers(filtered);
         },
         filteredBuffersByType() {
-            let ret = {
+            let types = {
                 other: [],
                 channels: [],
                 queries: [],
@@ -289,16 +288,23 @@ export default {
 
             this.filteredBuffers.forEach((bufferObj) => {
                 if (bufferObj.isChannel()) {
-                    ret.channels.push(bufferObj);
+                    types.channels.push(bufferObj);
                 } else if (bufferObj.isQuery()) {
-                    ret.queries.push(bufferObj);
+                    types.queries.push(bufferObj);
                 } else {
                     // This is buffers like *raw, *bnc, *status etc
-                    ret.other.push(bufferObj);
+                    types.other.push(bufferObj);
                 }
             });
 
-            return ret;
+            Object.entries(types).forEach(([type, buffers]) => {
+                // Always show channels type as it has join controls
+                if (type !== 'channels' && !buffers.length) {
+                    delete types[type];
+                }
+            });
+
+            return types;
         },
         channelActivity() {
             return this.activityFromBuffers(this.filteredBuffersByType.channels);
@@ -388,10 +394,10 @@ export default {
                 this.closeFilterChannel();
             }, 200);
         },
-        showMessageCounts: function showMessageCounts(buffer) {
+        showMessageCounts(buffer) {
             return !buffer.setting('hide_message_counts');
         },
-        setActiveBuffer: function switchContainer(buffer) {
+        setActiveBuffer(buffer) {
             // Clear any active component to show the buffer again
             this.$state.$emit('active.component', null);
             this.$state.setActiveBuffer(buffer.networkid, buffer.name);
@@ -607,25 +613,16 @@ export default {
     display: none;
 }
 
-/* Hovering over the buffer name should show the close icon, but hide labels */
-.kiwi-statebrowser-channel .kiwi-statebrowser-channel-labels,
-.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave {
-    /* display: inline-block; */
-}
-
-.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave {
-    display: block;
-}
-
-.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-labels {
-    display: none;
-}
-
-/* An active buffer should always show the close icon */
+/*
+    Hovering over the buffer name should show the close icon, but hide labels
+    An active buffer should always show the close icon
+*/
+.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave,
 .kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-leave {
     display: block;
 }
 
+.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-labels,
 .kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-labels {
     display: none;
 }
