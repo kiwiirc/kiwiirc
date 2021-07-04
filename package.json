@@ -22,7 +22,7 @@
         "event-emitter": "^0.3.5",
         "font-awesome": "^4.7.0",
         "font-awesome-webpack-4": "^1.0.0",
-        "htmlparser2": "^4.1.0",
+        "htmlparser2": "^6.1.0",
         "i18next": "^19.4.0",
         "i18next-conv": "^10.0.2",
         "i18next-xhr-backend": "^3.2.2",
