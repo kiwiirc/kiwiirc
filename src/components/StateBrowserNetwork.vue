@@ -321,7 +321,7 @@ export default {
             let totalUnread = 0;
             let highlight = false;
             buffers.forEach((buffer) => {
-                if (buffer.isSpecial()) {
+                if (buffer.isSpecial() || buffer.setting('hide_message_counts')) {
                     return;
                 }
                 totalUnread += buffer.flags.unread;
