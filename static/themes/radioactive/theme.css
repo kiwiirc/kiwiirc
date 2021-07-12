@@ -183,24 +183,14 @@
 }
 
 /* Channel List ( ChannelList.vue ) */
-.kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #254233;
-}
-.kiwi-channellist table tbody tr {
-    border-top: 1px solid lightgray;
-}
-
-.kiwi-channellist table tbody tr .u-button-primary {
+.kiwi-channellist-grid .u-button-primary {
     background: none;
     border: 1px solid #14fdce;
     color: #14fdce;
 }
-.kiwi-channellist table a {
-    color: #fff !important;
-}
 
-.kiwi-channellist table a.u-button {
-    color: #14fdce !important;
+.kiwi-channellist-grid a {
+    color: #14fdce;
     text-decoration: underline;
 }
 
@@ -572,7 +562,7 @@
 /* Traditional message styling hover */
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-privmsg:hover,
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-action:hover,
-.kiwi-messagelist-message--compact .kiwi-messagelist-message-notice:hover, {
+.kiwi-messagelist-message--compact .kiwi-messagelist-message-notice:hover {
     border-left-color: #80ab52;
 }
 

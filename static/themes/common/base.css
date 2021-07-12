@@ -764,12 +764,20 @@
 }
 
 /* ---- Channel List ( ChannelList.vue ) ---- */
-.kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+.kiwi-channellist-grid {
+    border-bottom: 1px solid var(--brand-midtone);
 }
 
-.kiwi-channellist table tbody tr {
+.kiwi-channellist-grid:nth-child(even) {
+    background: rgba(128, 128, 128, 0.2);
+}
+
+.kiwi-channellist-grid:first-of-type {
     border-top: 1px solid var(--brand-midtone);
+}
+
+.kiwi-channellist-topic a {
+    color: var(--brand-primary);
 }
 
 /* ---- Message list - ( MessageList.vue ) ---- */

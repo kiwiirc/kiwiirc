@@ -179,11 +179,6 @@
     color: var(--brand-default-fg);
 }
 
-.kiwi-channellist-user-center a.u-button.u-button-primary {
-    border-bottom: none;
-}
-
-
 /* Inputs */
 .u-form input[type='checkbox']:checked,
 .u-form input[type='radio']:checked {
@@ -264,8 +259,9 @@
     color: #fff;
 }
 
-.kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #272727;
+.kiwi-channellist-topic a {
+    color: #f1f1f1;
+    text-decoration: underline;
 }
 
 .kiwi-messagelist-message-error,
