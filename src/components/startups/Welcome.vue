@@ -70,6 +70,7 @@
                 />
                 <button
                     v-else
+                    type="button"
                     class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
                     disabled
                 >

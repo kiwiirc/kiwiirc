@@ -119,6 +119,7 @@
                 </label>
                 <label v-if="isUserOnBuffer">
                     <button
+                        type="button"
                         class="u-button u-button-secondary
                                kiwi-userbox-opaction-kick kiwi-userbox-opaction"
                         @click="kickUser"
@@ -129,6 +130,7 @@
                 </label>
                 <label>
                     <button
+                        type="button"
                         class="u-button u-button-secondary
                                kiwi-userbox-opaction-ban kiwi-userbox-opaction"
                         @click="banUser"
@@ -139,6 +141,7 @@
                 </label>
                 <label v-if="isUserOnBuffer">
                     <button
+                        type="button"
                         class="u-button u-button-secondary
                                kiwi-userbox-opaction-kickban kiwi-userbox-opaction"
                         @click="kickbanUser"

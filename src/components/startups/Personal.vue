@@ -13,17 +13,24 @@
                 <p v-html="$t('personal_connect_to', { network: `<b>${server.server}</b>` })" />
                 <button
                     v-if="hasOtherTab"
+                    type="button"
                     class="u-button u-button-primary"
                     @click="addNetworkToExistingTab"
                 >
                     {{ $t('personal_add_existing_tab') }}
                 </button>
-                <button v-else class="u-button u-button-primary" @click="addNetwork()">
+                <button
+                    v-else
+                    type="button"
+                    class="u-button u-button-primary"
+                    @click="addNetwork()"
+                >
                     Add network to Kiwi
                 </button>
 
                 <br>
                 <button
+                    type="button"
                     class="u-button u-button-primary"
                     @click="addNetwork(true)"
                 >
@@ -35,7 +42,7 @@
             <p>{{ $t('personal_addjoin') }}</p>
             <p>{{ $t('personal_return') }}</p>
 
-            <button class="u-button u-button-primary" @click="addEmptyNetwork">
+            <button type="button" class="u-button u-button-primary" @click="addEmptyNetwork">
                 {{ $t('personal_add') }}
             </button> <br>
 
