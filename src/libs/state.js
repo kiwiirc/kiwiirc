@@ -1,8 +1,10 @@
 'kiwi public';
 
-import * as Misc from '@/helpers/Misc';
 import Vue from 'vue';
 import _ from 'lodash';
+
+import * as Misc from '@/helpers/Misc';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import { configTemplates } from '@/res/configTemplates';
 import NetworkState from './state/NetworkState';
 import BufferState from './state/BufferState';
@@ -663,7 +665,7 @@ function createNewState() {
                     notifyMessage += message.message;
 
                     if (isHighlight) {
-                        notifyTitle = 'You were mentioned in ' + buffer.name;
+                        notifyTitle = TextFormatting.t('notification_mentioned', { channel: buffer.name });
                     } else if (settingAlertOn === 'message' && !isHighlight) {
                         notifyTitle = buffer.name;
                     }
