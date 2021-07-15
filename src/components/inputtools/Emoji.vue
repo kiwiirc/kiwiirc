@@ -4,7 +4,7 @@
             <div
                 v-for="(text, eCode) in emojis"
                 :key="eCode"
-                :style="{'background-image':`url(${location}${eCode}.png)`}"
+                :style="{'background-image':`url(${location}${eCode})`}"
                 :data-code="text + ' '"
                 class="kiwi-inputtool-emoji-emoji"
                 @click="onImgClick"
@@ -26,6 +26,10 @@ export default {
             let list = {};
             let available = this.$state.setting('emojis');
             _.each(available, (code, ascii) => {
+                if (!code) {
+                    // Emoji has an empty value, skip
+                    return;
+                }
                 list[code] = ascii;
             });
             return list;
