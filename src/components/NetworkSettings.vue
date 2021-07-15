@@ -146,6 +146,7 @@
 
                 <button
                     v-if="network.state === 'disconnected'"
+                    type="button"
                     class="u-button kiwi-connect-to-newnetwork"
                     @click="connect()"
                 >
@@ -153,6 +154,7 @@
                 </button>
                 <button
                     v-else-if="network.state === 'connecting'"
+                    type="button"
                     class="u-button kiwi-connect-to-newnetwork"
                     disabled
                 >
