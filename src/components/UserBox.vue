@@ -458,9 +458,7 @@ export default {
             if (!this.inviteChan) {
                 return;
             }
-            // TODO switch these back once irc-framework is updated
-            // this.network.ircClient.invite(this.inviteChan, this.user.nick);
-            this.network.ircClient.raw(['INVITE', this.user.nick, this.inviteChan]);
+            this.network.ircClient.invite(this.inviteChan, this.user.nick);
         },
     },
 };

@@ -168,9 +168,7 @@ export default {
             if (!this.inviteNick) {
                 return;
             }
-            // TODO switch these back once irc-framework is updated
-            // this.network.ircClient.invite(this.buffer.name, this.inviteNick);
-            this.network.ircClient.raw(['INVITE', this.inviteNick, this.buffer.name]);
+            this.network.ircClient.invite(this.buffer.name, this.inviteNick);
         },
         inviteSelected(value, item) {
             this.inviteNick = value;
