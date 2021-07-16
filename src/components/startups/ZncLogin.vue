@@ -112,6 +112,10 @@ export default {
         }
     },
     methods: {
+        initKiwi(state) {
+            // ZNC sends us a channel list on connect, we don't need to remember them
+            state.settings.startupOptions.remember_buffers = false;
+        },
         readableStateError(err) {
             return Misc.networkErrorMessage(err);
         },

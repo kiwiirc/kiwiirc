@@ -68,11 +68,6 @@ import cssVarsPonyfill from 'css-vars-ponyfill';
 import '@/res/globalStyle.css';
 import Tinycon from 'tinycon';
 
-import startupWelcome from '@/components/startups/Welcome';
-import startupZncLogin from '@/components/startups/ZncLogin';
-import startupCustomServer from '@/components/startups/CustomServer';
-import startupKiwiBnc from '@/components/startups/KiwiBnc';
-import startupPersonal from '@/components/startups/Personal';
 import StateBrowser from '@/components/StateBrowser';
 import AppSettings from '@/components/AppSettings';
 import Container from '@/components/Container';
@@ -93,9 +88,9 @@ export default {
         ControlInput,
         MediaViewer,
     },
+    props: ['startupComponent'],
     data() {
         return {
-            startupComponent: null,
             hasStarted: false,
             // When on mobile screens, the statebrowser turns into a drawer
             stateBrowserDrawOpen: false,
@@ -139,24 +134,8 @@ export default {
         this.listen(window, 'touchstart', (event) => this.onTouchStart(event));
     },
     mounted() {
-        // Decide which startup screen to use depending on the config
-        let startupScreens = {
-            welcome: startupWelcome,
-            customServer: startupCustomServer,
-            kiwiBnc: startupKiwiBnc,
-            znc: startupZncLogin,
-            personal: startupPersonal,
-        };
-        let extraStartupScreens = this.$state.getStartups();
-
-        let startupName = this.$state.settings.startupScreen || 'personal';
-        let startup = extraStartupScreens[startupName] || startupScreens[startupName];
-
-        if (!startup) {
-            Logger.error(`Startup screen "${startupName}" does not exist`);
-        } else {
-            this.startupComponent = startup;
-        }
+        // This is in mounted() and not created() as it needs to be attached to the DOM to get
+        // our kiwi dimensions
         this.trackWindowDimensions();
     },
     methods: {
@@ -173,6 +152,12 @@ export default {
             // Make sure a startup screen can't trigger these more than once
             if (!this.hasStarted) {
                 this.warnOnPageClose();
+
+                if (this.$state.persistence) {
+                    // This will only actually save state changes if a state_key was set by either
+                    // the config or a startup screen, so it's safe to call in any case here.
+                    this.$state.persistence.watchStateForChanges();
+                }
 
                 // Wait for a click or sending a message before asking for notification permission.
                 // Not doing this on an input event will get it blocked by some browsers.

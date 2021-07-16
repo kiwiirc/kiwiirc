@@ -68,6 +68,10 @@ export default {
         },
     },
     methods: {
+        init() {
+            let options = this.$state.settings.startupOptions;
+            options.remember_buffers = false;
+        },
         startUp: async function startUp() {
             this.statusMessage = this.$t('logging_in');
             this.loading = true;

@@ -11,7 +11,7 @@ import Message from './Message';
 
 function createNewState() {
     const stateObj = {
-        // May be set by a StatePersistence instance
+        // May be set to a StatePersistence instance
         persistence: null,
 
         // Settings may be overridden via config.json
