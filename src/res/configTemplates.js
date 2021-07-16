@@ -264,7 +264,9 @@ export const configTemplates = {
         emojiLocation: 'https://kiwiirc.com/shared/emoji/',
         textFormats: {
             user: '%nick',
+            user_with_realname: '%nick (%realname)',
             user_full: '%nick (%username@%host)',
+            user_full_with_realname: '%nick (%username@%host) (%realname)',
             channel_join: '→ %text',
             channel_part: '← %text (%reason)',
             channel_quit: '← %text (%reason)',

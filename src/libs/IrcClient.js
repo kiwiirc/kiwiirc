@@ -532,9 +532,14 @@ function clientMiddleware(state, network) {
                 network.ircClient.who(event.channel);
             }
 
-            let nick = buffer.setting('show_hostnames') ?
-                TextFormatting.formatUserFull(event) :
-                TextFormatting.formatUser(event);
+            let nick = TextFormatting.formatUser(event);
+            if (buffer.setting('show_hostnames') && buffer.setting('show_realnames')) {
+                nick = TextFormatting.formatUserFullWithRealname(event);
+            } else if (buffer.setting('show_hostnames')) {
+                nick = TextFormatting.formatUserFull(event);
+            } else if (buffer.setting('show_realnames')) {
+                nick = TextFormatting.formatUserWithRealname(event);
+            }
 
             let messageBody = TextFormatting.formatAndT(
                 'channel_join',
@@ -614,9 +619,14 @@ function clientMiddleware(state, network) {
                 });
             }
 
-            let nick = buffer.setting('show_hostnames') ?
-                TextFormatting.formatUserFull(event) :
-                TextFormatting.formatUser(event);
+            let nick = TextFormatting.formatUser(event);
+            if (buffer.setting('show_hostnames') && buffer.setting('show_realnames')) {
+                nick = TextFormatting.formatUserFullWithRealname(event);
+            } else if (buffer.setting('show_hostnames')) {
+                nick = TextFormatting.formatUserFull(event);
+            } else if (buffer.setting('show_realnames')) {
+                nick = TextFormatting.formatUserWithRealname(event);
+            }
 
             let messageBody = TextFormatting.formatAndT(
                 'channel_part',
@@ -647,9 +657,14 @@ function clientMiddleware(state, network) {
                     buffer.clearUsers();
                 }
 
-                let nick = buffer.setting('show_hostnames') ?
-                    TextFormatting.formatUserFull(event) :
-                    TextFormatting.formatUser(event);
+                let nick = TextFormatting.formatUser(event);
+                if (buffer.setting('show_hostnames') && buffer.setting('show_realnames')) {
+                    nick = TextFormatting.formatUserFullWithRealname(event);
+                } else if (buffer.setting('show_hostnames')) {
+                    nick = TextFormatting.formatUserFull(event);
+                } else if (buffer.setting('show_realnames')) {
+                    nick = TextFormatting.formatUserWithRealname(event);
+                }
 
                 let messageBody = TextFormatting.formatAndT(
                     'channel_quit',
