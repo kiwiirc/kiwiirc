@@ -419,7 +419,7 @@ export default {
                     let emojiList = this.$state.setting('emojis');
                     if (emojiList.hasOwnProperty(currentWord.word)) {
                         let emoji = emojiList[currentWord.word];
-                        let url = this.$state.setting('emojiLocation') + emoji + '.png';
+                        let url = this.$state.setting('emojiLocation') + emoji;
                         this.$refs.input.setCurrentWord('');
                         this.$refs.input.addImg(currentWord.word + ' ', url);
                     }
