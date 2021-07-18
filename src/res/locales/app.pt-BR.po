@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2021-07-18 22:10\n"
+"PO-Revision-Date: 2021-07-18 22:21\n"
 
 #: Start
 msgid "start_button"
@@ -45,7 +45,7 @@ msgstr "Configurações"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Definições do Kiwi "
+msgstr "Configurações do Kiwi"
 
 #: Channels
 msgid "channels"
@@ -81,7 +81,7 @@ msgstr "Senha do Servidor"
 
 #: I have a password
 msgid "password_have"
-msgstr "eu tenho uma senha"
+msgstr "Eu tenho uma senha"
 
 #: Server
 msgid "server"
@@ -113,7 +113,7 @@ msgstr "Logando..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Credenciais inválidas"
+msgstr "Login inválido"
 
 #: Search...
 msgid "do_search"
@@ -1021,27 +1021,27 @@ msgstr "Adicionar rede a janela existente do Kiwi"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Conecte-se temporariamente a esta rede"
+msgstr "Conectar temporariamente a esta rede"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Redes guardadas"
+msgstr "Redes salvas"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (nova geração) - Pré-visualização Rizon"
+msgstr "Kiwi IRC (próxima geração) - Pré-visualização do Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Websocket direto. Sem servidor Kiwi ou webirc."
+msgstr "Websockets diretos. Sem servidor do Kiwi ou webirc envolvidos."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Obrigado a Adam @Rizon pelo desenvolvimento do suporte de servidor websocket!)"
+msgstr "(Obrigado a Adam @Rizon pelo desenvolvimento do suporte ao servidor com websocket!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Teste a versão em desenvolvimento do Kiwi IRC!"
+msgstr "Dê uma tentativa pra versão do desenvolvedor do Kiwi IRC!"
 
 #: Disconnected
 msgid "disconnected"
@@ -1057,11 +1057,11 @@ msgstr "{{nick}} entrou"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "Você foi kickado do {{channel}} por {{nick}}"
+msgstr "{{nick}} chutou você de {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} foi kickado do {{channel}} por {{chanop}}"
+msgstr "{{nick}} foi chutado de {{channel}} por {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
@@ -1073,13 +1073,13 @@ msgstr "{{nick}} convidou você para o canal {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Nick {{nick}} já em uso. Tentando com {{newnick}}..."
+msgstr "O apelido {{nick}} já está em uso. Tentando com {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} mudou o nick para {{newnick}}"
+msgstr "{{nick}} agora é conhecido como {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "alterou o tópico para: {{topic}}"
+msgstr "{{nick}} mudou o tópico pra: {{topic}}"
 
