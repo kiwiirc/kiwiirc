@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2021-07-18 20:41\n"
+"PO-Revision-Date: 2021-07-18 20:50\n"
 
 #: Start
 msgid "start_button"
@@ -29,7 +29,7 @@ msgstr "fechar"
 
 #: Connect
 msgid "connect"
-msgstr "conectar"
+msgstr "Conectar"
 
 #: Connecting...
 msgid "connecting"
@@ -57,7 +57,7 @@ msgstr "acesso"
 
 #: Banned Users
 msgid "banned"
-msgstr "banidos"
+msgstr "Usuários banidos"
 
 #: Invited Users
 msgid "invited"
@@ -65,51 +65,51 @@ msgstr "convidados"
 
 #: Notifications
 msgid "notifications"
-msgstr "notificações"
+msgstr "Notificações"
 
 #: Username
 msgid "username"
-msgstr "nome de usuário"
+msgstr "Nome de usuário"
 
 #: Password
 msgid "password"
-msgstr "senha"
+msgstr "Senha"
 
 #: Server Password
 msgid "server_password"
-msgstr "senha_do_servidor"
+msgstr "Senha do Servidor"
 
 #: I have a password
 msgid "password_have"
-msgstr "tem_senha"
+msgstr "eu tenho uma senha"
 
 #: Server
 msgid "server"
-msgstr "servidor"
+msgstr "Servidor"
 
 #: Nick
 msgid "nick"
-msgstr "apelido"
+msgstr "Apelido"
 
 #: Channel
 msgid "channel"
-msgstr "canal"
+msgstr "Canal"
 
 #: Messages
 msgid "messages"
-msgstr "mensagens"
+msgstr "Mensagens"
 
 #: Network
 msgid "network"
-msgstr "rede"
+msgstr "Rede"
 
 #: ZNC
 msgid "znc"
-msgstr "znc"
+msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "logando"
+msgstr "Logando..."
 
 #: Invalid login
 msgid "invalid_login"
@@ -117,15 +117,15 @@ msgstr "login_inválido"
 
 #: Search...
 msgid "do_search"
-msgstr "fazer_busca"
+msgstr "Procurar..."
 
 #: OK
 msgid "ok"
-msgstr "ok"
+msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr "cancelar"
+msgstr "Cancelar"
 
 #: Yes
 msgid "yes"
@@ -145,11 +145,11 @@ msgstr "aviso"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "descarregar_janela"
+msgstr "Isto fechará todas as conversas do Kiwi IRC. Você tem certeza que você quer fechar esta  janela?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "whois_nome_verdadeiro"
+msgstr "Nome real"
 
 #: Status
 msgid "whois_status"
@@ -629,7 +629,7 @@ msgstr "conectar_a_rede"
 
 #: Network Name
 msgid "network_name"
-msgstr "nome_da_rede"
+msgstr "Network Name"
 
 #: Close options
 msgid "side_close"
