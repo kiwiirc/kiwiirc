@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2021-07-18 22:00\n"
+"PO-Revision-Date: 2021-07-18 22:10\n"
 
 #: Start
 msgid "start_button"
@@ -837,47 +837,47 @@ msgstr "Você deve inserir um novo apelido"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "O nick não pode começar com um número"
+msgstr "O apelido não pode começar com um número"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} deu status de op a {{target}}"
+msgstr "{{nick}} deu op a {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
-msgstr "{{nick}} tirou status de op a {{target}}"
+msgstr "{{nick}} tirou o ops de {{target}}"
 
 #: {{nick}} gives half-ops to {{target}}
 msgid "modes_give_halfops"
-msgstr "{{nick}} deu status de half-op a {{target}}"
+msgstr "{{nick}} deu half-op a {{target}}"
 
 #: {{nick}} takes half-ops from {{target}}
 msgid "modes_take_halfops"
-msgstr "{{nick}} tirou status de half-op a {{target}}"
+msgstr "{{nick}} tirou o half-op de {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} deu status de voice a {{target}}"
+msgstr "{{nick}} deu voice a {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} tirou status de voice a {{target}}"
+msgstr "{{nick}} tirou o voice de {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} deu status de admin a {{target}}"
+msgstr "{{nick}} deu admin a {{target}}"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
-msgstr "{{nick}} tirou status de admin a {{target}}"
+msgstr "{{nick}} tirou o admin de {{target}}"
 
 #: {{nick}} gives owner to {{target}}
 msgid "modes_give_owner"
-msgstr "{{nick}} deu status de owner a {{target}}"
+msgstr "{{nick}} deu owner a {{target}}"
 
 #: {{nick}} takes owner from {{target}}
 msgid "modes_take_owner"
-msgstr "{{nick}} tirou status de owner a {{target}}"
+msgstr "{{nick}} tirou o owner de {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
@@ -993,15 +993,15 @@ msgstr "Rola um dado de {{sides}} lados e obtém {{number}}"
 
 #: Your IRC client
 msgid "personal_client"
-msgstr "Seu cliente de IRC"
+msgstr "Seu cliente do IRC."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Adicione suas redes. Entre em seus canais."
+msgstr "Adicione suas redes. Entre nos seus canais."
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "Estarão aqui quando voltar."
+msgstr "Eles estarão aqui quando você voltar."
 
 #: Add a Network
 msgid "personal_add"
@@ -1009,15 +1009,15 @@ msgstr "Adicionar uma rede"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "Está tentando conectar na rede {{network}}"
+msgstr "Você está tentando conectar com {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "A rede foi adicionada à uma janela existente do KiwiIRC"
+msgstr "A rede foi adicionada a sua janela existente do Kiwi"
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Adicionar rede à janela existente do KiwiIRC"
+msgstr "Adicionar rede a janela existente do Kiwi"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
