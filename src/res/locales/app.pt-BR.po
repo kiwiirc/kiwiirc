@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2021-07-18 22:21\n"
+"PO-Revision-Date: 2021-07-18 22:27\n"
 
 #: Start
 msgid "start_button"
@@ -717,7 +717,7 @@ msgstr "Me esqueça"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "Ainda não há rede aqui."
+msgstr "Ainda não há redes aqui."
 
 #: Add one?
 msgid "state_add"
@@ -841,7 +841,7 @@ msgstr "O apelido não pode começar com um número"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
-msgstr "{{nick}} deu op a {{target}}"
+msgstr "{{nick}} deu status de ops a {{target}}"
 
 #: {{nick}} takes ops from {{target}}
 msgid "modes_take_ops"
@@ -1013,7 +1013,7 @@ msgstr "Você está tentando conectar com {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
-msgstr "A rede foi adicionada a sua janela existente do Kiwi"
+msgstr "A rede foi adicionada a sua janela existente do Kiwi."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
@@ -1033,7 +1033,7 @@ msgstr "Kiwi IRC (próxima geração) - Pré-visualização do Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Websockets diretos. Sem servidor do Kiwi ou webirc envolvidos."
+msgstr "Websockets diretos. Não há servidores do Kiwi ou webirc envolvidos."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
