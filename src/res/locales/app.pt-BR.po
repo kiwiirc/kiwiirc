@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2021-07-18 21:40\n"
+"PO-Revision-Date: 2021-07-18 21:50\n"
 
 #: Start
 msgid "start_button"
@@ -261,15 +261,15 @@ msgstr "Mostrar a lista pra auto-completar"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "Mensagens"
+msgstr "Mensagens de Bate-Papo"
 
 #: Show timestamps
 msgid "settings_timestamps"
-msgstr "Mostrar hora"
+msgstr "Mostrar horários de acesso"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Mostrar hora em formato 24 horas"
+msgstr "Usar Formato do Horário de 24 horas"
 
 #: Show emoticons
 msgid "settings_emoticons"
@@ -381,11 +381,11 @@ msgstr "Ativar Configurações Avançadas"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Zona de perigo: Alterar algumas dessas configurações pode quebrar as coisas!"
+msgstr "Zona de perigo: Mudar algumas dessas configurações pode quebrar as coisas!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Redefinir"
+msgstr "Resetar"
 
 #: Filter
 msgid "settings_advanced_filter"
@@ -393,7 +393,7 @@ msgstr "Filtro"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Atualizar lista de banidos"
+msgstr "Atualizar lista de banimentos"
 
 #: Banned user
 msgid "bans_user"
@@ -405,11 +405,11 @@ msgstr "Banido por"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Atualizando lista de banidos"
+msgstr "Atualizando lista de banimentos..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Ninguém está banido"
+msgstr "Ninguém está banido!"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -437,19 +437,19 @@ msgstr "Este é um canal público."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Apenas usuários convidados podem entrar."
+msgstr "Só usuários convidados podem entrar."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Permitir apenas usuários convidados"
+msgstr "Só permitir usuários convidados"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Permitir que qualquer usuário participe"
+msgstr "Permitir a qualquer um que entre"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Apenas usuários registrados podem participar"
+msgstr "Só usuários registrados podem entrar"
 
 #: Add invite
 msgid "invite_add_invite"
@@ -457,7 +457,7 @@ msgstr "Adicionar convite"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "Qualquer usuário registrado"
+msgstr "(Qualquer usuário registrado)"
 
 #: Topic
 msgid "channel_topic"
@@ -465,35 +465,35 @@ msgstr "Tópico"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Canal moderado"
+msgstr "Bate-papo moderado"
 
 #: Invite only
 msgid "channel_invite"
-msgstr "Necessita de convite para entrar"
+msgstr "Só por convite"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Apenas moderadores podem alterar o tópico"
+msgstr "Só moderadores podem mudar o tópico"
 
 #: Block messages from outside this channel
 msgid "channel_external"
-msgstr "Bloquear mensagens externas"
+msgstr "Bloquear mensagens de fora deste canal"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Clique no botão atualizar para atualizar a lista de canais"
+msgstr "Clique no botão atualizar pra atualizar a lista de canais"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "Nenhum canal encontrado, tente novamente mais tarde"
+msgstr "Nenhum canal encontrado, tente de novo mais tarde"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "Bem-vindos ao Kiwi IRC! Escolha um canal à esquerda."
+msgstr "Bem-vindos ao Kiwi IRC! Selecione um canal a esquerda."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Mostrar barra estado do navegador"
+msgstr "Mostrar estado do navegador"
 
 #: Hide Topic
 msgid "hide_topic"
@@ -501,7 +501,7 @@ msgstr "Esconder Tópico"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Mostrar Tópico"
+msgstr "Exibir Tópico"
 
 #: Channel Settings
 msgid "channel_settings"
