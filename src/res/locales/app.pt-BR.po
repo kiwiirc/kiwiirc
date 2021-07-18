@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2021-07-18 21:50\n"
+"PO-Revision-Date: 2021-07-18 22:00\n"
 
 #: Start
 msgid "start_button"
@@ -505,7 +505,7 @@ msgstr "Exibir Tópico"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Definições de Canal"
+msgstr "Configurações do Canal"
 
 #: Join Channel
 msgid "container_join"
@@ -513,7 +513,7 @@ msgstr "Entrar num canal"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Desconectado"
+msgstr "Não Conectado"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
@@ -521,7 +521,7 @@ msgstr "Conversa privada com {{user}}"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Deseja mesmo sair do canal?"
+msgstr "Realmente sair do canal?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -541,7 +541,7 @@ msgstr "Mensagens não lidas"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Definições do servidor"
+msgstr "Detalhes do servidor"
 
 #: Port
 msgid "settings_port"
@@ -549,7 +549,7 @@ msgstr "Porta"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Outras redes nesta conta ZNC aparecerão na lista de redes"
+msgstr "Outras redes nesta conta ZNC serão listadas na lista de redes"
 
 #: Your details
 msgid "settings_your_details"
@@ -577,7 +577,7 @@ msgstr "Websocket direto"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Executar comandos ao conectar"
+msgstr "Executar comandos quando conectado"
 
 #: Danger Zone
 msgid "settings_danger"
@@ -697,11 +697,11 @@ msgstr "Houve um erro ao iniciar o Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Comprovar que instalou o Kiwi IRC corretamente e que a configuração pode ser carregada."
+msgstr "Tenha certeza que você instalou o Kiwi IRC corretamente e que a configuração possa ser carregada"
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Sair de {{name}}"
+msgstr "Sair do {{name}}"
 
 #: Your account
 msgid "state_account"
@@ -713,15 +713,15 @@ msgstr "Suas configurações e redes serão lembradas neste computador."
 
 #: Forget me
 msgid "state_forget"
-msgstr "Apagar configuração"
+msgstr "Me esqueça"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "Nenhuma rede configurada."
+msgstr "Ainda não há rede aqui."
 
 #: Add one?
 msgid "state_add"
-msgstr "Quer adicionar uma?"
+msgstr "Adicionar uma?"
 
 #: Available networks
 msgid "state_available"
@@ -761,11 +761,11 @@ msgstr "Encontrar Mais Canais"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Mudar de nick"
+msgstr "Mudar apelido"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Introduza o novo nick..."
+msgstr "Insira o novo apelido..."
 
 #: This is you!
 msgid "user_you"
@@ -773,7 +773,7 @@ msgstr "Este é você!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Nome de conta: {{user}}"
+msgstr "Nome da conta: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
@@ -793,15 +793,15 @@ msgstr "É um operador"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Conectado a {{server}} {{info}}"
+msgstr "Conectado ao {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Conectado de forma segura com SSL/TLS"
+msgstr "Conectado de forma segura via SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "Está também nos canais {{channels}}"
+msgstr "Nos canais {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -813,7 +813,7 @@ msgstr "Normal"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Expulsar do canal"
+msgstr "Chutar do canal"
 
 #: Ban from the channel
 msgid "user_ban"
@@ -821,19 +821,19 @@ msgstr "Banir do canal"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Kickar + Banir do canal"
+msgstr "Banir e chutar do canal"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Por favor especifique um canal para entrar, por exemplo, /join #exemplo"
+msgstr "Por favor especifique um canal pra entrar, ex: /join #exemplo"
 
 #: The nickname {{nick}} is already in use!
 msgid "error_nick_in_use"
-msgstr "O nick {{nick}} já se econtra em uso!"
+msgstr "O apelido {{nick}} já está em uso!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "Deve inserir um novo nick"
+msgstr "Você deve inserir um novo apelido"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
