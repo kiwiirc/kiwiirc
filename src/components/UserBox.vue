@@ -45,7 +45,6 @@
                             }
                         }
                     }"
-                    class="kiwi-userbox-action"
                 />
             </div>
         </div>
