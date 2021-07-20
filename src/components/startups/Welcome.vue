@@ -270,7 +270,7 @@ export default {
             );
         }
 
-        if (options.autoConnect && this.nick && (this.channel || this.connectWithoutChannel)) {
+        if (options.autoConnect && this.readyToStart) {
             this.startUp();
         }
     },
