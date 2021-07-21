@@ -157,9 +157,11 @@ export default class GlobalApi extends EventEmitter {
      * - addUi('browser', domElement)
      * - addUi('header_channel', domElement)
      * - addUi('header_query', domElement)
+     * - addUi('userbox_button', domElement)
+     * - addUi('about_buffer', domElement)
      * @param {string} type Where this DOM element should be added
      * @param {element} element The HTML element to add
-     * @param {object} args Optional arguments for this plugis
+     * @param {object} args Optional arguments for this plugin
      */
     addUi(type, element, args = {}) {
         let plugin = {
