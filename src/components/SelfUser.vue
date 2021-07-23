@@ -24,6 +24,7 @@
         </div>
         <div v-else class="kiwi-selfuser-actions">
             <form
+                :key="newNickFormKey"
                 class="u-form"
                 @submit.prevent="changeNick"
                 @keyup.esc="self_user_settings_open = false"
@@ -34,7 +35,7 @@
                     :noprompt="true"
                     :block="true"
                     @submit="onNewNickSubmit"
-                    @cancel="self_user_settings_open = false"
+                    @cancel="userNameCancel"
                 />
             </form>
             <div v-if="error_message" class="kiwi-selfuser-error-message">{{ error_message }}</div>
@@ -61,6 +62,7 @@ export default {
             new_nick: '',
             error_message: '',
             self_user_settings_open: false,
+            newNickFormKey: 0,
         };
     },
     computed: {
@@ -95,6 +97,9 @@ export default {
         });
     },
     methods: {
+        forceRerenderForm() {
+            this.newNickFormKey += 1;
+        },
         openSelfActions() {
             this.self_user_settings_open = true;
         },
@@ -105,24 +110,30 @@ export default {
             this.$emit('close');
         },
         onNewNickSubmit(newVal) {
-            this.new_nick = newVal;
-            this.changeNick();
+            if (newVal === '') {
+                this.error_message = TextFormatting.t('error_empty_nick');
+                this.setTimeout(() => {
+                    this.forceRerenderForm();
+                }, 1);
+            } else {
+                this.new_nick = newVal;
+                this.changeNick();
+            }
         },
         changeNick() {
             let nick = this.new_nick.trim();
-            if (nick.length === 0) {
-                this.error_message = TextFormatting.t('error_empty_nick');
-                return;
-            }
             if (nick.match(/(^[0-9])|(\s)/)) {
                 this.error_message = TextFormatting.t('error_no_number');
-                return;
+                this.setTimeout(() => {
+                    this.forceRerenderForm();
+                }, 5000);
             }
             this.error_message = '';
             this.network.ircClient.changeNick(nick);
             this.userNameCancel();
         },
         userNameCancel() {
+            this.error_message = '';
             this.self_user_settings_open = false;
         },
         networkSupportsAway() {
