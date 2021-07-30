@@ -25,7 +25,7 @@
 let Vue = require('vue');
 
 export default Vue.component('input-prompt', {
-    props: ['label', 'hideCancel', 'noprompt', 'block'],
+    props: ['label', 'hideCancel', 'nopre', 'block'],
     data: function data() {
         return {
             value: '',
@@ -33,7 +33,7 @@ export default Vue.component('input-prompt', {
         };
     },
     created() {
-        if (this.noprompt) {
+        if (this.nopre) {
             this.prompt();
         }
     },
@@ -46,11 +46,15 @@ export default Vue.component('input-prompt', {
         },
         complete: function complete() {
             this.$emit('submit', this.value);
-            this.state = 'pre';
+            if (!this.nopre) {
+                this.state = 'pre';
+            }
         },
         cancel: function cancel() {
             this.$emit('cancel');
-            this.state = 'pre';
+            if (!this.nopre) {
+                this.state = 'pre';
+            }
         },
     },
 });

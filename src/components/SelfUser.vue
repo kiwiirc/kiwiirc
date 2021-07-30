@@ -23,21 +23,15 @@
             </div>
         </div>
         <div v-else class="kiwi-selfuser-actions">
-            <form
-                class="u-form"
-                @submit.prevent="changeNick"
-                @keyup.esc="self_user_settings_open = false"
-            >
-                <input-prompt
-                    v-focus
-                    :label="$t('enter_new_nick')"
-                    :noprompt="true"
-                    :block="true"
-                    @submit="onNewNickSubmit"
-                    @cancel="self_user_settings_open = false"
-                />
-            </form>
             <div v-if="error_message" class="kiwi-selfuser-error-message">{{ error_message }}</div>
+            <input-prompt
+                v-focus
+                :label="$t('enter_new_nick')"
+                :nopre="true"
+                :block="true"
+                @submit="onNewNickSubmit"
+                @cancel="closeNickChange"
+            />
         </div>
     </div>
 </template>
@@ -60,6 +54,7 @@ export default {
         return {
             new_nick: '',
             error_message: '',
+            event_listeners: [],
             self_user_settings_open: false,
         };
     },
@@ -89,14 +84,10 @@ export default {
             },
         },
     },
-    created() {
-        this.listen(this.network.ircClient, 'nick in use', (event) => {
-            this.error_message = TextFormatting.t('error_nick_in_use', { nick: event.nick });
-        });
-    },
     methods: {
         openSelfActions() {
             this.self_user_settings_open = true;
+            this.error_message = '';
         },
         openProfile() {
             this.$state.$emit('userbox.show', this.network.currentUser());
@@ -105,6 +96,10 @@ export default {
             this.$emit('close');
         },
         onNewNickSubmit(newVal) {
+            if (this.event_listeners.length) {
+                // nick change already in progress
+                return;
+            }
             this.new_nick = newVal;
             this.changeNick();
         },
@@ -118,11 +113,44 @@ export default {
                 this.error_message = TextFormatting.t('error_no_number');
                 return;
             }
+            if (nick === this.network.currentUser().nick) {
+                this.error_message = TextFormatting.t('error_nick_in_use', { nick });
+                return;
+            }
             this.error_message = '';
+
+            this.listenForNickEvents();
             this.network.ircClient.changeNick(nick);
-            this.userNameCancel();
         },
-        userNameCancel() {
+        listenForNickEvents() {
+            this.event_listeners.push(
+                this.listen(this.network.ircClient, 'nick', (event) => {
+                    if (event.new_nick !== this.network.currentUser().nick) {
+                        return;
+                    }
+                    this.closeNickChange();
+                })
+            );
+            this.event_listeners.push(
+                this.listen(this.network.ircClient, 'nick in use', (event) => {
+                    this.error_message = TextFormatting.t('error_nick_in_use', { nick: event.nick });
+                    this.removeNickEventListeners();
+                })
+            );
+            this.event_listeners.push(
+                this.listen(this.network.ircClient, 'nick invalid', (event) => {
+                    this.error_message = TextFormatting.t('error_nick_invalid', { nick: event.nick });
+                    this.removeNickEventListeners();
+                })
+            );
+        },
+        removeNickEventListeners() {
+            while (this.event_listeners.length) {
+                this.event_listeners.shift()();
+            }
+        },
+        closeNickChange() {
+            this.removeNickEventListeners();
             this.self_user_settings_open = false;
         },
         networkSupportsAway() {
@@ -212,6 +240,7 @@ export default {
     display: block;
     padding: 0.5em 10px;
     box-sizing: border-box;
+    word-break: break-word;
     margin: 5px 0 5px 0;
     text-align: center;
     border-radius: 6px;
