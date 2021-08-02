@@ -1,0 +1,61 @@
+{
+  "nodes": {
+    "kiwiirc-desktop": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1614786156,
+        "narHash": "sha256-fPttrJ5OlnI0W/U8DR7dWSNlP7klNN26QVO9HpmWA/Q=",
+        "owner": "kiwiirc",
+        "repo": "kiwiirc-desktop",
+        "rev": "5680cf58d88325f3dc7f0c51b2d91120e973ccfd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kiwiirc",
+        "repo": "kiwiirc-desktop",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1627892869,
+        "narHash": "sha256-Fg0KPi9oGTZ7Ju7rb8foq0GOZI3++ZaF6wf10ClMA58=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d4590d21006387dcb190c516724cb1e41c0f8fdf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "kiwiirc-desktop": "kiwiirc-desktop",
+        "nixpkgs": "nixpkgs",
+        "webircgateway": "webircgateway"
+      }
+    },
+    "webircgateway": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1616874963,
+        "narHash": "sha256-xgjx7Wgtz0HMsduagEhffDK+mWuzb3rDx7nHHWox2Dg=",
+        "owner": "kiwiirc",
+        "repo": "webircgateway",
+        "rev": "f66bb6235964ba0291d7982cbad360400a4e566d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kiwiirc",
+        "repo": "webircgateway",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
