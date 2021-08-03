@@ -27,7 +27,6 @@
             <input-prompt
                 v-focus
                 :label="$t('enter_new_nick')"
-                :nopre="true"
                 :block="true"
                 @submit="onNewNickSubmit"
                 @cancel="closeNickChange"
@@ -50,7 +49,7 @@ export default {
     props: {
         network: Object,
     },
-    data: function data() {
+    data() {
         return {
             new_nick: '',
             error_message: '',
@@ -95,34 +94,37 @@ export default {
         closeSelfUser() {
             this.$emit('close');
         },
-        onNewNickSubmit(newVal) {
+        onNewNickSubmit(newVal, done) {
             if (this.event_listeners.length) {
                 // nick change already in progress
                 return;
             }
             this.new_nick = newVal;
-            this.changeNick();
+            this.changeNick(done);
         },
-        changeNick() {
+        changeNick(done) {
             let nick = this.new_nick.trim();
             if (nick.length === 0) {
                 this.error_message = TextFormatting.t('error_empty_nick');
+                done();
                 return;
             }
             if (nick.match(/(^[0-9])|(\s)/)) {
                 this.error_message = TextFormatting.t('error_no_number');
+                done();
                 return;
             }
             if (nick === this.network.currentUser().nick) {
                 this.error_message = TextFormatting.t('error_nick_in_use', { nick });
+                done();
                 return;
             }
             this.error_message = '';
 
-            this.listenForNickEvents();
+            this.listenForNickEvents(done);
             this.network.ircClient.changeNick(nick);
         },
-        listenForNickEvents() {
+        listenForNickEvents(done) {
             this.event_listeners.push(
                 this.listen(this.network.ircClient, 'nick', (event) => {
                     if (event.new_nick !== this.network.currentUser().nick) {
@@ -135,14 +137,25 @@ export default {
                 this.listen(this.network.ircClient, 'nick in use', (event) => {
                     this.error_message = TextFormatting.t('error_nick_in_use', { nick: event.nick });
                     this.removeNickEventListeners();
+                    done();
                 })
             );
             this.event_listeners.push(
                 this.listen(this.network.ircClient, 'nick invalid', (event) => {
                     this.error_message = TextFormatting.t('error_nick_invalid', { nick: event.nick });
                     this.removeNickEventListeners();
+                    done();
                 })
             );
+
+            // Maybe the nickchange will result in an event we are not listening for above
+            const timeout = this.setTimeout(() => {
+                this.error_message = TextFormatting.t('error_unexpected');
+                this.removeNickEventListeners();
+            }, 4000);
+            this.event_listeners.push(() => {
+                this.clearTimeout(timeout);
+            });
         },
         removeNickEventListeners() {
             while (this.event_listeners.length) {

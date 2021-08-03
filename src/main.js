@@ -127,6 +127,20 @@ Vue.mixin({
             this.timerEvents.push(v);
             return v;
         },
+        clearInterval(timerId) {
+            return this.clearTimeout(timerId);
+        },
+        clearTimeout(timerId) {
+            this.timerEvents = this.timerEvents || [];
+            for (let idx = this.timerEvents.length - 1; idx >= 0; idx--) {
+                if (this.timerEvents[idx] === timerId) {
+                    this.timerEvents.splice(idx, 1);
+                    clearTimeout(timerId);
+                    return true;
+                }
+            }
+            return false;
+        },
     },
 });
 

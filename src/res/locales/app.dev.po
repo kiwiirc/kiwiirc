@@ -925,6 +925,11 @@ msgstr "You must enter a new nickname"
 msgid "error_no_number"
 msgstr "Nickname must not start with a number"
 
+#: Unexpected error occured
+msgid "error_unexpected"
+msgstr "Unexpected error occured"
+
+
 
 #: Mode Changes $t('modes_')
 
