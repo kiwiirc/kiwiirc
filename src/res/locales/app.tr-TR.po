@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2020-08-03 20:11\n"
+"PO-Revision-Date: 2021-08-04 10:41\n"
 
 #: Start
 msgid "start_button"
@@ -245,7 +245,7 @@ msgstr "Mesaj Düzeni"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Tek boşluk kullan"
+msgstr "Monospace kullan"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
