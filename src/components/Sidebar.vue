@@ -15,6 +15,7 @@
                 :network="network"
                 :buffer="buffer"
                 :sidebar-state="sidebarState"
+                v-bind="sidebarState.activeComponentProps"
             />
         </template>
         <template v-else-if="buffer">
