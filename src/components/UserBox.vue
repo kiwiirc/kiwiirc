@@ -45,7 +45,6 @@
                             }
                         }
                     }"
-                    class="kiwi-userbox-action"
                 />
             </div>
         </div>
@@ -523,7 +522,6 @@ export default {
     justify-content: center;
 
     .kiwi-userbox-action {
-        display: inline-block;
         border: 1px solid;
         padding: 0.5em 1em;
         cursor: pointer;
