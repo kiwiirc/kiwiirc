@@ -832,6 +832,12 @@ msgstr "Filter channels"
 msgid "find_more_channels"
 msgstr "Find More Channels"
 
+#: Really close all queries?
+msgid "prompt_close_queries"
+msgstr "Really close all queries?"
+
+
+
 #: SelfUser
 
 #: Change nick

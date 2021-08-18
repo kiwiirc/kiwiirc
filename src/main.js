@@ -36,6 +36,7 @@ import '@/components/utils/InputText';
 import '@/components/utils/IrcInput';
 import '@/components/utils/InputPrompt';
 import '@/components/utils/InputConfirm';
+import '@/components/utils/TransitionExpand';
 
 Vue.use(VueVirtualScroller);
 

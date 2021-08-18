@@ -31,42 +31,6 @@
             />
         </div>
 
-        <div
-            v-if="Object.keys(provided_networks).length > 0"
-            class="kiwi-statebrowser-availablenetworks"
-        >
-            <div
-                class="kiwi-statebrowser-availablenetworks-toggle"
-                @click="show_provided_networks=!show_provided_networks"
-            >
-                &#8618; {{ $t('state_available') }}
-            </div>
-            <div
-                :class="{
-                    'kiwi-statebrowser-availablenetworks-networks--open': show_provided_networks
-                }"
-                class="kiwi-statebrowser-availablenetworks-networks"
-            >
-                <div
-                    v-for="(pNets, pNetTypeName) in provided_networks"
-                    :key="pNetTypeName"
-                    class="kiwi-statebrowser-availablenetworks-type"
-                >
-                    <div class="kiwi-statebrowser-availablenetworks-name">{{ pNetTypeName }}</div>
-                    <div
-                        v-for="pNet in pNets"
-                        :key="pNet.name"
-                        :class="[
-                            pNet.connected?'kiwi-statebrowser-availablenetworks-link--connected':''
-                        ]"
-                        class="kiwi-statebrowser-availablenetworks-link"
-                    >
-                        <a @click="connectProvidedNetwork(pNet)">{{ pNet.name }}</a><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="kiwi-statebrowser-scrollarea">
             <div class="kiwi-statebrowser-networks">
                 <state-browser-network
@@ -74,6 +38,7 @@
                     :key="network.id"
                     :network="network"
                     :sidebar-state="sidebarState"
+                    :active-prompt="activePrompt"
                 />
             </div>
         </div>
@@ -90,14 +55,11 @@
 <script>
 'kiwi public';
 
-import NetworkProvider from '@/libs/NetworkProvider';
 import GlobalApi from '@/libs/GlobalApi';
 import StateBrowserNetwork from './StateBrowserNetwork';
 import StateBrowserUsermenu from './StateBrowserUsermenu';
 import AppSettings from './AppSettings';
 import BufferSettings from './BufferSettings';
-
-let netProv = new NetworkProvider();
 
 export default {
     components: {
@@ -106,12 +68,14 @@ export default {
         StateBrowserUsermenu,
     },
     props: ['networks', 'sidebarState'],
-    data: function data() {
+    data() {
         return {
             self: this,
-            show_provided_networks: false,
-            provided_networks: Object.create(null),
             pluginUiElements: GlobalApi.singleton().stateBrowserPlugins,
+            activePrompt: {
+                type: undefined,
+                value: undefined,
+            },
         };
     },
     computed: {
@@ -128,9 +92,25 @@ export default {
             return this.networks.filter((net) => !net.hidden);
         },
     },
-    created: function created() {
-        netProv.on('networks', (networks) => {
-            this.provided_networks = networks;
+    created() {
+        this.listen(this.$state, 'document.clicked', (e) => {
+            // If clicking anywhere else on the page, close our prompts
+            const ignoreClasses = [
+                '.kiwi-statebrowser-prompt-close',
+                '.kiwi-statebrowser-queries-close',
+                '.kiwi-statebrowser-channel-leave',
+            ];
+            const ignoreEls = this.$el.querySelectorAll(ignoreClasses.join(', '));
+
+            // ignoreEls.forEach((ignoreEl) => {
+            for (let i = 0; i < ignoreEls.length; i++) {
+                if (ignoreEls[i].contains(e.target)) {
+                    return;
+                }
+            }
+
+            this.activePrompt.type = undefined;
+            this.activePrompt.value = undefined;
         });
     },
     methods: {
@@ -147,16 +127,6 @@ export default {
         },
         hideStatebrowser: function hideStatebrowser() {
             this.$state.$emit('statebrowser.hide');
-        },
-        connectProvidedNetwork: function connectProvidedNetwork(pNet) {
-            let net = this.$state.addNetwork(pNet.name, pNet.nick, {
-                server: pNet.server,
-                port: pNet.port,
-                tls: pNet.tls,
-                password: pNet.password,
-            });
-
-            net.ircClient.connect();
         },
     },
 };
@@ -348,10 +318,6 @@ export default {
     text-align: center;
 }
 
-.kiwi-statebrowser-availablenetworks-link a {
-    cursor: pointer;
-}
-
 .kiwi-statebrowser-usermenu-body a:hover {
     text-decoration: underline;
 }
@@ -384,36 +350,6 @@ export default {
     margin-right: 10px;
 }
 
-.kiwi-statebrowser-nonetworks {
-    padding: 5px;
-    text-align: center;
-}
-
-.kiwi-statebrowser-availablenetworks-toggle {
-    cursor: pointer;
-    text-align: center;
-    padding: 5px 0;
-}
-
-.kiwi-statebrowser-availablenetworks-type {
-    padding: 10px;
-}
-
-.kiwi-statebrowser-availablenetworks-name {
-    text-align: center;
-    font-weight: bold;
-}
-
-.kiwi-statebrowser-availablenetworks-networks {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.5s;
-}
-
-.kiwi-statebrowser-availablenetworks-networks--open {
-    max-height: 500px;
-}
-
 .kiwi-statebrowser-newchannel-inputwrap {
     padding: 3px;
 }
@@ -431,14 +367,6 @@ export default {
     right: 5px;
     top: 5px;
     cursor: pointer;
-}
-
-.kiwi-statebrowser-availablenetworks-link {
-    border-right: 15px solid red;
-}
-
-.kiwi-statebrowser-availablenetworks-link--connected {
-    border-color: green;
 }
 
 .kiwi-statebrowser-newchannel-inputwrap--focus {

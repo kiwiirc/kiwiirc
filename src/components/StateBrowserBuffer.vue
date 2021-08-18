@@ -1,45 +1,57 @@
 <template>
-    <div
-        :data-name="buffer.name.toLowerCase()"
-        :class="{
-            'kiwi-statebrowser-channel-active': isActiveBuffer(),
-            'kiwi-statebrowser-channel-notjoined': buffer.isChannel() &&
-                !buffer.joined
-        }"
-        class="kiwi-statebrowser-channel"
-    >
+    <div class="kiwi-statebrowser-channel-wrapper">
         <div
-            class="kiwi-statebrowser-channel-name"
-            @click="$emit('selected')"
+            :data-name="buffer.name.toLowerCase()"
+            :class="{
+                'kiwi-statebrowser-channel-active': isActiveBuffer(),
+                'kiwi-statebrowser-channel-notjoined': buffer.isChannel() &&
+                    !buffer.joined
+            }"
+            class="kiwi-statebrowser-channel"
         >
-            <away-status-indicator
-                v-if="buffer.isQuery() && awayNotifySupported()"
-                :network="network" :user="network.userByName(buffer.name)"
-            />{{ buffer.name }}
-        </div>
-        <div class="kiwi-statebrowser-buffer-actions">
-            <div class="kiwi-statebrowser-channel-labels">
+            <div
+                class="kiwi-statebrowser-channel-name"
+                @click="$emit('selected')"
+            >
+                <away-status-indicator
+                    v-if="buffer.isQuery() && awayNotifySupported()"
+                    :network="network" :user="network.userByName(buffer.name)"
+                />{{ buffer.name }}
+            </div>
+            <div class="kiwi-statebrowser-buffer-actions">
+                <div class="kiwi-statebrowser-channel-labels">
+                    <div
+                        v-if="buffer.flags.unread && showMessageCounts(buffer)"
+                        :class="[
+                            buffer.flags.highlight ?
+                                'kiwi-statebrowser-channel-label--highlight' :
+                                ''
+                        ]"
+                        class="kiwi-statebrowser-channel-label"
+                    >
+                        {{ buffer.flags.unread > 999 ?
+                            "999+": buffer.flags.unread }}
+                    </div>
+                </div>
+
                 <div
-                    v-if="buffer.flags.unread && showMessageCounts(buffer)"
-                    :class="[
-                        buffer.flags.highlight ?
-                            'kiwi-statebrowser-channel-label--highlight' :
-                            ''
-                    ]"
-                    class="kiwi-statebrowser-channel-label"
+                    class="kiwi-statebrowser-channel-leave"
+                    @click="maybePromptClose()"
                 >
-                    {{ buffer.flags.unread > 999 ?
-                        "999+": buffer.flags.unread }}
+                    <i class="fa fa-times" aria-hidden="true" />
                 </div>
             </div>
-
-            <div
-                class="kiwi-statebrowser-channel-leave"
-                @click="closeBuffer(buffer)"
-            >
-                <i class="fa fa-times" aria-hidden="true" />
-            </div>
         </div>
+        <transition-expand>
+            <div v-if="showPromptClose" class="kiwi-statebrowser-prompt-close">
+                <span>{{ $t('prompt_leave_channel') }}</span>
+                <input-confirm
+                    :flip-connotation="true"
+                    @ok="closeBuffer()"
+                    @submit="maybePromptClose()"
+                />
+            </div>
+        </transition-expand>
     </div>
 </template>
 
@@ -51,10 +63,15 @@ export default {
     components: {
         AwayStatusIndicator,
     },
-    props: ['buffer'],
+    props: ['buffer', 'activePrompt'],
     computed: {
         network() {
             return this.buffer.getNetwork();
+        },
+        showPromptClose() {
+            return (this.activePrompt &&
+                this.activePrompt.type === 'buffer' &&
+                this.activePrompt.value === this.buffer);
         },
     },
     methods: {
@@ -68,11 +85,28 @@ export default {
         awayNotifySupported() {
             return this.network.ircClient.network.cap.isEnabled('away-notify');
         },
-        showMessageCounts(buffer) {
+        showMessageCounts() {
             return !this.buffer.setting('hide_message_counts');
         },
-        closeBuffer(buffer) {
-            this.$state.removeBuffer(buffer);
+        maybePromptClose() {
+            if (!this.buffer.setting('prompt_leave')) {
+                // Prompt feature is disabled, just close the buffer
+                this.closeBuffer();
+                return;
+            }
+
+            const prompt = this.activePrompt;
+            if (this.showPromptClose) {
+                // Prompt is currently visible so close it
+                prompt.type = undefined;
+                prompt.value = undefined;
+            } else {
+                prompt.type = 'buffer';
+                prompt.value = this.buffer;
+            }
+        },
+        closeBuffer() {
+            this.$state.removeBuffer(this.buffer);
         },
     },
 };

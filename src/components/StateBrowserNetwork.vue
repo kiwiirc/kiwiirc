@@ -81,7 +81,7 @@
             collapsed ? 'kiwi-statebrowser-network-toggable-area--collapsed' : '',
         ]" class="kiwi-statebrowser-network-toggable-area"
         >
-            <transition name="kiwi-statebrowser-network-status-transition">
+            <transition-expand>
                 <div v-if="network.state !== 'connected'" class="kiwi-statebrowser-network-status">
                     <template v-if="network.state_error">
                         <i class="fa fa-exclamation-triangle" aria-hidden="true" />
@@ -104,7 +104,7 @@
                         {{ $t('connecting') }}
                     </template>
                 </div>
-            </transition>
+            </transition-expand>
             <div
                 v-for="(itemBuffers, type) in filteredBuffersByType"
                 :key="type"
@@ -144,6 +144,16 @@
                             <i class="fa fa-search" aria-hidden="true" />
                         </div>
                     </div>
+                    <div v-else-if="type === 'queries'" class="kiwi-statebrowser-channels-options">
+                        <div
+                            v-if="itemBuffers.length > 1"
+                            class="kiwi-statebrowser-channels-option
+                                kiwi-statebrowser-queries-close"
+                            @click.stop.prevent="promptClose()"
+                        >
+                            <i class="fa fa-times" aria-hidden="true" />
+                        </div>
+                    </div>
                     <div class="kiwi-statebrowser-buffer-actions">
                         <div class="kiwi-statebrowser-channel-labels">
                             <div
@@ -179,21 +189,34 @@
                         </div>
                     </div>
                 </div>
-                <div
-                    v-if="itemBuffers.length && (
-                        (show_channels && type === 'channels') ||
-                        (show_queries && type === 'queries') ||
-                        type === 'other'
-                    )"
-                    class="kiwi-statebrowser-buffers-container"
-                >
-                    <buffer
-                        v-for="buffer in itemBuffers"
-                        :key="buffer.name"
-                        :buffer="buffer"
-                        @selected="setActiveBuffer(buffer)"
-                    />
-                </div>
+                <transition-expand v-if="type === 'queries'">
+                    <div v-if="showPromptClose" class="kiwi-statebrowser-prompt-close">
+                        <span>{{ $t('prompt_close_queries') }}</span>
+                        <input-confirm
+                            :flip-connotation="true"
+                            @ok="closeQueries(itemBuffers)"
+                            @submit="promptClose()"
+                        />
+                    </div>
+                </transition-expand>
+                <transition-expand>
+                    <div
+                        v-if="itemBuffers.length && (
+                            (show_channels && type === 'channels') ||
+                            (show_queries && type === 'queries') ||
+                            type === 'other'
+                        )"
+                        class="kiwi-statebrowser-buffers-container"
+                    >
+                        <buffer
+                            v-for="buffer in itemBuffers"
+                            :key="buffer.name"
+                            :buffer="buffer"
+                            :active-prompt="activePrompt"
+                            @selected="setActiveBuffer(buffer)"
+                        />
+                    </div>
+                </transition-expand>
             </div>
         </div>
     </div>
@@ -213,7 +236,7 @@ export default {
         BufferSettings,
         Buffer: StateBrowserBuffer,
     },
-    props: ['network', 'sidebarState'],
+    props: ['network', 'sidebarState', 'activePrompt'],
     data: function data() {
         return {
             collapsed: false,
@@ -314,6 +337,11 @@ export default {
         },
         showBufferGroups() {
             return this.$state.setting('buffers.show_buffer_groups');
+        },
+        showPromptClose() {
+            return (this.activePrompt &&
+                this.activePrompt.type === 'queries' &&
+                this.activePrompt.value === this.network);
         },
     },
     methods: {
@@ -435,6 +463,22 @@ export default {
                 this.show_queries = !this.show_queries;
             }
         },
+        promptClose() {
+            const prompt = this.activePrompt;
+            if (this.showPromptClose) {
+                // Prompt is currently visible so close it
+                prompt.type = undefined;
+                prompt.value = undefined;
+            } else {
+                prompt.type = 'queries';
+                prompt.value = this.network;
+            }
+        },
+        closeQueries(buffers) {
+            buffers.forEach((buffer) => {
+                this.$state.removeBuffer(buffer);
+            });
+        },
         closeFilterChannel() {
             this.channel_filter = '';
             this.channel_filter_display = false;
@@ -478,6 +522,9 @@ export default {
     display: block;
     padding: 4px 0;
     box-sizing: border-box;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .kiwi-network-name-options {
@@ -544,18 +591,6 @@ export default {
     opacity: 1;
 }
 
-/* During DOM entering and leaving */
-.kiwi-statebrowser-network-status-transition-enter-active,
-.kiwi-statebrowser-network-status-transition-leave-active {
-    transition: height 0.7s, padding 0.7s;
-}
-
-.kiwi-statebrowser-network-status-transition-enter,
-.kiwi-statebrowser-network-status-transition-leave-active {
-    height: 0;
-    padding: 0;
-}
-
 .kiwi-statebrowser-channel {
     position: relative;
     display: flex;
@@ -601,8 +636,12 @@ export default {
     align-items: center;
 }
 
+.kiwi-statebrowser-network-header .kiwi-statebrowser-buffer-actions {
+    padding-right: 10px;
+}
+
 .kiwi-statebrowser-network-header .kiwi-statebrowser-channel-label {
-    margin: 10px;
+    margin: 10px 0 10px 10px;
 }
 
 .kiwi-statebrowser-channel-leave {
