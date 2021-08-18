@@ -138,6 +138,15 @@ export default {
         thisMl() {
             return this;
         },
+        shouldAutoEmbed() {
+            if (this.buffer.isChannel() && this.buffer.setting('inline_link_auto_previews')) {
+                return true;
+            }
+            if (this.buffer.isQuery() && this.buffer.setting('inline_link_auto_previews_query')) {
+                return true;
+            }
+            return false;
+        },
         listType() {
             if (this.$state.setting('messageLayout')) {
                 log.info('Deprecation Warning: The config option \'messageLayout\' has been moved to buffers.messageLayout');
