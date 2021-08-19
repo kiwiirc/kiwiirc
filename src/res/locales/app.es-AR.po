@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Spanish, Argentina\n"
 "Language: es_AR\n"
-"PO-Revision-Date: 2020-09-04 17:21\n"
+"PO-Revision-Date: 2021-08-19 15:32\n"
 
 #: Start
 msgid "start_button"
@@ -827,9 +827,13 @@ msgstr "Kick + Ban del canal"
 msgid "error_no_channel_join"
 msgstr "Por favor especifica la sala a entrar. Por ej. /join #ejemplo"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "¡El apodo {{nick}} está actualmente en uso!"
+msgstr "The nickname '{{nick}}' is already in use!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "The nickname '{{nick}}' is invalid!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +842,10 @@ msgstr "Debes escribir un nuevo apodo"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "El apodo no puede empezar por un número"
+
+#: Unexpected error occured
+msgid "error_unexpected"
+msgstr "Unexpected error occured"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +998,10 @@ msgstr "Tirar un Dado"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Lanza un dado con {{sides}} lados y obtiene {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "You were mentioned in {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
