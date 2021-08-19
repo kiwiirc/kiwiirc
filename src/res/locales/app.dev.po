@@ -1081,6 +1081,13 @@ msgid "dice_roll"
 msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
 
 
+#: Notifications
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "You were mentioned in {{channel}}"
+
+
 #: Personal $t('personal_')
 
 #: Your IRC client
