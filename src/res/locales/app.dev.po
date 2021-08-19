@@ -925,9 +925,9 @@ msgstr "You must enter a new nickname"
 msgid "error_no_number"
 msgstr "Nickname must not start with a number"
 
-#: Unexpected error occured
+#: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occured"
+msgstr "Unexpected error occurred"
 
 
 
