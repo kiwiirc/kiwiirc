@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2021-08-19 15:32\n"
+"PO-Revision-Date: 2021-08-19 16:02\n"
 
 #: Start
 msgid "start_button"
@@ -843,9 +843,9 @@ msgstr "Debes escribir un nuevo apodo"
 msgid "error_no_number"
 msgstr "El apodo no puede empezar por un número"
 
-#: Unexpected error occured
+#: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occured"
+msgstr "Unexpected error occurred"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
