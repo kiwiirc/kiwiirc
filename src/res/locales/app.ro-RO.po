@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2020-06-15 20:31\n"
+"PO-Revision-Date: 2021-08-19 15:32\n"
 
 #: Start
 msgid "start_button"
@@ -827,9 +827,13 @@ msgstr "Dă ban și kick din canal"
 msgid "error_no_channel_join"
 msgstr "Specifică un canal pe care să intri. De exemplu: /join #Canal"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "Pseudonimul {{nick}} este utilizat de către altcineva!"
+msgstr "The nickname '{{nick}}' is already in use!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "The nickname '{{nick}}' is invalid!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +842,10 @@ msgstr "Trebuie să introduci un pseudonim nou"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Pseudonimul nu trebuie să înceapă cu cifre"
+
+#: Unexpected error occured
+msgid "error_unexpected"
+msgstr "Unexpected error occured"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +998,10 @@ msgstr "Dă cu zarul"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Dă cu un zar cu {{sides}} fețe și obține numărul {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "You were mentioned in {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
