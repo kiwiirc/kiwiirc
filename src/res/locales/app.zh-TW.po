@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2021-08-19 15:32\n"
+"PO-Revision-Date: 2021-08-19 16:02\n"
 
 #: Start
 msgid "start_button"
@@ -843,9 +843,9 @@ msgstr "你必須輸入新的暱稱"
 msgid "error_no_number"
 msgstr "Nickname must not start with a number"
 
-#: Unexpected error occured
+#: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occured"
+msgstr "Unexpected error occurred"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
