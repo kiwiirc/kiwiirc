@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2021-08-19 16:02\n"
+"PO-Revision-Date: 2021-08-19 16:12\n"
 
 #: Start
 msgid "start_button"
@@ -829,11 +829,11 @@ msgstr "Lütfen girmek için bir kanal belirtin. Örnek /join #örnek"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "'{{nick}}' takma adı zaten kullanılıyor!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "'{{nick}}' takma adı geçersiz!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -845,7 +845,7 @@ msgstr "Takma ad bir numara ile başlamamalıdır"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Beklenmedik hata oluştu"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1001,7 +1001,7 @@ msgstr "{{sides}} taraflı bir zar atar ve {{number}} alır"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "{{channel}} kanalında sizden bahsedildi"
 
 #: Your IRC client
 msgid "personal_client"
