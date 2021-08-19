@@ -909,9 +909,13 @@ msgstr "Ban and kick from the channel"
 msgid "error_no_channel_join"
 msgstr "Please specify a channel to join. eg /join #example"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "The nickname '{{nick}}' is already in use!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "The nickname '{{nick}}' is invalid!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -920,6 +924,11 @@ msgstr "You must enter a new nickname"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Nickname must not start with a number"
+
+#: Unexpected error occured
+msgid "error_unexpected"
+msgstr "Unexpected error occured"
+
 
 
 #: Mode Changes $t('modes_')

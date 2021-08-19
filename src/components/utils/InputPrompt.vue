@@ -6,14 +6,17 @@
             <span class="u-input-prompt-label">{{ label }}</span>
             <div class="u-input-prompt-inputs">
                 <input v-model="value" class="u-input" @keyup.esc="cancel">
-                <a class="u-button u-button-primary" @click="complete">{{ $t('ok') }}</a>
+                <a class="u-button u-button-primary" @click="complete">
+                    <span :class="{'u-input-prompt-hidden': waiting}">{{ $t('ok') }}</span>
+                    <div v-if="waiting" class="u-input-prompt-waiting">
+                        <i class="fa fa-spin fa-spinner" aria-hidden="true" />
+                    </div>
+                </a>
                 <a
                     v-if="!hideCancel"
                     class="u-button u-button-warning"
                     @click="cancel"
-                >
-                    {{ $t('cancel') }}
-                </a>
+                >{{ $t('cancel') }}</a>
             </div>
         </form>
     </div>
@@ -25,32 +28,54 @@
 let Vue = require('vue');
 
 export default Vue.component('input-prompt', {
-    props: ['label', 'hideCancel', 'noprompt', 'block'],
-    data: function data() {
+    props: ['label', 'hideCancel', 'block'],
+    data() {
         return {
             value: '',
             state: 'pre',
+            waiting: false,
         };
     },
+    computed: {
+        hasChildren() {
+            return !!this.$slots.default;
+        },
+    },
     created() {
-        if (this.noprompt) {
+        if (!this.hasChildren) {
             this.prompt();
         }
     },
     methods: {
-        prompt: function prompt() {
+        prompt() {
             this.state = 'prompt';
             this.$nextTick(() => {
                 this.$el.querySelector('input').focus();
             });
         },
-        complete: function complete() {
-            this.$emit('submit', this.value);
-            this.state = 'pre';
+        complete() {
+            if (this.waiting) {
+                return;
+            }
+
+            if (this.hasChildren) {
+                this.state = 'pre';
+            } else {
+                this.waiting = true;
+            }
+
+            const doneWaiting = () => {
+                this.waiting = false;
+            };
+
+            this.$emit('submit', this.value, doneWaiting);
         },
-        cancel: function cancel() {
+        cancel() {
+            if (this.hasChildren) {
+                this.state = 'pre';
+            }
+
             this.$emit('cancel');
-            this.state = 'pre';
         },
     },
 });
@@ -68,5 +93,26 @@ export default Vue.component('input-prompt', {
 
 .u-input-prompt-inputs > a {
     margin-right: 0.5em;
+}
+
+.u-input-prompt-inputs > .u-button-primary {
+    position: relative;
+}
+
+.u-input-prompt-hidden {
+    visibility: hidden;
+}
+
+.u-input-prompt-waiting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: 150%;
+    font-weight: 800;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 </style>
