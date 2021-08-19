@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2021-08-19 16:02\n"
+"PO-Revision-Date: 2021-08-19 22:01\n"
 
 #: Start
 msgid "start_button"
@@ -829,11 +829,11 @@ msgstr "Mesedez zehaztu kanal bat sartzeko. ad. /join #example"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "'{{nick}}' ezizena dagoeneko erabilia da!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "'{{nick}}' ezizena dagoeneko ez da da zuzena!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -845,7 +845,7 @@ msgstr "Ezizena ezin da zenbaki batekin hasi"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Ustekabeko akatsa gertatu da"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1001,7 +1001,7 @@ msgstr "dadoa {{sides}} bota eta {{number}} atera duzu"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "Aipatu zaituzte {{channel}} kanalean"
 
 #: Your IRC client
 msgid "personal_client"
