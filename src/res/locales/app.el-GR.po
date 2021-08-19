@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2021-08-19 16:02\n"
+"PO-Revision-Date: 2021-08-19 22:11\n"
 
 #: Start
 msgid "start_button"
@@ -829,11 +829,11 @@ msgstr "Προσδιορίστε ένα κανάλι για να εισέλθε�
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "Το ψευδώνυμο '{{nick}}' είναι ήδη σε χρήση!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "Το ψευδώνυμο '{{nick}}' δεν είναι έγκυρο!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -845,7 +845,7 @@ msgstr "Το ψευδώνυμο δεν πρέπει να ξεκινά με έν�
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Παρουσιάστηκε μη αναμενόμενο σφάλμα"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1001,7 +1001,7 @@ msgstr "Ρίχνει ένα {{sides}} από την πλευρά του ζαρι
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "Το όνομα σου αναφέρθηκε στο κανάλι {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
