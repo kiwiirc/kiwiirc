@@ -365,9 +365,6 @@ function loadPlugins() {
 function initLocales() {
     Vue.use(VueI18Next);
 
-    // Make the translation services available via the global API
-    api.i18n = i18next;
-
     i18next.use(i18nextXHR);
     i18next.init({
         whitelist: AvailableLocales.locales,
@@ -391,16 +388,21 @@ function initLocales() {
     // Build in the english translation so it can be used as a fallback
     i18next.addResourceBundle('en-us', 'translation', FallbackLocale);
 
+    // Make the translation services available via the global API
+    api.i18n = i18next;
+    api.vueI18n = new VueI18Next(i18next);
+
     // Override the $t function so that empty translations fallback to en-us
     Vue.mixin({
         computed: {
             $t() {
                 return (key, options) => {
-                    let val = this.$i18n.i18next.t(key, options, this.$i18n.i18nLoadedAt);
+                    const vueI18n = this.$i18n || api.vueI18n;
+                    let val = vueI18n.i18next.t(key, options, vueI18n.i18nLoadedAt);
                     if (!val) {
                         let opts = options || {};
                         opts.lng = 'en-us';
-                        val = this.$i18n.i18next.t(key, opts, this.$i18n.i18nLoadedAt);
+                        val = vueI18n.i18next.t(key, opts, vueI18n.i18nLoadedAt);
                     }
                     return val;
                 };
@@ -504,7 +506,7 @@ function startApp() {
     new Vue({
         el: '#app',
         render: (h) => h(App),
-        i18n: new VueI18Next(i18next),
+        i18n: api.vueI18n,
     });
 
     api.emit('ready');
