@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
-"PO-Revision-Date: 2020-08-08 20:41\n"
+"PO-Revision-Date: 2021-08-19 15:32\n"
 
 #: Start
 msgid "start_button"
@@ -827,9 +827,13 @@ msgstr "Channel se pratibandh aur bahaar nikhal gaya hai"
 msgid "error_no_channel_join"
 msgstr "Please specify a channel to join. eg /join #example"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "Isse upayogakarta ka naam {{nick}} pahale se he prayog mei hai"
+msgstr "The nickname '{{nick}}' is already in use!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "The nickname '{{nick}}' is invalid!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +842,10 @@ msgstr "Aapko ek naya upanaam darjh karna hoga"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Upnaam ek sankhya se shuru nahi hona chaiye"
+
+#: Unexpected error occured
+msgid "error_unexpected"
+msgstr "Unexpected error occured"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +998,10 @@ msgstr "Roll a Dice"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "You were mentioned in {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
