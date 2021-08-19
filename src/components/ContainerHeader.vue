@@ -203,16 +203,6 @@ export default {
             return !!user;
         },
     },
-    created() {
-        this.listen(this.$state, 'document.clicked', (e) => {
-            // If clicking anywhere else on the page, close all our prompts
-            if (!this.$el.contains(e.target)) {
-                Object.keys(this.prompts).forEach((prompt) => {
-                    this.prompts[prompt] = false;
-                });
-            }
-        });
-    },
     methods: {
         isChannel() {
             return this.buffer.isChannel();
