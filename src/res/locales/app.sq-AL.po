@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2021-08-19 16:02\n"
+"PO-Revision-Date: 2021-08-20 09:52\n"
 
 #: Start
 msgid "start_button"
@@ -829,11 +829,11 @@ msgstr "Ju lutemi, specifikoni një kanal ku të hyhet. p.sh., /join #shembull"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "Nofka '{{nick}}' është tashmë në përdorim!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "Nofka '{{nick}}' është e pavlefshme!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
