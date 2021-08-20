@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-08-19 16:03\n"
+"PO-Revision-Date: 2021-08-20 12:12\n"
 
 #: Start
 msgid "start_button"
@@ -829,11 +829,11 @@ msgstr "Specifica un canale a cui accedere. es /join #esempio"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "Il nickname '{{nick}}' è già in uso!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "Il nickname '{{nick}}' non è valido!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
