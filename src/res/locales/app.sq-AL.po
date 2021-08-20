@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2021-08-20 09:52\n"
+"PO-Revision-Date: 2021-08-20 10:02\n"
 
 #: Start
 msgid "start_button"
@@ -845,7 +845,7 @@ msgstr "Nofka s’duhet të fillojë me një emër"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Ndodhi një gabim i papritur"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1001,7 +1001,7 @@ msgstr "Hedh një zar me {{sides}} faqe dhe merr {{number}}"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "Jeni përmendur në {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
