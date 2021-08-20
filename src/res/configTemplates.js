@@ -81,7 +81,8 @@ export const configTemplates = {
             inline_link_auto_previews: true,
             inline_link_auto_preview_whitelist: '.*',
             show_buffer_groups: true,
-            prompt_leave: true,
+            // prompt_leave: all/channels/queries/none
+            prompt_leave: 'channels',
         },
         // Startup screen default
         startupOptions: {

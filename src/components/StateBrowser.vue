@@ -94,7 +94,13 @@ export default {
     },
     created() {
         this.listen(this.$state, 'document.clicked', (e) => {
-            // If clicking anywhere else on the page, close our prompts
+            if (!this.activePrompt.type) {
+                // Prompt is not open
+                return;
+            }
+
+            // Clicking anywhere on the page that is not a prompt or close button
+            // closes the active prompt
             const ignoreClasses = [
                 '.kiwi-statebrowser-prompt-close',
                 '.kiwi-statebrowser-queries-close',

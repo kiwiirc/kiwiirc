@@ -44,7 +44,11 @@
         </div>
         <transition-expand>
             <div v-if="showPromptClose" class="kiwi-statebrowser-prompt-close">
-                <span>{{ $t('prompt_leave_channel') }}</span>
+                <span>{{
+                    buffer.isChannel() ?
+                        $t('prompt_leave_channel') :
+                        $t('prompt_close_query')
+                }}</span>
                 <input-confirm
                     :flip-connotation="true"
                     @ok="closeBuffer()"
@@ -89,7 +93,13 @@ export default {
             return !this.buffer.setting('hide_message_counts');
         },
         maybePromptClose() {
-            if (!this.buffer.setting('prompt_leave')) {
+            const setting = this.buffer.setting('prompt_leave');
+            if (setting === 'none' || (
+                setting !== 'all' && (
+                    (this.buffer.isChannel() && setting !== 'channels') ||
+                    (this.buffer.isQuery() && setting !== 'queries')
+                )
+            )) {
                 // Prompt feature is disabled, just close the buffer
                 this.closeBuffer();
                 return;

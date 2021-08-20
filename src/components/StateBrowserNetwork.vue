@@ -652,6 +652,11 @@ export default {
     display: none;
 }
 
+.kiwi-statebrowser-prompt-close,
+.kiwi-statebrowser-prompt-close .u-input-confirm {
+    padding-top: 6px;
+}
+
 /*
     Hovering over the buffer name should show the close icon, but hide labels
     An active buffer should always show the close icon
