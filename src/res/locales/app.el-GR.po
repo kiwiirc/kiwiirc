@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2021-08-19 22:11\n"
+"PO-Revision-Date: 2021-08-21 03:00\n"
 
 #: Start
 msgid "start_button"
@@ -1001,7 +1001,7 @@ msgstr "Ρίχνει ένα {{sides}} από την πλευρά του ζαρι
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "Το όνομα σου αναφέρθηκε στο κανάλι {{channel}}"
+msgstr "Σας Αναφέραν στο κανάλι {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
