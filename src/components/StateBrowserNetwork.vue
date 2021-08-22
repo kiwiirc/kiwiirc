@@ -36,46 +36,47 @@
             </div>
         </div>
 
-        <div v-if="channel_filter_display" class="kiwi-statebrowser-channelfilter">
-            <input
-                v-model="channel_filter"
-                v-focus
-                :placeholder="$t('filter_channels')"
-                type="text"
-                @blur="onChannelFilterInputBlur"
-                @keyup.esc="closeFilterChannel"
-            >
-            <p>
-                <a @click="closeFilterChannel(); showNetworkChannels(network)">
-                    {{ $t('find_more_channels') }}
-                </a>
-            </p>
-        </div>
-
-        <div v-if="channel_add_display" class="kiwi-statebrowser-channels-info">
-            <form
-                class="kiwi-statebrowser-newchannel"
-                @submit.prevent="submitNewChannelForm"
-            >
-                <div
+        <transition-expand>
+            <div v-if="channel_filter_display" class="kiwi-statebrowser-channelfilter">
+                <input
+                    v-model="channel_filter"
                     v-focus
-                    :class="[
-                        channel_add_input_has_focus ?
-                            'kiwi-statebrowser-newchannel-inputwrap--focus' :
-                            ''
-                    ]"
-                    class="kiwi-statebrowser-newchannel-inputwrap"
+                    :placeholder="$t('filter_channels')"
+                    type="text"
+                    @blur="onChannelFilterInputBlur"
+                    @keyup.esc="closeFilterChannel"
                 >
-                    <input
-                        v-model="channel_add_input"
-                        :placeholder="$t('state_join')"
-                        type="text"
-                        @focus="onNewChannelInputFocus"
-                        @blur="onNewChannelInputBlur"
+                <p>
+                    <a @click="closeFilterChannel(); showNetworkChannels(network)">
+                        {{ $t('find_more_channels') }}
+                    </a>
+                </p>
+            </div>
+            <div v-if="channel_add_display" class="kiwi-statebrowser-channels-info">
+                <form
+                    class="kiwi-statebrowser-newchannel"
+                    @submit.prevent="submitNewChannelForm"
+                >
+                    <div
+                        v-focus
+                        :class="[
+                            channel_add_input_has_focus ?
+                                'kiwi-statebrowser-newchannel-inputwrap--focus' :
+                                ''
+                        ]"
+                        class="kiwi-statebrowser-newchannel-inputwrap"
                     >
-                </div>
-            </form>
-        </div>
+                        <input
+                            v-model="channel_add_input"
+                            :placeholder="$t('state_join')"
+                            type="text"
+                            @focus="onNewChannelInputFocus"
+                            @blur="onNewChannelInputBlur"
+                        >
+                    </div>
+                </form>
+            </div>
+        </transition-expand>
 
         <div :class="[
             collapsed ? 'kiwi-statebrowser-network-toggable-area--collapsed' : '',
@@ -103,6 +104,25 @@
                     <template v-else-if="network.state === 'connecting'">
                         {{ $t('connecting') }}
                     </template>
+                </div>
+                <div
+                    v-if="!showBufferGroups && !channel_filter_display && !channel_add_display"
+                    class="kiwi-statebrowser-network-options"
+                >
+                    <div
+                        :class="{ active: !!channel_add_display }"
+                        class="kiwi-statebrowser-network-option"
+                        @click="toggleAddChannel()"
+                    >
+                        <i class="fa fa-plus" aria-hidden="true" />
+                    </div>
+                    <div
+                        :class="{ active: !!channel_filter_display }"
+                        class="kiwi-statebrowser-network-option"
+                        @click="onSearchChannelClick()"
+                    >
+                        <i class="fa fa-search" aria-hidden="true" />
+                    </div>
                 </div>
             </transition-expand>
             <div
@@ -562,6 +582,22 @@ export default {
     position: relative;
     height: 1.5em;
     font-size: 0.9em;
+}
+
+.kiwi-statebrowser-network-options {
+    line-height: 1em;
+    text-align: right;
+}
+
+.kiwi-statebrowser-network-option {
+    display: inline-block;
+    width: 38px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.8;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
 }
 
 .kiwi-statebrowser-channels-header {
