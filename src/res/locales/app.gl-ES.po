@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2021-08-23 08:01\n"
+"PO-Revision-Date: 2021-08-23 08:11\n"
 
 #: Start
 msgid "start_button"
@@ -173,7 +173,7 @@ msgstr "Ignorar usuario"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Sala"
+msgstr "Canle"
 
 #: Away
 msgid "away"
@@ -481,15 +481,15 @@ msgstr "Bloquear mensaxes externas"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Pulse o botón Actualizar para actualizar a lista de salas"
+msgstr "Pulse o botón Actualizar para actualizar a lista de canles"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "Non se atoparon salas, téntao de novo máis tarde"
+msgstr "Non se atoparon canles, téntao de novo máis tarde"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "¡Benvido a Kiwi IRC! Selecciona unha sala da esquerda."
+msgstr "¡Benvido a Kiwi IRC! Selecciona unha canle da esquerda."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -509,7 +509,7 @@ msgstr "Configuración da canle"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Entrar a unha sala"
+msgstr "Entrar a unha calne"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -637,7 +637,7 @@ msgstr "Pechar opcións"
 
 #: Channel options
 msgid "side_options"
-msgstr "Opcións da sala"
+msgstr "Opcións da canle"
 
 #: Your settings
 msgid "side_settings"
@@ -645,7 +645,7 @@ msgstr "A túa configuración"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Mostrar cando a xente entra á sala"
+msgstr "Mostrar cando a xente entra á canle"
 
 #: Show when channel topic changes
 msgid "side_topics"
@@ -749,7 +749,7 @@ msgstr "Desconectado."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Entrar nunha #sala nova"
+msgstr "Entrar nunha #canle nova"
 
 #: Filter Channels
 msgid "filter_channels"
@@ -801,7 +801,7 @@ msgstr "Conectado de forma segura con SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "Está tamén nas salas {{channels}}"
+msgstr "Está tamén nas canles {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -813,11 +813,11 @@ msgstr "Normal"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Expulsar da sala"
+msgstr "Expulsar da canle"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Banear da sala"
+msgstr "Banear da canle"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
@@ -833,7 +833,7 @@ msgstr "O alcume {{nick}} está actualmente en uso!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "O alcume {{nick}} é inválido!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -1009,7 +1009,7 @@ msgstr "O teu cliente de IRC"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Engade as túas redes. Entra nas túas salas."
+msgstr "Engade as túas redes. Entra nas túas canles."
 
 #: They will be here when you come back.
 msgid "personal_return"
