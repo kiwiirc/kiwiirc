@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2021-08-19 16:02\n"
+"PO-Revision-Date: 2021-08-23 08:01\n"
 
 #: Start
 msgid "start_button"
@@ -93,7 +93,7 @@ msgstr "Alcume"
 
 #: Channel
 msgid "channel"
-msgstr "Sala"
+msgstr "Canle"
 
 #: Messages
 msgid "messages"
@@ -465,7 +465,7 @@ msgstr "Tópico"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Sala moderada"
+msgstr "Canle moderada"
 
 #: Invite only
 msgid "channel_invite"
@@ -829,7 +829,7 @@ msgstr "Por favor especifica a canle para entrar. Por ex. /join #exemplo"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "O alcume {{nick}} está actualmente en uso!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
@@ -845,7 +845,7 @@ msgstr "O alcume non pode empezar por un número"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Produciuse un erro non esperado."
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1001,7 +1001,7 @@ msgstr "Lanza un dado con {{sides}} lados  e obtén {{number}}"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "Fuches mencionado na canle {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
