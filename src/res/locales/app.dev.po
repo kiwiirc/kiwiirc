@@ -259,6 +259,10 @@ msgstr "Traditional IRC layout"
 msgid "settings_show_autocomplete"
 msgstr "Show autocomplete list"
 
+#: Show autocomplete commands list
+msgid "settings_autocomplete_commands"
+msgstr "Show autocomplete commands list"
+
 #: Chat Messages
 msgid "settings_messages_title"
 msgstr "Chat Messages"
