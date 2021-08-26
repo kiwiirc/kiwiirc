@@ -59,7 +59,6 @@ export function listenForMessages(state) {
 .kiwi-message-topic {
     border-radius: 5px;
     margin: 18px;
-    text-align: center;
     position: relative;
     min-height: 0;
     display: block;
