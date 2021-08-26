@@ -357,6 +357,14 @@
     color: var(--brand-error);
 }
 
+.kiwi-statebrowser-usermenu-close {
+    background-color: var(--brand-error);
+}
+
+.kiwi-statebrowser-usermenu-close:hover {
+    opacity: 1;
+}
+
 .kiwi-statebrowser-divider {
     background: rgba(255, 255, 255, 0.3);
 }
@@ -560,6 +568,7 @@
 }
 
 .kiwi-statebrowser-appsettings:hover {
+    background-color: rgba(128, 128, 128, 0.2);
     opacity: 1;
 }
 

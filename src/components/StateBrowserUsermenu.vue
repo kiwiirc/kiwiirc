@@ -26,7 +26,7 @@
         <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
             <p> {{ $t('state_remembered') }} </p>
             <a class="u-link" @click="clickForget">{{ $t('state_forget') }}</a>
-            <div class="kiwi-close-icon" @click="is_usermenu_open=false">
+            <div class="kiwi-statebrowser-usermenu-close" @click="is_usermenu_open=false">
                 <i class="fa fa-times" aria-hidden="true" />
             </div>
         </div>
@@ -101,15 +101,28 @@ export default {
     cursor: default;
 }
 
-.kiwi-statebrowser-usermenu-avatar {
-    width: 60px;
-    height: 60px;
+.kiwi-statebrowser-usermenu-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    line-height: 32px;
+    text-align: center;
     cursor: pointer;
-    font-size: 1.8em;
-    border-radius: 50%;
-    margin: 0 auto 10px auto;
-    transition: background 0.2s;
+    font-weight: 800;
+    font-size: 20px;
+    opacity: 0.8;
+    border-bottom-left-radius: 14px;
+    transition: background 0.2s, opacity 0.2s;
+}
+
+.kiwi-statebrowser-usermenu-avatar {
     position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 0.4em auto;
+    font-size: 2.8em;
+    transition: background 0.2s;
 }
 
 .kiwi-statebrowser-usermenu-avatar .kiwi-avatar-inner {
@@ -118,11 +131,11 @@ export default {
 
 .kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
     position: absolute;
-    top: 3px;
-    right: -4px;
-    width: 12px;
-    height: 12px;
-    border: 1px solid #000;
+    top: 4px;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    border: 1px solid;
 }
 
 .kiwi-statebrowser-usermenu-body {

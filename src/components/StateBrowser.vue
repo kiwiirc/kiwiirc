@@ -169,29 +169,15 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: 39px;
+    width: 32px;
+    line-height: 32px;
     text-align: center;
-    font-size: 1em;
-    box-sizing: border-box;
-    line-height: 57px;
     cursor: pointer;
-    font-weight: 500;
-    transition: background 0.2s, opacity 0.2s;
+    font-weight: 800;
+    font-size: 20px;
     opacity: 0.8;
-    z-index: 20;
-}
-
-.kiwi-statebrowser-appsettings:hover {
-    opacity: 1;
-}
-
-.kiwi-statebrowser-appsettings span {
-    font-weight: 600;
-}
-
-.kiwi-statebrowser-appsettings i {
-    line-height: 35px;
-    font-size: 1.2em;
+    border-bottom-right-radius: 14px;
+    transition: background 0.2s, opacity 0.2s;
 }
 
 /* Add network button */
