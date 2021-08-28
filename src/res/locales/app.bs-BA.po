@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2021-08-19 16:02\n"
+"PO-Revision-Date: 2021-08-28 18:11\n"
 
 #: Start
 msgid "start_button"
@@ -829,11 +829,11 @@ msgstr "Molimo naznačite na koji kanal se želite sojiti. npr /join #primjer"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "Nadimak {{nick}} je već u upotrebi!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "Nadimak {{nick}} je neispravan!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -845,7 +845,7 @@ msgstr "Nadimci ne smiju počinjati sa brojem"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Došlo je do neočekivane greške"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1001,7 +1001,7 @@ msgstr "Bačena je {{sides}} kockica a dobijeni broj je {{number}}"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "Spomenuti ste u kanalu {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
