@@ -619,7 +619,7 @@ export default {
 
             if (opts.commands) {
                 if (!this.$state.setting('showAutocompleteCommands')) {
-                    this.onAutocompleteCancel();
+                    return;
                 } else {
                     let commandList = [];
                     autocompleteCommands.forEach((command) => {
