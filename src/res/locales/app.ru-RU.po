@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2021-08-19 16:02\n"
+"PO-Revision-Date: 2021-09-05 01:20\n"
 
 #: Start
 msgid "start_button"
@@ -29,11 +29,11 @@ msgstr "закрыть"
 
 #: Connect
 msgid "connect"
-msgstr "подключиться"
+msgstr "Подключиться"
 
 #: Connecting...
 msgid "connecting"
-msgstr "подключение"
+msgstr "Подключение…"
 
 #: Connected
 msgid "connected"
@@ -513,7 +513,7 @@ msgstr "Присоединиться к каналу"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Нет соединения"
+msgstr "Не подключено"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
@@ -577,7 +577,7 @@ msgstr "Direct websocket"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Запускать команды при подключении"
+msgstr "Выполнять команды при подключении"
 
 #: Danger Zone
 msgid "settings_danger"
@@ -617,7 +617,7 @@ msgstr "Вы в данный момент не подключены!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Настройки соединения"
+msgstr "Настройки подключения"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
@@ -745,7 +745,7 @@ msgstr "Настройка сети"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Нет соединения."
+msgstr "Не подключено."
 
 #: Join new #channel
 msgid "state_join"
@@ -793,11 +793,11 @@ msgstr "Оператор"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Подключен к {{server}} {{info}}"
+msgstr "Подключён к {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Надежное подключение через SSL/TLS"
+msgstr "Надёжное подключение через SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
@@ -1021,7 +1021,7 @@ msgstr "Добавить сеть"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "Вы пытаетесь присоединиться к {{network}}"
+msgstr "Вы пытаетесь подключиться к {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
