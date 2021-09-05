@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2021-09-05 01:20\n"
+"PO-Revision-Date: 2021-09-05 01:30\n"
 
 #: Start
 msgid "start_button"
@@ -229,7 +229,7 @@ msgstr "Язык"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Темы"
+msgstr "Тема оформления"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -245,7 +245,7 @@ msgstr "Шаблон сообщения"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Шрифт monospace"
+msgstr "Моноширинный шрифт"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
@@ -317,7 +317,7 @@ msgstr "Псевдонимы"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "Что такое псевдонимы?"
 
 #: Send Message
 msgid "send_message"
@@ -365,7 +365,7 @@ msgstr "Маска блокировки по умолчанию"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Default kick reason"
+msgstr "Причина изгнания по умолчанию"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
@@ -457,7 +457,7 @@ msgstr "Добавить приглашение"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "(Любой зарегистрированный пользователь)"
 
 #: Topic
 msgid "channel_topic"
@@ -573,7 +573,7 @@ msgstr "Показывать исходный текст"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "Прямой веб-сокет"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -669,7 +669,7 @@ msgstr "Цветные псевдонимы в списке"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "No buffer set"
+msgstr "Буфер не установлен"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
