@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2021-09-05 01:30\n"
+"PO-Revision-Date: 2021-09-05 01:40\n"
 
 #: Start
 msgid "start_button"
@@ -257,7 +257,7 @@ msgstr "Традиционный формат IRC"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Показывать список автодополнения"
+msgstr "Показывать окно автозаполнения"
 
 #: Chat Messages
 msgid "settings_messages_title"
@@ -273,7 +273,7 @@ msgstr "24-часовой формат времени"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Показать смайлики"
+msgstr "Показывать смайлики"
 
 #: Block new Private messages
 msgid "settings_block_private"
