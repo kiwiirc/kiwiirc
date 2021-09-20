@@ -147,7 +147,6 @@
 
 .u-button-warning {
     background-color: #d16c6c;
-    border-bottom: 1px solid #5f1515;
     color: #fff;
 }
 .u-link {
@@ -324,13 +323,6 @@
 /* For active buttons, since they are not being hovered, we need to set the child element opacity to 1 */
 .kiwi-header-option-active a{
     opacity: 1;
-}
-
-/* Leave channel */
-.kiwi-header-option-leave a:hover,
-.kiwi-header-option-unpinsidebar a:hover {
-    background-color: #c54d53;
-    color: #fff;
 }
 
 /* The link to click if the user has not joined this channel */
@@ -979,21 +971,7 @@
 .kiwi-statebrowser-options {
     background: #383838;
 }
-.kiwi-statebrowser-nonetworks {
-    background: rgba(255, 255, 255, 0.15);
-}
-.kiwi-statebrowser-availablenetworks-toggle {
-    background: rgba(255, 255, 255, 0.15);
-}
-.kiwi-statebrowser-availablenetworks {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-.kiwi-statebrowser-availablenetworks-link {
-    border-right: 15px solid red;
-}
-.kiwi-statebrowser-availablenetworks-link--connected {
-    border-color: #1b2f24;
-}
+
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
     color: #d03232;
 }
@@ -1010,16 +988,6 @@
 }
 .kiwi-statebrowser-newchannel-inputwrap--focus {
     opacity: 1;
-}
-
-.kiwi-statebrowser-nonetworks {
-    background: rgba(255, 255, 255, 0.15);
-}
-.kiwi-statebrowser-availablenetworks {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-.kiwi-statebrowser-availablenetworks-toggle {
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .kiwi-statebrowser-channel-label--highlight {

@@ -120,7 +120,6 @@
 
 .u-button-warning {
     background-color: var(--brand-error);
-    border-bottom: 1px solid var(--brand-default-fg);
     color: var(--brand-default-bg);
 }
 
@@ -154,12 +153,6 @@
 .kiwi-header-option--active,
 .kiwi-header-option-active a {
     opacity: 1;
-}
-
-.kiwi-header-option-leave a:hover,
-.kiwi-header-option-unpinsidebar a:hover {
-    background-color: var(--brand-error);
-    color: var(--brand-default-bg);
 }
 
 .kiwi-header-join-channel-button {
@@ -364,6 +357,14 @@
     color: var(--brand-error);
 }
 
+.kiwi-statebrowser-usermenu-close {
+    background-color: var(--brand-error);
+}
+
+.kiwi-statebrowser-usermenu-close:hover {
+    opacity: 1;
+}
+
 .kiwi-statebrowser-divider {
     background: rgba(255, 255, 255, 0.3);
 }
@@ -492,14 +493,6 @@
     background: var(--brand-midtone);
 }
 
-.kiwi-statebrowser-availablenetworks-link {
-    border-right: 15px solid var(--brand-error);
-}
-
-.kiwi-statebrowser-availablenetworks-link--connected {
-    border-color: var(--brand-primary);
-}
-
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
     color: var(--brand-error);
 }
@@ -508,18 +501,6 @@
     background: #383838;
     border: 3px solid var(--brand-midtone);
     border-left: none;
-}
-
-.kiwi-statebrowser-nonetworks {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.kiwi-statebrowser-availablenetworks {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.kiwi-statebrowser-availablenetworks-toggle {
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .kiwi-statebrowser-network-header {
@@ -587,11 +568,16 @@
 }
 
 .kiwi-statebrowser-appsettings:hover {
+    background-color: rgba(128, 128, 128, 0.2);
     opacity: 1;
 }
 
 .kiwi-statebrowser-scrollarea h4 {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.kiwi-statebrowser-prompt-close {
+    background-color: rgba(128, 128, 128, 0.2);
 }
 
 /* ---- End of statebrowser ---- */
