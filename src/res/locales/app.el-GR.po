@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2021-09-20 14:24\n"
+"PO-Revision-Date: 2021-09-20 16:41\n"
 
 #: Start
 msgid "start_button"
@@ -761,11 +761,11 @@ msgstr "Θέλετε να αποχωρήσετε πραγματικά από τ�
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "Θέλετε πραγματικά να κλείσετε όλα τα προσωπικά μηνύματα;"
 
 #: Really close this chat?
 msgid "prompt_close_query"
-msgstr "Really close this chat?"
+msgstr "Θέλετε πραγματικά να κλείσετε την συνομιλία;"
 
 #: Change nick
 msgid "change_nick"
