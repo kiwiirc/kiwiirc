@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2021-08-19 17:42\n"
+"PO-Revision-Date: 2021-09-20 14:24\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Niet verbonden"
 msgid "container_privmsg"
 msgstr "Privégesprek met {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Het kanaal echt verlaten?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Een bericht sturen..."
@@ -758,6 +754,18 @@ msgstr "Kanalen filteren"
 #: Find More Channels
 msgid "find_more_channels"
 msgstr "Meer kanalen zoeken"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Het kanaal echt verlaten?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
 
 #: Change nick
 msgid "change_nick"
