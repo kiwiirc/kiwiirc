@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2021-08-19 22:01\n"
+"PO-Revision-Date: 2021-09-20 14:24\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Konektatu gabe"
 msgid "container_privmsg"
 msgstr "{{user}}(r)ekin elkarrizketa pribatua"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Kanala utzi nahi duzu?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Mezua bidali..."
@@ -758,6 +754,18 @@ msgstr "Iragazi kanalak"
 #: Find More Channels
 msgid "find_more_channels"
 msgstr "Kanal gehiago bilatu"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Kanala utzi nahi duzu?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
 
 #: Change nick
 msgid "change_nick"
