@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2021-09-20 14:24\n"
+"PO-Revision-Date: 2021-09-20 14:42\n"
 
 #: Start
 msgid "start_button"
@@ -765,7 +765,7 @@ msgstr "Really close all messages?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
-msgstr "Really close this chat?"
+msgstr "Закрыть этот чат?"
 
 #: Change nick
 msgid "change_nick"
@@ -837,11 +837,11 @@ msgstr "Укажите, к какому каналу присоединитьс�
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "Псевдоним '{{nick}}' уже используется!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "Псевдоним '{{nick}}' недействителен!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -853,7 +853,7 @@ msgstr "Имя не может начинаться с цифр"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Произошла непредвиденная ошибка"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -873,11 +873,11 @@ msgstr "{{nick}} забирает полуопа у {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} gives voice to {{target}}"
+msgstr "{{nick}} говорит для {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} takes voice from {{target}}"
+msgstr "{{nick}} берет голос у {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -913,7 +913,7 @@ msgstr "Отправить сообщение"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Do something physical"
+msgstr "Сделайте что-то физическое"
 
 #: Join a channel
 msgid "command_join"
@@ -973,11 +973,11 @@ msgstr "Подключиться к новой сети IRC"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Request information on somebody"
+msgstr "Запросить информацию о ком-нибудь"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr "Request information on somebody that disconnected recently"
+msgstr "Запросить информацию о том, кто недавно отключился"
 
 #: Set yourself as away
 msgid "command_away"
@@ -993,11 +993,11 @@ msgstr "Изменить кодировку соединения"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr "Ignore messages from somebody"
+msgstr "Игнорировать сообщения от кого-то"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Stop ignoring somebody"
+msgstr "Перестань игнорировать кого-то"
 
 #: Roll a Dice
 msgid "command_dice"
@@ -1009,7 +1009,7 @@ msgstr "Бросает {{sides}}-гранный кубик и получает {
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "Вас упомянули в {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -1021,7 +1021,7 @@ msgstr "Добавьте свои сети. Присоединитесь к св
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "They will be here when you come back."
+msgstr "Они будут здесь, когда вы вернётесь."
 
 #: Add a Network
 msgid "personal_add"
@@ -1037,7 +1037,7 @@ msgstr "Сеть была добавлена в существующее окн�
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Add network to existing Kiwi window"
+msgstr "Добавить сеть в существующее окно Kiwi"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
