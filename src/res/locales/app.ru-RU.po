@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2021-09-20 14:42\n"
+"PO-Revision-Date: 2021-09-20 14:52\n"
 
 #: Start
 msgid "start_button"
@@ -481,7 +481,7 @@ msgstr "Блокировать сообщения не из этого кана�
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to update the channel list"
+msgstr "Нажмите кнопку обновления, чтобы обновить список каналов."
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
@@ -493,7 +493,7 @@ msgstr "Добро пожаловать в Kiwi IRC! Выберите канал
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Show statebrowser"
+msgstr "Показать statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
@@ -761,7 +761,7 @@ msgstr "Действительно покинуть канал?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "Закрыть все сообщения?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
@@ -1041,7 +1041,7 @@ msgstr "Добавить сеть в существующее окно Kiwi"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Temporarily connect to this network"
+msgstr "Временно подключиться к этой сети"
 
 #: Saved networks
 msgid "personal_saved"
@@ -1053,11 +1053,11 @@ msgstr "Kiwi IRC (next gen) - Rizon preview"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Direct websockets. No Kiwi server or webirc involved."
+msgstr "Прямые веб-сокеты. Не задействован сервер Kiwi или webirc."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
+msgstr "(Спасибо Адаму @Rizon за разработку websocket server!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
