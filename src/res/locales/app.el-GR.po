@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2021-08-21 03:00\n"
+"PO-Revision-Date: 2021-09-20 14:24\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Μη Συνδεδεμένο"
 msgid "container_privmsg"
 msgstr "Προσωπική συνομιλία με {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Θέλετε να αποχωρήσετε πραγματικά από το κανάλι;"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Στείλτε ένα μήνυμα..."
@@ -758,6 +754,18 @@ msgstr "Φιλτράρετε τα Κανάλια"
 #: Find More Channels
 msgid "find_more_channels"
 msgstr "Βρείτε Περισσότερα Κανάλια"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Θέλετε να αποχωρήσετε πραγματικά από το κανάλι;"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
 
 #: Change nick
 msgid "change_nick"
