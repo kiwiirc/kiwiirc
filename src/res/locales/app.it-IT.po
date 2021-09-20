@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-09-20 19:41\n"
+"PO-Revision-Date: 2021-09-20 19:51\n"
 
 #: Start
 msgid "start_button"
@@ -129,7 +129,7 @@ msgstr "Annulla"
 
 #: Yes
 msgid "yes"
-msgstr "Si"
+msgstr "Sì"
 
 #: No
 msgid "no"
@@ -137,7 +137,7 @@ msgstr "No"
 
 #: Not found.
 msgid "not_found"
-msgstr "Non trovato"
+msgstr "Non trovato."
 
 #: Warning!
 msgid "warning"
