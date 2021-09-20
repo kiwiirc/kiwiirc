@@ -84,6 +84,10 @@ export default Vue.component('transition-expand', {
 </style>
 
 <style scoped>
+/*
+    try to force the browser into optimizing the animation
+    using hardware acceleration
+*/
 * {
     will-change: height;
     transform: translateZ(0);
