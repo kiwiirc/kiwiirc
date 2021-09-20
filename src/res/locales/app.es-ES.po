@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2021-08-19 16:22\n"
+"PO-Revision-Date: 2021-09-20 14:24\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Desconectado"
 msgid "container_privmsg"
 msgstr "Conversación privada con {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "¿Desea realmente salir de la Sala?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Enviar un mensaje..."
@@ -758,6 +754,18 @@ msgstr "Filtrar salas"
 #: Find More Channels
 msgid "find_more_channels"
 msgstr "Buscar más salas"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "¿Desea realmente salir de la Sala?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
 
 #: Change nick
 msgid "change_nick"
