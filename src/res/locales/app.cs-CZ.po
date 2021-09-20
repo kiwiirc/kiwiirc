@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2021-08-19 16:02\n"
+"PO-Revision-Date: 2021-09-20 14:24\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Not Connected"
 msgid "container_privmsg"
 msgstr "Private conversation with {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Send a message..."
@@ -758,6 +754,18 @@ msgstr "Filter channels"
 #: Find More Channels
 msgid "find_more_channels"
 msgstr "Find More Channels"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Really leave the channel?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
 
 #: Change nick
 msgid "change_nick"
