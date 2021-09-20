@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2021-09-20 16:28\n"
+"PO-Revision-Date: 2021-09-20 16:32\n"
 
 #: Start
 msgid "start_button"
@@ -761,7 +761,7 @@ msgstr "Chiar vrei să părăsești canalul?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "Sigur vrei să închizi toate mesajele?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
