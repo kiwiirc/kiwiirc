@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-09-20 14:24\n"
+"PO-Revision-Date: 2021-09-20 19:41\n"
 
 #: Start
 msgid "start_button"
@@ -45,7 +45,7 @@ msgstr "Impostazioni"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Impostazioni KiwiIRC"
+msgstr "Impostazioni di Kiwi"
 
 #: Channels
 msgid "channels"
@@ -77,7 +77,7 @@ msgstr "Password"
 
 #: Server Password
 msgid "server_password"
-msgstr "Password Server"
+msgstr "Password del server"
 
 #: I have a password
 msgid "password_have"
@@ -761,11 +761,11 @@ msgstr "Vuoi veramente uscire dal canale?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "Chiudere tutti i messaggi?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
-msgstr "Really close this chat?"
+msgstr "Chiudere questa chat?"
 
 #: Change nick
 msgid "change_nick"
@@ -853,7 +853,7 @@ msgstr "Il nickname non può iniziare con un numero"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Si è verificato un errore imprevisto"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1009,7 +1009,7 @@ msgstr "Lancia un dado con {{sides}} lati e ottiene {{number}}"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "Sei stato menzionato in {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
