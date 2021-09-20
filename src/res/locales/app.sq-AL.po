@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2021-08-20 10:02\n"
+"PO-Revision-Date: 2021-09-20 14:23\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "I palidhur"
 msgid "container_privmsg"
 msgstr "Bisedë private me {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Të dilet vërtet nga kanali?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Dërgoni një mesazh…"
@@ -758,6 +754,18 @@ msgstr "Filtroni kanale"
 #: Find More Channels
 msgid "find_more_channels"
 msgstr "Gjeni Më Tepër Kanale"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Të dilet vërtet nga kanali?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
 
 #: Change nick
 msgid "change_nick"
