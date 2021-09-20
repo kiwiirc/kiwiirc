@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2021-09-20 14:32\n"
+"PO-Revision-Date: 2021-09-20 17:21\n"
 
 #: Start
 msgid "start_button"
@@ -841,7 +841,7 @@ msgstr "¡El apodo '{{nick}}' está actualmente en uso!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "El nick '{{nick}}' se está usando actualmente!"
+msgstr "El apodo '{{nick}}' es inválido"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -1009,7 +1009,7 @@ msgstr "Lanza un dado con {{sides}} lados y obtiene {{number}}"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "Fuiste mencionado en el canal {{channel}}"
+msgstr "Fuiste mencionado en la sala {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
