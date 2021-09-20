@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2021-09-20 14:23\n"
+"PO-Revision-Date: 2021-09-20 15:42\n"
 
 #: Start
 msgid "start_button"
@@ -761,11 +761,11 @@ msgstr "Kanaldan gerçekten ayrılmak istiyor musunuz?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "Tüm mesajlar gerçekten kapatılsın mı?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
-msgstr "Really close this chat?"
+msgstr "Bu sohbeti gerçekten kapat?"
 
 #: Change nick
 msgid "change_nick"
