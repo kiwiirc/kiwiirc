@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2021-08-19 16:02\n"
+"PO-Revision-Date: 2021-09-20 14:23\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "未連線"
 msgid "container_privmsg"
 msgstr "Private conversation with {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "傳送訊息"
@@ -758,6 +754,18 @@ msgstr "篩選頻道"
 #: Find More Channels
 msgid "find_more_channels"
 msgstr "尋找更多頻道"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Really leave the channel?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
 
 #: Change nick
 msgid "change_nick"
