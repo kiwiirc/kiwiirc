@@ -97,7 +97,8 @@ export default {
             if (setting === 'none' || (
                 setting !== 'all' && (
                     (this.buffer.isChannel() && setting !== 'channels') ||
-                    (this.buffer.isQuery() && setting !== 'queries')
+                    (this.buffer.isQuery() && setting !== 'queries') ||
+                    (this.buffer.isSpecial() && setting !== 'queries')
                 )
             )) {
                 // Prompt feature is disabled, just close the buffer
