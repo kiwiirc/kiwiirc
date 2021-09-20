@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2021-08-19 16:02\n"
+"PO-Revision-Date: 2021-09-20 14:24\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Не сте свързани"
 msgid "container_privmsg"
 msgstr "Частен разговор с {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Наистина ли искате  да напуснете канала?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Изпращане на съобщение..."
@@ -758,6 +754,18 @@ msgstr "Филтър на канал"
 #: Find More Channels
 msgid "find_more_channels"
 msgstr "Намиране на още канали"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Наистина ли искате  да напуснете канала?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
 
 #: Change nick
 msgid "change_nick"
