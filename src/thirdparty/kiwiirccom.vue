@@ -6,6 +6,7 @@
         <p>{{ $t('personal_return') }}</p>
 
         <button
+            type="button"
             class="u-button u-button-primary"
             @click="addNetwork"
         >

@@ -14,8 +14,17 @@
                 class="kiwi-header-options"
             >
                 <div
-                    v-for="plugin in pluginUiChannelElements" :key="plugin.id"
-                    v-rawElement="plugin.el"
+                    v-for="plugin in pluginUiChannelElements"
+                    :key="plugin.id"
+                    v-rawElement="{
+                        el: plugin.el,
+                        props: {
+                            kiwi: {
+                                buffer: buffer,
+                                containerheader: self,
+                            }
+                        }
+                    }"
                     class="kiwi-header-option"
                 />
                 <div
@@ -70,18 +79,6 @@
                     {{ $t('container_join') }}
                 </a>
             </div>
-
-            <transition name="kiwi-header-prompttrans">
-                <input-confirm
-                    v-if="prompts.closeChannel"
-                    :label="$t('prompt_leave_channel')"
-                    :flip-connotation="true"
-                    class="kiwi-header-prompt"
-                    @ok="closeCurrentBuffer"
-                    @submit="prompts.closeChannel=false"
-                />
-            </transition>
-
         </template>
 
         <template v-else-if="isServer()">
@@ -131,14 +128,17 @@
                 <div
                     v-for="plugin in pluginUiQueryElements"
                     :key="plugin.id"
-                    v-rawElement="plugin.el"
+                    v-rawElement="{
+                        el: plugin.el,
+                        props: {
+                            kiwi: {
+                                buffer: buffer,
+                                containerheader: self,
+                            }
+                        }
+                    }"
                     class="kiwi-header-option"
                 />
-                <div class="kiwi-header-option kiwi-header-option-leave">
-                    <a @click="closeCurrentBuffer">
-                        <i class="fa fa-times" aria-hidden="true" />
-                    </a>
-                </div>
             </div>
         </template>
 
@@ -147,11 +147,7 @@
                 <div class="kiwi-header-name">{{ buffer.name }}</div>
             </div>
             <div class="kiwi-header-options">
-                <div class="kiwi-header-option kiwi-header-option-leave">
-                    <a @click="closeCurrentBuffer">
-                        <i class="fa fa-times" aria-hidden="true" />
-                    </a>
-                </div>
+                <!-- placeholder -->
             </div>
         </template>
     </div>
@@ -178,11 +174,9 @@ export default {
     props: ['buffer', 'sidebarState'],
     data() {
         return {
+            self: this,
             pluginUiChannelElements: GlobalApi.singleton().channelHeaderPlugins,
             pluginUiQueryElements: GlobalApi.singleton().queryHeaderPlugins,
-            prompts: {
-                closeChannel: false,
-            },
         };
     },
     computed: {
@@ -209,20 +203,7 @@ export default {
             return !!user;
         },
     },
-    created() {
-        this.listen(this.$state, 'document.clicked', (e) => {
-            // If clicking anywhere else on the page, close all our prompts
-            if (!this.$el.contains(e.target)) {
-                Object.keys(this.prompts).forEach((prompt) => {
-                    this.prompts[prompt] = false;
-                });
-            }
-        });
-    },
     methods: {
-        showPrompt(prompt) {
-            this.prompts[prompt] = true;
-        },
         isChannel() {
             return this.buffer.isChannel();
         },
@@ -254,9 +235,6 @@ export default {
             let network = this.buffer.getNetwork();
             this.buffer.enabled = true;
             network.ircClient.join(this.buffer.name);
-        },
-        closeCurrentBuffer() {
-            this.$state.removeBuffer(this.buffer);
         },
         onHeaderClick(event) {
             let channelName = event.target.getAttribute('data-channel-name');
@@ -372,16 +350,6 @@ export default {
     opacity: 1;
 }
 
-.kiwi-header-option-leave {
-    opacity: 1;
-    margin: 0;
-    transition: all 0.3s;
-}
-
-.kiwi-header-option-leave i {
-    margin: 0;
-}
-
 /* The not joined button */
 .kiwi-header-notjoined {
     border-radius: 0;
@@ -446,30 +414,6 @@ export default {
 .kiwi-header-buffersettings {
     padding: 5px;
     margin-top: 1em;
-}
-
-.kiwi-header-prompt {
-    position: absolute;
-    right: 0;
-    top: 46px;
-
-    /* z-index 1 higher than the sidebar */
-    z-index: 11;
-}
-
-.kiwi-header-prompttrans-enter,
-.kiwi-header-prompttrans-leave-to {
-    top: -45px;
-}
-
-.kiwi-header-prompttrans-enter-to,
-.kiwi-header-prompttrans-leave {
-    top: 46px;
-}
-
-.kiwi-header-prompttrans-enter-active,
-.kiwi-header-prompttrans-leave-active {
-    transition: top 0.2s;
 }
 
 @media screen and (max-width: 769px) {

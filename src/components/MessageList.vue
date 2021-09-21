@@ -1,6 +1,7 @@
 <template>
     <div
         :key="'messagelist-' + buffer.name"
+        v-resizeobserver="onListResize"
         class="kiwi-messagelist"
         :class="{'kiwi-messagelist--smoothscroll': smooth_scroll}"
         @click.self="onListClick"
@@ -137,6 +138,15 @@ export default {
     computed: {
         thisMl() {
             return this;
+        },
+        shouldAutoEmbed() {
+            if (this.buffer.isChannel() && this.buffer.setting('inline_link_auto_previews')) {
+                return true;
+            }
+            if (this.buffer.isQuery() && this.buffer.setting('inline_link_auto_previews_query')) {
+                return true;
+            }
+            return false;
         },
         listType() {
             if (this.$state.setting('messageLayout')) {
@@ -452,8 +462,8 @@ export default {
             }
         },
         onListResize(e) {
-            // The messagelist has resized or had new content added so check if we should auto
-            // scroll down to the bottom
+            // The messagelist or interface has resized or had new content added
+            // check if we should auto scroll down to the bottom
             this.maybeScrollToBottom();
         },
         scrollToBottom() {

@@ -550,10 +550,6 @@ msgstr "Not Connected"
 msgid "container_privmsg"
 msgstr "Private conversation with {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
-
 
 
 #: ControlInput $t('input_')
@@ -832,6 +828,20 @@ msgstr "Filter channels"
 msgid "find_more_channels"
 msgstr "Find More Channels"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Really leave the channel?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
+
+
+
 #: SelfUser
 
 #: Change nick
@@ -909,9 +919,13 @@ msgstr "Ban and kick from the channel"
 msgid "error_no_channel_join"
 msgstr "Please specify a channel to join. eg /join #example"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname {{nick}} is already in use!"
+msgstr "The nickname '{{nick}}' is already in use!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "The nickname '{{nick}}' is invalid!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -920,6 +934,11 @@ msgstr "You must enter a new nickname"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Nickname must not start with a number"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "Unexpected error occurred"
+
 
 
 #: Mode Changes $t('modes_')
@@ -1079,6 +1098,13 @@ msgstr "Roll a Dice"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
+
+
+#: Notifications
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "You were mentioned in {{channel}}"
 
 
 #: Personal $t('personal_')

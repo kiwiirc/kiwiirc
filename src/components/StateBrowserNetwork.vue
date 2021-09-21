@@ -36,52 +36,53 @@
             </div>
         </div>
 
-        <div v-if="channel_filter_display" class="kiwi-statebrowser-channelfilter">
-            <input
-                v-model="channel_filter"
-                v-focus
-                :placeholder="$t('filter_channels')"
-                type="text"
-                @blur="onChannelFilterInputBlur"
-                @keyup.esc="closeFilterChannel"
-            >
-            <p>
-                <a @click="closeFilterChannel(); showNetworkChannels(network)">
-                    {{ $t('find_more_channels') }}
-                </a>
-            </p>
-        </div>
-
-        <div v-if="channel_add_display" class="kiwi-statebrowser-channels-info">
-            <form
-                class="kiwi-statebrowser-newchannel"
-                @submit.prevent="submitNewChannelForm"
-            >
-                <div
+        <transition-expand>
+            <div v-if="channel_filter_display" class="kiwi-statebrowser-channelfilter">
+                <input
+                    v-model="channel_filter"
                     v-focus
-                    :class="[
-                        channel_add_input_has_focus ?
-                            'kiwi-statebrowser-newchannel-inputwrap--focus' :
-                            ''
-                    ]"
-                    class="kiwi-statebrowser-newchannel-inputwrap"
+                    :placeholder="$t('filter_channels')"
+                    type="text"
+                    @blur="onChannelFilterInputBlur"
+                    @keyup.esc="closeFilterChannel"
                 >
-                    <input
-                        v-model="channel_add_input"
-                        :placeholder="$t('state_join')"
-                        type="text"
-                        @focus="onNewChannelInputFocus"
-                        @blur="onNewChannelInputBlur"
+                <p>
+                    <a @click="closeFilterChannel(); showNetworkChannels(network)">
+                        {{ $t('find_more_channels') }}
+                    </a>
+                </p>
+            </div>
+            <div v-if="channel_add_display" class="kiwi-statebrowser-channels-info">
+                <form
+                    class="kiwi-statebrowser-newchannel"
+                    @submit.prevent="submitNewChannelForm"
+                >
+                    <div
+                        v-focus
+                        :class="[
+                            channel_add_input_has_focus ?
+                                'kiwi-statebrowser-newchannel-inputwrap--focus' :
+                                ''
+                        ]"
+                        class="kiwi-statebrowser-newchannel-inputwrap"
                     >
-                </div>
-            </form>
-        </div>
+                        <input
+                            v-model="channel_add_input"
+                            :placeholder="$t('state_join')"
+                            type="text"
+                            @focus="onNewChannelInputFocus"
+                            @blur="onNewChannelInputBlur"
+                        >
+                    </div>
+                </form>
+            </div>
+        </transition-expand>
 
         <div :class="[
             collapsed ? 'kiwi-statebrowser-network-toggable-area--collapsed' : '',
         ]" class="kiwi-statebrowser-network-toggable-area"
         >
-            <transition name="kiwi-statebrowser-network-status-transition">
+            <transition-expand>
                 <div v-if="network.state !== 'connected'" class="kiwi-statebrowser-network-status">
                     <template v-if="network.state_error">
                         <i class="fa fa-exclamation-triangle" aria-hidden="true" />
@@ -104,18 +105,37 @@
                         {{ $t('connecting') }}
                     </template>
                 </div>
-            </transition>
+                <div
+                    v-if="!showBufferGroups && !channel_filter_display && !channel_add_display"
+                    class="kiwi-statebrowser-network-options"
+                >
+                    <div
+                        :class="{ active: !!channel_add_display }"
+                        class="kiwi-statebrowser-network-option"
+                        @click="toggleAddChannel()"
+                    >
+                        <i class="fa fa-plus" aria-hidden="true" />
+                    </div>
+                    <div
+                        :class="{ active: !!channel_filter_display }"
+                        class="kiwi-statebrowser-network-option"
+                        @click="onSearchChannelClick()"
+                    >
+                        <i class="fa fa-search" aria-hidden="true" />
+                    </div>
+                </div>
+            </transition-expand>
             <div
                 v-for="(itemBuffers, type) in filteredBuffersByType"
                 :key="type"
                 :data-name="type"
                 class="kiwi-statebrowser-buffers"
             >
-                <div v-if="!channel_filter_display" class="kiwi-statebrowser-channels-header">
-                    <div
-                        class="kiwi-statebrowser-buffertype"
-                        @click="toggleSection(type)"
-                    >
+                <div
+                    v-if="!channel_filter_display && showBufferGroups && type !== 'other'"
+                    class="kiwi-statebrowser-channels-header"
+                >
+                    <div class="kiwi-statebrowser-buffertype" @click="toggleSection(type)">
                         <i
                             class="fa kiwi-statebrowser-channels-toggle"
                             :class="[
@@ -130,21 +150,28 @@
 
                     <div v-if="type === 'channels'" class="kiwi-statebrowser-channels-options">
                         <div
-                            :class="{ active: channel_add_display == true }"
+                            :class="{ active: !!channel_add_display }"
                             class="kiwi-statebrowser-channels-option"
                             @click="toggleAddChannel()"
                         >
                             <i class="fa fa-plus" aria-hidden="true" />
                         </div>
                         <div
-                            :class="{ active: channel_filter_display == true }"
+                            :class="{ active: !!channel_filter_display }"
                             class="kiwi-statebrowser-channels-option"
-                            @click="onSearchChannelClick"
+                            @click="onSearchChannelClick()"
                         >
-                            <i
-                                v-if="type === 'channels'"
-                                class="fa fa-search" aria-hidden="true"
-                            />
+                            <i class="fa fa-search" aria-hidden="true" />
+                        </div>
+                    </div>
+                    <div v-else-if="type === 'queries'" class="kiwi-statebrowser-channels-options">
+                        <div
+                            v-if="itemBuffers.length > 1"
+                            class="kiwi-statebrowser-channels-option
+                                kiwi-statebrowser-queries-close"
+                            @click.stop.prevent="promptClose()"
+                        >
+                            <i class="fa fa-times" aria-hidden="true" />
                         </div>
                     </div>
                     <div class="kiwi-statebrowser-buffer-actions">
@@ -152,8 +179,8 @@
                             <div
                                 v-if="!show_channels &&
                                     type === 'channels' &&
-                                    channelActivity.unread !== 0
-                                "
+                                    channelActivity.unread > 0"
+
                                 :class="[
                                     channelActivity.highlights ?
                                         'kiwi-statebrowser-channel-label--highlight' :
@@ -165,8 +192,10 @@
                                     '999+' : channelActivity.unread }}
                             </div>
                             <div
-                                v-else-if="(!show_queries === true &&
-                                    type === 'queries' && queryActivity.unread !== 0)"
+                                v-else-if="!show_queries &&
+                                    type === 'queries' &&
+                                    queryActivity.unread > 0"
+
                                 :class="[
                                     queryActivity.highlights ?
                                         'kiwi-statebrowser-channel-label--highlight' :
@@ -180,16 +209,34 @@
                         </div>
                     </div>
                 </div>
-                <div v-if="(show_channels && type === 'channels') ||
-                    (show_queries && type === 'queries')"
-                >
-                    <buffer
-                        v-for="buffer in itemBuffers"
-                        :key="buffer.name"
-                        :buffer="buffer"
-                        @selected="setActiveBuffer(buffer)"
-                    />
-                </div>
+                <transition-expand v-if="type === 'queries'">
+                    <div v-if="showPromptClose" class="kiwi-statebrowser-prompt-close">
+                        <span>{{ $t('prompt_close_queries') }}</span>
+                        <input-confirm
+                            :flip-connotation="true"
+                            @ok="closeQueries(itemBuffers)"
+                            @submit="promptClose()"
+                        />
+                    </div>
+                </transition-expand>
+                <transition-expand>
+                    <div
+                        v-if="itemBuffers.length && (
+                            (show_channels && type === 'channels') ||
+                            (show_queries && type === 'queries') ||
+                            type === 'other'
+                        )"
+                        class="kiwi-statebrowser-buffers-container"
+                    >
+                        <buffer
+                            v-for="buffer in itemBuffers"
+                            :key="buffer.name"
+                            :buffer="buffer"
+                            :active-prompt="activePrompt"
+                            @selected="setActiveBuffer(buffer)"
+                        />
+                    </div>
+                </transition-expand>
             </div>
         </div>
     </div>
@@ -209,7 +256,7 @@ export default {
         BufferSettings,
         Buffer: StateBrowserBuffer,
     },
-    props: ['network', 'sidebarState'],
+    props: ['network', 'sidebarState', 'activePrompt'],
     data: function data() {
         return {
             collapsed: false,
@@ -276,20 +323,31 @@ export default {
             return bufferTools.orderBuffers(filtered);
         },
         filteredBuffersByType() {
-            let ret = {
+            let types = {
+                other: [],
                 channels: [],
                 queries: [],
             };
 
             this.filteredBuffers.forEach((bufferObj) => {
                 if (bufferObj.isChannel()) {
-                    ret.channels.push(bufferObj);
+                    types.channels.push(bufferObj);
                 } else if (bufferObj.isQuery()) {
-                    ret.queries.push((bufferObj));
+                    types.queries.push(bufferObj);
+                } else {
+                    // This is buffers like *raw, *bnc, *status etc
+                    types.other.push(bufferObj);
                 }
             });
 
-            return ret;
+            Object.entries(types).forEach(([type, buffers]) => {
+                // Always show channels type as it has join controls
+                if (type !== 'channels' && !buffers.length) {
+                    delete types[type];
+                }
+            });
+
+            return types;
         },
         channelActivity() {
             return this.activityFromBuffers(this.filteredBuffersByType.channels);
@@ -297,13 +355,21 @@ export default {
         queryActivity() {
             return this.activityFromBuffers(this.filteredBuffersByType.queries);
         },
+        showBufferGroups() {
+            return this.$state.setting('buffers.show_buffer_groups');
+        },
+        showPromptClose() {
+            return (this.activePrompt &&
+                this.activePrompt.type === 'queries' &&
+                this.activePrompt.value === this.network);
+        },
     },
     methods: {
         activityFromBuffers(buffers) {
             let totalUnread = 0;
             let highlight = false;
             buffers.forEach((buffer) => {
-                if (buffer.isSpecial()) {
+                if (buffer.isSpecial() || buffer.setting('hide_message_counts')) {
                     return;
                 }
                 totalUnread += buffer.flags.unread;
@@ -376,10 +442,10 @@ export default {
                 this.closeFilterChannel();
             }, 200);
         },
-        showMessageCounts: function showMessageCounts(buffer) {
+        showMessageCounts(buffer) {
             return !buffer.setting('hide_message_counts');
         },
-        setActiveBuffer: function switchContainer(buffer) {
+        setActiveBuffer(buffer) {
             // Clear any active component to show the buffer again
             this.$state.$emit('active.component', null);
             this.$state.setActiveBuffer(buffer.networkid, buffer.name);
@@ -416,6 +482,22 @@ export default {
             } else if (type === 'queries') {
                 this.show_queries = !this.show_queries;
             }
+        },
+        promptClose() {
+            const prompt = this.activePrompt;
+            if (this.showPromptClose) {
+                // Prompt is currently visible so close it
+                prompt.type = undefined;
+                prompt.value = undefined;
+            } else {
+                prompt.type = 'queries';
+                prompt.value = this.network;
+            }
+        },
+        closeQueries(buffers) {
+            buffers.forEach((buffer) => {
+                this.$state.removeBuffer(buffer);
+            });
         },
         closeFilterChannel() {
             this.channel_filter = '';
@@ -460,6 +542,9 @@ export default {
     display: block;
     padding: 4px 0;
     box-sizing: border-box;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .kiwi-network-name-options {
@@ -499,6 +584,22 @@ export default {
     font-size: 0.9em;
 }
 
+.kiwi-statebrowser-network-options {
+    line-height: 1em;
+    text-align: right;
+}
+
+.kiwi-statebrowser-network-option {
+    display: inline-block;
+    width: 38px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.8;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+
 .kiwi-statebrowser-channels-header {
     line-height: 35px;
     display: flex;
@@ -524,18 +625,6 @@ export default {
 
 .kiwi-statebrowser-channels-option:hover {
     opacity: 1;
-}
-
-/* During DOM entering and leaving */
-.kiwi-statebrowser-network-status-transition-enter-active,
-.kiwi-statebrowser-network-status-transition-leave-active {
-    transition: height 0.7s, padding 0.7s;
-}
-
-.kiwi-statebrowser-network-status-transition-enter,
-.kiwi-statebrowser-network-status-transition-leave-active {
-    height: 0;
-    padding: 0;
 }
 
 .kiwi-statebrowser-channel {
@@ -583,8 +672,12 @@ export default {
     align-items: center;
 }
 
+.kiwi-statebrowser-network-header .kiwi-statebrowser-buffer-actions {
+    padding-right: 10px;
+}
+
 .kiwi-statebrowser-network-header .kiwi-statebrowser-channel-label {
-    margin: 10px;
+    margin: 10px 0 10px 10px;
 }
 
 .kiwi-statebrowser-channel-leave {
@@ -595,25 +688,21 @@ export default {
     display: none;
 }
 
-/* Hovering over the buffer name should show the close icon, but hide labels */
-.kiwi-statebrowser-channel .kiwi-statebrowser-channel-labels,
-.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave {
-    /* display: inline-block; */
+.kiwi-statebrowser-prompt-close,
+.kiwi-statebrowser-prompt-close .u-input-confirm {
+    padding-top: 6px;
 }
 
-.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave {
-    display: block;
-}
-
-.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-labels {
-    display: none;
-}
-
-/* An active buffer should always show the close icon */
+/*
+    Hovering over the buffer name should show the close icon, but hide labels
+    An active buffer should always show the close icon
+*/
+.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-leave,
 .kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-leave {
     display: block;
 }
 
+.kiwi-statebrowser-channel:hover .kiwi-statebrowser-channel-labels,
 .kiwi-statebrowser-channel-active .kiwi-statebrowser-channel-labels {
     display: none;
 }

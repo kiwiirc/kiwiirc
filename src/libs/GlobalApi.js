@@ -19,8 +19,9 @@ export default class GlobalApi extends EventEmitter {
     constructor() {
         super();
 
-        // eslint-disable-next-line no-undef
-        this.version = __VERSION__;
+        // Version information from DefinePlugin in vue.config.js
+        this.version = __VERSION__; // eslint-disable-line no-undef
+        this.commithash = __COMMITHASH__; // eslint-disable-line no-undef
 
         /** A reference to the internal Vuejs instance */
         this.Vue = Vue;
@@ -35,6 +36,7 @@ export default class GlobalApi extends EventEmitter {
         this.channelHeaderPlugins = [];
         this.queryHeaderPlugins = [];
         this.sideBarPlugins = [];
+        this.userboxButtonPlugins = [];
         this.appSettingsPlugins = [];
         this.serverViewPlugins = [];
         this.aboutBufferPlugins = [];
@@ -155,9 +157,11 @@ export default class GlobalApi extends EventEmitter {
      * - addUi('browser', domElement)
      * - addUi('header_channel', domElement)
      * - addUi('header_query', domElement)
+     * - addUi('userbox_button', domElement)
+     * - addUi('about_buffer', domElement)
      * @param {string} type Where this DOM element should be added
      * @param {element} element The HTML element to add
-     * @param {object} args Optional arguments for this plugis
+     * @param {object} args Optional arguments for this plugin
      */
     addUi(type, element, args = {}) {
         let plugin = {
@@ -178,6 +182,9 @@ export default class GlobalApi extends EventEmitter {
             break;
         case 'header_query':
             this.queryHeaderPlugins.push(plugin);
+            break;
+        case 'userbox_button':
+            this.userboxButtonPlugins.push(plugin);
             break;
         case 'about_buffer':
             this.aboutBufferPlugins.push(plugin);
@@ -252,9 +259,10 @@ export default class GlobalApi extends EventEmitter {
     /**
      * Show a Vuejs component in the sidebar
      * @param {Object} component The vuejs component to render
+     * @param {Object} props Optional properties for the vuejs component
      */
-    showInSidebar(component) {
-        this.state.$emit('sidebar.component', component);
+    showInSidebar(component, props) {
+        this.state.$emit('sidebar.component', component, props);
     }
 
     /**

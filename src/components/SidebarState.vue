@@ -11,6 +11,7 @@ export default Vue.extend({
             sidebarSection: '',
             sidebarUser: null,
             activeComponent: null,
+            activeComponentProps: null,
         };
     },
     computed: {
@@ -22,9 +23,11 @@ export default Vue.extend({
         },
     },
     created() {
-        this.listen(this.$state, 'sidebar.component', (component) => {
-            this.activeComponent = component;
+        this.listen(this.$state, 'sidebar.component', (component, props) => {
+            this.resetSidebarState();
             this.sidebarOpen = !!component;
+            this.activeComponent = component;
+            this.activeComponentProps = props || {};
             this.sidebarSection = component ? 'component' : '';
         });
 
@@ -33,8 +36,8 @@ export default Vue.extend({
             // nextTick is needed because app_width is 0 on created()
             let sidebarDefault = this.$state.setting('sidebarDefault');
             if (sidebarDefault && this.$state.ui.app_width > 769) {
-                this.sidebarSection = sidebarDefault;
                 this.sidebarOpen = true;
+                this.sidebarSection = sidebarDefault;
             }
         });
     },
@@ -85,30 +88,34 @@ export default Vue.extend({
 
             return '';
         },
-        close() {
-            this.activeComponent = null;
+        resetSidebarState() {
             this.sidebarOpen = false;
             this.sidebarSection = '';
             this.sidebarUser = null;
+            this.activeComponent = null;
+            this.activeComponentProps = null;
+        },
+        close() {
+            this.resetSidebarState();
         },
         showUser(user) {
-            this.activeComponent = null;
-            this.sidebarUser = user;
+            this.resetSidebarState();
             this.sidebarOpen = true;
+            this.sidebarUser = user;
             this.sidebarSection = 'user';
         },
         showNicklist() {
-            this.activeComponent = null;
+            this.resetSidebarState();
             this.sidebarOpen = true;
             this.sidebarSection = 'nicklist';
         },
         showBufferSettings() {
-            this.activeComponent = null;
+            this.resetSidebarState();
             this.sidebarOpen = true;
             this.sidebarSection = 'settings';
         },
         showAbout() {
-            this.activeComponent = null;
+            this.resetSidebarState();
             this.sidebarOpen = true;
             this.sidebarSection = 'about';
         },

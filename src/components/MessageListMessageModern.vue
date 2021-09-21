@@ -113,7 +113,7 @@
                 @close="props.ml.toggleMessageInfo()"
             />
 
-            <div v-if="props.message.embed.payload">
+            <div v-if="props.message.embed.payload && props.ml.shouldAutoEmbed">
                 <component
                     :is="injections.components.MediaViewer"
                     :url="props.message.embed.payload"

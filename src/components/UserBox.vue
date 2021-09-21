@@ -4,19 +4,26 @@
             {{ $t('user_you') }}
         </span>
         <div class="kiwi-userbox-header">
-            <h3>
-                <away-status-indicator :network="network" :user="user" /> {{ user.nick }}
+            <div class="kiwi-userbox-avatar">
+                <avatar :user="user" size="large" />
+                <away-status-indicator :network="network" :user="user" />
+            </div>
+            <div class="kiwi-userbox-userinfo">
+                <span
+                    class="kiwi-userbox-nick"
+                    :style="{ 'color': user.getColour() }"
+                >{{ user.nick }}</span>
                 <span v-if="userMode" class="kiwi-userbox-modestring">+{{ userMode }}</span>
-            </h3>
-            <div class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</div>
+                <span class="kiwi-userbox-usermask">{{ user.username }}@{{ user.host }}</span>
+            </div>
         </div>
 
-        <div class="kiwi-userbox-basicinfo">
+        <div v-if="realname" class="kiwi-userbox-basicinfo">
             <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_realname') }}:</span>
             <span class="kiwi-userbox-basicinfo-data" v-html="formattedRealname" />
         </div>
 
-        <p class="kiwi-userbox-actions">
+        <div class="kiwi-userbox-actions">
             <a v-if="!isSelf && !buffer.isQuery()" class="kiwi-userbox-action" @click="openQuery">
                 <i class="fa fa-comment-o" aria-hidden="true" />
                 {{ $t('send_a_message') }}
@@ -25,7 +32,22 @@
                 <i class="fa fa-question-circle" aria-hidden="true" />
                 {{ $t('more_information') }}
             </a>
-        </p>
+            <div class="kiwi-userbox-actions kiwi-userbox-plugin-actions">
+                <div
+                    v-for="plugin in pluginUiButtonElements"
+                    :key="plugin.id"
+                    v-rawElement="{
+                        el: plugin.el,
+                        props: {
+                            kiwi: {
+                                user: user,
+                                userbox: self,
+                            }
+                        }
+                    }"
+                />
+            </div>
+        </div>
 
         <form v-if="!isSelf" class="u-form kiwi-userbox-ignoreuser">
             <label>
@@ -96,6 +118,7 @@
                 </label>
                 <label v-if="isUserOnBuffer">
                     <button
+                        type="button"
                         class="u-button u-button-secondary
                                kiwi-userbox-opaction-kick kiwi-userbox-opaction"
                         @click="kickUser"
@@ -106,6 +129,7 @@
                 </label>
                 <label>
                     <button
+                        type="button"
                         class="u-button u-button-secondary
                                kiwi-userbox-opaction-ban kiwi-userbox-opaction"
                         @click="banUser"
@@ -116,6 +140,7 @@
                 </label>
                 <label v-if="isUserOnBuffer">
                     <button
+                        type="button"
                         class="u-button u-button-secondary
                                kiwi-userbox-opaction-kickban kiwi-userbox-opaction"
                         @click="kickbanUser"
@@ -136,19 +161,24 @@
 import * as ipRegex from 'ip-regex';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
+import GlobalApi from '@/libs/GlobalApi';
 import toHtml from '@/libs/renderers/Html';
 import parseMessage from '@/libs/MessageParser';
+import Avatar from './Avatar';
 import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
+        Avatar,
         AwayStatusIndicator,
     },
     props: ['buffer', 'network', 'user'],
     data: function data() {
         return {
+            self: this,
             whoisRequested: false,
             whoisLoading: false,
+            pluginUiButtonElements: GlobalApi.singleton().userboxButtonPlugins,
         };
     },
     computed: {
@@ -193,8 +223,11 @@ export default {
 
             return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
         },
+        realname() {
+            return (this.user.realname || '').trim();
+        },
         formattedRealname() {
-            let blocks = parseMessage(this.user.realname || '', { extras: false });
+            let blocks = parseMessage(this.realname, { extras: false });
             let content = toHtml(blocks, false);
             return content;
         },
@@ -392,20 +425,55 @@ export default {
 
 .kiwi-userbox-header {
     position: relative;
-    padding: 0.5em 1em;
-    overflow: hidden;
+    padding: 0.5em;
+    box-sizing: border-box;
+    display: flex;
 }
 
-.kiwi-userbox-header h3 {
-    width: 100%;
-    padding: 0;
-    cursor: default;
-    display: inline-block;
+.kiwi-userbox-avatar {
+    position: relative;
+    margin: 1em;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.kiwi-userbox-avatar .kiwi-avatar-inner {
+    font-size: 3em;
+    border-width: 3px;
+}
+
+.kiwi-userbox-avatar .kiwi-awaystatusindicator {
+    width: 16px;
+    height: 16px;
+    top: 4px;
+    right: 2px;
+    position: absolute;
+}
+
+.kiwi-userbox-userinfo {
+    box-sizing: border-box;
+    margin-top: 1.2em;
+    flex-grow: 1;
+}
+
+.kiwi-userbox-nick {
+    font-weight: 800;
+    font-size: 1.4em;
 }
 
 .kiwi-userbox-modestring {
     font-weight: normal;
     font-size: 0.8em;
+    margin-left: 6px;
+}
+
+.kiwi-userbox-usermask {
+    display: block;
+    opacity: 0.6;
+    cursor: default;
+    word-break: break-all;
+    padding-left: 1px;
 }
 
 .fa-user.kiwi-userbox-icon {
@@ -413,17 +481,10 @@ export default {
     font-size: 2em;
 }
 
-.kiwi-userbox-usermask {
-    width: 100%;
-    opacity: 0.6;
-    cursor: default;
-}
-
 .kiwi-userbox-basicinfo {
     width: 100%;
-    margin: 0;
     display: block;
-    padding: 0.5em 1em;
+    padding: 0 1.5em 0.5em 1.5em;
     box-sizing: border-box;
 }
 
@@ -439,12 +500,10 @@ export default {
     font-size: 1em;
     line-height: 1em;
     padding: 0;
-    text-align: left;
     font-weight: 900;
 }
 
 .kiwi-userbox-basicinfo-data {
-    margin-bottom: 1em;
     font-weight: normal;
     font-weight: 100;
     opacity: 1;
@@ -452,19 +511,27 @@ export default {
 
 .kiwi-userbox-actions {
     width: 100%;
-    padding: 1em;
+    padding: 0.5em;
     text-align: center;
-    margin: 0;
+    user-select: none;
     box-sizing: border-box;
 
+    /* using display flex here to prevent spaces making things uneven */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
     .kiwi-userbox-action {
-        display: inline-block;
         border: 1px solid;
         padding: 0.5em 1em;
         cursor: pointer;
-        margin: 0 2px;
+        margin: 0.5em;
         transition: all 0.3s;
         border-radius: 3px;
+    }
+
+    .kiwi-userbox-action:empty {
+        display: none;
     }
 
     label {
@@ -478,13 +545,17 @@ export default {
     }
 }
 
+.kiwi-userbox-plugin-actions {
+    padding: 0;
+}
+
 .kiwi-userbox-opactions {
     width: 100%;
     text-align: center;
     box-sizing: border-box;
     margin: 0 0 1em 0;
     border-top: 1px solid;
-    padding: 1em;
+    padding: 1em 1.5em;
 }
 
 .kiwi-userbox-opactions label {
@@ -521,18 +592,13 @@ export default {
     font-size: 1.2em;
 }
 
-.kiwi-userbox-actions a {
-    margin-right: 1em;
-}
-
 .kiwi-userbox-whois {
     line-height: 1.4em;
     padding: 1em;
-    width: 90%;
-    margin: 0 5% 20px 5%;
+    margin: 0 1em 1em 1em;
     background: none;
     box-sizing: border-box;
-    border-radius: 2px;
+    border-radius: 1em;
 }
 
 .kiwi-userbox-whois-line {
@@ -543,6 +609,10 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.kiwi-userbox-ignoreuser label {
+    margin: 0 0 1em 0;
 }
 
 .kiwi-userbox-ignoreuser span {
@@ -564,30 +634,23 @@ export default {
         border-width: 1px 0;
     }
 
-    .kiwi-userbox .kiwi-userbox-header {
-        padding-left: 10px;
-    }
-
     .kiwi-userbox .kiwi-userbox-header i {
         display: none;
     }
 
-    .kiwi-userbox .kiwi-userbox-basicinfo {
-        padding: 10px 10px;
-        margin-bottom: 20px;
-    }
-
     .kiwi-userbox-actions {
-        padding: 0;
         width: 100%;
         box-sizing: border-box;
     }
 
+    .kiwi-userbox-plugin-actions {
+        padding: 0;
+    }
+
     .kiwi-userbox-actions .kiwi-userbox-action {
-        width: 200px;
+        width: 66%;
         clear: both;
         display: block;
-        margin: 0 auto 20px auto;
     }
 }
 </style>

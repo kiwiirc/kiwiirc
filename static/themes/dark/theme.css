@@ -45,10 +45,6 @@
     color: #dedede;
 }
 
-.kiwi-statebrowser-usermenu-avatar {
-    background-color: #000;
-    color: var(--brand-default-fg);
-}
 .u-tabbed-view-tabs {
     background: #2f2f2f;
     border-bottom-color: #ffffff1a;
@@ -115,11 +111,6 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     color: #fff;
 }
 
-.kiwi-avatar > span {
-    background-color: var(--brand-default-bg);
-    color: var(--brand-default-fg);
-}
-
 .kiwi-messagelist-seperator {
     border-top: 2px dashed #00b100;
 }
@@ -150,10 +141,6 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     border-top-color: #2d2d2d;
 }
 
-.kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #333333;
-}
-
 .kiwi-container-toggledraw-statebrowser-messagecount  {
     color: #f1f1f1;
 }
@@ -177,7 +164,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
 .irc-fg-colour-blue { color: #00f; }
-.irc-fg-colour-green { color: #0f0; }
+.irc-fg-colour-green { color: #009300; }
 .irc-fg-colour-light-red { color: #ff5959; }
 .irc-fg-colour-brown { color: #743a00; }
 .irc-fg-colour-purple { color: #a500ff; }
@@ -194,7 +181,7 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
 .irc-bg-colour-white { background-color: #fff; }
 .irc-bg-colour-black { background-color: #000; }
 .irc-bg-colour-blue { background-color: #00f; }
-.irc-bg-colour-green { background-color: #0f0; }
+.irc-bg-colour-green { background-color: #009300; }
 .irc-bg-colour-light-red { background-color: #ff5959; }
 .irc-bg-colour-brown { background-color: #743a00; }
 .irc-bg-colour-purple { background-color: #a500ff; }

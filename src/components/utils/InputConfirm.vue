@@ -1,5 +1,5 @@
 <template>
-    <div class="u-input-confirm kiwi-theme-bg">
+    <div class="u-input-confirm">
         <div v-if="state==='pre'" @click="prompt"><slot /></div>
 
         <template v-if="state==='prompt'">
@@ -56,5 +56,13 @@ export default Vue.component('input-confirm', {
 .u-input-confirm {
     display: inline-block;
     padding: 10px;
+}
+
+.u-input-confirm > a {
+    margin-right: 10px;
+}
+
+.u-input-confirm > a:last-of-type {
+    margin-right: 0;
 }
 </style>

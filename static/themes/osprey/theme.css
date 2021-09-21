@@ -53,15 +53,10 @@
 }
 
 /* StateBrowser */
-.kiwi-statebrowser-usermenu-avatar {
-    border-color: #fff;
-}
 .kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
     background-color: #42b992;
 }
-.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
-    background-color: var(--brand-error);
-}
+
 .kiwi-network-name-options {
     background-color: #4e5c6b;
 }
@@ -88,7 +83,7 @@
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
 .irc-fg-colour-blue { color: #00f; }
-.irc-fg-colour-green { color: #0f0; }
+.irc-fg-colour-green { color: #009300; }
 .irc-fg-colour-light-red { color: #ff5959; }
 .irc-fg-colour-brown { color: #743a00; }
 .irc-fg-colour-purple { color: #a500ff; }
@@ -105,7 +100,7 @@
 .irc-bg-colour-white { background-color: #fff; }
 .irc-bg-colour-black { background-color: #000; }
 .irc-bg-colour-blue { background-color: #00f; }
-.irc-bg-colour-green { background-color: #0f0; }
+.irc-bg-colour-green { background-color: #009300; }
 .irc-bg-colour-light-red { background-color: #ff5959; }
 .irc-bg-colour-brown { background-color: #743a00; }
 .irc-bg-colour-purple { background-color: #a500ff; }

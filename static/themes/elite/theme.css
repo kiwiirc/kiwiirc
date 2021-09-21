@@ -203,15 +203,11 @@
     color: #f1f1f1;
 }
 
-.kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #222c33;
-}
-
-.kiwi-channellist table tbody tr a {
+.kiwi-channellist-grid a {
     color: #ff9600;
 }
 
-.kiwi-channellist table tbody tr a.u-button {
+.kiwi-channellist-grid a.u-button {
     color: #f1f1f1;
     border-bottom: none;
 }
@@ -220,7 +216,7 @@
 .irc-fg-colour-white { color: #fff; }
 .irc-fg-colour-black { color: #000; }
 .irc-fg-colour-blue { color: #00f; }
-.irc-fg-colour-green { color: #0f0; }
+.irc-fg-colour-green { color: #009300; }
 .irc-fg-colour-light-red { color: #ff5959; }
 .irc-fg-colour-brown { color: #743a00; }
 .irc-fg-colour-purple { color: #a500ff; }
@@ -237,7 +233,7 @@
 .irc-bg-colour-white { background-color: #fff; }
 .irc-bg-colour-black { background-color: #000; }
 .irc-bg-colour-blue { background-color: #00f; }
-.irc-bg-colour-green { background-color: #0f0; }
+.irc-bg-colour-green { background-color: #009300; }
 .irc-bg-colour-light-red { background-color: #ff5959; }
 .irc-bg-colour-brown { background-color: #743a00; }
 .irc-bg-colour-purple { background-color: #a500ff; }

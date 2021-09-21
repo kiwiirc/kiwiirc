@@ -105,7 +105,10 @@
                             v-rawElement="{
                                 el: plugin.el,
                                 props: {
-                                    controlinput: self,
+                                    kiwi: {
+                                        buffer: buffer,
+                                        controlinput: self,
+                                    }
                                 }
                             }"
                             class="kiwi-controlinput-tool"
@@ -372,7 +375,9 @@ export default {
         },
         onAutocompleteSelected(selectedValue, selectedItem) {
             let word = selectedValue;
-            this.$refs.input.setCurrentWord(word);
+            if (word.length > 0) {
+                this.$refs.input.setCurrentWord(word);
+            }
             this.autocomplete_open = false;
         },
         inputKeyDown(event) {
@@ -414,7 +419,7 @@ export default {
                     let emojiList = this.$state.setting('emojis');
                     if (emojiList.hasOwnProperty(currentWord.word)) {
                         let emoji = emojiList[currentWord.word];
-                        let url = this.$state.setting('emojiLocation') + emoji + '.png';
+                        let url = this.$state.setting('emojiLocation') + emoji;
                         this.$refs.input.setCurrentWord('');
                         this.$refs.input.addImg(currentWord.word + ' ', url);
                     }
@@ -539,16 +544,25 @@ export default {
             let ircText = this.$refs.input.buildIrcText();
             this.$state.$emit('input.raw', ircText);
 
-            // Add to history, keeping the history trimmed to the last 50 entries
-            this.history.push(rawInput);
-            this.history.splice(0, this.history.length - 50);
-            this.history_pos = this.history.length;
+            this.historyAdd(rawInput);
 
             this.$refs.input.reset();
 
             this.stopTyping(false);
         },
+        historyAdd(rawInput) {
+            // Add to history, keeping the history trimmed to the last 50 entries
+            this.history.push(rawInput);
+            this.history.splice(0, this.history.length - 50);
+            this.history_pos = this.history.length;
+        },
         historyBack() {
+            let rawText = this.$refs.input.getRawText();
+            let rawInput = this.$refs.input.getValue();
+            if (rawText.trim() && this.history_pos === this.history.length) {
+                this.historyAdd(rawInput);
+                this.history_pos--;
+            }
             if (this.history_pos > 0) {
                 this.history_pos--;
             }
@@ -784,7 +798,6 @@ export default {
     height: 100%;
     box-sizing: border-box;
     overflow: visible;
-    padding: 7px 0 12px 0;
 }
 
 .kiwi-controlinput-tool {

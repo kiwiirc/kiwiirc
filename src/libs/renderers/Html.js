@@ -105,7 +105,7 @@ function addEmoji(block, isSingle, emojiLocation, showEmoticons) {
     }
     const emoji = block.meta.emoji;
     const classes = 'kiwi-messagelist-emoji' + (isSingle ? ' kiwi-messagelist-emoji--single' : '');
-    const src = `${emojiLocation}${emoji}.png`;
+    const src = `${emojiLocation}${emoji}`;
 
     return `<img class="${classes}" src="${src}" alt="${escape(block.content)}" title="${escape(block.content)}" />`;
 }

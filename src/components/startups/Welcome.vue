@@ -1,6 +1,7 @@
 <template>
-    <startup-layout ref="layout"
-                    class="kiwi-welcome-simple"
+    <startup-layout
+        ref="layout"
+        class="kiwi-welcome-simple"
     >
         <template v-if="startupOptions.altComponent" v-slot:connection>
             <component :is="startupOptions.altComponent" @close="onAltClose" />
@@ -8,15 +9,15 @@
         <template v-else v-slot:connection>
             <form class="u-form u-form--big kiwi-welcome-simple-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText" />
-                <div v-if="errorMessage" class="kiwi-welcome-simple-error">{{ errorMessage }}</div>
                 <div
-                    v-else-if="network && (network.last_error || network.state_error)"
+                    v-if="network && (network.last_error || network.state_error || errorMessage)"
                     class="kiwi-welcome-simple-error"
                 >
                     <span v-if="!network.last_error && network.state_error">
                         {{ $t('network_noconnect') }}
                     </span>
-                    <span>
+                    <span v-if="errorMessage">{{ errorMessage }}</span>
+                    <span v-if="network.last_error || network.state_error">
                         {{ network.last_error || readableStateError(network.state_error) }}
                     </span>
                 </div>
@@ -70,6 +71,7 @@
                 />
                 <button
                     v-else
+                    type="button"
                     class="u-button u-button-primary u-submit kiwi-welcome-simple-start"
                     disabled
                 >
@@ -269,7 +271,7 @@ export default {
             );
         }
 
-        if (options.autoConnect && this.nick && (this.channel || this.connectWithoutChannel)) {
+        if (options.autoConnect && this.readyToStart) {
             this.startUp();
         }
     },
@@ -374,13 +376,22 @@ export default {
                     this.$refs.layout.close();
                 }
                 net.ircClient.off('registered', onRegistered);
+                net.ircClient.off('irc error', onError);
+                net.ircClient.off('close', onClosed);
+            };
+            let onError = (event) => {
+                this.errorMessage = event.reason;
+                net.ircClient.off('registered', onRegistered);
+                net.ircClient.off('irc error', onError);
                 net.ircClient.off('close', onClosed);
             };
             let onClosed = () => {
                 net.ircClient.off('registered', onRegistered);
+                net.ircClient.off('irc error', onError);
                 net.ircClient.off('close', onClosed);
             };
             net.ircClient.once('registered', onRegistered);
+            net.ircClient.once('irc error', onError);
             net.ircClient.once('close', onClosed);
         },
         processNickRandomNumber: function processNickRandomNumber(nick) {
@@ -463,6 +474,11 @@ form.kiwi-welcome-simple-form h2 {
 .kiwi-welcome-simple-error span {
     display: block;
     font-style: italic;
+    margin-bottom: 8px;
+}
+
+.kiwi-welcome-simple-error span:last-of-type {
+    margin-bottom: 0;
 }
 
 .kiwi-welcome-simple-input-container {

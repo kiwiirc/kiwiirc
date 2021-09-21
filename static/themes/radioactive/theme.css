@@ -147,7 +147,6 @@
 
 .u-button-warning {
     background-color: #d16c6c;
-    border-bottom: 1px solid #5f1515;
     color: #fff;
 }
 .u-link {
@@ -183,24 +182,14 @@
 }
 
 /* Channel List ( ChannelList.vue ) */
-.kiwi-channellist table tbody tr:nth-child(even) {
-    background-color: #254233;
-}
-.kiwi-channellist table tbody tr {
-    border-top: 1px solid lightgray;
-}
-
-.kiwi-channellist table tbody tr .u-button-primary {
+.kiwi-channellist-grid .u-button-primary {
     background: none;
     border: 1px solid #14fdce;
     color: #14fdce;
 }
-.kiwi-channellist table a {
-    color: #fff !important;
-}
 
-.kiwi-channellist table a.u-button {
-    color: #14fdce !important;
+.kiwi-channellist-grid a {
+    color: #14fdce;
     text-decoration: underline;
 }
 
@@ -334,13 +323,6 @@
 /* For active buttons, since they are not being hovered, we need to set the child element opacity to 1 */
 .kiwi-header-option-active a{
     opacity: 1;
-}
-
-/* Leave channel */
-.kiwi-header-option-leave a:hover,
-.kiwi-header-option-unpinsidebar a:hover {
-    background-color: #c54d53;
-    color: #fff;
 }
 
 /* The link to click if the user has not joined this channel */
@@ -572,7 +554,7 @@
 /* Traditional message styling hover */
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-privmsg:hover,
 .kiwi-messagelist-message--compact .kiwi-messagelist-message-action:hover,
-.kiwi-messagelist-message--compact .kiwi-messagelist-message-notice:hover, {
+.kiwi-messagelist-message--compact .kiwi-messagelist-message-notice:hover {
     border-left-color: #80ab52;
 }
 
@@ -816,14 +798,22 @@
     border-top: 1px #14fdce solid;
 }
 
-.kiwi-statebrowser-usermenu-avatar {
-    background-color: #000;
-    color: #fff;
-    border-color: #012c13;
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-inner,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-inner {
+    background-color: #5dd895 !important;
+    color: var(--brand-default-bg) !important;
 }
-.kiwi-statebrowser-usermenu-avatar:hover {
-    background-color: #5dd895;
-    color: #fff;
+
+.kiwi-statebrowser-usermenu-avatar--connected .kiwi-avatar-inner {
+    border-color: #42b992;
+}
+
+.kiwi-statebrowser-usermenu-avatar--disconnected .kiwi-avatar-inner {
+    border-color: #d86f6f;
+}
+
+.kiwi-statebrowser-usermenu-body .u-link {
+    color: #d86f6f;
 }
 
 /* If the user clicks on their avatar we 'open' the settings */
@@ -981,21 +971,7 @@
 .kiwi-statebrowser-options {
     background: #383838;
 }
-.kiwi-statebrowser-nonetworks {
-    background: rgba(255, 255, 255, 0.15);
-}
-.kiwi-statebrowser-availablenetworks-toggle {
-    background: rgba(255, 255, 255, 0.15);
-}
-.kiwi-statebrowser-availablenetworks {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-.kiwi-statebrowser-availablenetworks-link {
-    border-right: 15px solid red;
-}
-.kiwi-statebrowser-availablenetworks-link--connected {
-    border-color: #1b2f24;
-}
+
 .kiwi-statebrowser-channel-notjoined .kiwi-statebrowser-channel-name {
     color: #d03232;
 }
@@ -1012,16 +988,6 @@
 }
 .kiwi-statebrowser-newchannel-inputwrap--focus {
     opacity: 1;
-}
-
-.kiwi-statebrowser-nonetworks {
-    background: rgba(255, 255, 255, 0.15);
-}
-.kiwi-statebrowser-availablenetworks {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-.kiwi-statebrowser-availablenetworks-toggle {
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .kiwi-statebrowser-channel-label--highlight {
@@ -1052,10 +1018,10 @@
     border-top: 1px solid #9e9e9e;
 }
 .kiwi-userbox .main-title {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #9e9e9e;
 }
 .kiwi-userbox .kiwi-userbox-basicinfo {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #9e9e9e;
 }
 .kiwi-userbox .kiwi-userbox-actions .u-button {
     border: 1px solid #000;
@@ -1064,9 +1030,6 @@
 .kiwi-userbox .kiwi-userbox-actions .u-button:hover {
     background-color: #000;
     color: #fff;
-}
-.kiwi-userbox-opactions {
-    border-top: 1px solid #9e9e9e;
 }
 .kiwi-userbox-opactions label select {
     border: 1px solid rgba(0, 0, 0, 0.2);

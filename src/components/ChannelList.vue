@@ -22,39 +22,41 @@
                     <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true" /></a>
                 </div>
             </div>
-            <div class="kiwi-channellist-table">
-                <table v-if="!isLoading && !noResults" :key="last_updated" width="100%">
-                    <tbody>
-                        <tr v-for="channel in paginated" :key="channel.channel">
-                            <td class="kiwi-channellist-user-center">
-                                <span v-if="channel.num_users >= 0" class="kiwi-channellist-users">
-                                    <i class="fa fa-user" aria-hidden="true" />
-                                    {{ channel.num_users }}
-                                </span>
-                            </td>
-                            <td>
-                                <a class="u-link" @click="joinChannel(channel.channel)">
-                                    {{ channel.channel }}
-                                </a>
-                            </td>
-                            <td class="kiwi-channellist-table-topic">
-                                <div v-html="formatAndTrimTopic(channel.topic)" />
-                            </td>
-                            <td class="kiwi-channellist-user-center">
-                                <a
-                                    class="u-button u-button-primary"
-                                    @click="joinChannel(channel.channel)"
-                                >
-                                    {{ $t('container_join') }}
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div v-else-if="noResults" class="kiwi-channellist-info">
-                    <p>{{ $t('channel_list_nonefound') }}</p>
+            <div v-if="!isLoading && !noResults" class="kiwi-channellist-table">
+                <div
+                    v-for="channel in paginated"
+                    :key="channel.channel"
+                    class="kiwi-channellist-grid"
+                >
+                    <div
+                        class="kiwi-channellist-users"
+                    >{{ channel.num_users || 0 }}</div>
+                    <div
+                        class="u-link kiwi-channellist-name"
+                        @click="joinChannel(channel.channel)"
+                    >{{ channel.channel }}</div>
+                    <span
+                        class="kiwi-channellist-topic"
+                        v-html="formatAndTrimTopic(channel.topic)"
+                    />
+                    <div class="kiwi-channellist-join">
+                        <a
+                            class="u-button u-button-primary"
+                            @click="joinChannel(channel.channel)"
+                        >{{ $t('container_join') }}</a>
+                    </div>
                 </div>
-                <div v-else class="kiwi-channellist-info">{{ $t('channel_list_fetch') }}</div>
+            </div>
+            <div v-else-if="noResults" class="kiwi-channellist-info">
+                <p>{{ $t('channel_list_nonefound') }}</p>
+            </div>
+            <div v-else class="kiwi-channellist-info">{{ $t('channel_list_fetch') }}</div>
+            <div class="kiwi-channellist-nav">
+                <div v-if="list.length" class="kiwi-channellist-pagination">
+                    <a @click="prevPage"><i class="fa fa-step-backward" aria-hidden="true" /></a>
+                    {{ page + 1 }} / {{ maxPages + 1 }}
+                    <a @click="nextPage"><i class="fa fa-step-forward" aria-hidden="true" /></a>
+                </div>
             </div>
         </div>
     </div>
@@ -163,8 +165,20 @@ export default {
             return content;
         },
         joinChannel(channelName) {
+            let buffer = this.$state.getBufferByName(this.network.id, channelName);
+            if (buffer) {
+                // Switch buffer if its already exists
+                this.$state.setActiveBuffer(this.network.id, channelName);
+                return;
+            }
+
             this.$state.addBuffer(this.network.id, channelName);
             this.network.ircClient.join(channelName);
+            if (this.$state.ui.is_narrow) {
+                // This is a mobile device
+                // Switch to the channel so the user can see something happend
+                this.$state.setActiveBuffer(this.network.id, channelName);
+            }
         },
     },
 };
@@ -174,6 +188,7 @@ export default {
 
 .kiwi-channellist {
     box-sizing: border-box;
+    padding-bottom: 1em;
     text-align: center;
     transition: all 0.6s;
 }
@@ -239,43 +254,61 @@ export default {
 }
 
 /* Table Styling */
+
 .kiwi-channellist-table {
-    width: 100%;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1800px;
+    box-sizing: border-box;
 }
 
-.kiwi-channellist table {
-    border: none;
-    border-collapse: collapse;
-}
-
-.kiwi-channellist table thead th {
-    font-size: 1.1em;
-    cursor: default;
-    text-align: left;
-    padding: 10px 1em 5px 1em;
-}
-
-.kiwi-channellist table tbody td {
-    padding: 2px 1em;
+.kiwi-channellist-grid {
+    display: grid;
+    grid-template-columns: 66px 130px auto min-content;
+    border-bottom: 1px solid;
+    align-items: center;
     text-align: left;
 }
 
-.kiwi-channellist table .kiwi-channellist-user-center {
-    text-align: center;
-}
-
-.kiwi-channellist tr td:first-child {
-    white-space: nowrap;
-}
-
-.kiwi-channellist-table-topic {
-    word-break: break-word;
+.kiwi-channellist-grid:first-of-type {
+    border-top: 1px solid;
 }
 
 .kiwi-channellist-users {
+    line-height: auto;
+    margin-left: 0.2em;
+    overflow: hidden;
+    padding: 0.3em;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.kiwi-channellist-users::before {
+    font-family: fontAwesome, sans-serif;
+    padding-right: 0.4em;
+    content: "\f007";
+}
+
+.kiwi-channellist-name {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.kiwi-channellist-topic {
     display: inline-block;
-    font-weight: 900;
-    text-align: center;
+    grid-column: 3;
+    padding: 0.3em 0.5em;
+}
+
+.kiwi-channellist-topic:empty {
+    display: none;
+}
+
+.kiwi-channellist-join {
+    grid-column: 4;
+    padding: 0.3em;
 }
 
 @media screen and (max-width: 1024px) {
@@ -285,12 +318,27 @@ export default {
 }
 
 @media screen and (max-width: 770px) {
-    .kiwi-channellist-nav .u-form {
-        width: 230px;
-    }
-
     .kiwi-channellist-nav .u-form .u-input {
         width: 100%;
+    }
+
+    /* Table Styling */
+    .kiwi-channellist-table {
+        width: 100%;
+    }
+
+    .kiwi-channellist-grid {
+        grid-template-columns: 66px auto min-content;
+    }
+
+    .kiwi-channellist-topic {
+        grid-column: 1 / span 3;
+        grid-row: 2;
+        word-break: break-word;
+    }
+
+    .kiwi-channellist-join {
+        grid-column: 3;
     }
 }
 

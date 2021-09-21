@@ -268,8 +268,10 @@ export default Vue.component('irc-input', {
                 br.parentNode.removeChild(br);
             }
 
+            // Always refocus the input on reset to keep the keyboard active on mobile
+            this.focus();
+
             if (this.default_colour) {
-                this.focus();
                 this.setColour(this.default_colour.code, this.default_colour.colour);
             }
 
@@ -453,6 +455,7 @@ export default Vue.component('irc-input', {
 .kiwi-ircinput-editor {
     overflow-x: hidden;
     outline: none;
+    padding: 7px 0 12px 0;
 
     /* When the contenteditable div is empty firefox makes its height 0px */
     height: 100%;

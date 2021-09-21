@@ -53,7 +53,6 @@ select {
 
 .u-button-primary {
     border: none;
-    border-bottom: 1px solid;
 }
 
 .u-form {
@@ -228,12 +227,19 @@ select {
     background-color: rgba(128, 128, 128, 0.1);
 }
 
-.kiwi-statebrowser-usermenu-avatar--connected {
-    border: 2px solid #42b992;
+.kiwi-typing::after {
+    display: inline-block;
+    animation: dotty steps(1, end) 1s infinite;
+    font-weight: 600;
+    content: '';
 }
 
-.kiwi-statebrowser-usermenu-avatar--disconnected {
-    border: 2px solid #bf5155;
+@keyframes dotty {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+    100% { content: ''; }
 }
 
 .irc-fg-colour-white { color: #fff; }
