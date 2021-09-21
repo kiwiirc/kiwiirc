@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-09-20 14:24\n"
+"PO-Revision-Date: 2021-09-21 16:10\n"
 
 #: Start
 msgid "start_button"
@@ -761,11 +761,11 @@ msgstr "Quitter le salon ?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "Voulez-vous vraiment fermer tous les messages ?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
-msgstr "Really close this chat?"
+msgstr "Voulez-vous vraiment fermer ce tchat ?"
 
 #: Change nick
 msgid "change_nick"
@@ -837,11 +837,11 @@ msgstr "Merci de spécifier un salon à joindre. ex. /join #exemple"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "Le pseudo {{nick}} est déjà utilisé !"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "Le pseudo '{{nick}}' est invalide !"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -853,7 +853,7 @@ msgstr "Le pseudo ne doit pas commencer par un chiffre"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Une erreur inattendue est survenue"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1009,7 +1009,7 @@ msgstr "Lancer un dé {{sides}} faces et obtenir  {{number}}"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "Vous avez été mentionné sur {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
