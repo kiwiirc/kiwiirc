@@ -175,9 +175,15 @@
 
 /* Title bar, at the top of the Application settings component */
 .kiwi-appsettings-close {
+    line-height: 38px;
     color: #fff;
     background: #031e11;
 }
+
+.kiwi-appsettings-close i {
+    line-height: 38px;
+}
+
 .kiwi-appsettings-close:hover{
     background: #5cd894;
 }
