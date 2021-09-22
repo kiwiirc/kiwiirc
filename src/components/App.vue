@@ -423,7 +423,7 @@ body {
     right: auto;
     margin-top: -4px;
     width: 100%;
-    height: 7px;
+    height: 4px;
     z-index: 0;
     transition: width 0.3s;
 }

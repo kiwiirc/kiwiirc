@@ -1,7 +1,7 @@
 <template>
     <div class="kiwi-appsettings">
 
-        <div class="kiwi-appsettings-title" @click="closeSettings">
+        <div class="kiwi-appsettings-close" @click="closeSettings">
             <span>{{ $t('close') }}</span>
             <i class="fa fa-times" aria-hidden="true" />
         </div>
@@ -398,8 +398,8 @@ export default {
     box-sizing: border-box;
     height: 100%;
     overflow-y: auto;
-    padding: 8px 0 0 0;
-    margin-top: -7px;
+    padding: 0;
+    position: relative;
 
     .u-form {
         width: 100%;
@@ -458,10 +458,6 @@ export default {
     width: 100%;
 }
 
-.kiwi-appsettings-close {
-    float: right;
-}
-
 .kiwi-appsettings .u-form label {
     display: block;
 }
@@ -515,28 +511,27 @@ export default {
     max-width: 750px;
 }
 
-.kiwi-appsettings-title {
-    display: block;
+.kiwi-appsettings-close {
     cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
     padding: 0 10px;
-    margin: -1px 0 0 0;
     font-weight: 600;
-    width: 100%;
-    position: relative;
     box-sizing: border-box;
     text-transform: uppercase;
-    line-height: 47px;
+    line-height: 55px;
     text-align: right;
     transition: background 0.3s;
 }
 
-.kiwi-appsettings-title h2 {
+.kiwi-appsettings-close h2 {
     padding: 10px 0 11px 20px;
     width: auto;
     float: left;
 }
 
-.kiwi-appsettings-title a {
+.kiwi-appsettings-close a {
     float: right;
     position: static;
     background: none;
@@ -545,11 +540,11 @@ export default {
     font-size: 1.4em;
 }
 
-.kiwi-appsettings-title i {
+.kiwi-appsettings-close i {
     margin-left: 10px;
     font-size: 1.5em;
     float: right;
-    line-height: 47px;
+    line-height: 53px;
 }
 
 .kiwi-appsettings-messagelistDisplay select {

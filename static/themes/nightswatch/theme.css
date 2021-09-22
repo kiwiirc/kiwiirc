@@ -73,14 +73,14 @@
     background-color: #000;
 }
 
-.kiwi-appsettings-title,
+.kiwi-appsettings-close,
 .kiwi-appsettings-block h3,
 .kiwi-networksettings .kiwi-title {
     background-color: var(--brand-primary);
 }
 
 .kiwi-appsettings-block h3,
-.kiwi-appsettings-title {
+.kiwi-appsettings-close {
     color: var(--brand-default-fg);
 }
 
