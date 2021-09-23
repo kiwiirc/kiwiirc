@@ -132,7 +132,9 @@ export default Vue.component('irc-input', {
             if (el.nodeType === 3) {
                 this.current_el_pos = el.length;
             } else {
-                this.current_el_pos = 0;
+                document.execCommand('selectAll', false, null);
+                document.getSelection().collapseToEnd();
+                this.updateValueProps();
             }
         },
         setValue(newVal) {
@@ -428,6 +430,19 @@ export default Vue.component('irc-input', {
                 word: val.substr(startPos, endPos),
                 position: pos - startPos,
             };
+        },
+
+        getCaretIdx() {
+            let position = 0;
+            let selection = window.getSelection();
+            if (selection.rangeCount !== 0) {
+                let range = window.getSelection().getRangeAt(0);
+                let caretRange = range.cloneRange();
+                caretRange.selectNodeContents(this.$el);
+                caretRange.setEnd(range.endContainer, range.endOffset);
+                position = caretRange.toString().length;
+            }
+            return position;
         },
 
         getRawText() {
