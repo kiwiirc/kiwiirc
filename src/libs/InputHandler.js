@@ -3,6 +3,7 @@
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as Misc from '@/helpers/Misc';
 import _ from 'lodash';
+import JSON5 from 'json5';
 import AliasRewriter from './AliasRewriter';
 
 // Map of commandName=commandHandlerFn
@@ -847,6 +848,28 @@ inputCommands.set = function inputCommandEcho(event, command, line) {
             value = false;
             break;
         default:
+        }
+
+        // Allow setting the value of objects by parsing the value as json
+        if (typeof this.state.setting(setting) === 'object') {
+            try {
+                let objValue = JSON5.parse(value);
+                if (objValue) {
+                    this.state.setting(setting, objValue);
+                }
+                this.state.addMessage(buffer, {
+                    nick: '*',
+                    message: `${setting} = ${JSON.stringify(this.state.setting(setting))}`,
+                });
+                return;
+            } catch (err) {
+                let error = err.message.replace('JSON5:', '');
+                this.state.addMessage(buffer, {
+                    nick: '*',
+                    message: `Failed to set '${setting}': ${error}`,
+                });
+                return;
+            }
         }
 
         // Unquote any quoted values
