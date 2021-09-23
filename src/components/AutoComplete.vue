@@ -185,6 +185,33 @@ export default {
                 handled = true;
             } else if (event.keyCode === 16) {
                 handled = true;
+            } else if (event.keyCode === 33 || event.keyCode === 34) {
+                let maxIdx = this.filteredItems.length - 1;
+                let jump = 3;
+
+                // current position is within the first or last 3
+                // correctly jump the right ammount
+                if (this.selected_idx < 4) {
+                    jump = 6 - this.selected_idx;
+                } else if (this.selected_idx > maxIdx - 4) {
+                    jump = 6 - (maxIdx - this.selected_idx);
+                }
+
+                // backwards or forward
+                if (event.keyCode === 33) {
+                    this.selected_idx -= jump;
+                } else {
+                    this.selected_idx += jump;
+                }
+
+                // ensure we are not out of bounds
+                if (this.selected_idx > maxIdx) {
+                    this.selected_idx = maxIdx;
+                } else if (this.selected_idx < 0) {
+                    this.selected_idx = 0;
+                }
+
+                handled = true;
             }
 
             return handled;

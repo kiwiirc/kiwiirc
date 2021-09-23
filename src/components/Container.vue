@@ -143,6 +143,11 @@ export default {
                 return;
             }
 
+            // Fix for chrome issue breaking layout when page up/down is pressed while inside
+            // contenteditible or inputbox
+            // https://bugs.chromium.org/p/chromium/issues/detail?id=890248
+            ev.preventDefault();
+
             let scrollDistance = messageList.clientHeight - (0.1 * messageList.clientHeight);
             let scrollTop = messageList.scrollTop;
             let scrollMax = messageList.scrollHeight;
