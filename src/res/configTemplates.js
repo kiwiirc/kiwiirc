@@ -104,6 +104,7 @@ export const configTemplates = {
         nicklistGroupAway: false,
         showChanlistModes: false,
         showAutocomplete: true,
+        showAutocompleteCommands: true,
         showEmojiPicker: true,
         showColorPicker: false,
         showSendButton: false,

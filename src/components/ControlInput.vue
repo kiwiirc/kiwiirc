@@ -507,6 +507,9 @@ export default {
                 this.openAutoComplete(this.buildAutoCompleteItems({ users: true }));
                 this.autocomplete_filtering = true;
             } else if (inputVal === '/') {
+                if (!this.$state.setting('showAutocompleteCommands')) {
+                    return;
+                }
                 // Just typed / so start the command auto completion
                 this.openAutoComplete(this.buildAutoCompleteItems({ commands: true }));
                 this.autocomplete_filtering = true;
