@@ -189,14 +189,14 @@ export default {
             } else if (event.keyCode === 33 || event.keyCode === 34) {
                 // pageUp || pageDown
                 let maxIdx = this.filteredItems.length - 1;
-                let jump = 3;
+                let jump = 7;
 
                 // current position is within the first or last 3
                 // correctly jump the right ammount
                 if (this.selected_idx < 4) {
-                    jump = 6 - this.selected_idx;
+                    jump = 10 - this.selected_idx;
                 } else if (this.selected_idx > maxIdx - 4) {
-                    jump = 6 - (maxIdx - this.selected_idx);
+                    jump = 10 - (maxIdx - this.selected_idx);
                 }
 
                 // backwards or forward
