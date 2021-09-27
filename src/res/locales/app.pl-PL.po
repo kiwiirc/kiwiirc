@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2021-09-27 13:29\n"
+"PO-Revision-Date: 2021-09-27 16:03\n"
 
 #: Start
 msgid "start_button"
@@ -117,7 +117,7 @@ msgstr "Błąd logowania"
 
 #: Search...
 msgid "do_search"
-msgstr "Szukaj"
+msgstr "Szukaj..."
 
 #: OK
 msgid "ok"
@@ -381,7 +381,7 @@ msgstr "Włącz zaawansowane ustawienia"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Strefa zagrożenia: Zmiana niektórych z tych ustawień może spowodować problemy!"
+msgstr "Strefa zagrożenia: zmiana niektórych z tych ustawień może spowodować problemy!"
 
 #: Reset
 msgid "settings_advanced_reset"
@@ -953,7 +953,7 @@ msgstr "Wyślij komendę na serwer IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Wyrzuć kogoś z pokoju"
+msgstr "Wyrzuć kogoś z kanału"
 
 #: Clear all messages from this window
 msgid "command_clear"
