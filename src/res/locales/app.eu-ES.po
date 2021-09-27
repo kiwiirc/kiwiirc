@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2021-09-27 13:29\n"
+"PO-Revision-Date: 2021-09-27 17:10\n"
 
 #: Start
 msgid "start_button"
@@ -761,11 +761,11 @@ msgstr "Kanala utzi nahi duzu?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "Benetan itxi nahi dituzu mezu guztiak?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
-msgstr "Really close this chat?"
+msgstr "Benetan itxi nahi duzu txat hau?"
 
 #: Change nick
 msgid "change_nick"
