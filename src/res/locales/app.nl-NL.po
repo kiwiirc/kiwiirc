@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2020-06-14 13:51\n"
+"PO-Revision-Date: 2021-09-27 09:22\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Niet verbonden"
 msgid "container_privmsg"
 msgstr "Privégesprek met {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Het kanaal echt verlaten?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Een bericht sturen..."
@@ -759,6 +755,18 @@ msgstr "Kanalen filteren"
 msgid "find_more_channels"
 msgstr "Meer kanalen zoeken"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Het kanaal echt verlaten?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Alle berichten echt sluiten?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Deze chat echt sluiten?"
+
 #: Change nick
 msgid "change_nick"
 msgstr "Bijnaam wijzigen"
@@ -827,9 +835,13 @@ msgstr "Uit het kanaal zetten en verbannen"
 msgid "error_no_channel_join"
 msgstr "Geef een kanaal op om bij te wonen, bv. /join #voorbeeld"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "De bijnaam {{nick}} is al in gebruik!"
+msgstr "De bijnaam '{{nick}}' is al in gebruik!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "De bijnaam '{{nick}}' is ongeldig!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Je moet een nieuwe bijnaam invoeren"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Bijnaam mag niet met een cijfer beginnen"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "Er is een onverwachte fout opgetreden"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +1006,10 @@ msgstr "Een dobbelsteen gooien"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Gooit een dobbelsteen met {{sides}} vlakken en krijgt {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "Je bent genoemd in {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"

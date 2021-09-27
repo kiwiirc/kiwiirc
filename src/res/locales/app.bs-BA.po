@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2020-06-14 13:07\n"
+"PO-Revision-Date: 2021-09-20 14:24\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Niste povezani"
 msgid "container_privmsg"
 msgstr "Privatni razgovor sa {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Da li ćete sigurno napustiti kanal?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Pošalji poruku..."
@@ -759,6 +755,18 @@ msgstr "Filtriraj kanale"
 msgid "find_more_channels"
 msgstr "Nađi više kanala"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Da li ćete sigurno napustiti kanal?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
+
 #: Change nick
 msgid "change_nick"
 msgstr "Promijeni nadimak"
@@ -827,9 +835,13 @@ msgstr "Banuj i izbaci sa kanala"
 msgid "error_no_channel_join"
 msgstr "Molimo naznačite na koji kanal se želite sojiti. npr /join #primjer"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
 msgstr "Nadimak {{nick}} je već u upotrebi!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "Nadimak {{nick}} je neispravan!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Morate upisati novi nadimak"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Nadimci ne smiju počinjati sa brojem"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "Došlo je do neočekivane greške"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +1006,10 @@ msgstr "Baci kocku"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Bačena je {{sides}} kockica a dobijeni broj je {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "Spomenuti ste u kanalu {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
