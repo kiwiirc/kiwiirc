@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-09-27 13:29\n"
+"PO-Revision-Date: 2021-09-27 16:03\n"
 
 #: Start
 msgid "start_button"
@@ -317,7 +317,7 @@ msgstr "Alias"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "Cosa sono gli Alias"
+msgstr "Cosa sono gli alias?"
 
 #: Send Message
 msgid "send_message"
