@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2021-09-27 13:28\n"
+"PO-Revision-Date: 2021-09-28 03:54\n"
 
 #: Start
 msgid "start_button"
@@ -693,7 +693,7 @@ msgstr "Произошла ошибка при запуске Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded"
+msgstr "Убедитесь, что вы правильно установили Kiwi IRC и конфигурацию можно загрузить"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -981,11 +981,11 @@ msgstr "Запросить информацию о том, кто недавно
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "Установить статус как отсутствующий"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "Установить статус как активен"
 
 #: Change your connection encoding
 msgid "command_encoding"
