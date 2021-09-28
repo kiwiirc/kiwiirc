@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2021-09-27 17:10\n"
+"PO-Revision-Date: 2021-09-28 08:36\n"
 
 #: Start
 msgid "start_button"
@@ -1101,5 +1101,5 @@ msgstr "{{nick}} orain {{newnick}} da"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "Gaia aldatu da, gai berria {{topic}} da"
+msgstr "{{nick}} Gaia aldatu da, gai berria {{topic}} da"
 
