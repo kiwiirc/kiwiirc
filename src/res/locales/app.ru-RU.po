@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2021-09-28 03:54\n"
+"PO-Revision-Date: 2021-09-28 04:57\n"
 
 #: Start
 msgid "start_button"
@@ -685,7 +685,7 @@ msgstr "Подсветка"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Никто еще не упомянул тебя..."
+msgstr "Никто вас ещё не упомянул..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
