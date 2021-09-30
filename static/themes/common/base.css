@@ -182,8 +182,17 @@
     border-top-color: var(--comp-border);
 }
 
+.kiwi-controlinput-button {
+    background-color: var(--brand-default-bg);
+    border: 2px solid var(--brand-default-bg);
+}
+
+.kiwi-controlinput-button:hover,
+.kiwi-controlinput-tools,
+.kiwi-controlinput-tools-container,
 .kiwi-controlinput-send {
-    background: #f1f1f1;
+    color: var(--brand-default-fg);
+    background-color: var(--brand-midtone);
 }
 
 .kiwi-controlinput-active-tool {
@@ -196,7 +205,7 @@
     border-color: var(--comp-border);
 }
 
-.kiwi-controlinput-selfuser.kiwi-controlinput-selfuser--open {
+.kiwi-controlinput--selfuser-open .kiwi-controlinput-selfuser {
     border: 1px solid var(--brand-midtone);
 }
 

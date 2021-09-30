@@ -398,7 +398,18 @@
     background: #c54d53;
 }
 
+.kiwi-controlinput-button {
+    background-color: #07311a;
+    border: 2px solid #07311a;
+}
 
+.kiwi-controlinput-button:hover,
+.kiwi-controlinput-tools,
+.kiwi-controlinput-tools-container,
+.kiwi-controlinput-send {
+    color: #49c081;
+    background-color: #155d36;
+}
 
 /* Control Input - displayed at bottom of Kiwi ( ControlInput.vue ) */
 .kiwi-controlinput {
@@ -411,11 +422,6 @@
 .kiwi-controlinput .kiwi-controlinput-user,
 .kiwi-controlinput-inner .kiwi-controlinput-user {
     border-right: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.kiwi-controlinput-send {
-    background: #294835;
-    color: inherit;
 }
 
 .kiwi-controlinput-active-tool {
