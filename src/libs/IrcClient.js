@@ -668,6 +668,12 @@ function clientMiddleware(state, network) {
                 });
             });
 
+            // Set the user as away before removing so away status indicators are updated
+            let user = state.getUser(networkid, event.nick);
+            if (user) {
+                user.away = 'offline';
+            }
+
             state.removeUser(networkid, {
                 nick: event.nick,
             });
