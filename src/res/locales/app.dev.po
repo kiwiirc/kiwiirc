@@ -939,6 +939,10 @@ msgstr "Nickname must not start with a number"
 msgid "error_unexpected"
 msgstr "Unexpected error occurred"
 
+#: Failed to set '{{setting}}': {{error}}
+msgid "error_setting_parse"
+msgstr "Failed to set '{{setting}}': {{error}}"
+
 
 
 #: Mode Changes $t('modes_')

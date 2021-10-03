@@ -866,7 +866,10 @@ inputCommands.set = function inputCommandEcho(event, command, line) {
                 let error = err.message.replace('JSON5:', '');
                 this.state.addMessage(buffer, {
                     nick: '*',
-                    message: `Failed to set '${setting}': ${error}`,
+                    message: TextFormatting.t('error_setting_parse', {
+                        setting: setting,
+                        error: error,
+                    }),
                 });
                 return;
             }
