@@ -149,4 +149,10 @@ export default {
 .kiwi-statebrowser-usermenu-body p {
     margin-bottom: 0;
 }
+
+@media screen and (max-width: 769px) {
+    .kiwi-statebrowser-usermenu-close {
+        display: none;
+    }
+}
 </style>

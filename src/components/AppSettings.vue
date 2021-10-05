@@ -557,6 +557,7 @@ export default {
         z-index: 999;
         position: fixed;
         left: 0;
+        top: 0;
         transition: left 0.5s;
     }
 
@@ -568,6 +569,11 @@ export default {
         width: auto;
         margin-right: 0;
         display: inline-block;
+    }
+
+    .kiwi-appsettings-close,
+    .kiwi-appsettings-close i {
+        line-height: 46px;
     }
 }
 </style>
