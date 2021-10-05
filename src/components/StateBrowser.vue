@@ -178,6 +178,7 @@ export default {
     opacity: 0.8;
     border-bottom-right-radius: 14px;
     transition: background 0.2s, opacity 0.2s;
+    z-index: 1;
 }
 
 /* Add network button */
