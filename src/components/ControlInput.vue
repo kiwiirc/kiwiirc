@@ -60,8 +60,8 @@
                         @keydown="inputKeyDown($event)"
                         @keyup="inputKeyUp($event)"
                         @click="closeInputTool"
-                        @focus="has_focus = true"
-                        @blur="has_focus = false"
+                        @focus="focusChanged"
+                        @blur="focusChanged"
                     />
                 </div>
                 <button
@@ -322,7 +322,7 @@ export default {
                 this.$state.ui.current_input :
                 this.buffer.current_input;
 
-            this.$refs.input.reset(currentInput);
+            this.$refs.input.reset(currentInput, this.has_focus);
             this.$refs.input.selectionToEnd();
         },
         toggleSelfUser() {
@@ -551,7 +551,7 @@ export default {
 
             this.historyAdd(rawInput);
 
-            this.$refs.input.reset();
+            this.$refs.input.reset(undefined, this.has_focus);
 
             this.stopTyping(false);
         },
@@ -578,6 +578,17 @@ export default {
             if (this.history_pos < this.history.length) {
                 this.history_pos++;
             }
+        },
+        focusChanged(event) {
+            if (
+                event.type === 'blur' &&
+                event.relatedTarget &&
+                event.relatedTarget.classList.contains('kiwi-controlinput-send')
+            ) {
+                // new target is the send button, do not reset focus
+                return;
+            }
+            this.has_focus = event.type === 'focus';
         },
         openAutoComplete(items) {
             if (this.$state.setting('showAutocomplete')) {
