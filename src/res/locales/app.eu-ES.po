@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2020-06-14 14:01\n"
+"PO-Revision-Date: 2021-09-20 14:24\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Konektatu gabe"
 msgid "container_privmsg"
 msgstr "{{user}}(r)ekin elkarrizketa pribatua"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Kanala utzi nahi duzu?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Mezua bidali..."
@@ -759,6 +755,18 @@ msgstr "Iragazi kanalak"
 msgid "find_more_channels"
 msgstr "Kanal gehiago bilatu"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Kanala utzi nahi duzu?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
+
 #: Change nick
 msgid "change_nick"
 msgstr "Ezizena aldatu"
@@ -827,9 +835,13 @@ msgstr "Kanaleko Botatzea + Blokeatzea"
 msgid "error_no_channel_join"
 msgstr "Mesedez zehaztu kanal bat sartzeko. ad. /join #example"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "{{nick}} ezizena dagoeneko erabiltzen ari da!"
+msgstr "'{{nick}}' ezizena dagoeneko erabilia da!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "'{{nick}}' ezizena dagoeneko ez da da zuzena!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Ezizen bat sartu behar duzu"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Ezizena ezin da zenbaki batekin hasi"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "Ustekabeko akatsa gertatu da"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +1006,10 @@ msgstr "Dadoa bota"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "dadoa {{sides}} bota eta {{number}} atera duzu"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "Aipatu zaituzte {{channel}} kanalean"
 
 #: Your IRC client
 msgid "personal_client"

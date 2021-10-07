@@ -668,6 +668,12 @@ function clientMiddleware(state, network) {
                 });
             });
 
+            // Set the user as away before removing so away status indicators are updated
+            let user = state.getUser(networkid, event.nick);
+            if (user) {
+                user.away = 'offline';
+            }
+
             state.removeUser(networkid, {
                 nick: event.nick,
             });
@@ -675,8 +681,17 @@ function clientMiddleware(state, network) {
 
         if (command === 'invite') {
             let buffer = network.serverBuffer();
+            let activeNetwork = state.getActiveNetwork();
+            let activeBuffer = state.getActiveBuffer();
+            if (network === activeNetwork && !activeBuffer.isSpecial()) {
+                buffer = activeBuffer;
+            }
+
             state.addMessage(buffer, {
-                nick: '*',
+                nick: '',
+                time: eventTime,
+                server_time: serverTime,
+                type: 'invite',
                 message: TextFormatting.t('invited_you', {
                     nick: event.nick,
                     channel: event.channel,

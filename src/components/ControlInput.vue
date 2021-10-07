@@ -524,6 +524,11 @@ export default {
                 // Tab and no other keys as tab+other is often a keyboard shortcut
                 event.preventDefault();
             } else if (!event.key.match(/^(Shift|Control|Alt|Enter)/)) {
+                if (inputVal[0] === '/') {
+                    // Don't send typing status for commands
+                    return;
+                }
+
                 if (inputVal.trim()) {
                     this.startTyping();
                 } else {
@@ -672,7 +677,7 @@ export default {
                 clearTimeout(this.typingTimer);
                 this.typingTimer = null;
             }
-            this.typingTimer = setTimeout(this.stopTyping, 3000);
+            this.typingTimer = setTimeout(() => this.stopTyping(true), 3000);
 
             if (Date.now() < this.lastTypingTime + 3000) {
                 return;
@@ -682,7 +687,7 @@ export default {
 
             this.lastTypingTime = Date.now();
         },
-        stopTyping(sendStopPause) {
+        stopTyping(sendStop) {
             let network = this.buffer.getNetwork();
             if (!network.ircClient.network.cap.isEnabled('message-tags')) {
                 return;
@@ -697,14 +702,9 @@ export default {
                 this.lastTypingTime = 0;
             }
 
-            // dont send done if a message was sent
-            if (!sendStopPause) {
-                return;
-            }
-
             this.$refs.input.getRawText().trim() ?
                 network.ircClient.typing.pause(this.buffer.name) :
-                network.ircClient.typing.stop(this.buffer.name);
+                network.ircClient.typing.stop(this.buffer.name, sendStop);
         },
     },
 };

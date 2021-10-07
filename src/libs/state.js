@@ -601,6 +601,11 @@ function createNewState() {
                     false :
                     Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
 
+                if (message.type && message.type === 'invite') {
+                    // Invites should be treated as highlights
+                    isHighlight = true;
+                }
+
                 // Check for extra custom highlight words
                 let extraHighlights = (state.setting('highlights') || '').toLowerCase().split(' ');
                 if (!isHighlight && extraHighlights.length > 0) {
