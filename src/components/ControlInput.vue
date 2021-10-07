@@ -66,6 +66,7 @@
                 </div>
                 <button
                     v-if="shouldShowSendButton"
+                    ref="sendButton"
                     type="submit"
                     class="kiwi-controlinput-send fa fa-paper-plane"
                 />
@@ -167,6 +168,7 @@ export default {
             showPlugins: true,
             current_input_value: '',
             has_focus: false,
+            keep_focus: false,
         };
     },
     computed: {
@@ -322,7 +324,7 @@ export default {
                 this.$state.ui.current_input :
                 this.buffer.current_input;
 
-            this.$refs.input.reset(currentInput, this.has_focus);
+            this.$refs.input.reset(currentInput, this.keep_focus);
             this.$refs.input.selectionToEnd();
         },
         toggleSelfUser() {
@@ -543,6 +545,11 @@ export default {
         submitForm() {
             let rawInput = this.$refs.input.getValue();
             if (!rawInput) {
+                if (!this.has_focus && this.keep_focus) {
+                    // Maybe triggered by the send button on empty input,
+                    // put focus back into the input
+                    this.$refs.input.focus();
+                }
                 return;
             }
 
@@ -551,7 +558,7 @@ export default {
 
             this.historyAdd(rawInput);
 
-            this.$refs.input.reset(undefined, this.has_focus);
+            this.$refs.input.reset('', this.keep_focus);
 
             this.stopTyping(false);
         },
@@ -580,15 +587,16 @@ export default {
             }
         },
         focusChanged(event) {
+            this.has_focus = event.type === 'focus';
             if (
                 event.type === 'blur' &&
                 event.relatedTarget &&
-                event.relatedTarget.classList.contains('kiwi-controlinput-send')
+                event.relatedTarget === this.$refs.sendButton
             ) {
-                // new target is the send button, do not reset focus
+                // new target is the send button, keep focus on reset
                 return;
             }
-            this.has_focus = event.type === 'focus';
+            this.keep_focus = event.type === 'focus';
         },
         openAutoComplete(items) {
             if (this.$state.setting('showAutocomplete')) {
