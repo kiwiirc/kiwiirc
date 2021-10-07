@@ -364,6 +364,43 @@ inputCommands.topic = function inputCommandTopic(event, command, line) {
     network.ircClient.setTopic(bufferName, newTopic);
 };
 
+inputCommands.ban = function InputCommandBan(event, command, line) {
+    event.handled = true;
+
+    let network = this.state.getActiveNetwork();
+    let toBan = '';
+    let bufferName = '';
+    let banReason = '';
+
+    if (line === '') {
+        // No params given
+        return;
+    }
+
+    let lineParts = line.split(' ');
+
+    if (network.isChannelName(lineParts[0])) {
+        bufferName = lineParts.shift();
+    }
+
+    if (lineParts[0].charAt(0) !== '@') {
+        toBan = this.state.getUser(this.network.id, lineParts[0]);
+        lineParts.shift();
+    } else {
+        toBan = lineParts.shift();
+    }
+    banReason = lineParts.join(' ');
+
+    if (!bufferName) {
+        bufferName = this.state.getActiveBuffer().name;
+    }
+    if (!toBan) {
+        return;
+    }
+
+    network.ircClient.raw('BAN', bufferName, toBan, banReason);
+};
+
 inputCommands.kick = function inputCommandKick(event, command, line) {
     event.handled = true;
 
