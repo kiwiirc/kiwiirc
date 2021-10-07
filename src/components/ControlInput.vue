@@ -623,22 +623,26 @@ export default {
             }
 
             if (opts.commands) {
-                let commandList = [];
-                autocompleteCommands.forEach((command) => {
+                if (!this.$state.setting('showAutocompleteCommands')) {
+                    return;
+                } else {
+                    let commandList = [];
+                    autocompleteCommands.forEach((command) => {
                     // allow descriptions to be translation keys or static strings
-                    let desc = command.description.indexOf('locale_id_') === 0 ?
-                        TextFormatting.t(command.description.substr(10)) :
-                        command.description;
-                    commandList.push({
-                        text: '/' + command.command,
-                        description: desc,
-                        type: 'command',
-                        // Each alias needs the / command prefix adding
-                        alias: (command.alias || []).map((c) => '/' + c),
+                        let desc = command.description.indexOf('locale_id_') === 0 ?
+                            TextFormatting.t(command.description.substr(10)) :
+                            command.description;
+                        commandList.push({
+                            text: '/' + command.command,
+                            description: desc,
+                            type: 'command',
+                            // Each alias needs the / command prefix adding
+                            alias: (command.alias || []).map((c) => '/' + c),
+                        });
                     });
-                });
 
-                list = list.concat(commandList);
+                    list = list.concat(commandList);
+                }
             }
 
             if (opts.settings) {

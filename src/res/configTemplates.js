@@ -104,6 +104,7 @@ export const configTemplates = {
         nicklistGroupAway: false,
         showChanlistModes: false,
         showAutocomplete: true,
+        showAutocompleteCommands: true,
         showEmojiPicker: true,
         showColorPicker: false,
         showSendButton: false,
@@ -137,8 +138,6 @@ export const configTemplates = {
 /devoice /quote mode $channel -v $1+
 /k /kick $channel $1+
 /bans /mode $channel +b
-/ban /quote mode $channel +b $1+
-/unban /quote mode $channel -b $1+
 
 # Misc aliases
 /slap /me slaps $1 around a bit with a large trout
