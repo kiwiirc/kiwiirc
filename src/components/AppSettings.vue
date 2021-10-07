@@ -82,10 +82,6 @@
                                 </select>
                             </label>
                             <label class="u-checkbox-wrapper">
-                                <span>{{ $t('settings_autocomplete_commands') }} </span>
-                                <input v-model="settingAutoCompleteCommands" type="checkbox">
-                            </label>
-                            <label class="u-checkbox-wrapper">
                                 <span>{{ $t('settings_timestamps') }} </span>
                                 <input v-model="settingBufferShowTimestamps" type="checkbox">
                             </label>
@@ -278,7 +274,6 @@ export default {
             return this.$state.settings;
         },
         settingShowAutoComplete: bindSetting('showAutocomplete'),
-        settingAutoCompleteCommands: bindSetting('showAutocompleteCommands'),
         settingUseMonospace: bindSetting('useMonospace'),
         settingHighlights: bindSetting('highlights'),
         settingBufferColourNicknames: bindSetting('buffers.colour_nicknames_in_messages'),
