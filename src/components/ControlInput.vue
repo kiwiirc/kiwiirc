@@ -492,6 +492,7 @@ export default {
             let inputVal = this.$refs.input.getRawText();
             let currentWord = this.$refs.input.getCurrentWord();
             let currentToken = currentWord.word.substr(0, currentWord.position);
+            let autocompleteTokens = this.$state.setting('autocompleteTokens');
 
             if (event.keyCode === 27 && this.autocomplete_open) {
                 this.autocomplete_open = false;
@@ -504,15 +505,15 @@ export default {
                 if (currentToken[0] === '@') {
                     currentToken = currentToken.substr(1);
                 }
-            } else if (currentToken === '@') {
+            } else if (currentToken === '@' && autocompleteTokens.includes('@')) {
                 // Just typed @ so start the nick auto completion
                 this.openAutoComplete(this.buildAutoCompleteItems({ users: true }));
                 this.autocomplete_filtering = true;
-            } else if (inputVal === '/') {
+            } else if (inputVal === '/' && autocompleteTokens.includes('/')) {
                 // Just typed / so start the command auto completion
                 this.openAutoComplete(this.buildAutoCompleteItems({ commands: true }));
                 this.autocomplete_filtering = true;
-            } else if (currentToken === '#') {
+            } else if (currentToken === '#' && autocompleteTokens.includes('#')) {
                 // Just typed # so start the command auto completion
                 this.openAutoComplete(this.buildAutoCompleteItems({ buffers: true }));
                 this.autocomplete_filtering = true;
