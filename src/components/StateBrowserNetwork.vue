@@ -691,6 +691,7 @@ export default {
 .kiwi-statebrowser-prompt-close,
 .kiwi-statebrowser-prompt-close .u-input-confirm {
     padding-top: 6px;
+    display: block;
 }
 
 /*

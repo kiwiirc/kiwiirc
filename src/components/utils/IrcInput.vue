@@ -14,7 +14,7 @@
             @mouseup="updateValueProps();"
             @click="$emit('click', $event)"
             @paste="onPaste"
-            @focus="onFocus()"
+            @focus="onFocus"
             @blur="$emit('blur', $event)"
         />
     </div>
@@ -259,7 +259,7 @@ export default Vue.component('irc-input', {
             // fix by filtering out any lines that contain no content
             return textValue.split(/\r?\n/).filter((line) => !!Misc.stripStyles(line)).join('\n');
         },
-        reset(rawHtml) {
+        reset(rawHtml, shouldFocus) {
             this.$refs.editor.innerHTML = rawHtml || '';
 
             this.current_el_pos = 0;
@@ -272,11 +272,12 @@ export default Vue.component('irc-input', {
                 br.parentNode.removeChild(br);
             }
 
-            // Always refocus the input on reset to keep the keyboard active on mobile
-            this.focus();
+            if (shouldFocus) {
+                this.focus();
 
-            if (this.default_colour) {
-                this.setColour(this.default_colour.code, this.default_colour.colour);
+                if (this.default_colour) {
+                    this.setColour(this.default_colour.code, this.default_colour.colour);
+                }
             }
 
             this.updateValueProps();
