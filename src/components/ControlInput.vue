@@ -458,13 +458,20 @@ export default {
                 }
             } else if (event.keyCode === 38) {
                 // Up
+                if (this.$refs.input.getCaretIdx() > 0) {
+                    // not at the start of input, allow normal input behaviour
+                    return;
+                }
+
                 event.preventDefault();
                 this.historyBack();
-                this.$nextTick(() => {
-                    this.$refs.input.selectionToEnd();
-                });
             } else if (event.keyCode === 40) {
                 // Down
+                let end = this.$refs.input.getRawText().replace(/\r?\n/g, '').length;
+                if (this.$refs.input.getCaretIdx() < end) {
+                    // not at the end of input, allow normal input behaviour
+                    return;
+                }
                 event.preventDefault();
                 this.historyForward();
                 this.$nextTick(() => {
