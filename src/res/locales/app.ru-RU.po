@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2021-09-20 14:52\n"
+"PO-Revision-Date: 2021-09-28 04:57\n"
 
 #: Start
 msgid "start_button"
@@ -685,7 +685,7 @@ msgstr "Подсветка"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Никто еще не упомянул тебя..."
+msgstr "Никто вас ещё не упомянул..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -693,7 +693,7 @@ msgstr "Произошла ошибка при запуске Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded"
+msgstr "Убедитесь, что вы правильно установили Kiwi IRC и конфигурацию можно загрузить"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -981,11 +981,11 @@ msgstr "Запросить информацию о том, кто недавно
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "Установить статус как отсутствующий"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "Установить статус как активен"
 
 #: Change your connection encoding
 msgid "command_encoding"

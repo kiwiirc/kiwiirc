@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: bs\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2021-09-20 14:24\n"
+"PO-Revision-Date: 2021-09-27 20:14\n"
 
 #: Start
 msgid "start_button"
@@ -61,7 +61,7 @@ msgstr "Banovani korisnici"
 
 #: Invited Users
 msgid "invited"
-msgstr "Pozvani"
+msgstr "Pozvani korisnici"
 
 #: Notifications
 msgid "notifications"
@@ -129,11 +129,11 @@ msgstr "Zatvori"
 
 #: Yes
 msgid "yes"
-msgstr "da"
+msgstr "Da"
 
 #: No
 msgid "no"
-msgstr "ne"
+msgstr "Ne"
 
 #: Not found.
 msgid "not_found"
@@ -181,43 +181,43 @@ msgstr "Odsutan"
 
 #: {{count}} week
 msgid "week"
-msgstr "sedmica"
+msgstr "{{count}} sedmica"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "sedmica"
+msgstr "{{count}} sedmica"
 
 #: {{count}} day
 msgid "day"
-msgstr "dan"
+msgstr "{{count}} dan"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dana"
+msgstr "{{count}} dana"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "sat"
+msgstr "{{count}} sat"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "sati"
+msgstr "{{count}} sati"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuta"
+msgstr "{{count}} minuta"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minuta"
+msgstr "{{count}} minuta"
 
 #: {{count}} second
 msgid "second"
-msgstr "sekunda"
+msgstr "{{count}} sekunda"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "sekundi"
+msgstr "{{count}} sekundi"
 
 #: General
 msgid "settings_general"
@@ -417,7 +417,7 @@ msgstr "Osvježi popis pozvanih"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Pozvani korisnici"
+msgstr "Pozvani korisnik"
 
 #: Invited by
 msgid "invites_by"
@@ -677,7 +677,7 @@ msgstr "Više o"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Kreirano na"
+msgstr "Kreirano na {{when}}"
 
 #: Highlights
 msgid "highlights"
@@ -761,11 +761,11 @@ msgstr "Da li ćete sigurno napustiti kanal?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "Zaista želite zatvoriti sve poruke?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
-msgstr "Really close this chat?"
+msgstr "Zaista želite zatvoriti ovaj razgovor?"
 
 #: Change nick
 msgid "change_nick"
