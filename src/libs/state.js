@@ -710,6 +710,23 @@ function createNewState() {
                 this.$emit('message.new', { message: bufferMessage, buffer });
             },
 
+            addMessageNoRepeat(buffer, message) {
+                // Add a message to the buffer only if it does not match the previous message
+
+                if (!buffer || !buffer.getNetwork()) {
+                    // Some messages try to be added after a network has been removed,
+                    // meaning no buffer will be available
+                    return;
+                }
+
+                let lastMessage = buffer.getLastMessage();
+                if (lastMessage && lastMessage.message === message.message) {
+                    return;
+                }
+
+                this.addMessage(buffer, message);
+            },
+
             getUser(networkid, nick, usersArr_) {
                 let user = null;
                 let users = usersArr_;

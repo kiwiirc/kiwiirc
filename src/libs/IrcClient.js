@@ -296,11 +296,14 @@ function clientMiddleware(state, network) {
 
         // Show unhandled data from the server in the servers tab
         if (command === 'unknown command') {
-            if (event.command === '486') {
+            if (event.command === '486' || event.command === '477') {
                 // You must log in with services to message this user
                 let targetNick = event.params[1];
                 let buffer = state.getOrAddBufferByName(network.id, targetNick);
-                state.addMessage(buffer, {
+
+                // Only add this message if it does not match the previous message
+                // Typing status messages can cause a spam of this error type
+                state.addMessageNoRepeat(buffer, {
                     time: eventTime,
                     server_time: serverTime,
                     nick: '*',
@@ -1314,7 +1317,7 @@ function clientMiddleware(state, network) {
                 return;
             }
 
-            // TODO: Some of these errors contain a .error property whcih we can match against,
+            // TODO: Some of these errors contain a .error property which we can match against,
             // ie. password_mismatch.
 
             if (event.error === 'bad_channel_key') {
@@ -1326,16 +1329,27 @@ function clientMiddleware(state, network) {
                 if (!isRegistered) {
                     network.last_error = event.reason;
                 }
+
                 let messageBody = TextFormatting.formatText('general_error', {
                     text: event.reason || event.error,
                 });
-                state.addMessage(buffer, {
+
+                let message = {
                     time: eventTime,
                     server_time: serverTime,
                     nick: '',
                     message: messageBody,
                     type: 'error',
-                });
+                };
+
+                if (event.error === 'cannot_send_to_channel') {
+                    // Only add this message if it does not match the previous message
+                    // Typing status messages can cause a spam of this error type
+                    state.addMessageNoRepeat(buffer, message);
+                    return;
+                }
+
+                state.addMessage(buffer, message);
             }
 
             // Getting an error about a channel while we are not joined means that we couldn't join
