@@ -297,19 +297,21 @@ function applyConfig(config) {
 // Recursively merge an object onto another via Vue.$set
 function applyConfigObj(obj, target) {
     // Keys in the newObjects array will get new objects created (empty) before merging from config
-    let newObjects = ['emojis'];
+    let newObjects = ['emojis', 'autocompleteTokens'];
     _.each(obj, (val, key) => {
         if (typeof val === 'object') {
-            if (typeof target[key] !== 'object') {
+            if (
+                // Key does not exist or is not the correct data type
+                typeof target[key] !== 'object' ||
+                // Key requires a new object/array before merging config data
+                (target === getState().settings && newObjects.includes(key))
+            ) {
                 // Create the correct type of object
                 let newVal = _.isArray(val) ?
                     [] :
                     {};
 
                 Vue.set(target, key, newVal);
-            } else if (target === getState().settings && newObjects.includes(key)) {
-                // This key is within the newObject array, create an empty object
-                Vue.set(target, key, {});
             }
             applyConfigObj(val, target[key]);
         } else {
