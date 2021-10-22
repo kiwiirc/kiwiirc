@@ -1,6 +1,26 @@
 import batchedAdd from '@/libs/batchedAdd';
 
 describe('batchedAdd.vue', () => {
+    const outOfTickItems = (batchFn, itemCount, endFn) => {
+        // Chain out of tick items so not to interfere
+        // with the timeout within batchedAdd.js
+        let count = 0;
+        const nextTimeout = () => {
+            count++;
+            if (count > itemCount) {
+                if (endFn) {
+                    endFn();
+                }
+                return;
+            }
+            setTimeout(() => {
+                batchFn('item' + count);
+                nextTimeout();
+            }, 10);
+        };
+        nextTimeout();
+    };
+
     it('should return a batching function', () => {
         let batch = batchedAdd();
         expect(batch).toBeInstanceOf(Function);
@@ -69,13 +89,7 @@ describe('batchedAdd.vue', () => {
         for (let i = 0; i < 100; i++) {
             batch('item' + i);
         }
-
-        setTimeout(() => batch('item1'), 10);
-        setTimeout(() => batch('item2'), 20);
-        // The above loop + 2 timeouts = 3 ticks, the below are further ticks to be batched
-        setTimeout(() => batch('item3'), 30);
-        setTimeout(() => batch('item4'), 40);
-        setTimeout(() => batch('item5'), 50);
+        outOfTickItems(batch, 5);
     });
 
     it('should process a batched item after three single items on different js ticks', (done) => {
@@ -95,10 +109,7 @@ describe('batchedAdd.vue', () => {
         };
 
         let batch = batchedAdd(singleItem, batchItems);
-        setTimeout(() => batch('item1'), 10);
-        setTimeout(() => batch('item2'), 20);
-        setTimeout(() => batch('item3'), 30);
-        setTimeout(() => batch('item4'), 40);
+        outOfTickItems(batch, 4);
     });
 
     it('should process 3 items in a batch', (done) => {
@@ -112,12 +123,7 @@ describe('batchedAdd.vue', () => {
         };
 
         let batch = batchedAdd(singleItem, batchItems);
-        setTimeout(() => batch('item1'), 10);
-        setTimeout(() => batch('item2'), 20);
-        setTimeout(() => batch('item3'), 30);
-        setTimeout(() => batch('item4'), 40);
-        setTimeout(() => batch('item5'), 50);
-        setTimeout(() => batch('item6'), 60);
+        outOfTickItems(batch, 6);
     });
 
     it('should process a single item after a batch has finished', (done) => {
@@ -137,17 +143,12 @@ describe('batchedAdd.vue', () => {
         };
 
         let batch = batchedAdd(singleItem, batchItems);
-        setTimeout(() => batch('item1'), 10);
-        setTimeout(() => batch('item2'), 20);
-        setTimeout(() => batch('item3'), 30);
-        // Batch kicks in here
-        setTimeout(() => batch('item4'), 40);
-        setTimeout(() => batch('item5'), 50);
-        setTimeout(() => batch('item6'), 60);
-        setTimeout(() => {
-            // Should revert back to being a single item
-            batch('item7');
-        }, 1200);
+        outOfTickItems(batch, 6, () => {
+            setTimeout(() => {
+                // Should revert back to being a single item
+                batch('item7');
+            }, 1200);
+        });
     });
 
     it('should process 4 single items', (done) => {
@@ -163,11 +164,11 @@ describe('batchedAdd.vue', () => {
         };
 
         let batch = batchedAdd(singleItem, batchItems);
-        setTimeout(() => batch('item1'), 10);
-        setTimeout(() => batch('item2'), 20);
-        setTimeout(() => batch('item3'), 30);
-        setTimeout(() => {
-            batch('item4');
-        }, 1200);
+        outOfTickItems(batch, 3, () => {
+            setTimeout(() => {
+                // Should revert back to being a single item
+                batch('item4');
+            }, 1200);
+        });
     }, 3000);
 });
