@@ -113,6 +113,12 @@ export default Vue.component('irc-input', {
             this.$emit('focus', event);
         },
         updateValueProps() {
+            if (!this.$el.contains(document.activeElement)) {
+                // Focused element is not a child of IrcInput
+                // selection would not be relevent
+                return;
+            }
+
             let selection = window.getSelection();
 
             if (selection.rangeCount === 0) {
@@ -131,10 +137,13 @@ export default Vue.component('irc-input', {
 
             if (el.nodeType === 3) {
                 this.current_el_pos = el.length;
-            } else {
+            } else if (this.$el.contains(document.activeElement)) {
+                // IrcInput has focus select all content and collapse to end
                 document.execCommand('selectAll', false, null);
                 document.getSelection().collapseToEnd();
                 this.updateValueProps();
+            } else {
+                this.current_el_pos = 0;
             }
         },
         setValue(newVal) {
@@ -280,9 +289,9 @@ export default Vue.component('irc-input', {
                 if (this.default_colour) {
                     this.setColour(this.default_colour.code, this.default_colour.colour);
                 }
-            }
 
-            this.updateValueProps();
+                this.updateValueProps();
+            }
         },
         resetStyles() {
             this.focus();
