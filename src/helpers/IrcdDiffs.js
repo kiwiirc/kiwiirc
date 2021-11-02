@@ -3,7 +3,7 @@
 // Do channels support half-op mode
 export function supportsHalfOp(network) {
     let ircdType = network.ircd.toLowerCase();
-    let notSupported = ['ircd-seven', 'charybdis'];
+    let notSupported = ['solanum', 'ircd-seven', 'charybdis'];
 
     for (let i = 0; i < notSupported.length; i++) {
         if (ircdType.indexOf(notSupported[i]) > -1) {
@@ -17,7 +17,7 @@ export function supportsHalfOp(network) {
 // Does channel mode +a = admin
 export function isAChannelModeAdmin(network) {
     let ircdType = network.ircd.toLowerCase();
-    let notAdmin = ['ircd-seven', 'charybdis'];
+    let notAdmin = ['solanum', 'ircd-seven', 'charybdis'];
 
     for (let i = 0; i < notAdmin.length; i++) {
         if (ircdType.indexOf(notAdmin[i]) > -1) {
@@ -31,7 +31,7 @@ export function isAChannelModeAdmin(network) {
 // Does channel mode +q = owner
 export function isQChannelModeOwner(network) {
     let ircdType = network.ircd.toLowerCase();
-    let notOwner = ['ircd-seven', 'charybdis'];
+    let notOwner = ['solanum', 'ircd-seven', 'charybdis'];
 
     for (let i = 0; i < notOwner.length; i++) {
         if (ircdType.indexOf(notOwner[i]) > -1) {
