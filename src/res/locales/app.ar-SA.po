@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2021-09-27 13:29\n"
+"PO-Revision-Date: 2021-10-10 08:11\n"
 
 #: Start
 msgid "start_button"
@@ -761,11 +761,11 @@ msgstr "حقاً تغادر القناة؟"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "إغلاق كل الرسائل فعلاً؟"
 
 #: Really close this chat?
 msgid "prompt_close_query"
-msgstr "Really close this chat?"
+msgstr "إغلاق هذه المحادثة فعلاً؟"
 
 #: Change nick
 msgid "change_nick"
@@ -837,11 +837,11 @@ msgstr "لطفاً حدد قناة للإنضمام إليها. مثلا ‎/joi
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "الاسم المستعار \"{{nick}}\" مستخدَم مسبقًا!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "الاسم المستعار \"{{nick}}\" غير سليم!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -853,7 +853,7 @@ msgstr "يجب أن لا يبدأ الإسم المستعار برقم"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "حصل خطأ غير متوقع"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1009,7 +1009,7 @@ msgstr "يرمي نرداً ذا {{sides}} جانب ويحصل على {{number}}
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "لقد ذُكرت في {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
