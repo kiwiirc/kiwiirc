@@ -4,7 +4,6 @@ import _ from 'lodash';
 import strftime from 'strftime';
 import Irc from 'irc-framework';
 import * as TextFormatting from '@/helpers/TextFormatting';
-import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import typingMiddleware from './TypingMiddleware';
 import chathistoryMiddleware from './ChathistoryMiddleware';
 import * as ServerConnection from './ServerConnection';
@@ -1075,19 +1074,13 @@ function clientMiddleware(state, network) {
                     '-b': 'modes_takes_ban',
                 };
 
-                // Some IRCd differences
-                if (!IrcdDiffs.isQChannelModeOwner(network)) {
-                    delete modeLocaleIds['+q'];
-                    delete modeLocaleIds['-q'];
-                }
-                if (!IrcdDiffs.isAChannelModeAdmin(network)) {
-                    delete modeLocaleIds['+a'];
-                    delete modeLocaleIds['-a'];
-                }
-                if (!IrcdDiffs.supportsHalfOp(network)) {
-                    delete modeLocaleIds['+h'];
-                    delete modeLocaleIds['-h'];
-                }
+                let prefixes = network.ircClient.network.options.PREFIX;
+                Object.keys(modeLocaleIds).forEach((mode) => {
+                    let supported = mode[1] === 'b' || prefixes.find((p) => mode[1] === p.mode);
+                    if (!supported) {
+                        delete modeLocaleIds[mode];
+                    }
+                });
 
                 // Some modes have specific data for its locale data while most
                 // use a default. The returned objects are passed to the translation
