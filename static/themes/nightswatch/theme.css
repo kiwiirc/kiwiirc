@@ -73,14 +73,14 @@
     background-color: #000;
 }
 
-.kiwi-appsettings-title,
+.kiwi-appsettings-close,
 .kiwi-appsettings-block h3,
 .kiwi-networksettings .kiwi-title {
     background-color: var(--brand-primary);
 }
 
 .kiwi-appsettings-block h3,
-.kiwi-appsettings-title {
+.kiwi-appsettings-close {
     color: var(--brand-default-fg);
 }
 
@@ -315,6 +315,19 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-time {
     color: #fff;
+}
+
+.kiwi-controlinput-button {
+    background-color: var(--brand-primary);
+    border: 2px solid var(--brand-primary);
+}
+
+.kiwi-controlinput-button:hover,
+.kiwi-controlinput-tools,
+.kiwi-controlinput-tools-container,
+.kiwi-controlinput-send {
+    color: var(--brand-default-fg);
+    background-color: var(--brand-default-bg);
 }
 
 /* IRC Text Colours */

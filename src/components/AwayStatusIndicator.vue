@@ -2,7 +2,7 @@
     <span
         v-if="$options.m.shouldShowStatus(props)"
         :class="{
-            'kiwi-awaystatusindicator--away': props.user && props.user.isAway(),
+            'kiwi-awaystatusindicator--away': !props.user || props.user.isAway(),
             'kiwi-awaystatusindicator--self': $options.m.isUserSelf(props),
             [data.staticClass]: !!data.staticClass,
         }"

@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-09-08 10:04\n"
+"PO-Revision-Date: 2021-09-28 04:57\n"
 
 #: Start
 msgid "start_button"
@@ -29,11 +29,11 @@ msgstr "закрыть"
 
 #: Connect
 msgid "connect"
-msgstr "подключиться"
+msgstr "Подключиться"
 
 #: Connecting...
 msgid "connecting"
-msgstr "подключение"
+msgstr "Подключение…"
 
 #: Connected
 msgid "connected"
@@ -229,7 +229,7 @@ msgstr "Язык"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Темы"
+msgstr "Тема оформления"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -245,7 +245,7 @@ msgstr "Шаблон сообщения"
 
 #: Use monospace
 msgid "settings_use_monospace"
-msgstr "Шрифт monospace"
+msgstr "Моноширинный шрифт"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
@@ -257,7 +257,7 @@ msgstr "Традиционный формат IRC"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Показывать список автодополнения"
+msgstr "Показывать окно автозаполнения"
 
 #: Chat Messages
 msgid "settings_messages_title"
@@ -273,7 +273,7 @@ msgstr "24-часовой формат времени"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Показать смайлики"
+msgstr "Показывать смайлики"
 
 #: Block new Private messages
 msgid "settings_block_private"
@@ -317,7 +317,7 @@ msgstr "Псевдонимы"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "Что такое псевдонимы?"
 
 #: Send Message
 msgid "send_message"
@@ -365,7 +365,7 @@ msgstr "Маска блокировки по умолчанию"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
-msgstr "Default kick reason"
+msgstr "Причина изгнания по умолчанию"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
@@ -457,7 +457,7 @@ msgstr "Добавить приглашение"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "(Любой зарегистрированный пользователь)"
 
 #: Topic
 msgid "channel_topic"
@@ -481,7 +481,7 @@ msgstr "Блокировать сообщения не из этого кана�
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Click the refresh button to update the channel list"
+msgstr "Нажмите кнопку обновления, чтобы обновить список каналов."
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
@@ -493,7 +493,7 @@ msgstr "Добро пожаловать в Kiwi IRC! Выберите канал
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Show statebrowser"
+msgstr "Показать statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
@@ -513,15 +513,11 @@ msgstr "Присоединиться к каналу"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Нет соединения"
+msgstr "Не подключено"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Приватный разговор с {{user}}"
-
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Действительно покинуть канал?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -573,11 +569,11 @@ msgstr "Показывать исходный текст"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "Прямой веб-сокет"
 
 #: Run commands when connected
 msgid "settings_autorun"
-msgstr "Запускать команды при подключении"
+msgstr "Выполнять команды при подключении"
 
 #: Danger Zone
 msgid "settings_danger"
@@ -617,7 +613,7 @@ msgstr "Вы в данный момент не подключены!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Настройки соединения"
+msgstr "Настройки подключения"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
@@ -669,7 +665,7 @@ msgstr "Цветные псевдонимы в списке"
 
 #: No buffer set
 msgid "side_buffer"
-msgstr "No buffer set"
+msgstr "Буфер не установлен"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
@@ -689,7 +685,7 @@ msgstr "Подсветка"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Никто еще не упомянул тебя..."
+msgstr "Никто вас ещё не упомянул..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -697,7 +693,7 @@ msgstr "Произошла ошибка при запуске Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded"
+msgstr "Убедитесь, что вы правильно установили Kiwi IRC и конфигурацию можно загрузить"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -745,7 +741,7 @@ msgstr "Настройка сети"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Нет соединения."
+msgstr "Не подключено."
 
 #: Join new #channel
 msgid "state_join"
@@ -758,6 +754,18 @@ msgstr "Фильтр каналов"
 #: Find More Channels
 msgid "find_more_channels"
 msgstr "Найти другие каналы"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Действительно покинуть канал?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Закрыть все сообщения?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Закрыть этот чат?"
 
 #: Change nick
 msgid "change_nick"
@@ -793,11 +801,11 @@ msgstr "Оператор"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
-msgstr "Подключен к {{server}} {{info}}"
+msgstr "Подключён к {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Надежное подключение через SSL/TLS"
+msgstr "Надёжное подключение через SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
@@ -827,9 +835,13 @@ msgstr "Заблокировать и выгнать с канала"
 msgid "error_no_channel_join"
 msgstr "Укажите, к какому каналу присоединиться, напр. /join #primer"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "Псевдоним {{nick}} уже используется!"
+msgstr "Псевдоним '{{nick}}' уже используется!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "Псевдоним '{{nick}}' недействителен!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Вы должны ввести новое имя"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Имя не может начинаться с цифр"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "Произошла непредвиденная ошибка"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -857,11 +873,11 @@ msgstr "{{nick}} забирает полуопа у {{target}}"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} gives voice to {{target}}"
+msgstr "{{nick}} говорит для {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} takes voice from {{target}}"
+msgstr "{{nick}} берет голос у {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -897,7 +913,7 @@ msgstr "Отправить сообщение"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Do something physical"
+msgstr "Сделайте что-то физическое"
 
 #: Join a channel
 msgid "command_join"
@@ -957,19 +973,19 @@ msgstr "Подключиться к новой сети IRC"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Request information on somebody"
+msgstr "Запросить информацию о ком-нибудь"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr "Request information on somebody that disconnected recently"
+msgstr "Запросить информацию о том, кто недавно отключился"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "Установить статус как отсутствующий"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "Установить статус как активен"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -977,11 +993,11 @@ msgstr "Изменить кодировку соединения"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr "Ignore messages from somebody"
+msgstr "Игнорировать сообщения от кого-то"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Stop ignoring somebody"
+msgstr "Перестань игнорировать кого-то"
 
 #: Roll a Dice
 msgid "command_dice"
@@ -990,6 +1006,10 @@ msgstr "Бросить кубик"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Бросает {{sides}}-гранный кубик и получает {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "Вас упомянули в {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -1001,7 +1021,7 @@ msgstr "Добавьте свои сети. Присоединитесь к св
 
 #: They will be here when you come back.
 msgid "personal_return"
-msgstr "They will be here when you come back."
+msgstr "Они будут здесь, когда вы вернётесь."
 
 #: Add a Network
 msgid "personal_add"
@@ -1009,7 +1029,7 @@ msgstr "Добавить сеть"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "Вы пытаетесь присоединиться к {{network}}"
+msgstr "Вы пытаетесь подключиться к {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
@@ -1017,11 +1037,11 @@ msgstr "Сеть была добавлена в существующее окн�
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Add network to existing Kiwi window"
+msgstr "Добавить сеть в существующее окно Kiwi"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Temporarily connect to this network"
+msgstr "Временно подключиться к этой сети"
 
 #: Saved networks
 msgid "personal_saved"
@@ -1033,11 +1053,11 @@ msgstr "Kiwi IRC (next gen) - Rizon preview"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
-msgstr "Direct websockets. No Kiwi server or webirc involved."
+msgstr "Прямые веб-сокеты. Не задействован сервер Kiwi или webirc."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
+msgstr "(Спасибо Адаму @Rizon за разработку websocket server!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"

@@ -1,8 +1,11 @@
 <template>
     <div
         :class="{
-            'kiwi-controlinput-selfuser--open': selfuser_open,
             'kiwi-controlinput--focus': has_focus,
+            'kiwi-controlinput--show-send': shouldShowSendButton,
+            'kiwi-controlinput--show-tools': shouldShowTools,
+            'kiwi-controlinput--show-tools--inline': shouldShowToolsInline,
+            'kiwi-controlinput--selfuser-open': selfuser_open,
         }"
         class="kiwi-controlinput kiwi-theme-bg"
     >
@@ -17,10 +20,7 @@
             </transition>
         </div>
 
-        <div
-            class="kiwi-controlinput-inner"
-            :class="[selfuser_open ? 'kiwi-controlinput-portrait-hide' : '']"
-        >
+        <div class="kiwi-controlinput-inner">
             <away-status-indicator
                 v-if="buffer.getNetwork() && buffer.getNetwork().state === 'connected'"
                 :network="buffer.getNetwork()"
@@ -59,46 +59,55 @@
                         @input="inputUpdate"
                         @keydown="inputKeyDown($event)"
                         @keyup="inputKeyUp($event)"
-                        @click="closeInputTool"
-                        @focus="has_focus = true"
-                        @blur="has_focus = false"
+                        @click="closeToolsPlugins"
+                        @focus="focusChanged"
+                        @blur="focusChanged"
                     />
                 </div>
-                <button
+                <div
                     v-if="shouldShowSendButton"
-                    type="submit"
-                    class="kiwi-controlinput-send fa fa-paper-plane"
-                />
+                    class="kiwi-controlinput-send-container kiwi-controlinput-tools"
+                >
+                    <button
+                        ref="sendButton"
+                        type="submit"
+                        class="kiwi-controlinput-button kiwi-controlinput-send fa fa-paper-plane"
+                    />
+                </div>
             </form>
 
             <div
-                v-if="shouldShowInputButtons"
+                v-if="shouldShowTools"
                 ref="plugins"
-                class="kiwi-controlinput-tools"
+                class="kiwi-controlinput-tools kiwi-controlinput-tools-wrapper"
             >
                 <div
-                    :class="{'kiwi-controlinput-tools-container-expand--inverse': !showPlugins}"
-                    class="kiwi-controlinput-tools-container-expand"
+                    v-if="!shouldShowToolsInline"
+                    class="kiwi-controlinput-tools-expand kiwi-controlinput-button"
+                    :class="{'kiwi-controlinput-tools-expand--closed': !showPlugins}"
                     @click="showPlugins=!showPlugins"
                 >
                     <i class="fa fa-bars" aria-hidden="true" />
                 </div>
                 <transition name="kiwi-plugin-ui-trans">
-                    <div v-if="showPlugins" class="kiwi-controlinput-tools-container">
-                        <a
+                    <div
+                        v-if="showPlugins || shouldShowToolsInline"
+                        class="kiwi-controlinput-tools-container"
+                    >
+                        <div
                             v-if="shouldShowColorPicker"
-                            class="kiwi-controlinput-tool"
+                            class="kiwi-controlinput-button"
                             @click.prevent="onToolClickTextStyle"
                         >
                             <i class="fa fa-adjust" aria-hidden="true" />
-                        </a>
-                        <a
+                        </div>
+                        <div
                             v-if="shouldShowEmojiPicker"
-                            class="kiwi-controlinput-tool"
+                            class="kiwi-controlinput-button"
                             @click.prevent="onToolClickEmoji"
                         >
                             <i class="fa fa-smile-o" aria-hidden="true" />
-                        </a>
+                        </div>
                         <div
                             v-for="plugin in pluginUiElements"
                             :key="plugin.id"
@@ -111,7 +120,7 @@
                                     }
                                 }
                             }"
-                            class="kiwi-controlinput-tool"
+                            class="kiwi-controlinput-button"
                         />
                     </div>
                 </transition>
@@ -164,9 +173,10 @@ export default {
             active_tool: null,
             active_tool_props: {},
             pluginUiElements: GlobalApi.singleton().controlInputPlugins,
-            showPlugins: true,
+            showPlugins: false,
             current_input_value: '',
             has_focus: false,
+            keep_focus: false,
         };
     },
     computed: {
@@ -191,7 +201,7 @@ export default {
         shouldShowColorPicker() {
             return this.$state.setting('showColorPicker');
         },
-        shouldShowInputButtons() {
+        shouldShowTools() {
             if (
                 this.pluginUiElements.length ||
                 this.shouldShowEmojiPicker ||
@@ -200,6 +210,24 @@ export default {
                 return true;
             }
             return false;
+        },
+        shouldShowToolsInline() {
+            let toolCount = this.pluginUiElements.length;
+            if (this.shouldShowEmojiPicker) {
+                toolCount++;
+            }
+            if (this.shouldShowColorPicker) {
+                toolCount++;
+            }
+
+            if (toolCount === 1) {
+                // No point showing a menu button to replace one item
+                return true;
+            }
+
+            // Button size (36px)
+            // Total buttons width < 1/5 screen width
+            return (36 * toolCount < this.$state.ui.app_width / 5);
         },
         history() {
             if (this.$state.setting('buffers.shared_input')) {
@@ -322,7 +350,7 @@ export default {
                 this.$state.ui.current_input :
                 this.buffer.current_input;
 
-            this.$refs.input.reset(currentInput);
+            this.$refs.input.reset(currentInput, this.keep_focus);
             this.$refs.input.selectionToEnd();
         },
         toggleSelfUser() {
@@ -341,6 +369,10 @@ export default {
         },
         onToolClickEmoji() {
             this.toggleInputTool(ToolEmoji);
+        },
+        closeToolsPlugins() {
+            this.showPlugins = false;
+            this.closeInputTool();
         },
         closeInputTool() {
             this.active_tool = null;
@@ -426,13 +458,20 @@ export default {
                 }
             } else if (event.keyCode === 38) {
                 // Up
+                if (this.$refs.input.getCaretIdx() > 0) {
+                    // not at the start of input, allow normal input behaviour
+                    return;
+                }
+
                 event.preventDefault();
                 this.historyBack();
-                this.$nextTick(() => {
-                    this.$refs.input.selectionToEnd();
-                });
             } else if (event.keyCode === 40) {
                 // Down
+                let end = this.$refs.input.getRawText().replace(/\r?\n/g, '').length;
+                if (this.$refs.input.getCaretIdx() < end) {
+                    // not at the end of input, allow normal input behaviour
+                    return;
+                }
                 event.preventDefault();
                 this.historyForward();
                 this.$nextTick(() => {
@@ -490,6 +529,7 @@ export default {
             let inputVal = this.$refs.input.getRawText();
             let currentWord = this.$refs.input.getCurrentWord();
             let currentToken = currentWord.word.substr(0, currentWord.position);
+            let autocompleteTokens = this.$state.setting('autocompleteTokens');
 
             if (event.keyCode === 27 && this.autocomplete_open) {
                 this.autocomplete_open = false;
@@ -502,15 +542,15 @@ export default {
                 if (currentToken[0] === '@') {
                     currentToken = currentToken.substr(1);
                 }
-            } else if (currentToken === '@') {
+            } else if (currentToken === '@' && autocompleteTokens.includes('@')) {
                 // Just typed @ so start the nick auto completion
                 this.openAutoComplete(this.buildAutoCompleteItems({ users: true }));
                 this.autocomplete_filtering = true;
-            } else if (inputVal === '/') {
+            } else if (inputVal === '/' && autocompleteTokens.includes('/')) {
                 // Just typed / so start the command auto completion
                 this.openAutoComplete(this.buildAutoCompleteItems({ commands: true }));
                 this.autocomplete_filtering = true;
-            } else if (currentToken === '#') {
+            } else if (currentToken === '#' && autocompleteTokens.includes('#')) {
                 // Just typed # so start the command auto completion
                 this.openAutoComplete(this.buildAutoCompleteItems({ buffers: true }));
                 this.autocomplete_filtering = true;
@@ -524,6 +564,11 @@ export default {
                 // Tab and no other keys as tab+other is often a keyboard shortcut
                 event.preventDefault();
             } else if (!event.key.match(/^(Shift|Control|Alt|Enter)/)) {
+                if (inputVal[0] === '/') {
+                    // Don't send typing status for commands
+                    return;
+                }
+
                 if (inputVal.trim()) {
                     this.startTyping();
                 } else {
@@ -538,6 +583,11 @@ export default {
         submitForm() {
             let rawInput = this.$refs.input.getValue();
             if (!rawInput) {
+                if (!this.has_focus && this.keep_focus) {
+                    // Maybe triggered by the send button on empty input,
+                    // put focus back into the input
+                    this.$refs.input.focus();
+                }
                 return;
             }
 
@@ -546,7 +596,7 @@ export default {
 
             this.historyAdd(rawInput);
 
-            this.$refs.input.reset();
+            this.$refs.input.reset('', this.keep_focus);
 
             this.stopTyping(false);
         },
@@ -573,6 +623,18 @@ export default {
             if (this.history_pos < this.history.length) {
                 this.history_pos++;
             }
+        },
+        focusChanged(event) {
+            this.has_focus = event.type === 'focus';
+            if (
+                event.type === 'blur' &&
+                event.relatedTarget &&
+                event.relatedTarget === this.$refs.sendButton
+            ) {
+                // new target is the send button, keep focus on reset
+                return;
+            }
+            this.keep_focus = event.type === 'focus';
         },
         openAutoComplete(items) {
             if (this.$state.setting('showAutocomplete')) {
@@ -668,7 +730,7 @@ export default {
                 clearTimeout(this.typingTimer);
                 this.typingTimer = null;
             }
-            this.typingTimer = setTimeout(this.stopTyping, 3000);
+            this.typingTimer = setTimeout(() => this.stopTyping(true), 3000);
 
             if (Date.now() < this.lastTypingTime + 3000) {
                 return;
@@ -678,7 +740,7 @@ export default {
 
             this.lastTypingTime = Date.now();
         },
-        stopTyping(sendStopPause) {
+        stopTyping(sendStop) {
             let network = this.buffer.getNetwork();
             if (!network.ircClient.network.cap.isEnabled('message-tags')) {
                 return;
@@ -693,14 +755,9 @@ export default {
                 this.lastTypingTime = 0;
             }
 
-            // dont send done if a message was sent
-            if (!sendStopPause) {
-                return;
-            }
-
             this.$refs.input.getRawText().trim() ?
                 network.ircClient.typing.pause(this.buffer.name) :
-                network.ircClient.typing.stop(this.buffer.name);
+                network.ircClient.typing.stop(this.buffer.name, sendStop);
         },
     },
 };
@@ -722,68 +779,53 @@ export default {
     transition-delay: 0.2s;
 }
 
-.kiwi-controlinput-inner i {
-    font-size: 120%;
-    margin-left: 8px;
-    margin-right: 2px;
-}
+.kiwi-controlinput-inner {
+    display: flex;
+    position: relative;
+    height: 100%;
 
-.kiwi-controlinput-inner .kiwi-awaystatusindicator {
-    margin-top: 16px;
-    margin-left: 10px;
-    margin-right: -2px;
+    .kiwi-awaystatusindicator {
+        margin-top: 16px;
+        margin-left: 10px;
+        margin-right: -2px;
+    }
 }
 
 .kiwi-controlinput-user {
     height: 100%;
-    padding: 0 10px;
+    padding-left: 10px;
     font-weight: bold;
     text-align: center;
     cursor: pointer;
-    margin-right: 10px;
     line-height: 40px;
     transition: width 0.2s;
     transition-delay: 0.1s;
+
+    > i {
+        font-size: 120%;
+        margin-left: 8px;
+    }
 }
 
-.kiwi-controlinput-selfuser--open .kiwi-controlinput-user {
-    width: 286px;
-    transition: width 0.2s;
-    transition-delay: 0.1s;
-}
+.kiwi-controlinput--selfuser-open {
+    .kiwi-controlinput-user {
+        width: 296px;
+        transition: width 0.2s;
+        transition-delay: 0.1s;
+    }
 
-.kiwi-controlinput-tools {
-    /* 38px = 40px controlinput height - margin top+botton */
-    line-height: 38px;
-    margin: 2px 0 2px 10px;
-    border-radius: 7px 0 0 7px;
-    cursor: pointer;
+    .kiwi-controlinput-selfuser {
+        width: 324px;
+        max-height: 300px;
+        opacity: 1;
+    }
 }
 
 .kiwi-controlinput-form {
     flex: 1;
     overflow: hidden;
     display: flex;
-}
-
-.kiwi-controlinput-send {
-    border: none;
-    border-radius: 7px;
-    margin: 2px 0;
-    padding: 0;
-    height: 35px;
-    text-align: center;
-    width: 35px;
-    cursor: pointer;
-    outline: none;
-}
-
-.kiwi-controlinput-inner {
-    display: flex;
-    position: relative;
-    height: 100%;
     box-sizing: border-box;
-    padding: 0;
 }
 
 .kiwi-controlinput-input {
@@ -797,23 +839,15 @@ export default {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    overflow: visible;
-}
-
-.kiwi-controlinput-tool {
-    display: inline-block;
-    padding: 0 1em;
-}
-
-.kiwi-controlinput-tool a {
-    cursor: pointer;
+    overflow: hidden;
+    margin: 0 10px;
 }
 
 .kiwi-controlinput-active-tool {
     position: absolute;
-    bottom: 100%;
-    right: 0;
-    width: 100%;
+    bottom: calc(100% + 1px);
+    right: 74px;
+    left: 0;
     z-index: 1;
 }
 
@@ -832,12 +866,6 @@ export default {
     overflow: hidden;
 }
 
-.kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
-    width: 324px;
-    max-height: 300px;
-    opacity: 1;
-}
-
 .kiwi-selfuser-trans-enter,
 .kiwi-selfuser-trans-leave-to {
     opacity: 0;
@@ -854,28 +882,75 @@ export default {
     transition: all 0.4s;
 }
 
-@media screen and (max-width: 500px) {
-    .kiwi-controlinput-user-nick {
-        display: none;
-    }
+.kiwi-controlinput-tools {
+    border-radius: 8px;
+    padding: 1px;
+    height: 36px;
 }
 
-.kiwi-controlinput-tools-container-expand {
-    display: inline-block;
-    padding: 0 1em;
-}
-
-.kiwi-controlinput-tools-container-expand i {
+.kiwi-controlinput-tools-expand > i {
     transition: transform 0.2s;
 }
 
-.kiwi-controlinput-tools-container-expand--inverse i {
+.kiwi-controlinput-tools-expand--closed > i {
     transform: rotateZ(180deg);
 }
 
+.kiwi-controlinput--show-send.kiwi-controlinput--show-tools {
+    // The send button and tools are visible, merge their borders
+    .kiwi-controlinput-tools-wrapper {
+        border-radius: 0 8px 8px 0;
+        padding: 1px 1px 1px 0;
+    }
+
+    .kiwi-controlinput-send-container {
+        border-radius: 8px 0 0 8px;
+        padding: 1px 0 1px 1px;
+    }
+}
+
 .kiwi-controlinput-tools-container {
-    position: relative;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    flex-direction: row-reverse;
+    padding: 1px;
+    border-radius: 8px;
+    position: absolute;
+    bottom: calc(100% + 1px);
+    top: auto;
+    right: 0;
+    width: 72px;
+}
+
+.kiwi-controlinput--show-tools--inline {
+    .kiwi-controlinput-tools-container {
+        flex-direction: row;
+        position: relative;
+        width: auto;
+        top: 0;
+        padding: 0;
+    }
+
+    .kiwi-controlinput-active-tool {
+        right: 0;
+    }
+}
+
+.kiwi-controlinput-button {
     display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin: 1px;
+    text-align: center;
+    border-radius: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    i {
+        font-size: 20px;
+        line-height: 32px;
+        margin: 0;
+    }
 }
 
 .kiwi-plugin-ui-trans-enter,
@@ -893,8 +968,18 @@ export default {
     transition: right 0.2s;
 }
 
+@media screen and (max-width: 500px) {
+    .kiwi-controlinput-user-nick {
+        display: none;
+    }
+
+    .kiwi-controlinput-user > i {
+        margin-left: 0;
+    }
+}
+
 @media screen and (max-width: 769px) {
-    .kiwi-controlinput-selfuser--open .kiwi-controlinput-selfuser {
+    .kiwi-controlinput--selfuser-open .kiwi-controlinput-selfuser {
         width: 100%;
         border-radius: 0;
         border-right: 0;
@@ -903,9 +988,18 @@ export default {
     .kiwi-wrap--statebrowser-drawopen .kiwi-controlinput {
         z-index: 0;
     }
+
     // hide the control input on narrow screens when the self user box is open
-    .kiwi-controlinput-portrait-hide {
+    .kiwi-controlinput--selfuser-open .kiwi-controlinput-inner {
         display: none;
+    }
+
+    .kiwi-controlinput-tools-container {
+        width: 34px;
+    }
+
+    .kiwi-controlinput-active-tool {
+        right: 36px;
     }
 }
 

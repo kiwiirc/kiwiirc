@@ -14,7 +14,7 @@
             @mouseup="updateValueProps();"
             @click="$emit('click', $event)"
             @paste="onPaste"
-            @focus="onFocus()"
+            @focus="onFocus"
             @blur="$emit('blur', $event)"
         />
     </div>
@@ -100,6 +100,10 @@ export default Vue.component('irc-input', {
             }, 0);
         },
         onFocus(event) {
+            // Chrome sometimes focus' the element but does not add the cursor
+            // https://bugs.chromium.org/p/chromium/issues/detail?id=1125078
+            this.focus();
+
             // when the input is empty there are no children to remember the current colour
             // so upon regaining focus we must set the current colour again
             if (!this.getRawText() && this.default_colour) {
@@ -109,6 +113,12 @@ export default Vue.component('irc-input', {
             this.$emit('focus', event);
         },
         updateValueProps() {
+            if (!this.$el.contains(document.activeElement)) {
+                // Focused element is not a child of IrcInput
+                // selection would not be relevent
+                return;
+            }
+
             let selection = window.getSelection();
 
             if (selection.rangeCount === 0) {
@@ -127,6 +137,11 @@ export default Vue.component('irc-input', {
 
             if (el.nodeType === 3) {
                 this.current_el_pos = el.length;
+            } else if (this.$el.contains(document.activeElement)) {
+                // IrcInput has focus select all content and collapse to end
+                document.execCommand('selectAll', false, null);
+                document.getSelection().collapseToEnd();
+                this.updateValueProps();
             } else {
                 this.current_el_pos = 0;
             }
@@ -255,7 +270,7 @@ export default Vue.component('irc-input', {
             // fix by filtering out any lines that contain no content
             return textValue.split(/\r?\n/).filter((line) => !!Misc.stripStyles(line)).join('\n');
         },
-        reset(rawHtml) {
+        reset(rawHtml, shouldFocus) {
             this.$refs.editor.innerHTML = rawHtml || '';
 
             this.current_el_pos = 0;
@@ -268,14 +283,15 @@ export default Vue.component('irc-input', {
                 br.parentNode.removeChild(br);
             }
 
-            // Always refocus the input on reset to keep the keyboard active on mobile
-            this.focus();
+            if (shouldFocus) {
+                this.focus();
 
-            if (this.default_colour) {
-                this.setColour(this.default_colour.code, this.default_colour.colour);
+                if (this.default_colour) {
+                    this.setColour(this.default_colour.code, this.default_colour.colour);
+                }
+
+                this.updateValueProps();
             }
-
-            this.updateValueProps();
         },
         resetStyles() {
             this.focus();
@@ -424,6 +440,19 @@ export default Vue.component('irc-input', {
                 word: val.substr(startPos, endPos),
                 position: pos - startPos,
             };
+        },
+
+        getCaretIdx() {
+            let position = 0;
+            let selection = window.getSelection();
+            if (selection.rangeCount !== 0) {
+                let range = window.getSelection().getRangeAt(0);
+                let caretRange = range.cloneRange();
+                caretRange.selectNodeContents(this.$el);
+                caretRange.setEnd(range.endContainer, range.endOffset);
+                position = caretRange.toString().length;
+            }
+            return position;
         },
 
         getRawText() {

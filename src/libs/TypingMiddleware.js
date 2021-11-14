@@ -70,20 +70,36 @@ function addFunctionsToClient(client) {
             return;
         }
 
+        if (!activeTyping[target.toLowerCase()]) {
+            // Did not start typing so cannot pause
+            return;
+        }
+
         let message = new client.Message('TAGMSG', target);
         message.tags['+typing'] = 'paused';
         client.raw(message);
     };
 
-    typing.stop = function stop(target) {
+    typing.stop = function stop(target, sendStop) {
         if (!isEnabled()) {
+            return;
+        }
+
+        if (!activeTyping[target.toLowerCase()]) {
+            // Did not start typing so cannot stop
+            return;
+        }
+
+        delete activeTyping[target.toLowerCase()];
+
+        if (!sendStop) {
+            // Stop was called after a message was sent,
+            // only a cleanup of activeTyping is needed
             return;
         }
 
         let message = new client.Message('TAGMSG', target);
         message.tags['+typing'] = 'done';
         client.raw(message);
-
-        delete activeTyping[target.toLowerCase()];
     };
 }

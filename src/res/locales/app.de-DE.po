@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: de\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-06-14 12:33\n"
+"PO-Revision-Date: 2021-09-27 13:29\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Nicht verbunden"
 msgid "container_privmsg"
 msgstr "Privater Chat mit"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Den Raum wirklich verlassen?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Schreibe eine Nachricht..."
@@ -759,6 +755,18 @@ msgstr "Räume filtern"
 msgid "find_more_channels"
 msgstr "Find More Channels"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Den Raum wirklich verlassen?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
+
 #: Change nick
 msgid "change_nick"
 msgstr "Ändere Nickname"
@@ -827,9 +835,13 @@ msgstr "Kick+Bann vom Channel"
 msgid "error_no_channel_join"
 msgstr "Bitte gebe einen Channel an, welchen du betreten möchstest: z.B.  /join #beispiel"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "Der Spitzname {{nick}} wird bereits verwendet!"
+msgstr "The nickname '{{nick}}' is already in use!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "The nickname '{{nick}}' is invalid!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Sie müssen einen neuen Spitznamen eingeben"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Der Spitzname darf nicht mit einer Nummer beginnen"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "Unexpected error occurred"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +1006,10 @@ msgstr "Einen Würfel werfen"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Wirft einen  {{sides}}-seitigen Würfel und bekommt die Zahl {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "You were mentioned in {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"

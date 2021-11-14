@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: ca\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2020-06-14 15:51\n"
+"PO-Revision-Date: 2021-09-28 07:32\n"
 
 #: Start
 msgid "start_button"
@@ -181,43 +181,43 @@ msgstr "Està absent"
 
 #: {{count}} week
 msgid "week"
-msgstr "setmana"
+msgstr "{{count}} setmana"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "setmanes"
+msgstr "{{count}} setmanes"
 
 #: {{count}} day
 msgid "day"
-msgstr "dia"
+msgstr "{{count}} dia"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dies"
+msgstr "{{count}} dies"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "hora"
+msgstr "{{count}} hora"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "hores"
+msgstr "{{count}} hores"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minut"
+msgstr "{{count}} minut"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minuts"
+msgstr "{{count}} minuts"
 
 #: {{count}} second
 msgid "second"
-msgstr "segon"
+msgstr "{{count}} segon"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "segons"
+msgstr "{{count}} segons"
 
 #: General
 msgid "settings_general"
@@ -519,10 +519,6 @@ msgstr "Desconnectat"
 msgid "container_privmsg"
 msgstr "Conversa privada amb {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Segur que vols sortir del canal?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Enviar un missatge..."
@@ -759,6 +755,18 @@ msgstr "Filtrar sales"
 msgid "find_more_channels"
 msgstr "Buscar més sales"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Segur que vols sortir del canal?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Segur que vols tancar tots els privats?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Segur que vols tancar aquest privat?"
+
 #: Change nick
 msgid "change_nick"
 msgstr "Canviar el nick"
@@ -827,9 +835,13 @@ msgstr "Kick + Ban del canal"
 msgid "error_no_channel_join"
 msgstr "Si us plau, especifica la sala a entrar. Per ex. /join #exemple"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
 msgstr "L'àlies {{nick}} està actualment en ús!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "L'àlies {{nick}} és invàlid!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Has d'escriure un nou àlies"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "L'àlies no pot començar amb un número"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "S'ha produït un error inesperat"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +1006,10 @@ msgstr "Tira un dau"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Llença un dau amb {{sides}} costats i obté {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "T'han mencionat al canal {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"

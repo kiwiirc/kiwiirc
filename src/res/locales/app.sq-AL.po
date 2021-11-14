@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: sq\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2020-06-15 10:22\n"
+"PO-Revision-Date: 2021-09-27 13:28\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "I palidhur"
 msgid "container_privmsg"
 msgstr "Bisedë private me {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Të dilet vërtet nga kanali?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Dërgoni një mesazh…"
@@ -759,6 +755,18 @@ msgstr "Filtroni kanale"
 msgid "find_more_channels"
 msgstr "Gjeni Më Tepër Kanale"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Të dilet vërtet nga kanali?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Të mbyllen vërtet krejt mesazhet?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Të mbyllet vërtet kjo fjalosje?"
+
 #: Change nick
 msgid "change_nick"
 msgstr "Ndryshoni nofkën"
@@ -827,9 +835,13 @@ msgstr "Të dëbon dhe përzë nga kanali"
 msgid "error_no_channel_join"
 msgstr "Ju lutemi, specifikoni një kanal ku të hyhet. p.sh., /join #shembull"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "Nofka {{nick}} është e përdorur tashmë!"
+msgstr "Nofka '{{nick}}' është tashmë në përdorim!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "Nofka '{{nick}}' është e pavlefshme!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Duhet të jepni një nofkë të re"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Nofka s’duhet të fillojë me një emër"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "Ndodhi një gabim i papritur"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +1006,10 @@ msgstr "Hidhni Zarin"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Hedh një zar me {{sides}} faqe dhe merr {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "Jeni përmendur në {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"

@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2021-01-20 13:22\n"
+"PO-Revision-Date: 2021-10-10 08:11\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "غير متصل"
 msgid "container_privmsg"
 msgstr "محادثة خاصة مع {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "حقاً تغادر القناة؟"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "ارسل رسالة..."
@@ -759,6 +755,18 @@ msgstr "تصفية القنوات"
 msgid "find_more_channels"
 msgstr "جد المزيد من القنوات"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "حقاً تغادر القناة؟"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "إغلاق كل الرسائل فعلاً؟"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "إغلاق هذه المحادثة فعلاً؟"
+
 #: Change nick
 msgid "change_nick"
 msgstr "تغيير الاسم"
@@ -827,9 +835,13 @@ msgstr "منع وطرد من الغرفة"
 msgid "error_no_channel_join"
 msgstr "لطفاً حدد قناة للإنضمام إليها. مثلا ‎/join #example"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "الإسم المستعار {{nick}} قيد الاستخدام مسبقاً!"
+msgstr "الاسم المستعار \"{{nick}}\" مستخدَم مسبقًا!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "الاسم المستعار \"{{nick}}\" غير سليم!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "يجب أن تُدخل إسماً مستعاراً جديداً"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "يجب أن لا يبدأ الإسم المستعار برقم"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "حصل خطأ غير متوقع"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +1006,10 @@ msgstr "إرمِ حجر نرد"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "يرمي نرداً ذا {{sides}} جانب ويحصل على {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "لقد ذُكرت في {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"

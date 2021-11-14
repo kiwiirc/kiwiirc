@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: ro\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2020-06-15 20:31\n"
+"PO-Revision-Date: 2021-09-27 13:28\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Nu te-ai conectat"
 msgid "container_privmsg"
 msgstr "Conversație privată cu {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Chiar vrei să părăsești canalul?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Trimite un mesaj..."
@@ -759,6 +755,18 @@ msgstr "Filtrează canalele"
 msgid "find_more_channels"
 msgstr "Găsește mai multe canale"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Chiar vrei să părăsești canalul?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Sigur vrei să închizi toate mesajele?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Sigur vrei să închizi fereastra de discuție?"
+
 #: Change nick
 msgid "change_nick"
 msgstr "Schimbă pseudonim"
@@ -827,9 +835,13 @@ msgstr "Dă ban și kick din canal"
 msgid "error_no_channel_join"
 msgstr "Specifică un canal pe care să intri. De exemplu: /join #Canal"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "Pseudonimul {{nick}} este utilizat de către altcineva!"
+msgstr "Pseudonimul „{{nick}}” este folosit de către altcineva!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "Pseudonimul „{{nick}}” este invalid!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Trebuie să introduci un pseudonim nou"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Pseudonimul nu trebuie să înceapă cu cifre"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "A apărut o eroare neașteptată"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +1006,10 @@ msgstr "Dă cu zarul"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Dă cu un zar cu {{sides}} fețe și obține numărul {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "Cineva te-a menționat pe canalul {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"

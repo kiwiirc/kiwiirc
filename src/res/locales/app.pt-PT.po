@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: pt-PT\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
-"PO-Revision-Date: 2020-06-17 17:10\n"
+"PO-Revision-Date: 2021-09-27 13:28\n"
 
 #: Start
 msgid "start_button"
@@ -519,10 +519,6 @@ msgstr "Não ligado"
 msgid "container_privmsg"
 msgstr "Conversa privada com {{user}}"
 
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Deseja mesmo sair do canal?"
-
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Envie uma mensagem..."
@@ -759,6 +755,18 @@ msgstr "Filtrar Canais"
 msgid "find_more_channels"
 msgstr "Encontrar Mais Canais"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Deseja mesmo sair do canal?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Really close all messages?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Really close this chat?"
+
 #: Change nick
 msgid "change_nick"
 msgstr "Mudar de nick"
@@ -827,9 +835,13 @@ msgstr "Kickar + Banir do canal"
 msgid "error_no_channel_join"
 msgstr "Por favor especifique um canal para entrar, por exemplo, /join #exemplo"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "O nick {{nick}} já se econtra em uso!"
+msgstr "The nickname '{{nick}}' is already in use!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "The nickname '{{nick}}' is invalid!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Deve inserir um novo nick"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "O nick não pode começar com um número"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "Unexpected error occurred"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +1006,10 @@ msgstr "Role um Dado"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Rola um dado de {{sides}} lados e obtém {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "You were mentioned in {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"

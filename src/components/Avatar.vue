@@ -1,6 +1,6 @@
 <template functional>
     <div
-        :data-nick="props.message&&props.message.nick"
+        :data-nick="$options.m.nick(props)"
         :class="[$options.m.hasAvatar(props) ? 'kiwi-avatar--image' : '', data.staticClass]"
         class="kiwi-avatar"
     >
@@ -24,9 +24,12 @@ const methods = {
         // let props = this.props;
         return (props.message && props.message.avatar) || (props.user && props.user.avatar);
     },
+    nick(props) {
+        return ((props.message && props.message.nick) || (props.user && props.user.nick) || '').toLowerCase();
+    },
     firstNickLetter(props) {
         // let props = this.props;
-        return ((props.message && props.message.nick) || (props.user && props.user.nick) || '')[0];
+        return this.nick(props)[0].toUpperCase();
     },
     hasAvatar(props) {
         // let props = this.props;

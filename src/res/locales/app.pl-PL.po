@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: pl\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2021-01-03 07:21\n"
+"PO-Revision-Date: 2021-09-27 16:03\n"
 
 #: Start
 msgid "start_button"
@@ -117,7 +117,7 @@ msgstr "Błąd logowania"
 
 #: Search...
 msgid "do_search"
-msgstr "Szukaj"
+msgstr "Szukaj..."
 
 #: OK
 msgid "ok"
@@ -381,7 +381,7 @@ msgstr "Włącz zaawansowane ustawienia"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Strefa zagrożenia: Zmiana niektórych z tych ustawień może spowodować problemy!"
+msgstr "Strefa zagrożenia: zmiana niektórych z tych ustawień może spowodować problemy!"
 
 #: Reset
 msgid "settings_advanced_reset"
@@ -518,10 +518,6 @@ msgstr "Nie połączono"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Prywatna rozmowa z {{user}}"
-
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Czy naprawdę opuścić kanał?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -759,6 +755,18 @@ msgstr "Filtruj kanały"
 msgid "find_more_channels"
 msgstr "Znajdź więcej kanałów"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Czy naprawdę opuścić kanał?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Czy na pewno zamknąć wszystkie wiadomości?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Czy na pewno zamknąć ten czat?"
+
 #: Change nick
 msgid "change_nick"
 msgstr "Zmień pseudonim"
@@ -827,9 +835,13 @@ msgstr "Zablokuj i wyrzuć z kanału"
 msgid "error_no_channel_join"
 msgstr "Określ kanał, do którego chcesz dołączyć, np. /join #pokój"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "Pseudonim {{nick}} jest już używany!"
+msgstr "Pseudonim '{{nick}}' jest już używany!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "Pseudonim '{{nick}}' jest nieprawidłowy!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Musisz podać nowy pseudonim"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Pseudonim nie może zaczynać się od cyfry"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "Wystąpił nieoczekiwany błąd"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -937,7 +953,7 @@ msgstr "Wyślij komendę na serwer IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Wyrzuć kogoś z pokoju"
+msgstr "Wyrzuć kogoś z kanału"
 
 #: Clear all messages from this window
 msgid "command_clear"
@@ -990,6 +1006,10 @@ msgstr "Rzuć kostką"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Rzuca {{sides}} kostką i otrzymuje {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "Wspomniano o Tobie na {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"

@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: gl\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2020-06-14 13:07\n"
+"PO-Revision-Date: 2021-09-28 08:36\n"
 
 #: Start
 msgid "start_button"
@@ -93,7 +93,7 @@ msgstr "Alcume"
 
 #: Channel
 msgid "channel"
-msgstr "Sala"
+msgstr "Canle"
 
 #: Messages
 msgid "messages"
@@ -173,7 +173,7 @@ msgstr "Ignorar usuario"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Sala"
+msgstr "Canle"
 
 #: Away
 msgid "away"
@@ -181,43 +181,43 @@ msgstr "Está ausente"
 
 #: {{count}} week
 msgid "week"
-msgstr "semana"
+msgstr "{{count}} semana"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "semanas"
+msgstr "{{count}} semanas"
 
 #: {{count}} day
 msgid "day"
-msgstr "día"
+msgstr "{{count}} día"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "días"
+msgstr "{{count}} días"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "hora"
+msgstr "{{count}} hora"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "horas"
+msgstr "{{count}} horas"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuto"
+msgstr "{{count}} minuto"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minutos"
+msgstr "{{count}} minutos"
 
 #: {{count}} second
 msgid "second"
-msgstr "segundo"
+msgstr "{{count}} segundo"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "segundos"
+msgstr "{{count}} segundos"
 
 #: General
 msgid "settings_general"
@@ -465,7 +465,7 @@ msgstr "Tópico"
 
 #: Moderated chat
 msgid "channel_moderated"
-msgstr "Sala moderada"
+msgstr "Canle moderada"
 
 #: Invite only
 msgid "channel_invite"
@@ -481,15 +481,15 @@ msgstr "Bloquear mensaxes externas"
 
 #: Click the refresh button to update the channel list
 msgid "channel_list_fetch"
-msgstr "Pulse o botón Actualizar para actualizar a lista de salas"
+msgstr "Pulse o botón Actualizar para actualizar a lista de canles"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "Non se atoparon salas, téntao de novo máis tarde"
+msgstr "Non se atoparon canles, téntao de novo máis tarde"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
-msgstr "¡Benvido a Kiwi IRC! Selecciona unha sala da esquerda."
+msgstr "¡Benvido a Kiwi IRC! Selecciona unha canle da esquerda."
 
 #: Show statebrowser
 msgid "container_statebrowser"
@@ -509,7 +509,7 @@ msgstr "Configuración da canle"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Entrar a unha sala"
+msgstr "Entrar a unha calne"
 
 #: Not Connected
 msgid "container_notconnected"
@@ -518,10 +518,6 @@ msgstr "Desconectado"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Conversación privada con {{user}}"
-
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Desexa realmente saír da canle?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -637,7 +633,7 @@ msgstr "Pechar opcións"
 
 #: Channel options
 msgid "side_options"
-msgstr "Opcións da sala"
+msgstr "Opcións da canle"
 
 #: Your settings
 msgid "side_settings"
@@ -645,7 +641,7 @@ msgstr "A túa configuración"
 
 #: Show when people join
 msgid "side_joins"
-msgstr "Mostrar cando a xente entra á sala"
+msgstr "Mostrar cando a xente entra á canle"
 
 #: Show when channel topic changes
 msgid "side_topics"
@@ -749,7 +745,7 @@ msgstr "Desconectado."
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Entrar nunha #sala nova"
+msgstr "Entrar nunha #canle nova"
 
 #: Filter Channels
 msgid "filter_channels"
@@ -758,6 +754,18 @@ msgstr "Filtrar canles"
 #: Find More Channels
 msgid "find_more_channels"
 msgstr "Buscar máis canles"
+
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Desexa realmente saír da canle?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Realmente queres pechar todos os privados?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Realmente queres pechar este chat?"
 
 #: Change nick
 msgid "change_nick"
@@ -801,7 +809,7 @@ msgstr "Conectado de forma segura con SSL/TLS"
 
 #: In channels {{channels}}
 msgid "user_channels"
-msgstr "Está tamén nas salas {{channels}}"
+msgstr "Está tamén nas canles {{channels}}"
 
 #: Access level
 msgid "user_access"
@@ -813,11 +821,11 @@ msgstr "Normal"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Expulsar da sala"
+msgstr "Expulsar da canle"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Banear da sala"
+msgstr "Banear da canle"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
@@ -827,9 +835,13 @@ msgstr "Kick + Ban do canle"
 msgid "error_no_channel_join"
 msgstr "Por favor especifica a canle para entrar. Por ex. /join #exemplo"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
 msgstr "O alcume {{nick}} está actualmente en uso!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "O alcume {{nick}} é inválido!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Debes escribir un novo alcume"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "O alcume non pode empezar por un número"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "Produciuse un erro non esperado."
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -991,13 +1007,17 @@ msgstr "Tirar un Dado"
 msgid "dice_roll"
 msgstr "Lanza un dado con {{sides}} lados  e obtén {{number}}"
 
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "Fuches mencionado na canle {{channel}}"
+
 #: Your IRC client
 msgid "personal_client"
 msgstr "O teu cliente de IRC"
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Engade as túas redes. Entra nas túas salas."
+msgstr "Engade as túas redes. Entra nas túas canles."
 
 #: They will be here when you come back.
 msgid "personal_return"
@@ -1081,5 +1101,5 @@ msgstr "{{nick}} é agora como {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "cambiou o tópico a:"
+msgstr "{{nick}} cambiou o tópico a: {{topic}}"
 

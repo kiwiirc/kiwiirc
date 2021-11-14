@@ -8,12 +8,12 @@ msgstr ""
 "X-Crowdin-Project: kiwiirc\n"
 "X-Crowdin-Project-ID: 275818\n"
 "X-Crowdin-Language: bs\n"
-"X-Crowdin-File: /master/src/res/locales/app.dev.po\n"
-"X-Crowdin-File-ID: 11\n"
+"X-Crowdin-File: /[kiwiirc.kiwiirc] master/src/res/locales/app.dev.po\n"
+"X-Crowdin-File-ID: 21\n"
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2020-06-14 13:07\n"
+"PO-Revision-Date: 2021-09-27 20:14\n"
 
 #: Start
 msgid "start_button"
@@ -61,7 +61,7 @@ msgstr "Banovani korisnici"
 
 #: Invited Users
 msgid "invited"
-msgstr "Pozvani"
+msgstr "Pozvani korisnici"
 
 #: Notifications
 msgid "notifications"
@@ -129,11 +129,11 @@ msgstr "Zatvori"
 
 #: Yes
 msgid "yes"
-msgstr "da"
+msgstr "Da"
 
 #: No
 msgid "no"
-msgstr "ne"
+msgstr "Ne"
 
 #: Not found.
 msgid "not_found"
@@ -181,43 +181,43 @@ msgstr "Odsutan"
 
 #: {{count}} week
 msgid "week"
-msgstr "sedmica"
+msgstr "{{count}} sedmica"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "sedmica"
+msgstr "{{count}} sedmica"
 
 #: {{count}} day
 msgid "day"
-msgstr "dan"
+msgstr "{{count}} dan"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "dana"
+msgstr "{{count}} dana"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "sat"
+msgstr "{{count}} sat"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "sati"
+msgstr "{{count}} sati"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "minuta"
+msgstr "{{count}} minuta"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "minuta"
+msgstr "{{count}} minuta"
 
 #: {{count}} second
 msgid "second"
-msgstr "sekunda"
+msgstr "{{count}} sekunda"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "sekundi"
+msgstr "{{count}} sekundi"
 
 #: General
 msgid "settings_general"
@@ -417,7 +417,7 @@ msgstr "Osvježi popis pozvanih"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Pozvani korisnici"
+msgstr "Pozvani korisnik"
 
 #: Invited by
 msgid "invites_by"
@@ -518,10 +518,6 @@ msgstr "Niste povezani"
 #: Private conversation with {{user}}
 msgid "container_privmsg"
 msgstr "Privatni razgovor sa {{user}}"
-
-#: Really leave the channel?
-msgid "prompt_leave_channel"
-msgstr "Da li ćete sigurno napustiti kanal?"
 
 #: Send a message...
 msgid "input_placeholder"
@@ -681,7 +677,7 @@ msgstr "Više o"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Kreirano na"
+msgstr "Kreirano na {{when}}"
 
 #: Highlights
 msgid "highlights"
@@ -759,6 +755,18 @@ msgstr "Filtriraj kanale"
 msgid "find_more_channels"
 msgstr "Nađi više kanala"
 
+#: Really leave the channel?
+msgid "prompt_leave_channel"
+msgstr "Da li ćete sigurno napustiti kanal?"
+
+#: Really close all messages?
+msgid "prompt_close_queries"
+msgstr "Zaista želite zatvoriti sve poruke?"
+
+#: Really close this chat?
+msgid "prompt_close_query"
+msgstr "Zaista želite zatvoriti ovaj razgovor?"
+
 #: Change nick
 msgid "change_nick"
 msgstr "Promijeni nadimak"
@@ -827,9 +835,13 @@ msgstr "Banuj i izbaci sa kanala"
 msgid "error_no_channel_join"
 msgstr "Molimo naznačite na koji kanal se želite sojiti. npr /join #primjer"
 
-#: The nickname {{nick}} is already in use!
+#: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
 msgstr "Nadimak {{nick}} je već u upotrebi!"
+
+#: The nickname '{{nick}}' is invalid!
+msgid "error_nick_invalid"
+msgstr "Nadimak {{nick}} je neispravan!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -838,6 +850,10 @@ msgstr "Morate upisati novi nadimak"
 #: Nickname must not start with a number
 msgid "error_no_number"
 msgstr "Nadimci ne smiju počinjati sa brojem"
+
+#: Unexpected error occurred
+msgid "error_unexpected"
+msgstr "Došlo je do neočekivane greške"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -990,6 +1006,10 @@ msgstr "Baci kocku"
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
 msgstr "Bačena je {{sides}} kockica a dobijeni broj je {{number}}"
+
+#: You were mentioned in {{channel}}
+msgid "notification_mentioned"
+msgstr "Spomenuti ste u kanalu {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"

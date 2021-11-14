@@ -4,7 +4,6 @@ import _ from 'lodash';
 import strftime from 'strftime';
 import Irc from 'irc-framework';
 import * as TextFormatting from '@/helpers/TextFormatting';
-import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import typingMiddleware from './TypingMiddleware';
 import chathistoryMiddleware from './ChathistoryMiddleware';
 import * as ServerConnection from './ServerConnection';
@@ -296,11 +295,14 @@ function clientMiddleware(state, network) {
 
         // Show unhandled data from the server in the servers tab
         if (command === 'unknown command') {
-            if (event.command === '486') {
+            if (event.command === '486' || event.command === '477') {
                 // You must log in with services to message this user
                 let targetNick = event.params[1];
                 let buffer = state.getOrAddBufferByName(network.id, targetNick);
-                state.addMessage(buffer, {
+
+                // Only add this message if it does not match the previous message
+                // Typing status messages can cause a spam of this error type
+                state.addMessageNoRepeat(buffer, {
                     time: eventTime,
                     server_time: serverTime,
                     nick: '*',
@@ -668,6 +670,12 @@ function clientMiddleware(state, network) {
                 });
             });
 
+            // Set the user as away before removing so away status indicators are updated
+            let user = state.getUser(networkid, event.nick);
+            if (user) {
+                user.away = 'offline';
+            }
+
             state.removeUser(networkid, {
                 nick: event.nick,
             });
@@ -675,8 +683,17 @@ function clientMiddleware(state, network) {
 
         if (command === 'invite') {
             let buffer = network.serverBuffer();
+            let activeNetwork = state.getActiveNetwork();
+            let activeBuffer = state.getActiveBuffer();
+            if (network === activeNetwork && !activeBuffer.isSpecial()) {
+                buffer = activeBuffer;
+            }
+
             state.addMessage(buffer, {
-                nick: '*',
+                nick: '',
+                time: eventTime,
+                server_time: serverTime,
+                type: 'invite',
                 message: TextFormatting.t('invited_you', {
                     nick: event.nick,
                     channel: event.channel,
@@ -1057,19 +1074,13 @@ function clientMiddleware(state, network) {
                     '-b': 'modes_takes_ban',
                 };
 
-                // Some IRCd differences
-                if (!IrcdDiffs.isQChannelModeOwner(network)) {
-                    delete modeLocaleIds['+q'];
-                    delete modeLocaleIds['-q'];
-                }
-                if (!IrcdDiffs.isAChannelModeAdmin(network)) {
-                    delete modeLocaleIds['+a'];
-                    delete modeLocaleIds['-a'];
-                }
-                if (!IrcdDiffs.supportsHalfOp(network)) {
-                    delete modeLocaleIds['+h'];
-                    delete modeLocaleIds['-h'];
-                }
+                let prefixes = network.ircClient.network.options.PREFIX;
+                Object.keys(modeLocaleIds).forEach((mode) => {
+                    let supported = mode[1] === 'b' || prefixes.find((p) => mode[1] === p.mode);
+                    if (!supported) {
+                        delete modeLocaleIds[mode];
+                    }
+                });
 
                 // Some modes have specific data for its locale data while most
                 // use a default. The returned objects are passed to the translation
@@ -1299,7 +1310,7 @@ function clientMiddleware(state, network) {
                 return;
             }
 
-            // TODO: Some of these errors contain a .error property whcih we can match against,
+            // TODO: Some of these errors contain a .error property which we can match against,
             // ie. password_mismatch.
 
             if (event.error === 'bad_channel_key') {
@@ -1311,16 +1322,27 @@ function clientMiddleware(state, network) {
                 if (!isRegistered) {
                     network.last_error = event.reason;
                 }
+
                 let messageBody = TextFormatting.formatText('general_error', {
                     text: event.reason || event.error,
                 });
-                state.addMessage(buffer, {
+
+                let message = {
                     time: eventTime,
                     server_time: serverTime,
                     nick: '',
                     message: messageBody,
                     type: 'error',
-                });
+                };
+
+                if (event.error === 'cannot_send_to_channel') {
+                    // Only add this message if it does not match the previous message
+                    // Typing status messages can cause a spam of this error type
+                    state.addMessageNoRepeat(buffer, message);
+                    return;
+                }
+
+                state.addMessage(buffer, message);
             }
 
             // Getting an error about a channel while we are not joined means that we couldn't join
