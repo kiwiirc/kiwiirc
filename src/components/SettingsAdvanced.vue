@@ -63,8 +63,8 @@
 <script>
 'kiwi public';
 
-import * as settingTools from '@/libs/settingTools';
 import _ from 'lodash';
+import * as settingTools from '@/libs/settingTools';
 
 export default {
     data: function data() {

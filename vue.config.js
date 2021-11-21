@@ -49,14 +49,18 @@ module.exports = {
             new StyleLintPlugin({
                 files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
             }),
-            new CopyWebpackPlugin([
-                {
-                    from: path.join(__dirname, 'static/'),
-                    to: path.join(__dirname, 'dist/static/'),
-                    toType: 'dir',
-                    ignore: ['.*', 'config.local.json'],
-                },
-            ]),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        from: path.join(__dirname, 'static/'),
+                        to: path.join(__dirname, 'dist/static/'),
+                        toType: 'dir',
+                        globOptions: {
+                            ignore: ['.*', 'config.local.json'],
+                        },
+                    },
+                ],
+            }),
         ],
     },
     chainWebpack: (config) => {
@@ -113,13 +117,15 @@ if (process.env.NODE_ENV === 'development') {
     let plugins = module.exports.configureWebpack.plugins;
     let localConfig = path.resolve(__dirname, 'static/config.local.json');
     if (fs.existsSync(localConfig)) {
-        plugins.push(new CopyWebpackPlugin([
-            {
-                from: localConfig,
-                to: path.join(__dirname, 'dist/static/config.json'),
-                force: true,
-            },
-        ]));
+        plugins.push(new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: localConfig,
+                    to: path.join(__dirname, 'dist/static/config.json'),
+                    force: true,
+                },
+            ],
+        }));
     }
 }
 
