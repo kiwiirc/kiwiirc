@@ -17,50 +17,17 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          chmod +x ubuntu_debian_dependancies.sh
-          ./ubuntu_debian_dependancies.sh
+          chmod +x ubuntu_debian_dependencies.sh
+          ./ubuntu_debian_dependencies.sh
 
       - name: Build Packages
         run: |
           chmod +x build_packages.sh
-          ./build_packages.sh ${{ github.event.release.tag_name }}
+          ./build_packages.sh -t ${{ github.event.release.tag_name }}
 
       - name: Upload Assets
         uses: AButler/upload-release-assets@v2.0
         with:
-          files: 'packaged/*'
+          files: 'dist/*'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-  build-desktop-linux:
-    name: Build Desktop (linux/windows)
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          repository: 'kiwiirc/kiwiirc-desktop'
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          registry-url: 'https://registry.npmjs.org/'
-
-      - name: Setup Dependencies
-        run: |
-          sudo dpkg --add-architecture i386
-          sudo apt-get update -y
-          sudo apt-get install --no-install-recommends -y libopenjp2-tools rpm libarchive-tools gcc-multilib g++-multilib wine wine32
-
-      - name: Build
-        run: |
-          yarn
-          yarn version --no-git-tag-version --new-version ${{ github.event.release.tag_name }}
-          yarn build:dist --win --linux --publish never
-
-      - name: Upload Assets
-        uses: AButler/upload-release-assets@v2.0
-        with:
-          files: 'build/kiwiirc-desktop*.{deb,rpm,exe,zip}'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          release-tag: ${{ github.event.release.tag_name }}

@@ -1,0 +1,55 @@
+name: Manual release workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Build tag'
+        required: true
+        default: 'v'
+      iteration:
+        description: 'Build iteration'
+        required: true
+        default: '1'
+      ubuntu:
+        description: 'Ubuntu version'
+        required: true
+        default: 'latest'
+      packager:
+        description: 'Packager branch'
+        required: true
+        default: 'master'
+      upload:
+        description: 'Upload assets'
+        required: true
+        default: 'yes'
+
+jobs:
+  build-packages:
+    name: Build Packages
+
+    runs-on: ubuntu-${{ github.event.inputs.ubuntu }}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: 'kiwiirc/kiwiirc_packager'
+          ref: ${{ github.event.inputs.packager }}
+
+      - name: Install Dependencies
+        run: |
+          chmod +x ubuntu_debian_dependencies.sh
+          ./ubuntu_debian_dependencies.sh
+
+      - name: Build Packages
+        run: |
+          chmod +x build_packages.sh
+          ./build_packages.sh -t ${{ github.event.inputs.tag }} -i ${{ github.event.inputs.iteration }}
+
+      - name: Upload Assets
+        if: github.event.inputs.upload == 'yes'
+        uses: AButler/upload-release-assets@v2.0
+        with:
+          files: 'dist/*'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          release-tag: ${{ github.event.inputs.tag }}
