@@ -10,16 +10,16 @@
             <form class="u-form u-form--big kiwi-welcome-simple-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText" />
                 <div
-                    v-if="network && (network.last_error || network.state_error || errorMessage)"
+                    v-if="network && (connectErrors.length > 0 || network.state_error)"
                     class="kiwi-welcome-simple-error"
                 >
-                    <span v-if="!network.last_error && network.state_error">
-                        {{ $t('network_noconnect') }}
-                    </span>
-                    <span v-if="errorMessage">{{ errorMessage }}</span>
-                    <span v-if="network.last_error || network.state_error">
-                        {{ network.last_error || readableStateError(network.state_error) }}
-                    </span>
+                    <template v-if="connectErrors.length > 0">
+                        <span v-for="err in connectErrors" :key="err">{{ err }}</span>
+                    </template>
+                    <template v-else>
+                        <span>{{ $t('network_noconnect') }}</span>
+                        <span>{{ readableStateError(network.state_error) }}</span>
+                    </template>
                 </div>
 
                 <input-text
@@ -103,7 +103,7 @@ export default {
     },
     data: function data() {
         return {
-            errorMessage: '',
+            connectErrors: [],
             network: null,
             channel: '',
             nick: '',
@@ -287,7 +287,7 @@ export default {
                 this.password = event.password;
             }
             if (event.error) {
-                this.errorMessage = event.error;
+                this.connectErrors.push(event.error);
             }
 
             this.$state.settings.startupOptions.altComponent = null;
@@ -301,7 +301,7 @@ export default {
             }
         },
         startUp: function startUp() {
-            this.errorMessage = '';
+            this.connectErrors = [];
 
             let options = Object.assign({}, this.$state.settings.startupOptions);
             let connectOptions = this.connectOptions();
@@ -376,23 +376,23 @@ export default {
                     this.$refs.layout.close();
                 }
                 net.ircClient.off('registered', onRegistered);
-                net.ircClient.off('irc error', onError);
                 net.ircClient.off('close', onClosed);
-            };
-            let onError = (event) => {
-                this.errorMessage = event.reason;
-                net.ircClient.off('registered', onRegistered);
                 net.ircClient.off('irc error', onError);
-                net.ircClient.off('close', onClosed);
             };
             let onClosed = () => {
                 net.ircClient.off('registered', onRegistered);
-                net.ircClient.off('irc error', onError);
                 net.ircClient.off('close', onClosed);
+                net.ircClient.off('irc error', onError);
+            };
+            let onError = (event) => {
+                if (!event.reason || this.connectErrors.includes(event.reason)) {
+                    return;
+                }
+                this.connectErrors.push(event.reason);
             };
             net.ircClient.once('registered', onRegistered);
-            net.ircClient.once('irc error', onError);
             net.ircClient.once('close', onClosed);
+            net.ircClient.on('irc error', onError);
         },
         processNickRandomNumber: function processNickRandomNumber(nick) {
             // Replace ? with a random number
