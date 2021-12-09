@@ -137,6 +137,13 @@ export default {
             return net;
         },
         startUp: function startUp() {
+            // remove old ZNC networks
+            this.$state.networks.forEach((zncnetwork) => {
+                if (zncnetwork.is_znc) {
+                    this.$state.removeNetwork(zncnetwork.id);
+                }
+            });
+
             if (this.network) {
                 this.$state.removeNetwork(this.network.id);
             }
@@ -150,6 +157,7 @@ export default {
             // before trying to add other networks.
             let net = this.network = this.addNetwork(netList.shift());
             this.network_extras = netList;
+            this.network.is_znc = true;
 
             let onRegistered = () => {
                 this.$state.setActiveBuffer(net.id, net.serverBuffer().name);

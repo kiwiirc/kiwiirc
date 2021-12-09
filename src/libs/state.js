@@ -116,6 +116,7 @@ function createNewState() {
                             password: network.password,
                             hidden: network.hidden,
                             is_bnc: network.is_bnc,
+                            is_znc: network.is_znc,
                             buffers: [],
                         };
 
@@ -171,6 +172,7 @@ function createNewState() {
                         network.password = importNetwork.password;
                         network.hidden = importNetwork.hidden;
                         network.is_bnc = importNetwork.is_bnc;
+                        network.is_znc = importNetwork.is_znc;
 
                         this.networks.push(network);
 
