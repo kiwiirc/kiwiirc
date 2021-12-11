@@ -27,7 +27,7 @@ module.exports = {
             symlinks: false,
         },
         performance: {
-            maxEntrypointSize: 1500000,
+            maxEntrypointSize: 1550000,
             maxAssetSize: 1000000,
         },
         optimization: {
@@ -56,7 +56,7 @@ module.exports = {
                         to: path.join(__dirname, 'dist/static/'),
                         toType: 'dir',
                         globOptions: {
-                            ignore: ['.*', 'config.local.json'],
+                            ignore: ['**/.*', '**/config.local.json'],
                         },
                     },
                 ],
