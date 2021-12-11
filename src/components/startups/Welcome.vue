@@ -101,7 +101,7 @@ export default {
         Captcha,
         StartupLayout,
     },
-    data: function data() {
+    data() {
         return {
             connectErrors: [],
             network: null,
@@ -174,7 +174,7 @@ export default {
 
             return this.nick.match(nickPattern);
         },
-        readyToStart: function readyToStart() {
+        readyToStart() {
             let ready = !!this.nick;
 
             if (!this.connectWithoutChannel && !this.channel) {
@@ -211,7 +211,7 @@ export default {
             }
         },
     },
-    created: function created() {
+    created() {
         let options = this.startupOptions;
         let connectOptions = this.connectOptions();
 
@@ -295,12 +295,12 @@ export default {
         readableStateError(err) {
             return Misc.networkErrorMessage(err);
         },
-        formSubmit: function formSubmit() {
+        formSubmit() {
             if (this.readyToStart) {
                 this.startUp();
             }
         },
-        startUp: function startUp() {
+        startUp() {
             this.connectErrors = [];
 
             let options = Object.assign({}, this.$state.settings.startupOptions);
@@ -394,7 +394,7 @@ export default {
             net.ircClient.once('close', onClosed);
             net.ircClient.on('irc error', onError);
         },
-        processNickRandomNumber: function processNickRandomNumber(nick) {
+        processNickRandomNumber(nick) {
             // Replace ? with a random number
             let tmp = (nick || '').replace(/\?/g, () => Math.floor(Math.random() * 100).toString());
             return _.trim(tmp);
