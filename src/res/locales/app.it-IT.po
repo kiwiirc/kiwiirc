@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-09-27 16:03\n"
+"PO-Revision-Date: 2021-12-21 14:11\n"
 
 #: Start
 msgid "start_button"
@@ -241,7 +241,7 @@ msgstr "URL del tema"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Layout Messaggi"
+msgstr "Layout dei messaggi"
 
 #: Use monospace
 msgid "settings_use_monospace"
