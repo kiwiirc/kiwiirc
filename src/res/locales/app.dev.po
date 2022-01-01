@@ -1193,6 +1193,10 @@ msgstr "{{nick}} has left"
 msgid "invited_you"
 msgstr "{{nick}} invited you to join {{channel}}"
 
+#: {{nick}} invited {{invited}} to join {{channel}}
+msgid "invited_other"
+msgstr "{{nick}} invited {{invited}} to join {{channel}}"
+
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
 msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."

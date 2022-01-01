@@ -689,13 +689,18 @@ function clientMiddleware(state, network) {
                 buffer = activeBuffer;
             }
 
+            let translationKey = (event.invited === network.currentUser().nick) ?
+                'invited_you' :
+                'invited_other';
+
             state.addMessage(buffer, {
                 nick: '',
                 time: eventTime,
                 server_time: serverTime,
                 type: 'invite',
-                message: TextFormatting.t('invited_you', {
+                message: TextFormatting.t(translationKey, {
                     nick: event.nick,
+                    invited: event.invited,
                     channel: event.channel,
                 }),
             });
