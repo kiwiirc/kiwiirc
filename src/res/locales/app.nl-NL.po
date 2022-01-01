@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2021-09-27 13:29\n"
+"PO-Revision-Date: 2022-01-01 19:48\n"
 
 #: Start
 msgid "start_button"
@@ -89,7 +89,7 @@ msgstr "Server"
 
 #: Nick
 msgid "nick"
-msgstr "Bijnaam"
+msgstr "Nicknaam"
 
 #: Channel
 msgid "channel"
@@ -289,7 +289,7 @@ msgstr "Extra opmaak"
 
 #: Colour nicknames in messages
 msgid "settings_nick_colouring"
-msgstr "Gekleurde bijnamen in berichten"
+msgstr "Gekleurde nicknamen in berichten"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
@@ -309,7 +309,7 @@ msgstr "Geluidsmeldingen dempen"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
-msgstr "Markeren op woorden (gescheiden door spaties)"
+msgstr "Meldingen op woorden (gescheiden door spaties)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -333,7 +333,7 @@ msgstr "{{channel}} weer binnengaan"
 
 #: Notify me when
 msgid "settings_notify"
-msgstr "Waarschuwen"
+msgstr "Waarschuwen bij"
 
 #: All messages
 msgid "settings_notify_all"
@@ -385,7 +385,7 @@ msgstr "Gevarenzone: het wijzigen van bepaalde instellingen kan defecten veroorz
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Herinitialiseren"
+msgstr "Resetten"
 
 #: Filter
 msgid "settings_advanced_filter"
@@ -397,11 +397,11 @@ msgstr "Banlijst vernieuwen"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Verbannen gebruiker"
+msgstr "Gebande gebruiker"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Verbannen door"
+msgstr "Geband door"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
@@ -409,7 +409,7 @@ msgstr "Banlijst vernieuwen..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Er is niemand verbannen!"
+msgstr "Er is niemand geband!"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -553,7 +553,7 @@ msgstr "Je gegevens"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Bijnaam"
+msgstr "Nicknaam"
 
 #: Advanced
 msgid "settings_advanced"
@@ -661,7 +661,7 @@ msgstr "Extra berichtenopmaak"
 
 #: Nick colours in the list"
 msgid "side_colours"
-msgstr "Gekleurde bijnamen in de lijst"
+msgstr "Gekleurde nicknamen in de lijst"
 
 #: No buffer set
 msgid "side_buffer"
@@ -769,11 +769,11 @@ msgstr "Deze chat echt sluiten?"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Bijnaam wijzigen"
+msgstr "Nicknaam wijzigen"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Voer nieuwe bijnaam in..."
+msgstr "Voer nieuwe nicknaam in..."
 
 #: This is you!
 msgid "user_you"
@@ -825,11 +825,11 @@ msgstr "Uit het kanaal zetten"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Uit het kanaal verbannen"
+msgstr "Uit het kanaal bannen"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Uit het kanaal zetten en verbannen"
+msgstr "Uit het kanaal zetten en bannen"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -837,19 +837,19 @@ msgstr "Geef een kanaal op om bij te wonen, bv. /join #voorbeeld"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "De bijnaam '{{nick}}' is al in gebruik!"
+msgstr "De nicknaam '{{nick}}' is al in gebruik!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "De bijnaam '{{nick}}' is ongeldig!"
+msgstr "De nicknaam '{{nick}}' is ongeldig!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "Je moet een nieuwe bijnaam invoeren"
+msgstr "Je moet een nieuwe nicknaam invoeren"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Bijnaam mag niet met een cijfer beginnen"
+msgstr "Nicknaam mag niet met een cijfer beginnen"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
@@ -901,7 +901,7 @@ msgstr "{{nick}} heeft {{target}} verbannen"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} heeft de verbanning van {{target}} opgeheven"
+msgstr "{{nick}} heeft de ban van {{target}} opgeheven"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
@@ -929,7 +929,7 @@ msgstr "Een kanaal verlaten en weer binnengaan"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Je bijnaam wijzigen"
+msgstr "Je nicknaam wijzigen"
 
 #: Start a private conversation with someone
 msgid "command_query"
@@ -945,7 +945,7 @@ msgstr "Het topic voor dit kanaal instellen"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Een kennisgeving sturen"
+msgstr "Een notice sturen"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
