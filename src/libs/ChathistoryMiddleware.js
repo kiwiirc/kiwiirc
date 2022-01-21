@@ -50,7 +50,7 @@ function addFunctionsToClient(client) {
         },
     };
 
-    history.isSupported = () => !!client.network.supports('chathistory');
+    history.isSupported = () => !!client.network.supports('chathistory') || client.network.cap.isEnabled('draft/chathistory');
 
     history.before = (target, dateOrTime) => new Promise((resolve) => {
         if (!history.isSupported()) {
@@ -110,7 +110,10 @@ function addFunctionsToClient(client) {
         }
 
         if (inp === '*') {
-            return '*';
+            if (client.network.supports('draft/chathistory')) {
+                return '*';
+            }
+            return 'timestamp=' + Misc.dateIso();
         }
 
         return 'msgid=' + inp;
