@@ -27,7 +27,7 @@
         <DynamicScroller
             :items="sortedUsers"
             :min-item-size="34"
-            :key-field="'nick'"
+            :key-field="'key'"
             class="kiwi-nicklist-users"
         >
             <template v-slot="{ item, index, active }">
@@ -38,7 +38,7 @@
                     :data-index="index"
                 >
                     <nicklist-user
-                        :key="item.nick"
+                        :key="item.key"
                         :user="item"
                         :nicklist="self"
                         :network="network"

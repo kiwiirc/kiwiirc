@@ -740,7 +740,7 @@ function createNewState() {
                 }
 
                 if (users) {
-                    user = users[nick.toLowerCase()];
+                    user = users[nick.toUpperCase()];
                 }
 
                 return user;
@@ -754,7 +754,7 @@ function createNewState() {
                     return;
                 }
 
-                let users = _.clone(network.users);
+                let users = Object.assign(Object.create(null), network.users);
                 fn(users);
                 network.users = users;
             },
@@ -776,8 +776,8 @@ function createNewState() {
                 let usersArr = usersArr_ || network.users;
                 let userObj = null;
 
-                if (!usersArr[user.nick.toLowerCase()]) {
-                    userObj = usersArr[user.nick.toLowerCase()] = new UserState(user);
+                if (!usersArr[user.nick.toUpperCase()]) {
+                    userObj = usersArr[user.nick.toUpperCase()] = new UserState(user);
                 } else {
                     // Update the existing user object with any new info we have
                     userObj = state.getUser(network.id, user.nick, usersArr);
@@ -802,12 +802,12 @@ function createNewState() {
                     state.removeUserFromBuffer(buffer, user.nick);
                 });
 
-                this.$delete(network.users, user.nick.toLowerCase());
+                this.$delete(network.users, user.nick.toUpperCase());
             },
 
             addMultipleUsersToBuffer(buffer, newUsers) {
                 let network = this.getNetwork(buffer.networkid);
-                let bufUsers = _.clone(buffer.users);
+                let bufUsers = Object.assign(Object.create(null), buffer.users);
 
                 state.usersTransaction(network.id, (users) => {
                     newUsers.forEach((newUser) => {
@@ -818,7 +818,7 @@ function createNewState() {
                         if (!userObj) {
                             userObj = this.addUser(network, user, users);
                         }
-                        bufUsers[userObj.nick.toLowerCase()] = userObj;
+                        bufUsers[userObj.nick.toUpperCase()] = userObj;
 
                         // Add the buffer to the users buffer list
                         if (!userObj.buffers[buffer.id]) {
@@ -873,11 +873,11 @@ function createNewState() {
                     return [];
                 }
 
-                let normalisedNick = nick.toLowerCase();
+                let normalisedNick = nick.toUpperCase();
                 let buffers = [];
                 network.buffers.forEach((buffer) => {
-                    let bufferNameLower = buffer.name.toLowerCase();
-                    if (buffer.users[normalisedNick] || normalisedNick === bufferNameLower) {
+                    let bufferNameUpper = buffer.name.toUpperCase();
+                    if (buffer.users[normalisedNick] || normalisedNick === bufferNameUpper) {
                         buffers.push(buffer);
                     } else if (nick === network.nick && buffer.isQuery()) {
                         buffers.push(buffer);
@@ -898,9 +898,10 @@ function createNewState() {
                     return;
                 }
 
-                let normalisedNew = newNick.toLowerCase();
-                let normalisedOld = oldNick.toLowerCase();
+                let normalisedNew = newNick.toUpperCase();
+                let normalisedOld = oldNick.toUpperCase();
 
+                user.key = normalisedNew;
                 user.nick = newNick;
 
                 // If the nick has completely changed (ie. not just a case change) then update all

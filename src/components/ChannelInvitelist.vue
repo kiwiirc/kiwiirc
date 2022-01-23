@@ -28,7 +28,7 @@
                         <select ref="addInviteList">
                             <option
                                 v-for="user in knownAccounts"
-                                :key="user.nick" :value="user.account"
+                                :key="user.key" :value="user.account"
                             >{{ user.account }}</option>
                         </select>
                         <button type="button" @click="addAccountInvite($refs.addInviteList.value)">
