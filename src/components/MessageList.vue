@@ -30,7 +30,7 @@
                     >
                         <span>{{ (new Date(day.messages[0].time)).toDateString() }}</span>
                     </div>
-                    <transition-group tag="div" :key="day.dayNum">
+                    <transition-group :key="day.dayNum" tag="div">
                         <template v-for="message in day.messages">
                             <div
                                 v-if="shouldShowUnreadMarker(message)"
