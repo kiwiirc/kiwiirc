@@ -505,6 +505,7 @@ export default class BufferState {
             time: Date.now(),
             nick: network.nick,
             message: message,
+            tags: opts.tags || {},
             type: opts.type || 'privmsg',
         };
 
@@ -514,9 +515,10 @@ export default class BufferState {
             privmsg: 'say',
             action: 'action',
             notice: 'notice',
+            tagmsg: 'tagmsg',
         };
         let fnName = fnNames[opts.type] || 'say';
-        network.ircClient[fnName](this.name, message);
+        network.ircClient[fnName](this.name, message, opts.tags);
     }
 
     join() {
