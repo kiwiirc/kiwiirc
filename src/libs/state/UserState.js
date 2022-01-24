@@ -6,6 +6,7 @@ import { def } from './common';
 
 export default class UserState {
     constructor(user) {
+        this.key = user.nick.toUpperCase();
         this.nick = user.nick;
         this.host = user.host || '';
         this.username = user.username || '';
@@ -51,7 +52,7 @@ export default class UserState {
     }
 
     typingStatus(_target, status) {
-        let target = _target.toLowerCase();
+        let target = _target.toUpperCase();
         if (!status) {
             return this.typingState[target] || { status: '' };
         }
