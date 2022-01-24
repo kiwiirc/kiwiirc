@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-09-27 16:03\n"
+"PO-Revision-Date: 2021-12-21 15:11\n"
 
 #: Start
 msgid "start_button"
@@ -241,7 +241,7 @@ msgstr "URL del tema"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Layout Messaggi"
+msgstr "Layout dei messaggi"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -725,7 +725,7 @@ msgstr "Reti disponibili"
 
 #: Add Network
 msgid "add_network"
-msgstr "Aggiungi un Network"
+msgstr "Aggiungi una rete"
 
 #: New Network
 msgid "new_network"
@@ -733,7 +733,7 @@ msgstr "Nuovo Network"
 
 #: No Network
 msgid "no_network"
-msgstr "Nessun Network"
+msgstr "Nessuna rete"
 
 #: Configure network
 msgid "state_configure"
@@ -749,7 +749,7 @@ msgstr "Unisciti a nuovo #canale"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filtra Canali"
+msgstr "Filtra canali"
 
 #: Find More Channels
 msgid "find_more_channels"
@@ -1037,7 +1037,7 @@ msgstr "La rete è stata aggiunta alla finestra di Kiwi esistente."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Aggiungi il network alla finestra di Kiwi esistente"
+msgstr "Aggiungi rete alla finestra di Kiwi esistente"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
