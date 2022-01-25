@@ -107,17 +107,17 @@ export default {
             // A few things here:
             // * Since vuejs will sort in-place and update views when .sort is called
             //   on an array, clone it first so that we have a plain array to sort
-            // * Keep a map of lowercased nicks to we don't need to call .toLowerCase()
+            // * Keep a map of uppercase nicks to we don't need to call .toUpperCase()
             //   on each one all the time. This is a hot function!
             let nickMap = Object.create(null);
             let users = [];
             let bufferUsers = this.buffer.users;
-            let nickFilter = this.user_filter.toLowerCase();
+            let nickFilter = this.user_filter.toUpperCase();
             /* eslint-disable guard-for-in, no-restricted-syntax */
-            for (let lowercaseNick in bufferUsers) {
-                let user = bufferUsers[lowercaseNick];
-                nickMap[user.nick] = lowercaseNick;
-                if (!nickFilter || lowercaseNick.indexOf(nickFilter) !== -1) {
+            for (let uppercaseNick in bufferUsers) {
+                let user = bufferUsers[uppercaseNick];
+                nickMap[user.nick] = uppercaseNick;
+                if (!nickFilter || uppercaseNick.indexOf(nickFilter) !== -1) {
                     users.push(user);
                 }
             }
