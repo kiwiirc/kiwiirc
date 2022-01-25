@@ -70,9 +70,9 @@ describe('MessageParser.js', () => {
     it('should return valid user blocks', () => {
         // mock users list
         let users = {
-            testnick1: { nick: 'TestNick1', username: 'testnick1', colour: '#a1fc5d' },
-            testnick2: { nick: 'TestNick2', username: 'testnick2', colour: '#7363fe' },
-            testnick3: { nick: 'TestNick3', username: 'testnick3' },
+            TESTNICK1: { nick: 'TestNick1', username: 'testnick1', colour: '#a1fc5d' },
+            TESTNICK2: { nick: 'TestNick2', username: 'testnick2', colour: '#7363fe' },
+            TESTNICK3: { nick: 'TestNick3', username: 'testnick3' },
         };
         let tests = [
             ['testnick1', 'testnick1'],
@@ -91,15 +91,15 @@ describe('MessageParser.js', () => {
 
             expect(userBlocks.length).toEqual(1);
             expect(userBlocks[0].meta.user).toEqual(compare);
-            expect(userBlocks[0].meta.colour).toEqual(users[compare.toLowerCase()].colour);
+            expect(userBlocks[0].meta.colour).toEqual(users[compare.toUpperCase()].colour);
         });
     });
 
     it('should reject invalid users', () => {
         // mock users list
         let users = {
-            testnick1: { nick: 'TestNick1', username: 'testnick1' },
-            testnick2: { nick: 'TestNick2', username: 'testnick2' },
+            TESTNICK1: { nick: 'TestNick1', username: 'testnick1' },
+            TESTNICK2: { nick: 'TestNick2', username: 'testnick2' },
         };
         let tests = ['notauser', 'ttestnick', 'testnick11', 'ttestnick11'];
 

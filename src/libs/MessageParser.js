@@ -184,7 +184,7 @@ function matchUser(word, userList) {
     let nickIdx = 0;
 
     const trimWord = trim(word, punc);
-    let normWord = trimWord.toLowerCase();
+    let normWord = trimWord.toUpperCase();
 
     if (hasProp.call(userList, normWord)) {
         user = userList[normWord];
