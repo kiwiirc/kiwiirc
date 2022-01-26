@@ -113,14 +113,13 @@ export default {
             let users = [];
             let bufferUsers = this.buffer.users;
             let nickFilter = this.user_filter.toUpperCase();
-            /* eslint-disable guard-for-in, no-restricted-syntax */
-            for (let uppercaseNick in bufferUsers) {
-                let user = bufferUsers[uppercaseNick];
+
+            Object.entries(bufferUsers).forEach(([uppercaseNick, user]) => {
                 nickMap[user.nick] = uppercaseNick;
                 if (!nickFilter || uppercaseNick.indexOf(nickFilter) !== -1) {
                     users.push(user);
                 }
-            }
+            });
 
             let bufferId = this.buffer.id;
             return users.sort((a, b) => {
