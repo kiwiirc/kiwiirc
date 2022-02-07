@@ -411,6 +411,9 @@ export default Vue.component('irc-input', {
                 range.setEnd(el, 1);
             }
 
+            // ensure the input has focus so the cursor position can be set correctly
+            this.$refs.editor.focus();
+
             let sel = window.getSelection();
             sel.removeAllRanges();
             sel.addRange(range);
