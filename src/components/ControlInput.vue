@@ -896,6 +896,10 @@ export default {
     transform: rotateZ(180deg);
 }
 
+.kiwi-controlinput-send {
+    padding: 1px 6px;
+}
+
 .kiwi-controlinput--show-send.kiwi-controlinput--show-tools {
     // The send button and tools are visible, merge their borders
     .kiwi-controlinput-tools-wrapper {
