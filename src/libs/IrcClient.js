@@ -724,9 +724,12 @@ function clientMiddleware(state, network) {
                 buffer = activeBuffer;
             }
 
-            let translationKey = (event.invited === network.currentUser().nick) ?
-                'invited_you' :
-                'invited_other';
+            let translationKey = 'invited_other';
+            if (event.invited === network.currentUser().nick) {
+                translationKey = 'invited_you';
+            } else if (event.nick === network.currentUser().nick) {
+                translationKey = 'invited_inviter';
+            }
 
             state.addMessage(buffer, {
                 nick: '',

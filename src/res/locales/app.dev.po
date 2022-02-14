@@ -1217,13 +1217,17 @@ msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
 msgid "has_left"
 msgstr "{{nick}} has left"
 
+#: {{nick}} invited {{invited}} to join {{channel}}
+msgid "invited_other"
+msgstr "{{nick}} invited {{invited}} to join {{channel}}"
+
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
 msgstr "{{nick}} invited you to join {{channel}}"
 
-#: {{nick}} invited {{invited}} to join {{channel}}
-msgid "invited_other"
-msgstr "{{nick}} invited {{invited}} to join {{channel}}"
+#: You invited {{invited}} to join {{channel}}
+msgid "invited_inviter"
+msgstr "You invited {{invited}} to join {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
