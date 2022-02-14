@@ -68,10 +68,10 @@
                     </a>
                 </div>
                 <auto-complete
-                    v-if="inviteableUsers.length > 0"
+                    v-if="invitableUsers.length > 0"
                     ref="autocomplete"
                     class="kiwi-aboutbuffer-invite-auto-complete"
-                    :items="inviteableUsers"
+                    :items="invitableUsers"
                     :filter="inviteNick"
                     @selected="inviteSelected"
                 />
@@ -128,13 +128,11 @@ export default {
         b() {
             return this.buffer || {};
         },
-
         formattedTopic() {
             let blocks = parseMessage(this.b.topic || '', { extras: false });
             let content = toHtml(blocks);
             return content;
         },
-
         highlights() {
             // Tap into buffer.message_count to force vuejs to update this function when
             // it changes
@@ -148,12 +146,10 @@ export default {
                 .filter((m) => m.html)
                 .sort((a, b) => b.time - a.time);
         },
-
         areWeAnOp() {
             return this.buffer.isUserAnOp(this.network.nick);
         },
-
-        inviteableUsers() {
+        invitableUsers() {
             const wantedBuffer = (userBuffer) => userBuffer.buffer.name === this.buffer.name;
             return Object.values(this.network.users)
                 .filter((user) => !Object.values(user.buffers).find(wantedBuffer))
