@@ -61,8 +61,20 @@
                 </a>
             </span>
             <div
-                v-if="props.message.bodyTemplate && props.message.bodyTemplate.$el"
+                v-if="props.message.bodyTemplate &&
+                    props.message.bodyTemplate.$el &&
+                    props.ml.isTemplateVue(props.message.bodyTemplate)"
                 v-rawElement="props.message.bodyTemplate.$el"
+                class="kiwi-messagelist-body"
+            />
+            <component
+                :is="props.message.bodyTemplate"
+                v-else-if="props.message.bodyTemplate"
+                v-bind="props.message.bodyTemplateProps"
+                :buffer="props.ml.buffer"
+                :message="props.message"
+                :idx="props.idx"
+                :ml="props.ml"
                 class="kiwi-messagelist-body"
             />
             <div

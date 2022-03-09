@@ -54,18 +54,18 @@
             class="kiwi-aboutbuffer-section"
         >
             <h4 @click="toggleSection(plugin.id)">
-                <i class="fa fa-angle-right" /> {{ plugin.args.title }}
+                <i class="fa fa-angle-right" /> {{ plugin.title() }}
             </h4>
-            <div
-                v-rawElement="{
-                    el: plugin.el,
-                    props: {
-                        kiwi: {
-                            buffer: buffer,
-                            aboutbuffer: self,
-                        }
-                    }
+            <component
+                :is="plugin.component"
+                :plugin-props="{
+                    buffer: buffer,
+                    aboutbuffer: self,
                 }"
+                v-bind="plugin.props"
+                :network="network"
+                :buffer="buffer"
+                :sidebar-state="sidebarState"
             />
         </div>
     </div>

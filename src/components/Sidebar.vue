@@ -12,10 +12,10 @@
         <template v-if="sidebarState.activeComponent">
             <component
                 :is="sidebarState.activeComponent"
+                v-bind="sidebarState.activeComponentProps"
                 :network="network"
                 :buffer="buffer"
                 :sidebar-state="sidebarState"
-                v-bind="sidebarState.activeComponentProps"
             />
         </template>
         <template v-else-if="buffer">
@@ -26,8 +26,8 @@
                     @click.stop=""
                 >
 
-                    <tabbed-view>
-                        <tabbed-tab :header="$t('settings')" :focus="true">
+                    <tabbed-view ref="tabs">
+                        <tabbed-tab :header="$t('settings')" :focus="true" name="settings">
                             <h3>{{ $t('channel_settings') }}</h3>
                             <hr>
                             <channel-info :buffer="buffer" />
@@ -67,7 +67,7 @@
                                 </form>
                             </div>
                         </tabbed-tab>
-                        <tabbed-tab :header="$t('access')">
+                        <tabbed-tab :header="$t('access')" name="access">
                             <a
                                 :class="{
                                     'kiwi-sidebar-accesstab--active': accessTab === 'banlist'
@@ -89,15 +89,22 @@
                             <channel-banlist v-if="accessTab==='banlist'" :buffer="buffer" />
                             <channel-invitelist v-if="accessTab==='invitelist'" :buffer="buffer" />
                         </tabbed-tab>
-                        <tabbed-tab :header="$t('notifications')">
+                        <tabbed-tab :header="$t('notifications')" name="notifications">
                             <buffer-settings :buffer="buffer" />
                         </tabbed-tab>
                         <tabbed-tab
                             v-for="item in pluginUiElements"
                             :key="item.id"
-                            :header="item.title"
+                            :header="item.title()"
+                            :name="item.tabName"
                         >
-                            <div :is="item.component" v-bind="item.props" />
+                            <component
+                                :is="item.component"
+                                v-bind="item.props"
+                                :network="network"
+                                :buffer="buffer"
+                                :sidebar-state="sidebarState"
+                            />
                         </tabbed-tab>
                     </tabbed-view>
                 </div>
@@ -258,6 +265,16 @@ export default {
             }
 
             return type;
+        },
+    },
+    created() {
+        this.listen(this.$state, 'sidebar.tab.show', (tabName) => {
+            this.showTab(tabName);
+        });
+    },
+    methods: {
+        showTab(tabName) {
+            this.$refs.tabs.setActiveByName(tabName);
         },
     },
 };

@@ -13,18 +13,18 @@
                 :key="buffer.id"
                 class="kiwi-header-options"
             >
-                <div
+                <component
+                    :is="plugin.component"
                     v-for="plugin in pluginUiChannelElements"
                     :key="plugin.id"
-                    v-rawElement="{
-                        el: plugin.el,
-                        props: {
-                            kiwi: {
-                                buffer: buffer,
-                                containerheader: self,
-                            }
-                        }
+                    :plugin-props="{
+                        buffer: buffer,
+                        containerheader: self,
                     }"
+                    v-bind="plugin.props"
+                    :network="network"
+                    :buffer="buffer"
+                    :sidebar-state="sidebarState"
                     class="kiwi-header-option"
                 />
                 <div
@@ -125,18 +125,18 @@
                         <i class="fa fa-user" aria-hidden="true" />
                     </a>
                 </div>
-                <div
+                <component
+                    :is="plugin.component"
                     v-for="plugin in pluginUiQueryElements"
                     :key="plugin.id"
-                    v-rawElement="{
-                        el: plugin.el,
-                        props: {
-                            kiwi: {
-                                buffer: buffer,
-                                containerheader: self,
-                            }
-                        }
+                    :plugin-props="{
+                        buffer: buffer,
+                        containerheader: self,
                     }"
+                    v-bind="plugin.props"
+                    :network="network"
+                    :buffer="buffer"
+                    :sidebar-state="sidebarState"
                     class="kiwi-header-option"
                 />
             </div>

@@ -16,17 +16,16 @@
         />
 
         <div class="kiwi-statebrowser-tools">
-            <div
+            <component
+                :is="plugin.component"
                 v-for="plugin in pluginUiElements"
                 :key="plugin.id"
-                v-rawElement="{
-                    el: plugin.el,
-                    props: {
-                        kiwi: {
-                            statebrowser: self,
-                        }
-                    }
+                :plugin-props="{
+                    statebrowser: self,
                 }"
+                v-bind="plugin.props"
+                :networks="networks"
+                :sidebar-state="sidebarState"
                 class="kiwi-statebrowser-tool"
             />
         </div>

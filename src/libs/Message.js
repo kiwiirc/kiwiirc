@@ -40,8 +40,10 @@ export default class Message {
         def(this, 'hasRendered', false);
         // template should be null or a Vue component to render this message
         def(this, 'template', message.template || null);
+        def(this, 'templateProps', message.templateProps || {});
         // bodyTemplate should be null or a Vue component to render in the body of the message
         def(this, 'bodyTemplate', message.bodyTemplate || null);
+        def(this, 'bodyTemplateProps', message.bodyTemplateProps || {});
         def(this, 'isHighlight', false);
 
         // We don't want the user object to be enumerable

@@ -22,7 +22,12 @@
                 :sandbox="iframeSandboxOptions"
                 class="kiwi-mediaviewer-iframe"
             />
-            <component :is="component" v-else-if="component" :component-props="componentProps" />
+            <component
+                :is="component"
+                v-else-if="component"
+                :component-props="componentProps"
+                v-bind="componentProps"
+            />
             <url-embed
                 v-else
                 :url="url"
