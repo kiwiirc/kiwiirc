@@ -31,6 +31,10 @@ export default class GlobalApi extends EventEmitter {
         this.state = null;
         /** The applications ThemeManager */
         this.themes = null;
+        /** Translations library */
+        this.i18n = null;
+        this.vueI18n = null;
+
         this.controlInputPlugins = [];
         this.stateBrowserPlugins = [];
         this.channelHeaderPlugins = [];
@@ -245,7 +249,7 @@ export default class GlobalApi extends EventEmitter {
     }
 
     /**
-     * Show a Vuejs component in the sidebar
+     * Show a Vue.js component in the sidebar
      * @param {Object} component The vue.js component object to render
      * @param {Object} props Optional properties for the vue.js component
      */
@@ -277,5 +281,39 @@ export default class GlobalApi extends EventEmitter {
         }
 
         Misc.replaceObjectProps(mod, source);
+    }
+
+    /**
+     * Add default config params for a plugin
+     * @param {String} namespace Base config location eg: 'plugin-conference'
+     * @param {Object} defaultConfig Configuration object
+     */
+    setConfigDefaults(namespace, defaultConfig) {
+        let base = `settings.${namespace}`;
+        let getSetting = (key) => this.state.getSetting(`${base}.${key}`);
+        let setSetting = (key, value) => this.state.setSetting(`${base}.${key}`, value);
+        let walkConfig = (obj, _target) => {
+            _.each(obj, (val, key) => {
+                let target = [..._target, key];
+                let targetName = target.join('.');
+                if (typeof val === 'object' && !_.isArray(val)) {
+                    walkConfig(val, target);
+                } else if (typeof getSetting(targetName) === 'undefined') {
+                    setSetting(targetName, val);
+                }
+            });
+        };
+        walkConfig(defaultConfig, []);
+    }
+
+    /**
+     * Add translations for use in a plugin
+     * @param {String} namespace Translations namespace eg: 'plugin-conference'
+     * @param {Object} translations Translations object
+     */
+    addTranslations(namespace, translations) {
+        Object.entries(translations).forEach(([lang, data]) => {
+            this.i18n.addResourceBundle(lang, namespace, data);
+        });
     }
 }
