@@ -5,6 +5,7 @@
 import EventEmitter from 'eventemitter3';
 import Vue from 'vue';
 import JSON5 from 'json5';
+import urlJoin from 'url-join';
 import _ from 'lodash';
 import compareVersions from 'compare-versions';
 import * as Misc from '@/helpers/Misc';
@@ -34,6 +35,7 @@ export default class GlobalApi extends EventEmitter {
         /** Translations library */
         this.i18n = null;
         this.vueI18n = null;
+        this.translationUrls = Object.create(null);
 
         this.controlInputPlugins = [];
         this.stateBrowserPlugins = [];
@@ -315,5 +317,15 @@ export default class GlobalApi extends EventEmitter {
         Object.entries(translations).forEach(([lang, data]) => {
             this.i18n.addResourceBundle(lang, namespace, data);
         });
+    }
+
+    /**
+     * Add url path to translation files
+     * @param {String} namespace Translations namespace eg: 'plugin-conference'
+     * @param {String} url Translations url path
+     */
+    addTranslationFiles(namespace, url) {
+        this.translationUrls[namespace] = urlJoin(url, '{{lng}}.json');
+        this.i18n.loadNamespaces(namespace);
     }
 }
