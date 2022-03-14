@@ -5,7 +5,6 @@
 import EventEmitter from 'eventemitter3';
 import Vue from 'vue';
 import JSON5 from 'json5';
-import urlJoin from 'url-join';
 import _ from 'lodash';
 import compareVersions from 'compare-versions';
 import * as Misc from '@/helpers/Misc';
@@ -322,10 +321,14 @@ export default class GlobalApi extends EventEmitter {
     /**
      * Add url path to translation files
      * @param {String} namespace Translations namespace eg: 'plugin-conference'
-     * @param {String} url Translations url path
+     * @param {String} url Translations url path, supported replacements: {{lng}} {{ns}}
+     * @param {Object} fallbackLocale Optional fallback 'en-us' locale data from bundle
      */
-    addTranslationFiles(namespace, url) {
-        this.translationUrls[namespace] = urlJoin(url, '{{lng}}.json');
+    addTranslationFiles(namespace, url, fallbackLocale) {
+        this.translationUrls[namespace] = url;
+        if (fallbackLocale) {
+            this.i18n.addResourceBundle('en-us', namespace, fallbackLocale);
+        }
         this.i18n.loadNamespaces(namespace);
     }
 }

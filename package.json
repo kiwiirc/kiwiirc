@@ -34,7 +34,6 @@
     "sockjs-client": "^1.5.2",
     "strftime": "^0.10.0",
     "tinycon": "^0.6.8",
-    "url-join": "^4.0.1",
     "vue": "^2.6.14",
     "vue-virtual-scroller": "^1.0.10",
     "whatwg-fetch": "^3.6.2",
