@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2021-09-27 13:28\n"
+"PO-Revision-Date: 2022-04-08 14:50\n"
 
 #: Start
 msgid "start_button"
@@ -381,7 +381,7 @@ msgstr "Gelişmiş Ayarları Etkinleştir"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Tehlike Bölgesi: Bu ayarların bazılarının değiştirilmesi işleri bozabilir!"
+msgstr "Tehlike Bölgesi: Bu ayarlardan bazılarını değiştirmek bazı şeyleri bozabilir!"
 
 #: Reset
 msgid "settings_advanced_reset"
