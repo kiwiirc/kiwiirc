@@ -268,7 +268,10 @@ function clientMiddleware(state, network) {
 
             if (network.auto_commands) {
                 network.auto_commands.split('\n').forEach((line) => {
-                    state.$emit('input.raw', line[0] === '/' ? line : `/${line}`);
+                    state.$emit('input.raw', line[0] === '/' ? line : `/${line}`, {
+                        network: network,
+                        buffer: serverBuffer,
+                    });
                 });
             }
 
