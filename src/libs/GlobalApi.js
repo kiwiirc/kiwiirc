@@ -285,23 +285,6 @@ export default class GlobalApi extends EventEmitter {
     }
 
     /**
-     * Create a subclass of the base Vue constructor.
-     * @param {Object} options The Vue component object
-     */
-    extend(options) {
-        return Vue.extend(options);
-    }
-
-    /**
-     * Defer a callback to be executed after the next DOM update cycle
-     * @param {Function} callback The callback to execute in the next tick
-     * @param {Object} context The context for the callback
-     */
-    nextTick(callback, context) {
-        return Vue.nextTick(callback, context);
-    }
-
-    /**
      * Add default config params for a plugin
      * @param {String} namespace Base config location eg: 'plugin-conference'
      * @param {Object} defaultConfig Configuration object
@@ -342,6 +325,10 @@ export default class GlobalApi extends EventEmitter {
      * @param {Object} fallbackLocale Optional fallback 'en-us' locale data from bundle
      */
     addTranslationFiles(namespace, url, fallbackLocale) {
+        if (!url.includes('{{lng}}')) {
+            this.log.error('A plugin tried to addTranslationsFiles() without {{lng}} in the url');
+            return;
+        }
         this.translationUrls[namespace] = url;
         if (fallbackLocale) {
             this.i18n.addResourceBundle('en-us', namespace, fallbackLocale);

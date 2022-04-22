@@ -279,7 +279,7 @@ export default {
             if (isVue && !window.kiwi_deprecations_messageTemplate) {
                 window.kiwi_deprecations_messageTemplate = true;
                 // eslint-disable-next-line no-console
-                console.warn('deprecated message.template or message.bodyTemplate, please use vue.js component object');
+                console.warn('deprecated message.template or message.bodyTemplate, please use `message.template = kiwi.Vue.extend(component object)`');
             }
             return isVue;
         },
