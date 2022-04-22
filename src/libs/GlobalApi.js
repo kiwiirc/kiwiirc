@@ -271,7 +271,7 @@ export default class GlobalApi extends EventEmitter {
     }
 
     /**
-     *
+     * Replace an existing kiwiirc component/module with a custom one
      * @param {String} dest The module path to replace
      * @param {Object} source The new module to insert in place
      */
@@ -282,6 +282,23 @@ export default class GlobalApi extends EventEmitter {
         }
 
         Misc.replaceObjectProps(mod, source);
+    }
+
+    /**
+     * Create a subclass of the base Vue constructor.
+     * @param {Object} options The Vue component object
+     */
+    extend(options) {
+        return Vue.extend(options);
+    }
+
+    /**
+     * Defer a callback to be executed after the next DOM update cycle
+     * @param {Function} callback The callback to execute in the next tick
+     * @param {Object} context The context for the callback
+     */
+    nextTick(callback, context) {
+        return Vue.nextTick(callback, context);
     }
 
     /**
