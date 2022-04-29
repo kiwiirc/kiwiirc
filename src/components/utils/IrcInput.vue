@@ -291,6 +291,8 @@ export default Vue.component('irc-input', {
                 }
 
                 this.updateValueProps();
+            } else {
+                this.maybeEmitInput();
             }
         },
         resetStyles() {
