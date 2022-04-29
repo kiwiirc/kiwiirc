@@ -626,6 +626,9 @@ export default {
         },
         focusChanged(event) {
             this.has_focus = event.type === 'focus';
+
+            // iOS does not populate relatedTarget when the relatedTarget is the send button
+            // leaving it impossible to detect if returning focus is required
             if (
                 event.type === 'blur' &&
                 event.relatedTarget &&
