@@ -52,11 +52,6 @@
                aria-hidden="true"
             />
         </div>
-
-        <captcha
-            class="kiwi-notconnected-captcha"
-            :network="network"
-        />
     </div>
 </template>
 
@@ -64,12 +59,7 @@
 
 'kiwi public';
 
-import Captcha from '@/components/Captcha';
-
 export default {
-    components: {
-        Captcha,
-    },
     props: ['buffer', 'network'],
     data() {
         return {
@@ -167,11 +157,6 @@ export default {
     position: relative;
     right: -3px;
     top: 3px;
-}
-
-.kiwi-notconnected-captcha {
-    display: inline-block;
-    margin-left: 3em;
 }
 
 .kiwi-notconnected-buttons {

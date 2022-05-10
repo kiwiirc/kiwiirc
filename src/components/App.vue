@@ -57,6 +57,7 @@
                 <component :is="activeComponent" v-else v-bind="activeComponentProps" />
             </div>
         </template>
+        <captcha />
     </div>
 </template>
 
@@ -78,6 +79,7 @@ import AppSettings from '@/components/AppSettings';
 import Container from '@/components/Container';
 import ControlInput from '@/components/ControlInput';
 import MediaViewer from '@/components/MediaViewer';
+import Captcha from '@/components/Captcha';
 import { State as SidebarState } from '@/components/Sidebar';
 import * as Notifications from '@/libs/Notifications';
 import * as bufferTools from '@/libs/bufferTools';
@@ -92,6 +94,7 @@ export default {
         Container,
         ControlInput,
         MediaViewer,
+        Captcha,
     },
     data() {
         return {

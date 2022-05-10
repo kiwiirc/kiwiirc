@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div v-if="showCaptcha" ref="captchacontainer" />
+    <div class="kiwi-captcha-outer" :class="{'kiwi-captcha-show': visible}">
+        <div ref="container" class="kiwi-captcha-container" />
     </div>
 </template>
 
@@ -9,68 +9,135 @@
 'kiwi public';
 
 export default {
-    props: ['network'],
     data() {
         return {
-            recaptchaUrl: '',
-            recaptchaSiteId: '',
-            recaptchaResponse: '',
-            showCaptcha: false,
+            url: '',
+            siteId: '',
+            response: '',
+            responseTimeout: 0,
+            visible: false,
+            loaded: false,
+            networks: [],
         };
     },
     created() {
         let options = this.$state.settings.startupOptions;
-        this.recaptchaSiteId = options.recaptchaSiteId || '';
-        this.recaptchaUrl = options.recaptchaUrl || 'https://www.google.com/recaptcha/api.js';
-
-        this.listen(this.$state, 'network.connecting', (event) => {
-            event.network.ircClient.once('socket connected', () => {
-                if (this.recaptchaResponse) {
-                    event.network.ircClient.raw('CAPTCHA', this.recaptchaResponse);
-                }
-            });
-        });
+        this.siteId = options.captchaSiteId || options.recaptchaSiteId || '';
+        this.url = options.captchaUrl || options.recaptchaUrl;
+        this.url = this.url || 'https://www.google.com/recaptcha/api.js';
 
         this.listen(this.$state, 'irc.raw.CAPTCHA', (command, event, network) => {
-            if (network !== this.network) {
+            if (event.params[0] !== 'NEEDED') {
                 return;
             }
 
-            if (event.params[0] === 'NEEDED') {
-                this.loadRecaptcha();
+            if (this.response) {
+                // We already have a valid response
+                this.sendResponse(network);
+                return;
             }
+
+            this.addNetwork(network);
+            this.showCaptcha();
         });
     },
     methods: {
-        loadRecaptcha() {
-            this.showCaptcha = true;
+        showCaptcha() {
+            this.visible = true;
 
-            // Recaptcha calls this callback once it's loaded and ready to be used
-            window.recaptchaLoaded = () => {
-                window.grecaptcha.render(this.$refs.captchacontainer, {
-                    sitekey: this.recaptchaSiteId,
-                    callback: this.recaptchaSuccess,
-                    'expired-callback': this.recaptchaExpired,
+            if (this.loaded) {
+                return;
+            }
+            this.loaded = true;
+
+            this.$nextTick(() => {
+                // Recaptcha calls this callback once it's loaded and ready to be used
+                window.recaptchaLoaded = () => {
+                    window.grecaptcha.render(this.$refs.container, {
+                        sitekey: this.siteId,
+                        callback: this.captchaSuccess,
+                        'expired-callback': this.captchaExpired,
+                    });
+                };
+
+                let scr = document.createElement('script');
+                scr.src = this.url + '?onload=recaptchaLoaded&render=explicit';
+                scr.defer = true;
+                this.$el.appendChild(scr);
+            });
+        },
+        captchaSuccess(response) {
+            this.response = response;
+            if (this.responseTimeout) {
+                clearTimeout(this.responseTimeout);
+                this.responseTimeout = 0;
+            }
+
+            // Control our own timeout
+            this.setTimeout(this.captchaExpired, 60000);
+
+            const network = this.networks.pop();
+
+            const remainingNetworks = () => {
+                // First network connected response will be cached,
+                // send response to remaining networks
+                network.ircClient.off('close', remainingNetworks);
+                network.ircClient.off('registered', remainingNetworks);
+                this.networks.forEach((net) => {
+                    if (net.state === 'connecting') {
+                        this.sendResponse(net);
+                    }
                 });
+                this.networks.length = 0;
             };
 
-            let scr = document.createElement('script');
-            scr.src = this.recaptchaUrl + '?onload=recaptchaLoaded&render=explicit';
-            scr.defer = true;
-            this.$el.appendChild(scr);
-        },
-        recaptchaSuccess(response) {
-            this.recaptchaResponse = response;
+            network.ircClient.once('close', remainingNetworks);
+            network.ircClient.once('registered', remainingNetworks);
 
-            // If we have a network instance already, send the captcha response
-            if (this.network && this.network.state === 'connecting') {
-                this.network.ircClient.raw('CAPTCHA', response);
-            }
-            this.showCaptcha = false;
+            this.sendResponse(network);
+            this.visible = false;
         },
-        recaptchaExpired() {
-            this.recaptchaResponse = '';
+        captchaExpired() {
+            this.response = '';
+            if (this.responseTimeout) {
+                clearTimeout(this.responseTimeout);
+                this.responseTimeout = 0;
+            }
+            window.grecaptcha.reset();
+        },
+        addNetwork(network) {
+            if (this.networks.includes(network)) {
+                return;
+            }
+            this.networks.push(network);
+        },
+        sendResponse(network) {
+            network.ircClient.raw('CAPTCHA', this.response);
         },
     },
 };
 </script>
+
+<style scoped>
+    .kiwi-captcha-outer {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 101;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .kiwi-captcha-container {
+        display: block;
+        padding: 2em;
+        border-radius: 0.8em;
+    }
+
+    .kiwi-captcha-show {
+        display: flex;
+    }
+</style>
