@@ -1,7 +1,7 @@
 <template>
     <div>
-        <img src="../res/kiwiLoadingLogo.png" class="kiwi-loading-logo">
-        <canvas class="kiwi-loading-animation" />
+        <img ref="kiwi-loading-logo" src="../res/kiwiLoadingLogo.png" class="kiwi-loading-logo">
+        <canvas ref="kiwi-loading-canvas" class="kiwi-loading-animation" />
     </div>
 </template>
 
@@ -25,8 +25,8 @@ export default {
         };
     },
     mounted() {
-        this.logo = this.$el.querySelector('.kiwi-loading-logo');
-        this.c = this.$el.querySelector('.kiwi-loading-animation');
+        this.logo = this.$refs['kiwi-loading-logo'];
+        this.c = this.$refs['kiwi-loading-canvas'];
         this.x = this.c.getContext('2d');
         let tmpText = '';
         for (let i = 0; i < 9; i += 1) tmpText += this.text;
