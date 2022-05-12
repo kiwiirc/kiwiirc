@@ -179,7 +179,7 @@ function matchUser(word, userList) {
     }
 
     let user = null;
-    let punc = ',.!:;-+)]?¿\\/<>@';
+    let punc = ',.!:;+)]?¿\\/<>@';
     let hasProp = Object.prototype.hasOwnProperty;
     let nickIdx = 0;
 
