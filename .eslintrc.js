@@ -22,8 +22,8 @@ module.exports = {
     ],
     // add your custom rules here
     rules: {
-        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
         'rulesdir/class-name-prefix': 'warn',
         'class-methods-use-this': 0,
         'comma-dangle': ['error', {
