@@ -309,6 +309,17 @@ function clientMiddleware(state, network) {
                     message: event.params[2],
                     type: 'error',
                 });
+
+                if (
+                    event.command === '477' &&
+                    buffer.isChannel() &&
+                    buffer.enabled &&
+                    !buffer.joined
+                ) {
+                    // The buffer we tried to join requires a registered nick,
+                    // disable it until the user manually tries to rejoin
+                    buffer.enabled = false;
+                }
             } else {
                 let buffer = network.serverBuffer();
                 let message = '';
