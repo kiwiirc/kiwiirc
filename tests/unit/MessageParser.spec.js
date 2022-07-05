@@ -9,6 +9,12 @@ describe('MessageParser.js', () => {
             ['#channel.', '#channel'],
             ['#chan;el;', '#chan;el'],
             ['#chan[n]el,', '#chan[n]el'],
+            ['#channel.name,', '#channel.name'],
+            ['#channel.name.,', '#channel.name'],
+            ['#channel.,', '#channel'],
+            ['#channel-name,', '#channel-name'],
+            ['#channel_name,', '#channel_name'],
+            ['#channel&name,', '#channel&name'],
             ['@#channel:', '#channel'],
             ['@&channel,', '&channel'],
             ['&@#channel,', '#channel'],
@@ -73,6 +79,9 @@ describe('MessageParser.js', () => {
             TESTNICK1: { nick: 'TestNick1', username: 'testnick1', colour: '#a1fc5d' },
             TESTNICK2: { nick: 'TestNick2', username: 'testnick2', colour: '#7363fe' },
             TESTNICK3: { nick: 'TestNick3', username: 'testnick3' },
+            TESTNICK4_: { nick: 'Test-Nick4_', username: 'testnick4' },
+            'TEST-NICK5': { nick: 'Test-Nick5', username: 'testnick5' },
+            'TESTNICK6-': { nick: 'TestNick6-', username: 'testnick6' },
         };
         let tests = [
             ['testnick1', 'testnick1'],
@@ -82,6 +91,9 @@ describe('MessageParser.js', () => {
             ['testnick1:', 'testnick1'],
             ['@testnick2', 'testnick2'],
             ['@TestNick2:', 'TestNick2'],
+            ['tEsTnIcK4_.', 'tEsTnIcK4_'],
+            ['test-nick5'],
+            ['testnick6-'],
         ];
 
         tests.forEach((c) => {

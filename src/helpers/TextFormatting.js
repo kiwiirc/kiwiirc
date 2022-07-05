@@ -33,7 +33,7 @@ export const urlRegex = new RegExp(
     'i'
 );
 
-export const channelRegex = /(^|\s)([@+~&%}]*)([#&][^ .,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i;
+export const channelRegex = /(^|\s)([@+~&%}]*)([#&][^ ,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i;
 
 export function linkifyChannels(word) {
     // "@#kiwiirc," = 3 parts. (prefix=@)(channel=#kiwiirc)(suffix=,)
