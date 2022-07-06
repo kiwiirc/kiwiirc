@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2022-07-05 21:52\n"
+"PO-Revision-Date: 2022-07-06 00:08\n"
 
 #: Start
 msgid "start_button"
@@ -1093,7 +1093,7 @@ msgstr "{{nick}} vous a invité à joindre {{channel}}"
 
 #: {{nick}} invited {{invited}} to join {{channel}}
 msgid "invited_other"
-msgstr "{{nick}} invited {{invited}} to join {{channel}}"
+msgstr "{{nick}} a invité {{invited}} à joindre {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
