@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2022-07-13 16:48\n"
+"PO-Revision-Date: 2022-07-13 17:47\n"
 
 #: Start
 msgid "start_button"
@@ -845,7 +845,7 @@ msgstr "The nickname '{{nick}}' is invalid!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "你必须输入一个新昵称"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
@@ -953,7 +953,7 @@ msgstr "Send a raw command to the IRC server"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Kick somebody from the channel"
+msgstr "将某个用户踢出频道"
 
 #: Clear all messages from this window
 msgid "command_clear"
@@ -965,7 +965,7 @@ msgstr "Send a CTCP command to somebody"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Disconnect from the IRC server"
+msgstr "断开与IRC服务器的连接"
 
 #: Connect to a new IRC network
 msgid "command_server"
