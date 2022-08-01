@@ -586,6 +586,12 @@ function createNewState() {
                 if (buffer.setting('traffic_as_activity') && message.type === 'traffic') {
                     typesForActivty.push('traffic');
                 }
+                if (buffer.setting('unknown_as_activity') && buffer.isServer()) {
+                    typesForActivty.push('unknown');
+                }
+                if (buffer.setting('error_as_activity') && buffer.isServer()) {
+                    typesForActivty.push('error');
+                }
 
                 if (typesForActivty.indexOf(message.type) > -1) {
                     includeAsActivity = true;

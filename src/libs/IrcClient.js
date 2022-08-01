@@ -298,10 +298,57 @@ function clientMiddleware(state, network) {
 
         // Show unhandled data from the server in the servers tab
         if (command === 'unknown command') {
-            if (event.command === '486' || event.command === '477') {
-                // You must log in with services to message this user
+            let buffer = network.serverBuffer();
+            let message = '';
+            let containsNick = event.params[0] === network.ircClient.user.nick;
+            let isChannelMessage = network.isChannelName(event.params[1]);
+
+            if (['486', '477'].includes(event.command)) {
+                // Messages from these events don't need the nick from params[0]
+                message = event.params[2];
+            } else if (containsNick && isChannelMessage) {
+                // This error is aimed at us and has a target channel
+                // replace the target buffer and remove unneeded params
+                let channelBuffer = network.bufferByName(event.params[1]);
+                if (channelBuffer) {
+                    buffer = channelBuffer;
+                }
+                message += event.params.slice(2).join(', ');
+            } else if (containsNick) {
+                // Strip out our nick if it's the first params (many commands include this)
+                message += event.params.slice(1).join(', ');
+            } else {
+                message += event.params.join(', ');
+            }
+
+            let type = 'unknown';
+            // unknown type increments unread counter within the server buffer (if enabled)
+            // adding types here will prevent that counter from increasing
+            const knownTypes = {
+                '003': 'greeting',    // RPL_CREATED
+                '004': 'greeting',    // RPL_MYINFO
+                '251': 'lusers',      // RPL_LUSERCLIENT
+                '252': 'lusers',      // RPL_LUSEROP
+                '253': 'lusers',      // RPL_LUSERUNKNOWN
+                '254': 'lusers',      // RPL_LUSERCHANNELS
+                '255': 'lusers',      // RPL_LUSERME
+                '265': 'userslocal',  // RPL_LOCALUSERS
+                '266': 'usersglobal', // RPL_GLOBALUSERS
+            };
+            if (Object.keys(knownTypes).includes(event.command)) {
+                type = knownTypes[event.command];
+            }
+
+            // Numerics for restrictions on sending messages to channels/users
+            const restrictedMessages = [
+                '486', // ERR_NONONREG old numeric used by unreal42
+                '477', // ERR_NEEDREGGEDNICK
+                '716', // RPL_TARGUMODEG
+                '717', // RPL_TARGNOTIFY
+            ];
+            if (restrictedMessages.includes(event.command)) {
                 let targetNick = event.params[1];
-                let buffer = state.getOrAddBufferByName(network.id, targetNick);
+                buffer = state.getOrAddBufferByName(network.id, targetNick);
 
                 // Only add this message if it does not match the previous message
                 // Typing status messages can cause a spam of this error type
@@ -309,7 +356,7 @@ function clientMiddleware(state, network) {
                     time: eventTime,
                     server_time: serverTime,
                     nick: '*',
-                    message: event.params[2],
+                    message: message,
                     type: 'error',
                 });
 
@@ -324,33 +371,17 @@ function clientMiddleware(state, network) {
                     buffer.enabled = false;
                 }
             } else {
-                let buffer = network.serverBuffer();
-                let message = '';
-
                 // Only show non-numeric commands
                 if (!event.command.match(/^\d+$/)) {
-                    message += event.command + ' ';
-                }
-
-                let containsNick = event.params[0] === network.ircClient.user.nick;
-                let isChannelMessage = network.isChannelName(event.params[1]);
-
-                // Strip out the nick if it's the first params (many commands include this)
-                if (containsNick && isChannelMessage) {
-                    let channelBuffer = network.bufferByName(event.params[1]);
-                    if (channelBuffer) {
-                        buffer = channelBuffer;
-                    }
-                    message += event.params.slice(2).join(', ');
-                } else if (containsNick) {
-                    message += event.params.slice(1).join(', ');
-                } else {
-                    message += event.params.join(', ');
+                    message += `${event.command}`;
                 }
 
                 state.addMessage(buffer, {
+                    time: eventTime,
+                    server_time: serverTime,
                     nick: '',
                     message: message,
+                    type: type,
                 });
             }
         }
@@ -1342,8 +1373,12 @@ function clientMiddleware(state, network) {
                     network.last_error = event.reason;
                 }
 
+                let messageRaw = event.reason || event.error;
+                if (event.error === 'unknown_command') {
+                    messageRaw = `${messageRaw} "${event.command}"`;
+                }
                 let messageBody = TextFormatting.formatText('general_error', {
-                    text: event.reason || event.error,
+                    text: messageRaw,
                 });
 
                 let message = {
