@@ -112,6 +112,7 @@ export function create(state, network) {
             time: Date.now(),
             nick: '',
             message: (event.from_server ? '[S] ' : '[C] ') + event.line,
+            type: 'raw',
         });
     });
 
@@ -299,13 +300,35 @@ function clientMiddleware(state, network) {
         // Show unhandled data from the server in the servers tab
         if (command === 'unknown command') {
             let buffer = network.serverBuffer();
-            let message = '';
             let containsNick = event.params[0] === network.ircClient.user.nick;
             let isChannelMessage = network.isChannelName(event.params[1]);
 
+            let messageObj = {
+                time: eventTime,
+                server_time: serverTime,
+                nick: '*',
+            };
+
+            // unknown type increments unread counter within the server buffer (if enabled)
+            // adding types here will prevent that counter from increasing
+            const knownTypes = [
+                '003', // RPL_CREATED
+                '004', // RPL_MYINFO
+                '251', // RPL_LUSERCLIENT
+                '252', // RPL_LUSEROP
+                '253', // RPL_LUSERUNKNOWN
+                '254', // RPL_LUSERCHANNELS
+                '255', // RPL_LUSERME
+                '265', // RPL_LOCALUSERS
+                '266', // RPL_GLOBALUSERS
+            ];
+            if (!knownTypes.includes(event.command)) {
+                messageObj.type = 'unknown';
+            }
+
             if (['486', '477'].includes(event.command)) {
                 // Messages from these events don't need the nick from params[0]
-                message = event.params[2];
+                messageObj.message = event.params[2];
             } else if (containsNick && isChannelMessage) {
                 // This error is aimed at us and has a target channel
                 // replace the target buffer and remove unneeded params
@@ -313,30 +336,12 @@ function clientMiddleware(state, network) {
                 if (channelBuffer) {
                     buffer = channelBuffer;
                 }
-                message += event.params.slice(2).join(', ');
+                messageObj.message += event.params.slice(2).join(', ');
             } else if (containsNick) {
                 // Strip out our nick if it's the first params (many commands include this)
-                message += event.params.slice(1).join(', ');
+                messageObj.message += event.params.slice(1).join(', ');
             } else {
-                message += event.params.join(', ');
-            }
-
-            let type = 'unknown';
-            // unknown type increments unread counter within the server buffer (if enabled)
-            // adding types here will prevent that counter from increasing
-            const knownTypes = {
-                '003': 'greeting',    // RPL_CREATED
-                '004': 'greeting',    // RPL_MYINFO
-                '251': 'lusers',      // RPL_LUSERCLIENT
-                '252': 'lusers',      // RPL_LUSEROP
-                '253': 'lusers',      // RPL_LUSERUNKNOWN
-                '254': 'lusers',      // RPL_LUSERCHANNELS
-                '255': 'lusers',      // RPL_LUSERME
-                '265': 'userslocal',  // RPL_LOCALUSERS
-                '266': 'usersglobal', // RPL_GLOBALUSERS
-            };
-            if (Object.keys(knownTypes).includes(event.command)) {
-                type = knownTypes[event.command];
+                messageObj.message += event.params.join(', ');
             }
 
             // Numerics for restrictions on sending messages to channels/users
@@ -347,18 +352,11 @@ function clientMiddleware(state, network) {
                 '717', // RPL_TARGNOTIFY
             ];
             if (restrictedMessages.includes(event.command)) {
-                let targetNick = event.params[1];
-                buffer = state.getOrAddBufferByName(network.id, targetNick);
-
+                buffer = state.getOrAddBufferByName(network.id, event.params[1]);
+                messageObj.type = 'error';
                 // Only add this message if it does not match the previous message
                 // Typing status messages can cause a spam of this error type
-                state.addMessageNoRepeat(buffer, {
-                    time: eventTime,
-                    server_time: serverTime,
-                    nick: '*',
-                    message: message,
-                    type: 'error',
-                });
+                state.addMessageNoRepeat(buffer, messageObj);
 
                 if (
                     event.command === '477' &&
@@ -373,16 +371,10 @@ function clientMiddleware(state, network) {
             } else {
                 // Only show non-numeric commands
                 if (!event.command.match(/^\d+$/)) {
-                    message += `${event.command}`;
+                    messageObj.message += `${event.command}`;
                 }
 
-                state.addMessage(buffer, {
-                    time: eventTime,
-                    server_time: serverTime,
-                    nick: '',
-                    message: message,
-                    type: type,
-                });
+                state.addMessage(buffer, messageObj);
             }
         }
 
