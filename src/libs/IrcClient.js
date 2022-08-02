@@ -311,7 +311,7 @@ function clientMiddleware(state, network) {
 
             // unknown type increments unread counter within the server buffer (if enabled)
             // adding types here will prevent that counter from increasing
-            const knownTypes = [
+            const knownNumerics = [
                 '003', // RPL_CREATED
                 '004', // RPL_MYINFO
                 '251', // RPL_LUSERCLIENT
@@ -322,7 +322,7 @@ function clientMiddleware(state, network) {
                 '265', // RPL_LOCALUSERS
                 '266', // RPL_GLOBALUSERS
             ];
-            if (!knownTypes.includes(event.command)) {
+            if (!knownNumerics.includes(event.command)) {
                 messageObj.type = 'unknown';
             }
 
