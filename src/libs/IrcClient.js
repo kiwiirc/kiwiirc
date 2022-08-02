@@ -306,7 +306,7 @@ function clientMiddleware(state, network) {
             let messageObj = {
                 time: eventTime,
                 server_time: serverTime,
-                nick: '*',
+                nick: '',
             };
 
             // unknown type increments unread counter within the server buffer (if enabled)
@@ -336,12 +336,12 @@ function clientMiddleware(state, network) {
                 if (channelBuffer) {
                     buffer = channelBuffer;
                 }
-                messageObj.message += event.params.slice(2).join(', ');
+                messageObj.message = event.params.slice(2).join(', ');
             } else if (containsNick) {
                 // Strip out our nick if it's the first params (many commands include this)
-                messageObj.message += event.params.slice(1).join(', ');
+                messageObj.message = event.params.slice(1).join(', ');
             } else {
-                messageObj.message += event.params.join(', ');
+                messageObj.message = event.params.join(', ');
             }
 
             // Numerics for restrictions on sending messages to channels/users
