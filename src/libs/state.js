@@ -591,6 +591,10 @@ function createNewState() {
                     includeAsActivity = true;
                 }
 
+                if (buffer.setting('server_as_activity') && buffer.isServer()) {
+                    includeAsActivity = true;
+                }
+
                 let isActiveBuffer = (
                     buffer.networkid === this.ui.active_network &&
                     buffer.name === this.ui.active_buffer
