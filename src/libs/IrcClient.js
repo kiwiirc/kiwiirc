@@ -237,7 +237,7 @@ function clientMiddleware(state, network) {
         }
 
         // Some events are missing time property, try to parse from message-tags if available
-        if (!event.time && event.tags && event.tags.time) {
+        if (event && !event.time && event.tags?.time) {
             event.time = Date.parse(event.tags.time) || undefined;
         }
 
