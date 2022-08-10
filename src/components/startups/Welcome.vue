@@ -380,6 +380,10 @@ export default {
                 net.ircClient.off('irc error', onError);
             };
             let onClosed = () => {
+                let lastError = this.network.last_error;
+                if (lastError && !this.connectErrors.includes(lastError)) {
+                    this.connectErrors.push(lastError);
+                }
                 net.ircClient.off('registered', onRegistered);
                 net.ircClient.off('close', onClosed);
                 net.ircClient.off('irc error', onError);
