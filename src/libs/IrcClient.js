@@ -236,11 +236,6 @@ function clientMiddleware(state, network) {
             return;
         }
 
-        // Some events are missing time property, try to parse from message-tags if available
-        if (event && !event.time && event.tags?.time) {
-            event.time = Date.parse(event.tags.time) || undefined;
-        }
-
         // If there is a time difference between this client and the server, convert it
         // to match our local time so it makes sense to the user
         let eventTime = (event && event.time) ?
