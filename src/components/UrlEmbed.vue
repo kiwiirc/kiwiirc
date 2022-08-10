@@ -24,7 +24,9 @@ export default {
     props: ['url', 'showPin', 'iframeSandboxOptions'],
     data() {
         return {
-            debouncedUpdateEmbed: null,
+            embedlyObject: null,
+            waitTimer: 0,
+            waitCount: 0,
         };
     },
     computed: {
@@ -34,11 +36,15 @@ export default {
     },
     watch: {
         url() {
+            this.cleanEmbed();
             this.updateEmbed();
         },
     },
     created() {
         this.updateEmbed();
+    },
+    beforeDestroy() {
+        this.cleanEmbed();
     },
     methods: {
         updateEmbed() {
@@ -46,11 +52,39 @@ export default {
                 // If the embedly function doesn't exist it's probably still loading
                 // the embedly script
                 if (typeof window.embedly !== 'function') {
-                    setTimeout(checkEmbedlyAndShowCard, 100);
+                    if (this.waitTimer) {
+                        // maybe the url changed and there already is a timer
+                        clearTimeout(this.waitTimer);
+                        this.waitTimer = 0;
+                    }
+                    if (this.waitCount < 300) {
+                        // max wait 30 seconds (30000ms)
+                        this.waitCount++;
+                        this.waitTimer = setTimeout(checkEmbedlyAndShowCard, 100);
+                    }
                     return;
                 }
+
                 this.$nextTick(() => {
-                    window.embedly('card', this.$refs.embedlyLink);
+                    this.embedlyObject = window.embedly('card', this.$refs.embedlyLink);
+                    if (!this.embedlyObject) {
+                        // embedly refused to create a card (maybe unsupported url)
+                        if (this.showPin) {
+                            // showPin is true when its an inline embed
+                            this.$emit('close');
+                        }
+
+                        return;
+                    }
+
+                    this.embedlyObject.on('card.error', (iframe) => {
+                        // not sure this event will be triggered
+                        if (this.showPin) {
+                            // showPin is true when its an inline embed
+                            this.$emit('close');
+                        }
+                    });
+
                     this.$emit('setHeight', 'auto');
 
                     if (this.showPin) {
@@ -64,16 +98,26 @@ export default {
             };
 
             if (!embedlyTagIncluded) {
-                let head = document.getElementsByTagName('head')[0];
-                let script = document.createElement('script');
+                const head = document.getElementsByTagName('head')[0];
+                const script = document.createElement('script');
                 script.type = 'text/javascript';
-                let embedlyUrl = this.$state.getSetting('settings.embedly.script') ||
+                const embedlyUrl = this.$state.getSetting('settings.embedly.script') ||
                     '//cdn.embedly.com/widgets/platform.js';
                 script.src = embedlyUrl;
                 head.appendChild(script);
                 embedlyTagIncluded = true;
             }
             checkEmbedlyAndShowCard();
+        },
+        cleanEmbed() {
+            if (this.waitTimer) {
+                clearTimeout(this.waitTimer);
+                this.waitTimer = 0;
+            }
+            if (this.embedlyObject) {
+                this.embedlyObject.remove();
+                this.embedlyObject = null;
+            }
         },
     },
 };
