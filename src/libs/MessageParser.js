@@ -179,12 +179,12 @@ function matchUser(word, userList) {
     }
 
     let user = null;
-    let punc = ',.!:;-+)]?¿\\/<>@';
+    let punc = ',.!:;+)]?¿\\/<>@';
     let hasProp = Object.prototype.hasOwnProperty;
     let nickIdx = 0;
 
     const trimWord = trim(word, punc);
-    let normWord = trimWord.toLowerCase();
+    let normWord = trimWord.toUpperCase();
 
     if (hasProp.call(userList, normWord)) {
         user = userList[normWord];

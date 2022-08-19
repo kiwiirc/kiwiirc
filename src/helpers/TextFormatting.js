@@ -1,13 +1,13 @@
 'kiwi public';
 
 /** @module */
-
-import getState from '@/libs/state';
-import ThemeManager from '@/libs/ThemeManager';
 import _ from 'lodash';
 import * as ipRegex from 'ip-regex';
 import i18next from 'i18next';
 import * as murmurhash3 from 'murmurhash3js';
+
+import getState from '@/libs/state';
+import ThemeManager from '@/libs/ThemeManager';
 
 export const urlRegex = new RegExp(
     // Detect either a protocol or 'www.' to start a URL
@@ -33,7 +33,7 @@ export const urlRegex = new RegExp(
     'i'
 );
 
-export const channelRegex = /(^|\s)([@+~&%}]*)([#&][^ .,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i;
+export const channelRegex = /(^|\s)([@+~&%}]*)([#&][^ ,\007<>\n\r]+?)([:;.,<>\n\r]+)?$/i;
 
 export function linkifyChannels(word) {
     // "@#kiwiirc," = 3 parts. (prefix=@)(channel=#kiwiirc)(suffix=,)

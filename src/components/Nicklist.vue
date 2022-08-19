@@ -27,7 +27,7 @@
         <DynamicScroller
             :items="sortedUsers"
             :min-item-size="34"
-            :key-field="'nick'"
+            :key-field="'key'"
             class="kiwi-nicklist-users"
         >
             <template v-slot="{ item, index, active }">
@@ -38,7 +38,7 @@
                     :data-index="index"
                 >
                     <nicklist-user
-                        :key="item.nick"
+                        :key="item.key"
                         :user="item"
                         :nicklist="self"
                         :network="network"
@@ -107,20 +107,19 @@ export default {
             // A few things here:
             // * Since vuejs will sort in-place and update views when .sort is called
             //   on an array, clone it first so that we have a plain array to sort
-            // * Keep a map of lowercased nicks to we don't need to call .toLowerCase()
+            // * Keep a map of uppercase nicks to we don't need to call .toUpperCase()
             //   on each one all the time. This is a hot function!
             let nickMap = Object.create(null);
             let users = [];
             let bufferUsers = this.buffer.users;
-            let nickFilter = this.user_filter.toLowerCase();
-            /* eslint-disable guard-for-in, no-restricted-syntax */
-            for (let lowercaseNick in bufferUsers) {
-                let user = bufferUsers[lowercaseNick];
-                nickMap[user.nick] = lowercaseNick;
-                if (!nickFilter || lowercaseNick.indexOf(nickFilter) !== -1) {
+            let nickFilter = this.user_filter.toUpperCase();
+
+            Object.entries(bufferUsers).forEach(([uppercaseNick, user]) => {
+                nickMap[user.nick] = uppercaseNick;
+                if (!nickFilter || uppercaseNick.indexOf(nickFilter) !== -1) {
                     users.push(user);
                 }
-            }
+            });
 
             let bufferId = this.buffer.id;
             return users.sort((a, b) => {

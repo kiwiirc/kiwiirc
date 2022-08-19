@@ -268,7 +268,10 @@ function clientMiddleware(state, network) {
 
             if (network.auto_commands) {
                 network.auto_commands.split('\n').forEach((line) => {
-                    state.$emit('input.raw', line[0] === '/' ? line : `/${line}`);
+                    state.$emit('input.raw', line[0] === '/' ? line : `/${line}`, {
+                        network: network,
+                        buffer: serverBuffer,
+                    });
                 });
             }
 
@@ -309,6 +312,17 @@ function clientMiddleware(state, network) {
                     message: event.params[2],
                     type: 'error',
                 });
+
+                if (
+                    event.command === '477' &&
+                    buffer.isChannel() &&
+                    buffer.enabled &&
+                    !buffer.joined
+                ) {
+                    // The buffer we tried to join requires a registered nick,
+                    // disable it until the user manually tries to rejoin
+                    buffer.enabled = false;
+                }
             } else {
                 let buffer = network.serverBuffer();
                 let message = '';
@@ -689,13 +703,18 @@ function clientMiddleware(state, network) {
                 buffer = activeBuffer;
             }
 
+            let translationKey = (event.invited === network.currentUser().nick) ?
+                'invited_you' :
+                'invited_other';
+
             state.addMessage(buffer, {
                 nick: '',
                 time: eventTime,
                 server_time: serverTime,
                 type: 'invite',
-                message: TextFormatting.t('invited_you', {
+                message: TextFormatting.t(translationKey, {
                     nick: event.nick,
+                    invited: event.invited,
                     channel: event.channel,
                 }),
             });

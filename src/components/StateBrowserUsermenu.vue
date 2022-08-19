@@ -40,6 +40,8 @@
 'kiwi public';
 
 import * as TextFormatting from '@/helpers/TextFormatting';
+
+import UserState from '@/libs/state/UserState';
 import AwayStatusIndicator from './AwayStatusIndicator';
 import Avatar from './Avatar';
 
@@ -63,9 +65,11 @@ export default {
             return name;
         },
         getUser() {
-            return this.network && this.network.currentUser() ?
-                this.network.currentUser() :
-                null;
+            if (this.network && this.network.currentUser()) {
+                return this.network.currentUser();
+            }
+
+            return new UserState({ nick: 'User' });
         },
         isConnected() {
             return this.network && this.network.state === 'connected';

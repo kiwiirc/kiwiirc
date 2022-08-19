@@ -415,10 +415,10 @@ export default class BufferState {
     }
 
     hasNick(nick) {
-        let nickLower = nick.toLowerCase();
+        let nickUpper = nick.toUpperCase();
         return (
-            nickLower in this.users ||
-            (this.isQuery() && this.name.toLowerCase() === nickLower)
+            nickUpper in this.users ||
+            (this.isQuery() && this.name.toUpperCase() === nickUpper)
         );
     }
 
@@ -454,7 +454,7 @@ export default class BufferState {
         // would just be added again. Eg. user joins/parts during a flood
         _.pull(this.addUserBatch.queue(), userObj);
 
-        this.state.$delete(this.users, nick.toLowerCase());
+        this.state.$delete(this.users, nick.toUpperCase());
 
         if (userObj) {
             delete userObj.buffers[this.id];
@@ -505,6 +505,7 @@ export default class BufferState {
             time: Date.now(),
             nick: network.nick,
             message: message,
+            tags: opts.tags || {},
             type: opts.type || 'privmsg',
         };
 
@@ -514,9 +515,10 @@ export default class BufferState {
             privmsg: 'say',
             action: 'action',
             notice: 'notice',
+            tagmsg: 'tagmsg',
         };
         let fnName = fnNames[opts.type] || 'say';
-        network.ircClient[fnName](this.name, message);
+        network.ircClient[fnName](this.name, message, opts.tags);
     }
 
     join() {
@@ -585,12 +587,12 @@ export default class BufferState {
  */
 function createUserBatch(bufferState) {
     let addSingleUser = (u) => {
-        bufferState.state.$set(bufferState.users, u.nick.toLowerCase(), u);
+        bufferState.state.$set(bufferState.users, u.nick.toUpperCase(), u);
     };
     let addMultipleUsers = (users) => {
-        let o = _.clone(bufferState.users);
+        let o = Object.assign(Object.create(null), bufferState.users);
         users.forEach((u) => {
-            o[u.nick.toLowerCase()] = u;
+            o[u.nick.toUpperCase()] = u;
         });
         bufferState.users = o;
     };

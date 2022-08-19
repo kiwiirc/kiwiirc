@@ -291,6 +291,8 @@ export default Vue.component('irc-input', {
                 }
 
                 this.updateValueProps();
+            } else {
+                this.maybeEmitInput();
             }
         },
         resetStyles() {
@@ -410,6 +412,9 @@ export default Vue.component('irc-input', {
                 range.setStart(el, 1);
                 range.setEnd(el, 1);
             }
+
+            // ensure the input has focus so the cursor position can be set correctly
+            this.$refs.editor.focus();
 
             let sel = window.getSelection();
             sel.removeAllRanges();
