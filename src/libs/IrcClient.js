@@ -605,7 +605,7 @@ function clientMiddleware(state, network) {
                 server_time: serverTime,
                 nick: event.nick,
                 message: messageBody,
-                type: 'traffic',
+                type: 'error',
                 type_extra: 'kick',
             });
         }
