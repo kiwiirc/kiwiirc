@@ -490,6 +490,10 @@ msgstr "Moderated chat"
 msgid "channel_invite"
 msgstr "Invite only"
 
+#: Secret channel
+msgid "channel_secret"
+msgstr "Secret channel"
+
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
 msgstr "Only moderators can change the topic"

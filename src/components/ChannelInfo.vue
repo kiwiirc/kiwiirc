@@ -27,6 +27,10 @@
                 <input v-model="modeI" type="checkbox">
             </label>
             <label class="u-checkbox-wrapper">
+                <span>{{ $t('channel_secret') }}</span>
+                <input v-model="modeS" type="checkbox">
+            </label>
+            <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_moderated_topic') }}</span>
                 <input v-model="modeT" type="checkbox">
             </label>
@@ -88,6 +92,7 @@ export default {
     computed: {
         modeM: generateComputedMode('m'),
         modeI: generateComputedMode('i'),
+        modeS: generateComputedMode('s'),
         modeT: generateComputedMode('t'),
         modeN: generateComputedMode('n'),
         modeK: generateComputedModeWithParam('k'),
