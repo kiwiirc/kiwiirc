@@ -564,6 +564,7 @@ function clientMiddleware(state, network) {
 
             if (event.kicked === client.user.nick) {
                 buffer.joined = false;
+                buffer.enabled = false;
                 buffer.clearUsers();
 
                 messageBody = TextFormatting.formatAndT(

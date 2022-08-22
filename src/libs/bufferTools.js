@@ -73,7 +73,7 @@ export function orderedMessages(buffer, opts = {}) {
         .filter((type) => !buffer.setting(messageTypesToShowSetting[type]));
 
     let typeExtraIncludesSelf = (message) => message.type_extra &&
-        message.type_extra.includes('self');
+        message.type_extra.endsWith('_self');
 
     let list = [];
     for (let i = messages.length - 1; i >= 0; i--) {
