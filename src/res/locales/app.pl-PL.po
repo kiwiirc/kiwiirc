@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2021-09-27 16:03\n"
+"PO-Revision-Date: 2022-07-05 21:52\n"
 
 #: Start
 msgid "start_button"
@@ -1073,7 +1073,7 @@ msgstr "Połączono z {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} wchodzi"
+msgstr "{{nick}} dołącza"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
@@ -1089,7 +1089,11 @@ msgstr "{{nick}} wychodzi"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} zaprasza cię na {{channel}}"
+msgstr "{{nick}} zaprasza Cię do dołączenia do {{channel}}"
+
+#: {{nick}} invited {{invited}} to join {{channel}}
+msgid "invited_other"
+msgstr "{{nick}} zaprasza {{invited}} do dołączenia do {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"

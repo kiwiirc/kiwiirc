@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2021-09-27 13:28\n"
+"PO-Revision-Date: 2022-07-11 18:05\n"
 
 #: Start
 msgid "start_button"
@@ -381,7 +381,7 @@ msgstr "Gelişmiş Ayarları Etkinleştir"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
-msgstr "Tehlike Bölgesi: Bu ayarların bazılarının değiştirilmesi işleri bozabilir!"
+msgstr "Tehlike Bölgesi: Bu ayarlardan bazılarını değiştirmek bazı şeyleri bozabilir!"
 
 #: Reset
 msgid "settings_advanced_reset"
@@ -1089,6 +1089,10 @@ msgstr "{{nick}} kanaldan ayrıldı"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
+msgstr "{{nick}} seni {{channel}} kanalına davet etti"
+
+#: {{nick}} invited {{invited}} to join {{channel}}
+msgid "invited_other"
 msgstr "{{nick}} seni {{channel}} kanalına davet etti"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...

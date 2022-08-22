@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2021-10-10 08:11\n"
+"PO-Revision-Date: 2022-07-18 17:49\n"
 
 #: Start
 msgid "start_button"
@@ -1090,6 +1090,10 @@ msgstr "{{nick}} غادر"
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
 msgstr "{{nick}} دعاك للإنضمام الى {{channel}}"
+
+#: {{nick}} invited {{invited}} to join {{channel}}
+msgid "invited_other"
+msgstr "{{nick}} دعا {{invited}} للانضمام إلى {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2021-09-27 13:29\n"
+"PO-Revision-Date: 2022-07-06 07:16\n"
 
 #: Start
 msgid "start_button"
@@ -1090,6 +1090,10 @@ msgstr "{{nick}} αποχώρισε από το κανάλι"
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
 msgstr "{{nick}} σας προσκάλεσε να εισέλθετε στο {{channel}}"
+
+#: {{nick}} invited {{invited}} to join {{channel}}
+msgid "invited_other"
+msgstr "{{nick}} Σας προσκαλεί {{invited}} να εισέλθετε στο {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"

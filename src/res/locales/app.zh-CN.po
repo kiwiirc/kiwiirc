@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2021-09-27 13:28\n"
+"PO-Revision-Date: 2022-07-13 17:47\n"
 
 #: Start
 msgid "start_button"
@@ -369,7 +369,7 @@ msgstr "默认踢出原因"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "高级设置"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
@@ -433,7 +433,7 @@ msgstr "Nobody is invited!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "这是一个公开频道"
 
 #: Only invited users can join.
 msgid "invite_private_channel"
@@ -449,7 +449,7 @@ msgstr "Allow anybody to join"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "仅允许注册用户加入"
 
 #: Add invite
 msgid "invite_add_invite"
@@ -569,7 +569,7 @@ msgstr "显示原始信息"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "直接通过websocket连接"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -845,7 +845,7 @@ msgstr "The nickname '{{nick}}' is invalid!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "你必须输入一个新昵称"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
@@ -953,7 +953,7 @@ msgstr "Send a raw command to the IRC server"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Kick somebody from the channel"
+msgstr "将某个用户踢出频道"
 
 #: Clear all messages from this window
 msgid "command_clear"
@@ -965,7 +965,7 @@ msgstr "Send a CTCP command to somebody"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Disconnect from the IRC server"
+msgstr "断开与IRC服务器的连接"
 
 #: Connect to a new IRC network
 msgid "command_server"
@@ -1090,6 +1090,10 @@ msgstr "{{nick}} 已离开"
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
 msgstr "{{nick}} 邀请您加入 {{channel}}"
+
+#: {{nick}} invited {{invited}} to join {{channel}}
+msgid "invited_other"
+msgstr "{{nick}} invited {{invited}} to join {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
