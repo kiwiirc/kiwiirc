@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2022-08-26 15:41\n"
+"PO-Revision-Date: 2022-08-26 16:55\n"
 
 #: Start
 msgid "start_button"
@@ -473,7 +473,7 @@ msgstr "Sadece davet edilenler"
 
 #: Hide this channel from lists
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "Bu kanalı listelerden gizle"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
