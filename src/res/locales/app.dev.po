@@ -490,7 +490,7 @@ msgstr "Moderated chat"
 msgid "channel_invite"
 msgstr "Invite only"
 
-#: Hide this channel from channel list
+#: Hide this channel from lists
 msgid "channel_secret"
 msgstr "Hide this channel from lists"
 
