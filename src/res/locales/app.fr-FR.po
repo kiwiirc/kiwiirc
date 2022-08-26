@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2022-08-26 12:13\n"
+"PO-Revision-Date: 2022-08-26 13:18\n"
 
 #: Start
 msgid "start_button"
@@ -473,7 +473,7 @@ msgstr "Sur invitation"
 
 #: Hide this channel from channel list
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "Cacher ce salon dans la liste"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
