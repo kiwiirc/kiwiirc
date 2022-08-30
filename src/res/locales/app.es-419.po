@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Latin America\n"
 "Language: es_419\n"
-"PO-Revision-Date: 2022-08-10 13:36\n"
+"PO-Revision-Date: 2022-08-26 15:42\n"
 
 #: Start
 msgid "start_button"
@@ -470,6 +470,10 @@ msgstr "Canal moderado"
 #: Invite only
 msgid "channel_invite"
 msgstr "Solo con invitación"
+
+#: Hide this channel from lists
+msgid "channel_secret"
+msgstr "Hide this channel from lists"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"

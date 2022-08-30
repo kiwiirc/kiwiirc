@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2022-07-06 03:49\n"
+"PO-Revision-Date: 2022-08-27 07:59\n"
 
 #: Start
 msgid "start_button"
@@ -470,6 +470,10 @@ msgstr "Kanaal is gemodereerd"
 #: Invite only
 msgid "channel_invite"
 msgstr "Alleen op uitnodiging"
+
+#: Hide this channel from lists
+msgid "channel_secret"
+msgstr "Dit kanaal verbergen in lijsten"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"

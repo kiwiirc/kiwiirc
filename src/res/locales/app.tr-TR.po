@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2022-07-11 18:05\n"
+"PO-Revision-Date: 2022-08-29 14:42\n"
 
 #: Start
 msgid "start_button"
@@ -470,6 +470,10 @@ msgstr "Moderatörlü sohbet"
 #: Invite only
 msgid "channel_invite"
 msgstr "Sadece davet edilenler"
+
+#: Hide this channel from lists
+msgid "channel_secret"
+msgstr "Bu kanalı listelerden gizle"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -1093,7 +1097,7 @@ msgstr "{{nick}} seni {{channel}} kanalına davet etti"
 
 #: {{nick}} invited {{invited}} to join {{channel}}
 msgid "invited_other"
-msgstr "{{nick}} seni {{channel}} kanalına davet etti"
+msgstr "{{nick}}, {{invited}} {{channel}}'a katılması için davet etti"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"

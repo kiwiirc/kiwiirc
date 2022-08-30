@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2022-07-11 23:55\n"
+"PO-Revision-Date: 2022-08-27 00:33\n"
 
 #: Start
 msgid "start_button"
@@ -470,6 +470,10 @@ msgstr "Moderirani chat"
 #: Invite only
 msgid "channel_invite"
 msgstr "Samo na poziv"
+
+#: Hide this channel from lists
+msgid "channel_secret"
+msgstr "Sakrij ovaj kanal sa popisa"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"

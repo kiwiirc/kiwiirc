@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2022-07-05 21:52\n"
+"PO-Revision-Date: 2022-08-26 15:42\n"
 
 #: Start
 msgid "start_button"
@@ -470,6 +470,10 @@ msgstr "Kanal moderatua"
 #: Invite only
 msgid "channel_invite"
 msgstr "Gonbidatuak bakarrik"
+
+#: Hide this channel from lists
+msgid "channel_secret"
+msgstr "Hide this channel from lists"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
