@@ -324,7 +324,6 @@ export default {
         setZncPass() {
             let newPass = `${this.znc_username}/${this.znc_network}:${this.znc_password}`;
             this.network.connection.password = newPass;
-            this.network.connection.nick = this.znc_username;
         },
         toggleTls() {
             let connection = this.network.connection;
