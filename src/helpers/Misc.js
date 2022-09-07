@@ -171,7 +171,7 @@ export function matchUri(uri) {
  * @param {string} str The connection string URI
  */
 export function parseIrcUri(str) {
-    let reg = /(?:(ircs?):\/\/)?([a-z.0-9-]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
+    let reg = /(?:(ircs?|wss?):\/\/)?([a-z.0-9-]+)(?::(?:(\+)?([0-9]+)))?(?:\/([^?]*))?(?:\?(.*))?/;
     let connections = [];
     str.split(';').forEach((connectionString) => {
         if (!connectionString) {
@@ -184,7 +184,8 @@ export function parseIrcUri(str) {
             return;
         }
 
-        let tls = m[1] === 'ircs' || !!m[3];
+        let tls = m[1] === 'ircs' || m[1] === 'wss' || !!m[3];
+        let direct = m[1] === 'ws' || m[1] === 'wss';
         let params = Object.create(null);
         (m[6] || '').split('&').forEach((p) => {
             let parts = p.split('=');
@@ -215,6 +216,7 @@ export function parseIrcUri(str) {
             nick: params.nick || '',
             encoding: (params.encoding || 'utf8'),
             params: params,
+            direct: direct,
         });
     });
 

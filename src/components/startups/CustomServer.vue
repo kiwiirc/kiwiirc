@@ -219,6 +219,7 @@ export default {
                         server: con.server,
                         port: con.port,
                         tls: con.tls,
+                        direct: con.direct,
                         password: con.password || '',
                     });
 
