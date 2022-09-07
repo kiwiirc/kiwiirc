@@ -3,10 +3,14 @@
 import EventEmitter from 'eventemitter3';
 
 class IpcBroadcastChannel extends EventEmitter {
-    constructor() {
-        super();
-        this.bc = new BroadcastChannel('kiwi-ipc');
-        this.bc.onmessage = this.onmessage.bind(this);
+    init() {
+        try {
+            // Privacy settings in firefox 104~ block broadcast channels in iframes
+            this.bc = new BroadcastChannel('kiwi-ipc');
+            this.bc.onmessage = this.onmessage.bind(this);
+        } catch {
+            // catch
+        }
     }
 
     send(msg) {
@@ -21,8 +25,7 @@ class IpcBroadcastChannel extends EventEmitter {
 }
 
 class IpcLocalStorage extends EventEmitter {
-    constructor() {
-        super();
+    init() {
         window.addEventListener('storage', this.onmessage.bind(this));
     }
 

@@ -87,6 +87,10 @@ export default {
     created: function created() {
         this.$state.setting('allowRegisterProtocolHandler', true);
 
+        // Enable IPC listeners
+        // This is used to allow opening new servers in existing tab
+        IPC.init();
+
         let server = null;
         if (this.hasFragment) {
             server = this.parseFragment();
@@ -160,6 +164,7 @@ export default {
                 server: con.server,
                 port: con.port,
                 tls: con.tls,
+                direct: con.direct,
                 password: con.password || '',
                 type: 'addNetwork',
             });
@@ -188,6 +193,7 @@ export default {
                     server: con.server,
                     port: con.port,
                     tls: con.tls,
+                    direct: con.direct,
                     password: con.password || '',
                 });
             }
