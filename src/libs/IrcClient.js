@@ -171,6 +171,10 @@ function clientMiddleware(state, network) {
             return;
         }
 
+        let eventTime = (event && event.time) ?
+            network.ircClient.network.timeToLocal(event.time) :
+            Date.now();
+
         state.$emit('irc.raw.' + command, command, eventObj, network);
         if (eventObj.handled) {
             return;
@@ -185,21 +189,43 @@ function clientMiddleware(state, network) {
                 '';
         }
 
-        // SASL failed auth
-        if (command === '904') {
-            if (!network.state !== 'connected') {
-                network.last_error = 'Invalid login';
+        // SASL Handlers
+        // RPL_LOGGEDIN  || RPL_LOGGEDOUT || ERR_NICKLOCKED || ERR_SASLFAIL
+        if (command === '900' || command === '901' || command === '902' || command === '904') {
+            let type = 'notice';
+            let message = event.params[event.params.length - 1];
 
-                if (state.setting('disconnectOnSaslFail')) {
-                    network.ircClient.connection.end();
+            if (command === '902' || command === '904') {
+                // ERR_NICKLOCKED || ERR_SASLFAIL
+                type = 'error';
+
+                if (command === '904') {
+                    // Use our translated message for invalid login,
+                    // as the server often sends "SASL authentication failed"
+                    // which is a little technical for users
+                    message = TextFormatting.t('invalid_login');
+                }
+
+                if (network.state !== 'connected') {
+                    network.last_error = message;
+
+                    if (state.setting('disconnectOnSaslFail')) {
+                        network.ircClient.connection.end();
+                    }
                 }
             }
 
-            let serverBuffer = network.serverBuffer();
-            state.addMessage(serverBuffer, {
-                time: Date.now(),
-                nick: '*',
-                message: 'Invalid login',
+            let buffer = state.getActiveBuffer();
+            let noticeActiveBuffer = state.setting('noticeActiveBuffer');
+            if (!buffer || !noticeActiveBuffer) {
+                buffer = network.serverBuffer();
+            }
+
+            state.addMessage(buffer, {
+                time: eventTime,
+                nick: '',
+                message: message,
+                type: type,
             });
         }
 
@@ -211,7 +237,7 @@ function clientMiddleware(state, network) {
 
             let buffer = network.serverBuffer();
             state.addMessage(buffer, {
-                time: Date.now(),
+                time: eventTime,
                 nick: '',
                 message: event.command + ' ' + params.join(' '),
             });
