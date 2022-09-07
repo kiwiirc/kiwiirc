@@ -845,18 +845,24 @@
 }
 
 /* ---- Traffic Messages ---- */
-.kiwi-messagelist-message-traffic-join {
+.kiwi-messagelist-message-traffic-join,
+.kiwi-messagelist-message-traffic-join_self {
     color: var(--brand-primary);
 }
 
 .kiwi-messagelist-message-traffic-quit,
+.kiwi-messagelist-message-traffic-quit_self,
 .kiwi-messagelist-message-traffic-part,
-.kiwi-messagelist-message-traffic-kick {
+.kiwi-messagelist-message-traffic-part_self,
+.kiwi-messagelist-message-traffic-kick,
+.kiwi-messagelist-message-traffic-kick_self {
     color: var(--brand-error);
 }
 
 .kiwi-messagelist-message-traffic-quit .kiwi-nick::before,
-.kiwi-messagelist-message-traffic-part .kiwi-nick::before {
+.kiwi-messagelist-message-traffic-quit_self .kiwi-nick::before,
+.kiwi-messagelist-message-traffic-part .kiwi-nick::before,
+.kiwi-messagelist-message-traffic-part_self .kiwi-nick::before {
     color: var(--brand-error);
 }
 

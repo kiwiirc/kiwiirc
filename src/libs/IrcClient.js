@@ -559,13 +559,15 @@ function clientMiddleware(state, network) {
                 { nick: nick }
             );
 
+            let typeExtra = (event.nick === network.nick) ? 'join_self' : 'join';
+
             state.addMessage(buffer, {
                 time: eventTime,
                 server_time: serverTime,
                 nick: event.nick,
                 message: messageBody,
                 type: 'traffic',
-                type_extra: 'join',
+                type_extra: typeExtra,
             });
         }
         if (command === 'kick') {
@@ -576,6 +578,7 @@ function clientMiddleware(state, network) {
 
             if (event.kicked === client.user.nick) {
                 buffer.joined = false;
+                buffer.enabled = false;
                 buffer.clearUsers();
 
                 messageBody = TextFormatting.formatAndT(
@@ -600,13 +603,15 @@ function clientMiddleware(state, network) {
                 );
             }
 
+            let typeExtra = ([event.kicked, event.nick].includes(network.nick)) ? 'kick_self' : 'kick';
+
             state.addMessage(buffer, {
                 time: eventTime,
                 server_time: serverTime,
                 nick: event.nick,
                 message: messageBody,
                 type: 'traffic',
-                type_extra: 'kick',
+                type_extra: typeExtra,
             });
         }
         if (command === 'part') {
@@ -641,13 +646,15 @@ function clientMiddleware(state, network) {
                 { nick: nick },
             );
 
+            let typeExtra = (event.nick === network.nick) ? 'part_self' : 'part';
+
             state.addMessage(buffer, {
                 time: eventTime,
                 server_time: serverTime,
                 nick: event.nick,
                 message: messageBody,
                 type: 'traffic',
-                type_extra: 'part',
+                type_extra: typeExtra,
             });
         }
         if (command === 'quit') {
@@ -674,13 +681,15 @@ function clientMiddleware(state, network) {
                     { nick: nick }
                 );
 
+                let typeExtra = (event.nick === network.nick) ? 'quit_self' : 'quit';
+
                 state.addMessage(buffer, {
                     time: eventTime,
                     server_time: serverTime,
                     nick: event.nick,
                     message: messageBody,
                     type: 'traffic',
-                    type_extra: 'quit',
+                    type_extra: typeExtra,
                 });
             });
 
@@ -909,6 +918,8 @@ function clientMiddleware(state, network) {
                 { nick: event.nick, newnick: event.new_nick },
             );
 
+            let typeExtra = (network.nick === event.new_nick) ? 'nick_self' : '';
+
             let buffers = state.getBuffersWithUser(networkid, event.new_nick);
             buffers.forEach((buffer) => {
                 state.addMessage(buffer, {
@@ -917,6 +928,7 @@ function clientMiddleware(state, network) {
                     nick: '',
                     message: messageBody,
                     type: 'nick',
+                    type_extra: typeExtra,
                 });
             });
         }
@@ -1132,19 +1144,27 @@ function clientMiddleware(state, network) {
                     let localeKey = modeLocaleIds[mode] || 'modes_other';
                     let text = TextFormatting.t(localeKey, localeData);
 
+                    let targetNicks = targets.map((t) => t.target);
+
                     let messageBody = TextFormatting.formatText('mode', {
                         nick: event.nick,
                         username: event.ident,
                         host: event.hostname,
-                        target: targets.map((t) => t.target).join(', '),
+                        target: targetNicks.join(', '),
                         text,
                     });
+
+                    let typeExtra = ([event.nick, ...targetNicks].includes(network.nick)) ?
+                        'mode_self' :
+                        '';
+
                     state.addMessage(buffer, {
                         time: eventTime,
                         server_time: serverTime,
                         nick: '',
                         message: messageBody,
                         type: 'mode',
+                        type_extra: typeExtra,
                     });
                 });
             } else {
@@ -1193,6 +1213,7 @@ function clientMiddleware(state, network) {
                         nick: '',
                         message: messageBody,
                         type: 'mode',
+                        type_extra: 'mode_self',
                     });
                 });
             }

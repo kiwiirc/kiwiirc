@@ -72,10 +72,13 @@ export function orderedMessages(buffer, opts = {}) {
     let hiddenMessageTypes = Object.keys(messageTypesToShowSetting)
         .filter((type) => !buffer.setting(messageTypesToShowSetting[type]));
 
+    let typeExtraIncludesSelf = (message) => message.type_extra &&
+        message.type_extra.endsWith('_self');
+
     let list = [];
     for (let i = messages.length - 1; i >= 0; i--) {
         // don't include hidden message types
-        if (hiddenMessageTypes.includes(messages[i].type)) {
+        if (hiddenMessageTypes.includes(messages[i].type) && !typeExtraIncludesSelf(messages[i])) {
             continue;
         }
 
