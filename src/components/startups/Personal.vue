@@ -259,6 +259,12 @@ export default {
             // to network settings to add a network
             this.$state.setSetting('settings.restricted', false);
 
+            if (this.$state.networks.length) {
+                // small screen devices cannot open the statebrowser unless a network is selected
+                // if any network exists in saved config make that active on startup
+                this.$state.setActiveBuffer(this.$state.networks[0].id, '*');
+            }
+
             this.$emit('start', {
                 fallbackComponent: this.constructor,
             });
