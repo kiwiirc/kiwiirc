@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2022-08-26 15:41\n"
+"PO-Revision-Date: 2022-10-20 12:30\n"
 
 #: Start
 msgid "start_button"
@@ -21,63 +21,63 @@ msgstr "Start"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "Kiwi IRC에 온 것을 환영합니다!"
 
 #: Close
 msgid "close"
-msgstr "Close"
+msgstr "닫기"
 
 #: Connect
 msgid "connect"
-msgstr "Connect"
+msgstr "연결 "
 
 #: Connecting...
 msgid "connecting"
-msgstr "Connecting..."
+msgstr "연결 중…"
 
 #: Connected
 msgid "connected"
-msgstr "Connected"
+msgstr "연결됨"
 
 #: Settings
 msgid "settings"
-msgstr "Settings"
+msgstr "설정"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Kiwi IRC 설정"
 
 #: Channels
 msgid "channels"
-msgstr "Channels"
+msgstr "채널"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "접속"
 
 #: Banned Users
 msgid "banned"
-msgstr "Banned Users"
+msgstr "차단된 사용자"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "초대된 사용자"
 
 #: Notifications
 msgid "notifications"
-msgstr "Notifications"
+msgstr "알림"
 
 #: Username
 msgid "username"
-msgstr "Username"
+msgstr "사용자명"
 
 #: Password
 msgid "password"
-msgstr "Password"
+msgstr "비밀번호"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "서버 비밀번호"
 
 #: I have a password
 msgid "password_have"
@@ -85,23 +85,23 @@ msgstr "I have a password"
 
 #: Server
 msgid "server"
-msgstr "Server"
+msgstr "서버"
 
 #: Nick
 msgid "nick"
-msgstr "Nick"
+msgstr "닉네임"
 
 #: Channel
 msgid "channel"
-msgstr "Channel"
+msgstr "채널"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "메시지"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "네트워크"
 
 #: ZNC
 msgid "znc"
@@ -113,7 +113,7 @@ msgstr "Logging in..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Invalid login"
+msgstr "잘못된 로그인입니다"
 
 #: Search...
 msgid "do_search"
@@ -121,39 +121,39 @@ msgstr "Search..."
 
 #: OK
 msgid "ok"
-msgstr "OK"
+msgstr "확인"
 
 #: Cancel
 msgid "cancel"
-msgstr "Cancel"
+msgstr "취소"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "예"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "아니오"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "찾을 수 없음"
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "경고!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "모든 대화가 중단됩니다. 그래도 닫으시겠습니까?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "이름 "
 
 #: Status
 msgid "whois_status"
-msgstr "Status"
+msgstr "상태"
 
 #: Is available
 msgid "whois_status_available"
@@ -161,23 +161,23 @@ msgstr "Is available"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Send a message"
+msgstr "메시지 보내기"
 
 #: More information
 msgid "more_information"
-msgstr "More information"
+msgstr "자세한 정보"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignore user"
+msgstr "사용자 차단"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Channel"
+msgstr "채널"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "자리 비움"
 
 #: {{count}} week
 msgid "week"
@@ -205,7 +205,7 @@ msgstr "{{count}} hours"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "{{count}}분"
 
 #: {{count}} minutes
 msgid "minute_plural"
