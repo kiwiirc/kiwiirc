@@ -1,0 +1,81 @@
+/* The Streamchat theme puts a focus on a stripped down messagelist component */
+
+/* Makes the chat window opaque */
+body {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.kiwi-statebrowser,
+.kiwi-header,
+.kiwi-controlinput,
+.kiwi-messageinfo,
+.kiwi-sidebar,
+.kiwi-messagelist-seperator,
+.kiwi-messagelist-time,
+.kiwi-startup-common-section-info,
+.kiwi-awaystatusindicator,
+.kiwi-messagelist-message-traffic,
+.kiwi-container-toggledraw-statebrowser-messagecount {
+    display: none!important;
+}
+
+.kiwi-messagelist-message--compact {
+    padding: 0!important;
+}
+
+.kiwi-messagelist-message--compact.kiwi-messagelist-message--authorrepeat .kiwi-messagelist-nick,
+.kiwi-messagelist-message--compact .kiwi-messagelist-nick {
+    display: inline;
+    opacity: 1;
+    text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+    text-align: left;
+    cursor: auto;
+    float: none;
+    word-break: initial;
+    position: relative;
+    line-height: 22px!important;
+    left: 0!important;
+    min-width: 110px!important;
+    padding: 0!important;
+}
+
+.kiwi-container {
+    top: 0;
+    bottom: 0;
+}
+
+.kiwi-workspace::before {
+    height: 0;
+}
+
+.kiwi-workspace {
+    margin: 0;
+}
+
+.kiwi-messagelist-body {
+    color:#fff;
+    white-space: pre-wrap;
+    line-height: 22px!important;
+    display: inline!important;
+    float: none!important;
+    margin: 0!important;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+}
+
+.kiwi-messagelist-message--compact.kiwi-messagelist-message--unread .kiwi-messagelist-body {
+    padding-left: 0!important;
+}
+
+.kiwi-messagelist,
+.kiwi-startup-common, 
+.kiwi-startup-common-section,
+.kiwi-startup-common-section-connection {
+    overflow: hidden!important;
+    min-height: 0!important;
+}
+
+.kiwi-messagelist-emoji {
+    width: 1.1em!important;
+    font-size: 1.1em!important;
+}
