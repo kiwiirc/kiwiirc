@@ -4,14 +4,13 @@
   "description": "Web based IRC client",
   "author": "Darren <darren@darrenwhitlen.com>",
   "scripts": {
-    "build": "npm-run-all translate && vue-cli-service build",
+    "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "npm-run-all lint:*",
     "lint:eslint": "vue-cli-service lint --no-fix",
     "lint:stylelint": "stylelint \"src/**/*.{vue,htm,html,css,sss,less,scss}\"",
-    "dev": "npm-run-all translate && vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "test": "vue-cli-service test:unit",
-    "translate": "node build/webpack/locales.js",
     "gendocs": "rm -rf srcdocs/ && jsdoc -c jsdoc.json"
   },
   "dependencies": {
