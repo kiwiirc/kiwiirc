@@ -350,30 +350,37 @@ function loadPlugins() {
                 scr.src = plugin.url;
             } else {
                 // Treat the plugin as a HTML document and just inject it into the document
-                fetch(plugin.url).then((response) => response.text()).then((pluginRaw) => {
-                    let el = document.createElement('div');
-                    el.id = 'kiwi_plugin_' + plugin.name.replace(/[ "']/g, '');
-                    el.style.display = 'none';
-                    el.innerHTML = pluginRaw;
+                fetch(plugin.url)
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(response.status + ' ' + response.statusText);
+                        }
+                        return response.text();
+                    })
+                    .then((pluginRaw) => {
+                        let el = document.createElement('div');
+                        el.id = 'kiwi_plugin_' + plugin.name.replace(/[ "']/g, '');
+                        el.style.display = 'none';
+                        el.innerHTML = pluginRaw;
 
-                    // The browser won't execute any script elements so we need to extract them and
-                    // place them into the DOM using our own script elements
-                    let scripts = [...el.querySelectorAll('script')];
+                        // The browser won't execute any script elements so we need to extract them
+                        // and place them into the DOM using our own script elements
+                        let scripts = [...el.querySelectorAll('script')];
 
-                    // IE11 does not support nodes.forEach()
-                    scripts.forEach((limitedScr) => {
-                        limitedScr.parentElement.removeChild(limitedScr);
-                        let scr = document.createElement('script');
-                        scr.text = limitedScr.text;
-                        el.appendChild(scr);
+                        // IE11 does not support nodes.forEach()
+                        scripts.forEach((limitedScr) => {
+                            limitedScr.parentElement.removeChild(limitedScr);
+                            let scr = document.createElement('script');
+                            scr.text = limitedScr.text;
+                            el.appendChild(scr);
+                        });
+
+                        document.body.appendChild(el);
+                        loadNextScript();
+                    }).catch(() => {
+                        log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
+                        loadNextScript();
                     });
-
-                    document.body.appendChild(el);
-                    loadNextScript();
-                }).catch(() => {
-                    log.error(`Error loading plugin '${plugin.name}' from '${plugin.url}'`);
-                    loadNextScript();
-                });
             }
         }
     });
