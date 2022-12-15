@@ -52,6 +52,7 @@ export function create(state, network) {
         ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
         ircClient.options.encoding = network.connection.encoding;
         ircClient.options.auto_reconnect = !!state.setting('autoReconnect');
+        ircClient.options.sasl_disconnect_on_fail = !!state.setting('disconnectOnSaslFail');
 
         // Apply any irc-fw options specified in kiwiirc config
         let configOptions = state.setting('ircFramework');
@@ -183,24 +184,6 @@ function clientMiddleware(state, network) {
             network.ircd = m ?
                 m[1] :
                 '';
-        }
-
-        // SASL failed auth
-        if (command === '904') {
-            if (!network.state !== 'connected') {
-                network.last_error = 'Invalid login';
-
-                if (state.setting('disconnectOnSaslFail')) {
-                    network.ircClient.connection.end();
-                }
-            }
-
-            let serverBuffer = network.serverBuffer();
-            state.addMessage(serverBuffer, {
-                time: Date.now(),
-                nick: '*',
-                message: 'Invalid login',
-            });
         }
 
         if (command === 'CAP' && network.setting('show_raw_caps')) {
@@ -1387,6 +1370,33 @@ function clientMiddleware(state, network) {
                 network.last_error = event.reason;
                 network.ircClient.quit();
             }
+        }
+
+        if (command === 'sasl failed') {
+            let translationKeys = {
+                fail: 'invalid_login',
+                too_long: 'sasl_request_error',
+                nick_locked: 'account_locked',
+                unsupported_mechanism: 'sasl_request_error',
+                capability_missing: 'sasl_server_error',
+            };
+
+            if (!translationKeys[event.reason]) {
+                return;
+            }
+
+            let failMessage = TextFormatting.t(translationKeys[event.reason]);
+
+            if (network.state !== 'connected') {
+                network.last_error = failMessage;
+            }
+
+            let serverBuffer = network.serverBuffer();
+            state.addMessage(serverBuffer, {
+                time: Date.now(),
+                nick: '*',
+                message: failMessage,
+            });
         }
 
         if (command === 'irc error') {

@@ -43,6 +43,10 @@ export default class NetworkState {
         this.username = '';
         this.gecos = '';
         // SASL password
+        this.account = {
+            account: '',
+            password: '',
+        };
         this.password = '';
         this.away = '';
 
