@@ -114,11 +114,23 @@ export default {
         },
     },
     created: function created() {
-        this.listen(this.$state, 'sidebar.toggle', () => {
-            this.$state.$emit('sidebar.' + (this.sidebarState.isDrawn ? 'hide' : 'show'));
+        this.listen(this.$state, 'sidebar.toggle', (what) => {
+            let isDrawn = this.sidebarState.isDrawn;
+            let section = this.sidebarState.sidebarSection;
+            let action = (isDrawn && (!what || what === section) ? 'hide' : 'show');
+            this.$state.$emit('sidebar.' + action, what || 'nicklist');
         });
-        this.listen(this.$state, 'sidebar.show', () => {
-            this.sidebarState.showNicklist();
+        this.listen(this.$state, 'sidebar.show', (what) => {
+            switch (what) {
+            case 'about':
+                this.sidebarState.showAbout();
+                break;
+            case 'settings':
+                this.sidebarState.showSettings();
+                break;
+            default:
+                this.sidebarState.showNicklist();
+            }
         });
         this.listen(this.$state, 'sidebar.hide', () => {
             this.sidebarState.close();

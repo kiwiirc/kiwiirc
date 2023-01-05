@@ -3,7 +3,10 @@
         :key="'messagelist-' + buffer.name"
         v-resizeobserver="onListResize"
         class="kiwi-messagelist"
-        :class="{'kiwi-messagelist--smoothscroll': smooth_scroll}"
+        :class="{
+            ['kiwi-messagelist--' + listType]: true,
+            'kiwi-messagelist--smoothscroll': smooth_scroll
+        }"
         @click.self="onListClick"
     >
         <div v-resizeobserver="onListResize">
@@ -885,35 +888,6 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 .kiwi-messagelist-nick:hover {
     overflow: visible;
     width: auto;
-}
-
-/* Topic changes */
-.kiwi-messagelist-message-topic {
-    border-radius: 5px;
-    margin: 18px;
-    margin-left: 0;
-    padding: 5px;
-    text-align: center;
-    position: relative;
-    min-height: 0;
-    display: block;
-}
-
-.kiwi-messagelist-message-topic .kiwi-messagelist-body {
-    min-height: 0;
-    margin: 0;
-
-    &::before {
-        display: none;
-    }
-}
-
-.kiwi-messagelist-message-topic.kiwi-messagelist-message-topic .kiwi-messagelist-time {
-    display: none;
-}
-
-.kiwi-messagelist-message-topic.kiwi-messagelist-message-topic .kiwi-messagelist-nick {
-    display: none;
 }
 
 /* Actions */
