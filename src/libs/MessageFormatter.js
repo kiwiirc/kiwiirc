@@ -49,14 +49,14 @@ tokens['*'] = {
     extra: true,
     fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
-            delete block.styles.bold;
+            delete block.styles.italic;
             openToks[this.token] = null;
             prevBlock.content += this.token;
             return null;
         }
 
         // If this style is alrady open by something else, ignore it
-        if (block.styles.bold === true) {
+        if (block.styles.italic === true) {
             return -1;
         }
 
@@ -84,7 +84,7 @@ tokens['*'] = {
         }
 
         openToks[this.token] = true;
-        block.styles.bold = true;
+        block.styles.italic = true;
         block.content += this.token;
 
         return null;
@@ -95,14 +95,14 @@ tokens['**'] = {
     extra: true,
     fn: function parseToken(inp, pos, block, prevBlock, openToks) {
         if (openToks[this.token]) {
-            delete block.styles.italic;
+            delete block.styles.bold;
             openToks[this.token] = null;
             prevBlock.content += this.token;
             return null;
         }
 
         // If this style is alrady open by something else, ignore it
-        if (block.styles.italic === true) {
+        if (block.styles.bold === true) {
             return -1;
         }
 
@@ -112,7 +112,7 @@ tokens['**'] = {
         }
 
         openToks[this.token] = true;
-        block.styles.italic = true;
+        block.styles.bold = true;
         block.content += this.token;
 
         return null;
