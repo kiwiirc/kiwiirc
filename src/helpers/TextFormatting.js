@@ -137,6 +137,26 @@ export function formatUser(fNick) {
 }
 
 /**
+ * Create a user reference string similar to 'nick (realname)'
+ */
+export function formatUserWithRealname(fNick, fRealname) {
+    let nick = '';
+    let realname = '';
+
+    // Allow passing of a user object or irc-framework event
+    if (typeof fNick === 'object') {
+        let user = fNick;
+        nick = user.nick;
+        realname = user.gecos;
+    } else {
+        nick = fNick;
+        realname = fRealname;
+    }
+
+    return formatText('user_with_realname', { nick, realname });
+}
+
+/**
  * Create a full user reference similar to 'nick (user@host)'
  */
 export function formatUserFull(fNick, fUsername, fHost) {
@@ -157,6 +177,37 @@ export function formatUserFull(fNick, fUsername, fHost) {
     }
 
     return formatText('user_full', { nick, username, host });
+}
+
+/**
+ * Create a full user reference similar to 'nick (user@host) (realname)'
+ */
+export function formatUserFullWithRealname(fNick, fUsername, fHost, fRealname) {
+    let nick = '';
+    let username = '';
+    let host = '';
+    let realname = '';
+
+    // Allow passing of a user object or irc-framework event
+    if (typeof fNick === 'object') {
+        let user = fNick;
+        nick = user.nick;
+        username = user.username || user.ident;
+        host = user.hostname || user.host;
+        realname = user.gecos;
+    } else {
+        nick = fNick;
+        username = fUsername;
+        host = fHost;
+        realname = fRealname;
+    }
+
+    return formatText('user_full_with_realname', {
+        nick,
+        username,
+        host,
+        realname,
+    });
 }
 
 /**
