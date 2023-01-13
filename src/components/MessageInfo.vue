@@ -16,12 +16,27 @@
             :class="{'kiwi-messageinfo-actions--open': requestingInput}"
             class="kiwi-messageinfo-actions"
         >
+            <template v-if="!requestingInput">
+                <component
+                    :is="plugin.component"
+                    v-for="plugin in pluginUiSections"
+                    :key="plugin.id"
+                    :plugin-props="{
+                        buffer: buffer,
+                        message: message,
+                    }"
+                    v-bind="plugin.props"
+                    :buffer="buffer"
+                    :message="message"
+                    class="u-link kiwi-messageinfo-reply kiwi-messageinfo-plugin"
+                />
+            </template>
             <a
                 v-if="!requestingInput && message.nick && buffer.name !== message.nick && !isSelf()"
                 class="u-link kiwi-messageinfo-reply"
                 @click="openQuery"
             >
-                {{ $t('reply_in_private') }}
+                Reply in private
             </a>
 
             <div v-if="message.user && areWeAnOp() && !isSelf()" class="kiwi-messageinfo-opbuttons">
@@ -55,11 +70,14 @@
 <script>
 'kiwi public';
 
+import GlobalApi from '@/libs/GlobalApi';
+
 export default {
     props: ['buffer', 'message'],
     data() {
         return {
             requestingInput: false,
+            pluginUiSections: GlobalApi.singleton().messageInfoPlugins,
         };
     },
     computed: {
@@ -168,6 +186,7 @@ export default {
     padding: 5px 10px;
     display: inline-block;
     border-radius: 4px;
+    margin-right: 4px;
 }
 
 @media screen and (max-width: 490px) {
