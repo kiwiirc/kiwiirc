@@ -47,6 +47,7 @@ export default class GlobalApi extends EventEmitter {
         this.appSettingsPlugins = [];
         this.serverViewPlugins = [];
         this.aboutBufferPlugins = [];
+        this.messageInfoPlugins = [];
         this.tabs = Object.create(null);
         this.isReady = false;
         /* eslint-disable no-underscore-dangle */
@@ -197,6 +198,9 @@ export default class GlobalApi extends EventEmitter {
             break;
         case 'about_buffer':
             this.aboutBufferPlugins.push(plugin);
+            break;
+        case 'message_info':
+            this.messageInfoPlugins.push(plugin);
             break;
         default:
             break;
