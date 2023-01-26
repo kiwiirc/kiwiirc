@@ -6,7 +6,7 @@ import EventEmitter from 'eventemitter3';
 import Vue from 'vue';
 import JSON5 from 'json5';
 import _ from 'lodash';
-import compareVersions from 'compare-versions';
+import { compareVersions } from 'compare-versions';
 import * as Misc from '@/helpers/Misc';
 import Logger from './Logger';
 
