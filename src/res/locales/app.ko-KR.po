@@ -13,95 +13,95 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2022-08-26 15:41\n"
+"PO-Revision-Date: 2022-10-20 16:03\n"
 
 #: Start
 msgid "start_button"
-msgstr "Start"
+msgstr "시작"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "Kiwi IRC에 온 것을 환영합니다!"
 
 #: Close
 msgid "close"
-msgstr "Close"
+msgstr "닫기"
 
 #: Connect
 msgid "connect"
-msgstr "Connect"
+msgstr "연결 "
 
 #: Connecting...
 msgid "connecting"
-msgstr "Connecting..."
+msgstr "연결 중…"
 
 #: Connected
 msgid "connected"
-msgstr "Connected"
+msgstr "연결됨"
 
 #: Settings
 msgid "settings"
-msgstr "Settings"
+msgstr "설정"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Kiwi IRC 설정"
 
 #: Channels
 msgid "channels"
-msgstr "Channels"
+msgstr "채널"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "접속"
 
 #: Banned Users
 msgid "banned"
-msgstr "Banned Users"
+msgstr "차단된 사용자"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "초대된 사용자"
 
 #: Notifications
 msgid "notifications"
-msgstr "Notifications"
+msgstr "알림"
 
 #: Username
 msgid "username"
-msgstr "Username"
+msgstr "사용자명"
 
 #: Password
 msgid "password"
-msgstr "Password"
+msgstr "비밀번호"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "서버 비밀번호"
 
 #: I have a password
 msgid "password_have"
-msgstr "I have a password"
+msgstr "비밀번호가 설정되어있음"
 
 #: Server
 msgid "server"
-msgstr "Server"
+msgstr "서버"
 
 #: Nick
 msgid "nick"
-msgstr "Nick"
+msgstr "닉네임"
 
 #: Channel
 msgid "channel"
-msgstr "Channel"
+msgstr "채널"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "메시지"
 
 #: Network
 msgid "network"
-msgstr "Network"
+msgstr "네트워크"
 
 #: ZNC
 msgid "znc"
@@ -113,7 +113,7 @@ msgstr "Logging in..."
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "Invalid login"
+msgstr "잘못된 로그인입니다"
 
 #: Search...
 msgid "do_search"
@@ -121,39 +121,39 @@ msgstr "Search..."
 
 #: OK
 msgid "ok"
-msgstr "OK"
+msgstr "확인"
 
 #: Cancel
 msgid "cancel"
-msgstr "Cancel"
+msgstr "취소"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "예"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "아니오"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "찾을 수 없음"
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "경고!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "This will close all Kiwi IRC conversations. Are you sure you want to close this window?"
+msgstr "모든 대화가 중단됩니다. 그래도 닫으시겠습니까?"
 
 #: Real name
 msgid "whois_realname"
-msgstr "Real name"
+msgstr "이름 "
 
 #: Status
 msgid "whois_status"
-msgstr "Status"
+msgstr "상태"
 
 #: Is available
 msgid "whois_status_available"
@@ -161,23 +161,23 @@ msgstr "Is available"
 
 #: Send a message
 msgid "send_a_message"
-msgstr "Send a message"
+msgstr "메시지 보내기"
 
 #: More information
 msgid "more_information"
-msgstr "More information"
+msgstr "자세한 정보"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignore user"
+msgstr "사용자 차단"
 
 #: Channel
 msgid "connection_channel"
-msgstr "Channel"
+msgstr "채널"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "오프라인"
 
 #: {{count}} week
 msgid "week"
@@ -205,7 +205,7 @@ msgstr "{{count}} hours"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "{{count}}분"
 
 #: {{count}} minutes
 msgid "minute_plural"
@@ -225,19 +225,19 @@ msgstr "General"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "언어"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "테마"
 
 #: Refresh Theme
 msgid "refresh_theme"
-msgstr "Refresh Theme"
+msgstr "테마 새로고침"
 
 #: Theme URL
 msgid "settings_themeurl"
-msgstr "Theme URL"
+msgstr "테마 URL 주소"
 
 #: Message Layout
 msgid "settings_messagelayout"
@@ -249,15 +249,15 @@ msgstr "Use monospace"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "Kiwi IRC를 기본 IRC 클라이언트로 설정"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
-msgstr "Traditional IRC layout"
+msgstr "기존 IRC 앱 구조로 보여주기"
 
 #: Show autocomplete list
 msgid "settings_show_autocomplete"
-msgstr "Show autocomplete list"
+msgstr "자동완성 목록 보이기"
 
 #: Chat Messages
 msgid "settings_messages_title"
@@ -297,7 +297,7 @@ msgstr "Share when I'm typing a message"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "이미지 바로 보기"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -305,7 +305,7 @@ msgstr "Include join/part messages as activity"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "Mute sound notifications"
+msgstr "알림 음소거"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
@@ -337,27 +337,27 @@ msgstr "Notify me when"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "All messages"
+msgstr "모든 메시지에서"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
-msgstr "I am mentioned"
+msgstr "내가 언급되었을 때"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Never"
+msgstr "설정하지 않음"
 
 #: Mute sounds
 msgid "settings_notify_mute"
-msgstr "Mute sounds"
+msgstr "효과음 끄기"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "읽지 않은 메시지 개수 숨기기"
 
 #: Operator tools
 msgid "operator_tools"
-msgstr "Operator tools"
+msgstr "관리자 도구"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
@@ -369,7 +369,7 @@ msgstr "Default kick reason"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "고급 설정"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
@@ -385,7 +385,7 @@ msgstr "Danger Zone: Changing some of these settings may break things!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "초기화"
 
 #: Filter
 msgid "settings_advanced_filter"
@@ -397,11 +397,11 @@ msgstr "Refresh banlist"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Banned user"
+msgstr "차단된 사용자"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Banned by"
+msgstr "차단한 사람:"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
@@ -409,7 +409,7 @@ msgstr "Refreshing banlist..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Nobody is banned!"
+msgstr "차단된 사람이 없습니다!"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -425,7 +425,7 @@ msgstr "Invited by"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
+msgstr "초대 목록을 새로 고침 중..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
@@ -437,7 +437,7 @@ msgstr "This is a public channel."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Only invited users can join."
+msgstr "초대된 사람만 입장 가능"
 
 #: Only allow invited users
 msgid "invite_set_private"
@@ -445,11 +445,11 @@ msgstr "Only allow invited users"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "모두 입장 가능"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "네트워크에 회원가입한 사람만 입장 가능"
 
 #: Add invite
 msgid "invite_add_invite"
@@ -461,7 +461,7 @@ msgstr "(Any registered user)"
 
 #: Topic
 msgid "channel_topic"
-msgstr "Topic"
+msgstr "주제"
 
 #: Moderated chat
 msgid "channel_moderated"
@@ -473,7 +473,7 @@ msgstr "Invite only"
 
 #: Hide this channel from lists
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "목록에서 이 채널 숨기기"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -501,23 +501,23 @@ msgstr "Show statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "주제 숨기기"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "주제 보이기"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "채널 설정"
 
 #: Join Channel
 msgid "container_join"
-msgstr "Join Channel"
+msgstr "채널 입장"
 
 #: Not Connected
 msgid "container_notconnected"
-msgstr "Not Connected"
+msgstr "연결되지 않음"
 
 #: Private conversation with {{user}}
 msgid "container_privmsg"
@@ -537,7 +537,7 @@ msgstr "Load previous messages"
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Unread Messages"
+msgstr "안 읽은 메시지"
 
 #: Server details
 msgid "settings_server_details"
@@ -545,7 +545,7 @@ msgstr "Server details"
 
 #: Port
 msgid "settings_port"
-msgstr "Port"
+msgstr "포트 번호"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
@@ -557,15 +557,15 @@ msgstr "Your details"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "닉네임"
 
 #: Advanced
 msgid "settings_advanced"
-msgstr "Advanced"
+msgstr "고급 설정"
 
 #: Encoding
 msgid "settings_encoding"
-msgstr "Encoding"
+msgstr "인코딩"
 
 #: Show Raw
 msgid "settings_show_raw"
@@ -585,15 +585,15 @@ msgstr "Danger Zone"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Remove network"
+msgstr "네트워크 삭제"
 
 #: {{count}} person here
 msgid "person"
-msgstr "{{count}} person here"
+msgstr "{{count}}명의 사람이 존재함"
 
 #: {{count}} people here
 msgid "person_plural"
-msgstr "{{count}} people here"
+msgstr "{{count}}명의 사람이 존재함"
 
 #: Filter users in channel
 msgid "filter_users"
@@ -617,7 +617,7 @@ msgstr "You are not currently connected!"
 
 #: Connection settings
 msgid "reconnect_settings"
-msgstr "Connection settings"
+msgstr "연결 설정"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
@@ -625,11 +625,11 @@ msgstr "We couldn't connect to that server :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "네트워크에 연결"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "네트워크 이름"
 
 #: Close options
 msgid "side_close"
@@ -641,7 +641,7 @@ msgstr "Channel options"
 
 #: Your settings
 msgid "side_settings"
-msgstr "Your settings"
+msgstr " 내 설정"
 
 #: Show when people join
 msgid "side_joins"
@@ -705,11 +705,11 @@ msgstr "Leave {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr "Your account"
+msgstr "내 계정"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr "Your settings and networks will be remembered on this computer."
+msgstr "이 기기가 설정과 네트워크를 기억함"
 
 #: Forget me
 msgid "state_forget"
@@ -729,7 +729,7 @@ msgstr "Available networks"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "네트워크 추가"
 
 #: New Network
 msgid "new_network"
@@ -745,11 +745,11 @@ msgstr "Configure network"
 
 #: Not connected.
 msgid "state_disconnected"
-msgstr "Not connected."
+msgstr "연결되지 않음"
 
 #: Join new #channel
 msgid "state_join"
-msgstr "Join new #channel"
+msgstr "새로운 채널 가입하기"
 
 #: Filter Channels
 msgid "filter_channels"
@@ -757,11 +757,11 @@ msgstr "Filter channels"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "더 많은 채널 찾기"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "정말 채널을 떠나시겠습니까?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
@@ -773,7 +773,7 @@ msgstr "Really close this chat?"
 
 #: Change nick
 msgid "change_nick"
-msgstr "Change nick"
+msgstr "닉네임 바꾸기"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
@@ -785,7 +785,7 @@ msgstr "This is you!"
 
 #: Account name: {{user}}
 msgid "user_account"
-msgstr "Account name: {{user}}"
+msgstr "계정명: {{user}}"
 
 #: Real name: {{realname}}
 msgid "user_realname"
@@ -809,7 +809,7 @@ msgstr "Connected to {{server}} {{info}}"
 
 #: Securely connected via SSL/TLS
 msgid "user_secure"
-msgstr "Securely connected via SSL/TLS"
+msgstr "SSL/TLS로 안전하게 연결됨"
 
 #: In channels {{channels}}
 msgid "user_channels"
@@ -825,15 +825,15 @@ msgstr "Normal"
 
 #: Kick from the channel
 msgid "user_kick"
-msgstr "Kick from the channel"
+msgstr "채널에서 추방하기"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Ban from the channel"
+msgstr "채널에서 차단하기"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Ban and kick from the channel"
+msgstr "채널에서 추방 및 차단하기"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -841,23 +841,23 @@ msgstr "Please specify a channel to join. eg /join #example"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "닉네임 {{nick}}은 이미 사용되고 있습니다!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "닉네임 {{nick}}이 올바르지 않습니다!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
-msgstr "You must enter a new nickname"
+msgstr "새로운 닉네임을 입력해야 합니다"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "닉네임은 숫자로 시작할 수 없습니다"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "예기치 못한 오류가 발생했습니다"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -885,7 +885,7 @@ msgstr "{{nick}} takes voice from {{target}}"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
-msgstr "{{nick}} gives admin to {{target}}"
+msgstr "{{nick}}이 관리자 권한을 {{target}}에 인계함"
 
 #: {{nick}} takes admin from {{target}}
 msgid "modes_take_admin"
@@ -901,11 +901,11 @@ msgstr "{{nick}} takes owner from {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} has banned {{target}}"
+msgstr "{{nick}}이 {{target}}을 차단 해제시킴"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} has unbanned {{target}}"
+msgstr "{{nick}}이 {{target}}을 차단 해제시킴"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
@@ -913,7 +913,7 @@ msgstr "{{nick}} sets {{mode}} on {{target}}"
 
 #: Send a message
 msgid "command_msg"
-msgstr "Send a message"
+msgstr "메시지 전송"
 
 #: Do something physical
 msgid "command_action"
@@ -921,19 +921,19 @@ msgstr "Do something physical"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Join a channel"
+msgstr "채널 들어가기"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Leave a channel"
+msgstr "채널 나가기"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Leave, then re-join a channel"
+msgstr "채널 재접속"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Change your nickname"
+msgstr "닉네임 변경"
 
 #: Start a private conversation with someone
 msgid "command_query"
@@ -945,11 +945,11 @@ msgstr "Invite somebody into the channel"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Set the topic for this channel"
+msgstr "채널 주제 설정"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Send a notice"
+msgstr "공지 등록"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
@@ -969,11 +969,11 @@ msgstr "Send a CTCP command to somebody"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Disconnect from the IRC server"
+msgstr "서버와의 연결 끊기"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Connect to a new IRC network"
+msgstr "새로운 IRC 네트워크 연결"
 
 #: Request information on somebody
 msgid "command_whois"
@@ -985,11 +985,11 @@ msgstr "Request information on somebody that disconnected recently"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "오프라인 상태로 설정"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "온라인 상태로 설정"
 
 #: Change your connection encoding
 msgid "command_encoding"
@@ -1013,7 +1013,7 @@ msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "{{channel}}에서 언급됨"
 
 #: Your IRC client
 msgid "personal_client"
@@ -1029,11 +1029,11 @@ msgstr "They will be here when you come back."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Add a Network"
+msgstr "네트워크 추가"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "You are trying to connect to {{network}}"
+msgstr "{{network}}에 연결 시도 중입니다."
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
@@ -1049,7 +1049,7 @@ msgstr "Temporarily connect to this network"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Saved networks"
+msgstr "저장된 네트워크"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
@@ -1065,43 +1065,43 @@ msgstr "(Thanks to Adam @Rizon for the development websocket server support!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
-msgstr "Give the developer version of Kiwi IRC a try!"
+msgstr "Kiwi IRC 개발자 모드 사용하기"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "연결 끊김"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Connected to {{network}}!"
+msgstr "{{network}}에 연결됨"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} has joined"
+msgstr "{{nick}}이 입장함"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} kicked you from {{channel}}"
+msgstr "{{nick}}이 나를 {{channel}}에서 추방함."
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
+msgstr "{{nick}}이 {{chanop}}에게 {{channel}}에서 추방당함"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} has left"
+msgstr "{{nick}}이 나감"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} invited you to join {{channel}}"
+msgstr "{{nick}}이 나를 {{channel}}에 초대함"
 
 #: {{nick}} invited {{invited}} to join {{channel}}
 msgid "invited_other"
-msgstr "{{nick}} invited {{invited}} to join {{channel}}"
+msgstr "{{nick}}이 {{channel}}에 {{invited}}를 초대함"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
+msgstr "{{nick}}이 이미 사용 중 입니다. {{newnick}}로 시도 중...."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
@@ -1109,5 +1109,5 @@ msgstr "{{nick}} is now known as {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} changed the topic to: {{topic}}"
+msgstr "{{nick}}이 {{topic}}으로 주제를 변경함"
 

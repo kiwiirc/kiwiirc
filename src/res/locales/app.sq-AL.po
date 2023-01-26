@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2022-08-26 15:41\n"
+"PO-Revision-Date: 2022-11-23 09:03\n"
 
 #: Start
 msgid "start_button"
@@ -473,7 +473,7 @@ msgstr "Vetëm me ftesa"
 
 #: Hide this channel from lists
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "Fshihe këtë kanal nga lista"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"

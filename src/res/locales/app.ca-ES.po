@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2022-08-26 15:41\n"
+"PO-Revision-Date: 2022-10-05 08:00\n"
 
 #: Start
 msgid "start_button"
@@ -473,7 +473,7 @@ msgstr "Es necessita una invitació per entrar"
 
 #: Hide this channel from lists
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "Oculta aquest canal de les llistes"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
