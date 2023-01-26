@@ -4,6 +4,7 @@ const execSync = require('child_process').execSync;
 const DefinePlugin = require('webpack').DefinePlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const ConvertLocalesPlugin = require('./build/webpack/convert-locales');
 const pkg = require('./package.json');
 
 const makeSourceMap = process.argv.indexOf('--nomap') === -1;
@@ -49,6 +50,7 @@ module.exports = {
             new StyleLintPlugin({
                 files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
             }),
+            new ConvertLocalesPlugin(),
             new CopyWebpackPlugin({
                 patterns: [
                     {
