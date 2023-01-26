@@ -48,8 +48,9 @@
         </template>
         <div v-else class="kiwi-notconnected-caption">
             {{ $t('connecting') }}
-            <i class="fa fa-refresh fa-spin kiwi-notconnected-bigicon"
-               aria-hidden="true"
+            <i
+                class="fa fa-refresh fa-spin kiwi-notconnected-bigicon"
+                aria-hidden="true"
             />
         </div>
 

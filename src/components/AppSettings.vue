@@ -157,8 +157,9 @@
                             </label>
                         </div>
                     </div>
-                    <div v-if="!$state.setting('hide_advanced') && !settingAdvancedEnable"
-                         class="kiwi-appsettings-block"
+                    <div
+                        v-if="!$state.setting('hide_advanced') && !settingAdvancedEnable"
+                        class="kiwi-appsettings-block"
                     >
                         <h3>{{ $t('settings_advanced_title') }}</h3>
                         <div class="kiwi-appsettings-section kiwi-appsettings-advanced-enable">

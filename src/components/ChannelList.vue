@@ -286,7 +286,7 @@ export default {
 .kiwi-channellist-users::before {
     font-family: fontAwesome, sans-serif;
     padding-right: 0.4em;
-    content: "\f007";
+    content: '\f007';
 }
 
 .kiwi-channellist-name {

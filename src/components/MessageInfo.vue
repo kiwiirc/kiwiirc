@@ -25,8 +25,9 @@
                     label="Kick reason:" @submit="onKick"
                     @cancel="requestingInput = false"
                 >
-                    <a v-if="!requestingInput"
-                       class="u-link kiwi-messageinfo-kick-user" @click="requestingInput = true"
+                    <a
+                        v-if="!requestingInput"
+                        class="u-link kiwi-messageinfo-kick-user" @click="requestingInput = true"
                     >
                         Kick {{ message.nick }}
                     </a>
@@ -35,8 +36,9 @@
                     label="Ban reason:" @submit="onBan"
                     @cancel="requestingInput = false"
                 >
-                    <a v-if="!requestingInput"
-                       class="u-link kiwi-messageinfo-ban-user" @click="requestingInput = true"
+                    <a
+                        v-if="!requestingInput"
+                        class="u-link kiwi-messageinfo-ban-user" @click="requestingInput = true"
                     >
                         Ban {{ message.nick }}
                     </a>

@@ -32,7 +32,7 @@
                         :buffer="buffer"
                         :sidebar-state="sidebarState"
                     >
-                        <template v-if="mediaviewerOpen" v-slot:before>
+                        <template v-if="mediaviewerOpen" #before>
                             <media-viewer
                                 :url="mediaviewerUrl"
                                 :component="mediaviewerComponent"

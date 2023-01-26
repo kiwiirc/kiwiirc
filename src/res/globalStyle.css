@@ -103,7 +103,7 @@ select {
     border: 1px solid;
 }
 
-.u-form input[type="radio"] {
+.u-form input[type='radio'] {
     float: right;
 }
 
@@ -140,8 +140,8 @@ select {
     padding-left: 30px;
 }
 
-.u-checkbox-wrapper input[type="checkbox"],
-.u-checkbox-wrapper input[type="radio"] {
+.u-checkbox-wrapper input[type='checkbox'],
+.u-checkbox-wrapper input[type='radio'] {
     position: absolute;
     margin: 0;
     top: 2px;

@@ -1,6 +1,6 @@
 <template>
     <startup-layout ref="layout" class="kiwi-welcome-znc">
-        <template v-if="!network || network.state === 'disconnected'" v-slot:connection>
+        <template v-if="!network || network.state === 'disconnected'" #connection>
             <form class="u-form u-form--big kiwi-welcome-znc-form" @submit.prevent="formSubmit">
                 <h2 v-html="greetingText" />
 
@@ -41,7 +41,7 @@
                 />
             </form>
         </template>
-        <template v-else-if="network.state !== 'connected'" v-slot:connection>
+        <template v-else-if="network.state !== 'connected'" #connection>
             <i class="fa fa-spin fa-spinner" style="font-size: 2em; margin-top: 1em;" />
         </template>
     </startup-layout>

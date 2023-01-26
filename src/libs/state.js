@@ -3,14 +3,13 @@
 import Vue from 'vue';
 import _ from 'lodash';
 
+import * as Misc from '@/helpers/Misc';
+import * as TextFormatting from '@/helpers/TextFormatting';
+import { configTemplates } from '@/res/configTemplates';
 import NetworkState from './state/NetworkState';
 import BufferState from './state/BufferState';
 import UserState from './state/UserState';
 import Message from './Message';
-
-import * as Misc from '@/helpers/Misc';
-import * as TextFormatting from '@/helpers/TextFormatting';
-import { configTemplates } from '@/res/configTemplates';
 
 function createNewState() {
     const stateObj = {

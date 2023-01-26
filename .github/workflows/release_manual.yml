@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-${{ github.event.inputs.ubuntu }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           repository: 'kiwiirc/kiwiirc_packager'
           ref: ${{ github.event.inputs.packager }}

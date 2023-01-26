@@ -25,7 +25,7 @@ module.exports = {
                 vue$: 'vue/dist/vue.common.js',
             },
             fallback: {
-                'stream': require.resolve('stream-browserify'),
+                stream: require.resolve('stream-browserify'),
             },
             // This prevents yarn link modules from getting linted
             symlinks: false,
