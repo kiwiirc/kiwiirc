@@ -60,6 +60,7 @@ export const configTemplates = {
             show_mode_changes: true,
             show_presence_changes: true,
             traffic_as_activity: false,
+            server_as_activity: true,
             coloured_nicklist: true,
             colour_nicknames_in_messages: true,
             block_pms: false,
