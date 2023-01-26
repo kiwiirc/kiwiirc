@@ -382,6 +382,18 @@ export default {
 </script>
 
 <style lang="less">
+@import "~font-awesome/less/variables.less";
+/* stylelint-disable-next-line at-rule-no-unknown */
+@fa-font-path "~font-awesome/fonts/";
+
+/* stylelint-disable no-invalid-position-at-import-rule */
+@import "~font-awesome/less/mixins.less";
+@import "~font-awesome/less/core.less";
+@import "~font-awesome/less/fixed-width.less";
+@import "~font-awesome/less/icons.less";
+@import "~font-awesome/less/path.less";
+@import "~font-awesome/less/animated.less";
+
 html {
     height: 100%;
     margin: 0;
