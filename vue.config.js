@@ -31,8 +31,8 @@ module.exports = {
             symlinks: false,
         },
         performance: {
-            maxEntrypointSize: 1550000,
-            maxAssetSize: 1000000,
+            maxEntrypointSize: 1677722, // 1.6MiB
+            maxAssetSize: 1048576, // 1MiB
         },
         optimization: {
             splitChunks: {
