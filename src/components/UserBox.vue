@@ -176,7 +176,7 @@
 
 'kiwi public';
 
-import ipRegex from 'ip-regex';
+import * as ipRegex from 'ip-regex';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import GlobalApi from '@/libs/GlobalApi';

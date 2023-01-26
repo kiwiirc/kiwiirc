@@ -24,7 +24,7 @@
     "i18next": "^22.4.9",
     "i18next-http-backend": "^v2.1.1",
     "intersection-observer": "^0.12.2",
-    "ip-regex": "^5.0.0",
+    "ip-regex": "^4.3.0",
     "irc-framework": "^4.13.0",
     "json5": "^2.2.3",
     "murmurhash3js": "^3.0.1",

@@ -13,7 +13,7 @@ module.exports = {
     publicPath: '',
     assetsDir: 'static/',
     runtimeCompiler: true,
-    transpileDependencies: ['irc-framework', 'isomorphic-textencoder'],
+    transpileDependencies: ['irc-framework', 'ip-regex', 'isomorphic-textencoder'],
     productionSourceMap: makeSourceMap,
     css: {
         sourceMap: makeSourceMap,
