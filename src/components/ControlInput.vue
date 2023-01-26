@@ -14,7 +14,7 @@
                 <self-user
                     v-if="networkState==='connected'
                         && selfuser_open === true"
-                    :network="buffer.getNetwork()"
+                    :network="network"
                     @close="selfuser_open=false"
                 />
             </transition>
@@ -22,9 +22,9 @@
 
         <div class="kiwi-controlinput-inner">
             <away-status-indicator
-                v-if="buffer.getNetwork() && buffer.getNetwork().state === 'connected'"
-                :network="buffer.getNetwork()"
-                :user="buffer.getNetwork().currentUser()"
+                v-if="network && network.state === 'connected'"
+                :network="network"
+                :user="network.currentUser()"
             />
             <div v-if="currentNick" class="kiwi-controlinput-user" @click="toggleSelfUser">
                 <span class="kiwi-controlinput-user-nick">{{ currentNick }}</span>
@@ -108,18 +108,17 @@
                         >
                             <i class="fa fa-smile-o" aria-hidden="true" />
                         </div>
-                        <div
+                        <component
+                            :is="plugin.component"
                             v-for="plugin in pluginUiElements"
                             :key="plugin.id"
-                            v-rawElement="{
-                                el: plugin.el,
-                                props: {
-                                    kiwi: {
-                                        buffer: buffer,
-                                        controlinput: self,
-                                    }
-                                }
+                            :plugin-props="{
+                                buffer: buffer,
+                                controlinput: self,
                             }"
+                            v-bind="plugin.props"
+                            :network="network"
+                            :buffer="buffer"
                             class="kiwi-controlinput-button"
                         />
                     </div>
@@ -155,7 +154,7 @@ export default {
         SelfUser,
         TypingUsersList,
     },
-    props: ['container', 'buffer'],
+    props: ['network', 'buffer', 'sidebarState'],
     data() {
         return {
             self: this,
@@ -670,7 +669,7 @@ export default {
 
             if (opts.buffers) {
                 let bufferList = [];
-                this.buffer.getNetwork().buffers.forEach((buffer) => {
+                this.network.buffers.forEach((buffer) => {
                     if (buffer.isChannel()) {
                         bufferList.push({
                             text: buffer.name,
@@ -721,8 +720,7 @@ export default {
             return list;
         },
         startTyping() {
-            let network = this.buffer.getNetwork();
-            if (!network.ircClient.network.cap.isEnabled('message-tags')) {
+            if (!this.network.ircClient.network.cap.isEnabled('message-tags')) {
                 return;
             }
             if (!this.buffer || !this.buffer.shouldShareTyping()) {
@@ -739,13 +737,12 @@ export default {
                 return;
             }
 
-            network.ircClient.typing.start(this.buffer.name);
+            this.network.ircClient.typing.start(this.buffer.name);
 
             this.lastTypingTime = Date.now();
         },
         stopTyping(sendStop) {
-            let network = this.buffer.getNetwork();
-            if (!network.ircClient.network.cap.isEnabled('message-tags')) {
+            if (!this.network.ircClient.network.cap.isEnabled('message-tags')) {
                 return;
             }
             if (!this.buffer || !this.buffer.shouldShareTyping()) {
@@ -759,8 +756,8 @@ export default {
             }
 
             this.$refs.input.getRawText().trim() ?
-                network.ircClient.typing.pause(this.buffer.name) :
-                network.ircClient.typing.stop(this.buffer.name, sendStop);
+                this.network.ircClient.typing.pause(this.buffer.name) :
+                this.network.ircClient.typing.stop(this.buffer.name, sendStop);
         },
     },
 };

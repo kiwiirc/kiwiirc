@@ -33,18 +33,18 @@
                 {{ $t('more_information') }}
             </a>
             <div class="kiwi-userbox-actions kiwi-userbox-plugin-actions">
-                <div
+                <component
+                    :is="plugin.component"
                     v-for="plugin in pluginUiButtonElements"
                     :key="plugin.id"
-                    v-rawElement="{
-                        el: plugin.el,
-                        props: {
-                            kiwi: {
-                                user: user,
-                                userbox: self,
-                            }
-                        }
+                    :plugin-props="{
+                        user: user,
+                        userbox: self,
                     }"
+                    v-bind="plugin.props"
+                    :network="network"
+                    :buffer="buffer"
+                    :user="user"
                 />
             </div>
         </div>

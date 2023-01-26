@@ -3,7 +3,10 @@
 /** @module */
 
 import _ from 'lodash';
+import Vue from 'vue';
 import strftime from 'strftime';
+import PluginWrapper from '@/components/utils/PluginWrapper';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import { urlRegex } from './TextFormatting';
 
 const strftimeUTC = strftime.timezone('+0');
@@ -328,4 +331,51 @@ export function parseIntZero(inp) {
     return Number.isNaN(int) ?
         0 :
         int;
+}
+
+/**
+ * Prepare plugin provided object, for use as a plugin component
+ * @param {Number} pluginId The number to identify this plugin object
+ * @param {Component} componentOrElement The vue.js component object or html element
+ * @param {Object} args Optional arguments for this plugin { title: '', props: {} }
+ */
+export function makePluginObject(pluginId, componentOrElement, args = {}) {
+    const plugin = {
+        id: pluginId,
+        component: null,
+        title: () => '',
+        props: {},
+        tabName: '',
+    };
+
+    // copy props from args
+    plugin.props = Object.assign(plugin.props, args.props);
+    plugin.tabName = args.tabName || args.title || 'plugin_tab_' + pluginId;
+
+    if (componentOrElement instanceof Element) {
+        // componentOrElement is an html element, so wrap it in a functional component
+
+        // eslint-disable-next-line no-underscore-dangle
+        if (componentOrElement.__vue__ && !window.kiwi_deprecations_vueEl) {
+            window.kiwi_deprecations_vueEl = true;
+            // eslint-disable-next-line no-console
+            console.warn('deprecated component.$el added to plugin api, please switch to just passing the vue.js component object');
+        }
+        plugin.component = PluginWrapper;
+        plugin.props = Object.assign(plugin.props, {
+            pluginElement: componentOrElement,
+        });
+    } else if (componentOrElement instanceof Object) {
+        // componentOrElement is an object, attempt to make a vue component from it
+        plugin.component = Vue.extend(componentOrElement);
+    } else {
+        plugin.component = componentOrElement;
+    }
+
+    if (typeof args.title === 'string') {
+        // if args.title exists wrap it in a function, that can also be a translation string
+        plugin.title = () => (args.title.slice(0, 2) === 't_' ? TextFormatting.t(args.title.slice(2)) : args.title);
+    }
+
+    return plugin;
 }

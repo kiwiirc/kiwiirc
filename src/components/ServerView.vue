@@ -20,8 +20,17 @@
                 >
                     <channel-list :network="network" />
                 </tabbed-tab>
-                <tabbed-tab v-for="item in pluginUiElements" :key="item.id" :header="item.title">
-                    <div :is="item.component" v-bind="item.props" />
+                <tabbed-tab
+                    v-for="item in pluginUiElements"
+                    :key="item.id"
+                    :header="item.title()"
+                    :name="item.tabName"
+                >
+                    <component
+                        :is="item.component"
+                        v-bind="item.props"
+                        :network="network"
+                    />
                 </tabbed-tab>
             </tabbed-view>
         </div>

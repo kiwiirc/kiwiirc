@@ -45,8 +45,9 @@
                     </container>
                     <control-input
                         v-if="buffer.show_input"
-                        :container="networks"
+                        :network="network"
                         :buffer="buffer"
+                        :sidebar-state="sidebarState"
                     />
                 </template>
                 <component

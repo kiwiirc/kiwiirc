@@ -56,8 +56,18 @@
                                 <div
                                     v-if="message.render() &&
                                         message.template &&
-                                        message.template.$el"
+                                        message.template.$el &&
+                                        isTemplateVue(message.template)"
                                     v-rawElement="message.template.$el"
+                                />
+                                <component
+                                    :is="message.template"
+                                    v-else-if="message.render() && message.template"
+                                    v-bind="message.templateProps"
+                                    :buffer="buffer"
+                                    :message="message"
+                                    :idx="filteredMessages.indexOf(message)"
+                                    :ml="thisMl"
                                 />
                                 <message-list-message-modern
                                     v-else-if="listType === 'modern'"
@@ -101,6 +111,7 @@
 <script>
 'kiwi public';
 
+import Vue from 'vue';
 import strftime from 'strftime';
 import Logger from '@/libs/Logger';
 import * as bufferTools from '@/libs/bufferTools';
@@ -263,6 +274,15 @@ export default {
         });
     },
     methods: {
+        isTemplateVue(template) {
+            const isVue = template instanceof Vue;
+            if (isVue && !window.kiwi_deprecations_messageTemplate) {
+                window.kiwi_deprecations_messageTemplate = true;
+                // eslint-disable-next-line no-console
+                console.warn('deprecated message.template or message.bodyTemplate, please use `message.template = kiwi.Vue.extend(component object)`');
+            }
+            return isVue;
+        },
         isHoveringOverMessage(message) {
             return message.nick && message.nick.toLowerCase() === this.hover_nick.toLowerCase();
         },

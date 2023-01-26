@@ -31,6 +31,11 @@ export default class GlobalApi extends EventEmitter {
         this.state = null;
         /** The applications ThemeManager */
         this.themes = null;
+        /** Translations library */
+        this.i18n = null;
+        this.vueI18n = null;
+        this.translationUrls = Object.create(null);
+
         this.controlInputPlugins = [];
         this.stateBrowserPlugins = [];
         this.channelHeaderPlugins = [];
@@ -153,22 +158,18 @@ export default class GlobalApi extends EventEmitter {
 
     /**
      * Add a DOM element to different parts of the Kiwi UI
-     * - addUi('input', domElement)
-     * - addUi('browser', domElement)
-     * - addUi('header_channel', domElement)
-     * - addUi('header_query', domElement)
-     * - addUi('userbox_button', domElement)
-     * - addUi('about_buffer', domElement)
-     * @param {string} type Where this DOM element should be added
-     * @param {element} element The HTML element to add
-     * @param {object} args Optional arguments for this plugin
+     * - addUi('input', componentObject)
+     * - addUi('browser', componentObject)
+     * - addUi('header_channel', componentObject)
+     * - addUi('header_query', componentObject)
+     * - addUi('userbox_button', componentObject)
+     * - addUi('about_buffer', componentObject)
+     * @param {string} type Where this component should be added
+     * @param {object} component The vue.js component object
+     * @param {object} args Optional arguments for this plugin { title: '', props: {} }
      */
-    addUi(type, element, args = {}) {
-        let plugin = {
-            el: element,
-            id: nextPluginId++,
-            args,
-        };
+    addUi(type, component, args = {}) {
+        const plugin = Misc.makePluginObject(nextPluginId++, component, args);
 
         switch (type) {
         case 'input':
@@ -201,16 +202,11 @@ export default class GlobalApi extends EventEmitter {
      * - addTab('server', 'title', component, props)
      * @param {String} type The type of tab to add. This determines where it will be shown
      * @param {String} title The title shown on the tab
-     * @param {Component} component The vuejs component that is displayed for this tab
-     * @param {Object} props Optional properties for the vuejs component
+     * @param {Object} component The vue.js component object that is displayed in this tab
+     * @param {Object} props Optional properties for the vue.js component
      */
     addTab(type, title, component, props) {
-        let plugin = {
-            id: nextPluginId++,
-            title,
-            component,
-            props,
-        };
+        const plugin = Misc.makePluginObject(nextPluginId++, component, { props, title });
 
         switch (type) {
         case 'channel':
@@ -231,15 +227,12 @@ export default class GlobalApi extends EventEmitter {
      * Register a Vue component that may be shown in future. It is shown over the entire
      * client alongside the StateBrowser
      * @param {String} name A name to reference this view in future
-     * @param {Component} component The vuejs component to create the view
-     * @param {Object} props Optional properties the the vuejs component
+     * @param {Object} component The vue.js component object to create the view
+     * @param {Object} props Optional properties the the vue.js component
      */
     addView(name, component, props) {
-        this.tabs[name] = {
-            id: nextPluginId++,
-            component: Vue.extend(component),
-            props: props || {},
-        };
+        const plugin = Misc.makePluginObject(nextPluginId++, component, { props });
+        this.tabs[name] = plugin;
     }
 
     /**
@@ -257,26 +250,28 @@ export default class GlobalApi extends EventEmitter {
     }
 
     /**
-     * Show a Vuejs component in the sidebar
-     * @param {Object} component The vuejs component to render
-     * @param {Object} props Optional properties for the vuejs component
+     * Show a Vue.js component in the sidebar
+     * @param {Object} component The vue.js component object to render
+     * @param {Object} props Optional properties for the vue.js component
      */
     showInSidebar(component, props) {
-        this.state.$emit('sidebar.component', component, props);
+        const plugin = Misc.makePluginObject(0, component, { props });
+        this.state.$emit('sidebar.component', plugin.component, plugin.props);
     }
 
     /**
      * Add a custom startup screen that may be loaded by the configuration file
      * @param {String} name The name of this startup screen
-     * @param {Object} ctor The constructor object for the vuejs component
+     * @param {Object} component The vue.js component object
      */
-    addStartup(name, ctor) {
+    addStartup(name, component) {
+        const plugin = Misc.makePluginObject(0, component);
         let startups = this.state.getStartups();
-        startups[name] = ctor;
+        startups[name] = plugin.component;
     }
 
     /**
-     *
+     * Replace an existing kiwiirc component/module with a custom one
      * @param {String} dest The module path to replace
      * @param {Object} source The new module to insert in place
      */
@@ -287,5 +282,57 @@ export default class GlobalApi extends EventEmitter {
         }
 
         Misc.replaceObjectProps(mod, source);
+    }
+
+    /**
+     * Add default config params for a plugin
+     * @param {String} namespace Base config location eg: 'plugin-conference'
+     * @param {Object} defaultConfig Configuration object
+     */
+    setConfigDefaults(namespace, defaultConfig) {
+        let base = `settings.${namespace}`;
+        let getSetting = (key) => this.state.getSetting(`${base}.${key}`);
+        let setSetting = (key, value) => this.state.setSetting(`${base}.${key}`, value);
+        let walkConfig = (obj, _target) => {
+            _.each(obj, (val, key) => {
+                let target = [..._target, key];
+                let targetName = target.join('.');
+                if (typeof val === 'object' && !_.isArray(val)) {
+                    walkConfig(val, target);
+                } else if (typeof getSetting(targetName) === 'undefined') {
+                    setSetting(targetName, val);
+                }
+            });
+        };
+        walkConfig(defaultConfig, []);
+    }
+
+    /**
+     * Add translations for use in a plugin
+     * @param {String} namespace Translations namespace eg: 'plugin-conference'
+     * @param {Object} translations Translations object
+     */
+    addTranslations(namespace, translations) {
+        Object.entries(translations).forEach(([lang, data]) => {
+            this.i18n.addResourceBundle(lang, namespace, data);
+        });
+    }
+
+    /**
+     * Add url path to translation files
+     * @param {String} namespace Translations namespace eg: 'plugin-conference'
+     * @param {String} url Translations url path, supported replacements: {{lng}} {{ns}}
+     * @param {Object} fallbackLocale Optional fallback 'en-us' locale data from bundle
+     */
+    addTranslationFiles(namespace, url, fallbackLocale) {
+        if (!url.includes('{{lng}}')) {
+            this.log.error('A plugin tried to addTranslationsFiles() without {{lng}} in the url');
+            return;
+        }
+        this.translationUrls[namespace] = url;
+        if (fallbackLocale) {
+            this.i18n.addResourceBundle('en-us', namespace, fallbackLocale);
+        }
+        this.i18n.loadNamespaces(namespace);
     }
 }

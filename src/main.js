@@ -2,7 +2,7 @@ import _ from 'lodash';
 import Vue from 'vue';
 import JSON5 from 'json5';
 import i18next from 'i18next';
-import i18nextXHR from 'i18next-xhr-backend';
+import i18nextHTTP from 'i18next-http-backend';
 import VueI18Next from '@panter/vue-i18next';
 import VueVirtualScroller from 'vue-virtual-scroller';
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css';
@@ -389,19 +389,29 @@ function loadPlugins() {
 function initLocales() {
     Vue.use(VueI18Next);
 
-    i18next.use(i18nextXHR);
+    i18next.use(i18nextHTTP);
     i18next.init({
-        whitelist: AvailableLocales.locales,
+        supportedLngs: AvailableLocales.locales,
         fallbackLng: 'en-us',
         lowerCaseLng: true,
         backend: {
-            loadPath: 'static/locales/{{lng}}.json',
+            loadPath: (langs, namespaces) => {
+                // If allowMultiLoading is false, langs and namespaces will have only one element
+                const namespace = namespaces[0];
+
+                return (namespace === 'translation') ?
+                    'static/locales/{{lng}}.json' :
+                    api.translationUrls[namespace];
+            },
 
             // allow cross domain requests
             crossDomain: false,
 
             // allow credentials on cross domain requests
             withCredentials: false,
+
+            // your backend server supports multiloading
+            allowMultiLoading: false,
         },
         interpolation: {
             // We let vuejs handle HTML output escaping

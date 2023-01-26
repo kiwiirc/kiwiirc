@@ -18,11 +18,20 @@
         <div class="kiwi-mediaviewer-content">
             <iframe
                 v-if="isIframe"
+                ref="iframe"
                 :src="url"
                 :sandbox="iframeSandboxOptions"
                 class="kiwi-mediaviewer-iframe"
             />
-            <component :is="component" v-else-if="component" :component-props="componentProps" />
+            <component
+                :is="component"
+                v-else-if="component"
+                :component-props="componentProps"
+                v-bind="componentProps"
+                @close="$emit('close')"
+                @setHeight="setHeight"
+                @setMaxHeight="setMaxHeight"
+            />
             <url-embed
                 v-else
                 :url="url"
@@ -85,22 +94,44 @@ export default {
         // Debounce as both watchers may call it in the same tick
         // also causes the method to be called next tick to give dom time to update
         this.debouncedUpdateEmbed = _.debounce(() => {
-            this.updateEmbed();
+            this.updateEmbed(true);
         }, 0);
     },
     mounted() {
-        this.updateEmbed();
+        this.updateEmbed(false);
         this.$nextTick(() => {
-            this.$state.$emit('mediaviewer.opened');
+            this.emitEvent('opened');
         });
     },
     methods: {
-        updateEmbed() {
+        updateEmbed(shouldEmit) {
             this.setMaxHeight('');
-            if (this.url && !this.isIframe) {
-                return;
+
+            if (this.isIframe || this.component) {
+                this.setHeight((this.isIframe) ? '40%' : 'auto');
             }
-            this.setHeight((this.isIframe) ? '40%' : 'auto');
+
+            if (shouldEmit) {
+                this.emitEvent('updated');
+            }
+        },
+        emitEvent(type) {
+            const event = {
+                isInline: this.showPin || false,
+            };
+            if (this.isIframe) {
+                event.type = 'iframe';
+                event.iframe = this.$refs.iframe;
+                event.url = this.url;
+            } else if (this.component) {
+                event.type = 'component';
+                event.component = this.component;
+                event.componentProps = this.componentProps;
+            } else {
+                event.type = 'embed';
+                event.url = this.url;
+            }
+            this.$state.$emit(`mediaviewer.${type}`, event);
         },
         setHeight(newHeight) {
             this.$el.style.height = newHeight;
@@ -113,7 +144,6 @@ export default {
 </script>
 
 <style>
-
 .kiwi-mediaviewer {
     box-sizing: border-box;
     position: relative;
@@ -154,5 +184,4 @@ export default {
     top: 0;
     border: none;
 }
-
 </style>
