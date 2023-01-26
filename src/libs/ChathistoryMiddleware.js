@@ -50,7 +50,7 @@ function addFunctionsToClient(client) {
         },
     };
 
-    history.isSupported = () => !!client.network.supports('draft/chathistory');
+    history.isSupported = () => !!client.network.supports('chathistory');
 
     history.before = (target, dateOrTime) => new Promise((resolve) => {
         if (!history.isSupported()) {
