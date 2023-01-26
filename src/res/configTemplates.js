@@ -113,6 +113,7 @@ export const configTemplates = {
         sidebarDefault: 'nicklist',
         showRaw: false,
         useBufferHistory: true,
+        changeNickOnCollision: true,
         hideSettings: null,
         highlights: '',
         teamHighlights: false,

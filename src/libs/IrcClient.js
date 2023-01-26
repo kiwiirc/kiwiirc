@@ -884,37 +884,47 @@ function clientMiddleware(state, network) {
             });
         }
 
-        if (command === 'nick in use' && !client.connection.registered) {
-            let newNick = client.user.nick + rand(1, 100);
+        if (command === 'nick in use') {
+            let shouldChangeNick = !client.connection.registered && state.setting('changeNickOnCollision');
+            let newNick = client.user.nick.replace(/\d+$/, '') + rand(1, 99);
+
+            let translationKey = shouldChangeNick ? 'nick_in_use_retrying' : 'error_nick_in_use';
+            let translationVars = { nick: client.user.nick };
+            if (shouldChangeNick) {
+                translationVars.newnick = newNick;
+            }
+
             let messageBody = TextFormatting.formatAndT(
                 'nickname_alreadyinuse',
                 null,
-                'nick_in_use_retrying',
-                { nick: client.user.nick, newnick: newNick },
+                translationKey,
+                translationVars,
             );
 
-            network.buffers.forEach((b) => {
-                state.addMessage(b, {
-                    time: eventTime,
-                    server_time: serverTime,
-                    nick: '',
-                    message: messageBody,
-                    type: 'error',
-                });
-            });
-
-            client.changeNick(newNick);
-        }
-
-        if (command === 'nick in use' && client.connection.registered) {
-            let buffer = state.getActiveBuffer();
-            buffer && state.addMessage(buffer, {
+            let message = {
                 time: eventTime,
                 server_time: serverTime,
                 nick: '',
+                message: messageBody,
                 type: 'error',
-                message: `The nickname '${event.nick}' is already in use!`,
-            });
+            };
+
+            let activeBuffer = state.getActiveBuffer();
+            let buffer = network.serverBuffer();
+
+            if (activeBuffer && activeBuffer.networkid === network.id) {
+                buffer = activeBuffer;
+            }
+            if (buffer) {
+                state.addMessage(buffer, message);
+            }
+
+            if (shouldChangeNick) {
+                client.changeNick(newNick);
+            } else if (!client.connection.registered) {
+                network.last_error = messageBody;
+                network.ircClient.connection.end();
+            }
         }
 
         if (command === 'nick') {
