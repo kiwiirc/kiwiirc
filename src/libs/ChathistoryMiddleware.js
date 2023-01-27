@@ -20,10 +20,17 @@ export default function chathistoryMiddleware() {
             client.chathistory.batchCallbacks.resolve(target, event);
         }
 
-        if (command.toLowerCase() === 'fail' && event.params[0].toLowerCase() === 'chathistory') {
+        // This is sent as 'unknown command', its been structured this way so hopefully it
+        // will still work if a fail handler is ever created in irc-fw
+        if (event.command?.toLowerCase() === 'fail' && event.params[0].toLowerCase() === 'chathistory') {
             // FAIL CHATHISTORY MESSAGE_ERROR the_given_command #target :Messages could not be ...
             if (event.params[1].toLowerCase() === 'message_error') {
                 client.chathistory.batchCallbacks.resolve(event.params[3]);
+            }
+
+            if (event.params[1].toLowerCase() === 'invalid_target') {
+                // suppress invalid target errors
+                return;
             }
         }
 
