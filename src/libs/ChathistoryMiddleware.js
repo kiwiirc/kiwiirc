@@ -50,7 +50,8 @@ function addFunctionsToClient(client) {
         },
     };
 
-    history.isSupported = () => !!client.network.supports('chathistory') || client.network.cap.isEnabled('draft/chathistory');
+    // supports (ISUPPORT) is used by kiwibnc, the spec and unreal's implementation uses CAP
+    history.isSupported = () => !!client.network.supports('draft/chathistory') || client.network.cap.isEnabled('draft/chathistory');
 
     history.before = (target, dateOrTime) => new Promise((resolve) => {
         if (!history.isSupported()) {

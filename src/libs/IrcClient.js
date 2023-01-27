@@ -979,8 +979,9 @@ function clientMiddleware(state, network) {
 
         if (command === 'userlist') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
+            let ucNick = network.ircClient.user.nick.toUpperCase();
             let hadExistingUsers = Object.keys(buffer.users)
-                .filter((u) => u !== network.ircClient.user.nick.toUpperCase())
+                .filter((u) => u !== ucNick)
                 .length > 0;
             let users = [];
             event.users.forEach((user) => {
