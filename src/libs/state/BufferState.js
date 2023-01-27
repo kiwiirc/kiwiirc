@@ -346,40 +346,11 @@ export default class BufferState {
             throw new Error('Invalid direction for requestScrollback(): ' + _direction);
         }
 
-        let ircClient = this.getNetwork().ircClient;
-        this.flag('is_requesting_chathistory', true);
-        this.chathistory_request_count += 1;
-        let existingMessageIds = Object.assign({}, this.messagesObj.messageIds);
-        ircClient.chathistory[chathistoryFuncName](this.name, time)
-            .then((event) => {
-                if (!event) {
-                    this.flag('chathistory_available', false);
-                    return;
-                }
-
-                // The BNC server may reply with messages that are already in the buffer.
-                // If we get no new messages that we didn't already have, assume that we have
-                // all the available history
-                let hasNewMessages = event.commands.some(
-                    (msg) => msg.tags.msgid && !existingMessageIds[msg.tags.msgid]
-                );
-
-                // If there are new messages, then there could be more in the backlog.
-                // If there are no new messages, then the chat history is empty.
-                this.flag('chathistory_available', hasNewMessages);
-            })
-            .finally(() => {
-                this.flag('is_requesting_chathistory', false);
-            });
+        getBufferHistory(this, chathistoryFuncName, time);
     }
 
     requestLatestScrollback() {
-        let ircClient = this.getNetwork().ircClient;
-        this.flag('is_requesting_chathistory', true);
-        this.chathistory_request_count += 1;
-        ircClient.chathistory.latest(this.name, '*').finally(() => {
-            this.flag('is_requesting_chathistory', false);
-        });
+        getBufferHistory(this, 'latest', '*');
     }
 
     markAsRead(delayed) {
@@ -695,4 +666,30 @@ function maybeStartWhoLoop(bufferState) {
             nextLoop();
         }
     }
+}
+
+function getBufferHistory(buffer, chathistoryFuncName, time) {
+    let ircClient = buffer.getNetwork().ircClient;
+    buffer.flag('is_requesting_chathistory', true);
+    buffer.chathistory_request_count += 1;
+    let existingMessageIds = Object.assign({}, buffer.messagesObj.messageIds);
+    ircClient.chathistory[chathistoryFuncName](buffer.name, time).then((event) => {
+        if (!event) {
+            buffer.flag('chathistory_available', false);
+            return;
+        }
+
+        // The BNC server may reply with messages that are already in the buffer.
+        // If we get no new messages that we didn't already have, assume that we have
+        // all the available history
+        let hasNewMessages = event.commands.some(
+            (msg) => msg.tags.msgid && !existingMessageIds[msg.tags.msgid]
+        );
+
+        // If there are new messages, then there could be more in the backlog.
+        // If there are no new messages, then the chat history is empty.
+        buffer.flag('chathistory_available', hasNewMessages);
+    }).finally(() => {
+        buffer.flag('is_requesting_chathistory', false);
+    });
 }
