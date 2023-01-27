@@ -110,10 +110,7 @@ function addFunctionsToClient(client) {
         }
 
         if (inp === '*') {
-            if (client.network.supports('draft/chathistory')) {
-                return '*';
-            }
-            return 'timestamp=' + Misc.dateIso();
+            return '*';
         }
 
         return 'msgid=' + inp;

@@ -377,7 +377,7 @@ export default class BufferState {
         let ircClient = this.getNetwork().ircClient;
         this.flag('is_requesting_chathistory', true);
         this.chathistory_request_count += 1;
-        ircClient.chathistory.before(this.name, '*').finally(() => {
+        ircClient.chathistory.latest(this.name, '*').finally(() => {
             this.flag('is_requesting_chathistory', false);
         });
     }
