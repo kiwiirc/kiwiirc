@@ -18,7 +18,7 @@
                 >
                     {{ $t('messages_load') }}
                 </a>
-                <a v-else class="u-link">...</a>
+                <a v-else>{{ $t('messages_loading') }}</a>
             </div>
 
             <transition-group tag="div">
