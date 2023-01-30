@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2022-08-26 15:41\n"
+"PO-Revision-Date: 2023-01-30 11:47\n"
 
 #: Start
 msgid "start_button"
@@ -353,7 +353,7 @@ msgstr "静音"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "隐藏未读消息数"
 
 #: Operator tools
 msgid "operator_tools"
@@ -841,7 +841,7 @@ msgstr "Please specify a channel to join. eg /join #example"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "昵称 '{{nick}}' 已被使用"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
@@ -933,7 +933,7 @@ msgstr "Leave, then re-join a channel"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Change your nickname"
+msgstr "修改自己的昵称"
 
 #: Start a private conversation with someone
 msgid "command_query"
