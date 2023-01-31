@@ -108,9 +108,17 @@ msgstr "Logging in..."
 msgid "invalid_login"
 msgstr "Invalid login"
 
-#: Account Locked
-msgid "account_locked"
-msgstr "Account Locked"
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Login failed. Please try again or contact support"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "You are now logged in as '{{account}}'"
+
+#: You have now logged out as '{{account}}'
+msgid "logged_out"
+msgstr "You have been logged out"
 
 #: Search...
 msgid "do_search"
@@ -946,18 +954,6 @@ msgstr "Nickname must not start with a number"
 #: Unexpected error occurred
 msgid "error_unexpected"
 msgstr "Unexpected error occurred"
-
-
-
-#: SASL
-
-#: Client made bad authentication request
-msgid "sasl_request_error"
-msgstr "Client made bad authentication request"
-
-#: Client authentication is not available
-msgid "sasl_server_error"
-msgstr "Client authentication is not available"
 
 
 

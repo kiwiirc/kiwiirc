@@ -1372,31 +1372,63 @@ function clientMiddleware(state, network) {
             }
         }
 
-        if (command === 'sasl failed') {
-            let translationKeys = {
-                fail: 'invalid_login',
-                too_long: 'sasl_request_error',
-                nick_locked: 'account_locked',
-                unsupported_mechanism: 'sasl_request_error',
-                capability_missing: 'sasl_server_error',
-            };
+        if (command === 'loggedin' || command === 'loggedout') {
+            let translationKey = command === 'loggedin' ? 'logged_in' : 'logged_out';
 
-            if (!translationKeys[event.reason]) {
-                return;
+            let buffers = [network.serverBuffer()];
+            let activeBuffer = state.getActiveBuffer();
+            if (activeBuffer?.networkid === network.id && activeBuffer !== buffers[0]) {
+                buffers.push(activeBuffer);
             }
 
-            let failMessage = TextFormatting.t(translationKeys[event.reason]);
+            let messageBody = TextFormatting.formatAndT(
+                'notice',
+                null,
+                translationKey,
+                { account: event.account }
+            );
 
-            if (network.state !== 'connected') {
+            buffers.forEach((buffer) => {
+                state.addMessage(buffer, {
+                    time: Date.now(),
+                    nick: '',
+                    message: messageBody,
+                    type: 'notice',
+                });
+            });
+        }
+
+        if (command === 'sasl failed') {
+            let failMessage = TextFormatting.formatAndT(
+                'general_error',
+                null,
+                'login_failed'
+            );
+
+            let buffers = [network.serverBuffer()];
+            let activeBuffer = state.getActiveBuffer();
+            if (activeBuffer?.networkid === network.id && activeBuffer !== buffers[0]) {
+                buffers.push(activeBuffer);
+            }
+
+            let disconnectOnSaslFail = network.ircClient.connection.options.sasl_disconnect_on_fail;
+
+            if (disconnectOnSaslFail && network.state !== 'connected') {
+                // The client is going to disconnect set last_error so it is show to the user
                 network.last_error = failMessage;
             }
 
-            let serverBuffer = network.serverBuffer();
-            state.addMessage(serverBuffer, {
-                time: Date.now(),
-                nick: '*',
-                message: failMessage,
-            });
+            if (!disconnectOnSaslFail) {
+                // Only add messages if the client is not going to disconnect on failure
+                buffers.forEach((buffer) => {
+                    state.addMessage(buffer, {
+                        time: Date.now(),
+                        nick: '',
+                        message: failMessage,
+                        type: 'error',
+                    });
+                });
+            }
         }
 
         if (command === 'irc error') {

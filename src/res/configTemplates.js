@@ -335,7 +335,7 @@ export const configTemplates = {
             ignored_pattern: 'ⓘ %text',
             wallops: '[WALLOPS] %text',
             message_nick: '%prefix%nick',
-            general_error: '%text',
+            general_error: '⚠ %text',
         },
         presetNetworks: [],
     },
