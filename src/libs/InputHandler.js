@@ -596,6 +596,7 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             registered_nick: '{{registered_nick}}',
             secure: 'is using a secure connection',
             idle: 'has been idle for {{idle}}',
+            country: '{{country}}',
             certfp: '{{certfp}}',
             logon: 'connected on {{logon}}',
 
@@ -609,6 +610,7 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             actual_ip: '',
             server_info: '',
             actual_hostname: '',
+            country_code: '',
         };
 
         // Display a select few entries first to keep a consistent order, and then
@@ -624,6 +626,9 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             display(formats.from
                 .replace('{{actual_hostname}}', whoisData.actual_hostname)
                 .replace('{{actual_ip}}', whoisData.actual_ip));
+        }
+        if (whoisData.country) {
+            display(formats.country.replace('{{country}}', whoisData.country));
         }
         if (whoisData.channels) {
             display(formats.channels.replace('{{channels}}', whoisData.channels));
