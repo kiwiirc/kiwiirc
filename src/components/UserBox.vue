@@ -18,7 +18,23 @@
             </div>
         </div>
 
-        <div v-if="realname" class="kiwi-userbox-basicinfo">
+        <template v-if="pluginUiInfoElements.length">
+            <component
+                :is="plugin.component"
+                v-for="plugin in pluginUiInfoElements"
+                :key="plugin.id"
+                :plugin-props="{
+                    user: user,
+                    userbox: self,
+                }"
+                v-bind="plugin.props"
+                :network="network"
+                :buffer="buffer"
+                :user="user"
+            />
+        </template>
+
+        <div v-else-if="realname" class="kiwi-userbox-basicinfo">
             <span class="kiwi-userbox-basicinfo-title">{{ $t('whois_realname') }}:</span>
             <span class="kiwi-userbox-basicinfo-data" v-html="formattedRealname" />
         </div>
@@ -179,6 +195,7 @@ export default {
             whoisRequested: false,
             whoisLoading: false,
             pluginUiButtonElements: GlobalApi.singleton().userboxButtonPlugins,
+            pluginUiInfoElements: GlobalApi.singleton().userboxInfoPlugins,
         };
     },
     computed: {
@@ -495,7 +512,6 @@ export default {
 
 .kiwi-userbox-basicinfo-data {
     font-weight: normal;
-    font-weight: 100;
     opacity: 1;
 }
 
