@@ -116,7 +116,7 @@ msgstr "Login failed. Please try again or contact support"
 msgid "logged_in"
 msgstr "You are now logged in as '{{account}}'"
 
-#: You have now logged out as '{{account}}'
+#: You have been logged out
 msgid "logged_out"
 msgstr "You have been logged out"
 
