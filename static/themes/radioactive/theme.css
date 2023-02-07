@@ -1206,6 +1206,6 @@
     }
 }
 
-.kiwi-messagelist::-webkit-scrollbar-thumb {
+.kiwi-messagelist-scroller::-webkit-scrollbar-thumb {
     background-color: #9e9e9e;
 }
