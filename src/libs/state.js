@@ -916,8 +916,11 @@ function createNewState() {
 
                     Object.keys(user.buffers).forEach((bufferId) => {
                         let buffer = user.buffers[bufferId].buffer;
-                        state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
-                        state.$delete(buffer.users, normalisedOld);
+                        if (!buffer.addUserBatch.queue().includes(user)) {
+                            // The user is not in the queue to be added to the buffer
+                            state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
+                            state.$delete(buffer.users, normalisedOld);
+                        }
                     });
                 }
 
