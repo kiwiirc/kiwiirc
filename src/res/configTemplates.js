@@ -86,6 +86,8 @@ export const configTemplates = {
             show_buffer_groups: true,
             // prompt_leave: all/channels/queries/none
             prompt_leave: 'channels',
+            // auto_request_history: all/channels/queries/none
+            auto_request_history: 'channels',
         },
         // Startup screen default
         startupOptions: {

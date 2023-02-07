@@ -2,7 +2,10 @@
 
 /** @module */
 
+import Logger from '@/libs/Logger';
 import * as Misc from '@/helpers/Misc';
+
+const log = Logger.namespace('chathistory');
 
 /**
  * Adds the CHATHISTORY IRCv3 spec to irc-framework
@@ -36,21 +39,51 @@ export default function chathistoryMiddleware() {
 }
 
 function addFunctionsToClient(client) {
-    let history = client.chathistory = {};
+    const history = client.chathistory = {};
 
     history.batchCallbacks = {
         callbacks: Object.create(null),
-        add(target, cb) {
-            this.callbacks[target.toLowerCase()] = this.callbacks[target.toLowerCase()] || [];
-            this.callbacks[target.toLowerCase()].push(cb);
+        queue: [],
+        queueActive: false,
+        add(cb, target, type, ...args) {
+            this.callbacks[target.toUpperCase()] = this.callbacks[target.toUpperCase()] || [];
+            this.callbacks[target.toUpperCase()].push(cb);
+            this.queue.push({
+                target,
+                type,
+                args,
+            });
+            if (!this.queueActive) {
+                this.queueNext();
+            }
         },
         resolve(target, value) {
-            let cbs = this.callbacks[target.toLowerCase()] || [];
-            delete this.callbacks[target.toLowerCase()];
-            cbs.forEach((cb) => cb(value));
+            const targetCallbacks = this.callbacks[target.toUpperCase()] || [];
+            const cb = targetCallbacks.shift();
+
+            if (!targetCallbacks.length) {
+                // last callback, cleanup callbacks
+                delete this.callbacks[target.toUpperCase()];
+            }
+
+            if (cb) {
+                cb(value);
+            } else {
+                log.error('chathistory got a resolve but no associated callback');
+            }
+
+            this.queueNext();
         },
-        targetCallbacks(target) {
-            return this.callbacks[target.toLowerCase()];
+        queueNext() {
+            this.queueActive = true;
+
+            const nextRequest = this.queue.shift();
+            if (!nextRequest) {
+                this.queueActive = false;
+                return;
+            }
+
+            client.raw('CHATHISTORY', nextRequest.type, nextRequest.target, ...nextRequest.args);
         },
     };
 
@@ -63,8 +96,7 @@ function addFunctionsToClient(client) {
             return;
         }
 
-        client.raw('CHATHISTORY', 'BEFORE', target, messageReference(dateOrTime), '50');
-        history.batchCallbacks.add(target, resolve);
+        history.batchCallbacks.add(resolve, target, 'BEFORE', messageReference(dateOrTime), '50');
     });
 
     history.after = (target, dateOrTime) => new Promise((resolve) => {
@@ -73,8 +105,7 @@ function addFunctionsToClient(client) {
             return;
         }
 
-        client.raw('CHATHISTORY', 'AFTER', target, messageReference(dateOrTime), '50');
-        history.batchCallbacks.add(target, resolve);
+        history.batchCallbacks.add(resolve, target, 'AFTER', messageReference(dateOrTime), '50');
     });
 
     history.latest = (target, dateOrTime) => new Promise((resolve) => {
@@ -83,8 +114,7 @@ function addFunctionsToClient(client) {
             return;
         }
 
-        client.raw('CHATHISTORY', 'LATEST', target, messageReference(dateOrTime), '50');
-        history.batchCallbacks.add(target, resolve);
+        history.batchCallbacks.add(resolve, target, 'LATEST', messageReference(dateOrTime), '50');
     });
 
     history.around = (target, dateOrTime) => new Promise((resolve) => {
@@ -93,8 +123,7 @@ function addFunctionsToClient(client) {
             return;
         }
 
-        client.raw('CHATHISTORY', 'AROUND', target, messageReference(dateOrTime), '50');
-        history.batchCallbacks.add(target, resolve);
+        history.batchCallbacks.add(resolve, target, 'AROUND', messageReference(dateOrTime), '50');
     });
 
     history.between = (target, fromDateOrTime, toDateOrTime) => new Promise((resolve) => {
@@ -103,10 +132,9 @@ function addFunctionsToClient(client) {
             return;
         }
 
-        let fromRef = messageReference(fromDateOrTime);
-        let toRef = messageReference(toDateOrTime);
-        client.raw('CHATHISTORY', 'BETWEEN', target, fromRef, toRef, 50);
-        history.batchCallbacks.add(target, resolve);
+        const fromRef = messageReference(fromDateOrTime);
+        const toRef = messageReference(toDateOrTime);
+        history.batchCallbacks.add(resolve, target, 'BETWEEN', fromRef, toRef, 50);
     });
 
     function messageReference(inp) {

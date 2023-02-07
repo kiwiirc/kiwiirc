@@ -78,7 +78,16 @@ export default class BufferState {
         }
 
         function onNetworkMotd(event, network) {
-            if (network === this.getNetwork() && this.isQuery()) {
+            const bufferNetwork = this.getNetwork();
+            if (
+                network !== bufferNetwork
+                || !bufferNetwork.ircClient.chathistory.isSupported()
+                || !this.isQuery()
+            ) {
+                return;
+            }
+
+            if (['all', 'queries'].includes(this.setting('auto_request_history'))) {
                 this.requestLatestScrollback();
             }
         }
@@ -99,12 +108,6 @@ export default class BufferState {
         state.$on('network.connecting', onNetworkConnectingBound);
         state.$on('buffer.close', onBufferCloseBound);
         state.$on('irc.motd', onNetworkMotdBound);
-
-        if (this.isQuery() && this.getNetwork().ircClient.chathistory.isSupported()) {
-            // Get PM message histories, while channel buffers request it after their nicklist
-            // has been received
-            this.requestLatestScrollback();
-        }
     }
 
     get topic() {
