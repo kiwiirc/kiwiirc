@@ -873,7 +873,8 @@ function createNewState() {
 
             getBuffersWithUser(networkid, nick) {
                 let network = this.getNetwork(networkid);
-                if (!network) {
+                let user = this.getUser(networkid, nick);
+                if (!network || !user) {
                     return [];
                 }
 
@@ -881,7 +882,11 @@ function createNewState() {
                 let buffers = [];
                 network.buffers.forEach((buffer) => {
                     let bufferNameUpper = buffer.name.toUpperCase();
-                    if (buffer.users[normalisedNick] || normalisedNick === bufferNameUpper) {
+                    if (
+                        buffer.users[normalisedNick]
+                        || normalisedNick === bufferNameUpper
+                        || buffer.addUserBatch.queue().includes(user)
+                    ) {
                         buffers.push(buffer);
                     } else if (nick === network.nick && buffer.isQuery()) {
                         buffers.push(buffer);
