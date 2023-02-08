@@ -873,20 +873,13 @@ function createNewState() {
 
             getBuffersWithUser(networkid, nick) {
                 let network = this.getNetwork(networkid);
-                let user = this.getUser(networkid, nick);
-                if (!network || !user) {
+                if (!network) {
                     return [];
                 }
 
-                let normalisedNick = nick.toUpperCase();
                 let buffers = [];
                 network.buffers.forEach((buffer) => {
-                    let bufferNameUpper = buffer.name.toUpperCase();
-                    if (
-                        buffer.users[normalisedNick]
-                        || normalisedNick === bufferNameUpper
-                        || buffer.addUserBatch.queue().includes(user)
-                    ) {
+                    if (buffer.hasNick(nick)) {
                         buffers.push(buffer);
                     } else if (nick === network.nick && buffer.isQuery()) {
                         buffers.push(buffer);

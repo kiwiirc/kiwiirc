@@ -417,8 +417,9 @@ export default class BufferState {
     hasNick(nick) {
         let nickUpper = nick.toUpperCase();
         return (
-            nickUpper in this.users ||
-            (this.isQuery() && this.name.toUpperCase() === nickUpper)
+            nickUpper in this.users
+            || this.addUserBatch.queue().some((u) => u.nick.toUpperCase() === nickUpper)
+            || (this.isQuery() && this.name.toUpperCase() === nickUpper)
         );
     }
 
