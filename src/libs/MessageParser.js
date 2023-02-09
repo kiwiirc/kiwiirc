@@ -55,18 +55,22 @@ function processBlock(block, userList, emojiProvider) {
     while ((wordMatch = wordsRegex.exec(block.content)) !== null) {
         // `wordMatch` is an array with the match and the index of the match. We need that so
         // we can re-construct the original message.
-
+        const matchInfo = wordMatch;
         word = wordMatch[0];
 
-        const match =
+        const matches =
             matchChannel(word) ||
             matchUrl(word) ||
             matchUser(word, userList) ||
             emojiProvider.matchEmoji(word);
 
-        if (match) {
+        if (!matches || !matches.length) {
+            continue;
+        }
+
+        matches.forEach((match) => {
             specialMatches.push({
-                index: wordMatch.index + match.index,
+                index: matchInfo.index + match.index,
                 match: match.match,
                 block: createNewBlock(
                     match.match,
@@ -75,7 +79,7 @@ function processBlock(block, userList, emojiProvider) {
                     match.meta
                 ),
             });
-        }
+        });
     }
 
     // if there are no special matches, return the original block as is.
@@ -100,14 +104,14 @@ function matchChannel(word) {
         return false;
     }
 
-    return {
+    return [{
         index: channelMatch[1].length + channelMatch[2].length,
         match: channelMatch[3],
         type: 'channel',
         meta: {
             channel: channelMatch[3],
         },
-    };
+    }];
 }
 
 /**
@@ -156,7 +160,7 @@ function matchUrl(word) {
         urlText = 'http://' + url;
     }
 
-    return {
+    return [{
         index: urlMatch.index,
         match: url,
         matchText: urlText,
@@ -164,7 +168,7 @@ function matchUrl(word) {
         meta: {
             url: urlText,
         },
-    };
+    }];
 }
 
 /**
@@ -193,7 +197,7 @@ function matchUser(word, userList) {
         return false;
     }
 
-    return {
+    return [{
         index: nickIdx,
         match: trimWord,
         type: 'user',
@@ -201,7 +205,7 @@ function matchUser(word, userList) {
             user: trimWord,
             colour: user.colour,
         },
-    };
+    }];
 }
 
 /**

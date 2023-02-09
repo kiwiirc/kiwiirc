@@ -16,7 +16,7 @@ export default class EmojiProvider {
         this.emojiList = state.setting('emojis');
     }
 
-    static registerPlugin(plugin, params) {
+    static registerPlugin(plugin, ...params) {
         PluginProvider = plugin;
         pluginParams = params;
     }
@@ -26,14 +26,14 @@ export default class EmojiProvider {
         if (!emoji) {
             return false;
         }
-        return {
+        return [{
             index: 0,
             match: word,
             type: 'emoji',
             meta: {
                 emoji: emoji.code,
             },
-        };
+        }];
     }
 
     blockToHtml(block, isSingle, showEmoticons) {
@@ -43,7 +43,7 @@ export default class EmojiProvider {
 
         const emoji = block.meta.emoji;
         const classes = 'kiwi-messagelist-emoji' + (isSingle ? ' kiwi-messagelist-emoji--single' : '');
-        const src = `${this.emojiLocation}${emoji}.png`;
+        const src = `${this.emojiLocation}${emoji}`;
 
         return `<img class="${classes}" src="${src}" alt="${escape(block.content)}" title="${escape(block.content)}" />`;
     }
@@ -55,7 +55,7 @@ export default class EmojiProvider {
         let emoji = {
             ascii: word,
             code: this.emojiList[word],
-            url: this.emojiLocation + this.emojiList[word] + '.png',
+            url: this.emojiLocation + this.emojiList[word],
             // imgProps allows setting properties of <img>
         };
         return emoji;
