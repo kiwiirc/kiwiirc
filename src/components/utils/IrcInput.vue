@@ -16,7 +16,6 @@
             @paste="onPaste"
             @drop="onDrop"
             @focus="onFocus"
-            @input="onInput"
             @blur="$emit('blur', $event)"
         />
     </div>
@@ -43,7 +42,6 @@ export default Vue.component('irc-input', {
             current_el_pos: 0,
             default_colour: null,
             code_map: Object.create(null),
-            debounced_updateSpacing: null,
         };
     },
     computed: {
@@ -120,11 +118,14 @@ export default Vue.component('irc-input', {
             if (node instanceof HTMLImageElement && node.classList.contains('kiwi-messagelist-emoji--single')) {
                 event.preventDefault();
                 let emojiProvider = new EmojiProvider();
-                let emoji = emojiProvider.getEmoji(node.alt.trim());
+                let emojis = emojiProvider.getEmojis(node.alt.trim());
+                if (!emojis.length) {
+                    return;
+                }
                 this.addImg(
-                    emoji.ascii,
-                    emoji.url,
-                    emoji.imgProps,
+                    emojis[0].ascii,
+                    emojis[0].url,
+                    emojis[0].imgProps,
                 );
             }
         },
@@ -141,15 +142,7 @@ export default Vue.component('irc-input', {
 
             this.$emit('focus', event);
         },
-        onInput(event) {
-            if (this.debounced_updateSpacing) {
-                return this.debounced_updateSpacing(event);
-            }
-
-            this.debounced_updateSpacing = _.debounce(this.updateSpacing, 500);
-            return this.debounced_updateSpacing(event);
-        },
-        updateSpacing(event) {
+        updateSpacing() {
             let editor = this.$refs.editor;
             if (!editor) {
                 return;

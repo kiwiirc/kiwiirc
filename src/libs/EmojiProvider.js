@@ -22,8 +22,8 @@ export default class EmojiProvider {
     }
 
     matchEmoji(word) {
-        const emoji = this.getEmoji(word);
-        if (!emoji) {
+        const emojis = this.getEmojis(word);
+        if (!emojis.length) {
             return false;
         }
         return [{
@@ -31,7 +31,7 @@ export default class EmojiProvider {
             match: word,
             type: 'emoji',
             meta: {
-                emoji: emoji.code,
+                emoji: emojis[0].code,
             },
         }];
     }
@@ -48,16 +48,15 @@ export default class EmojiProvider {
         return `<img class="${classes}" src="${src}" alt="${escape(block.content)}" title="${escape(block.content)}" />`;
     }
 
-    getEmoji(word) {
-        if (this.emojiList.hasOwnProperty && !this.emojiList.hasOwnProperty(word)) {
-            return false;
+    getEmojis(word) {
+        if (!this.emojiList.hasOwnProperty(word)) {
+            return [];
         }
-        let emoji = {
+        return [{
             ascii: word,
             code: this.emojiList[word],
             url: this.emojiLocation + this.emojiList[word],
             // imgProps allows setting properties of <img>
-        };
-        return emoji;
+        }];
     }
 }

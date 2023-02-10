@@ -449,14 +449,14 @@ export default {
                 if (this.$state.setting('buffers.show_emoticons')) {
                     let emojiProvider = new EmojiProvider();
                     let currentWord = this.$refs.input.getCurrentWord(true);
-                    let emoji = emojiProvider.getEmoji(currentWord.word);
-                    if (emoji) {
+                    let emojis = emojiProvider.getEmojis(currentWord.word);
+                    if (emojis.length) {
                         event.preventDefault();
                         this.$refs.input.setCurrentWord('', false, true);
                         this.$refs.input.addImg(
-                            emoji.ascii,
-                            emoji.url,
-                            emoji.imgProps,
+                            emojis[0].ascii,
+                            emojis[0].url,
+                            emojis[0].imgProps,
                         );
                     }
                 }
