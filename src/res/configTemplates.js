@@ -98,6 +98,7 @@ export const configTemplates = {
             remember_buffers: true,
             nick_format: '',
         },
+        skipHiddenMessages: false,
         autoReconnect: false,
         disconnectOnSaslFail: true,
         allowRegisterProtocolHandler: false,
