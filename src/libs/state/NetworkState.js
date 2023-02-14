@@ -131,7 +131,7 @@ export default class NetworkState {
             }
         }
 
-        let user = this.appState.getUser(this.indexOf, nick);
+        let user = this.appState.getUser(this.id, nick);
         if (!user || !user.hasWhois) {
             // if we have not seen or whois the user they might be a network oper
             // so return null then a whois can be performed

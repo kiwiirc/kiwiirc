@@ -877,11 +877,9 @@ function createNewState() {
                     return [];
                 }
 
-                let normalisedNick = nick.toUpperCase();
                 let buffers = [];
                 network.buffers.forEach((buffer) => {
-                    let bufferNameUpper = buffer.name.toUpperCase();
-                    if (buffer.users[normalisedNick] || normalisedNick === bufferNameUpper) {
+                    if (buffer.hasNick(nick)) {
                         buffers.push(buffer);
                     } else if (nick === network.nick && buffer.isQuery()) {
                         buffers.push(buffer);
@@ -916,8 +914,11 @@ function createNewState() {
 
                     Object.keys(user.buffers).forEach((bufferId) => {
                         let buffer = user.buffers[bufferId].buffer;
-                        state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
-                        state.$delete(buffer.users, normalisedOld);
+                        if (!buffer.addUserBatch.queue().includes(user)) {
+                            // The user is not in the queue to be added to the buffer
+                            state.$set(buffer.users, normalisedNew, buffer.users[normalisedOld]);
+                            state.$delete(buffer.users, normalisedOld);
+                        }
                     });
                 }
 
