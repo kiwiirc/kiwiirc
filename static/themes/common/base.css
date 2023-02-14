@@ -840,7 +840,7 @@
 }
 
 /* Messagelayout inline */
-.kiwi-messagelist-message--text .kiwi-messagelist-time {
+.kiwi-messagelist-message .kiwi-messagelist-time {
     color: var(--brand-default-fg);
 }
 
