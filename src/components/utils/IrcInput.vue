@@ -494,9 +494,9 @@ export default Vue.component('irc-input', {
             let el = this.current_el;
             let pos = this.current_el_pos;
             let val = el.textContent;
-            let valTxt = val.replace(/\xA0/g, ' ');
+            let cleanVal = val.replace(/\xA0/g, ' ');
 
-            let startVal = valTxt.substr(0, pos);
+            let startVal = cleanVal.substr(0, pos);
             let space = startVal.lastIndexOf(' ');
             if (space === -1) {
                 space = 0;
@@ -506,7 +506,7 @@ export default Vue.component('irc-input', {
             }
             let startPos = space;
 
-            space = valTxt.indexOf(' ', startPos);
+            space = cleanVal.indexOf(' ', startPos);
             if (space === -1) {
                 space = val.length;
             }
