@@ -2,7 +2,7 @@
 
 import { trim } from 'lodash';
 
-import EmojiProvider from '@/libs/EmojiProvider';
+import * as EmojiProvider from '@/libs/EmojiProvider';
 import formatIrcMessage, { createNewBlock } from '@/libs/MessageFormatter';
 import { urlRegex, channelRegex } from '@/helpers/TextFormatting';
 
@@ -20,11 +20,9 @@ import { urlRegex, channelRegex } from '@/helpers/TextFormatting';
  * @returns An array of blocks, where each special content will be extracted into a separate block.
  */
 export default function parseMessage(message, formatOpts = {}, userList = null) {
-    const emojiProvider = new EmojiProvider();
-
     const blocks = formatIrcMessage(message, formatOpts);
     let formatedBlocks = blocks.reduce(
-        (acc, block, i) => acc.concat(processBlock(block, userList, emojiProvider)),
+        (acc, block, i) => acc.concat(processBlock(block, userList)),
         []
     );
 
@@ -35,10 +33,9 @@ export default function parseMessage(message, formatOpts = {}, userList = null) 
  * Receives a block, splits it into words and tries finding channels, urls, nicks, and emoji.
  * @param {Object} block A block that came from MessageFormatter.formatIrcMessage()
  * @param {Object} userList List of users to find within the message
- * @param {Object} emojiProvider Instance of EmojiProvider
  * @returns An array of blocks, where each special content will be extracted into a separate block.
  */
-function processBlock(block, userList, emojiProvider) {
+function processBlock(block, userList) {
     const wordsRegex = /\S+/g;
 
     let wordMatch;
@@ -62,7 +59,7 @@ function processBlock(block, userList, emojiProvider) {
             matchChannel(word) ||
             matchUrl(word) ||
             matchUser(word, userList) ||
-            emojiProvider.matchEmoji(word);
+            EmojiProvider.matchEmoji(word);
 
         if (!matches || !matches.length) {
             continue;

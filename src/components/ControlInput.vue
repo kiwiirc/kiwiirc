@@ -140,7 +140,7 @@ import * as TextFormatting from '@/helpers/TextFormatting';
 import * as settingTools from '@/libs/settingTools';
 import autocompleteCommands from '@/res/autocompleteCommands';
 import GlobalApi from '@/libs/GlobalApi';
-import EmojiProvider from '@/libs/EmojiProvider';
+import * as EmojiProvider from '@/libs/EmojiProvider';
 import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
@@ -447,9 +447,8 @@ export default {
                 // Hitting space after just typing an ascii emoji will get it replaced with
                 // its image
                 if (this.$state.setting('buffers.show_emoticons')) {
-                    let emojiProvider = new EmojiProvider();
                     let currentWord = this.$refs.input.getCurrentWord(true);
-                    let emojis = emojiProvider.getEmojis(currentWord.word);
+                    let emojis = EmojiProvider.getEmojis(currentWord.word);
                     if (emojis.length) {
                         event.preventDefault();
                         this.$refs.input.setCurrentWord('', false, true);

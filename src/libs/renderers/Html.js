@@ -2,13 +2,12 @@
 
 import { escape } from 'lodash';
 import getState from '@/libs/state';
-import EmojiProvider from '@/libs/EmojiProvider';
+import * as EmojiProvider from '@/libs/EmojiProvider';
 
 export default render;
 
 function render(blocks, renderEmoticons) {
     const state = getState();
-    const emojiProvider = new EmojiProvider();
     const showEmoticons = typeof renderEmoticons === 'undefined' ?
         state.setting('buffers.show_emoticons') :
         !!renderEmoticons;
@@ -51,7 +50,7 @@ function render(blocks, renderEmoticons) {
             content = linkifyChannel(block);
             break;
         case 'emoji':
-            content = emojiProvider.blockToHtml(block, blocks.length === 1, showEmoticons);
+            content = EmojiProvider.blockToHtml(block, blocks.length === 1, showEmoticons);
             break;
         default:
             content = escape(block.content);

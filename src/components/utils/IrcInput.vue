@@ -28,7 +28,7 @@ import _ from 'lodash';
 import * as htmlparser from 'htmlparser2';
 import * as Colours from '@/helpers/Colours';
 import * as Misc from '@/helpers/Misc';
-import EmojiProvider from '@/libs/EmojiProvider';
+import * as EmojiProvider from '@/libs/EmojiProvider';
 
 let Vue = require('vue');
 
@@ -117,8 +117,7 @@ export default Vue.component('irc-input', {
             let node = html.childNodes[0];
             if (node instanceof HTMLImageElement && node.classList.contains('kiwi-messagelist-emoji--single')) {
                 event.preventDefault();
-                let emojiProvider = new EmojiProvider();
-                let emojis = emojiProvider.getEmojis(node.alt.trim());
+                let emojis = EmojiProvider.getEmojis(node.alt.trim());
                 if (!emojis.length) {
                     return;
                 }
