@@ -211,15 +211,11 @@ export default {
     width: auto;
 }
 
-.kiwi-messagelist-message--compact.kiwi-messagelist-message-nick .kiwi-messagelist-time {
-    margin-right: 10px;
-    opacity: 0.8;
-}
-
 .kiwi-messagelist-message--compact .kiwi-messagelist-time {
     display: inline-block;
     float: right;
     font-size: 12px;
+    opacity: 0.8;
 }
 
 .kiwi-messagelist-message--compact .kiwi-messagelist-body {
