@@ -196,7 +196,10 @@ export default {
             return this.$state.ui.is_touch || this.$state.setting('showSendButton');
         },
         shouldShowEmojiPicker() {
-            return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
+            return (
+                this.$state.setting('forceShowEmojiPicker') ||
+                (this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch)
+            );
         },
         shouldShowColorPicker() {
             return this.$state.setting('showColorPicker');
