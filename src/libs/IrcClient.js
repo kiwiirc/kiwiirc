@@ -217,6 +217,46 @@ function clientMiddleware(state, network) {
             });
         }
 
+        // Topic handling was moved here so behaviour can be different between
+        // the joining topic and changing of topic
+        // RPL_NOTOPIC RPL_TOPIC
+        if (command === 'TOPIC' || command === '331' || command === '332') {
+            // If there is a time difference between this client and the server, convert it
+            // to match our local time so it makes sense to the user
+            const eventTime = (event && event.time) ?
+                network.ircClient.network.timeToLocal(event.time) :
+                Date.now();
+            const serverTime = (event && event.time) || 0;
+
+            const typeExtra = (command === 'TOPIC') ? 'topic_change' : 'topic_join';
+            const bufferName = (command === 'TOPIC') ? event.params[0] : event.params[1];
+            const buffer = state.getOrAddBufferByName(networkid, bufferName);
+            buffer.topic = event.params[event.params.length - 1] || '';
+
+            let messageBody = '';
+            if (command === 'TOPIC') {
+                messageBody = TextFormatting.formatAndT(
+                    'channel_topic',
+                    null,
+                    'changed_topic_to',
+                    { nick: event.nick, topic: buffer.topic },
+                );
+            } else if (buffer.topic.trim()) {
+                messageBody = TextFormatting.formatText('channel_topic', buffer.topic);
+            }
+
+            if (messageBody) {
+                state.addMessage(buffer, {
+                    time: eventTime,
+                    server_time: serverTime,
+                    nick: '',
+                    message: messageBody,
+                    type: 'topic',
+                    type_extra: typeExtra,
+                });
+            }
+        }
+
         next();
     }
 
@@ -1269,34 +1309,6 @@ function clientMiddleware(state, network) {
                     });
                 }
                 buffer.flags.requested_banlist = false;
-            }
-        }
-
-        if (command === 'topic') {
-            let buffer = state.getOrAddBufferByName(networkid, event.channel);
-            buffer.topic = event.topic || '';
-
-            let messageBody = '';
-
-            if (event.nick) {
-                messageBody = TextFormatting.formatAndT(
-                    'channel_topic',
-                    null,
-                    'changed_topic_to',
-                    { nick: event.nick, topic: event.topic },
-                );
-            } else if (buffer.topic.trim()) {
-                messageBody = TextFormatting.formatText('channel_topic', buffer.topic);
-            }
-
-            if (messageBody) {
-                state.addMessage(buffer, {
-                    time: eventTime,
-                    server_time: serverTime,
-                    nick: '',
-                    message: messageBody,
-                    type: 'topic',
-                });
             }
         }
 

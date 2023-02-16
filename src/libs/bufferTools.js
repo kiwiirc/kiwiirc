@@ -26,6 +26,7 @@ export function orderBuffers(buffers) {
 }
 
 export function orderedMessages(buffer, opts = {}) {
+    let state = getState();
     let network = buffer.getNetwork();
     let currentNick = network.nick;
     let bufferMessages = buffer.getMessages();
@@ -75,6 +76,8 @@ export function orderedMessages(buffer, opts = {}) {
     let typeExtraIncludesSelf = (message) => message.type_extra &&
         message.type_extra.endsWith('_self');
 
+    let settingShowTopicInHeader = buffer.setting('show_topic_in_header');
+
     let list = [];
     for (let i = messages.length - 1; i >= 0; i--) {
         // don't include hidden message types
@@ -91,6 +94,15 @@ export function orderedMessages(buffer, opts = {}) {
         // the joining message at first. Dis/connection messages are only relevant here
         // if the dis/connection happens between messages (during a conversation)
         if (messages[i].type === 'connection' && i === 0) {
+            continue;
+        }
+
+        if (
+            messages[i].type === 'topic' &&
+            messages[i].type_extra === 'topic_join' &&
+            !state.ui.is_narrow &&
+            settingShowTopicInHeader
+        ) {
             continue;
         }
 

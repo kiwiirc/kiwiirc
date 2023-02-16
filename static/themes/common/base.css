@@ -138,7 +138,12 @@
     color: var(--comp-header-name-fg);
 }
 
-.kiwi-header-name {
+.kiwi-header-name,
+.kiwi-header-name-full {
+    background-color: var(--comp-header-bg);
+}
+
+.kiwi-header-topic:hover {
     background-color: var(--comp-header-bg);
 }
 
