@@ -115,9 +115,10 @@
                     @click.stop=""
                 >
                     <user-box
-                        :user="sidebarState.sidebarUser"
-                        :buffer="buffer"
                         :network="network"
+                        :buffer="buffer"
+                        :user="sidebarState.sidebarUser"
+                        :sidebar-state="sidebarState"
                     />
                 </div>
 
@@ -142,9 +143,10 @@
                     @click.stop=""
                 >
                     <user-box
-                        :user="sidebarState.sidebarUser"
-                        :buffer="buffer"
                         :network="network"
+                        :buffer="buffer"
+                        :user="sidebarState.sidebarUser"
+                        :sidebar-state="sidebarState"
                     />
                 </div>
             </template>

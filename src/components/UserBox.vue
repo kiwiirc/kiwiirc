@@ -31,6 +31,7 @@
                 :network="network"
                 :buffer="buffer"
                 :user="user"
+                :sidebar-state="sidebarState"
             />
         </template>
 
@@ -61,6 +62,7 @@
                     :network="network"
                     :buffer="buffer"
                     :user="user"
+                    :sidebar-state="sidebarState"
                 />
             </div>
         </div>
@@ -188,7 +190,7 @@ export default {
         Avatar,
         AwayStatusIndicator,
     },
-    props: ['buffer', 'network', 'user'],
+    props: ['network', 'buffer', 'user', 'sidebarState'],
     data: function data() {
         return {
             self: this,
@@ -319,6 +321,7 @@ export default {
                 '';
         },
         openQuery: function openQuery() {
+            this.sidebarState.showNicklist();
             let buffer = this.$state.addBuffer(this.network.id, this.user.nick);
             this.$state.setActiveBuffer(this.network.id, buffer.name);
             if (this.$state.ui.is_narrow) {
