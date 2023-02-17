@@ -115,7 +115,7 @@ export default Vue.component('irc-input', {
             }
 
             let node = html.childNodes[0];
-            if (node instanceof HTMLImageElement && node.classList.contains('kiwi-messagelist-emoji--single')) {
+            if (node instanceof HTMLImageElement && node.classList.contains('kiwi-messagelist-emoji')) {
                 event.preventDefault();
                 let emojis = EmojiProvider.getEmojis(node.alt.trim());
                 if (!emojis.length) {
@@ -180,7 +180,7 @@ export default Vue.component('irc-input', {
         updateValueProps() {
             if (!this.$el.contains(document.activeElement)) {
                 // Focused element is not a child of IrcInput
-                // selection would not be relevent
+                // selection would not be relevant
                 return;
             }
 
