@@ -14,6 +14,7 @@
             @mouseup="updateValueProps();"
             @click="$emit('click', $event)"
             @paste="onPaste"
+            @drop="onDrop"
             @focus="onFocus"
             @blur="$emit('blur', $event)"
         />
@@ -27,6 +28,7 @@ import _ from 'lodash';
 import * as htmlparser from 'htmlparser2';
 import * as Colours from '@/helpers/Colours';
 import * as Misc from '@/helpers/Misc';
+import * as EmojiProvider from '@/libs/EmojiProvider';
 
 let Vue = require('vue');
 
@@ -99,6 +101,33 @@ export default Vue.component('irc-input', {
                 this.updateValueProps();
             }, 0);
         },
+        onDrop(event) {
+            // Allow dragging of single emoji's from the message list
+            const raw = event.dataTransfer.getData('text/html');
+            if (!raw) {
+                return;
+            }
+
+            let html = document.createElement('div');
+            html.innerHTML = raw;
+            if (html.childNodes.length === 0 || html.childNodes.length > 1) {
+                return;
+            }
+
+            let node = html.childNodes[0];
+            if (node instanceof HTMLImageElement && node.classList.contains('kiwi-messagelist-emoji')) {
+                event.preventDefault();
+                let emojis = EmojiProvider.getEmojis(node.alt.trim());
+                if (!emojis.length) {
+                    return;
+                }
+                this.addImg(
+                    emojis[0].ascii,
+                    emojis[0].url,
+                    emojis[0].imgProps,
+                );
+            }
+        },
         onFocus(event) {
             // Chrome sometimes focus' the element but does not add the cursor
             // https://bugs.chromium.org/p/chromium/issues/detail?id=1125078
@@ -112,10 +141,46 @@ export default Vue.component('irc-input', {
 
             this.$emit('focus', event);
         },
+        updateSpacing() {
+            let editor = this.$refs.editor;
+            if (!editor) {
+                return;
+            }
+
+            // This will make sure any image nodes are padded with spaces
+            editor.childNodes.forEach((node) => {
+                if (node.nodeName !== 'IMG') {
+                    return;
+                }
+
+                node.alt = node.alt.trim();
+
+                if (node.previousSibling) {
+                    let text = node.previousSibling.textContent.replace(/\xA0/g, ' ');
+                    let isEmpty = text.length === 0;
+                    let isImg = node.previousSibling.nodeName === 'IMG';
+                    let isText = ['#text', 'SPAN'].includes(node.previousSibling.nodeName);
+                    if (isImg || (isText && (isEmpty || text[text.length - 1].indexOf(' ') === -1))) {
+                        // The previous node is an image or text and does not end with a space
+                        node.alt = ' ' + node.alt;
+                    }
+                }
+
+                if (node.nextSibling) {
+                    let text = node.nextSibling.textContent.replace(/\xA0/g, ' ');
+                    let isNeeded = text.length !== 0 || !node.nextSibling.nextSibling;
+                    let isText = ['#text', 'SPAN'].includes(node.nextSibling.nodeName);
+                    if (isText && isNeeded && (text.length === 0 || text[0].indexOf(' ') === -1)) {
+                        // The next node is text and does not start with a space
+                        node.alt += ' ';
+                    }
+                }
+            });
+        },
         updateValueProps() {
             if (!this.$el.contains(document.activeElement)) {
                 // Focused element is not a child of IrcInput
-                // selection would not be relevent
+                // selection would not be relevant
                 return;
             }
 
@@ -161,6 +226,7 @@ export default Vue.component('irc-input', {
             }
         },
         buildIrcText() {
+            this.updateSpacing();
             let source = this.$refs.editor.innerHTML;
             let textValue = '';
 
@@ -248,8 +314,8 @@ export default Vue.component('irc-input', {
                         textValue += getToggles();
                     }
 
-                    if (attribs.src && this.code_map[attribs.src]) {
-                        textValue += this.code_map[attribs.src];
+                    if (name === 'img' && attribs.alt) {
+                        textValue += attribs.alt;
                     }
                 },
                 ontext: (text) => {
@@ -332,14 +398,13 @@ export default Vue.component('irc-input', {
             document.execCommand('underline', false, null);
             this.updateValueProps();
         },
-        addImg(code, url) {
+        addImg(alt, url, props) {
             this.focus();
 
             let existingImages = [..._.values(this.$refs.editor.querySelectorAll('img'))];
 
             document.execCommand('styleWithCSS', false, true);
             document.execCommand('insertImage', false, url);
-            this.code_map[url] = code;
 
             let newImg = null;
             let images = [..._.values(this.$refs.editor.querySelectorAll('img'))];
@@ -350,6 +415,9 @@ export default Vue.component('irc-input', {
                     newImg = img;
                 }
             });
+
+            newImg.alt = alt;
+            Object.assign(newImg, props);
 
             // Find the position of this new image node
             let prevElCnt = 0;
@@ -375,13 +443,13 @@ export default Vue.component('irc-input', {
         },
 
         // Replace the word at the current position with another
-        setCurrentWord(text, keepPosition) {
+        setCurrentWord(text, keepPosition, toPosition) {
             let el = this.current_el;
             let pos = this.current_el_pos;
             let val = el.textContent || '';
 
             let startVal = val.substr(0, pos);
-            let space = startVal.lastIndexOf(' ');
+            let space = startVal.replace(/\xA0/g, ' ').lastIndexOf(' ');
             if (space === -1) {
                 space = 0;
             } else {
@@ -391,9 +459,9 @@ export default Vue.component('irc-input', {
             let startPos = space;
 
             let endVal = val.substr(pos);
-            space = endVal.indexOf(' ');
+            space = endVal.replace(/\xA0/g, ' ').indexOf(' ');
             if (space === -1) space = endVal.length;
-            let endPos = space;
+            let endPos = toPosition ? 0 : space;
 
             el.textContent = startVal.substr(0, startPos) + text + endVal.substr(endPos);
 
@@ -422,12 +490,13 @@ export default Vue.component('irc-input', {
             this.updateValueProps();
         },
 
-        getCurrentWord() {
+        getCurrentWord(toPosition) {
             let el = this.current_el;
             let pos = this.current_el_pos;
             let val = el.textContent;
+            let cleanVal = val.replace(/\xA0/g, ' ');
 
-            let startVal = val.substr(0, pos);
+            let startVal = cleanVal.substr(0, pos);
             let space = startVal.lastIndexOf(' ');
             if (space === -1) {
                 space = 0;
@@ -437,9 +506,11 @@ export default Vue.component('irc-input', {
             }
             let startPos = space;
 
-            space = val.indexOf(' ', startPos);
-            if (space === -1) space = val.length;
-            let endPos = space;
+            space = cleanVal.indexOf(' ', startPos);
+            if (space === -1) {
+                space = val.length;
+            }
+            let endPos = toPosition ? pos - startPos : space;
 
             return {
                 word: val.substr(startPos, endPos),

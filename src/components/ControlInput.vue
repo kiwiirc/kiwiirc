@@ -140,6 +140,7 @@ import * as TextFormatting from '@/helpers/TextFormatting';
 import * as settingTools from '@/libs/settingTools';
 import autocompleteCommands from '@/res/autocompleteCommands';
 import GlobalApi from '@/libs/GlobalApi';
+import * as EmojiProvider from '@/libs/EmojiProvider';
 import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
@@ -195,7 +196,10 @@ export default {
             return this.$state.ui.is_touch || this.$state.setting('showSendButton');
         },
         shouldShowEmojiPicker() {
-            return this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch;
+            return (
+                this.$state.setting('forceShowEmojiPicker') ||
+                (this.$state.setting('showEmojiPicker') && !this.$state.ui.is_touch)
+            );
         },
         shouldShowColorPicker() {
             return this.$state.setting('showColorPicker');
@@ -446,13 +450,16 @@ export default {
                 // Hitting space after just typing an ascii emoji will get it replaced with
                 // its image
                 if (this.$state.setting('buffers.show_emoticons')) {
-                    let currentWord = this.$refs.input.getCurrentWord();
-                    let emojiList = this.$state.setting('emojis');
-                    if (emojiList.hasOwnProperty(currentWord.word)) {
-                        let emoji = emojiList[currentWord.word];
-                        let url = this.$state.setting('emojiLocation') + emoji;
-                        this.$refs.input.setCurrentWord('');
-                        this.$refs.input.addImg(currentWord.word + ' ', url);
+                    let currentWord = this.$refs.input.getCurrentWord(true);
+                    let emojis = EmojiProvider.getEmojis(currentWord.word);
+                    if (emojis.length) {
+                        event.preventDefault();
+                        this.$refs.input.setCurrentWord('', false, true);
+                        this.$refs.input.addImg(
+                            emojis[0].ascii,
+                            emojis[0].url,
+                            emojis[0].imgProps,
+                        );
                     }
                 }
             } else if (event.keyCode === 38) {

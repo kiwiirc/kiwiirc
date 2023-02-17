@@ -107,6 +107,7 @@ export const configTemplates = {
         showChanlistModes: false,
         showAutocomplete: true,
         autocompleteTokens: ['/', '#', '@'],
+        forceShowEmojiPicker: false,
         showEmojiPicker: true,
         showColorPicker: false,
         showSendButton: false,
