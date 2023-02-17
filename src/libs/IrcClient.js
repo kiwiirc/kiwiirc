@@ -1302,16 +1302,19 @@ function clientMiddleware(state, network) {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             buffer.topic = event.topic || '';
 
+            let typeExtra = '';
             let messageBody = '';
 
             if (event.nick) {
+                typeExtra = 'topic_change';
                 messageBody = TextFormatting.formatAndT(
                     'channel_topic',
                     null,
                     'changed_topic_to',
-                    { nick: event.nick, topic: event.topic },
+                    { nick: event.nick, topic: buffer.topic },
                 );
             } else if (buffer.topic.trim()) {
+                typeExtra = 'topic_join';
                 messageBody = TextFormatting.formatText('channel_topic', buffer.topic);
             }
 
@@ -1322,6 +1325,7 @@ function clientMiddleware(state, network) {
                     nick: '',
                     message: messageBody,
                     type: 'topic',
+                    type_extra: typeExtra,
                 });
             }
         }

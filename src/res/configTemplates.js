@@ -56,6 +56,7 @@ export const configTemplates = {
             show_hostnames: false,
             show_joinparts: true,
             show_topics: true,
+            show_topic_in_header: false,
             show_nick_changes: true,
             show_mode_changes: true,
             show_presence_changes: true,
