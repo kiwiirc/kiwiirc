@@ -335,6 +335,7 @@ export default {
 }
 
 .kiwi-header-topic {
+    cursor: default;
     align-self: center;
     text-align: left;
     margin: 5px 10px;
