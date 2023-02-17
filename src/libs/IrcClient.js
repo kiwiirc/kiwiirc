@@ -561,71 +561,79 @@ function clientMiddleware(state, network) {
                 network.ircClient.who(event.channel);
             }
 
-            let nick = buffer.setting('show_hostnames') ?
-                TextFormatting.formatUserFull(event) :
-                TextFormatting.formatUser(event);
+            let ignoreEvent = state.setting('skipHiddenMessages') && !buffer.setting('show_joinparts');
+            if (!ignoreEvent || event.nick === client.user.nick) {
+                let nick = buffer.setting('show_hostnames') ?
+                    TextFormatting.formatUserFull(event) :
+                    TextFormatting.formatUser(event);
 
-            let messageBody = TextFormatting.formatAndT(
-                'channel_join',
-                null,
-                'has_joined',
-                { nick: nick }
-            );
+                let messageBody = TextFormatting.formatAndT(
+                    'channel_join',
+                    null,
+                    'has_joined',
+                    { nick: nick }
+                );
 
-            let typeExtra = (event.nick === network.nick) ? 'join_self' : 'join';
+                let typeExtra = (event.nick === client.user.nick) ? 'join_self' : 'join';
 
-            state.addMessage(buffer, {
-                time: eventTime,
-                server_time: serverTime,
-                nick: event.nick,
-                message: messageBody,
-                type: 'traffic',
-                type_extra: typeExtra,
-            });
+                state.addMessage(buffer, {
+                    time: eventTime,
+                    server_time: serverTime,
+                    nick: event.nick,
+                    message: messageBody,
+                    type: 'traffic',
+                    type_extra: typeExtra,
+                });
+            }
         }
         if (command === 'kick') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             state.removeUserFromBuffer(buffer, event.kicked);
 
-            let messageBody = '';
-
             if (event.kicked === client.user.nick) {
                 buffer.joined = false;
                 buffer.enabled = false;
                 buffer.clearUsers();
-
-                messageBody = TextFormatting.formatAndT(
-                    'channel_selfkick',
-                    { reason: event.message },
-                    'kicked_you_from',
-                    {
-                        nick: TextFormatting.formatUser(event),
-                        channel: event.channel,
-                    }
-                );
-            } else {
-                messageBody = TextFormatting.formatAndT(
-                    'channel_kicked',
-                    { reason: event.message },
-                    'was_kicked_from',
-                    {
-                        nick: event.kicked,
-                        channel: event.channel,
-                        chanop: TextFormatting.formatUser(event.nick),
-                    }
-                );
             }
 
-            let typeExtra = ([event.kicked, event.nick].includes(network.nick)) ? 'kick_self' : 'kick';
+            let messageBody = '';
+            let ignoreEvent = state.setting('skipHiddenMessages') && !buffer.setting('show_joinparts');
+            let isUserInvolved = [event.kicked, event.nick].includes(client.user.nick);
+            if (!ignoreEvent || isUserInvolved) {
+                if (event.kicked === client.user.nick) {
+                    messageBody = TextFormatting.formatAndT(
+                        'channel_selfkick',
+                        { reason: event.message },
+                        'kicked_you_from',
+                        {
+                            nick: TextFormatting.formatUser(event),
+                            channel: event.channel,
+                        }
+                    );
+                } else {
+                    messageBody = TextFormatting.formatAndT(
+                        'channel_kicked',
+                        { reason: event.message },
+                        'was_kicked_from',
+                        {
+                            nick: event.kicked,
+                            channel: event.channel,
+                            chanop: TextFormatting.formatUser(event.nick),
+                        }
+                    );
+                }
 
-            state.addMessage(buffer, {
-                time: eventTime,
-                server_time: serverTime,
-                nick: event.nick,
-                message: messageBody,
-                type: 'traffic',
-                type_extra: typeExtra,
-            });
+                let typeExtra = (isUserInvolved) ? 'kick_self' : 'kick';
+
+                state.addMessage(buffer, {
+                    time: eventTime,
+                    server_time: serverTime,
+                    nick: event.nick,
+                    message: messageBody,
+                    type: 'traffic',
+                    type_extra: typeExtra,
+                });
+            }
         }
         if (command === 'part') {
             let buffer = state.getBufferByName(networkid, event.channel);
@@ -648,27 +656,30 @@ function clientMiddleware(state, network) {
                 });
             }
 
-            let nick = buffer.setting('show_hostnames') ?
-                TextFormatting.formatUserFull(event) :
-                TextFormatting.formatUser(event);
+            let ignoreEvent = state.setting('skipHiddenMessages') && !buffer.setting('show_joinparts');
+            if (!ignoreEvent || event.nick === client.user.nick) {
+                let nick = buffer.setting('show_hostnames') ?
+                    TextFormatting.formatUserFull(event) :
+                    TextFormatting.formatUser(event);
 
-            let messageBody = TextFormatting.formatAndT(
-                'channel_part',
-                { reason: event.message },
-                'has_left',
-                { nick: nick },
-            );
+                let messageBody = TextFormatting.formatAndT(
+                    'channel_part',
+                    { reason: event.message },
+                    'has_left',
+                    { nick: nick },
+                );
 
-            let typeExtra = (event.nick === network.nick) ? 'part_self' : 'part';
+                let typeExtra = (event.nick === client.user.nick) ? 'part_self' : 'part';
 
-            state.addMessage(buffer, {
-                time: eventTime,
-                server_time: serverTime,
-                nick: event.nick,
-                message: messageBody,
-                type: 'traffic',
-                type_extra: typeExtra,
-            });
+                state.addMessage(buffer, {
+                    time: eventTime,
+                    server_time: serverTime,
+                    nick: event.nick,
+                    message: messageBody,
+                    type: 'traffic',
+                    type_extra: typeExtra,
+                });
+            }
         }
         if (command === 'quit') {
             let buffers = state.getBuffersWithUser(networkid, event.nick);
@@ -683,6 +694,11 @@ function clientMiddleware(state, network) {
                     buffer.clearUsers();
                 }
 
+                let ignoreEvent = state.setting('skipHiddenMessages') && !buffer.setting('show_joinparts');
+                if (ignoreEvent && event.nick !== client.user.nick) {
+                    return;
+                }
+
                 let nick = buffer.setting('show_hostnames') ?
                     TextFormatting.formatUserFull(event) :
                     TextFormatting.formatUser(event);
@@ -694,7 +710,7 @@ function clientMiddleware(state, network) {
                     { nick: nick }
                 );
 
-                let typeExtra = (event.nick === network.nick) ? 'quit_self' : 'quit';
+                let typeExtra = (event.nick === client.user.nick) ? 'quit_self' : 'quit';
 
                 state.addMessage(buffer, {
                     time: eventTime,
@@ -788,7 +804,7 @@ function clientMiddleware(state, network) {
                 away: event.message || '',
             });
             let buffer = state.getActiveBuffer();
-            if (buffer && event.nick === network.nick) {
+            if (buffer && event.nick === client.user.nick) {
                 network.away = 'away';
                 state.addMessage(buffer, {
                     time: eventTime,
@@ -806,7 +822,7 @@ function clientMiddleware(state, network) {
                 away: '',
             });
             let buffer = state.getActiveBuffer();
-            if (buffer && event.nick === network.nick) {
+            if (buffer && event.nick === client.user.nick) {
                 network.away = '';
                 state.addMessage(buffer, {
                     time: eventTime,
@@ -941,10 +957,15 @@ function clientMiddleware(state, network) {
                 { nick: event.nick, newnick: event.new_nick },
             );
 
-            let typeExtra = (network.nick === event.new_nick) ? 'nick_self' : '';
+            let typeExtra = (event.nick === client.user.nick) ? 'nick_self' : '';
 
             let buffers = state.getBuffersWithUser(networkid, event.new_nick);
             buffers.forEach((buffer) => {
+                let ignoreEvent = state.setting('skipHiddenMessages') && !buffer.setting('show_nick_changes');
+                if (ignoreEvent && event.nick !== client.user.nick) {
+                    return;
+                }
+
                 state.addMessage(buffer, {
                     time: eventTime,
                     server_time: serverTime,
@@ -1158,6 +1179,13 @@ function clientMiddleware(state, network) {
 
                 // Show one line per mode, listing each effecting user
                 _.each(modeStrs, (targets, mode) => {
+                    let targetNicks = targets.map((t) => t.target);
+                    let ignoreEvent = state.setting('skipHiddenMessages') && !buffer.setting('show_mode_changes');
+                    let isUserInvolved = [event.nick, ...targetNicks].includes(client.user.nick);
+                    if (ignoreEvent && !isUserInvolved) {
+                        return;
+                    }
+
                     // Find a locale data builder for this mode
                     let builders = modeLocaleDataBuilders;
                     let localeDataFn = builders[mode[1]] || builders.default;
@@ -1167,8 +1195,6 @@ function clientMiddleware(state, network) {
                     let localeKey = modeLocaleIds[mode] || 'modes_other';
                     let text = TextFormatting.t(localeKey, localeData);
 
-                    let targetNicks = targets.map((t) => t.target);
-
                     let messageBody = TextFormatting.formatText('mode', {
                         nick: event.nick,
                         username: event.ident,
@@ -1177,7 +1203,7 @@ function clientMiddleware(state, network) {
                         text,
                     });
 
-                    let typeExtra = ([event.nick, ...targetNicks].includes(network.nick)) ?
+                    let typeExtra = (isUserInvolved) ?
                         'mode_self' :
                         '';
 
