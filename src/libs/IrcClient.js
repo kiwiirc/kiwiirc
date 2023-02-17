@@ -590,16 +590,17 @@ function clientMiddleware(state, network) {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
             state.removeUserFromBuffer(buffer, event.kicked);
 
-            let messageBody = '';
+            if (event.kicked === client.user.nick) {
+                buffer.joined = false;
+                buffer.enabled = false;
+                buffer.clearUsers();
+            }
 
+            let messageBody = '';
             let ignoreEvent = state.setting('skipHiddenMessages') && !buffer.setting('show_joinparts');
             let isUserInvolved = [event.kicked, event.nick].includes(client.user.nick);
             if (!ignoreEvent || isUserInvolved) {
                 if (event.kicked === client.user.nick) {
-                    buffer.joined = false;
-                    buffer.enabled = false;
-                    buffer.clearUsers();
-
                     messageBody = TextFormatting.formatAndT(
                         'channel_selfkick',
                         { reason: event.message },
