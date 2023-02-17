@@ -266,15 +266,6 @@ export default {
                 network.ircClient.join(channelName);
             }
         },
-        b() {
-            return this.buffer || {};
-        },
-
-        formattedHeader() {
-            let blocks = parseMessage(this.buffer.topic || '', { extras: false });
-            let content = toHtml(blocks);
-            return content;
-        },
     },
 };
 </script>
@@ -317,21 +308,6 @@ export default {
     line-height: 42px;
     flex-shrink: 1;
     text-align: left;
-    overflow-x: hidden;
-    white-space: nowrap;
-}
-
-.kiwi-header-topic-container {
-    font-weight: bold;
-    cursor: default;
-    margin: 0;
-    margin-right: 0.5em;
-    max-width: 60%;
-    opacity: 1;
-    font-size: 20px;
-    line-height: 43px;
-    flex-grow: 1;
-    text-align: right;
     overflow-x: hidden;
     white-space: nowrap;
 }
