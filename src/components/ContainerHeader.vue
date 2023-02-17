@@ -321,7 +321,6 @@ export default {
     display: none;
     position: absolute;
     padding-right: 10px;
-    background-color: #666;
     z-index: 1;
 }
 
