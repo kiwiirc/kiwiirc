@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2023-01-30 14:47\n"
+"PO-Revision-Date: 2023-02-21 22:53\n"
 
 #: Start
 msgid "start_button"
@@ -115,6 +115,18 @@ msgstr "正在登录···"
 msgid "invalid_login"
 msgstr "无效登录"
 
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Login failed. Please try again or contact support"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "You are now logged in as '{{account}}'"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "You have been logged out"
+
 #: Search...
 msgid "do_search"
 msgstr "搜索···"
@@ -137,7 +149,7 @@ msgstr "否"
 
 #: Not found.
 msgid "not_found"
-msgstr "Not found."
+msgstr "未找到。"
 
 #: Warning!
 msgid "warning"
@@ -189,35 +201,35 @@ msgstr "{{count}} 周"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "{{count}} 天"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} days"
+msgstr "{{count}} 天"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "{{count}} 小时"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "{{count}} 小时"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "{{count}} 分钟"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutes"
+msgstr "{{count}} 分钟"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "{{count}} 秒"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "{{count}} 秒"
 
 #: General
 msgid "settings_general"
@@ -249,7 +261,7 @@ msgstr "使用等宽字体"
 
 #: Use Kiwi as my default IRC client
 msgid "settings_default_handler"
-msgstr "Use Kiwi as my default IRC client"
+msgstr "将Kiwi设为我的默认IRC客户端"
 
 #: Traditional IRC layout
 msgid "settings_layout_compact"
@@ -297,15 +309,15 @@ msgstr "输入时向其他人展示“正在输入”状态"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "预览内嵌图片"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "令加入/部分信息变成活动"
+msgstr "令 加入/离开 信息变成活动"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
-msgstr "静音提示"
+msgstr "关闭声音提醒"
 
 #: Highlight on words (space seperated)
 msgid "settings_highlight"
@@ -389,7 +401,7 @@ msgstr "重置"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "筛选"
 
 #: Refresh banlist
 msgid "bans_refresh"
@@ -441,7 +453,7 @@ msgstr "Only invited users can join."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Only allow invited users"
+msgstr "仅允许被邀请的用户加入"
 
 #: Allow anybody to join
 msgid "invite_set_public"
@@ -501,11 +513,11 @@ msgstr "显示状态浏览器"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "隐藏主题"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "显示主题"
 
 #: Channel Settings
 msgid "channel_settings"
@@ -534,6 +546,10 @@ msgstr "正在加载 {{url}}···"
 #: Load previous messages
 msgid "messages_load"
 msgstr "载入历史聊天记录"
+
+#: Loading previous messages...
+msgid "messages_loading"
+msgstr "Loading previous messages..."
 
 #: Unread Messages
 msgid "unread_messages"
@@ -597,7 +613,7 @@ msgstr "有 {{count}} 人在线"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "筛选频道内的用户"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -629,7 +645,7 @@ msgstr "连接"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "网络名称"
 
 #: Close options
 msgid "side_close"
@@ -689,7 +705,7 @@ msgstr "Highlights"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nobody has mentioned you yet..."
+msgstr "还没有人提到你……"
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
@@ -737,7 +753,7 @@ msgstr "新建网络"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "未添加网络"
 
 #: Configure network
 msgid "state_configure"
@@ -757,11 +773,11 @@ msgstr "Filter channels"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "查找更多的频道"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "真的要离开这个频道吗？"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
@@ -781,7 +797,7 @@ msgstr "请输入新昵称……"
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "这是你！"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -793,7 +809,7 @@ msgstr "真实名称：{{realname}}"
 
 #: Is a bot
 msgid "user_bot"
-msgstr "是否为机器人"
+msgstr "是机器人"
 
 #: Is available for help
 msgid "user_help"
@@ -801,7 +817,7 @@ msgstr "是否可寻求帮助"
 
 #: Is an operator
 msgid "user_op"
-msgstr "是否为管理员"
+msgstr "是管理员"
 
 #: Connected to {{server}} {{info}}
 msgid "user_server"
@@ -877,11 +893,11 @@ msgstr "{{nick}} 移除了 {{target}} 的半管理员权限"
 
 #: {{nick}} gives voice to {{target}}
 msgid "modes_give_voice"
-msgstr "{{nick}} 将语音权限授予了 {{target}}"
+msgstr "{{nick}} 将发言权限授予了 {{target}}"
 
 #: {{nick}} takes voice from {{target}}
 msgid "modes_take_voice"
-msgstr "{{nick}} 移除了 {{target}} 的语音权限"
+msgstr "{{nick}} 移除了 {{target}} 的发言权限"
 
 #: {{nick}} gives admin to {{target}}
 msgid "modes_give_admin"
@@ -925,11 +941,11 @@ msgstr "加入一个频道"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Leave a channel"
+msgstr "离开一个频道"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
-msgstr "Leave, then re-join a channel"
+msgstr "离开再加入一个频道"
 
 #: Change your nickname
 msgid "command_nick"
@@ -937,11 +953,11 @@ msgstr "修改自己的昵称"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr "Start a private conversation with someone"
+msgstr "发起私聊"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Invite somebody into the channel"
+msgstr "邀请某个用户加入频道"
 
 #: Set the topic for this channel
 msgid "command_topic"
@@ -949,11 +965,11 @@ msgstr "为当前频道设置主题"
 
 #: Send a notice
 msgid "command_notice"
-msgstr "Send a notice"
+msgstr "发送一条通知"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "Send a raw command to the IRC server"
+msgstr "将原始命令发送到IRC服务器"
 
 #: Kick somebody from the channel
 msgid "command_kick"
@@ -973,19 +989,19 @@ msgstr "断开与IRC服务器的连接"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Connect to a new IRC network"
+msgstr "连接一个新的IRC网络"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Request information on somebody"
+msgstr "查询某个人的信息"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
-msgstr "Request information on somebody that disconnected recently"
+msgstr "查询某个不久前离线的用户的信息"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "将自己的状态设为离开"
 
 #: Set yourself as active
 msgid "command_back"
@@ -997,11 +1013,11 @@ msgstr "修改你的连接的编码"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr "Ignore messages from somebody"
+msgstr "忽略来自某个人的消息"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Stop ignoring somebody"
+msgstr "停止忽略某个人"
 
 #: Roll a Dice
 msgid "command_dice"
@@ -1097,7 +1113,7 @@ msgstr "{{nick}} 邀请您加入 {{channel}}"
 
 #: {{nick}} invited {{invited}} to join {{channel}}
 msgid "invited_other"
-msgstr "{{nick}} invited {{invited}} to join {{channel}}"
+msgstr "{{nick}} 邀请 {{invited}} 加入 {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
