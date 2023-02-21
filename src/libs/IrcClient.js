@@ -962,8 +962,9 @@ function clientMiddleware(state, network) {
 
         if (command === 'userlist') {
             let buffer = state.getOrAddBufferByName(networkid, event.channel);
+            let ucNick = client.user.nick.toUpperCase();
             let hadExistingUsers = Object.keys(buffer.users)
-                .filter((u) => u !== network.ircClient.user.nick)
+                .filter((u) => u !== ucNick)
                 .length > 0;
             let users = [];
             event.users.forEach((user) => {
@@ -979,15 +980,16 @@ function clientMiddleware(state, network) {
             state.addMultipleUsersToBuffer(buffer, users);
 
             if (!hadExistingUsers && network.ircClient.chathistory.isSupported()) {
-                let correctBuffer = buffer.isChannel() || buffer.isQuery();
-
                 // TODO: If this is a reconnect (numConnects > 1) then paginate backwards
                 //       until we reach our last message.
                 //       OR
                 //       Add a marker at the gap between this new chathistory block starts and when
                 //       the existing messages end so that we can add a "load missing messages"
                 //       button there or have it auto request them when it scrolls into view
-                if (correctBuffer) {
+                if (
+                    buffer.isChannel()
+                    && ['all', 'channels'].includes(buffer.setting('auto_request_history'))
+                ) {
                     buffer.requestLatestScrollback();
                 }
             }

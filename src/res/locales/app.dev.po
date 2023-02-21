@@ -590,6 +590,10 @@ msgstr "Loading {{url}}..."
 msgid "messages_load"
 msgstr "Load previous messages"
 
+#: Loading previous messages...
+msgid "messages_loading"
+msgstr "Loading previous messages..."
+
 #: Unread Messages
 msgid "unread_messages"
 msgstr "Unread Messages"
