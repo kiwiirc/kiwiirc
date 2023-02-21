@@ -12,8 +12,6 @@ import 'whatwg-fetch';
 // polyfill for vue-virtual-scroller & ie11
 import 'intersection-observer';
 
-import AvailableLocales from '@/res/locales/available.json';
-import FallbackLocale from '@/../static/locales/en-us.json';
 import App from '@/components/App';
 import StartupError from '@/components/StartupError';
 import Logger from '@/libs/Logger';
@@ -29,6 +27,9 @@ import { AudioManager } from '@/libs/AudioManager';
 import { SoundBleep } from '@/libs/SoundBleep';
 import WindowTitle from '@/libs/WindowTitle';
 import { configTemplates } from '@/res/configTemplates';
+
+import AvailableLocales from '@/res/locales/available.json';
+import FallbackLocale from '@/../static/locales/en-us.json';
 
 // Global utilities
 import '@/components/utils/TabbedView';

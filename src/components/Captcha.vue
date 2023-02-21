@@ -48,8 +48,8 @@ export default {
             // Recaptcha calls this callback once it's loaded and ready to be used
             window.recaptchaLoaded = () => {
                 window.grecaptcha.render(this.$refs.captchacontainer, {
-                    sitekey: this.recaptchaSiteId,
-                    callback: this.recaptchaSuccess,
+                    'sitekey': this.recaptchaSiteId,
+                    'callback': this.recaptchaSuccess,
                     'expired-callback': this.recaptchaExpired,
                 });
             };

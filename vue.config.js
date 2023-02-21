@@ -24,12 +24,15 @@ module.exports = {
             alias: {
                 vue$: 'vue/dist/vue.common.js',
             },
+            fallback: {
+                stream: require.resolve('stream-browserify'),
+            },
             // This prevents yarn link modules from getting linted
             symlinks: false,
         },
         performance: {
-            maxEntrypointSize: 1550000,
-            maxAssetSize: 1000000,
+            maxEntrypointSize: 1677722, // 1.6MiB
+            maxAssetSize: 1048576, // 1MiB
         },
         optimization: {
             splitChunks: {
@@ -77,17 +80,13 @@ module.exports = {
 
         // add exports-loader for GobalApi
         const vueRule = config.module.rule('vue');
-        const vueCacheOptions = vueRule.uses.get('cache-loader').get('options');
         const vueOptions = vueRule.uses.get('vue-loader').get('options');
         vueRule.uses.clear();
-        vueRule.use('cache-loader').loader('cache-loader').options(vueCacheOptions);
         vueRule.use('exports-loader').loader('exports-loader');
         vueRule.use('vue-loader').loader('vue-loader').options(vueOptions);
 
         const jsRule = config.module.rule('js');
-        const jsCacheOptions = jsRule.uses.get('cache-loader').get('options');
         jsRule.uses.clear();
-        jsRule.use('cache-loader').loader('cache-loader').options(jsCacheOptions);
         jsRule.use('exports-loader').loader('exports-loader');
         jsRule.use('babel-loader').loader('babel-loader');
 

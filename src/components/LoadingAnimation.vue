@@ -1,6 +1,11 @@
 <template>
     <div>
-        <img ref="kiwi-loading-logo" src="../res/kiwiLoadingLogo.png" class="kiwi-loading-logo">
+        <img
+            ref="kiwi-loading-logo"
+            src="../res/kiwiLoadingLogo.png"
+            class="kiwi-loading-logo"
+            alt=""
+        >
         <canvas ref="kiwi-loading-canvas" class="kiwi-loading-animation" />
     </div>
 </template>

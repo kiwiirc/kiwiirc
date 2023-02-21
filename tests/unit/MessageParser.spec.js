@@ -76,10 +76,10 @@ describe('MessageParser.js', () => {
     it('should return valid user blocks', () => {
         // mock users list
         let users = {
-            TESTNICK1: { nick: 'TestNick1', username: 'testnick1', colour: '#a1fc5d' },
-            TESTNICK2: { nick: 'TestNick2', username: 'testnick2', colour: '#7363fe' },
-            TESTNICK3: { nick: 'TestNick3', username: 'testnick3' },
-            TESTNICK4_: { nick: 'Test-Nick4_', username: 'testnick4' },
+            'TESTNICK1': { nick: 'TestNick1', username: 'testnick1', colour: '#a1fc5d' },
+            'TESTNICK2': { nick: 'TestNick2', username: 'testnick2', colour: '#7363fe' },
+            'TESTNICK3': { nick: 'TestNick3', username: 'testnick3' },
+            'TESTNICK4_': { nick: 'Test-Nick4_', username: 'testnick4' },
             'TEST-NICK5': { nick: 'Test-Nick5', username: 'testnick5' },
             'TESTNICK6-': { nick: 'TestNick6-', username: 'testnick6' },
         };

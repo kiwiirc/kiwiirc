@@ -1,7 +1,8 @@
 <template>
-    <div :class="[
-        isActiveNetwork ? 'kiwi-statebrowser-network--active' : '',
-    ]" class="kiwi-statebrowser-network"
+    <div
+        :class="[
+            isActiveNetwork ? 'kiwi-statebrowser-network--active' : '',
+        ]" class="kiwi-statebrowser-network"
     >
         <div class="kiwi-statebrowser-network-header">
             <a
@@ -78,9 +79,10 @@
             </div>
         </transition-expand>
 
-        <div :class="[
-            collapsed ? 'kiwi-statebrowser-network-toggable-area--collapsed' : '',
-        ]" class="kiwi-statebrowser-network-toggable-area"
+        <div
+            :class="[
+                collapsed ? 'kiwi-statebrowser-network-toggable-area--collapsed' : '',
+            ]" class="kiwi-statebrowser-network-toggable-area"
         >
             <transition-expand>
                 <div v-if="network.state !== 'connected'" class="kiwi-statebrowser-network-status">

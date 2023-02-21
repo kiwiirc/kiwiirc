@@ -135,15 +135,15 @@ export default Vue.component('input-text', {
     -moz-appearance: textfield;
 }
 
-.u-input-text input[type=number]::-webkit-inner-spin-button,
-.u-input-text input[type=number]::-webkit-outer-spin-button {
+.u-input-text input[type='number']::-webkit-inner-spin-button,
+.u-input-text input[type='number']::-webkit-outer-spin-button {
     /* For webkit browsers like Safari and Chrome */
     -webkit-appearance: none;
     margin: 0;
 }
 
-input[type=text].u-form-input-plaintext,
-input[type=password].u-form-input-plaintext {
+input[type='text'].u-form-input-plaintext,
+input[type='password'].u-form-input-plaintext {
     padding-right: 40px;
 }
 

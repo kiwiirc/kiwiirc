@@ -1,10 +1,11 @@
 <template>
-    <div :class="{
-        /* 'kiwi-container-' + bufferType: true, */
-        'kiwi-container--sidebar-drawn': sidebarState.isDrawn,
-        'kiwi-container--sidebar-open': sidebarState.isOpen,
-        'kiwi-container--no-sidebar': buffer && buffer.isSpecial,
-    }" class="kiwi-container"
+    <div
+        :class="{
+            /* 'kiwi-container-' + bufferType: true, */
+            'kiwi-container--sidebar-drawn': sidebarState.isDrawn,
+            'kiwi-container--sidebar-open': sidebarState.isOpen,
+            'kiwi-container--no-sidebar': buffer && buffer.isSpecial,
+        }" class="kiwi-container"
     >
         <template v-if="buffer">
             <div class="kiwi-container-toggledraw-statebrowser" @click.stop="toggleStateBrowser">
@@ -295,7 +296,7 @@ export default {
     top: 20%;
     border: 0.6em solid transparent;
     border-right-color: #ddd;
-    content: " ";
+    content: ' ';
     height: 0;
     width: 0;
     position: absolute;

@@ -1,8 +1,15 @@
 module.exports = {
-    presets: [['@vue/cli-plugin-babel/preset', { useBuiltIns: 'entry', modules: 'commonjs' }]],
-    plugins: [
-        ['@babel/plugin-transform-runtime', { corejs: 3, useESModules: true }],
+    presets: [
+        [
+            '@vue/cli-plugin-babel/preset',
+            {
+                useBuiltIns: 'entry',
+                modules: 'commonjs',
+                corejs: { version: 3, proposals: true },
+            },
+        ],
     ],
+    plugins: [['@babel/plugin-transform-runtime', { corejs: 3, useESModules: true }]],
     env: {
         test: {
             plugins: [
