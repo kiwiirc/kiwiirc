@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2022-08-26 15:41\n"
+"PO-Revision-Date: 2023-01-30 14:47\n"
 
 #: Start
 msgid "start_button"
@@ -77,7 +77,7 @@ msgstr "密码"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "服务器密码"
 
 #: I have a password
 msgid "password_have"
@@ -177,7 +177,7 @@ msgstr "频道"
 
 #: Away
 msgid "away"
-msgstr "Away"
+msgstr "离开"
 
 #: {{count}} week
 msgid "week"
@@ -185,7 +185,7 @@ msgstr "{{count}} 个星期"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "{{count}} 周"
 
 #: {{count}} day
 msgid "day"
@@ -225,7 +225,7 @@ msgstr "通用"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "语言"
 
 #: Theme
 msgid "settings_theme"
@@ -241,7 +241,7 @@ msgstr "主题地址"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "消息布局"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -293,7 +293,7 @@ msgstr "聊天彩色昵称"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "输入时向其他人展示“正在输入”状态"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
@@ -317,7 +317,7 @@ msgstr "别名"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "什么是别名？"
 
 #: Send Message
 msgid "send_message"
@@ -329,7 +329,7 @@ msgstr "Enter Channel Key"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "重新加入 {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -353,7 +353,7 @@ msgstr "静音"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "隐藏未读消息数"
 
 #: Operator tools
 msgid "operator_tools"
@@ -377,7 +377,7 @@ msgstr "Monsters be here, only click this button if you know what you are doing"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "启用高级设置"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
@@ -413,7 +413,7 @@ msgstr "无人被封禁！"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "刷新邀请列表"
 
 #: Invited user
 msgid "invites_user"
@@ -425,7 +425,7 @@ msgstr "Invited by"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
+msgstr "邀请列表刷新中……"
 
 #: Nobody is invited!
 msgid "invites_nobody"
@@ -445,7 +445,7 @@ msgstr "Only allow invited users"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "允许任何人加入"
 
 #: Only registered users can join
 msgid "invite_registered_only"
@@ -509,7 +509,7 @@ msgstr "Display Topic"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "频道设置"
 
 #: Join Channel
 msgid "container_join"
@@ -621,11 +621,11 @@ msgstr "连接设置"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "We couldn't connect to that server :("
+msgstr "无法连接到服务器 :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "连接"
 
 #: Network Name
 msgid "network_name"
@@ -677,7 +677,7 @@ msgstr "这个频道没有主题"
 
 #: About
 msgid "about"
-msgstr "About"
+msgstr "关于"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -729,11 +729,11 @@ msgstr "可用网络"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "添加网络"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "新建网络"
 
 #: No Network
 msgid "no_network"
@@ -837,11 +837,11 @@ msgstr "从频道中踢出并封禁"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
-msgstr "Please specify a channel to join. eg /join #example"
+msgstr "请指定加入的频道。例： /join #example"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "昵称 '{{nick}}' 已被使用"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
@@ -853,7 +853,7 @@ msgstr "你必须输入一个新昵称"
 
 #: Nickname must not start with a number
 msgid "error_no_number"
-msgstr "Nickname must not start with a number"
+msgstr "昵称不能以数字开头"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
@@ -917,11 +917,11 @@ msgstr "发送消息"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Do something physical"
+msgstr "做一些动作"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Join a channel"
+msgstr "加入一个频道"
 
 #: Leave a channel
 msgid "command_part"
@@ -933,7 +933,7 @@ msgstr "Leave, then re-join a channel"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Change your nickname"
+msgstr "修改自己的昵称"
 
 #: Start a private conversation with someone
 msgid "command_query"
@@ -961,11 +961,11 @@ msgstr "将某个用户踢出频道"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Clear all messages from this window"
+msgstr "清除这个窗口的全部消息"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr "Send a CTCP command to somebody"
+msgstr "向某个人发送CTCP命令"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
@@ -993,7 +993,7 @@ msgstr "Set yourself as active"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Change your connection encoding"
+msgstr "修改你的连接的编码"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
@@ -1013,7 +1013,7 @@ msgstr "掷出{{sides}}面骰子，结果为{{number}}点"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "您在 {{channel}} 被提到了"
 
 #: Your IRC client
 msgid "personal_client"
@@ -1041,11 +1041,11 @@ msgstr "Network has been added to your existing Kiwi window."
 
 #: Add network to existing Kiwi window
 msgid "personal_add_existing_tab"
-msgstr "Add network to existing Kiwi window"
+msgstr "将网络添加到已有的Kiwi窗口"
 
 #: Temporarily connect to this network
 msgid "personal_connect_temporary"
-msgstr "Temporarily connect to this network"
+msgstr "临时连接到此网络"
 
 #: Saved networks
 msgid "personal_saved"
