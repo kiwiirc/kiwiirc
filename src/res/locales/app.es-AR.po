@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Spanish, Argentina\n"
 "Language: es_AR\n"
-"PO-Revision-Date: 2022-08-26 15:42\n"
+"PO-Revision-Date: 2023-02-21 22:53\n"
 
 #: Start
 msgid "start_button"
@@ -114,6 +114,18 @@ msgstr "Verificando credenciales..."
 #: Invalid login
 msgid "invalid_login"
 msgstr "Credenciales inválidas"
+
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Login failed. Please try again or contact support"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "You are now logged in as '{{account}}'"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "You have been logged out"
 
 #: Search...
 msgid "do_search"
@@ -473,7 +485,7 @@ msgstr "Se necesita invitación para entrar"
 
 #: Hide this channel from lists
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "Ocultar esta sala de las listas"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -534,6 +546,10 @@ msgstr "Cargando {{url}}..."
 #: Load previous messages
 msgid "messages_load"
 msgstr "Cargar mensajes anteriores"
+
+#: Loading previous messages...
+msgid "messages_loading"
+msgstr "Loading previous messages..."
 
 #: Unread Messages
 msgid "unread_messages"
