@@ -108,6 +108,18 @@ msgstr "Logging in..."
 msgid "invalid_login"
 msgstr "Invalid login"
 
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Login failed. Please try again or contact support"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "You are now logged in as '{{account}}'"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "You have been logged out"
+
 #: Search...
 msgid "do_search"
 msgstr "Search..."

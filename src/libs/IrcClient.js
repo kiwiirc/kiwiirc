@@ -52,6 +52,7 @@ export function create(state, network) {
         ircClient.options.gecos = network.gecos || 'https://kiwiirc.com/';
         ircClient.options.encoding = network.connection.encoding;
         ircClient.options.auto_reconnect = !!state.setting('autoReconnect');
+        ircClient.options.sasl_disconnect_on_fail = !!state.setting('disconnectOnSaslFail');
 
         // Apply any irc-fw options specified in kiwiirc config
         let configOptions = state.setting('ircFramework');
@@ -183,24 +184,6 @@ function clientMiddleware(state, network) {
             network.ircd = m ?
                 m[1] :
                 '';
-        }
-
-        // SASL failed auth
-        if (command === '904') {
-            if (!network.state !== 'connected') {
-                network.last_error = 'Invalid login';
-
-                if (state.setting('disconnectOnSaslFail')) {
-                    network.ircClient.connection.end();
-                }
-            }
-
-            let serverBuffer = network.serverBuffer();
-            state.addMessage(serverBuffer, {
-                time: Date.now(),
-                nick: '*',
-                message: 'Invalid login',
-            });
         }
 
         if (command === 'CAP' && network.setting('show_raw_caps')) {
@@ -1386,6 +1369,65 @@ function clientMiddleware(state, network) {
                 network.last_error_numeric = 432;
                 network.last_error = event.reason;
                 network.ircClient.quit();
+            }
+        }
+
+        if (command === 'loggedin' || command === 'loggedout') {
+            let translationKey = command === 'loggedin' ? 'logged_in' : 'logged_out';
+
+            let buffers = [network.serverBuffer()];
+            let activeBuffer = state.getActiveBuffer();
+            if (activeBuffer?.networkid === network.id && activeBuffer !== buffers[0]) {
+                buffers.push(activeBuffer);
+            }
+
+            let messageBody = TextFormatting.formatAndT(
+                'notice',
+                null,
+                translationKey,
+                { account: event.account }
+            );
+
+            buffers.forEach((buffer) => {
+                state.addMessage(buffer, {
+                    time: Date.now(),
+                    nick: '',
+                    message: messageBody,
+                    type: 'notice',
+                });
+            });
+        }
+
+        if (command === 'sasl failed') {
+            let failMessage = TextFormatting.formatAndT(
+                'general_error',
+                null,
+                'login_failed'
+            );
+
+            let buffers = [network.serverBuffer()];
+            let activeBuffer = state.getActiveBuffer();
+            if (activeBuffer?.networkid === network.id && activeBuffer !== buffers[0]) {
+                buffers.push(activeBuffer);
+            }
+
+            let disconnectOnSaslFail = network.ircClient.connection.options.sasl_disconnect_on_fail;
+
+            if (disconnectOnSaslFail && network.state !== 'connected') {
+                // The client is going to disconnect set last_error so it is show to the user
+                network.last_error = failMessage;
+            }
+
+            if (!disconnectOnSaslFail) {
+                // Only add messages if the client is not going to disconnect on failure
+                buffers.forEach((buffer) => {
+                    state.addMessage(buffer, {
+                        time: Date.now(),
+                        nick: '',
+                        message: failMessage,
+                        type: 'error',
+                    });
+                });
             }
         }
 
