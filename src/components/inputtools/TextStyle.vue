@@ -3,7 +3,7 @@
     <div class="kiwi-inputtools-style">
         <div class="kiwi-inputtools-sample" :style="sampleStyle">Sample Text</div>
         <div class="kiwi-inputtools-style-top">
-            <div class="kiwi-inputtools-style-base" @mousedown.prevent @click.prevent>
+            <div class="kiwi-inputtools-style-grid kiwi-inputtools-style-base" @mousedown.prevent @click.prevent>
                 <div
                     v-for="colourCode in Array(16).keys()"
                     :key="'colour'+colourCode"
@@ -13,7 +13,7 @@
                     @click="onColourClick"
                 >&nbsp;</div>
             </div>
-            <div class="kiwi-inputtools-style-modifiers" @mousedown.prevent @click.prevent>
+            <div class="kiwi-inputtools-style-grid kiwi-inputtools-style-modifiers" @mousedown.prevent @click.prevent>
                 <div
                     class="kiwi-inputtools-style-button"
                     :class="{'kiwi-inputtools-style--disabled': bgColourDisabled}"
@@ -103,7 +103,7 @@
         <transition-expand>
             <div
                 v-if="extColours"
-                class="kiwi-inputtools-style-palette"
+                class="kiwi-inputtools-style-grid kiwi-inputtools-style-palette"
                 @mousedown.prevent
                 @click.prevent
             >
@@ -278,27 +278,24 @@ export default {
     display: flex;
 }
 
-.kiwi-inputtools-style-base {
+.kiwi-inputtools-style-grid {
     display: grid;
     column-gap: 4px;
     row-gap: 4px;
+}
+
+.kiwi-inputtools-style-base {
     grid-template-columns: repeat(8, 32px);
     grid-template-rows: repeat(2, 32px);
 }
 
 .kiwi-inputtools-style-modifiers {
-    display: grid;
-    column-gap: 4px;
-    row-gap: 4px;
     grid-template-columns: repeat(4, 32px);
     grid-template-rows: repeat(2, 32px);
     margin-left: 4px;
 }
 
 .kiwi-inputtools-style-palette {
-    display: grid;
-    column-gap: 4px;
-    row-gap: 4px;
     grid-template-columns: repeat(12, 32px);
     grid-template-rows: repeat(7, 32px);
 }
@@ -344,7 +341,14 @@ export default {
         padding: 4px;
         max-width: 442px;
 
-        --button-size: calc(min(100vw - 42px, 446px) / 12 - 4px);
+        --cell-size: calc(min(100vw - 42px, 446px) / 12);
+        --grid-gap: clamp(2px, calc(var(--cell-size) * 0.1213), 4px);
+        --button-size: calc(var(--cell-size) - var(--grid-gap));
+
+        .kiwi-inputtools-style-grid {
+            column-gap: var(--grid-gap);
+            row-gap: var(--grid-gap);
+        }
 
         .kiwi-inputtools-style-base {
             grid-template-columns: repeat(8, var(--button-size));
@@ -353,6 +357,7 @@ export default {
         .kiwi-inputtools-style-modifiers {
             grid-template-columns: repeat(4, var(--button-size));
             grid-template-rows: repeat(2, var(--button-size));
+            margin-left: var(--grid-gap);
         }
         .kiwi-inputtools-style-palette {
             grid-template-columns: repeat(12, var(--button-size));
@@ -360,7 +365,8 @@ export default {
         }
 
         .kiwi-inputtools-style-button {
-            padding: clamp(1px, calc(var(--button-size) * 0.0602), 2px);;
+            padding: clamp(1px, calc(var(--button-size) * 0.0602), 2px);
+            border-width: clamp(1px, calc(var(--button-size) * 0.0602), 2px);
         }
 
         .kiwi-inputtools-style-reset {
