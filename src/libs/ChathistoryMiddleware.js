@@ -68,7 +68,9 @@ function addFunctionsToClient(client) {
 
             if (cb) {
                 cb(value);
-            } else {
+            } else if (history.isSupported()) {
+                // inspircd currently does not support chathistory
+                // but sends chathistory batches when joining channels
                 log.error('chathistory got a resolve but no associated callback');
             }
 
