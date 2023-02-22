@@ -7,7 +7,7 @@
             contenteditable="true"
             role="textbox"
             spellcheck="true"
-            @keypress="updateValueProps(); $emit('keypress', $event)"
+            @keypress="onKeyPress($event); updateValueProps(); $emit('keypress', $event)"
             @keydown="updateValueProps(); $emit('keydown', $event)"
             @keyup="updateValueProps(); $emit('keyup', $event)"
             @textInput="updateValueProps(); onTextInput($event); $emit('textInput', $event)"
@@ -42,6 +42,14 @@ export default Vue.component('irc-input', {
             current_el_pos: 0,
             default_colour: null,
             code_map: Object.create(null),
+            style: {
+                fgColour: null,
+                bgColour: null,
+                bold: false,
+                italic: false,
+                underline: false,
+                strikethrough: false,
+            },
         };
     },
     computed: {
@@ -61,6 +69,38 @@ export default Vue.component('irc-input', {
             if (event.data[event.data.length - 1] === '\n') {
                 event.preventDefault();
                 this.setCurrentWord(event.data.trim());
+            }
+        },
+        onKeyPress() {
+            document.execCommand('styleWithCSS', false, true);
+            document.execCommand('removeFormat', false, null);
+
+            console.log('onKeyDown', document.queryCommandState('bold'));
+
+            if (this.style.fgColour) {
+                document.execCommand('foreColor', false, this.style.fgColour.hex);
+                this.code_map[this.style.fgColour.hex] = this.style.fgColour.code;
+            }
+
+            if (this.style.bgColour) {
+                document.execCommand('backColor', false, this.style.bgColour.hex);
+                this.code_map[this.style.bgColour.hex] = this.style.bgColour.code;
+            }
+
+            if (this.style.bold !== document.queryCommandState('bold')) {
+                document.execCommand('bold', false, this.style.bold);
+            }
+
+            if (this.style.italic !== document.queryCommandState('italic')) {
+                document.execCommand('italic', false, this.style.italic);
+            }
+
+            if (this.style.underline !== document.queryCommandState('underline')) {
+                document.execCommand('underline', false, this.style.underline);
+            }
+
+            if (this.style.strikethrough !== document.queryCommandState('strikeThrough')) {
+                document.execCommand('strikeThrough', false, this.style.strikethrough);
             }
         },
         onPaste(event) {
@@ -243,16 +283,19 @@ export default Vue.component('irc-input', {
             let parser = new htmlparser.Parser({
                 onopentag: (name, attribs) => {
                     toggles.push('');
-                    let codeLookup = '';
                     if (attribs.style) {
-                        let match = attribs.style.match(/color: ([^;]+)/);
-                        if (match) {
-                            codeLookup = match[1];
-                            let mappedCode = this.code_map[codeLookup];
+                        const colourCodes = [];
+                        const matches = [...attribs.style.matchAll(/(?:^|\s|;)((?:background-)?color): ([^;]+)/g)];
+                        for (let i = 0; i < matches.length; i++) {
+                            const match = matches[i];
+                            const [prop, value] = match.slice(1, 3);
+                            console.log('match', match, prop, value);
+                            let mappedCode = this.code_map[value];
+
                             if (!mappedCode) {
                                 // If we didn't have an IRC code for this colour, convert the
                                 // colour to its hex form and check if we have that instead
-                                let m = codeLookup.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+                                let m = value.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
                                 if (m) {
                                     let hex = Colours.rgb2hex({
                                         r: parseInt(m[1], 10),
@@ -264,11 +307,18 @@ export default Vue.component('irc-input', {
                             }
 
                             if (mappedCode) {
-                                textValue += '\x03' + mappedCode;
-                                addToggle('\x03' + mappedCode);
+                                const codeIndex = prop === 'color' ? 0 : 1;
+                                colourCodes[codeIndex] = ('0' + mappedCode).slice(-2);
                             }
                         }
 
+                        if (colourCodes.length && colourCodes[0]) {
+                            // Make sure all colour codes have leading 0 (if needed)
+                            colourCodes.forEach((val, idx) => (colourCodes[idx] = ('0' + val).slice(-2)));
+
+                            textValue += '\x03' + colourCodes.join(',');
+                            addToggle('\x03');
+                        }
                         if (attribs.style.indexOf('bold') > -1) {
                             textValue += '\x02';
                             addToggle('\x02');
@@ -280,6 +330,11 @@ export default Vue.component('irc-input', {
                         if (attribs.style.indexOf('underline') > -1) {
                             textValue += '\x1f';
                             addToggle('\x1f');
+                        }
+
+                        if (attribs.style.indexOf('line-through') > -1) {
+                            textValue += '\x1e';
+                            addToggle('\x1e');
                         }
 
                     // Welcome to the IE/Edge sucks section, time to do crazy things
@@ -396,6 +451,10 @@ export default Vue.component('irc-input', {
         },
         toggleUnderline() {
             document.execCommand('underline', false, null);
+            this.updateValueProps();
+        },
+        toggleStrikethrough() {
+            document.execCommand('strikeThrough', false, null);
             this.updateValueProps();
         },
         addImg(alt, url, props) {

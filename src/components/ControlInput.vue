@@ -99,7 +99,7 @@
                             class="kiwi-controlinput-button"
                             @click.prevent="onToolClickTextStyle"
                         >
-                            <i class="fa fa-adjust" aria-hidden="true" />
+                            <i class="fa fa-paint-brush" aria-hidden="true" />
                         </div>
                         <div
                             v-if="shouldShowEmojiPicker"

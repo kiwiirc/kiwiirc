@@ -215,6 +215,23 @@ tokens['\x1F'] = {
     },
 };
 
+// Strikethrough
+tokens['\x1E'] = {
+    token: '\x1E',
+    extra: false,
+    fn: function parseToken(inp, pos, block, prevBlock, openToks) {
+        if (openToks[this.token]) {
+            delete block.styles.strikethrough;
+            openToks[this.token] = null;
+        } else {
+            openToks[this.token] = true;
+            block.styles.strikethrough = true;
+        }
+
+        return null;
+    },
+};
+
 // Clear all styles
 tokens['\x0F'] = {
     token: '\x0F',
@@ -232,35 +249,16 @@ tokens['\x03'] = {
     token: '\x03',
     extra: false,
     fn: function parseToken(inp, pos, block, prevBlock, openToks) {
-        let colours = {
-            0: 'white',
-            1: 'black',
-            2: 'blue',
-            3: 'green',
-            4: 'light-red',
-            5: 'brown',
-            6: 'purple',
-            7: 'orange',
-            8: 'yellow',
-            9: 'light-green',
-            10: 'cyan',
-            11: 'light-cyan',
-            12: 'light-blue',
-            13: 'pink',
-            14: 'grey',
-            15: 'light-grey',
-        };
-
         let colourMatchRegexp = /^\x03(([0-9][0-9]?)(,([0-9][0-9]?))?)/;
         let match = colourMatchRegexp.exec(inp.substr(pos, 6));
         if (match) {
             // fg colour = 2, bg colour = 4
-            let fgColour = colours[parseInt(match[2], 10)];
-            let bgColour = colours[parseInt(match[4], 10)];
-            if (typeof fgColour !== 'undefined') {
+            let fgColour = parseInt(match[2], 10);
+            let bgColour = parseInt(match[4], 10);
+            if (fgColour >= 0 && fgColour <= 98) {
                 block.styles.color = fgColour;
             }
-            if (typeof bgColour !== 'undefined') {
+            if (bgColour >= 0 && bgColour <= 98) {
                 block.styles.background = bgColour;
             }
 
