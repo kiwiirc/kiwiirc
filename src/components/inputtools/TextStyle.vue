@@ -197,17 +197,7 @@ export default {
         },
         toggleStyle(style) {
             const inputStyle = this.ircinput.style;
-            inputStyle[style] = !inputStyle[style];
-        },
-        clearStyles() {
-            Object.assign(this.ircinput.style, {
-                fgColour: null,
-                bgColour: null,
-                bold: false,
-                italic: false,
-                underline: false,
-                strikethrough: false,
-            });
+            this.ircinput.setStyle({ [style]: !inputStyle[style] });
         },
         onColourClick(event) {
             let colour = window.getComputedStyle(event.target, null)
@@ -228,22 +218,21 @@ export default {
             const styleKey = this.fgColour ? 'fgColour' : 'bgColour';
 
             if (inputStyles[styleKey] && inputStyles[styleKey].hex === colour) {
-                inputStyles[styleKey] = null;
+                this.ircinput.setStyle({
+                    [styleKey]: null,
+                });
             } else {
-                inputStyles[styleKey] = {
-                    hex: colour,
-                    code,
-                };
+                this.ircinput.setStyle({
+                    [styleKey]: {
+                        hex: colour,
+                        code,
+                    },
+                });
             }
         },
-        onStyleClick() {
-
-        },
         onResetClick() {
+            this.ircinput.clearStyles();
             this.ircinput.resetStyles();
-        },
-        leadingZero(num) {
-            return ('0' + num).slice(-2);
         },
     },
 };

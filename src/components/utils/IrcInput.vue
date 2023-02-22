@@ -7,7 +7,7 @@
             contenteditable="true"
             role="textbox"
             spellcheck="true"
-            @keypress="onKeyPress($event); updateValueProps(); $emit('keypress', $event)"
+            @keypress="updateStyles($event); updateValueProps(); $emit('keypress', $event)"
             @keydown="updateValueProps(); $emit('keydown', $event)"
             @keyup="updateValueProps(); $emit('keyup', $event)"
             @textInput="updateValueProps(); onTextInput($event); $emit('textInput', $event)"
@@ -50,12 +50,17 @@ export default Vue.component('irc-input', {
                 underline: false,
                 strikethrough: false,
             },
+            styleChanged: false,
         };
     },
     computed: {
         editor() {
             return this.$refs.editor;
         },
+    },
+    created() {
+        this.clearStyles();
+        this.styleChanged = false;
     },
     mounted() {
         this.resetStyles();
@@ -71,20 +76,27 @@ export default Vue.component('irc-input', {
                 this.setCurrentWord(event.data.trim());
             }
         },
-        onKeyPress() {
-            document.execCommand('styleWithCSS', false, true);
-            document.execCommand('removeFormat', false, null);
+        updateStyles() {
+            if (!this.styleChanged) {
+                return;
+            }
 
-            console.log('onKeyDown', document.queryCommandState('bold'));
+            document.execCommand('styleWithCSS', false, true);
+
+            // console.log('onKeyDown', JSON.stringify(this.style, null, 4));
 
             if (this.style.fgColour) {
                 document.execCommand('foreColor', false, this.style.fgColour.hex);
                 this.code_map[this.style.fgColour.hex] = this.style.fgColour.code;
+            } else {
+                document.execCommand('foreColor', false, 'inherit');
             }
 
             if (this.style.bgColour) {
                 document.execCommand('backColor', false, this.style.bgColour.hex);
                 this.code_map[this.style.bgColour.hex] = this.style.bgColour.code;
+            } else {
+                document.execCommand('backColor', false, 'inherit');
             }
 
             if (this.style.bold !== document.queryCommandState('bold')) {
@@ -415,6 +427,24 @@ export default Vue.component('irc-input', {
             } else {
                 this.maybeEmitInput();
             }
+        },
+        setStyle(newStyle) {
+            Object.assign(this.style, newStyle);
+            this.styleChanged = true;
+
+            this.focus();
+            const range = window.getSelection().getRangeAt(0);
+            console.log('range', range);
+        },
+        clearStyles() {
+            this.setStyle({
+                fgColour: null,
+                bgColour: null,
+                bold: false,
+                italic: false,
+                underline: false,
+                strikethrough: false,
+            });
         },
         resetStyles() {
             this.focus();
