@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2023-02-21 22:52\n"
+"PO-Revision-Date: 2023-02-22 01:30\n"
 
 #: Start
 msgid "start_button"
@@ -117,15 +117,15 @@ msgstr "Pseudo invalide"
 
 #: Login failed. Please try again or contact support
 msgid "login_failed"
-msgstr "Login failed. Please try again or contact support"
+msgstr "Échec de la connexion. Veuillez réessayer ou contacter le support."
 
 #: You are now logged in as '{{account}}'
 msgid "logged_in"
-msgstr "You are now logged in as '{{account}}'"
+msgstr "Vous êtes maintenant connecté en tant que '{{account}}'"
 
 #: You have been logged out
 msgid "logged_out"
-msgstr "You have been logged out"
+msgstr "Vous avez été déconnecté"
 
 #: Search...
 msgid "do_search"
@@ -549,7 +549,7 @@ msgstr "Charger les messages précédents"
 
 #: Loading previous messages...
 msgid "messages_loading"
-msgstr "Loading previous messages..."
+msgstr "Chargement des messages précédents..."
 
 #: Unread Messages
 msgid "unread_messages"
