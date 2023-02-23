@@ -1,9 +1,9 @@
 <!-- eslint-disable max-len -->
 <template>
-    <div class="kiwi-inputtools-style">
+    <div class="kiwi-inputtools-style" @mousedown.prevent @click.prevent>
         <div class="kiwi-inputtools-sample" :style="sampleStyle">Sample Text</div>
         <div class="kiwi-inputtools-style-top">
-            <div class="kiwi-inputtools-style-grid kiwi-inputtools-style-base" @mousedown.prevent @click.prevent>
+            <div class="kiwi-inputtools-style-grid kiwi-inputtools-style-base">
                 <div
                     v-for="colourCode in Array(16).keys()"
                     :key="'colour'+colourCode"
@@ -13,7 +13,7 @@
                     @click="onColourClick"
                 >&nbsp;</div>
             </div>
-            <div class="kiwi-inputtools-style-grid kiwi-inputtools-style-modifiers" @mousedown.prevent @click.prevent>
+            <div class="kiwi-inputtools-style-grid kiwi-inputtools-style-modifiers">
                 <div
                     class="kiwi-inputtools-style-button"
                     :class="{'kiwi-inputtools-style--disabled': bgColourDisabled}"
@@ -104,8 +104,6 @@
             <div
                 v-if="extColours"
                 class="kiwi-inputtools-style-grid kiwi-inputtools-style-palette"
-                @mousedown.prevent
-                @click.prevent
             >
                 <div
                     v-for="colourCode in extendedColourRange"
@@ -195,9 +193,8 @@ export default {
             }
             this.fgColour = !this.fgColour;
         },
-        toggleStyle(style) {
-            const inputStyle = this.ircinput.style;
-            this.ircinput.setStyle({ [style]: !inputStyle[style] });
+        toggleStyle(key) {
+            this.ircinput.setStyle({ [key]: !this.ircinput.style[key] });
         },
         onColourClick(event) {
             let colour = window.getComputedStyle(event.target, null)
@@ -214,21 +211,14 @@ export default {
             }
 
             const code = event.target.dataset.code;
-            const inputStyles = this.ircinput.style;
             const styleKey = this.fgColour ? 'fgColour' : 'bgColour';
 
-            if (inputStyles[styleKey] && inputStyles[styleKey].hex === colour) {
-                this.ircinput.setStyle({
-                    [styleKey]: null,
-                });
-            } else {
-                this.ircinput.setStyle({
-                    [styleKey]: {
-                        hex: colour,
-                        code,
-                    },
-                });
-            }
+            this.ircinput.setStyle({
+                [styleKey]: {
+                    hex: colour,
+                    code,
+                },
+            });
         },
         onResetClick() {
             this.ircinput.clearStyles();

@@ -59,7 +59,6 @@
                         @input="inputUpdate"
                         @keydown="inputKeyDown($event)"
                         @keyup="inputKeyUp($event)"
-                        @click="closeToolsPlugins"
                         @focus="focusChanged"
                         @blur="focusChanged"
                     />
@@ -85,7 +84,8 @@
                     v-if="!shouldShowToolsInline"
                     class="kiwi-controlinput-tools-expand kiwi-controlinput-button"
                     :class="{'kiwi-controlinput-tools-expand--closed': !showPlugins}"
-                    @click="showPlugins=!showPlugins"
+                    @mousedown.prevent
+                    @click.prevent="showPlugins=!showPlugins"
                 >
                     <i class="fa fa-bars" aria-hidden="true" />
                 </div>
@@ -97,6 +97,7 @@
                         <div
                             v-if="shouldShowColorPicker"
                             class="kiwi-controlinput-button"
+                            @mousedown.prevent
                             @click.prevent="onToolClickTextStyle"
                         >
                             <i class="fa fa-paint-brush" aria-hidden="true" />
@@ -104,6 +105,7 @@
                         <div
                             v-if="shouldShowEmojiPicker"
                             class="kiwi-controlinput-button"
+                            @mousedown.prevent
                             @click.prevent="onToolClickEmoji"
                         >
                             <i class="fa fa-smile-o" aria-hidden="true" />
@@ -332,6 +334,12 @@ export default {
         this.listen(this.$state, 'input.tool', (toolComponent) => {
             this.toggleInputTool(toolComponent);
         });
+
+        this.listen(this.$state, 'document.clicked', (ev) => {
+            if (!this.$el.contains(ev.target)) {
+                this.closeToolsPlugins();
+            }
+        });
     },
     mounted() {
         this.inputRestore();
@@ -369,6 +377,8 @@ export default {
         },
         onToolClickTextStyle() {
             this.toggleInputTool(ToolTextStyle);
+            // this.$nextTick(() => )
+            // this.$refs.input.focus();
         },
         onToolClickEmoji() {
             this.toggleInputTool(ToolEmoji);
@@ -392,13 +402,13 @@ export default {
             }
         },
         toggleBold() {
-            this.$refs.input.toggleBold();
+            this.$refs.input.setStyle({ bold: !this.$refs.input.style.bold });
         },
         toggleItalic() {
-            this.$refs.input.toggleItalic();
+            this.$refs.input.setStyle({ italic: !this.$refs.input.style.italic });
         },
         toggleUnderline() {
-            this.$refs.input.toggleUnderline();
+            this.$refs.input.setStyle({ underline: !this.$refs.input.style.underline });
         },
         onAutocompleteCancel() {
             this.autocomplete_open = false;
