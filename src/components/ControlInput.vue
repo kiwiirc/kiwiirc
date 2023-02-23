@@ -613,6 +613,9 @@ export default {
             this.historyAdd(rawInput);
 
             this.$refs.input.reset('', this.keep_focus);
+            if (this.$state.setting('resetColorPickerOnSend')) {
+                this.$refs.input.clearStyles();
+            }
 
             this.stopTyping(false);
         },

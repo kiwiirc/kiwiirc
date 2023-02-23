@@ -186,6 +186,9 @@ export default {
             return _.range(16, 99);
         },
     },
+    created() {
+        this.extColours = this.$state.setting('showColorPickerExtended');
+    },
     methods: {
         toggleColour() {
             if (this.bgColourDisabled) {
