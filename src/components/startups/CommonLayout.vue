@@ -18,6 +18,9 @@
                 v-html="infoContent"
             />
         </div>
+        <div class="kiwi-fontawesome-preload">
+            <i class="fa fa-spinner" aria-hidden="true" />
+        </div>
     </div>
 </template>
 
@@ -108,6 +111,14 @@ export default {
     padding: 2em;
     border-radius: 5px;
     line-height: 1.6em;
+}
+
+.kiwi-fontawesome-preload {
+    position: absolute;
+    top: 0;
+    left: -50px;
+    width: 1px;
+    height: 1px;
 }
 
 @media (min-width: 850px) {
