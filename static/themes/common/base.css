@@ -204,6 +204,35 @@
     background: #f6f6f6;
 }
 
+/* ---- Input Tools ( TextStyle ) ---- */
+
+.kiwi-inputtools-style {
+    border-color: var(--comp-border);
+    background-color: var(--brand-default-bg);
+}
+
+.kiwi-inputtools-style-sample,
+.kiwi-inputtools-style-button {
+    border-color: var(--comp-border);
+}
+
+.kiwi-inputtools-style-expand {
+    background-color: var(--brand-primary);
+}
+
+.kiwi-inputtools-style-reset {
+    background-color: var(--brand-default-fg);
+}
+
+.kiwi-inputtools-style-button path {
+    fill: var(--brand-default-fg);
+}
+
+.kiwi-inputtools-style-expand path,
+.kiwi-inputtools-style-reset path {
+    fill: var(--brand-default-bg);
+}
+
 /* ---- Self User ( SelfUser.vue ) ---- */
 .kiwi-controlinput-selfuser {
     background: var(--brand-default-bg);

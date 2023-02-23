@@ -1,7 +1,7 @@
 <!-- eslint-disable max-len -->
 <template>
     <div class="kiwi-inputtools-style" @mousedown.prevent @click.prevent>
-        <div class="kiwi-inputtools-sample" :style="sampleStyle">Sample Text</div>
+        <div class="kiwi-inputtools-style-sample" :style="sampleStyle">Sample Text</div>
         <div class="kiwi-inputtools-style-top">
             <div class="kiwi-inputtools-style-grid kiwi-inputtools-style-base">
                 <div
@@ -235,18 +235,17 @@ export default {
     bottom: 0;
     right: 0;
     padding: 8px;
-    border: 1px solid var(--comp-border);
+    border: 1px solid;
     border-bottom: 0;
     border-radius: 10px 10px 0 0;
     flex-direction: column;
-    background-color: var(--brand-default-bg);
     gap: 4px;
 }
 
-.kiwi-inputtools-sample {
+.kiwi-inputtools-style-sample {
     width: 100%;
     padding: 2px;
-    border: 1px solid var(--comp-border);
+    border: 1px solid;
     box-sizing: border-box;
     text-align: center;
     user-select: none;
@@ -282,7 +281,7 @@ export default {
     height: 100%;
     width: 100%;
     cursor: pointer;
-    border: 2px solid var(--comp-border);
+    border: 2px solid;
     box-sizing: border-box;
     padding: 2px;
 
@@ -293,21 +292,8 @@ export default {
     }
 }
 
-.kiwi-inputtools-style-expand {
-    background: var(--brand-primary);
-
-    path {
-        fill: var(--brand-default-bg);
-    }
-}
-
 .kiwi-inputtools-style-reset {
-    background: var(--brand-default-fg);
     padding: 4px;
-
-    path {
-        fill: var(--brand-default-bg);
-    }
 }
 
 .kiwi-inputtools-style--disabled {
