@@ -7,7 +7,8 @@
             contenteditable="true"
             role="textbox"
             spellcheck="true"
-            @keypress="updateStyles($event); updateValueProps(); $emit('keypress', $event)"
+            @compositionstart="updateStyles"
+            @keypress="updateStyles(); updateValueProps(); $emit('keypress', $event)"
             @keydown="updateValueProps(); $emit('keydown', $event)"
             @keyup="updateValueProps(); $emit('keyup', $event)"
             @textInput="updateValueProps(); onTextInput($event); $emit('textInput', $event)"
@@ -447,14 +448,22 @@ export default Vue.component('irc-input', {
                 document.execCommand('foreColor', false, this.style.fgColour.hex);
                 this.code_map[this.style.fgColour.hex] = this.style.fgColour.code;
             } else {
-                document.execCommand('foreColor', false, 'inherit');
+                const selection = document.getSelection();
+                const parent = selection.anchorNode.parentElement;
+                if (parent.nodeName === 'SPAN' && parent.style.color) {
+                    document.execCommand('foreColor', false, 'inherit');
+                }
             }
 
             if (this.style.bgColour) {
                 document.execCommand('backColor', false, this.style.bgColour.hex);
                 this.code_map[this.style.bgColour.hex] = this.style.bgColour.code;
             } else {
-                document.execCommand('backColor', false, 'inherit');
+                const selection = document.getSelection();
+                const parent = selection.anchorNode.parentElement;
+                if (parent.nodeName === 'SPAN' && parent.style.backgroundColor) {
+                    document.execCommand('backColor', false, 'inherit');
+                }
             }
 
             if (this.style.bold !== document.queryCommandState('bold')) {
