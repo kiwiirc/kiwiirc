@@ -441,6 +441,11 @@ export default Vue.component('irc-input', {
                 this.insertText('\u200B');
             }
         },
+        toggleStyle(styleKey) {
+            this.setStyle({
+                [styleKey]: !this.style[styleKey],
+            });
+        },
         clearStyles(preventUpdate) {
             this.setStyle({
                 fgColour: null,

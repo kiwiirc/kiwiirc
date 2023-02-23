@@ -402,13 +402,13 @@ export default {
             }
         },
         toggleBold() {
-            this.$refs.input.setStyle({ bold: !this.$refs.input.style.bold });
+            this.$refs.input.toggleStyle('bold');
         },
         toggleItalic() {
-            this.$refs.input.setStyle({ italic: !this.$refs.input.style.italic });
+            this.$refs.input.toggleStyle('italic');
         },
         toggleUnderline() {
-            this.$refs.input.setStyle({ underline: !this.$refs.input.style.underline });
+            this.$refs.input.toggleStyle('underline');
         },
         onAutocompleteCancel() {
             this.autocomplete_open = false;
