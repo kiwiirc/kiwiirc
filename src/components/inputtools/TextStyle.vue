@@ -1,7 +1,9 @@
 <!-- eslint-disable max-len -->
 <template>
     <div class="kiwi-inputtools-style" @mousedown.prevent @click.prevent>
-        <div class="kiwi-inputtools-style-sample" :style="sampleStyle">Sample Text</div>
+        <div class="kiwi-inputtools-style-sample" :style="sampleStyle">
+            {{ $t('input_style_sample') }}
+        </div>
         <div class="kiwi-inputtools-style-top">
             <div class="kiwi-inputtools-style-grid kiwi-inputtools-style-base">
                 <div
@@ -29,7 +31,7 @@
 
                 <div
                     class="kiwi-inputtools-style-button"
-                    title="Bold"
+                    :title="$t('input_style_bold')"
                     @click="toggleStyle('bold')"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -39,7 +41,7 @@
                 </div>
                 <div
                     class="kiwi-inputtools-style-button"
-                    title="Italic"
+                    :title="$t('input_style_italic')"
                     @click="toggleStyle('italic')"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -49,7 +51,7 @@
                 </div>
                 <div
                     class="kiwi-inputtools-style-button"
-                    title="Underline"
+                    :title="$t('input_style_underline')"
                     @click="toggleStyle('underline')"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -59,7 +61,7 @@
                 </div>
                 <div
                     class="kiwi-inputtools-style-button"
-                    title="Strikethrough"
+                    :title="$t('input_style_strikethrough')"
                     @click="toggleStyle('strikethrough')"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -69,7 +71,7 @@
                 </div>
                 <div
                     class="kiwi-inputtools-style-button"
-                    title="Clear Current Styles"
+                    :title="$t('input_style_clear')"
                     @click="ircinput.clearStyles"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -79,7 +81,7 @@
                 </div>
                 <div
                     class="kiwi-inputtools-style-button kiwi-inputtools-style-reset"
-                    title="Remove All Styles"
+                    :title="$t('input_style_remove')"
                     @click="ircinput.resetStyles"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -89,7 +91,7 @@
                 </div>
                 <div
                     class="kiwi-inputtools-style-button kiwi-inputtools-style-expand"
-                    :title="extColours ? 'Hide Extended Colours' : 'Show Extended Colours'"
+                    :title="$t(extColours ? 'input_style_hide' : 'input_style_show')"
                     @click="extColours = !extColours"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -123,6 +125,7 @@
 
 import _ from 'lodash';
 import * as Colours from '@/helpers/Colours';
+import * as TextFormatting from '@/helpers/TextFormatting';
 import TransitionExpand from '../utils/TransitionExpand.vue';
 
 export default {
@@ -175,12 +178,13 @@ export default {
         },
         toggleColourTitle() {
             if (this.bgColourDisabled) {
-                return 'Set foreground colour first';
+                return TextFormatting.t('input_style_first');
             }
 
-            return this.fgColour ?
-                'Set background colour' :
-                'Set foreground colour';
+            const key = this.fgColour ?
+                'input_style_back' :
+                'input_style_fore';
+            return TextFormatting.t(key);
         },
         extendedColourRange() {
             return _.range(16, 99);
@@ -342,4 +346,5 @@ export default {
 .kiwi-controlinput--show-tools--inline .kiwi-inputtools-style {
     right: 20px;
 }
+
 </style>
