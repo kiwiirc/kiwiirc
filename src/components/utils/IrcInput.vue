@@ -7,7 +7,7 @@
             contenteditable="true"
             role="textbox"
             spellcheck="true"
-            @compositionstart="updateStyles"
+            @compositionstart="onCompositionStart"
             @keypress="updateStyles(); updateValueProps(); $emit('keypress', $event)"
             @keydown="updateValueProps(); $emit('keydown', $event)"
             @keyup="updateValueProps(); $emit('keyup', $event)"
@@ -42,7 +42,6 @@ export default Vue.component('irc-input', {
             text_value: '',
             current_el: null,
             current_el_pos: 0,
-            default_colour: null,
             code_map: Object.create(null),
             style: {
                 fgColour: null,
@@ -53,6 +52,7 @@ export default Vue.component('irc-input', {
                 strikethrough: false,
             },
             mouseDown: false,
+            isCompositionKeyboard: false,
         };
     },
     computed: {
@@ -68,6 +68,10 @@ export default Vue.component('irc-input', {
         this.listen(document, 'mouseup', this.checkSelection);
     },
     methods: {
+        onCompositionStart() {
+            this.isCompositionKeyboard = true;
+            this.updateStyles();
+        },
         onTextInput(event) {
             // Mobile devices trigger a textInput event for things such as autocompletion
             // and suggested words. Unfortunately they end with a return character which
@@ -236,7 +240,7 @@ export default Vue.component('irc-input', {
         },
         buildIrcText() {
             this.updateSpacing();
-            let source = this.$refs.editor.innerHTML;
+            let source = this.$refs.editor.innerHTML.replace(/\u200B/g, '');
             let textValue = '';
 
             // Toggles are IRC style and colour codes that should be reset at the end of
@@ -420,9 +424,21 @@ export default Vue.component('irc-input', {
 
             Object.assign(this.style, newStyle);
 
-            const hasSelected = !!document.getSelection().toString().length;
-            if (hasSelected && !preventUpdate) {
+            if (preventUpdate) {
+                return;
+            }
+
+            const selection = document.getSelection();
+            const range = selection.getRangeAt(0);
+            const container = range.commonAncestorContainer;
+            const charBeforeCursor = container.textContent.charAt(range.startOffset - 1);
+            const hasSelected = !!selection.toString().length;
+
+            if (hasSelected) {
                 this.updateStyles();
+            } else if (this.isCompositionKeyboard && charBeforeCursor !== '\u200B') {
+                // Hacky way to force composition keyboards to break up styles
+                this.insertText('\u200B');
             }
         },
         clearStyles(preventUpdate) {
@@ -437,9 +453,12 @@ export default Vue.component('irc-input', {
         },
         resetStyles() {
             this.focus();
+            this.clearStyles();
             document.execCommand('styleWithCSS', false, true);
             document.execCommand('selectAll', false, null);
             document.execCommand('removeFormat', false, null);
+            document.getSelection().collapseToEnd();
+            this.updateValueProps();
         },
         updateStyles() {
             document.execCommand('styleWithCSS', false, true);

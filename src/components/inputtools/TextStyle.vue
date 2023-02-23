@@ -70,7 +70,7 @@
                 <div
                     class="kiwi-inputtools-style-button"
                     title="Clear Current Styles"
-                    @click="clearStyles()"
+                    @click="ircinput.clearStyles"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -80,7 +80,7 @@
                 <div
                     class="kiwi-inputtools-style-button kiwi-inputtools-style-reset"
                     title="Remove All Styles"
-                    @click="onResetClick"
+                    @click="ircinput.resetStyles"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -222,10 +222,6 @@ export default {
                     code,
                 },
             });
-        },
-        onResetClick() {
-            this.ircinput.clearStyles();
-            this.ircinput.resetStyles();
         },
     },
 };
