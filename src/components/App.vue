@@ -58,9 +58,6 @@
                 <component :is="activeComponent" v-else v-bind="activeComponentProps" />
             </div>
         </template>
-        <div class="kiwi-fontawesome-preload">
-            <i class="fa fa-spinner" aria-hidden="true" />
-        </div>
     </div>
 </template>
 
@@ -493,14 +490,6 @@ body {
 
 .kiwi-controlinput {
     z-index: 2;
-}
-
-.kiwi-fontawesome-preload {
-    position: absolute;
-    top: 0;
-    left: -50px;
-    width: 1px;
-    height: 1px;
 }
 
 /* Small screen will cause the statebrowser to act as a drawer */
