@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const execSync = require('child_process').execSync;
 const DefinePlugin = require('webpack').DefinePlugin;
+const ProvidePlugin = require('webpack').ProvidePlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ConvertLocalesPlugin = require('./build/webpack/convert-locales');
@@ -49,6 +50,9 @@ module.exports = {
             new DefinePlugin({
                 __VERSION__: JSON.stringify(pkg.version),
                 __COMMITHASH__: JSON.stringify(getCommitHash()),
+            }),
+            new ProvidePlugin({
+                Buffer: ['buffer', 'Buffer'],
             }),
             new StyleLintPlugin({
                 files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
