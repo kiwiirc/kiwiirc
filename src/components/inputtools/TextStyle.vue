@@ -78,8 +78,8 @@
                 <div
                     class="kiwi-inputtools-style-button"
                     :title="$t('input_style_clear')"
-                    @click="ircinput.clearStyles"
-                    @touchend="ircinput.clearStyles"
+                    @click="ircinput.clearStyles()"
+                    @touchend="ircinput.clearStyles()"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -89,8 +89,8 @@
                 <div
                     class="kiwi-inputtools-style-button kiwi-inputtools-style-reset"
                     :title="$t('input_style_remove')"
-                    @click="ircinput.resetStyles"
-                    @touchend="ircinput.resetStyles"
+                    @click="ircinput.resetStyles()"
+                    @touchend="ircinput.resetStyles()"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -100,8 +100,8 @@
                 <div
                     class="kiwi-inputtools-style-button kiwi-inputtools-style-expand"
                     :title="$t(extColours ? 'input_style_hide' : 'input_style_show')"
-                    @click="toggleExtended"
-                    @touchend="toggleExtended"
+                    @click="toggleExtended()"
+                    @touchend="toggleExtended()"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -353,6 +353,11 @@ export default {
         .kiwi-inputtools-style-reset {
             padding: clamp(2px, calc(var(--button-size) * 0.1213), 4px);
         }
+    }
+
+    .kiwi-controlinput--selection .kiwi-inputtools-style {
+        bottom: 54px;
+        border: 1px solid;
     }
 }
 
