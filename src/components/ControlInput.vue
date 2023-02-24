@@ -85,6 +85,7 @@
                     class="kiwi-controlinput-tools-expand kiwi-controlinput-button"
                     :class="{'kiwi-controlinput-tools-expand--closed': !showPlugins}"
                     @mousedown.prevent
+                    @touchstart.prevent
                     @click.prevent="showPlugins=!showPlugins"
                 >
                     <i class="fa fa-bars" aria-hidden="true" />
@@ -98,6 +99,7 @@
                             v-if="shouldShowColorPicker"
                             class="kiwi-controlinput-button"
                             @mousedown.prevent
+                            @touchstart.prevent
                             @click.prevent="onToolClickTextStyle"
                         >
                             <i class="fa fa-paint-brush" aria-hidden="true" />
@@ -106,6 +108,7 @@
                             v-if="shouldShowEmojiPicker"
                             class="kiwi-controlinput-button"
                             @mousedown.prevent
+                            @touchstart.prevent
                             @click.prevent="onToolClickEmoji"
                         >
                             <i class="fa fa-smile-o" aria-hidden="true" />
