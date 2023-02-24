@@ -1,6 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
-    <div class="kiwi-inputtools-style" @mousedown.prevent @click.prevent>
+    <div class="kiwi-inputtools-style" @mousedown.prevent @click.prevent @touchstart.prevent>
         <div class="kiwi-inputtools-style-sample" :style="sampleStyle">
             {{ $t('input_style_sample') }}
         </div>
@@ -13,6 +13,7 @@
                     :class="'irc-bg-colour-' + colourCode"
                     :data-code="colourCode"
                     @click="onColourClick"
+                    @touchend="onColourClick"
                 >&nbsp;</div>
             </div>
             <div class="kiwi-inputtools-style-grid kiwi-inputtools-style-modifiers">
@@ -21,6 +22,7 @@
                     :class="{'kiwi-inputtools-style--disabled': bgColourDisabled}"
                     :title="toggleColourTitle"
                     @click="toggleColour"
+                    @touchend="toggleColour"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -33,6 +35,7 @@
                     class="kiwi-inputtools-style-button"
                     :title="$t('input_style_bold')"
                     @click="toggleStyle('bold')"
+                    @touchend="toggleStyle('bold')"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -43,6 +46,7 @@
                     class="kiwi-inputtools-style-button"
                     :title="$t('input_style_italic')"
                     @click="toggleStyle('italic')"
+                    @touchend="toggleStyle('italic')"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -53,6 +57,7 @@
                     class="kiwi-inputtools-style-button"
                     :title="$t('input_style_underline')"
                     @click="toggleStyle('underline')"
+                    @touchend="toggleStyle('underline')"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -63,6 +68,7 @@
                     class="kiwi-inputtools-style-button"
                     :title="$t('input_style_strikethrough')"
                     @click="toggleStyle('strikethrough')"
+                    @touchend="toggleStyle('strikethrough')"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -73,6 +79,7 @@
                     class="kiwi-inputtools-style-button"
                     :title="$t('input_style_clear')"
                     @click="ircinput.clearStyles"
+                    @touchend="ircinput.clearStyles"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -83,6 +90,7 @@
                     class="kiwi-inputtools-style-button kiwi-inputtools-style-reset"
                     :title="$t('input_style_remove')"
                     @click="ircinput.resetStyles"
+                    @touchend="ircinput.resetStyles"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -92,7 +100,8 @@
                 <div
                     class="kiwi-inputtools-style-button kiwi-inputtools-style-expand"
                     :title="$t(extColours ? 'input_style_hide' : 'input_style_show')"
-                    @click="extColours = !extColours"
+                    @click="toggleExtended"
+                    @touchend="toggleExtended"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                         <!-- https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -114,6 +123,7 @@
                     :class="'irc-bg-colour-' + colourCode"
                     :data-code="colourCode"
                     @click="onColourClick"
+                    @touchend="onColourClick"
                 >&nbsp;</div>
             </div>
         </transition-expand>
@@ -202,6 +212,9 @@ export default {
         },
         toggleStyle(key) {
             this.ircinput.setStyle({ [key]: !this.ircinput.style[key] });
+        },
+        toggleExtended() {
+            this.extColours = !this.extColours;
         },
         onColourClick(event) {
             let colour = window.getComputedStyle(event.target, null)

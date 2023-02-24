@@ -52,7 +52,6 @@ export default Vue.component('irc-input', {
                 strikethrough: false,
             },
             mouseDown: false,
-            isCompositionKeyboard: false,
         };
     },
     computed: {
@@ -68,8 +67,10 @@ export default Vue.component('irc-input', {
         this.listen(document, 'mouseup', this.checkSelection);
     },
     methods: {
-        onCompositionStart() {
-            this.isCompositionKeyboard = true;
+        onCompositionStart(event) {
+            if (event.data) {
+                return;
+            }
             this.updateStyles();
         },
         onTextInput(event) {
@@ -240,7 +241,7 @@ export default Vue.component('irc-input', {
         },
         buildIrcText() {
             this.updateSpacing();
-            let source = this.$refs.editor.innerHTML.replace(/\u200B/g, '');
+            let source = this.$refs.editor.innerHTML;
             let textValue = '';
 
             // Toggles are IRC style and colour codes that should be reset at the end of
@@ -424,21 +425,9 @@ export default Vue.component('irc-input', {
 
             Object.assign(this.style, newStyle);
 
-            if (preventUpdate) {
-                return;
-            }
-
-            const selection = document.getSelection();
-            const range = selection.getRangeAt(0);
-            const container = range.commonAncestorContainer;
-            const charBeforeCursor = container.textContent.charAt(range.startOffset - 1);
-            const hasSelected = !!selection.toString().length;
-
-            if (hasSelected) {
+            const hasSelected = !!document.getSelection().toString().length;
+            if (hasSelected && !preventUpdate) {
                 this.updateStyles();
-            } else if (this.isCompositionKeyboard && charBeforeCursor !== '\u200B') {
-                // Hacky way to force composition keyboards to break up styles
-                this.insertText('\u200B');
             }
         },
         toggleStyle(styleKey) {
