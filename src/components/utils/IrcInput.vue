@@ -281,8 +281,8 @@ export default Vue.component('irc-input', {
                             }
 
                             if (mappedCode) {
-                                const codeIndex = prop === 'color' ? 0 : 1;
-                                colourCodes[codeIndex] = ('0' + mappedCode).slice(-2);
+                                const codeIndex = (prop === 'color') ? 0 : 1;
+                                colourCodes[codeIndex] = mappedCode;
                             }
                         }
 
