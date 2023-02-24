@@ -380,8 +380,6 @@ export default {
         },
         onToolClickTextStyle() {
             this.toggleInputTool(ToolTextStyle);
-            // this.$nextTick(() => )
-            // this.$refs.input.focus();
         },
         onToolClickEmoji() {
             this.toggleInputTool(ToolEmoji);
