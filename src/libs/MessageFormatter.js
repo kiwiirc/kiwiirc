@@ -249,12 +249,12 @@ tokens['\x03'] = {
     token: '\x03',
     extra: false,
     fn: function parseToken(inp, pos, block, prevBlock, openToks) {
-        let colourMatchRegexp = /^\x03(([0-9][0-9]?)(,([0-9][0-9]?))?)/;
+        let colourMatchRegexp = /^\x03(?:([0-9][0-9]?)(?:,([0-9][0-9]?))?)/;
         let match = colourMatchRegexp.exec(inp.substr(pos, 6));
         if (match) {
-            // fg colour = 2, bg colour = 4
-            let fgColour = parseInt(match[2], 10);
-            let bgColour = parseInt(match[4], 10);
+            // fg colour = 1, bg colour = 2
+            let fgColour = parseInt(match[1], 10);
+            let bgColour = parseInt(match[2], 10);
             if (fgColour >= 0 && fgColour <= 98) {
                 block.styles.color = fgColour;
             }
