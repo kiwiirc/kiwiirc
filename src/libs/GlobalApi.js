@@ -43,6 +43,7 @@ export default class GlobalApi extends EventEmitter {
         this.sideBarPlugins = [];
         this.userboxButtonPlugins = [];
         this.userboxInfoPlugins = [];
+        this.userboxWhoisPlugins = [];
         this.appSettingsPlugins = [];
         this.serverViewPlugins = [];
         this.aboutBufferPlugins = [];
@@ -190,6 +191,9 @@ export default class GlobalApi extends EventEmitter {
             break;
         case 'userbox_info':
             this.userboxInfoPlugins.push(plugin);
+            break;
+        case 'userbox_whois':
+            this.userboxWhoisPlugins.push(plugin);
             break;
         case 'about_buffer':
             this.aboutBufferPlugins.push(plugin);

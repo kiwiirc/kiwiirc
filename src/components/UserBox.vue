@@ -80,7 +80,23 @@
             class="kiwi-userbox-whois"
         >
             <template v-if="whoisLoading">
-                <i class="fa fa-spinner" aria-hidden="true" />
+                <i class="fa fa-spin fa-spinner" aria-hidden="true" />
+            </template>
+            <template v-else-if="pluginUiWhoisElements.length">
+                <component
+                    :is="plugin.component"
+                    v-for="plugin in pluginUiWhoisElements"
+                    :key="plugin.id"
+                    :plugin-props="{
+                        user: user,
+                        userbox: self,
+                    }"
+                    v-bind="plugin.props"
+                    :network="network"
+                    :buffer="buffer"
+                    :user="user"
+                    :sidebar-state="sidebarState"
+                />
             </template>
             <template v-else>
                 <span class="kiwi-userbox-whois-line">
@@ -198,6 +214,7 @@ export default {
             whoisLoading: false,
             pluginUiButtonElements: GlobalApi.singleton().userboxButtonPlugins,
             pluginUiInfoElements: GlobalApi.singleton().userboxInfoPlugins,
+            pluginUiWhoisElements: GlobalApi.singleton().userboxWhoisPlugins,
         };
     },
     computed: {
@@ -612,6 +629,12 @@ export default {
 
 .kiwi-userbox-whois-line {
     display: block;
+}
+
+.kiwi-userbox-whois--loading {
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
 }
 
 .kiwi-userbox-ignoreuser {
