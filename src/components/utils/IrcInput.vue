@@ -263,7 +263,6 @@ export default Vue.component('irc-input', {
                         for (let i = 0; i < matches.length; i++) {
                             const match = matches[i];
                             const [prop, value] = match.slice(1, 3);
-                            console.log('match', match, prop, value);
                             let mappedCode = this.code_map[value];
 
                             if (!mappedCode) {
