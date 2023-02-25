@@ -87,6 +87,7 @@
                     @mousedown.prevent
                     @touchstart.prevent
                     @click.prevent="showPlugins=!showPlugins"
+                    @touchend="showPlugins=!showPlugins"
                 >
                     <i class="fa fa-bars" aria-hidden="true" />
                 </div>
@@ -101,6 +102,7 @@
                             @mousedown.prevent
                             @touchstart.prevent
                             @click.prevent="onToolClickTextStyle"
+                            @touchend="onToolClickTextStyle"
                         >
                             <i class="fa fa-paint-brush" aria-hidden="true" />
                         </div>
@@ -110,6 +112,7 @@
                             @mousedown.prevent
                             @touchstart.prevent
                             @click.prevent="onToolClickEmoji"
+                            @touchend="onToolClickEmoji"
                         >
                             <i class="fa fa-smile-o" aria-hidden="true" />
                         </div>
