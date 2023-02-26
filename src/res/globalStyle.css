@@ -189,6 +189,16 @@ select {
     height: 40px;
 }
 
+.kiwi-formatting-spoiler {
+    border: 1px solid var(--brand-default-fg);
+    padding: 1px 4px;
+}
+
+.kiwi-formatting-spoiler:hover {
+    color: inherit;
+    background: inherit;
+}
+
 .kiwi-formatting-extras-quote {
     border: 1px solid #b5b5b5;
     padding: 0 3px;

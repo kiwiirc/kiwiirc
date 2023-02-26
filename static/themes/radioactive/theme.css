@@ -1238,9 +1238,13 @@
     background-color: #9e9e9e;
 }
 
+.kiwi-formatting-spoiler {
+    border: 1px solid #14fdce;
+    text-shadow: initial;
+}
+
 .kiwi-formatting-spoiler:hover {
-    color: inherit;
-    background: inherit;
+    text-shadow: 0 2px 0 rgb(0 0 0 / 50%);
 }
 
 /* IRC COLOURS 0/98 */

@@ -1092,11 +1092,6 @@
     --brand-selected: rgba(0, 0, 255, 0.3);
 }
 
-.kiwi-formatting-spoiler:hover {
-    color: inherit;
-    background: inherit;
-}
-
 /* IRC COLOURS 0/98 */
 .irc-bg-colour-0 { background-color: #fff; }
 .irc-bg-colour-1 { background-color: #000; }
