@@ -1055,6 +1055,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     user-select: none;
     opacity: 0.4;
     border: 2px solid;
+    z-index: 4;
 }
 
 @media screen and (max-width: 700px) {
