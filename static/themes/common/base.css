@@ -1058,6 +1058,7 @@
 }
 
 /* Buffer Key */
+.kiwi-bufferkey input[type="password"],
 .kiwi-bufferkey-button {
     border-color: var(--brand-default-bg);
 }

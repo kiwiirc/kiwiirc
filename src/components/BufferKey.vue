@@ -52,8 +52,7 @@ export default {
     height: 40px;
     padding: 0 10px;
     border-radius: 4px;
-    color: #000;
-    border: none;
+    border: 1px solid;
     width: 320px;
     font-size: 1.2em;
     margin: 0 0 20px 0;
