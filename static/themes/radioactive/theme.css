@@ -458,8 +458,13 @@
 }
 
 /* Message list - Standard messages ( MessageList.vue ) */
-.kiwi-messagelist-seperator > span {
-    background: none;
+.kiwi-messagelist-separator {
+    background: #06351a;
+}
+
+.kiwi-messagelist-separator::before,
+.kiwi-messagelist-separator::after {
+    border-bottom: 2px dashed #090;
 }
 
 .kiwi-messageinfo-urls {

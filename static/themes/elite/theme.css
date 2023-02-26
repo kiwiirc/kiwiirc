@@ -146,8 +146,10 @@
     color: #fff;
 }
 
-.kiwi-header-name {
+.kiwi-header-name,
+.kiwi-header-name-full {
     color: var(--brand-primary);
+    background-color: #3b4850;
 }
 
 .kiwi-statebrowser-network .kiwi-statebrowser-network-header {

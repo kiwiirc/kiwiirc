@@ -2,6 +2,7 @@
     <div
         :key="'messagelist-' + buffer.name"
         class="kiwi-messagelist"
+        :class="{'kiwi-messagelist--typingusers': buffer.setting('share_typing')}"
     >
         <div
             ref="scroller"
@@ -29,7 +30,7 @@
                         <div
                             v-if="filteredMessagesGroupedDay.length > 1 && day.messages.length > 0"
                             :key="'msgdatemarker' + day.dayNum"
-                            class="kiwi-messagelist-seperator"
+                            class="kiwi-messagelist-separator"
                         >
                             <span>{{ (new Date(day.messages[0].time)).toDateString() }}</span>
                         </div>
@@ -38,7 +39,7 @@
                                 <div
                                     v-if="shouldShowUnreadMarker(message)"
                                     :key="'msgunreadmarker' + message.id"
-                                    class="kiwi-messagelist-seperator"
+                                    class="kiwi-messagelist-separator kiwi-messagelist-unreadmarker"
                                 >
                                     <span>{{ $t('unread_messages') }}</span>
                                 </div>
@@ -239,7 +240,11 @@ export default {
             }
 
             this.$nextTick(() => {
-                this.scrollToBottom();
+                if (this.buffer.setting('scroll_to_unread')) {
+                    this.scrollToUnread();
+                } else {
+                    this.scrollToBottom();
+                }
             });
         },
     },
@@ -256,6 +261,12 @@ export default {
                 this.scrollToBottom();
             }
         });
+
+        if (this.buffer.setting('scroll_to_unread')) {
+            this.scrollToUnread();
+        } else {
+            this.scrollToBottom();
+        }
     },
     methods: {
         isTemplateVue(template) {
@@ -303,7 +314,7 @@ export default {
             }
 
             // If the last message has been read, and this message not read
-            if (previous && previous.time < lastRead && current.time > lastRead) {
+            if (previous && previous.time <= lastRead && current.time > lastRead) {
                 return true;
             }
 
@@ -443,6 +454,43 @@ export default {
         },
         scrollToBottom() {
             this.$refs.scroller.scrollTo({ top: 0, behavior: 'smooth' });
+            this.onScrolledDebounced();
+        },
+        scrollToUnread() {
+            if (!this.buffer.last_read) {
+                this.scrollToBottom();
+                return;
+            }
+
+            let idx = 0;
+            for (idx = 0; idx < this.filteredMessages.length; idx++) {
+                let previous = this.filteredMessages[idx - 1];
+                let current = this.filteredMessages[idx];
+
+                if (!current) {
+                    continue;
+                }
+
+                const lastRead = this.buffer.last_read;
+                // If the last message has been read, and this message not read
+                if (previous && previous.time <= lastRead && current.time > lastRead) {
+                    break;
+                }
+            }
+
+            if (idx >= this.filteredMessages.length - 1) {
+                this.scrollToBottom();
+                return;
+            }
+
+            const msg = this.filteredMessages[idx];
+            if (!msg) {
+                this.scrollToBottom();
+                return;
+            }
+
+            this.$nextTick(() => this.maybeScrollToId(msg.id, 'top'));
+            this.onScrolledDebounced();
         },
         maybeScrollToId(id, position = 'middle') {
             let msgEl = this.$refs.scroller.querySelector('.kiwi-messagelist-message[data-message-id="' + id + '"]');
@@ -452,7 +500,8 @@ export default {
 
             let newTop = 0;
             if (position === 'top') {
-                newTop = msgEl.offsetTop;
+                // There maybe a sticky unread marker at the top
+                newTop = msgEl.offsetTop - 24;
             } else if (position === 'bottom') {
                 newTop = Math.floor(
                     msgEl.offsetTop - this.$refs.scroller.offsetHeight + msgEl.offsetHeight
@@ -464,6 +513,7 @@ export default {
             }
 
             this.$refs.scroller.scrollTo({ top: newTop, behavior: 'smooth' });
+            this.onScrolledDebounced();
         },
         getSelectedMessages() {
             let sel = document.getSelection();
@@ -676,9 +726,12 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 
 .kiwi-messagelist {
     box-sizing: border-box;
-    margin-bottom: 25px;
     position: relative;
     overflow: hidden;
+}
+
+.kiwi-messagelist--typingusers {
+    margin-bottom: 25px;
 }
 
 .kiwi-messagelist * {
@@ -808,7 +861,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     padding: 5px;
 }
 
-.kiwi-messagelist-seperator + .kiwi-messagelist-message {
+.kiwi-messagelist-separator + .kiwi-messagelist-message {
     border-top: none;
 }
 
@@ -831,21 +884,34 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     display: none;
 }
 
-.kiwi-messagelist-seperator {
-    text-align: center;
-    display: block;
-    margin: 1em auto;
+.kiwi-messagelist-separator {
+    display: flex;
+    align-items: center;
+    user-select: none;
     position: sticky;
-    top: -1px;
-    z-index: 1;
+    font-size: 0.9em;
+    z-index: 2;
+    top: 0;
+
+    &::before,
+    &::after {
+        flex: 1;
+        content: '';
+        margin: 0 0.5em;
+        border-bottom: 1px solid;
+    }
+
+    &:not(:empty)::before {
+        margin-right: 0.5em;
+    }
+
+    &:not(:empty)::after {
+        margin-left: 0.5em;
+    }
 }
 
-.kiwi-messagelist-seperator > span {
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-    padding: 0 1em;
-    user-select: none;
+.kiwi-messagelist-unreadmarker {
+    z-index: 3;
 }
 
 /** Displaying an emoji in a message */

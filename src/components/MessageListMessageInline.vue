@@ -184,7 +184,7 @@ export default {
 }
 
 // Hide the unread message seperator
-.kiwi-messagelist-message--text .kiwi-messagelist-seperator {
+.kiwi-messagelist-message--text .kiwi-messagelist-separator {
     display: none;
 }
 
