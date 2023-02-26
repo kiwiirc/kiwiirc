@@ -872,7 +872,7 @@ export default {
     bottom: calc(100% + 1px);
     right: 74px;
     left: 0;
-    z-index: 1;
+    z-index: 5;
 }
 
 .kiwi-controlinput-selfuser {
