@@ -1238,6 +1238,10 @@
     background-color: #9e9e9e;
 }
 
+.kiwi-formatting-spoiler:hover {
+    color: inherit;
+    background: inherit;
+}
 
 /* IRC COLOURS 0/98 */
 .irc-bg-colour-0 { background-color: #fff; }

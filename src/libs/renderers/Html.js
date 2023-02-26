@@ -37,6 +37,14 @@ function render(blocks, renderEmoticons) {
             }
         });
 
+        if (
+            block.styles.color &&
+            block.styles.background &&
+            block.styles.color === block.styles.background
+        ) {
+            classes.push('kiwi-formatting-spoiler');
+        }
+
         if (textDecoration.length) {
             style.push('text-decoration:' + textDecoration.join(' '));
         }
