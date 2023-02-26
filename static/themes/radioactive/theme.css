@@ -585,6 +585,10 @@
     border-left-color: #4cff9a;
 }
 
+.kiwi-messagelist-scrolldown {
+    background-color: #031e11;
+}
+
 /* MessageInfo */
 .kiwi-messagelist-message--info-open,
 .kiwi-messagelist-message--authorrepeat.kiwi-messagelist-message--info-open {

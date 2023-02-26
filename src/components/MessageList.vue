@@ -744,6 +744,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    scrollbar-width: thin;
     height: 100%;
 }
 
@@ -1044,7 +1045,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     display: flex;
     position: absolute;
     right: 20px;
-    bottom: 4px;
+    bottom: 10px;
     width: 30px;
     height: 30px;
     border-radius: 25%;

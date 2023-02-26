@@ -872,6 +872,10 @@
     color: var(--brand-error);
 }
 
+.kiwi-messagelist-scrolldown {
+    background-color: var(--brand-default-bg);
+}
+
 /* ---- Modern Layout Styling ---- */
 .kiwi-avatar-inner {
     color: var(--brand-default-bg);
