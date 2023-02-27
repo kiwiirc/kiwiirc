@@ -200,6 +200,14 @@ export default {
             return _.range(16, 99);
         },
     },
+    watch: {
+        'ircinput.style.fgColour'(newColour) {
+            if (!newColour) {
+                this.fgColour = true;
+                this.ircinput.setStyle({ bgColour: null });
+            }
+        },
+    },
     created() {
         this.extColours = this.$state.setting('showColorPickerExtended');
     },
