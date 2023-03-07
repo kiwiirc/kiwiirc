@@ -209,10 +209,16 @@ function createChannelOnConnection(connection, channelId) {
             }
         };
 
-        channel.writeLine = function writeTarget(data) {
+        channel.writeLine = function writeTarget(data, cb) {
             // Buffer the data if the socket has not yet been sent
             if (channel.remoteState >= 1) {
                 connection.ws.send(':' + channelId + ' ' + data);
+            }
+
+            // Websocket.send() does not support callbacks
+            // call the callback in the next tick instead
+            if (cb) {
+                setTimeout(cb, 0);
             }
         };
 
