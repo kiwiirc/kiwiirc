@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2022-08-26 15:42\n"
+"PO-Revision-Date: 2023-02-23 00:28\n"
 
 #: Start
 msgid "start_button"
@@ -114,6 +114,18 @@ msgstr "Accesso in corso..."
 #: Invalid login
 msgid "invalid_login"
 msgstr "Parametri di accesso non validi"
+
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Accesso fallito. Riprovare o contattare il supporto."
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "Accesso effettuato come '{{account}}'"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "Sei stato disconnesso"
 
 #: Search...
 msgid "do_search"
@@ -534,6 +546,10 @@ msgstr "Caricamento di {{url}}..."
 #: Load previous messages
 msgid "messages_load"
 msgstr "Carica messaggi precedenti"
+
+#: Loading previous messages...
+msgid "messages_loading"
+msgstr "Caricamento dei messaggi precedenti..."
 
 #: Unread Messages
 msgid "unread_messages"

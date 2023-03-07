@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2022-11-23 09:03\n"
+"PO-Revision-Date: 2023-02-22 20:22\n"
 
 #: Start
 msgid "start_button"
@@ -114,6 +114,18 @@ msgstr "Po hyhet…"
 #: Invalid login
 msgid "invalid_login"
 msgstr "Kredenciale hyrjeje të pavlefshëm"
+
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Hyrja dështoi. Ju lutemi, riprovoni, ose lidhuni me asistencën"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "Tani keni hyrë si '{{account}}'"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "Keni dalë nga llogaria"
 
 #: Search...
 msgid "do_search"
@@ -534,6 +546,10 @@ msgstr "Po ngarkohet {{url}}…"
 #: Load previous messages
 msgid "messages_load"
 msgstr "Ngarko mesazhe të mëparshëm"
+
+#: Loading previous messages...
+msgid "messages_loading"
+msgstr "Po ngarkohen mesazhe të mëparshëm…"
 
 #: Unread Messages
 msgid "unread_messages"

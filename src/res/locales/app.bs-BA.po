@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2022-08-27 00:33\n"
+"PO-Revision-Date: 2023-02-26 02:51\n"
 
 #: Start
 msgid "start_button"
@@ -114,6 +114,18 @@ msgstr "Prijavljujemo vas..."
 #: Invalid login
 msgid "invalid_login"
 msgstr "Neispravna prijava"
+
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Prijava je neuspješna. Molimo pokušajte ponovo ili kontaktirajte podršku"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "Sada ste prijavljeni kao '{{account}}'"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "Odjavili ste se"
 
 #: Search...
 msgid "do_search"
@@ -534,6 +546,10 @@ msgstr "Učitavanje {{url}}..."
 #: Load previous messages
 msgid "messages_load"
 msgstr "Učitaj prethodne poruke"
+
+#: Loading previous messages...
+msgid "messages_loading"
+msgstr "Učitavanje prijašnjih poruka..."
 
 #: Unread Messages
 msgid "unread_messages"

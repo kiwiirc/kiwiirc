@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2022-08-29 14:42\n"
+"PO-Revision-Date: 2023-03-01 19:35\n"
 
 #: Start
 msgid "start_button"
@@ -114,6 +114,18 @@ msgstr "Oturum açılıyor..."
 #: Invalid login
 msgid "invalid_login"
 msgstr "Geçersiz giriş"
+
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Giriş başarısız. Lütfen tekrar deneyin veya desteğe başvurun"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "'{{account}}' olarak oturum açtınız"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "Çıkış yaptınız"
 
 #: Search...
 msgid "do_search"
@@ -534,6 +546,10 @@ msgstr "{{url}} yükleniyor..."
 #: Load previous messages
 msgid "messages_load"
 msgstr "Önceki mesajları yükle"
+
+#: Loading previous messages...
+msgid "messages_loading"
+msgstr "Önceki mesajlar yükleniyor..."
 
 #: Unread Messages
 msgid "unread_messages"

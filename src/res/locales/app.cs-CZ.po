@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2022-08-26 15:41\n"
+"PO-Revision-Date: 2023-02-21 22:53\n"
 
 #: Start
 msgid "start_button"
@@ -114,6 +114,18 @@ msgstr "Logging in..."
 #: Invalid login
 msgid "invalid_login"
 msgstr "Invalid login"
+
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Login failed. Please try again or contact support"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "You are now logged in as '{{account}}'"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "You have been logged out"
 
 #: Search...
 msgid "do_search"
@@ -534,6 +546,10 @@ msgstr "Loading {{url}}..."
 #: Load previous messages
 msgid "messages_load"
 msgstr "Load previous messages"
+
+#: Loading previous messages...
+msgid "messages_loading"
+msgstr "Loading previous messages..."
 
 #: Unread Messages
 msgid "unread_messages"

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2022-08-26 15:41\n"
+"PO-Revision-Date: 2023-02-22 01:30\n"
 
 #: Start
 msgid "start_button"
@@ -114,6 +114,18 @@ msgstr "Logowanie…"
 #: Invalid login
 msgid "invalid_login"
 msgstr "Błąd logowania"
+
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Logowanie nie powiodło się. Spróbuj ponownie lub skontaktuj się z pomocą techniczną"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "Zalogowano jako '{{account}}'"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "Wylogowano"
 
 #: Search...
 msgid "do_search"
@@ -534,6 +546,10 @@ msgstr "Ładowanie {{url}}…"
 #: Load previous messages
 msgid "messages_load"
 msgstr "Załaduj poprzednie wiadomości"
+
+#: Loading previous messages...
+msgid "messages_loading"
+msgstr "Ładowanie poprzednich wiadomości..."
 
 #: Unread Messages
 msgid "unread_messages"

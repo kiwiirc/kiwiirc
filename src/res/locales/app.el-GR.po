@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2022-08-26 15:42\n"
+"PO-Revision-Date: 2023-02-22 01:30\n"
 
 #: Start
 msgid "start_button"
@@ -114,6 +114,18 @@ msgstr "Γίνεται σύνδεση..."
 #: Invalid login
 msgid "invalid_login"
 msgstr "Εσφαλμένη σύνδεση"
+
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Η σύνδεση απέτυχε. Παρακαλώ προσπαθήστε πάλι ή επικοινωνήστε με την υπηρεσία βοήθειας"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "Έχετε συνδεθεί ως '{{account}}'"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "Έχετε αποσυνδεθεί"
 
 #: Search...
 msgid "do_search"
@@ -473,7 +485,7 @@ msgstr "Είσοδος με πρόσκληση μόνο"
 
 #: Hide this channel from lists
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "Κρύψτε αυτό το κανάλι από της λίστες"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -533,6 +545,10 @@ msgstr "Γίνεται Φόρτωση {{url}}..."
 
 #: Load previous messages
 msgid "messages_load"
+msgstr "Φόρτωση προηγούμενων μηνυμάτων"
+
+#: Loading previous messages...
+msgid "messages_loading"
 msgstr "Φόρτωση προηγούμενων μηνυμάτων"
 
 #: Unread Messages

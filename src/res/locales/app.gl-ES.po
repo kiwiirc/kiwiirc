@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2022-08-29 21:16\n"
+"PO-Revision-Date: 2023-02-22 21:52\n"
 
 #: Start
 msgid "start_button"
@@ -114,6 +114,18 @@ msgstr "Verificando credenciais..."
 #: Invalid login
 msgid "invalid_login"
 msgstr "Credenciais inválidas"
+
+#: Login failed. Please try again or contact support
+msgid "login_failed"
+msgstr "Erro de inicio de sesión. Volve tentalo ou ponche en contacto co servizo de axuda"
+
+#: You are now logged in as '{{account}}'
+msgid "logged_in"
+msgstr "Iniciaches sesión como '{{account}}'"
+
+#: You have been logged out
+msgid "logged_out"
+msgstr "Pechaches a sesión"
 
 #: Search...
 msgid "do_search"
@@ -534,6 +546,10 @@ msgstr "Cargando {{url}}..."
 #: Load previous messages
 msgid "messages_load"
 msgstr "Cargar mensaxes anteriores"
+
+#: Loading previous messages...
+msgid "messages_loading"
+msgstr "Cargando mensaxes anteriores..."
 
 #: Unread Messages
 msgid "unread_messages"
