@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2023-02-21 22:53\n"
+"PO-Revision-Date: 2023-03-09 12:16\n"
 
 #: Start
 msgid "start_button"
@@ -117,15 +117,15 @@ msgstr "Credencials invàlides"
 
 #: Login failed. Please try again or contact support
 msgid "login_failed"
-msgstr "Login failed. Please try again or contact support"
+msgstr "L'autenticació ha fallat. Si us plau intenta novament o contacta amb el servei de suport"
 
 #: You are now logged in as '{{account}}'
 msgid "logged_in"
-msgstr "You are now logged in as '{{account}}'"
+msgstr "Estàs autenticat com a '{{account}}'"
 
 #: You have been logged out
 msgid "logged_out"
-msgstr "You have been logged out"
+msgstr "S'ha tancat la sessió"
 
 #: Search...
 msgid "do_search"
@@ -549,7 +549,7 @@ msgstr "Carregar l'anterior"
 
 #: Loading previous messages...
 msgid "messages_loading"
-msgstr "Loading previous messages..."
+msgstr "Carregant missatges anteriors..."
 
 #: Unread Messages
 msgid "unread_messages"
