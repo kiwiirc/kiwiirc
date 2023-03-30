@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2023-02-21 22:53\n"
+"PO-Revision-Date: 2023-03-30 22:53\n"
 
 #: Start
 msgid "start_button"
@@ -305,7 +305,7 @@ msgstr "צבע את כינויי המשתמשים בהודעות"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "הראה לאחרים שאני מקליד/ה הודעה"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
@@ -485,7 +485,7 @@ msgstr "בהזמנה בלבד"
 
 #: Hide this channel from lists
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "הסתר חדר זה מרשימת החדרים"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -521,7 +521,7 @@ msgstr "Display Topic"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "הגדרות חדר"
 
 #: Join Channel
 msgid "container_join"
@@ -665,11 +665,11 @@ msgstr "הראה כניסות משתמשים"
 
 #: Show when channel topic changes
 msgid "side_topics"
-msgstr "Show when channel topic changes"
+msgstr "הראה שינויים של כותרת החדר"
 
 #: Show when users change their nicks
 msgid "side_nick_changes"
-msgstr "Show when users change their nicks"
+msgstr "הצג שינויים של כינויי משתמשים"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
