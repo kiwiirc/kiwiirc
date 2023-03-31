@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2023-03-30 23:39\n"
+"PO-Revision-Date: 2023-03-31 20:08\n"
 
 #: Start
 msgid "start_button"
@@ -725,7 +725,7 @@ msgstr "החשבון שלך"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr "הגדרותייך והרשתות שלך יזכרו במחשב זה"
+msgstr "ההגדרות והרשתות שלך יישמרו במחשב זה."
 
 #: Forget me
 msgid "state_forget"
