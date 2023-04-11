@@ -43,21 +43,30 @@ export default {
     },
     methods: {
         loadRecaptcha() {
-            this.showCaptcha = true;
+            if (window.grecaptcha) {
+                this.recaptchaShow();
+                return;
+            }
 
             // Recaptcha calls this callback once it's loaded and ready to be used
             window.recaptchaLoaded = () => {
-                window.grecaptcha.render(this.$refs.captchacontainer, {
-                    'sitekey': this.recaptchaSiteId,
-                    'callback': this.recaptchaSuccess,
-                    'expired-callback': this.recaptchaExpired,
-                });
+                this.recaptchaShow();
             };
 
             let scr = document.createElement('script');
             scr.src = this.recaptchaUrl + '?onload=recaptchaLoaded&render=explicit';
             scr.defer = true;
-            this.$el.appendChild(scr);
+            document.head.appendChild(scr);
+        },
+        recaptchaShow() {
+            this.showCaptcha = true;
+            this.$nextTick(() => {
+                window.grecaptcha.render(this.$refs.captchacontainer, {
+                    'sitekey': this.recaptchaSiteId,
+                    'callback': this.recaptchaSuccess,
+                    'expired-callback': this.recaptchaExpired,
+                });
+            });
         },
         recaptchaSuccess(response) {
             this.recaptchaResponse = response;
