@@ -106,11 +106,17 @@ export default {
     padding-bottom: 10px;
     border-top: 1px solid;
     border-bottom: 1px solid;
+    overflow: hidden;
+    width: 100%;
 }
 
 .kiwi-messageinfo-url {
     margin-bottom: 5px;
     display: flex;
+}
+
+.kiwi-messageinfo-url .u-button {
+    line-height: 30px;
 }
 
 .kiwi-messageinfo-urls .kiwi-messageinfo-url:last-of-type {

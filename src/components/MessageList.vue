@@ -1,6 +1,7 @@
 <template>
     <div
         :key="'messagelist-' + buffer.name"
+        ref="scroller"
         v-resizeobserver="onListResize"
         class="kiwi-messagelist"
         :class="{'kiwi-messagelist--smoothscroll': smooth_scroll}"
@@ -302,7 +303,7 @@ export default {
                 }
 
                 this.message_info_open = message;
-                this.$nextTick(this.maybeScrollToBottom.bind(this));
+                this.$nextTick(() => this.maybeScrollToId(message.id));
             }
         },
         shouldShowUnreadMarker(message) {
@@ -499,12 +500,28 @@ export default {
                 this.scrollToBottom();
             }
         },
-        maybeScrollToId(id) {
-            let messageElement = this.$el.querySelector('.kiwi-messagelist-message[data-message-id="' + id + '"]');
-            if (messageElement && messageElement.offsetTop) {
-                this.$el.scrollTop = messageElement.offsetTop;
-                this.auto_scroll = false;
+        maybeScrollToId(id, position = 'middle') {
+            let msgEl = this.$el.querySelector('.kiwi-messagelist-message[data-message-id="' + id + '"]');
+            if (!msgEl) {
+                return;
             }
+
+            let newTop = 0;
+            if (position === 'top') {
+                // There maybe a sticky unread marker at the top
+                newTop = msgEl.offsetTop;
+            } else if (position === 'bottom') {
+                newTop = Math.floor(
+                    msgEl.offsetTop - this.$refs.scroller.offsetHeight + msgEl.offsetHeight
+                );
+            } else {
+                newTop = Math.floor(
+                    msgEl.offsetTop - ((this.$refs.scroller.offsetHeight - msgEl.offsetHeight) / 2)
+                );
+            }
+
+            this.auto_scroll = false;
+            this.$refs.scroller.scrollTo({ top: newTop, behavior: 'smooth' });
         },
         getSelectedMessages() {
             let sel = document.getSelection();

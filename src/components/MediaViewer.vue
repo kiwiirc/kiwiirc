@@ -148,6 +148,7 @@ export default {
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    width: 100%;
     height: 0;
 }
 
@@ -183,5 +184,16 @@ export default {
     width: 100%;
     top: 0;
     border: none;
+}
+
+@media screen and (max-width: 769px) {
+    .kiwi-mediaviewer-controls {
+        right: 6px;
+        opacity: 1;
+    }
+
+    .kiwi-mediaviewer-controls-close {
+        padding: 3px 7px;
+    }
 }
 </style>
