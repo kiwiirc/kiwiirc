@@ -67,6 +67,7 @@ module.exports = {
                         globOptions: {
                             ignore: ['**/.*', '**/config.local.json'],
                         },
+                        info: { minimized: true },
                     },
                 ],
             }),
