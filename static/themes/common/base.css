@@ -781,22 +781,22 @@
 }
 
 /* ---- Message list - ( MessageList.vue ) ---- */
-.kiwi-messagelist {
+.kiwi-messagelist-scroller {
     scrollbar-color: #9e9e9e transparent;
 }
 
-.kiwi-messagelist::-webkit-scrollbar-thumb {
+.kiwi-messagelist-scroller::-webkit-scrollbar-thumb {
     background-color: #9e9e9e;
 }
 
-.kiwi-messagelist-seperator {
+.kiwi-messagelist-separator {
     color: var(--brand-darktone);
     background: var(--brand-default-bg);
-    font-size: 0.9em;
 }
 
-.kiwi-messagelist-seperator > span {
-    background: var(--brand-default-bg);
+.kiwi-messagelist-separator::before,
+.kiwi-messagelist-separator::after {
+    border-bottom-color: var(--comp-border);
 }
 
 .kiwi-messagelist-message--info-open,
@@ -870,6 +870,10 @@
 .kiwi-messagelist-message-traffic-part .kiwi-nick::before,
 .kiwi-messagelist-message-traffic-part_self .kiwi-nick::before {
     color: var(--brand-error);
+}
+
+.kiwi-messagelist-scrolldown {
+    background-color: var(--brand-default-bg);
 }
 
 /* ---- Modern Layout Styling ---- */
@@ -1054,6 +1058,7 @@
 }
 
 /* Buffer Key */
+.kiwi-bufferkey input[type="password"],
 .kiwi-bufferkey-button {
     border-color: var(--brand-default-bg);
 }

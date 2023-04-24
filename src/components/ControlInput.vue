@@ -599,6 +599,7 @@ export default {
 
             let ircText = this.$refs.input.buildIrcText();
             this.$state.$emit('input.raw', ircText);
+            this.$state.$emit('messagelist.scrollto', 'bottom');
 
             this.historyAdd(rawInput);
 

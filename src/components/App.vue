@@ -477,9 +477,9 @@ body {
     flex-grow: 1;
 
     /* The nicklist scroller needs some type of height set on it's parent, but since we use flexbox
-       it starts conflicting on firefox. Luckily flexbox ignores this 5% and resizes it as we intend
+       it starts conflicting on firefox. Luckily flexbox ignores this 0 and resizes it as we intend
        anyway. */
-    height: 5%;
+    height: 0;
 }
 
 .kiwi-main-mediaviewer {

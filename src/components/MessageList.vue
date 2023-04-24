@@ -1,109 +1,117 @@
 <template>
     <div
         :key="'messagelist-' + buffer.name"
-        v-resizeobserver="onListResize"
         class="kiwi-messagelist"
-        :class="{'kiwi-messagelist--smoothscroll': smooth_scroll}"
-        @click.self="onListClick"
+        :class="{'kiwi-messagelist--typingusers': buffer.setting('share_typing')}"
     >
-        <div v-resizeobserver="onListResize">
-            <div
-                v-if="shouldShowChathistoryTools"
-                class="kiwi-messagelist-scrollback"
-            >
-                <a
-                    v-if="!buffer.flag('is_requesting_chathistory')"
-                    class="u-link"
-                    @click="buffer.requestScrollback()"
+        <div
+            ref="scroller"
+            class="kiwi-messagelist-scroller"
+            @scroll="onScrolledDebounced"
+            @click.self="onListClick"
+        >
+            <div class="kiwi-messagelist-content">
+                <div
+                    v-if="shouldShowChathistoryTools"
+                    class="kiwi-messagelist-scrollback"
                 >
-                    {{ $t('messages_load') }}
-                </a>
-                <a v-else>{{ $t('messages_loading') }}</a>
-            </div>
-
-            <transition-group tag="div">
-                <template v-for="day in filteredMessagesGroupedDay">
-                    <div
-                        v-if="filteredMessagesGroupedDay.length > 1 && day.messages.length > 0"
-                        :key="'msgdatemarker' + day.dayNum"
-                        class="kiwi-messagelist-seperator"
+                    <a
+                        v-if="!buffer.flag('is_requesting_chathistory')"
+                        class="u-link"
+                        @click="buffer.requestScrollback()"
                     >
-                        <span>{{ (new Date(day.messages[0].time)).toDateString() }}</span>
-                    </div>
-                    <transition-group :key="day.dayNum" tag="div">
-                        <template v-for="message in day.messages">
-                            <div
-                                v-if="shouldShowUnreadMarker(message)"
-                                :key="'msgunreadmarker' + message.id"
-                                class="kiwi-messagelist-seperator"
-                            >
-                                <span>{{ $t('unread_messages') }}</span>
-                            </div>
-
-                            <div
-                                :key="'msg' + message.id"
-                                :class="[
-                                    'kiwi-messagelist-item',
-                                    selectedMessages[message.id] ?
-                                        'kiwi-messagelist-item--selected' :
-                                        ''
-                                ]"
-                            >
-                                <!-- message.template is checked first for a custom component,
-                                    then each message layout checks for a message.bodyTemplate
-                                    custom component to apply only to the body area
-                                -->
-                                <div
-                                    v-if="message.render() &&
-                                        message.template &&
-                                        message.template.$el &&
-                                        isTemplateVue(message.template)"
-                                    v-rawElement="message.template.$el"
-                                />
-                                <component
-                                    :is="message.template"
-                                    v-else-if="message.render() && message.template"
-                                    v-bind="message.templateProps"
-                                    :buffer="buffer"
-                                    :message="message"
-                                    :idx="filteredMessages.indexOf(message)"
-                                    :ml="thisMl"
-                                />
-                                <message-list-message-modern
-                                    v-else-if="listType === 'modern'"
-                                    :message="message"
-                                    :idx="filteredMessages.indexOf(message)"
-                                    :ml="thisMl"
-                                />
-                                <message-list-message-inline
-                                    v-else-if="listType === 'inline'"
-                                    :message="message"
-                                    :idx="filteredMessages.indexOf(message)"
-                                    :ml="thisMl"
-                                />
-                                <message-list-message-compact
-                                    v-else-if="listType === 'compact'"
-                                    :message="message"
-                                    :idx="filteredMessages.indexOf(message)"
-                                    :ml="thisMl"
-                                />
-                            </div>
-                        </template>
-                    </transition-group>
-                </template>
-            </transition-group>
-
-            <transition name="kiwi-messagelist-joinloadertrans">
-                <div v-if="shouldShowJoiningLoader" class="kiwi-messagelist-joinloader">
-                    <LoadingAnimation />
+                        {{ $t('messages_load') }}
+                    </a>
+                    <a v-else>{{ $t('messages_loading') }}</a>
                 </div>
-            </transition>
 
-            <buffer-key
-                v-if="shouldRequestChannelKey"
-                :buffer="buffer"
-                :network="buffer.getNetwork()"
-            />
+                <transition-group tag="div">
+                    <template v-for="day in filteredMessagesGroupedDay">
+                        <div
+                            v-if="filteredMessagesGroupedDay.length > 1 && day.messages.length > 0"
+                            :key="'msgdatemarker' + day.dayNum"
+                            class="kiwi-messagelist-separator"
+                        >
+                            <span>{{ (new Date(day.messages[0].time)).toDateString() }}</span>
+                        </div>
+                        <transition-group :key="day.dayNum" tag="div">
+                            <template v-for="message in day.messages">
+                                <div
+                                    v-if="shouldShowUnreadMarker(message)"
+                                    :key="'msgunreadmarker' + message.id"
+                                    class="kiwi-messagelist-separator kiwi-messagelist-unreadmarker"
+                                >
+                                    <span>{{ $t('unread_messages') }}</span>
+                                </div>
+
+                                <div
+                                    :key="'msg' + message.id"
+                                    :class="[
+                                        'kiwi-messagelist-item',
+                                        selectedMessages[message.id] ?
+                                            'kiwi-messagelist-item--selected' :
+                                            ''
+                                    ]"
+                                >
+                                    <!-- message.template is checked first for a custom component,
+                                        then each message layout checks for a message.bodyTemplate
+                                        custom component to apply only to the body area
+                                    -->
+                                    <div
+                                        v-if="message.render() &&
+                                            message.template &&
+                                            message.template.$el &&
+                                            isTemplateVue(message.template)"
+                                        v-rawElement="message.template.$el"
+                                    />
+                                    <component
+                                        :is="message.template"
+                                        v-else-if="message.render() && message.template"
+                                        v-bind="message.templateProps"
+                                        :buffer="buffer"
+                                        :message="message"
+                                        :idx="filteredMessages.indexOf(message)"
+                                        :ml="thisMl"
+                                    />
+                                    <message-list-message-modern
+                                        v-else-if="listType === 'modern'"
+                                        :message="message"
+                                        :idx="filteredMessages.indexOf(message)"
+                                        :ml="thisMl"
+                                    />
+                                    <message-list-message-inline
+                                        v-else-if="listType === 'inline'"
+                                        :message="message"
+                                        :idx="filteredMessages.indexOf(message)"
+                                        :ml="thisMl"
+                                    />
+                                    <message-list-message-compact
+                                        v-else-if="listType === 'compact'"
+                                        :message="message"
+                                        :idx="filteredMessages.indexOf(message)"
+                                        :ml="thisMl"
+                                    />
+                                </div>
+                            </template>
+                        </transition-group>
+                    </template>
+                </transition-group>
+
+                <transition name="kiwi-messagelist-joinloadertrans">
+                    <div v-if="shouldShowJoiningLoader" class="kiwi-messagelist-joinloader">
+                        <LoadingAnimation />
+                    </div>
+                </transition>
+
+                <buffer-key
+                    v-if="shouldRequestChannelKey"
+                    :buffer="buffer"
+                    :network="buffer.getNetwork()"
+                />
+            </div>
+        </div>
+        <div v-if="scrolledUpByPx > 1" class="kiwi-messagelist-scrolldown" @click="scrollToBottom">
+            <i class="fa fa-angle-double-down" aria-hidden="true" />
         </div>
     </div>
 </template>
@@ -111,6 +119,7 @@
 <script>
 'kiwi public';
 
+import _ from 'lodash';
 import Vue from 'vue';
 import strftime from 'strftime';
 import Logger from '@/libs/Logger';
@@ -125,10 +134,6 @@ require('@/libs/polyfill/Element.closest');
 
 let log = Logger.namespace('MessageList.vue');
 
-// If we're scrolled up more than this many pixels, don't auto scroll down to the bottom
-// of the message list
-const BOTTOM_SCROLL_MARGIN = 60;
-
 export default {
     components: {
         BufferKey,
@@ -140,9 +145,7 @@ export default {
     props: ['buffer'],
     data() {
         return {
-            smooth_scroll: false,
-            auto_scroll: true,
-            force_smooth_scroll: null,
+            scrolledUpByPx: 0,
             chathistoryAvailable: true,
             hover_nick: '',
             message_info_open: null,
@@ -221,18 +224,6 @@ export default {
         },
     },
     watch: {
-        filteredMessages() {
-            // Data has changed and now preparing to update the DOM.
-            // Check our scrolling state before the DOM updates so that we know if we're scrolled
-            // at the bottom before new messages are added
-            this.checkScrollingState();
-
-            // Wait until after the DOM has updated before possibly scrolling down based on the
-            // previous check
-            this.$nextTick(() => {
-                this.maybeScrollToBottom();
-            });
-        },
         buffer(newBuffer, oldBuffer) {
             if (oldBuffer) {
                 oldBuffer.isMessageTrimming = true;
@@ -248,30 +239,34 @@ export default {
                 newBuffer.flags.has_opened = true;
             }
 
-            this.auto_scroll = true;
-            this.force_smooth_scroll = false;
             this.$nextTick(() => {
-                this.scrollToBottom();
+                if (this.buffer.setting('scroll_to_unread')) {
+                    this.scrollToUnread();
+                } else {
+                    this.scrollToBottom();
+                }
             });
         },
+    },
+    created() {
+        this.onScrolledDebounced = _.debounce(this.onScrolled, 100, { maxWait: 100 });
     },
     mounted() {
         this.addCopyListeners();
 
-        this.$nextTick(() => {
-            this.scrollToBottom();
-            // this.smooth_scroll = true;
-        });
-
-        this.listen(this.$state, 'mediaviewer.opened', () => {
-            this.$nextTick(this.maybeScrollToBottom.apply(this));
-        });
-
         this.listen(this.$state, 'messagelist.scrollto', (opt) => {
             if (opt && opt.id) {
                 this.maybeScrollToId(opt.id);
+            } else if (opt && opt === 'bottom') {
+                this.scrollToBottom();
             }
         });
+
+        if (this.buffer.setting('scroll_to_unread')) {
+            this.scrollToUnread();
+        } else {
+            this.scrollToBottom();
+        }
     },
     methods: {
         isTemplateVue(template) {
@@ -302,7 +297,6 @@ export default {
                 }
 
                 this.message_info_open = message;
-                this.$nextTick(this.maybeScrollToBottom.bind(this));
             }
         },
         shouldShowUnreadMarker(message) {
@@ -320,7 +314,7 @@ export default {
             }
 
             // If the last message has been read, and this message not read
-            if (previous && previous.time < lastRead && current.time > lastRead) {
+            if (previous && previous.time <= lastRead && current.time > lastRead) {
                 return true;
             }
 
@@ -458,53 +452,68 @@ export default {
                 this.toggleMessageInfo(message);
             }
         },
-        checkScrollingState() {
-            let el = this.$el;
-            let scrolledUpByPx = el.scrollHeight - (el.offsetHeight + el.scrollTop);
-
-            // We need to know at this point (before the DOM has updated with new messages) if we
-            // are at the bottom of the messagelist or not, otherwise once the DOM has updated then
-            // it is too late to determine if we should auto scroll down
-            if (scrolledUpByPx > BOTTOM_SCROLL_MARGIN) {
-                this.auto_scroll = false;
-                this.buffer.isMessageTrimming = false;
-            } else {
-                this.auto_scroll = true;
-                this.buffer.isMessageTrimming = true;
-            }
-
-            if (this.force_smooth_scroll !== null) {
-                this.smooth_scroll = this.force_smooth_scroll;
-                this.force_smooth_scroll = null;
-            // TODO: Enabling smooth_scroll breaks the auto-scroll-to-bottom on fast buffers as
-            //       it takes time to scroll down and it looks like we're scrolled too far up when
-            //       detecting if were scrolled up or not. Look into ways around this so that we
-            //       can enable it as it does look a lot better.
-            // } else if (scrolledUpByPx < BOTTOM_SCROLL_MARGIN) {
-            //    this.smooth_scroll = true;
-            } else {
-                this.smooth_scroll = false;
-            }
-        },
-        onListResize(e) {
-            // The messagelist or interface has resized or had new content added
-            // check if we should auto scroll down to the bottom
-            this.maybeScrollToBottom();
-        },
         scrollToBottom() {
-            this.$el.scrollTop = this.$el.scrollHeight;
+            this.$refs.scroller.scrollTo({ top: 0, behavior: 'smooth' });
+            this.onScrolledDebounced();
         },
-        maybeScrollToBottom() {
-            if (this.auto_scroll) {
+        scrollToUnread() {
+            if (!this.buffer.last_read) {
                 this.scrollToBottom();
+                return;
             }
+
+            let idx = 0;
+            for (idx = 0; idx < this.filteredMessages.length; idx++) {
+                let previous = this.filteredMessages[idx - 1];
+                let current = this.filteredMessages[idx];
+
+                if (!current) {
+                    continue;
+                }
+
+                const lastRead = this.buffer.last_read;
+                // If the last message has been read, and this message not read
+                if (previous && previous.time <= lastRead && current.time > lastRead) {
+                    break;
+                }
+            }
+
+            if (idx >= this.filteredMessages.length - 1) {
+                this.scrollToBottom();
+                return;
+            }
+
+            const msg = this.filteredMessages[idx];
+            if (!msg) {
+                this.scrollToBottom();
+                return;
+            }
+
+            this.$nextTick(() => this.maybeScrollToId(msg.id, 'top'));
+            this.onScrolledDebounced();
         },
-        maybeScrollToId(id) {
-            let messageElement = this.$el.querySelector('.kiwi-messagelist-message[data-message-id="' + id + '"]');
-            if (messageElement && messageElement.offsetTop) {
-                this.$el.scrollTop = messageElement.offsetTop;
-                this.auto_scroll = false;
+        maybeScrollToId(id, position = 'middle') {
+            let msgEl = this.$refs.scroller.querySelector('.kiwi-messagelist-message[data-message-id="' + id + '"]');
+            if (!msgEl || !msgEl.offsetTop) {
+                return;
             }
+
+            let newTop = 0;
+            if (position === 'top') {
+                // There maybe a sticky unread marker at the top
+                newTop = msgEl.offsetTop - 24;
+            } else if (position === 'bottom') {
+                newTop = Math.floor(
+                    msgEl.offsetTop - this.$refs.scroller.offsetHeight + msgEl.offsetHeight
+                );
+            } else {
+                newTop = Math.floor(
+                    msgEl.offsetTop - ((this.$refs.scroller.offsetHeight - msgEl.offsetHeight) / 2)
+                );
+            }
+
+            this.$refs.scroller.scrollTo({ top: newTop, behavior: 'smooth' });
+            this.onScrolledDebounced();
         },
         getSelectedMessages() {
             let sel = document.getSelection();
@@ -668,6 +677,16 @@ export default {
             // Remove the embed from the message
             embed.payload = null;
         },
+        onScrolled() {
+            // scrollTop is negative due to flex reverse
+            this.scrolledUpByPx = Math.abs(this.$refs.scroller.scrollTop);
+
+            if (this.scrolledUpByPx) {
+                this.buffer.isMessageTrimming = false;
+            } else {
+                this.buffer.isMessageTrimming = true;
+            }
+        },
     },
 };
 </script>
@@ -706,32 +725,40 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 }
 
 .kiwi-messagelist {
-    overflow-y: auto;
-    overflow-x: hidden;
     box-sizing: border-box;
-    margin-bottom: 25px;
     position: relative;
+    overflow: hidden;
 }
 
-.kiwi-messagelist--smoothscroll {
-    scroll-behavior: smooth;
+.kiwi-messagelist--typingusers {
+    margin-bottom: 25px;
 }
 
 .kiwi-messagelist * {
     user-select: text;
 }
 
-.kiwi-messagelist::-webkit-scrollbar-track {
+.kiwi-messagelist-scroller {
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    height: 100%;
+}
+
+.kiwi-messagelist-scroller::-webkit-scrollbar-track {
     border-radius: 10px;
     background: transparent;
 }
 
-.kiwi-messagelist::-webkit-scrollbar {
+.kiwi-messagelist-scroller::-webkit-scrollbar {
     width: 8px;
     background: transparent;
 }
 
-.kiwi-messagelist::-webkit-scrollbar-thumb {
+.kiwi-messagelist-scroller::-webkit-scrollbar-thumb {
     border-radius: 3px;
 }
 
@@ -835,7 +862,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     padding: 5px;
 }
 
-.kiwi-messagelist-seperator + .kiwi-messagelist-message {
+.kiwi-messagelist-separator + .kiwi-messagelist-message {
     border-top: none;
 }
 
@@ -858,21 +885,34 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     display: none;
 }
 
-.kiwi-messagelist-seperator {
-    text-align: center;
-    display: block;
-    margin: 1em auto;
+.kiwi-messagelist-separator {
+    display: flex;
+    align-items: center;
+    user-select: none;
     position: sticky;
-    top: -1px;
-    z-index: 1;
+    font-size: 0.9em;
+    z-index: 2;
+    top: 0;
+
+    &::before,
+    &::after {
+        flex: 1;
+        content: '';
+        margin: 0 0.5em;
+        border-bottom: 1px solid;
+    }
+
+    &:not(:empty)::before {
+        margin-right: 0.5em;
+    }
+
+    &:not(:empty)::after {
+        margin-left: 0.5em;
+    }
 }
 
-.kiwi-messagelist-seperator > span {
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-    padding: 0 1em;
-    user-select: none;
+.kiwi-messagelist-unreadmarker {
+    z-index: 3;
 }
 
 /** Displaying an emoji in a message */
@@ -999,6 +1039,24 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 .kiwi-messagelist-joinloadertrans-enter-active,
 .kiwi-messagelist-joinloadertrans-leave-active {
     transition: height 0.5s, opacity 0.5s;
+}
+
+.kiwi-messagelist-scrolldown {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 25%;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.4;
+    border: 2px solid;
+    z-index: 4;
 }
 
 @media screen and (max-width: 700px) {

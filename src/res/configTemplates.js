@@ -53,6 +53,7 @@ export const configTemplates = {
             timestamp_full_format: '',
             show_timestamps: true,
             scrollback_size: 250,
+            scroll_to_unread: true,
             show_hostnames: false,
             show_joinparts: true,
             show_topics: true,

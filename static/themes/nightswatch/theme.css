@@ -201,6 +201,12 @@
 .kiwi-messagelist {
     background: #000;
 }
+
+.kiwi-messagelist-separator {
+    color: #adadad;
+    background: var(--brand-default-bg);
+}
+
 .kiwi-messagelist .kiwi-messagelist-body {
     color: #adadad;
 }
