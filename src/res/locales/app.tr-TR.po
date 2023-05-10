@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2023-03-01 19:35\n"
+"PO-Revision-Date: 2023-05-10 19:43\n"
 
 #: Start
 msgid "start_button"
@@ -777,7 +777,7 @@ msgstr "Daha Fazla Kanal Bul"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Kanaldan gerçekten ayrılmak istiyor musunuz?"
+msgstr "Gerçekten kanaldan ayrılmak istiyor musunuz?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
