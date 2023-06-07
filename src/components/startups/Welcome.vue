@@ -59,6 +59,13 @@
                     />
                 </div>
 
+                <div v-if="termsContent" class="kiwi-welcome-simple-terms">
+                    <div>
+                        <input v-model="termsAccepted" type="checkbox">
+                    </div>
+                    <div class="kiwi-welcome-simple-terms-content" v-html="termsContent" />
+                </div>
+
                 <captcha
                     :network="network"
                 />
@@ -117,25 +124,32 @@ export default {
             connectWithoutChannel: false,
             showPlainText: false,
             captchaReady: false,
+            termsAccepted: false,
         };
     },
     computed: {
         startupOptions() {
             return this.$state.settings.startupOptions;
         },
-        greetingText: function greetingText() {
+        greetingText() {
             let greeting = this.$state.settings.startupOptions.greetingText;
             return typeof greeting === 'string' ?
                 greeting :
                 this.$t('start_greeting');
         },
-        footerText: function footerText() {
+        footerText() {
             let footer = this.$state.settings.startupOptions.footerText;
             return typeof footer === 'string' ?
                 footer :
                 '';
         },
-        buttonText: function buttonText() {
+        termsContent() {
+            let terms = this.$state.settings.startupOptions.termsContent;
+            return typeof terms === 'string' ?
+                terms :
+                '';
+        },
+        buttonText() {
             let greeting = this.$state.settings.startupOptions.buttonText;
             return typeof greeting === 'string' ?
                 greeting :
@@ -198,6 +212,10 @@ export default {
             }
 
             if (!this.isNickValid) {
+                ready = false;
+            }
+
+            if (this.termsContent && !this.termsAccepted) {
                 ready = false;
             }
 
@@ -495,6 +513,16 @@ form.kiwi-welcome-simple-form h2 {
 
 .kiwi-welcome-simple-input-container:last-of-type {
     margin: 20px 0 40px 0;
+}
+
+.kiwi-welcome-simple-terms {
+    display: flex;
+    flex-direction: row;
+}
+
+.kiwi-welcome-simple-terms .kiwi-welcome-simple-terms-content {
+    margin-top: 3px;
+    line-height: 20px;
 }
 
 .kiwi-welcome-simple-form .u-submit {
