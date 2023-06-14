@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
-"PO-Revision-Date: 2023-02-21 22:53\n"
+"PO-Revision-Date: 2023-06-14 17:21\n"
 
 #: Start
 msgid "start_button"
@@ -555,6 +555,10 @@ msgstr "Loading previous messages..."
 msgid "unread_messages"
 msgstr "Pesan Belum Terbaca"
 
+#: Reply in private
+msgid "reply_in_private"
+msgstr "Reply in private"
+
 #: Server details
 msgid "settings_server_details"
 msgstr "Detail server"
@@ -851,6 +855,14 @@ msgstr "Dilarang dari saluran"
 msgid "user_kickban"
 msgstr "Larang dan tendang dari saluran"
 
+#: Select a Channel
+msgid "select_channel"
+msgstr "Select a Channel"
+
+#: Invite User
+msgid "invite_user"
+msgstr "Invite User"
+
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Please specify a channel to join. eg /join #example"
@@ -1114,6 +1126,10 @@ msgstr "{{nick}} invited you to join {{channel}}"
 #: {{nick}} invited {{invited}} to join {{channel}}
 msgid "invited_other"
 msgstr "{{nick}} invited {{invited}} to join {{channel}}"
+
+#: You invited {{invited}} to join {{channel}}
+msgid "invited_inviter"
+msgstr "You invited {{invited}} to join {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"

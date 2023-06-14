@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2023-02-21 22:53\n"
+"PO-Revision-Date: 2023-06-14 17:21\n"
 
 #: Start
 msgid "start_button"
@@ -555,6 +555,10 @@ msgstr "Loading previous messages..."
 msgid "unread_messages"
 msgstr "Непрочитанные сообщения"
 
+#: Reply in private
+msgid "reply_in_private"
+msgstr "Reply in private"
+
 #: Server details
 msgid "settings_server_details"
 msgstr "Детали сервера"
@@ -851,6 +855,14 @@ msgstr "Заблокировать на канале"
 msgid "user_kickban"
 msgstr "Заблокировать и выгнать с канала"
 
+#: Select a Channel
+msgid "select_channel"
+msgstr "Select a Channel"
+
+#: Invite User
+msgid "invite_user"
+msgstr "Invite User"
+
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Укажите, к какому каналу присоединиться, напр. /join #primer"
@@ -1114,6 +1126,10 @@ msgstr "{{nick}} приглашает Вас присоединиться к {{c
 #: {{nick}} invited {{invited}} to join {{channel}}
 msgid "invited_other"
 msgstr "{{nick}} приглашает {{invited}} присоединиться к {{channel}}"
+
+#: You invited {{invited}} to join {{channel}}
+msgid "invited_inviter"
+msgstr "You invited {{invited}} to join {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
