@@ -16,8 +16,12 @@
             :class="{'kiwi-messageinfo-actions--open': requestingInput}"
             class="kiwi-messageinfo-actions"
         >
-            <a v-if="!requestingInput" class="u-link kiwi-messageinfo-reply" @click="openQuery">
-                Reply in private
+            <a
+                v-if="!requestingInput && buffer.name !== message.nick && !isSelf()"
+                class="u-link kiwi-messageinfo-reply"
+                @click="openQuery"
+            >
+                {{ $t('reply_in_private') }}
             </a>
 
             <div v-if="areWeAnOp() && !isSelf()" class="kiwi-messageinfo-opbuttons">

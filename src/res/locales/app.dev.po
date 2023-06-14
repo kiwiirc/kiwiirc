@@ -598,6 +598,10 @@ msgstr "Loading previous messages..."
 msgid "unread_messages"
 msgstr "Unread Messages"
 
+#: Reply in private
+msgid "reply_in_private"
+msgstr "Reply in private"
+
 
 
 #: Server details
