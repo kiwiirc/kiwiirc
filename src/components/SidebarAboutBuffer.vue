@@ -165,6 +165,7 @@ export default {
                 return;
             }
             this.network.ircClient.invite(this.buffer.name, this.inviteNick);
+            this.inviteNick = '';
         },
         inviteSelected(value, item) {
             this.inviteNick = value;
