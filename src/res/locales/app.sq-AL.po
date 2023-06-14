@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2023-02-22 20:22\n"
+"PO-Revision-Date: 2023-06-14 17:21\n"
 
 #: Start
 msgid "start_button"
@@ -555,6 +555,10 @@ msgstr "Po ngarkohen mesazhe të mëparshëm…"
 msgid "unread_messages"
 msgstr "Mesazhe të Palexuar"
 
+#: Reply in private
+msgid "reply_in_private"
+msgstr "Reply in private"
+
 #: Server details
 msgid "settings_server_details"
 msgstr "Hollësi shërbyesi"
@@ -851,6 +855,14 @@ msgstr "Të dëbon nga kanali"
 msgid "user_kickban"
 msgstr "Të dëbon dhe përzë nga kanali"
 
+#: Select a Channel
+msgid "select_channel"
+msgstr "Select a Channel"
+
+#: Invite User
+msgid "invite_user"
+msgstr "Invite User"
+
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Ju lutemi, specifikoni një kanal ku të hyhet. p.sh., /join #shembull"
@@ -1114,6 +1126,10 @@ msgstr "{{nick}} ju ftoi të vini te {{channel}}"
 #: {{nick}} invited {{invited}} to join {{channel}}
 msgid "invited_other"
 msgstr "{{nick}} ftoi {{invited}} të vijë te {{channel}}"
+
+#: You invited {{invited}} to join {{channel}}
+msgid "invited_inviter"
+msgstr "You invited {{invited}} to join {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
