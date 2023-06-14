@@ -16,6 +16,8 @@ export const urlRegex = new RegExp(
         // Hostname and tld
         /([\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF.-]+\.[a-zA-Z]{2,63})/.source +
         '|' +
+        'localhost' +
+        '|' +
         // IPv4 address
         ipRegex.v4().source +
         '|' +
