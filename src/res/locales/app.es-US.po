@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Spanish, United States\n"
 "Language: es_US\n"
-"PO-Revision-Date: 2023-02-21 22:53\n"
+"PO-Revision-Date: 2023-06-14 17:21\n"
 
 #: Start
 msgid "start_button"
@@ -117,15 +117,15 @@ msgstr "Credenciales inválidas"
 
 #: Login failed. Please try again or contact support
 msgid "login_failed"
-msgstr "Login failed. Please try again or contact support"
+msgstr "Error de inicio de sesión. Vuelve a intentarlo o ponte en contacto con el servicio de ayuda"
 
 #: You are now logged in as '{{account}}'
 msgid "logged_in"
-msgstr "You are now logged in as '{{account}}'"
+msgstr "Has iniciado sesión como '{{account}}'"
 
 #: You have been logged out
 msgid "logged_out"
-msgstr "You have been logged out"
+msgstr "Has cerrado la sesión"
 
 #: Search...
 msgid "do_search"
@@ -549,11 +549,15 @@ msgstr "Cargar mensajes anteriores"
 
 #: Loading previous messages...
 msgid "messages_loading"
-msgstr "Loading previous messages..."
+msgstr "Cargando mensajes anteriores..."
 
 #: Unread Messages
 msgid "unread_messages"
 msgstr "Mensajes sin leer"
+
+#: Reply in private
+msgid "reply_in_private"
+msgstr "Reply in private"
 
 #: Server details
 msgid "settings_server_details"
@@ -851,6 +855,14 @@ msgstr "Banear de la sala"
 msgid "user_kickban"
 msgstr "Kick + Ban del canal"
 
+#: Select a Channel
+msgid "select_channel"
+msgstr "Select a Channel"
+
+#: Invite User
+msgid "invite_user"
+msgstr "Invite User"
+
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
 msgstr "Por favor especifica la sala a entrar. Por ej. /join #ejemplo"
@@ -1114,6 +1126,10 @@ msgstr "{{nick}} te ha invitado para entrar en {{channel}}"
 #: {{nick}} invited {{invited}} to join {{channel}}
 msgid "invited_other"
 msgstr "{{nick}} ha invitado a {{invited}} para entrar en {{channel}}"
+
+#: You invited {{invited}} to join {{channel}}
+msgid "invited_inviter"
+msgstr "You invited {{invited}} to join {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
