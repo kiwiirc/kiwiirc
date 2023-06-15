@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2023-06-14 17:21\n"
+"PO-Revision-Date: 2023-06-14 19:32\n"
 
 #: Start
 msgid "start_button"
@@ -557,7 +557,7 @@ msgstr "הודעות שטרם נקראו"
 
 #: Reply in private
 msgid "reply_in_private"
-msgstr "Reply in private"
+msgstr "השב כהודעה פרטית"
 
 #: Server details
 msgid "settings_server_details"
@@ -621,7 +621,7 @@ msgstr "סינון משתמשים בחדר"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
-msgstr "הצטרף מחדש לחדר {{channel}}"
+msgstr "התחבר מחדש כדי להצטרף לחדר {{channel}}"
 
 #: Reconnect to {{network}} to start talking
 msgid "reconnect_network"
@@ -857,11 +857,11 @@ msgstr "חסימה + בעיטה מהחדר"
 
 #: Select a Channel
 msgid "select_channel"
-msgstr "Select a Channel"
+msgstr "בחר חדר"
 
 #: Invite User
 msgid "invite_user"
-msgstr "Invite User"
+msgstr "הזמן משתמש"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -1129,7 +1129,7 @@ msgstr "{{nick}} הזמינ/ה את {{invited}} להצטרף לחדר {{channel}
 
 #: You invited {{invited}} to join {{channel}}
 msgid "invited_inviter"
-msgstr "You invited {{invited}} to join {{channel}}"
+msgstr "הזמנת את {{invited}} להצטרף ל {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"

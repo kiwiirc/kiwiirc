@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2023-06-14 17:21\n"
+"PO-Revision-Date: 2023-06-14 19:32\n"
 
 #: Start
 msgid "start_button"
@@ -557,7 +557,7 @@ msgstr "Μη Διαβασμένα Μηνύματα"
 
 #: Reply in private
 msgid "reply_in_private"
-msgstr "Reply in private"
+msgstr "Απάντηση ιδιωτικά"
 
 #: Server details
 msgid "settings_server_details"
@@ -857,11 +857,11 @@ msgstr "Αποκλεισμό και απομάκρυνση από το κανά�
 
 #: Select a Channel
 msgid "select_channel"
-msgstr "Select a Channel"
+msgstr "Επιλογή καναλιού"
 
 #: Invite User
 msgid "invite_user"
-msgstr "Invite User"
+msgstr "Πρόσκληση χρήστη"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -1129,7 +1129,7 @@ msgstr "{{nick}} Σας προσκαλεί {{invited}} να εισέλθετε �
 
 #: You invited {{invited}} to join {{channel}}
 msgid "invited_inviter"
-msgstr "You invited {{invited}} to join {{channel}}"
+msgstr "Σας προσκαλεί {{invited}} να εισέλθετε στο {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"

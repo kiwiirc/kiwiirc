@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2023-06-14 17:21\n"
+"PO-Revision-Date: 2023-06-14 23:55\n"
 
 #: Start
 msgid "start_button"
@@ -193,39 +193,39 @@ msgstr "Away"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "{{count}} vecka"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "{{count}} veckor"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "{{count}} dag"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} days"
+msgstr "{{count}} dagar"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "{{count}} timme"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "{{count}} timmar"
 
 #: {{count}} minute
 msgid "minute"
-msgstr "{{count}} minute"
+msgstr "{{count}} minut"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutes"
+msgstr "{{count}} minuter"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "{{count}} sekund"
 
 #: {{count}} seconds
 msgid "second_plural"
@@ -1117,7 +1117,7 @@ msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} has left"
+msgstr "{{nick}} har lämnat"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
