@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2023-06-15 05:07\n"
+"PO-Revision-Date: 2023-06-17 10:41\n"
 
 #: Start
 msgid "start_button"
@@ -857,7 +857,7 @@ msgstr "Uit het kanaal zetten en verbannen"
 
 #: Select a Channel
 msgid "select_channel"
-msgstr "Select a Channel"
+msgstr "Een kanaal selecteren"
 
 #: Invite User
 msgid "invite_user"
