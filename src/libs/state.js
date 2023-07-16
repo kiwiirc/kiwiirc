@@ -522,6 +522,10 @@ function createNewState() {
                     return;
                 }
 
+                if (buffer.isChannel() && buffer.joined) {
+                    network.ircClient.part(buffer.name);
+                }
+
                 let eventObj = { buffer };
                 state.$emit('buffer.close', eventObj);
 
@@ -536,10 +540,6 @@ function createNewState() {
                 });
                 if (messageIdx > -1) {
                     messages.splice(messageIdx, 1);
-                }
-
-                if (buffer.isChannel() && buffer.joined) {
-                    network.ircClient.part(buffer.name);
                 }
 
                 // Remove the user from network state if no remaining common channels
