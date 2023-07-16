@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2023-06-14 17:21\n"
+"PO-Revision-Date: 2023-06-19 04:11\n"
 
 #: Start
 msgid "start_button"
@@ -485,7 +485,7 @@ msgstr "للمدعوين فقط"
 
 #: Hide this channel from lists
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "إخفاء القناة من القائمة"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -557,7 +557,7 @@ msgstr "رسائل غير مقروءة"
 
 #: Reply in private
 msgid "reply_in_private"
-msgstr "Reply in private"
+msgstr "الرد في الخاص"
 
 #: Server details
 msgid "settings_server_details"

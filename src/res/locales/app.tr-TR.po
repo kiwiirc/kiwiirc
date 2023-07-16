@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2023-06-14 21:00\n"
+"PO-Revision-Date: 2023-06-18 18:26\n"
 
 #: Start
 msgid "start_button"
@@ -861,7 +861,7 @@ msgstr "Bir kanal seçin"
 
 #: Invite User
 msgid "invite_user"
-msgstr "Kullanıcı davet et"
+msgstr "Kullanıcıyı davet et"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -1125,7 +1125,7 @@ msgstr "{{nick}} seni {{channel}} kanalına davet etti"
 
 #: {{nick}} invited {{invited}} to join {{channel}}
 msgid "invited_other"
-msgstr "{{nick}}, {{invited}} {{channel}}'a katılması için davet etti"
+msgstr "{{nick}}, {{invited}} kullanıcısını {{channel}} kanalına katılması için davet etti"
 
 #: You invited {{invited}} to join {{channel}}
 msgid "invited_inviter"
