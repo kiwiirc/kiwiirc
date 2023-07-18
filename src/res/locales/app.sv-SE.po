@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2023-06-14 23:55\n"
+"PO-Revision-Date: 2023-07-16 17:11\n"
 
 #: Start
 msgid "start_button"
@@ -25,11 +25,11 @@ msgstr "Welcome to Kiwi IRC!"
 
 #: Close
 msgid "close"
-msgstr "Close"
+msgstr "Stäng"
 
 #: Connect
 msgid "connect"
-msgstr "Connect"
+msgstr "Anslut"
 
 #: Connecting...
 msgid "connecting"
@@ -41,7 +41,7 @@ msgstr "Connected"
 
 #: Settings
 msgid "settings"
-msgstr "Settings"
+msgstr "Inställningar"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
@@ -69,11 +69,11 @@ msgstr "Notifications"
 
 #: Username
 msgid "username"
-msgstr "Username"
+msgstr "Användarnamn"
 
 #: Password
 msgid "password"
-msgstr "Password"
+msgstr "Lösenord"
 
 #: Server Password
 msgid "server_password"
