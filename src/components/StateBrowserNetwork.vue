@@ -457,9 +457,15 @@ export default {
         },
         showNetworkSettings(network) {
             network.showServerBuffer('settings');
+            if (this.$state.ui.is_narrow) {
+                this.$state.$emit('statebrowser.hide');
+            }
         },
         showNetworkChannels(network) {
             network.showServerBuffer('channels');
+            if (this.$state.ui.is_narrow) {
+                this.$state.$emit('statebrowser.hide');
+            }
         },
         onSearchChannelClick() {
             // If we have no other buffers than the server buffer, take them straight
@@ -743,7 +749,6 @@ export default {
 
 /* Channel search input */
 .kiwi-statebrowser-channelfilter {
-    float: left;
     width: 100%;
     padding: 0;
     box-sizing: border-box;
