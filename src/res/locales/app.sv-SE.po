@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"PO-Revision-Date: 2023-07-16 17:11\n"
+"PO-Revision-Date: 2023-07-21 22:04\n"
 
 #: Start
 msgid "start_button"
@@ -21,7 +21,7 @@ msgstr "Start"
 
 #: Welcome to Kiwi IRC!
 msgid "start_greeting"
-msgstr "Welcome to Kiwi IRC!"
+msgstr "Välkommen till Kiwi IRC!"
 
 #: Close
 msgid "close"
@@ -33,11 +33,11 @@ msgstr "Anslut"
 
 #: Connecting...
 msgid "connecting"
-msgstr "Connecting..."
+msgstr "Ansluter..."
 
 #: Connected
 msgid "connected"
-msgstr "Connected"
+msgstr "Ansluten"
 
 #: Settings
 msgid "settings"
@@ -49,7 +49,7 @@ msgstr "Kiwi Settings"
 
 #: Channels
 msgid "channels"
-msgstr "Channels"
+msgstr "Kanaler"
 
 #: Access
 msgid "access"
@@ -81,7 +81,7 @@ msgstr "Server Password"
 
 #: I have a password
 msgid "password_have"
-msgstr "I have a password"
+msgstr "Jag har ett lösenord"
 
 #: Server
 msgid "server"
@@ -93,11 +93,11 @@ msgstr "Nick"
 
 #: Channel
 msgid "channel"
-msgstr "Channel"
+msgstr "Kanal"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "Meddelanden"
 
 #: Network
 msgid "network"
@@ -109,7 +109,7 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logging in..."
+msgstr "Loggar in..."
 
 #: Invalid login
 msgid "invalid_login"
@@ -129,7 +129,7 @@ msgstr "You have been logged out"
 
 #: Search...
 msgid "do_search"
-msgstr "Search..."
+msgstr "Sök..."
 
 #: OK
 msgid "ok"
@@ -137,15 +137,15 @@ msgstr "OK"
 
 #: Cancel
 msgid "cancel"
-msgstr "Cancel"
+msgstr "Avbryt"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "Ja"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "Nej"
 
 #: Not found.
 msgid "not_found"
@@ -153,7 +153,7 @@ msgstr "Not found."
 
 #: Warning!
 msgid "warning"
-msgstr "Warning!"
+msgstr "Varning!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
@@ -181,7 +181,7 @@ msgstr "More information"
 
 #: Ignore user
 msgid "ignore_user"
-msgstr "Ignore user"
+msgstr "Ignorera användare"
 
 #: Channel
 msgid "connection_channel"
@@ -229,7 +229,7 @@ msgstr "{{count}} sekund"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "{{count}} sekunder"
 
 #: General
 msgid "settings_general"
@@ -237,11 +237,11 @@ msgstr "General"
 
 #: Language
 msgid "settings_language"
-msgstr "Language"
+msgstr "Språk"
 
 #: Theme
 msgid "settings_theme"
-msgstr "Theme"
+msgstr "Tema"
 
 #: Refresh Theme
 msgid "refresh_theme"
@@ -349,7 +349,7 @@ msgstr "Notify me when"
 
 #: All messages
 msgid "settings_notify_all"
-msgstr "All messages"
+msgstr "Alla meddelanden"
 
 #: I am mentioned
 msgid "settings_notify_mentioned"
@@ -357,7 +357,7 @@ msgstr "I am mentioned"
 
 #: Never
 msgid "settings_notify_never"
-msgstr "Never"
+msgstr "Aldrig"
 
 #: Mute sounds
 msgid "settings_notify_mute"
@@ -397,7 +397,7 @@ msgstr "Danger Zone: Changing some of these settings may break things!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "Återställ"
 
 #: Filter
 msgid "settings_advanced_filter"
@@ -553,7 +553,7 @@ msgstr "Loading previous messages..."
 
 #: Unread Messages
 msgid "unread_messages"
-msgstr "Unread Messages"
+msgstr "Olästa meddelanden"
 
 #: Reply in private
 msgid "reply_in_private"
@@ -577,7 +577,7 @@ msgstr "Your details"
 
 #: Nickname
 msgid "settings_nickname"
-msgstr "Nickname"
+msgstr "Smeknamn"
 
 #: Advanced
 msgid "settings_advanced"
@@ -721,11 +721,11 @@ msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion c
 
 #: Leave {{name}}
 msgid "state_leave"
-msgstr "Leave {{name}}"
+msgstr "Lämna {{name}}"
 
 #: Your account
 msgid "state_account"
-msgstr "Your account"
+msgstr "Ditt konto"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
@@ -1101,7 +1101,7 @@ msgstr "Disconnected"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Connected to {{network}}!"
+msgstr "Ansluten till {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
