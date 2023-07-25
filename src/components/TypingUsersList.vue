@@ -45,7 +45,12 @@ export default {
 <style>
 
 .kiwi-typinguserslist {
+    position: absolute;
+    top: -24px;
+    background: var(--brand-default-bg);
     font-size: 0.9em;
+    overflow: hidden;
+    max-height: 23px;
 }
 
 </style>

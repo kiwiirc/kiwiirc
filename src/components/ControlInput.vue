@@ -1013,10 +1013,4 @@ export default {
         right: 36px;
     }
 }
-
-.kiwi-typinguserslist {
-    position: absolute;
-    top: -24px;
-    background: var(--brand-default-bg);
-}
 </style>
