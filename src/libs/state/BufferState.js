@@ -30,6 +30,7 @@ export default class BufferState {
             chathistory_available: true,
             requested_modes: false,
             requested_banlist: false,
+            requested_invitelist: false,
             is_visible: false,
             is_requesting_chathistory: false,
         };

@@ -1271,31 +1271,73 @@ function clientMiddleware(state, network) {
 
         if (command === 'banlist') {
             let buffer = state.getBufferByName(networkid, event.channel);
-            if (buffer && buffer.flags.requested_banlist) {
-                if (!event.bans || event.bans.length === 0) {
-                    state.addMessage(buffer, {
-                        time: eventTime,
-                        server_time: serverTime,
-                        nick: '',
-                        message: TextFormatting.t('bans_nobody'),
-                        type: 'banlist',
-                    });
-                } else {
-                    let banText = '';
-                    _.each(event.bans, (ban) => {
-                        let dateStr = (new Date(ban.banned_at * 1000)).toDateString();
-                        banText += `+b ${ban.banned} [by ${ban.banned_by}, ${dateStr}]\n`;
-                    });
+            let serverBuffer = network.serverBuffer();
+            let targetBuffer = buffer || serverBuffer;
 
-                    state.addMessage(buffer, {
-                        time: eventTime,
-                        server_time: serverTime,
-                        nick: '*',
-                        message: banText,
-                        type: 'banlist',
+            if (!buffer || buffer.flags.requested_banlist) {
+                let banText = '\x02';
+
+                if (targetBuffer === serverBuffer) {
+                    banText += event.channel + '  ';
+                }
+                banText += TextFormatting.t('banned') + ' [+b]\x02\n';
+
+                if (!event.bans || event.bans.length === 0) {
+                    banText += TextFormatting.t('bans_nobody');
+                } else {
+                    _.each(event.bans, (ban) => {
+                        let dateStr = (new Date(ban.banned_at * 1000)).toLocaleDateString();
+                        banText += `${ban.banned} [\x1d${ban.banned_by}, ${dateStr}\x1d]\n`;
                     });
                 }
-                buffer.flags.requested_banlist = false;
+
+                state.addMessage(targetBuffer, {
+                    time: eventTime,
+                    server_time: serverTime,
+                    nick: '',
+                    message: banText,
+                    type: 'banlist',
+                });
+
+                if (buffer) {
+                    buffer.flag('requested_banlist', false);
+                }
+            }
+        }
+
+        if (command === 'inviteList') {
+            let buffer = state.getBufferByName(networkid, event.channel);
+            let serverBuffer = network.serverBuffer();
+            let targetBuffer = buffer || serverBuffer;
+
+            if (!buffer || buffer.flags.requested_invitelist) {
+                let inviteText = '\x02';
+
+                if (targetBuffer === serverBuffer) {
+                    inviteText += event.channel + '  ';
+                }
+                inviteText += TextFormatting.t('invited') + ' [+I]\x02\n';
+
+                if (!event.invites || event.invites.length === 0) {
+                    inviteText += TextFormatting.t('invited_nobody');
+                } else {
+                    _.each(event.invites, (invite) => {
+                        let dateStr = (new Date(invite.invited_at * 1000)).toLocaleDateString();
+                        inviteText += `${invite.invited} [\x1d${invite.invited_by}, ${dateStr}\x1d]\n`;
+                    });
+                }
+
+                state.addMessage(targetBuffer, {
+                    time: eventTime,
+                    server_time: serverTime,
+                    nick: '',
+                    message: inviteText,
+                    type: 'invitelist',
+                });
+
+                if (buffer) {
+                    buffer.flag('requested_invitelist', false);
+                }
             }
         }
 
