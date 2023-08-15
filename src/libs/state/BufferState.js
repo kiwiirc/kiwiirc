@@ -24,6 +24,7 @@ export default class BufferState {
         this.modes = Object.create(null);
         this.flags = {
             unread: 0,
+            highlight: false,
             has_opened: false,
             channel_badkey: false,
             chathistory_available: true,
