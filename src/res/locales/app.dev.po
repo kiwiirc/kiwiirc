@@ -435,6 +435,10 @@ msgstr "Refreshing banlist..."
 msgid "bans_nobody"
 msgstr "Nobody is banned!"
 
+#: Add ban
+msgid "bans_add_ban"
+msgstr "Add ban"
+
 
 
 #: ChannelInvitelist $t('invites_')

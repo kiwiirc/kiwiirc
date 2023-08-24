@@ -117,9 +117,6 @@ export default {
         },
     },
     methods: {
-        updateBanList() {
-            this.buffer.getNetwork().ircClient.raw('MODE', this.buffer.name, '+b');
-        },
         setMode(mode, param) {
             this.buffer.getNetwork().ircClient.raw('MODE', this.buffer.name, mode, param);
         },

@@ -21,7 +21,7 @@ export default class BufferState {
         this.key = '';
         this.joined = false;
         this.enabled = true;
-        this.created_at = 0;
+        this.created_at = null;
         this.users = Object.create(null);
         this.modes = Object.create(null);
         this.flags = {

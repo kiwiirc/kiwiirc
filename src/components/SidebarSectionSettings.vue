@@ -238,6 +238,10 @@ export default {
         }
     }
 
+    .kiwi-sidebar-settings-access-when {
+        white-space: nowrap;
+    }
+
     .kiwi-sidebar-settings-access-actions {
         text-align: center;
         position: relative;

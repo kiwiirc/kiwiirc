@@ -35,15 +35,17 @@
                 v-if="supportsAccounts && knownAccounts.length > 0"
                 ref="autocomplete"
                 class="kiwi-invitelist-auto-complete"
+                items-per-page="5"
                 :items="knownAccounts"
                 :filter="inviteMaskOrAccount"
-                @selected="inviteSelected"
+                @selected="accountSelected"
             />
         </template>
 
         <a
-            class="u-link kiwi-invitelist-refresh"
-            @click="updateInvitelist"
+            class="kiwi-invitelist-refresh"
+            :class="{'u-link': !is_refreshing && !clickUpdateTimeout }"
+            @click="clickUpdateInvitelist"
         >
             {{ $t('invites_refresh') }}
         </a>
@@ -58,12 +60,12 @@
             <div class="kiwi-sidebar-settings-access-table-header" />
             <div v-if="areWeAnOp" class="kiwi-sidebar-settings-access-table-header" />
 
-            <template v-for="invite in inviteListAccounts.concat(inviteListNonAccounts)">
+            <template v-for="invite in sortedInviteList">
                 <div
                     :key="'mask' + invite.invited"
                     class="kiwi-sidebar-settings-access-mask"
                 >
-                    {{ displayMask(invite) }}
+                    {{ displayMask(invite.invited) }}
                 </div>
                 <div
                     :key="'who' + invite.invited"
@@ -94,13 +96,13 @@
                 </div>
             </template>
         </div>
-
-        <div v-if="is_refreshing">
+        <div v-else-if="is_refreshing">
             {{ $t('invites_refreshing') }}
         </div>
     </form>
 </template>
 <script>
+'kiwi public';
 
 import _ from 'lodash';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
@@ -108,9 +110,25 @@ import * as Misc from '@/helpers/Misc';
 
 import AutoComplete from './AutoComplete';
 
-function inviteListSorter(a, b) {
-    return Misc.strCompare(a.invited, b.invited);
-}
+const getInviteListSorter = (_extban) => {
+    if (!_extban) {
+        return (a, b) => Misc.strCompare(a.invited, b.invited);
+    }
+
+    const extbanColon = _extban + ':';
+    return (a, b) => {
+        const aAccount = a.invited.indexOf(extbanColon) === 0;
+        const bAccount = b.invited.indexOf(extbanColon) === 0;
+
+        if (aAccount && !bAccount) {
+            return -1;
+        } else if (!aAccount && bAccount) {
+            return 1;
+        }
+
+        return Misc.strCompare(a.invited, b.invited);
+    };
+};
 
 export default {
     components: {
@@ -122,6 +140,7 @@ export default {
             inviteMaskOrAccount: '',
             inviteList: [],
             is_refreshing: false,
+            clickUpdateTimeout: 0,
         };
     },
     computed: {
@@ -131,25 +150,22 @@ export default {
         extban() {
             return IrcdDiffs.extbanAccount(this.buffer.getNetwork());
         },
-        inviteListAccounts() {
-            if (!this.supportsAccounts) {
-                return [];
-            }
-
-            return this.inviteList
-                .filter((i) => i.invited.indexOf(this.extban) === 0)
-                .sort(inviteListSorter);
-        },
-        inviteListNonAccounts() {
-            // Only filter extban invites if the server supports them.
-            const invites = (this.supportsAccounts)
-                ? this.inviteList.filter((i) => i.invited.indexOf(this.extban) !== 0)
-                : this.inviteList.slice();
-
-            return invites.sort(inviteListSorter);
-        },
         channelIsInviteOnly() {
             return typeof this.buffer.modes.i !== 'undefined';
+        },
+        areWeAnOp() {
+            return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
+        },
+        sortedInviteList() {
+            const sorter = getInviteListSorter(this.extban);
+            return this.inviteList.slice().sort(sorter);
+        },
+        inviteListAccounts() {
+            const extbanColon = this.extban + ':';
+
+            return (this.supportsAccounts)
+                ? this.inviteList.filter((i) => i.invited.indexOf(extbanColon) === 0)
+                : [];
         },
         anyRegisteredUserCanJoin() {
             if (!this.supportsAccounts) {
@@ -160,31 +176,27 @@ export default {
                 return false;
             }
 
-            let extban = this.extban;
+            const extbanColon = this.extban + ':';
+
             // Find any invite that only consists of the extban and nothing else. Eg. '~a:'
-            return !!this.inviteListAccounts.find((invite) => invite.invited === extban + ':');
-        },
-        areWeAnOp() {
-            return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
+            return this.inviteListAccounts.some((i) => i.invited === extbanColon);
         },
         knownAccounts() {
             // Get an array of every account name we're aware of on the network, excluding
             // the ones we already have in our invite list
-            let users = this.buffer.getNetwork().users;
-            let extban = this.extban;
-            let inviteAccountNames = this.inviteListAccounts.map((i) => {
-                let mask = i.invited;
-                return mask.replace(extban + ':', '');
-            });
+            const extbanColon = this.extban + ':';
+            const accountMapper = (invite) => invite.invited.replace(extbanColon, '');
+            const existingInviteAccounts = this.inviteListAccounts.map(accountMapper);
 
-            let accountUsers = [];
+            const users = this.buffer.getNetwork().users;
+            const accountUsers = [];
             Object.values(users).forEach((user) => {
-                if (user.account && inviteAccountNames.indexOf(user.account) === -1) {
+                if (user.account && !existingInviteAccounts.includes(user.account)) {
                     accountUsers.push(user);
                 }
             });
 
-            const mapper = (user) => {
+            const autocompleteMapper = (user) => {
                 let text = user.account;
                 if (user.account !== user.nick) {
                     text += ` (${user.nick})`;
@@ -192,13 +204,14 @@ export default {
                 return { text, user };
             };
 
-            return _.orderBy(accountUsers, ['account', 'nick']).map(mapper);
+            return _.orderBy(accountUsers, ['account', 'nick']).map(autocompleteMapper);
         },
     },
     watch: {
         buffer() {
-            this.banlist = [];
+            this.inviteList = [];
             this.is_refreshing = false;
+            this.clickUpdateTimeout = 0;
             this.updateInvitelist();
         },
     },
@@ -206,10 +219,20 @@ export default {
         this.updateInvitelist();
     },
     methods: {
-        displayMask(invite) {
-            let display = invite.invited.replace(this.extban + ':', '');
-            display = display || this.$t('invite_any_registered');
-            return display;
+        displayMask(inviteMask) {
+            return inviteMask.replace(this.extban + ':', '')
+                || this.$t('invite_any_registered');
+        },
+        clickUpdateInvitelist() {
+            if (this.clickUpdateTimeout) {
+                return;
+            }
+
+            this.clickUpdateTimeout = setTimeout(() => {
+                this.clickUpdateTimeout = 0;
+            }, 4000);
+
+            this.updateInvitelist();
         },
         updateInvitelist() {
             if (this.is_refreshing || this.buffer.getNetwork().state !== 'connected') {
@@ -241,7 +264,7 @@ export default {
             }
 
             const ircClient = this.buffer.getNetwork().ircClient;
-            const isMask = maskOrAccount.includes('@');
+            const isMask = maskOrAccount.includes('@') || maskOrAccount.includes(':');
 
             if (this.supportsAccounts && !isMask) {
                 ircClient.addInvite(this.buffer.name, `${this.extban}:${maskOrAccount}`);
@@ -263,19 +286,28 @@ export default {
         removeInviteOnly() {
             this.buffer.getNetwork().ircClient.mode(this.buffer.name, '-i');
         },
-        inviteSelected(_value, item) {
+        accountSelected(_value, item) {
             this.inviteMaskOrAccount = item.user.account;
         },
         inviteKeyDown(event) {
             if (!this.$refs.autocomplete) {
                 return;
             }
+            const autoComplete = this.$refs.autocomplete;
 
             if (event.key === 'Tab') {
-                this.$refs.autocomplete.selectCurrentItem();
                 event.preventDefault();
+                autoComplete.selectCurrentItem();
                 return;
             }
+
+            const selectedItem = autoComplete.selectedItem;
+            if (event.key === 'Enter' && selectedItem.user.account === this.inviteMaskOrAccount) {
+                event.preventDefault();
+                this.addInvite();
+                return;
+            }
+
             this.$refs.autocomplete.handleOnKeyDown(event);
         },
     },
@@ -304,6 +336,10 @@ export default {
     .kiwi-autocomplete-item {
         cursor: pointer;
     }
+}
+
+.kiwi-invitelist-refresh:not(.u-link) {
+    cursor: default;
 }
 
 .kiwi-invitelist-invite {
