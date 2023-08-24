@@ -152,6 +152,11 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     color: #fff;
 }
 
+.kiwi-channelsettings-disabled,
+.kiwi-sidebar-settings-access-actions:hover {
+    color: var(--comp-sidebar-fg);
+}
+
 .kiwi-welcome-simple-start {
     color: #fff !important;
 }

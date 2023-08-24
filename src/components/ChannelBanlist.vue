@@ -1,32 +1,56 @@
 <template>
-    <div class="kiwi-channelbanlist">
-        <form class="u-form kiwi-channelbanlist" @submit.prevent="">
-            <a class="u-link" @click="updateBanlist">{{ $t('bans_refresh') }}</a>
+    <form class="u-form kiwi-channelbanlist" @submit.prevent="">
+        <a class="u-link" @click="updateBanlist">{{ $t('bans_refresh') }}</a>
 
-            <table v-if="banlist.length > 0" class="kiwi-channelbanlist-table">
-                <tr>
-                    <th>{{ $t('bans_user') }}</th>
-                    <th />
-                    <th />
-                </tr>
-                <tr v-for="ban in banlist" :key="ban.banned" :title="'By ' + ban.banned_by">
-                    <td class="kiwi-channelbanlist-table-mask">{{ ban.banned }}</td>
-                    <td class="kiwi-channelbanlist-table-bannedat">
-                        {{ (new Date(ban.banned_at * 1000)).toDateString() }}
-                    </td>
-                    <td class="kiwi-channelbanlist-table-actions">
-                        <i class="fa fa-trash" aria-hidden="true" @click="removeBan(ban.banned)" />
-                    </td>
-                </tr>
-            </table>
-            <div v-else-if="is_refreshing">
-                {{ $t('bans_refreshing') }}
-            </div>
-            <div v-else class="kiwi-channelbanlist-empty">
-                {{ $t('bans_nobody') }}
-            </div>
-        </form>
-    </div>
+        <div
+            v-if="banlist.length > 0"
+            :class="{'kiwi-sidebar-settings-access-restricted': !areWeAnOp}"
+            class="kiwi-sidebar-settings-access-table"
+        >
+            <div class="kiwi-sidebar-settings-access-table-header">{{ $t('bans_user') }}</div>
+            <div class="kiwi-sidebar-settings-access-table-header">{{ $t('bans_by') }}</div>
+            <div class="kiwi-sidebar-settings-access-table-header" />
+            <div v-if="areWeAnOp" class="kiwi-sidebar-settings-access-table-header" />
+
+            <template v-for="ban in banlist">
+                <div
+                    :key="'mask' + ban.banned"
+                    class="kiwi-sidebar-settings-access-mask"
+                >
+                    {{ ban.banned }}
+                </div>
+                <div
+                    :key="'who' + ban.banned"
+                    class="kiwi-sidebar-settings-access-who"
+                >
+                    {{ ban.banned_by }}
+                </div>
+                <div
+                    :key="'when' + ban.banned"
+                    class="kiwi-sidebar-settings-access-when"
+                >
+                    {{
+                        (new Date(ban.banned_at * 1000)).toLocaleDateString({
+                            year: "numeric", month: "2-digit", day: "2-digit"
+                        })
+                    }}
+                </div>
+                <div
+                    v-if="areWeAnOp"
+                    :key="'actions' + ban.banned"
+                    class="kiwi-sidebar-settings-access-actions"
+                >
+                    <i class="fa fa-trash" aria-hidden="true" @click="removeBan(ban.banned)" />
+                </div>
+            </template>
+        </div>
+        <div v-else-if="is_refreshing">
+            {{ $t('bans_refreshing') }}
+        </div>
+        <div v-else class="kiwi-channelbanlist-empty">
+            {{ $t('bans_nobody') }}
+        </div>
+    </form>
 </template>
 
 <script>
@@ -34,30 +58,53 @@
 
 export default {
     props: ['buffer'],
-    data: function data() {
+    data() {
         return {
             banlist: [],
             is_refreshing: false,
         };
     },
-    created: function created() {
+    computed: {
+        areWeAnOp() {
+            return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
+        },
+    },
+    watch: {
+        buffer() {
+            this.banlist = [];
+            this.is_refreshing = false;
+            this.updateBanlist();
+        },
+    },
+    created() {
         this.updateBanlist();
     },
     methods: {
-        updateBanlist: function updateBanlist() {
-            if (this.buffer.getNetwork().state !== 'connected' || this.is_refreshing) {
+        updateBanlist() {
+            if (this.is_refreshing || this.buffer.getNetwork().state !== 'connected') {
                 return;
             }
 
-            let channelName = this.buffer.name;
+            const channelName = this.buffer.name;
+            const network = this.buffer.getNetwork();
             this.is_refreshing = true;
-            this.buffer.getNetwork().ircClient.banlist(channelName, (banEvent) => {
-                this.banlist = banEvent.bans;
+
+            network.ircClient.banlist(channelName, (event) => {
+                const currentNetwork = this.buffer.getNetwork();
+                const bufferMatches = currentNetwork.ircClient
+                    .caseCompare(this.buffer.name, event.channel);
+
+                if (!bufferMatches || network !== currentNetwork) {
+                    // The buffer or network changed since making the request
+                    return;
+                }
+
+                this.banlist = event.bans;
                 this.is_refreshing = false;
             });
         },
-        removeBan: function removeBan(mask) {
-            let channelName = this.buffer.name;
+        removeBan(mask) {
+            const channelName = this.buffer.name;
             this.buffer.getNetwork().ircClient.unban(channelName, mask);
             this.banlist = this.banlist.filter((ban) => ban.banned !== mask);
         },
@@ -66,31 +113,10 @@ export default {
 </script>
 
 <style lang="less">
-.kiwi-channelbanlist-table {
-    width: 100%;
-    border-collapse: collapse;
-    line-height: 20px;
-    margin-top: 10px;
-}
-
-.kiwi-channelbanlist-table tr {
-    border-bottom: 1px solid;
-}
-
-.kiwi-channelbanlist-table-mask {
-    word-break: break-all;
-}
-
-.kiwi-channelbanlist-table-bannedat {
-    min-width: 150px;
-}
-
-.kiwi-channelbanlist-table-actions {
-    min-width: 50px;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.3s;
-    z-index: 1;
+.kiwi-channelbanlist {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin: 10px 0;
 }
 </style>

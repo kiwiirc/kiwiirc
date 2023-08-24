@@ -141,8 +141,10 @@
 }
 
 .u-button-secondary {
+    color: #14fdce;
+    text-shadow: none;
+    border: 1px solid #14fdce;
     background: rgba(117, 117, 117, 0.07);
-    border-bottom: 1px solid rgba(117, 117, 117, 0.2);
 }
 
 .u-button-warning {
@@ -444,7 +446,7 @@
 .kiwi-autocomplete {
     box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
     border: 1px solid #ccc;
-    background: #031e11;
+    background: #07311a;
 }
 .kiwi-autocomplete-item {
     border-bottom: 1px solid #ccc;
@@ -591,13 +593,6 @@
 .kiwi-messageinfo-urls {
     border-top: 1px solid #14fdce;
     border-bottom: 1px solid #14fdce;
-}
-
-.kiwi-messageinfo-url .u-button-secondary {
-    color: #14fdce;
-    border: 1px solid #14fdce;
-    background: none;
-    text-shadow: none;
 }
 
 .kiwi-messageinfo-urls .kiwi-messageinfo-url:last-of-type {
@@ -791,15 +786,23 @@
     color: #00ffca !important;
 }
 
-/* Channel Banlist ( Channelbanlist.vue ) */
-.kiwi-channelbanlist-table tr {
-    border-bottom: 1px solid #ddd;
+/* ---- Sidebar - Settings ---- */
+
+.kiwi-sidebar-settings-disabled {
+    background-color: rgba(127, 127, 127, 0.1);
 }
-.kiwi-channelbanlist-table-actions:hover {
-    background-color: #b9424a;
-}
-.kiwi-channelbanlist-table-actions:hover i {
+
+.kiwi-channelsettings-disabled {
     color: #fff;
+    background-color: rgba(127, 127, 127, 0.5);
+}
+
+.kiwi-sidebar-settings-access-table > div {
+    border-bottom-color: #5dd895;
+}
+
+.kiwi-sidebar-settings-access-actions:hover {
+    background-color: #900;
 }
 
 /* Statebrowser - Left sidebar ( StateBrowser.vue ) */

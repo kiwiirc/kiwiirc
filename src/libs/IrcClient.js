@@ -98,9 +98,18 @@ export function create(state, network) {
 
         let eventObj = { network, message, handled: false };
         state.$emit('ircout', eventObj);
-        if (!eventObj.handled) {
-            originalIrcClientRaw.apply(ircClient, [message]);
+        if (eventObj.handled) {
+            return;
         }
+
+        // Workaround for unsetting the topic as to1459() will remove the trialling colon.
+        const isTopic = (args.length === 1 && args[0].indexOf('TOPIC') === 0);
+        if (isTopic && args[0].lastIndexOf(':') === args[0].length - 1) {
+            originalIrcClientRaw.apply(ircClient, args);
+            return;
+        }
+
+        originalIrcClientRaw.apply(ircClient, [message]);
     };
 
     ircClient.on('raw', (event) => {

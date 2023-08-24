@@ -490,6 +490,10 @@ msgstr "(Any registered user)"
 
 #: ChannelInfo $t('channel_')
 
+#: Mods Only
+msgid "mods_only"
+msgstr "Mods Only"
+
 #: Topic
 msgid "channel_topic"
 msgstr "Topic"
