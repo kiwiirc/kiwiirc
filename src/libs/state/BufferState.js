@@ -16,10 +16,12 @@ export default class BufferState {
         this.networkid = networkid;
         this.name = name;
         this.topics = [];
+        this.topic_by = '';
+        this.topic_when = 0;
         this.key = '';
         this.joined = false;
         this.enabled = true;
-        this.created_at = null;
+        this.created_at = 0;
         this.users = Object.create(null);
         this.modes = Object.create(null);
         this.flags = {

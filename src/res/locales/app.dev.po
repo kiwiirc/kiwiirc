@@ -758,13 +758,21 @@ msgstr "No buffer set"
 
 #: Sidebar About Buffer
 
+#: About
+msgid "about"
+msgstr "About"
+
 #: There is no topic for this channel
 msgid "no_topic_set"
 msgstr "There is no topic for this channel"
 
-#: About
-msgid "about"
-msgstr "About"
+#: Topic set by {{who}} on {{when}}
+msgid "topic_setby"
+msgstr "Set by {{who}} on {{when}}"
+
+#: Created on {{when}}
+msgid "created_on"
+msgstr "Created on {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
