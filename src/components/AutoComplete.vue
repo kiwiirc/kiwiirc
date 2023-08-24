@@ -128,9 +128,9 @@ export default {
             this.tempCurrentItem();
         },
         filter() {
-            let numItems = this.filteredAndLimitedItems.length - 1;
+            const numItems = this.filteredAndLimitedItems.length - 1;
             if (this.selected_idx > numItems) {
-                this.selected_idx = numItems;
+                this.selected_idx = (numItems < 0) ? 0 : numItems;
             }
         },
     },
