@@ -35,11 +35,11 @@
 <script>
 'kiwi public';
 
-import _ from 'lodash';
+import * as Misc from '@/helpers/Misc';
 
 export default {
-    props: ['filter', 'buffer', 'items'],
-    data: function data() {
+    props: ['filter', 'buffer', 'items', 'itemsPerPage'],
+    data() {
         return {
             // items: [
             //     { text: 'anick1', type: 'user' },
@@ -52,10 +52,19 @@ export default {
         };
     },
     computed: {
+        itemLimits() {
+            const itemLimit = parseInt(this.itemsPerPage, 10) || 7;
+            const halfLimit = (itemLimit - 1) / 2;
+            return {
+                all: itemLimit,
+                backward: Math.floor(halfLimit) || 1,
+                forward: Math.ceil(halfLimit) || 1,
+            };
+        },
         filteredItems() {
-            let filterVal = (this.filter || '').toLowerCase();
+            const filterVal = (this.filter || '').toLowerCase();
 
-            return _(this.items).filter((item) => {
+            return this.items.filter((item) => {
                 let s = false;
                 if (item.text.toLowerCase().indexOf(filterVal) === 0) {
                     s = true;
@@ -68,15 +77,13 @@ export default {
                 });
 
                 return s;
-            })
-                .sort((a, b) => a.text.localeCompare(b.text))
-                .value();
+            }).sort(Misc.strCompare);
         },
         filteredAndLimitedItems() {
             return this.filteredItems.filter((item, itemIdx, items) => {
                 let numItems = items.length - 1;
-                let idxFrom = this.selected_idx - 3;
-                let idxTo = this.selected_idx + 3;
+                let idxFrom = this.selected_idx - this.itemLimits.backward;
+                let idxTo = this.selected_idx + this.itemLimits.forward;
                 let isInRange = false;
 
                 // Adjust the number of items before and after the selected item
@@ -128,9 +135,9 @@ export default {
             this.tempCurrentItem();
         },
         filter() {
-            let numItems = this.filteredAndLimitedItems.length - 1;
+            const numItems = this.filteredAndLimitedItems.length - 1;
             if (this.selected_idx > numItems) {
-                this.selected_idx = numItems;
+                this.selected_idx = (numItems < 0) ? 0 : numItems;
             }
         },
     },
@@ -188,15 +195,17 @@ export default {
                 handled = true;
             } else if (event.keyCode === 33 || event.keyCode === 34) {
                 // pageUp || pageDown
-                let maxIdx = this.filteredItems.length - 1;
-                let jump = 7;
+                const maxIdx = this.filteredItems.length - 1;
+                const limits = this.itemLimits;
+                let jump = limits.all;
 
                 // current position is within the first or last 3
-                // correctly jump the right ammount
-                if (this.selected_idx < 4) {
-                    jump = 10 - this.selected_idx;
-                } else if (this.selected_idx > maxIdx - 4) {
-                    jump = 10 - (maxIdx - this.selected_idx);
+                // correctly jump the right amount
+                if (this.selected_idx <= limits.backward) {
+                    jump = (limits.all + limits.backward) - this.selected_idx;
+                } else if (this.selected_idx >= maxIdx - limits.forward) {
+                    // the center point maybe offset if an even number of items is shown
+                    jump = (limits.all + limits.forward) - (maxIdx - this.selected_idx);
                 }
 
                 // backwards or forward
@@ -257,7 +266,6 @@ export default {
     right: 0;
     left: 0;
     z-index: 1;
-    max-height: 300px;
 }
 
 .kiwi-autocomplete-item {
