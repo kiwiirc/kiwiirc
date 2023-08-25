@@ -198,16 +198,12 @@ export default {
         filteredMessagesGroupedDay() {
             // Group messages by day
 
-            // txOffset is the milliseconds needed to get localtime to UTC
-            // eg UTC+1 = -3,600,000
-            const tzOffset = (new Date()).getTimezoneOffset() * 60000;
             const days = [];
             let lastDay = null;
             this.filteredMessages.forEach((message) => {
-                let day = Math.floor((message.time - tzOffset) / 1000 / 86400);
-                if (!lastDay || day !== lastDay) {
-                    days.push({ dayNum: day, messages: [] });
-                    lastDay = day;
+                if (!lastDay || message.day_num !== lastDay) {
+                    days.push({ dayNum: message.day_num, messages: [] });
+                    lastDay = message.day_num;
                 }
 
                 days[days.length - 1].messages.push(message);
