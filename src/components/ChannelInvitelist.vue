@@ -238,7 +238,7 @@ export default {
                     });
                 } else if (change.mode[0] === '-') {
                     this.inviteList = this.inviteList.filter(
-                        (ban) => ban.invited !== change.param
+                        (invite) => invite.invited !== change.param
                     );
                 }
             });
