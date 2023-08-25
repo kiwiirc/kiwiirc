@@ -21,10 +21,16 @@ export default class Message {
         // messages if the message time is the same.
         def(this, 'instance_num', nextId++);
         def(this, 'id', extractMessageId(message) || nextId++);
+
+        // internal_time is used to allow for a getter/setter
+        // so day_num can be updated if the time is changed
+        def(this, 'internal_time', null);
+        def(this, 'day_num', null);
+
         // Two different times;
-        //   time = time in the users local time
+        //   time = time in the users local time (getter/setter)
         //   server_time = time the server gave us
-        def(this, 'time', message.time || Date.now());
+        this.time = message.time || Date.now();
         def(this, 'server_time', message.server_time || this.time);
         def(this, 'nick', message.nick);
         def(this, 'message', message.message);
@@ -50,6 +56,19 @@ export default class Message {
         Object.defineProperty(this, 'user', { value: user });
 
         Vue.observable(this);
+    }
+
+    get time() {
+        return this.internal_time;
+    }
+
+    set time(newTime) {
+        this.internal_time = newTime;
+        // txOffset is the milliseconds needed to get localtime to UTC
+        // eg UTC+1 = -3,600,000
+        const tzOffset = (new Date(newTime)).getTimezoneOffset() * 60000;
+        // 68400000 equals one day in milliseconds
+        this.day_num = Math.floor((newTime - tzOffset) / 86400000);
     }
 
     render() {

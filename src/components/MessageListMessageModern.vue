@@ -200,7 +200,8 @@ const methods = {
             message.time - prevMessage.time < 60000 &&
             prevMessage.type !== 'traffic' &&
             message.type !== 'traffic' &&
-            message.type === prevMessage.type;
+            message.type === prevMessage.type &&
+            message.day_num === prevMessage.day_num;
     },
     isHoveringOverMessage(message) {
         let props = this.props;

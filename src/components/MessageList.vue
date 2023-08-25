@@ -197,13 +197,13 @@ export default {
         },
         filteredMessagesGroupedDay() {
             // Group messages by day
-            let days = [];
+
+            const days = [];
             let lastDay = null;
             this.filteredMessages.forEach((message) => {
-                let day = Math.floor(message.time / 1000 / 86400);
-                if (!lastDay || day !== lastDay) {
-                    days.push({ dayNum: day, messages: [] });
-                    lastDay = day;
+                if (!lastDay || message.day_num !== lastDay) {
+                    days.push({ dayNum: message.day_num, messages: [] });
+                    lastDay = message.day_num;
                 }
 
                 days[days.length - 1].messages.push(message);
