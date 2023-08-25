@@ -110,12 +110,12 @@ import * as Misc from '@/helpers/Misc';
 
 import AutoComplete from './AutoComplete';
 
-const getInviteListSorter = (_extban) => {
-    if (!_extban) {
+const getInviteListSorter = (extban) => {
+    if (!extban) {
         return (a, b) => Misc.strCompare(a.invited, b.invited);
     }
 
-    const extbanColon = _extban + ':';
+    const extbanColon = extban + ':';
     return (a, b) => {
         const aAccount = a.invited.indexOf(extbanColon) === 0;
         const bAccount = b.invited.indexOf(extbanColon) === 0;

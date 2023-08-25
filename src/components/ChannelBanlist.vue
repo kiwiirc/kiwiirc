@@ -85,12 +85,12 @@ const basicBanListSorter = (a, b) => {
 
     return b.banned_at - a.banned_at;
 };
-const getBanListSorter = (_extban) => {
-    if (!_extban) {
+const getBanListSorter = (extban) => {
+    if (!extban) {
         return basicBanListSorter;
     }
 
-    const extbanColon = _extban + ':';
+    const extbanColon = extban + ':';
     return (a, b) => {
         const aAccount = a.banned.indexOf(extbanColon) === 0;
         const bAccount = b.banned.indexOf(extbanColon) === 0;
