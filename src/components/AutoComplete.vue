@@ -56,6 +56,7 @@ export default {
             const itemLimit = parseInt(this.itemsPerPage, 10) || 7;
             const halfLimit = (itemLimit - 1) / 2;
             return {
+                all: itemLimit,
                 backward: Math.floor(halfLimit) || 1,
                 forward: Math.ceil(halfLimit) || 1,
             };
@@ -194,15 +195,17 @@ export default {
                 handled = true;
             } else if (event.keyCode === 33 || event.keyCode === 34) {
                 // pageUp || pageDown
-                let maxIdx = this.filteredItems.length - 1;
-                let jump = 7;
+                const maxIdx = this.filteredItems.length - 1;
+                const limits = this.itemLimits;
+                let jump = limits.all;
 
                 // current position is within the first or last 3
-                // correctly jump the right ammount
-                if (this.selected_idx < 4) {
-                    jump = 10 - this.selected_idx;
-                } else if (this.selected_idx > maxIdx - 4) {
-                    jump = 10 - (maxIdx - this.selected_idx);
+                // correctly jump the right amount
+                if (this.selected_idx <= limits.backward) {
+                    jump = (limits.all + limits.backward) - this.selected_idx;
+                } else if (this.selected_idx >= maxIdx - limits.forward) {
+                    // the center point maybe offset if an even number of items is shown
+                    jump = (limits.all + limits.forward) - (maxIdx - this.selected_idx);
                 }
 
                 // backwards or forward
@@ -263,7 +266,6 @@ export default {
     right: 0;
     left: 0;
     z-index: 1;
-    max-height: 300px;
 }
 
 .kiwi-autocomplete-item {
