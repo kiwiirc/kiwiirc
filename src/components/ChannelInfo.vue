@@ -110,7 +110,7 @@ export default {
             },
         },
         prevTopics() {
-            return this.buffer.topics.filter((topic) => topic.trim());
+            return this.buffer.topics.slice(1).filter((topic) => topic.trim());
         },
         areWeAnOp() {
             return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);

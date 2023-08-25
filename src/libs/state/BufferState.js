@@ -117,13 +117,15 @@ export default class BufferState {
     }
 
     get topic() {
-        return this.topics.length === 0 ?
-            '' :
-            this.topics[this.topics.length - 1];
+        return this.topics[0] ?? '';
     }
 
     set topic(newVal) {
-        this.topics.push(newVal);
+        const maxLength = 5;
+        this.topics.unshift(newVal);
+        if (this.topics.length > maxLength) {
+            this.topics.length = maxLength;
+        }
     }
 
     get isVisible() {
