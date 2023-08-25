@@ -38,7 +38,7 @@
                 <span>{{ $t('channel_external') }}</span>
                 <input v-model="modeN" type="checkbox" :disabled="!areWeAnOp">
             </label>
-            <label>
+            <label class="kiwi-channelinfo-password">
                 <span>{{ $t('password') }}</span>
                 <input v-model.lazy="modeK" type="text" class="u-input" :readonly="!areWeAnOp">
             </label>
@@ -140,9 +140,15 @@ export default {
 };
 </script>
 
-<style>
-.kiwi-channelinfo .kiwi-channelinfo-topic {
-    margin-bottom: 10px;
+<style lang="less">
+.kiwi-channelinfo {
+    .kiwi-channelinfo-topic {
+        margin-bottom: 10px;
+    }
+
+    .kiwi-channelinfo-password {
+        margin-top: 10px;
+    }
 }
 
 .kiwi-channelinfo-previoustopics {

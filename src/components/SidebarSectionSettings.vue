@@ -161,7 +161,10 @@ export default {
 
 .kiwi-sidebar-settings {
     padding: 0 1em 1em 1em;
-    margin-top: 1em;
+
+    &:first-of-type {
+        margin-top: 1em;
+    }
 
     label {
         display: block;
