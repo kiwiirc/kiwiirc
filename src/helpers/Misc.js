@@ -379,3 +379,23 @@ export function makePluginObject(pluginId, componentOrElement, args = {}) {
 
     return plugin;
 }
+
+// This provides a better sort for numbered nicks but does not work on ios9
+let intlCollator;
+if (global.Intl) {
+    intlCollator = new Intl.Collator({}, { numeric: true });
+}
+
+export function strCompare(a, b) {
+    if (intlCollator) {
+        return intlCollator.compare(a, b);
+    }
+
+    if (a === b) {
+        return 0;
+    }
+
+    return a > b ?
+        1 :
+        -1;
+}

@@ -71,6 +71,7 @@
                     v-if="invitableUsers.length > 0"
                     ref="autocomplete"
                     class="kiwi-aboutbuffer-invite-auto-complete"
+                    items-per-page="5"
                     :items="invitableUsers"
                     :filter="inviteNick"
                     @selected="inviteSelected"

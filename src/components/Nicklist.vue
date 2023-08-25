@@ -54,30 +54,11 @@
 'kiwi public';
 
 import Logger from '@/libs/Logger';
+import * as Misc from '@/helpers/Misc';
+
 import NicklistUser from './NicklistUser';
 
 let log = Logger.namespace('Nicklist');
-
-// This provides a better sort for numbered nicks but does not work on ios9
-let intlCollator = null;
-if (global.Intl) {
-    intlCollator = new Intl.Collator({}, { numeric: true });
-}
-
-// Hot function, so it's here for easier caching
-function strCompare(a, b) {
-    if (intlCollator) {
-        return intlCollator.compare(a, b);
-    }
-
-    if (a === b) {
-        return 0;
-    }
-
-    return a > b ?
-        1 :
-        -1;
-}
 
 export default {
     components: {
@@ -155,7 +136,7 @@ export default {
                         }
                     }
 
-                    return strCompare(nickMap[a.nick], nickMap[b.nick]);
+                    return Misc.strCompare(nickMap[a.nick], nickMap[b.nick]);
                 }
 
                 // Compare via prefixes..
@@ -193,7 +174,7 @@ export default {
                 }
 
                 // Prefixes are the same, resort to comparing text
-                return strCompare(nickMap[a.nick], nickMap[b.nick]);
+                return Misc.strCompare(nickMap[a.nick], nickMap[b.nick]);
             });
         },
         useColouredNicks() {
