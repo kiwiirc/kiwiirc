@@ -216,6 +216,34 @@ export default {
         },
     },
     created() {
+        this.listen(this.$state, 'irc.mode', (event, network) => {
+            if (network !== this.buffer.getNetwork()) {
+                return;
+            }
+            if (!network.ircClient.caseCompare(event.target, this.buffer.name)) {
+                return;
+            }
+
+            event.modes.forEach((change) => {
+                if (change.mode.length !== 2 || change.mode[1] !== 'I') {
+                    return;
+                }
+
+                if (change.mode[0] === '+') {
+                    this.inviteList.push({
+                        invited: change.param,
+                        invited_at: Math.floor(event.time / 1000),
+                        invited_by: event.nick,
+                        channel: event.target,
+                    });
+                } else if (change.mode[0] === '-') {
+                    this.inviteList = this.inviteList.filter(
+                        (ban) => ban.invited !== change.param
+                    );
+                }
+            });
+        });
+
         this.updateInvitelist();
     },
     methods: {
@@ -273,12 +301,10 @@ export default {
             }
 
             this.inviteMaskOrAccount = '';
-            this.updateInvitelist();
         },
         removeInvite(mask) {
             const channelName = this.buffer.name;
             this.buffer.getNetwork().ircClient.removeInvite(channelName, mask);
-            this.inviteList = this.inviteList.filter((invite) => invite.invited !== mask);
         },
         setInviteOnly() {
             this.buffer.getNetwork().ircClient.mode(this.buffer.name, '+i');

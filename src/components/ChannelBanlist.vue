@@ -138,6 +138,32 @@ export default {
         },
     },
     created() {
+        this.listen(this.$state, 'irc.mode', (event, network) => {
+            if (network !== this.buffer.getNetwork()) {
+                return;
+            }
+            if (!network.ircClient.caseCompare(event.target, this.buffer.name)) {
+                return;
+            }
+
+            event.modes.forEach((change) => {
+                if (change.mode.length !== 2 || change.mode[1] !== 'b') {
+                    return;
+                }
+
+                if (change.mode[0] === '+') {
+                    this.banList.push({
+                        banned: change.param,
+                        banned_at: Math.floor(event.time / 1000),
+                        banned_by: event.nick,
+                        channel: event.target,
+                    });
+                } else if (change.mode[0] === '-') {
+                    this.banList = this.banList.filter((ban) => ban.banned !== change.param);
+                }
+            });
+        });
+
         this.updateBanlist();
     },
     methods: {
@@ -187,12 +213,10 @@ export default {
             ircClient.ban(this.buffer.name, mask);
 
             this.banMask = '';
-            this.updateBanlist();
         },
         removeBan(mask) {
             const channelName = this.buffer.name;
             this.buffer.getNetwork().ircClient.unban(channelName, mask);
-            this.banList = this.banList.filter((ban) => ban.banned !== mask);
         },
         banKeyDown(event) {
             if (event.key === 'Enter') {
