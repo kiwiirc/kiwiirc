@@ -84,7 +84,7 @@ function generateComputedModeWithParam(mode) {
 
 export default {
     props: ['buffer'],
-    data: function data() {
+    data() {
         return {
             showPrevTopics: false,
         };
@@ -159,5 +159,4 @@ export default {
     margin-top: 0;
     margin-left: 6px;
 }
-
 </style>

@@ -114,7 +114,6 @@
 </template>
 
 <script>
-
 'kiwi public';
 
 import GlobalApi from '@/libs/GlobalApi';
@@ -193,7 +192,6 @@ export default {
 </script>
 
 <style lang="less">
-
 /* Adjust the sidebars width when this component is in view */
 .kiwi-sidebar.kiwi-sidebar-section-about {
     max-width: 300px;

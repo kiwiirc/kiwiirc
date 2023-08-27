@@ -99,8 +99,12 @@
         <div v-else-if="is_refreshing">
             {{ $t('invites_refreshing') }}
         </div>
+        <div v-else>
+            {{ $t('invites_nobody') }}
+        </div>
     </form>
 </template>
+
 <script>
 'kiwi public';
 
@@ -339,6 +343,7 @@ export default {
     },
 };
 </script>
+
 <style lang="less">
 .kiwi-invitelist {
     display: flex;

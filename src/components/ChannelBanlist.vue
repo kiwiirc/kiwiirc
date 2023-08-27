@@ -66,7 +66,7 @@
         <div v-else-if="is_refreshing">
             {{ $t('bans_refreshing') }}
         </div>
-        <div v-else class="kiwi-channelbanlist-empty">
+        <div v-else>
             {{ $t('bans_nobody') }}
         </div>
     </form>
