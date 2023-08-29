@@ -47,6 +47,9 @@
                 <div
                     :key="'when' + ban.banned"
                     class="kiwi-sidebar-settings-access-when"
+                    :title="(new Date(ban.banned_at * 1000)).toLocaleString({
+                        year: 'numeric', month: '2-digit', day: '2-digit'
+                    })"
                 >
                     {{
                         (new Date(ban.banned_at * 1000)).toLocaleDateString({

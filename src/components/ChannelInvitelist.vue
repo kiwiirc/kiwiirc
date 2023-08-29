@@ -76,6 +76,9 @@
                 <div
                     :key="'when' + invite.invited"
                     class="kiwi-sidebar-settings-access-when"
+                    :title="(new Date(invite.invited_at * 1000)).toLocaleString({
+                        year: 'numeric', month: '2-digit', day: '2-digit'
+                    })"
                 >
                     {{
                         (new Date(invite.invited_at * 1000)).toLocaleDateString({
