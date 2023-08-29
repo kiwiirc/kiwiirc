@@ -73,8 +73,17 @@
                             type="text"
                             @focus="onNewChannelInputFocus"
                             @blur="onNewChannelInputBlur"
+                            @keydown="onNewChannelKeyDown"
                         >
                     </div>
+                    <auto-complete
+                        ref="autocomplete"
+                        class="kiwi-statebrowser-newchannel-autocomplete"
+                        items-per-page="5"
+                        :items="suggestedChannelsList"
+                        :filter="channel_add_input"
+                        @selected="onNewChannelSelected"
+                    />
                 </form>
             </div>
         </transition-expand>
@@ -250,11 +259,13 @@
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import * as bufferTools from '@/libs/bufferTools';
+import AutoComplete from './AutoComplete';
 import BufferSettings from './BufferSettings';
 import StateBrowserBuffer from './StateBrowserBuffer';
 
 export default {
     components: {
+        AutoComplete,
         BufferSettings,
         Buffer: StateBrowserBuffer,
     },
@@ -350,6 +361,24 @@ export default {
             });
 
             return types;
+        },
+        suggestedChannelsList() {
+            const networkid = this.network.id;
+
+            const suggestedChannels = this.$state.setting('suggestedChannels');
+            if (Array.isArray(suggestedChannels)) {
+                return suggestedChannels
+                    .filter((c) => !this.$state.getBufferByName(networkid, c.channel))
+                    .map((c) => ({ text: c }));
+            }
+
+            if (this.network.channel_list_state === '') {
+                this.network.ircClient.raw('LIST');
+            }
+            return this.network.channel_list.slice()
+                .filter((c) => !this.$state.getBufferByName(networkid, c.channel))
+                .sort((a, b) => b.num_users - a.num_users)
+                .map((c) => ({ text: c.channel, count: c.num_users, type: 'channel' }));
         },
         channelActivity() {
             return this.activityFromBuffers(this.filteredBuffersByType.channels);
@@ -510,6 +539,34 @@ export default {
         closeFilterChannel() {
             this.channel_filter = '';
             this.channel_filter_display = false;
+        },
+        onNewChannelKeyDown(event) {
+            if (!this.$refs.autocomplete) {
+                return;
+            }
+            const autoComplete = this.$refs.autocomplete;
+
+            if (event.key === 'Tab') {
+                event.preventDefault();
+                autoComplete.selectCurrentItem();
+                return;
+            }
+
+            if (event.key === 'Escape') {
+                this.channel_add_input = '';
+                this.channel_add_display = false;
+                return;
+            }
+
+            const selectedItem = autoComplete.selectedItem;
+            if (event.key === 'Enter' && selectedItem.text === this.channel_add_input) {
+                return;
+            }
+
+            this.$refs.autocomplete.handleOnKeyDown(event);
+        },
+        onNewChannelSelected(value) {
+            this.channel_add_input = value;
         },
     },
 };
@@ -745,6 +802,19 @@ export default {
 
 .kiwi-statebrowser-newchannel-inputwrap--focus {
     opacity: 1;
+}
+
+.kiwi-statebrowser-newchannel-autocomplete.kiwi-autocomplete {
+    position: relative;
+    text-align: left;
+    background: initial;
+    border: initial;
+    box-shadow: initial;
+}
+
+.kiwi-statebrowser-newchannel-autocomplete .kiwi-autocomplete-item {
+    padding: 5px 11px;
+    border-bottom: initial;
 }
 
 /* Channel search input */
