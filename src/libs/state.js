@@ -612,7 +612,7 @@ function createNewState() {
 
                 // Check for extra custom highlight words
                 let extraHighlights = (state.setting('highlights') || '').toLowerCase().split(' ');
-                if (!isHighlight && extraHighlights.length > 0) {
+                if (!isHighlight && !buffer.isRaw() && extraHighlights.length > 0) {
                     extraHighlights.forEach((word) => {
                         if (!word) {
                             return;
@@ -624,7 +624,7 @@ function createNewState() {
                     });
                 }
 
-                if (state.setting('teamHighlights')) {
+                if (!buffer.isRaw() && state.setting('teamHighlights')) {
                     let m = bufferMessage.message;
                     let patterns = {
                         everyone: /(^|\s)@everybody($|\s|[,.;])/,
