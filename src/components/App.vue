@@ -133,6 +133,7 @@ export default {
         this.initMediaviewer();
         this.configureFavicon();
 
+        this.listen(document, 'visibilitychange', this.onVisibilityChange);
         this.listen(document, 'keydown', (event) => this.onKeyDown(event));
         this.listen(window, 'focus', (event) => this.onFocus(event));
         this.listen(window, 'blur', (event) => this.onBlur(event));
@@ -330,12 +331,17 @@ export default {
         },
         onFocus(event) {
             this.$state.ui.app_has_focus = true;
-            let buffer = this.$state.getActiveBuffer();
+            this.$state.ui.favicon_counter = 0;
+        },
+        onVisibilityChange(event) {
+            const newState = (document.visibilityState === 'visible');
+
+            const buffer = this.$state.getActiveBuffer();
             if (buffer) {
-                buffer.markAsRead(true);
+                buffer.isVisible = newState;
             }
 
-            this.$state.ui.favicon_counter = 0;
+            this.$state.ui.app_is_visible = newState;
         },
         onKeyDown(event) {
             this.$state.$emit('document.keydown', event);
