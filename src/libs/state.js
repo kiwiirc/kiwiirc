@@ -601,7 +601,7 @@ function createNewState() {
 
                 let network = buffer.getNetwork();
                 let isNewMessage = message.time >= buffer.last_read;
-                let isHighlight = !network ?
+                let isHighlight = !network || buffer.isRaw() ?
                     false :
                     Misc.mentionsNick(bufferMessage.message, network.ircClient.user.nick);
 

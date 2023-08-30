@@ -169,6 +169,10 @@ export default class BufferState {
         return this.name === '*';
     }
 
+    isRaw() {
+        return this.name === '*raw';
+    }
+
     isChannel() {
         let chanPrefixes = ['#', '&'];
         let ircNetwork = this.getNetwork().ircClient.network;
