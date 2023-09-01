@@ -414,7 +414,7 @@ function clientMiddleware(state, network) {
                 // If we don't have a buffer for this notice sender, either show it in our active
                 // buffer or the server buffer
                 if (!existingBuffer) {
-                    if (noticeActiveBuffer && hasActiveBuffer) {
+                    if (noticeActiveBuffer && hasActiveBuffer && !activeBuffer.isSpecial()) {
                         bufferName = activeBuffer.name;
                     } else {
                         bufferName = '*';
