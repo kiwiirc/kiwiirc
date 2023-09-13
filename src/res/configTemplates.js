@@ -79,6 +79,7 @@ export const configTemplates = {
             // flash_title: message/highlight/off
             flash_title: 'message',
             nicklist_avatars: false,
+            warn_expected_command: true,
             show_link_previews: true,
             inline_link_auto_previews: true,
             inline_link_auto_previews_query: true,

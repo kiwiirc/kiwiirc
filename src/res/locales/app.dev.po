@@ -574,6 +574,14 @@ msgstr "Private conversation with {{user}}"
 msgid "input_placeholder"
 msgstr "Send a message..."
 
+#: This message looks like a command but is preceded by spaces.
+msgid "input_not_command"
+msgstr "This message looks like a command but is preceded by spaces."
+
+#: Send as text?
+msgid "input_send_text"
+msgstr "Send as text?"
+
 
 
 #: MediaViewer $t('media_')
