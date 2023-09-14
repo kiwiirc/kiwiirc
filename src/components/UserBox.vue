@@ -213,6 +213,7 @@
 import * as ipRegex from 'ip-regex';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import * as IrcdDiffs from '@/helpers/IrcdDiffs';
+import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 import toHtml from '@/libs/renderers/Html';
 import parseMessage from '@/libs/MessageParser';
@@ -327,7 +328,7 @@ export default {
             },
         },
         userChannels() {
-            let channels = this.user.whois.channels.trim().split(' ');
+            let channels = this.user.whois.channels.trim().split(' ').sort(Misc.strCompare);
             for (let i = 0; i < channels.length; i++) {
                 channels[i] = TextFormatting.linkifyChannels(channels[i]);
             }
