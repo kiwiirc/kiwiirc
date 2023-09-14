@@ -748,40 +748,27 @@ function clientMiddleware(state, network) {
             state.addUser(networkid, { nick: event.nick, account: event.account || '' });
         }
 
-        if (command === 'whois') {
-            let obj = {
+        if (command === 'whois' && !event.error) {
+            const userObj = {
                 nick: event.nick,
                 host: event.hostname,
                 username: event.ident,
-                away: event.away || '',
                 realname: event.real_name,
-                hasWhois: true,
             };
 
-            // Some other optional bits of info
-            [
-                'actual_host',
-                'helpop',
-                'bot',
-                'server',
-                'server_info',
-                'operator',
-                'channels',
-                'modes',
-                'idle',
-                'logon',
-                'registered_nick',
-                'account',
-                'secure',
-                'certfp',
-                'special',
-            ].forEach((prop) => {
+            // Whois items that maybe will exist
+            ['away', 'account'].forEach((prop) => {
                 if (typeof event[prop] !== 'undefined') {
-                    obj[prop] = event[prop];
+                    userObj[prop] = event[prop] || '';
                 }
             });
 
-            state.addUser(networkid, obj);
+            const user = state.addUser(networkid, userObj);
+            Object.keys(user.whois).forEach((prop) => (
+                user.whois[prop] = event[prop] ?? ''
+            ));
+
+            user.hasWhois = true;
         }
 
         if (command === 'away') {
@@ -1205,6 +1192,32 @@ function clientMiddleware(state, network) {
                     });
                 });
             } else {
+                if (event.target === network.nick) {
+                    let user = network.currentUser();
+
+                    event.modes.forEach((item) => {
+                        if (item.mode[0] === '+') {
+                            const existIdx = user.modes.findIndex(
+                                (uItem) => uItem.mode === item.mode[1]
+                            );
+                            if (existIdx === -1) {
+                                user.modes.push({
+                                    mode: item.mode[1],
+                                    param: item.param,
+                                });
+                            }
+                        } else {
+                            const removeIdx = user.modes.findIndex(
+                                (uItem) => uItem.mode === item.mode[1]
+                            );
+
+                            if (removeIdx !== -1) {
+                                user.modes.splice(removeIdx, 1);
+                            }
+                        }
+                    });
+                }
+
                 // target is not a channel buffer (user mode ?)
                 // if mode had param, show in a new line
                 let modeslines = {};

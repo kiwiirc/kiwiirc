@@ -111,24 +111,26 @@
                 <span class="kiwi-userbox-whois-line">
                     {{ $t('user_realname', {realname: user.realname}) }}
                 </span>
-                <span v-if="user.bot" class="kiwi-userbox-whois-line">{{ $t('user_bot') }}</span>
-                <span v-if="user.helpop" class="kiwi-userbox-whois-line">
+                <span v-if="user.whois.bot" class="kiwi-userbox-whois-line">
+                    {{ $t('user_bot') }}
+                </span>
+                <span v-if="user.whois.helpop" class="kiwi-userbox-whois-line">
                     {{ $t('user_help') }}
                 </span>
-                <span v-if="user.operator" class="kiwi-userbox-whois-line">
+                <span v-if="user.whois.operator" class="kiwi-userbox-whois-line">
                     {{ $t('user_op') }}
                 </span>
-                <span v-if="user.server" class="kiwi-userbox-whois-line">
+                <span v-if="user.whois.server" class="kiwi-userbox-whois-line">
                     {{ $t('user_server', {
-                        server: user.server,
-                        info: (user.server_info ? `(${user.server_info})` : '')
+                        server: user.whois.server,
+                        info: (user.whois.server_info ? `(${user.whois.server_info})` : '')
                     }) }}
                 </span>
-                <span v-if="user.secure" class="kiwi-userbox-whois-line">
+                <span v-if="user.whois.secure" class="kiwi-userbox-whois-line">
                     {{ $t('user_secure') }}
                 </span>
                 <span
-                    v-if="user.channels"
+                    v-if="user.whois.channels"
                     class="kiwi-userbox-whois-line"
                     @click="onChannelsClick($event)"
                     v-html="$t('user_channels', {channels: userChannels})"
@@ -223,7 +225,7 @@ export default {
         AwayStatusIndicator,
     },
     props: ['network', 'buffer', 'user', 'sidebarState'],
-    data: function data() {
+    data() {
         return {
             self: this,
             whoisRequested: false,
@@ -236,7 +238,7 @@ export default {
     },
     computed: {
         // Channel modes differ on some IRCds so get them from the network options
-        availableChannelModes: function availableChannelModes() {
+        availableChannelModes() {
             let availableModes = [];
             let prefixes = this.network.ircClient.network.options.PREFIX;
             let knownPrefix = {
@@ -259,7 +261,7 @@ export default {
 
             return availableModes;
         },
-        areWeAnOp: function areWeAnOp() {
+        areWeAnOp() {
             if (!this.buffer) {
                 return false;
             }
@@ -274,7 +276,7 @@ export default {
             let content = toHtml(blocks, false);
             return content;
         },
-        isUserOnBuffer: function isUserOnBuffer() {
+        isUserOnBuffer() {
             if (!this.buffer) {
                 return false;
             }
@@ -287,7 +289,7 @@ export default {
             return true;
         },
         userMode: {
-            get: function getUserMode() {
+            get() {
                 if (!this.buffer) {
                     return '';
                 }
@@ -304,7 +306,7 @@ export default {
                     '';
             },
             // Switch the current user mode for the new one
-            set: function setUserMode(newVal) {
+            set(newVal) {
                 let client = this.network.ircClient;
                 let oldVal = this.userMode;
 
@@ -325,7 +327,7 @@ export default {
             },
         },
         userChannels() {
-            let channels = this.user.channels.trim().split(' ');
+            let channels = this.user.whois.channels.trim().split(' ');
             for (let i = 0; i < channels.length; i++) {
                 channels[i] = TextFormatting.linkifyChannels(channels[i]);
             }
@@ -349,25 +351,14 @@ export default {
         },
     },
     watch: {
-        user: function watchUser() {
+        user() {
             // Reset the whois view since the user is now different
             this.whoisRequested = false;
             this.whoisLoading = false;
         },
     },
     methods: {
-        userModeOnThisBuffer: function userModeOnBuffer(user) {
-            if (!this.buffer) {
-                return '';
-            }
-
-            let userBufferInfo = user.buffers[this.buffer.id];
-            let modes = userBufferInfo.modes;
-            return modes.length > 0 ?
-                modes[0] :
-                '';
-        },
-        openQuery: function openQuery() {
+        openQuery() {
             this.sidebarState.showNicklist();
             let buffer = this.$state.addBuffer(this.network.id, this.user.nick);
             this.$state.setActiveBuffer(this.network.id, buffer.name);
@@ -383,18 +374,18 @@ export default {
                 network.ircClient.join(channelName);
             }
         },
-        updateWhoisData: function updateWhoisData() {
+        updateWhoisData() {
             this.whoisRequested = true;
             this.whoisLoading = true;
             this.network.ircClient.whois(this.user.nick, () => {
                 this.whoisLoading = false;
             });
         },
-        kickUser: function kickUser() {
+        kickUser() {
             let reason = this.$state.setting('buffers.default_kick_reason');
             this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
         },
-        createBanMask: function createBanMask() {
+        createBanMask() {
             // try to ban via user account first
             if (this.user.account) {
                 // if EXTBAN is supported use that
@@ -436,7 +427,7 @@ export default {
 
             return mask;
         },
-        banUser: function banUser() {
+        banUser() {
             if (!this.user.username || !this.user.host) {
                 return;
             }
@@ -444,7 +435,7 @@ export default {
             let banMask = this.createBanMask();
             this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
         },
-        kickbanUser: function kickbanuser() {
+        kickbanUser() {
             if (!this.user.username || !this.user.host) {
                 return;
             }

@@ -2,7 +2,7 @@
     <div class="kiwi-selfuser kiwi-theme-bg">
         <div v-if="!self_user_settings_open" class="kiwi-selfuser-mask">
             <span class="kiwi-selfuser-nick">
-                <away-status-indicator :network="network" :user="network.currentUser()" />
+                <away-status-indicator :network="network" :user="user" />
                 {{ network.nick }}
                 <i class="fa fa-times" aria-hidden="true" @click="closeSelfUser()" />
                 <i class="fa fa-pencil" aria-hidden="true" @click="openSelfActions()" />
@@ -13,7 +13,10 @@
                 />
             </span>
             <span class="kiwi-selfuser-host">
-                {{ netUser.username }}@{{ netUser.host }} ( {{ modeString }} )
+                {{ user.username }}@{{ user.host }}
+                <template v-if="modeString">
+                    ( {{ modeString }} )
+                </template>
             </span>
             <div v-if="networkSupportsAway()" class="u-form kiwi-away-checkbox-form">
                 <label class="kiwi-selfuser-away-label">
@@ -58,25 +61,21 @@ export default {
         };
     },
     computed: {
+        user() {
+            return this.network.currentUser();
+        },
         modeString() {
-            let str = '';
-            this.network.ircClient.user.modes.forEach((mode) => {
-                str += mode;
-            });
+            const user = this.user;
 
-            // Only show the + if there are modes to show
-            if (str) {
-                str = '+' + str;
+            if (!user.modes.length) {
+                return '';
             }
 
-            return str;
-        },
-        netUser() {
-            return this.network.ircClient.user;
+            return user.modes.reduce((acc, item) => acc + item.mode, '+');
         },
         awayStatus: {
             get() {
-                return this.network.currentUser().away;
+                return this.user.away;
             },
             set(val) {
                 this.network.ircClient.raw('AWAY', val ? 'Currently away' : '');
@@ -89,7 +88,7 @@ export default {
             this.error_message = '';
         },
         openProfile() {
-            this.$state.$emit('userbox.show', this.network.currentUser());
+            this.$state.$emit('userbox.show', this.user);
         },
         closeSelfUser() {
             this.$emit('close');
@@ -114,7 +113,7 @@ export default {
                 done();
                 return;
             }
-            if (nick === this.network.currentUser().nick) {
+            if (nick === this.user.nick) {
                 this.error_message = TextFormatting.t('error_nick_in_use', { nick });
                 done();
                 return;
@@ -127,7 +126,7 @@ export default {
         listenForNickEvents(done) {
             this.event_listeners.push(
                 this.listen(this.network.ircClient, 'nick', (event) => {
-                    if (event.new_nick !== this.network.currentUser().nick) {
+                    if (event.new_nick !== this.user.nick) {
                         return;
                     }
                     this.closeNickChange();
@@ -168,12 +167,6 @@ export default {
         },
         networkSupportsAway() {
             return this.network.ircClient.network.cap.isEnabled('away-notify');
-        },
-        checkUserAway() {
-            return !!this.network.currentUser().away;
-        },
-        getUserFromString(name) {
-            return this.$state.getUser(this.network.id, name);
         },
     },
 };

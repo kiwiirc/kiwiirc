@@ -11,7 +11,7 @@ export default class UserState {
         this.host = user.host || '';
         this.username = user.username || '';
         this.realname = user.realname || '';
-        this.modes = user.modes || '';
+        this.modes = user.modes || [];
         this.away = user.away || '';
         this.colour = user.colour || '';
         this.account = user.account || '';
@@ -24,19 +24,24 @@ export default class UserState {
         Vue.observable(this);
 
         // Whois details are non-enumerable properties (vues $watch won't cover these properties)
-        def(this, 'actual_host', '', true);
-        def(this, 'helpop', '', true);
-        def(this, 'bot', '', true);
-        def(this, 'server', '', true);
-        def(this, 'server_info', '', true);
-        def(this, 'operator', '', true);
-        def(this, 'channels', '', true);
-        def(this, 'modes', '', true);
-        def(this, 'idle', '', true);
-        def(this, 'logon', '', true);
-        def(this, 'registered_nick', '', true);
-        def(this, 'secure', '', true);
-        def(this, 'special', '', true);
+        // watch hasWhois to know when this data is populated
+        def(this, 'whois', {
+            actual_ip: '',
+            actual_username: '',
+            actual_hostname: '',
+            helpop: '',
+            bot: '',
+            server: '',
+            server_info: '',
+            operator: '',
+            channels: '',
+            modes: '',
+            idle: '',
+            logon: '',
+            registered_nick: '',
+            secure: '',
+            special: '',
+        }, true);
     }
 
     getColour() {
