@@ -4,7 +4,8 @@
     border: 1px solid var(--brand-midtone);
 }
 
-.kiwi-welcome-simple-error {
+.kiwi-welcome-simple-error,
+.kiwi-welcome-znc-error {
     border: 1px dashed var(--brand-error);
 }
 

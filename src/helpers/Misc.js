@@ -91,16 +91,13 @@ export function queryStringVal(_name, _url) {
  * @param {string} err The error message from the network connection
  */
 export function networkErrorMessage(err) {
-    let errs = {
-        err_unknown_host: 'Unknown domain name or host',
-        err_forbidden: 'Forbidden to connect',
-        err_timeout: 'Took too long to connect',
-        err_refused: 'The server refused the connection',
-        err_tls: 'Could not connect securely',
-        err_proxy: 'The Kiwi IRC server had an error',
-    };
+    const translationKey = err.replace(/^err_/, 'error_');
+    const translation = TextFormatting.T(translationKey);
+    if (translation === translationKey) {
+        return TextFormatting.T('error_unknown');
+    }
 
-    return errs[err] || 'Unknown error';
+    return translation;
 }
 
 /**
