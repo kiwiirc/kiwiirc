@@ -4,7 +4,7 @@
 
 .kiwi-wrap {
     background: #3a5646;
-    --kiwi-nick-brightness: 80;
+    --kiwi-nickcolour-lightness: 30;
     --kiwi-supports-monospace: 1;
     color: #201F1F;
 }

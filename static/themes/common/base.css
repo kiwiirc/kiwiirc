@@ -604,7 +604,7 @@
 /* ---- App ---- */
 .kiwi-wrap {
     color: var(--brand-default-fg);
-    --kiwi-nick-brightness: 40;
+    --kiwi-nickcolour-lightness: 40;
     --kiwi-supports-monospace: 1;
 }
 
