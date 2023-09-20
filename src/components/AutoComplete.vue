@@ -8,6 +8,7 @@
                 'kiwi-autocomplete-item': true,
                 'kiwi-autocomplete-item--selected': item.idx === selected_idx}
             "
+            @mousedown.prevent
             @click="selected_idx = item.idx; selectCurrentItem()"
         >
             <template v-if="item.type === 'user'">
@@ -17,6 +18,13 @@
                     @click.stop="openQuery(item.text)"
                 >
                     {{ $t('send_message') }}
+                </span>
+            </template>
+            <template v-else-if="item.type === 'channel'">
+                <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
+                <span class="kiwi-autocomplete-item-count">
+                    <i class="fa fa-user" aria-hidden="true" />
+                    {{ item.count }}
                 </span>
             </template>
             <template v-else-if="item.type === 'command'">
@@ -279,6 +287,12 @@ export default {
 .kiwi-autocomplete-item-action {
     float: right;
     font-size: 0.9em;
+}
+
+.kiwi-autocomplete-item-count {
+    float: right;
+    font-size: 0.9em;
+    width: 3em;
 }
 
 </style>

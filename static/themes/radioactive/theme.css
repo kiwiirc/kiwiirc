@@ -444,7 +444,7 @@
 .kiwi-autocomplete {
     box-shadow: 0 1px 15px rgba(64, 54, 63, 0.25);
     border: 1px solid #ccc;
-    background: #fff;
+    background: #031e11;
 }
 .kiwi-autocomplete-item {
     border-bottom: 1px solid #ccc;
@@ -888,6 +888,15 @@
     opacity: 1;
     background-color: #fff;
 }
+
+.kiwi-statebrowser-newchannel-autocomplete.kiwi-autocomplete {
+    border-bottom: 1px solid #11402a;
+}
+
+.kiwi-statebrowser-newchannel-autocomplete .kiwi-autocomplete-item {
+    color: #fff;
+}
+
 
 /*Channel search input */
 .kiwi-statebrowser-channelfilter {

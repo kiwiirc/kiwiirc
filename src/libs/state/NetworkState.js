@@ -101,6 +101,15 @@ export default class NetworkState {
         return this.settings[name];
     }
 
+    maybeUpdateChannelList() {
+        if (['requested', 'updating'].includes(this.channel_list_state)) {
+            return;
+        }
+
+        this.channel_list_state = 'requested';
+        this.ircClient.raw('LIST');
+    }
+
     isChannelName(input) {
         if (typeof input !== 'string' || !input) {
             return false;

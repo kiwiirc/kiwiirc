@@ -398,6 +398,18 @@
     background-color: var(--brand-default-bg);
 }
 
+.kiwi-statebrowser-newchannel-autocomplete.kiwi-autocomplete {
+    border-bottom: 1px solid var(--comp-statebrowser-network-border);
+}
+
+.kiwi-statebrowser-newchannel-autocomplete .kiwi-autocomplete-item {
+    color: var(--comp-statebrowser-fg);
+}
+
+.kiwi-statebrowser-newchannel-autocomplete .kiwi-autocomplete-item--selected {
+    background-color: var(--comp-statebrowser-bg-networkname);
+}
+
 /* Channel search input */
 .kiwi-statebrowser-channelfilter {
     transition: all 0.3s;
