@@ -814,8 +814,21 @@ export default {
 }
 
 .kiwi-statebrowser-newchannel-autocomplete .kiwi-autocomplete-item {
+    display: flex;
     padding: 5px 11px;
     border-bottom: initial;
+    white-space: nowrap;
+    gap: 10px;
+}
+
+.kiwi-statebrowser-newchannel-autocomplete .kiwi-autocomplete-item-value {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kiwi-statebrowser-newchannel-autocomplete .kiwi-autocomplete-item-count {
+    flex-shrink: 0;
 }
 
 /* Channel search input */
