@@ -152,9 +152,7 @@ export default {
             }
         },
         maybeUpdateList() {
-            if (this.listState !== 'updating') {
-                this.network.ircClient.raw('LIST');
-            }
+            this.network.maybeUpdateChannelList();
         },
         formatAndTrimTopic(rawTopic) {
             let showModes = this.$state.setting('showChanlistModes');

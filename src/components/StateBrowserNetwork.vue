@@ -373,9 +373,10 @@ export default {
             }
 
             if (this.network.channel_list_state === '') {
-                this.network.ircClient.raw('LIST');
+                this.network.maybeUpdateChannelList();
             }
-            return this.network.channel_list.slice()
+
+            return this.network.channel_list
                 .filter((c) => !this.$state.getBufferByName(networkid, c.channel))
                 .sort((a, b) => b.num_users - a.num_users)
                 .map((c) => ({ text: c.channel, count: c.num_users, type: 'channel' }));
