@@ -52,7 +52,7 @@ export default {
         ChannelList,
     },
     props: ['network'],
-    data: function data() {
+    data() {
         return {
             pluginUiElements: GlobalApi.singleton().serverViewPlugins,
         };
@@ -85,12 +85,18 @@ export default {
             this.showTab(tabName);
         });
     },
+    mounted() {
+        this.serverBuffer.active_tab = (this.hasMessages) ? 'messages' : 'settings';
+    },
     methods: {
         showTab(tabName) {
             this.$refs.tabs.setActiveByName(tabName);
         },
         tabChanged(tabName) {
-            this.serverBuffer.show_input = (tabName === 'messages');
+            const isMessages = (tabName === 'messages');
+            this.serverBuffer.active_tab = tabName;
+            this.serverBuffer.isVisible = isMessages;
+            this.serverBuffer.show_input = isMessages;
         },
     },
 };

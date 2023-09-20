@@ -30,10 +30,12 @@ export default class BufferState {
             chathistory_available: true,
             requested_modes: false,
             requested_banlist: false,
+            is_visible: false,
             is_requesting_chathistory: false,
         };
         this.settings = { };
         this.last_read = 0;
+        this.active_tab = null;
         this.active_timeout = null;
         this.message_count = 0;
         this.current_input = '';
@@ -119,6 +121,35 @@ export default class BufferState {
 
     set topic(newVal) {
         this.topics.push(newVal);
+    }
+
+    get isVisible() {
+        return this.flag('is_visible');
+    }
+
+    set isVisible(_newVal) {
+        let newVal = _newVal;
+
+        if (this.active_tab && this.active_tab !== 'messages') {
+            // Prevent newVal from being true if we are on a tabbed buffer
+            // and the active tab is not 'messages'
+            newVal = false;
+        }
+
+        this.flag('is_visible', newVal);
+
+        if (newVal) {
+            this.flag('unread', 0);
+            this.flag('highlight', false);
+            this.markAsRead(true);
+
+            return;
+        }
+
+        // Buffer is no longer visible
+        if (this.active_timeout) {
+            this.markAsRead(false);
+        }
     }
 
     getNetwork() {
@@ -374,7 +405,6 @@ export default class BufferState {
             );
         } else {
             this.last_read = Date.now();
-            this.flag('highlight', false);
 
             // If running under a bouncer, set it on the server-side too
             let network = this.getNetwork();
