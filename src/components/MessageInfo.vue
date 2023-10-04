@@ -2,12 +2,12 @@
     <div class="kiwi-messageinfo" @click.stop>
         <div v-if="message.mentioned_urls.length > 0" class="kiwi-messageinfo-urls">
             <div v-for="url in message.mentioned_urls" :key="url" class="kiwi-messageinfo-url">
-                <a class="u-button u-button-secondary" @click="urlPreview(url)">Preview</a>
                 <a
-                    :href="url"
-                    target="_blank"
-                    class="u-link"
-                >
+                    v-if="showLinkPreviews"
+                    class="u-button u-button-secondary"
+                    @click="urlPreview(url)"
+                >Preview</a>
+                <a :href="url" target="_blank" class="u-link">
                     {{ url }}
                 </a>
             </div>
@@ -56,39 +56,40 @@
 'kiwi public';
 
 export default {
-    components: {
-    },
     props: ['buffer', 'message'],
-    data: function data() {
+    data() {
         return {
             requestingInput: false,
         };
     },
     computed: {
+        showLinkPreviews() {
+            return this.$state.setting('buffers.show_link_previews');
+        },
     },
     methods: {
-        urlPreview: function urlPreview(url) {
+        urlPreview(url) {
             this.$state.$emit('mediaviewer.show', url);
         },
-        areWeAnOp: function areWeAnOp() {
+        areWeAnOp() {
             let ourNick = this.buffer.getNetwork().nick;
             return this.buffer.isUserAnOp(ourNick);
         },
-        isSelf: function isSelf() {
+        isSelf() {
             let user = this.$state.getUser(this.buffer.getNetwork().id, this.message.nick);
             return this.buffer.getNetwork().ircClient.user.nick === user.nick;
         },
-        onBan: function onBan(reason) {
+        onBan(reason) {
             let network = this.buffer.getNetwork();
             network.ircClient.mode(this.buffer.name, '+b', this.message.nick);
         },
-        onKick: function onKick(promptedReason) {
+        onKick(promptedReason) {
             let network = this.buffer.getNetwork();
             let defaultReason = this.$state.setting('buffers.default_kick_reason');
             let reason = promptedReason || defaultReason;
             network.ircClient.raw('KICK', this.buffer.name, this.message.nick, reason);
         },
-        openQuery: function openQuery() {
+        openQuery() {
             let network = this.buffer.getNetwork();
             let buffer = this.$state.addBuffer(network.id, this.message.nick);
             this.$state.setActiveBuffer(network.id, buffer.name);
