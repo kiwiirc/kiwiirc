@@ -18,28 +18,17 @@
                 :key="buffer.id"
                 class="kiwi-header-options"
             >
-                <component
-                    :is="plugin.component"
-                    v-for="plugin in pluginUiChannelElements"
-                    :key="plugin.id"
-                    :plugin-props="{
-                        buffer: buffer,
-                        containerheader: self,
-                    }"
-                    v-bind="plugin.props"
-                    :network="network"
-                    :buffer="buffer"
-                    :sidebar-state="sidebarState"
-                    class="kiwi-header-option"
-                />
                 <div
                     :class="{
-                        'kiwi-header-option--active': sidebarSection === 'about'
+                        'kiwi-header-option--active': sidebarSection === 'settings'
                     }"
-                    class="kiwi-header-option kiwi-header-option-about"
+                    class="kiwi-header-option kiwi-header-option-settings"
                 >
-                    <a :title="$t('more_information')" @click="sidebarState.toggleAbout()">
-                        <i class="fa fa-info" aria-hidden="true" />
+                    <a
+                        :title="$t('channel_settings')"
+                        @click="sidebarState.toggleBufferSettings()"
+                    >
+                        <i class="fa fa-cog" aria-hidden="true" />
                     </a>
                 </div>
                 <div
@@ -59,25 +48,28 @@
                 </div>
                 <div
                     :class="{
-                        'kiwi-header-option--active': sidebarSection === 'settings'
+                        'kiwi-header-option--active': sidebarSection === 'about'
                     }"
-                    class="kiwi-header-option kiwi-header-option-settings"
+                    class="kiwi-header-option kiwi-header-option-about"
                 >
-                    <a
-                        :title="$t('channel_settings')"
-                        @click="sidebarState.toggleBufferSettings()"
-                    >
-                        <i class="fa fa-cog" aria-hidden="true" />
+                    <a :title="$t('more_information')" @click="sidebarState.toggleAbout()">
+                        <i class="fa fa-info" aria-hidden="true" />
                     </a>
                 </div>
-                <div
-                    v-if="sidebarState.isPinned"
-                    class="kiwi-header-option kiwi-header-option-unpinsidebar"
-                >
-                    <a @click="sidebarState.unpin()">
-                        <i class="fa fa-thumb-tack" aria-hidden="true" />
-                    </a>
-                </div>
+                <component
+                    :is="plugin.component"
+                    v-for="plugin in pluginUiChannelElements"
+                    :key="plugin.id"
+                    :plugin-props="{
+                        buffer: buffer,
+                        containerheader: self,
+                    }"
+                    v-bind="plugin.props"
+                    :network="network"
+                    :buffer="buffer"
+                    :sidebar-state="sidebarState"
+                    class="kiwi-header-option"
+                />
             </div>
             <div v-if="!isJoined && isConnected" class="kiwi-header-notjoined">
                 <a class="u-link kiwi-header-join-channel-button" @click="joinCurrentBuffer">
@@ -301,8 +293,9 @@ export default {
 .kiwi-header-name-container {
     font-weight: bold;
     cursor: default;
-    margin: 0 0.5em;
+    margin-left: 0.5em;
     max-width: 40%;
+    min-width: 80px;
     opacity: 1;
     font-size: 20px;
     line-height: 42px;
@@ -330,7 +323,7 @@ export default {
 
 .kiwi-header-center {
     flex: 1 2 0;
-    margin: auto 0;
+    margin: auto 0 auto 0.5em;
     max-height: 42px;
 }
 
@@ -358,9 +351,11 @@ export default {
 }
 
 .kiwi-header-options {
-    width: auto;
-    display: inline-block;
-    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    overflow: hidden;
+    padding-left: 0.5em;
 }
 
 .kiwi-header-option {
@@ -374,9 +369,12 @@ export default {
 
 .kiwi-header-option a {
     float: left;
-    padding: 0 15px;
+    padding: 0 10px;
     line-height: 43px;
-    display: block;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 38px;
     font-weight: 600;
     opacity: 0.8;
     cursor: pointer;
@@ -388,7 +386,7 @@ export default {
 }
 
 .kiwi-header-option i {
-    font-size: 1.2em;
+    font-size: 1.4em;
     float: left;
     line-height: 43px;
 }
@@ -518,5 +516,4 @@ export default {
         display: none;
     }
 }
-
 </style>
