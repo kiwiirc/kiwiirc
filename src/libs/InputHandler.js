@@ -630,7 +630,7 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             display(formats.country.replace('{{country}}', whoisData.country));
         }
         if (whoisData.channels) {
-            display(formats.channels.replace('{{channels}}', whoisData.channels));
+            display(formats.channels.replace('{{channels}}', whoisData.channels.trim()));
         }
         if (whoisData.server) {
             display(formats.server
@@ -679,12 +679,10 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
             }
         });
 
-        out.forEach((l) => {
-            this.state.addMessage(buffer, {
-                nick: parts[0],
-                message: l,
-                type: 'whois',
-            });
+        this.state.addMessage(buffer, {
+            nick: whoisData.nick,
+            message: out.join('\n'),
+            type: 'whois',
         });
     });
 };
