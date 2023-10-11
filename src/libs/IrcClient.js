@@ -1137,16 +1137,17 @@ function clientMiddleware(state, network) {
                 // functions to build the translation
                 let modeLocaleDataBuilders = {
                     default(targets, mode) {
+                        const paramStr = targets.map((t) => t.param).filter((p) => !!p).join(', ');
                         return {
-                            mode: mode + (targets[0].param ? ' ' + targets[0].param : ''),
-                            target: targets.map((t) => t.target).join(', '),
+                            mode: mode + (paramStr ? ' ' + paramStr : ''),
+                            target: targets[0].target,
                             nick: event.nick,
                         };
                     },
                     b(targets, mode) {
                         return {
                             mode: mode,
-                            target: targets[0].param ? targets[0].param : '',
+                            target: targets.map((t) => t.param).join(', '),
                             nick: event.nick,
                         };
                     },
