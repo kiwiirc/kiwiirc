@@ -59,7 +59,6 @@
                         @input="inputUpdate"
                         @keydown="inputKeyDown($event)"
                         @keyup="inputKeyUp($event)"
-                        @click="closeToolsPlugins"
                         @focus="focusChanged"
                         @blur="focusChanged"
                     />
@@ -85,7 +84,10 @@
                     v-if="!shouldShowToolsInline"
                     class="kiwi-controlinput-tools-expand kiwi-controlinput-button"
                     :class="{'kiwi-controlinput-tools-expand--closed': !showPlugins}"
-                    @click="showPlugins=!showPlugins"
+                    @mousedown.prevent
+                    @touchstart.prevent
+                    @click.prevent="showPlugins=!showPlugins"
+                    @touchend="showPlugins=!showPlugins"
                 >
                     <i class="fa fa-bars" aria-hidden="true" />
                 </div>
@@ -97,14 +99,20 @@
                         <div
                             v-if="shouldShowColorPicker"
                             class="kiwi-controlinput-button"
+                            @mousedown.prevent
+                            @touchstart.prevent
                             @click.prevent="onToolClickTextStyle"
+                            @touchend="onToolClickTextStyle"
                         >
-                            <i class="fa fa-adjust" aria-hidden="true" />
+                            <i class="fa fa-paint-brush" aria-hidden="true" />
                         </div>
                         <div
                             v-if="shouldShowEmojiPicker"
                             class="kiwi-controlinput-button"
+                            @mousedown.prevent
+                            @touchstart.prevent
                             @click.prevent="onToolClickEmoji"
+                            @touchend="onToolClickEmoji"
                         >
                             <i class="fa fa-smile-o" aria-hidden="true" />
                         </div>
@@ -332,6 +340,12 @@ export default {
         this.listen(this.$state, 'input.tool', (toolComponent) => {
             this.toggleInputTool(toolComponent);
         });
+
+        this.listen(this.$state, 'document.clicked', (ev) => {
+            if (!this.$el.contains(ev.target)) {
+                this.closeToolsPlugins();
+            }
+        });
     },
     mounted() {
         this.inputRestore();
@@ -392,13 +406,13 @@ export default {
             }
         },
         toggleBold() {
-            this.$refs.input.toggleBold();
+            this.$refs.input.toggleStyle('bold');
         },
         toggleItalic() {
-            this.$refs.input.toggleItalic();
+            this.$refs.input.toggleStyle('italic');
         },
         toggleUnderline() {
-            this.$refs.input.toggleUnderline();
+            this.$refs.input.toggleStyle('underline');
         },
         onAutocompleteCancel() {
             this.autocomplete_open = false;
@@ -603,6 +617,9 @@ export default {
             this.historyAdd(rawInput);
 
             this.$refs.input.reset('', this.keep_focus);
+            if (this.$state.setting('resetColorPickerOnSend')) {
+                this.$refs.input.clearStyles();
+            }
 
             this.stopTyping(false);
         },
@@ -855,7 +872,7 @@ export default {
     bottom: calc(100% + 1px);
     right: 74px;
     left: 0;
-    z-index: 1;
+    z-index: 5;
 }
 
 .kiwi-controlinput-selfuser {

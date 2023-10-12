@@ -1132,6 +1132,59 @@ msgid "dice_roll"
 msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
 
 
+
+#: Control Input Style
+
+#: Sample Text
+msgid "input_style_sample"
+msgstr "Sample Text"
+
+#: Set Foreground Colour First
+msgid "input_style_first"
+msgstr "Set Foreground Colour First"
+
+#: Set Foreground Colour
+msgid "input_style_fore"
+msgstr "Set Foreground Colour"
+
+#: Set Background Colour
+msgid "input_style_back"
+msgstr "Set Background Colour"
+
+#: Bold
+msgid "input_style_bold"
+msgstr "Bold"
+
+#: Italic
+msgid "input_style_italic"
+msgstr "Italic"
+
+#: Underline
+msgid "input_style_underline"
+msgstr "Underline"
+
+#: Strikethrough
+msgid "input_style_strikethrough"
+msgstr "Strikethrough"
+
+#: Clear Current Styles
+msgid "input_style_clear"
+msgstr "Clear Current Styles"
+
+#: Remove All Styles
+msgid "input_style_remove"
+msgstr "Remove All Styles"
+
+#: Show Extended Colours
+msgid "input_style_show"
+msgstr "Show Extended Colours"
+
+#: Hide Extended Colours
+msgid "input_style_hide"
+msgstr "Hide Extended Colours"
+
+
+
 #: Notifications
 
 #: You were mentioned in {{channel}}

@@ -14,26 +14,40 @@ function render(blocks, renderEmoticons) {
 
     const retHtml = blocks.reduce((html, block, i) => {
         // a
-        let style = '';
-        let classes = '';
-
+        const style = [];
+        const classes = [];
+        const textDecoration = [];
         Object.keys(block.styles).forEach((s) => {
             if (s === 'underline') {
-                style += 'text-decoration:underline;';
+                textDecoration.push('underline');
+            } else if (s === 'strikethrough') {
+                textDecoration.push('line-through');
             } else if (s === 'bold') {
-                style += 'font-weight:bold;';
+                style.push('font-weight:bold');
             } else if (s === 'italic') {
-                style += 'font-style:italic;';
+                style.push('font-style:italic');
             } else if (s === 'quote') {
-                classes += 'kiwi-formatting-extras-quote ';
+                classes.push('kiwi-formatting-extras-quote');
             } else if (s === 'block') {
-                classes += 'kiwi-formatting-extras-block ';
+                classes.push('kiwi-formatting-extras-block');
             } else if (s === 'color') {
-                classes += `irc-fg-colour-${block.styles[s]} `;
+                classes.push(`irc-fg-colour-${block.styles[s]}`);
             } else if (s === 'background') {
-                classes += `irc-bg-colour-${block.styles[s]} `;
+                classes.push(`irc-bg-colour-${block.styles[s]}`);
             }
         });
+
+        if (
+            block.styles.color &&
+            block.styles.background &&
+            block.styles.color === block.styles.background
+        ) {
+            classes.push('kiwi-formatting-spoiler');
+        }
+
+        if (textDecoration.length) {
+            style.push('text-decoration:' + textDecoration.join(' '));
+        }
 
         let content;
         switch (block.type) {
@@ -56,7 +70,7 @@ function render(blocks, renderEmoticons) {
             content = escape(block.content);
         }
 
-        return html + buildSpan(content, classes, style);
+        return html + buildSpan(content, classes.join(' '), style.join(';'));
     }, '');
 
     return `${retHtml}`;
@@ -106,7 +120,7 @@ function buildSpan(content, classes, style) {
 
     return (
         '<span' +
-        (style !== '' ? ` style="${style}"` : '') +
+        (style !== '' ? ` style="${style};"` : '') +
         (classes !== '' ? ` class="${classes}"` : '') +
         `>${content}</span>`
     );

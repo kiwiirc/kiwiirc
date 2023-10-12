@@ -7,10 +7,12 @@
             contenteditable="true"
             role="textbox"
             spellcheck="true"
-            @keypress="updateValueProps(); $emit('keypress', $event)"
+            @compositionstart="onCompositionStart"
+            @keypress="updateStyles(); updateValueProps(); $emit('keypress', $event)"
             @keydown="updateValueProps(); $emit('keydown', $event)"
             @keyup="updateValueProps(); $emit('keyup', $event)"
             @textInput="updateValueProps(); onTextInput($event); $emit('textInput', $event)"
+            @mousedown="mouseDown = true"
             @mouseup="updateValueProps();"
             @click="$emit('click', $event)"
             @paste="onPaste"
@@ -40,8 +42,16 @@ export default Vue.component('irc-input', {
             text_value: '',
             current_el: null,
             current_el_pos: 0,
-            default_colour: null,
             code_map: Object.create(null),
+            style: {
+                fgColour: null,
+                bgColour: null,
+                bold: false,
+                italic: false,
+                underline: false,
+                strikethrough: false,
+            },
+            mouseDown: false,
         };
     },
     computed: {
@@ -51,8 +61,18 @@ export default Vue.component('irc-input', {
     },
     mounted() {
         this.resetStyles();
+
+        // We listen for mouseup here because although the selection can start
+        // with ircinput the mouseup can happen outside of ircinput
+        this.listen(document, 'mouseup', this.checkSelection);
     },
     methods: {
+        onCompositionStart(event) {
+            if (event.data) {
+                return;
+            }
+            this.updateStyles();
+        },
         onTextInput(event) {
             // Mobile devices trigger a textInput event for things such as autocompletion
             // and suggested words. Unfortunately they end with a return character which
@@ -132,12 +152,6 @@ export default Vue.component('irc-input', {
             // Chrome sometimes focus' the element but does not add the cursor
             // https://bugs.chromium.org/p/chromium/issues/detail?id=1125078
             this.focus();
-
-            // when the input is empty there are no children to remember the current colour
-            // so upon regaining focus we must set the current colour again
-            if (!this.getRawText() && this.default_colour) {
-                this.setColour(this.default_colour.code, this.default_colour.colour);
-            }
 
             this.$emit('focus', event);
         },
@@ -243,16 +257,18 @@ export default Vue.component('irc-input', {
             let parser = new htmlparser.Parser({
                 onopentag: (name, attribs) => {
                     toggles.push('');
-                    let codeLookup = '';
                     if (attribs.style) {
-                        let match = attribs.style.match(/color: ([^;]+)/);
-                        if (match) {
-                            codeLookup = match[1];
-                            let mappedCode = this.code_map[codeLookup];
+                        const colourCodes = [];
+                        const matches = [...attribs.style.matchAll(/(?:^|\s|;)((?:background-)?color): ([^;]+)/g)];
+                        for (let i = 0; i < matches.length; i++) {
+                            const match = matches[i];
+                            const [prop, value] = match.slice(1, 3);
+                            let mappedCode = this.code_map[value];
+
                             if (!mappedCode) {
                                 // If we didn't have an IRC code for this colour, convert the
                                 // colour to its hex form and check if we have that instead
-                                let m = codeLookup.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+                                let m = value.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
                                 if (m) {
                                     let hex = Colours.rgb2hex({
                                         r: parseInt(m[1], 10),
@@ -264,11 +280,18 @@ export default Vue.component('irc-input', {
                             }
 
                             if (mappedCode) {
-                                textValue += '\x03' + mappedCode;
-                                addToggle('\x03' + mappedCode);
+                                const codeIndex = (prop === 'color') ? 0 : 1;
+                                colourCodes[codeIndex] = mappedCode;
                             }
                         }
 
+                        if (colourCodes.length && colourCodes[0]) {
+                            // Make sure all colour codes have leading 0 (if needed)
+                            colourCodes.forEach((val, idx) => (colourCodes[idx] = ('0' + val).slice(-2)));
+
+                            textValue += '\x03' + colourCodes.join(',');
+                            addToggle('\x03');
+                        }
                         if (attribs.style.indexOf('bold') > -1) {
                             textValue += '\x02';
                             addToggle('\x02');
@@ -280,6 +303,11 @@ export default Vue.component('irc-input', {
                         if (attribs.style.indexOf('underline') > -1) {
                             textValue += '\x1f';
                             addToggle('\x1f');
+                        }
+
+                        if (attribs.style.indexOf('line-through') > -1) {
+                            textValue += '\x1e';
+                            addToggle('\x1e');
                         }
 
                     // Welcome to the IE/Edge sucks section, time to do crazy things
@@ -351,52 +379,120 @@ export default Vue.component('irc-input', {
 
             if (shouldFocus) {
                 this.focus();
-
-                if (this.default_colour) {
-                    this.setColour(this.default_colour.code, this.default_colour.colour);
-                }
-
                 this.updateValueProps();
             } else {
                 this.maybeEmitInput();
             }
         },
+        checkSelection() {
+            // This is used to clear the current style when text is selected
+            // this makes it possible to select existing text and change its style
+
+            if (!this.mouseDown) {
+                // The mouseup event did not start within ircinput
+                return;
+            }
+            this.mouseDown = false;
+
+            const selection = document.getSelection();
+            if (
+                !this.$el.contains(selection.anchorNode) ||
+                !this.$el.contains(selection.focusNode)
+            ) {
+                // Current selection is not fully within ircinput
+                return;
+            }
+
+            const hasSelected = !!selection.toString().length;
+            if (!hasSelected) {
+                return;
+            }
+
+            this.clearStyles(true);
+        },
+        setStyle(newStyle, preventUpdate) {
+            ['fgColour', 'bgColour'].forEach((key) => {
+                // If the colour change matches the current colour toggle it
+                if (
+                    newStyle[key] &&
+                    this.style[key] &&
+                    newStyle[key].hex === this.style[key].hex
+                ) {
+                    newStyle[key] = null;
+                }
+            });
+
+            Object.assign(this.style, newStyle);
+
+            const hasSelected = !!document.getSelection().toString().length;
+            if (hasSelected && !preventUpdate) {
+                this.updateStyles();
+            }
+        },
+        toggleStyle(styleKey) {
+            this.setStyle({
+                [styleKey]: !this.style[styleKey],
+            });
+        },
+        clearStyles(preventUpdate) {
+            this.setStyle({
+                fgColour: null,
+                bgColour: null,
+                bold: false,
+                italic: false,
+                underline: false,
+                strikethrough: false,
+            }, preventUpdate);
+        },
         resetStyles() {
             this.focus();
+            this.clearStyles();
             document.execCommand('styleWithCSS', false, true);
             document.execCommand('selectAll', false, null);
             document.execCommand('removeFormat', false, null);
-            this.default_colour = null;
+            document.getSelection().collapseToEnd();
+            this.updateValueProps();
         },
-        setColour(code, colour) {
-            // If no current text selection, set this colour as the default colour for
-            // future messages too
-            let range = window.getSelection().getRangeAt(0);
-            if (range && range.collapsed) {
-                this.default_colour = {
-                    code,
-                    colour,
-                };
+        updateStyles() {
+            document.execCommand('styleWithCSS', false, true);
+
+            if (this.style.fgColour) {
+                document.execCommand('foreColor', false, this.style.fgColour.hex);
+                this.code_map[this.style.fgColour.hex] = this.style.fgColour.code;
+            } else {
+                const selection = document.getSelection();
+                const parent = selection.anchorNode.parentElement;
+                if (parent.nodeName === 'SPAN' && parent.style.color) {
+                    document.execCommand('foreColor', false, 'inherit');
+                }
             }
 
-            this.focus();
-            document.execCommand('styleWithCSS', false, true);
-            document.execCommand('foreColor', false, colour);
+            if (this.style.bgColour) {
+                document.execCommand('backColor', false, this.style.bgColour.hex);
+                this.code_map[this.style.bgColour.hex] = this.style.bgColour.code;
+            } else {
+                const selection = document.getSelection();
+                const parent = selection.anchorNode.parentElement;
+                if (parent.nodeName === 'SPAN' && parent.style.backgroundColor) {
+                    document.execCommand('backColor', false, 'inherit');
+                }
+            }
 
-            this.code_map[colour] = code;
-            this.updateValueProps();
-        },
-        toggleBold() {
-            document.execCommand('bold', false, null);
-            this.updateValueProps();
-        },
-        toggleItalic() {
-            document.execCommand('italic', false, null);
-            this.updateValueProps();
-        },
-        toggleUnderline() {
-            document.execCommand('underline', false, null);
-            this.updateValueProps();
+            if (this.style.bold !== document.queryCommandState('bold')) {
+                document.execCommand('bold', false, this.style.bold);
+            }
+
+            if (this.style.italic !== document.queryCommandState('italic')) {
+                document.execCommand('italic', false, this.style.italic);
+            }
+
+            if (this.style.underline !== document.queryCommandState('underline')) {
+                document.execCommand('underline', false, this.style.underline);
+            }
+
+            if (this.style.strikethrough !== document.queryCommandState('strikeThrough')) {
+                document.execCommand('strikeThrough', false, this.style.strikethrough);
+            }
         },
         addImg(alt, url, props) {
             this.focus();
