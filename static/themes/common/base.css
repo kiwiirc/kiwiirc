@@ -355,6 +355,26 @@
     border: 1px solid var(--brand-midtone);
 }
 
+/* ---- Sidebar - Settings ---- */
+
+.kiwi-sidebar-settings-disabled {
+    background-color: rgba(127, 127, 127, 0.1);
+}
+
+.kiwi-channelsettings-disabled {
+    color: #fff;
+    background-color: rgba(127, 127, 127, 0.5);
+}
+
+.kiwi-sidebar-settings-access-table > div {
+    border-bottom-color: var(--comp-border);
+}
+
+.kiwi-sidebar-settings-access-actions:hover {
+    background-color: var(--brand-error);
+    color: var(--brand-default-bg);
+}
+
 /* ---- State browser ( statebrowser) ---- */
 
 /* Statebrowser - Left sidebar ( StateBrowser.vue ) */
@@ -1021,19 +1041,6 @@
 .kiwi-settings-advanced-notice {
     color: var(--brand-default-bg);
     background: var(--brand-error);
-}
-
-/* ---- Channel Banlist ( Channelbanlist ) ---- */
-.kiwi-channelbanlist-table tr {
-    border-bottom-color: var(--brand-midtone);
-}
-
-.kiwi-channelbanlist-table-actions:hover {
-    background-color: var(--brand-error);
-}
-
-.kiwi-channelbanlist-table-actions:hover i {
-    color: var(--brand-default-bg);
 }
 
 .kiwi-network-name-options {

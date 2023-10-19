@@ -151,6 +151,9 @@
     color: var(--brand-default-fg);
 }
 
+.kiwi-sidebar-settings-access-actions:hover {
+    color: var(--comp-sidebar-fg);
+}
 
 /* Statebrowser */
 .kiwi-statebrowser {

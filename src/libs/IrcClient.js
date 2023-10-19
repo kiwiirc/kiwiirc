@@ -98,9 +98,18 @@ export function create(state, network) {
 
         let eventObj = { network, message, handled: false };
         state.$emit('ircout', eventObj);
-        if (!eventObj.handled) {
-            originalIrcClientRaw.apply(ircClient, [message]);
+        if (eventObj.handled) {
+            return;
         }
+
+        // Workaround for unsetting the topic as to1459() will remove the trailing colon.
+        const isTopic = (args.length === 1 && args[0].indexOf('TOPIC') === 0);
+        if (isTopic && args[0].lastIndexOf(':') === args[0].length - 1) {
+            originalIrcClientRaw.apply(ircClient, args);
+            return;
+        }
+
+        originalIrcClientRaw.apply(ircClient, [message]);
     };
 
     ircClient.on('raw', (event) => {
@@ -1350,6 +1359,9 @@ function clientMiddleware(state, network) {
             let messageBody = '';
 
             if (event.nick) {
+                buffer.topic_by = event.nick;
+                buffer.topic_when = event.time || Date.now();
+
                 typeExtra = 'topic_change';
                 messageBody = TextFormatting.formatAndT(
                     'channel_topic',
@@ -1371,6 +1383,14 @@ function clientMiddleware(state, network) {
                     type: 'topic',
                     type_extra: typeExtra,
                 });
+            }
+        }
+
+        if (command === 'topicsetby') {
+            let buffer = network.bufferByName(event.channel);
+            if (buffer) {
+                buffer.topic_by = event.nick;
+                buffer.topic_when = event.when * 1000;
             }
         }
 

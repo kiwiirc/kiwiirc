@@ -3,7 +3,7 @@
         <form class="u-form kiwi-channelinfo-basicmodes" @submit.prevent="">
             <label class="kiwi-channelinfo-topic">
                 <span>{{ $t('channel_topic') }}</span>
-                <textarea v-model.lazy="topic" rows="2" />
+                <textarea v-model.lazy="topic" rows="2" :readonly="!areWeAnOp" />
             </label>
 
             <div v-if="buffer.topics.length > 1" class="kiwi-channelinfo-previoustopics">
@@ -13,34 +13,34 @@
                 </a>
                 <ul v-if="showPrevTopics">
                     <li v-for="(topicText, idx) in prevTopics" :key="idx">
-                        <span>{{ topicText.trim() }}</span>
+                        <span>{{ topicText }}</span>
                     </li>
                 </ul>
             </div>
 
             <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_moderated') }}</span>
-                <input v-model="modeM" type="checkbox">
+                <input v-model="modeM" type="checkbox" :disabled="!areWeAnOp">
             </label>
             <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_invite') }}</span>
-                <input v-model="modeI" type="checkbox">
+                <input v-model="modeI" type="checkbox" :disabled="!areWeAnOp">
             </label>
             <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_secret') }}</span>
-                <input v-model="modeS" type="checkbox">
+                <input v-model="modeS" type="checkbox" :disabled="!areWeAnOp">
             </label>
             <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_moderated_topic') }}</span>
-                <input v-model="modeT" type="checkbox">
+                <input v-model="modeT" type="checkbox" :disabled="!areWeAnOp">
             </label>
             <label class="u-checkbox-wrapper">
                 <span>{{ $t('channel_external') }}</span>
-                <input v-model="modeN" type="checkbox">
+                <input v-model="modeN" type="checkbox" :disabled="!areWeAnOp">
             </label>
-            <label>
+            <label class="kiwi-channelinfo-password">
                 <span>{{ $t('password') }}</span>
-                <input v-model.lazy="modeK" type="text" class="u-input">
+                <input v-model.lazy="modeK" type="text" class="u-input" :readonly="!areWeAnOp">
             </label>
         </form>
     </div>
@@ -53,10 +53,10 @@
 // Eg. +i, +n, etc
 function generateComputedMode(mode) {
     return {
-        get: function computedModeGet() {
+        get() {
             return this.modeVal(mode);
         },
-        set: function computedModeSet(newVal) {
+        set(newVal) {
             return this.setMode((newVal ? '+' : '-') + mode);
         },
     };
@@ -66,13 +66,13 @@ function generateComputedMode(mode) {
 // Eg. "+k key"
 function generateComputedModeWithParam(mode) {
     return {
-        get: function computedModeWithParamGet() {
+        get() {
             let val = this.modeVal(mode);
             return val === false ?
                 '' :
                 val;
         },
-        set: function computedModeWithParamSet(newVal) {
+        set(newVal) {
             if (newVal) {
                 this.setMode('+' + mode, newVal);
             } else {
@@ -84,7 +84,7 @@ function generateComputedModeWithParam(mode) {
 
 export default {
     props: ['buffer'],
-    data: function data() {
+    data() {
         return {
             showPrevTopics: false,
         };
@@ -97,14 +97,11 @@ export default {
         modeN: generateComputedMode('n'),
         modeK: generateComputedModeWithParam('k'),
         topic: {
-            get: function computedTopicGet() {
+            get() {
                 return this.buffer.topic;
             },
-            set: function computedTopicSet(newVal) {
+            set(newVal) {
                 let newTopic = newVal.replace('\n', ' ');
-                // TODO: Update irc-framework to insert a trailing : if the last argument is an
-                //       empty string. The trailing : makes a difference between things like
-                //       requesting a topic and changing to an empty topic
                 if (!newTopic.trim()) {
                     this.buffer.getNetwork().ircClient.raw(`TOPIC ${this.buffer.name} :`);
                 } else {
@@ -113,17 +110,17 @@ export default {
             },
         },
         prevTopics() {
-            return this.buffer.topics.filter((topic) => topic.trim());
+            return this.buffer.topics.slice(1).filter((topic) => topic.trim());
+        },
+        areWeAnOp() {
+            return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
         },
     },
     methods: {
-        updateBanList: function updateBanList() {
-            this.buffer.getNetwork().ircClient.raw('MODE', this.buffer.name, '+b');
-        },
-        setMode: function setMode(mode, param) {
+        setMode(mode, param) {
             this.buffer.getNetwork().ircClient.raw('MODE', this.buffer.name, mode, param);
         },
-        modeVal: function modeVal(mode) {
+        modeVal(mode) {
             let val = false;
 
             if (typeof this.buffer.modes[mode] === 'undefined') {
@@ -139,21 +136,27 @@ export default {
 
             return val;
         },
-        areWeAnOp: function areWeAnOp() {
-            return this.buffer.isUserAnOp(this.buffer.getNetwork().nick);
-        },
     },
 };
 </script>
 
-<style>
+<style lang="less">
+.kiwi-channelinfo {
+    .kiwi-channelinfo-topic {
+        margin-bottom: 10px;
+    }
+
+    .kiwi-channelinfo-password {
+        margin-top: 10px;
+    }
+}
 
 .kiwi-channelinfo-previoustopics {
-    margin: 0 10px 15px 10px;
+    margin-bottom: 10px;
 }
 
 .kiwi-channelinfo-previoustopics ul {
     margin-top: 0;
+    margin-left: 6px;
 }
-
 </style>

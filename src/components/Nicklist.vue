@@ -65,7 +65,7 @@ export default {
         NicklistUser,
     },
     props: ['network', 'buffer', 'sidebarState'],
-    data: function data() {
+    data() {
         return {
             userbox_user: null,
             user_filter: '',

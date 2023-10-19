@@ -207,7 +207,6 @@
 </template>
 
 <script>
-
 'kiwi public';
 
 import * as ipRegex from 'ip-regex';
