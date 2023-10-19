@@ -44,8 +44,8 @@ export default Vue.component('input-confirm', {
             this.state = 'prompt';
         },
         complete(val) {
-            this.$emit('submit', val);
             this.$emit(val ? 'ok' : 'cancel');
+            this.$emit('submit', val);
             this.state = 'pre';
         },
     },
