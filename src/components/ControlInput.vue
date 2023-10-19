@@ -49,6 +49,20 @@
                     @selected="onAutocompleteSelected"
                     @cancel="onAutocompleteCancel"
                 />
+                <div v-if="showCommandWarning" class="kiwi-controlinput-command-warn">
+                    <div>
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true" />
+                        {{ $t('input_not_command') }}
+                    </div>
+                    <div class="kiwi-controlinput-command-text">
+                        {{ $t('input_send_text') }}
+                        <input-confirm
+                            :flip-connotation="true"
+                            @ok="submitForm()"
+                            @submit="showCommandWarning = false;"
+                        />
+                    </div>
+                </div>
                 <typing-users-list v-if="buffer.setting('share_typing')" :buffer="buffer" />
                 <div class="kiwi-controlinput-input-wrap">
                     <irc-input
@@ -136,11 +150,14 @@
 'kiwi public';
 
 import _ from 'lodash';
+
+import * as Misc from '@/helpers/Misc';
 import * as TextFormatting from '@/helpers/TextFormatting';
+import * as EmojiProvider from '@/libs/EmojiProvider';
 import * as settingTools from '@/libs/settingTools';
+
 import autocompleteCommands from '@/res/autocompleteCommands';
 import GlobalApi from '@/libs/GlobalApi';
-import * as EmojiProvider from '@/libs/EmojiProvider';
 import AutoComplete from './AutoComplete';
 import ToolTextStyle from './inputtools/TextStyle';
 import ToolEmoji from './inputtools/Emoji';
@@ -174,6 +191,7 @@ export default {
             active_tool_props: {},
             pluginUiElements: GlobalApi.singleton().controlInputPlugins,
             showPlugins: false,
+            showCommandWarning: false,
             current_input_value: '',
             has_focus: false,
             keep_focus: false,
@@ -346,6 +364,8 @@ export default {
                 this.buffer.current_input = val;
             }
 
+            // Clear the command warning on any new input
+            this.showCommandWarning = false;
             this.maybeHidePlugins();
         },
         inputRestore() {
@@ -446,6 +466,9 @@ export default {
                 // Send message when enter is pressed
                 event.preventDefault();
                 this.submitForm();
+            } else if (event.keyCode === 27 && this.showCommandWarning) {
+                // Close command warning if the user presses escape
+                this.showCommandWarning = false;
             } else if (event.keyCode === 32) {
                 // Hitting space after just typing an ascii emoji will get it replaced with
                 // its image
@@ -598,6 +621,21 @@ export default {
             }
 
             let ircText = this.$refs.input.buildIrcText();
+
+            // Show a warning if a command is preceded by spaces
+            let warnExpectedCommand = this.$state.setting('buffers.warn_expected_command');
+            if (warnExpectedCommand && !this.showCommandWarning) {
+                const spacePrecededCommand = /^\s+\//;
+                const hasPrecedingSpace = ircText.split('\n').some(
+                    (line) => spacePrecededCommand.test(Misc.stripStyles(line))
+                );
+
+                if (hasPrecedingSpace) {
+                    this.showCommandWarning = true;
+                    return;
+                }
+            }
+
             this.$state.$emit('input.raw', ircText);
 
             this.historyAdd(rawInput);
@@ -833,6 +871,32 @@ export default {
     overflow: hidden;
     display: flex;
     box-sizing: border-box;
+}
+
+.kiwi-controlinput-command-warn {
+    position: absolute;
+    bottom: 100%;
+    margin-left: 10px;
+    padding: 6px 10px 10px 10px;
+    border: 1px solid;
+    border-radius: 10px 10px 0 0;
+
+    .kiwi-controlinput-command-text {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-top: 10px;
+        font-weight: 700;
+    }
+
+    .fa-exclamation-triangle {
+        margin-right: 2px;
+    }
+
+    .u-input-confirm {
+        padding: initial;
+        padding-left: 10px;
+    }
 }
 
 .kiwi-controlinput-input {

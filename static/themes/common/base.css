@@ -205,6 +205,15 @@
     background: #f6f6f6;
 }
 
+.kiwi-controlinput-command-warn {
+    border-color: var(--comp-border);
+    background-color: var(--brand-default-bg);
+}
+
+.kiwi-controlinput-command-warn .fa-exclamation-triangle {
+    color: var(--brand-error);
+}
+
 /* ---- Self User ( SelfUser.vue ) ---- */
 .kiwi-controlinput-selfuser {
     background: var(--brand-default-bg);

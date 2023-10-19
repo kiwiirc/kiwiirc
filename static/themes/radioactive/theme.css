@@ -432,6 +432,14 @@
     border-top: 1px solid #155d36;
 }
 
+.kiwi-controlinput-command-warn {
+    background-color: #07311a;
+}
+
+.kiwi-controlinput-command-warn .fa-exclamation-triangle {
+    color: #c54d53;
+}
+
 .kiwi-selfuser,
 .kiwi-inputtool-emoji-emoji {
     background-color: #1b2f24;
