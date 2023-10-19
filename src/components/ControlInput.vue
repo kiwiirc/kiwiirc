@@ -880,6 +880,7 @@ export default {
     padding: 6px 10px 10px 10px;
     border: 1px solid;
     border-radius: 10px 10px 0 0;
+    z-index: 1;
 
     .kiwi-controlinput-command-text {
         display: flex;
