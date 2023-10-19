@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2023-06-15 06:31\n"
+"PO-Revision-Date: 2023-10-19 19:24\n"
 
 #: Start
 msgid "start_button"
@@ -423,6 +423,10 @@ msgstr "Odświeżanie listy blokad…"
 msgid "bans_nobody"
 msgstr "Nikt nie jest zablokowany!"
 
+#: Add ban
+msgid "bans_add_ban"
+msgstr "Dodaj bana"
+
 #: Refresh invite list
 msgid "invites_refresh"
 msgstr "Odśwież listę zaproszonych"
@@ -470,6 +474,10 @@ msgstr "Dodaj zaproszenie"
 #: (Any registered user)
 msgid "invite_any_registered"
 msgstr "(Każdy zarejestrowany użytkownik)"
+
+#: Mods Only
+msgid "mods_only"
+msgstr "Tylko moderatorzy"
 
 #: Topic
 msgid "channel_topic"
@@ -538,6 +546,14 @@ msgstr "Prywatna rozmowa z {{user}}"
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Wyślij wiadomość…"
+
+#: This message looks like a command but is preceded by spaces.
+msgid "input_not_command"
+msgstr "Ta wiadomość wygląda jak polecenie, ale jest poprzedzona spacjami."
+
+#: Send as text?
+msgid "input_send_text"
+msgstr "Wysłać jako tekst?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -691,17 +707,25 @@ msgstr "Kolory pseudonimów na liście"
 msgid "side_buffer"
 msgstr "Nie ustawiono buforu"
 
-#: There is no topic for this channel
-msgid "no_topic_set"
-msgstr "Nie ma tematu dla tego kanału"
-
 #: About
 msgid "about"
 msgstr "O nas"
 
+#: There is no topic for this channel
+msgid "no_topic_set"
+msgstr "Nie ma tematu dla tego kanału"
+
+#: Topic set by {{who}} on {{when}}
+msgid "topic_setby"
+msgstr "Ustawiano przez {{who}} dnia {{when}}"
+
+#: Created on {{when}}
+msgid "created_on"
+msgstr "Utworzono dnia {{when}}"
+
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Utworzono w {{when}}"
+msgstr "Utworzono dnia {{when}}"
 
 #: Highlights
 msgid "highlights"
@@ -886,6 +910,42 @@ msgstr "Pseudonim nie może zaczynać się od cyfry"
 #: Unexpected error occurred
 msgid "error_unexpected"
 msgstr "Wystąpił nieoczekiwany błąd"
+
+#: Unknown domain name or host
+msgid "error_unknown_host"
+msgstr "Nieznana nazwa domeny lub host"
+
+#: Forbidden to connect
+msgid "error_forbidden"
+msgstr "Zakaz połączenia"
+
+#: Took too long to connect
+msgid "error_timeout"
+msgstr "Za długo, aby się połączyć"
+
+#: The server refused the connection
+msgid "error_refused"
+msgstr "Serwer odrzucił połączenie"
+
+#: Could not connect securely
+msgid "error_tls"
+msgstr "Nie udało się bezpiecznie połączyć"
+
+#: The Kiwi IRC server had an error
+msgid "error_proxy"
+msgstr "Serwer Kiwi IRC napotkał błąd"
+
+#: Unknown error
+msgid "error_unknown"
+msgstr "Nieznany błąd"
+
+#: Bad username or password
+msgid "error_password_mismatch"
+msgstr "Błędna nazwa użytkownika lub hasło"
+
+#: Connection closed unexpectedly
+msgid "error_closed_unexpected"
+msgstr "Połączenie zostało nieoczekiwanie zamknięte"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"

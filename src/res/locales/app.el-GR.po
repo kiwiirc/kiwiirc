@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2023-06-14 19:32\n"
+"PO-Revision-Date: 2023-10-19 19:24\n"
 
 #: Start
 msgid "start_button"
@@ -423,6 +423,10 @@ msgstr "Γίνεται ανανέωση λίστας αποκλεισμένων.
 msgid "bans_nobody"
 msgstr "Κανένας δεν είναι προς το παρόν αποκλεισμένος!"
 
+#: Add ban
+msgid "bans_add_ban"
+msgstr "Add ban"
+
 #: Refresh invite list
 msgid "invites_refresh"
 msgstr "Ανανέωση Λίστας Προσκεκλημένων"
@@ -470,6 +474,10 @@ msgstr "Προσθήκη πρόσκλησης"
 #: (Any registered user)
 msgid "invite_any_registered"
 msgstr "(Οποιοσδήποτε εγγεγραμμένος χρήστης)"
+
+#: Mods Only
+msgid "mods_only"
+msgstr "Mods Only"
 
 #: Topic
 msgid "channel_topic"
@@ -538,6 +546,14 @@ msgstr "Προσωπική συνομιλία με {{user}}"
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Στείλτε ένα μήνυμα..."
+
+#: This message looks like a command but is preceded by spaces.
+msgid "input_not_command"
+msgstr "This message looks like a command but is preceded by spaces."
+
+#: Send as text?
+msgid "input_send_text"
+msgstr "Send as text?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -691,13 +707,21 @@ msgstr "Χρωματισμός ψευδώνυμων στη λίστα"
 msgid "side_buffer"
 msgstr "Δεν έχει οριστεί ρυθμιστής"
 
+#: About
+msgid "about"
+msgstr "Σχετικά"
+
 #: There is no topic for this channel
 msgid "no_topic_set"
 msgstr "Δεν υπάρχει τίτλος για αυτό το κανάλι"
 
-#: About
-msgid "about"
-msgstr "Σχετικά"
+#: Topic set by {{who}} on {{when}}
+msgid "topic_setby"
+msgstr "Set by {{who}} on {{when}}"
+
+#: Created on {{when}}
+msgid "created_on"
+msgstr "Created on {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -886,6 +910,42 @@ msgstr "Το ψευδώνυμο δεν πρέπει να ξεκινά με έν�
 #: Unexpected error occurred
 msgid "error_unexpected"
 msgstr "Παρουσιάστηκε μη αναμενόμενο σφάλμα"
+
+#: Unknown domain name or host
+msgid "error_unknown_host"
+msgstr "Unknown domain name or host"
+
+#: Forbidden to connect
+msgid "error_forbidden"
+msgstr "Forbidden to connect"
+
+#: Took too long to connect
+msgid "error_timeout"
+msgstr "Took too long to connect"
+
+#: The server refused the connection
+msgid "error_refused"
+msgstr "The server refused the connection"
+
+#: Could not connect securely
+msgid "error_tls"
+msgstr "Could not connect securely"
+
+#: The Kiwi IRC server had an error
+msgid "error_proxy"
+msgstr "The Kiwi IRC server had an error"
+
+#: Unknown error
+msgid "error_unknown"
+msgstr "Unknown error"
+
+#: Bad username or password
+msgid "error_password_mismatch"
+msgstr "Bad username or password"
+
+#: Connection closed unexpectedly
+msgid "error_closed_unexpected"
+msgstr "Connection closed unexpectedly"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"

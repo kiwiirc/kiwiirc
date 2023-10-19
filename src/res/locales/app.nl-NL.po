@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2023-06-17 10:41\n"
+"PO-Revision-Date: 2023-10-19 19:24\n"
 
 #: Start
 msgid "start_button"
@@ -423,6 +423,10 @@ msgstr "Banlijst vernieuwen..."
 msgid "bans_nobody"
 msgstr "Er is niemand verbannen!"
 
+#: Add ban
+msgid "bans_add_ban"
+msgstr "Add ban"
+
 #: Refresh invite list
 msgid "invites_refresh"
 msgstr "Uitnodigingslijst vernieuwen"
@@ -470,6 +474,10 @@ msgstr "Uitnodiging toevoegen"
 #: (Any registered user)
 msgid "invite_any_registered"
 msgstr "(Geregistreerde gebruikers)"
+
+#: Mods Only
+msgid "mods_only"
+msgstr "Mods Only"
 
 #: Topic
 msgid "channel_topic"
@@ -538,6 +546,14 @@ msgstr "Privégesprek met {{user}}"
 #: Send a message...
 msgid "input_placeholder"
 msgstr "Een bericht sturen..."
+
+#: This message looks like a command but is preceded by spaces.
+msgid "input_not_command"
+msgstr "This message looks like a command but is preceded by spaces."
+
+#: Send as text?
+msgid "input_send_text"
+msgstr "Send as text?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -691,13 +707,21 @@ msgstr "Gekleurde bijnamen in de lijst"
 msgid "side_buffer"
 msgstr "Geen buffer ingesteld"
 
+#: About
+msgid "about"
+msgstr "Over"
+
 #: There is no topic for this channel
 msgid "no_topic_set"
 msgstr "Er is geen topic voor dit kanaal"
 
-#: About
-msgid "about"
-msgstr "Over"
+#: Topic set by {{who}} on {{when}}
+msgid "topic_setby"
+msgstr "Set by {{who}} on {{when}}"
+
+#: Created on {{when}}
+msgid "created_on"
+msgstr "Created on {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -886,6 +910,42 @@ msgstr "Bijnaam mag niet met een cijfer beginnen"
 #: Unexpected error occurred
 msgid "error_unexpected"
 msgstr "Er is een onverwachte fout opgetreden"
+
+#: Unknown domain name or host
+msgid "error_unknown_host"
+msgstr "Unknown domain name or host"
+
+#: Forbidden to connect
+msgid "error_forbidden"
+msgstr "Forbidden to connect"
+
+#: Took too long to connect
+msgid "error_timeout"
+msgstr "Took too long to connect"
+
+#: The server refused the connection
+msgid "error_refused"
+msgstr "The server refused the connection"
+
+#: Could not connect securely
+msgid "error_tls"
+msgstr "Could not connect securely"
+
+#: The Kiwi IRC server had an error
+msgid "error_proxy"
+msgstr "The Kiwi IRC server had an error"
+
+#: Unknown error
+msgid "error_unknown"
+msgstr "Unknown error"
+
+#: Bad username or password
+msgid "error_password_mismatch"
+msgstr "Bad username or password"
+
+#: Connection closed unexpectedly
+msgid "error_closed_unexpected"
+msgstr "Connection closed unexpectedly"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"

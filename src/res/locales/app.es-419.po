@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Latin America\n"
 "Language: es_419\n"
-"PO-Revision-Date: 2023-06-14 17:21\n"
+"PO-Revision-Date: 2023-10-19 19:24\n"
 
 #: Start
 msgid "start_button"
@@ -423,6 +423,10 @@ msgstr "Actualizando lista de baneos"
 msgid "bans_nobody"
 msgstr "¡Nadie está baneado!"
 
+#: Add ban
+msgid "bans_add_ban"
+msgstr "Añadir Ban"
+
 #: Refresh invite list
 msgid "invites_refresh"
 msgstr "Actualizar lista de invitados"
@@ -470,6 +474,10 @@ msgstr "Añadir invitación"
 #: (Any registered user)
 msgid "invite_any_registered"
 msgstr "(Cualquier usuario registrado)"
+
+#: Mods Only
+msgid "mods_only"
+msgstr "Solo moderadores"
 
 #: Topic
 msgid "channel_topic"
@@ -539,6 +547,14 @@ msgstr "Conversación privada con {{user}}"
 msgid "input_placeholder"
 msgstr "Enviar un mensaje..."
 
+#: This message looks like a command but is preceded by spaces.
+msgid "input_not_command"
+msgstr "Este mensaje parece un comando pero está precedido por espacios."
+
+#: Send as text?
+msgid "input_send_text"
+msgstr "¿Enviar como texto?"
+
 #: Loading {{url}}...
 msgid "media_loading"
 msgstr "Cargando {{url}}..."
@@ -557,7 +573,7 @@ msgstr "Mensajes sin leer"
 
 #: Reply in private
 msgid "reply_in_private"
-msgstr "Reply in private"
+msgstr "Responder en privado"
 
 #: Server details
 msgid "settings_server_details"
@@ -691,13 +707,21 @@ msgstr "Colorear nicks en la lista"
 msgid "side_buffer"
 msgstr "No hay buffer configurado"
 
+#: About
+msgid "about"
+msgstr "Acerca de"
+
 #: There is no topic for this channel
 msgid "no_topic_set"
 msgstr "No hay ningún tópico para esta sala"
 
-#: About
-msgid "about"
-msgstr "Acerca de"
+#: Topic set by {{who}} on {{when}}
+msgid "topic_setby"
+msgstr "Tópico ajustado por {{who}} el {{when}}"
+
+#: Created on {{when}}
+msgid "created_on"
+msgstr "Creado el {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -857,11 +881,11 @@ msgstr "Banear y expulsar del canal"
 
 #: Select a Channel
 msgid "select_channel"
-msgstr "Select a Channel"
+msgstr "Seleccione una sala"
 
 #: Invite User
 msgid "invite_user"
-msgstr "Invite User"
+msgstr "Invitar usuario"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -886,6 +910,42 @@ msgstr "El apodo no puede empezar por un número"
 #: Unexpected error occurred
 msgid "error_unexpected"
 msgstr "Ocurrió un error inesperado"
+
+#: Unknown domain name or host
+msgid "error_unknown_host"
+msgstr "Nombre de dominio o host desconocido"
+
+#: Forbidden to connect
+msgid "error_forbidden"
+msgstr "Prohibido conectarse"
+
+#: Took too long to connect
+msgid "error_timeout"
+msgstr "Ha tardado demasiado en conectarse"
+
+#: The server refused the connection
+msgid "error_refused"
+msgstr "El servidor ha rechazado la conexión"
+
+#: Could not connect securely
+msgid "error_tls"
+msgstr "No se pudo conectar de forma segura"
+
+#: The Kiwi IRC server had an error
+msgid "error_proxy"
+msgstr "El servidor de Kiwi IRC ha tenido un error"
+
+#: Unknown error
+msgid "error_unknown"
+msgstr "Error desconocido"
+
+#: Bad username or password
+msgid "error_password_mismatch"
+msgstr "Nombre de usuario o contraseña incorrectos"
+
+#: Connection closed unexpectedly
+msgid "error_closed_unexpected"
+msgstr "La conexión se cerró inesperadamente"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1129,7 +1189,7 @@ msgstr "{{nick}} ha invitado a {{invited}} para entrar en {{channel}}"
 
 #: You invited {{invited}} to join {{channel}}
 msgid "invited_inviter"
-msgstr "You invited {{invited}} to join {{channel}}"
+msgstr "Has invitado a {{invited}} para entrar en {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
