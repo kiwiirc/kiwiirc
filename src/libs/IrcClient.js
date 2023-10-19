@@ -103,7 +103,11 @@ export function create(state, network) {
         }
 
         // Workaround for unsetting the topic as to1459() will remove the trailing colon.
-        const isTopic = (args.length === 1 && args[0].indexOf('TOPIC') === 0);
+        const isTopic = (
+            args.length === 1
+            && typeof args[0] === 'string'
+            && args[0].indexOf('TOPIC') === 0
+        );
         if (isTopic && args[0].lastIndexOf(':') === args[0].length - 1) {
             originalIrcClientRaw.apply(ircClient, args);
             return;
