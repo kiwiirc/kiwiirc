@@ -1529,6 +1529,12 @@ function clientMiddleware(state, network) {
             // TODO: Some of these errors contain a .error property which we can match against,
             // ie. password_mismatch.
 
+            if (event.error && !isRegistered) {
+                if (event.error === 'password_mismatch') {
+                    network.last_error = TextFormatting.t('error_password_mismatch');
+                }
+            }
+
             if (event.error === 'bad_channel_key') {
                 buffer.flags.channel_badkey = true;
             }

@@ -20,7 +20,8 @@
   background: none;
 }
 
-.kiwi-welcome-simple-error {
+.kiwi-welcome-simple-error,
+.kiwi-welcome-znc-error {
     border: 1px dashed #d86f6f;
 }
 .kiwi-welcome-simple-form .u-submit {
