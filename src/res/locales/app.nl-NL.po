@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-10-20 04:48\n"
 
 #: Start
 msgid "start_button"
@@ -425,7 +425,7 @@ msgstr "Er is niemand verbannen!"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "Ban toevoegen"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -477,7 +477,7 @@ msgstr "(Geregistreerde gebruikers)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "Alleen mods"
 
 #: Topic
 msgid "channel_topic"
@@ -717,11 +717,11 @@ msgstr "Er is geen topic voor dit kanaal"
 
 #: Topic set by {{who}} on {{when}}
 msgid "topic_setby"
-msgstr "Set by {{who}} on {{when}}"
+msgstr "Ingesteld door {{who}} op {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "Aangemaakt op {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
