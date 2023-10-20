@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-10-20 09:02\n"
 
 #: Start
 msgid "start_button"
@@ -425,7 +425,7 @@ msgstr "Nessuno è bloccato!"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "Aggiungi blocco"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -553,7 +553,7 @@ msgstr "This message looks like a command but is preceded by spaces."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "Inviare come testo?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -717,11 +717,11 @@ msgstr "Topic non impostato per questo canale"
 
 #: Topic set by {{who}} on {{when}}
 msgid "topic_setby"
-msgstr "Set by {{who}} on {{when}}"
+msgstr "Impostato da {{who}} il {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "Creato il {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -913,7 +913,7 @@ msgstr "Si è verificato un errore imprevisto"
 
 #: Unknown domain name or host
 msgid "error_unknown_host"
-msgstr "Unknown domain name or host"
+msgstr "Nome dominio o host sconosciuto"
 
 #: Forbidden to connect
 msgid "error_forbidden"
