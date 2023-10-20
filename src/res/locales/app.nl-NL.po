@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2023-10-20 04:48\n"
+"PO-Revision-Date: 2023-10-20 07:09\n"
 
 #: Start
 msgid "start_button"
@@ -549,11 +549,11 @@ msgstr "Een bericht sturen..."
 
 #: This message looks like a command but is preceded by spaces.
 msgid "input_not_command"
-msgstr "This message looks like a command but is preceded by spaces."
+msgstr "Dit bericht lijkt op een opdracht, maar wordt voorafgegaan door spaties."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "Versturen als tekst?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -913,39 +913,39 @@ msgstr "Er is een onverwachte fout opgetreden"
 
 #: Unknown domain name or host
 msgid "error_unknown_host"
-msgstr "Unknown domain name or host"
+msgstr "Onbekende domeinnaam of host"
 
 #: Forbidden to connect
 msgid "error_forbidden"
-msgstr "Forbidden to connect"
+msgstr "Verbinding maken niet toegestaan"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "Verbinding maken duurde te lang"
 
 #: The server refused the connection
 msgid "error_refused"
-msgstr "The server refused the connection"
+msgstr "De server heeft de verbinding geweigerd"
 
 #: Could not connect securely
 msgid "error_tls"
-msgstr "Could not connect securely"
+msgstr "Kon geen beveiligde verbinding tot stand brengen"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
-msgstr "The Kiwi IRC server had an error"
+msgstr "De Kiwi IRC-server heeft een fout ondervonden"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "Onbekende fout"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "Onjuiste gebruikersnaam of wachtwoord"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "Verbinding is onverwacht beëindigd"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
