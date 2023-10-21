@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-10-21 09:25\n"
 
 #: Start
 msgid "start_button"
@@ -425,7 +425,7 @@ msgstr "Κανένας δεν είναι προς το παρόν αποκλει
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "Προσθήκη αποκλεισμού"
 
 #: Refresh invite list
 msgid "invites_refresh"
