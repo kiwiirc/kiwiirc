@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2023-10-22 09:26\n"
+"PO-Revision-Date: 2023-10-22 10:34\n"
 
 #: Start
 msgid "start_button"
@@ -409,19 +409,19 @@ msgstr "Ban listesini yenile"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Yasaklanan kullanıcı"
+msgstr "Banlanan kullanıcı"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Yasaklayan:"
+msgstr "Banlayan:"
 
 #: Refreshing banlist...
 msgid "bans_refreshing"
-msgstr "Yasaklama listesi yenileniyor..."
+msgstr "Ban listesi yenileniyor..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Kimse yasaklanmadı!"
+msgstr "Kimse banlanmadı!"
 
 #: Add ban
 msgid "bans_add_ban"
@@ -873,11 +873,11 @@ msgstr "Kanaldan at"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Kanaldan yasakla"
+msgstr "Kanaldan banla"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Yasakla ve kanaldan at"
+msgstr "Kanaldan banla ve at"
 
 #: Select a Channel
 msgid "select_channel"
@@ -989,7 +989,7 @@ msgstr "{{nick}}, {{target}} kullanıcısından owner aldı"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}}, {{target}} kullanıcısını yasakladı"
+msgstr "{{nick}}, {{target}} kullanıcısını banladı"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
