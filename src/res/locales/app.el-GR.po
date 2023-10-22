@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2023-10-21 10:24\n"
+"PO-Revision-Date: 2023-10-22 01:11\n"
 
 #: Start
 msgid "start_button"
@@ -553,7 +553,7 @@ msgstr "Αυτό το μήνυμα μοιάζει με εντολή αλλά π�
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Αποστολή κειμένου"
+msgstr "Αποστολή ως κείμενο;"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -717,7 +717,7 @@ msgstr "Δεν υπάρχει τίτλος για αυτό το κανάλι"
 
 #: Topic set by {{who}} on {{when}}
 msgid "topic_setby"
-msgstr "Το θέμα ορίστηκε από τον χρήστη {{who}} στις {{when}}"
+msgstr "Το θέμα ορίστηκε από τον/την χρήστη {{who}} στις {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
@@ -933,7 +933,7 @@ msgstr "Δεν ήταν δυνατή η ασφαλής σύνδεση"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
-msgstr "Ο διακομιστής Kiwi IRC παρουσίασε σφάλμα"
+msgstr "Ο διακομιστής Kiwi IRC παρουσίασε κάποιο σφάλμα"
 
 #: Unknown error
 msgid "error_unknown"
@@ -945,7 +945,7 @@ msgstr "Λάθος όνομα χρήστη ή κωδικού πρόσβασης"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Η σύνδεση έκλεισε απροσδόκητα"
+msgstr "Η σύνδεση τερματίστηκε απροσδόκητα"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
