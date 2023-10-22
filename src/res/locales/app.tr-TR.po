@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2023-10-20 12:37\n"
+"PO-Revision-Date: 2023-10-22 09:26\n"
 
 #: Start
 msgid "start_button"
@@ -57,7 +57,7 @@ msgstr "Erişim"
 
 #: Banned Users
 msgid "banned"
-msgstr "Yasaklı Kullanıcılar"
+msgstr "Banlı Kullanıcılar"
 
 #: Invited Users
 msgid "invited"
@@ -373,7 +373,7 @@ msgstr "Operatör araçları"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Varsayılan yasak maskesi"
+msgstr "Varsayılan ban maskesi"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
@@ -405,7 +405,7 @@ msgstr "Filtre"
 
 #: Refresh banlist
 msgid "bans_refresh"
-msgstr "Yasaklananlar listesini yenile"
+msgstr "Ban listesini yenile"
 
 #: Banned user
 msgid "bans_user"
