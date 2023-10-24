@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-10-21 21:06\n"
 
 #: Start
 msgid "start_button"
@@ -425,7 +425,7 @@ msgstr "Ningú està banejat"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "Afegir una prohibició"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -477,7 +477,7 @@ msgstr "(Qualsevol usuari registrat)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "Només moderadors"
 
 #: Topic
 msgid "channel_topic"
@@ -549,11 +549,11 @@ msgstr "Enviar un missatge..."
 
 #: This message looks like a command but is preceded by spaces.
 msgid "input_not_command"
-msgstr "This message looks like a command but is preceded by spaces."
+msgstr "Aquest missatge sembla una comanda però està precedit per espais."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "Enviar com a text?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -717,11 +717,11 @@ msgstr "No hi ha cap tòpic per aquest canal"
 
 #: Topic set by {{who}} on {{when}}
 msgid "topic_setby"
-msgstr "Set by {{who}} on {{when}}"
+msgstr "Configurat per {{who}} el {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "Creat el {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -913,39 +913,39 @@ msgstr "S'ha produït un error inesperat"
 
 #: Unknown domain name or host
 msgid "error_unknown_host"
-msgstr "Unknown domain name or host"
+msgstr "Nom de domini o amfitrió desconegut"
 
 #: Forbidden to connect
 msgid "error_forbidden"
-msgstr "Forbidden to connect"
+msgstr "Connexió prohibida"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "Ha trigat massa en connectar-se"
 
 #: The server refused the connection
 msgid "error_refused"
-msgstr "The server refused the connection"
+msgstr "El servidor ha refusat la connexió"
 
 #: Could not connect securely
 msgid "error_tls"
-msgstr "Could not connect securely"
+msgstr "No s'ha pogut connectar de manera segura"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
-msgstr "The Kiwi IRC server had an error"
+msgstr "El servidor Kiwi IRC ha patit un error"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "Error desconegut"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "Nom d'usuari i contrasenya incorrectes"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "La connexió s'ha tancat de forma inesperada"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"

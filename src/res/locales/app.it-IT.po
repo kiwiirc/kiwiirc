@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-10-20 10:54\n"
 
 #: Start
 msgid "start_button"
@@ -425,7 +425,7 @@ msgstr "Nessuno è bloccato!"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "Aggiungi blocco"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -477,7 +477,7 @@ msgstr "(qualsiasi utente registrato)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "Solo mod"
 
 #: Topic
 msgid "channel_topic"
@@ -549,11 +549,11 @@ msgstr "Scrivi..."
 
 #: This message looks like a command but is preceded by spaces.
 msgid "input_not_command"
-msgstr "This message looks like a command but is preceded by spaces."
+msgstr "Sembra che questo messaggio sia un comando, tuttavia è preceduto da spazi."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "Inviare come testo?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -717,11 +717,11 @@ msgstr "Topic non impostato per questo canale"
 
 #: Topic set by {{who}} on {{when}}
 msgid "topic_setby"
-msgstr "Set by {{who}} on {{when}}"
+msgstr "Impostato da {{who}} il {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "Creato il {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -913,39 +913,39 @@ msgstr "Si è verificato un errore imprevisto"
 
 #: Unknown domain name or host
 msgid "error_unknown_host"
-msgstr "Unknown domain name or host"
+msgstr "Nome dominio o host sconosciuto"
 
 #: Forbidden to connect
 msgid "error_forbidden"
-msgstr "Forbidden to connect"
+msgstr "Connessione vietata"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "La connessione ha richiesto troppo tempo"
 
 #: The server refused the connection
 msgid "error_refused"
-msgstr "The server refused the connection"
+msgstr "Il server ha rifiutato la connessione"
 
 #: Could not connect securely
 msgid "error_tls"
-msgstr "Could not connect securely"
+msgstr "Non è stato possibile aprire una connessione sicura"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
-msgstr "The Kiwi IRC server had an error"
+msgstr "Si è verificato un errore sul server Kiwi IRC"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "Errore sconosciuto"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "Nome utente o password errati"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "La connessione si è chiusa inaspettatamente"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"

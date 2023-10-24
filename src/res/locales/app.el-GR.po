@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-10-22 01:11\n"
 
 #: Start
 msgid "start_button"
@@ -425,7 +425,7 @@ msgstr "Κανένας δεν είναι προς το παρόν αποκλει
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "Προσθήκη αποκλεισμού"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -477,7 +477,7 @@ msgstr "(Οποιοσδήποτε εγγεγραμμένος χρήστης)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "Μόνο συντονιστές"
 
 #: Topic
 msgid "channel_topic"
@@ -549,11 +549,11 @@ msgstr "Στείλτε ένα μήνυμα..."
 
 #: This message looks like a command but is preceded by spaces.
 msgid "input_not_command"
-msgstr "This message looks like a command but is preceded by spaces."
+msgstr "Αυτό το μήνυμα μοιάζει με εντολή αλλά προηγείται από κενά."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "Αποστολή ως κείμενο;"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -717,11 +717,11 @@ msgstr "Δεν υπάρχει τίτλος για αυτό το κανάλι"
 
 #: Topic set by {{who}} on {{when}}
 msgid "topic_setby"
-msgstr "Set by {{who}} on {{when}}"
+msgstr "Το θέμα ορίστηκε από τον/την χρήστη {{who}} στις {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "Δημιουργήθηκε στις {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -913,39 +913,39 @@ msgstr "Παρουσιάστηκε μη αναμενόμενο σφάλμα"
 
 #: Unknown domain name or host
 msgid "error_unknown_host"
-msgstr "Unknown domain name or host"
+msgstr "Άγνωστο όνομα τομέα ή διακομιστή"
 
 #: Forbidden to connect
 msgid "error_forbidden"
-msgstr "Forbidden to connect"
+msgstr "Απαγορεύεται η σύνδεση"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "Χρειάστηκε πολύς χρόνος για τη σύνδεση"
 
 #: The server refused the connection
 msgid "error_refused"
-msgstr "The server refused the connection"
+msgstr "Ο διακομιστής αρνήθηκε τη σύνδεση"
 
 #: Could not connect securely
 msgid "error_tls"
-msgstr "Could not connect securely"
+msgstr "Δεν ήταν δυνατή η ασφαλής σύνδεση"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
-msgstr "The Kiwi IRC server had an error"
+msgstr "Ο διακομιστής Kiwi IRC παρουσίασε κάποιο σφάλμα"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "Άγνωστο σφάλμα"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "Λάθος όνομα χρήστη ή κωδικού πρόσβασης"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "Η σύνδεση τερματίστηκε απροσδόκητα"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
