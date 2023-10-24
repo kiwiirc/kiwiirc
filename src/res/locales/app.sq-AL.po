@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2023-10-24 07:27\n"
+"PO-Revision-Date: 2023-10-24 09:46\n"
 
 #: Start
 msgid "start_button"
@@ -477,7 +477,7 @@ msgstr "(Cilido përdorues i regjistruar)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "Vetëm moderatorët"
 
 #: Topic
 msgid "channel_topic"
@@ -549,11 +549,11 @@ msgstr "Dërgoni një mesazh…"
 
 #: This message looks like a command but is preceded by spaces.
 msgid "input_not_command"
-msgstr "This message looks like a command but is preceded by spaces."
+msgstr "Ky mesazh duket si urdhër, por paraprihet nga hapësira."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "Të dërgohet si tekst?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -717,11 +717,11 @@ msgstr "S’ka temë për këtë kanal"
 
 #: Topic set by {{who}} on {{when}}
 msgid "topic_setby"
-msgstr "Set by {{who}} on {{when}}"
+msgstr "Caktuar nga {{who}} më {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "Krijuar më {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -913,39 +913,39 @@ msgstr "Ndodhi një gabim i papritur"
 
 #: Unknown domain name or host
 msgid "error_unknown_host"
-msgstr "Unknown domain name or host"
+msgstr "Emër përkatësie, ose strehë e panjohur"
 
 #: Forbidden to connect
 msgid "error_forbidden"
-msgstr "Forbidden to connect"
+msgstr "I ndaluar të lidhet"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "Iu desh shumë kohë të lidhej"
 
 #: The server refused the connection
 msgid "error_refused"
-msgstr "The server refused the connection"
+msgstr "Shërbyesi refuzoi lidhjen"
 
 #: Could not connect securely
 msgid "error_tls"
-msgstr "Could not connect securely"
+msgstr "S’u lidh dot në mënyrë të sigurt"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
-msgstr "The Kiwi IRC server had an error"
+msgstr "Shërbyesi Kiwi IRC pati një gabim"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "Gabim i panjohur"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "Emër përdoruesi, ose fjalëkalim i gabuar"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "Lidhja u mbyll papritmas"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
