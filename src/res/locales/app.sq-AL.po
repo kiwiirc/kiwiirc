@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-10-24 07:27\n"
 
 #: Start
 msgid "start_button"
@@ -425,7 +425,7 @@ msgstr "S’ka të dëbuar!"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "Shtoni dëbim"
 
 #: Refresh invite list
 msgid "invites_refresh"
