@@ -144,6 +144,7 @@ function getCommitHash() {
             commitHash += '-modified';
         }
     } catch {
+        // eslint-disable-next-line no-console
         console.error('Failed to get commit hash');
     }
     return commitHash;
