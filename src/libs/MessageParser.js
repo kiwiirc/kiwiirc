@@ -143,12 +143,24 @@ function matchUrl(word) {
         url = url.substr(0, url.length - 1);
     }
 
-    // Links almost always contain an opening bracket if the last character is a closing
+    // Links almost always contain a matching opening bracket if the last character is a closing
     // bracket and should be part of the URL.
-    // If there isn't an opening bracket but the URL ends in a closing bracket, consider the
-    // closing bracket as punctuation outside of the URL.
-    if (url.indexOf('(') === -1 && url[url.length - 1] === ')') {
-        url = url.substr(0, url.length - 1);
+    // If there isn't a matching opening bracket but the URL ends in a closing bracket,
+    // consider the closing bracket as punctuation outside of the URL.
+    if (url[url.length - 1] === ')') {
+        let unmatched = 0;
+
+        for (let i = url.length - 1; i >= 0; i--) {
+            if (url[i] === ')') {
+                unmatched++;
+            } else if (url[i] === '(') {
+                unmatched--;
+            }
+        }
+
+        if (unmatched === 1) {
+            url = url.substr(0, url.length - 1);
+        }
     }
 
     // Add the http if no protocol was found

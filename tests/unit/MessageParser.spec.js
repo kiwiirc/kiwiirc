@@ -46,6 +46,12 @@ describe('MessageParser.js', () => {
             ['http://[2001:db8:1f70::999:de8:7648:6e8]:100/'],
             ['ldap://[2001:db8::7]/c=GB?objectClass?one'],
             ['(http://example.com)', 'http://example.com', '(', ')'],
+            ['test text http://example.com more testings', 'http://example.com'],
+            ['test text [http://example.com] more testings', 'http://example.com'],
+            ['test text "http://example.com" more testings', 'http://example.com'],
+            ['test text (test test: http://example.com) more testings', 'http://example.com'],
+            ['test text  http://example.com#(test) more testings', 'http://example.com#(test)'],
+            ['test text  http://example.com#(te)st) more testings', 'http://example.com#(te)st'],
         ];
 
         tests.forEach((c) => {
