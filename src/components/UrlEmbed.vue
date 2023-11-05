@@ -7,6 +7,7 @@
             ref="embedlyLink"
             :href="url"
             :data-card-key="settings.key"
+            :data-card-width="cardWidth"
             class="kiwi-embedly-card"
             data-card-chrome="0"
             data-card-controls="0"
@@ -32,6 +33,13 @@ export default {
     computed: {
         settings() {
             return this.$state.setting('embedly');
+        },
+        cardWidth() {
+            if (!this.showPin) {
+                return '600px';
+            }
+
+            return this.settings.cardWidth || '400px';
         },
     },
     watch: {
