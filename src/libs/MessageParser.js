@@ -140,7 +140,7 @@ function matchUrl(word) {
     // Trim common punctuation from the end of a link. End of scentences etc.
     let punctuation = '.,;:';
     while (punctuation.indexOf(url[url.length - 1]) > -1) {
-        url = url.substr(0, url.length - 1);
+        url = url.substring(0, url.length - 1);
     }
 
     // Links almost always contain a matching opening bracket if the last character is a closing
@@ -159,7 +159,7 @@ function matchUrl(word) {
         }
 
         if (unmatched === 1) {
-            url = url.substr(0, url.length - 1);
+            url = url.substring(0, url.length - 1);
         }
     }
 
