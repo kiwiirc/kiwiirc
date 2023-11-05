@@ -346,7 +346,7 @@ export default {
     max-height: unset;
     -webkit-line-clamp: unset;
     margin: 5px 0 0 0;
-    padding: 0 10px 7px 10px;
+    padding: 0 10px 5px 10px;
     border-radius: 0 0 12px 12px;
 }
 
