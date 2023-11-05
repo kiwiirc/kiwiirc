@@ -101,7 +101,6 @@ export default {
     justify-content: center;
     width: 40%;
     max-width: 500px;
-    background-color: rgba(0, 0, 0, 0);
 }
 
 /** Right side */
