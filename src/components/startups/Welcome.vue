@@ -24,7 +24,7 @@
 
                 <input-text
                     v-model="nick"
-                    v-focus="!nick || !show_password_box"
+                    v-focus="!isIframe && (!nick || !show_password_box)"
                     :label="$t('nick')"
                     type="text"
                     :class="{'kiwi-welcome-invalid-nick': !isNickValid}"
@@ -45,7 +45,7 @@
                 >
                     <input-text
                         v-model="password"
-                        v-focus="nick || show_password_box"
+                        v-focus="(!isIframe && nick) || show_password_box"
                         :show-plain-text="true"
                         :label="$t('password')"
                         type="password"
@@ -128,6 +128,9 @@ export default {
         };
     },
     computed: {
+        isIframe() {
+            return !(window === window.parent || window.opener);
+        },
         startupOptions() {
             return this.$state.settings.startupOptions;
         },
