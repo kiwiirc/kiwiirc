@@ -890,6 +890,10 @@ inputCommands.list = function inputCommandList(event, command, line) {
 inputCommands.server = function inputCommandServer(event, command, line) {
     event.handled = true;
 
+    if (this.state.getSetting('settings.restricted')) {
+        return;
+    }
+
     let parts = line.split(' ');
     let serverAddr = parts[0];
     let serverPort = parts[1] || 6667;
