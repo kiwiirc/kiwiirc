@@ -199,7 +199,7 @@ export default {
 .kiwi-sidebar-settings-access-table {
     width: 100%;
     display: grid;
-    grid-template-columns: 2fr minmax(0px, 1fr) repeat(2, min-content);
+    grid-template-columns: 2fr minmax(0, 1fr) repeat(2, min-content);
 
     > div {
         border-bottom: 1px solid;
@@ -213,7 +213,7 @@ export default {
     }
 
     &.kiwi-sidebar-settings-access-restricted {
-        grid-template-columns: 2fr minmax(0px, 1fr) min-content;
+        grid-template-columns: 2fr minmax(0, 1fr) min-content;
 
         > div:nth-child(3n+3) {
             padding-right: initial;
