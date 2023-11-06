@@ -1,15 +1,15 @@
 <template>
     <div
-        :class="[
-            closing ? 'kiwi-startup-common--closing' : '',
-            backgroundImage ? '' : 'kiwi-startup-common--no-bg',
-        ]" :style="backgroundStyle" class="kiwi-startup-common"
+        :class="{
+            'kiwi-startup-common--closing': closing,
+            'kiwi-startup-common--no-bg': !backgroundImage,
+        }" :style="styleCommon" class="kiwi-startup-common"
     >
         <div class="kiwi-startup-common-section kiwi-startup-common-section-connection">
             <slot name="connection" />
         </div>
         <div
-            :style="backgroundStyle"
+            :style="styleInfo"
             class="kiwi-startup-common-section kiwi-startup-common-section-info"
         >
             <div
@@ -34,12 +34,21 @@ export default {
         };
     },
     computed: {
-        backgroundStyle() {
+        styleCommon() {
             let style = {};
             let options = this.$state.settings.startupOptions;
 
-            if (options.infoBackground) {
-                style['background-image'] = `url(${options.infoBackground})`;
+            if (options.infoBackground && this.$state.ui.app_width <= 850) {
+                style['background-image'] = `url("${options.infoBackground}")`;
+            }
+            return style;
+        },
+        styleInfo() {
+            let style = {};
+            let options = this.$state.settings.startupOptions;
+
+            if (options.infoBackground && this.$state.ui.app_width > 850) {
+                style['background-image'] = `url("${options.infoBackground}")`;
             }
             return style;
         },
