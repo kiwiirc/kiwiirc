@@ -483,7 +483,6 @@ export default {
 
 .kiwi-settings-aliases-input {
     height: auto;
-    min-height: 300px;
     min-height: 400px;
     line-height: normal;
     width: 100%;

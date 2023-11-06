@@ -899,7 +899,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     vertical-align: middle;
 }
 
-@keyframes emojiIn {
+@keyframes emoji-in {
     0% {
         transform: scale(0);
     }
@@ -910,7 +910,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 }
 
 .kiwi-messagelist-emoji--single {
-    animation: 0.1s ease-in-out 0s 1 emojiIn;
+    animation: 0.1s ease-in-out 0s 1 emoji-in;
     font-size: 2em;
 }
 
