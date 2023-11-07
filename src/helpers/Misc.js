@@ -92,9 +92,9 @@ export function queryStringVal(_name, _url) {
  */
 export function networkErrorMessage(err) {
     const translationKey = err.replace(/^err_/, 'error_');
-    const translation = TextFormatting.T(translationKey);
+    const translation = TextFormatting.t(translationKey);
     if (translation === translationKey) {
-        return TextFormatting.T('error_unknown');
+        return TextFormatting.t('error_unknown');
     }
 
     return translation;
