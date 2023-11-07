@@ -164,7 +164,10 @@ function clientMiddleware(state, network) {
         client.on('socket close', (err) => {
             isRegistered = false;
             network.state = 'disconnected';
-            network.state_error = err || '';
+
+            if (err) {
+                network.state_error = (typeof err === 'string') ? err : 'err_unknown';
+            }
 
             network.buffers.forEach((buffer) => {
                 if (!buffer) {
