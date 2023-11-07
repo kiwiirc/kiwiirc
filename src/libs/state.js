@@ -893,6 +893,14 @@ function createNewState() {
                 return buffers;
             },
 
+            clearNickColours() {
+                this.networks.forEach((network) => {
+                    Object.values(network.users).forEach((user) => {
+                        user.colour = '';
+                    });
+                });
+            },
+
             changeUserNick(networkid, oldNick, newNick) {
                 let network = this.getNetwork(networkid);
                 if (!network) {

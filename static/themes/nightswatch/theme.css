@@ -52,6 +52,10 @@
     --comp-border: #444;
 }
 
+.kiwi-wrap {
+    --kiwi-nickcolour-lightness: 50;
+}
+
 /* Welcome */
 .kiwi-welcome-simple-form .u-submit {
     color: #fff;
