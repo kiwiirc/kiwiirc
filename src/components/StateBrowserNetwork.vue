@@ -559,8 +559,8 @@ export default {
                 return;
             }
 
-            const selectedItem = autoComplete.selectedItem;
-            if (event.key === 'Enter' && selectedItem.text === this.channel_add_input) {
+            const item = autoComplete.selectedItem;
+            if (event.key === 'Enter' && item && item.text === this.channel_add_input) {
                 return;
             }
 
