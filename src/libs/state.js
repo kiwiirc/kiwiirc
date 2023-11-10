@@ -895,8 +895,18 @@ function createNewState() {
 
             clearNickColours() {
                 this.networks.forEach((network) => {
+                    // Clear user colours
                     Object.values(network.users).forEach((user) => {
                         user.colour = '';
+                    });
+
+                    // Re-render messages with user colours
+                    Object.values(network.buffers).forEach((buffer) => {
+                        buffer.getMessages().forEach((msg) => {
+                            if (msg.hasUserLink) {
+                                msg.hasRendered = false;
+                            }
+                        });
                     });
                 });
             },
