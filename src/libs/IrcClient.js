@@ -852,6 +852,13 @@ function clientMiddleware(state, network) {
                             modes.push(mode);
                         }
                     });
+
+                    Object.keys(user.whoFlags).forEach((flag) => {
+                        if (typeof eventUser[flag] === 'boolean') {
+                            user.whoFlags[flag] = eventUser[flag];
+                        }
+                    });
+                    user.hasWhoFlags = true;
                 });
             });
         }

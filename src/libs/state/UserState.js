@@ -17,6 +17,7 @@ export default class UserState {
         this.account = user.account || '';
         this.buffers = Object.create(null);
         this.hasWhois = false;
+        this.hasWhoFlags = false;
         this.typingState = Object.create(null);
         this.avatar = user.avatar || { small: '', large: '' };
         this.ignore = false;
@@ -41,6 +42,15 @@ export default class UserState {
             registered_nick: '',
             secure: '',
             special: '',
+        }, true);
+
+        // Who flags are non-enumerable properties (vues $watch won't cover these properties)
+        // watch hasWhoFlags to know when this data is populated
+        def(this, 'whoFlags', {
+            // bot: undefined,
+            // operator: undefined,
+            // registered: undefined,
+            // secure: undefined,
         }, true);
     }
 
