@@ -47,10 +47,10 @@ export default class UserState {
         // Who flags are non-enumerable properties (vues $watch won't cover these properties)
         // watch hasWhoFlags to know when this data is populated
         def(this, 'whoFlags', {
-            // bot: undefined,
-            // operator: undefined,
-            // registered: undefined,
-            // secure: undefined,
+            bot: null,
+            operator: null,
+            registered: null,
+            secure: null,
         }, true);
     }
 
