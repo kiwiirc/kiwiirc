@@ -230,7 +230,7 @@ export default {
 }
 
 .kiwi-aboutbuffer-invite-auto-complete .kiwi-autocomplete-item {
-    cursor: pointer;
+    padding: 5px 11px;
 }
 
 .kiwi-aboutbuffer-highlight {

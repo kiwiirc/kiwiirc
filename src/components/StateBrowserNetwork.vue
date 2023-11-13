@@ -573,7 +573,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 .kiwi-channel-options-header {
     text-align: left;
     padding: 0 0 0 10px;
@@ -813,22 +813,34 @@ export default {
     box-shadow: initial;
 }
 
-.kiwi-statebrowser-newchannel-autocomplete .kiwi-autocomplete-item {
-    display: flex;
-    padding: 5px 11px;
-    border-bottom: initial;
-    white-space: nowrap;
-    gap: 10px;
+.kiwi-statebrowser-newchannel-autocomplete {
+    .kiwi-autocomplete-item {
+        padding: 5px 11px;
+        border-bottom: initial;
+        white-space: nowrap;
+    }
+
+    .kiwi-autocomplete-item-value {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
-.kiwi-statebrowser-newchannel-autocomplete .kiwi-autocomplete-item-value {
-    flex-grow: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+@supports not (grid-template-rows: subgrid) {
+    .kiwi-statebrowser-newchannel-autocomplete {
+        .kiwi-autocomplete-item {
+            display: flex;
+            gap: 10px;
+        }
 
-.kiwi-statebrowser-newchannel-autocomplete .kiwi-autocomplete-item-count {
-    flex-shrink: 0;
+        .kiwi-autocomplete-item-value {
+            flex-grow: 1;
+        }
+
+        .kiwi-autocomplete-item-count {
+            flex-shrink: 0;
+        }
+    }
 }
 
 /* Channel search input */
@@ -903,5 +915,4 @@ export default {
         opacity: 1;
     }
 }
-
 </style>

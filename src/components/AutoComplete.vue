@@ -1,41 +1,30 @@
 <template>
     <div class="kiwi-autocomplete kiwi-theme-bg">
-
         <div
             v-for="item in filteredAndLimitedItems"
             :key="item.type+item.text"
-            :class="{
-                'kiwi-autocomplete-item': true,
-                'kiwi-autocomplete-item--selected': item.idx === selected_idx}
-            "
+            :class="[
+                'kiwi-autocomplete-item',
+                `kiwi-autocomplete-type--${item.type ? item.type : 'default'}`,
+                { 'kiwi-autocomplete-item--selected': item.idx === selected_idx },
+            ]"
             @mousedown.prevent
             @click="selected_idx = item.idx; selectCurrentItem()"
         >
-            <template v-if="item.type === 'user'">
-                <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
-                <span
-                    class="u-link kiwi-autocomplete-item-action"
-                    @click.stop="openQuery(item.text)"
-                >
-                    {{ $t('send_message') }}
-                </span>
-            </template>
-            <template v-else-if="item.type === 'channel'">
-                <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
-                <span class="kiwi-autocomplete-item-count">
-                    <i class="fa fa-user" aria-hidden="true" />
-                    {{ item.count }}
-                </span>
-            </template>
-            <template v-else-if="item.type === 'command'">
-                <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
-                <span class="u-link kiwi-autocomplete-item-description">
-                    {{ item.description }}
-                </span>
-            </template>
-            <template v-else>
-                <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
-            </template>
+            <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
+            <span
+                v-if="item.type === 'command'"
+                class="u-link kiwi-autocomplete-item-details"
+            >{{ item.description }}</span>
+            <span
+                v-else-if="item.type === 'user'"
+                class="u-link kiwi-autocomplete-item-details"
+                @click.stop="openQuery(item.text)"
+            >{{ $t('send_message') }}</span>
+            <span
+                v-else-if="item.type === 'channel'"
+                class="kiwi-autocomplete-item-details"
+            ><i class="fa fa-user" aria-hidden="true" />{{ item.count }}</span>
         </div>
     </div>
 </template>
@@ -264,8 +253,7 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="less">
 .kiwi-autocomplete {
     box-sizing: border-box;
     overflow-y: auto;
@@ -278,21 +266,73 @@ export default {
 
 .kiwi-autocomplete-item {
     padding: 5px 2em;
+    cursor: pointer;
 }
 
 .kiwi-autocomplete-item-value {
-    font-weight: bold;
+    font-weight: 700;
 }
 
-.kiwi-autocomplete-item-action {
-    float: right;
-    font-size: 0.9em;
+.kiwi-autocomplete-type--command {
+    .kiwi-autocomplete-item-details {
+        margin-left: 8px;
+    }
 }
 
-.kiwi-autocomplete-item-count {
-    float: right;
-    font-size: 0.9em;
-    width: 3em;
+.kiwi-autocomplete-type--user {
+    .kiwi-autocomplete-item-details {
+        float: right;
+        font-size: 0.9em;
+    }
 }
 
+.kiwi-autocomplete-type--channel {
+    .kiwi-autocomplete-item-details {
+        float: right;
+        font-size: 0.9em;
+        width: 3em;
+    }
+
+    .fa-user {
+        margin-right: 4px;
+    }
+}
+
+@supports (grid-template-rows: subgrid) {
+    .kiwi-autocomplete {
+        display: grid;
+        column-gap: 8px;
+        grid-template-columns: minmax(7em, max-content) auto max-content;
+    }
+
+    .kiwi-autocomplete-item {
+        display: grid;
+        grid-column: span 3;
+        grid-template-columns: subgrid;
+    }
+
+    .kiwi-autocomplete-type--command {
+        .kiwi-autocomplete-item-details {
+            margin-left: unset;
+            grid-column: span 2;
+        }
+    }
+
+    .kiwi-autocomplete-type--user,
+    .kiwi-autocomplete-type--channel {
+        .kiwi-autocomplete-item-value {
+            grid-column: span 2;
+        }
+
+        .kiwi-autocomplete-item-details {
+            float: unset;
+        }
+    }
+
+    .kiwi-autocomplete-type--default {
+        .kiwi-autocomplete-item-value {
+            grid-column: span 3;
+        }
+    }
+}
 </style>
