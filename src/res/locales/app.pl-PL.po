@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2023-11-14 17:11\n"
+"PO-Revision-Date: 2023-11-14 19:49\n"
 
 #: Start
 msgid "start_button"
@@ -321,7 +321,7 @@ msgstr "Wycisz powiadomienia dźwiękowe"
 
 #: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space separated)"
+msgstr "Wyróżnij słowa (oddzielone spacjami)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -405,7 +405,7 @@ msgstr "Filtruj"
 
 #: Refresh ban list
 msgid "bans_refresh"
-msgstr "Refresh ban list"
+msgstr "Odśwież listę zablokowanych"
 
 #: Banned user
 msgid "bans_user"
@@ -417,7 +417,7 @@ msgstr "Zablokowany przez"
 
 #: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Refreshing ban list..."
+msgstr "Odświeżanie listy zablokowanych..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -729,7 +729,7 @@ msgstr "Utworzono dnia {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Podświetlenia"
+msgstr "Wyróżnienia"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
@@ -741,7 +741,7 @@ msgstr "Pojawił się problem przy uruchamianiu Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
+msgstr "Upewnij się, że poprawnie zainstalowano Kiwi IRC i można wczytać konfigurację"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +841,7 @@ msgstr "Jest botem"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is available for help"
+msgstr "Może pomóc"
 
 #: Is an operator
 msgid "user_op"
