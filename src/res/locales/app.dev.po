@@ -319,9 +319,9 @@ msgstr "Include join/part messages as activity"
 msgid "settings_mute_sound"
 msgstr "Mute sound notifications"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space seperated)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -805,9 +805,9 @@ msgstr "Nobody has mentioned you yet..."
 msgid "error_starting"
 msgstr "There was an error starting Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 
 
@@ -921,7 +921,7 @@ msgstr "Is a bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is avaiable for help"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"
