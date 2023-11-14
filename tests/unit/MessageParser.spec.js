@@ -84,14 +84,21 @@ describe('MessageParser.js', () => {
     });
 
     it('should return valid user blocks', () => {
+        let createMockUser = (user) => ({
+            nick: user.nick,
+            username: user.username,
+            colour: user.colour || '',
+            getColour: function getColour() { return this.colour; },
+        });
+
         // mock users list
         let users = {
-            'TESTNICK1': { nick: 'TestNick1', username: 'testnick1', colour: '#a1fc5d' },
-            'TESTNICK2': { nick: 'TestNick2', username: 'testnick2', colour: '#7363fe' },
-            'TESTNICK3': { nick: 'TestNick3', username: 'testnick3' },
-            'TESTNICK4_': { nick: 'Test-Nick4_', username: 'testnick4' },
-            'TEST-NICK5': { nick: 'Test-Nick5', username: 'testnick5' },
-            'TESTNICK6-': { nick: 'TestNick6-', username: 'testnick6' },
+            'TESTNICK1': createMockUser({ nick: 'TestNick1', username: 'testnick1', colour: '#a1fc5d' }),
+            'TESTNICK2': createMockUser({ nick: 'TestNick2', username: 'testnick2', colour: '#7363fe' }),
+            'TESTNICK3': createMockUser({ nick: 'TestNick3', username: 'testnick3' }),
+            'TESTNICK4_': createMockUser({ nick: 'Test-Nick4_', username: 'testnick4' }),
+            'TEST-NICK5': createMockUser({ nick: 'Test-Nick5', username: 'testnick5' }),
+            'TESTNICK6-': createMockUser({ nick: 'TestNick6-', username: 'testnick6' }),
         };
         let tests = [
             ['testnick1', 'testnick1'],
@@ -110,10 +117,11 @@ describe('MessageParser.js', () => {
             let blocks = parseMessage(c[0], {}, users);
             let userBlocks = blocks.filter((b) => b.type === 'user');
             let compare = c.length === 2 ? c[1] : c[0];
+            let user = users[compare.toUpperCase()];
 
             expect(userBlocks.length).toStrictEqual(1);
             expect(userBlocks[0].meta.user).toStrictEqual(compare);
-            expect(userBlocks[0].meta.colour).toStrictEqual(users[compare.toUpperCase()].colour);
+            expect(userBlocks[0].meta.colour).toStrictEqual(user.getColour());
         });
     });
 

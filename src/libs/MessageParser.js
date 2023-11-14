@@ -212,7 +212,7 @@ function matchUser(word, userList) {
         type: 'user',
         meta: {
             user: trimWord,
-            colour: user.colour,
+            colour: user.getColour(),
         },
     }];
 }
