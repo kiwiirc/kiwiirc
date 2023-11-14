@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2023-11-14 17:11\n"
+"PO-Revision-Date: 2023-11-14 21:50\n"
 
 #: Start
 msgid "start_button"
@@ -321,7 +321,7 @@ msgstr "השתק התראות"
 
 #: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space separated)"
+msgstr "מילים להדגשה (מופרדות ע\"י רווח)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -405,7 +405,7 @@ msgstr "מסנן"
 
 #: Refresh ban list
 msgid "bans_refresh"
-msgstr "Refresh ban list"
+msgstr "רענן רשימת חסומים"
 
 #: Banned user
 msgid "bans_user"
@@ -417,7 +417,7 @@ msgstr "נחסם ע\"י"
 
 #: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Refreshing ban list..."
+msgstr "מרענן רשימת חסימות..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -425,7 +425,7 @@ msgstr "אף אחד לא חסום"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "הוסף חסימה"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -553,7 +553,7 @@ msgstr "This message looks like a command but is preceded by spaces."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "לשלוח כטקסט?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -721,7 +721,7 @@ msgstr "Set by {{who}} on {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "נוצר ב: {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -741,7 +741,7 @@ msgstr "התרחשה שגיאה באיתחול הממשק :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
+msgstr "וודא שהתקנת את Kiwi IRC בצורה נכונה ושהקונפיגורציה ניתנת לטעינה."
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +841,7 @@ msgstr "הוא רובוט"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is available for help"
+msgstr "זמין/ה לעזרה"
 
 #: Is an operator
 msgid "user_op"
@@ -917,11 +917,11 @@ msgstr "Unknown domain name or host"
 
 #: Forbidden to connect
 msgid "error_forbidden"
-msgstr "Forbidden to connect"
+msgstr "לא מורשה להתחבר"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "לקח יותר מדי זמן להתחבר"
 
 #: The server refused the connection
 msgid "error_refused"
@@ -929,7 +929,7 @@ msgstr "The server refused the connection"
 
 #: Could not connect securely
 msgid "error_tls"
-msgstr "Could not connect securely"
+msgstr "לא ניתן להתחבר בצורה מאובטחת"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
@@ -937,11 +937,11 @@ msgstr "The Kiwi IRC server had an error"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "שגיאה לא ידועה"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "שם המשתמש או הסיסמה שגויים"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
@@ -1157,7 +1157,7 @@ msgstr "נסה\\נסי את גרסת הפיתוח של קיווי איי.אר.ס
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "מנותק"
 
 #: Connected to {{network}}!
 msgid "connected_to"
