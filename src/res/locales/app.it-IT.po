@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2023-10-20 10:54\n"
+"PO-Revision-Date: 2023-11-14 17:11\n"
 
 #: Start
 msgid "start_button"
@@ -319,9 +319,9 @@ msgstr "Includi messaggi di ingresso/uscita come attività"
 msgid "settings_mute_sound"
 msgstr "Silenzia notifiche sonore"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Parole da evidenziare (separate da spazi)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +403,9 @@ msgstr "Reimposta"
 msgid "settings_advanced_filter"
 msgstr "Filtro"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Aggiorna elenco bloccati"
+msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +415,9 @@ msgstr "Utenti bloccati"
 msgid "bans_by"
 msgstr "Bandito da"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Aggiornamento elenco utenti bloccati in corso..."
+msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +739,9 @@ msgstr "Nessuno ti ha ancora menzionato..."
 msgid "error_starting"
 msgstr "Si è verificato un errore durante l'avvio di Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Assicurarsi di aver installato Kiwi IRC correttamente e che la configurazione possa essere caricata"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +841,7 @@ msgstr "È un bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "È disponibile ad aiutare"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"
