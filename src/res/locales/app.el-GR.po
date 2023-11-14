@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2023-10-22 01:11\n"
+"PO-Revision-Date: 2023-11-14 17:10\n"
 
 #: Start
 msgid "start_button"
@@ -319,9 +319,9 @@ msgstr "Συμπεριλάβετε μηνύματα δραστηριοτήτων
 msgid "settings_mute_sound"
 msgstr "Σίγαση ήχων ειδοποιήσεων"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Επισήμανση στις παρακάτω λέξεις (εισάγετε κενό για διαχωρισμό):"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +403,9 @@ msgstr "Επαναφορά"
 msgid "settings_advanced_filter"
 msgstr "Φίλτρο"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Ανανέωση λίστας αποκλεισμένων"
+msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +415,9 @@ msgstr "Αποκλεισμένος χρήστης"
 msgid "bans_by"
 msgstr "Αποκλείστηκε από"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Γίνεται ανανέωση λίστας αποκλεισμένων..."
+msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +739,9 @@ msgstr "Κανείς δεν σας έχει αναφέρει ακόμα..."
 msgid "error_starting"
 msgstr "Παρουσιάστηκε κάποιο σφάλμα κατά την εκκίνηση του Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Βεβαιωθείτε ότι έχετε εγκαταστήσει σωστά το Kiwi IRC και ότι όλες σας οι ρυθμίσεις μπορούν να φορτωθούν"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +841,7 @@ msgstr "Είναι ένα ρομπότ"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Διατίθεται για περαιτέρω βοήθεια"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"
