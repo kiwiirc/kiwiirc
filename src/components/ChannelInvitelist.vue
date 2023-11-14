@@ -368,7 +368,7 @@ export default {
     bottom: 0;
 
     .kiwi-autocomplete-item {
-        cursor: pointer;
+        padding: 5px 11px;
     }
 }
 
