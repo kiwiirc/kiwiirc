@@ -34,7 +34,7 @@ export function blockToHtml(block, isSingle, showEmoticons) {
 export function getEmojis(word) {
     const emojiList = getState().setting('emojis');
     const emojiLocation = getState().setting('emojiLocation');
-    if (!emojiList.hasOwnProperty(word)) {
+    if (!Object.prototype.hasOwnProperty.call(emojiList, word)) {
         return [];
     }
     return [{
