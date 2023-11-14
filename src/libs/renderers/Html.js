@@ -91,7 +91,7 @@ function linkifyUser(block) {
     let colour = block.meta.colour;
 
     return `<a class="kiwi-nick" data-nick="${escaped}"` +
-        (colour ? ` style="color:${colour}"` : '') +
+        (colour ? ` style="color:${colour};"` : '') +
         `>${escaped}</a>`;
 }
 
