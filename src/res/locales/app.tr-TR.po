@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2023-11-14 07:50\n"
+"PO-Revision-Date: 2023-11-14 17:10\n"
 
 #: Start
 msgid "start_button"
@@ -319,9 +319,9 @@ msgstr "Giriş/çıkış mesajlarını etkinlik olarak dahil et"
 msgid "settings_mute_sound"
 msgstr "Ses bildirimlerini kapat"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Kelimeleri vurgula (boşlukla ayır)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +403,9 @@ msgstr "Sıfırla"
 msgid "settings_advanced_filter"
 msgstr "Filtre"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Ban listesini yenile"
+msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +415,9 @@ msgstr "Banlanan kullanıcı"
 msgid "bans_by"
 msgstr "Banlayan:"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Ban listesi yenileniyor..."
+msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +739,9 @@ msgstr "Henüz kimse sizden bahsetmedi..."
 msgid "error_starting"
 msgstr "Kiwi IRC başlatılırken bir hata oluştu :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Kiwi IRC'i doğru kurduğunuzdan ve yapılandırmanın yüklenebildiğinden emin olun."
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +841,7 @@ msgstr "Bir bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Yardım için müsait"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"
