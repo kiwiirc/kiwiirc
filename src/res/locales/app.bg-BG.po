@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-11-14 17:10\n"
 
 #: Start
 msgid "start_button"
@@ -319,9 +319,9 @@ msgstr "Включване на съобщения за влизане/изли�
 msgid "settings_mute_sound"
 msgstr "Заглушаване на звуковите известия"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Персонализирано осветяване (разделяйте с интервал)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +403,9 @@ msgstr "Първоначалност"
 msgid "settings_advanced_filter"
 msgstr "Филтриране"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Опресняване на списъка със забранени"
+msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +415,9 @@ msgstr "Забранен потребител"
 msgid "bans_by"
 msgstr "Има забрана от"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Опресняване на списъка със забранени..."
+msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +739,9 @@ msgstr "Още не сте споменати от никого..."
 msgid "error_starting"
 msgstr "Възникна грешка, стартирайки Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Уверете се, че сте инсталирали правилно Kiwi IRC и конфигурацията може да бъде заредена"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +841,7 @@ msgstr "Е бот"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Е на линия за да ви помогне"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"
