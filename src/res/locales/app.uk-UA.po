@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-11-14 17:11\n"
 
 #: Start
 msgid "start_button"
@@ -319,9 +319,9 @@ msgstr "Повідомлення про активність"
 msgid "settings_mute_sound"
 msgstr "Вимкнути звук сповіщень"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Підсвічувати повідомлення зі словами (через пробіл)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +403,9 @@ msgstr "Відновити"
 msgid "settings_advanced_filter"
 msgstr "Фільтр"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Оновити список"
+msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +415,9 @@ msgstr "Заблокований користувач"
 msgid "bans_by"
 msgstr "Хто заблокував"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Оновлення списку..."
+msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +739,9 @@ msgstr "Досі ніхто вас не згадував..."
 msgid "error_starting"
 msgstr "Виникла помилка при запуску Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Переконайтеся, що Kiwi IRC встановлений правильно і можна завантажити конфігурацію"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +841,7 @@ msgstr "Це бот"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Доступний для допомоги"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"
