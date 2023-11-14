@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
-"PO-Revision-Date: 2023-10-20 07:09\n"
+"PO-Revision-Date: 2023-11-14 17:11\n"
 
 #: Start
 msgid "start_button"
@@ -319,9 +319,9 @@ msgstr "Berichten bij binnenkomst/vertrek als activiteit beschouwen"
 msgid "settings_mute_sound"
 msgstr "Geluidsmeldingen dempen"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Markeren op woorden (gescheiden door spaties)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +403,9 @@ msgstr "Herinitialiseren"
 msgid "settings_advanced_filter"
 msgstr "Filteren"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Banlijst vernieuwen"
+msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +415,9 @@ msgstr "Verbannen gebruiker"
 msgid "bans_by"
 msgstr "Verbannen door"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Banlijst vernieuwen..."
+msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +739,9 @@ msgstr "Niemand heeft je nog genoemd..."
 msgid "error_starting"
 msgstr "Er is een fout opgetreden bij het starten van Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Zorg ervoor dat je Kiwi IRC goed hebt geïnstalleerd en dat de configuratie kan worden geladen"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +841,7 @@ msgstr "Is een bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is beschikbaar voor hulp"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"
