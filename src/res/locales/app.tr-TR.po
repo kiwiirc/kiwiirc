@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2023-10-22 10:34\n"
+"PO-Revision-Date: 2023-11-14 07:50\n"
 
 #: Start
 msgid "start_button"
@@ -453,11 +453,11 @@ msgstr "Bu halka açık bir kanal."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Yalnızca davet edilen kullanıcılar katılabilir."
+msgstr "Sadece davet edilen kullanıcılar katılabilir."
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Yalnızca davet edilen kullanıcılara izin ver"
+msgstr "Sadece davet edilen kullanıcılara izin ver"
 
 #: Allow anybody to join
 msgid "invite_set_public"
@@ -477,7 +477,7 @@ msgstr "(Herhangi bir kayıtlı kullanıcı)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Yalnızca Moderatörler"
+msgstr "Sadece Moderatörler"
 
 #: Topic
 msgid "channel_topic"
@@ -497,7 +497,7 @@ msgstr "Bu kanalı listelerden gizle"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Konuyu yalnızca moderatörler değiştirebilir"
+msgstr "Konuyu sadece moderatörler değiştirebilir"
 
 #: Block messages from outside this channel
 msgid "channel_external"
