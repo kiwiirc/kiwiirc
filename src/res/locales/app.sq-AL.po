@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2023-11-14 17:11\n"
+"PO-Revision-Date: 2023-11-14 20:54\n"
 
 #: Start
 msgid "start_button"
@@ -405,7 +405,7 @@ msgstr "Filtër"
 
 #: Refresh ban list
 msgid "bans_refresh"
-msgstr "Refresh ban list"
+msgstr "Rifresko listë dëbimesh"
 
 #: Banned user
 msgid "bans_user"
@@ -417,7 +417,7 @@ msgstr "Dëbuar nga"
 
 #: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Refreshing ban list..."
+msgstr "Po rifreskohet listë dëbimesh…"
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -741,7 +741,7 @@ msgstr "Pati një gabim në nisjen e Kiwi IRC-së :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
+msgstr "Sigurohuni se keni të instaluar saktë Kiwi IRC dhe se formësimi për të mund të ngarkohet"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +841,7 @@ msgstr "Është robot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is available for help"
+msgstr "Është i gatshëm për ndihmë"
 
 #: Is an operator
 msgid "user_op"
