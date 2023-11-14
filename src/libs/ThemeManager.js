@@ -60,8 +60,11 @@ export default class ThemeManager {
             theTheme = theme;
         }
 
-        this.state.setting('theme', theTheme.name);
-        this.state.$emit('theme.change');
+        let currentTheme = this.state.setting('theme').toLowerCase();
+        if (currentTheme !== theTheme.name.toLowerCase()) {
+            this.state.setting('theme', theTheme.name);
+            this.state.$emit('theme.change');
+        }
     }
 
     reload() {

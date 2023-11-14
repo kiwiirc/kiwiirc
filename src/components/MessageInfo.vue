@@ -7,7 +7,7 @@
                     class="u-button u-button-secondary"
                     @click="urlPreview(url)"
                 >Preview</a>
-                <a :href="url" target="_blank" class="u-link">
+                <a :href="url" target="_blank" rel="noopener noreferrer" class="u-link">
                     {{ url }}
                 </a>
             </div>
