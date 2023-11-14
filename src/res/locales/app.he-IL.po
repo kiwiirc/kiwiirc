@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2023-11-14 21:50\n"
+"PO-Revision-Date: 2023-11-14 22:45\n"
 
 #: Start
 msgid "start_button"
@@ -113,7 +113,7 @@ msgstr "מתחבר"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "כניסה_שגויה"
+msgstr "כניסה שגויה"
 
 #: Login failed. Please try again or contact support
 msgid "login_failed"
@@ -157,7 +157,7 @@ msgstr "אזהרה!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "סגירת החלון זה תסגור את כל השיחות בצ'ט. לסגור את החלון"
+msgstr "פעולה זו תסגור את כל השיחות בצ'אט. האם לסגור את החלון?"
 
 #: Real name
 msgid "whois_realname"
@@ -273,7 +273,7 @@ msgstr "הצג רשימת השלמה אוטומטית"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "הודעות צ'ט"
+msgstr "הודעות צ'אט"
 
 #: Show timestamps
 msgid "settings_timestamps"
