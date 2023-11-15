@@ -511,13 +511,9 @@ async function initState() {
 }
 
 function initThemes() {
-    let themeMgr = ThemeManager.instance(getState());
-    api.setThemeManager(themeMgr);
-
     let argTheme = getQueryVariable('theme');
-    if (argTheme) {
-        themeMgr.setTheme(argTheme);
-    }
+    let themeMgr = ThemeManager.instance(getState(), argTheme);
+    api.setThemeManager(themeMgr);
 }
 
 function initSound() {

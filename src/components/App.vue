@@ -10,8 +10,6 @@
         @click="emitDocumentClick"
         @paste.capture="emitBufferPaste"
     >
-        <link :href="themeUrl" rel="stylesheet" type="text/css">
-
         <template v-if="!hasStarted || (!fallbackComponent && networks.length === 0)">
             <component :is="startupComponent" @start="startUp" />
         </template>
@@ -64,7 +62,6 @@
 <script>
 'kiwi public';
 
-import cssVarsPonyfill from 'css-vars-ponyfill';
 import '@/res/globalStyle.css';
 import Tinycon from 'tinycon';
 
@@ -81,7 +78,6 @@ import MediaViewer from '@/components/MediaViewer';
 import { State as SidebarState } from '@/components/Sidebar';
 import * as Notifications from '@/libs/Notifications';
 import * as bufferTools from '@/libs/bufferTools';
-import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
 
 let log = Logger.namespace('App.vue');
@@ -111,7 +107,6 @@ export default {
             mediaviewerComponent: null,
             mediaviewerComponentProps: {},
             mediaviewerIframe: false,
-            themeUrl: '',
             sidebarState: new SidebarState(),
         };
     },
@@ -209,12 +204,7 @@ export default {
             });
         },
         watchForThemes() {
-            let themes = ThemeManager.instance();
-            this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
-            this.$nextTick(() => cssVarsPonyfill());
             this.listen(this.$state, 'theme.change', () => {
-                this.themeUrl = ThemeManager.themeUrl(themes.currentTheme());
-                this.$nextTick(() => cssVarsPonyfill());
                 this.$state.clearNickColours();
             });
         },

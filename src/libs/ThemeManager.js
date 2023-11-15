@@ -2,73 +2,155 @@
 
 import _ from 'lodash';
 
+import Logger from '@/libs/Logger';
+
+const log = Logger.namespace('ThemeManager');
+
 let createdInstance = null;
 
 export default class ThemeManager {
-    constructor(state) {
+    constructor(state, argTheme) {
         this.state = state;
-        this.listenForIrcEvents();
-        this.varsEl = null;
+
+        this.activeTheme = null;
+        this.previousTheme = null;
+
+        this.varsElement = null;
+        this.currentElement = null;
+        this.loadingElement = null;
+
+        const initialTheme = this.findTheme(argTheme)
+            || this.findTheme(state.setting('theme'))
+            || this.availableThemes()[0];
+
+        this.setTheme(initialTheme);
     }
 
-    themeVar(varName) {
-        if (!this.varsEl) {
-            this.varsEl = document.querySelector('.kiwi-wrap');
+    static themeUrl(theme) {
+        let [url, qs] = theme.url.split('?');
+        if (url[url.length - 1] !== '/') {
+            url += '/';
         }
-
-        let styles = window.getComputedStyle(this.varsEl);
-        let v = styles.getPropertyValue('--kiwi-' + varName);
-        return (v || '').trim();
+        return url + 'theme.css' + (qs ? '?' + qs : '');
     }
 
     availableThemes() {
-        return this.state.settings.themes;
+        return this.state.getSetting('settings.themes');
+    }
+
+    findTheme(name) {
+        if (!name) {
+            return null;
+        }
+        return _.find(this.availableThemes(), (t) => t.name.toLowerCase() === name.toLowerCase());
     }
 
     currentTheme() {
-        let state = this.state;
-        let currentThemeName = state.setting('theme');
-        currentThemeName = currentThemeName.toLowerCase();
-
-        let theme = _.find(state.settings.themes, (t) => {
-            let isMatch = t.name.toLowerCase() === currentThemeName;
-            return isMatch;
-        });
-
-        // If no theme was set, use the first one in our theme list
-        if (!theme) {
-            theme = state.settings.themes[0];
-        }
-
-        return theme;
+        const theme = this.activeTheme || this.availableThemes()[0];
+        return this.findTheme(theme.name);
     }
 
     setTheme(theme) {
-        let theTheme = null;
+        const nextTheme = Object.assign(
+            Object.create(null),
+            (typeof theme === 'string')
+                ? this.findTheme(theme)
+                : theme,
+        );
 
-        if (typeof theme === 'string') {
-            // Make sure this theme exists
-            theTheme = _.find(this.availableThemes(), (t) => {
-                let isMatch = t.name.toLowerCase() === theme.toLowerCase();
-                return isMatch;
-            });
-
-            if (!theTheme) {
-                return;
+        if (!nextTheme || !nextTheme.url) {
+            // Tried to set an invalid theme, abort
+            // reset the theme setting name to current if its not valid
+            if (this.activeTheme.name !== this.state.setting('theme')) {
+                this.state.setting('theme', this.activeTheme.name);
             }
-        } else {
-            theTheme = theme;
+            log.error('Invalid theme', nextTheme);
+            return;
         }
 
-        let currentTheme = this.state.setting('theme').toLowerCase();
-        if (currentTheme !== theTheme.name.toLowerCase()) {
-            this.state.setting('theme', theTheme.name);
-            this.state.$emit('theme.change');
+        if (this.loadingElement) {
+            // There is already a loading theme
+            // remove it as we are about to load another
+            document.head.removeChild(this.loadingElement);
+            this.loadingElement = null;
         }
+
+        if (this.activeTheme && this.activeTheme.url === nextTheme.url) {
+            // Theme did not change, abort
+            return;
+        }
+
+        const nextNameLower = nextTheme.name.toLowerCase();
+        const themeElement = document.createElement('link');
+
+        if (this.previousTheme) {
+            // If previousTheme is not set then this is the initial theme
+            // do not check its loading/error state so there is always an
+            // active and previous theme set
+            themeElement.onload = () => {
+                // New theme loaded successfully
+                this.previousTheme = this.activeTheme;
+                this.activeTheme = nextTheme;
+
+                if (this.currentElement) {
+                    // Remove the old theme from the DOM
+                    document.head.removeChild(this.currentElement);
+                }
+
+                // Move our loaded element into current position
+                this.currentElement = this.loadingElement;
+                this.loadingElement = null;
+
+                if (nextTheme.name !== this.state.setting('theme')) {
+                    // Reset the theme setting name to current if its not valid
+                    this.state.setting('theme', nextTheme.name);
+                }
+
+                this.state.$emit('theme.change', nextTheme, this.previousTheme);
+            };
+
+            themeElement.onerror = () => {
+                // New theme failed to load, remove its loading element
+                document.head.removeChild(this.loadingElement);
+                this.loadingElement = null;
+
+                if (nextNameLower === 'custom' && !/\/theme\.css(\?|$)/.test(nextTheme.url)) {
+                    // For custom themes try appending /theme.css
+                    this.setCustomThemeUrl(ThemeManager.themeUrl(nextTheme));
+                    return;
+                }
+
+                this.state.$emit('theme.failed', nextTheme, this.activeTheme);
+            };
+
+            this.loadingElement = themeElement;
+        } else {
+            // This is our initial theme set by url param or config
+            this.activeTheme = nextTheme;
+            this.previousTheme = nextTheme;
+            this.currentElement = themeElement;
+        }
+
+        themeElement.rel = 'stylesheet';
+        themeElement.type = 'text/css';
+        themeElement.href = (nextNameLower !== 'custom')
+            ? ThemeManager.themeUrl(nextTheme)
+            : nextTheme.url;
+        document.head.appendChild(themeElement);
+    }
+
+    setCustomThemeUrl(url) {
+        const theme = this.findTheme('custom');
+        if (!theme) {
+            return;
+        }
+
+        theme.url = url;
+        this.setTheme(theme);
     }
 
     reload() {
-        let theme = this.currentTheme();
+        const theme = this.currentTheme();
         if (!theme) {
             return;
         }
@@ -83,48 +165,23 @@ export default class ThemeManager {
         }
 
         theme.url = url;
-        this.state.$emit('theme.change');
+        this.setTheme(theme.name);
     }
 
-    static themeUrl(theme) {
-        let parts = theme.url.split('?');
-        let url = parts[0];
-        let qs = parts[1] || '';
-
-        if (url[url.length - 1] !== '/') {
-            url += '/';
-        }
-        return url + 'theme.css' + (qs ? '?' + qs : '');
-    }
-
-    setCustomThemeUrl(url) {
-        let theme = _.find(ThemeManager.instance().availableThemes(), {
-            name: 'custom',
-        });
-
-        if (theme) {
-            theme.url = url;
+    themeVar(varName) {
+        if (!this.varsElement) {
+            this.varsElement = document.querySelector('.kiwi-wrap');
         }
 
-        if (theme.name === 'custom') {
-            this.state.$emit('theme.change');
-        }
-    }
-
-    // When we get a CTCP 'kiwi theme reload' then reload our theme. Handy for theme devs
-    listenForIrcEvents() {
-        this.state.$on('irc.ctcp request', (event, network) => {
-            let ctcpType = (event.type || '').toLowerCase();
-            if (ctcpType === 'kiwi' && event.message.indexOf('theme reload') > -1) {
-                this.reload();
-            }
-        });
+        const styles = window.getComputedStyle(this.varsElement);
+        const value = styles.getPropertyValue('--kiwi-' + varName);
+        return (value || '').trim();
     }
 }
 
-ThemeManager.instance = function instance(state) {
+ThemeManager.instance = (...args) => {
     if (!createdInstance) {
-        createdInstance = new ThemeManager(state);
+        createdInstance = new ThemeManager(...args);
     }
 
     return createdInstance;
