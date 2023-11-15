@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2023-11-14 17:10\n"
+"PO-Revision-Date: 2023-11-15 20:12\n"
 
 #: Start
 msgid "start_button"
@@ -321,7 +321,7 @@ msgstr "Σίγαση ήχων ειδοποιήσεων"
 
 #: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space separated)"
+msgstr "Επισήμανση στις λέξεις (εισάγετε κενό για διαχωρισμό)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -405,7 +405,7 @@ msgstr "Φίλτρο"
 
 #: Refresh ban list
 msgid "bans_refresh"
-msgstr "Refresh ban list"
+msgstr "Ανανέωση λίστας αποκλεισμένων"
 
 #: Banned user
 msgid "bans_user"
@@ -417,7 +417,7 @@ msgstr "Αποκλείστηκε από"
 
 #: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Refreshing ban list..."
+msgstr "Ανανέωσης λίστας αποκλεισμένων"
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -741,7 +741,7 @@ msgstr "Παρουσιάστηκε κάποιο σφάλμα κατά την ε�
 
 #: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
+msgstr "Βεβαιωθείτε ότι έχετε εγκαταστήσει σωστά το Kiwi IRC και ότι όλες σας οι ρυθμίσεις μπορούν να φορτωθούν"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +841,7 @@ msgstr "Είναι ένα ρομπότ"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is available for help"
+msgstr "Διατίθεται για περαιτέρω βοήθεια"
 
 #: Is an operator
 msgid "user_op"
