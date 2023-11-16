@@ -15,6 +15,6 @@ describe('StartupError.vue', () => {
             el: document.createElement('div'),
             render: (h) => h(StartupError, { props: { error: 'some error' } }),
         });
-        expect(vm.$el.querySelector('div').textContent).toEqual('some error');
+        expect(vm.$el.querySelector('span.kiwi-error-text').textContent).toEqual('some error');
     });
 });
