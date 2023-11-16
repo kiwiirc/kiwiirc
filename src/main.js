@@ -543,6 +543,8 @@ function startApp() {
 
     new WindowTitle(state);
 
+    api.emit('init');
+
     // Decide which startup screen to use depending on the config
     let startupScreens = {
         welcome: startupWelcome,
@@ -559,8 +561,6 @@ function startApp() {
     if (!startup) {
         throw new Error(`Startup screen "${startupName}" does not exist`);
     }
-
-    api.emit('init');
 
     /* eslint-disable no-new */
     new Vue({
