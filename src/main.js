@@ -14,6 +14,11 @@ import 'intersection-observer';
 
 import App from '@/components/App';
 import StartupError from '@/components/StartupError';
+import startupWelcome from '@/components/startups/Welcome';
+import startupZncLogin from '@/components/startups/ZncLogin';
+import startupCustomServer from '@/components/startups/CustomServer';
+import startupKiwiBnc from '@/components/startups/KiwiBnc';
+import startupPersonal from '@/components/startups/Personal';
 import Logger from '@/libs/Logger';
 import ConfigLoader from '@/libs/ConfigLoader';
 import getState from '@/libs/state';
@@ -534,14 +539,36 @@ function initInputCommands() {
 }
 
 function startApp() {
-    new WindowTitle(getState());
+    let state = getState();
+
+    new WindowTitle(state);
+
+    // Decide which startup screen to use depending on the config
+    let startupScreens = {
+        welcome: startupWelcome,
+        customServer: startupCustomServer,
+        kiwiBnc: startupKiwiBnc,
+        znc: startupZncLogin,
+        personal: startupPersonal,
+    };
+    let extraStartupScreens = state.getStartups();
+
+    let startupName = state.getSetting('settings.startupScreen') || 'personal';
+    let startup = extraStartupScreens[startupName] || startupScreens[startupName];
+
+    if (!startup) {
+        throw new Error(`Startup screen "${startupName}" does not exist`);
+    }
 
     api.emit('init');
 
     /* eslint-disable no-new */
     new Vue({
         el: '#app',
-        render: (h) => h(App),
+        render: (h) => h(
+            App,
+            { props: { startupComponent: startup } }
+        ),
         i18n: api.vueI18n,
     });
 

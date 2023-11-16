@@ -1,7 +1,12 @@
 <template>
-    <div class="kiwi-wrap kiwi-wrap-error">
-        <h2>Kiwi IRC could not start :(</h2>
-        <div>{{ error }}</div>
+    <div class="kiwi-wrap kiwi-error">
+        <img
+            src="../res/salvadorkatz_kiwi.png"
+            title="deviantart.com/salvadorkatz [CC BY-NC-ND 3.0]"
+            alt=""
+        >
+        <h2>There was a problem starting <span class="kiwi-name">Kiwi IRC</span></h2>
+        <span class="kiwi-error-text">{{ error }}</span>
     </div>
 </template>
 
@@ -11,25 +16,36 @@
 export default {
     props: ['error'],
 };
-
 </script>
 
-<style>
-
-.kiwi-wrap-error {
+<style lang="less">
+.kiwi-wrap.kiwi-error {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
     height: 100%;
-    overflow: hidden;
-    text-align: center;
-}
+    overflow: auto;
+    color: #000;
 
-.kiwi-wrap-error > div {
-    margin-top: 0.5em;
-    padding: 1em;
-    font-size: 1.2em;
-    border: 1px solid #b51111;
-    background: #ffbaba;
-    display: inline-block;
-    text-align: left;
-}
+    .kiwi-name {
+        color: #379a79;
+    }
 
+    > img {
+        max-width: 90vw;
+        max-height: 60vh;
+    }
+
+    > span {
+        display: inline-block;
+        padding: 1em;
+        margin: 0.5em 1em 0;
+        font-size: 1.2em;
+        text-align: left;
+        background: #ffbaba;
+        border: 2px solid #b51111;
+    }
+}
 </style>
