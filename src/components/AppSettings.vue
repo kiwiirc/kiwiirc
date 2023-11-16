@@ -44,7 +44,10 @@
                                     </option>
                                 </select>
                             </label>
-                            <label v-if="theme==='custom'">
+                            <label
+                                v-if="theme.toLowerCase()==='custom'"
+                                class="kiwi-appsettings-setting-theme-custom"
+                            >
                                 <span>{{ $t('settings_themeurl') }} </span>
                                 <input v-model="customThemeUrl" class="u-input">
                             </label>
@@ -349,24 +352,34 @@ export default {
             let updateFn = () => {
                 let theme = themeMgr.currentTheme();
                 this.theme = theme.name;
-                this.customThemeUrl = theme.name === 'custom' ?
+                this.customThemeUrl = theme.name.toLowerCase() === 'custom' ?
                     theme.url :
                     '';
             };
 
-            let watchTheme = (newVal) => {
-                themeMgr.setTheme(newVal);
-            };
-
-            let watchCustomThemeUrl = (newVal) => {
-                if (themeMgr.currentTheme().name === 'custom') {
-                    themeMgr.setCustomThemeUrl(newVal);
+            let failedFn = () => {
+                if (this.theme.toLowerCase() !== 'custom') {
+                    let theme = themeMgr.currentTheme();
+                    this.theme = theme.name;
                 }
             };
+
+            let watchTheme = (newVal) => {
+                if (newVal.toLowerCase() !== 'custom') {
+                    themeMgr.setTheme(newVal);
+                }
+            };
+
+            let watchCustomThemeUrl = _.debounce((newVal) => {
+                if (this.theme.toLowerCase() === 'custom') {
+                    themeMgr.setCustomThemeUrl(newVal);
+                }
+            }, 800, { leading: false, trailing: true });
 
             // Remove all our attached events to cleanup
             let teardownFn = () => {
                 this.$state.$off('theme.change', updateFn);
+                this.$state.$off('theme.failed', failedFn);
                 watches.forEach((unwatchFn) => unwatchFn());
                 this.$off('hook:destroy', teardownFn);
             };
@@ -376,6 +389,7 @@ export default {
             updateFn();
 
             this.$state.$on('theme.change', updateFn);
+            this.$state.$on('theme.failed', failedFn);
             this.$once('hook:destroyed', teardownFn);
 
             // $watch returns a function to stop watching the data field. Add them into
@@ -442,6 +456,17 @@ export default {
 
 .kiwi-appsettings-setting-theme select {
     float: right;
+}
+
+.kiwi-appsettings-setting-theme-custom {
+    .kiwi-appsettings .u-form & {
+        display: flex;
+        align-items: center;
+
+        > input {
+            flex-grow: 1;
+        }
+    }
 }
 
 .kiwi-appsettings-setting-showjoinpart span {
