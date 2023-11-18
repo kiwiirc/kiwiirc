@@ -3,6 +3,7 @@
 import { trim } from 'lodash';
 
 import * as EmojiProvider from '@/libs/EmojiProvider';
+import * as Misc from '@/helpers/Misc';
 import formatIrcMessage, { createNewBlock } from '@/libs/MessageFormatter';
 import { urlRegex, channelRegex } from '@/helpers/TextFormatting';
 
@@ -101,12 +102,20 @@ function matchChannel(word) {
         return false;
     }
 
+    let channel = channelMatch[3];
+
+    // When the end of channel name is a closing bracket check for matching opening bracket
+    // if no matching opening bracket is found consider the trailing bracket as punctuation
+    if (Misc.hasUnmatchedTrailingBracket(channel)) {
+        channel = channel.substring(0, channel.length - 1);
+    }
+
     return [{
         index: channelMatch[1].length + channelMatch[2].length,
-        match: channelMatch[3],
+        match: channel,
         type: 'channel',
         meta: {
-            channel: channelMatch[3],
+            channel,
         },
     }];
 }
@@ -147,20 +156,8 @@ function matchUrl(word) {
     // bracket and should be part of the URL.
     // If there isn't a matching opening bracket but the URL ends in a closing bracket,
     // consider the closing bracket as punctuation outside of the URL.
-    if (url[url.length - 1] === ')') {
-        let unmatched = 0;
-
-        for (let i = url.length - 1; i >= 0; i--) {
-            if (url[i] === ')') {
-                unmatched++;
-            } else if (url[i] === '(') {
-                unmatched--;
-            }
-        }
-
-        if (unmatched === 1) {
-            url = url.substring(0, url.length - 1);
-        }
+    if (Misc.hasUnmatchedTrailingBracket(url)) {
+        url = url.substring(0, url.length - 1);
     }
 
     // Add the http if no protocol was found
