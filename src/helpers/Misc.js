@@ -377,6 +377,35 @@ export function makePluginObject(pluginId, componentOrElement, args = {}) {
     return plugin;
 }
 
+/**
+ * Check for trailing close bracket and return true if no matching open bracket is found
+ * @param {String} str The string to check for trailing brackets
+ * @returns {Boolean}  Boolean true when trailing bracket and no matching open bracket
+ */
+export function hasUnmatchedTrailingBracket(str) {
+    const brackets = [
+        { o: '(', c: ')' },
+        { o: '[', c: ']' },
+        { o: '{', c: '}' },
+    ];
+
+    const type = brackets.find((t) => t.c === str[str.length - 1]);
+    if (!type) {
+        return false;
+    }
+
+    let unmatched = 0;
+    for (let i = str.length - 1; i >= 0; i--) {
+        if (str[i] === type.c) {
+            unmatched++;
+        } else if (str[i] === type.o) {
+            unmatched--;
+        }
+    }
+
+    return (unmatched === 1);
+}
+
 // This provides a better sort for numbered nicks but does not work on ios9
 let intlCollator;
 if (global.Intl) {
