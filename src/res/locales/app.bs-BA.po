@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2023-11-14 17:11\n"
+"PO-Revision-Date: 2023-11-23 01:15\n"
 
 #: Start
 msgid "start_button"
@@ -321,7 +321,7 @@ msgstr "Utišaj zvučne obavijesti"
 
 #: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space separated)"
+msgstr "Podebljanje na riječima (razmaknuto razmakom)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -405,7 +405,7 @@ msgstr "Filtriraj"
 
 #: Refresh ban list
 msgid "bans_refresh"
-msgstr "Refresh ban list"
+msgstr "Osvježi spisak banovanih"
 
 #: Banned user
 msgid "bans_user"
@@ -417,7 +417,7 @@ msgstr "Banovan od"
 
 #: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Refreshing ban list..."
+msgstr "Spisak banovanih se osvježava..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -741,7 +741,7 @@ msgstr "Greška prilikom pokretanja Kiwi IRC klijenta :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
+msgstr "Provjerite da li ste ispravno instalirali Kiwi IRC i konfiguracija će se učitati"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +841,7 @@ msgstr "je bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is available for help"
+msgstr "je dostupan/na za pomoć"
 
 #: Is an operator
 msgid "user_op"
