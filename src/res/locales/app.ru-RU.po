@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2023-11-14 17:11\n"
+"PO-Revision-Date: 2023-11-29 18:52\n"
 
 #: Start
 msgid "start_button"
@@ -941,11 +941,11 @@ msgstr "Unknown error"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "Неверное имя пользователя или пароль"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "Соединение было прервано"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1141,7 +1141,7 @@ msgstr "Сохраненные сети"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (next gen) - Rizon preview"
+msgstr "Kiwi IRC (следующего поколения) - предварительный просмотр Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
@@ -1189,7 +1189,7 @@ msgstr "{{nick}} приглашает {{invited}} присоединиться �
 
 #: You invited {{invited}} to join {{channel}}
 msgid "invited_inviter"
-msgstr "You invited {{invited}} to join {{channel}}"
+msgstr "{{nick}} приглашает {{invited}} Вас в {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
