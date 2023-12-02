@@ -287,33 +287,36 @@
 }
 
 /* ---- Sidebar - Nicklist ---- */
-.kiwi-nicklist-usercount {
+.kiwi-nicklist-filter {
     border-bottom-color: var(--brand-midtone);
 }
 
-.kiwi-nicklist-user {
-    border-left-color: var(--brand-default-bg);
+.kiwi-nicklist-users {
+    scrollbar-color: var(--comp-scroller-fg) var(--comp-scroller-bg);
+}
+
+.kiwi-nicklist-users::-webkit-scrollbar-thumb {
+    background-color: var(--comp-scroller-fg);
+}
+
+.kiwi-nicklist-users::-webkit-scrollbar-track {
+    background-color: var(--comp-scroller-bg);
 }
 
 .kiwi-nicklist-user:hover {
     border-left-color: var(--brand-primary);
-    cursor: pointer;
 }
 
-.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
-    color: var(--brand-default-fg);
+.kiwi-nicklist-user-typing {
+    fill: var(--brand-default-fg);
 }
 
-.kiwi-nicklist-user::after {
-    color: var(--brand-midtone);
+.kiwi-nicklist-user-message {
+    fill: var(--brand-default-fg);
 }
 
-.kiwi-nicklist-messageuser {
-    color: var(--brand-default-bg);
-}
-
-.kiwi-nicklist-info i.fa-search {
-    color: var(--brand-midtone);
+.kiwi-nicklist-user-message:hover {
+    fill: var(--brand-primary);
 }
 
 /* ---- Sidebar - userbox ---- */
@@ -1078,7 +1081,12 @@
     border-color: var(--brand-default-bg);
     background-color: var(--brand-primary);
 }
-.kiwi-awaystatusindicator--away {
+
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
+    background-color: var(--brand-warning);
+}
+
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--offline {
     background-color: var(--brand-error);
 }
 

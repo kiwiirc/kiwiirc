@@ -1,54 +1,65 @@
-<template functional>
+<template>
     <div
-        :class="[
-            props.nicklist.userMode(props.user) ?
-                'kiwi-nicklist-user--mode-' + props.nicklist.userMode(props.user) :
-                '',
-            props.user.away ? 'kiwi-nicklist-user--away' : '',
-            props.user.ignore ? 'kiwi-nicklist-user--ignore' : '',
-            data.staticClass,
-        ]"
-        :data-nick="(props.user.nick||'').toLowerCase()"
+        :class="{
+            'kiwi-nicklist-user--away': user.isAway() || user.isOffline(),
+            'kiwi-nicklist-user--ignore': user.ignore,
+        }"
+        v-bind="dataAttributes"
         class="kiwi-nicklist-user"
-        @click="props.nicklist.openUserbox(props.user)"
+        @click.stop="nicklist.openUserbox(user)"
     >
-        <div v-if="props.m().shouldShowAvatars()" class="kiwi-avatar-container">
-            <component
-                :is="injections.components.Avatar"
-                v-if="props.user"
-                :user="props.user"
+        <div v-if="nicklist.shouldShowAvatars" class="kiwi-nicklist-avatar">
+            <Avatar
+                :user="user"
                 size="small"
             />
-            <component
-                :is="injections.components.AwayStatusIndicator"
-                :network="props.network"
-                :user="props.user"
+            <AwayStatusIndicator
+                :network="network"
+                :user="user"
                 :toggle="false"
             />
         </div>
-        <div v-else>
-            <component
-                :is="injections.components.AwayStatusIndicator"
-                :network="props.network"
-                :user="props.user"
-                :toggle="false"
-            />
-        </div>
-        <span class="kiwi-nicklist-user-prefix">
-            {{ props.nicklist.userModePrefix(props.user) }}
-        </span><span
-            :style="{ 'color': props.m().userColour() }"
-            class="kiwi-nicklist-user-nick"
-        >{{ props.user.nick }}
-        </span>
-        <span class="kiwi-nicklist-messageuser" @click.stop="props.nicklist.openQuery(props.user)">
-            <i class="fa fa-comment" aria-hidden="true" />
-        </span>
-        <component
-            :is="injections.components.TypingStatusIndicator"
-            :user="props.user"
-            :buffer="props.nicklist.buffer"
+        <AwayStatusIndicator
+            v-else
+            class="kiwi-nicklist-awaystatus"
+            :network="network"
+            :user="user"
+            :toggle="false"
         />
+        <span class="kiwi-nicklist-user-prefix">{{ userModePrefix }}</span>
+        <span
+            class="kiwi-nicklist-user-nick"
+            :style="{ 'color': userColour }"
+        >{{ user.nick }} </span>
+        <div class="kiwi-nicklist-user-buttons">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="kiwi-nicklist-user-typing"
+                :class="{
+                    'kiwi-nicklist-user-typing--active': userTypingState === 'active',
+                    'kiwi-nicklist-user-typing--paused': userTypingState === 'paused',
+                }"
+            >
+                <circle cx="4" cy="12" r="3" />
+                <circle cx="12" cy="12" r="3" />
+                <circle cx="20" cy="12" r="3" />
+            </svg>
+
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 36 36"
+                class="kiwi-nicklist-user-message"
+                @click.stop="nicklist.openQuery(user)"
+            >
+                <path
+                    d="M18 1C8.059 1 0 7.268 0 15c0 4.368 2.574 8.268 6.604 10.835C6.08 28.144
+                        4.859 31.569 2 35c5.758-.96 9.439-3.761 11.716-6.416c1.376.262 2.805.416
+                        4.284.416c9.941 0 18-6.268 18-14S27.941 1 18 1z"
+                />
+            </svg>
+        </div>
+
     </div>
 </template>
 
@@ -59,123 +70,160 @@ import AwayStatusIndicator from './AwayStatusIndicator';
 import TypingStatusIndicator from './TypingStatusIndicator';
 import Avatar from './Avatar';
 
-const methods = {
-    props: {},
-    userColour() {
-        let props = this.props;
-        if (props.nicklist.useColouredNicks) {
-            return props.user.getColour();
-        }
-        return '';
-    },
-    shouldShowAvatars() {
-        let props = this.props;
-        return props.nicklist.buffer.setting('nicklist_avatars');
-    },
-};
-
 export default {
-    inject: {
-        components: {
-            default: {
-                AwayStatusIndicator,
-                TypingStatusIndicator,
-                Avatar,
-            },
-        },
+    components: {
+        AwayStatusIndicator,
+        TypingStatusIndicator,
+        Avatar,
     },
-    props: {
-        network: Object,
-        user: Object,
-        nicklist: Object,
-        m: {
-            default: function m() {
-                // vue uses this function to generate the prop. `this`==null Return our own function
-                return function n() {
-                    // Give our methods some props context before its function is called.
-                    // This is only safe because the function on the methods object is called on
-                    // the same js tick
-                    methods.props = this;
-                    return methods;
-                };
-            },
+    props: ['network', 'user', 'nicklist'],
+    computed: {
+        dataAttributes() {
+            const attrs = Object.create(null);
+            attrs['data-nick'] = this.user.nick.toLowerCase();
+
+            if (this.user.account) {
+                attrs['data-account'] = this.user.account.toLowerCase();
+            }
+
+            const userMode = this.nicklist.buffer.userMode(this.user);
+            if (userMode) {
+                attrs['data-mode'] = userMode;
+            }
+
+            return attrs;
+        },
+        userColour() {
+            if (this.nicklist.useColouredNicks) {
+                return this.user.getColour();
+            }
+            return '';
+        },
+        userModePrefix() {
+            return this.nicklist.buffer.userModePrefix(this.user);
+        },
+        userTypingState() {
+            const status = this.user.typingStatus(this.nicklist.buffer.name).status;
+            // console.log('userTypingState', this.user.nick, status);
+            return status;
         },
     },
 };
 </script>
 
-<style>
-
+<style lang="less">
 .kiwi-nicklist-user {
-    line-height: 26px;
-    padding: 0 12px 0 12px;
-    border-left: 4px solid;
-    margin: 0 0 0 0;
     position: relative;
     box-sizing: border-box;
-    transition: all 0.1s;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 26px;
+    max-height: 26px;
+    padding: 0 10px;
+    line-height: initial;
     white-space: nowrap;
+    cursor: pointer;
+    border-left: 4px solid transparent;
+    transition: all 0.1s;
+
+    .kiwi-nicklist--avatars & {
+        height: 38px;
+        max-height: 38px;
+        padding: 4px 10px;
+    }
+}
+
+.kiwi-nicklist-avatar {
+    position: relative;
+    margin-right: 10px;
+
+    .kiwi-avatar {
+        width: 30px;
+        height: 30px;
+    }
+
+    .kiwi-awaystatusindicator {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+    }
+}
+
+.kiwi-nicklist-awaystatus {
+    width: 9px;
+    height: 9px;
+    margin-right: 6px;
+    border: none;
+}
+
+.kiwi-nicklist-user-nick {
+    display: block;
+    flex: 1;
+    margin-right: 10px;
+    overflow: hidden;
+    font-weight: 700;
+    text-overflow: ellipsis;
+}
+
+.kiwi-nicklist-user-buttons {
+    position: relative;
     display: flex;
     align-items: center;
 }
 
-.kiwi-nicklist--avatars .kiwi-nicklist-user {
-    line-height: 32px;
-    padding-bottom: 6px;
-}
-
-.kiwi-nicklist-user-nick {
-    font-weight: bold;
-    cursor: pointer;
-    display: block;
-    width: 100%;
-    padding-right: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.kiwi-nicklist-messageuser {
-    position: absolute;
-    content: '\f075';
-    right: -1em;
-    font-family: fontAwesome, sans-serif;
-    line-height: 26px;
-    opacity: 0;
-}
-
-.kiwi-nicklist-messageuser:hover {
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
+.kiwi-nicklist-user-typing {
+    width: 1.2em;
+    height: 1.2em;
+    visibility: hidden;
     opacity: 1;
-    right: 1em;
-    transition: all 0.2s;
-    transition-delay: 0.1s;
+
+    &--active,
+    &--paused {
+        visibility: visible;
+    }
+
+    > circle {
+        opacity: 0.2;
+        animation: 1.2s blink infinite;
+        animation-play-state: paused;
+
+        &:nth-child(2) {
+            animation-delay: .3s
+        }
+
+        &:nth-child(3) {
+            animation-delay: .6s
+        }
+    }
+
+    &--active > circle {
+        animation-play-state: running;
+    }
+
+    .kiwi-nicklist-user:hover & {
+        opacity: 0;
+        transition: opacity .3s;
+    }
+
+    @keyframes blink {
+        33% {
+            opacity: 0.9;
+        }
+    }
 }
 
-.kiwi-avatar-container {
-    position: relative;
-    margin-right: 10px;
-    flex: 0;
-}
-
-.kiwi-avatar-container .kiwi-avatar {
-    width: 30px;
-    height: 30px;
-}
-
-.kiwi-avatar-container .kiwi-awaystatusindicator {
+.kiwi-nicklist-user-message {
     position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-}
+    right: -2.4em;
+    width: 1.2em;
+    height: 1.2em;
+    opacity: 0;
+    transition: right .3s, opacity .3s, fill .1s;
 
-.kiwi-avatar-container-user-prefix {
-    flex: 0;
+    .kiwi-nicklist-user:hover & {
+        right: 0;
+        opacity: 1;
+    }
 }
-
 </style>

@@ -37,6 +37,8 @@
     /* Sidebars ( Right Side ) */
     --comp-sidebar-bg: #fff;
     --comp-sidebar-fg: #22231f;
+    --comp-scroller-bg: #f0f0f0;
+    --comp-scroller-fg: #cdcdcd;
     --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
     --comp-aboutbuffer-header-bg: #42b992;
 

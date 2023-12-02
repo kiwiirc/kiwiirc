@@ -2,7 +2,8 @@
     <span
         v-if="$options.m.shouldShowStatus(props)"
         :class="{
-            'kiwi-awaystatusindicator--away': !props.user || props.user.isAway(),
+            'kiwi-awaystatusindicator--offline': !props.user || props.user.isOffline(),
+            'kiwi-awaystatusindicator--away': props.user && props.user.isAway(),
             'kiwi-awaystatusindicator--self': $options.m.isUserSelf(props),
             [data.staticClass]: !!data.staticClass,
         }"
@@ -67,7 +68,7 @@ export default {
     border-radius: 50%;
     margin: 0 4px 0 0;
     border: 1px solid #fff;
-    transition: background 0.2s;
+    transition: background-color 0.5s;
 }
 
 .kiwi-awaystatusindicator--self {

@@ -63,7 +63,11 @@ export default class UserState {
     }
 
     isAway() {
-        return !!this.away;
+        return this.away && this.away !== 'offline';
+    }
+
+    isOffline() {
+        return this.away === 'offline';
     }
 
     typingStatus(_target, status) {

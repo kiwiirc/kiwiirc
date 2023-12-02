@@ -9,7 +9,7 @@
     --brand-default-fg: #ababab;
     --brand-notice: #f6c358;
     --brand-warning: #fcb46e;
-    --brand-error: #843338;
+    --brand-error: #b9444c;
     --comp-workspace-before-bg: var(--brand-primary);
     --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
     --comp-header-bg: var(--brand-default-bg);
@@ -25,6 +25,8 @@
     --comp-statebrowser-network-border: #656565;
     --comp-sidebar-bg: #1e1e1e;
     --comp-sidebar-fg: #ababab;
+    --comp-scroller-bg: #424242;
+    --comp-scroller-fg: #666;
     --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
     --comp-aboutbuffer-header-bg: var(--brand-primary);
     --brand-link-normal: var(--brand-primary);
