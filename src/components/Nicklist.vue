@@ -29,12 +29,12 @@
         <RecycleScroller
             :items="sortedUsers"
             :item-size="shouldShowAvatars ? 38 : 26"
-            :key-field="'key'"
+            :key-field="'id'"
             class="kiwi-nicklist-users"
         >
             <template #default="{ item }">
                 <nicklist-user
-                    :key="item.key"
+                    :key="item.id"
                     :user="item"
                     :nicklist="self"
                     :network="network"

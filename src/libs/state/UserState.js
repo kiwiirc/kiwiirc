@@ -4,8 +4,11 @@ import Vue from 'vue';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import { def } from './common';
 
+let nextId = 0;
+
 export default class UserState {
     constructor(user) {
+        this.id = ++nextId;
         this.key = user.nick.toUpperCase();
         this.nick = user.nick;
         this.host = user.host || '';
