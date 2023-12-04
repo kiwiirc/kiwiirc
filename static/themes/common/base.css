@@ -603,18 +603,9 @@
     background: var(--brand-error);
 }
 
-.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-inner,
-.kiwi-statebrowser-usermenu--open .kiwi-avatar-inner {
-    background-color: var(--brand-primary) !important;
-    color: var(--brand-default-bg) !important;
-}
-
-.kiwi-statebrowser-usermenu-avatar--connected .kiwi-avatar-inner {
-    border-color: #42b992;
-}
-
-.kiwi-statebrowser-usermenu-avatar--disconnected .kiwi-avatar-inner {
-    border-color: var(--brand-error);
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-circle,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-circle {
+    fill: var(--brand-primary) !important;
 }
 
 .kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
@@ -918,13 +909,12 @@
 }
 
 /* ---- Modern Layout Styling ---- */
-.kiwi-avatar-inner {
-    color: var(--brand-default-bg);
-    border-color: var(--brand-primary);
+.kiwi-avatar-initials {
+    fill: var(--brand-default-bg);
 }
 
-.kiwi-avatar--default {
-    background-color: var(--brand-default-fg);
+.kiwi-avatar-circle {
+    fill: var(--brand-darktone);
 }
 
 .kiwi-messagelist .kiwi-messagelist-body a,
@@ -1077,17 +1067,22 @@
 }
 
 /* Away Status Indicator */
-.kiwi-awaystatusindicator {
-    border-color: var(--brand-default-bg);
+.kiwi-awaystatusindicator,
+.kiwi-avatar-status {
     background-color: var(--brand-primary);
+    fill: var(--brand-primary);
 }
 
-.kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--away,
+.kiwi-avatar-status--away {
     background-color: var(--brand-warning);
+    fill: var(--brand-warning);
 }
 
-.kiwi-awaystatusindicator.kiwi-awaystatusindicator--offline {
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--offline,
+.kiwi-avatar-status--offline {
     background-color: var(--brand-error);
+    fill: var(--brand-error);
 }
 
 /* Buffer Key */

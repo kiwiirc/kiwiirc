@@ -142,10 +142,6 @@
     color: #fff;
 }
 
-.kiwi-awaystatusindicator {
-    background: #41e8c9;
-}
-
 .kiwi-startup-common-section-info {
     border-left-color: var(--brand-primary);
 }
@@ -171,14 +167,13 @@
     border-right: 2px solid #444;
 }
 
-.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-inner,
-.kiwi-statebrowser-usermenu--open .kiwi-avatar-inner {
-    background-color: #000 !important;
-    color: #f1f1f1 !important;
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-circle,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-circle {
+    fill: #f1f1f1 !important;
 }
 
-.kiwi-statebrowser-usermenu-avatar .kiwi-awaystatusindicator {
-    border-color: #4b4b4b;
+.kiwi-avatar-circle {
+    fill: var(--brand-input-fg);
 }
 
 .kiwi-network-name-options .kiwi-network-name-option {
@@ -226,11 +221,6 @@
 
 .kiwi-messagelist-message-notice {
     background: #3c3c3c;
-}
-
-.kiwi-avatar-inner {
-    background-color: var(--brand-default-bg);
-    color: var(--brand-default-fg);
 }
 
 /* Aliases */
@@ -343,6 +333,25 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start,
 .kiwi-controlinput-send {
     color: var(--brand-default-fg);
     background-color: var(--brand-default-bg);
+}
+
+/* Away Status Indicator */
+.kiwi-awaystatusindicator,
+.kiwi-avatar-status {
+    background-color: #41e8c9;
+    fill: #41e8c9;
+}
+
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--away,
+.kiwi-avatar-status--away {
+    background-color: var(--brand-warning);
+    fill: var(--brand-warning);
+}
+
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--offline,
+.kiwi-avatar-status--offline {
+    background-color: var(--brand-error);
+    fill: var(--brand-error);
 }
 
 /* IRC Text Colours */

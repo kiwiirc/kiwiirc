@@ -184,6 +184,11 @@ msgstr "Channel"
 msgid "away"
 msgstr "Away"
 
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
+
+
 
 #: Durations
 

@@ -16,14 +16,6 @@
     color: #14fdce;
 }
 
-.kiwi-avatar {
-    color: #031e11;
-}
-
-.kiwi-avatar-inner {
-    border-color: #14fdce;
-}
-
 /* Welcome Screen ( Welcome.vue ) */
 .kiwi-welcome-simple-form .u-input-text {
   background: none;
@@ -851,18 +843,13 @@
     border-top: 1px #14fdce solid;
 }
 
-.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-inner,
-.kiwi-statebrowser-usermenu--open .kiwi-avatar-inner {
-    background-color: #5dd895 !important;
-    color: var(--brand-default-bg) !important;
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-circle,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-circle {
+    fill: #5dd895 !important;
 }
 
-.kiwi-statebrowser-usermenu-avatar--connected .kiwi-avatar-inner {
-    border-color: #42b992;
-}
-
-.kiwi-statebrowser-usermenu-avatar--disconnected .kiwi-avatar-inner {
-    border-color: #d86f6f;
+.kiwi-avatar-circle {
+    fill: #57da93;
 }
 
 .kiwi-statebrowser-usermenu-body .u-link {
@@ -1226,17 +1213,23 @@
     border: 1px solid #5dd895;
 }
 
-.kiwi-awaystatusindicator {
-    border: 1px solid #e1e1e1;
+/* Away Status Indicator */
+.kiwi-awaystatusindicator,
+.kiwi-avatar-status {
     background-color: #5dd895;
+    fill: #5dd895;
 }
 
-.kiwi-awaystatusindicator--away {
-    background-color: #1b2f24;
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--away,
+.kiwi-avatar-status--away {
+    background-color: #6e771c;
+    fill: #6e771c;
 }
 
-.kiwi-awaystatusindicator--offline {
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--offline,
+.kiwi-avatar-status--offline {
     background-color: #5e2b2b;
+    fill: #5e2b2b;
 }
 
 .kiwi-selfuser-error-message {

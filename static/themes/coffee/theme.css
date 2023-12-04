@@ -30,7 +30,7 @@
     --comp-statebrowser-bg-networkname: #7b6351;
     --comp-statebrowser-channel-active-bg: #ffffff0d;
     --comp-statebrowser-channel-active-fg: #fff;
-    --comp-usermenu-open-bg: #826958;
+    --comp-usermenu-open-bg: #7b6351;
     --comp-statebrowser-network-border: #bda28e;
 
 
@@ -86,13 +86,9 @@
     color: #fff;
 }
 
-.kiwi-awaystatusindicator {
-    background: #78b17f;
-}
-
-.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-inner,
-.kiwi-statebrowser-usermenu--open .kiwi-avatar-inner {
-    background-color: #967c68 !important;
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-circle,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-circle {
+    fill: #967c68 !important;
 }
 
 .kiwi-startup-common-section-info {
@@ -107,6 +103,24 @@
     background: #967f70;
 }
 
+/* Away Status Indicator */
+.kiwi-awaystatusindicator,
+.kiwi-avatar-status {
+    background-color: #42b992;
+    fill: #42b992;
+}
+
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--away,
+.kiwi-avatar-status--away {
+    background-color: var(--brand-warning);
+    fill: var(--brand-warning);
+}
+
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--offline,
+.kiwi-avatar-status--offline {
+    background-color: var(--brand-error);
+    fill: var(--brand-error);
+}
 
 /* IRC Text Colours */
 .irc-fg-colour-white { color: #fff; }

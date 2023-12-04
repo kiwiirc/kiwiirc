@@ -5,8 +5,12 @@
         </span>
         <div class="kiwi-userbox-header">
             <div class="kiwi-userbox-avatar">
-                <avatar :user="user" size="large" />
-                <away-status-indicator :network="network" :user="user" />
+                <UserAvatar
+                    v-bind="avatarProps"
+                    :user="user"
+                    :network="network"
+                    size="large"
+                />
             </div>
             <div class="kiwi-userbox-userinfo">
                 <span
@@ -216,12 +220,12 @@ import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 import toHtml from '@/libs/renderers/Html';
 import parseMessage from '@/libs/MessageParser';
-import Avatar from './Avatar';
+import UserAvatar from './UserAvatar';
 import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
-        Avatar,
+        UserAvatar,
         AwayStatusIndicator,
     },
     props: ['network', 'buffer', 'user', 'sidebarState'],
@@ -348,6 +352,16 @@ export default {
                 }
             });
             return buffers;
+        },
+        avatarProps() {
+            return {
+                showBackground: this.$state.setting('avatars.show_image_background'),
+                showStatus: (
+                    this.$state.setting('avatars.show_away_status')
+                    && this.network.state === 'connected'
+                    && this.network.ircClient.network.cap.isEnabled('away-notify')
+                ),
+            };
         },
     },
     watch: {

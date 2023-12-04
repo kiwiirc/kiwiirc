@@ -90,6 +90,11 @@ export const configTemplates = {
             // auto_request_history: all/channels/queries/none
             auto_request_history: 'channels',
         },
+        avatars: {
+            initials_length: 1,
+            show_away_status: true,
+            show_image_background: true,
+        },
         // Startup screen default
         startupOptions: {
             server: '',
