@@ -173,8 +173,8 @@ export default {
 }
 
 .kiwi-nicklist-user-typing {
-    width: 1.2em;
-    height: 1.2em;
+    width: 18px;
+    height: 18px;
     visibility: hidden;
     opacity: 1;
 
@@ -215,9 +215,9 @@ export default {
 
 .kiwi-nicklist-user-message {
     position: absolute;
-    right: -2.4em;
-    width: 1.2em;
-    height: 1.2em;
+    right: -36px;
+    width: 18px;
+    height: 18px;
     opacity: 0;
     transition: right .3s, opacity .3s, fill .1s;
 
