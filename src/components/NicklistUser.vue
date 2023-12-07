@@ -9,27 +9,20 @@
         @click.stop="nicklist.openUserbox(user)"
     >
         <div v-if="nicklist.shouldShowAvatars" class="kiwi-nicklist-avatar">
-            <Avatar
-                :user="user"
-                size="small"
-            />
-            <AwayStatusIndicator
-                :network="network"
-                :user="user"
-                :toggle="false"
-            />
+            <Avatar :user="user" size="small" />
+            <AwayStatusIndicator :network="network" :user="user" :toggle="false" />
         </div>
         <AwayStatusIndicator
             v-else
-            class="kiwi-nicklist-awaystatus"
             :network="network"
             :user="user"
             :toggle="false"
+            class="kiwi-nicklist-awaystatus"
         />
         <span class="kiwi-nicklist-user-prefix">{{ userModePrefix }}</span>
         <span
             class="kiwi-nicklist-user-nick"
-            :style="{ 'color': userColour }"
+            :style="{ color: userColour }"
         >{{ user.nick }} </span>
         <div class="kiwi-nicklist-user-buttons">
             <svg
@@ -59,7 +52,6 @@
                 />
             </svg>
         </div>
-
     </div>
 </template>
 
@@ -189,11 +181,11 @@ export default {
         animation-play-state: paused;
 
         &:nth-child(2) {
-            animation-delay: .3s
+            animation-delay: 0.3s;
         }
 
         &:nth-child(3) {
-            animation-delay: .6s
+            animation-delay: 0.6s;
         }
     }
 
@@ -203,7 +195,7 @@ export default {
 
     .kiwi-nicklist-user:hover & {
         opacity: 0;
-        transition: opacity .3s;
+        transition: opacity 0.3s;
     }
 
     @keyframes blink {
@@ -219,7 +211,7 @@ export default {
     width: 18px;
     height: 18px;
     opacity: 0;
-    transition: right .3s, opacity .3s, fill .1s;
+    transition: right 0.3s, opacity 0.3s, fill 0.1s;
 
     .kiwi-nicklist-user:hover & {
         right: 0;

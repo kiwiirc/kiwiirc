@@ -33,19 +33,13 @@
             class="kiwi-nicklist-users"
         >
             <template #default="{ item }">
-                <nicklist-user
-                    :key="item.id"
-                    :user="item"
-                    :nicklist="self"
-                    :network="network"
-                />
+                <nicklist-user :key="item.id" :user="item" :nicklist="self" :network="network" />
             </template>
         </RecycleScroller>
     </div>
 </template>
 
 <script>
-
 'kiwi public';
 
 import Logger from '@/libs/Logger';
@@ -113,10 +107,7 @@ export default {
                 let modesB = bufferB.modes;
 
                 // Neither user has a prefix, compare text
-                if (
-                    modesA.length === 0 &&
-                    modesB.length === 0
-                ) {
+                if (modesA.length === 0 && modesB.length === 0) {
                     // Compare away status
                     if (this.$state.setting('nicklistGroupAway')) {
                         if (a.away && !b.away) {
@@ -131,17 +122,11 @@ export default {
                 }
 
                 // Compare via prefixes..
-                if (
-                    modesA.length > 0 &&
-                    modesB.length === 0
-                ) {
+                if (modesA.length > 0 && modesB.length === 0) {
                     return -1;
                 }
 
-                if (
-                    modesA.length === 0 &&
-                    modesB.length > 0
-                ) {
+                if (modesA.length === 0 && modesB.length > 0) {
                     return 1;
                 }
 
@@ -274,8 +259,8 @@ export default {
 
     .fa-search {
         font-size: 1.2em;
-        opacity: .3;
-        transition: opacity .3s;
+        opacity: 0.3;
+        transition: opacity 0.3s;
 
         &:hover,
         .kiwi-nicklist--filtering & {
