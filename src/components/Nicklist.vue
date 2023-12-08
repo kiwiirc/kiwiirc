@@ -47,7 +47,7 @@ import * as Misc from '@/helpers/Misc';
 
 import NicklistUser from './NicklistUser';
 
-let log = Logger.namespace('Nicklist');
+const log = Logger.namespace('Nicklist');
 
 export default {
     components: {
@@ -64,8 +64,8 @@ export default {
     computed: {
         sortedUsers() {
             // Get a list of network prefixes and give them a rank number
-            let netPrefixes = this.network.ircClient.network.options.PREFIX;
-            let prefixOrders = Object.create(null);
+            const netPrefixes = this.network.ircClient.network.options.PREFIX;
+            const prefixOrders = Object.create(null);
             netPrefixes.forEach((prefix, idx) => {
                 prefixOrders[prefix.mode] = idx;
             });
@@ -75,10 +75,10 @@ export default {
             //   on an array, clone it first so that we have a plain array to sort
             // * Keep a map of uppercase nicks to we don't need to call .toUpperCase()
             //   on each one all the time. This is a hot function!
-            let nickMap = Object.create(null);
-            let users = [];
-            let bufferUsers = this.buffer.users;
-            let nickFilter = this.userFilter.toUpperCase();
+            const nickMap = Object.create(null);
+            const users = [];
+            const bufferUsers = this.buffer.users;
+            const nickFilter = this.userFilter.toUpperCase();
 
             Object.entries(bufferUsers).forEach(([uppercaseNick, user]) => {
                 nickMap[user.nick] = uppercaseNick;
@@ -87,24 +87,24 @@ export default {
                 }
             });
 
-            let bufferId = this.buffer.id;
+            const bufferId = this.buffer.id;
             return users.sort((a, b) => {
-                let bufferA = a.buffers[bufferId];
-                let bufferB = b.buffers[bufferId];
+                const bufferA = a.buffers[bufferId];
+                const bufferB = b.buffers[bufferId];
 
                 if (!bufferA) {
-                    let msg = 'Nicklist.sortedUsers() User A does not have the buffer in its list!';
+                    const msg = 'Nicklist.sortedUsers() User A does not have the buffer in its list!';
                     log.error(msg, a.nick, a.buffers);
                     return -1;
                 }
                 if (!bufferB) {
-                    let msg = 'Nicklist.sortedUsers() User B does not have the buffer in its list!';
+                    const msg = 'Nicklist.sortedUsers() User B does not have the buffer in its list!';
                     log.error(msg, b.nick, b.buffers);
                     return 1;
                 }
 
-                let modesA = bufferA.modes;
-                let modesB = bufferB.modes;
+                const modesA = bufferA.modes;
+                const modesB = bufferB.modes;
 
                 // Neither user has a prefix, compare text
                 if (modesA.length === 0 && modesB.length === 0) {
@@ -131,8 +131,8 @@ export default {
                 }
 
                 // Both users have a prefix so find the highest ranking one
-                let aP = prefixOrders[this.buffer.userMode(a)];
-                let bP = prefixOrders[this.buffer.userMode(b)];
+                const aP = prefixOrders[this.buffer.userMode(a)];
+                const bP = prefixOrders[this.buffer.userMode(b)];
                 if (aP > bP) {
                     return 1;
                 } else if (aP < bP) {
@@ -165,7 +165,7 @@ export default {
     },
     methods: {
         openQuery(user) {
-            let buffer = this.$state.addBuffer(this.buffer.networkid, user.nick);
+            const buffer = this.$state.addBuffer(this.buffer.networkid, user.nick);
             this.$state.setActiveBuffer(buffer.networkid, buffer.name);
             if (this.$state.ui.is_narrow) {
                 this.sidebarState.close();
