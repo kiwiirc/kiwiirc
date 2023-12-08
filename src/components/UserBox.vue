@@ -509,6 +509,7 @@ export default {
     box-sizing: border-box;
     margin-top: 1.2em;
     flex-grow: 1;
+    word-break: break-all;
 }
 
 .kiwi-userbox-nick {
@@ -526,7 +527,6 @@ export default {
     display: block;
     opacity: 0.6;
     cursor: default;
-    word-break: break-all;
     padding-left: 1px;
 }
 
