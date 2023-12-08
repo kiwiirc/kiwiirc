@@ -88,6 +88,7 @@ export default {
             });
 
             const bufferId = this.buffer.id;
+            const groupAway = this.$state.setting('nicklistGroupAway');
             return users.sort((a, b) => {
                 const bufferA = a.buffers[bufferId];
                 const bufferB = b.buffers[bufferId];
@@ -109,7 +110,7 @@ export default {
                 // Neither user has a prefix, compare text
                 if (modesA.length === 0 && modesB.length === 0) {
                     // Compare away status
-                    if (this.$state.setting('nicklistGroupAway')) {
+                    if (groupAway) {
                         if (a.away && !b.away) {
                             return 1;
                         }
@@ -140,7 +141,7 @@ export default {
                 }
 
                 // Prefixes are the same, compare away status
-                if (this.$state.setting('nicklistGroupAway')) {
+                if (groupAway) {
                     if (a.away && !b.away) {
                         return 1;
                     }
