@@ -1,56 +1,45 @@
 <template>
     <div
         :class="{
-            'kiwi-nicklist--filtering': filter_visible,
+            'kiwi-nicklist--filtering': userFilterVisible,
             'kiwi-nicklist--avatars': shouldShowAvatars,
         }"
         class="kiwi-nicklist"
     >
-        <div class="kiwi-nicklist-usercount" @click="toggleUserFilter">
-            <span>
+        <div class="kiwi-nicklist-filter" @click="toggleUserFilter">
+            <div class="kiwi-nicklist-usercount">
                 {{
-                    filter_visible ?
+                    userFilterVisible ?
                         sortedUsers.length :
                         $t('person', {count: sortedUsers.length})
                 }}
-            </span>
-
+            </div>
             <input
                 ref="user_filter"
-                v-model="user_filter"
+                v-model="userFilter"
                 :placeholder="$t('filter_users')"
+                @click.stop
                 @blur="onFilterBlur"
             >
-            <i class="fa fa-search" />
+            <i class="fa fa-search" aria-hidden="true" />
+            <div class="kiwi-nicklist-usercount-width">
+                {{ allUsersCount }}
+            </div>
         </div>
-
-        <DynamicScroller
+        <RecycleScroller
             :items="sortedUsers"
-            :min-item-size="34"
-            :key-field="'key'"
+            :item-size="shouldShowAvatars ? 38 : 26"
+            :key-field="'id'"
             class="kiwi-nicklist-users"
         >
-            <template #default="{ item, index, active }">
-                <DynamicScrollerItem
-                    :item="item"
-                    :active="active"
-                    :size-dependencies="[]"
-                    :data-index="index"
-                >
-                    <nicklist-user
-                        :key="item.key"
-                        :user="item"
-                        :nicklist="self"
-                        :network="network"
-                    />
-                </DynamicScrollerItem>
+            <template #default="{ item }">
+                <nicklist-user :key="item.id" :user="item" :nicklist="self" :network="network" />
             </template>
-        </DynamicScroller>
+        </RecycleScroller>
     </div>
 </template>
 
 <script>
-
 'kiwi public';
 
 import Logger from '@/libs/Logger';
@@ -58,7 +47,7 @@ import * as Misc from '@/helpers/Misc';
 
 import NicklistUser from './NicklistUser';
 
-let log = Logger.namespace('Nicklist');
+const log = Logger.namespace('Nicklist');
 
 export default {
     components: {
@@ -67,20 +56,16 @@ export default {
     props: ['network', 'buffer', 'sidebarState'],
     data() {
         return {
-            userbox_user: null,
-            user_filter: '',
-            filter_visible: false,
             self: this,
+            userFilter: '',
+            userFilterVisible: false,
         };
     },
     computed: {
-        shouldShowAvatars() {
-            return this.buffer.setting('nicklist_avatars');
-        },
         sortedUsers() {
             // Get a list of network prefixes and give them a rank number
-            let netPrefixes = this.network.ircClient.network.options.PREFIX;
-            let prefixOrders = Object.create(null);
+            const netPrefixes = this.network.ircClient.network.options.PREFIX;
+            const prefixOrders = Object.create(null);
             netPrefixes.forEach((prefix, idx) => {
                 prefixOrders[prefix.mode] = idx;
             });
@@ -90,10 +75,10 @@ export default {
             //   on an array, clone it first so that we have a plain array to sort
             // * Keep a map of uppercase nicks to we don't need to call .toUpperCase()
             //   on each one all the time. This is a hot function!
-            let nickMap = Object.create(null);
-            let users = [];
-            let bufferUsers = this.buffer.users;
-            let nickFilter = this.user_filter.toUpperCase();
+            const nickMap = Object.create(null);
+            const users = [];
+            const bufferUsers = this.buffer.users;
+            const nickFilter = this.userFilter.toUpperCase();
 
             Object.entries(bufferUsers).forEach(([uppercaseNick, user]) => {
                 nickMap[user.nick] = uppercaseNick;
@@ -102,32 +87,30 @@ export default {
                 }
             });
 
-            let bufferId = this.buffer.id;
+            const bufferId = this.buffer.id;
+            const groupAway = this.$state.setting('nicklistGroupAway');
             return users.sort((a, b) => {
-                let bufferA = a.buffers[bufferId];
-                let bufferB = b.buffers[bufferId];
+                const bufferA = a.buffers[bufferId];
+                const bufferB = b.buffers[bufferId];
 
                 if (!bufferA) {
-                    let msg = 'Nicklist.sortedUsers() User A does not have the buffer in its list!';
+                    const msg = 'Nicklist.sortedUsers() User A does not have the buffer in its list!';
                     log.error(msg, a.nick, a.buffers);
                     return -1;
                 }
                 if (!bufferB) {
-                    let msg = 'Nicklist.sortedUsers() User B does not have the buffer in its list!';
+                    const msg = 'Nicklist.sortedUsers() User B does not have the buffer in its list!';
                     log.error(msg, b.nick, b.buffers);
                     return 1;
                 }
 
-                let modesA = bufferA.modes;
-                let modesB = bufferB.modes;
+                const modesA = bufferA.modes;
+                const modesB = bufferB.modes;
 
                 // Neither user has a prefix, compare text
-                if (
-                    modesA.length === 0 &&
-                    modesB.length === 0
-                ) {
+                if (modesA.length === 0 && modesB.length === 0) {
                     // Compare away status
-                    if (this.$state.setting('nicklistGroupAway')) {
+                    if (groupAway) {
                         if (a.away && !b.away) {
                             return 1;
                         }
@@ -140,23 +123,17 @@ export default {
                 }
 
                 // Compare via prefixes..
-                if (
-                    modesA.length > 0 &&
-                    modesB.length === 0
-                ) {
+                if (modesA.length > 0 && modesB.length === 0) {
                     return -1;
                 }
 
-                if (
-                    modesA.length === 0 &&
-                    modesB.length > 0
-                ) {
+                if (modesA.length === 0 && modesB.length > 0) {
                     return 1;
                 }
 
                 // Both users have a prefix so find the highest ranking one
-                let aP = prefixOrders[this.buffer.userMode(a)];
-                let bP = prefixOrders[this.buffer.userMode(b)];
+                const aP = prefixOrders[this.buffer.userMode(a)];
+                const bP = prefixOrders[this.buffer.userMode(b)];
                 if (aP > bP) {
                     return 1;
                 } else if (aP < bP) {
@@ -164,7 +141,7 @@ export default {
                 }
 
                 // Prefixes are the same, compare away status
-                if (this.$state.setting('nicklistGroupAway')) {
+                if (groupAway) {
                     if (a.away && !b.away) {
                         return 1;
                     }
@@ -177,19 +154,19 @@ export default {
                 return Misc.strCompare(nickMap[a.nick], nickMap[b.nick]);
             });
         },
+        allUsersCount() {
+            return Object.keys(this.buffer.users).length;
+        },
+        shouldShowAvatars() {
+            return this.buffer.setting('nicklist_avatars');
+        },
         useColouredNicks() {
             return this.buffer.setting('coloured_nicklist');
         },
     },
     methods: {
-        userModePrefix(user) {
-            return this.buffer.userModePrefix(user);
-        },
-        userMode(user) {
-            return this.buffer.userMode(user);
-        },
         openQuery(user) {
-            let buffer = this.$state.addBuffer(this.buffer.networkid, user.nick);
+            const buffer = this.$state.addBuffer(this.buffer.networkid, user.nick);
             this.$state.setActiveBuffer(buffer.networkid, buffer.name);
             if (this.$state.ui.is_narrow) {
                 this.sidebarState.close();
@@ -201,16 +178,17 @@ export default {
             });
         },
         toggleUserFilter() {
-            this.filter_visible = !this.filter_visible;
-            if (this.filter_visible) {
+            this.userFilterVisible = !this.userFilterVisible;
+            if (this.userFilterVisible) {
                 this.$nextTick(() => this.$refs.user_filter.focus());
             } else {
-                this.user_filter = '';
+                this.userFilter = '';
             }
         },
         onFilterBlur() {
-            if (!this.user_filter) {
-                this.filter_visible = false;
+            if (!this.userFilter.trim()) {
+                this.userFilter = '';
+                this.userFilterVisible = false;
             }
         },
     },
@@ -218,92 +196,103 @@ export default {
 </script>
 
 <style lang="less">
-
-/* Adjust the sidebars width when this nicklist is in view */
+// Adjust the sidebars width when this nicklist is in view
 .kiwi-container .kiwi-sidebar.kiwi-sidebar-section-nicklist {
-    max-width: 250px;
     width: 250px;
-}
+    max-width: 250px;
 
-.kiwi-nicklist {
-    overflow: hidden;
-    box-sizing: border-box;
-    min-height: 100px;
-    margin: auto;
-    width: 100%;
-    //Padding bottom is needed, otherwise the scrollbar will show on the right side.
-    padding-bottom: 1px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.kiwi-nicklist-usercount {
-    display: flex;
-    justify-content: space-between;
-    cursor: default;
-    box-sizing: border-box;
-    height: 43px;
-    line-height: 40px;
-    width: 100%;
-    border-bottom: 1px solid;
-}
-
-.kiwi-nicklist-usercount span {
-    margin-left: 15px;
-    font-weight: 600;
-}
-
-.kiwi-nicklist-usercount .fa-search {
-    opacity: 0.3;
-    cursor: pointer;
-    font-size: 1.2em;
-    line-height: 40px;
-    align-self: flex-start;
-    margin-right: 15px;
-}
-
-.kiwi-nicklist-usercount .fa-search:hover,
-.kiwi-nicklist--filtering .kiwi-nicklist-usercount .fa-search {
-    opacity: 1;
-}
-
-.kiwi-nicklist-usercount input {
-    width: 0%;
-    border: none;
-    font-weight: normal;
-    background: none;
-    outline: 0;
-    padding: 0 15px 0 10px;
-    opacity: 0;
-    box-sizing: border-box;
-    flex-grow: 1;
-    transition: all 0.2s;
-}
-
-.kiwi-nicklist--filtering .kiwi-nicklist-usercount input {
-    opacity: 1;
-}
-
-.kiwi-nicklist-users {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    box-sizing: border-box;
-    max-height: 100%;
-    flex: 1 auto;
-    line-height: 1.2em;
-    margin-top: 6px;
-}
-
-@media screen and (max-width: 759px) {
-    .kiwi-container .kiwi-sidebar.kiwi-sidebar-section-nicklist {
+    @media screen and (max-width: 769px) {
         width: 100%;
-        max-width: 380px;
+        max-width: 300px;
     }
 }
 
+.kiwi-nicklist {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.kiwi-nicklist-filter {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 100% 0;
+    grid-template-columns: max-content auto max-content;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    min-height: 42px;
+    padding: 0 12px;
+    border-bottom: 1px solid;
+
+    > div {
+        overflow: hidden;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .kiwi-nicklist-usercount {
+        grid-column: span 2;
+
+        .kiwi-nicklist--filtering & {
+            grid-column: span 1;
+        }
+    }
+
+    input {
+        box-sizing: border-box;
+        display: none;
+        width: 100%;
+        height: 100%;
+        padding: 0 8px;
+        font-weight: normal;
+        background: none;
+        border: none;
+        outline: 0;
+
+        .kiwi-nicklist--filtering & {
+            display: block;
+        }
+    }
+
+    .fa-search {
+        font-size: 1.2em;
+        opacity: 0.3;
+        transition: opacity 0.3s;
+
+        &:hover,
+        .kiwi-nicklist--filtering & {
+            opacity: 1;
+        }
+    }
+
+    .kiwi-nicklist-usercount-width {
+        height: 0;
+        visibility: hidden;
+    }
+}
+
+.kiwi-nicklist-users {
+    flex: 1;
+    width: 100%;
+    padding: 4px 0;
+    overflow: hidden scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--comp-scroller-fg, #cdcdcd) var(--comp-scroller-bg, #f0f0f0);
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--comp-scroller-fg, #cdcdcd);
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--comp-scroller-bg, #f0f0f0);
+    }
+}
 </style>

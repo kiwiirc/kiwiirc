@@ -37,6 +37,8 @@
     /* Sidebars ( Right Side ) */
     --comp-sidebar-bg: #28343c;
     --comp-sidebar-fg: #f1f1f1;
+    --comp-scroller-bg: #f0f0f0;
+    --comp-scroller-fg: #cdcdcd;
     --comp-aboutbuffer-bg: #28343c;
     --comp-aboutbuffer-header-bg: #ffa12c;
 
@@ -162,20 +164,16 @@
     border-color: var(--brand-primary);
 }
 
-.kiwi-nicklist-usercount {
-    border-bottom-color: #20292f;
+.kiwi-nicklist-filter {
+    border-bottom-color: var(--brand-primary);
 }
 
-.kiwi-nicklist-user {
+.kiwi-nicklist-user:hover {
     border-left-color: var(--brand-primary);
 }
-.kiwi-nicklist-user:hover {
-    border-left-color: var(--brand-primary-hover);
-}
 
-.kiwi-nicklist-user .kiwi-nicklist-messageuser,
-.kiwi-nicklist-user:hover .kiwi-nicklist-messageuser {
-    color: var(--brand-color-primary);
+.kiwi-nicklist-user-typing {
+    fill: var(--brand-primary);
 }
 
 .kiwi-userbox .kiwi-userbox-actions .kiwi-userbox-action {
@@ -210,6 +208,10 @@
 .kiwi-channellist-grid a.u-button {
     color: #f1f1f1;
     border-bottom: none;
+}
+
+.kiwi-awaystatusindicator {
+    background-color: #41e8c9;
 }
 
 /* IRC Text Colours */

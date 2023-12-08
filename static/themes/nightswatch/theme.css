@@ -42,6 +42,8 @@
     /* Sidebars ( Right Side ) */
     --comp-sidebar-bg: var(--brand-default-bg);
     --comp-sidebar-fg: #fff;
+    --comp-scroller-bg: #424242;
+    --comp-scroller-fg: #666;
     --comp-aboutbuffer-bg: rgba(0, 0, 0, 0.03);
     --comp-aboutbuffer-header-bg: #42b992;
 
@@ -143,9 +145,6 @@
 .kiwi-awaystatusindicator {
     background: #41e8c9;
 }
-.kiwi-awaystatusindicator.kiwi-awaystatusindicator--away {
-    background: var(--brand-error);
-}
 
 .kiwi-startup-common-section-info {
     border-left-color: var(--brand-primary);
@@ -157,6 +156,14 @@
 
 .kiwi-sidebar-settings-access-actions:hover {
     color: var(--comp-sidebar-fg);
+}
+
+.kiwi-nicklist-user-message {
+    fill: var(--brand-input-fg);
+}
+
+.kiwi-nicklist-user-message:hover {
+    fill: var(--brand-default-fg);
 }
 
 /* Statebrowser */
