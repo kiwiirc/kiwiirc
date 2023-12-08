@@ -6,7 +6,6 @@
         <div class="kiwi-userbox-header">
             <div class="kiwi-userbox-avatar">
                 <UserAvatar
-                    v-bind="avatarProps"
                     :user="user"
                     :network="network"
                     size="large"
@@ -352,16 +351,6 @@ export default {
                 }
             });
             return buffers;
-        },
-        avatarProps() {
-            return {
-                showBackground: this.$state.setting('avatars.show_image_background'),
-                showStatus: (
-                    this.$state.setting('avatars.show_away_status')
-                    && this.network.state === 'connected'
-                    && this.network.ircClient.network.cap.isEnabled('away-notify')
-                ),
-            };
         },
     },
     watch: {

@@ -16,7 +16,6 @@
                 :network="network"
                 :allow-toggle="true"
                 :force-show-status="true"
-                :show-background="shouldShowAvatarBackground"
                 size="large"
             />
         </div>
@@ -69,9 +68,6 @@ export default {
         },
         isConnected() {
             return this.network && this.network.state === 'connected';
-        },
-        shouldShowAvatarBackground() {
-            return this.$state.setting('avatars.show_image_background');
         },
     },
     methods: {
