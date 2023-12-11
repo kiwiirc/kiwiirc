@@ -22,7 +22,7 @@
                 <a v-else>{{ $t('messages_loading') }}</a>
             </div>
 
-            <transition-group tag="div">
+            <remove-before-update>
                 <template v-for="day in filteredMessagesGroupedDay">
                     <div
                         v-if="filteredMessagesGroupedDay.length > 1 && day.messages.length > 0"
@@ -31,7 +31,7 @@
                     >
                         <span>{{ (new Date(day.messages[0].time)).toDateString() }}</span>
                     </div>
-                    <transition-group :key="day.dayNum" tag="div">
+                    <remove-before-update :key="day.dayNum">
                         <template v-for="message in day.messages">
                             <div
                                 v-if="shouldShowUnreadMarker(message)"
@@ -90,9 +90,9 @@
                                 />
                             </div>
                         </template>
-                    </transition-group>
+                    </remove-before-update>
                 </template>
-            </transition-group>
+            </remove-before-update>
 
             <transition name="kiwi-messagelist-joinloadertrans">
                 <div v-if="shouldShowJoiningLoader" class="kiwi-messagelist-joinloader">
@@ -116,11 +116,12 @@ import Vue from 'vue';
 import strftime from 'strftime';
 import Logger from '@/libs/Logger';
 import * as bufferTools from '@/libs/bufferTools';
-import BufferKey from './BufferKey';
+import RemoveBeforeUpdate from './utils/RemoveBeforeUpdate';
 import MessageListMessageCompact from './MessageListMessageCompact';
 import MessageListMessageModern from './MessageListMessageModern';
 import MessageListMessageInline from './MessageListMessageInline';
-import LoadingAnimation from './LoadingAnimation.vue';
+import LoadingAnimation from './LoadingAnimation';
+import BufferKey from './BufferKey';
 
 require('@/libs/polyfill/Element.closest');
 
@@ -132,11 +133,12 @@ const BOTTOM_SCROLL_MARGIN = 60;
 
 export default {
     components: {
-        BufferKey,
+        RemoveBeforeUpdate,
         MessageListMessageModern,
         MessageListMessageCompact,
         MessageListMessageInline,
         LoadingAnimation,
+        BufferKey,
     },
     props: ['buffer'],
     data() {
