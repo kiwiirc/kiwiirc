@@ -82,6 +82,7 @@
                         items-per-page="5"
                         :items="suggestedChannelsList"
                         :filter="channel_add_input"
+                        @click="onNewChannelClick"
                         @selected="onNewChannelSelected"
                     />
                 </form>
@@ -565,6 +566,10 @@ export default {
             }
 
             this.$refs.autocomplete.handleOnKeyDown(event);
+        },
+        onNewChannelClick(value) {
+            this.channel_add_input = value;
+            this.submitNewChannelForm();
         },
         onNewChannelSelected(value) {
             this.channel_add_input = value;

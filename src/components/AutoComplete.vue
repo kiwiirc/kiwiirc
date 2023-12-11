@@ -9,7 +9,7 @@
                 { 'kiwi-autocomplete-item--selected': item.idx === selected_idx },
             ]"
             @mousedown.prevent
-            @click="selected_idx = item.idx; selectCurrentItem()"
+            @click="handleClick(item)"
         >
             <span class="kiwi-autocomplete-item-value">{{ item.text }}</span>
             <span
@@ -223,6 +223,11 @@ export default {
             }
 
             return handled;
+        },
+        handleClick(item) {
+            this.selected_idx = item.idx;
+            this.selectCurrentItem();
+            this.$emit('click', item.value || item.text, item);
         },
         openQuery(nick) {
             let buffer = this.$state.addBuffer(this.buffer.networkid, nick);
