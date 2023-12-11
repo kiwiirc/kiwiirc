@@ -1,6 +1,7 @@
 /** @module */
 
 import Vue from 'vue';
+import getState from '@/libs/state';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import { def } from './common';
 
@@ -22,8 +23,9 @@ export default class UserState {
         this.hasWhois = false;
         this.hasWhoFlags = false;
         this.typingState = Object.create(null);
-        this.avatar = user.avatar || { small: '', large: '' };
         this.ignore = false;
+
+        this.avatarCache = null;
 
         Vue.observable(this);
 
@@ -55,6 +57,18 @@ export default class UserState {
             registered: null,
             secure: null,
         }, true);
+    }
+
+    get avatar() {
+        if (!this.avatarCache) {
+            this.avatar = { small: '', large: '' };
+            getState().$emit('user.avatar.create', { user: this });
+        }
+        return this.avatarCache;
+    }
+
+    set avatar(value) {
+        this.avatarCache = value;
     }
 
     getColour() {

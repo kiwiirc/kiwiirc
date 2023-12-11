@@ -112,7 +112,7 @@ const getSizeObj = (size) => ({
         const failedAvatar = avatar[size];
         avatar[size] = '';
         if (!avatar.small && !avatar.large) {
-            getState().$emit('avatar.failed', {
+            getState().$emit('user.avatar.failed', {
                 user: props.user,
                 network: props.network,
                 failed: failedAvatar,
