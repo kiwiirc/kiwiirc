@@ -652,7 +652,7 @@ function createMessageBatch(bufferState) {
     let trimMessages = () => {
         let scrollbackSize = bufferState.setting('scrollback_size');
         let length = bufferState.messagesObj.messages.length;
-        if (bufferState.messagesObj.messages.length > scrollbackSize) {
+        if (length > scrollbackSize) {
             let removed = bufferState.messagesObj.messages.splice(0, length - scrollbackSize);
             removed.forEach((msg) => delete bufferState.messagesObj.messageIds[msg.id]);
         }
