@@ -92,7 +92,6 @@ export const configTemplates = {
         },
         avatars: {
             initials_length: 1,
-            show_away_status: true,
             show_image_background: true,
         },
         // Startup screen default

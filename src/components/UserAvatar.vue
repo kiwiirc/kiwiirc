@@ -130,7 +130,7 @@ const shouldShowStatus = () => {
         return false;
     }
 
-    if (!getState().setting('avatars.show_away_status')) {
+    if (!getState().setting('showAwayStatusIndicators')) {
         return false;
     }
 
