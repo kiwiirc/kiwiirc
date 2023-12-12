@@ -127,6 +127,7 @@ export default {
 
 .kiwi-nicklist-avatar {
     position: relative;
+    flex-shrink: 0;
     margin-right: 10px;
 
     .kiwi-avatar {
@@ -143,10 +144,15 @@ export default {
 }
 
 .kiwi-nicklist-awaystatus {
+    flex-shrink: 0;
     width: 9px;
     height: 9px;
     margin-right: 6px;
     border: none;
+}
+
+.kiwi-nicklist-user-prefix {
+    flex-shrink: 0;
 }
 
 .kiwi-nicklist-user-nick {
