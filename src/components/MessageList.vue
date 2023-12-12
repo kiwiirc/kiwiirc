@@ -4,7 +4,10 @@
         ref="scroller"
         v-resizeobserver="onListResize"
         class="kiwi-messagelist"
-        :class="{'kiwi-messagelist--smoothscroll': smooth_scroll}"
+        :class="{
+            'kiwi-messagelist--smoothscroll': smooth_scroll,
+            'kiwi-messagelist--showtyping': buffer.setting('share_typing')
+        }"
         @click.self="onListClick"
     >
         <div v-resizeobserver="onListResize">
@@ -728,8 +731,11 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
-    margin-bottom: 25px;
     position: relative;
+}
+
+.kiwi-messagelist--showtyping {
+    margin-bottom: 25px;
 }
 
 .kiwi-messagelist--smoothscroll {
