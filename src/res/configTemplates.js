@@ -92,7 +92,7 @@ export const configTemplates = {
         },
         avatars: {
             initials_length: 1,
-            show_image_background: true,
+            show_image_background: false,
         },
         // Startup screen default
         startupOptions: {

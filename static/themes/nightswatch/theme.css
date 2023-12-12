@@ -167,12 +167,12 @@
     border-right: 2px solid #444;
 }
 
-.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-circle,
-.kiwi-statebrowser-usermenu--open .kiwi-avatar-circle {
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-background,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-background {
     fill: #f1f1f1 !important;
 }
 
-.kiwi-avatar-circle {
+.kiwi-avatar-background {
     fill: var(--brand-input-fg);
 }
 

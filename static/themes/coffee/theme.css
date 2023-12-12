@@ -86,8 +86,8 @@
     color: #fff;
 }
 
-.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-circle,
-.kiwi-statebrowser-usermenu--open .kiwi-avatar-circle {
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-background,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-background {
     fill: #967c68 !important;
 }
 

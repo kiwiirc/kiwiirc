@@ -1,42 +1,44 @@
 <template>
     <div class="kiwi-avatar">
         <svg v-if="user" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle
-                v-if="avatar.showBackground"
-                v-bind="awayStatus.vbind"
-                r="50%"
-                cx="50%"
-                cy="50%"
-                class="kiwi-avatar-circle"
-                :style="{ fill: user.getColour() }"
-            />
-            <image
-                v-if="avatar.hasImage"
-                v-bind="{ ...awayStatus.vbind, ...avatar[avatar.sizeKey[size]].vbind }"
-                clip-path="url(#kiwi-avatar-clip)"
-                width="100%"
-                height="100%"
-                preserveAspectRatio="xMidYMid slice"
-                class="kiwi-avatar-image"
-                loading="lazy"
-                @error="avatar[avatar.sizeKey[size]].setFailed()"
-            />
-            <text
-                v-else
-                :font-size="avatar.initials.length === 1 ? '64px' : '44px'"
+            <g
                 v-bind="awayStatus.vbind"
                 clip-path="url(#kiwi-avatar-clip)"
-                x="50%"
-                y="50%"
-                dy="0.36em"
-                text-anchor="middle"
-                class="kiwi-avatar-initials"
-            >{{ avatar.initials }}</text>
+            >
+                <rect
+                    v-if="avatar.showBackground"
+                    class="kiwi-avatar-background"
+                    width="100"
+                    height="100"
+                    :style="{ fill: user.getColour() }"
+                />
+                <image
+                    v-if="avatar.hasImage"
+                    v-bind="{ ...avatar[avatar.sizeKey[size]].vbind }"
+                    width="100"
+                    height="100"
+                    preserveAspectRatio="xMidYMid slice"
+                    class="kiwi-avatar-image"
+                    loading="lazy"
+                    @error="avatar[avatar.sizeKey[size]].setFailed()"
+                />
+                <text
+                    v-else
+                    :font-size="avatar.initials.length === 1 ? '64px' : '44px'"
+                    v-bind="awayStatus.vbind"
+                    clip-path="url(#kiwi-avatar-clip)"
+                    x="50"
+                    y="50"
+                    dy="0.36em"
+                    text-anchor="middle"
+                    class="kiwi-avatar-initials"
+                >{{ avatar.initials }}</text>
+            </g>
             <circle
                 v-if="awayStatus.show"
                 transform="rotate(45 50 50)"
-                r="12%"
-                cx="50%"
+                r="12"
+                cx="50"
                 cy="0"
                 class="kiwi-avatar-status"
                 :class="{
@@ -50,12 +52,12 @@
             </circle>
         </svg>
         <svg v-else viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle r="50%" cx="50%" cy="50%" class="kiwi-avatar-circle" />
+            <circle r="50" cx="50" cy="50" class="kiwi-avatar-background" />
             <text
                 font-size="64px"
                 clip-path="url(#kiwi-avatar-clip)"
-                x="50%"
-                y="50%"
+                x="50"
+                y="50"
                 dy="0.36em"
                 text-anchor="middle"
                 class="kiwi-avatar-initials"

@@ -603,8 +603,8 @@
     background: var(--brand-error);
 }
 
-.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-circle,
-.kiwi-statebrowser-usermenu--open .kiwi-avatar-circle {
+.kiwi-statebrowser-usermenu-avatar:hover .kiwi-avatar-background,
+.kiwi-statebrowser-usermenu--open .kiwi-avatar-background {
     fill: var(--brand-primary) !important;
 }
 
@@ -913,7 +913,7 @@
     fill: var(--brand-default-bg);
 }
 
-.kiwi-avatar-circle {
+.kiwi-avatar-background {
     fill: var(--brand-darktone);
 }
 
