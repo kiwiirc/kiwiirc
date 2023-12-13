@@ -132,7 +132,7 @@ export default {
         });
         this.listen(this.$state, 'document.keydown', (ev) => {
             // Return if not Page Up or Page Down keys
-            if (ev.keyCode !== 33 && ev.keyCode !== 34) {
+            if (ev.key !== 'PageUp' && ev.key !== 'PageDown') {
                 return;
             }
 
@@ -153,7 +153,7 @@ export default {
             let scrollTop = messageList.scrollTop;
             let scrollMax = messageList.scrollHeight;
 
-            if (ev.keyCode === 33) {
+            if (ev.key === 'PageUp') {
                 // up
                 scrollTop -= scrollDistance;
                 if (scrollTop < 0) {

@@ -146,26 +146,26 @@ export default {
             let handled = false;
 
             let cancelKeyCodes = [
-                13, // return
-                32, // space
-                186, // semi-colon
-                188, // comma
-                190, // period
+                'Enter', // return
+                ' ', // space
+                ';', // semi-colon
+                ',', // comma
+                '.', // period
             ];
 
-            if (cancelKeyCodes.indexOf(event.keyCode) > -1) {
+            if (cancelKeyCodes.indexOf(event.key) > -1) {
                 // If no item is selected (ie. on an empty list), leave the return key
                 // to do its default action as if the autocomplete box isn't active.
                 if (!this.selectedItem) {
                     this.cancel();
                 } else {
                     this.selectCurrentItem();
-                    if (event.keyCode === 13) {
+                    if (event.key === 'Enter') {
                         event.preventDefault();
                     }
                     handled = true;
                 }
-            } else if (event.keyCode === 38 || (event.keyCode === 9 && event.shiftKey)) {
+            } else if (event.key === 'ArrowUp' || (event.key === 'Tab' && event.shiftKey)) {
                 // Up or tab + shift
                 if (this.selected_idx > 0) {
                     this.selected_idx--;
@@ -176,7 +176,7 @@ export default {
 
                 event.preventDefault();
                 handled = true;
-            } else if ((event.keyCode === 40 && !event.altKey) || event.keyCode === 9) {
+            } else if ((event.key === 'ArrowDown' && !event.altKey) || event.key === 'Tab') {
                 // Down or tab
                 if (this.selected_idx < this.filteredItems.length - 1) {
                     this.selected_idx++;
@@ -187,10 +187,10 @@ export default {
 
                 event.preventDefault();
                 handled = true;
-            } else if (event.keyCode === 16) {
+            } else if (event.key === 'Shift') {
                 // shift
                 handled = true;
-            } else if (event.keyCode === 33 || event.keyCode === 34) {
+            } else if (event.key === 'PageUp' || event.key === 'PageDown') {
                 // pageUp || pageDown
                 const maxIdx = this.filteredItems.length - 1;
                 const limits = this.itemLimits;
@@ -206,7 +206,7 @@ export default {
                 }
 
                 // backwards or forward
-                if (event.keyCode === 33) {
+                if (event.key === 'PageUp') {
                     this.selected_idx -= jump;
                 } else {
                     this.selected_idx += jump;

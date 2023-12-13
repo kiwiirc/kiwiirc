@@ -301,21 +301,14 @@ export default {
             }
 
             // shift key on its own, don't shift focus we handle this below
-            if (ev.keyCode === 16) {
-                return;
-            }
-
-            // Firefox 66.0.3 on linux isn't consistently setting ev.ctrlKey === true when only
-            // the control key is pressed so add a specific check for this
-            // TODO: Remove this check once ff 66.0.3 is no longer around
-            if (ev.keyCode === 17) {
+            if (ev.key === 'Shift') {
                 return;
             }
 
             // If we are using shift and arrow keys, don't shift focus
             // this allows users to adjust text selection
-            let arrowKeyCodes = [37, 38, 39, 40];
-            if (ev.shiftKey && arrowKeyCodes.indexOf(ev.keyCode) !== -1) {
+            let arrowKeyCodes = ['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown'];
+            if (ev.shiftKey && arrowKeyCodes.indexOf(ev.key) !== -1) {
                 return;
             }
 
@@ -455,21 +448,21 @@ export default {
                 this.$refs.autocomplete.selectCurrentItem();
             }
 
-            if (event.keyCode === 13 && (
+            if (event.key === 'Enter' && (
                 (event.altKey && !event.shiftKey && !event.metaKey && !event.ctrlKey) ||
                 (event.shiftKey && !event.altKey && !event.metaKey && !event.ctrlKey)
             )) {
                 // Add new line when shift+enter or alt+enter is pressed
                 event.preventDefault();
                 this.$refs.input.insertText('\n');
-            } else if (event.keyCode === 13) {
+            } else if (event.key === 'Enter') {
                 // Send message when enter is pressed
                 event.preventDefault();
                 this.submitForm();
-            } else if (event.keyCode === 27 && this.showCommandWarning) {
+            } else if (event.key === 'Escape' && this.showCommandWarning) {
                 // Close command warning if the user presses escape
                 this.showCommandWarning = false;
-            } else if (event.keyCode === 32) {
+            } else if (event.key === ' ') {
                 // Hitting space after just typing an ascii emoji will get it replaced with
                 // its image
                 if (this.$state.setting('buffers.show_emoticons')) {
@@ -485,7 +478,7 @@ export default {
                         );
                     }
                 }
-            } else if (event.keyCode === 38) {
+            } else if (event.key === 'ArrowUp') {
                 // Up
                 if (this.$refs.input.getCaretIdx() > 0) {
                     // not at the start of input, allow normal input behaviour
@@ -494,7 +487,7 @@ export default {
 
                 event.preventDefault();
                 this.historyBack();
-            } else if (event.keyCode === 40) {
+            } else if (event.key === 'ArrowDown') {
                 // Down
                 let end = this.$refs.input.getRawText().replace(/\r?\n/g, '').length;
                 if (this.$refs.input.getCaretIdx() < end) {
@@ -507,7 +500,7 @@ export default {
                     this.$refs.input.selectionToEnd();
                 });
             } else if (
-                event.keyCode === 9
+                event.key === 'Tab'
                 && !event.shiftKey
                 && !event.altKey
                 && !event.metaKey
@@ -536,19 +529,19 @@ export default {
                 // traditional IRC clients.
                 this.autocomplete_filtering = false;
                 event.preventDefault();
-            } else if (meta && event.keyCode === 75) {
+            } else if (meta && event.key === 'k') {
                 // meta + k
                 this.toggleInputTool(ToolTextStyle);
                 event.preventDefault();
-            } else if (meta && event.keyCode === 66) {
+            } else if (meta && event.key === 'b') {
                 // meta + b
                 this.toggleBold();
                 event.preventDefault();
-            } else if (meta && event.keyCode === 73) {
+            } else if (meta && event.key === 'i') {
                 // meta + i
                 this.toggleItalic();
                 event.preventDefault();
-            } else if (meta && event.keyCode === 85) {
+            } else if (meta && event.key === 'u') {
                 // meta + u
                 this.toggleUnderline();
                 event.preventDefault();
@@ -560,7 +553,7 @@ export default {
             let currentToken = currentWord.word.substr(0, currentWord.position);
             let autocompleteTokens = this.$state.setting('autocompleteTokens');
 
-            if (event.keyCode === 27 && this.autocomplete_open) {
+            if (event.key === 'Escape' && this.autocomplete_open) {
                 this.autocomplete_open = false;
             } else if (this.autocomplete_open && currentToken === '') {
                 this.autocomplete_open = false;
@@ -584,7 +577,7 @@ export default {
                 this.openAutoComplete(this.buildAutoCompleteItems({ buffers: true }));
                 this.autocomplete_filtering = true;
             } else if (
-                event.keyCode === 9
+                event.key === 'Tab'
                 && !event.shiftKey
                 && !event.altKey
                 && !event.metaKey
