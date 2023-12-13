@@ -7,9 +7,9 @@
             >
                 <rect
                     v-if="avatar.showBackground"
-                    class="kiwi-avatar-background"
                     width="100"
                     height="100"
+                    class="kiwi-avatar-background"
                     :style="{ fill: user.getColour() }"
                 />
                 <image
@@ -18,8 +18,8 @@
                     width="100"
                     height="100"
                     preserveAspectRatio="xMidYMid slice"
-                    class="kiwi-avatar-image"
                     loading="lazy"
+                    class="kiwi-avatar-image"
                     @error="avatar[avatar.sizeKey[size]].setFailed()"
                 />
                 <text
