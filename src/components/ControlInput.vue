@@ -811,9 +811,10 @@ export default {
 <style lang="less">
 
 .kiwi-controlinput {
-    z-index: 999;
+    z-index: 2;
     position: relative;
     border-top: 1px solid;
+    max-height: 40%;
 }
 
 .kiwi-controlinput,
@@ -843,8 +844,7 @@ export default {
     text-align: center;
     cursor: pointer;
     line-height: 40px;
-    transition: width 0.2s;
-    transition-delay: 0.1s;
+    transition: width 0.2s 0.1s;
 
     > i {
         font-size: 120%;
@@ -853,10 +853,13 @@ export default {
 }
 
 .kiwi-controlinput--selfuser-open {
+    .kiwi-controlinput-inner > .kiwi-awaystatusindicator {
+        visibility: hidden;
+    }
+
     .kiwi-controlinput-user {
         width: 296px;
-        transition: width 0.2s;
-        transition-delay: 0.1s;
+        visibility: hidden;
     }
 
     .kiwi-controlinput-selfuser {
