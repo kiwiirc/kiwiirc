@@ -25,8 +25,6 @@
                 <text
                     v-else
                     :font-size="avatar.initials.length === 1 ? '64px' : '44px'"
-                    v-bind="awayStatus.vbind"
-                    clip-path="url(#kiwi-avatar-clip)"
                     x="50"
                     y="50"
                     dy="0.36em"
@@ -52,16 +50,21 @@
             </circle>
         </svg>
         <svg v-else viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle r="50" cx="50" cy="50" class="kiwi-avatar-background" />
-            <text
-                font-size="64px"
-                clip-path="url(#kiwi-avatar-clip)"
-                x="50"
-                y="50"
-                dy="0.36em"
-                text-anchor="middle"
-                class="kiwi-avatar-initials"
-            >{{ 'U' }}</text>
+            <g clip-path="url(#kiwi-avatar-clip)">
+                <rect
+                    width="100"
+                    height="100"
+                    class="kiwi-avatar-background"
+                />
+                <text
+                    x="50"
+                    y="50"
+                    dy="0.36em"
+                    font-size="64px"
+                    text-anchor="middle"
+                    class="kiwi-avatar-initials"
+                >{{ 'U' }}</text>
+            </g>
         </svg>
     </div>
 </template>
