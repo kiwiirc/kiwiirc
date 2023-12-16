@@ -221,7 +221,7 @@
 }
 
 .kiwi-controlinput--selfuser-open .kiwi-controlinput-selfuser {
-    border: 1px solid var(--brand-midtone);
+    border-color: var(--comp-border);
 }
 
 /* ---- Auto complete ( autoComplete ) ---- */
