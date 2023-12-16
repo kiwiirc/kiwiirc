@@ -324,25 +324,25 @@ export default {
                 meta = event.ctrlKey && !event.altKey;
             }
 
-            if (meta && event.keyCode === 221) {
+            if (meta && event.key === ']') {
                 // meta + ]
                 let buffer = bufferTools.getNextBuffer();
                 if (buffer) {
                     this.$state.setActiveBuffer(buffer.networkid, buffer.name);
                 }
                 event.preventDefault();
-            } else if (meta && event.keyCode === 219) {
+            } else if (meta && event.key === '[') {
                 // meta + [
                 let buffer = bufferTools.getPreviousBuffer();
                 if (buffer) {
                     this.$state.setActiveBuffer(buffer.networkid, buffer.name);
                 }
                 event.preventDefault();
-            } else if (meta && event.keyCode === 79) {
+            } else if (meta && event.key === 'o') {
                 // meta + o
                 this.$state.$emit('active.component.toggle', AppSettings);
                 event.preventDefault();
-            } else if (meta && event.keyCode === 83) {
+            } else if (meta && event.key === 's') {
                 // meta + s
                 let network = this.$state.getActiveNetwork();
                 if (network) {
