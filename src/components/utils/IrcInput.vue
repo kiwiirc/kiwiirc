@@ -558,9 +558,10 @@ export default Vue.component('irc-input', {
 }
 
 .kiwi-ircinput-editor {
-    overflow-x: hidden;
+    overflow: hidden auto;
     outline: none;
-    padding: 7px 0 12px 0;
+    padding: 7px 0 8px 0;
+    box-sizing: border-box;
 
     /* When the contenteditable div is empty firefox makes its height 0px */
     height: 100%;

@@ -397,7 +397,7 @@ body {
     top: 4px;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: calc(100% - 4px); // 4px is the top movement
     transition: left 0.2s, margin-left 0.2s;
 }
 
@@ -460,10 +460,6 @@ body {
     max-height: 70%;
     overflow: auto;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.kiwi-controlinput {
-    z-index: 2;
 }
 
 /* Small screen will cause the statebrowser to act as a drawer */
