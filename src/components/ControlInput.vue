@@ -824,7 +824,7 @@ export default {
     height: 100%;
 
     .kiwi-awaystatusindicator {
-        margin-top: 16px;
+        margin-top: 14px;
         margin-left: 10px;
         margin-right: -2px;
     }

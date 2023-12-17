@@ -495,19 +495,6 @@ export default {
     flex-shrink: 0;
 }
 
-.kiwi-userbox-avatar .kiwi-avatar-inner {
-    font-size: 3em;
-    border-width: 3px;
-}
-
-.kiwi-userbox-avatar .kiwi-awaystatusindicator {
-    width: 16px;
-    height: 16px;
-    top: 4px;
-    right: 2px;
-    position: absolute;
-}
-
 .kiwi-userbox-userinfo {
     box-sizing: border-box;
     margin-top: 1.2em;

@@ -138,19 +138,10 @@ export default {
         width: 30px;
         height: 30px;
     }
-
-    .kiwi-awaystatusindicator {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 0;
-    }
 }
 
 .kiwi-nicklist-awaystatus {
     flex-shrink: 0;
-    width: 9px;
-    height: 9px;
     margin-right: 6px;
     border: none;
 }

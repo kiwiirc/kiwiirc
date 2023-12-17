@@ -124,19 +124,6 @@ export default {
     transition: background 0.2s;
 }
 
-.kiwi-statebrowser-usermenu-avatar .kiwi-avatar-inner {
-    border-width: 3px;
-}
-
-.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
-    position: absolute;
-    top: 4px;
-    right: 0;
-    width: 14px;
-    height: 14px;
-    border: 1px solid;
-}
-
 .kiwi-statebrowser-usermenu-body {
     width: 100%;
     box-sizing: border-box;
