@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2023-12-17 17:03\n"
+"PO-Revision-Date: 2023-12-17 19:26\n"
 
 #: Start
 msgid "start_button"
@@ -193,7 +193,7 @@ msgstr "Uzakta"
 
 #: Toggle Away Status
 msgid "toggle_away"
-msgstr "Toggle Away Status"
+msgstr "Away Durumunu Değiştir"
 
 #: {{count}} week
 msgid "week"
