@@ -59,14 +59,14 @@
         <svg
             viewBox="0 0 100 100"
             xmlns="http://www.w3.org/2000/svg"
-            style="position: absolute; width: 0; height: 0;"
+            style="position: fixed; width: 0; height: 0;"
         >
             <clipPath id="kiwi-avatar-clip">
-                <circle r="50%" cx="50%" cy="50%" />
+                <circle r="50" cx="50" cy="50" />
             </clipPath>
             <mask id="kiwi-avatar-mask">
-                <rect width="100%" height="100%" fill="#fff" />
-                <circle r="14%" cx="50%" cy="0" transform="rotate(45 50 50)" />
+                <rect width="100" height="100" fill="#fff" />
+                <circle r="14" cx="50" cy="0" transform="rotate(45 50 50)" />
             </mask>
         </svg>
     </div>
