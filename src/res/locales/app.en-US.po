@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2023-11-14 17:11\n"
+"PO-Revision-Date: 2023-12-17 17:03\n"
 
 #: Start
 msgid "start_button"
@@ -190,6 +190,10 @@ msgstr "Channel"
 #: Away
 msgid "away"
 msgstr "Away"
+
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
 
 #: {{count}} week
 msgid "week"
