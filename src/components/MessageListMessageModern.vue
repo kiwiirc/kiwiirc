@@ -40,17 +40,11 @@
         <div class="kiwi-messagelist-modern-left">
             <template v-if="props.m().displayAvatar(props.message)">
                 <component
-                    :is="injections.components.MessageAvatar"
-                    :message="props.message"
+                    :is="injections.components.UserAvatar"
                     :data-nick="props.message.nick"
                     :user="props.message.user"
-                />
-                <component
-                    :is="injections.components.AwayStatusIndicator"
                     :network="props.m().getNetwork()"
-                    :user="props.message.user"
-                    :toggle="false"
-                    class="kiwi-messagelist-awaystatus"
+                    :message="props.message"
                 />
             </template>
         </div>
@@ -146,8 +140,8 @@
 
 import { urlRegex } from '@/helpers/TextFormatting';
 import MessageInfo from './MessageInfo';
-import MessageListAvatar from './MessageListAvatar';
 import AwayStatusIndicator from './AwayStatusIndicator';
+import UserAvatar from './UserAvatar';
 import MediaViewer from './MediaViewer';
 
 const methods = {
@@ -248,7 +242,7 @@ export default {
     inject: {
         components: {
             default: {
-                MessageAvatar: MessageListAvatar,
+                UserAvatar,
                 MessageInfo,
                 AwayStatusIndicator,
                 MediaViewer,

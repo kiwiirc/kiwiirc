@@ -5,8 +5,11 @@
         </span>
         <div class="kiwi-userbox-header">
             <div class="kiwi-userbox-avatar">
-                <avatar :user="user" size="large" />
-                <away-status-indicator :network="network" :user="user" />
+                <UserAvatar
+                    :user="user"
+                    :network="network"
+                    size="large"
+                />
             </div>
             <div class="kiwi-userbox-userinfo">
                 <span
@@ -216,12 +219,12 @@ import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 import toHtml from '@/libs/renderers/Html';
 import parseMessage from '@/libs/MessageParser';
-import Avatar from './Avatar';
+import UserAvatar from './UserAvatar';
 import AwayStatusIndicator from './AwayStatusIndicator';
 
 export default {
     components: {
-        Avatar,
+        UserAvatar,
         AwayStatusIndicator,
     },
     props: ['network', 'buffer', 'user', 'sidebarState'],
@@ -490,19 +493,6 @@ export default {
     width: 100px;
     height: 100px;
     flex-shrink: 0;
-}
-
-.kiwi-userbox-avatar .kiwi-avatar-inner {
-    font-size: 3em;
-    border-width: 3px;
-}
-
-.kiwi-userbox-avatar .kiwi-awaystatusindicator {
-    width: 16px;
-    height: 16px;
-    top: 4px;
-    right: 2px;
-    position: absolute;
 }
 
 .kiwi-userbox-userinfo {

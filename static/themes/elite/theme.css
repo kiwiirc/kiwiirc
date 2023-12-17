@@ -210,8 +210,10 @@
     border-bottom: none;
 }
 
-.kiwi-awaystatusindicator {
-    background-color: #41e8c9;
+.kiwi-awaystatusindicator.kiwi-awaystatusindicator--away,
+.kiwi-avatar-status--away {
+    background-color: #e5bb91;
+    fill: #e5bb91;
 }
 
 /* IRC Text Colours */

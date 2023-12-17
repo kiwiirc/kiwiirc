@@ -36,7 +36,8 @@
 }
 
 .kiwi-wrap {
-    --kiwi-nickcolour-lightness: 60;
+    --kiwi-nickcolour-saturation: 40;
+    --kiwi-nickcolour-lightness: 40;
 }
 
 .kiwi-header {

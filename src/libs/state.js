@@ -927,6 +927,7 @@ function createNewState() {
 
                 user.key = normalisedNew;
                 user.nick = newNick;
+                user.colour = '';
 
                 // If the nick has completely changed (ie. not just a case change) then update all
                 // associated buffers user lists

@@ -824,7 +824,7 @@ export default {
     height: 100%;
 
     .kiwi-awaystatusindicator {
-        margin-top: 16px;
+        margin-top: 14px;
         margin-left: 10px;
         margin-right: -2px;
     }
@@ -836,7 +836,7 @@ export default {
     font-weight: bold;
     text-align: center;
     cursor: pointer;
-    line-height: 40px;
+    line-height: 38px;
     transition: width 0.2s 0.1s;
 
     > i {

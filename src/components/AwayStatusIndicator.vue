@@ -63,11 +63,10 @@ export default {
 
 .kiwi-awaystatusindicator {
     display: inline-block;
-    width: 7px;
-    height: 7px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     margin: 0 4px 0 0;
-    border: 1px solid #fff;
     transition: background-color 0.5s;
 }
 

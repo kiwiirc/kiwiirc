@@ -9,8 +9,12 @@
         @click.stop="nicklist.openUserbox(user)"
     >
         <div v-if="nicklist.shouldShowAvatars" class="kiwi-nicklist-avatar">
-            <Avatar :user="user" size="small" />
-            <AwayStatusIndicator :network="network" :user="user" :toggle="false" />
+            <UserAvatar
+                v-bind="nicklist.avatarProps"
+                :user="user"
+                :network="network"
+                size="small"
+            />
         </div>
         <AwayStatusIndicator
             v-else
@@ -60,13 +64,13 @@
 
 import AwayStatusIndicator from './AwayStatusIndicator';
 import TypingStatusIndicator from './TypingStatusIndicator';
-import Avatar from './Avatar';
+import UserAvatar from './UserAvatar';
 
 export default {
     components: {
         AwayStatusIndicator,
         TypingStatusIndicator,
-        Avatar,
+        UserAvatar,
     },
     props: ['network', 'user', 'nicklist'],
     computed: {
@@ -134,19 +138,10 @@ export default {
         width: 30px;
         height: 30px;
     }
-
-    .kiwi-awaystatusindicator {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 0;
-    }
 }
 
 .kiwi-nicklist-awaystatus {
     flex-shrink: 0;
-    width: 9px;
-    height: 9px;
     margin-right: 6px;
     border: none;
 }

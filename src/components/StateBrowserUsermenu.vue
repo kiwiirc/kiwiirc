@@ -11,16 +11,12 @@
             class="kiwi-statebrowser-usermenu-avatar"
             @click="is_usermenu_open=!is_usermenu_open"
         >
-            <avatar
-                v-if="getUser"
+            <UserAvatar
                 :user="getUser"
-                size="large"
-            />
-            <away-status-indicator
-                v-if="network && network.state === 'connected'"
                 :network="network"
-                :user="getUser"
-                :toggle="false"
+                :allow-toggle="true"
+                :force-show-status="true"
+                size="large"
             />
         </div>
         <div v-if="is_usermenu_open" class="kiwi-statebrowser-usermenu-body">
@@ -41,14 +37,13 @@
 
 import * as TextFormatting from '@/helpers/TextFormatting';
 
-import UserState from '@/libs/state/UserState';
 import AwayStatusIndicator from './AwayStatusIndicator';
-import Avatar from './Avatar';
+import UserAvatar from './UserAvatar';
 
 export default {
     components: {
         AwayStatusIndicator,
-        Avatar,
+        UserAvatar,
     },
     props: ['network'],
     data() {
@@ -69,7 +64,7 @@ export default {
                 return this.network.currentUser();
             }
 
-            return new UserState({ nick: 'User' });
+            return null;
         },
         isConnected() {
             return this.network && this.network.state === 'connected';
@@ -127,19 +122,6 @@ export default {
     margin: 0 auto 0.4em auto;
     font-size: 2.8em;
     transition: background 0.2s;
-}
-
-.kiwi-statebrowser-usermenu-avatar .kiwi-avatar-inner {
-    border-width: 3px;
-}
-
-.kiwi-statebrowser-usermenu .kiwi-awaystatusindicator {
-    position: absolute;
-    top: 4px;
-    right: 0;
-    width: 14px;
-    height: 14px;
-    border: 1px solid;
 }
 
 .kiwi-statebrowser-usermenu-body {
