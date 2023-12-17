@@ -1,6 +1,6 @@
 <template>
     <div class="kiwi-avatar">
-        <svg v-if="user" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <g
                 v-bind="awayStatus.vbind"
                 clip-path="url(#kiwi-avatar-clip)"
@@ -10,7 +10,7 @@
                     width="100"
                     height="100"
                     class="kiwi-avatar-background"
-                    :style="{ fill: user.getColour() }"
+                    :style="avatar.backgroundStyle"
                 />
                 <image
                     v-if="avatar.hasImage"
@@ -48,23 +48,6 @@
             >
                 <title v-if="allowToggle">{{ $t('toggle_away') }}</title>
             </circle>
-        </svg>
-        <svg v-else viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#kiwi-avatar-clip)">
-                <rect
-                    width="100"
-                    height="100"
-                    class="kiwi-avatar-background"
-                />
-                <text
-                    x="50"
-                    y="50"
-                    dy="0.36em"
-                    font-size="64px"
-                    text-anchor="middle"
-                    class="kiwi-avatar-initials"
-                >{{ 'U' }}</text>
-            </g>
         </svg>
     </div>
 </template>
@@ -127,7 +110,7 @@ const getSizeObj = (size) => ({
 });
 
 const shouldShowStatus = () => {
-    if (props.network && props.forceShowStatus) {
+    if (props.user && props.network && props.forceShowStatus) {
         return true;
     }
 
@@ -166,17 +149,26 @@ const avatar = computed(() => {
         initialsLength = 2;
     }
 
-    const nick = props.message?.nick || props.user.nick;
+    const nick = props.message?.nick || props.user?.nick || 'User';
     const initials = nick.substring(0, initialsLength).toUpperCase();
-    const hasImage = !!(props.user.avatar.small || props.user.avatar.large);
+    const hasImage = !!(props.user && (props.user.avatar.small || props.user.avatar.large));
 
     const showBackground = !hasImage || getState().setting('avatars.show_image_background');
+    const backgroundStyle = {};
+
     const avatars = {
         hasImage,
         initials,
         showBackground,
+        backgroundStyle,
         sizeKey: {},
     };
+
+    if (props.user) {
+        backgroundStyle.fill = props.user.getColour();
+    } else {
+        return avatars;
+    }
 
     if (props.user.avatar.small) {
         avatars.small = getSizeObj('small');
