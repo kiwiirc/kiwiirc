@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Spanish, Argentina\n"
 "Language: es_AR\n"
-"PO-Revision-Date: 2023-11-14 17:11\n"
+"PO-Revision-Date: 2023-12-17 17:03\n"
 
 #: Start
 msgid "start_button"
@@ -191,6 +191,10 @@ msgstr "Sala"
 msgid "away"
 msgstr "Está ausente"
 
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
+
 #: {{count}} week
 msgid "week"
 msgstr "semana"
@@ -321,7 +325,7 @@ msgstr "Silenciar notificaciones"
 
 #: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space separated)"
+msgstr "Palabras a destacar (sepáralas con un espacio)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -405,7 +409,7 @@ msgstr "Filtro"
 
 #: Refresh ban list
 msgid "bans_refresh"
-msgstr "Refresh ban list"
+msgstr "Actualizar lista de baneos"
 
 #: Banned user
 msgid "bans_user"
@@ -417,7 +421,7 @@ msgstr "Baneado por"
 
 #: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Refreshing ban list..."
+msgstr "Actualizando lista de baneos..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -741,7 +745,7 @@ msgstr "Ha habido un error iniciando Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
+msgstr "Comprueba que has instalado el Kiwi IRC correctamente y que la configuración puede cargarse."
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +845,7 @@ msgstr "Es un robot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is available for help"
+msgstr "Está disponible para ayudar"
 
 #: Is an operator
 msgid "user_op"
