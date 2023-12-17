@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
-"PO-Revision-Date: 2023-10-19 18:46\n"
+"PO-Revision-Date: 2023-12-17 17:02\n"
 
 #: Start
 msgid "start_button"
@@ -191,6 +191,10 @@ msgstr "Canal"
 msgid "away"
 msgstr "Plecat(ă) de la tastatură"
 
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
+
 #: {{count}} week
 msgid "week"
 msgstr "{{count}} săptămână"
@@ -319,9 +323,9 @@ msgstr "Include mesajele de intrare/ieșire ca activitate"
 msgid "settings_mute_sound"
 msgstr "Dezactivează notificările audio"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Avertizare pentru cuvinte (separate prin spațiu)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +407,9 @@ msgstr "Resetare"
 msgid "settings_advanced_filter"
 msgstr "Filtru"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Reîmprospătează lista de ban-uri"
+msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +419,9 @@ msgstr "Utilizatori ce au primit ban"
 msgid "bans_by"
 msgstr "A primit ban de la"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Reîmprospătez lista de ban-uri..."
+msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +743,9 @@ msgstr "Nu te-a menționat nimeni..."
 msgid "error_starting"
 msgstr "A apărut o eroare la inițializarea Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Asigură-te că ai instalat corect Kiwi IRC și că fișierul de configurare poate fi încărcat"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +845,7 @@ msgstr "Este un robot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Îți stă la dispoziție pentru a te ajuta"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"

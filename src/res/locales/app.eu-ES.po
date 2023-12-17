@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-12-17 17:02\n"
 
 #: Start
 msgid "start_button"
@@ -191,6 +191,10 @@ msgstr "Kanala"
 msgid "away"
 msgstr "Kanpoan"
 
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
+
 #: {{count}} week
 msgid "week"
 msgstr "aste {{count}} "
@@ -319,9 +323,9 @@ msgstr "join/part mezuak ikusi"
 msgid "settings_mute_sound"
 msgstr "Jakinarazpenak isildu"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Nabarmentzeko hitzak (banan itzazu espazioarekin) "
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +407,9 @@ msgstr "Berrezarri"
 msgid "settings_advanced_filter"
 msgstr "Iragazkia"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Kanporatuen zerrenda eguneratu"
+msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +419,9 @@ msgstr "Kanporatutako erabiltzailea"
 msgid "bans_by"
 msgstr "Nork kanporatu"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Kanporatuen zerrenda eguneratzen..."
+msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +743,9 @@ msgstr "Inork ez zaitu oraindik aipatu ..."
 msgid "error_starting"
 msgstr "Akatsa Kiwi IRC-i irakatsiz egon da :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Egiaztatu Kiwi IRC-a zuzen instalatu duzula eta konfigurazioa karga daitekeela."
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +845,7 @@ msgstr "Robot bat da"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Laguntzeko prest"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"

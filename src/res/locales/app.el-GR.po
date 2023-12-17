@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2023-10-22 01:11\n"
+"PO-Revision-Date: 2023-12-17 20:33\n"
 
 #: Start
 msgid "start_button"
@@ -191,6 +191,10 @@ msgstr "Κανάλι"
 msgid "away"
 msgstr "Απών"
 
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Εναλλαγή απών κατάστασης"
+
 #: {{count}} week
 msgid "week"
 msgstr "{{count}} εβδομάδα"
@@ -319,9 +323,9 @@ msgstr "Συμπεριλάβετε μηνύματα δραστηριοτήτων
 msgid "settings_mute_sound"
 msgstr "Σίγαση ήχων ειδοποιήσεων"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Επισήμανση στις παρακάτω λέξεις (εισάγετε κενό για διαχωρισμό):"
+msgstr "Επισήμανση στις λέξεις (εισάγετε κενό για διαχωρισμό)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,7 +407,7 @@ msgstr "Επαναφορά"
 msgid "settings_advanced_filter"
 msgstr "Φίλτρο"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
 msgstr "Ανανέωση λίστας αποκλεισμένων"
 
@@ -415,9 +419,9 @@ msgstr "Αποκλεισμένος χρήστης"
 msgid "bans_by"
 msgstr "Αποκλείστηκε από"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Γίνεται ανανέωση λίστας αποκλεισμένων..."
+msgstr "Ανανέωσης λίστας αποκλεισμένων"
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,7 +743,7 @@ msgstr "Κανείς δεν σας έχει αναφέρει ακόμα..."
 msgid "error_starting"
 msgstr "Παρουσιάστηκε κάποιο σφάλμα κατά την εκκίνηση του Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
 msgstr "Βεβαιωθείτε ότι έχετε εγκαταστήσει σωστά το Kiwi IRC και ότι όλες σας οι ρυθμίσεις μπορούν να φορτωθούν"
 

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-12-17 18:10\n"
 
 #: Start
 msgid "start_button"
@@ -77,7 +77,7 @@ msgstr "Passwort"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Server Passwort"
 
 #: I have a password
 msgid "password_have"
@@ -117,15 +117,15 @@ msgstr "Ungültige Zugangsdaten"
 
 #: Login failed. Please try again or contact support
 msgid "login_failed"
-msgstr "Login failed. Please try again or contact support"
+msgstr "Anmeldung fehlgeschlagen. Bitte versuche es erneut oder kontaktiere den Support"
 
 #: You are now logged in as '{{account}}'
 msgid "logged_in"
-msgstr "You are now logged in as '{{account}}'"
+msgstr "Du bist jetzt als '{{account}}' eingeloggt."
 
 #: You have been logged out
 msgid "logged_out"
-msgstr "You have been logged out"
+msgstr "Du wurdest abgemeldet"
 
 #: Search...
 msgid "do_search"
@@ -190,6 +190,10 @@ msgstr "Kanal"
 #: Away
 msgid "away"
 msgstr "Weg"
+
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Abwesenheitsstatus umschalten"
 
 #: {{count}} week
 msgid "week"
@@ -309,7 +313,7 @@ msgstr "Teilen, wenn ich eine Nachricht schreibe"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "Bildvorschauen anzeigen"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -319,9 +323,9 @@ msgstr "Betreten/Verlassen als Aktivität"
 msgid "settings_mute_sound"
 msgstr "Stummschalten"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Wörter Benachrichtigen"
+msgstr "Wörter hervorheben (durch Leerzeichen getrennt)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -365,7 +369,7 @@ msgstr "Ton aus"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "Anzahl ungelesener Nachrichten ausblenden"
 
 #: Operator tools
 msgid "operator_tools"
@@ -403,9 +407,9 @@ msgstr "Zurücksetzen"
 msgid "settings_advanced_filter"
 msgstr "Filter"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Aktualisiere Bannliste"
+msgstr "Bannliste aktualisieren"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +419,9 @@ msgstr "Gebannte User"
 msgid "bans_by"
 msgstr "Gebannt von"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Aktualisiere Bannliste"
+msgstr "Aktualisieren der Bannliste..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -425,7 +429,7 @@ msgstr "Niemand ist gebannt"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "Bann hinzufügen"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -477,7 +481,7 @@ msgstr "(Jeder registrierte Benutzer)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "Nur für Mods"
 
 #: Topic
 msgid "channel_topic"
@@ -493,7 +497,7 @@ msgstr "Nur mit Einladung"
 
 #: Hide this channel from lists
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "Diesen Kanal in Listen verstecken"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -549,11 +553,11 @@ msgstr "Schreibe eine Nachricht..."
 
 #: This message looks like a command but is preceded by spaces.
 msgid "input_not_command"
-msgstr "This message looks like a command but is preceded by spaces."
+msgstr "Diese Nachricht sieht aus wie ein Befehl, aber es werden Leerzeichen vorangestellt."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "Als Text senden?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -565,7 +569,7 @@ msgstr "Lade vorherige Nachrichten"
 
 #: Loading previous messages...
 msgid "messages_loading"
-msgstr "Loading previous messages..."
+msgstr "Vorherige Nachrichten werden geladen..."
 
 #: Unread Messages
 msgid "unread_messages"
@@ -573,7 +577,7 @@ msgstr "Ungelesene Nachrichten"
 
 #: Reply in private
 msgid "reply_in_private"
-msgstr "Reply in private"
+msgstr "Privat antworten"
 
 #: Server details
 msgid "settings_server_details"
@@ -633,7 +637,7 @@ msgstr "{{count}} user hier"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Nutzer im Raum filtern"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -665,7 +669,7 @@ msgstr "Verbinde zu Netzwerk"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "Netzwerkname"
 
 #: Close options
 msgid "side_close"
@@ -717,11 +721,11 @@ msgstr "Es gibt kein Thema in diesem Channel"
 
 #: Topic set by {{who}} on {{when}}
 msgid "topic_setby"
-msgstr "Set by {{who}} on {{when}}"
+msgstr "Eingestellt von {{who}} am {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "Erstellt am {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -739,9 +743,9 @@ msgstr "Bisher hat dich niemand erwähnt.."
 msgid "error_starting"
 msgstr "Es ist ein Fehler aufgetreten beim Starten von Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Stelle sicher das du Kiwi IRC korrekt installiert hast und die Konfigurationsdateien geladen werden können"
+msgstr "Prüfe bitte, dass du KiwiIRC korrekt installiert hast und die Konfigurationsdatei geladen werden kann"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -801,7 +805,7 @@ msgstr "Räume filtern"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Weitere Räume finden"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
@@ -809,11 +813,11 @@ msgstr "Den Raum wirklich verlassen?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "Wirklich alle Chats schließen?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
-msgstr "Really close this chat?"
+msgstr "Den Chat wirklich schließen?"
 
 #: Change nick
 msgid "change_nick"
@@ -841,7 +845,7 @@ msgstr "Ist ein Bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Ist verfügbar für Hilfe"
+msgstr "Ist verfügbar für Unterstützung"
 
 #: Is an operator
 msgid "user_op"
@@ -881,11 +885,11 @@ msgstr "Kick+Bann vom Channel"
 
 #: Select a Channel
 msgid "select_channel"
-msgstr "Select a Channel"
+msgstr "Wähle einen Raum"
 
 #: Invite User
 msgid "invite_user"
-msgstr "Invite User"
+msgstr "Nutzer einladen"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -893,11 +897,11 @@ msgstr "Bitte gebe einen Channel an, welchen du betreten möchstest: z.B.  /join
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "Der Nickname '{{nick}}' wird schon verwendet!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "Der Nickname '{{nick}}' ist ungültig!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -909,43 +913,43 @@ msgstr "Der Spitzname darf nicht mit einer Nummer beginnen"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Unerwarteter Fehler aufgetreten"
 
 #: Unknown domain name or host
 msgid "error_unknown_host"
-msgstr "Unknown domain name or host"
+msgstr "Unbekannter Domainname oder Host"
 
 #: Forbidden to connect
 msgid "error_forbidden"
-msgstr "Forbidden to connect"
+msgstr "Verbotene Verbindung"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "Die Verbindung dauerte zu lange"
 
 #: The server refused the connection
 msgid "error_refused"
-msgstr "The server refused the connection"
+msgstr "Der Server hat die Verbindung abgelehnt"
 
 #: Could not connect securely
 msgid "error_tls"
-msgstr "Could not connect securely"
+msgstr "Konnte keine sichere Verbindung herstellen"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
-msgstr "The Kiwi IRC server had an error"
+msgstr "Beim KiwiIRC Server ist ein Fehler aufgetreten"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "Unbekannter Fehler"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "Falscher Benutzername oder Passwort"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "Verbindung wurde unerwartet geschlossen"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1101,7 +1105,7 @@ msgstr "Wirft einen  {{sides}}-seitigen Würfel und bekommt die Zahl {{number}}"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "Du wurdest in {{channel}} erwähnt"
 
 #: Your IRC client
 msgid "personal_client"
@@ -1185,11 +1189,11 @@ msgstr "{{nick}} hat dich dazu eingeladen, {{channel}} zu betreten"
 
 #: {{nick}} invited {{invited}} to join {{channel}}
 msgid "invited_other"
-msgstr "{{nick}} invited {{invited}} to join {{channel}}"
+msgstr "{{nick}} hat dich dazu eingeladen, {{channel}} zu betreten"
 
 #: You invited {{invited}} to join {{channel}}
 msgid "invited_inviter"
-msgstr "You invited {{invited}} to join {{channel}}"
+msgstr "Du hast {{invited}} eingeladen, {{channel}} zu betreten."
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"

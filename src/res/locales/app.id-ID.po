@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-12-17 17:03\n"
 
 #: Start
 msgid "start_button"
@@ -191,6 +191,10 @@ msgstr "Kanal"
 msgid "away"
 msgstr "Away"
 
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
+
 #: {{count}} week
 msgid "week"
 msgstr "{{count}} week"
@@ -319,9 +323,9 @@ msgstr "Sertakan pesan masuk/keluar sebagai aktivitas"
 msgid "settings_mute_sound"
 msgstr "Senyapkan suara notifikasi"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Sorot kata-kata (dipisahkan spasi)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +407,9 @@ msgstr "Reset"
 msgid "settings_advanced_filter"
 msgstr "Filter"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Segarkan daftar dilarang"
+msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +419,9 @@ msgstr "Pengguna dilarang"
 msgid "bans_by"
 msgstr "Dilarang oleh"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Segarkan daftar dilarang..."
+msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +743,9 @@ msgstr "Nobody has mentioned you yet..."
 msgid "error_starting"
 msgstr "Terjadi eror saat memulai Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Pastikan Anda telah menginstal Kiwi IRC dengan benar dan pengaturannya bisa dimuat"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +845,7 @@ msgstr "Adalah robot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Tersedia untuk bantuan"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"

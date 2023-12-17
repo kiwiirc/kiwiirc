@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Galician\n"
 "Language: gl_ES\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-12-17 17:03\n"
 
 #: Start
 msgid "start_button"
@@ -191,6 +191,10 @@ msgstr "Canle"
 msgid "away"
 msgstr "Está ausente"
 
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
+
 #: {{count}} week
 msgid "week"
 msgstr "{{count}} semana"
@@ -319,7 +323,7 @@ msgstr "Incluír mensaxes de entrada e saída como actividade"
 msgid "settings_mute_sound"
 msgstr "Silenciar notificacións"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
 msgstr "Palabras a destacar (sepáraas cun espazo)"
 
@@ -403,7 +407,7 @@ msgstr "Restablecer"
 msgid "settings_advanced_filter"
 msgstr "Filtro"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
 msgstr "Actualizar lista de baneos"
 
@@ -415,9 +419,9 @@ msgstr "Usuario baneado"
 msgid "bans_by"
 msgstr "Baneado por"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Actualizando lista de baneos"
+msgstr "Actualizando lista de baneos..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,7 +743,7 @@ msgstr "Ninguén che mencionou aínda..."
 msgid "error_starting"
 msgstr "Houbo un erro iniciando Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
 msgstr "Comproba que instalaches o Kiwi IRC correctamente e que a configuración pode cargarse."
 

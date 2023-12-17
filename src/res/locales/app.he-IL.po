@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-12-17 17:02\n"
 
 #: Start
 msgid "start_button"
@@ -113,7 +113,7 @@ msgstr "מתחבר"
 
 #: Invalid login
 msgid "invalid_login"
-msgstr "כניסה_שגויה"
+msgstr "כניסה שגויה"
 
 #: Login failed. Please try again or contact support
 msgid "login_failed"
@@ -157,7 +157,7 @@ msgstr "אזהרה!"
 
 #: This will close all Kiwi IRC conversations. Are you sure you want to close this window?
 msgid "window_unload"
-msgstr "סגירת החלון זה תסגור את כל השיחות בצ'ט. לסגור את החלון"
+msgstr "פעולה זו תסגור את כל השיחות בצ'אט. האם לסגור את החלון?"
 
 #: Real name
 msgid "whois_realname"
@@ -190,6 +190,10 @@ msgstr "חדר"
 #: Away
 msgid "away"
 msgstr "לא זמין"
+
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
 
 #: {{count}} week
 msgid "week"
@@ -273,7 +277,7 @@ msgstr "הצג רשימת השלמה אוטומטית"
 
 #: Chat Messages
 msgid "settings_messages_title"
-msgstr "הודעות צ'ט"
+msgstr "הודעות צ'אט"
 
 #: Show timestamps
 msgid "settings_timestamps"
@@ -319,9 +323,9 @@ msgstr "הצג הודעות כניסה ויציאה"
 msgid "settings_mute_sound"
 msgstr "השתק התראות"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "הדגשה על מילים"
+msgstr "מילים להדגשה (מופרדות ע\"י רווח)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,7 +407,7 @@ msgstr "Reset"
 msgid "settings_advanced_filter"
 msgstr "מסנן"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
 msgstr "רענן רשימת חסומים"
 
@@ -415,9 +419,9 @@ msgstr "משתמש חסום"
 msgid "bans_by"
 msgstr "נחסם ע\"י"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "מרענן רשימת חסימות"
+msgstr "מרענן רשימת חסימות..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -425,7 +429,7 @@ msgstr "אף אחד לא חסום"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "הוסף חסימה"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -553,7 +557,7 @@ msgstr "This message looks like a command but is preceded by spaces."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "לשלוח כטקסט?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -721,7 +725,7 @@ msgstr "Set by {{who}} on {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "נוצר ב: {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -739,9 +743,9 @@ msgstr "אף אחד לא הזכיר אותך עדיין..."
 msgid "error_starting"
 msgstr "התרחשה שגיאה באיתחול הממשק :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "וודא שהתקנת נכונה את Kiwi IRC ושהקונפיגורציה יכולה להטען"
+msgstr "וודא שהתקנת את Kiwi IRC בצורה נכונה ושהקונפיגורציה ניתנת לטעינה."
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +845,7 @@ msgstr "הוא רובוט"
 
 #: Is available for help
 msgid "user_help"
-msgstr "זמין לעזרה"
+msgstr "זמין/ה לעזרה"
 
 #: Is an operator
 msgid "user_op"
@@ -917,11 +921,11 @@ msgstr "Unknown domain name or host"
 
 #: Forbidden to connect
 msgid "error_forbidden"
-msgstr "Forbidden to connect"
+msgstr "לא מורשה להתחבר"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "לקח יותר מדי זמן להתחבר"
 
 #: The server refused the connection
 msgid "error_refused"
@@ -929,7 +933,7 @@ msgstr "The server refused the connection"
 
 #: Could not connect securely
 msgid "error_tls"
-msgstr "Could not connect securely"
+msgstr "לא ניתן להתחבר בצורה מאובטחת"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
@@ -937,11 +941,11 @@ msgstr "The Kiwi IRC server had an error"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "שגיאה לא ידועה"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "שם המשתמש או הסיסמה שגויים"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
@@ -1157,7 +1161,7 @@ msgstr "נסה\\נסי את גרסת הפיתוח של קיווי איי.אר.ס
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "מנותק"
 
 #: Connected to {{network}}!
 msgid "connected_to"

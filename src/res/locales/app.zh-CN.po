@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-12-17 17:03\n"
 
 #: Start
 msgid "start_button"
@@ -191,6 +191,10 @@ msgstr "频道"
 msgid "away"
 msgstr "离开"
 
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
+
 #: {{count}} week
 msgid "week"
 msgstr "{{count}} 个星期"
@@ -319,9 +323,9 @@ msgstr "令 加入/离开 信息变成活动"
 msgid "settings_mute_sound"
 msgstr "关闭声音提醒"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "高亮单词（使用空格分开）"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +407,9 @@ msgstr "重置"
 msgid "settings_advanced_filter"
 msgstr "筛选"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "刷新封禁列表"
+msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +419,9 @@ msgstr "已封禁用户"
 msgid "bans_by"
 msgstr "封禁"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "正在刷新封禁列表···"
+msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +743,9 @@ msgstr "还没有人提到你……"
 msgid "error_starting"
 msgstr "启动 Kiwi IRC 时出现问题：（"
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "请确保您已正确安装 Kiwi IRC 并可加载配置"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +845,7 @@ msgstr "是机器人"
 
 #: Is available for help
 msgid "user_help"
-msgstr "是否可寻求帮助"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"

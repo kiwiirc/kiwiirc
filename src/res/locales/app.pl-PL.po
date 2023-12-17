@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-12-17 18:10\n"
 
 #: Start
 msgid "start_button"
@@ -165,7 +165,7 @@ msgstr "Prawdziwe imię"
 
 #: Status
 msgid "whois_status"
-msgstr "Status"
+msgstr "Stan"
 
 #: Is available
 msgid "whois_status_available"
@@ -190,6 +190,10 @@ msgstr "Kanał"
 #: Away
 msgid "away"
 msgstr "Nieobecny"
+
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Przełącz stan nieobecności"
 
 #: {{count}} week
 msgid "week"
@@ -319,9 +323,9 @@ msgstr "Uznawaj wejścia i wyjścia za aktywność"
 msgid "settings_mute_sound"
 msgstr "Wycisz powiadomienia dźwiękowe"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Reaguj na słowa (oddzielone spacją)"
+msgstr "Wyróżnij słowa (oddzielone spacjami)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +407,9 @@ msgstr "Zresetuj"
 msgid "settings_advanced_filter"
 msgstr "Filtruj"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Odśwież listę blokad"
+msgstr "Odśwież listę zablokowanych"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +419,9 @@ msgstr "Użytkownik zablokowany"
 msgid "bans_by"
 msgstr "Zablokowany przez"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Odświeżanie listy blokad…"
+msgstr "Odświeżanie listy zablokowanych..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -729,7 +733,7 @@ msgstr "Utworzono dnia {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Podświetlenia"
+msgstr "Wyróżnienia"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
@@ -739,7 +743,7 @@ msgstr "Nikt jeszcze o Tobie nie wspomniał..."
 msgid "error_starting"
 msgstr "Pojawił się problem przy uruchamianiu Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
 msgstr "Upewnij się, że poprawnie zainstalowano Kiwi IRC i można wczytać konfigurację"
 

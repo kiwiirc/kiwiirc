@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-12-17 17:02\n"
 
 #: Start
 msgid "start_button"
@@ -117,15 +117,15 @@ msgstr "Неправильное имя пользователя"
 
 #: Login failed. Please try again or contact support
 msgid "login_failed"
-msgstr "Login failed. Please try again or contact support"
+msgstr "Ошибка входа. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки"
 
 #: You are now logged in as '{{account}}'
 msgid "logged_in"
-msgstr "You are now logged in as '{{account}}'"
+msgstr "Вы вошли в систему как '{{account}}'"
 
 #: You have been logged out
 msgid "logged_out"
-msgstr "You have been logged out"
+msgstr "Вы вышли из системы"
 
 #: Search...
 msgid "do_search"
@@ -190,6 +190,10 @@ msgstr "Канал"
 #: Away
 msgid "away"
 msgstr "Отошел"
+
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
 
 #: {{count}} week
 msgid "week"
@@ -313,13 +317,13 @@ msgstr "Просмотр изображений в текстах сообщен
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
-msgstr "Include join/part messages as activity"
+msgstr "Уведомления о подключении"
 
 #: Mute sound notifications
 msgid "settings_mute_sound"
 msgstr "Отключить звуковые уведомления"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
 msgstr "Подсвечивать слова (разделяйте пробелами)"
 
@@ -403,9 +407,9 @@ msgstr "Сброс"
 msgid "settings_advanced_filter"
 msgstr "Фильтр"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Обновить бан-лист"
+msgstr "Обновить бан лист"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +419,9 @@ msgstr "Заблокированный пользователь"
 msgid "bans_by"
 msgstr "Заблокирован"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Обновление бан-листа..."
+msgstr "Идёт обновление бан листа..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -425,7 +429,7 @@ msgstr "Никто не заблокирован!"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "Добавить в бан"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -477,7 +481,7 @@ msgstr "(Любой зарегистрированный пользовател�
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "Только моды"
 
 #: Topic
 msgid "channel_topic"
@@ -493,7 +497,7 @@ msgstr "Только по приглашению"
 
 #: Hide this channel from lists
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "Скрыть канал из списков"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
@@ -549,11 +553,11 @@ msgstr "Отправить сообщение..."
 
 #: This message looks like a command but is preceded by spaces.
 msgid "input_not_command"
-msgstr "This message looks like a command but is preceded by spaces."
+msgstr "Это сообщение выглядит как команда, но в начале есть пробелы."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "Отправить в виде текста?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -565,7 +569,7 @@ msgstr "Загрузить предыдущие сообщения"
 
 #: Loading previous messages...
 msgid "messages_loading"
-msgstr "Loading previous messages..."
+msgstr "Загрузка предыдущих сообщений..."
 
 #: Unread Messages
 msgid "unread_messages"
@@ -573,7 +577,7 @@ msgstr "Непрочитанные сообщения"
 
 #: Reply in private
 msgid "reply_in_private"
-msgstr "Reply in private"
+msgstr "Приватно ответить"
 
 #: Server details
 msgid "settings_server_details"
@@ -717,11 +721,11 @@ msgstr "У этого канала нет темы"
 
 #: Topic set by {{who}} on {{when}}
 msgid "topic_setby"
-msgstr "Set by {{who}} on {{when}}"
+msgstr "Создано {{when}}, пользователем {{who}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "Создано {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -739,9 +743,9 @@ msgstr "Никто вас ещё не упомянул..."
 msgid "error_starting"
 msgstr "Произошла ошибка при запуске Kiwi IRC :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Убедитесь, что вы правильно установили Kiwi IRC и конфигурацию можно загрузить"
+msgstr "Убедитесь, что вы правильно установили Kiwi IRC и что все ваши настройки могут быть загружены"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +845,7 @@ msgstr "Это бот"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Предлагает помощь"
+msgstr "Доступно для помощи"
 
 #: Is an operator
 msgid "user_op"
@@ -881,11 +885,11 @@ msgstr "Заблокировать и выгнать с канала"
 
 #: Select a Channel
 msgid "select_channel"
-msgstr "Select a Channel"
+msgstr "Выбрать канал"
 
 #: Invite User
 msgid "invite_user"
-msgstr "Invite User"
+msgstr "Пригласить пользователя"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -913,39 +917,39 @@ msgstr "Произошла непредвиденная ошибка"
 
 #: Unknown domain name or host
 msgid "error_unknown_host"
-msgstr "Unknown domain name or host"
+msgstr "Неизвестное имя домена или хостинга"
 
 #: Forbidden to connect
 msgid "error_forbidden"
-msgstr "Forbidden to connect"
+msgstr "Подключение запрещено"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "Подключение заняло много времени"
 
 #: The server refused the connection
 msgid "error_refused"
-msgstr "The server refused the connection"
+msgstr "Сервер отклоняет соединение"
 
 #: Could not connect securely
 msgid "error_tls"
-msgstr "Could not connect securely"
+msgstr "Не удалось безопасно подключиться"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
-msgstr "The Kiwi IRC server had an error"
+msgstr "На сервере Kiwi IRC произошла ошибка"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "Неизвестная ошибка"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "Неверное имя пользователя или пароль"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "Соединение было прервано"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1141,7 +1145,7 @@ msgstr "Сохраненные сети"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
-msgstr "Kiwi IRC (next gen) - Rizon preview"
+msgstr "Kiwi IRC (следующего поколения) - предварительный просмотр Rizon"
 
 #: Direct websockets. No Kiwi server or webirc involved.
 msgid "rizon_websockets"
@@ -1189,7 +1193,7 @@ msgstr "{{nick}} приглашает {{invited}} присоединиться �
 
 #: You invited {{invited}} to join {{channel}}
 msgid "invited_inviter"
-msgstr "You invited {{invited}} to join {{channel}}"
+msgstr "{{nick}} приглашает {{invited}} Вас в {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"

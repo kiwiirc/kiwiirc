@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Bosnian\n"
 "Language: bs_BA\n"
-"PO-Revision-Date: 2023-10-19 20:36\n"
+"PO-Revision-Date: 2023-12-17 17:03\n"
 
 #: Start
 msgid "start_button"
@@ -191,6 +191,10 @@ msgstr "Kanal"
 msgid "away"
 msgstr "Odsutan"
 
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
+
 #: {{count}} week
 msgid "week"
 msgstr "{{count}} sedmica"
@@ -319,9 +323,9 @@ msgstr "Prikaži pristupio/napustio kao aktivnost"
 msgid "settings_mute_sound"
 msgstr "Utišaj zvučne obavijesti"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Istaknite na riječima (razmaknite)"
+msgstr "Podebljanje na riječima (razmaknuto razmakom)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +407,9 @@ msgstr "Osvježi"
 msgid "settings_advanced_filter"
 msgstr "Filtriraj"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "Osvježi popis banovanih"
+msgstr "Osvježi spisak banovanih"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +419,9 @@ msgstr "Banovani korisnici"
 msgid "bans_by"
 msgstr "Banovan od"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Osvježavamo popis banovanih..."
+msgstr "Spisak banovanih se osvježava..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +743,9 @@ msgstr "Niko vas još nije spomenuo..."
 msgid "error_starting"
 msgstr "Greška prilikom pokretanja Kiwi IRC klijenta :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Provjerite da li ste instalirali Kiwi IRC ispravno i da li se konfiguracija može učitati"
+msgstr "Provjerite da li ste ispravno instalirali Kiwi IRC i konfiguracija će se učitati"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +845,7 @@ msgstr "je bot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "je dostupan za pomoć"
+msgstr "je dostupan/na za pomoć"
 
 #: Is an operator
 msgid "user_op"

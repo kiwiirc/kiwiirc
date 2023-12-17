@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2023-10-19 19:24\n"
+"PO-Revision-Date: 2023-12-17 17:02\n"
 
 #: Start
 msgid "start_button"
@@ -191,6 +191,10 @@ msgstr "غرفة"
 msgid "away"
 msgstr "مبتعد"
 
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
+
 #: {{count}} week
 msgid "week"
 msgstr "{{count}} أسبوع"
@@ -319,9 +323,9 @@ msgstr "تضمين رسائل الانضمام/المغادرة كنشاط"
 msgid "settings_mute_sound"
 msgstr "كتم صوت التنبيهات"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "تمييز الكلمات (مفصولة بفراغات)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,9 +407,9 @@ msgstr "إعادة تعيين"
 msgid "settings_advanced_filter"
 msgstr "تصفية"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
-msgstr "تحديث قائمة الحظر"
+msgstr "Refresh ban list"
 
 #: Banned user
 msgid "bans_user"
@@ -415,9 +419,9 @@ msgstr "شخص ممنوع"
 msgid "bans_by"
 msgstr "منع بواسطه"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "تحديث  قائمة المنع"
+msgstr "Refreshing ban list..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +743,9 @@ msgstr "لم يذكرك أحد بعد..."
 msgid "error_starting"
 msgstr "يوجد خطأ فى البال تل :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "تأكد من تثبيت الكيوي اى ار سى بشكل صحيح و الاعدادات يمكن تحميلها"
+msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -841,7 +845,7 @@ msgstr "هو بوت"
 
 #: Is available for help
 msgid "user_help"
-msgstr "متاح للمساعدة"
+msgstr "Is available for help"
 
 #: Is an operator
 msgid "user_op"

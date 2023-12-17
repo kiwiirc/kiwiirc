@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2023-10-24 09:46\n"
+"PO-Revision-Date: 2023-12-17 17:03\n"
 
 #: Start
 msgid "start_button"
@@ -191,6 +191,10 @@ msgstr "Kanal"
 msgid "away"
 msgstr "I larguar"
 
+#: Toggle Away Status
+msgid "toggle_away"
+msgstr "Toggle Away Status"
+
 #: {{count}} week
 msgid "week"
 msgstr "{{count}} javë"
@@ -319,9 +323,9 @@ msgstr "Mesazhet e ardhjes/largimit përfshiji si veprimtari"
 msgid "settings_mute_sound"
 msgstr "Heshto njoftime zanore"
 
-#: Highlight on words (space seperated)
+#: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Fjalë për t’u theksuar (ndarë me hapësirë)"
+msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -403,7 +407,7 @@ msgstr "Riktheje te parazgjedhja"
 msgid "settings_advanced_filter"
 msgstr "Filtër"
 
-#: Refresh banlist
+#: Refresh ban list
 msgid "bans_refresh"
 msgstr "Rifresko listë dëbimesh"
 
@@ -415,9 +419,9 @@ msgstr "Përdorues i dëbuar"
 msgid "bans_by"
 msgstr "Dëbuar nga"
 
-#: Refreshing banlist...
+#: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Po rifreskohet lista e dëbimeve…"
+msgstr "Po rifreskohet listë dëbimesh…"
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -739,9 +743,9 @@ msgstr "S’ju ka përmendur kush ende…"
 msgid "error_starting"
 msgstr "Pati një gabim në nisjen e Kiwi IRC-së :("
 
-#: Make sure you have installed Kiwi IRC correctly and the configurartion can be loaded
+#: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Sigurohuni se e keni instaluar si duhet Kiwi IRC-në dhe se formësimi juaj mund të ngarkohet"
+msgstr "Sigurohuni se keni të instaluar saktë Kiwi IRC dhe se formësimi për të mund të ngarkohet"
 
 #: Leave {{name}}
 msgid "state_leave"
