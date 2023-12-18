@@ -34,7 +34,7 @@
             </g>
             <circle
                 v-if="awayStatus.show"
-                transform="rotate(45 50 50)"
+                :transform="awayStatus.transform"
                 r="12"
                 cx="50"
                 cy="0"
@@ -58,10 +58,12 @@
 import { computed } from 'vue';
 
 import getState from '@/libs/state';
+import { getAvatarTransform } from './UserAvatarCommon';
 
 </script>
 
 <script setup>
+const state = getState();
 const props = defineProps({
     user: {
         type: Object,
@@ -100,7 +102,7 @@ const getSizeObj = (size) => ({
         const failedAvatar = avatar[size];
         avatar[size] = '';
         if (!avatar.small && !avatar.large) {
-            getState().$emit('user.avatar.failed', {
+            state.$emit('user.avatar.failed', {
                 user: props.user,
                 network: props.network,
                 failed: failedAvatar,
@@ -118,30 +120,33 @@ const shouldShowStatus = () => {
         return false;
     }
 
-    if (!getState().setting('showAwayStatusIndicators')) {
+    if (!state.setting('showAwayStatusIndicators')) {
         return false;
     }
 
     const awayNotifyEnabled = props.network.ircClient.network.cap.isEnabled('away-notify');
-    return getState().setting('buffers.who_loop') || awayNotifyEnabled;
+    return state.setting('buffers.who_loop') || awayNotifyEnabled;
 };
 
 const awayStatus = computed(() => {
     const show = shouldShowStatus();
-    const vbind = {};
 
+    const vbind = {};
     if (show) {
         vbind.mask = 'url(#kiwi-avatar-mask)';
     }
 
+    const transform = getAvatarTransform();
+
     return {
         show,
         vbind,
+        transform,
     };
 });
 
 const avatar = computed(() => {
-    let initialsLength = getState().setting('avatars.initials_length');
+    let initialsLength = state.setting('avatars.initials_length');
     if (!initialsLength || initialsLength < 1) {
         initialsLength = 1;
     }
@@ -153,7 +158,7 @@ const avatar = computed(() => {
     const initials = nick.substring(0, initialsLength).toUpperCase();
     const hasImage = !!(props.user && (props.user.avatar.small || props.user.avatar.large));
 
-    const showBackground = !hasImage || getState().setting('avatars.show_image_background');
+    const showBackground = !hasImage || state.setting('avatars.show_image_background');
     const backgroundStyle = {};
 
     const avatars = {
@@ -201,15 +206,17 @@ const toggleAway = () => {
 <style lang="less">
 @font-face {
     font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
     src: url('../res/fonts/Roboto-Black.woff2') format('woff2'),
          url('../res/fonts/Roboto-Black.woff') format('woff')
          url('../res/fonts/Roboto-Black.ttf') format('truetype');
-    font-weight: 900;
-    font-style: normal;
     font-display: auto;
 }
 
 .kiwi-avatar {
+    font-size: 0;
+    line-height: 0;
     user-select: none;
 }
 
@@ -222,7 +229,7 @@ const toggleAway = () => {
 }
 
 .kiwi-avatar-initials {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: Roboto, Arial, sans-serif;
     font-weight: 900;
 }
 </style>

@@ -91,6 +91,7 @@ export const configTemplates = {
             auto_request_history: 'channels',
         },
         avatars: {
+            away_status_position: 1,
             initials_length: 1,
             show_image_background: true,
         },
