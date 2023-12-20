@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2023-12-17 17:02\n"
+"PO-Revision-Date: 2023-12-20 21:25\n"
 
 #: Start
 msgid "start_button"
@@ -117,15 +117,15 @@ msgstr "خطا الدخول"
 
 #: Login failed. Please try again or contact support
 msgid "login_failed"
-msgstr "Login failed. Please try again or contact support"
+msgstr "فشل تسجيل الدخول. يرجى المحاولة مجددًا أو التواصل مع الدعم"
 
 #: You are now logged in as '{{account}}'
 msgid "logged_in"
-msgstr "You are now logged in as '{{account}}'"
+msgstr "أنت الآن مسجل الدخول بإسم '{{account}}'"
 
 #: You have been logged out
 msgid "logged_out"
-msgstr "You have been logged out"
+msgstr "لقد تم تسجيل خروجك"
 
 #: Search...
 msgid "do_search"
@@ -193,7 +193,7 @@ msgstr "مبتعد"
 
 #: Toggle Away Status
 msgid "toggle_away"
-msgstr "Toggle Away Status"
+msgstr "استقدم حالة ‘في الخارج‘"
 
 #: {{count}} week
 msgid "week"
@@ -325,7 +325,7 @@ msgstr "كتم صوت التنبيهات"
 
 #: Highlight on words (space separated)
 msgid "settings_highlight"
-msgstr "Highlight on words (space separated)"
+msgstr "ميّز الكلمات (مفصولة بفراغات)"
 
 #: Aliases
 msgid "settings_aliases"
@@ -409,7 +409,7 @@ msgstr "تصفية"
 
 #: Refresh ban list
 msgid "bans_refresh"
-msgstr "Refresh ban list"
+msgstr "حدّث قائمة الحظر"
 
 #: Banned user
 msgid "bans_user"
@@ -421,7 +421,7 @@ msgstr "منع بواسطه"
 
 #: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Refreshing ban list..."
+msgstr "تحديث  قائمة الحظر..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
@@ -429,7 +429,7 @@ msgstr "لا يوجد اى شخص ممنوع!"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "إضافة حظر"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -481,7 +481,7 @@ msgstr "(أي مستخدم مسجل)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "المراقبون فقط"
 
 #: Topic
 msgid "channel_topic"
@@ -553,11 +553,11 @@ msgstr "ارسل رسالة..."
 
 #: This message looks like a command but is preceded by spaces.
 msgid "input_not_command"
-msgstr "This message looks like a command but is preceded by spaces."
+msgstr "تبدو هذه الرسالة أمراً لكنها مسبوقة بفراغات."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "ارسال كنص؟"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -569,7 +569,7 @@ msgstr "تحميل الرسائل السابقة"
 
 #: Loading previous messages...
 msgid "messages_loading"
-msgstr "Loading previous messages..."
+msgstr "تحميل الرسائل السابقة..."
 
 #: Unread Messages
 msgid "unread_messages"
@@ -721,11 +721,11 @@ msgstr "لا موضوع لهذه القناة"
 
 #: Topic set by {{who}} on {{when}}
 msgid "topic_setby"
-msgstr "Set by {{who}} on {{when}}"
+msgstr "أعدّه {{who}} في {{when}}"
 
 #: Created on {{when}}
 msgid "created_on"
-msgstr "Created on {{when}}"
+msgstr "أُنشيء في {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
@@ -745,7 +745,7 @@ msgstr "يوجد خطأ فى البال تل :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
-msgstr "Make sure you have installed Kiwi IRC correctly and the configuration can be loaded"
+msgstr "تأكد من تثبيت الكيوي اى ار سى بشكل صحيح و الاعدادات يمكن تحميلها"
 
 #: Leave {{name}}
 msgid "state_leave"
@@ -845,7 +845,7 @@ msgstr "هو بوت"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is available for help"
+msgstr "متاح للمساعدة"
 
 #: Is an operator
 msgid "user_op"
@@ -885,11 +885,11 @@ msgstr "منع وطرد من الغرفة"
 
 #: Select a Channel
 msgid "select_channel"
-msgstr "Select a Channel"
+msgstr "حدد قناة"
 
 #: Invite User
 msgid "invite_user"
-msgstr "Invite User"
+msgstr "دعوة مستخدم"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -917,39 +917,39 @@ msgstr "حصل خطأ غير متوقع"
 
 #: Unknown domain name or host
 msgid "error_unknown_host"
-msgstr "Unknown domain name or host"
+msgstr "اسم نطاق أو مستضيف غير معروف"
 
 #: Forbidden to connect
 msgid "error_forbidden"
-msgstr "Forbidden to connect"
+msgstr "محظور من الاتصال"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "استغرق وقتًا طويلًا للاتصال"
 
 #: The server refused the connection
 msgid "error_refused"
-msgstr "The server refused the connection"
+msgstr "رفض الخادوم الاتصال"
 
 #: Could not connect securely
 msgid "error_tls"
-msgstr "Could not connect securely"
+msgstr "تعذر الاتصال بأمان"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
-msgstr "The Kiwi IRC server had an error"
+msgstr "واجه خادوم أي آر سي خطأً"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "خطأ غير معروف"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "اسم المستخدم أو كلمة المرور غير صحيحة"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "أغلق الاتصال على نحو غير متوقع"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -1193,7 +1193,7 @@ msgstr "{{nick}} دعا {{invited}} للانضمام إلى {{channel}}"
 
 #: You invited {{invited}} to join {{channel}}
 msgid "invited_inviter"
-msgstr "You invited {{invited}} to join {{channel}}"
+msgstr "لقد دعوت {{invited}} للإنضمام إلى {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
