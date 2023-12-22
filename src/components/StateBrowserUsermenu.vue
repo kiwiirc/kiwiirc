@@ -119,8 +119,7 @@ export default {
     position: relative;
     width: 80px;
     height: 80px;
-    margin: 0 auto 0.4em auto;
-    font-size: 2.8em;
+    margin: 0 auto 10px auto;
     transition: background 0.2s;
 }
 
