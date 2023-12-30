@@ -160,7 +160,10 @@ function clientMiddleware(state, network) {
             network.state_error = '';
             network.state = 'connected';
 
-            network.currentUser().away = '';
+            let currentUser = network.currentUser();
+            if (currentUser) {
+                currentUser.away = '';
+            }
         });
 
         client.on('socket close', (err) => {
@@ -171,7 +174,10 @@ function clientMiddleware(state, network) {
                 network.state_error = (typeof err === 'string') ? err : 'err_unknown';
             }
 
-            network.currentUser().away = 'offline';
+            let currentUser = network.currentUser();
+            if (currentUser) {
+                currentUser.away = 'offline';
+            }
 
             network.buffers.forEach((buffer) => {
                 if (!buffer) {
