@@ -112,15 +112,15 @@ const getSizeObj = (size) => ({
 });
 
 const shouldShowStatus = () => {
-    if (props.user && props.network && props.forceShowStatus) {
-        return true;
-    }
-
-    if (!props.network || props.network.state !== 'connected') {
+    if (!props.network || !props.user) {
         return false;
     }
 
-    if (!state.setting('showAwayStatusIndicators')) {
+    if (props.forceShowStatus) {
+        return true;
+    }
+
+    if (props.network.state !== 'connected' || !state.setting('showAwayStatusIndicators')) {
         return false;
     }
 

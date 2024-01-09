@@ -60,7 +60,7 @@ export default {
             return name;
         },
         getUser() {
-            if (this.network && this.network.currentUser()) {
+            if (this.network && this.network.state && this.network.currentUser()) {
                 return this.network.currentUser();
             }
 
