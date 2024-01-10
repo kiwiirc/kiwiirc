@@ -1,55 +1,53 @@
 <template>
-    <div class="kiwi-avatar">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <g
-                v-bind="awayStatus.vbind"
-                clip-path="url(#kiwi-avatar-clip)"
-            >
-                <rect
-                    v-if="avatar.showBackground"
-                    width="100"
-                    height="100"
-                    class="kiwi-avatar-background"
-                    :style="avatar.backgroundStyle"
-                />
-                <image
-                    v-if="avatar.hasImage"
-                    v-bind="{ ...avatar[avatar.sizeKey[size]].vbind }"
-                    width="100"
-                    height="100"
-                    preserveAspectRatio="xMidYMid slice"
-                    loading="lazy"
-                    class="kiwi-avatar-image"
-                    @error="avatar[avatar.sizeKey[size]].setFailed()"
-                />
-                <text
-                    v-else
-                    :font-size="avatar.initials.length === 1 ? '64px' : '44px'"
-                    x="50"
-                    y="50"
-                    dy="0.36em"
-                    text-anchor="middle"
-                    class="kiwi-avatar-initials"
-                >{{ avatar.initials }}</text>
-            </g>
-            <circle
-                v-if="awayStatus.show"
-                :transform="awayStatus.transform"
-                r="12"
-                cx="50"
-                cy="0"
-                class="kiwi-avatar-status"
-                :class="{
-                    'kiwi-avatar-status--toggle': allowToggle,
-                    'kiwi-avatar-status--away': user.isAway(),
-                    'kiwi-avatar-status--offline': user.isOffline(),
-                }"
-                @click.stop="toggleAway"
-            >
-                <title v-if="allowToggle">{{ $t('toggle_away') }}</title>
-            </circle>
-        </svg>
-    </div>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="kiwi-avatar">
+        <g
+            v-bind="awayStatus.vbind"
+            clip-path="url(#kiwi-avatar-clip)"
+        >
+            <rect
+                v-if="avatar.showBackground"
+                width="100"
+                height="100"
+                class="kiwi-avatar-background"
+                :style="avatar.backgroundStyle"
+            />
+            <image
+                v-if="avatar.hasImage"
+                v-bind="{ ...avatar[avatar.sizeKey[size]].vbind }"
+                width="100"
+                height="100"
+                preserveAspectRatio="xMidYMid slice"
+                loading="lazy"
+                class="kiwi-avatar-image"
+                @error="avatar[avatar.sizeKey[size]].setFailed()"
+            />
+            <text
+                v-else
+                :font-size="avatar.initials.length === 1 ? '64px' : '44px'"
+                x="50"
+                y="50"
+                dy="0.36em"
+                text-anchor="middle"
+                class="kiwi-avatar-initials"
+            >{{ avatar.initials }}</text>
+        </g>
+        <circle
+            v-if="awayStatus.show"
+            :transform="awayStatus.transform"
+            r="12"
+            cx="50"
+            cy="0"
+            class="kiwi-avatar-status"
+            :class="{
+                'kiwi-avatar-status--toggle': allowToggle,
+                'kiwi-avatar-status--away': user.isAway(),
+                'kiwi-avatar-status--offline': user.isOffline(),
+            }"
+            @click.stop="toggleAway"
+        >
+            <title v-if="allowToggle">{{ $t('toggle_away') }}</title>
+        </circle>
+    </svg>
 </template>
 
 <script>

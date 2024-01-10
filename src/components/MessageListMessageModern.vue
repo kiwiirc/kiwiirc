@@ -297,6 +297,7 @@ export default {
 .kiwi-messagelist-message--modern .kiwi-avatar {
     height: 40px;
     width: 40px;
+    cursor: pointer;
 }
 
 .kiwi-messagelist-message--modern.kiwi-messagelist-message--authorfirst {
