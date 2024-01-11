@@ -445,6 +445,13 @@ export default {
                 } else {
                     this.$state.$emit('mediaviewer.show', url);
                 }
+                return;
+            }
+
+            let avatarElement = event.target.closest('.kiwi-avatar');
+            if (avatarElement && avatarElement.dataset.nick) {
+                this.openUserBox(avatarElement.dataset.nick);
+                return;
             }
 
             if (this.message_info_open && this.message_info_open !== message) {
@@ -742,7 +749,10 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
     scroll-behavior: smooth;
 }
 
-.kiwi-messagelist * {
+.kiwi-messagelist-nick,
+.kiwi-messagelist-time,
+.kiwi-messagelist-body,
+.kiwi-messagelist-realname {
     user-select: text;
 }
 
