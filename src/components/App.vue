@@ -6,6 +6,7 @@
             'kiwi-wrap--touch': $state.ui.is_touch,
         }"
         :data-activebuffer="buffer ? buffer.name.toLowerCase() : ''"
+        :data-theme="theme"
         class="kiwi-wrap kiwi-theme-bg"
         @click="emitDocumentClick"
         @paste.capture="emitBufferPaste"
@@ -52,8 +53,14 @@
                     :is="fallbackComponent"
                     v-else-if="!activeComponent"
                     v-bind="fallbackComponentProps"
+                    class="kiwi-workspace-component"
                 />
-                <component :is="activeComponent" v-else v-bind="activeComponentProps" />
+                <component
+                    :is="activeComponent"
+                    v-else
+                    v-bind="activeComponentProps"
+                    class="kiwi-workspace-component"
+                />
             </div>
         </template>
         <AvatarCommon />
@@ -75,6 +82,7 @@ import AvatarCommon from '@/components/UserAvatarCommon';
 import { State as SidebarState } from '@/components/Sidebar';
 import * as Notifications from '@/libs/Notifications';
 import * as bufferTools from '@/libs/bufferTools';
+import ThemeManager from '@/libs/ThemeManager';
 import Logger from '@/libs/Logger';
 
 let log = Logger.namespace('App.vue');
@@ -117,6 +125,10 @@ export default {
         },
         buffer() {
             return this.$state.getActiveBuffer();
+        },
+        theme() {
+            let themeMgr = ThemeManager.instance();
+            return themeMgr.currentTheme().name.toLowerCase();
         },
     },
     created() {
@@ -433,11 +445,11 @@ body {
 
 .kiwi-workspace-background {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
+    inset: 0;
+}
+
+.kiwi-workspace-component {
+    position: relative;
 }
 
 .kiwi-statebrowser {
