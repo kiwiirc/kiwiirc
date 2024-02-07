@@ -54,7 +54,7 @@ export default class Message {
         def(this, 'isHighlight', false);
 
         // We don't want the user object to be enumerable
-        Object.defineProperty(this, 'user', { value: user });
+        def(this, 'user', user || null);
 
         Vue.observable(this);
     }
