@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2023-12-17 17:02\n"
+"PO-Revision-Date: 2024-04-07 00:19\n"
 
 #: Start
 msgid "start_button"
@@ -109,7 +109,7 @@ msgstr "ZNC"
 
 #: Logging in...
 msgid "logging_in"
-msgstr "Logging in..."
+msgstr "로그인하고 있다..."
 
 #: Invalid login
 msgid "invalid_login"
@@ -129,7 +129,7 @@ msgstr "You have been logged out"
 
 #: Search...
 msgid "do_search"
-msgstr "Search..."
+msgstr "검색하기..."
 
 #: OK
 msgid "ok"
@@ -169,7 +169,7 @@ msgstr "상태"
 
 #: Is available
 msgid "whois_status_available"
-msgstr "Is available"
+msgstr "가능해"
 
 #: Send a message
 msgid "send_a_message"
@@ -197,27 +197,27 @@ msgstr "Toggle Away Status"
 
 #: {{count}} week
 msgid "week"
-msgstr "{{count}} week"
+msgstr "{{count}} 주"
 
 #: {{count}} weeks
 msgid "week_plural"
-msgstr "{{count}} weeks"
+msgstr "{{count}} 주"
 
 #: {{count}} day
 msgid "day"
-msgstr "{{count}} day"
+msgstr "{{count}} 일"
 
 #: {{count}} days
 msgid "day_plural"
-msgstr "{{count}} days"
+msgstr "{{count}} 일"
 
 #: {{count}} hour
 msgid "hour"
-msgstr "{{count}} hour"
+msgstr "{{count}} 시간"
 
 #: {{count}} hours
 msgid "hour_plural"
-msgstr "{{count}} hours"
+msgstr "{{count}} 시간"
 
 #: {{count}} minute
 msgid "minute"
@@ -225,15 +225,15 @@ msgstr "{{count}}분"
 
 #: {{count}} minutes
 msgid "minute_plural"
-msgstr "{{count}} minutes"
+msgstr "{{count}} 분"
 
 #: {{count}} second
 msgid "second"
-msgstr "{{count}} second"
+msgstr "{{count}} 초"
 
 #: {{count}} seconds
 msgid "second_plural"
-msgstr "{{count}} seconds"
+msgstr "{{count}} 초"
 
 #: General
 msgid "settings_general"
@@ -285,11 +285,11 @@ msgstr "Show timestamps"
 
 #: Use 24-hour timestamps
 msgid "settings_24hour_timestamps"
-msgstr "Use 24-hour timestamps"
+msgstr "24 시간 타임스탬프 사용"
 
 #: Show emoticons
 msgid "settings_emoticons"
-msgstr "Show emoticons"
+msgstr "이모티콘 보여줘"
 
 #: Block new Private messages
 msgid "settings_block_private"
@@ -329,23 +329,23 @@ msgstr "Highlight on words (space separated)"
 
 #: Aliases
 msgid "settings_aliases"
-msgstr "Aliases"
+msgstr "별칭"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "별칭이 뭐해?"
 
 #: Send Message
 msgid "send_message"
-msgstr "Send Message"
+msgstr "메시지 보내기"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Enter Channel Key"
+msgstr "채널 키 입력하기"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "{{channel}} 다시 가입하기"
 
 #: Notify me when
 msgid "settings_notify"
@@ -453,7 +453,7 @@ msgstr "Nobody is invited!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "이것은 공개 채널이에요."
 
 #: Only invited users can join.
 msgid "invite_private_channel"
@@ -581,7 +581,7 @@ msgstr "Reply in private"
 
 #: Server details
 msgid "settings_server_details"
-msgstr "Server details"
+msgstr "서버 세부정보"
 
 #: Port
 msgid "settings_port"
@@ -589,11 +589,11 @@ msgstr "포트 번호"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Other networks on this ZNC account will be listed in the network list"
+msgstr "이 ZNC 계정에 있는 다른 네트워크들이 네트워크 목록에 나열됩니다"
 
 #: Your details
 msgid "settings_your_details"
-msgstr "Your details"
+msgstr "너의 세부 사항"
 
 #: Nickname
 msgid "settings_nickname"
