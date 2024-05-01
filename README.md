@@ -1,8 +1,5 @@
 # Kiwi IRC
 
-***A versatile web based messenger using IRC***
-
-
 - 100% static files. Host with your favourite web server or a CDN
 - For single networks, bouncer hosts, or a personal generic IRC client that remembers your networks
 - Works out of the box with a default IRC network - or use your own
