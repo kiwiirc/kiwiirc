@@ -78,13 +78,6 @@
     border-color: var(--brand-primary);
 }
 
-.u-form label input[type='text'],
-.u-form label input[type='password'],
-.u-form label input[type='email'],
-.u-form textarea {
-    border-color: var(--brand-primary);
-}
-
 ::-webkit-input-placeholder,
 ::-moz-placeholder,
 ::-ms-placeholder,

@@ -391,6 +391,9 @@ export default {
     text-align: center;
     cursor: pointer;
     font-size: 1em;
+    top: 6px;
+    margin-left: 4px;
+    position: relative;
 }
 
 .kiwi-networksettings .kiwi-customserver-tls i {
@@ -496,6 +499,10 @@ export default {
 .kiwi-networksettings-connection-port {
     width: 25%;
     float: right;
+}
+
+.kiwi-networksettings-connection-port input {
+    width: 0;
 }
 
 .kiwi-networksettings-danger h3 {

@@ -429,6 +429,15 @@ export default {
     }
 }
 
+.kiwi-appsettings .u-form label {
+    display: block;
+}
+
+.kiwi-appsettings .u-form label span {
+    text-align: left;
+    margin-left: 0;
+}
+
 .u-form label.kiwi-appsettings-setting-language.kiwi-appsettings-setting-language {
     display: flex;
     margin-bottom: 2em;
@@ -474,7 +483,8 @@ export default {
 }
 
 .kiwi-appsettings-full span,
-.kiwi-appsettings-full input {
+.kiwi-appsettings-full input.u-input,
+.kiwi-appsettings-operator-tools input.u-input {
     width: 100%;
 }
 
@@ -489,15 +499,6 @@ export default {
 
 .kiwi-appsettings-tab-container {
     width: 100%;
-}
-
-.kiwi-appsettings .u-form label {
-    display: block;
-}
-
-.kiwi-appsettings .u-form label span {
-    text-align: left;
-    margin-left: 0;
 }
 
 .kiwi-appsettings-theme-reload {

@@ -162,6 +162,10 @@ export default {
     min-width: 350px;
 }
 
+.kiwi-settings-advanced-table td:nth-child(3) input.u-input {
+    width: 100%;
+}
+
 .kiwi-settings-advanced tr.kiwi-advanced-setting--modified {
     font-weight: 900;
 }
@@ -178,6 +182,11 @@ export default {
 .kiwi-settings-advanced-filter-container {
     position: relative;
     display: inline-block;
+    min-width: min(20%, 250px);
+}
+
+.kiwi-settings-advanced-filter-container input {
+    width: 100%;
 }
 
 .kiwi-settings-advanced-filter-container input::-ms-clear {
@@ -224,7 +233,7 @@ export default {
 }
 
 @media screen and (max-width: 600px) {
-    .kiwi-settings-advanced .u-form {
+    .kiwi-appsettings .kiwi-settings-advanced .u-form {
         overflow-x: scroll;
     }
 }
