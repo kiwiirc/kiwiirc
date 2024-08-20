@@ -160,7 +160,7 @@
                         type="button"
                         class="u-button u-button-secondary
                                kiwi-userbox-opaction-kick kiwi-userbox-opaction"
-                        @click="kickUser"
+                        @click="buffer.kickUser(user)"
                     >
                         <i class="fa fa-sign-out" aria-hidden="true" />
                         {{ $t('user_kick') }}
@@ -171,7 +171,7 @@
                         type="button"
                         class="u-button u-button-secondary
                                kiwi-userbox-opaction-ban kiwi-userbox-opaction"
-                        @click="banUser"
+                        @click="buffer.banUser(user)"
                     >
                         <i class="fa fa-ban" aria-hidden="true" />
                         {{ $t('user_ban') }}
@@ -182,7 +182,7 @@
                         type="button"
                         class="u-button u-button-secondary
                                kiwi-userbox-opaction-kickban kiwi-userbox-opaction"
-                        @click="kickbanUser"
+                        @click="buffer.banKickUser(user)"
                     >
                         <i class="fa fa-exclamation-triangle" aria-hidden="true" />
                         {{ $t('user_kickban') }}
@@ -212,9 +212,7 @@
 <script>
 'kiwi public';
 
-import * as ipRegex from 'ip-regex';
 import * as TextFormatting from '@/helpers/TextFormatting';
-import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import * as Misc from '@/helpers/Misc';
 import GlobalApi from '@/libs/GlobalApi';
 import toHtml from '@/libs/renderers/Html';
@@ -383,70 +381,6 @@ export default {
             this.network.ircClient.whois(this.user.nick, () => {
                 this.whoisLoading = false;
             });
-        },
-        kickUser() {
-            let reason = this.$state.setting('buffers.default_kick_reason');
-            this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
-        },
-        createBanMask() {
-            // try to ban via user account first
-            if (this.user.account) {
-                // if EXTBAN is supported use that
-                let extban = IrcdDiffs.extbanAccount(this.network);
-                if (extban) {
-                    return extban + ':' + this.user.account;
-                }
-
-                // if the account name is in the host ban the host
-                // Eg. user@network/user/accountname
-                if (this.user.host.toLowerCase().indexOf(this.user.account.toLowerCase()) > -1) {
-                    return '*!*@' + this.user.host;
-                }
-            }
-
-            // if an ip address is in the host and not the whole host ban the ip
-            // Eg. user@gateway/1.2.3.4
-            let ipTest = new RegExp('(' + ipRegex.v4().source + '|' + ipRegex.v6().source + ')');
-            if (ipTest.test(this.user.host)) {
-                let match = this.user.host.match(ipTest)[0];
-                if (match !== this.user.host) {
-                    return '*!*@*' + match + '*';
-                }
-            }
-
-            // if an 8 char hex is the username ban by username. Commonly used in gateways
-            // Eg. 59d4c432@a.clients.kiwiirc.com
-            let hexTest = /^([a-f0-9]{8})$/i;
-            if (hexTest.test(this.user.username)) {
-                let match = this.user.username.match(hexTest)[0];
-                return '*!' + match + '@*';
-            }
-
-            // fallback to default_ban_mask from config
-            let mask = this.$state.setting('buffers.default_ban_mask');
-            mask = mask.replace('%n', this.user.nick);
-            mask = mask.replace('%i', this.user.username);
-            mask = mask.replace('%h', this.user.host);
-
-            return mask;
-        },
-        banUser() {
-            if (!this.user.username || !this.user.host) {
-                return;
-            }
-
-            let banMask = this.createBanMask();
-            this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
-        },
-        kickbanUser() {
-            if (!this.user.username || !this.user.host) {
-                return;
-            }
-
-            let banMask = this.createBanMask();
-            let reason = this.$state.setting('buffers.default_kick_reason');
-            this.network.ircClient.raw('MODE', this.buffer.name, '+b', banMask);
-            this.network.ircClient.raw('KICK', this.buffer.name, this.user.nick, reason);
         },
         inviteUser() {
             if (!this.inviteChan) {

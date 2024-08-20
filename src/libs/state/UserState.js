@@ -2,14 +2,17 @@
 
 import Vue from 'vue';
 import getState from '@/libs/state';
+import * as ipRegex from 'ip-regex';
+import * as IrcdDiffs from '@/helpers/IrcdDiffs';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import { def } from './common';
 
 let nextId = 0;
 
 export default class UserState {
-    constructor(user) {
+    constructor(networkid, user, state) {
         this.id = ++nextId;
+        this.networkid = networkid;
         this.key = user.nick.toUpperCase();
         this.nick = user.nick;
         this.host = user.host || '';
@@ -28,6 +31,8 @@ export default class UserState {
         this.avatarCache = null;
 
         Vue.observable(this);
+
+        def(this, 'state', state, false);
 
         // Whois details are non-enumerable properties (vues $watch won't cover these properties)
         // watch hasWhois to know when this data is populated
@@ -79,12 +84,59 @@ export default class UserState {
         return this.colour === 'default' ? '' : this.colour;
     }
 
+    getNetwork() {
+        return this.state.getNetwork(this.networkid);
+    }
+
     isAway() {
         return this.away && this.away !== 'offline';
     }
 
     isOffline() {
         return this.away === 'offline';
+    }
+
+    createBanMask() {
+        // try to ban via user account first
+        if (this.account) {
+            // if EXTBAN is supported use that
+            let extban = IrcdDiffs.extbanAccount(this.getNetwork());
+            if (extban) {
+                return extban + ':' + this.account;
+            }
+
+            // if the account name is in the host ban the host
+            // Eg. user@network/user/accountname
+            if (this.host.toLowerCase().indexOf(this.account.toLowerCase()) > -1) {
+                return '*!*@' + this.host;
+            }
+        }
+
+        // if an ip address is in the host and not the whole host ban the ip
+        // Eg. user@gateway/1.2.3.4
+        let ipTest = new RegExp('(' + ipRegex.v4().source + '|' + ipRegex.v6().source + ')');
+        if (ipTest.test(this.host)) {
+            let match = this.host.match(ipTest)[0];
+            if (match !== this.host) {
+                return '*!*@*' + match + '*';
+            }
+        }
+
+        // if an 8 char hex is the username ban by username. Commonly used in gateways
+        // Eg. 59d4c432@a.clients.kiwiirc.com
+        let hexTest = /^([a-f0-9]{8})$/i;
+        if (hexTest.test(this.username)) {
+            let match = this.username.match(hexTest)[0];
+            return '*!' + match + '@*';
+        }
+
+        // fallback to default_ban_mask from config
+        let mask = this.state.setting('buffers.default_ban_mask');
+        mask = mask.replace('%n', this.nick);
+        mask = mask.replace('%i', this.username);
+        mask = mask.replace('%h', this.host);
+
+        return mask;
     }
 
     typingStatus(_target, status) {
