@@ -1037,8 +1037,7 @@ div.kiwi-messagelist-item.kiwi-messagelist-item--selected .kiwi-messagelist-mess
 }
 
 @media screen and (max-width: 700px) {
-    .kiwi-messagelist-message,
-    .kiwi-messageinfo {
+    .kiwi-messagelist-message {
         margin: 0;
     }
 }

@@ -17,14 +17,14 @@
             class="kiwi-messageinfo-actions"
         >
             <a
-                v-if="!requestingInput && buffer.name !== message.nick && !isSelf()"
+                v-if="!requestingInput && message.nick && buffer.name !== message.nick && !isSelf()"
                 class="u-link kiwi-messageinfo-reply"
                 @click="openQuery"
             >
                 {{ $t('reply_in_private') }}
             </a>
 
-            <div v-if="areWeAnOp() && !isSelf()" class="kiwi-messageinfo-opbuttons">
+            <div v-if="message.user && areWeAnOp() && !isSelf()" class="kiwi-messageinfo-opbuttons">
                 <input-prompt
                     label="Kick reason:" @submit="onKick"
                     @cancel="requestingInput = false"
@@ -77,17 +77,13 @@ export default {
         },
         isSelf() {
             let user = this.$state.getUser(this.buffer.getNetwork().id, this.message.nick);
-            return this.buffer.getNetwork().ircClient.user.nick === user.nick;
+            return user && this.buffer.getNetwork().ircClient.user.nick === user.nick;
         },
         onBan(reason) {
-            let network = this.buffer.getNetwork();
-            network.ircClient.mode(this.buffer.name, '+b', this.message.nick);
+            this.buffer.banKickUser(this.message.user, reason);
         },
-        onKick(promptedReason) {
-            let network = this.buffer.getNetwork();
-            let defaultReason = this.$state.setting('buffers.default_kick_reason');
-            let reason = promptedReason || defaultReason;
-            network.ircClient.raw('KICK', this.buffer.name, this.message.nick, reason);
+        onKick(reason) {
+            this.buffer.kickUser(this.message.user, reason);
         },
         openQuery() {
             let network = this.buffer.getNetwork();
@@ -103,6 +99,7 @@ export default {
     display: block;
     position: relative;
     padding: 0;
+    margin-bottom: 10px;
 }
 
 .kiwi-messageinfo-urls {
@@ -173,10 +170,6 @@ export default {
     border-radius: 4px;
 }
 
-.kiwi-messageinfo-opbuttons .u-input-prompt input {
-    margin-bottom: 5px;
-}
-
 @media screen and (max-width: 490px) {
     .kiwi-messageinfo-actions {
         text-align: center;
@@ -184,10 +177,6 @@ export default {
 
     .kiwi-messageinfo-opbuttons {
         margin: 0;
-    }
-
-    .kiwi-messageinfo-opbuttons .u-input-prompt a {
-        margin-top: 10px;
     }
 }
 </style>

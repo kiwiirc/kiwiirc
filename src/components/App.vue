@@ -7,6 +7,7 @@
         }"
         :data-theme="currentThemeName"
         :data-activebuffer="buffer ? buffer.name.toLowerCase() : ''"
+        :data-theme="currentThemeName"
         class="kiwi-wrap kiwi-theme-bg"
         @click="emitDocumentClick"
         @paste.capture="emitBufferPaste"
