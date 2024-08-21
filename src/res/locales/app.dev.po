@@ -188,6 +188,18 @@ msgstr "Away"
 msgid "toggle_away"
 msgstr "Toggle Away Status"
 
+#: Kick
+msgid "kick"
+msgstr "Kick"
+
+#: Ban
+msgid "ban"
+msgstr "Ban"
+
+#: Preview
+msgid "preview"
+msgstr "Preview"
+
 
 
 #: Durations
@@ -622,6 +634,10 @@ msgstr "Unread Messages"
 #: Reply in private
 msgid "reply_in_private"
 msgstr "Reply in private"
+
+#: Kick reason
+msgid "kick_reason"
+msgstr "Kick reason"
 
 
 

@@ -223,6 +223,19 @@
     background: #3c3c3c;
 }
 
+.kiwi-messageinfo-actions .u-link {
+    background-color: rgba(117, 117, 117, 0.2);
+    color: var(--brand-default-fg);
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-kick-user {
+    background: var(--brand-warning);
+}
+
+.kiwi-messageinfo-actions .kiwi-messageinfo-ban-user {
+    background: var(--brand-error);
+}
+
 /* Aliases */
 .kiwi-settings-aliases-help {
     border-color: var(--brand-default-fg);
