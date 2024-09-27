@@ -6,7 +6,7 @@
     --brand-primary-hover: #2d2d2d;
     --brand-midtone: #1b1b1b;
     --brand-darktone: #000;
-    --brand-default-bg: #1b1b1b;
+    --brand-default-bg: #000;
     --brand-default-fg: #f1f1f1;
 
     /* Warning colors */
@@ -207,9 +207,6 @@
 }
 
 /* Message list */
-.kiwi-messagelist {
-    background: #000;
-}
 .kiwi-messagelist .kiwi-messagelist-body {
     color: #adadad;
 }

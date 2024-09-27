@@ -67,8 +67,9 @@
     background: var(--comp-statebrowser-bg);
 }
 
-.kiwi-statebrowser-newnetwork {
+.kiwi-statebrowser-newnetwork a {
     opacity: 0.75;
+    color: var(--brand-primary);
 }
 
 .kiwi-statebrowser-newnetwork a:hover {
@@ -112,9 +113,7 @@
     background-color: #26323a;
 }
 
-
 .kiwi-messagelist {
-    background: #3b4850;
     color: var(--brand-primary);
 }
 
