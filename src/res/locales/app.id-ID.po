@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
-"PO-Revision-Date: 2023-12-17 17:03\n"
+"PO-Revision-Date: 2024-10-29 01:07\n"
 
 #: Start
 msgid "start_button"
@@ -45,7 +45,7 @@ msgstr "Pengaturan"
 
 #: Kiwi Settings
 msgid "kiwi_settings"
-msgstr "Kiwi Settings"
+msgstr "Pengaturan Kiwi"
 
 #: Channels
 msgid "channels"
@@ -53,7 +53,7 @@ msgstr "Kanal"
 
 #: Access
 msgid "access"
-msgstr "Access"
+msgstr "Akses"
 
 #: Banned Users
 msgid "banned"
@@ -61,7 +61,7 @@ msgstr "Pemain yang Dilarang"
 
 #: Invited Users
 msgid "invited"
-msgstr "Invited Users"
+msgstr "P'guna terundang"
 
 #: Notifications
 msgid "notifications"
@@ -77,7 +77,7 @@ msgstr "Kata sandi"
 
 #: Server Password
 msgid "server_password"
-msgstr "Server Password"
+msgstr "Kata Sandi Server"
 
 #: I have a password
 msgid "password_have"
@@ -97,7 +97,7 @@ msgstr "Kanal"
 
 #: Messages
 msgid "messages"
-msgstr "Messages"
+msgstr "Pesan"
 
 #: Network
 msgid "network"
@@ -141,11 +141,11 @@ msgstr "Batal"
 
 #: Yes
 msgid "yes"
-msgstr "Yes"
+msgstr "Iya"
 
 #: No
 msgid "no"
-msgstr "No"
+msgstr "Tidak"
 
 #: Not found.
 msgid "not_found"
