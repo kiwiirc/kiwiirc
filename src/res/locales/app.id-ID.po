@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
-"PO-Revision-Date: 2024-10-29 02:06\n"
+"PO-Revision-Date: 2024-10-29 03:51\n"
 
 #: Start
 msgid "start_button"
@@ -57,11 +57,11 @@ msgstr "Akses"
 
 #: Banned Users
 msgid "banned"
-msgstr "Pemain yang Dilarang"
+msgstr "P'guna Tercekal"
 
 #: Invited Users
 msgid "invited"
-msgstr "P'guna terundang"
+msgstr "P'guna Terundang"
 
 #: Notifications
 msgid "notifications"
@@ -309,11 +309,11 @@ msgstr "Warnai nama panggilan dalam pesan"
 
 #: Share when I'm typing a message
 msgid "settings_share_typing"
-msgstr "Share when I'm typing a message"
+msgstr "Bagikan saat saya mengetik pesan"
 
 #: Show inline image previews
 msgid "settings_show_inline_previews"
-msgstr "Show inline image previews"
+msgstr "Tampilkan pratayang sebaris"
 
 #: Include join/part messages as activity
 msgid "settings_show_joinpart"
@@ -333,7 +333,7 @@ msgstr "Alias"
 
 #: What are Aliases
 msgid "what_are_aliases"
-msgstr "What are aliases?"
+msgstr "Apa itu alias?"
 
 #: Send Message
 msgid "send_message"
@@ -341,11 +341,11 @@ msgstr "Kirim Pesan"
 
 #: Enter Channel Key
 msgid "bufferkey_input"
-msgstr "Enter Channel Key"
+msgstr "Ketik Kunci Saluran"
 
 #: Rejoin {{channel}}
 msgid "bufferkey_rejoin"
-msgstr "Rejoin {{channel}}"
+msgstr "Gabung ulang {{channel}}"
 
 #: Notify me when
 msgid "settings_notify"
@@ -369,7 +369,7 @@ msgstr "Suara senyap"
 
 #: Hide unread message count
 msgid "settings_show_message_counts"
-msgstr "Hide unread message count"
+msgstr "S'bunyikan jumlah pesan tak terbaca"
 
 #: Operator tools
 msgid "operator_tools"
@@ -377,7 +377,7 @@ msgstr "Alat Operator"
 
 #: Default ban mask
 msgid "settings_default_ban_mask"
-msgstr "Dilarang topeng secara bawaan"
+msgstr "Mask cekal bawaan"
 
 #: Default kick reason
 msgid "settings_default_kick_reason"
@@ -385,7 +385,7 @@ msgstr "Alasan menendang secara standar"
 
 #: Advanced Settings
 msgid "settings_advanced_title"
-msgstr "Advanced Settings"
+msgstr "Pengaturan Lanjutan"
 
 #: Monsters be here, only click this button if you know what you are doing
 msgid "settings_advanced_warning"
@@ -393,7 +393,7 @@ msgstr "Monsters be here, only click this button if you know what you are doing"
 
 #: Enable Advanced Settings
 msgid "settings_advanced_button"
-msgstr "Enable Advanced Settings"
+msgstr "Aktifkan Pengaturan Lanjutan"
 
 #: Danger Zone: Changing some of these settings may break things!
 msgid "settings_advanced_header"
@@ -401,87 +401,87 @@ msgstr "Danger Zone: Changing some of these settings may break things!"
 
 #: Reset
 msgid "settings_advanced_reset"
-msgstr "Reset"
+msgstr "Atur ulang"
 
 #: Filter
 msgid "settings_advanced_filter"
-msgstr "Filter"
+msgstr "Saring"
 
 #: Refresh ban list
 msgid "bans_refresh"
-msgstr "Refresh ban list"
+msgstr "Segarkan daftar cekal"
 
 #: Banned user
 msgid "bans_user"
-msgstr "Pengguna dilarang"
+msgstr "P'guna tercekal"
 
 #: Banned by
 msgid "bans_by"
-msgstr "Dilarang oleh"
+msgstr "Dicekal oleh"
 
 #: Refreshing ban list...
 msgid "bans_refreshing"
-msgstr "Refreshing ban list..."
+msgstr "Menyegarkan daftar cekal..."
 
 #: Nobody is banned!
 msgid "bans_nobody"
-msgstr "Tidak ada yang dilarang!"
+msgstr "Tak ada yang dicekal!"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Add ban"
+msgstr "Tambah cekal"
 
 #: Refresh invite list
 msgid "invites_refresh"
-msgstr "Refresh invite list"
+msgstr "Segarkan daftar undang"
 
 #: Invited user
 msgid "invites_user"
-msgstr "Invited user"
+msgstr "P'guna terundang"
 
 #: Invited by
 msgid "invites_by"
-msgstr "Invited by"
+msgstr "Diundang oleh"
 
 #: Refreshing invite list...
 msgid "invites_refreshing"
-msgstr "Refreshing invite list..."
+msgstr "Menyegarkan daftar undang..."
 
 #: Nobody is invited!
 msgid "invites_nobody"
-msgstr "Nobody is invited!"
+msgstr "Tak ada yang diundang!"
 
 #: This is a public channel.
 msgid "invite_public_channel"
-msgstr "This is a public channel."
+msgstr "Ini saluran publik"
 
 #: Only invited users can join.
 msgid "invite_private_channel"
-msgstr "Only invited users can join."
+msgstr "Hanya p'guna terundang yang bisa gabung"
 
 #: Only allow invited users
 msgid "invite_set_private"
-msgstr "Only allow invited users"
+msgstr "Hanya boleh p'guna terundang"
 
 #: Allow anybody to join
 msgid "invite_set_public"
-msgstr "Allow anybody to join"
+msgstr "Siapa saja boleh gabung"
 
 #: Only registered users can join
 msgid "invite_registered_only"
-msgstr "Only registered users can join"
+msgstr "Hanya p'guna terdaftar yang bisa gabung"
 
 #: Add invite
 msgid "invite_add_invite"
-msgstr "Add invite"
+msgstr "Undang baru"
 
 #: (Any registered user)
 msgid "invite_any_registered"
-msgstr "(Any registered user)"
+msgstr "(Semua p'guna terdaftar)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "Khusus Moderator"
 
 #: Topic
 msgid "channel_topic"
@@ -497,11 +497,11 @@ msgstr "Hanya undangan"
 
 #: Hide this channel from lists
 msgid "channel_secret"
-msgstr "Hide this channel from lists"
+msgstr "S'bunyikan saluran ini dari daftar"
 
 #: Only moderators can change the topic
 msgid "channel_moderated_topic"
-msgstr "Hanya moderator yang dapat mengganti topik"
+msgstr "Hanya moderator yang bisa mengubah topik"
 
 #: Block messages from outside this channel
 msgid "channel_external"
@@ -513,7 +513,7 @@ msgstr "Click the refresh button to update the channel list"
 
 #: No channels found, try again later
 msgid "channel_list_nonefound"
-msgstr "No channels found, try again later"
+msgstr "Tidak ketemu saluran, coba lagi nanti"
 
 #: Welcome to Kiwi IRC! Select a channel on the left.
 msgid "container_welcome"
@@ -521,19 +521,19 @@ msgstr "Selamat datang di Kiwi IRC! Silakan memilih saluran pada bagian kiri."
 
 #: Show statebrowser
 msgid "container_statebrowser"
-msgstr "Tampilkan status peramban"
+msgstr "Tampilkan statebrowser"
 
 #: Hide Topic
 msgid "hide_topic"
-msgstr "Hide Topic"
+msgstr "S'bunyikan Topik"
 
 #: Display Topic
 msgid "display_topic"
-msgstr "Display Topic"
+msgstr "Tampilkan Topik"
 
 #: Channel Settings
 msgid "channel_settings"
-msgstr "Channel Settings"
+msgstr "PengaturanSaluran"
 
 #: Join Channel
 msgid "container_join"
@@ -557,7 +557,7 @@ msgstr "This message looks like a command but is preceded by spaces."
 
 #: Send as text?
 msgid "input_send_text"
-msgstr "Send as text?"
+msgstr "Kirim bentuk teks?"
 
 #: Loading {{url}}...
 msgid "media_loading"
@@ -569,7 +569,7 @@ msgstr "Muat pesan sebelumnya"
 
 #: Loading previous messages...
 msgid "messages_loading"
-msgstr "Loading previous messages..."
+msgstr "Memuat pesan sebelumnya..."
 
 #: Unread Messages
 msgid "unread_messages"
@@ -577,7 +577,7 @@ msgstr "Pesan Belum Terbaca"
 
 #: Reply in private
 msgid "reply_in_private"
-msgstr "Reply in private"
+msgstr "Balas di japri"
 
 #: Server details
 msgid "settings_server_details"
@@ -589,7 +589,7 @@ msgstr "Porta"
 
 #: Other networks on this ZNC account will be listed in the network list
 msgid "settings_znc_other"
-msgstr "Jaringan lain pada akun ZNC ini akan tercantum dalam daftar jaringan"
+msgstr "Jejaring lain pada akun ZNC ini akan tercantum dalam daftar jejaring"
 
 #: Your details
 msgid "settings_your_details"
@@ -613,7 +613,7 @@ msgstr "Tampilkan Pesan Mentah"
 
 #: Direct websocket
 msgid "settings_use_websocket"
-msgstr "Direct websocket"
+msgstr "Websocket langsung"
 
 #: Run commands when connected
 msgid "settings_autorun"
@@ -625,7 +625,7 @@ msgstr "Zona Bahaya"
 
 #: Remove network
 msgid "settings_remove"
-msgstr "Singkirkan jaringan"
+msgstr "Hapus jejaring"
 
 #: {{count}} person here
 msgid "person"
@@ -637,7 +637,7 @@ msgstr "{{count}} orang di sini"
 
 #: Filter users in channel
 msgid "filter_users"
-msgstr "Filter users in channel"
+msgstr "Saring p'guna di saluran"
 
 #: Reconnect to join {{channel}}
 msgid "reconnect_channel"
@@ -653,7 +653,7 @@ msgstr "Sambungkan lagi untuk melanjutkan pembicaraan dengan {{user}}"
 
 #: You are not currently connected!
 msgid "not_connected"
-msgstr "You are not currently connected!"
+msgstr "Anda saat ini belum tersambung!"
 
 #: Connection settings
 msgid "reconnect_settings"
@@ -661,15 +661,15 @@ msgstr "Pengaturan koneksi"
 
 #: We couldn't connect to that server :(
 msgid "network_noconnect"
-msgstr "We couldn't connect to that server :("
+msgstr "Tidak bisa menyambung ke servernya :("
 
 #: Connect To Network
 msgid "network_connect"
-msgstr "Connect To Network"
+msgstr "Sambung Ke Jejaring"
 
 #: Network Name
 msgid "network_name"
-msgstr "Network Name"
+msgstr "Nama Jejaring"
 
 #: Close options
 msgid "side_close"
@@ -713,11 +713,11 @@ msgstr "Tanpa diatur penyangga"
 
 #: About
 msgid "about"
-msgstr "About"
+msgstr "Tentang"
 
 #: There is no topic for this channel
 msgid "no_topic_set"
-msgstr "There is no topic for this channel"
+msgstr "Tidak ada topik untuk saluran ini"
 
 #: Topic set by {{who}} on {{when}}
 msgid "topic_setby"
@@ -729,19 +729,19 @@ msgstr "Created on {{when}}"
 
 #: Created at {{when}}
 msgid "created_at"
-msgstr "Created at {{when}}"
+msgstr "Dibuat pada {{when}}"
 
 #: Highlights
 msgid "highlights"
-msgstr "Highlights"
+msgstr "Sorotan"
 
 #: Nobody has mentioned you yet...
 msgid "nobody_mentioned_you"
-msgstr "Nobody has mentioned you yet..."
+msgstr "Belum ada yang menyebut Anda..."
 
 #: There was an error starting Kiwi IRC :(
 msgid "error_starting"
-msgstr "Terjadi eror saat memulai Kiwi IRC :("
+msgstr "Terjadi galat saat memulai Kiwi IRC :("
 
 #: Make sure you have installed Kiwi IRC correctly and the configuration can be loaded
 msgid "error_installed"
@@ -757,7 +757,7 @@ msgstr "Akun Anda"
 
 #: Your settings and networks will be remembered on this computer.
 msgid "state_remembered"
-msgstr "Pengaturan dan jaringan Anda akan tersimpan dalam komputer ini."
+msgstr "Pengaturan dan jejaring Anda akan tersimpan di komputer ini."
 
 #: Forget me
 msgid "state_forget"
@@ -765,7 +765,7 @@ msgstr "Lupakan saya"
 
 #: No networks here yet.
 msgid "state_network"
-msgstr "Tidak ada jaringan di sini"
+msgstr "Tak ada jejaring di sini."
 
 #: Add one?
 msgid "state_add"
@@ -773,23 +773,23 @@ msgstr "Tambahkan?"
 
 #: Available networks
 msgid "state_available"
-msgstr "Jaringan yang tersedia"
+msgstr "Jejaring yang ada"
 
 #: Add Network
 msgid "add_network"
-msgstr "Add Network"
+msgstr "Tambah Jejaring"
 
 #: New Network
 msgid "new_network"
-msgstr "New Network"
+msgstr "Jejaring Baru"
 
 #: No Network
 msgid "no_network"
-msgstr "No Network"
+msgstr "Tak Ada Jejaring"
 
 #: Configure network
 msgid "state_configure"
-msgstr "Konfigurasi jaringan"
+msgstr "Setel jejaring"
 
 #: Not connected.
 msgid "state_disconnected"
@@ -801,23 +801,23 @@ msgstr "Bergabung ke #saluran baru"
 
 #: Filter Channels
 msgid "filter_channels"
-msgstr "Filter channels"
+msgstr "Saring saluran"
 
 #: Find More Channels
 msgid "find_more_channels"
-msgstr "Find More Channels"
+msgstr "Cari Saluran Lain"
 
 #: Really leave the channel?
 msgid "prompt_leave_channel"
-msgstr "Really leave the channel?"
+msgstr "Yakin ingin tinggalkan saluran?"
 
 #: Really close all messages?
 msgid "prompt_close_queries"
-msgstr "Really close all messages?"
+msgstr "Yakin ingin tutup semua pesan?"
 
 #: Really close this chat?
 msgid "prompt_close_query"
-msgstr "Really close this chat?"
+msgstr "Yakin ingin tutup obrolan ini?"
 
 #: Change nick
 msgid "change_nick"
@@ -825,11 +825,11 @@ msgstr "Ubah nama panggilan"
 
 #: Enter new nickname...
 msgid "enter_new_nick"
-msgstr "Enter new nickname..."
+msgstr "Ketik nama panggilan baru..."
 
 #: This is you!
 msgid "user_you"
-msgstr "This is you!"
+msgstr "Ini Anda!"
 
 #: Account name: {{user}}
 msgid "user_account"
@@ -845,7 +845,7 @@ msgstr "Adalah robot"
 
 #: Is available for help
 msgid "user_help"
-msgstr "Is available for help"
+msgstr "Tersedia membantu"
 
 #: Is an operator
 msgid "user_op"
@@ -869,7 +869,7 @@ msgstr "Level akses"
 
 #: Normal
 msgid "user_normal"
-msgstr "Normal"
+msgstr "Biasa"
 
 #: Kick from the channel
 msgid "user_kick"
@@ -877,11 +877,11 @@ msgstr "Tendang dari saluran"
 
 #: Ban from the channel
 msgid "user_ban"
-msgstr "Dilarang dari saluran"
+msgstr "Cekal dari saluran ini"
 
 #: Ban and kick from the channel
 msgid "user_kickban"
-msgstr "Larang dan tendang dari saluran"
+msgstr "Cekal dan tendang dari saluran ini"
 
 #: Select a Channel
 msgid "select_channel"
@@ -889,7 +889,7 @@ msgstr "Select a Channel"
 
 #: Invite User
 msgid "invite_user"
-msgstr "Invite User"
+msgstr "Undang Pengguna"
 
 #: Please specify a channel to join. eg /join #example
 msgid "error_no_channel_join"
@@ -897,11 +897,11 @@ msgstr "Please specify a channel to join. eg /join #example"
 
 #: The nickname '{{nick}}' is already in use!
 msgid "error_nick_in_use"
-msgstr "The nickname '{{nick}}' is already in use!"
+msgstr "Nama panggilan '{{nick}}' sudah digunakan!"
 
 #: The nickname '{{nick}}' is invalid!
 msgid "error_nick_invalid"
-msgstr "The nickname '{{nick}}' is invalid!"
+msgstr "Nama panggilan '{{nick}}' tidak absah!"
 
 #: You must enter a new nickname
 msgid "error_empty_nick"
@@ -913,7 +913,7 @@ msgstr "Nickname must not start with a number"
 
 #: Unexpected error occurred
 msgid "error_unexpected"
-msgstr "Unexpected error occurred"
+msgstr "Terjadi galat tak terduga"
 
 #: Unknown domain name or host
 msgid "error_unknown_host"
@@ -925,31 +925,31 @@ msgstr "Forbidden to connect"
 
 #: Took too long to connect
 msgid "error_timeout"
-msgstr "Took too long to connect"
+msgstr "Terlalu lama menyambung"
 
 #: The server refused the connection
 msgid "error_refused"
-msgstr "The server refused the connection"
+msgstr "Server menolak sambungan"
 
 #: Could not connect securely
 msgid "error_tls"
-msgstr "Could not connect securely"
+msgstr "Tidak bisa menyambung secara aman"
 
 #: The Kiwi IRC server had an error
 msgid "error_proxy"
-msgstr "The Kiwi IRC server had an error"
+msgstr "Server IRC Kiwi terdapat galat"
 
 #: Unknown error
 msgid "error_unknown"
-msgstr "Unknown error"
+msgstr "Galat tak diketahui"
 
 #: Bad username or password
 msgid "error_password_mismatch"
-msgstr "Bad username or password"
+msgstr "Nama p'guna atau kata sandi salah"
 
 #: Connection closed unexpectedly
 msgid "error_closed_unexpected"
-msgstr "Connection closed unexpectedly"
+msgstr "Sambungan terputus tiba-tiba"
 
 #: {{nick}} gives ops to {{target}}
 msgid "modes_give_ops"
@@ -993,11 +993,11 @@ msgstr "{{nick}} takes owner from {{target}}"
 
 #: {{nick}} has banned {{target}}
 msgid "modes_gives_ban"
-msgstr "{{nick}} has banned {{target}}"
+msgstr "{{nick}} mencekal {{target}}"
 
 #: {{nick}} has unbanned {{target}}
 msgid "modes_takes_ban"
-msgstr "{{nick}} has unbanned {{target}}"
+msgstr "{{nick}} menghapus cekal {{target}}"
 
 #: {{nick}} sets {{mode}} on {{target}}
 msgid "modes_other"
@@ -1009,15 +1009,15 @@ msgstr "Kirim pesan"
 
 #: Do something physical
 msgid "command_action"
-msgstr "Do something physical"
+msgstr "Bertindak fisik"
 
 #: Join a channel
 msgid "command_join"
-msgstr "Join a channel"
+msgstr "Bergabung ke saluran"
 
 #: Leave a channel
 msgid "command_part"
-msgstr "Leave a channel"
+msgstr "Tinggalkan saluran"
 
 #: Leave, then re-join a channel
 msgid "command_cycle"
@@ -1025,19 +1025,19 @@ msgstr "Leave, then re-join a channel"
 
 #: Change your nickname
 msgid "command_nick"
-msgstr "Change your nickname"
+msgstr "Ubah nama panggilan"
 
 #: Start a private conversation with someone
 msgid "command_query"
-msgstr "Start a private conversation with someone"
+msgstr "Mulai percakapan privat dengan seseorang"
 
 #: Invite somebody into the channel
 msgid "command_invite"
-msgstr "Invite somebody into the channel"
+msgstr "Undang seseorang ke saluran"
 
 #: Set the topic for this channel
 msgid "command_topic"
-msgstr "Set the topic for this channel"
+msgstr "Atur topik untuk saluran ini"
 
 #: Send a notice
 msgid "command_notice"
@@ -1045,31 +1045,31 @@ msgstr "Send a notice"
 
 #: Send a raw command to the IRC server
 msgid "command_quote"
-msgstr "Send a raw command to the IRC server"
+msgstr "Kirim perintah RAW ke server IRC"
 
 #: Kick somebody from the channel
 msgid "command_kick"
-msgstr "Kick somebody from the channel"
+msgstr "Tendang seseorang dari saluran"
 
 #: Clear all messages from this window
 msgid "command_clear"
-msgstr "Clear all messages from this window"
+msgstr "Kosongkan semua pesan di jendela ini"
 
 #: Send a CTCP command to somebody
 msgid "command_ctcp"
-msgstr "Send a CTCP command to somebody"
+msgstr "Kirim perintah CTCP ke seseorang"
 
 #: Disconnect from the IRC server
 msgid "command_quit"
-msgstr "Disconnect from the IRC server"
+msgstr "Putuskan sambungan dari server IRC"
 
 #: Connect to a new IRC network
 msgid "command_server"
-msgstr "Connect to a new IRC network"
+msgstr "Sambung ke jejaring IRC baru"
 
 #: Request information on somebody
 msgid "command_whois"
-msgstr "Request information on somebody"
+msgstr "Minta informasi ke seseorang"
 
 #: Request information on somebody that disconnected recently
 msgid "command_whowas"
@@ -1077,35 +1077,35 @@ msgstr "Request information on somebody that disconnected recently"
 
 #: Set yourself as away
 msgid "command_away"
-msgstr "Set yourself as away"
+msgstr "Atur status ke Di Luar"
 
 #: Set yourself as active
 msgid "command_back"
-msgstr "Set yourself as active"
+msgstr "Atur status ke Aktif"
 
 #: Change your connection encoding
 msgid "command_encoding"
-msgstr "Change your connection encoding"
+msgstr "Ubah enkode sambungan"
 
 #: Ignore messages from somebody
 msgid "command_ignore"
-msgstr "Ignore messages from somebody"
+msgstr "Abaikan pesan dari seseorang"
 
 #: Stop ignoring somebody
 msgid "command_unignore"
-msgstr "Stop ignoring somebody"
+msgstr "Batal abaikan seseorang"
 
 #: Roll a Dice
 msgid "command_dice"
-msgstr "Roll a Dice"
+msgstr "Lempar Dadu"
 
 #: Rolls a {{sides}} sided dice and gets {{number}}
 msgid "dice_roll"
-msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
+msgstr "Melempar dadu {{sides}} sisi dan mendapat {{number}}"
 
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
-msgstr "You were mentioned in {{channel}}"
+msgstr "Anda disebut di {{channel}}"
 
 #: Your IRC client
 msgid "personal_client"
@@ -1113,7 +1113,7 @@ msgstr "Klien IRC Anda."
 
 #: Add your networks. Join your channels.
 msgid "personal_addjoin"
-msgstr "Tambahkan jaringan Anda. Bergabung ke saluran Anda."
+msgstr "Tambahkan jejaringan. Baru masuk saluran."
 
 #: They will be here when you come back.
 msgid "personal_return"
@@ -1121,11 +1121,11 @@ msgstr "Mereka akan di sini ketika Anda kembali."
 
 #: Add a Network
 msgid "personal_add"
-msgstr "Tambahkan Jaringan"
+msgstr "Tambahkan Jejaring"
 
 #: You are trying to connect to {{network}}
 msgid "personal_connect_to"
-msgstr "You are trying to connect to {{network}}"
+msgstr "Anda mencoba menyambung ke {{network}}"
 
 #: Network has been added to your existing Kiwi window.
 msgid "personal_added_to_existing"
@@ -1141,7 +1141,7 @@ msgstr "Temporarily connect to this network"
 
 #: Saved networks
 msgid "personal_saved"
-msgstr "Simpan jaringan"
+msgstr "Jejaring tersimpan"
 
 #: Kiwi IRC (next gen) - Rizon preview
 msgid "rizon_title"
@@ -1153,7 +1153,7 @@ msgstr "Langsung websocket. Tanpa terlibat server Kiwi atau webirc."
 
 #: (Thanks to Adam @Rizon for the development websocket server support!)
 msgid "rizon_thanks"
-msgstr "(Terima kasih kepada Adam @Rizon untuk pengembangan dukungan server websocket!)"
+msgstr "(Terima kasih Adam @Rizon atas dukungan pengembangan server websocket!)"
 
 #: Give the developer version of Kiwi IRC a try!
 msgid "rizon_dev"
@@ -1161,49 +1161,49 @@ msgstr "Coba Kiwi IRC versi pengembang!"
 
 #: Disconnected
 msgid "disconnected"
-msgstr "Disconnected"
+msgstr "Terputus"
 
 #: Connected to {{network}}!
 msgid "connected_to"
-msgstr "Connected to {{network}}!"
+msgstr "Tersambung ke {{network}}!"
 
 #: {{nick}} has joined
 msgid "has_joined"
-msgstr "{{nick}} has joined"
+msgstr "{{nick}} bergabung"
 
 #: {{nick}} kicked you from {{channel}}
 msgid "kicked_you_from"
-msgstr "{{nick}} kicked you from {{channel}}"
+msgstr "{{nick}} menendang Anda dari {{channel}}"
 
 #: {{nick}} was kicked from {{channel}} by {{chanop}}
 msgid "was_kicked_from"
-msgstr "{{nick}} was kicked from {{channel}} by {{chanop}}"
+msgstr "{{nick}} ditendang dari {{channel}} oleh {{chanop}}"
 
 #: {{nick}} has left
 msgid "has_left"
-msgstr "{{nick}} has left"
+msgstr "{{nick}} pergi"
 
 #: {{nick}} invited you to join {{channel}}
 msgid "invited_you"
-msgstr "{{nick}} invited you to join {{channel}}"
+msgstr "{{nick}} mengundang Anda ke {{channel}}"
 
 #: {{nick}} invited {{invited}} to join {{channel}}
 msgid "invited_other"
-msgstr "{{nick}} invited {{invited}} to join {{channel}}"
+msgstr "{{nick}} mengundang {{invited}} ke {{channel}}"
 
 #: You invited {{invited}} to join {{channel}}
 msgid "invited_inviter"
-msgstr "You invited {{invited}} to join {{channel}}"
+msgstr "Anda mengundang {{invited}} ke {{channel}}"
 
 #: Nickname {{nick}} is already in use. Trying {{newnick}}...
 msgid "nick_in_use_retrying"
-msgstr "Nickname {{nick}} is already in use. Trying {{newnick}}..."
+msgstr "Nama panggilan {{nick}} sudah digunakan. Mencoba {{newnick}}..."
 
 #: {{nick}} is now known as {{newnick}}
 msgid "now_known_as"
-msgstr "{{nick}} is now known as {{newnick}}"
+msgstr "{{nick}} sekarang bernama {{newnick}}"
 
 #: {{nick}} changed the topic to: {{topic}}
 msgid "changed_topic_to"
-msgstr "{{nick}} changed the topic to: {{topic}}"
+msgstr "{{nick}} mengubah topik ke: {{topic}}"
 
