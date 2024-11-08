@@ -785,7 +785,8 @@ function createNewState() {
                 let userObj = null;
 
                 if (!usersArr[user.nick.toUpperCase()]) {
-                    userObj = usersArr[user.nick.toUpperCase()] = new UserState(user);
+                    userObj = new UserState(network.id, user, state);
+                    usersArr[user.nick.toUpperCase()] = userObj;
                 } else {
                     // Update the existing user object with any new info we have
                     userObj = state.getUser(network.id, user.nick, usersArr);
