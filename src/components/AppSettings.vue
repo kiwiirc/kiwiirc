@@ -231,10 +231,10 @@ import SettingsAdvanced from './SettingsAdvanced';
  */
 function bindSetting(settingName) {
     return {
-        get: function settingGetter() {
+        get() {
             return this.$state.setting(settingName);
         },
-        set: function settingSetter(newVal) {
+        set(newVal) {
             this.$state.setting(settingName, newVal);
         },
     };
@@ -245,7 +245,7 @@ export default {
         SettingsAliases,
         SettingsAdvanced,
     },
-    data: function data() {
+    data() {
         return {
             theme: '',
             customThemeUrl: '',
@@ -254,27 +254,27 @@ export default {
         };
     },
     computed: {
-        themeSupportsMonospace: function themeSupportsMonospace() {
+        themeSupportsMonospace() {
             let themeMgr = ThemeManager.instance();
             let val = themeMgr.themeVar('supports-monospace');
             return val === '1';
         },
-        canRegisterProtocolHandler: function canRegisterProtocolHandler() {
+        canRegisterProtocolHandler() {
             return !!navigator.registerProtocolHandler && this.$state.setting('allowRegisterProtocolHandler');
         },
         timestamps_24h: {
-            get: function get24Timestamps() {
+            get() {
                 // %H is 24 hour format
                 return this.$state.setting('buffers.timestamp_format').substr(0, 2) === '%H';
             },
-            set: function set24Timestamps(newVal) {
+            set(newVal) {
                 let newFormat = newVal ?
                     '%H:%M:%S' :
                     '%l:%M:%S %p';
                 this.$state.setting('buffers.timestamp_format', newFormat);
             },
         },
-        settings: function getSettings() {
+        settings() {
             return this.$state.settings;
         },
         settingShowAutoComplete: bindSetting('showAutocomplete'),
@@ -289,22 +289,31 @@ export default {
         settingBufferTrafficAsActivity: bindSetting('buffers.traffic_as_activity'),
         settingBufferMuteSound: bindSetting('buffers.mute_sound'),
         settingBufferShareTyping: bindSetting('buffers.share_typing'),
-        settingBufferInlineLinkPreviews: bindSetting('buffers.inline_link_auto_previews'),
         settingDefaultBanMask: bindSetting('buffers.default_ban_mask'),
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
+        settingBufferInlineLinkPreviews: {
+            get() {
+                return this.$state.setting('buffers.inline_link_auto_previews')
+                    || this.$state.setting('buffers.inline_link_auto_previews_query');
+            },
+            set(newVal) {
+                this.$state.setting('buffers.inline_link_auto_previews', newVal);
+                this.$state.setting('buffers.inline_link_auto_previews_query', newVal);
+            },
+        },
         settingAdvancedEnable: {
-            get: function getSettingShowAdvancedTab() {
+            get() {
                 return this.$state.ui.show_advanced_tab;
             },
-            set: function setSettingShowAdvancedTab(newVal) {
+            set(newVal) {
                 this.$state.ui.show_advanced_tab = newVal;
             },
         },
         settingLanguage: {
-            get: function getSettingLanguage() {
+            get() {
                 return this.$state.setting('language') || '';
             },
-            set: function setSettingLanguage(newVal) {
+            set(newVal) {
                 this.$state.setting('language', newVal || null);
             },
         },
@@ -316,18 +325,18 @@ export default {
             };
         },
         settingMessageLayout: {
-            set: function setSettingMessageLayout(newVal) {
-                let l = this.messageLayouts;
-                this.$state.setting('buffers.messageLayout', l[newVal] || l.modern);
-            },
             get() {
                 let s = this.$state.setting('buffers.messageLayout');
                 let l = _.invert(this.messageLayouts);
                 return l[s];
             },
+            set(newVal) {
+                let l = this.messageLayouts;
+                this.$state.setting('buffers.messageLayout', l[newVal] || l.modern);
+            },
         },
     },
-    created: function created() {
+    created() {
         this.listenForThemeSettings();
 
         this.listen(this.$state, 'settings.tab.show', (tabName) => {
@@ -335,16 +344,16 @@ export default {
         });
     },
     methods: {
-        closeSettings: function closeSettings() {
+        closeSettings() {
             this.$state.$emit('active.component');
         },
-        refreshTheme: function refreshTheme() {
+        refreshTheme() {
             ThemeManager.instance().reload();
         },
         showTab(tabName) {
             this.$refs.tabs.setActiveByName(tabName);
         },
-        listenForThemeSettings: function listenForThemeSettings() {
+        listenForThemeSettings() {
             let themeMgr = ThemeManager.instance();
             let watches = [];
 
@@ -408,8 +417,9 @@ export default {
             });
         },
         makeDefaultProtocolHandler() {
-            navigator.registerProtocolHandler('irc', document.location.origin + document.location.pathname + '#%s', 'Kiwi IRC');
-            navigator.registerProtocolHandler('ircs', document.location.origin + document.location.pathname + '#%s', 'Kiwi IRC');
+            const { origin, pathname } = document.location;
+            navigator.registerProtocolHandler('irc', origin + pathname + '#%s', 'Kiwi IRC');
+            navigator.registerProtocolHandler('ircs', origin + pathname + '#%s', 'Kiwi IRC');
         },
     },
 };
