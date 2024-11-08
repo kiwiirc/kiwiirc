@@ -231,10 +231,10 @@ import SettingsAdvanced from './SettingsAdvanced';
  */
 function bindSetting(settingName) {
     return {
-        get: function settingGetter() {
+        get() {
             return this.$state.setting(settingName);
         },
-        set: function settingSetter(newVal) {
+        set(newVal) {
             this.$state.setting(settingName, newVal);
         },
     };
@@ -245,7 +245,7 @@ export default {
         SettingsAliases,
         SettingsAdvanced,
     },
-    data: function data() {
+    data() {
         return {
             theme: '',
             customThemeUrl: '',
@@ -254,27 +254,27 @@ export default {
         };
     },
     computed: {
-        themeSupportsMonospace: function themeSupportsMonospace() {
+        themeSupportsMonospace() {
             let themeMgr = ThemeManager.instance();
             let val = themeMgr.themeVar('supports-monospace');
             return val === '1';
         },
-        canRegisterProtocolHandler: function canRegisterProtocolHandler() {
+        canRegisterProtocolHandler() {
             return !!navigator.registerProtocolHandler && this.$state.setting('allowRegisterProtocolHandler');
         },
         timestamps_24h: {
-            get: function get24Timestamps() {
+            get() {
                 // %H is 24 hour format
                 return this.$state.setting('buffers.timestamp_format').substr(0, 2) === '%H';
             },
-            set: function set24Timestamps(newVal) {
+            set(newVal) {
                 let newFormat = newVal ?
                     '%H:%M:%S' :
                     '%l:%M:%S %p';
                 this.$state.setting('buffers.timestamp_format', newFormat);
             },
         },
-        settings: function getSettings() {
+        settings() {
             return this.$state.settings;
         },
         settingShowAutoComplete: bindSetting('showAutocomplete'),
@@ -302,18 +302,18 @@ export default {
             },
         },
         settingAdvancedEnable: {
-            get: function getSettingShowAdvancedTab() {
+            get() {
                 return this.$state.ui.show_advanced_tab;
             },
-            set: function setSettingShowAdvancedTab(newVal) {
+            set(newVal) {
                 this.$state.ui.show_advanced_tab = newVal;
             },
         },
         settingLanguage: {
-            get: function getSettingLanguage() {
+            get() {
                 return this.$state.setting('language') || '';
             },
-            set: function setSettingLanguage(newVal) {
+            set(newVal) {
                 this.$state.setting('language', newVal || null);
             },
         },
@@ -325,18 +325,18 @@ export default {
             };
         },
         settingMessageLayout: {
-            set: function setSettingMessageLayout(newVal) {
-                let l = this.messageLayouts;
-                this.$state.setting('buffers.messageLayout', l[newVal] || l.modern);
-            },
             get() {
                 let s = this.$state.setting('buffers.messageLayout');
                 let l = _.invert(this.messageLayouts);
                 return l[s];
             },
+            set(newVal) {
+                let l = this.messageLayouts;
+                this.$state.setting('buffers.messageLayout', l[newVal] || l.modern);
+            },
         },
     },
-    created: function created() {
+    created() {
         this.listenForThemeSettings();
 
         this.listen(this.$state, 'settings.tab.show', (tabName) => {
@@ -344,16 +344,16 @@ export default {
         });
     },
     methods: {
-        closeSettings: function closeSettings() {
+        closeSettings() {
             this.$state.$emit('active.component');
         },
-        refreshTheme: function refreshTheme() {
+        refreshTheme() {
             ThemeManager.instance().reload();
         },
         showTab(tabName) {
             this.$refs.tabs.setActiveByName(tabName);
         },
-        listenForThemeSettings: function listenForThemeSettings() {
+        listenForThemeSettings() {
             let themeMgr = ThemeManager.instance();
             let watches = [];
 
