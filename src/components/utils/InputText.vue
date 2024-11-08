@@ -29,7 +29,7 @@
             <input
                 v-else-if="type==='number'"
                 :id="inputId"
-                v-model="currentValue"
+                v-model.number="currentValue"
                 type="number"
                 class="u-input"
                 @keypress="$emit('keypress', $event)"
@@ -92,7 +92,7 @@ export default Vue.component('input-text', {
         },
     },
     methods: {
-        updateValue: function updateValue(newValue) {
+        updateValue(newValue) {
             this.$emit('input', newValue);
         },
         isEdgeBrowser() {
