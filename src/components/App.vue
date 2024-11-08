@@ -5,6 +5,7 @@
             'kiwi-wrap--monospace': $state.setting('useMonospace'),
             'kiwi-wrap--touch': $state.ui.is_touch,
         }"
+        :data-theme="currentThemeName"
         :data-activebuffer="buffer ? buffer.name.toLowerCase() : ''"
         class="kiwi-wrap kiwi-theme-bg"
         @click="emitDocumentClick"
@@ -73,6 +74,7 @@ import ControlInput from '@/components/ControlInput';
 import MediaViewer from '@/components/MediaViewer';
 import AvatarCommon from '@/components/UserAvatarCommon';
 import { State as SidebarState } from '@/components/Sidebar';
+import ThemeManager from '@/libs/ThemeManager';
 import * as Notifications from '@/libs/Notifications';
 import * as bufferTools from '@/libs/bufferTools';
 import Logger from '@/libs/Logger';
@@ -117,6 +119,10 @@ export default {
         },
         buffer() {
             return this.$state.getActiveBuffer();
+        },
+        currentThemeName() {
+            const theme = ThemeManager.instance().currentTheme();
+            return theme ? theme.name.toLowerCase() : '';
         },
     },
     created() {

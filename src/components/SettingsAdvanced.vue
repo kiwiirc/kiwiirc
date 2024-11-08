@@ -17,49 +17,52 @@
                         {{ filterString }} - {{ $t('not_found') }}
                     </td>
                 </tr>
-                <tr
-                    v-for="setting in filteredSettings" v-else
-                    :key="setting.key"
-                    :class="{'kiwi-advanced-setting': !setting.modified,
-                             'kiwi-advanced-setting--modified': setting.modified,
-                    }"
-                >
-                    <td><label :for="'setting-' + setting.key">{{ setting.key }}</label></td>
-                    <td v-if="setting.modified">
-                        <a class="u-link" @click="resetValue($event, setting.key)">
-                            {{ $t('settings_advanced_reset') }}
-                            <i class="fa fa-undo" style="margin-left: 10px;" />
-                        </a>
-                    </td>
-                    <td v-else />
-                    <td>
-                        <input
-                            v-if="setting.type === 'boolean'"
-                            :id="'setting-' + setting.key"
-                            :checked="setting.val"
-                            type="checkbox"
-                            @change="updateSetting($event, setting.key)"
-                        >
-                        <input
-                            v-else-if="setting.type === 'number'"
-                            :id="'setting-' + setting.key"
-                            :value="setting.val"
-                            class="u-input"
-                            type="number"
-                            @keydown.13="$event.target.blur()"
-                            @change="updateSetting($event, setting.key)"
-                            @blur="updateSetting($event, setting.key)"
-                        >
-                        <input
-                            v-else
-                            :id="'setting-' + setting.key"
-                            :value="setting.val"
-                            class="u-input"
-                            @keydown.13="$event.target.blur()"
-                            @blur="updateSetting($event, setting.key)"
-                        >
-                    </td>
-                </tr>
+                <template v-else>
+                    <tr
+                        v-for="setting in filteredSettings"
+                        :key="setting.key"
+                        :class="{
+                            'kiwi-advanced-setting': !setting.modified,
+                            'kiwi-advanced-setting--modified': setting.modified,
+                        }"
+                    >
+                        <td><label :for="'setting-' + setting.key">{{ setting.key }}</label></td>
+                        <td v-if="setting.modified">
+                            <a class="u-link" @click="resetValue($event, setting.key)">
+                                {{ $t('settings_advanced_reset') }}
+                                <i class="fa fa-undo" style="margin-left: 10px;" />
+                            </a>
+                        </td>
+                        <td v-else />
+                        <td>
+                            <input
+                                v-if="setting.type === 'boolean'"
+                                :id="'setting-' + setting.key"
+                                :checked="setting.val"
+                                type="checkbox"
+                                @change="updateSetting($event, setting.key)"
+                            >
+                            <input
+                                v-else-if="setting.type === 'number'"
+                                :id="'setting-' + setting.key"
+                                :value="setting.val"
+                                class="u-input"
+                                type="number"
+                                @keydown.13="$event.target.blur()"
+                                @change="updateSetting($event, setting.key)"
+                                @blur="updateSetting($event, setting.key)"
+                            >
+                            <input
+                                v-else
+                                :id="'setting-' + setting.key"
+                                :value="setting.val"
+                                class="u-input"
+                                @keydown.13="$event.target.blur()"
+                                @blur="updateSetting($event, setting.key)"
+                            >
+                        </td>
+                    </tr>
+                </template>
             </table>
         </form>
     </div>

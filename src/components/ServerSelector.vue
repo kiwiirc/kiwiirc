@@ -39,11 +39,11 @@
                 >
                     <i
                         v-if="connection.tls"
-                        class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock"
+                        class="fa fa-lock fa-stack-1x fa-fw kiwi-customserver-tls-lock"
                     />
                     <i
                         v-else
-                        class="fa fa-unlock fa-stack-1x kiwi-customserver-tls-minus"
+                        class="fa fa-unlock fa-stack-1x fa-fw kiwi-customserver-tls-minus"
                     />
                 </span>
             </input-text>

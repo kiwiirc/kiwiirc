@@ -496,6 +496,16 @@ export default {
 .kiwi-networksettings-connection-port {
     width: 25%;
     float: right;
+
+    input {
+        width: 100%;
+    }
+
+    span {
+        position: absolute;
+        right: 2px;
+        top: 6px;
+    }
 }
 
 .kiwi-networksettings-danger h3 {
