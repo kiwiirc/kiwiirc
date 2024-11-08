@@ -289,9 +289,18 @@ export default {
         settingBufferTrafficAsActivity: bindSetting('buffers.traffic_as_activity'),
         settingBufferMuteSound: bindSetting('buffers.mute_sound'),
         settingBufferShareTyping: bindSetting('buffers.share_typing'),
-        settingBufferInlineLinkPreviews: bindSetting('buffers.inline_link_auto_previews'),
         settingDefaultBanMask: bindSetting('buffers.default_ban_mask'),
         settingDefaultKickReason: bindSetting('buffers.default_kick_reason'),
+        settingBufferInlineLinkPreviews: {
+            get() {
+                return this.$state.setting('buffers.inline_link_auto_previews')
+                    || this.$state.setting('buffers.inline_link_auto_previews_query');
+            },
+            set(newVal) {
+                this.$state.setting('buffers.inline_link_auto_previews', newVal);
+                this.$state.setting('buffers.inline_link_auto_previews_query', newVal);
+            },
+        },
         settingAdvancedEnable: {
             get: function getSettingShowAdvancedTab() {
                 return this.$state.ui.show_advanced_tab;
@@ -408,8 +417,9 @@ export default {
             });
         },
         makeDefaultProtocolHandler() {
-            navigator.registerProtocolHandler('irc', document.location.origin + document.location.pathname + '#%s', 'Kiwi IRC');
-            navigator.registerProtocolHandler('ircs', document.location.origin + document.location.pathname + '#%s', 'Kiwi IRC');
+            const { origin, pathname } = document.location;
+            navigator.registerProtocolHandler('irc', origin + pathname + '#%s', 'Kiwi IRC');
+            navigator.registerProtocolHandler('ircs', origin + pathname + '#%s', 'Kiwi IRC');
         },
     },
 };
