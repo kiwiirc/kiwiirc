@@ -207,7 +207,7 @@ const methods = {
     displayAvatar(message) {
         let props = this.props;
         // if there is no user attached hide the avatar
-        if (!message.user) {
+        if (!message.user && !props.ml.buffer.state.setting('avatars.show_without_user')) {
             return false;
         }
 
