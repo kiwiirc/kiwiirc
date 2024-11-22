@@ -593,6 +593,10 @@ export default {
     float: right;
 }
 
+.kiwi-appsettings-operator-tools input {
+    width: 100%;
+}
+
 @media screen and (max-width: 769px) {
     .kiwi-appsettings {
         width: 100%;
