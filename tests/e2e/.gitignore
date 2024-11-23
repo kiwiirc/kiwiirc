@@ -1,0 +1,14 @@
+# IDEs
+.idea/
+.vscode/
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Generated
+artifacts
+*.log
+
+# secrets
+cypress.env.json
