@@ -8,25 +8,36 @@
 
 'kiwi public';
 
+import Logger from '@/libs/Logger';
+
+let log = Logger.namespace('Captcha');
+
 export default {
     props: ['network'],
     data() {
         return {
-            recaptchaUrl: '',
-            recaptchaSiteId: '',
-            recaptchaResponse: '',
+            captchaUrl: '',
+            captchaSiteId: '',
+            captchaResponse: '',
             showCaptcha: false,
         };
     },
     created() {
         let options = this.$state.settings.startupOptions;
-        this.recaptchaSiteId = options.recaptchaSiteId || '';
-        this.recaptchaUrl = options.recaptchaUrl || 'https://www.google.com/recaptcha/api.js';
+        this.captchaSiteId = options.captchaSiteId || options.recaptchaSiteId || '';
+        try {
+            this.captchaUrl = new URL(options.captchaUrl || options.recaptchaUrl || 'https://www.google.com/recaptcha/api.js');
+            const params = this.captchaUrl.searchParams;
+            params.set('onload', 'captchaLoaded');
+            params.set('render', 'explicit');
+        } catch (error) {
+            log.error('failed to create captcha url', error);
+        }
 
         this.listen(this.$state, 'network.connecting', (event) => {
             event.network.ircClient.once('socket connected', () => {
-                if (this.recaptchaResponse) {
-                    event.network.ircClient.raw('CAPTCHA', this.recaptchaResponse);
+                if (this.captchaResponse) {
+                    event.network.ircClient.raw('CAPTCHA', this.captchaResponse);
                 }
             });
         });
@@ -37,39 +48,42 @@ export default {
             }
 
             if (event.params[0] === 'NEEDED') {
-                this.loadRecaptcha();
+                this.loadCaptcha();
             }
         });
     },
     methods: {
-        loadRecaptcha() {
-            if (window.grecaptcha) {
-                this.recaptchaShow();
+        getCaptcha() {
+            return window.grecaptcha ?? window.turnstile ?? window.hcaptcha;
+        },
+        loadCaptcha() {
+            if (this.getCaptcha()) {
+                this.captchaShow();
                 return;
             }
 
-            // Recaptcha calls this callback once it's loaded and ready to be used
-            window.recaptchaLoaded = () => {
-                this.recaptchaShow();
+            // captcha calls this callback once it's loaded and ready to be used
+            window.captchaLoaded = () => {
+                this.captchaShow();
             };
 
             let scr = document.createElement('script');
-            scr.src = this.recaptchaUrl + '?onload=recaptchaLoaded&render=explicit';
+            scr.src = this.captchaUrl.toString();
             scr.defer = true;
             document.head.appendChild(scr);
         },
-        recaptchaShow() {
+        captchaShow() {
             this.showCaptcha = true;
             this.$nextTick(() => {
-                window.grecaptcha.render(this.$refs.captchacontainer, {
-                    'sitekey': this.recaptchaSiteId,
-                    'callback': this.recaptchaSuccess,
-                    'expired-callback': this.recaptchaExpired,
+                this.getCaptcha().render(this.$refs.captchacontainer, {
+                    'sitekey': this.captchaSiteId,
+                    'callback': this.captchaSuccess,
+                    'expired-callback': this.captchaExpired,
                 });
             });
         },
-        recaptchaSuccess(response) {
-            this.recaptchaResponse = response;
+        captchaSuccess(response) {
+            this.captchaResponse = response;
 
             // If we have a network instance already, send the captcha response
             if (this.network && this.network.state === 'connecting') {
@@ -77,8 +91,8 @@ export default {
             }
             this.showCaptcha = false;
         },
-        recaptchaExpired() {
-            this.recaptchaResponse = '';
+        captchaExpired() {
+            this.captchaResponse = '';
         },
     },
 };
