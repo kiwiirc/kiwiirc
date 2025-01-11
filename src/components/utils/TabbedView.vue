@@ -1,6 +1,6 @@
 <template>
     <div class="u-tabbed-view">
-        <div :key="prefixID + a" class="u-tabbed-view-tabs">
+        <div v-if="showTabs" :key="prefixID + a" class="u-tabbed-view-tabs">
             <a
                 v-for="c in tabs"
                 :key="c.name || c.header"
@@ -26,14 +26,21 @@ Vue.component('tabbed-tab', {
         focus: { status: Boolean },
         name: { status: String },
     },
-    data: function data() {
+    data() {
         return { active: false };
     },
     template: '<div v-if="active" class="u-tabbed-content"><slot></slot></div>',
 });
 
 export default Vue.component('tabbed-view', {
-    data: function data() {
+    props: {
+        value: String,
+        showTabs: {
+            type: Boolean,
+            default: true,
+        },
+    },
+    data() {
         return {
             // We increment this when we need to re-render the tabs.
             // Vue doesn't pick up on the $children changes all the time so we handle
@@ -45,6 +52,11 @@ export default Vue.component('tabbed-view', {
     computed: {
         tabs: function computedtabs() {
             return this.$children;
+        },
+    },
+    watch: {
+        value(newValue) {
+            this.setActiveByName(newValue);
         },
     },
     mounted() {
@@ -72,6 +84,7 @@ export default Vue.component('tabbed-view', {
             // Without this, vue doesnt update itself with the new $children :(
             this.a++;
             this.$emit('changed', c.name);
+            this.$emit('input', c.name);
         },
         setActiveByName: function setActiveByName(name) {
             this.$children.forEach((child) => {
@@ -82,7 +95,7 @@ export default Vue.component('tabbed-view', {
         },
         setActiveCheck: function setActiveCheck() {
             this.$children.forEach((t) => {
-                if (t.focus) {
+                if (t.focus || t.name === this.value) {
                     this.setActive(t);
                 }
             });

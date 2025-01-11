@@ -10,6 +10,12 @@
     --brand-notice: #f6c358;
     --brand-warning: #fcb46e;
     --brand-error: #b9444c;
+
+    /* Input elements */
+    --brand-input-border: #616161;
+    --brand-input-fg: #ababab;
+    --brand-input-bg: #1e1e1e;
+
     --comp-workspace-before-bg: var(--brand-primary);
     --comp-bg-kiwi-workspace--disconnected-after-bg: var(--brand-error);
     --comp-header-bg: var(--brand-default-bg);
@@ -56,9 +62,8 @@
     border-bottom-color: #ffffff1a;
 }
 
-.u-form select {
-    background-color: var(--brand-primary);
-    color: #000000;
+.kiwi-customserver {
+    background-color: var(--brand-default-bg);
 }
 
 button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
@@ -160,8 +165,9 @@ button.u-button.u-button-primary.u-submit.kiwi-welcome-znc-start {
     color: var(--comp-sidebar-fg);
 }
 
-.kiwi-welcome-simple-start {
-    color: #fff !important;
+.kiwi-welcome-simple-start.u-submit,
+.kiwi-customserver-form .u-submit {
+    color: #fff;
 }
 
 .kiwi-header-option--active a {

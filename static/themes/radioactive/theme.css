@@ -22,6 +22,7 @@
 }
 
 .kiwi-welcome-simple-error,
+.kiwi-customserver-error,
 .kiwi-welcome-znc-error {
     border: 1px dashed #d86f6f;
 }
@@ -51,10 +52,6 @@
 }
 
 /* Custom server layout */
-.kiwi-customserver {
-	background-color: #fbfbfb;
-}
-
 
 
 /* App ( App.vue ) */
@@ -118,7 +115,6 @@
 .u-form input[type='checkbox'],
 .u-form input[type='radio'] {
     border: 2px solid #57da93;
-    background-color: #183123;
 }
 .u-form input[type='checkbox']:checked,
 .u-form input[type='radio']:checked {
@@ -126,8 +122,10 @@
 }
 
 
-.u-form select {
-    background-color: #183123;
+.u-form select,
+.u-form input,
+.u-form textarea {
+    background-color: #031e11
 }
 
 /*buttons */
@@ -1143,34 +1141,9 @@
 }
 
 /* Customer Server Styling */
-.kiwi-customserver {
-    background-color: #1c2933;
-    color: #fff;
-}
-
-.kiwi-customserver-form {
-    background-color: #151414;
-    border: 1px solid #14fdce;
-}
-
-.kiwi-customserver-form .u-input-text {
-    background-color: #151414;
-}
-
-.kiwi-customserver-form .u-input-text input {
-    background-color: #151414;
-    color: #fff;
-}
-
 .kiwi-customserver .u-button {
     background-color: none;
-    border: 1px solid #14fdce;
-    color: #14fdce;
-}
-
-.kiwi-customserver .u-link {
-    color: #14fdce;
-    text-decoration: underline;
+    color: #031e11;
 }
 
 /* Buffer Key */

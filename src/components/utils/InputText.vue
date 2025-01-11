@@ -15,6 +15,7 @@
                     spellcheck="false"
                     class="u-input"
                     @keypress="$emit('keypress', $event)"
+                    @paste="$emit('paste', $event)"
                 >
 
                 <i
@@ -33,6 +34,7 @@
                 type="number"
                 class="u-input"
                 @keypress="$emit('keypress', $event)"
+                @paste="$emit('paste', $event)"
             >
             <textarea
                 v-else-if="type==='textarea'"
@@ -40,6 +42,7 @@
                 v-model="currentValue"
                 class="u-input"
                 @keypress="$emit('keypress', $event)"
+                @paste="$emit('paste', $event)"
             />
             <input
                 v-else
@@ -51,6 +54,7 @@
                 spellcheck="false"
                 class="u-input"
                 @keypress="$emit('keypress', $event)"
+                @paste="$emit('paste', $event)"
             >
 
             <div v-if="$slots.default" class="u-input-text-c">

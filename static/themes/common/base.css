@@ -1,10 +1,10 @@
 /* ---- Welcome Screens ----- */
 .kiwi-customserver-form {
     background-color: var(--brand-default-bg);
-    border: 1px solid var(--brand-midtone);
 }
 
 .kiwi-welcome-simple-error,
+.kiwi-customserver-error,
 .kiwi-welcome-znc-error {
     border: 1px dashed var(--brand-error);
 }
@@ -69,7 +69,7 @@
     outline: none;
     border-color: var(--brand-input-border);
     color: var(--brand-input-fg);
-    background: var(--brand-input-bg);
+    background-color: var(--brand-input-bg);
     transition: border-color 0.1s;
 }
 
@@ -633,7 +633,11 @@
 
 /*  ---- Custom server layout ---- */
 .kiwi-customserver {
-    background-color: var(--brand-default-fg);
+    background-color: var(--brand-default-bg);
+}
+
+.kiwi-customserver-nick--invalid input.u-input {
+    border-color: var(--brand-error);
 }
 
 /* ---- App ---- */
@@ -754,21 +758,14 @@
     color: var(--brand-primary);
 }
 
-.kiwi-networksettings .kiwi-customserver-tls {
-    color: var(--brand-midtone);
-}
-
-.kiwi-networksettings .kiwi-customserver-tls--enabled {
+.kiwi-serverselector-connection-tls i {
     color: var(--brand-primary);
 }
 
-.kiwi-networksettings .kiwi-customserver-tls--enabled .kiwi-customserver-tls-lock {
-    color: var(--brand-primary);
-}
-
-.kiwi-networksettings .kiwi-customserver-tls-minus {
+.kiwi-serverselector-connection-tls i.fa-unlock {
     color: var(--brand-error);
 }
+
 
 .kiwi-networksettings-error {
     border-color: var(--brand-error);

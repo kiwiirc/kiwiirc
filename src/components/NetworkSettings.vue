@@ -24,8 +24,8 @@
                 </div>
 
                 <server-selector
+                    :enable-custom="startupOptions.enable_custom ?? true"
                     :connection="network.connection"
-                    :network-list="network_list"
                 />
 
                 <div class="kiwi-networksettings-connection-password">
@@ -145,7 +145,7 @@
                 <button
                     v-if="network.state === 'disconnected'"
                     type="button"
-                    class="u-button kiwi-connect-to-newnetwork"
+                    class="u-button u-button-primary u-submit kiwi-connect-to-newnetwork"
                     @click="connect()"
                 >
                     {{ $t('network_connect') }}
@@ -153,7 +153,7 @@
                 <button
                     v-else-if="network.state === 'connecting'"
                     type="button"
-                    class="u-button kiwi-connect-to-newnetwork"
+                    class="u-button u-button-primary u-submit kiwi-connect-to-newnetwork"
                     disabled
                 >
                     {{ $t('connecting') }}
@@ -195,6 +195,9 @@ export default {
         };
     },
     computed: {
+        startupOptions() {
+            return this.$state.getSetting('settings.startupOptions');
+        },
         settingShowRaw: {
             get() {
                 return this.network.setting('show_raw');
@@ -386,19 +389,6 @@ export default {
     margin-bottom: 1em;
 }
 
-//Style the 'secrue/unsecure' port icon
-.kiwi-networksettings .kiwi-customserver-tls {
-    text-align: center;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-.kiwi-networksettings .kiwi-customserver-tls i {
-    left: 3px;
-    top: 2px;
-    font-size: 1.3em;
-}
-
 //Style the network types section
 .kiwi-networksettings .kiwi-networksettings-server-types-info {
     width: 100%;
@@ -486,26 +476,6 @@ export default {
 .kiwi-networksettings-server-types-info {
     font-size: 0.9em;
     font-style: italic;
-}
-
-.kiwi-networksettings-connection-address {
-    width: 70%;
-    display: inline-block;
-}
-
-.kiwi-networksettings-connection-port {
-    width: 25%;
-    float: right;
-
-    input {
-        width: 100%;
-    }
-
-    span {
-        position: absolute;
-        right: 2px;
-        top: 6px;
-    }
 }
 
 .kiwi-networksettings-danger h3 {
