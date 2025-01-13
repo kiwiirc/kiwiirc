@@ -14,7 +14,7 @@
                 </template>
                 <option
                     v-for="(s, idx) in presetNetworks"
-                    :key="s.name"
+                    :key="'preset_'+idx"
                     :value="idx"
                 >{{ s.name }}</option>
             </select>
@@ -30,10 +30,11 @@
                         {{ $t('protocol') }}
                     </label>
                     <select id="kiwi_server_proto" v-model="protocol" class="u-input">
-                        <option value="irc">irc://</option>
-                        <option value="ircs">ircs://</option>
-                        <option value="ws">ws://</option>
-                        <option value="wss">wss://</option>
+                        <option
+                            v-for="(s, idx) in serverProtocols"
+                            :key="'proto_'+idx"
+                            :value="s"
+                        >{{ s }}://</option>
                     </select>
                 </div>
 
@@ -74,7 +75,7 @@ import * as Misc from '@/helpers/Misc';
 
 import Logger from '@/libs/Logger';
 
-const log = Logger.namespace('ServerSelector.vue');
+const log = Logger.namespace('ServerSelector');
 
 export default {
     props: {
@@ -136,6 +137,9 @@ export default {
                 }
             },
         },
+        serverProtocols() {
+            return this.$state.getSetting('settings.serverProtocols') || ['irc', 'ircs', 'ws', 'wss'];
+        },
         protocol: {
             get() {
                 let proto = this.connection.direct ? 'ws' : 'irc';
@@ -180,12 +184,9 @@ export default {
                 }
             },
         },
-        isTLS() {
-            return ['ircs', 'wss'].includes(this.connection.proto);
-        },
     },
     created() {
-        const networkList = this.$state.setting('presetNetworks') || [];
+        const networkList = this.$state.getSetting('settings.presetNetworks') || [];
         if (networkList) {
             this.importUris(networkList);
         }
@@ -218,13 +219,21 @@ export default {
             }
         },
         toggleTls() {
-            const protocolMap = {
-                irc: 'ircs',
-                ircs: 'irc',
-                ws: 'wss',
-                wss: 'ws',
-            };
-            this.protocol = protocolMap[this.protocol];
+            const protocolMap = Object.fromEntries(
+                Object.entries({
+                    irc: 'ircs',
+                    ircs: 'irc',
+                    ws: 'wss',
+                    wss: 'ws',
+                }).filter(
+                    ([key, value]) => this.serverProtocols.includes(key)
+                        && this.serverProtocols.includes(value)
+                )
+            );
+
+            if (protocolMap[this.protocol]) {
+                this.protocol = protocolMap[this.protocol];
+            }
         },
         importUris(serverList) {
             // [ 'freenode|irc.freenode.net:+6697', 'irc.snoonet.org:6667' ]

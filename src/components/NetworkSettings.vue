@@ -24,7 +24,7 @@
                 </div>
 
                 <server-selector
-                    :enable-custom="startupOptions.enable_custom ?? true"
+                    :enable-custom="startupOptions.enableCustom ?? true"
                     :connection="network.connection"
                 />
 

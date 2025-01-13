@@ -24,7 +24,7 @@
 
                 <server-selector
                     v-if="showSelector"
-                    :enable-custom="startupOptions.enable_custom ?? true"
+                    :enable-custom="startupOptions.enableCustom ?? true"
                     :show-path="true"
                     :connection="connection"
                     @selected="presetSelected=$event"
@@ -158,7 +158,7 @@ export default {
             if (this.isFragment || this.presetSelected !== 'custom') {
                 return false;
             }
-            return this.startupOptions.enable_tabs ?? true;
+            return this.startupOptions.enableTabs ?? true;
         },
         termsContent() {
             const terms = this.startupOptions.termsContent;
@@ -179,7 +179,7 @@ export default {
                 '';
         },
         isNickValid() {
-            let nickPatternStr = this.$state.setting('startupOptions.nick_format');
+            let nickPatternStr = this.$state.getSetting('settings.startupOptions.nick_format');
             let nickPattern = '';
             if (!nickPatternStr) {
                 // Nicks cannot start with [0-9- ]
