@@ -101,6 +101,16 @@ export function networkErrorMessage(err) {
 }
 
 /**
+ * Replace ? in nick with random number
+ * @param {String} nick A users nick where ? needs replacing
+ * @returns {String}
+ */
+export function processNickRandomNumber(nick) {
+    // Replace ? with a random number
+    return (nick || 'kiwi-n?').replace(/\?/g, () => Math.floor(Math.random() * 100).toString()).trim();
+}
+
+/**
  * Take a users connection object (usually from startupOptions) and normalise a connection
  * settings object. Parses websocket/direct/kiwiServer/etc options and creates a single
  * object that Kiwi can consistently read from.
@@ -223,53 +233,104 @@ export function parseIrcUri(str) {
     return connections;
 }
 
+export function getDefaultConnection() {
+    const connection = {
+        name: '',
+        server: '',
+        port: 6667,
+        tls: false,
+        direct: false,
+        path: '',
+        type: 'irc',
+        channels: '',
+    };
+
+    Object.defineProperty(connection, 'toUri', {
+        value: () => connectionToUri(connection),
+    });
+
+    return connection;
+}
+
+const presetServerRegex = /^(?:(?<name>[^|\r\n]+)\|)?(?:(?<proto>(?:irc|ws)s?):\/\/)?(?<server>[^:/#?\r\n]+|(?:\[[^\]]+\]))(?::(?:(?<tls>\+)?(?<port>\d+)))?(?<path>\/([^#?\r\n])+)?(?<channels>[#&][^?\r\n]+)?(?:\?(?<params>.+))?$/;
+
 /**
  * Parse preset server string to an object
  * format: freenode|irc.freenode.net:+6697
  * @param {string} input Preset server string
  */
 export function parsePresetServer(input) {
-    let ret = {
-        name: '',
-        server: '',
-        port: 6667,
-        tls: false,
-    };
-
-    ret.toUri = () => `${ret.server}:${ret.tls ? '+' : ''}${ret.port}`;
-
-    let val = input;
-
-    let pipePos = val.indexOf('|');
-    if (pipePos > -1) {
-        ret.name = val.substr(0, pipePos);
-        val = val.substr(pipePos + 1);
+    const match = presetServerRegex.exec(input);
+    if (!match || !match.groups) {
+        return null;
     }
 
-    let colonPos = val.indexOf(':');
-    if (colonPos === -1) {
-        ret.server = val;
-        val = '';
+    const conn = getDefaultConnection();
+
+    if (match.groups.tls === '+') {
+        conn.tls = true;
+    }
+
+    if (match.groups.proto === 'ircs') {
+        conn.port = 6697;
+        conn.tls = true;
+    } else if (match.groups.proto === 'ws') {
+        conn.port = 8067;
+        conn.direct = true;
+    } else if (match.groups.proto === 'wss') {
+        conn.port = 8097;
+        conn.tls = true;
+        conn.direct = true;
+    }
+
+    if (match.groups.port) {
+        conn.port = parseInt(match.groups.port, 10);
+    }
+
+    if (match.groups.name) {
+        conn.name = match.groups.name;
     } else {
-        ret.server = val.substr(0, colonPos);
-        val = val.substr(colonPos + 1);
+        conn.name = match.groups.server;
     }
 
-    if (val[0] === '+') {
-        ret.tls = true;
-        val = val.substr(1);
+    if (match.groups.path) {
+        conn.path = match.groups.path;
     }
 
-    if (val.length > 0) {
-        ret.port = parseInt(val, 10);
-        val = '';
+    if (match.groups.params) {
+        conn.params = new URLSearchParams(match.groups.params);
     }
 
-    if (!ret.name) {
-        ret.name = ret.server;
+    if (conn.params?.has('type')) {
+        let type = conn.params.get('type');
+        if (type === 'znc') {
+            type = 'bnc';
+        }
+
+        if (['irc', 'bnc'].includes(type)) {
+            conn.type = type;
+        }
     }
 
-    return ret;
+    if (match.groups.channels) {
+        conn.channels = conn.type === 'bnc'
+            ? match.groups.channels.slice(1)
+            : match.groups.channels;
+    }
+
+    conn.server = match.groups.server;
+
+    return conn;
+}
+
+export function connectionToUri(conn) {
+    let proto = (conn.direct) ? 'ws' : 'irc';
+
+    if (conn.tls) {
+        proto += 's';
+    }
+
+    return `${proto}://${conn.server}:${conn.port}${conn.path}`;
 }
 
 /**

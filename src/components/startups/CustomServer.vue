@@ -1,103 +1,68 @@
 <template>
-    <div :class="[is_connecting ? 'kiwi-customserver--connecting' : '']" class="kiwi-customserver">
-        <div class="kiwi-customserver-container">
-            <h2 v-if="!is_connecting" v-html="title" />
-            <h2 v-else>
-                {{ $t('connecting') }}
-                <a class="u-link" @click="infoClick">
-                    <i class="fa fa-info-circle" aria-hidden="true" />
-                </a>
-            </h2>
-
-            <transition name="kiwi-connectingloader">
-                <form
-                    v-if="!is_connecting"
-                    class="u-form u-form--big kiwi-customserver-form"
-                    @submit.prevent="startUp"
+    <startup-layout
+        ref="layout"
+        class="kiwi-customserver"
+    >
+        <template #connection>
+            <form
+                class="u-form kiwi-customserver-form"
+                @submit.prevent="startUp"
+            >
+                <h2 v-html="greetingText" />
+                <div
+                    v-if="network && (connectErrors.length > 0 || network.state_error)"
+                    class="kiwi-customserver-error"
                 >
-                    <div v-if="network && network.state_error" class="kiwi-customserver-error">
-                        We couldn't connect to the server :(
+                    <template v-if="connectErrors.length > 0">
+                        <span v-for="err in connectErrors" :key="err">{{ err }}</span>
+                    </template>
+                    <template v-else>
+                        <span>{{ $t('network_noconnect') }}</span>
                         <span>{{ readableStateError(network.state_error) }}</span>
-                    </div>
+                    </template>
+                </div>
 
-                    <template v-if="server_type === 'default'">
-                        <input-text v-model="server" :label="$t('server')">
-                            <span
-                                :class="[tls ? 'kiwi-customserver-tls--enabled' : '']"
-                                class="fa-stack fa-lg kiwi-customserver-tls"
-                                @click="tls=!tls"
-                            >
-                                <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock" />
-                                <i
-                                    v-if="!tls"
-                                    class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"
-                                />
-                            </span>
-                        </input-text>
+                <server-selector
+                    v-if="showSelector"
+                    :enable-custom="startupOptions.enableCustom ?? true"
+                    :show-path="true"
+                    :connection="connection"
+                    @selected="presetSelected=$event"
+                />
 
+                <tabbed-view
+                    ref="tabs"
+                    v-model="connection.type"
+                    :show-tabs="showTabs"
+                    class="kiwi-customserver-tabs"
+                >
+                    <tabbed-tab header="Network" name="irc">
                         <input-text
                             v-model="nick"
                             :label="$t('nick')"
                             class="kiwi-customserver-nick"
+                            :class="{'kiwi-customserver-nick--invalid': !isNickValid}"
                         />
 
                         <label class="kiwi-customserver-have-password">
                             <input v-model="show_password_box" type="checkbox">
                             <span> {{ $t('password_have') }} </span>
                         </label>
-                        <input-text
-                            v-if="show_password_box"
-                            v-model="password"
-                            v-focus
-                            :label="$t('password')"
-                            :show-plain-text="true"
-                            type="password"
-                        />
 
-                        <input-text v-model="channel" :label="$t('channel')" />
-                    </template>
+                        <transition-expand>
+                            <input-text
+                                v-if="show_password_box"
+                                v-model="password"
+                                v-focus
+                                :label="$t('password')"
+                                :show-plain-text="true"
+                                type="password"
+                            />
+                        </transition-expand>
 
-                    <template v-if="server_type === 'default_simple'">
-                        <input-text
-                            v-model="nick"
-                            :label="$t('nick')"
-                            class="kiwi-customserver-nick"
-                        />
-
-                        <label class="kiwi-customserver-have-password">
-                            <input v-model="show_password_box" type="checkbox">
-                            <span>{{ $t('password_have') }}</span>
-                        </label>
-                        <input-text
-                            v-if="show_password_box"
-                            v-model="password"
-                            v-focus
-                            :label="$t('password')"
-                            type="password"
-                        />
-
-                        <input-text
-                            v-model="channel"
-                            :label="$t('channel')"
-                            class="kiwi-customserver-channel"
-                        />
-                    </template>
-
-                    <template v-if="server_type === 'znc'">
-                        <input-text v-model="server" :label="$t('server')">
-                            <span
-                                :class="[tls ? 'kiwi-customserver-tls--enabled' : '']"
-                                class="fa-stack fa-lg kiwi-customserver-tls"
-                                @click="tls=!tls"
-                            >
-                                <i class="fa fa-lock fa-stack-1x kiwi-customserver-tls-lock" />
-                                <i
-                                    v-if="!tls"
-                                    class="fa fa-times fa-stack-1x kiwi-customserver-tls-minus"
-                                />
-                            </span>
-                        </input-text>
-
+                        <input-text v-model="connection.channels" :label="$t('channels')" />
+                    </tabbed-tab>
+                    <tabbed-tab header="Bouncer" name="bnc">
                         <input-text
                             v-model="nick"
                             :label="$t('username')"
@@ -105,29 +70,40 @@
                         />
 
                         <input-text
-                            v-if="znc_network_support"
-                            v-model="znc_network"
-                            :label="$t('network')"
+                            v-model="password"
+                            :label="$t('password')"
+                            type="password"
                         />
-                        <input-text v-model="password" :label="$t('password')" type="password" />
-                    </template>
 
-                    <button type="submit" class="u-button u-button-primary u-submit">
-                        {{ buttonText }}
-                    </button>
+                        <input-text
+                            v-model="connection.channels"
+                            :label="$t('networks')"
+                        />
+                    </tabbed-tab>
+                </tabbed-view>
 
-                    <div v-if="show_type_switcher" class="kiwi-customserver-server-types">
-                        <a class="u-link" @click="server_type = 'default'">{{ $t('network') }}</a>
-                        <a class="u-link" @click="server_type = 'znc'">{{ $t('znc') }}</a>
+                <div v-if="termsContent" class="kiwi-customserver-terms">
+                    <div>
+                        <input v-model="termsAccepted" type="checkbox">
                     </div>
-                </form>
-
-                <div v-else class="kiwi-customserver-loader">
-                    <i class="fa fa-spin fa-spinner" aria-hidden="true" />
+                    <div class="kiwi-customserver-terms-content" v-html="termsContent" />
                 </div>
-            </transition>
-        </div>
-    </div>
+
+                <button
+                    :disabled="!readyToStart"
+                    type="submit"
+                    class="u-button u-button-primary u-submit kiwi-customserver-start"
+                >
+                    <div v-if="!network || network.state === 'disconnected'" v-html="buttonText" />
+                    <template v-else>
+                        <i class="fa fa-spin fa-spinner" aria-hidden="true" />
+                    </template>
+                </button>
+
+                <div v-if="footerText" v-html="footerText" />
+            </form>
+        </template>
+    </startup-layout>
 </template>
 
 <script>
@@ -135,49 +111,158 @@
 
 import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
+import * as TextFormatting from '@/helpers/TextFormatting';
+import Logger from '@/libs/Logger';
+
+import StartupLayout from './CommonLayout';
+import ServerSelector from '../ServerSelector';
+
+const log = Logger.namespace('CustomServer');
 
 export default {
-    data: function data() {
+    components: {
+        StartupLayout,
+        ServerSelector,
+    },
+    data() {
         return {
-            title: 'Where are you connecting today?',
-            buttonText: '',
-            server_type: 'default',
-            server: '',
-            tls: false,
             nick: '',
             password: '',
-            encoding: 'utf8',
-            channel: '',
-            znc_network: '',
-            znc_network_support: true,
-            direct: false,
-            direct_path: '',
-            show_type_switcher: true,
             show_password_box: false,
-            is_connecting: false,
             network: null,
+            isFragment: false,
+            showSelector: false,
+            termsAccepted: false,
+            presetSelected: 'custom',
+            connectErrors: [],
+            connection: Misc.getDefaultConnection(),
         };
     },
-    created: async function created() {
+    computed: {
+        startupOptions() {
+            return this.$state.getSetting('settings.startupOptions');
+        },
+        greetingText() {
+            const greeting = this.startupOptions.greetingText;
+            if (typeof greeting === 'string') {
+                return greeting;
+            }
+
+            if (this.isFragment) {
+                return this.$t('start_greeting');
+            }
+
+            return this.$t('customserver_where');
+        },
+        showTabs() {
+            if (this.isFragment || this.presetSelected !== 'custom') {
+                return false;
+            }
+            return this.startupOptions.enableTabs ?? true;
+        },
+        termsContent() {
+            const terms = this.startupOptions.termsContent;
+            return typeof terms === 'string' ?
+                terms :
+                '';
+        },
+        buttonText() {
+            const greeting = this.startupOptions.buttonText;
+            return typeof greeting === 'string' ?
+                greeting :
+                this.$t('connect');
+        },
+        footerText() {
+            const footer = this.startupOptions.footerText;
+            return typeof footer === 'string' ?
+                footer :
+                '';
+        },
+        isNickValid() {
+            let nickPatternStr = this.$state.getSetting('settings.startupOptions.nick_format');
+            let nickPattern = '';
+            if (!nickPatternStr) {
+                // Nicks cannot start with [0-9- ]
+                // ? is not a valid nick character but we allow it as it gets replaced
+                // with a number.
+                nickPattern = /^[a-z_\\[\]{}^`|][a-z0-9_\-\\[\]{}^`|]*$/i;
+            } else {
+                // Support custom pattern matches. Eg. only '@example.com' may be allowed
+                // on some IRCDs
+                let pattern = '';
+                let flags = '';
+                if (nickPatternStr[0] === '/') {
+                    // Custom regex
+                    let pos = nickPatternStr.lastIndexOf('/');
+                    pattern = nickPatternStr.substring(1, pos);
+                    flags = nickPatternStr.substr(pos + 1);
+                } else {
+                    // Basic contains rule
+                    pattern = _.escapeRegExp(nickPatternStr);
+                    flags = 'i';
+                }
+
+                try {
+                    nickPattern = new RegExp(pattern, flags);
+                } catch (error) {
+                    log.error('Nick format error: ' + error.message);
+                    return false;
+                }
+            }
+
+            return this.nick.match(nickPattern);
+        },
+        readyToStart() {
+            let ready = !!this.nick;
+
+            if (!this.connection.server) {
+                return false;
+            }
+
+            if (!this.isNickValid) {
+                ready = false;
+            }
+
+            if (this.termsContent && !this.termsAccepted) {
+                ready = false;
+            }
+
+            return ready;
+        },
+    },
+    created() {
+        const options = this.startupOptions;
+
+        if (Misc.queryStringVal('nick')) {
+            this.nick = Misc.queryStringVal('nick');
+        } else {
+            this.nick = options.nick;
+        }
+
+        this.nick = Misc.processNickRandomNumber(this.nick);
+
+        if (options.bouncer) {
+            this.connection.type = 'bnc';
+        }
+
         let saveThisSessionsState = false;
 
         // If we have networks from a previous state, launch directly into it
         if (this.$state.networks.length > 0) {
-            let network = this.$state.networks[0];
+            const network = this.$state.networks[0];
             this.$state.setActiveBuffer(network.id, network.serverBuffer().name);
             saveThisSessionsState = true;
             this.$emit('start');
-        } else if (window.location.hash.substr(1)) {
-            let fragment = window.location.hash.substr(1);
+        } else if (window.location.hash.slice(1)) {
+            const fragment = decodeURIComponent(window.location.hash.slice(1));
 
-            // Check to see if we're dealing with an encoded irc: uri (browsers do this
-            // when clicking an IRC link)
-            let uriCheck = fragment.substr(0, 7).toLowerCase();
-            if (uriCheck === 'ircs%3a' || uriCheck.substr(0, 6) === 'irc%3a') {
-                fragment = decodeURIComponent(fragment);
-            }
-
-            let connections = Misc.parseIrcUri(fragment);
+            const connections = [];
+            fragment.split(';').filter((serverStr) => !!serverStr.trim()).forEach((serverStr) => {
+                const conn = Misc.parsePresetServer(serverStr);
+                if (conn) {
+                    connections.push(conn);
+                }
+            });
 
             // If more than 1 connection string is given, skip the connection screen
             // and add them all right away.
@@ -186,47 +271,22 @@ export default {
                 this.applyDefaults();
             } else if (connections.length === 1) {
                 saveThisSessionsState = false;
-                this.server_type = 'default_simple';
-                this.show_type_switcher = false;
-
-                let con = connections[0];
-                this.server = con.server + ':' + con.port;
-                this.tls = con.tls;
-                this.nick = this.processNickRandomNumber(con.nick);
-                this.channel = con.channels.join(',');
-                this.direct = con.direct;
-                this.encoding = con.encoding;
-
-                if (con.params.type === 'znc') {
-                    // Older ZNC versions only support user:pass while newer supports
-                    // user/network:pass. Setting the network to _ denotes that we are
-                    // connecting to an older ZNC without network support.
-                    if (con.params.network === '_') {
-                        this.znc_network_support = false;
-                    } else {
-                        this.znc_network = con.params.network || '';
-                    }
-                    this.server_type = 'znc';
-                    this.title = 'Enter your password to connect to ZNC';
-                } else {
-                    this.title = 'Enter a nickname to join';
-                }
+                this.isFragment = true;
+                Object.assign(this.connection, connections[0]);
             } else if (connections.length > 1) {
                 saveThisSessionsState = false;
+                connections.forEach((conn, idx) => {
+                    let nick = options.nick;
+                    if (conn.params?.has('nick')) {
+                        nick = conn.params.get('nick');
+                    } else {
+                        nick = Misc.queryStringVal('nick') || nick;
+                    }
+                    nick = Misc.processNickRandomNumber(nick);
 
-                connections.forEach((con, idx) => {
-                    let net = this.$state.addNetwork(con.server, con.nick, {
-                        server: con.server,
-                        port: con.port,
-                        tls: con.tls,
-                        direct: con.direct,
-                        password: con.password || '',
-                    });
+                    const password = conn.password || '';
 
-                    con.channels.forEach((channelName) => {
-                        let buffer = this.$state.addBuffer(net.id, channelName);
-                        buffer.enabled = true;
-                    });
+                    const net = this.createNetwork(conn, nick, password);
 
                     // Set the first server buffer active
                     if (idx === 0) {
@@ -241,15 +301,6 @@ export default {
             this.applyDefaults();
         }
 
-        if (this.$state.settings.startupOptions.greetingText) {
-            this.title = this.$state.settings.startupOptions.greetingText;
-        }
-        if (this.$state.settings.startupOptions.buttonText) {
-            this.buttonText = this.$state.settings.startupOptions.buttonText;
-        } else {
-            this.buttonText = this.$t('connect');
-        }
-
         if (saveThisSessionsState) {
             this.$state.persistence.watchStateForChanges();
         }
@@ -258,238 +309,212 @@ export default {
         readableStateError(err) {
             return Misc.networkErrorMessage(err);
         },
-        startUp: function startUp() {
-            let net;
+        createNetwork(conn, nick, password, netName) {
+            const options = this.startupOptions;
 
-            if (!this.nick) {
-                this.$el.querySelector('.kiwi-customserver-nick input').focus();
-                return;
-            }
+            const net = this.$state.addNetwork(TextFormatting.t('network'), nick, {
+                server: conn.server,
+                port: conn.port,
+                tls: conn.tls,
+                direct: conn.direct,
+                path: conn.path,
+                password: password,
 
-            let nick = this.nick;
+                encoding: (options.encoding || 'utf-8').trim(),
+                gecos: options.gecos,
+                username: options.username,
+            });
 
-            if (this.server_type === 'znc') {
-                // Older ZNC versions only support user:pass while newer supports user/network:pass
-                let password = nick;
-                if (this.znc_network) {
-                    password += '/' + this.znc_network;
-                }
-                password += ':' + this.password;
-
-                net = this.$state.addNetwork('ZNC', 'ZNC', {
-                    server: this.server.split(':')[0],
-                    port: parseInt(this.server.split(':')[1] || 6667, 10),
-                    tls: this.tls,
-                    password: password,
-                });
+            if (conn.type === 'bnc') {
+                // Bouncer mode uses server PASS
+                net.connection.password = netName
+                    ? `${this.nick}/${netName}:${password}`
+                    : `${this.nick}:${password}`;
+                net.password = '';
             } else {
-                net = this.$state.addNetwork('Network', nick, {
-                    server: this.server.split(':')[0],
-                    port: parseInt(this.server.split(':')[1] || 6667, 10),
-                    tls: this.tls,
-                    password: this.password,
-                    direct: this.direct,
-                    path: this.direct_path,
-                    encoding: this.encoding,
-                });
+                net.connection.password = '';
+                net.password = password;
             }
 
-            if (net) {
-                let hasSetActiveBuffer = false;
+            return net;
+        },
+        startUp() {
+            const conn = this.connection;
+            let netList = [];
 
-                let bufferObjs = Misc.extractBuffers(this.channel);
-                bufferObjs.forEach((bufferObj, idx) => {
-                    let buffer = this.$state.addBuffer(net.id, bufferObj.name);
-                    buffer.enabled = true;
+            if (conn.type === 'irc') {
+                this.network = this.createNetwork(conn, this.nick, this.password);
+
+                // Only switch to the first channel we join if multiple are being joined
+                let hasSwitchedActiveBuffer = false;
+                let bufferObjs = Misc.extractBuffers(conn.channels);
+                bufferObjs.forEach((bufferObj) => {
+                    let newBuffer = this.$state.addBuffer(this.network.id, bufferObj.name);
+                    newBuffer.enabled = true;
+
+                    if (newBuffer && !hasSwitchedActiveBuffer) {
+                        this.$state.setActiveBuffer(this.network.id, newBuffer.name);
+                        hasSwitchedActiveBuffer = true;
+                    }
 
                     if (bufferObj.key) {
-                        buffer.key = bufferObj.key;
-                    }
-
-                    if (idx === 0) {
-                        this.$state.setActiveBuffer(net.id, buffer.name);
-                        hasSetActiveBuffer = true;
+                        newBuffer.key = bufferObj.key;
                     }
                 });
 
-                if (!hasSetActiveBuffer) {
-                    this.$state.setActiveBuffer(net.id, net.serverBuffer().name);
+                if (!hasSwitchedActiveBuffer) {
+                    this.$state.setActiveBuffer(this.network.id, this.network.serverBuffer().name);
                 }
+            } else {
+                // conn.type === 'bnc'
+                netList = conn.channels.split(',').filter((n) => !!n).map((n) => n.trim());
 
-                this.is_connecting = true;
-                this.network = net;
-                net.ircClient.connect();
-
-                let onRegistered = () => {
-                    setTimeout(() => { this.is_connecting = false; }, 1000);
-                    this.$emit('start');
-                    net.ircClient.off('registered', onRegistered);
-                    net.ircClient.off('close', onClosed);
-                };
-                let onClosed = () => {
-                    setTimeout(() => { this.is_connecting = false; }, 1000);
-                    net.ircClient.off('registered', onRegistered);
-                    net.ircClient.off('close', onClosed);
-                };
-                net.ircClient.once('registered', onRegistered);
-                net.ircClient.once('close', onClosed);
-            }
-        },
-        processNickRandomNumber: function processNickRandomNumber(nick) {
-            // Replace ? with a random number
-            let tmp = (nick || '').replace(/\?/g, () => Math.floor(Math.random() * 100).toString());
-            return _.trim(tmp);
-        },
-        infoClick: function infoClick() {
-            if (this.network) {
-                let net = this.network;
-                this.$state.setActiveBuffer(net.id, net.serverBuffer().name);
-            }
-            this.$emit('start');
-        },
-        applyDefaults: function applyDefaults() {
-            this.server = this.$state.settings.startupOptions.server;
-            this.tls = this.$state.settings.startupOptions.tls;
-            this.nick = this.processNickRandomNumber(this.$state.settings.startupOptions.nick);
-            this.channel = this.$state.settings.startupOptions.channel;
-            this.direct = this.$state.settings.startupOptions.direct;
-            this.direct_path = this.$state.settings.startupOptions.direct_path;
-            this.encoding = this.$state.settings.startupOptions.encoding;
-
-            // Only include the port in the server box if it's not the default
-            if (this.$state.settings.startupOptions.port.toString() !== '6667') {
-                this.server += ':' + this.$state.settings.startupOptions.port.toString();
+                this.network = this.createNetwork(conn, this.nick, this.password, netList.shift());
+                this.$state.setActiveBuffer(this.network.id, this.network.serverBuffer().name);
             }
 
-            this.title = 'Where are you connecting today?';
+            this.network.ircClient.connect();
+            let onRegistered = () => {
+                if (this.$refs.layout) {
+                    this.$refs.layout.close();
+                }
+                this.network.ircClient.off('registered', onRegistered);
+                this.network.ircClient.off('close', onClosed);
+                this.network.ircClient.off('irc error', onError);
+
+                netList.forEach((netName) => {
+                    const net = this.createNetwork(conn, this.nick, this.password, netList.shift());
+                    net.ircClient.connect();
+                });
+            };
+            let onClosed = () => {
+                let lastError = this.network.last_error;
+                if (lastError && !this.connectErrors.includes(lastError)) {
+                    this.connectErrors.push(lastError);
+                }
+                this.network.ircClient.off('registered', onRegistered);
+                this.network.ircClient.off('close', onClosed);
+                this.network.ircClient.off('irc error', onError);
+            };
+            let onError = (event) => {
+                if (!event.reason || this.connectErrors.includes(event.reason)) {
+                    return;
+                }
+                this.connectErrors.push(event.reason);
+            };
+            this.network.ircClient.once('registered', onRegistered);
+            this.network.ircClient.once('close', onClosed);
+            this.network.ircClient.on('irc error', onError);
+        },
+        applyDefaults() {
+            const options = this.startupOptions;
+
+            this.showSelector = true;
+
+            const port = options.port || 6697;
+            Object.assign(this.connection, {
+                server: options.server || '',
+                port: port,
+                tls: options.tls || port !== 6667,
+                direct: options.direct || false,
+                path: options.direct_path || '',
+                type: options.bouncer ? 'bnc' : 'irc',
+                channels: options.channel || '',
+            });
         },
     },
 };
 </script>
 
-<style>
-
-.kiwi-customserver {
-    height: 100%;
-    overflow-y: auto;
-    box-sizing: border-box;
-    text-align: center;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-}
-
+<style lang="less">
 .kiwi-customserver-start {
     font-size: 1.1em;
     cursor: pointer;
 }
 
 .kiwi-customserver-form {
-    max-width: 300px;
-    margin: 0 auto;
-    max-height: 500px;
-    overflow: hidden;
-    border-radius: 0.5em;
-    padding: 20px 1em;
+    width: 70%;
+    padding: 20px;
+}
+
+@media (max-width: 1025px) {
+    .kiwi-customserver-form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 850px) {
+    .kiwi-customserver-form {
+        background: var(--brand-default-bg);
+        border-radius: 5px;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media (max-width: 600px) {
+    .kiwi-customserver-form {
+        max-width: 350px;
+    }
 }
 
 .kiwi-customserver .u-input-text,
-.kiwi-customserver .kiwi-customserver-have-password input {
-    margin-bottom: 1.5em;
-}
-
-.kiwi-customserver .kiwi-customserver-have-password {
-    margin-bottom: 20px;
-}
-
-.kiwi-customserver-have-password input:checked {
-    margin-bottom: 0;
-}
-
-.kiwi-customserver-tls {
-    cursor: pointer;
-    color: #bfbfbf;
-}
-
-.kiwi-customserver-tls--enabled {
-    color: green;
-}
-
-.kiwi-customserver-tls-lock {
-    font-size: 1.2em;
-}
-
-.kiwi-customserver-tls-minus {
-    color: red;
-    font-size: 0.7em;
-    top: 3px;
-}
-
-.kiwi-customserver-loader {
-    margin-top: 1em;
-    font-size: 2em;
-}
-
-.kiwi-customserver-channel {
-    margin-top: 1em;
+.kiwi-customserver .kiwi-customserver-have-password,
+.kiwi-customserver-terms {
+    margin-bottom: 1em;
 }
 
 .kiwi-customserver-form .u-submit {
     width: 100%;
+    height: 50px;
     padding: 0;
     letter-spacing: 1px;
-    font-weight: 400;
-    margin: 0 0 20px 0;
+    margin: 1em 0 2em 0;
     transition: all 0.2s;
     border: none;
-    font-size: 1.2em;
+    font-size: 1.3em;
     line-height: 36px;
+    cursor: pointer;
 }
 
-.kiwi-customserver-server-types {
-    font-size: 0.9em;
-    text-align: center;
-}
-
-.kiwi-customserver-server-types a {
-    margin: 0 1em;
+.kiwi-customserver-form .u-submit[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
 }
 
 .kiwi-customserver h2 {
-    margin-bottom: 1.5em;
-}
-
-.kiwi-customserver h2 i {
-    font-size: 0.8em;
-    margin-left: 1em;
-}
-
-.kiwi-customserver--connecting h2 {
-    transition: margin-top 0.7s;
-    margin-top: 100px;
+    margin: 0 0 40px 0;
+    padding: 0;
+    cursor: default;
+    font-weight: 600;
+    font-size: 2.2em;
+    text-align: center;
+    line-height: 1.2em;
 }
 
 .kiwi-customserver-error {
     text-align: center;
     margin: 1em 0;
-    padding: 0.3em;
+    padding: 1em;
 }
 
 .kiwi-customserver-error span {
     display: block;
     font-style: italic;
+    margin-bottom: 8px;
 }
 
-.kiwi-connectingloader-enter-active,
-.kiwi-connectingloader-leave-active {
-    transition: max-height 0.5s;
+.kiwi-customserver-error span:last-of-type {
+    margin-bottom: 0;
 }
 
-.kiwi-connectingloader-enter,
-.kiwi-connectingloader-leave-to {
-    max-height: 0;
-}
+.kiwi-customserver-tabs .u-tabbed-view-tabs {
+    display: flex;
+    padding-top: 0;
+    margin-bottom: 1em;
 
+    .u-tabbed-view-tab {
+        flex-grow: 1;
+        text-align: center;
+    }
+}
 </style>

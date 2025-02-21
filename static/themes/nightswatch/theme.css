@@ -17,7 +17,7 @@
     /* Input elements */
     --brand-input-border: #000000;
     --brand-input-fg: #616161;
-    --brand-input-bg: transparent;
+    --brand-input-bg: #1b1b1b;
 
     /* Connection Indicator top */
     --comp-workspace-before-bg: var(--brand-primary);
@@ -275,6 +275,10 @@
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button.kiwi-networksettings-server-type-active {
     background: #444;
     color: #fff;
+}
+
+.kiwi-serverselector-connection-tls i {
+    color: #24614d;
 }
 
 .kiwi-channellist-topic a {

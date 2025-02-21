@@ -4,50 +4,66 @@
         class="kiwi-serverselector"
     >
         <div v-if="usePreset && presetNetworks.length > 0" class="kiwi-serverselector-presets">
-            <label>
-                <span>{{ $t('server') }}</span>
-                <select v-model="presetServer">
-                    <option value="custom">Custom Server</option>
-                    <option disabled>-----------------</option>
-                    <option
-                        v-for="s in presetNetworks"
-                        :key="s.name"
-                        :value="toUri(s)"
-                    >{{ s.name }}</option>
-                </select>
+            <label for="kiwi_preset_server">
+                {{ $t(presetServer === 'custom' ? 'preset_servers' : 'server') }}
             </label>
+            <select id="kiwi_preset_server" v-model="presetServer" class="u-input">
+                <template v-if="enableCustom">
+                    <option value="custom">{{ $t('custom_server') }}</option>
+                    <option disabled>—</option>
+                </template>
+                <option
+                    v-for="(s, idx) in presetNetworks"
+                    :key="'preset_'+idx"
+                    :value="idx"
+                >{{ s.name }}</option>
+            </select>
         </div>
 
-        <template v-if="showCustom || presetNetworks.length === 0 || !usePreset">
-            <input-text
-                v-model="connection.server"
-                v-focus
-                :label="$t('server')"
-                class="kiwi-networksettings-connection-address"
-            />
-
-            <input-text
-                v-model="connection.port"
-                :label="$t('settings_port')"
-                type="number"
-                class="kiwi-networksettings-connection-port"
+        <transition-expand>
+            <div
+                v-if="presetSelected === 'custom' || presetNetworks.length === 0 || !usePreset"
+                class="kiwi-serverselector-connection"
             >
-                <span
-                    :class="{ 'kiwi-customserver-tls--enabled' : connection.tls }"
-                    class="fa-stack fa-lg kiwi-customserver-tls"
-                    @click="toggleTls"
+                <div class="kiwi-serverselector-connection-proto">
+                    <label for="kiwi_server_proto">
+                        {{ $t('protocol') }}
+                    </label>
+                    <select id="kiwi_server_proto" v-model="protocol" class="u-input">
+                        <option
+                            v-for="(s, idx) in serverProtocols"
+                            :key="'proto_'+idx"
+                            :value="s"
+                        >{{ s }}://</option>
+                    </select>
+                </div>
+
+                <input-text
+                    v-model="server"
+                    v-focus
+                    :label="$t('server')"
+                    class="kiwi-serverselector-connection-address"
+                    @paste="onServerPaste"
+                />
+
+                <input-text
+                    v-model="connection.port"
+                    :label="$t('settings_port')"
+                    type="number"
+                    class="kiwi-serverselector-connection-port"
                 >
-                    <i
-                        v-if="connection.tls"
-                        class="fa fa-lock fa-stack-1x fa-fw kiwi-customserver-tls-lock"
-                    />
-                    <i
-                        v-else
-                        class="fa fa-unlock fa-stack-1x fa-fw kiwi-customserver-tls-minus"
-                    />
-                </span>
-            </input-text>
-        </template>
+                    <span
+                        class="kiwi-serverselector-connection-tls"
+                        @click="toggleTls"
+                    >
+                        <i
+                            class="fa fa-stack-1x fa-fw"
+                            :class="[connection.tls ? 'fa-lock' : 'fa-unlock' ]"
+                        />
+                    </span>
+                </input-text>
+            </div>
+        </transition-expand>
     </div>
 </template>
 
@@ -55,108 +71,277 @@
 
 'kiwi public';
 
-import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
+
+import Logger from '@/libs/Logger';
+
+const log = Logger.namespace('ServerSelector');
 
 export default {
     props: {
-        usePreset: {
+        enableCustom: {
             type: Boolean,
             default: true,
         },
-        networkList: {
-            type: Array,
-            default: () => [],
+        showPath: {
+            type: Boolean,
+            default: false,
+        },
+        usePreset: {
+            type: Boolean,
+            default: true,
         },
         connection: {
             type: Object,
             default: () => {},
         },
     },
-    data: function data() {
+    data() {
         return {
-            name: '',
             presetNetworks: [],
-            showCustom: true,
+            presetSelected: 'custom',
+            serverAddress: '',
+            serverPath: '',
             willEmit: false,
         };
     },
     computed: {
         presetServer: {
             set(newVal) {
-                if (newVal === 'custom') {
-                    this.name = '';
-                    this.connection.server = '';
-                    this.connection.port = 6697;
-                    this.connection.tls = true;
+                this.presetSelected = newVal;
+                this.$emit('selected', newVal);
 
-                    this.showCustom = true;
-                } else {
-                    let addr = Misc.parsePresetServer(newVal);
-                    this.name = addr.name;
-                    this.connection.server = addr.server;
-                    this.connection.port = addr.port;
-                    this.connection.tls = addr.tls;
+                const conn = newVal === 'custom'
+                    ? Misc.getDefaultConnection()
+                    : this.presetNetworks[newVal];
 
-                    this.showCustom = false;
-                }
+                Object.assign(this.connection, conn);
             },
             get() {
-                return this.showCustom ?
-                    'custom' :
-                    this.toUri(this.connection);
+                return this.presetSelected;
+            },
+        },
+        server: {
+            get() {
+                return this.showPath
+                    ? this.connection.server + this.connection.path
+                    : this.connection.server;
+            },
+            set(value) {
+                const parts = value.split('/');
+                this.connection.server = parts[0];
+                if (parts.length > 1) {
+                    this.connection.path = `/${parts.slice(1).join('/')}`;
+                } else {
+                    this.connection.path = '';
+                }
+            },
+        },
+        serverProtocols() {
+            return this.$state.getSetting('settings.serverProtocols') || ['irc', 'ircs', 'ws', 'wss'];
+        },
+        protocol: {
+            get() {
+                let proto = this.connection.direct ? 'ws' : 'irc';
+                if (this.connection.tls) {
+                    proto += 's';
+                }
+                return proto;
+            },
+            set(newProto) {
+                const proto = this.protocol;
+
+                const portMap = {
+                    irc: 6667,
+                    ircs: 6697,
+                    ws: 8067,
+                    wss: 8097,
+                };
+
+                if (portMap[proto] === this.connection.port && portMap[newProto]) {
+                    this.connection.port = portMap[newProto];
+                }
+
+                switch (newProto) {
+                case 'irc':
+                    this.connection.tls = false;
+                    this.connection.direct = false;
+                    break;
+                case 'ircs':
+                    this.connection.tls = true;
+                    this.connection.direct = false;
+                    break;
+                case 'ws':
+                    this.connection.tls = false;
+                    this.connection.direct = true;
+                    break;
+                case 'wss':
+                    this.connection.tls = true;
+                    this.connection.direct = true;
+                    break;
+                default:
+                    log.error('invalid protocol');
+                }
             },
         },
     },
     created() {
-        if (this.networkList) {
-            this.importUris(this.networkList);
+        const networkList = this.$state.getSetting('settings.presetNetworks') || [];
+        if (networkList) {
+            this.importUris(networkList);
         }
 
         // If the given network is in the preset server list, select it
-        let con = this.connection;
-        if (_.find(this.presetNetworks, (s) => {
-            let match = s.server === con.server && s.port === con.port && s.tls === con.tls;
+        const con = this.connection;
+        const presetIdx = this.presetNetworks.findIndex((s) => {
+            let match = s.server === con.server
+                && s.port === con.port
+                && s.tls === con.tls
+                && s.direct === con.direct
+                && s.path === con.path;
             return match;
-        })) {
-            this.showCustom = false;
+        });
+
+        if (presetIdx > -1) {
+            this.presetServer = presetIdx.toString();
+        } else if (!this.enableCustom && !this.connection.server && this.presetNetworks.length) {
+            this.presetServer = '0';
         }
     },
     methods: {
-        toUri(s) {
-            return `${s.server}:${s.tls ? '+' : ''}${s.port}`;
+        onServerPaste(event) {
+            event.preventDefault();
+            const pasted = event.clipboardData.getData('text');
+
+            const conn = Misc.parsePresetServer(pasted);
+            if (conn) {
+                Object.assign(this.connection, conn);
+            } else {
+                this.connection.server = pasted;
+            }
         },
         toggleTls() {
-            this.connection.tls = !this.connection.tls;
+            const protocolMap = Object.fromEntries(
+                Object.entries({
+                    irc: 'ircs',
+                    ircs: 'irc',
+                    ws: 'wss',
+                    wss: 'ws',
+                }).filter(
+                    ([key, value]) => this.serverProtocols.includes(key)
+                        && this.serverProtocols.includes(value)
+                )
+            );
 
-            // Switching the port only if were currently using the most common TLS/plain text ports
-            if (this.connection.tls && this.connection.port === 6667) {
-                this.connection.port = 6697;
-            } else if (!this.connection.tls && this.connection.port === 6697) {
-                this.connection.port = 6667;
+            if (protocolMap[this.protocol]) {
+                this.protocol = protocolMap[this.protocol];
             }
         },
         importUris(serverList) {
             // [ 'freenode|irc.freenode.net:+6697', 'irc.snoonet.org:6667' ]
-            let servers = serverList.map((s) => Misc.parsePresetServer(s));
+            const servers = [];
+            serverList.forEach((server) => {
+                if (typeof server === 'object') {
+                    const conn = Misc.getDefaultConnection();
+                    Object.assign(conn, server);
+                    servers.push(conn);
+                    return;
+                }
+
+                const conn = Misc.parsePresetServer(server);
+                if (!conn) {
+                    log.error('failed to parse presetNetwork:', server);
+                    return;
+                }
+                servers.push(conn);
+            });
             this.$set(this, 'presetNetworks', servers);
         },
     },
 };
 </script>
 
-<style>
+<style lang="less">
+.kiwi-serverselector-type {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1em;
+
+    input {
+        margin: 0;
+    }
+
+    label {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+}
+.kiwi-serverselector {
+    input {
+        min-width: 0;
+    }
+}
 .kiwi-serverselector-presets {
     margin-bottom: 1em;
 }
 
-.kiwi-serverselector-presets label span {
-    margin-left: 0;
-    transition: opacity 0.2s, width 0.2s;
+.kiwi-serverselector-presets select {
+    width: 100%;
 }
 
-.kiwi-serverselector--custom .kiwi-serverselector-presets label span {
-    max-width: 0;
-    opacity: 0;
+.kiwi-serverselector-connection {
+    display: grid;
+    grid-template-columns: max-content auto minmax(0, max-content);
+    column-gap: 4px;
+    width: 100%;
+}
+
+.kiwi-serverselector-connection-proto {
+    display: inline-block;
+    overflow: hidden;
+
+    select {
+        appearance: none;
+    }
+}
+
+.kiwi-serverselector-connection-address {
+    display: inline-block;
+}
+
+.kiwi-serverselector-connection-port {
+    display: inline-block;
+
+    input {
+        // 5 char + padlock + padding
+        width: calc(5ch + 1.3em + 20px);
+    }
+
+    span {
+        position: absolute;
+        right: 2px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.kiwi-serverselector-connection-tls {
+    text-align: center;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.kiwi-serverselector-connection-tls i {
+    position: relative;
+    top: 1px;
+    font-size: 1.3em;
+}
+
+.kiwi-serverselector-type {
+    grid-column: 1 / 4;
 }
 </style>
