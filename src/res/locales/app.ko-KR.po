@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2024-04-07 00:19\n"
+"PO-Revision-Date: 2025-02-21 15:40\n"
 
 #: Start
 msgid "start_button"
@@ -194,6 +194,18 @@ msgstr "오프라인"
 #: Toggle Away Status
 msgid "toggle_away"
 msgstr "Toggle Away Status"
+
+#: Kick
+msgid "kick"
+msgstr "Kick"
+
+#: Ban
+msgid "ban"
+msgstr "Ban"
+
+#: Preview
+msgid "preview"
+msgstr "Preview"
 
 #: {{count}} week
 msgid "week"
@@ -578,6 +590,10 @@ msgstr "안 읽은 메시지"
 #: Reply in private
 msgid "reply_in_private"
 msgstr "Reply in private"
+
+#: Kick reason
+msgid "kick_reason"
+msgstr "Kick reason"
 
 #: Server details
 msgid "settings_server_details"
