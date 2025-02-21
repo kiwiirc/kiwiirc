@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2025-02-21 15:40\n"
+"PO-Revision-Date: 2025-02-21 17:16\n"
 
 #: Start
 msgid "start_button"
@@ -95,13 +95,25 @@ msgstr "Nick"
 msgid "channel"
 msgstr "Channel"
 
+#: Channels
+msgid "channels"
+msgstr "Channels"
+
 #: Messages
 msgid "messages"
 msgstr "Messages"
 
+#: Protocol
+msgid "protocol"
+msgstr "Protocol"
+
 #: Network
 msgid "network"
 msgstr "Network"
+
+#: Networks
+msgid "networks"
+msgstr "Networks"
 
 #: ZNC
 msgid "znc"
@@ -598,6 +610,14 @@ msgstr "Kick reason"
 #: Server details
 msgid "settings_server_details"
 msgstr "Server details"
+
+#: Preset Servers
+msgid "preset_servers"
+msgstr "Preset Servers"
+
+#: Custom Server
+msgid "custom_server"
+msgstr "Custom Server"
 
 #: Port
 msgid "settings_port"
@@ -1122,6 +1142,10 @@ msgstr "Rolls a {{sides}} sided dice and gets {{number}}"
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
 msgstr "You were mentioned in {{channel}}"
+
+#: Where are you connecting today?
+msgid "customserver_where"
+msgstr "Where are you connecting today?"
 
 #: Your IRC client
 msgid "personal_client"
