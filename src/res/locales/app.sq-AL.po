@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2024-01-04 09:46\n"
+"PO-Revision-Date: 2025-02-21 15:40\n"
 
 #: Start
 msgid "start_button"
@@ -194,6 +194,18 @@ msgstr "I larguar"
 #: Toggle Away Status
 msgid "toggle_away"
 msgstr "Shfaq/Fshih Gjendjen “I Larguar”"
+
+#: Kick
+msgid "kick"
+msgstr "Kick"
+
+#: Ban
+msgid "ban"
+msgstr "Ban"
+
+#: Preview
+msgid "preview"
+msgstr "Preview"
 
 #: {{count}} week
 msgid "week"
@@ -578,6 +590,10 @@ msgstr "Mesazhe të Palexuar"
 #: Reply in private
 msgid "reply_in_private"
 msgstr "Përgjigjiuni privatisht"
+
+#: Kick reason
+msgid "kick_reason"
+msgstr "Kick reason"
 
 #: Server details
 msgid "settings_server_details"
