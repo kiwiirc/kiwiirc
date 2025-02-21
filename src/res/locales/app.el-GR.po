@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2023-12-17 20:33\n"
+"PO-Revision-Date: 2025-02-21 15:40\n"
 
 #: Start
 msgid "start_button"
@@ -194,6 +194,18 @@ msgstr "Απών"
 #: Toggle Away Status
 msgid "toggle_away"
 msgstr "Εναλλαγή απών κατάστασης"
+
+#: Kick
+msgid "kick"
+msgstr "Kick"
+
+#: Ban
+msgid "ban"
+msgstr "Ban"
+
+#: Preview
+msgid "preview"
+msgstr "Preview"
 
 #: {{count}} week
 msgid "week"
@@ -578,6 +590,10 @@ msgstr "Μη Διαβασμένα Μηνύματα"
 #: Reply in private
 msgid "reply_in_private"
 msgstr "Απάντηση ιδιωτικά"
+
+#: Kick reason
+msgid "kick_reason"
+msgstr "Kick reason"
 
 #: Server details
 msgid "settings_server_details"
