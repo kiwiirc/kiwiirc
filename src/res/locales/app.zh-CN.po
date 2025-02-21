@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2025-02-21 15:40\n"
+"PO-Revision-Date: 2025-02-21 17:16\n"
 
 #: Start
 msgid "start_button"
@@ -95,13 +95,25 @@ msgstr "昵称"
 msgid "channel"
 msgstr "频道"
 
+#: Channels
+msgid "channels"
+msgstr "频道"
+
 #: Messages
 msgid "messages"
 msgstr "消息"
 
+#: Protocol
+msgid "protocol"
+msgstr "Protocol"
+
 #: Network
 msgid "network"
 msgstr "网络"
+
+#: Networks
+msgid "networks"
+msgstr "Networks"
 
 #: ZNC
 msgid "znc"
@@ -598,6 +610,14 @@ msgstr "Kick reason"
 #: Server details
 msgid "settings_server_details"
 msgstr "服务器信息"
+
+#: Preset Servers
+msgid "preset_servers"
+msgstr "Preset Servers"
+
+#: Custom Server
+msgid "custom_server"
+msgstr "Custom Server"
 
 #: Port
 msgid "settings_port"
@@ -1122,6 +1142,10 @@ msgstr "掷出{{sides}}面骰子，结果为{{number}}点"
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
 msgstr "您在 {{channel}} 被提到了"
+
+#: Where are you connecting today?
+msgid "customserver_where"
+msgstr "Where are you connecting today?"
 
 #: Your IRC client
 msgid "personal_client"
