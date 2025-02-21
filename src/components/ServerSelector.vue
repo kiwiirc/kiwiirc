@@ -216,6 +216,8 @@ export default {
             const conn = Misc.parsePresetServer(pasted);
             if (conn) {
                 Object.assign(this.connection, conn);
+            } else {
+                this.connection.server = pasted;
             }
         },
         toggleTls() {

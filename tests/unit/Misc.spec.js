@@ -37,6 +37,8 @@ describe('Misc.js', () => {
         ['example|wss://irc.example.com:8097/some/path/#chan1,#chan2', 'wss://irc.example.com:8097/some/path/', { name: 'example', server: 'irc.example.com', port: 8097, tls: true, direct: true, path: '/some/path/', channels: '#chan1,#chan2' }],
         ['example|wss://irc.example.com/some/path', 'wss://irc.example.com:8097/some/path', { name: 'example', server: 'irc.example.com', port: 8097, tls: true, direct: true, path: '/some/path' }],
         ['example|irc.example.com#test123', 'irc://irc.example.com:6667', { name: 'example', server: 'irc.example.com', port: 6667, tls: false, direct: false, channels: '#test123' }],
+        ['[2600:1406:bc00:53::b81e:94ce]', 'irc://[2600:1406:bc00:53::b81e:94ce]:6667', { name: '[2600:1406:bc00:53::b81e:94ce]', server: '[2600:1406:bc00:53::b81e:94ce]', port: 6667, tls: false, direct: false }],
+        ['23.192.228.84', 'irc://23.192.228.84:6667', { name: '23.192.228.84', server: '23.192.228.84', port: 6667, tls: false, direct: false }],
     ];
     test.each(networkParseTest)('should parse network preset [%#]', (item, uri, obj, ...args) => {
         let server = Misc.parsePresetServer(item);

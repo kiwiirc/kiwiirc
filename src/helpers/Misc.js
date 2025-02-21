@@ -252,7 +252,7 @@ export function getDefaultConnection() {
     return connection;
 }
 
-const presetServerRegex = /^(?:(?<name>[^|\r\n]+)\|)?(?:(?<proto>(?:irc|ws)s?):\/\/)?(?<server>[^:/#?\r\n]+)(?::(?:(?<tls>\+)?(?<port>\d+)))?(?<path>\/([^#?\r\n])+)?(?<channels>[#&][^?\r\n]+)?(?:\?(?<params>.+))?$/;
+const presetServerRegex = /^(?:(?<name>[^|\r\n]+)\|)?(?:(?<proto>(?:irc|ws)s?):\/\/)?(?<server>[^:/#?\r\n]+|(?:\[[^\]]+\]))(?::(?:(?<tls>\+)?(?<port>\d+)))?(?<path>\/([^#?\r\n])+)?(?<channels>[#&][^?\r\n]+)?(?:\?(?<params>.+))?$/;
 
 /**
  * Parse preset server string to an object
