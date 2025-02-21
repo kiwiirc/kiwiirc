@@ -107,13 +107,13 @@ export default class InputHandler {
         };
 
         // Plugins may tap into this event to handle a command themselves
-        this.state.$emit('input.command.' + command, eventObj, command, params);
+        this.state.$emit('input.command.' + command, eventObj, command, params, context);
         if (eventObj.handled) {
             return;
         }
 
         if (inputCommands[command.toLowerCase()]) {
-            inputCommands[command.toLowerCase()].call(this, eventObj, command, params);
+            inputCommands[command.toLowerCase()].call(this, eventObj, command, params, context);
         }
 
         if (!eventObj.handled) {
@@ -128,7 +128,7 @@ export default class InputHandler {
  */
 
 // /lines allows aliases to send multiple commands, separated by |
-inputCommands.lines = function inputCommandLines(event, command, line) {
+inputCommands.lines = function inputCommandLines(event, command, line, context) {
     event.handled = true;
 
     line.split('|').forEach((subLine) => {
@@ -136,10 +136,10 @@ inputCommands.lines = function inputCommandLines(event, command, line) {
     });
 };
 
-function handleMessage(type, event, command, line) {
+function handleMessage(type, event, command, line, context) {
     event.handled = true;
 
-    let network = this.state.getActiveNetwork();
+    const { network } = context;
 
     let spaceIdx = line.indexOf(' ');
     if (spaceIdx === -1) spaceIdx = line.length;
@@ -200,21 +200,20 @@ function handleMessage(type, event, command, line) {
     network.ircClient[fnName](bufferName, message);
 }
 
-inputCommands.msg = function inputCommandMsg(event, command, line) {
-    handleMessage.call(this, 'privmsg', event, command, line);
+inputCommands.msg = function inputCommandMsg(event, command, line, context) {
+    handleMessage.call(this, 'privmsg', event, command, line, context);
 };
-inputCommands.action = function inputCommandMsg(event, command, line) {
-    handleMessage.call(this, 'action', event, command, line);
+inputCommands.action = function inputCommandMsg(event, command, line, context) {
+    handleMessage.call(this, 'action', event, command, line, context);
 };
-inputCommands.notice = function inputCommandMsg(event, command, line) {
-    handleMessage.call(this, 'notice', event, command, line);
+inputCommands.notice = function inputCommandMsg(event, command, line, context) {
+    handleMessage.call(this, 'notice', event, command, line, context);
 };
-inputCommands.dice = function inputCommandDice(event, command, line) {
+inputCommands.dice = function inputCommandDice(event, command, line, context) {
     // /dice 100
 
     event.handled = true;
-    let buffer = this.state.getActiveBuffer();
-    let network = this.state.getActiveNetwork();
+    const { network, buffer } = context;
 
     let sides = line.replace(/\D/g, '');
     sides = parseInt(sides || '0', 10);
@@ -235,8 +234,9 @@ inputCommands.dice = function inputCommandDice(event, command, line) {
     });
 };
 
-inputCommands.ctcp = function inputCommandCtcp(event, command, line) {
+inputCommands.ctcp = function inputCommandCtcp(event, command, line, context) {
     event.handled = true;
+    const { network } = context;
 
     let params = line.split(' ');
     let target = params.shift();
@@ -246,20 +246,17 @@ inputCommands.ctcp = function inputCommandCtcp(event, command, line) {
         return;
     }
 
-    let network = this.state.getActiveNetwork();
     network.ircClient.ctcpRequest(...[target, ctcpType].concat(params));
 };
 
-inputCommands.join = function inputCommandJoin(event, command, line) {
+inputCommands.join = function inputCommandJoin(event, command, line, context) {
     event.handled = true;
+    const { network, buffer } = context;
 
-    let network = this.state.getActiveNetwork();
     let bufferObjs = Misc.extractBuffers(line);
 
     // handle join without any buffers specified
     if (bufferObjs.length === 0) {
-        let buffer = this.state.getActiveBuffer();
-
         // join the active channel if its not joined
         if (buffer.isChannel() && !buffer.joined) {
             network.ircClient.join(buffer.name, buffer.key);
@@ -304,16 +301,16 @@ inputCommands.join = function inputCommandJoin(event, command, line) {
     });
 };
 
-inputCommands.part = function inputCommandPart(event, command, line) {
+inputCommands.part = function inputCommandPart(event, command, line, context) {
     event.handled = true;
+    const { network, buffer } = context;
 
-    let network = this.state.getActiveNetwork();
     let bufferNames = [];
     let message = '';
 
     if (line === '') {
         // /part
-        bufferNames = [this.state.getActiveBuffer().name];
+        bufferNames = [buffer.name];
     } else {
         let lineParts = line.split(' ');
         if (network.isChannelName(lineParts[0])) {
@@ -322,7 +319,7 @@ inputCommands.part = function inputCommandPart(event, command, line) {
             message = lineParts.slice(1).join(' ');
         } else {
             // /part possible part message
-            bufferNames = [this.state.getActiveBuffer().name];
+            bufferNames = [buffer.name];
             message = line;
         }
     }
@@ -332,17 +329,17 @@ inputCommands.part = function inputCommandPart(event, command, line) {
     });
 };
 
-inputCommands.quit = function inputCommandQuit(event, command, line) {
+inputCommands.quit = function inputCommandQuit(event, command, line, context) {
     event.handled = true;
 
-    let network = this.state.getActiveNetwork();
+    const { network } = context;
     network.ircClient.quit(line);
 };
 
-inputCommands.topic = function inputCommandTopic(event, command, line) {
+inputCommands.topic = function inputCommandTopic(event, command, line, context) {
     event.handled = true;
+    const { network, buffer } = context;
 
-    let network = this.state.getActiveNetwork();
     let bufferName = '';
     let newTopic = '';
 
@@ -358,17 +355,17 @@ inputCommands.topic = function inputCommandTopic(event, command, line) {
         newTopic = lineParts.slice(1).join(' ');
     } else {
         // /topic a topic
-        bufferName = this.state.getActiveBuffer().name;
+        bufferName = buffer.name;
         newTopic = line;
     }
 
     network.ircClient.setTopic(bufferName, newTopic);
 };
 
-inputCommands.kick = function inputCommandKick(event, command, line) {
+inputCommands.kick = function inputCommandKick(event, command, line, context) {
     event.handled = true;
+    const { network, buffer } = context;
 
-    let network = this.state.getActiveNetwork();
     let toKick = '';
     let bufferName = '';
     let kickReason = '';
@@ -388,7 +385,7 @@ inputCommands.kick = function inputCommandKick(event, command, line) {
     kickReason = lineParts.join(' ');
 
     if (!bufferName) {
-        bufferName = this.state.getActiveBuffer().name;
+        bufferName = buffer.name;
     }
     if (!toKick) {
         return;
@@ -397,10 +394,10 @@ inputCommands.kick = function inputCommandKick(event, command, line) {
     network.ircClient.raw('KICK', bufferName, toKick, kickReason);
 };
 
-inputCommands.ignore = function inputCommandIgnore(event, command, line) {
+inputCommands.ignore = function inputCommandIgnore(event, command, line, context) {
     event.handled = true;
+    const { network, buffer } = context;
 
-    let network = this.state.getActiveNetwork();
     let toIgnore = line.split(' ').shift();
 
     if (!toIgnore) {
@@ -410,7 +407,6 @@ inputCommands.ignore = function inputCommandIgnore(event, command, line) {
     let user = this.state.getUser(network.id, toIgnore);
     if (user) {
         user.ignore = true;
-        let buffer = this.state.getActiveBuffer();
         this.state.addMessage(buffer, {
             nick: '*',
             message: 'Ignoring ' + user.nick,
@@ -419,10 +415,10 @@ inputCommands.ignore = function inputCommandIgnore(event, command, line) {
     }
 };
 
-inputCommands.unignore = function inputCommandUnignore(event, command, line) {
+inputCommands.unignore = function inputCommandUnignore(event, command, line, context) {
     event.handled = true;
+    const { network, buffer } = context;
 
-    let network = this.state.getActiveNetwork();
     let toUnignore = line.split(' ').shift();
 
     if (!toUnignore) {
@@ -432,7 +428,6 @@ inputCommands.unignore = function inputCommandUnignore(event, command, line) {
     let user = this.state.getUser(network.id, toUnignore);
     if (user) {
         user.ignore = false;
-        let buffer = this.state.getActiveBuffer();
         this.state.addMessage(buffer, {
             nick: '*',
             message: 'No longer ignoring ' + user.nick,
@@ -441,10 +436,10 @@ inputCommands.unignore = function inputCommandUnignore(event, command, line) {
     }
 };
 
-inputCommands.close = function inputCommandClose(event, command, line) {
+inputCommands.close = function inputCommandClose(event, command, line, context) {
     event.handled = true;
+    const { network } = context;
 
-    let network = this.state.getActiveNetwork();
     let bufferNames = _.compact(line.split(/[, ]/));
     if (bufferNames.length === 0) {
         bufferNames = [this.state.getActiveBuffer().name];
@@ -460,8 +455,9 @@ inputCommands.close = function inputCommandClose(event, command, line) {
     });
 };
 
-inputCommands.query = function inputCommandQuery(event, command, line) {
+inputCommands.query = function inputCommandQuery(event, command, line, context) {
     event.handled = true;
+    const { network } = context;
 
     let pos = line.indexOf(' ');
     if (pos === -1) {
@@ -471,7 +467,6 @@ inputCommands.query = function inputCommandQuery(event, command, line) {
     let nick = line.substr(0, pos);
     let message = line.substr(pos + 1);
 
-    let network = this.state.getActiveNetwork();
     let buffer = this.state.getOrAddBufferByName(network.id, nick);
 
     this.state.setActiveBuffer(network.id, buffer.name);
@@ -481,11 +476,9 @@ inputCommands.query = function inputCommandQuery(event, command, line) {
     }
 };
 
-inputCommands.invite = function inputCommandInvite(event, command, line) {
+inputCommands.invite = function inputCommandInvite(event, command, line, context) {
     event.handled = true;
-
-    let network = this.state.getActiveNetwork();
-    let buffer = this.state.getActiveBuffer();
+    const { network, buffer } = context;
 
     let lineParts = line.split(' ');
     let nick = lineParts.shift();
@@ -507,42 +500,40 @@ inputCommands.invite = function inputCommandInvite(event, command, line) {
     });
 };
 
-inputCommands.nick = function inputCommandNick(event, command, line) {
+inputCommands.nick = function inputCommandNick(event, command, line, context) {
     event.handled = true;
+    const { network } = context;
 
     let spaceIdx = line.indexOf(' ');
     if (spaceIdx === -1) spaceIdx = line.length;
 
     let newNick = line.substr(0, spaceIdx);
-    let network = this.state.getActiveNetwork();
     network.ircClient.changeNick(newNick);
 };
 
-inputCommands.away = function inputCommandAway(event, command, line) {
+inputCommands.away = function inputCommandAway(event, command, line, context) {
     event.handled = true;
 
     let network = this.state.getActiveNetwork();
     network.ircClient.raw('AWAY', line || 'Currently away');
 };
 
-inputCommands.back = function inputCommandAway(event, command, line) {
+inputCommands.back = function inputCommandBack(event, command, line, context) {
     event.handled = true;
 
     let network = this.state.getActiveNetwork();
     network.ircClient.raw('AWAY');
 };
 
-inputCommands.quote = function inputCommandQuote(event, command, line) {
+inputCommands.quote = function inputCommandQuote(event, command, line, context) {
     event.handled = true;
-
-    let network = this.state.getActiveNetwork();
+    const { network, buffer } = context;
 
     // Sending a manual CAP command triggers raw CAPs to be shown in the server tab
     if (line.split(' ')[0].toLowerCase() === 'cap') {
         network.setting('show_raw_caps', true);
     }
 
-    let buffer = this.state.getActiveBuffer();
     if (buffer.isServer()) {
         this.state.addMessage(buffer, {
             time: Date.now(),
@@ -554,12 +545,11 @@ inputCommands.quote = function inputCommandQuote(event, command, line) {
     network.ircClient.raw(line);
 };
 
-inputCommands.whois = function inputCommandWhois(event, command, line) {
+inputCommands.whois = function inputCommandWhois(event, command, line, context) {
     event.handled = true;
+    const { network, buffer } = context;
 
     let parts = line.split(' ');
-    let network = this.state.getActiveNetwork();
-    let buffer = this.state.getActiveBuffer();
 
     network.ircClient.whois(parts[0], parts[0], (whoisData) => {
         if (whoisData.error) {
@@ -687,12 +677,11 @@ inputCommands.whois = function inputCommandWhois(event, command, line) {
     });
 };
 
-inputCommands.whowas = function inputCommandWhowas(event, command, line) {
+inputCommands.whowas = function inputCommandWhowas(event, command, line, context) {
     event.handled = true;
+    const { network, buffer } = context;
 
     let parts = line.split(' ');
-    let network = this.state.getActiveNetwork();
-    let buffer = this.state.getActiveBuffer();
 
     network.ircClient.whowas(parts[0], parts[0], (whowasData) => {
         if (whowasData.error) {
@@ -729,13 +718,11 @@ inputCommands.whowas = function inputCommandWhowas(event, command, line) {
     });
 };
 
-inputCommands.mode = function inputCommandMode(event, command, line) {
+inputCommands.mode = function inputCommandMode(event, command, line, context) {
     event.handled = true;
+    const { network, buffer } = context;
 
     // /mode [target] [+-modes]
-
-    let network = this.state.getActiveNetwork();
-    let buffer = this.state.getActiveBuffer();
     let target = buffer.isChannel() ?
         buffer.name :
         network.nick;
@@ -782,33 +769,33 @@ inputCommands.mode = function inputCommandMode(event, command, line) {
     }
 };
 
-inputCommands.names = function inputCommandNames(event, command, line) {
+inputCommands.names = function inputCommandNames(event, command, line, context) {
     event.handled = true;
+    const { network, buffer } = context;
 
     // /names [#channel]
 
-    let network = this.state.getActiveNetwork();
     let args = line;
 
     if (!args) {
-        args = this.state.getActiveBuffer().name;
+        args = buffer.name;
     }
 
     network.ircClient.raw('NAMES ' + args);
 };
 
-inputCommands.inject = function inputCommandInject(event, command, line) {
+inputCommands.inject = function inputCommandInject(event, command, line, context) {
     event.handled = true;
+    const { network } = context;
 
-    let network = this.state.getActiveNetwork();
     let connection = network.ircClient.connection;
     connection.addReadBuffer(line);
 };
 
-inputCommands.clear = function inputCommandClear(event, command, line) {
+inputCommands.clear = function inputCommandClear(event, command, line, context) {
     event.handled = true;
+    const { buffer } = context;
 
-    let buffer = this.state.getActiveBuffer();
     buffer.clearMessages();
 
     this.state.addMessage(buffer, {
@@ -817,10 +804,9 @@ inputCommands.clear = function inputCommandClear(event, command, line) {
     });
 };
 
-inputCommands.echo = function inputCommandEcho(event, command, line) {
+inputCommands.echo = function inputCommandEcho(event, command, line, context) {
     event.handled = true;
-
-    let buffer = this.state.getActiveBuffer();
+    const { buffer } = context;
 
     this.state.addMessage(buffer, {
         nick: '*',
@@ -828,10 +814,9 @@ inputCommands.echo = function inputCommandEcho(event, command, line) {
     });
 };
 
-inputCommands.set = function inputCommandEcho(event, command, line) {
+inputCommands.set = function inputCommandSet(event, command, line, context) {
     event.handled = true;
-
-    let buffer = this.state.getActiveBuffer();
+    const { buffer } = context;
 
     let setting = '';
     let spacePos = line.indexOf(' ');
@@ -875,10 +860,10 @@ inputCommands.set = function inputCommandEcho(event, command, line) {
     });
 };
 
-inputCommands.list = function inputCommandList(event, command, line) {
+inputCommands.list = function inputCommandList(event, command, line, context) {
     event.handled = true;
+    const { network } = context;
 
-    let network = this.state.getActiveNetwork();
     if (!network.channel_list.length && network.channel_list_state !== 'updating') {
         network.channel_list_state = 'updating';
         network.ircClient.raw('LIST ' + line);
@@ -887,7 +872,7 @@ inputCommands.list = function inputCommandList(event, command, line) {
     network.showServerBuffer('channels');
 };
 
-inputCommands.server = function inputCommandServer(event, command, line) {
+inputCommands.server = function inputCommandServer(event, command, line, context) {
     event.handled = true;
 
     if (this.state.getSetting('settings.restricted')) {
@@ -917,12 +902,12 @@ inputCommands.server = function inputCommandServer(event, command, line) {
     });
 };
 
-inputCommands.beep = function inputCommandBeep(event, command, line) {
+inputCommands.beep = function inputCommandBeep(event, command, line, context) {
     event.handled = true;
     this.state.$emit('audio.bleep');
 };
 
-inputCommands.notify = function inputCommandNotify(event, command, line) {
+inputCommands.notify = function inputCommandNotify(event, command, line, context) {
     event.handled = true;
     this.state.$emit('notification.show', line);
 };
