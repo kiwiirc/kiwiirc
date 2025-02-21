@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2025-02-21 17:16\n"
+"PO-Revision-Date: 2025-02-21 21:36\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "Μηνύματα"
 
 #: Protocol
 msgid "protocol"
-msgstr "Protocol"
+msgstr "Πρωτόκολλο"
 
 #: Network
 msgid "network"
@@ -113,7 +113,7 @@ msgstr "Δίκτυο"
 
 #: Networks
 msgid "networks"
-msgstr "Networks"
+msgstr "Δίκτυα"
 
 #: ZNC
 msgid "znc"
@@ -209,15 +209,15 @@ msgstr "Εναλλαγή απών κατάστασης"
 
 #: Kick
 msgid "kick"
-msgstr "Kick"
+msgstr "Εκδίωξη"
 
 #: Ban
 msgid "ban"
-msgstr "Ban"
+msgstr "Αποκλεισμός"
 
 #: Preview
 msgid "preview"
-msgstr "Preview"
+msgstr "Προεπισκόπιση"
 
 #: {{count}} week
 msgid "week"
@@ -605,7 +605,7 @@ msgstr "Απάντηση ιδιωτικά"
 
 #: Kick reason
 msgid "kick_reason"
-msgstr "Kick reason"
+msgstr "Λόγος Εκδίωξης"
 
 #: Server details
 msgid "settings_server_details"
@@ -613,11 +613,11 @@ msgstr "Λεπτομέρειες διακομιστή"
 
 #: Preset Servers
 msgid "preset_servers"
-msgstr "Preset Servers"
+msgstr "Προκαθορισμένοι Διακομιστές"
 
 #: Custom Server
 msgid "custom_server"
-msgstr "Custom Server"
+msgstr "Προσαρμοσμένος Διακομιστής"
 
 #: Port
 msgid "settings_port"
@@ -1145,7 +1145,7 @@ msgstr "Σας Αναφέραν στο κανάλι {{channel}}"
 
 #: Where are you connecting today?
 msgid "customserver_where"
-msgstr "Where are you connecting today?"
+msgstr "Πού θα συνδεθείτε σήμερα;"
 
 #: Your IRC client
 msgid "personal_client"
