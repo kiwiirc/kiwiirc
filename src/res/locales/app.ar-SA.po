@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2023-12-20 21:25\n"
+"PO-Revision-Date: 2025-02-21 15:40\n"
 
 #: Start
 msgid "start_button"
@@ -194,6 +194,18 @@ msgstr "مبتعد"
 #: Toggle Away Status
 msgid "toggle_away"
 msgstr "استقدم حالة ‘في الخارج‘"
+
+#: Kick
+msgid "kick"
+msgstr "Kick"
+
+#: Ban
+msgid "ban"
+msgstr "Ban"
+
+#: Preview
+msgid "preview"
+msgstr "Preview"
 
 #: {{count}} week
 msgid "week"
@@ -578,6 +590,10 @@ msgstr "رسائل غير مقروءة"
 #: Reply in private
 msgid "reply_in_private"
 msgstr "الرد في الخاص"
+
+#: Kick reason
+msgid "kick_reason"
+msgstr "Kick reason"
 
 #: Server details
 msgid "settings_server_details"
