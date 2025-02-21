@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2025-02-21 15:40\n"
+"PO-Revision-Date: 2025-02-21 17:16\n"
 
 #: Start
 msgid "start_button"
@@ -95,13 +95,25 @@ msgstr "Pseudonim"
 msgid "channel"
 msgstr "Kanał"
 
+#: Channels
+msgid "channels"
+msgstr "Kanały"
+
 #: Messages
 msgid "messages"
 msgstr "Wiadomości"
 
+#: Protocol
+msgid "protocol"
+msgstr "Protokół"
+
 #: Network
 msgid "network"
 msgstr "Sieć"
+
+#: Networks
+msgid "networks"
+msgstr "Sieci"
 
 #: ZNC
 msgid "znc"
@@ -197,15 +209,15 @@ msgstr "Przełącz stan nieobecności"
 
 #: Kick
 msgid "kick"
-msgstr "Kick"
+msgstr "Wyrzuć"
 
 #: Ban
 msgid "ban"
-msgstr "Ban"
+msgstr "Zablokuj"
 
 #: Preview
 msgid "preview"
-msgstr "Preview"
+msgstr "Podgląd"
 
 #: {{count}} week
 msgid "week"
@@ -441,7 +453,7 @@ msgstr "Nikt nie jest zablokowany!"
 
 #: Add ban
 msgid "bans_add_ban"
-msgstr "Dodaj bana"
+msgstr "Dodaj blokadę"
 
 #: Refresh invite list
 msgid "invites_refresh"
@@ -593,11 +605,19 @@ msgstr "Odpowiedz prywatnie"
 
 #: Kick reason
 msgid "kick_reason"
-msgstr "Kick reason"
+msgstr "Powód wyrzucenia"
 
 #: Server details
 msgid "settings_server_details"
 msgstr "Szczegóły serwera"
+
+#: Preset Servers
+msgid "preset_servers"
+msgstr "Serwery predefiniowane"
+
+#: Custom Server
+msgid "custom_server"
+msgstr "Serwer niestandardowy"
 
 #: Port
 msgid "settings_port"
@@ -1122,6 +1142,10 @@ msgstr "Rzuca {{sides}} kostką i otrzymuje {{number}}"
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
 msgstr "Wspomniano o Tobie na {{channel}}"
+
+#: Where are you connecting today?
+msgid "customserver_where"
+msgstr "Gdzie się dzisiaj łączysz?"
 
 #: Your IRC client
 msgid "personal_client"
