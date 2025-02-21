@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2025-02-21 17:16\n"
+"PO-Revision-Date: 2025-02-21 18:49\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "Mesazhe"
 
 #: Protocol
 msgid "protocol"
-msgstr "Protocol"
+msgstr "Protokoll"
 
 #: Network
 msgid "network"
@@ -113,7 +113,7 @@ msgstr "Rrjet"
 
 #: Networks
 msgid "networks"
-msgstr "Networks"
+msgstr "Rrjete"
 
 #: ZNC
 msgid "znc"
@@ -209,15 +209,15 @@ msgstr "Shfaq/Fshih Gjendjen “I Larguar”"
 
 #: Kick
 msgid "kick"
-msgstr "Kick"
+msgstr "Përzëre"
 
 #: Ban
 msgid "ban"
-msgstr "Ban"
+msgstr "Dëboje"
 
 #: Preview
 msgid "preview"
-msgstr "Preview"
+msgstr "Paraparje"
 
 #: {{count}} week
 msgid "week"
@@ -605,7 +605,7 @@ msgstr "Përgjigjiuni privatisht"
 
 #: Kick reason
 msgid "kick_reason"
-msgstr "Kick reason"
+msgstr "Arsye përzënieje"
 
 #: Server details
 msgid "settings_server_details"
@@ -613,11 +613,11 @@ msgstr "Hollësi shërbyesi"
 
 #: Preset Servers
 msgid "preset_servers"
-msgstr "Preset Servers"
+msgstr "Shërbyes të Paracaktuar"
 
 #: Custom Server
 msgid "custom_server"
-msgstr "Custom Server"
+msgstr "Shërbyes Vetjak"
 
 #: Port
 msgid "settings_port"
@@ -1145,7 +1145,7 @@ msgstr "Jeni përmendur në {{channel}}"
 
 #: Where are you connecting today?
 msgid "customserver_where"
-msgstr "Where are you connecting today?"
+msgstr "Ku po lidheni sot?"
 
 #: Your IRC client
 msgid "personal_client"
