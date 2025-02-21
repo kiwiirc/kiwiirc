@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
-"PO-Revision-Date: 2023-12-17 20:33\n"
+"PO-Revision-Date: 2025-02-21 17:16\n"
 
 #: Start
 msgid "start_button"
@@ -95,13 +95,25 @@ msgstr "Ψευδώνυμο"
 msgid "channel"
 msgstr "Κανάλι"
 
+#: Channels
+msgid "channels"
+msgstr "Κανάλια"
+
 #: Messages
 msgid "messages"
 msgstr "Μηνύματα"
 
+#: Protocol
+msgid "protocol"
+msgstr "Protocol"
+
 #: Network
 msgid "network"
 msgstr "Δίκτυο"
+
+#: Networks
+msgid "networks"
+msgstr "Networks"
 
 #: ZNC
 msgid "znc"
@@ -194,6 +206,18 @@ msgstr "Απών"
 #: Toggle Away Status
 msgid "toggle_away"
 msgstr "Εναλλαγή απών κατάστασης"
+
+#: Kick
+msgid "kick"
+msgstr "Kick"
+
+#: Ban
+msgid "ban"
+msgstr "Ban"
+
+#: Preview
+msgid "preview"
+msgstr "Preview"
 
 #: {{count}} week
 msgid "week"
@@ -579,9 +603,21 @@ msgstr "Μη Διαβασμένα Μηνύματα"
 msgid "reply_in_private"
 msgstr "Απάντηση ιδιωτικά"
 
+#: Kick reason
+msgid "kick_reason"
+msgstr "Kick reason"
+
 #: Server details
 msgid "settings_server_details"
 msgstr "Λεπτομέρειες διακομιστή"
+
+#: Preset Servers
+msgid "preset_servers"
+msgstr "Preset Servers"
+
+#: Custom Server
+msgid "custom_server"
+msgstr "Custom Server"
 
 #: Port
 msgid "settings_port"
@@ -1106,6 +1142,10 @@ msgstr "Ρίχνει ένα {{sides}} από την πλευρά του ζαρι
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
 msgstr "Σας Αναφέραν στο κανάλι {{channel}}"
+
+#: Where are you connecting today?
+msgid "customserver_where"
+msgstr "Where are you connecting today?"
 
 #: Your IRC client
 msgid "personal_client"

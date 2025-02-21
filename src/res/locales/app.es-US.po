@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Spanish, United States\n"
 "Language: es_US\n"
-"PO-Revision-Date: 2023-12-17 17:03\n"
+"PO-Revision-Date: 2025-02-21 17:16\n"
 
 #: Start
 msgid "start_button"
@@ -95,13 +95,25 @@ msgstr "Apodo"
 msgid "channel"
 msgstr "Canal"
 
+#: Channels
+msgid "channels"
+msgstr "Canales"
+
 #: Messages
 msgid "messages"
 msgstr "Mensajes"
 
+#: Protocol
+msgid "protocol"
+msgstr "Protocol"
+
 #: Network
 msgid "network"
 msgstr "Red"
+
+#: Networks
+msgid "networks"
+msgstr "Networks"
 
 #: ZNC
 msgid "znc"
@@ -193,7 +205,19 @@ msgstr "Está ausente"
 
 #: Toggle Away Status
 msgid "toggle_away"
-msgstr "Toggle Away Status"
+msgstr "Alternar el estado ausente"
+
+#: Kick
+msgid "kick"
+msgstr "Kick"
+
+#: Ban
+msgid "ban"
+msgstr "Ban"
+
+#: Preview
+msgid "preview"
+msgstr "Preview"
 
 #: {{count}} week
 msgid "week"
@@ -579,9 +603,21 @@ msgstr "Mensajes sin leer"
 msgid "reply_in_private"
 msgstr "Responder en privado"
 
+#: Kick reason
+msgid "kick_reason"
+msgstr "Kick reason"
+
 #: Server details
 msgid "settings_server_details"
 msgstr "Detalles del servidor"
+
+#: Preset Servers
+msgid "preset_servers"
+msgstr "Preset Servers"
+
+#: Custom Server
+msgid "custom_server"
+msgstr "Custom Server"
 
 #: Port
 msgid "settings_port"
@@ -1106,6 +1142,10 @@ msgstr "Lanza un dado con {{sides}} lados y obtiene {{number}}"
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
 msgstr "Fuiste mencionado en el canal {{channel}}"
+
+#: Where are you connecting today?
+msgid "customserver_where"
+msgstr "Where are you connecting today?"
 
 #: Your IRC client
 msgid "personal_client"

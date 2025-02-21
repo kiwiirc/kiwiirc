@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Basque\n"
 "Language: eu_ES\n"
-"PO-Revision-Date: 2023-12-17 17:02\n"
+"PO-Revision-Date: 2025-02-21 17:16\n"
 
 #: Start
 msgid "start_button"
@@ -95,13 +95,25 @@ msgstr "Ezizena"
 msgid "channel"
 msgstr "Kanala"
 
+#: Channels
+msgid "channels"
+msgstr "Kanalak"
+
 #: Messages
 msgid "messages"
 msgstr "Mezuak"
 
+#: Protocol
+msgid "protocol"
+msgstr "Protocol"
+
 #: Network
 msgid "network"
 msgstr "Sarea"
+
+#: Networks
+msgid "networks"
+msgstr "Networks"
 
 #: ZNC
 msgid "znc"
@@ -194,6 +206,18 @@ msgstr "Kanpoan"
 #: Toggle Away Status
 msgid "toggle_away"
 msgstr "Toggle Away Status"
+
+#: Kick
+msgid "kick"
+msgstr "Kick"
+
+#: Ban
+msgid "ban"
+msgstr "Ban"
+
+#: Preview
+msgid "preview"
+msgstr "Preview"
 
 #: {{count}} week
 msgid "week"
@@ -579,9 +603,21 @@ msgstr "Irakurri gabeko mezuak"
 msgid "reply_in_private"
 msgstr "Reply in private"
 
+#: Kick reason
+msgid "kick_reason"
+msgstr "Kick reason"
+
 #: Server details
 msgid "settings_server_details"
 msgstr "Zerbitzariaren xehetasunak"
+
+#: Preset Servers
+msgid "preset_servers"
+msgstr "Preset Servers"
+
+#: Custom Server
+msgid "custom_server"
+msgstr "Custom Server"
 
 #: Port
 msgid "settings_port"
@@ -1106,6 +1142,10 @@ msgstr "dadoa {{sides}} bota eta {{number}} atera duzu"
 #: You were mentioned in {{channel}}
 msgid "notification_mentioned"
 msgstr "Aipatu zaituzte {{channel}} kanalean"
+
+#: Where are you connecting today?
+msgid "customserver_where"
+msgstr "Where are you connecting today?"
 
 #: Your IRC client
 msgid "personal_client"
