@@ -462,6 +462,25 @@ export default class BufferState {
         return true;
     }
 
+    banUser(user) {
+        if (!user.username || !user.host) {
+            return;
+        }
+
+        let banMask = user.createBanMask();
+        this.getNetwork().ircClient.raw('MODE', this.name, '+b', banMask);
+    }
+
+    kickUser(user, _reason) {
+        let reason = _reason || this.state.setting('buffers.default_kick_reason');
+        this.getNetwork().ircClient.raw('KICK', this.name, user.nick, reason);
+    }
+
+    banKickUser(user, reason) {
+        this.banUser(user);
+        this.kickUser(user, reason);
+    }
+
     removeUser(nick) {
         let userObj = this.state.getUser(this.networkid, nick);
 
