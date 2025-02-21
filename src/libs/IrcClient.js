@@ -363,10 +363,7 @@ function clientMiddleware(state, network) {
                     buffer.enabled = false;
                 }
             } else {
-                // Only show non-numeric commands
-                if (!event.command.match(/^\d+$/)) {
-                    message += event.command + ' ';
-                }
+                message = '\x02' + event.command + '\x02 ' + message;
 
                 state.addMessage(buffer, {
                     time: eventTime,
