@@ -363,7 +363,9 @@ function clientMiddleware(state, network) {
                     buffer.enabled = false;
                 }
             } else {
-                message = '\x02' + event.command + '\x02 ' + message;
+                if (!/^\d+$/.test(event.command)) {
+                    message = '\x02' + event.command + '\x02 ' + message;
+                }
 
                 state.addMessage(buffer, {
                     time: eventTime,
