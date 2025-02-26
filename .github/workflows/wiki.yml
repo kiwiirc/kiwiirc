@@ -1,0 +1,26 @@
+name: Publish wiki
+
+on:
+  push:
+    branches: [wiki]
+
+concurrency:
+  group: wiki
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Andrew-Chen-Wang/github-wiki-action@v4
+        with:
+          # Whatever directory you choose will be mirrored to the GitHub
+          # .wiki.git. The default is .github/wiki.
+          strategy: init
+          path: .
+          ignore: |
+            .github
