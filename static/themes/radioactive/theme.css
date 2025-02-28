@@ -668,11 +668,7 @@
 .kiwi-networksettings-error {
     border: 1px dashed #d86f6f;
 }
-.kiwi-networksettings .kiwi-connect-to-newnetwork {
-    background: #1b2f24;
-    color: #fff;
-    border: 1px solid #fff;
-}
+
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
     border: 1px solid #1b2f24;
     color: #fff;

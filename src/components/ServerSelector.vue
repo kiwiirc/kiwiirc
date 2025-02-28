@@ -7,7 +7,12 @@
             <label for="kiwi_preset_server">
                 {{ $t(presetServer === 'custom' ? 'preset_servers' : 'server') }}
             </label>
-            <select id="kiwi_preset_server" v-model="presetServer" class="u-input">
+            <select
+                id="kiwi_preset_server"
+                v-model="presetServer"
+                class="u-input"
+                :disabled="disabled"
+            >
                 <template v-if="enableCustom">
                     <option value="custom">{{ $t('custom_server') }}</option>
                     <option disabled>—</option>
@@ -29,7 +34,12 @@
                     <label for="kiwi_server_proto">
                         {{ $t('protocol') }}
                     </label>
-                    <select id="kiwi_server_proto" v-model="protocol" class="u-input">
+                    <select
+                        id="kiwi_server_proto"
+                        v-model="protocol"
+                        class="u-input"
+                        :disabled="disabled"
+                    >
                         <option
                             v-for="(s, idx) in serverProtocols"
                             :key="'proto_'+idx"
@@ -42,6 +52,7 @@
                     v-model="server"
                     v-focus
                     :label="$t('server')"
+                    :disabled="disabled"
                     class="kiwi-serverselector-connection-address"
                     @paste="onServerPaste"
                 />
@@ -49,11 +60,13 @@
                 <input-text
                     v-model="connection.port"
                     :label="$t('settings_port')"
+                    :disabled="disabled"
                     type="number"
                     class="kiwi-serverselector-connection-port"
                 >
                     <span
                         class="kiwi-serverselector-connection-tls"
+                        :class="{'kiwi-serverselector-connection-tls--disabled': disabled}"
                         @click="toggleTls"
                     >
                         <i
@@ -90,6 +103,10 @@ export default {
         usePreset: {
             type: Boolean,
             default: true,
+        },
+        disabled: {
+            type: Boolean,
+            default: false,
         },
         connection: {
             type: Object,
@@ -221,6 +238,9 @@ export default {
             }
         },
         toggleTls() {
+            if (this.disabled) {
+                return;
+            }
             const protocolMap = Object.fromEntries(
                 Object.entries({
                     irc: 'ircs',
@@ -333,6 +353,10 @@ export default {
     text-align: center;
     cursor: pointer;
     font-size: 1em;
+}
+
+.kiwi-serverselector-connection-tls--disabled {
+    cursor: default;
 }
 
 .kiwi-serverselector-connection-tls i {

@@ -25,6 +25,7 @@
 
                 <server-selector
                     :enable-custom="startupOptions.enableCustom ?? true"
+                    :disabled="network.state !== 'disconnected'"
                     :connection="network.connection"
                 />
 
@@ -137,27 +138,29 @@
                     </label>
                 </div>
 
-                <captcha
-                    class="kiwi-notconnected-captcha"
-                    :network="network"
-                />
-
-                <button
-                    v-if="network.state === 'disconnected'"
-                    type="button"
-                    class="u-button u-button-primary u-submit kiwi-connect-to-newnetwork"
-                    @click="connect()"
-                >
-                    {{ $t('network_connect') }}
-                </button>
-                <button
-                    v-else-if="network.state === 'connecting'"
-                    type="button"
-                    class="u-button u-button-primary u-submit kiwi-connect-to-newnetwork"
-                    disabled
-                >
-                    {{ $t('connecting') }}
-                </button>
+                <div class="kiwi-networksettings-control">
+                    <a
+                        v-if="network.state !== 'connected'"
+                        type="button"
+                        class="u-button u-button-primary u-submit kiwi-connect-to-newnetwork"
+                        :disabled="network.state !== 'disconnected'"
+                        @click="connect()"
+                    >
+                        {{
+                            $t(network.state === 'disconnected'
+                                ? 'network_connect'
+                                : 'network_connecting')
+                        }}
+                    </a>
+                    <a
+                        v-else
+                        type="button"
+                        class="u-button u-button-warning u-submit kiwi-connect-to-newnetwork"
+                        @click="disconnect()"
+                    >
+                        {{ $t('network_disconnect') }}
+                    </a>
+                </div>
             </div>
 
             <div class="kiwi-dangerzone">
@@ -306,11 +309,19 @@ export default {
             return Misc.networkErrorMessage(err);
         },
         connect() {
+            if (this.network.state !== 'disconnected') {
+                return;
+            }
             this.switch_tabs_on_connect = true;
             this.network.ircClient.connect();
         },
-        reconnect() {
-            this.network.ircClient.connect();
+        disconnect() {
+            if (this.network.state === 'disconnected') {
+                return;
+            }
+            this.network.ircClient.quit(
+                this.$state.setting('quitMessage') || 'Client Closed Connection'
+            );
         },
         removeNetwork() {
             /* eslint-disable no-restricted-globals, no-alert */
@@ -401,7 +412,7 @@ export default {
 }
 
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
-    margin: 0 10px 0 10px;
+    margin: 0 10px;
     display: inline-block;
     line-height: 35px;
     padding: 0 10px;
@@ -424,10 +435,8 @@ export default {
 
 //Large connection button
 .kiwi-networksettings .kiwi-connect-to-newnetwork {
-    width: auto;
-    margin: -10px auto 0 auto;
-    border-radius: 3px;
-    display: block;
+    margin: 0 auto;
+    display: inline-block;
     cursor: pointer;
     padding: 0 10px;
     line-height: 35px;
@@ -476,6 +485,10 @@ export default {
 .kiwi-networksettings-server-types-info {
     font-size: 0.9em;
     font-style: italic;
+}
+
+.kiwi-networksettings-control {
+    text-align: center;
 }
 
 .kiwi-networksettings-danger h3 {
