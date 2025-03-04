@@ -273,7 +273,6 @@ export default {
 }
 
 .kiwi-channellist-users {
-    line-height: auto;
     margin-left: 0.2em;
     overflow: hidden;
     padding: 0.3em;
@@ -332,7 +331,7 @@ export default {
     .kiwi-channellist-topic {
         grid-column: 1 / span 3;
         grid-row: 2;
-        word-break: break-word;
+        overflow-wrap: break-word;
     }
 
     .kiwi-channellist-join {
