@@ -246,7 +246,7 @@ export default {
     display: block;
     padding: 0.5em 10px;
     box-sizing: border-box;
-    word-break: break-word;
+    overflow-wrap: break-word;
     margin: 5px 0 5px 0;
     text-align: center;
     border-radius: 6px;

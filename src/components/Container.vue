@@ -357,7 +357,6 @@ export default {
     width: 0%;
     right: -100%;
     transition: opacity 0.1s;
-    transition-delay: opacity 0.1s;
 }
 
 @media screen and (max-width: 1500px) {

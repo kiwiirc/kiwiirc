@@ -771,11 +771,6 @@
     border-color: var(--brand-error);
 }
 
-.kiwi-networksettings .kiwi-connect-to-newnetwork {
-    background: var(--brand-primary);
-    color: var(--brand-default-bg);
-}
-
 .kiwi-networksettings .kiwi-networksettings-server-types .kiwi-network-type-button {
     border-color: var(--brand-primary);
     color: var(--brand-primary);

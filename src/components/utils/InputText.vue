@@ -7,6 +7,7 @@
                 <input
                     :id="inputId"
                     v-model="currentValue"
+                    :disabled="disabled"
                     :type="plainTextEnabled && !isEdgeBrowser() ? 'text' : 'password'"
                     :class="{'u-form-input-plaintext' : !isEdgeBrowser() && showPlainText}"
                     autocomplete="off"
@@ -31,6 +32,7 @@
                 v-else-if="type==='number'"
                 :id="inputId"
                 v-model.number="currentValue"
+                :disabled="disabled"
                 type="number"
                 class="u-input"
                 @keypress="$emit('keypress', $event)"
@@ -40,6 +42,7 @@
                 v-else-if="type==='textarea'"
                 :id="inputId"
                 v-model="currentValue"
+                :disabled="disabled"
                 class="u-input"
                 @keypress="$emit('keypress', $event)"
                 @paste="$emit('paste', $event)"
@@ -48,6 +51,7 @@
                 v-else
                 :id="inputId"
                 v-model="currentValue"
+                :disabled="disabled"
                 autocomplete="off"
                 autocorrect="off"
                 autocapitalize="off"
@@ -70,7 +74,7 @@
 let Vue = require('vue');
 
 export default Vue.component('input-text', {
-    props: ['value', 'label', 'type', 'showPlainText'],
+    props: ['value', 'label', 'type', 'showPlainText', 'disabled'],
     data: function data() {
         return {
             plainTextEnabled: false,

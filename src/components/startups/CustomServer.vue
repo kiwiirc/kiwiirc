@@ -89,6 +89,10 @@
                     <div class="kiwi-customserver-terms-content" v-html="termsContent" />
                 </div>
 
+                <captcha
+                    :network="network"
+                />
+
                 <button
                     :disabled="!readyToStart"
                     type="submit"
@@ -113,6 +117,7 @@ import _ from 'lodash';
 import * as Misc from '@/helpers/Misc';
 import * as TextFormatting from '@/helpers/TextFormatting';
 import Logger from '@/libs/Logger';
+import Captcha from '@/components/Captcha';
 
 import StartupLayout from './CommonLayout';
 import ServerSelector from '../ServerSelector';
@@ -121,6 +126,7 @@ const log = Logger.namespace('CustomServer');
 
 export default {
     components: {
+        Captcha,
         StartupLayout,
         ServerSelector,
     },
