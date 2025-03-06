@@ -60,8 +60,12 @@ export function create(state, network) {
             Object.assign(ircClient.options, configOptions);
         }
 
-        let eventObj = { network, transport: null };
+        let eventObj = { network, transport: null, handled: false };
         state.$emit('network.connecting', eventObj);
+
+        if (eventObj.handled) {
+            return;
+        }
 
         if (eventObj.transport) {
             // A plugin might use its own transport of some kind
