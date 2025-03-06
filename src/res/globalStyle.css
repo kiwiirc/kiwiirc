@@ -121,6 +121,7 @@ select {
     overflow-x: hidden;
     overflow-y: auto;
     max-width: none;
+    min-width: 0;
     border-radius: 5px;
     border-width: 1px;
     border-style: solid;
@@ -229,10 +230,6 @@ select {
     cursor: pointer;
     padding: 0.2em 0.4em;
     transition: background 0.2s;
-}
-
-.kiwi-settings-advanced-table tr:hover {
-    background-color: rgba(128, 128, 128, 0.1);
 }
 
 .kiwi-typing::after {

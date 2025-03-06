@@ -1182,6 +1182,12 @@
     border: 1px solid #5dd895;
 }
 
+.kiwi-settings-advanced-table > div:nth-child(6n+1),
+.kiwi-settings-advanced-table > div:nth-child(6n+2),
+.kiwi-settings-advanced-table > div:nth-child(6n+3) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 /* Away Status Indicator */
 .kiwi-awaystatusindicator,
 .kiwi-avatar-status {

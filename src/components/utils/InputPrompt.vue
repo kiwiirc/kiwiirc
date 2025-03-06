@@ -95,6 +95,10 @@ export default Vue.component('input-prompt', {
     margin-right: 0.5em;
 }
 
+.u-input-prompt-inputs > a:last-of-type {
+    margin-right: 0;
+}
+
 .u-input-prompt-inputs > .u-button-primary {
     position: relative;
 }
