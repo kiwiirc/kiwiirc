@@ -1033,6 +1033,12 @@
     background: var(--brand-error);
 }
 
+.kiwi-settings-advanced-table > div:nth-child(6n+1),
+.kiwi-settings-advanced-table > div:nth-child(6n+2),
+.kiwi-settings-advanced-table > div:nth-child(6n+3) {
+    background-color: var(--brand-shadow);
+}
+
 .kiwi-network-name-options {
     background-color: var(--brand-default-fg);
 }
