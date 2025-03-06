@@ -1,3 +1,4 @@
 build/*.js
 config/*.js
 tests/unit/coverage/
+tests/e2e
