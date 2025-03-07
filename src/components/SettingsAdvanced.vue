@@ -189,7 +189,7 @@ export default {
     margin-top: 10px;
     display: grid;
     grid-template-columns: 1fr max-content 1fr;
-    grid-auto-rows: minmax(30px, 1fr);
+    grid-auto-rows: minmax(30px, max-content);
 
     > div {
         display: flex;
@@ -199,13 +199,20 @@ export default {
         box-sizing: border-box;
     }
 
-    label {
-        margin: 0;
-    }
-
     .u-input {
         width: 100%;
         padding: 2px 4px;
+    }
+
+    .kiwi-settings-advanced-key {
+        padding: 4px 10px;
+        overflow: hidden;
+
+        label {
+            margin: 0;
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
     }
 
     .kiwi-settings-advanced-reset a {
