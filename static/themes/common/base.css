@@ -96,7 +96,7 @@
 .u-form input[type='checkbox'],
 .u-form input[type='radio'] {
     border-color: var(--brand-input-border);
-    background-color: var(--brand-default-bg);
+    background: var(--brand-default-bg);
 }
 
 .u-form input[type='checkbox']:checked,
@@ -1026,6 +1026,11 @@
 
 .kiwi-settings-aliases-help em {
     color: var(--brand-primary);
+}
+
+.kiwi-settings-advanced .u-form input,
+.kiwi-settings-advanced .u-form input[type='checkbox'] {
+    border-color: var(--brand-darktone);
 }
 
 .kiwi-settings-advanced-notice {
