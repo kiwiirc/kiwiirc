@@ -1,5 +1,4 @@
 [
-    ["af-za", "Afrikaans (Afrikaans)"],
     ["sq-al", "Shqip (Albanian)"],
     ["ar-sa", "العربية (Arabic)"],
     ["eu-es", "Euskara (Basque)"],
@@ -13,15 +12,16 @@
     ["gl-es", "Galego (Galician)"],
     ["de-de", "Deutsch (German)"],
     ["el-gr", "Ελληνικά (Greek)"],
-    ["he-il", "עברית (Hebrew)"],
     ["id-id", "Bahasa Indonesia (Indonesian)"],
     ["it-it", "Italiano (Italian)"],
     ["pl-pl", "Polski (Polish)"],
     ["pt-pt", "Português (Portuguese)"],
     ["pt-br", "Português do Brasil (Portuguese, Brazilian)"],
+    ["ro-ro", "Română (Romanian)"],
     ["ru-ru", "Русский (Russian)"],
     ["es-es", "Español (Spanish)"],
     ["es-ar", "Español argentino (Spanish, Argentina)"],
     ["es-us", "Español mexicano (Spanish, Mexican)"],
+    ["tr-tr", "Türkçe (Turkish)"],
     ["uk-ua", "Українська (Ukrainian)"]
 ]
