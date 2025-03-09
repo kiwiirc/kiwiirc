@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2025-03-09 22:00\n"
+"PO-Revision-Date: 2025-03-09 23:46\n"
 
 #: Start
 msgid "start_button"
@@ -1153,7 +1153,7 @@ msgstr "Вас упомянули в {{channel}}"
 
 #: Where are you connecting today?
 msgid "customserver_where"
-msgstr "Where are you connecting today?"
+msgstr "Куда сегодня подключимся?"
 
 #: Your IRC client
 msgid "personal_client"
