@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
-"PO-Revision-Date: 2025-03-05 14:48\n"
+"PO-Revision-Date: 2025-03-05 18:27\n"
 
 #: Start
 msgid "start_button"
@@ -705,11 +705,11 @@ msgstr "Lidhu Te Rrjeti"
 
 #: Network Connecting...
 msgid "network_connecting"
-msgstr "Network Connecting..."
+msgstr "Po bëhet Lidhja me Rrjetin…"
 
 #: Disconnect From Network
 msgid "network_disconnect"
-msgstr "Disconnect From Network"
+msgstr "Shkëputu Prej Rrjetit"
 
 #: Network Name
 msgid "network_name"
