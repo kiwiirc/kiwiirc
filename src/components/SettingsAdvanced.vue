@@ -21,14 +21,16 @@
                             :for="'setting-' + setting.key"
                         >{{ setting.key }}</label>
                     </div>
-                    <div :key="'reset-' + setting.key" class="kiwi-settings-advanced-modified">
+                    <div :key="'reset-' + setting.key" class="kiwi-settings-advanced-reset">
                         <a
                             class="u-link"
                             :class="{'kiwi-settings-advanced--modified': setting.modified}"
                             @click="resetValue($event, setting.key)"
                         >
-                            {{ $t('settings_advanced_reset') }}
-                            <i class="fa fa-undo" style="margin-left: 10px;" />
+                            <span class="kiwi-settings-advanced-reset-text">
+                                {{ $t('settings_advanced_reset') }}
+                            </span>
+                            <i class="fa fa-undo" />
                         </a>
                     </div>
                     <div :key="'value-' + setting.key" class="kiwi-settings-advanced-value">
@@ -134,9 +136,16 @@ export default {
 </script>
 
 <style lang="less">
+.kiwi-settings-advanced .u-form {
+    input,
+    input[type='checkbox'] {
+        margin: 0;
+    }
+}
+
 .kiwi-settings-advanced-notice {
     text-align: center;
-    padding: 10px 0;
+    padding: 10px;
     margin: 5px 0 15px 0;
     font-weight: 900;
 }
@@ -145,7 +154,7 @@ export default {
     position: relative;
     display: inline-block;
 
-    width: min(30%, 300px);
+    width: min(50%, 300px);
 
     input {
         width: 100%;
@@ -180,29 +189,33 @@ export default {
     margin-top: 10px;
     display: grid;
     grid-template-columns: 1fr max-content 1fr;
-    grid-template-rows: auto;
+    grid-auto-rows: minmax(30px, max-content);
 
     > div {
-        padding-right: 20px;
-        height: 100%;
-    }
-
-    > div:nth-child(3n) {
-        padding-right: 10px;
-    }
-
-    .kiwi-settings-advanced-key,
-    .kiwi-settings-advanced-modified {
         display: flex;
         align-items: center;
-        padding-left: 10px;
+        padding: 0 10px;
+        height: 100%;
+        box-sizing: border-box;
     }
 
-    .kiwi-settings-advanced-key label {
-        margin: 0;
+    .u-input {
+        width: 100%;
+        padding: 2px 4px;
     }
 
-    .kiwi-settings-advanced-modified a {
+    .kiwi-settings-advanced-key {
+        padding: 4px 10px;
+        overflow: hidden;
+
+        label {
+            margin: 0;
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+    }
+
+    .kiwi-settings-advanced-reset a {
         visibility: hidden;
     }
 
@@ -210,39 +223,62 @@ export default {
         visibility: visible;
     }
 
-    .kiwi-settings-advanced-value .u-input {
-        width: 100%;
-        padding: 1px 4px;
-        margin: 4px 0;
+    .kiwi-settings-advanced-reset-text {
+        margin-right: 4px;
+        font-weight: 600;
     }
 }
 
 @media screen and (max-width: 1100px) {
     .kiwi-settings-advanced-table {
         grid-template-columns: 1fr max-content;
+        grid-auto-flow: row dense;
 
-        .kiwi-settings-advanced-value {
+        .kiwi-settings-advanced-key {
             grid-column: span 2;
         }
 
-        > div {
-            box-sizing: border-box;
-            padding: 0 10px 8px 10px;
+        .kiwi-settings-advanced-reset {
+            grid-column: 2;
+        }
+
+        .kiwi-settings-advanced-value {
+            grid-column: 1;
         }
 
         > div:nth-child(3n+1) {
             padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        > div:nth-child(3n+2),
+        > div:nth-child(3n+3) {
+            padding-bottom: 8px;
         }
     }
 }
 
 @media screen and (max-width: 769px) {
+    .kiwi-settings-advanced-filter {
+        width: 100%;
+    }
+
     .kiwi-settings-advanced-table {
-        display: flex;
-        flex-direction: column;
+        > div:nth-child(3n+2) {
+            padding-left: 4px;
+            padding-right: 8px;
+        }
 
         > div:nth-child(3n+3) {
-            padding-bottom: 8px;
+            padding-right: 4px;
+        }
+
+        .kiwi-settings-advanced-reset-text {
+            display: none;
+        }
+
+        .kiwi-settings-advanced-reset a {
+            padding: 0 4px;
         }
     }
 }
