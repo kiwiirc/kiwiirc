@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
-"PO-Revision-Date: 2025-03-05 14:48\n"
+"PO-Revision-Date: 2025-03-19 20:30\n"
 
 #: Start
 msgid "start_button"
@@ -105,7 +105,7 @@ msgstr "الرسائل"
 
 #: Protocol
 msgid "protocol"
-msgstr "Protocol"
+msgstr "البروتوكول"
 
 #: Network
 msgid "network"
@@ -113,7 +113,7 @@ msgstr "الشبكة"
 
 #: Networks
 msgid "networks"
-msgstr "Networks"
+msgstr "الشبكات"
 
 #: ZNC
 msgid "znc"
@@ -209,15 +209,15 @@ msgstr "استقدم حالة ‘في الخارج‘"
 
 #: Kick
 msgid "kick"
-msgstr "Kick"
+msgstr "اطرد"
 
 #: Ban
 msgid "ban"
-msgstr "Ban"
+msgstr "أُحظر"
 
 #: Preview
 msgid "preview"
-msgstr "Preview"
+msgstr "معاينة"
 
 #: {{count}} week
 msgid "week"
@@ -605,7 +605,7 @@ msgstr "الرد في الخاص"
 
 #: Kick reason
 msgid "kick_reason"
-msgstr "Kick reason"
+msgstr "سبب الطرد"
 
 #: Server details
 msgid "settings_server_details"
@@ -613,11 +613,11 @@ msgstr "معلومات البال تل"
 
 #: Preset Servers
 msgid "preset_servers"
-msgstr "Preset Servers"
+msgstr "خوادم مهيأة"
 
 #: Custom Server
 msgid "custom_server"
-msgstr "Custom Server"
+msgstr "خادم مخصص"
 
 #: Port
 msgid "settings_port"
@@ -705,7 +705,7 @@ msgstr "اتصل بشبكة"
 
 #: Network Connecting...
 msgid "network_connecting"
-msgstr "Network Connecting..."
+msgstr "الشبكة تتصل..."
 
 #: Disconnect From Network
 msgid "network_disconnect"
