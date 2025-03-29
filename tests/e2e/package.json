@@ -1,0 +1,85 @@
+{
+    "name": "cypress-sapling",
+    "version": "2.0.0",
+    "description": "A skeleton for every Cypress repository",
+    "main": "",
+    "scripts": {
+        "test": "npm run lint-fix && cypress run",
+        "test-single": "npm run lint-fix && cypress run --spec process.env.spec",
+        "bump:major": "npm version --no-commit-hooks --no-git-tag-version major",
+        "bump:minor": "npm version --no-commit-hooks --no-git-tag-version minor",
+        "bump": "./scripts/version-bump.sh",
+        "c": "yarn commit",
+        "commit": "npx git-cz",
+        "cypress:debug": "yarn report:clean && cypress open",
+        "cypress": "yarn report:clean && cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter.config.json",
+        "deps:clean": "rm -rf node_modules",
+        "deps:install": "yarn install --frozen-lockfile",
+        "deps:upgrade": "yarn deps:clean && yarn upgrade && yarn deps:sync && yarn install",
+        "deps:sync": "npx syncyarnlock --keepPrefix --save",
+        "docker:build": "./scripts/docker-build.sh",
+        "docker:push": "./scripts/docker-push.sh",
+        "docker:upgrade": "yarn deps:upgrade && yarn bump && yarn docker:build && yarn docker:push",
+        "format:fix": "prettier --write '**/*.{js,json}'",
+        "format": "prettier --check '**/*.{js,json}'",
+        "lint": "npx eslint \"**/integration/**/*.js\"",
+        "lint-fix": "npx eslint --fix \"**/integration/**/*.js\"",
+        "report:clean": "rm -rf artifacts/",
+        "report:get-assets": "mkdir -p artifacts/mochawesome-report/assets/ && cp -R artifacts/screenshots/ artifacts/mochawesome-report/assets/ 2>/dev/null || :",
+        "report:get-results": "npx mochawesome-merge --reportDir artifacts/mochawesome-sources > mochawesome.json",
+        "report:generate": "npx marge mochawesome.json -o ./artifacts/mochawesome-report && rm mochawesome.json",
+        "report:open": "open artifacts/mochawesome-report/mochawesome.html",
+        "report": "yarn report:get-assets && yarn report:get-results && yarn report:generate",
+        "secrets": "yarn secrets:setup && yarn secrets:edit",
+        "secrets:setup": "cp -i cypress/fixtures/config/cypress.secrets.template.json ./cypress.env.json",
+        "secrets:edit": "open -t cypress.env.json &> /dev/null || xdg-open ./cypress.env.json &> /dev/null || echo 'Failed to open the file ./cypress.env.json for editing'; exit 1"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "**/*.{js,json,md}": [
+            "prettier --write",
+            "git add"
+        ],
+        "**/*.js": [
+            "eslint",
+            "git add"
+        ]
+    },
+    "eslintIgnore": [
+        "artifacts/**/*.js"
+    ],
+    "eslintConfig": {
+        "root": true
+    },
+    "author": "Diogo Nunes",
+    "license": "MIT",
+    "devDependencies": {
+        "@testing-library/cypress": "^4.2.0",
+        "cypress": "^4.11.0",
+        "cypress-commands": "^0.2.0",
+        "cypress-dark": "^1.7.14",
+        "cypress-multi-reporters": "^1.4.0",
+        "cypress-plugin-retries": "^1.5.2",
+        "cypress-select-tests": "^1.5.7",
+        "cypress-wait-until": "^1.7.1",
+        "eslint": "^6.8.0",
+        "eslint-plugin-cypress": "^2.11.1",
+        "git-cz": "^3.3.0",
+        "husky": "^3.1.0",
+        "lint-staged": "^9.5.0",
+        "mocha": "5.2.0",
+        "mocha-junit-reporter": "^1.23.3",
+        "mochawesome": "^4.1.0",
+        "mochawesome-merge": "^2.1.0",
+        "mochawesome-report-generator": "^4.1.0",
+        "prettier": "^1.19.1"
+    },
+    "dependencies": {
+        "syncyarnlock": "^1.0.19"
+    },
+    "private": true
+}
