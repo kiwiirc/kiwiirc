@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kiwiirc\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2025-03-05 14:48\n"
+"PO-Revision-Date: 2025-04-16 19:56\n"
 
 #: Start
 msgid "start_button"
@@ -281,7 +281,7 @@ msgstr "קישור נושא"
 
 #: Message Layout
 msgid "settings_messagelayout"
-msgstr "Message Layout"
+msgstr "פריסת הודעות"
 
 #: Use monospace
 msgid "settings_use_monospace"
@@ -505,7 +505,7 @@ msgstr "(כל משתמש רשום)"
 
 #: Mods Only
 msgid "mods_only"
-msgstr "Mods Only"
+msgstr "מנהלים בלבד"
 
 #: Topic
 msgid "channel_topic"
@@ -741,7 +741,7 @@ msgstr "הצג שינויים של כינויי משתמשים"
 
 #: Show when users change channel modes
 msgid "side_mode_changes"
-msgstr "Show when users change channel modes"
+msgstr "הצג שינויים של הגדרות החדר"
 
 #: Extra message formatting
 msgid "side_formatting"
