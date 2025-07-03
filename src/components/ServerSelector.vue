@@ -368,4 +368,20 @@ export default {
 .kiwi-serverselector-type {
     grid-column: 1 / 4;
 }
+
+@media screen and (max-width: 400px) {
+    .kiwi-serverselector-connection {
+        grid-template-columns: auto minmax(0, max-content);
+    }
+
+    .kiwi-serverselector-connection-proto select {
+        width: 100%;
+    }
+
+    .kiwi-serverselector-connection-address {
+        grid-row: 1;
+        grid-column: 1 / span 2;
+    }
+}
+
 </style>
